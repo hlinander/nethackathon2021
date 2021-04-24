@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package nh;
+
+message Login {
+  int32 player_id = 1;
+}
+
+message LoginStatus {
+    bool success = 1;
+    int32 player_id = 2;
+}
+
+message Player {
+    string username = 1;
+}
+
+message RequestClan {
+}
+
+message Clan {
+    repeated Player players = 1;
+}
+
+message BagInventory {
+}
+
+message InsertItem {
+    BagItem item = 1;
+}
+
+message RetrieveItem {
+    BagItem item = 1;
+}
+
+message RetrieveItemStatus {
+    BagItem item = 1;
+    bool success = 2;
+}
+
+message BagItem {
+    int32 id = 1;
+    bytes item = 2;
+}
+
+message Bag {
+    repeated BagItem items = 1;
+}
+
+message Objective {
+    string name = 1;
+    int32 reward = 2;
+}
+
+message CompleteTask {
+    Player player = 1;
+    string objective_name = 2;
+}
+
+message Reward {
+    int32 reward = 1;
+    string objective = 2;
+    int32 total_reward = 3;
+}
+
+message Event {
+    oneof msg {
+        RequestClan request_clan = 1; 
+        Clan clan = 2; 
+        Player player = 3;
+        Login login = 4;
+        BagInventory bag_inventory = 5;
+        BagItem bag_item = 6;
+        Bag bag = 7;
+        InsertItem insert_item = 8;
+        RetrieveItem retrieve_item = 9;
+        CompleteTask complete_task = 10;
+        Reward reward = 11;
+    }
+}
+
