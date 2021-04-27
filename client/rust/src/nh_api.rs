@@ -27,17 +27,24 @@ fn ipc() -> impl std::ops::DerefMut<Target = Ipc> {
     }
 }
 
-
 fn debug_print(f: String) {
     let c_str = std::ffi::CString::new(f.as_str()).unwrap();
     unsafe { nethack_rs::pline(c_str.as_ptr()) };
 }
 
-fn until_success<R, F: FnMut() -> Result<R>>(mut f: F) -> R {
+fn until_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> R {
     loop {
-        match f() {
+        let mut ipc_ref = ipc();
+        match f(&mut *ipc_ref) {
             Ok(r) => return r,
-            Err(_) => continue,
+            Err(_) => {
+                // clear IPC
+                unsafe {
+                    IPC = None;
+                }
+                // reconnect IPC
+                ipc_ref = ipc();
+            }
         }
     }
 }
@@ -69,18 +76,14 @@ pub unsafe extern "C" fn bag_of_sharing_add(o: *mut obj) {
         name: name.into(),
     };
 
-    let mut ipc = ipc();
-    until_success(|| {
-        ipc.bag_add(&obj_data)
-    });
+    until_success(|ipc| ipc.bag_add(&obj_data));
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_sync_all() {
     let mut iter = nethack_rs::g.invent;
     while iter != null_mut() {
-        if nethack_rs::BAG_OF_SHARING as i16 == (&*iter).otyp
-        {
+        if nethack_rs::BAG_OF_SHARING as i16 == (&*iter).otyp {
             bag_of_sharing_sync(iter);
             break;
         }
@@ -90,10 +93,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync_all() {
 
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
-    let mut ipc = ipc();
-    let items = until_success(|| {
-        ipc.get_bag()
-    });
+    let items = until_success(|ipc| ipc.get_bag());
     // debug_print(format!("sync bag {:?}", items));
 
     let mut bag = &mut *bag_ptr;
@@ -105,7 +105,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
         nethack_rs::obfree(otmp, null_mut());
     }
     for (dbid, obj_data) in items {
-        let obj_ptr =  nethack_rs::mksobj(obj_data.otyp, 0, 0);
+        let obj_ptr = nethack_rs::mksobj(obj_data.otyp, 0, 0);
         if obj_ptr == null_mut() {
             continue;
         }
@@ -136,10 +136,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_remove(o: *mut obj) -> i32 {
     let o = &*o;
-    let mut ipc = ipc();
-    let success = until_success(|| {
-        ipc.bag_remove(o.dbid) 
-    });
+    let success = until_success(|ipc| ipc.bag_remove(o.dbid));
     if success {
         0
     } else {
