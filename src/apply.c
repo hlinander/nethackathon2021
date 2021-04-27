@@ -3765,6 +3765,7 @@ doapply(void)
     case ICE_BOX:
     case SACK:
     case BAG_OF_HOLDING:
+    case BAG_OF_SHARING:
     case OILSKIN_SACK:
         res = use_container(&obj, 1, FALSE);
         break;

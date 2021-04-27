@@ -6,6 +6,7 @@
 /* various code that was replicated in *main.c */
 
 #include "hack.h"
+#include "rust.h"
 #include <ctype.h>
 
 #ifndef NO_SIGNAL
@@ -37,6 +38,8 @@ moveloop(boolean resuming)
 #endif
     int moveamt = 0, wtcap = 0, change = 0;
     boolean monscanmove = FALSE;
+
+    rust_ipc_init(1);
 
     /* if a save file created in normal mode is now being restored in
        explore mode, treat it as normal restore followed by 'X' command
@@ -89,6 +92,8 @@ moveloop(boolean resuming)
     if (iflags.perm_invent)
         update_inventory();
 
+    bag_of_sharing_sync_all();
+
     for (;;) {
 #ifdef SAFERHANGUP
         if (g.program_state.done_hup)
@@ -100,6 +105,7 @@ moveloop(boolean resuming)
 #endif
 
         if (g.context.move) {
+            bag_of_sharing_sync_all();
             /* actual time passed */
             g.youmonst.movement -= NORMAL_SPEED;
 

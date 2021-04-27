@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "rust.h"
 
 static void mkbox_cnts(struct obj *);
 static unsigned nextoid(struct obj *, struct obj *);
@@ -1921,6 +1922,10 @@ obj_extract_self(struct obj* obj)
         remove_object(obj);
         break;
     case OBJ_CONTAINED:
+        if((obj->ocontainer->otyp == BAG_OF_SHARING) && obj->dbid)
+        {
+            bag_of_sharing_remove(obj);
+        }
         extract_nobj(obj, &obj->ocontainer->cobj);
         container_weight(obj->ocontainer);
         obj->ocontainer = (struct obj *) 0; /* clear stale back-link */
@@ -2038,6 +2043,11 @@ add_to_container(struct obj* container, struct obj* obj)
     for (otmp = container->cobj; otmp; otmp = otmp->nobj)
         if (merged(&otmp, &obj))
             return otmp;
+
+    if(BAG_OF_SHARING == container->otyp)
+    {
+        bag_of_sharing_add(obj);
+    }
 
     obj->where = OBJ_CONTAINED;
     obj->ocontainer = container;

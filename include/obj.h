@@ -127,6 +127,7 @@ struct obj {
     unsigned oeaten;        /* nutrition left in food, if partly eaten */
     long age;               /* creation date */
     long owornmask;
+    long dbid;
     unsigned lua_ref_cnt;  /* # of lua script references for this object */
     xchar omigr_from_dnum; /* where obj is migrating from */
     xchar omigr_from_dlevel; /* where obj is migrating from */

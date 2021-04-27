@@ -8,6 +8,7 @@
  */
 
 #include "hack.h"
+#include "rust.h"
 
 #define CONTAINED_SYM '>' /* from invent.c */
 
@@ -50,7 +51,7 @@ static void tipcontainer(struct obj *);
 
 /* define for query_objlist() and autopickup() */
 #define FOLLOW(curr, flags) \
-    (((flags) & BY_NEXTHERE) ? (curr)->nexthere : (curr)->nobj)
+    (((flags) &BY_NEXTHERE) ? (curr)->nexthere : (curr)->nobj)
 
 #define GOLD_WT(n) (((n) + 50L) / 100L)
 /* if you can figure this out, give yourself a hearty pat on the back... */
@@ -58,10 +59,9 @@ static void tipcontainer(struct obj *);
 
 #define Icebox (g.current_container->otyp == ICE_BOX)
 
-static const char
-        moderateloadmsg[] = "You have a little trouble lifting",
-        nearloadmsg[] = "You have much trouble lifting",
-        overloadmsg[] = "You have extreme difficulty lifting";
+static const char moderateloadmsg[] = "You have a little trouble lifting",
+                  nearloadmsg[] = "You have much trouble lifting",
+                  overloadmsg[] = "You have extreme difficulty lifting";
 
 /* BUG: this lets you look at cockatrice corpses while blind without
    touching them */
@@ -128,7 +128,8 @@ query_classes(char oclasses[], boolean *one_at_a_time, boolean *everything,
               const char *action, struct obj *objs, boolean here,
               int *menu_on_demand)
 {
-    char ilets[36], inbuf[BUFSZ] = DUMMY; /* FIXME: hardcoded ilets[] length */
+    char ilets[36],
+        inbuf[BUFSZ] = DUMMY; /* FIXME: hardcoded ilets[] length */
     int iletct, oclassct;
     boolean not_everything, filtered;
     char qbuf[QBUFSZ];
@@ -139,8 +140,8 @@ query_classes(char oclasses[], boolean *one_at_a_time, boolean *everything,
     *one_at_a_time = *everything = m_seen = FALSE;
     if (menu_on_demand)
         *menu_on_demand = 0;
-    iletct = collect_obj_classes(ilets, objs, here,
-                                 (boolean (*)(OBJ_P)) 0, &itemcount);
+    iletct = collect_obj_classes(ilets, objs, here, (boolean(*)(OBJ_P)) 0,
+                                 &itemcount);
     if (iletct == 0)
         return FALSE;
 
@@ -174,7 +175,7 @@ query_classes(char oclasses[], boolean *one_at_a_time, boolean *everything,
         const char *where = 0;
         char sym, oc_of_sym, *p;
 
- ask_again:
+    ask_again:
         oclasses[oclassct = 0] = '\0';
         *one_at_a_time = *everything = FALSE;
         not_everything = filtered = FALSE;
@@ -184,7 +185,7 @@ query_classes(char oclasses[], boolean *one_at_a_time, boolean *everything,
         if (*inbuf == '\033')
             return FALSE;
 
-        for (p = inbuf; (sym = *p++) != 0; ) {
+        for (p = inbuf; (sym = *p++) != 0;) {
             if (sym == ' ')
                 continue;
             else if (sym == 'A')
@@ -214,8 +215,9 @@ query_classes(char oclasses[], boolean *one_at_a_time, boolean *everything,
                     oclasses[oclassct] = '\0';
                 } else {
                     if (!where)
-                        where = !strcmp(action, "pick up") ? "here"
-                                : !strcmp(action, "take out") ? "inside" : "";
+                        where = !strcmp(action, "pick up")    ? "here"
+                                : !strcmp(action, "take out") ? "inside"
+                                                              : "";
                     if (*where)
                         There("are no %c's %s.", sym, where);
                     else
@@ -226,8 +228,8 @@ query_classes(char oclasses[], boolean *one_at_a_time, boolean *everything,
         } /* for p:sym in inbuf */
 
         if (m_seen && menu_on_demand) {
-            *menu_on_demand = (((*everything || !oclassct) && !filtered)
-                               ? -2 : -3);
+            *menu_on_demand =
+                (((*everything || !oclassct) && !filtered) ? -2 : -3);
             return FALSE;
         }
         if (!oclassct && (!*everything || not_everything)) {
@@ -313,8 +315,9 @@ describe_decor(void)
 
     /* we don't mention "ordinary" doors but do mention broken ones (and
        closed ones, which will only happen for Passes_walls) */
-    doorhere = dfeature && (!strcmp(dfeature, "open door")
-                            || !strcmp(dfeature, "doorway"));
+    doorhere =
+        dfeature
+        && (!strcmp(dfeature, "open door") || !strcmp(dfeature, "doorway"));
     waterhere = dfeature && !strcmp(dfeature, "pool of water");
     if (doorhere || Underwater
         || (ltyp == ICE && IS_POOL(iflags.prev_decor))) /* pooleffects() */
@@ -337,16 +340,13 @@ describe_decor(void)
         }
         pline("%s", outbuf);
     } else if (!Underwater) {
-        if (IS_POOL(iflags.prev_decor)
-            || iflags.prev_decor == LAVAPOOL
+        if (IS_POOL(iflags.prev_decor) || iflags.prev_decor == LAVAPOOL
             || iflags.prev_decor == ICE) {
             const char *ground = surface(u.ux, u.uy);
 
             if (iflags.last_msg != PLNMSG_BACK_ON_GROUND)
-                pline("%s %s %s.",
-                      flags.verbose ? "You are back" : "Back",
-                      (Levitation || Flying) ? "over" : "on",
-                      ground);
+                pline("%s %s %s.", flags.verbose ? "You are back" : "Back",
+                      (Levitation || Flying) ? "over" : "on", ground);
         }
     }
     iflags.prev_decor = ltyp;
@@ -389,7 +389,7 @@ n_or_more(struct obj *obj)
 {
     if (obj == uchain)
         return FALSE;
-    return (boolean) (obj->quan >= g.val_for_n_or_more);
+    return (boolean)(obj->quan >= g.val_for_n_or_more);
 }
 
 /* check valid_menu_classes[] for an entry; also used by askchain() */
@@ -432,7 +432,7 @@ add_valid_menu_class(int c)
 static boolean
 all_but_uchain(struct obj *obj)
 {
-    return (boolean) (obj != uchain);
+    return (boolean)(obj != uchain);
 }
 
 /* query_objlist callback: return TRUE */
@@ -454,13 +454,15 @@ allow_category(struct obj *obj)
      */
     if (obj->oclass == COIN_CLASS)
         return g.class_filter
-                 ? (index(g.valid_menu_classes, COIN_CLASS) ? TRUE : FALSE)
-                 : g.shop_filter /* coins are never unpaid, but check anyway */
-                    ? (obj->unpaid ? TRUE : FALSE)
-                    : g.bucx_filter
-                       ? (index(g.valid_menu_classes, flags.goldX ? 'X' : 'U')
-                          ? TRUE : FALSE)
-                       : TRUE; /* catchall: no filters specified, so accept */
+                   ? (index(g.valid_menu_classes, COIN_CLASS) ? TRUE : FALSE)
+               : g.shop_filter /* coins are never unpaid, but check anyway */
+                   ? (obj->unpaid ? TRUE : FALSE)
+                   : g.bucx_filter ? (
+                         index(g.valid_menu_classes, flags.goldX ? 'X' : 'U')
+                             ? TRUE
+                             : FALSE)
+                                   : TRUE; /* catchall: no filters specified,
+                                              so accept */
 
     if (Role_if(PM_CLERIC) && !obj->bknown)
         set_bknown(obj, 1);
@@ -493,8 +495,10 @@ allow_category(struct obj *obj)
     /* check for particular bless/curse state */
     if (g.bucx_filter) {
         /* first categorize this object's bless/curse state */
-        char bucx = !obj->bknown ? 'X'
-                      : obj->blessed ? 'B' : obj->cursed ? 'C' : 'U';
+        char bucx = !obj->bknown   ? 'X'
+                    : obj->blessed ? 'B'
+                    : obj->cursed  ? 'C'
+                                   : 'U';
 
         /* if its category is not in the list, reject */
         if (!index(g.valid_menu_classes, bucx))
@@ -564,9 +568,10 @@ pickup(int what) /* should be a long */
         struct trap *t;
 
         /* no auto-pick if no-pick move, nothing there, or in a pool */
-        if (autopickup && (g.context.nopick || !OBJ_AT(u.ux, u.uy)
-                           || (is_pool(u.ux, u.uy) && !Underwater)
-                           || is_lava(u.ux, u.uy))) {
+        if (autopickup
+            && (g.context.nopick || !OBJ_AT(u.ux, u.uy)
+                || (is_pool(u.ux, u.uy) && !Underwater)
+                || is_lava(u.ux, u.uy))) {
             if (flags.mention_decor)
                 (void) describe_decor();
             read_engr_at(u.ux, u.uy);
@@ -585,8 +590,7 @@ pickup(int what) /* should be a long */
          * action, or possibly paralyzed, sleeping, etc.... and they just
          * teleported onto the object.  They shouldn't pick it up.
          */
-        if ((g.multi && !g.context.run)
-            || (autopickup && !flags.pickup)
+        if ((g.multi && !g.context.run) || (autopickup && !flags.pickup)
             || notake(g.youmonst.data)) {
             check_here(FALSE);
             if (notake(g.youmonst.data) && OBJ_AT(u.ux, u.uy)
@@ -622,25 +626,25 @@ pickup(int what) /* should be a long */
 
     if (flags.menu_style != MENU_TRADITIONAL || iflags.menu_requested) {
         /* use menus exclusively */
-        traverse_how |= AUTOSELECT_SINGLE
-                        | (flags.sortpack ? INVORDER_SORT : 0);
+        traverse_how |=
+            AUTOSELECT_SINGLE | (flags.sortpack ? INVORDER_SORT : 0);
         if (count) { /* looking for N of something */
             char qbuf[QBUFSZ];
 
             Sprintf(qbuf, "Pick %d of what?", count);
             g.val_for_n_or_more = count; /* set up callback selector */
-            n = query_objlist(qbuf, objchain_p, traverse_how,
-                              &pick_list, PICK_ONE, n_or_more);
+            n = query_objlist(qbuf, objchain_p, traverse_how, &pick_list,
+                              PICK_ONE, n_or_more);
             /* correct counts, if any given */
             for (i = 0; i < n; i++)
                 pick_list[i].count = count;
         } else {
             n = query_objlist("Pick up what?", objchain_p,
-                              (traverse_how | FEEL_COCKATRICE),
-                              &pick_list, PICK_ANY, all_but_uchain);
+                              (traverse_how | FEEL_COCKATRICE), &pick_list,
+                              PICK_ANY, all_but_uchain);
         }
 
- menu_pickup:
+    menu_pickup:
         n_tried = n;
         for (n_picked = i = 0; i < n; i++) {
             res = pickup_object(pick_list[i].item.a_obj, pick_list[i].count,
@@ -689,10 +693,9 @@ pickup(int what) /* should be a long */
                     goto pickupdone;
                 if (selective)
                     traverse_how |= INVORDER_SORT;
-                n = query_objlist("Pick up what?", objchain_p, traverse_how,
-                                  &pick_list, PICK_ANY,
-                                  (via_menu == -2) ? allow_all
-                                                   : allow_category);
+                n = query_objlist(
+                    "Pick up what?", objchain_p, traverse_how, &pick_list,
+                    PICK_ANY, (via_menu == -2) ? allow_all : allow_category);
                 goto menu_pickup;
             }
         }
@@ -744,8 +747,7 @@ pickup(int what) /* should be a long */
                 break;
             n_picked += res;
         }
- end_query:
-        ; /* statement required after label */
+    end_query:; /* statement required after label */
     }
 
     if (!u.uswallow) {
@@ -760,7 +762,7 @@ pickup(int what) /* should be a long */
         if (autopickup)
             check_here(n_picked > 0);
     }
- pickupdone:
+pickupdone:
     add_valid_menu_class(0); /* reset */
     return (n_tried > 0);
 }
@@ -792,8 +794,8 @@ autopick_testobj(struct obj *otmp, boolean calc_costly)
 
     /* calculate 'costly' just once for a given autopickup operation */
     if (calc_costly)
-        costly = (otmp->where == OBJ_FLOOR
-                  && costly_spot(otmp->ox, otmp->oy));
+        costly =
+            (otmp->where == OBJ_FLOOR && costly_spot(otmp->ox, otmp->oy));
 
     /* first check: reject if an unpaid item in a shop */
     if (costly && !otmp->no_charge)
@@ -838,7 +840,7 @@ autopick(struct obj *olist,     /* the object list */
     }
 
     if (n) {
-        *pick_list = pi = (menu_item *) alloc(sizeof (menu_item) * n);
+        *pick_list = pi = (menu_item *) alloc(sizeof(menu_item) * n);
         for (n = 0, curr = olist; curr; curr = FOLLOW(curr, follow)) {
             if (autopick_testobj(curr, FALSE)) {
                 pi[n].item.a_obj = curr;
@@ -882,10 +884,9 @@ query_objlist(const char *qstr,        /* query string */
     struct obj *curr, *last, fake_hero_object, *olist = *olist_p;
     char *pack, packbuf[MAXOCLASSES + 1];
     anything any;
-    boolean printed_type_name, first,
-            sorted = (qflags & INVORDER_SORT) != 0,
-            engulfer = (qflags & INCLUDE_HERO) != 0,
-            engulfer_minvent;
+    boolean printed_type_name, first, sorted = (qflags & INVORDER_SORT) != 0,
+                                      engulfer = (qflags & INCLUDE_HERO) != 0,
+                                      engulfer_minvent;
     unsigned sortflags;
     glyph_info tmpglyphinfo = nul_glyphinfo;
     Loot *sortedolist, *srtoli;
@@ -902,8 +903,8 @@ query_objlist(const char *qstr,        /* query string */
         }
     /* can't depend upon 'engulfer' because that's used to indicate whether
        hero should be shown as an extra, fake item */
-    engulfer_minvent = (olist && olist->where == OBJ_MINVENT
-                        && u.uswallow && olist->ocarry == u.ustuck);
+    engulfer_minvent = (olist && olist->where == OBJ_MINVENT && u.uswallow
+                        && olist->ocarry == u.ustuck);
     if (engulfer_minvent && n == 1 && olist->owornmask != 0L) {
         qflags &= ~AUTOSELECT_SINGLE;
     }
@@ -917,7 +918,7 @@ query_objlist(const char *qstr,        /* query string */
         return (qflags & SIGNAL_NOMENU) ? -1 : 0;
 
     if (n == 1 && (qflags & AUTOSELECT_SINGLE)) {
-        *pick_list = (menu_item *) alloc(sizeof (menu_item));
+        *pick_list = (menu_item *) alloc(sizeof(menu_item));
         (*pick_list)->item.a_obj = last;
         (*pick_list)->count = last->quan;
         return 1;
@@ -925,8 +926,8 @@ query_objlist(const char *qstr,        /* query string */
 
     sortflags = (((flags.sortloot == 'f'
                    || (flags.sortloot == 'l' && !(qflags & USE_INVLET)))
-                  ? SORTLOOT_LOOT
-                  : ((qflags & USE_INVLET) ? SORTLOOT_INVLET : 0))
+                      ? SORTLOOT_LOOT
+                      : ((qflags & USE_INVLET) ? SORTLOOT_INVLET : 0))
                  | (flags.sortpack ? SORTLOOT_PACK : 0)
                  | ((qflags & FEEL_COCKATRICE) ? SORTLOOT_PETRIFY : 0));
     sortedolist = sortloot(&olist, sortflags,
@@ -975,9 +976,11 @@ query_objlist(const char *qstr,        /* query string */
                 map_glyphinfo(0, 0, tmpglyph, 0U, &tmpglyphinfo);
                 add_menu(win, &tmpglyphinfo, &any,
                          (qflags & USE_INVLET) ? curr->invlet
-                           : (first && curr->oclass == COIN_CLASS) ? '$' : 0,
+                         : (first && curr->oclass == COIN_CLASS) ? '$'
+                                                                 : 0,
                          def_oc_syms[(int) objects[curr->otyp].oc_class].sym,
-                         ATR_NONE, doname_with_price(curr), MENU_ITEMFLAGS_NONE);
+                         ATR_NONE, doname_with_price(curr),
+                         MENU_ITEMFLAGS_NONE);
                 first = FALSE;
             }
         }
@@ -992,8 +995,8 @@ query_objlist(const char *qstr,        /* query string */
         if (sorted && n > 1) {
             Sprintf(buf, "%s Creatures",
                     is_animal(u.ustuck->data) ? "Swallowed" : "Engulfed");
-            add_menu(win, &nul_glyphinfo, &any, 0, 0, iflags.menu_headings, buf,
-                     MENU_ITEMFLAGS_NONE);
+            add_menu(win, &nul_glyphinfo, &any, 0, 0, iflags.menu_headings,
+                     buf, MENU_ITEMFLAGS_NONE);
         }
         fake_hero_object = cg.zeroobj;
         fake_hero_object.quan = 1L; /* not strictly necessary... */
@@ -1077,7 +1080,7 @@ query_category(const char *qstr,      /* query string */
     boolean collected_type_name;
     char invlet;
     int ccount;
-    boolean (*ofilter)(OBJ_P) = (boolean (*)(OBJ_P)) 0;
+    boolean (*ofilter)(OBJ_P) = (boolean(*)(OBJ_P)) 0;
     boolean do_unpaid = FALSE;
     boolean do_blessed = FALSE, do_cursed = FALSE, do_uncursed = FALSE,
             do_buc_unknown = FALSE;
@@ -1147,8 +1150,8 @@ query_category(const char *qstr,      /* query string */
                  itemflags);
 
         any = cg.zeroany;
-        add_menu(win, &nul_glyphinfo, &any, 0, 0,
-                 ATR_NONE, "", MENU_ITEMFLAGS_NONE);
+        add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, "",
+                 MENU_ITEMFLAGS_NONE);
     }
 
     if ((qflags & ALL_TYPES) && (ccount > 1)) {
@@ -1174,9 +1177,10 @@ query_category(const char *qstr,      /* query string */
                     add_menu(
                         win, &nul_glyphinfo, &any, invlet++,
                         def_oc_syms[(int) objects[curr->otyp].oc_class].sym,
-                        ATR_NONE, let_to_name(*pack, FALSE,
-                                              (how != PICK_NONE)
-                                                  && iflags.menu_head_objsym),
+                        ATR_NONE,
+                        let_to_name(*pack, FALSE,
+                                    (how != PICK_NONE)
+                                        && iflags.menu_head_objsym),
                         MENU_ITEMFLAGS_NONE);
                     collected_type_name = TRUE;
                 }
@@ -1193,8 +1197,8 @@ query_category(const char *qstr,      /* query string */
     if (do_unpaid || (qflags & BILLED_TYPES) || do_blessed || do_cursed
         || do_uncursed || do_buc_unknown) {
         any = cg.zeroany;
-        add_menu(win, &nul_glyphinfo, &any, 0, 0,
-                 ATR_NONE, "", MENU_ITEMFLAGS_NONE);
+        add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, "",
+                 MENU_ITEMFLAGS_NONE);
     }
 
     /* unpaid items if there are any */
@@ -1202,8 +1206,8 @@ query_category(const char *qstr,      /* query string */
         invlet = 'u';
         any = cg.zeroany;
         any.a_int = 'u';
-        add_menu(win, &nul_glyphinfo, &any, invlet, 0,
-                 ATR_NONE, "Unpaid items", MENU_ITEMFLAGS_NONE);
+        add_menu(win, &nul_glyphinfo, &any, invlet, 0, ATR_NONE,
+                 "Unpaid items", MENU_ITEMFLAGS_NONE);
     }
     /* billed items: checked by caller, so always include if BILLED_TYPES */
     if (qflags & BILLED_TYPES) {
@@ -1248,7 +1252,7 @@ query_category(const char *qstr,      /* query string */
     }
     end_menu(win, qstr);
     n = select_menu(win, how, pick_list);
- query_done:
+query_done:
     destroy_nhwindow(win);
     if (n < 0)
         n = 0; /* caller's don't expect -1 */
@@ -1269,8 +1273,8 @@ count_categories(struct obj *olist, int qflags)
         for (curr = olist; curr; curr = FOLLOW(curr, qflags)) {
             if (curr->oclass == *pack) {
                 if ((qflags & WORN_TYPES)
-                    && !(curr->owornmask & (W_ARMOR | W_ACCESSORY
-                                            | W_WEAPONS)))
+                    && !(curr->owornmask
+                         & (W_ARMOR | W_ACCESSORY | W_WEAPONS)))
                     continue;
                 if (!counted_category) {
                     ccount++;
@@ -1315,11 +1319,9 @@ delta_cwt(struct obj *container, struct obj *obj)
 
 /* could we carry `obj'? if not, could we carry some of it/them? */
 static long
-carry_count(struct obj *obj,            /* object to pick up... */
-            struct obj *container,      /* ...bag it is coming out of */
-            long count,
-            boolean telekinesis,
-            int *wt_before, int *wt_after)
+carry_count(struct obj *obj,       /* object to pick up... */
+            struct obj *container, /* ...bag it is coming out of */
+            long count, boolean telekinesis, int *wt_before, int *wt_after)
 {
     boolean adjust_wt = container && carried(container),
             is_gold = obj->oclass == COIN_CLASS;
@@ -1449,12 +1451,10 @@ carry_count(struct obj *obj,            /* object to pick up... */
 }
 
 /* determine whether character is able and player is willing to carry `obj' */
-static
-int
+static int
 lift_object(struct obj *obj,       /* object to pick up... */
             struct obj *container, /* ...bag it's coming out of */
-            long *cnt_p,
-            boolean telekinesis)
+            long *cnt_p, boolean telekinesis)
 {
     int result, old_wt, new_wt, prev_encumbr, next_encumbr;
 
@@ -1478,8 +1478,8 @@ lift_object(struct obj *obj,       /* object to pick up... */
         return -1;
     }
 
-    *cnt_p = carry_count(obj, container, *cnt_p, telekinesis,
-                         &old_wt, &new_wt);
+    *cnt_p =
+        carry_count(obj, container, *cnt_p, telekinesis, &old_wt, &new_wt);
     if (*cnt_p < 1L) {
         result = -1; /* nothing lifted */
     } else if (obj->oclass != COIN_CLASS
@@ -1492,8 +1492,9 @@ lift_object(struct obj *obj,       /* object to pick up... */
            just gold, so the best we can do here is vary the message */
         Your("knapsack cannot accommodate any more items%s.",
              /* floor follows by nexthere, otherwise container so by nobj */
-             nxtobj(obj, GOLD_PIECE, (boolean) (obj->where == OBJ_FLOOR))
-                 ? " (except gold)" : "");
+             nxtobj(obj, GOLD_PIECE, (boolean)(obj->where == OBJ_FLOOR))
+                 ? " (except gold)"
+                 : "");
         result = -1; /* nothing lifted */
     } else {
         result = 1;
@@ -1509,11 +1510,10 @@ lift_object(struct obj *obj,       /* object to pick up... */
                 long savequan = obj->quan;
 
                 obj->quan = *cnt_p;
-                Strcpy(qbuf, (next_encumbr > HVY_ENCUMBER)
-                                 ? overloadmsg
-                                 : (next_encumbr > MOD_ENCUMBER)
-                                       ? nearloadmsg
-                                       : moderateloadmsg);
+                Strcpy(qbuf, (next_encumbr > HVY_ENCUMBER) ? overloadmsg
+                             : (next_encumbr > MOD_ENCUMBER)
+                                 ? nearloadmsg
+                                 : moderateloadmsg);
                 if (container)
                     (void) strsubst(qbuf, "lifting", "removing");
                 Strcat(qbuf, " ");
@@ -1563,8 +1563,8 @@ pickup_object(struct obj *obj, long count,
 
     if (obj == uchain) { /* do not pick up attached chain */
         return 0;
-    } else if (obj->where == OBJ_MINVENT && obj->owornmask != 0L
-               && u.uswallow && obj->ocarry == u.ustuck) {
+    } else if (obj->where == OBJ_MINVENT && obj->owornmask != 0L && u.uswallow
+               && obj->ocarry == u.ustuck) {
         You_cant("pick %s up.", ysimple_name(obj));
         return 0;
     } else if (obj->oartifact && !touch_artifact(obj, &g.youmonst)) {
@@ -1580,9 +1580,10 @@ pickup_object(struct obj *obj, long count,
            tricky because being unable to lift full stack imposes an
            implicit count; unliftable ones should be treated as if
            the count excluded them so that they don't change state */
-        if ((count = carry_count(obj, (struct obj *) 0,
-                                 count ? count : obj->quan,
-                                 FALSE, &old_wt, &new_wt)) < 1L)
+        if ((count =
+                 carry_count(obj, (struct obj *) 0, count ? count : obj->quan,
+                             FALSE, &old_wt, &new_wt))
+            < 1L)
             return -1; /* couldn't even pick up 1, so effectively untouched */
         /* all current callers handle a new object sanely when traversing
            a list; other half of a split will be left as-is and whatever
@@ -1744,8 +1745,7 @@ container_at(int x, int y, boolean countem)
 }
 
 static boolean
-able_to_loot(int x, int y,
-             boolean looting) /* loot vs tip */
+able_to_loot(int x, int y, boolean looting) /* loot vs tip */
 {
     const char *verb = looting ? "loot" : "tip";
     struct trap *t = t_at(x, y);
@@ -1831,7 +1831,7 @@ do_loot_cont(struct obj **cobjp,
 
     You("%sopen %s...", (!cobj->cknown || !cobj->lknown) ? "carefully " : "",
         the(xname(cobj)));
-    return use_container(cobjp, 0, (boolean) (cindex < ccount));
+    return use_container(cobjp, 0, (boolean)(cindex < ccount));
 }
 
 /* loot a container on the floor or loot saddle from mon. */
@@ -1874,7 +1874,7 @@ doloot(void)
     if (iflags.menu_requested)
         goto lootmon;
 
- lootcont:
+lootcont:
     if ((num_conts = container_at(cc.x, cc.y, TRUE)) > 0) {
         boolean anyfound = FALSE;
 
@@ -1910,8 +1910,8 @@ doloot(void)
                  cobj = cobj->nexthere)
                 if (Is_container(cobj)) {
                     any.a_obj = cobj;
-                    add_menu(win, &nul_glyphinfo, &any, 0, 0,
-                             ATR_NONE, doname(cobj), MENU_ITEMFLAGS_NONE);
+                    add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
+                             doname(cobj), MENU_ITEMFLAGS_NONE);
                 }
             end_menu(win, "Loot which containers?");
             n = select_menu(win, PICK_ANY, &pick_list);
@@ -1961,7 +1961,7 @@ doloot(void)
     /*
      * 3.3.1 introduced directional looting for some things.
      */
- lootmon:
+lootmon:
     if (c != 'y' && mon_beside(u.ux, u.uy)) {
         if (!get_adjacent_loc("Loot in what direction?",
                               "Invalid loot location", u.ux, u.uy, &cc))
@@ -2050,7 +2050,8 @@ reverse_loot(void)
         if (g_at(x, y))
             pline("Ok, now there is loot here.");
     } else {
-        /* find original coffers chest if present, otherwise use nearest one */
+        /* find original coffers chest if present, otherwise use nearest one
+         */
         otmp = 0;
         for (coffers = fobj; coffers; coffers = coffers->nobj)
             if (coffers->otyp == CHEST) {
@@ -2106,9 +2107,9 @@ loot_mon(struct monst *mtmp, int *passed_info, boolean *prev_loot)
     if (mtmp && mtmp != u.usteed && (otmp = which_armor(mtmp, W_SADDLE))) {
         if (passed_info)
             *passed_info = 1;
-        Sprintf(qbuf, "Do you want to remove the saddle from %s?",
-                x_monnam(mtmp, ARTICLE_THE, (char *) 0,
-                         SUPPRESS_SADDLE, FALSE));
+        Sprintf(
+            qbuf, "Do you want to remove the saddle from %s?",
+            x_monnam(mtmp, ARTICLE_THE, (char *) 0, SUPPRESS_SADDLE, FALSE));
         if ((c = yn_function(qbuf, ynqchars, 'n')) == 'y') {
             if (nolimbs(g.youmonst.data)) {
                 You_cant("do that without limbs."); /* not body_part(HAND) */
@@ -2116,8 +2117,8 @@ loot_mon(struct monst *mtmp, int *passed_info, boolean *prev_loot)
             }
             if (otmp->cursed) {
                 You("can't.  The saddle seems to be stuck to %s.",
-                    x_monnam(mtmp, ARTICLE_THE, (char *) 0,
-                             SUPPRESS_SADDLE, FALSE));
+                    x_monnam(mtmp, ARTICLE_THE, (char *) 0, SUPPRESS_SADDLE,
+                             FALSE));
                 /* the attempt costs you time */
                 return 1;
             }
@@ -2170,7 +2171,7 @@ mbag_explodes(struct obj *obj, int depthin)
 static boolean
 is_boh_item_gone(void)
 {
-    return (boolean) (!rn2(13));
+    return (boolean)(!rn2(13));
 }
 
 /* Scatter most of Bag of holding contents around.
@@ -2298,8 +2299,8 @@ in_container(struct obj *obj)
             was_unpaid = obj->unpaid ? TRUE : FALSE;
             /* don't sell when putting the item into your own container,
              * but handle billing correctly */
-            sellobj_state(g.current_container->no_charge
-                          ? SELL_DONTSELL : SELL_DELIBERATE);
+            sellobj_state(g.current_container->no_charge ? SELL_DONTSELL
+                                                         : SELL_DELIBERATE);
             sellobj(obj, u.ux, u.uy);
             sellobj_state(SELL_NORMAL);
         }
@@ -2328,9 +2329,11 @@ in_container(struct obj *obj)
         obfree(obj, (struct obj *) 0);
         /* if carried, shop goods will be flagged 'unpaid' and obfree() will
            handle bill issues, but if on floor, we need to put them on bill
-           before deleting them (non-shop items will be flagged 'no_charge') */
+           before deleting them (non-shop items will be flagged 'no_charge')
+         */
         if (floor_container
-            && costly_spot(g.current_container->ox, g.current_container->oy)) {
+            && costly_spot(g.current_container->ox,
+                           g.current_container->oy)) {
             struct obj save_no_charge;
 
             save_no_charge.no_charge = g.current_container->no_charge;
@@ -2390,6 +2393,18 @@ out_container(struct obj *obj)
     int res, loadlev;
     long count;
 
+    if(obj->ocontainer)
+    {
+        if((obj->ocontainer->otyp == BAG_OF_SHARING) && obj->dbid)
+        {
+            if(bag_of_sharing_remove(obj))
+            {
+                return 0;
+            }
+            obj->dbid = 0;
+        }
+    }
+
     if (!g.current_container) {
         impossible("<out> no g.current_container?");
         return -1;
@@ -2429,8 +2444,8 @@ out_container(struct obj *obj)
     otmp = addinv(obj);
     loadlev = near_capacity();
     prinv(loadlev ? ((loadlev < MOD_ENCUMBER)
-                        ? "You have a little trouble removing"
-                        : "You have much trouble removing")
+                         ? "You have a little trouble removing"
+                         : "You have much trouble removing")
                   : (char *) 0,
           otmp, count);
 
@@ -2565,11 +2580,13 @@ explain_container_prompt(boolean more_containers)
         " i -- In: put things in",
         " b -- Both: first take things out, then put things in",
         " r -- Reversed: put things in, then take things out",
-        " s -- Stash: put one item in", "",
+        " s -- Stash: put one item in",
+        "",
         " n -- Next: loot next selected container",
         " q -- Quit: finished",
         " ? -- Help: display this text.",
-        "", 0
+        "",
+        0
     };
     const char *const *txtpp;
     winid win;
@@ -2616,8 +2633,7 @@ stash_ok(struct obj *obj)
 }
 
 int
-use_container(struct obj **objp,
-              int held,
+use_container(struct obj **objp, int held,
               boolean more_containers) /* True iff #loot multiple and this
                                           isn't last one */
 {
@@ -2630,6 +2646,11 @@ use_container(struct obj **objp,
 
     g.abort_looting = FALSE;
     emptymsg[0] = '\0';
+
+    if(BAG_OF_SHARING == obj->otyp)
+    {
+        bag_of_sharing_sync(obj);
+    }
 
     if (!u_handsy())
         return 0;
@@ -2670,20 +2691,20 @@ use_container(struct obj **objp,
         used = 1;
     }
 
-    cursed_mbag = Is_mbag(g.current_container)
-        && g.current_container->cursed
-        && Has_contents(g.current_container);
-    if (cursed_mbag
-        && (loss = boh_loss(g.current_container, held)) != 0) {
+    cursed_mbag = Is_mbag(g.current_container) && g.current_container->cursed
+                  && Has_contents(g.current_container);
+    if (cursed_mbag && (loss = boh_loss(g.current_container, held)) != 0) {
         used = 1;
         You("owe %ld %s for lost merchandise.", loss, currency(loss));
         g.current_container->owt = weight(g.current_container);
     }
-    inokay = (g.invent != 0
-              && !(g.invent == g.current_container && !g.current_container->nobj));
+    inokay =
+        (g.invent != 0
+         && !(g.invent == g.current_container && !g.current_container->nobj));
     outokay = Has_contents(g.current_container);
     if (!outokay) /* preformat the empty-container message */
-        Sprintf(emptymsg, "%s is %sempty.", Ysimple_name2(g.current_container),
+        Sprintf(emptymsg, "%s is %sempty.",
+                Ysimple_name2(g.current_container),
                 (quantum_cat || cursed_mbag) ? "now " : "");
 
     /*
@@ -2729,19 +2750,20 @@ use_container(struct obj **objp,
                    trying to do both will yield proper feedback */
                 c = 'b';
             } else {
-                c = in_or_out_menu(qbuf, g.current_container, outmaybe, inokay,
-                                   (boolean) (used != 0), more_containers);
+                c = in_or_out_menu(qbuf, g.current_container, outmaybe,
+                                   inokay, (boolean)(used != 0),
+                                   more_containers);
             }
-        } else { /* TRADITIONAL or COMBINATION */
-            xbuf[0] = '\0'; /* list of extra acceptable responses */
-            Strcpy(pbuf, ":");                   /* look inside */
-            Strcat(outmaybe ? pbuf : xbuf, "o"); /* take out */
-            Strcat(inokay ? pbuf : xbuf, "i");   /* put in */
-            Strcat(outmaybe ? pbuf : xbuf, "b"); /* both */
-            Strcat(inokay ? pbuf : xbuf, "rs");  /* reversed, stash */
-            Strcat(pbuf, " ");                   /* separator */
+        } else {               /* TRADITIONAL or COMBINATION */
+            xbuf[0] = '\0';    /* list of extra acceptable responses */
+            Strcpy(pbuf, ":"); /* look inside */
+            Strcat(outmaybe ? pbuf : xbuf, "o");        /* take out */
+            Strcat(inokay ? pbuf : xbuf, "i");          /* put in */
+            Strcat(outmaybe ? pbuf : xbuf, "b");        /* both */
+            Strcat(inokay ? pbuf : xbuf, "rs");         /* reversed, stash */
+            Strcat(pbuf, " ");                          /* separator */
             Strcat(more_containers ? pbuf : xbuf, "n"); /* next container */
-            Strcat(pbuf, "q");                   /* quit */
+            Strcat(pbuf, "q");                          /* quit */
             if (iflags.cmdassist)
                 /* this unintentionally allows user to answer with 'o' or
                    'r'; fortunately, those are already valid choices here */
@@ -2790,7 +2812,8 @@ use_container(struct obj **objp,
     }
 
     if ((loot_in || stash_one)
-        && (!g.invent || (g.invent == g.current_container && !g.invent->nobj))) {
+        && (!g.invent
+            || (g.invent == g.current_container && !g.invent->nobj))) {
         You("don't have anything%s to %s.", g.invent ? " else" : "",
             stash_one ? "stash" : "put in");
         loot_in = stash_one = FALSE;
@@ -2809,8 +2832,9 @@ use_container(struct obj **objp,
         add_valid_menu_class(0);
     } else if (stash_one) {
         /* put one item into container */
-        if ((otmp = getobj("stash", stash_ok,
-                           GETOBJ_PROMPT | GETOBJ_ALLOWCNT)) != 0) {
+        if ((otmp =
+                 getobj("stash", stash_ok, GETOBJ_PROMPT | GETOBJ_ALLOWCNT))
+            != 0) {
             if (in_container(otmp)) {
                 used = 1;
             } else {
@@ -2841,7 +2865,7 @@ use_container(struct obj **objp,
         }
     }
 
- containerdone:
+containerdone:
     if (used) {
         /* Not completely correct; if we put something in without knowing
            whatever was already inside, now we suddenly do.  That can't
@@ -3016,8 +3040,8 @@ in_or_out_menu(const char *prompt, struct obj *obj, boolean outokay,
 
     any.a_int = 1; /* ':' */
     Sprintf(buf, "Look inside %s", thesimpleoname(obj));
-    add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
-             ATR_NONE, buf, MENU_ITEMFLAGS_NONE);
+    add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0, ATR_NONE,
+             buf, MENU_ITEMFLAGS_NONE);
     if (outokay) {
         any.a_int = 2; /* 'o' */
         Sprintf(buf, "take %s out", something);
@@ -3048,8 +3072,8 @@ in_or_out_menu(const char *prompt, struct obj *obj, boolean outokay,
                  ATR_NONE, buf, MENU_ITEMFLAGS_NONE);
     }
     any.a_int = 0;
-    add_menu(win, &nul_glyphinfo, &any, 0, 0,
-             ATR_NONE, "", MENU_ITEMFLAGS_NONE);
+    add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, "",
+             MENU_ITEMFLAGS_NONE);
     if (more_containers) {
         any.a_int = 7; /* 'n' */
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
@@ -3057,8 +3081,8 @@ in_or_out_menu(const char *prompt, struct obj *obj, boolean outokay,
     }
     any.a_int = 8; /* 'q' */
     Strcpy(buf, alreadyused ? "done" : "do nothing");
-    add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
-             ATR_NONE, buf,
+    add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0, ATR_NONE,
+             buf,
              more_containers ? MENU_ITEMFLAGS_NONE : MENU_ITEMFLAGS_SELECTED);
 
     end_menu(win, prompt);
@@ -3087,8 +3111,8 @@ tip_ok(struct obj *obj)
     }
 
     /* include horn of plenty if sufficiently discovered */
-    if (obj->otyp == HORN_OF_PLENTY && obj->dknown &&
-        objects[obj->otyp].oc_name_known)
+    if (obj->otyp == HORN_OF_PLENTY && obj->dknown
+        && objects[obj->otyp].oc_name_known)
         return GETOBJ_SUGGEST;
 
     /* allow trying anything else in inventory */
@@ -3116,10 +3140,13 @@ dotip(void)
     /* check floor container(s) first; at most one will be accessed */
     if ((boxes = container_at(cc.x, cc.y, TRUE)) > 0) {
         Sprintf(buf, "You can't tip %s while carrying so much.",
-                !flags.verbose ? "a container" : (boxes > 1) ? "one" : "it");
+                !flags.verbose ? "a container"
+                : (boxes > 1)  ? "one"
+                               : "it");
         if (!check_capacity(buf) && able_to_loot(cc.x, cc.y, FALSE)) {
-            if (boxes > 1 && (flags.menu_style != MENU_TRADITIONAL
-                              || iflags.menu_requested)) {
+            if (boxes > 1
+                && (flags.menu_style != MENU_TRADITIONAL
+                    || iflags.menu_requested)) {
                 /* use menu to pick a container to tip */
                 int n, i;
                 winid win;
@@ -3136,19 +3163,20 @@ dotip(void)
                     if (Is_container(cobj)) {
                         ++i;
                         any.a_obj = cobj;
-                        add_menu(win, &nul_glyphinfo, &any, 0, 0,
-                                 ATR_NONE, doname(cobj), MENU_ITEMFLAGS_NONE);
+                        add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
+                                 doname(cobj), MENU_ITEMFLAGS_NONE);
                     }
                 if (g.invent) {
                     any = cg.zeroany;
-                    add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
-                             "", MENU_ITEMFLAGS_NONE);
+                    add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, "",
+                             MENU_ITEMFLAGS_NONE);
                     any.a_obj = &dummyobj;
                     /* use 'i' for inventory unless there are so many
                        containers that it's already being used */
                     i = (i <= 'i' - 'a' && !flags.lootabc) ? 'i' : 0;
                     add_menu(win, &nul_glyphinfo, &any, i, 0, ATR_NONE,
-                             "tip something being carried", MENU_ITEMFLAGS_SELECTED);
+                             "tip something being carried",
+                             MENU_ITEMFLAGS_SELECTED);
                 }
                 end_menu(win, "Tip which container?");
                 n = select_menu(win, PICK_ONE, &pick_list);
@@ -3178,8 +3206,8 @@ dotip(void)
                     if (!Is_container(cobj))
                         continue;
                     c = ynq(safe_qbuf(qbuf, "There is ", " here, tip it?",
-                                      cobj,
-                                      doname, ansimpleoname, "container"));
+                                      cobj, doname, ansimpleoname,
+                                      "container"));
                     if (c == 'q')
                         return 0;
                     if (c == 'n')
@@ -3260,6 +3288,11 @@ tipcontainer(struct obj *box) /* or bag */
     if (get_obj_location(box, &ox, &oy, 0))
         box->ox = ox, box->oy = oy;
 
+    if(BAG_OF_SHARING == box->otyp)
+    {
+        bag_of_sharing_sync(box);
+    }
+
     /* Shop handling:  can't rely on the container's own unpaid
        or no_charge status because contents might differ with it.
        A carried container's contents will be flagged as unpaid
@@ -3309,9 +3342,9 @@ tipcontainer(struct obj *box) /* or bag */
 
         if (box->spe < old_spe) {
             if (bag)
-                pline((seen == 0) ? "Nothing seems to happen."
-                                  : (seen == 1) ? "A monster appears."
-                                                : "Monsters appear!");
+                pline((seen == 0)   ? "Nothing seems to happen."
+                      : (seen == 1) ? "A monster appears."
+                                    : "Monsters appear!");
             /* check_unpaid wants to see a non-zero charge count */
             box->spe = old_spe;
             check_unpaid_usage(box, TRUE);
@@ -3340,8 +3373,8 @@ tipcontainer(struct obj *box) /* or bag */
     if (empty_it) {
         struct obj *otmp, *nobj;
         boolean terse, highdrop = !can_reach_floor(TRUE),
-                altarizing = IS_ALTAR(levl[ox][oy].typ),
-                cursed_mbag = (Is_mbag(box) && box->cursed);
+                       altarizing = IS_ALTAR(levl[ox][oy].typ),
+                       cursed_mbag = (Is_mbag(box) && box->cursed);
         int held = carried(box);
         long loss = 0L;
 
