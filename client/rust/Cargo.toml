@@ -1,0 +1,23 @@
+[package]
+name = "nh2021"
+version = "0.1.0"
+authors = ["Karl Bergström <karl.anton.bergstrom@gmail.com>"]
+edition = "2018"
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["staticlib", "rlib"]
+
+[[bin]]
+name = "connect_test"
+path = "src/main.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+prost = "0.7"
+prost-types = "0.7"
+nethack-rs = { path = "nethack-rs" }
+
+[build-dependencies]
+prost-build = { version = "0.7" }
