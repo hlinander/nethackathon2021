@@ -1455,6 +1455,15 @@ goto_level(d_level *newlevel, boolean at_stairs, boolean falling, boolean portal
             impossible("goto_level: returning to discarded level?");
             g.level_info[new_ledger].flags &= ~(VISITED);
         }
+        if(0 == newlevel->dnum || 1 == newlevel->dnum)
+        {
+            //
+            // Main dungeon or gehennom
+            //
+            char buf[32];
+            sprintf(buf, "%d", depth(&u.uz));
+            task_complete("reach", buf);
+        }
         mklev();
         new = TRUE; /* made the level */
 

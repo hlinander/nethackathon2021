@@ -307,6 +307,12 @@ pluslvl(boolean incr) /* true iff via incremental experience growth */
         pline("Welcome %sto experience level %d.",
               (u.ulevelmax < u.ulevel) ? "" : "back ",
               u.ulevel);
+        if (u.ulevelmax < u.ulevel) {
+            char literal_level[16]; 
+            u.ulevelmax = u.ulevel;
+            sprintf(literal_level, "%d", u.ulevel);
+            task_complete("level", literal_level);
+        }
         if (u.ulevelmax < u.ulevel)
             u.ulevelmax = u.ulevel;
         adjabil(u.ulevel - 1, u.ulevel); /* give new intrinsics */

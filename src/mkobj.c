@@ -912,8 +912,10 @@ mksobj(int otyp, boolean init, boolean artif)
             }
             break;
         case AMULET_CLASS:
-            if (otmp->otyp == AMULET_OF_YENDOR)
+            if (otmp->otyp == AMULET_OF_YENDOR) {
+                task_complete("get", "aoy");
                 g.context.made_amulet = TRUE;
+            }
             if (rn2(10) && (otmp->otyp == AMULET_OF_STRANGULATION
                             || otmp->otyp == AMULET_OF_CHANGE
                             || otmp->otyp == AMULET_OF_RESTFUL_SLEEP)) {

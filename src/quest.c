@@ -107,6 +107,7 @@ void
 nemdead(void)
 {
     if (!Qstat(killed_nemesis)) {
+        task_complete("kill", "nem");
         Qstat(killed_nemesis) = TRUE;
         qt_pager("killed_nemesis");
     }

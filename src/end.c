@@ -1129,6 +1129,11 @@ artifact_score(struct obj *list,
 void
 done(int how)
 {
+    if(ASCENDED == how)
+    {
+        task_complete("ascend", NULL);
+    }
+
     boolean survive = FALSE;
 
     if (how == TRICKED) {

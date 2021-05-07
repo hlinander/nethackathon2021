@@ -757,6 +757,9 @@ void
 wizdead(void)
 {
     g.context.no_of_wizards--;
+    if(0 == g.context.no_of_wizards) {
+        task_complete("kill", "wizard");
+    }
     if (!u.uevent.udemigod) {
         u.uevent.udemigod = TRUE;
         u.udg_cnt = rn1(250, 50);

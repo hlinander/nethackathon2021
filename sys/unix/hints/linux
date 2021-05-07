@@ -52,7 +52,7 @@ WINLIB = $(WINTTYLIB) $(WINCURSESLIB)
 #WINSRC += tile.c
 #WINOBJ += tile.o
 
-WINTTYLIB=-lncurses -ltinfo
+WINTTYLIB=-L../../rust/target/debug/ -lncurses -ltinfo -pthread -ldl -lnh2021
 
 CHOWN=true
 CHGRP=true

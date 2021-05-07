@@ -826,10 +826,12 @@ addinv_core1(struct obj *obj)
     /* "special achievements"; revealed in end of game disclosure and
        dumplog, originally just recorded in XLOGFILE */
     if (is_mines_prize(obj)) {
+        task_complete("complete", "mine");
         record_achievement(ACH_MINE_PRIZE);
         g.context.achieveo.mines_prize_oid = 0; /* done with luckstone o_id */
         obj->nomerge = 0;
     } else if (is_soko_prize(obj)) {
+        task_complete("complete", "soko");
         record_achievement(ACH_SOKO_PRIZE);
         g.context.achieveo.soko_prize_oid = 0; /* done with bag/amulet o_id */
         obj->nomerge = 0;
