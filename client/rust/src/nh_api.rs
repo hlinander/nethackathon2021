@@ -2,9 +2,12 @@ use crate::ipc::{Error, Ipc, Result};
 use crate::nh_proto::ObjData;
 use core::ptr::null_mut;
 use nethack_rs::obj;
-use std::{ffi::CStr, os::raw::c_long};
 use std::ptr::null;
 use std::{cell::RefCell, os::raw::c_char};
+use std::{
+    ffi::{CStr, CString},
+    os::raw::c_long,
+};
 
 static mut IPC: Option<RefCell<Ipc>> = None;
 static mut PLAYER_LOGIN_ID: Option<i32> = None;
@@ -44,6 +47,7 @@ fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
                     IPC = None;
                 }
                 // reconnect IPC
+                drop(ipc_ref);
                 ipc_ref = ipc();
             }
             Err(e) => return Err(e),
@@ -154,5 +158,10 @@ pub unsafe extern "C" fn task_complete(category: *const c_char, name: *const c_c
         let name = CStr::from_ptr(name);
         format!("{}_{}", category.to_string_lossy(), name.to_string_lossy())
     };
-    let _reward = until_io_success(|ipc| ipc.task_complete(task_name.to_string()));
+    let reward = until_io_success(|ipc| ipc.task_complete(task_name.to_string()));
+    if let Err(e) = reward {
+        let result_line = format!("{:?}", e);
+        let c_str = CString::new(result_line).unwrap();
+        nethack_rs::pline(c_str.as_ptr());
+    }
 }
