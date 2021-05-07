@@ -65,14 +65,14 @@ pub unsafe extern "C" fn bag_of_sharing_add(o: *mut obj) {
     };
     let obj_data = ObjData {
         otyp: o.otyp as i32,
-        quan: o.quan,
+        quan: o.quan as i32,
         spe: o.spe as i32,
         oclass: o.oclass as i32,
         bitflags: o._bitfield_1.get(0, 32),
         corpsenm: o.corpsenm,
         usecount: o.usecount,
         oeaten: o.oeaten,
-        age: o.age,
+        age: o.age as i32,
         name: name.into(),
     };
 
@@ -110,8 +110,8 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
             continue;
         }
         let obj = &mut *obj_ptr;
-        obj.dbid = dbid;
-        obj.quan = obj_data.quan;
+        obj.dbid = dbid as i64;
+        obj.quan = obj_data.quan as i64;
 
         obj.spe = obj_data.spe as i8;
         obj.oclass = obj_data.oclass as i8;
@@ -119,7 +119,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
         obj.corpsenm = obj_data.corpsenm;
         obj.usecount = obj_data.usecount;
         obj.oeaten = obj_data.oeaten;
-        obj.age = obj_data.age;
+        obj.age = obj_data.age as i64;
         obj.owt = nethack_rs::weight(obj) as u32;
         obj.where_ = nethack_rs::OBJ_CONTAINED as i8;
         obj.v.v_ocontainer = bag_ptr;
@@ -136,7 +136,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_remove(o: *mut obj) -> i32 {
     let o = &*o;
-    let success = until_success(|ipc| ipc.bag_remove(o.dbid));
+    let success = until_success(|ipc| ipc.bag_remove(o.dbid as i32));
     if success {
         0
     } else {
