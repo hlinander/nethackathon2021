@@ -1,23 +1,51 @@
 use crate::nh_proto;
 use nh_proto::event::Msg;
 use prost::Message;
-use std::io::{Read, Result, Write};
+use std::io::{Read, Write};
 use std::net::TcpStream;
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug)]
+pub enum Error {
+    IO(std::io::Error),
+    Status(nh_proto::Status),
+    EncodeError(prost::EncodeError),
+    DecodeError(prost::DecodeError),
+}
+
+impl From<std::io::Error> for Error {
+    fn from(e: std::io::Error) -> Self {
+        Error::IO(e)
+    }
+}
+
+impl From<prost::EncodeError> for Error {
+    fn from(e: prost::EncodeError) -> Self {
+        Error::EncodeError(e)
+    }
+}
+
+impl From<prost::DecodeError> for Error {
+    fn from(e: prost::DecodeError) -> Self {
+        Error::DecodeError(e)
+    }
+}
 
 pub struct Ipc {
     stream: TcpStream,
 }
 impl Ipc {
     pub fn new() -> Result<Self> {
-        let stream = std::net::TcpStream::connect("192.168.1.148:8001")?;
+        let stream = std::net::TcpStream::connect("nethack2021.hampe.nu:8001")?;
         Ok(Self { stream })
     }
 
     pub fn auth(&mut self, id: i32) -> Result<bool> {
         let req = nh_proto::Login { player_id: id };
         self.send_event(Msg::Login(req))?;
-        let read_response = self.read_message::<nh_proto::LoginStatus>()?;
-        Ok(read_response.success)
+        let response = self.read_message::<nh_proto::LoginStatus>()?;
+        Ok(response.success)
     }
 
     fn read_msg_size(&mut self) -> Result<u32> {
@@ -46,22 +74,30 @@ impl Ipc {
     pub fn get_clan(&mut self) -> Result<nh_proto::Clan> {
         let req = nh_proto::RequestClan {};
         self.send_event(Msg::RequestClan(req))?;
-        let read_response = self.read_message::<nh_proto::Clan>()?;
-        Ok(read_response)
+        let response = self.read_message::<nh_proto::Clan>()?;
+        Ok(response)
     }
 
     pub fn get_bag(&mut self) -> Result<Vec<(i32, nh_proto::ObjData)>> {
         let req = nh_proto::BagInventory {};
         self.send_event(Msg::BagInventory(req))?;
-        let read_response = self.read_message::<nh_proto::Bag>()?;
+        let response = self.read_message::<nh_proto::Bag>()?;
         let mut items = Vec::new();
-        for item in read_response.items {
+        for item in response.items {
             let obj_data = nh_proto::ObjData::decode(&*item.item)?;
-            // println!("obj_data {:?}_____{:?}", item.item.iter().map(|i| format!("{:x}", i)),obj_data);
             items.push((item.id, obj_data));
         }
-        // println!("items {:?}", items);
         Ok(items)
+    }
+
+    fn read_response<T: Message + Default>(&mut self) -> Result<T> {
+        let status = self.read_message::<nh_proto::Status>()?;
+        if status.code == 0 {
+            let response = self.read_message::<T>()?;
+            Ok(response)
+        } else {
+            Err(Error::Status(status))
+        }
     }
 
     pub fn bag_add(&mut self, item: &nh_proto::ObjData) -> Result<bool> {
@@ -74,8 +110,8 @@ impl Ipc {
             }),
         };
         self.send_event(Msg::InsertItem(req))?;
-        let read_response = self.read_message::<nh_proto::RetrieveItemStatus>()?;
-        Ok(read_response.success)
+        let result = self.read_message::<nh_proto::RetrieveItemStatus>()?;
+        Ok(result.success)
     }
 
     pub fn bag_remove(&mut self, item_id: i32) -> Result<bool> {
@@ -86,7 +122,14 @@ impl Ipc {
             }),
         };
         self.send_event(Msg::RetrieveItem(req))?;
-        let read_response = self.read_message::<nh_proto::RetrieveItemStatus>()?;
-        Ok(read_response.success)
+        let response = self.read_message::<nh_proto::RetrieveItemStatus>()?;
+        Ok(response.success)
+    }
+
+    pub fn task_complete(&mut self, objective_name: String) -> Result<nh_proto::Reward> {
+        let req = nh_proto::CompleteTask { objective_name };
+        self.send_event(Msg::CompleteTask(req))?;
+        let response = self.read_response::<nh_proto::Reward>()?;
+        Ok(response)
     }
 }

@@ -1,9 +1,10 @@
-use crate::ipc::Ipc;
+use crate::ipc::{Error, Ipc, Result};
 use crate::nh_proto::ObjData;
 use core::ptr::null_mut;
 use nethack_rs::obj;
-use std::cell::RefCell;
-use std::io::Result;
+use std::{ffi::CStr, os::raw::c_long};
+use std::ptr::null;
+use std::{cell::RefCell, os::raw::c_char};
 
 static mut IPC: Option<RefCell<Ipc>> = None;
 static mut PLAYER_LOGIN_ID: Option<i32> = None;
@@ -32,12 +33,12 @@ fn debug_print(f: String) {
     unsafe { nethack_rs::pline(c_str.as_ptr()) };
 }
 
-fn until_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> R {
+fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
     loop {
         let mut ipc_ref = ipc();
         match f(&mut *ipc_ref) {
-            Ok(r) => return r,
-            Err(_) => {
+            Ok(r) => return Ok(r),
+            Err(Error::IO(_)) | Err(Error::DecodeError(_)) => {
                 // clear IPC
                 unsafe {
                     IPC = None;
@@ -45,6 +46,7 @@ fn until_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> R {
                 // reconnect IPC
                 ipc_ref = ipc();
             }
+            Err(e) => return Err(e),
         }
     }
 }
@@ -76,7 +78,7 @@ pub unsafe extern "C" fn bag_of_sharing_add(o: *mut obj) {
         name: name.into(),
     };
 
-    until_success(|ipc| ipc.bag_add(&obj_data));
+    let _ = until_io_success(|ipc| ipc.bag_add(&obj_data));
 }
 
 #[no_mangle]
@@ -93,8 +95,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync_all() {
 
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
-    let items = until_success(|ipc| ipc.get_bag());
-    // debug_print(format!("sync bag {:?}", items));
+    let items = until_io_success(|ipc| ipc.get_bag()).expect("sync error");
 
     let mut bag = &mut *bag_ptr;
     let mut otmp = null_mut();
@@ -110,8 +111,8 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
             continue;
         }
         let obj = &mut *obj_ptr;
-        obj.dbid = dbid as i64;
-        obj.quan = obj_data.quan as i64;
+        obj.dbid = dbid as c_long;
+        obj.quan = obj_data.quan as c_long;
 
         obj.spe = obj_data.spe as i8;
         obj.oclass = obj_data.oclass as i8;
@@ -119,7 +120,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
         obj.corpsenm = obj_data.corpsenm;
         obj.usecount = obj_data.usecount;
         obj.oeaten = obj_data.oeaten;
-        obj.age = obj_data.age as i64;
+        obj.age = obj_data.age as c_long;
         obj.owt = nethack_rs::weight(obj) as u32;
         obj.where_ = nethack_rs::OBJ_CONTAINED as i8;
         obj.v.v_ocontainer = bag_ptr;
@@ -136,10 +137,22 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_remove(o: *mut obj) -> i32 {
     let o = &*o;
-    let success = until_success(|ipc| ipc.bag_remove(o.dbid as i32));
+    let success = until_io_success(|ipc| ipc.bag_remove(o.dbid as i32)).expect("remove error");
     if success {
         0
     } else {
         1
     }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn task_complete(category: *const c_char, name: *const c_char) {
+    let category = CStr::from_ptr(category);
+    let task_name = if name == null() {
+        category.to_string_lossy().to_string()
+    } else {
+        let name = CStr::from_ptr(name);
+        format!("{}_{}", category.to_string_lossy(), name.to_string_lossy())
+    };
+    let _reward = until_io_success(|ipc| ipc.task_complete(task_name.to_string()));
 }
