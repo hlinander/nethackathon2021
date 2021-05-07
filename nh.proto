@@ -38,7 +38,7 @@ message Objective {
   int32 reward = 2;
 }
 
-message CompleteTask { string objective_name = 2; }
+message CompleteTask { string objective_name = 1; }
 
 message Reward {
   int32 reward = 1;
@@ -52,17 +52,17 @@ message Status {
 }
 
 message Event {
-  oneof msg {
-    RequestClan request_clan = 1;
-    Clan clan = 2;
-    Player player = 3;
-    Login login = 4;
-    BagInventory bag_inventory = 5;
-    BagItem bag_item = 6;
-    Bag bag = 7;
-    InsertItem insert_item = 8;
-    RetrieveItem retrieve_item = 9;
-    CompleteTask complete_task = 10;
-    Reward reward = 11;
-  }
+    oneof msg {
+        RequestClan request_clan = 1; 
+        Clan clan = 2; 
+        Player player = 3;
+        Login login = 4;
+        BagInventory bag_inventory = 5;
+        BagItem bag_item = 6;
+        Bag bag = 7;
+        InsertItem insert_item = 8;
+        RetrieveItem retrieve_item = 9;
+        CompleteTask complete_task = 10;
+        Reward reward = 11;
+    }
 }

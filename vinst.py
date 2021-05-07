@@ -4,6 +4,7 @@ import struct
 import nh_pb2
 import db
 from sqlalchemy.sql import func
+import argparse
 #from db import Player DBPlayer, Clan as DBClan, open_db
 
 ep = select.epoll()
@@ -19,9 +20,20 @@ connections = {}
 
 db.open_db()
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--reset-db", action="store_true")
+    return parser.parse_args()
+
 def parse_complete_task(connection, complete_task):
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
     objective = db.session.query(db.Objective).filter_by(name=complete_task.objective_name).first()
+    status = nh_pb2.Status()
+    if objective is None:
+        status.code = 1
+        status.error_message = "No such objective"
+        return [status]
+
     rewards = db.session.query(db.Reward).filter_by(
         objective=objective.id,
         player=player.id)
@@ -32,12 +44,14 @@ def parse_complete_task(connection, complete_task):
     total_reward = db.session.query(func.sum(db.Reward.score)).filter_by(
         player=player.id)
 
+    status.code = 0
+
     pb_reward = nh_pb2.Reward()
     pb_reward.reward = decayed_reward
     pb_reward.total_reward = total_reward.scalar() if total_reward.scalar() is not None else 0
     pb_reward.objective = objective.name
 
-    return pb_reward
+    return [status, pb_reward]
 
 
 def parse_insert_item(connection, insert_item):
@@ -52,7 +66,7 @@ def parse_insert_item(connection, insert_item):
     status = nh_pb2.RetrieveItemStatus()
     status.item.id = insert_item.item.id
     status.success = True
-    return status
+    return [status]
     
 
 def parse_retrieve_item(connection, retrieve_item):
@@ -66,7 +80,7 @@ def parse_retrieve_item(connection, retrieve_item):
     else:
         status.success = False
 
-    return status
+    return [status]
     
 
 def parse_bag_inventory(connection, bag_inventory):
@@ -81,7 +95,7 @@ def parse_bag_inventory(connection, bag_inventory):
         items.append(bag_item)
     bag.items.extend(items)
     print(bag)
-    return bag
+    return [bag]
 
 
 def parse_request_clan(connection, request_clan):
@@ -94,14 +108,14 @@ def parse_request_clan(connection, request_clan):
         np.username = p.username
         players.append(np)
     clan.players.extend(players)
-    return clan
+    return [clan]
 
 def parse_login(connection, login):
     connection["player_id"] = login.player_id
     status = nh_pb2.LoginStatus()
     status.success = True
     status.player_id = login.player_id
-    return status
+    return [status]
 
 dispatch = {
     "request_clan": parse_request_clan,
@@ -144,6 +158,17 @@ def parse_packet(connection, data):
 # e.complete_task.objective_name = "killed_gridbug"
 # parse_packet(e.SerializeToString())
 
+e = nh_pb2.Event()
+e.login.player_id = 1
+parse_packet(dict(player_id=1), e.SerializeToString())
+e = nh_pb2.Event()
+e.complete_task.objective_name = "killed_gridbug"
+print(parse_packet(dict(player_id=1), e.SerializeToString()))
+
+args = parse_args()
+if args.reset_db:
+    db.init_db()
+
 while True:
     events = ep.poll(1)
 
@@ -165,9 +190,10 @@ while True:
             if len(connections[fileno]["buffer"]) > 4:
                 size = struct.unpack("<I", connections[fileno]["buffer"][:4])[0]
                 if len(connections[fileno]["buffer"][4:]) >= size:
-                    response = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])
+                    responses = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])
                     db.session.commit()
-                    response_data = response.SerializeToString()
-                    connections[fileno]["conn"].send(struct.pack("<I", len(response_data)))
-                    connections[fileno]["conn"].send(response_data)
+                    for response in responses:
+                        response_data = response.SerializeToString()
+                        connections[fileno]["conn"].send(struct.pack("<I", len(response_data)))
+                        connections[fileno]["conn"].send(response_data)
                     connections[fileno]["buffer"] = connections[fileno]["buffer"][4 + size:]
