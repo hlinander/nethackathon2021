@@ -21,6 +21,12 @@ void task_complete(const char *category, const char *name);
 
 int32_t open_lootbox(int32_t rarity);
 
+void get_clan_powers_delta(team_bonus *bonus);
+
 void get_clan_powers(team_bonus *bonus);
+
+void save_equipment(obj *item);
+
+void load_saved_equipments(void (*callback)(obj*));
 
 #undef obj

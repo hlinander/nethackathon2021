@@ -30,6 +30,51 @@ early_init(void)
     sys_early_init();
 }
 
+static void update_clan_powers(void)
+{
+    team_bonus bonus;
+    memset(&bonus, 0, sizeof(bonus));
+
+    get_clan_powers_delta(&bonus);
+
+    int i;
+    int changed = 0;
+
+    if(bonus.hp || bonus.pw)
+    {
+        u.uhpmax += bonus.hp;
+        u.uenmax += bonus.pw;
+        changed = 1;
+    }
+    if(bonus.ac)
+    {
+        find_ac();
+        changed = 1;
+    }
+
+    for(i = 0; i < A_MAX; ++i)
+    {
+        if(0 != bonus.stats[i])
+        {
+            ABASE(i) += bonus.stats[i];
+            AMAX(i) += bonus.stats[i];
+
+            if(ABASE(i) > ATTRMAX(i))
+            {
+                ABASE(i) = ATTRMAX(i);
+                AMAX(i) = ATTRMAX(i);
+            }
+            changed = 1;
+        }
+    }
+
+    if(changed)
+    {
+        pline("Your team is more powerful!");
+        g.context.botl = 1;
+    }
+}
+
 static uint64_t next_ad = 0;
 
 static void deliver_ads(void)
@@ -130,6 +175,8 @@ moveloop(boolean resuming)
         if (g.context.move) {
             deliver_ads();
             bag_of_sharing_sync_all();
+            update_clan_powers();           
+
             /* actual time passed */
             g.youmonst.movement -= NORMAL_SPEED;
 

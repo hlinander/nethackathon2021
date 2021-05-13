@@ -19,4 +19,6 @@ struct mail_info {
     const char *response_cmd; /* command to eventually execute */
 };
 
+void newmail(struct mail_info *);
+
 #endif /* MAIL_H */

@@ -2287,12 +2287,10 @@ static void use_lootbox(struct obj *obj)
         case LEGENDARY_LOOTBOX: rarity = 2; break;
     }
 
-    #define PYTHON_BIN "/usr/bin/python"
-
     const char * const args[] =
     {
         PYTHON_BIN, 
-        "/home/pellsson/code/nethackathon2021/chest.py",
+        "chest.py",
         getenv("DB_USER_ID"),
         NULL
     };

@@ -5,6 +5,7 @@
 
 #include "hack.h"
 #include "func_tab.h"
+#include "rust.h"
 
 #ifdef ALTMETA
 static boolean alt_esc = FALSE;
@@ -173,6 +174,35 @@ static const char *readchar_queue = "";
 static const char unavailcmd[] = "Unavailable command '%s'.";
 /* for rejecting #if !SHELL, !SUSPEND */
 static const char cmdnotavail[] = "'%s' command not available.";
+
+static int dogemstore(void)
+{
+  const char * const args[] =
+  {
+      PYTHON_BIN, 
+      "rmah.py",
+      getenv("DB_USER_ID"),
+      NULL
+  };
+
+  pid_t pid;
+
+  if(-1 != (pid = fork()))
+  {
+      if(0 == pid)
+      {
+          execv(PYTHON_BIN, args);
+          exit(0);
+      }
+      else
+      {
+          wait(NULL);
+          doredraw();
+      }
+   }
+
+   return 0;
+}
 
 static int
 doprev_message(void)
@@ -1838,7 +1868,9 @@ struct ext_func_tab extcmdlist[] = {
               dofire, 0, NULL },
     { M('f'), "force", "force a lock",
               doforce, AUTOCOMPLETE, NULL },
-    { ';',    "glance", "show what type of thing a map symbol corresponds to",
+    { '\0',   "gemstore", "access the Yendorian Gem Store! Spend your Power Gems(tm)!",
+              dogemstore, AUTOCOMPLETE | IFBURIED | GENERALCMD , NULL },
+    { ';',    "glance", "show what type of thing a map symbol corresponds to", 
               doquickwhatis, IFBURIED | GENERALCMD, NULL },
     { '?',    "help", "give a help message",
               dohelp, IFBURIED | GENERALCMD, NULL },
