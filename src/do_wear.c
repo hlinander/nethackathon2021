@@ -2154,6 +2154,9 @@ doputon(void)
 void
 find_ac(void)
 {
+    struct team_bonus bonus;
+    get_team_bonus(&bonus);
+
     int uac = mons[u.umonnum].ac; /* base armor class for current form */
 
     /* armor class from worn gear */
@@ -2182,6 +2185,7 @@ find_ac(void)
     if (HProtection & INTRINSIC)
         uac -= u.ublessed;
     uac -= u.uspellprot;
+    uac -= bonus.ac;
 
     /* put a cap on armor class [3.7: was +127,-128, now reduced to +/- 99 */
     if (abs(uac) > AC_MAX)

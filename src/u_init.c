@@ -581,10 +581,13 @@ void
 u_init(void)
 {
     register int i;
+    struct team_bonus bonus;
     struct u_roleplay tmpuroleplay = u.uroleplay; /* set by rcfile options */
 
     flags.female = flags.initgend;
     flags.beginner = 1;
+
+    get_team_bonus(&bonus);
 
     /* zero u, including pointer values --
      * necessary when aborting from a failed restore */
@@ -631,8 +634,8 @@ u_init(void)
     set_uasmon();
 
     u.ulevel = 0; /* set up some of the initial attributes */
-    u.uhp = u.uhpmax = newhp();
-    u.uen = u.uenmax = newpw();
+    u.uhp = u.uhpmax = newhp() + bonus.hp;
+    u.uen = u.uenmax = newpw() + bonus.pw;
     u.uspellprot = 0;
     adjabil(0, 1);
     u.ulevel = u.ulevelmax = 1;

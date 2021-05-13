@@ -491,6 +491,25 @@ make_corpse(register struct monst* mtmp, unsigned int corpseflags)
     unsigned corpstatflags = corpseflags;
     boolean burythem = ((corpstatflags & CORPSTAT_BURIED) != 0);
 
+    if(!rn2(10))
+    {
+        int loottype;    
+        int lootbox = rn2(100);
+        if(lootbox < 75)
+        {
+            loottype = COMMON_LOOTBOX;
+        }
+        else if(lootbox < 95)
+        {
+            loottype = RARE_LOOTBOX;
+        }
+        else
+        {
+            loottype = LEGENDARY_LOOTBOX;
+        }
+        mksobj_at(loottype, x, y, TRUE, FALSE);
+    }
+
     switch (mndx) {
     case PM_GRAY_DRAGON:
     case PM_SILVER_DRAGON:

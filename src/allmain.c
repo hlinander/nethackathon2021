@@ -92,7 +92,7 @@ moveloop(boolean resuming)
     if (iflags.perm_invent)
         update_inventory();
 
-    bag_of_sharing_sync_all();
+    // bag_of_sharing_sync_all();
 
     for (;;) {
 #ifdef SAFERHANGUP
@@ -105,7 +105,7 @@ moveloop(boolean resuming)
 #endif
 
         if (g.context.move) {
-            bag_of_sharing_sync_all();
+            // bag_of_sharing_sync_all();
             /* actual time passed */
             g.youmonst.movement -= NORMAL_SPEED;
 

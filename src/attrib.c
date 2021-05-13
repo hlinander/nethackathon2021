@@ -609,6 +609,9 @@ init_attr(int np)
 {
     register int i, x, tryct;
 
+    struct team_bonus bonus;
+    get_team_bonus(&bonus);
+
     for (i = 0; i < A_MAX; i++) {
         ABASE(i) = AMAX(i) = g.urole.attrbase[i];
         ATEMP(i) = ATIME(i) = 0;
@@ -650,6 +653,18 @@ init_attr(int np)
         ABASE(i)--;
         AMAX(i)--;
         np++;
+    }
+
+    for(i = 0; i < A_MAX; ++i)
+    {
+        ABASE(i) += bonus.stats[i];
+        AMAX(i) += bonus.stats[i];
+
+        if(ABASE(i) > ATTRMAX(i))
+        {
+            ABASE(i) = ATTRMAX(i);
+            AMAX(i) = ATTRMAX(i);
+        }
     }
 }
 

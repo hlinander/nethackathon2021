@@ -2274,6 +2274,48 @@ figurine_location_checks(struct obj *obj, coord *cc, boolean quietly)
     return TRUE;
 }
 
+static void use_lootbox(struct obj *obj)
+{
+    pid_t pid;
+    int rarity = 0;
+
+    switch(obj->otyp)
+    {
+        case COMMON_LOOTBOX:    rarity = 0; break;
+        case RARE_LOOTBOX:      rarity = 1; break;
+        case LEGENDARY_LOOTBOX: rarity = 2; break;
+    }
+
+    #define PYTHON_BIN "/usr/bin/python"
+
+    const char * const args[] =
+    {
+        PYTHON_BIN, 
+        "/home/pellsson/code/nethackathon2021/chest.py"
+    };
+
+    if(-1 != (pid = fork()))
+    {
+        if(0 == pid)
+        {
+            execv(PYTHON_BIN, args);
+        }
+        else
+        {
+            wait();
+        }
+     }
+
+    pline("Your team was rewarded %d power gems!", open_lootbox(rarity));
+
+    if (carried(obj)) {
+        useup(obj);
+    } else {
+        obj_extract_self(obj);
+        obfree(obj, (struct obj *) 0);
+    }
+}
+
 static void
 use_figurine(struct obj **optr)
 {
@@ -3734,6 +3776,11 @@ doapply(void)
         return flip_through_book(obj);
 
     switch (obj->otyp) {
+        case COMMON_LOOTBOX:
+        case RARE_LOOTBOX:
+        case LEGENDARY_LOOTBOX:
+            use_lootbox(obj);
+            break;
     case BLINDFOLD:
     case LENSES:
         if (obj == ublindf) {

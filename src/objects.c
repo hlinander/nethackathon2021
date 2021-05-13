@@ -706,6 +706,10 @@ TOOL("bell",                None, 1, 0, 0, 0,  2, 30, 50, COPPER, HI_COPPER),
 TOOL("bugle",               None, 1, 0, 0, 0,  4, 10, 15, COPPER, HI_COPPER),
 TOOL("leather drum",      "drum", 0, 0, 0, 0,  4, 25, 25, LEATHER, HI_LEATHER),
 TOOL("drum of earthquake","drum", 0, 0, 1, 1,  2, 25, 25, LEATHER, HI_LEATHER),
+
+TOOL("common lootbox", None, 1, 0, 1, 0, 0, 100, 50, WOOD, CLR_WHITE),
+TOOL("rare lootbox", None, 1, 0, 1, 0, 0, 100, 50, WOOD, CLR_BLUE),
+TOOL("legendary lootbox", None, 1, 0, 1, 0, 0, 100, 50, WOOD, CLR_BRIGHT_MAGENTA),
 /* tools useful as weapons */
 WEPTOOL("pick-axe", None,
         1, 0, 0, 20, 100,  50,  6,  3, WHACK,  P_PICK_AXE, IRON, HI_METAL),
