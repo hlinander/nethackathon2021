@@ -132,4 +132,18 @@ impl Ipc {
         let response = self.read_response::<nh_proto::Reward>()?;
         Ok(response)
     }
+
+    pub fn open_lootbox(&mut self, rarity: i32) -> Result<nh_proto::Reward> {
+        let req = nh_proto::OpenLootbox { rarity };
+        self.send_event(Msg::OpenLootbox(req))?;
+        let response = self.read_response::<nh_proto::Reward>()?;
+        Ok(response)
+    }
+
+    pub fn get_clan_powers(&mut self) -> Result<nh_proto::ClanPowers> {
+        let req = nh_proto::RetrieveClanPowers { };
+        self.send_event(Msg::ClanPowers(req))?;
+        let response = self.read_response::<nh_proto::ClanPowers>()?;
+        Ok(response)
+    }
 }

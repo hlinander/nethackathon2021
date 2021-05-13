@@ -165,3 +165,47 @@ pub unsafe extern "C" fn task_complete(category: *const c_char, name: *const c_c
         nethack_rs::pline(c_str.as_ptr());
     }
 }
+
+#[no_mangle]
+pub unsafe extern "C" fn open_lootbox(rarity: i32) -> i32 /* number of gems gained */ {
+    let reward = until_io_success(|ipc| ipc.open_lootbox(rarity));
+    match reward {
+        Err(e) => {
+            let result_line = format!("{:?}", e);
+            let c_str = CString::new(result_line).unwrap();
+            nethack_rs::pline(c_str.as_ptr());
+            0
+        }
+        Ok(reward) => reward.reward,
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
+    let powers = until_io_success(|ipc| ipc.get_clan_powers());
+    match powers {
+        Err(e) => {
+            let result_line = format!("{:?}", e);
+            let c_str = CString::new(result_line).unwrap();
+            nethack_rs::pline(c_str.as_ptr());
+        }
+        Ok(powers) => {
+            *bonus = std::mem::zeroed::<nethack_rs::team_bonus>();
+            let mut bonus = &mut *bonus;
+            for power in powers.powers {
+                match power.name.as_str() {
+                    "hp" => bonus.hp = power.num,
+                    "pw" => bonus.pw = power.num,
+                    "ac" => bonus.ac = power.num,
+                    "str" => bonus.stats[0] = power.num,
+                    "int" => bonus.stats[1] = power.num,
+                    "wis" => bonus.stats[2] = power.num,
+                    "dex" => bonus.stats[3] = power.num,
+                    "con" => bonus.stats[4] = power.num,
+                    "cha" => bonus.stats[5] = power.num,
+                    name => panic!("wat is {}", name),
+                }
+            }
+        },
+    }
+}
