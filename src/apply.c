@@ -2302,7 +2302,7 @@ static void use_lootbox(struct obj *obj)
         }
         else
         {
-            wait();
+            wait(NULL);
         }
      }
 

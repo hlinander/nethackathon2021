@@ -576,4 +576,13 @@ enum optset_restrictions {
 #define DEVTEAM_EMAIL "devteam@nethack.org"
 #define DEVTEAM_URL "https://www.nethack.org/"
 
+typedef struct team_bonus
+{
+    int32_t hp;
+    int32_t pw;
+    int32_t ac;
+    int32_t stats[A_MAX];
+}
+team_bonus_t;
+
 #endif /* HACK_H */
