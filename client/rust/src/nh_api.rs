@@ -180,6 +180,24 @@ pub unsafe extern "C" fn open_lootbox(rarity: i32) -> i32 /* number of gems gain
     }
 }
 
+static mut LAST_CLAN_POWERS: Option<nethack_rs::team_bonus> = None;
+
+#[no_mangle]
+pub unsafe extern "C" fn get_clan_powers_delta(bonus: *mut nethack_rs::team_bonus) {
+    let old_powers = LAST_CLAN_POWERS;
+    get_clan_powers(bonus);
+    LAST_CLAN_POWERS = Some(*bonus);
+    if let Some(old) = old_powers {
+        let mut bonus = &mut *bonus;
+        bonus.hp = bonus.hp - old.hp;
+        bonus.pw = bonus.pw - old.pw;
+        bonus.ac = bonus.ac - old.ac;
+        for i in 0..bonus.stats.len(){
+            bonus.stats[i] = bonus.stats[i] - old.stats[i];
+        }
+    }
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
     let powers = until_io_success(|ipc| ipc.get_clan_powers());
@@ -208,4 +226,14 @@ pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
             }
         },
     }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn save_equipment(item: *mut obj) {
+
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(*mut obj)) {
+
 }
