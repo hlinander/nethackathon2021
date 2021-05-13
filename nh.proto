@@ -40,6 +40,19 @@ message Objective {
 
 message CompleteTask { string objective_name = 1; }
 
+message OpenLootbox { int32 rarity = 1; }
+
+message ClanPower { 
+  string name = 1;
+  int32 num = 2;
+}
+
+message RetrieveClanPowers { }
+
+message ClanPowers {
+  repeated ClanPower powers = 1;
+}
+
 message Reward {
   int32 reward = 1;
   string objective = 2;
@@ -64,5 +77,7 @@ message Event {
         RetrieveItem retrieve_item = 9;
         CompleteTask complete_task = 10;
         Reward reward = 11;
+        OpenLootbox open_lootbox = 12;
+        RetrieveClanPowers clan_powers = 13;
     }
 }

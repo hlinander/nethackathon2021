@@ -21,6 +21,7 @@ class Clan(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     level = Column(Integer)
+    power_gems = Column(Integer)
 
 class Bag(Base):
     __tablename__ = "bags"
@@ -48,6 +49,12 @@ class Reward(Base):
     objective = Column(Integer, ForeignKey("objectives.id"))
     score = Column(Integer)
     timestamp = Column(DateTime, default=datetime.datetime.utcnow)
+
+class ClanPowers(Base):
+    __tablename__ = "clan_powers"
+    clan_id = Column(Integer, primary_key=True, ForeignKey("clan.id"))
+    name = Column(String, primary_key=True)
+    level = Column(Integer)
 
 # create table objectives(
 # 	id int not null auto_increment,

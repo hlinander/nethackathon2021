@@ -53,6 +53,64 @@ def parse_complete_task(connection, complete_task):
 
     return [status, pb_reward]
 
+def open_lootbox(connection, lootbox_req):
+    lootbox_rarity = lootbox_req.rarity
+    player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
+    status = nh_pb2.Status()
+    if player is None:
+        status.code = 1
+        status.error_message = "Player does not exist"
+        return [status]
+    clan = db.session.query(db.Clan).filter_by(id=player.clan).first()
+    if clan is None:
+        status.code = 2
+        status.error_message = "Clan does not exist"
+        return [status]
+    
+    new_gems = 0
+    if lootbox_rarity == 1:
+        new_gems = random.randint(5, 10)
+    elif lootbox_rarity == 2:
+        new_gems = random.randint(11, 30)
+    elif lootbox_rarity == 3:
+        new_gems = random.randint(40, 60)
+
+    clan.power_gems += new_gems
+    db.session.commit()
+
+    status = nh_pb2.Status()
+    status.code = 0
+
+    pb_reward = nh_pb2.Reward()
+    pb_reward.reward = new_gems
+    pb_reward.total_reward = clan.power_gems
+    pb_reward.objective = "power gems"
+
+    return [status, pb_reward]
+
+def get_clan_powers(connection, req):
+    player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
+    status = nh_pb2.Status()
+    if player is None:
+        status.code = 1
+        status.error_message = "Player does not exist"
+        return [status]
+    clan_powers = db.session.query(db.ClanPowers).filter_by(clan_id=player.clan)
+    
+    status = nh_pb2.Status()
+    status.code = 0
+
+    pb_clan_powers = nh_pb2.ClanPowers()
+    powers_list = []
+    for power in clan_powers:
+        power_item = nh_pb2.ClanPower()
+        power_item.name = power.name
+        power_item.level = power.level
+        powers_list.append(power_item)
+    pb_clan_powers.powers.extend(powers_list)
+
+    return [status, pb_clan_powers]
+
 
 def parse_insert_item(connection, insert_item):
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
@@ -123,7 +181,9 @@ dispatch = {
     "insert_item": parse_insert_item,
     "retrieve_item": parse_retrieve_item,
     "complete_task": parse_complete_task,
-    "login": parse_login
+    "login": parse_login,
+    "open_lootbox": open_lootbox,
+    "get_clan_powers": get_clan_powers
 }
 
 def parse_packet(connection, data):
@@ -157,6 +217,10 @@ def parse_packet(connection, data):
 # e.complete_task.player.username = "hej"
 # e.complete_task.objective_name = "killed_gridbug"
 # parse_packet(e.SerializeToString())
+
+e = nh_pb2.Event()
+e.clan_powers = nh_pb2.RetrieveClanPowers()
+parse_packet(e.SerializeToString())
 
 e = nh_pb2.Event()
 e.login.player_id = 1
