@@ -3648,7 +3648,7 @@ mergable(register struct obj *otmp, register struct obj *obj)
         return FALSE;
 
 #ifdef MAIL_STRUCTURES
-    if (obj->otyp == SCR_MAIL
+    if (obj->otyp == SCR_ADVERTISEMENT
         /* wished or bones mail and hand written stamped scrolls
            each have two flavors; spe keeps them separate from each
            other but we want to keep their flavors separate too */

@@ -125,7 +125,7 @@ resetobjs(struct obj *ochain, boolean restore)
             if (otmp->otyp == SLIME_MOLD) {
                 goodfruit(otmp->spe);
 #ifdef MAIL_STRUCTURES
-            } else if (otmp->otyp == SCR_MAIL) {
+            } else if (otmp->otyp == SCR_ADVERTISEMENT) {
                 /* 0: delivered in-game via external event;
                    1: from bones or wishing; 2: written with marker */
                 if (otmp->spe == 0)

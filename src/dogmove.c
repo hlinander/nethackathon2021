@@ -424,7 +424,7 @@ dog_invent(struct monst *mtmp, struct edog *edog, int udist)
         if ((obj = g.level.objects[omx][omy]) != 0
             && !index(nofetch, obj->oclass)
 #ifdef MAIL_STRUCTURES
-            && obj->otyp != SCR_MAIL
+            && obj->otyp != SCR_ADVERTISEMENT
 #endif
             ) {
             int edible = dogfood(mtmp, obj);

@@ -443,7 +443,7 @@ doread(void)
 
     confused = (Confusion != 0);
 #ifdef MAIL_STRUCTURES
-    if (otyp == SCR_MAIL) {
+    if (otyp == SCR_ADVERTISEMENT) {
         confused = FALSE; /* override */
         /* reading mail is a convenience for the player and takes
            place outside the game, so shouldn't affect gameplay;
@@ -950,7 +950,7 @@ seffects(struct obj *sobj) /* sobj - scroll or fake spellbook for spell */
 
     switch (otyp) {
 #ifdef MAIL_STRUCTURES
-    case SCR_MAIL: {
+    case SCR_ADVERTISEMENT: {
         boolean odd = (sobj->o_id % 2) == 1;
 
         g.known = TRUE;

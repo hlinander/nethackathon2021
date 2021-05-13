@@ -7,6 +7,7 @@
 
 #include "hack.h"
 #include "rust.h"
+#include "mail.h"
 #include <ctype.h>
 
 #ifndef NO_SIGNAL
@@ -27,6 +28,31 @@ early_init(void)
     objects_globals_init();
     monst_globals_init();
     sys_early_init();
+}
+
+static uint64_t next_ad = 0;
+
+static void deliver_ads(void)
+{
+    static struct mail_info deliver = {
+        MSG_MAIL, "", 0, 0
+    };
+
+    team_bonus bonus;
+    get_clan_powers(&bonus);
+
+    if(bonus.ads)
+    {
+        if(0 == next_ad)
+        {
+            newmail(&deliver);
+            next_ad = g.moves + 100;
+        }
+        else
+        {
+            --next_ad;
+        }
+    }
 }
 
 void
@@ -101,8 +127,8 @@ moveloop(boolean resuming)
 #ifdef POSITIONBAR
         do_positionbar();
 #endif
-
         if (g.context.move) {
+            deliver_ads();
             bag_of_sharing_sync_all();
             /* actual time passed */
             g.youmonst.movement -= NORMAL_SPEED;

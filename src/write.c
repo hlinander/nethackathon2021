@@ -19,7 +19,7 @@ cost(struct obj *otmp)
 
     switch (otmp->otyp) {
 #ifdef MAIL_STRUCTURES
-    case SCR_MAIL:
+    case SCR_ADVERTISEMENT:
         return 2;
 #endif
     case SCR_LIGHT:
@@ -342,7 +342,7 @@ found:
     new_obj->blessed = (curseval > 0);
     new_obj->cursed = (curseval < 0);
 #ifdef MAIL_STRUCTURES
-    if (new_obj->otyp == SCR_MAIL)
+    if (new_obj->otyp == SCR_ADVERTISEMENT)
         /* 0: delivered in-game via external event (or randomly for fake mail);
            1: from bones or wishing; 2: written with marker */
         new_obj->spe = 2;

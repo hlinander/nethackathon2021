@@ -6,6 +6,7 @@
 /* Contains code for 'd', 'D' (drop), '>', '<' (up, down) */
 
 #include "hack.h"
+#include "rust.h"
 
 static void trycall(struct obj *);
 static void polymorph_sink(void);

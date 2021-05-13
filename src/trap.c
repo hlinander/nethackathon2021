@@ -3872,7 +3872,7 @@ acid_damage(struct obj* obj)
     } else if (obj->oclass == SCROLL_CLASS && obj->otyp != SCR_BLANK_PAPER) {
         if (obj->otyp != SCR_BLANK_PAPER
 #ifdef MAIL_STRUCTURES
-            && obj->otyp != SCR_MAIL
+            && obj->otyp != SCR_ADVERTISEMENT
 #endif
             ) {
             if (!Blind) {
@@ -3951,7 +3951,7 @@ water_damage(
     } else if (obj->oclass == SCROLL_CLASS) {
         if (obj->otyp == SCR_BLANK_PAPER
 #ifdef MAIL_STRUCTURES
-            || obj->otyp == SCR_MAIL
+            || obj->otyp == SCR_ADVERTISEMENT
 #endif
            ) return 0;
         if (carried(obj))

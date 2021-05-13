@@ -930,7 +930,7 @@ mksobj(int otyp, boolean init, boolean artif)
         case POTION_CLASS: /* note: potions get some additional init below */
         case SCROLL_CLASS:
 #ifdef MAIL_STRUCTURES
-            if (otmp->otyp != SCR_MAIL)
+            if (otmp->otyp != SCR_ADVERTISEMENT)
 #endif
                 blessorcurse(otmp, 4);
             break;

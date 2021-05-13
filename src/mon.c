@@ -5,6 +5,7 @@
 
 #include "hack.h"
 #include "mfndpos.h"
+#include "rust.h"
 #include <ctype.h>
 
 static void sanity_check_single_mon(struct monst *, boolean,
@@ -2955,7 +2956,7 @@ xkilled(
 
 #ifdef MAIL_STRUCTURES
     if (mdat == &mons[PM_MAIL_DAEMON]) {
-        stackobj(mksobj_at(SCR_MAIL, x, y, FALSE, FALSE));
+        stackobj(mksobj_at(SCR_ADVERTISEMENT, x, y, FALSE, FALSE));
     }
 #endif
     if (accessible(x, y) || is_pool(x, y)) {

@@ -1039,7 +1039,7 @@ doname_base(struct obj* obj, unsigned int doname_flags)
                       || obj->oclass == ARMOR_CLASS
                       || obj->oclass == RING_CLASS)
 #ifdef MAIL_STRUCTURES
-                     && obj->otyp != SCR_MAIL
+                     && obj->otyp != SCR_ADVERTISEMENT
 #endif
                      && obj->otyp != FAKE_AMULET_OF_YENDOR
                      && obj->otyp != AMULET_OF_YENDOR
@@ -1362,7 +1362,7 @@ not_fully_identified(struct obj* otmp)
     /* check fundamental ID hallmarks first */
     if (!otmp->known || !otmp->dknown
 #ifdef MAIL_STRUCTURES
-        || (!otmp->bknown && otmp->otyp != SCR_MAIL)
+        || (!otmp->bknown && otmp->otyp != SCR_ADVERTISEMENT)
 #else
         || !otmp->bknown
 #endif
@@ -4310,7 +4310,7 @@ readobjnam(char* bp, struct obj* no_wish)
 #ifdef MAIL_STRUCTURES
     /* scroll of mail:  0: delivered in-game via external event (or randomly
        for fake mail); 1: from bones or wishing; 2: written with marker */
-    case SCR_MAIL:
+    case SCR_ADVERTISEMENT:
         /*FALLTHRU*/
 #endif
     /* splash of venom:  0: normal, and transitory; 1: wishing */

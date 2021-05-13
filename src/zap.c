@@ -1335,7 +1335,7 @@ polyuse(struct obj *objhdr, int mat, int minwt)
         if (obj_resists(otmp, 0, 0))
             continue; /* preserve unique objects */
 #ifdef MAIL_STRUCTURES
-        if (otmp->otyp == SCR_MAIL)
+        if (otmp->otyp == SCR_ADVERTISEMENT)
             continue;
 #endif
 
@@ -1459,7 +1459,7 @@ do_osshock(struct obj *obj)
     long i;
 
 #ifdef MAIL_STRUCTURES
-    if (obj->otyp == SCR_MAIL)
+    if (obj->otyp == SCR_ADVERTISEMENT)
         return;
 #endif
     g.obj_zapped = TRUE;
@@ -1567,8 +1567,8 @@ poly_obj(struct obj *obj, int id)
     /* You can't send yourself 100 mail messages and then
      * polymorph them into useful scrolls
      */
-    if (obj->otyp == SCR_MAIL) {
-        otmp->otyp = SCR_MAIL;
+    if (obj->otyp == SCR_ADVERTISEMENT) {
+        otmp->otyp = SCR_ADVERTISEMENT;
         otmp->spe = 1;
     }
 #endif

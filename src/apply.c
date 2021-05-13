@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "rust.h"
 
 static int use_camera(struct obj *);
 static int use_towel(struct obj *);

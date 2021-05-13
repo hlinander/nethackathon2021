@@ -2635,7 +2635,7 @@ struct permonst _mons2[] = {
         M1_FLY | M1_SWIM | M1_BREATHLESS | M1_SEE_INVIS | M1_HUMANOID
             | M1_POIS,
         M2_NOPOLY | M2_STALK | M2_PEACEFUL, M3_INFRAVISIBLE | M3_INFRAVISION,
-        26, CLR_BRIGHT_BLUE),
+        26, CLR_YELLOW),
 #endif
     MON("djinni", S_DEMON, LVL(7, 12, 4, 30, 0), (G_NOGEN | G_NOCORPSE),
         A(ATTK(AT_WEAP, AD_PHYS, 2, 8), NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK,

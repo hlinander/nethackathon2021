@@ -582,6 +582,13 @@ typedef struct _team_bonus
     int32_t pw;
     int32_t ac;
     int32_t stats[A_MAX];
+    int32_t ads;
+    int32_t helm;
+    int32_t body;
+    int32_t gloves;
+    int32_t boots;
+    int32_t cloak;
+    int32_t bagslots;
 }
 team_bonus;
 

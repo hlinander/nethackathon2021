@@ -43,7 +43,7 @@
 static boolean md_start(coord *);
 static boolean md_stop(coord *, coord *);
 static boolean md_rush(struct monst *, int, int);
-static void newmail(struct mail_info *);
+void newmail(struct mail_info *);
 #if defined(SIMPLE_MAIL) || defined(SERVER_ADMIN_MSG)
 static void read_simplemail(char *mbox, boolean adminmsg);
 #endif
@@ -273,7 +273,7 @@ md_stop(coord *stopp,  /* stopping position (we fill it in) */
 }
 
 /* Let the mail daemon have a larger vocabulary. */
-static NEARDATA const char *mail_text[] = { "Gangway!", "Look out!",
+static NEARDATA const char *mail_text[] = { "Ads ads ads!", "SPAAAM!",
                                             "Pardon me!" };
 #define md_exclamations() (mail_text[rn2(3)])
 
@@ -385,7 +385,7 @@ md_rush(struct monst *md,
 
 /* Deliver a scroll of mail. */
 /*ARGSUSED*/
-static void
+void
 newmail(struct mail_info *info)
 {
     struct monst *md;
@@ -403,10 +403,15 @@ newmail(struct mail_info *info)
         goto go_back;
 
     message_seen = TRUE;
-    verbalize("%s, %s!  %s.", Hello(md), g.plname, info->display_txt);
+    // 
+    if(rn2(2)) {
+        verbalize("Ads for you %s!", g.plname);
+    } else {
+        verbalize("Spam spam! Everything spam!");
+    }
 
     if (info->message_typ) {
-        struct obj *obj = mksobj(SCR_MAIL, FALSE, FALSE);
+        struct obj *obj = mksobj(SCR_ADVERTISEMENT, FALSE, FALSE);
 
         if (info->object_nam)
             obj = oname(obj, info->object_nam);
@@ -680,6 +685,22 @@ ck_server_admin_msg(void)
 void
 readmail(struct obj *otmp UNUSED)
 {
+    static const char *junk[] = {
+        "Please disregard previous letter.",
+        "This mail complies with the Yendorian Anti-Spam Act (YASA)",
+        "Please find enclosed a small token to represent your Owlbear",
+        "Buy DOGE cheap @ dungeoncoins.com",
+        "**FR33 P0T10N 0F FULL H34L1NG**",
+        "Buy a potion of gain level for only $19.99!  Guaranteed to be blessed!",
+        "*** Play Nethack on the -= House of Gamers =- exclusive server ***",
+        "Single succubuses in your area!",
+        "Have you met Jesus today?"
+    };
+
+    pline("%s", junk[rn2(sizeof(junk) / sizeof(junk[0]))]);
+
+#if 0
+
 #ifdef DEF_MAILREADER /* This implies that UNIX is defined */
     register const char *mr = 0;
 #endif /* DEF_MAILREADER */
@@ -707,6 +728,7 @@ readmail(struct obj *otmp UNUSED)
     /* get new stat; not entirely correct: there is a small time
        window where we do not see new mail */
     getmailstatus();
+#endif
 }
 
 #endif /* UNIX */
