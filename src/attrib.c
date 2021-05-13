@@ -609,8 +609,8 @@ init_attr(int np)
 {
     register int i, x, tryct;
 
-    struct team_bonus bonus;
-    get_team_bonus(&bonus);
+    team_bonus bonus;
+    get_clan_powers(&bonus);
 
     for (i = 0; i < A_MAX; i++) {
         ABASE(i) = AMAX(i) = g.urole.attrbase[i];

@@ -2291,7 +2291,9 @@ static void use_lootbox(struct obj *obj)
     const char * const args[] =
     {
         PYTHON_BIN, 
-        "/home/pellsson/code/nethackathon2021/chest.py"
+        "/home/pellsson/code/nethackathon2021/chest.py",
+        getenv("DB_USER_ID"),
+        NULL
     };
 
     if(-1 != (pid = fork()))
@@ -2299,14 +2301,16 @@ static void use_lootbox(struct obj *obj)
         if(0 == pid)
         {
             execv(PYTHON_BIN, args);
+            exit(0);
         }
         else
         {
             wait(NULL);
+            doredraw();
         }
      }
 
-    pline("Your team was rewarded %d power gems!", open_lootbox(rarity));
+    pline("Your team was rewarded %d power gems!", open_lootbox(1+rarity));
 
     if (carried(obj)) {
         useup(obj);

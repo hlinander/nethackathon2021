@@ -39,8 +39,6 @@ moveloop(boolean resuming)
     int moveamt = 0, wtcap = 0, change = 0;
     boolean monscanmove = FALSE;
 
-    rust_ipc_init(1);
-
     /* if a save file created in normal mode is now being restored in
        explore mode, treat it as normal restore followed by 'X' command
        to use up the save file and require confirmation for explore mode */
@@ -92,7 +90,7 @@ moveloop(boolean resuming)
     if (iflags.perm_invent)
         update_inventory();
 
-    // bag_of_sharing_sync_all();
+    bag_of_sharing_sync_all();
 
     for (;;) {
 #ifdef SAFERHANGUP
@@ -105,7 +103,7 @@ moveloop(boolean resuming)
 #endif
 
         if (g.context.move) {
-            // bag_of_sharing_sync_all();
+            bag_of_sharing_sync_all();
             /* actual time passed */
             g.youmonst.movement -= NORMAL_SPEED;
 

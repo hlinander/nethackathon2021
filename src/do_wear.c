@@ -2154,8 +2154,8 @@ doputon(void)
 void
 find_ac(void)
 {
-    struct team_bonus bonus;
-    get_team_bonus(&bonus);
+    team_bonus bonus;
+    get_clan_powers(&bonus);
 
     int uac = mons[u.umonnum].ac; /* base armor class for current form */
 

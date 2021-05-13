@@ -242,6 +242,7 @@ main(int argc, char *argv[])
     }
 
     dlb_init(); /* must be before newgame() */
+    rust_ipc_init(1);
 
     /*
      * Initialize the vision system.  This must be before mklev() on a

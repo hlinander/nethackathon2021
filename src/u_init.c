@@ -581,13 +581,13 @@ void
 u_init(void)
 {
     register int i;
-    struct team_bonus bonus;
+    team_bonus bonus;
     struct u_roleplay tmpuroleplay = u.uroleplay; /* set by rcfile options */
 
     flags.female = flags.initgend;
     flags.beginner = 1;
 
-    get_team_bonus(&bonus);
+    get_clan_powers(&bonus);
 
     /* zero u, including pointer values --
      * necessary when aborting from a failed restore */
