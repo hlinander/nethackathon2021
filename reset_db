@@ -1,0 +1,4 @@
+#!/bin/bash
+docker exec 9576d1d1aa6e psql -U postgres -c "DROP DATABASE nh"
+docker exec 9576d1d1aa6e psql -U postgres -c "CREATE DATABASE nh"
+python3 reset_db.py

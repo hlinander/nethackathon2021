@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='nh',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x08nh.proto\x12\x02nh\"\x1a\n\x05Login\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\"1\n\x0bLoginStatus\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x11\n\tplayer_id\x18\x02 \x01(\x05\"\x1a\n\x06Player\x12\x10\n\x08username\x18\x01 \x01(\t\"\r\n\x0bRequestClan\"#\n\x04\x43lan\x12\x1b\n\x07players\x18\x01 \x03(\x0b\x32\n.nh.Player\"\x0e\n\x0c\x42\x61gInventory\"\'\n\nInsertItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\")\n\x0cRetrieveItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\"@\n\x12RetrieveItemStatus\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\x12\x0f\n\x07success\x18\x02 \x01(\x08\"#\n\x07\x42\x61gItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04item\x18\x02 \x01(\x0c\"!\n\x03\x42\x61g\x12\x1a\n\x05items\x18\x01 \x03(\x0b\x32\x0b.nh.BagItem\")\n\tObjective\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06reward\x18\x02 \x01(\x05\"&\n\x0c\x43ompleteTask\x12\x16\n\x0eobjective_name\x18\x02 \x01(\t\"A\n\x06Reward\x12\x0e\n\x06reward\x18\x01 \x01(\x05\x12\x11\n\tobjective\x18\x02 \x01(\t\x12\x14\n\x0ctotal_reward\x18\x03 \x01(\x05\"-\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x15\n\rerror_message\x18\x02 \x01(\t\"\x8a\x03\n\x05\x45vent\x12\'\n\x0crequest_clan\x18\x01 \x01(\x0b\x32\x0f.nh.RequestClanH\x00\x12\x18\n\x04\x63lan\x18\x02 \x01(\x0b\x32\x08.nh.ClanH\x00\x12\x1c\n\x06player\x18\x03 \x01(\x0b\x32\n.nh.PlayerH\x00\x12\x1a\n\x05login\x18\x04 \x01(\x0b\x32\t.nh.LoginH\x00\x12)\n\rbag_inventory\x18\x05 \x01(\x0b\x32\x10.nh.BagInventoryH\x00\x12\x1f\n\x08\x62\x61g_item\x18\x06 \x01(\x0b\x32\x0b.nh.BagItemH\x00\x12\x16\n\x03\x62\x61g\x18\x07 \x01(\x0b\x32\x07.nh.BagH\x00\x12%\n\x0binsert_item\x18\x08 \x01(\x0b\x32\x0e.nh.InsertItemH\x00\x12)\n\rretrieve_item\x18\t \x01(\x0b\x32\x10.nh.RetrieveItemH\x00\x12)\n\rcomplete_task\x18\n \x01(\x0b\x32\x10.nh.CompleteTaskH\x00\x12\x1c\n\x06reward\x18\x0b \x01(\x0b\x32\n.nh.RewardH\x00\x42\x05\n\x03msgb\x06proto3')
+  serialized_pb=_b('\n\x08nh.proto\x12\x02nh\"\x1a\n\x05Login\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\"1\n\x0bLoginStatus\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x11\n\tplayer_id\x18\x02 \x01(\x05\"\x1a\n\x06Player\x12\x10\n\x08username\x18\x01 \x01(\t\"\r\n\x0bRequestClan\"#\n\x04\x43lan\x12\x1b\n\x07players\x18\x01 \x03(\x0b\x32\n.nh.Player\"\x0e\n\x0c\x42\x61gInventory\"\'\n\nInsertItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\")\n\x0cRetrieveItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\"@\n\x12RetrieveItemStatus\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\x12\x0f\n\x07success\x18\x02 \x01(\x08\"#\n\x07\x42\x61gItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04item\x18\x02 \x01(\x0c\"!\n\x03\x42\x61g\x12\x1a\n\x05items\x18\x01 \x03(\x0b\x32\x0b.nh.BagItem\")\n\tObjective\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06reward\x18\x02 \x01(\x05\"&\n\x0c\x43ompleteTask\x12\x16\n\x0eobjective_name\x18\x01 \x01(\t\"\x1d\n\x0bOpenLootbox\x12\x0e\n\x06rarity\x18\x01 \x01(\x05\"&\n\tClanPower\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03num\x18\x02 \x01(\x05\"\x14\n\x12RetrieveClanPowers\"+\n\nClanPowers\x12\x1d\n\x06powers\x18\x01 \x03(\x0b\x32\r.nh.ClanPower\"A\n\x06Reward\x12\x0e\n\x06reward\x18\x01 \x01(\x05\x12\x11\n\tobjective\x18\x02 \x01(\t\x12\x14\n\x0ctotal_reward\x18\x03 \x01(\x05\"-\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x15\n\rerror_message\x18\x02 \x01(\t\"\xe2\x03\n\x05\x45vent\x12\'\n\x0crequest_clan\x18\x01 \x01(\x0b\x32\x0f.nh.RequestClanH\x00\x12\x18\n\x04\x63lan\x18\x02 \x01(\x0b\x32\x08.nh.ClanH\x00\x12\x1c\n\x06player\x18\x03 \x01(\x0b\x32\n.nh.PlayerH\x00\x12\x1a\n\x05login\x18\x04 \x01(\x0b\x32\t.nh.LoginH\x00\x12)\n\rbag_inventory\x18\x05 \x01(\x0b\x32\x10.nh.BagInventoryH\x00\x12\x1f\n\x08\x62\x61g_item\x18\x06 \x01(\x0b\x32\x0b.nh.BagItemH\x00\x12\x16\n\x03\x62\x61g\x18\x07 \x01(\x0b\x32\x07.nh.BagH\x00\x12%\n\x0binsert_item\x18\x08 \x01(\x0b\x32\x0e.nh.InsertItemH\x00\x12)\n\rretrieve_item\x18\t \x01(\x0b\x32\x10.nh.RetrieveItemH\x00\x12)\n\rcomplete_task\x18\n \x01(\x0b\x32\x10.nh.CompleteTaskH\x00\x12\x1c\n\x06reward\x18\x0b \x01(\x0b\x32\n.nh.RewardH\x00\x12\'\n\x0copen_lootbox\x18\x0c \x01(\x0b\x32\x0f.nh.OpenLootboxH\x00\x12-\n\x0b\x63lan_powers\x18\r \x01(\x0b\x32\x16.nh.RetrieveClanPowersH\x00\x42\x05\n\x03msgb\x06proto3')
 )
 
 
@@ -420,7 +420,7 @@ _COMPLETETASK = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='objective_name', full_name='nh.CompleteTask.objective_name', index=0,
-      number=2, type=9, cpp_type=9, label=1,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -439,6 +439,130 @@ _COMPLETETASK = _descriptor.Descriptor(
   ],
   serialized_start=456,
   serialized_end=494,
+)
+
+
+_OPENLOOTBOX = _descriptor.Descriptor(
+  name='OpenLootbox',
+  full_name='nh.OpenLootbox',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='rarity', full_name='nh.OpenLootbox.rarity', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=496,
+  serialized_end=525,
+)
+
+
+_CLANPOWER = _descriptor.Descriptor(
+  name='ClanPower',
+  full_name='nh.ClanPower',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='nh.ClanPower.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='num', full_name='nh.ClanPower.num', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=527,
+  serialized_end=565,
+)
+
+
+_RETRIEVECLANPOWERS = _descriptor.Descriptor(
+  name='RetrieveClanPowers',
+  full_name='nh.RetrieveClanPowers',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=567,
+  serialized_end=587,
+)
+
+
+_CLANPOWERS = _descriptor.Descriptor(
+  name='ClanPowers',
+  full_name='nh.ClanPowers',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='powers', full_name='nh.ClanPowers.powers', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=589,
+  serialized_end=632,
 )
 
 
@@ -482,8 +606,8 @@ _REWARD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=496,
-  serialized_end=561,
+  serialized_start=634,
+  serialized_end=699,
 )
 
 
@@ -520,8 +644,8 @@ _STATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=563,
-  serialized_end=608,
+  serialized_start=701,
+  serialized_end=746,
 )
 
 
@@ -609,6 +733,20 @@ _EVENT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='open_lootbox', full_name='nh.Event.open_lootbox', index=11,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='clan_powers', full_name='nh.Event.clan_powers', index=12,
+      number=13, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -624,8 +762,8 @@ _EVENT = _descriptor.Descriptor(
       name='msg', full_name='nh.Event.msg',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=611,
-  serialized_end=1005,
+  serialized_start=749,
+  serialized_end=1231,
 )
 
 _CLAN.fields_by_name['players'].message_type = _PLAYER
@@ -633,6 +771,7 @@ _INSERTITEM.fields_by_name['item'].message_type = _BAGITEM
 _RETRIEVEITEM.fields_by_name['item'].message_type = _BAGITEM
 _RETRIEVEITEMSTATUS.fields_by_name['item'].message_type = _BAGITEM
 _BAG.fields_by_name['items'].message_type = _BAGITEM
+_CLANPOWERS.fields_by_name['powers'].message_type = _CLANPOWER
 _EVENT.fields_by_name['request_clan'].message_type = _REQUESTCLAN
 _EVENT.fields_by_name['clan'].message_type = _CLAN
 _EVENT.fields_by_name['player'].message_type = _PLAYER
@@ -644,6 +783,8 @@ _EVENT.fields_by_name['insert_item'].message_type = _INSERTITEM
 _EVENT.fields_by_name['retrieve_item'].message_type = _RETRIEVEITEM
 _EVENT.fields_by_name['complete_task'].message_type = _COMPLETETASK
 _EVENT.fields_by_name['reward'].message_type = _REWARD
+_EVENT.fields_by_name['open_lootbox'].message_type = _OPENLOOTBOX
+_EVENT.fields_by_name['clan_powers'].message_type = _RETRIEVECLANPOWERS
 _EVENT.oneofs_by_name['msg'].fields.append(
   _EVENT.fields_by_name['request_clan'])
 _EVENT.fields_by_name['request_clan'].containing_oneof = _EVENT.oneofs_by_name['msg']
@@ -677,6 +818,12 @@ _EVENT.fields_by_name['complete_task'].containing_oneof = _EVENT.oneofs_by_name[
 _EVENT.oneofs_by_name['msg'].fields.append(
   _EVENT.fields_by_name['reward'])
 _EVENT.fields_by_name['reward'].containing_oneof = _EVENT.oneofs_by_name['msg']
+_EVENT.oneofs_by_name['msg'].fields.append(
+  _EVENT.fields_by_name['open_lootbox'])
+_EVENT.fields_by_name['open_lootbox'].containing_oneof = _EVENT.oneofs_by_name['msg']
+_EVENT.oneofs_by_name['msg'].fields.append(
+  _EVENT.fields_by_name['clan_powers'])
+_EVENT.fields_by_name['clan_powers'].containing_oneof = _EVENT.oneofs_by_name['msg']
 DESCRIPTOR.message_types_by_name['Login'] = _LOGIN
 DESCRIPTOR.message_types_by_name['LoginStatus'] = _LOGINSTATUS
 DESCRIPTOR.message_types_by_name['Player'] = _PLAYER
@@ -690,6 +837,10 @@ DESCRIPTOR.message_types_by_name['BagItem'] = _BAGITEM
 DESCRIPTOR.message_types_by_name['Bag'] = _BAG
 DESCRIPTOR.message_types_by_name['Objective'] = _OBJECTIVE
 DESCRIPTOR.message_types_by_name['CompleteTask'] = _COMPLETETASK
+DESCRIPTOR.message_types_by_name['OpenLootbox'] = _OPENLOOTBOX
+DESCRIPTOR.message_types_by_name['ClanPower'] = _CLANPOWER
+DESCRIPTOR.message_types_by_name['RetrieveClanPowers'] = _RETRIEVECLANPOWERS
+DESCRIPTOR.message_types_by_name['ClanPowers'] = _CLANPOWERS
 DESCRIPTOR.message_types_by_name['Reward'] = _REWARD
 DESCRIPTOR.message_types_by_name['Status'] = _STATUS
 DESCRIPTOR.message_types_by_name['Event'] = _EVENT
@@ -785,6 +936,34 @@ CompleteTask = _reflection.GeneratedProtocolMessageType('CompleteTask', (_messag
   # @@protoc_insertion_point(class_scope:nh.CompleteTask)
   ))
 _sym_db.RegisterMessage(CompleteTask)
+
+OpenLootbox = _reflection.GeneratedProtocolMessageType('OpenLootbox', (_message.Message,), dict(
+  DESCRIPTOR = _OPENLOOTBOX,
+  __module__ = 'nh_pb2'
+  # @@protoc_insertion_point(class_scope:nh.OpenLootbox)
+  ))
+_sym_db.RegisterMessage(OpenLootbox)
+
+ClanPower = _reflection.GeneratedProtocolMessageType('ClanPower', (_message.Message,), dict(
+  DESCRIPTOR = _CLANPOWER,
+  __module__ = 'nh_pb2'
+  # @@protoc_insertion_point(class_scope:nh.ClanPower)
+  ))
+_sym_db.RegisterMessage(ClanPower)
+
+RetrieveClanPowers = _reflection.GeneratedProtocolMessageType('RetrieveClanPowers', (_message.Message,), dict(
+  DESCRIPTOR = _RETRIEVECLANPOWERS,
+  __module__ = 'nh_pb2'
+  # @@protoc_insertion_point(class_scope:nh.RetrieveClanPowers)
+  ))
+_sym_db.RegisterMessage(RetrieveClanPowers)
+
+ClanPowers = _reflection.GeneratedProtocolMessageType('ClanPowers', (_message.Message,), dict(
+  DESCRIPTOR = _CLANPOWERS,
+  __module__ = 'nh_pb2'
+  # @@protoc_insertion_point(class_scope:nh.ClanPowers)
+  ))
+_sym_db.RegisterMessage(ClanPowers)
 
 Reward = _reflection.GeneratedProtocolMessageType('Reward', (_message.Message,), dict(
   DESCRIPTOR = _REWARD,

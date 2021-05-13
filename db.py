@@ -22,7 +22,7 @@ class Clan(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, unique=True)
     level = Column(Integer)
-    power_gems = Column(Integer)
+    power_gems = Column(Integer, default=0)
 
 class Bag(Base):
     __tablename__ = "bags"
@@ -53,7 +53,7 @@ class Reward(Base):
 
 class ClanPowers(Base):
     __tablename__ = "clan_powers"
-    clan_id = Column(Integer, primary_key=True, ForeignKey("clan.id"))
+    clan_id = Column(Integer, ForeignKey("clans.id"), primary_key=True)
     name = Column(String, primary_key=True)
     level = Column(Integer)
 
@@ -91,23 +91,6 @@ def open_db():
     session.flush()
 
 
-def init_db():
-    cid = add_clan("vinst")
-    p = Player(username="hej", password="sko", clan=cid)
-    session.add(p)
-    session.commit()
-
-    session.add(Objective(
-        name="kill_gridbug",
-        literal="Killed gridbug",
-        score=10
-        ))
-    session.add(Objective(
-        name="kill_medusa",
-        literal="Killed Medusa",
-        score=100
-        ))
-    session.commit()
 
 
 old_rewards = """
@@ -188,6 +171,13 @@ def add_objective(name, literal, score):
         ))
     session.commit()
 
+def add_clan_power(clan_id, power, level):
+    session.add(ClanPowers(
+        clan_id=clan_id,
+        name=power,
+        level=level
+    ))
+
 def insert_rewards():
     reward_lines = old_rewards.strip().split("\n")
     old_reg = r".*('.*').*(\".*\"),\s*(\d*),\s*(\d*).*"
@@ -199,3 +189,24 @@ def insert_rewards():
         points = m.group(3)
         add_objective(code, desc, points)
         print("Added {code} {desc} with reward {points}".format(code=code, desc=desc,points=points))
+
+
+def init_db():
+    cid = add_clan("vinst")
+    add_clan_power(cid, "kraft", 10)
+    p = Player(username="hej", password="sko", clan=cid)
+    session.add(p)
+    session.commit()
+
+    session.add(Objective(
+        name="kill_gridbug",
+        literal="Killed gridbug",
+        score=10
+        ))
+
+    session.add(Objective(
+        name="kill_medusa",
+        literal="Killed Medusa",
+        score=100
+        ))
+    session.commit()

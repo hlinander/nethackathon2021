@@ -5,6 +5,7 @@ import nh_pb2
 import db
 from sqlalchemy.sql import func
 import argparse
+import random
 #from db import Player DBPlayer, Clan as DBClan, open_db
 
 ep = select.epoll()
@@ -106,7 +107,7 @@ def get_clan_powers(connection, req):
     for power in clan_powers:
         power_item = nh_pb2.ClanPower()
         power_item.name = power.name
-        power_item.level = power.level
+        power_item.num = power.level
         powers_list.append(power_item)
     pb_clan_powers.powers.extend(powers_list)
 
@@ -184,7 +185,7 @@ dispatch = {
     "complete_task": parse_complete_task,
     "login": parse_login,
     "open_lootbox": open_lootbox,
-    "get_clan_powers": get_clan_powers
+    "clan_powers": get_clan_powers
 }
 
 def parse_packet(connection, data):
@@ -219,16 +220,21 @@ def parse_packet(connection, data):
 # e.complete_task.objective_name = "killed_gridbug"
 # parse_packet(e.SerializeToString())
 
-e = nh_pb2.Event()
-e.clan_powers = nh_pb2.RetrieveClanPowers()
-parse_packet(e.SerializeToString())
+# e = nh_pb2.Event()
+# e.clan_powers.SetInParent()
+# print(parse_packet(dict(player_id=1), e.SerializeToString()))
 
 e = nh_pb2.Event()
-e.login.player_id = 1
-parse_packet(dict(player_id=1), e.SerializeToString())
-e = nh_pb2.Event()
-e.complete_task.objective_name = "killed_gridbug"
-print(parse_packet(dict(player_id=1), e.SerializeToString()))
+e.open_lootbox.rarity = 1
+ret = parse_packet(dict(player_id=1), e.SerializeToString())
+print(ret)
+
+# e = nh_pb2.Event()
+# e.login.player_id = 1
+# parse_packet(dict(player_id=1), e.SerializeToString())
+# e = nh_pb2.Event()
+# e.complete_task.objective_name = "killed_gridbug"
+# print(parse_packet(dict(player_id=1), e.SerializeToString()))
 
 args = parse_args()
 if args.reset_db:
@@ -250,7 +256,7 @@ while True:
                     connections[fileno]["conn"].recv(512))
             except:
                 del connections[fileno]
-                continue
+
 
             if len(connections[fileno]["buffer"]) > 4:
                 size = struct.unpack("<I", connections[fileno]["buffer"][:4])[0]
