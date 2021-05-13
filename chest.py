@@ -46,6 +46,9 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/___
 
 def main(stdscr):
 	stdscr.clear()
+	curses.start_color()
+	curses.use_default_colors()
+	curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
 	x = False
 	curses.noecho()
 	stdscr.nodelay(1) # set getch() non-blocking
