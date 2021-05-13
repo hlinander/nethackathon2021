@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 import datetime
 import re
 
+#HEJ
 Base = declarative_base()
 
 session = None
@@ -57,6 +58,13 @@ class ClanPowers(Base):
     name = Column(String, primary_key=True)
     level = Column(Integer)
 
+class PlayerEquipment(Base):
+    __tablename__ = "player_equipment"
+    player_id = Column(Integer, ForeignKey("players.id"), primary_key=True)
+    slot = Column(Integer, primary_key=True)
+    item = Column(Binary)
+
+# HEEEEJ
 # create table objectives(
 # 	id int not null auto_increment,
 # 	name varchar(32) not null,
@@ -81,7 +89,7 @@ def add_clan(name):
 
 def open_db():
     global session
-    engine = create_engine('postgresql://postgres:vinst@localhost/nh', echo=True)
+    engine = create_engine('postgresql://postgres:vinst@localhost/nh') #, echo=True)
 
     Base.metadata.create_all(engine)
 
@@ -160,6 +168,7 @@ insert into objectives values(0, 'level_20',	"Get xlvl 20",	1000,	5, NOW());
 insert into objectives values(0, 'level_30',	"Get xlvl 30",	2000,	5, NOW());
 insert into objectives values(0, 'get_aoy',			"Get Amulet of Yendor",	1000, 5, NOW());
 insert into objectives values(0, 'ascend',			"Ascend",				20000, 5, NOW());
+
 insert into objectives values(0, 'curse_ascend',	"Ascend with curse item", 2000, 0, NOW());
 """
 
@@ -178,6 +187,33 @@ def add_clan_power(clan_id, power, level):
         level=level
     ))
 
+def add_clan_power_for_player(player_id, name, level, cost):
+    p = session.query(Player).filter_by(id=player_id).first()
+    power = session.query(ClanPowers).filter_by(clan_id=p.clan, name=name).first()
+    clan = session.query(Clan).filter_by(id=p.clan).first()
+    if clan.power_gems >= cost:
+        clan.power_gems -= cost
+        if power is None:
+            add_clan_power(p.clan, name, level)
+        else:
+            power.level = level
+
+    session.commit()
+    return power.level
+
+def get_power_gems_for_player(player_id):
+    p = session.query(Player).filter_by(id=player_id).first()
+    clan = session.query(Clan).filter_by(id=p.clan).first()
+    return clan.power_gems
+
+def get_clan_powers_for_player(player_id):
+    p = session.query(Player).filter_by(id=player_id).first()
+    powers = session.query(ClanPowers).filter_by(clan_id=p.clan)
+    ret = dict()
+    for power in powers:
+       ret[power.name] = power.level
+    return ret
+
 def insert_rewards():
     reward_lines = old_rewards.strip().split("\n")
     old_reg = r".*('.*').*(\".*\"),\s*(\d*),\s*(\d*).*"
@@ -193,7 +229,7 @@ def insert_rewards():
 
 def init_db():
     cid = add_clan("vinst")
-    add_clan_power(cid, "kraft", 10)
+    add_clan_power(cid, "hp", 200)
     p = Player(username="hej", password="sko", clan=cid)
     session.add(p)
     session.commit()

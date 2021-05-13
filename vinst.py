@@ -122,7 +122,7 @@ def parse_insert_item(connection, insert_item):
         item=insert_item.item.item
         )
     db.session.add(item)
-    db.session.flush()
+    db.session.commit()
     status = nh_pb2.RetrieveItemStatus()
     status.item.id = insert_item.item.id
     status.success = True
@@ -135,7 +135,7 @@ def parse_retrieve_item(connection, retrieve_item):
     status.item.id = retrieve_item.item.id
     if item is not None:
         db.session.delete(item)
-        db.session.flush()
+        db.session.commit()
         status.success = True
     else:
         status.success = False
@@ -177,6 +177,44 @@ def parse_login(connection, login):
     status.player_id = login.player_id
     return [status]
 
+def parse_save_equipment(connection, save_eq):
+    equipment_row = db.session.query(db.PlayerEquipment).filter_by(
+            player_id=connection["player_id"],
+            slot = save_eq.equipment.slot
+        ).first()
+    if equipment_row is None:
+        equipment_row = db.PlayerEquipment(
+            player_id=connection["player_id"],
+            slot = save_eq.equipment.slot,
+            item = save_eq.equipment.item
+        )
+
+        db.session.add(equipment_row)
+    else
+        equipment_row.item = save_eq.equipment.item
+
+    db.session.commit()
+
+    status = nh_pb2.Status()
+    status.code = 0
+    return [status]
+
+def parse_retrieve_saved_equipment(connection, req):
+    equipment_rows = db.session.query(db.PlayerEquipment).filter_by(player_id=connection["player_id"]).first()
+    pb_items_list = []
+    for eq_row in equipment_rows:
+        pb_eq = nh_pb2.Equipment(
+            slot = eq_row.slot,
+            item = eq.item
+        )
+        pb_items_list.append(pb_eq)
+    response = nh_pb2.SavedEquipment()
+    response.equipments.extend(pb_items_list)
+
+    status = nh_pb2.Status()
+    status.code = 0
+    return [status, response]
+
 dispatch = {
     "request_clan": parse_request_clan,
     "bag_inventory": parse_bag_inventory,
@@ -185,7 +223,9 @@ dispatch = {
     "complete_task": parse_complete_task,
     "login": parse_login,
     "open_lootbox": open_lootbox,
-    "clan_powers": get_clan_powers
+    "clan_powers": get_clan_powers,
+    "save_equipment": parse_save_equipment,
+    "retrieve_saved_equipment": parse_retrieve_saved_equipment,
 }
 
 def parse_packet(connection, data):

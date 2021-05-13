@@ -26,6 +26,18 @@ message RetrieveItemStatus {
   bool success = 2;
 }
 
+message SaveEquipment { Equipment equipment = 1; }
+
+message Equipment {
+  int32 slot = 1;
+  bytes item = 2;
+}
+
+message SavedEquipment {
+  repeated Equipment equipments = 1;
+}
+message RetrieveSavedEquipment { }
+
 message BagItem {
   int32 id = 1;
   bytes item = 2;
@@ -79,5 +91,7 @@ message Event {
         Reward reward = 11;
         OpenLootbox open_lootbox = 12;
         RetrieveClanPowers clan_powers = 13;
+        RetrieveSavedEquipment retrieve_saved_equipment = 14;
+        SaveEquipment save_equipment = 15;
     }
 }
