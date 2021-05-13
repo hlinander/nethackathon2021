@@ -27,6 +27,7 @@ def parse_args():
 
 def parse_complete_task(connection, complete_task):
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
+    print("Complete task: ", complete_task.objective_name)
     objective = db.session.query(db.Objective).filter_by(name=complete_task.objective_name).first()
     status = nh_pb2.Status()
     if objective is None:
