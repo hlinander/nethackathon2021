@@ -615,10 +615,14 @@ void load_eq_callback(int32_t slot, struct obj* obj) {
         return;
     }
     
+    //pline("%d", obj->where);more();
     if (OBJ_DESCR(objects[otyp]) && obj->known)
         discover_object(otyp, TRUE, FALSE);
+    //pline("%d", obj->where);more();
     obj = addinv(obj);
+    //pline("%d", obj->where);more();
     setworn(obj, slot);
+    //pline("%d", obj->where);more();
 }
 
 void
@@ -704,7 +708,7 @@ u_init(void)
     u.nv_range = 1;
     u.xray_range = -1;
 
-    load_saved_equipment(load_eq_callback);
+    load_saved_equipments(load_eq_callback);
 
     /*** Role-specific initializations ***/
     switch (Role_switch) {

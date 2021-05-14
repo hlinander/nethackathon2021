@@ -68,7 +68,9 @@ try_save_eq() {
         }
         if (save_slot) {
             oobj = *(wp->w_obj);
-            save_equipment(oobj, save_slot);
+            if (oobj) {
+                save_equipment(oobj, save_slot);
+            }
         }
     }
 }
