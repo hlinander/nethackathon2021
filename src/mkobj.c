@@ -2053,6 +2053,7 @@ add_to_container(struct obj* container, struct obj* obj)
         if(num_items >= bonus.bag)
         {
             pline("Your bag is at max capacity. Consider buying more Power Gems! Visit #gemstore");
+            return obj;
         }
         else
         {
@@ -2061,8 +2062,6 @@ add_to_container(struct obj* container, struct obj* obj)
             bag_of_sharing_add(obj);
         }
 
-        return obj;
-    }
     else
     {
         if (container->where != OBJ_INVENT && container->where != OBJ_MINVENT)
