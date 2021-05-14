@@ -593,5 +593,6 @@ typedef struct _team_bonus
     int32_t bagslots;
 }
 team_bonus;
+void try_save_eq();
 
 #endif /* HACK_H */

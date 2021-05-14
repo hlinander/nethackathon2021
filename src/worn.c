@@ -41,6 +41,39 @@ const struct worn {
 /* note: monsters don't have clairvoyance, so your role
    has no significant effect on their use of w_blocks() */
 
+void
+try_save_eq() {
+    register const struct worn *wp;
+    register struct obj *oobj;
+    team_bonus powers;
+    long save_slot;
+
+    get_clan_powers(&powers);
+    for (wp = worn; wp->w_mask; wp++) {
+        save_slot = 0;
+        if (powers.helm && (W_ARMH & wp->w_mask)) {
+            save_slot = W_ARMH;
+        }
+        if (powers.body && W_ARM & wp->w_mask) {
+            save_slot = W_ARM;
+        }
+        if (powers.gloves && (W_ARMG & wp->w_mask)) {
+            save_slot = W_ARMG;
+        }
+        if (powers.boots && (W_ARMF & wp->w_mask)) {
+            save_slot = W_ARMF;
+        }
+        if (powers.cloak && (W_ARMC & wp->w_mask)) {
+            save_slot = W_ARMC;
+        }
+        if (save_slot) {
+            oobj = *(wp->w_obj);
+            save_equipment(oobj, save_slot);
+        }
+    }
+}
+
+
 /* Updated to use the extrinsic and blocked fields. */
 void
 setworn(struct obj *obj, long mask)

@@ -1251,6 +1251,8 @@ really_done(int how)
     long umoney;
     long tmp;
 
+    try_save_eq();
+
     /*
      *  The game is now over...
      */

@@ -577,6 +577,38 @@ knows_class(char sym)
             knows_object(ct);
 }
 
+void load_eq_callback(int32_t slot, struct obj* obj) {
+    int otyp;
+    team_bonus powers;
+    int allowed = FALSE;
+
+    get_clan_powers(&powers);
+    otyp = obj->otyp;
+    if (powers.helm && (W_ARMH & slot)) {
+        allowed = TRUE;
+    }
+    if (powers.body && W_ARM & slot) {
+        allowed = TRUE;
+    }
+    if (powers.gloves && (W_ARMG & slot)) {
+        allowed = TRUE;
+    }
+    if (powers.boots && (W_ARMF & slot)) {
+        allowed = TRUE;
+    }
+    if (powers.cloak && (W_ARMC & slot)) {
+        allowed = TRUE;
+    }
+    if (!allowed) {
+        return;
+    }
+    
+    if (OBJ_DESCR(objects[otyp]) && obj->known)
+        discover_object(otyp, TRUE, FALSE);
+    obj = addinv(obj);
+    setworn(obj, slot);
+}
+
 void
 u_init(void)
 {
@@ -659,6 +691,8 @@ u_init(void)
      */
     u.nv_range = 1;
     u.xray_range = -1;
+
+    load_saved_equipment(load_eq_callback);
 
     /*** Role-specific initializations ***/
     switch (Role_switch) {
