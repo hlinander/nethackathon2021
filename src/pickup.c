@@ -2362,7 +2362,7 @@ in_container(struct obj *obj)
             sellobj(obj, g.current_container->ox, g.current_container->oy);
         if(NULL == add_to_container(g.current_container, obj))
         {
-            return 0;
+            return -1;
         }
         You("put %s into %s.", doname(obj), buf);
         g.current_container->owt = weight(g.current_container);

@@ -242,7 +242,10 @@ main(int argc, char *argv[])
     }
 
     dlb_init(); /* must be before newgame() */
-    rust_ipc_init(1);
+    {
+        uint32_t uid = atoi(getenv("DB_USER_ID"));
+        rust_ipc_init(uid);
+    }
 
     /*
      * Initialize the vision system.  This must be before mklev() on a
