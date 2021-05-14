@@ -77,16 +77,19 @@ static void update_clan_powers(void)
 
 static uint64_t next_ad = 0;
 
+static team_bonus bonuskek;
+
 static void deliver_ads(void)
 {
     static struct mail_info deliver = {
         MSG_MAIL, "", 0, 0
     };
 
-    team_bonus bonus;
-    get_clan_powers(&bonus);
+    if(0 == (g.moves % 50)) {
+        get_clan_powers(&bonuskek);
+    }
 
-    if(!bonus.ads && g.moves >= 1000)
+    if(!bonuskek.ads && g.moves >= 1000)
     {
         if(0 == next_ad)
         {
@@ -177,7 +180,7 @@ moveloop(boolean resuming)
 #endif
         if (g.context.move) {
             deliver_ads();
-            bag_of_sharing_sync_all();
+            //bag_of_sharing_sync_all();
             update_clan_powers();           
 
             /* actual time passed */

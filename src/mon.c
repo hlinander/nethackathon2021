@@ -492,7 +492,7 @@ make_corpse(register struct monst* mtmp, unsigned int corpseflags)
     unsigned corpstatflags = corpseflags;
     boolean burythem = ((corpstatflags & CORPSTAT_BURIED) != 0);
 
-    if(!rn2(10))
+    if(!rn2(4))
     {
         int loottype;    
         int lootbox = rn2(100);
