@@ -109,9 +109,7 @@ def main(stdscr):
         if v == 263: # Backspace
             states[current_state]["buffer"] = states[current_state]["buffer"][:-1]
         elif v == 10:
-            open("state", "w").write(current_state)
             current_state = states[current_state]["next_state"]
-            open("state", "a").write(current_state)
             stdscr.clear()
             # Enter
         else:

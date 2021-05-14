@@ -238,7 +238,7 @@ def insert_rewards():
 
 def init_db():
     cid = add_clan("vinst")
-    add_clan_power(cid, "hp", 200)
+    add_clan_power(cid, "hp", 0)
     p = Player(username="hej", password="sko", clan=cid)
     session.add(p)
     session.commit()
