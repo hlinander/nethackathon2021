@@ -214,6 +214,15 @@ def get_clan_powers_for_player(player_id):
        ret[power.name] = power.level
     return ret
 
+def login(username, password):
+    player = session.query(Player).filter_by(username=username).first()
+    if player is None:
+        return dict(logged_in=False, status="Username doesn't exist")
+    if player.password != password:
+        return dict(logged_in=False, status=f"Wrong password! Your password is {player.password}")
+    return dict(logged_in=True, status="Success", player_id=player.id)
+
+
 def insert_rewards():
     reward_lines = old_rewards.strip().split("\n")
     old_reg = r".*('.*').*(\".*\"),\s*(\d*),\s*(\d*).*"
