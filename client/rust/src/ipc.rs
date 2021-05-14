@@ -38,6 +38,8 @@ pub struct Ipc {
 impl Ipc {
     pub fn new() -> Result<Self> {
         let stream = std::net::TcpStream::connect("192.168.1.148:8001")?;
+        stream.set_read_timeout(Some(std::time::Duration::from_secs(3)));
+        stream.set_write_timeout(Some(std::time::Duration::from_secs(3)));
         Ok(Self { stream })
     }
 
