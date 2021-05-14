@@ -190,7 +190,7 @@ def parse_save_equipment(connection, save_eq):
         )
 
         db.session.add(equipment_row)
-    else
+    else:
         equipment_row.item = save_eq.equipment.item
 
     db.session.commit()
