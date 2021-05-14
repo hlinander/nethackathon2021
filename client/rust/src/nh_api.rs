@@ -229,6 +229,13 @@ pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
                     "dex" => bonus.stats[3] = power.num,
                     "con" => bonus.stats[4] = power.num,
                     "cha" => bonus.stats[5] = power.num,
+                    "ads" => bonus.ads = power.num,
+                    "helm" => bonus.helm = power.num,
+                    "body" => bonus.body = power.num,
+                    "gloves" => bonus.gloves = power.num,
+                    "boots" => bonus.boots = power.num,
+                    "cloak" => bonus.cloak = power.num,
+                    "bag" => bonus.bag = power.num,
                     name => panic!("wat is {}", name),
                 }
             }
