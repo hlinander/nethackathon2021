@@ -120,7 +120,7 @@ l_obj_add_to_container(lua_State *L)
     otmp = add_to_container(lobox->obj, lo->obj);
 
     /* was lo->obj merged? */
-    if (otmp != lo->obj) {
+    if (otmp && (otmp != lo->obj)) {
         lo->obj->lua_ref_cnt += refs;
         lo->obj = otmp;
     }

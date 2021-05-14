@@ -2019,6 +2019,8 @@ mloot_container(
                give the rummage message, that's what mon was doing] */
             xobj->nomerge = 1;
             xobj = add_to_container(container, xobj);
+            if (!xobj)
+                break;
             if (!already_nomerge)
                 xobj->nomerge = 0;
             container->owt = weight(container);

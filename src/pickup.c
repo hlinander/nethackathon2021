@@ -2357,12 +2357,14 @@ in_container(struct obj *obj)
 
     if (g.current_container) {
         Strcpy(buf, the(xname(g.current_container)));
-        You("put %s into %s.", doname(obj), buf);
-
         /* gold in container always needs to be added to credit */
         if (floor_container && obj->oclass == COIN_CLASS)
             sellobj(obj, g.current_container->ox, g.current_container->oy);
-        (void) add_to_container(g.current_container, obj);
+        if(NULL == add_to_container(g.current_container, obj))
+        {
+            return 0;
+        }
+        You("put %s into %s.", doname(obj), buf);
         g.current_container->owt = weight(g.current_container);
     }
     /* gold needs this, and freeinv() many lines above may cause

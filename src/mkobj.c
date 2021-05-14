@@ -2053,7 +2053,7 @@ add_to_container(struct obj* container, struct obj* obj)
         if(num_items >= bonus.bag)
         {
             pline("Your bag is at max capacity. Consider buying more Power Gems! Visit #gemstore");
-            return obj;
+            return NULL;
         }
         else
         {
