@@ -2038,17 +2038,41 @@ add_to_container(struct obj* container, struct obj* obj)
 
     if (obj->where != OBJ_FREE)
         panic("add_to_container: obj not free");
-    if (container->where != OBJ_INVENT && container->where != OBJ_MINVENT)
-        obj_no_longer_held(obj);
 
     /* merge if possible */
-    for (otmp = container->cobj; otmp; otmp = otmp->nobj)
-        if (merged(&otmp, &obj))
-            return otmp;
 
     if(BAG_OF_SHARING == container->otyp)
     {
-        bag_of_sharing_add(obj);
+        int num_items = 0;
+        for (otmp = container->cobj; otmp; otmp = otmp->nobj) {
+            ++num_items;
+        }
+        team_bonus bonus;
+        get_clan_powers(&bonus);
+
+        if(num_items >= bonus.bag)
+        {
+            pline("Your bag is at max capacity. Consider buying more Power Gems! Visit #gemstore");
+        }
+        else
+        {
+            if (container->where != OBJ_INVENT && container->where != OBJ_MINVENT)
+                obj_no_longer_held(obj);
+            bag_of_sharing_add(obj);
+        }
+
+        return obj;
+    }
+    else
+    {
+        if (container->where != OBJ_INVENT && container->where != OBJ_MINVENT)
+            obj_no_longer_held(obj);
+
+
+        for (otmp = container->cobj; otmp; otmp = otmp->nobj) {
+            if (merged(&otmp, &obj))
+                return otmp;
+        }
     }
 
     obj->where = OBJ_CONTAINED;
