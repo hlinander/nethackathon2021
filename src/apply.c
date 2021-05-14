@@ -2279,19 +2279,33 @@ static void use_lootbox(struct obj *obj)
 {
     pid_t pid;
     int rarity = 0;
+    int num_items = 0;
 
     switch(obj->otyp)
     {
-        case COMMON_LOOTBOX:    rarity = 0; break;
-        case RARE_LOOTBOX:      rarity = 1; break;
-        case LEGENDARY_LOOTBOX: rarity = 2; break;
+        case COMMON_LOOTBOX:
+            rarity = 0; 
+            num_items = 2;
+            break;
+        case RARE_LOOTBOX:
+            rarity = 1;
+            num_items = 5;
+            break;
+        case LEGENDARY_LOOTBOX:
+            rarity = 2;
+            num_items = 15;
+            break;
     }
 
+    int num = open_lootbox(1+rarity);
+    char strbuf[32];
+    snprintf(strbuf, sizeof(strbuf), "%d", num);
+    
     const char * const args[] =
     {
         PYTHON_BIN, 
         "chest.py",
-        getenv("DB_USER_ID"),
+        strbuf,
         NULL
     };
 
@@ -2307,9 +2321,14 @@ static void use_lootbox(struct obj *obj)
             wait(NULL);
             doredraw();
         }
-     }
+    }
+    for(int i = 0; i < (3 * (rarity + 1)); ++i)
+    {
+        struct obj *o = mkobj(RANDOM_CLASS, FALSE);
+        place_object(o, u.ux, u.uy);
+    }
 
-    pline("Your team was rewarded %d power gems!", open_lootbox(1+rarity));
+    pline("The items from the lootbox fall to the floor.");
 
     if (carried(obj)) {
         useup(obj);

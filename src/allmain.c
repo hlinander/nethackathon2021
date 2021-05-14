@@ -86,7 +86,7 @@ static void deliver_ads(void)
     team_bonus bonus;
     get_clan_powers(&bonus);
 
-    if(bonus.ads)
+    if(!bonus.ads && g.moves >= 1000)
     {
         if(0 == next_ad)
         {
