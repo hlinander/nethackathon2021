@@ -9,10 +9,10 @@ use std::{
     os::raw::c_long,
 };
 
-static mut IPC: Option<RefCell<Ipc>> = None;
+static mut IPC: Option<Ipc> = None;
 static mut PLAYER_LOGIN_ID: Option<i32> = None;
 
-fn ipc() -> impl std::ops::DerefMut<Target = Ipc> {
+fn ipc() -> *mut Ipc {
     unsafe {
         if IPC.is_none() {
             loop {
@@ -20,14 +20,14 @@ fn ipc() -> impl std::ops::DerefMut<Target = Ipc> {
                     let auth =
                         ipc.auth(PLAYER_LOGIN_ID.expect("no player id when attempting IPC call"));
                     if let Ok(true) = auth {
-                        IPC = Some(RefCell::new(ipc));
+                        IPC = Some(ipc);
                         break;
                     }
                 }
                 std::thread::sleep_ms(500);
             }
         }
-        IPC.as_ref().unwrap().borrow_mut()
+        IPC.as_mut().unwrap() as *mut Ipc
     }
 }
 
@@ -38,20 +38,18 @@ fn debug_print(f: String) {
 
 fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
     loop {
-        let mut ipc_ref = ipc();
+    let mut ipc_ref = ipc();
+        unsafe {
         match f(&mut *ipc_ref) {
             Ok(r) => return Ok(r),
             Err(Error::IO(_)) | Err(Error::DecodeError(_)) => {
                 // clear IPC
-                unsafe {
-                    IPC = None;
-                }
-                // reconnect IPC
-                drop(ipc_ref);
-                ipc_ref = ipc();
+                IPC = None;
+                continue;
             }
             Err(e) => return Err(e),
         }
+    }
     }
 }
 
@@ -64,12 +62,18 @@ pub unsafe extern "C" fn rust_ipc_init(id: i32) {
 pub unsafe extern "C" fn bag_of_sharing_add(o: *mut obj) {
     let o = &*o;
 
+    let obj_data = obj_to_obj_data(o);
+
+    let _ = until_io_success(|ipc| ipc.bag_add(&obj_data));
+}
+
+unsafe fn obj_to_obj_data(o: &obj) -> ObjData {
     let name = if o.oextra != null_mut() && (&*o.oextra).oname != null_mut() {
         std::ffi::CStr::from_ptr((&*o.oextra).oname).to_string_lossy()
     } else {
         "".into()
     };
-    let obj_data = ObjData {
+     ObjData {
         otyp: o.otyp as i32,
         quan: o.quan as i32,
         spe: o.spe as i32,
@@ -80,9 +84,7 @@ pub unsafe extern "C" fn bag_of_sharing_add(o: *mut obj) {
         oeaten: o.oeaten,
         age: o.age as i32,
         name: name.into(),
-    };
-
-    let _ = until_io_success(|ipc| ipc.bag_add(&obj_data));
+    }
 }
 
 #[no_mangle]
@@ -95,6 +97,30 @@ pub unsafe extern "C" fn bag_of_sharing_sync_all() {
         }
         iter = (&*iter).nobj;
     }
+}
+
+unsafe fn obj_data_to_obj(obj_data: &ObjData) -> *mut obj {
+    let obj_ptr = nethack_rs::mksobj(obj_data.otyp, 0, 0);
+    if obj_ptr == null_mut() {
+        return obj_ptr;
+    }
+    let obj = &mut *obj_ptr;
+    obj.quan = obj_data.quan as c_long;
+
+    obj.spe = obj_data.spe as i8;
+    obj.oclass = obj_data.oclass as i8;
+    obj._bitfield_1.set(0, 32, obj_data.bitflags);
+    obj.corpsenm = obj_data.corpsenm;
+    obj.usecount = obj_data.usecount;
+    obj.oeaten = obj_data.oeaten;
+    obj.age = obj_data.age as c_long;
+    obj.owt = nethack_rs::weight(obj) as u32;
+    obj.where_ = nethack_rs::OBJ_CONTAINED as i8;
+    if obj_data.name != "" {
+        let c_str = std::ffi::CString::new(obj_data.name.as_str()).unwrap();
+        nethack_rs::oname(obj_ptr, c_str.as_ptr());
+    }
+    obj_ptr
 }
 
 #[no_mangle]
@@ -110,29 +136,11 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
         nethack_rs::obfree(otmp, null_mut());
     }
     for (dbid, obj_data) in items {
-        let obj_ptr = nethack_rs::mksobj(obj_data.otyp, 0, 0);
-        if obj_ptr == null_mut() {
-            continue;
-        }
-        let obj = &mut *obj_ptr;
+        let obj_ptr = obj_data_to_obj(&obj_data);
+        let mut obj = &mut *obj_ptr;
         obj.dbid = dbid as c_long;
-        obj.quan = obj_data.quan as c_long;
-
-        obj.spe = obj_data.spe as i8;
-        obj.oclass = obj_data.oclass as i8;
-        obj._bitfield_1.set(0, 32, obj_data.bitflags);
-        obj.corpsenm = obj_data.corpsenm;
-        obj.usecount = obj_data.usecount;
-        obj.oeaten = obj_data.oeaten;
-        obj.age = obj_data.age as c_long;
-        obj.owt = nethack_rs::weight(obj) as u32;
-        obj.where_ = nethack_rs::OBJ_CONTAINED as i8;
         obj.v.v_ocontainer = bag_ptr;
         obj.nobj = bag.cobj;
-        if obj_data.name != "" {
-            let c_str = std::ffi::CString::new(obj_data.name.as_str()).unwrap();
-            nethack_rs::oname(obj_ptr, c_str.as_ptr());
-        }
         bag.cobj = obj_ptr;
     }
     bag.owt = nethack_rs::weight(bag_ptr) as u32;
@@ -229,11 +237,23 @@ pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn save_equipment(item: *mut obj) {
-
+pub unsafe extern "C" fn save_equipment(item: *mut obj, slot: i32) {
+    let obj_data = obj_to_obj_data(&*item);
+    let status = until_io_success(|ipc| ipc.save_equipment(slot, &obj_data));
+    match status {
+        Err(e) => {
+            let result_line = format!("{:?}", e);
+            let c_str = CString::new(result_line).unwrap();
+            nethack_rs::pline(c_str.as_ptr());
+        }
+        Ok(_) => {},
+    }
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(*mut obj)) {
+    // let equipments = until_io_success(|ipc| ipc.save_equipment(slot, &obj_data));
+    // for (slot, eq) in equipments {
 
+    // }
 }

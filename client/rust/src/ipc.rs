@@ -146,4 +146,34 @@ impl Ipc {
         let response = self.read_response::<nh_proto::ClanPowers>()?;
         Ok(response)
     }
+
+    pub fn save_equipment(&mut self, slot: i32, item: &nh_proto::ObjData) -> Result<()> {
+        let mut item_bytes = Vec::new();
+        item.encode(&mut item_bytes)?;
+        let req = nh_proto::SaveEquipment {
+            equipment: Some(nh_proto::Equipment {
+                slot,
+                item: item_bytes,
+            })
+         };
+        self.send_event(Msg::SaveEquipment(req))?;
+        let status = self.read_message::<nh_proto::Status>()?;
+        if status.code == 0 {
+            Ok(())
+        } else {
+            Err(Error::Status(status))
+        }
+    }
+
+    pub fn get_saved_equipment(&mut self) -> Result<Vec<(i32, nh_proto::ObjData)>> {
+        let req = nh_proto::RetrieveSavedEquipment {};
+        self.send_event(Msg::RetrieveSavedEquipment(req))?;
+        let response = self.read_response::<nh_proto::SavedEquipment>()?;
+        let mut items = Vec::new();
+        for eq in response.equipments {
+            let obj_data = nh_proto::ObjData::decode(&*eq.item)?;
+            items.push((eq.slot, obj_data));
+        }
+        Ok(items)
+    }
 }
