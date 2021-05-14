@@ -26,20 +26,37 @@ banner = r'''             _,---.      ,----.         ___
  `--`---'       `--`--`    `--`--''   `--`-`--`--'`--`-----``  
 '''
 
+STARTOFF = 8
+DISTANCE = 18
+
 menu = [
-        { 'name': 'hp', 'x': 8+0, 'y': 19, 'lvl': 0 },
-        { 'name': 'pw', 'x': 8+16, 'y': 19, 'lvl': 0 },
-        { 'name': 'ac', 'x': 8+32, 'y': 19, 'lvl': 0 },
-        { 'name': 'str', 'x': 8+0, 'y': 20, 'lvl': 0 },
-        { 'name': 'int', 'x': 8+16, 'y': 20, 'lvl': 0 },
-        { 'name': 'wis', 'x': 8+32, 'y': 20, 'lvl': 0 },
-        { 'name': 'dex', 'x': 8+0, 'y': 21, 'lvl': 0 },
-        { 'name': 'con', 'x': 8+16, 'y': 21, 'lvl': 0 },
-        { 'name': 'cha', 'x': 8+32, 'y': 21, 'lvl': 0 },
+        { 'name': 'ads', 'print': 'Disable ADs!', 'x': STARTOFF, 'y': 18, 'lvl': 0, 'type': 'toggle' },
+        { 'name': 'bag', 'print': 'Bag slots', 'x': STARTOFF+DISTANCE*0, 'y': 19, 'lvl': 0 },
+        { 'name': 'helm', 'print': 'Keep Helm', 'x': STARTOFF+DISTANCE*1, 'y': 19, 'lvl': 0, 'type': 'toggle' },
+        { 'name': 'body', 'print': 'Keep Armor', 'x': STARTOFF+DISTANCE*2, 'y': 19, 'lvl': 0, 'type': 'toggle' },
+        { 'name': 'cloak', 'print': 'Keep Cloak', 'x': STARTOFF+DISTANCE*0, 'y': 20, 'lvl': 0, 'type': 'toggle' },
+        { 'name': 'gloves', 'print': 'Keep Gloves', 'x': STARTOFF+DISTANCE*1, 'y': 20, 'lvl': 0, 'type': 'toggle' },
+        { 'name': 'boots', 'print': 'Keep Boots', 'x': STARTOFF+DISTANCE*2, 'y': 20, 'lvl': 0, 'type': 'toggle' },
+        { 'name': 'hp', 'x': STARTOFF+DISTANCE*0, 'y': 21, 'lvl': 0 },
+        { 'name': 'pw', 'x': STARTOFF+DISTANCE*1, 'y': 21, 'lvl': 0 },
+        { 'name': 'ac', 'x': STARTOFF+DISTANCE*2, 'y': 21, 'lvl': 0 },
+        { 'name': 'str', 'x': STARTOFF+DISTANCE*0, 'y': 22, 'lvl': 0 },
+        { 'name': 'int', 'x': STARTOFF+DISTANCE*1, 'y': 22, 'lvl': 0 },
+        { 'name': 'wis', 'x': STARTOFF+DISTANCE*2, 'y': 22, 'lvl': 0 },
+        { 'name': 'dex', 'x': STARTOFF+DISTANCE*0, 'y': 23, 'lvl': 0 },
+        { 'name': 'con', 'x': STARTOFF+DISTANCE*1, 'y': 23, 'lvl': 0 },
+        { 'name': 'cha', 'x': STARTOFF+DISTANCE*2, 'y': 23, 'lvl': 0 },
 ]
 
-def cost(lvl):
-    return lvl * 5 + 1
+def cost(it):
+    if it['name'] in ['hp', 'pw']:
+        return 2
+    elif it['name'] in ['str', 'int', 'wis', 'dex', 'con', 'cha', 'bag']:
+        return 10
+    elif it['name'] in ['ac']:
+        return 30
+    else:
+        return 50
 
 def update_power_levels(player_id):
     powers = db.get_clan_powers_for_player(player_id)
@@ -75,12 +92,18 @@ def main(stdscr):
         for i in range(0, len(menu)):
             it = menu[i]
             c = no_color if (i != selection) else selection_color
-            stdscr.addstr(it['y'], it['x'], it['name'] + ':')
-            stdscr.addstr(it['y'], it['x'] + 5, '%02d' % (it['lvl']), c)
-            stdscr.addstr(23, 8, f"Cost to upgrade: {cost(menu[selection]['lvl']):03d}")
-            stdscr.addstr(23, 32, f'Team Power gems: {power_gems:03d}')
-            stdscr.addstr(24, 8, error, error_color)
-            error = ""
+            stdscr.addstr(it['y'], it['x'], (it['print'] if 'print' in it else it['name'].upper()) + ':')
+            if 'type' not in it:
+                stdscr.addstr(it['y'], it['x'] + 13, '%03d' % (it['lvl']), c)
+            else:
+                stdscr.addstr(it['y'], it['x'] + 13, '[%s]' % (' ' if 0 == it['lvl'] else 'X'), c)
+            stdscr.addstr(24, 8, f"Cost to upgrade: {cost(menu[selection]):03d}")
+            stdscr.addstr(24, 32, f'Team Power gems: {power_gems:03d}')
+            if len(error):
+                stdscr.addstr(18, 38, error, error_color)
+            else:
+                stdscr.addstr(18, 38, " " * 30)
+            stdscr.move(menu[selection]['y'], menu[selection]['x'])
             stdscr.refresh()
         try:
             v = stdscr.getch()
@@ -94,17 +117,24 @@ def main(stdscr):
             elif 'k' == n:
                 selection -= 3
             elif 'j' == n:
-                selection += 3
+                if 0 == selection:
+                    selection += 1
+                else:
+                    selection += 3
             elif ' ' == n:
-                if power_gems >= cost(menu[selection]['lvl']):
-                    thecost = cost(menu[selection]['lvl'])
-                    menu[selection]['lvl'] += 1
+                thecost = cost(menu[selection])
+                if power_gems >= thecost:
+                    if 'type' in menu[selection]:
+                        menu[selection]['lvl'] ^= 1
+                    else:
+                        menu[selection]['lvl'] += 1
                     dlevel = db.add_clan_power_for_player(
                             player_id,
                             menu[selection]['name'],
                             menu[selection]['lvl'],
                             thecost)
                     menu[selection]['lvl'] = dlevel
+                    error = ""
                 else:
                     error = "Not enough power gems!"
 

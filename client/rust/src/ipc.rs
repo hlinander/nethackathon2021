@@ -37,7 +37,7 @@ pub struct Ipc {
 }
 impl Ipc {
     pub fn new() -> Result<Self> {
-        let stream = std::net::TcpStream::connect("nethack2021.hampe.nu:8001")?;
+        let stream = std::net::TcpStream::connect("192.168.1.148:8001")?;
         Ok(Self { stream })
     }
 
