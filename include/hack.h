@@ -590,7 +590,7 @@ typedef struct _team_bonus
     int32_t gloves;
     int32_t boots;
     int32_t cloak;
-    int32_t bagslots;
+    int32_t bag;
 }
 team_bonus;
 void try_save_eq();
