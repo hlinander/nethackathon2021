@@ -2061,7 +2061,7 @@ add_to_container(struct obj* container, struct obj* obj)
                 obj_no_longer_held(obj);
             bag_of_sharing_add(obj);
         }
-
+    }
     else
     {
         if (container->where != OBJ_INVENT && container->where != OBJ_MINVENT)
