@@ -38,18 +38,18 @@ fn debug_print(f: String) {
 
 fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
     loop {
-    let mut ipc_ref = ipc();
+        let mut ipc_ref = ipc();
         unsafe {
-        match f(&mut *ipc_ref) {
-            Ok(r) => return Ok(r),
-            Err(Error::IO(_)) | Err(Error::DecodeError(_)) => {
-                // clear IPC
-                IPC = None;
-                continue;
+            match f(&mut *ipc_ref) {
+                Ok(r) => return Ok(r),
+                Err(Error::IO(_)) | Err(Error::DecodeError(_)) => {
+                    // clear IPC
+                    IPC = None;
+                    continue;
+                }
+                Err(e) => return Err(e),
             }
-            Err(e) => return Err(e),
         }
-    }
     }
 }
 
@@ -73,7 +73,7 @@ unsafe fn obj_to_obj_data(o: &obj) -> ObjData {
     } else {
         "".into()
     };
-     ObjData {
+    ObjData {
         otyp: o.otyp as i32,
         quan: o.quan as i32,
         spe: o.spe as i32,
@@ -200,7 +200,7 @@ pub unsafe extern "C" fn get_clan_powers_delta(bonus: *mut nethack_rs::team_bonu
         bonus.hp = bonus.hp - old.hp;
         bonus.pw = bonus.pw - old.pw;
         bonus.ac = bonus.ac - old.ac;
-        for i in 0..bonus.stats.len(){
+        for i in 0..bonus.stats.len() {
             bonus.stats[i] = bonus.stats[i] - old.stats[i];
         }
     }
@@ -239,7 +239,7 @@ pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
                     name => panic!("wat is {}", name),
                 }
             }
-        },
+        }
     }
 }
 
@@ -253,14 +253,17 @@ pub unsafe extern "C" fn save_equipment(item: *mut obj, slot: i32) {
             let c_str = CString::new(result_line).unwrap();
             nethack_rs::pline(c_str.as_ptr());
         }
-        Ok(_) => {},
+        Ok(_) => {}
     }
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(*mut obj)) {
-    // let equipments = until_io_success(|ipc| ipc.save_equipment(slot, &obj_data));
-    // for (slot, eq) in equipments {
-
-    // }
+pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(i32, *mut obj)) {
+    let equipments = until_io_success(|ipc| ipc.get_saved_equipment());
+    if let Ok(equipments) = equipments {
+        for (slot, eq) in equipments.iter() {
+            let obj = obj_data_to_obj(eq);
+            callback(*slot, obj)
+        }
+    }
 }
