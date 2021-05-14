@@ -181,22 +181,26 @@ def add_objective(name, literal, score):
     session.commit()
 
 def add_clan_power(clan_id, power, level):
-    session.add(ClanPowers(
+    power = ClanPowers(
         clan_id=clan_id,
         name=power,
         level=level
-    ))
+    )
+    session.add(power)
+    return power
 
 def add_clan_power_for_player(player_id, name, level, cost):
     p = session.query(Player).filter_by(id=player_id).first()
     power = session.query(ClanPowers).filter_by(clan_id=p.clan, name=name).first()
+    if power is None:
+        power = add_clan_power(p.clan, name, 0)
     clan = session.query(Clan).filter_by(id=p.clan).first()
     if clan.power_gems >= cost:
         clan.power_gems -= cost
-        if power is None:
-            add_clan_power(p.clan, name, level)
-        else:
-            power.level = level
+        #if power is None:
+        #    add_clan_power(p.clan, name, level)
+        #else:
+        power.level = level
 
     session.commit()
     return power.level
@@ -233,25 +237,28 @@ def insert_rewards():
         desc = m.group(2)
         points = m.group(3)
         add_objective(code, desc, points)
-        print("Added {code} {desc} with reward {points}".format(code=code, desc=desc,points=points))
+        #print("Added {code} {desc} with reward {points}".format(code=code, desc=desc,points=points))
 
 
 def init_db():
-    cid = add_clan("vinst")
-    add_clan_power(cid, "hp", 0)
-    p = Player(username="hej", password="sko", clan=cid)
-    session.add(p)
-    session.commit()
-
-    session.add(Objective(
-        name="kill_gridbug",
-        literal="Killed gridbug",
-        score=10
-        ))
-
-    session.add(Objective(
-        name="kill_medusa",
-        literal="Killed Medusa",
-        score=100
-        ))
+    pissduktiga = add_clan("erikocherik")
+    hquit = add_clan("#quit")
+    vinst = add_clan("vinst")
+    testarna = add_clan("test")
+    ctest = session.query(Clan).filter_by(id=testarna).first()
+    ctest.power_gems = 50000
+    # add_clan_power(cid, "hp", 0)
+    #session.add(Player(username="pellsson", password="sko", clan=hquit))
+    #session.add(Player(username="drgiffel", password="sko", clan=vinst))
+    session.add(Player(username="pellsson", password="sko", clan=testarna))
+    session.add(Player(username="drgiffel", password="sko", clan=testarna))
+    session.add(Player(username="CeleryMan", password="sko", clan=hquit))
+    session.add(Player(username="breggan", password="sko", clan=vinst))
+    session.add(Player(username="supersten", password="sko", clan=vinst))
+    session.add(Player(username="menvafan", password="sko", clan=pissduktiga))
+    session.add(Player(username="erik2", password="sko", clan=pissduktiga))
+    session.add(Player(username="Aransentin", password="sko", clan=vinst))
+    session.add(Player(username="kae", password="sko", clan=hquit))
+    session.add(Player(username="gorbiz", password="sko", clan=pissduktiga))
+    session.add(Player(username="bJazz", password="sko", clan=vinst))
     session.commit()
