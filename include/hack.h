@@ -576,7 +576,7 @@ enum optset_restrictions {
 #define DEVTEAM_EMAIL "devteam@nethack.org"
 #define DEVTEAM_URL "https://www.nethack.org/"
 
-#define PYTHON_BIN "/usr/bin/python"
+#define PYTHON_BIN (getenv("PYTHON_BIN") ? getenv("PYTHON_BIN") : "/usr/bin/python")
 
 typedef struct _team_bonus
 {

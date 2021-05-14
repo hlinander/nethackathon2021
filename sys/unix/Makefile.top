@@ -291,8 +291,6 @@ rootcheck:
 	@true; $(ROOTCHECK)
 
 install: rootcheck $(GAME) recover $(VARDAT) spec_levs
-	cp ../../chest.py $(HACKDIR)
-	cp ../../rmah.py $(HACKDIR)
 	true; $(PREINSTALL)
 # set up the directories
 # not all mkdirs have -p; those that don't will create a -p directory
@@ -314,6 +312,8 @@ install: rootcheck $(GAME) recover $(VARDAT) spec_levs
 			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile ; \
 			chmod $(VARFILEPERM) perm record logfile xlogfile )
 	true; $(POSTINSTALL)
+	cp ../../chest.py $(HACKDIR)
+	cp ../../rmah.py $(HACKDIR)
 # and a reminder
 	@echo You may also want to reinstall the man pages via the doc Makefile.
 
