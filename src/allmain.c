@@ -161,6 +161,9 @@ moveloop(boolean resuming)
     if (iflags.perm_invent)
         update_inventory();
 
+    team_bonus bonus;
+    get_clan_powers_delta(&bonus);
+
     bag_of_sharing_sync_all();
 
     for (;;) {
