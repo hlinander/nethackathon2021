@@ -262,7 +262,9 @@ pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(i32, *mut
     let equipments = until_io_success(|ipc| ipc.get_saved_equipment());
     if let Ok(equipments) = equipments {
         for (slot, eq) in equipments.iter() {
-            let obj = obj_data_to_obj(eq);
+            let obj_ptr = obj_data_to_obj(eq);
+            let mut obj = &mut *obj_ptr;
+            obj.where_ = nethack_rs::OBJ_FREE as i8;
             callback(*slot, obj)
         }
     }

@@ -200,14 +200,15 @@ def parse_save_equipment(connection, save_eq):
     return [status]
 
 def parse_retrieve_saved_equipment(connection, req):
-    equipment_rows = db.session.query(db.PlayerEquipment).filter_by(player_id=connection["player_id"]).first()
+    equipment_rows = db.session.query(db.PlayerEquipment).filter_by(player_id=connection["player_id"])
     pb_items_list = []
-    for eq_row in equipment_rows:
-        pb_eq = nh_pb2.Equipment(
-            slot = eq_row.slot,
-            item = eq.item
-        )
-        pb_items_list.append(pb_eq)
+    if equipment_rows is not None:
+        for eq_row in equipment_rows:
+            pb_eq = nh_pb2.Equipment(
+                slot = eq_row.slot,
+                item = eq_row.item
+            )
+            pb_items_list.append(pb_eq)
     response = nh_pb2.SavedEquipment()
     response.equipments.extend(pb_items_list)
 
