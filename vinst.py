@@ -28,7 +28,7 @@ def parse_args():
 
 def parse_complete_task(connection, complete_task):
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
-    print("Complete task: ", complete_task.objective_name)
+    #print("Complete task: ", complete_task.objective_name)
     objective = db.session.query(db.Objective).filter_by(name=complete_task.objective_name).first()
     status = nh_pb2.Status()
     if objective is None:
@@ -154,7 +154,7 @@ def parse_bag_inventory(connection, bag_inventory):
         bag_item.id = item.id
         items.append(bag_item)
     bag.items.extend(items)
-    print(bag)
+    #print(bag)
     return [bag]
 
 
@@ -229,7 +229,7 @@ dispatch = {
 }
 
 def parse_packet(connection, data):
-    print(data)
+    #print(data)
     e = nh_pb2.Event()
     e.ParseFromString(data)
     e_type = e.WhichOneof("msg")
@@ -267,7 +267,7 @@ def parse_packet(connection, data):
 e = nh_pb2.Event()
 e.open_lootbox.rarity = 1
 ret = parse_packet(dict(player_id=1), e.SerializeToString())
-print(ret)
+#print(ret)
 
 # e = nh_pb2.Event()
 # e.login.player_id = 1
@@ -287,7 +287,7 @@ while True:
         if fileno == server_socket.fileno():
             connection, address = server_socket.accept()
             connection.setblocking(0)
-            print(address)
+            #print(address)
             ep.register(connection.fileno(), select.EPOLLIN | select.EPOLLET)
             connections[connection.fileno()] = dict(conn=connection, buffer=b"", player_id=None)
         elif event & select.EPOLLIN:

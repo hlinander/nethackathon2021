@@ -105,47 +105,44 @@ def main(stdscr):
                 stdscr.addstr(18, 38, " " * 30)
             stdscr.move(menu[selection]['y'], menu[selection]['x'])
             stdscr.refresh()
-        try:
-            v = stdscr.getch()
-            if -1 == v:
-                continue
-            n = chr(v).lower()
-            if 'h' == n:
-                selection -= 1
-            elif 'l' == n:
+        v = stdscr.getch()
+        if -1 == v:
+            continue
+        n = chr(v).lower()
+        if 'h' == n:
+            selection -= 1
+        elif 'l' == n:
+            selection += 1
+        elif 'k' == n:
+            selection -= 3
+        elif 'j' == n:
+            if 0 == selection:
                 selection += 1
-            elif 'k' == n:
-                selection -= 3
-            elif 'j' == n:
-                if 0 == selection:
-                    selection += 1
+            else:
+                selection += 3
+        elif ' ' == n:
+            thecost = cost(menu[selection])
+            if power_gems >= thecost:
+                if 'type' in menu[selection]:
+                    menu[selection]['lvl'] ^= 1
                 else:
-                    selection += 3
-            elif ' ' == n:
-                thecost = cost(menu[selection])
-                if power_gems >= thecost:
-                    if 'type' in menu[selection]:
-                        menu[selection]['lvl'] ^= 1
-                    else:
-                        menu[selection]['lvl'] += 1
-                    dlevel = db.add_clan_power_for_player(
-                            player_id,
-                            menu[selection]['name'],
-                            menu[selection]['lvl'],
-                            thecost)
-                    menu[selection]['lvl'] = dlevel
-                    error = ""
-                else:
-                    error = "Not enough power gems!"
+                    menu[selection]['lvl'] += 1
+                dlevel = db.add_clan_power_for_player(
+                        player_id,
+                        menu[selection]['name'],
+                        menu[selection]['lvl'],
+                        thecost)
+                menu[selection]['lvl'] = dlevel
+                error = ""
+            else:
+                error = "Not enough power gems!"
 
 
-            elif 'q' == n:
-                break
+        elif 'q' == n:
+            break
 
-            if selection < 0:
-                selection = len(menu) - 1
-            if selection >= len(menu):
-                selection = 0
-        except Exception as e:
-            open('/tmp/fisk', 'w').write(str(e) + '\n' + traceback.format_exc())
+        if selection < 0:
+            selection = len(menu) - 1
+        if selection >= len(menu):
+            selection = 0
 wrapper(main)

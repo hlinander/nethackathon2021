@@ -11,25 +11,25 @@ import os
 NETHACK = "/home/nethack/nh/install/games/lib/nethackdir/"
 NETHACK_BIN = os.path.join(NETHACK, "nethack")
 
-banner = r'''             _,---.      ,----.         ___                    
-         _.='.'-,  \  ,-.--` , \ .-._ .'=.'\                   
-        /==.'-     / |==|-  _.-`/==/ \|==|  |                  
-       /==/ -   .-'  |==|   `.-.|==|,|  / - |                  
-       |==|_   /_,-./==/_ ,    /|==|  \/  , |                  
-       |==|  , \_.' )==|    .-' |==|- ,   _ |                  
-       \==\-  ,    (|==|_  ,`-._|==| _ /\   |                  
-        /==/ _  ,  //==/ ,     //==/  / / , /                  
-        `--`------' `--`-----`` `--`./  `--`                   
-   ,-,--.  ,--.--------.   _,.---._                    ,----.  
- ,-.'-  _\/==/,  -   , -\,-.' , -  `.   .-.,.---.   ,-.--` , \ 
-/==/_ ,_.'\==\.-.  - ,-./==/_,  ,  - \ /==/  `   \ |==|-  _.-` 
-\==\  \    `--`\==\- \ |==|   .=.     |==|-, .=., ||==|   `.-. 
- \==\ -\        \==\_ \|==|_ : ;=:  - |==|   '='  /==/_ ,    / 
- _\==\ ,\       |==|- ||==| , '='     |==|- ,   .'|==|    .-'  
-/==/\/ _ |      |==|, | \==\ -    ,_ /|==|_  . ,'.|==|_  ,`-._ 
-\==\ - , /      /==/ -/  '.='. -   .' /==/  /\ ,  )==/ ,     / 
- `--`---'       `--`--`    `--`--''   `--`-`--`--'`--`-----``  
-'''
+# banner = r'''             _,---.      ,----.         ___                    
+#          _.='.'-,  \  ,-.--` , \ .-._ .'=.'\                   
+#         /==.'-     / |==|-  _.-`/==/ \|==|  |                  
+#        /==/ -   .-'  |==|   `.-.|==|,|  / - |                  
+#        |==|_   /_,-./==/_ ,    /|==|  \/  , |                  
+#        |==|  , \_.' )==|    .-' |==|- ,   _ |                  
+#        \==\-  ,    (|==|_  ,`-._|==| _ /\   |                  
+#         /==/ _  ,  //==/ ,     //==/  / / , /                  
+#         `--`------' `--`-----`` `--`./  `--`                   
+#    ,-,--.  ,--.--------.   _,.---._                    ,----.  
+#  ,-.'-  _\/==/,  -   , -\,-.' , -  `.   .-.,.---.   ,-.--` , \ 
+# /==/_ ,_.'\==\.-.  - ,-./==/_,  ,  - \ /==/  `   \ |==|-  _.-` 
+# \==\  \    `--`\==\- \ |==|   .=.     |==|-, .=., ||==|   `.-. 
+#  \==\ -\        \==\_ \|==|_ : ;=:  - |==|   '='  /==/_ ,    / 
+#  _\==\ ,\       |==|- ||==| , '='     |==|- ,   .'|==|    .-'  
+# /==/\/ _ |      |==|, | \==\ -    ,_ /|==|_  . ,'.|==|_  ,`-._ 
+# \==\ - , /      /==/ -/  '.='. -   .' /==/  /\ ,  )==/ ,     / 
+#  `--`---'       `--`--`    `--`--''   `--`-`--`--'`--`-----``  
+# '''
 
 username = ""
 player_id = None
@@ -38,11 +38,11 @@ player_id = None
 def handle_login(states, stdscr):
     global username, player_id
     result = db.login(states["login"]["buffer"], states["password"]["buffer"])
-    stdscr.addstr(24, 8, result["status"])
+    stdscr.addstr(6, 8, result["status"])
     if result["logged_in"]:
         username = states["login"]["buffer"]
         player_id = result["player_id"]
-        stdscr.addstr(26, 8, "Press any key to face the dungeon of doom")
+        stdscr.addstr(7, 8, "Press any key to face the dungeon of doom")
         return "play"
     else:
         states["login"]["buffer"] = ""
@@ -60,8 +60,8 @@ def handle_play(states, stdscr):
 
 
 states = dict(
-    login=dict(prompt=True, prompt_text="username: ", y=20, buffer="", next_state = "password"),
-    password=dict(prompt=True, prompt_text="password: ", y=20, buffer="", next_state = "validate"),
+    login=dict(prompt=True, prompt_text="username: ", y=5, buffer="", next_state = "password"),
+    password=dict(prompt=True, prompt_text="password: ", y=5, buffer="", next_state = "validate"),
     validate=dict(prompt=False, func=handle_login, buffer="", next_state="play"),
     play=dict(prompt=False, func=handle_play, buffer="", next_state="play")
 )
@@ -85,7 +85,8 @@ def main(stdscr):
     current_state = "login"
 
     while True:
-        stdscr.addstr(0, 0, banner)
+        #stdscr.addstr(0, 0, banner)
+        stdscr.addstr(0, 0, "Nethackathon 2021")
             # stdscr.addstr(it['y'], it['x'], it['name'] + ':')
             # stdscr.addstr(it['y'], it['x'] + 5, '%02d' % (it['lvl']), c)
             # stdscr.addstr(23, 8, f"Cost to upgrade: {cost(menu[selection]['lvl']):03d}")
