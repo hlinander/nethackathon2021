@@ -173,12 +173,14 @@ insert into objectives values(0, 'curse_ascend',	"Ascend with curse item", 2000,
 """
 
 def add_objective(name, literal, score):
-    session.add(Objective(
-        name=name,
-        literal=literal,
-        score=score
-        ))
-    session.commit()
+    o = session.query(Objective).filter_by(name=name).first()
+    if o is None:
+        session.add(Objective(
+            name=name,
+            literal=literal,
+            score=score
+            ))
+        session.commit()
 
 def add_clan_power(clan_id, power, level):
     power = ClanPowers(
@@ -232,11 +234,15 @@ def insert_rewards():
     old_reg = r".*('.*').*(\".*\"),\s*(\d*),\s*(\d*).*"
     patt = re.compile(old_reg)
     for line in reward_lines:
-        m = patt.match(line)
-        code = m.group(1)
-        desc = m.group(2)
-        points = m.group(3)
-        add_objective(code, desc, points)
+        try:
+            m = patt.match(line)
+            code = m.group(1)
+            desc = m.group(2)
+            points = m.group(3)
+            add_objective(code, desc, points)
+        except Exception as e:
+            print(line)
+            print(str(e))
         #print("Added {code} {desc} with reward {points}".format(code=code, desc=desc,points=points))
 
 
@@ -244,14 +250,14 @@ def init_db():
     pissduktiga = add_clan("erikocherik")
     hquit = add_clan("#quit")
     vinst = add_clan("vinst")
-    testarna = add_clan("test")
-    ctest = session.query(Clan).filter_by(id=testarna).first()
-    ctest.power_gems = 50000
+    #testarna = add_clan("test")
+    #ctest = session.query(Clan).filter_by(id=testarna).first()
+    #ctest.power_gems = 50000
     # add_clan_power(cid, "hp", 0)
-    #session.add(Player(username="pellsson", password="sko", clan=hquit))
-    #session.add(Player(username="drgiffel", password="sko", clan=vinst))
-    session.add(Player(username="pellsson", password="sko", clan=testarna))
-    session.add(Player(username="drgiffel", password="sko", clan=testarna))
+    session.add(Player(username="pellsson", password="sko", clan=hquit))
+    session.add(Player(username="drgiffel", password="sko", clan=vinst))
+    #session.add(Player(username="pellsson", password="sko", clan=testarna))
+    #session.add(Player(username="drgiffel", password="sko", clan=testarna))
     session.add(Player(username="CeleryMan", password="sko", clan=hquit))
     session.add(Player(username="breggan", password="sko", clan=vinst))
     session.add(Player(username="supersten", password="sko", clan=vinst))

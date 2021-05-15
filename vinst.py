@@ -27,14 +27,17 @@ def parse_args():
     return parser.parse_args()
 
 def parse_complete_task(connection, complete_task):
+    #task_name = complete_task.objective_name.strip()
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
-    #print("Complete task: ", complete_task.objective_name)
+    print("Complete task: ", complete_task.objective_name, connection["player_id"])
     objective = db.session.query(db.Objective).filter_by(name=complete_task.objective_name).first()
+    print(objective)
     status = nh_pb2.Status()
     if objective is None:
-        status.code = 1
+        status.code = 0
         status.error_message = "No such objective"
-        return [status]
+        pb_reward = nh_pb2.Reward()
+        return [status, pb_reward]
 
     rewards = db.session.query(db.Reward).filter_by(
         objective=objective.id,
@@ -43,6 +46,7 @@ def parse_complete_task(connection, complete_task):
     reward = db.Reward(player=player.id, 
                        objective=objective.id,
                        score=decayed_reward)
+    db.session.add(reward)
     total_reward = db.session.query(func.sum(db.Reward.score)).filter_by(
         player=player.id)
 
@@ -68,7 +72,8 @@ def open_lootbox(connection, lootbox_req):
         status.code = 2
         status.error_message = "Clan does not exist"
         return [status]
-    
+
+    multiplier = 1 #if (clan.id == 1) else 4
     new_gems = 0
     if lootbox_rarity == 1:
         new_gems = random.randint(5, 10)
@@ -77,7 +82,7 @@ def open_lootbox(connection, lootbox_req):
     elif lootbox_rarity == 3:
         new_gems = random.randint(40, 60)
 
-    clan.power_gems += new_gems
+    clan.power_gems += new_gems * multiplier
     db.session.commit()
 
     status = nh_pb2.Status()

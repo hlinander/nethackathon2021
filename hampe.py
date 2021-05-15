@@ -54,6 +54,7 @@ def handle_play(states, stdscr):
     os.makedirs(ttydir, exist_ok=True)
     ttyfile = os.path.join(ttydir, str(random.randint(0, 1000)))
     command = f"ovh-ttyrec/ttyrec -f {ttyfile}.ttyrec -- sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
+    #command = f"sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
     open("cmd", "w").write(command)
     os.system(command)
     sys.exit()
