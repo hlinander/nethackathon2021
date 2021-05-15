@@ -11,26 +11,6 @@ import os
 NETHACK = "/home/nethack/nh/install/games/lib/nethackdir/"
 NETHACK_BIN = os.path.join(NETHACK, "nethack")
 
-# banner = r'''             _,---.      ,----.         ___                    
-#          _.='.'-,  \  ,-.--` , \ .-._ .'=.'\                   
-#         /==.'-     / |==|-  _.-`/==/ \|==|  |                  
-#        /==/ -   .-'  |==|   `.-.|==|,|  / - |                  
-#        |==|_   /_,-./==/_ ,    /|==|  \/  , |                  
-#        |==|  , \_.' )==|    .-' |==|- ,   _ |                  
-#        \==\-  ,    (|==|_  ,`-._|==| _ /\   |                  
-#         /==/ _  ,  //==/ ,     //==/  / / , /                  
-#         `--`------' `--`-----`` `--`./  `--`                   
-#    ,-,--.  ,--.--------.   _,.---._                    ,----.  
-#  ,-.'-  _\/==/,  -   , -\,-.' , -  `.   .-.,.---.   ,-.--` , \ 
-# /==/_ ,_.'\==\.-.  - ,-./==/_,  ,  - \ /==/  `   \ |==|-  _.-` 
-# \==\  \    `--`\==\- \ |==|   .=.     |==|-, .=., ||==|   `.-. 
-#  \==\ -\        \==\_ \|==|_ : ;=:  - |==|   '='  /==/_ ,    / 
-#  _\==\ ,\       |==|- ||==| , '='     |==|- ,   .'|==|    .-'  
-# /==/\/ _ |      |==|, | \==\ -    ,_ /|==|_  . ,'.|==|_  ,`-._ 
-# \==\ - , /      /==/ -/  '.='. -   .' /==/  /\ ,  )==/ ,     / 
-#  `--`---'       `--`--`    `--`--''   `--`-`--`--'`--`-----``  
-# '''
-
 username = ""
 player_id = None
 
@@ -57,7 +37,7 @@ def handle_play(states, stdscr):
     #command = f"sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
     open("cmd", "w").write(command)
     os.system(command)
-    sys.exit()
+    return "play"
 
 
 states = dict(
@@ -88,11 +68,6 @@ def main(stdscr):
     while True:
         #stdscr.addstr(0, 0, banner)
         stdscr.addstr(0, 0, "Nethackathon 2021")
-            # stdscr.addstr(it['y'], it['x'], it['name'] + ':')
-            # stdscr.addstr(it['y'], it['x'] + 5, '%02d' % (it['lvl']), c)
-            # stdscr.addstr(23, 8, f"Cost to upgrade: {cost(menu[selection]['lvl']):03d}")
-            # stdscr.addstr(23, 32, f'Team Power gems: {power_gems:03d}')
-            # stdscr.addstr(24, 8, error, error_color)
         if "func" in states[current_state]:
             open("state","a").write(current_state)
             current_state = states[current_state]["func"](states, stdscr)
@@ -104,7 +79,6 @@ def main(stdscr):
             stdscr.addstr(states[current_state]["y"] + 1, 8, states[current_state]["buffer"])
 
         stdscr.refresh()
-        #try:
         v = stdscr.getch()
         if -1 == v:
             continue
@@ -113,12 +87,7 @@ def main(stdscr):
         elif v == 10:
             current_state = states[current_state]["next_state"]
             stdscr.clear()
-            # Enter
         else:
             states[current_state]["buffer"] += chr(v)
-        #raise Exception(v)
-
-        #except Exception as e:
-        #    open('/tmp/fisk', 'w').write(str(e) + '\n' + traceback.format_exc())
 
 wrapper(main)
