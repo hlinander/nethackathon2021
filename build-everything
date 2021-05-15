@@ -1,5 +1,5 @@
 (cd sys/unix; ./setup.sh hints/linux)
-(cd ../rust; source cargo-build-nix) && \
+(cd ../rust; sh cargo-build-nix) && \
 CC=clang make clean && \
 CC=clang make fetch-lua && \
 CC=clang make -j 24 all && \
