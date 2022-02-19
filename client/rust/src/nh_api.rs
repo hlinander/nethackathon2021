@@ -1,7 +1,7 @@
 use crate::ipc::{Error, Ipc, Result};
 use crate::nh_proto::{ObjData, SessionEvent};
 use core::ptr::null_mut;
-use nethack_rs::obj;
+use nethack_rs::{g, obj};
 use std::ptr::null;
 use std::sync::mpsc::{channel, Receiver, RecvError, Sender};
 use std::thread::JoinHandle;
@@ -313,15 +313,32 @@ pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(i32, *mut
 #[no_mangle]
 pub unsafe extern "C" fn send_session_event(
     evt_name: *const c_char,
-    prev_value: i32,
-    new_value: i32,
+    value: i32,
+    previous_value: i32,
     string_value: *const c_char,
 ) {
-    let evt = SessionEvent {
-        session_turn: todo!(),
-        name: todo!(),
-        previous_value: todo!(),
-        value: todo!(),
-        string_value: todo!(),
+    let evt_name = if evt_name != null_mut() {
+        std::ffi::CStr::from_ptr(evt_name)
+            .to_string_lossy()
+            .to_string()
+    } else {
+        "".into()
     };
+    let string_value = if string_value != null_mut() {
+        std::ffi::CStr::from_ptr(string_value)
+            .to_string_lossy()
+            .to_string()
+    } else {
+        "".into()
+    };
+    let evt = SessionEvent {
+        session_turn: g.moves as i32,
+        name: evt_name,
+        previous_value,
+        value,
+        string_value,
+    };
+    EVENT_SENDER.with(|sender| {
+        let _ = sender.borrow().as_ref().unwrap().send(evt);
+    })
 }
