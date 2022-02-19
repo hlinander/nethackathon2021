@@ -23,6 +23,14 @@ static mut SESSION_START_TIME: Option<i32> = None;
 static mut EVENT_SENDER_THREAD: Option<JoinHandle<()>> = None;
 
 fn ipc() -> Rc<RefCell<Ipc>> {
+    unsafe {
+        if PLAYER_LOGIN_ID.is_none() {
+            panic!("login id not set");
+        }
+        if SESSION_START_TIME.is_none() {
+            panic!("session start time not set");
+        }
+    }
     IPC.with(|ipc| {
         let mut tl_ipc = ipc.borrow_mut();
         if tl_ipc.is_none() {
@@ -73,6 +81,12 @@ fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
 
 fn event_sender_thread(evt_channel: Receiver<SessionEvent>) {
     loop {
+        if unsafe { core::ptr::read(&PLAYER_LOGIN_ID as *const Option<i32>) }.is_none() {
+            std::thread::sleep(Duration::from_millis(100))
+        }
+        if unsafe { core::ptr::read(&SESSION_START_TIME as *const Option<i32>) }.is_none() {
+            std::thread::sleep(Duration::from_millis(100))
+        }
         match evt_channel.recv() {
             Ok(evt) => {
                 let _ = until_io_success(|ipc| ipc.send_session_event(evt.clone()));
@@ -89,13 +103,6 @@ pub unsafe extern "C" fn rust_ipc_init(id: i32, session_starttime: i32) {
     });
     PLAYER_LOGIN_ID = Some(id);
     SESSION_START_TIME = Some(session_starttime);
-    if EVENT_SENDER_THREAD.is_none() {
-        let (sender, receiver) = channel();
-        EVENT_SENDER.with(|evt_sender| {
-            evt_sender.borrow_mut().replace(sender);
-        });
-        EVENT_SENDER_THREAD = Some(std::thread::spawn(|| event_sender_thread(receiver)));
-    }
 }
 
 #[no_mangle]
@@ -338,6 +345,13 @@ pub unsafe extern "C" fn send_session_event(
         value,
         string_value,
     };
+    if EVENT_SENDER_THREAD.is_none() {
+        let (sender, receiver) = channel();
+        EVENT_SENDER.with(|evt_sender| {
+            evt_sender.borrow_mut().replace(sender);
+        });
+        EVENT_SENDER_THREAD = Some(std::thread::spawn(|| event_sender_thread(receiver)));
+    }
     EVENT_SENDER.with(|sender| {
         let _ = sender.borrow().as_ref().unwrap().send(evt);
     })
