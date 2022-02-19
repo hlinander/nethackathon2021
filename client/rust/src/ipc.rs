@@ -1,4 +1,4 @@
-use crate::nh_proto;
+use crate::nh_proto::{self, SessionEvent};
 use nh_proto::event::Msg;
 use prost::Message;
 use std::io::{Read, Write};
@@ -43,8 +43,11 @@ impl Ipc {
         Ok(Self { stream })
     }
 
-    pub fn auth(&mut self, id: i32) -> Result<bool> {
-        let req = nh_proto::Login { player_id: id };
+    pub fn auth(&mut self, id: i32, session_start_time: i32) -> Result<bool> {
+        let req = nh_proto::Login {
+            player_id: id,
+            session_start_time,
+        };
         self.send_event(Msg::Login(req))?;
         let response = self.read_message::<nh_proto::LoginStatus>()?;
         Ok(response.success)
@@ -143,7 +146,7 @@ impl Ipc {
     }
 
     pub fn get_clan_powers(&mut self) -> Result<nh_proto::ClanPowers> {
-        let req = nh_proto::RetrieveClanPowers { };
+        let req = nh_proto::RetrieveClanPowers {};
         self.send_event(Msg::ClanPowers(req))?;
         let response = self.read_response::<nh_proto::ClanPowers>()?;
         Ok(response)
@@ -156,8 +159,8 @@ impl Ipc {
             equipment: Some(nh_proto::Equipment {
                 slot,
                 item: item_bytes,
-            })
-         };
+            }),
+        };
         self.send_event(Msg::SaveEquipment(req))?;
         let status = self.read_message::<nh_proto::Status>()?;
         if status.code == 0 {
@@ -177,5 +180,15 @@ impl Ipc {
             items.push((eq.slot, obj_data));
         }
         Ok(items)
+    }
+
+    pub fn send_session_event(&mut self, evt: SessionEvent) -> Result<()> {
+        self.send_event(Msg::SessionEvent(evt))?;
+        let status = self.read_message::<nh_proto::Status>()?;
+        if status.code == 0 {
+            Ok(())
+        } else {
+            Err(Error::Status(status))
+        }
     }
 }

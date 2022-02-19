@@ -1,34 +1,51 @@
 use crate::ipc::{Error, Ipc, Result};
-use crate::nh_proto::ObjData;
+use crate::nh_proto::{ObjData, SessionEvent};
 use core::ptr::null_mut;
 use nethack_rs::obj;
 use std::ptr::null;
+use std::sync::mpsc::{channel, Receiver, RecvError, Sender};
+use std::thread::JoinHandle;
+use std::time::Duration;
 use std::{cell::RefCell, os::raw::c_char};
 use std::{
     ffi::{CStr, CString},
     os::raw::c_long,
+    rc::Rc,
 };
 
-static mut IPC: Option<Ipc> = None;
+thread_local! {
+    static IPC: RefCell<Option<Rc<RefCell<Ipc>>>> = RefCell::new(None);
+    static EVENT_SENDER: RefCell<Option<Sender<SessionEvent>>> = RefCell::new(None);
+}
 static mut PLAYER_LOGIN_ID: Option<i32> = None;
+static mut SESSION_START_TIME: Option<i32> = None;
 
-fn ipc() -> *mut Ipc {
-    unsafe {
-        if IPC.is_none() {
+static mut EVENT_SENDER_THREAD: Option<JoinHandle<()>> = None;
+
+fn ipc() -> Rc<RefCell<Ipc>> {
+    IPC.with(|ipc| {
+        let mut tl_ipc = ipc.borrow_mut();
+        if tl_ipc.is_none() {
+            let tries = 0;
             loop {
                 if let Ok(mut ipc) = Ipc::new() {
-                    let auth =
-                        ipc.auth(PLAYER_LOGIN_ID.expect("no player id when attempting IPC call"));
+                    let auth = ipc.auth(
+                        unsafe { PLAYER_LOGIN_ID }.expect("no player id when attempting IPC call"),
+                        unsafe {
+                            SESSION_START_TIME
+                                .expect("no session start time when attempting IPC call")
+                        },
+                    );
                     if let Ok(true) = auth {
-                        IPC = Some(ipc);
+                        tl_ipc.replace(Rc::new(RefCell::new(ipc)));
                         break;
                     }
                 }
-                std::thread::sleep_ms(500);
+                std::thread::sleep(Duration::from_millis((tries * tries * 10).min(1000)));
             }
         }
-        IPC.as_mut().unwrap() as *mut Ipc
-    }
+        tl_ipc.as_ref().unwrap().clone()
+    })
 }
 
 fn debug_print(f: String) {
@@ -38,24 +55,47 @@ fn debug_print(f: String) {
 
 fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
     loop {
-        let mut ipc_ref = ipc();
-        unsafe {
-            match f(&mut *ipc_ref) {
-                Ok(r) => return Ok(r),
-                Err(Error::IO(_)) | Err(Error::DecodeError(_)) => {
-                    // clear IPC
-                    IPC = None;
-                    continue;
-                }
-                Err(e) => return Err(e),
+        let ipc_ref = ipc();
+        let mut ipc = ipc_ref.borrow_mut();
+        match f(&mut *ipc) {
+            Ok(r) => return Ok(r),
+            Err(Error::IO(_)) | Err(Error::DecodeError(_)) => {
+                // clear IPC
+                IPC.with(|ipc| {
+                    ipc.borrow_mut().take();
+                });
+                continue;
             }
+            Err(e) => return Err(e),
+        }
+    }
+}
+
+fn event_sender_thread(evt_channel: Receiver<SessionEvent>) {
+    loop {
+        match evt_channel.recv() {
+            Ok(evt) => {
+                let _ = until_io_success(|ipc| ipc.send_session_event(evt.clone()));
+            }
+            _ => return,
         }
     }
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn rust_ipc_init(id: i32) {
+pub unsafe extern "C" fn rust_ipc_init(id: i32, session_starttime: i32) {
+    IPC.with(|ipc| {
+        ipc.borrow_mut().take();
+    });
     PLAYER_LOGIN_ID = Some(id);
+    SESSION_START_TIME = Some(session_starttime);
+    if EVENT_SENDER_THREAD.is_none() {
+        let (sender, receiver) = channel();
+        EVENT_SENDER.with(|evt_sender| {
+            evt_sender.borrow_mut().replace(sender);
+        });
+        EVENT_SENDER_THREAD = Some(std::thread::spawn(|| event_sender_thread(receiver)));
+    }
 }
 
 #[no_mangle]
@@ -268,4 +308,20 @@ pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(i32, *mut
             callback(*slot, obj_ptr)
         }
     }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn send_session_event(
+    evt_name: *const c_char,
+    prev_value: i32,
+    new_value: i32,
+    string_value: *const c_char,
+) {
+    let evt = SessionEvent {
+        session_turn: todo!(),
+        name: todo!(),
+        previous_value: todo!(),
+        value: todo!(),
+        string_value: todo!(),
+    };
 }
