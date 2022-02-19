@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package nh;
 
-message Login { int32 player_id = 1; }
+message Login {
+  int32 player_id = 1;
+  int32 session_start_time = 2;
+}
 
 message LoginStatus {
   bool success = 1;
@@ -74,6 +77,14 @@ message Reward {
 message Status {
   int32 code = 1;
   string error_message = 2;
+}
+
+message SessionEvent {
+  int32 session_turn = 1;
+  string name = 2;
+  int32 previous_value = 3;
+  int32 value = 4;
+  string string_value = 5;
 }
 
 message Event {
