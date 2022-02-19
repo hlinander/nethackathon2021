@@ -7,7 +7,7 @@
 #include "hack.h"
 #define obj struct obj
 
-void rust_ipc_init(int32_t id);
+void rust_ipc_init(int32_t id, int32_t session_starttime);
 
 void bag_of_sharing_add(obj *o);
 
@@ -25,8 +25,8 @@ void get_clan_powers_delta(team_bonus *bonus);
 
 void get_clan_powers(team_bonus *bonus);
 
-void save_equipment(obj *item);
+void save_equipment(obj *item, int32_t slot);
 
-void load_saved_equipments(void (*callback)(obj*));
+void load_saved_equipments(void (*callback)(int32_t, obj*));
 
 #undef obj

@@ -595,4 +595,6 @@ typedef struct _team_bonus
 team_bonus;
 void try_save_eq();
 
+#include "rust.h"
+
 #endif /* HACK_H */
