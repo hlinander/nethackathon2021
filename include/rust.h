@@ -29,4 +29,9 @@ void save_equipment(obj *item, int32_t slot);
 
 void load_saved_equipments(void (*callback)(int32_t, obj*));
 
+void send_session_event(const char *evt_name,
+                        int32_t value,
+                        int32_t previous_value,
+                        const char *string_value);
+
 #undef obj
