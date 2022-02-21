@@ -1,27 +1,12 @@
-#{
-#  #pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs-channels/archive/b58ada326aa612ea1e2fb9a53d550999e94f1985.tar.gz") {}
-#  pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/20.09.tar.gz") {}
-#}:
-#with import <nixpkgs> {};
-#{
-#    rustPlatform,
-#    stdenv,
-#    fetchgit,
-#    breakpointHook,
-#    clang,
-#    ncurses,
-#    protobuf
-#}:
-with import /home/herden/sw/nix {};
+with import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {};
 stdenv.mkDerivation rec {
   pname = "nethack";
   version = "0.1.0";
 
-  src = fetchgit {
-    url = "https://github.com/hlinander/nethackathon2021.git";
-    deepClone = true;
-    sha256 = "19z4azwfjxbmhxl6sqslbhnh6rsz5dibsw2h369r67q1mxjy3p2v";
-    rev = "5abff8fae471485276fafde72867b744e6968ff6";
+  src = builtins.fetchGit {
+    url = "ssh://git@github.com/hlinander/nethackathon2021.git";
+    submodules = true;
+    rev = "05d7f0db671aef6b0cb2a415b31e29d671567742";
   };
 
   lua = fetchurl {
@@ -31,10 +16,8 @@ stdenv.mkDerivation rec {
 
   cargoDeps = rustPlatform.fetchCargoTarball {
       inherit src;
-      sourceRoot = "${src.name}/client/rust";
-      #sourceRoot = "client/rust";
-      #sourceRoot = "client/rust";
-      sha256 = "1k9l3mzi0v24052dalcgjsrdz9x2xr6xrcg4f9ly3hzp3lyp0bhr";
+      sourceRoot = "source/client/rust";
+      sha256 = "0y5kyq2347pdmhmjcnshkgyd53m2ws3na25dfis603din6bskn3n";
     };
 
   cargoRoot = "client/rust";
@@ -52,15 +35,8 @@ stdenv.mkDerivation rec {
     rust.cargo
     rust.rustc
   ]);
-  # buildInputs = [
-  #   pkgs.clang
-  #   pkgs.ncurses
-  #   pkgs.rustc
-  #   pkgs.cargo
-  #   pkgs.protobuf
-  # ];
+
   PROTOC = "${protobuf}/bin/protoc";
-  #PREFIX="$(out)";
 
   configurePhase = ''
   '';
@@ -68,7 +44,6 @@ stdenv.mkDerivation rec {
   makeFlags = "PREFIX=$(out)";
   userDir = "~/.config/nethack";
   binPath = lib.makeBinPath [ coreutils less ];
-  #OUTPUTDIR="${out}";
 
   buildPhase = ''
     cd client/rust
