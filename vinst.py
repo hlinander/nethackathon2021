@@ -118,6 +118,25 @@ def get_clan_powers(connection, req):
 
     return [status, pb_clan_powers]
 
+def parse_event(connection, event):
+    player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
+    item = db.Event(
+        player_id=connection["player_id"],
+        clan_id=player.clan,
+        session_start_time=connection["session_start_time"],
+        session_turn=event.session_turn,
+        name=event.name,
+        value=event.value,
+        string_value=event.string_value,
+        previous_value=event.previous_value,
+        )
+    #print(item)
+    db.session.add(item)
+    db.session.commit()
+    #print("event!")
+    status = nh_pb2.Status()
+    status.code = 0
+    return [status]
 
 def parse_insert_item(connection, insert_item):
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
@@ -177,6 +196,7 @@ def parse_request_clan(connection, request_clan):
 
 def parse_login(connection, login):
     connection["player_id"] = login.player_id
+    connection["session_start_time"] = login.session_start_time
     status = nh_pb2.LoginStatus()
     status.success = True
     status.player_id = login.player_id
@@ -232,6 +252,7 @@ dispatch = {
     "clan_powers": get_clan_powers,
     "save_equipment": parse_save_equipment,
     "retrieve_saved_equipment": parse_retrieve_saved_equipment,
+    "session_event": parse_event
 }
 
 def parse_packet(connection, data):
@@ -239,6 +260,7 @@ def parse_packet(connection, data):
     e = nh_pb2.Event()
     e.ParseFromString(data)
     e_type = e.WhichOneof("msg")
+    #print(e)
     return dispatch[e_type](connection, getattr(e, e_type))
 
     #dispatch[event_type](reader)

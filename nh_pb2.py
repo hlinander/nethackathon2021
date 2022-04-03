@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x08nh.proto\x12\x02nh\"6\n\x05Login\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x1a\n\x12session_start_time\x18\x02 \x01(\x05\"1\n\x0bLoginStatus\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x11\n\tplayer_id\x18\x02 \x01(\x05\"\x1a\n\x06Player\x12\x10\n\x08username\x18\x01 \x01(\t\"\r\n\x0bRequestClan\"#\n\x04\x43lan\x12\x1b\n\x07players\x18\x01 \x03(\x0b\x32\n.nh.Player\"\x0e\n\x0c\x42\x61gInventory\"\'\n\nInsertItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\")\n\x0cRetrieveItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\"@\n\x12RetrieveItemStatus\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\x12\x0f\n\x07success\x18\x02 \x01(\x08\"1\n\rSaveEquipment\x12 \n\tequipment\x18\x01 \x01(\x0b\x32\r.nh.Equipment\"\'\n\tEquipment\x12\x0c\n\x04slot\x18\x01 \x01(\x05\x12\x0c\n\x04item\x18\x02 \x01(\x0c\"3\n\x0eSavedEquipment\x12!\n\nequipments\x18\x01 \x03(\x0b\x32\r.nh.Equipment\"\x18\n\x16RetrieveSavedEquipment\"#\n\x07\x42\x61gItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04item\x18\x02 \x01(\x0c\"!\n\x03\x42\x61g\x12\x1a\n\x05items\x18\x01 \x03(\x0b\x32\x0b.nh.BagItem\")\n\tObjective\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06reward\x18\x02 \x01(\x05\"&\n\x0c\x43ompleteTask\x12\x16\n\x0eobjective_name\x18\x01 \x01(\t\"\x1d\n\x0bOpenLootbox\x12\x0e\n\x06rarity\x18\x01 \x01(\x05\"&\n\tClanPower\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03num\x18\x02 \x01(\x05\"\x14\n\x12RetrieveClanPowers\"+\n\nClanPowers\x12\x1d\n\x06powers\x18\x01 \x03(\x0b\x32\r.nh.ClanPower\"A\n\x06Reward\x12\x0e\n\x06reward\x18\x01 \x01(\x05\x12\x11\n\tobjective\x18\x02 \x01(\t\x12\x14\n\x0ctotal_reward\x18\x03 \x01(\x05\"-\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x15\n\rerror_message\x18\x02 \x01(\t\"o\n\x0cSessionEvent\x12\x14\n\x0csession_turn\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\x0eprevious_value\x18\x03 \x01(\x05\x12\r\n\x05value\x18\x04 \x01(\x05\x12\x14\n\x0cstring_value\x18\x05 \x01(\t\"\xcf\x04\n\x05\x45vent\x12\'\n\x0crequest_clan\x18\x01 \x01(\x0b\x32\x0f.nh.RequestClanH\x00\x12\x18\n\x04\x63lan\x18\x02 \x01(\x0b\x32\x08.nh.ClanH\x00\x12\x1c\n\x06player\x18\x03 \x01(\x0b\x32\n.nh.PlayerH\x00\x12\x1a\n\x05login\x18\x04 \x01(\x0b\x32\t.nh.LoginH\x00\x12)\n\rbag_inventory\x18\x05 \x01(\x0b\x32\x10.nh.BagInventoryH\x00\x12\x1f\n\x08\x62\x61g_item\x18\x06 \x01(\x0b\x32\x0b.nh.BagItemH\x00\x12\x16\n\x03\x62\x61g\x18\x07 \x01(\x0b\x32\x07.nh.BagH\x00\x12%\n\x0binsert_item\x18\x08 \x01(\x0b\x32\x0e.nh.InsertItemH\x00\x12)\n\rretrieve_item\x18\t \x01(\x0b\x32\x10.nh.RetrieveItemH\x00\x12)\n\rcomplete_task\x18\n \x01(\x0b\x32\x10.nh.CompleteTaskH\x00\x12\x1c\n\x06reward\x18\x0b \x01(\x0b\x32\n.nh.RewardH\x00\x12\'\n\x0copen_lootbox\x18\x0c \x01(\x0b\x32\x0f.nh.OpenLootboxH\x00\x12-\n\x0b\x63lan_powers\x18\r \x01(\x0b\x32\x16.nh.RetrieveClanPowersH\x00\x12>\n\x18retrieve_saved_equipment\x18\x0e \x01(\x0b\x32\x1a.nh.RetrieveSavedEquipmentH\x00\x12+\n\x0esave_equipment\x18\x0f \x01(\x0b\x32\x11.nh.SaveEquipmentH\x00\x42\x05\n\x03msgb\x06proto3'
+  serialized_pb=b'\n\x08nh.proto\x12\x02nh\"6\n\x05Login\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x1a\n\x12session_start_time\x18\x02 \x01(\x05\"1\n\x0bLoginStatus\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x11\n\tplayer_id\x18\x02 \x01(\x05\"\x1a\n\x06Player\x12\x10\n\x08username\x18\x01 \x01(\t\"\r\n\x0bRequestClan\"#\n\x04\x43lan\x12\x1b\n\x07players\x18\x01 \x03(\x0b\x32\n.nh.Player\"\x0e\n\x0c\x42\x61gInventory\"\'\n\nInsertItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\")\n\x0cRetrieveItem\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\"@\n\x12RetrieveItemStatus\x12\x19\n\x04item\x18\x01 \x01(\x0b\x32\x0b.nh.BagItem\x12\x0f\n\x07success\x18\x02 \x01(\x08\"1\n\rSaveEquipment\x12 \n\tequipment\x18\x01 \x01(\x0b\x32\r.nh.Equipment\"\'\n\tEquipment\x12\x0c\n\x04slot\x18\x01 \x01(\x05\x12\x0c\n\x04item\x18\x02 \x01(\x0c\"3\n\x0eSavedEquipment\x12!\n\nequipments\x18\x01 \x03(\x0b\x32\r.nh.Equipment\"\x18\n\x16RetrieveSavedEquipment\"#\n\x07\x42\x61gItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04item\x18\x02 \x01(\x0c\"!\n\x03\x42\x61g\x12\x1a\n\x05items\x18\x01 \x03(\x0b\x32\x0b.nh.BagItem\")\n\tObjective\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06reward\x18\x02 \x01(\x05\"&\n\x0c\x43ompleteTask\x12\x16\n\x0eobjective_name\x18\x01 \x01(\t\"\x1d\n\x0bOpenLootbox\x12\x0e\n\x06rarity\x18\x01 \x01(\x05\"&\n\tClanPower\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03num\x18\x02 \x01(\x05\"\x14\n\x12RetrieveClanPowers\"+\n\nClanPowers\x12\x1d\n\x06powers\x18\x01 \x03(\x0b\x32\r.nh.ClanPower\"A\n\x06Reward\x12\x0e\n\x06reward\x18\x01 \x01(\x05\x12\x11\n\tobjective\x18\x02 \x01(\t\x12\x14\n\x0ctotal_reward\x18\x03 \x01(\x05\"-\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x15\n\rerror_message\x18\x02 \x01(\t\"o\n\x0cSessionEvent\x12\x14\n\x0csession_turn\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\x0eprevious_value\x18\x03 \x01(\x05\x12\r\n\x05value\x18\x04 \x01(\x05\x12\x14\n\x0cstring_value\x18\x05 \x01(\t\"\xfa\x04\n\x05\x45vent\x12\'\n\x0crequest_clan\x18\x01 \x01(\x0b\x32\x0f.nh.RequestClanH\x00\x12\x18\n\x04\x63lan\x18\x02 \x01(\x0b\x32\x08.nh.ClanH\x00\x12\x1c\n\x06player\x18\x03 \x01(\x0b\x32\n.nh.PlayerH\x00\x12\x1a\n\x05login\x18\x04 \x01(\x0b\x32\t.nh.LoginH\x00\x12)\n\rbag_inventory\x18\x05 \x01(\x0b\x32\x10.nh.BagInventoryH\x00\x12\x1f\n\x08\x62\x61g_item\x18\x06 \x01(\x0b\x32\x0b.nh.BagItemH\x00\x12\x16\n\x03\x62\x61g\x18\x07 \x01(\x0b\x32\x07.nh.BagH\x00\x12%\n\x0binsert_item\x18\x08 \x01(\x0b\x32\x0e.nh.InsertItemH\x00\x12)\n\rretrieve_item\x18\t \x01(\x0b\x32\x10.nh.RetrieveItemH\x00\x12)\n\rcomplete_task\x18\n \x01(\x0b\x32\x10.nh.CompleteTaskH\x00\x12\x1c\n\x06reward\x18\x0b \x01(\x0b\x32\n.nh.RewardH\x00\x12\'\n\x0copen_lootbox\x18\x0c \x01(\x0b\x32\x0f.nh.OpenLootboxH\x00\x12-\n\x0b\x63lan_powers\x18\r \x01(\x0b\x32\x16.nh.RetrieveClanPowersH\x00\x12>\n\x18retrieve_saved_equipment\x18\x0e \x01(\x0b\x32\x1a.nh.RetrieveSavedEquipmentH\x00\x12+\n\x0esave_equipment\x18\x0f \x01(\x0b\x32\x11.nh.SaveEquipmentH\x00\x12)\n\rsession_event\x18\x10 \x01(\x0b\x32\x10.nh.SessionEventH\x00\x42\x05\n\x03msgb\x06proto3'
 )
 
 
@@ -976,6 +976,13 @@ _EVENT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='session_event', full_name='nh.Event.session_event', index=15,
+      number=16, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -994,7 +1001,7 @@ _EVENT = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=1061,
-  serialized_end=1652,
+  serialized_end=1695,
 )
 
 _CLAN.fields_by_name['players'].message_type = _PLAYER
@@ -1020,6 +1027,7 @@ _EVENT.fields_by_name['open_lootbox'].message_type = _OPENLOOTBOX
 _EVENT.fields_by_name['clan_powers'].message_type = _RETRIEVECLANPOWERS
 _EVENT.fields_by_name['retrieve_saved_equipment'].message_type = _RETRIEVESAVEDEQUIPMENT
 _EVENT.fields_by_name['save_equipment'].message_type = _SAVEEQUIPMENT
+_EVENT.fields_by_name['session_event'].message_type = _SESSIONEVENT
 _EVENT.oneofs_by_name['msg'].fields.append(
   _EVENT.fields_by_name['request_clan'])
 _EVENT.fields_by_name['request_clan'].containing_oneof = _EVENT.oneofs_by_name['msg']
@@ -1065,6 +1073,9 @@ _EVENT.fields_by_name['retrieve_saved_equipment'].containing_oneof = _EVENT.oneo
 _EVENT.oneofs_by_name['msg'].fields.append(
   _EVENT.fields_by_name['save_equipment'])
 _EVENT.fields_by_name['save_equipment'].containing_oneof = _EVENT.oneofs_by_name['msg']
+_EVENT.oneofs_by_name['msg'].fields.append(
+  _EVENT.fields_by_name['session_event'])
+_EVENT.fields_by_name['session_event'].containing_oneof = _EVENT.oneofs_by_name['msg']
 DESCRIPTOR.message_types_by_name['Login'] = _LOGIN
 DESCRIPTOR.message_types_by_name['LoginStatus'] = _LOGINSTATUS
 DESCRIPTOR.message_types_by_name['Player'] = _PLAYER

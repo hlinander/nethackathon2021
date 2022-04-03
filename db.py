@@ -64,6 +64,50 @@ class PlayerEquipment(Base):
     slot = Column(Integer, primary_key=True)
     item = Column(Binary)
 
+class EventHandler(Base):
+    __tablename__ = "event_handler"
+    id = Column(Integer, primary_key=True)
+    last_handled_timestamp = Column(DateTime)
+
+class Event(Base):
+    __tablename__ = "event"
+    id = Column(Integer, primary_key=True)
+    player_id = Column(Integer, ForeignKey("players.id"))
+    clan_id = Column(Integer, ForeignKey("clans.id"))
+    session_start_time = Column(Integer)
+    session_turn = Column(Integer)
+    timestamp = Column(DateTime, default=datetime.datetime.utcnow, index=True)
+    name = Column(String)
+    previous_value = Column(Integer)
+    value = Column(Integer)
+    string_value = Column(String)
+
+class CertificateOwner(Base):
+    __tablename__ = "certificate_owner"
+    id = Column(Integer, primary_key=True)
+    certificate_id = Column(Integer, ForeignKey("certificate.id"))
+    player_id = Column(Integer, ForeignKey("player.id"))
+
+class Certificate(Base):
+    __tablename__ = "certificate"
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    value = Column(Integer)
+
+# NFTS:
+# Global inv gold
+# Global turns
+# Global HP
+# Per player
+#   death
+#   turns
+#   hp
+#
+# class StonkStake(Base):
+#     __tablename__ = "stonk_stake"
+#     stake_player_id =  Column(Integer, ForeignKey("players.id"), primary_key=True)
+#     holder_player_id =  Column(Integer, ForeignKey("players.id"), primary_key=True)
+
 # HEEEEJ
 # create table objectives(
 # 	id int not null auto_increment,
