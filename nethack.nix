@@ -5,9 +5,7 @@ stdenv.mkDerivation rec {
 
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
-    # submodules = true;
-    # rev = "05d7f0db671aef6b0cb2a415b31e29d671567742";
-    rev = "31ff086b3950816306f9c24280727b83e7b2e3e3";
+    rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
   };
 
   lua = fetchurl {
