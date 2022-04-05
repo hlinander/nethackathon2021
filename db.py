@@ -82,17 +82,17 @@ class Event(Base):
     value = Column(Integer)
     string_value = Column(String)
 
-class CertificateOwner(Base):
-    __tablename__ = "certificate_owner"
-    id = Column(Integer, primary_key=True)
-    certificate_id = Column(Integer, ForeignKey("certificate.id"))
-    player_id = Column(Integer, ForeignKey("player.id"))
-
-class Certificate(Base):
-    __tablename__ = "certificate"
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    value = Column(Integer)
+# class CertificateOwner(Base):
+#     __tablename__ = "certificate_owner"
+#     id = Column(Integer, primary_key=True)
+#     certificate_id = Column(Integer, ForeignKey("certificate.id"))
+#     player_id = Column(Integer, ForeignKey("player.id"))
+#
+# class Certificate(Base):
+#     __tablename__ = "certificate"
+#     id = Column(Integer, primary_key=True)
+#     name = Column(String)
+#     value = Column(Integer)
 
 # NFTS:
 # Global inv gold

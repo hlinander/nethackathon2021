@@ -102,6 +102,7 @@ pub unsafe extern "C" fn rust_ipc_init(id: i32, session_starttime: i32) {
         ipc.borrow_mut().take();
     });
     PLAYER_LOGIN_ID = Some(id);
+    println!("PLAYER_LOGIN_ID {}", id);
     SESSION_START_TIME = Some(session_starttime);
 }
 

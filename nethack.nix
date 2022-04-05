@@ -41,6 +41,9 @@ stdenv.mkDerivation rec {
   PROTOC = "${protobuf}/bin/protoc";
 
   configurePhase = ''
+    pushd client/NetHack/sys/unix;
+    ./setup.sh hints/linux;
+    popd;
   '';
 
   makeFlags = "PREFIX=$(out)";
@@ -48,18 +51,23 @@ stdenv.mkDerivation rec {
   binPath = lib.makeBinPath [ coreutils less ];
 
   buildPhase = ''
-    cd client/rust
+    pushd client/rust
     cargo build
-    cd ../NetHack
+    popd
+    pushd client/NetHack
     mkdir -p lib
     (cd lib; tar xzf ${lua})
     ls lib
-    (cd sys/unix/; ./setup.sh hints/linux)
+    cat Makefile
     CC=clang make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
+    popd
     #CC=clang make fetch-lua
   '';
 
   installPhase = ''
+    pushd client/NetHack
+    make PREFIX=$out install
+    popd
   '';
 
   postPatch = ''
