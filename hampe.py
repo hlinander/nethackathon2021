@@ -37,7 +37,7 @@ def handle_login(states, stdscr):
 def handle_play(states, stdscr):
     ttydir = os.path.join(TTYBASE, "ttyrec", username)
     os.makedirs(ttydir, exist_ok=True)
-    ttyfile = os.path.join(ttydir, str(random.randint(0, 100000)))
+    ttyfile = os.path.join(ttydir, str(int(time.time())))
     command = f"{OVHTTYREC} -f {ttyfile}_{player_id}.ttyrec -- sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
     #command = f"sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
     open("cmd", "w").write(command)

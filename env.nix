@@ -7,5 +7,6 @@ paths = [ (python38.withPackages(ps: with ps; [
     psycopg2
     protobuf
     ipython
+    numpy
 ])) protobuf ];
 }
