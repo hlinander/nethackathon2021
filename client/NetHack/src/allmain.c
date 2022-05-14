@@ -34,10 +34,12 @@ time_t last_clan_power_sync = 0;
 
 static void update_clan_powers(void)
 {
-    if (time() <= last_clan_power_sync) {
-        return
+    time_t now;
+    time(now);
+    if (now <= last_clan_power_sync) {
+        return;
     }
-    last_clan_power_sync = time();
+    last_clan_power_sync = now;
     team_bonus bonus;
     memset(&bonus, 0, sizeof(bonus));
 
