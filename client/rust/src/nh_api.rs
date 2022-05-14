@@ -119,6 +119,9 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
                     entry
                         .and_modify(|state: &mut QueuedEventState| {
                             state.evt.value = evt.value;
+                            if evt.value == 0 {
+                                state.deadline = Instant::now();
+                            }
                         })
                         .or_insert_with(|| QueuedEventState {
                             evt: evt.clone(),
@@ -301,8 +304,17 @@ pub unsafe extern "C" fn get_clan_powers_delta(bonus: *mut nethack_rs::team_bonu
     }
 }
 
+static mut CACHED_CLAN_POWERS: Option<nethack_rs::team_bonus> = None;
+static mut CACHED_CLAN_POWERS_TIME: Option<Instant> = None;
+
 #[no_mangle]
 pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
+    if let Some(cache_time) = CACHED_CLAN_POWERS_TIME {
+        if Instant::now().saturating_duration_since(cache_time) < Duration::from_secs(1) {
+            *bonus = CACHED_CLAN_POWERS.unwrap();
+            return;
+        }
+    }
     let powers = until_io_success(|ipc| ipc.get_clan_powers());
     match powers {
         Err(e) => {
@@ -334,6 +346,8 @@ pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
                     name => panic!("wat is {}", name),
                 }
             }
+            CACHED_CLAN_POWERS = Some(*bonus);
+            CACHED_CLAN_POWERS_TIME = Some(Instant::now());
         }
     }
 }

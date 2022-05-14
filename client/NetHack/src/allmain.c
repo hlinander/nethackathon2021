@@ -30,15 +30,8 @@ early_init(void)
     sys_early_init();
 }
 
-time_t last_clan_power_sync = 0;
-
 static void update_clan_powers(void)
 {
-    time_t now = time(NULL);
-    if (now <= last_clan_power_sync) {
-        return;
-    }
-    last_clan_power_sync = now;
     team_bonus bonus;
     memset(&bonus, 0, sizeof(bonus));
 
@@ -456,7 +449,7 @@ moveloop(boolean resuming)
         /****************************************/
 
         if (u.uhunger != prev_hunger) {
-            send_session_event_timed("change_stat", u.uhunger, prev_hunger, "hunger", 10);
+            send_session_event_timed("change_stat", u.uhunger, prev_hunger, "hunger", 5);
         }
 
         clear_splitobjs();

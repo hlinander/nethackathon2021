@@ -702,7 +702,7 @@ u_init(void)
     send_session_event("change_stat", u.ulevel, 0, "level");
 
     init_uhunger();
-    send_session_event("change_stat", u.uhunger, 0, "hunger");
+    send_session_event_timed("change_stat", u.uhunger, 0, "hunger", 0);
     for (i = 0; i <= MAXSPELL; i++)
         g.spl_book[i].sp_id = NO_SPELL;
     u.ublesscnt = 300; /* no prayers just yet */
