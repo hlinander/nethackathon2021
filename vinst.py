@@ -292,9 +292,9 @@ def parse_packet(connection, data):
 # e.clan_powers.SetInParent()
 # print(parse_packet(dict(player_id=1), e.SerializeToString()))
 
-e = nh_pb2.Event()
-e.open_lootbox.rarity = 1
-ret = parse_packet(dict(player_id=1), e.SerializeToString())
+# e = nh_pb2.Event()
+# e.open_lootbox.rarity = 1
+# ret = parse_packet(dict(player_id=1), e.SerializeToString())
 #print(ret)
 
 # e = nh_pb2.Event()
