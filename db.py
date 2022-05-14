@@ -1,5 +1,5 @@
 import sqlalchemy
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binary, Time, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binary, Time, DateTime, JSON
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
@@ -68,6 +68,7 @@ class EventHandler(Base):
     __tablename__ = "event_handler"
     id = Column(Integer, primary_key=True)
     last_handled_timestamp = Column(DateTime)
+    state = Column(JSON)
 
 class Event(Base):
     __tablename__ = "event"
@@ -141,6 +142,8 @@ def open_db():
     session = Session()
 
     session.flush()
+
+    return session
 
 
 
