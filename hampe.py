@@ -53,7 +53,7 @@ states = dict(
 )
 
 
-def main(stdscr):
+def main2(stdscr):
     db.open_db()
     stdscr.clear()
     curses.noecho()
@@ -94,5 +94,11 @@ def main(stdscr):
             stdscr.clear()
         else:
             states[current_state]["buffer"] += chr(v)
+
+def main(stdscr):
+    try:
+        main2(stdscr)
+    except:
+        sys.exit(0)
 
 wrapper(main)
