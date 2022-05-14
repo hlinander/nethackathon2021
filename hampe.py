@@ -1,3 +1,4 @@
+#!/home/nethack2022/nethackathon2021/env/bin/python
 import random
 import curses
 from curses import wrapper
@@ -7,9 +8,13 @@ import db
 import sys
 import json
 import os
+from pathlib import Path
 
-NETHACK = "/home/nethack/nh/install/games/lib/nethackdir/"
+BASE = str(Path(__file__).parent.absolute())
+TTYBASE = str(Path(__file__).parent.parent.absolute())
+NETHACK = f"{BASE}/build/bin/"
 NETHACK_BIN = os.path.join(NETHACK, "nethack")
+OVHTTYREC = "/home/nethack2022/nethackathon2021/ovh-ttyrec/bin/ttyrec"
 
 username = ""
 player_id = None
@@ -30,10 +35,10 @@ def handle_login(states, stdscr):
         return "login"
 
 def handle_play(states, stdscr):
-    ttydir = os.path.join(NETHACK, "ttyrec", username)
+    ttydir = os.path.join(TTYBASE, "ttyrec", username)
     os.makedirs(ttydir, exist_ok=True)
     ttyfile = os.path.join(ttydir, str(random.randint(0, 100000)))
-    command = f"ovh-ttyrec/ttyrec -f {ttyfile}_{player_id}.ttyrec -- sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
+    command = f"{OVHTTYREC} -f {ttyfile}_{player_id}.ttyrec -- sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
     #command = f"sh -c 'DB_USER_ID={player_id} {NETHACK_BIN} -u {username}'"
     open("cmd", "w").write(command)
     os.system(command)
