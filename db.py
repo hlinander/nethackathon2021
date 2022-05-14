@@ -3,6 +3,7 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binar
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
+import numpy as np
 import re
 
 #HEJ
@@ -82,6 +83,14 @@ class Event(Base):
     previous_value = Column(Integer)
     value = Column(Integer)
     string_value = Column(String)
+
+class Stonk(Base):
+    __tablename__ = "stonk"
+    id = Column(Integer, primary_key=True)
+    player_id = Column(Integer, ForeignKey("players.id"))
+    timestamp = Column(DateTime, default=datetime.datetime.utcnow, index=True)
+    name = Column(String)
+    value = Column(Integer)
 
 # class CertificateOwner(Base):
 #     __tablename__ = "certificate_owner"
@@ -266,6 +275,31 @@ def get_clan_powers_for_player(player_id):
     for power in powers:
        ret[power.name] = power.level
     return ret
+
+def get_stonk(player_id, name, nsteps, time_start, time_end):
+    stonks = (session.query(Stonk)
+              .filter_by(player_id=player_id, name=name)
+              .filter(Stonk.timestamp > time_start)
+              .filter(Stonk.timestamp < time_end)
+              .order_by(Stonk.timestamp))
+    timestamp_start = time_start.timestamp()
+    timestamp_stop = time_end.timestamp()
+    time_steps = np.linspace(timestamp_start, timestamp_stop, nsteps)
+    xp = np.array([stonk.timestamp.timestamp() for stonk in stonks])
+    fp = np.array([stonk.value for stonk in stonks])
+    return np.interp(time_steps, xp, fp), list(zip(xp, fp))
+
+def insert_stonk(player_id, name, value, timestamp):
+    session.add(Stonk(
+        player_id=player_id,
+        value=value,
+        name=name,
+        timestamp=timestamp
+        ))
+
+def reset_stonks():
+    session.query(Stonk).delete()
+    session.commit()
 
 def login(username, password):
     player = session.query(Player).filter_by(username=username).first()

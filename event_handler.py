@@ -9,7 +9,7 @@ from dataclasses import dataclass
 import argparse
 
 
-TIME_PER_TICK = 2
+TIME_PER_TICK = datetime.timedelta(seconds=2)
 START_OF_TIME = datetime.datetime.fromtimestamp(1645291485)
 
 state = dict(
@@ -39,9 +39,9 @@ def get_event_handler():
     return event_handler
 
 
-def get_unhandled_events(now):
+def get_events_between(start_inclusive, stop):
     event_handler = get_event_handler()
-    events = db.session.query(db.Event).filter(db.Event.timestamp > event_handler.last_handled_timestamp)
+    events = db.session.query(db.Event).filter(db.Event.timestamp >= start_inclusive).filter(db.Event.timestamp < stop)
     return events
 
 def handle_event(event):
@@ -60,6 +60,21 @@ def handle_events(events):
     for event in events:
         handle_event(event)
 
+
+def stonk_for_player(player):
+    return dict(
+        hunger=player.get("hunger", 0),
+        hp=player.get("hp", 0)
+    )
+
+def update_stonks(timestamp):
+    for player_id, player in state["players"].items():
+        stonks = stonk_for_player(player)
+        for stonk_name, stonk_value in stonks.items():
+            db.insert_stonk(player_id, stonk_name, stonk_value, timestamp)
+    db.session.commit()
+
+
 def save_state():
     event_handler = get_event_handler()
     event_handler.state = state
@@ -74,18 +89,26 @@ def _handle_change_stat(event):
 
 
 def event_loop():
+    event_handler = get_event_handler()
+    next_tick_time = event_handler.last_handled_timestamp + TIME_PER_TICK
     while True:
+        while datetime.datetime.now() > next_tick_time:
+            # time.sleep(TIME_PER_TICK)
+            sys.stdout.write(".")
+            sys.stdout.flush()
+            unhandled_events = get_events_between(event_handler.last_handled_timestamp, next_tick_time)
+            handle_events(unhandled_events)
+            update_stonks(next_tick_time)
+            save_state()
+            event_handler.last_handled_timestamp = next_tick_time
+            next_tick_time += TIME_PER_TICK
+
         time.sleep(TIME_PER_TICK)
-        now = int(time.time())
-        sys.stdout.write(".")
-        sys.stdout.flush()
-        unhandled_events = get_unhandled_events(now)
-        handle_events(unhandled_events)
-        save_state()
 
 def reset_last_handled_timestamp():
     event_handler = get_event_handler()
-    event_handler.last_handled_timestamp = START_OF_TIME
+    event_handler.last_handled_timestamp = db.session.query(db.Event).order_by(db.Event.timestamp).first().timestamp
+    db.reset_stonks()
     db.session.commit()
 
 def parse_args():
