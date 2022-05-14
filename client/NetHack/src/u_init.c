@@ -694,12 +694,15 @@ u_init(void)
     u.ulevel = 0; /* set up some of the initial attributes */
     u.uhp = u.uhpmax = newhp() + bonus.hp;
     send_session_event("change_stat", u.uhp, 0, "hp");
+    send_session_event("change_stat", u.uhpmax, 0, "hpmax");
     u.uen = u.uenmax = newpw() + bonus.pw;
     u.uspellprot = 0;
     adjabil(0, 1);
     u.ulevel = u.ulevelmax = 1;
+    send_session_event("change_stat", u.ulevel, 0, "level");
 
     init_uhunger();
+    send_session_event("change_stat", u.uhunger, 0, "hunger");
     for (i = 0; i <= MAXSPELL; i++)
         g.spl_book[i].sp_id = NO_SPELL;
     u.ublesscnt = 300; /* no prayers just yet */

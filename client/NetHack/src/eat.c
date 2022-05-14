@@ -2205,8 +2205,10 @@ fpostfx(struct obj *otmp)
             int oldhp = u.uhp;
             u.uhp += otmp->cursed ? -rnd(20) : rnd(20);
             if (u.uhp > u.uhpmax) {
-                if (!rn2(17))
+                if (!rn2(17)) {
                     u.uhpmax++;
+                    send_session_event("change_stat", u.uhpmax, u.uhpmax - 1, "hpmax");
+                }
                 u.uhp = u.uhpmax;
                 if (u.uhp != oldhp) {
                     send_session_event("change_stat", u.uhp, oldhp, "hp");

@@ -3609,6 +3609,7 @@ mhitm_ad_heal(struct monst *magr, struct attack *mattk, struct monst *mdef,
                     u.mh = u.mhmax;
             } else {
                 int oldhp = u.uhp;
+                int oldhpmax = u.uhpmax;
                 u.uhp += rnd(7);
                 if (!rn2(7)) {
                     /* hard upper limit via nurse care: 25 * ulevel */
@@ -3621,6 +3622,9 @@ mhitm_ad_heal(struct monst *magr, struct attack *mattk, struct monst *mdef,
                     u.uhp = u.uhpmax;
                 if (oldhp != u.uhp) {
                     send_session_event("change_stat", u.uhp, oldhp, "hp");
+                }
+                if (oldhpmax != u.uhpmax) {
+                    send_session_event("change_stat", u.uhpmax, oldhpmax, "hpmax");
                 }
             }
             if (!rn2(3))

@@ -185,8 +185,10 @@ dosit(void)
                         u.mhmax += 4;
                     u.mh = u.mhmax;
                 }
-                if (u.uhp >= (u.uhpmax - 5))
+                if (u.uhp >= (u.uhpmax - 5)) {
                     u.uhpmax += 4;
+                    send_session_event("change_stat", u.uhpmax, u.uhpmax - 4, "hpmax");
+                }
                 send_session_event("change_stat", u.uhpmax, u.uhp, "hp");
                 u.uhp = u.uhpmax;
                 u.ucreamed = 0;

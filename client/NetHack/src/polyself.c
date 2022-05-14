@@ -275,9 +275,10 @@ change_sex(void)
 static void
 newman(void)
 {
-    int i, oldlvl, newlvl, hpmax, enmax, oldhp;
+    int i, oldlvl, newlvl, hpmax, enmax, oldhp, oldhpmax;
 
     oldhp = u.uhp;
+    oldhpmax = u.uhpmax;
     oldlvl = u.ulevel;
     newlvl = oldlvl + rn1(5, -2);     /* new = old + {-2,-1,0,+1,+2} */
     if (newlvl > 127 || newlvl < 1) { /* level went below 0? */
@@ -295,6 +296,9 @@ newman(void)
         u.ulevelmax -= (oldlvl - newlvl);
     if (u.ulevelmax < newlvl)
         u.ulevelmax = newlvl;
+    if (newlvl != u.ulevel) {
+        send_session_event("change_stat", newlvl, u.ulevel, "level");
+    }
     u.ulevel = newlvl;
 
     if (g.sex_change_ok && !rn2(10))
@@ -335,6 +339,7 @@ newman(void)
     u.uhp = rounddiv((long) u.uhp * (long) hpmax, u.uhpmax);
     send_session_event("change_stat", u.uhp, oldhp, "hp");
     u.uhpmax = hpmax;
+    send_session_event("change_stat", u.uhpmax, oldhpmax, "hpmax");
     /*
      * Do the same for spell power.
      */

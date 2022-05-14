@@ -383,11 +383,15 @@ fix_worst_trouble(int trouble)
                 u.mhmax = 5 + 1;
             u.mh = u.mhmax;
         }
+        int oldhpmax = u.uhpmax;
         if (u.uhpmax < u.ulevel * 5 + 11)
             u.uhpmax += rnd(5);
         if (u.uhpmax <= 5)
             u.uhpmax = 5 + 1;
         send_session_event("change_stat", u.uhpmax, u.uhp, "hp");
+        if (oldhpmax != u.uhpmax) {
+            send_session_event("change_stat", u.uhpmax, oldhpmax, "hpmax");
+        }
         u.uhp = u.uhpmax;
         g.context.botl = 1;
         break;
@@ -1086,6 +1090,7 @@ pleased(aligntyp g_align)
                 u.uhpmax += 5;
                 if (Upolyd)
                     u.mhmax += 5;
+                send_session_event("change_stat", u.uhpmax, u.uhpmax - 5, "hpmax");
             }
             send_session_event("change_stat", u.uhpmax, u.uhp, "hp");
             u.uhp = u.uhpmax;

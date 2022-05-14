@@ -216,6 +216,7 @@ losestr(int num)
 {
     int ustr = ABASE(A_STR) - num;
     int oldhp = u.uhp;
+    int oldhpmax = u.uhpmax;
 
     while (ustr < 3) {
         ++ustr;
@@ -230,6 +231,9 @@ losestr(int num)
     }
     if (u.uhp != oldhp) {
         send_session_event("change_stat", u.uhp, oldhp, "hp");
+    }
+    if (u.uhpmax != oldhpmax) {
+        send_session_event("change_stat", u.uhp, oldhp, "hpmax");
     }
     (void) adjattrib(A_STR, -num, 1);
 }
@@ -673,6 +677,7 @@ init_attr(int np)
             ABASE(i) = ATTRMAX(i);
             AMAX(i) = ATTRMAX(i);
         }
+        send_session_event("change_stat", ACURR(i), 0, attrname[i]);
     }
 }
 

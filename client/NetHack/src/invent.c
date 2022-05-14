@@ -867,6 +867,10 @@ addinv_core0(struct obj *obj, struct obj *other_obj,
 {
     struct obj *otmp, *prev;
     int saved_otyp = (int) obj->otyp; /* for panic */
+    int old_quan = 0;
+    int tmp_quan = 0;
+    int obj_typ = 0;
+    struct objclass *ocl = NULL;
     boolean obj_was_thrown;
 
     if (obj->where != OBJ_FREE)
@@ -905,13 +909,16 @@ addinv_core0(struct obj *obj, struct obj *other_obj,
         goto added;
     }
     /* merge if possible; find end of chain in the process */
-    for (prev = 0, otmp = g.invent; otmp; prev = otmp, otmp = otmp->nobj)
+    for (prev = 0, otmp = g.invent; otmp; prev = otmp, otmp = otmp->nobj) {
+        tmp_quan = otmp->quan;
         if (merged(&otmp, &obj)) {
+            old_quan = tmp_quan;
             obj = otmp;
             if (!obj)
                 panic("addinv: null obj after merge otyp=%d", saved_otyp);
             goto added;
         }
+    }
     /* didn't merge, so insert into chain */
     assigninvlet(obj);
     if (flags.invlet_constant || !prev) {
@@ -935,6 +942,10 @@ addinv_core0(struct obj *obj, struct obj *other_obj,
         && (throwing_weapon(obj) || is_ammo(obj)))
         setuqwep(obj);
  added:
+    obj_typ = obj->otyp;
+    ocl = &objects[obj_typ];
+    const char *obj_name = OBJ_NAME(*ocl);
+    send_session_event("inv_add", obj->quan, old_quan, obj_name);
     addinv_core2(obj);
     carry_obj_effects(obj); /* carrying affects the obj */
     if (update_perm_invent)
@@ -1159,7 +1170,12 @@ freeinv_core(struct obj *obj)
 void
 freeinv(struct obj *obj)
 {
+    int obj_typ = obj->otyp;
+    struct objclass* ocl = &objects[obj_typ];
+    int quan = obj->quan;
+    const char *obj_name = OBJ_NAME(*ocl);
     extract_nobj(obj, &g.invent);
+    send_session_event("inv_remove", 0, quan, obj_name);
     freeinv_core(obj);
     update_inventory();
 }

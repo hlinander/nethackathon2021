@@ -2193,6 +2193,7 @@ find_ac(void)
         uac = sgn(uac) * AC_MAX;
 
     if (uac != u.uac) {
+        send_session_event("change_stat", uac, u.uac, "ac");
         u.uac = uac;
         g.context.botl = 1;
 #if 0

@@ -3551,8 +3551,12 @@ dofiretrap(
             u.mhmax -= rn2(min(u.mhmax, num + 1)), g.context.botl = 1;
     } else {
         num = d(2, 4);
+        int oldhpmax = u.uhpmax;
         if (u.uhpmax > u.ulevel)
             u.uhpmax -= rn2(min(u.uhpmax, num + 1)), g.context.botl = 1;
+        if (oldhpmax != u.uhpmax) {
+            send_session_event("change_stat", u.uhpmax, oldhpmax, "hpmax");
+        }
     }
     if (!num)
         You("are uninjured.");

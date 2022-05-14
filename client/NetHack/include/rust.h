@@ -34,4 +34,10 @@ void send_session_event(const char *evt_name,
                         int32_t previous_value,
                         const char *string_value);
 
+void send_session_event_timed(const char *evt_name,
+                              int32_t new_value,
+                              int32_t previous_value,
+                              const char *string_value,
+                              int32_t min_delay_seconds);
+
 #undef obj

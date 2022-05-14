@@ -42,8 +42,10 @@ static void update_clan_powers(void)
 
     if(bonus.hp || bonus.pw)
     {
+        int oldhpmax = u.uhpmax;
         u.uhpmax += bonus.hp;
         u.uenmax += bonus.pw;
+        send_session_event("change_stat", u.uhpmax, oldhpmax, "hpmax");
         changed = 1;
     }
     if(bonus.ac)
@@ -172,6 +174,7 @@ moveloop(boolean resuming)
     get_clan_powers_delta(&bonus);
 
     bag_of_sharing_sync_all();
+    int prev_hunger = u.uhunger;
 
     for (;;) {
 #ifdef SAFERHANGUP
@@ -444,6 +447,10 @@ moveloop(boolean resuming)
         /****************************************/
         /* once-per-player-input things go here */
         /****************************************/
+
+        if (u.uhunger != prev_hunger) {
+            send_session_event_timed("change_stat", u.uhunger, prev_hunger, "hunger", 10);
+        }
 
         clear_splitobjs();
         find_ac();

@@ -903,12 +903,14 @@ static void
 savelife(int how)
 {
     int oldhp = u.uhp;
+    int oldhpmax = u.uhpmax;
     int uhpmin = max(2 * u.ulevel, 10);
 
     if (u.uhpmax < uhpmin)
         u.uhpmax = uhpmin;
     u.uhp = u.uhpmax;
     send_session_event("change_stat", u.uhp, oldhp, "hp");
+    send_session_event("change_stat", u.uhpmax, oldhpmax, "hpmax");
     if (Upolyd) /* Unchanging, or death which bypasses losing hit points */
         u.mh = u.mhmax;
     if (u.uhunger < 500 || how == CHOKING) {

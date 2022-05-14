@@ -2,10 +2,12 @@ use crate::ipc::{Error, Ipc, Result};
 use crate::nh_proto::{ObjData, SessionEvent};
 use core::ptr::null_mut;
 use nethack_rs::{g, obj};
+use std::collections::HashMap;
+use std::ops::Add;
 use std::ptr::null;
-use std::sync::mpsc::{channel, Receiver, RecvError, Sender};
+use std::sync::mpsc::{channel, Receiver, RecvError, RecvTimeoutError, Sender};
 use std::thread::JoinHandle;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 use std::{cell::RefCell, os::raw::c_char};
 use std::{
     ffi::{CStr, CString},
@@ -13,9 +15,14 @@ use std::{
     rc::Rc,
 };
 
+enum NHEvent {
+    Session(SessionEvent),
+    Timed(SessionEvent, i32),
+}
+
 thread_local! {
     static IPC: RefCell<Option<Rc<RefCell<Ipc>>>> = RefCell::new(None);
-    static EVENT_SENDER: RefCell<Option<Sender<SessionEvent>>> = RefCell::new(None);
+    static EVENT_SENDER: RefCell<Option<Sender<NHEvent>>> = RefCell::new(None);
 }
 static mut PLAYER_LOGIN_ID: Option<i32> = None;
 static mut SESSION_START_TIME: Option<i32> = None;
@@ -79,7 +86,13 @@ fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
     }
 }
 
-fn event_sender_thread(evt_channel: Receiver<SessionEvent>) {
+struct QueuedEventState {
+    deadline: Instant,
+    evt: SessionEvent,
+}
+
+fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
+    let mut deadline_by_name_and_str: HashMap<(String, String), QueuedEventState> = HashMap::new();
     loop {
         if unsafe { core::ptr::read(&PLAYER_LOGIN_ID as *const Option<i32>) }.is_none() {
             std::thread::sleep(Duration::from_millis(100))
@@ -87,11 +100,45 @@ fn event_sender_thread(evt_channel: Receiver<SessionEvent>) {
         if unsafe { core::ptr::read(&SESSION_START_TIME as *const Option<i32>) }.is_none() {
             std::thread::sleep(Duration::from_millis(100))
         }
-        match evt_channel.recv() {
-            Ok(evt) => {
-                let _ = until_io_success(|ipc| ipc.send_session_event(evt.clone()));
+        let min_deadline = deadline_by_name_and_str.values().min_by_key(|s| s.deadline);
+        let result = if let Some(state) = min_deadline {
+            evt_channel.recv_timeout(state.deadline.duration_since(Instant::now()))
+        } else {
+            evt_channel
+                .recv()
+                .map_err(|_: RecvError| RecvTimeoutError::Disconnected)
+        };
+        match result {
+            Ok(evt) => match evt {
+                NHEvent::Session(evt) => {
+                    let _ = until_io_success(|ipc| ipc.send_session_event(evt.clone()));
+                }
+                NHEvent::Timed(evt, min_delay) => {
+                    let entry = deadline_by_name_and_str
+                        .entry((evt.name.clone(), evt.string_value.clone()));
+                    entry
+                        .and_modify(|state: &mut QueuedEventState| {
+                            state.evt.value = evt.value;
+                        })
+                        .or_insert_with(|| QueuedEventState {
+                            evt: evt.clone(),
+                            deadline: Instant::now().add(Duration::from_secs(min_delay as u64)),
+                        });
+                }
+            },
+            Err(RecvTimeoutError::Timeout) => {
+                let mut to_remove = Vec::new();
+                for (id, state) in &deadline_by_name_and_str {
+                    if state.deadline <= Instant::now() {
+                        to_remove.push(id.clone());
+                    }
+                }
+                for id in to_remove {
+                    let state = deadline_by_name_and_str.remove(&id).unwrap();
+                    let _ = until_io_success(|ipc| ipc.send_session_event(state.evt.clone()));
+                }
             }
-            _ => return,
+            Err(RecvTimeoutError::Disconnected) => return,
         }
     }
 }
@@ -325,6 +372,16 @@ pub unsafe extern "C" fn send_session_event(
     previous_value: i32,
     string_value: *const c_char,
 ) {
+    let evt = make_session_event(evt_name, string_value, previous_value, value);
+    enqueue_event(NHEvent::Session(evt));
+}
+
+unsafe fn make_session_event(
+    evt_name: *const i8,
+    string_value: *const i8,
+    previous_value: i32,
+    value: i32,
+) -> SessionEvent {
     let evt_name = if evt_name != null_mut() {
         std::ffi::CStr::from_ptr(evt_name)
             .to_string_lossy()
@@ -346,6 +403,10 @@ pub unsafe extern "C" fn send_session_event(
         value,
         string_value,
     };
+    evt
+}
+
+unsafe fn enqueue_event(evt: NHEvent) {
     if EVENT_SENDER_THREAD.is_none() {
         let (sender, receiver) = channel();
         EVENT_SENDER.with(|evt_sender| {
@@ -356,4 +417,16 @@ pub unsafe extern "C" fn send_session_event(
     EVENT_SENDER.with(|sender| {
         let _ = sender.borrow().as_ref().unwrap().send(evt);
     })
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn send_session_event_timed(
+    evt_name: *const c_char,
+    new_value: i32,
+    previous_value: i32,
+    string_value: *const c_char,
+    min_delay_seconds: i32,
+) {
+    let evt = make_session_event(evt_name, string_value, previous_value, new_value);
+    enqueue_event(NHEvent::Timed(evt, min_delay_seconds));
 }

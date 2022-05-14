@@ -1152,6 +1152,7 @@ void
 healup(int nhp, int nxtra, boolean curesick, boolean cureblind)
 {
     int oldhp = u.uhp;
+    int oldhpmax = u.uhpmax;
     if (nhp) {
         if (Upolyd) {
             u.mh += nhp;
@@ -1165,6 +1166,9 @@ healup(int nhp, int nxtra, boolean curesick, boolean cureblind)
     }
     if (oldhp != u.uhp) {
         send_session_event("change_stat", u.uhp, oldhp, "hp");
+    }
+    if (oldhpmax != u.uhpmax) {
+        send_session_event("change_stat", u.uhpmax, oldhpmax, "hpmax");
     }
     if (cureblind) {
         /* 3.6.1: it's debatible whether healing magic should clean off
