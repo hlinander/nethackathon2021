@@ -1464,7 +1464,7 @@ goto_level(d_level *newlevel, boolean at_stairs, boolean falling, boolean portal
             char buf[32];
             sprintf(buf, "%d", depth(&u.uz));
             task_complete("reach", buf);
-            send_session_event("reach_depth", depth(u.uz), 0, NULL);
+            send_session_event("reach_depth", depth(&u.uz), 0, NULL);
         }
         mklev();
         new = TRUE; /* made the level */
