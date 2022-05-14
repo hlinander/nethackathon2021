@@ -102,7 +102,7 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
         }
         let min_deadline = deadline_by_name_and_str.values().min_by_key(|s| s.deadline);
         let result = if let Some(state) = min_deadline {
-            evt_channel.recv_timeout(state.deadline.duration_since(Instant::now()))
+            evt_channel.recv_timeout(state.deadline.saturating_duration_since(Instant::now()))
         } else {
             evt_channel
                 .recv()
