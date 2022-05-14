@@ -197,7 +197,7 @@ def death_cam(tr, start):
 		time.sleep(1/30)
 	set_4x4_size()
 
-def run():
+def run(ttydir):
 	recs = [ load_tty('272.ttyrec'), load_tty('272.ttyrec'), load_tty('272.ttyrec'), load_tty('272.ttyrec') ]
 	start = time.time()
 	frame = 0
@@ -243,7 +243,7 @@ def set_fullscreen_size():
 
 show_cursor(False)
 set_4x4_size()
-# load_font('nhmon/font.txt')
-# run()
+load_font('nhmon/font.txt')
+run(sys.argv[1])
 show_cursor(True)
 
