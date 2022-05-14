@@ -519,10 +519,14 @@ explode(int x, int y,
                 damu *= 2;
             /* hero does not get same fire-resistant vs cold and
                cold-resistant vs fire double damage as monsters [why not?] */
+            int oldhp = u.uhp;
             if (Upolyd)
                 u.mh -= damu;
             else
                 u.uhp -= damu;
+            if (u.uhp != oldhp) {
+                send_session_event("change_stat", u.uhp, oldhp, "hp");
+            }
             g.context.botl = 1;
         }
 

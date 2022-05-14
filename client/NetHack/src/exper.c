@@ -197,6 +197,7 @@ void
 losexp(const char *drainer) /* cause of death, if drain should be fatal */
 {
     register int num;
+    int oldhp = u.uhp;
 
     /* override life-drain resistance when handling an explicit
        wizard mode request to reduce level; never fatal though */
@@ -228,6 +229,9 @@ losexp(const char *drainer) /* cause of death, if drain should be fatal */
         u.uhp = 1;
     else if (u.uhp > u.uhpmax)
         u.uhp = u.uhpmax;
+    if (oldhp != u.uhp) {
+        send_session_event("change_stat", u.uhp, oldhp, "hp");
+    }
 
     num = (int) u.ueninc[u.ulevel];
     u.uenmax -= num;
@@ -270,6 +274,7 @@ void
 pluslvl(boolean incr) /* true iff via incremental experience growth */
 {                     /*        (false for potion of gain level)    */
     int hpinc, eninc;
+    int oldhp = u.uhp;
 
     if (!incr)
         You_feel("more experienced.");
@@ -284,6 +289,9 @@ pluslvl(boolean incr) /* true iff via incremental experience growth */
     hpinc = newhp();
     u.uhpmax += hpinc;
     u.uhp += hpinc;
+    if (u.uhp != oldhp) {
+        send_session_event("change_stat", u.uhp, oldhp, "hp");
+    }
 
     /* increase spell power/energy points */
     eninc = newpw();
@@ -304,6 +312,9 @@ pluslvl(boolean incr) /* true iff via incremental experience growth */
             u.uexp = newuexp(u.ulevel);
         }
         ++u.ulevel;
+
+        send_session_event("change_stat", u.ulevel, u.ulevel - 1, "level");
+
         pline("Welcome %sto experience level %d.",
               (u.ulevelmax < u.ulevel) ? "" : "back ",
               u.ulevel);

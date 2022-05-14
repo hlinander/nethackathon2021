@@ -1151,6 +1151,7 @@ peffects(struct obj *otmp)
 void
 healup(int nhp, int nxtra, boolean curesick, boolean cureblind)
 {
+    int oldhp = u.uhp;
     if (nhp) {
         if (Upolyd) {
             u.mh += nhp;
@@ -1161,6 +1162,9 @@ healup(int nhp, int nxtra, boolean curesick, boolean cureblind)
             if (u.uhp > u.uhpmax)
                 u.uhp = (u.uhpmax += nxtra);
         }
+    }
+    if (oldhp != u.uhp) {
+        send_session_event("change_stat", u.uhp, oldhp, "hp");
     }
     if (cureblind) {
         /* 3.6.1: it's debatible whether healing magic should clean off
@@ -1608,6 +1612,7 @@ potionbreathe(struct obj *obj)
 {
     int i, ii, isdone, kn = 0;
     boolean cureblind = FALSE;
+    int oldhp = u.uhp;
 
     /* potion of unholy water might be wielded; prevent
        you_were() -> drop_weapon() from dropping it so that it
@@ -1653,6 +1658,9 @@ potionbreathe(struct obj *obj)
             u.mh++, g.context.botl = 1;
         if (u.uhp < u.uhpmax)
             u.uhp++, g.context.botl = 1;
+        if (oldhp != u.uhp) {
+            send_session_event("change_stat", u.uhp, oldhp, "hp");
+        }
         cureblind = TRUE;
         /*FALLTHRU*/
     case POT_EXTRA_HEALING:
@@ -1660,6 +1668,9 @@ potionbreathe(struct obj *obj)
             u.mh++, g.context.botl = 1;
         if (u.uhp < u.uhpmax)
             u.uhp++, g.context.botl = 1;
+        if (oldhp != u.uhp) {
+            send_session_event("change_stat", u.uhp, oldhp, "hp");
+        }
         if (!obj->cursed)
             cureblind = TRUE;
         /*FALLTHRU*/
@@ -1670,6 +1681,9 @@ potionbreathe(struct obj *obj)
             u.uhp++, g.context.botl = 1;
         if (obj->blessed)
             cureblind = TRUE;
+        if (oldhp != u.uhp) {
+            send_session_event("change_stat", u.uhp, oldhp, "hp");
+        }
         if (cureblind) {
             make_blinded(0L, !u.ucreamed);
             make_deaf(0L, TRUE);
@@ -1688,6 +1702,9 @@ potionbreathe(struct obj *obj)
                     u.uhp = 1;
                 else
                     u.uhp -= 5;
+            }
+            if (oldhp != u.uhp) {
+                send_session_event("change_stat", u.uhp, oldhp, "hp");
             }
             g.context.botl = 1;
             exercise(A_CON, FALSE);

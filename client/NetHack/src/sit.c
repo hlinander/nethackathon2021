@@ -187,6 +187,7 @@ dosit(void)
                 }
                 if (u.uhp >= (u.uhpmax - 5))
                     u.uhpmax += 4;
+                send_session_event("change_stat", u.uhpmax, u.uhp, "hp");
                 u.uhp = u.uhpmax;
                 u.ucreamed = 0;
                 make_blinded(0L, TRUE);

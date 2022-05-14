@@ -3117,7 +3117,11 @@ losehp(register int n, register const char *knam, boolean k_format)
         return;
     }
 
+    int oldhp = u.uhp;
     u.uhp -= n;
+    if (u.uhp != oldhp) {
+        send_session_event("change_stat", u.uhp, oldhp, "hp");
+    }
     if (u.uhp > u.uhpmax)
         u.uhpmax = u.uhp; /* perhaps n was negative */
     if (u.uhp < 1) {

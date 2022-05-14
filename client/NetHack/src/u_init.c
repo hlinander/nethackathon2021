@@ -632,6 +632,16 @@ u_init(void)
     team_bonus bonus;
     struct u_roleplay tmpuroleplay = u.uroleplay; /* set by rcfile options */
 
+#if defined(BSD) && !defined(POSIX_TYPES)
+    (void) time((long *) &ubirthday);
+#else
+    (void) time(&ubirthday);
+#endif
+    {
+        uint32_t uid = atoi(getenv("DB_USER_ID"));
+        rust_ipc_init(uid, ubirthday);
+    }
+
     flags.female = flags.initgend;
     flags.beginner = 1;
 
@@ -683,6 +693,7 @@ u_init(void)
 
     u.ulevel = 0; /* set up some of the initial attributes */
     u.uhp = u.uhpmax = newhp() + bonus.hp;
+    send_session_event("change_stat", u.uhp, 0, "hp");
     u.uen = u.uenmax = newpw() + bonus.pw;
     u.uspellprot = 0;
     adjabil(0, 1);
@@ -694,12 +705,6 @@ u_init(void)
     u.ublesscnt = 300; /* no prayers just yet */
     u.ualignbase[A_CURRENT] = u.ualignbase[A_ORIGINAL] = u.ualign.type =
         aligns[flags.initalign].value;
-
-#if defined(BSD) && !defined(POSIX_TYPES)
-    (void) time((long *) &ubirthday);
-#else
-    (void) time(&ubirthday);
-#endif
 
     /*
      *  For now, everyone starts out with a night vision range of 1 and

@@ -1439,6 +1439,7 @@ arti_invoke(struct obj *obj)
         }
         case HEALING: {
             int healamt = (u.uhpmax + 1 - u.uhp) / 2;
+            int oldhp = u.uhp;
             long creamed = (long) u.ucreamed;
 
             if (Upolyd)
@@ -1452,6 +1453,9 @@ arti_invoke(struct obj *obj)
                     u.mh += healamt;
                 else
                     u.uhp += healamt;
+                if (u.uhp != oldhp) {
+                    send_session_event("change_stat", u.uhp, oldhp, "hp");
+                }
             }
             if (Sick)
                 make_sick(0L, (char *) 0, FALSE, SICK_ALL);

@@ -2202,11 +2202,15 @@ fpostfx(struct obj *otmp)
                 rehumanize();
             }
         } else {
+            int oldhp = u.uhp;
             u.uhp += otmp->cursed ? -rnd(20) : rnd(20);
             if (u.uhp > u.uhpmax) {
                 if (!rn2(17))
                     u.uhpmax++;
                 u.uhp = u.uhpmax;
+                if (u.uhp != oldhp) {
+                    send_session_event("change_stat", u.uhp, oldhp, "hp");
+                }
             } else if (u.uhp <= 0) {
                 g.killer.format = KILLED_BY_AN;
                 Strcpy(g.killer.name, "rotten lump of royal jelly");

@@ -40,6 +40,8 @@ struct attribs {
     schar a[A_MAX];
 };
 
+const char *const attrname[A_MAX];
+
 #define ATTRMAX(x)                                        \
     ((x == A_STR && Upolyd && strongmonst(g.youmonst.data)) \
          ? STR18(100)                                     \

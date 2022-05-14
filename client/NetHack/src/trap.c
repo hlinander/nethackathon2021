@@ -5781,6 +5781,7 @@ void
 sink_into_lava(void)
 {
     static const char sink_deeper[] = "You sink deeper into the lava.";
+    int oldhp = u.uhp;
 
     if (!u.utrap || u.utraptype != TT_LAVA) {
         ; /* do nothing; this usually won't happen but could after
@@ -5794,8 +5795,10 @@ sink_into_lava(void)
            enough to become stuck in lava, but it can happen without
            resistance if water walking boots allow survival and then
            get burned up; u.utrap time will be quite short in that case */
-        if (!Fire_resistance)
+        if (!Fire_resistance) {
             u.uhp = (u.uhp + 2) / 3;
+            send_session_event("change_stat", u.uhp, oldhp, "hp");
+        }
 
         u.utrap -= (1 << 8);
         if (u.utrap < (1 << 8)) {

@@ -302,10 +302,6 @@ main(int argc, char *argv[])
             }
         }
     }
-    {
-        uint32_t uid = atoi(getenv("DB_USER_ID"));
-        rust_ipc_init(uid, ubirthday);
-    }
 
     if (!resuming) {
         boolean neednewlock = (!*g.plname);

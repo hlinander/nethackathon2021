@@ -1667,7 +1667,11 @@ mdamageu(struct monst *mtmp, int n)
         if (u.mh < 1)
             rehumanize();
     } else {
+        int oldhp = u.uhp;
         u.uhp -= n;
+        if (u.uhp != oldhp) {
+            send_session_event("change_stat", u.uhp, oldhp, "hp");
+        }
         if (u.uhp < 1)
             done_in_by(mtmp, DIED);
     }
@@ -1735,6 +1739,7 @@ doseduce(struct monst *mon)
                    && Mgender(mon) == FEMALE); /* otherwise incubus */
     boolean seewho, naked; /* True iff no armor */
     int attr_tot, tried_gloves = 0;
+    int oldhp = u.uhp;
     char qbuf[QBUFSZ], Who[QBUFSZ];
 
     if (mon->mcan || mon->mspec_used) {
@@ -1990,6 +1995,7 @@ doseduce(struct monst *mon)
         case 4:
             You_feel("restored to health!");
             u.uhp = u.uhpmax;
+            send_session_event("change_stat", u.uhp, oldhp, "hp");
             if (Upolyd)
                 u.mh = u.mhmax;
             exercise(A_STR, TRUE);

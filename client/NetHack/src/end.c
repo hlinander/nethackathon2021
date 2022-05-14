@@ -902,11 +902,13 @@ disclose(int how, boolean taken)
 static void
 savelife(int how)
 {
+    int oldhp = u.uhp;
     int uhpmin = max(2 * u.ulevel, 10);
 
     if (u.uhpmax < uhpmin)
         u.uhpmax = uhpmin;
     u.uhp = u.uhpmax;
+    send_session_event("change_stat", u.uhp, oldhp, "hp");
     if (Upolyd) /* Unchanging, or death which bypasses losing hit points */
         u.mh = u.mhmax;
     if (u.uhunger < 500 || how == CHOKING) {
@@ -1132,6 +1134,7 @@ done(int how)
     if(ASCENDED == how)
     {
         task_complete("ascend", NULL);
+        send_session_event("ascend", 0, 0, NULL);
     }
 
     boolean survive = FALSE;

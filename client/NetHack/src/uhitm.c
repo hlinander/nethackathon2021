@@ -2363,10 +2363,14 @@ mhitm_ad_tlpt(struct monst *magr, struct attack *mattk, struct monst *mdef,
                        be indistinguishable from zero damage; we don't drop
                        damage all the way to zero because that inhibits any
                        passive counterattack if poly'd hero has one */
+                    int oldhp = u.uhp;
                     if (Upolyd && u.mh == 1)
                         ++u.mh;
                     else if (!Upolyd && u.uhp == 1)
                         ++u.uhp;
+                    if (oldhp != u.uhp) {
+                        send_session_event("change_stat", u.uhp, oldhp, "hp");
+                    }
                     /* [don't set context.botl here] */
                 }
             }
@@ -3604,6 +3608,7 @@ mhitm_ad_heal(struct monst *magr, struct attack *mattk, struct monst *mdef,
                 if (u.mh > u.mhmax)
                     u.mh = u.mhmax;
             } else {
+                int oldhp = u.uhp;
                 u.uhp += rnd(7);
                 if (!rn2(7)) {
                     /* hard upper limit via nurse care: 25 * ulevel */
@@ -3614,6 +3619,9 @@ mhitm_ad_heal(struct monst *magr, struct attack *mattk, struct monst *mdef,
                 }
                 if (u.uhp > u.uhpmax)
                     u.uhp = u.uhpmax;
+                if (oldhp != u.uhp) {
+                    send_session_event("change_stat", u.uhp, oldhp, "hp");
+                }
             }
             if (!rn2(3))
                 exercise(A_STR, TRUE);

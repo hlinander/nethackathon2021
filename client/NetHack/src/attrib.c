@@ -181,6 +181,9 @@ adjattrib(int ndx, int incr, int msgflg) /* positive => no message, zero => mess
         }
         return FALSE;
     }
+    if (ACURR(ndx) != old_acurr) {
+        send_session_event("change_stat", ACURR(ndx), old_acurr, attrname[ndx]);
+    }
 
     if (msgflg <= 0)
         You_feel("%s%s!", (incr > 1 || incr < -1) ? "very " : "", attrstr);
@@ -212,6 +215,7 @@ void
 losestr(int num)
 {
     int ustr = ABASE(A_STR) - num;
+    int oldhp = u.uhp;
 
     while (ustr < 3) {
         ++ustr;
@@ -223,6 +227,9 @@ losestr(int num)
             u.uhp -= 6;
             u.uhpmax -= 6;
         }
+    }
+    if (u.uhp != oldhp) {
+        send_session_event("change_stat", u.uhp, oldhp, "hp");
     }
     (void) adjattrib(A_STR, -num, 1);
 }

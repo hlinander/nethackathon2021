@@ -56,6 +56,7 @@ static void update_clan_powers(void)
     {
         if(0 != bonus.stats[i])
         {
+            int oldstats = ACURR(i);
             ABASE(i) += bonus.stats[i];
             AMAX(i) += bonus.stats[i];
 
@@ -63,6 +64,9 @@ static void update_clan_powers(void)
             {
                 ABASE(i) = ATTRMAX(i);
                 AMAX(i) = ATTRMAX(i);
+            }
+            if (ACURR(i) != oldstats) {
+                send_session_event("change_stat", ACURR(i), oldstats, attrname[i]);
             }
             changed = 1;
         }
@@ -555,6 +559,7 @@ static void
 regen_hp(int wtcap)
 {
     int heal = 0;
+    int oldhp = 0;
     boolean reached_full = FALSE,
             encumbrance_ok = (wtcap < MOD_ENCUMBER || !u.umoved);
 
@@ -608,9 +613,13 @@ regen_hp(int wtcap)
 
             if (heal) {
                 g.context.botl = TRUE;
+                oldhp = u.uhp;
                 u.uhp += heal;
                 if (u.uhp > u.uhpmax)
                     u.uhp = u.uhpmax;
+                if (u.uhp != oldhp) {
+                    send_session_event("change_stat", u.uhp, oldhp, "hp");
+                }
                 /* stop voluntary multi-turn activity if now fully healed */
                 reached_full = (u.uhp == u.uhpmax);
             }

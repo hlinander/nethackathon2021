@@ -275,8 +275,9 @@ change_sex(void)
 static void
 newman(void)
 {
-    int i, oldlvl, newlvl, hpmax, enmax;
+    int i, oldlvl, newlvl, hpmax, enmax, oldhp;
 
+    oldhp = u.uhp;
     oldlvl = u.ulevel;
     newlvl = oldlvl + rn1(5, -2);     /* new = old + {-2,-1,0,+1,+2} */
     if (newlvl > 127 || newlvl < 1) { /* level went below 0? */
@@ -332,6 +333,7 @@ newman(void)
         hpmax = u.ulevel; /* min of 1 HP per level */
     /* retain same proportion for current HP; u.uhp * hpmax / u.uhpmax */
     u.uhp = rounddiv((long) u.uhp * (long) hpmax, u.uhpmax);
+    send_session_event("change_stat", u.uhp, oldhp, "hp");
     u.uhpmax = hpmax;
     /*
      * Do the same for spell power.

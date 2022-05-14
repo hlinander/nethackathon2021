@@ -2568,6 +2568,7 @@ mondead(register struct monst* mtmp)
             }
         }
     }
+    send_session_event("kill", 0, 0, pmname(mptr, NEUTRAL));
 
     if (glyph_is_invisible(levl[mtmp->mx][mtmp->my].glyph))
         unmap_object(mtmp->mx, mtmp->my);

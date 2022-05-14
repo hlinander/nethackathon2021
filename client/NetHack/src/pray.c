@@ -387,6 +387,7 @@ fix_worst_trouble(int trouble)
             u.uhpmax += rnd(5);
         if (u.uhpmax <= 5)
             u.uhpmax = 5 + 1;
+        send_session_event("change_stat", u.uhpmax, u.uhp, "hp");
         u.uhp = u.uhpmax;
         g.context.botl = 1;
         break;
@@ -1086,6 +1087,7 @@ pleased(aligntyp g_align)
                 if (Upolyd)
                     u.mhmax += 5;
             }
+            send_session_event("change_stat", u.uhpmax, u.uhp, "hp");
             u.uhp = u.uhpmax;
             if (Upolyd)
                 u.mh = u.mhmax;

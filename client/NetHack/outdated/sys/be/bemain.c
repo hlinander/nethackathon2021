@@ -93,6 +93,10 @@ attempt_restore:
             }
         }
     }
+    {
+        uint32_t uid = atoi(getenv("DB_USER_ID"));
+        rust_ipc_init(uid, ubirthday);
+    }
 
     if (!resuming) {
         /* new game:  start by choosing role, race, etc;
