@@ -30,8 +30,14 @@ early_init(void)
     sys_early_init();
 }
 
+time_t last_clan_power_sync = 0;
+
 static void update_clan_powers(void)
 {
+    if (time() <= last_clan_power_sync) {
+        return
+    }
+    last_clan_power_sync = time();
     team_bonus bonus;
     memset(&bonus, 0, sizeof(bonus));
 
