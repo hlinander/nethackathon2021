@@ -34,8 +34,7 @@ time_t last_clan_power_sync = 0;
 
 static void update_clan_powers(void)
 {
-    time_t now;
-    time(now);
+    time_t now = time(NULL);
     if (now <= last_clan_power_sync) {
         return;
     }
