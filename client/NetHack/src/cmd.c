@@ -204,6 +204,38 @@ static int dogemstore(void)
    return 0;
 }
 
+static int doavanza(void)
+{
+  char session_id[128];
+  Sprintf(session_id, "%ld", ubirthday);
+  const char * const args[] =
+  {
+      PYTHON_BIN, 
+      "avanza.py",
+      getenv("DB_USER_ID"),
+      session_id,
+      NULL
+  };
+
+  pid_t pid;
+
+  if(-1 != (pid = fork()))
+  {
+      if(0 == pid)
+      {
+          execv(PYTHON_BIN, args);
+          exit(0);
+      }
+      else
+      {
+          wait(NULL);
+          doredraw();
+      }
+   }
+
+   return 0;
+}
+
 static int
 doprev_message(void)
 {
@@ -1870,6 +1902,8 @@ struct ext_func_tab extcmdlist[] = {
               doforce, AUTOCOMPLETE, NULL },
     { '\0',   "gemstore", "access the Yendorian Gem Store! Spend your Power Gems(tm)!",
               dogemstore, AUTOCOMPLETE | IFBURIED | GENERALCMD , NULL },
+    { '\0',   "avanza", "access the stonk market",
+              doavanza, AUTOCOMPLETE | IFBURIED | GENERALCMD , NULL },
     { ';',    "glance", "show what type of thing a map symbol corresponds to", 
               doquickwhatis, IFBURIED | GENERALCMD, NULL },
     { '?',    "help", "give a help message",
