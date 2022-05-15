@@ -287,7 +287,7 @@ def get_stonk(player_id, name, nsteps, time_start, time_end):
     time_steps = np.linspace(timestamp_start, timestamp_stop, nsteps)
     xp = np.array([stonk.timestamp.timestamp() for stonk in stonks])
     fp = np.array([stonk.value for stonk in stonks])
-    return np.interp(time_steps, xp, fp), list(zip(xp, fp))
+    return np.interp(time_steps, xp, fp)
 
 def insert_stonk(player_id, name, value, timestamp):
     session.add(Stonk(
