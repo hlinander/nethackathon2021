@@ -282,11 +282,24 @@ def get_stonk(player_id, name, nsteps, time_start, time_end):
               .filter(Stonk.timestamp > time_start)
               .filter(Stonk.timestamp < time_end)
               .order_by(Stonk.timestamp))
+    if stonks.first() is None:
+        stonk = (session.query(Stonk)
+                  .filter_by(player_id=player_id, name=name)
+                  .filter(Stonk.timestamp < time_end)
+                  .order_by(Stonk.timestamp)
+                  .first())
+        if stonk is None:
+            return [0] * nsteps
+
+        xp = [time_start.timestamp(), time_end.timestamp()]
+        fp = [stonk.value, stonk.value]
+    else:
+        xp = np.array([stonk.timestamp.timestamp() for stonk in stonks])
+        fp = np.array([stonk.value for stonk in stonks])
+
     timestamp_start = time_start.timestamp()
     timestamp_stop = time_end.timestamp()
     time_steps = np.linspace(timestamp_start, timestamp_stop, nsteps)
-    xp = np.array([stonk.timestamp.timestamp() for stonk in stonks])
-    fp = np.array([stonk.value for stonk in stonks])
     return np.interp(time_steps, xp, fp)
 
 def insert_stonk(player_id, name, value, timestamp):

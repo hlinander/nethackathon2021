@@ -5,6 +5,10 @@ import sys, random
 def movecursor(x, y):
     print( "\x1b[%d;%df" % (y, x) , flush=False, end='' )
 
+
+def clear():
+    print(chr(27) + "[2J")
+
 def paint_frames(frames):
 
     max_x = 0
@@ -110,11 +114,17 @@ def candlechart(x, y, w, h, values):
     # Add in some margins
     vmax = vmax_in + deltav_in * 2
     vmin = vmin_in - deltav_in * 2
+    if not (deltav_in > 0):
+        vmax = vmax_in + 1
+        vmin = vmin_in - 1
     deltav = (vmax - vmin) / h
 
 
     def v_to_y(v):
-        return (v - vmin) / deltav
+        if deltav > 0:
+            return (v - vmin) / deltav
+        else:
+            return
 
     def y_to_v(y):
         return vmin + deltav * y
