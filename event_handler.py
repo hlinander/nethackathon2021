@@ -92,7 +92,7 @@ def event_loop():
     event_handler = get_event_handler()
     next_tick_time = event_handler.last_handled_timestamp + TIME_PER_TICK
     while True:
-        while datetime.datetime.now() > next_tick_time:
+        while datetime.datetime.utcnow() > next_tick_time:
             # time.sleep(TIME_PER_TICK)
             sys.stdout.write(".")
             sys.stdout.flush()
@@ -103,7 +103,7 @@ def event_loop():
             event_handler.last_handled_timestamp = next_tick_time
             next_tick_time += TIME_PER_TICK
 
-        time.sleep(TIME_PER_TICK)
+        time.sleep(TIME_PER_TICK.total_seconds())
 
 def reset_last_handled_timestamp():
     event_handler = get_event_handler()
