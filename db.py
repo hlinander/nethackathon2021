@@ -101,7 +101,8 @@ class StonkHolding(Base):
     id = Column(Integer, primary_key=True)
     fraction = Column(Float, default=1.0)
     clan_id = Column(Integer, ForeignKey("clans.id"))
-    stonk_id = Column(Integer, ForeignKey("stonk.id"))
+    player_id = Column(Integer, ForeignKey("players.id"))
+    stonk_name = Column(String)
     buy_event_id = Column(Integer, ForeignKey("event.id"))
     long = Column(Boolean)
     # stonk = relationship(Stonk)
@@ -292,16 +293,16 @@ def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires, buy_long)
     if stonk is not None:
         if stonk.value > 0:
             fraction = spent_gems / stonk.value
-            insert_stonk_holding(clan.id, event.session_start_time, stonk.id, event.id, fraction, expires, buy_long)
+            insert_stonk_holding(clan.id, event.session_start_time, stonk.name, event.id, fraction, expires, buy_long)
         else:
             print("Stonk is free!")
     else:
         print(f"Tried to buy non-existent stonk {stonk_player_id}: {stonk_name}")
 
-def insert_stonk_holding(clan_id, session_start_time, stonk_id, event_id, fraction, expires_turn, buy_long):
+def insert_stonk_holding(player_id, session_start_time, stonk_name, event_id, fraction, expires_turn, buy_long):
     session.add(StonkHolding(
-        clan_id=clan_id,
-        stonk_id=stonk_id,
+        player_id=player_id,
+        stonk_name=stonk_name,
         buy_event_id=event_id,
         expires_turn=expires_turn,
         fraction=fraction,

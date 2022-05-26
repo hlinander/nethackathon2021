@@ -125,7 +125,7 @@ def update_stonks(timestamp):
 
 
 def pay_out(stonk_holding):
-    stonk = db.session.query(db.Stonk).filter_by(id=stonk_holding.stonk_id).first()
+    stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
     roi = stonk_holding.fraction * stonk.value
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)
@@ -133,7 +133,7 @@ def pay_out(stonk_holding):
 
 def handle_transactions(timestamp):
     for stonk_holding in db.get_stonk_holdings():
-        stonk = db.session.query(db.Stonk).filter_by(id=stonk_holding.stonk_id).first()
+        stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
         stonk_player_turn = players[stonk.player_id]["last_turn"]
         if stonk_player_turn >= stonk_holding.expires_turn:
             buy_event = db.session.query(db.Event).filter_by(id=stonk_holding.buy_event_id).first()
