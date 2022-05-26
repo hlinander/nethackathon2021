@@ -64,7 +64,7 @@ def handle_event(event):
     dispatch = get_dispatch()
 
     _ensure_player(event)
-    print(event.__dict__)
+    # print(event.__dict__)
     if event.name in dispatch:
         dispatch[event.name](event)
     else:
@@ -124,21 +124,42 @@ def update_stonks(timestamp):
     db.session.commit()
 
 
-def pay_out(stonk_holding):
+def pay_out_long(stonk_holding):
     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
     roi = stonk_holding.fraction * stonk.value
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)
     print(f"Clan {stonk_holding.clan_id} recieved {roi} gems")
 
+def handle_death(event):
+    shorts = db.session.query(db.StonkHolding).filter_by(player_id=event.player_id, session_start_time=event.session_start_time, long=False)
+    delete = []
+    for short in shorts:
+        pay_out_long(short)
+        delete.append(short.id)
+
+    for d in delete:
+        db.delete_holding(d)
+
 def handle_transactions(timestamp):
+    delete_holdings = []
     for stonk_holding in db.get_stonk_holdings():
         stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
         stonk_player_turn = players[stonk.player_id]["last_turn"]
         if stonk_player_turn >= stonk_holding.expires_turn:
+            print("After expire turn!")
             buy_event = db.session.query(db.Event).filter_by(id=stonk_holding.buy_event_id).first()
+            # print(buy_event.__dict__)
+            # import pdb; pdb.set_trace()
+            delete_holdings.append(stonk_holding.id)
             if db.get_transaction(buy_event) is None:
-                pay_out(stonk_holding)
+                if stonk_holding.session_start_time == players[stonk.player_id]["current_session"]:
+                    print("Payed out stonk!")
+                    pay_out_long(stonk_holding)
+
+    for holding_id in delete_holdings:
+        db.delete_holding(holding_id)
+
 
 def save_state():
     event_handler = get_event_handler()
@@ -158,8 +179,17 @@ def _ensure_player(event):
 def _handle_reach_depth(event):
     players[event.player_id]["dlevel"] = event.value
 
+# def pay_out_short(stonk_holding):
+#     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
+#     roi = stonk_holding.fraction * stonk.value
+#     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
+#     db.add_transaction(stonk_holding.buy_event_id)
+#     print(f"Clan {stonk_holding.clan_id} recieved {roi} gems")
+
 def _handle_change_stat(event):
     players[event.player_id][event.string_value] = event.value
+
+
 
 def _handle_buy_stonk(event):
     stonk_player_id = event.extra["stonk_player_id"]
@@ -187,7 +217,7 @@ def event_loop():
         while datetime.datetime.utcnow() > next_tick_time:
             if datetime.datetime.utcnow() > std_out_time:
                 std_out_time = datetime.datetime.utcnow() + datetime.timedelta(seconds=5)
-                print(next_tick_time)
+                # print(next_tick_time)
 
             unhandled_events = get_events_between(event_handler.last_handled_timestamp, next_tick_time)
             if unhandled_events.first() is None:
