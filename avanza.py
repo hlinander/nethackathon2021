@@ -59,9 +59,13 @@ def update(stdscr, cpstate, player_order):
         stdscr.addstr(y, 0, row)
         if player_index < len(player_order):
             if my_id == player_order[player_index]:
+                player_index += 1
                 continue
             player_id = player_order[player_index]
             player = cpstate[player_id]
+            if player['hp'] <= 0
+                player_index += 1
+                continue
             full_name = get_full_name(player)
             if selected_player_id == player_id:
                 stdscr.addstr(y, 61, ' ' + full_name + (' ' * (17 - len(full_name))), item_color(1))
