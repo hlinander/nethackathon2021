@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="1">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body { 
+        background-color:black;
+        color: beige;
+      }
+      .player {
+        color:brown;
+        margin-right: 16px;
+      }
+      .logo {
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <img src="static/stonkathon.jpg" class="logo"/>
+      <h1>CLAN LEADERBOARD:</h1>
+      {{range .Clans}}
+      <div style="display: flex; font-size: 60px">
+        <div class="player">{{ .Name }}</div>
+        <div>{{ .Power_gems }}</div>
+      </div>
+      {{else}}
+      <div><strong>NO PLAYERS</strong></div>
+      {{end}}
+    </div>
+  </body>
+</html>
