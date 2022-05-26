@@ -343,10 +343,13 @@ def run(ttydir):
 				color = int(4 - (3 * (it['live']['hp'] / it['live']['maxhp'])))
 			else:
 				color = 0
+			interest = 0
 			if 'player_state' in it:
 				player_state = it['player_state']
 			if player_state and 'player_name' in player_state:
-				player_name = player_state['player_name'] + " (" + str(it['interest']) + ")"
+				if interest in it:
+					interest = str(it['interest'])
+				player_name = player_state['player_name'] + " (" + interest + ")"
 			else:
 				player_name = "Loading.."
 			framedata.append((screen_x, screen_y, MON_W+2, MON_H+2, player_name, color))
