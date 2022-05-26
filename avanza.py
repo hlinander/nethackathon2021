@@ -277,8 +277,6 @@ def main(stdscr):
 
 
 db.open_db()
-print(db.get_stonk_holdings())
-sys.exit(123)
 
 if True:
     logo = open('avanza.txt').read()
