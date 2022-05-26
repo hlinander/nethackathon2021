@@ -123,7 +123,7 @@ def update(stdscr, cpstate, player_order):
 
     gems = str(1234)
 
-    hp = db.get_stonk(int(selected_player_id), "stonk", 100, datetime.datetime.utcnow() - datetime.timedelta(minutes=5), datetime.datetime.utcnow())
+    hp = db.get_stonk_series(int(selected_player_id), "stonk", 100, datetime.datetime.utcnow() - datetime.timedelta(minutes=5), datetime.datetime.utcnow())
     jens.candlechart(stdscr, 1, 1, 57, 19, hp, (green, red))
 
     if state == 4:

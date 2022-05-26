@@ -1,5 +1,5 @@
 import sqlalchemy
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binary, Time, DateTime, JSON, Float
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binary, Time, DateTime, JSON, Float, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 import datetime
@@ -103,6 +103,7 @@ class StonkHolding(Base):
     clan_id = Column(Integer, ForeignKey("clans.id"))
     stonk_id = Column(Integer, ForeignKey("stonk.id"))
     buy_event_id = Column(Integer, ForeignKey("event.id"))
+    long = Column(Boolean)
     # stonk = relationship(Stonk)
     # clan = relationship(Clan)
     # buy_event = relationship(Event)
@@ -284,30 +285,31 @@ def add_clan_power(clan_id, power, level):
     return power
 
 
-def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires):
+def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires, buy_long):
     p = session.query(Player).filter_by(id=event.player_id).first()
     clan = session.query(Clan).filter_by(id=p.clan).first()
     stonk = get_stonk(stonk_player_id, stonk_name)
     if stonk is not None:
         if stonk.value > 0:
             fraction = spent_gems / stonk.value
-            insert_stonk_holding(clan.id, stonk.id, event.id, fraction, expires)
+            insert_stonk_holding(clan.id, stonk.id, event.id, fraction, expires, buy_long)
         else:
             print("Stonk is free!")
     else:
         print(f"Tried to buy non-existent stonk {stonk_player_id}: {stonk_name}")
 
-def insert_stonk_holding(player_id, stonk_id, event_id, fraction, expires_turn):
+def insert_stonk_holding(player_id, stonk_id, event_id, fraction, expires_turn, buy_long):
     clan = get_clan(player_id)
     session.add(StonkHolding(
         clan_id=clan.id,
         stonk_id=stonk_id,
         buy_event_id=event_id,
         expires_turn=expires_turn,
-        fraction=fraction
+        fraction=fraction,
+        long=buy_long
         ))
 
-def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, spent_gems, expires):
+def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, spent_gems, expires, buy_long):
     p = session.query(Player).filter_by(id=player_id).first()
     item = Event(
         player_id=player_id,
@@ -319,7 +321,8 @@ def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_playe
             stonk_player_id=stonk_player_id,
             stonk_name=stonk_name,
             expires_delta=expires,
-            spent_gems=spent_gems
+            spent_gems=spent_gems,
+            buy_long=buy_long
         )
         )
     session.add(item)

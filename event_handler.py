@@ -99,12 +99,12 @@ def calculate_stonk(player):
     dlevel_stonk = dlevel / 60.0
     level_stonk = 1.0 - level / 30.0
 
-    print("hunger_stonk", hunger_stonk)
-    print("hp_stonk", hp_stonk)
-    print("hp_stonk2", hp_stonk2)
-    print("ac_stonk", ac_stonk)
-    print("dlevel_stonk", dlevel_stonk)
-    print("level_stonk", level_stonk)
+    # print("hunger_stonk", hunger_stonk)
+    # print("hp_stonk", hp_stonk)
+    # print("hp_stonk2", hp_stonk2)
+    # print("ac_stonk", ac_stonk)
+    # print("dlevel_stonk", dlevel_stonk)
+    # print("level_stonk", level_stonk)
 
     stonk = hunger_stonk * 8 + hp_stonk * 30 + hp_stonk2 * 20 + ac_stonk * 10 + dlevel_stonk * 20 + level_stonk * 20
     return stonk
@@ -133,7 +133,8 @@ def pay_out(stonk_holding):
 
 def handle_transactions(timestamp):
     for stonk_holding in db.get_stonk_holdings():
-        stonk_player_turn = players[stonk_holding.stonk.player_id]["last_turn"]
+        stonk = db.session.query(db.Stonk).filter_by(id=stonk_holding.stonk_id).first()
+        stonk_player_turn = players[stonk.player_id]["last_turn"]
         if stonk_player_turn >= stonk_holding.expires_turn:
             if db.get_transaction(stonk_holding.buy_event) is None:
                 pay_out(stonk_holding)
@@ -165,12 +166,14 @@ def _handle_buy_stonk(event):
     expires_delta = event.extra["expires_delta"]
     spent_gems = event.extra["spent_gems"]
     stonk_player_turn = players[stonk_player_id]["last_turn"]
+    buy_long = event.extra["buy_long"]
 
     stonk_holding = db.buy_stonk(event,
                                  stonk_player_id,
                                  stonk_name,
                                  spent_gems,
-                                 stonk_player_turn + expires_delta)
+                                 stonk_player_turn + expires_delta,
+                                 buy_long)
 
 
 def event_loop():
