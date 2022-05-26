@@ -175,6 +175,7 @@ def _ensure_player(event):
             player_name=player.username,
             player_ticker=player.ticker)
     players[event.player_id]["last_turn"] = event.session_turn
+    players[event.player_id]["last_event_time"] = event.timestamp.timestamp()
     players[event.player_id]["current_session"] = event.session_start_time
 
 def _handle_reach_depth(event):
