@@ -258,7 +258,7 @@ def parse_packet(connection, data):
     e = nh_pb2.Event()
     e.ParseFromString(data)
     e_type = e.WhichOneof("msg")
-    #print(e)
+    print(e)
     return dispatch[e_type](connection, getattr(e, e_type))
 
     #dispatch[event_type](reader)
@@ -328,6 +328,7 @@ while True:
                 size = struct.unpack("<I", connections[fileno]["buffer"][:4])[0]
                 if len(connections[fileno]["buffer"][4:]) >= size:
                     responses = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])
+                    print(responses)
                     db.session.commit()
                     for response in responses:
                         response_data = response.SerializeToString()

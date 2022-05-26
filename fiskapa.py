@@ -2,6 +2,7 @@ import pyte
 import struct
 import time
 import re
+import datetime
 import sys
 import random
 import os
@@ -42,7 +43,7 @@ def _load_tty(filename):
 
 def load_tty(user_id, filename):
 	return { 'user_id': user_id, 'live': _load_tty(filename), 'death': _load_tty(filename),
-		'filename': filename, 'created': time.time() }
+		 'filename': filename, 'created': time.time(), 'mtime': 0 }
 
 def read_time(tr):
 	try:
@@ -246,10 +247,13 @@ def update_rec_list(ttydir, recs):
 			if k == it['user_id']:
 				if it['filename'] != v['path']: # new file
 					recs[i] = load_tty(k, v['path'])
+				it['mtime'] = v['mtime']
 				found = True
 				break
 		if not found:
-			recs.append(load_tty(k, v['path']))
+			ttyfile = load_tty(k, v['path'])
+			ttyfile['mtime'] = v['mtime']
+			recs.append(ttyfile)
 
 
 def get_long_amount(player_state):
@@ -269,8 +273,16 @@ def get_short_amount(player_state):
 def interest_level(rec, all_player_states):
 	if 'player_state' in rec:
 		player_state = rec['player_state']
-		if 'hp' in player_state and 'max_hp' in player_state and player_state['max_hp'] != 0:
-			hp_percentage = player_state['hp'] / player_state['max_hp']
+		if 'dlevel' in player_state:
+			rec['dlevel'] = player_state['dlevel']
+		if 'hp' in player_state and 'hpmax' in player_state and player_state['hpmax'] != 0:
+			hp = player_state['hp']
+			hpmax = player_state['hpmax']
+			rec['hp'] = hp
+			rec['hpmax'] = hpmax
+			if hp <= 0:
+				return -1.0
+			hp_percentage = hp / hpmax
 		else:
 			hp_percentage = 1.0
 
@@ -281,9 +293,16 @@ def interest_level(rec, all_player_states):
 		player_investment = get_long_amount(player) + get_short_amount(player)
 
 		investment_interest = player_investment / total_investment if total_investment != 0 else 0
-		
-		return 1.0 - hp_percentage + investment_interest
-	return 0
+
+		time_since_active = 0
+		if 'last_event_time' in player_state:
+			time_since_active = datetime.datetime.now().timestamp() - rec['mtime'] #player_state['last_event_time']
+
+		rec['time_since_active'] = time_since_active
+		active_modifier = 1.0 - max(0, min(1, time_since_active / 180.0)) * 0.5
+		# print(str(rec['user_id']) + " " + str(active_modifier))
+		return (1.0 - hp_percentage + investment_interest + 0.1) * active_modifier
+	return 0.0
 
 def rec_interest_sort_key(rec, all_player_states):
 	return interest_level(rec, all_player_states)
@@ -298,6 +317,13 @@ def choose_on_display(on_display, recs):
 			player_state = player_states[str(it['user_id'])]
 			it['player_state'] = player_state
 			it['interest'] = interest_level(it, player_states)
+		for i, display in enumerate(on_display):
+			if display['rec']['user_id'] == it['user_id'] and display['rec'] != it:
+				on_display[i]['rec'] = it
+
+
+
+
 
 	sorted_recs = sorted(recs, reverse=True, key=lambda x: rec_interest_sort_key(x, player_states))
 	
@@ -314,9 +340,9 @@ def choose_on_display(on_display, recs):
 		else:
 			current = on_display[i]
 			time_live = time.time() - current['live_at']
-			if time_live > 15:
+			if time_live > 15 or current['rec']['live']['dead']:
 				current_interest_level = interest_level(current['rec'], player_states)
-				current_interest_level *= 1.0 - min(time_live / 60.0, 1.0) * 0.85
+				current_interest_level *= 1.0 - min(time_live / 360, 1.0) * 0.35
 				if len(sorted_not_displayed) > 0:
 					other = sorted_not_displayed[0]
 					other_interest_level = interest_level(other, player_states)
@@ -356,13 +382,27 @@ def run(ttydir):
 					screen_y = d['y']
 					break
 			run_tty(it['live'], start, screen_x, screen_y, exists)
-			interest = 0
+			time_since_active = int(0)
+			interest = 0.0
+			hp = 0
+			hpmax = 0
+			dlevel = 0
 			if 'player_state' in it:
 				player_state = it['player_state']
-			if player_state and 'player_name' in player_state:
-				if 'interest' in it:
-					interest = it['interest']
-				player_name = player_state['player_name'] + " (" + str(interest) + ")"
+				if player_state and 'player_name' in player_state:
+					if 'interest' in it:
+						interest = it['interest']
+					if 'time_since_active' in it:
+						time_since_active =it['time_since_active'] 
+					if 'hp' in it:
+						hp =it['hp'] 
+					if 'hpmax' in it:
+						hpmax = it['hpmax'] 
+					if 'dlevel' in it:
+						dlevel = it['dlevel'] 
+				interest_float = str.format("{:.1f}", interest)
+				player_name = player_state['player_name'] + "  " + str(hp) + "/" + str(hpmax) + " hp  dlevel " + \
+						str(dlevel) + "                                           i:" + interest_float
 			else:
 				player_name = "Loading.."
 			if it['live']['dead']:

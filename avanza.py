@@ -287,6 +287,10 @@ def main(stdscr):
 def movecursor(x, y):
     print("\x1b[%d;%df" % (y, x), end='')
 
+my_id = int(sys.argv[1])
+my_turn = int(sys.argv[2])
+my_session = int(sys.argv[3])
+
 if True:
     logo = open('avanza.txt').read()
     logo = list(logo)
@@ -317,8 +321,5 @@ if True:
             sys.exit(123)
     print('\x1b[?25h')
 
-my_id = int(sys.argv[1])
-my_turn = int(sys.argv[2])
-my_session = int(sys.argv[3])
 
 wrapper(main)

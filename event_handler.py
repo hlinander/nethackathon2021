@@ -7,6 +7,7 @@ import sys
 import datetime
 from dataclasses import dataclass
 import argparse
+import math
 
 
 # Gamble på död innan efter utdelning random
@@ -17,7 +18,6 @@ START_OF_TIME = datetime.datetime.fromtimestamp(1645291485)
 state = dict(
     players = dict()
 )
-players = state["players"]
 
 def get_dispatch():
     return dict(
@@ -68,12 +68,11 @@ def handle_event(event):
     # print(event.__dict__)
     if event.name in dispatch:
         dispatch[event.name](event)
-    else:
-        print(event.__dict__)
+    # else:
+    #     print(event.__dict__)
 
     event_handler = get_event_handler()
     event_handler.last_handled_timestamp = max(event.timestamp, event_handler.last_handled_timestamp)
-    db.session.commit()
 
 def handle_events(events):
     for event in events:
@@ -87,6 +86,8 @@ def calculate_stonk(player):
     # if hp <= 0:
     #     return 0
     maxhp = player.get("hpmax", hp) + 1
+    if maxhp <= 0:
+        maxhp = 1
     hunger = player.get("hunger", 0)
     ac = player.get("ac", 0)
     dlevel = player.get("dlevel", 0)
@@ -127,11 +128,12 @@ def update_stonks(timestamp):
 
 def pay_out_long(stonk_holding):
     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
-    turn_fraction = stonk_holding.expire_delta / 250.
-    roi = turn_fraction * stonk_holding.fraction * stonk.value
+    turn_fraction = stonk_holding.expires_delta / 250.
+    roi = math.ceil(turn_fraction * stonk_holding.fraction * stonk.value)
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)
     print(f"Clan {stonk_holding.clan_id} recieved {roi} gems")
+    open("/tmp/payouts", "a").write(f"Clan {stonk_holding.clan_id} recieved {roi} gems. {stonk_holding.__dict__}\n")
 
 def _handle_player_death(event):
     print(f"Player death! {event.__dict__}")
@@ -148,7 +150,7 @@ def handle_transactions(timestamp):
     delete_holdings = []
     for stonk_holding in db.get_stonk_holdings():
         stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
-        stonk_player_turn = players[stonk.player_id]["last_turn"]
+        stonk_player_turn = state["players"][str(stonk.player_id)]["last_turn"]
         if stonk_player_turn >= stonk_holding.expires_turn:
             print("After expire turn!")
             buy_event = db.session.query(db.Event).filter_by(id=stonk_holding.buy_event_id).first()
@@ -156,7 +158,8 @@ def handle_transactions(timestamp):
             # import pdb; pdb.set_trace()
             delete_holdings.append(stonk_holding.id)
             if db.get_transaction(buy_event) is None:
-                if stonk_holding.session_start_time == players[stonk.player_id]["current_session"]:
+                print(stonk_holding.session_start_time, " =?= ", state["players"][str(stonk.player_id)]["current_session"])
+                if stonk_holding.session_start_time == state["players"][str(stonk.player_id)]["current_session"]:
                     print("Payed out stonk!")
                     pay_out_long(stonk_holding)
 
@@ -167,21 +170,22 @@ def handle_transactions(timestamp):
 def save_state():
     event_handler = get_event_handler()
     event_handler.state = state
+    print(event_handler.state)
     db.session.commit()
 
 def _ensure_player(event):
-    if not event.player_id in players:
+    if not str(event.player_id) in state["players"]:
         player = db.get_player(event.player_id)
-        players[event.player_id] = dict(
+        state["players"][str(event.player_id)] = dict(
             dlevel=1,
             player_name=player.username,
             player_ticker=player.ticker)
-    players[event.player_id]["last_turn"] = event.session_turn
-    players[event.player_id]["last_event_time"] = event.timestamp.timestamp()
-    players[event.player_id]["current_session"] = event.session_start_time
+    state["players"][str(event.player_id)]["last_turn"] = event.session_turn
+    state["players"][str(event.player_id)]["last_event_time"] = event.timestamp.timestamp()
+    state["players"][str(event.player_id)]["current_session"] = event.session_start_time
 
 def _handle_reach_depth(event):
-    players[event.player_id]["dlevel"] = event.value
+    state["players"][str(event.player_id)]["dlevel"] = event.value
 
 # def pay_out_short(stonk_holding):
 #     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
@@ -191,7 +195,9 @@ def _handle_reach_depth(event):
 #     print(f"Clan {stonk_holding.clan_id} recieved {roi} gems")
 
 def _handle_change_stat(event):
-    players[event.player_id][event.string_value] = event.value
+    if event.string_value not in state["players"][str(event.player_id)]:
+        print(f"New stat: {event.string_value}")
+    state["players"][str(event.player_id)][event.string_value] = event.value
 
 
 
@@ -201,10 +207,12 @@ def _handle_buy_stonk(event):
     stonk = db.get_stonk(stonk_player_id, stonk_name)
     expires_delta = event.extra["expires_delta"]
     spent_gems = event.extra["spent_gems"]
-    stonk_player_turn = players[stonk_player_id]["last_turn"]
+    stonk_player_turn = state["players"][str(stonk_player_id)]["last_turn"]
     buy_long = event.extra["buy_long"]
 
+    # event.session_start_time = state["players"][event.player_id]
     stonk_holding = db.buy_stonk(event,
+                                 state["players"][str(stonk_player_id)]["current_session"],
                                  stonk_player_id,
                                  stonk_name,
                                  spent_gems,
@@ -214,11 +222,17 @@ def _handle_buy_stonk(event):
 
 
 def event_loop():
+    global TIME_PER_TICK
     event_handler = get_event_handler()
     next_tick_time = event_handler.last_handled_timestamp + TIME_PER_TICK
     std_out_time = datetime.datetime.utcnow()
     while True:
         while datetime.datetime.utcnow() > next_tick_time:
+            if datetime.datetime.utcnow() - next_tick_time > datetime.timedelta(minutes=30):
+                TIME_PER_TICK = datetime.timedelta(hours=1)
+            else:
+                TIME_PER_TICK = datetime.timedelta(seconds=2)
+
             if datetime.datetime.utcnow() > std_out_time:
                 std_out_time = datetime.datetime.utcnow() + datetime.timedelta(seconds=5)
                 # print(next_tick_time)
@@ -234,6 +248,7 @@ def event_loop():
                     if delta > datetime.timedelta(days=1):
                         next_tick_time = earliest_after.timestamp
                         print(f"Updating empty delta {delta}")
+            print(f"Unhandled events: {unhandled_events.count()}")
             handle_events(unhandled_events)
             update_stonks(next_tick_time)
             handle_transactions(next_tick_time)
@@ -253,6 +268,15 @@ def reset_last_handled_timestamp():
     db.reset_stonks()
     db.session.commit()
 
+
+def reload_state():
+    global state
+    event_handler = get_event_handler()
+    state = event_handler.state
+    print(state)
+    input()
+
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true")
@@ -264,4 +288,6 @@ if __name__ == "__main__":
     db.open_db()
     if args.reset:
         reset_last_handled_timestamp()
+    else:
+        reload_state()
     event_loop()

@@ -287,14 +287,14 @@ def add_clan_power(clan_id, power, level):
     return power
 
 
-def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires, expires_delta, buy_long):
+def buy_stonk(event, stonk_player_session_time, stonk_player_id, stonk_name, spent_gems, expires, expires_delta, buy_long):
     p = session.query(Player).filter_by(id=event.player_id).first()
-    print(p.__dict__)
+    # print(p.__dict__)
     stonk = get_stonk(stonk_player_id, stonk_name)
     if stonk is not None:
         if stonk.value > 0:
             fraction = spent_gems / stonk.value
-            insert_stonk_holding(p.clan, event.session_start_time, stonk_player_id, stonk.name, event.id, fraction, expires, expires_delta, buy_long)
+            insert_stonk_holding(p.clan, stonk_player_session_time, stonk_player_id, stonk.name, event.id, fraction, expires, expires_delta, buy_long)
         else:
             print("Stonk is free!")
     else:
@@ -311,7 +311,7 @@ def insert_stonk_holding(clan_id, session_start_time, stonk_player_id, stonk_nam
         fraction=fraction,
         long=buy_long,
         session_start_time=session_start_time
-        ))
+    ))
 
 def delete_holding(holding_id):
     stonk_holding = session.query(StonkHolding).filter_by(id=holding_id).first()
