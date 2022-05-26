@@ -8,5 +8,6 @@ paths = [ (python38.withPackages(ps: with ps; [
     protobuf
     ipython
     numpy
+    readchar
 ])) protobuf ];
 }

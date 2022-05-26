@@ -4,9 +4,11 @@ from curses import wrapper
 import session
 import db
 import jens
+import os
 import datetime
 import sys
 import time
+import readchar
 
 INC_EXPIRY = 250
 MIN_EXPIRY = 250
@@ -26,6 +28,7 @@ yellow = None
 green = None
 list_name = None
 selected_item = None
+invest = False
 
 expiry = MIN_EXPIRY
 buy_long = True
@@ -153,6 +156,9 @@ def update(stdscr, cpstate, player_order):
         stdscr.addstr(16, 3, '║                                                                         ║')
         stdscr.addstr(17, 3, '╚═════════════════════════════════════════════════════════════════════════╝')
 
+def view_stonks():
+    db.open_db()
+    db.get_stonk_holdings()
 
 def main(stdscr):
     global no_color
@@ -197,11 +203,14 @@ def main(stdscr):
     list_name = yellow
     selected_item = curses.color_pair(8) | curses.A_REVERSE
 
+    if not invest:
+        return view_stonks()
+
     cpstate = {
         '1': { 'player_name': 'pellsson', 'player_ticker': 'PLS', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18},
         '2': { 'player_name': 'Aransentin', 'player_ticker': 'ARS', 'hp': 110, 'hpmax': 492, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 1828, 'dlevel': 4},
-        '3': { 'player_name': 'pellsson2', 'player_ticker': 'PLS', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18},
-        '4': { 'player_name': 'pellsson3', 'player_ticker': 'PLS', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18}
+        '3': { 'player_name': 'pellsson2', 'player_ticker': 'PLX', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18},
+        '4': { 'player_name': 'pellsson3', 'player_ticker': 'PLZ', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18}
     }
 
     player_order = [ it[0] for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
@@ -211,7 +220,6 @@ def main(stdscr):
         print('NO STONKS')
         input()
         return
-
     quit = False
     update_at = 0
 
@@ -268,19 +276,32 @@ def main(stdscr):
         update_at = 0
 
 
-if False:
+db.open_db()
+print(db.get_stonk_holdings())
+sys.exit(123)
+
+if True:
     logo = open('avanza.txt').read()
     logo = list(logo)
 
     for i in range(0, len(logo)):
-        if logo[i] not in ['\n', '\r', '\t', '$', ' ']:
+        if logo[i] in ['1','2','3']:
+            logo[i] = '\x1b[1;33m' + logo[i]
+        elif logo[i] not in ['\n', '\r', '\t', '$', ' ']:
             logo[i] = '\x1b[1;37m' + logo[i]
 
     logo = ''.join(logo)
     logo = logo.replace('$', '\x1b[1;32m$')
 
     print('\x1b[?25l\x1b[2J%s' % (logo))
-    input()
+    while True:
+        v = readchar.readchar()
+        if v == '1':
+            invest = True
+            break
+        elif v == '2':
+            invest = False
+            break
     print('\x1b[?25h')
 
 my_id = int(sys.argv[1])
