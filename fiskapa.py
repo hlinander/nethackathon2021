@@ -343,7 +343,7 @@ def run(ttydir):
 		update_rec_list(ttydir, recs)
 		choose_on_display(on_display, recs)
 		framedata = []
-		time.sleep(1/30)
+		# time.sleep(1/30)
 		i = 0
 		for it in recs:
 			screen_x = 0
@@ -360,7 +360,7 @@ def run(ttydir):
 			if 'player_state' in it:
 				player_state = it['player_state']
 			if player_state and 'player_name' in player_state:
-				if interest in it:
+				if 'interest' in it:
 					interest = it['interest']
 				player_name = player_state['player_name'] + " (" + str(interest) + ")"
 			else:
@@ -373,7 +373,8 @@ def run(ttydir):
 				color = int(4 - (3 * (it['live']['hp'] / it['live']['maxhp'])))
 			else:
 				color = 0
-			framedata.append((screen_x, screen_y, MON_W+2, MON_H+2, player_name, color))
+			if exists:
+				framedata.append((screen_x, screen_y, MON_W+2, MON_H+2, player_name, color))
 		reset()
 		jens.paint_frames(framedata)
 		recs = [it for it in recs if not it['live']['dead']]

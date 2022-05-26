@@ -7,6 +7,7 @@ import datetime
 import fiskapa
 import time
 import sys
+import session
 
 
 def get_stonks():
@@ -49,7 +50,7 @@ def interest_level(stonk, player_states):
 last_live_time = {}
 
 def choose_on_display(on_display, all_stonks):
-    player_states = db.session.get_state()['players']
+    player_states = session.get_state()['players']
     holdings = db.session.query(db.StonkHolding)
     investment_by_stonk_id = {}
     for holding in holdings:
