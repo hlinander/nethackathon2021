@@ -32,12 +32,24 @@ def get_stonks():
 
     return all_stonks
 
-def interest_level(stonk):
-    return stonk['investment'] + 0.1
+def interest_level(stonk, player_states):
+    is_active = True
+    if stonk['player_id'] in player_states:
+        player_state = player_states[stonk['player_id']] 
+        if 'last_event_time' in player_state:
+            time_since_last = time.time() - player_state['last_event_time']
+            if time_since_last > 60:
+                is_active = False
+
+    value = stonk['investment'] + 0.1
+    if not is_active:
+        value *= 0.1
+    return value
 
 last_live_time = {}
 
 def choose_on_display(on_display, all_stonks):
+    player_states = db.session.get_state()['players']
     holdings = db.session.query(db.StonkHolding)
     investment_by_stonk_id = {}
     for holding in holdings:
@@ -71,11 +83,11 @@ def choose_on_display(on_display, all_stonks):
             last_live_time[(stonk['player_id'], stonk['stonk_name'])] = time.time()
             time_live = time.time() - current['live_at']
             if time_live > 10:
-                current_interest_level = interest_level(current['stonk'])
+                current_interest_level = interest_level(current['stonk'], player_states)
                 current_interest_level *= 1.0 - min(time_live / 60.0, 1.0) * 0.85
                 if len(sorted_not_displayed) > 0:
                     other = sorted_not_displayed[0]
-                    other_interest_level = interest_level(other)
+                    other_interest_level = interest_level(other, player_states)
                     other_last_live_time = 0
                     if (stonk['player_id'], stonk['stonk_name']) in last_live_time:
                         other_last_live_time = last_live_time[(stonk['player_id'], stonk['stonk_name'])]
