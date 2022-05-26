@@ -208,11 +208,14 @@ static int doavanza(void)
 {
   char session_id[128];
   Sprintf(session_id, "%ld", ubirthday);
+  char turns_num[128];
+  Sprintf(turns_num, "%ld", g.moves);
   const char * const args[] =
   {
       PYTHON_BIN, 
       "avanza.py",
       getenv("DB_USER_ID"),
+      turns_num,
       session_id,
       NULL
   };
