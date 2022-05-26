@@ -32,8 +32,7 @@ invest = False
 
 expiry = MIN_EXPIRY
 buy_long = True
-cost = 1234
-total_gems = 4567
+cost = 0
 
 selected_player_id = None
 
@@ -49,6 +48,10 @@ def item_color(s):
 
 def update(stdscr, cpstate, player_order):
     global selected_player_id
+    global cost
+
+    total_gems = db.get_clan(my_id).power_gems
+
     player_index = 0
     full_name = get_full_name(cpstate[selected_player_id])
     top = '╔═╣ ' + full_name + ' ╠' + ('═' * (38 + (16 - len(full_name)))) + '╦═╣ Stonks ╠═══════╗'
@@ -67,8 +70,9 @@ def update(stdscr, cpstate, player_order):
                 player_index += 1
                 continue
             full_name = get_full_name(player)
+            cost = db.get_stonk(int(selected_player_id), "stonk").value
             if selected_player_id == player_id:
-                stdscr.addstr(y, 61, ' ' + full_name + (' ' * (17 - len(full_name))), item_color(1))
+                stdscr.addstr(y, 61, ' ' + full_name + (' ' * (17 - len(full_name))), item_color(0))
                 y += 1
                 stdscr.addstr(y, 0, row)
                 stdscr.addstr(y, 64, 'HP: ', stat_color)
@@ -124,8 +128,8 @@ def update(stdscr, cpstate, player_order):
     stdscr.addstr(' ╠══╝')
     stdscr.insstr(y+4, 2, "═")
 
-    hp = db.get_stonk_series(int(selected_player_id), "stonk", 100, datetime.datetime.utcnow() - datetime.timedelta(minutes=5), datetime.datetime.utcnow())
-    jens.candlechart(stdscr, 1, 1, 57, 19, hp, (green, red))
+    stank = db.get_stonk_series(int(selected_player_id), "stonk", 100, datetime.datetime.utcnow() - datetime.timedelta(minutes=5), datetime.datetime.utcnow())
+    jens.candlechart(stdscr, 1, 1, 57, 19, stank, (green, red))
 
     if state == 4:
         # ("═", "║", "╔", "╗", "╚", "╝", "╦", "╩", "╠", "╣", "╬")
@@ -207,18 +211,20 @@ def main(stdscr):
     if not invest:
         return view_stonks()
 
-    cpstate = session.get_state()['players']
-    player_order = [ it[0] for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
-    selected_player_id = player_order[0]
-
-    if len(player_order) == 0 or (1 == len(player_order) and player_order[0] == my_id):
-        print('NO STONKS')
-        input()
-        return
     quit = False
     update_at = 0
 
     while not quit:
+        cpstate = session.get_state()['players']
+        del cpstate[my_id]
+        player_order = [ it[0] for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
+        selected_player_id = player_order[0]
+
+        if len(player_order) == 0 or (1 == len(player_order) and player_order[0] == my_id):
+            print('NO STONKS')
+            input()
+            return
+
         if time.time() >= update_at:
             update(stdscr, cpstate, player_order)
             update_at = time.time() + 1
