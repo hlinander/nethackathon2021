@@ -1,4 +1,4 @@
- curses
+import curses
 import re
 from curses import wrapper
 import session
