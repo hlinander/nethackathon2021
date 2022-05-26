@@ -203,7 +203,7 @@ def main(stdscr):
     if not invest:
         return view_stonks()
 
-    cpstate = session.get_state()
+    cpstate = session.get_state()['players']
     player_order = [ it[0] for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
     selected_player_id = player_order[0]
 
