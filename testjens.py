@@ -55,7 +55,7 @@ def choose_on_display(on_display, all_stonks):
 
     sorted_stonks = sorted(all_stonks, reverse=True, key=lambda x: x['investment'])
 	
-    sorted_not_displayed = list(filter(lambda x: not any(o == x for o in on_display), sorted_stonks))
+    sorted_not_displayed = list(filter(lambda x: not any(o['stonk'] == x for o in on_display), sorted_stonks))
 
     for i in range(4):
         if len(on_display) <= i:
