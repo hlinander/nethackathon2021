@@ -321,6 +321,8 @@ def delete_holding(holding_id):
 def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, spent_gems, expires, buy_long):
     p = session.query(Player).filter_by(id=player_id).first()
     clan = session.query(Clan).filter_by(id=p.clan).first()
+    if clan.power_gems < spent_gems:
+        return
     clan.power_gems -= spent_gems
     item = Event(
         player_id=player_id,

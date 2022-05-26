@@ -94,14 +94,35 @@ def convert_line(line):
 			n += '\x1b[0;31m'
 		elif v.fg == 'green':
 			n += '\x1b[1;32m'
-		else:
-			print(v)
-			raise 'fiskapa'
+		elif v.fg == 'blue':
+			n += '\x1b[1;34m'
+		elif v.fg == 'cyan':
+			n += '\x1b[1;36m'
+		elif v.fg == 'yellow':
+			n += '\x1b[1;33m'
+		elif v.fg == 'magenta':
+			n += '\x1b[1;35m'
+
 		if v.bg == 'default':
 			n += '' # '\x1b[0;100m'
-		else:
-			print(v)
-			raise 'horamamma'
+		elif v.bg == 'brown':
+			n += '\x1b[0;43m'
+		elif v.bg == 'white':
+			n += '\x1b[1;47m'
+		elif v.bg == 'black':
+			n += '\x1b[0;40m'
+		elif v.bg == 'red':
+			n += '\x1b[0;41m'
+		elif v.bg == 'green':
+			n += '\x1b[1;42m'
+		elif v.bg == 'blue':
+			n += '\x1b[1;44m'
+		elif v.bg == 'cyan':
+			n += '\x1b[1;46m'
+		elif v.bg == 'yellow':
+			n += '\x1b[1;43m'
+		elif v.bg == 'magenta':
+			n += '\x1b[1;45m'
 		out[x] = n + v.data
 		plain[x] = v.data
 	return ''.join(out), ''.join(plain)
@@ -340,8 +361,8 @@ def run(ttydir):
 				player_state = it['player_state']
 			if player_state and 'player_name' in player_state:
 				if interest in it:
-					interest = str(it['interest'])
-				player_name = player_state['player_name'] + " (" + interest + ")"
+					interest = it['interest']
+				player_name = player_state['player_name'] + " (" + str(interest) + ")"
 			else:
 				player_name = "Loading.."
 			if it['live']['dead']:
