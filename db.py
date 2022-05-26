@@ -1,7 +1,7 @@
 import sqlalchemy
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binary, Time, DateTime, JSON
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binary, Time, DateTime, JSON, Float
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, relationship
 import datetime
 import os
 import numpy as np
@@ -99,11 +99,25 @@ class Stonk(Base):
 class StonkHolding(Base):
     __tablename__ = "stonk_holding"
     id = Column(Integer, primary_key=True)
+    fraction = Column(Float, default=1.0)
     clan_id = Column(Integer, ForeignKey("clans.id"))
     stonk_id = Column(Integer, ForeignKey("stonk.id"))
+    buy_event_id = Column(Integer, ForeignKey("event.id"))
+    # stonk = relationship(Stonk)
+    # clan = relationship(Clan)
+    # buy_event = relationship(Event)
     expires_turn = Column(Integer)
     session_start_time = Column(Integer)
+
+class Transactions(Base):
+    __tablename__ = "transactions"
+    id = Column(Integer, primary_key=True)
+    event_id = Column(Integer, ForeignKey("event.id"))
+
     # sold =
+
+def get_transaction(event):
+    return session.query(Transactions).filter_by(event_id=event.id).first()
 
 
 # class CertificateOwner(Base):
@@ -144,6 +158,12 @@ class StonkHolding(Base):
 # 	primary key(id));
 
 
+
+def add_transaction(event_id):
+    t = Transaction(event_id=event_id)
+    session.add(t)
+    session.flush()
+    return t.id
 
 def add_clan(name):
     c = Clan(name=name)
@@ -264,25 +284,30 @@ def add_clan_power(clan_id, power, level):
     return power
 
 
-def buy_stonk(player_id, stonk_player_id, stonk_name, expires):
-    p = session.query(Player).filter_by(id=player_id).first()
+def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires):
+    p = session.query(Player).filter_by(id=event.player_id).first()
     clan = session.query(Clan).filter_by(id=p.clan).first()
     stonk = get_stonk(stonk_player_id, stonk_name)
-    if clan.power_gems >= stonk.value:
-        clan.power_gems -= stonk.value
-        insert_stonk_holding(clan.id, stonk.id, expires)
-        return True
-    return None
+    if stonk is not None:
+        if stonk.value > 0:
+            fraction = spent_gems / stonk.value
+            insert_stonk_holding(clan.id, stonk.id, event.id, fraction, expires)
+        else:
+            print("Stonk is free!")
+    else:
+        print(f"Tried to buy non-existent stonk {stonk_player_id}: {stonk_name}")
 
-def insert_stonk_holding(player_id, stonk_id, expires_turn):
+def insert_stonk_holding(player_id, stonk_id, event_id, fraction, expires_turn):
     clan = get_clan(player_id)
     session.add(StonkHolding(
         clan_id=clan.id,
         stonk_id=stonk_id,
-        expires_turn=expires_turn
+        buy_event_id=event_id,
+        expires_turn=expires_turn,
+        fraction=fraction
         ))
 
-def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, expires):
+def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, spent_gems, expires):
     p = session.query(Player).filter_by(id=player_id).first()
     item = Event(
         player_id=player_id,
@@ -293,18 +318,22 @@ def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_playe
         extra=dict(
             stonk_player_id=stonk_player_id,
             stonk_name=stonk_name,
-            expires_delta=expires
+            expires_delta=expires,
+            spent_gems=spent_gems
         )
         )
     session.add(item)
     session.commit()
 
+def add_clan_gems_for_clan(clan_id, gems):
+    clan = session.query(Clan).filter_by(id=clan_id).first()
+    clan.power_gems += gems
+    session.commit()
+    return clan.power_gems
 
 def add_clan_gems_for_player(player_id, gems):
     p = session.query(Player).filter_by(id=player_id).first()
-    clan = session.query(Clan).filter_by(id=p.clan).first()
-    clan.power_gems += gems
-    session.commit()
+    add_clan_gems_for_clan(p.clan_id, gems)
     return clan.power_gems
 
 def add_clan_power_for_player(player_id, name, level, cost):
@@ -322,6 +351,7 @@ def add_clan_power_for_player(player_id, name, level, cost):
 
     session.commit()
     return power.level
+
 
 def get_clan(player_id):
     p = session.query(Player).filter_by(id=player_id).first()
@@ -350,6 +380,10 @@ def get_stonk(player_id, name):
     stonk = (session.query(Stonk)
               .filter_by(player_id=player_id, name=name).first())
     return stonk
+
+def get_stonk_holdings():
+    stonk_holdings = session.query(StonkHolding)
+    return stonk_holdings
 
 def get_stonk_series(player_id, name, nsteps, time_start, time_end):
     stonks = (session.query(Stonk)

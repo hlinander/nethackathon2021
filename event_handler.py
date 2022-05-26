@@ -63,6 +63,8 @@ def get_earliest_after(time):
 def handle_event(event):
     dispatch = get_dispatch()
 
+    _ensure_player(event)
+    print(event.__dict__)
     if event.name in dispatch:
         dispatch[event.name](event)
     else:
@@ -83,14 +85,14 @@ def calculate_stonk(player):
     hp = player.get("hp", 0)
     if hp <= 0:
         return 0
-    maxhp = player.get("hpmax", 0) + 1
+    maxhp = player.get("hpmax", hp) + 1
     hunger = player.get("hunger", 0)
     ac = player.get("ac", 0)
     dlevel = player.get("dlevel", 0)
     level = player.get("level", 0)
 
 
-    hunger_stonk = (1500 - hunger) / 800.
+    hunger_stonk = max(0, (1500 - hunger) / 800.)
     hp_stonk = 1.0 - (hp / maxhp)
     hp_stonk2 = 1.0 - maxhp / 200.
     ac_stonk = 1.0 / (11 - ac)
@@ -122,39 +124,53 @@ def update_stonks(timestamp):
     db.session.commit()
 
 
+def pay_out(stonk_holding):
+    stonk = db.session.query(db.Stonk).filter_by(id=stonk_holding.stonk_id).first()
+    roi = stonk_holding.fraction * stonk.value
+    db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
+    db.add_transaction(stonk_holding.buy_event_id)
+    print(f"Clan {stonk_holding.clan.name} recieved {roi} gems")
+
+def handle_transactions(timestamp):
+    for stonk_holding in db.get_stonk_holdings():
+        stonk_player_turn = players[stonk_holding.stonk.player_id]["last_turn"]
+        if stonk_player_turn >= stonk_holding.expires_turn:
+            if db.get_transaction(stonk_holding.buy_event) is None:
+                pay_out(stonk_holding)
+
 def save_state():
     event_handler = get_event_handler()
     event_handler.state = state
     db.session.commit()
 
-def _handle_reach_depth(event):
+def _ensure_player(event):
     if not event.player_id in players:
         player = db.get_player(event.player_id)
         players[event.player_id] = dict(
             player_name=player.username,
             player_ticker=player.ticker)
+    players[event.player_id]["last_turn"] = event.session_turn
+    players[event.player_id]["current_session"] = event.session_start_time
+
+def _handle_reach_depth(event):
     players[event.player_id]["dlevel"] = event.value
 
 def _handle_change_stat(event):
-    data = event.__dict__.copy()
-    if not event.player_id in players:
-        player = db.get_player(event.player_id)
-        players[event.player_id] = dict(
-            player_name=player.username,
-            player_ticker=player.ticker)
     players[event.player_id][event.string_value] = event.value
-    # players[event.player_id]["name"] =
-    print(players)
 
 def _handle_buy_stonk(event):
     stonk_player_id = event.extra["stonk_player_id"]
     stonk_name = event.extra["stonk_name"]
     stonk = db.get_stonk(stonk_player_id, stonk_name)
-    expires = event.extra["expires_delta"]
+    expires_delta = event.extra["expires_delta"]
+    spent_gems = event.extra["spent_gems"]
+    stonk_player_turn = players[stonk_player_id]["last_turn"]
 
-    stonk_holding = db.buy_stonk(event.player_id, stonk_player_id, stonk_name, expires)
-    if stonk_holding is None:
-        print("Couldn't buy a stonk!")
+    stonk_holding = db.buy_stonk(event,
+                                 stonk_player_id,
+                                 stonk_name,
+                                 spent_gems,
+                                 stonk_player_turn + expires_delta)
 
 
 def event_loop():
@@ -180,6 +196,7 @@ def event_loop():
                         print(f"Updating empty delta {delta}")
             handle_events(unhandled_events)
             update_stonks(next_tick_time)
+            handle_transactions(next_tick_time)
             save_state()
             event_handler.last_handled_timestamp = next_tick_time
             next_tick_time += TIME_PER_TICK
