@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"embed"
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"io/fs"
@@ -28,8 +29,6 @@ type Clan struct {
 }
 
 type IndexPageData struct {
-	Players []*Player
-	Clans   []*Clan
 }
 
 //go:embed templates
@@ -51,9 +50,13 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.FS(templateFS))))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		data := IndexPageData{}
+		tmpl.Execute(w, data)
+	})
 
+	http.HandleFunc("/poll", func(w http.ResponseWriter, r *http.Request) {
 		var clans []*Clan
-		err := pgxscan.Select(ctx, db, &clans, `SELECT id, name, power_gems FROM clans`)
+		err := pgxscan.Select(ctx, db, &clans, `SELECT id, name, power_gems FROM clans ORDER BY power_gems DESC`)
 		if err != nil {
 			fmt.Printf("ERROR %v\n", err)
 		}
@@ -63,12 +66,20 @@ func main() {
 		if err != nil {
 			fmt.Printf("ERROR %v\n", err)
 		}
-		data := IndexPageData{
-			Players: players,
-			Clans:   clans,
-		}
-		tmpl.Execute(w, data)
 
+		type PollData struct {
+			Clans   []*Clan
+			Players []*Player
+		}
+
+		data := PollData{
+			Clans:   clans,
+			Players: players,
+		}
+
+		jsonBytes, _ := json.Marshal(&data)
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(jsonBytes)
 	})
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
