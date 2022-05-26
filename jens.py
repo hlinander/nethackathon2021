@@ -52,6 +52,116 @@ def candlechart(stdscr, x, y, w, h, values, colors):
             for i in range(yp, ypp):
                 stdscr.addstr(y+h-1-i, x+vi+dx, "█", colors[1])
 
+def movecursor(x, y):
+    print( "\x1b[%d;%df" % (y, x) , flush=False, end='' )
+
+
+def clear():
+    print(chr(27) + "[2J")
+
+def paint_frames(frames):
+
+    max_x = 0
+    max_y = 0
+    for fr in frames:
+        xp = fr[0] + fr[2]
+        yp = fr[1] + fr[3]
+        if xp > max_x:
+            max_x = xp
+        if yp > max_y:
+            max_y = yp
+
+    printed = [[0 for x in range(max_x)] for y in range(max_y)]
+
+    # Lines
+    for fr in frames:
+        chars = ("═", "║")
+
+        # Horiz
+        movecursor( fr[0]+1, fr[1] )
+
+        print( chars[0] * (fr[2]-2), flush=False, end='' )
+        #for i in range(fr[2]-2):
+
+        movecursor( fr[0]+1, fr[1] + fr[3]-1 )
+        print( chars[0] * (fr[2]-2), flush=False, end='' )
+
+        # Vert
+        for i in range(0, fr[3]-2):
+            movecursor(fr[0], fr[1]+i+1)
+            print(chars[1], flush=False, end='')
+        for i in range(0, fr[3]-2):
+            movecursor(fr[0]+fr[2]-1, fr[1]+i+1)
+            print(chars[1], flush=False, end='')
+
+        # Set printed
+        for i in range(0, fr[3]):
+            printed[fr[1]+i][fr[0]] = 1
+            printed[fr[1]+i][fr[0]+fr[2]-1] = 1
+
+        for i in range(0, fr[2]):
+            printed[fr[1]][fr[0]+i] = 1
+            printed[fr[1]+fr[3]-1][fr[0]+i] = 1
+
+    # Corners
+    for fr in frames:
+        chars = ("╔", "╗", "╚", "╝", "╦", "╩", "╠", "╣", "╬")
+
+        coords = [
+            [fr[0], fr[1]],
+            [fr[0]+fr[2]-1, fr[1]],
+            [fr[0], fr[1]+fr[3]-1],
+            [fr[0]+fr[2]-1, fr[1]+fr[3]-1],
+        ]
+
+        for c in coords:
+            movecursor( c[0], c[1] )
+            xp = printed[c[1]][c[0]+1] == 1 if c[0] != max_x-1 else False
+            xn = printed[c[1]][c[0]-1] == 1 if c[0] != 0 else False
+            yp = printed[c[1]+1][c[0]] == 1 if c[1] != max_y-1 else False
+            yn = printed[c[1]-1][c[0]] == 1 if c[1] != 0 else False
+
+            if xn and xp and yn and yp:
+                print(chars[8], flush=False, end='')
+            elif xn and xp and yn:
+                print(chars[5], flush=False, end='')
+            elif xn and xp and yp:
+                print(chars[4], flush=False, end='')
+            elif xn and yn and yp:
+                print(chars[7], flush=False, end='')
+            elif xp and yn and yp:
+                print(chars[6], flush=False, end='')
+            elif xp and yp:
+                print(chars[0], flush=False, end='')
+            elif xp and yn:
+                print(chars[2], flush=False, end='')
+            elif xn and yp:
+                print(chars[1], flush=False, end='')
+            elif xn and yn:
+                print(chars[3], flush=False, end='')
+
+    # Titles
+    for fr in frames:
+        movecursor( fr[0]+2, fr[1] )
+
+        if fr[5] == 3:
+            print("\x1b[31;1m", flush=False, end='')
+        if fr[5] == 2:
+            print("\x1b[33;1m", flush=False, end='')
+        if fr[5] == 1:
+            print("\x1b[32;1m", flush=False, end='')
+
+        print(fr[4], flush=False, end='')
+        print("\x1b[0m", flush=False, end='')
+
+
+
+
+
+
+
+
+
         # print("\x1b[0m", flush=False, end='')
         # if ypp != yp:
         #     rnd = random.randint(0, 2)
