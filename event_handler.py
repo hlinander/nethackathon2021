@@ -24,7 +24,7 @@ def get_dispatch():
         change_stat=_handle_change_stat,
         buy_stonk=_handle_buy_stonk,
         reach_depth=_handle_reach_depth,
-        player_death=_handle_player_death,
+        death=_handle_player_death,
     )
 
 
@@ -84,8 +84,8 @@ def handle_events(events):
 
 def calculate_stonk(player):
     hp = player.get("hp", 0)
-    if hp <= 0:
-        return 0
+    # if hp <= 0:
+    #     return 0
     maxhp = player.get("hpmax", hp) + 1
     hunger = player.get("hunger", 0)
     ac = player.get("ac", 0)
@@ -127,12 +127,14 @@ def update_stonks(timestamp):
 
 def pay_out_long(stonk_holding):
     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
-    roi = stonk_holding.fraction * stonk.value
+    turn_fraction = stonk_holding.expire_delta / 250.
+    roi = turn_fraction * stonk_holding.fraction * stonk.value
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)
     print(f"Clan {stonk_holding.clan_id} recieved {roi} gems")
 
 def _handle_player_death(event):
+    print(f"Player death! {event.__dict__}")
     shorts = db.session.query(db.StonkHolding).filter_by(player_id=event.player_id, session_start_time=event.session_start_time, long=False)
     delete = []
     for short in shorts:

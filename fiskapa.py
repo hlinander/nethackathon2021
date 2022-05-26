@@ -182,10 +182,10 @@ def red():
 def reset():
 	draw('\x1b[0m')
 
-def death_cam(tr, start):
+def death_cam(name, tr, start):
 	set_fullscreen_size()
 	clear()
-	type_out(1, 1, tr['name'])
+	type_out(1, 1, name)
 	time.sleep(0.5)
 	red()
 	type_out(15, 9, 'DEAD.', False)
@@ -194,7 +194,7 @@ def death_cam(tr, start):
 	time.sleep(1)
 	clear()
 	w, h = os.get_terminal_size()
-	jens.paint_frames([(1, 1, w, h, tr['name'], 3)])
+	jens.paint_frames([(1, 1, w, h, name, 3)])
 	while run_tty(tr, start, 1, 1, True):
 		sys.stdout.flush()
 		time.sleep(1/30)
@@ -335,14 +335,6 @@ def run(ttydir):
 					screen_y = d['y']
 					break
 			run_tty(it['live'], start, screen_x, screen_y, exists)
-			if it['live']['dead']:
-				death_cam(it['death'], start + DEATH_CAM_SEC)
-			elif time.time() > (it['created'] + DEATH_CAM_SEC):
-				run_tty(it['death'], start + DEATH_CAM_SEC, screen_x, screen_y, False)
-			if it['live']['maxhp']:
-				color = int(4 - (3 * (it['live']['hp'] / it['live']['maxhp'])))
-			else:
-				color = 0
 			interest = 0
 			if 'player_state' in it:
 				player_state = it['player_state']
@@ -352,6 +344,14 @@ def run(ttydir):
 				player_name = player_state['player_name'] + " (" + interest + ")"
 			else:
 				player_name = "Loading.."
+			if it['live']['dead']:
+				death_cam(player_name, it['death'], start + DEATH_CAM_SEC)
+			elif time.time() > (it['created'] + DEATH_CAM_SEC):
+				run_tty(it['death'], start + DEATH_CAM_SEC, screen_x, screen_y, False)
+			if it['live']['maxhp']:
+				color = int(4 - (3 * (it['live']['hp'] / it['live']['maxhp'])))
+			else:
+				color = 0
 			framedata.append((screen_x, screen_y, MON_W+2, MON_H+2, player_name, color))
 		reset()
 		jens.paint_frames(framedata)
