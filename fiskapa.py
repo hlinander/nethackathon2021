@@ -38,8 +38,9 @@ def _load_tty(filename):
 	return dict(fp=fp, screen=screen, stream=stream, start_at=None, next_at=None,
 		name='Namnet Sko', hp=0, maxhp=0, money=0, dead=False)
 
-def load_tty(filename):
-	return { 'live': _load_tty(filename), 'death': _load_tty(filename), 'created': time.time() }
+def load_tty(user_id, filename):
+	return { 'user_id': user_id, 'live': _load_tty(filename), 'death': _load_tty(filename),
+		'created': time.time() }
 
 def read_time(tr):
 	try:
@@ -197,18 +198,73 @@ def death_cam(tr, start):
 		time.sleep(1/30)
 	set_4x4_size()
 
+def update_rec_list(ttydir, recs):
+	files_by_user_id = {}
+	for (dirpath, dirnames, filenames) in os.walk(ttydir):
+		latest = None
+		for file in filenames:
+			if file.endswith(".ttyrec"):
+				mtime = os.path.getmtime(file)
+				if latest is None or latest["mtime"] < mtime:
+					m = re.match(r'.*\d+_(\d+)\.ttyrec', file)
+					if m is not None:
+						latest = {
+							"user_id": int(m.group(1)),
+							"mtime": mtime,
+							"path": file
+						}
+		if latest is not None:
+			files_by_user_id[latest["user_id"]] = latest
+	
+	for k, v in files_by_user_id.items():
+		found = False
+		for i in range(0, len(recs)):
+			it = recs[i]
+			if k == it['user_id'] and it['filename'] != v['path']:
+				recs[i] = load_tty(k, v['path'])
+				found = True
+				break
+		if not found:
+			recs.append(load_tty(k, v['path']))
+
+def is_critical(rec):
+	return (it['live']['hp'] / it['live']['maxhp']) < 0.5
+
+def choose_on_display(on_display, recs):
+	if len(on_display) < 4:
+		for it in recs:
+			if not it['live']['dead']:
+				on_display.append({ 'rec': it, 'live_at': time.time() })
+				if 4 == len(on_display):
+					break
+	for it in recs:
+		if is_critical(it):
+			if it not in on_display:
+				for i in range(0, len(on_display)):
+					if not is_critical(on_display[i]['rec']):
+						on_display[i]['rec'] = it
+						on_display[i]['live_at'] = time.time()
+						break
+	for it in on_display:
+		if it['live_at'] + 15 < time.time():
+			pass
+
+
 def run(ttydir):
-	recs = [ load_tty('272.ttyrec'), load_tty('272.ttyrec'), load_tty('272.ttyrec'), load_tty('272.ttyrec') ]
+	recs = []
+	on_display = []
 	start = time.time()
 	frame = 0
 	while True:
+		update_rec_list(ttydir, recs)
+		choose_on_display(on_display, recs)
 		framedata = []
 		time.sleep(1/30)
-		for i in range(0, len(recs)):
+		for i in range(0, len(on_display)):
 			screen_x = 1 + (i & 1) * MON_W + (i&1)
 			screen_y = 1 + (i >> 1) * MON_H + (i>>1)
 			it = recs[i]
-			run_tty(it['live'], start, screen_x, screen_y, True)
+			run_tty(it['live'], start, screen_x, screen_y, it in on_display)
 			if it['live']['dead']:
 				death_cam(it['death'], start + DEATH_CAM_SEC)
 			elif time.time() > (it['created'] + DEATH_CAM_SEC):
