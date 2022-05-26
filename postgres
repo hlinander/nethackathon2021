@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker run -p 5432:5432 -v $(pwd)/databas:/var/lib/postgresql/data --name nh2022 -e POSTGRES_PASSWORD=vinst -d postgres
+docker run -p 5432:5432 -u $(id -u):$(id -g) -v $(pwd)/databas:/var/lib/postgresql/data --name nh2022 -e POSTGRES_PASSWORD=vinst -d postgres

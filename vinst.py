@@ -130,10 +130,8 @@ def parse_event(connection, event):
         string_value=event.string_value,
         previous_value=event.previous_value,
         )
-    #print(item)
     db.session.add(item)
     db.session.commit()
-    #print("event!")
     status = nh_pb2.Status()
     status.code = 0
     return [status]

@@ -18,6 +18,7 @@ class Player(Base):
     clan = Column(Integer, ForeignKey("clans.id"))
     username = Column(String, unique=True)
     password = Column(String)
+    ticker = Column(String)
 
 class Clan(Base):
     __tablename__ = "clans"
@@ -83,6 +84,8 @@ class Event(Base):
     previous_value = Column(Integer)
     value = Column(Integer)
     string_value = Column(String)
+    extra = Column(JSON)
+
 
 class Stonk(Base):
     __tablename__ = "stonk"
@@ -91,6 +94,16 @@ class Stonk(Base):
     timestamp = Column(DateTime, default=datetime.datetime.utcnow, index=True)
     name = Column(String)
     value = Column(Integer)
+
+class StonkHolding(Base):
+    __tablename__ = "stonk_holding"
+    id = Column(Integer, primary_key=True)
+    clan_id = Column(Integer, ForeignKey("clans.id"))
+    stonk_id = Column(Integer, ForeignKey("stonk.id"))
+    expires_turn = Column(Integer)
+    session_start_time = Column(Integer)
+    # sold =
+
 
 # class CertificateOwner(Base):
 #     __tablename__ = "certificate_owner"
@@ -247,6 +260,50 @@ def add_clan_power(clan_id, power, level):
     session.add(power)
     return power
 
+
+def buy_stonk(player_id, stonk_player_id, stonk_name, expires):
+    p = session.query(Player).filter_by(id=player_id).first()
+    clan = session.query(Clan).filter_by(id=p.clan).first()
+    stonk = get_stonk(stonk_player_id, stonk_name)
+    if clan.power_gems >= stonk.value:
+        clan.power_gems -= stonk.value
+        insert_stonk_holding(clan.id, stonk.id, expires)
+        return True
+    return None
+
+def insert_stonk_holding(player_id, stonk_id, expires_turn):
+    clan = get_clan(player_id)
+    session.add(StonkHolding(
+        clan_id=clan.id,
+        stonk_id=stonk_id,
+        expires_turn=expires_turn
+        ))
+
+def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, expires):
+    p = session.query(Player).filter_by(id=player_id).first()
+    item = Event(
+        player_id=player_id,
+        clan_id=p.clan,
+        session_start_time=session_start_time,
+        session_turn=session_turn,
+        name="buy_stonk",
+        extra=dict(
+            stonk_player_id=stonk_player_id,
+            stonk_name=stonk_name,
+            expires_delta=expires
+        )
+        )
+    session.add(item)
+    session.commit()
+
+
+def add_clan_gems_for_player(player_id, gems):
+    p = session.query(Player).filter_by(id=player_id).first()
+    clan = session.query(Clan).filter_by(id=p.clan).first()
+    clan.power_gems += gems
+    session.commit()
+    return clan.power_gems
+
 def add_clan_power_for_player(player_id, name, level, cost):
     p = session.query(Player).filter_by(id=player_id).first()
     power = session.query(ClanPowers).filter_by(clan_id=p.clan, name=name).first()
@@ -263,6 +320,11 @@ def add_clan_power_for_player(player_id, name, level, cost):
     session.commit()
     return power.level
 
+def get_clan(player_id):
+    p = session.query(Player).filter_by(id=player_id).first()
+    clan = session.query(Clan).filter_by(id=p.clan).first()
+    return clan
+
 def get_power_gems_for_player(player_id):
     p = session.query(Player).filter_by(id=player_id).first()
     clan = session.query(Clan).filter_by(id=p.clan).first()
@@ -276,7 +338,17 @@ def get_clan_powers_for_player(player_id):
        ret[power.name] = power.level
     return ret
 
-def get_stonk(player_id, name, nsteps, time_start, time_end):
+def get_stonks(player_id):
+    stonks = (session.query(Stonk)
+              .filter_by(player_id=player_id))
+    return list(set([stonk.name for stonk in stonks]))
+
+def get_stonk(player_id, name):
+    stonk = (session.query(Stonk)
+              .filter_by(player_id=player_id, name=name).first())
+    return stonk
+
+def get_stonk_series(player_id, name, nsteps, time_start, time_end):
     stonks = (session.query(Stonk)
               .filter_by(player_id=player_id, name=name)
               .filter(Stonk.timestamp > time_start)
@@ -310,9 +382,16 @@ def insert_stonk(player_id, name, value, timestamp):
         timestamp=timestamp
         ))
 
+        # db.insert_stonk_holding(player_id, stonk.id, expires)
+
 def reset_stonks():
+    session.query(StonkHolding).delete()
     session.query(Stonk).delete()
     session.commit()
+
+
+def get_player(player_id):
+    return session.query(Player).filter_by(id=player_id).first()
 
 def login(username, password):
     player = session.query(Player).filter_by(username=username).first()
@@ -348,17 +427,17 @@ def init_db():
     #ctest = session.query(Clan).filter_by(id=testarna).first()
     #ctest.power_gems = 50000
     # add_clan_power(cid, "hp", 0)
-    session.add(Player(username="pellsson", password="sko", clan=hquit))
-    session.add(Player(username="drgiffel", password="sko", clan=vinst))
+    session.add(Player(username="pellsson", ticker="PLS", password="sko", clan=hquit))
+    session.add(Player(username="drgiffel", ticker="DRG", password="sko", clan=vinst))
     #session.add(Player(username="pellsson", password="sko", clan=testarna))
     #session.add(Player(username="drgiffel", password="sko", clan=testarna))
-    session.add(Player(username="CeleryMan", password="sko", clan=hquit))
-    session.add(Player(username="breggan", password="sko", clan=vinst))
-    session.add(Player(username="supersten", password="sko", clan=vinst))
-    session.add(Player(username="menvafan", password="sko", clan=pissduktiga))
-    session.add(Player(username="erik2", password="sko", clan=pissduktiga))
-    session.add(Player(username="Aransentin", password="sko", clan=vinst))
-    session.add(Player(username="kae", password="sko", clan=hquit))
-    session.add(Player(username="gorbiz", password="sko", clan=pissduktiga))
-    session.add(Player(username="bJazz", password="sko", clan=vinst))
+    session.add(Player(username="CeleryMan", ticker="CEL", password="sko", clan=hquit))
+    session.add(Player(username="breggan", ticker="BRG", password="sko", clan=vinst))
+    session.add(Player(username="supersten", ticker="SS ", password="sko", clan=vinst))
+    session.add(Player(username="menvafan", ticker="MVF", password="sko", clan=pissduktiga))
+    session.add(Player(username="erik2", ticker="ER2", password="sko", clan=pissduktiga))
+    session.add(Player(username="Aransentin", ticker="ARS", password="sko", clan=vinst))
+    session.add(Player(username="kae", ticker="KAE", password="sko", clan=hquit))
+    session.add(Player(username="gorbiz", ticker="GBZ", password="sko", clan=pissduktiga))
+    session.add(Player(username="bJazz", ticker="BJZ", password="sko", clan=vinst))
     session.commit()
