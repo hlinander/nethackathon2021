@@ -63,7 +63,7 @@ def update(stdscr, cpstate, player_order):
                 continue
             player_id = player_order[player_index]
             player = cpstate[player_id]
-            if player['hp'] <= 0
+            if player['hp'] <= 0:
                 player_index += 1
                 continue
             full_name = get_full_name(player)
@@ -83,7 +83,7 @@ def update(stdscr, cpstate, player_order):
                 y += 1
                 stdscr.addstr(y, 0, row)
                 stdscr.addstr(y, 62, 'TURN: ', stat_color)
-                stdscr.addstr(y, 68, str(player['turn']))
+                stdscr.addstr(y, 68, str(player['last_turn']))
                 y += 1
                 stdscr.addstr(y, 0, row)
                 stdscr.addstr(y, 62, 'DLVL: ', stat_color)
