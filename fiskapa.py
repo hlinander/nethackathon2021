@@ -373,10 +373,13 @@ def set_fullscreen_size():
 	MON_W = MON_W - 2
 	MON_H = MON_H - 2 # borders
 
-db.open_db()
-show_cursor(False)
-set_4x4_size()
-load_font('nhmon/font.txt')
-run(sys.argv[1])
-show_cursor(True)
+def main():
+	db.open_db()
+	show_cursor(False)
+	set_4x4_size()
+	load_font('nhmon/font.txt')
+	run(sys.argv[1])
+	show_cursor(True)
 
+if __name__ == "__main__":
+	main()
