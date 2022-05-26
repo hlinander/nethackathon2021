@@ -53,7 +53,7 @@ def update(stdscr, cpstate, player_order):
     total_gems = db.get_clan(my_id).power_gems
 
     player_index = 0
-    full_name = get_full_name(cpstate[selected_player_id])
+    full_name = get_full_name(cpstate[str(selected_player_id)])
     top = '╔═╣ ' + full_name + ' ╠' + ('═' * (38 + (16 - len(full_name)))) + '╦═╣ Stonks ╠═══════╗'
     stdscr.addstr(0, 0, top)
     row = '║                                                           ║                  ║'
@@ -65,7 +65,10 @@ def update(stdscr, cpstate, player_order):
                 player_index += 1
                 continue
             player_id = player_order[player_index]
-            player = cpstate[player_id]
+            player = cpstate[str(player_id)]
+            if 'hp' not in player:
+                player_index += 1
+                continue
             if player['hp'] <= 0:
                 player_index += 1
                 continue
