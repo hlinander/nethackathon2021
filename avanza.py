@@ -121,8 +121,6 @@ def update(stdscr, cpstate, player_order):
     stdscr.addstr(' ╠══╝')
     stdscr.insstr(y+4, 2, "═")
 
-    gems = str(1234)
-
     hp = db.get_stonk_series(int(selected_player_id), "stonk", 100, datetime.datetime.utcnow() - datetime.timedelta(minutes=5), datetime.datetime.utcnow())
     jens.candlechart(stdscr, 1, 1, 57, 19, hp, (green, red))
 
@@ -275,8 +273,8 @@ def main(stdscr):
             continue
         update_at = 0
 
-
-db.open_db()
+def movecursor(x, y):
+    print("\x1b[%d;%df" % (y, x), end='')
 
 if True:
     logo = open('avanza.txt').read()
@@ -290,8 +288,12 @@ if True:
 
     logo = ''.join(logo)
     logo = logo.replace('$', '\x1b[1;32m$')
+    y = 1
+    for it in ('\x1b[?25l\x1b[2J%s' % (logo)).split('\n'):
+        movecursor(1, y)
+        print(it)
+        y += 1
 
-    print('\x1b[?25l\x1b[2J%s' % (logo))
     while True:
         v = readchar.readchar()
         if v == '1':
@@ -300,6 +302,8 @@ if True:
         elif v == '2':
             invest = False
             break
+        elif v == '3':
+            sys.exit(123)
     print('\x1b[?25h')
 
 my_id = int(sys.argv[1])
