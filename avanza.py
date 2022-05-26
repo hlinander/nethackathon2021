@@ -218,7 +218,7 @@ def main(stdscr):
         cpstate = session.get_state()['players']
         if my_id in cpstate:
             del cpstate[my_id]
-        player_order = [ it[0] for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
+        player_order = [ int(it[0]) for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
         if len(player_order) == 0:
             print('NO STONKS :(')
             return input()
@@ -312,9 +312,8 @@ if True:
             sys.exit(123)
     print('\x1b[?25h')
 
-my_id = sys.argv[1]
+my_id = int(sys.argv[1])
 my_turn = int(sys.argv[2])
 my_session = int(sys.argv[3])
 
 wrapper(main)
-
