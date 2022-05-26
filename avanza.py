@@ -216,14 +216,17 @@ def main(stdscr):
 
     while not quit:
         cpstate = session.get_state()['players']
-        del cpstate[my_id]
+        if my_id in cpstate:
+            del cpstate[my_id]
         player_order = [ it[0] for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
-        selected_player_id = player_order[0]
-
-        if len(player_order) == 0 or (1 == len(player_order) and player_order[0] == my_id):
-            print('NO STONKS')
-            input()
-            return
+        if len(player_order) == 0:
+            print('NO STONKS :(')
+            return input()
+        
+        if selected_player_id is None:
+            selected_player_id = player_order[0]
+        elif selected_player_id >= len(player_order):
+            selected_player_id = player_order[-1]
 
         if time.time() >= update_at:
             update(stdscr, cpstate, player_order)
