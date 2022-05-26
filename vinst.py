@@ -1,8 +1,6 @@
-import os
 import select
 import socket
 import struct
-import sys
 import nh_pb2
 import db
 from sqlalchemy.sql import func
@@ -308,27 +306,22 @@ args = parse_args()
 if args.reset_db:
     db.init_db()
 
-is_server = True
 while True:
     events = ep.poll(1)
 
     for fileno, event in events:
-        if fileno == server_socket.fileno() and is_server:
+        if fileno == server_socket.fileno():
             connection, address = server_socket.accept()
             connection.setblocking(0)
-            child_pid = os.fork()
-            if child_pid == 0:
-                is_server = False
-                ep.register(connection.fileno(), select.EPOLLIN | select.EPOLLET)
-                connections[connection.fileno()] = dict(conn=connection, buffer=b"", player_id=None)
+            #print(address)
+            ep.register(connection.fileno(), select.EPOLLIN | select.EPOLLET)
+            connections[connection.fileno()] = dict(conn=connection, buffer=b"", player_id=None)
         elif event & select.EPOLLIN:
             try:
                 connections[fileno]["buffer"] += (
                     connections[fileno]["conn"].recv(512))
             except:
                 del connections[fileno]
-                if not is_server:
-                    sys.exit()
 
 
             if len(connections[fileno]["buffer"]) > 4:

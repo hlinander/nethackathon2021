@@ -94,14 +94,35 @@ def convert_line(line):
 			n += '\x1b[0;31m'
 		elif v.fg == 'green':
 			n += '\x1b[1;32m'
-		else:
-			print(v)
-			raise 'fiskapa'
+		elif v.fg == 'blue':
+			n += '\x1b[1;34m'
+		elif v.fg == 'cyan':
+			n += '\x1b[1;36m'
+		elif v.fg == 'yellow':
+			n += '\x1b[1;33m'
+		elif v.fg == 'magenta':
+			n += '\x1b[1;35m'
+
 		if v.bg == 'default':
 			n += '' # '\x1b[0;100m'
-		else:
-			print(v)
-			raise 'horamamma'
+		elif v.bg == 'brown':
+			n += '\x1b[0;43m'
+		elif v.bg == 'white':
+			n += '\x1b[1;47m'
+		elif v.bg == 'black':
+			n += '\x1b[0;40m'
+		elif v.bg == 'red':
+			n += '\x1b[0;41m'
+		elif v.bg == 'green':
+			n += '\x1b[1;42m'
+		elif v.bg == 'blue':
+			n += '\x1b[1;44m'
+		elif v.bg == 'cyan':
+			n += '\x1b[1;46m'
+		elif v.bg == 'yellow':
+			n += '\x1b[1;43m'
+		elif v.bg == 'magenta':
+			n += '\x1b[1;45m'
 		out[x] = n + v.data
 		plain[x] = v.data
 	return ''.join(out), ''.join(plain)
@@ -182,10 +203,10 @@ def red():
 def reset():
 	draw('\x1b[0m')
 
-def death_cam(tr, start):
+def death_cam(name, tr, start):
 	set_fullscreen_size()
 	clear()
-	type_out(1, 1, tr['name'])
+	type_out(1, 1, name)
 	time.sleep(0.5)
 	red()
 	type_out(15, 9, 'DEAD.', False)
@@ -194,7 +215,7 @@ def death_cam(tr, start):
 	time.sleep(1)
 	clear()
 	w, h = os.get_terminal_size()
-	jens.paint_frames([(1, 1, w, h, tr['name'], 3)])
+	jens.paint_frames([(1, 1, w, h, name, 3)])
 	while run_tty(tr, start, 1, 1, True):
 		sys.stdout.flush()
 		time.sleep(1/30)
@@ -335,20 +356,23 @@ def run(ttydir):
 					screen_y = d['y']
 					break
 			run_tty(it['live'], start, screen_x, screen_y, exists)
+			interest = 0
+			if 'player_state' in it:
+				player_state = it['player_state']
+			if player_state and 'player_name' in player_state:
+				if interest in it:
+					interest = it['interest']
+				player_name = player_state['player_name'] + " (" + str(interest) + ")"
+			else:
+				player_name = "Loading.."
 			if it['live']['dead']:
-				death_cam(it['death'], start + DEATH_CAM_SEC)
+				death_cam(player_name, it['death'], start + DEATH_CAM_SEC)
 			elif time.time() > (it['created'] + DEATH_CAM_SEC):
 				run_tty(it['death'], start + DEATH_CAM_SEC, screen_x, screen_y, False)
 			if it['live']['maxhp']:
 				color = int(4 - (3 * (it['live']['hp'] / it['live']['maxhp'])))
 			else:
 				color = 0
-			if 'player_state' in it:
-				player_state = it['player_state']
-			if player_state and 'player_name' in player_state:
-				player_name = player_state['player_name'] + " (" + str(it['interest']) + ")"
-			else:
-				player_name = "Loading.."
 			framedata.append((screen_x, screen_y, MON_W+2, MON_H+2, player_name, color))
 		reset()
 		jens.paint_frames(framedata)
@@ -373,10 +397,13 @@ def set_fullscreen_size():
 	MON_W = MON_W - 2
 	MON_H = MON_H - 2 # borders
 
-db.open_db()
-show_cursor(False)
-set_4x4_size()
-load_font('nhmon/font.txt')
-run(sys.argv[1])
-show_cursor(True)
+def main():
+	db.open_db()
+	show_cursor(False)
+	set_4x4_size()
+	load_font('nhmon/font.txt')
+	run(sys.argv[1])
+	show_cursor(True)
 
+if __name__ == "__main__":
+	main()

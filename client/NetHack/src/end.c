@@ -1256,6 +1256,9 @@ really_done(int how)
     long umoney;
     long tmp;
 
+    send_session_event("death", how, 0, "");
+    sleep(2);
+
     try_save_eq();
 
     /*
