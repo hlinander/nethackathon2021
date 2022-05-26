@@ -33,7 +33,9 @@ def get_stonks():
     return all_stonks
 
 def interest_level(stonk):
-    return stonk['investment']
+    return stonk['investment'] + 0.1
+
+last_live_time = {}
 
 def choose_on_display(on_display, all_stonks):
     holdings = db.session.query(db.StonkHolding)
@@ -65,13 +67,21 @@ def choose_on_display(on_display, all_stonks):
                 del sorted_not_displayed[0]
         else:
             current = on_display[i]
+            stonk = current['stonk']
+            last_live_time[(stonk['player_id'], stonk['stonk_name'])] = time.time()
             time_live = time.time() - current['live_at']
-            if time_live > 15:
+            if time_live > 10:
                 current_interest_level = interest_level(current['stonk'])
                 current_interest_level *= 1.0 - min(time_live / 60.0, 1.0) * 0.85
                 if len(sorted_not_displayed) > 0:
                     other = sorted_not_displayed[0]
                     other_interest_level = interest_level(other)
+                    other_last_live_time = 0
+                    if (stonk['player_id'], stonk['stonk_name']) in last_live_time:
+                        other_last_live_time = last_live_time[(stonk['player_id'], stonk['stonk_name'])]
+                    
+                    time_since_other_live = time.time() - other_last_live_time
+                    other_interest_level *= 1.0 - max(min(time_since_other_live / 360, 1.0), 0.0) * 0.25
                     if other_interest_level > current_interest_level:
                         # check if something is more interesting
                         on_display[i] = {
