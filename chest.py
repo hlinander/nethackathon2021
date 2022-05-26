@@ -60,7 +60,7 @@ def main(stdscr):
 			stdscr.addstr(y, 0, it)
 			y += 1
 		x = not x
-		stdscr.addstr(0, 0, 'Your team was rewarded %d Power Gems! Visit the store with #gemstore' % (int(sys.argv[1])))
+		stdscr.addstr(0, 0, 'Your team was rewarded %d Power Gems! Spend them in #gemstore or invest in #avanza' % (int(sys.argv[1])))
 		stdscr.refresh()
 		for i in range(0, 10):
 			if -1 != stdscr.getch():

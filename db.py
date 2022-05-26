@@ -3,6 +3,7 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binar
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
+import os
 import numpy as np
 import re
 
@@ -156,7 +157,9 @@ def add_clan(name):
 
 def open_db():
     global session
-    engine = create_engine('postgresql://postgres:vinst@localhost/nh') #, echo=True)
+    psql = os.getenv('PSQL_TARGET')
+    psql = psql if psql is not None else 'postgresql://postgres:vinst@localhost/nh'
+    engine = create_engine(psql) #, echo=True)
 
     Base.metadata.create_all(engine)
 
@@ -366,8 +369,9 @@ def get_stonk_series(player_id, name, nsteps, time_start, time_end):
         xp = [time_start.timestamp(), time_end.timestamp()]
         fp = [stonk.value, stonk.value]
     else:
-        xp = np.array([stonk.timestamp.timestamp() for stonk in stonks])
-        fp = np.array([stonk.value for stonk in stonks])
+        stonker = list(stonks)
+        xp = np.array([stonk.timestamp.timestamp() for stonk in stonker])
+        fp = np.array([stonk.value for stonk in stonker])
 
     timestamp_start = time_start.timestamp()
     timestamp_stop = time_end.timestamp()

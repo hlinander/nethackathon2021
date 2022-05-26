@@ -145,4 +145,5 @@ def main(stdscr):
             selection = len(menu) - 1
         if selection >= len(menu):
             selection = 0
+
 wrapper(main)
