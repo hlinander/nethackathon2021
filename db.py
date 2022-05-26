@@ -109,6 +109,7 @@ class StonkHolding(Base):
     # clan = relationship(Clan)
     # buy_event = relationship(Event)
     expires_turn = Column(Integer)
+    expires_delta = Column(Integer)
     session_start_time = Column(Integer)
 
 class Transactions(Base):
@@ -286,25 +287,26 @@ def add_clan_power(clan_id, power, level):
     return power
 
 
-def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires, buy_long):
+def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires, expires_delta, buy_long):
     p = session.query(Player).filter_by(id=event.player_id).first()
     clan = session.query(Clan).filter_by(id=p.clan).first()
     stonk = get_stonk(stonk_player_id, stonk_name)
     if stonk is not None:
         if stonk.value > 0:
             fraction = spent_gems / stonk.value
-            insert_stonk_holding(clan.id, event.session_start_time, stonk.name, event.id, fraction, expires, buy_long)
+            insert_stonk_holding(clan.id, event.session_start_time, stonk.name, event.id, fraction, expires, expires_delta, buy_long)
         else:
             print("Stonk is free!")
     else:
         print(f"Tried to buy non-existent stonk {stonk_player_id}: {stonk_name}")
 
-def insert_stonk_holding(player_id, session_start_time, stonk_name, event_id, fraction, expires_turn, buy_long):
+def insert_stonk_holding(player_id, session_start_time, stonk_name, event_id, fraction, expires_turn, expires_delta, buy_long):
     session.add(StonkHolding(
         player_id=player_id,
         stonk_name=stonk_name,
         buy_event_id=event_id,
         expires_turn=expires_turn,
+        expires_delta=expires_delta,
         fraction=fraction,
         long=buy_long,
         session_start_time=session_start_time
@@ -382,7 +384,7 @@ def get_stonks(player_id):
 
 def get_stonk(player_id, name):
     stonk = (session.query(Stonk)
-              .filter_by(player_id=player_id, name=name).first())
+              .filter_by(player_id=player_id, name=name).order_by(Stonk.timestamp).first())
     return stonk
 
 def get_stonk_holdings():

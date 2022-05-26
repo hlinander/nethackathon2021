@@ -175,6 +175,7 @@ def _handle_buy_stonk(event):
                                  stonk_name,
                                  spent_gems,
                                  stonk_player_turn + expires_delta,
+                                 expires_delta,
                                  buy_long)
 
 
