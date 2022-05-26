@@ -106,7 +106,7 @@ while True:
     for i, display in enumerate(on_display):
         it = display['stonk']
         name = it['player_name'] + " " + it['stonk_name'] + " " + str(it['investment'])
-        series = db.get_stonk_series(it['player_id'], name, fiskapa.MON_W, datetime.datetime.utcnow() - datetime.timedelta(minutes=10), datetime.datetime.utcnow()),
+        series = db.get_stonk_series(it['player_id'], it['stonk_name'], fiskapa.MON_W, datetime.datetime.utcnow() - datetime.timedelta(minutes=5), datetime.datetime.utcnow()),
         oldjens.chart_in_box(display['x'], display['y'], fiskapa.MON_W, fiskapa.MON_H, series[0], name, 1)
     sys.stdout.flush()
     time.sleep(1)
