@@ -270,7 +270,7 @@ def main(stdscr):
                 buy_long = not buy_long
         elif ord(' ') == key:
             if state == 4:
-                db.add_buy_stonk_event(my_id, my_session, my_turn, int(selected_player_id), 'stonk', cost, 2, buy_long)
+                db.add_buy_stonk_event(my_id, my_session, my_turn, int(selected_player_id), 'stonk', cost, expiry, buy_long)
                 state = 3
             else:
                 state += 1
