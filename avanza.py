@@ -5,6 +5,7 @@ import session
 import db
 import jens
 import os
+import json
 import datetime
 import sys
 import time
@@ -66,7 +67,7 @@ def update(stdscr, cpstate, player_order):
                 continue
             player_id = player_order[player_index]
             player = cpstate[str(player_id)]
-            if 'hp' not in player:
+            if 'hp' not in player or 'hpmax' not in player:
                 player_index += 1
                 continue
             if player['hp'] <= 0:
@@ -142,7 +143,7 @@ def update(stdscr, cpstate, player_order):
         stdscr.addstr(10, 3, '║ You selected ')
         stdscr.addstr('long' if buy_long else 'short', green if buy_long else red)
         stdscr.addstr(' in ')
-        stdscr.addstr(get_full_name(cpstate[selected_player_id]), green)
+        stdscr.addstr(get_full_name(cpstate[str(selected_player_id)]), green)
         stdscr.addstr(' with an expiry in ')
         stdscr.addstr('%d' % (expiry), stat_color)
         stdscr.addstr(' turns.')
@@ -219,8 +220,9 @@ def main(stdscr):
 
     while not quit:
         cpstate = session.get_state()['players']
-        if my_id in cpstate:
-            del cpstate[my_id]
+        if str(my_id) in cpstate:
+            del cpstate[str(my_id)]
+        open('/tmp/skoko', 'w').write(json.dumps(cpstate))
         player_order = [ int(it[0]) for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
         if len(player_order) == 0:
             print('NO STONKS :(')
@@ -228,7 +230,7 @@ def main(stdscr):
         
         if selected_player_id is None:
             selected_player_id = player_order[0]
-        elif selected_player_id >= len(player_order):
+        elif selected_player_id not in player_order:
             selected_player_id = player_order[-1]
 
         if time.time() >= update_at:
@@ -268,7 +270,7 @@ def main(stdscr):
                 buy_long = not buy_long
         elif ord(' ') == key:
             if state == 4:
-                db.add_buy_stonk_event(my_id, my_session, my_turn, int(selected_player_id), 'stonk', cost, expiry, buy_long)
+                db.add_buy_stonk_event(my_id, my_session, my_turn, int(selected_player_id), 'stonk', cost, 2, buy_long)
                 state = 3
             else:
                 state += 1
