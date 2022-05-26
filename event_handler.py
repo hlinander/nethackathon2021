@@ -129,14 +129,15 @@ def pay_out(stonk_holding):
     roi = stonk_holding.fraction * stonk.value
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)
-    print(f"Clan {stonk_holding.clan.name} recieved {roi} gems")
+    print(f"Clan {stonk_holding.clan_id} recieved {roi} gems")
 
 def handle_transactions(timestamp):
     for stonk_holding in db.get_stonk_holdings():
         stonk = db.session.query(db.Stonk).filter_by(id=stonk_holding.stonk_id).first()
         stonk_player_turn = players[stonk.player_id]["last_turn"]
         if stonk_player_turn >= stonk_holding.expires_turn:
-            if db.get_transaction(stonk_holding.buy_event) is None:
+            buy_event = db.session.query(db.Event).filter_by(id=stonk_holding.buy_event_id).first()
+            if db.get_transaction(buy_event) is None:
                 pay_out(stonk_holding)
 
 def save_state():
@@ -148,6 +149,7 @@ def _ensure_player(event):
     if not event.player_id in players:
         player = db.get_player(event.player_id)
         players[event.player_id] = dict(
+            dlevel=1,
             player_name=player.username,
             player_ticker=player.ticker)
     players[event.player_id]["last_turn"] = event.session_turn

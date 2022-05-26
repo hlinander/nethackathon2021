@@ -161,7 +161,7 @@ def get_transaction(event):
 
 
 def add_transaction(event_id):
-    t = Transaction(event_id=event_id)
+    t = Transactions(event_id=event_id)
     session.add(t)
     session.flush()
     return t.id
@@ -292,21 +292,21 @@ def buy_stonk(event, stonk_player_id, stonk_name, spent_gems, expires, buy_long)
     if stonk is not None:
         if stonk.value > 0:
             fraction = spent_gems / stonk.value
-            insert_stonk_holding(clan.id, stonk.id, event.id, fraction, expires, buy_long)
+            insert_stonk_holding(clan.id, event.session_start_time, stonk.id, event.id, fraction, expires, buy_long)
         else:
             print("Stonk is free!")
     else:
         print(f"Tried to buy non-existent stonk {stonk_player_id}: {stonk_name}")
 
-def insert_stonk_holding(player_id, stonk_id, event_id, fraction, expires_turn, buy_long):
-    clan = get_clan(player_id)
+def insert_stonk_holding(clan_id, session_start_time, stonk_id, event_id, fraction, expires_turn, buy_long):
     session.add(StonkHolding(
-        clan_id=clan.id,
+        clan_id=clan_id,
         stonk_id=stonk_id,
         buy_event_id=event_id,
         expires_turn=expires_turn,
         fraction=fraction,
-        long=buy_long
+        long=buy_long,
+        session_start_time=session_start_time
         ))
 
 def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, spent_gems, expires, buy_long):
@@ -387,6 +387,29 @@ def get_stonk(player_id, name):
 def get_stonk_holdings():
     stonk_holdings = session.query(StonkHolding)
     return stonk_holdings
+
+
+# def get_stonk_holdings_():
+#     stonk_holdings = get_stonk_holdings()
+#     players = session.query(Player)
+#     stonk_dict = dict()
+#     for player in players:
+#         print(".")
+#         player_stonks = session.query(Stonk.name).filter_by(player_id=player.id).distinct()
+#         all_long_holders = []
+#         all_short_holders = []
+#         for player_stonk in player_stonks:
+#             print(";")
+#             long_holders = session.query(StonkHolding).filter_by(
+#                 stonk_id=player_stonk, long=True)
+#             all_long_holders.extend([(holder.clan_id, holder.fraction * player_stonk.value) for holder in long_holders])
+#             short_holders = session.query(StonkHolding).filter_by(
+#                 stonk_id=player_stonk.id, long=False)
+#             all_short_holders.extend([(holder.clan_id, holder.fraction * player_stonk.value) for holder in short_holders])
+#         stonk_dict[player.id] = dict(long=all_long_holders, short=all_short_holders)
+#     return stonk_dict
+
+
 
 def get_stonk_series(player_id, name, nsteps, time_start, time_end):
     stonks = (session.query(Stonk)
