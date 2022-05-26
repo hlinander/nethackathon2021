@@ -1,4 +1,4 @@
-import curses
+ curses
 import re
 from curses import wrapper
 import session
@@ -14,7 +14,7 @@ INC_EXPIRY = 250
 MIN_EXPIRY = 250
 MAX_EXPIRY = 5000
 
-my_id = 0
+my_id = '0'
 
 state = 0
 
@@ -64,8 +64,7 @@ def update(stdscr, cpstate, player_order):
             player = cpstate[player_id]
             full_name = get_full_name(player)
             if selected_player_id == player_id:
-                c = focused_item if state == 'p' else selected_item
-                stdscr.addstr(y, 61, ' ' + full_name + (' ' * (17 - len(full_name))), c)
+                stdscr.addstr(y, 61, ' ' + full_name + (' ' * (17 - len(full_name))), item_color(1))
                 y += 1
                 stdscr.addstr(y, 0, row)
                 stdscr.addstr(y, 64, 'HP: ', stat_color)
@@ -204,13 +203,7 @@ def main(stdscr):
     if not invest:
         return view_stonks()
 
-    cpstate = {
-        '1': { 'player_name': 'pellsson', 'player_ticker': 'PLS', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18},
-        '2': { 'player_name': 'Aransentin', 'player_ticker': 'ARS', 'hp': 110, 'hpmax': 492, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 1828, 'dlevel': 4},
-        '3': { 'player_name': 'pellsson2', 'player_ticker': 'PLX', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18},
-        '4': { 'player_name': 'pellsson3', 'player_ticker': 'PLZ', 'hp': 11, 'hpmax': 11, 'level': 1, 'hunger': 866, 'ac': 9, 'strength': 8, 'intelligence': 19, 'wisdom': 12, 'dexterity': 17, 'constitution': 10, 'charisma': 9, 'turn': 12381, 'dlevel': 18}
-    }
-
+    cpstate = session.get_state()
     player_order = [ it[0] for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
     selected_player_id = player_order[0]
 
@@ -306,7 +299,7 @@ if True:
             sys.exit(123)
     print('\x1b[?25h')
 
-my_id = int(sys.argv[1])
+my_id = sys.argv[1]
 my_turn = int(sys.argv[2])
 my_session = int(sys.argv[3])
 
