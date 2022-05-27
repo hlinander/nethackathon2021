@@ -1,6 +1,8 @@
 # with import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {};
 # with import <nixpkgs> {};
 with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/8dd8bd8be74.tar.gz) {};
+
+#with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/6efc186e6079ff3f328a2497ff3d36741ac60f6e.tar.gz) {};
 stdenv.mkDerivation rec {
   pname = "nethack";
   version = "0.1.0";
@@ -20,6 +22,10 @@ stdenv.mkDerivation rec {
       sourceRoot = "source/client/rust";
       sha256 = "0y5kyq2347pdmhmjcnshkgyd53m2ws3na25dfis603din6bskn3n";
     };
+
+  # cargoDeps = rustPlatform.importCargoLock {
+  #   lockFile = ./source/client/rust/Cargo.lock;
+  # };
 
   cargoRoot = "client/rust";
 

@@ -64,5 +64,4 @@ then
 fi
 
 
-cd $HACKDIR
 exec $HACK "$@"
