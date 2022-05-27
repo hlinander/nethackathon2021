@@ -1,5 +1,6 @@
 # with import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {};
-with import <nixpkgs> {};
+# with import <nixpkgs> {};
+with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/8dd8bd8be74.tar.gz) {};
 stdenv.mkDerivation rec {
   pname = "nethack";
   version = "0.1.0";
