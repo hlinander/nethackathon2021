@@ -1,15 +1,16 @@
 # with import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {};
 # with import <nixpkgs> {};
-with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/8dd8bd8be74.tar.gz) {};
+#with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/8dd8bd8be74.tar.gz) {};
 
-#with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/6efc186e6079ff3f328a2497ff3d36741ac60f6e.tar.gz) {};
+with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/6efc186e6079ff3f328a2497ff3d36741ac60f6e.tar.gz) {};
 stdenv.mkDerivation rec {
   pname = "nethack";
   version = "0.1.0";
 
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
-    rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
+    #rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
+    rev = "dd2c01776891e3574745d6db5165d1bbc36b6f7f";
   };
 
   lua = fetchurl {
@@ -35,6 +36,7 @@ stdenv.mkDerivation rec {
     utillinux
     curl
     breakpointHook
+    #gcc
     clang
     ncurses
     protobuf
@@ -66,8 +68,10 @@ stdenv.mkDerivation rec {
     ls lib
     cat Makefile
     CC=clang make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
+    #make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
     popd
     #CC=clang make fetch-lua
+    #clang test.c
   '';
 
   installPhase = ''
