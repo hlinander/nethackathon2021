@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
     #rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
-    rev = "dd2c01776891e3574745d6db5165d1bbc36b6f7f";
+    rev = "d9a0ca641df027e038d0a6f4a0389f07621cee1b";
   };
 
   lua = fetchurl {
@@ -18,15 +18,16 @@ stdenv.mkDerivation rec {
       sha256 = "0ksj5zpj74n0jkamy3di1p6l10v4gjnd2zjnb453qc6px6bhsmqi";
   };
 
-  cargoDeps = rustPlatform.fetchCargoTarball {
-      inherit src;
-      sourceRoot = "source/client/rust";
-      sha256 = "0y5kyq2347pdmhmjcnshkgyd53m2ws3na25dfis603din6bskn3n";
-    };
+  # cargoDeps = rustPlatform.fetchCargoTarball {
+  #     inherit src;
+  #     sourceRoot = "source/client/rust";
+  #     sha256 = "0y5kyq2347pdmhmjcnshkgyd53m2ws3na25dfis603din6bskn3n";
+  #   };
 
-  # cargoDeps = rustPlatform.importCargoLock {
-  #   lockFile = ./source/client/rust/Cargo.lock;
-  # };
+  cargoDeps = rustPlatform.importCargoLock {
+    # lockFile = source/client/rust/Cargo.lock;
+    lockFile = ./client/rust/Cargo.lock;
+  };
 
   cargoRoot = "client/rust";
 
