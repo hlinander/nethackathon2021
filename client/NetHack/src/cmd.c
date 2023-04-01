@@ -204,6 +204,13 @@ static int dogemstore(void)
    return 0;
 }
 
+int oracle_prompt();
+static int dooracle(void)
+{
+    oracle_prompt();
+    return 0;
+}
+
 static int doavanza(void)
 {
   char session_id[128];
@@ -1907,6 +1914,8 @@ struct ext_func_tab extcmdlist[] = {
               dogemstore, AUTOCOMPLETE | IFBURIED | GENERALCMD , NULL },
     { '\0',   "avanza", "access the stonk market",
               doavanza, AUTOCOMPLETE | IFBURIED | GENERALCMD , NULL },
+    { '\0',   "oracle", "get help from the oracle",
+              dooracle, AUTOCOMPLETE | IFBURIED | GENERALCMD , NULL },
     { ';',    "glance", "show what type of thing a map symbol corresponds to", 
               doquickwhatis, IFBURIED | GENERALCMD, NULL },
     { '?',    "help", "give a help message",

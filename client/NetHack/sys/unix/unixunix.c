@@ -104,9 +104,11 @@ getlock(void)
      * also incidentally prevents development of any hack-o-matic programs
      */
     /* added check for window-system type -dlc */
+#if 0
     if (!strcmp(windowprocs.name, "tty"))
         if (!isatty(0))
             error("You must play from a terminal.");
+#endif
 #endif
 
     /* we ignore QUIT and INT at this point */
