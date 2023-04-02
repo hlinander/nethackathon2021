@@ -120,7 +120,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	defer resp.Body.Close()
 
 	defer func() {
-		log.Printf("prompt '%s' done", reqJsonDataBytes)
+		log.Printf("prompt '%s' done. num available workers: %d", reqJsonDataBytes, workers.NumAvailWorkers())
 	}()
 
 	for {
@@ -169,7 +169,6 @@ func registerWorkerHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Println("locking mutex")
 	workers.EndpointsMutex.Lock()
 	defer workers.EndpointsMutex.Unlock()
 
@@ -185,7 +184,7 @@ func registerWorkerHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte{})
 
-	log.Println("checking of worker is alive")
+	log.Println("checking if worker is alive")
 	go checkWorkerAlive(req.Endpoint)
 }
 
