@@ -18,12 +18,12 @@ type Worker struct {
 
 type Workers struct {
 	EndpointsMutex sync.RWMutex
-	Endpoints      map[string]Worker
+	Endpoints      map[string]*Worker
 }
 
 var ErrNoAvailableWorkers = fmt.Errorf("no available workers")
 
-func (w *Workers) AllocAvailableWorker() (string, error) {
+func (w *Workers) AllocWorker() (string, error) {
 	w.EndpointsMutex.Lock()
 	defer w.EndpointsMutex.Unlock()
 	for endpoint, worker := range w.Endpoints {
@@ -36,8 +36,34 @@ func (w *Workers) AllocAvailableWorker() (string, error) {
 	return "", ErrNoAvailableWorkers
 }
 
+func (w *Workers) NumAvailWorkers() int {
+	w.EndpointsMutex.RLock()
+	defer w.EndpointsMutex.RUnlock()
+	counter := 0
+	for _, worker := range w.Endpoints {
+		if worker.Available {
+			counter++
+		}
+	}
+
+	return counter
+}
+
+func (w *Workers) DeallocWorker(endpoint string) {
+
+	w.EndpointsMutex.Lock()
+	defer w.EndpointsMutex.Unlock()
+
+	e, exists := w.Endpoints[endpoint]
+	if !exists {
+		return
+	}
+
+	e.Available = true
+}
+
 var workers Workers = Workers{
-	Endpoints: make(map[string]Worker),
+	Endpoints: make(map[string]*Worker),
 }
 
 type RootHandlerRequest struct {
@@ -53,22 +79,32 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/plain")
 
-	endpoint, err := workers.AllocAvailableWorker()
+	log.Println("allocating worker")
+	endpoint, err := workers.AllocWorker()
 	if err != nil {
 		if errors.Is(err, ErrNoAvailableWorkers) {
+			log.Println("no workers available")
 			http.Error(w, "no workers available", http.StatusServiceUnavailable)
 			return
 		}
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	defer workers.DeallocWorker(endpoint)
 
-	reqData := RootHandlerRequest{}
-	reqDataJsonBytes, err := json.Marshal(reqData)
+	log.Printf("num available workers: %d", workers.NumAvailWorkers())
+
+	reqJsonDataBytes, err := io.ReadAll(r.Body)
 	if err != nil {
-		panic(err)
+		if errors.Is(err, io.EOF) {
+			return
+		}
+		http.Error(w, fmt.Sprintf("endpoint error %s", err), http.StatusInternalServerError)
+		return
 	}
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/chat", endpoint), bytes.NewBuffer(reqDataJsonBytes))
+
+	log.Printf("calling worker with prompt: %s", reqJsonDataBytes)
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/chat", endpoint), bytes.NewBuffer(reqJsonDataBytes))
 	if err != nil {
 		panic(err)
 	}
@@ -82,6 +118,10 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer resp.Body.Close()
+
+	defer func() {
+		log.Printf("prompt '%s' done", reqJsonDataBytes)
+	}()
 
 	for {
 		var buf []byte = make([]byte, 1024)
@@ -105,6 +145,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		flusher.Flush()
 	}
+
 }
 
 type RegisterWorkerRequest struct {
@@ -138,7 +179,9 @@ func registerWorkerHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	workers.Endpoints[req.Endpoint] = Worker{}
+	workers.Endpoints[req.Endpoint] = &Worker{
+		Available: true,
+	}
 
 	w.Write([]byte{})
 
@@ -149,7 +192,6 @@ func registerWorkerHandler(w http.ResponseWriter, r *http.Request) {
 func checkWorkerAlive(endpoint string) {
 	retries := 3
 	for {
-		log.Printf("pinging worker: %s", endpoint)
 		_, err := http.Get(fmt.Sprintf("%s/ping", endpoint))
 		if err != nil {
 			retries -= 1
