@@ -1,5 +1,6 @@
 use crate::ipc::{Error, Ipc, Result};
 use crate::nh_proto::{ObjData, SessionEvent};
+use crate::oracle;
 use core::ptr::null_mut;
 use nethack_rs::{g, obj};
 use std::collections::HashMap;
@@ -148,6 +149,7 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
 
 #[no_mangle]
 pub unsafe extern "C" fn rust_ipc_init(id: i32, session_starttime: i32) {
+    oracle::init();
     IPC.with(|ipc| {
         ipc.borrow_mut().take();
     });
