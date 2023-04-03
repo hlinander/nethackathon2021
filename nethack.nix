@@ -11,7 +11,8 @@ stdenv.mkDerivation rec {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
     #rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
     #rev = "d9a0ca641df027e038d0a6f4a0389f07621cee1b";
-    rev = "3f1344e8f392e97bd4d76e5d00d816c518fbb2fe";
+    #rev = "3f1344e8f392e97bd4d76e5d00d816c518fbb2fe";
+    rev = "20885c299b7f9a3a4a7a92912098f0db1ae889de";
   };
 
   lua = fetchurl {
