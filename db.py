@@ -1,5 +1,5 @@
 import sqlalchemy
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Binary, Time, DateTime, JSON, Float, Boolean
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, LargeBinary, Time, DateTime, JSON, Float, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 import datetime
@@ -37,7 +37,7 @@ class BagItem(Base):
     __tablename__ = "bagitems"
     id = Column(Integer, primary_key=True)
     bag = Column(Integer, ForeignKey("bags.id"))
-    item = Column(Binary)
+    item = Column(LargeBinary)
 
 class Objective(Base):
     __tablename__ = "objectives"
@@ -65,7 +65,7 @@ class PlayerEquipment(Base):
     __tablename__ = "player_equipment"
     player_id = Column(Integer, ForeignKey("players.id"), primary_key=True)
     slot = Column(Integer, primary_key=True)
-    item = Column(Binary)
+    item = Column(LargeBinary)
 
 class EventHandler(Base):
     __tablename__ = "event_handler"

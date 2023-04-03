@@ -1,8 +1,8 @@
-# with import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {};
-# with import <nixpkgs> {};
+with import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {};
+#with import <nixpkgs> {};
 #with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/8dd8bd8be74.tar.gz) {};
 
-with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/6efc186e6079ff3f328a2497ff3d36741ac60f6e.tar.gz) {};
+#with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/6efc186e6079ff3f328a2497ff3d36741ac60f6e.tar.gz) {};
 stdenv.mkDerivation rec {
   pname = "nethack";
   version = "0.1.0";
@@ -10,7 +10,8 @@ stdenv.mkDerivation rec {
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
     #rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
-    rev = "d9a0ca641df027e038d0a6f4a0389f07621cee1b";
+    #rev = "d9a0ca641df027e038d0a6f4a0389f07621cee1b";
+    rev = "3f1344e8f392e97bd4d76e5d00d816c518fbb2fe";
   };
 
   lua = fetchurl {

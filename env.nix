@@ -2,7 +2,7 @@ with import <nixpkgs> {};
 
 buildEnv {
     name="vinst";
-paths = [ (python38.withPackages(ps: with ps; [
+paths = [ (python3.withPackages(ps: with ps; [
     sqlalchemy
     psycopg2
     protobuf
@@ -10,5 +10,7 @@ paths = [ (python38.withPackages(ps: with ps; [
     numpy
     readchar
     pyte
+    dotmap
+    dacite
 ])) protobuf ];
 }
