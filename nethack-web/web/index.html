@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="node_modules/xterm/css/xterm.css" />
+  <script src="node_modules/xterm/lib/xterm.js"></script>
+</head>
+
+<body>
+  <div id="terminal"></div>
+  <script>
+    var term = new Terminal();
+    term.open(document.getElementById('terminal'));
+
+    let socket = new WebSocket("ws://127.0.0.1:8080/ws");
+
+    // term.onKey(e => {
+    //   if (e.key == '\r')
+    //     term.write('\n');
+    //   else
+    //     term.write(e.key);
+    // });
+
+    socket.onopen = function (e) {
+      console.log("[open] Connection established");
+
+      term.onData(data => {
+        let charCodes = [];
+        for (let i = 0; i < data.length; i++) {
+          charCodes.push(data.charCodeAt(i));
+        }
+        console.log(data, charCodes);
+
+        if(data == "\r")
+          data = "\n";
+        socket.send(data);
+      });
+
+      //console.log("Sending to server");
+      //socket.send("echo hello\n");
+    };
+
+
+    socket.onmessage = function (event) {
+      console.log(`[message] Data received from server: ${event.data}`);
+      console.log(event);
+
+      event.data.arrayBuffer().then(buffer => {
+        term.write(new Uint8Array(buffer));
+        console.log("sending to term:", new Uint8Array(buffer))
+      }).catch(error => {
+        console.error(error);
+      });
+    };
+
+    socket.onclose = function (event) {
+      if (event.wasClean) {
+        console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+      } else {
+        // e.g. server process killed or network down
+        // event.code is usually 1006 in this case
+        console.log('[close] Connection died');
+      }
+    };
+
+    socket.onerror = function (error) {
+      console.log(`[error]`);
+    };
+
+  </script>
+</body>
+
+</html>
