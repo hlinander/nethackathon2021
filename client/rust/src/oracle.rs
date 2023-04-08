@@ -386,6 +386,9 @@ pub unsafe fn update_oracle_ui() {
     if TOKIO_RUNTIME.is_none() {
         return;
     }
+    if g.program_state.something_worth_saving <= 0 {
+        return;
+    }
     if UI_STATE.is_none() {
         UI_STATE = Some(UiState {
             cursor_pos: default_cursor_pos(),
