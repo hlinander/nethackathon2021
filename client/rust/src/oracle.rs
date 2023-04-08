@@ -94,6 +94,7 @@ async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
                 }
                 Ok(None) => {
                     let _ = tx.send(ReceiveMsg::End);
+                    break;
                 }
                 Err(e) => {
                     let _ = tx.send(ReceiveMsg::Error(format!("{:?}", e)));
