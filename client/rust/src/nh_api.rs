@@ -167,7 +167,7 @@ pub unsafe extern "C" fn bag_of_sharing_add(o: *mut obj) {
     let _ = until_io_success(|ipc| ipc.bag_add(&obj_data));
 }
 
-unsafe fn obj_to_obj_data(o: &obj) -> ObjData {
+pub(crate) unsafe fn obj_to_obj_data(o: &obj) -> ObjData {
     let name = if o.oextra != null_mut() && (&*o.oextra).oname != null_mut() {
         std::ffi::CStr::from_ptr((&*o.oextra).oname).to_string_lossy()
     } else {

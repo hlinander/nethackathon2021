@@ -3,11 +3,13 @@ use std::{
     ffi::{CStr, CString},
     io::{stdin, stdout, Read, Write},
     os::unix::prelude::{AsFd, AsRawFd},
+    ptr::{null, null_mut},
     time::{Duration, Instant},
 };
 
 use crossterm::{cursor::*, terminal::Clear, *};
 use libc::abort;
+use nethack_rs::{g, u};
 use reqwest::Client;
 use serde::Serialize;
 use termios::{tcgetattr, tcsetattr, Termios, ICANON};
@@ -19,6 +21,8 @@ use tokio::{
     },
     task::JoinHandle,
 };
+
+use crate::nh_api::obj_to_obj_data;
 
 static mut TOKIO_RUNTIME: Option<tokio::runtime::Runtime> = None;
 
@@ -32,8 +36,8 @@ enum MapObjectID {
 struct MapObject {
     id: MapObjectID,
     name: String,
-    symbol: String,
-    color: String,
+    symbol: char,
+    color: u8,
     distance: f32,
 }
 
@@ -78,8 +82,13 @@ struct PromptRequest {
 }
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
-    let ip = "192.168.1.148";
-    let client = Client::builder().build().unwrap();
+    let ip = "192.168.1.148"; // hampoos
+    let ip = "172.26.2.104"; // jannix
+    let client = Client::builder()
+        .connect_timeout(Duration::from_millis(2000))
+        .http2_keep_alive_timeout(Duration::from_millis(2000))
+        .build()
+        .unwrap();
     let req = client
         .get(format!("http://{ip}:8383/"))
         .body(serde_json::to_string_pretty(&PromptRequest { prompt }).unwrap())
@@ -120,6 +129,7 @@ unsafe fn new_request(prompt: String) {
     abort_active_request();
     if let Some(ui_state) = UI_STATE.as_mut() {
         ui_state.last_request_state_update = Some(Instant::now());
+        ui_state.request_status = RequestStatus::Active;
     }
     let runtime = TOKIO_RUNTIME.as_ref().unwrap();
     let (tx, rx) = unbounded_channel();
@@ -235,8 +245,124 @@ unsafe fn update_status_line() {
     }
 }
 
+const NUMMONS: u32 = nethack_rs::monnums_NUMMONS;
+const GLYPH_MON_OFF: u32 = 0;
+const GLYPH_PET_OFF: u32 = NUMMONS + GLYPH_MON_OFF;
+const GLYPH_INVIS_OFF: u32 = NUMMONS + GLYPH_PET_OFF;
+const GLYPH_DETECT_OFF: u32 = 1 + GLYPH_INVIS_OFF;
+const GLYPH_BODY_OFF: u32 = NUMMONS + GLYPH_DETECT_OFF;
+const GLYPH_RIDDEN_OFF: u32 = NUMMONS + GLYPH_BODY_OFF;
+const GLYPH_OBJ_OFF: u32 = NUMMONS + GLYPH_RIDDEN_OFF;
+const GLYPH_CMAP_OFF: u32 = nethack_rs::NUM_OBJECTS + GLYPH_OBJ_OFF;
+const GLYPH_EXPLODE_OFF: u32 =
+    (nethack_rs::screen_symbols_MAXPCHARS - nethack_rs::MAXEXPCHARS) + GLYPH_CMAP_OFF;
+const GLYPH_ZAP_OFF: u32 =
+    (nethack_rs::MAXEXPCHARS * nethack_rs::explosion_types_EXPL_MAX) + GLYPH_EXPLODE_OFF;
+const GLYPH_SWALLOW_OFF: u32 = (nethack_rs::NUM_ZAP << 2) + GLYPH_ZAP_OFF;
+const GLYPH_WARNING_OFF: u32 = (NUMMONS << 3) + GLYPH_SWALLOW_OFF;
+const GLYPH_STATUE_OFF: u32 = nethack_rs::WARNCOUNT + GLYPH_WARNING_OFF;
+const GLYPH_UNEXPLORED_OFF: u32 = NUMMONS + GLYPH_STATUE_OFF;
+const GLYPH_NOTHING_OFF: u32 = GLYPH_UNEXPLORED_OFF + 1;
+const MAX_GLYPH: u32 = GLYPH_NOTHING_OFF + 1;
+
+unsafe fn get_map_item_list() -> Vec<MapObject> {
+    let mut o_iter = g.level.objlist;
+    let player_pos = (u.ux as f32, u.uy as f32);
+    let mut list = Vec::new();
+    while !o_iter.is_null() {
+        let obj = &*o_iter;
+        let vis_state = nethack_rs::g
+            .viz_array
+            .add(obj.oy as usize)
+            .read()
+            .add(obj.ox as usize)
+            .read();
+        if vis_state & nethack_rs::COULD_SEE as i8 != 0 {
+            let glyph = if obj.otyp == nethack_rs::STATUE as i16 {
+                obj.corpsenm + GLYPH_STATUE_OFF as i32
+            } else if obj.otyp == nethack_rs::CORPSE as i16 {
+                obj.corpsenm + GLYPH_BODY_OFF as i32
+            } else {
+                obj.otyp as i32 + GLYPH_OBJ_OFF as i32
+            };
+            let o = nethack_rs::objects.as_ptr().add(obj.otyp as usize).read();
+            let oc_name = nethack_rs::obj_descr
+                .as_ptr()
+                .add(o.oc_name_idx as usize)
+                .read()
+                .oc_name;
+            let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
+            nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
+            if !oc_name.is_null() {
+                let item_pos = (obj.ox as f32, obj.oy as f32);
+                let dx = player_pos.0 - item_pos.0;
+                let dy = player_pos.1 - item_pos.1;
+                let distance = (dx * dx + dy * dy).sqrt();
+                let name = CStr::from_ptr(oc_name);
+                list.push(MapObject {
+                    id: MapObjectID::Item,
+                    name: name.to_string_lossy().into(),
+                    symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
+                    color: 0,
+                    distance,
+                });
+            }
+        }
+        o_iter = (&*o_iter).nobj;
+    }
+    list
+}
+
+unsafe fn get_monster_list() -> Vec<MapObject> {
+    let mut m_iter = g.level.monlist;
+    let player_pos = (u.ux as f32, u.uy as f32);
+    let mut list = Vec::new();
+    while !m_iter.is_null() {
+        if nethack_rs::howmonseen(m_iter) & nethack_rs::MONSEEN_NORMAL != 0 {
+            let name_buf =
+                nethack_rs::x_monnam(m_iter, nethack_rs::ARTICLE_NONE as i32, null(), !0, 0);
+            let name = CStr::from_ptr(name_buf);
+            let tame = (&*m_iter).mtame;
+            let m_data = (&*m_iter).data;
+            let mon_index = nethack_rs::monsndx(m_data);
+            let glyph = if tame != 0 {
+                mon_index + nethack_rs::monnums_NUMMONS as i32
+            } else {
+                mon_index + nethack_rs::GLYPH_MON_OFF as i32
+            };
+            let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
+            nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
+            let mon_pos = ((&*m_iter).mx as f32, (&*m_iter).my as f32);
+            let dx = player_pos.0 - mon_pos.0;
+            let dy = player_pos.1 - mon_pos.1;
+            let distance = (dx * dx + dy * dy).sqrt();
+            assert!(
+                mon_index >= 0 && mon_index < nethack_rs::monnums_NUMMONS as i32,
+                "{}",
+                mon_index
+            );
+            list.push(MapObject {
+                id: MapObjectID::Monster,
+                name: name.to_string_lossy().into_owned(),
+                symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
+                color: nethack_rs::mons
+                    .as_ptr()
+                    .add(mon_index as usize)
+                    .read()
+                    .mcolor,
+                distance,
+            });
+        }
+        m_iter = (&*m_iter).nmon;
+    }
+    list
+}
+
 fn generate_object_prompt(obj: &MapObject) -> String {
-    format!("{} in nethack is ", obj.name)
+    format!(
+        "When encountering a {} ({}), a common strategy is to",
+        obj.name, obj.symbol
+    )
 }
 
 fn pick_object_to_describe(
@@ -274,33 +400,11 @@ pub unsafe fn update_oracle_ui() {
         if ui_state.last_request_id != current_id {
             clear = true;
             ui_state.last_request_id = current_id;
-            ui_state.request_status = RequestStatus::Active;
         }
     } else {
         let mut map_things: Vec<MapObject> = Vec::new();
-        map_things.extend([
-            MapObject {
-                name: "Cockatrice".into(),
-                id: MapObjectID::Monster,
-                symbol: "c".into(),
-                color: "red".into(),
-                distance: 1.0,
-            },
-            MapObject {
-                name: "Rat".into(),
-                id: MapObjectID::Monster,
-                symbol: "r".into(),
-                color: "red".into(),
-                distance: 3.0,
-            },
-            MapObject {
-                name: "Cat".into(),
-                id: MapObjectID::Monster,
-                symbol: "c".into(),
-                color: "red".into(),
-                distance: 5.0,
-            },
-        ]);
+        map_things.extend(get_monster_list());
+        map_things.extend(get_map_item_list());
         let time_since_desc = ui_state
             .last_request_state_update
             .map(|t| Instant::now().duration_since(t))
@@ -358,7 +462,13 @@ unsafe fn update_request_state(ui_state: &mut UiState) -> Option<u32> {
                     abort_active_request();
                     break;
                 }
-                Ok(ReceiveMsg::End) | Err(TryRecvError::Disconnected) => {
+                Err(TryRecvError::Disconnected) => {
+                    ui_state.request_status = RequestStatus::Done;
+                    ui_state.last_request_state_update = Some(Instant::now());
+                    abort_active_request();
+                    break;
+                }
+                Ok(ReceiveMsg::End) => {
                     ui_state.request_status = RequestStatus::Done;
                     ui_state.last_request_state_update = Some(Instant::now());
                     abort_active_request();
