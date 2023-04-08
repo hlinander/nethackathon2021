@@ -141,6 +141,15 @@ pub unsafe extern "C" fn oracle_prompt() -> i32 {
             if !line.is_empty() {
                 line.remove(line.len() - 1);
             }
+            execute!(
+                stdout(),
+                Clear(terminal::ClearType::CurrentLine),
+                MoveTo(0, 25)
+            )
+            .unwrap();
+            print!("{}", line);
+            stdout().flush().unwrap();
+            execute!(stdout(), MoveTo(line.len() as u16, 25), EnableBlinking).unwrap();
             continue;
         }
         if let Some(c) = char::from_u32(c as u32) {
@@ -285,7 +294,7 @@ pub unsafe extern "C" fn nethackathon_getch() -> i32 {
 
         let mut tv = libc::timeval {
             tv_sec: 0,
-            tv_usec: 200000,
+            tv_usec: 200 * 1000,
         };
 
         let retval = libc::select(
