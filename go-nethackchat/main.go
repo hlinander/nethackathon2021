@@ -118,6 +118,10 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		http.Error(w, fmt.Sprintf("no endpoint available %s", err), http.StatusServiceUnavailable)
+		return
+	}
 
 	defer func() {
 		log.Printf("prompt '%s' done. num available workers: %d", reqJsonDataBytes, workers.NumAvailWorkers())
