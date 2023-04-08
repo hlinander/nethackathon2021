@@ -1,13 +1,13 @@
 use std::{
+    default,
     ffi::{CStr, CString},
     io::{stdin, stdout, Read, Write},
     os::unix::prelude::{AsFd, AsRawFd},
-    time::Duration,
+    time::{Duration, Instant},
 };
 
 use crossterm::{cursor::*, terminal::Clear, *};
 use libc::abort;
-use nethack_rs::g;
 use reqwest::Client;
 use serde::Serialize;
 use termios::{tcgetattr, tcsetattr, Termios, ICANON};
@@ -22,6 +22,7 @@ use tokio::{
 
 static mut TOKIO_RUNTIME: Option<tokio::runtime::Runtime> = None;
 
+#[derive(PartialEq)]
 enum MapObjectID {
     Item,
     Monster,
@@ -117,6 +118,9 @@ unsafe fn abort_active_request() {
 
 unsafe fn new_request(prompt: String) {
     abort_active_request();
+    if let Some(ui_state) = UI_STATE.as_mut() {
+        ui_state.last_request_state_update = Some(Instant::now());
+    }
     let runtime = TOKIO_RUNTIME.as_ref().unwrap();
     let (tx, rx) = unbounded_channel();
 
@@ -134,7 +138,7 @@ unsafe fn new_request(prompt: String) {
 #[no_mangle]
 pub unsafe extern "C" fn oracle_prompt() -> i32 {
     let mut line = String::new();
-    execute!(stdout(), MoveTo(0, 25), EnableBlinking).unwrap();
+    execute!(stdout(), MoveTo(0, default_prompt_pos().1), EnableBlinking).unwrap();
     loop {
         let c = nethackathon_getch();
         if c == 8 || c == 127 {
@@ -145,12 +149,17 @@ pub unsafe extern "C" fn oracle_prompt() -> i32 {
             execute!(
                 stdout(),
                 Clear(terminal::ClearType::CurrentLine),
-                MoveTo(0, 25)
+                MoveTo(0, default_prompt_pos().1)
             )
             .unwrap();
             print!("{}", line);
             stdout().flush().unwrap();
-            execute!(stdout(), MoveTo(line.len() as u16, 25), EnableBlinking).unwrap();
+            execute!(
+                stdout(),
+                MoveTo(line.len() as u16, default_prompt_pos().1),
+                EnableBlinking
+            )
+            .unwrap();
             continue;
         }
         if let Some(c) = char::from_u32(c as u32) {
@@ -182,11 +191,18 @@ struct UiState {
     printed_text: String,
     received_text: String,
     request_status: RequestStatus,
+    last_request_state_update: Option<Instant>,
     printed_status_line: String,
     cursor_pos: (u16, u16),
+
+    described_objects: Vec<MapObject>,
 }
 
 static mut UI_STATE: Option<UiState> = None;
+
+fn default_prompt_pos() -> (u16, u16) {
+    (0, 25)
+}
 
 fn default_cursor_pos() -> (u16, u16) {
     (0, 27)
@@ -197,7 +213,7 @@ unsafe fn get_status_line() -> String {
         RequestStatus::Active => "...".to_string(),
         RequestStatus::Done => "The oracle has spoken.".to_string(),
         RequestStatus::Error(err) => format!("server unhappy: {}", err),
-        RequestStatus::None => format!(""),
+        RequestStatus::None => format!("___"),
     }
 }
 unsafe fn update_status_line() {
@@ -213,15 +229,41 @@ unsafe fn update_status_line() {
         )
         .unwrap();
         print!("{}", text);
+        stdout().flush().unwrap();
         execute!(stdout(), RestorePosition).unwrap();
         ui_state.printed_status_line = text;
     }
 }
 
+fn generate_object_prompt(obj: &MapObject) -> String {
+    format!("{} in nethack is ", obj.name)
+}
+
+fn pick_object_to_describe(
+    ui_state: &mut UiState,
+    mut objects: Vec<MapObject>,
+) -> Option<MapObject> {
+    objects.retain(|obj| {
+        !ui_state
+            .described_objects
+            .iter()
+            .any(|a| a.id == obj.id && a.name == obj.name)
+    });
+    if objects.is_empty() {
+        return None;
+    }
+    objects.sort_by(|a, b| a.distance.total_cmp(&b.distance));
+    Some(objects.remove(0))
+}
+
 pub unsafe fn update_oracle_ui() {
+    if TOKIO_RUNTIME.is_none() {
+        return;
+    }
     if UI_STATE.is_none() {
         UI_STATE = Some(UiState {
             cursor_pos: default_cursor_pos(),
+            last_request_state_update: Some(Instant::now()),
             ..Default::default()
         });
     }
@@ -234,8 +276,45 @@ pub unsafe fn update_oracle_ui() {
             ui_state.last_request_id = current_id;
             ui_state.request_status = RequestStatus::Active;
         }
+    } else {
+        let mut map_things: Vec<MapObject> = Vec::new();
+        map_things.extend([
+            MapObject {
+                name: "Cockatrice".into(),
+                id: MapObjectID::Monster,
+                symbol: "c".into(),
+                color: "red".into(),
+                distance: 1.0,
+            },
+            MapObject {
+                name: "Rat".into(),
+                id: MapObjectID::Monster,
+                symbol: "r".into(),
+                color: "red".into(),
+                distance: 3.0,
+            },
+            MapObject {
+                name: "Cat".into(),
+                id: MapObjectID::Monster,
+                symbol: "c".into(),
+                color: "red".into(),
+                distance: 5.0,
+            },
+        ]);
+        let time_since_desc = ui_state
+            .last_request_state_update
+            .map(|t| Instant::now().duration_since(t))
+            .unwrap_or(Duration::from_secs(100000000));
+        let time_to_do_new_description = time_since_desc > Duration::from_secs(20);
+        if time_to_do_new_description {
+            if let Some(to_describe) = pick_object_to_describe(ui_state, map_things) {
+                let prompt = generate_object_prompt(&to_describe);
+                new_request(prompt);
+                ui_state.described_objects.push(to_describe);
+            }
+        }
     }
-    let mut needs_update = ui_state.received_text != ui_state.printed_text || clear;
+    let needs_update = ui_state.received_text != ui_state.printed_text || clear;
     update_status_line();
     if needs_update {
         if clear {
@@ -255,6 +334,7 @@ pub unsafe fn update_oracle_ui() {
             let diff = &ui_state.received_text[ui_state.printed_text.len()..];
             ui_state.printed_text += diff;
             print!("{}", diff);
+            stdout().flush().unwrap();
         }
         ui_state.cursor_pos = crossterm::cursor::position().unwrap();
         execute!(stdout(), RestorePosition).unwrap();
@@ -266,19 +346,28 @@ unsafe fn update_request_state(ui_state: &mut UiState) -> Option<u32> {
     let mut request_id = None;
     if let Some(req) = ACTIVE_REQUEST.as_mut() {
         request_id = Some(req.id);
-        match req.data_receive.try_recv() {
-            Ok(ReceiveMsg::MoreData(data)) => {
-                ui_state.received_text += &data;
+        loop {
+            match req.data_receive.try_recv() {
+                Ok(ReceiveMsg::MoreData(data)) => {
+                    ui_state.received_text += &data;
+                    ui_state.last_request_state_update = Some(Instant::now());
+                }
+                Ok(ReceiveMsg::Error(error_msg)) => {
+                    ui_state.request_status = RequestStatus::Error(error_msg);
+                    ui_state.last_request_state_update = Some(Instant::now());
+                    abort_active_request();
+                    break;
+                }
+                Ok(ReceiveMsg::End) | Err(TryRecvError::Disconnected) => {
+                    ui_state.request_status = RequestStatus::Done;
+                    ui_state.last_request_state_update = Some(Instant::now());
+                    abort_active_request();
+                    break;
+                }
+                Err(TryRecvError::Empty) => {
+                    break;
+                }
             }
-            Ok(ReceiveMsg::Error(error_msg)) => {
-                ui_state.request_status = RequestStatus::Error(error_msg);
-                abort_active_request();
-            }
-            Ok(ReceiveMsg::End) | Err(TryRecvError::Disconnected) => {
-                ui_state.request_status = RequestStatus::Done;
-                abort_active_request();
-            }
-            Err(TryRecvError::Empty) => {}
         }
     }
     request_id
