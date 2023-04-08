@@ -136,8 +136,6 @@ pub unsafe extern "C" fn oracle_prompt() -> i32 {
     execute!(stdout(), MoveTo(0, 25), EnableBlinking).unwrap();
     loop {
         let c = nethackathon_getch();
-        print!("{}", c);
-        stdout().flush();
         if c == 8 || c == 127 {
             // backspace
             if !line.is_empty() {
@@ -300,9 +298,7 @@ pub unsafe extern "C" fn nethackathon_getch() -> i32 {
         if retval == -1 {
             eprintln!("select() failed: {}", std::io::Error::last_os_error());
         } else if retval > 0 {
-            println!("reading...");
             let c = libc::getchar();
-            println!("read");
             return c;
         } else {
             update_oracle_ui();
