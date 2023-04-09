@@ -1,4 +1,5 @@
 use std::{
+    cmp::Ordering,
     default,
     ffi::{CStr, CString},
     io::{stdin, stdout, Read, Write},
@@ -22,7 +23,7 @@ use tokio::{
     task::JoinHandle,
 };
 
-use crate::nh_api::obj_to_obj_data;
+use crate::{nh_api::obj_to_obj_data, oracle};
 
 static mut TOKIO_RUNTIME: Option<tokio::runtime::Runtime> = None;
 
@@ -31,6 +32,16 @@ enum MapObjectID {
     Item,
     Monster,
     Tile,
+}
+
+impl MapObjectID {
+    fn sort_key(&self) -> i32 {
+        match self {
+            MapObjectID::Monster => 1,
+            MapObjectID::Item => 2,
+            MapObjectID::Tile => 3,
+        }
+    }
 }
 
 struct MapObject {
@@ -149,27 +160,25 @@ unsafe fn new_request(prompt: String) {
 pub unsafe extern "C" fn oracle_prompt() -> i32 {
     let mut line = String::new();
     execute!(stdout(), MoveTo(0, default_prompt_pos().1), EnableBlinking).unwrap();
+    const ORACLE_PROMPT: &str = "Ask the oracle: ";
+    print!("{}", ORACLE_PROMPT);
+    stdout().flush().unwrap();
     loop {
         let c = nethackathon_getch();
         if c == 8 || c == 127 {
             // backspace
             if !line.is_empty() {
                 line.remove(line.len() - 1);
+                execute!(
+                    stdout(),
+                    Clear(terminal::ClearType::CurrentLine),
+                    MoveTo(0, default_prompt_pos().1),
+                    EnableBlinking
+                )
+                .unwrap();
+                print!("{}{}", ORACLE_PROMPT, line);
+                stdout().flush().unwrap();
             }
-            execute!(
-                stdout(),
-                Clear(terminal::ClearType::CurrentLine),
-                MoveTo(0, default_prompt_pos().1)
-            )
-            .unwrap();
-            print!("{}", line);
-            stdout().flush().unwrap();
-            execute!(
-                stdout(),
-                MoveTo(line.len() as u16, default_prompt_pos().1),
-                EnableBlinking
-            )
-            .unwrap();
             continue;
         }
         if let Some(c) = char::from_u32(c as u32) {
@@ -211,11 +220,11 @@ struct UiState {
 static mut UI_STATE: Option<UiState> = None;
 
 fn default_prompt_pos() -> (u16, u16) {
-    (0, 25)
+    (0, 24)
 }
 
 fn default_cursor_pos() -> (u16, u16) {
-    (0, 27)
+    (0, 26)
 }
 
 unsafe fn get_status_line() -> String {
@@ -238,7 +247,9 @@ unsafe fn update_status_line() {
             MoveTo(default_cursor_pos().0, default_cursor_pos().1 - 1),
         )
         .unwrap();
-        print!("{}", text);
+        for line in textwrap::wrap(&text, 80) {
+            println!("{}", line);
+        }
         stdout().flush().unwrap();
         execute!(stdout(), RestorePosition).unwrap();
         ui_state.printed_status_line = text;
@@ -380,7 +391,11 @@ fn pick_object_to_describe(
     if objects.is_empty() {
         return None;
     }
-    objects.sort_by(|a, b| a.distance.total_cmp(&b.distance));
+    // sort by type of object, then distance, to prioritize in order: monster -> item -> tile
+    objects.sort_by(|a, b| match a.id.sort_key().cmp(&b.id.sort_key()) {
+        Ordering::Equal => a.distance.total_cmp(&b.distance),
+        ord => ord,
+    });
     Some(objects.remove(0))
 }
 
@@ -414,7 +429,7 @@ pub unsafe fn update_oracle_ui() {
             .last_request_state_update
             .map(|t| Instant::now().duration_since(t))
             .unwrap_or(Duration::from_secs(100000000));
-        let time_to_do_new_description = time_since_desc > Duration::from_secs(20);
+        let time_to_do_new_description = time_since_desc > Duration::from_secs(15);
         if time_to_do_new_description {
             if let Some(to_describe) = pick_object_to_describe(ui_state, map_things) {
                 let prompt = generate_object_prompt(&to_describe);
@@ -437,15 +452,26 @@ pub unsafe fn update_oracle_ui() {
             .unwrap();
             ui_state.cursor_pos = default_cursor_pos();
         }
-        let (x, y) = ui_state.cursor_pos;
+        let (mut x, mut y) = ui_state.cursor_pos;
         execute!(stdout(), SavePosition, MoveTo(x, y)).unwrap();
-        if ui_state.printed_text.len() < ui_state.received_text.len() {
-            let diff = &ui_state.received_text[ui_state.printed_text.len()..];
+        while ui_state.printed_text.len() < ui_state.received_text.len() {
+            (x, y) = ui_state.cursor_pos;
+            execute!(stdout(), MoveTo(x, y)).unwrap();
+            let chars_to_next_line = 79 - x;
+            if chars_to_next_line <= 0 {
+                ui_state.cursor_pos.1 += 1;
+                ui_state.cursor_pos.0 = 0;
+                continue;
+            }
+            let line_end_for_received = ui_state.printed_text.len()
+                + (ui_state.received_text.len() - ui_state.printed_text.len())
+                    .min(chars_to_next_line as usize);
+            let diff = &ui_state.received_text[ui_state.printed_text.len()..line_end_for_received];
             ui_state.printed_text += diff;
-            print!("{}", diff);
+            print!("{}", diff.trim_start());
             stdout().flush().unwrap();
+            ui_state.cursor_pos = crossterm::cursor::position().unwrap();
         }
-        ui_state.cursor_pos = crossterm::cursor::position().unwrap();
         execute!(stdout(), RestorePosition).unwrap();
         stdout().flush().unwrap();
     }
