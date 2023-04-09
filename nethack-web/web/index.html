@@ -2,55 +2,201 @@
 <html>
 
 <head>
+
   <link rel="stylesheet" href="node_modules/xterm/css/xterm.css" />
   <script src="node_modules/xterm/lib/xterm.js"></script>
+  <script src="node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+  <style>
+    .xterm-viewport {
+      overflow: hidden !important;
+    }
+    .xterm .xterm-viewport {
+      touch-action: none;
+    }
+    dialog {
+      position: absolute;
+      left: 50vw;
+      top: 50vh;
+      transform: translate(-50%, -50%);
+      margin: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #terminal {
+      touch-action: none;
+      margin-top: 16px;
+    }
+  </style>
 </head>
 
 <body>
+  <canvas id="c"></canvas>
   <div id="terminal"></div>
+  <dialog id="name_dialog" open>
+      <img src="NetHack-Logo.svg"/>
+      <p>What is your name, adventurer?</p>
+      <input id="nameinput" autocomplete="text" onkeypress="clickPress(event)" />
+      <button id="submitname" disabled onclick="submitName()">begin</button>
+  </dialog>
   <script>
-    var term = new Terminal();
+    let prevMatrixTimer = null
+    function setupMatrix() {
+      if (prevMatrixTimer) {
+        clearInterval(prevMatrixTimer)
+        prevMatrixTimer = null
+      }
+
+      var c = document.getElementById("c");
+      var ctx = c.getContext("2d");
+
+      //making the canvas full screen
+      c.height = window.innerHeight;
+      c.width = window.innerWidth;
+
+
+
+
+
+      //chinese characters - taken from the unicode charset
+      var matrix = "~!@#$%^&*()_+\`1234567890-={}|QWERTYUIOP:\"[]\\ASDFGHJKL?;'ZXCVBNM,./<>!";
+      //converting the string into an array of single characters
+      matrix = matrix.split("");
+
+      var font_size = 10;
+      var columns = c.width / font_size; //number of columns for the rain
+      //an array of drops - one per column
+      var drops = [];
+      //x below is the x coordinate
+      //1 = y co-ordinate of the drop(same for every drop initially)
+      for (var x = 0; x < columns; x++)
+        drops[x] = 1;
+
+      //drawing the characters
+      function draw() {
+        //Black BG for the canvas
+        //translucent BG to show trail
+        ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        ctx.fillStyle = "#9a0939";
+        ctx.font = font_size + "px arial";
+        //looping over drops
+        for (var i = 0; i < drops.length; i++) {
+          //a random chinese character to print
+          var text = matrix[Math.floor(Math.random() * matrix.length)];
+          //x = i*font_size, y = value of drops[i]*font_size
+          ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+          //sending the drop back to the top randomly after it has crossed the screen
+          //adding a randomness to the reset to make the drops scattered on the Y axis
+          if (drops[i] * font_size > c.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+          //incrementing Y coordinate
+          drops[i]++;
+        }
+      }
+      prevMatrixTimer = setInterval(draw, 35);
+    }
+
+    setupMatrix()
+
+    window.addEventListener('resize', function (event) {
+      setupMatrix()
+    });
+
+    var term = new Terminal({
+      cursorBlink: true,
+      macOptionIsMeta: true,
+      allowTransparency: true,
+      scrollOnUserInput: false,
+      cols: 80,
+      rows: 35,
+    });
+
+    // const fitAddon = new FitAddon.FitAddon();
+    // term.loadAddon(fitAddon);
+
     term.open(document.getElementById('terminal'));
 
-    let socket = new WebSocket("ws://127.0.0.1:8080/ws");
+    // fitAddon.fit();
 
-    // term.onKey(e => {
-    //   if (e.key == '\r')
-    //     term.write('\n');
-    //   else
-    //     term.write(e.key);
+    // const xterm_resize_ob = new ResizeObserver(function (entries) {
+    //   try {
+    //     fitAddon && fitAddon.fit();
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
     // });
+
+    // 80x25  
+
+    // xterm_resize_ob.observe(document.querySelector("#terminal"));
+
+    let socket = new WebSocket("ws://nh.hampe.nu:8484/ws");
+
+    function submitName() {
+      socket.send(JSON.stringify({ type: "hello", name: document.querySelector("#nameinput").value }));
+      document.querySelector("#name_dialog").open = false
+    }
+
+    function clickPress(event) {
+      if (event.key == "Enter") {
+          submitName()
+      }
+    }
 
     socket.onopen = function (e) {
       console.log("[open] Connection established");
+      
+      // when connected make button clickable
+      document.querySelector("#submitname").disabled = false
+
+      // fitAddon.fit();
 
       term.onData(data => {
-        let charCodes = [];
-        for (let i = 0; i < data.length; i++) {
-          charCodes.push(data.charCodeAt(i));
-        }
-        console.log(data, charCodes);
-
-        if(data == "\r")
-          data = "\n";
-        socket.send(data);
+        socket.send(JSON.stringify({ type: "data", data: btoa(data) }));
       });
 
-      //console.log("Sending to server");
-      //socket.send("echo hello\n");
+      term.onResize((evt) => {
+        socket.send(JSON.stringify({ type: "resize", cols: evt.cols, rows: evt.rows }))
+      });
+
+      // console.log("sending ", { type: "resize", cols: term.cols, rows: term.rows });
+      // socket.send(JSON.stringify({ type: "resize", cols: term.cols, rows: term.rows }))
     };
 
-
     socket.onmessage = function (event) {
-      console.log(`[message] Data received from server: ${event.data}`);
-      console.log(event);
+      console.log(`[message] Data received from server`, event);
+      msg = JSON.parse(event.data)
+      
+      switch(msg.type) {
+        case "data":
+          term.write(atob(msg.data))
+        break;
+        default:
+          console.log("unknown message", msg)
+      }
 
-      event.data.arrayBuffer().then(buffer => {
-        term.write(new Uint8Array(buffer));
-        console.log("sending to term:", new Uint8Array(buffer))
-      }).catch(error => {
-        console.error(error);
-      });
+      // event.data.arrayBuffer().then(buffer => {
+      //   term.write(new Uint8Array(buffer));
+      // }).catch(error => {
+      //   console.error(error);
+      // });
     };
 
     socket.onclose = function (event) {
