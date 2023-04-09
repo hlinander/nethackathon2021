@@ -9,10 +9,7 @@ stdenv.mkDerivation rec {
 
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
-    #rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
-    #rev = "d9a0ca641df027e038d0a6f4a0389f07621cee1b";
-    #rev = "3f1344e8f392e97bd4d76e5d00d816c518fbb2fe";
-    rev = "913d715f5936ed64566be58ed42772e5e759f7a2";
+    rev = "fd4802bfdf01fb8ce3a0437c32b4c363ad01441b";
   };
 
   lua = fetchurl {
@@ -58,6 +55,11 @@ stdenv.mkDerivation rec {
     pushd client/NetHack/sys/unix;
     ./setup.sh hints/linux;
     popd;
+    pushd client/NetHack
+    touch src/mon.c
+    mkdir -p lib
+    (cd lib; tar xzf ${lua})
+    popd
   '';
 
   makeFlags = "PREFIX=$(out)";
@@ -72,11 +74,6 @@ stdenv.mkDerivation rec {
     cargo build
     popd
     pushd client/NetHack
-    touch src/mon.c
-    mkdir -p lib
-    (cd lib; tar xzf ${lua})
-    ls lib
-    cat Makefile
     CC=clang make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
     #make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
     popd
