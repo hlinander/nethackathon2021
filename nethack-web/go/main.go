@@ -5,22 +5,47 @@
 package main
 
 import (
-	"bytes"
+	"context"
+	"encoding/base64"
+	"encoding/json"
 	"flag"
-	"io"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"os/exec"
+	"sync"
 	"time"
 
 	"github.com/creack/pty"
+	"github.com/go-playground/validator/v10"
 	"github.com/gorilla/websocket"
+	"github.com/jackc/pgx/v5"
 )
 
+type ResizeMsg struct {
+	Type string `json:"type" validate:"required,eq=resize"`
+	Cols *int   `json:"cols" validate:"required"`
+	Rows *int   `json:"rows" validate:"required"`
+}
+
+type DataMsg struct {
+	Type string `json:"type" validate:"required,eq=data"`
+	Data string `json:"data" validate:"required,base64"`
+}
+
+type HelloMsg struct {
+	Type string `json:"type" validate:"required,eq=hello"`
+	Name string `json:"name" validate:"required"`
+}
+
+type Players struct {
+	Type    string   `json:"type" validate:"required,eq=players"`
+	Players []string `json:"type" validate:"required"`
+}
+
 var (
-	addr    = flag.String("addr", "127.0.0.1:8080", "http service address")
-	cmdPath string
+	addr = flag.String("addr", ":8484", "http service address")
 )
 
 const (
@@ -38,66 +63,220 @@ const (
 
 	// Time to wait before force close on connection.
 	closeGracePeriod = 10 * time.Second
+
+	defaultPtyRows = 35
+	defaultPtyCols = 80
 )
 
-func pumpStdin(ws *websocket.Conn, w *os.File) {
+func readPump(ctx context.Context, ws *websocket.Conn, s *Session) {
+	_, cancel := context.WithCancel(ctx)
+	defer func() { cancel() }()
+
 	defer ws.Close()
+
 	ws.SetReadLimit(maxMessageSize)
 	ws.SetReadDeadline(time.Now().Add(pongWait))
+	ws.SetPongHandler(func(string) error {
+		ws.SetReadDeadline(time.Now().Add(pongWait))
+		return nil
+	})
 
-	ws.SetPongHandler(func(string) error { ws.SetReadDeadline(time.Now().Add(pongWait)); return nil })
-
+read_msg_loop:
 	for {
 		_, message, err := ws.ReadMessage()
 		if err != nil {
-			break
+			log.Printf("failed to read websocket message: %s", err)
+			cancel()
+			return
 		}
-		if _, err := w.Write(message); err != nil {
-			break
-		}
-	}
-}
 
-func NormalizeNewlines(d []byte) []byte {
-	// replace CR LF \r\n (windows) with LF \n (unix)
-	d = bytes.Replace(d, []byte{13, 10}, []byte{10}, -1)
-	// replace CF \r (mac) with LF \n (unix)
-	d = bytes.Replace(d, []byte{13}, []byte{10}, -1)
-	return d
-}
-
-func pumpStdout(ws *websocket.Conn, r io.Reader, done chan struct{}) {
-	buf := make([]byte, 1024)
-	for {
-		n, err := r.Read(buf)
+		msgKeys := map[string]any{}
+		err = json.Unmarshal(message, &msgKeys)
 		if err != nil {
-			close(done)
-			log.Fatal(err)
-		}
-		// ws.SetWriteDeadline(time.Now().Add(writeWait))
-		if err := ws.WriteMessage(websocket.BinaryMessage, NormalizeNewlines(buf[:n])); err != nil {
-			ws.Close()
-			break
+			log.Printf("ignoring unknown message with invalid json: %s", message)
+			continue
 		}
 
-		log.Printf("wrote %d bytes", n)
+		typeVal, exists := msgKeys["type"]
+		if !exists {
+			log.Printf("ignoring message with no type: %s", message)
+			continue
+		}
+
+		switch typeVal {
+		case "resize":
+			if s.PtyPipe == nil {
+				log.Printf("got a resize message before starting. ignoring.")
+				break read_msg_loop
+			}
+
+			var msg ResizeMsg
+			err = json.Unmarshal(message, &msg)
+			if err != nil {
+				log.Printf("failed to unmarshal message from web: %s", err)
+				break read_msg_loop
+			}
+
+			validate := validator.New()
+			err := validate.Struct(msg)
+			if err != nil {
+				log.Printf("failed to validate message: %s", err)
+				break read_msg_loop
+			}
+
+			err = pty.Setsize(
+				s.PtyPipe,
+				&pty.Winsize{
+					Rows: uint16(*msg.Rows),
+					Cols: uint16(*msg.Cols),
+				})
+			if err != nil {
+				log.Printf("failed to set pty size: %s", err)
+				break read_msg_loop
+			}
+
+		case "data":
+			if s.PtyPipe == nil {
+				log.Printf("got a data message before starting. ignoring.")
+				break read_msg_loop
+			}
+			var msg DataMsg
+			err = json.Unmarshal(message, &msg)
+			if err != nil {
+				log.Printf("failed to unmarshal message from web: %s", err)
+				break read_msg_loop
+			}
+
+			validate := validator.New()
+			err := validate.Struct(msg)
+			if err != nil {
+				log.Printf("failed to validate message: %s", err)
+				break read_msg_loop
+			}
+
+			decoded, err := base64.StdEncoding.DecodeString(msg.Data)
+			if err != nil {
+				log.Printf("failed to decode base64 data in message from web: %s", err)
+				break read_msg_loop
+			}
+
+			_, err = s.PtyPipe.Write(decoded)
+			if err != nil {
+				log.Printf("failed to write data to pty: %s", err)
+				break read_msg_loop
+			}
+
+		case "hello":
+			if s.PtyPipe != nil {
+				log.Printf("got a hello message after already started. ignoring.")
+				break read_msg_loop
+			}
+
+			var msg HelloMsg
+			err = json.Unmarshal(message, &msg)
+			if err != nil {
+				log.Printf("failed to unmarshal message from web: %s", err)
+				break read_msg_loop
+			}
+
+			validate := validator.New()
+			err := validate.Struct(msg)
+			if err != nil {
+				log.Printf("failed to validate message: %s", err)
+				break read_msg_loop
+			}
+
+			url := "postgres://postgres:vinst@localhost/nh"
+			conn, err := pgx.Connect(ctx, url)
+			if err != nil {
+				log.Printf("unable to connect to postgres db: %s", err)
+				break read_msg_loop
+			}
+			defer conn.Close(ctx)
+
+			var id string
+			err = conn.QueryRow(ctx, "SELECT id FROM players WHERE username=$1", msg.Name).Scan(&id)
+			if err != nil {
+				log.Printf("unable to query player in db")
+				break read_msg_loop
+			}
+
+			c := exec.Command("/home/eracce/nethackathon2021/build/bin/nethack", "-u", msg.Name)
+			c.Env = os.Environ()
+			c.Env = append(c.Env, fmt.Sprintf("USER=%s", msg.Name))
+			c.Env = append(c.Env, fmt.Sprintf("DB_USER_ID=%s", id))
+			s.Name = &msg.Name
+			s.PtyPipe, err = pty.StartWithSize(
+				c,
+				&pty.Winsize{
+					Rows: defaultPtyRows,
+					Cols: defaultPtyCols,
+				})
+			if err != nil {
+				log.Printf("failed to start %s", err)
+				cancel()
+			}
+
+		default:
+			log.Printf("ignoring message with unknown type: %s", typeVal)
+			continue
+		}
 	}
-	// ws.SetWriteDeadline(time.Now().Add(writeWait))
-	// ws.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
-	// time.Sleep(closeGracePeriod)
-	// ws.Close()
 }
 
-func ping(ws *websocket.Conn, done chan struct{}) {
+func writePump(ctx context.Context, ws *websocket.Conn, s *Session) {
+	_, cancel := context.WithCancel(ctx)
+	buf := make([]byte, maxMessageSize)
+	for {
+		if s.PtyPipe == nil {
+			time.Sleep(time.Second)
+			continue
+		}
+
+		n, err := s.PtyPipe.Read(buf)
+		if err != nil {
+			log.Printf("failed to read message from pty: %s", err)
+			cancel()
+			return
+		}
+
+		var msg DataMsg = DataMsg{
+			Type: "data",
+			Data: base64.RawStdEncoding.EncodeToString(buf[:n]),
+		}
+
+		msgJson, err := json.MarshalIndent(msg, "", "  ")
+		if err != nil {
+			log.Printf("failed create json msg: %s", err)
+			cancel()
+			return
+		}
+
+		ws.SetWriteDeadline(time.Now().Add(writeWait))
+		err = ws.WriteMessage(websocket.TextMessage, msgJson)
+		if err != nil {
+			log.Printf("failed to send message to ws pty: %s", err)
+			cancel()
+			break
+		}
+	}
+}
+
+func ping(ctx context.Context, ws *websocket.Conn) {
+	ctx, cancel := context.WithCancel(ctx)
+	defer func() { cancel() }()
+
 	ticker := time.NewTicker(pingPeriod)
 	defer ticker.Stop()
 	for {
 		select {
 		case <-ticker.C:
-			if err := ws.WriteControl(websocket.PingMessage, []byte{}, time.Now().Add(writeWait)); err != nil {
-				log.Println("ping:", err)
+			err := ws.WriteControl(websocket.PingMessage, []byte{}, time.Now().Add(writeWait))
+			if err != nil {
+				log.Printf("ping failed: %s. disconnecting", err)
+				cancel()
 			}
-		case <-done:
+		case <-ctx.Done():
 			return
 		}
 	}
@@ -114,118 +293,49 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
-func serveWs(w http.ResponseWriter, r *http.Request) {
-	ws, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Println("upgrade:", err)
-		return
-	}
-
-	defer ws.Close()
-
-	c := exec.Command("bash")
-
-	// Start the command with a pty.
-	ptmx, err := pty.Start(c)
-	if err != nil {
-		panic(err)
-	}
-
-	// Make sure to close the pty at the end.
-	defer func() { _ = ptmx.Close() }() // Best effort.
-
-	// // Handle pty size.
-	// ch := make(chan os.Signal, 1)
-	// signal.Notify(ch, syscall.SIGWINCH)
-	// go func() {
-	// 	for range ch {
-	// 		if err := pty.InheritSize(os.Stdin, ptmx); err != nil {
-	// 			log.Printf("error resizing pty: %s", err)
-	// 		}
-	// 	}
-	// }()
-	// ch <- syscall.SIGWINCH                        // Initial resize.
-	// defer func() { signal.Stop(ch); close(ch) }() // Cleanup signals when done.
-
-	// outr, outw, err := os.Pipe()
-	// if err != nil {
-	// 	internalError(ws, "stdout:", err)
-	// 	return
-	// }
-	// defer outr.Close()
-	// defer outw.Close()
-
-	// inr, inw, err := os.Pipe()
-	// if err != nil {
-	// 	internalError(ws, "stdin:", err)
-	// 	return
-	// }
-	// defer inr.Close()
-	// defer inw.Close()
-
-	// proc, err := os.StartProcess(cmdPath, flag.Args(), &os.ProcAttr{
-	// 	Files: []*os.File{inr, outw, outw},
-	// })
-	// if err != nil {
-	// 	internalError(ws, "start:", err)
-	// 	return
-	// }
-
-	// inr.Close()
-	// outw.Close()
-
-	stdoutDone := make(chan struct{})
-	go pumpStdout(ws, ptmx, stdoutDone)
-	go ping(ws, stdoutDone)
-
-	pumpStdin(ws, ptmx)
-
-	// Some commands will exit when stdin is closed.
-	// inw.Close()
-
-	// Other commands need a bonk on the head.
-	// if err := proc.Signal(os.Interrupt); err != nil {
-	// 	log.Println("inter:", err)
-	// }
-
-	// select {
-	// case <-stdoutDone:
-	// case <-time.After(time.Second):
-	// 	// A bigger bonk on the head.
-	// 	if err := proc.Signal(os.Kill); err != nil {
-	// 		log.Println("term:", err)
-	// 	}
-	// 	<-stdoutDone
-	// }
-
-	// if _, err := proc.Wait(); err != nil {
-	// 	log.Println("wait:", err)
-	// }
+type Session struct {
+	Name    *string
+	PtyPipe *os.File
 }
 
-func serveHome(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.Error(w, "Not found", http.StatusNotFound)
+var sessionMutex sync.Mutex
+var sessions []string = []string{}
+
+func serveWs(w http.ResponseWriter, r *http.Request) {
+	log.Printf("connected: %s", r.RemoteAddr)
+	ctx, cancel := context.WithCancel(context.Background())
+	defer func() { cancel() }()
+
+	ws, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Printf("websocket upgrade failed: %s", err)
 		return
 	}
-	if r.Method != http.MethodGet {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-	http.ServeFile(w, r, "home.html")
+	defer ws.Close()
+
+	session := Session{}
+
+	go writePump(ctx, ws, &session)
+	go readPump(ctx, ws, &session)
+	go ping(ctx, ws)
+
+	<-ctx.Done()
+
+	defer func() {
+		if session.PtyPipe != nil {
+			session.PtyPipe.Close()
+		}
+	}()
+
+	log.Printf("closing connection: %s", r.RemoteAddr)
+	ws.SetWriteDeadline(time.Now().Add(writeWait))
+	ws.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
+	time.Sleep(closeGracePeriod)
 }
 
 func main() {
 	flag.Parse()
-	if len(flag.Args()) < 1 {
-		log.Fatal("must specify at least one argument")
-	}
-	var err error
-	cmdPath, err = exec.LookPath(flag.Args()[0])
-	if err != nil {
-		log.Fatal(err)
-	}
-	http.HandleFunc("/", serveHome)
+	http.Handle("/", http.FileServer(http.Dir("../web/")))
 	http.HandleFunc("/ws", serveWs)
 	log.Fatal(http.ListenAndServe(*addr, nil))
 }
