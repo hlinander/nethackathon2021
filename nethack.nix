@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     #rev = "31bc48597ecb8adc7e79e12304030ce0d135acf4";
     #rev = "d9a0ca641df027e038d0a6f4a0389f07621cee1b";
     #rev = "3f1344e8f392e97bd4d76e5d00d816c518fbb2fe";
-    rev = "20885c299b7f9a3a4a7a92912098f0db1ae889de";
+    rev = "913d715f5936ed64566be58ed42772e5e759f7a2";
   };
 
   lua = fetchurl {
@@ -43,6 +43,9 @@ stdenv.mkDerivation rec {
     clang
     ncurses
     protobuf
+    python3
+    rust-bindgen
+    rustfmt
   ] ++ (with rustPlatform; [
     cargoSetupHook
     rust.cargo
@@ -62,10 +65,14 @@ stdenv.mkDerivation rec {
   binPath = lib.makeBinPath [ coreutils less ];
 
   buildPhase = ''
+    pushd client/rust/nethack-rs
+    python3 regen.py
+    popd
     pushd client/rust
     cargo build
     popd
     pushd client/NetHack
+    touch src/mon.c
     mkdir -p lib
     (cd lib; tar xzf ${lua})
     ls lib
