@@ -5,7 +5,7 @@ with import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar
 #with import (fetchTarball https://github.com/NixOS/nixpkgs/archive/6efc186e6079ff3f328a2497ff3d36741ac60f6e.tar.gz) {};
 stdenv.mkDerivation rec {
   pname = "nethack";
-  version = "0.1.0";
+  version = "0.1.1";
 
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
@@ -92,11 +92,13 @@ stdenv.mkDerivation rec {
       sed -e '/define CHDIR/d' -i client/NetHack/include/config.h
       '';
 
-  postInstall = ''
+  fixupPhase = ''
+    echo "POSTINSTALL"
     mkdir -p $out/games/lib/nethackuserdir
     for i in xlogfile logfile perm record save; do
       mv $out/games/lib/nethackdir/$i $out/games/lib/nethackuserdir
     done
+    touch $out/testfile
     mkdir -p $out/bin
     cat <<EOF >$out/bin/nethack
     #! ${stdenv.shell} -e
