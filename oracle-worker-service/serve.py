@@ -14,6 +14,10 @@ lock = threading.Lock()
 last_ping = time.time()
 
 PORT = os.getenv("PORT", 8000)
+GOHOST = os.getenv("GOHOST", "localhost")
+GOPORT = os.getenv("GOPORT", "8383")
+NODEIP = os.getenv("NODEIP", "localhost")
+MAIN_BIN = os.getenv("MAIN_BIN", "build/bin/main")
 
 
 def increase_concurrent():
@@ -37,7 +41,7 @@ def generate_tokens(prompt):
 
     increase_concurrent()
     print("Starting ggml...")
-    p = subprocess.Popen(["build/bin/main", "-m", "./convert/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", prompt],
+    p = subprocess.Popen([MAIN_BIN, "-m", "./convert/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", prompt],
         stdout=subprocess.PIPE
     )
     response = ""
@@ -88,12 +92,13 @@ def ping():
 
 def register_worker():
     worker_data = dict(
-        endpoint=f"http://localhost:{PORT}"
+        endpoint=f"http://{NODEIP}:{PORT}"
     )
     while True:
         print(f"Trying to register worker at {worker_data}")
         try:
-            response = requests.get("http://localhost:8383/register_worker", data=json.dumps(worker_data))
+            print(f"http://{GOHOST}/register_worker")
+            response = requests.get(f"http://{GOHOST}:{GOPORT}/register_worker", data=json.dumps(worker_data))
             if response.ok:
                 print(response)
                 break
