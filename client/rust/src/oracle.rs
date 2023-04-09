@@ -271,41 +271,43 @@ unsafe fn get_map_item_list() -> Vec<MapObject> {
     let mut list = Vec::new();
     while !o_iter.is_null() {
         let obj = &*o_iter;
-        let vis_state = nethack_rs::g
-            .viz_array
-            .add(obj.oy as usize)
-            .read()
-            .add(obj.ox as usize)
-            .read();
-        if vis_state & nethack_rs::COULD_SEE as i8 != 0 {
-            let glyph = if obj.otyp == nethack_rs::STATUE as i16 {
-                obj.corpsenm + GLYPH_STATUE_OFF as i32
-            } else if obj.otyp == nethack_rs::CORPSE as i16 {
-                obj.corpsenm + GLYPH_BODY_OFF as i32
-            } else {
-                obj.otyp as i32 + GLYPH_OBJ_OFF as i32
-            };
-            let o = nethack_rs::objects.as_ptr().add(obj.otyp as usize).read();
-            let oc_name = nethack_rs::obj_descr
-                .as_ptr()
-                .add(o.oc_name_idx as usize)
+        if obj.where_ == nethack_rs::OBJ_FLOOR as i8 {
+            let vis_state = nethack_rs::g
+                .viz_array
+                .add(obj.oy as usize)
                 .read()
-                .oc_name;
-            let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
-            nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
-            if !oc_name.is_null() {
-                let item_pos = (obj.ox as f32, obj.oy as f32);
-                let dx = player_pos.0 - item_pos.0;
-                let dy = player_pos.1 - item_pos.1;
-                let distance = (dx * dx + dy * dy).sqrt();
-                let name = CStr::from_ptr(oc_name);
-                list.push(MapObject {
-                    id: MapObjectID::Item,
-                    name: name.to_string_lossy().into(),
-                    symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
-                    color: 0,
-                    distance,
-                });
+                .add(obj.ox as usize)
+                .read();
+            if vis_state & nethack_rs::COULD_SEE as i8 != 0 {
+                let glyph = if obj.otyp == nethack_rs::STATUE as i16 {
+                    obj.corpsenm + GLYPH_STATUE_OFF as i32
+                } else if obj.otyp == nethack_rs::CORPSE as i16 {
+                    obj.corpsenm + GLYPH_BODY_OFF as i32
+                } else {
+                    obj.otyp as i32 + GLYPH_OBJ_OFF as i32
+                };
+                let o = nethack_rs::objects.as_ptr().add(obj.otyp as usize).read();
+                let oc_name = nethack_rs::obj_descr
+                    .as_ptr()
+                    .add(o.oc_name_idx as usize)
+                    .read()
+                    .oc_name;
+                let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
+                nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
+                if !oc_name.is_null() {
+                    let item_pos = (obj.ox as f32, obj.oy as f32);
+                    let dx = player_pos.0 - item_pos.0;
+                    let dy = player_pos.1 - item_pos.1;
+                    let distance = (dx * dx + dy * dy).sqrt();
+                    let name = CStr::from_ptr(oc_name);
+                    list.push(MapObject {
+                        id: MapObjectID::Item,
+                        name: name.to_string_lossy().into(),
+                        symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
+                        color: 0,
+                        distance,
+                    });
+                }
             }
         }
         o_iter = (&*o_iter).nobj;
