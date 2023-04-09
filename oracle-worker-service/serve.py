@@ -41,7 +41,7 @@ def generate_tokens(prompt):
 
     increase_concurrent()
     print("Starting ggml...")
-    p = subprocess.Popen([MAIN_BIN, "-m", "./convert/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", prompt],
+    p = subprocess.Popen([MAIN_BIN, "-m", "./models/raw_wiki_sharran/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", prompt],
         stdout=subprocess.PIPE
     )
     response = ""
