@@ -1,0 +1,7 @@
+nix develop
+# Move checkpoint to subfolder A/B/
+# Copy tokenizer to A/
+convert-pth-to-ggml.py A/B/ 1 # 1 for fp16
+quantize A/B/[model].bin 2 # see README
+mkdir build
+cmake ../ # To get intrinsics
