@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
 
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
-    rev = "fd4802bfdf01fb8ce3a0437c32b4c363ad01441b";
+    rev = "76f96fb2f64a7654eed2af9ea9a31da1cc5fc4fd";
   };
 
   lua = fetchurl {
@@ -67,6 +67,9 @@ stdenv.mkDerivation rec {
   binPath = lib.makeBinPath [ coreutils less ];
 
   buildPhase = ''
+    pushd client/NetHack
+    CC=clang make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES" || true
+    popd
     pushd client/rust/nethack-rs
     python3 regen.py
     popd
@@ -75,10 +78,7 @@ stdenv.mkDerivation rec {
     popd
     pushd client/NetHack
     CC=clang make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
-    #make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
     popd
-    #CC=clang make fetch-lua
-    #clang test.c
   '';
 
   installPhase = ''
