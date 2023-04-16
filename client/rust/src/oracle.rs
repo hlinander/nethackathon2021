@@ -157,11 +157,11 @@ unsafe fn abort_active_request() {
     ACTIVE_REQUEST = None;
 }
 
-unsafe fn new_request(visible_prompt: String, prompt: String) {
+unsafe fn new_request(user_visible_prompt: String, prompt: String) {
     abort_active_request();
     if let Some(ui_state) = UI_STATE.as_mut() {
         ui_state.last_request_state_update = Some(Instant::now());
-        ui_state.request_status = RequestStatus::Active(visible_prompt);
+        ui_state.request_status = RequestStatus::Active(user_visible_prompt);
     }
     let runtime = TOKIO_RUNTIME.as_ref().unwrap();
     let (tx, rx) = unbounded_channel();
@@ -205,7 +205,7 @@ pub unsafe extern "C" fn oracle_prompt() -> i32 {
         if let Some(c) = char::from_u32(c as u32) {
             if c == '\n' {
                 execute!(stdout(), Clear(terminal::ClearType::CurrentLine)).unwrap();
-                new_request(format!("$ line.clone()"), line);
+                new_request(format!("$ {}", line.clone()), line);
                 break;
             }
             line += &c.to_string();
@@ -222,7 +222,7 @@ enum RequestStatus {
     None,
     Active(String),
     Done,
-    Error(String,String),
+    Error(String, String),
 }
 
 #[derive(Default)]
@@ -251,7 +251,7 @@ fn default_cursor_pos() -> (u16, u16) {
 
 unsafe fn get_status_line() -> String {
     match &UI_STATE.as_ref().unwrap().request_status {
-        RequestStatus::Active(text) => text.clone(),
+        RequestStatus::Active(prompt_text) => format!("{} ...", prompt_text),
         RequestStatus::Done => "The oracle has spoken.".to_string(),
         RequestStatus::Error(prompt, err) => format!("server unhappy when {}: {}", prompt, err),
         RequestStatus::None => format!("___"),
@@ -269,7 +269,7 @@ unsafe fn update_status_line() {
             MoveTo(default_cursor_pos().0, default_cursor_pos().1 - 1),
         )
         .unwrap();
-        let wrapped_text = textwrap::wrap(&text, 80) ;
+        let wrapped_text = textwrap::wrap(&text, 80);
         for line in wrapped_text {
             println!("{}", line);
         }
@@ -307,38 +307,43 @@ unsafe fn get_map_item_list() -> Vec<MapObject> {
         let obj = &*o_iter;
         if obj.where_ == nethack_rs::OBJ_FLOOR as i8 {
             let viz_array_addr = nethack_rs::g_viz_array();
-            let column_addr = viz_array_addr
-                .add(obj.oy as usize)
-                .read();
-            let vis_state = column_addr 
-                .add(obj.ox as usize)
-                .read();
+            let column_addr = viz_array_addr.add(obj.oy as usize).read();
+            let vis_state = column_addr.add(obj.ox as usize).read();
             if vis_state & nethack_rs::COULD_SEE as i8 != 0 {
-                let glyph = if obj.otyp == nethack_rs::STATUE as i16 {
-                    obj.corpsenm + GLYPH_STATUE_OFF as i32
-                } else if obj.otyp == nethack_rs::CORPSE as i16 {
-                    obj.corpsenm + GLYPH_BODY_OFF as i32
+                let (sym_char, name) = if obj.known() == 0 {
+                    let oc_info = nethack_rs::def_oc_syms
+                        .as_ptr()
+                        .add(obj.oclass as usize)
+                        .read();
+                    (oc_info.sym as i32, oc_info.name)
                 } else {
-                    obj.otyp as i32 + GLYPH_OBJ_OFF as i32
+                    let glyph = if obj.otyp == nethack_rs::STATUE as i16 {
+                        obj.corpsenm + GLYPH_STATUE_OFF as i32
+                    } else if obj.otyp == nethack_rs::CORPSE as i16 {
+                        obj.corpsenm + GLYPH_BODY_OFF as i32
+                    } else {
+                        obj.otyp as i32 + GLYPH_OBJ_OFF as i32
+                    };
+                    let o = nethack_rs::objects.as_ptr().add(obj.otyp as usize).read();
+                    let oc_name = nethack_rs::obj_descr
+                        .as_ptr()
+                        .add(o.oc_name_idx as usize)
+                        .read()
+                        .oc_name;
+                    let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
+                    nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
+                    (gi.ttychar, oc_name)
                 };
-                let o = nethack_rs::objects.as_ptr().add(obj.otyp as usize).read();
-                let oc_name = nethack_rs::obj_descr
-                    .as_ptr()
-                    .add(o.oc_name_idx as usize)
-                    .read()
-                    .oc_name;
-                let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
-                nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
-                if !oc_name.is_null() {
+                if !name.is_null() {
                     let item_pos = (obj.ox as f32, obj.oy as f32);
                     let dx = player_pos.0 - item_pos.0;
                     let dy = player_pos.1 - item_pos.1;
                     let distance = (dx * dx + dy * dy).sqrt();
-                    let name = CStr::from_ptr(oc_name);
+                    let name = CStr::from_ptr(name);
                     list.push(MapObject {
                         id: MapObjectID::Item,
                         name: name.to_string_lossy().into(),
-                        symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
+                        symbol: char::from_u32(sym_char as u32).unwrap_or('?'),
                         color: 0,
                         distance,
                     });
@@ -355,57 +360,53 @@ unsafe fn get_tile_list() -> Vec<MapObject> {
     let mut tiles = Vec::new();
     let viz_array_addr = nethack_rs::g_viz_array();
     for y in 0..21 {
-        let column_addr = viz_array_addr
-            .add(y as usize)
-            .read();
+        let column_addr = viz_array_addr.add(y as usize).read();
         for x in 0..80 {
-            let vis_state = column_addr 
-                .add(x as usize)
-                .read();
+            let vis_state = column_addr.add(x as usize).read();
             if vis_state & nethack_rs::COULD_SEE as i8 != 0 {
-                let r = nethack_rs::get_location_rm(x,y);
+                let r = nethack_rs::get_location_rm(x, y);
                 match r.typ as u32 {
-nethack_rs::levl_typ_types_STONE |
-nethack_rs::levl_typ_types_VWALL |
-nethack_rs::levl_typ_types_HWALL |
-nethack_rs::levl_typ_types_TLCORNER |
-nethack_rs::levl_typ_types_TRCORNER |
-nethack_rs::levl_typ_types_BLCORNER |
-nethack_rs::levl_typ_types_BRCORNER |
-nethack_rs::levl_typ_types_CROSSWALL |
-nethack_rs::levl_typ_types_TUWALL |
-nethack_rs::levl_typ_types_TDWALL |
-nethack_rs::levl_typ_types_TLWALL |
-nethack_rs::levl_typ_types_TRWALL |
-nethack_rs::levl_typ_types_DBWALL |
-nethack_rs::levl_typ_types_SDOOR |
-nethack_rs::levl_typ_types_SCORR |
-nethack_rs::levl_typ_types_DOOR |
-nethack_rs::levl_typ_types_CORR |
-nethack_rs::levl_typ_types_ROOM |
-nethack_rs::levl_typ_types_STAIRS |
-nethack_rs::levl_typ_types_LADDER |
-                nethack_rs::levl_typ_types_AIR => continue,
-                typ => {
-                    let name_buf = nethack_rs::levltyp_to_name(typ as i32);
-            let name = CStr::from_ptr(name_buf);
-            let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
-            nethack_rs::map_glyphinfo(0, 0, r.glyph, 0, &mut gi);
-            let dx = player_pos.0 - x as f32;
-            let dy = player_pos.1 - y as f32;
-            let distance = (dx * dx + dy * dy).sqrt();
-                tiles.push(MapObject {
-                    id: MapObjectID::Tile,
-                    name: name.to_string_lossy().into_owned(),
-                    symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
-                    color: 0,
-                    distance,
-                });
-            }
+                    nethack_rs::levl_typ_types_STONE
+                    | nethack_rs::levl_typ_types_VWALL
+                    | nethack_rs::levl_typ_types_HWALL
+                    | nethack_rs::levl_typ_types_TLCORNER
+                    | nethack_rs::levl_typ_types_TRCORNER
+                    | nethack_rs::levl_typ_types_BLCORNER
+                    | nethack_rs::levl_typ_types_BRCORNER
+                    | nethack_rs::levl_typ_types_CROSSWALL
+                    | nethack_rs::levl_typ_types_TUWALL
+                    | nethack_rs::levl_typ_types_TDWALL
+                    | nethack_rs::levl_typ_types_TLWALL
+                    | nethack_rs::levl_typ_types_TRWALL
+                    | nethack_rs::levl_typ_types_DBWALL
+                    | nethack_rs::levl_typ_types_SDOOR
+                    | nethack_rs::levl_typ_types_SCORR
+                    | nethack_rs::levl_typ_types_DOOR
+                    | nethack_rs::levl_typ_types_CORR
+                    | nethack_rs::levl_typ_types_ROOM
+                    | nethack_rs::levl_typ_types_STAIRS
+                    | nethack_rs::levl_typ_types_LADDER
+                    | nethack_rs::levl_typ_types_AIR => continue,
+                    typ => {
+                        let name_buf = nethack_rs::levltyp_to_name(typ as i32);
+                        let name = CStr::from_ptr(name_buf);
+                        let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
+                        nethack_rs::map_glyphinfo(0, 0, r.glyph, 0, &mut gi);
+                        let dx = player_pos.0 - x as f32;
+                        let dy = player_pos.1 - y as f32;
+                        let distance = (dx * dx + dy * dy).sqrt();
+                        tiles.push(MapObject {
+                            id: MapObjectID::Tile,
+                            name: name.to_string_lossy().into_owned(),
+                            symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
+                            color: 0,
+                            distance,
+                        });
+                    }
+                }
             }
         }
     }
-}
     tiles
 }
 
@@ -461,9 +462,7 @@ fn generate_object_prompt(obj: &MapObject) -> String {
     )
 }
 
-fn pick_object_to_describe(
-    objects: &mut Vec<MapObject>,
-) -> Option<MapObject> {
+fn pick_object_to_describe(objects: &mut Vec<MapObject>) -> Option<MapObject> {
     if objects.is_empty() {
         return None;
     }
@@ -523,11 +522,18 @@ pub unsafe fn update_oracle_ui() {
             .last_request_state_update
             .map(|t| Instant::now().duration_since(t))
             .unwrap_or(Duration::from_secs(100000000));
-        let time_to_do_new_description = time_since_desc > Duration::from_secs(15);
+        let time_to_do_new_description = time_since_desc > Duration::from_secs(5);
         if time_to_do_new_description {
             if let Some(to_describe) = pick_object_to_describe(&mut ui_state.queued_descriptions) {
                 let prompt = generate_object_prompt(&to_describe);
-                new_request(format!("Advising on {:?} {} ({})...", to_describe.id, to_describe.name, to_describe.symbol), prompt);
+                new_request(
+                    format!(
+                        "Advising on {:?} {} ({})...",
+                        to_describe.id, to_describe.name, to_describe.symbol
+                    ),
+                    prompt,
+                );
+                ui_state.described_objects.push(to_describe);
             }
         }
     }
