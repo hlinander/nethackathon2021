@@ -53,7 +53,7 @@ func Build(rootSteps []Step) error {
 			panic(err)
 		}
 
-		cacheRootAbs := filepath.Join(ctx.BuildDir, "cache")
+		cacheRootAbs := filepath.Join(ctx.BuildRootDir, "cache")
 		cachedStepAbs := filepath.Join(cacheRootAbs, hash)
 
 		// check if hash is cached.
@@ -71,17 +71,17 @@ func Build(rootSteps []Step) error {
 			if err != nil {
 				panic(err)
 			}
-			s.SetOutputDir(cachedStepAbs)
+			s.SetBuildDir(cachedStepAbs)
 		} else {
 			// build
-			outputDir, err := ctx.CreateStepOutputDir(s.Identifier())
+			buildDir, err := ctx.CreateStepBuildDir(s.Identifier())
 			if err != nil {
 				panic(err)
 			}
-			s.SetOutputDir(outputDir)
+			s.SetBuildDir(buildDir)
 
 			// copy stage to output dir
-			err = CopyDir(s.StagingDir(), s.OutputDir())
+			err = CopyDir(s.StagingDir(), s.BuildDir())
 			if err != nil {
 				panic(err)
 			}
@@ -92,7 +92,7 @@ func Build(rootSteps []Step) error {
 			}
 
 			// save to cache dir
-			err = CopyDir(outputDir, cachedStepAbs)
+			err = CopyDir(buildDir, cachedStepAbs)
 			if err != nil {
 				panic(err)
 			}

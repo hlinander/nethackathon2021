@@ -16,8 +16,8 @@ import (
 type Context struct {
 	context.Context
 
-	GitRootDir string // absolute path to git repo root
-	BuildDir   string // absolute path to root for build files
+	GitRootDir   string // absolute path to git repo root
+	BuildRootDir string // absolute path to root for build files
 }
 
 func NewContext() (*Context, error) {
@@ -27,22 +27,22 @@ func NewContext() (*Context, error) {
 	}
 	log.Println("git root dir:", gitRootDir)
 
-	buildDir, err := createBuildDir(gitRootDir)
+	buildDir, err := createBuildRootDir(gitRootDir)
 	if err != nil {
 		panic(err)
 	}
 	log.Println("build dir:", buildDir)
 
 	return &Context{
-		Context:    context.Background(),
-		GitRootDir: gitRootDir,
-		BuildDir:   buildDir,
+		Context:      context.Background(),
+		GitRootDir:   gitRootDir,
+		BuildRootDir: buildDir,
 	}, nil
 }
 
 func (c *Context) CreateStepStagingDir(name string) (string, error) {
 	dirName := fmt.Sprintf("%s-%d", name, time.Now().UnixMilli())
-	dirPathAbs := filepath.Join(c.BuildDir, "staging", dirName)
+	dirPathAbs := filepath.Join(c.BuildRootDir, "staging", dirName)
 	err := os.MkdirAll(dirPathAbs, 0755)
 	if err != nil {
 		return "", errors.Errorf("failed to create dir: %w", err)
@@ -50,9 +50,9 @@ func (c *Context) CreateStepStagingDir(name string) (string, error) {
 	return dirPathAbs, nil
 }
 
-func (c *Context) CreateStepOutputDir(name string) (string, error) {
+func (c *Context) CreateStepBuildDir(name string) (string, error) {
 	dirName := fmt.Sprintf("%s-%d", name, time.Now().UnixMilli())
-	dirPathAbs := filepath.Join(c.BuildDir, "output", dirName)
+	dirPathAbs := filepath.Join(c.BuildRootDir, "build", dirName)
 	err := os.MkdirAll(dirPathAbs, 0755)
 	if err != nil {
 		return "", errors.Errorf("failed to create dir: %w", err)
@@ -83,7 +83,7 @@ func gitRootDir() (string, error) {
 	return strings.TrimSpace(string(path)), nil
 }
 
-func createBuildDir(rootPath string) (string, error) {
+func createBuildRootDir(rootPath string) (string, error) {
 	absPath := filepath.Join(rootPath, ".build")
 
 	err := os.MkdirAll(absPath, 0755)

@@ -32,7 +32,7 @@ func (s *Compile) Stage(ctx build.Context) error {
 	genCode := s.Deps()[0].(*GenCode)
 
 	err = build.CopyFile(
-		filepath.Join(genCode.OutputDir(), genCode.OutputFilePathRel),
+		filepath.Join(genCode.BuildDir(), genCode.OutputFilePathRel),
 		filepath.Join(s.StagingDir(), "dummy/foo.go"),
 		0644,
 	)
@@ -47,7 +47,7 @@ func (s *Compile) Build(ctx build.Context) error {
 	err := build.RunCmd(
 		build.RunCmdOpts{
 			Cmd:        []string{"go", "build", "."},
-			WorkingDir: filepath.Join(s.OutputDir(), "dummy"),
+			WorkingDir: filepath.Join(s.BuildDir(), "dummy"),
 			LogPrefix:  "go",
 		})
 	if err != nil {

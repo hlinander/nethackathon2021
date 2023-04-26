@@ -17,20 +17,30 @@ func main() {
 		Short: "build and deploy nethackathon",
 		RunE: func(cmd *cobra.Command, args []string) error {
 
-			stepGenCode := step.GenCode{
-				StepBase: build.NewStepBase("gencode"),
-			}
-			stepCompile := step.Compile{
-				StepBase: build.NewStepBase("compile", &stepGenCode),
+			download := step.Download{
+				StepBase: build.NewStepBase("download"),
+				Input: step.DownloadParams{
+					Url: "https://example.com",
+				},
 			}
 
-			err := build.Build([]build.Step{&stepCompile})
+			genCode := step.GenCode{
+				StepBase: build.NewStepBase("gencode", &download),
+				Input: step.GenCodeParams{
+					Name: "shahrouzz",
+				},
+			}
+			compile := step.Compile{
+				StepBase: build.NewStepBase("compile", &genCode),
+			}
+
+			err := build.Build([]build.Step{&compile})
 			if err != nil {
 				return errors.Errorf("build: %w", err)
 			}
 
 			// repr.Print(stepCompile)
-			repr.Print(filepath.Join(stepCompile.OutputDir(), stepCompile.ExecutableRel))
+			repr.Print(filepath.Join(compile.BuildDir(), compile.ExecutableRel))
 
 			return nil
 		},

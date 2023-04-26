@@ -20,8 +20,8 @@ type Step interface {
 	Deps() []Step
 	StagingDir() string
 	SetStagingDir(dir string)
-	OutputDir() string
-	SetOutputDir(dir string)
+	BuildDir() string
+	SetBuildDir(dir string)
 }
 
 type StepBase struct {
@@ -29,7 +29,7 @@ type StepBase struct {
 	deps []Step
 
 	stagingDir string
-	outputDir  string
+	buildDir   string
 }
 
 func NewStepBase(id string, deps ...Step) StepBase {
@@ -55,10 +55,10 @@ func (s *StepBase) SetStagingDir(dir string) {
 	s.stagingDir = dir
 }
 
-func (s StepBase) OutputDir() string {
-	return s.outputDir
+func (s StepBase) BuildDir() string {
+	return s.buildDir
 }
 
-func (s *StepBase) SetOutputDir(dir string) {
-	s.outputDir = dir
+func (s *StepBase) SetBuildDir(dir string) {
+	s.buildDir = dir
 }
