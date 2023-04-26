@@ -1,3 +1,4 @@
+import os
 import subprocess
 
 data = subprocess.check_output(["bindgen", "../../../client/NetHack/include/hack.h"]) 
@@ -37,4 +38,5 @@ replacement = """pub fn new_bitfield_1(
 s = s.replace(search, replacement)
 
 
+os.makedirs("src", exist_ok=True)
 open("src/lib.rs", 'w').write(s)

@@ -1,12 +1,8 @@
 use nh2021::ipc::Result;
 use nh2021::nh_proto;
-use prost::Message;
-use std::io::{Read, Write};
-use std::net::TcpStream;
 
 fn test_get_clan() -> Result<nh_proto::Clan> {
-    let mut ipc = nh2021::ipc::Ipc::new()?;
-    ipc.get_clan()
+    todo!()
 }
 
 fn main() {

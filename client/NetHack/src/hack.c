@@ -3287,3 +3287,11 @@ money_cnt(struct obj *otmp)
 }
 
 /*hack.c*/
+
+xchar** g_viz_array() {
+    return g.viz_array;
+}
+
+struct rm get_location_rm(int x, int y) {
+    return g.level.locations[x][y];
+}

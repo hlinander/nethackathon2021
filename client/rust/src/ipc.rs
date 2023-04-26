@@ -32,14 +32,118 @@ impl From<prost::DecodeError> for Error {
     }
 }
 
-pub struct Ipc {
-    stream: TcpStream,
+pub enum Ipc {
+    Tcp(TcpIpc),
+    Fake,
 }
 impl Ipc {
-    pub fn new() -> Result<Self> {
+    pub fn new_fake() -> Result<Self> {
+        Ok(Self::Fake)
+    }
+    pub fn new_tcp() -> Result<Self> {
         let stream = std::net::TcpStream::connect("192.168.1.148:8001")?;
         stream.set_read_timeout(Some(std::time::Duration::from_secs(3)));
         stream.set_write_timeout(Some(std::time::Duration::from_secs(3)));
+        Ok(Self::Tcp(TcpIpc { stream }))
+    }
+
+    pub fn auth(&mut self, id: i32, session_start_time: i32) -> Result<bool> {
+        match self {
+            Self::Tcp(ipc) => ipc.auth(id, session_start_time),
+            Self::Fake => Ok(true),
+        }
+    }
+
+    fn send_event(&mut self, evt: Msg) -> Result<()> {
+        match self {
+            Self::Tcp(ipc) => ipc.send_event(evt),
+            Self::Fake => Ok(()),
+        }
+    }
+
+    pub fn get_bag(&mut self) -> Result<Vec<(i32, nh_proto::ObjData)>> {
+        match self {
+            Self::Tcp(ipc) => ipc.get_bag(),
+            Self::Fake => Ok(vec![]),
+        }
+    }
+
+    pub fn bag_add(&mut self, item: &nh_proto::ObjData) -> Result<bool> {
+        match self {
+            Self::Tcp(ipc) => ipc.bag_add(item),
+            Self::Fake => Ok(true),
+            }
+    }
+
+    pub fn bag_remove(&mut self, item_id: i32) -> Result<bool> {
+        match self {
+            Self::Tcp(ipc) => ipc.bag_remove(item_id),
+            Self::Fake => Ok(true),
+            }
+    }
+
+    pub fn task_complete(&mut self, objective_name: String) -> Result<nh_proto::Reward> {
+        match self {
+            Self::Tcp(ipc) => ipc.task_complete(objective_name),
+            Self::Fake => Ok(nh_proto::Reward {
+  reward: 0,
+  objective: "no".to_string(),
+  total_reward: 0,
+            }),
+        }
+    }
+
+    pub fn open_lootbox(&mut self, rarity: i32) -> Result<nh_proto::Reward> {
+        match self {
+            Self::Tcp(ipc) => ipc.open_lootbox(rarity),
+            Self::Fake => Ok(nh_proto::Reward {
+  reward: 0,
+  objective: "no".to_string(),
+  total_reward: 0,
+            }),
+        }
+    }
+
+    pub fn get_clan_powers(&mut self) -> Result<nh_proto::ClanPowers> {
+        match self {
+            Self::Tcp(ipc) => ipc.get_clan_powers(),
+            Self::Fake => Ok(nh_proto::ClanPowers {
+powers: vec![],
+            })
+        }
+    }
+
+    pub fn save_equipment(&mut self, slot: i32, item: &nh_proto::ObjData) -> Result<()> {
+        match self {
+            Self::Tcp(ipc) => ipc.save_equipment(slot, item),
+            Self::Fake => Ok(()),
+        }
+    }
+
+    pub fn get_saved_equipment(&mut self) -> Result<Vec<(i32, nh_proto::ObjData)>> {
+        match self {
+            Self::Tcp(ipc) => ipc.get_saved_equipment(),
+            Self::Fake => Ok(vec![]),
+        }
+    }
+
+    pub fn send_session_event(&mut self, evt: SessionEvent) -> Result<()> {
+        match self {
+            Self::Tcp(ipc) => ipc.send_session_event(evt),
+            Self::Fake => Ok(()),
+        }
+    }
+}
+
+
+pub struct TcpIpc {
+    stream: TcpStream,
+}
+impl TcpIpc {
+    pub fn new() -> Result<Self> {
+        let stream = std::net::TcpStream::connect("192.168.1.148:8001")?;
+        stream.set_read_timeout(Some(std::time::Duration::from_secs(3))).unwrap();
+        stream.set_write_timeout(Some(std::time::Duration::from_secs(3))).unwrap();
         Ok(Self { stream })
     }
 

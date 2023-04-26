@@ -44,7 +44,7 @@ fn ipc() -> Rc<RefCell<Ipc>> {
         if tl_ipc.is_none() {
             let tries = 0;
             loop {
-                if let Ok(mut ipc) = Ipc::new() {
+                if let Ok(mut ipc) = Ipc::new_tcp() {
                     let auth = ipc.auth(
                         unsafe { PLAYER_LOGIN_ID }.expect("no player id when attempting IPC call"),
                         unsafe {

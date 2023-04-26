@@ -595,6 +595,9 @@ typedef struct _team_bonus
 team_bonus;
 void try_save_eq();
 
+
+xchar** g_viz_array();
+struct rm get_location_rm(int x, int y);
 #include "rust.h"
 
 #endif /* HACK_H */
