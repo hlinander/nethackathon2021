@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
 
   src = builtins.fetchGit {
     url = "ssh://git@github.com/hlinander/nethackathon2021.git";
-    rev = "76f96fb2f64a7654eed2af9ea9a31da1cc5fc4fd";
+    rev = "7e36730462e7889b8c109c6d89ddf333279a6c78";
   };
 
   lua = fetchurl {
@@ -41,6 +41,7 @@ stdenv.mkDerivation rec {
     ncurses
     protobuf
     python3
+    rr
     rust-bindgen
     rustfmt
   ] ++ (with rustPlatform; [
@@ -77,6 +78,7 @@ stdenv.mkDerivation rec {
     cargo build
     popd
     pushd client/NetHack
+    touch src/mon.c
     CC=clang make PREFIX=$out "-j$NIX_BUILD_CORES" "-l$NIX_BUILD_CORES"
     popd
   '';
