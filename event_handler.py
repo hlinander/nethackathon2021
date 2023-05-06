@@ -274,7 +274,6 @@ def reload_state():
     event_handler = get_event_handler()
     state = event_handler.state
     print(state)
-    input()
 
 
 def parse_args():
