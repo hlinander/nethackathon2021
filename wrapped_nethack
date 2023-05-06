@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+cd /home/herden/projects/nethackathon2023/
+export PYTHONPATH=/home/herden/projects/nethackathon2023
+export PYTHON_BIN=/home/herden/projects/nethackathon2023/penv/bin/python
+mkdir -p ttyrecs/$USER
+TS=$(date -u +%s)
+export RUST_BACKTRACE=1
+export HOME=$(pwd)
+ovhttyrec/bin/ttyrec -f ttyrecs/$USER/${TS}_${DB_USER_ID}.ttyrec build/bin/nethack -u $@

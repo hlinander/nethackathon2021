@@ -201,7 +201,8 @@ read_msg_loop:
 				break read_msg_loop
 			}
 
-			c := exec.Command("/home/eracce/nethackathon2021/build/bin/nethack", "-u", msg.Name)
+			// c := exec.Command("/home/eracce/nethackathon2021/build/bin/nethack", "-u", msg.Name)
+			c := exec.Command("sh", "/home/herden/projects/nethackathon2023/wrapped_nethack", msg.Name)
 			c.Env = os.Environ()
 			c.Env = append(c.Env, fmt.Sprintf("USER=%s", msg.Name))
 			c.Env = append(c.Env, fmt.Sprintf("DB_USER_ID=%s", id))
