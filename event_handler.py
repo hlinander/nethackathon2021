@@ -229,7 +229,7 @@ def event_loop():
     while True:
         while datetime.datetime.utcnow() > next_tick_time:
             if datetime.datetime.utcnow() - next_tick_time > datetime.timedelta(minutes=30):
-                TIME_PER_TICK = datetime.timedelta(hours=1)
+                TIME_PER_TICK = datetime.timedelta(minutes=30)
             else:
                 TIME_PER_TICK = datetime.timedelta(seconds=2)
 
