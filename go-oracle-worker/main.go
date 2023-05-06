@@ -3,7 +3,10 @@ package main
 import (
 	"bufio"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
+	"log"
 	"net"
 	"os/exec"
 	"time"
@@ -45,16 +48,18 @@ func handleChat(conn net.Conn, message string) {
 	for {
 		n, err := reader.Read(buf)
 		if err != nil {
-			panic(err)
+			if errors.Is(err, io.EOF) {
+				log.Println("LLM process EOF")
+				break
+			}
+			log.Println("Error when reading LLM process")
+			break
 		}
 		fmt.Print(string(buf[:n]))
 		encoder.Encode(&Message{
 			Type:    "token",
 			Message: string(buf[:n]),
 		})
-		if err := cmd.Wait(); err != nil {
-			break
-		}
 	}
 	encoder.Encode(&Message{
 		Type:    "token",
