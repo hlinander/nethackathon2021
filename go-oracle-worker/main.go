@@ -1,9 +1,14 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
+	"log"
 	"net"
+	"os/exec"
 	"time"
 )
 
@@ -25,15 +30,40 @@ func send_ping(conn net.Conn) {
 }
 
 func handleChat(conn net.Conn, message string) {
+	println("heeej")
 	encoder := json.NewEncoder(conn)
+	cmd := exec.Command("../oracle-worker-service/build/bin/main", "-m", "../models/raw_wiki_sharran/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", message)
+	fmt.Println(cmd.Args)
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		panic(err)
+	}
+
+	if err := cmd.Start(); err != nil {
+		panic(err)
+	}
+
+	reader := bufio.NewReader(stdout)
+	buf := make([]byte, 10)
+	for {
+		n, err := reader.Read(buf)
+		if err != nil {
+			if errors.Is(err, io.EOF) {
+				log.Println("LLM process EOF")
+				break
+			}
+			log.Println("Error when reading LLM process")
+			break
+		}
+		fmt.Print(string(buf[:n]))
+		encoder.Encode(&Message{
+			Type:    "token",
+			Message: string(buf[:n]),
+		})
+	}
 	encoder.Encode(&Message{
 		Type:    "token",
-		Message: "hello",
-	})
-	time.Sleep(time.Second * 3)
-	encoder.Encode(&Message{
-		Type:    "token",
-		Message: "world",
+		Message: "",
 		Done:    true,
 	})
 }
