@@ -149,8 +149,16 @@
 
     let socket = new WebSocket("ws://nh.hampe.nu:8484/ws");
 
+    document.querySelector("#nameinput").focus()
+
+    const savedName = localStorage.getItem("savedName");
+    if (savedName !== null) {
+      document.querySelector("#nameinput").value = savedName
+    }
+
     function submitName() {
       socket.send(JSON.stringify({ type: "hello", name: document.querySelector("#nameinput").value }));
+      localStorage.setItem("savedName", document.querySelector("#nameinput").value)
       document.querySelector("#name_dialog").open = false
     }
 
