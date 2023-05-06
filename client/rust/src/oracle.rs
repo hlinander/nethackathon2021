@@ -110,12 +110,13 @@ pub unsafe fn init() {
 
 #[derive(Serialize)]
 struct PromptRequest {
-    prompt: String,
+    r#type: String,
+    message: String,
 }
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
     let ip = "192.168.1.148"; // hampoos
-    let ip = "172.26.2.104"; // jannix
+    // let ip = "172.26.2.104"; // jannix
     let client = Client::builder()
         .connect_timeout(Duration::from_millis(2000))
         .http2_keep_alive_timeout(Duration::from_millis(2000))
@@ -123,7 +124,7 @@ async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
         .unwrap();
     let req = client
         .get(format!("http://{ip}:8383/"))
-        .body(serde_json::to_string_pretty(&PromptRequest { prompt }).unwrap())
+        .body(serde_json::to_string_pretty(&PromptRequest { message: prompt, r#type: "chat".to_string() }).unwrap())
         .send();
 
     match req.await {
@@ -566,7 +567,7 @@ pub unsafe fn update_oracle_ui() {
                     .min(chars_to_next_line as usize);
             let diff = &ui_state.received_text[ui_state.printed_text.len()..line_end_for_received];
             ui_state.printed_text += diff;
-            print!("{}", diff.trim_start());
+            print!("{}", diff);
             stdout().flush().unwrap();
             ui_state.cursor_pos = crossterm::cursor::position().unwrap();
         }
