@@ -12,5 +12,6 @@ paths = [ (python3.withPackages(ps: with ps; [
     pyte
     dotmap
     dacite
+    python-lsp-server
 ])) protobuf ];
 }
