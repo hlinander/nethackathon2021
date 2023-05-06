@@ -160,6 +160,7 @@
       socket.send(JSON.stringify({ type: "hello", name: document.querySelector("#nameinput").value }));
       localStorage.setItem("savedName", document.querySelector("#nameinput").value)
       document.querySelector("#name_dialog").open = false
+      term.focus()
     }
 
     function clickPress(event) {
@@ -194,7 +195,8 @@
       
       switch(msg.type) {
         case "data":
-          term.write(atob(msg.data))
+          let u8data = new Uint8Array(Array.from(atob(msg.data), c => c.charCodeAt(0)));
+          term.write(u8data)
         break;
         default:
           console.log("unknown message", msg)
