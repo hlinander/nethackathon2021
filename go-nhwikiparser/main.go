@@ -15,7 +15,7 @@ func main() {
 	}
 	defer file.Close()
 
-	outFile, err := os.Create("nhwiki_all_pages_excl_src_talk_forum_usrtalk_file_filetalk.txt")
+	outFile, err := os.Create("nhwiki_title_indexed.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -39,8 +39,14 @@ func main() {
 				!strings.HasPrefix(page.Title, "User:") &&
 				!strings.HasPrefix(page.Title, "File:") &&
 				!strings.HasPrefix(page.Title, "File talk:") {
-				// fmt.Fprintf(outFile, "\n\n!!%s!!\n\n", page.Title)
-				fmt.Fprintln(outFile, page.Revisions[len(page.Revisions)-1])
+				
+				pagetext := fmt.Sprintf("%v", page.Revisions[len(page.Revisions)-1])
+				lines := strings.Split(pagetext, "\n")
+				    for i, line := range lines {
+				        lines[i] = fmt.Sprintf("&&%s&&%d&&%s", page.Title, i, line)
+				    }				// fmt.Fprintf(outFile, "\n\n!!%s!!\n\n", page.Title)
+				newtext := strings.Join(lines, "\n")
+				fmt.Fprintln(outFile, newtext)
 				count++
 			}
 		}
