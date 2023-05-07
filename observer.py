@@ -365,8 +365,11 @@ def run(ttydir):
 	on_display = []
 	start = time.time()
 	frame = 0
+	deathcams_played = []
 	while True:
 		update_rec_list(ttydir, recs)
+		recs = [it for it in recs if not it['filename'] in deathcams_played]
+
 		choose_on_display(on_display, recs)
 		framedata = []
 		# time.sleep(1/30)
@@ -405,8 +408,9 @@ def run(ttydir):
 						str(dlevel) + "                                           i:" + interest_float
 			else:
 				player_name = "Loading.."
-			if it['live']['dead']:
+			if it['live']['dead'] and it['filename'] not in deathcams_played: 
 				death_cam(player_name, it['death'], start + DEATH_CAM_SEC)
+				deathcams_played.append(it['filename'])
 			elif time.time() > (it['created'] + DEATH_CAM_SEC):
 				run_tty(it['death'], start + DEATH_CAM_SEC, screen_x, screen_y, False)
 			if it['live']['maxhp']:
@@ -420,6 +424,7 @@ def run(ttydir):
 		recs = [it for it in recs if not it['live']['dead']]
 		frame += 1
 		sys.stdout.flush()
+		time.sleep(0.001)
 
 MON_W = 0
 MON_H = 0
