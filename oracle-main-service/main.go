@@ -207,11 +207,10 @@ func handleWorker(conn net.Conn) {
 		case "ping":
 			fmt.Println("Received ping from", conn.RemoteAddr())
 		case "token":
+			log.Println(msg)
 			select {
 			case worker.TokenChannel <- msg:
 				log.Println("Sent token!")
-			default:
-				log.Println("Ignored token ", msg.Message, " because channel closed")
 			}
 		default:
 			fmt.Println("Unknown message type:", msg.Type)

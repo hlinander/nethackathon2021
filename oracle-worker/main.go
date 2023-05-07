@@ -30,9 +30,8 @@ func send_ping(conn net.Conn) {
 }
 
 func handleChat(conn net.Conn, message string) {
-	println("heeej")
 	encoder := json.NewEncoder(conn)
-	cmd := exec.Command("../oracle-worker-service/build/bin/main", "-m", "../models/raw_wiki_sharran/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", message)
+	cmd := exec.Command("ggml/build/bin/main", "-m", "../models/raw_wiki_sharran/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", message)
 	fmt.Println(cmd.Args)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
@@ -55,6 +54,7 @@ func handleChat(conn net.Conn, message string) {
 			log.Println("Error when reading LLM process")
 			break
 		}
+		fmt.Print("~")
 		fmt.Print(string(buf[:n]))
 		encoder.Encode(&Message{
 			Type:    "token",
