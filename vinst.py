@@ -320,8 +320,10 @@ while True:
             try:
                 connections[fileno]["buffer"] += (
                     connections[fileno]["conn"].recv(512))
-            except:
-                del connections[fileno]
+            except Exception as e:
+                print(e)
+                if fileno in connections:
+                    del connections[fileno]
 
 
             if fileno in connections and len(connections[fileno]["buffer"]) > 4:
@@ -330,8 +332,13 @@ while True:
                     responses = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])
                     print(responses)
                     db.session.commit()
-                    for response in responses:
-                        response_data = response.SerializeToString()
-                        connections[fileno]["conn"].send(struct.pack("<I", len(response_data)))
-                        connections[fileno]["conn"].send(response_data)
+                    try:
+                        for response in responses:
+                            response_data = response.SerializeToString()
+                            connections[fileno]["conn"].send(struct.pack("<I", len(response_data)))
+                            connections[fileno]["conn"].send(response_data)
+                    except Exception as e:
+                        print(e)
+                        del connections[fileno]
+                        continue
                     connections[fileno]["buffer"] = connections[fileno]["buffer"][4 + size:]
