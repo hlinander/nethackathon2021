@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+SESSION="nethackathon"
+
+# Start a new tmux session
+tmux new-session -d -s $SESSION
+tmux new-window -t $SESSION:1 -n 'Window 1' -d './server_nix.sh'
+tmux new-window -t $SESSION:2 -n 'Window 2' -d './event_handler_nix.sh'
+tmux new-window -t $SESSION:3 -n 'Window 3' -d 'pushd nethack-web/go; go run .; popd'
+tmux new-window -t $SESSION:4 -n 'Window 4' -d 'pushd oracle-main-service; go run .; popd'
+tmux new-window -t $SESSION:5 -n 'Window 5' -d 'pushd oracle-worker; go run . ; popd'
+
+# Attach to the session
+tmux attach-session -t $SESSION

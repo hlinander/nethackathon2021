@@ -42,12 +42,15 @@ stdenv.mkDerivation rec {
     protobuf
     python3
     rr
-    rust-bindgen
-    rustfmt
+    #rust-bindgen
+    #rustfmt
   ] ++ (with rustPlatform; [
     cargoSetupHook
     rust.cargo
     rust.rustc
+    rustfmt
+    rust-bindgen
+    bindgenHook
   ]);
 
   PROTOC = "${protobuf}/bin/protoc";
@@ -123,6 +126,7 @@ stdenv.mkDerivation rec {
     for i in $out/games/lib/nethackdir/*; do
       ln -s \$i \$(basename \$i)
     done
+    export PYTHONPATH=$out/games/lib/nethackdir
     $out/games/nethack
     EOF
     chmod +x $out/bin/nethack

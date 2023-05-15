@@ -31,6 +31,8 @@ def parse_complete_task(connection, complete_task):
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
     print("Complete task: ", complete_task.objective_name, connection["player_id"])
     objective = db.session.query(db.Objective).filter_by(name=complete_task.objective_name).first()
+    # if complete_task.objective_name == "reach_3":
+    #     breakpoint()
     print(objective)
     status = nh_pb2.Status()
     if objective is None:

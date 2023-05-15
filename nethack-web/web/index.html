@@ -67,10 +67,6 @@
       c.height = window.innerHeight;
       c.width = window.innerWidth;
 
-
-
-
-
       //chinese characters - taken from the unicode charset
       var matrix = "~!@#$%^&*()_+\`1234567890-={}|QWERTYUIOP:\"[]\\ASDFGHJKL?;'ZXCVBNM,./<>!";
       //converting the string into an array of single characters
@@ -83,7 +79,7 @@
       //x below is the x coordinate
       //1 = y co-ordinate of the drop(same for every drop initially)
       for (var x = 0; x < columns; x++)
-        drops[x] = 1;
+        drops[x] = Math.random() * c.height;
 
       //drawing the characters
       function draw() {

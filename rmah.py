@@ -54,7 +54,7 @@ def cost(it):
     elif it['name'] in ['str', 'int', 'wis', 'dex', 'con', 'cha', 'bag']:
         return 10
     elif it['name'] in ['ac']:
-        return 30
+        return 40
     else:
         return 50
 

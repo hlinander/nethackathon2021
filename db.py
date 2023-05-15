@@ -263,7 +263,6 @@ insert into objectives values(0, 'level_20',	"Get xlvl 20",	1000,	5, NOW());
 insert into objectives values(0, 'level_30',	"Get xlvl 30",	2000,	5, NOW());
 insert into objectives values(0, 'get_aoy',			"Get Amulet of Yendor",	1000, 5, NOW());
 insert into objectives values(0, 'ascend',			"Ascend",				20000, 5, NOW());
-
 insert into objectives values(0, 'curse_ascend',	"Ascend with curse item", 2000, 0, NOW());
 """
 
@@ -480,7 +479,7 @@ def login(username, password):
 
 def insert_rewards():
     reward_lines = old_rewards.strip().split("\n")
-    old_reg = r".*('.*').*(\".*\"),\s*(\d*),\s*(\d*).*"
+    old_reg = r".*'(.*)'.*\"(.*)\",\s*(\d*),\s*(\d*).*"
     patt = re.compile(old_reg)
     for line in reward_lines:
         try:
@@ -490,6 +489,7 @@ def insert_rewards():
             points = m.group(3)
             add_objective(code, desc, points)
         except Exception as e:
+            breakpoint()
             print(line)
             print(str(e))
         #print("Added {code} {desc} with reward {points}".format(code=code, desc=desc,points=points))

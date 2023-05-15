@@ -18,10 +18,50 @@ import (
 	"time"
 
 	"github.com/creack/pty"
+	"github.com/georgysavva/scany/v2/pgxscan"
 	"github.com/go-playground/validator/v10"
 	"github.com/gorilla/websocket"
 	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
+
+type Player struct {
+	ID       int64
+	Clan     int64
+	Username string
+	Ticker   string
+}
+
+type Clan struct {
+	ID         int64
+	Name       string
+	Power_gems int64
+}
+
+type ClanReward struct {
+	Name   string
+	Reward int64
+}
+
+// type Reward struct {
+// 	Id               int64
+// 	Clanname         string
+// 	Playername       string
+// 	Objectiveliteral string
+// 	Score            int64
+// 	Timestamp        time.Time
+// }
+
+type Event struct {
+	Playername string
+	Clanname   string
+	Vinst      json.RawMessage
+	Timestamp  time.Time
+	Player_id  int64
+}
+
+type IndexPageData struct {
+}
 
 type ResizeMsg struct {
 	Type string `json:"type" validate:"required,eq=resize"`
@@ -47,6 +87,16 @@ type Players struct {
 var (
 	addr = flag.String("addr", ":8484", "http service address")
 )
+
+var dbPool *pgxpool.Pool
+
+func init() {
+	var err error
+	dbPool, err = pgxpool.New(context.Background(), "postgres://postgres:vinst@localhost/nh")
+	if err != nil {
+		panic(err)
+	}
+}
 
 const (
 	// Time allowed to write a message to the peer.
@@ -195,9 +245,10 @@ read_msg_loop:
 			defer conn.Close(ctx)
 
 			var id string
+			log.Printf("looking up player %s", msg.Name)
 			err = conn.QueryRow(ctx, "SELECT id FROM players WHERE username=$1", msg.Name).Scan(&id)
 			if err != nil {
-				log.Printf("unable to query player in db")
+				log.Printf("unable to query player in db: %s", err)
 				break read_msg_loop
 			}
 
@@ -223,6 +274,10 @@ read_msg_loop:
 			continue
 		}
 	}
+}
+
+func writeEvents(ctx context.Context, ws *websocket.Conn) {
+
 }
 
 func writePump(ctx context.Context, ws *websocket.Conn, s *Session) {
@@ -334,9 +389,104 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 	time.Sleep(closeGracePeriod)
 }
 
+func serveEvents(w http.ResponseWriter, r *http.Request) {
+	var events []*Event
+	err := pgxscan.Select(context.Background(), dbPool, &events, `
+WITH vinst AS (
+    (
+        SELECT
+            timestamp,
+            player_id,
+            json_build_object('type', 'event', 'name', "name", 'string_value', string_value, 'value', value, 'turn', session_turn)::jsonb AS vinst
+        FROM
+            event
+        WHERE
+            ("name" IN ('death', 'reach_depth'))
+			OR (session_turn=1 and string_value='hp')
+    )
+    UNION
+    (
+        SELECT
+            timestamp,
+            player AS player_id,
+            json_build_object('type', 'reward', 'literal', objectives.literal, 'score', rewards.score)::jsonb AS vinst
+        FROM
+            rewards
+        INNER JOIN objectives ON rewards.objective = objectives.id
+    )
+    ORDER BY
+        timestamp DESC
+    LIMIT 20
+)
+SELECT
+    vinst.*,
+    players.username AS playername,
+    clans."name" AS clanname
+FROM
+    vinst
+INNER JOIN players ON vinst.player_id = players.id
+INNER JOIN clans ON clans.id = players.clan
+		ORDER BY timestamp DESC;
+					`)
+	if err != nil {
+		fmt.Printf("CR ERROR %v\n", err)
+	}
+
+	jsonBytes, _ := json.Marshal(&events)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jsonBytes)
+}
+
 func main() {
+
 	flag.Parse()
-	http.Handle("/", http.FileServer(http.Dir("../web/")))
+	http.Handle("/", http.FileServer(http.Dir("../web2/dist")))
 	http.HandleFunc("/ws", serveWs)
+	http.HandleFunc("/events", func(w http.ResponseWriter, r *http.Request) {
+		serveEvents(w, r)
+	})
+	ctx := context.Background()
+	http.HandleFunc("/poll", func(w http.ResponseWriter, r *http.Request) {
+		var clans []*Clan
+		err := pgxscan.Select(ctx, dbPool, &clans, `SELECT id, name, power_gems FROM clans ORDER BY power_gems DESC`)
+		if err != nil {
+			fmt.Printf("Clan ERROR %v\n", err)
+		}
+
+		var players []*Player
+		err = pgxscan.Select(ctx, dbPool, &players, `SELECT id, clan, username, ticker FROM players`)
+		if err != nil {
+			fmt.Printf("Player ERROR %v\n", err)
+		}
+
+		var clan_rewards []*ClanReward
+		err = pgxscan.Select(ctx, dbPool, &clan_rewards, `select
+	clans.name as name, SUM(rewards.score) as reward
+from
+	rewards inner join objectives on rewards.objective = objectives.id
+	inner join players on players.id = rewards.player
+	inner join clans on players.clan = clans.id
+	group by clans.name`)
+		if err != nil {
+			fmt.Printf("CR ERROR %v\n", err)
+		}
+
+		type PollData struct {
+			Clans       []*Clan
+			Players     []*Player
+			ClanRewards []*ClanReward
+		}
+
+		data := PollData{
+			Clans:       clans,
+			Players:     players,
+			ClanRewards: clan_rewards,
+		}
+
+		jsonBytes, _ := json.Marshal(&data)
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(jsonBytes)
+	})
+
 	log.Fatal(http.ListenAndServe(*addr, nil))
 }

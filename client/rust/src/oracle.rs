@@ -1,3 +1,5 @@
+use lazy_static::*;
+use regex::Regex;
 use std::{
     cmp::Ordering,
     default,
@@ -116,7 +118,7 @@ struct PromptRequest {
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
     let ip = "192.168.1.148"; // hampoos
-    // let ip = "172.26.2.104"; // jannix
+                              // let ip = "172.26.2.104"; // jannix
     let client = Client::builder()
         .connect_timeout(Duration::from_millis(2000))
         .http2_keep_alive_timeout(Duration::from_millis(2000))
@@ -124,7 +126,13 @@ async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
         .unwrap();
     let req = client
         .get(format!("http://{ip}:8383/"))
-        .body(serde_json::to_string_pretty(&PromptRequest { message: prompt, r#type: "chat".to_string() }).unwrap())
+        .body(
+            serde_json::to_string_pretty(&PromptRequest {
+                message: prompt,
+                r#type: "chat".to_string(),
+            })
+            .unwrap(),
+        )
         .send();
 
     match req.await {
@@ -163,6 +171,9 @@ unsafe fn new_request(user_visible_prompt: String, prompt: String) {
     if let Some(ui_state) = UI_STATE.as_mut() {
         ui_state.last_request_state_update = Some(Instant::now());
         ui_state.request_status = RequestStatus::Active(user_visible_prompt);
+        ui_state.received_text = "".to_string();
+        ui_state.processed_text = Vec::new();
+        ui_state.printed_text = Vec::new();
     }
     let runtime = TOKIO_RUNTIME.as_ref().unwrap();
     let (tx, rx) = unbounded_channel();
@@ -229,8 +240,9 @@ enum RequestStatus {
 #[derive(Default)]
 struct UiState {
     last_request_id: u32,
-    printed_text: String,
+    printed_text: Vec<(TextStyle, String)>,
     received_text: String,
+    processed_text: Vec<(TextStyle, String)>,
     request_status: RequestStatus,
     last_request_state_update: Option<Instant>,
     printed_status_line: String,
@@ -538,9 +550,14 @@ pub unsafe fn update_oracle_ui() {
             }
         }
     }
-    let needs_update = ui_state.received_text != ui_state.printed_text || clear;
+    let needs_update = ui_state.processed_text != ui_state.printed_text || clear;
     if needs_update {
-        if clear {
+        let refresh_text = ui_state
+            .printed_text
+            .iter()
+            .enumerate()
+            .any(|(idx, (_, text))| !ui_state.processed_text[idx].1.starts_with(text));
+        if clear || refresh_text {
             execute!(
                 stdout(),
                 SavePosition,
@@ -551,30 +568,118 @@ pub unsafe fn update_oracle_ui() {
             .unwrap();
             ui_state.cursor_pos = default_cursor_pos();
         }
+        if refresh_text {
+            ui_state.printed_text = Vec::new();
+        }
         let (mut x, mut y) = ui_state.cursor_pos;
         execute!(stdout(), SavePosition, MoveTo(x, y)).unwrap();
-        while ui_state.printed_text.len() < ui_state.received_text.len() {
-            (x, y) = ui_state.cursor_pos;
-            execute!(stdout(), MoveTo(x, y)).unwrap();
-            let chars_to_next_line = 79 - x;
-            if chars_to_next_line <= 0 {
-                ui_state.cursor_pos.1 += 1;
-                ui_state.cursor_pos.0 = 0;
-                continue;
+        let max_line = 33;
+        for (idx, (text_style, text)) in ui_state.processed_text.iter().enumerate() {
+            if ui_state.cursor_pos.1 >= max_line {
+                // max terminal size supported
+                break;
             }
-            let line_end_for_received = ui_state.printed_text.len()
-                + (ui_state.received_text.len() - ui_state.printed_text.len())
-                    .min(chars_to_next_line as usize);
-            let diff = &ui_state.received_text[ui_state.printed_text.len()..line_end_for_received];
-            ui_state.printed_text += diff;
-            print!("{}", diff);
-            stdout().flush().unwrap();
-            ui_state.cursor_pos = crossterm::cursor::position().unwrap();
+            if ui_state.printed_text.len() <= idx {
+                ui_state
+                    .printed_text
+                    .push((text_style.clone(), "".to_string()));
+            }
+            let printed_text = &mut ui_state.printed_text[idx].1;
+            while printed_text.len() < text.len() {
+                (x, y) = ui_state.cursor_pos;
+                if y >= max_line {
+                    // max terminal size supported
+                    break;
+                }
+                execute!(stdout(), MoveTo(x, y)).unwrap();
+                let chars_to_next_line = 79 - x;
+                if chars_to_next_line <= 0 {
+                    ui_state.cursor_pos.1 += 1;
+                    ui_state.cursor_pos.0 = 0;
+                    continue;
+                }
+                let line_end_for_received = printed_text.len()
+                    + (text.len() - printed_text.len()).min(chars_to_next_line as usize);
+                let diff = &text[printed_text.len()..line_end_for_received];
+                printed_text.push_str(diff);
+                let mut stdout = stdout();
+                let mut content = crossterm::style::style(diff);
+                use crossterm::style::*;
+                if text_style.bold {
+                    content = content.bold();
+                }
+                stdout.execute(crossterm::style::PrintStyledContent(content));
+                stdout.flush().unwrap();
+                ui_state.cursor_pos = crossterm::cursor::position().unwrap();
+            }
         }
         execute!(stdout(), RestorePosition).unwrap();
         stdout().flush().unwrap();
     }
     update_status_line();
+}
+
+lazy_static! {
+    static ref LINK_REGEX: Regex = Regex::new(r#"(?:\[\[|\{\{)(?:(?:\w|\d|\s|\:|\'|\.|\,|\-|\#)+(?:\||\:))?((?:\w|\d|\s|\:|\'|\.|\,|\-|\#)+)(?:\]\]|\}\})"#).unwrap();
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+struct TextStyle {
+    bold: bool,
+    link: Option<String>,
+    source_char: char,
+}
+
+fn process_received_text(ui_state: &mut UiState) {
+    let received_text = &ui_state.received_text;
+    let mut processed = LINK_REGEX.replace_all(received_text, "$1").into_owned();
+    ui_state.processed_text = Vec::new();
+    ui_state.received_text = processed.to_string();
+
+    let mut segments = Vec::new();
+    let mut style_stack = Vec::new();
+    let mut current_style = TextStyle::default();
+    let mut current_segment = String::new();
+    let mut prev_char = None;
+    let mut char_iter = processed.chars().enumerate().peekable();
+    while let Some((c_idx, c)) = char_iter.next() {
+        match c {
+            '\'' => {
+                if prev_char == Some('\'') {
+                    current_segment.pop();
+                    while let Some((_, '\'')) = char_iter.peek() {
+                        char_iter.next();
+                    }
+                    let mut new_style: TextStyle;
+                    if current_style.bold {
+                        let pos = style_stack
+                            .iter()
+                            .position(|s: &TextStyle| s.source_char == c);
+                        if let Some(pos) = pos {
+                            new_style = style_stack.remove(pos);
+                        } else {
+                            continue;
+                        }
+                    } else {
+                        new_style = current_style.clone();
+                        new_style.source_char = c;
+                        new_style.bold = true;
+                        style_stack.push(current_style.clone());
+                    }
+                    segments.push((current_style, core::mem::take(&mut current_segment)));
+                    current_style = new_style;
+                } else {
+                    current_segment.push(c);
+                }
+            }
+            c => current_segment.push(c),
+        }
+        prev_char = Some(c);
+    }
+    if !current_segment.is_empty() {
+        segments.push((current_style, current_segment));
+    }
+    ui_state.processed_text = segments;
 }
 
 unsafe fn update_request_state(ui_state: &mut UiState) -> Option<u32> {
@@ -586,6 +691,7 @@ unsafe fn update_request_state(ui_state: &mut UiState) -> Option<u32> {
                 Ok(ReceiveMsg::MoreData(data)) => {
                     ui_state.received_text += &data;
                     ui_state.last_request_state_update = Some(Instant::now());
+                    process_received_text(ui_state);
                 }
                 Ok(ReceiveMsg::Error(error_msg)) => {
                     let visible_prompt = match &ui_state.request_status {
