@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/json"
 	"errors"
+	"flag"
 	"fmt"
 	"io"
 	"log"
@@ -11,6 +12,8 @@ import (
 	"os/exec"
 	"time"
 )
+
+var oracleHost = flag.String("oracle-host", "localhost:8080", "Oracle host ip")
 
 type Message struct {
 	Type    string `json:"type"`
@@ -69,7 +72,7 @@ func handleChat(conn net.Conn, message string) {
 }
 
 func connect() bool {
-	conn, err := net.Dial("tcp", "localhost:8080")
+	conn, err := net.Dial("tcp", *oracleHost)
 
 	if err != nil {
 		fmt.Println("Error connecting:", err)
@@ -103,6 +106,7 @@ func connect() bool {
 
 func main() {
 	// establish TCP connection
+	flag.Parse()
 	var retry int64 = 0
 	for {
 		if connect() {

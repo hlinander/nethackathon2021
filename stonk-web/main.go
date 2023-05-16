@@ -28,6 +28,11 @@ type Clan struct {
 	Power_gems int64
 }
 
+type ClanReward struct {
+	Name string
+	Reward int64
+}
+
 type IndexPageData struct {
 }
 
@@ -58,23 +63,37 @@ func main() {
 		var clans []*Clan
 		err := pgxscan.Select(ctx, db, &clans, `SELECT id, name, power_gems FROM clans ORDER BY power_gems DESC`)
 		if err != nil {
-			fmt.Printf("ERROR %v\n", err)
+			fmt.Printf("Clan ERROR %v\n", err)
 		}
 
 		var players []*Player
 		err = pgxscan.Select(ctx, db, &players, `SELECT id, clan, username, ticker FROM players`)
 		if err != nil {
-			fmt.Printf("ERROR %v\n", err)
+			fmt.Printf("Player ERROR %v\n", err)
+		}
+		
+		var clan_rewards []*ClanReward
+		err = pgxscan.Select(ctx, db, &clan_rewards, `select
+	clans.name as name, SUM(rewards.score) as reward
+from
+	rewards inner join objectives on rewards.objective = objectives.id
+	inner join players on players.id = rewards.player
+	inner join clans on players.clan = clans.id
+	group by clans.name`)
+		if err != nil {
+			fmt.Printf("CR ERROR %v\n", err)
 		}
 
 		type PollData struct {
 			Clans   []*Clan
 			Players []*Player
+			ClanRewards []*ClanReward
 		}
 
 		data := PollData{
 			Clans:   clans,
 			Players: players,
+			ClanRewards: clan_rewards,
 		}
 
 		jsonBytes, _ := json.Marshal(&data)
