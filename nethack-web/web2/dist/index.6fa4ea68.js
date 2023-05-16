@@ -3293,8 +3293,12 @@ _s1(LeaderBoard, "0V9SV9dAkoOasRYP1uDb1I0Gfkk=");
 _c2 = LeaderBoard;
 function RenderEvent({ event  }) {
     let pn = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-        children: event.Playername
-    }, void 0, false, {
+        children: [
+            event.Timestamp,
+            " ",
+            event.Playername
+        ]
+    }, void 0, true, {
         fileName: "index.tsx",
         lineNumber: 209,
         columnNumber: 12

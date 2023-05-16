@@ -14,6 +14,8 @@ import (
 )
 
 var oracleHost = flag.String("oracle-host", "localhost:8080", "Oracle host ip")
+var modelPath = flag.String("model-path", "../models/raw_wiki_sharran/ckpt/ggml-model-q4_0.bin", "ggml model")
+var ggmlBinPath = flag.String("ggml-bin", "ggml/build/bin/main", "ggml binary")
 
 type Message struct {
 	Type    string `json:"type"`
@@ -34,7 +36,7 @@ func send_ping(conn net.Conn) {
 
 func handleChat(conn net.Conn, message string) {
 	encoder := json.NewEncoder(conn)
-	cmd := exec.Command("ggml/build/bin/main", "-m", "../models/raw_wiki_sharran/ckpt/ggml-model-q4_0.bin", "-t", "6", "-p", message)
+	cmd := exec.Command(*ggmlBinPath, "-m", *modelPath, "-t", "6", "-p", message)
 	fmt.Println(cmd.Args)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {

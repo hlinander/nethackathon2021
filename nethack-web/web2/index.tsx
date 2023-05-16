@@ -206,7 +206,7 @@ function LeaderBoard() {
 }
 
 function RenderEvent({event}) {
-  let pn = <b>{event.Playername}</b>
+  let pn = <b>{event.Timestamp} {event.Playername}</b>
   let event_data = event.Vinst
   switch (event_data.type) {
     case "event":

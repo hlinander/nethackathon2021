@@ -118,9 +118,10 @@ const (
 	defaultPtyCols = 80
 )
 
-func readPump(ctx context.Context, ws *websocket.Conn, s *Session) {
-	_, cancel := context.WithCancel(ctx)
-	defer func() { cancel() }()
+func readPump(ctx context.Context, ws *websocket.Conn, s *Session, cancel context.CancelFunc) {
+	defer func() {
+		cancel()
+	}()
 
 	defer ws.Close()
 
@@ -136,7 +137,6 @@ read_msg_loop:
 		_, message, err := ws.ReadMessage()
 		if err != nil {
 			log.Printf("failed to read websocket message: %s", err)
-			cancel()
 			return
 		}
 
@@ -254,6 +254,7 @@ read_msg_loop:
 
 			// c := exec.Command("/home/eracce/nethackathon2021/build/bin/nethack", "-u", msg.Name)
 			c := exec.Command("sh", "/home/herden/projects/nethackathon2023/wrapped_nethack", msg.Name)
+			s.C = c
 			c.Env = os.Environ()
 			c.Env = append(c.Env, fmt.Sprintf("USER=%s", msg.Name))
 			c.Env = append(c.Env, fmt.Sprintf("DB_USER_ID=%s", id))
@@ -266,7 +267,7 @@ read_msg_loop:
 				})
 			if err != nil {
 				log.Printf("failed to start %s", err)
-				cancel()
+				return
 			}
 
 		default:
@@ -280,8 +281,8 @@ func writeEvents(ctx context.Context, ws *websocket.Conn) {
 
 }
 
-func writePump(ctx context.Context, ws *websocket.Conn, s *Session) {
-	_, cancel := context.WithCancel(ctx)
+func writePump(ctx context.Context, ws *websocket.Conn, s *Session, cancel context.CancelFunc) {
+	defer cancel()
 	buf := make([]byte, maxMessageSize)
 	for {
 		if s.PtyPipe == nil {
@@ -292,7 +293,6 @@ func writePump(ctx context.Context, ws *websocket.Conn, s *Session) {
 		n, err := s.PtyPipe.Read(buf)
 		if err != nil {
 			log.Printf("failed to read message from pty: %s", err)
-			cancel()
 			return
 		}
 
@@ -304,7 +304,6 @@ func writePump(ctx context.Context, ws *websocket.Conn, s *Session) {
 		msgJson, err := json.MarshalIndent(msg, "", "  ")
 		if err != nil {
 			log.Printf("failed create json msg: %s", err)
-			cancel()
 			return
 		}
 
@@ -312,7 +311,6 @@ func writePump(ctx context.Context, ws *websocket.Conn, s *Session) {
 		err = ws.WriteMessage(websocket.TextMessage, msgJson)
 		if err != nil {
 			log.Printf("failed to send message to ws pty: %s", err)
-			cancel()
 			break
 		}
 	}
@@ -352,6 +350,7 @@ var upgrader = websocket.Upgrader{
 type Session struct {
 	Name    *string
 	PtyPipe *os.File
+	C       *exec.Cmd
 }
 
 var sessionMutex sync.Mutex
@@ -371,15 +370,19 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 
 	session := Session{}
 
-	go writePump(ctx, ws, &session)
-	go readPump(ctx, ws, &session)
+	go writePump(ctx, ws, &session, cancel)
+	go readPump(ctx, ws, &session, cancel)
 	go ping(ctx, ws)
 
+	log.Println("waiting for done")
 	<-ctx.Done()
+	log.Println("after done")
 
 	defer func() {
 		if session.PtyPipe != nil {
+			log.Println("closing pipe")
 			session.PtyPipe.Close()
+			session.C.Process.Kill()
 		}
 	}()
 
