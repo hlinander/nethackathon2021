@@ -311,6 +311,7 @@ def insert_stonk_holding(clan_id, session_start_time, stonk_player_id, stonk_nam
         long=buy_long,
         session_start_time=session_start_time
     ))
+    session.commit()
 
 def delete_holding(holding_id):
     stonk_holding = session.query(StonkHolding).filter_by(id=holding_id).first()
@@ -320,6 +321,7 @@ def delete_holding(holding_id):
 def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_player_id, stonk_name, spent_gems, expires, buy_long):
     p = session.query(Player).filter_by(id=player_id).first()
     clan = session.query(Clan).filter_by(id=p.clan).first()
+    print(f"{clan.power_gems} <? {spent_gems}")
     if clan.power_gems < spent_gems:
         return
     clan.power_gems -= spent_gems

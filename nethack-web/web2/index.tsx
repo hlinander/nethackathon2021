@@ -7,6 +7,7 @@ import { makeAutoObservable } from "mobx";
 import { observer } from "mobx-react";
 import nethacklogo from "./NetHack-Logo.svg"
 import leaderboardbg from "./stonkathon.jpg"
+import { formatDistanceToNow } from 'date-fns'
 
 class GameState {
   term?: Terminal = null
@@ -60,6 +61,8 @@ const Game = observer(({ state }) => {
   </div>);
 }
 );
+
+
 
 const GameView = observer(({ state }) => {
   return (
@@ -206,18 +209,23 @@ function LeaderBoard() {
 }
 
 function RenderEvent({event}) {
-  let pn = <b>{event.Timestamp} {event.Playername}</b>
+  let elapsed = formatDistanceToNow(new Date(event.Timestamp), { addSuffix: true });
+  let elapsedEl = <span style={{fontSize: "8px", opacity: 0.5}}>{elapsed}</span>
+  let pn = <b>{event.Playername}</b>
   let event_data = event.Vinst
+  console.log(event_data)
   switch (event_data.type) {
     case "event":
       switch (event_data.name) {
+        case "buy_stonk":
+          return <div style={{ color: "pink" }}>{pn} is {event_data.extra.buy_long ? "long" : "short"} in {event.Stonk_boi} betting {event_data.extra.spent_gems} gems</div>
         case "death":
           return <div style={{ color: "red" }}>{pn} died on turn {event_data.turn}</div>
         case "reach_depth":
           return <div><b>{event_data.Playername}</b>{pn} reached dungeon level {event_data.value}</div>
         case "change_stat":
           if (event_data.string_value == "hp") {
-            return <div>{pn} entered the dungeon of doom.</div>
+            return <div>{pn} entered the dungeon of doom. {elapsedEl}</div>
           }
       }
     case "reward":
@@ -241,8 +249,8 @@ function Events() {
     }, 1000)
   }, [])
   return (
-    <div style={{ gridArea: "events", display: "flex", flexDirection:"column-reverse", fontFamily: "monospace", margin: "8px" }}>
-        {state.map(event => <div className="fade-in" key={event.Timestamp}><RenderEvent event={event}/></div>) }
+    <div style={{ gridArea: "events", display: "flex", flexDirection:"column-reverse", fontFamily: "monospace", margin: "8px", minWidth:0}}>
+        {state.map(event => <div className="fade-in" style={{minWidth:0, width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap"}} key={event.Timestamp}><RenderEvent event={event}/></div>) }
     </div>)
 
 }

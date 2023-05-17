@@ -126,13 +126,28 @@ def update_stonks(timestamp):
     db.session.commit()
 
 
-def pay_out_long(stonk_holding):
+def pay_out_stonk(stonk_holding):
     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
     turn_fraction = stonk_holding.expires_delta / 250.
     roi = math.ceil(turn_fraction * stonk_holding.fraction * stonk.value)
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)
     print(f"Clan {stonk_holding.clan_id} recieved {roi} gems")
+
+    item = db.Event(
+        player_id=stonk_holding.player_id,
+        clan_id=stonk_holding.clan_id,
+        session_start_time=stonk_holding.session_start_time,
+        session_turn=1,
+        name="payout_stonk",
+        extra=dict(
+            stonk_player_id=stonk_holding.player_id,
+            roi=roi,
+            is_long=stonk_holding.long,
+        )
+        )
+    db.session.add(item)
+    db.session.commit()
     open("/tmp/payouts", "a").write(f"Clan {stonk_holding.clan_id} recieved {roi} gems. {stonk_holding.__dict__}\n")
 
 def _handle_player_death(event):
@@ -140,7 +155,7 @@ def _handle_player_death(event):
     shorts = db.session.query(db.StonkHolding).filter_by(player_id=event.player_id, session_start_time=event.session_start_time, long=False)
     delete = []
     for short in shorts:
-        pay_out_long(short)
+        pay_out_stonk(short)
         delete.append(short.id)
 
     for d in delete:
@@ -161,7 +176,7 @@ def handle_transactions(timestamp):
                 print(stonk_holding.session_start_time, " =?= ", state["players"][str(stonk.player_id)]["current_session"])
                 if stonk_holding.session_start_time == state["players"][str(stonk.player_id)]["current_session"]:
                     print("Payed out stonk!")
-                    pay_out_long(stonk_holding)
+                    pay_out_stonk(stonk_holding)
 
     for holding_id in delete_holdings:
         db.delete_holding(holding_id)
@@ -273,7 +288,7 @@ def reload_state():
     global state
     event_handler = get_event_handler()
     state = event_handler.state
-    print(state)
+    # print(state)
 
 
 def parse_args():

@@ -18,7 +18,7 @@ MAX_EXPIRY = 5000
 my_id = '0'
 
 state = 0
-
+total_gems = 0
 no_color = None
 avanza_logo = None
 white = None
@@ -50,7 +50,7 @@ def item_color(s):
 def update(stdscr, cpstate, player_order):
     global selected_player_id
     global cost
-
+    global total_gems
     total_gems = db.get_clan(my_id).power_gems
 
     player_index = 0
@@ -297,7 +297,9 @@ def main(stdscr):
         elif ord(' ') == key:
             if state == 4:
                 if cost <= total_gems:
+                    print('preeee')
                     db.add_buy_stonk_event(my_id, my_session, my_turn, int(selected_player_id), 'stonk', cost, expiry, buy_long)
+                    print('pooost')
                 state = 3
             else:
                 state += 1

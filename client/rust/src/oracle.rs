@@ -93,6 +93,9 @@ static mut ACTIVE_REQUEST: Option<ActiveRequest> = None;
 static mut REQUEST_ID: u32 = 0;
 
 pub unsafe fn init() {
+    if TOKIO_RUNTIME.is_some() {
+        return;
+    }
     assert!(TOKIO_RUNTIME.is_none());
     TOKIO_RUNTIME = Some(Runtime::new().unwrap());
     let stdin_fd = std::io::stdin().as_raw_fd();
@@ -556,7 +559,13 @@ pub unsafe fn update_oracle_ui() {
             .printed_text
             .iter()
             .enumerate()
-            .any(|(idx, (_, text))| !ui_state.processed_text[idx].1.starts_with(text));
+            .any(|(idx, (_, text))| {
+                !ui_state
+                    .processed_text
+                    .get(idx)
+                    .map(|s| s.1.starts_with(text))
+                    .unwrap_or(false)
+            });
         if clear || refresh_text {
             execute!(
                 stdout(),
@@ -608,7 +617,18 @@ pub unsafe fn update_oracle_ui() {
                 if text_style.bold {
                     content = content.bold();
                 }
+
+                if let Some(link) = &text_style.link {
+                    let link_prefix =
+                        format!("\x1b]8;;https://nethackwiki.com/wiki/{}\x1b\\", link);
+                    stdout.write(link_prefix.as_bytes());
+                }
                 stdout.execute(crossterm::style::PrintStyledContent(content));
+                if text_style.link.is_some() {
+                    let link_postfix = "\x1b]8;;\x1b\\";
+                    stdout.write(link_postfix.as_bytes());
+                }
+
                 stdout.flush().unwrap();
                 ui_state.cursor_pos = crossterm::cursor::position().unwrap();
             }
@@ -620,7 +640,7 @@ pub unsafe fn update_oracle_ui() {
 }
 
 lazy_static! {
-    static ref LINK_REGEX: Regex = Regex::new(r#"(?:\[\[|\{\{)(?:(?:\w|\d|\s|\:|\'|\.|\,|\-|\#)+(?:\||\:))?((?:\w|\d|\s|\:|\'|\.|\,|\-|\#)+)(?:\]\]|\}\})"#).unwrap();
+    static ref LINK_REGEX: Regex = Regex::new(r#"(?:\[\[|\{\{)(?:((?:\w|\d|\s|\:|\'|\.|\,|\-|\#)+)(?:\||\:))?((?:\w|\d|\s|\:|\'|\.|\,|\-|\#)+)(?:\]\]|\}\})"#).unwrap();
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -632,7 +652,31 @@ struct TextStyle {
 
 fn process_received_text(ui_state: &mut UiState) {
     let received_text = &ui_state.received_text;
-    let mut processed = LINK_REGEX.replace_all(received_text, "$1").into_owned();
+    let mut processed = String::new();
+    let mut last_index = 0;
+    let mut replacements = Vec::new();
+    for capture in LINK_REGEX.captures_iter(received_text) {
+        let start = capture.get(0).unwrap().start();
+        let end = capture.get(0).unwrap().end();
+        let capture_content = capture.get(2).unwrap().as_str();
+
+        let processed_start = start - last_index + processed.len();
+        let processed_end = start + capture_content.len() - last_index + processed.len();
+
+        processed.push_str(&received_text[last_index..start]);
+        processed.push_str(capture_content);
+
+        let link = capture
+            .get(1)
+            .map(|s| s.as_str())
+            .unwrap_or(capture_content);
+        replacements.push(((processed_start..processed_end), link.to_string()));
+
+        last_index = end;
+    }
+    if last_index < received_text.len() {
+        processed.push_str(&received_text[last_index..received_text.len()]);
+    }
     ui_state.processed_text = Vec::new();
     ui_state.received_text = processed.to_string();
 
@@ -641,8 +685,27 @@ fn process_received_text(ui_state: &mut UiState) {
     let mut current_style = TextStyle::default();
     let mut current_segment = String::new();
     let mut prev_char = None;
-    let mut char_iter = processed.chars().enumerate().peekable();
-    while let Some((c_idx, c)) = char_iter.next() {
+    let mut char_iter = processed.chars().peekable();
+    while let Some(c) = char_iter.next() {
+        let byte_idx = processed.len() - char_iter.as_str().len();
+        if let Some((_, link)) = replacements.iter().find(|r| r.0.start == byte_idx) {
+            let mut new_style = current_style.clone();
+            new_style.source_char = '[';
+            new_style.link = Some(link.clone());
+            style_stack.push(current_style.clone());
+            segments.push((current_style, core::mem::take(&mut current_segment)));
+            current_style = new_style;
+        }
+        if let Some(_) = replacements.iter().find(|r| r.0.end == byte_idx) {
+            let pos = style_stack
+                .iter()
+                .position(|s: &TextStyle| s.source_char == '[')
+                .unwrap();
+
+            let new_style = style_stack.remove(pos);
+            segments.push((current_style, core::mem::take(&mut current_segment)));
+            current_style = new_style;
+        }
         match c {
             '\'' => {
                 if prev_char == Some('\'') {

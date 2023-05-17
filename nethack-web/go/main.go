@@ -15,6 +15,7 @@ import (
 	"os"
 	"os/exec"
 	"sync"
+	"syscall"
 	"time"
 
 	"github.com/creack/pty"
@@ -58,6 +59,7 @@ type Event struct {
 	Vinst      json.RawMessage
 	Timestamp  time.Time
 	Player_id  int64
+	Stonk_boi  *string
 }
 
 type IndexPageData struct {
@@ -382,7 +384,8 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 		if session.PtyPipe != nil {
 			log.Println("closing pipe")
 			session.PtyPipe.Close()
-			session.C.Process.Kill()
+			// session.C.Process.Kill()
+			session.C.Process.Signal(syscall.SIGHUP)
 		}
 	}()
 
@@ -400,11 +403,11 @@ WITH vinst AS (
         SELECT
             timestamp,
             player_id,
-            json_build_object('type', 'event', 'name', "name", 'string_value', string_value, 'value', value, 'turn', session_turn)::jsonb AS vinst
+            json_build_object('type', 'event', 'name', "name", 'string_value', string_value, 'value', value, 'turn', session_turn, 'extra', extra)::jsonb AS vinst
         FROM
             event
         WHERE
-            ("name" IN ('death', 'reach_depth'))
+            ("name" IN ('death', 'reach_depth', 'buy_stonk'))
 			OR (session_turn=1 and string_value='hp')
     )
     UNION
@@ -424,13 +427,16 @@ WITH vinst AS (
 SELECT
     vinst.*,
     players.username AS playername,
-    clans."name" AS clanname
+    clans."name" AS clanname,
+	p2.username as stonk_boi
 FROM
     vinst
 INNER JOIN players ON vinst.player_id = players.id
 INNER JOIN clans ON clans.id = players.clan
+LEFT JOIN players p2 ON p2.id = (vinst->'extra'->>'stonk_player_id')::int4
 		ORDER BY timestamp DESC;
-					`)
+	
+				`)
 	if err != nil {
 		fmt.Printf("CR ERROR %v\n", err)
 	}
