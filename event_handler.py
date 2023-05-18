@@ -97,7 +97,7 @@ def calculate_stonk(player):
     hunger_stonk = max(0, (1500 - hunger) / 800.)
     hp_stonk = 1.0 - (hp / maxhp)
     hp_stonk2 = 1.0 - maxhp / 200.
-    ac_stonk = 1.0 / (11 - ac)
+    ac_stonk = 1.0 / (11 - max(ac, 0))
     dlevel_stonk = dlevel / 60.0
     level_stonk = 1.0 - level / 30.0
 
@@ -109,6 +109,7 @@ def calculate_stonk(player):
     # print("level_stonk", level_stonk)
 
     stonk = hunger_stonk * 8 + hp_stonk * 30 + hp_stonk2 * 20 + ac_stonk * 10 + dlevel_stonk * 20 + level_stonk * 20
+    stonk = 50 + max(30, stonk)
     return stonk
 
 def stonk_for_player(player):
