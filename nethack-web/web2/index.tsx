@@ -75,7 +75,12 @@ const Game = observer(({ state }) => {
 
 const GameView = observer(({ state }) => {
   return (
-    <div style={{width: "100%", display: "flex", alignItems:"center", justifyContent: "flex-end"}}>
+    <div style={{
+      width: "100%", 
+      display: "flex", 
+      alignItems:"center", 
+      justifyContent: "flex-end"
+    }}>
     <div ref={(el) => {
       if (el != null) {
         state.term.open(el)
@@ -268,7 +273,22 @@ function Events() {
   return (
     <div style={{gridArea: "events", overflowY:"scroll"}}>
     <div style={{ display: "flex", flexDirection:"column-reverse", fontFamily: "monospace", margin: "8px", minWidth:0}}>
-        {state.map(event => <div className="fade-in" style={{minWidth:0, width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap"}} key={event.Timestamp}><RenderEvent event={event}/></div>) }
+        {state.map((event, i) =>
+          <div className="fade-in"
+            ref={el => {
+              if(el !== null && i == 0) {
+                el.scrollIntoView({behavior:"smooth"})
+              }
+            }}
+            style={{
+              minWidth: 0,
+              width: "100%", 
+              overflow: "hidden", 
+              textOverflow: "ellipsis", 
+              whiteSpace: "nowrap"
+            }} key={event.Timestamp}>
+              <RenderEvent event={event} />
+            </div>)}
       </div>
     </div>)
 }
