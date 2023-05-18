@@ -317,7 +317,7 @@ def choose_on_display(on_display, recs):
 	global next_session_update
 
 	if time.time() > next_session_update:
-		next_session_update = time.time() + 2000
+		next_session_update = time.time() + 2
 	else:
 		return
 
@@ -378,6 +378,7 @@ def run(ttydir):
 	start = time.time()
 	frame = 0
 	deathcams_played = []
+	next_frame_paint = time.time()
 	while True:
 		update_rec_list(ttydir, recs)
 		recs = [it for it in recs if not it['filename'] in deathcams_played]
@@ -438,7 +439,9 @@ def run(ttydir):
 			if exists:
 				framedata.append((screen_x, screen_y, MON_W+2, MON_H+2, player_name, color))
 		reset()
-		jens.paint_frames(framedata)
+		if time.time() >= next_frame_paint: 
+			next_frame_paint = time.time() + 1 
+			jens.paint_frames(framedata)
 		recs = [it for it in recs if not it['live']['dead']]
 		frame += 1
 		sys.stdout.flush()

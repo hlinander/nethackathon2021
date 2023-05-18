@@ -527,7 +527,8 @@ def init_db():
     session.add(Player(username="dregg", ticker="DRE", password="sko", clan=vinst))
     session.add(Player(username="drgiffel", ticker="DRG", password="sko", clan=vinst))
     session.add(Player(username="macroman", ticker="MCR", password="sko", clan=vinst))
-    # session.add(Player(username="breggan", ticker="BRG", password="sko", clan=vinst))
+
+    session.add(Player(username="breggan", ticker="BRG", password="sko", clan=vinst))
 
     session.commit()
 

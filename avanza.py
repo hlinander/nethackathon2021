@@ -254,6 +254,7 @@ def main(stdscr):
 
     while not quit:
         cpstate = session.get_state()['players']
+        open('/tmp/sko', 'w').write(json.dumps(cpstate))
         if str(my_id) in cpstate:
             del cpstate[str(my_id)]
         foo = {}
@@ -262,8 +263,7 @@ def main(stdscr):
                 foo[k] = v
         cpstate = foo
         player_order = [ int(it[0]) for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
-        #open('/tmp/sko', 'w').write(json.dumps(cpstate))
-        #exit(0)
+        # exit(0)
         if len(player_order) == 0:
             stdscr.addstr(5, 5, 'NO STONKS :( Press q, or some other key.')
             time.sleep(1)

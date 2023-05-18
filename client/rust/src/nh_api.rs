@@ -186,9 +186,6 @@ pub(crate) unsafe fn obj_to_obj_data(o: &obj) -> ObjData {
 
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_sync_all() {
-    if PLAYER_LOGIN_ID.is_none() {
-        return;
-    }
     let mut iter = nethack_rs::g.invent;
     while iter != null_mut() {
         if nethack_rs::BAG_OF_SHARING as i16 == (&*iter).otyp {
@@ -225,9 +222,6 @@ unsafe fn obj_data_to_obj(obj_data: &ObjData) -> *mut obj {
 
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
-    if PLAYER_LOGIN_ID.is_none() {
-        return;
-    }
     let items = until_io_success(|ipc| ipc.get_bag()).expect("sync error");
 
     let mut bag = &mut *bag_ptr;
@@ -314,10 +308,6 @@ static mut CACHED_CLAN_POWERS_TIME: Option<Instant> = None;
 
 #[no_mangle]
 pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
-    if PLAYER_LOGIN_ID.is_none() {
-        bonus.write(core::mem::zeroed());
-        return;
-    }
     if let Some(cache_time) = CACHED_CLAN_POWERS_TIME {
         if Instant::now().saturating_duration_since(cache_time) < Duration::from_secs(1) {
             *bonus = CACHED_CLAN_POWERS.unwrap();

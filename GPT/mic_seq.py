@@ -24,8 +24,11 @@ import json
 from TTS.utils.manage import ModelManager
 from TTS.utils.synthesizer import Synthesizer
 
-OPENAI_TOKEN="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"
+# OPENAI_TOKEN="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"
+OPENAI_TOKEN="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"
 openai.api_key = OPENAI_TOKEN
+# print(openai.Model.list())
+# exit(0)
 
 @click.command()
 @click.option("--model", default="small", help="Model to use", type=click.Choice(["tiny","base", "small","medium","large"]))
@@ -80,8 +83,15 @@ def main(model, english,verbose, energy, pause,dynamic_energy,save_file):
 
 
 def chatgpt(prompt):
-    response = openai.Completion.create(model="text-davinci-003", prompt=prompt, temperature=0, max_tokens=100)
-    return response['choices'][0]['text'].strip()
+    # response = openai.Completion.create(model="gpt-4", prompt=prompt, temperature=0, max_tokens=100)
+    # return response['choices'][0]['text'].strip()
+    response = openai.ChatCompletion.create(model="gpt-4", 
+        messages=[ 
+            {"role": "system", "content": "You are a helpful assistant."},
+             {"role": "user", "content": prompt}
+        ])
+#        , temperature=0, max_tokens=100)
+    return response['choices'][0]['message']["content"].strip()
 
 def clippy(prompt):
     res = requests.request("get", "http://localhost:8383", data=json.dumps(dict(prompt=prompt)))
@@ -92,7 +102,7 @@ def record_audio(r):
 
     with sr.Microphone(sample_rate=16000) as source:
         print("Say something!")
-        audio = r.listen(source)
+        audio = r.listen(source, phrase_time_limit=5)
         torch_audio = torch.from_numpy(np.frombuffer(audio.get_raw_data(), np.int16).flatten().astype(np.float32) / 32768.0)
         return torch_audio
 
