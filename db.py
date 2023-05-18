@@ -293,14 +293,15 @@ def buy_stonk(event, stonk_player_session_time, stonk_player_id, stonk_name, spe
     if stonk is not None:
         if stonk.value > 0:
             fraction = spent_gems / stonk.value
-            insert_stonk_holding(p.clan, stonk_player_session_time, stonk_player_id, stonk.name, event.id, fraction, expires, expires_delta, buy_long)
+            return insert_stonk_holding(p.clan, stonk_player_session_time, stonk_player_id, stonk.name, event.id, fraction, expires, expires_delta, buy_long)
         else:
             print("Stonk is free!")
     else:
         print(f"Tried to buy non-existent stonk {stonk_player_id}: {stonk_name}")
 
+
 def insert_stonk_holding(clan_id, session_start_time, stonk_player_id, stonk_name, event_id, fraction, expires_turn, expires_delta, buy_long):
-    session.add(StonkHolding(
+    stonk_holding = StonkHolding(
         clan_id=clan_id,
         player_id=stonk_player_id,
         stonk_name=stonk_name,
@@ -310,8 +311,11 @@ def insert_stonk_holding(clan_id, session_start_time, stonk_player_id, stonk_nam
         fraction=fraction,
         long=buy_long,
         session_start_time=session_start_time
-    ))
+    )
+    session.add(stonk_holding)
+    session.flush()
     session.commit()
+    return stonk_holding
 
 def delete_holding(holding_id):
     stonk_holding = session.query(StonkHolding).filter_by(id=holding_id).first()

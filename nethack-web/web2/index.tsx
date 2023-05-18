@@ -212,11 +212,13 @@ function RenderEvent({event}) {
   let elapsed = formatDistanceToNow(new Date(event.Timestamp), { addSuffix: true });
   let elapsedEl = <span style={{fontSize: "8px", opacity: 0.5}}>{elapsed}</span>
   let pn = <b>{event.Playername}</b>
+  let cn = <b>{event.Clanname}</b>
   let event_data = event.Vinst
-  console.log(event_data)
   switch (event_data.type) {
     case "event":
       switch (event_data.name) {
+        case "payout_stonk":
+          return <div style={{ color: "pink" }}>💰{cn} profited {event_data.extra.roi} gems from a {event_data.extra.is_long ? "long" : "short"} in {event.Stonk_boi}</div>
         case "buy_stonk":
           return <div style={{ color: "pink" }}>{pn} is {event_data.extra.buy_long ? "long" : "short"} in {event.Stonk_boi} betting {event_data.extra.spent_gems} gems</div>
         case "death":
@@ -249,10 +251,11 @@ function Events() {
     }, 1000)
   }, [])
   return (
-    <div style={{ gridArea: "events", display: "flex", flexDirection:"column-reverse", fontFamily: "monospace", margin: "8px", minWidth:0}}>
+    <div style={{gridArea: "events", overflowY:"scroll"}}>
+    <div style={{ display: "flex", flexDirection:"column-reverse", fontFamily: "monospace", margin: "8px", minWidth:0}}>
         {state.map(event => <div className="fade-in" style={{minWidth:0, width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap"}} key={event.Timestamp}><RenderEvent event={event}/></div>) }
+    </div>
     </div>)
-
 }
 
 function MyApp() {

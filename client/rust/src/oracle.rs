@@ -162,6 +162,15 @@ async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
     }
 }
 
+fn log(s: &str) {
+    let mut log = std::fs::File::options()
+        .create(true)
+        .append(true)
+        .open("/home/herden/projects/nethackathon2023/nethacklog")
+        .unwrap();
+    writeln!(log, "{}", s);
+}
+
 unsafe fn abort_active_request() {
     if let Some(req) = ACTIVE_REQUEST.as_mut() {
         req.join_handle.abort();
@@ -220,7 +229,9 @@ pub unsafe extern "C" fn oracle_prompt() -> i32 {
         if let Some(c) = char::from_u32(c as u32) {
             if c == '\n' {
                 execute!(stdout(), Clear(terminal::ClearType::CurrentLine)).unwrap();
-                new_request(format!("$ {}", line.clone()), line);
+                if line.trim() != "" {
+                    new_request(format!("$ {}", line.clone()), line);
+                }
                 break;
             }
             line += &c.to_string();
@@ -326,28 +337,29 @@ unsafe fn get_map_item_list() -> Vec<MapObject> {
             let column_addr = viz_array_addr.add(obj.oy as usize).read();
             let vis_state = column_addr.add(obj.ox as usize).read();
             if vis_state & nethack_rs::COULD_SEE as i8 != 0 {
+                let o = nethack_rs::objects.as_ptr().add(obj.otyp as usize).read();
+                let oc_name = nethack_rs::obj_descr
+                    .as_ptr()
+                    .add(o.oc_name_idx as usize)
+                    .read()
+                    .oc_name;
+                let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
+                let glyph = if obj.otyp == nethack_rs::STATUE as i16 {
+                    obj.corpsenm + GLYPH_STATUE_OFF as i32
+                } else if obj.otyp == nethack_rs::CORPSE as i16 {
+                    obj.corpsenm + GLYPH_BODY_OFF as i32
+                } else {
+                    obj.otyp as i32 + GLYPH_OBJ_OFF as i32
+                };
+                nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
                 let (sym_char, name) = if obj.known() == 0 {
+                    let oclass_id = nethack_rs::def_char_to_objclass(gi.ttychar as i8);
                     let oc_info = nethack_rs::def_oc_syms
                         .as_ptr()
-                        .add(obj.oclass as usize)
+                        .add(oclass_id as usize)
                         .read();
                     (oc_info.sym as i32, oc_info.name)
                 } else {
-                    let glyph = if obj.otyp == nethack_rs::STATUE as i16 {
-                        obj.corpsenm + GLYPH_STATUE_OFF as i32
-                    } else if obj.otyp == nethack_rs::CORPSE as i16 {
-                        obj.corpsenm + GLYPH_BODY_OFF as i32
-                    } else {
-                        obj.otyp as i32 + GLYPH_OBJ_OFF as i32
-                    };
-                    let o = nethack_rs::objects.as_ptr().add(obj.otyp as usize).read();
-                    let oc_name = nethack_rs::obj_descr
-                        .as_ptr()
-                        .add(o.oc_name_idx as usize)
-                        .read()
-                        .oc_name;
-                    let mut gi: nethack_rs::glyph_info = core::mem::zeroed();
-                    nethack_rs::map_glyphinfo(0, 0, glyph, 0, &mut gi);
                     (gi.ttychar, oc_name)
                 };
                 if !name.is_null() {
@@ -360,7 +372,7 @@ unsafe fn get_map_item_list() -> Vec<MapObject> {
                         id: MapObjectID::Item,
                         name: name.to_string_lossy().into(),
                         symbol: char::from_u32(sym_char as u32).unwrap_or('?'),
-                        color: 0,
+                        color: gi.color,
                         distance,
                     });
                 }
@@ -415,7 +427,7 @@ unsafe fn get_tile_list() -> Vec<MapObject> {
                             id: MapObjectID::Tile,
                             name: name.to_string_lossy().into_owned(),
                             symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
-                            color: 0,
+                            color: gi.color,
                             distance,
                         });
                     }
@@ -458,11 +470,7 @@ unsafe fn get_monster_list() -> Vec<MapObject> {
                 id: MapObjectID::Monster,
                 name: name.to_string_lossy().into_owned(),
                 symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
-                color: nethack_rs::mons
-                    .as_ptr()
-                    .add(mon_index as usize)
-                    .read()
-                    .mcolor,
+                color: gi.color,
                 distance,
             });
         }
@@ -474,7 +482,7 @@ unsafe fn get_monster_list() -> Vec<MapObject> {
 fn generate_object_prompt(obj: &MapObject) -> String {
     format!(
         "When encountering a {} ({}), a common strategy is to",
-        obj.name, obj.symbol
+        obj.name, obj.symbol,
     )
 }
 
@@ -544,8 +552,10 @@ pub unsafe fn update_oracle_ui() {
                 let prompt = generate_object_prompt(&to_describe);
                 new_request(
                     format!(
-                        "Advising on {:?} {} ({})...",
-                        to_describe.id, to_describe.name, to_describe.symbol
+                        "Advising on {} (\x1b[;{}m{}\x1b[;39m)...",
+                        to_describe.name,
+                        30 + to_describe.color,
+                        to_describe.symbol,
                     ),
                     prompt,
                 );
@@ -622,6 +632,7 @@ pub unsafe fn update_oracle_ui() {
                     let link_prefix =
                         format!("\x1b]8;;https://nethackwiki.com/wiki/{}\x1b\\", link);
                     stdout.write(link_prefix.as_bytes());
+                    content = content.blue().underlined();
                 }
                 stdout.execute(crossterm::style::PrintStyledContent(content));
                 if text_style.link.is_some() {
@@ -650,6 +661,26 @@ struct TextStyle {
     source_char: char,
 }
 
+impl TextStyle {
+    fn view_of_stack(stack: &[TextStyle]) -> TextStyle {
+        let mut bold = None;
+        let mut link = None;
+        for s in stack.iter().rev() {
+            if bold.is_none() && s.bold {
+                bold = Some(s.bold);
+            }
+            if link.is_none() && s.link.is_some() {
+                link = Some(s.link.clone());
+            }
+        }
+        Self {
+            bold: bold.unwrap_or(false),
+            link: link.unwrap_or(None),
+            source_char: '\x00',
+        }
+    }
+}
+
 fn process_received_text(ui_state: &mut UiState) {
     let received_text = &ui_state.received_text;
     let mut processed = String::new();
@@ -660,8 +691,8 @@ fn process_received_text(ui_state: &mut UiState) {
         let end = capture.get(0).unwrap().end();
         let capture_content = capture.get(2).unwrap().as_str();
 
-        let processed_start = start - last_index + processed.len();
-        let processed_end = start + capture_content.len() - last_index + processed.len();
+        let processed_start = start - last_index + processed.len() + 1;
+        let processed_end = start + capture_content.len() - last_index + processed.len() + 1;
 
         processed.push_str(&received_text[last_index..start]);
         processed.push_str(capture_content);
@@ -669,7 +700,8 @@ fn process_received_text(ui_state: &mut UiState) {
         let link = capture
             .get(1)
             .map(|s| s.as_str())
-            .unwrap_or(capture_content);
+            .unwrap_or(capture_content)
+            .replace(" ", "_");
         replacements.push(((processed_start..processed_end), link.to_string()));
 
         last_index = end;
@@ -678,23 +710,30 @@ fn process_received_text(ui_state: &mut UiState) {
         processed.push_str(&received_text[last_index..received_text.len()]);
     }
     ui_state.processed_text = Vec::new();
-    ui_state.received_text = processed.to_string();
+    //log(received_text);
+    //log(&format!("{:?}", replacements));
+    //ui_state.received_text = processed.to_string();
 
     let mut segments = Vec::new();
-    let mut style_stack = Vec::new();
-    let mut current_style = TextStyle::default();
+    let mut style_stack = vec![TextStyle::default()];
     let mut current_segment = String::new();
     let mut prev_char = None;
+    let mut char_iter_bytes = processed.chars();
     let mut char_iter = processed.chars().peekable();
     while let Some(c) = char_iter.next() {
-        let byte_idx = processed.len() - char_iter.as_str().len();
+        char_iter_bytes.next();
+        let byte_idx = processed.len() - char_iter_bytes.as_str().len();
         if let Some((_, link)) = replacements.iter().find(|r| r.0.start == byte_idx) {
-            let mut new_style = current_style.clone();
-            new_style.source_char = '[';
-            new_style.link = Some(link.clone());
-            style_stack.push(current_style.clone());
-            segments.push((current_style, core::mem::take(&mut current_segment)));
-            current_style = new_style;
+            let new_style = TextStyle {
+                source_char: '[',
+                link: Some(link.clone()),
+                ..Default::default()
+            };
+            segments.push((
+                TextStyle::view_of_stack(&style_stack),
+                core::mem::take(&mut current_segment),
+            ));
+            style_stack.push(new_style);
         }
         if let Some(_) = replacements.iter().find(|r| r.0.end == byte_idx) {
             let pos = style_stack
@@ -702,35 +741,37 @@ fn process_received_text(ui_state: &mut UiState) {
                 .position(|s: &TextStyle| s.source_char == '[')
                 .unwrap();
 
-            let new_style = style_stack.remove(pos);
-            segments.push((current_style, core::mem::take(&mut current_segment)));
-            current_style = new_style;
+            segments.push((
+                TextStyle::view_of_stack(&style_stack),
+                core::mem::take(&mut current_segment),
+            ));
+            style_stack.remove(pos);
         }
         match c {
             '\'' => {
                 if prev_char == Some('\'') {
                     current_segment.pop();
-                    while let Some((_, '\'')) = char_iter.peek() {
+                    while let Some('\'') = char_iter.peek() {
                         char_iter.next();
+                        char_iter_bytes.next();
                     }
-                    let mut new_style: TextStyle;
-                    if current_style.bold {
-                        let pos = style_stack
-                            .iter()
-                            .position(|s: &TextStyle| s.source_char == c);
-                        if let Some(pos) = pos {
-                            new_style = style_stack.remove(pos);
-                        } else {
-                            continue;
-                        }
+                    segments.push((
+                        TextStyle::view_of_stack(&style_stack),
+                        core::mem::take(&mut current_segment),
+                    ));
+                    if let Some(pos) = style_stack
+                        .iter()
+                        .position(|s: &TextStyle| s.source_char == c)
+                    {
+                        style_stack.remove(pos);
                     } else {
-                        new_style = current_style.clone();
-                        new_style.source_char = c;
-                        new_style.bold = true;
-                        style_stack.push(current_style.clone());
+                        let new_style = TextStyle {
+                            source_char: '\'',
+                            bold: true,
+                            ..Default::default()
+                        };
+                        style_stack.push(new_style);
                     }
-                    segments.push((current_style, core::mem::take(&mut current_segment)));
-                    current_style = new_style;
                 } else {
                     current_segment.push(c);
                 }
@@ -740,8 +781,9 @@ fn process_received_text(ui_state: &mut UiState) {
         prev_char = Some(c);
     }
     if !current_segment.is_empty() {
-        segments.push((current_style, current_segment));
+        segments.push((TextStyle::view_of_stack(&style_stack), current_segment));
     }
+    //log(&format!("{:?}", segments));
     ui_state.processed_text = segments;
 }
 
