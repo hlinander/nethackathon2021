@@ -8,10 +8,12 @@ import { observer } from "mobx-react";
 import nethacklogo from "./NetHack-Logo.svg"
 import leaderboardbg from "./stonkathon.jpg"
 import { formatDistanceToNow } from 'date-fns'
+import { Objectives } from "./objectives";
 
 class GameState {
   term: Terminal | null = null
   name: String | null = null
+  showObjectives: boolean = false
 
   constructor() {
     makeAutoObservable(this);
@@ -28,6 +30,10 @@ class GameState {
       rows: 40,
     });
     this.name = name;
+  }
+
+  setShowObjectives(show: boolean) { 
+    this.showObjectives = show
   }
 }
 
@@ -195,7 +201,7 @@ function LeaderBoard() {
             return (
               <React.Fragment key={c.Name}>
                 <div className={"text"} style={{ gridColumn: 1, marginRight: "0px" }}>{c.Name}</div>
-                <span className={"rewards"} style={{ gridColumn: 2, marginRight: "1em", color: "#0F0", ...style }}>{state.ClanRewards.filter(cr => cr.Name == c.Name).map(cr => cr.Reward)}</span>
+                <span className={"rewards"} style={{ gridColumn: 2, marginRight: "1em", color: "#0F0", ...style }}>{state.ClanRewards?.filter(cr => cr.Name == c.Name).map(cr => cr.Reward)}</span>
                 <span className={"gems"} style={{ gridColumn: 3, ...style }}>${c.Power_gems > 0 ? "+" : ""}{c.Power_gems}</span>
               </React.Fragment>
             )
@@ -256,7 +262,7 @@ function Events() {
     </div>)
 }
 
-function MyApp() {
+const App = observer(() => {
   return (
     <div style={{
       width: "100vw", height: "100vh",
@@ -267,12 +273,28 @@ function MyApp() {
       gridAutoFlow: "row",
       gridTemplateAreas: `'game events' 'game leaderboard'`
     }}>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          margin: "4px",
+          cursor: "pointer",
+          userSelect: "none"
+        }}
+        onClick={() => {
+          gameState.setShowObjectives(!gameState.showObjectives)
+        }}
+      >
+        🏆
+      </div>
+      {gameState.showObjectives && <Objectives/>}
       <Events />
       <Game state={gameState} />
       <LeaderBoard />
     </div>);
-}
+})
 
 const container = document.getElementById("app");
 const root = createRoot(container)
-root.render(<MyApp />);
+root.render(<App />);
