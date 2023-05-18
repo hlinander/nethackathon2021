@@ -15,6 +15,7 @@ class GameState {
   name: String | null = null
   showObjectives: boolean = false
   backendOffline: boolean = false
+  autoScroll: boolean = true
 
   constructor() {
     makeAutoObservable(this);
@@ -39,6 +40,10 @@ class GameState {
 
   setBackendOffline(offline: boolean) {
     this.backendOffline = offline
+  }
+
+  setAutoscroll(autoscroll: boolean) {
+    this.autoScroll = autoscroll
   }
 }
 
@@ -89,8 +94,6 @@ const GameView = observer(({ state }) => {
         socket.onopen = function(e) {
           console.log("[open] Connection established");
 
-          // when connected make button clickable
-          // document.querySelector("#submitname").disabled = false
           state.term.onData(data => {
             socket.send(JSON.stringify({ type: "data", data: btoa(data) }));
           });
@@ -254,7 +257,7 @@ function RenderEvent({event}) {
   return <div><b>{event_data.playername}</b> did something</div>
 }
 
-function Events() {
+const Events = observer(() => {
   const [state, setState] = React.useState([]);
 
   React.useEffect(() => {
@@ -270,33 +273,72 @@ function Events() {
         })
     }, 1000)
   }, [])
+
   return (
-    <div style={{gridArea: "events", overflowY:"scroll"}}>
-    <div style={{ display: "flex", flexDirection:"column-reverse", fontFamily: "monospace", margin: "8px", minWidth:0}}>
-        {state.map((event, i) =>
-          <div className="fade-in"
-            ref={el => {
-              if(el !== null && i == 0) {
-                el.scrollIntoView({behavior:"smooth"})
-              }
-            }}
-            style={{
-              minWidth: 0,
-              width: "100%", 
-              overflow: "hidden", 
-              textOverflow: "ellipsis", 
-              whiteSpace: "nowrap"
-            }} key={event.Timestamp}>
+    <div 
+     style={{ 
+      gridArea: "events", 
+      position: "relative",
+      minHeight: 0,
+    }}>
+      {
+        !gameState.autoScroll &&
+       <button 
+          style={{ position: "absolute", bottom: 0, right: 0 }}
+          onClick={e => { gameState.setAutoscroll(true) }}>
+          resume auto scroll
+       </button>
+      }
+    <div 
+      style={{
+        overflowY: "scroll",
+        minHeight: 0,
+        height: "100%"
+      }}
+      onScroll={e => {
+        const { scrollHeight, scrollTop, clientHeight } = e.target as Element;
+        const atBottom = Math.ceil(scrollHeight - scrollTop) === clientHeight;
+        gameState.setAutoscroll(atBottom)
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column-reverse",
+          fontFamily: "monospace",
+          margin: "8px",
+          minWidth: 0,          
+          minHeight: 0,
+        }}
+      >
+        {
+          state.map((event, i) =>
+            <div className="fade-in"
+              ref={el => {
+                if (el !== null && i === 0 && gameState.autoScroll) {
+                  el.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
+              style={{
+                minWidth: 0,
+                width: "100%",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap"
+              }} key={event.Timestamp}>
               <RenderEvent event={event} />
-            </div>)}
+            </div>)
+        }
       </div>
+    </div>
     </div>)
-}
+})
 
 const App = observer(() => {
   return (
     <div style={{
-      width: "100vw", height: "100vh",
+      width: "100vw", 
+      height: "100vh",
       display: "grid",
       gridTemplateColumns: "1.8fr 1fr",
       gridTemplateRows: "1fr 1fr",
@@ -320,15 +362,17 @@ const App = observer(() => {
         🏆
       </div>
       {gameState.showObjectives && <Objectives state={gameState}/>}
-      {gameState.backendOffline && <h1 style={{
-        color: "red",
-        outline: "4px solid red",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        minHeight: "100vh"
-      }}>
+      {gameState.backendOffline && 
+      <h1 
+        style={{
+          color: "red",
+          outline: "4px solid red",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          minHeight: "100vh"
+        }}>
         backend offline
       </h1>
       }
