@@ -237,7 +237,7 @@ def _handle_buy_stonk(event):
     # pay_out_stonk(stonk_holding)
 
 
-def event_loop():
+def event_loop(once=False):
     global TIME_PER_TICK
     event_handler = get_event_handler()
     next_tick_time = event_handler.last_handled_timestamp + TIME_PER_TICK
@@ -271,6 +271,8 @@ def event_loop():
             save_state()
             event_handler.last_handled_timestamp = next_tick_time
             next_tick_time += TIME_PER_TICK
+            if once:
+                return
 
         time.sleep(TIME_PER_TICK.total_seconds())
 
@@ -303,6 +305,7 @@ if __name__ == "__main__":
     db.open_db()
     if args.reset:
         reset_last_handled_timestamp()
+        event_loop(once=True)
     else:
         reload_state()
-    event_loop()
+        event_loop()
