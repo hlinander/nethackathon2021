@@ -116,7 +116,7 @@ const (
 	// Time to wait before force close on connection.
 	closeGracePeriod = 10 * time.Second
 
-	defaultPtyRows = 35
+	defaultPtyRows = 40
 	defaultPtyCols = 80
 )
 

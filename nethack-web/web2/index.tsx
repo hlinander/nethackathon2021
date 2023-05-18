@@ -25,7 +25,7 @@ class GameState {
       allowTransparency: true,
       scrollOnUserInput: false,
       cols: 80,
-      rows: 35,
+      rows: 40,
     });
     this.name = name;
   }
@@ -252,7 +252,7 @@ function Events() {
     <div style={{gridArea: "events", overflowY:"scroll"}}>
     <div style={{ display: "flex", flexDirection:"column-reverse", fontFamily: "monospace", margin: "8px", minWidth:0}}>
         {state.map(event => <div className="fade-in" style={{minWidth:0, width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap"}} key={event.Timestamp}><RenderEvent event={event}/></div>) }
-    </div>
+      </div>
     </div>)
 }
 
