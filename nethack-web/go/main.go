@@ -1,7 +1,3 @@
-// Copyright 2015 The Gorilla WebSocket Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package main
 
 import (
@@ -449,7 +445,7 @@ LEFT JOIN players p2 ON p2.id = (vinst->'extra'->>'stonk_player_id')::int4
 func main() {
 
 	flag.Parse()
-	http.Handle("/", http.FileServer(http.Dir("../web2/dist")))
+	http.Handle("/", http.FileServer(http.Dir("../web2/built-web")))
 	http.HandleFunc("/ws", serveWs)
 	http.HandleFunc("/events", func(w http.ResponseWriter, r *http.Request) {
 		serveEvents(w, r)

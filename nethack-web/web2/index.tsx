@@ -8,12 +8,13 @@ import { observer } from "mobx-react";
 import nethacklogo from "./NetHack-Logo.svg"
 import leaderboardbg from "./stonkathon.jpg"
 import { formatDistanceToNow } from 'date-fns'
-import { Objectives } from "./objectives";
+import Objectives from "./objectives";
 
 class GameState {
   term: Terminal | null = null
   name: String | null = null
   showObjectives: boolean = false
+  backendOffline: boolean = false
 
   constructor() {
     makeAutoObservable(this);
@@ -34,6 +35,10 @@ class GameState {
 
   setShowObjectives(show: boolean) { 
     this.showObjectives = show
+  }
+
+  setBackendOffline(offline: boolean) {
+    this.backendOffline = offline
   }
 }
 
@@ -132,6 +137,8 @@ function LeaderBoard() {
       fetch("http://nh.hampe.nu:8484/poll")
         .then((response) => response.json())
         .then((data) => {
+          gameState.setBackendOffline(false)
+
           setState(prev => {
 
             if (!data && !data.Clans) {
@@ -149,6 +156,8 @@ function LeaderBoard() {
 
             return data;
           });
+        }).catch(e => {
+          gameState.setBackendOffline(true)
         });
     }, 2000);
   }, []);
@@ -251,6 +260,8 @@ function Events() {
           setState(prev => {
             return data;
           })
+        }).catch(e => {
+          console.log("error:", e) 
         })
     }, 1000)
   }, [])
@@ -288,7 +299,19 @@ const App = observer(() => {
       >
         🏆
       </div>
-      {gameState.showObjectives && <Objectives/>}
+      {gameState.showObjectives && <Objectives state={gameState}/>}
+      {gameState.backendOffline && <h1 style={{
+        color: "red",
+        outline: "4px solid red",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        minHeight: "100vh"
+      }}>
+        backend offline
+      </h1>
+      }
       <Events />
       <Game state={gameState} />
       <LeaderBoard />

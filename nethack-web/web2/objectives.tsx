@@ -1,8 +1,18 @@
 import React from "react"
+import { observer } from "mobx-react"
 
-export function Objectives() {
+const Objectives = observer(({state}) => {
     return (
         <>
+            <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: "100vh",
+                width: "100vw",
+                backgroundColor: "rgba(0,0,0,0.4)",
+                zIndex: 900,
+            }} onClick={() => { state.setShowObjectives(false) }}/>
             <dialog open style={{ zIndex: 1000, marginTop: "2.5vh" }}>
                 <div
                     style={{
@@ -283,4 +293,6 @@ export function Objectives() {
                 </div>
             </dialog>
         </>);
-} 
+})
+
+export default Objectives;
