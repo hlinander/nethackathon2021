@@ -10,8 +10,8 @@ import leaderboardbg from "./stonkathon.jpg"
 import { formatDistanceToNow } from 'date-fns'
 
 class GameState {
-  term?: Terminal = null
-  name?: String = null
+  term: Terminal | null = null
+  name: String | null = null
 
   constructor() {
     makeAutoObservable(this);
@@ -34,9 +34,9 @@ class GameState {
 const gameState = new GameState();
 
 const Game = observer(({ state }) => {
-  let dialogRef = React.useRef(null)
+  let dialogRef = React.useRef<HTMLInputElement>(null)
   React.useEffect(() => {
-    dialogRef.current.focus()
+    dialogRef.current?.focus()
   }, [])
   return (<div style={{ gridArea: "game", overflow: "hidden" }}> {state.term !== null ? (
     <GameView state={state} />
@@ -61,8 +61,6 @@ const Game = observer(({ state }) => {
   </div>);
 }
 );
-
-
 
 const GameView = observer(({ state }) => {
   return (
