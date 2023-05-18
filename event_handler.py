@@ -185,7 +185,6 @@ def handle_transactions(timestamp):
 def save_state():
     event_handler = get_event_handler()
     event_handler.state = state
-    print(event_handler.state)
     db.session.commit()
 
 def _ensure_player(event):
@@ -234,6 +233,8 @@ def _handle_buy_stonk(event):
                                  stonk_player_turn + expires_delta,
                                  expires_delta,
                                  buy_long)
+
+    # pay_out_stonk(stonk_holding)
 
 
 def event_loop():

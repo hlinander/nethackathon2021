@@ -407,7 +407,7 @@ WITH vinst AS (
         FROM
             event
         WHERE
-            ("name" IN ('death', 'reach_depth', 'buy_stonk'))
+            ("name" IN ('death', 'reach_depth', 'buy_stonk', 'payout_stonk'))
 			OR (session_turn=1 and string_value='hp')
     )
     UNION
@@ -422,7 +422,7 @@ WITH vinst AS (
     )
     ORDER BY
         timestamp DESC
-    LIMIT 20
+    LIMIT 200
 )
 SELECT
     vinst.*,
