@@ -168,8 +168,8 @@ def add_transaction(event_id):
     session.flush()
     return t.id
 
-def add_clan(name):
-    c = Clan(name=name)
+def add_clan(name, power_gems):
+    c = Clan(name=name, power_gems=power_gems)
     session.add(c)
     session.flush()
     b = Bag(clan=c.id)
@@ -372,6 +372,8 @@ def add_clan_power_for_player(player_id, name, level, cost):
     session.commit()
     return power.level
 
+def get_clan_by_id(clan_id):
+    return session.query(Clan).filter_by(id=clan_id).first()
 
 def get_clan(player_id):
     p = session.query(Player).filter_by(id=player_id).first()
@@ -402,8 +404,7 @@ def get_stonk(player_id, name):
     return stonk
 
 def get_stonk_holdings():
-    stonk_holdings = session.query(StonkHolding)
-    return stonk_holdings
+    return session.query(StonkHolding).all()
 
 
 # def get_stonk_holdings_():
@@ -502,29 +503,31 @@ def insert_rewards():
 
 
 def init_db():
-    pissduktiga = add_clan("erikocherik")
-    hquit = add_clan("#quit")
-    vinst = add_clan("vinst")
-    boisen = add_clan("boisen")
+    pissduktiga = add_clan("erikocherik", 200)
+    hquit = add_clan("#quit", 200)
+    vinst = add_clan("vinst", 200)
+    boisen = add_clan("boisen", 200)
     #testarna = add_clan("test")
     #ctest = session.query(Clan).filter_by(id=testarna).first()
     #ctest.power_gems = 50000
     # add_clan_power(cid, "hp", 0)
+    session.add(Player(username="menvafan", ticker="MVF", password="sko", clan=boisen))
+    # session.add(Player(username="erik2", ticker="ER2", password="sko", clan=boisen))
+    session.add(Player(username="myfz", ticker="VAL", password="sko", clan=boisen))
+    session.add(Player(username="Aransentin", ticker="ARS", password="sko", clan=boisen))
+    session.add(Player(username="bJazz", ticker="BJZ", password="sko", clan=boisen))
 
     session.add(Player(username="pellsson", ticker="PLS", password="sko", clan=hquit))
-    session.add(Player(username="drgiffel", ticker="DRG", password="sko", clan=vinst))
-    #session.add(Player(username="pellsson", password="sko", clan=testarna))
-    #session.add(Player(username="drgiffel", password="sko", clan=testarna))
     session.add(Player(username="CeleryMan", ticker="CEL", password="sko", clan=hquit))
-    session.add(Player(username="breggan", ticker="BRG", password="sko", clan=vinst))
-    # session.add(Player(username="supersten", ticker="SS ", password="sko", clan=vinst))
-    session.add(Player(username="menvafan", ticker="MVF", password="sko", clan=boisen))
-    session.add(Player(username="erik2", ticker="ER2", password="sko", clan=boisen))
-    session.add(Player(username="Aransentin", ticker="ARS", password="sko", clan=vinst))
-    session.add(Player(username="kae", ticker="KAE", password="sko", clan=vinst))
-    # session.add(Player(username="gorbiz", ticker="GBZ", password="sko", clan=boisen))
-    session.add(Player(username="bJazz", ticker="BJZ", password="sko", clan=vinst))
     session.add(Player(username="eracce", ticker="ERC", password="sko", clan=hquit))
-    session.add(Player(username="myfz", ticker="VAL", password="sko", clan=boisen))
+    session.add(Player(username="kwahkai", ticker="KWA", password="sko", clan=hquit))
+
+    session.add(Player(username="kae", ticker="KAE", password="sko", clan=vinst))
+    session.add(Player(username="chokladboll", ticker="CHO", password="sko", clan=vinst))
+    session.add(Player(username="dregg", ticker="DRE", password="sko", clan=vinst))
+    session.add(Player(username="drgiffel", ticker="DRG", password="sko", clan=vinst))
+    # session.add(Player(username="breggan", ticker="BRG", password="sko", clan=vinst))
 
     session.commit()
+
+    insert_rewards()

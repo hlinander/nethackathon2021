@@ -2954,7 +2954,7 @@ class GameState {
             allowTransparency: true,
             scrollOnUserInput: false,
             cols: 80,
-            rows: 35
+            rows: 40
         });
         this.name = name;
     }
@@ -2964,7 +2964,7 @@ const Game = (0, _mobxReact.observer)(_s(({ state  })=>{
     _s();
     let dialogRef = (0, _reactDefault.default).useRef(null);
     (0, _reactDefault.default).useEffect(()=>{
-        dialogRef.current.focus();
+        dialogRef.current?.focus();
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         style: {
@@ -3092,12 +3092,12 @@ const GameView = (0, _mobxReact.observer)(({ state  })=>{
             }
         }, void 0, false, {
             fileName: "index.tsx",
-            lineNumber: 70,
+            lineNumber: 68,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "index.tsx",
-        lineNumber: 69,
+        lineNumber: 67,
         columnNumber: 5
     }, undefined);
 });
@@ -3146,7 +3146,7 @@ function LeaderBoard() {
                 }
             }, void 0, false, {
                 fileName: "index.tsx",
-                lineNumber: 158,
+                lineNumber: 156,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3178,7 +3178,7 @@ function LeaderBoard() {
                             children: "Clan"
                         }, void 0, false, {
                             fileName: "index.tsx",
-                            lineNumber: 184,
+                            lineNumber: 182,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -3193,7 +3193,7 @@ function LeaderBoard() {
                             children: "Reward"
                         }, void 0, false, {
                             fileName: "index.tsx",
-                            lineNumber: 185,
+                            lineNumber: 183,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -3208,7 +3208,7 @@ function LeaderBoard() {
                             children: "Power gems"
                         }, void 0, false, {
                             fileName: "index.tsx",
-                            lineNumber: 186,
+                            lineNumber: 184,
                             columnNumber: 11
                         }, this),
                         state.Clans.map((c)=>{
@@ -3232,7 +3232,7 @@ function LeaderBoard() {
                                         children: c.Name
                                     }, void 0, false, {
                                         fileName: "index.tsx",
-                                        lineNumber: 199,
+                                        lineNumber: 197,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -3243,10 +3243,10 @@ function LeaderBoard() {
                                             color: "#0F0",
                                             ...style
                                         },
-                                        children: state.ClanRewards.filter((cr)=>cr.Name == c.Name).map((cr)=>cr.Reward)
+                                        children: state.ClanRewards?.filter((cr)=>cr.Name == c.Name).map((cr)=>cr.Reward)
                                     }, void 0, false, {
                                         fileName: "index.tsx",
-                                        lineNumber: 200,
+                                        lineNumber: 198,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -3262,31 +3262,31 @@ function LeaderBoard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "index.tsx",
-                                        lineNumber: 201,
+                                        lineNumber: 199,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, c.Name, true, {
                                 fileName: "index.tsx",
-                                lineNumber: 198,
+                                lineNumber: 196,
                                 columnNumber: 15
                             }, this);
                         })
                     ]
                 }, void 0, true, {
                     fileName: "index.tsx",
-                    lineNumber: 174,
+                    lineNumber: 172,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "index.tsx",
-                lineNumber: 173,
+                lineNumber: 171,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "index.tsx",
-        lineNumber: 153,
+        lineNumber: 151,
         columnNumber: 5
     }, this);
 }
@@ -3304,20 +3304,47 @@ function RenderEvent({ event  }) {
         children: elapsed
     }, void 0, false, {
         fileName: "index.tsx",
-        lineNumber: 213,
+        lineNumber: 211,
         columnNumber: 19
     }, this);
     let pn = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
         children: event.Playername
     }, void 0, false, {
         fileName: "index.tsx",
-        lineNumber: 214,
+        lineNumber: 212,
+        columnNumber: 12
+    }, this);
+    let cn = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+        children: event.Clanname
+    }, void 0, false, {
+        fileName: "index.tsx",
+        lineNumber: 213,
         columnNumber: 12
     }, this);
     let event_data = event.Vinst;
     switch(event_data.type){
         case "event":
             switch(event_data.name){
+                case "payout_stonk":
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        style: {
+                            color: "pink"
+                        },
+                        children: [
+                            "\uD83D\uDCB0",
+                            cn,
+                            " profited ",
+                            event_data.extra.roi,
+                            " gems from a ",
+                            event_data.extra.is_long ? "long" : "short",
+                            " in ",
+                            event.Stonk_boi
+                        ]
+                    }, void 0, true, {
+                        fileName: "index.tsx",
+                        lineNumber: 219,
+                        columnNumber: 18
+                    }, this);
                 case "buy_stonk":
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         style: {
@@ -3325,12 +3352,17 @@ function RenderEvent({ event  }) {
                         },
                         children: [
                             pn,
-                            " bought a stonk ",
-                            event_data.extra.spent_gems
+                            " is ",
+                            event_data.extra.buy_long ? "long" : "short",
+                            " in ",
+                            event.Stonk_boi,
+                            " betting ",
+                            event_data.extra.spent_gems,
+                            " gems"
                         ]
                     }, void 0, true, {
                         fileName: "index.tsx",
-                        lineNumber: 220,
+                        lineNumber: 221,
                         columnNumber: 18
                     }, this);
                 case "death":
@@ -3345,7 +3377,7 @@ function RenderEvent({ event  }) {
                         ]
                     }, void 0, true, {
                         fileName: "index.tsx",
-                        lineNumber: 222,
+                        lineNumber: 223,
                         columnNumber: 18
                     }, this);
                 case "reach_depth":
@@ -3355,7 +3387,7 @@ function RenderEvent({ event  }) {
                                 children: event_data.Playername
                             }, void 0, false, {
                                 fileName: "index.tsx",
-                                lineNumber: 224,
+                                lineNumber: 225,
                                 columnNumber: 23
                             }, this),
                             pn,
@@ -3364,7 +3396,7 @@ function RenderEvent({ event  }) {
                         ]
                     }, void 0, true, {
                         fileName: "index.tsx",
-                        lineNumber: 224,
+                        lineNumber: 225,
                         columnNumber: 18
                     }, this);
                 case "change_stat":
@@ -3376,7 +3408,7 @@ function RenderEvent({ event  }) {
                         ]
                     }, void 0, true, {
                         fileName: "index.tsx",
-                        lineNumber: 227,
+                        lineNumber: 228,
                         columnNumber: 20
                     }, this);
             }
@@ -3395,7 +3427,7 @@ function RenderEvent({ event  }) {
                 ]
             }, void 0, true, {
                 fileName: "index.tsx",
-                lineNumber: 231,
+                lineNumber: 232,
                 columnNumber: 14
             }, this);
     }
@@ -3405,14 +3437,14 @@ function RenderEvent({ event  }) {
                 children: event_data.playername
             }, void 0, false, {
                 fileName: "index.tsx",
-                lineNumber: 233,
+                lineNumber: 234,
                 columnNumber: 15
             }, this),
             " did something"
         ]
     }, void 0, true, {
         fileName: "index.tsx",
-        lineNumber: 233,
+        lineNumber: 234,
         columnNumber: 10
     }, this);
 }
@@ -3432,36 +3464,45 @@ function Events() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         style: {
             gridArea: "events",
-            display: "flex",
-            flexDirection: "column-reverse",
-            fontFamily: "monospace",
-            margin: "8px",
-            minWidth: 0
+            overflowY: "scroll"
         },
-        children: state.map((event)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "fade-in",
-                style: {
-                    minWidth: 0,
-                    width: "100%",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap"
-                },
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RenderEvent, {
-                    event: event
-                }, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            style: {
+                display: "flex",
+                flexDirection: "column-reverse",
+                fontFamily: "monospace",
+                margin: "8px",
+                minWidth: 0
+            },
+            children: state.map((event)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "fade-in",
+                    style: {
+                        minWidth: 0,
+                        width: "100%",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap"
+                    },
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RenderEvent, {
+                        event: event
+                    }, void 0, false, {
+                        fileName: "index.tsx",
+                        lineNumber: 254,
+                        columnNumber: 180
+                    }, this)
+                }, event.Timestamp, false, {
                     fileName: "index.tsx",
-                    lineNumber: 252,
-                    columnNumber: 180
-                }, this)
-            }, event.Timestamp, false, {
-                fileName: "index.tsx",
-                lineNumber: 252,
-                columnNumber: 29
-            }, this))
+                    lineNumber: 254,
+                    columnNumber: 29
+                }, this))
+        }, void 0, false, {
+            fileName: "index.tsx",
+            lineNumber: 253,
+            columnNumber: 5
+        }, this)
     }, void 0, false, {
         fileName: "index.tsx",
-        lineNumber: 251,
+        lineNumber: 252,
         columnNumber: 5
     }, this);
 }
@@ -3482,25 +3523,25 @@ function MyApp() {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Events, {}, void 0, false, {
                 fileName: "index.tsx",
-                lineNumber: 268,
+                lineNumber: 270,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Game, {
                 state: gameState
             }, void 0, false, {
                 fileName: "index.tsx",
-                lineNumber: 269,
+                lineNumber: 271,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(LeaderBoard, {}, void 0, false, {
                 fileName: "index.tsx",
-                lineNumber: 270,
+                lineNumber: 272,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "index.tsx",
-        lineNumber: 259,
+        lineNumber: 261,
         columnNumber: 5
     }, this);
 }
@@ -3509,7 +3550,7 @@ const container = document.getElementById("app");
 const root = (0, _client.createRoot)(container);
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyApp, {}, void 0, false, {
     fileName: "index.tsx",
-    lineNumber: 276,
+    lineNumber: 278,
     columnNumber: 13
 }, undefined));
 var _c, _c1, _c2, _c3, _c4, _c5;

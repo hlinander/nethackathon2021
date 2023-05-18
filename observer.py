@@ -55,7 +55,10 @@ def read_time(tr):
 def read_frame(tr):
 	size = struct.unpack('<I', tr['fp'].read(4))[0]
 	data = tr['fp'].read(size)
-	tr['stream'].feed(data.decode('utf-8'))
+	try:
+		tr['stream'].feed(data.decode('utf-8'))
+	except:
+		pass
 
 def step(tr, elapsed):
 	t =  read_time(tr) if tr['next_at'] is None else tr['next_at']
@@ -406,10 +409,16 @@ def run(ttydir):
 				interest_float = str.format("{:.1f}", interest)
 				player_name = player_state['player_name'] + "  " + str(hp) + "/" + str(hpmax) + " hp  dlevel " + \
 						str(dlevel) + "                                           i:" + interest_float
+				# player_name = player_state['player_name'] + "  " + str(hp) + "/" + str(hpmax) + " hp  dlevel " + \
+						# str(dlevel) + "                                           i:" + interest_float
 			else:
 				player_name = "Loading.."
 			if it['live']['dead'] and it['filename'] not in deathcams_played: 
-				death_cam(player_name, it['death'], start + DEATH_CAM_SEC)
+				if "player_name" in player_state:
+					name = player_state["player_name"]
+				else:
+					name = "Vem?"
+				death_cam(name, it['death'], start + DEATH_CAM_SEC)
 				deathcams_played.append(it['filename'])
 			elif time.time() > (it['created'] + DEATH_CAM_SEC):
 				run_tty(it['death'], start + DEATH_CAM_SEC, screen_x, screen_y, False)

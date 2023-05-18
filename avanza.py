@@ -191,9 +191,19 @@ def update(stdscr, cpstate, player_order):
             stdscr.addstr(' to go back.                                 ║')
             stdscr.addstr(16, 3, '║                                                                         ║')
             stdscr.addstr(17, 3, '╚═════════════════════════════════════════════════════════════════════════╝')
-def view_stonks():
+def view_stonks(stdscr):
     db.open_db()
-    db.get_stonk_holdings()
+    y = 1
+    for it in db.get_stonk_holdings():
+        player = db.get_player(it.player_id)
+        clan = db.get_clan_by_id(it.clan_id)
+        stdscr.addstr(y, 1, 'Clan %s is %s in %s. Expires in %d turns.' % (
+            clan.name, 'long' if it.long else 'short', player.username, it.expires_turn))
+        y += 1
+        if y == 24:
+            input('Press to view more...')
+            y = 0
+    input('Press q to exit.')
 
 def main(stdscr):
     global no_color
@@ -239,7 +249,7 @@ def main(stdscr):
     selected_item = curses.color_pair(8) | curses.A_REVERSE
 
     if not invest:
-        return view_stonks()
+        return view_stonks(stdscr)
 
     quit = False
     update_at = 0

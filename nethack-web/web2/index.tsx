@@ -195,7 +195,7 @@ function LeaderBoard() {
             return (
               <React.Fragment key={c.Name}>
                 <div className={"text"} style={{ gridColumn: 1, marginRight: "0px" }}>{c.Name}</div>
-                <span className={"rewards"} style={{ gridColumn: 2, marginRight: "1em", color: "#0F0", ...style }}>{state.ClanRewards.filter(cr => cr.Name == c.Name).map(cr => cr.Reward)}</span>
+                <span className={"rewards"} style={{ gridColumn: 2, marginRight: "1em", color: "#0F0", ...style }}>{state.ClanRewards?.filter(cr => cr.Name == c.Name).map(cr => cr.Reward)}</span>
                 <span className={"gems"} style={{ gridColumn: 3, ...style }}>${c.Power_gems > 0 ? "+" : ""}{c.Power_gems}</span>
               </React.Fragment>
             )
