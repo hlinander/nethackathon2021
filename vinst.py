@@ -337,7 +337,8 @@ while True:
                     try:
                         for response in responses:
                             response_data = response.SerializeToString()
-                            connections[fileno]["conn"].send(struct.pack("<I", len(response_data)))
+                            print("Trying to send")
+                            connections[fileno]["conn"].send(struct.pack("<i", len(response_data)))
                             connections[fileno]["conn"].send(response_data)
                     except Exception as e:
                         print(e)

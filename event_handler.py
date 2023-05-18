@@ -128,7 +128,7 @@ def update_stonks(timestamp):
 
 def pay_out_stonk(stonk_holding):
     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
-    turn_fraction = stonk_holding.expires_delta / 250.
+    turn_fraction = stonk_holding.expires_delta / 100.
     roi = math.ceil(turn_fraction * stonk_holding.fraction * stonk.value)
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)

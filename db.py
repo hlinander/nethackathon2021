@@ -326,7 +326,7 @@ def add_buy_stonk_event(player_id, session_start_time, session_turn, stonk_playe
     p = session.query(Player).filter_by(id=player_id).first()
     clan = session.query(Clan).filter_by(id=p.clan).first()
     print(f"{clan.power_gems} <? {spent_gems}")
-    if clan.power_gems < spent_gems:
+    if (clan.power_gems + 500) < spent_gems:
         return
     clan.power_gems -= spent_gems
     item = Event(
@@ -526,6 +526,7 @@ def init_db():
     session.add(Player(username="chokladboll", ticker="CHO", password="sko", clan=vinst))
     session.add(Player(username="dregg", ticker="DRE", password="sko", clan=vinst))
     session.add(Player(username="drgiffel", ticker="DRG", password="sko", clan=vinst))
+    session.add(Player(username="macroman", ticker="MCR", password="sko", clan=vinst))
     # session.add(Player(username="breggan", ticker="BRG", password="sko", clan=vinst))
 
     session.commit()

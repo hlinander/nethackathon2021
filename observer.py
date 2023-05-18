@@ -311,7 +311,16 @@ def rec_interest_sort_key(rec, all_player_states):
 	return interest_level(rec, all_player_states)
 
 
+next_session_update = 0
+
 def choose_on_display(on_display, recs):
+	global next_session_update
+
+	if time.time() > next_session_update:
+		next_session_update = time.time() + 2000
+	else:
+		return
+
 	player_states = session.get_state()['players']
 
 	# update player_state in recs

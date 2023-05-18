@@ -251,9 +251,9 @@ function RenderEvent({event}) {
         case "payout_stonk":
           return <div style={{ color: "pink" }}>💰{cn} profited {event_data.extra.roi} gems from a {event_data.extra.is_long ? "long" : "short"} in {event.Stonk_boi}</div>
         case "buy_stonk":
-          return <div style={{ color: "pink" }}>{pn} is {event_data.extra.buy_long ? "long" : "short"} in {event.Stonk_boi} betting {event_data.extra.spent_gems} gems</div>
+          return <div style={{ color: "pink" }}><span style={{fontSize: "15px"}} className="pulse">➚</span>Team {cn} (via {pn}) is {event_data.extra.buy_long ? "long" : "short"} in {event.Stonk_boi} betting {event_data.extra.spent_gems} gems</div>
         case "death":
-          return <div style={{ color: "red" }}>{pn} died on turn {event_data.turn}</div>
+          return <div style={{ color: "red" }}>✞{pn}✞ died on turn {event_data.turn}</div>
         case "reach_depth":
           return <div><b>{event_data.Playername}</b>{pn} reached dungeon level {event_data.value}</div>
         case "change_stat":
