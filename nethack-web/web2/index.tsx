@@ -50,10 +50,19 @@ class GameState {
 const gameState = new GameState();
 
 const Game = observer(({ state }) => {
-  let dialogRef = React.useRef<HTMLInputElement>(null)
+  let inputRef = React.useRef<HTMLInputElement>(null)
+  
   React.useEffect(() => {
-    dialogRef.current?.focus()
+    inputRef.current?.focus()
+
+    const savedName = localStorage.getItem("savedName");
+    if (savedName !== null) {
+      if(inputRef?.current?.value !== null) {
+        inputRef!.current!.value = savedName
+      }
+    }
   }, [])
+
   return (<div style={{ gridArea: "game", overflow: "hidden" }}> {state.term !== null ? (
     <GameView state={state} />
   ) : (
@@ -66,9 +75,10 @@ const Game = observer(({ state }) => {
       <dialog open>
         <img src={nethacklogo} />
         <p>What is your name, adventurer?</p>
-        <input ref={dialogRef} autoComplete="text" onKeyPress={(event) => {
+        <input ref={inputRef} autoComplete="text" onKeyPress={(event) => {
           if (event.key === "Enter") {
             state.newGame(event.target.value)
+            localStorage.setItem("savedName", event.target.value)
           }
         }} />
       </dialog>
