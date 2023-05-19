@@ -96,10 +96,9 @@ def calculate_stonk(player):
 
     hunger_stonk = max(0, (1500 - hunger) / 800.)
     hp_stonk = 1.0 - (hp / maxhp)
-    hp_stonk2 = 1.0 - maxhp / 200.
-    ac_stonk = 1.0 / (11 - ac)
+    ac_stonk = 1.0 / (11 - max(ac, 0))
     dlevel_stonk = dlevel / 60.0
-    level_stonk = 1.0 - level / 30.0
+    level_stonk = 1.0 - max(1.0, level / 30.0)
 
     # print("hunger_stonk", hunger_stonk)
     # print("hp_stonk", hp_stonk)
@@ -108,7 +107,8 @@ def calculate_stonk(player):
     # print("dlevel_stonk", dlevel_stonk)
     # print("level_stonk", level_stonk)
 
-    stonk = hunger_stonk * 8 + hp_stonk * 30 + hp_stonk2 * 20 + ac_stonk * 10 + dlevel_stonk * 20 + level_stonk * 20
+    stonk = hunger_stonk * 8 + hp_stonk * 50 + ac_stonk * 10 + dlevel_stonk * 20 + level_stonk * 20
+    stonk = max(30, stonk)
     return stonk
 
 def stonk_for_player(player):
@@ -128,7 +128,7 @@ def update_stonks(timestamp):
 
 def pay_out_stonk(stonk_holding):
     stonk = db.session.query(db.Stonk).filter_by(player_id=stonk_holding.player_id, name=stonk_holding.stonk_name).first()
-    turn_fraction = stonk_holding.expires_delta / 250.
+    turn_fraction = stonk_holding.expires_delta / 100.
     roi = math.ceil(turn_fraction * stonk_holding.fraction * stonk.value)
     db.add_clan_gems_for_clan(stonk_holding.clan_id, roi)
     db.add_transaction(stonk_holding.buy_event_id)

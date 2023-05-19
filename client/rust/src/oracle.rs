@@ -204,10 +204,10 @@ unsafe fn new_request(user_visible_prompt: String, prompt: String) {
 #[no_mangle]
 pub unsafe extern "C" fn oracle_prompt() -> i32 {
     let mut line = String::new();
-    execute!(stdout(), MoveTo(0, default_prompt_pos().1), EnableBlinking).unwrap();
+    execute!(stdout(), MoveTo(0, default_prompt_pos().1), EnableBlinking);
     const ORACLE_PROMPT: &str = "Ask the oracle: ";
     print!("{}", ORACLE_PROMPT);
-    stdout().flush().unwrap();
+    stdout().flush();
     loop {
         let c = nethackathon_getch();
         if c == 8 || c == 127 {
@@ -219,24 +219,28 @@ pub unsafe extern "C" fn oracle_prompt() -> i32 {
                     Clear(terminal::ClearType::CurrentLine),
                     MoveTo(0, default_prompt_pos().1),
                     EnableBlinking
-                )
-                .unwrap();
+                );
                 print!("{}{}", ORACLE_PROMPT, line);
-                stdout().flush().unwrap();
+                stdout().flush();
             }
             continue;
         }
         if let Some(c) = char::from_u32(c as u32) {
             if c == '\n' {
-                execute!(stdout(), Clear(terminal::ClearType::CurrentLine)).unwrap();
+                execute!(stdout(), Clear(terminal::ClearType::CurrentLine));
                 if line.trim() != "" {
-                    new_request(format!("$ {}", line.clone()), line);
+                    if line == "tax me" {
+                        crate::nh_api::rust_clear_gems();
+                    } else {
+                        new_request(format!("$ {}", line.clone()), line);
+                    }
                 }
+
                 break;
             }
             line += &c.to_string();
             print!("{}", c);
-            stdout().flush().unwrap();
+            stdout().flush();
         }
     }
     0
@@ -294,14 +298,13 @@ unsafe fn update_status_line() {
             MoveTo(default_cursor_pos().0, default_cursor_pos().1 - 1),
             Clear(terminal::ClearType::CurrentLine),
             MoveTo(default_cursor_pos().0, default_cursor_pos().1 - 1),
-        )
-        .unwrap();
+        );
         let wrapped_text = textwrap::wrap(&text, 80);
         for line in wrapped_text {
             println!("{}", line);
         }
-        stdout().flush().unwrap();
-        execute!(stdout(), RestorePosition).unwrap();
+        stdout().flush();
+        execute!(stdout(), RestorePosition);
         ui_state.printed_status_line = text;
     }
 }
@@ -372,7 +375,7 @@ unsafe fn get_map_item_list() -> Vec<MapObject> {
                         id: MapObjectID::Item,
                         name: name.to_string_lossy().into(),
                         symbol: char::from_u32(sym_char as u32).unwrap_or('?'),
-                        color: gi.color,
+                        color: gi.color as u8,
                         distance,
                     });
                 }
@@ -427,7 +430,7 @@ unsafe fn get_tile_list() -> Vec<MapObject> {
                             id: MapObjectID::Tile,
                             name: name.to_string_lossy().into_owned(),
                             symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
-                            color: gi.color,
+                            color: gi.color as u8,
                             distance,
                         });
                     }
@@ -470,7 +473,7 @@ unsafe fn get_monster_list() -> Vec<MapObject> {
                 id: MapObjectID::Monster,
                 name: name.to_string_lossy().into_owned(),
                 symbol: char::from_u32(gi.ttychar as u32).unwrap_or('?'),
-                color: gi.color,
+                color: gi.color as u8,
                 distance,
             });
         }
@@ -583,17 +586,16 @@ pub unsafe fn update_oracle_ui() {
                 MoveTo(default_cursor_pos().0, default_cursor_pos().1),
                 Clear(terminal::ClearType::FromCursorDown),
                 RestorePosition
-            )
-            .unwrap();
+            );
             ui_state.cursor_pos = default_cursor_pos();
         }
         if refresh_text {
             ui_state.printed_text = Vec::new();
         }
         let (mut x, mut y) = ui_state.cursor_pos;
-        execute!(stdout(), SavePosition, MoveTo(x, y)).unwrap();
+        execute!(stdout(), SavePosition, MoveTo(x, y));
         let max_line = 33;
-        for (idx, (text_style, text)) in ui_state.processed_text.iter().enumerate() {
+        'outer: for (idx, (text_style, text)) in ui_state.processed_text.iter().enumerate() {
             if ui_state.cursor_pos.1 >= max_line {
                 // max terminal size supported
                 break;
@@ -610,7 +612,7 @@ pub unsafe fn update_oracle_ui() {
                     // max terminal size supported
                     break;
                 }
-                execute!(stdout(), MoveTo(x, y)).unwrap();
+                execute!(stdout(), MoveTo(x, y));
                 let chars_to_next_line = 79 - x;
                 if chars_to_next_line <= 0 {
                     ui_state.cursor_pos.1 += 1;
@@ -640,12 +642,16 @@ pub unsafe fn update_oracle_ui() {
                     stdout.write(link_postfix.as_bytes());
                 }
 
-                stdout.flush().unwrap();
-                ui_state.cursor_pos = crossterm::cursor::position().unwrap();
+                stdout.flush();
+                if let Ok(pos) = crossterm::cursor::position() {
+                    ui_state.cursor_pos = pos;
+                } else {
+                    break 'outer;
+                }
             }
         }
-        execute!(stdout(), RestorePosition).unwrap();
-        stdout().flush().unwrap();
+        execute!(stdout(), RestorePosition);
+        stdout().flush();
     }
     update_status_line();
 }

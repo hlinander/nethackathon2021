@@ -61,6 +61,32 @@ def parse_complete_task(connection, complete_task):
 
     return [status, pb_reward]
 
+def wealth_tax(connection, event):
+    player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
+    clan = db.session.query(db.Clan).filter_by(id=player.clan).first()
+    if clan.power_gems > 0:
+        support = clan.power_gems // 2
+        clan.power_gems = clan.power_gems // 2
+
+        item = db.Event(
+            player_id=connection["player_id"],
+            clan_id=player.clan,
+            session_start_time=connection["session_start_time"],
+            session_turn=0, # event.session_turn,
+            name="wealth_tax",
+            value=0,
+            string_value=f"Team {clan.name} supported Bernies campain with {support} power gems.",
+            )
+        db.session.add(item)
+        db.session.commit()
+
+    status = nh_pb2.Status()
+    status.code = 0
+
+    return [status]
+    
+
+    
 def open_lootbox(connection, lootbox_req):
     lootbox_rarity = lootbox_req.rarity
     player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
@@ -252,7 +278,8 @@ dispatch = {
     "clan_powers": get_clan_powers,
     "save_equipment": parse_save_equipment,
     "retrieve_saved_equipment": parse_retrieve_saved_equipment,
-    "session_event": parse_event
+    "session_event": parse_event,
+    "wealth_tax": wealth_tax,
 }
 
 def parse_packet(connection, data):
@@ -337,7 +364,8 @@ while True:
                     try:
                         for response in responses:
                             response_data = response.SerializeToString()
-                            connections[fileno]["conn"].send(struct.pack("<I", len(response_data)))
+                            print("Trying to send")
+                            connections[fileno]["conn"].send(struct.pack("<i", len(response_data)))
                             connections[fileno]["conn"].send(response_data)
                     except Exception as e:
                         print(e)

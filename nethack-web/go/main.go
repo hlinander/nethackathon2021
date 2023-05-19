@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"os/signal"
 	"sync"
 	"syscall"
 	"time"
@@ -81,6 +82,9 @@ type Players struct {
 	Type    string   `json:"type" validate:"required,eq=players"`
 	Players []string `json:"type" validate:"required"`
 }
+
+var players_mutex = sync.Mutex{}
+var players = map[string]*os.Process{}
 
 var (
 	addr = flag.String("addr", ":8484", "http service address")
@@ -250,6 +254,15 @@ read_msg_loop:
 				break read_msg_loop
 			}
 
+			players_mutex.Lock()
+			val, exists := players[msg.Name]
+			if exists {
+				log.Println("HUP sent")
+				val.Signal(syscall.SIGHUP)
+				val.Wait()
+				log.Printf("Closed process for %s", msg.Name)
+				time.Sleep(3 * time.Second)
+			}
 			// c := exec.Command("/home/eracce/nethackathon2021/build/bin/nethack", "-u", msg.Name)
 			c := exec.Command("sh", "/home/herden/projects/nethackathon2023/wrapped_nethack", msg.Name)
 			s.C = c
@@ -263,6 +276,9 @@ read_msg_loop:
 					Rows: defaultPtyRows,
 					Cols: defaultPtyCols,
 				})
+			players[msg.Name] = c.Process
+			players_mutex.Unlock()
+
 			if err != nil {
 				log.Printf("failed to start %s", err)
 				return
@@ -403,7 +419,7 @@ WITH vinst AS (
         FROM
             event
         WHERE
-            ("name" IN ('death', 'reach_depth', 'buy_stonk', 'payout_stonk'))
+            ("name" IN ('death', 'reach_depth', 'buy_stonk', 'payout_stonk', 'wealth_tax'))
 			OR (session_turn=1 and string_value='hp')
     )
     UNION
@@ -437,13 +453,36 @@ LEFT JOIN players p2 ON p2.id = (vinst->'extra'->>'stonk_player_id')::int4
 		fmt.Printf("CR ERROR %v\n", err)
 	}
 
+	if events == nil {
+		events = []*Event{}
+	}
+
 	jsonBytes, _ := json.Marshal(&events)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(jsonBytes)
 }
 
 func main() {
+	sigs := make(chan os.Signal, 1)
 
+	// Register the channel to receive SIGINT signals
+	signal.Notify(sigs, syscall.SIGINT)
+
+	// Start a goroutine that will print a message when a signal is received
+	go func() {
+		sig := <-sigs
+		fmt.Println()
+		fmt.Println(sig)
+		fmt.Println("You pressed ctrl + C!")
+		players_mutex.Lock()
+		for k, v := range players {
+			v.Signal(syscall.SIGHUP)
+			v.Wait()
+			log.Printf("Exited %s", k)
+		}
+		log.Printf("Exited all processes")
+		os.Exit(0)
+	}()
 	flag.Parse()
 	http.Handle("/", http.FileServer(http.Dir("../web2/built-web")))
 	http.HandleFunc("/ws", serveWs)

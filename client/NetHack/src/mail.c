@@ -405,9 +405,9 @@ newmail(struct mail_info *info)
     message_seen = TRUE;
     // 
     if(rn2(2)) {
-        verbalize("Ads for you %s!", g.plname);
+        verbalize("Taxes for you %s!", g.plname);
     } else {
-        verbalize("Spam spam! Everything spam!");
+        verbalize("Taxes! Taxes! Everything is taxed!");
     }
 
     if (info->message_typ) {

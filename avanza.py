@@ -11,9 +11,9 @@ import sys
 import time
 import readchar
 
-INC_EXPIRY = 250
-MIN_EXPIRY = 250
-MAX_EXPIRY = 5000
+INC_EXPIRY = 50
+MIN_EXPIRY = 100
+MAX_EXPIRY = 1000
 
 my_id = '0'
 
@@ -67,12 +67,6 @@ def update(stdscr, cpstate, player_order):
                 continue
             player_id = player_order[player_index]
             player = cpstate[str(player_id)]
-            if 'hp' not in player or 'hpmax' not in player:
-                player_index += 1
-                continue
-            if player['hp'] <= 0:
-                player_index += 1
-                continue
             full_name = get_full_name(player)
             cost = db.get_stonk(int(selected_player_id), "stonk").value
             if selected_player_id == player_id:
@@ -136,7 +130,7 @@ def update(stdscr, cpstate, player_order):
     jens.candlechart(stdscr, 1, 1, 57, 19, stank, (green, red))
 
     if state == 4:
-        if cost <= total_gems:
+        if cost <= (total_gems + 500):
             # ("═", "║", "╔", "╗", "╚", "╝", "╦", "╩", "╠", "╣", "╬")
             stdscr.addstr(8, 3, '╔═╣ Confirm Investment ╠══════════════════════════════════════════════════╗')
             stdscr.addstr(9, 3, '║                                                                         ║')
@@ -200,10 +194,14 @@ def view_stonks(stdscr):
         stdscr.addstr(y, 1, 'Clan %s is %s in %s. Expires in %d turns.' % (
             clan.name, 'long' if it.long else 'short', player.username, it.expires_turn))
         y += 1
-        if y == 24:
-            input('Press to view more...')
+        if y == 23:
+            stdscr.addstr(24, 1, 'Press to view more...')
+            while -1 == stdscr.getch():
+                time.sleep(0.2)
             y = 0
-    input('Press q to exit.')
+    stdscr.addstr(25, 1, 'Press q to exit.')
+    while -1 == stdscr.getch():
+        time.sleep(0.2)
 
 def main(stdscr):
     global no_color
@@ -256,14 +254,20 @@ def main(stdscr):
 
     while not quit:
         cpstate = session.get_state()['players']
+        open('/tmp/sko', 'w').write(json.dumps(cpstate))
         if str(my_id) in cpstate:
             del cpstate[str(my_id)]
-        # open('/tmp/skoko', 'w').write(json.dumps(cpstate))
+        foo = {}
+        for k,v in cpstate.items():
+            if 'hp' in v and 'hpmax' in v and v['hp'] >= 1:
+                foo[k] = v
+        cpstate = foo
         player_order = [ int(it[0]) for it in sorted(cpstate.items(), key=lambda x: x[1]['player_name']) ]
+        # exit(0)
         if len(player_order) == 0:
-            print('NO STONKS :(')
-            return input()
-        
+            stdscr.addstr(5, 5, 'NO STONKS :( Press q, or some other key.')
+            time.sleep(1)
+            return
         if selected_player_id is None:
             selected_player_id = player_order[0]
         elif selected_player_id not in player_order:
@@ -306,10 +310,10 @@ def main(stdscr):
                 buy_long = not buy_long
         elif ord(' ') == key:
             if state == 4:
-                if cost <= total_gems:
-                    print('preeee')
+                if cost <= (total_gems + 500):
+                    # print('preeee')
                     db.add_buy_stonk_event(my_id, my_session, my_turn, int(selected_player_id), 'stonk', cost, expiry, buy_long)
-                    print('pooost')
+                    # print('pooost')
                 state = 3
             else:
                 state += 1
