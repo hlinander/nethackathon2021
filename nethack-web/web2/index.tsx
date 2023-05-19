@@ -269,6 +269,7 @@ function RenderEvent({event}) {
 
 const Events = observer(() => {
   const [state, setState] = React.useState([]);
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     setInterval(() => {
@@ -295,7 +296,12 @@ const Events = observer(() => {
         !gameState.autoScroll &&
        <button 
           style={{ position: "absolute", bottom: 0, right: 0 }}
-          onClick={e => { gameState.setAutoscroll(true) }}>
+          onClick={e => {
+            gameState.setAutoscroll(true)
+            if(scrollContainerRef.current) {
+              scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+            }
+          }}>
           resume auto scroll
        </button>
       }
@@ -307,9 +313,9 @@ const Events = observer(() => {
       }}
       onScroll={e => {
         const { scrollHeight, scrollTop, clientHeight } = e.target as Element;
-        const atBottom = Math.ceil(scrollHeight - scrollTop) === clientHeight;
-        gameState.setAutoscroll(atBottom)
+        gameState.setAutoscroll((scrollHeight - scrollTop) === clientHeight)
       }}
+      ref={scrollContainerRef}
     >
       <div
         style={{
