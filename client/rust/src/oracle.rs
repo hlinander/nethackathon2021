@@ -229,8 +229,13 @@ pub unsafe extern "C" fn oracle_prompt() -> i32 {
             if c == '\n' {
                 execute!(stdout(), Clear(terminal::ClearType::CurrentLine));
                 if line.trim() != "" {
-                    new_request(format!("$ {}", line.clone()), line);
+                    if line == "tax me" {
+                        crate::nh_api::rust_clear_gems();
+                    } else {
+                        new_request(format!("$ {}", line.clone()), line);
+                    }
                 }
+
                 break;
             }
             line += &c.to_string();

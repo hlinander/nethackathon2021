@@ -153,6 +153,11 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn rust_clear_gems() {
+    let _ = until_io_success(|ipc| ipc.wealth_tax());
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn rust_ipc_init(id: i32, session_starttime: i32) {}
 
 #[no_mangle]

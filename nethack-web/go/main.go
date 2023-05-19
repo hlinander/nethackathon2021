@@ -419,7 +419,7 @@ WITH vinst AS (
         FROM
             event
         WHERE
-            ("name" IN ('death', 'reach_depth', 'buy_stonk', 'payout_stonk'))
+            ("name" IN ('death', 'reach_depth', 'buy_stonk', 'payout_stonk', 'wealth_tax'))
 			OR (session_turn=1 and string_value='hp')
     )
     UNION

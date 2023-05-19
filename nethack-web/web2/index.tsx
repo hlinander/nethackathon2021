@@ -248,6 +248,8 @@ function RenderEvent({event}) {
   switch (event_data.type) {
     case "event":
       switch (event_data.name) {
+        case "wealth_tax":
+          return <div style={{ color: "green" }}>{event_data.string_value}</div>
         case "payout_stonk":
           return <div style={{ color: "pink" }}>💰{cn} profited {event_data.extra.roi} gems from a {event_data.extra.is_long ? "long" : "short"} in {event.Stonk_boi}</div>
         case "buy_stonk":

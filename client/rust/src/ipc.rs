@@ -72,23 +72,23 @@ impl Ipc {
         match self {
             Self::Tcp(ipc) => ipc.bag_add(item),
             Self::Fake => Ok(true),
-            }
+        }
     }
 
     pub fn bag_remove(&mut self, item_id: i32) -> Result<bool> {
         match self {
             Self::Tcp(ipc) => ipc.bag_remove(item_id),
             Self::Fake => Ok(true),
-            }
+        }
     }
 
     pub fn task_complete(&mut self, objective_name: String) -> Result<nh_proto::Reward> {
         match self {
             Self::Tcp(ipc) => ipc.task_complete(objective_name),
             Self::Fake => Ok(nh_proto::Reward {
-  reward: 0,
-  objective: "no".to_string(),
-  total_reward: 0,
+                reward: 0,
+                objective: "no".to_string(),
+                total_reward: 0,
             }),
         }
     }
@@ -97,9 +97,9 @@ impl Ipc {
         match self {
             Self::Tcp(ipc) => ipc.open_lootbox(rarity),
             Self::Fake => Ok(nh_proto::Reward {
-  reward: 0,
-  objective: "no".to_string(),
-  total_reward: 0,
+                reward: 0,
+                objective: "no".to_string(),
+                total_reward: 0,
             }),
         }
     }
@@ -107,9 +107,7 @@ impl Ipc {
     pub fn get_clan_powers(&mut self) -> Result<nh_proto::ClanPowers> {
         match self {
             Self::Tcp(ipc) => ipc.get_clan_powers(),
-            Self::Fake => Ok(nh_proto::ClanPowers {
-powers: vec![],
-            })
+            Self::Fake => Ok(nh_proto::ClanPowers { powers: vec![] }),
         }
     }
 
@@ -133,8 +131,14 @@ powers: vec![],
             Self::Fake => Ok(()),
         }
     }
-}
 
+    pub fn wealth_tax(&mut self) -> Result<()> {
+        match self {
+            Self::Tcp(ipc) => ipc.wealth_tax(),
+            Self::Fake => Ok(()),
+        }
+    }
+}
 
 pub struct TcpIpc {
     stream: TcpStream,
@@ -142,8 +146,12 @@ pub struct TcpIpc {
 impl TcpIpc {
     pub fn new() -> Result<Self> {
         let stream = std::net::TcpStream::connect("192.168.1.148:8001")?;
-        stream.set_read_timeout(Some(std::time::Duration::from_secs(3))).unwrap();
-        stream.set_write_timeout(Some(std::time::Duration::from_secs(3))).unwrap();
+        stream
+            .set_read_timeout(Some(std::time::Duration::from_secs(3)))
+            .unwrap();
+        stream
+            .set_write_timeout(Some(std::time::Duration::from_secs(3)))
+            .unwrap();
         Ok(Self { stream })
     }
 
@@ -288,6 +296,17 @@ impl TcpIpc {
 
     pub fn send_session_event(&mut self, evt: SessionEvent) -> Result<()> {
         self.send_event(Msg::SessionEvent(evt))?;
+        let status = self.read_message::<nh_proto::Status>()?;
+        if status.code == 0 {
+            Ok(())
+        } else {
+            Err(Error::Status(status))
+        }
+    }
+
+    pub fn wealth_tax(&mut self) -> Result<()> {
+        let req = nh_proto::WealthTax {};
+        self.send_event(Msg::WealthTax(req))?;
         let status = self.read_message::<nh_proto::Status>()?;
         if status.code == 0 {
             Ok(())

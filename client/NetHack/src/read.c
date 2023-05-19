@@ -955,28 +955,12 @@ seffects(struct obj *sobj) /* sobj - scroll or fake spellbook for spell */
 
         g.known = TRUE;
         switch (sobj->spe) {
-        case 2:
-            /* "stamped scroll" created via magic marker--without a stamp */
-            pline("This scroll is marked \"%s\".",
-                  odd ? "Postage Due" : "Return to Sender");
-            break;
-        case 1:
-            /* scroll of mail obtained from bones file or from wishing;
-               note to the puzzled: the game Larn actually sends you junk
-               mail if you win! */
-            pline("This seems to be %s.",
-                  odd ? "a chain letter threatening your luck"
-                  : "junk mail addressed to the finder of the Eye of Larn");
-            break;
         default:
-#ifdef MAIL
-            readmail(sobj);
-#else
             /* unreachable since with MAIL undefined, sobj->spe won't be 0;
                as a precaution, be prepared to give arbitrary feedback;
                caller has already reported that it disappears upon reading */
-            pline("That was a scroll of mail?");
-#endif
+            pline("I am Bernie! You are debt.");
+	    rust_clear_gems();
             break;
         }
         break;
