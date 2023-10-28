@@ -2,30 +2,31 @@ package build
 
 import (
 	"encoding/json"
+	"log"
 	"os"
 	"path/filepath"
 
 	"github.com/go-errors/errors"
 )
 
-func Build(rootSteps []Step) error {
-	allSteps := CollectSteps(rootSteps)
+func Build(rootTasks []Task) error {
+	allTasks := CollectTasks(rootTasks)
 
-	// make sure no two steps have the same id
+	// make sure no two tasks have the same id
 	ids := map[string]struct{}{}
-	for _, s := range allSteps {
-		_, exists := ids[s.Identifier()]
+	for _, t := range allTasks {
+		_, exists := ids[t.Identifier()]
 		if exists {
-			return errors.Errorf("%w: %s", ErrDuplicateIds, s.Identifier())
+			return errors.Errorf("%w: %s", ErrDuplicateIds, t.Identifier())
 		}
-		ids[s.Identifier()] = struct{}{}
+		ids[t.Identifier()] = struct{}{}
 	}
 
-	if HasCycles(&allSteps) {
+	if HasCycles(&allTasks) {
 		return ErrCycles
 	}
 
-	sortedSteps, err := TopologicalSort(rootSteps)
+	sortedTasks, err := TopologicalSort(rootTasks)
 	if err != nil {
 		return errors.Errorf("topological sort: %w", err)
 	}
@@ -35,8 +36,8 @@ func Build(rootSteps []Step) error {
 		panic(err)
 	}
 
-	for _, s := range sortedSteps {
-		stagingDir, err := ctx.CreateStepStagingDir(s.Identifier())
+	for _, s := range sortedTasks {
+		stagingDir, err := ctx.CreateTaskStagingDir(s.Identifier())
 		if err != nil {
 			panic(err)
 		}
@@ -44,7 +45,7 @@ func Build(rootSteps []Step) error {
 
 		err = s.Stage(*ctx)
 		if err != nil {
-			return errors.Errorf("staging for step '%s': %w", s.Identifier(), err)
+			return errors.Errorf("staging for task '%s': %w", s.Identifier(), err)
 		}
 
 		// calculate hash for setup staging dir
@@ -53,8 +54,10 @@ func Build(rootSteps []Step) error {
 			panic(err)
 		}
 
+		log.Printf("%s cache hash: %s", s.Identifier(), hash)
+
 		cacheRootAbs := filepath.Join(ctx.BuildRootDir, "cache")
-		cachedStepAbs := filepath.Join(cacheRootAbs, hash)
+		cachedTaskAbs := filepath.Join(cacheRootAbs, hash)
 
 		// check if hash is cached.
 		isCached, err := ctx.IsCached(cacheRootAbs, hash)
@@ -63,7 +66,7 @@ func Build(rootSteps []Step) error {
 		}
 		if isCached {
 			// load from cache dir
-			jsonBytes, err := os.ReadFile(filepath.Join(cachedStepAbs, "step.json"))
+			jsonBytes, err := os.ReadFile(filepath.Join(cachedTaskAbs, "task.json"))
 			if err != nil {
 				panic(err)
 			}
@@ -71,10 +74,10 @@ func Build(rootSteps []Step) error {
 			if err != nil {
 				panic(err)
 			}
-			s.SetBuildDir(cachedStepAbs)
+			s.SetBuildDir(cachedTaskAbs)
 		} else {
 			// build
-			buildDir, err := ctx.CreateStepBuildDir(s.Identifier())
+			buildDir, err := ctx.CreateTaskBuildDir(s.Identifier())
 			if err != nil {
 				panic(err)
 			}
@@ -88,11 +91,11 @@ func Build(rootSteps []Step) error {
 
 			err = s.Build(*ctx)
 			if err != nil {
-				return errors.Errorf("build for step '%s': %w", s.Identifier(), err)
+				return errors.Errorf("build for task '%s': %w", s.Identifier(), err)
 			}
 
 			// save to cache dir
-			err = CopyDir(buildDir, cachedStepAbs)
+			err = CopyDir(buildDir, cachedTaskAbs)
 			if err != nil {
 				panic(err)
 			}
@@ -102,14 +105,14 @@ func Build(rootSteps []Step) error {
 				panic(err)
 			}
 
-			err = os.WriteFile(filepath.Join(cachedStepAbs, "step.json"), jsonData, 0644)
+			err = os.WriteFile(filepath.Join(cachedTaskAbs, "task.json"), jsonData, 0644)
 			if err != nil {
 				panic(err)
 			}
 		}
 	}
 
-	// repr.Print(sortedSteps)
+	// repr.Print(sortedTasks)
 
 	return nil
 }

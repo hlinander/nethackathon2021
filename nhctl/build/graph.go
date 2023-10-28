@@ -10,9 +10,9 @@ import (
 var ErrDuplicateIds = errors.New("duplicate ids")
 var ErrCycles = errors.New("has cycles")
 
-func CollectSteps(rootSteps []Step) []Step {
-	visited := map[Step]bool{}
-	accum := []Step{}
+func CollectTasks(rootSteps []Task) []Task {
+	visited := map[Task]bool{}
+	accum := []Task{}
 
 	for _, s := range rootSteps {
 		collectStepsDfs(s, &visited, &accum)
@@ -22,9 +22,9 @@ func CollectSteps(rootSteps []Step) []Step {
 }
 
 func collectStepsDfs(
-	s Step,
-	visited *map[Step]bool,
-	accum *[]Step,
+	s Task,
+	visited *map[Task]bool,
+	accum *[]Task,
 ) {
 	_, exists := (*visited)[s]
 	if exists {
@@ -38,9 +38,9 @@ func collectStepsDfs(
 }
 
 // todo: return what caused the cycle
-func HasCycles(allSteps *[]Step) bool {
-	visited := map[Step]bool{}
-	inStack := map[Step]bool{}
+func HasCycles(allSteps *[]Task) bool {
+	visited := map[Task]bool{}
+	inStack := map[Task]bool{}
 
 	for _, s := range *allSteps {
 		_, exists := visited[s]
@@ -54,9 +54,9 @@ func HasCycles(allSteps *[]Step) bool {
 }
 
 func checkCyclesDfs(
-	start Step,
-	visited *map[Step]bool,
-	inStack *map[Step]bool,
+	start Task,
+	visited *map[Task]bool,
+	inStack *map[Task]bool,
 ) bool {
 	(*visited)[start] = true
 	(*inStack)[start] = true
@@ -80,8 +80,8 @@ func checkCyclesDfs(
 }
 
 // file format that can be imported into gephi. useful for debugging.
-func WriteGexfFile(filePath string, rootSteps []Step) error {
-	allSteps := CollectSteps(rootSteps)
+func WriteGexfFile(filePath string, rootSteps []Task) error {
+	allSteps := CollectTasks(rootSteps)
 	g := gexf.NewGraph()
 
 	for _, s := range allSteps {
@@ -108,9 +108,9 @@ func WriteGexfFile(filePath string, rootSteps []Step) error {
 	return nil
 }
 
-func TopologicalSort(steps []Step) ([]Step, error) {
+func TopologicalSort(steps []Task) ([]Task, error) {
 	visited := make(map[string]bool)
-	stack := make([]Step, 0)
+	stack := make([]Task, 0)
 
 	for _, step := range steps {
 		if err := topologicalSortVisit(step, visited, &stack); err != nil {
@@ -122,9 +122,9 @@ func TopologicalSort(steps []Step) ([]Step, error) {
 }
 
 func topologicalSortVisit(
-	step Step,
+	step Task,
 	visited map[string]bool,
-	stack *[]Step,
+	stack *[]Task,
 ) error {
 	id := step.Identifier()
 

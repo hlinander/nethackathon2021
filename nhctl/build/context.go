@@ -21,7 +21,7 @@ type Context struct {
 }
 
 func NewContext() (*Context, error) {
-	gitRootDir, err := gitRootDir()
+	gitRootDir, err := GitRootDir()
 	if err != nil {
 		panic(err)
 	}
@@ -40,7 +40,7 @@ func NewContext() (*Context, error) {
 	}, nil
 }
 
-func (c *Context) CreateStepStagingDir(name string) (string, error) {
+func (c *Context) CreateTaskStagingDir(name string) (string, error) {
 	dirName := fmt.Sprintf("%s-%d", name, time.Now().UnixMilli())
 	dirPathAbs := filepath.Join(c.BuildRootDir, "staging", dirName)
 	err := os.MkdirAll(dirPathAbs, 0755)
@@ -50,7 +50,7 @@ func (c *Context) CreateStepStagingDir(name string) (string, error) {
 	return dirPathAbs, nil
 }
 
-func (c *Context) CreateStepBuildDir(name string) (string, error) {
+func (c *Context) CreateTaskBuildDir(name string) (string, error) {
 	dirName := fmt.Sprintf("%s-%d", name, time.Now().UnixMilli())
 	dirPathAbs := filepath.Join(c.BuildRootDir, "build", dirName)
 	err := os.MkdirAll(dirPathAbs, 0755)
@@ -72,7 +72,7 @@ func (c *Context) IsCached(cacheDir string, hash string) (bool, error) {
 	return fileInfo.IsDir(), nil
 }
 
-func gitRootDir() (string, error) {
+func GitRootDir() (string, error) {
 	cmd := exec.Command("git", "rev-parse", "--show-toplevel")
 
 	path, err := cmd.Output()

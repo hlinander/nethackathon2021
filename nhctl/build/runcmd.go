@@ -62,7 +62,7 @@ func RunCmd(opts RunCmdOpts) error {
 
 	err = buildCmd.Wait()
 	if err != nil {
-		return errors.Errorf("command failed %w", err)
+		return errors.Errorf("command '%v' in pwd '%s' failed with error: '%w'", opts.Cmd, buildCmd.Dir, err)
 	}
 
 	return nil

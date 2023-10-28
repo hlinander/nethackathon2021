@@ -13,52 +13,52 @@ package build
 //  - resolve deps
 //  - build whats needed
 
-type Step interface {
+type Task interface {
 	Stage(ctx Context) error
 	Build(ctx Context) error
 	Identifier() string
-	Deps() []Step
+	Deps() []Task
 	StagingDir() string
 	SetStagingDir(dir string)
 	BuildDir() string
 	SetBuildDir(dir string)
 }
 
-type StepBase struct {
+type TaskBase struct {
 	id   string
-	deps []Step
+	deps []Task
 
 	stagingDir string
 	buildDir   string
 }
 
-func NewStepBase(id string, deps ...Step) StepBase {
-	return StepBase{
+func NewTaskBase(id string, deps ...Task) TaskBase {
+	return TaskBase{
 		id:   id,
 		deps: deps,
 	}
 }
 
-func (s StepBase) Identifier() string {
+func (s TaskBase) Identifier() string {
 	return s.id
 }
 
-func (s *StepBase) Deps() []Step {
+func (s *TaskBase) Deps() []Task {
 	return s.deps
 }
 
-func (s StepBase) StagingDir() string {
+func (s TaskBase) StagingDir() string {
 	return s.stagingDir
 }
 
-func (s *StepBase) SetStagingDir(dir string) {
+func (s *TaskBase) SetStagingDir(dir string) {
 	s.stagingDir = dir
 }
 
-func (s StepBase) BuildDir() string {
+func (s TaskBase) BuildDir() string {
 	return s.buildDir
 }
 
-func (s *StepBase) SetBuildDir(dir string) {
+func (s *TaskBase) SetBuildDir(dir string) {
 	s.buildDir = dir
 }

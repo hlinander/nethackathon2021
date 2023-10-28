@@ -1,4 +1,4 @@
-package step
+package task
 
 import (
 	_ "embed"
@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 )
 
-//go:embed compile.go
+//go:embed gencode.go
 var genCodeSourceCode string
 
 type GenCodeParams struct {
@@ -17,21 +17,12 @@ type GenCodeParams struct {
 }
 
 type GenCode struct {
-	build.StepBase
+	build.TaskBase
 	Input             GenCodeParams
 	OutputFilePathRel string
 }
 
 func (s *GenCode) Stage(ctx build.Context) error {
-	err := os.WriteFile(
-		filepath.Join(s.StagingDir(), "step.go"),
-		[]byte(compileSourceCode),
-		0644,
-	)
-	if err != nil {
-		panic(err)
-	}
-
 	jsonBytes, err := json.MarshalIndent(s.Input, "", "  ")
 	if err != nil {
 		panic(err)

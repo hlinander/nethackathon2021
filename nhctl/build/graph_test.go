@@ -7,7 +7,7 @@ import (
 )
 
 type MockStep struct {
-	StepBase
+	TaskBase
 }
 
 func (m MockStep) Stage(ctx Context) error {

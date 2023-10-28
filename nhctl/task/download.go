@@ -1,4 +1,4 @@
-package step
+package task
 
 import (
 	_ "embed"
@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 )
 
-//go:embed compile.go
+//go:embed download.go
 var downloadSourceCode string
 
 type DownloadParams struct {
@@ -19,21 +19,12 @@ type DownloadParams struct {
 }
 
 type Download struct {
-	build.StepBase
+	build.TaskBase
 	Input             DownloadParams
 	DownloadedFileRel string
 }
 
 func (s *Download) Stage(ctx build.Context) error {
-	err := os.WriteFile(
-		filepath.Join(s.StagingDir(), "step.go"),
-		[]byte(downloadSourceCode),
-		0644,
-	)
-	if err != nil {
-		panic(err)
-	}
-
 	jsonBytes, err := json.MarshalIndent(s.Input, "", "  ")
 	if err != nil {
 		panic(err)

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BUILD SYSTEM</title>
+  </head>
+  <body>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const socket = new WebSocket('ws://localhost:8081/ws')
+  
+        socket.addEventListener('open', (event) => {
+          let text = document.getElementById('text')
+          text.innerText = ""
+
+          let start = document.getElementById('start')
+          start.disabled = false
+          start.onclick = () => {
+            socket.send(JSON.stringify({ type: 'start' }));
+          }
+        });
+      
+        socket.addEventListener('message', (event) => {
+          let element = document.getElementById('text')
+          element.innerText += event.data + "\n"
+        });
+      });
+    </script>
+
+    <button id="start" disabled>START</button>
+    <pre id="text">
+      NO CONNECTION
+    </pre>
+  </body>
+</html>
