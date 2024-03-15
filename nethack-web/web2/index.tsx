@@ -9,6 +9,7 @@ import nethacklogo from "./NetHack-Logo.svg"
 import leaderboardbg from "./stonkathon.jpg"
 import { formatDistanceToNow } from 'date-fns'
 import Objectives from "./objectives";
+import { equals } from "rambda";
 
 class GameState {
   term: Terminal | null = null
@@ -239,11 +240,74 @@ function LeaderBoard() {
   );
 }
 
-function RenderEvent({event}) {
+function PlayerLeaderBoard() {
+  const [state, setState] = React.useState([]);
+
+  React.useEffect(() => {
+    setInterval(() => {
+      fetch("http://nh.hampe.nu:8484/leaders")
+        .then((response) => response.json())
+        .then((data) => {
+          gameState.setBackendOffline(false)
+
+          setState(prev => {
+
+            if (!data) {
+              return prev;
+            }
+
+            return data;
+          });
+        }).catch(e => {
+          gameState.setBackendOffline(true)
+        });
+    }, 2000);
+  }, []);
+
+  return (
+    <div style={{
+      position: 'relative',
+      display: "flex",
+      alignItems: "center"
+    }}>
+      <div style={{ position: 'relative', zIndex: 1, flex: "1 0 100%"}}>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          gap: "0px 0px",
+          marginRight: "8px",
+          gridAutoFlow: "row",
+          textAlign: "left",
+          marginLeft: "15px"
+
+        }}>
+          <div style={{ opacity: 0.7, gridColumn: 1, marginRight: "1px", color: "white", fontFamily: "cursive", fontSize: "20px" }}>Clan</div>
+          <span style={{ opacity: 0.7, gridColumn: 2, marginRight: "1em", color: "white", fontFamily: "cursive", fontSize: "20px" }}>Player</span>
+          <span style={{ opacity: 0.7, gridColumn: 3, marginBottom: "1px", fontFamily: "cursive", color: "white", fontSize: "20px" }}>Rewards</span>
+          {state.map((c) => {
+            let style = {
+              fontSize: "12px",
+            }
+            return (
+              <React.Fragment key={c.Playername}>
+                <div style={{ gridColumn: 1, marginRight: "0px" }}>{c.Clanname}</div>
+                <span style={{ gridColumn: 2, marginRight: "1em", color: "#0F0", ...style }}>{c.Playername}</span>
+                <span style={{ gridColumn: 3, ...style }}>${c.Score}</span>
+              </React.Fragment>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RenderEvent({event, count}) {
   let elapsed = formatDistanceToNow(new Date(event.Timestamp), { addSuffix: true });
   let elapsedEl = <span style={{fontSize: "8px", opacity: 0.5}}>{elapsed}</span>
   let pn = <b>{event.Playername}</b>
   let cn = <b>{event.Clanname}</b>
+  let countEl = <b style={{color: "green"}}>{count > 1 ? `(${count}x)`: ""}</b>
   let event_data = event.Vinst
   switch (event_data.type) {
     case "event":
@@ -251,9 +315,9 @@ function RenderEvent({event}) {
         case "wealth_tax":
           return <div style={{ color: "green" }}>{event_data.string_value}</div>
         case "payout_stonk":
-          return <div style={{ color: "pink" }}>💰{cn} profited {event_data.extra.roi} gems from a {event_data.extra.is_long ? "long" : "short"} in {event.Stonk_boi}</div>
+          return <div style={{ color: "pink" }}>{countEl}💰{cn} profited {event_data.extra.roi} gems from a {event_data.extra.is_long ? "long" : "short"} in {event.Stonk_boi}</div>
         case "buy_stonk":
-          return <div style={{ color: "pink" }}><span style={{fontSize: "15px"}} className="pulse">➚</span>Team {cn} (via {pn}) is {event_data.extra.buy_long ? "long" : "short"} in {event.Stonk_boi} betting {event_data.extra.spent_gems} gems</div>
+          return <div style={{ color: "pink" }}>{countEl}<span style={{fontSize: "15px"}} className="pulse">➚</span>Team {cn} (via {pn}) is {event_data.extra.buy_long ? "long" : "short"} in {event.Stonk_boi} betting {event_data.extra.spent_gems} gems</div>
         case "death":
           return <div style={{ color: "red" }}>✞{pn}✞ died on turn {event_data.turn}</div>
         case "reach_depth":
@@ -269,6 +333,35 @@ function RenderEvent({event}) {
   return <div><b>{event_data.playername}</b> did something</div>
 }
 
+function groupConsecutiveStonks(events) {
+  if (events.length === 0) {
+    return [];
+  }
+
+  const result = [];
+  let currentElement = events[0];
+  let count = 1;
+
+  for (let i = 1; i < events.length; i++) {
+    if (events[i].Vinst.type === "event" && currentElement.Vinst.type === "event") {
+      if (events[i].Vinst.name === "buy_stonk" && currentElement.Vinst.name === "buy_stonk") {
+        if (equals(events[i].Vinst.extra, currentElement.Vinst.extra)) {
+          count++;
+          continue;
+        }
+      }
+      }
+      result.push([count, currentElement]);
+      currentElement = events[i];
+      count = 1;
+  }
+
+  result.push([count, currentElement]); // Add the last group of elements
+
+  return result;
+}
+
+
 const Events = observer(() => {
   const [state, setState] = React.useState([]);
   const scrollContainerRef = React.useRef<HTMLDivElement>(null)
@@ -279,7 +372,7 @@ const Events = observer(() => {
         .then((response) => response.json())
         .then((data) => {
           setState(prev => {
-            return data;
+            return groupConsecutiveStonks(data);
           })
         }).catch(e => {
           console.log("error:", e) 
@@ -330,7 +423,7 @@ const Events = observer(() => {
         }}
       >
         {
-          state.map((event, i) =>
+          state.map(([count, event], i) =>
             <div className="fade-in"
               ref={el => {
                 if (el !== null && i === 0 && gameState.autoScroll) {
@@ -344,7 +437,7 @@ const Events = observer(() => {
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap"
               }} key={event.Timestamp}>
-              <RenderEvent event={event} />
+               <RenderEvent event={event} count={count} />
             </div>)
         }
       </div>
@@ -396,7 +489,7 @@ const App = observer(() => {
       }
       <Events />
       <Game state={gameState} />
-      <LeaderBoard />
+      <PlayerLeaderBoard/>
     </div>);
 })
 

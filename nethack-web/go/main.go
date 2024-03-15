@@ -59,6 +59,13 @@ type Event struct {
 	Stonk_boi  *string
 }
 
+// SELECT clans.name as clanname, players.username, SUM(rewards.score) as score
+type PlayerReward struct {
+	Clanname   string
+	Playername string
+	Score      int64
+}
+
 type IndexPageData struct {
 }
 
@@ -407,6 +414,27 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 	time.Sleep(closeGracePeriod)
 }
 
+func servePlayerLeaderboard(w http.ResponseWriter, r *http.Request) {
+	var playerRewards []*PlayerReward
+	sql := `
+		SELECT clans.name as clanname, players.username as playername, SUM(rewards.score) as score
+		FROM rewards
+		JOIN players ON rewards.player = players.id
+		JOIN clans ON clans.id = players.clan
+		GROUP BY players.id, clans.name
+		order by score desc
+			`
+	err := pgxscan.Select(context.Background(), dbPool, &playerRewards, sql)
+
+	if err != nil {
+		fmt.Printf("SQL ERROR %v\n", err)
+	}
+
+	jsonBytes, _ := json.Marshal(&playerRewards)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jsonBytes)
+}
+
 func serveEvents(w http.ResponseWriter, r *http.Request) {
 	var events []*Event
 	err := pgxscan.Select(context.Background(), dbPool, &events, `
@@ -488,6 +516,9 @@ func main() {
 	http.HandleFunc("/ws", serveWs)
 	http.HandleFunc("/events", func(w http.ResponseWriter, r *http.Request) {
 		serveEvents(w, r)
+	})
+	http.HandleFunc("/leaders", func(w http.ResponseWriter, r *http.Request) {
+		servePlayerLeaderboard(w, r)
 	})
 	ctx := context.Background()
 	http.HandleFunc("/poll", func(w http.ResponseWriter, r *http.Request) {
