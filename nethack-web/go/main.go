@@ -271,7 +271,7 @@ read_msg_loop:
 				time.Sleep(3 * time.Second)
 			}
 			// c := exec.Command("/home/eracce/nethackathon2021/build/bin/nethack", "-u", msg.Name)
-			c := exec.Command("sh", "/home/herden/projects/nethackathon2023/wrapped_nethack", msg.Name)
+			c := exec.Command("sh", "/home/herden/projects/nethackathon2024/wrapped_nethack", msg.Name)
 			s.C = c
 			c.Env = os.Environ()
 			c.Env = append(c.Env, fmt.Sprintf("USER=%s", msg.Name))

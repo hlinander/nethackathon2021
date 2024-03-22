@@ -638,6 +638,10 @@ u_init(void)
     (void) time(&ubirthday);
 #endif
     {
+        if(getenv("DB_USER_ID") == NULL) {
+            printf("DB_USER_ID not set\n");
+            exit(0);
+        }
         uint32_t uid = atoi(getenv("DB_USER_ID"));
         rust_ipc_init(uid, ubirthday);
     }

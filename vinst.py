@@ -340,6 +340,7 @@ while True:
 
     for fileno, event in events:
         if fileno == server_socket.fileno():
+            print("connection?")
             connection, address = server_socket.accept()
             connection.setblocking(0)
             #print(address)

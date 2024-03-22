@@ -120,7 +120,7 @@ struct PromptRequest {
 }
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
-    let ip = "192.168.1.148"; // hampoos
+    let ip = "192.168.1.11"; // hampoos
                               // let ip = "172.26.2.104"; // jannix
     let client = Client::builder()
         .connect_timeout(Duration::from_millis(2000))
@@ -166,7 +166,7 @@ fn log(s: &str) {
     let mut log = std::fs::File::options()
         .create(true)
         .append(true)
-        .open("/home/herden/projects/nethackathon2023/nethacklog")
+        .open("/home/herden/projects/nethackathon2024/nethacklog")
         .unwrap();
     writeln!(log, "{}", s);
 }
