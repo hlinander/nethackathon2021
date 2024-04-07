@@ -5,6 +5,8 @@
 
 #include "hack.h"
 
+void more(void);
+
 static int pet_type(void);
 
 void
@@ -191,6 +193,384 @@ makedog(void)
 
     initedog(mtmp);
     return  mtmp;
+}
+
+#define NUM_COCO_HORSES 5
+typedef struct cocoboi
+{
+    struct monst *mon;
+    coord start;
+    coord stop;
+}
+cocoboi_t;
+
+static cocoboi_t cocobois[NUM_COCO_HORSES] = { 0 };
+
+static boolean valid_start(int x, int y)
+{
+    if(!isok(x, y))
+    {
+        return FALSE;
+    }
+
+    return !MON_AT(x, y);
+}
+
+static boolean coco_start(coord *startp)
+{
+    coord testcc;     /* scratch coordinates */
+    int row;          /* current row we are checking */
+    int lax;          /* if TRUE, pick a position in sight. */
+    int dd;           /* distance to current point */
+    int max_distance; /* max distance found so far */
+    stairway *stway = g.stairs;
+
+    /*
+     * If blind and not telepathic, then it doesn't matter what we pick ---
+     * the hero is not going to see it anyway.  So pick a nearby position.
+     */
+    if (Blind && !Blind_telepat) {
+        if (!enexto(startp, u.ux, u.uy, (struct permonst *) 0))
+            return FALSE; /* no good positions */
+        return TRUE;
+    }
+
+    /*
+     * Arrive at an up or down stairwell if it is in line of sight from the
+     * hero.
+     */
+    while (stway) {
+        if (stway->tolev.dnum == u.uz.dnum && couldsee(stway->sx, stway->sy)) {
+            if(valid_start(stway->sx, stway->sy)) {
+                startp->x = stway->sx;
+                startp->y = stway->sy;
+                return TRUE;
+            }
+        }
+        stway = stway->next;
+    }
+
+    /*
+     * Try to pick a location out of sight next to the farthest position away
+     * from the hero.  If this fails, try again, just picking the farthest
+     * position that could be seen.  What we really ought to be doing is
+     * finding a path from a stairwell...
+     *
+     * The arrays g.viz_rmin[] and g.viz_rmax[] are set even when blind.  These
+     * are the LOS limits for each row.
+     */
+    lax = 0; /* be picky */
+    max_distance = -1;
+    int start_off = rand() % ROWNO;
+ retry:
+    for (int next_row = 0; next_row < ROWNO; next_row++) {
+        row = next_row + start_off;
+        if(row >= ROWNO) {
+            row = (next_row + start_off) - ROWNO;
+        }
+        if (g.viz_rmin[row] < g.viz_rmax[row]) {
+            /* There are valid positions on this row. */
+            dd = distu(g.viz_rmin[row], row);
+            if (dd > max_distance) {
+                if (lax) {
+                    if(valid_start(g.viz_rmin[row], row))
+                    {
+                        max_distance = dd;
+                        startp->y = row;
+                        startp->x = g.viz_rmin[row];
+                    }
+
+                } else if (enexto(&testcc, (xchar) g.viz_rmin[row], row,
+                                  (struct permonst *) 0)
+                           && !cansee(testcc.x, testcc.y)
+                           && couldsee(testcc.x, testcc.y)) {
+                    if(valid_start(testcc.x, testcc.y))
+                    {
+                        max_distance = dd;
+                        *startp = testcc;
+                    }
+                }
+            }
+            dd = distu(g.viz_rmax[row], row);
+            if (dd > max_distance) {
+                if (lax) {
+                    if(valid_start(g.viz_rmax[row], row))
+                    {
+                        max_distance = dd;
+                        startp->y = row;
+                        startp->x = g.viz_rmax[row];
+                    }
+                } else if (enexto(&testcc, (xchar) g.viz_rmax[row], row,
+                                  (struct permonst *) 0)
+                           && !cansee(testcc.x, testcc.y)
+                           && couldsee(testcc.x, testcc.y)) {
+                    if(valid_start(testcc.x, testcc.y))
+                    {
+                        max_distance = dd;
+                        *startp = testcc;
+                    }
+                }
+            }
+        }
+
+        if(max_distance >= 0)
+        {
+            break;
+        }
+    }
+
+    if (max_distance < 0) {
+        if (!lax) {
+            lax = 1; /* just find a position */
+            goto retry;
+        }
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+static boolean valid_stop(int x, int y)
+{
+    for(int i = 0; i < NUM_COCO_HORSES; ++i)
+    {
+        const cocoboi_t *c = cocobois + i;
+        if(!c->mon)
+        {
+            continue;
+        }
+        if(c->start.x == x && c->start.y == y)
+        {
+            return FALSE;
+        }
+        if(c->stop.x == x && c->stop.y == y)
+        {
+            return FALSE;
+        }
+    }
+
+    return TRUE;
+}
+
+static boolean coco_stop(coord *stopp, const coord *startp)
+{
+    int x, y, distance, min_distance = -1;
+
+    for (x = u.ux - 2; x <= u.ux + 2; x++)
+        for (y = u.uy - 2; y <= u.uy + 2; y++) {
+            if (!isok(x, y) || (x == u.ux && y == u.uy))
+                continue;
+
+            if (accessible(x, y) && !MON_AT(x, y)) {
+                distance = dist2(x, y, u.ux, u.uy);
+                if (min_distance < 0 || distance < min_distance) {
+                    if(valid_stop(x, y))
+                    {
+                        stopp->x = x;
+                        stopp->y = y;
+                        min_distance = distance;
+                    }
+                }
+            }
+        }
+
+    /* If we didn't find a good spot, try enexto(). */
+    return min_distance >= 0;
+}
+
+static void nuke_mon(struct monst *m)
+{
+    remove_monster(m->mx, m->my);
+    newsym(m->mx, m->my);
+    mongone(m);
+}
+
+static boolean coco_step(cocoboi_t *c, register int tx, register int ty) 
+{
+    struct monst *md = c->mon;
+    struct monst *mon = NULL;     /* displaced monster */
+    register int dx, dy;          /* direction counters */
+    int fx = md->mx, fy = md->my; /* current location */
+    int nfx = fx, nfy = fy,       /* new location */
+        d1, d2;                   /* shortest distances */
+
+    if(fx == tx && fy == ty)
+    {
+        return TRUE;
+    }
+
+    remove_monster(fx, fy);
+    newsym(fx, fy);
+
+    /*
+     * At the beginning and exit of this loop, md is not placed in the
+     * dungeon.
+     */
+    while (1)
+    {
+        /* Find a good location next to (fx,fy) closest to (tx,ty). */
+        d1 = dist2(fx, fy, tx, ty);
+        for (dx = -1; dx <= 1; dx++)
+            for (dy = -1; dy <= 1; dy++)
+                if ((dx || dy) && isok(fx + dx, fy + dy)
+                    && !IS_STWALL(levl[fx + dx][fy + dy].typ)) {
+                    d2 = dist2(fx + dx, fy + dy, tx, ty);
+                    if (d2 < d1) {
+                        d1 = d2;
+                        nfx = fx + dx;
+                        nfy = fy + dy;
+                    }
+                }
+
+        /* Break if the md couldn't find a new position. */
+        if (nfx == fx && nfy == fy)
+        {
+            nuke_mon(c->mon);
+            c->mon = NULL;
+            return TRUE;
+        }
+
+        fx = nfx; /* this is our new position */
+        fy = nfy;
+
+        if ((mon = m_at(fx, fy)) != 0)
+        {
+            // verbalize1(md_exclamations());
+        }
+        else if (fx == u.ux && fy == u.uy)
+        {
+            // verbalize("Excuse me.");
+        }
+
+        if (mon)
+            remove_monster(fx, fy);
+        place_monster(md, fx, fy); /* put md down */
+        newsym(fx, fy);            /* see it */
+        flush_screen(0);           /* make sure md shows up */
+        // delay_output();            /* wait a little bit */
+        usleep(100000);
+
+        /* Remove md from the dungeon.  Restore original mon, if necessary. */
+        if(mon)
+        {
+            remove_monster(fx, fy);
+            if (mon) {
+                if ((mon->mx != fx) || (mon->my != fy))
+                    place_worm_seg(mon, fx, fy);
+                else
+                    place_monster(mon, fx, fy);
+            }
+            newsym(fx, fy);
+
+            if(fx == tx && fy == ty)
+            {
+                if(isok(tx+1, ty))
+                {
+                    tx += 1;
+                }
+                else if(isok(tx, ty+1))
+                {
+                    ty += 1;
+                }
+                else
+                {
+                    // this kills them often...
+                    nuke_mon(c->mon);
+                    c->mon = NULL;
+                    return TRUE;
+                }
+            }
+        }
+        else
+        {
+            return (fx == tx && fy == ty);
+        }
+    }
+}
+
+static boolean spawn_coco(cocoboi_t *c, boolean allan)
+{
+    if(!coco_start(&c->start))
+    {
+        return FALSE;
+    }
+
+    int mon_id = allan
+        ? PM_ALLAN_INGERMAN
+        : PM_COCONUT_HORSE;
+
+    if(NULL == (c->mon = makemon(&mons[mon_id], c->start.x, c->start.y, NO_MINVENT | MM_EDOG)))
+    {
+        return FALSE;
+    }
+
+    initedog(c->mon);
+    newsym(c->start.x, c->start.y);
+    if(!coco_stop(&c->stop, &c->start))
+    {
+        nuke_mon(c->mon);
+        c->mon = NULL;
+
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+boolean make_coconut_horses(void)
+{
+    oracle_stfu(1);
+
+    memset(cocobois, 0, sizeof(cocobois));
+
+    boolean made_allan = FALSE;
+
+    for(int i = 0; i < NUM_COCO_HORSES; ++i)
+    {
+        boolean success = FALSE;
+        cocoboi_t *c = cocobois + i;
+        
+        if(spawn_coco(c, !made_allan))
+        {
+            if(!made_allan)
+            {
+                made_allan = TRUE;
+            }
+        }
+    }
+
+    if(made_allan)
+    {
+        pline("You hear the sound of coconut horses.");
+        more();
+    }
+    else
+    {
+        pline("You hear the sound of coconuts hitting the floor.");
+        more();
+    }
+
+    boolean all_done = FALSE; 
+
+    while(!all_done)
+    {
+        all_done = TRUE;
+
+        for(int i = 0; i < NUM_COCO_HORSES; ++i)
+        {
+            cocoboi_t *c = cocobois + i;
+            if(c->mon)
+            { 
+                if(!coco_step(c, c->stop.x, c->stop.y))
+                {
+                    all_done = FALSE;
+                }
+            }
+        }
+    }
+cleanup:
+    oracle_stfu(0);
+    return TRUE; //?
 }
 
 /* record `last move time' for all monsters prior to level save so that

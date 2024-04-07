@@ -989,17 +989,24 @@ domonnoise(register struct monst* mtmp)
             verbl_msg = "Please follow me.";
         break;
     case MS_SOLDIER: {
-        static const char
-            *const soldier_foe_msg[3] = {
-                "Resistance is useless!", "You're dog meat!", "Surrender!",
-            },
-            *const soldier_pax_msg[3] = {
-                "What lousy pay we're getting here!",
-                "The food's not fit for Orcs!",
-                "My feet hurt, I've been on them all day!",
-            };
-        verbl_msg = mtmp->mpeaceful ? soldier_pax_msg[rn2(3)]
-                                    : soldier_foe_msg[rn2(3)];
+        if(PM_ALLAN_INGERMAN == monsndx(mtmp->data))
+        {
+            pline_msg = "is too busy serenading you with his stupid song to talk.";
+        }
+        else
+        {
+            static const char
+                *const soldier_foe_msg[3] = {
+                    "Resistance is useless!", "You're dog meat!", "Surrender!",
+                },
+                *const soldier_pax_msg[3] = {
+                    "What lousy pay we're getting here!",
+                    "The food's not fit for Orcs!",
+                    "My feet hurt, I've been on them all day!",
+                };
+            verbl_msg = mtmp->mpeaceful ? soldier_pax_msg[rn2(3)]
+                                        : soldier_foe_msg[rn2(3)];
+        }
         break;
     }
     case MS_RIDER: {

@@ -40,4 +40,6 @@ void send_session_event_timed(const char *evt_name,
                               const char *string_value,
                               int32_t min_delay_seconds);
 
+void oracle_stfu(boolean stfu);
+
 #undef obj

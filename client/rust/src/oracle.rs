@@ -120,7 +120,7 @@ struct PromptRequest {
 }
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
-    let ip = "192.168.1.11"; // hampoos
+    let ip = "10.10.10.5"; // hampoos
                               // let ip = "172.26.2.104"; // jannix
     let client = Client::builder()
         .connect_timeout(Duration::from_millis(2000))
@@ -501,7 +501,19 @@ fn pick_object_to_describe(objects: &mut Vec<MapObject>) -> Option<MapObject> {
     Some(objects.remove(0))
 }
 
+static mut STFU: bool = false;
+
+#[no_mangle]
+pub extern "C" fn oracle_stfu(stfu: bool) {
+    unsafe {
+        STFU = stfu;
+    }
+}
+
 pub unsafe fn update_oracle_ui() {
+    if STFU {
+        return;
+    }
     if TOKIO_RUNTIME.is_none() {
         return;
     }

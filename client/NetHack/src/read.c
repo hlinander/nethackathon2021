@@ -960,7 +960,7 @@ seffects(struct obj *sobj) /* sobj - scroll or fake spellbook for spell */
                as a precaution, be prepared to give arbitrary feedback;
                caller has already reported that it disappears upon reading */
             pline("I am Bernie! You are debt.");
-	    rust_clear_gems();
+	        // rust_clear_gems();
             break;
         }
         break;

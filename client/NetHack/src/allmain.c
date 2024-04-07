@@ -112,6 +112,11 @@ static void deliver_ads(void)
 void
 moveloop(boolean resuming)
 {
+    if(getenv("DEAR_SWEET_BABY_JESUS_STFU"))
+    {
+        oracle_stfu(1);
+    }
+
 #if defined(MICRO) || defined(WIN32)
     char ch;
     int abort_lev;
