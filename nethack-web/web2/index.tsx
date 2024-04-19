@@ -101,7 +101,7 @@ const GameView = observer(({ state }) => {
       if (el != null) {
         state.term.open(el)
         state.term.focus()
-        let socket = new WebSocket("ws://nh.hampe.nu:8484/ws");
+        let socket = new WebSocket("ws://10.10.10.5:8484/ws");
         socket.onopen = function(e) {
           console.log("[open] Connection established");
 
@@ -153,7 +153,7 @@ function LeaderBoard() {
 
   React.useEffect(() => {
     setInterval(() => {
-      fetch("http://nh.hampe.nu:8484/poll")
+      fetch("/poll")
         .then((response) => response.json())
         .then((data) => {
           gameState.setBackendOffline(false)
@@ -245,7 +245,7 @@ function PlayerLeaderBoard() {
 
   React.useEffect(() => {
     setInterval(() => {
-      fetch("http://nh.hampe.nu:8484/leaders")
+      fetch("/leaders")
         .then((response) => response.json())
         .then((data) => {
           gameState.setBackendOffline(false)
@@ -368,7 +368,7 @@ const Events = observer(() => {
 
   React.useEffect(() => {
     setInterval(() => {
-      fetch("http://nh.hampe.nu:8484/events")
+      fetch("/events")
         .then((response) => response.json())
         .then((data) => {
           setState(prev => {

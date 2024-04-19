@@ -93,6 +93,9 @@ type Players struct {
 var players_mutex = sync.Mutex{}
 var players = map[string]*os.Process{}
 
+var tty = make(map[string][]byte)
+var tty_mux = sync.Mutex{}
+
 var (
 	addr = flag.String("addr", ":8484", "http service address")
 )
@@ -271,7 +274,7 @@ read_msg_loop:
 				time.Sleep(3 * time.Second)
 			}
 			// c := exec.Command("/home/eracce/nethackathon2021/build/bin/nethack", "-u", msg.Name)
-			c := exec.Command("sh", "/home/herden/projects/nethackathon2024/wrapped_nethack", msg.Name)
+			c := exec.Command("sh", "../../wrapped_nethack", msg.Name)
 			s.C = c
 			c.Env = os.Environ()
 			c.Env = append(c.Env, fmt.Sprintf("USER=%s", msg.Name))
@@ -310,18 +313,20 @@ func writePump(ctx context.Context, ws *websocket.Conn, s *Session, cancel conte
 			time.Sleep(time.Second)
 			continue
 		}
-
 		n, err := s.PtyPipe.Read(buf)
 		if err != nil {
 			log.Printf("failed to read message from pty: %s", err)
 			return
 		}
-
+		if s.Name != nil {
+			tty_mux.Lock()
+			tty[*s.Name] = append(tty[*s.Name], buf[:n]...)
+			tty_mux.Unlock()
+		}
 		var msg DataMsg = DataMsg{
 			Type: "data",
 			Data: base64.RawStdEncoding.EncodeToString(buf[:n]),
 		}
-
 		msgJson, err := json.MarshalIndent(msg, "", "  ")
 		if err != nil {
 			log.Printf("failed create json msg: %s", err)
@@ -372,10 +377,13 @@ type Session struct {
 	Name    *string
 	PtyPipe *os.File
 	C       *exec.Cmd
+	AllOfIt []byte
 }
 
 var sessionMutex sync.Mutex
 var sessions []string = []string{}
+
+
 
 func serveWs(w http.ResponseWriter, r *http.Request) {
 	log.Printf("connected: %s", r.RemoteAddr)
@@ -493,6 +501,8 @@ LEFT JOIN players p2 ON p2.id = (vinst->'extra'->>'stonk_player_id')::int4
 func main() {
 	sigs := make(chan os.Signal, 1)
 
+	log.Printf("I am become webserver.")
+
 	// Register the channel to receive SIGINT signals
 	signal.Notify(sigs, syscall.SIGINT)
 
@@ -519,6 +529,51 @@ func main() {
 	})
 	http.HandleFunc("/leaders", func(w http.ResponseWriter, r *http.Request) {
 		servePlayerLeaderboard(w, r)
+	})
+	http.HandleFunc("/spectate", func(w http.ResponseWriter, r *http.Request) {
+	    // Parse the input JSON data from the request body
+	    var input map[string]int
+	    if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
+	        http.Error(w, "Invalid request body", http.StatusBadRequest)
+	        return
+	    }
+
+	    // Use the tty_mux to protect concurrent access to the tty map
+	    tty_mux.Lock()
+	    defer tty_mux.Unlock()
+
+	    // Prepare the data to send back
+	    result := make(map[string][]byte)
+
+	    // Check each requested name and prepare the response data
+	    for name, size := range input {
+	        if data, ok := tty[name]; ok && len(data) > size {
+	            // Send only the bytes beyond the specified size, capped to 8128 bytes
+	            upperBound := size + 8128
+	            if upperBound > len(data) {
+	                upperBound = len(data)
+	            }
+	            result[name] = data[size:upperBound]
+	        }
+	    }
+
+	    // Include names in tty that were not requested in the input
+	    for name, data := range tty {
+	        if _, requested := input[name]; !requested {
+	            // Send data up to 8128 bytes
+	            size := 8128
+	            if len(data) < size {
+	                size = len(data)
+	            }
+	            result[name] = data[:size]
+	        }
+	    }
+
+	    // Send the final JSON response
+	    w.Header().Set("Content-Type", "application/json")
+	    if err := json.NewEncoder(w).Encode(result); err != nil {
+	        http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+	    }
 	})
 	ctx := context.Background()
 	http.HandleFunc("/poll", func(w http.ResponseWriter, r *http.Request) {

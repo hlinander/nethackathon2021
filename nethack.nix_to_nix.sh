@@ -19,7 +19,7 @@ lua_archive="lua-5.4.2.tar.gz"
 lua_url="http://www.lua.org/ftp/$lua_archive"
 user_dir="$HOME/.config/nethack"
 #bin_path=$(which coreutils) # Adjust with actual path to `less` and other required binaries
-out=/tmp/sko
+out="$(pwd)/build"
 
 if has_arg "configure" "$@"; then
 	pushd client/NetHack/sys/unix

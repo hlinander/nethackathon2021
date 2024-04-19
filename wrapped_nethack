@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
-cd /home/herden/projects/nethackathon2024/
-export PYTHONPATH=/home/herden/projects/nethackathon2024
-export PYTHON_BIN=/home/herden/projects/nethackathon2024/penv/bin/python
+HELLO_FROM_PATH=$(dirname $(realpath "$0"))
+export PYTHONPATH=$HELLO_FROM_PATH
+export PYTHON_BIN=$HELLO_FROM_PATH/penv/bin/python
 mkdir -p ttyrecs/$USER
 TS=$(date -u +%s)
 export RUST_BACKTRACE=1
 export HOME=$(pwd)
-ovhttyrec/bin/ttyrec -f ttyrecs/$USER/${TS}_${DB_USER_ID}.ttyrec build/bin/nethack -u $@
+
+if [[ -f "$HELLO_FROM_PATH/ovhttyrec/bin/ttyrec" ]]; then
+    TTYREC="$HELLO_FROM_PATH/ovhttyrec/bin/ttyrec"
+else
+    TTYREC="$HELLO_FROM_PATH/ovh-ttyrec/ttyrec"
+fi
+
+$TTYREC -f ttyrecs/$USER/${TS}_${DB_USER_ID}.ttyrec "$HELLO_FROM_PATH/build/bin/nethack" -u $@

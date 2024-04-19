@@ -41,7 +41,7 @@ impl Ipc {
         Ok(Self::Fake)
     }
     pub fn new_tcp() -> Result<Self> {
-        let stream = std::net::TcpStream::connect("192.168.1.11:8001")?;
+        let stream = std::net::TcpStream::connect("10.10.10.5:8001")?;
         stream.set_read_timeout(Some(std::time::Duration::from_secs(3)));
         stream.set_write_timeout(Some(std::time::Duration::from_secs(3)));
         Ok(Self::Tcp(TcpIpc { stream }))

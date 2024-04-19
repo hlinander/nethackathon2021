@@ -211,8 +211,13 @@ static int dooracle(void)
     return 0;
 }
 
+boolean make_coconut_horses(void);
+
 static int doavanza(void)
 {
+  make_coconut_horses();
+  return 0;
+
   char session_id[128];
   Sprintf(session_id, "%ld", ubirthday);
   char turns_num[128];
