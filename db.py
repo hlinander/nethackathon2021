@@ -86,6 +86,8 @@ class Event(Base):
     value = Column(Integer)
     string_value = Column(String)
     extra = Column(JSON)
+    # caused_by = Column(String)
+    # action_name = Column(String)
 
 
 class Stonk(Base):

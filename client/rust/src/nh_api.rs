@@ -1,5 +1,5 @@
 use crate::ipc::{Error, Ipc, Result};
-use crate::nh_proto::{ObjData, SessionEvent};
+use crate::nh_proto::{CoconutSong, ObjData, SessionEvent};
 use crate::oracle;
 use core::ptr::null_mut;
 use nethack_rs::{g, obj};
@@ -19,6 +19,7 @@ use std::{
 enum NHEvent {
     Session(SessionEvent),
     Timed(SessionEvent, i32),
+    Coconut(CoconutSong),
 }
 
 thread_local! {
@@ -27,6 +28,7 @@ thread_local! {
 }
 static mut PLAYER_LOGIN_ID: Option<i32> = None;
 static mut SESSION_START_TIME: Option<i32> = None;
+static mut PLINES: Option<Vec<String>> = None;
 
 static mut EVENT_SENDER_THREAD: Option<JoinHandle<()>> = None;
 
@@ -133,6 +135,9 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
                             evt: evt.clone(),
                             deadline: Instant::now().add(Duration::from_secs(min_delay as u64)),
                         });
+                }
+                NHEvent::Coconut(evt) => {
+                    let _ = until_io_success(|ipc| ipc.coconut_song(evt.clone()));
                 }
             },
             Err(RecvTimeoutError::Timeout) => {
@@ -390,7 +395,34 @@ pub unsafe extern "C" fn send_session_event(
     previous_value: i32,
     string_value: *const c_char,
 ) {
-    let evt = make_session_event(evt_name, string_value, previous_value, value);
+    let evt = make_session_event(
+        evt_name,
+        string_value,
+        previous_value,
+        value,
+        null(),
+        null(),
+    );
+    enqueue_event(NHEvent::Session(evt));
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn send_session_event_fat(
+    evt_name: *const c_char,
+    value: i32,
+    previous_value: i32,
+    string_value: *const c_char,
+    caused_by: *const c_char,
+    action_name: *const c_char,
+) {
+    let evt = make_session_event(
+        evt_name,
+        string_value,
+        previous_value,
+        value,
+        caused_by,
+        action_name,
+    );
     enqueue_event(NHEvent::Session(evt));
 }
 
@@ -399,6 +431,8 @@ unsafe fn make_session_event(
     string_value: *const i8,
     previous_value: i32,
     value: i32,
+    caused_by: *const c_char,
+    action_name: *const c_char,
 ) -> SessionEvent {
     let evt_name = if evt_name != null_mut() {
         std::ffi::CStr::from_ptr(evt_name)
@@ -414,12 +448,28 @@ unsafe fn make_session_event(
     } else {
         "".into()
     };
+    let caused_by = if caused_by != null_mut() {
+        std::ffi::CStr::from_ptr(caused_by)
+            .to_string_lossy()
+            .to_string()
+    } else {
+        "".into()
+    };
+    let action_name = if action_name != null_mut() {
+        std::ffi::CStr::from_ptr(action_name)
+            .to_string_lossy()
+            .to_string()
+    } else {
+        "".into()
+    };
     let evt = SessionEvent {
         session_turn: g.moves as i32,
         name: evt_name,
         previous_value,
         value,
         string_value,
+        caused_by,
+        action_name,
     };
     evt
 }
@@ -445,6 +495,79 @@ pub unsafe extern "C" fn send_session_event_timed(
     string_value: *const c_char,
     min_delay_seconds: i32,
 ) {
-    let evt = make_session_event(evt_name, string_value, previous_value, new_value);
+    let evt = make_session_event(
+        evt_name,
+        string_value,
+        previous_value,
+        new_value,
+        null(),
+        null(),
+    );
     enqueue_event(NHEvent::Timed(evt, min_delay_seconds));
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn coconut_handle_pline(text: *const c_char) {
+    let text = if text != null_mut() {
+        std::ffi::CStr::from_ptr(text).to_string_lossy().to_string()
+    } else {
+        "".into()
+    };
+    if text == "" {
+        return;
+    }
+    if PLINES.is_none() {
+        PLINES = Some(Vec::new());
+    }
+    let plines = PLINES.as_mut().unwrap();
+    if plines.last() != Some(&text) {
+        if plines.len() > 50 {
+            plines.remove(0);
+        }
+        plines.push(text.to_string());
+    }
+}
+
+static mut COCONUT_LINES_LAST_SEND_TIME: Option<Instant> = None;
+
+#[no_mangle]
+pub unsafe extern "C" fn maybe_send_coconut_plines() {
+    if let Some(cache_time) = COCONUT_LINES_LAST_SEND_TIME {
+        if Instant::now().saturating_duration_since(cache_time) < Duration::from_secs(3) {
+            return;
+        }
+    }
+
+    COCONUT_LINES_LAST_SEND_TIME = Some(Instant::now());
+
+    if let Some(plines) = PLINES.as_ref() {
+        if plines.len() > 10 {
+            let monsters_around = oracle::get_monster_list().into_iter().map(|m| m.name).collect::<Vec<_>>();
+            let items_around = oracle::get_map_item_list().into_iter().map(|m| m.name).collect::<Vec<_>>();
+            let mut iter = nethack_rs::g.invent;
+            let mut equipped_items = Vec::new();
+            while iter != null_mut() {
+                let item = &*iter;
+                if (item.owornmask & nethack_rs::W_ARM as i64 ) != 0 /* Body armor */
+                    || (item.owornmask & nethack_rs::W_ARMC as i64 ) != 0 /* Cloak */ 
+                    || (item.owornmask & nethack_rs::W_ARMH as i64 ) != 0 /* Helmet/hat */
+                    || (item.owornmask & nethack_rs::W_ARMS as i64 ) != 0 /* Shield */
+                    || (item.owornmask & nethack_rs::W_ARMG as i64 ) != 0 /* Gloves/gauntlets */
+                    || (item.owornmask & nethack_rs::W_ARMF as i64 ) != 0 /* Footwear */
+                    || (item.owornmask & nethack_rs::W_ARMU as i64 ) != 0 /* Undershirt */
+                    || (item.owornmask & nethack_rs::W_WEP as i64 ) != 0 /* Wielded weapon */
+                {
+                    equipped_items.push(obj_to_obj_data(item).name);
+                }
+                iter = (&*iter).nobj;
+
+            }
+            enqueue_event(NHEvent::Coconut(CoconutSong {
+                plines: plines.clone(),
+                equipped_items,
+                monsters_around,
+                items_around,
+            }));
+        }
+    }
 }

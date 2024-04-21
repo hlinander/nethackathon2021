@@ -185,6 +185,8 @@ vpline(const char *line, va_list the_args)
     if (u.ux)
         flush_screen(1); /* %% */
 
+
+    coconut_handle_pline(line);
     putmesg(line);
 
 #if defined(MSGHANDLER) && (defined(POSIX_TYPES) || defined(__GNUC__))

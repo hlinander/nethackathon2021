@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 has_arg() {
@@ -78,7 +78,7 @@ if has_arg "install" "$@"; then
 	touch $out/testfile
 	mkdir -p $out/bin
 	cat <<EOF >$out/bin/nethack
-#!/bin/bash
+#!/usr/bin/env bash
 PATH=${binPath}:\$PATH
 if [ ! -d ${userDir} ]; then
   mkdir -p ${userDir}
