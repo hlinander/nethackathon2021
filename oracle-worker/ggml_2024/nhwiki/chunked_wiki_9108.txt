@@ -1,0 +1,1000 @@
+the start of the game.  Weapons whose identity has not yet been established
+will have the APPEARANCE listed.
+
+Each character class has a limit to the amount of skill that can be
+obtained in each weapon class.  The maximum skill level is noted under
+the ABCH KMPRaRo STVW columns: - for restricted (cannot advance beyond
+unskilled), b for basic skill, s for skilled, E for expert, M for master,
+and G for grand master.  Weapon skills are explained further below.
+
+Finally, information about each weapon's ability to hit and cause damage
+is listed.  A few weapons have an additional bonus to hit, listed in the
++HIT column.  The base amount of damage to small ("tiny", "small", and
+"medium") and large ("large", "huge", and "gigantic") monsters is given
+in the SDAM and LDAM fields, and is expressed in terms of die rolls.
+For example, 2d6 means 2 dice which can each range from 1 to 6, for a
+total from 2 to 12.  The average amount of damage (useful for comparing
+weapons) against small and large monsters is given under SAVG and LAVG.
+
+
+Weapon skills
+~~~~~~~~~~~~~
+    "First lesson," Jon said. "Stick them with the pointy end."
+        -- George R.R. Martin, "A Game of Thrones"
+
+The table of weapons above is organized by "skill classes".  Continued
+use of a weapon gives you practice in its skill class.  With enough
+practice in a skill class and experience levels, you may have the
+opportunity to advance your skill level in that skill class.  This will
+in turn lead to an improvement in your chance to hit and the damage
+produced by weapons in that class.
+
+               NEEDED        WEAPON       2-WEAP   
+SKILL LEVEL   HITS  EXP    +HIT +DAM    +HIT +DAM  
+~~~~~~~~~~~   ~~~~  ~~~    ~~~~ ~~~~    ~~~~ ~~~~  
+Unskilled       0    0      -4   -2      -9   -3   
+Basic          20    1       0    0      -7   -1   
+Skilled        80    2      +2   +1      -5    0   
+Expert        180    3      +3   +2      -3   +1   
+
+               NEEDED        RIDING     BARE-HAND   MARTIAL
+SKILL LEVEL   HITS  EXP    +HIT +DAM      +DAM       +DAM
+~~~~~~~~~~~   ~~~~  ~~~    ~~~~ ~~~~    ~~~~~~~~~   ~~~~~~~
+Unskilled       0    0      -2    0         0         +1 
+Basic          20    1      -1    0        +1         +3 
+Skilled        80    1       0   +1        +1         +4 
+Expert        180    2       0   +2        +2         +6 
+Master        320    2      --   --        +2         +7 
+Grand master  500    3      --   --        +3         +9 
+
+There are specifically two requirements needed to advance a skill class:
+a number of successful hits by any weapon in the skill class and a
+number of experience levels.  A hit is considered successful if it
+causes more than one point of damage to a monster, regardless if the
+weapon is wielded or thrown.  The particular damage value used for this
+determination is described in "Calculating damage" below.
+
+The number of HITS needed to advance to a particular SKILL LEVEL is shown
+in the tables above; this is cumulative from the beginning of the game
+(although if you start at basic level in a skill you will be pre-credited
+with the 20 hits needed to achieve it). For advancing riding skill, 100
+turns spent moving is equivalent to one hit.
+
+The other criterion used to advance skill levels is experience levels.
+Each time you gain an experience level, you earn a "skill slot" that is
+used up when you an advance a skill.  Thus you can earn a maximum of 29
+skill slots, by advancing from level 1 to level 30.  If you lose an
+experience level, you lose the associated skill slot; if that skill slot
+was used to enhance a skill, you will lose the most recently earned skill
+and are refunded the remaining skill slots from that skill level. 
+
+The tables above also lists the number of additional EXPerience levels
+(skill slots) needed to advance to that skill level (note the difference
+between the two tables).  Unlike the number of hits, this number is not
+cumulative.  Thus, it takes 2 skill slots to advance a weapon from basic
+to skilled, no matter if you started with it as basic or unskilled.  Note
+that these slots are shared with spell skills.
+
+When you start the game, you will have basic skill for the weapons and
+weapon-tools in your initial inventory, have basic skill in bare-handed
+combat if you can advance it beyond expert, basic skill in riding if a 
+Knight, and will be unskilled in all other weapon categories.  When you
+reach the point when you can advance a skill category, you will see the
+message, "You feel more confident in your (weapon/fighting) skills."
+You can then advance the skill using the #enhance command (alt-e on some
+systems).  You may choose to not advance a skill level if you want to
+reserve the skill slots for a different skill. After advancing a skill,
+if you are ready to advance another skill (possibly the same one), you
+will get the message "You feel you could be more dangerous!"  The
+#enhance command can also be used at any time to check your current skill
+levels.
+
+Of course, there are limits to how much you can advance a particular
+skill category.  Each character class has different maximum levels for
+each skill category, as can be seen in weapons table 2 above.  These
+differences help to distinguish the various character classes late in
+the game.  For example, note that many of the fighter classes have skill
+with swords, whereas Priests are restricted from edged weapons but are
+good with bludgeons and missiles.  Note that you can usually advance your
+starting weapons and your Quest Artifact (if it is a weapon) to expert
+skill.
+
+The term "restricted" is used to describe skill categories that are
+permanently unskilled.  They do not appear in the #enhance menu, although
+you will see skills that are unskilled and can be advanced.  If you
+receive an artifact weapon from crowning or sacrificing, and the
+artifact's skill category is restricted, then the restriction will be
+removed and you will be able to advance that skill to basic level; only
+hits made after the unrestriction count towards this advancement.
+
+Note that only character classes who are unrestricted in two-weapon
+skill are able to use the #twoweapon command in their unpolymorphed
+form.
+
+Weapon skills affect your game by adding a bonus to your chance to hit
+and your damage.  The WEAPON +HIT and +DAM columns in the table above
+shows the amount of this bonus for each skill level. 
+
+If you attack a monster while not wielding any weapon, you will cause
+either bare-handed damage (d2) or martial arts (d4) damage.  You only
+cause one or the other, depending on your character class.  These skills
+can be enhanced just like weapon skills -- even to levels beyond those
+of weapons (master and grand master) -- and have their own +DAMage bonuses.
+The martial arts bonus also applies when attacking a monster by kicking it.
+
+
+Calculating the chance to hit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Adapted from the spoiler "weapons", by Robert DeLoura and
+Boudewijn Waijers.)
+
+There are four ways to attack a monster with a weapon.  You can hit the
+monster directly by wielding the weapon and stepping into that monster's
+square.  If no weapon is wielded, you use your bare-handed or martial
+arts skill.  Second, you can use the throw command to throw a weapon or
+any other object (just type the object's inventory letter), or the fire
+command to throw the object currently in your quiver.  Missiles (such as
+arrows) are fired from launchers (such as bows) by wielding the launcher
+and throwing the missile.  Third, you can kick an object at a monster, or
+just kick a monster in an adjacent square. Finally, you can apply a
+wielded polearm (lances are, for combat purposes, considered polearms) at
+a monster at a distance: if your skill in that weapon is basic or worse,
+the monster must be exactly two squares away orthogonally; if skilled, it
+may also be a knight's-move away; if expert (can only apply to lances),
+anywhere at two moves' distance.
+
+It is possible that you may hit with more than one weapon in a turn:
+* If you are using two-weapon combat, then if your primary weapon hits and
+  is not destroyed in the process, and the monster is not dislodged from its
+  position, your secondary weapon also automatically hits. 
+* When firing any arrows from any bow, bolts from a crossbow, stones from a
+  sling, or throwing daggers, darts or shuriken, there may be a chance that
+  several get shot in one turn. The maximum number starts at 1, and receives
+  the following additions:
+  +   1 if you are skilled in the weapon.
+  +   2 if you are expert in the weapon.
+  +   1 if you are a Ranger, a Rogue throwing daggers, or a Samurai firing
+      ya from a yumi.
+  +   1 if you are an elf firing elven arrows from an elven bow.
+  +   1 if you are an orc firing orcish arrows from an orcish bow.
+  +   If this results in a maximum higher than the number of missiles you
+      have, the maximum is reduced to that number.
+  The number actually fired on any given turn is d(maximum). This can be
+  capped by giving a numerical prefix to the fire or throw command; doing
+  so will only decrease, never increase the number you fire.
+
+Your chance to hit is based on the sum of the following items.  The larger
+the number, the better your chance to hit.
+
+The following are added to all attacks:
++   The target monster's armor class.
++   Your experience level, or your hit dice if you are polymorphed.
++   Your total numerical luck, which can range from -13 to +13.
++   A bonus based on your dexterity (see DEXT +HIT in the table below).
++   Your increase accuracy bonus (such as from rings).
++   1 if you are in elven form and are attacking an orc (any o or orcish
+    undead).
++   2 if the target monster was asleep.  It will awaken, whether you hit
+    or miss it.
++   4 if the target monster was paralyzed.  There is a 10% chance that
+    the monster will be unfrozen.
+
+The following are added only when attacking a monster directly with
+a wielded weapon or bare-handed (melee attacks):
++   1 bonus for attacking directly.
++   A bonus based on your strength (see STRENGTH +HIT in the table
+    below).
++   1 if you are XL 1 or 2 (game-balancing beginner's luck).
++   -1 if you are burdened, -3 if stressed, -5 if strained.  You cannot
+    attack in any way if you are overtaxed or overloaded.
++   -3 if you are trapped.
++   2 if the target monster was stunned.
++   2 if the target monster was fleeing.
++   -20 if you are a Monk wearing body armour.
++   If you are a barehanded Monk not wearing body armour or a shield, 2
+    plus your experience level divided by three.
+
+The following are added only when attacking by throwing, firing or
+kicking a weapon, or applying a polearm (long- and medium-range attacks):
++   -1 penalty for attacking from a distance.
++   +2 to -4, depending on your distance to the target monster.
++   -2 to +5, depending on the size of the target monster.
++   2 with a heavy iron ball.
++   4 with a boomerang.
++   2 with throwing weapons (daggers (except athames), knives (except
+    scalpels and worm teeth), spears, javelins, war hammers, aklys, darts,
+    shuriken).
++   -2 with non-throwing weapons.
++   6 with a boulder.
++   1 if you are an elf or Samurai wielding any bow and shooting any arrow.
+    This bonus is 2 when an elf uses an elven bow or a Samurai uses a yumi.
++   Some gloves are a hindrance if you wield any bow class.  Gauntlets of
+    power are -2, and gauntlets of fumbling are -3.
++   -4 if you throw or kick a missile without wielding a matching
+    launcher:
+        LAUNCHER(S)                  MISSILE(S)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        orcish bow, bow, elven bow,  orcish arrow, arrow, silver arrow,
+          yumi                         elven arrow, ya
+        sling                        gems and stones
+        crossbow                     crossbow bolt
++   Enchantment of the launcher you are wielding, if you threw or kicked
+    a matching missile.
++   -1 if your launcher is damaged, -2 if it is very damaged, or -3 if
+    it is thoroughly damaged.  This only applies when you kick or throw
+    a matching missile.
++   An artifact launcher +HIT bonus, if any applies.
+
+If the target monster is being attacked with a weapon or weapon-tool --
+your (primary) wielded one when attacking directly or with a polearm, or
+the missile if thrown or kicked -- there are additional bonuses based on
+that object:
++   The object's enchantment.
++   The object type's to-hit bonus.  See +HIT in weapons table 2.
++   A weapon skill +HIT bonus if not using two weapons; see WEAPON +HIT
+    in the weapon skills table above, for the current skill level of
+    that weapon.
++   A penalty if using two weapons and/or riding while poorly skilled;
+    see 2-WEAP +HIT and RIDING +HIT in the weapon skills table above.
+    (For the former purpose, your skill is considered to be the lower of
+    your actual two-weapon skill and your skill in your primary weapon.)
++   An additional -2 if using two weapons while riding, regardless of skill.
++   2 for blessed weapon(-tool) against a demon or undead monster.
++   2 for weapons in spear class against X, D, J, N, or H.
++   2 for a trident against snakes or sea monsters out of water.
++   4 for a trident against any swimmer in water.
++   2 for weapons in pick-axe class against xorns and earth elementals.
++   An artifact +HIT bonus, if any applies.
+
+A die from 1 to 20 is rolled and compared to the to-hit total.  If the
+die roll is less than the to-hit total (or equal when throwing or
+kicking), you hit the monster and inflict damage as described below;
+otherwise, you miss the monster.  The die roll is also used in determining
+if certain "chance" artifact effects occur (e.g., beheading or Magicbane's
+special attacks).
+
+There are also some special cases.  If you are swallowed or engulfed by
+a monster, then direct or thrown attacks always succeed, although you
+will be unable to kick or apply polearms.  Unicorns will always catch
+gems and glass that is thrown or kicked at them, causing no damage. Your
+Quest Leader will always catch your Quest Artifact, and return it to you
+if peaceful.
+
+Here is the table of attribute adjustments:
+                  STRENGTH   DEXT   :                   STRENGTH   DEXT
+  ATTRIBUTE      +HIT  +DAM  +HIT   :   ATTRIBUTE      +HIT  +DAM  +HIT
+  ~~~~~~~~~~~~~  ~~~~  ~~~~  ~~~~   :   ~~~~~~~~~~~~~  ~~~~  ~~~~  ~~~~
+        3         -2    -1    -3    :   18/76 - 18/90   +2    +4    --
+     4 to  5      -2    -1    -2    :   18/91 - 18/99   +2    +5    --
+     6 to  7      -1     0    -1    :       18/**       +3    +6    --
+     8 to 14       0     0     0    :        19         +3    +6    +5
+       15          0     0    +1    :        20         +3    +6    +6
+       16          0    +1    +2    :        21         +3    +6    +7
+       17         +1    +1    +3    :        22         +3    +6    +8
+       18         +1    +2    +4    :        23         +3    +6    +9
+  18/01 - 18/50   +1    +3    --    :        24         +3    +6   +10
+  18/51 - 18/75   +2    +3    --    :        25         +3    +6   +11
+
+
+Calculating damage
+~~~~~~~~~~~~~~~~~~
+(Adapted from the spoiler "weapons", by Robert DeLoura and
+Boudewijn Waijers.)
+
+If you hit directly without wielding anything, you inflict either bare-
+handed base damage (d2) or martial arts base damage (d4). No base damage
+occurs against shades. If the base damage is more than one point, you
+exercise that weapon skill.  Added to this is a d4 bonus if wearing
+blessed gloves while fighting undead or demons, or d20 if wearing a silver
+ring(s) and no gloves while fighting a silver-hating monster.  There is
+also a small chance of stunning your opponent and causing it to stagger
+back a space (if it can); this will only happen if you are wearing neither
+body armour nor shield and are in your natural form.
+
+Damage from weapons, weapon-tools, gems, stones, ball, or chain is the
+total of the following:
++   Impacting object's base damage (SDAM or LDAM above, accordingly)
++   Impacting object's enchantment (weapon and weapon-tool only)
+------------------------------------------------------------------------
+=   Subtotal A
+#   Subtotal A is set to zero if attacking thick-skinned creature with
+    item made of venom, wax, food, paper, cloth, or leather (namely, a
+    bullwhip).  Thick-skinned creatures include: gargoyle, winged gargoyle,
+    all mimics, mumak, titanothere, baluchitherium, mastodon, all baby and
+    adult dragons (D), earth elemental, all baby and adult nagas (N), xorn,
+    skeleton, gold golem, wood golem, clay golem, stone golem, glass golem,
+    iron golem, horned devil, barbed devil, shark, crocodile, salamander,
+    Chromatic Dragon, and Ixoth.
+#   Subtotal A is set to zero if attacking a shade without silver.
+#   Heavy iron ball sets subtotal A to 1-25, depending on weight.
++   d4 if using a blessed item against undead or demon.  Undead include
+    all liches (L), all mummies (M), all vampires (V), all wraiths/wights
+    (W), all zombies (Z), ghosts, and shades.  Demons are all & except
+    Death, Pestilence, Famine, the mail daemon, djinn, and sandestins.
+    This bonus can't be doubled.
++   d4 if using an axe or battle axe against a wooden creature (namely,
+    wood golems).  This bonus can't be doubled.
++   d20 if silver weapon against silver-hating creature.  These include
+    all were-creatures (in both human and creature form); all vampires
+    (V); all demons (&) except Death, Pestilence, Famine, the mail
+    daemon, djinn, and sandestins; shades; and all imps (i) except 
+    tengu.  This bonus can't be doubled.
++   erosion penalty from whichever of rust/fire damage or rot/corrosion
+    damage is greater (-1 = damaged, -2 = very damaged, -3 = thoroughly 
+    damaged). This won't reduce subtotal B beyond 1.
+------------------------------------------------------------------------
+=   Subtotal B.  This is the value that must be greater than one for the
+    hit to be counted toward a weapon skill.
++   If you are a Rogue in natural form hitting a fleeing monster, aren't
+    stuck or using two weapons, and subtotal B is more than one point,
+    you strike from behind with an additional random damage from 1 to
+    your experience level.
++   2d10 for a successful joust (2d2 if with a secondary weapon). This
+    bonus can't be doubled. To joust successfully, you need to hit with a
+    lance in melee while riding (and not fumbling or stunned), and the
+    chance is dependent on your skill in lance (or, if two-weaponing, the
+    lower of your skill in two-weapon combat and in lance): 20% at
+    unskilled, 40% at basic, 60% at skilled, 80% at expert. The monster
+    will be stunned for a turn and thrown back a square (if possible).
+    There is a small chance that the lance will break (dependent on your
+    Luck). Successfully jousting will always exercise your weapon skill.
++   1 if you're a Samurai using ya with a yumi, or are an elf using elven
+    arrows with an elven bow. Polymorph doesn't count.
++   Artifact damage bonus, doubling, and/or special attacks.  This may
+    apply only against certain creatures.  See art1-343.txt.
+------------------------------------------------------------------------
+=   Total damage
+Hitting directly with a launcher, hitting directly with a missile, using
+the wrong missile with a launcher, or using a polearm at close range
+(unless mounted) causes only d2 damage (zero against shades) and does not
+exercise your weapon skill. If you attack directly with a boomerang,
+there's a chance (decreasing with higher Luck) that the boomerang
+breaks, causing another 1 point of damage (no damage to shades).
+
+Damage from other objects are as follows.  No weapon skills are exercised.
+  OBJECT            DAMAGE
+  ~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  corpses           2 to 8, depending on size.  Cockatrice/chickatrice
+                    corpses (nicknamed "rubber chickens") turn monsters
+                    to stone, or do no damage if monster is stoning-
+                    resistant.
+  eggs              1, penalize luck if you laid it, and no increase
+                    damage bonus.
+                    Cockatrice/chickatrice eggs (nicknamed "stoning
+                    grenades") turn monsters to stone, or do no damage
+                    if monster is stoning-resistant.
+  clove of garlic   1, makes undead (but NOT demons) flee for 2d4 (more)
+                    turns.
+  cream pie,        0, blinds target; no increase damage bonus.
+    blinding venom  
+  acid venom        2d6 to monsters not acid resistant; no increase
+                    damage bonus.
+  potions           See pot1-343.txt.
+  expensive camera  0, breaks camera, no increase damage bonus.
+  mirror            1, breaks mirror (even on shades) with a -2 penalty
+                    to your luck.
+  boulder           d20.
+  heavy iron ball   1 to 25, depending on weight and subject to rusting.
+  iron chain        d4+1, subject to rusting.
+  other objects     1 to 6, depending on weight. Silver objects receive
+                    a +d20 bonus against a silver-hating creature (see
+                    above for list).
+
+Additional damage can occur to all of the above attacks (even against
+shades; however, the first two bonuses are not applied if your current
+damage total is less than one):
++   Your increase damage bonus (such as from rings), unless if noted
+    above.
++   The STRENGTH +DAM bonus from the attributes adjustment table above.
+    This won't occur if you aren't allowed the increase damage bonus, or
+    if you're firing a missile from a launcher.
++   If you scored a hit that exercises a weapon skill, the +DAM bonus
+    for that weapon skill or for two-weapon combat skill (and for
+    riding skill if applicable, unless using two weapons). If fighting
+    with two weapons, your skill for this purpose is considered to be the
+    lower of your actual two-weapon skill and your skill in the single
+    weapon scoring the hit.
++   If you hit a non-poison-resistant monster with a fired poisoned
+    missile, there's a 10% chance of an instant kill, else you inflict d6
+    more damage.
+Your total damage is limited from being negative.  If you are allowed an
+increase damage bonus, you will score at least 1 point of damage.
+
+When you attack a monster and are polymorphed into a creature, you usually
+use the attacks of your polymorphed form.  However, if you are in a form
+that can use a weapon, are wielding something, and attempt a weapon,
+claw, kick, bite, sting, touch, butt, or tentacle attack, then you will
+attack with the wielded object instead.
+
+You may sometimes shatter your opponent's weapon if you are wielding a
+two-handed weapon, or are a Samurai wielding a katana with nothing in your
+off-hand. Your skill with your weapon must be skilled or better.  The chance
+depends upon your weapon's erosion and the ability of your opponent's weapon
+to resist; it is about 2.5% under the best circumstances.  This attack also
+causes the monster to flee for 2d3 (more) turns.
+
+Some monsters fight back passively when attacked.  Also, when a black or
+brown pudding is hit directly with an iron weapon, it will be cloned
+after taking damage.
+
+
+What's the relationship between launcher and missile modifiers?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A very brief summary (for the full details, see the above two sections) of
+which effects enchantments, erosions, and artifact combat bonuses will have
+when using a launcher and missile in the correct combination:
+
+MODIFIER                           TO HIT    DAMAGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~:~~~~~~~~~~~~~~~~~~
+Launcher enchantment            :   YES        NO    
+Launcher erosion                :   YES        NO
+Launcher artifact to-hit bonus  :   YES        NO
+Launcher artifact damage bonus  :   N/A       N/A
+Missile enchantment             :   YES       YES
+Missile erosion                 :    NO       YES
+Missile artifact to-hit bonus   :   YES        NO
+Missile artifact damage bonus   :    NO       YES
+
+
+Choosing an early weapon
+~~~~~~~~~~~~~~~~~~~~~~~~
+Most players know that the best weapons in NetHack are artifacts (see
+art1-343.txt and art2-343.txt).  However, you usually won't find a good
+artifact weapon until you are well into a game.  Which weapons should you
+use until then?
+
+The best general advice is to use the same weapon preferences that
+monsters use.  Their choices of wielded weapons for hand-to-hand combat,
+from most to least preferred, are as follows:
+  cockatrice/chickatrice corpse, tsurugi, runesword, dwarvish mattock,
+  two-handed sword, battle-axe, katana, unicorn horn, crysknife, trident,
+  long sword, elven broadsword, broadsword, scimitar, silver saber, morning
+  star, elven short sword, dwarvish short sword, short sword, orcish short
+  sword, mace, axe, dwarvish spear, silver spear, elven spear, spear,
+  orcish spear, flail, bullwhip, quarterstaff, javelin, aklys, club,
+  pick-axe, rubber hose, war hammer, silver dagger, elven dagger, dagger,
+  orcish dagger, athame, scalpel, knife, worm tooth.
+
+If monsters can attack you from a distance with a ranged weapon or
+polearm, they will use them in the following order:
+  halberd, bardiche, spetum, bill-guisarme, voulge, ranseur, guisarme,
+  glaive, lucern hammer, bec-de-corbin, fauchard, partisan, lance,
+  dwarvish spear, silver spear, elven spear, spear, orcish spear, javelin,
+  shuriken, ya, silver arrow, elven arrow, arrow, orcish arrow, crossbow
+  bolt, silver dagger, elven dagger, dagger, orcish dagger, knife, flint
+  stone, rock, loadstone, luckstone, dart, boomerang (not yet implemented),
+  cream pie.
+
+Classes that are good fighters usually start with good weapons (for
+example, BKRaSV), but other classes may want to switch to a different
+type of weapon as soon as possible.  During the first few levels of the
+game, you can #untrap dart and arrow traps to get some ranged weapons to
+throw.  Daggers (especially elven) are often left by monsters in the
+first few levels and in the mines, and have a +2 to-hit bonus.  Pick-axes
+(good to practice skill for dwarvish mattock), unicorn horns, and
+quarterstaffs (from wood golems) appear somewhat later in the game and
+are good choices for certain classes.
+
+Note that you will start out unskilled in weapon categories other than
+your starting weapons, which makes fighting with other weapons difficult
+until you can advance them to basic.  Using petrifying corpses requires
+gloves and has other risks.  Naturally, there are other ways to fight
+and defend yourself as well.
+
+
+Weapon enchantment and erosion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Adapted from the spoiler "enchant.lim" by Peter Snelling and
+Boudewijn Waijers.)
+
+Your weapon's enchantment (e.g., -1, +0, +2) affects both your chance to
+hit monsters and the amount of damage produced.  However, damage is
+reduced if your weapon has been eroded by rust/fire or corrosion/rotting.
+
+Some weapons are made of materials that do not erode (see weapons table 1),
+but others must be specially protected to prevent erosion.  This section
+explains how to enchant your weapon and protect it from erosion.
+
+All of the weapons and tools listed above can only be enchanted by reading
+scrolls of enchant weapon.  You must wield the weapon first.  The effect
+is dependent upon the blessed status of the scroll and the weapon's
+enchantment before reading the scroll.  A blessed scroll adds 1 or more
+enchantments, based on the current enchantment (see table below).  An
+uncursed scroll adds only one enchantment.  Cursed scrolls remove one
+enchantment; however, artifacts other than Sting or Orcrist are not
+affected by cursed scrolls of enchant weapon.
+  Current enchantment  -3 to -1  +0 to +2  +3 to +5  +6 to +8  +9 or more
+  ~~~~~~~~~~~~~~~~~~~  ~~~~~~~~  ~~~~~~~~  ~~~~~~~~  ~~~~~~~~  ~~~~~~~~~~
+  Additional possible   1 to 4    1 to 3    1 to 2       1       0 to 1
+
+A blessed or uncursed scroll will further make a cursed weapon uncursed,
+and will convert a worm tooth into a crysknife.  Cursed scrolls will
+convert a crysknife into a worm tooth.  There is also a 2/3 chance of
+your weapon being destroyed if it was more than +5 (less than -5) before
+reading a non-cursed (cursed) scroll.
+
+Thus, the maximum safe enchantment for a weapon is +7.  This is obtained
+by reading uncursed or blessed scrolls until +5 is reached, and then
+reading a blessed scroll.  If by chance this results in +6, you should
+bring the enchantment back down to +5 -- by engraving one letter with
+the weapon or by reading a cursed scroll of enchant weapon -- before
+trying again.  Note: Engraving works only for weapons with edges, and for
+athames only when they are cursed.  Weapons may also lose enchantments
+when zapped with a spell of drain life or used to hit a disenchanter, but
+may resist; artifacts will resist more than ordinary weapons.
+
+The artifact Magicbane has special attack effects that decrease in
+frequency as the enchantment is increased.  See art2-343.txt for a
+discussion on why enchantment to +2 is the optimal point to maximise
+these.
+
+A special case occurs if you are confused while reading a scroll of
+enchant weapon.  Blessed or uncursed scrolls of enchant weapon while
+confused will remove any rust, fire, corrosion or rot damage and
+erodeproof your weapon.  The weapon's current enchantment does not matter.
+In the special case of crysknives, they become "fixed"; unfixed crysknives
+have a 100% chance of reverting to a worm tooth when they cease to be
+carried (possibly within a container) by you or a monster, fixed only 10%.
+
+Reading a cursed scroll of enchant weapon while confused removes any
+erodeproofing but will not otherwise damage your weapon.  You can also
+choose a weapon that doesn't damage (such as one made of silver),
+temporarily protect your weapon by applying a layer of grease from a
+can of grease, or #dip a damaged metallic weapon into a non-cursed
+potion of oil to remove one level of each type of damage.
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Corrections and clarifications provided by Joe Bednorz, Aaron Bell,
+Mark Bever, Patrick Clot, David Corbett, Kieron Dunbar, David Grabiner,
+Troy Holly, Ivan, Eva Myers, nyra, Janis Papanagnou, Pat Rankin,
+David Richerby, and Shaman.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Reconciliation {86634 2013-08-18T17:23:40Z {0 } Redirected page to [[Sacrifice]] #REDIRECT [[Sacrifice]]}
+&&%s&& %s Acronyms {144320 2022-02-02T11:52:49Z {4001279 Umbire the Phantom}  A list of acronyms, initialisms and abbreviations of the NetHack community. Red links in this list probably need a redirect to the correct article, or maybe a new article. Also look in [[:Category:Acronyms]]. For nicknames and item class abbreviations like "?oGD" for "[[scroll of gold detection]]", see [[Abbreviations]].
+
+* [[AC]]: ''armor class'' &ndash; Usually called AC, and displayed as AC on the status line.
+* [[AoY]] or "oY: ''Amulet of Yendor'' &ndash; Everyone wants it. Also called "the Amulet". The [[cheap plastic imitation of the Amulet of Yendor|cheap plastic imitation]] is a "fake AoY" or "fake Amulet".
+* [[ASCII]]: ''American Standard Code for Information Interchange'' &ndash; The character set from which NetHack finds those map symbols.
+* [[BSD]]: ''Berkeley System Distribution'' &ndash; Once a popular operating system for the VAX machine, and the original platform for NetHack. Today "BSD" refers to the modern variants of the original BSD.
+* [[BDSM]]: Probably an attempt to refer to black (or blue) dragon scale mail, in analogy to GSDM and SDSM. In non-NetHack contexts, or in certain jokes about nymphs or foocubi, BDSM may be an initialism of "bondage, domination, sadism, masochism".
+* [[DSM]]: ''dragon scale mail'' &ndash; Without the color, if you remove the first letter from GDSM or SDSM.
+* [[DYWYPI]]: ''Do you want your possesions identified?'' &ndash; The familiar message from the end of your game. Writing "DYWYPI?" is a way to imply that the hero died.
+* [[E]]: ''[[Elbereth]]'' &ndash; In contexts like "Engrave E" or "Why didn't you E?", especially in [[IRC]] where participants remain too lazy to type Her name.
+* [[FAQ]]: ''frequently asked questions'' &ndash; Many Usenet groups, including RGRN, periodically post a FAQ to explain the group.
+* [[GDSM]]: ''gray dragon scale mail'' &ndash; Non-metal armor that provides good AC and magic resistance. Frequent wish, along with SDSM.
+* [[GoD]] or [oD: ''gauntlets of dexterity'' &ndash; Sometimes an alternative to gauntlets of power in ascension kits.
+* [[GoP]] or [oP: ''gauntlets of power'' &ndash; Common item in ascension kits, for boosting strength to 25.
+* [[IRC]]: ''Internet Relay Chat'' &ndash; Online chat, divided into rooms called channels. Libera has a #nethack channel for spoily discussion.
+* [[LRS]]: ''Larn Revenue Service'' &ndash; NetHack mentions the LRS when you try to drop or throw a negative amount of gold.
+* [[NGPL]]: ''NetHack General Public License'' &ndash; Usually refers to the template {{tl|NGPL}} on this wiki.
+* [[NH]]: ''NetHack''
+* [[NHINRL]]: ''NetHack is not real life'' &ndash; Explanation for why NetHack does not always follow the physics of the real world.
+* [[PYEC]]: ''the Platinum Yendorian Express Card'' &ndash; Tourist's quest artifact, and popular wish for other neutral characters who want to add charges to items.
+* [[RGRN]] or [[rgrn]]: ''rec.games.roguelike.nethack'' &ndash; The game's discussion group on Usenet.
+* [[RL]]: ''real life'' or ''roguelike'' &ndash; Usually in the phrase NHINRL. Some other roguelike games have RL in their names.
+* [[S]] or [[S'EM]]: ''[[SLASH'EM]]'' &ndash; An "S" in the subject line of RGRN posts may indicate that the post is about SLASH'EM.
+* [[SDSM]]: ''silver dragon scale mail'' &ndash; Non-metal armor that provides good AC and reflection. Frequent wish, along with GDSM.
+* [[TDTTOE]]: ''The DevTeam Thinks of Everything'' &ndash; The expression for when you try something strange in NetHack, and the game reacts appropriately.
+* [[unihorn]]: ''unicorn horn'' &ndash; Important cure. A cursed unihorn is unhelpful for that, but a spare unihorn may help.
+* [[WoW]] or /oW: ''wand of wishing'' &ndash; Everyone wants this. The WoW in the [[Castle]] is usually termed the "castle wand".
+* [[WoY]]: ''Wizard of Yendor'' &ndash; More frequently terms for him are "[[Rodney]]" or "the Wizard". The WoY wants the AoY.
+* YA...: ''yet another...''
+** [[YAAD]]: ''Yet Another Annoying Death'' &ndash; Alternative to YASD, when the annoyed player blames the game, not a player's mistake, for the death of the hero.
+** [[YAAP]]: ''Yet Another Ascension Post'' &ndash; A post to [[RGRN]] announcing that a player won the game.
+** [[YAFAP]]: ''Yet Another First Ascension Post'' &ndash; A post to RGRN announcing a player's first win.
+** [[YAFM]]: ''Yet Another Funny Message'' &ndash; Because you did not expect the message, but [[TDTTOE]].
+** [[YANC]]: ''Yet Another Newt Comic'' &ndash; A ''[[Dudley's dungeon]]'' strip in which a [[newt]] appears and scares (and usually kills) Dudley.
+** [[YANI]]: ''Yet Another New Idea'' &ndash; A muse to add some feature to NetHack.
+** [[YASD]]: ''Yet Another Stupid Death'' &ndash; A mistake that causes the death of the hero.
+
+[[Category:Community]]}
+&&%s&& %s Acronym {25317 2008-02-04T22:49:56Z {458 Kernigh} #REDIRECT [[Acronyms]], the page is a list of acronyms, so I am using the plural. #REDIRECT [[Acronyms]]}
+&&%s&& %s Do not pass go. Do not collect 200 zorkmids. {144662 2022-02-25T14:08:06Z {4001279 Umbire the Phantom} /* Strategies */ [[Image:One Turn Fail.JPG|thumb|400px|Off to a poor start.]]
+
+If the player somehow manages to die on or before the first turn (indicated by "T:1" if the [[time]] option is enabled), the following message appears:
+
+:{{message|You die... ''Do not pass go. Do not collect 200 [[zorkmids]].''}}
+
+The message is a reference to the ''Monopoly'' board game: Monopoly players periodically pass the Go space on the board and earn 200 dollars each time they do so, and players that end up going to the Jail space must not pass Go, even if Go is between their current position and Jail. The Chance and Community Chest cards that can deliver this penalty read: ''"Go directly to jail. Do not pass go. Do not collect $200"''
+
+==Causes of death==
+Many players never receive this message, but outside of [[#Intentional 1-turn death|intentional attempts]], there are a few rare accidents that can cause it.
+* Probably the most common way is to start as a [[Knight]], attempt to #[[ride]] your [[pony]] at turn 1, fall off, and take enough damage to die. The #ride command uses a turn if you mount successfully, but does not use a turn if you mount and fall off, making it possible to trigger this with repeated failed attempts.
+* As your first move, you might trip a trap that kills you. While most of the sufficiently dangerous traps never appear at dungeon level 1, it is still possible to trigger a [[dart trap]] that fires a poisoned [[dart]] and hits the 10% [[instadeath]], or suffer the fate of many [[Pet|cats and dogs]] at the hands of a [[falling rock trap]].
+* You zap an offensive wand that produces a ray (e.g. fire, cold, magic missile) as your first move, and the ray bounces from a wall and kills you. In a similar vein, a [[wand of polymorph]] can trigger a [[system shock]] if you use it on yourself, with a good chance of instantly killing the character in question. This last type of death is comparatively rare, since only [[wizard]]s can start with such wands.
+
+The following accidents might also trigger this message:
+* The game places an unidentified object that can kill you if you use it (such as a cursed wand) on the first up staircase, and autopickup is enabled. After grabbing the item (which does not use a turn with autopickup), if using it kills you (e.g. a cursed wand explodes or the ray rebounds and hits you, similar to the wizard example above) you will trigger the message.
+** This includes [[artifact blast|blasts]] from cross-aligned [[artifact]]s, though the odds of such an event are infinitely lower. [http://www.youtube.com/watch?v=D9oMSPzChgk Here, ais523 demonstrates] a tool-assisted first-turn death to picking up [[Grayswandir]] as a [[Tourist]]; he has calculated the odds of this to be roughly 1 in 3 million.
+
+==Methods and avoidance==
+To avoid the most common possible source, [[Knight]]s should simply not try to #ride their starting [[pony]] until they can survive the possible 14 HP damage from falling off. If attempting to ride your steed fails on turn 1, do not try to #ride again until the pony has sufficient tameness and/or you have more [[hit points]].
+
+It is also good advice in general to avoid aiming a wand or spell at a wall if the angle of the ray will cause it to bounce back at you, unless you can resist the ray's damage or have a means of [[reflection]].
+
+=== Intentional 1-turn death ===
+[[File:WizardryFlunker.png|left|thumb|320px|Commiting suicide on the first turn with a wizard's wand of lightning.]]
+On the other hand, there are also a few intentional methods for a curious player to trigger the message; as above, a Knight attempting to ride their saddled pony can do so, although this may "fail" if the game allows them to mount their steed. As mentioned previously, wizards can start with one of many random wands, and may have a powerful wand to zap themselves with, such as a [[wand of fire]] or [[wand of lightning]]. Casting [[force bolt]] or {{spell of|magic missile}} at yourself will fail because of your cloak's [[magic resistance]].
+
+In addition, wizards and monks start with random scrolls that can assist in intentional first-turn deaths:
+
+* The [[scroll of genocide]] can be read to genocide your own race.
+* A [[scroll of fire]] may deal sufficient damage to you, including exploding potions.
+* An uncursed [[scroll of earth]] will bring down a boulder on your head. 
+
+It is also possible, albeit time-consuming, to overflow the [[turn]] counter to turn 1 and then die, technically fulfilling the condition for the message.
+
+Due to the various reasons above, killing a character on the first turn this way tends to occur when start-scumming wizards, since that player will want to get to the next starting inventory roll as quickly as possible - on sheer averages, this means a first-turn death is very likely to be reported at least once.
+{{clear}}
+
+{{upcoming|NetHack 3.7.0|For games running over 100000 turns, prayer timeout increases by 1 every 100 turns, so prayer will eventually fail and you will starve to death. This was implemented to prevent denial-of-service attacks against [[public server]]s.
+
+If a game runs over one billion turns, it ends immediately in an [[Escaping the dungeon|escape]]:
+
+{{message|The dungeon capitulates.}}}}
+{{nethack-366}}
+[[Category:Messages]]}
+&&%s&& %s Stamped scroll {25334 2008-02-06T09:37:26Z {0 } Redirecting to [[Scroll of mail]] #REDIRECT [[Scroll_of_mail]]}
+&&%s&& %s Cherry {147727 2022-08-20T11:01:30Z {4001279 Umbire the Phantom} rd #REDIRECT [[Dudley's dungeon#Cherry]]}
+&&%s&& %s You shudder for a moment {32371 2008-05-26T23:40:33Z {701 Rogerb-on-NAO} Disambiguate. The message '''"You shudder for a moment"''' can appear in the following cases:
+* You suffered [[system shock]] as a result of an attempted [[polymorph]]
+* You [[level teleport]]ed, but remained on the same [[level]]
+
+{{disambig}}
+{{nethack-343}}}
+&&%s&& %s MediaWiki:Anontalkpagetext {25382 2008-02-09T02:01:14Z {679 Ray Chason} Fix a link ----''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical IP address to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.''
+&#91;[http://samspade.org/whois?query={{PAGENAMEE}} WHOIS] • [http://openrbl.org/query?{{PAGENAMEE}} RDNS] • [http://www.robtex.com/rbls/{{PAGENAMEE}}.html RBLs] • [http://www.dnsstuff.com/tools/tracert.ch?ip={{PAGENAMEE}} Traceroute] • [http://www.as3344.net/is-tor/?args={{PAGENAMEE}} TOR check]&#93; · &#91;[[wikipedia:Regional Internet registry|RIR]]s: [http://ws.arin.net/whois/?queryinput={{PAGENAMEE}} America] · [http://www.ripe.net/fcgi-bin/whois?searchtext={{PAGENAMEE}} Europe] · [http://www.afrinic.net/cgi-bin/whois?query={{PAGENAMEE}} Africa] · [http://www.apnic.net/apnic-bin/whois.pl?searchtext={{PAGENAMEE}} Asia-Pacific] · [http://www.lacnic.net/cgi-bin/lacnic/whois?lg=EN&query={{PAGENAMEE}} Latin America/Caribbean]&#93;}
+&&%s&& %s Rodent {150223 2023-03-12T05:34:56Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks. {{stub}}
+The [[monster]]s in the '''rodent''' [[monster class]] are
+* {{monsymlink|sewer rat}}
+* {{monsymlink|giant rat}}
+* {{monsymlink|rabid rat}}
+* {{monsymlink|rock mole}}
+* {{monsymlink|woodchuck}}
+* {{monsym|wererat_(rodent)}} {{monsym|wererat_(human)}} [[wererat]]
+
+==Strategy==
+
+None of the rodents are a real threat. They are split between the [[rats]], amongst the weakest monsters in the game and the hardy but slow [[rock mole]]. The [[woodchuck]] is not randomly generated, but shares rock mole characteristics (but although they [[dig]] they are not [[metallivore]]s).
+
+The [[wererat]] is the weakest of the lycanthropes but is more dangerous than other rodents due to its [[Monster_(command)|summon help]] ability and the [[lycanthropy]] affliction.
+
+==Encyclopedia entry==
+{{encyclopedia|
+A gnawing mammal (order _Rodentia_) having in each jaw two (rarely four) incisors, growing continually from persistent pulps, and no canine teeth, as a squirrel, beaver, or rat.
+|[ Webster's Comprehensive International Dictionary of the English Language ]
+}}
+
+[[Category:Monster classes]]
+{{nethack-343}}}
+&&%s&& %s What to genocide {25412 2008-02-10T03:47:04Z {679 Ray Chason} Replace this with something useful #REDIRECT [[Genocide#Common_genocides]]}
+&&%s&& %s Bad Idea {148499 2022-10-05T01:00:33Z {4001279 Umbire the Phantom} de-SLEX :''You feel that [[aggravate monster|eating the little dog was a bad idea]].''
+
+Many things in [[NetHack]] are a [[Bad Idea]], although that often only becomes apparent after your demise, which may well be [[YASD]].
+
+A few Bad Ideas include:
+
+*Using only the [[movement tactics#Diagonal movement|arrow keys]].
+*[[numeric prefix|Holding keys down]].
+*Letting monsters hit you for no good reason.
+*[[genocide|Genociding]] [[@]].
+*Blessed-genociding [[h|mind flayers]] as a [[dwarf]].
+*Attempting to genocide while [[confused]].
+*Casting {{spell of|force bolt}} in potion shops.
+*Casting {{spell of|fireball}} in bookstores.
+*Looting an [[container trap|exploding box]] in a tool shop.
+*Shopping while [[teleportitis#Shopping with uncontrolled teleportitis|feeling jumpy]].
+*Smashing open every [[shop#Generation|locked door]] in your way.
+*[[Paste|Pasting into the NetHack terminal]] without checking the clipboard.
+*[[fountain#fountain quaffing|Quaffing from every fountain]] in the [[water moccasin|hope]] of a [[water demon|wish]] while at a low level.
+*[[knight#The horse|Getting on your pony]] right at the start of the game.
+*[[Choking|Eating]] "just one more" [[giant]] or [[lump of royal jelly]].
+*Eating [[food poisoning|rotten corpses]].
+*Training [[strength]] by [[encumbrance#Stressed|weight lifting]].
+*[[Pit|Running around]] while [[cockatrice#Wearing gloves while wielding the corpse as a weapon|brandishing a cockatrice corpse]].
+*[[Sink|Levitating around]] while brandishing a cockatrice corpse.
+*[[m|Groping around]] while [[cockatrice#Without wearing gloves, blinded|blind and bare-handed]].
+*Leaving your [[wand of wishing]] in your [[shock|main inventory]], particularly before wishing for [[reflection]].
+*Kicking the box in the Castle that contains the [[glass|wand of wishing]] before removing the wand.
+*Putting [[wand of cancellation|all your wands]] or [[bag of tricks|all your tools]] into your [[bag of holding]].
+*Picking up nondescript [[loadstone|gray stones]].
+*[[autopickup|Automatically picking up]] nondescript gray stones.
+*Retreating to a [[aligned priest|sanctuary]] to test your [[ring of conflict|unidentified rings]].
+*[[Sacrifice#altar_converts_you|Letting an altar convert ''you'']].
+*Treating [[werecreatures]] very [[Sacrifice#Sacrificing creatures of own race|inhumanely]].
+*Dipping for [[Excalibur]] before checking your [[experience level]].
+*[[Elbereth|Engraving]] with the [[engraving#Speed|wrong object]].
+*Teleporting the other [[Riders]] or their corpses.
+*Hanging out next to a [[drawbridge#Destruction|drawbridge]].
+*Looting [[bones]] files without [[pickup_burden]].
+*Killing a [[mirror|nymph]] with a {{spell of|force bolt}}.
+*Throwing your metal [[dagger]]s at a [[metallivore]].
+*Throwing your [[enchantment|enchanted]] daggers at a [[disenchanter]].
+*[[Hangup|Disconnecting from the server]] while you decide what to [[wish]] for.
+*Eating a [[Tin#Eating tins|tin]] while wielding your [[artifact weapon]] in a shop.
+*Editing wishes with the arrow keys in a terminal session. Your wish for an amulet of lifesaving may become a wish for a food ration.
+*Using a weak weapon to train skills for a weapon that you do not yet possess. It's best to use the best weapon you currently have access to; you can go up floors to train a weapon later when you acquire it.
+
+==See also==
+*[[Lessons learned the hard way]]
+*[[YASD]]
+*[[DeathOnAStick]]
+
+[[Category:Strategy]]
+{{featured}}
+{{nethack-343|offset=1}}}
+&&%s&& %s Piously aligned {25478 2008-02-12T20:09:58Z {0 } Redirect to Alignment Record #REDIRECT [[alignment record]]}
+&&%s&& %s Rations {25524 2008-02-16T04:28:46Z {458 Kernigh} #REDIRECT [[Ration]], a new disambiguation page. This was a double redirect: Rations to [[Comestibles]] to [[Food ration]]. (Meanwhile, I wonder why [[Comestibles]] is not redirect to [[Comestible]]?) #REDIRECT [[Ration]]}
+&&%s&& %s Pears {25483 2008-02-12T21:37:11Z {0 } Redirect to Pear #Redirect [[Pear]]}
+&&%s&& %s Ration {99098 2015-12-20T22:38:25Z {4000080 ChasonBot}  A '''ration''' is a type of [[comestible]], one of:
+
+* [[food ration]]
+* [[cram ration]]
+* [[C-ration]]
+* [[K-ration]]
+* [[tripe ration]]
+* [[lembas wafer]]
+
+{{disambig}}
+{{nethack-343}}}
+&&%s&& %s Ray {143775 2021-12-02T03:46:26Z {4001483 Cathartes} /* Breath attacks */ red naga '''Rays''' are directional attacks produced by certain [[wand]]s, [[spellbook|spells]], [[horn]]s, and [[monster]] attacks.
+
+The ray attack is animated on screen, and a horn or wand will auto-identify if you are not blind. A standard ray will bounce if it hits a wall or a creature with [[reflection]]. Rays are halted by [[door]]s, although many will destroy the door in the process. The ray characteristics allow you to attack enemies without reply in the right situation. In the wrong situation, you may be unable to use your powerful ray attacks for fear of shooting yourself.
+
+Non-standard rays include digging and fireball. A [[wand of digging]] cuts through walls and doors to its maximum range, while fireballs explode on impact.
+
+A ray will travel 7 to 13 squares.{{refsrc|zap.c|3308|comment=ray wand range}} For each monster hit, range decreases by 2.{{refsrc|zap.c|3434|comment=ray hit monster}} If fire passes over water or a fountain, or cold passes over water or lava, range may decrease by 1, 3, or the ray may stop entirely. If fire passes over scrolls or spellbooks, some may burn, but range isn't decreased.{{reffunc|zap.c|zap_over_floor}} Each time it bounces off a wall, range decreases by 1.{{refsrc|zap.c|3483|comment=ray bounce}} Reflection off a monster or you reverses the direction of travel, but range doesn't decrease.{{refsrc|zap.c|3346|comment=reflecting ray}}
+
+==Bouncing rays==
+Rays that intersect with a wall will bounce, if they have sufficient range to continue to affect squares.
+
+===Straight reflections===
+A ray hitting a wall straight on will move one square into the wall and then bounce straight back, meaning it may hit a monster twice, even one standing against the wall hit. Just beware of it also hitting you!
+
+ |......        |......        |......
+ |<--@..        <--.@..        -->.@..
+ |......        |......        |......
+ Initial ray    Straight       Ray headed
+ direction      bounce         back at @
+
+===Angled reflections===
+If a ray hits a wall at an angle, it usually penetrates the wall one square and reflects accordingly. Note that the penetration does not affect something on the other side of the wall but will hit something ''in'' the wall (like a [[xorn]]).
+
+ |......        |......        |.../..
+ |..c...        |..c...        |..%...
+ |......        |./....        |./....
+ |b.....        |%.....        |%.....
+ |a.....        \a.....        |a..... 
+ |\.....        |\.....        |......
+ |.\....        |......        |......
+ |..@...        |..@...        |..@...
+ Ray heading    Ray hits       Ray also will
+ up-left        wall, misses   hit c if able
+                a, hitting b
+
+1/20 of the time, the ray will instead bounce straight back in the direction it came from.{{refsrc|zap.c|3486}}
+
+ |......        |......        |......
+ |..c...        |..c...        |..c...
+ |......        |......        |......
+ |b.....        |b.....        |b.....
+ |a.....        \a.....        |a..... 
+ |\.....        |\.....        |\.....
+ |.\....        |......        |.\....
+ |..@...        |..@...        |..%...
+ Ray heading    Ray hits       Ray hits @
+ up-left        wall, turns    
+                around
+
+===Corner reflections===
+If a ray hits a concave (or "internal") corner, it will always reflect the ray back towards its point of origin.
+
+ ┌----          \----          ┌----
+ |\...          |\...          |\...
+ |.\..          |....          |.\..
+ |..@.          |..@.          |..%.
+ Ray heading    Hits wall      Ray also will
+ up-left        starts heading hit @ if able
+                down-right
+
+If the ray hits a convex (or "external") corner, the ray reflects randomly between 3 cases: it has 1/20 chance of reflecting straight back; a 19/40 chance of reflecting left, and a 19/40 chance of reflecting right.{{refsrc|zap.c|3490}}
+
+ Reflecting back
+     ┌----           ┌---- 
+     |..a.           |..a.
+     |....           |....
+     |....           |....
+ ┌---┘....       ┌---\....              
+ |....\...       |....\...
+ |.....\..       |.....\..
+ |b.....@.       |b.....%.
+                 Ray is returned
+                 to its sender
+ Reflecting left
+     ┌----           ┌---- 
+     |..a.           |..a.
+     |....           |....
+     |....           |....
+ ┌---┘....       ┌---\....              
+ |....\...       |../.\...
+ |.....\..       |./...\..
+ |b.....@.       |%.....@.
+                 Ray reflects
+                 90 degrees "left",
+                 hitting b
+ 
+ Reflecting right
+     ┌----           ┌---- 
+     |..a.           |..%.
+     |....           |./..
+     |....           |/...
+ ┌---┘....       ┌---\....            
+ |....\...       |....\...
+ |.....\..       |.....\..
+ |b.....@.       |b.....@.
+                 Ray reflects
+                 90 degrees "right"
+                 hitting a
+
+==Sources==
+===Wands===
+*[[Wand of cold]]
+*[[Wand of death]]
+*[[Wand of digging]] (Does not reflect)
+*[[Wand of fire]]
+*[[Wand of lightning]]
+*[[Wand of magic missile]]
+*[[Wand of sleep]]
+
+===Spells===
+* [[Spellbook of cone of cold]] (at skill levels below Skilled)
+* [[Spellbook of dig]] (Does not reflect)
+* [[Spellbook of finger of death]]
+* [[Spellbook of fireball]] (at skill levels below Skilled) (Does not reflect)
+* [[Spellbook of magic missile]]
+* [[Spellbook of sleep]]
+
+===Horns===
+* [[Fire horn]]
+* [[Frost horn]]
+
+===Breath attacks===
+* A [[winter wolf]]'s cold breath.
+* A [[hellhound]]'s fire breath
+* A [[blue dragon]]'s lightning breath
+* A [[black dragon]]'s [[disintegration]] breath
+* A [[gray dragon]]'s magic missile breath
+* A [[green dragon]]'s [[poison]] breath
+* An [[orange dragon]]'s sleep breath
+* A [[red dragon]]'s fire breath
+* A [[silver dragon]] or [[white dragon]]'s cold breath
+* A [[yellow dragon]]'s [[acid]] breath
+* A [[red naga]]'s fire breath
+
+==References==
+<references />
+{{nethack-343}}
+[[Category:Monster attacks]]
+[[Category:Spellcasting]]}
+&&%s&& %s Larn {132778 2020-03-11T05:26:28Z {4000978 Aximili} add link '''''Larn''''' was an old [[roguelike]] game. Larn took inspiration from ''[[Rogue (game)|Rogue]]'' and ''[[Hack]]''. In the past, ''Larn'' and ''[[NetHack]]'' had contemporary development, and some Larn references entered NetHack.
+
+But NetHack continued development and became a popular game with a large community, while Larn stalled. Larn is now an obscure game with few players.
+
+The '''Larn Revenue Service''' or '''LRS''' is the tax agency that seeks to collect from wealthy Larn players.
+
+== Larn references in NetHack ==
+Two [[message]]s in NetHack reference Larn.
+
+; This seems to be junk mail addressed to the finder of the Eye of Larn.
+: This message appears when you read a [[scroll of mail]]{{refsrc|read.c|657}} from a [[bones level]]{{refsrc|bones.c|87}} or a [[wish]].{{refsrc|objnam.c|2523}} A comment in NetHack's source code explains, "the game Larn actually sends you junk mail if you win!"
+; The LRS would be very interested to know you have that much.
+: This message appears when you attempt to drop or throw a negative amount of gold. You cannot directly input a negative number, but you can enter a large 2^32-n number that triggers [[integer overflow]]. Try the key sequence 'd4294967286$' to trigger this message. A comment in NetHack's source code explains that older versions of NetHack and Larn had the same bug to permit drops of [[negative gold]].{{refsrc|invent.c|996}}
+
+(A related crash when you drop zero gold has been fixed on [[nethack.alt.org]].)
+
+==References==
+<references />
+
+== Links ==
+{{wikipedia|Larn}}
+{{RogueBasin}}
+
+If you seek more information about Larn, then try these links.
+
+* [http://larn.rogueforge.net/ Larn 12.4]
+** [http://www.roguetemple.com/reviews/larn-124/ RogueTemple's review of Larn 12.4]
+* [http://cvsweb.netbsd.org/bsdweb.cgi/src/games/larn/ NetBSD's Larn 12.0]
+** [http://marc.info/?t=120200905700001&r=1&w=2 'larn, and other games' thread of netbsd-tech-userlevel] with some Larn history
+* [http://ularn.sourceforge.net Ularn], a variant
+* [http://nlarn.sourceforge.net NLarn], a rewrite of Larn from scratch with color, improved UI and ranged weapons
+
+[[Category:Roguelikes]] [[Category:Messages]]}
+&&%s&& %s LRS {25532 2008-02-16T22:44:52Z {458 Kernigh} #REDIRECT [[Larn]]. Try typing 'd4294967286$' into NetHack for an LRS message. #REDIRECT [[Larn]]}
+&&%s&& %s Larn Revenue Service {25533 2008-02-16T22:45:55Z {458 Kernigh} #REDIRECT [[Larn]] #REDIRECT [[Larn]]}
+&&%s&& %s This seems to be junk mail addressed to the finder of the Eye of Larn {25535 2008-02-16T23:01:55Z {458 Kernigh} #REDIRECT [[Larn]], this is a NetHack message. #REDIRECT [[Larn]]}
+&&%s&& %s This seems to be junk mail addressed to the finder of the Eye of Larn. {25536 2008-02-16T23:02:41Z {458 Kernigh} #REDIRECT [[Larn]], this is a NetHack message (with a period at the end). #REDIRECT [[Larn]]}
+&&%s&& %s The LRS would be very interested to know you have that much {25537 2008-02-16T23:04:12Z {458 Kernigh} #REDIRECT [[Larn]], the LRS is the Larn Revenue Service. #REDIRECT [[Larn]]}
+&&%s&& %s The LRS would be very interested to know you have that much. {25538 2008-02-16T23:05:20Z {458 Kernigh} #REDIRECT [[Larn]], this is a NetHack message... #REDIRECT [[Larn]]}
+&&%s&& %s Hit dice {75972 2012-01-27T16:18:26Z {4000142 Erica} redirect, articles have been merged #redirect [[Monster level]]}
+&&%s&& %s HD {75973 2012-01-27T16:19:07Z {4000142 Erica} eliminate double redirect #redirect [[Monster level]]}
+&&%s&& %s Baby grey dragon {25561 2008-02-18T18:00:17Z {630 Paxed} alt spelling accepted by NetHack #redirect [[dragon]]}
+&&%s&& %s Ki rin {25562 2008-02-18T18:02:41Z {630 Paxed} alt spelling accepted by NetHack #redirect [[ki-rin]]}
+&&%s&& %s Uruk hai {25563 2008-02-18T18:03:42Z {630 Paxed} alt spelling accepted by NetHack #redirect [[uruk-hai]]}
+&&%s&& %s Orc captain {25564 2008-02-18T18:04:46Z {630 Paxed} alt spelling accepted by NetHack #redirect [[orc-captain]]}
+&&%s&& %s Woodland elf {25566 2008-02-18T18:05:44Z {630 Paxed} typo fix #redirect [[woodland-elf]]}
+&&%s&& %s Green elf {25567 2008-02-18T18:06:32Z {630 Paxed} alt spelling accepted by NetHack #redirect [[green-elf]]}
+&&%s&& %s Grey elf {25568 2008-02-18T18:07:47Z {630 Paxed} alt spelling accepted by NetHack #redirect [[grey-elf]]}
+&&%s&& %s Gray elf {25569 2008-02-18T18:08:29Z {630 Paxed} alt spelling accepted by NetHack #redirect [[grey-elf]]}
+&&%s&& %s Elf lord {25570 2008-02-18T18:09:20Z {630 Paxed} alt spelling accepted by NetHack #redirect [[elf-lord]]}
+&&%s&& %s Incubi {25572 2008-02-18T18:11:29Z {630 Paxed} alt spelling accepted by NetHack #redirect [[foocubus]]}
+&&%s&& %s Succubi {25573 2008-02-18T18:12:06Z {630 Paxed} alt spelling accepted by NetHack #redirect [[foocubus]]}
+&&%s&& %s Homunculi {25574 2008-02-18T18:12:58Z {630 Paxed} alt spelling accepted by NetHack #redirect [[homunculus]]}
+&&%s&& %s Baluchitheria {25575 2008-02-18T18:13:53Z {630 Paxed} alt spelling accepted by NetHack #redirect [[baluchitherium]]}
+&&%s&& %s Lurkers above {34310 2008-07-20T00:44:03Z {701 Rogerb-on-NAO} Fix double redirect #redirect [[Trapper]]}
+&&%s&& %s Cavemen {25577 2008-02-18T18:15:48Z {630 Paxed} alt spelling accepted by NetHack #redirect [[caveman]]}
+&&%s&& %s Cavewomen {25578 2008-02-18T18:16:21Z {630 Paxed} alt spelling accepted by NetHack #redirect [[caveman]]}
+&&%s&& %s Mumakil {25579 2008-02-18T18:17:30Z {630 Paxed} alt spelling accepted by NetHack #redirect [[mumak]]}
+&&%s&& %s Pickax {25581 2008-02-18T18:22:59Z {630 Paxed} alt spelling accepted by NetHack #redirect [[pick-axe]]}
+&&%s&& %s Silver sabre {25582 2008-02-18T18:23:56Z {630 Paxed} alt spelling accepted by NetHack #redirect [[silver saber]]}
+&&%s&& %s Grey dragon scale mail {25583 2008-02-18T18:25:06Z {630 Paxed} alt spelling accepted by NetHack #redirect [[gray dragon scale mail]]}
+&&%s&& %s Grey dragon scales {25584 2008-02-18T18:25:46Z {630 Paxed} alt spelling accepted by NetHack #redirect [[gray dragon scales]]}
+&&%s&& %s Enchant armour {25586 2008-02-18T18:27:00Z {630 Paxed} alt spelling accepted by NetHack #redirect [[scroll of enchant armor]]}
+&&%s&& %s Destroy armour {25587 2008-02-18T18:27:45Z {630 Paxed} alt spelling accepted by NetHack #redirect [[scroll of destroy armor]]}
+&&%s&& %s Scroll of enchant armour {25588 2008-02-18T18:28:36Z {630 Paxed} alt spelling accepted by NetHack #redirect [[scroll of enchant armor]]}
+&&%s&& %s Amulet of poison resistance {25589 2008-02-18T18:30:59Z {630 Paxed} alt spelling accepted by NetHack #redirect [[amulet versus poison]]}
+&&%s&& %s Tee shirt {25590 2008-02-18T18:31:42Z {630 Paxed} alt spelling accepted by NetHack #redirect [[shirt]]}
+&&%s&& %s Can {25591 2008-02-18T18:32:23Z {630 Paxed} alt spelling accepted by NetHack #redirect [[tin]]}
+&&%s&& %s Eucalyptus {25592 2008-02-18T18:33:17Z {630 Paxed} alt spelling accepted by NetHack #redirect [[eucalyptus leaf]]}
+&&%s&& %s Kelp {25593 2008-02-18T18:33:48Z {630 Paxed} alt spelling accepted by NetHack #redirect [[kelp frond]]}
+&&%s&& %s Grapple {25594 2008-02-18T18:34:00Z {630 Paxed} alt spelling accepted by NetHack #redirect [[grappling hook]]}
+&&%s&& %s Level drain {33818 2008-07-15T10:29:44Z {701 Rogerb-on-NAO} Redirect to disambiguation page #REDIRECT [[Drain life]]}
+&&%s&& %s Dumplog {125550 2019-03-20T09:42:47Z {630 Paxed} mention sysconf A '''dumplog''' is a text file that records much of the game state at the end of a game. Things generally recorded in a dumplog include:
+
+* The game version, start time, and end time.
+* What was shown on the screen when the game ended.
+* The last messages.
+* The fully identified inventory. (Some dumplog implementations might additionally provide what the player knew about them at the time.)
+* The player's attributes.
+* The lists of vanquished creatures, [[genocide]]s, and [[extinction]]s.
+* The [[conducts]] the player followed.
+* The dungeon [[overview]] (in 3.6.1 and beyond).
+* In some implementations, if the player died, their [[Options#tombstone|tombstone]].
+* The computation of the player's [[score]].
+
+Dumplogs support was introduced natively in [[NetHack 3.6.1]], but needs to be enabled in [[sysconf]].
+
+[[NetHack 3.6.0]] and prior versions do not produce a dumplog, unless the game is [[patch]]ed (which many public servers do). A player using [[tty]] can cut and paste off the screen if they really want to.
+
+{{stub}}
+
+{{nethack-361}}}
+&&%s&& %s Cure self {138633 2021-03-21T13:04:03Z {4001279 Umbire the Phantom}  '''Cure self''' is the internal name for a [[monster spell]] used in ''[[NetHack]]''. The name is never used directly in-game.
+
+==Description==
+When used, the spell will heal the caster for 3d6 [[health]].{{refsrc|mcastu.c|630}}
+
+==Message==
+{{message|[[Foo]] looks better.|A monster cast this spell and restored its health..}}
+
+==References==
+<references/>
+
+{{nethack-343}}
+[[Category:Monster spells]]}
+&&%s&& %s Stun (monster spell) {136477 2020-12-14T02:04:09Z {4001463 Actual-nh} Link monster spell '''Stun''' is a [[monster spell]] that will [[stun]] you. The length of the stun is dependent on a few factors. If you have [[magic resistance]] or [[free action]], you will always be stunned for only one turn. If you have [[half spell damage]], the stun length will be halved. The spell will stun for 4d4 turns, or 6d4 if the player's [[dexterity]] is less than 12.
+
+==Messages==
+; "You feel momentarily disoriented."
+: A monster cast this spell on you, but you had magic resistance or free action and so were only stunned for one turn.
+
+; "You reel..."
+: You are stunned for 4d4 turns. If your dexterity is less than 12, you are stunned for 6d4 turns instead.
+
+; "You struggle to keep your balance."
+: You were already stunned.
+[[Category:Monster spells]]

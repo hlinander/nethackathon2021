@@ -1,0 +1,1000 @@
+
+The following 71 monsters have the human attribute, M2_HUMAN:
+{| class="prettytable"
+ ! colspan=5| {{white|K}} [[Keystone Kop]]
+ |-
+ | {{monlink|Keystone Kop|none}}
+ | {{monlink|Kop Sergeant|none}}
+ | {{monlink|Kop Lieutenant|none}}
+ | {{monlink|Kop Kaptain|none}}
+ |
+ |-
+ | colspan=5|
+ |-
+ ! colspan=5| {{white|@}} [[human or elf]]
+ |-
+ | {{monlink|human|none}}
+ | {{monlink|wererat|none}}
+ | {{monlink|werejackal|none}}
+ | {{monlink|werewolf|none}}
+ | {{monlink|doppelganger|none}}
+ |-
+ | {{monlink|nurse|none}}
+ | {{monlink|shopkeeper|none}}
+ | {{monlink|guard|none}}
+ | {{monlink|prisoner|none}}
+ | {{monlink|Oracle|none}}
+ |-
+ | {{monlink|aligned priest|none}}
+ | {{monlink|high priest|none}}
+ | {{monlink|soldier|none}}
+ | {{monlink|sergeant|none}}
+ | {{monlink|lieutenant|none}}
+ |-
+ | {{monlink|captain|none}}
+ | {{monlink|watchman|none}}
+ | {{monlink|watch captain|none}}
+ | {{monlink|Wizard of Yendor|none}}
+ | {{monlink|Croesus|none}}
+ |-
+ | {{monlink|archeologist|none}}
+ | {{monlink|barbarian|none}}
+ | {{monlink|caveman|none}}
+ | {{monlink|cavewoman|none}}
+ | {{monlink|healer|none}}
+ |-
+ | {{monlink|knight|none}}
+ | {{monlink|monk|none}}
+ | {{monlink|priest|none}}
+ | {{monlink|priestess|none}}
+ | {{monlink|ranger|none}}
+ |-
+ | {{monlink|rogue|none}}
+ | {{monlink|samurai|none}}
+ | {{monlink|tourist|none}}
+ | {{monlink|valkyrie|none}}
+ | {{monlink|wizard|none}}
+ |-
+ | {{monlink|Lord Carnarvon|none}}
+ | {{monlink|Pelias|none}}
+ | {{monlink|Shaman Karnov|none}}
+ | {{monlink|Hippocrates|none}}
+ | {{monlink|King Arthur|none}}
+ |-
+ | {{monlink|Grand Master|none}}
+ | {{monlink|Arch Priest|none}}
+ | {{monlink|Orion|none}}
+ | {{monlink|Master of Thieves|none}}
+ | {{monlink|Lord Sato|none}}
+ |-
+ | {{monlink|Twoflower|none}}
+ | {{monlink|Norn|none}}
+ | {{monlink|Neferet the Green|none}}
+ | {{monlink|Thoth Amon|none}}
+ | {{monlink|Master Kaen|none}}
+ |-
+ | {{monlink|Master Assassin|none}}
+ | {{monlink|Ashikaga Takauji|none}}
+ | {{monlink|Dark One|none}}
+ | {{monlink|student|none}}
+ | {{monlink|chieftain|none}}
+ |-
+ | {{monlink|neanderthal|none}}
+ | {{monlink|attendant|none}}
+ | {{monlink|page|none}}
+ | {{monlink|abbot|none}}
+ | {{monlink|acolyte|none}}
+ |-
+ | {{monlink|hunter|none}}
+ | {{monlink|thug|none}}
+ | {{monlink|ninja|none}}
+ | {{monlink|roshi|none}}
+ | {{monlink|guide|none}}
+ |-
+ | {{monlink|warrior|none}}
+ | {{monlink|apprentice|none}}
+ | colspan=3|
+ |}
+
+
+== Effect ==
+
+The human attribute is used to determine the following things:
+*Whether [[eat]]ing a monster is [[cannibalism]] for a [[human (starting race)|human player]]{{refsrc|eat.c|442}}.
+*Whether a [[sacrifice]] is of your own race for a human player{{refsrc|pray.c|1167}}.
+*Whether killing a monster is [[murder]]{{refsrc|mon.c|1855}}. Killing humans (and only humans) generated [[peaceful]] is murder, no matter what your starting race.
+*The outcome of an attempt to [[tame]] a monster - human monsters cannot be tamed{{refsrc|dog.c|803}}.
+*The monster a randomly generated [[figurine]] is for.{{refsrc|mkobj.c|507}} Figurines of human monsters are very rarely generated.
+*What to give when [[wish]]ing for a figurine - wishing for a human monster gives a random figurine{{refsrc|objnam.c|2567}}.
+*What to give when wishing for the [[corpse]]s of [[quest guardian]]s{{refsrc|objnam.c|2560}}
+*What responses to use when [[chat]]ting with other [[role]]s' quest guardians{{refsrc|sounds.c|439}} (possibly created by [[reverse genocide]] or found in [[bones]]).
+*Whether a new form is appropriate when a monster is [[polymorphing]] {{refsrc|mon.c|2408}}
+*Whether monsters respect [[Elbereth]] or a [[scroll of scare monster]] when you are not standing on it - humans do not.{{refsrc|monmove.c|899}} As {{white|@}} do not respect Elbereth at all, this applies to monsters of other classes with the human attribute, only - currently, this means {{white|K}} [[Keystone Kop]]s.
+*Whether to adjust your [[alignment record]] when a monster is [[genocide]]d.{{refsrc|read.c|1636}} Genociding human monsters reduces the alignment record of [[lawful]] adventurers, and increases that of chaotic ones.
+*How [[shopkeeper]]s address you{{refsrc|shk.c|2275}} (cosmetic only).
+*Whether a [[werecreature]] is in human or animal form{{refsrc|were.c|16}}.
+
+==Internals==
+In the source, the human attribute is represented by the macro '''M2_HUMAN'''.<ref name="M2_HUMAN"/>
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+These strange creatures live mostly on the surface of the
+earth, gathering together in societies of various forms, but
+occasionally a stray will descend into the depths and commit
+mayhem among the dungeon residents who, naturally, often
+resent the intrusion of such beasts.  They are capable of
+using weapons and magic, and it is even rumored that the
+Wizard of Yendor is a member of this species.
+}}
+
+==References==
+<references/>
+[[Category:Monster attributes]]
+{{nethack-343}}}
+&&%s&& %s M2 HUMAN {32778 2008-06-11T00:44:44Z {701 Rogerb-on-NAO} Redirecting to [[Human (monster attribute)]] #redirect [[Human (monster attribute)]]}
+&&%s&& %s Template:Randomvariable {76012 2012-01-29T12:46:06Z {366 Ilmari Karonen} fix image alignment <includeonly><div class="thumb tright" style="border:none; margin:0px; padding:0px;">
+{|class="wikitable"
+!colspan="2"|'''{{{name}}}'''
+|-
+|colspan="2"|[[Image:{{{graph}}}|thumb|center|{{{caption|}}}]]
+|-
+|[[wikipedia:Probability distribution|Distribution]]||{{{distribution}}}
+|-
+|[[wikipedia:Arithmetic mean|Mean]]||{{{mean}}}
+|-
+|[[wikipedia:Standard deviation|Standard deviation]]||{{{stddev}}}
+|}
+</div></includeonly><noinclude>
+<nowiki>{{</nowiki>randomvariable|name=''name''|graph=''image''|caption=''image caption''|distribution=''type''|mean=''mean''|stddev=''standard deviation''}}
+
+All parameters are required except for "caption".
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Amulet of esp {32797 2008-06-11T08:21:05Z {0 } Redirecting to [[Amulet of ESP]] #REDIRECT [[Amulet of ESP]]}
+&&%s&& %s Your position suddenly seems very uncertain {32799 2008-06-11T12:06:25Z {701 Rogerb-on-NAO} Redirecting to [[Quantum mechanic]] #redirect [[Quantum mechanic]]}
+&&%s&& %s Your velocity suddenly seems very uncertain {32800 2008-06-11T12:07:28Z {701 Rogerb-on-NAO} Redirecting to [[Quantum mechanic]] #redirect [[Quantum mechanic]]}
+&&%s&& %s You seem slower {32801 2008-06-11T12:10:06Z {701 Rogerb-on-NAO} Redirecting to [[Quantum mechanic]] #redirect [[Quantum mechanic]]}
+&&%s&& %s You seem faster {32802 2008-06-11T12:11:04Z {701 Rogerb-on-NAO} Redirecting to [[Quantum mechanic]] #redirect [[Quantum mechanic]]}
+&&%s&& %s Schrödinger's cat {70717 2011-05-29T22:31:30Z {0 } redirect to specific page #redirect [[Schroedinger's Cat]]}
+&&%s&& %s MediaWiki:Sitenotice {53400 2010-10-31T21:58:15Z {831 Tjr} get rid of this site-notice. }
+&&%s&& %s MediaWiki:Sitenotice id {32813 2008-06-11T21:39:39Z {484 KyleH} Incrementing 2}
+&&%s&& %s You hear the wailing of the Banshee {32819 2008-06-11T23:56:24Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Elf, your life force is running out {32821 2008-06-11T23:57:47Z {701 Rogerb-on-NAO} typo #redirect [[Hit points]]}
+&&%s&& %s Wizard, your life force is running out {32822 2008-06-11T23:59:02Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Valkyrie, your life force is running out {32823 2008-06-12T00:00:11Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Elf, all of your powers will be lost {32824 2008-06-12T00:00:59Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Wizard, all of your powers will be lost {32825 2008-06-12T00:02:14Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Valkyrie, all of your powers will be lost {32826 2008-06-12T00:03:02Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]]]}
+&&%s&& %s Elf is about to die {32827 2008-06-12T00:03:53Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Wizard is about to die {32828 2008-06-12T00:04:32Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Valkyrie is about to die {32829 2008-06-12T00:05:44Z {701 Rogerb-on-NAO} Redirecting to [[Hit points]] #redirect [[Hit points]]}
+&&%s&& %s Staff of aesculapius {32831 2008-06-12T02:13:55Z {0 } Redirecting to [[The Staff of Aesculapius]] #REDIRECT [[The Staff of Aesculapius]]}
+&&%s&& %s The staff of aesculapius {32832 2008-06-12T02:14:27Z {0 } Redirecting to [[The Staff of Aesculapius]] #REDIRECT [[The Staff of Aesculapius]]}
+&&%s&& %s But wait {32848 2008-06-12T21:19:33Z {701 Rogerb-on-NAO} Redirecting to [[Amulet of life saving]] #redirect [[Amulet of life saving]]}
+&&%s&& %s Foo's medallion begins to glow {32849 2008-06-12T21:20:54Z {701 Rogerb-on-NAO} Redirecting to [[Amulet of life saving]] #redirect [[Amulet of life saving]]}
+&&%s&& %s Breathe {32851 2008-06-12T22:00:19Z {701 Rogerb-on-NAO} [[Breathe]] moved to [[Breath (disambiguation)]]: Monsters' breath weapon dominates use of 'breath'. #REDIRECT [[Breath (disambiguation)]]}
+&&%s&& %s You feel much better {143891 2021-12-17T22:40:44Z {4001279 Umbire the Phantom}  '''"You feel much better"''' is a message seen in the following circumstances:
+
+* You [[quaff]]ed a [[potion of extra healing]], or you [[pray]]ed when your HP was [[Trouble#Critical HP|critically low]], and your [[god]] decided to heal you.
+* You died with {{of|amulet|life saving}}; the message will add an exclamation point.
+{{disambig}}
+{{nethack-366}}
+[[Category:Messages]]}
+&&%s&& %s Breath weapon {32861 2008-06-12T22:52:55Z {679 Ray Chason} [[Breath weapon]] moved to [[Breath]]: User request, apparent consensus, needed sysop assistance #REDIRECT [[Breath]]}
+&&%s&& %s Death (disambiguation) {32875 2008-06-13T00:31:18Z {679 Ray Chason} [[Death (disambiguation)]] moved to [[Death]]: Request of [[User:Rogerb-on-NAO]] to reorganize death-related pages #REDIRECT [[Death]]}
+&&%s&& %s You die {32884 2008-06-13T01:03:57Z {701 Rogerb-on-NAO} Redirecting to [[Death (character)]] #redirect [[Death (character)]]}
+&&%s&& %s Death (monster) {32898 2008-06-13T10:39:37Z {701 Rogerb-on-NAO} Create this link for use where "Death" needs to show up on the tooltip. #redirect [[Riders#Death]]}
+&&%s&& %s Monster class {143820 2021-12-08T04:34:40Z {4001483 Cathartes} 3.6+ symbols option All [[monster]]s belong to a '''monster class''', based on the default [[ASCII]] '''monster symbol''' that represents them. For some classes, such as {{white|x}} or {{white|w}}, the symbol is almost all that unites them. Other symbols represent monsters that share much in common, such as {{white|D}} or {{white|K}}. Additionally, some classes have individual members that are in many ways an "odd one out", such as {{monsymlink|stalker}}s and {{monsymlink|gas spore}}s.
+
+A blessed [[scroll of genocide]] allows you to wipe out some or all the species of a certain class. You can change the appearance of each class with the <tt>[[options#monsters|monsters]]</tt> option (3.4.3) or with [[custom map symbols]] (3.6.0+). A common change is to display [[ghost]]s and [[shade]]s as {{white|X}} or {{white|8}} instead of {{white|&nbsp;}} to make them more visible. However, this has no effect on the behaviour of genocide.
+
+These descriptions are given in the game when you examine monsters with the [[far look]] {{kbd|;}} or [[what is]] {{kbd|/}} commands.{{refsrc|drawing.c|160|comment=Monster descriptions}}{{refsrc|monsym.h|81|comment=Default characters for monster classes}} Some of the in-game descriptions are incomplete; extra information is italicized.
+*{{mcsl|a}}, [[ant]] or other [[insect]]
+*{{mcsl|b}}, [[blob]]
+*{{mcsl|c}}, [[cockatrice]] ''(or [[pyrolisk]])''
+*{{mcsl|d}}, [[dog]] or other [[canine]]
+*{{mcsl|e}}, [[floating eye|eyes]] or [[e|sphere]]
+*{{mcsl|f}}, [[cat]] or other [[feline]]
+*{{mcsl|g}}, [[gremlin]] ''(or [[gargoyle]])''
+*{{mcsl|h}}, [[humanoid]]
+*{{mcsl|i}}, [[imp]] or minor [[demon]]
+*{{mcsl|j}}, [[jelly]]
+*{{mcsl|k}}, [[kobold]]
+*{{mcsl|l}}, [[leprechaun]]
+*{{mcsl|m}}, [[mimic]]
+*{{mcsl|n}}, [[nymph]]
+*{{mcsl|o}}, [[orc]] ''(including [[goblin]]s and [[hobgoblin]]s)''
+*{{mcsl|p}}, [[piercer]]
+*{{mcsl|q}}, [[quadruped]]
+*{{mcsl|r}}, [[rodent]]
+*{{mcsl|s}}, [[spider|arachnid]] or [[centipede]]
+*{{mcsl|t}}, [[trapper]] or [[lurker above]]
+*{{mcsl|u}}, [[unicorn]] or [[horse]]
+*{{mcsl|v}}, [[vortex]]
+*{{mcsl|w}}, [[worm]]
+*{{mcsl|x}}, [[xan]] or other mythical/fantastic [[insect]]
+*{{mcsl|y}}, [[light]]
+*{{mcsl|z}}, [[zruty]]
+*{{mcsl|A}}, [[angelic being]]
+*{{mcsl|B}}, [[bat]] or [[raven|bird]]
+*{{mcsl|C}}, [[centaur]]
+*{{mcsl|D}}, [[dragon]]
+*{{mcsl|E}}, [[elemental]] ''(or [[stalker]])''
+*{{mcsl|F}}, [[fungus]] or [[mold]]
+*{{mcsl|G}}, [[gnome]]
+*{{mcsl|H}}, [[giant humanoid]]
+*{{mcsl|J}}, [[jabberwock]]
+*{{mcsl|K}}, [[Keystone Kop]]
+*{{mcsl|L}}, [[lich]]
+*{{mcsl|M}}, [[mummy]]
+*{{mcsl|N}}, [[naga]]
+*{{mcsl|O}}, [[ogre]]
+*{{mcsl|P}}, [[pudding]] or [[gray ooze|ooze]]
+*{{mcsl|Q}}, [[quantum mechanic]]
+*{{mcsl|R}}, [[rust monster]] or [[disenchanter]]
+*{{mcsl|S}}, [[snake]]
+*{{mcsl|T}}, [[troll]]
+*{{mcsl|U}}, [[umber hulk]]
+*{{mcsl|V}}, [[vampire]]
+*{{mcsl|W}}, [[wraith (monster class)|wraith]]
+*{{mcsl|X}}, [[xorn]]
+*{{mcsl|Y}}, [[apelike creature]]
+*{{mcsl|Z}}, [[zombie]]
+*{{mcsl|@}}, [[human]] or [[elf]]
+*[[Ghost (monster class)|{{white|&nbsp;}}]], [[ghost]] ''(or [[shade]])''
+*{{mcsl|'}}, [[golem]]
+*{{mcsl|&}}, major [[demon]]
+*{{mcsl|;}}, [[sea monster]]
+*{{mcsl|:}}, [[lizard (monster class)|lizard]]
+
+The [[farlook]] ({{kbd|;}}) and [[whatis]] ({{kbd|/}}) commands also show the following symbols, which are not monster classes:
+*{{white|I}}, the remembered location of an unseen creature
+*{{white|~}}, part of the tail of a [[long worm]]
+*{{white|]}}, one of the appearances of a [[mimic]], described by farlook as "a strange object".
+
+== References ==
+<references/>
+
+[[Category:Monster classes| ]]
+{{nethack-343}}}
+&&%s&& %s Human (starting race) {149914 2023-02-10T16:51:02Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks You can play ''[[NetHack]]'' as a '''human'''. You will see yourself as [[@|{{white|@}}]], and are considered the {{white|@}} [[human or elf]] [[monster class]] for game purposes.
+According to the guidebook:
+{{guidebook|Humans are by far the most common race of the surface world, and are thus the norm by which other races are often compared. Although they have no special abilities, they can succeed in any role.}}
+
+== Racial benefits and restrictions ==
+Humans are the standard by which the benefits and restrictions of other races are measured; thus in many senses, they have no benefits or restrictions. They start with no [[intrinsic]]s. They suffer the penalty for [[cannibalism]] if they eat any monster with the [[Human (monster attribute)|human]] [[monster attribute]].
+
+The only major disadvantage of humans is that they lack the [[infravision]] that all other races have.
+
+No [[monster]]s are more inclined to be [[peaceful]] toward human players. [[Gnome (monster)|Gnome]] and [[orc]] monsters will be [[hostile]] toward human players.
+
+Humans may be any [[alignment]] and take any [[role]]. Their [[attribute]]s are mostly average, though their maximum Strength is high. The following table outlines their maximum (unaided) attribute levels.
+
+{| class="prettytable"
+!| Character<br>[[Race]]
+!| Strength
+!| Dexterity
+!| Constitution
+!| Intelligence
+!| Wisdom
+!| Charisma
+|-
+|| Human   || 18/** || 18 || 18 || 18 || 18 || 18
+|}
+
+== Human items ==
+Humans start with the default equipment for each role.
+
+== Strategy ==
+Humans have no special advantages - while they should generally follow the strategies for their chosen role and alignment, they may need to compensate for a lack of advantages that other playable species have. Their lack of infravision in particular makes [[telepathy]] or a [[light source]] necessary resources, especially when traversing the [[Gnomish Mines]] early on. In terms of the Mines, they should also be wary of the inhabitants - most dwarves will not mind lawful humans, but will attack human heroes of other alignments, while gnomes do not care for humans regardless of alignment.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+These strange creatures live mostly on the surface of the earth, gathering together in societies of various forms, but occasionally a stray will descend into the depths and commit mayhem among the dungeon residents who, naturally, often resent the intrusion of such beasts.  They are capable of using weapons and magic, and it is even rumored that the Wizard of Yendor is a member of this species.
+}}
+
+[[Category:Races]]
+{{nethack-366}}}
+&&%s&& %s Fatal {32955 2008-06-14T00:30:59Z {701 Rogerb-on-NAO} Redirecting to [[Death (character)]] #redirect [[Death (character)]]}
+&&%s&& %s Hero {32981 2008-06-14T05:11:34Z {850 Uberfuzzy} [[Hero]] moved to [[Player]]: contents of [[Player]] merged into Hero (by User:Rogerb-on-NAO), latter is longer and more fleshed out. by request (PR#10849) #REDIRECT [[Player]]}
+&&%s&& %s Unique {33036 2008-06-15T17:52:00Z {701 Rogerb-on-NAO} New page: '''unique''' could refer to: *A [[unique monster]] (see main article) *A [[unique item]] (an [[invocation]] item or the [[Amulet of Yendor]]) {{disambig}} {{nethack-343}} '''unique''' could refer to:
+*A [[unique monster]] (see main article)
+*A [[unique item]] (an [[invocation]] item or the [[Amulet of Yendor]])
+{{disambig}}
+{{nethack-343}}}
+&&%s&& %s Wizard (disambiguation) {33063 2008-06-15T22:11:39Z {701 Rogerb-on-NAO} New page: '''Wizard''' usually refers to [[Wizard|the player role]].  The major other uses are:  *The {{monsymlink|Wizard of Yendor}} *A {{monsymlink|wizard}} [[player monster]] *The powerful [[wiza... '''Wizard''' usually refers to [[Wizard|the player role]].
+
+The major other uses are:
+
+*The {{monsymlink|Wizard of Yendor}}
+*A {{monsymlink|wizard}} [[player monster]]
+*The powerful [[wizard mode]] of NetHack, used for testing and debugging.
+
+''Wizard'' could also refer to:
+*The magic of [[wizard lock]]
+*A [[spellbook of wizard lock]]
+*A [[Fake Wizard's Tower|fake]] or the genuine [[Wizard's Tower]]
+*The [[Wizard Patch]] (now integrated into NetHack)
+*A {{monsymlink|gnomish wizard}}
+{{disambig}}
+{{nethack-343}}}
+&&%s&& %s Bug {108770 2018-01-05T23:27:50Z {27 Ais523} version bump #redirect [[Bugs in NetHack 3.6.0]]}
+&&%s&& %s ASCII character {33128 2008-06-16T10:48:36Z {701 Rogerb-on-NAO} Redirecting to [[American Standard Code for Information Interchange]] #redirect [[American Standard Code for Information Interchange]]}
+&&%s&& %s Magic candle {149841 2023-02-02T19:25:26Z {375 Ion frigate} Annoying interface screw with candelabrum {{tool
+ |name=magic candle
+ |tile=[[image:candle.png]]
+ |appearance=candle
+ |cost=250
+ |weight=2
+ |color=white
+ |material=wax
+}}
+
+A '''magic candle''' is a [[tool]] that appears in [[SLASH'EM]]. It appears simply as a [[candle]] when unidentified.
+
+[[The Candle of Eternal Flame]] is an [[artifact]] magic candle.
+
+==Description==
+When lit, a magic candle gives a 3-tile radius of light tiles and burns indefinitely without melting - while it cannot normally appear as "partly used", the variable for whether a light source has been used at least once is still applied. This renders a magic candle unable to be sold if it was ever lit, and a "fresh" candle will stack separately from lit ones; it is unknown if a usage fee is incurred this way. A bug in [[wizard mode]] prevents any kind of magic candles from being sold.
+
+Attaching a magic candle to the [[Candelabrum of Invocation]] will revert it to a mundane candle that burns for slightly longer.
+
+==Strategy==
+The magic candle's light radius and high base price of 250 [[zorkmids]] makes it trivial to distinguish via [[price identification]]. As a permanent light source, magic candles are particularly useful for [[polearm]] and [[lance]] users (such as [[Yeomen]] and [[Knight]]s) and [[jumping]] players. Unlike a [[magic lamp]], it weighs much less and can be [[wish]]ed for, allowing you to freely [[rub]] those lamps for wishes - this also means less reliance on the Candelabrum for late-game jumping.
+
+Attempting to relight a magic candle while carrying the non-full Candelabrum of Invocation will prompt you to attach the candle to the Candelabrum.  To avoid having this prompt come up every time you are [[engulf]]ed, it is advisable to immediately fill the Candelabrum with mundane candles, and to light it only for the [[Invocation ritual]], snuffing it immediately thereafter.
+
+{{slashem-7E7}}
+[[Category:SLASH'EM items]]}
+&&%s&& %s Template:For2 {64279 2011-01-30T12:36:42Z {630 Paxed} cat :<span class="dablink">''For {{{1}}}, see {{{2}}}.''</span><noinclude>
+
+'''Usage'''<tt><nowiki>
+{{for2|USE|CUSTOM TEXT}}
+</nowiki></tt> gives:
+
+{{for2|USE|CUSTOM TEXT}}
+
+<tt><nowiki>
+{{for2|the Nethack options|[[options#gender]], [[options#male]] or [[options#female]]}}
+</nowiki></tt> gives:
+
+{{for2|the Nethack options|[[options#gender]], [[options#male]] or [[options#female]]}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Eric Steven Raymond {33155 2008-06-17T00:00:35Z {701 Rogerb-on-NAO} Redirecting to [[Eric S. Raymond]] #redirect [[Eric S. Raymond]]}
+&&%s&& %s Eric Raymond {33156 2008-06-17T00:01:35Z {701 Rogerb-on-NAO} Redirecting to [[Eric S. Raymond]] #redirect [[Eric S. Raymond]]}
+&&%s&& %s ESR {33157 2008-06-17T00:02:17Z {701 Rogerb-on-NAO} Redirecting to [[Eric S. Raymond]] #redirect [[Eric S. Raymond]]}
+&&%s&& %s Undiggable {33167 2008-06-17T08:59:59Z {701 Rogerb-on-NAO} Redirecting to [[Digging]] #redirect [[Digging]]}
+&&%s&& %s Source talk:NetHack 3.4.3/dat/rumors.fal {77155 2012-04-10T02:05:17Z {663 Qazmlpok}  If rumour 129 was true, then it would be false, since it claims to be misleading. Therefore it is false, and all rumours are as misleading as it is ;-) --[[Special:Contributions/80.175.250.218|80.175.250.218]] 14:50, 18 June 2008 (UTC)
+
+== Wizards ==
+
+How is "Only true wizards can write scrolls" intended to be a false rumor? To me, it seems to be referring to the abilities high luck wizards at scroll-writing. [[Special:Contributions/75.25.42.215|75.25.42.215]] 00:34, 10 April 2012 (UTC)
+:It's still not true. There's a number of false rumors that are somewhat correct but still misleading and others that aren't misleading but incorrect (e.g. "Engrave your wishes with a wand of wishing." - this is wrong since you don't wish by engraving, but it does guide the player on a way to activate a wand of wishing) -- [[User:Qazmlpok|Qazmlpok]] 02:05, 10 April 2012 (UTC)}
+&&%s&& %s Pill {148452 2022-10-05T00:18:33Z {4001279 Umbire the Phantom} cat A '''pill''' is an item introduced in [[SLASH'EM]]. It can refer to white pills, which are only found inside [[medical kit]]s, or to pink pills which are found on their own.
+
+When a pink pill is eaten, it will have one of seven equally likely effects ("You swallow the little pink pill."):
+{|class="wikitable"
+!Effect!!Message
+|-
+| You get a [[wish]].
+| "The pink sugar coating hid a silver wishing pill! You may wish for an object."
+|-
+| You gain 600 points of nutrition.
+| "That tasted like vitamins"
+|-
+| You become very fast for 200&ndash;209 turns.
+| "Wow... everything is moving in slow motion..."
+|-
+| You are poisoned; you lose 1&ndash;4 points of strength and 1&ndash;15 hit points.
+| "You feel your stomach twinge."
+|-
+| You fall asleep for up to 49 turns.
+| "You feel drowsy..."
+|-
+| You hallucinate for 150 (more) turns.
+| "Oh wow! Look at the lights!"
+|-
+| You are stunned for 30 (more) turns.
+| "Everything begins to get blurry."
+|}
+
+The four negative effects may be resisted, or fixed with a [[unicorn horn]], making pills a safe, albeit unlikely, way of getting a wish. If any of the negative effects are resisted, you will get the message "Hmm. Nothing happens."
+
+You may suffer the ill effects of [[Comestible#Rotten food|rotten food]], including passing out. Thus it is best to eat your pills in a safe place while not satiated or starving.
+
+== SpliceHack ==
+Early versions of [[SpliceHack]] had pink pills which were mostly the same as in SLASH'EM, but did not grant wishes. The other six outcomes remained equally likely. They were removed on or before SpliceHack 1.0.0, becoming a [[defunct features (SpliceHack)|defunct]] feature.
+
+{{slashem-7E7}}
+[[Category:SLASH'EM items]]
+[[Category:SlashTHEM items]]
+[[Category:Defunct features (SpliceHack)]]}
+&&%s&& %s Doppelgänger {33207 2008-06-18T20:03:31Z {701 Rogerb-on-NAO} Redirecting to [[Doppelganger]] #redirect [[Doppelganger]]}
+&&%s&& %s Player monster {150024 2023-02-23T08:05:02Z {375 Ion frigate} I had always thought this was all of the "magical" player monsters, but it's just the new ones A '''player monster''' is a type of [[monster]] in ''[[NetHack]]'' that represents one of the player [[role]]s.
+
+{{tocright}}
+==List of player monsters==
+*{{monsymlink|archeologist}}
+*{{monsymlink|barbarian}}
+*{{monsymlink|caveman}}
+*{{monsymlink|cavewoman}}
+*{{monsymlink|healer}}
+*{{monsymlink|knight}}
+*{{monsymlink|monk}}
+*{{monsymlink|priest}}(ess)
+*{{monsymlink|ranger}}
+*{{monsymlink|rogue}}
+*{{monsymlink|samurai}}
+*{{monsymlink|tourist}}
+*{{monsymlink|valkyrie}}
+*{{monsymlink|wizard}}
+
+==Common characteristics==
+Player monsters cannot be tamed, but can be made peaceful. All player monsters will be referred to by the role's appropriate [[rank]] title for their level. Each player monster will have certain characteristics based on their corresponding role as well; for example, player monster valkyries will have cold resistance similar to a starting valkyrie, while player monster rogues have [[Gold lover|an affinity for gold]]. They will also have one or two weapon attacks, partly based on their role's ability to [[twoweapon]] (or lack thereof).
+
+==Generation==
+Player monsters are not randomly generated, and are thus rarely seen - most live player monsters encountered in the main dungeon are [[shapeshifter]]s, and [[doppelganger]]s in particular tend to favor player monster forms. There are several exceptions, however: a handful of player monsters can be seen in various [[quest]] branches, and some [[quest guardian]]s may [[grow up]] into player monsters by [[quaff]]ing [[potion of gain level]]. In every game, a number of tough and hostile player monsters await [[you]] on the [[Astral Plane]], with an [[ascension kit]]-like inventory on hand - their names are randomly selected and based on various members of the [[DevTeam]].{{refsrc|src/mplayer.c|17|version=NetHack 3.6.6}}
+
+Several player corpses appear in the [[Valley of the Dead]] with the exception of priest and monk corpses, and many player statues are generated on [[Medusa's Island]], including a guaranteed statue of a player monster knight named [[Perseus]].{{refsrc|dat/gehennom.des|75|version=NetHack 3.6.6|comment=Priest and monk corpses are excluded, with the comment implying Moloch has a special fate in store for servants of the other gods}}{{refsrc|src/sp_lev.c|1981|version=NetHack 3.6.6|comment=The code is very cryptic but fortunately has comments}}{{refsrc|dat/medusa.des|56|version=NetHack 3.6.6|comment=Statue of Perseus in first version}}{{refsrc|dat/medusa.des|155|version=NetHack 3.6.6|comment=Statue of Perseus in second version}}{{refsrc|dat/medusa.des|273|version=NetHack 3.6.6|comment=Statue of Perseus in third version}}{{refsrc|dat/medusa.des|373|version=NetHack 3.6.6|comment=Statue of Perseus in fourth version}} Player statues and corpses can also be found in [[bones]] levels.
+
+Using the [[spell of turn undead|spell]] or [[wand of undead turning]] on a player corpse or using [[stone to flesh]] on a player statue will revive them as a player monster. Player monsters matching the player's role may also be summoned by reading a cursed [[scroll of genocide]] while [[confused]] (which "[[reverse genocide]]s" yourself).
+
+Player monsters are generated with a monster level of {{rn1|16|15}} on the Astral Plane and d16 on other special levels. They are generated with (monster level)d10+30(+d30 more on Astral Plane) hit points.{{refsrc|src/mplayer.c|142|nethack=3.6.7}}
+
+===Equipment===
+Normally-generated player monsters will [[monster starting inventory|be given]] a [[weapon]], [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s, 1d3 random [[miscellaneous item]]s, and a set of armor.{{refsrc|src/mplayer.c|120|version=NetHack 3.6.6|name=mk_mplayer}} Player monsters will also carry 1d10 random objects, 1d1000 [[gold pieces]], and a set of random valuable [[gem]]s - the roll for gems uses either a 1d3 (66.7%) or 1d16 (33.3%), and they also have a {{frac|10}} chance of receiving either a [[luckstone]] ({{frac|2|3}} chance) or a [[loadstone]] ({{frac|3}} chance).{{refsrc|src/mplayer.c|283|version=NetHack 3.6.6}} All Astral Plane player monsters also have a [[cheap plastic imitation of the Amulet of Yendor]], which may explain why they are stuck there.{{refsrc|src/mplayer.c|148|version=NetHack 3.6.6|comment=Comment explaining their presence}}
+
+The [[enchantment]] of a player monster's weapon will be random between +0 and +3 (or between +4 and +8 if on the Astral Plane), and will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. Player monsters on the Astral Plane have a 50% chance of their weapon being converted to an [[artifact]] if possible - wizards who receive [[Magicbane]] this way will have its enchantment reduced to between +1 and +4 (since Magicbane is considered less effective if overenchanted). Each piece of a player monster's armor has a {{frac|3}} of being blessed and a {{frac|2|11}} chance of being cursed, and that item's enchantment has a {{frac|3|5}} chance of being +0 to +4, a {{frac|3|10}} chance of being +4 to +7, and a {{frac|10}} chance of being -1 to -3.{{refsrc|src/mplayer.c|96|version=NetHack 3.6.6|comment=mk_mplayer_armor|name=mk_mplayer_armor}}
+
+By default, each player monster is given [[dragon scale mail]] as armor and either a [[long sword]] or a random [[melee]] weapon with equal probability - if given a random weapon, the game then selects one from a specific set of weapon types, with the standard odds of generation used.{{refsrc|src/mplayer.c|154|version=NetHack 3.6.6|comment=Default equipment; weapons are chosen from within the designated object classes inclusively in objects.c, while the color of dragon mail is selected randomly at line 156}} However, each type of player monster may have their weapons and armor replaced with one more appropriate for their role, with varying odds and replacements depending on each role.{{refsrc|src/mplayer.c|164|version=NetHack 3.6.6|name=monsndx|comment=Role-based replacements start here}}<!--For source divers: If you want to determine somewhat precise odds of a given random melee weapon, look up the weapon's probability value (fourth number after the name and appearance in this case), then divide that by the total probability of the given range of object (e.g. 580 for weapons). Divide the resulting fraction by 1/2 (their chance to get a random object in the first place).--> 
+
+The overall odds of weapon replacements for different player monsters are as follows:
+
+* Archeologist: [[bullwhip]] (50%), long sword (25%) or random melee weapon (25%)
+* Barbarian: [[two-handed sword]] (25%), [[battle axe]] (25%), long sword (25%) or random melee weapon (25%)
+* Caveman / cavewoman: [[mace]] (75%), [[club]] (12.5%), long sword (6.25%) or random melee weapon (6.25%)
+* Healer: [[quarterstaff]] (75%), [[unicorn horn]] (6.25%), [[scalpel]] (6.25%), long sword (6.25%) or random melee weapon (6.25%)
+* Knight: long sword (87.5%) or random melee weapon (12.5%)
+* Monk: 33% chance of [[shuriken]], 66% chance of nothing
+* Priest / priestess: mace (50%), long sword (25%) or random melee weapon (25%)
+* Ranger: [[elven dagger]] (50%), long sword (25%) or random melee weapon (25%)
+* Rogue: [[short sword]] (25%), [[orcish dagger]] (25%), long sword (25%) or random melee weapon (25%)
+* Samurai: [[katana]] (50%), long sword (25%) or random melee weapon (25%)
+* Tourist: long sword (50%) or random melee weapon (50%)
+* Valkyrie: [[war hammer]] (50%), long sword (25%) or random melee weapon (25%)
+* Wizard: quarterstaff (37.5%), [[athame]] (37.5%), long sword (12.5%) or random melee weapon (12.5%)
+
+Player monsters receive the following types of armor, with varying odds for role-specific replacements:
+
+* 87.5% chance of a random magical [[cloak]], [[leather cloak]], or [[oilskin cloak]].
+** Monks always receive a [[robe]].
+** Priests have a 78% chance of getting a robe.
+** Wizards have a 50% chance of forcing a [[cloak of magic resistance]].
+* A random [[dragon scale mail]].
+** Barbarians, knights, priests, and valkyries have a 50% chance of getting a [[plate mail]], [[crystal plate mail]], [[bronze plate mail]], [[splint mail]], [[banded mail]], [[mithril-coat]], or [[chain mail]] instead.
+** Wizards who get a forced cloak of magic resistance will also get either black or silver dragon scale mail instead of a random one.
+** Monks will never receive any type of body armor.
+* 87.5% chance of a random helm
+** Barbarians and cavepeople will never receive a [[helm of brilliance]].
+** Healers and priests have a 75% chance of replacing their helm a helm of brilliance or [[helm of telepathy]] (which amounts to a cumulative 79% chance of either one).
+** Wizards have a 75% chance to replace their helm with a helm of brilliance (which equals a cumulative 77% chance of receiving one).
+* 87.5% chance of a random large shield.
+** Wizards will not receive shields, nor will barbarians who get a two-handed weapon.
+** Healers, priests, and monks have a 56% chance of not getting a shield.
+* [[Gauntlets of power]] for player monsters with [[war hammer]]s, and an 87.5% chance of a random pair of [[gloves]] otherwise.
+* 87.5% chance of a random pair of [[boots]].
+
+==Strategy==
+On the Astral Plane, player monsters are a source of [[YASD]], as they may be generated with [[Vorpal Blade]] if it has not appeared in a game, which can cause [[instadeath]] by beheading. Be very wary of engaging one in [[melee]] until you are certain what they are wielding.
+
+[[Extinctionist]]s will have a hard time finding a complete set. The best possibilities are as follows:
+* [[Perseus]]' statue is a knight.
+* The quest branch has plenty of player monsters in your own role, though obviously this is best saved for after the quest itself.
+* Various player monster corpses are found in the [[Valley of the Dead]].
+* [[Stoning]] and [[spellbook of stone to flesh|unstoning]] a [[doppelganger]] will make its morph stick.
+* [[Wish]] for statues and then cast stone to flesh on them.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], there are additional types of player monsters corresponding to the [[:Category:SLASH'EM roles|new roles in SLASH'EM]]. They are:
+
+*{{white|@}} [[ice mage (player monster)]]
+*{{red|@}} [[flame mage (player monster)]]
+*{{darkgray|@}} [[necromancer (player monster)]]
+*{{darkgray|@}} [[undead slayer (player monster)]]
+*{{white|@}} [[yeoman (player monster)]]
+
+Notably, the new "magical" player monsters are capable of [[monster spellcasting|spellcasting]]: ice mages, flame mages, and necromancers can all cast [[mage spell]]s.  As all monsters generated on the Astral Plane are quite high-level, player monsters of those three roles found there will easily be able to cast spells such as [[summon nasties]] and [[touch of death]].  Surprisingly, none of the "magical" roles from vanilla (e.g. wizards and priests) are given spellcasting attacks in SLASH'EM.
+
+Player monsters can be encountered in [[The Guild of Disgruntled Adventurers]] if that level is generated.
+
+===GruntHack===
+In [[GruntHack]], player monsters can generate anywhere in the dungeon, although with a low probability. Player monsters generated in the dungeon have an inventory set based on where they generate, approximating the progress an equal player would have made at that point. For example, below Sokoban, they may get an amulet of reflection or a bag of holding.
+
+Later on, player monsters can be quite dangerous as they can be kitted out with several ascension kit-class items such as a cloak of magic resistance or silver dragon scale mail. They will, however, not get any object properties on their armor (but will probably get it on their weapon) beyond random chance. Worse, they usually get these kind of items before players themselves has had a reasonable shot at getting them, so if you see a peaceful one early on, you probably don't want to bother it.
+
+Player monsters will not get any special object materials beyond random chance -- you will have to look for your dragonhide cloaks or gauntlets elsewhere.
+
+===EvilHack===
+Much like GruntHack, player monsters in [[EvilHack]] can spawn anywhere in the dungeon, and are kitted out with gear befitting their role. The ascension-level kits are more varied than found in other variants, and player monster abilities more closely match their roles (e.g. wizards and priests can cast spells, rogues can steal items). All player monsters in EvilHack covet the [[Amulet of Yendor]] and will attempt to steal it with their attacks; a player monster on the Astral Plane that steals the Amulet will attempt to reach their altar and sacrifice it to their god, ending the game if they succeed.
+
+===FIQHack===
+In [[FIQHack]], bones which would normally have created ghosts have a 66% probability of replacing the ghost with a player monster instead. These retain all the stats of the late player (HP, Pw, intrinsics, spells, etc.) and retain the inventory without an 80% chance of each item being cursed. These coupled with FIQHack's AI improvements may pose a much bigger threat than bones generally do.
+
+In addition, FIQHack random player monster kits has been significantly improved. They retain all of their vanilla items, have a shot at getting intrinsics like fire resistance, cold resistance or protection (like the kind bought from priests). In addition, they will now generally have a unicorn horn, may get several amulets of life saving if lacking reflection, generally have better armor, more HP, a bag, more random items (1d6 offensive/defensive/misc items instead of 1d3 if lategame), rings, and are likely to get object properties on their equipment. They now get an inventory similar to the ones generated in Astral if they generate in Gehennom, making them a valid source of lategame equipment.
+
+===SpliceHack===
+In [[SpliceHack]], player monsters can be encountered in the [[Bar (SpliceHack)|Bar]].
+
+==See also==
+* [[Race]]
+
+== References ==
+<references/>
+
+{{nethack-364}}
+[[Category:Player monsters|*]]}
+&&%s&& %s Player monsters {33211 2008-06-18T21:17:36Z {701 Rogerb-on-NAO} Redirecting to [[Player monster]] #redirect [[Player monster]]}
+&&%s&& %s Elf (monster) {133254 2020-04-05T06:15:37Z {4001279 Umbire the Phantom}  {{otheruses|||Elf}}
+{{monster
+ |name=elf
+ |
+ |difficulty=12
+ |level=10
+ |experience=216
+ |speed=12
+ |AC=10
+ |MR=2
+ |align=-3
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d8
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep (67%)
+ |attributes={{attributes|An elf|=
+ |humanoid=1|omnivore=1|seeinvis=1|nopoly=1|elf=1|strong=1|collect=1|infravision=1|infravisible=1}}
+ |reference=[[monst.c#line2309]]
+}}
+
+An '''elf''' is a monster in ''[[NetHack]]'' that normally acts as the base for the [[corpse]] left by killing an [[elf zombie]] or [[elf mummy]]. The elf monster has a much higher base level and difficulty rating than the other "base form" monsters associated with a race; specifically, it has the same difficulty as that of [[player monsters]], which may be related to the [[elf (role)|elf]] [[role]] in previous versions.
+
+Eating an elf corpse or a [[tin]] of its meat has a 67% of conveying [[sleep resistance]], the highest of all [[Elf (monster attribute)|elves]].
+
+==Generation==
+Normal elves are [[Normal mechanism|not randomly generated]]. It can only be created by zapping a [[wand of undead turning]] at an elf [[corpse]] that is not left by a elf zombie or mummy, or else reading a [[cursed]] [[scroll of genocide]] while [[confused]] as an elven player.
+
+==Strategy==
+Despite being the most reliable source of sleep resistance, elf corpses are usually left by [[undead]] and thus pose a high risk of [[food poisoning]]; however, they can be safely tinned and eaten with a [[tinning kit]].
+
+== Encyclopedia entry ==
+{{encyclopedia|<poem>
+The Elves sat round the fire upon the grass or upon the sawn
+rings of old trunks.  Some went to and fro bearing cups and
+pouring drinks; others brought food on heaped plates and
+dishes.
+"This is poor fare," they said to the hobbits; "for we are
+lodging in the greenwood far from our halls.  If ever you are
+our guests at home, we will treat you better."
+"It seems to me good enough for a birthday-party," said Frodo.
+Pippin afterwards recalled little of either food or drink, for
+his mind was filled with the light upon the elf-faces, and the
+sound of voices so various and so beautiful that he felt in a
+waking dream.  [...]
+Sam could never describe in words, nor picture clearly to
+himself, what he felt or thought that night, though it remained
+in his memory as one of the chief events of his life.  The
+nearest he ever got was to say: "Well, sir, if I could grow
+apples like that, I would call myself a gardener.  But it was
+the singing that went to my heart, if you know what I mean."
+{{right-align|[ The Fellowship of the Ring, by J.R.R. Tolkien ]}}
+</poem>}}
+
+[[Category:Monsters]]
+{{nethack-364}}}
+&&%s&& %s Template:Monlink {64268 2011-01-30T12:28:40Z {630 Paxed} cat <onlyinclude><includeonly>[[{{monarticle|{{{1}}}}}|{{{1}}}]]</includeonly></onlyinclude>
+
+This template creates a link to a monster's page, using [[Template:monarticle]]. It takes one parameter, the monster name.
+
+For example:
+*<nowiki>{{monlink|Wizard of Yendor}}</nowiki> produces {{Monlink|Wizard of Yendor}}
+
+This is a separate template to [[Template:Monsymlink]] to conserve resources.
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Monster symbol {33236 2008-06-19T22:25:49Z {701 Rogerb-on-NAO} Redirecting to [[Monster class]] #redirect [[Monster class]]}
+&&%s&& %s Cloud {144678 2022-02-28T16:36:41Z {4001279 Umbire the Phantom}  {{features}}
+{{distinguish|poison cloud}}
+{{otheruses}}
+
+A '''cloud''', {{lightgray|#}}[[Image:Cloud.png]], is a [[dungeon feature]] that appears in ''[[NetHack]]''.
+
+==Generation==
+Clouds appear in the following areas:
+
+* The home and locate levels of the [[Wizard quest]]
+* Variations #1, #8 and #10 of the [[Big Room]] (dependent on chance), and
+* The [[Plane of Air]], where far larger clouds appear.
+
+{{upcoming|3.7.0|One of the [[themed room]]s introduced in this version has a chance to generate a cloud at the center of the room. In addition, rays of fire that partially or completely evaporate [[pool]]s or moats will generate clouds of steam.}}
+
+==Description==
+Clouds allow unobstructed passage, but block line of sight - while inside a cloud square, you can see out of it, although clouds in adjacent squares will block your vision as normal.
+
+===Plane of Air===
+Clouds on the Plane of Air move around and are occasionally subject to storms, which emit rays of [[lightning]]. If you are inside the clouds when lightning strikes, you are [[paralyzed]] for a few turns - this cannot be prevented with [[free action]].
+
+==History==
+Clouds first appear in [[NetHack 3.1.0]], when the [[Quest]] [[branch]], the Big Room and the [[Elemental Planes]] were introduced to the game.
+
+==Variants==
+Variants tend to make clouds somewhat more common in the dungeon.
+
+===Lethe patch===
+In the [[Lethe patch]], the [[Lethe Gorge]]'s seventh level has some small clouds near the temple in the northwest.
+
+===Biodiversity patch===
+The [[biodiversity patch]]'s [[Biodiversity patch|retool]] of the [[Priest quest]] has a home level for priests of the [[Knight]]'s [[pantheon]] that features cloudy terrain.
+
+===SLASH'EM===
+The [[SLASH'EM]] [[Lawful Quest]] has a large cloud bank as its third section.
+
+===UnNetHack===
+In [[UnNetHack]], some [[Random vault (UnNetHack)|randomly generated rooms]] may have clouds within them. Clouds are also sometimes generated within the lower levels of [[Sheol]].
+
+==Encyclopedia entry==
+{{encyclopedia|
+I wandered lonely as a cloud
+That floats on high o'er vales and hills,
+When all at once I saw a crowd,
+A host, of golden daffodils;
+Beside the lake, beneath the trees,
+Fluttering and dancing in the breeze.
+|[ I Wandered Lonely as a Cloud, by William Wordsworth ]
+}}
+{{nethack-366}}
+[[Category:Dungeon features]]
+[[Category:UnNetHack]]}
+&&%s&& %s Container trap {144007 2021-12-23T22:03:34Z {4000401 Hackemslashem} /* Trap effects */ [[Chest]]s and [[large box]]es each have a 10% chance of being protected by a [[container trap]]. If you [[apply]], [[loot]] or [[kick]] open a trapped container, or use an [[tool|unlocking tool]] to lock or unlock it, the trap will be set off. The [[untrap|#untrap]] command checks a container for traps, and will prompt you to disarm it if one is found. Unsuccessfully disarming a trap will also set it off.
+
+The type of trap on a trapped container is not determined until it is set off.
+
+[[Wish]]ing for a “poisoned” large box or chest will create one that is guaranteed to be trapped.
+
+== Disarming ==
+
+Use the [[untrap|#untrap]] command on your current square ({{kbd|.}}) to search a container in that square for traps. If a trap exists on a container, the chance of actually finding it is 10/(31 &minus; ''[[Experience level|Xlvl]]'').{{refsrc|trap.c|3500|comment=Finding a trap on a container}} This is a {{frac|3}} chance at experience level 1, increasing to 100% at level 21. If you are [[confused]], the chance of success is always {{frac|3}}. Searching for a container trap will never set it off, even if you fail to find it.
+
+When a trap is found, you are given the option of disarming it.
+
+Your proficiency at disarming traps is (''[[Dexterity|Dex]]'' + ''Xlvl''), which is doubled if you are a [[Rogue]]. The difficulty of a particular trap is [75 + (''[[Dungeon level|Dlvl]]''/2)], based on the ''current'' dungeon level when you try to disarm the trap.
+
+If a roll of ''[[D notation|d]](difficulty)'' is less than or equal to your proficiency, and you are neither [[confused]] nor [[fumbling]], the trap is disarmed ''(“You disarm it!”)''.{{refsrc|trap.c|3511|comment=Disarming a trap}} Otherwise, the trap is set off as normal. In either case the container is no longer trapped.
+
+You can also [[invoke]] the [[Master Key of Thievery]] to remove a container trap, with no chance of setting it off.
+
+== Trap effects ==
+
+When you set off a trap, there is a chance that it will be harmless. This occurs if ''d(''13 + ''[[Luck]])'' > 8. If so, you will randomly receive one of the following meaningless messages:{{refsrc|trap.c|3617|comment=Ineffective traps}}
+
+* ''But luckily the explosive charge is a dud!'' ({{frac|2|13}} chance)
+* ''But luckily the electric charge is grounded!'' ({{frac|2|13}})
+* ''But luckily the flame fizzles out!'' ({{frac|2|13}})
+* ''But luckily the poisoned needle misses!'' ({{frac|3|13}})
+* ''But luckily the gas cloud blows away!'' ({{frac|4|13}})
+
+Otherwise, a number will be chosen between 0 and 25. There is a {{frac|20}} chance that this will be randomly chosen from the full range; otherwise the number will be between 0 and (13 &minus; ''Luck''). The effect of each result is as follows:{{refsrc|trap.c|3638|comment=Trap effects}}
+
+{| class="prettytable"
+! Number !! Message !! Effect
+|-
+| 21&ndash;25 || ''The <container> explodes!''
+|
+* The container, its contents, and all objects in the same square are destroyed.
+* If any of these items belong to a [[shopkeeper]], you will be liable for the cost. If you are somehow not in a shop, the shopkeeper will also become angry.
+* You lose ''6d6'' hit points and abuse [[strength]].
+* You wake nearby monsters.
+|-
+| 17&ndash;20 || ''A cloud of noxious gas billows from the <container>.''
+|
+* You are poisoned, if you are not [[poison resistance|poison-resistant]].
+* There is a {{frac|15}} chance that the poison is deadly.
+* There is a {{frac|5|15}} chance that the poison drains 3&ndash;5 points of strength.
+* Otherwise, the poison deals 6&ndash;15 damage.
+* You abuse [[constitution]], even if poison-resistant.
+|-
+| 13&ndash;16 || ''You feel a needle prick your <hand/finger>.''
+|
+* You are poisoned, if you are not [[poison resistance|poison-resistant]].
+* There is a {{frac|10}} chance that the poison is deadly.
+* There is a {{frac|5|10}} chance that the poison drains 3&ndash;5 points of constitution.
+* Otherwise, the poison deals 6&ndash;15 damage.
+* You abuse constitution, even if poison-resistant.
+|-
+| 9{{frac|12 || ''A tower of flame bursts from the <container>!''
+|
+* Same as a [[fire trap]].
+|-
+| 6&ndash;8 || ''You are jolted by a surge of electricity!''
+|
+* You lose ''4d4'' hit points, if you are not [[shock resistance|shock-resistant]].
+* Each [[ring]] and [[wand]] in your open inventory (except [[ring of shock resistance]] and [[wand of lightning]]) has a {{frac|3}} chance of being destroyed, even if you are shock-resistant.{{reffunc|zap.c|destroy_item}}
+|-
+| 3&ndash;5 || ''Suddenly you are frozen in place!''
+|
+* You are paralyzed for ''5d6'' turns, if you do not have [[free action]].
+* You abuse dexterity, but only if you do not have free action.
+|-
+| 0&ndash;2 || ''A cloud of <color> gas billows from the <container>.''
+|
+* You are [[stun]]ned for 16&ndash;22 (more) turns.
+* You [[hallucination|hallucinate]] for 16&ndash;20 (more) turns.
+|}
+
+== Strategy ==
+
+Container traps can be very dangerous, especially if you lack poison resistance, fire resistance, and free action. It is a good idea to search each chest and box you find for traps. Since characters below level 21 are not guaranteed to find a trap even if one exists, you should check at least 2&ndash;3 times.
+
+Luck has a strong effect on traps. If you have maximum Luck (13), 69% of traps will be harmless, compared to only 38% at 0 Luck. If your Luck is at least 8, only 0.6% of traps will be electricity traps.
+
+Remember that once you find a trap, you can safely choose to leave it undisturbed. This might be a good idea in the early game, when your Luck is low and the consequences of setting off a trap are especially severe.
+
+You can increase your chances of disarming a container trap by dragging the container to a shallower dungeon level. However, since trappable containers are heavy and the effect is small, this is probably not worth the effort.
+
+Once you have [[reflection]], an electricity trap is one of the few effects that can still destroy your rings and wands. If you are in an area with many chests, such as the [[Priest quest]], [[Vlad's Tower]] or the [[Valley of the Dead]], it might be a good idea to put them away temporarily.
+
+== References ==
+
+<references/>
+
+{{nethack-343}}
+[[Category:Traps]]}
+&&%s&& %s Template:Distinguish {64274 2011-01-30T12:33:41Z {630 Paxed} cat <onlyinclude><includeonly>:<span class="dablink">''Not to be confused with [[{{{1}}}]].''</span></includeonly></onlyinclude>
+
+This hatnote can be used to disambiguate when an article may frequently be reached in error.
+
+For example:
+<nowiki>{{Distinguish|stinking cloud}}</nowiki> produces:
+{{Distinguish|stinking cloud}}
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Vertical bar {33312 2008-06-21T09:25:54Z {701 Rogerb-on-NAO} Redirecting to [[Pipe]] #redirect [[Pipe]]}
+&&%s&& %s Caret {33317 2008-06-21T13:57:39Z {701 Rogerb-on-NAO} Redirecting to [[^]] #redirect [[^]]}
+&&%s&& %s Farlook {33319 2008-06-21T14:10:58Z {701 Rogerb-on-NAO} Redirecting to [[Far look]] #redirect [[far look]]}
+&&%s&& %s Trap id {81289 2012-10-29T14:13:45Z {723 Scorchgeek} some reasons to use trap ID; add more if you can think of them {{stub}}
+{{kbd|^}} accesses the '''trap_id''' [[commands|command]]. This command allows you to check the type of [[trap]]s you have previously [[search|found]] (or triggered), in adjacent [[square]]s or your own. Unlike the {{kbd|;}} [[far look]] command, it works even if the trap is covered by a [[monster]] or [[item]], and thus not displayed on your screen.
+
+The trap ID command is particularly useful in a few situations:
+* On the Plane of Water, an item will often end up on top of the portal. You may wish to know where the portal is without stepping into it and moving onto the Astral Plane immediately.
+* If a monster is not moving, you might be curious about why it is immobilized (which might affect your treatment of it).
+
+[[Category:Commands]]
+{{nethack-343}}}
+&&%s&& %s Double quotation mark {33322 2008-06-21T14:25:44Z {701 Rogerb-on-NAO} Redirecting to [["]] #redirect [["]]}
+&&%s&& %s Foo swings itself around you {33352 2008-06-21T21:53:41Z {701 Rogerb-on-NAO} Redirecting to [[Drowning]] #redirect [[Drowning]]}
+&&%s&& %s Liquid leap {80195 2012-09-22T14:18:12Z {831 Tjr} Text replace - "<ref>[ \
+]*\[(\[[Ss]ource:|\[)([^]|\/]*)\/([a-zA-Z0-9_]*\.[ch])#[Ll]ine([0-9][0-9]*)[ \
+]*\]\][ \
+]*<\/ref>" to "{{refsrc|$3|$4|version=$2}}" '''Liquid leap''' is a [[SLASH'EM]] [[technique]]. Invoking this allows the [[hero]] to jump in a straight line. You may jump in any direction in which a [[wand]] can fire a ray. The maximum length of the leap depends on the [[Technique#Technique_Skill_Level|skill level]] and ranges from 4 to 7 squares.{{refsrc|tech.c|930|version=SLASH'EM_0.0.7E7F2}} You may leap through [[iron bars]], [[closed door]]s, and from out of a [[bear trap]]. Liquid leaping in [[Sokoban]] carries a [[Luck]] penalty. The acid trail damages those in its path, unless they have [[acid resistance]].
+
+[[Doppelganger (starting race)|Doppelgangers]] acquire liquid leap at the start of the game. Other [[race]]s cannot liquid leap.
+
+==References==
+<references/>
+{{slashem-7E7}}
+[[Category:Techniques]]}
+&&%s&& %s You see the ring slide right down the drain {33376 2008-06-22T23:09:28Z {701 Rogerb-on-NAO} Redirecting to [[Ring of free action]] #redirect [[Ring of free action]]}
+&&%s&& %s Bad idea {33384 2008-06-23T15:55:54Z {0 } Redirecting to [[Bad Idea]] #REDIRECT [[Bad Idea]]}
+&&%s&& %s Niche {33394 2008-06-23T23:47:11Z {701 Rogerb-on-NAO} Redirecting to [[Closet]] #redirect [[Closet]]}
+&&%s&& %s Swim {33439 2008-06-24T23:30:18Z {701 Rogerb-on-NAO} Redirecting to [[Swimmer]] #redirect [[Swimmer]]}
+&&%s&& %s Template:Cc-by-sa-3.0 {60642 2010-12-01T23:17:46Z {366 Ilmari Karonen} fix images <center>
+{| class="boilerplate" id="c-fairuse" style="width: 90%; margin: 0 auto; text-align: justify; border: 2px solid #88a; background: #FFFFCC; padding: 10px; color:black; "
+| align="center" |[[File:CC_some_rights_reserved.svg|90px|Some rights reserved:|link=]]<br/>[[File:Cc-by_new_white.svg|24px|Attribution|link=]] [[File:Cc-sa_white.svg|24px|ShareAlike|link=]]
+|  '''''This work is licensed under the Creative Commons [http://creativecommons.org/licenses/by-sa/3.0/ <span style="color:#002bb8;">Attribution-ShareAlike 3.0</span>] License.<br />{{#if:{{{1|}}}|<br />Attribution: {{{1|}}}}}'''''
+|}
+</center><noinclude>
+
+To use this template, type <nowiki>{{Cc-by-sa-3.0|Attribution details}}</nowiki> on the image information page.  Replace "Attribution details" with information about the source.
+
+[[Category:Image wiki templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s %s {33473 2008-06-25T22:19:50Z {0 } Redirecting to [[Main Page]] #REDIRECT [[Main Page]]}
+&&%s&& %s Fun {143008 2021-09-30T11:51:54Z {4000693 Phol ende wodan} more freenode->libera {{todo|Style - NetHackWiki is not an encyclopaedia. Nevertheless, according to the [[NetHackWiki:Style guide|Style guide]], ''articles in the main namespace should be written in a largely encyclopaedic tone''. While this should undoubtedly be applied with latitude on a page entitled ''Fun'', an overly chatty style and particularly use of the first person should be avoided. This article should be rewritten to follow the style guide. (see also [[Talk:{{PAGENAME}}|discussion page]].)}}
+[[Fun]] is an intangible, but arguably very important element in NetHack. [[Death by boredom]] is a real risk if you're an obsessive player -- you get a little reckless, your judgement slips, and WHOOPS! [[DYWYPI]]? 
+
+==Playing for fun versus playing to win==
+
+[[Start scumming]] and [[farming]], and various other game tactics which involve long repetition without actually breaking any rules, can increase your [[score]] or chance of winning the game while greatly increasing your boredom.  Perhaps the most notorious example of this is [[pudding farming]], the practice of killing unlimited numbers of black puddings, while standing on a permanent [[Elbereth]].
+
+Greed and impatience can be big obstacles to fun, resulting in many [[YASD]]s.  For example, [[stealing from shops|robbing a shop]] by jumping out with the entire shop contents is quicker than tediously waiting for your [[pet]] to shoplift everything you need, but carries a risk of being killed by the angry shopkeeper. Sometimes playing fair is more enjoyable. (On the other hand, sometimes the opposite is the case, especially if you have a really cool trick up your sleeve. Chaotic characters are often more fun to play for this reason.)
+
+Excessive reading of spoilers can arguably decrease the sense of achievement gained from learning the game by yourself. An alternate philosophy is that dying to something you don't understand is not fun; [[IRC]] and this [[wiki]] can help with those frustrations.
+
+Playing with roles that suit your tastes for difficulty and complexity is a way to increase your fun. Alternatively, you could have a policy of randomizing your character role and race whenever you start a new game, attempting to get as far as you can with whatever the RNG throws at you. This can prevent you from getting in a rut, letting you get a taste of different styles of play, and may improve your NetHack skills as a result.  [[User:Adeon|Adeon]]'s ascension record on [[nao]] suggests that every game is ascendable.
+
+== The fun of social NetHack ==
+
+Playing the game on a shared computer and competing for high scores can be fun. Sharing [[bones]] files is too. Bones files can be shared online using a program such as [http://www.argon.org/~roderick/hearse/hearse.html hearse], which can be interesting and refreshing. 
+
+The most social way to play NetHack is to log on to a [[public server]] and also join the #nethack IRC channel on [[Libera]].  As well as sharing bones files, players can watch each others' games and offer advice.
+
+Writing up an ascensions online is arguably fun, or at least provides a satisfying epilogue for a game that you played or watched.
+
+[[YASD]]s are not typically fun for the player, but may be fun for the audience if the game was played online.  Spectacular YASDs on NAO can be viewed by telnetting to termcast.org and selecting the SplatTV channel.
+
+All public servers, including [http://nethack.alt.org NAO], automatically upload players' scores, bones, etc. Players may also watch others' games and send [[scroll of mail|scrolls of mail]] to provide opinions, suggestions, and so on.
+
+== Other observations ==
+
+Having to limit what you carry around is pretty annoying, which makes a bag of holding a very game-enhancing item (even if it won't reflect a death ray).
+
+Some philosophies say that one should do activities for the sake of the activity and live in the moment, rather than for any particular outcome. In this way it is better to place the emphasis on playing NetHack one level at a time, without limiting your satisfaction to that elusive ascension. A game of NetHack could be an excellent meditative practice for you. (If you reach enlightenment while playing NetHack, go eat a sandwich. That will take a while.)
+
+==External links==
+
+* [https://web.archive.org/web/20170612044522/http://www.sophiagubb.com/nethack-9-life-lessons/ Nethack: 9 Life Lessons], Sophia Gubb, 2010
+* Dwarf Fortress Wiki's [http://df.magmawiki.com/index.php/Fun slightly different take on "Fun"]
+*[http://kevan.org/nethack What NetHack monster are you?]
+
+{{noversion}}
+[[Category:Strategy]]}
+&&%s&& %s YAPAP {35680 2008-10-21T03:51:26Z {679 Ray Chason} Redirecting to [[Yet Another Ascension Post]] #redirect [[Yet Another Ascension Post]]}
+&&%s&& %s Soko {33566 2008-07-02T18:11:45Z {51 Andronikus} Redirecting to [[Sokoban]] #redirect [[Sokoban]]}
+&&%s&& %s Charged {33632 2008-07-10T09:09:46Z {701 Rogerb-on-NAO} Redirecting to [[Charging]] #redirect [[Charging]]}
+&&%s&& %s Sleep resistant {33633 2008-07-10T09:11:35Z {701 Rogerb-on-NAO} Redirecting to [[Sleep resistance]] #redirect [[Sleep resistance]]}
+&&%s&& %s Usage fee {140964 2021-06-15T13:48:40Z {187 Darth l33t} potion of oil A '''usage fee''' is incurred when the player uses an item which has limited uses and belongs to a [[shopkeeper]] whose shop you are in.{{refsrc|shk.c|3922|comment=usage fee}} This includes items with [[charge]]s, [[spellbook]]s, and [[light source]]s.
+
+== Messages associated with usage fees ==
+{|class="prettytable"
+|-
+! Message
+! Item Type
+|-
+| ''"This is no free library, cad!"''
+| [[spellbook]]
+|-
+| ''"That will cost you (n) zorkmids (Yendorian Fuel Tax)."''
+''"That's in addition to the cost of the potion, of course."''
+| [[potion of oil]]
+|-
+| ''"Usage fee, (n) zorkmids."''
+| all other items
+|}
+
+Each of these messages has a one-in-three chance of being prefaced with "Hey!" or "Ahem."
+
+==Fees==
+Usage fees are a percentage of the item's normal cost, rounded down:
+
+{|class="prettytable"
+!Item class!!Usage fee!!Notes
+|-
+|[[Magic lamp]] || See below || See below
+|-
+|[[Magic marker]] || 50% || No matter how many charges are used, or even if the use was successful
+|-
+|[[Bag of tricks]]<br />[[Horn of plenty]] || 20%
+|-
+|[[Can of grease]]<br />[[Tinning kit]]<br />[[Expensive camera]] || 10%
+|-
+|All other [[Charging#Tools|chargeable tools]]<br />[[Wands]] || 25% || Only if the item had any charges
+|-
+|[[Spellbook]] || 80% 
+|-
+|[[Potion of oil]] || 20% || In addition to the usage fee, you must pay for the potion.
+|-
+|}
+
+The usage fee of a magic lamp depends on how it is used:
+* When applied, the usage fee is the same as if it were an oil lamp.
+* When [[rub]]bed, if a [[djinni]] is released, the usage fee is 133%.
+
+==Strategy==
+In general, it is preferable to buy the item first, even if you plan to sell it back immediately after using it. One exception might be low-level spellbooks; by the time the spell expires, your character will likely have found another spellbook of the same type, enough gold to buy the first, or else [[DYWYPI|met an untimely demise]]. However, it is rarely difficult to find the 20 or 40 gold which makes the difference between buying and paying for the use of the spellbook. Another possible exception might be for an early [[wand of wishing]]; a paranoid character might choose to use the wand to first wish for scrolls of charging, and then wish for sufficient gold (up to 5000 is guaranteed) to pay for the wand and usage fees. This wastes a wish, but for players with high mortality rates it may be worthwhile. Again, it is rare that this will be necessary; between selling items and finding gold on the ground, most characters should be able to scrounge up 500&ndash;1000 zorkmids to buy a wand of wishing. Alternatively, one may wish for something to kill the shopkeeper with.
+
+==References==
+<references/>
+[[Category:Strategy]]
+{{nethack-343}}}
+&&%s&& %s Yendorian Fuel Tax {33642 2008-07-10T12:12:15Z {701 Rogerb-on-NAO} Redirecting to [[Usage fee]] #redirect [[Usage fee]]}
+&&%s&& %s This is no free library {33643 2008-07-10T12:14:02Z {701 Rogerb-on-NAO} Redirecting to [[Usage fee]] #redirect [[Usage fee]]}
+&&%s&& %s This is no free library, cad {33644 2008-07-10T12:14:36Z {701 Rogerb-on-NAO} Redirecting to [[Usage fee]] #redirect [[Usage fee]]}
+&&%s&& %s Impaired {140731 2021-06-06T02:13:48Z {443 Kahran042} /* Impairing monster properties */ {{For|player impairment|Stun|Confusion}}
+Typically a [[monster]]'s movement follows a predictable pattern. When the monster is affected by certain [[monster property|properties]], or it believes the [[player]] is in a different [[square]] to his actual location, these patterns can be disrupted. Such a monster is said to be [[impaired]]. This is a useful shorthand when describing a monster's usual behaviour, by adding the caveat ''"unless the [[foo]] is impaired"''.
+
+[[Conflict]] is not considered an impairment, but a separate category of its own.
+
+==Impairing monster properties==
+
+The following monster properties can cause atypical monster behaviour.
+
+===Confused===
+{{main|Confusion}}
+
+A [[confused]] monster will move randomly, and may blunder into and attack a player it might not otherwise, unless he is protected by [[Elbereth]], a [[scroll of scare monster]] or [[sanctuary]].
+
+===Stunned===
+{{main|Stun}}
+The NetHack movement subroutines include code to modify monster behaviour when [[stun]]ned. It is not clear what effect (if any) this produces in the result of these routines.
+
+===Scared===
+{{main|Scare}}
+Generally, monsters that are [[scare]]d run away from you. This may cause them to use a [[ranged attack]] they would not otherwise have used.
+
+===Blind===
+{{main|Blindness}}
+Monsters with eyes that are [[blind]] (e.g. from a [[Expensive camera|camera]]) will move randomly, in a fashion similar to confused monsters, save that they will not respect Elbereth.
+
+==Player properties that impair monsters==
+
+If you are [[invisible]] or [[displacement|displaced]], monsters that do not yet know your true position will assume you are on a square near to your current location, and behave accordingly.
+
+===Invisibility===
+{{main|Invisibility}}
+Monsters will be unable to locate [[invisible]] players, unless they can [[see invisible]] or have hit the player since the player last moved. They will assume the player is on a square within 1 square of his current location and move accordingly. Generally they will end up next to the player's assumed location, so use of ranged attacks on adjacent invisible players is not common.
+
+===Displacement===
+{{main|Displacement}}
+Monsters will be unable to locate players whose image is [[displacement|displaced]], unless they have hit the player since he last moved.
+They will assume the player is on a square within 2 squares of his current location and move accordingly. This makes it less likely that monsters will score a melee hit, but makes the use of ranged attacks possible.
+
+[[Category:Monster attributes]]
+{{nethack-343}}}
+&&%s&& %s Template:Pl {64280 2011-01-30T12:37:16Z {630 Paxed} cat <onlyinclude><includeonly>&#91;&#91;[[{{{1}}}]]]]</includeonly></onlyinclude>
+
+Page link.
+
+ <nowiki>{{pl|monsters}}</nowiki>
+
+gives:
+
+{{pl|monsters}}
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Frostbrand {33696 2008-07-11T03:13:56Z {0 } Redirecting to [[Fire and Frost Brand]] #REDIRECT [[Fire and Frost Brand]]}
+&&%s&& %s The Candle of Eternal Flame {75531 2011-12-30T11:49:41Z {375 Ion frigate}  {{artifact
+ |color=white
+ |glyph=(
+ |tile=[[Image:candle.png]]
+ |name=The Candle of Eternal Flame
+ |base=magic candle
+ |affiliation=<ul><li>[[neutral]]</li><li>[[Flame Mage]]</li><li>[[intelligent artifacts|intelligent]]</li></ul>
+ |whencarried=<ul><li>[[warning]]</li><li>[[teleport control]]</li><li>[[cold resistance]]</li></ul>
+ |wheninvoked=<ul><li>summons a tame fire elemental</li></ul>
+ |cost = 50000
+ |weight = 2
+}}
+In [[SLASH'EM]], '''The Candle of Eternal Flame''' is the [[Flame Mage]]'s quest artifact. It is a [[magic candle]] which cannot be unlit. Carrying it grants [[warning]], [[teleport control]] and [[cold resistance]], and [[invoking]] it summons a [[tame]] [[fire elemental]]. It is neutral for wishing purposes.  
+
+==Strategy==
+As quest artifacts go, this one is of moderate usefulness.  Warning is moderately useful but mostly superseded by extrinsic telepathy.  Cold resistance is entirely supersedable; teleport control is as well, but this artifact will at least save you the possible hassle of uncontrolled [[teleportitis]] from eating [[tengu]] and [[giant shoggoth]] corpses.  Fire elementals are generally too weak to be useful post-Quest pets, although one could always [[polymorph]] them.  This artifact is mostly convenient - a light source is always nice to have, and not having to re-light it every time you are engulfed or run into a rust trap is a major plus.  Still, it is decidedly not worth an artifact [[wish]]; wish for the [[Eye of the Aethiopica]] and an ordinary magic candle instead.
+
+{{slashem-7E7}}
+[[Category:SLASH'EM Artifacts|Candle of Eternal Flame]]
+[[Category:Quest artifacts|Candle of Eternal Flame]]
+[[Category:SLASH'EM items|Candle of Eternal Flame]]
+[[Category:SLASH'EM|Candle of Eternal Flame]]}
+&&%s&& %s Monsters by difficulty {134875 2020-07-06T20:04:19Z {4000978 Aximili} Changed redirect target from [[Monsters (by difficulty)]] to [[Monster difficulty]] #REDIRECT [[Monster difficulty]]}
+&&%s&& %s Player character {33720 2008-07-12T16:33:54Z {753 Smiling Jack} Redirecting to [[Player]] #REDIRECT [[Player]]}
+&&%s&& %s Angry bear {33735 2008-07-13T14:55:02Z {467 Killian} fix anchor link #REDIRECT [[Beartrap#Messages]]}
+&&%s&& %s You hear the roaring of an angry bear! {33736 2008-07-13T14:55:48Z {467 Killian} redirect to [[Beartrap#messages]] #REDIRECT [[Beartrap#Messages]]}
+&&%s&& %s You hear the roaring of an angry bear {33737 2008-07-13T14:56:07Z {467 Killian} redirect to [[Beartrap#messages]] #REDIRECT [[Beartrap#Messages]]}
+&&%s&& %s You howl in anger! {33738 2008-07-13T14:56:38Z {467 Killian} redirect to [[Beartrap#messages]] #REDIRECT [[Beartrap#Messages]]}
+&&%s&& %s You howl in anger {33739 2008-07-13T14:56:57Z {467 Killian} redirect to [[Beartrap#messages]] #REDIRECT [[Beartrap#Messages]]}
+&&%s&& %s Unsolid {97213 2015-11-09T09:17:37Z {4000452 Bluescreenofdeath} fix red link {{stub}}
+An '''unsolid''' monster is one of:{{refsrc|mondata.h|56}}
+
+* {{monsymlink|fog cloud}}
+* {{monsymlink|energy vortex}}
+* {{monsymlink|steam vortex}}
+* {{monsymlink|fire vortex}}
+* {{monsymlink|yellow light}}
+* {{monsymlink|black light}}
+* {{monsymlink|air elemental}}
+* {{monsymlink|fire elemental}}
+* {{monsymlink|wraith}}
+* {{monsymlink|ghost}}

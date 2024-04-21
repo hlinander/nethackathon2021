@@ -1,0 +1,1000 @@
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So '''Nddrr*''' means move boulder '''N''' two times down and two times to the right into a hole.
+
+Make way to the fourth room (lower right) by storing boulders in earlier rooms. It is not necessary to store as many boulders as in this example:
+
+ -----------       ----------- '''E''' lllr rrrr u
+ |....|....---     |.........| '''G''' uuuu u
+ |..AB|CD...@|     |.........| '''N''' uuuu uur
+ |.....E...---     |.........| '''L''' rrrr r
+ |....|....|       |....<....|
+ |-.---------      |.........|
+ |..F.|.....|      |.........|
+ |.GH.|I.J.K|      |.........|
+ |..L.....M.|      |.........|
+ |.NOP|Q..R.----------------+|
+ |....|..S.T.^^^^^^^^^^^^^^^.|
+ -----------------------------
+
+Clear the 4th room with the exception of '''I''' and '''Q''':
+ -----------       ----------- '''R''' r
+ |....|....---     |.........| '''T''' rr*
+ |.GAB|CDE..>|     |.........| '''S''' rrrr r*
+ |..N......---     |.........| '''M''' ddrr rrr*
+ |....|....|       |....<....| '''R''' drrr rr*
+ |-.---------      |.........| '''K''' dddr rrrr r*
+ |..F.|.....|      |.........| '''L''' rrdd rrrr rrr*
+ |..H.|I.J.K|      |.........| '''J''' dddr rrrr rrrr r*
+ |......@LM.|      |.........|
+ |..OP|Q..R.----------------+|
+ |....|..S.T.^^^^^^^^^^^^^^^.|
+ -----------------------------
+
+Clear the 3rd room (lower left) with the exception of '''F''':
+ -----------       ----------- '''O''' urrr rrrr ddrr rrrr rrr*
+ |....|....---     |.........| '''P''' urrr rrrd drrr rrrr rrr*
+ |.GAB|CDE..>|     |.........| '''H''' ldrr rrrr rrdd rrrr rrrr rrr*
+ |..N......---     |.........|
+ |....|....|       |....<....|
+ |-.---------      |.........|
+ |..F.|.....|      |.........|
+ |..H.|I....|      |.........|
+ |..........|      |.........|
+ |..OP|Q....----------------+|
+ |....|.............^^^^^^^^.|
+ -----------------------------
+
+Clear the 2nd room (upper left) with the exception of '''B''', and finish off with the two boulders from the 4th room.:
+ -----------       ----------- '''G''' dddd ddrr rrrr rrdd rrrr rrrr rrrr*
+ |....|....---     |.........| '''N''' lddd ddrr rrrr rrdd rrrr rrrr rrrr r*
+ |.GAB|CDE..>|     |.........| '''A''' ddld dddr rrrr rrrd drrr rrrr rrrr rrr*
+ |..N......---     |.........| '''Q''' ulll rrrr rrrd drrr rrrr rrrr rrrr*
+ |....|....|       |....<....| '''I''' dlll rrrr rrrd drrr rrrr rrrr rrrr r*
+ |-.---------      |.........|
+ |..F.|.....|      |.........|
+ |.@..|I....|      |.........|
+ |..........|      |.........|
+ |....|Q....----------------+|
+ |....|................^^^^^.|
+ -----------------------------
+
+The level is now finished:
+ -----------       -----------
+ |....|....---     |.........|
+ |...B|CDE..>|     |.........|
+ |.........---     |.........|
+ |....|....|       |....<....|
+ |-.---------      |.........|
+ |..F.|.....|      |.........|
+ |....|.....|      |.........|
+ |..........|      |.........|
+ |....|.....----------------+|
+ |....|.....................@|
+ -----------------------------
+
+==Next level==
+After this level, you will face either of the following levels: 
+
+{| class="prettytable"
+|[[Sokoban Level 3a]]
+ <nowiki>  --------</nowiki>
+ <nowiki>---.|....|</nowiki>
+ <nowiki>|...0....|----------</nowiki>
+ <nowiki>|.-.00-00|.|.......|</nowiki>
+ <nowiki>|.00-......|.......|</nowiki>
+ <nowiki>|.-..0.|...|.......|</nowiki>
+ <nowiki>|....-0--0-|...<...|</nowiki>
+ <nowiki>|..00..0...|.......|</nowiki>
+ <nowiki>|.--...|...|.......|</nowiki>
+ <nowiki>|....-0|---|.......|</nowiki>
+ <nowiki>---..0.-----------+|</nowiki>
+ <nowiki>  |..0@^^^^^^^^^^^.|</nowiki>
+ <nowiki>  ------------------</nowiki>
+|[[Sokoban Level 3b]]
+ <nowiki>--------------------</nowiki>
+ <nowiki>|........|...|.....|</nowiki>
+ <nowiki>|.00..-00|.-.|.....|</nowiki>
+ <nowiki>|..|.0.0.|00.|.....|</nowiki>
+ <nowiki>|-.|..-..|.-.|..<..|</nowiki>
+ <nowiki>|...--.......|.....|</nowiki>
+ <nowiki>|...|.0.-...-|.....|</nowiki>
+ <nowiki>|.0.|0.|...--|.....|</nowiki>
+ <nowiki>|-0.|..-----------+|</nowiki>
+ <nowiki>|..0....^^^^^^^^^^.|</nowiki>
+ <nowiki>|...|.@-------------</nowiki>
+ <nowiki>--------</nowiki>
+|}
+{{nethack-360}}
+[[Category:Sokoban|2b]]}
+&&%s&& %s Sokoban Level 3b {142573 2021-09-10T16:35:02Z {4001527 Konchog} (Note that the levels may be vertical mirrors in more recent versions of NetHack)! This [[Sokoban]] level has 13 [[boulder|boulders]] and 10 [[hole]]s. The upper center part is probably the hardest area.
+ 0 boulder
+ ^ hole
+ @ starting position/downstairs
+ &lt; upstairs
+
+(Note that the levels may be vertical mirrors in more recent versions of NetHack)!
+
+
+ --------------------
+ |........|...|.....|
+ |.00..-00|.-.|.....|
+ |..|.0.0.|00.|.....|
+ |-.|..-..|.-.|..<..|
+ |...--.......|.....|
+ |...|.0.-...-|.....| 
+ |.0.|0.|...--|.....| 
+ |-0.|..-----------+| 
+ |..0....^^^^^^^^^^.| 
+ |...|.@------------- 
+ --------
+
+== Strategy ==
+The following solution solves the level without putting any boulders in an immobile position. Faster solutions which do not necessarily leave every boulder free might exist.
+
+You can [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.01:39:59.ttyrec.bz2 watch an instructional TTYREC video] or [https://youtu.be/hHDAKG2nkmQ a YouTube video].
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So '''Nddrr*''' means move boulder '''N''' two times down and two times to the right into a hole.
+
+Clear the lower left, make sure you move '''J''' to the right and do '''L''' before '''J''', then clear '''A''' and '''B''':
+ -------------------- '''M''' lrrr rrr*
+ |........|...|.....| '''J''' r
+ |.AB..-CD|.-.|.....| '''L''' drrr rrrr*
+ |..|.E.F.|GH.|.....| '''J''' ddrr rrrr r*
+ |-.|..-..|.-.|..&lt;..| '''A''' dddd dddr rrrr rrrr*
+ |...--.......|.....| '''B''' lddd dddd rrrr rrrr rr*
+ |...|.I.-...-|.....|
+ |.J.|K.|...--|.....|
+ |-L.|..-----------+|
+ |..M....^^^^^^^^^^.|
+ |...|.@-------------
+ --------
+
+Clearing the top room is probably the hardest part of the level. Push '''E''' up and enter the top room by moving '''D''' down, so you can remove '''F''' and then '''E''':
+ -------------------- '''E''' u
+ |........|...|.....| '''D''' dd
+ |.....-CD|.-.|.....| '''F''' lllu
+ |..|.E.F.|GH.|.....| '''E''' d
+ |-.|..-..|.-.|..&lt;..| '''F''' lldd dddd drrr rrrr rrrr*
+ |...--.......|.....| '''E''' lull dddd dddr rrrr rrrr rrr*
+ |...|.I.-...-|.....| '''C''' dlll ulld dddd ddrr rrrr rrrr rrr*
+ |...|K.|...--|.....|
+ |-..|..-----------+|
+ |..........@.^^^^^.|
+ |...|.&gt;-------------
+ --------
+
+Fill the last two holes with '''I''' and '''K''':
+ -------------------- '''I''' dddr rrrr rrrr r*
+ |........|...|.....| '''K''' ddll lrrr rrrr rrrr rrrr*
+ |.....-..|.-.|.....|
+ |..|.....|GH.|.....|
+ |-.|..-.D|.-.|..&lt;..|
+ |...--.......|.....|
+ |...|.I.-...-|.....|
+ |...|K.|...--|.....|
+ |-..|..-----------+|
+ |.............@.^^.|
+ |...|.&gt;-------------
+ --------
+
+The level is now finished. Remember to check under and behind the unmoved boulders for usable items.
+ --------------------
+ |........|...|.....|
+ |.....-..|.-.|.....|
+ |..|.....|GH.|.....|
+ |-.|..-.D|.-.|..&lt;..|
+ |...--.......|.....|
+ |...|...-...-|.....|
+ |...|..|...--|.....|
+ |-..|..-----------+|
+ |.................@|
+ |...|.&gt;-------------
+ --------
+
+==Next level==
+After this level, you will face either of the following levels. In [[NetHack 3.4.3]] and [[variant]]s based on it, level 4a has a [[bag of holding]] and level 4b has an [[amulet of reflection]]. In [[NetHack 3.6.0]] and [[variant]]s based on it, either level may have either prize with equal probability:
+{|class="prettytable"
+|[[Sokoban Level 4a]]
+ <nowiki>--------------------------</nowiki>
+ <nowiki>|@......^^^^^^^^^^^^^^^^.|</nowiki>
+ <nowiki>|.......----------------.|</nowiki>
+ <nowiki>-------.------         |.|</nowiki>
+ <nowiki> |...........|         |.|</nowiki>
+ <nowiki> |.0.0.0.0.0.|         |.|</nowiki>
+ <nowiki>--------.----|         |.|</nowiki>
+ <nowiki>|...0.0..0.0.|         |.|</nowiki>
+ <nowiki>|...0........|         |.|</nowiki>
+ <nowiki>-----.--------   ------|.|</nowiki>
+ <nowiki> |..0.0.0...|  --|.....|.|</nowiki>
+ <nowiki> |.....0....|  |.+.....|.|</nowiki>
+ <nowiki> |.0.0...0.--  |-|.....|.|</nowiki>
+ <nowiki>-------.----   |.+.....+.|</nowiki>
+ <nowiki>|..0.....|     |-|.....|--</nowiki>
+ <nowiki>|........|     |.+.....|</nowiki>
+ <nowiki>|...------     --|.....|</nowiki>
+ <nowiki>-----            -------</nowiki>
+|[[Sokoban Level 4b]]
+ <nowiki>  ------------------------</nowiki>
+ <nowiki>  |..^^^^^^^^^^^^^^^^^^..|</nowiki>
+ <nowiki>  |..-------------------.|</nowiki>
+ <nowiki>----.|    -----        |.|</nowiki>
+ <nowiki>|..|0--  --...|        |.|</nowiki>
+ <nowiki>|.....|--|.0..|        |.|</nowiki>
+ <nowiki>|.00..|..|..0.|        |.|</nowiki>
+ <nowiki>--..00|...00.--        |.|</nowiki>
+ <nowiki> |0..0...|0..|   ------|.|</nowiki>
+ <nowiki> |.00.|..|..0| --|.....|.|</nowiki>
+ <nowiki> |.0.0---|.0.| |.+.....|.|</nowiki>
+ <nowiki> |.......|..-- |-|.....|.|</nowiki>
+ <nowiki> ----.0..|.--  |.+.....+.|</nowiki>
+ <nowiki>    ---.--.|   |-|.....|--</nowiki>
+ <nowiki>     |.0...|   |.+.....|</nowiki>
+ <nowiki>     |@.|..|   --|.....|</nowiki>
+ <nowiki>     -------     -------</nowiki>
+|}
+{{nethack-360}}
+[[Category:Sokoban|3b]]}
+&&%s&& %s Sokoban Level 4a {143801 2021-12-04T17:19:48Z {4001546 Albravo}  This is one of the last levels of [[Sokoban]]. Behind the holes is a [[treasure zoo]] with a prize behind one of the three doors. There are 18 [[boulder|boulders]] and 16 [[hole]]s.
+
+In versions [[3.3.0]] to [[3.4.3]], including some [[variant]]s based on these versions, the prize is a [[bag of holding]]. In versions [[3.6.0]] to [[3.6.6]], there is a 50% chance each for the prize to be either a bag of holding or an [[amulet of reflection]].
+
+{{upcoming|NetHack 3.7.0|Both prizes are no longer equally likely for each floor. Instead, this version has a 75% chance for a bag of holding, and 4b has a 75% chance for an amulet of reflection. Also, the level may be vertically reflected.}}
+
+Except for the storage area, it is the same as Level 23 in the 1984 Thinking Rabbit Sokoban game.
+
+ 0 boulder
+ ^ hole
+ @ starting position/downstairs
+ < upstairs
+
+ --------------------------
+ |@......^^^^^^^^^^^^^^^^.|
+ |.......----------------.|
+ -------.------         |.|
+  |...........|         |.|
+  |.0.0.0.0.0.|         |.|
+ --------.----|         |.|
+ |...0.0..0.0.|         |.|
+ |...0........|         |.|
+ -----.--------   ------|.|
+  |..0.0.0...|  --|.....|.|
+  |.....0....|  |.+.....|.|
+  |.0.0...0.--  |-|.....|.|
+ -------.----   |.+.....+.|
+ |..0.....|     |-|.....|--
+ |........|     |.+.....|
+ |...------     --|.....|
+ -----            -------
+== Strategy ==
+The following solution solves the level without putting any boulders in an immobile position. You can [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.05:00:46.ttyrec.bz2 watch this solution as a ttyrec video] or [https://youtu.be/no2C69Nk58Y a YouTube video]. Faster solutions which do not necessarily leave every boulder free might exist.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So '''Nddrr*''' means move boulder '''N''' two times down and two times to the right into a hole.
+
+Store some boulders of the 3rd room in the 4th and make some way:
+ -------------------------- '''K''' l
+ |@......^^^^^^^^^^^^^^^^.| '''N''' rrr
+ |.......----------------.| '''R''' rrr
+ -------.------         |.| '''P''' rrdd dlll lur 
+  |...........|         |.| '''F''' ll
+  |.A.B.C.D.E.|         |.| '''J''' rddd drrd ddll lllu
+ --------.----|         |.|
+ |...F.G..H.I.|         |.|
+ |...J........|         |.|
+ -----.--------   ------|.|
+  |..K.L.M...|  --|.....|.|
+  |.....N....|  |.+.....|.|
+  |.O.P...Q.--  |-|.....|.|
+ -------.----   |.+.....+.|
+ |..R.....|     |-|.....|--
+ |........|     |.+.....|
+ |...------     --|.....|
+ -----            -------
+
+Push '''G''' and '''H''' out of the way so you can move some of the boulders of the 1st room to the 3rd and 4th room:
+ -------------------------- '''G''' ll
+ |>......^^^^^^^^^^^^^^^^.| '''H''' ll
+ |.......----------------.| '''D''' lddd llld dddr
+ -------.------         |.| '''C''' rddd llld dd
+  |...........|         |.|
+  |.A.B.C.D.E.|         |.|
+ --------.----|         |.|
+ |.F...G..H.I.|         |.|
+ |............|         |.|
+ -----.--------   ------|.|
+  |.K..L.M...|  --|.....|.|
+  |........N.|  |.+.....|.|
+  |.O.....Q.--  |-|.....|.|
+ -------.----   |.+.....+.|
+ |.J.P.R..|     |-|.....|--
+ |.@......|     |.+.....|
+ |...------     --|.....|
+ -----            -------
+
+It is also possible to push '''D''' into the 4th room under '''J''' and move '''C''' to where '''D''' is now if you want some more leeway to move boulders around. Now everything is set up to start filling holes. Cleanup most of rooms 2 and 3:
+ -------------------------- '''H''' ruuu luuu r*
+ |>......^^^^^^^^^^^^^^^^.| '''G''' rrrr uuul uuur r*
+ |.......----------------.| '''F''' rrrr rruu uluu urrr*
+ -------.------         |.| '''I''' lllu uulu uurr rr*
+  |...........|         |.| '''C''' uuuu rrru uulu uurr rrr*
+  |.A.B.....E.|         |.| '''K''' rruu urrr uuul uuur rrrr r*
+ --------.----|         |.| '''L''' luuu rrru uulu uurr rrrr r*
+ |.F.G..H...I.|         |.| '''M''' lllu uurr ruuu luuu rrrr rrrr*
+ |............|         |.| '''N''' llll luuu urrr uuul uuur rrrr rrrr*
+ -----.--------   ------|.|
+  |.K.@L.M...|  --|.....|.|
+  |...C....N.|  |.+.....|.|
+  |.O..D..Q.--  |-|.....|.|
+ -------.----   |.+.....+.|
+ |.J.P.R..|     |-|.....|--
+ |........|     |.+.....|
+ |...------     --|.....|
+ -----            -------
+
+Now there are only a few boulders left with a lot of space. The boulders in room 4 can be cleared directly, the boulders in room 1 and 3 should first be moved through room 3 and 4 respectively:
+ -------------------------- '''R''' ruuu ullu uurr ruuu luuu rrrr rrrr rr*
+ |>.............@.^^^^^^^.| '''P''' rrru uuul luuu rrru uulu uurr rrrr rrrr r*
+ |.......----------------.| '''J''' rrrr ruuu ullu uurr ruuu luuu rrrr rrrr rrrr*
+ -------.------         |.| '''D''' rddd llll lurr rrru uuul luuu rrru uulu uurr rrrr rrrr rrr*
+  |...........|         |.| '''B''' rrrd ddll lddd uuuu rrru uulu uurr rrrr rrrr rrrr*
+  |.A.B.....E.|         |.| '''A''' rrrr rddd llld dduu uurr ruuu luuu rrrr rrrr rrrr rrr*
+ --------.----|         |.| '''E''' llld ddll lddd uuuu rrru uulu uurr rrrr rrrr rrrr rr*     
+ |............|         |.|
+ |............|         |.|
+ -----.--------   ------|.|
+  |..........|  --|.....|.|
+  |..........|  |.+.....|.|
+  |.O..D..Q.--  |-|.....|.|
+ -------.----   |.+.....+.|
+ |.J.P.R..|     |-|.....|--
+ |........|     |.+.....|
+ |...------     --|.....|
+ -----            -------
+
+In the large room behind the door is a [[treasure zoo]]. Behind one of the three doors in the zoo is a square with the prize and "[[Elbereth]]" burnt. In [[NetHack 3.6.0]], there is also a cursed [[scroll of scare monster]]. Also remember to check under the boulders '''O''' and '''Q''' for possible usable items.
+ --------------------------
+ |>.......................|
+ |.......----------------.|
+ -------.------         |.|
+  |...........|         |.|
+  |...........|         |.|
+ --------.----|         |.|
+ |............|         |.|
+ |............|         |.|
+ -----.--------   ------|.|
+  |..........|  --|.....|.|
+  |..........|  |.+.....|.|
+  |.O.....Q.--  |-|.....|.|
+ -------.----   |.+.....+@|
+ |........|     |-|.....|--
+ |........|     |.+.....|
+ |...------     --|.....|
+ -----            -------
+{{nethack-360}}
+[[Category:Sokoban|4a]]}
+&&%s&& %s Sokoban Level 1b {146166 2022-06-11T19:11:14Z {4001279 Umbire the Phantom}  '''Sokoban Level 1a''' is one of two possible maps for the first level of [[Sokoban]] in ''[[NetHack]]'', and is among the various possible maps for that level in variants of ''NetHack''. There are 10 [[boulder]]s and 9 [[pit]]s, leaving one spare boulder. 
+
+<div class="ttymap">{{lightgray|<replacecharsblock>
+<=[[Stairs|{{white|<}}]]
+>=[[Stairs|{{white|>}}]]
+^=[[pit|{{gray|^}}]]
+ =&nbsp;
+|={{white|&#124;}}
+-={{white|-}}
+0={{white|0}}
+?={{white|?}}
+? ={{gray|? }}
+0 ={{gray|0 }}
+^ ={{gray|^ }}
+< ={{gray|< }}
+> ={{gray|> }}
+newline=<br>
+
+ ------  ----- 
+ |....|  |...|  0 boulder
+ |.0..----.0.|  ^ pit
+ |.0......0..|  > starting position/downstairs
+ |..--->---0.|  < upstairs
+ |---------.--- ? scroll of earth
+ |..^^^<|.....|
+ |..----|0....|
+ --^|   |.0...|
+  |^-----.0...|
+  |..^^^^0.0..|
+  |??----------
+  ----         
+
+</replacecharsblock>}}</div>
+
+==Strategy==
+The following solution solves the level without putting any boulders in an immobile position. Faster solutions which do not necessarily leave every boulder free might exist. You can [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.00:59:37.ttyrec.bz2 watch an instructional TTYREC video] or [https://www.youtube.com/watch?v=LTjS_v9S1W0 a YouTube video].
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So '''Nddrr*''' means move boulder '''N''' two times down and two times to the right into a pit.
+
+Make some room and move to the lower right room:
+ ------  -----  '''A''' r
+ |....|  |...|  '''C''' u
+ |.A..----.B.|  '''D''' rlll llll
+ |.C......D..|  '''E''' ddd
+ |..---@---E.|  
+ |---------.--- 
+ |..^^^<|.....| 
+ |..----|F....| 
+ --^|   |.G...|
+  |^-----.H...|
+  |..^^^^I.J..|
+  |??----------
+  ----
+
+Pick up the two [[scroll of earth|scrolls of earth]] as soon as possible to ensure that no monsters get a hold of them; remember to verify their [[beatitude]] before reading them in Sokoban, and only do so if you have misplaced or broken some other boulders.
+
+Then, clean the lower right room:
+ ------  -----  '''H''' l
+ |....|  |...|  '''I''' l*
+ |.CA.----.B.|  '''J''' llll*
+ |..D........|  '''E''' dddl llll*
+ |..---@---..|  '''G''' ddll lll*
+ |---------.--- '''H''' dlll lllu*
+ |..^^^<|.....| '''F''' dddl llll luu*
+ |..----|F.E..|
+ --^|   |.G...|
+  |^-----.H...|
+  |..^^^^I.J..|
+  |..----------
+  ----
+
+Finish the level with three of the remaining boulders:
+ ------  -----  '''B''' dddd dddd llll llll uuuu r*
+ |....|  |...|  '''D''' rrrr rrrd dddd ddll llll lluu uurr*
+ |.CA.----.B.|  '''C''' drrr rrrr rddd dddd llll llll uuuu rrr*
+ |..D........|
+ |..--->---..|
+ |---------.---
+ |..^^^<|.....|
+ |..----|.....|
+ --.|   |.....|
+  |.-----.....|
+  |...........|
+  |.@----------
+  ----
+
+The level is now finished. Remember to check under the '''A''' boulder for possible usable objects; note that you can now push it diagonally if you want to use it after clearing the level.
+
+ ------  -----
+ |....|  |...|
+ |..A.----...|
+ |...........|
+ |..--->---..|
+ |---------.---
+ |....@<|.....|
+ |..----|.....|
+ --.|   |.....|
+  |.-----.....|
+  |...........|
+  |..----------
+  ----
+
+==Next level==
+After this level, you will face either of the following levels:
+{| class="prettytable"
+|[[Sokoban Level 2a]]
+ <nowiki> ----          -----------</nowiki>
+ <nowiki>--.@--------   |.........|</nowiki>
+ <nowiki>|..........|   |.........|</nowiki>
+ <nowiki>|.0-----0-.|   |.........|</nowiki>
+ <nowiki>|..|...|.0.|   |....<....|</nowiki>
+ <nowiki>|.0.0....0-|   |.........|</nowiki>
+ <nowiki>|.0..0..|..|   |.........|</nowiki>
+ <nowiki>|.----0.--.|   |.........|</nowiki>
+ <nowiki>|..0...0.|.--  |.........|</nowiki>
+ <nowiki>|.---0-...0.------------+|</nowiki>
+ <nowiki>|...|..0-.0.^^^^^^^^^^^^.|</nowiki>
+ <nowiki>|..0......----------------</nowiki>
+ <nowiki>-----..|..|</nowiki>
+ <nowiki>    -------</nowiki>
+|[[Sokoban Level 2b]]
+ <nowiki>-----------       -----------</nowiki>
+ <nowiki>|....|....---     |.........|</nowiki>
+ <nowiki>|..00|00...@|     |.........|</nowiki>
+ <nowiki>|.....0...---     |.........|</nowiki>
+ <nowiki>|....|....|       |....<....|</nowiki>
+ <nowiki>|-.---------      |.........|</nowiki>
+ <nowiki>|..0.|.....|      |.........|</nowiki>
+ <nowiki>|.00.|0.0.0|      |.........|</nowiki>
+ <nowiki>|..0.....0.|      |.........|</nowiki>
+ <nowiki>|.000|0..0.----------------+|</nowiki>
+ <nowiki>|....|..0.0.^^^^^^^^^^^^^^^.|</nowiki>
+ <nowiki>-----------------------------</nowiki>
+|}
+{{nethack-366}}
+[[Category:Sokoban|1b]]}
+&&%s&& %s Sokoban Level 4b {140963 2021-06-15T13:41:38Z {4001463 Actual-nh} Upcoming This is one of the two possible final levels of [[Sokoban]]. Behind the holes is a [[treasure zoo]] with a prize behind one of the three doors. There are 20 [[boulder|boulders]] and 18 [[hole]]s.
+
+The prize will be randomly chosen from a [[bag of holding]] or an [[amulet of reflection]].  In [[NetHack 3.4.3]] and variants of it, the prize will always be an [[amulet of reflection]].
+
+{{upcoming|NetHack 3.7.0|Both prizes are no longer equally likely for each floor. Instead, floor 4a has a 75% chance for a bag of holding, and this floor has a 75% chance for an amulet of reflection.}}
+
+ 0 boulder
+ ^ hole
+ @ starting position/downstairs
+   no upstairs
+
+   ------------------------
+   |..^^^^^^^^^^^^^^^^^^..|
+   |..-------------------.|
+ ----.|    -----        |.|
+ |..|0--  --...|        |.|
+ |.....|--|.0..|        |.|
+ |.00..|..|..0.|        |.|
+ --..00|...00.--        |.|
+  |0..0...|0..|   ------|.|
+  |.00.|..|..0| --|.....|.|
+  |.0.0---|.0.| |.+.....|.|
+  |.......|..-- |-|.....|.|
+  ----.0..|.--  |.+.....+.|
+     ---.--.|   |-|.....|--
+      |.0...|   |.+.....|
+      |@.|..|   --|.....|
+      -------     -------
+
+== Strategy ==
+The following solution solves the level without putting any boulders in an immobile position. Faster solutions which do not necessarily leave every boulder free might exist.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So '''Nddrr*''' means move boulder '''N''' two times down and two times to the right into a hole.
+
+The general strategy for this level is to enter through the right room into the middle of the left room. There the boulders should be organized precisely so that the left room can be cleared.
+
+You can also [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.01:46:57.ttyrec.bz2 watch an instructional TTYREC video] or [https://youtu.be/KmLH4RZS-Fw a YouTube video].
+
+At first the '''T''' boulder should be pushed into the right room, because the entrance above the '''T''' should stay clear:
+   ------------------------ '''T''' rrru uuu
+   |..^^^^^^^^^^^^^^^^^^..| '''R''' u
+   |..-------------------.| '''O''' uu
+ ----.|    -----        |.| '''I''' u
+ |..|A--  --...|        |.| '''H''' lll
+ |.....|--|.B..|        |.|
+ |.CD..|..|..E.|        |.|
+ --..FG|...HI.--        |.|
+  |J..K...|L..|   ------|.|
+  |.MN.|..|..O| --|.....|.|
+  |.P.Q---|.R.| |.+.....|.|
+  |.......|..-- |-|.....|.|
+  ----.S..|.--  |.+.....+.|
+     ---.--.|   |-|.....|--
+      |.T...|   |.+.....|
+      |@.|..|   --|.....|
+      -------     -------
+
+In the left room align the boulders to form a 2x3 area in which you are able to turn boulders around. These moves are the most crucial to successfully finishing this level:
+   ------------------------ '''K''' ll
+   |..^^^^^^^^^^^^^^^^^^..| '''N''' d
+   |..-------------------.| '''F''' u
+ ----.|    -----        |.| '''G''' u
+ |..|A--  --...|        |.|
+ |.....|--|.B..|        |.|
+ |.CD..|..|.IE.|        |.|
+ --..FG|H@...O--        |.|
+  |J..K...|L..|   ------|.|
+  |.MN.|..|.R.| --|.....|.|
+  |.P.Q---|T..| |.+.....|.|
+  |.......|..-- |-|.....|.|
+  ----.S..|.--  |.+.....+.|
+     ---.--.|   |-|.....|--
+      |.....|   |.+.....|
+      |>.|..|   --|.....|
+      -------     -------
+
+Finish boulder '''A''' by moving '''C''' around. Then finish '''F''' through the 2x3 area and clear '''C''' and '''D''':
+   ------------------------ '''C''' ud
+   |..^^^^^^^^^^^^^^^^^^..| '''A''' uuur*
+   |..-------------------.| '''F''' dduu uuuu urr*
+ ----.|    -----        |.| '''C''' u
+ |..|A--  --...|        |.| '''D''' ruuu uurr r*
+ |.....|--|.B..|        |.| '''C''' rruu uurr rr* 
+ |.CDFG|..|.IE.|        |.|
+ --....|H....O--        |.|
+  |JK@....|L..|   ------|.|
+  |.M..|..|.R.| --|.....|.|
+  |.PNQ---|T..| |.+.....|.|
+  |.......|..-- |-|.....|.|
+  ----.S..|.--  |.+.....+.|
+     ---.--.|   |-|.....|--
+      |.....|   |.+.....|
+      |>.|..|   --|.....|
+      -------     -------
+
+Clear the rest of the left room:
+   ------------------------ '''N''' uuuu uuuu urrr rr*
+   |....@.^^^^^^^^^^^^^^..| '''P''' ruuu uuuu uurr rrrr*
+   |..-------------------.| '''M''' ruuu uuuu urrr rrrr*
+ ----.|    -----        |.| '''K''' uuur uuuu rrrr rrrr*
+ |..|.--  --...|        |.| '''J''' uuur ruuu urrr rrrr rr*
+ |.....|--|.B..|        |.|
+ |....G|..|.IE.|        |.|
+ --....|H....O--        |.|
+  |JK.....|L..|   ------|.|
+  |.M..|..|.R.| --|.....|.|
+  |.PNQ---|T..| |.+.....|.|
+  |.......|..-- |-|.....|.|
+  ----.S..|.--  |.+.....+.|
+     ---.--.|   |-|.....|--
+      |.....|   |.+.....|
+      |>.|..|   --|.....|
+      -------     -------
+
+Now it is possible to either clear the remaining boulders in the left room, or continue with the middle and right room. Note that to move '''T''' we must pass to the north opening of the small room with the stairs:
+   ------------------------ '''H''' dlll uuuu uuur rrrr rrrr r*
+   |.........@.^^^^^^^^^..| '''R''' d
+   |..-------------------.| '''L''' ulll dlll uuuu uuur rrrr rrrr rr*
+ ----.|    -----        |.| '''T''' uuul lldl lluu uuuu urrr rrrr rrrr r*
+ |..|.--  --...|        |.| '''R''' luuu llld lllu uuuu uurr rrrr rrrr rrr*
+ |.....|--|.B..|        |.| '''B''' r
+ |....G|..|.IE.|        |.| '''I''' dddl uull ldll luuu uuuu rrrr rrrr rrrr rr*
+ --....|H....O--        |.| '''E''' lldl lldl lluu uuuu urrr rrrr rrrr rrrr*
+  |.......|L..|   ------|.| '''B''' dlld llld lllu uuuu uurr rrrr rrrr rrrr rr*
+  |....|..|.R.| --|.....|.| '''G''' ddlu uuuu uurr rrrr rrrr rrrr rrr*
+  |...Q---|T..| |.+.....|.| '''Q''' uulu uuuu uurr rrrr rrrr rrrr rrrr*
+  |.......|..-- |-|.....|.|
+  ----.S..|.--  |.+.....+.|
+     ---.--.|   |-|.....|--
+      |.....|   |.+.....|
+      |>.|..|   --|.....|
+      -------     -------
+
+The level is now finished. Remember to check under the unmoved '''S''' boulder for usable items.
+
+In the large room behind the door is a zoo. Behind one of the three doors in the zoo is a square with an [[amulet of reflection]] or a [[bag of holding]] and "[[Elbereth]]" burnt. In [[NetHack 3.6.0]], there is also a cursed [[scroll of scare monster]].
+   ------------------------
+   |......................|
+   |..-------------------.|
+ ----.|    -----        |.|
+ |..|.--  --...|        |.|
+ |.....|--|....|        |.|
+ |.....|..|....|        |.|
+ --....|.....O--        |.|
+  |.......|...|   ------|.|
+  |....|..|...| --|.....|.|
+  |....---|...| |.+.....|.|
+  |.......|..-- |-|.....|.|
+  ----.S..|.--  |.+.....+@|
+     ---.--.|   |-|.....|--
+      |.....|   |.+.....|
+      |>.|..|   --|.....|
+      -------     -------
+{{nethack-360}}
+[[Category:Sokoban|4b]]}
+&&%s&& %s Boulders {8810 2006-08-28T19:28:11Z {104 BlackShift} Redirecting to [[Boulder]] #REDIRECT [[boulder]]}
+&&%s&& %s Missile {62847 2011-01-08T19:35:55Z {4000047 Blackcustard} Merged page into [[Projectile]]. #REDIRECT [[Projectile]]}
+&&%s&& %s Rubber Chicken {8840 2006-08-28T22:16:23Z {0 } Redirecting to [[Cockatrice]] #REDIRECT [[Cockatrice]]}
+&&%s&& %s Spelbook {8843 2006-08-29T05:27:30Z {104 BlackShift} Redirecting to [[Spellbook]] #REDIRECT [[spellbook]]}
+&&%s&& %s Ice box {131402 2020-01-25T07:15:59Z {4000978 Aximili} Add category, change sectioning {{tool
+|name=ice box
+|tile=[[image:ice box.png]]
+|cost=42
+|color=white
+|weight=900
+|material=plastic}}
+An '''ice box''' is a very heavy [[container]], the main use of which is to keep [[corpse]]s fresh. 
+
+==Generation==
+
+Ice boxes are rare, but are occasionally randomly generated in the dungeons and can also appear in [[general store]]s, [[delicatessen]]s, and [[hardware store]]s. (Food stores will not buy ice boxes.) An ice box can be generated with up to 20 corpses in it.
+
+==Effects==
+
+Corpses in an ice box will not age and will remain fit to [[eat]] or [[sacrifice]] indefinitely. They will continue decaying where they left off when removed from the box, and will be tainted if they were before being placed in the box.
+
+Ice boxes are waterproof. They have no locks. [[Potion]]s do not freeze or shatter in an ice box. Since they're made of [[plastic]], [[gelatinous cube]]s cannot eat ice boxes, which makes them good for [[stash]]es.
+
+If a container is polymorphed, all items that were in it, including heavy corpses, will be destroyed.
+
+==Strategy==
+
+Some ice boxes might be too heavy to remove. However, as long as no one corpse is too heavy to carry, it's possible to patiently #loot and then drop (or eat) the corpses until the box is empty. An ice box can also be emptied with the #[[tip]] command.
+
+Some players bring an ice box containing [[potion of booze|booze]] and snacks for the [[demigod bar]] when they ascend. Because ice boxes are heavy, this is a challenge (unless they are [[wish]]ed for just before ascending).
+
+==SLASH'EM==
+
+In [[SLASH'EM]], there is a new type of shop, the frozen food store, which contains mainly ice boxes.
+
+In [[SLASH'EM]] polymorphing items is temporary, so a polymorphed ice box will eventually revert to a useful empty one.
+
+[[Category:Tools]]}
+&&%s&& %s Carrot {147518 2022-08-14T16:07:51Z {4001279 Umbire the Phantom} rfs {{comestible
+  |color=orange
+  |tile=[[image:carrot.png]]
+  |name=carrot
+  |cost=7
+  |nutrition=50
+  |turns=1
+  |weight=2
+  |conduct=vegan
+}}
+
+A '''carrot''' is a type of [[comestible]] that appears in ''[[NetHack]]''.
+
+==Generation==
+All [[Knight]]s start the game with 10-20 uncursed carrots.
+
+==Description==
+When eaten, they grant 50 [[nutrition]] points and cure [[blindness]] unless it is caused by a [[cream pie]].{{refsrc|src/eat.c|2195|version=NetHack 3.6.6}} Carrots are [[vegan]] and considered [[treat]]s for [[herbivore]]s; blinded pets also consider carrots a 'treat', and will eat them to cure their own blindness regardless of diet.{{refsrc|src/dog.c|764|version=NetHack 3.6.6|comment='eyes' is used in line 348 to cure blindness}}{{refsrc|src/dog.c|823|version=NetHack 3.6.6}} 
+
+==Strategy==
+Any character planning to keep herbivorous pets may want to keep carrots they find on-hand. Knights in particular should not eat their starting carrots on a whim unless curing blindness - vegetarian food is fairly scarce in the dungeon, making them ideal for keeping the starting [[pony]] fed.
+
+==History==
+Carrots first appear in [[Hack 1.0]].
+
+==Origin==
+{{wikipedia|Carrot}}
+The carrot is a root vegetable that is typically orange in color; various other color cultivars exist, and all of them are domesticated forms of the wild carrot native to Europe and Southwestern Asia. The plant is believed to have originated in Persia and been originally cultivated for its leaves and seeds. While the most commonly eaten part of the plant is the taproot, the stems and leaves are also eaten.
+
+The use of carrots to cure blindness originates from the [[real life]] rumor that the vitamin A in carrots helps improve your vision, as alluded to by the [[encyclopedia]] entry - while vitamin A and other nutrients from carrots do indeed play some role in eye health, the benefits were exaggerated to the point of propaganda being spread about "night vision" during the Second World War.<ref>[https://web.archive.org/web/20080517093019/http://dietary-supplements.info.nih.gov/factsheets/vitamina.asp Dietary Supplement Fact Sheet: Vitamin A and Carotenoids]</ref>
+
+==Encyclopedia entry==
+{{encyclopedia|
+In World War II, Britain's air ministry spread the word that a diet of these vegetables helped pilots see Nazi bombers attacking at night.  That was a lie intended to cover the real matter of what was underpinning the Royal Air Force's successes: Airborne Interception Radar, also known as AI.... British Intelligence didn't want the Germans to find out about the superior new technology helping protect the nation, so they created a rumor to afford a somewhat plausible-sounding explanation for the sudden increase in bombers being shot down.... The disinformation was so persuasive that the English public took to eating carrots to help them find their way during the blackouts.
+|[ Urban Legends Reference Pages ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Comestibles]]}
+&&%s&& %s Magic whistle {143500 2021-10-29T23:40:33Z {4001279 Umbire the Phantom}  {{tool
+  |color=metal color
+  |tile=[[image:whistle.png]]
+  |name=magic whistle
+  |appearance=[[whistle]]
+  |cost=10
+  |weight=3
+  |material=metal
+}}
+
+A '''magic whistle''' is a [[tool]] that appears in ''[[NetHack]]''. It appears as a [[whistle]] when unidentified.  
+
+==Description==
+[[Apply]]ing a magic whistle will warp any [[pet]]s on the level next to you, even if [[teleport]]ing is otherwise not possible; this includes [[sessile]] pets. This will [[auto-identify]] the whistle. Applying a cursed magic whistle has a 50% chance to instead awaken monsters on the same floor.
+
+==Strategy==
+Whistles are one of the few items that are safe to [[use testing|use test]], so simply apply them to distinguish between magic and [[tin whistle]]s. In most cases, it is even safe to apply a whistle found in a [[shop]] before buying it, with the exception of stronger pets that may attack the [[shopkeeper]]. You may also want to avoid them stealing any items and/or conserve their [[apport]] for when you find a shop you ''want'' to [[Stealing from shops|steal from]].
+
+Magic whistles can 'save' pets that accidentally step on a [[polymorph trap]] and turns into an immobile monster - whistling the pet onto the trap can polymorph it again, ideally into a form that can move.
+
+If you discover a tin whistle first, [[name]] it accordingly - a whistle that does not share the given name will be readily identifiable as a magic whistle. Players having trouble finding one can apply a blessed [[eucalyptus leaf]] for the same effect, although this will eventually unbless it. Since they are magical tools, it may be a good idea to collect them and try to [[polypile]] your surplus ones into [[magic marker]]s.
+
+==Messages==
+{{message|You produce a strange whistling sound.|You applied a non-cursed magic whistle, or a cursed magic whistle (50% chance). If you are [[underwater]], the whistling sound is also described as "high-pitched".{{refsrc|src/apply.c|482|version=NetHack 3.6.6}}}}
+{{message|You produce a strange, sharp vibration.|As above, while [[deaf]].}}
+{{message|You produce a high-pitched humming noise.|You applied a cursed magic whistle (50% chance). If underwater, it will be described as "very high-pitched".}}
+{{message|You produce a high-frequency vibration.|As above, while deaf.}}
+{{message|You produce a normal whistling sound.|You applied a magic whistle while [[hallucinating]].}}
+
+==Variants==
+Many variants such as [[SLASH'EM]] and [[UnNetHack]] add pet stores, which can sell magic whistles.
+
+===NetHack Brass===
+In [[NetHack brass]], magic whistles are now tools with limited [[charging|charges]]. This change lessens their dependability, and forces players to be more cautious in deciding when to use them.
+
+===FIQHack===
+In [[FIQHack]], a magic whistle will not recall pets on a [[non-teleport level]] unless the whistle is [[blessed]].
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Hack.c-1.0 {29858 2008-03-04T22:05:06Z {679 Ray Chason} Fix double redirect #REDIRECT [[Source:Hack 1.0/hack.c]]}
+&&%s&& %s NetHackWiki:NetHack General Public License {8882 2006-08-29T18:01:14Z {396 Jayt} [[Wikihack:NetHack General Public License]] moved to [[NetHack General Public License]]: This is not really a project page. #REDIRECT [[NetHack General Public License]]}
+&&%s&& %s NetHackWiki talk:NetHack General Public License {8884 2006-08-29T18:01:24Z {396 Jayt} [[Wikihack talk:NetHack General Public License]] moved to [[Talk:NetHack General Public License]]: This is not really a project page. #REDIRECT [[Talk:NetHack General Public License]]}
+&&%s&& %s CWI license {78945 2012-08-15T04:57:45Z {0 }  The '''CWI license''' is the license applied to early releases of [[Hack]], as detailed [http://homepages.cwi.nl/~aeb/games/hack/hack.html here]. CWI, the Centrum voor Wiskunde en Informatica, is the new name for the [[Stichting Mathematisch Centrum]]. It is a BSD-type license, and one-way (inclusion) compatible with the GNU GFDL. For the purposes of NetHackWiki, that is perfectly adequate.
+
+NetHack 1.3d, 1.4f, 2.2a and 2.3e contain no explicit license statement, but include the line:
+
+ /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
+
+which probably means the CWI license applies.
+
+==License statement==
+
+[[Jay Fenlason]] has stated:
+
+<pre>
+I wish to place all of the hack source code I wrote under the following license.
+
+> /*
+>  * Copyright (c) 1982 Jay Fenlason 
+>  * All rights reserved.
+>  *
+>  * Redistribution and use in source and binary forms, with or without
+>  * modification, are permitted provided that the following conditions
+>  * are met:
+>  * 1. Redistributions of source code must retain the above copyright
+>  *    notice, this list of conditions and the following disclaimer.
+>  * 2. Redistributions in binary form must reproduce the above copyright
+>  *    notice, this list of conditions and the following disclaimer in the
+>  *    documentation and/or other materials provided with the distribution.
+>  * 3. The name of the author may not be used to endorse or promote products
+>  *    derived from this software without specific prior written permission.
+>  *
+>  * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+>  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+>  * AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+>  * THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+>  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+>  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+>  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+>  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+>  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+>  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+>  */
+>
+                                Jay Fenlason
+</pre>
+
+Furthermore, CWI has stated:
+
+<pre>
+Copyright (c) 1985, Stichting Centrum voor Wiskunde en Informatica,
+Amsterdam
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+- Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+- Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+- Neither the name of the Stichting Centrum voor Wiskunde en
+Informatica, nor the names of its contributors may be used to endorse or
+promote products derived from this software without specific prior
+written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Dick Broekhuis, controller CWI
+</pre>
+{{noversion}}
+[[Category:CWI| ]]}
+&&%s&& %s Template:CWI {56718 2010-11-15T16:42:10Z {630 Paxed} use a div class=license_cwi instead of a table. <div class="license_cwi">
+''Screenshots and source code from Hack are used under the [[CWI license]].''
+</div>
+[[Category:CWI|{{PAGENAME}}]]}
+&&%s&& %s Category:CWI {8890 2006-08-29T18:21:04Z {396 Jayt} created category This category contains all articles whose content, in whole or in part, is licensed under the [[CWI license]].
+
+[[Category:Licenses]]}
+&&%s&& %s Category:Licenses {16905 2006-12-29T03:35:31Z {735 Shijun}  This category contains articles about licenses or licensing issues.
+
+[[Category:Articles]]}
+&&%s&& %s Category:Hack 1.0 source code {8896 2006-08-29T19:40:38Z {396 Jayt} created category, in [[category:source code]] This category contains articles containing the source code to [[Hack 1.0]].
+
+[[Category:Source code]]}
+&&%s&& %s Hack 1.0 source code {93349 2015-04-11T13:10:15Z {4000605 HarJIT} /* Other files */ {{NetHack source code}}
+This page contains links to the '''source code''' of [[Hack 1.0]]. This is an old release; for the latest release, see [[Source code]].
+
+See [[Hack 1.0#Availability]] for details on this code's origin. 
+
+{|style="width: 100%;"
+|style="width: 50%; vertical-align: top;"|
+=== Header files ===
+* [[Hack 1.0/date.h]]
+* [[Hack 1.0/def.edog.h]]
+* [[Hack 1.0/def.eshk.h]]
+* [[Hack 1.0/def.func_tab.h]]
+* [[Hack 1.0/def.gen.h]]
+* [[Hack 1.0/def.monst.h]]
+* [[Hack 1.0/def.objclass.h]]
+* [[Hack 1.0/def.objects.h]]
+* [[Hack 1.0/def.obj.h]]
+* [[Hack 1.0/def.permonst.h]]
+* [[Hack 1.0/def.trap.h]]
+* [[Hack 1.0/def.wseg.h]]
+* [[Hack 1.0/hack.h]]
+* [[Hack 1.0/hack.mfndpos.h]]
+* [[Hack 1.0/hack.onames.h]]
+* [[Hack 1.0/mklev.h]]
+* [[Hack 1.0/savelev.h]]
+|style="width: 50%; vertical-align: top;"|
+=== Source files ===
+* [[Hack 1.0/hack.c]]
+* [[Hack 1.0/hack.apply.c]]
+* [[Hack 1.0/hack.bones.c]]
+* [[Hack 1.0/hack.cmdlist.c]]
+* [[Hack 1.0/hack.Decl.c]]
+* [[Hack 1.0/hack.do.c]]
+* [[Hack 1.0/hack.dog.c]]
+* [[Hack 1.0/hack.do_name.c]]
+* [[Hack 1.0/hack.do_wear.c]]
+* [[Hack 1.0/hack.eat.c]]
+* [[Hack 1.0/hack.end.c]]
+* [[Hack 1.0/hack.engrave.c]]
+* [[Hack 1.0/hack.fight.c]]
+* [[Hack 1.0/hack.invent.c]]
+* [[Hack 1.0/hack.ioctl.c]]
+* [[Hack 1.0/hack.lev.c]]
+* [[Hack 1.0/hack.main.c]]
+* [[Hack 1.0/hack.makemon.c]]
+* [[Hack 1.0/hack.mhitu.c]]
+* [[Hack 1.0/hack.mkobj.c]]
+* [[Hack 1.0/hack.mon.c]]
+* [[Hack 1.0/hack.monst.c]]
+* [[Hack 1.0/hack.objnam.c]]
+* [[Hack 1.0/hack.o_init.c]]
+* [[Hack 1.0/hack.options.c]]
+* [[Hack 1.0/hack.pri.c]]
+* [[Hack 1.0/hack.read.c]]
+* [[Hack 1.0/hack.rip.c]]
+* [[Hack 1.0/hack.rumors.c]]
+* [[Hack 1.0/hack.save.c]]
+* [[Hack 1.0/hack.search.c]]
+* [[Hack 1.0/hack.shk.c]]
+* [[Hack 1.0/hack.stat.c]]
+* [[Hack 1.0/hack.steal.c]]
+* [[Hack 1.0/hack.termcap.c]]
+* [[Hack 1.0/hack.timeout.c]]
+* [[Hack 1.0/hack.topl.c]]
+* [[Hack 1.0/hack.track.c]]
+* [[Hack 1.0/hack.trap.c]]
+* [[Hack 1.0/hack.tty.c]]
+* [[Hack 1.0/hack.u_init.c]]
+* [[Hack 1.0/hack.vault.c]]
+* [[Hack 1.0/hack.version.c]]
+* [[Hack 1.0/hack.whatis.c]]
+* [[Hack 1.0/hack.wield.c]]
+* [[Hack 1.0/hack.worm.c]]
+* [[Hack 1.0/hack.worn.c]]
+* [[Hack 1.0/hack.zap.c]]
+* [[Hack 1.0/makedefs.c]]
+* [[Hack 1.0/mklev.c]]
+* [[Hack 1.0/mklv.makemaz.c]]
+* [[Hack 1.0/mklv.shk.c]]
+* [[Hack 1.0/mklv.shknam.c]]
+* [[Hack 1.0/rnd.c]]
+|}
+
+== Other files ==
+
+* [[Hack 1.0/data]]
+* [[Hack 1.0/rumors]]
+
+[[Category:Hack 1.0 source code| ]]}
+&&%s&& %s List of historic vanilla NetHack tiles {8997 2006-08-30T02:07:01Z {679 Ray Chason} NGPL; categories (trying again...) These are [[tiles]] that were distributed with [[NetHack 3.2.0]], the first version to support tiles, and are substantially different from their [[List of vanilla NetHack tiles|counterparts]] in [[NetHack 3.4.3]].
+
+All of these tiles remained in use through [[NetHack 3.2.3]], and some remained in use through [[NetHack 3.3.1]].
+
+Each tile is shown with its modern counterpart to the right, if that tile has been uploaded.  The Wizard of Balance is the former [[Wizard]] [[Quest]] leader, and is succeeded by [[Neferet the Green]].
+
+{|class="wikitable"
+|+<h2> MONSTERS </h2>
+|-
+|[[image:mind_flayer_320.png]]
+|[[image:mind flayer.png]]
+|[[mind flayer]]
+|[[image:gnome_mummy_320.png]]
+|[[image:gnome mummy.png]]
+|[[gnome mummy]]
+|[[image:grid_bug_320.png]]
+|[[image:grid bug.png]]
+|[[grid bug]]
+|-
+|[[image:healer_320.png]]
+|[[image:healer.png]]
+|[[healer]]
+|[[image:priest_320.png]]
+|[[image:priest.png]]
+|[[priest]]
+|[[image:priestess_320.png]]

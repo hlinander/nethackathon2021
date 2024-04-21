@@ -1,0 +1,1000 @@
+|-
+| [[Dispater]] || 78 || 144 || 36
+|-
+| [[Baalzebub]] || 89 || 166 || 41
+|-
+| [[Asmodeus]] || 105 || 198 || 49
+|-
+| [[Demogorgon]] || 106 || 200 || 50
+|}
+
+:The [[Wizard of Yendor]] starts at 30d8 and every time you kill him gains another hit die up to a maximum of 49d8.
+
+:Alright from here on out gets annoyingly complicated. The monster's HP is based on a function called adj_lev() ([[makemon.c#line1362]] and [[dungeon.c#line1455]]) which depends on (in order of importance):
+:*Your dungeon level
+:*If your level (XL) is greater than the monster's lvl (MLVL)
+:*If you have the amulet
+:*If you're in the end game (earth plane or above)
+:*If your depth (DLVL) is greater than the monster's lvl
+:I'll just ignore all that with a wave of my hand:
+::adj_lev() = 1.5*(MLVL) (grossly inaccurate)
+
+:Dragons:
+::adult dragons+[[Ixoth]]+[[Chromatic Dragon]] = 4*23 + 23d4 = 92+23d4
+::Same as above in endgame = 8*22 = 176
+:Very weak creatures (think [[grid bug]]s) = 1-4 hits
+:Elementals in their own plane = (12d8)*3
+:Everything else = adj_lev()d8 = (1.5*(MLVL))d8
+
+:Yeah so basically it is hard to get exact numbers, or even give a ball park because it depends on so many factors. Hope this helps.
+:[[User:Addps4cat|Addps4cat]] 20:20, 14 September 2007 (UTC)
+
+Wow, that helped explain things ALOT. I had no idea HP was such a complicated variable. I just assumed it was a static value like in most other games. Thanks for explaining it to me! 
+[[User:Vandalier|Vandalier]] 8:08, 17 September 2007 (UTC)
+:Or in game you can use a [[stethoscope]] on monsters. This is my favourite tool, especially since it still mostly gives you time to Run Away.
+:[[User:12.77.20.134|12.77.20.134]] 00:35, 26 September 2007 (UTC)
+
+== Longest item name == 
+
+Out of boredom, I attempted to create the item with the longest name ever. I started off with a helm of opposite alignment. Then I rusted and corroded it, then fixed it with a scroll of destroy armor (cursed/confused). If you're in wizard mode you can do even better by getting a +100 enchantment for a final item of:
+:"an uncursed greased thoroughly corroded thoroughly rusty rustproof +100 helm of opposite alignment"
+Sadly you can't combine them to get "100 uncursed ...". Can anyone beat that? [[User:Addps4cat|Addps4cat]] 18:40, 25 September 2007 (UTC)
+
+--Try #naming it or using artifacts.
+
+: uncursed greased thoroughly corroded thoroughly rusty rustproof [[wand of secret door detection]] (7:104)
+: uncursed greased thoroughly corroded thoroughly rusty rustproof [[ring of protection from shape changers]]
+: [[Special:Contributions/220.255.2.89|220.255.2.89]] 15:52, 16 October 2011 (UTC)
+
+== Preventing unpolymorphing in SLASH'EM? ==
+
+Hello, I'm having trouble with keeping my [[pets]] alive, and consequently, myself, in [[SLASH'EM]]. In vanilla, I could just use a [[magic whistle]] to do the [[polymorph trap]] boogie and get some amazing pets. In SLASH'EM, they unpolymorph into the crappy large cats/dogs at the worst possible times. Throwing potions of restore ability (prevents unpolypiling) and having them equip amulets of unchanging don't work either. If there isn't a way to prevent unpolymorphing, how do I get better pets, other than getting lucky with taming items, or throwing food at a [[chameleon]]? If I can't get good pets, it's going to be real hard for my atheist genoless no-polyself no-polypiling [[Archeologist]] to ascend, compared to vanilla, especially with the tougher monsters in SLASH'EM...
+
+[[User:209.51.73.60|209.51.73.60]] 20:54, 6 October 2007 (UTC)
+
+: Cats/dogs/horses seem more common in SLASH'EM than vanilla, so sometimes I try for more pets instead of better pets. (It does become difficult to move four pets up and down the stairs.) I would like to hear about any better strategy. --[[User:Kernigh|Kernigh]] 14:37, 28 November 2007 (UTC)
+
+
+
+== Chameleon turned Master Lich vs genuine Master Lich ==
+
+Hello fellow nethackers, I have a question - I'm far from being an expert player so take that into account...
+
+Anyway, I have just met, what I thought was my nemesis, a Master Lich... it scared the hell out of me - here I am, an Elvl10 wizard at Dlvl7, perfroming some "maintnance work" using some potion shop and my faithful cat when suddenly I'm faced with a monster I think I have never seen before in any previous games... the bad thing is that I had lost my magic-resistance cloak by forgetting to take it off before polymorphing into a Xorn - I thought that would help in Sokoban, now I know it doesn't ;]...
+
+So, I'm standing there, after having suffered a single attack from this mighty violet "L" which took half my HPs and I'm thinking "ok, so this is it, I'm going to die here" and trying not to panick, I figure the best thing to do considering my heavy but not necessarily most useful knapsack contents ... ok, I have a few wands with me... I consider for a second the one that I think I semi-identified (forgot to do more) as either /oDeath or /oSleep... But then, I had recently died of an ill-targeted ray of death so I rule out this possibility, I have /oDigging so I keep that option in my mind but I also have a /oPolymorph...
+
+I can't find anything here about Liches having magic resistance or other reflection stuff, so, wth, I just zap the /oPolymorph at the Lich... Immediately, it turns to an ape which I finish with a few quick quarterstaff hits... But then, when I move towards a corpse I find that what's lying there is not an ape corpse but a chameleon corpse...
+
+So, here comes the question - was what I've done a viable tactics against an ML or was it that easy just because it was, apparently, not a genuine ML but a chameleon impersonating one? thanks in advance... - [[User:Blueshade|Blueshade]] 12:52, 28 November 2007 (UTC)
+
+ps. btw, this is vanilla 3.4, if that matters in any way...
+
+== "You lack the energy to send forth a call for help!" ==
+
+What the heck does that mean? I get this after turning into a wererat, when trying to "#monster"...
+What kind of energy do I need? I am satiated and fully healed... Only magical power is not very high...
+Maybe my ExpLvl is the problem?... thanks in advance, [[User:Blueshade|Blueshade]] 13:07, 29 November 2007 (UTC)
+:Yep, you've got it.  Summoning help uses power points, and quite a lot of them I believe. --[[User:Andronikus|Andronikus]] 13:09, 29 November 2007 (UTC)
+
+:: Thanks :)... i'll try waiting until my power goes back to full and see if I can summon then... if not, i'll #pray and hope Hermes is kind enough to rid me of the thing... anyway, I think something along the lines of what you say, should go into the [[lycanthropy]] article... - [[User:Blueshade|Blueshade]] 14:26, 29 November 2007 (UTC)
+
+==Figuring out what I genocided==
+
+So, after playing way too much Nethack in the past few weeks, I find myself in a position where I have a blessed scroll of genocide, and can't remember what I've already genocided in this game (as opposed to last week's character, or yesterday's character...)  Is there any way to check, besides dying? [[User:enehta|enehta]] 21:01, 09 December 2007
+
+:Not that I know of. I keep notes, either in a text file or through #name'ing an object I expect to hold onto (like my BoH) - Javelin
+
+==A few polypiling and praying questions==
+*Which tools (besides the unicorn horns) are considered magical and thus might be able to become magic markers?  Are there similar issues with magical armor (e.g. gauntlets of fumbling vs. gloves), beyond the issues with enchantments?
+**And I've found a lovely link which answers my question: http://www.nethack.de/spoiler330/magic_items.txt
+*While I'm on the polymorphing question, would there be any particular problem to polymorphing an artifact (namely Grimtooth, which as a neutral priest I have no desire for)
+**A quick wizard mode test indicates that artifacts (I tested Grimtooth, Sting, and Stormy) are immune to polymorphing.  So, you can either drop Grimtooth, or since it's fairly light you can keep it around for extra points at the end of the game.  --[[User:Andronikus|Andronikus]] 12:50, 11 December 2007 (UTC)
+*With the one altar-prayer outcome of the god blessing your weapon, will it bless an object that isn't a weapon but is wielded?  (I can't tell whether I'm just unlucky or it won't do it and I should stop trying)
+** Nope, the game specifically checks whether the wielded item is a weapon or weapon-tool. -- [[User:Killian|Killian]] 13:52, 26 December 2007 (UTC)
+*And along the am-I-just-unlucky lines, is it at all possible to polymorph armor into a robe?  You don't want to know how long I've been trying, especially given my current 84% failure rate (without wearing any metal) for casting polymorph...  Yeah, I suppose I should just get on with the game, but...   --[[User:Enehta|Enehta]] 07:30, 10 December 2007 (UTC)
+** I believe it's technically possible, but since the chances of obtaining magical armour from polymorph are so tiny, and robes themselves are pretty rare, it's unlikely to be worth the effort. -- [[User:Killian|Killian]] 13:52, 26 December 2007 (UTC)
+*** Yes, once I have collected enough elven armor, I often get a robe as byproduct. However, if I need one, I usually kill a priest in mid-game. - TJR
+
+==Dungeon stalemate==
+I am finding that on some generations of the dungeon, on the first level or two, I don't have any way to get to the next level down.  Is there something I'm missing?  Like a way to find secret passages?  I usually end up quitting and starting again, but it's kind of bothersome.
+
+:If you can't find the downstairs, there are usually two possible explanations. One is simply that the stairs are hidden under some visible object, in which case you should check each square with items on it. The other is that they are located in a room you haven't found yet, in which case you might need to use the [[search]] command to locate an entrance to the room. -- [[User:Killian|Killian]] 13:34, 26 December 2007 (UTC)
+
+==Excalibur + Invisibility==
+Does wielding Excalibur negate invisibility? It mentions that monsters will still be able to find you, but it's not very clear as to whether that's just blind monsters or any sort of camouflaging effect.--[[User:Xazak|Xazak]] 17:17, 28 December 2007 (UTC)
+:: My invisible valkyrie with Excalibur wielded is still having monsters whiff and strike at thin air.  Make sure you are not wearing a mummy wrapping.  Also keep in mind that once you stand adjacent to (or attack) a monster, it will have an easier time locating you, so move around and soften 'em up with daggers or pets before they get a bead on you.
+
+==Stolen "oLS==
+I had an amulet of lifesaving stolen by a wood nymph, who immediately put it on. Is there any way to get the amulet back without killing the nymph in the process? I'm playing a dwarven Valkyrie.--[[User:Xazak|Xazak]] 18:22, 28 December 2007 (UTC)
+:Polymorph into a nymph or a foocubus, then steal it from her.--[[User:Ray Chason|Ray Chason]] 19:03, 28 December 2007 (UTC)
+:Or tame another nymph (say, with a [[Magic harp]]) and hope it'll steal it from her.  (I have no idea whether taming her would get it back).  Good luck!  --[[User:Enehta|Enehta]] 05:16, 31 December 2007 (UTC)
+::polymorph the nymp into something that can't wear an amulet(ameboid, whirly) or try to give it another amulet to try on(unlikely, since monsters usually id  without a scroll, and know relatively how good they are)
+:The question should simply be "Is there any way to get the amulet back..." - I mean, if you try to kill the nymph, the amulet will save her and crumble to dust, so you cannot obtain it this way... I know you probably know that, I just wanted that to be known to someone else reading this... - blueshade
+
+==Long Worm Tails==
+Is there any way to "grow" a tail if you're polymorphed into a long worm? #Monster didn't work lol [[User:Fredil Yupigo|Fredil Yupigo]] 21:45, 12 January 2008 (UTC)
+
+==Losing the Book of the Dead?==
+I finally made it to Rodney and zapped him with a Wand of Death while he was over the moat around his room. It looks like the Book of the Dead fell in to the moat and now I can't seem to get it back! I have tried a grappling hook, freezing the moat to ice then digging a pit, and can't find it at all. Help! --[[User:Kalon|Kalon]] 04:12, 14 January 2008 (UTC)
+:Turbulence ;) [[User:Fredil Yupigo|Fredil Yupigo]] 23:28, 14 January 2008 (UTC)
+::This happened to me!  I found it down there after wearing an amulet of magical breathing, picking up something heavy, and just jumping in.  --[[User:Beefnut|Beefnut]] 11:36, 16 January 2008 (UTC)
+
+==Oracle==
+Is it possible for the Oracle level to not be generated? I'm already at my Quest and I haven't saw him or Sokoban yet!! [[User:Fredil Yupigo|Fredil Yupigo]] 21:29, 21 January 2008 (UTC)
+:As far as i know, no, and as big as the room in the center is, it's hard to imagine overlooking it.  Maybe you fell through a trap door and passed it by?  Try climbing back up and seeing if you missed a couple of levels.--[[User:Ray Chason|Ray Chason]] 23:47, 21 January 2008 (UTC)
+::I find it scary that a hole took me down 4 levels. Thanks :) [[User:Fredil Yupigo|Fredil Yupigo]] 01:40, 22 January 2008 (UTC)
+
+==Rejected with prejudice==
+If you are rejected from your quest for failing the alignment test too much, does a game become unwinnable? [[User:Fredil Yupigo|Fredil Yupigo]] 18:42, 27 January 2008 (UTC)
+: Unfortunately, yes. You need the [[Bell of Opening]] to perform the [[invocation ritual]], and this is held by your [[Quest nemesis]]. No Quest, no Bell, no opening of the [[vibrating square]], no [[Amulet of Yendor]]. --[[User:Kalon|Kalon]] 01:12, 31 January 2008 (UTC)
+
+If you are (unconverted) neutral, not a wizard and you don't already have zillions of artifacts, you could wish for the Eye of the Aethiopica and branchport in. TJR
+: No you couldn't. The Eye's branchport power will only ever take you to a level you have previously visited, so in this situation if you go to the Quest branch you'll always wind up on the top level. Levelport doesn't work either because you cannot levelport within the Quest branch until you have permission to start the quest. Being unable to start the quest really does make the game unwinnable and there is no way to sneak around that.
+
+:: Yes, you can. Failing the alignment test 7 times only removes the portal. Once you fix your alignment (and XP) problems, you can branchport in and get permission from your quest leader. -[[User:Tjr|Tjr]] 20:43, December 28, 2009 (UTC)
+
+==Old Versions==
+Is there any repository of old versions (executable or sourcecode) of hack?  In particular, I'm searching for version 1.01 (as far as I can tell).  I (and many others) spent an obscene amount of time playing it on my old 386 PC.  We're organizing a classic gaming party and would very much like to revisit this game that so many played and loved.{{unsigned|Asidonhopo}}
+:For each of the 33 public releases of Hack and NetHack, NetHackWiki has an article such as [[Hack 1.0.1]].  Each links to places where you can find the original source, so far as it survives (parts of [[Hack 1.0]] and 1.0.1 are not fully preserved).  If you're looking for binaries you can play on a 386 PC, you might be better off using Google.--[[User:Ray Chason|Ray Chason]] 04:27, 1 February 2008 (UTC)}
+&&%s&& %s Armour class {34871 2008-08-21T12:54:40Z {0 } R from other spelling #redirect [[Armor class]]}
+&&%s&& %s Iron boots {34894 2008-08-23T12:07:17Z {17 Addps4cat} changed to Iron shoes not Iron Shoes #REDIRECT [[Iron shoes]]}
+&&%s&& %s Boot {34945 2008-08-28T11:37:35Z {0 } created redirect to [[Boots]] #REDIRECT [[Boots]]}
+&&%s&& %s Fragile {136271 2020-11-22T08:20:50Z {4001279 Umbire the Phantom}  '''Fragile''' items are destroyed when [[throw]]n, [[kick]]ed, hit with a {{spell of|force bolt}} or [[wand of striking]], or [[drop]]ped from a height (from levitating, riding or down stairs).
+
+Items in your [[inventory]] are safe from shattering.
+
+The following items are fragile:{{reffunc|dothrow.c|breaktest}}
+* [[Egg]]s
+* [[Potion]]s
+* [[Expensive camera]]s
+* [[Cream pie]]s
+* [[Melon]]s
+* [[Venom]]
+* All items made of [[glass]], except artifacts and [[Gem|pieces of colored glass]]:
+** [[Mirror]]s (except [[the Magic Mirror of Merlin]])
+** [[Pair of lenses|Pairs of lenses]] (except [[the Eyes of the Overworld]])
+** [[Crystal ball]]s (except [[the Orb of Fate]] and [[the Orb of Detection]])
+** [[Wand]]s whose [[randomized appearance]] is "glass" or "crystal"
+** [[Crystal plate mail]]
+
+Breaking eggs that you have laid or mirrors carries a [[Luck]] penalty. 
+
+Fragile items inside [[container]]s can break when the container is kicked, thrown, or otherwise abused. However, the algorithm used in this case is slightly different: cameras, melons, and pies will never break, eggs have a {{frac|3}} chance of being damaged, and other fragile objects have a 67% chance.{{reffunc|dokick.c|container_impact_dmg}} For stackable items, each damaged stack will lose only one item. Items inside a [[bag of holding]] or a nested bag are immune.
+
+== References ==
+<references />
+
+[[Category:Item attributes]]
+{{nethack-343}}}
+&&%s&& %s NetHackWiki talk:ProblemReports/13618 {35112 2008-09-10T11:40:15Z {443 Kahran042} New page: Tell me, are you playing vanilla NetHack or some variant? --~~~~ Tell me, are you playing vanilla NetHack or some variant? --[[User:Kahran042|Kahran042]] 11:40, 10 September 2008 (UTC)}
+&&%s&& %s Ibmgraphics {35113 2008-09-10T22:41:50Z {285 Fuzzygenius} Create redirect for missing capitals #REDIRECT [[IBMgraphics]]}
+&&%s&& %s WoY {35141 2008-09-14T08:25:43Z {17 Addps4cat} added redir WoY->Wizard of Yendor #REDIRECT [[Wizard of Yendor]]}
+&&%s&& %s Team Ant {125885 2019-05-16T09:45:18Z {4000681 Andrio Celos} Fix broken redirect. #REDIRECT [[Ant#Team Ant]]}
+&&%s&& %s Andries' ghost {35216 2008-09-19T14:45:41Z {467 Killian} "Andries" is one of the random names given to ghosts #REDIRECT [[Ghost]]}
+&&%s&& %s Stilleto {35223 2008-09-19T21:20:42Z {7 404notfound} Redirecting to [[Stiletto]] #REDIRECT [[Stiletto]]}
+&&%s&& %s The Great Dagger of Glaurgnaa {125940 2019-05-23T14:10:11Z {4000251 Netzhack} /* Strategy */ Removed abuse of "as such" {{artifact weapon
+  |appearance=
+  |base=great dagger
+  |smalldmg=1d6 '''+4 + level drain'''
+  |largedmg=1d7 '''+4 + level drain'''
+  |tohit=<nowiki>+2</nowiki> '''+8'''
+  |bonusversus=[[cross-aligned]]
+  |skill=dagger
+  |size=one-handed
+  |affiliation=<ul><li>[[chaotic]]</li><li>[[Necromancer]]</li><li>[[intelligent artifacts|intelligent]]</li></ul>
+  |whencarried=<ul><li>[[magic resistance]]</li></ul>
+  |whenwielded=
+  |wheninvoked=*[[energy]] boost
+  |cost=50000
+  |weight=20
+  |material=Iron
+}}
+<!-- Table based on:
+     http://www.angelfire.com/trek/mazewest/spoilers/arti_007e6.txt
+     http://nethackwiki.com/wiki/Dagger#Great_dagger
+     -->
+
+In [[SLASH'EM]], '''The Great Dagger of Glaurgnaa''' is the [[Necromancer]] quest artifact. Its attack can drain life, indicated by the message "The Great Dagger of Glaurgnaa draws the life from (target)!" When carried, it grants magic resistance. It can be invoked to boost energy, similar to the [[Mitre of Holiness]].
+
+==Strategy==
+As a weapon, the Great Dagger of Glaurgnaa is weaker than many chaotic artifacts, including the Necromancer's first guaranteed sacrifice gift, [[Serpent's Tongue]]. For comparison, a +7 Great Dagger of Glaurgnaa will do, on average vs. non-chaotics, 3.5 base + 4 cross-aligned bonus + 7 enchantment bonus = 14.5 damage vs. small and 15 damage vs. large foes plus level drain, and only 10.5/11 vs. chaotic foes; a +7 Serpent's Tongue will do (2.5 base + 7 enchantment bonus) x 2 = 19 vs. small and 18 vs. large regardless of alignment, PLUS an additional ~10 average damage and 10% instakill versus non-poison resistant foes. While the Great Dagger of Glaurgnaa may be marginally stronger if you haven't found any scrolls of enchant weapon, most Necromancers who are able to defeat [[Maugneshaagar]] will have better options for fighting. Its key benefits are the magic resistance it grants and the energy boost it provides. Because of these, it is a popular [[wish]] for chaotic spellcasters in [[SLASH'EM]], as chaotic spellcasters can't make use of the [[Mitre of Holiness]] or the [[Eye of the Aethiopica]] (unless obtained from the [[Wizard Quest]]) for energy regeneration and the [[Master Key of Thievery]]'s coveted half physical damage extrinsic can be supplied by the [[Hand of Vecna]].
+
+Since most Necromancers don't cast many spells in the early game, this item is generally obtained around the time that a necromancer is switching from playing as a tank to playing as a spellcaster. Given the low max power that Necromancers attain (compared with [[Priest|Priests]] or [[Wizard|Wizards]]), you will find yourself frequently relying on the power recharge function. It is therefore helpful to know the [[Invoke#Optimum_invocation_schedule|optimum invocation schedule]] to maximize this benefit.
+
+[[Category:SLASH'EM Artifacts|Great Dagger of Glaurgnaa]]
+[[Category:Quest artifacts|Great Dagger of Glaurgnaa]]}
+&&%s&& %s Silver weapon {35240 2008-09-22T18:00:05Z {515 MadDawg2552} Making a redirect for "silver" #REDIRECT [[Silver]]}
+&&%s&& %s Cram {35266 2008-09-25T18:25:35Z {515 MadDawg2552} A redirect #REDIRECT [[Cram ration]]}
+&&%s&& %s Intralevel teleport {35685 2008-10-21T17:58:21Z {523 Marcmagus} Intra-level means within the level #redirect [[Teleportation]]}
+&&%s&& %s Shrieks in pain {35381 2008-10-05T20:04:46Z {830 Titanium Dragon} Redirecting to [[Potion of acid]] #REDIRECT [[Potion of acid]]}
+&&%s&& %s The dungeon acoustics noticably change {35390 2008-10-06T00:31:18Z {830 Titanium Dragon} Redirecting to [[The dungeon acoustics noticeably change]] #REDIRECT [[The dungeon acoustics noticeably change]]}
+&&%s&& %s The dungeon acoustics noticeably change {102528 2016-04-20T20:23:16Z {4000743 Manic0892} Just had this happen to me in 3.6.0 When something makes a hole in the wall of a [[shopkeeper|shopkeeper's]] [[shop|store]], the shopkeeper will seal it up soon thereafter. If you cannot see the shopkeeper doing this (due to [[blindness]] or lack of line of sight to the sealed up wall) you will get the message "'''The dungeon acoustics noticeably change.'''"
+
+[[Category:Messages]]
+{{nethack-360}}}
+&&%s&& %s The troll rises from the dead {35424 2008-10-09T00:11:43Z {447 Kalon} Redirected to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The water troll rises from the dead {35425 2008-10-09T00:12:24Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The ice troll rises from the dead {35426 2008-10-09T00:13:04Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The rock troll rises from the dead {35427 2008-10-09T00:13:38Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The Olog-hai rises from the dead {35428 2008-10-09T00:14:06Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The troll rises from the dead! {35429 2008-10-09T00:15:14Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The water troll rises from the dead! {35430 2008-10-09T00:15:47Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The ice troll rises from the dead! {35431 2008-10-09T00:16:11Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The rock troll rises from the dead! {35432 2008-10-09T00:16:38Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s The Olog-hai rises from the dead! {35433 2008-10-09T00:17:08Z {447 Kalon} Redirect to Troll #REDIRECT [[Troll]]}
+&&%s&& %s Nasties {35444 2008-10-10T10:08:31Z {467 Killian} redirect to [[nasty]] #REDIRECT [[Nasty]]}
+&&%s&& %s Malignant aura {35464 2008-10-11T03:47:29Z {467 Killian} #REDIRECT [[Curse items]] #REDIRECT [[Curse items]]}
+&&%s&& %s Wand's of lightning {150282 2023-03-21T03:42:06Z {4001279 Umbire the Phantom} unused {{delete|Unused redirect}}
+#REDIRECT [[Wand of lightning]]}
+&&%s&& %s Eye of the aethiopica {35650 2008-10-19T16:18:14Z {0 } Redirecting to [[The Eye of the Aethiopica]] #REDIRECT [[The Eye of the Aethiopica]]}
+&&%s&& %s The eye of the aethiopica {35651 2008-10-19T16:19:00Z {0 } Redirecting to [[The Eye of the Aethiopica]] #REDIRECT [[The Eye of the Aethiopica]]}
+&&%s&& %s Eye of aethiopica {35652 2008-10-19T16:19:29Z {0 } Redirecting to [[The Eye of the Aethiopica]] #REDIRECT [[The Eye of the Aethiopica]]}
+&&%s&& %s Artifact blast {149813 2023-01-26T15:53:46Z {187 Darth l33t} /* Description */ fix typo and clarify conditions In ''NetHack'', touching an [[artifact]] may cause it to blast you for damage each time - these '''artifact blasts''' may pose a threat to unwary players.
+
+==Description==
+Artifact blasts are triggered each time you attempt to do any of the following actions with an artifact:<ref>{{function|artifact.c|touch_artifact}}</ref>
+
+* [[Wish]] for an artifact
+* Pick one up or remove it from a [[container]] ([[tip]]ping one out of a container is safe)
+* Wield or wear one
+* [[Apply]] or [[invoke]] one
+* Steal one
+* [[Polyself|Polymorph]] with the artifact equipped or in main inventory (including when you return to normal form or feel like a "new you").
+
+Artifact blasts are magical in nature, so [[gloves]] afford no protection, and [[magic resistance]] can reduce their damage. The circumstances you are blasted under and the damage dealt depend on whether the blast originated from an [[intelligent artifact]].
+
+===Intelligent artifacts===
+When performing any of the above actions, intelligent artifacts will always blast you for 4d10 damage (reduced to 2d10 damage if you have magic resistance) and [[abuse]] your [[wisdom]] if you meet any of the following conditions:
+
+* It is a [[Quest artifact]] and you are not of the associated [[role]]
+* You are of a different [[alignment]] than the artifact
+* You have negative [[alignment record]]
+* You are in the form of something the artifact specially attacks
+
+Additionally, if you are of the wrong role ''and'' fail one of the other conditions, the artifact will refuse to cooperate with you. If you tried to take or wish for the artifact, it will "evade your grasp" and remain in its current location, or fall to the floor if wished for. If it was already in your inventory and you tried to equip or use it, it will be "beyond your control", unequip itself, and resist any attempt to equip, apply, or invoke it. Any effects that the artifact grants simply by being carried will still apply. The primary ramification of this is that you can only use another role's [[quest artifact]] if you are the same alignment as that object.
+
+===Unintelligent artifacts===
+Unintelligent artifacts have a {{frac|4}} chance of blasting you for 4d4 damage (2d4 if you have magic resistance) and abusing your wisdom any time you perform one of the above actions if:
+
+* You are of a different alignment than the artifact
+* You have negative alignment record
+* You are in the form of something the artifact specially attacks
+
+Unaligned artifacts don't care about your alignment or record, and will only blast you if they attack your current form. Similarly, [[Sting]] and [[Orcrist]], despite being chaotic, only blast orcs.
+
+While unintelligent artifacts never evade you as intelligent ones do, you cannot equip any artifact if it attacks your current form. Independent of any possible blast, attempting to do so deals d10 damage, unaffected by magic resistance, and abuses [[constitution]].
+
+==Attacking forms==
+The following artifacts are considered to attack specific forms:
+
+{|class="prettytable"
+!Artifact
+!Form
+|-
+|[[Demonbane]]
+|{{monclass|&}}s (but not other {{white|&}})
+|-
+|[[Dragonbane]]
+|{{monclass|D}}s
+|-
+|[[Giantslayer]]
+|[[giant]]s (but not other {{monclass|H}}s)
+|-
+|[[Grimtooth]]
+|{{white|@}} [[Elf (monster attribute)|elves]]
+|-
+|[[The Mitre of Holiness]]
+|[[undead]] (but not [[demon]]s)
+|-
+|[[Ogresmasher]]
+|{{monclass|O}}s
+|-
+|[[Orcrist]], [[Sting]]
+|{{monclass|o}}s
+|-
+|[[Sunsword]]
+|[[undead]]
+|-
+|[[Trollsbane]]
+|{{monclass|T}}s
+|-
+|[[Werebane]]
+|characters with [[lycanthropy]]
+|}
+
+Artifacts attack polymorphed players based on their current form, and so do not account for their base [[race]] in the case of polyself. Thus, an elven player could temporarily wield Grimtooth, or an orcish player Sting, by polymorphing into a more acceptable form.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], the blast damage has been increased, making picking up artifacts even more dangerous. Intelligent artifacts do 8d10 damage (6d10 with [[magic resistance]]), and unintelligent artifacts do 8d6 damage (6d6 with [[magic resistance]]). This also applies to [[SlashTHEM]].
+
+===dNetHack===
+In [[dNetHack]], artifact armor that blasts you has a chance to do so each time you are struck. Also, certain artifacts such as [[Nighthorn]] will always blast their user.
+
+==References==
+<references/>
+
+{{DOD}}
+[[Category:Artifacts]]
+{{nethack-366}}}
+&&%s&& %s Ignintr {35731 2008-10-22T20:51:49Z {0 } Redirecting to [[Options#ignintr]] #REDIRECT [[Options#ignintr]]}
+&&%s&& %s MacGraphics {35732 2008-10-22T20:53:08Z {0 } Redirecting to [[Options#MacGraphics]] #REDIRECT [[Options#MacGraphics]]}
+&&%s&& %s Menu tab sep {35733 2008-10-22T20:55:52Z {0 } Redirecting to [[Options#menu tab sep]] #REDIRECT [[Options#menu_tab_sep]]}
+&&%s&& %s Sanity check {35734 2008-10-22T21:01:17Z {0 } Redirecting to [[Options#sanity check]] #REDIRECT [[Options#sanity_check]]}
+&&%s&& %s Wizkit {35735 2008-10-22T21:06:27Z {0 } Redirecting to [[Options#wizkit]] #REDIRECT [[Options#wizkit]]}
+&&%s&& %s Autoidentify {35786 2008-10-24T21:02:12Z {523 Marcmagus} Redirecting to [[Auto-identify]] #REDIRECT [[Auto-identify]]}
+&&%s&& %s Sticky attack {35820 2008-10-25T18:03:23Z {0 } Redirecting to [[Holding attack#Sticky attack]] #REDIRECT[[Holding attack#Sticky attack]]}
+&&%s&& %s Sticking attack {35817 2008-10-25T18:01:25Z {0 } Redirecting to [[Holding attack#Sticky attack]] #REDIRECT[[Holding attack#Sticky attack]]}
+&&%s&& %s Drowning attack {35818 2008-10-25T18:02:30Z {0 } Redirecting to [[Holding attack#Drowning attack]] #REDIRECT[[Holding attack#Drowning attack]]}
+&&%s&& %s Holding attack {134677 2020-07-01T06:11:49Z {4001425 Jeesty} /* Grabbing attack */ :<span class="dablink">''‘Holding’ redirects here. For the container, see [[Bag of holding]].''</span>
+
+A '''holding attack''' prevents the player from moving away from a monster. If you try to move away, you waste that turn and get the message "''You cannot escape from the <monster>!''". The special effects do not apply when attacking another monster. There are three types of holding attacks:
+
+==Grabbing attack==
+
+The grabbing attack is most famously possessed by [[owlbear]]s.  This is reflected by the messages "''<monster> grabs you!''" or "''You are being crushed.''". In the case of [[rope golem]]s, the message is "''You are being choked.''". Apart from the inability to move (and extra damage from being crushed) there are no additional ill effects. 
+
+The grabbing attack will connect if the monster's previous two attacks both hit, or always if the monster is already holding you. It is impossible for the initial grabbing attack to succeed if you are wearing a non-cursed [[oilskin cloak]] or if your outermost item is [[greased]]; this is part of the reason why items of [[armor]] are largely [[wish]]ed for greased. No damage is done if the initial grabbing attack is deflected by grease. Bear in mind that [[grease]] has a 50% chance of disappearing with each grabbing attack it deflects.
+
+Engraving Elbereth is not hindered by the Rope Golem's grabbing attack. It will release the victim before fleeing.
+
+The following monsters possess a grabbing attack:
+* [[Rope golem]]
+* [[Owlbear]]
+* [[Pit fiend]]
+* [[Python]]
+* [[Salamander]]
+* [[Couatl]]
+* [[Guardian naga]]
+* [[Carnivorous ape]]
+
+==Drowning attack==
+
+The drowning attack is a two-stage [[instadeath]], which is deadly even to high level characters. It occurs when the player is first held by a monster, and then pulled into a [[moat]] or [[pool]], causing death by [[drowning]].
+
+The following monsters possess a drowning attack:
+* {{monsymlink|Electric eel}}
+* {{monsymlink|Giant eel}}
+* {{monsymlink|Kraken}}
+* {{monsymlink|Couatl}}
+* {{monsymlink|Python}}
+
+To use a drowning attack, the monster first tries to get hold of you. Even if the attack formally succeeds (that is, passes through your AC), most of the time the monster "brushes against your leg", but there is a 1 in 10 chance that instead the monster "swings itself around you!" [[Python]]s are an exception to this rule, as they possess both a drowning attack and a regular crushing hug. The crushing hug has different success chances than the drowning attack and does not produce the "swings itself around you" message; however, the python is still able to drown you regardless of how it is holding you.
+
+After the monster gets hold of you, the next time its attack succeeds, it will drown you. This may take as little as one turn, but typically takes several turns.
+
+The chance of an attack succeeding depends mainly on your armor class and the monster's level; see [[Armor class#How it works|Armor class&nbsp;§ How it works]] for more information. For krakens, pythons, and couatls, the holding attack succeeds if ''two'' previous attacks succeeded. Krakens and pythons are slow, so they attack on average once in 3 turns. Still, in 3.6.0, even they are sometimes able to attack after 2 turns from the previous attack, or even at the next turn, albeit very rarely.<ref>[[Source:NetHack_3.6.0/src/mon.c#line554]]</ref>
+
+The monster will drown you only if it is in or above water. This is most relevant for pythons and couatls, which are more often encountered on land.
+
+Drowning kills you, but does not [[wet]] your items.
+
+[[Magic cancellation]] does not protect against the drowning attack, nor does polymorphing into a large monster. [[Cancellation|Cancelling]] the monster will prevent the initial holding attack but not the fatal drowning after you have already been grabbed. Having good [[AC]] may cause the drowning attack to miss even if you have already been grabbed, but this should never be relied upon. 
+
+An [[amulet of life saving]] is not as useful as it seems. It will save your life, but you are still grabbed and will be drowned again next time the attack succeeds.
+
+Wearing an [[amulet of magical breathing]] or polymorphing into a swimming monster will prevent all drowning attacks, but not the initial grabbing attack.<ref>[[Source:NetHack_3.6.0/src/mhitu.c#line496]]</ref>
+
+Uncursed or blessed [[oilskin cloak]]s and [[greased]] outermost shirt, suit, or cloak will prevent grabbing attacks, though just as with grabbing attacks, the grease has a 50% chance of disappearing. In case you are grabbed already, it is too late to wear oilskin cloak or greased armor, as this would not release you or prevent you from being drowned.<ref name=slip>[Source:NetHack_3.6.0/src/mhitu.c#u_slip_free]</ref>
+
+If you are levitating in a controlled fashion over dry land, stop levitating and the monster will become startled, releasing you.{{refsrc|trap.c|2341}} Starting to levitate will not save you.
+
+=== Strategy ===
+Except on the [[Plane of Water]], you can remain completely safe from drowning attacks by not moving next to water until you have verified (eg with [[telepathy]]) that all sea monsters are dead. They can easily be killed with thrown rocks (or spare wands).
+
+One way to almost completely protect yourself against the attack is to blessed-genocide all {{white|;}} monsters, and possibly also genocide pythons (which are {{white|S}}). Some players do it as soon as possible; others do it on the [[Plane of Water]] to make the whole level clean. However, couatls also can drown the player and cannot be genocided.
+
+If you can, always have your outermost cloak, body armor, or shirt greased. This protects you against a drowning attack by preventing grabbing. Grease your cloak (or body armor, if you don't wear a cloak) as soon as you find a [[can of grease]]. However, holding attacks sometimes remove the grease, so you should be attentive to it.  If you fight more than one monster with a holding attack, there is a tiny chance that one of them will remove the grease and another one grab you immediately afterwards.
+
+If you wear an oilskin cloak, there is no need to grease it.  It completely protects you from any drowning attacks by preventing monsters from grabbing you.
+
+An amulet of magical breathing provides complete protection from drowning, so if you have one, put it on before moving next to water.
+
+If fighting from ground, you may wear a [[ring of levitation]], [[boots of levitation]], or levitate with [[the Heart of Ahriman]], and stop levitating whenever the holding attack succeeds. This way you will be released, but there is a small chance that you will be held again immediately the next turn. Electric eels can destroy a ring of levitation, so have a spare one.
+
+Otherwise, be attentive and keep one of the item below in the main inventory. When held, do one of the following:
+* Teleport the monster with a [[wand of teleportation]]. (This works even on [[non-teleport level]]s.)
+* Teleport yourself with a wand of teleportation or non-cursed [[scroll of teleportation]]. (This does not work on non-teleport levels.)
+* Levelport with a cursed scroll of teleportation. (This does not work if you carry the [[Amulet of Yendor]].)
+* Branchport with [[the Eye of the Aethiopica]].
+* Kill the holding monster with a [[wand of death]] (but be careful not to kill yourself).
+* Read an uncursed or blessed [[scroll of genocide]] to genocide the holding monster and all its colleagues. (This does not work on couatls.)
+* Freeze the water with a [[wand of cold]] or [[frost horn]]. Even if the monster survives, it cannot drown you while on ice.
+* Evaporate the water with a [[wand of fire]] or another source of fire. This works only in a moat, and beware of the fire hitting you.
+* Use a noncursed [[scroll of taming]] or [[magic harp]] with charges. (Couatls have about a 30% chance of resisting.)
+* Use a noncursed [[magic flute]] with charges, which will put all nearby monsters to sleep. (Couatls have about a 30% chance of resisting.)
+* Engrave [[Elbereth]] if you can, unless you are in Gehennom. (This does not work against couatls.)
+* Drop a [[scroll of scare monster]]. (This does not work against couatls.)
+* Scare the monster with a [[mirror]]. This only works in 80% of cases, and it does not work if you are invisible, or the monster is invisible or blind.
+* Scare the monster with a [[tooled horn]]. (Couatls have a 30% chance of resisting.)
+* Scare the monster with an [[expensive camera]] (this may or may not work).
+* Use a non-cursed [[scroll of earth]]. (There is 10% chance of failure, and it does not work on the [[Plane of Water]].)
+* Polymorph into a monster with a grabbing attack, such as an [[owlbear]] or an eel. You will be silently released, and the monster will not be able to use its drowning attack in the future.{{refsrc|mondata.c|297}}
+* Polymorph into a monster which does not breathe. You will not be drowned.
+* Polymorph the holding monster.
+
+Trying to run away from the holding monster is a bad idea. Each time you try to move, you have only 10% chance of succeeding. It is much better to fight the monster; chances are good you will kill it before it drowns you.
+
+==Sticky attack==
+
+A sticky attack is a silent holding attack that differs from grabbing attacks and drowning attacks because it is preventable by having high [[magic cancellation]]. The [[large mimic|large]] and [[giant mimic]]s use the sticking attack, and they have the additional property of sticking to you if you stumble upon them while they are mimicking an object. Note that you will still stick to the mimic, even if you use a wand of digging to create a hole underneath you.
+
+The following monsters possess a sticky attack:
+* [[Giant mimic]]
+* [[Large mimic]]
+* [[Lichen]]
+* [[Violet fungus]]
+
+== Variants ==
+
+=== SLASH'EM ===
+
+In [[SLASH'EM]], [[free action]] gives an additional chance of shaking off a grabbing attack based on your luck.
+
+=== Slash'EM Extended ===
+
+In [[Slash'EM Extended]], there is only a 33% chance of a drowning attack being fatal. Also in that variant, even if the player is [[breathless]], [[amphibious]] or lucky to not get instakilled, every time the holding monster gets a turn the player's entire inventory will become [[wet]]. This will blank scrolls, dilute potions, rust and possibly even destroy every rustprone item, and if it is [[lethe]] water, the player's items may be disenchanted or transformed into junk. It is therefore advisable to kill the monster quickly or prevent it from attacking, even as an unbreathing character. Having [[free action]] also helps.
+
+==References==
+<references />
+[[Category:Monster attacks]]
+{{nethack-343}}}
+&&%s&& %s Sticking {35823 2008-10-25T18:06:03Z {0 } Redirecting to [[Holding attack#Sticky attack]] #REDIRECT[[Holding attack#Sticky attack]]}
+&&%s&& %s Disenchanting {35840 2008-10-25T18:45:20Z {0 } Redirecting to [[Disenchanter]] #REDIRECT[[Disenchanter]]}
+&&%s&& %s Intrinsic-stealing {139693 2021-05-10T08:13:03Z {4001279 Umbire the Phantom} Changed redirect target from [[Gremlin]] to [[Intrinsic theft]] #REDIRECT [[Intrinsic theft]]}
+&&%s&& %s Drain energy {35848 2008-10-25T20:48:17Z {0 } Redirecting to [[Vortex#Energy vortex]] #REDIRECT[[Vortex#Energy vortex]]}
+&&%s&& %s Rusting {36236 2008-11-10T21:00:43Z {0 } Redirecting to [[Erosion]] #REDIRECT[[Erosion]]}
+&&%s&& %s Corroding {36235 2008-11-10T20:59:42Z {0 } Redirecting to [[Erosion]] #REDIRECT[[Erosion]]}
+&&%s&& %s Seduction {35860 2008-10-25T21:48:21Z {0 } Redirecting to [[Foocubus]] #REDIRECT[[Foocubus]]}
+&&%s&& %s Passive {35862 2008-10-25T21:52:29Z {0 } Redirecting to [[Passive attack]] #REDIRECT[[Passive attack]]}
+&&%s&& %s Magic spell {35942 2008-10-26T15:38:27Z {0 } Redirecting to [[Spell]] #REDIRECT[[Spell]]}
+&&%s&& %s Item stealing {35957 2008-10-26T23:22:28Z {0 } Redirecting to [[Nymph]] #REDIRECT[[nymph]]}
+&&%s&& %s Steal item {72277 2011-08-19T15:43:03Z {4000138 720} Redirected page to [[Theft (attack)]] #REDIRECT [[Theft_(attack)]]}
+&&%s&& %s Engulfing attack {36271 2008-11-12T23:40:25Z {0 } Redirecting to [[Engulfing]] #REDIRECT[[Engulfing]]}
+&&%s&& %s Digestion {137991 2021-02-18T03:38:48Z {4001463 Actual-nh} 3.6.2 '''Digestion''' is a [[damage type]] dealt by some [[engulfing attack]]s. It causes [[delayed instadeath]], and mostly affects players with high (bad) [[armor class]]. Digestion can be completely prevented by wearing a [[ring of slow digestion]], which causes monsters trying to digest you to instead regurgitate you. The following monsters digest:
+* [[Lurker above]]
+* [[Purple worm]]
+* [[Trapper]]
+The number of monster hits before being totally digested is <math>8 + \frac{Con}{3} + d(\frac{25 - monsterLvl}{2} + 1) - AC</math>
+  
+Lurkers and trappers are quite slow, so you generally have 4 turns for every lurker or trapper hit.  
+
+Until NetHack 3.6.2, if your [[Life saving|life was saved]] from some other death while being digested, you would die on the next hit from the digestion attack. This was a [[bug]].
+
+== Messages ==
+{{message|"The <monster> digests you!"|You take damage from digestion.}}
+{{message|"The <monster> thoroughly digests you!"|You take damage from digestion. You will die in 2 more hits.}}
+{{message|"The <monster> utterly digests you!"|You take damage from digestion. You will die in 1 more hit.}}
+{{message|"The <monster> totally digests you!"|You die.}}
+{{message|"You get regurgitated! Obviously the <monster> doesn't like your taste."|You were expelled due to a worn [[ring of slow digestion]].}}
+
+[[Category:Monster damage types]]
+{{nethack-362}}}
+&&%s&& %s Digestion attack {35964 2008-10-26T23:42:57Z {0 } Redirecting to [[Digestion]] #REDIRECT[[Digestion]]}
+&&%s&& %s Digest {35965 2008-10-26T23:43:56Z {0 } Redirecting to [[Digestion]] #REDIRECT[[digestion]]}
+&&%s&& %s Category:Monster damage types {102647 2016-04-29T20:48:03Z {4000629 Cherokee Jack} Definition This category contains articles about the types or "flavors" of damage dealt by attacks by monsters, the player, and other sources such as traps.  
+
+Damage types may reduce the [[HP]] of the target, inflict negative effects such as slowness or confusion, or [[Erosion|damage]] or destroy items in the target's inventory.  
+
+The effects of some damage types may be partially or completely prevented by factors such as equipment or [[resistance]]s.
+
+The damage types are listed in the source code in [[monattk.h]].
+
+[[Category:Monster attacks]]}
+&&%s&& %s Intelligence drain {35971 2008-10-26T23:57:44Z {0 } Redirecting to [[Mind flayer]] #REDIRECT[[mind flayer]]}
+&&%s&& %s Gold stealing {35972 2008-10-26T23:58:00Z {0 } Redirecting to [[Leprechaun]] #REDIRECT[[Leprechaun]]}
+&&%s&& %s Furniture {80177 2012-09-22T11:48:11Z {831 Tjr} Text replace - "<ref>[ \
+]*\[(\[[Ss]ource:|\[)([a-zA-Z0-9_]*\.[ch])#[Ll]ine([0-9][0-9]*)[ \
+]*\|([^][{}]*)\]\][ \
+]*<\/ref>" to "{{refsrc|$2|$3|comment=$4}}" '''Furniture''' is a category of [[dungeon feature]]s.{{refsrc|rm.h|95|comment=IS_FURNITURE in rm.h}}  Furniture is large enough to interact with, but small enough that you can enter its square.
+
+You can [[apply]] a [[bullwhip]] to use furniture to pull yourself out of a pit.
+
+* {{lightgray|>}} {{lightgray|<}} [[Staircases]]
+* {{brown|>}} {{brown|<}} [[Ladder]]s
+* {{blue|{}} {{blue|¶}} [[Fountain]]s
+* {{yellow|\}} [[Throne]]s
+* {{lightgray|#}} [[Sink]]s
+* {{lightgray|&#124;}} [[Grave]]s
+* {{lightgray|_}} [[Altar]]s
+
+== References ==
+<references />
+
+[[Category:Dungeon features|*]]
+{{nethack-343}}}
+&&%s&& %s Anger {138084 2021-02-27T02:01:52Z {4001463 Actual-nh} Link sacrifice {{todo|Per [[3.6.3]]: "When players injure themselves kicking an [[altar]], the relevant god's wrath is no longer ignored." This implies significant effects on anger, and the article should be updated accordingly.}}
+{{religion}}
+
+'''Anger''' is a measure of how angry your [[god]] is with you.
+
+It is a [[Bad Idea]] to ask your god for favors when it is angry with you.
+
+If you sufficiently annoy any god, it may [[#Smiting|smite]] you.
+
+Your god can be mollified by [[Sacrifice|sacrificing]] sufficiently powerful monsters at a coaligned [[altar]].
+To reduce anger, a simple rule of thumb is that non-chaotics must sacrifice a monster's corpse of difficulty 7 or greater, and chaotic players must sacrifice a corpse of 11 or greater. For non-chaotic players, a cross-aligned unicorn will also work.
+
+== Effects of anger ==
+
+* [[Luck]] (both good and bad) [[Luck#Luck timeout|times out]] more quickly if your god is angry.
+
+* Your god will smite you if you pray while it is angry.
+
+* Attempts to #[[turn undead]] will fail if your god is extremely angry.
+
+* The manner in which your own god smites you is largely determined by its anger.
+
+== Checking your god's anger ==
+
+[[Enlightenment]] by a wand or potion includes a statement of your god's anger, if any.{{refsrc|cmd.c|1070|comment=degrees of anger}}
+{|class="prettytable"
+!Message
+!Anger
+|-
+|"<God's name> is extremely angry with you"
+|7+
+|-
+|"<God's name> is very angry with you"
+|4-6
+|-
+|"<God's name> is angry with you"
+|1-3
+|-
+|<no message>
+|0
+|}
+
+== Ways to anger your god ==
+Many of the following have other effects as well, such as on [[luck]] or your [[alignment record]], but for brevity these are not shown here.
+
+{|class="prettytable"
+!Action
+!Anger
+|-
+|[[Altar#Sacrificing creatures of own race|Sacrificing]] your own race at an altar, and you are not chaotic
+| +3*
+|-
+|Attempting to [[change alignment]] through sacrifice a second time
+| +3*
+|-
+|Attempting to [[change alignment]] to [[unaligned]] outside [[Gehennom]]
+| +3*
+|-
+|[[Altar|Sacrificing]] on an altar of [[Moloch]] in [[Gehennom]]
+| +3
+|-
+|[[Altar|Sacrificing]] an identified [[Cheap plastic imitation of the Amulet of Yendor|fake Amulet of Yendor]]
+| +3
+|-
+|[[Altar|Sacrificing]] a unicorn of your alignment at an altar of your alignment
+| +1*
+|-
+|[[Altar|Sacrificing]] a former pet at an altar of your alignment
+| +1*
+|-
+|[[Prayer|Praying]] before your [[prayer timeout]]
+| +1*
+|-
+|[[Prayer|Praying]] to make [[unholy water]] when it was otherwise safe to pray
+| +1*
+|-
+|Killing your pet by displacing it into a trap.
+| +1
+|}
+
+''* Your god will [[#Smiting|smite]] you after increasing anger.''
+
+== Ways to mollify your god ==
+Anger never times out by itself. [[Sacrificing]] corpses to your god is the only way to reduce it.
+{|class="prettytable"
+!Action
+!Anger
+|-
+|Sacrificing a unicorn at an altar of its own alignment (not yours)
+| -1*
+|-
+|Sacrificing a former pet at an altar not of your alignment
+| -1*
+|-
+|Sacrificing any other corpse to your own god
+| <see below>
+|}
+
+''* The altar's god will [[#Smiting|smite]] you. (Your god is slightly mollified because you upset another god.) The corpse is not consumed, perhaps due to a bug.''
+
+=== Value of corpses ===
+
+Your god's anger is reduced based on the ''value'' of the corpse sacrificed and your alignment.{{refsrc|pray.c|1420|comment=Corpse value determines anger reduction; alignment affects amount.}}
+
+Value is the [[difficulty]] of the monster plus 1{{refsrc|pray.c|1161|comment=Base value is difficulty + 1.}}, with some adjustments:
+* A former pet of yours has a value of -1 and is guaranteed to anger the altar's god by 1.
+* A unicorn of the altar's alignment has a value of -5 and is guaranteed to anger the altar's god by 1.
+* A unicorn not of your alignment has +3 extra value. 
+* Undead have +1 value if you are not chaotic.
+
+Otherwise, the actual reduction depends on your alignment:
+*If you are not chaotic, your god's anger is reduced by ''value''/8.
+*If you are chaotic, your god's anger is reduced by ''value''/12.
+
+=== Messages ===
+''Main article: [[Sacrifice#Messages]]''
+
+== Other ways to get a god to smite you ==
+
+In addition to the above, the following will result in one god or another [[#Smiting|smiting]] you, but will not affect your god's anger:
+
+{|class="prettytable"
+!Action
+!Deity
+|-
+|[[Prayer|Praying]] with negative [[luck]], negative [[alignment record]], or when your god is angry
+|Your god
+|-
+|[[Prayer|Praying]] while in [[Gehennom]]
+|[[Moloch]]*
+|-
+|[[Altar|Sacrificing]] anything at a [[high altar]] not of your alignment
+|The altar's god**
+|}
+
+''* Moloch may not smite you if you have low positive alignment and/or good luck.<ref>{{sourcecode|pray.c|1618}} (Moloch smites you ''if  (u.ualign.record <= 0 || rnl(u.ualign.record))'')</ref><br/>
+''** That god '''zaps''' you (as a 10+ on the smite table). You don't lose your [[intrinsic protection]].  If you sacrificed a known [[Cheap plastic imitation of the Amulet of Yendor|fake Amulet of Yendor]], this is in addition to your own god getting angry.''
+
+== Smiting ==
+
+Sufficiently annoying any god will cause it to possibly '''smite''' you.{{reffunc|pray.c|angrygods}}
+
+You will lose any [[intrinsic protection]] you may have if you anger any god to this point, regardless of the actual outcome of the attempt.{{refsrc|pray.c|558|comment=smiting strips protection}}
+
+There may be an additional negative effect based on the following:
+* Your god's anger
+* Whether your own god or a different god is trying to smite you
+* Your [[luck]]
+* Your [[alignment record]]
+
+The following algorithm and lookup table show how the negative effect is chosen.
+# Base value
+#* If your own god is trying to smite you, start with three times your god's anger.
+#* If a different god is trying to smite you, start with half your alignment.
+# [[Luck]] modifier
+#* If your luck is positive, subtract one third of your luck from the base value.
+#* If your luck is negative, subtract your luck from the base value (making things worse).
+#** If your own god is trying to smite you and your alignment is at least strident, instead subtract only one third of your luck from the base value. (Your god relents somewhat due to your past piety?)
+# Adjustment
+#* If the value is less than 1, increase it to 1.
+#* If the value is greater than 15, decrease it to 15.
+# Roll 1d(value) and use the following lookup table.
+
+{|class="prettytable"
+!Roll
+!Message
+!Effect
+|-
+|1–2
+|'''"You feel that <god> is displeased."'''
+('''"You feel that <god> is bummed"''' if you are [[hallucinating]].)
+|No further effect.
+|-
+|3–4
+|'''"Thou hast strayed from the path, mortal"''' if your alignment is negative and your own god is smiting you;<br/>
+'''"Thou art arrogant, mortal"''' otherwise.<br/>
+'''"Thou must relearn thy lessons!"'''
+|You lose 1 [[Attribute#Wisdom|wisdom]] and one level. However, if you are already at experience level 1, you do not lose a level and do not die from this effect.
+|-
+|5–6
+|'''"Thou hast angered me."'''
+'''"A black glow surrounds you."'''
+|Items in your [[inventory]] will be [[Curse_items|randomly cursed]].
+|-
+|7
+|'''"Thou hast angered me."'''
+|If you are not [[punishment|punished]], you become punished.  If you are already punished, treat as a roll of 5-6 above.
+|-
+|8–9
+|'''"Thou durst call upon me?"'''<br/>
+('''"Thou durst scorn me?"''' if you are at an altar of a god other than the one smiting you)<br/>
+'''"Then die, mortal!"'''
+|The god summons a hostile [[minion]].
+|-
+|10+
+|'''"Thou hast angered me."'''
+|The god zaps you with a fatal lightning bolt.<ref>{{function|pray.c|god_zaps_you}} (divine zaps and how to avoid their effects)</ref>
+* If you are engulfed by a monster lacking shock-resistance, it dies. (Reflection will not save it.)
+* If you are not engulfed, and you have neither [[shock resistance]] nor [[reflection]], you die.
+If you survive for any reason, '''"<god> is not deterred..."''' and the god zaps you with a [[wide-angle disintegration beam]].
+* If you are still engulfed and the monster lacks disintegration resistance, the monster dies.
+* If you are not engulfed, and do not have [[disintegration resistance]], you die.
+
+Being hit by a wide-angle disintegration beam will also destroy your shield, cloak, body armor and shirt, even if you are disintegration-resistant. However, items that provide reflection or disintegration resistance will be unaffected, as will items worn under another item that grants it (such as a shirt worn under [[silver dragon scale mail]]). Reflection will not protect ''you'' from the disintegration beam, however.
+
+If you survive by means of disintegration resistance, '''"You bask in its black glow for a minute..."''' and the god says '''"I believe it not!"'''
+If you are on the [[Astral Plane]] or the [[Sanctum]] level, '''"Thou cannot escape my wrath, mortal! Destroy <him>, my servants!"''' and three hostile [[minion]]s are summoned.  
+|}
+
+== References ==
+<references />
+
+[[Category:Religion]]
+{{nethack-343}}}
+&&%s&& %s Disenchantment {36011 2008-10-28T17:07:58Z {0 } Redirecting to [[Disenchanter]] #REDIRECT[[disenchanter]]}
+&&%s&& %s Spell of cancellation {36024 2008-10-28T17:23:15Z {0 } Redirecting to [[Spellbook of cancellation]] #REDIRECT[[Spellbook of cancellation]]}
+&&%s&& %s Your toes stop itching {36071 2008-10-30T00:03:36Z {447 Kalon} Redirection to ?oGoldDetection #REDIRECT[[Scroll of gold detection]]}
+&&%s&& %s You feel greedy {40600 2009-06-20T02:46:09Z {102 Bitplane}  #REDIRECT[[Scroll of gold detection]]
+[[Category:Messages]]}
+&&%s&& %s Body part {36080 2008-10-30T05:48:21Z {467 Killian} #REDIRECT [[body parts]] #REDIRECT [[body parts]]}
+&&%s&& %s Mjöllnir {36100 2008-11-01T15:31:49Z {0 } Redirecting to [[Mjollnir]] #REDIRECT[[Mjollnir]]}
+&&%s&& %s Expert skill {36103 2008-11-01T16:31:05Z {0 } Redirecting to [[Skill]] #REDIRECT[[Skill]]}
+&&%s&& %s Mûmak {36104 2008-11-01T16:33:37Z {0 } Redirecting to [[Mumak]] #REDIRECT [[Mumak]]}
+&&%s&& %s Mûmakil {36105 2008-11-01T16:34:42Z {0 } Redirecting to [[Mumak]] #REDIRECT [[Mumak]]}
+&&%s&& %s Rothé {36106 2008-11-01T16:36:16Z {0 } Redirecting to [[Rothe]] #REDIRECT [[Rothe]]}
+&&%s&& %s Nazgûl {36107 2008-11-01T16:37:10Z {0 } Redirecting to [[Nazgul]] #REDIRECT [[Nazgul]]}
+&&%s&& %s MediaWiki talk:Edittools {56095 2010-11-11T19:33:22Z {831 Tjr} Text replace - "Wikihack" to "NetHackWiki" I think this should have links to the common templates we use, such as the color ones (like <nowiki>{{white|@}}</nowiki>)), <nowiki>{{NGPL}}</nowiki>, <nowiki>{{monsym}}</nowiki> and <nowiki>{{sourcecode}}</nowiki>. Most of the special character inserts which aren't used could be removed. --[[User:Paxed|paxed]] 17:46, 1 November 2008 (UTC)
+: I agree, this would be really useful.  A blank prettytable, and most of the other templates listed on [[NetHackWiki:Style guide]] could be useful as well. --[[User:Marcmagus|Marcmagus]] 18:23, 1 November 2008 (UTC)}
+&&%s&& %s MediaWiki talk:Newarticletext {56096 2010-11-11T19:33:28Z {831 Tjr} Text replace - "Wikihack" to "NetHackWiki" This should link to the [[NetHackWiki:Style guide|Style guide]], and possibly say the "New articles" thing in here anyway (but more concisely). --[[User:Paxed|paxed]] 08:04, 2 November 2008 (UTC)}
+&&%s&& %s The Palantír of Westernesse {36126 2008-11-03T11:47:15Z {0 } Redirecting to [[The Palantir of Westernesse]] #REDIRECT [[The Palantir of Westernesse]]}
+&&%s&& %s Palantír of Westernesse {36127 2008-11-03T11:47:33Z {0 } Redirecting to [[The Palantir of Westernesse]] #REDIRECT [[The Palantir of Westernesse]]}
+&&%s&& %s Palantír {36128 2008-11-03T11:47:54Z {0 } Redirecting to [[The Palantir of Westernesse]] #REDIRECT [[The Palantir of Westernesse]]}
+&&%s&& %s Palantir {36129 2008-11-03T11:48:11Z {0 } Redirecting to [[The Palantir of Westernesse]] #REDIRECT [[The Palantir of Westernesse]]}
+&&%s&& %s Fish {131168 2020-01-20T09:10:29Z {4001279 Umbire the Phantom}  '''Fish''' refers to the grouping of [[body parts]] for the forms of aquatic life, except for [[jellyfish]], which are considered [[jelly#body parts|jellies]] for this purpose. It affects the messages referring to the appropriate body parts as follows:{{refsrc|polyself.c|1177}}
+
+{| class="prettytable"
+!Bodypart{{refsrc|hack.h|226}}!!Description
+|-
+|Arm||Fin
+|-
+|Eye||Eye
+|-
+|Face||Premaxillary
+|-
+|Finger||Pelvic axillary
+|-
+|Fingertip||Pelvic fin
+|-
+|Foot||Anal fin
+|-
+|Hand||Pectoral fin
+|-
+|Handed||Finned
+|-
+|Head||Head
+|-
+|Leg||Peduncle
+|-
+|Light Headed||Played out
+|-
+|Neck||Gills
+|-
+|Spine||Dorsal fin
+|-
+|Toe||Caudal fin
+|-
+|Hair||Scales
+|-
+|Blood||Blood
+|-
+|Lung||Gill
+|-
+|Nose||Nostril
+|-
+|Stomach||Stomach
+|}
+
+Some members of the fish body group have special rules hard-coded for them - for example, sharks have skin rather than scales in the "hair" descriptor, as in [[TDTTOE|real life]].{{refsrc|polyself.c|1204}}
+
+== References ==
+<references/>
+
+[[Category:Body parts]]
+{{nethack-364}}}
+&&%s&& %s Things To Do If You're Going to Die Next Turn {140339 2021-05-27T14:15:21Z {4001463 Actual-nh} /* Fatalistic approach */ Engraving, etc This is a list of things you probably shouldn't do on a regular basis. But if you're about to die, you might resort to them as a last-ditch defense against a one-way ticket on the [[Charon]] Express.
+
+The most important thing to remember is: '''Don't Panic'''. Or at least, panic at your leisure. NetHack is not Quake. You have as much time as you want to think between each keypress. Stop, stretch, look at your situation, review your inventory ''(with the exception of being [[Lava#Bugs|stuck in lava]] in NetHack 3.4.3)'', and make a plan of action. Avoid the forehead slap of reviewing your post-mortem inventory and discovering something that would have saved your life.
+
+<!-- Writing as an 11-conduct candidate and 8-conduct ascender, learning lessons is the key to winning NetHack. Tjr-->Take a moment to learn a lesson and to remember it, even if you don't die. Look at the strategic, not the tactical reasons for your troubles. You don't die because of a soldier ant, you die because you are slowly crawling around burdened with junk, and wearing bad armor instead of pet-testing what you find. It really does help to keep notes about your deaths.
+
+There are a couple semi-routine moves you might consider first:
+* Would engraving [[Elbereth]] help your situation? Of course, whatever's bashing you might not respect Elbereth, and it can be unreliable in some circumstances. In [[NetHack 3.4.3]], repeatedly engraving Elbereth on your square should make it safe enough to rest up on. In [[NetHack 3.6.0]] and onwards, only a single Elbereth will function on each square, so this will at best buy you a bit of time (unless you use a [[wand of fire]] or similar engraving tool to make it last longer); an engraved Elbereth will fail rapidly (maybe instantly) in 3.6.0, but will hold longer in 3.6.1 as long as you don't attack.
+* [[Pray]]. Your God may increase your hit points.
+* Perhaps an [[escape item]] would help.
+* [[Wizmode]]-test to determine the best strategy if you really care about this character.
+
+Roughly in order of desperation:
+
+* Perhaps you can [[Digging|dig]] down and drop to a lower level. Of course, the frying pan/fire potential is obvious. ''(This will not work with [[follower]]s.)''
+* [[Polymorph]] yourself (potion, trap, wand, etc.). This will give you a fresh set of hit points. Once those have been burned through, you will revert to your original form (and your original hit points, so be careful).
+* Polymorph whatever's bashing on you. This might not improve your situation.
+* Break a wand.  Wands of teleportation are great for this, particularly on no-teleport levels.  If you're magic resistant, you should survive the magical blast from most wands, but with luck, the monsters around you might not.
+* Read an unidentified [[scroll]] or [[book]]. You might read the book, have a wrenching sensation, and wind up on the other side of the level. On the other hand, you might read a scroll and [[Scroll of create monster|make things worse]].
+** Read a book that is known to be cursed for a better chance at a teleportation - and a better chance at being blinded and paralyzed for hundreds of turns.&nbsp; Low-level books can only teleport you, so a cursed level one spellbook is an escape item.
+* Drink from a [[sink]]. One possibility is drinking from a random, uncursed potion, which could be a healing potion, or you might [[polymorph]]. Then again, you might summon a [[water elemental]] or a [[sewer rat]].
+* Quaff an unidentified potion. It might be a [[potion of full healing]]. Of course, it might also be a [[potion of paralysis]].
+* Put on an unidentified amulet. Maybe you'll get an [[amulet of life saving]]. Maybe you'll get an [[amulet of strangulation]].
+* Zap an unidentified [[wand]], either at yourself or the enemies (depending on your situation). Several of the results are useful if aimed at enemies; teleport will probably save you if zapped at yourself, as may results such as polymorph. (If you have a wand of polymorph, you should have already identified it by engrave-testing. If it's a wand of teleportation, you will have seen that it makes engravings vanish; even if it is turn invisible, this might help buy you an extra turn or two in which to flee.)
+* Zap a wand that is out of charges. You have a 1 in 121 chance of getting another, final charge out of it.
+
+==Fatalistic approach==
+If, after reviewing all of the options you have utterly determined that you are going to perish, and are on an eligible [[bones]] level, you might consider leaving a message of warning for other adventurers by '''[E]'''[[engrave|ngraving]] (quickly!) or [[call]]ing monsters - the monster that killed you may move away when they enter the level and stumble upon your loot, but they at least may have a fighting chance. Additionally, although it is considered cheating, you can Engrave the highlights of your inventory (you have a [[bag of holding]], or a single particular [[spellbook]] or other interesting item). The short length of space available to engrave - especially in very few turns - is a mild deterrent to this.
+
+You may also consider [[D|dropping]] your best equipment--[[artifact]]s, a bag of holding, spellbooks, [[holy water]], and [[wand]]s. This will remove the high chance of them being made cursed for the benefit of future adventurers should a bones file be generated.
+[[Category:Strategy]]
+{{nethack-360}}}
+&&%s&& %s Bird {133714 2020-04-24T17:13:39Z {4000978 Aximili} Add references section '''Bird''' refers to the grouping of [[body parts]] for the forms of avian life. It affects the messages referring to the appropriate body parts as follows{{refsrc|polyself.c|1177}}:
+
+{| class="prettytable"
+!Bodypart{{refsrc|hack.h|226}}!!Description
+|-
+|Arm||Wing
+|-
+|Eye||Eye
+|-
+|Face||Face
+|-
+|Finger||Wing
+|-
+|Fingertip||Wing tip
+|-
+|Foot||Foot
+|-
+|Hand||Wing
+|-
+|Handed||Winged
+|-
+|Head||Head
+|-
+|Leg||Leg
+|-
+|Light Headed||Light Headed
+|-
+|Neck||Neck
+|-
+|Spine||Spine
+|-
+|Toe||Toe
+|-
+|Hair||Feathers
+|-
+|Blood||Blood
+|-
+|Lung||Lung
+|-
+|Nose||Bill
+|-
+|Stomach||Stomach
+|}
+
+The only birds currently present in the game are [[raven]]s{{refsrc|polyself.c|1215}}. Even [[SLASH'EM]], which features [[parrot]]s, [[cockatoo]]s, and [[chicken]]s, only gives this body part grouping to ravens. <ref>{{sourcecode|SLASH'EM_0.0.7E7F2/polyself.c|1487}}</ref>
+
+== References ==
+
+<references/>
+[[Category:Body parts]]
+{{nethack-343}}}
+&&%s&& %s Surgery {148530 2022-10-05T01:57:38Z {4001279 Umbire the Phantom} de-SLEX '''Surgery''' is a [[technique]] available to [[Healer]]s in [[SLASH'EM]] and [[SlashTHEM]].
+
+It has one of the following effects:
+
+* If you are [[stun]]ned, [[confused]], or [[hallucinating]], no effect. ("You are in no condition to perform surgery.")
+* Otherwise, if you are [[slimed]] or [[sick]] and are carrying a [[scalpel]], the sliming or sickness is cured, and you lose 5 HP to a minimum of 1. ("Using your scalpel (ow!) you cure your infection.")
+* Otherwise, if your HP is below maximum, you gain TECHLEVEL&nbsp;+ 4&nbsp;+&nbsp;d5 HP. ("You bandage your wounds as best you can.")
+** If you are carrying a [[medical kit]], you gain an <em>additional</em> TECHLEVEL&nbsp;&times;&nbsp;d2. ("Using your medical kit you bandage your wounds.")
+* If your HP is full, no effect. ("You don't need your healing powers.")
+
+[[Category:Techniques]]
+{{slashem-7E7}}}
+&&%s&& %s Primal roar {101506 2016-02-15T21:56:42Z {0 } double damage '''Primal roar''' is a [[Technique]] of the [[Caveman]] [[Role]] in [[SLASH'EM]].
+
+It has the following effects:
+
+* Monsters are aggravated.
+* You become fast.
+* Tame monsters within 5 squares with a more [[growing up|grown up]] form will polymorph into that form.
+* Tame monsters do double damage.
+
+Message: '''You let out a bloodcurdling roar!'''
+
+Duration: d(2,6) +TECHLEVEL+2
+
+The technique can be reused after 1000-1500 turns.
+
+{{slashem-7E7}}
+[[Category:Techniques]]}
+&&%s&& %s NetHackWiki talk:ProblemReports/15211 {36255 2008-11-11T21:09:44Z {679 Ray Chason} New page: ==Link now points to the Wayback Machine== The link reported here now points to the Wayback Machine.--~~~~ ==Link now points to the Wayback Machine==
+The link reported here now points to the Wayback Machine.--[[User:Ray Chason|Ray Chason]] 21:09, 11 November 2008 (UTC)}
+&&%s&& %s Reinforce memory {68584 2011-02-06T14:07:05Z {663 Qazmlpok} Redoing page. Mentioning the timeout everywhere could be reworded. '''Reinforce Memory''' is a [[technique]] for the [[role]]s [[Flame Mage]], [[Ice Mage]], [[Necromancer]], and [[Wizard]] in [[SLASH'EM]]. It can be used to increase the memory of a spell that is about to be forgotten. If the specified spell has not been forgotten and the spell timeout is at most 1000 turns, the technique will increase the timeout by 10,000 turns - the same as successfully reading the spellbook - and exercise your wisdom. If successful, the technique can be used again after 500-1499 turns<ref>{{sourcecode|tech.c|647|version=SLASH'EM 0.0.7E7F2}}</ref>.
+
+Casting a spell with a timeout less than 1000 turns will produce the message ''Your knowledge of this spell is growing faint.'' or ''You strain to recall the spell.''. If you encounter either message it is a good idea to use this technique to increase the timeout. However, as a successful casting of any spell in SLASH'EM increases the timeout by 500 turns, it may be necessary to wait before the technique can be used.
+
+== Messages ==
+
+{{message|You know that spell quite well already.|You used the technique on a spell with a timeout greater than 1000 turns.}}
+
+{{message|You focus and reinforce your memory of the spell.|You used the technique on a spell with a timeout less than or equal to 1000 turns.}}
+
+{{message|You are unable to focus your memory of the spell.|You have already forgotten the spell.}}
+
+{{message|You can't concentrate right now!|You tried to use the technique while hallucinating, stunned, or confused.}}
+
+== References ==
+<references />
+
+[[Category:Techniques]]
+{{slashem-7E7}}}
+&&%s&& %s Multishot {150093 2023-03-06T07:04:50Z {4001279 Umbire the Phantom} /* Eligible missiles */* '''Multishot''' is the ability to sometimes [[throw]] or [[fire]] more than one [[projectile]] of certain types in a single move. One must be careful with this tactic as the first projectile may kill the enemy, allowing the next to proceed to hit a [[pet]] or [[peaceful]] monster.
+
+==Calculation==
+The multishot counter starts at 1, and is modified as follows:
+
+* +1 if you are [[Skill]]ed at your weapon, unless:{{refsrc|src/dothrow.c|116|version=NetHack 3.6.0}}
+** you are [[fumbling]], or
+** your [[dexterity]] is less than 7, or
+** you are:
+*** a [[Wizard]]
+*** a [[Priest]]
+*** a [[Healer]] not throwing knives
+*** a [[Tourist]] not throwing darts
+* +1 if you are Expert at your weapon (cumulative with the above, and not subject to its qualifications)
+* +1 for your [[race|racial]] bonus, if you are not disqualified from the Skilled bonus for the reasons listed above, and are:
+** an [[elf (starting race)|elf]] firing [[elven arrow]]s from an [[elven bow]]
+** an [[orc (starting race)|orc]] firing [[orcish arrow]]s from an [[orcish bow]]
+** a [[gnome (starting race)|gnome]] firing [[crossbow bolt|bolts]] from a [[crossbow]]
+* +1 for your [[role]] bonus, if you are:
+** a [[Caveman]] throwing [[spear]]s or firing appropriate ammo from a [[sling]]
+** a [[Samurai]] firing [[ya]] from a [[yumi]]
+** a [[Monk]] throwing [[shuriken]]
+** a [[Rogue]] throwing [[dagger]]s (of any variety)
+** a [[Ranger]] ''not'' throwing daggers
+* if firing a crossbow with less than 18 [[strength]] (16 if a gnome), reduced to a number between 1 and itself, inclusive (so, e.g., a counter of 3 would be reduced to [[D notation|d3]]).
+* reduced to 1 if you are [[Confusion|confused]], [[stun]]ned, the missile requires a [[launcher]] which you aren't wielding, or isn't a weapon at all (e.g., a [[meatball]])
+
+Racial bonuses are based on your ''starting'' race, not your current race. For example, a human polymorphed into an orc will not fire an extra orcish arrow from his orcish bow, but an orc polymorphed into a mountain centaur will get the bonus. Because of this limitation, a [[human (starting race)|human]] or [[dwarf (starting race)|dwarven]] player will be unable to achieve the maximum multishot value of 5 no matter their role, weapon, or weapon skill level.
+
+The actual number of missiles fired is d(multishot)&mdash;that is, between 1 and your multishot counter, inclusive&mdash;but no higher than the number of missiles in the [[stack]].
+
+You may limit the number of missiles fired or thrown with a [[numeric prefix]] such as "1fh" in vi-mode or "n1f4" in numpad mode to fire one missile to the left - you will fire the lesser of the number of missiles you chose and the number you would otherwise have fired.
+
+==Eligible missiles==
+You can [[firing|fire]] or [[throw]] multiples of:
+* any kind of [[dagger]]s
+* [[dart]]s
+* [[shuriken]]
+* any kind of [[stone]]s, [[gem]]s, or pieces of worthless [[glass]]
+* [[crossbow bolt]]s
+* any kind of [[arrow]]s
+* any kind of [[spear]]s, including [[javelin]]s
+* [[boomerang]]s
+* [[worm tooth|worm teeth]], [[knife|knives]], [[stiletto]]es, [[scalpel]]s, or even [[crysknife|crysknives]]
+
+You can fire multiple stones/gems/glass, [[crossbow bolt]]s or [[arrow]]s only if you are wielding the appropriate [[launcher]].
+
+Throwing with {{kbd|t}} and firing with {{kbd|f}} are equivalent, except that {{kbd|t}} does not trigger the [[autoquiver]] option. Throwing [[zorkmid|gold pieces]] is an exception; you can throw {{kbd|t}} an arbitrary amount, but fire {{kbd|f}} only one piece. The gold will always miss monsters, but has a chance of angering [[aligned priest|priest]]s and [[shopkeeper]]s. (This does not break [[atheist]] conduct.) Throwing gold down dark corridors can substitute for a way to detect monsters.
+
+==Monsters==
+For monsters, the multishot calculation is:<ref>{{sourceref|monmulti}}</ref>
+
+* +1 if the monster is a [[M2_LORD|lord]]
+* +2 if the monster is a [[M2_PRINCE|prince]]
+* +1 if the monster is a [[player monster]]
+* +1 if the missiles are non-cursed elven arrows
+* +1 if the missiles are any type of arrows and being launched from a non-cursed elven bow
+* If the launcher matches the missiles and is non-negatively enchanted, add {{frac|3}} of the launcher's enchantment, rounded down.
+
+At this point, the multishot counter is set to a random value between 1 and itself, inclusive.
+* Add the race and role bonuses for players, as above.
+** An orc is any monster represented by {{white|o}} for this purpose.
+* +1 if the monster is a [[Ninja]] throwing darts or shuriken or firing ya from a yumi
+
+As with players, monsters fire between 1 and the multishot counter, and no more than the number of missiles in the stack.
+
+==Variants==
+
+===SLASH'EM===
+[[SLASH'EM]] calculates multishot differently, giving additional bonuses for elven bows, elven arrows, and enchanted launchers. The SLASH'EM multishot calculation is:{{refsrc|dothrow.c|158|version=SLASH'EM 0.0.7E7F2}}
+* Base of 1
+* +1 if you are [[Skill]]ed or higher at your weapon
+* +1 if you are Expert at your weapon
+* +1 for your [[race|racial]] bonus, if you are:
+** an [[elf (starting race)|elf]] firing an [[elven arrow]] from an [[elven bow]]
+** an [[orc (starting race)|orc]] firing an [[orcish arrow]] from an [[orcish bow]]
+* +1 for your [[role]] bonus, if you are:

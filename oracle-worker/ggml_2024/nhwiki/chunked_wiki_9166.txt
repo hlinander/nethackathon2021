@@ -1,0 +1,1000 @@
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (DynaHack)]]
+[[Category:Sokoban (SpliceHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Sokoban Level 1g {146163 2022-06-11T19:01:10Z {4001279 Umbire the Phantom} /* Next level */ <!-- Please do not copy this article to Wikia. -->This is one of the new possible maps for [[Sokoban]] Level 1 in [[UnNetHack]]. It has 24 [[boulder]]s and 36 [[pit]]s, but only the 16 bottom-most pits need to be filled, leaving 8 spare boulders. Like all Sokoban levels in UnNetHack, this level may be flipped horizontally or vertically.
+
+ ----------------------------- 0 boulder
+ |.............|.............| ^ pit
+ |.0..|.0.|....#.............| > starting position/downstairs
+ |.0.|.0|0.|...#.............| < upstairs
+ |.0|.0...0....#.............| ? scroll of earth
+ |...0...|.0|..#.............| # iron bars
+ |0|.0..|..0.|0#.............|
+ |..|0.|...0...#.............|
+ |....0...0.|0.#.............|
+ |...|.0|0.|.0.#.............|
+ |....|.0.|..0.#.............|
+ |............>|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^?.?^^^^^^^^^^..|
+ |..^^^^^^^^.......^^^^^^^^..|
+ -----------------------------
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All relevant boulders are replaced by letters so they can be referred to. Since untouched boulders are still shown as '0' (zero), letters 'O' and 'Q' are skipped for clarity.
+
+Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+First, open a path into the half of the boulder ring closest to the stairs:
+
+ ----------------------------- '''J''' uu
+ |.............|.............| '''E''' l
+ |.0..|.A.|....#.............|
+ |.0.|.B|C.|...#.............|
+ |.0|.D...E....#.............|
+ |...F...|.G|..#.............|
+ |0|.H..|..I.|J#.............|
+ |..|K.|...L...#.............|
+ |....M...N.|0.#.............|
+ |...|.P|R.|.0.#.............|
+ |....|.S.|..0.#.............|
+ |............@|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^?.?^^^^^^^^^^..|
+ |..^^^^^^^^.......^^^^^^^^..|
+ -----------------------------
+
+Solve the four boulders nearest the pits:
+
+ ----------------------------- '''M''' llld dddd dr*
+ |.............|.............| '''R''' ddll llll dddr r*
+ |.0..|.A.|....#.............| '''P''' ddll lldd drrr*
+ |.0.|.B|C.|...#.............| '''S''' ldll lldd drrr r*
+ |.0|.D..E@...J#.............|
+ |...F...|.G|..#.............|
+ |0|.H..|..I.|.#.............|
+ |..|K.|...L...#.............|
+ |....M...N.|0.#.............|
+ |...|.P|R.|.0.#.............|
+ |....|.S.|..0.#.............|
+ |............>|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^?.?^^^^^^^^^^..|
+ |..^^^^^^^^.......^^^^^^^^..|
+ -----------------------------
+
+Solve the rest of this half of the boulder ring:
+
+ ----------------------------- '''L''' l
+ |.............|.............| '''N''' llll llld dddd drrr rr*
+ |.0..|.A.|....#.............| '''L''' dlll llll dddd ddrr rrrr*
+ |.0.|.B|C.|...#.............| '''I''' lddl llll lldd dddd rrrr rrr*
+ |.0|.D..E....J#.............| '''G''' ddld llll llld dddd drrr rrrr r*
+ |...F...|.G|..#.............|
+ |0|.H..|..I.|.#.............|
+ |..|K.|...L...#.............|
+ |........N.|0.#.............|
+ |...|..|..|.0.#.............|
+ |....|...|..0.#.............|
+ |............>|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^?.?^^^^^^^^^^..|
+ |....@.^^^^.......^^^^^^^^..|
+ -----------------------------
+
+Pick up the two [[scroll of earth|scrolls of earth]] and begin work on the other half of the boulder ring, starting with the boulders nearest to the pits:
+
+ ----------------------------- '''F''' ll
+ |.............|.............| '''H''' r
+ |.0..|.A.|....#.............| '''K''' dlld dddd drrr rrrr rrrr rrrr r*
+ |.0.|.B|C.|...#.............| '''H''' lddl lddd dddr rrrr rrrr rrrr rrrr*
+ |.0|.D..E....J#.............| '''B''' d
+ |...F...|..|..#.............| '''D''' ddld dlld dddd drrr rrrr rrrr rrrr rrr*
+ |0|.H..|....|.#.............| '''B''' lddl ddll dddd ddrr rrrr rrrr rrrr rrrr r*
+ |..|K.|.......#.............|
+ |..........|0.#.............|
+ |...|..|..|.0.#.............|
+ |....|...|..0.#.............|
+ |............>|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^?.?^^^^^^^^^^..|
+ |........@........^^^^^^^^..|
+ -----------------------------
+
+Use the clump of three boulders furthest from the pits to fill them:
+
+ ----------------------------- '''A''' lddd lldd dlld dddd drrr rrrr rrrr rrrr rrrr r*
+ |.............|.............| '''E''' llld dldd lldd dddd rrrr rrrr rrrr rrrr rrrr r*
+ |.0..|.A.|....#.............| '''C''' dlll ddld dlld dddd drrr rrrr rrrr rrrr rrrr rrr*
+ |.0.|..|C.|...#.............|
+ |.0|....E....J#.............|
+ |.F.....|..|..#.............|
+ |0|....|....|.#.............|
+ |..|..|.......#.............|
+ |..........|0.#.............|
+ |...|..|..|.0.#.............|
+ |....|...|..0.#.............|
+ |............>|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^...^^^^^^^^^^..|
+ |...................@.^^^^..|
+ -----------------------------
+
+Fill in the final pit with the last useful boulder:
+
+ ----------------------------- '''F''' rrdd dlld dddd drrr rrrr rrrr rrrr rrrr rrrr*
+ |.............|.............|
+ |.0..|...|....#.............|
+ |.0.|..|..|...#.............|
+ |.0|.........J#.............|
+ |.F.....|..|..#.............|
+ |0|....|....|.#.............|
+ |..|..|.......#.............|
+ |..........|0.#.............|
+ |...|..|..|.0.#.............|
+ |....|...|..0.#.............|
+ |............>|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^...^^^^^^^^^^..|
+ |......................@.^..|
+ -----------------------------
+
+The level is now complete. Any of the eight remaining boulders may have items underneath them:
+
+ -----------------------------
+ |.............|.............|
+ |.0..|...|....#.............|
+ |.0.|..|..|...#.............|
+ |.0|.........J#.............|
+ |.......|..|..#.............|
+ |0|....|....|.#.............|
+ |..|..|.......#.............|
+ |..........|0.#.............|
+ |...|..|..|.0.#.............|
+ |....|...|..0.#.............|
+ |............>|<............|
+ |-.-#########---#########-+-|
+ |..^^^^^^^^^^...^^^^^^^^^^..|
+ |.......................@...|
+ -----------------------------
+
+== Next level ==
+
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:Sokoban (UnNetHack)]]}
+&&%s&& %s Sokoban Level 1h {148798 2022-10-12T08:04:07Z {4001279 Umbire the Phantom} lede <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 1h''' is one of the new possible maps for [[Sokoban]] in variants of ''[[NetHack]]''. It may appear as a first-level map in [[UnNetHack]] and [[SpliceHack-Rewrite]], and may appear as a second level map in [[SLASH'EM]]. It has 8 [[boulder]]s and 7 [[pit]]s, leaving 1 spare boulder.
+
+Like all Sokoban levels in UnNetHack, this level may be flipped horizontally and/or vertically. In SLASH'EM, the pits are replaced with [[hole]]s; the [[scroll of earth|scrolls of earth]] are still present as well.
+
+  --------        0 boulder
+  |......|        ^ pit/hole
+  |..0...-----    > starting position/downstairs
+  |---...0...|    < upstairs
+  |..--0|.0..|    ? scroll of earth
+  |....>|.|.-----
+  |^--.0.0.00..?|
+ --^||..|...|..?|
+ |..-------------
+ |...^^^^^<|
+ -----------
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+First, push the two boulders next to the entrance into the upper chamber to make some room:
+
+  --------        '''C''' uu
+  |......|        '''A''' l
+  |..A...-----    '''C''' l
+  |---...B...|    '''E''' uuuu
+  |..--C|.D..|
+  |....@|.|.-----
+  |^--.E.F.GH..?|
+ --^||..|...|..?|
+ |..-------------
+ |...^^^^^<|
+ -----------
+
+Get into the lower middle chamber and push another boulder out of the way:
+
+  --------        '''F''' r
+  |......|        '''G''' uuu
+  |.A.CE.-----
+  |---.@.B...|
+  |..--.|.D..|
+  |....>|.|.-----
+  |^--...F.GH..?|
+ --^||..|...|..?|
+ |..-------------
+ |...^^^^^<|
+ -----------
+
+Push the first couple of boulders into pits, taking the [[scroll of earth|scrolls of earth]] in the back chamber on the way:
+
+  --------        '''F''' llll ulll d*
+  |......|        '''H''' rrll llll llul lldd*
+  |.A.CE.-----
+  |---...B.G.|
+  |..--.|.D@.|
+  |....>|.|.-----
+  |^--....F.H..?|
+ --^||..|...|..?|
+ |..-------------
+ |...^^^^^<|
+ -----------
+
+The next boulder needs to be solved specifically to prevent the other boulders from getting stuck:
+
+  --------        '''E''' dddd rrrl lllu llld dddr r*
+  |......|
+  |.A.CE.-----
+  |---...B.G.|
+  |..--.|.D..|
+  |....>|.|.-----
+  |@--..........|
+ --.||..|...|...|
+ |..-------------
+ |...^^^^^<|
+ -----------
+
+Push boulders to fill the last four pits:
+
+  --------        '''D''' l
+  |......|        '''B''' lldd dlul lldd ddrr r*
+  |.A.C..-----    '''D''' ddll lull lddd drrr r*
+  |---...B.G.|    '''G''' llll dddl ulll dddd rrrr r*
+  |..--.|.D..|    '''C''' rddd dlul lldd ddrr rrrr*
+  |....>|.|.-----
+  |.--..........|
+ --.||..|...|...|
+ |..-------------
+ |..@.^^^^<|
+ -----------
+
+The level is now complete. Check the space under the final boulder if you haven't already:
+
+  --------
+  |......|
+  |.A....-----
+  |---.......|
+  |..--.|....|
+  |....>|.|.-----
+  |.--..........|
+ --.||..|...|...|
+ |..-------------
+ |......@.<|
+ -----------
+
+== Next level ==
+
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:SLASH'EM]]
+[[Category:SpliceHack-Rewrite]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (SLASH'EM)]]
+[[Category:Sokoban (SpliceHack-Rewrite)]]}
+&&%s&& %s Sokoban Level 1i {146156 2022-06-11T18:23:52Z {4001279 Umbire the Phantom} categories + {{variant}} <!-- Please do not copy this article to Wikia. -->This is one of the new possible maps for [[Sokoban]] Level 1 in [[UnNetHack]]. It has 8 [[boulder]]s and 7 [[pit]]s, leaving 1 spare boulder. Like all Sokoban levels in UnNetHack, this level may be flipped horizontally or vertically.
+
+        -----------  0 boulder
+        |.........|  ^ pit
+        |....0.0..|  > starting position/downstairs
+ ------ |.0.-----.|  < upstairs
+ |....-----.0..--0|  ? scroll of earth
+ |.......0.0......|  # iron bars
+ |-^|.......--.--.|
+ |-^|--->----|.||.|
+ |?.------...|.--.--
+ |?..^^^^^.<.#.0...|
+ ---------...|.....|
+         -----------
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+First, push the two nearest boulders into the pits:
+
+        -----------  '''F''' llll lld*
+        |.........|  '''G''' rrrr llll llll llll dd*
+        |....A.B..|
+ ------ |.C.-----.|
+ |....-----.D..--E|
+ |.......F.G......|
+ |-^|.......--.--.|
+ |-^|---@----|.||.|
+ |?.------...|.--.--
+ |?..^^^^^.<.#.H...|
+ ---------...|.....|
+         -----------
+
+Pick up the two [[scroll of earth|scrolls of earth]] and push the next few boulders into the pits:
+
+        -----------  '''D''' r
+        |.........|  '''C''' rddl llll llld dddr r*
+        |....A.B..|  '''A''' lldd dlll llll lddd drrr*
+ ------ |.C.-----.|  '''B''' llll dddl llll llld dddr rrr*
+ |....-----.D..--E|
+ |................|
+ |-@|.......--.--.|
+ |-.|--->----|.||.|
+ |?.------...|.--.--
+ |?..^^^^^.<.#.H...|
+ ---------...|.....|
+         -----------
+
+Solve the last two boulders:
+
+        -----------  '''D''' lluu dddl llll llld dddr rrrr*
+        |.........|  '''H''' luuu ulll llll llll dddd rrrr rr*
+        |.........|
+ ------ |...-----.|
+ |....-----..D.--E|
+ |................|
+ |-.|.......--.--.|
+ |-.|--->----|.||.|
+ |..------...|.--.--
+ |....@.^^.<.#.H...|
+ ---------...|.....|
+         -----------
+
+The level is now complete. Check under the last boulder in case an item happens to be underneath:
+
+        -----------
+        |.........|
+        |.........|
+ ------ |...-----.|
+ |....-----....--E|
+ |................|
+ |-.|.......--.--.|
+ |-.|--->----|.||.|
+ |..------...|.--.--
+ |......@..<.#.....|
+ ---------...|.....|
+         -----------
+
+== Next level ==
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:Sokoban (UnNetHack)]]}
+&&%s&& %s Sokoban Level 1j {146201 2022-06-12T02:33:54Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 1j''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It may appear as a level 1 map for [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]], and may appear as a second level maps in [[SLASH'EM]] and [[SlashTHEM]]. It has 12 [[boulder]]s and [[pit]]s, leaving no spare boulders.
+
+In UnNetHack, this level may be flipped horizontally or vertically like all Sokoban levels; in SLASH'EM and SlashTHEM, the pits are replaced with [[holes]]. SLASH'EM leaves the scrolls of earth present, meaning you can get up to four out of Sokoban.
+
+             --------- 0 boulder
+ ------------|.....+.| ^ pit
+ |...........|.....|^| > starting position/downstairs
+ |.---.00....|.....|^| < upstairs
+ |...|.0..0..|.....|^| ? scroll of earth
+ |..0|---0---|..<..|^|
+ |.0.--......|.....|^|
+ |..00.0.....-------^|
+ ---.--.00|..^^^^^^..|
+   |.--...|--------??|
+   |......|       ----
+   --->----
+     ---
+
+== Strategy ==
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+Push the first two boulders into pits:
+
+             --------- '''L''' u
+ ------------|.....+.| '''K''' r
+ |...........|.....|^| '''L''' rrrd r*
+ |.---.AB....|.....|^| '''K''' urrr drr*
+ |...|.C..D..|.....|^|
+ |..E|---F---|..<..|^|
+ |.G.--......|.....|^|
+ |..HI.J.....-------^|
+ ---.--.KL|..^^^^^^..|
+   |.--...|--------??|
+   |......|       ----
+   ---@----
+     ---
+
+Break into the upper chamber and use the boulders there to fill in the first corridor of pits:
+
+             --------- '''F''' uu
+ ------------|.....+.| '''D''' r
+ |...........|.....|^| '''F''' dddd rrrd rrr*
+ |.---.AB....|.....|^| '''D''' lldd drrr drrr r*
+ |...|.C..D..|.....|^| '''C''' rrdd drrr drrr rr*
+ |..E|---F---|..<..|^| '''A''' drrd ddrr rdrr rrrr*
+ |.G.--......|.....|^|
+ |..HI.J.....-------^|
+ ---.--...|..@.^^^^..|
+   |.--...|--------??|
+   |......|       ----
+   --->----
+     ---
+
+Pick up the [[scroll of earth|scrolls of earth]] and push the last boulder in the upper chamber into a pit:
+
+             --------- '''B''' rddd drrr drrr rrrr ru*
+ ------------|.....+.|
+ |...........|.....|^|
+ |.---..B....|.....|^|
+ |...|.......|.....|^|
+ |..E|---.---|..<..|^|
+ |.G.--......|.....|^|
+ |..HI.J.....-------^|
+ ---.--...|......@...|
+   |.--...|--------??|
+   |......|       ----
+   --->----
+     ---
+
+The next boulders need to be pushed in a certain way to prevent them from sticking the others:
+
+             --------- '''J''' d
+ ------------|.....+.| '''G''' d
+ |...........|.....|^| '''H''' d
+ |.---.......|.....|^|
+ |...|.......|.....|^|
+ |..E|---.---|..<..|^|
+ |.G.--......|.....|^|
+ |..HI.J.....-------.|
+ ---.--...|.........@|
+   |.--...|--------..|
+   |......|       ----
+   --->----
+     ---
+
+The last five boulders can now be pushed into pits:
+
+             --------- '''I''' rrrr rrrd rrrr rrrr uu*
+ ------------|.....+.| '''G''' rrrr rrrr rdrr rrrr rruu u*
+ |...........|.....|^| '''E''' ddrr rrrr rrdr rrrr rrru uuu*
+ |.---.......|.....|^| '''H''' uudr rrrr rrrd rrrr rrrr uuuu u*
+ |...|.......|.....|^| '''J''' urrr rrdr rrrr rrru uuuu u*
+ |..E|---.---|..<..|^|
+ |...--......|.....|^|
+ |.G@I.......-------.|
+ ---H--J..|..........|
+   |.--...|--------..|
+   |......|       ----
+   --->----
+     ---
+
+The level is now finished:
+
+             ---------
+ ------------|.....+.|
+ |...........|.....|.|
+ |.---.......|.....|@|
+ |...|.......|.....|.|
+ |...|---.---|..<..|.|
+ |...--......|.....|.|
+ |...........-------.|
+ ---.--...|..........|
+   |.--...|--------..|
+   |......|       ----
+   --->----
+     ---
+
+== Next level ==
+===UnNetHack===
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:SLASH'EM]]
+[[Category:SlashTHEM]]
+[[Category:Sokoban (SLASH'EM)
+[[Category:Sokoban (SlashTHEM)]]
+[[Category:Sokoban (UnNetHack)]]}
+&&%s&& %s Sokoban Level 1k {146200 2022-06-12T02:31:45Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 1k''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It may appear as a first level map for [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]], and may additionally appear as a second level map in [[EvilHack]]. It has 10 [[boulder]]s and [[pit]]s, leaving no spare boulders.
+
+In UnNetHack, this level may be flipped horizontally or vertically like all Sokoban levels.
+
+ -----------------  0 boulder
+ |..^^....#......|  ^ pit
+ |..--....#..0.0.|  > starting position/downstairs
+ --^|<....#.0.0..|  < upstairs
+  |^---------.--.|  ? scroll of earth
+  |..^^^^^^...||.|  # iron bars
+  |??------.00--.--
+  ----    |.0....>|
+        ---.----.--
+        |.0.0....|
+        |..0.-----
+        --...|
+         -----
+
+==Strategy==
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+First, rearrange the boulders in the upper chamber to fit another boulder from the middle chamber:
+
+ -----------------  '''A''' l
+ |..^^....#......|  '''D''' r
+ |..--....#..A.B.|  '''F''' uuuu
+ --^|<....#.C.D..|
+  |^---------.--.|
+  |..^^^^^^...||.|
+  |??------.EF--.--
+  ----    |.G....@|
+        ---.----.--
+        |.H.I....|
+        |..J.-----
+        --...|
+         -----
+
+Push the first boulder in:
+
+ -----------------  '''G''' r
+ |..^^....#......|  '''E''' ull*
+ |..--....#.AF.B.|
+ --^|<....#.C@.D.|
+  |^---------.--.|
+  |..^^^^^^...||.|
+  |??------.E.--.--
+  ----    |.G....>|
+        ---.----.--
+        |.H.I....|
+        |..J.-----
+        --...|
+         -----
+
+Push a couple of boulders from the bottom chamber into the pits:
+
+ -----------------  '''I''' l
+ |..^^....#......|  '''J''' r
+ |..--....#.AF.B.|  '''I''' uuuu ll*
+ --^|<....#.C..D.|  '''H''' ruuu ulll*
+  |^---------.--.|
+  |..^^^^^.@..||.|
+  |??------...--.--
+  ----    |..G...>|
+        ---.----.--
+        |.H.I....|
+        |..J.-----
+        --...|
+         -----
+
+Use three more boulders to finish the first corridor of pits:
+
+ -----------------  '''G''' lluu llll*
+ |..^^....#......|  '''J''' uluu uull lll*
+ |..--....#.AF.B.|  '''F''' dddd dllu ulll lll*
+ --^|<....#.C..D.|
+  |^---------.--.|
+  |..^^^.@....||.|
+  |??------...--.--
+  ----    |..G...>|
+        ---.----.--
+        |........|
+        |...J-----
+        --...|
+         -----
+
+Pick up the [[scroll of earth|scrolls of earth]] and finish with the last four boulders:
+
+ -----------------  '''D''' lldd ddll uull llll llu*
+ |..^^....#......|  '''B''' lldd dddl luul llll lllu u*
+ |..--....#.A..B.|  '''C''' rddd dllu ulll llll luuu ur*
+ --^|<....#.C..D.|  '''A''' rddd ddll uull llll lluu uurr*
+  |^---------.--.|
+  |...@.......||.|
+  |??------...--.--
+  ----    |......>|
+        ---.----.--
+        |........|
+        |....-----
+        --...|
+         -----
+
+The level is now finished:
+
+ -----------------
+ |..@.....#......|
+ |..--....#......|
+ --.|<....#......|
+  |.---------.--.|
+  |...........||.|
+  |..------...--.--
+  ----    |......>|
+        ---.----.--
+        |........|
+        |....-----
+        --...|
+         -----
+
+== Next level ==
+===UnNetHack===
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:EvilHack]]
+[[Category:UnNetHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Sokoban Level 1l {146202 2022-06-12T02:35:59Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 1l''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It may appear as a first level map for [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]], and may appear as a Level 2 map in [[EvilHack]]. It has 14 [[boulder]]s and [[pit]]s, but only 13 of the pits need to be filled, leaving 1 spare boulder.
+
+In UnNetHack, this level may be flipped horizontally or vertically like all other Sokoban levels; in EvilHack, the scrolls of earth are not present, and the extra pit is replaced with [[lava]].
+
+<div class="ttymap">{{lightgray|<replacecharsblock>
+<=[[Stairs|{{white|<}}]]
+>=[[Stairs|{{white|>}}]]
+^=[[pit|{{gray|^}}]]
+ =&nbsp;
+|={{white|&#124;}}
+-={{white|-}}
+0={{white|0}}
+?={{white|?}}
+? ={{gray|? }}
+0 ={{gray|0 }}
+^ ={{gray|^ }}
+< ={{gray|< }}
+> ={{gray|> }}
+newline=<br>
+
+           ----       0 boulder
+        ---|..----    ^ pit
+        |..|...0.|--- > starting position/downstairs
+  ----  |....0|0.|..| < upstairs
+  |??----.|...|...0.| ? scroll of earth
+  |...^^^.....|--0..| # iron bars
+  |^--#--...|0|..0.--
+  |^|...|-0-|.00...|
+  |^#.^.+...|....0.|
+ --^|...|.0..>0..---
+ |..--#-----0|.---
+ |..^^^^^^<|...|
+ ---------------
+</replacecharsblock>}}</div>
+
+== Strategy ==
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+Before starting, check the room with the locked door and pick up any wands there; a monster with a wand can zap it at you through the iron bars while you solve the puzzle. Once that's done, fill in the first boulder:
+
+           ----       '''H''' uull*
+        ---|..----
+        |..|...A.|---
+  ----  |....B|C.|..|
+  |??----.|...|...D.|
+  |...^^^.....|--E..|
+  |^--#--...|F|..G.--
+  |^|...|-H-|.IJ...|
+  |^#.^.....|....K.|
+ --^|...|.L..@M..---
+ |..--#-----N|.---
+ |..^^^^^^<|...|
+ ---------------
+
+Arrange the boulders in the lower right chamber for easy movement later:
+
+           ----       '''J''' d
+        ---|..----    '''G''' l
+        |..|...A.|--- '''D''' d
+  ----  |....B|C.|..| '''E''' d
+  |??----.|...|...D.|
+  |...^^.@....|--E..|
+  |^--#--...|F|..G.--
+  |^|...|-.-|.IJ...|
+  |^#.^.....|....K.|
+ --^|...|.L..>M..---
+ |..--#-----N|.---
+ |..^^^^^^<|...|
+ ---------------
+
+Solve the next two boulders in the upper right chamber:
+
+           ----       '''A''' llld ddll lll*
+        ---|..----    '''C''' ulll dddl llll l*
+        |..|...A.|---
+  ----  |....B|C.|..|
+  |??----.|...|.....|
+  |...^^......|--@D.|
+  |^--#--...|F|.GE.--
+  |^|...|-.-|.I....|
+  |^#.^.....|..J.K.|
+ --^|...|.L..>M..---
+ |..--#-----N|.---
+ |..^^^^^^<|...|
+ ---------------
+
+Pick up the [[scroll of earth|scrolls of earth]] if applicable, then prepare the top-most boulder to be pushed while opening up a passage in the lower right chamber:
+
+           ----       '''B''' u
+        ---|..----    '''J''' r
+        |..|.....|--- '''D''' u
+  ----  |....B|..|..|
+  |??----.|...|.....|
+  |....@......|--.D.|
+  |^--#--...|F|.GE.--
+  |^|...|-.-|.I....|
+  |^#.^.....|..J.K.|
+ --^|...|.L..>M..---
+ |..--#-----N|.---
+ |..^^^^^^<|...|
+ ---------------
+
+Solving the next boulder sets the pattern for the seven boulders after it:
+
+           ----       '''B''' ____ ____ ____ __ lddd llll llll ld*
+        ---|..----    '''F''' uuuu ____ ____ __ lddd llll llll ldd*
+        |..|.B...|--- '''I''' luuu uu__ ____ __ lddd llll llll lddd*
+  ----  |.....|..|..| '''E''' dlll luuu uu__ __ lddd llll llll lddd d*
+  |..----.|...|...D.| '''G''' rdll lluu uuu_ __ lddd llll llll lddd dddr*
+  |...........|--.@.| '''D''' dldd llll uuuu u_ lddd llll llll lddd dddr r*
+  |^--#--...|F|.GE.-- '''J''' ulll uuuu u___ __ lddd llll llll lddd dddr rr*
+  |^|...|-.-|.I....|  '''K''' llul luuu uu__ __ lddd llll llll lddd dddr rrr*
+  |^#.^.....|...JK.|
+ --^|...|.L..>M..---
+ |..--#-----N|.---
+ |..^^^^^^<|...|
+ ---------------
+
+The boulders near the downstairs fill the last two pits:
+
+           ----       '''M''' r
+        ---|..----    '''N''' urr_ uulu uuuu lddd llll llll lddd dddr rrrr*
+        |..|.....|--- '''M''' l___ uulu uuuu lddd llll llll lddd dddr rrrr r*
+  ----  |.....|..|..|
+  |..----.|...|.....|
+  |...........|--...|
+  |.--#--...|.|....--
+  |.|...|-.-|......|
+  |.#.^.....|......|
+ --.|...|.L..>M..---
+ |..--#-----N|.---
+ |....@.^^<|...|
+ ---------------
+
+The level is now complete. Check under the final boulder in case an item happens to be underneath:
+
+           ----
+        ---|..----
+        |..|.....|---
+  ----  |.....|..|..|
+  |..----.|...|.....|
+  |...........|--...|
+  |.--#--...|.|....--
+  |.|...|-.-|......|
+  |.#.^.....|......|
+ --.|...|.L..>...---
+ |..--#-----.|.---
+ |......@.<|...|
+ ---------------
+
+== Next level ==
+===UnNetHack===
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:EvilHack]]
+[[Category:UnNetHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Sokoban Level 1m {146215 2022-06-14T03:14:49Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->
+'''Sokoban Level 1m''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It may appear as a first level map in [[UnNetHack]], and may also appear as a second level map in [[EvilHack]]. It has 12 [[boulder]]s and [[pit]]s, leaving no spare boulders.
+
+In UnNetHack, this level may be flipped horizontally or vertically like all Sokoban levels; in EvilHack, the pits are replaced with [[hole]]s, and there are no guaranteed [[scroll of earth|scrolls of earth]].
+
+<div class="ttymap">{{lightgray|<replacecharsblock>
+<=[[Stairs|{{white|<}}]]
+>=[[Stairs|{{white|>}}]]
+^=[[pit|{{gray|^}}]]
+ =&nbsp;
+|={{white|&#124;}}
+-={{white|-}}
+0={{white|0}}
+?={{white|?}}
+? ={{gray|? }}
+0 ={{gray|0 }}
+^ ={{gray|^ }}
+< ={{gray|< }}
+> ={{gray|> }}
+newline=<br>
+
+ -------       -------- 0 boulder
+ |.....|-------|<^^^..| ^ pit or [[hole]]
+ |.....|....|..--##-..| > starting position/downstairs
+ |.0...|...0.0..|..#^-- < upstairs
+ |..0..|..0.--..|..#^|  ? scroll of earth
+ |.00..|-0.0....+..#^|  # iron bars
+ |-.|..||.------|..#^|
+ |-.|..--.......|..#^|
+ |..|0..........-##-^|
+ |...00.........^^^..|
+ |.....-->|.....---??|
+ ---------------- ----
+
+</replacecharsblock>}}</div>
+
+== Strategy ==
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+Fill the first pit with a boulder from the upper chamber:
+
+ -------       -------- '''H''' uudd dddd rrrr rrr*
+ |.....|-------|<^^^..|
+ |.....|....|..--##-..|
+ |.A...|...B.C..|..#^--
+ |..D..|..E.--..|..#^|
+ |.FG..|-H.I....+..#^|
+ |-.|..||.------|..#^|
+ |-.|..--.......|..#^|
+ |..|J..........-##-^|
+ |...KL.........^^^..|
+ |.....--@|.....---??|
+ ---------------- ----
+
+Open a passage to the room with iron bars:
+
+ -------       -------- '''B''' d
+ |.....|-------|<^^^..| '''C''' rd
+ |.....|....|..--##-..|
+ |.A...|...B.C..|..#^--
+ |..D..|..E.--..|..#^|
+ |.FG..|-..I....+..#^|
+ |-.|..||.------|..#^|
+ |-.|..--.......|..#^|
+ |..|J..........-##-^|
+ |...KL........@.^^..|
+ |.....-->|.....---??|
+ ---------------- ----
+
+Check the room with iron bars for wands; a monster in the room with a wand can zap you in the corridors with pits. After that, use boulders from the upper chamber to fill in two more pits:
+
+ -------       -------- '''I''' lldd ddrr rrrr rr*
+ |.....|-------|<^^^..| '''B''' dlld dddr rrrr rrrr*
+ |.....|....|..--##-..|
+ |.A...|......@.|..#^--
+ |..D..|..EB--C.|..#^|
+ |.FG..|-..I....+..#^|
+ |-.|..||.------|..#^|
+ |-.|..--.......|..#^|
+ |..|J..........-##-^|
+ |...KL..........^^..|
+ |.....-->|.....---??|
+ ---------------- ----
+
+Pick up the [[scroll of earth|scrolls of earth]] a push the last boulders in the upper chambers into pits:
+
+ -------       -------- '''E''' lddd ddrr rrrr rrrr ru*
+ |.....|-------|<^^^..| '''C''' dlll lldd ddrr rrrr rrrr ruu*
+ |.....|....|..--##-..|
+ |.A...|........|..#^--
+ |..D..|..E.--C.|..#^|
+ |.FG..|-..........#^|
+ |-.|..||.------|..#^|
+ |-.|..--.......|..#^|
+ |..|J..........-##-^|
+ |...KL..........@...|
+ |.....-->|.....---??|
+ ---------------- ----
+
+Once the lower left chamber is reached from the upper left chamber, complete the second corridor of pits:
+
+ -------       -------- '''F''' dddd
+ |.....|-------|<^^^..| '''L''' u
+ |.....|....|..--##-..| '''K''' rrrr rrrr rrrr rrru uu*
+ |.A...|........|..#^-- '''F''' rrrr rrrr rrrr rrrr ruuu u*
+ |..D..|....--..|..#^|  '''J''' uu
+ |.FG..|-..........#^|  '''L''' drrr rrrr rrrr rrru uuuu*
+ |-.|..||.------|..#^|  '''J''' dddr rrrr rrrr rrrr rruu uuuu*
+ |-.|..--.......|..#.|
+ |..|J..........-##-@|
+ |...KL..............|
+ |.....-->|.....---..|
+ ---------------- ----
+
+Use the final boulders on the last corridor of pits:
+
+ -------       -------- '''G''' rrdd ddrr rrrr rrrr rrrr uuuu uuuu l*
+ |.....|-------|<^^^..| '''D''' rrdd dddr rrrr rrrr rrrr ruuu uuuu ull*
+ |.....|....|..--##-..| '''A''' dddd ddrr rrrr rrrr rrrr rrru uuuu uuul ll*
+ |.A...|........|..#.--
+ |..D..|....--..|..#@|
+ |..G..|-..........#.|
+ |-.|..||.------|..#.|
+ |-.|..--.......|..#.|
+ |..|...........-##-.|
+ |...................|
+ |.....-->|.....---..|
+ ---------------- ----
+
+The level is now complete:
+
+ -------       --------

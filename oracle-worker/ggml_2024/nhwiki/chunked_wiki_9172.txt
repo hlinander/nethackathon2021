@@ -1,0 +1,1000 @@
+Figured I'd continue the discussion on here so the community forum didn't get too clogged by our back-and-forth (now that we've pretty much agreed on what to do and just need to handle the technical details). You mentioned you've written the code to split up several tilesets. I recommend we go with:
+*Default: ([[Default_tileset_scaled_to_32x32]])
+*Abigaba: http://www.multifoliate.com/nh/
+*Absurd 64x64 (http://sourceforge.net/projects/noegnud/files/tilesets_nethack-3.4.1/absurd%2064x64/)
+*Aoki: http://bilious.alt.org/~paxed/nethack/nhsshot/tileset/aoki_nethack.png
+*Aoki 2k5: http://bilious.alt.org/~paxed/nethack/nhsshot/tileset/aoki-2k5_nethack.png
+*Geoduck: http://cook.web.eschelon.com/nhack.html
+*Itakura: http://bilious.alt.org/~paxed/nethack/nhsshot/tileset/itakura_nethack.png
+*Kins: http://bilious.alt.org/~paxed/nethack/nhsshot/tileset/kins32-nh343.png
+*Lagged: http://lagged.deviantart.com/art/12x20-Nethack-tileset-1308112
+*NeXTSTEP: http://nethackwiki.com/wiki/File:Nh343-nextstep.png
+*PixelHack: http://pixelhack.blogspot.com/
+*RLTiles: http://rltiles.sourceforge.net/ (may need to be chopped manually)
+
+Unless you're aware of any other ones worth including. Once you get the tiles chopped up, I'm happy to do the renaming, you can zip and send to my personal e-mail at AARONSAMA AT GMAIL DOT COM. I'm not exactly sure of the best way to go about uploading it. Do you happen to know of the site maintainer or an admin we can ask about getting this done more efficiently?
+
+--[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 21:02, 2 April 2013 (UTC)
+
+:You don't need to do the renaming; my code already saves the tiles using the tile names given in <tt>win/share/(monsters|objects|other).txt</tt>.
+:As for uploading it, AFAIK the vanilla tiles have been uploaded automatically using a bot; that would be quite easy to do for these tiles, too. Alternatively, you could ask [[User:Paxed]] (who admins the server {{SITENAME}} runs on).
+:On doing the upload automatically myself: I can't do that without a bot account (technically I ''could'', but that'd be a bad idea for various reasons), so I'd have to ask a bureaucrat about that. I would preferably have an administrator approve before I upload thousands of files, anyway (7231 currently, and that's not including the tilesets I haven't split yet; about 4 MiB per tileset). —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 22:06, 2 April 2013 (UTC)
+
+:::Awesome. I put a [[User_talk:Paxed#Alternate_tilesets_template|note]] on Paxed's talk page asking for help.
+
+==Continued on [[User:Paxed]]'s page==
+
+Hi! [[User:bcode|bcode]] and I have built a [[Template:Alternate tilesets|template]] that creates a collapsible floating table displaying alternate tilesets for a given monster/item/feature. We need to do a mass upload of the tiles to the wiki in order to get the template to work properly (currently looking like it will be ~7500 small image files). Rather than doing this the long way, we figured it would be more efficient and cleaner to work with you to upload them as a package. Can you let us know how you'd like to handle that?
+More details [[NetHackWiki:Community_Portal#Putting_alternate_tilesets_in_articles|here]], and [[User_talk:Bcode#Putting_alternate_tilesets_in_articles|here]]. Thanks for your help!
+--[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 15:58, 3 April 2013 (UTC)
+
+:Specifically, splitting the tilesets results in 12684 PNG files taking about 54 MiB.
+:IIRC the <tt>importImages.php</tt> maintenance script would work for this purpose.
+:(I'm still somewhat unsure about the actual names to use, though – the names in monsters.txt/objects.txt/other.txt aren't unique and sometimes not really useful anyway. "silver / polymorph" is the name of both a wand tile and a spellbook tile, for example.) —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 16:37, 3 April 2013 (UTC)
+
+::It seems to me you'd want to use the randomized appearance rather than the underlying item. A "silver wand" is going to look silver, a "black potion" is going to be black, and a "dog-eared spellbook" is going to have a fold in it. Looks like that's how the default tiles were uploaded (see: [[File:silver wand.png]] [[File:black potion.png]] [[File:Dog eared spellbook.png]])
+::--[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 23:18, 3 April 2013 (UTC)
+
+==Continued on [[User:Prometheus77]]'s page==
+
+Hi, in response to your request to upload all those tiles: [[User:Paxed]] usually decides such things, since he's the one running the server. However, he's traveling right now, so please don't take it personally if you don't get a speedy reply. Once he's back, the quickest way to reach him is via irc.[[freenode]].net in #nethack.
+
+That said, I'd vote to give you a [[wikipedia:Wikipedia:Bots|bot account]]. You might want to prepare by making User:Prometheus77bot (or similar). --[[User:Tjr|Tjr]] ([[User talk:Tjr|talk]]) 19:20, 11 April 2013 (UTC)
+
+:I'd probably recommend against creating [[User:Prometheus77bot]] now so in case the files are uploaded via the maintenance script, there's no unused account around. (Of course, one user more or less wouldn't change much, but somehow it would seem a little bit odd, IMHO.)
+:(Besides, if someone is going to upload it the "hard" way, it might be best to avoid sending the files from my system to [[User:Prometheus77]]'s system who'd send them to {{SITENAME}} and instead have me upload them directly (as [[User:bcodebot]] or whoever). That's assuming uploading it the hard way is the way that'll be used, which might be somewhat painful anyway (testing on localhost makes me think it could take ''hours'', perhaps – though my local system isn't exactly a good approximation of {{SITENAME}}'s server).)
+:(Also, all this fragmentation probably makes the discussion hard to read… so far there are parts on [[NetHackWiki:Community Portal]], [[User talk:Bcode]], [[User talk:Paxed]] and [[User talk:Prometheus77]]. A bit surprising none of it is on [[Template talk:Alternate tilesets]], which might be the most appropriate page for the discussion.) —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 20:03, 11 April 2013 (UTC)
+
+::I don't need a bot account, but would vote to give one to [[User:bcode|bcode]]. He has the files on his machine already, and I'm not technically savvy enough to know what to do with it anyway. I'm not a regular on IRC, but since you seem to be connected to [[User:Paxed|Paxed]], it would be great if you'd be willing to follow up with him. Obviously there's no hurry, I just wanted to be sure that he still looked at his NHW talk page, hence the posting at rgrn for help. --[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 14:56, 16 April 2013 (UTC)}
+&&%s&& %s QM {84138 2013-04-17T14:21:03Z {4000045 Bulwersator} Redirected page to [[Quantum mechanic]] #REDIRECT[[Quantum mechanic]]}
+&&%s&& %s Bugs in NetHack 4/trackerstatus {131545 2020-01-27T00:11:57Z {4000978 Aximili} Add category <onlyinclude><includeonly>class="{{#if:{{{1|}}}|{{#ifeq:{{{1}}}|moot|bugstatus not_a_bug|table-yes}}|table-no}}"|{{#if:{{{1|}}}|{{#ifeq:{{{1}}}|moot|No need|<span class="plainlinks">[https://csclub.uwaterloo.ca/~scshunt/nh4/ticket/{{{1}}} Ticket #{{{1}}}]</span>}}|No}}</includeonly></onlyinclude>
+This template is intended to help with the migration of the bugs listed on [[Bugs in NetHack 4]] to the [https://csclub.uwaterloo.ca/~scshunt/nh4 new tracker].
+
+Use it (inside the buglist table) like this: <!-- Elsewhere, using it will be more verbose – including on this page. Its purpose is specific enough that we need not worry about this, I think. -->
+ (other columns…)
+ <nowiki>|{{/</nowiki>{{SUBPAGENAME}}<nowiki>}}</nowiki>
+ (other columns…)
+
+resulting in:
+{|class="prettytable"
+|(…)
+|{{:{{FULLPAGENAME}} }}
+|(…)
+|}
+
+or, for an already migrated entry:
+ (other columns…)
+ <nowiki>|{{/</nowiki>{{SUBPAGENAME}}<nowiki>|1}}</nowiki>
+ (other columns…)
+
+resulting in:
+{|class="prettytable"
+|(…)
+|{{:{{FULLPAGENAME}}|1}}
+|(…)
+|}
+
+or, for an entry that does not need to be migrated (for example, marked "moot" or "fixed" on the buglist):
+ (other columns…)
+ <nowiki>|{{/</nowiki>{{SUBPAGENAME}}<nowiki>|moot}}</nowiki>
+ (other columns…)
+
+resulting in:
+{|class="prettytable"
+|(…)
+|{{:{{FULLPAGENAME}}|moot}}
+|(…)
+|}
+
+[[Category:Bugs]]}
+&&%s&& %s Arrows {84251 2013-04-22T16:03:18Z {13 Aaxelb} Redirected page to [[Arrow]] #REDIRECT [[Arrow]]}
+&&%s&& %s Template:Rogue skill table (SLASH'EM) {90150 2014-08-11T04:18:03Z {4000299 Willful} typo {| class="prettytable"
+! colspan="2" style="font-size:larger" | Rogue skills
+|-
+! Max !! Skills
+|-
+| Basic
+|
+* ''Weapons:'' [[two-handed sword|two-handed sword]], [[morning star|morning star]], [[flail|flail]], [[hammer|hammer]], [[polearms|polearms]], [[spear|spear]]
+* ''Combat:'' [[riding|riding]]
+|-
+| Skilled
+|
+* ''Weapons:'' [[broadsword|broadsword]], [[long sword|long sword]], [[scimitar|scimitar]], [[saber|saber]], [[club|club]], [[paddle|paddle]], [[mace|mace]], [[shuriken|shuriken]]
+* ''Spells:'' [[divination spells|divination]], [[body spells|body]], [[matter spells|matter]]
+|-
+| Expert
+|
+* ''Weapons:'' [[dagger|dagger]], [[knife|knife]], [[short sword|short sword]], [[firearm|firearms]], [[crossbow|crossbow]], [[dart|dart]]
+* ''Combat:'' [[bare hands|bare hands]], [[two weapon combat|two weapon combat]]
+|}}
+&&%s&& %s Template:Paddle skill table (SLASH'EM) {84276 2013-04-23T14:50:30Z {4000292 Prometheus77} fixed title {| class="prettytable"
+! colspan="2" style="font-size:larger" | Paddle
+|-
+! Max !! Role
+|-
+| Basic
+|
+* [[Archaeologist]], [[Flame mage]], [[Knight]], [[Samurai]], [[Tourist]], [[Wizard]]
+|-
+| Skilled
+|
+* [[Barbarian]], [[Healer]], [[Monk]], [[Rogue]], [[Undead slayer]], [[Yeoman]]
+|-
+| Expert
+|
+* [[Caveman]], [[Priest]]
+|}}
+&&%s&& %s Paddle {131488 2020-01-26T06:06:20Z {4000978 Aximili} Add category The '''paddle''' is a new category of weapon in [[SLASH'EM]], and is its own skill. The paddle skill is currently only used for the [[fly swatter]]. All roles except [[Ice mage]]s, [[Necromancer]]s, [[Ranger]]s, and [[Valkyrie]]s can become proficient in the paddle skill. Somewhat amusingly, [[Priest]]s can become expert, which evokes images of a strict theological school for children.
+
+{{Paddle skill table (SLASH'EM)}}
+
+[[Category:SLASH'EM]]}
+&&%s&& %s Template:Knight skill table (SLASH'EM) {84285 2013-04-23T15:33:04Z {4000292 Prometheus77} created {| class="prettytable"
+! colspan="2" style="font-size:larger" | Knight skills
+|-
+! Max !! Skills
+|-
+| Basic
+|
+* ''Weapons:'' [[dagger|dagger]], [[knife|knife]], [[pick-axe|pick-axe]], [[scimitar|scimitar]], [[club|club]], [[paddle|paddle]], [[flail|flail]], [[hammer|hammer]], [[trident|trident]], [[bow|bow]]
+* ''Spells:'' [[body spells|body]]
+|-
+| Skilled
+|
+* ''Weapons:'' [[axe|axe]], [[short sword|short sword]], [[broadsword|broadsword]], [[two-handed sword|two-handed sword]], [[saber|saber]], [[mace|mace]], [[morning star|morning star]], [[polearms|polearms]], [[spear|spear]], [[javelin|javelin]], [[crossbow|crossbow]]
+* ''Combat:'' [[two weapon combat|two weapon combat]]
+* ''Spells:'' [[healing spells|healing]], [[protection spells|protection]]
+|-
+| Expert
+|
+* ''Weapons:'' [[long sword|long sword]], [[lance|lance]]
+* ''Combat:'' [[bare hands|bare hands]], [[riding|riding]]
+|}}
+&&%s&& %s Bar-igura {84297 2013-04-23T19:17:52Z {4000292 Prometheus77} Redirected page to [[Bar-lgura]] #REDIRECT [[Bar-lgura]]}
+&&%s&& %s Bar-Igura {84296 2013-04-23T19:17:08Z {4000292 Prometheus77} Redirected page to [[Bar-lgura]] #REDIRECT [[Bar-lgura]]}
+&&%s&& %s Template:Priest skill table (SLASH'EM) {84314 2013-04-23T23:15:52Z {4000292 Prometheus77} created {| class="prettytable"
+! colspan="2" style="font-size:larger" | Priest skills
+|-
+! Max !! Skills
+|-
+| Basic
+|
+* ''Weapons:'' [[lance|lance]], [[bow|bow]], [[sling|sling]], [[crossbow|crossbow]], [[dart|dart]], [[shuriken|shuriken]], [[boomerang|boomerang]]
+* ''Combat:'' [[bare hands|bare hands]]
+* ''Spells:'' [[attack spells|attack]], [[enchantment spells|enchantment]], [[body spells|body]], [[matter spells|matter]]
+|-
+| Skilled
+|
+* ''Weapons:'' [[long sword]], [[polearms|polearms]], [[spear|spear]], [[javelin|javelin]], [[trident|trident]], [[unicorn horn|unicorn horn]]
+* ''Spells:'' [[protection spells|protection]]
+|-
+| Expert
+|
+* ''Weapons:'' [[club|club]], [[paddle|paddle]], [[mace|mace]], [[morning star|morning star]], [[flail|flail]], [[hammer|hammer]], [[quarterstaff|quarterstaff]]
+* ''Spells:'' [[healing spells|healing]], [[divination spells|divination]]
+|}}
+&&%s&& %s Template:Monsym/floating eye (UnNetHack) {84833 2013-05-06T20:51:10Z {4000045 Bulwersator} Bulwersator moved page [[Template:Monsym/floating eye (unnethack)]] to [[Template:Monsym/floating eye (UnNetHack)]] {{brightgreen|e}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Pirate {148391 2022-10-04T23:18:21Z {4001279 Umbire the Phantom} de-SLEX {{patch
+ |name=Pirate Role
+ |author=Chris
+ |download=https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff
+ |bilious=pending
+}}
+The '''Pirate''' is a role added in the Pirate Role patch, which was developed using [http://bilious.alt.org/?56 Nephi's preliminary Pirate patch] as a base. 
+
+Pirates are a melee focused class that may have trouble finding a good weapon. Their first sacrifice gift is the [[Marauder's Map]], and their crowning gift is an artifact cutlass (scimitar), [[Reaver]]. Their default pet is either a [[Parrot (Pirate patch)|parrot]] or a [[monkey]]. 
+
+In the original patch, only [[human]]s can be Pirates. They can be [[neutral]] or [[chaotic]]. 
+
+In [[dNetHack]], [[elf|Elves]], [[Drow (starting race)#dNethack|Drow]], and [[Incantifier (starting race)|Incantifiers]] can also be Pirates. [[SlashTHEM]] unrestricts all race and alignment combinations.
+
+== Skills ==
+{| class="prettytable"
+! colspan="2" style="font-size:larger" | Pirate skills
+|-
+! Max !! Skills
+|-
+| Basic
+|
+* ''Weapons:'' [[short sword]], [[long sword]], [[club]], [[unicorn horn]]
+* ''Spells:'' [[attack spells|attack]], [[divination spells|divination]], [[enchantment spells|enchantment]]
+|-
+| Skilled
+|
+* ''Weapons:'' [[dagger]], [[axe]], [[morning star]], [[spear]], [[javelin]], [[dart]], [[whip]]
+* ''Combat:'' [[two weapon combat]]
+* ''Spells:'' [[escape spells|escape]]
+|-
+| Expert
+|
+* ''Weapons:'' [[knife]], [[broadsword]], [[scimitar]], [[saber]], [[flail]], [[trident]], [[crossbow]]
+* ''Combat:'' [[bare hands|bare handed]]
+|}
+
+The Pirate's [[special spell]] is [[spellbook of cause fear|cause fear]]. Spell success is determined by [[intelligence]]. 
+
+[[dNetHack]] also allows the pirate to advance [[firearms]] to Expert.
+
+==Starting equipment==
+*+0 cutlass ([[scimitar]])
+*Two +1 [[knives]]
+*+0 [[leather jacket]]
+*+0 [[high boots]]
+*Two sea biscuits ([[cram ration]])
+*Three [[banana]]s
+*Three potions of rum ([[potion of booze]])
+*A random [[ring]]
+*+0 [[oilskin sack]]
+*+0 [[pistol]] ([[SlashTHEM]]) or a +0 [[flintlock]] ([[dNetHack]])
+*Random quantity of +0 [[bullet]]s (SlashTHEM and dNetHack)
+
+==Intrinsics==
+Pirates gain the following [[intrinsic]]s at these [[experience level]]s:
+*XL 1: [[Swimming]]
+*XL 7: [[Stealth]]
+*XL 11: [[Speed]]
+
+==Quest==
+The [[pirate quest]] sees the Pirate traveling from the pirate stronghold of [[wikipedia:Tortuga_(Haiti)|Tortuga]] to Shipwreck Island to retrieve the [[Treasury of Proteus]] from [[Blackbeard's Ghost]]. The Treasury will periodically polymorph its contents while carried. In addition, it grants magic resistance.  It's described as so cursed, it sucks in lesser curses like a black hole (it blocks curses, similar to what [[Magicbane]] does).
+
+==Gods==
+{{main|Religion}}
+
+*Lawful:  the Lord
+*Neutral: the deep blue sea
+*Chaotic: the Devil
+
+==Rank titles==
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1-2: Landlubber
+*XL 3-5: Swabbie
+*XL 6-9: Cutthroat
+*XL 10-13: Bosun
+*XL 14-17: Second Mate
+*XL 18-21: First Mate
+*XL 22-25: Captain
+*XL 26-29: Pirate Lord
+*XL 30: Dread Pirate
+
+==Artifact generation==
+In [[dNetHack]] and [[SpliceHack]], artifacts generate 4 times as often as for other roles when you're a Pirate. Normally, each random item on the floor has a 5% chance of becoming an artifact if an artifact of that base type exists, but pirates increase that chance to 20%. However, they can only ever receive one [[sacrifice]] gift - the Marauder's Map.
+
+==Pirate names for items==
+[[Samurai#Japanese names for items|Like the Samurai]], the Pirate will know common items by special names, in this case, following a nautical theme:
+
+{| class="prettytable"
+! Standard !! Pirate
+|-
+| [[potion of booze]] || [[wikipedia:Rum|potion of rum]]
+|-
+| [[cram ration]] || [[wikipedia:Hardtack|sea biscuit]]
+|-
+| [[scimitar]] || [[wikipedia:Cutlass|cutlass]]
+|-
+| [[small shield]] || [[wikipedia:Buckler|buckler]]
+|-
+| [[sack]] || [https://en.wiktionary.org/wiki/ditty_bag ditty bag]
+|-
+| [[large box]] || [[wikipedia:Footlocker (luggage)|foot locker]]
+|-
+| [[club]] || [[wikipedia:Belaying pin|belaying pin]]
+|-
+| [[zorkmid]] || [[wikipedia:Doubloon|doubloon]]
+|-
+| [[zorkmid|gold coin]] || [[wikipedia:Spanish dollar|piece of eight]]
+|}
+
+The patch treats the cutlass as a kind of [[scimitar]]. In real life, the [[wikipedia:Cutlass|cutlass]] is usually a much shorter sword than the [[wikipedia:Scimitar|scimitar]], though both usually have conspicuously curved blades. Both are also related to the [[saber]]--the scimitar through the Persian ''shamshir'' and Turkish ''kilij'', which were probably influenced by cavalry sabers used by the Byzantine Empire--but NetHack treats the scimitar/cutlass and saber as distinct weapons. [[NetHack is not real life]].
+
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+==Encyclopedia entry==
+{{encyclopedia|
+Yo ho, yo ho, a pirate's life for me.
+We pillage plunder, we rifle and loot.
+Drink up me 'earties, yo ho.
+We kidnap and ravage and don't give a hoot.
+Drink up me 'earties, yo ho.
+
+Yo ho, yo ho, a pirate's life for me.
+We extort and pilfer, we filch and sack.
+Drink up me 'earties, yo ho.
+Maraud and embezzle and even highjack.
+Drink up me 'earties, yo ho.
+
+Yo ho, yo ho, a pirate's life for me.
+We kindle and char and inflame and ignite.
+Drink up me 'earties, yo ho.
+We burn up the city, we're really a fright.
+Drink up me 'earties, yo ho.
+
+We're rascals and scoundrels, we're villians and knaves.
+Drink up me 'earties, yo ho.
+We're devils and black sheep, we're really bad eggs.
+Drink up me 'earties, yo ho.
+
+We're beggars and blighters and ne'er do-well cads,
+Drink up me 'earties, yo ho.
+Aye, but we're loved by our mommies and dads,
+Drink up me 'earties, yo ho.
+Yo ho, yo ho, a pirate's life for me.
+|[ Pirates of the Caribbean, Disneyland ]
+}}
+{{variant-343}}
+[[Category:Pirate patch]]
+[[Category:SlashTHEM roles]]
+[[Category:dNethack Roles]]}
+&&%s&& %s Template:Firearms skill table (SLASH'EM) {84346 2013-04-26T14:42:37Z {4000292 Prometheus77} created {| class="prettytable"
+! colspan="2" style="font-size:larger" | Firearms
+|-
+! Max !! Role
+|-
+| Basic
+|
+* [[Tourist]]
+|-
+| Skilled
+|
+* [[Archaeologist]], [[Yeoman]]
+|-
+| Expert
+|
+* [[Rogue]], [[Undead slayer]]
+|}}
+&&%s&& %s Your surroundings change {84487 2013-05-02T19:01:22Z {831 Tjr} Redirected page to [[Prayer#wall]] #REDIRECT[[Prayer#wall]]}
+&&%s&& %s Jedi {148369 2022-10-04T22:58:44Z {4001279 Umbire the Phantom} de-SLEX {{wikipedia}}
+{{patch
+ |name=Jedi Class
+ |author=Benjamin Schieder
+ |download=http://www.benjamin-schieder.de/downloads/slashem/slashem_jedi_0.5.patch
+ |bilious=141
+}}
+The '''Jedi''' is a role added in the Jedi Class patch for [[SLASH'EM]]. A Jedi can play as a [[human]], [[elf]], or [[hobbit]], and they are always lawful.
+
+==Starting equipment==
+*+1 [[robe]],
+*+0 [[leather gloves]],
+*Chance of either a red, green or blue [[lightsaber]],
+*50% chance of a [[blindfold]].
+
+==Skills==
+{| class="prettytable"
+! colspan="2" style="font-size:larger" | Jedi skills
+|-
+! Max !! Skills
+|-
+| Basic
+|
+* ''Weapons:'' [[short sword]], [[broadsword]]
+* ''Combat:'' [[two weapon combat]]
+* ''Spells:'' [[healing spells|healing]]
+|-
+| Skilled
+|
+* ''Weapons:'' [[long sword]], [[saber]]
+* ''Combat:'' [[riding]]
+|-
+| Expert
+|
+* ''Weapons:'' [[lightsaber]]
+* ''Combat:'' [[bare hands]]
+|} 
+
+The Jedi's [[special spell]] is [[spellbook of charm monster|charm monster]]. Spell success is determined by [[intelligence]]. 
+
+==Intrinsics==
+Jedi start [[stealth]]y, gain [[telepathy]] at level 3, [[see invisible]] at level 5 and [[fast|speed]] at level 7.
+
+==Techniques==
+*Every Jedi can do the Jedi Jump, channelling the force to [[jump]] forward like unskilled spell at level 1, basic at level 5, skilled at level 10, and expert at level 15.  This technique is reusable after 50 turns and uses up 25 energy.
+*At experience level 5 they gain the charge saber skill. Using this skill they can recharge their lightsaber for power*((technique_level/10)+1) turns and needs at least 5PW. If they are at least technique level 10, they have a 20% chance of channelling the force perfectly into the saber, thus giving it an additional 1500(!) turns. In order for the technique to succeed, the Jedi must remain uninterrupted for 10 turns. Regardless if it succeeded or not, this technique is reusable after 500 turns.
+*At experience level 8 they get the telekinesis skill. Using this skill they can pick up remote objects, disarm certain traps and spring other traps. This technique is reusable after 250 turns. The trap/object must be seen to use this skill.
+
+==Additional abilities==
+*A Jedi can use the force to throw and regain his lightsaber, similar to the [[Valkyrie]]'s ability to throw and catch [[Mjollnir]]. This is valid for all lightsabers, not just [[the Lightsaber Prototype]]. The difference, is that it requires 5 energy points instead of a strength of 25 and lightsaber skill to be at least skilled. Then there is a 99% chance of the lightsaber returning, and a further 99% chance of the Jedi catching it back. If [[confused]], [[stunned]], [[blind]], [[hallucinating]], or [[fumbling]], the Jedi has 0 chance of catching it back. If failing to catch it (impairment or the 1% probability), there is a 50% chance it will land on your feet, or hit you instead. If two-weaponing and wielding the lightsaber in the second hand, after the lightsaber returns, you'll be wielding only the lightsaber. If two-weaponing and the lightsaber was the primary weapon, throwing will work as expected. 
+*A skilled Jedi with an activated lightsaber can dodge missiles fired at him (though not reflect them)
+*A skilled Jedi with an activated lightsaber, has a (50+15*greatest_weapon_erosion)% probability of cutting in half the non artifact weapon of a defending monster.
+
+==Restrictions==
+*Attacking peaceful monsters will be punished with -1 alignment.
+*Fighting with a lightsaber needs maneuverability which all armor except robes hinder for -20 hit penalty.
+
+==Rank titles==
+{|class="prettytable"
+|-
+|[[Level]]
+|Title
+|-
+|1-2
+|Youngling
+|-
+|3-5
+|Padawan
+|-
+|6-9
+|Jedi Apprentice
+|-
+|10-13
+|Jedi Knight
+|-
+|14-17
+|Jedi Hero
+|-
+|18-30
+|Jedi Master
+|}
+
+==Gods==
+{{main|Religion}}
+
+*Lawful:  the Light Side
+*Neutral: the Force
+*Chaotic: the Dark Side
+
+==Quest==
+{{main|Jedi quest}}
+The Jedi will meet the [[Jedi Master]] who tells him of a war between [[Lord Sidious]] and the Jedi over [[the Lightsaber Prototype]], a lightsaber powered by the Force itself thus never running out of power. The Jedi must then fight along some of his fellow Jedi against the [[stormtrooper]]s and Lord Sidious himself to gain possession of this powerful artifact which doesn't require charging, and can reflect beam attacks.
+
+The Jedi quest is quite difficult: Stormtroopers are tough foes, and most of the levels are wide open which makes it difficult to avoid getting surrounded. Lord Sidious is a [[summon nasties|summoner]], and as is typical of quest nemeses will teleport to the stairs to heal if you wound him.
+
+==Strategy==
+While a Jedi has some nice advantages in the early game, including a powerful weapon (melee and ranged) and means to burn [[Elbereth]], it is more difficult than most melee roles. In the early game, the Jedi should fight with his lightsaber, but only turn it on when necessary so as to conserve charges. The ability to burn Elbereth combined with a weapon that is not subject to corrosion makes kicking sinks and splitting black puddings with a junk weapon a great way to level up and gain some intrinsics. Since wearing anything other than a robe will nullify most of your advantages (including your lightsaber), you should try to find the best non-body armor you can and tough it out with the robe. Like playing a monk, an early wish is better spent on something other than dragon scale mail. A [[shield of reflection]] or [[amulet of reflection]], [[speed boots]], or a source of [[magic resistance]] are all good candidates. If you decide to wish for a quest artifact such as the [[Sceptre of Might]] or [[Crown of Saint Edward]] for your magic resistance, be sure you have enough hit points to withstand SLASH'EM's augmented [[artifact blast|blasting]] damage.
+
+Given that Jedi are lawful, they should dip for [[Excalibur]] as soon as possible, and take advantage of the extremely strong lawful artifacts ([[Sword of Justice]], [[Snickersnee]], and [[Grayswandir]]) that they can gain skill in. They should also sacrifice for [[minion]]s as soon as possible.
+
+Once the Jedi gets past early game and gets the awesome quest artifact, they can become a very powerful melee and ranged fighter, albeit not much of a spellcaster.
+
+The [[reflection]] granted by [[the Lightsaber Prototype]] compensates for the penalty that Jedis have when wearing body armor. Even without the need for [[silver dragon scale mail]], a Jedi still needs a source of [[magic resistance]] and [[drain resistance]], two other extrinsics commonly conveyed by dragon scale mail. Magic resistance is commonly obtained using the cloak, but the other two are problematic.
+
+Note that in [[SLASH'EM]] artifact weapons can be dual-wielded, but when doing so you only get the extra wielding effects of your primary weapon, thus one cannot simultaneously have [[Excalibur]]'s drain resistance and [[the Lightsaber Prototype]]'s reflection. For this reason, a player might want to consider an [[amulet of drain resistance]], or accepting the body armor penalty at higher levels (where it doesn't significantly affect gameplay) to wear dragon scale mail armor.
+
+==New items and monster==
+New artifact [[the Lightsaber Prototype]].
+
+New armor [[plasteel armor]], [[plasteel gloves]], [[plasteel boots]], [[plasteel helmet]]
+
+New monsters: [[stormtrooper]], [[padawan (player monster)]], [[Jedi (player monster)]], [[Lord Sidious]], [[The Jedi Master]].
+
+==Miscellaneous==
+The patch also adds a padawan and a jedi in the [[Guild of Disgruntled Adventurers]].
+
+==Messages==
+*You feel disturbances in the force!
+
+You gain instrinsic telepathy from leveling up.
+
+*You feel your grip on the force lessen!
+
+You lose instrinsic telepathy from leveling down.
+
+*You feel your vision sharpen!
+
+You gain see invisible from leveling up
+
+*You feel your vision blurring!
+
+You lose see invisible from leveling down.
+
+==Compiling (Linux)==
+This was done in Linux, most should be transferable to other platforms. You can probably recycle a lot of the bellow for other patches.
+
+*You'll need these sources[http://sourceforge.net/projects/slashem/files/slashem-source/0.0.7E7F1/se007e7f1.tar.gz/download]. Uncompress the sources.
+
+*Rename the "slashem-0.0.7E7F1" folder in to "slashem-0.0.7E7F1-orig" and then run:
+ patch -p0 < slashem_jedi_0.5.patch
+
+*Download the stuff you'll need.
+ sudo apt-get install libncurses5-dev bison flex checkinstall make
+
+*Enter the source directory.
+ cd slashem-0.0.7E7F1-orig
+
+*Run the setup script.
+ sh ./sys/unix/setup.sh
+
+*You'll need to further edit 6 files.
+
+ gedit ./include/global.h
+
+At line 13, add these lines:
+
+"#define LIGHTSABERS"
+
+and
+
+"#define JEDI"
+
+ gedit ./include/config.h
+
+comment out lines 230, 231 with "/*" at the start of the line, and with "*/" at the end.
+
+replace line 234 with "# define COMPRESS "/bin/gzip"    /* FSF gzip compression */"
+
+replace line 235 with "# define COMPRESS_EXTENSION ".gz"	     /* normal gzip extension */"
+
+ gedit ./src/Makefile
+
+Comment out line 340. This "WINTTYLIB = -ltermlib", should become this "#WINTTYLIB = -ltermlib".
+
+uncomment line 339. This"#WINTTYLIB = -lncurses", should become this "WINTTYLIB = -lncurses". And don't forget to save. 
+
+line 422: Rename the game, so that it doesn't conflict with an alredy installed slashem.
+
+ gedit ./Makefile
+
+line 18, give the same name you gave earlier. If it's not the same, it will not compile.
+
+line 43 rename the directory.
+
+ gedit ./util/Makefile
+
+uncomment line 108.
+comment out line 105
+
+ gedit ./win/tty/termcap.c
+line 839, Replace the entire line with:
+ extern char *tparm(NCURSES_CONST char *, ...);
+
+* Compile and install
+ make ; sudo checkinstall
+
+*Easy uninstall with your regular package manager.
+
+
+==[[SlashTHEM]]==
+[[SlashTHEM]] has the Jedi patch applied.  In those variants they are also allowed to enhance their [[firearms]] skill up to Expert.
+
+==External links==
+*Sloppy 64bit deb package [http://www.mediafire.com/download/cia8wka3v5ob8sh/slashem-jedi_0-0_amd64.deb slashem-jedi_0-0_amd64.deb]
+
+[[Category:Patches]]
+[[Category:Jedi patch]]
+[[Category:SLASH'EM]]
+[[Category:SlashTHEM roles]]}
+&&%s&& %s Jedi quest {95989 2015-08-05T18:13:04Z {4000629 Cherokee Jack} Categorized and changed some in-text links The Jedi Quest, part of the [[Jedi]] patch for [[SLASH'EM]], sees you fighting [[Lord Sidious]] for [[the Lightsaber Prototype]].
+
+==Levels==
+===The Jedi Temple===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[Jedi Master|{{magenta|@}}]]
+j=[[jedi (monster)|{{white|@}}]]
+p=[[padawan|{{white|@}}]]
+s=[[stormtrooper|{{white|@}}]]
+A=[[air|{{gray|&nbsp;}}]]
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA--------AAAAAAAAAAAAAAAAAAAAAAAAAAA--------AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|^.....|AAAAAAAAAAAAAAAAAAAAAAAAAAA|.....>|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|.jj...|AA-----------------------AA|....jj|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|......|AA|s...................s|AA|......|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|......|AA|.-------------------.|AA|......|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA---+----AA|.|.................|.|AA----+---AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAA|.|AAAAA|.|.................|.|AAAAA|.|AAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAA|.------|.|..}....p.p....}..|.|------.|AAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAASss.....+.+....j...@........+.+.ss....SAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAA|.------|.|..}....p.p....}..|.|------.|AAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAA|.|AAAAA|.|.................|.|AAAAA|.|AAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA---+----AA|.|.................|.|AA----+---AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|>.....|AA|.-------------------.|AA|.....>|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|.jj...|AA|s...................s|AA|....jj|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|......|AA-----------------------AA|......|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA|......|AAAAAAAAAAAAAAAAAAAAAAAAAAA|......|AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA--------AAAAAAAAAAAAAAAAAAAAAAAAAAA--------AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</replacecharsblock></div>
+
+You start in the Jedi Temple, a tall building high up in the sky. The black spaces indicate air surrounding the temple rather than rock. The [[Jedi Master]] is at the point indicated by {{white|@}} guarding a treasure chest containing a scroll of charging, another random scroll, and two additional random objects. There are four peaceful [[padawan]] and nine peaceful [[jedi (player monster)|jedi]], as well as eight [[stormtrooper]]s patrolling the level. The stairs are randomly placed at one of the three marked positions.
+
+===Upper filler levels===
+The upper filler levels are standard room and corridor levels with jedi and [[stormtrooper]]s.
+
+===The Outer Rim===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+
+<...............L...........................................................
+...............LLL..........................................................
+..............LLLLL...................  ....................................
+.............LLLLLLL..................  ....................................
+............LLLLLLLLL.............................................. ........
+.............LLLLLLL..............................................   .......
+..............LLLLL..............................................     ......
+...............LLL..............................................   .........
+................L.............................. ...............    .    ....
+...............................................  .............     .     ...
+..............................................     ............    >    ....
+...............................................  ...............       .....
+.............P.................................. ................     ......
+............PPP.....................P.............................   .......
+...........PPPPP...................PPP............................. ........
+............PPP...................PPPPP.....................................
+.............P...................PPPPPPP....................................
+..................................PPPPP.....................................
+...................................PPP......................................
+....................................P.......................................
+............................................................................
+</replacecharsblock></div>
+
+This level represents a sun, two water planets, two asteroids, and a barren planet made mostly of rock. There are fifteen random objects, fifteen storm troopers, and fifteen traps placed randomly on the level.
+
+===Lower filler level(s)===
+The lower filler level(s) are standard room and corridor levels with with Jedi and [[stormtrooper]]s.
+
+===The Unnamed Planet===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[Lord Sidious|{{magenta|@}}]]
+^={{darkgray|[[spiked pit|^]]}}
+
+.......PP......                                                             
+......P......     .............................    ...............          
+.....P.PP....    .......L................L.....     .......L.......         
+..PPPPP.....   ........L.L..............L.....    ........LL........        
+...P.PP......    ....LL...L..L.....LL..LL....   ........L....L........      
+...PP.P....    ............LLL...L..L.LL....      .....L......L.......      
+...P...P....   ......LL....L..L.L....LL........     ...............         
+...PPPPP.....^........L...L..L.L....LL........   ......L....LL.....         
+..P<P.......^........L..LL....L....L.L.......     .........L.L......        
+............^...........L......L..L.L........HHH......L..LL.@L.......       
+....P....    ..........LL....L.L.L..L........   ......LL..LL.L.....         
+....PPP...    .........LL...L.L.L..LL........   .....L..LL..LL.....         
+....PP......    ............L.L....L.......   .......LLL.L..........        
+....P..P.....   ........L.....L.....L.....   .......L.L...LLLLL......       
+...PP..PP.....  ........L....L.L..L........   .....LL..LL.L..L......        
+..PP..P.P....    ........L..L...L.L.........   ....LLLLLLLLL.L.........     
+...PPP..P.....     ........LL....L..........  ........LL.LL.........        
+....PP.P.......     .........................    ................           
+....P.PP.......       .........................    ...........              
+..............
+</replacecharsblock></div>
+
+The {{white|@}} represents [[Lord Sidious]], who is guarding the Lightsaber Prototype. The level is generated with ten randomly placed jedi and 20 randomly placed [[stormtrooper]]s. Besides the three marked spiked pits ({{darkgray|^}}), there are ten other random traps on the level.
+
+==Messages==
+===Entry===
+First time:
+ You are back at the Jedi Temple where you were raised and trained during your youth.
+ You fondly remember your mentor, the Jedi Master, and your fellow Jedi.
+ Looking around, to the eye everything looks normal. You wonder why
+ the Jedi Master would call you here without necessity.
+ 
+ Then some stormtroopers jump from the shadows...
+
+Next time:
+ Once again you are back at the Jedi Temple.
+
+If already rejected twice due to bad alignment:
+ Again, you stand before the Jedi Temple.  You vaguely sense that this
+ may be the last time you stand before the Jedi Master.
+
+===Quest guardians===
+If #chatting before the quest is complete:
+ "Hello, <playername>. May the force be with you!"
+ "<playername>, it seems the force has left us..."
+ "The dark side is strong, or so they tell us."
+ "If the dark side is so powerful, why not use its power for us?"
+ "What shall we do, <playername>?"
+
+If #chatting after the quest is complete:
+ "Hello, <playername>. May the force be with you!"
+ "The force has led us to victory!"
+ "Will the Sith ever be defeated?"
+ "So you defeated Lord Sidious?"
+ "Is this the fabled Lightsaber Prototype?"
+
+===Quest leader===
+When you first meet your quest leader:
+ "It's good to see you again, <playername>. I'm glad you got our transmission.
+ Let me check if you are capable of helping us in this dark hour."
+
+When you return, having been rejected due to lack of experience:
+ "The force is strong in you, <playername>. But is it strong enough now?"
+
+When you return, having been rejected due to lack of experience:
+ "Again, you are back, <playername>. Have you enhanced your knowledge of the force
+ far enough now?"
+
+When you are expelled from the quest for having failed the alignment test
+seven times:
+ "You are arrogant, <playername>. This is the way to the Dark Side. Unfortunately,
+ we cannot allow you to walk the halls of the Jedi Temple anymore to protect our padawans.
+ Leave, now, and never return here, or we will have to deal with you
+ in ways other than words."
+
+When being rejected due to lack of experience:
+ "The force is strong within you, <playername>. But sadly, a mere <currentrank> could never
+ hope to be a help in this dark hour.
+ Go and learn more of the way of the force. When you reached the skills
+ of a Jedi Hero, return here.
+ 
+ May the force be with you!"
+
+When being rejected due to having worse than pious alignment:
+ "You have strayed from the light side of the force! Leave, now!
+ And return only when you made up your mind about which way to
+ follow."
+
+When finally assigned the quest:
+ "Ah, <playername>. You have become a fine <currentrank>, you have become skilled in using
+ the force and the ways of the Jedi. As such, you must help us:"
+ 
+ "As you surely noticed, war has broken out between the Sith and the
+ Jedi. Stormtroopers, Sith and Jedi are desperately fighting and
+ dying for what they believe in."
+ 
+ "What they are fighting over? A mighty artifact, the Lightsaber Prototype.
+ It is the first lightsaber ever made and has powers greater than any
+ lightsaber in use today. It never runs out of power and has a built-in
+ targeting device."
+ 
+ "It was also thought to be lost forever, but eventually a merchant
+ discovered it in the outer rim and announced it for sale. Needless to
+ say, that merchant was no longer alive when we got there, slaughtered
+ by the Sith, who - despite all their efforts - couldn't get their hands
+ on it yet."
+ 
+ "We need your help in this matter. Every man on the front in the outer
+ rim counts."
+ 
+ "Oh, and we got word that Lord Sidious himself has gone to the outer rim to claim
+ the Lightsaber Prototype. You better hurry."
+ 
+====Encouragement====
+
+If you subsequently chat to your quest leader, you are encouraged:
+ "May the force be with you!"
+
+ "Remember, <playername>, follow always the path of the Light Side."
+
+===Locate and goal levels===
+
+When first entering the locate level:
+ You arrive at the Outer Rim.
+ Following the emanations of the force, you work your way through the
+ different planets trying to locate %o.
+
+When returning:
+ Again, you arrive at the the Outer Rim.
+
+When first entering the goal level:
+ You arrive at an unnamed planet.
+ You can feel large disturbances in the force before you, like huge
+ armies crossing weapons.
+ You know that you must hurry in order to not disappoint the Jedi Master.
+
+When returning:
+ Again, you arrive at the unnamed planet.
+ 
+===Quest nemesis===
+
+When first encountering the quest nemesis:
+ "Again, the Jedi Master sends a worthless <currentrank> to get the Lightsaber Prototype from me?
+ Well, I can give you a choice: Join me!"
+
+Upon further meetings:
+ "Again, you challenge me, <currentrank>? You can't beat the dark side of the force!"
+
+And on the 4th and subsequent meetings:
+ "Haven't you learned your lesson yet? I shall teach it to you now!"
+
+When you have the Lightsaber Prototype, but Lord Sidious is still alive:
+ "Got your hands on the Lightsaber Prototype, little <currentrank>? You will not be able to draw all its
+ powers anyway. Now, you wouldn't kill an unarmed, would you?"
+
+====Discouragement====
+Lord Sidious will occasionally taunt:
+ "Join the dark side and you'll be granted powers beyond your wildest dreams!"
+
+ "The Jedi Master's faith in you is his weak point!"
+
+ "A Jedi you want to be? I call you a padawan!"
+
+===Victory===
+
+When picking up your quest artifact:
+ You have the Lightsaber Prototype in your hands.
+ Force surrounds it like air surrounds a planet. You can see why no
+ other lightsaber was made like this one.
+
+When killing the nemesis:
+ You finally manage to land the final blow against Lord Sidious.
+ But as you just want to claim your victory, his body dissolves into
+ nothingness.
+
+ "You can't win against Lord Sidious! I will be back!"
+ 
+ You feel a shiver run up and down your spine as you head back
+ to the Jedi Master.
+
+When returning to your quest leader:
+ As you approach the Jedi Master, he beams at you and says:
+
+ 	You have not disappointed the halls of %H.
+ 	The war is over, the Lightsaber Prototype is secured and peace
+ 	can be restored.
+ 
+ 	Though Lord Sidious escaped us again, we will not rest until he is
+ 	destroyed. The Sith must never return to power.
+
+When subsequently throwing the Lightsaber Prototype to the Jedi Master:
+ "Be careful with the Lightsaber Prototype. Though it gives great power, it also requires
+ great responsibility from its owner. Use the portal to return to
+ the Dungeons of Doom and find the Amulet of Yendor.
+
+===Post-quest===
+
+When talking to the Jedi Master after the quest:
+ "Welcome back, %p. How is the search for the Amulet of Yendor?"
+
+When talking to the Jedi Master after getting the [[Amulet of Yendor|Amulet]]:
+ "You really are a <currentrank> of the Light Side."
+ "Ancient Jedi Legends tell us that the amulet must be brought to
+ a place called 'The Astral Plane' and offered to the Light Side there."
+ "May the force be with you, <playername>."
+[[Category:Jedi patch]]}
+&&%s&& %s Lord Sidious {95995 2015-08-05T18:33:15Z {4000629 Cherokee Jack} Categorized {{stub}}
+{{monster
+ |name=Lord Sidious
+ |symbol={{magenta|@}}
+ |tile=(no tile)
+ |difficulty=20
+ |level=20
+ |experience=799
+ |speed=10
+ |AC=5
+ |MR=0
+ |align=-10
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 4d6, Touch 4d6 [[shock]], [[Monster spell|Spellcasting]]
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=Poison, Shock, Stoning
+ |resistances conveyed=None
+ |attributes={{attributes|Lord Sidious|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|male=1|hostile=1|nasty=1|collect=1|magic=1|wantsarti=1|waitforu=1}}
+}}
+{{wikipedia|Palpatine}}
+
+Lord Sidious is the [[Jedi]] [[quest nemesis]] in the Jedi patch for [[SLASH'EM]]. He is a pushover, the real difficulty, is the army of [[stormtrooper]]s that surround him.
+
+{{todo|Verify that difficulty and experience are accurate (see discussion page for source)}}
+
+==References==
+Reference: [http://www.benjamin-schieder.de/downloads/slashem/slashem_jedi_0.5.patch Benjamin Schieder's Jedi Patch]
+
+[[Category:Jedi patch]]}
+&&%s&& %s Jedi Quest {84500 2013-05-02T21:27:02Z {4000180 Bcode} Bcode moved page [[Jedi Quest]] to [[Jedi quest]]: Capitalization; lowercase "quest" is consistent with the other quest pages #REDIRECT [[Jedi quest]]}
+&&%s&& %s Stormtrooper {95994 2015-08-05T18:29:53Z {4000629 Cherokee Jack} Categorized and added an in-text link {{wikipedia|Stormtrooper (Star Wars)}}
+{{monster
+ |name=Stormtrooper
+ |symbol={{white|@}}
+ |tile=
+ |difficulty=8
+ |level=10
+ |experience=5
+ |speed=25
+ |AC=-5
+ |MR=0
+ |align=0
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 2d4, Weapon 2d4
+ |weight=400
+ |nutr=0
+ |size=Medium
+ |resistances=none
+ |resistances conveyed=none
+ |attributes={{attributes|A stormtrooper|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|hostile=1|collect=1|infravisible=1}}
+ |refline=NA
+}}
+
+A stormtrooper is a new monster found in the [[Jedi]] quest in the Jedi patch for [[SLASH'EM]]. They are generated with a full set of [[Plasteel armor|plasteel gear]] (armor, gloves, boots, and helm) and either a [[heavy machine gun]] with 50 [[bullet]]s or a [[submachine gun]] with 30 bullets.
+{{stub}}
+
+==References==
+Reference: [http://www.benjamin-schieder.de/downloads/slashem/slashem_jedi_0.5.patch Benjamin Schieder's Jedi Patch]
+
+[[Category:Jedi patch]]}
+&&%s&& %s Temple of Moloch {84516 2013-05-02T22:55:49Z {4000292 Prometheus77} created #REDIRECT [[The Temple of Moloch]]}
+&&%s&& %s The Lightsaber Prototype {148413 2022-10-04T23:40:21Z {4001279 Umbire the Phantom} cat {{variant-343}}
+{{artifact weapon
+  |color=metal color
+  |name=The Lightsaber Prototype
+  |tile=[[File:lightsaber.png]]
+  |base=red lightsaber
+  |skill=lightsaber
+  |smalldmg=d9+6 '''+10'''
+  |largedmg=d11+10 '''+10'''
+  |tohit='''+5'''
+  |affiliation=<ul><li>[[lawful]]</li><li>[[intelligent artifacts|intelligent]]</li><li>[[Jedi]]</li></ul>
+  |whenwielded=<ul><li>[[reflection]]</li></ul>  
+  |wheninvoked=<ul><li>[[energy]] boost</li></ul>
+  |cost=3500
+  |weight=60
+  |material=platinum
+}}
+
+'''The Lightsaber Prototype''' is the [[Jedi]] [[quest artifact]] in the [[Jedi|Jedi patch]] for [[SLASH'EM]], the prize for defeating [[Lord Sidious]] and his army of storm troopers.
+
+It inherits excellent stats from its base item. Like any regular [[lightsaber]], it provides very good base melee damage. Even at +0 it hits all monsters, even if they normally [[need +x weapon to hit|require an enchanted weapon to hit]]. It can also burn through doors, statues and solid rock in the manner of a [[pick-axe]].
+
+Additionally, it has a +10 damage bonus and a +5 to hit bonus, it provides [[reflection]] when wielded, and an energy boost when #invoked. Unlike a regular lightsaber, it never runs out of power or needs charging, so it can be wielded indefinitely.
+
+==Jedi==
+
+If a Jedi, the player has the ability to throw and catch it back like with any lightsaber, similarly to the [[Valkyrie]]'s ability to throw and catch [[Mjollnir]].
+
+==Non-Jedi==
+
+If you wish for this artifact, make sure you are at least lawful and able to withstand its artifact blast. It's an intelligent artifact, so it will blast you for quite a lot even if you are lawful because you aren't a [[Jedi]], and you will be unable to even pick it up if you are not at least lawful.
+
+You can unrestrict [[lightsaber]]s by wielding one when you get [[crowned]]. The additional +5 to hit bonus will also help a lot.
+
+==Average damage==
+
+With average damage of 26 vs. large (but only 21 vs. small), plus reflection, plus permanently burning [[Elbereth]], plus burning through solid rock, plus [[need +x weapon to hit|hitting like a +4 weapon]], plus the Jedi only ability to attack from range, this weapon even outclasses the infamous [[Bat from Hell]].
+
+A Jedi two-weaponing this with [[Grayswandir]] in [[Gehennom]] is indeed fearsome to behold.
+
+==Quirk==
+
+The lightsaber energy value that controls how many turns the lightsaber can be lit for uses the same internal variable as the invocation timeout, which may result in the Lightsaber Prototype working strangely when trying to invoke it.
+
+==References==
+Reference: [http://www.benjamin-schieder.de/downloads/slashem/slashem_jedi_0.5.patch Benjamin Schieder's Jedi Patch]
+
+[[Category: Jedi patch]]
+[[Category:Slash'EM]]
+[[Category:SlashTHEM]]}
+&&%s&& %s Red lightsaber {84541 2013-05-03T14:40:56Z {4000292 Prometheus77} created #REDIRECT [[lightsaber]]}
+&&%s&& %s Convict quest {104198 2016-11-16T18:44:44Z {4000354 Chris} add dnethack tags The convict quest sees you fighting [[Warden Arianna]] for the [[Iron Ball of Liberation]]. The quest leader is [[Robert the Lifer]]. 
+
+==Maps==
+===Home level===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+m={{msl|giant mimic}}
+@={{white|@}}
+
+ |--------------------------------------------------------|-----------------|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|................K|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|.................|
+ |---.---.---.---.---.---.---.---.---.---.---.---.---.---.|.............^...|
+ |..........................................................................|
+ |.........................................................................m|
+ |....|.---.---.---.---.---.---.---.---.---.---.---.---.--------------..----|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|.................|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|......>..........|
+ |....|---------------------------------------------------|.................|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|.................|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|.................|
+ |....|--.---.---.---.---.---.---.---.---.---.---.---.---.|-----------------|
+ |..........................................................................|
+ |..........................................................................|
+ |..........................................................................|
+ |.----.---.---.---.---.---.---.---.---.---.---.---.---.--|............_....|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|.................|
+ |....|...|...|...|...|...|...|...|...|...|...|...|...|...|................@|
+ |--------------------------------------------------------|-----------------|
+</replacecharsblock></div>
+
+You arrive in the portal in the upper left corner. There is a [[giant mimic]] near the entrance posing as a [[staircase]]. Your quest leader, [[Robert the Lifer]], is at the point marked @. His room is a [[Special room#Temple|shrine]] with a [[chaotic]] [[altar]]. In addition, there are six [[inmate]]s and 1-6 corrupt [[prison guard]]s, randomly placed. Finally, there are four random [[web]]s and various prison debris ([[iron chain]]s and [[heavy iron ball]]s) scattered around. The entire level has undiggable walls.
+
+===Upper filler levels===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+
+ ----------------------------------------------------------------------------
+ |....................---------.......................---------.............|
+ |....................F...|...|.......................F...|...|.............|
+ |....................|...|...F.......................|...|...F............<|
+ |....|---|---|.......|---|---|.......|---|---|.......|---|---|.............|
+ |....F...|...|.......F...|...|.......F...|...|.......F...|...|.............|
+ |....|...|...F.......|...|...F.......|...|...F.......|...|...F.............|
+ |....|---|---|.......|---|---|.......|---|---|.......|---|---|.............|
+ |....F...|...|.......F...|...|.......F...|...|.......F...|...|.............|
+ |....|...|...F.......|...|...F.......|...|...F.......|...|...F.............|
+ |....|---|---|.......|---|---|.......|---|---|.......|---|---|.............|

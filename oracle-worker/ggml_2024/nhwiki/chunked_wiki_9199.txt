@@ -1,0 +1,1000 @@
+      "You rise up, through the <ceiling>!"
+    If there is no level directly above you, or you are in Sokoban or
+    inside the top level of the Wizard's Tower, nothing happens.
+      "You have an uneasy feeling."
+    Otherwise, you go to the next higher dungeon level.
+      "You rise up, through the <ceiling>!"
+  quaffed by monster
+    Same effect (and limits) to monster as if you quaffed it, except that
+    monsters with the Amulet can't ascend to the Plane of Earth.  Monsters
+    gaining experience may grow into a more powerful class of monster; if
+    the new class is genocided, the monster is killed!
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+hallucination
+  blessed
+    You hallucinate for 300 to 499 (more) turns unless you have
+    hallucination resistance from wielding Grayswandir.
+      "You have a normal feeling for a moment, then it passes."
+        (already hallucinating)
+      "You have a peculiar feeling for a moment, then it passes."
+        (not already hallucinating, hallucination resistance)
+      "Oh wow!  Everything looks so cosmic!"
+        (not already hallucinating, no hallucination resistance, not blind)
+      "Oh wow!  Everything feels so cosmic!"
+        (not already hallucinating, no hallucination resistance, blind)
+  uncursed
+    You hallucinate for 600 to 799 (more) turns.
+      (Same messages as above)
+  cursed
+    You hallucinate for 900 to 1099 (more) turns.
+      (Same messages as above)
+  hits monster
+    No effect.
+  vapors
+    No effect.
+      "You have a momentary vision."
+
+healing
+  blessed
+    You gain 8 to 32 hit points.  If this would put you above your
+    maximum hit points, then your maximum is increased by 1 and your hit
+    points become this new maximum.
+    Cures sickness and blindness, and exercises constitution.
+      "You feel better."
+  uncursed
+    You gain 6 to 24 hit points.  If this would put you above your
+    maximum hit points, then your maximum is increased by 1 and your hit
+    points become this new maximum.
+    Cures blindness, and exercises constitution.
+      "You feel better."
+  cursed
+    You gain 4 to 16 hit points, up to your maximum.
+    Exercises constitution.
+      "You feel better."
+  quaffed by monster
+    The monster gains the same number of hit points as if you quaffed it.
+    If this would put the monster above its maximum hit points, its
+    maximum is increased by 1 (even if cursed) and its hit points become
+    this new maximum.
+    The monster is unblinded.
+      "<monster> looks better."  (if seen)
+  hits monster
+    If Pestilence, its current and maximum hit points are halved.  May
+    resist.
+      "Pestilence looks rather ill."  (if seen)
+    Otherwise, the monster is restored to maximum hit points.
+      "<monster> looks sound and hale again."  (if seen)
+  vapors
+    You heal up to 1 hit point, and exercise your constitution.
+      No message.
+
+invisibility
+  blessed
+    You become permanently invisible.
+      "You have a peculiar feeling for a moment, then it passes."
+        (already invisible, blind or wearing a mummy wrapping, and not
+        hallucinating)
+      "You have a normal feeling for a moment, then it passes."
+        (already invisible or blind or wearing a mummy wrapping, and
+        hallucinating)
+      "Gee!  All of a sudden, you can't see yourself." (not hallucinating)
+      "Gee!  All of a sudden, you can see right through yourself."
+        (not hallucinating, see invisible)
+      "Far out, man!  You can't see yourself." (hallucinating)
+      "Far out, man!  You can see right through yourself." (hallucinating,
+        see invisible)
+  uncursed
+    You become invisible for 31 to 45 (more) turns.
+      (Same messages as above)
+  cursed
+    You become invisible for 31 to 45 (more) turns.
+      (Same messages as above)
+    You aggravate monsters for a moment.
+      "For some reason, you feel your presence is known."
+  quaffed by monster
+    The monster becomes invisible unless wearing a mummy wrapping.
+      "Suddenly you cannot see <monster>."  (can't see invisible)
+      "<monster's> body takes on a strange transparency."
+        (see invisible and not hallucinating)
+      "<monster's> body takes on a normal transparency."
+        (see invisible and hallucinating)
+    If cursed, you are awoken and told the monster's position.
+      "For some reason, <monster's> presence is known to you."
+      "You feel aggravated at <monster>."  (already awake)
+      "Aggravated, you are jolted into full consciousness."
+        (was unconscious)
+  hits monster
+    The monster becomes invisible unless wearing a mummy wrapping.
+  vapors
+    No effect.
+    "For an instant you couldn't see yourself!"
+      (not already invisible, not blind)
+    "For an instant you could see right through yourself!"
+      (not already invisible, not blind, see invisible)
+
+levitation
+  blessed
+    You levitate for 250 to 299 (more) turns.
+      "You start to float in the air!"  (not hallucinating)
+      "Up, up, and awaaaay!  You're walking on air!"  (hallucinating)
+      "You float up, out of the pit!"  (were trapped in pit)
+      "You float up, only your <leg> is still stuck."
+        (still in bear trap)
+      "It feels as though you'd lost some weight."  (Water Plane)
+      "You gain control over your movements."  (Air Plane)
+    You can stop levitating with '>' at will.
+  uncursed
+    You levitate for 10 to 149 (more) turns.
+      (Same messages as above)
+  cursed
+    You levitate for 10 to 149 (more) turns.
+      (Same messages as above)
+    You lose any ability to land at will.
+    If you were already levitating or on the water level,
+      "You have a peculiar feeling for a moment, then it passes."
+        (not hallucinating)
+      "You have a normal feeling for a moment, then it passes."
+        (hallucinating)
+    Else if you are on a up staircase or up ladder, the < command is
+    attempted.  It might not succeed (e.g., stressed).
+    Otherwise, you suffer 1 to 10 points of damage (1 if wearing any hat).
+      "You hit your <head> on the <ceiling>."
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+monster detection
+  blessed
+    You detect monsters for 21 to 60 (more) turns (if already at least 300
+    turns, just one more turn) and exercise your wisdom.
+      No message if not already detecting monsters.
+      "You feel lonely." (no monsters on level)
+      "You have a peculiar feeling for a moment, then it passes."
+        (already detecting monsters, not hallucinating)
+      "You have a normal feeling for a moment, then it passes."
+        (already detecting monsters and hallucinating)
+  uncursed
+    You briefly see monsters on that level and exercise your wisdom.
+      "You sense the presence of monsters."
+    If no monsters on the level (other than you), no visible effect.
+      "You have a strange feeling for a moment, then it passes."
+        (beginner not hallucinating)
+      "You have a normal feeling for a moment, then it passes."
+        (beginner hallucinating)
+      "You feel threatened."  (not hallucinating)
+      "You get the heebie jeebies."  (hallucinating)
+  cursed
+    You briefly see monsters on that level and exercise your wisdom.
+      (Same messages as above)
+    Any monsters that are asleep or paralyzed are awoken.
+      "Monsters sense the presence of you."
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+object detection
+  If no objects on level and none had appeared on the map, no effect.
+    "You have a strange feeling for a moment, then it passes."
+      (beginner not hallucinating)
+    "You have a normal feeling for a moment, then it passes."
+      (beginner hallucinating)
+    "You feel a lack of something."  (otherwise)
+  If there are only objects in your inventory, you exercise your wisdom.
+    "You sense objects nearby."  (not hallucinating)
+    "You sense something nearby."  (hallucinating)
+  blessed
+    You detect objects on that level and exercise your wisdom.
+      "You sense the presence of objects."  (not hallucinating)
+      "You sense the presence of something."  (hallucinating)
+      "You sense the absence of objects."  (not hallucinating)
+      "You sense the absence of something."  (hallucinating)
+    You know the appearance of all objects on that level (and in your
+    inventory) as if you had seen them.
+  uncursed
+    You detect objects on that level and exercise your wisdom.
+      (Same messages as above)
+  cursed
+    You detect objects on that level and exercise your wisdom.
+      (Same messages as above)
+    Mimics will appear as objects.
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+oil
+  You can #untrap a squeaky board with a potion of oil or can of grease.
+  Potions of oil can be lit by (a)pplying them.
+  If quaffing a lit potion:
+    If you are a monster that likes fire, you exercise your wisdom.
+      "Ahh, a refreshing drink."
+    Otherwise, you lose 3 to 12 hit points (1 to 4 if fire resistant),
+    and abuse your wisdom.
+      "You burn your <face>."
+  blessed or uncursed
+    You abuse your wisdom.
+      "That was smooth!"
+  cursed
+    You abuse your wisdom.
+      "This tastes like castor oil."
+  hits monster or you
+    No effect if unlit.
+    If lit, splatters oil, causing an explosion of fire with 4 to 16 damage.
+  vapors
+    No effect.
+
+paralysis
+  blessed
+    If you have free action, no effect.
+      "You stiffen momentarily."
+    Otherwise, you are paralyzed for 13 to 22 turns and abuse your dexterity.
+      "You are motionlessly suspended." (levitating or on Air or Water Planes)
+      "You are frozen in place!" (riding)
+      "Your <feet> are frozen to the <floor>!"  (otherwise)
+  uncursed
+    If you have free action, no effect; otherwise, you are paralyzed for 25
+    to 34 turns and abuse your dexterity.
+      (Same messages as above)
+  cursed
+    If you have free action, no effect; otherwise, you are paralyzed for 37
+    to 46 turns and abuse your dexterity.
+      (Same messages as above)
+  hits monster
+    If not already paralyzed, the monster is paralyzed for 1 to 25 turns.
+    Otherwise, no effect.
+  vapors
+    May be thrown by monsters.
+    If you have free action, no effect.
+      "You stiffen momentarily."
+    Otherwise, you are paralyzed for 1 to 5 (more) turns, and your dexterity
+    is abused.
+      "Something seems to be holding you."
+
+polymorph
+  quaffed
+    You polymorph into a new monster unless you have unchanging.
+      "You feel a little strange." (not hallucinating)
+      "You feel a little normal." (hallucinating)
+  hits you
+    You polymorph into a new monster unless you have unchanging or magic
+    resistance.
+      "You feel a little strange." (not hallucinating)
+      "You feel a little normal." (hallucinating)
+  hits monster
+    Same effect as a wand of polymorph.
+  quaffed by monster
+    The monster polymorphs into a new monster.
+      "<monster> suddenly mutates!"
+  vapors
+    Abuses your constitution.
+
+restore ability
+  blessed
+    Restores all lost statistics to their previous maximum amount.
+      "Wow!  This makes you feel great!"
+      "Wow!  This makes you feel better!" (other things wrong with you)
+  uncursed
+    Restores one random lost statistic to its previous maximum amount.
+      "Wow!  This makes you feel good!"
+  cursed
+    No effect.
+      "Ulch!  This makes you feel mediocre!"
+  hits monster
+    The monster is restored to maximum hit points.
+      "<monster> looks sound and hale again."  (if seen)
+  vapors
+    If cursed, no effect.
+      "Ulch!  That potion smells terrible!"
+      "Your eyes sting." (unbreathing)
+    If uncursed, one random statistic is restored by one.  No message.
+    If blessed, all statistics are restored by one.  No message.
+
+see invisible
+  blessed
+    You see invisible permanently and are unblinded.
+      "This tastes like <fruit> juice."  (undiluted, not hallucinating)
+      "This tastes like 10% real <fruit> juice all-natural beverage."
+        (undiluted, hallucinating)
+      "This tastes like reconstituted <fruit> juice."
+        (diluted, not hallucinating)
+      "This tastes like 10% real reconstituted <fruit> juice all-natural
+      beverage."  (diluted, hallucinating)
+      "You can see through yourself, but you are visible!" 
+        (invisible without previous see invisible)
+  uncursed
+    You see invisible for 750 to 849 (more) turns and are unblinded.
+      (Same messages as above)
+  cursed
+    You see invisible for 750 to 849 (more) turns.
+      "Yecch!  This tastes rotten."  (not hallucinating)
+      "Yecch!  This tastes overripe."  (hallucinating)
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+sickness
+  blessed
+    "Yecch!  This stuff tastes like poison."
+    "(But in fact it was mildly stale <fruit> juice.)"
+    If you are not a Healer, you lose one hit point, even if poison-
+    resistant.
+    You no longer hallucinate.
+      "You are shocked back to your senses!"
+  uncursed
+    "Yecch!  This stuff tastes like poison."
+    If you are a Healer, no effect.
+      "Fortunately, you have been immunized."
+    If you are poison-resistant, one randomly-chosen statistic drops by
+    one unless you have sustain ability, and your constitution is abused.
+      "(But in fact it was biologically contaminated <fruit> juice.)"
+    Otherwise, one randomly-chosen statistic drops by 3 to 6 unless you
+    have sustain ability, you lose 1 to 10 hit points, and you abuse your
+    constitution.
+    You no longer hallucinate.
+      "You are shocked back to your senses!"      
+  cursed
+    "Yecch!  This stuff tastes like poison."
+    If you are a Healer, no effect.
+      "Fortunately, you have been immunized."
+    If you are poison-resistant, one randomly-chosen statistic drops by
+    one unless you have sustain ability, and your constitution is abused.
+      "(But in fact it was biologically contaminated <fruit> juice.)"
+    Otherwise, one randomly-chosen statistic drops by 3 to 6 unless you
+    have sustain ability, you lose 6 to 15 hit points, and you abuse your
+    constitution.
+    You no longer hallucinate.
+      "You are shocked back to your senses!"      
+  quaffed by Pestilence
+    Its maximum hit points are increased by 4 and its hit points become
+    this new maximum.
+    It is unblinded.
+      "Pestilence looks completely healed."  (if seen)
+  hits monster
+    If Pestilence, restored to maximum hit points.
+      "Pestilence looks sound and hale again." (if seen)
+    If monster is poison-resistant, no effect.
+      "<monster> looks unharmed." (if seen)
+    Otherwise, the monster's current and maximum hit points are halved.
+    Some monsters may resist.
+      "<monster> looks rather ill."  (if seen)
+  vapors
+    If you are a Healer, no effect.
+    You lose 5 hit points (but not below 1) and abuse your constitution.
+      No message.
+
+sleeping
+  blessed
+   If you have sleep resistance or free action, no effect.
+     "You yawn."
+   Otherwise, you fall asleep for 13 to 22 turns.
+     "You suddenly fall asleep!"
+  uncursed
+   If you have sleep resistance or free action, no effect.
+     "You yawn."
+   Otherwise, you fall asleep for 25 to 34 turns.
+     "You suddenly fall asleep!"
+  cursed
+   If you have sleep resistance or free action, no effect.
+     "You yawn."
+   Otherwise, you fall asleep for 37 to 46 turns.
+     "You suddenly fall asleep!"
+  hits monster
+    The monster falls asleep for 1 to 12 turns. Some monsters may resist.
+      "<monster> falls asleep." (if not resisted)
+  vapors
+    May be thrown by monsters.
+    If you have free action or sleep resistance, no effect.
+      "You yawn."
+    Otherwise, you are paralysed for 1 to 5 turns and your dexterity is
+    abused.
+      "You feel rather tired."
+
+speed
+  blessed
+    You become very fast (like speed boots) for 160 to 169 (more) turns
+    and exercise your dexterity.
+      "You are suddenly moving much faster."  (was slow)
+      "You are suddenly moving faster."  (was fast)
+      "Your <legs> get new energy."  (was already very fast)
+    You heal your legs if wounded.
+  uncursed
+    You become very fast (like speed boots) for 100 to 109 (more) turns
+    and exercise your dexterity.
+      "You are suddenly moving much faster."  (was slow)
+      "You are suddenly moving faster."  (was fast)
+      "Your <legs> get new energy."  (was already very fast)
+    You heal your legs if wounded.
+  cursed
+    You become very fast (like speed boots) for 40 to 49 (more) turns
+    and exercise your dexterity.
+      "You are suddenly moving much faster."  (was slow)
+      "You are suddenly moving faster."  (was fast)
+      "Your <legs> get new energy."  (was already very fast)
+  quaffed by or hits monster
+    If the monster was slow, it gets normal speed.
+    If the monster was normal speed, it becomes fast.
+      "<monster> is suddenly moving faster."  (seen quaffing)
+  vapors
+    You become very fast for 1 to 5 (more) turns, and exercise your
+    dexterity.
+      "Your knees seem more flexible now."  (not already fast)
+
+water
+  Note: Water is usually used to dip things into, instead of quaffed.
+  blessed
+    If you are undead, a demon, or chaotic, you abuse your constitution
+    and lose 2 to 12 hit points.
+      "This burns like acid!"
+    Otherwise, all sicknesses are cured and you exercise your
+    constitution and wisdom.
+      "You feel full of awe!"
+    Lycanthropy is cured.
+      "Your affinity to <werecreatures> disappears!"  (chaotic)
+      "You feel purified."  (non-chaotic)
+  uncursed
+    You get 1 to 10 nutrition.
+      "This tastes like water."
+  cursed
+    If you are undead, a demon, or chaotic, you heal 2 to 12 hitpoints
+    (but your maximum remains the same) and exercise your constitution.
+      "You feel quite proud of yourself."
+    Else if you are lawful, you lose 2 to 12 hit points and abuse your
+    constitution.
+      "This burns like acid!"
+    Otherwise, you abuse your constitution.
+      "You feel full of dread."
+  hits monster
+    Gremlins will multiply, with the new gremlin having half as many
+    maximum hit points.
+    Undead, demons and werecreatures will get 2 to 12 damage from holy
+    water, and are healed by 2 to 12 hit points by unholy water;
+    werecreatures will be forced into human form by holy water, or
+    beast form by unholy water.
+      "<monster> shrieks in pain!" (holy water)
+      "<monster> writhes in pain!" (holy water, silent monster)
+      "<monster> looks healthier." (unholy water)
+    Iron golems will take 1 to 6 damage.
+       "<monster> rusts." (if seen)
+  vapors
+    If you are a gremlin, you multiply with the new gremlin having half as
+    many maximum hit points as you.
+      "You multiply."
+    If the potion is holy water and you are a lycanthrope in your wereform,
+    you will revert to your @ form.
+    If the potion is unholy water and you are a lycanthrope in your @ form,
+    you will change to your wereform.
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Thanks to Bruce Cox for proofreading the original version of this file.
+Further corrections and clarifications provided by Kirk, Philipp Lucas,
+Chris Mears, Greg Nowak, and Joseph S. Myers.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Pot2-343.txt {105400 2017-04-29T01:14:55Z {4000180 Bcode} Protected "[[Pot2-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:pot2-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+pot2-343.txt  Last edited 2006-05-16 for NetHack 3.4.3
+Potions, alchemy, and other miscellaneous properties in NetHack 3.4
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+Smoky and milky potions
+~~~~~~~~~~~~~~~~~~~~~~~
+Potions with the appearance "smoky" may release a djinni and lead to a
+wish.  Each time you or another monster quaff a smoky potion, there is a
+chance of creating a djinni, depending on the number of djinn that have
+already been created in the game:
+  DJINN:  0     1     2     3     4     5        n       >=120
+  PROB:  1/13  1/15  1/17  1/19  1/21  1/23  1/(13+2*n)    0
+
+When the djinni appears, the potion is used up and one of five outcomes
+can occur.  The relative chance of these outcomes depends on whether the
+smoky potion was blessed, uncursed, or cursed:
+  BLESSED  UNCURSED  CURSED  OUTCOME
+  ~~~~~~~  ~~~~~~~~  ~~~~~~  ~~~~~~~
+    80%       20%       5%   Grants one wish, then disappears.
+                             "I am in your debt.  I will grant one wish!"
+     5%       20%       5%   Remains as a pet.
+                             "Thank you for freeing me!"
+     5%       20%       5%   Remains as a peaceful monster.
+                             "You freed me!"
+     5%       20%       5%   Speaks, then vanishes.
+                             "It is about time!"
+     5%       20%      80%   Remains as a hostile monster.
+                             "You disturbed me, fool!"
+If the potion had been quaffed by a monster, you will only get a peaceful
+or vanishing djinni.  NOTE: There is no way to get a wish from the djinni
+other than the first outcome above.
+
+In a similar manner, potions with the appearance "milky" may summon a ghost.
+Each time you or another monster quaff a milky potion, there is a chance
+of creating a ghost, depending on the number of ghosts that have already
+been created in the game:
+  GHOSTS:  0     1     2     3     4     5        n       >=120
+  PROB:   1/13  1/15  1/17  1/19  1/21  1/23  1/(13+2*n)    0
+When the ghost appears, the potion is used up.  If the potion was quaffed
+by a monster, that monster is paralyzed for 3 turns.  Otherwise, if you
+are unblind, you are paralyzed for 3 turns.
+
+In either case, the effect of the potion does not take place (since there
+was no actual potion in the bottle to drink).
+
+There is a limit of 120 djinn (or ghosts) per game.  Beyond this limit,
+they are extinct and no more can be created.
+
+
+Cancelling and diluting potions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+There are several ways to turn potions into water.  If potions of sickness,
+see invisible, or fruit juice are hit by a wand or spell of cancellation,
+they become uncursed potions of fruit juice, with the same amount of
+dilution as before the cancellation.  Potions of oil and booze become
+uncursed but otherwise remain the same.  Other potions will become uncursed
+potions of water.
+
+You can also change potions of blindness, confusion, or hallucination
+into uncursed water -- or potions of sickness into fruit juice -- by
+#dipping a unicorn horn into these potions.  Note that if you had
+quaffed these potions, you would have suffered bad effects that could
+have been cured by the unicorn horn in any case.  You can also #dip an
+amethyst stone into booze to convert it into fruit juice ("a-methyst"
+means not intoxicated.) In either of these cases, only one potion
+will be converted, regardless of the number of potions in the inventory
+slot.
+
+Finally, you can turn any potion except acid into water by #dipping it
+into an uncursed potion of water or fountain (the latter may cause bad
+effects as well).  If you are over a pool or moat but not levitating,
+you can also #dip into that water.  Furthermore, if you swim under water
+or fall into water, your potions have a chance of getting wet. If you
+#dip a potion of acid or it gets wet it does 1 to 10 points of damage.
+
+Getting potions wet happens in two stages.  After one dipping, the
+potions will become diluted, but will have their same blessed state.
+Diluted potions have exactly their same effects as undiluted potions
+(with minor exceptions for booze and fruit juice).  Getting diluted
+potions wet again then converts them into uncursed water.  Note that
+water cannot be diluted.
+
+
+Holy water
+~~~~~~~~~~
+(Adapted from the spoiler "water" by Maurice Vliege.)
+
+Once you have potions of water, you can convert them to holy water at an
+altar with your same alignment.  Drop any unholy water or uncursed water
+that you wish to convert onto the altar, and #pray.  If your god was
+pleased with you, they will all be converted to holy water.
+
+To make unholy water, you must find an altar of a different alignment
+than your own that is not in Gehennom.  Drop any holy water or uncursed
+water that you wish to convert onto the altar, and #pray.  All of the
+potions will be converted to unholy water.  It does not matter if your
+god was pleased before, but your god will be upset after the prayer.
+
+Holy and unholy water may also be found randomly, may appear in bones
+piles from other characters, and can be wished for.  Holy water may be
+part of your initial inventory (Priests start with four).  A more obscure
+way to acquire holy or unholy water is to wield some uncursed potions of
+water, take off all other worn items, and read a non-cursed scroll of
+remove curse while confused.  You have a 25% chance of creating holy
+water and 25% chance of creating unholy water this way, and it doesn't
+need any altars! Blessed scrolls of remove curse will have the same
+effect on each item in your inventory individually (try splitting
+up the water into different slots by #naming); be careful of other
+items in inventory becoming cursed.
+
+Once you have holy water, you can uncurse any cursed item or bless any
+uncursed items by the dipping the item into a potion of holy water.
+Similarly, dipping a blessed item into unholy water makes it uncursed, and
+dipping an uncursed item into unholy water makes it cursed. (Dipping a
+blessed item into holy water or a cursed item into unholy water doesn't
+do anything in particular: "Interesting...".) In all cases where the
+status is changed, one of the potions of (un)holy water is used in the
+process.  By dipping several uncursed potions of water into a potion of
+(un)holy water, you can continue to make more (un)holy water indefinitely
+(as long as you have uncursed water).
+
+Dipping an item in holy or unholy water does NOT rust, blank, dilute,
+or otherwise damage it.
+
+
+Dipping and mixing potions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Adapted from a posting by Paul Brinkley.)
+
+The effects of #dipping various objects into potions is summarized in the
+table below.  You are first prompted for the item to be DIPPED, and then
+the potion to dip it INTO.  One of the potions dipped into will be used up,
+unless there was no effect or the potions were cancelled by the dipping
+(unicorn horn or amethyst).  Except where shown, it doesn't matter if
+potions are diluted before dipping.
+
+You can mix two non-water potions (or groups of potions) of different types
+by dipping one into the other; this procedure is commonly referred to as
+"alchemy".  There is a 10% chance of an explosion (always if the DIPPED is
+cursed or acid) which makes you breathe vapors of the DIPPED potion, abuses
+your strength, and makes you lose one of each potion.  Otherwise, the
+DIPPED potion(s) may become a different type of potion, which will always
+be uncursed and diluted, and you use up one of the INTO potions.  The
+possible mixtures are also described in the table below.
+
+  DIPPED             INTO               RESULT
+  ~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~  ~~~~~~
+  cursed object      holy water         uncursed object
+  uncursed object    holy water         blessed object
+  blessed object     unholy water       uncursed object
+  uncursed object    unholy water       cursed object
+  acid               uncursed water     potion boils
+  undiluted potion   uncursed water     diluted potion
+  diluted potion     uncursed water     uncursed water
+  scroll/spellbook   uncursed water     blank scroll/spellbook (unless mail)
+  iron object        uncursed water     may rust
+  any potion         itself             "That is a potion bottle,
+                                         not a Klein bottle!"
+  any potion         same type          No effect.  "Interesting..."
+  ..................................................................
+  booze              enlightenment      confusion
+  booze              gain energy/level  hallucination
+  confusion          gain energy/level  1/3 enlightenment, 2/3 booze
+  enlightenment      booze              confusion
+  enlightenment      fruit juice        booze
+  enlightenment      levitation         2/3 gain level, 1/3 same as
+                                        "other combination" below
+  extra healing      gain energy/level  full healing
+  full healing       gain energy/level  gain ability
+  fruit juice        enlightenment      booze
+  fruit juice        gain energy/level  see invisible
+  fruit juice        sickness           sickness
+  fruit juice        speed              booze
+  gain energy/level  booze              hallucination
+  gain energy/level  confusion          1/3 enlightenment, 2/3 booze
+  gain energy/level  extra healing      full healing
+  gain energy/level  full healing       gain ability
+  gain energy/level  fruit juice        see invisible
+  gain energy/level  healing            extra healing
+  healing            gain energy/level  extra healing
+  healing            speed              extra healing
+  levitation         enlightenment      2/3 gain level, 1/3 same as
+                                        "other combination" below
+  sickness           fruit juice        sickness
+  speed              fruit juice        booze
+  speed              healing            extra healing
+  undiluted potion   other combination  1/2 evaporates, 1/4 sickness,
+                                        1/8 random potion, 1/8 water
+  diluted potion     other combination  uncursed water
+  ....................................................
+  unicorn horn       blindness,         uncursed water
+                     confusion,         (regardless of cursedness of horn,
+                     hallucination      as opposed to below results)
+  unicorn horn       sickness           fruit juice (uncursed or cursed)
+  amethyst           booze              fruit juice (uncursed or cursed)
+  missile weapon     sickness           poisoned weapon
+  poisoned weapon    healing,           unpoisoned weapon
+                     extra healing,
+                     full healing 
+  anything (other    polymorph          polymorphed object of same class
+  than X of poly)                       (may resist: "Nothing happens."
+                                        "Nothing seems to happen." if
+                                        polymorphs to same item)
+  anything           lit oil            Explosion and/or damage
+  weapon             cursed oil         Greasy fingers
+  damaged weapon     other oil          May lose one damage depending on type
+  oil/magic lamp     other oil          Lamp is filled and made non-magic
+  All other combinations                No effect.  "Interesting..."
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Thanks to Bruce Cox for proofreading the original version of this file.
+Further corrections and clarifications provided by Big Al, Ken Cuvelier,
+David Goldfarb, Alex Pounds, and Irina Rempt.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Ring-343.txt {105402 2017-04-29T01:14:57Z {4000180 Bcode} Protected "[[Ring-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:ring-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+ring-343.txt  Last edited 2005-06-02 for NetHack 3.4.3
+Rings and their generic properties in NetHack 3.4 
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+RING                             COST  WGT  PROB   CHG
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ : ~~~~  ~~~  ~~~~ : ~~~
+meat ring                      : $  5   1     0  :
+adornment                      :  100   3     1  :  Y
+hunger                         :  100   3     1c :
+protection                     :  100   3     1  :  Y
+protection from shape changers :  100   3     1  :
+stealth                        :  100   3     1  :
+sustain ability                :  100   3     1  :
+warning                        :  100   3     1  :
+aggravate monster              :  150   3     1c :
+cold resistance                :  150   3     1  :
+gain constitution              :  150   3     1  :  Y
+gain strength                  :  150   3     1  :  Y
+increase accuracy              :  150   3     1  :  Y
+increase damage                :  150   3     1  :  Y
+invisibility                   :  150   3     1  :
+poison resistance              :  150   3     1  :
+see invisible                  :  150   3     1  :
+shock resistance               :  150   3     1  :
+fire resistance                :  200   3     1  :
+free action                    :  200   3     1  :
+levitation                     :  200   3     1  :
+regeneration                   :  200   3     1  :
+searching                      :  200   3     1  :
+slow digestion                 :  200   3     1  :
+teleportation                  :  200   3     1c :
+conflict                       :  300   3     1  :
+polymorph                      :  300   3     1c :
+polymorph control              :  300   3     1  :
+teleport control               :  300   3     1  :
+
+Rings are listed in increasing order of base COST, then alphabetically
+by name.  WGT specifies the weight (100 zorkmids weighs 1).
+
+Rings comprise 3% of all randomly-generated items in the main dungeon,
+5% in containers, 5% on the Rogue level, and 8% in hell.  PROB is
+the relative probability of each subtype; the suffix specifies the chance
+of blessed/cursed:
+    c           90% cursed, 10% uncursed, 0% blessed
+    charged     42.93% cursed, 41.33% uncursed, 15.73% blessed
+                Courtesy of Bruce Cox:
+                                  +ve      +0       -ve
+                   blessed   181/1200   1/240    7/3000   =  59/375
+                   uncursed       1/3    1/60    19/300   =   31/75
+                   cursed     19/1200   1/240   307/750   = 161/375
+    otherwise   10% cursed, 90% uncursed, 0% blessed
+Rings of invisibility carried by Nazguls are always cursed.
+
+The CHG field is Y if the ring can be charged.  The initial enchantment
+has an exponentially-weighted probability, but tends to be in the range
+of -3 to +3.  When a ring with a positive enchantment is charged, it
+has an (enchantment before) in 7 chance of exploding.  Rings with
+enchantments of <= -5 or >= +7 will always explode when charged.
+Otherwise, blessed charging adds 1 to 3 points of enchantment, cursed
+charging removes 1 to 2 points, and uncursed charging always adds +1.
+Therefore, the highest possible enchantment is +9 by charging (and +10
+by random generation).  You may repeatedly enchant and unenchant a ring.
+
+The effects of rings are controllable by putting on and removing the
+ring.  Most rings will confer an intrinsic or a combat or stat
+modifier; see rint-343.txt and drgn-343.txt for descriptions of the
+intrinsics involved. It is possible to obtain an effect permanently by
+polymorphing into a metallivore or gelatinous cube (depending on the
+appearance of the ring; see below) and eating the ring.  There is only
+a 1/3 chance of obtaining the effect this way ("Magic spreads through
+your body as you digest the ring.").  Note that the effect of eating
+rings that affect stats (gain constitution, gain strength, adornment)
+will not persist when you change from this form. Eating a ring of free
+action will confer sleep resistance instead.  Rings of slow digestion
+may not be eaten ("This ring is indigestible!").
+
+Meat rings have no effect when worn, but can be eaten as normal food
+(see food-343.txt). The appearances of other rings are randomized from
+the following descriptions.
+These can be eaten by any metallivore (rock mole, rust monster, or xorn):
+    pearl       iron        twisted     steel       wire
+    engagement  shiny
+The following can additionally be eaten by metallivores not restricted to
+rustprone metals (rock mole or xorn):
+    bronze      brass       copper      silver      gold
+The following can be eaten by gelatinous cubes:
+    wooden
+These appearances cannot be eaten by any monster:
+    granite     opal        clay        coral       black onyx
+    moonstone   tiger eye   jade        agate       topaz
+    sapphire    ruby        diamond     ivory       emerald
+You can determine the appearance of already identified rings using the
+discoveries command (\).
+
+Wearing a ring (other than a chargeable ring at +0) will increase the
+rate at which you get hungry; see food-343.txt.
+
+
+Identifying rings using sinks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+When a ring is dropped on top of a sink, you will get a message that
+can help you identify the ring.  Note that most messages require that
+you are not blind, and the ring of hunger requires that there is a
+(preferably worthless) object already on the sink; if these are not the
+case, you will just get "You hear the ring bouncing down the drain pipe."
+Except for the rings of searching and slow digestion, there is a 95% chance
+that the ring will fall down the drain and you will lose it forever.
+
+RING                      MESSAGE
+~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~
+meat ring                 "Several flies buzz around the sink."
+                          Works when blind.
+
+adornment                 "The faucets flash brightly for a moment."
+
+hunger                    If you are unblind and there are any items on
+                          the sink (except ball or chain) and they fail a
+                          resistance roll, they disappear:
+                          "Suddenly, <item> vanishes from the sink!"
+
+protection                "The sink glows silver/black for a moment."
+                          depending on non-negative/negative enchantment.
+
+prot from shape changers  "The sink looks nothing like a fountain."
+
+stealth                   "The sink seems to blend into the floor for a
+                           moment."
+
+sustain ability           "The water flow seems fixed."
+                          Works when blind.
+
+warning                   "The sink glows white for a moment."
+
+aggravate monster         "Several flies buzz angrily around the sink."
+                          Works when blind.
+
+cold resistance           "The cold water faucet flashes brightly for a
+                           moment."
+
+gain constitution         "The water flow seems greater/lesser now."
+                          depending on non-negative/negative enchantment.
+                          Works when blind.
+
+gain strength             "The water flow seems stronger/weaker now."
+                          depending on non-negative/negative enchantment.
+                          Works when blind.
+
+increase accuracy         "The water flow hits/misses the drain."
+                          depending on non-negative/negative enchantment.
+                          Works when blind.
+
+increase damage           "The water's force seems greater/smaller now."
+                          depending on non-negative/negative enchantment.
+                          Works when blind.
+
+invisibility              "You don't see anything happen to the sink."
+
+poison resistance         "You smell rotten <fruit>."
+                          Works when blind.
+
+see invisible             "You see some air in the sink."
+
+shock resistance          "Static electricity surrounds the sink."
+                          Works when blind.
+
+fire resistance           "The hot water faucet flashes brightly for a
+                           moment."
+
+free action               "You see the ring slide right down the drain!"
+
+levitation                "The sink quivers upward for a moment."
+                          Works when blind.
+
+regeneration              "The sink looks as good as new."
+
+searching                 "You thought your ring got lost in the sink,
+                           but there it is!"
+                          You never lose the ring.
+                          Works when blind.
+
+slow digestion            "The ring is regurgitated!"
+                          You never lose the ring.
+                          Works when blind.
+
+teleportation             "The sink momentarily vanishes."
+
+conflict                  "You hear loud noises coming from the drain."
+                          Works when blind.
+
+polymorph                 "The sink momentarily looks like a fountain."
+
+polymorph control         "The sink momentarily looks like a regularly
+                           erupting geyser."
+
+teleport control          "The sink looks like it is being beamed aboard
+                           somewhere."
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Thanks to Bruce Cox for proofreading the original version of this file.
+Further corrections and clarifications provided by Irina Rempt.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Rint-343.txt {105403 2017-04-29T01:14:57Z {4000180 Bcode} Protected "[[Rint-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:rint-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+rint-343.txt  Last edited 2004-10-05 for NetHack 3.4.3
+Ring intrinsics in NetHack 3.4
+Compiled by Dylan O'Donnell <psmith@spod-central.org>.
+
+This spoiler covers all intrinsics that may be granted by wearing rings,
+other than the dragon resistances already dealt with in drgn-343.txt:
+how to acquire them (in addition to their ring source), how to lose them,
+and what effects they have. Note that, as a general rule, any intrinsics
+acquired solely by experience level can be lost by being drained below
+that level.
+
+aggravate monster
+  acquired by
+    Wearing or eating a ring of aggravate monster.
+    Eating a corpse of your own natural race (werecorpses and Kops count as
+    human), or a little dog, dog, large dog, kitten, housecat or large cat;
+    Cave(wo)men and orcs are exempt from this.
+    Sacrificing a former pet.
+    Intrinsic aggravate monster may be lost by night-time gremlin attack.
+      "You feel less attractive."
+  effects
+    Mistreated pets become untame more quickly.
+    Sleeping monsters (other than leprechauns, nymphs, and jabberwocks)
+    will always wake up at your approach unless you are stealthy.
+
+cold resistance
+  [See drgn-343.txt]
+
+conflict
+  acquired by
+    Wearing or eating a ring of conflict.
+    #invoking the Sceptre of Might (Cave(wo)man Quest Artifact).
+  effects
+    Increases hunger rate by 50% of normal (except from Sceptre).
+    Nearby monsters in line of sight may attack each other instead of you.
+    Even peaceful monsters and pets may attack you.
+    Steeds may throw you.
+    Monsters lose restraint in attacking *trices.
+    Pets lose restraint in attacking peaceful monsters.
+    Mistreated pets become untame more quickly.
+    d4 hostile Angels created on Astral Plane in place of tame guardian
+    Angel.
+
+fire resistance
+  [See drgn-343.txt]
+
+free action
+  acquired by
+    Wearing a ring of free action. (Not eating; that confers sleep
+    resistance.)
+  effects
+    Protects against paralysis attacks of gelatinous cubes, guardian nagas,
+    ghouls, shades, and Yeenoghu.
+    Protects against passive paralysis attacks of gelatinous cubes and
+    floating eyes.
+    Paralysis and stunning spells cast by monsters have their effect reduced
+    to one turn.
+    Protects against quaffed or thrown potions of paralysis or sleeping.
+    Protects against paralysis effect of chest traps.
+    Protects against self-paralysis from looking into a mirror as a
+    floating eye.
+
+hunger
+ acquired by
+   Wearing or eating a ring of hunger.
+ effects
+   Increases hunger rate by 50% of normal.
+
+invisibility
+  acquired by
+    Wearing or eating a ring of invisibility.
+    Wearing a cloak of invisibility.
+    Quaffing a potion of invisibility (lasts 31 to 45 (more) turns if
+    non-blessed).
+    Zapping a wand of make invisible at yourself.
+    Eating a stalker (lasts 50 to 149 turns if not already invisible; if
+    only temporarily invisible, made permanent ("You feel hidden!")).
+    Polymorphing into a stalker or black light.
+    #invoking the Orb of Detection (Archeologist Quest Artifact).

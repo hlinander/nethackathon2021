@@ -1,0 +1,1000 @@
+ <span id="line31141">31141.+//		    }</span>
+ <span id="line31142">31142. 		    break;</span>
+ <span id="line31143">31143. </span>
+ <span id="line31144">31144. 		case WAN_LIGHTNING:</span>
+ <span id="line31145">31145. 		    makeknown(WAN_LIGHTNING);</span>
+ <span id="line31146">31146.-		    if (!Shock_resistance) {</span>
+ <span id="line31147">31147.-			You("shock yourself!");</span>
+ <span id="line31148">31148.-			damage = d(12,6);</span>
+ <span id="line31149">31149.-			exercise(A_CON, FALSE);</span>
+ <span id="line31150">31150.-		    } else {</span>
+ <span id="line31151">31151.+		    if (Shock_resistance && is_full_resist(SHOCK_RES)) {</span>
+ <span id="line31152">31152. 			shieldeff(u.ux, u.uy);</span>
+ <span id="line31153">31153. 			You("zap yourself, but seem unharmed.");</span>
+ <span id="line31154">31154. 			ugolemeffects(AD_ELEC, d(12,6));</span>
+ <span id="line31155">31155.+			break;</span>
+ <span id="line31156">31156.+		    } else {</span>
+ <span id="line31157">31157.+			You("shock yourself!");</span>
+ <span id="line31158">31158.+			damage = d((Shock_resistance) ? 3: 12, 6);</span>
+ <span id="line31159">31159.+			exercise(A_CON, FALSE);</span>
+ <span id="line31160">31160. 		    }</span>
+ <span id="line31161">31161. 		    destroy_item(WAND_CLASS, AD_ELEC);</span>
+ <span id="line31162">31162. 		    destroy_item(RING_CLASS, AD_ELEC);</span>
+ <span id="line31163">31163.@@ -1923,32 +1946,33 @@ boolean ordinary;</span>
+ <span id="line31164">31164. 		case WAN_FIRE:</span>
+ <span id="line31165">31165. 		    makeknown(WAN_FIRE);</span>
+ <span id="line31166">31166. 		case FIRE_HORN:</span>
+ <span id="line31167">31167.-		    if (Fire_resistance) {</span>
+ <span id="line31168">31168.+		    if (Fire_resistance && is_full_resist(FIRE_RES)) {</span>
+ <span id="line31169">31169. 			shieldeff(u.ux, u.uy);</span>
+ <span id="line31170">31170. 			You_feel("rather warm.");</span>
+ <span id="line31171">31171. 			ugolemeffects(AD_FIRE, d(12,6));</span>
+ <span id="line31172">31172. 		    } else {</span>
+ <span id="line31173">31173. 			pline("You've set yourself afire!");</span>
+ <span id="line31174">31174.-			damage = d(12,6);</span>
+ <span id="line31175">31175.+			damage = d((Fire_resistance) ? 3 : 12, 6);</span>
+ <span id="line31176">31176. 		    }</span>
+ <span id="line31177">31177. 		    burn_away_slime();</span>
+ <span id="line31178">31178. 		    (void) burnarmor(&youmonst);</span>
+ <span id="line31179">31179. 		    destroy_item(SCROLL_CLASS, AD_FIRE);</span>
+ <span id="line31180">31180. 		    destroy_item(POTION_CLASS, AD_FIRE);</span>
+ <span id="line31181">31181. 		    destroy_item(SPBOOK_CLASS, AD_FIRE);</span>
+ <span id="line31182">31182.+		    destroy_item(TOOL_CLASS, AD_FIRE);</span>
+ <span id="line31183">31183. 		    break;</span>
+ <span id="line31184">31184. </span>
+ <span id="line31185">31185. 		case WAN_COLD:</span>
+ <span id="line31186">31186. 		    makeknown(WAN_COLD);</span>
+ <span id="line31187">31187. 		case SPE_CONE_OF_COLD:</span>
+ <span id="line31188">31188. 		case FROST_HORN:</span>
+ <span id="line31189">31189.-		    if (Cold_resistance) {</span>
+ <span id="line31190">31190.+		    if (Cold_resistance && is_full_resist(COLD_RES)) {</span>
+ <span id="line31191">31191. 			shieldeff(u.ux, u.uy);</span>
+ <span id="line31192">31192. 			You_feel("a little chill.");</span>
+ <span id="line31193">31193. 			ugolemeffects(AD_COLD, d(12,6));</span>
+ <span id="line31194">31194. 		    } else {</span>
+ <span id="line31195">31195. 			You("imitate a popsicle!");</span>
+ <span id="line31196">31196.-			damage = d(12,6);</span>
+ <span id="line31197">31197.+			damage = d((Cold_resistance) ? 3 : 12, 6);</span>
+ <span id="line31198">31198. 		    }</span>
+ <span id="line31199">31199. 		    destroy_item(POTION_CLASS, AD_COLD);</span>
+ <span id="line31200">31200. 		    break;</span>
+ <span id="line31201">31201.@@ -1959,6 +1983,7 @@ boolean ordinary;</span>
+ <span id="line31202">31202. 		    if(Antimagic) {</span>
+ <span id="line31203">31203. 			shieldeff(u.ux, u.uy);</span>
+ <span id="line31204">31204. 			pline_The("missiles bounce!");</span>
+ <span id="line31205">31205.+			damage_resistant_obj(ANTIMAGIC, 1);</span>
+ <span id="line31206">31206. 		    } else {</span>
+ <span id="line31207">31207. 			damage = d(4,6);</span>
+ <span id="line31208">31208. 			pline("Idiot!  You've shot yourself!");</span>
+ <span id="line31209">31209.@@ -1997,11 +2022,12 @@ boolean ordinary;</span>
+ <span id="line31210">31210. 		        You_feel("rather itchy under your %s.", xname(uarmc));</span>
+ <span id="line31211">31211. 		        break;</span>
+ <span id="line31212">31212. 		    }</span>
+ <span id="line31213">31213.-		    if (ordinary || !rn2(10)) {	/* permanent */</span>
+ <span id="line31214">31214.-			HInvis |= FROMOUTSIDE;</span>
+ <span id="line31215">31215.-		    } else {			/* temporary */</span>
+ <span id="line31216">31216.+/* never get permanent invisibity by wand - youkan */</span>
+ <span id="line31217">31217.+//		    if (ordinary || !rn2(10)) {	/* permanent */</span>
+ <span id="line31218">31218.+//			HInvis |= FROMOUTSIDE;</span>
+ <span id="line31219">31219.+//		    } else {			/* temporary */</span>
+ <span id="line31220">31220. 		    	incr_itimeout(&HInvis, d(obj->spe, 250));</span>
+ <span id="line31221">31221.-		    }</span>
+ <span id="line31222">31222.+//		    }</span>
+ <span id="line31223">31223. 		    if (msg) {</span>
+ <span id="line31224">31224. 			makeknown(WAN_MAKE_INVISIBLE);</span>
+ <span id="line31225">31225. 			newsym(u.ux, u.uy);</span>
+ <span id="line31226">31226.@@ -2011,15 +2037,25 @@ boolean ordinary;</span>
+ <span id="line31227">31227. 		}</span>
+ <span id="line31228">31228. </span>
+ <span id="line31229">31229. 		case WAN_SPEED_MONSTER:</span>
+ <span id="line31230">31230.-		    if (!(HFast & INTRINSIC)) {</span>
+ <span id="line31231">31231.-			if (!Fast)</span>
+ <span id="line31232">31232.-			    You("speed up.");</span>
+ <span id="line31233">31233.-			else</span>
+ <span id="line31234">31234.-			    Your("quickness feels more natural.");</span>
+ <span id="line31235">31235.-			makeknown(WAN_SPEED_MONSTER);</span>
+ <span id="line31236">31236.-			exercise(A_DEX, TRUE);</span>
+ <span id="line31237">31237.+		    if (Very_fast) {</span>
+ <span id="line31238">31238.+			Your("%s get new energy.",</span>
+ <span id="line31239">31239.+				makeplural(body_part(LEG)));</span>
+ <span id="line31240">31240.+			break;</span>
+ <span id="line31241">31241. 		    }</span>
+ <span id="line31242">31242.-		    HFast |= FROMOUTSIDE;</span>
+ <span id="line31243">31243.+		    You("are suddenly moving %sfaster.",</span>
+ <span id="line31244">31244.+				(Fast || BFast) ? "" : "much ");</span>
+ <span id="line31245">31245.+		    u.uspdbon2 = 2;</span>
+ <span id="line31246">31246.+		    incr_itimeout(&HFast, rn1(10, 10));</span>
+ <span id="line31247">31247.+/* wand of speed monster no longer convey intrinsic speed */</span>
+ <span id="line31248">31248.+//		    if (!(HFast & INTRINSIC)) {</span>
+ <span id="line31249">31249.+//			if (!Fast)</span>
+ <span id="line31250">31250.+//			    You("speed up.");</span>
+ <span id="line31251">31251.+//			else</span>
+ <span id="line31252">31252.+//			    Your("quickness feels more natural.");</span>
+ <span id="line31253">31253.+//			makeknown(WAN_SPEED_MONSTER);</span>
+ <span id="line31254">31254.+//			exercise(A_DEX, TRUE);</span>
+ <span id="line31255">31255.+//		    }</span>
+ <span id="line31256">31256.+//		    HFast |= FROMOUTSIDE;</span>
+ <span id="line31257">31257. 		    break;</span>
+ <span id="line31258">31258. </span>
+ <span id="line31259">31259. 		case WAN_SLEEP:</span>
+ <span id="line31260">31260.@@ -2049,7 +2085,7 @@ boolean ordinary;</span>
+ <span id="line31261">31261. </span>
+ <span id="line31262">31262. 		case WAN_DEATH:</span>
+ <span id="line31263">31263. 		case SPE_FINGER_OF_DEATH:</span>
+ <span id="line31264">31264.-		    if (nonliving(youmonst.data) || is_demon(youmonst.data)) {</span>
+ <span id="line31265">31265.+		    if (vs_death_factor(youmonst.data)) {</span>
+ <span id="line31266">31266. 			pline((obj->otyp == WAN_DEATH) ?</span>
+ <span id="line31267">31267. 			  "The wand shoots an apparently harmless beam at you."</span>
+ <span id="line31268">31268. 			  : "You seem no deader than before.");</span>
+ <span id="line31269">31269.@@ -2537,13 +2573,11 @@ int skill;</span>
+ <span id="line31270">31270.     int hit_bon = 0;</span>
+ <span id="line31271">31271.     int dex = ACURR(A_DEX);</span>
+ <span id="line31272">31272. </span>
+ <span id="line31273">31273.-    switch (P_SKILL(spell_skilltype(skill))) {</span>
+ <span id="line31274">31274.-	case P_ISRESTRICTED:</span>
+ <span id="line31275">31275.-	case P_UNSKILLED:   hit_bon = -4; break;</span>
+ <span id="line31276">31276.-	case P_BASIC:       hit_bon =  0; break;</span>
+ <span id="line31277">31277.-	case P_SKILLED:     hit_bon =  2; break;</span>
+ <span id="line31278">31278.-	case P_EXPERT:      hit_bon =  3; break;</span>
+ <span id="line31279">31279.-    }</span>
+ <span id="line31280">31280.+    schar hbon[11] = {</span>
+ <span id="line31281">31281.+	   /*  0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% */</span>
+ <span id="line31282">31282.+		-4, -2, -2, -1, -1,  0,  0, +1, +2, +2, +3</span>
+ <span id="line31283">31283.+    };</span>
+ <span id="line31284">31284.+    hit_bon = hbon[P_SKILL(spell_skilltype(skill))/10];</span>
+ <span id="line31285">31285. </span>
+ <span id="line31286">31286.     if (dex < 4)</span>
+ <span id="line31287">31287. 	hit_bon -= 3;</span>
+ <span id="line31288">31288.@@ -2622,23 +2656,41 @@ int FDECL((*fhitm), (MONST_P, OBJ_P)),	/</span>
+ <span id="line31289">31289.     FDECL((*fhito), (OBJ_P, OBJ_P));</span>
+ <span id="line31290">31290. struct obj *obj;			/* object tossed/used */</span>
+ <span id="line31291">31291. {</span>
+ <span id="line31292">31292.-	struct monst *mtmp;</span>
+ <span id="line31293">31293.-	uchar typ;</span>
+ <span id="line31294">31294.-	boolean shopdoor = FALSE, point_blank = TRUE;</span>
+ <span id="line31295">31295.+	register boolean shopdoor = FALSE;</span>
+ <span id="line31296">31296.+	int sx, sy;</span>
+ <span id="line31297">31297. </span>
+ <span id="line31298">31298. 	if (weapon == KICKED_WEAPON) {</span>
+ <span id="line31299">31299. 	    /* object starts one square in front of player */</span>
+ <span id="line31300">31300.-	    bhitpos.x = u.ux + ddx;</span>
+ <span id="line31301">31301.-	    bhitpos.y = u.uy + ddy;</span>
+ <span id="line31302">31302.+	    sx = u.ux + ddx;</span>
+ <span id="line31303">31303.+	    sy = u.uy + ddy;</span>
+ <span id="line31304">31304. 	    range--;</span>
+ <span id="line31305">31305. 	} else {</span>
+ <span id="line31306">31306.-	    bhitpos.x = u.ux;</span>
+ <span id="line31307">31307.-	    bhitpos.y = u.uy;</span>
+ <span id="line31308">31308.+	    sx = u.ux;</span>
+ <span id="line31309">31309.+	    sy = u.uy;</span>
+ <span id="line31310">31310. 	}</span>
+ <span id="line31311">31311.+	return bhitcore(sx,sy, ddx, ddy, range, weapon, fhitm, fhito, obj, TRUE);</span>
+ <span id="line31312">31312.+}</span>
+ <span id="line31313">31313. </span>
+ <span id="line31314">31314.-	if (weapon == FLASHED_LIGHT) {</span>
+ <span id="line31315">31315.+struct monst *</span>
+ <span id="line31316">31316.+bhitcore(startx,starty, ddx,ddy, range, weapon, fhitm,fhito, obj, youshoot)</span>
+ <span id="line31317">31317.+int startx, starty;			/* starting position */</span>
+ <span id="line31318">31318.+int ddx,ddy,range;			/* direction and range */</span>
+ <span id="line31319">31319.+int weapon;				/* see values in hack.h */</span>
+ <span id="line31320">31320.+int FDECL((*fhitm), (MONST_P, OBJ_P)),	/* fns called when mon/obj hit (return value: ) */</span>
+ <span id="line31321">31321.+    FDECL((*fhito), (OBJ_P, OBJ_P));	/* 	return value -- 0:keep going 1:stop */</span>
+ <span id="line31322">31322.+struct obj *obj;			/* object tossed/used */</span>
+ <span id="line31323">31323.+boolean youshoot;			/* TRUE:you shot it */</span>
+ <span id="line31324">31324.+{</span>
+ <span id="line31325">31325.+	struct monst *mtmp;</span>
+ <span id="line31326">31326.+	uchar typ;</span>
+ <span id="line31327">31327.+	boolean shopdoor = FALSE, point_blank = TRUE;</span>
+ <span id="line31328">31328.+</span>
+ <span id="line31329">31329.+	bhitpos.x = startx;</span>
+ <span id="line31330">31330.+	bhitpos.y = starty;</span>
+ <span id="line31331">31331.+</span>
+ <span id="line31332">31332.+	if ((weapon & BHIT_GLYPHMASK) == BHIT_GLYPH_FLASH) {</span>
+ <span id="line31333">31333. 	    tmp_at(DISP_BEAM, cmap_to_glyph(S_flashbeam));</span>
+ <span id="line31334">31334.-	} else if (weapon != ZAPPED_WAND && weapon != INVIS_BEAM)</span>
+ <span id="line31335">31335.+	} else if ((weapon & BHIT_GLYPHMASK) == BHIT_GLYPH_OBJ)</span>
+ <span id="line31336">31336. 	    tmp_at(DISP_FLASH, obj_to_glyph(obj));</span>
+ <span id="line31337">31337. </span>
+ <span id="line31338">31338. 	while(range-- > 0) {</span>
+ <span id="line31339">31339.@@ -2654,7 +2706,7 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31340">31340. 		break;</span>
+ <span id="line31341">31341. 	    }</span>
+ <span id="line31342">31342. </span>
+ <span id="line31343">31343.-	    if(is_pick(obj) && inside_shop(x, y) &&</span>
+ <span id="line31344">31344.+	    if(obj && is_pick(obj) && inside_shop(x, y) &&</span>
+ <span id="line31345">31345. 					   (mtmp = shkcatch(obj, x, y))) {</span>
+ <span id="line31346">31346. 		tmp_at(DISP_END, 0);</span>
+ <span id="line31347">31347. 		return(mtmp);</span>
+ <span id="line31348">31348.@@ -2663,8 +2715,8 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31349">31349. 	    typ = levl[bhitpos.x][bhitpos.y].typ;</span>
+ <span id="line31350">31350. </span>
+ <span id="line31351">31351. 	    /* iron bars will block anything big enough */</span>
+ <span id="line31352">31352.-	    if ((weapon == THROWN_WEAPON || weapon == KICKED_WEAPON) &&</span>
+ <span id="line31353">31353.-		    typ == IRONBARS &&</span>
+ <span id="line31354">31354.+	    if ((weapon & BHIT_OBJTHROWN) /* physical flying or sliding object */</span>
+ <span id="line31355">31355.+	    		 && typ == IRONBARS &&</span>
+ <span id="line31356">31356. 		    hits_bars(&obj, x - ddx, y - ddy,</span>
+ <span id="line31357">31357. 			      point_blank ? 0 : !rn2(5), 1)) {</span>
+ <span id="line31358">31358. 		/* caveat: obj might now be null... */</span>
+ <span id="line31359">31359.@@ -2673,7 +2725,8 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31360">31360. 		break;</span>
+ <span id="line31361">31361. 	    }</span>
+ <span id="line31362">31362. </span>
+ <span id="line31363">31363.-	    if (weapon == ZAPPED_WAND && find_drawbridge(&x,&y))</span>
+ <span id="line31364">31364.+	    /* drawbridge handling */</span>
+ <span id="line31365">31365.+	    if ((weapon & BHIT_ZAPPEDWAND) && find_drawbridge(&x,&y))</span>
+ <span id="line31366">31366. 		switch (obj->otyp) {</span>
+ <span id="line31367">31367. 		    case WAN_OPENING:</span>
+ <span id="line31368">31368. 		    case SPE_KNOCK:</span>
+ <span id="line31369">31369.@@ -2696,45 +2749,39 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31370">31370. 			    destroy_drawbridge(x,y);</span>
+ <span id="line31371">31371. 			makeknown(obj->otyp);</span>
+ <span id="line31372">31372. 			break;</span>
+ <span id="line31373">31373.+		    default:</span>
+ <span id="line31374">31374.+			break;</span>
+ <span id="line31375">31375. 		}</span>
+ <span id="line31376">31376. </span>
+ <span id="line31377">31377.-	    if ((mtmp = m_at(bhitpos.x, bhitpos.y)) != 0) {</span>
+ <span id="line31378">31378.+	    if (!youshoot && bhitpos.x==u.ux && bhitpos.y==u.uy)</span>
+ <span id="line31379">31379.+		 mtmp = &youmonst;</span>
+ <span id="line31380">31380.+	    else mtmp = m_at(bhitpos.x, bhitpos.y);</span>
+ <span id="line31381">31381.+	    if (mtmp) {</span>
+ <span id="line31382">31382.+#ifdef MONSTEED</span>
+ <span id="line31383">31383.+		mtmp = mrider_or_msteed(mtmp, !rn2(3));</span>
+ <span id="line31384">31384.+#endif</span>
+ <span id="line31385">31385.+		/* hit a monster */</span>
+ <span id="line31386">31386. 		notonhead = (bhitpos.x != mtmp->mx ||</span>
+ <span id="line31387">31387. 			     bhitpos.y != mtmp->my);</span>
+ <span id="line31388">31388.-		if (weapon != FLASHED_LIGHT) {</span>
+ <span id="line31389">31389.-			if(weapon != ZAPPED_WAND) {</span>
+ <span id="line31390">31390.-			    if(weapon != INVIS_BEAM) tmp_at(DISP_END, 0);</span>
+ <span id="line31391">31391.-			    if (cansee(bhitpos.x,bhitpos.y) && !canspotmon(mtmp)) {</span>
+ <span id="line31392">31392.-				if (weapon != INVIS_BEAM) {</span>
+ <span id="line31393">31393.-				    map_invisible(bhitpos.x, bhitpos.y);</span>
+ <span id="line31394">31394.-				    return(mtmp);</span>
+ <span id="line31395">31395.-				}</span>
+ <span id="line31396">31396.-			    } else</span>
+ <span id="line31397">31397.-				return(mtmp);</span>
+ <span id="line31398">31398.-			}</span>
+ <span id="line31399">31399.-			if (weapon != INVIS_BEAM) {</span>
+ <span id="line31400">31400.-			    (*fhitm)(mtmp, obj);</span>
+ <span id="line31401">31401.-			    range -= 3;</span>
+ <span id="line31402">31402.-			}</span>
+ <span id="line31403">31403.-		} else {</span>
+ <span id="line31404">31404.-		    /* FLASHED_LIGHT hitting invisible monster</span>
+ <span id="line31405">31405.-		       should pass through instead of stop so</span>
+ <span id="line31406">31406.-		       we call flash_hits_mon() directly rather</span>
+ <span id="line31407">31407.-		       than returning mtmp back to caller. That</span>
+ <span id="line31408">31408.-		       allows the flash to keep on going. Note</span>
+ <span id="line31409">31409.-		       that we use mtmp->minvis not canspotmon()</span>
+ <span id="line31410">31410.-		       because it makes no difference whether</span>
+ <span id="line31411">31411.-		       the hero can see the monster or not.*/</span>
+ <span id="line31412">31412.-		    if (mtmp->minvis) {</span>
+ <span id="line31413">31413.-			obj->ox = u.ux,  obj->oy = u.uy;</span>
+ <span id="line31414">31414.-			(void) flash_hits_mon(mtmp, obj);</span>
+ <span id="line31415">31415.+		if (!((weapon & BHIT_PASSINVIS) && mtmp->minvis)) {</span>
+ <span id="line31416">31416.+		    if (!fhitm) {</span>
+ <span id="line31417">31417.+			/* no hitmon callback -- return the first monster hit */</span>
+ <span id="line31418">31418.+			if ((weapon & BHIT_SENSEINVIS) &&</span>
+ <span id="line31419">31419.+			    cansee(bhitpos.x,bhitpos.y) && !canspotmons(mtmp))</span>
+ <span id="line31420">31420.+				map_invisible(bhitpos.x, bhitpos.y);</span>
+ <span id="line31421">31421.+			if((weapon & BHIT_GLYPHMASK) != BHIT_GLYPH_NONE)</span>
+ <span id="line31422">31422.+				tmp_at(DISP_END, 0);</span>
+ <span id="line31423">31423.+			return(mtmp);</span>
+ <span id="line31424">31424. 		    } else {</span>
+ <span id="line31425">31425.-			tmp_at(DISP_END, 0);</span>
+ <span id="line31426">31426.-		    	return(mtmp); 	/* caller will call flash_hits_mon */</span>
+ <span id="line31427">31427.+			/* hitmon callback -- call fhitm for every monster to hit */</span>
+ <span id="line31428">31428.+			if ((*fhitm)(mtmp, obj)) break; /* stopped: exit the loop */</span>
+ <span id="line31429">31429.+			range -= 3;			/* keep going */</span>
+ <span id="line31430">31430. 		    }</span>
+ <span id="line31431">31431. 		}</span>
+ <span id="line31432">31432.+</span>
+ <span id="line31433">31433. 	    } else {</span>
+ <span id="line31434">31434.-		if (weapon == ZAPPED_WAND && obj->otyp == WAN_PROBING &&</span>
+ <span id="line31435">31435.+		/* did not hit a monster */</span>
+ <span id="line31436">31436.+		if ((weapon & BHIT_ZAPPEDWAND) && obj->otyp == WAN_PROBING &&</span>
+ <span id="line31437">31437. 		   glyph_is_invisible(levl[bhitpos.x][bhitpos.y].glyph)) {</span>
+ <span id="line31438">31438. 		    unmap_object(bhitpos.x, bhitpos.y);</span>
+ <span id="line31439">31439. 		    newsym(x, y);</span>
+ <span id="line31440">31440.@@ -2743,7 +2790,13 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31441">31441. 	    if(fhito) {</span>
+ <span id="line31442">31442. 		if(bhitpile(obj,fhito,bhitpos.x,bhitpos.y))</span>
+ <span id="line31443">31443. 		    range--;</span>
+ <span id="line31444">31444.+#ifdef NOPOLYPILE</span>
+ <span id="line31445">31445.+		if ((weapon & BHIT_ZAPPEDWAND) &&</span>
+ <span id="line31446">31446.+		    (obj->otyp == WAN_POLYMORPH || obj->otyp == SPE_POLYMORPH))</span>
+ <span id="line31447">31447.+		    range = 0;</span>
+ <span id="line31448">31448.+#endif /*NOPOLYPILE*/</span>
+ <span id="line31449">31449. 	    } else {</span>
+ <span id="line31450">31450.+		/* hero tries to kick dropped gold out of the shop */</span>
+ <span id="line31451">31451. 		if(weapon == KICKED_WEAPON &&</span>
+ <span id="line31452">31452. 		      ((obj->oclass == COIN_CLASS &&</span>
+ <span id="line31453">31453. 			 OBJ_AT(bhitpos.x, bhitpos.y)) ||</span>
+ <span id="line31454">31454.@@ -2753,7 +2806,9 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31455">31455. 			return (struct monst *)0;</span>
+ <span id="line31456">31456. 		}</span>
+ <span id="line31457">31457. 	    }</span>
+ <span id="line31458">31458.-	    if(weapon == ZAPPED_WAND && (IS_DOOR(typ) || typ == SDOOR)) {</span>
+ <span id="line31459">31459.+</span>
+ <span id="line31460">31460.+	    /* door handling(open/close/crash etc.) */</span>
+ <span id="line31461">31461.+	    if((weapon & BHIT_ZAPPEDWAND) && (IS_DOOR(typ) || typ == SDOOR)) {</span>
+ <span id="line31462">31462. 		switch (obj->otyp) {</span>
+ <span id="line31463">31463. 		case WAN_OPENING:</span>
+ <span id="line31464">31464. 		case WAN_LOCKING:</span>
+ <span id="line31465">31465.@@ -2768,39 +2823,46 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31466">31466. 			if (levl[bhitpos.x][bhitpos.y].doormask == D_BROKEN</span>
+ <span id="line31467">31467. 			    && *in_rooms(bhitpos.x, bhitpos.y, SHOPBASE)) {</span>
+ <span id="line31468">31468. 			    shopdoor = TRUE;</span>
+ <span id="line31469">31469.-			    add_damage(bhitpos.x, bhitpos.y, 400L);</span>
+ <span id="line31470">31470.+			    add_damage(bhitpos.x, bhitpos.y, youshoot ? 400L : 0L);</span>
+ <span id="line31471">31471. 			}</span>
+ <span id="line31472">31472. 		    }</span>
+ <span id="line31473">31473. 		    break;</span>
+ <span id="line31474">31474.+		default:</span>
+ <span id="line31475">31475.+		    break;</span>
+ <span id="line31476">31476. 		}</span>
+ <span id="line31477">31477. 	    }</span>
+ <span id="line31478">31478.+</span>
+ <span id="line31479">31479.+	    /* blocked by door */</span>
+ <span id="line31480">31480. 	    if(!ZAP_POS(typ) || closed_door(bhitpos.x, bhitpos.y)) {</span>
+ <span id="line31481">31481. 		bhitpos.x -= ddx;</span>
+ <span id="line31482">31482. 		bhitpos.y -= ddy;</span>
+ <span id="line31483">31483. 		break;</span>
+ <span id="line31484">31484. 	    }</span>
+ <span id="line31485">31485.-	    if(weapon != ZAPPED_WAND && weapon != INVIS_BEAM) {</span>
+ <span id="line31486">31486.-		/* 'I' present but no monster: erase */</span>
+ <span id="line31487">31487.-		/* do this before the tmp_at() */</span>
+ <span id="line31488">31488.-		if (glyph_is_invisible(levl[bhitpos.x][bhitpos.y].glyph)</span>
+ <span id="line31489">31489.-			&& cansee(x, y)) {</span>
+ <span id="line31490">31490.-		    unmap_object(bhitpos.x, bhitpos.y);</span>
+ <span id="line31491">31491.-		    newsym(x, y);</span>
+ <span id="line31492">31492.-		}</span>
+ <span id="line31493">31493.+	    /* 'I' present but no monster: erase */</span>
+ <span id="line31494">31494.+	    /* do this before the tmp_at() */</span>
+ <span id="line31495">31495.+	    if (!(weapon & BHIT_PASSINVIS) &&</span>
+ <span id="line31496">31496.+		glyph_is_invisible(levl[bhitpos.x][bhitpos.y].glyph) &&</span>
+ <span id="line31497">31497.+		cansee(x, y)) {</span>
+ <span id="line31498">31498.+		unmap_object(bhitpos.x, bhitpos.y);</span>
+ <span id="line31499">31499.+		newsym(x, y);</span>
+ <span id="line31500">31500.+	    }</span>
+ <span id="line31501">31501.+	    /* show the symbol flying */</span>
+ <span id="line31502">31502.+	    if((weapon & BHIT_GLYPHMASK) != BHIT_GLYPH_NONE) {</span>
+ <span id="line31503">31503. 		tmp_at(bhitpos.x, bhitpos.y);</span>
+ <span id="line31504">31504. 		delay_output();</span>
+ <span id="line31505">31505.-		/* kicked objects fall in pools */</span>
+ <span id="line31506">31506.-		if((weapon == KICKED_WEAPON) &&</span>
+ <span id="line31507">31507.-		   (is_pool(bhitpos.x, bhitpos.y) ||</span>
+ <span id="line31508">31508.-		   is_lava(bhitpos.x, bhitpos.y)))</span>
+ <span id="line31509">31509.+	    }</span>
+ <span id="line31510">31510.+	    /* kicked objects fall in pools */</span>
+ <span id="line31511">31511.+	    if((weapon & BHIT_FALLTOPOOL) &&</span>
+ <span id="line31512">31512.+	       (is_pool(bhitpos.x, bhitpos.y) ||</span>
+ <span id="line31513">31513.+		is_lava(bhitpos.x, bhitpos.y)))</span>
+ <span id="line31514">31514. 		    break;</span>
+ <span id="line31515">31515. #ifdef SINKS</span>
+ <span id="line31516">31516.-		if(IS_SINK(typ) && weapon != FLASHED_LIGHT)</span>
+ <span id="line31517">31517.-		    break;	/* physical objects fall onto sink */</span>
+ <span id="line31518">31518.+	    /* physical objects fall onto sink */</span>
+ <span id="line31519">31519.+	    if(IS_SINK(typ) && (weapon & BHIT_STOPATSINK))</span>
+ <span id="line31520">31520.+		break;</span>
+ <span id="line31521">31521. #endif</span>
+ <span id="line31522">31522.-	    }</span>
+ <span id="line31523">31523. 	    /* limit range of ball so hero won't make an invalid move */</span>
+ <span id="line31524">31524.-	    if (weapon == THROWN_WEAPON && range > 0 &&</span>
+ <span id="line31525">31525.+	    if ((weapon & BHIT_OBJTHROWN) && range > 0 &&</span>
+ <span id="line31526">31526. 		obj->otyp == HEAVY_IRON_BALL) {</span>
+ <span id="line31527">31527. 		struct obj *bobj;</span>
+ <span id="line31528">31528. 		struct trap *t;</span>
+ <span id="line31529">31529.@@ -2829,9 +2891,9 @@ struct obj *obj;			/* object tossed/used</span>
+ <span id="line31530">31530. 	    point_blank = FALSE;	/* affects passing through iron bars */</span>
+ <span id="line31531">31531. 	}</span>
+ <span id="line31532">31532. </span>
+ <span id="line31533">31533.-	if (weapon != ZAPPED_WAND && weapon != INVIS_BEAM) tmp_at(DISP_END, 0);</span>
+ <span id="line31534">31534.+	if ((weapon & BHIT_GLYPHMASK) != BHIT_GLYPH_NONE) tmp_at(DISP_END, 0);</span>
+ <span id="line31535">31535. </span>
+ <span id="line31536">31536.-	if(shopdoor)</span>
+ <span id="line31537">31537.+	if(shopdoor && youshoot)</span>
+ <span id="line31538">31538. 	    pay_for_damage("destroy", FALSE);</span>
+ <span id="line31539">31539. </span>
+ <span id="line31540">31540. 	return (struct monst *)0;</span>
+ <span id="line31541">31541.@@ -2962,6 +3024,15 @@ struct obj **ootmp;	/* to return worn ar</span>
+ <span id="line31542">31542. 		(void)sleep_monst(mon, d(nd, 25),</span>
+ <span id="line31543">31543. 				type == ZT_WAND(ZT_SLEEP) ? WAND_CLASS : '\0');</span>
+ <span id="line31544">31544. 		break;</span>
+ <span id="line31545">31545.+	case ZT_PARALYSIS:</span>
+ <span id="line31546">31546.+		tmp = 0;</span>
+ <span id="line31547">31547.+		if (resists_paraly(mon)) {</span>
+ <span id="line31548">31548.+		    sho_shieldeff = TRUE;</span>
+ <span id="line31549">31549.+		    break;</span>
+ <span id="line31550">31550.+		}</span>
+ <span id="line31551">31551.+		mon->mcanmove = 0;</span>
+ <span id="line31552">31552.+		mon->mfrozen = d(nd, 6);</span>
+ <span id="line31553">31553.+		break;</span>
+ <span id="line31554">31554. 	case ZT_DEATH:		/* death/disintegration */</span>
+ <span id="line31555">31555. 		if(abs(type) != ZT_BREATH(ZT_DEATH)) {	/* death */</span>
+ <span id="line31556">31556. 		    if(mon->data == &mons[PM_DEATH]) {</span>
+ <span id="line31557">31557.@@ -2972,8 +3043,8 @@ struct obj **ootmp;	/* to return worn ar</span>
+ <span id="line31558">31558. 			tmp = 0;</span>
+ <span id="line31559">31559. 			break;</span>
+ <span id="line31560">31560. 		    }</span>
+ <span id="line31561">31561.-		    if (nonliving(mon->data) || is_demon(mon->data) ||</span>
+ <span id="line31562">31562.-			    resists_magm(mon)) {	/* similar to player */</span>
+ <span id="line31563">31563.+		    if (vs_death_factor(mon->data) ||</span>
+ <span id="line31564">31564.+			resists_magm(mon)) {	/* similar to player */</span>
+ <span id="line31565">31565. 			sho_shieldeff = TRUE;</span>
+ <span id="line31566">31566. 			break;</span>
+ <span id="line31567">31567. 		    }</span>
+ <span id="line31568">31568.@@ -3071,41 +3142,55 @@ const char *fltxt;</span>
+ <span id="line31569">31569. xchar sx, sy;</span>
+ <span id="line31570">31570. {</span>
+ <span id="line31571">31571. 	int dam = 0;</span>
+ <span id="line31572">31572.+	boolean not_effected = FALSE;</span>
+ <span id="line31573">31573. </span>
+ <span id="line31574">31574. 	switch (abs(type) % 10) {</span>
+ <span id="line31575">31575. 	case ZT_MAGIC_MISSILE:</span>
+ <span id="line31576">31576. 	    if (Antimagic) {</span>
+ <span id="line31577">31577. 		shieldeff(sx, sy);</span>
+ <span id="line31578">31578. 		pline_The("missiles bounce off!");</span>
+ <span id="line31579">31579.+		damage_resistant_obj(ANTIMAGIC, 1);</span>
+ <span id="line31580">31580. 	    } else {</span>
+ <span id="line31581">31581. 		dam = d(nd,6);</span>
+ <span id="line31582">31582. 		exercise(A_STR, FALSE);</span>
+ <span id="line31583">31583. 	    }</span>
+ <span id="line31584">31584. 	    break;</span>
+ <span id="line31585">31585. 	case ZT_FIRE:</span>
+ <span id="line31586">31586.+	    dam = d(nd, 6);</span>
+ <span id="line31587">31587. 	    if (Fire_resistance) {</span>
+ <span id="line31588">31588.-		shieldeff(sx, sy);</span>
+ <span id="line31589">31589.-		You("don't feel hot!");</span>
+ <span id="line31590">31590.+		if (not_effected = is_full_resist(FIRE_RES)) {</span>
+ <span id="line31591">31591.+		    shieldeff(sx, sy);</span>
+ <span id="line31592">31592.+		    You("don't feel hot!");</span>
+ <span id="line31593">31593.+		    dam = 0;</span>
+ <span id="line31594">31594.+		} else {</span>
+ <span id="line31595">31595.+		    You("endure the heat.");</span>
+ <span id="line31596">31596.+		    dam = (dam+3) / 4;</span>
+ <span id="line31597">31597.+		}</span>
+ <span id="line31598">31598. 		ugolemeffects(AD_FIRE, d(nd, 6));</span>
+ <span id="line31599">31599.-	    } else {</span>
+ <span id="line31600">31600.-		dam = d(nd, 6);</span>
+ <span id="line31601">31601. 	    }</span>
+ <span id="line31602">31602. 	    burn_away_slime();</span>
+ <span id="line31603">31603.-	    if (burnarmor(&youmonst)) {	/* "body hit" */</span>
+ <span id="line31604">31604.+	    if (!not_effected && burnarmor(&youmonst)) {	/* "body hit" */</span>
+ <span id="line31605">31605. 		if (!rn2(3)) destroy_item(POTION_CLASS, AD_FIRE);</span>
+ <span id="line31606">31606. 		if (!rn2(3)) destroy_item(SCROLL_CLASS, AD_FIRE);</span>
+ <span id="line31607">31607. 		if (!rn2(5)) destroy_item(SPBOOK_CLASS, AD_FIRE);</span>
+ <span id="line31608">31608.+		if (!rn2(3)) destroy_item(TOOL_CLASS, AD_FIRE);</span>
+ <span id="line31609">31609. 	    }</span>
+ <span id="line31610">31610. 	    break;</span>
+ <span id="line31611">31611. 	case ZT_COLD:</span>
+ <span id="line31612">31612.+	    dam = d(nd, 6);</span>
+ <span id="line31613">31613. 	    if (Cold_resistance) {</span>
+ <span id="line31614">31614.-		shieldeff(sx, sy);</span>
+ <span id="line31615">31615.-		You("don't feel cold.");</span>
+ <span id="line31616">31616.+		if (not_effected = is_full_resist(COLD_RES)) {</span>
+ <span id="line31617">31617.+		    shieldeff(sx, sy);</span>
+ <span id="line31618">31618.+		    You("don't feel cold.");</span>
+ <span id="line31619">31619.+		    dam = 0;</span>
+ <span id="line31620">31620.+		} else {</span>
+ <span id="line31621">31621.+		    You("feel slightly cold.");</span>
+ <span id="line31622">31622.+		    dam = (dam+3) / 4;</span>
+ <span id="line31623">31623.+		}</span>
+ <span id="line31624">31624. 		ugolemeffects(AD_COLD, d(nd, 6));</span>
+ <span id="line31625">31625.-	    } else {</span>
+ <span id="line31626">31626.-		dam = d(nd, 6);</span>
+ <span id="line31627">31627. 	    }</span>
+ <span id="line31628">31628.-	    if (!rn2(3)) destroy_item(POTION_CLASS, AD_COLD);</span>
+ <span id="line31629">31629.+	    if (!not_effected && !rn2(3))</span>
+ <span id="line31630">31630.+		destroy_item(POTION_CLASS, AD_COLD);</span>
+ <span id="line31631">31631. 	    break;</span>
+ <span id="line31632">31632. 	case ZT_SLEEP:</span>
+ <span id="line31633">31633. 	    if (Sleep_resistance) {</span>
+ <span id="line31634">31634.@@ -3115,10 +3200,22 @@ xchar sx, sy;</span>
+ <span id="line31635">31635. 		fall_asleep(-d(nd,25), TRUE); /* sleep ray */</span>
+ <span id="line31636">31636. 	    }</span>
+ <span id="line31637">31637. 	    break;</span>
+ <span id="line31638">31638.+	case ZT_PARALYSIS:</span>
+ <span id="line31639">31639.+	    if (Free_action) {</span>
+ <span id="line31640">31640.+		shieldeff(u.ux, u.uy);</span>
+ <span id="line31641">31641.+		You("stiffen momentarily.");</span>
+ <span id="line31642">31642.+	    } else {</span>
+ <span id="line31643">31643.+		You("are frozen!");</span>
+ <span id="line31644">31644.+		nomul(-d(nd, 4));</span>
+ <span id="line31645">31645.+		nomovemsg = You_can_move_again;</span>
+ <span id="line31646">31646.+		exercise(A_DEX, FALSE);</span>
+ <span id="line31647">31647.+	    }</span>
+ <span id="line31648">31648.+	    break;</span>
+ <span id="line31649">31649. 	case ZT_DEATH:</span>
+ <span id="line31650">31650. 	    if (abs(type) == ZT_BREATH(ZT_DEATH)) {</span>
+ <span id="line31651">31651.-		if (Disint_resistance) {</span>
+ <span id="line31652">31652.-		    You("are not disintegrated.");</span>
+ <span id="line31653">31653.+		if (is_full_resist(DISINT_RES)) {</span>
+ <span id="line31654">31654.+		    shieldeff(sx, sy);</span>
+ <span id="line31655">31655.+		    You("aren't affected.");</span>
+ <span id="line31656">31656. 		    break;</span>
+ <span id="line31657">31657. 		} else if (uarms) {</span>
+ <span id="line31658">31658. 		    /* destroy shield; other possessions are safe */</span>
+ <span id="line31659">31659.@@ -3136,13 +3233,18 @@ xchar sx, sy;</span>
+ <span id="line31660">31660. #ifdef TOURIST</span>
+ <span id="line31661">31661. 		if (uarmu) (void) destroy_arm(uarmu);</span>
+ <span id="line31662">31662. #endif</span>
+ <span id="line31663">31663.-	    } else if (nonliving(youmonst.data) || is_demon(youmonst.data)) {</span>
+ <span id="line31664">31664.+		if (Disint_resistance) {</span>
+ <span id="line31665">31665.+		    You("are not disintegrated.");</span>
+ <span id="line31666">31666.+		    break;</span>
+ <span id="line31667">31667.+		}</span>
+ <span id="line31668">31668.+	    } else if (vs_death_factor(youmonst.data)) {</span>
+ <span id="line31669">31669. 		shieldeff(sx, sy);</span>
+ <span id="line31670">31670. 		You("seem unaffected.");</span>
+ <span id="line31671">31671. 		break;</span>
+ <span id="line31672">31672. 	    } else if (Antimagic) {</span>
+ <span id="line31673">31673. 		shieldeff(sx, sy);</span>
+ <span id="line31674">31674. 		You("aren't affected.");</span>
+ <span id="line31675">31675.+		damage_resistant_obj(ANTIMAGIC, rnd(3));</span>
+ <span id="line31676">31676. 		break;</span>
+ <span id="line31677">31677. 	    }</span>
+ <span id="line31678">31678. 	    killer_format = KILLED_BY_AN;</span>
+ <span id="line31679">31679.@@ -3152,19 +3254,30 @@ xchar sx, sy;</span>
+ <span id="line31680">31680. 	    done(DIED);</span>
+ <span id="line31681">31681. 	    return; /* lifesaved */</span>
+ <span id="line31682">31682. 	case ZT_LIGHTNING:</span>
+ <span id="line31683">31683.+	    dam = d(nd, 6);</span>
+ <span id="line31684">31684. 	    if (Shock_resistance) {</span>
+ <span id="line31685">31685.-		shieldeff(sx, sy);</span>
+ <span id="line31686">31686.-		You("aren't affected.");</span>
+ <span id="line31687">31687.+		if (not_effected = is_full_resist(SHOCK_RES)) {</span>
+ <span id="line31688">31688.+		    shieldeff(sx, sy);</span>
+ <span id="line31689">31689.+		    You("aren't affected.");</span>
+ <span id="line31690">31690.+		    dam = 0;</span>
+ <span id="line31691">31691.+		} else {</span>
+ <span id="line31692">31692.+		    You("nearly resist the shock.");</span>
+ <span id="line31693">31693.+		    dam = (dam+3) / 4;</span>
+ <span id="line31694">31694.+		}</span>
+ <span id="line31695">31695. 		ugolemeffects(AD_ELEC, d(nd, 6));</span>
+ <span id="line31696">31696. 	    } else {</span>
+ <span id="line31697">31697.-		dam = d(nd, 6);</span>
+ <span id="line31698">31698. 		exercise(A_CON, FALSE);</span>
+ <span id="line31699">31699. 	    }</span>
+ <span id="line31700">31700.-	    if (!rn2(3)) destroy_item(WAND_CLASS, AD_ELEC);</span>
+ <span id="line31701">31701.-	    if (!rn2(3)) destroy_item(RING_CLASS, AD_ELEC);</span>
+ <span id="line31702">31702.+	    if (!not_effected) {</span>
+ <span id="line31703">31703.+		if (!rn2(3)) destroy_item(WAND_CLASS, AD_ELEC);</span>
+ <span id="line31704">31704.+		if (!rn2(3)) destroy_item(RING_CLASS, AD_ELEC);</span>
+ <span id="line31705">31705.+	    }</span>
+ <span id="line31706">31706. 	    break;</span>
+ <span id="line31707">31707. 	case ZT_POISON_GAS:</span>
+ <span id="line31708">31708. 	    poisoned("blast", A_DEX, "poisoned blast", 15);</span>
+ <span id="line31709">31709.+	    if (!is_full_resist(POISON_RES)) {</span>
+ <span id="line31710">31710.+		if (!rn2(3)) hurtarmor(AD_DCAY);</span>
+ <span id="line31711">31711.+	    }</span>
+ <span id="line31712">31712. 	    break;</span>
+ <span id="line31713">31713. 	case ZT_ACID:</span>
+ <span id="line31714">31714. 	    if (Acid_resistance) {</span>
+ <span id="line31715">31715.@@ -3174,10 +3287,12 @@ xchar sx, sy;</span>
+ <span id="line31716">31716. 		dam = d(nd,6);</span>
+ <span id="line31717">31717. 		exercise(A_STR, FALSE);</span>
+ <span id="line31718">31718. 	    }</span>
+ <span id="line31719">31719.-	    /* using two weapons at once makes both of them more vulnerable */</span>
+ <span id="line31720">31720.-	    if (!rn2(u.twoweap ? 3 : 6)) erode_obj(uwep, TRUE, TRUE);</span>
+ <span id="line31721">31721.-	    if (u.twoweap && !rn2(3)) erode_obj(uswapwep, TRUE, TRUE);</span>
+ <span id="line31722">31722.-	    if (!rn2(6)) erode_armor(&youmonst, TRUE);</span>
+ <span id="line31723">31723.+	    if (!is_full_resist(ACID_RES)) {</span>
+ <span id="line31724">31724.+		/* using two weapons at once makes both of them more vulnerable */</span>
+ <span id="line31725">31725.+		if (!rn2(u.twoweap ? 3 : 6)) erode_obj(uwep, TRUE, TRUE);</span>
+ <span id="line31726">31726.+		if (u.twoweap && !rn2(3)) erode_obj(uswapwep, TRUE, TRUE);</span>
+ <span id="line31727">31727.+		if (!rn2(6)) erode_armor(&youmonst, TRUE);</span>
+ <span id="line31728">31728.+	    }</span>
+ <span id="line31729">31729. 	    break;</span>
+ <span id="line31730">31730. 	}</span>
+ <span id="line31731">31731. </span>
+ <span id="line31732">31732.@@ -3239,6 +3354,19 @@ boolean u_caused;</span>
+ <span id="line31733">31733. 			    pline("%s burns.", An(buf1));</span>
+ <span id="line31734">31734. 		    }</span>
+ <span id="line31735">31735. 		}</span>
+ <span id="line31736">31736.+	    } else if (obj->otyp == STATUE && get_material(obj) == LIQUID) {</span>
+ <span id="line31737">31737.+		struct trap *trap;</span>
+ <span id="line31738">31738.+		if ((trap = t_at(x,y)) && trap->ttyp == STATUE_TRAP) {</span>
+ <span id="line31739">31739.+		    activate_statue_trap(trap, x, y, TRUE);</span>
+ <span id="line31740">31740.+		    continue;</span>
+ <span id="line31741">31741.+		}</span>
+ <span id="line31742">31742.+		if (give_feedback) {</span>
+ <span id="line31743">31743.+		    pline("%s thaws.", An(xname(obj)));</span>
+ <span id="line31744">31744.+		}</span>
+ <span id="line31745">31745.+		(void) mkcorpstat(CORPSE, (struct monst *) 0,</span>
+ <span id="line31746">31746.+				  &mons[obj->corpsenm], x, y, TRUE);</span>
+ <span id="line31747">31747.+		if (u_caused) useupf(obj, 1);</span>
+ <span id="line31748">31748.+		else delobj(obj);</span>
+ <span id="line31749">31749. 	    }</span>
+ <span id="line31750">31750. 	}</span>
+ <span id="line31751">31751. 	return cnt;</span>
+ <span id="line31752">31752.@@ -3317,7 +3445,7 @@ register int dx,dy;</span>
+ <span id="line31753">31753. 	    mon = m_at(sx, sy);</span>
+ <span id="line31754">31754. 	    if(cansee(sx,sy)) {</span>
+ <span id="line31755">31755. 		/* reveal/unreveal invisible monsters before tmp_at() */</span>
+ <span id="line31756">31756.-		if (mon && !canspotmon(mon))</span>
+ <span id="line31757">31757.+		if (mon && !canspotmons(mon))</span>
+ <span id="line31758">31758. 		    map_invisible(sx, sy);</span>
+ <span id="line31759">31759. 		else if (!mon && glyph_is_invisible(levl[sx][sy].glyph)) {</span>
+ <span id="line31760">31760. 		    unmap_object(sx, sy);</span>
+ <span id="line31761">31761.@@ -3327,6 +3455,9 @@ register int dx,dy;</span>
+ <span id="line31762">31762. 		    tmp_at(sx,sy);</span>
+ <span id="line31763">31763. 		delay_output(); /* wait a little */</span>
+ <span id="line31764">31764. 	    }</span>
+ <span id="line31765">31765.+#ifdef MONSTEED</span>
+ <span id="line31766">31766.+	    if (mon) mon = mrider_or_msteed(mon, !rn2(3));</span>
+ <span id="line31767">31767.+#endif</span>
+ <span id="line31768">31768. 	} else</span>
+ <span id="line31769">31769. 	    goto make_bounce;</span>
+ <span id="line31770">31770. </span>
+ <span id="line31771">31771.@@ -3447,6 +3578,7 @@ register int dx,dy;</span>
+ <span id="line31772">31772. 		range -= 2;</span>
+ <span id="line31773">31773. 		pline("%s hits you!", The(fltxt));</span>
+ <span id="line31774">31774. 		if (Reflecting) {</span>
+ <span id="line31775">31775.+		    int objdmg = 0;</span>
+ <span id="line31776">31776. 		    if (!Blind) {</span>
+ <span id="line31777">31777. 		    	(void) ureflects("But %s reflects from your %s!", "it");</span>
+ <span id="line31778">31778. 		    } else</span>
+ <span id="line31779">31779.@@ -3454,13 +3586,35 @@ register int dx,dy;</span>
+ <span id="line31780">31780. 		    dx = -dx;</span>
+ <span id="line31781">31781. 		    dy = -dy;</span>
+ <span id="line31782">31782. 		    shieldeff(sx, sy);</span>
+ <span id="line31783">31783.+		    switch (abstype) {		/* reflector gets damaged */</span>
+ <span id="line31784">31784.+			case ZT_MAGIC_MISSILE:</span>
+ <span id="line31785">31785.+			case ZT_SLEEP:</span>
+ <span id="line31786">31786.+			case ZT_POISON_GAS:</span>
+ <span id="line31787">31787.+			case ZT_PARALYSIS:</span>
+ <span id="line31788">31788.+				objdmg = d(1,4);</span>
+ <span id="line31789">31789.+				break;</span>
+ <span id="line31790">31790.+			case ZT_FIRE:</span>
+ <span id="line31791">31791.+			case ZT_COLD:</span>
+ <span id="line31792">31792.+			case ZT_LIGHTNING:</span>
+ <span id="line31793">31793.+			case ZT_ACID:</span>
+ <span id="line31794">31794.+				objdmg = d(2,4);</span>
+ <span id="line31795">31795.+			case ZT_DEATH:</span>
+ <span id="line31796">31796.+				if (abs(type) == ZT_BREATH(ZT_DEATH))</span>
+ <span id="line31797">31797.+				    objdmg = rn1(10, 10);</span>
+ <span id="line31798">31798.+				else</span>
+ <span id="line31799">31799.+				    objdmg = d(3,4);</span>
+ <span id="line31800">31800.+			default:</span>
+ <span id="line31801">31801.+				break;</span>
+ <span id="line31802">31802.+		    }</span>
+ <span id="line31803">31803.+		    damage_resistant_obj(REFLECTING, objdmg);</span>
+ <span id="line31804">31804. 		} else {</span>
+ <span id="line31805">31805. 		    zhitu(type, nd, fltxt, sx, sy);</span>
+ <span id="line31806">31806. 		}</span>
+ <span id="line31807">31807. 	    } else {</span>
+ <span id="line31808">31808. 		pline("%s whizzes by you!", The(fltxt));</span>
+ <span id="line31809">31809. 	    }</span>
+ <span id="line31810">31810.-	    if (abstype == ZT_LIGHTNING && !resists_blnd(&youmonst)) {</span>
+ <span id="line31811">31811.+	    if (abstype == ZT_LIGHTNING && !resists_blnd(&youmonst) &&</span>
+ <span id="line31812">31812.+		!is_full_resist(SHOCK_RES)) {</span>
+ <span id="line31813">31813. 		You(are_blinded_by_the_flash);</span>
+ <span id="line31814">31814. 		make_blinded((long)d(nd,50),FALSE);</span>
+ <span id="line31815">31815. 		if (!Blind) Your(vision_clears);</span>
+ <span id="line31816">31816.@@ -3584,7 +3738,7 @@ boolean *shopdamage;</span>
+ <span id="line31817">31817. 	    }</span>
+ <span id="line31818">31818. 	    if(is_ice(x, y)) {</span>
+ <span id="line31819">31819. 		melt_ice(x, y);</span>
+ <span id="line31820">31820.-	    } else if(is_pool(x,y)) {</span>
+ <span id="line31821">31821.+	    } else if(is_pool(x,y) || is_swamp(x,y)) {</span>
+ <span id="line31822">31822. 		const char *msgtxt = "You hear hissing gas.";</span>
+ <span id="line31823">31823. 		if(lev->typ != POOL) {	/* MOAT or DRAWBRIDGE_UP */</span>
+ <span id="line31824">31824. 		    if (cansee(x,y)) msgtxt = "Some water evaporates.";</span>
+ <span id="line31825">31825.@@ -3767,13 +3921,7 @@ register struct obj *obj;		   /* no text</span>
+ <span id="line31826">31826. 	if (obj->otyp == BOULDER && In_sokoban(&u.uz) && !flags.mon_moving)</span>
+ <span id="line31827">31827. 	    change_luck(-1);</span>
+ <span id="line31828">31828. </span>
+ <span id="line31829">31829.-	obj->otyp = ROCK;</span>
+ <span id="line31830">31830.-	obj->quan = (long) rn1(60, 7);</span>
+ <span id="line31831">31831.-	obj->owt = weight(obj);</span>
+ <span id="line31832">31832.-	obj->oclass = GEM_CLASS;</span>
+ <span id="line31833">31833.-	obj->known = FALSE;</span>
+ <span id="line31834">31834.-	obj->onamelth = 0;		/* no names */</span>
+ <span id="line31835">31835.-	obj->oxlth = 0;			/* no extra data */</span>
+ <span id="line31836">31836.+	trans_to_rock(obj);</span>
+ <span id="line31837">31837. 	obj->oattached = OATTACHED_NOTHING;</span>
+ <span id="line31838">31838. 	if (obj->where == OBJ_FLOOR) {</span>
+ <span id="line31839">31839. 		obj_extract_self(obj);		/* move rocks back on top */</span>
+ <span id="line31840">31840.@@ -3785,6 +3933,20 @@ register struct obj *obj;		   /* no text</span>
+ <span id="line31841">31841. 	}</span>
+ <span id="line31842">31842. }</span>
+ <span id="line31843">31843. </span>
+ <span id="line31844">31844.+void</span>
+ <span id="line31845">31845.+trans_to_rock(obj)</span>
+ <span id="line31846">31846.+register struct obj *obj;</span>
+ <span id="line31847">31847.+{</span>
+ <span id="line31848">31848.+	obj->otyp = (get_material(obj) == MINERAL) ? ROCK : LAST_GEM + 1;</span>
+ <span id="line31849">31849.+	obj->quan = (long) rn1(60, 7);</span>
+ <span id="line31850">31850.+	obj->owt = weight(obj);</span>
+ <span id="line31851">31851.+	obj->oclass = GEM_CLASS;</span>
+ <span id="line31852">31852.+	obj->known = FALSE;</span>
+ <span id="line31853">31853.+	obj->bknown = FALSE;</span>
+ <span id="line31854">31854.+	obj->onamelth = 0;		/* no names */</span>
+ <span id="line31855">31855.+	obj->oxlth = 0;			/* no extra data */</span>
+ <span id="line31856">31856.+}</span>
+ <span id="line31857">31857.+</span>
+ <span id="line31858">31858. /* handle statue hit by striking/force bolt/pick-axe */</span>
+ <span id="line31859">31859. boolean</span>
+ <span id="line31860">31860. break_statue(obj)</span>
+ <span id="line31861">31861.@@ -3793,7 +3955,10 @@ register struct obj *obj;</span>
+ <span id="line31862">31862. 	/* [obj is assumed to be on floor, so no get_obj_location() needed] */</span>
+ <span id="line31863">31863. 	struct trap *trap = t_at(obj->ox, obj->oy);</span>
+ <span id="line31864">31864. 	struct obj *item;</span>
+ <span id="line31865">31865.+	int mat = get_material(obj);</span>
+ <span id="line31866">31866. </span>
+ <span id="line31867">31867.+	if (mat != MINERAL && mat != GLASS) return FALSE;	/* do not shatter */</span>
+ <span id="line31868">31868.+</span>
+ <span id="line31869">31869. 	if (trap && trap->ttyp == STATUE_TRAP &&</span>
+ <span id="line31870">31870. 		activate_statue_trap(trap, obj->ox, obj->oy, TRUE))</span>
+ <span id="line31871">31871. 	    return FALSE;</span>
+ <span id="line31872">31872.@@ -3830,6 +3995,10 @@ register int osym, dmgtyp;</span>
+ <span id="line31873">31873. 	register int dindx;</span>
+ <span id="line31874">31874. 	const char *mult;</span>
+ <span id="line31875">31875. </span>
+ <span id="line31876">31876.+	if (dmgtyp == AD_FIRE && is_full_resist(FIRE_RES)) return;</span>
+ <span id="line31877">31877.+	if (dmgtyp == AD_COLD && is_full_resist(COLD_RES)) return;</span>
+ <span id="line31878">31878.+	if (dmgtyp == AD_ELEC && is_full_resist(SHOCK_RES)) return;</span>
+ <span id="line31879">31879.+</span>
+ <span id="line31880">31880. 	for(obj = invent; obj; obj = obj2) {</span>
+ <span id="line31881">31881. 	    obj2 = obj->nobj;</span>
+ <span id="line31882">31882. 	    if(obj->oclass != osym) continue; /* test only objs of type osym */</span>
+ <span id="line31883">31883.@@ -3873,6 +4042,20 @@ register int osym, dmgtyp;</span>
+ <span id="line31884">31884. 			    dindx = 3;</span>
+ <span id="line31885">31885. 			    dmg = 1;</span>
+ <span id="line31886">31886. 			    break;</span>
+ <span id="line31887">31887.+			case TOOL_CLASS:</span>
+ <span id="line31888">31888.+			    if (get_material(obj) == CLOTH) {</span>
+ <span id="line31889">31889.+				dindx = 3;</span>
+ <span id="line31890">31890.+				dmg = 0;</span>
+ <span id="line31891">31891.+				if (!objects[obj->otyp].oc_merge &&</span>
+ <span id="line31892">31892.+				    obj->oeroded < MAX_ERODE) {</span>
+ <span id="line31893">31893.+				    skip++;</span>
+ <span id="line31894">31894.+				    if (!rn2(3+(obj->blessed*2))) {</span>
+ <span id="line31895">31895.+					obj->oeroded++;</span>
+ <span id="line31896">31896.+					pline("Your %s catches fire and smoulders!", xname(obj));</span>
+ <span id="line31897">31897.+				    }</span>
+ <span id="line31898">31898.+				}</span>
+ <span id="line31899">31899.+			    } else skip++;</span>
+ <span id="line31900">31900.+			    break;</span>
+ <span id="line31901">31901. 			default:</span>
+ <span id="line31902">31902. 			    skip++;</span>
+ <span id="line31903">31903. 			    break;</span>
+ <span id="line31904">31904.@@ -3927,6 +4110,25 @@ register int osym, dmgtyp;</span>
+ <span id="line31905">31905. 			setnotworn(obj);</span>
+ <span id="line31906">31906. 		}</span>
+ <span id="line31907">31907. 		if (obj == current_wand) current_wand = 0;	/* destroyed */</span>
+ <span id="line31908">31908.+		if (Is_container(obj) && Has_contents(obj)) {</span>
+ <span id="line31909">31909.+		    struct obj *otmp;</span>
+ <span id="line31910">31910.+		    long ccnt;</span>
+ <span id="line31911">31911.+		    schar typ = levl[u.ux][u.uy].typ;</span>
+ <span id="line31912">31912.+		    for (ccnt = 0, otmp = obj->cobj; otmp; otmp = otmp->nobj)</span>
+ <span id="line31913">31913.+			ccnt += otmp->quan;</span>
+ <span id="line31914">31914.+		    if (ccnt) pline_The("content%s of %s fall%s %sto the %s!",</span>
+ <span id="line31915">31915.+					(ccnt > 1) ? "s" : "", the(xname(obj)),</span>
+ <span id="line31916">31916.+					(ccnt == 1) ? "s" : "",</span>
+ <span id="line31917">31917.+					(IS_SOFT(typ) || IS_FOUNTAIN(typ) ||</span>
+ <span id="line31918">31918.+					 typ == LAVAPOOL) ? "in" : "",</span>
+ <span id="line31919">31919.+					surface(u.ux, u.uy));</span>
+ <span id="line31920">31920.+		    while (obj->cobj) {</span>
+ <span id="line31921">31921.+			otmp = obj->cobj;</span>
+ <span id="line31922">31922.+			obj_extract_self(otmp);</span>
+ <span id="line31923">31923.+			place_object(otmp, u.ux, u.uy);</span>
+ <span id="line31924">31924.+			stackobj(otmp);</span>
+ <span id="line31925">31925.+		    }</span>
+ <span id="line31926">31926.+		}</span>
+ <span id="line31927">31927. 		for (i = 0; i < cnt; i++)</span>
+ <span id="line31928">31928. 		    useup(obj);</span>
+ <span id="line31929">31929. 		if(dmg) {</span>
+ <span id="line31930">31930.@@ -3945,6 +4147,29 @@ register int osym, dmgtyp;</span>
+ <span id="line31931">31931. 	return;</span>
+ <span id="line31932">31932. }</span>
+ <span id="line31933">31933. </span>
+ <span id="line31934">31934.+void</span>
+ <span id="line31935">31935.+destroy_items(dmgtyp)</span>
+ <span id="line31936">31936.+register int dmgtyp;</span>
+ <span id="line31937">31937.+{</span>
+ <span id="line31938">31938.+	switch (dmgtyp) {</span>
+ <span id="line31939">31939.+	    case AD_FIRE:</span>
+ <span id="line31940">31940.+		destroy_item(SCROLL_CLASS, AD_FIRE);</span>
+ <span id="line31941">31941.+		destroy_item(POTION_CLASS, AD_FIRE);</span>
+ <span id="line31942">31942.+		if (rn2(5) < 3) destroy_item(SPBOOK_CLASS, AD_FIRE);</span>
+ <span id="line31943">31943.+		destroy_item(TOOL_CLASS, AD_FIRE);</span>
+ <span id="line31944">31944.+		break;</span>
+ <span id="line31945">31945.+	    case AD_COLD:</span>
+ <span id="line31946">31946.+		destroy_item(POTION_CLASS, AD_COLD);</span>
+ <span id="line31947">31947.+		break;</span>
+ <span id="line31948">31948.+	    case AD_ELEC:</span>
+ <span id="line31949">31949.+		destroy_item(WAND_CLASS, AD_ELEC);</span>
+ <span id="line31950">31950.+		destroy_item(RING_CLASS, AD_ELEC);</span>
+ <span id="line31951">31951.+		break;</span>
+ <span id="line31952">31952.+	    default:</span>
+ <span id="line31953">31953.+		break;</span>
+ <span id="line31954">31954.+	}</span>
+ <span id="line31955">31955.+}</span>
+ <span id="line31956">31956.+</span>
+ <span id="line31957">31957. int</span>
+ <span id="line31958">31958. destroy_mitem(mtmp, osym, dmgtyp)</span>
+ <span id="line31959">31959. struct monst *mtmp;</span>
+ <span id="line31960">31960.@@ -4142,5 +4367,169 @@ retry:</span>
+ <span id="line31961">31961. }</span>
+ <span id="line31962">31962. </span>
+ <span id="line31963">31963. #endif /*OVL2*/</span>
+ <span id="line31964">31964.+</span>
+ <span id="line31965">31965.+</span>
+ <span id="line31966">31966.+</span>
+ <span id="line31967">31967.+</span>
+ <span id="line31968">31968.+struct resiobj {</span>
+ <span id="line31969">31969.+	long	mask;</span>
+ <span id="line31970">31970.+	struct obj **objp;</span>
+ <span id="line31971">31971.+	uchar	objclass;</span>
+ <span id="line31972">31972.+	uchar	objsubc;</span>
+ <span id="line31973">31973.+};</span>
+ <span id="line31974">31974.+</span>
+ <span id="line31975">31975.+const struct resiobj resiobjtbl[] = {</span>
+ <span id="line31976">31976.+	/* reversed order */</span>
+ <span id="line31977">31977.+	{ W_ARMF,    &uarmf,	ARMOR_CLASS,  ARM_BOOTS  },</span>
+ <span id="line31978">31978.+	{ W_ARMG,    &uarmg,	ARMOR_CLASS,  ARM_GLOVES },</span>
+ <span id="line31979">31979.+	{ W_ARMH,    &uarmh,	ARMOR_CLASS,  ARM_HELM   },</span>
+ <span id="line31980">31980.+	{ W_ARM,     &uarm,	ARMOR_CLASS,  ARM_SUIT   },</span>
+ <span id="line31981">31981.+//	{ W_SWAPWEP, &uswapwep,	WEAPON_CLASS, 2          },</span>
+ <span id="line31982">31982.+	{ W_WEP,     &uwep,	WEAPON_CLASS, 1          },</span>
+ <span id="line31983">31983.+	{ W_ARMC,    &uarmc,	ARMOR_CLASS,  ARM_CLOAK  },</span>
+ <span id="line31984">31984.+	{ W_ARMS,    &uarms,	ARMOR_CLASS,  ARM_SHIELD },</span>
+ <span id="line31985">31985.+	{ W_RINGR,   &uright,	RING_CLASS,   2          },</span>
+ <span id="line31986">31986.+	{ W_RINGL,   &uleft,	RING_CLASS,   1          },</span>
+ <span id="line31987">31987.+	{ W_AMUL,    &uamul,	AMULET_CLASS, 0          },</span>
+ <span id="line31988">31988.+	{ 0, 0, 0, 0 }</span>
+ <span id="line31989">31989.+};</span>
+ <span id="line31990">31990.+</span>
+ <span id="line31991">31991.+void</span>
+ <span id="line31992">31992.+damage_resistant_obj(prop, damval)</span>
+ <span id="line31993">31993.+uchar prop;</span>
+ <span id="line31994">31994.+int damval;</span>
+ <span id="line31995">31995.+{</span>
+ <span id="line31996">31996.+	long e = u.uprops[prop].extrinsic;</span>
+ <span id="line31997">31997.+	int oc1 = 0, oc2 = 0;</span>
+ <span id="line31998">31998.+	int oldtmp, newtmp = 0;</span>
+ <span id="line31999">31999.+	const struct resiobj *tbl;</span>
+ <span id="line32000">32000.+	struct obj *otmp;</span>
+ <span id="line32001">32001.+</span>
+ <span id="line32002">32002.+	if (e & (W_ART|W_ARTI)) return;	/* artifacts */</span>
+ <span id="line32003">32003.+</span>
+ <span id="line32004">32004.+	for ( tbl = resiobjtbl; tbl->mask; tbl++ ) {</span>
+ <span id="line32005">32005.+		if ( e & tbl->mask ) {</span>
+ <span id="line32006">32006.+			/* artifacts do not get damaged */</span>
+ <span id="line32007">32007.+			if ((*(tbl->objp))->oartifact) return;</span>
+ <span id="line32008">32008.+			oc1 = tbl->objclass;</span>
+ <span id="line32009">32009.+			oc2 = tbl->objsubc;</span>
+ <span id="line32010">32010.+			break;</span>
+ <span id="line32011">32011.+		}</span>
+ <span id="line32012">32012.+	}</span>
+ <span id="line32013">32013.+	if ( !oc1 ) return;	/* there is no object to get damaged */</span>
+ <span id="line32014">32014.+	if ( oc1 == WEAPON_CLASS && oc2 == 2 && !u.twoweap ) return;	/* do not count unwield weapon */</span>
+ <span id="line32015">32015.+</span>
+ <span id="line32016">32016.+	switch (oc1) {</span>
+ <span id="line32017">32017.+	    case AMULET_CLASS:</span>
+ <span id="line32018">32018.+		if (prop != ANTIMAGIC && prop != REFLECTING ) break;</span>
+ <span id="line32019">32019.+		if (uamul) {</span>
+ <span id="line32020">32020.+			if (uamul->oartifact) break;</span>
+ <span id="line32021">32021.+			oldtmp = uamul->odamaged;</span>
+ <span id="line32022">32022.+			newtmp = oldtmp + damval;</span>
+ <span id="line32023">32023.+			if ( newtmp>100 ) {</span>
+ <span id="line32024">32024.+				if (Blind) You_feel("your medallion breaks in pieces!");</span>
+ <span id="line32025">32025.+				else Your("medallion glows brightly, and breaks in pieces!");</span>
+ <span id="line32026">32026.+				otmp = uamul;</span>
+ <span id="line32027">32027.+				Amulet_off();</span>
+ <span id="line32028">32028.+				useup(otmp);</span>
+ <span id="line32029">32029.+				break;</span>
+ <span id="line32030">32030.+			} else if ( /*oldtmp<90 &&*/ newtmp>=90 )</span>
+ <span id="line32031">32031.+				if (!Blind) Your("medallion gives a faint glimmer of light!");</span>
+ <span id="line32032">32032.+				else Your("medallion vibrates violently!");</span>
+ <span id="line32033">32033.+			else if ( oldtmp<75 && newtmp>=75 )</span>
+ <span id="line32034">32034.+				Your("medallion vibrates unexpectedly.");</span>
+ <span id="line32035">32035.+			uamul->odamaged = newtmp;</span>
+ <span id="line32036">32036.+		}</span>
+ <span id="line32037">32037.+		break;</span>
+ <span id="line32038">32038.+	    case ARMOR_CLASS:</span>
+ <span id="line32039">32039.+		switch (oc2) {</span>
+ <span id="line32040">32040.+		    case ARM_CLOAK:</span>
+ <span id="line32041">32041.+			if (uarmc) {</span>
+ <span id="line32042">32042.+				if (uarmc->oartifact) break;</span>
+ <span id="line32043">32043.+				oldtmp = uarmc->odamaged;</span>
+ <span id="line32044">32044.+				newtmp = oldtmp + damval;</span>
+ <span id="line32045">32045.+				if ( newtmp>100 ) {</span>
+ <span id="line32046">32046.+					if (Blind)</span>
+ <span id="line32047">32047.+					    You_feel("your %s is gone away!", cloak_simple_name(uarmc));</span>
+ <span id="line32048">32048.+					else</span>
+ <span id="line32049">32049.+					    Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc));</span>
+ <span id="line32050">32050.+					otmp = uarmc;</span>
+ <span id="line32051">32051.+	       				(void) Cloak_off();</span>
+ <span id="line32052">32052.+					useup(otmp);</span>
+ <span id="line32053">32053.+					break;</span>
+ <span id="line32054">32054.+				} else if ( /*oldtmp<90 &&*/ newtmp>=90 )</span>
+ <span id="line32055">32055.+					Your("%s is about to come apart!", cloak_simple_name(uarmc));</span>
+ <span id="line32056">32056.+				else if ( oldtmp<75 && newtmp>=75 )</span>
+ <span id="line32057">32057.+					Your("%s becomes slightly shabby.", cloak_simple_name(uarmc));</span>
+ <span id="line32058">32058.+				uarmc->odamaged = newtmp;</span>
+ <span id="line32059">32059.+			}</span>
+ <span id="line32060">32060.+			break;</span>
+ <span id="line32061">32061.+		    case ARM_SHIELD:</span>
+ <span id="line32062">32062.+			if (uarms && uarms->oartifact) break;</span>
+ <span id="line32063">32063.+			if (uarms && prop == REFLECTING) {	/* shield of reflection */</span>
+ <span id="line32064">32064.+				oldtmp = uarms->odamaged;</span>
+ <span id="line32065">32065.+				newtmp = oldtmp + damval;</span>
+ <span id="line32066">32066.+				if ( newtmp>100 ) {</span>
+ <span id="line32067">32067.+					if (!Blind) Your("shield is completely tarnished.");</span>
+ <span id="line32068">32068.+					else You_feel("your shield is somewhat helpless.");</span>
+ <span id="line32069">32069.+					otmp = uarms;</span>
+ <span id="line32070">32070.+					Shield_off();</span>
+ <span id="line32071">32071.+					otmp->otyp = SHIELD;</span>
+ <span id="line32072">32072.+					otmp->odamaged = 0;</span>
+ <span id="line32073">32073.+					change_material(otmp, SILVER);	/* mere silver shield */</span>
+ <span id="line32074">32074.+					setworn(otmp, W_ARMS);</span>
+ <span id="line32075">32075.+					break;</span>
+ <span id="line32076">32076.+				} else if ( /*oldtmp<90 &&*/ newtmp>=90 ) {</span>
+ <span id="line32077">32077.+				    if (!Blind) Your("shield looks much duller!");</span>
+ <span id="line32078">32078.+				    else Your("shield shivers!");</span>
+ <span id="line32079">32079.+				} else if ( oldtmp<75 && newtmp>=75 ) {</span>
+ <span id="line32080">32080.+				    if (!Blind) Your("shield looks slightly dull.");</span>
+ <span id="line32081">32081.+				    else Your("shield shivers slightly.");</span>
+ <span id="line32082">32082.+				}</span>
+ <span id="line32083">32083.+				uarms->odamaged = newtmp;</span>
+ <span id="line32084">32084.+			}</span>
+ <span id="line32085">32085.+			break;</span>
+ <span id="line32086">32086.+		    case ARM_SUIT:</span>
+ <span id="line32087">32087.+			if (uarm && uarm->oartifact) break;</span>
+ <span id="line32088">32088.+			if (prop != ANTIMAGIC && prop != REFLECTING ) break;</span>
+ <span id="line32089">32089.+			if (uarm && Is_dragon_armor(uarm)) {	/* gray or silver dragon */</span>
+ <span id="line32090">32090.+				char buf[BUFSZ];</span>
+ <span id="line32091">32091.+				int isdm = Is_dragon_mail(uarm);</span>
+ <span id="line32092">32092.+				oldtmp = uarm->odamaged;</span>
+ <span id="line32093">32093.+				newtmp = oldtmp + damval;</span>
+ <span id="line32094">32094.+				Sprintf(buf, "dragon scale%s", isdm ? " mail" : "s");</span>
+ <span id="line32095">32095.+				if ( newtmp>100 ) {</span>
+ <span id="line32096">32096.+				    if (isdm) {</span>
+ <span id="line32097">32097.+					Your("%s seems to lose its power.", buf);</span>
+ <span id="line32098">32098.+					otmp = uarm;</span>
+ <span id="line32099">32099.+					Armor_off();</span>
+ <span id="line32100">32100.+					otmp->otyp = PLAIN_DRAGON_SCALE_MAIL;	/* mere scale mail */</span>
+ <span id="line32101">32101.+					otmp->odamaged = 0;</span>
+ <span id="line32102">32102.+					setworn(otmp, W_ARM);</span>
+ <span id="line32103">32103.+				    } else {</span>
+ <span id="line32104">32104.+					Your("%s crumble and fall apart!", buf);</span>
+ <span id="line32105">32105.+					otmp = uarm;</span>
+ <span id="line32106">32106.+					Armor_off();</span>
+ <span id="line32107">32107.+					useup(otmp);</span>
+ <span id="line32108">32108.+				    }</span>
+ <span id="line32109">32109.+				    break;</span>
+ <span id="line32110">32110.+				} else if ( /*oldtmp<90 &&*/ newtmp>=90 )</span>
+ <span id="line32111">32111.+				    Your("%s shiver%s!", buf, isdm ? "s" : "");</span>
+ <span id="line32112">32112.+				else if ( oldtmp<75 && newtmp>=75 )</span>
+ <span id="line32113">32113.+				    Your("%s shiver%s slightly.", buf, isdm ? "s" : "");</span>
+ <span id="line32114">32114.+				uarm->odamaged = newtmp;</span>
+ <span id="line32115">32115.+			}</span>
+ <span id="line32116">32116.+			break;</span>
+ <span id="line32117">32117.+		    default:</span>
+ <span id="line32118">32118.+			break;</span>
+ <span id="line32119">32119.+		}</span>
+ <span id="line32120">32120.+		break;</span>
+ <span id="line32121">32121.+	    default:</span>
+ <span id="line32122">32122.+		/*impossible("Damage to strange object???")*/;</span>
+ <span id="line32123">32123.+	}</span>
+ <span id="line32124">32124.+	if (wizard) pline("[%d%]", newtmp);</span>
+ <span id="line32125">32125.+	return;</span>
+ <span id="line32126">32126.+}</span>
+ <span id="line32127">32127.+</span>
+ <span id="line32128">32128. </span>
+ <span id="line32129">32129. /*zap.c*/</span>
+
+You may want to give your attention to the above code that controls gradual wear to items that provide [[magic resistance]] or [[reflection]]. The <tt>damage_resistant_obj</tt> function applies damage to an [[object]]. As the object resists magic or reflects ray, its damage points will increase.
+
+Note in line 32006 that [[artifact]]s are immune to damage.
+
+[[Category:Patches]]}
+&&%s&& %s Fixinv {19860 2007-03-20T18:50:13Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#fixinv]]}
+&&%s&& %s Extra healing {146567 2022-07-04T18:03:39Z {4001279 Umbire the Phantom}  '''Extra healing''' can refer to:
+
+* [[Spellbook of extra healing]]
+* [[Potion of extra healing]]

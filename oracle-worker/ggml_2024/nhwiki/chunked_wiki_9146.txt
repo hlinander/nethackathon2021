@@ -1,0 +1,1000 @@
+|
+<pre style="white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap; white-space:pre-wrap; word-wrap:break-word; word-break:break-all;">
+{| border="1" cellspacing="0" cellpadding="2"
+|-
+!scope="col"| Item
+!scope="col"| Quantity
+!scope="col"| Price
+|-
+!scope="row"| Bread
+| 0.3 kg
+| $0.65
+|-
+!scope="row"| Butter
+| 0.125 kg
+| $1.25
+|-
+!scope="row" colspan="2"| Total
+| $1.90
+|}
+</pre>
+|
+{| border="1" cellspacing="0" cellpadding="2"
+|-
+!scope="col"| Item
+!scope="col"| Quantity
+!scope="col"| Price
+|-
+!scope="row"| Bread
+| 0.3 kg
+| $0.65
+|-
+!scope="row"| Butter
+| 0.125 kg
+| $1.25
+|-
+!scope="row" colspan="2"| Total
+| $1.90
+|}
+|}
+
+==Caveats==
+
+===Negative numbers===
+If you start a cell on a new line with a negative number with a minus sign (or a parameter that evaluates to a negative number), your table can get broken, because the characters <code>|-</code> will be parsed as the wiki markup for table row, not table cell. To avoid this, insert a space before the value (<code>| -6</code>) or use in-line cell markup (<code>|| -6</code>).
+
+===CSS vs Attributes===
+Table borders specified through CSS rather than the border attribute will render incorrectly in a small subset of text browsers.
+
+===Common attributes for columns, column groups and row groups===
+The MediaWiki syntax for tables currently offers no support for specifying common attributes for columns (with the HTML element <code>&lt;col /&gt;</code>), column groups (HTML element <code>&lt;colgroup&gt;...&lt;/colgroup&gt;</code>) and row groups (HTML elements <code>&lt;thead&gt;...&lt;/thead&gt;</code>, <code>&lt;tbody&gt;...&lt;/tbody&gt;<code> and <code>&lt;tfoot&gt;...&lt;/tfoot&gt;</code>). Those standard HTML elements are not accepted even in their HTML or XHTML syntax.
+
+All the rows and cells (header or data) of the table are rendered within a single implicit row group (HTML element <code>&lt;tbody&gt;...&lt;/tbody&gt;<code>) without any attributes or styles.
+
+{{Languages}}
+[[Category:Help|Tables]]}
+&&%s&& %s Help:Talk pages {56478 2010-11-13T20:25:52Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+Every wiki page has an associated talk page which can be used for discussion and communicating with other users. Talk pages can be accessed by clicking the “{{lcfirst:{{int:talk}}}}” [[Help:Navigation#Page tabs|tab]] at the top of the page. Simply edit the page as normal to add your comment.
+
+A talk page is actually very similar to any other wiki page, but it is in the “{{ns:1}}” namespace, to keep it separate from the articles in the “{{int:blanknamespace}}” namespace (See [[Help:namespaces]]). As with any wiki page, you can edit it, link to it, and view the editing history.
+
+== Editing conventions on talk pages ==
+Having discussions on a free-form wiki page will seem strange at first. It helps if everyone follows some simple editing conventions:
+
+* Always sign your name after your comments. Use the four tildes “<code><nowiki>~~~~</nowiki></code>” wiki syntax (or the signature button [[File:button_sig.png|text-bottom|link=|signature button]] in the toolbar above the editing textbox). For more information see [[Help:Signatures]].
+* Start a new discussion with a <code><nowiki>==level 2 heading==</nowiki></code> at the bottom of the page (or use the “{{lcfirst:{{int:addsection}}}}” tab)
+* Indent replies with colons (<code>:</code>) at the beginning of the line.
+
+=== Example ===
+Here is an example discussion, following the talk page conventions:
+
+{| class="wikitable"
+!style="width:50%" |Wiki text
+!style="width:50%" |Rendered talk page
+|-
+|
+<tt><nowiki>== More spiders information needed ==</nowiki></tt><br/>
+<tt><nowiki>This page has a lot of detail about the web, but I really dont understand a single word of it, and it doesn't mention the spider once -- [[User:Example|Bob Smith]] 18:07, 26 August 1991 (UTC)</nowiki></tt><br/>
+<tt><nowiki>: No no. This page is talking about the "world wide web". I have added a clarification at the top - [[User:Example|Simon Brown]] 11:21, 28 August 1991(UTC)</nowiki></tt><br/>
+<tt><nowiki>:: Oh I see... So what's the big deal about hyperlinked documents? Seems like a stupid idea to me. -- [[User:Example|Bob Smith]] 14:11, 3 September 1991 (UTC)</nowiki></tt><br/>
+<tt><nowiki>::: Well I think we should have some information about it here on our wiki, but you're probably right. It'll never catch on. -- [[User:Example|Simon Brown]] 21:55, 3 September 1991 (UTC)</nowiki></tt><br/>
+|
+<div style="font-size: 150%; margin: 0; padding-top: .5em; padding-bottom: .17em; border-bottom: 1px solid #aaa;">More spiders information needed </div>
+This page has a lot of detail about the web, but I really dont understand a single word of it, and it doesn't mention the spider once -- [[User:Example|Bob Smith]] 18:07, 26 August 1991 (UTC)
+: No no. This page is talking about the "world wide web". I have added a clarification at the top - [[User:Example|Simon Brown]] 11:21, 28 August 1991(UTC)
+:: Oh I see... So what's the big deal about hyperlinked documents? Seems like a stupid idea to me. -- [[User:Example|Bob Smith]] 14:11, 3 September 1991 (UTC)
+::: Well I think we should have some information about it here on our wiki, but you're probably right. It'll never catch on. -- [[User:Example|Simon Brown]] 21:55, 3 September 1991 (UTC)
+|}
+
+== Editing discussions ==
+Having discussions on a free-form wiki page will seem strange at first. It has some advantages over the conventional rigid forum format, but it can get a little messy. As with other wiki pages, anyone can help with tidying up discussions, to conform to the editing conventions e.g. add signatures and headings where they are missing.
+
+Clearly we also have the opportunity to edit other people's comments. It is generally bad etiquette to modify somebody else's wording (Better to just add your own comment with your corrections) But it can be acceptable to...
+
+;Modify discussion headings
+:Change wording or append words to the discussion headings, to better describe the topic of discussion. Note that good descriptive headings become important when many discussions start to fill the page.
+;Move discussions to a different page
+:If discussions are put in the wrong place on the wiki, and are better associated with different talk page, then you could just move the discussion by cut & paste. This is potentially confusing, for the people posting, but can be important for keeping things tidy. You could leave the discussion in the wrong place for a few days/weeks grace before tidying it. You could leave a link behind explaining that a discussion was moved, or if not, you should link within the edit summary.
+;Delete discussions when they are out-of-date
+:Discussions can often get left lying around on a talk page long after the issue is no longer relevant. It's usually a good idea to reply to saying "I think this is now resolved", but sooner or later it's time to just blow away the old discussions (they are of course preserved in the editing history).
+;Split a post into several discussions
+:It may be appropriate to do this, if somebody has raised several points which need to be answered separately. However you should always be respectful to other people's words. Does their post still make sense if you split it up?
+
+== Building articles - Discussing articles ==
+It is usually best to keep focused on the task of building a wiki article, and use discussion pages only to support this process. The topic of conversation should generally revolve around what needs to be done to make the associated article better. Remember that editing the article itself is often a more effective means of communicating. It can be more difficult, requiring you to balance your views alongside those of others, but it can also be more rewarding. This is how the community of wiki editors will make progress. Often it will feel more natural to engage in heated debate on a talk page (or indeed any other contact channel) but in fact the wiki article itself can offer a powerful means of reaching middle-ground. Think about how to portray both sides of the argument (e.g. listing advantages and disadvantages) and you may find the debate evaporates.
+
+== User talk pages ==
+A "{{ns:3}} page" is a talk page associated with somebody's "{{ns:2}} page" (See [[Help:User page]]). This is a place to leave messages for a particular wiki user.
+
+This can function as a kind of messaging system. Users receive the following prominent notification when new messages have been left on their talk page:
+
+<div class="usermessage plainlinks">{{int:youhavenewmessages|[[{{ns:3}}:User|<span style="color:#002bb8">{{int:newmessageslink}}</span>]]|[{{fullurl:{{ns:3}}:User&diff=cur}} <span style="color:#002bb8">{{int:newmessagesdifflink}}</span>]}}</div>
+
+The message will continue to be displayed on all pages until users visit their talk page.
+
+They may be notified by email as well, although this cannot always be relied upon (since the email notification feature must be activated by supplying a valid email address, and clicking a confirmation link). If you don't get a response to your user talk page message, try looking for other contact details which they may have supplied on their user page.
+
+Note that the messages are not private, and others can join in the conversation.
+
+{{Languages}}
+
+[[Category:Help|Talk pages]]}
+&&%s&& %s Help:Templates {56480 2010-11-13T20:25:53Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+If you have standard texts you want to include on several pages, the MediaWiki template feature comes into play.
+
+==Creation==
+Templates are standard wiki pages whose content is designed to be [[wikipedia:Transclusion|transcluded]] (embedded) inside other pages. Templates follow a convention that the name is prefixed with "<code>Template:</code>", assigning it to that namespace; besides this, you can [[Help:Starting a new page|create them like any other wiki page]].
+
+The simplest use of templates is as follows. If you create a page called "Template:Welcome" with contents:
+
+ Hello! Welcome to the wiki.
+
+you'll have created your first template! If you then insert the code:
+
+ <nowiki>{{Welcome}}</nowiki>
+
+in any other page, when that page is viewed the text "Hello! Welcome to the wiki." will appear instead of <code><nowiki>{{Welcome}}</nowiki></code>. The template content is "transcluded" into the other page, i.e. it is integrated in the page.
+
+You can then insert <code><nowiki>{{Welcome}}</nowiki></code> at any point of any page where you wish to welcome someone. Suppose it is used in 100 pages. If you then change the template contents to:
+
+ Hi there! Welcome to this wonderful wiki.
+
+and revisit any of the 100 pages where the template was used, you'll see the new text instead of the original one. In this way, you have changed the content of 100 pages without editing them, because the template is transcluded into these pages.
+
+This is the basic mechanism. There are several additional features of transclusion that enrich this mechanism and make templates very useful.
+
+==Usage==
+Templates can be used in other pages in these ways:
+
+*<code><nowiki>{{Name}}</nowiki></code>, described above, 'transcludes' (i.e. includes a copy of) the content of the template (stored in the page <nowiki>[[Template:Name]]</nowiki>) whenever the page containing the template transclusion is fetched and displayed; i.e. if the template is later changed, the displayed transcluding page will automatically change too
+*<code><nowiki>{{subst:Name}}</nowiki></code> replaces that string with the contents of the template, in the source of the transcluding page, when you save that page; the copy of the template contents can then be edited normally (and separately from the original in the template page). To ''Note'': don't use this if you are looking to continually propagate changes from the source template to the page(s) that references it.
+*<code><nowiki>{{safesubst:Name}}</nowiki></code> was introduced in [[rev:61710]] to allow for substitution that doesn't break transclusion, see [[w:en:Help:Substitution#safesubst:]].
+*<code><nowiki>{{msgnw:Name}}</nowiki></code> includes the template in a form that displays it as raw wiki syntax (the way <code><nowiki>&lt;nowiki&gt;</nowiki></code> does) when the page containing it is fetched.
+
+In fact, an ordinary wiki page can also be used as a template, simply by specifying the namespace it resides in, so:
+
+*<code><nowiki>{{Template:Pagename}}</nowiki></code>  includes <code><nowiki>[[Template:Pagename]]</nowiki></code>
+*<code><nowiki>{{Foo:Pagename}}</nowiki></code>       includes <code><nowiki>[[Foo:Pagename]]</nowiki></code>
+*<code><nowiki>{{:Pagename}}</nowiki></code>          includes <code><nowiki>[[Pagename]]</nowiki></code>
+**<code><nowiki>{{subst::Pagename}}</nowiki></code>    replaces itself with the contents of <code><nowiki>[[Pagename]]</nowiki></code>
+
+If no such namespace exists, the full title is assumed to be a template:
+
+*<code><nowiki>{{Foo:Bar}}</nowiki></code>            includes <code><nowiki>[[Template:Foo:Bar]]</nowiki></code>
+
+==Parameters==
+To enrich the mechanism of transclusion, MediaWiki allows parameters to be passed to a template when it is transcluded. Parameters allow the template to produce different contents or have different behaviors.
+
+Suppose you wish to insert a little thank you note in the [[Help:Talk pages|talk page]] of other users, such as:
+
+{{Thankyou|all your effort|Me}}
+The thank you note will have a reason (in this case, "all your effort") and a signature ("Me"). Your objective is that any user is able to thank any other user, for any reason whatsoever.
+
+So that the note will look similar everywhere it is used, you can define a template called [[Template:Thankyou]], for example. Although the note should look similar whenever a user thanks another user, its specific contents (i.e. the reason and the signature) will be different. For that reason, you should pass them as parameters. If we ignore the remaining elements to format the box and place the image, the core content of the template will be this:
+
+<pre><nowiki>'''A little thank you...'''
+for {{{1}}}.
+hugs, {{{2}}}</nowiki></pre>
+
+Notice the use of <code><nowiki>{{{1}}}</nowiki></code> and <code><nowiki>{{{2}}}</nowiki></code>. This is the way to identify, within templates, the parameters that will be passed in when the template is used. Note that, within the template, each parameter is surrounded by '''three''' braces: <code><nowiki>{{{ }}}</nowiki></code>. This is different from normal template name usage.
+
+When using the template on a page, you fill in the parameter values, separated by a pipe char (<code>|</code>). MediaWiki allows parameters to be passed to the template in three ways.
+
+=== Anonymous parameters ===
+To pass in anonymous parameters, list the values of those parameters sequentially:
+
+ <nowiki>{{Thankyou|all your effort|Me}}</nowiki>
+In this case, template <code><nowiki>{{Thankyou}}</nowiki></code> receives parameters <code><nowiki>{{{1}}}=all your effort</nowiki></code> and <code><nowiki>{{{2}}}=Me</nowiki></code> and produces:
+
+{{Thankyou|all your effort|Me}}
+
+Inverting the order of the parameters:
+
+ <nowiki>{{Thankyou|Me|all your effort}}</nowiki>
+
+causes template <code><nowiki>{{Thankyou}}</nowiki></code> to receive parameters <code><nowiki>{{{1}}}=Me</nowiki></code> and <code><nowiki>{{{2}}}=all your effort</nowiki></code> and inverts the result:
+
+{{Thankyou|Me|all your effort}}
+So, the order in which anonymous parameters are passed in is crucial to its behaviour.
+
+=== Numbered parameters ===
+To pass in parameters by number, identify each parameter when passing it:
+
+ <nowiki>{{Thankyou|2=Me|1=your friendship}}</nowiki>
+
+This time, template <code><nowiki>{{Thankyou}}</nowiki></code> receives parameters <code><nowiki>{{{1}}}=your friendship</nowiki></code> and <code><nowiki>{{{2}}}=Me</nowiki></code>, though they have been supplied in inverse order, and produces:
+{{Thankyou|2=Me|1=your friendship}}
+
+=== Named parameters ===
+The third way of passing parameters is by name, instead of numbers. In this case, the template contents would be changed to:
+
+<pre><nowiki>'''A little thank you...'''
+for {{{reason}}}.
+hugs, {{{signature}}}</nowiki></pre>
+
+Within the template, we use <code><nowiki>{{{reason}}}</nowiki></code> and <code><nowiki>{{{signature}}}</nowiki></code> to identify each parameter, instead of a number. To pass these parameters by name, identify each parameter when passing it:
+
+ <nowiki>{{Thankyou|signature=Me|reason=being who you are}}</nowiki>
+
+In this case, template <code><nowiki>{{Thankyou}}</nowiki></code> receives parameters <code><nowiki>{{{reason}}}=being who you are</nowiki></code> and <code><nowiki>{{{signature}}}=Me</nowiki></code> and produces:
+
+{{Thankyou|signature=Me|reason=being who you are}}
+The advantage of using named parameters in your template, besides also being flexible in the order parameters can be passed, is that it makes the template code much easier to understand if there are many parameters.
+
+=== Default values ===
+If you transclude a template that expects parameters, but do not provide them, in this way:
+
+ <nowiki>{{Thankyou}}</nowiki>
+
+in the numbered parameters example above you would get the following:
+
+{{Thankyou}}
+Since no parameters were passed in, the template presents the parameters themselves, instead of their respective values. In these cases, it may be useful to define ''default'' values for the parameters, i.e. values that will be used if no value is passed in. For example, if the template contents are changed to:
+
+<pre><nowiki>'''A little thank you...'''
+for {{{reason|everything}}}.
+hugs, {{{signature|Me}}}</nowiki></pre>
+
+then <code><nowiki>{{{reason|everything}}}</nowiki></code> defines that if no parameter <code>{{{reason}}}</code> is provided, then the value <code>everything</code> will be used. Similarly, <code><nowiki>{{{signature|Me}}}</nowiki></code>, defaults parameter <code>{{{signature}}}</code> to value <code>Me</code>. Now, transcluding the template again without passing any parameter, results in the following:
+<!-- strictly speaking, this example is false, because the template call was changed to obtain the desired effect - but the effect is the same if the template is defined as described -->
+{{Thankyou|reason=everything|signature=Me}}
+
+===Control template inclusion===
+You can control template inclusion by the use of <code><nowiki><noinclude></nowiki></code> and
+<code><nowiki><includeonly></nowiki></code> tags.
+
+Anything between <code><nowiki><noinclude></nowiki></code> and <code><nowiki></noinclude></nowiki></code> will be processed and
+displayed only when the template's page is being viewed directly.
+
+Possible applications are:
+* Categorising templates
+* Interlanguage links to similar templates in other languages
+* Explanatory text about how to use the template
+
+The converse is <code><nowiki><includeonly></nowiki></code>. Text between <code><nowiki><includeonly></nowiki></code> and <code><nowiki></includeonly></nowiki></code> will be processed and displayed only when the page is being included. The obvious application is to add all pages containing a given template to a [[Help:Categories|category]], without putting the template itself into that category.
+
+'''Note:''' when you change the categories applied by a template, the categorization of the pages that use that template may not be updated until some time later: this is handled by the {{mediawiki|Manual:Job queue|job queue}}.
+
+===Organizing templates===
+For templates to be effective, users need to find them, and find out how to use them. 
+
+To find them, users can:
+# Click '''Special Pages > All Pages'''
+# In the '''Namespace''' list, choose '''Template''' and click '''Go'''.
+
+To give usage information, include an example like this one on the template page:
+
+<pre><nowiki>
+<noinclude>
+== Usage ==
+Welcome users:
+{{Thankyou|reason=your reason|signature=your signature}}
+</noinclude>
+</nowiki></pre>
+
+Then, an editor can simply copy and paste the example to use the template.
+
+==Copying from one wiki to another==
+Templates often require [http://meta.wikimedia.org/wiki/Help:CSS CSS] or other templates, so users frequently have trouble copying templates from one wiki to another. The steps below should work for most templates:
+
+=== If you have import rights on the new wiki ===
+# Go to [[Special:Export]] on the original wiki. Enter the name of the template in the big text box, check "Include templates" and click Export. This will download a .xml file.
+# Go to [[Special:Import]] on the new wiki and upload the .xml file.
+# Look for CSS classes (like class="foobar") in the template text. If those classes appear in "MediaWiki:Common.css" or "MediaWiki:Monobook.css" on the original wiki, copy them to "MediaWiki:Common.css" on the new wiki.
+# If the template uses [[Help:Extension:ParserFunctions|ParserFunctions]], you have to install the {{mediawiki|Extension:ParserFunctions|ParserFunctions extension}}.
+
+=== If you don't have import rights on the new wiki ===
+# Copy the template text to the new wiki; link to the original page in the edit summary for attribution.
+# Edit the template on the new wiki, and look through the list of templates at the bottom. The ones in red will also need to be copied from the original wiki to the new wiki. You may have to repeat this process multiple times before all dependency templates have been recognized and copied.
+# Look for CSS classes (like class="foobar") in the template text. If those classes appear in "MediaWiki:Common.css" or "MediaWiki:Monobook.css" on the original wiki, copy them to "MediaWiki:Common.css" on the new wiki.
+# If the template uses [[Help:Extension:ParserFunctions|ParserFunctions]], you must install the {{mediawiki|Extension:ParserFunctions|ParserFunctions extension}}.
+
+==See also==
+*[[Help:External searches]] – a template special use case example
+*[[Help:Magic words]] – fancy stuff you may find in some templates
+*[[Help:Parser functions in templates]]
+*{{meta|Help:Template}} – contains a much more thorough manual on how exactly templates function
+*{{meta|Help:Embed page}} – embedding pages from [[Help:namespaces|namespaces]] other than <code>Template:</code>.
+
+[[Category:Help|{{PAGENAME}}]]
+[[Category:Template]]
+{{Languages|Help:Templates}}}
+&&%s&& %s Help:Tracking changes {56482 2010-11-13T20:25:53Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+[[File:M-en-recentchanges.png|thumb|370px|'''{{int:recentchanges}}''' shows the latest changes to pages, file uploads, deletions and page moves]]
+MediaWiki offers a collection of special pages and tools to keep track of what is going on in the wiki. So you can watch for example:
+* recent changes to all pages
+* the revision history: all changes made to one page
+* the contributions of one specific user 
+* newly created pages
+
+The most interesting special page is '''[[Special:RecentChanges]]'''. It displays all edits, file uploads, page moves, deletions and other actions done in the wiki. In the menu on top it offers a collection of links to customize your display: limit the number of changes shown, the number of days or restrict it to edits to a certain namespace. You can also hide edits marked as minor (don't forget that major changes can be flagged by a user as minor anyway).
+
+One line in recent changes consists of several links:
+* “{{lcfirst:{{int:diff}}}}” displays the difference to the previous revision of the page,
+* “{{lcfirst:{{int:hist}}}}” links to the revision history of the page,
+* the link with the full title of the page brings you to the current version. If the title is in bold, it indicates that it is on your [[Help:Watchlist|watchlist]].
+
+Next is a flag describing the page modification type:
+*“{{int:newpageletter}}” denotes a new page,
+*“{{int:minoreditletter}}” a minor edit,
+*“{{int:boteditletter}}” an edit made by a bot.
+
+Following the timestamp, it shows the page size difference to the previous revision, then the user is mentioned, with a link to their [[Help:User page|user page]] and their [[Help:Talk pages#User Talk pages|talk page]] and contributions, or to their [[Help:Talk pages#User Talk pages|talk page]] only in the case of anonymous users.
+
+Last but not least, there is an edit summary, appearing in italics, if the user submitted one when they made the edit.
+
+=== Enhanced view ===
+If you are logged in and have JavaScript enabled, you can also try the "enhanced" view. Simply go to your [[Help:Preferences#Recent changes|Preferences]] and enable "{{int:tog-usenewrc}}"; this will make recent changes show edits divided by page rather than being listed individually.  You will now see entries like the following:
+
+<blockquote style="border:1px solid">[[File:Arr_r.png|link=]] 15:17 [[Main Page]] ({{int:nchanges|4}} | {{int:hist}}) .. (+236) .. [Some User‎ (2×); Some Other User (2×)]</blockquote>
+
+Simply click the blue arrow to the left of the page name and timestamp to expand that page's recent edits just as they were on the normal style. You can turn this enhancement on and off at will, so feel free to try both to see which one you prefer.
+
+=== See also ===
+* [[Special:NewPages]]
+* {{int:recentchangeslinked}}: [[Special:RecentChangesLinked/Pagename]]
+* {{int:contributions}}: [[Special:Contributions/User]]
+* History
+* [[Help:Watchlist]]  
+
+{{Languages|Help:Tracking changes}}
+
+[[Category:Help|Tracking changes]]
+[[Category:Recent changes|Tracking changes]]}
+&&%s&& %s Help:Transclusion {73922 2011-10-05T06:29:18Z {0 } category '''[[Transclusion]]''' is generally the inclusion of the content of a document into another document by reference.  In a Wikipedia context, it is the use of the [[w:Wikipedia:Template messages|template functionality]] of [[MediaWiki]] to include the same content in multiple documents without having to edit those documents separately. Template transclusion is the common way to use template messages, and is implemented by using a template tag, with the form:
+:<code><nowiki>{{template name}}</nowiki></code>
+
+Occasionally one may want to use a template, but for one reason or another may not want to use transclusion. The automatic one-time copying of a template's code/text to the location of a template tag is called [[Wikipedia:Substitution|Template substitution]] or ''subclusion'' (substitution + transclusion). To subclude a template's code/text, the template tag is modified from the standard transclusion tag to a substitution tag, simply by adding <code>subst:</code>, creating a tag with the form: <code><nowiki>{{subst:template name}}</nowiki></code>.
+
+==How transclusion works==
+
+<div style="border: 1px hidden; margin: 0.5em; padding: 0.5em; float:left; width:258px;">
+[[Image:Transclusion-simple.png|left]]
+</div> 
+
+<div class="boilerplate metadata" id="Template syntax" style="background-color: #CCFFCC; border: 1px solid #009900; margin: 0.5em; padding: 0.5em; float: right; width: 35%; "><center><b>Template syntax</b></center>
+
+If the source is in the Main article namespace (e.g., "[[Cat]]"), you must put a colon (:) in front of the name, thus: <tt><nowiki>{{:Cat}}</nowiki></tt>
+
+If the source is in the Template namespace (e.g., "[[Template:Villagepumppages]]"), just use the name itself, alone, thus: <tt><nowiki>{{Villagepumppages}}</nowiki></tt>
+
+If the source is in any other namespace (e.g., "[[User:Example]]"), you must use the full name, including the namespace, thus: <tt><nowiki>{{User:Example}}</nowiki></tt>
+</div>
+
+To '''transclude''' any '''source''' page (within a single MediaWiki project, such as en:Wikipedia) within another '''target''' page, include the following code: 
+
+<code><nowiki>{{SOMEPAGE}}</nowiki></code>
+
+Whenever the target page '''A''' with this code is rendered, the engine will include ''in that place'' not the code itself, but the entire content of the source page '''B''', SOMEPAGE. 
+
+{{clear}}
+
+<div style="{{divstylenone}} float:left; width:544px;">
+[[Image:Transclusion-multiple-foo.png|left]]
+[[Image:Transclusion-multiple-twit.png|left]]
+</div>
+
+{{clear}}
+
+For example, you might decide to place a welcome message on every newcomer's Talk Page.  Transclusion creates a "live" link between the template-page and the target-page(s) upon which the message should appear. When the template is edited, all the target-pages are edited too.
+
+For example, you ''might'' decide to create a (template) page with your mailing address and include that template on not only your page, but all your friends' pages, too. When you move your television and couch to another apartment, you will ''change'' your address template, and automatically, that ''new information'' will appear on all your friends' pages.
+
+{{clear}}
+== Etymology ==
+[[:en:Ted Nelson|Ted Nelson]] coined the term "[[transclusion]]," as well as "[[w:hypertext|hypertext]]" and "[[w:hypermedia|hypermedia]]", in his 1982 book, ''[[w:Literary Machines|Literary Machines]]''.
+
+==Partial transclusion==
+By using "noinclude", "onlyinclude" and "includeonly" markup, it is possible to transclude part of a page rather than all of it. Such partial transclusions can also be achieved by transcluding from other pages such as subpages. It is often useful not to transclude some information, such as template documentation. 
+
+For an example of how this technique can be applied to simplify the creation of [[w:WP:SS|summary articles]], see [http://en.wikipedia.org/w/index.php?title=Pathology&oldid=301684595], which consisted of a collection of transcluded [[w:WP:LEAD|lead paragraphs]] from several main articles. 
+
+===Transclusion markup===
+
+* '''noinclude'''. The markup <nowiki><noinclude>...</noinclude></nowiki> means that the text between the tags will not be transcluded onto another page, but will only appear on the page itself. This is useful for documentation. 
+* '''includeonly'''. The markup <nowiki><includeonly>...</includeonly></nowiki> means that the text between the tags will only be used when the page is transcluded onto another page, and will not appear on the page itself. This can be useful, for example, for adding categories to pages transcluding a template, without adding the template itself to these categories.
+* '''onlyinclude'''. The markup <nowiki><onlyinclude>...</onlyinclude></nowiki> indicates that only text surrounded by "onlyinclude" markup should be transcluded onto another page. This is the most subtle of the partial transclusion tags because it often overrules the others. If there is at least one pair of "onlyinclude" tags on a page, then whenever this page is transcluded, it is ''only'' the material within the "onlyinclude" tags which gets transcluded. There can be several such sections, and within each such section, some material might be further excluded by "noinclude" tags, and might also be surrounded by "includeonly" tags so that it does not appear on the original page itself. But material outside the "onlyinclude" tags will be ignored when the page is transcluded onto another page. This can be useful, for example, to repeat a small part of one page on a second one: just surround the small part by onlyinclude tags, and transclude it onto the second page.
+
+===Subpages===
+One can cut and paste the text to be transcluded into a [[Wikipedia:Subpages|subpage]], then use the name of the subpage in the transclusion template. This approach can only be used with subpages from User, Talk or Wikipedia pages; currently, subpages [[Wikipedia:Subpages#Articles do not have sub-pages (main namespace)|cannot be created from main article pages]].
+
+Example: you want to discuss the deletion and redirecting of [[Pussycat]] to [[Cat]]. First, create the subpage [[Talk:Pussycat/Let's delete Pussycat!]], write your comment into it, then transclude it in [[Talk:Pussycat]] and [[Talk:Cat]] using the template '''<nowiki>{{Talk:Pussycat/Let's delete Pussycat!}}</nowiki>'''. Comments posted in either talk page will be shown in both.
+
+===Special pages===
+:''See also:[[w:Wikipedia:Special pages#Miscellaneous]]''
+
+Some pages on [[Special:Specialpages]] can be transcluded, e.g. [[Special:Newpages]]
+
+Sample: <nowiki>{{Special:Newpages/3}}</nowiki> gives 3 new pages.
+
+==Pages related to [[MediaWiki]] [[transclusion]]==
+
+* [[Wikipedia:MediaWiki namespace]]
+** [[m:Help:MediaWiki namespace]]
+* [[m:Help:Variable]]
+*[[:w:Wikipedia talk:Template namespace#transcluding prose]]
+
+==Templates==
+* [[Help:Template]]
+* [[w:Wikipedia:Template namespace]]
+* [[w:Wikipedia:Template limits]]
+
+== See also ==
+* [[MediaZilla:4547|Request for template transclusion from Commons]] (interwiki templates, etc.)
+* [[w:Wikipedia:Substitution]] (the opposite of transclusion)
+
+[[Category:Help]]
+
+{{languages}}}
+&&%s&& %s Help:User page {56486 2010-11-13T20:25:53Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+A '''{{lcfirst:{{ns:2}}}} page''' is a page about a wiki user; someone who registered on the wiki, and is (most probably) a contributor.
+
+If you have registered, you can create your own user page. Your user page is linked in the top right. More importantly, others will see links to your user page from various places which assist wiki collaboration. This includes the “{{int:Recentchanges}}” and “{{lcfirst:{{int:history}}}}” displays (See [[Help:Tracking changes]]). You can also link to your user page within text of a wiki page, which is mainly useful on [[Help:Talk pages|talk pages]] when you sign your name.
+
+== What to put on your user page ==
+User pages are just as flexible as any other wiki page, and it's a page all about you, so generally people will leave you to freely write your user page in whatever format you like. It's a feature to help other people know who you are, and to bring the online community closer together. Think of it as a “profile” page. You might like to mention where you are from and what your job is. You can also state what your main areas of interest are in relation to the topic of the wiki, and describe contributions you have made or areas where you are interested in contributing.
+
+=== User scratchpad / development area ===
+You can use your user page as a scratchpad. An area for developing ideas without cluttering the main namespace (see [[Help:Namespaces]]). If subpages are enabled (see [[Help:Subpages]]), you may find them useful for creating sub pages under your user page. However you should avoid expending too much effort within your own area of the wiki. Be bold! Edit the main wiki articles! If your wiki has a shared Sandbox page, you can also use it for quick (non-permanent) wiki experimentation.
+
+== Other people's user pages ==
+As mentioned above, you will see links to other people's user pages, in various places throughout the wiki.
+
+=== User Contributions ===
+When viewing another person's user page, an additional link “{{lcfirst:{{int:contributions}}}}" appears in the “{{lcfirst:{{int:toolbox}}}}” of the [[Help:Navigation#Sidebar|sidebar]]. This takes you to a list of all of this user's wiki edits. Use this to get an idea of how prolific a contributor somebody is, or to track down edits made by a user who is causing trouble/making bad wiki edits.
+
+=== Editing someone else's page ===
+It's generally considered bad etiquette to rewrite or reword another person's user page. Editing is not disallowed, but you should avoid adding information (or especially opinions) which might be misinterpreted as coming from that user, in situations where this could potentially cause upset. Some types of edit are widely acceptable, and unlikely to cause upset:
+
+* Fixing internal links, when a page has been [[Help:Moving a page|moved]] or [[Help:Deleting a page|deleted]]
+* Fixing broken external links
+* Categorizing or fixing categories of user pages.
+
+=== User talk pages ===
+Every user page has an associated talk page; a "{{lcfirst:{{ns:3}}}} page". This is a special kind of talk page, for leaving messages directed at a particular user. See [[Help:Talk pages#User talk pages]].
+
+=== Link to a user page ===
+To create a link to the user page of the user that clicks that link, use [[Special:MyPage]].
+
+{{Languages}}
+
+[[Category:Help|{{PAGENAME}}]]}
+&&%s&& %s Help:Watchlist {56488 2010-11-13T20:25:53Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+Your '''watchlist''' is a display for [[Help:Tracking changes|tracking changes]], similar to the “{{int:recentchanges}}” display, but limited to showing changes only across your set of “watched” pages. You can see the watchlist display by clicking “{{lcfirst:{{int:mywatchlist}}}}” link in the top right, however this is only available to users who have registered and logged in.
+
+Before you see anything interesting here, you must add some pages to your watchlist. Do this by navigating to a page which interests you, and clicking the''' “{{lcfirst:{{int:watch}}}}” tab'''.
+
+The watchlist feature is mainly useful on a very busy wiki where the “{{int:recentchanges}}” display becomes too “high traffic.” On a typical low traffic wiki, you can normally see all of the editing activity across the whole wiki without feeling overwhelmed. On a more busy wiki you will find that many edits are taking place on pages which you personally find less interesting. To help track changes which are more interesting, start watching pages!
+
+Typically you would watch pages related to your interest areas, and also pages where your care most about the content. If you make a significant edit to a page, you might chose to watch the page, to see if there are any follow-up edits for example. Note that there is a “{{int:watchthis}}” tickbox provided on the editing screen for this purpose.
+
+On the watchlist display, some page names appear in bold. This indicates whether or not you have visited the page to see the change. It's a bit like read/unread emails in an email inbox. The “{{int:recentchanges}}” display will also have some new bold highlighting, but for a different reason. Here bold is just indicating edits to pages on your watchlist.
+
+See also [[Help:Tracking changes]].
+
+{{languages}}
+[[Category:Help|Watchlist]]}
+&&%s&& %s Category:Help {74626 2011-11-05T00:14:59Z {0 }  [[Image:PD-Help icon.png|right|100px|link=|Your help is welcomed. Writers needed.]]
+
+[[:Category:Help]] contains help pages that describe how to use MediaWiki. Only pages in "Help:" [[Help:Namespace|namespace]] should be in this category. Note that all pages in the Help: namespace are released into the [[w:public domain|public domain]] so that they can be easily imported into any MediaWiki instance regardless of the specific wiki's own license. See '''{{mediawiki|Project:PD Help}}''' if you want to help us.
+
+''All English-language public-domain help pages should be categorized into [[:Category:Help]] (using <tt><nowiki>[[Category:Help]]</nowiki></tt>), for documentation of the MediaWiki core interface, or [[:Category:Extension help]] (using <tt><nowiki>[[Category:Extension help]]</nowiki></tt>) for extension documentation. Additional categories for further sorting is also helpful. This is needed because of later half-automated creation of the PD Help package from this category.''
+
+The front page is '''[[Help:Contents]]'''
+[[Category:NetHackWiki]]}
+&&%s&& %s Template:Languages {144075 2022-01-02T07:40:34Z {4001483 Cathartes} attempt to fix it properly <div class="languages">'''[[{{{1|:{{#if:{{NAMESPACE}}|{{NAMESPACE}}:}}{{BASEPAGENAME}}}}}|English]]'''
+{{Languages/Lang|de|{{{1|}}}|}}
+{{Languages/Lang|fi|{{{1|}}}|}}
+{{Languages/Lang|ru|{{{1|}}}|}}
+{{Languages/Lang|ko|{{{1|}}}|}}</div><noinclude>
+
+This template should only be placed on pages that exist in more than one language, and it should be placed in the same location on each translation of the page.
+
+For example, on the Main Page you would include the text <tt><nowiki>{{Languages}}</nowiki></tt>, both on [[Main Page]] itself, and on each of its language sub-pages.
+The template automatically creates links to any language sub-pages that exist.
+
+'''Supported languages''':
+
+*German: Main_Page/de
+*Finnish: Main_Page/fi
+*Russian: Main_Page/ru
+*Korean: Main_Page/ko
+
+New languages can be added easily if needed.
+
+
+
+See also http://www.mediawiki.org/wiki/Template:Languages
+
+</noinclude>}
+&&%s&& %s Template:Languages/Lang {144076 2022-01-02T07:41:17Z {4001483 Cathartes} fix double colon in main namespace <includeonly>{{#ifexist: {{#if: {{{2|}}} | {{{2}}} | {{#if: {{NAMESPACE}} | {{NAMESPACE}}:}}{{BASEPAGENAME}}}}/{{{1}}} | &nbsp;&bull;&#32;<span lang="{{{1}}}">{{#if: {{{2|}}}|[[{{{2}}}/{{{1}}}|{{#language:{{{1}}}}}]]| [[:{{#if:{{NAMESPACE}}|{{NAMESPACE}}:}}{{BASEPAGENAME}}/{{{1}}}|{{#language:{{{1}}}}}]]}}</span>|<span></span>}}</includeonly><noinclude>
+== Template ==
+''This sub-template doesn't display properly when not included.  Please see [[Template:Languages]] for the complete version.''
+
+== Usage ==
+
+This template is designed to simplify [[Template:Languages]], by allowing a simpler syntax for adding new languages.  Each language is included by calling this template with the following parameters:
+
+* '''Language code''' (e.g. fr)
+* (optional) '''Page name''' - if not supplied the page is automatically worked out based on where the language template is included.
+
+This template should not be used anywhere except in the Languages template.
+[[Category:Language templates]]
+</noinclude>}
+&&%s&& %s Template:Languages/Title {56514 2010-11-13T20:25:59Z {831 Tjr} 1 revision: Import mediawiki help files <onlyinclude>{{#switch:{{{1}}}
+|=Languages:
+|Languages=Languages:
+|MediaWiki=Languages:
+|af=Taal:
+|aln=Gjuha:
+|am=ቋምቋ፦
+|an=Idioma:
+|ang=Sprǣc:
+|ar=:اللغة
+|arc=ܠܫܢܐ:
+|arn=Dungun:
+|arz=:اللغة
+|as=ভাষা:
+|ast=Llingua:
+|avk=Ava:
+|ay=Aru:
+|az=Dil:
+|bat-smg=Kalba:
+|bcc=:زبان
+|bcl=Tataramon:
+|be=Мова:
+|be-tarask=Мова:
+|bg=Език:
+|bn=ভাষা:
+|br=Yezh :
+|bs=Jezik:
+|ca=Llengua:
+|cdo=Ngṳ̄-ngiòng:
+|ce=Мотт:
+|ceb=Pinulongan:
+|ch=Lengguahe:
+|ckb-arab=:زمان
+|co=Lingua:
+|crh-cyrl=Тиль:
+|crh-latn=Til:
+|cs=Jazyk:
+|cu=ѩꙁꙑ́къ :
+|cv=Чĕлхе:
+|cy=Iaith:
+|da=Sprog:
+|de=Sprache:
+|diq=Zıwan:
+|dsb=Rěc:
+|ee=Gbe:
+|el=Γλώσσα:
+|en=Language:
+|eo=Lingvo:
+|es=Idioma:
+|et=Keel:
+|eu=Hizkuntza:
+|ext=Palra:
+|fa=:زبان
+|fi=Kieli:
+|fo=Mál:
+|fr=Langue:
+|frc=Langue:
+|frp=Lengoua:
+|fur=Lenghe:
+|fy=Taal:
+|ga=Teanga:
+|gag=Dil:
+|gan-hans=语言:
+|gan-hant=語言:
+|gl=Lingua:
+|gn=Ñe'ẽ:
+|got=Razda:
+|grc=Γλῶσσα:
+|gsw=Sproch:
+|gu=ભાષા:
+|gv=Çhengey:
+|hak=Ngî-ngièn:
+|haw=Kou 'ōlelo:
+|he=שפה:
+|hi=भाषा:
+|hif-latn=Bhasa:
+|hr=Jezik:
+|hsb=Rěč:
+|ht=Lang:
+|hu=Nyelv:
+|hy=Լեզու.
+|ia=Lingua:
+|id=Bahasa:
+|ie=Lingue:
+|ilo=Lengguahe:
+|io=Linguo:
+|is=Tungumál:
+|it=Lingua:
+|ja=言語:
+|jv=Basa:
+|ka=ენა:
+|kaa=Til:
+|kab=Tutlayt:
+|kg=Ndinga:
+|kiu=Zon:
+|kk-arab=:ٴتىل
+|kk-cyrl=Тіл:
+|kk-latn=Til:
+|km=ភាសា៖
+|kn=ಭಾಷೆ:
+|ko=언어:
+|ksh=Sproch:
+|ku-latn=Ziman:
+|kv=Кыв:
+|kw=Yeth:
+|ky=Тил:
+|la=Lingua:
+|lb=Sprooch:
+|lfn=Lingua:
+|li=Taol:
+|lij=Lengoa:
+|loz=Zwa Siselect:
+|lt=Kalba:
+|lv=Valoda:
+|lzh=語：
+|mdf=Кяль:
+|mg=fiteny:
+|mhr=Йылме:
+|mk=Јазик:
+|ml=ഭാഷ:
+|mn=Хэл:
+|mr=भाषा:
+|ms=Bahasa:
+|mt=Lingwa:
+|mwl=Lhéngua:
+|my=ဘာသာ:
+|myv=Кель:
+|nah=Tlahtōlli:
+|nap=Lengua:
+|nds=Spraak:
+|nds-nl=Taal:
+|ne=भाषा:
+|new=भाषा:
+|nl=Taal:
+|nn=Språk:
+|no=Språk:
+|nso=Polelo:
+|oc=Lenga:
+|os=Æвзаг:
+|pa=ਭਾਸ਼ਾ:
+|pam=Amanu:
+|pdc=Schprooch:
+|pdt=Sproak:
+|pl=Język:
+|pms=Lenga:
+|pnb=بولی:
+|pnt=Γλώσσαν:
+|prg=Bilā:
+|ps=ژبه:
+|pt=Língua:
+|pt-br=Idioma:
+|qu=Rimay:
+|rm=Lingua:
+|ro=Limba:
+|roa-tara=Lénga:
+|ru=Язык:
+|sa=भाषा:
+|sah=Омугун тыла:
+|sc=Limba:
+|scn=Lingua:
+|sco=Leid:
+|sdc=Linga:
+|se=Giella:
+|sei=Itom:
+|sh=Jezik:
+|shi=tutlayt:
+|si=භාෂාව:
+|sk=Jazyk:
+|sl=Jezik:
+|sli=Sproache:
+|so=Luqada:
+|sq=Gjuha:
+|sr-ec=Језик:
+|sr-el=Jezik:
+|srn=Tongo:
+|ss=Lúlwîmi:
+|stq=Sproake:
+|su=Basa:
+|sv=Språk:
+|sw=Lugha:
+|szl=Godka:
+|ta=மொழி:
+|te=భాష:
+|tet=Lian:
+|tg-cyrl=Забон:
+|th=ภาษา:
+|ti=ቋንቋ:
+|tk=Dil:
+|tl=Wika:
+|to=Lea:
+|tr=Dil:
+|tt-cyrl=Тел:
+|tyv=Дыл:
+|ug-arab=:تىل
+|ug-latn=Til:
+|uk=Мова:
+|vec=Lengua:
+|vep=Kel’:
+|vi=Ngôn ngữ:
+|vo=Pük:
+|vro=Kiil:
+|wa=Lingaedje:
+|war=Yinaknan:
+|wo=Làkk:
+|wuu=语言:
+|xal=Келн:
+|xh=Ulwimi:
+|xmf=ნინა:
+|yi=שפראך:
+|yo=Èdè:
+|yue=語言:
+|zea=Taele:
+|zh-hans=语言:
+|zh-hant=語言:
+|zu=Ulimi:
+
+|#default=Language:
+}}</onlyinclude>
+
+== Documentation ==
+The cases are all poached from [http://translatewiki.net/w/i.php?title=Special:Translations/loginlanguagelabel&namespace=8 here].  We can't just transclude that system message, because it includes a <tt>$1</tt>.}
+&&%s&& %s Template:Mediawiki {56516 2010-11-13T20:25:59Z {831 Tjr} 1 revision: Import mediawiki help files {{ #ifeq:
+  {{SERVERNAME}}
+| www.mediawiki.org
+| [[{{{1}}}|{{{2|{{{1}}}}}}]]
+| [[mw:{{{1}}}|{{{2|{{{1}}}}}}]]
+}}<noinclude>
+----
+This template links to a page on mediawiki.org from the [[Help:Contents|Help pages]]. The template has two parameters:
+# Pagename, optionally preceded by an interwiki link prefix valid on mediawiki.org
+# (optional) Link description
+<!-- Compatibility Note: The "mw" prefix is the only in the default interwiki prefixes since MediaWiki 1.16 (see mw:Manual:Interwiki#References). If you plan to use this script with an older version, it might be possible or necessary to you use the "mediawikiwiki" prefix. -->
+
+{{ #ifeq:
+{{SERVERNAME}}
+| www.mediawiki.org
+| This is so that the public domain help pages - which can be freely copied and included in other sites - have correct links to Mediawiki:
+* on external sites, it creates an interwiki link to 'mw' (included in the default interwiki table for new installs)
+* on Mediawiki, it creates an internal or interwiki link
+
+'''All''' links from the Help namespace to other parts of the mediawiki.org wiki should use this template.}}
+
+== Demo of interwiki link ==
+
+<nowiki>{{mediawiki|m:Help:Calculation|Help:Calculation}}</nowiki> gives either<br /> <nowiki>[[m:Help:Calculation|Help:Calculation]] or [[mw:m:Help:Calculation|Help:Calculation]]</nowiki>.
+
+{{Languages}}
+
+[[Category:Info templates|MediaWiki]]
+</noinclude>}
+&&%s&& %s Template:Nmbox {56518 2010-11-13T20:25:59Z {831 Tjr} 1 revision: Import mediawiki help files <table class="nmbox" style="border:1px solid #AAAAAA; border-collapse:collapse; clear:both; font-size:85%; margin: 0.25em 0;">
+<tr style="background: #EEF3E2">
+{{#if:{{{image|}}}{{{header|}}}
+| <th class="mbox-image" style="white-space: nowrap; padding: 4px 1em; border-right: 1px solid #aaaaaa;">{{{image|}}} {{{header|}}}</th>
+| <td class="mbox-empty-cell"></td>   <!-- No image. Cell with some width or padding necessary for text cell to have 100% width. -->
+}}
+<td class="mbox-text" style="background: #F6F9ED;">{{{text|}}}</td>
+</tr></table><noinclude>
+{{documentation}}
+</noinclude>}
+&&%s&& %s Template:PD Help Page {57512 2010-11-23T17:59:28Z {366 Ilmari Karonen} reword template, original version assumes we're on mediawiki.org {| style="color:#000000; border:solid 1px #A8A8A8; padding:0.5em; margin:0.5em 0; background-color:#FFFFFF;font-size:95%; vertical-align:middle;"
+| style="padding:0.5em;width: 40px" | [[Image:PD-icon.svg|40px|link=|PD]]
+| {{#if:{{{text|}}}|{{{text}}}|The content of this page is based on the [[mw:Project:PD help|MediaWiki Public Domain Help Pages]]; you may edit it here, but please consider contributing any improvements not specific to {{SITENAME}} to [[mw:{{FULLPAGENAME}}|the original page at mediawiki.org]].  See [[Help:Contents]] for an overview of all pages.}}
+| style="padding:0.5em;width: 40px" | [[Image:PD-icon.svg|40px|link=|PD]]
+|}
+<noinclude>{{Languages|Template:PD Help Page}}[[Category:License templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Bugzilla {56522 2010-11-13T20:26:00Z {831 Tjr} 1 revision: Import mediawiki help files {{#switch:{{{2}}}
+|RESO=<span style="color:#666;-moz-opacity:.5;font-size:smaller;">
+|<span>}}[[mediazilla:{{{1}}}|bug&nbsp;{{{1}}}]]{{#if:{{{2|}}}|&nbsp;[{{{2}}}]}}</span><noinclude>
+[[Category:External link templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:Help/Category {56524 2010-11-13T20:26:01Z {831 Tjr} 1 revision: Import mediawiki help files <noinclude>
+{{#ifexist: Template:PD Help Page/{{SUBPAGENAME}}|{{PD Help Page/{{SUBPAGENAME}} }}|{{PD Help Page}} }}
+
+This template is to be transcluded in '''public domain''' help pages to categorize those pages.
+
+== Example ==
+
+ <nowiki>{{</nowiki>{{PAGENAME}}|MediaWiki Introduction|lang=zh}}
+
+ <nowiki>{{</nowiki>{{PAGENAME}}|MediaWiki Introduction}}
+
+Default value of {{{lang}}} will be <nowiki>{{SUBPAGENAME}}</nowiki> (which will be "fr", "ja", "th", for, "Page/fr", "Page/ja", "Page/th", respectively).
+
+If you want to specify the sort key, you may instead use the form <nowiki>[[Category:Cat name{{Lang subpage}}|sort key]]</nowiki>.
+This template is equivalent to <nowiki>[[Category:Cat name{{Lang subpage}}|{{En pagename}}]]</nowiki>, but it compute <nowiki>{{If en|...}}</nowiki> two times, while this template compute <nowiki>{{If en|...}}}</nowiki> only once.
+
+[[Category:Internationalization templates|Category/Help]]
+
+</noinclude>
+{{Help/If en|
+[[Category:{{{1|<nowiki>{{{1}}}</nowiki>}}}|{{PAGENAME}}]]|
+[[Category:{{{1|<nowiki>{{{1}}}</nowiki>}}}/{{{lang|{{SUBPAGENAME}} }}}|{{BASEPAGENAME}}]]}}}
+&&%s&& %s Template:Help/If en {56526 2010-11-13T20:26:01Z {831 Tjr} 1 revision: Import mediawiki help files {{#ifeq: {{#language:{{SUBPAGENAME}} }}|{{SUBPAGENAME}} |{{{1}}}|{{{2|}}} }}<noinclude>
+
+
+{{#ifexist: Template:PD Help Page/{{SUBPAGENAME}}|{{PD Help Page/{{SUBPAGENAME}} }}|{{PD Help Page}} }}
+
+This template is to be transcluded in '''public domain''' help pages.
+
+== Example ==
+ <nowiki>{{</nowiki>{{PAGENAME}}|This is en base page|This is non-en subpage}}
+* title: Help:Deleting a page, Help:Deleting a page/subpage
+** result: This is en base page
+* title: Help:Deleting a page/th, Help:Deleting a page/Th, Help:Deleting a page/tH, Help:Deleting a page/TH
+** result: This is non-en subpage
+
+[[Category:Internationalization templates|If en/Help]]
+</noinclude>}
+&&%s&& %s Template:Anchor {105433 2017-04-30T14:44:03Z {4000180 Bcode} use interwiki link for wikipedia {{#if:{{{1|}}}|<span id="{{{1|}}}"></span>}}<!--
+-->{{#if:{{{2|}}}|<span id="{{{2|}}}"></span>}}<!--
+-->{{#if:{{{3|}}}|<span id="{{{3|}}}"></span>}}<!--
+-->{{#if:{{{4|}}}|<span id="{{{4|}}}"></span>}}<!--
+-->{{#if:{{{5|}}}|<span id="{{{5|}}}"></span>}}<!--
+-->{{#if:{{{6|}}}|<span id="{{{6|}}}"></span>}}<!--
+-->{{#if:{{{7|}}}|<span id="{{{7|}}}"></span>}}<!--
+-->{{#if:{{{8|}}}|<span id="{{{8|}}}"></span>}}<!--
+-->{{#if:{{{9|}}}|<span id="{{{9|}}}"></span>}}<!--
+-->{{#if:{{{10|}}}|<span id="{{{10|}}}"></span>}}<!--
+-->{{#if:{{{11|}}}|<span class="error">[[Template:Anchor]] (or Anchors): too many anchors, maximum is 10.</span>}}<noinclude>
+From Wikipedia, [[wikipedia:Template:Anchor]].
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:Note {61241 2010-12-09T10:33:25Z {4000007 Jafet} Change meaning of template to footnote <cite id="endnote_{{{1}}}" style="font-style: normal;">[[#ref_{{{1}}}|'''^''']]</cite>&nbsp;<noinclude>
+
+== Usage ==
+
+Use <nowiki>{{note}}</nowiki> with [[Template:ref|<nowiki>{{ref}}</nowiki>]] for making linked footnotes. See [http://meta.wikimedia.org/wiki/Help:Footnotes Footnotes on Wikimedia Meta] for details.
+
+{| class="wikitable"
+|-
+! Code !! Result
+|-
+| <code>[[Foo]] <nowiki>is great {{note|foo}}. So is bar.</nowiki></code> || Foo is great {{note|foo}}. So is bar.
+|-
+| <code><nowiki>{{ref|foo}} This footnote explains foo.</nowiki></code> || {{ref|foo}} This footnote explains foo.
+|}
+
+{{Languages|Template:Note}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Help:Images/frame {56534 2010-11-13T20:26:05Z {831 Tjr} 1 revision: Import mediawiki help files <noinclude>{|class="wikitable plainlinks"
+</noinclude>|-
+|{{#if:{{{ex|}}}|{{{ex|}}}|{{{frame|}}}}}{{#if:{{{float|}}}|<br /><small>Rendered as a floating block: {{{float|}}}</small>|}}{{#if:{{{inline|}}}|<br /><small>Rendered inline: {{{inline|}}}</small>|}}
+|
+ ... text text text
+ <nowiki>[[</nowiki>{{ns:image}}:example.jpg{{#if:{{{frame|}}}|{{!}}'''{{{frame}}}'''}}{{#if:{{{2|}}}|{{!}}'''{{{2}}}'''}}{{#if:{{{caption|}}}|{{#ifeq:{{{caption|}}}|none|<nowiki/>|{{!}}{{{caption|}}}}}|{{!}}caption}}]]
+ text text text ...
+|wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+text text text text text text text text text text text text text text text text text text text text text text text text text
+[[image:example.jpg|{{{frame|}}}|{{{2|}}}|{{#if:{{{caption|}}}|{{#ifeq:{{{caption|}}}|none|<nowiki/>|{{{caption|}}}}}|caption}}]]
+text text text text text text text text text text text text text text text text text text text text text text text text text<noinclude>
+|}
+
+{{Languages|Help:Images/frame}}
+</noinclude>}
+&&%s&& %s Help:Images/size {56536 2010-11-13T20:26:06Z {831 Tjr} 1 revision: Import mediawiki help files <noinclude>{| class="wikitable"</noinclude>
+|-
+!{{#if: {{{frame|}}} |{{{frame}}}|{{{notspec|''(not specified)''}}} }}
+|
+ <nowiki>[[</nowiki>{{ns:image}}:{{mediawiki:image_sample}}|{{#if: {{{frame|}}} |{{{frame}}}{{!}}}}'''50px''']]
+[[{{ns:image}}:{{mediawiki:image_sample}}|{{{frame}}}|50px]]
+|
+ <nowiki>[[</nowiki>{{ns:image}}:{{mediawiki:image_sample}}|{{#if: {{{frame|}}} |{{{frame}}}{{!}}}}'''500px''']]
+[[{{ns:image}}:{{mediawiki:image_sample}}|{{{frame}}}|500px]]
+<noinclude>|}
+{{Languages|Help:Images/size}}</noinclude>}
+&&%s&& %s Template:Hl2 {56538 2010-11-13T20:26:06Z {831 Tjr} 1 revision: Import mediawiki help files bgcolor="#A7C1F2" <noinclude>[[Category:Utility templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Hl3 {56540 2010-11-13T20:26:06Z {831 Tjr} 1 revision: Import mediawiki help files bgcolor="#8DA7D6" color="black" <noinclude>[[Category:Utility templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Warning {56544 2010-11-13T20:26:08Z {831 Tjr} 1 revision: Import mediawiki help files {{#if: {{{1|}}}|<table cellspacing="0" cellpadding="0" border="0" style="background: transparent;"><tr><td nowrap="nowrap" valign="top">}}<span style="position: relative; top: -2px;">[[File:Attention niels epting.svg|18px|Warning|link=]]</span> '''Warning''': {{#if: {{{1|}}}|</td><td valign="top" style="padding-left:0.5em;">{{{1|}}}</td></tr></table>}}<noinclude>
+
+== Usage ==
+
+=== Method 1 ===
+
+The following displays the warning icon and the word 'Warning:'.  You can follow this with whatever text/images/markup you like.
+ <nowiki>{{warning}}</nowiki> Don't do that!
+
+{{warning}} Don't do that!
+
+=== Method 2 ===
+The following includes the text passed to the template, and uses a table to stop the text flowing round the icon.
+ <nowiki>{{warning|Here is a long warning, which is sufficiently wordy to run onto a second line, 
+ which would normally cause it to wrap round the icon, but because we passed it as a parameter 
+ it keeps its left alignment straight.}}</nowiki> 
+
+{{warning|Here is a long warning, which is sufficiently wordy to run onto a second line, which would normally cause it to wrap round the icon, but because we passed it as a parameter it keeps its left alignment straight.}}
+
+{{Languages|Template:Warning}}
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:Meta {56546 2010-11-13T20:26:09Z {831 Tjr} 1 revision: Import mediawiki help files <includeonly>[[m:{{{1}}}|{{{2|MetaWiki:{{{1}}}}}}]] {{{3|}}}</includeonly><noinclude>
+== Examples ==
+{| class="wikitable"
+!Rendering
+!Syntax
+|-
+| {{meta|Main Page}} || {{tlx|meta|Main Page}}
+|-
+| {{meta|Main Page|Quux}} || {{tlx|meta|Main Page|Quux}}
+|-
+| {{meta|Main Page|Quux| - Baz}} || {{tlx|meta|Main Page|Quux| - Baz}}
+|}
+{{Languages|Template:Meta}}[[Category:Info templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Thankyou {56548 2010-11-13T20:26:11Z {831 Tjr} 1 revision: Import mediawiki help files <div class="noprint" style="float:center; border:1px solid blue;width:200px;background-color:#FFF;padding:3px;">
+[[Image:Example.jpg|left|80px|Example sunflower image]] '''A little thank you...''' <br /><small>for {{{reason|{{{1}}}}}}. <br />hugs, {{{signature|{{{2}}}}}}</small>
+</div>
+<noinclude>
+{{Languages|Template:Thankyou}}
+[[Category:Template examples|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Category {56552 2010-11-13T20:26:12Z {831 Tjr} 1 revision: Import mediawiki help files <noinclude>
+:''See [[{{TALKPAGENAME}}|talk page]] for some logics behind this implementation.''
+
+Do not transclude this in PD help pages (Help namespace), since it seem to break the PD help guidelines, in that, this template name is too generic to be used in a fresh wiki installation.  For PD help pages, use [[Template:Help/{{PAGENAME}}]] instead.
+
+== Example ==
+:''See [[Template:Help/{{PAGENAME}}#Example]]''
+
+{{Category|Internationalization templates}}
+</noinclude>{{Help/Category|{{{1|<nowiki>{{{1}}}</nowiki>}}}|lang={{{ lang|{{SUBPAGENAME}} }}} }}}
+&&%s&& %s Template:Help/Categories {56554 2010-11-13T20:26:12Z {831 Tjr} 1 revision: Import mediawiki help files <noinclude>
+{{#ifexist: Template:PD Help Page/{{SUBPAGENAME}}|{{PD Help Page/{{SUBPAGENAME}} }}|{{PD Help Page}} }}
+
+This template is to be transcluded in '''public domain''' help pages.
+
+This template will transclude the central en categories template, if the template exists.
+Include this template in any language subpages, to unify the page's categories across languages.
+== Example ==
+* title: Help:Deleting a page --> transclude {<nowiki></nowiki>{Help:Deleting a page/categories}}
+* title: Help:Deleting a page/th --> transclude {<nowiki></nowiki>{Help:Deleting a page/categories}}
+* title: Help:Deleting a page/subpage --> transclude {<nowiki></nowiki>{Help:Deleting a page/subpage/categories}}
+* title: Help:Deleting a page/subpage/th --> transclude {<nowiki></nowiki>{Help:Deleting a page/subpage/categories}}
+
+[[Category:Internationalization templates|Categories/Help]]
+</noinclude><!--
+
+Trying to optimize {{If en}} calling.
+This call {{If en}} only once.
+
+-->{{If en|<!--
+
+   -->{{#ifexist: {{{1|{{NAMESPACE}}:{{PAGENAME}}<!-- end of {{{1}}} -->}}}/categories |<!--
+      -->{{ {{{1|{{NAMESPACE}}:{{PAGENAME}}<!-- end of {{{1}}} -->}}}/categories|<!--
+         -->En pagename={{PAGENAME}}|<!--
+         -->Lang subpage=<!--
+      -->}}<!--
+   -->}}<!--
+
+-->|<!-- else --><!--
+
+   -->{{#ifexist: {{{1|{{NAMESPACE}}:{{BASEPAGENAME}}<!-- end of {{{1}}} -->}}}/categories |<!--
+      -->{{ {{{1|{{NAMESPACE}}:{{BASEPAGENAME}}<!-- end of {{{1}}} -->}}}/categories|<!--
+         -->En pagename={{BASEPAGENAME}}|<!--
+         -->Lang subpage=/{{SUBPAGENAME}}<!--
+      -->}}<!--
+   -->}}<!--
+
+-->}}<!--
+
+-->{{#if: |<!--
+
+The following statements call {{En pagename}} two times which then call {{If en}} two times.
+
+-->{{#ifexist: {{{1|{{NAMESPACE}}:{{En pagename}}<!-- end of {{{1}}} -->}}}/categories |<!--
+   -->{{ {{{1|{{NAMESPACE}}:{{En pagename}}<!-- end of {{{1}}} -->}}}/categories }}<!--
+-->}}<!--
+
+-->}}<!--
+
+-->}
+&&%s&& %s Template:If en {56556 2010-11-13T20:26:12Z {831 Tjr} 1 revision: Import mediawiki help files {{Help/If en|{{{1}}}|{{{2|}}} }}<noinclude>
+
+
+Do not transclude this in PD help pages (Help namespace), since it seem to break the PD help guidelines, in that, this template name is not suitable to be included in a fresh wiki installation.  For PD help pages, use [[Template:Help/{{PAGENAME}}]] instead.
+
+== Example ==

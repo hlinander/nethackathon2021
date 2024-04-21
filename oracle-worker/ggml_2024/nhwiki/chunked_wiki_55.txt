@@ -1,0 +1,1000 @@
+* The trap door corridor in the [[Castle]]
+* The lower levels of the [[Valkyrie quest]]
+
+In many of these scenarios, if you have a different source of levitation such as a [[ring of levitation|ring]], it may be preferred to use that instead of the potion, because it allows you to save the potion for diluting or cancelling later. However, it is often worth it to save one or two blessed potions for the [[Plane of Air]] (at a typical pace, and if you use a portal detection methods, the duration of one potion will last you through the Plane of Fire) because that allows you to avoid using a ring or boots slot on levitation.
+
+Another minor advantage of the potion over gear-based levitation is that there is no way to have your levitation gear destroyed or stolen, dropping you into water or lava for a possible [[instadeath]]; both rings and boots can be removed by a [[foocubus]] or [[nymph]], and rings of levitation can be destroyed by electric damage, while boots of levitation can be destroyed by a spellcaster. ([[Gremlin]]s cannot steal intrinsic levitation.) On the other hand, with a blessed potion of levitation, it is possible to accidentally press the {{kbd|>}} key over open water and instantly drown, which is a much easier typo to make than accidentally removing levitation gear, so this poses its own dangers.
+
+==See also==
+
+* [[spellbook of levitation]]
+* [[levitation boots]]
+* [[ring of levitation]]
+
+==References==
+<references/>
+
+[[Category:Potions|Levitation]]
+{{nethack-366}}}
+&&%s&& %s Dilution {4822 2006-07-12T21:55:44Z {509 Lotte} redirect #REDIRECT [[Wet]]}
+&&%s&& %s Wand of create monster {144128 2022-01-12T14:21:59Z {4000195 Furrykef} /* History */ This scroll exists in NetHack, too {{wand
+ |name=create monster
+ |cost=200
+ |type=non-directional
+ |maxcharges=15
+ |abundance=4.5%
+ |spell=create monster
+ |muse=def
+}}
+
+The '''wand of create monster''' is a wand that appears in ''[[NetHack]]''.
+
+==Generation==
+Monsters may be generated with a wand of create monster in their inventory as a [[defensive item]].
+
+==Effects==
+Zapping or engraving with it creates one [[monster]] (22/23 chance) or 2-9 [[monster]]s (1/23 chance); the monster level of each will be consistent with what is normally created.{{refsrc|zap.c|1785}}{{refsrc|engrave.c|612}} Even in the former case, a group of monsters may be created if that monster often appears in large [[group]]s, such as [[hill orc]]s. In [[wizard mode]], you will be asked what kind of monster to create.
+
+The wand is automatically identified if you are not blind when zapping or [[engraving]].
+
+[[Apply]]ing a wand with charges will break it, causing a damaging explosion and creating a horde of monsters around the player.{{refsrc|apply.c|2692}} See [[breaking wands]] for details.
+
+==Strategy==
+A wand of create monster is often a terrible thing to discover in a monster's inventory; while not as immediately perilous as a [[cursed]] [[scroll of create monster]], a monster at low health will begin zapping the wand with impunity. While this [[auto-identifies]] the wand, it also means that you will have to face down several more monsters unless you can kill its owner quickly, especially if they were fought at a distance. [[Autopickup exception]]s are often set to pick up wands of create monster, if only to keep them out of monsters' hands and reduce the risk of being overwhelmed and killed.
+
+[[Recharging]] this wand is worthwhile if you have the [[Platinum Yendorian Express Card]], allowing you to produce multiple corpses for sacrifices at [[altar]]s, especially in an aligned temple. The monsters you create and kill can also be used as an alternate food source, especially in the later stages of the game; in some cases, it can also be used to farm for specific monsters if done in the [[quest]] level.
+
+===Maximizing monsters created===
+If you want to maximize the number of monsters created from a wand, you should break it with one charge left, so long as you are able to survive the onslaught and the damage from the magical blast. Many of the usual tactics apply: stand on a burned [[Elbereth]], have a source of [[magic resistance]] for attack wands, and be prepared with [[escape item]]s in case you get particularly dangerous monsters. In a [[temple]], don't catch the [[aligned priest]] in the blast, or you will [[anger]] them.
+
+Breaking generates 18.8 monsters per wand on average if you can identify the number of charges. If you don't know the number of charges, the optimal strategy is to zap it 9 times, then break it for an expected 14.0 monsters. Zapping and wresting the last charge produces only 13.2 monsters on average in comparison. <!-- See talk page for the code. Things that aren't yet considered: cursed wands exploding, certain monsters generated in groups. I think the latter effect only introduces a constant in the comparison. -->
+
+==History==
+In [[Rogue (game)|Rogue]], there was no wand of create monster, per se, but the [[Scroll of create monster|scroll of the same name]] did exist; it would produce the message ''"You hear the cries of anguish in the distance"'' when a monster read the scroll if the player was already surrounded.<ref>http://rogue.rogueforge.net/vade-mecum/#scrolls</ref>
+
+The wand of create monster made its debut in [[Jay Fenlason's Hack]].
+
+==FIQHack==
+
+In [[FIQHack]], the wand of create monster has been replaced by the [[wand of summoning]].
+
+==See also==
+* [[Wand of create horde (SLASH'EM)]]
+
+==References==
+<references/>
+
+[[Category:Wands|Create monster]]
+{{nethack-366}}}
+&&%s&& %s Blanking {4827 2006-07-12T22:08:01Z {509 Lotte} redirect #REDIRECT [[Wet]]}
+&&%s&& %s Can of grease {149483 2022-12-20T22:13:52Z {4001279 Umbire the Phantom} properly cite that theft attacks period don't care about greased status {{tool
+  |color=metal color
+  |tile=[[image:can of grease.png]]
+  |name=can of grease
+  |appearance=can of grease
+  |cost=20
+  |weight=20
+  |material=iron
+}}
+
+A '''can of grease''' is a type of [[tool]] that appears in ''[[NetHack]]''. It is made of [[iron]], and is used to '''grease''' items for various purposes. The [[oilskin cloak]] and [[oilskin sack]] act as "permanently greased" objects.
+
+==Generation==
+Randomly-generated cans of grease are created with ''d25'' charges, and generate as 90% uncursed, 5% blessed, and 5% cursed.{{refsrc|src/mkobj.c|938|version=NetHack 3.6.6}}
+
+While greased objects are not generated outside of [[bones]] files, [[player monster]]s on the [[Astral Plane]] have a {{frac|3}} chance of generating with a greased [[weapon]]. 
+
+==Description==
+[[Apply]]ing a can of grease can be used to slather any [[item]] (including your hands via {{kbd|-}}, but excluding [[Zorkmid|your wallet contents]]) in a thick layer of grease, using up one charge. Applying a can of grease that is cursed or trying to apply one while [[fumbling]] only has a 50% chance of being successful, and the can will otherwise slip from your grasp and drop to the ground, using up a charge;{{refsrc|src/apply.c|2306|version=NetHack 3.6.6}} in addition, applying a cursed can of grease successfully will also give you [[slippery fingers]].{{refsrc|src/apply.c|2324|version=NetHack 3.6.6}} A can of grease can also be used to [[untrap]] [[squeaky board]]s, using up a charge in the process.
+
+Greased cans can hold a maximum of 50 charges: uncursed [[charging]] adds 1-5 charges, while blessed charging adds 6-15 charges if there are fewer than 10 charges left and 5-10 charges otherwise.
+
+===Greased items===
+Greased objects are protected from [[erosion|rust and corrosion]], as well as [[water damage]] and [[acid]] damage{{refsrc|src/trap.c|199|version=NetHack 3.6.6}}{{refsrc|src/trap.c|3485|version=NetHack 3.6.6|comment=Grease and acid}}{{refsrc|src/trap.c|3541|version=NetHack 3.6.6|name="washoff"|comment=Grease dissolving after stopping water damage.}} - greased containers protect their contents from water damage, and greased [[spellbook]]s, potions and [[scroll]]s are protected from blanking or dilution; the grease has no effect on anything that would burn or rot objects.{{refsrc|src/trap.c|169-L178|version=NetHack 3.6.6|comment=<code>check_grease</code> is set to FALSE for burning and rotting}} After successfully protecting an item from damage, the grease has a 50% chance to wear off. {{refsrc|src/mhitu.c|857|version=NetHack 3.6.6|comment=Grease wearing off from grabbing}}{{refsrc|src/trap.c|306|version=NetHack 3.6.6|comment=Grease dissolving from rust/corrosion}}<ref name="washoff"/> 
+
+Greased armor on the outermost layer (e.g. usually a [[cloak]] or [[helm]]) can protect against attacks that target body parts covered by that armor: the greased armor has a {{frac|2|3}} chance of protection if it is [[cursed]], and will always protect that body part(s) otherwise.{{refsrc|src/mhitu.c|843|version=NetHack 3.6.6|comment=Grease protection in <code>u_slip_free</code>}} A greased weapon has no additional protection from a [[bullwhip]]'s disarm attack, and greased items are not any more difficult for monsters that are [[covetous]] or have theft attacks to steal.{{refsrc|src/muse.c|1910|version=NetHack 3.6.6|comment=The <code>MUSE_BULLWHIP</code> case does not check for greased status}}{{refsrc|src/mhitu.c|1336|version=NetHack 3.6.6|comment=Theft attacks do not check for greased status either}}{{refsrc|src/muse.c|1388|version=NetHack 3.6.6|comment=Covetous theft attacks also don't care if the target item is greased}}
+
+Greased items may slip when you attempt to [[throw]] them, similar to cursed [[projectile]]s; this will not unweld cursed weapons or other applicable tools. A greased object will also slide further along the floor than normal when [[kick]]ed. 
+
+==Strategy==
+Greasing your cloak and helmet is fairly standard strategy for most players: it protects against grabbing from owlbears and [[sea monster]]s among other monsters, and [[mind flayer]]s cannot attach their tentacles to a greased helmet. It is also common to grease non-oilskin [[sack]]s and containers, particularly a [[bag of holding]], in order to protect their contents. Greasing other objects such as weapons is fine as long as you do not intend to throw them, while greasing your hands or most other items is typically unnecessary; for [[illiterate]] [[conduct]] play, grease is one of the few options you have to protect weapons and armor against erosion.
+
+It is common to request an item as greased when [[wishing]] - though this seems most useful for body armor and cloaks, potions and scrolls are also worth wishing for as greased, which adds a layer of protection in the event any mishaps occur between obtaining them and their use case coming into play.
+
+While a can of grease is commonly used in preparing [[ascension kit]]s, it may or may not be part of one itself - this depends on how many charges are left in the can and how frequently applied grease ends up wearing off.
+
+==History==
+The can of grease first appears in [[NetHack 3.1.0]].
+
+==Messages==
+{{message|You cover your <item> with a thick layer of grease.|You applied the can to an item.}}
+{{message|You coat your fingers with grease.|You applied the can to your hands by specifying "-" at the prompt.}}
+{{message|The <monster> grabs you, but cannot hold onto your greased <armor>!|You were protected from a grabbing attack.}}
+{{message|The grease wears off.|A piece of armor is no longer greased.}}
+{{message|Some of the grease gets all over your hands.|You greased an item with a cursed can of grease, and your fingers are now slippery.}}
+{{message|The can of grease slips from your fingers.|The can of grease fell to the ground, either from being cursed or handled while fumbling.}}
+
+==Variants==
+===GruntHack===
+In [[GruntHack]], wearing greased gloves grants slippery fingers as an extrinsic.
+
+===UnNetHack===
+In [[UnNetHack]], the [[iron golem]] that can appear in the forest on the [[Ruins of Moria]]'s fifth floor has a {{frac|5}} chance to generate with a a can of grease.
+
+===xNetHack===
+In [[xNetHack]], cans of grease have a base material of [[plastic]] rather than iron.
+
+==Encyclopedia entry==
+{{encyclopedia|
+ANOINT, v.t.  To grease a king or other great functionary already sufficiently slippery.
+|[ The Devil's Dictionary, by Ambrose Bierce ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Game history {130373 2020-01-09T00:30:14Z {4001290 Lysdexia}  {{NetHack Versions}}
+{{Timeline of NetHack}}
+:The [[Guidebook|bundled]] ''[https://www.nethack.org/v364/Guidebook.html Guidebook]'' includes '''NetHack's history''' in the history file, other than the player address, under Chapter 12, Credits:
+
+The original [[hack]] game was modeled on the Berkeley UNIX [[Rogue (game)|rogue]] game.  Large portions of this paper were shamelessly cribbed from A Guide to the Dungeons of Doom, by Michael C. Toy and Kenneth C. R. C. Arnold.  Small portions were adapted from Further Exploration of the Dungeons of Doom, by Ken Arromdee.
+
+NetHack is the product of literally dozens of people's work.  Main events in the course of the game development are described below:
+
+:The [[Source:History|history]] file continues:
+
+Behold, mortal, the origins of NetHack...
+
+[[Jay Fenlason]] wrote the original [[Hack]] with help from Kenny Woodland, Mike Thome, and Jon Payne.
+
+[[Andries Brouwer]] did a major re-write, transforming Hack into a [[Hack 1.0|very different game]], and published (at least) three versions ([[Hack 1.0.1|1.0.1]], [[Hack 1.0.2|1.0.2]], and [[Hack 1.0.3|1.0.3]]) for [[Unix|UNIX]](tm) machines to the [[Usenet]].
+
+[[Don G. Kneller]] ported Hack 1.0.3 to [[ANSI C|Microsoft(tm) C]] and [[MS-DOS]](tm), producing [[PC HACK 101E|PC HACK 1.01e]], added support for [[DECgraphics|DEC Rainbow graphics]] in version [[PC HACK 1.03|1.03g]], and went on to produce at least four more versions ([[PC HACK 3.0|3.0]], [[PC HACK 3.2|3.2]], [[PC HACK 3.51|3.51]], and [[PC HACK 3.6|3.6]]).
+
+[[R. Black]] ported PC HACK 3.51 to Lattice(tm) C and the [[Atari|Atari 520/1040ST]], producing [[ST Hack 1.03]].
+
+[[Mike Stephenson]] merged these various versions back together, incorporating many of the added features, and produced [[NetHack 1.4f|NetHack version 1.4]].  He then coordinated a cast of thousands in enhancing and debugging NetHack 1.4 and released NetHack versions [[NetHack 2.2a|2.2]] and [[NetHack 2.3e|2.3]].
+ 
+Later, Mike coordinated a major rewrite of the game, heading a [[DevTeam|team]] which included [[Ken Arromdee]], [[Jean-Christophe Collet]], [[Steve Creps]], [[Eric Hendrickson]], [[Izchak Miller]], [[Eric S. Raymond]], [[John Rupley]], [[Mike Threepoint]], and [[Janet Walz]], to produce [[NetHack 3.0.0|NetHack 3.0c]].  The same group subsequently released ten patch-level revisions and updates of 3.0.
+
+NetHack 3.0 was ported to the Atari by Eric R. Smith, to [[OS/2]] by Timo Hakulinen, and to [[VMS]] by David Gentzel.  The three of them and Kevin Darcy later joined the main development team to produce subsequent revisions of 3.0.
+
+Olaf Seibert ported NetHack 2.3 and 3.0 to the [[Amiga]].  Norm Meluch, Stephen Spackman and Pierre Martineau designed overlay code for [[PC]] NetHack 3.0. Johnny Lee ported NetHack 3.0 to the [[Macintosh]].  Along with various other Dungeoneers, they continued to enhance the PC, Macintosh, and Amiga ports through the later revisions of 3.0.
+ 
+Headed by Mike Stephenson and coordinated by Izchak Miller and Janet Walz, the development team which now included Ken Arromdee, [[David Cohrs]], Jean-Christophe Collet, Kevin Darcy, Matt Day, Timo Hakulinen, Steve Linhart, [[Dean Luick]], Pat Rankin, Eric Raymond, and Eric Smith undertook a radical revision of 3.0.  They re-structured the game's design, and re-wrote major parts of the code.  They added multiple dungeons, a new display, special individual character quests, a new endgame and many other new features, and produced [[NetHack 3.1.0|NetHack 3.1]].
+
+[[Ken Lorber]], Gregg Wonderly and Greg Olson, with help from Richard Addison, Mike Passaretti, and Olaf Seibert, developed NetHack 3.1 for the Amiga.
+
+Norm Meluch and Kevin Smolkowski, with help from Carl Schelin, Stephen Spackman, Steve VanDevender, and [[Paul Winner]], ported NetHack 3.1 to the PC.
+
+Jon Wätte and Hao-yang Wang, with help from Ross Brown, Mike Engber, David Hairston, Michael Hamel, Jonathan Handler, Johnny Lee, Tim Lennan, Rob Menke, and Andy Swanson developed NetHack 3.1 for the Macintosh, porting it for [[MPW]].  Building on their development, Barton House added a Think C port.  
+
+Timo Hakulinen ported NetHack 3.1 to OS/2.  Eric Smith ported NetHack 3.1 to the Atari.  Pat Rankin, with help from Joshua Delahunty, is responsible for the VMS version of NetHack 3.1.  [[Michael Allison]] ported NetHack 3.1 to [[Windows NT]].
+
+Dean Luick, with help from David Cohrs, developed NetHack 3.1 for [[X11]]. [[Warwick Allison]] wrote a [[tileset|tiled]] version of NetHack for the Atari; he later contributed the tiles to the DevTeam and tile support was then added to other platforms.
+
+The [[NetHack 3.2.0|3.2]] development team, comprised of Michael Allison, Ken Arromdee, David Cohrs, [[Jessie Collet]], Steve Creps, Kevin Darcy, Timo Hakulinen, Steve Linhart, Dean Luick, Pat Rankin, Eric Smith, Mike Stephenson, Janet Walz, and Paul Winner, released version 3.2 in April of 1996.
+
+Version 3.2 marked the tenth anniversary of the formation of the development team.  In a testament to their dedication to the game, all thirteen members of the original development team remained on the team at the start of work on that release.  During the interval between the release of 3.1.3 and 3.2, one of the founding members of the development team, Dr. Izchak Miller, passed away.  That release of the game was dedicated to him by the development and porting teams.
+
+Version 3.2 proved to be more stable than previous versions.  Many bugs were fixed, abuses eliminated, and game features tuned for better game play.
+
+During the lifespan of NetHack 3.1 and 3.2, several enthusiasts of the game added their own modifications to the game and made these "variants" publicly available:
+
+Tom Proudfoot and Yuval Oren created NetHack++, which was quickly renamed [[NetHack--]].  Working independently, Stephen White wrote [[NetHack Plus]].  Tom Proudfoot later merged NetHack Plus and his own NetHack-- to produce [[SLASH]].  Larry Stewart-Zerba and Warwick Allison improved the spellcasting system with the [[Wizard Patch]].  Warwick Allison also ported NetHack to use the [[Qt interface]].
+
+Warren Cheung combined SLASH with the Wizard Patch to produce [[Slash'EM|Slash'em]], and with the help of Kevin Hugo, added more features.  Kevin later joined the DevTeam and incorporated the best of these ideas in [[NetHack 3.3.0|NetHack 3.3]].
+
+The final update to 3.2 was the bug fix release [[NetHack 3.2.3|3.2.3]], which was released simultaneously with 3.3.0 in December 1999 just in time for the Year 2000.
+
+The 3.3 development team, consisting of Michael Allison, Ken Arromdee, David Cohrs, Jessie Collet, Steve Creps, Kevin Darcy, Timo Hakulinen, Kevin Hugo, Steve Linhart, Ken Lorber, Dean Luick, Pat Rankin, Eric Smith, Mike Stephenson, Janet Walz, and Paul Winner, released 3.3.0 in December 1999 and [[NetHack 3.3.1|3.3.1]] in August of 2000.
+
+Version 3.3 offered many firsts. It was the first version to separate [[race]] and  [[role|profession]]. The [[Elf (role)|Elf]] class was removed in preference to an elf race, and the races of [[dwarf|dwarves]], [[gnome (starting race)|gnomes]], and [[orc (starting race)|orcs]] made their first appearance in the game alongside the familiar [[human (starting race)|human]] race.  [[Monk]] and [[Ranger]] roles joined [[Archeologist]]s, [[Barbarian]]s, [[Caveman|Cavemen]], [[Healer]]s, [[Knight]]s, [[Priest]]s, [[Rogue]]s, [[Samurai]], [[Tourist]]s, [[Valkyrie]]s and of course, [[Wizard]]s.  It was also the first version to allow you to ride a [[steed]], and was the first version to have a publicly available web-site listing all the bugs that had been discovered.  Despite that constantly growing bug list, 3.3 proved stable enough to last for more than a year and a half.
+
+The 3.4 development team initially consisted of Michael Allison, Ken Arromdee, David Cohrs, Jessie Collet, Kevin Hugo, Ken Lorber, Dean Luick, Pat Rankin, Mike Stephenson, Janet Walz, and Paul Winner, with Warwick Allison joining just before the release of [[NetHack 3.4.0]] in March 2002.
+
+As with version 3.3, various people contributed to the game as a whole as well as supporting ports on the different platforms that NetHack runs on:
+
+Pat Rankin maintained 3.4 for VMS.
+
+Michael Allison maintained NetHack 3.4 for the MS-DOS platform.  Paul Winner and Yitzhak Sapir provided encouragement.
+
+Dean Luick, Mark Modrall, and Kevin Hugo maintained and enhanced the Macintosh port of 3.4.
+
+Michael Allison, David Cohrs, Alex Kompel, Dion Nicolaas, and Yitzhak Sapir maintained and enhanced 3.4 for the Microsoft Windows platform. Alex Kompel contributed a new graphical interface for the Windows port. Alex Kompel also contributed a [[Windows CE]] port for [[NetHack 3.4.1|3.4.1]].
+
+Ron Van Iwaarden maintained 3.4 for OS/2.
+
+Janne Salmijärvi and Teemu Suikki maintained and enhanced the Amiga port of 3.4 after Janne Salmijärvi resurrected it for 3.3.1.
+
+Christian "Marvin" Bressler maintained 3.4 for the Atari after he resurrected it for 3.3.1.
+
+The release of [[NetHack 3.4.3]] in December 2003 marked the beginning of a long release hiatus. 3.4.3 proved to be a remarkably stable version that provided continued enjoyment by the community for  more than a decade. The NetHack Development Team slowly and quietly continued to work on the game behind the scenes during the  tenure of 3.4.3. It was during that same period that several new variants emerged within the NetHack community.  Notably [[SporkHack|sporkhack]] by [[Derek S. Ray]], [[UnNetHack|unnethack]] by Patric Mueller, [[NitroHack|nitrohack]] and its successors originally by [[Daniel Thaler]] and then by Alex Smith, and [[DynaHack|Dynahack]] by Tung Nguyen. Some of those variants continue to be developed, maintained, and enjoyed by the community to this day.
+
+In September 2014, an interim snapshot of the [[Leaked development version|code under development]] was released publicly by other parties. Since that code was a work-in-progress and had not gone through the process of debugging it as a suitable release, it was decided that the version numbers present on that code snapshot would be retired and never used in an official NetHack release.  An announcement was posted on the NetHack Development Team's official nethack.org website to that effect, stating that there would never be a [[NetHack 3.4.4|3.4.4]], 3.5, or [[NetHack 3.5.0|3.5.0]] official release version.
+
+In January 2015, preparation began for the release of NetHack 3.6.
+
+At the beginning of development for what would eventually get released as [[NetHack 3.6.0|3.6.0]], the NetHack Development Team consisted of Warwick Allison, Michael Allison, Ken Arromdee, David Cohrs, Jessie Collet, Ken Lorber, Dean Luick, Pat Rankin, Mike Stephenson, Janet Walz, and Paul Winner.  In early 2015, ahead of the release of 3.6.0, new members Sean Hunt, Pasi Kallinen, and Derek S. Ray joined the NetHack Development Team.
+
+Near the end of the development of 3.6.0, one of the significant inspirations for many of the humorous and fun features found in the game, author [[Terry Pratchett]], passed away.  NetHack 3.6.0 introduced a tribute to him.
+
+3.6.0 was released in December 2015, and merged work done by the development team since the release of 3.4.3 with some of the beloved community patches. Many bugs were fixed and some code was restructured.
+
+The NetHack Development Team, as well as Steve VanDevender and Kevin Smolkowski, ensured that NetHack 3.6 continued to operate on various UNIX flavors and maintained the X11 interface.
+
+Ken Lorber, Haoyang Wang, Pat Rankin, and Dean Luick maintained the port of NetHack 3.6 for [[Mac OS X|Mac OSX]].
+
+Michael Allison, David Cohrs, Barton House, Pasi Kallinen, Alex Kompel, Dion Nicolaas, Derek S. Ray and Yitzhak Sapir maintained the port of NetHack 3.6 for Microsoft Windows.
+
+Pat Rankin attempted to keep the VMS port running for NetHack 3.6, hindered by limited access. Kevin Smolkowski has updated and tested it for the most recent version of OpenVMS (V8.4 as of this writing) on Alpha and Integrity (aka Itanium aka IA64) but not VAX.
+
+Ray Chason resurrected the msdos port for 3.6.1 and contributed the necessary updates to the community at large.
+
+In late April 2018, several hundred bug fixes for 3.6.0 and some new features were assembled and released as [[NetHack 3.6.1]]. The NetHack Development Team at the time of release of 3.6.1 consisted of Warwick Allison, Michael Allison, Ken Arromdee, David Cohrs, Jessie Collet, Pasi Kallinen, Ken Lorber, Dean Luick, Patric Mueller, Pat Rankin, Derek S. Ray, Alex Smith, Mike Stephenson, Janet Walz, and Paul Winner.
+
+In early May 2019, another 320 bug fixes along with some enhancements and the adopted curses window port, were released as [[NetHack 3.6.2|3.6.2]].
+
+Bart House, who had contributed to the game as a porting team participant for decades, joined the NetHack Development Team in late May 2019.
+
+[[NetHack 3.6.3]] was released on December 5, 2019 containing over 190 bug fixes to NetHack 3.6.2.
+
+[[NetHack 3.6.4]] was released on December 18, 2019 containing a security fix and a few bug fixes.
+
+The official NetHack web site is maintained by Ken Lorber at http://www.nethack.org/.
+
+{{NGPL}}
+
+[[Category:History| ]]
+{{nethack-364}}}
+&&%s&& %s Template:NetHack Versions {149988 2023-02-18T04:25:44Z {4001483 Cathartes} 3.6.7 <div class="thumb tright hoverlist">
+{| class="prettytable" style="margin: 0;"
+|-
+|style="text-align:center;"|
+'''''NetHack Versions'''''
+|-
+||
+* '''[[Jay Fenlason's Hack|Jay Fenlason's ''Hack'']]'''
+** HACK for UNIX
+** Hack 1.21 for DOS
+** Hack for PDP-11
+** PC/IX Hack
+|-
+||
+* '''Andries Brouwer's ''Hack'''''
+** [[Hack 1.0|''Hack'' 1.0]]
+** [[Hack 1.0.1|''Hack'' 1.0.1]]
+** [[Hack 1.0.2|''Hack'' 1.0.2]]
+** [[Hack 1.0.3|''Hack'' 1.0.3]]
+|-
+||
+* '''Early ''NetHack'''''
+** [[NetHack 1.3d|''NetHack'' 1.3d]]
+** [[NetHack 1.4f|''NetHack'' 1.4f]]
+** [[NetHack 2.2a|''NetHack'' 2.2a]]
+** [[NetHack 2.3e|''NetHack'' 2.3e]]
+|-
+||
+* '''The ''NetHack'' 3.0 Series'''
+** [[NetHack 3.0.0|''NetHack'' 3.0.0]]
+** [[NetHack 3.0.1|''NetHack'' 3.0.1]]
+** [[NetHack 3.0.2|''NetHack'' 3.0.2]]
+** [[NetHack 3.0.3|''NetHack'' 3.0.3]]
+** [[NetHack 3.0.4|''NetHack'' 3.0.4]]
+** [[NetHack 3.0.5|''NetHack'' 3.0.5]]
+** [[NetHack 3.0.6|''NetHack'' 3.0.6]]
+** [[NetHack 3.0.7|''NetHack'' 3.0.7]]
+** [[NetHack 3.0.8|''NetHack'' 3.0.8]]
+** [[NetHack 3.0.9|''NetHack'' 3.0.9]]
+** [[NetHack 3.0.10|''NetHack'' 3.0.10]]
+|-
+||
+* '''The ''NetHack'' 3.1 Series'''
+** [[NetHack 3.1.0|''NetHack'' 3.1.0]]
+** [[NetHack 3.1.1|''NetHack'' 3.1.1]]
+** [[NetHack 3.1.2|''NetHack'' 3.1.2]]
+** [[NetHack 3.1.3|''NetHack'' 3.1.3]]
+|-
+||
+* '''The ''NetHack'' 3.2 Series'''
+** [[NetHack 3.2.0|''NetHack'' 3.2.0]]
+** [[NetHack 3.2.1|''NetHack'' 3.2.1]]
+** [[NetHack 3.2.2|''NetHack'' 3.2.2]]
+** [[NetHack 3.2.3|''NetHack'' 3.2.3]]
+|-
+||
+* '''The ''NetHack'' 3.3 Series'''
+** [[NetHack 3.3.0|''NetHack'' 3.3.0]]
+** [[NetHack 3.3.1|''NetHack'' 3.3.1]]
+|-
+||
+* '''The ''NetHack'' 3.4 Series'''
+** [[NetHack 3.4.0|''NetHack'' 3.4.0]]
+** [[NetHack 3.4.1|''NetHack'' 3.4.1]]
+** [[NetHack 3.4.2|''NetHack'' 3.4.2]]
+** [[NetHack 3.4.3|''NetHack'' 3.4.3]]
+|-
+||
+* '''The ''NetHack'' 3.6 Series'''
+** [[NetHack 3.6.0|''NetHack'' 3.6.0]]
+** [[NetHack 3.6.1|''NetHack'' 3.6.1]]
+** [[NetHack 3.6.2|''NetHack'' 3.6.2]]
+** [[NetHack 3.6.3|''NetHack'' 3.6.3]]
+** [[NetHack 3.6.4|''NetHack'' 3.6.4]]
+** [[NetHack 3.6.5|''NetHack'' 3.6.5]]
+** [[NetHack 3.6.6|''NetHack'' 3.6.6]]
+** [[NetHack 3.6.7|''NetHack'' 3.6.7]]
+|}
+</div><noinclude>[[Category:Templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Jay Fenlason's Hack {143479 2021-10-28T05:13:47Z {4001427 Phollenback} typo fix {{Wikipedia|Hack (Unix video game)}}
+{{NetHack Versions}}
+
+'''HACK''' is a roguelike role-playing game written by [[Jay Fenlason]], with contributions from Kenny Woodland, Mike Thome, and Jon Payne, from which all subsequent versions of [[Hack]] and all versions of [[NetHack]] are descended.  '''Jay Fenlason's Hack''' is the term given to the original Hack, without the extensive modifications by [[Andries Brouwer]] which are present in the more widely distributed version.
+
+At present, source code for the original is not available online.  A DOS port with user interface changes is available in binary form, all of Brouwer's versions are available as source code, and the source code for an early variant dubbed "Hack for PDP-11", which was based on a leaked early draft of Andries Brouwer's version, is also available.
+
+==Background==
+Development began shortly after the 1982 USENIX conference in Boston, MA where Michael Toy and Ken Arnold (the authors of the then closed-source [[Rogue (game)|Rogue]]) spoke.  In Fenlason's own words:
+
+:"I was curious about some of the game play issues involved in designing it, things like how the rooms and corridors were generated, so I started hacking up some random level generators and stuff to try things out. Someone looked over my shoulder and said, 'what's that?' So I sort of explained and they said, 'oh, that's cool; when do we get to play it?'"<ref name=linux>"[https://www.linux.com/news/train-life-nethacks-papa/ On The Train Of Life With Nethack’s Papa]" (2000), Julie Bresnick, Linux.com.</ref><ref name=newsforge>"[http://web.archive.org/web/20030512112023/http://newsforge.com/article.pl?sid=00/12/03/2052246&mode=thread&tid=9 On the train of life with Nethack's papa]" (2000) [2003], Julie Bresnick, Newsforge.com by Internet Archive.</ref>
+
+The only publication of the original Hack was on a USENIX software distribution tape, apparently the first 1984 USENIX tape (of which no online copy is known to exist), where it accompanied Jon Payne's text editor JOVE.  It proved to be very popular:
+
+:"Usenix had biannual<sup>[sic: semiannual]</sup> meetings, Unix users would get together and swap war stories. For each meeting they'd put together a tape of some of the contributed software. I put [Hack] on the tape and forgot about it until someone I know mentioned that the two most popular pieces of software on that particular tape were my silly game and my friend Jonathon's text editor. Since then there's been several different versions of Hack written, and I think I'm the only person who still uses that text editor."<ref name=linux/><ref name=newsforge/>
+
+Based on Fenlason's home in Massachusetts and the next release of the Usenet port, he likely introduced Hack at the 1984 winter USENIX at Washington, DC<ref>[https://dblp.org/db/conf/usenix/index USENIX Annual Technical Conference], dblp: computer science bibliography:
+:''USENIX Summer 1984: Salt Lake City, Utah, USA''
+:''USENIX Winter 1984: Washington, D.C., USA''
+:''USENIX Summer 1983: Toronto, Canada''
+:''USENIX Winter 1983: San Diego, CA, USA''</ref><ref>"[ftp://ftp.math.utah.edu/pub/tex/bib/usenix1980.pdf A Bibliography of Publications of the USENIX Association: 1980–1989]", Nelson H. F. Beebe, University of Utah, 2012: ''[USE84c] USENIX Association, editor. USENIX UniForum Conference Proceedings, January 17–20, 1984. Washington DC, USA. USENIX, Berkeley, CA, USA, January 17–20, 1984. ISBN none. LCCN QA76.8.U65 U55 1984.''</ref>
+
+==Variants==
+The exact content of the original Hack is not known for sure (but see the comments section of [http://gonnagan.wordpress.com/2011/04/23/hack-update/#comments this post] for a possible lead).  Three derivatives are known to exist.  The rest of this article covers mainly Hack for PDP-11 and "hack121".
+
+===Hack 1.21 (hack121)===
+A 16-color CGA-mode DOS port of Jay Fenlason's Hack is available in binary form at [http://www.juiblex.co.uk/nethack/front.html Ali Harlow's website] as [http://www.juiblex.co.uk/nethack/source/hack121.zip hack121.zip] ([http://roguelikedevelopment.org/archive/files/executables/hack121.zip mirror]).  It is known as "hack121", after the filename of its distribution package.
+
+It refers to itself as version "1.21 (Slak was here!)", "Slak" apparently being [https://groups.google.com/forum/#!msg/net.wanted.sources/eihTycnxH1w/wwNdkdvDSZkJ Jay Fenlason himself]; nonetheless, some changes have clearly been made by the porter ([[IBMgraphics]] and the fusion of mklev into hack).
+
+See [http://groups.google.com/forum/#!topic/net.sources/KfIu2etTMew this newsgroup posting] for a possible lead as to who ported it.  
+
+No source code for this program is known to exist, and it is not known for sure if the porter made any modifications which affect gameplay.  Nonetheless, it is probably the closest to the original that is known to be extant.
+
+<gallery>
+Image:Hack121 buy.png|This is the shop at the start of hack121. (Click thumbnail to view image.)
+Image:Dos hack bad scores.png|Hack121 can be a difficult game.
+</gallery>
+
+===Hack for PDP-11 and PC/IX Hack===
+Hack for PDP-11 (so-called, although it appears to require a nonstandard compiler, whereas it can be compiled on some later UNIX systems such as 4.2BSD without much work) is a variant developed by Michiel Huisjes and Fred de Wilde at the Free University (VU) in Amsterdam† ([http://virtuallyfun.superglobalmegacorp.com/?p=4693 apparently] based upon a early draft of Andries Brouwer's Hack, which was copied from his user area without his permission) and published on [[Usenet]] in February 1985.  A port of this to a Unix clone called PC/IX (with a slightly different set of potions) was published in May by "peterb at pbear".
+
+† It is possible that the compiler used was a contemporary version of the Amsterdam Compiler Kit, which dates from the early 1980s and which was developed at the VU.
+
+The developers summarize their changes, in the Hack for PDP-11 readme, as:
+
+:"One of the main problems of Hack is its size. If you add about 1000 bytes of text more, your text segment will be to big. Therefore we saved text wherever this was possible. We removed the function fscanf(), and made the record file binary. To show the contents, use the program show (with flag -r).
+: 
+:"Some additions we (Fred de Wilde and Michiel Huisjes) made are
+::- The Vault
+::- The Swamp
+::- The Zoo
+::- The Graveyard
+::- Maxlevel = 40
+::- Proper Saving
+::- Several bugs
+::- And many, many more..."
+
+"Proper saving" references the fact that saving was apparently broken in the sources that they originally obtained (as they mention in comments in the corresponding code).
+
+PDP-11 Hack incorporates a time restriction preventing playing on working hours on weekdays, which grants exceptions for the developers' UIDs, and which is removed in the PC/IX version.  
+
+The shar files of both versions are archived at Google Groups:
+*Hack for PDP-11 [https://groups.google.com/forum/message/raw?msg=net.sources/5uBrrldg_Q0/6x0XmngexDgJ Part 1], [https://groups.google.com/forum/message/raw?msg=net.sources/LieFm-Ll9_0/VnsKgJfljOwJ Part 2], [https://groups.google.com/forum/message/raw?msg=net.sources/r-dOSRjQpMU/Nlyr0PxMgBsJ Part 3], [https://groups.google.com/forum/message/raw?msg=net.sources/VAYLAAsSkLI/BqDjDPAWmrwJ Part 4], [https://groups.google.com/forum/message/raw?msg=net.sources/-IXg25AJoeY/LS8yFJ9WIA0J Part 5] ([https://altavista.superglobalmegacorp.com/usenet/news021f2/b37/net/sources/2493.txt Mirror 1], [https://altavista.superglobalmegacorp.com/usenet/news021f2/b37/net/sources/2484.txt 2], [https://altavista.superglobalmegacorp.com/usenet/news021f2/b37/net/sources/2485.txt 3], [https://altavista.superglobalmegacorp.com/usenet/news021f2/b37/net/sources/2483.txt 4], [https://altavista.superglobalmegacorp.com/usenet/news021f2/b37/net/sources/2486.txt 5]).
+*PC/IX Hack [https://groups.google.com/forum/message/raw?msg=net.sources.games/DZojzOjXB58/D8oxg2kIGhMJ Part 1], [https://groups.google.com/forum/message/raw?msg=net.sources.games/wEiQQRKsmf8/kiKUF0OzCtYJ Part 2], [https://groups.google.com/forum/message/raw?msg=net.sources.games/DjFLmksGV0A/eQcVkX0r7c0J Part 3], [https://groups.google.com/forum/message/raw?msg=net.sources.games/igffaAj-Rx4/LKiMv3f52GEJ Part 4], [https://groups.google.com/forum/message/raw?msg=net.sources.games/HB4_-2PClaw/hGdwfbnukpsJ Part 5] ([https://altavista.superglobalmegacorp.com/usenet/news026f2/b46/net/sources/games/107.txt Mirror 1], [https://altavista.superglobalmegacorp.com/usenet/news026f2/b46/net/sources/games/110.txt 2], [https://altavista.superglobalmegacorp.com/usenet/news026f2/b46/net/sources/games/111.txt 3], [https://altavista.superglobalmegacorp.com/usenet/news026f2/b46/net/sources/games/108.txt 4], [https://altavista.superglobalmegacorp.com/usenet/news026f2/b46/net/sources/games/109.txt 5]).
+
+===Hack 1.0===
+[[Hack 1.0]] was developed by [[Andries Brouwer]] and posted to Usenet in December 1984.  All other versions of Hack and NetHack are descended from this version.
+
+==Main differences from Andries Brouwer's Hack==
+*The concept of a [[role]] was introduced in Hack 1.0, and is not present in the other versions.  Hack121 begins with a screen from which the player may buy equipment; this is mentioned by Robert Grover as a feature of Fenlason's original version.  Brouwer presumably removed this screen fairly early on: PDP-11 Hack, being derived from an early draft of Andries Brouwer's Hack, starts the player off as a generic fighter character.
+*The exact goal of the adventurer is uncertain.  The [[Amulet of Yendor]] is not mentioned.
+*Hack121 does not have [[pet]]s.  PDP-11 Hack starts the player off with a little [[dog]], suggesting that pets were a relatively early addition by Brouwer.
+
+==Special room types==
+It seems likely that [[shop]]s were the only special room type in Fenlason's original code.
+
+Hack121 has shops.  No other special room types are presently known to exist in hack121.
+
+PDP-11 Hack has shops (mkshop), [[zoo]]s (mkzoo), [[graveyard]]s (mkyard), [[swamp]]s (mkswamp) and [[vault]]s (mk_knox).  The developers of PDP-11 Hack, per their readme, implemented vaults, swamps, zoos and graveyards themselves, leaving shops as the only roomtype which was present in the sources they originally obtained.  Vaults, in particular, are implemented very differently to Hack 1.0.
+
+Hack 1.0 has vaults (not delegated), shops (mkshop) and zoos (mkzoo).
+
+==Mazes==
+PDP-11 Hack appears to contain Fenlason's team's original makemaz() implementation, given this source code comment, which does not appear in the refactored version of the function appearing in Hack 1.0, and appears to reference Kenny Woodland by his first name:
+
+ /* This is all Kenny's fault.  He seems to have his x and y reversed */
+
+==Bestiary==
+The bestiaries of hack121 and PDP-11 Hack are listed below, along with the Hack 1.0 bestiary for comparison.  Other monster descriptions may be lurking in other parts of the hack121 binary; therefore, this list cannot be considered as necessarily the final word for that version.
+
+===Main monster list===
+These are given in the order of their appearance in the code; it will be seen that the lists are quite similar.
+
+{|class="wikitable"
+!Hack121 
+!PDP-11 Hack 
+!Hack 1.0
+|-
+|[[bat]] (b)
+|bat (B)
+|bat (B)
+|-
+|[[lizard]] (l)
+|[[gnome]] (G)
+|gnome (G)
+|-
+|[[goblin]] (g)
+|[[hobgoblin]] (H)
+|hobgoblin (H)
+|-
+|[[jackal]] (j)
+|jackal (J)
+|jackal (J)
+|-
+|[[kobold]] (k)
+|kobold (K)
+|kobold (K)
+|-
+|pickpocket (p)
+|[[leprechaun]] (L)
+|leprechaun (L)
+|-
+|[[giant rat]] (r)
+|giant rat (r)
+|giant rat (r)
+|-
+|[[acid blob]] (a)
+|acid blob (a)
+|acid blob (a)
+|-
+|evil eye (e)
+|[[floating eye]] (E)
+|floating eye (E)
+|-
+|hurkle (h)
+|[[homunculus]] (h)
+|homunculus (h)
+|-
+|neevil (n)
+|[[imp]] (i)
+|imp (i)
+|-
+|[[orc]] (o)
+|orc (O)
+|orc (O)
+|-
+|[[yellow light]] (y)
+|yellow light (y)
+|yellow light (y)
+|-
+|[[zombie]] (z)
+|zombie (Z)
+|zombie (Z)
+|-
+|[[giant ant]] (A)
+|giant ant (A)
+|giant ant (A)
+|-
+|[[fog cloud]] (f)
+|fog cloud (f)
+|fog cloud (f)
+|-
+|robber (R)
+|[[nymph]] (N)
+|nymph (N)
+|-
+|stalactoid (s)
+|[[piercer]] (p)
+|piercer (p)
+|-
+|queevolt (q)
+|[[quasit]] (Q)
+|quasit (Q)
+|-
+|[[quivering blob]] (Q)
+|quivering blob (q)
+|quivering blob (q)
+|-
+|grabber (G)
+|[[violet fungus|violet fungi]] (v)
+|violet fungi (v)
+|-
+|nepto (N)
+|[[giant beetle]] (b)
+|giant beetle (b)
+|-
+|[[centaur]] (c)
+|centaur (C)
+|centaur (C)
+|-
+|[[cockatrice]] (C)
+|cockatrice (c)
+|cockatrice (c)
+|-
+|[[ghost]] (')
+|[[gelatinous cube]] (g)
+|gelatinous cube (g)
+|-
+|[[jaguar]] (J)
+|jaguar (j)
+|jaguar (j)
+|-
+|[[killer bee]] (K)
+|killer bee (k)
+|killer bee (k)
+|-
+|viper (v)
+|[[snake]] (S)
+|snake (S)
+|-
+|ice ball (i)
+|[[freezing sphere]] (F)
+|freezing sphere (F)
+|-
+|giant bear (B)
+|[[owlbear]] (o)
+|owlbear (o)
+|-
+|oxidizer (O)
+|[[rust monster]] (R)
+|rust monster (R)
+|-
+|unox (u)
+|giant [[scorpion]] (s)
+|scorpion (s)
+|-
+|teleporter (t)
+|teleporter (t)
+|[[tengu]] (t)
+|-
+|[[wraith]] (w)
+|wraith (W)
+|wraith (W)
+|-
+|snowman (S)
+|[[long worm]] (w)
+|long worm or [[wumpus]] (w)
+|-
+|octopus (0)
+|[[large dog]] (d)
+|large dog (d)
+|-
+|xyloman (x)
+|[[leocrotta]] (l)
+|leocrotta (l)
+|-
+|faker (F)
+|[[mimic]] (M)
+|mimic (M)
+|-
+|[[minotaur]] (m)
+|minotaur (m)
+|''found at end of table''
+|-
+|[[troll]] (T)
+|troll (T)
+|troll (T)
+|-
+|ugod (U)
+|ugod (u)
+|[[unicorn]] (u)
+|-
+|xerp (X)
+|[[yeti]] (Y)
+|yeti (Y)
+|-
+|phase shifter (P)
+|invisible [[stalker]] (I)
+|stalker (I)
+|-
+|hydra (H)
+|[[umber hulk]] (U)
+|umber hulk (U)
+|-
+|[[vampire]] (V)
+|vampire (V)
+|vampire (V)
+|-
+|wumpus (W)
+|[[xorn]] (X)
+|xorn (X)
+|-
+|rock lobster (L)
+|xerp (x)
+|[[xan]] (x)
+|-
+|zelomp (Z)
+|zelomp (z)
+|[[zruty]] (z)
+|-
+|[[chameleon]] (:)
+|chameleon (:)
+|chameleon (:)
+|-
+|[[dragon]] (D)
+|dragon (D)
+|dragon (D)
+|-
+|energar (E)
+|[[ettin]] (e)
+|ettin (e)
+|-
+|floor fiend (;)
+|[[lurker above]] (')
+|lurker above (~)
+|-
+|landshark (&amp;)
+|neo-otyugh (n)
+|[[nurse]] (n)
+|-
+|argus (})
+|[[trapper]] (,)
+|trapper (,)
+|-
+|mega-worm (M)
+|[[purple worm]] (P)
+|purple worm (P)
+|-
+|[[demon]] (d)
+|demon (&amp;)
+|demon (&amp;)
+|-
+|
+|
+|minotaur (m)
+|-
+|
+|
+|[[shopkeeper]] (@)
+|}
+
+===Other monsters kept in separate structures===
+All versions of Hack and [[NetHack]] prior to [[NetHack 3.0.0]] have various monster description structures floating around in their source code, for monsters with special functions.  These are listed here, with monsters having the same function in the same row.  The large [[dog]] appears both here and in the above table because the structure in the above table is used for wild dogs, and the one shown below is used for pets.  In Hack 1.0, the shopkeeper is moved to the main monster list.
+
+{|class="wikitable"
+!Hack121 
+!PDP-11 Hack 
+!Hack 1.0
+|-
+|[[vampire bat]] (b)
+|
+|
+|-
+|shopkeep (☺)
+|shopkeeper (@)
+|''in main monster table''
+|-
+|[[guard]] (☺)
+|treasurer (@)
+|guard (@)
+|-
+|
+|[[little dog]] (d)
+|little dog (d)
+|-
+|
+|[[dog]] (d)
+|dog (d)
+|-
+|
+|large dog (d)
+|large dog (d)
+|-
+|
+|[[giant eel]] (;)
+|
+|-
+|
+|ghost (tab)
+|
+|}
+
+The character for the ghost is coded as a tab character, or '\t'.  This is likely to be a bug or an arcane hack.
+
+The giant eel appears in essentially its modern form.  The current version of AEB Hack at the release of the PDP-11 Hack was [[Hack 1.0.1|1.0.1]], and this version did not have giant eels.  Giant eels do appear in [[Hack 1.0.2]], and the source code credits the publishers of PDP-11 Hack,  Michiel Huisjes and Fred de Wilde, for the inspiration.  That credit is still present in [[NetHack 3.4.3]]{{refsrc|mkroom.c|447}}.
+
+==Available Objects==
+Hack121, PDP-11 Hack, and Hack 1.0 show many similarities in their object lists.  Except as noted, the object lists are presented in the order in which they occur in the code.  PC/IX Hack is the same as PDP-11 Hack except as otherwise noted.
+
+===Armor===
+Hack121 takes a different approach to [[armor]] than the other two Hacks.  The only actual armors are suits.  A [[shield]] is implemented but is a distinct type of object, in a class by itself.  However, note that a shield is put on using the same command used to put on armor and affects your armor class rating in the same way that other armor does.  PDP-11 Hack implements only suits and an [[elven cloak]].  Hack 1.0 adds a [[helmet]], a shield, and a pair of [[gloves]], allowing five pieces of armor to be worn at the same time.
+
+The list of hack121 suits is reordered here to match the PDP-11 and Hack 1.0 orders.
+
+{|class="wikitable"
+!Hack121 
+!PDP-11 
+!Hack 1.0
+|-
+|
+|
+|helmet
+|-
+|[[plate mail]]
+|plate mail
+|plate mail
+|-
+|[[splint mail]]
+|splint mail
+|splint mail
+|-
+|
+|[[banded mail]]
+|banded mail
+|-
+|[[chain mail]]
+|chain mail
+|chain mail
+|-
+|[[scale mail]]
+|scale mail
+|scale mail
+|-
+|[[ring mail]]
+|ring mail
+|ring mail
+|-
+|
+|[[studded leather armor]]
+|studded leather armor
+|-
+|[[leather armor]]
+|leather armor
+|leather armor
+|-
+|
+|[[elven cloak]]
+|elven cloak
+|-
+|[[mithril-coat|elfin chain mail]]
+|
+|
+|-
+|''(not armor)''
+|
+|shield
+|-
+|
+|
+|pair of gloves
+|}
+
+===Food===
+The available food items are as follows:
+{|class="wikitable"
+!Hack121 
+!PDP-11 
+!Hack 1.0
+|-
+|[[food ration]]
+|food ration
+|food ration
+|-
+|[[tripe ration]]
+|tripe ration
+|tripe ration
+|-
+|beef jerky
+|[[pancake]]
+|pancake
+|-
+|[[lizard|dead lizard]]
+|dead lizard
+|dead lizard
+|-
+|steak
+|cookie
+|[[fortune cookie]]
+|-
+|
+|
+|[[carrot]]
+|-
+|
+|
+|[[tin]]
+|-
+|[[orange]]
+|orange
+|orange
+|-
+|[[apple]]
+|apple
+|apple
+|-
+|[[pear]]
+|pear
+|pear
+|-
+|
+|[[melon]]
+|melon
+|-
+|[[banana]]
+|banana
+|banana
+|-
+|spinach
+|[[candy bar]]
+|candy bar
+|-
+|[[egg]]
+|egg
+|egg
+|-
+|
+|
+|[[clove of garlic]]
+|-
+|
+|
+|corpse
+|}
+
+As Hack121 does not appear to have pets, it is unclear why the first five items are all meat.
+
+The dead lizard has no special properties in Hack PDP-11.  Its function in hack121 is just as an item of food.  It has no other special functions.  In Hack 1.0, it can relieve confusion, but has no effect on cockatrices:  [[stoning]] by cockatrice hissing is an [[instadeath]] in all three of these versions of Hack.  Both spinach and steak may randomly increase strength in hack121.
+
+===Weapons===
+Hack121 and Hack for PDP-11 offer the same set of weapons.  Hack 1.0 adds a few to these:
+
+{|class="wikitable"
+!hack121 
+!PDP-11 
+!Hack 1.0
+|-
+|[[arrow]]
+|arrow
+|arrow
+|-
+|[[sling]] bullet
+|sling bullet
+|sling bullet
+|-
+|[[crossbow bolt]]
+|crossbow bolt
+|crossbow bolt
+|-
+|[[dart]]
+|dart
+|dart
+|-
+|
+|
+|[[rock]]
+|-
+|
+|
+|[[boomerang]]
+|-
+|[[mace]]
+|mace
+|mace
+|-
+|[[axe]]
+|axe
+|axe
+|-
+|[[flail]]
+|flail
+|flail
+|-
+|[[long sword]]
+|long sword
+|long sword
+|-
+|[[two handed sword]]
+|two handed sword
+|two handed sword
+|-
+|[[dagger]]
+|dagger
+|dagger
+|-
+|
+|
+|[[worm tooth]]
+|-
+|
+|
+|[[crysknife]]
+|-
+|[[spear]]
+|spear
+|spear
+|-
+|[[bow]]
+|bow
+|bow
+|-
+|[[sling]]
+|sling
+|sling
+|-
+|[[crossbow]]
+|crossbow
+|crossbow
+|}
+
+===Potions===
+Several potions in Hack121 have disappeared in later versions.  Hack 1.0 adds one potion over PDP-11.
+
+{|class="wikitable"
+!Hack121 
+!PDP-11 
+!PC/IX
+!Hack 1.0
+|-
+|[[potion of restore ability|restore strength]]
+|restore strength
+|restore strength
+|restore strength
+|-
+|alcohol
+|[[potion of booze|booze]]
+|'''confuse monster'''‡
+|booze
+|-
+|second sight
+|
+|
+|
+|-
+|[[potion of amnesia|forgetfulness]]
+|
+|
+|
+|-
+|extra hit points
+|
+|
+|
+|-
+|[[potion of invisibility|invisibility]]
+|invisibility
+|invisibility
+|invisibility
+|-
+|[[potion of fruit juice|fruit juice]]
+|fruit juice
+|fruit juice
+|fruit juice
+|-
+|[[potion of healing|healing]]
+|healing
+|healing
+|healing
+|-
+|[[potion of paralysis|paralysis]]
+|paralysis
+|paralysis
+|paralysis
+|-
+|
+|[[potion of monster detection|monster detection]]
+|monster detection
+|monster detection
+|-
+|[[potion of object detection|object detection]]
+|object detection
+|object detection
+|object detection
+|-
+|poison
+|[[potion of sickness|sickness]]
+|sickness
+|sickness
+|-
+|[[potion of confusion|confusion]]
+|confusion

@@ -1,0 +1,1000 @@
+|Return 1 if the specified object is present at the coordinates.
+|-
+|level.mon_at(monster, coord)
+|integer, 0 or 1
+|Return 1 if there's a monster of certain class, or a certain type of monster, or any monster at the coordinates. <tt>level.mon_at(monster:'h', (5,5))</tt> matches any monster of class {{white|h}}, <tt>level.mon_at(monster:('h', "hobbit"), (5,5))</tt> matches only a hobbit, <tt>level.mon_at(monster:random, (5,5))</tt> matches any monster.
+|-
+|hero.name
+|string
+|
+|-
+|hero.role
+|string, eg. "Priest"
+|
+|-
+|hero.race
+|string, eg. "human"
+|
+|-
+|hero.carrying(obj)
+|integer, 0 or 1
+|Return 1 if player has object in main inventory.
+|-
+|string(int)
+|string
+|Convert an integer to string. Alias: <tt>str()</tt>
+|-
+|int(str)
+|integer
+|Convert a string to integer. Alias: <tt>integer()</tt>
+|-
+|coord(int, int)
+|coordinates
+|Convert two integer values into a pair of map coordinates.
+|-
+|region(int, int, int, int)
+|region
+|Convert four integer values into a region
+|-
+|rnd(int)
+|integer
+|Returns a random integer number between 0 and (int-1). This is equal to the {{sourceref|rn2}}-function in the sourcecode.
+|-
+|room.width
+|integer
+|Returns the width of the current (SUB)ROOM, minus the outer walls. If used outside a ROOM context, returns 0.
+|-
+|room.height
+|integer
+|Returns the height of the current (SUB)ROOM, minus the outer walls. If used outside a ROOM context, returns 0.
+|-
+|room.x
+|integer
+|Returns the x coordinate of the top-left corner of the current (SUB)ROOM. If used outside a ROOM context, returns 0.
+|-
+|room.y
+|integer
+|Returns the y coordinate of the top-left corner of the current (SUB)ROOM. If used outside a ROOM context, returns 0.
+|}
+
+For example:
+ IF [ level.obj_at(obj:"pick-axe", coord(2 + 3, 5)) ] {
+  MESSAGE: "Today is " . string(time.yyyymmdd)
+ }
+
+===Map characters===
+{{anchor|map character}}
+{|class="prettytable striped"
+!character
+![[dungeon feature]]
+|-
+|<tt>' '</tt>
+|solid wall
+|-
+|<tt>'#'</tt>
+|corridor
+|-
+|<tt>'.'</tt>
+|room floor (Unlit, unless lit with {{sa|REGION}}-command)
+|-
+|<tt>'-'</tt>
+|horizontal wall
+|-
+|<tt>'&#124;'</tt>
+|vertical wall
+|-
+|<tt>'+'</tt>
+|door (State is defined with {{sa|DOOR}} -command)
+|-
+|<tt>'A'</tt>
+|air
+|-
+|<tt>'B'</tt>
+|crosswall / boundary symbol hack (See {{sa|REGION}})
+|-
+|<tt>'C'</tt>
+|cloud
+|-
+|<tt>'S'</tt>
+|secret door
+|-
+|<tt>'H'</tt>
+|secret corridor
+|-
+|<tt>'{'</tt>
+|fountain
+|-
+|<tt>'\'</tt>
+|throne
+|-
+|<tt>'K'</tt>
+|sink
+|-
+|<tt>'&#125;'</tt>
+|moat
+|-
+|<tt>'P'</tt>
+|pool of water
+|-
+|<tt>'L'</tt>
+|lava pool
+|-
+|<tt>'I'</tt>
+|ice
+|-
+|<tt>'W'</tt>
+|water
+|-
+|<tt>'T'</tt>
+|tree
+|-
+|<tt>'t'</tt>
+|dead tree
+|-
+|<tt>'F'</tt>
+|iron bars
+|-
+|<tt>'M'</tt>
+|muddy swamp
+|-
+|<tt>'Y'</tt>
+|crystal ice wall
+|-
+|<tt>'U'</tt>
+|ice wall
+|-
+|<tt>'x'</tt>
+|"transparent" map character
+|}
+
+===Trap names===
+"anti magic", "arrow", "bear", "board", "dart", "falling rock", "fire", "hole", "land mine", "level teleport", "magic portal", "magic", "pit", "polymorph", "rolling boulder", "rust", "sleep gas", "spiked pit", "statue", "teleport", "trap door", "web", "cold"
+
+===Room types===
+"ordinary", "throne", "swamp", "vault", "beehive", "morgue", "barracks", "zoo", "delphi", "temple", "lemurepit", "anthole", "cocknest", "garden", "leprehall", "shop", "armor shop", "scroll shop", "potion shop", "weapon shop", "food shop", "ring shop", "wand shop", "tool shop", "book shop", "tin shop", "music shop", "candle shop", "pet shop", "black market"
+{{variant-343}}
+[[Category:Annotations]]
+[[Category:UnNetHack]]}
+&&%s&& %s Gremlin farming {82211 2013-01-10T23:03:32Z {13 Aaxelb} Redirected page to [[Farming#Gremlin farming]] #REDIRECT [[Farming#Gremlin_farming]]}
+&&%s&& %s Convict {147558 2022-08-15T22:00:36Z {4001605 NetSysFire} link to race/role combo section ein [[EvilHack]] {{patch
+ |name=Convict Role
+ |author=Karl Garrison
+ |download=http://nethack.edeca.net/karl/nethack-convict-0.7.diff
+ |bilious=421
+}}
+The '''Convict''' is a role added in the Convict Role patch and also in [[UnNetHack]], [[SlashTHEM]], [[dNetHack]], [[DynaHack]], [[SpliceHack]], and [[EvilHack#Player race–role combinations|EvilHack]]. It was designed to be more difficult than [[Tourist]] ([[Role difficulty|statistically]] the most difficult class in [[vanilla]] NetHack), a goal at which it succeeds handily.
+
+Convicts always start out as [[chaotic]]. In the original patch they can be [[human]]s, [[dwarf|dwarves]], [[gnome]]s, or [[orc (starting race)|orc]]s. [[UnNetHack]] adds [[vampire]]s as a starting option, and [[dNetHack]] adds elves, vampires, half-dragons, and [[User:Chris/dNetHack/dNethack_Races#Incantifier|incantifier]]s.
+
+==Starting inventory==
+*a [[cursed]] [[striped shirt]]
+*some [[rock]]s
+*a +0 [[spoon]], which the convict can use to make sneak attacks (in dNethack)
+
+A Convict also starts [[Punishment|chained to an iron ball]] and with a [[sewer rat]] named Nicodemus (reference to ''[https://en.wikipedia.org/wiki/Mrs._Frisby_and_the_Rats_of_NIMH Mrs. Frisby and the Rats of NIMH]'') as a pet, which can grow up to be [[Rodent of unusual size|unusually large]]. Additionally, convicts can pacify and tame other rats by [[Chatting|#chatting]] with them.
+
+==Intrinsics==
+Convicts gain intrinsics at these [[experience level]]s:
+
+*XL 1: [[Sickness resistance]]
+*XL 7: [[Poison resistance]]
+*XL 20: [[Automatic searching]]
+
+==Skills==
+
+{{todo|What skills do Convicts start with (in each of the variants that include them)?}}
+
+In UnNethack, Convicts start with 0 skills at basic level. They will have a difficult time overcoming the required 100 hits to level any weapon to Basic skill, you will have to balance whether to get rid of the iron ball or to keep it as a weapon and advance the Flail skill.
+
+{| class="prettytable"
+! colspan="2" style="font-size:larger" | Convict skills
+|-
+! Max !! Skills
+|-
+| Basic
+|
+* ''Weapons:'' [[mace]], [[short sword]]
+* ''Spells:'' [[attack spells|attack]]
+|-
+| Skilled
+|
+* ''Weapons:'' [[dagger]], [[hammer]], [[dart]], [[sling]]
+* ''Combat:'' [[bare hands]], [[two weapon combat]]
+|-
+| Expert
+|
+* ''Weapons:'' [[knife]], [[pick-axe]], [[club]], [[flail]]
+* ''Spells:'' [[escape spells|escape]]
+|}
+
+The Convict's [[special spell]] is [[spellbook of teleport away|teleport away]]. Spell success is determined by [[intelligence]].
+
+==Special rules==
+
+Convicts burn nutrition at half the normal rate while hungry or worse.
+
+Convicts have a chance to pacify or tame rats by #chatting to them.
+
+Races that would normally be friendly to the player based on race will be generated hostile if the player is a convict.
+
+For convicts only, wielding the heavy iron ball uses the flail skill.
+
+In dNethack only, convicts can use spoons to make sneak attacks like a rogue. Since spoons aren't randomly generated, this is usually only relevant to their starting spoon and their quest artifact.
+
+==Quest==
+The [[convict quest]] sees you fighting [[Warden Arianna]] for [[the Iron Ball of Liberation]], a heavy iron ball that grants magic resistance, stealth, searching and warning. When invoked, it allows [[phasing]] for a limited time. The downsides are its weight (almost as heavy as a normal iron ball) and the fact that it [[punishment|chains itself to the player]] every time its power is invoked.
+
+==Gods==
+{{wikipedia|List of Forgotten Realms deities}}
+{{main|Religion}}
+* Lawful: Ilmater
+* Neutral: Grumbar
+* Chaotic: Tymora
+
+The Convict pantheon is made up of deities worshiped by [[Human (starting race)|human]] inhabitants of Faerûn in the ''Forgotten Realms'' campaign setting of ''[[Dungeons & Dragons]]''.
+
+'''Ilmater''' is the god of martyrdom and perseverence.  His followers seek to ease the suffering of others, even if it requires enduring suffering themselves.  He is described as similar to the god [[Issek]] in the ''Fafhrd and the Gray Mouser'' series by [[Fritz Leiber]].
+
+'''Grumbar''' is the Elemental Lord of Earth, known for constancy and changelessness, but also indifference.  He is influenced by the god Grome in the ''Elric'' series by [[Michael Moorcock]].
+
+'''Tymora''' is the goddess of good fortune, invoked by risk-takers and adventurers. She is inspired by the Greek goddess [[wikipedia:Tyche|Tyche]].
+
+==Rank titles==
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1-2: Detainee
+*XL 3-5: Inmate
+*XL 6-9: Jail-bird
+*XL 10-13: Prisoner
+*XL 14-17: Outlaw
+*XL 18-21: Crook
+*XL 22-25: Desperado
+*XL 26-29: Felon
+*XL 30: Fugitive
+
+==Strategy==
+Convicts start the game on the verge of becoming hungry, with no food in their inventory and no ability to [[pray]] for food. Their ability to descend through the dungeon looking for food is also limited by the [[heavy iron ball|iron ball]] chained to them, as they face death from falling down the stairs. It is advisable to always wield the ball before attempting to descend, as that will reduce the damage to 1-9 (average 5) instead of the 1-26 (average 11) you will take if the ball falls on you. You should wield the iron ball most of the time anyway, as it makes a superb weapon, doing d25 damage (average 13), which is higher than any non-artifact, even a [[dwarvish mattock]] – if you can hit with it. For a convict (and a convict only), fighting with the iron ball advances flail skill, which can eventually reach expert.
+
+The [[early game]] is dominated by a desperate search for food. It is therefore critical to get the most out of any food they do find. Convicts burn nutrition at half the normal rate while hungry or worse, meaning that you should wait to eat food rations and the like until you are at least weak with hunger. Convicts are also [[Immunity to sickness|immune to sickness]] from level one, enabling them to eat [[tainted]] corpses. In particular this allows them to eat corpses left by zombies and mummies, and to finish every last bite of their kills without worrying about how long the corpse has been lying there.
+
+Races that are normally friendly to them (e.g. gnomes and dwarves to themselves and each other) are hostile to the Convict. This may influence the decision whether to do the [[Gnomish Mines]] or [[Sokoban]] first. The [[Minetown]] watch will also be hostile to Convicts, making the mines an even less appealing early destination. However, a short foray into the mines can yield good armor and numerous edible corpses.
+
+Convicts' difficulty in obtaining food and equipment is compounded by the fact that shopkeepers who see their [[striped shirt]]s will not allow entry to their shops (even if later the shirt is removed or covered). An exception to this is the [[Black market]], where convicts will receive a reduction in prices instead.
+
+Once free of the iron ball, a convict will want a weapon that is less heavy. In some variants, a convict has a guaranteed first sacrifice gift called the [[Luckblade|Luck Blade]], a chaotic short sword (broadsword in [[UnNetHack]], [[DynaHack]], and [[EvilHack]]) which also acts as a [[luckstone]]. Given that they will only be able to reach basic, however, this is likely to only be a viable weapon in the early game.
+
+===Vampiric Convicts===
+Vampires get the advantage of being able to fly, so you will never take damage when going downstairs with the iron ball (wielded or not). The sickness resistance is not very useful for food, but it may be useful late-game. Unless you get incredibly lucky, you will most likely not make it to turn 600 without fainting. 
+
+The monsters in the first few levels don't have much nutrition in their corpses, and since you only get 20% of the base nutrition it's even less. Getting lucky on the extra bite attack will give you a significant amount. Since this is unlikely, you may need to find a place to faint for 50-100 turns to make it to turn 600 in order to pray successfully. This goes a little contrary to the suggestions for vampires to constantly fight and for convicts to do whatever is necessary to find nutrition, but it may be necessary in some games.
+
+The gnomish mines are a feast for vampire convicts. Once you have your first prayer, slaughtering a bunch of gnomes and dwarves is relatively easy. It's important to make the most out of your regeneration and not get overwhelmed, so make sure you play cautiously. This will level you up quickly and get you to poison resistance (convict specific). Once you have that, it opens up a new set of corpses that can be drained.
+
+Minetown is especially dicey for vampire convicts, since the watch captain usually has a silver saber (50% chance) and is always hostile towards you. Since you are powerful and your iron ball does a lot of damage, it is feasible to kill the watch, but make sure to have an escape plan. You regenerate health faster than they do, so a hit and run strategy works well.  Avoiding the watch captain until the rest are dealt with might be a good idea.
+
+Once you survive, vampires can be a great race. With intrinsic flying and regeneration, combined with the sickness immunity from a convict makes you a very strong late-game character. Your death effect immunity can even supplement MR in some cases. If you can get over the early-game hump, a vampire convict can be very rewarding.
+
+{{variant-343}}
+[[Category:Patches]]
+[[Category:Convict patch]]
+[[Category:UnNetHack]]
+[[Category:dNethack]]
+[[Category:dNethack Roles]]}
+&&%s&& %s Variants {82221 2013-01-12T08:11:26Z {4000045 Bulwersator} Redirected page to [[Variant]] #REDIRECT[[Variant]]}
+&&%s&& %s Doppleganger {82414 2013-01-23T22:40:50Z {4000180 Bcode} fix redirect #REDIRECT [[Doppelganger]]}
+&&%s&& %s Vampire (starting race) {141490 2021-07-04T14:02:47Z {4001279 Umbire the Phantom}  The '''[[vampire]]''' appears as a starting race in many variants of ''[[NetHack]]''. For a specific iteration, see one of the following articles:
+
+*[[Vampire (starting race in SLASH'EM)]], which is also used in [[SpliceHack]]
+*[[Vampire (starting race in UnNetHack)]], which is also used in [[DynaHack]]
+*[[Vampire (starting race in dNetHack)]]
+
+{{disambig}}}
+&&%s&& %s Amulet/ru {98368 2015-12-17T20:05:50Z {4000080 ChasonBot}  {{items}}
+'''Амулет''' это [[item|вещь]] которую персонаж может [[put on|надеть]] на шею. Надевшему его обычно дается магическая сила, но, например, [[amulet of strangulation|амулет удушения]] может быть опасен. Амулеты обозначаются двойными кавычками: {{cyan|"}}. Это также команда для отображения надетого на вас амулета.
+
+{{Languages}}
+Wearing any amulet will increase the rate at which you get [[nutrition|hungry]], by an extra 1 nutrition per 20 turns.{{reffunc|eat.c|gethungry}} Carrying the Amulet of Yendor consumes an additional 1 nutrition per 20 turns, regardless of whether or not you are wearing it.
+
+All amulets have a [[weight]] of 20, are made of [[iron]], and have a base price of 150 [[zorkmid|zorkmids]], with two exceptions: the Amulet of Yendor is made of [[mithril]] and has a base price of 30000 zorkmids, and the [[cheap plastic imitation of the Amulet of Yendor]] is made of [[plastic]] and is worth 0 zorkmids.
+
+==Table of amulets==
+
+{|class="wikitable"
+!Amulet!!Relative probability!!Notes
+|-
+|[[amulet of change]]||13%||90.5% generated cursed, EAT
+|-
+|[[amulet of ESP]]||17.5%||EAT
+|-
+|[[amulet of life saving]]||7.5%||
+|-
+|[[amulet of magical breathing]]||6.5%||EAT
+|-
+|[[amulet of reflection]]||7.5%||
+|-
+|[[amulet of restful sleep]]||13.5%||90.5% generated cursed, EAT
+|-
+|[[amulet of strangulation]]||13.5%||90.5% generated cursed, EAT
+|-
+|[[amulet of unchanging]]||4.5%||
+|-
+|[[amulet versus poison]]||16.5%||EAT
+|-
+|colspan="3"|
+|-
+|[[cheap plastic imitation of the Amulet of Yendor]]||0||
+|-
+|[[Amulet of Yendor]]||0|| will not fit in a [[container]]
+|}
+
+Amulets marked EAT can be [[eating jewelry|eaten]] for a 1/5 chance of obtaining their effect permanently (providing you are polymorphed into a [[metallivore]]). Eating an amulet of unchanging will return you to your normal form. Other amulets can be eaten (except the fake Amulet which is made of plastic, and the real Amulet which is indestructible), but do not confer their effect.
+
+==Generation==
+
+Amulets comprise 1% of all randomly-generated items in the main dungeon,
+1% in containers, and 4% in [[Gehennom]]. The second column above is the relative probability of each subtype.
+
+The ones generated 90.5% cursed are 9% uncursed and 0.5% blessed. All others are generated 5% cursed, 90% uncursed, 5% blessed.
+
+The Amulet of Yendor is a [[unique item]] found only in [[Gehennom]].
+Its fake counterpart is found only on the [[Rogue level]], in the inventories of certain high-level monsters, and in the bones files of people who had a real or fake amulet themselves; the real amulet will be replaced with a fake one.
+
+==Identification==
+
+All amulets cost 150[[zm]] and weigh 20, so they cannot be distinguished using [[price identification]]. The appearance of the first 9 types of amulet in the table are [[randomized appearance|randomized]] from the following descriptions:
+
+ circular    spherical   oval       
+ triangular  pyramidal   square 
+ concave     hexagonal   octagonal
+
+Non-cursed amulets are safe to try on; the effect may become obvious after a while, such as for the amulet of ESP, and you can always remove it if it is strangulation or restful sleep. The only risk is a small chance at changing genders, which is not a debilitating issue for the most part.
+
+Amulets of change and strangulation always formally identify themselves when worn.  Every other amulet (other than the real and fake Amulets of Yendor) adds a line to the [[enlightenment]] screen, although some lines can have other sources:
+
+{|class="wikitable"
+!Amulet of...
+!produces the line...
+!Other sources
+|-
+|ESP
+|"You are telepathic."
+|[[Helm of telepathy]], some quest artifacts, intrinsic
+|-
+|life saving
+|"Your life will be saved."
+|none
+|-
+|magical breathing
+|"You can survive without air."
+|none
+|-
+|reflection
+|"You have reflection."
+|silver [[dragon scale mail]], [[shield of reflection]], wielded [[Longbow of Diana]]
+|-
+|restful sleep
+|"You fall asleep."
+|none
+|-
+|unchanging
+|"You can not change from your current form."
+|none
+|-
+|versus poison
+|"You are poison resistant."
+|green [[dragon scale mail]], [[ring of poison resistance]], [[alchemy smock]], intrinsic
+|}
+
+In addition, [[intelligent]] monsters will only pick up and put on life saving (if living) and reflection.
+
+Amulets of ESP can be identified using the [[naming artifacts|artifact naming trick]], because they cannot be named “[[The Eye of the Aethiopica]]”.
+
+The real Amulet of Yendor, unlike the fakes, cannot be placed in a container ("The Amulet of Yendor cannot be confined in such trappings.")
+
+===Probabilities and use-testing===
+Usually, formal [[identification]] or [[enlightenment]] are better techniques to identify an amulet, but sometimes [[conduct]]s or scarce resources make you rely on relative probabilities, [[pet testing]], and indirect clues.
+
+{|class="wikitable"
+!Amulet of...
+!Prob. when not cursed, non-ESP
+!when cursed, non-ESP
+!Ways to identify, wear-testing
+|-
+|Change
+| 1.6%
+| 30.7%
+| Autoidentifies
+|-
+|ESP
+|colspan="3" | [[Naming_artifacts|Artifact naming trick]]
+|-
+|Life saving
+| 16.8%
+| 1.0%
+| Monster use, [[Vlad's_Tower#Middle_level|Vlad's Tower]]
+|-
+|Magical breathing
+| 14.5%
+| 0.8%
+| Go into [[pool|water]], e.g. after digging on [[fountain]]
+|-
+|Reflection
+| 16.8%
+| 1.0%
+| Bounce a [[ray]] onto yourself, [[Sokoban]] prize, monster use
+|-
+|Restful sleep
+| 1.7%
+| 31.9%
+| Wear for 100 turns unless [[sleep resistant]]
+|-
+|Strangulation
+| 1.7%
+| 31.9%
+| [[Vlad's_Tower#Middle_level|Vlad's Tower]], autoidentifies
+|-
+|Unchanging
+| 10.1%
+| 0.6%
+| [[Eat]] a [[mimic]], attempt [[polymorph control|controlled]] [[polyself]], or get [[slime]]d.
+|-
+|Versus poison
+| 36.9%
+| 2.2%
+| Elimination. Unless resistant, eat poisonous [[corpse]]. Non-healers quaff [[potion of sickness|sickness]] even if resistant.
+|}
+
+Above are the probabilities for the various types of amulet, on condition its cursedness is known and it is not ESP. The latter is excluded because ESP can always be tested for, instantly, even before curse-testing.
+
+Some players are opposed to the artifact naming trick. They can wear-test for ESP by far-looking at a nearby brainy monster. 27.3% of all non-cursed and 2.2% of all cursed amulets are ESP.
+
+==Strategy==
+
+Amulets cannot be destroyed by electric [[shock]]s, so unless stolen by a [[nymph]] or [[monkey]] they are reliable at conferring their effect.
+
+==Encyclopaedia entry==
+
+{{encyclopedia|
+"The complete Amulet can keep off all the things that make
+people unhappy -- jealousy, bad temper, pride, disagreeableness,
+greediness, selfishness, laziness.  Evil spirits, people called
+them when the Amulet was made.  Don't you think it would be nice
+to have it?"
+"Very," said the children, quite without enthusiasm.
+"And it can give you strength and courage."
+"That's better," said Cyril.
+"And virtue."
+"I suppose it's nice to have that," said Jane, but not with much
+interest.
+"And it can give you your heart's desire."
+"Now you're talking," said Robert.
+|[ The Story of the Amulet, by Edith Nesbit ]
+}}
+
+==References==
+
+<references/>
+
+{{DOD}}
+[[Category:Amulets| ]]
+{{nethack-343}}}
+&&%s&& %s Sokoban Level 3h {146186 2022-06-11T22:23:00Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 3h''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It may appear as the second level of [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]], and may appear as a third level map in [[GruntHack]] and [[EvilHack]]. It has 14 [[boulder]]s and 12 [[hole]]s, leaving 2 spare boulders.
+
+In UnNetHack and GruntHack, this map may be flipped horizontally or vertically like all Sokoban levels.
+<code>
+   -------------------- 0 boulder
+   |.....^^^^^^^^^^^^.| ^ hole
+   |.....------------.| > starting position/downstairs
+   --.----..--------|.| < upstairs
+    |.--.0.........||.| + door
+  ---....-..00.|...||.|
+  |...0.-..|.0.-----|.|
+  |.-.0.00.|.--------+|
+  |..-0--.....| |.....|
+  --..0.00--.-| |.....|
+   --......0..| |.....|
+    ---.>---0.| |..<..|
+      ----.|..| |.....|
+           ---- |.....|
+                |.....|
+                -------
+</code>
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+First, the boulders throughout the level need to be rotated to allow the middle column of boulders to be broken:
+<code>
+   -------------------- '''A''' rrd
+   |.....^^^^^^^^^^^^.| '''B''' u
+   |.....------------.| '''N''' uuuu
+   --.----..--------|.| '''M''' r
+    |.--.A.........||.| '''L''' d
+  ---....-..BC.|...||.| '''H''' d
+  |...D.-..|.E.-----|.| '''G''' rr
+  |.-.F.GH.|.--------+|
+  |..-I--.....| |.....|
+  --..J.KL--.-| |.....|
+   --......M..| |.....|
+    ---.@---N.| |..<..|
+      ----.|..| |.....|
+           ---- |.....|
+                |.....|
+                -------
+</code>
+The column of boulders can now be pushed into the holes:
+<code>
+   -------------------- '''F''' r
+   |.....^^^^^^^^^^^^.| '''D''' uluu uurr rr*
+   |.....------------.| '''J''' l
+   --.----..--------|.| '''I''' uuul uuuu rrrr r*
+    |.--....B......||.| '''J''' ruuu uluu uurr rrrr*
+  ---....-.A.C.|...||.| '''F''' luul uuuu rrrr rrr*
+  |...D.-..|.E.-----|.|
+  |.-.F..@G|N--------+|
+  |..-I--H....| |.....|
+  --..J.K.--.-| |.....|
+   --....L..M.| |.....|
+    ---.>---..| |..<..|
+      ----.|..| |.....|
+           ---- |.....|
+                |.....|
+                -------
+</code>
+The next few boulders take advantage of the preparation done near the beginning:
+<code>
+   -------------------- '''L''' r
+   |.......@.^^^^^^^^.| '''K''' l___ ____ luuu uluu uurr rrrr rr*
+   |.....------------.| '''H''' u
+   --.----..--------|.| '''M''' d
+    |.--....B......||.| '''L''' lllu ____ luuu uluu uurr rrrr rrr*
+  ---....-.A.C.|...||.| '''M''' ulll llu_ luuu uluu uurr rrrr rrrr*
+  |.....-..|.E.-----|.|
+  |.-.....G|N--------+|
+  |..-.--H....| |.....|
+  --....K.--.-| |.....|
+   --....L..M.| |.....|
+    ---.>---..| |..<..|
+      ----.|..| |.....|
+           ---- |.....|
+                |.....|
+                -------
+</code>
+The last five boulders follow roughly the same path as each other:
+<code>
+   -------------------- '''G''' d
+   |..........@.^^^^^.| '''H''' ____ ____ ____ lllu uluu uurr rrrr rrrr r*
+   |.....------------.| '''G''' lu__ ____ ____ lllu uluu uurr rrrr rrrr rr*
+   --.----..--------|.| '''B''' r
+    |.--....B......||.| '''A''' lddd lu__ ____ lllu uluu uurr rrrr rrrr rrr*
+  ---....-.A.C.|...||.| '''B''' rr
+  |.....-..|.E.-----|.| '''C''' llld ddlu ____ lllu uluu uurr rrrr rrrr rrrr*
+  |.-....HG|N--------+| '''N''' uuul lddd dlu_ lllu uluu uurr rrrr rrrr rrrr r*
+  |..-.--.....| |.....|
+  --......--.-| |.....|
+   --.........| |.....|
+    ---.>---..| |..<..|
+      ----.|..| |.....|
+           ---- |.....|
+                |.....|
+                -------
+</code>
+The level is now complete. You may want to check under boulder '''E''' or behind boulder '''B''' for items.
+<code>
+   --------------------
+   |...............@..|
+   |.....------------.|
+   --.----..--------|.|
+    |.--.......B...||.|
+  ---....-.....|...||.|
+  |.....-..|.E.-----|.|
+  |.-......|.--------+|
+  |..-.--.....| |.....|
+  --......--.-| |.....|
+   --.........| |.....|
+    ---.>---..| |..<..|
+      ----.|..| |.....|
+           ---- |.....|
+                |.....|
+                -------
+</code>
+==Next level==
+===UnNetHack===
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:GruntHack]]
+[[Category:EvilHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (GruntHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Sokoban Level 3i {146194 2022-06-12T00:40:23Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 3i''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It appears as a possible second floor map for [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]], and may appear as a third level map in [[GruntHack]] and [[EvilHack]]. It has 17 [[boulder]]s and 14 [[hole]]s, leaving 3 spare boulders.
+
+In UnNetHack, like all Sokoban levels it may be flipped horizontally or vertically.
+
+ ---------                 0 boulder
+ |.......|                 ^ hole
+ --...0.--                 > starting position/downstairs
+  --.0.------------------- < upstairs
+   |-.--..^^^^^^^^^^^^^^.| + door
+   |.>....--------------+|
+   |0.--..|----    |.....|
+   |.00..--...|    |.....|
+  --0..---.0..|    |.....|
+  |.0..|....0--    |..<..|
+  |...0|.0...|     |.....|
+  --0...0.00.|     |.....|
+   |.0.|.0.---     |.....|
+   --..|...|       -------
+    |..|----
+    ----
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Letters '''O''' and '''Q''' are skipped for clarity. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+The first thing to do is move the boulders so that boulder '''C''' can be moved downward:
+
+ ---------                 '''D''' d
+ |.......|                 '''E''' r
+ --...A.--                 '''M''' r
+  --.B.------------------- '''N''' uu
+   |-.--..^^^^^^^^^^^^^^.| '''M''' r
+   |.@....--------------+| '''J''' drrr
+   |C.--..|----    |.....| '''R''' d
+   |.DE..--...|    |.....| '''D''' ddd
+  --F..---.G..|    |.....| '''H''' r
+  |.H..|....I--    |..<..| '''F''' d
+  |...J|.K...|     |.....| '''C''' d
+  --L...M.NP.|     |.....|
+   |.R.|.S.---     |.....|
+   --..|...|       -------
+    |..|----
+    ----
+
+The boulders in the left half of the level can now be solved:
+
+ ---------                 '''E''' lluu ____ _ rrrr ur*
+ |.......|                 '''H''' uuuu ____ _ rrrr urr*
+ --...A.--                 '''F''' ruuu u___ _ rrrr urrr*
+  --.B.------------------- '''C''' druu uu__ _ rrrr urrr r*
+   |-.--..^^^^^^^^^^^^^^.| '''B''' uddd du__ _ rrrr urrr rr*
+   |.>....--------------+| '''A''' lddd du__ _ rrrr urrr rrr*
+   |@.--..|----    |.....| '''D''' uuuu uu__ _ rrrr urrr rrrr*
+   |C..E.--...|    |.....| '''R''' uuuu uuuu _ rrrr urrr rrrr r*
+  --...---.G..|    |.....| '''L''' uuru uuu_ _ rrrr urrr rrrr rr*
+  |.FH.|..N.I--    |..<..|
+  |....|.K...|     |.....|
+  --LD...JMP.|     |.....|
+   |...|.S.---     |.....|
+   --R.|...|       -------
+    |..|----
+    ----
+
+The sideways "T" boulder formation provides the final boulders needed fill the remaining holes:
+
+ ---------                 '''M''' u
+ |.......|                 '''J''' llll ___ uuuu uurr rrur rrrr rrrr r*
+ --.....--                 '''S''' ulll l__ uuuu uurr rrur rrrr rrrr rr*
+  --...------------------- '''K''' dlll l__ uuuu uurr rrur rrrr rrrr rrr*
+   |-.--.........@.^^^^^.| '''N''' r
+   |.>....--------------+| '''M''' dd
+   |..--..|----    |.....| '''P''' llll ll_ uuuu uurr rrur rrrr rrrr rrrr*
+   |.....--...|    |.....| '''M''' ulll ll_ uuuu uurr rrur rrrr rrrr rrrr r*
+  --...---.G..|    |.....|
+  |....|..N.I--    |..<..|
+  |....|.K...|     |.....|
+  --.....JMP.|     |.....|
+   |...|.S.---     |.....|
+   --..|...|       -------
+    |..|----
+    ----
+
+The level is now complete. You may want to check under and behind the last few boulders for items:
+
+ ---------
+ |.......|
+ --.....--
+  --...-------------------
+   |-.--..............@..|
+   |.>....--------------+|
+   |..--..|----    |.....|
+   |.....--...|    |.....|
+  --...---.G..|    |.....|
+  |....|...NI--    |..<..|
+  |....|.....|     |.....|
+  --.........|     |.....|
+   |...|...---     |.....|
+   --..|...|       -------
+    |..|----
+    ----
+
+== Next level ==
+===UnNetHack===
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:GruntHack]]
+[[Category:EvilHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (GruntHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Sokoban Level 3j {146212 2022-06-13T22:12:10Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 3j''' is one of the new possible maps for [[Sokoban]] in variants of ''[[NetHack]]''. It may appear as a second level map for [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]] and [[GruntHack]]. It has 10 [[boulder]]s and 9 [[hole]]s, leaving 1 spare boulder.
+
+Like all Sokoban levels in UnNetHack and GruntHack, this level may be flipped horizontally or vertically.
+
+  ---------       0 boulder
+  |...|...|       ^ hole
+ --....00.|       > starting position/downstairs
+ |.0--0...|------ < upstairs
+ |..|-.00.|.....| + door
+ |..|..|..|.....|
+ |.0|>--0.|.....|
+ |..0.....|..<..|
+ ----^--..|.....|
+    |^||0.|.....|
+   --^||..|.....|
+   |..------+----
+   |..^^^^^^.|
+   -----------
+__NOTOC__
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+Pushing the first boulder up makes filling the first six holes simple:
+
+  ---------       '''D''' u
+  |...|...|       '''H''' dlll d*
+ --....AB.|       '''F''' dddl lldd*
+ |.C--D...|------ '''E''' rddd llld dd*
+ |..|-.EF.|.....| '''J''' uull lddd ddr*
+ |..|..|..|.....| '''B''' dddd dlll dddd drr*
+ |.G|@--H.|.....| '''A''' ddrd ddll lddd ddrr r*
+ |..I.....|..<..| 
+ ----^--..|.....|
+    |^||J.|.....|
+   --^||..|.....|
+   |..------+----
+   |..^^^^^^.|
+   -----------
+
+There's a lot of freedom with how to deal with the final boulders:
+
+  ---------       '''D''' llrr rrdd dddl lldd dddr rrr*
+  |...|...|       '''C''' d
+ --...D...|       '''I''' rddd ddrr rrr*
+ |.C--....|------ '''G''' drrd dddd rrrr rr*
+ |..|-....|.....|
+ |..|..|..|.....|
+ |.G|>--..|.....|
+ |..I.....|..<..| 
+ ----.--..|.....|
+    |.||..|.....|
+   --.||..|.....|
+   |..------+----
+   |...@.^^^.|
+   -----------
+
+The level is now complete. You may want to check under the final boulder if you haven't already.
+
+  ---------
+  |...|...|
+ --.......|
+ |..--....|------
+ |.C|-....|.....|
+ |..|..|..|.....|
+ |..|>--..|.....|
+ |........|..<..| 
+ ----.--..|.....|
+    |.||..|.....|
+   --.||..|.....|
+   |..------+----
+   |......@..|
+   -----------
+
+==Next level==
+===UnNetHack===
+In UnNetHack, the stairs up leads to the final level of Sokoban:
+
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+
+===GruntHack===
+In GruntHack, the stairs up leads to the third level of Sokoban:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:GruntHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (GruntHack)]]}
+&&%s&& %s Sokoban Level 3k {146213 2022-06-14T01:08:53Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 3k''' is one of the new possible maps for [[Sokoban]] in variants of ''[[NetHack]]''. It may appear as a second level map for [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]] and [[GruntHack]]. It has 11 [[boulder]]s and 10 [[hole]]s, leaving 1 spare boulder.
+
+Like all Sokoban levels in UnNetHack and GruntHack, this level may be flipped horizontally or vertically.
+
+  ----            0 boulder
+  |..|  --------- ^ hole
+  |..---->|.....| > starting position/downstairs
+  |.0..0..|.....| < upstairs
+  |0.-0.0.|.....| + door
+  |.....-.|..<..|
+  |.00000.|.....|
+  |0..|...|.....|
+ --.------|.....|
+ |..----------+--
+ |..^^^^^^^^^^.|
+ ---------------
+__NOTOC__
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+First, make your way into the middle and push the first boulder into a hole:
+
+  ----            '''B''' l
+  |..|  --------- '''K''' dddr*
+  |..----@|.....|
+  |.A..B..|.....|
+  |C.-D.E.|.....|
+  |.....-.|..<..|
+  |.FGHIJ.|.....|
+  |K..|...|.....|
+ --.------|.....|
+ |..----------+--
+ |..^^^^^^^^^^.|
+ ---------------
+
+Break into the top-left chamber to deal with the next boulder:
+
+  ----            '''A''' u
+  |..|  --------- '''C''' dddd ddrr*
+  |..---->|.....|
+  |.A.B...|.....|
+  |C.-D.E.|.....|
+  |.....-.|..<..|
+  |.FGHIJ.|.....|
+  |...|...|.....|
+ --.------|.....|
+ |..----------+--
+ |.@.^^^^^^^^^.|
+ ---------------
+
+Dealing with boulder '''B''' requires pushing boulder '''A''' back the other way:
+
+  ----            '''A''' dd
+  |..|  --------- '''B''' llld dddd ddrr r*
+  |.A---->|.....|
+  |...B...|.....|
+  |..-D.E.|.....|
+  |.....-.|..<..|
+  |.FGHIJ.|.....|
+  |...|...|.....|
+ --.------|.....|
+ |..----------+--
+ |..@.^^^^^^^^.|
+ ---------------
+
+The next few boulders can now be dealt with:
+
+  ----            '''A''' dl__ ___ dddd drrr r*
+  |..|  --------- '''D''' dlll ___ dddd drrr rr*
+  |..---->|.....| '''E''' lldl ll_ dddd drrr rrr*
+  |.......|.....|
+  |.A-D.E.|.....|
+  |.....-.|..<..|
+  |.FGHIJ.|.....|
+  |...|...|.....|
+ --.------|.....|
+ |..----------+--
+ |...@.^^^^^^^.|
+ ---------------
+
+The row formation of boulders can now be broken:
+
+  ----            '''G''' u
+  |..|  --------- '''F''' lddd drrr rrrr*
+  |..---->|.....| '''G''' lldd dddr rrrr rrr*
+  |.......|.....| '''I''' u
+  |..-....|.....| '''H''' llld dddr rrrr rrrr*
+  |.....-.|..<..| '''J''' llll lddd drrr rrrr rrr*
+  |.FGHIJ.|.....|
+  |...|...|.....|
+ --.------|.....|
+ |..----------+--
+ |......@.^^^^.|
+ ---------------
+
+The level is now complete.
+
+  ----
+  |..|  ---------
+  |..---->|.....|
+  |.......|.....|
+  |..-....|.....|
+  |....I-.|..<..|
+  |.......|.....|
+  |...|...|.....|
+ --.------|.....|
+ |..----------+--
+ |..........@..|
+ ---------------
+
+== Next level ==
+===UnNetHack===
+In UnNetHack, the stairs up leads to the final level of Sokoban:
+
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+
+===GruntHack===
+In GruntHack, the stairs up leads to the third level of Sokoban:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:GruntHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (GruntHack)]]}
+&&%s&& %s Sokoban Level 4e {148290 2022-10-02T03:38:59Z {4001279 Umbire the Phantom} note This is one of the new possible maps for the final level of [[Sokoban]] in [[GruntHack]], [[UnNetHack]], [[SlashTHEM]], and [[EvilHack]]. It has 22 boulders and 18 holes, leaving 4 spare boulders.
+
+The prizes and layout vary with each variant:
+
+* In UnNetHack, it may be flipped horizontally and/or [[Sokoban Level 4e (flipped vertically)|vertically]], like all Sokoban levels. The prize is a choice from one of the following, a [[bag of holding]], a [[cloak]] (of [[cloak of magic resistance|magic resistance]] or [[cloak of displacement|displacement]]) and an [[amulet]] (of [[amulet of reflection|reflection]], [[amulet of life saving|life saving]] or [[amulet of ESP|ESP]]).
+* In EvilHack, the choice is instead between a prize tool (a bag of holding or a [[magic marker]]), a prize armor (a [[helm of speed]] or a pair of [[gauntlets of protection]]), or a prize amulet (an amulet of reflection or [[amulet of magic resistance|magic resistance]]).
+
+     ----                      0 boulder
+     |..--                     ^ hole
+  ---|...--------------------- > starting position/downstairs
+  |..|.00^^^^^^^^^^^^^^^^^^..| + door
+ --...-.0-------------------.|
+ |.0.....0..0......|       |.|
+ |..|.0..-...----.-| ------|.|
+ --.|..--...|......|-|.....|.|
+  |.|--..--.|..|0..|.+.....|.|
+  |.| |....---0|.0.|-|.....|.|
+  |.|--..|..|.0..--|.+.....+.|
+ --.|..-.--.0....--|-|.....|--
+ |...0.0..0..-..0.||.+.....|
+ |...|..000-0..0..|--|.....|
+ ----|......0..|..|  -------
+     |..|..|..-|>.|
+     --------------
+
+== Strategy ==

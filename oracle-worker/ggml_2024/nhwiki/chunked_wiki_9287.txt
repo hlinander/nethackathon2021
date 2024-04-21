@@ -1,0 +1,1000 @@
+=== Elementalism ===
+{{encyclopedia|The study of the elements and elemental beings, including the risky art of summoning and binding such dangerous entities.}}
+
+== References ==
+<References />
+
+[[Category:SpliceHack]]}
+&&%s&& %s Scroll of cloning {145835 2022-05-02T07:10:53Z {4000978 Aximili} /* Messages */ typo {{scroll|name=cloning|cost=300|ink=15–29}}
+
+In [[SpliceHack]], the '''scroll of cloning''' is a [[scroll]] that can replicate an item in inventory.
+
+== Effects ==
+
+When read, a scroll of cloning will prompt you to select an item in your inventory to clone. A new item will appear in your inventory: usually identical to the item you selected.
+
+If the scroll is cursed, the cloned item will be cursed and have less charges or enchantment than the original. 
+
+Even if the scroll is not cursed, certain items will not be perfectly cloned:<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/read.c#L2173</ref>
+
+{|class="prettytable"
+!original
+!clone
+|-
+| [[Bell of Opening]] || [[bell]]
+|-
+| [[Candelabrum of Invocation]] || [[wax candle]]
+|-
+| [[Amulet of Yendor]] || [[Cheap plastic imitation of the Amulet of Yendor]]
+|-
+| [[Book of the Dead]] || [[spellbook of blank paper]]
+|-
+| [[artifact]] || the artifact's base type
+|-
+| [[wand of wishing]] || cancelled wand of wishing
+|-
+| [[magic marker]] with over 15 charges || magic marker with 15 charges
+|-
+| stackable item || a single item
+|}
+
+=== Confused reading ===
+If you read the scroll of cloning while [[confused]], the scroll will attempt to clone you.<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/read.c#L2170</ref> This is not guaranteed to succeed as of SpliceHack 1.1.0. It can work if you are polymorphed into a monster.
+
+Your clone might not be tame, even if the game lists it as tame.
+
+== Messages ==
+{{message|You have found a scroll of cloning!|You read the scroll of cloning.}}
+{{message|You clone yourself!|You read the scroll of cloning while confused. This does not guarantee the cloning succeeded.}}
+{{message|You realize that you have been a clone all along!|As above, while [[hallucination|hallucinating]].}}
+
+== References ==
+<References />
+
+[[Category:SpliceHack]]}
+&&%s&& %s Object materials (GruntHack) {149302 2022-12-12T10:44:45Z {4001279 Umbire the Phantom} adjust [[GruntHack]] is one of the many [[variant]]s with an [[object materials]] system. The object materials features distinct to GruntHack are described here.
+
+==List of material probabilities==
+{|class="wikitable"
+!Base objects
+!Converts to
+!Probability (%)
+|-
+|rowspan="9"|Iron non-dwarvish weapons, weapon-tools, and armor
+|Iron
+|80
+|-
+|Wood
+|5
+|-
+|Silver
+|5
+|-
+|Copper
+|3
+|-
+|Mithril
+|3
+|-
+|Gold
+|1
+|-
+|Bone
+|1
+|-
+|Glass
+|1
+|-
+|Plastic
+|1
+|-
+|rowspan="6"|Wooden non-elven non-dwarvish weapons, weapon-tools, armor, chests, and large boxes
+|Wood
+|80
+|-
+|Stone
+|10
+|-
+|Iron
+|5
+|-
+|Bone
+|3
+|-
+|Copper
+|1
+|-
+|Silver
+|1
+|-
+|rowspan="4"|Cloth or leather armor
+|Cloth
+|60
+|-
+|Leather
+|33
+|-
+|Paper
+|6
+|-
+|Flesh
+|1
+|-
+|rowspan="6"|Dwarvish armor: dwarvish helms, chain mails, cloaks, and roundshields; and weapons: dwarvish spears, short swords, and mattocks
+|Iron
+|85
+|-
+|Mithril
+|10
+|-
+|Copper
+|2
+|-
+|Silver
+|1
+|-
+|Gold
+|1
+|-
+|Platinum
+|1
+|-
+|rowspan="5"|Elven weapons and elven shields
+|Wood
+|80
+|-
+|Copper
+|10
+|-
+|Mithril
+|5
+|-
+|Silver
+|3
+|-
+|Gold
+|2
+|-
+|rowspan="2"|Elven chain mails and helms
+|Copper
+|80
+|-
+|Mithril
+|20
+|}
+
+==Weights of different materials==
+When calculating an object's base weight, its weight is multiplied by a factor of <code>current material multiplier / base object material multiplier</code>, where the multipliers are:
+
+{|class="wikitable"
+!Material
+!Multiplier
+|-
+|Liquid
+|1
+|-
+|Wax
+|1
+|-
+|Veggy
+|1
+|-
+|Flesh
+|1
+|-
+|Paper
+|1
+|-
+|Cloth
+|2
+|-
+|Leather
+|3
+|-
+|Wood
+|4
+|-
+|Bone
+|5
+|-
+|Dragonhide
+|2
+|-
+|Iron
+|12
+|-
+|Metal
+|12
+|-
+|Copper
+|10
+|-
+|Silver
+|12
+|-
+|Gold
+|14
+|-
+|Platinum
+|10
+|-
+|Mithril
+|6
+|-
+|Plastic
+|3
+|-
+|Glass
+|5
+|-
+|Gemstone
+|16
+|-
+|Mineral
+|14
+|}
+
+==Material AC==
+When calculating a piece of armor's total AC, a material bonus is calculated, which is usually <code>current material AC - base armor material AC</code>. If this material bonus is negative, it will decrease the base AC of the armor, to a minimum of 0. Thus, higher material AC is better. The material AC values are:
+
+{|class="wikitable"
+!Material
+!Material AC
+|-
+|Liquid
+| -5
+|-
+|Wax
+| -4
+|-
+|Veggy
+| -4
+|-
+|Flesh
+| -2
+|-
+|Paper
+| -4
+|-
+|Cloth
+| -3
+|-
+|Leather
+| -2
+|-
+|Wood
+| -1
+|-
+|Bone
+| +1
+|-
+|Dragonhide
+| +5
+|-
+|Iron
+|0
+|-
+|Metal
+|0
+|-
+|Copper
+| -1
+|-
+|Silver
+|0
+|-
+|Gold
+| -2
+|-
+|Platinum
+| -1
+|-
+|Mithril
+|0
+|-
+|Plastic
+| -2
+|-
+|Glass
+|0
+|-
+|Gemstone
+| +2
+|-
+|Mineral
+| +3
+|}
+
+==Material cost==
+When calculating the base cost of an object, the cost is multiplied by a factor of <code>current material cost multiplier / base object material cost multiplier</code>. The multipliers are:
+
+{|class="wikitable"
+!Material
+!Multiplier
+|-
+|Liquid
+|1
+|-
+|Wax
+|1
+|-
+|Veggy
+|1
+|-
+|Flesh
+|3
+|-
+|Paper
+|2
+|-
+|Cloth
+|3
+|-
+|Leather
+|5
+|-
+|Wood
+|8
+|-
+|Bone
+|20
+|-
+|Dragonhide
+|200
+|-
+|Iron
+|10
+|-
+|Metal
+|10
+|-
+|Copper
+|10
+|-
+|Silver
+|30
+|-
+|Gold
+|30
+|-
+|Platinum
+|30
+|-
+|Mithril
+|32
+|-
+|Plastic
+|10
+|-
+|Glass
+|20
+|-
+|Gemstone
+|500
+|-
+|Mineral
+|10
+|}
+{{variant-343}}
+[[Category:Object materials]]
+[[Category:GruntHack]]}
+&&%s&& %s Category:Object materials {145830 2022-05-02T06:49:09Z {4000978 Aximili} Created page with "This category contains articles about [[Object materials]] systems in [[variant]]s of NetHack.  [[Category:Materials]]" This category contains articles about [[Object materials]] systems in [[variant]]s of NetHack.
+
+[[Category:Materials]]}
+&&%s&& %s Object materials (xNetHack) {145831 2022-05-02T06:55:17Z {4000978 Aximili} Created page with "In [[xNetHack]], the [[object materials]] system affects far more items than in the original patch, and uses more complex lists of possible materials for each type of object...." In [[xNetHack]], the [[object materials]] system affects far more items than in the original patch, and uses more complex lists of possible materials for each type of object. Certain items are renamed due to having a material-specific name; in practice, this generally takes the form of removing the material from the name (e.g. [[silver saber]] ➡ saber).
+
+==List of materials and behavior==
+{|class="wikitable
+!Material !! Erodeability !! Effects
+|-
+|Glass ||  || Always shatters when thrown, and occasionally shatters when used in melee or as armor. However, it is possible to shatterproof glass weapons and armor via the normal methods of erodeproofing, such as confused scrolls of enchant weapon. Bladed glass weapons have a +3 damage bonus. Glass helms offer metal-like protection against falling objects, but may shatter if hit by a heavy object. Glass body armor may also shatter if hit by a heavy thrown object.
+|-
+|Silver || Corrode || Bonus damage to [[werecreature]]s, [[vampire]]s, [[shade]]s, and [[major demon]]s.
+|-
+|Gold || ||rowspan=2| Blunt weapons made of these have a +2 damage bonus.
+|-
+|Platinum || 
+|-
+|Stone || || Blunt stone weapons have a +1 damage bonus.
+|-
+|Plastic || Burn || Plastic weapons have a &minus;2 damage penalty.
+|-
+|Paper || Burn, rot || Paper weapons have a &minus;2 damage penalty.
+|-
+|Wood || Burn, rot || Wooden bladed weapons have a &minus;1 damage penalty. Wooden helms offer metal-like protection against falling objects.
+|-
+|Mithril || || Mithril body armor always grants at least MC2.
+|-
+|Bone || Burn || Can hit shades, bypassing their usual immunity to physical attacks. Positively enchanted bone armor will intercept a level drain that hits you, instead draining a point of enchantment from the armor. Bone helms offer metal-like protection against falling objects.
+|-
+|Iron || Rust, corrode || Bonus damage to [[Elf (monster attribute)|elves]], [[nymph]]s, and [[minor demon|lesser demons]].
+|-
+| Metal || || Explicitly not iron; many items are changed to this so that elves can use them.
+|-
+|Copper || Corrode || Bonus damage to fungi and monsters with disease/decay attacks; copper armor can sometimes nullify falling [[Sickness|ill]] (stacking 20% chance with each piece of copper armor worn)
+|-
+|Cloth and leather || Burn, rot ||
+|}
+
+==List of material qualities==
+Below is a table that lists the density, price and AC modifiers of each material. To calculate the weight of an object, multiply its item type's weight by the density of its actual material and divide it by the density of its base material; the densities may be inexact due to deliberate changes for gameplay balance. (Assume that an object of a given material is made solidly of that material.) For example, chain mail has a base material of iron, so a set made of mithril will weigh {{frac|50|80}} = {{frac|5|8}} as much, whereas gold chain mail will weigh 1.5 times as much.
+
+The same is done to calculate price modifiers, e.g., a set of mithril chain mail costs {{frac|50|10}} = 5 times as much as a regular one; note that most items made of their base material will weigh and cost the same as they did previously, i.e. the base prices and weights in the object's statblock were not changed.
+
+For calculating object AC bonuses, subtract the base material's AC from the actual material's AC and add the result to the armor's regular AC bonus. A floor of 0 is applied, as a poor material cannot make the set of armor worse than wearing no armor at all; if the armor is metal, its floor is 1 instead. The resulting value is then effectively the new "base" as far as [[erosion]] is concerned&mdash;for instance, an iron small shield will grant 2 points of AC instead of 1, but it will go down to 0 when it gets very rusty or thoroughly rusty, instead of bottoming out at 1.
+
+{|class="wikitable"
+! Material !! Density (arbitrary) || Price (zorkmids/aum) || AC 
+|-
+| Liquid     || 10  ||   1 || 0
+|-
+| Wax        || 15  ||   1 || 1
+|-
+| Vegetable  || 10  ||   1 || 1
+|-
+| Flesh      || 10  ||   3 || 3
+|-
+| Paper      || 5   ||   2 || 1
+|-
+| Cloth      || 10  ||   3 || 2
+|-
+| Leather    || 15  ||   5 || 3
+|-
+| Wood       || 30  ||   8 || 4
+|-
+| Bone       || 25  ||  20 || 4
+|-
+| Dragonhide || 20  || 200 || 10
+|-
+| Iron       || 80  ||  10 || 5
+|-
+| Metal      || 70  ||  10 || 5
+|-
+| Copper     || 85  ||  10 || 4
+|-
+| Silver     || 90  ||  30 || 5
+|-
+| Gold       || 120 ||  60 || 3
+|-
+| Platinum   || 120 ||  80 || 4
+|-
+| Mithril    || 50  ||  50 || 6
+|-
+| Plastic    || 20  ||   3 || 3
+|-
+| Glass      || 60  ||  20 || 5
+|-
+| Gemstone   || 55  || 500 || 7
+|-
+| Mineral    || 70  ||  10 || 6
+|}
+
+==Artifact changes==
+Artifacts are always made of one specific material, and some have had their default base materials changed from vanilla:
+
+* [[Sunsword]] (iron ➡ gold)
+* The [[Platinum Yendorian Express Card]] (plastic ➡ platinum)
+* [[Sting]] (wood ➡ copper)
+* [[Orcrist]] (wood ➡ copper)
+* [[Stormbringer]] (iron ➡ metal)
+* [[Magicbane]] (iron ➡ metal)
+
+Grayswandir, Werebane, and Demonbane are all silver as usual, but the saber's base material is no longer silver by default.
+
+Wished-for objects can only have their object material specified in wizard mode, and will otherwise have the normal base material they generate with.
+
+==Golems==
+Specific golems - gold, paper, leather, iron, glass, wood - may drop items made of their respective material rather than their regular drops. This has some restrictions for balance: potions, scrolls and spellbooks will never be generated from glass and paper golems, but wands are fair game.
+
+==Material hatred==
+In xNetHack, silver-hating code has been generalized so that it can be applied to any group of monster types for any specific material. Silver hatred itself works the exact same as it does in vanilla, with silver items dealing d20 damage to werecreatures, vampires and major demons, and silver items cannot be handled by any such monster, including by a silver-hating player.
+
+The other materials operate according to the rules outlined below:
+
+* Monsters making contact with an object made of their hated material take d6 damage. This is reduced to d3 for players handling such an object.
+* In the player's case, the object can still be handled; due to a vanilla bug the player can always pick up an object made of a hated material with no harmful effect.
+* Monsters will not wear objects that are made of a material they hate.
+* If you wield something made of hated material while wearing gloves, or wear body armor made of hated material while wearing a shirt, this does not count as touching them and you will not take damage.
+
+Elves (including elvish players), nymphs, and lesser demons hate 'cold iron', which applies to all iron in the game; this does not apply to undead variants of iron-hating monster (e.g. elf zombies). Fungi and monsters that use disease or decay attacks, including [[Pestilence]], hate copper.
+
+Elvish players in particular benefit from much of the above rules, which include common-sense additions to prevent too-frequent direct contact with iron. All elven weapons, including Sting and Orcrist, now have a base material of copper instead of wood; all iron items in a role's starting inventory will be made of copper for elves. Additionally, some items' base materials have been tweaked to make certain artifacts and objects in general safer for elves to handle:
+* Runeswords (including Stormbringer) are now metal.
+* Athames (including Magicbane) are now metal.
+* All amulets, including the Eye of the Aethiopica, are now metal.
+* Most rings that were iron - save for the [[randomized appearance]]s "iron ring" and "steel ring" - are now metal.
+
+==Messages==
+{{message|The [monster] flinches at the touch of [material]!<br>The [material] broadsword hurts to touch!}}
+
+[[Category:Object materials]]
+[[Category:xNetHack]]}
+&&%s&& %s Object materials (EvilHack) {145832 2022-05-02T06:57:39Z {4000978 Aximili} Created page with "[[EvilHack]]'s implementation of [[object materials]] uses modified code taken from [[Object materials (xNetHack)|xNetHack's implementation]]. As with [[xNetHack]], an object'..." [[EvilHack]]'s implementation of [[object materials]] uses modified code taken from [[Object materials (xNetHack)|xNetHack's implementation]]. As with [[xNetHack]], an object's material affects its weight, its cost in a shop, how much protection it can grant as armor, how damage it delivers as a weapon, and what types of damage and decay it is subject to (if any). Material hatred is retained and expanded on as well. In addition, various material types will further affect spellcasting failure percentage, as well as [[magic cancellation]] rating. 
+
+In EvilHack, the material type of a desired item can be chosen if the category of object allows for it. Artifacts are the exception, as are a few other items. 
+
+==List of material qualities==
+In the below table, iron is the baseline on which every other material is based. Density is an arbitrary value, as is cost - e.g., an item made of iron weighs X amount, while the same item made of cloth would be one-eighth its weight; an item made of iron costs X amount, while the same item made from gemstone will cost 50 times that amount. For armor class, a poor material can never make the wearer's AC worse if it's in an undamaged state.
+
+{|class="wikitable
+!Material !! Density !! AC (as armor) !! Damage (as weapon) !! Relative cost !! Erosion type !! Notes
+|-
+|Liquid     ||  10 ||  0 ||                                ||   1 ||              ||
+|-
+|Wax        ||  15 ||  1 ||                                ||   1 ||              ||
+|-
+|Veggy      ||  10 ||  1 ||                                ||   1 ||              ||
+|-
+|Flesh      ||  10 ||  3 ||                                ||   3 ||              ||
+|-
+|Paper      ||   5 ||  1 || &minus;2 damage penalty (all)  ||   2 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Cloth      ||  10 ||  2 ||                                ||   3 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Leather    ||  15 ||  3 ||                                ||   5 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Wood       ||  30 ||  4 || &minus;1 damage penalty (slash)||   8 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Bone       ||  25 ||  5 ||                                ||  20 || burn         || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object), grants [[magic cancellation]] level 3 (MC3) for orcs when worn as body armor
+|-
+|Dragonhide ||  20 ||  8 ||                                || 200 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor' 
+|-
+|Iron       ||  80 ||  5 ||                                ||  10 || corrode, rust|| can be made rustproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object), bonus damage against elves, player as an elf cannot heal if iron armor or weapon touches their skin
+|-
+|Metal      ||  75 ||  5 || +1 damage bonus                ||  15 || deteriorate  || referred to as 'steel', inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor'
+|-
+|Copper     ||  85 ||  4 ||                                ||  10 || corrode      || can be made corrodeproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Silver     ||  90 ||  5 ||                                ||  30 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor', bonus damage against demons, werefoo, vampires and shades
+|-
+|Gold       || 120 ||  3 || +1 damage bonus (whack)        ||  60 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor'
+|-
+|Platinum   || 120 ||  4 || +1 damage bonus (whack)        ||  80 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor'
+|-
+|Mithril    ||  30 ||  6 || +2 damage bonus (slash, pierce)||  50 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor', grants [[magic cancellation]] level 3 (MC3) for elves when worn as body armor (MC2 for all other races), bonus damage against orcs, player as an orc cannot heal if mithril armor or weapon touches their skin
+|-
+|Plastic    ||  20 ||  3 || &minus;2 damage penalty (all)  ||  10 || burn         || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Glass      ||  60 ||  5 || +3 damage bonus (slash, pierce)||  20 || fracture     || can be made shatterproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Gemstone   ||  55 ||  7 || +3 damage bonus (slash, pierce)|| 500 ||              || referred to as 'crystal', immune to erosion
+|-
+|Mineral    ||  70 ||  6 || +2 damage bonus (slash, whack) ||  10 || deteriorate  || referred to as 'stone', inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor', grants [[magic cancellation]] level 3 (MC3) for orcs when worn as body armor
+|}
+
+== Material percentages ==
+As in GruntHack, all objects have a probability of generating with a given set of materials; this also limits what object materials can be applied to items you wish for (e.g., wishing for dragonhide plate mail won't work, as plate mail base material is iron or metal).
+
+'''Default base type iron or steel:'''
+* 65% its base material
+* 10% steel
+*  5% bone
+*  5% wood
+*  4% each silver or copper
+*  3% mithril
+*  1% each gold, glass, platinum or stone
+
+'''Default base type wood:'''
+* 80% wood
+*  8% stone
+*  4% iron
+*  2% each bone, steel or mithril
+*  1% each silver or copper
+
+'''Default base type cloth:'''
+* 80% cloth
+* 19% leather
+*  1% dragonhide
+
+'''Default base type leather:'''
+* 86% leather
+* 13% cloth
+*  1% dragonhide
+
+'''Armor of dwarvish make (minus cloth items):'''
+* 60% iron
+* 20% steel
+* 15% mithril
+*  3% silver
+*  1% each gold or platinum
+
+'''Weapons of dwarvish make:'''
+* 50% iron
+* 25% steel
+* 20% mithril
+*  5% gemstone
+
+'''Armor and weapons of elven make (except cloth items):'''
+* 60% its base material
+* 20% wood
+* 10% copper
+*  5% mithril
+*  3% silver
+*  2% gold
+
+'''Armor and weapons of orcish make (minus cloth items):'''
+* 65% iron
+* 25% bone
+* 10% stone
+
+'''Reflectable objects (shields of reflection and amulets):'''
+* 50% its base material
+* 20% silver
+* 15% gold
+*  5% mithril
+*  4% each copper or steel
+*  2% platinum
+
+'''Most bows:'''
+* 70% wood
+*  7% iron
+*  7% bone
+*  6% mithril
+*  2% each silver or copper
+*  1% gold
+
+'''Horns:'''
+* 70% bone
+* 10% copper
+*  8% mithril
+*  5% each wood or silver
+*  2% gold
+
+[[Category:Object materials]]
+[[Category:EvilHack]]}
+&&%s&& %s Object materials (dNetHack) {145833 2022-05-02T07:01:55Z {4000978 Aximili} Created page with "[[dNetHack]] is one of several [[variant]]s with an [[object materials]] system. This means most (but not all) weapons and armor can come in varying different materials. Armor..." [[dNetHack]] is one of several [[variant]]s with an [[object materials]] system. This means most (but not all) weapons and armor can come in varying different materials. Armor is also differentiated by size and body plan, requiring even more consideration for what a given player should seek out. Like other variants, the material of an item determines its weight (mithril equipment is very light, gold is heavy) and whether they deal bonus damage against certain creatures (iron weapons deal bonus damage against iron haters, silver weapons deal bonus damage against silver haters).
+
+==List of weight multipliers==
+{| class="prettytable striped"
+|-
+|Liquid
+|1.0
+|-
+|Wax
+|1.5
+|-
+|Veggy (straw)
+|1.0 
+|-
+|Flesh
+|1.0
+|-
+|Paper
+|1.0
+|-
+|Cloth
+|1.0
+|-
+|Leather
+|1.5
+|-
+|Wood
+|3.0
+|-
+|Bone
+|2.5
+|-
+|Shell
+|2.5
+|-
+|Dragon hide
+|3.5
+|-
+|Iron
+|8.0
+|-
+|Metallic
+|7.0
+|-
+|Bronze
+|8.0
+|-
+|Silver
+|9.0
+|-
+|Gold
+|12.0
+|-
+|Platinum
+|12.0
+|-
+|Mithril
+|4.0
+|-
+|Plastic
+|2.0
+|-
+|Glass
+|6.0
+|-
+|Gemstone
+|5.5
+|-
+|Mineral
+|5.0
+|-
+|Obsidian
+|6.0
+|-
+|Salt
+|6.0
+|-
+|Shadow-steelv(edderkop bolts, droven armor)
+|3.0
+|-
+|}
+
+==Artifact materials==
+Artifacts are naturally generated with a specific material and size, which may be iron, silver, mithril, and more. Obtaining Excalibur by dipping in a fountain will always have its material be that of the dipped long sword, and other nameable artifacts work the same way.
+
+[[Category:Object materials]]
+[[Category:dNethack]]}
+&&%s&& %s High cleric {145849 2022-05-02T20:26:26Z {4001483 Cathartes} 3.7 name #redirect[[high priest]]}
+&&%s&& %s Cleric (player monster) {145850 2022-05-02T20:27:05Z {4001483 Cathartes} 3.7 name #redirect [[priest (player monster)]]}
+&&%s&& %s Ogre leader {145851 2022-05-02T20:28:04Z {4001483 Cathartes} 3.7 name #redirect [[ogre lord]]}
+&&%s&& %s Ogre tyrant {145852 2022-05-02T20:28:16Z {4001483 Cathartes} 3.7 name #redirect [[ogre king]]}
+&&%s&& %s Elf-noble {145853 2022-05-02T20:29:06Z {4001483 Cathartes} 3.7 name #redirect [[elf-lord]]}
+&&%s&& %s Elven monarch {145854 2022-05-02T20:29:29Z {4001483 Cathartes} 3.7 name #redirect [[elvenking]]}
+&&%s&& %s Cave dweller (player monster) {145855 2022-05-02T20:32:14Z {4001483 Cathartes} 3.7 name #redirect [[caveman (player monster)]]}
+&&%s&& %s Dwarf ruler {145856 2022-05-02T20:32:27Z {4001483 Cathartes} 3.7 name #redirect [[dwarf (monster)]]}
+&&%s&& %s Object materials (SpliceHack) {149397 2022-12-15T19:30:04Z {4001279 Umbire the Phantom} didn't really need to cite literally everything... [[SpliceHack]] and [[SpliceHack-Rewrite]] are among the many [[variant]]s with an [[object materials]] system, allowing items of the same type to be made of many different [[material]]s<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/include/objclass.h#L12</ref> - for example, [[skeleton key]]s can occur in [[iron]], [[plastic]] and [[mithril]] forms among others.
+
+==Material properties==
+As with most object properties systems, the materials available to objects in SpliceHack have their [[weight]] and [[AC]] adjusted relative to already-existing materials such as iron, with bonuses and penalties to AC and damage depending on the material of the weapon or armor. Different materials are also subject to different types of erosion, while some are inherently proofed against erosion; some materials may be [[organic]], [[metallic]], or neither, and materials considered [[flimsy]] in vanilla ''NetHack'' remain unchanged in SpliceHack.<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/decl.c#L107-L114</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/mkobj.c#L1538</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/mkobj.c#L1667</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/weapon.c#L62-L63</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/weapon.c#L510-L546</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/include/objclass.h#L93-L97</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/mkobj.c#L1960-L1983</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/include/objclass.h#L87-L89</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/include/obj.h#L390-L391</ref>
+
+Some materials have a different name in-game than in the source code.
+
+{|class="wikitable sortable"
+! Id
+! Material
+! Name
+! Density
+! AC
+! Damage
+! Erosion Type
+! Category
+|-
+|  0 || undefined      || mysterious ||   ? ||  ? ||                      ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic 
+|-
+|  1 || [[liquid]]     ||            ||  10 ||  0 ||                      ||                                             ||style="background-color:lightgreen"| organic
+|-
+|  2 || [[wax]]        ||            ||  15 ||  1 ||                      ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic
+|-
+|  3 || [[veggy]]      || organic    ||  10 ||  1 ||                      ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic
+|-
+|  4 || [[flesh]]      ||            ||  10 ||  3 ||                      ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic
+|-
+|  5 || [[paper]]      ||            ||   5 ||  1 ||                   -2 ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic
+|-
+|  6 || [[cloth]]      ||            ||  10 ||  2 ||                      ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic
+|-
+|  7 || [[leather]]    ||            ||  15 ||  3 ||                      ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic
+|-
+|  8 || [[wood]]       ||            ||  30 ||  4 ||        -1 for blades ||style="background-color:#ffbf00"| burn, rot  ||style="background-color:lightgreen"| organic
+|-
+|  9 || [[bone]]       ||            ||  25 ||  4 ||                      ||                                             ||
+|-
+| 10 || [[dragon hide]]||            ||  20 || 10 ||                      ||                                             ||
+|-
+| 11 || [[iron]]       ||            ||  80 ||  5 ||                      ||style="background-color:pink"| corrode, rust ||style="background-color:#A8A8A8"| metallic
+|-
+| 12 || [[metal]]      ||            ||  70 ||  5 ||                      ||                                             ||style="background-color:#A8A8A8"| metallic
+|-
+| 13 || [[copper]]     ||            ||  85 ||  4 ||                      ||style="background-color:pink"| corrode       ||style="background-color:#A8A8A8"| metallic
+|-
+| 14 || [[silver]]     ||            ||  90 ||  5 ||                      ||                                             ||style="background-color:#A8A8A8"| metallic
+|-
+| 15 || [[gold]]       ||            || 120 ||  3 || +2 for blunt weapons ||                                             ||style="background-color:#A8A8A8"| metallic
+|-
+| 16 || [[platinum]]   ||            || 120 ||  4 || +2 for blunt weapons ||                                             ||style="background-color:#A8A8A8"| metallic
+|-
+| 17 || [[adamantine]] ||            ||  60 ||  7 || +3 for sharp weapons ||                                             ||style="background-color:#A8A8A8"| metallic
+|-
+| 18 || [[cold iron]]  ||            ||  80 ||  5 ||                      ||style="background-color:pink"| rust          ||style="background-color:#A8A8A8"| metallic
+|-
+| 19 || [[mithril]]    ||            ||  50 ||  6 ||                      ||                                             ||style="background-color:#A8A8A8"| metallic
+|-
+| 20 || [[orichalcum]] ||            ||  90 ||  6 ||                      ||                                             ||
+|-
+| 21 || [[plastic]]    ||            ||  20 ||  3 ||                   -2 ||style="background-color:#ffbf00"| burn       ||
+|-
+| 22 || slime      || [[gelatinous]] ||  50 ||  3 ||                   -4 ||                                             ||
+|-
+| 23 || [[glass]]      ||            ||  60 ||  5 || +3 for sharp weapons ||                                             ||
+|-
+| 24 || [[gemstone]]   || crystal    ||  55 ||  7 || +3 for sharp weapons ||                                             ||
+|-
+| 25 || shadow     || [[shadeweave]] ||   1 ||  3 ||                      ||                                             ||
+|-
+| 26 || [[mineral]]    || stone      ||  70 ||  6 || +1 for blunt weapons ||                                             ||
+|}
+
+==Materials by percentage==
+The tables in this section show the probabilities of items being generated as a different material than normal.<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/mkobj.c#L3194-L3443</ref>
+
+The table immediately below applies to most [[weapon]]s, [[weapon-tool]]s and [[armor]]. [[Chest]]s, [[large box]]es and [[mask]]s also count as "normally wooden", while [[skeleton key]]s, [[lock pick]]s and [[tin opener]]s count as "normally metal".
+{|class="wikitable sortable"
+! Material
+! Normally iron or metal
+! Normally wooden
+! Normally cloth
+! Normally leather
+|-
+|keep default ||  74.0 ||       ||       ||       
+|-
+|wax          ||   0.1 ||   0.1 ||   0.1 ||   0.1 
+|-
+|paper        ||   0.1 ||   1.0 ||   2.7 ||   1.0 
+|-
+|cloth        ||       ||       ||  79.9 ||  17.0 
+|-
+|leather      ||       ||       ||  10.0 ||  74.7 
+|-
+|wood         ||   5.0 ||  78.8 ||       ||       
+|-
+|bone         ||   1.0 ||   3.0 ||       ||       
+|-
+|iron         ||   4.9 ||   5.0 ||       ||       
+|-
+|copper       ||   3.0 ||   1.0 ||       ||       
+|-
+|silver       ||   5.0 ||   1.0 ||       ||       
+|-
+|gold         ||   1.0 ||       ||       ||       
+|-
+|adamantine   ||   0.1 ||       ||       ||       
+|-
+|cold iron    ||   0.1 ||       ||       ||       
+|-
+|mithril      ||   3.0 ||       ||       ||       
+|-
+|orichalcum   ||   0.1 ||       ||       ||       
+|-
+|plastic      ||   0.8 ||       ||   7.0 ||   6.9 
+|-
+|slime        ||   0.1 ||   0.1 ||   0.1 ||   0.1 
+|-
+|glass        ||   1.0 ||       ||       ||       
+|-
+|gemstone     ||   0.1 ||       ||       ||       
+|-
+|shadow       ||   0.1 ||       ||   0.2 ||   0.2 
+|-
+|mineral      ||   0.5 ||  10.0 ||       ||       
+|}
+
+In the following table, "shiny" items include the [[shield of reflection]], [[resonant shield]], [[ornate mace]], [[chakram]], and most [[amulet]]s. "Resonant" items are the [[bugle]], [[lantern]], [[oil lamp]], [[magic lamp]], [[magic whistle]], [[flute]], [[magic flute]], [[harp]], [[magic harp]] and [[lute]].
+{|class="wikitable sortable"
+! Material
+! shiny
+! resonant
+|-
+|keep default ||       ||  54.3 
+|-
+|iron         ||  12.0 ||   5.0 
+|-
+|metal        ||   5.0 ||       
+|-
+|copper       ||  22.0 ||  25.0 
+|-
+|silver       ||  29.5 ||   6.0 
+|-
+|gold         ||  10.0 ||   3.0 
+|-
+|platinum     ||   1.8 ||   1.0 
+|-
+|adamantine   ||   0.5 ||   0.1 
+|-
+|mithril      ||   7.0 ||   5.0 
+|-
+|orichalcum   ||   0.1 ||   0.1 
+|-
+|slime        ||   0.1 ||       
+|-
+|glass        ||  12.0 ||       
+|-
+|gemstone     ||       ||   0.5 
+|}
+
+The following table applies to all [[Dwarf#Dwarvish_items|dwarven item]]s and [[Elf_(starting_race)#Elven_items|elven items]] except the [[elven leather helm|elven helm]] (and [[lembas wafer]]).
+{|class="wikitable sortable"
+! Material
+! dwarven
+! elven
+<!-- orcish -->
+|-
+|wood         ||       ||  79.9 
+|-
+|iron         ||  84.5 ||       
+|-
+|copper       ||   2.0 ||  10.0 
+|-
+|silver       ||   1.0 ||   3.0 
+|-
+|gold         ||   1.0 ||   2.0 
+|-
+|platinum     ||   0.9 ||       
+|-
+|adamantine   ||   0.2 ||       
+|-
+|mithril      ||   9.8 ||   5.0 
+|-
+|orichalcum   ||   0.1 ||       
+|-
+|gemstone     ||   0.5 ||       
+|-
+|shadow       ||       ||   0.1 
+|}
+
+The following table has a couple of exceptions for specific groups of items.
+{|class="wikitable sortable"
+! Material
+! [[firearm]]s
+! [[horn]]s
+! [[elven leather helm|elven helm]]
+! [[bow]]s
+|-
+|leather      ||       ||       ||  70.0 ||       
+|-
+|wood         ||       ||   5.0 ||   9.9 ||  75.0 
+|-
+|bone         ||       ||  68.5 ||       ||   4.0 
+|-
+|iron         ||  64.5 ||       ||       ||   7.0 
+|-
+|copper       ||  12.5 ||  10.0 ||  20.0 ||   4.0 
+|-
+|silver       ||  12.5 ||   5.0 ||       ||   2.0 
+|-
+|gold         ||   1.0 ||   1.5 ||       ||   1.0 
+|-
+|platinum     ||   1.0 ||       ||       ||      
+|-
+|adamantine   ||   0.5 ||   0.5 ||       ||       
+|-
+|mithril      ||   7.0 ||   8.0 ||       ||   5.0 
+|-
+|orichalcum   ||   1.0 ||   0.5 ||       ||       
+|-
+|plastic      ||       ||       ||       ||   2.0 
+|-
+|gemstone     ||       ||   0.5 ||       ||       
+|-
+|shadow       ||       ||   0.5 ||   0.1 ||           
+|}
+
+Finally, the [[bullwhip]], [[flaming lash]] and all items not categorized above are only generated in their base materials. This means all [[comestible]]s, [[potion]]s, [[scroll]]s and [[spellbook]]s are only available in their base materials.
+
+== Material hatred ==
+Certain monsters receive extra damage when attacked by specific materials.<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/mondata.c#L317</ref> <ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/mondata.c#L347</ref>
+{|class="wikitable sortable"
+! Material
+! Extra damage
+! Monster
+|-
+| silver || d20 || [[demon]]s, [[vampire]]s (even when shapeshifted), [[werecreature]]s, [[infernal (starting race)|infernal]] players
+|-
+| iron, cold iron || d20 || [[Elf_(monster_attribute)|elves]], [[nymph]]s, [[minor demon]]s, [[baobhan-sith]]
+|-
+| copper || d6 || [[fungi]], monsters with [[disease]] or [[sickness]] attacks
+|}
+
+== Changing materials ==
+Items can change materials through contact with a [[transmuter (SpliceHack)|transmuter]] or the reading of a [[scroll of change material]]. 
+
+== New materials ==
+
+=== Adamantine ===
+{{wikipedia|Adamant}}
+
+'''Adamantine''' is a new material in SpliceHack. It is a metal with higher weight and armor class than mithril. Edged weapons made of adamantine have a +3 damage bonus. It is probably based on the "adamant" and "adamantine" materials mentioned in Greek mythology and in Paradise Lost.
+{{clear}}
+
+=== Orichalcum ===
+{{wikipedia|Orichalcum}}
+
+'''Orichalcum''' is a new material in SpliceHack. It offers the same armor class as mithril but is heavier. It is mentioned in some ancient Greek writings, and is often associated with the lost city of Atlantis. The ancient legends and the above materials percentages would suggest that orichalcum is a metal: however, it is internally treated as non-metallic. 
+{{clear}}
+
+=== Shadeweave ===
+'''Shadeweave''' is a new material in SpliceHack. Shadeweave items are extremely lightweight.

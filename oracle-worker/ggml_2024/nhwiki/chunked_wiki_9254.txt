@@ -1,0 +1,1000 @@
+* Replayablilty/randomness is a priority design goal to ensure unpredictable outcomes and to keep the experience fresh.
+* Addressing bugs/balance issues will always be an ongoing process.
+* Player feedback/constructive criticism is welcome and encouraged.
+
+=== Special thanks ===
+From the variant author &ndash; a special thank you to community members Tangles, aosdict, AntiGulp, NCommander, jonadab, Demo, hothraxxa, jt, elenmirie, raisse, Grasshopper, ShivanHunter, Ogomt, riker, amateurhour, microlance, mobileuser, Tomsod, qt, various members of the [[DevTeam]], and everyone else who play tested and provided invaluable feedback and code fixes. EvilHack would not have progressed as far as it has without their help and constructive criticism.
+
+== Major changes ==
+{{float right|[[Image:Html dumplog evilhack.png|thumb|320px|Example of HTML dumplog output.]]}}
+Below is a quick list of the more obvious or significant changes in EvilHack compared to vanilla NetHack:
+* Random dungeon levels are more varied and distinct.
+* [[Gehennom]] is no longer a series of mazes, but are mines-style levels with lava. Areas such as the [[Sanctum]] and the entrance to the Wizard's Tower have also been adjusted, and [[Cerberus]] now guards the entrance to Gehennom.
+* [[Vlad the Impaler]]'s tower has undergone a complete revamp.
+* A completely new and optional side branch has been created, known as the [[Ice Queen's Realm]], which features new terrain and new monsters that will not spawn anywhere else within the game.
+* A second completely new and optional side branch has been added, known as [[Vecna's Domain]] - [[Vecna]] is an uber-powerful [[Lich]] that is the source of power for all other liches. Because of this, all types of liches (including alhoons) cannot be genocided until Vecna is destroyed.
+* A third new and optional side branch geared towards beginning/low level players, known as [[Goblin Town]] - the [[Goblin King]] rules over Goblin Town, and he controls access to [[Mine Town]] and [[Mines' End]]. He must be defeated to gain physical access to either. 
+* The first four Planes levels are randomized and appear in a different order every game.
+* Additional variants of the Castle, Fort Ludios, Sokoban, Mine Town and Mines End have been added.
+* You cannot use [[Elbereth]] until you've learned it in-game (via rumor, reading it, etc).
+* [[Object materials]] &ndash; many objects and items can spawn made from something other than its base material.
+* [[Object properties]] &ndash; various weapons and armor are sometimes created with magical properties.
+* The [[mysterious force]] has been removed.
+* The [[Rogue level]] has been removed.
+* Some monsters ride other monsters as steeds, namely [[The Riders]] at the endgame.
+* The Gnomish Mines can have rivers or sewers running through them.
+* The minimum experience level needed to start the quest has been changed from level 14 to level 10. However, there are consequences for starting too soon...
+* The Quest can be unlocked by killing the quest leader if you've made them angry.
+* Abusing your alignment can cause your quest leader to ask you to return the quest artifact.
+* [[Vlad the Impaler]] and [[Medusa]] have been... enhanced to a certain degree.
+* New player races: centaur, giant, hobbit, and illithid, replete with their own special abilities and restrictions.
+* New player roles: [[Convict]], [[Infidel]].
+* Several role&ndash;race combos have been added or unlocked.
+* Intrinsic resistances are no longer binary, but are percentages instead.
+* Reflection is not 100%; it can lessen the effects of an attack it reflects, but will never negate it.
+* The "shower of missiles" monster attack is not completely negated by magic resistance.
+* New artifact weapons (both normal and quest artifacts), and several tweaks to existing artifacts.
+* Players can [[twoweapon]] with an artifact in each hand, if those artifacts happen to get along with each other.
+* When sacrificing, your deity may gift you a regular piece of gear instead of an artifact.
+* The last room of [[Sokoban]] has more prize variety, with a catch...
+* Shopkeepers can be a variety of different races; your race versus theirs directly affects pricing.
+* Priests, soldiers, the watch, and player monsters can also be a variety of different races.
+* Several new objects that the player (and monsters) can use and interact with.
+* Intelligent monsters can use a whole new range of weapons and objects, either defensively or offensively.
+* Unicorn horns no longer cure attribute loss; they can now be wielded in one hand.
+* All [[dragon scales]] have secondary abilities (as do the source of those scales) when merged with regular armor.
+* [[Dragon scale mail]] has been removed, leaving dragon scales only. Players can now merge dragon scales onto regular body armor to create [[dragon-scaled]] armor.
+* A few new spells (some for the player, some for monsters) have been introduced.
+* [[Spellcasting]] while wearing body armor will negatively affect your spell success rate.
+* Spell levels have been adjusted; some higher-level spells are now at a lower level, and vice versa. 
+* Several new monsters have been added, and several existing monsters have been adjusted &ndash; some that used to be considered harmless may now be deadly.
+* The demon lords/princes encountered in [[Gehennom]], along with which lair they may appear in, has been completely randomized. Your experience in Gehennom can be a very different experience per game. 
+* [[Player monsters]] can be encountered throughout the game. They covet the [[Amulet of Yendor]] much the same as the Wizard of Yendor, and will try to steal it.
+* Any monster, should it get a hold of the Amulet of Yendor, can and will sacrifice it on an endgame altar.
+* The end of game [[dumplog]] can be output in HTML format along with the native default text output (created by [[User:Tangles]]).
+
+There are many more changes as well, but the above list will give you a good idea as to what to expect. More in-depth descriptions of various facets of EvilHack can be found below (and will probably be a work-in-progress for quite some time).
+
+== Game mechanics ==
+Several aspects of how the game functions have been altered for EvilHack, some minor, and some having a significant impact on how the game plays. Some of these changes will require players to re-think certain strategies that have worked for them in the past for vanilla NetHack.
+
+=== Elbereth ===
+The player cannot successfully engrave [[Elbereth]] until they have learned it in-game first. There is ample feedback given should the player attempt to engrave Elbereth and not be successful  because of not having learned it yet. There are several ways the player can 'learn' how to engrave Elbereth &ndash; reading it (from an already existing engraving, or from a rumor in a fortune cookie) or hearing it (consultation from the [[Oracle]], whispered to from various artifacts that give rumors). Because of this change, some of the [[Mines' End]] levels have a guaranteed engraving that the player can find and read. This plus the closets in [[Sokoban]] will most likely be the easiest/fastest way for the player to learn Elbereth. Conflict negates Elbereth.
+
+=== Scare Monster ===
+Several more creatures are immune to the effects of standing on a scroll of [[scare monster]] or other means of being frightened magically &ndash; from vanilla NetHack these include the [[Wizard of Yendor]], lawful [[minion]]s, [[Angel]]s, the [[Riders]], [[human]]s, [[shopkeeper]]s inside their shops, [[priest]]s inside their temples, and any [[unique]] monsters. EvilHack adds to this list &ndash; [[Archangel]]s, [[honey badger]]s, [[player monster]]s, and anything that is [[mindless]]. Any monsters affected by [[conflict]] are also immune.
+
+=== Reflection ===
+Reflection in EvilHack is partial, meaning that having reflection can minimize the effects of whatever it is that's being reflected, but will not negate it altogether. This currently only affects players, not monsters. Some examples: being hit by a wand of magic missile, some of the ray will reflect, but not all of it, and the player will take reduced damage. Or if hit by a wand of death, the ray is reflected, but the player will take some damage and will 'feel drained', losing a small amount of maximum hit points. Dragon [[breath]] behaves the same way, with only some of it being reflected and the damage dealt is reduced, with resistances factored in. Being hit by a black dragon's disintegration breath while not having disintegration resistance &ndash; its breath will be reflected, but the player will take some physical damage.
+
+Take note - the magic missile attack employed by [[Angels]], [[Yeenoghu]] and the [[Oracle]] is no longer negated via magic resistance (half-spell damage reduces its damage output), which means the player will still take damage from this attack type, even with reflection. This alone makes the [[Astral Plane]] a very dangerous level. The player should take steps to ensure they do not get surrounded by a group of angels while making their way to the correct [[high altar]].  
+
+=== Partial resistances ===
+Gaining [[intrinsic]] [[resistances]] from eating corpses is no longer binary (all or none), but is instead incremental, and how much resistance a player gets is based off of the corpses weight. Unlike vanilla NetHack, where there's a chance of maybe getting the intrinsic, the player will always gain partial resistances with every corpse consumed. The spread is 5% to 50% resistance gained per corpse &ndash; eating a killer bee corpse would confer 5% poison resistance, but eating a green dragon corpse would give 50% of the same. Also, if a corpse can offer multiple resistance, the player will receive all of them, so eating a flesh golem corpse would give an incremental resistance boost to fire/cold/shock/sleep/poison all at once. Tinning corpses 'remembers' its weight, so tinning a couple black dragon corpses is the safest way to get 100% disintegration resistance.
+
+Damage reduction from various attacks is determined by how much partial resistance the player has to it. For instance, having 50% cold resistance means the player will only take half-damage from any cold-based attack. Having 5% disintegration resistance will protect the player from being disintegrated completely, but they will take a substantial amount of physical damage. A note about poison [[instadeath]] &ndash; it can still occur if the player has less than 35% poison resistance, otherwise instead of an instadeath, they take a significant amount of physical damage based on how much poison resistance the player has.
+
+[[Intrinsics]] such as [[telepathy]], [[teleport control]] and [[teleportitis]] are still binary in nature and are not gained incrementally.
+
+Pets can also gain intrinsics from eating corpses &ndash; their method is still all or none and not incremental as it is for the player.
+
+=== Altar sacrificing ===
+[[Sacrificing]] for [[artifact]]s has been significantly changed in EvilHack &ndash; there is a chance that your [[deity]] will gift you a regular item instead of an artifact. The odds of being gifted an artifact go up as you increase in experience level. At experience level 4, there's a 10% chance of an artifact [[gift]], and the chances increment exponentially from there. By the time you reach experience level 26, if a gift were to be generated, and non-quest artifacts are still available, the chance is 100% of receiving an artifact.
+
+Should you receive a regular object instead of an artifact, it will either be a weapon or a piece of armor, and for primary [[spellcasting]] types (healer/priest/wizard/infidel), there's a chance of receiving a spellbook also. The armor or weapon received will always be blessed, enchanted, [[fixed]], and there is a 1 in 8 chance that a desirable [[object property]] will be added to that object. Care is taken to ensure that the object gifted is made of a [[material]] that will not harm you (elves won't receive anything made of iron, orcs won't receive anything made of mithril). There are also rules in place to make sure your deity doesn't give you something that you can't or wouldn't want to use (read: a wizard getting plate mail).
+
+Prayer timeout and the chances of receiving another gift are affected in the same way as if you had received an actual artifact.
+
+=== Wishing for artifacts ===
+Instead of being based off of how many artifacts exist in the game total (vanilla NetHack method), success is based off of how many artifacts the player has wished for (successful or not). Another significant difference, is that the odds are high that when an artifact is wished for, it comes with its owner, and the owner is none too happy about it. 
+
+The odds of getting the owner with your very first artifact wish if no other artifacts yet exist, is about 50/50. Any subsequent artifact wishes greatly increase the odds of getting the owner with the artifact. What type of artifact owner should one expect? That depends on what kind of artifact you wish for - if it's a quest artifact, you'll always get the quest leader associated with the quest that artifact is a part of (an exception is made if a Tourist wishes for the Master Key of Thievery, as the Master of Thieves is their quest nemesis). If you wish for a regular artifact, a player monster appears as its owner. Regardless of what type of owner shows up, they are of a high enough level to be taken seriously and will not be easy to defeat, plus the artifact you just wished for will be used by its owner against you. Make sure to be prepared to fight should you decide to make a wish for an artifact.
+
+Take note - various artifacts (Lifestealer, the Magic 8-ball, Butcher, the Bag of the Hesperides, the Eye of Vecna, the Hand of Vecna, the Sword of Kas, and the Wand of Orcus) can never be wished for, as all are meant to be guaranteed to appear at certain points in the game.
+
+=== Throne Wishes ===
+
+Wishes from thrones are much more rare.
+
+In vanilla ''NetHack'', if the player's luck was 0 or greater, they had a 7.5% chance of getting a wish from sitting on a throne - now it's closer to 1.5%. If the player doesn't get a wish, other good things can happen instead, including gaining permanent see invisible intrinsic. Once the player is granted a wish from a throne, the throne is guaranteed to disappear.
+
+=== Sokoban ===
+The only significant change to [[Sokoban]] in EvilHack is at the final level. All three closets in the Sokoban zoo have a prize behind each door, but you will not be able to tell exactly what that prize is until you pick it up. Once one door is opened, the other two doors disappear and are replaced with a section of wall, cutting off access to those closets. On the off chance more than one door is opened or destroyed and/or a monster has picked up and moved a Sokoban prize, once a prize is picked up or touched by you, the other two magically disappear. You can use a [[potion of object detection]], a [[crystal ball]], or the spell [[detect treasure]] to see what types of prizes are behind each door, but that will only show you what the object type is, not what it is specifically.
+
+There are two different items that can spawn behind each door, with a 50/50 chance of it being one item or the other. Those items are:
+* Sokoban prize armor &ndash; gauntlets of protection or a helm of speed.
+* Sokoban prize amulet &ndash; an amulet of reflection or an amulet of magic resistance.
+* Sokoban prize tool &ndash; a bag of holding or a [[magic marker]].
+
+Since magic markers will never spawn randomly in-game, Sokoban is potentially one of only two sources where a marker is guaranteed to be (the high priest in the [[Sanctum]] has the only other guaranteed magic marker).
+
+=== Gnomish Mines ===
+The [[Gnomish Mines]] now have a chance of rivers running through each level. The deeper you descend into the mines, the greater the chance of a river forming. The rivers that are created are comprised mostly of pools, but about a quarter of the water tiles created are shallow water instead, which you can walk over without fear of falling in or drowning. These rivers are infested with [[jellyfish]] and [[piranha]] (and sometimes [[water moccasin]]s and [[water troll]]s deeper down), which can be a significant hazard to a lower-level player with few hit points. The way that the rivers spawn is somewhat random, just as the mine layout is random. Depending on how the river is generated, you may have an easy time going from the upstairs to the downstairs, or you may find the river blocking easy passage to the next staircase. This will test ones ingenuity and resourcefulness, but there are several means available to navigate around or over these rivers.
+
+There is a roughly 50% chance that instead of a regular river being created, a river of raw sewage is generated instead. Sewage is much like shallow water, in that you can easily walk over it without falling in or drowning. However, sewage slows the player's movement, and giant cockroaches and giant leeches tend to hide in raw sewage.
+
+As of version 0.8.0, the [[Goblin King]] controls physical access to the downstairs into [[Mine Town]] and [[Mines' End]]. The player must defeat the Goblin King to remove the block on the stairs. There are magical means to circumvent restricted access to these areas. However, should the player find themselves deep in the mines between Mines' End and Mine Town without having defeated the Goblin King yet, they can travel up into and out of Mine Town to avoid being trapped.
+
+=== The Quest ===
+Various changes have been made to each role's [[Quest]] to make the experience more varied and interesting for the player.
+
+* The minimum experience level needed to be accepted for the quest has been lowered to 10 (from the default 14). However, should you accept the quest too soon, the monster spawn rate immediately doubles.
+* If you've made your [[quest leader]] angry for whatever reason, this no longer makes the game unwinnable. You can engage them in battle, and if you kill your quest leader, this unlocks the quest. You can then complete your quest as you normally would. Take heed, quest leaders are not weak and can prove formidable to a mid-level player. Also note that your deity isn't exactly thrilled with you killing off your quest leader. Your alignment record can still be in the positive, but if you try any [[helm of opposite alignment]] shenanigans when it comes time to sacrifice the [[Amulet of Yendor]] at the endgame... interesting (read: bad) things can happen.
+* Abusing your [[alignment]] can have a direct effect on how your quest ends. Once you've defeated the [[quest nemesis]] and returned with your [[quest artifact]] and the [[Bell of Opening]] and speak with your quest leader, there's a chance they may ask you to actually return the quest artifact as they originally alluded to when you first accepted the quest. Alignment abuse is tracked throughout the game &ndash; having your alignment negatively adjusted by one point also counts as one abuse point (this can be checked at any time via #conduct, and compared to vanilla, more feedback when abusing alignment is given). Unlike your [[alignment record]], which can be readjusted back into positive standing, your alignment abuse record is permanent.
+** Getting one abuse point means there's a 1 in 50 chance your quest leader will ask you to give up the quest artifact. Racking up more abuse points increases those odds, to the point where if you've accumulated 50 or more abuse points, it's virtually guaranteed your quest leader will demand you return the quest artifact. You have two options at this point &ndash; either hand over the quest artifact peacefully, or decline. Declining will anger your quest leader, and they will attack. Handing over the quest artifact peacefully will flag the quest as complete. Declining to turn over the quest artifact does not complete the quest &ndash; at some point your quest leader will need to be defeated before the quest is flagged as complete. Also, attempting to evade your quest leader (whether they are peaceful or hostile) will do you no good in the long run, as the Bell of Opening has been 'cursed', and the only way to lift the curse is to complete the quest. The Bell will not function for the [[invocation]] until this is done.
+** Alternative scenarios have been taken into account, such as if you angered your quest leader before even starting the quest and you killed them, you simply need to defeat your quest nemesis to flag the quest as complete. Conversely, if you've killed the quest nemesis and return, but somehow anger your quest leader before you speak to them, killing them also flags the quest as complete. Some peace of mind &ndash; if you've never abused your alignment, your quest leader will never ask you for the quest artifact.
+
+=== Gehennom ===
+[[Gehennom]] has been significantly revamped compared to the experience found in vanilla NetHack. Instead of tedious mazes, the player will traverse hellish looking caverns with lava rivers flowing around and through them. Access to Gehennom is guarded by [[Cerberus]] - he stands guard at the stairs leading down into Gehennom from the [[Valley of the Dead]], and he must be defeated before access to Gehennom is possible. Access to [[Vlad's tower]] is still found in Gehennom (between levels 34 and 42 inclusive), as is access to [[Vecna]]'s domain (very first level after leaving the Valley).
+
+The biggest change to Gehennom is the addition of lairs for some of the various [[demon]] lords and princes that exist. The demon bosses that appear, as well as the lair they may appear in, is randomized every game, which gives the endgame much more re-playability:
+
+* The player is guaranteed to encounter four demon bosses (Orcus plus three others).
+* [[Orcus]] is still found in [[Orcus Town]]. The other three demon boss lairs are divided into three tiers, with each tier randomly picking from a pool of maps to load. Some of these maps are brand new, while existing ones have been modified.
+* The map chosen does not determine the demon boss the player will encounter - the demon bosses are also split up into three tiers (four demon bosses per tier).
+* Each tier is progressively more difficult than the last:
+** First tier: [[Juiblex]], [[Baalzebub]], [[Geryon]], or (new demon lord) [[Baphomet]]
+** Second tier: [[Dispater]], [[Yeenoghu]], (new demon lords) [[Lolth]], or [[Mephistopheles]]
+** Third tier: [[Asmodeus]], [[Demogorgon]], [[Tiamat]], or (new demon prince) [[Graz'zt]]
+
+The only true maze-like level that remains in the game is the [[vibrating square]] level at the bottom of Gehennom.
+
+=== Monster spawn rates ===
+Monster spawn rates will start to increase as you reach various milestones within the game. Normally a new monster will spawn once every 70 turns or so. Here's how that changes:
+* Spawn rates increase to 2&times; of normal once you pass the [[castle]], if you become [[crowned]], or if you accept the [[quest]] before experience level 14.
+* Spawn rates increase to 3&times; of normal once you pass the first tier [[demon lord]] lair.
+* Spawn rates increase to 4&times; of normal once you pass the first [[wizard's tower]] level.
+* Spawn rates increase to 6&times; of normal once the [[Wizard of Yendor]] is killed.
+
+And finally, once you've performed the [[invocation]], all denizens of the dungeon are aware of what has happened, and the spawn rate increases to 8&times; of normal. Nasties will also start to spawn on each levels upstairs as you start to make your way back out of the dungeon with the [[Amulet of Yendor]].
+
+=== Twoweaponing ===
+[[Twoweaponing]] has been changed so that the weight of your offhand weapon combined with your skill in twoweaponing has a significant bearing on how successful you'll be in landing a hit. As you increase your skill in twoweaponing, heavier weapons become a viable option to use in your offhand without penalty. That penalty is &minus;30 to-hit, and you'll receive feedback stating that your offhand weapon is too heavy to wield successfully as you try to use it. Below is a listing of what weights and weapons are acceptable per your skill in twoweaponing:
+
+* Unskilled &ndash; maximum weight of offhand weapon is 20 aum (can use tridents, javelins, crysknives, daggers, unicorn horns, or anything lighter)
+* Basic &ndash; maximum weight of offhand weapon is 30 aum (can use short swords, spears, or a mace)
+* Skilled &ndash; maximum weight of offhand weapon is 40 aum (can use sabers or long swords)
+* Expert &ndash; maximum weight of offhand weapon is 70 aum (can offhand any one-handed weapon)
+
+If playing as a giant, or if wearing [[gauntlets of power]], the maximum weight of your offhand weapon can be 200 aum, meaning you can basically offhand any normal object. Bear in mind that object [[material]]s can alter an items base weight &ndash; at basic twoweaponing skill you could offhand a normal short sword without penalty, but not a silver short sword, as silver adds extra weight compared to iron (33 aum vs 30 aum). But at the same time, a mithril katana (15 aum) would be perfectly acceptable at the same skill level as mithril is much lighter than any other metal in the game. 
+
+=== Racial shopkeepers ===
+Shopkeepers are no longer limited to just one race (human) &ndash; they now have a wide range of races they can spawn as, and what they charge the player for goods sold (and what they agree to pay for items bought) can be affected by their race as well as the players' race. This makes price ID'ing much more dynamic, but also more difficult to predict. The different races that shopkeepers can be are [[human]], [[elf]], [[dwarf]], [[gnome]], [[orc]], [[giant]], [[centaur]], [[nymph]], and [[illithid]]. Below is a detailed matrix explaining the price adjustments the player can expect to see when dealing with various shopkeeper races.
+
+==== Price adjustment matrix ====
+{|class="wikitable"
+!colspan="2" rowspan="2"| !! colspan="10"|Shopkeeper's race
+|-
+! Human !! Elf !! Dwarf !! Orc !! Gnome !! Illithid !! Centaur !! Nymph !! Giant
+|-
+|rowspan="10"|Your race || Human ||  ||  ||  || &times;{{frac|4|3}} ||  || &times;10 || &times;{{frac|3|2}} ||  || &times;{{frac|4|3}}
+|-
+| Elf ||  || &times;{{frac|4|5}} || &times;{{frac|4|3}} || &times;3 ||  || &times;10 ||  ||  || 
+|-
+| Dwarf  ||  || &times;{{frac|4|3}} || &times;{{frac|3|4}} || &times;{{frac|5|3}} ||  || &times;10 || &times;{{frac|3|2}} ||  || &times;{{frac|3|2}}
+|-
+| Orc || &times;{{frac|4|3}} || &times;2 || &times;2 || &times;{{frac|2|3}} ||  || &times;10 || &times;{{frac|3|2}} ||  || 
+|-
+| Gnome || &times;{{frac|4|3}} ||  ||  ||  ||  || &times;10 || &times;{{frac|3|2}} ||  || &times;{{frac|4|3}}
+|-
+| Illithid ||  || &times;2 || &times;2 ||  ||  ||  || &times;{{frac|3|2}} ||  || &times;{{frac|4|3}}
+|-
+| Centaur || &times;{{frac|3|2}} ||  ||  ||  ||  || &times;10 || &times;{{frac|3|4}} ||  || 
+|-
+| Hobbit ||  ||  ||  || &times;3 ||  || &times;10 ||  ||  || &times;{{frac|4|3}}
+|-
+| Giant ||  ||  || &times;{{frac|3|2}} ||  ||  || &times;10 ||  ||  || &times;{{frac|3|4}}
+|-
+| Tortle ||  || &times;{{frac|4|3}} ||  || &times;{{frac|5|3}} ||  || &times;10 || &times;{{frac|3|2}} ||  || &times;{{frac|4|3}}
+|}
+
+Special notes: 
+* If the shopkeeper is of some other monster species not listed here, they behave as the Human column indicates.
+* Gnomish shopkeepers base their prices on your [[Intelligence]] with no regard for your race: &times;{{frac|3|2}} if your intelligence is less than or equal to 14, or &times;{{frac|4|3}} if it is greater than 14 but less than 18.
+* Nymph shopkeepers base their prices on your [[Charisma]] with no regard for your race: &times;{{frac|4|3}} if your charisma is 15 or higher and &times;{{frac|5|3}} otherwise.
+
+=== Other Changes ===
+* You can use #loot at your pet to both give and take away items from its inventory.
+* Wearing any kind of body armor will adversely affect your chances of successfully casting a spell &ndash; the higher the spell level, the greater the chance of failure. Primary spellcasting types (healers/priests/wizards/infidels) are only penalized on 4th level spells and higher &ndash; all other roles, the penalties affect all spell levels. The exception to this is [[crystal plate mail]], which does not adversely affect spellcasting in any way.
+* It is possible to dual-wield artifact weapons, however there are stipulations &ndash; a lawful and chaotic artifact cannot be dual-wielded together. Similarly aligned artifacts are acceptable, as are any neutral or non-aligned artifact weapons with any other aligned artifact.
+* When causing conflict (ring of conflict is most common), it now takes the player's charisma score into account. The formula is 'charisma - monster level + player level' and if that value is greater than 19, clamps it to be 19. There's then a percentage chance (rnd(20)) against the value generated on whether conflict kicks in or not. So even with charisma and your xp level maxed out, there's still a 5% chance of conflict not working. Also, the monsters affected have to see you for conflict to work.
+* Orcs, elves and dwarves get a slight bonus to their AC if they wear armor aligned to their race (player and monsters).
+* Forges are introduced, which have the same appearance as fountains but are orange in color. Just like fountains, dipping things into them can have desirable or adverse affects. They can be used to dispose of anything that is flammable, and can also be used to repair corrosion/rust damage to any metallic object (if your luck is greater than 0). There is a rare chance that a lava demon can be summoned via dipping, which will be hostile most times, but can sometimes spawn tame (same odds as getting a wish from a water demon/fountain). Having negative luck can cause a forge to explode when used, which can cause considerable fire damage. Players can also use a forge to remove an attached ball & chain, and can also combine two objects to [[forge]] something new using the #forge command.
+* If the player tries to hit a monster with a weapon they are restricted/unskilled in, or any non-weapon object, they'll never have better than a 75% chance of landing a hit (bare-handed is exempt).
+* The player is unable to regenerate hit points while in the [[Valley of the Dead]] &ndash; healing via other methods (potions, healing spells) is still possible.
+* Dexterity can directly affect the player's [[armor class]], for better or worse. See the table below &ndash; being encumbered, or wearing any kind of heavy metallic body armor (read: not [[mithril]]) or other rigid material (bone, stone, wood) will negate any favorable armor class bonuses from Dexterity.
+* Permanent See Invisible is no longer attainable from quaffing blessed potions of see invisible, fountain quaffing, or eating invisible stalkers.
+
+{| class="wikitable"
+|-
+! Dexterity
+! AC change
+|-
+| <= 6
+| +3
+|-
+| 7-9
+| +1
+|-
+| 10-14
+| none
+|-
+| 15-16
+| -1
+|-
+| 17-18
+| -2
+|-
+| 19-20
+| -3
+|-
+| 21-23
+| -4
+|-
+| 24-25
+| -5
+|-
+|}
+
+== Player race–role combinations ==
+Combinations are marked with either an L, N or C denoting a playable alignment. Any blank field means that race&ndash;role combination is not allowed.
+{| class="wikitable"
+|-
+! 
+! Human
+! Elf
+! Dwarf
+! Giant
+! Gnome
+! Hobbit
+! Centaur
+! Orc
+! Illithid
+! Tortle
+|-
+| '''Archeologist'''
+| L N
+| 
+| L N
+|
+| N
+| L N
+|
+|
+|
+| L N
+|-
+| '''Barbarian'''
+| N C
+| 
+| N
+| N C
+|
+| 
+| N C
+| C
+|
+| N
+|-
+| '''Caveman'''
+| L N
+|
+| L N
+| L N
+| N
+|
+|
+|
+|
+|
+|- 
+| '''Convict'''
+| C
+|
+| C
+| 
+| C
+| C
+|
+| C
+| C
+|
+|- 
+| '''Healer'''
+| N
+| N
+| N
+|
+| N
+| N
+| N
+|
+|
+| N
+|-
+| '''Infidel'''
+| U
+| U
+|
+| U
+|
+|
+| U
+| U
+| U
+|
+|-  
+| '''Knight'''
+| L C
+| C
+| L
+| 
+| 
+| 
+| C
+| C
+|
+|
+|- 
+| '''Monk'''
+| L N C
+| N C
+| L N
+| L N C
+|
+| 
+| N C
+|
+|
+| L N
+|- 
+| '''Priest'''
+| L N C
+| N C
+| L N 
+| L N C
+|
+| L N
+| N C
+| C
+| C
+| L N
+|- 
+| '''Rogue'''
+| N C
+| N C
+| 
+|
+| N C
+| N
+| 
+| C
+|
+|
+|- 
+| '''Ranger'''
+| N C
+| N C
+| 
+|
+| N C
+| N
+| N C 
+| C
+|
+|
+|- 
+| '''Samurai'''
+| L
+|
+| L
+| L
+| 
+| 
+| 
+| 
+|
+|
+|- 
+| '''Tourist'''
+| N
+|
+|
+|
+| N
+| N
+| 
+| 
+|
+| N
+|- 
+| '''Valkyrie'''
+| L N
+|
+| L N
+| L N
+| 
+| 
+| N
+| 
+|
+|
+|- 
+| '''Wizard'''
+| N C
+| N C
+| N
+| N C
+| N C
+| N
+|
+| C
+| C
+| N
+|-
+|}
+
+Many alignment combinations have been unlocked as well vs vanilla NetHack, allowing for some race&ndash;role combinations you normally wouldn't expect to see (a neutral Dwarvish Healer for instance, or a chaotic Elven Knight, etc). Infidels always start as unaligned (U), and Convicts always start as chaotic (C) regardless of their race.
+
+=== New player roles ===
+EvilHack adds two new playable roles: the [[Convict]] and the [[Infidel]]. More roles may be added at a later date.
+
+'''Convict'''
+* Convicts can be played as a human, dwarf, gnome, orc, hobbit or illithid.
+* Their alignment is always chaotic, regardless of racial background.
+* Convicts start the game with a negative alignment, a [[heavy iron ball]] chained to their leg, and a cursed striped shirt (worn). The shirt prevents entry into any shop while worn and visible (not covered by a cloak or robe).
+* Convicts start as almost hungry, but can be in a state of hunger for a longer period of time.
+* Convicts start with intrinsic sickness resistance, and gain intrinsic poison resistance and searching at experience levels 7 and 20 respectively.
+* Their first artifact gift is [[Luck Blade]], a chaotic broadsword (short sword in other variants) that acts as a [[luckstone]].
+* The [[Iron Ball of Liberation]] is the convict's quest artifact &ndash; a heavy iron ball that grants magic resistance, searching, [[warning]] and stealth when carried. When invoked, it allows phasing temporarily just like a [[xorn]], but it attaches itself to you upon every use.
+* Their starting pet is a sewer rat, and convicts can tame other rats by #chatting them.
+
+'''Infidel'''
+* The Infidel role was created by [[User:Tomsod]] (see [https://nethackwiki.com/wiki/User:Tomsod/YANIs_and_patches/Infidel this link] for the original patch and author notes). It has been modified to fit in with EvilHack.
+* Infidels can be played as a human, orc, illithid, elf, giant or centaur.
+* Their alignment will always be unaligned (worshiper of [[Moloch]]) regardless of their racial background.
+* Infidels start the game with the [[Amulet of Yendor]] - their primary mission is to travel down to the [[Sanctum]] and sacrifice the Amulet to Moloch on the unaligned altar present there. When doing this, they must have their quest artifact in open inventory (the [[User:Tomsod/YANIs_and_patches/Infidel#Quest_artifact|Idol of Moloch]]) so that Moloch may imbue the Idol with the power of the Amulet. The player then must travel back up through the dungeon and make their way to the [[Astral Plane]], where they attempt to invoke the Idol on the correct altar to Moloch, thereby giving Moloch dominion over 'heaven' and the other three aligned gods, winning the game.
+* The correct altar that an Infidel needs to invoke the [[User:Tomsod/YANIs_and_patches/Infidel#Quest_artifact|Idol of Moloch]] on in the Astral Plane will vary each game. They can discover which is the correct altar by #chatting both their [[quest leader]] and the [[High priest of Moloch]] in the [[Sanctum]]. 
+* Infidels starting armor is cursed - they actually benefit from wearing cursed armor and wielding cursed weapons, and are able to remove/unwield these items without penalty. Wearing blessed armor slightly hurts spellcasting success rates.
+* Infidels are considered primary spellcasters, and start the game with a [[spellbook of drain life]] plus one other random spellbook.
+* Other notable starting gear for Infidels: a [[cloak of protection]] (cursed), two [[scrolls of charging]], a [[fire horn]], 3 potions of unholy water, and an [[oilskin sack]].
+* Infidels start with intrinsic fire resistance, and gain intrinsic warning and shock resistance at levels 15 and 20 respectively.
+* Their first artifact gift is [[User:Tomsod/YANIs_and_patches/Infidel#First_gift|Secespita]], a copper ritual knife that greatly aids with altar sacrificing, and can drain energy from the monsters it was used to kill, helping to replenish spell power for the Infidel.
+* The [[User:Tomsod/YANIs_and_patches/Infidel#Quest_artifact|Idol of Moloch]] is the Infidel's quest artifact, a figurine of a horned devil that can be used to easily convert altars to Moloch, and provides magic resistance when carried. It can also be used to summon demons to aid the Infidel. An Infidel cannot win the game without having the Idol in their possession.
+* Their starting pet is a [[lesser homunculus]].
+* Crowning - if an Infidel is crowned by Moloch, they transform into a demon, replete with a stinger-tipped tail and large wings, both of which can be used. In demon form, the Infidel can enjoy all of the strengths (and weaknesses) associated with being a demon. Trident skill is unlocked and can be trained all the way up to expert skill. Their crowning gift is a spellbook of fireball.
+* All aligned priests are hostile towards Infidels and will attack them should they enter their temple.
+* Infidels are either not penalized or will gain alignment for doing things that would normally be detrimental for other roles, such as murdering peacefuls or sacrificing their pets (killing your pet is still viewed as bad).
+* Infidels praying to Moloch outside of [[Gehennom]] can expect an 80% failure rate. The only reliable means of praying are standing on an unaligned altar or being in Gehennom. Converting an aligned altar to Moloch is also much more difficult without aid - Moloch's power and influence are weakened outside of hell.
+* Moloch expects an Infidel to perform a sacrifice to him at least once every 6000 turns. Not doing so adversely affects your [[alignment record]], and it will begin to drain at an increasing rate; reaching negative values has a chance of incrementing Moloch's anger as well. Successfully performing a sacrifice delays this effect for 500 turns per point of sacrifice value; this delay is not cumulative, and if the previous remaining delay was higher, it isn't affected. Any sacrifice to Moloch counts, including same-race sacrifice and a sacrifice on a cross-aligned altar (as long as you're actually trying to convert the altar and not yourself). You will be warned when you're due for a sacrifice, both through a message and in the base attributes window.
+* Infidels create unholy water the same way other roles would create holy water, by placing potions of water on a co-aligned altar and praying (Moloch's 'blessings' are actually curses). This can present a unique challenge for the Infidel role, as having certain blessed items is still desirable. They will need to find already blessed potions of water much the same way other roles typically have to find an already cursed potion of water to use.
+* The Amulet suppresses teleportation and drains spell power when casting spells as it always has - this can prove quite challenging, especially in the early game. If you cast without the Amulet in your inventory, the spell will drain hit points instead of power. {{spell of|Healing}} and {{spell of|extra healing}} drain extra health so that using them is never a net gain. Hit point regeneration is also suppressed without having the Amulet in inventory. Once the Idol is imbued with the power of the Amulet, Moloch gains control over its power and suppresses the spell power draining and non-hit point regeneration effects (teleportation is still suppressed while holding the Idol).
+
+=== New player races ===
+EvilHack adds five new playable races to the game: centaur, giant, hobbit, illithid, and tortle. Each have their own strengths and weaknesses:
+
+'''Centaur'''
+* Centaurs can play as either a [[Barbarian]], [[Healer]], [[Infidel]], [[Knight]], [[Monk]], [[Priest]], [[Ranger]], or [[Valkyrie]].
+* They can play both genders, alignment choices are neutral or chaotic (role restrictions enforced).
+* Centaurs have the same increased carrying capacity as the giant player race does. (Centaurs aren't as strong, but they're half horse, and are built for hauling gear).
+* Strength and dexterity can be maxed to 20, but intelligence maximum is 12, wisdom is 14, charisma is 16.
+* Centaurs generate slightly more hit points per level vs a human player.
+* Centaurs know all bow and crossbow weapons automatically, and get a multishot bonus with either type.
+* Centaurs start with intrinsic speed, and can jump once reaching level five (not like a Knight, but like wearing a pair of jumping boots). They also gain warning at level 10.
+* Centaurs cannot wear boots, for hopefully obvious reasons. They can wear all other forms of armor (as can now their monster counterparts).
+* Centaurs cannot ride anything as a steed due to them being quadrupedal.
+
+'''Giant'''
+* Giants can play as either a [[Barbarian]], [[Caveman]], [[Infidel]], [[Monk]], [[Priest]], [[Samurai]], [[Valkyrie]], or [[Wizard]].
+* Giants can be any of the four alignments (role restrictions enforced) and either gender.
+* Giants have increased initial and maximum cap carrying capacity, with strength and constitution able to reach 25.
+* Intelligence and dexterity are capped at 14, charisma at 16.
+* Hit point generation is significantly greater for giants per level vs a human player.
+* Giants movement speed is slightly slower than other races due to their size.
+* Giants can pickup and throw boulders (the boulders stack and can be quivered). In [[Sokoban]], the player is asked before picking up or moving aside a boulder.
+* Giants have innate knowledge of certain gems, can ID touchstones and can dig as well as a dwarf.
+* Giants automatically aggravate other monsters from the beginning and are never stealthy. They do gain hungerless regeneration at level 12.
+* Giants excel in bare-handed combat or with a club, and have a greater chance of stunning an opponent or shattering their wielded weapon.
+* Giants can wield two-handed weapons in one hand.
+* Giants take extra damage from slings (think 'David and Goliath').
+* Giants cannot wear body armor, cloaks, or shirts.
+* Boulders have a little bit of weight (8 aum instead of 6000 aum) when carried by giants. This prevents player giants from carrying hundreds of stacked boulders without penalty. 
+* They have an innate lower armor class (AC 6 vs AC 10 when naked).
+* Other things in-game that require strength to accomplish are easier for Giants.
+* Giants can ride one creature and one creature only &ndash; the [[woolly mammoth]], a new monster found only in EvilHack.
+* Giant wizards start with an [[amulet of magic resistance]].
+* Giant samurai start with [[large splint mail]]. Only giant samurai can wear large splint mail.
+
+'''Hobbit'''
+* Hobbits can play as either an [[Archeologist]], [[Healer]], [[Priest]], [[Rogue]], [[Ranger]], [[Tourist]], or [[Wizard]].
+* They can be either gender, alignment choices are lawful or neutral (role restrictions enforced).
+* Hobbits can max dexterity, wisdom and constitution to 20, but strength, intelligence and charisma are capped at 16.
+* Hobbits receive a multishot bonus with slings, knives, and daggers (if their role is capable of multishot).
+* Everyone knows hobbits are all about food and when they can eat next. They start with the new 'food sense' intrinsic but are also innately hungry. Because of this, they start with extra food (if not a Convict) and a tinning kit (if not a Convict or an Archeologist). They can also eat more than twice the amount of food other races can eat before becoming satiated.
+* Hobbits gain speed and searching intrinsics at levels 4 and 7 respectively.
+* Hobbits prefer elven gear over anything else, and will start with said gear if it's available.
+
+'''Illithid'''
+* Illithid is the formal name for a [[mind flayer]]. This ancient race has psychic abilities and are natural spellcasters, but are physically weak compared to other races.
+* Illithids can only be of chaotic alignment (unless playing as an Infidel), and can be both male or female.
+* Illithids can play as either a [[Convict]], [[Infidel]], [[Priest]] or a [[Wizard]].
+* Intelligence and wisdom can go as high as 22, and dexterity as high as 20, but their strength, constitution and charisma are capped at 10/12/16 respectively.
+* Power generation per level gained is slightly higher than that of the elven player race.
+* Illithids have a natural psionic attack that can confuse and kill, and is tied to spell power use (but is not considered a spell for the purposes of Amulet of Yendor interactions). If your race is changed (e.g. by getting crowned as an infidel), this ability is lost. 
+* Illithids start out with psychic resistance (new resistance), infravison and telepathy. At experience level 12 they can fly like their more wild brethren.
+* Illithids have a single extra tentacle attack that behaves exactly like the tentacle attack from a [[mind flayer]]. This attack is set up in such a way that it will automatically not be used if attacking something the player should not touch unprotected (read: [[cockatrice]]). This attack does not work on a [[mind flayer]]. Conversely, illithids are immune to the [[mind flayer]] tentacle attack and zombie brain eating attacks.
+
+'''Tortle'''
+* Tortles are a humanoid reptilian race that resembles an upright tortoise, complete with their large protective shell on their back. They are larger than humans, and a bit stronger and wiser, but move slower and aren't quite so nimble.
+* Tortles are typically of lawful alignment, but can be neutral as well if the role they chose allows it. They can be both male or female.
+* Tortles can play as either an [[Archeologist]], [[Barbarian]], [[Healer]], [[Monk]], [[Priest]], [[Tourist]], or [[Wizard]].
+* Strength can get as high as 19 naturally, and they have a slightly increased weight carrying cap. Wisdom can go as high as 20, with dexterity capped at 10, and charisma capped at 14.
+* Tortles start with a natural ability to [[swim]], allowing them to breath underwater and inside water elementals and sea dragons (they can still be strangled by other means, though). At experience level 5, they gain intrinsic warning, and they gain hungerless regeneration at experience level 12.
+* Tortles have a unique ability - they can hide inside their shell for up to 200 turns at a time, using the #monster command. While inside their shell, they are blind, cannot move or attack, and basically can't do much of anything except regenerate hit points/power and pray. But, while in their shell:
+** they receive a massive 40 point boost to their AC, and only take [[half physical damage]]. 
+** the bite attacks of monsters that are large or smaller won't do any damage. 
+** they are impervious to stinger attacks, and being grabbed and crushed. 
+They can come out of their shell early if they so chose (same command used to enter), and will have to wait 300-400 turns before being able to hide in their shell again.
+* Tortles start with a natural AC of 0 due to their shells, but are extremely limited in what kind of armor they can wear. They are restricted to hats, gloves and shields only; hats and gloves made of any kind of hard or rigid material interfere with their ability to retreat into their shell (the [[Mitre of Holiness]] for tortle priests is an exception to this rule). As a tortle 'grows up' and gains experience, their shells grow thicker and become better able to repel attacks, giving the tortle an extra point of AC every three levels - this caps off at 10 points total for experience level 30.
+
+=== Changes to existing races ===
+
+'''Elf'''
+* Elves have an aversion to iron &ndash; wearing or wielding anything made of iron that touches the players skin will prevent hit point regeneration, and will cause 1d8 physical damage on initial contact. Being hit with any weapon made of iron will do the same amount of extra damage. Elf-based monsters are affected the same way when being attacked with weapons made of iron and will avoid using items made of iron. Wielding an iron weapon without gloves incurs a -1 luck penalty.
+'''Orc'''
+* Orcs have an aversion to mithril &ndash; the same conditions above for elves and iron exists for orcs and mithril. They are also the only player race that can tame and ride a [[warg]].
+
+=== Changes to existing roles ===
+* All roles can reach at least basic skill in riding.
+* [[Archeologist]], [[Barbarian]], and [[Valkyrie]] roles now have completely new quest artifacts.
+* Twoweaponing &ndash; [[Barbarians]] go from basic to skilled, [[Tourists]] from skilled to basic. [[Ranger]] obtains twoweaponing, up to skilled.
+* [[Archeologist]] &ndash; scimitar and club moved from skilled to basic. Spear skill added, can be trained to expert.
+* [[Barbarian]] &ndash; riding skill from basic to skilled. Attack spell school removed. Special spell changed to [[cause fear]].
+* [[Caveman]] &ndash; all spell schools removed, has 20% chance of failing to read any spellbook, regardless of its BUC status. Can bang rocks together to make flint, can lash flint to arrows, making them more deadly. Staying [[illiterate]] can increase maximum hit point gain per level-up. Are the only role that can successfully tame and ride [[saber-toothed tiger]]s. 
+* [[Healer]] &ndash; added clerical spell school, can train to skilled. Gets poison resistance intrinsic at experience level 3 instead of experience level 1. Trades warning intrinsic for sick resistance at experience level 15. Can sense how wounded a monster is when attacking it, can also sense the wounded status of its pets. 
+* [[Knight]] &ndash; numerous weapon skills adjusted (axe, broadsword, two-handed sword, polearms and spears from skilled to expert. Mace and morning star moved from skilled to basic). Attack and healing spell schools moved from skilled to basic. Knights can never tame dragons (they are natural enemies). Dwarven knights will start with a [[dwarvish bearded axe]] instead of a long sword.
+* [[Monk]] &ndash; crossbow skill removed, added trident and broadsword; tweaked skill advancement for weapons. Gains an extra fist attack per round using martial arts skill at grand master level, and also gains an extra kick attack (random) using martial arts skill at master level and higher. Can break boulders and statues using martial arts skill at skilled level or higher (press {{kbd|shift|f}} and then a movement key in the desired direction). Because of the extra random kick attack at master/grand master level, players will need to be mindful of wearing boots of some sort, as kicking a footrice/basilisk barefoot equals instant [[petrification]] (centaur monks have the extra kick suppressed vs these monsters as they are unable to wear any kind of footwear). Monks wearing any sort of body armor incur an extra -30 to-hit penalty on top of already existing penalties. Wearing a shield will suppress the extra fist martial arts attack gained at grand master level. Monks now receive extra intrinsics as they level up into the higher experience tiers (telepathy at 20, water walking at 23, stoning resistance at 25, disintegration resistance at 27, and sickness resistance at 30).
+* [[Priest]] &ndash; all slash and pierce weapons removed; can only train with blunt-type weapons. Incurs a substantial to-hit penalty, abuses wisdom and can negatively impact alignment when trying to use an edged weapon (wielded or thrown). Their crowning gift is Mjollnir.
+* [[Ranger]] &ndash; if playing as a gnome, their quest artifact becomes the [[Crossbow of Carl]]. Its properties mirror that of the [[Longbow of Diana]], except that it is a crossbow instead of a bow.
+* [[Rogue]] &ndash; new trainable skill known as 'thievery', which allows the rogue to pickpocket a target and steal items from their inventory (must be bare-handed to use, press {{kbd|shift|f}} and then a movement key in the direction of the target). If the target is peaceful, there is a chance the target will not notice depending on the players' skill in thievery. Critical strike from behind works while twoweaponing.
+* [[Samurai]] &ndash; removed attack and clerical spell schools.
+* [[Valkyrie]] &ndash; removed escape spell school. Special spell changed to [[repair armor]]. Their starting weapon is a [[spear]] instead of a long sword. 
+* [[Wizard]] &ndash; removed numerous weapons from being trained (axe, short sword, club, mace, polearms, spear, trident, shuriken). Enchantment spell skill raised from skilled to expert, clerical spell skill lowered from skilled to basic. New starting pet, the [[pseudodragon]]. Can sense if objects are magical in nature, much the same way a priest knows the beatitude of all objects.
+
+== Items ==
+EvilHack adds a variety of new artifacts, weapons, armor and other usable objects, as well as some edits to a few existing objects. The vast majority of these objects take advantage of the [[object materials]] code incorporated from [[xNetHack]], and have the potential to be generated made of a material other than its standard base material. The exception to this rule are artifacts &ndash; their material type is hard-coded and cannot be altered, even via a wish.
+
+=== Object materials ===
+The [[object materials]] patch exists in several variants &ndash; the code used for EvilHack was taken from [[xNetHack]] and then modified. An object's material affects its weight, its cost in a shop, how much protection it can grant as armor or how damage it delivers as a weapon, and what types of damage and decay it is subject to (if any). Certain monsters are adverse to various material types, and spellcasting failure percentage can also be affected. Some materials can affect your [[magic cancellation]] rating as well. When items are wished for, their material type can also be chosen if the object category allows for it - artifacts are the exception, as are a few other items. 
+
+In the below table, iron is the baseline on which every other material is based. Density is an arbitrary value, as is cost - e.g., an item made of iron weighs X amount, while the same item made of cloth would be one-eighth its weight; an item made of iron costs X amount, while the same item made from gemstone will cost 50 times that amount. For armor class, a poor material can never make the wearer's AC worse if it's in an undamaged state.
+
+{|class="wikitable
+!Material !! Density !! AC (as armor) !! Damage (as weapon) !! Relative cost !! Erosion type !! Notes
+|-
+|Liquid     ||  10 ||  0 ||                                ||   1 ||              ||
+|-
+|Wax        ||  15 ||  1 ||                                ||   1 ||              ||
+|-
+|Veggy      ||  10 ||  1 ||                                ||   1 ||              ||
+|-
+|Flesh      ||  10 ||  3 ||                                ||   3 ||              ||
+|-
+|Paper      ||   5 ||  1 || &minus;2 damage penalty (all)  ||   2 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Cloth      ||  10 ||  2 ||                                ||   3 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Leather    ||  15 ||  3 ||                                ||   5 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Wood       ||  30 ||  4 || &minus;1 damage penalty (slash)||   8 || burn, rot    || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Bone       ||  25 ||  5 ||                                ||  20 || burn         || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object), grants [[magic cancellation]] level 3 (MC3) for orcs when worn as body armor
+|-
+|Dragonhide ||  20 ||  8 ||                                || 200 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor' 
+|-
+|Iron       ||  80 ||  5 ||                                ||  10 || corrode, rust|| can be made rustproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object), bonus damage against elves, player as an elf cannot heal if iron armor or weapon touches their skin
+|-
+|Metal      ||  75 ||  5 || +1 damage bonus                ||  15 || deteriorate  || referred to as 'steel', inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor'
+|-
+|Copper     ||  85 ||  4 ||                                ||  10 || corrode      || can be made corrodeproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Silver     ||  90 ||  5 ||                                ||  30 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor', bonus damage against demons, werefoo, vampires and shades
+|-
+|Gold       || 120 ||  3 || +1 damage bonus (whack)        ||  60 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor'
+|-
+|Platinum   || 120 ||  4 || +1 damage bonus (whack)        ||  80 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor'
+|-
+|Mithril    ||  30 ||  6 || +2 damage bonus (slash, pierce)||  50 || deteriorate  || inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor', grants [[magic cancellation]] level 3 (MC3) for elves when worn as body armor (MC2 for all other races), bonus damage against orcs, player as an orc cannot heal if mithril armor or weapon touches their skin
+|-
+|Plastic    ||  20 ||  3 || &minus;2 damage penalty (all)  ||  10 || burn         || can be made fireproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Glass      ||  60 ||  5 || +3 damage bonus (slash, pierce)||  20 || fracture     || can be made shatterproof via wielding object and reading a scroll of enchant weapon when confused (if object is armor, read a scroll of enchant armor while confused and wearing said object)
+|-
+|Gemstone   ||  55 ||  7 || +3 damage bonus (slash, pierce)|| 500 ||              || referred to as 'crystal', immune to erosion
+|-
+|Mineral    ||  70 ||  6 || +2 damage bonus (slash, whack) ||  10 || deteriorate  || referred to as 'stone', inherently [[fixed]], but is subject to decay via the monster spell 'destroy armor', grants [[magic cancellation]] level 3 (MC3) for orcs when worn as body armor
+|}
+
+==== Material percentages ====
+Not all objects can randomly generate as any material. There are rules in place that determine the probability of what type of material an object will generate with. You can also use the tables below to determine what material you can wish for based on the object (e.g. wishing for dragonhide plate mail won't work, since plate mail base material is iron or metal).
+
+'''Default base type iron or steel:'''
+* 65% its base material
+* 10% steel
+*  5% bone
+*  5% wood
+*  4% each silver or copper
+*  3% mithril
+*  1% each gold, glass, platinum or stone
+
+'''Default base type wood:'''
+* 80% wood
+*  8% stone
+*  4% iron
+*  2% each bone, steel or mithril
+*  1% each silver or copper
+
+'''Default base type cloth:'''
+* 80% cloth
+* 19% leather
+*  1% dragonhide
+
+'''Default base type leather:'''
+* 86% leather
+* 13% cloth
+*  1% dragonhide
+
+'''Armor of dwarvish make (minus cloth items):'''
+* 60% iron
+* 20% steel
+* 15% mithril
+*  3% silver
+*  1% each gold or platinum
+
+'''Weapons of dwarvish make:'''
+* 50% iron
+* 25% steel
+* 20% mithril
+*  5% gemstone
+
+'''Armor and weapons of elven make (except cloth items):'''
+* 60% its base material
+* 20% wood
+* 10% copper
+*  5% mithril
+*  3% silver
+*  2% gold
+
+'''Armor and weapons of orcish make (minus cloth items):'''
+* 65% iron
+* 25% bone
+* 10% stone
+
+'''Reflectable objects (shields of reflection and amulets):'''
+* 50% its base material
+* 20% silver
+* 15% gold
+*  5% mithril
+*  4% each copper or steel
+*  2% platinum
+
+'''Most bows:'''
+* 70% wood
+*  7% iron
+*  7% bone
+*  6% mithril
+*  2% each silver or copper
+*  1% gold
+
+'''Horns:'''
+* 70% bone
+* 10% copper
+*  8% mithril
+*  5% each wood or silver
+*  2% gold
+
+=== Object properties ===
+The [[object properties]] patch exists in a handful variants &ndash; the code used for EvilHack was taken from [[GruntHack]] and then modified significantly. An object property is a magical attribute associated with an item &ndash; in other variants that have object properties, the number of magical properties and the number and types of items they can be applied to is rather broad, and finding such properties on these items is not uncommon. In EvilHack, the number of magical properties is less, the types of objects they can be applied to are fewer, and the chances of finding such items at random is greatly diminished. Some details concerning Evilhack's [[object properties]]:
+
+* Eligible items for object properties are weapons and armor (with some restrictions).
+* Restricted items: non-weapons/armor, launchers (bows, crossbows, slings), artifacts, dragon scales, and unique items.
+* A players' starting inventory will never spawn with an object property.
+* Object properties can be wished for on an eligible item.
+* Object properties cannot be wished for on an already magical item (e.g. no wishing for a [[cloak of magic resistance]] and [[drain resistance]]), but these properties can appear randomly on eligible magical items.
+* Object properties cannot stack via wishing, meaning you can't wish for a 'long sword of fire and venom'. However, there is a 1 in 100,000 chance of an eligible item randomly spawning with two properties.
+* Changing a regular item with object properties into an artifact (e.g., dipping for [[Excalibur]]) will strip that item of its object properties.
+* Extrinsic properties that are applied to weapons or armor are active only when those objects are wielded/worn. With weapons, extrinsic properties work in the offhand whilst [[twoweaponing]].
+* Wizards have an innate ability to 'sense' if an item is magical (much like a Priest being able to know the beatitude of all items).
+* Generation odds - for random item generation, the odds of an eligible item having a magical property are 1 in 150, and those odds get slightly better the deeper into the dungeon the player goes. For player monsters, the odds of their weapon having a magical property is 1 in 20 if they are of a high enough level or if encountered on the Astral Plane. Angel-class monsters flagged as M2_LORD have a 1 in 10 chance of their long sword being generated with a magical property. Regular armor and weapons obtained via altar sacrifice have a 1 in 8 chance of being generated with a magical property, provided the player's [[luck]] is five or greater.
+
+The table below lists all available magical properties, what items they can be applied to, and what their function is.
+
+{|class="wikitable
+!Object property !! Armor !! Weapon !! Armor attributes !! Weapon attributes
+|-
+|Fire       || X || X || provides fire resistance          || does 1d5 + 3 of extra fire damage
+|-
+|Frost      || X || X || provides cold resistance          || does 1d5 + 3 of extra cold damage
+|-
+|Shock      || X || X || provides shock resistance         || does 1d5 + 3 of extra shock damage
+|-
+|Venom      || X || X || provides poison resistance        || does 1d2 + 10% chance of an additional 6-15 of extra poison damage, has a 10% chance of instakill by poison
+|-
+|Decay      || X ||   || provides drain resistance         ||
+|-
+|Oilskin    || X ||   || acts as being permanently greased, can only be applied to cloth armor pieces (e.g. "oilskin cloth elven helm") ||
+|-
+|ESP        || X || X || extrinsic telepathy when worn     || extrinsic telepathy when wielded
+|-
+|Searching  || X || X || extrinsic searching when worn     || extrinsic searching when wielded
+|-
+|Warning    || X || X || extrinsic warning when worn       || extrinsic warning when wielded
+|-
+|Excellence || X || X || charisma adjustment equal to the enchantment, acts as a [[luckstone]] when worn || charisma adjustment when wielded based on BUC status (25/18/6 &ndash; blessed/uncursed/cursed), acts as a [[luckstone]] when wielded.
+|-
+|Fumbling   || X ||   || extrinsic fumbling when worn      ||
+|-
+|Hunger     || X || X || extrinsic hunger when worn        || extrinsic hunger when wielded
+|}
+
+=== Artifacts ===
+{|class="prettytable sortable"
+!Artifact
+!Symbol
+!Base type
+!Alignment
+!To-hit bonus
+!Damage bonus
+!Notes
+|-
+|[[Lifestealer]]
+|{{cyan|)}}
+|[[Two-handed sword]]
+|Chaotic
+|1d5
+|1d2
+|Found wielded by [[Vlad the Impaler]], drains levels and also grants drain resistance when wielded. Cannot be wished for.
+|-
+|[[Keolewa]]
+|{{brown|)}}
+|[[Club]]
+|Neutral
+|1d5
+|1d6
+|Keolewa is a Hawaiian war club, and is the first sacrifice artifact gift for Cavemen. Grants shock resistance when wielded.
+|-
+|[[Dirge]]
+|{{black|)}}
+|[[Long sword]]
+|Chaotic
+|1d5
+|1d10
+|The "Dark Knight"'s sword, can only be obtained by chaotic Knights by sacrificing a same race monster on a co-aligned altar while wielding a long sword, elven long sword, or orcish long sword (the exact type makes no difference, Dirge will become a 'long sword' regardless). Does additional acidic damage as well as conferring acid resistance when wielded. Is made of mithril.
+|-
+|[[Dramborleg]]
+|{{red|)}}
+|[[Dwarvish bearded axe]]
+|Lawful
+|1d8
+|1d8
+|Dramborleg is a dwarven bearded axe made of mithril, and is lawful in alignment. It provides magic resistance and one level of MC when wielded. A unique special capability of this axe, is that it can destroy any balrog in one hit. Because of its affinity to balrogs, Dramborleg will also warn of any demons nearby.
+|-
+|[[The Sword of Kas]]
+|{{red|)}}
+|[[Two-handed sword]]
+|Chaotic
+|1d10
+|x2 vs cross-aligned
+|Found wielded by [[Kas]], the Sword of Kas delivers a significant amount of damage, especially against creatures not of its alignment, and is made of gemstone. It is also permanently coated in poison, and does extra poison damage against monsters that are not resistant. Wielding this sword confers stoning resistance and giant strength (25). It is [[bloodthirsty]] just like [[Stormbringer]], and wielding this sword against [[lich]]es does double damage (triple damage against [[Vecna]]). Cannot be wished for.
+|-
+|[[Magic 8-Ball]]
+|{{black|(}}
+|[[Orb]]
+|Non-aligned
+|N/A
+|N/A
+|The ultimate rumor generator. Applying the Magic 8-Ball delivers a rumor; whether that rumor is true or not depends on its BUC status. Reading the Magic 8-Ball randomly generates one of twenty responses one would find from the real-life commercial product. This artifact is held by the [[Oracle]]. Confers warning when carried, and if it's blessed, there's a 0.001% chance that it will grant the user a wish when applied &ndash; if a wish is granted, the Magic 8-Ball will disappear. Cannot be wished for.
+|-
+|[[Xiuhcoatl]]
+|{{black|)}}
+|[[Atlatl]]
+|Lawful
+|1d5
+|1d24
+|Xiuhcoatl replaces [[The Orb of Detection]] as the [[Archeologist]] quest artifact. The atlatl is part of the spear family, and this artifact has its roots in ancient Aztec lore. Can be thrown, and it will return to the thowers hand just like [[Mjollnir]], but a [[dexterity]] of 18 or greater is required for this to happen (or dexterity of 21 or greater if not an Archeologist). Xiuhcoatl does a massive amount of fire damage to monsters that are susceptible to fire, and confers fire resistance when wielded, ESP when carried, and can be invoked for levitation. 
+|-
+|[[The Ring of P'hul]]
+|{{cyan|<nowiki>=</nowiki>}}
+|[[Ring]]
+|Chaotic
+|N/A
+|N/A
+|The Ring of P'hul replaces [[The Heart of Ahriman]] as the Barbarian quest artifact. The Ring of P'hul is a ring of free action, confers magic resistance when worn and disease resistance when carried.
+|-
+|[[Luck Blade]]
+|{{cyan|)}}
+|[[Broadsword]]
+|Chaotic
+|1d5
+|1d6
+|[[Luck Blade]] is the first sacrifice artifact gift for the [[convict]] role. It acts as a [[luckstone]] when in open inventory, and is made of steel. In other variants, Luck Blade is traditionally a short sword &ndash; for EvilHack it's a broadsword.
+|-
+|[[The Iron Ball of Liberation]]
+|{{cyan|0}}
+|[[Heavy iron ball]]
+|Chaotic
+|N/A
+|N/A
+|[[The Iron Ball of Liberation]] is the [[convict]] role quest artifact. When carried, it provides magic resistance, stealth, searching, and warning. Invoking this artifact allows the player to temporarily [[phase]] through matter much like a [[xorn]]. If not shackled by the Iron Ball of Liberation, the player will be re-shackled to it every time it is invoked.
+|-
+|[[Gjallar]]
+|{{white|(}}
+|[[tooled horn]]
+|Neutral
+|N/A
+|N/A
+|Gjallar replaces [[The Orb of Fate]] as the Valkyrie quest artifact. It has the same artifact properties, but it is now a tooled horn instead of a crystal ball and doesn't have [[half spell damage]]. Blowing the horn will wake up any sleeping monsters on that level, and its scare radius is larger than that a regular tooled horn. Any monsters directly adjacent to the player when they use Gjallar have a 20% chance of being briefly stunned, and any non-Valkyrie players using it may become temporarily deaf.
+|-
+|[[Crossbow of Carl]]
+|{{brown|)}}
+|[[crossbow]]
+|Chaotic
+|1d5
+|1d6
+|If playing as a gnomish [[Ranger]], the Crossbow of Carl replaces [[The Longbow of Diana]] as the Ranger quest artifact. It shares all of the same abilities and properties of the former, except it is now a [[crossbow]] instead of a [[bow]]. Invoking the crossbow produces crossbow bolts instead of arrows. In the hands of a gnomish ranger, its weight is the same as a bow (24 aum), for all others it has the same weight as a regular crossbow.
+|-
+|[[Angelslayer]]
+|{{cyan|)}}
+|[[trident]]
+|Non-aligned
+|1d5
+|1d10
+|An artifact trident that warns of [[Angels]], confers automatic searching and half-spell damage, and does extra fire damage to targets that are susceptible. There is a 5% chance that a [[Balrog]] may spawn with this artifact. 
+|-
+|[[Bag of the Hesperides]]
+|{{brown|(}}
+|[[bag of holding]]
+|Non-aligned
+|N/A
+|N/A
+|This is the bag given to Perseus by the Hesperides (nymphs) to aid him in his quest to defeat [[Medusa]]. It was used to store and carry Medusa's head. The bag's base type is a [[bag of holding]], confers protection (one level of MC), is made of dragonhide, and greatly reduces the weight of items placed in it, even more so than a regular bag of holding. It also repels water just like an [[oilskin sack]]. Can be found with the captive pegasus at the end of the Ice Queen's branch. Cannot be wished for.
+|-
+|[[Butcher]]
+|{{cyan|)}}
+|[[triple-headed flail]]
+|Chaotic
+|1d5
+|1d8
+|This massive triple-headed flail belongs to the demon lord [[Yeenoghu]]. Legend states that Butcher was created from the thighbone and skin of a god Yeenoghu killed. The base item is a triple-headed flail which is so large it requires two hands to wield if human-sized, and its damage output is greater than even a [[dwarvish mattock]]. Butcher has a stun attack, much as [[Magicbane]] does, but unlike Magicbane, Butcher does not also cause fear or cancellation. Yeenoghu spawns with this artifact and will use it. Cannot be wished for.
+|-
+|[[Wand of Orcus]]
+|{{black|)}}
+|[[rod]]
+|Chaotic
+|1d5
+|1d6
+|A wand in name only, the infamous weapon of the demon prince [[Orcus]], its base item is an ornate rod which is made of obsidian and topped with a huge skull. Appears in Orcus' inventory as he spawns. Any living creature struck by this artifact will either have their maximum hit points drained, or if not magic resistant, a small chance of being killed outright. The base item delivers a fair amount of damage in its own right - wielded by Orcus, its damage output is significant. The Wand of Orcus can never be picked up by the player, and will harm the player in the attempt (can only be wielded by Orcus himself or another demon). Cannot be wished for.
+|-
+|[[Secespita]]
+|{{yellow|)}}
+|[[knife]]
+|Non-aligned (Chaotic)
+|1d5
+|1d6
+|The first sacrifice gift for [[Infidel]]s, Secespita is a slightly improved ritual copper knife. It can restore a small amount of magical energy to the one that wields it if used to kill anything living. Secespita also acts as an utility artifact: wielding it while sacrificing a corpse improves its sacrifice value by 50% (rounded down). This is especially useful for Infidels, as they are required to make sacrifices to Moloch on a regular basis to avert his wrath. Secespita is unaligned for Infidels, chaotic for all other roles (bones/wishing purposes).
+|-
+|[[The Idol of Moloch]]
+|{{gray|(}}
+|[[figurine]]
+|Non-aligned (Chaotic)
+|N/A
+|N/A
+|The Idol of Moloch is the [[Infidel]] quest artifact, which is an artifact figurine of a [[horned devil]] (representing [[Moloch]] himself). It will be unaligned to Infidels, but for wishing and bones purposes it's chaotic. It confers magic resistance and half spell damage when carried. In addition to these two properties, Infidels will benefit from improved energy regeneration while carrying it, but only if they're piously unaligned. If their alignment is lower, but still positive, this effect will be proportionately reduced; for Infidels in bad standing with Moloch (or with changed alignment), and for all other roles, the energy regeneration will not be improved at all. In addition, carrying this item removes the penalties Infidels have when converting altars and praying above [[Gehennom]]. Invoking the Idol while standing on an altar instantly converts it to Moloch; invoking or applying it otherwise summons a random major demon, much like an ordinary figurine, except the Idol will not be expended. These two powers respect an invocation timeout.
+|-
+|[[The Eye of Vecna]]
+|{{white|%}}
+|[[eyeball]]
+|Non-aligned
+|N/A
+|N/A
+|The Eye of Vecna is an extremely powerful artifact that is an actual body part that comes from [[Vecna]] himself. In this setting, Vecna must be destroyed in order to obtain the Eye, and even then, there is only a 50% chance that it will drop (the other 50% is the Hand of Vecna dropping). Be aware that if Vecna is destroyed via stoning, his Eye will not appear. When carried, the Eye of Vecna confers cold resistance, ESP, [[astral vision]], and half spell damage. When invoked, it causes the Eye to death gaze at all monsters within visual range, either greatly reducing their hit points or killing them outright if they don't have magic resistance. Using the Eye this way can be detrimental, as each use drops the players luck and alignment by three points, and abuses wisdom. Invoking the Eye too often can cause it to turn on the player instead, killing them. The Eye of Vecna can be eaten, but doing so is strongly discouraged. It can also be sacrificed on an altar for maximum value. Cannot be wished for. 
+|-
+|[[The Hand of Vecna]]
+|{{black|[}}
+|[[mummified hand]]
+|Non-aligned
+|N/A
+|N/A
+|The Hand of Vecna is also an extremely powerful artifact that is an actual body part that comes from [[Vecna]] himself. Just as with the Eye, Vecna must be destroyed in order to obtain the Hand, and even then, there is only a 50% chance that it will drop (the other 50% is the Eye of Vecna dropping). Be aware that if Vecna is destroyed via stoning, his Hand will not appear. The Hand of Vecna appears as a 'mummified hand', and takes up the glove slot for worn armor. Once 'worn' (it fuses itself to your left arm), it cannot be removed, ever, even if the player polymorphs into a monster that would normally cause it to drop their gloves. Because of this, it is immune to erosion, disintegration, destroy armor monster spell, and destroy armor scroll. It also cannot be stolen when worn. The Hand can be enchanted up to +7, but because it can't be destroyed, it will never evaporate if attempting to enchant it higher than +7 (nothing happens). It's powers include: hungerless regeneration, half physical damage, and disease resistance. It can be invoked for its death magic just like the Eye, killing or hurting any monster within line of sight that isn't resistant to death magic. And just as with the Eye, invoking its death magic has consequences. The Hand of Vecna also confers giant strength like gauntlets of power, and will cause an additional 1d5 + 7 (8-12) hit points of cold damage via melee attack to monsters affected by cold, regardless of whether a weapon is wielded or are fighting bare-handed. Worn rings can be removed without issue, even if the Hand of Vecna is cursed, as it's not treated as worn armor. Objects like a cockatrice corpse can also be handled without concern. The Hand must be 'worn' for any of these abilities to function. Cannot be wished for. 
+|-
+|}
+
+=== Forged Artifacts ===
+
+Forged artifacts (introduced in version 0.8.1) are a special class of artifact that can only come into existence by forging two normal artifacts together using a [[forge]]. These artifacts are very powerful; the balance is in the act of removing two artifacts (some of which are powerful in their own right) to create the one. Forged artifacts will never spawn randomly, be gifted by a players deity, or can be wished for. Once a forged artifact is created, the forge used to create it will cool down and become unusable. Below is a table of the current forged artifacts, their abilities, and what is required to #forge them: 
+
+{|class="prettytable sortable"
+!Forged Artifact
+!Symbol
+!Base type
+!Alignment
+!To-hit bonus
+!Damage bonus
+!Receipe/Notes
+|-
+|[[The Sword of Annihilation]]
+|{{cyan|)}}
+|[[Long sword]]
+|Non-aligned
+|1d5
+|1d12
+|Created by forging the artifacts [[Fire Brand]] and [[Frost Brand]] together. Grants [[disintegration]] resistance when wielded, can disintegrate various worn pieces of armor of its target, and has a 10% chance of disintegrating its target outright if they are not resistant. The Sword of Annihilation is made of steel, and because of its nature, is indestructible.
+|-
+|[[Glamdring]]
+|{{gray|)}}
+|[[Long sword]]
+|Chaotic
+|1d8
+|1d8 vs orcs/goblins
+|Created by forging the artifacts [[Orcrist]] and [[Sting]] together. Glamdring is a mithril [[elven long sword]], and like its brethren, will glow blue in the presence of orcs and goblins. Confers MC1 and shock resistance when wielded. If forged by a [[wizard]], will unlock sword skill for that role, and can be trained up to basic skill.
+|-
+|[[The Staff of the Archmagi]]
+|{{white|)}}
+|[[Quarterstaff]]
+|Neutral
+|1d5
+|1d8
+|Created by forging the artifacts [[Magicbane]] and [[Secespita]] together. The Staff of the Archmagi appears as a white ashwood staff, and has a slightly higher base damage modifier vs other quarterstaffs. When wielded, it gives off light, reduces spell casting failure rates by 50% for all spell schools, confers magic resistance, and inherets Magicbane's curse absorbing ability. Grants half spell damage when carried, and can be invoked to temporarily phase through matter. Its damage types are also inline with Magicbane, minus the cancellation attack type.
+|-
+|[[Shadowblade]]
+|{{cyan|)}}
+|[[Athame]]
+|Chaotic
+|1d8
+|1d10
+|Created by forging the artifacts [[Grimtooth]] and [[Stormbringer]] together. When wielded, confers stealth, searching, drain resistance, and casts a perpetual aura of darkness. It's attack will also drain life from its target, but does not inherit Stormbringer's need to attack peacefuls. In the hands of a rogue, Shadowblade gives a significant damage bonus to [[backstab]]s if wielded in the primary hand. It can be invoked to [[cause fear]], similar to the spell. Is made of steel.
+|-
+|[[Gauntlets of Purity]]
+|{{gray|[}}
+|[[Gauntlets of Power]]
+|Lawful
+|N/A
+|N/A
+|Created by forging the artifacts [[Dragonbane]] and [[Grayswandir]] together. Made of silver, and when worn, grants the wearer giant strength, reflection, death magic resistance, and spell power regeneration. Does not inhibit spell casting while worn. If the wearer is of [[lawful]] alignment, it makes them immune to seduction attacks. Grants a small damage bonus while worn for lawful unarmed players trained in martial arts. Cannot be worn by a player who is not [[piously aligned]] &ndash; if the player abuses their alignment to such a degree that their [[alignment record]] drops below 20, the gauntlets will resist being worn, and will force themselves off of the players hands if already worn. 
+|-
+|[[Ashmar]]
+|{{gray|[}}
+|[[Dwarvish roundshield]]
+|Non-aligned
+|N/A
+|N/A
+|Created by forging the artifacts [[Ogresmasher]] and [[Trollsbane]] together. This shield is made of mithril, and provides exceptional defensive abilities. When worn, confers half-physical damage, hungerless hit point regeneration, acid resistance, MC1, increases the players [[constitution]] to 25, and prevents the wearer from being knocked backwards. If Ashmar deflects an attack, it has a {{frac|4}} chance of knocking back the attacker. This shield grants more [[armor class]] than your typical shield, especially if worn by a [[dwarf]].
+|-
+|}
+
+'''Changes to existing artifacts:'''
+* Only lawful Knights can dip for [[Excalibur]], and there's a danger that the sword will rust away completely when you do (if not [[fixed]]). Once it is "thoroughly rusty", subsequent dips can cause it to rust away unless you are successful in getting Excalibur.
+* [[Mjollnir]] and [[Ogresmasher]] have had their base types changed from a [[war hammer]] to a heavy war hammer, which deals significantly more damage.
+* The [[Sceptre of Might]] has had its base type changed from a [[mace]] to a rod, which deals slightly more damage per hit.
+* [[Demonbane]] is made of silver and has been switched from a long sword to a heavy mace, and is the first sacrifice artifact gift for Priests.
+* [[Sunsword]] is made of gemstone (crystal), much like its same-named counterpart in AD&D (5th edition).
+* [[Fire Brand]] and [[Frost Brand]] are now short swords, and are each made of steel.
+* [[Dragonbane]] has been switched to a pair of dragonhide gloves that provides reflection, warns against dragons, and provides acid resistance.
+* [[Magicbane]] is no longer an [[athame]], and is now a [[quarterstaff]]. None of its special abilities or functions have otherwise been changed.
+* The Knight quest artifact [[The Magic Mirror of Merlin]] has had magic resistance removed. In its place is reflection and half spell damage when carried.
+* The Priest quest artifact [[The Mitre of Holiness]] allows #pray and #turn to function in Gehennom when worn.
+* The Samurai quest artifact [[The Tsurugi of Muramasa]] confers [[half physical damage]] when wielded.
+* Various artifacts that have a nemesis monster warn against those monsters.
+* Almost all of the stock weapon artifacts have had their to-hit and damage modifiers adjusted in the players favor.
+* Certain artifacts can either deliver extra damage to their nemesis monsters, or have a small percentage chance of delivering a fatal blow &ndash; this applies to the player as well, so beware of that hill orc wielding [[Grimtooth]] if you're playing an elven character.
+* Artifact weapons can be dual-wielded for those that can [[twoweapon]], but there's a catch &ndash; lawful and chaotic artifacts cannot be dual-wielded together, and will resist the attempt if tried. Like-alignment artifact weapons can be dual-wielded together, and any aligned artifact weapon can be dual-wielded with a second neutral or non-aligned artifact weapon.
+* Putting [[Magicbane]] into a [[bag of holding]] runs a risk of exploding the bag and destroying the artifact due to Magicbane's cancellation magic.
+* [[Grimtooth]] now has a sickness-inducing attack that has a {{frac|6}} chance of making its target terminally ill (player or other monsters). Just like using a [[poisoned]] weapon, lawfully-aligned players incur a small alignment penalty when using Grimtooth.
+* [[The Eyes of the Overworld]] now protect the wearer against many forms of gaze attacks, greatly reducing the need for the player to have to remove them to blind themselves with a blindfold or towel. Take note, [[Medusa]]'s petrifying gaze attack is too powerful and will overcome the EotO's protection.
+* [[Vorpal Blade]] will protect the one who wields it from any type of beheading attack.
+
+=== Dragon scales and dtsund dragon-scaled armor ===
+dtsund dragon-scaled armor, or dtsund-DSM, is named after the person who originally came up with the idea for removing [[dragon scale mail]], and having [[dragon scales]] fuse with existing worn body armor instead. This system of dragon-scaled armor was first introduced in [[NetHack Fourk]], and then [[xNetHack]]. As of EvilHack version 0.8.0, this system of dragon scales is in effect, using xNetHack's implementation, with some minor adjustments (taken from the dtsund-DSM entry on the xNetHack wiki page):
+
+* Dragon scales are now worn in the cloak slot, providing their dragon's primary extrinsic, AC 3, and MC 0.
+* Reading enchant armor while wearing body armor under scales hardens the scales and fuses them together, causing that armor to gain +5 AC and confer the matching primary extrinsic.

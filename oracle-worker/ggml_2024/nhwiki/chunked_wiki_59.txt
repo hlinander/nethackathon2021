@@ -1,0 +1,1000 @@
+* [[heavy iron ball]]
+* [[iron chain]]
+* [[Boulder|enormous rock]]
+
+It is not possible to pick up an iron chain, nor can they be generated from [[iron golem]]s, because these do not exist in Hack 1.0.3.
+
+== Legacy ==
+
+Andries Brouwer ceased development of Hack after version 1.0.3.
+
+[[Don Kneller]] ported Hack 1.0.3 to the PC, producing a long series of [[MS-DOS#Hack on MS-DOS|PC Hack]] versions, eventually implementing [[IBMgraphics]].
+
+[[Mike Stephenson]] took up development of Hack, eventually producing [[NetHack 1.3d]].
+
+Versions of Hack 1.0.3 are still distributed with operating systems of the BSD family.
+
+[[Category:History]]}
+&&%s&& %s Pick-axe {144376 2022-02-03T18:23:50Z {4001279 Umbire the Phantom}  {{weapon
+  |name=pick-axe
+  |glyph=(
+  |tile=[[image:pick-axe.png]]
+  |smalldmg=1d6
+  |largedmg=1d3
+  |skill=pick-axe
+  |cost=50
+  |weight=100
+  |material=iron}}
+
+A '''pick-axe''' is a kind of [[tool]] that appears in ''[[NetHack]]''. It is made of [[iron]]. While classified as a tool and designed for [[digging]], it can also be used as a [[weapon]] - the [[dwarvish mattock]] is a similar [[weapon-tool]] primarily classified as a weapon.
+
+==Generation==
+[[Archeologist]]s start with a +0 pick-axe.{{refsrc|src/u_init.c|34|version=NetHack 3.6.0}}
+
+Pick-axes make up about 0.5% of randomly generated tools (on the floor, as [[death drop]]s and in [[shop]]s). With the exception of [[bones]] files, they always generate [[uncursed]].
+
+[[Dwarf (monster)|Dwarves]] have a {{frac|4}} chance of [[monster starting inventory|being generated with]] a pick-axe.{{refsrc|src/makemon.c|336|version=NetHack 3.6.0|comment=a pick-axe is given {{frac|3}} of {{frac|3|4}} of the time, and a mattock is given {{frac|2}} of {{frac|4}} of the time}} [[Elvenking]]s have a {{frac|2|3}} chance of generating with a pick-axe; the guaranteed Elvenking on the [[Plane of Earth]] will always generate with one.{{refsrc|src/makemon.c|257|version=NetHack 3.6.0}}
+
+==Pick-axe skill==
+{{pick-axe skill table}}
+
+The pick-axe and the dwarvish mattock use the '''pick-axe''' [[skill]].
+
+==Description==
+{{main|Digging}}
+You can [[apply]] a pick-axe to tunnel through [[wall]]s or the [[floor]], dig through [[doors]] and smash [[boulder]]s and [[statue]]s. If you apply it upward, a [[rock]] will fall from the ceiling and bonk you on the head. If you have the ''autodig'' [[option]] enabled and are currently wielding a pick-axe, you can dig into walls or the ground by simply walking into them (or pressing {{kbd|>}}); this does not work for boulders, statues, or doors. You can dig faster by [[Enchantment|enchanting]] the pick-axe, playing as a [[dwarf]] and/or using [[Digging#Digging speed|other available methods]] - somewhat unusually, your skill level in pick-axe has no bearing on your digging speed.
+
+Attacking with a pick-axe gives a +2 to-hit bonus against [[xorn]]s.
+
+===Shops and pick-axes===
+[[Shopkeeper]]s will attempt to block off the entrance of their [[shop]]s if you have a pick-axe in your inventory. You can drop it at the entrance to the shop (not counting the doorway), place it into a [[container]], or try to force your way in by moving behind another [[monster]]. Trying to throw a pick-axe in diagonally will cause the shopkeeper to swiftly catch it; pulling out a pick-axe from a container you are carrying while already in the shop will cause the shopkeeper to yell at you - there is no other effect, however, and you can continue to shop as normal. Digging a pit in the floor will have them warn you about falling through; the real danger is that if you make the pit into a hole, objects on that square and adjacent squares can fall through the hole - this counts as [[shoplifting|theft]] and will anger the shopkeeper.
+
+===Pick-axes and the Watch===
+[[Watchmen]] do not appreciate you digging up the level on their watch, and will warn you if they see you trying to dig through doors or walls with a pick-axe. Continuing immediately after being warned will cause those watchmen to become hostile.
+
+==Strategy==
+Pick-axes are generally the long-term digging tool of choice after a wand of digging. One of the more common early uses for a pick-axe is finding and looting [[vault]]s for gold to use in shops and/or at [[temple]]s. While digging, you may also unearth [[gem]]s and [[gold]] embedded in the walls - while finding vaults will suffice most times, searching for random gold and gems with the aid of [[object detection]] (usually via a [[potion of object detection|potion]]) is a viable option for those attempting a [[protection racket]], particularly Archeologists.
+
+Another general use is to cut a cleaner and/or shorter path between staircases on a dungeon level, as well as smashing boulders blocking your path; this is particularly worthwhile with [[Gehennom]] [[maze]]s, especially for navigating your way through later on during the [[ascension run]]. A pick-axe can be used to break stuck and/or obstructive boulders in [[Sokoban]] - note that breaking boulders here causes a -1 [[Luck]] penalty, unless you are on a level you have already solved. Still another use is to break statues and get at [[Statue#Statue contents|their potential contents]]. Smashed boulders and statues will also crumble into [[rock]]s, which you can [[throw]] or [[sling]] as projectiles or turn into meatballs via [[stone to flesh]]
+
+Pick-axes can be used to steal from shops by picking up all of the shop's merchandise and digging out of the shop, then through the floor - this will only work if the shop is big enough for you to get enough distance from the shopkeeper, and you may need to place additional obstructions between you and them (e.g., a [[scroll of earth]]); a [[wand of digging]] may be more ideal. You can also dig straight through the floor, but obstructing the shopkeeper is far more necessary, or they will otherwise steal every non-worn and non-wielded item in your inventory as you fall. Stealing will naturally anger the shopkeeper, and [[Keystone Kop]]s will begin to generate when you return to that dungeon level, so plan accordingly.
+
+Pick-axes are fairly heavy at 100 [[aum]], which can prove inconvenient - especially if you start with a low carry cap due to weak [[strength]] and/or [[constitution]]. A non-cursed [[bag of holding]] makes them far more tolerable to keep with you long-term; the wand of digging and wand of striking may be preferred over a pick-axe in certain instances, such as digging through non-Gehennom mazes, though they have limited charges.
+
+===Finding a pick-axe===
+Pick-axes are fairly common within the dungeon despite their low generation rate - as dwarves are [[tunneling monster]]s and very common in the [[Gnomish Mines]], you will usually hear them digging before you see them. Dwarven players, [[Gnome (starting race)|gnomish]] players and lawful-aligned characters unwilling to risk [[alignment record|early alignment penalties]] can have a [[pet]] attack a peaceful dwarf and kill them to obtain one. Other alignments and races instead must contend with fighting off dwarves digging towards their positions, as their digging can disrupt use of chokepoints; pets are still more than useful in this scenario, though dwarves are somewhat tougher for them to kill.
+
+===Conduct===
+Players who are aiming for the [[weaponless]] [[conduct]] must be very careful when using pick-axes: bumping into a monster while digging or forgetting to unwield the pickaxe before (re-)entering combat will break the conduct. This is so easy to do that some players recommend not using a pick-axe at all if attempting the conduct.
+
+===Digging for victory===
+{{main|Digging for victory}}
+Finding a pick-axe is one of the primary goals in attempts to "dig for victory".
+
+==History==
+The pick-axe first appears in [[Hack 1.0.2]].
+
+Pick-axes were subject to [[Bugs in NetHack 3.4.3|a few bugs]] in [[NetHack 3.4.3]], a couple of which are listed here:
+
+* The shopkeeper does not charge the hero for an unsold boulder that is destroyed with a pick-axe. This was bug C343-396, and is fixed as of September 2009.
+* A badly formed message may be produced if a monster removes a boulder while a pick-axe is being applied to that boulder. This was bug C343-397, and is fixed as of September 2009; see [https://sourceforge.net/p/nethack/NetHack/ci/e450ca626d91b6fb56048e2ca8cb5e358d938587 commit e450ca].
+
+==SLASH'EM==
+In [[SLASH'EM]], pick-axes weigh just 75 aum.
+
+[[SLASH 6]], a predecessor to SLASH'EM, had the [[Gnome (role)|Gnome]] role, whose [[quest artifact]] was a pick-axe called [[The Pick of Flandal Steelskin]]. While both the role and artifact are [[defunct]] in modern SLASH'EM, a pick-axe can be found in the [[Mine king level]].
+
+==Encyclopedia==
+{{encyclopedia|The mine is full of holes;
+With the wound of pickaxes.
+But look at the goldsmith's store.
+There, there is gold everywhere.
+|[ Divan-i Kebir Meter 2, by Mevlana Celaleddin Rumi ]}}
+
+==See also==
+* [[Crystal pick]], a new tool that uses the pick-axe skill in [[UnNetHack]]
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]
+[[Category:Weapons]]}
+&&%s&& %s Shop {148245 2022-09-26T20:33:27Z {4001279 Umbire the Phantom} leftover from current-ifying page A '''shop''' is a [[special room]] that appears in ''[[NetHack]]'', and may occur on some levels of the dungeon. Each has an attendant [[shopkeeper]] and a selection of [[item]]s to buy - the shopkeepers will also buy items from [[you]], and both types of items depend on the type of shop. A shop with no shopkeeper is considered abandoned.
+
+==Generation==
+Shops have a base 3/[[Dungeon level|DL]] chance of being created on any dungeon level between level 2 and [[Medusa's Island]], with the exception of the [[Oracle]] level. The creation of a shop assumes there is a suitable room to put them in (i.e., no [[stair]]s, only one [[door]]) and that there are enough rooms on the level to start with - the minimum number of rooms required is 3 for normal dungeon levels, and 4 for a branch level. Note that this means that there will always be a shop on each of levels 2 and 3 if the conditions are right (which in practice turns out to only be the case about 45% of the time). 
+
+With the exception of bones and [[Orcus-town]], shops are never generated abandoned, and are never restocked under any circumstances - the only way they can gain more items is if they are brought in by you, a dead player from a [[bones]] file, or very rarely another [[monster]].
+
+===Table of shops===
+The probability of a given type of shop being generated is detailed in this table:
+{|class="wikitable"
+!Shop
+!Probability
+!Stock
+|-
+|general
+|42%
+|100% random
+|-
+|used armor dealership
+|14%
+|90% [[armor]], 10% [[weapon]]s
+|-
+|second-hand bookstore
+|10%
+|90% [[scroll]]s, 10% [[spellbook]]s
+|-
+|liquor emporium
+|10%
+|100% [[potion]]s
+|-
+|antique weapons outlet
+|5%
+|90% weapons, 10% armor
+|-
+|delicatessen
+|5%
+|83% [[food]], 5% [[fruit juice]], 5% [[water]], 4% [[booze]], 3% [[ice box]]es (containing corpses)
+|-
+|jewelers
+|3%
+|85% [[ring]]s, 10% [[gem]]s, 5% [[amulet]]s
+|-
+|quality apparel and accessories
+|3%
+|90% [[wand]]s, 5% [[leather gloves]], 5% [[elven cloak]]s
+|-
+|hardware
+|3%
+|100% [[tool]]s ([[container]]s may contain random items that are also for sale)
+|-
+|rare books
+|3%
+|90% spellbooks, 10% scrolls
+|-
+|health food
+|2%
+|70% [[vegetarian]] food, 20% [[fruit juice]], 4% [[potion of healing|healing]], 3% [[full healing]], 2% scrolls of [[food detection]], 1% [[royal jelly]]
+|-
+|lighting
+|Minetown only
+|48% [[tallow candle]]s, 30% [[wax candle]]s, 9% [[oil lamp]]s, 5% [[brass lantern]]s, 5% [[potion of oil|potions of oil]], 3% [[magic lamp]]s
+|}
+
+Accessories and rare book shops may not be larger than 20 squares (including the non-stocked squares); if they would otherwise be (about half the time), they are converted into general stores instead.
+
+===Special levels with shops===
+The following special levels are guaranteed to have shops at fixed locations:
+
+* [[Minetown]] (except for [[Orcish Town]]) is guaranteed to have at least 1 shop, including [[Izchak]]'s lighting store. In addition, the first shop generated in Minetown will always be a health food store when the player is a [[Monk]].
+* The [[Tourist Quest]] has several guaranteed general stores: two in the locate level (The Thieves Guild Hall) and two in the goal level (The Shades).
+* [[Orcus-town]] is usually host to a few abandoned shops.
+
+===Closed shops===
+Shops can also be generated "closed", in which case the message "Closed for inventory" will be written in dust outside of the shop door. The shop door itself will be locked. The door cannot be chopped down with an [[axe]], and breaking down the door will anger the owner unless you immediately pay 400 zorkmids; opening the door with an [[unlocking tool]], [[wand of opening]] or {{spell of|knock}} spell allows you to enter and shop as usual. Shops in special levels cannot ever generate closed.
+
+===Mimics===
+{{main|Mimic}}
+Any [[mimic]]s you encounter are most likely to appear in shops, disguised as items. There is a (dungeon level - 1)% chance to generate a mimic on a given shop square instead of an item.
+
+===Traps===
+[[Trap]]s cannot normally be generated in shops, with the exceptions of shops placed on special levels. In practice, this will most likely occur in the Tourist quest and Orcus-town - while the various layouts of Minetown contain two traps each, they are very rarely placed within any of the shops.
+
+==The shopkeeper==
+{{main|Shopkeeper}}
+The shopkeeper is a [[human]] monster that owns the shop and its contents and buys and sells items within. They are responsible for the upkeep of the shop as well - this includes magically repairing most damage done to the shop's floors, walls and door, and removing most traps that are set within their shop(with the exception of [[pit]]s or [[web]]s), including those made by you. Damaged walls, broken doors and [[hole]]s are repaired in five turns.{{refsrc|shk.c|3033}}{{refsrc|shk.c|3043}} If the shopkeeper should end up dead for any reason, or else a shop has no shopkeeper, then the shop's items are free for you or any monster to take.
+
+{{upcoming|NetHack 3.7.0|Shopkeepers will now remove pits and webs as well.}}
+
+===Theft prevention===
+{{main|Stealing from shops}}
+Shopkeepers are 50% faster than a normal character's base [[speed]], and will keep close to their shop's entrance - this makes it difficult, but not impossible, to walk out with unpaid items. See the article linked at the top of this section for more information on how to steal from shops, and see the article on shopkeepers for more details about their movement.<!-- Please do not expand this section, go to [[Stealing from shops]] instead.-->
+
+===Barring the entrance===
+In addition, shopkeepers will block the entrance square (the square inside the shop that is directly in front of the door) and will not allow you to enter their shop if you are [[invisible]], have a visible [[pick-axe]] or [[dwarvish mattock]], and/or are currently [[riding]] on a steed. If you dismount, become visible, or remove the digging tool(s) from your open [[inventory]] (including placing it in a [[container]]), you will be allowed entry. Note that the door of the shop is not considered suitable for dropping your digging tools - this is to prevent characters with extra speed from entering on a free turn. Shopkeepers will also catch any tools you attempt to throw in.
+
+While in a shop, the shopkeeper will prevent you from leaving if you are mounted and/or invisible.
+
+===Pick-axes===
+On top of the above, the shopkeeper will yell at you if you pull out a digging tool(s) from a container while inside - but this does not anger them, and you can safely sell or otherwise walk around with the tool(s) as long as you do not dig through the shop walls. Digging a pit will have them warn you about falling through [[hole]]s, though this will also not anger the shopkeeper - but if you dig again and create a hole, items on the same square and possibly adjacent squares will fall through.
+
+Attempting to enter a shop with a dwarvish mattock or pulling one out inside a shop will also identify it.
+
+===Angering the shopkeeper===
+The shopkeeper will become angry if you attack them, damage the shop or its inventory, or they see you leave with unpaid items or debt - additionally, if you try to leave the shop with unpaid items via a hole made within the shop's boundaries, the shopkeeper will try to [[Stealing from shops#Shopkeeper prevention|grab your pack]] as you fall if they can get adjacent. Theft includes any items on the same square as a hole falling through it, as well as items from potentially adjacent squares. Damaging the shop door or walls will immediately prompt you to pay 400zm, and the shopkeeper will be angry if you do not pay.
+
+Paying for stolen items will always pacify the shopkeeper - note that there will be an additional price hike. In either case, you will need to be adjacent to the shopkeeper to pay them off unless you are both in the shop; you can also throw the required gold at the shopkeeper. In all other cases, you can pay them 1000zm for a 2/3 chance to pacify them.{{refsrc|src/shk.c|1407|version=NetHack 3.6.6}}{{refsrc|src/shk.c|1420|version=NetHack 3.6.6}} Stealing an item while the shopkeeper is already angry due to another offense, then paying for it, will make the shopkeeper will "forget" about your previous offenses, and they will become calm and return to their shop as usual. Pacifying a shopkeeper by paying for stolen goods will also pacify any watchmen on that floor and cause any Keystone Kops present to disappear.
+
+==Transactions and inventory==
+A shop's inventory consists of all the items on any square of its floor, with the notable exception of the "entrance square" in front of the door; this is not to be confused with the shopkeeper's personal [[inventory]]. Items belonging to the shop will have their price displayed as you move over them, and an item's price can be also viewed by [[near look]]ing on their square. For containers generated as belonging to a shop, the contents are also that shop's property, regardless of whether that shop would sell them normally. You cannot buy from shops normally while [[blind]] unless you have [[telepathy]], as you will be unable to see the shopkeeper, although you can still sell items as normal.
+
+Pressing {{kbd|$}} will display any [[#Credit|credit]] you have, along with any debts you currently owe the shopkeeper. You can #[[chat]] to get the price of an item(s) on your square without picking anything up. Buying and selling non-magical [[weapon]]s and [[armor]] will have the shopkeeper partially identify that item(s) to you - e.g., if you sell a crude dagger, the shopkeeper will reveal that it was an [[orcish dagger]]. After each transaction, they will also tell you the item's appearance if you are blind.
+
+===Buying items===
+Picking up items off the shop floor adds them to your inventory, with each item(s) being given an "unpaid" tag that lists their price - pressing {{kbd|I}} and then {{kbd|u}} will display all the unpaid items you are currently carrying.
+
+You can pay for your goods by pressing {{kbd|p}}, which will prompt you about itemized billing; answering "no" to this will pay for all the items at once if possible. For itemized billing, you can pay individually for each unpaid object (or stack of objects). Items that you pay for are yours, and the required gold will transfer to the shopkeeper's personal inventory. In both cases, if you have credit at that shop, it will be used up first before any gold is transferred.
+
+===Selling===
+If you [[drop]] an item onto the shop floor (with the exception of the entrance square), the shopkeeper will offer to buy it if they normally carry that type of wares. If you refuse, or if the shopkeeper makes no offer, then you continue to own the item and can pick it up again without paying.
+
+Any items that unintentionally fall onto the shop floor, e.g. from [[throw]]ing them or [[Slippery fingers|losing your grip on them]] will be considered "relinquished" and automatically sold if it is a type normally sold by the shop. Any items dropped by monsters killed within a shop also becomes that shop's property - this includes you, if you die while inside a shop.
+
+===Credit===
+{{Main|Credit cloning}}
+If you drop any [[gold]] onto the shop floor, the shopkeeper will give you credit which you can use to buy items and pay off debts. If you sell an item to a shopkeeper that is completely out of gold, they will instead offer you store credit in exchange for the item at 90% of the normal price. Any credit given in a shop is only good for that specific shop - if you leave a shop with unpaid items in your inventory (e.g., your intrinsic [[teleportitis]] suddenly kicks in), ''all'' of your credit will be used to cover the losses, and if your credit was not enough, the shopkeeper will become angry.
+
+You can abuse this credit system through credit cloning - see the linked article at the top of this section for more detailed information.
+
+===Usage fees===
+{{main|Usage fee}}
+If you use an unpaid item with charges in a shop before paying for it and the shopkeeper is present, you will be charged a [[usage fee]].{{refsrc|src/shk.c|4580|version=NetHack 3.6.6}} Broken or destroyed items, including the locks of [[chest]]s and [[large box]]es, also incur fees.
+
+==Pricing==
+{{Main|Price identification}}
+
+===Base price===
+Each item in ''NetHack'' has a base price, which is modified in various ways to produce the final selling price; an [[artifact]] has its own usually-high base price distinct from its [[base item]]. Positively-enchanted weapons and armor have an additional 10 zm added to their base price for every point of enchantment.
+
+Some items are considered "worthless"; you cannot sell them, but their buying price is calculated as though they had a base price of 5 zm:
+
+* items with zero base price
+* [[cancelled]] [[wand]]s (with -1 charges)
+* partly-eaten [[comestible]]s
+* uncursed [[potions of water]]
+
+====Unidentified gems====
+Valuable [[gem]]s and worthless glass which aren't formally identified have their base prices determined by a different mechanism:
+
+* When buying, the base price is that of an arbitrary valuable gem.
+* When selling, the base price is between 3 and 8 zm.
+
+The random modifiers to unidentified item prices listed below don't apply in this case. Even if you know for a fact that a gem is valuable (by e.g. [[engrave]]-testing) and have named it correctly, you can't get its full selling price unless you formally identify it.
+
+[[Gray stone]]s don't use this mechanism; an unidentified gray stone is priced the same as an identified one.
+
+===Buying===
+When you buy an item, you are charged the base price, modified as follows. All multipliers are applied in sequence:
+
+* Your [[charisma]] grants a modifier to the buying price.{{refsrc|src/shk.c|2134|version=NetHack 3.6.6}}
+* Some characters are considered "suckers", and will be charged {{frac|3}} more. You are a sucker if:{{refsrc|src/shk.c|2128|version=NetHack 3.6.6}}
+** you're wearing a [[dunce cap]]
+** you're wearing a [[shirt]] not covered by a [[cloak]] or [[body armor]]
+** you're a [[Tourist]] below [[experience level]] 15
+* A hostile shopkeeper will charge {{frac|3}} more.{{refsrc|src/shk.c|21g4|version=NetHack 3.6.6}}
+* When buying unidentified objects, in {{frac|4}} of cases the shopkeeper will charge {{frac|3}} more. This surcharge is tied to the individual item or stack; merged stacks will inherit the higher of the two prices, while split stacks will inherit the price of the original stack.
+* Depending on your [[nutrition|hunger status]], shopkeepers will charge more for food and comestibles:{{refsrc|src/shk.c|3402|version=NetHack 3.6.6}}
+** If you are hungry, the price is doubled.
+** If you are weak from hunger, the price is tripled.
+** If you are fainting from hunger, the price is quadrupled.
+* Artifacts are bought for four times their already-inflated base cost.{{refsrc|src/shk.c|2159|version=NetHack 3.6.6}}
+
+===Selling===
+When you sell an item, you are normally offered {{frac|2}} the base price; charisma modifiers do not apply. If you're a sucker, as above, you are offered {{frac|3}} the base price instead.
+
+* {{frac|4}} of shopkeepers will pay {{frac|4}} less for unidentified objects; this modifier is consistent for a given shopkeeper.
+* Artifacts are sold for {{frac|4}} their base cost.{{refsrc|src/shk.c|3396|version=NetHack 3.6.6}}
+
+==Strategy==
+{{For|shopkeeper-specific strategy|Shopkeeper#Strategy}}
+Shops are a very useful resource overall, particularly in the early and mid-game - they are usually a primary source of items and equipment, and additionally provide a means of identifying them via prices, as mentioned above. They can also serve as a place to offload anything you consider [[junk]], and can serve various other purposes besides.
+
+It may sometimes be worthwhile to drop your gold and use credit to buy things, rather than paying directly - even if you do not plan on shoplifting, you may benefit from tricking a monster into bringing the gold back to you. Covertly stealing expensive items (usually including artifacts) may also be worthwhile for the early advantage they provide, e.g. a powerful weapon, or something to sell back to the shopkeeper for a significant price.
+
+===Shopping while invisible===
+If you are invisible and either do not want to wait until you are visible again, or your invisibility cannot be undone (either due to a cursed source or a [[quaff]]ed blessed potion), then you can use one of the following methods to safely enter or exit a shop as normal:
+
+* Wearing a non-cursed [[mummy wrapping]] is the safest and most typical method, as it works in a mass majority of cases with the exception of a cursed [[cloak of invisibility|cloak]].
+* [[Teleport]]ing into and out of the shop is possible, but requires [[teleport control]] for you to enter reliably.
+* [[Jump]] diagonally through the door.
+* Hurtle diagonally through the door by throwing things while [[levitation|levitating]] due to Newton’s Third Law.
+* [[Dig]] down on the level above - but this leaves you completely at the mercy of [[RNG]].
+** You can also dig a hole out of the shop through the floor - this is safe as long as no unpaid items fall through with you.
+* You can forego entering entirely and instead use a [[pet]] and a [[magic whistle]] to steal from the shop.
+* Use any holes in the wall dug by a [[tunneling monster]] (e.g., a [[dwarf]] with a pick-axe or mattock); each hole will be magically repaired in at least 5 turns after it was made if no monster is present on that square.
+* [[Polymorph]] into a [[xorn]] to [[phase]] through the wall.
+* Be very fast (e.g. usually from wearing [[speed boots]]) and beat the shopkeeper to the door. Note that the shopkeeper will move to stay ahead of a player's intrinsic speed - this does not account for speed from polyself.
+
+These methods are less safe and/or may cost you some gold:
+
+* Carry 800zm or more, then polymorph into an [[umber hulk]] or [[rock mole]] and chew through the wall, and pay for the damage.
+* Carry 800zm or more, then destroy the closed shop door, pay for the damage immediately, then enter/leave. The door will be fixed afterward.
+* Teleport the shopkeeper - but this will anger them, and you will have to avoid the shopkeeper on the way out unless you can pacify them.
+* Kill the shopkeeper, directly or otherwise - doing so directly counts as [[murder]], and you are deprived of price identification for that shop in either case.
+
+===Shopping smart and safe===
+While each character's shopping needs will differ, price identification can generally narrow down what wares you may want to focus on, and even without thorough memorization a player can get an idea of which items are valuable.
+
+There are other multipurpose pointers for a shopper to keep in mind - in general, ''never'' buy or sell gems that are unidentified.
+
+In general, it is a [[Bad Idea]] to randomly wear or use items within a shop, since even if your pet is not averse to moving over them, you may end up endangering yourself or complicating play as you would with any randomly use-tested item - you may end up quaffing a potion of paralysis, wearing a helm of opposite alignment, exploding a cursed wand, or end up reading a non-cursed scroll of fire with the shopkeeper nearby and/or unpaid flammables in your inventory.
+
+One particular obstacle to this end is the [[scroll of scare monster]] - a scroll that is cursed or has been picked up and dropped once turns to dust when picked up, which incurs a charge for the destroyed item. Novice adventurers who shop by picking up items can find themselves trapped in a store with no money and no way out. There is also the more direct threat to your life posed by mimics of any kind - even small mimics can end an unwary early character, and particularly unfortunate sorts may end up stuck to a giant mimic.
+
+There are several ways to prevent any mishaps while shopping:
+
+* Be sure #chat to a shopkeeper before picking up certain items directly. 
+* Always carry a few hundred spare zorkmids to cover any accidental charges you incur. In a worst-case scenario where you cannot avoid incurring damages, you may need to sell some additional items in your inventory - depending on your situation, this may be preferable to being branded a thief or dying.
+* Before entering a shop, quaff a non-cursed [[potion of object detection]]. You may notice suspicious blank squares if you have not yet seen the contents of the shop - those are likely to be mimics.
+* "Obvious" out-of-place objects are often mimics, especially in specialized shops (e.g., a long sword in a potion shop, or down staircase in any shop). However, this does not work as well for general stores (which sell almost anything) and [[bones]] files (which may have the inventory of the dead player - although you may encounter signs of this beforehand).
+* If you are playing with default tiles or standard ASCII, you can also discern mimics by their glyphs - they will appear as "strange objects", and the tiles for strange objects are chests with eyes peering out of them ([[image:strange object.png]]/{{monsym|strange object}} versus [[image:chest.png]]/{{brown|(}}). Additionally, their glyph is usually the mirror of the glyph for [[armor]] ({{cyan|[}}) - the only time {{white|]}} is used for anything else is for actual armor on the [[Rogue level]].
+* [[Telepathy]] and [[warning]] will reveal mimics and/or their locations.
+* The [[ring of protection from shape changers]] will force mimics into their standard form.
+* Any form of [[monster detection]] can reveal mimics - note that a non-blessed [[potion of monster detection]] or a {{spell of|detect monsters}} spell cast at lower than Skilled level only reveals their current location, while detection from a blessed potion or Skilled (or better) spell passively remains active.
+* A safe and surefire way to uncloak mimics inside a shop is to throw a single gold piece across each row of the store - this does not use up valuable projectiles and will only establish credit. Be careful not to hit and possibly anger the shopkeeper!
+* [[Search]] before walking onto an item to uncover any mimics - this will prevent you bumping into them, as the larger ones are sticky.
+* A [[stethoscope]] can also uncover mimics, and the first application of a stethoscope per turn is a free action.
+* Healing a mimic disguised as an item (e.g. via a [[spell of healing]]) will indirectly expose it, with the "object" seeming a more vivid color than before.{{reffunc|mon.c|mimic_hit_msg|comment=mimics give strange messages if healed while disguised}}
+* If you lack any means of detection and are risk-averse, only walk where your pet or the shopkeeper has walked.
+
+===Combat===
+A shop can also function as a refuge if you need to heal or fight a powerful enemy. You can pick up an item and stand so that the shopkeeper blocks the door, preventing non-phasing monsters from getting in. If you stand a knight's jump from the door, you will not be exposed to ranged attacks from outside as well. You can then move next to the door to fight, and step away to heal at your leisure.
+
+===Zen shopping===
+{{main|Zen}}
+For zen players, shops are one of the few methods available to identify item the appearances, particularly scrolls and potions. However, being unable to see the shopkeeper poses a great danger: paying only works if you can see the shopkeeper, and failing to discern the shopkeeper's location by searching before safe-moving via {{kbd|m}} will nearly always result in death. It may be advisable to avoid shops altogether until you have telepathy.
+
+Braver and/or more experienced players can bring a container to place items in (ideally a [[bag]]) and a pet to steal the container back in order to speed up the process of re-acquiring sold items that the shopkeeper has identified. It is also possible to drop enough gold to cover your purchases and then teleport, jump or phase out after picking up your desired items, even without [[teleport control]] - unfortunately, this is not nearly as reliable early in the game, and most zen players acquire telepathy before any of these other methods become available. Selling items works as normal, and might be useful if you get burdened before acquiring telepathy.
+
+==History==
+Shops have been present in the game's code since the original release of [[Jay Fenlason's Hack]], and make a proper first appearance in Hack 1.21, a variant of this first ''Hack''. Hack 1.21 also included a shop at the beginning of the game, where characters purchased their starting items, rather than bringing their initial inventory with them into the dungeon.
+
+Izchak and his lighting shop in Minetown were introduced in [[NetHack 3.2.0]] as part of a tribute to late DevTeam member [[Izchak Miller]].
+
+In default installations of [[NetHack 3.4.3]] and earlier versions, along with some variants based on those versions, prices are not displayed by default, and you must pick up items or #chat while standing on them to learn their price. Additionally, modifiers for unidentified items applied to identified items as well, and the lower price for sold items was applied per-sale - by repeatedly dropping an item, refusing the shopkeeper's offer, and picking it up again, you would eventually get two different quotes. A bug was also present in those versions that could prevent you from leaving a 2x2 size shop through normal means; saving and reloading the game while standing next to the shopkeeper may alleviate this bug in a semi-sane and perfectly legal fashion.
+
+The health food store was introduced in [[NetHack 3.6.0]]. Beginning in [[3.6.1]], [[autopickup]] no longer picks up unpaid items - this prevents any mishaps involving a cursed scroll of scare monster.
+
+==Messages==
+{{message|You hear someone cursing shoplifters.<br>You hear the chime of a cash register.|There is a shop on the level.}}
+{{message|You hear Neiman and Marcus arguing!|As above, but you are hallucinating.}}
+{{message|This shop appears to be deserted.|There is no shopkeeper in the shop.}}
+
+==Variants==
+Some variants may feature entirely different types of shops, in addition to adding more locations and/or functions.
+{{todo|Cover the rest of the variants eventually.}}
+===SLASH'EM===
+[[SLASH'EM]] adds pet stores, randomly generated light stores, tin shops, and music shops. SLASH'EM also has the [[Black market (SLASH'EM)|black market]], a special floor-wide shop with its own branch tended to by [[One-eyed Sam (SLASH'EM)|One-eyed Sam]] and his assistants. Shopkeepers are also much more powerful than in vanilla ''NetHack''.
+
+Shops can be additionally found in more locations as well - the [[Mall]] is a special level that contains several shops and can appear early in the dungeon.
+
+===UnNetHack===
+[[UnNetHack]] also contains pet stores, randomly generated light stores, tin shops, and music shops. The [[Town]] branch is a new addition that contains a few shops, including most of the newer ones.
+
+UnNetHack also contains its own version of [[Black market (UnNetHack)|the black market]], with the same layout as SLASH'EM - UnNetHack's [[One-eyed Sam (UnNetHack)|One-eyed Sam]] is a woman, and there is a second possible map that instead splits the market into several independent shops with their own shopkeepers, while One-eyed Sam herself keeps watch.
+
+==References==
+<references/>
+{{DOD}}
+{{nethack-366|offset=1}}
+{{slashem-7E7}}
+[[Category:Special rooms]]}
+&&%s&& %s Apply {144648 2022-02-23T18:07:57Z {4001279 Umbire the Phantom}  {{Keyboard Commands}}
+'''Apply''', {{kbd|a}}, is a command in ''[[NetHack]]'' that lets the player use an item.
+
+==Description==
+The apply command is generally used with some form of [[tool]]. For example, you can apply a [[unicorn horn]] to remedy confusion, blindness, sickness, etc. You can also apply a [[pick-axe]] to break down a wall, a [[lamp]] to light it, a [[magic marker]] to write, etc. Various other non-tool items can be applied as well.
+
+Certain [[weapon]]s have a secondary function that can be accessed by applying them; these include most types of [[polearm]], as well as the [[lance]]. Lances and polearms are applied to damage enemies from exactly two squares away, automatically wielding them in the process; see the article on [[pounding]] for details. [[Axe]]s can be applied towards doors and trees in order to chop them down. [[Dwarvish mattock]]s can be applied the same way as pick-axes, but are considered weapons rather than tools.
+
+Applying a [[wand]] breaks it, causing the magical energy to be unleashed all at once in an uncontrolled explosion; wands are usually used by [[zap]]ping them with {{kbd|z}}. You need to have a minimum [[strength]] of 10 to break most wands. See [[Wand#Breaking wands|the article subsection on breaking wands]] for details.
+
+Some [[artifact]]s share their [[base item]] types with tools, such as the [[Orb of Fate]] (an artifact [[crystal ball]]), and will function as that item when applied, separately of what powers it may have when [[invoke]]d. In the cases of [[The Magic Mirror of Merlin]] and [[The Master Key of Thievery]], this also produces a rumor that is true or false depending on its [[beatitude]]. The [[Bell of Opening]] and [[Candelabrum of Invocation]], as items used for the [[Invocation Ritual]], have more unique effects when applied; the Bell of Opening will act the same as a normal bell when applied with no charges, however.
+
+{{upcoming|3.7.0|You can apply [[spellbook]]s to appraise how many times they have been [[read]]; per [https://github.com/NetHack/NetHack/commit/b55165ed0758d805a13d8943d8b77c55f0adc221 commit b55165e], this was adapted from [[UnNetHack]].}}
+
+==Strategy==
+Most tools with similar counterparts can be identified through applying them; e.g., you can identify each type of [[horn]] this way, although you should do so in a place where [[Tooled horn|awakening nearby monsters]] or [[Fire and frost horn|shooting beams of fire or ice]] will not cause problems.
+
+[[Whistle]]s are among the easiest tools to identify via applying; if "[[You produce a high whistling sound]]" then it is a [[tin whistle]], but if "[[You produce a strange whistling sound]]" then it is a [[magic whistle]]. You might see other messages if the whistle is [[cursed]] or you are [[hallucinating]].
+
+You can [[identify]] the [[potion of oil]] by trying to apply each unidentified [[potion]] in your inventory: the potion of oil will ignite.
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]] 4 and later versions, you can apply spellbooks to receive an indication of how many more times they can be read.<ref>[https://github.com/UnNetHack/UnNetHack/commit/65957adcdd2f01f39d6008a532ce743b4fcfc687 UnNetHack commit 65957ad: Applying a spellbook allows the player to flip through the pages, pro…]</ref>
+
+===DynaHack===
+In [[DynaHack]], breaking wands is folded into the #[[invoke]] command instead of the apply command.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Commands]]}
+&&%s&& %s Wraith {150119 2023-03-07T12:20:55Z {4001279 Umbire the Phantom} copyedit, refsrc for rotten wraith corpses (it's the same as any other food, but the 0 nutrition is what causes it to instarot and poof), etc. {{monster
+ |difficulty=8
+ |level=6
+ |experience=120
+ |speed=12
+ |AC=4
+ |MR=15
+ |align=-6
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Touch 1d6 [[drain life (monster attack)|drain life]]
+ |weight=0
+ |nutr=0
+ |size=Medium
+ |resistances=Cold, Sleep, Poison, Stoning
+ |resistances conveyed=[[Gain level]]
+ |attributes={{attributes|A wraith|=
+ |breathless=1|fly=1|humanoid=1|unsolid=1|undead=1|stalk=1|hostile=1}}
+ |reference=[[monst.c#line1888]]
+}}
+{{otheruses||the monster class|wraith (monster class)}}
+
+A '''wraith''', {{monsym|wraith}}, is a type of monster that appears in ''[[Nethack]]''. Wraiths are capable of [[drain life (monster attack)|draining levels]] from [[you]] if they hit, but are valuable encounters because a fresh wraith [[corpse]] grants an [[experience level]] when eaten. However, wraith corpses provide 0 [[nutrition]] and have the same {{frac|7}} chance of being [[rotten]] as any other food item, causing it to instantly "rot away completely" without you gaining experience.{{refsrc|src/eat.c|1676|version=NetHack 3.6.7}} 
+
+==Generation==
+Wraiths tend to appear via normal generation once you have reached or passed the [[Oracle]] level; they are also quite common in [[graveyard]]s. Wraiths can be generated with a random [[offensive item]], [[miscellaneous item]] and/or [[defensive item]]. 
+
+Wraiths are the second [[quest monster]] for [[Priest]]s, and 14% of randomly generated monsters in the [[Priest quest]] will be wraiths; the wraith monster class is also the second quest class for Priests and [[Wizard]]s, and makes up 3% of randomly generated monsters in the Priest and [[Wizard quest]], some of which may be wraiths. In the Priest quest, the upper filler levels will generate one wraith on level creation, and the lower filler levels generate three wraiths on level creation; the Priest quest also has several undead-filled graveyards that include wraiths among their ranks.
+
+Reading the [[Book of the Dead]] while it is cursed, or else while improperly performing the [[Invocation ritual]] on the [[vibrating square]], will raise the dead and possibly summon wraiths.
+
+If a player is slain by a member of the [[wraith (monster class)|wraith monster class]] - which also includes [[barrow wight]]s and [[Nazgul]]s - that player rises from the grave as a wraith rather than a traditional [[ghost]] if [[bones]] are left.{{refsrc|src/end.c|514|version=NetHack 3.6.6|comment=players killed by a W rise as a wraith}}
+
+Wraiths leave a corpse {{frac|2}} of the time.
+
+==Strategy==
+The level gained from eating a wraith's corpse makes them a popular choice for [[reverse genocide]], and the corpses provide zero [[nutrition]], heavily reducing the risk of overeating; however, an oversatiated character can still choke on them. Wraith corpses cannot be [[tinning kit|tinned]], but they can be kept fresh in an [[ice box]]. Those discovering the bones of a player killed by a {{white|W}} will have to contend with the tougher spirit of the former player, as wraiths can [[fly]], use [[wand]]s and read [[scrolls]] - on top of using the former inventory, the wraith can still drain levels as well. 
+
+Most players will resort to either hunting wraiths or finding/making potions of {{! of|gain level}} in order to meet the level requirement for their [[Quest]]. Wraiths represent one of the many temptations for a [[Monk]] in particular to break [[vegan]] or even [[vegetarian]] conduct, as they may want the additional levels in order to access [[Monk quest|their quest]] or else obtain additional intrinsics.
+
+===Wraith farming===
+{{Main|Wraith farming}}
+Like all undead, wraiths killed on a level with a graveyard (or the Castle, which counts as a graveyard level for this purpose) are much less likely to leave a corpse, with a {{frac|18}} chance if killed by the player or {{frac|6}} if killed by anything else.{{refsrc|src/mon.c|36|version=NetHack 3.6.6|comment=Macro for corpse non-generation in graveyards and [[Rogue level]]}} Players often lure graveyard wraiths up or down a stairway before dispatching it, or else [[level teleport]] or branchport via [[The Eye of the Aethiopica]] while the wraith is adjacent; the Eye is a frequently-used artifact in farming wraiths for this purpose. The cursed Book of the Dead can also be used for wraith farming.
+
+Wizards and Priests can repeatedly cast {{spell of|create monster}} (or use a [[wand of create monster]]) on their quest's home level; priests will generate far more wraith on their quest overall, but must lure them outside of the branch for the best chance of obtaining their corpses. Wizards looking to farm wraiths may consider a strategic genocide of [[xorn]]s so that more wraith-class monsters will generate - they will no longer have access to phasing via xorn polyform, but in return can farm wraiths freely without worrying about graveyards, especially once they retrieve the Eye. Any roles aiming to maximize their level via wraith corpses may also consider genociding other graveyard monsters such as [[zombie]]s.
+
+Either [[magic cancellation|MC3]] or [[drain resistance]] is highly recommended for a player transporting wraiths: Magic cancellation will not completely prevent level drain, but decreases the odds of being drained of a second level before one can gain a single experience point (e.g. by killing the wraith) and regain the previously drained one. Alternatively, graveyard wraiths can be saved for a [[pet]] [[purple worm]], whose [[engulfing]] attack is not subject to the odds of a corpse dropping; this does not work for players polymorphed into purple worms.
+
+==History==
+The wraith has been present in the game since [[Hack121]], a port of [[Jay Fenlason's Hack]].
+
+Wraiths are sometimes used to [[drain for gain]] in [[NetHack 3.4.3]] and earlier versions.
+
+==Origin==
+{{wikipedia|Wraith}}
+"Wraith" is a Scottish word that describes a ghost, spectre or apparition; the word has no commonly accepted etymology. It appeared in Scottish Romanticist literature, and has acquired the more general or figurative sense of "portent" or "omen"; in 18th- and 19th-century Scottish literature, it also applied to aquatic spirits. An association with the verb "writhe" was the etymology favored by [[J. R. R. Tolkien]], whose use of the word in naming the creatures known as the Ringwraiths (or [[Nazgul]]) has influenced its later usage in fantasy literature. 
+
+The wraiths of ''Nethack'' originate from ''[[Dungeons & Dragons]]'', where they are undead creatures born of evil and darkness; wraiths despise living things and light sources (particularly natural sunlight, which rendered them powerless) A wraith appears as a sinister, spectral figure robed in darkness and often lacking distinct features or appendages, save for glowing red eyes. Wraiths could drain the life from living creatures, turning them into new wraiths upon death; they were similar to wights, as both could only be harmed by either silver or enchanted weaponry.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], wraiths [[Need +x weapon to hit|need a +1 weapon to hit]], and frequently generate with [[Robe (SLASH'EM)|robes]]. Wraith corpses also have different effects if eaten:
+{| class="prettytable"
+! Possibility !! Effect !! Message
+|-
+| 10% || You lose experience. || "You feel that was a bad idea."
+|-
+| 10% || Your maximum HP and Pw decreases. || "You don't feel so good ..."
+|-
+| 20% || Nothing happens. || "You feel something strange for a moment."
+|-
+| 10% || Your maximum HP and Pw increases. || "You feel physically and mentally stronger!"
+|-
+| 50% || You gain experience. || "You feel that was a smart thing to do."
+|}
+
+===dNetHack===
+In [[dNetHack]], wraiths can appear in the court of a [[vampire lord]]-ruled [[Throne room#dNetHack|throne room]].
+
+The lower filler levels of the [[Binder quest (dNetHack)|Binder quest]] have a wraith in each of the three non-graveyard rooms, and wraiths may naturally appear in the graveyards themselves. Eight wraiths and an additional wraithlike monster appear on the goal level of the [[Pirate quest]].
+
+In the [[Mordor Ruins Quest|Mordor Ruins variant]] of the [[Chaos Quest (dNethack)|Chaos Quest]], several wraiths can appear in the Elven Forest, and one may appear on the Mordor Wall.
+
+===The November NetHack Tournament===
+In [[The November NetHack Tournament]], [[The DevTeam Office]] is a popular location to branchport wraiths to when farming.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Immediately, though everything else remained as before, dim and dark, the shapes became terribly clear.  He was able to see beneath their black wrappings.  There were five tall figures:  two standing on the lip of the dell, three advancing. In their white faces burned keen and merciless eyes; under their mantles were long grey robes; upon their grey hairs were helms of silver; in their haggard hands were swords of steel.  Their eyes fell on him and pierced him, as they rushed towards him.  Desperate, he drew his own sword, and it seemed to him that it flickered red, as if it was a firebrand.  Two of the figures halted.  The third was taller than the others:  his hair was long and gleaming and on his helm was a crown.  In one hand he held a long sword, and in the other a knife; both the knife and the hand that held it glowed with a pale light.  He sprang forward and bore down on Frodo.
+|[ The Fellowship of the Ring, by J.R.R. Tolkien ]
+}}
+
+==References==
+<references/>
+{{nethack-366|offset=1}}
+{{slashem-7E7}}
+[[Category:Monsters]]}
+&&%s&& %s NetHack 1.3d {149367 2022-12-15T08:36:38Z {91 Bhaak} /* Availability */ Change link from SF to GitHub, remove retired public server {{NetHack Versions}}
+
+'''NetHack 1.3d''' is the first public release of [[NetHack]].  [[Mike Stephenson]] published it to the [[Usenet]] newsgroup comp.sources.games and the moderator approved it in July 1987<ref>http://ftp.acc.umu.se/mirror/archive/ftp.sunet.se/pub/usenet/ftp.uu.net/comp.sources.games/volume2/nethack/part01.gz</ref>.
+
+==Availability==
+Google Groups has archived NetHack 1.3d. The original source is also (more) easily obtained from UUNet [http://ftp.acc.umu.se/mirror/archive/ftp.sunet.se/pub/usenet/ftp.uu.net/comp.sources.games/volume2/nethack/ here]. The partXX.Z files in that directory are NetHack 1.3d; patch1.Z is the patch for [[NetHack 1.4f]].
+
+[[Ali Harlow]](who runs [http://www.juiblex.co.uk/nethack/front.html Juiblex.co.uk]) has a NetHack 1.3d distribution [http://www.juiblex.co.uk/nethack/source/nethack-1.3d.tar.gz here]. NetHackWiki has files from this distribution [[NetHack 1.3d source code|available for browsing and annotation]].
+
+The original sources no longer compile on modern systems; Sascha Wilde modified the source to compile and run on modern Linux systems, and this version is available at [http://sha-bang.de/index.php?page=18_nethack]. [[User:Bhaak|Patric Mueller]] used this as base for the [[Junethack]] tournament, back porting crash bug fixes from later NetHack versions and adding public server capabilities[https://github.com/bhaak/NetHack-1.3d/].
+
+[[Hardfought]] has a playable version of 1.3d available on their server.
+
+==Significant changes==
+* Support for MS-DOS derived from [[PC Hack]].
+* A primitive form of [[IBMgraphics]] is supported.
+* The [[giant]], [[demon]] lord and [[demon]] prince join the bestiary.
+* Several monsters are replaced, subject to compile-time options.
+* The [[wizard of Yendor]] can revive after being killed.
+* Demons leave corpses (this was later removed).
+* Many new objects, including lots of [[weapon]]s and the first [[spellbook]]s.
+* The adventurer can get [[Excalibur]].
+* Spells appear for the first time.
+* New classes:  [[Samurai]], Ninja, [[Priest]], [[Valkyrie]], [[Elf]], and [[Healer]].  The Speleologist role is called [[Archeologist]] for the first time, apparently to free the S for the Samurai.
+* [[Throne room]]s join the special room list.
+* [[Fountain]]s and [[throne]]s appear for the first time.
+* New [[trap]]s:  [[magic trap]], [[squeaky board]], [[web]], [[spiked pit]], [[level teleporter]], [[anti-magic field]], and [[rust trap]].
+* [[Pray]]er is now useful.
+* Self-[[polymorph]] appears for the first time.
+
+==The adventurer==
+
+The player may choose from these roles:
+* [[Archeologist]]
+* [[Caveman|Cave-(wo)man]]
+* [[Elf]]
+* [[Barbarian|Fighter]]
+* [[Healer]]
+* [[Knight]]
+* Ninja
+* [[Priest]]
+* [[Samurai]]
+* [[Tourist]]
+* [[Valkyrie]]
+* [[Wizard]]
+
+All classes permit male and female adventurers, except the Valkyrie which must be female.
+
+The adventurer has [[experience]], [[hit points]], [[magical energy]], [[armor class]], and [[strength]].  He may advance to [[experience level]] 14.
+
+The initial [[pet]] is a little [[dog]].
+
+==Dungeon features==
+
+The dungeon in NetHack 1.3d has no branches; there is one way up and one way down.  The first 25 levels or so consist of rooms, and beyond that, the adventurer encounters mazes.  The deepest dungeon level is 40.
+
+Dungeon level 30 and deeper are designated as "[[Hell]]".  Entering hell without [[fire resistance]], or losing it once there, is an [[instadeath]].  One can lose fire resistance by taking off the [[ring of fire resistance|ring]] or by losing one's [[polymorph]]; this version does not have [[gremlin]]s.  These levels have only up-stairs, and the only way to enter is by [[level teleportation]].
+
+Special rooms are [[throne room]]s, [[swamp]]s,  [[vault]]s, [[beehive]]s, [[crypt]]s, [[treasure zoo]]s, and [[shop]]s.  Special features are [[pool]]s, [[fountain]]s, and [[throne]]s.
+
+Traps are:
+
+* [[bear trap]]
+* [[arrow trap]]
+* [[dart trap]]
+* [[trapdoor]]
+* [[teleportation trap]]
+* [[pit]]
+* [[sleeping gas trap]]
+* [[magic trap]]
+* [[squeaky board]]
+* [[web]]
+* [[spiked pit]]
+* [[level teleporter]]
+* [[anti-magic field]]
+* [[rust trap]]
+
+The [[Amulet of Yendor]] is found in the posession of the [[wizard of Yendor]] in a maze level.  He is in a small room in the center of the maze, surrounded by water and accompanied by a [[hell hound]].
+
+Other maze levels have [[wand of wishing|wands of wishing]] tucked under a boulder in a dead-end square.  (Yes, there's more than one.)  Since [[NetHack 3.1.0]], one version of [[Medusa]]'s lair has a random wand in a similar spot, commemorating the former location of the wand of wishing.
+
+== Bestiary ==
+
+New monsters are indicated in boldface.  Some new monsters replace old ones, depending on compile-time options.
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[acid blob]]||a||&nbsp;
+|-
+|[[bat]]||B||&nbsp;
+|-
+|[[centaur]]||C||&nbsp;
+|-
+|[[chameleon]]||:||&nbsp;
+|-
+|[[cockatrice]]||c||&nbsp;
+|-
+|[[demon]]||&||&nbsp;
+|-
+|'''[[demon lord]]'''||'''&'''||if HARD defined at compile time
+|-
+|'''[[demon prince]]'''||'''&'''||if HARD defined at compile time
+|-
+|[[dog]]||d||&nbsp;
+|-
+|[[dragon]]||D||As the modern red dragon
+|-
+|[[ettin]]||e||&nbsp;
+|-
+|[[floating eye]]||E||&nbsp;
+|-
+|[[fog cloud]]||f||&nbsp;
+|-
+|[[freezing sphere]]||F||&nbsp;
+|-
+|[[gelatinous cube]]||g||&nbsp;
+|-
+|[[ghost]]||(space)||&nbsp;
+|-
+|'''[[giant]]'''||'''9'''||&nbsp;
+|-
+|[[giant ant]]||A||&nbsp;
+|-
+|[[giant beetle]]||b||&nbsp;
+|-
+|[[giant eel]]||;||&nbsp;
+|-
+|[[gnome]]||G||&nbsp;
+|-
+|[[guard]]||@||&nbsp;
+|-
+|[[hell hound]]||d||Does not have a breath weapon
+|-
+|[[hobgoblin]]||H||&nbsp;
+|-
+|[[homunculus]]||h||&nbsp;
+|-
+|[[imp]]||i||&nbsp;
+|-
+|[[jackal]]||J||&nbsp;
+|-
+|[[jaguar]]||j||&nbsp;
+|-
+|[[killer bee]]||k||&nbsp;
+|-
+|[[large dog]]||d||&nbsp;
+|-
+|[[leocrotta]]||l||&nbsp;
+|-
+|[[leprechaun]]||L||&nbsp;
+|-
+|[[little dog]]||d||&nbsp;
+|-
+|[[lurker above]]||'||&nbsp;
+|-
+|[[mail daemon]]||2||if MAIL defined at compile time
+|-
+|[[mimic]]||M||&nbsp;
+|-
+|[[minotaur]]||m||&nbsp;
+|-
+|[[nurse]]||n||&nbsp;
+|-
+|[[nymph]]||N||&nbsp;
+|-
+|[[orc]]||O||&nbsp;
+|-
+|[[owlbear]]||o||&nbsp;
+|-
+|[[piercer]]||p||&nbsp;
+|-
+|[[purple worm]]||P||&nbsp;
+|-
+|[[quivering blob]]||q||&nbsp;
+|-
+|[[rust monster]]||R||Reduces enchantment rather than truly rusting
+|-
+|[[shopkeeper]]||@||&nbsp;
+|-
+|[[snake]]||S||&nbsp;
+|-
+|[[stalker]]||I||&nbsp;
+|-
+|[[tengu]]||t||&nbsp;
+|-
+|[[trapper]]||,||&nbsp;
+|-
+|[[troll]]||T||&nbsp;
+|-
+|[[umber hulk]]||U||&nbsp;
+|-
+|[[unicorn]]||u||&nbsp;
+|-
+|[[vampire]]||V||&nbsp;
+|-
+|[[violet fungi]]||v||"violet fungus" if [[Ken Arromdee|KAA]] defined at compile time
+|-
+|[[wizard of Yendor]]||1||&nbsp;
+|-
+|[[wraith]]||W||&nbsp;
+|-
+|[[xan]]||x||&nbsp;
+|-
+|[[xorn]]||X||&nbsp;
+|-
+|[[yellow light]]||y||&nbsp;
+|-
+|[[yeti]]||Y||&nbsp;
+|-
+|[[zombie]]||Z||&nbsp;
+|-
+|[[zruty]]||z||&nbsp;
+|-
+|'''[[Keystone Kop]]'''||'''K'''||if KOPS defined at compile time (default)
+|-
+|[[kobold]]||K||if KOPS ''not'' defined at compile time
+|-
+|'''[[rock mole]]'''||'''r'''||if ROCKMOLE defined at compile time (default)
+|-
+|[[giant rat]]||r||if ROCKMOLE ''not'' defined at compile time
+|-
+|'''[[quantum mechanic]]'''||'''Q'''||if [[Ken Arromdee|KAA]] defined at compile time (default)
+|-
+|[[quasit]]||Q||if [[Ken Arromdee|KAA]] ''not'' defined at compile time
+|-
+|'''[[giant spider]]||'''s'''||if SPIDERS defined at compile time (default)
+|-
+|[[scorpion]]||s||if SPIDERS ''not'' defined at compile time
+|-
+|[[long worm]]||w||if NOWORM ''not'' defined at compile time (default)
+|-
+|[[wumpus]]||w||if NOWORM defined at compile time
+|-
+|}
+
+== Objects ==
+
+New objects are indicated in boldface.
+
+=== Artifacts ===
+
+NetHack 1.3d has two artifacts.
+
+Any [[two handed sword]] may be named [[Orcrist]] and will do d10 extra points damage to [[orc]]s.  There can even be more than one Orcrist.
+
+[[Excalibur]] is new to NetHack 1.3d.  The method of obtaining it is different from modern versions.  One must ''first'' name a long sword Excalibur and ''then'' #[[dip]] it into a fountain.  Excalibur has no special properties, but when so dipped, it becomes +5 (if not already higher) and rustproof, and any curse is removed.  As with Orcrist, there can be more than one Excalibur.  Although [[crowning]] exists, it does not grant Excalibur.
+
+=== Amulets ===
+
+Only the [[Amulet of Yendor]] and the cheap plastic imitation exist in NetHack 1.3d.
+
+=== Food ===
+
+Food items in NetHack 1.3d are:
+
+* [[food ration]]
+* [[tripe ration]]
+* [[pancake]]
+* [[lizard corpse|dead lizard]]
+* [[fortune cookie]]
+* [[carrot]]
+* '''slice of pizza'''
+* '''[[cream pie]]'''
+* [[tin]]
+* [[orange]]
+* [[apple]]
+* [[pear]]
+* [[melon]]
+* [[banana]]
+* [[candy bar]]
+* [[egg]]
+* [[clove of garlic]]
+* [[lump of royal jelly]]
+* [[corpse]] (called ''dead foo'' rather than ''foo corpse'')
+
+The tin did not contain the remains of monsters, but rather a randomly-chosen food such as peaches or, if the adventurer is lucky, [[spinach]].
+
+The dead lizard is a found object rather than a corpse; live lizards do not exist in NetHack 1.3d.    It otherwise has its modern properties in this version.
+
+=== Weapons ===
+
+Weapons in NetHack 1.3d are:
+
+* [[arrow]]
+* sling bullet
+* [[crossbow bolt]]
+* [[dart]]
+* '''[[shuriken]]'''
+* [[rock]]
+* [[boomerang]]
+* [[mace]]
+* [[axe]]
+* [[flail]]
+* [[long sword]]
+* [[two-handed sword|two handed sword]]
+* [[dagger]]
+* [[worm tooth]]
+* [[crysknife]]
+* '''[[aklys]]'''
+* '''[[bardiche]]'''
+* '''[[bec de corbin]]'''
+* '''[[bill-guisarme]]'''
+* '''[[club]]'''
+* '''[[fauchard]]'''
+* '''[[glaive]]'''
+* '''[[guisarme]]'''
+* '''[[halberd]]'''
+* '''[[lucern hammer]]'''
+* '''[[javelin]]'''
+* '''[[katana]]'''
+* '''[[lance]]'''
+* '''[[morning star]]'''
+* '''[[partisan]]'''
+* '''[[ranseur]]'''
+* '''[[scimitar]]'''
+* '''[[spetum]]'''
+* '''[[broad sword]]'''
+* '''[[short sword]]'''
+* '''[[trident]]'''
+* '''[[voulge]]'''
+* [[spear]]
+* [[bow]]
+* [[sling]]
+* [[crossbow]]
+
+=== Tools ===
+
+Tools in NetHack 1.3d are:
+
+* [[tin whistle|whistle]]
+* '''[[leash]]'''
+* [[magic whistle]]
+* [[expensive camera]]
+* [[ice box]]
+* [[pick-axe]]
+* '''[[magic marker]]'''
+* '''[[stethoscope]]'''
+* [[tin opener|can opener]]
+
+The ice box is the only container.  Then as now, it preserved corpses, and was generally too heavy (and too rare) to be useful for inventory management.
+
+=== Armor ===
+
+Armor items in NetHack 1.3d are:
+
+* [[helmet]]
+* [[plate mail]]
+* [[splint mail]]
+* [[banded mail]]
+* [[chain mail]]
+* [[scale mail]]
+* [[ring mail]]
+* [[studded leather armor]]
+* '''[[elven mithril-coat|elfin chain mail]]'''
+* '''[[bronze plate mail]]'''
+* '''[[crystal plate mail]]'''
+* [[leather armor]]
+* [[elven cloak]]
+* [[shield]]
+* [[leather gloves|pair of gloves]]
+
+=== Potions ===
+
+Potions in NetHack 1.3d are:
+
+* [[Potion of restore ability|potion of restore strength]]
+* '''[[potion of gain energy]]'''
+* [[potion of booze]]
+* [[potion of invisibility]]
+* [[potion of fruit juice]]
+* [[potion of healing]]
+* [[potion of paralysis]]
+* [[potion of monster detection]]
+* [[potion of object detection]]
+* [[potion of sickness]]
+* [[potion of confusion]]
+* [[Potion of gain ability|potion of gain strength]]
+* [[potion of speed]]
+* [[potion of blindness]]
+* [[potion of gain level]]
+* [[potion of extra healing]]
+* [[potion of levitation]]
+* '''[[potion of hallucination]]'''
+* '''[[potion of water|potion of holy water]]'''
+
+=== Scrolls ===
+
+Scrolls in NetHack 1.3d are:
+
+* [[scroll of mail]] (unconditional, even though mail daemon is dependent on MAIL)
+* [[scroll of enchant armor]]
+* [[scroll of destroy armor]]
+* [[scroll of confuse monster]]
+* [[scroll of scare monster]]
+* [[scroll of blank paper]]
+* [[scroll of remove curse]]
+* [[scroll of enchant weapon]]
+* scroll of damage weapon
+* [[scroll of create monster]]
+* [[scroll of taming]]
+* [[scroll of genocide]]
+* [[scroll of light]]
+* [[scroll of teleportation]]
+* [[scroll of gold detection]]
+* [[scroll of food detection]]
+* [[scroll of identify]]
+* [[scroll of magic mapping]]
+* [[scroll of amnesia]]
+* [[scroll of fire]]
+* [[scroll of punishment]]
+
+The scroll of damage weapon acts as the modern scroll of enchant weapon does when [[curse]]d.  The scroll of genocide acts, in all cases, as the modern blessed scroll; but most symbols refer to only one monster anyway.
+
+=== Wands ===
+
+Wands in NetHack 1.3d are:
+
+* [[wand of light]]
+* [[wand of secret door detection]]
+* [[wand of create monster]]
+* [[wand of wishing]]
+* [[wand of striking]]
+* '''[[wand of nothing]]'''
+* [[wand of slow monster]]
+* [[wand of speed monster]]
+* [[wand of undead turning]]
+* [[wand of polymorph]]
+* [[wand of cancellation]]
+* [[wand of teleportation]]
+* [[wand of make invisible]]
+* '''[[wand of probing]]''' (if PROBING defined at compile time)
+* [[wand of digging]]
+* [[wand of magic missile]]
+* [[wand of fire]]
+* [[wand of sleep]]
+* [[wand of cold]]
+* [[wand of death]]
+
+=== Spellbooks ===
+
+The entire category of spellbooks is new in NetHack 1.3d.  All exist only if SPELLS is defined at compile time.
+
+Spellbooks in NetHack 1.3d are:
+
+* '''[[spellbook of magic missile]]'''
+* '''[[spellbook of fireball]]'''
+* '''[[spellbook of sleep]]'''
+* '''[[spellbook of cone of cold]]'''
+* '''[[spellbook of finger of death]]'''
+* '''[[spellbook of healing]]'''
+* '''[[spellbook of detect monsters]]'''
+* '''[[spellbook of force bolt]]'''
+* '''[[spellbook of light]]'''
+* '''[[spellbook of confuse monster]]'''
+* '''[[spellbook of cure blindness]]'''
+* '''[[spellbook of slow monster]]'''
+* '''[[spellbook of create monster]]'''
+* '''[[spellbook of detect food]]'''
+* '''[[spellbook of haste self]]'''
+* '''[[spellbook of cause fear]]'''
+* '''[[spellbook of cure sickness]]'''
+* '''[[spellbook of detect unseen]]'''
+* '''[[spellbook of extra healing]]'''
+* '''[[spellbook of charm monster]]'''
+* '''[[spellbook of levitation]]'''
+* '''[[spellbook of restore strength]]'''
+* '''[[spellbook of invisibility]]'''
+* '''[[spellbook of detect treasure]]'''
+* '''[[spellbook of dig]]'''
+* '''[[spellbook of remove curse]]'''
+* '''[[spellbook of magic mapping]]'''
+* '''[[spellbook of identify]]'''
+* '''[[spellbook of turn undead]]'''
+* '''[[spellbook of polymorph]]'''
+* '''[[spellbook of create familiar]]'''
+* '''[[spellbook of teleport away]]'''
+* '''[[spellbook of cancellation]]'''
+* '''spellbook of genocide'''
+
+=== Rings ===
+
+Rings in NetHack 1.3d are:
+
+* [[ring of adornment]]
+* [[ring of teleportation]]
+* [[ring of regeneration]]
+* [[ring of searching]]
+* [[ring of see invisible]]
+* [[ring of stealth]]
+* [[ring of levitation]]
+* [[ring of poison resistance]]
+* [[ring of aggravate monster]]
+* [[ring of hunger]]
+* [[ring of fire resistance]]
+* [[ring of cold resistance]]
+* [[ring of protection from shape changers]]

@@ -1,0 +1,1000 @@
+* If had the ability to terminate levitation with ">" command, lose it.
+* Unless already levitating:
+** If stood on stairs or ladder up, go up.
+** Otherwise, "You hit your head on the ceiling.", lose 1-10 hit points or 1 hit point if wearing a hard helmet. The half physical damages intrinsic applies if you have it.
+* Levitate for (more) 10-149 turns.
+
+"Peculiar feeling" if you levitated already.
+
+=== [[Potion of gain energy]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line1005]
+
+Cursed: lose 3*(1d6) points of magical energy. If the energy becomes negative, make it zero.
+
+Uncursed or blessed: restore 3*(2d6) (uncursed) or 3*(3d6) (blessed) points of magical energy. If the energy becomes higher than the maximal energy, set it to the maximal energy.
+
+Exercise wisdom.
+
+Messages:
+*"You feel lackluster." - it was cursed.
+*"Magical energies course through your body." - it was noncursed.
+
+=== [[Potion of oil]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line1037]
+
+Quaffing not from a lit lamp: abuse wisdom.
+* "That was smooth!", for non-cursed potion.
+* "This tastes like castor oil.", for cursed potion.
+
+Quaffing from a lit lamp, unless your monster likes fire: abuse wisdom, get 1d4 (if fire resistant) or 3d4 (otherwise) points of damage.
+* "You burn your face."
+
+Quaffing from a lit lamp, if your monster likes fire: exercise wisdom.
+* "Ahh, a refreshing drink."
+
+=== [[Potion of acid]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line1057]
+
+Not identified.
+
+Unless acid resistant, causes 1d4, 1d8, 2d8 points of physical damage for blessed, uncursed, cursed potion ([[half physical damage]] applies if relevant).
+
+Cures petrification.
+
+Messages:
+* "This tastes sour.", if you are acid resistant and not hallucinating.
+* "This tastes tangy.", if you are acid resistant and hallucinating.
+* "This burns a little!", if you are not acid resistant, and the potion is blessed. 
+* "This burns like acid!", if you are not acid resistant, and the potion is uncursed.
+* "This burns a lot!", if you are not acid resistant, and the potion is cursed.  
+
+=== [[Potion of polymorph]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line1075]
+
+You polymorph, unless you have [[unchanging]].
+
+Messages:
+* "You feel a little strange.", if not hallucinating.
+* "You feel a little normal.", if hallucinating.
+
+[[Category:Potions]]
+{{nethack-360}}}
+&&%s&& %s Object property {106137 2017-07-09T14:11:45Z {4000693 Phol ende wodan} create as redirect to Object properties #REDIRECT [[Object properties]]}
+&&%s&& %s Lonely Tower {107877 2017-10-29T10:41:54Z {4000449 SophiaMakoto} Fixed the double redirect. #REDIRECT [[Wizard_quest#The_Lonely_Tower]]}
+&&%s&& %s The Lonely Tower {107891 2017-10-29T16:18:34Z {4000693 Phol ende wodan} Fix double redirect #REDIRECT [[Wizard quest#The Lonely Tower]]}
+&&%s&& %s Special room (dNetHack) {146382 2022-06-29T01:23:18Z {4001279 Umbire the Phantom} /* Throne room (throne occupied) */ [[dNetHack]] adds multiple types of special rooms.
+
+
+==Sepulcher==
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+1=[[Dread seraph|{{magenta|Z}}]]
+
+-----
+|---|
+||1||
+|---|
+-----
+</replacecharsblock></div>
+
+The marked Z is a [[Dread seraph|Dread Seraph]]. For most of the game, Dread Seraphs will lie dormant in their sepulchers, though their presence on a level causes corpses to rise from the dead as zombies or skeletons.  When the character visits a level containing a sepulcher and has the [[Amulet of Yendor|Amulet]] or has killed [[The Wizard of Yendor|The Wizard]], the Seraph will wake up.  
+
+Sepulchers are undiggable and un-phaseable.  They are also only generated below level 13.
+
+==Magic item vault==
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+1=[[Chest|{{brown|(}}]]
+
+
+}}}}}}
+}----}
+}|11|}
+}|11|}
+}----}
+}}}}}}
+</replacecharsblock></div>
+
+dNetHack adds a separate type of vault, similar to gold-containing vanilla [[vault]]s. They contain monsters to guard the treasure inside 4 chests. Each chest contains 2d4 magic items (25% of which will be a random piece of magic [[armor]], the other 75% of which will be any [[magical item]]). It's possible, albeit with the same chance as any other item, for the chests to contain artifacts. Any artifact that cannot be put into a container will not be generated, however. Additionally, extra chests with normal [[item|chest items]] may be generated in each square.
+
+Vaults will contain a random monster chosen from the below list (each has equal probability):
+*[[Shoggoth]]
+*[[Priest of Ghaunadaur]]
+*[[Eye of doom]]
+*[[Son of Typhon]]
+*[[Nightgaunt]]
+*[[Dark young]]
+*[[Mirkwood elder]]
+*[[Purple worm]]
+*[[Hunting horror]]
+*[[Bebelith]]
+*[[Ammit]]
+*[[Gigantic pseudodragon]]
+*[[Juggernaut]]
+*[[Id juggernaut]]
+*[[Scrap titan]]
+*[[Hellfire colossus]]
+*[[Titan]]
+*[[Jabberwock]]
+*[[Guardian naga]]
+*[[Grove guardian]]
+*[[Iron golem]]
+*[[Balrog]]
+
+==Garden==
+
+Gardens are rooms with nymphs, plants, trees or fountains, and possibly a weeping angel. Up to 4 nymphs are generated, 3-5 plants of any kind, 3 trees or fountains, and a 50% chance of a [[weeping angel]].
+
+==Library==
+
+Libraries, also known as waterlogged libraries, are generally small rooms with [[living lectern]]s, pools or fountains, and walls containing spellbook. Up to 3 fountains or pools are placed, and up to 4 [[living lectern]]s. Every wall square contains either a spellbook of blank paper ({{frac|6}} chance) or a random other spellbook.
+
+==Dilapidated armory==
+
+{{main|Dilapidated armory#dNetHack}}
+
+Dilapidated armories contain 1-2 sleeping [[rust monster]]s and 1-3 [[brown pudding]]s, and random armor and weapons with various levels of [[erosion]].
+
+==Swamp==
+
+dNetHack swamps contain all the things vanilla [[swamp]]s do, but they can also contain [[swamp fern]]s.  Be wary! Left unchecked, a swamp fern can quickly take over a whole level.
+
+==River==
+
+{{main|Underground rivers}}
+
+Rivers aren't special "rooms" per se, but they are generated the same way. Rivers can be generated anywhere. With a {{frac|4}} chance, the river will run horizontally, otherwise vertically. Rivers are guaranteed never to block your path to any room (a trail of floor will be left where the river would be blocking). They can spawn sea monsters and kelp fronds just like other water.
+
+
+==Island==
+
+Islands are similar to gardens, but contain a moat of water along the inside wall. If below level 12, lava may be present instead. They also contain a square marked "X" with a chest of treasure (gold) buried underneath it. One lone tree is always next to the X.
+
+Various properties of islands are as follows:
+
+*Stairs will never be generated inside the island, to prevent characters from leaving the level or room.
+*A one-door room ensures this room isn't a necessary juncture between staircases.
+*Deeper in the dungeon (past the mines, certainly) it becomes less likely that the player will be held back by a single room, so beyond level five the restrictions are relaxed a bit. (the room can have two doors)
+*In case the player teleports into the room or falls into it from above, a trap door is always generated inside it so the player can escape.
+*If we're on or before level four, island rooms can only be made in the same kinds of places as shops. (they are thus much rarer)
+*Starting with level six, if the room is big enough there may be some more water.
+*Below level nine, a sea monster may be generated in the moat.
+
+== Throne room (throne occupied)==
+Unlike in vanilla, dNetHack [[throne room]] monsters are often (75%) themed after a specific ruler. Ruler types and corresponding monsters are, in a roughly sorted level of difficulty:
+
+*[[Kobold lord]] (difficulty 3): [[Kobold shaman]], [[large kobold]], [[kobold]], [[lemure]], [[imp]].
+*[[Gnome king]] or gnome queen (difficulty 6): [[Gnome lord]], [[gnome lord|gnome lady]], [[gnome]], [[gnomish wizard]], [[tinker gnome]], [[dwarf]], [[dwarf lord]], [[dwarf cleric]], [[hobbit]], [[leprechaun]], [[homunculus]].
+*[[Orc captain]] (difficulty 7): [[Orc shaman]], [[mordor orc]], [[hill orc]], [[hobgoblin]], [[goblin]], [[manes]], [[quasit]].
+*[[Dwarf king]] or [[dwarf queen]] (difficulty 8): [[Dwarf lord]], [[dwarf cleric]], [[dwarf]], [[gnome]], [[gnome lord]], [[gnome lord|gnome lady]], [[gnomish wizard]], [[hobbit]], [[leprechaun]].
+*[[Ogre king]] (difficulty 11): [[Ogre mage]], [[ogre lord]], [[ogre]], [[orc captain]], [[mordor orc]], [[tengu]], [[troll]], random [[H]].
+*[[Elvenking]] or Elvenqueen (difficulty 14): [[Elf lord]], elf lady, [[Grey-elf]], [[Green-elf]], [[Woodland-elf]], [[quickling]], [[dryad]], [[naiad]], [[Eladrin#Coure Eladrin|Coure Eladrin]], [[Eladrin#Noviere Eladrin|Noviere Eladrin]], [[Eladrin#Bralani Eladrin|Bralani Eladrin]], [[Eladrin#Firre Eladrin|Firre Eladrin]], [[Eladrin#Shiere Eladrin|Shiere Eladrin]], [[doppelganger]], [[wood troll]].
+*[[Vampire lord]] (difficulty 14): [[Vampire]], random [[Z]], random [[M]], [[flesh golem]], [[werewolf]], [[floating eye]], [[gargoyle]], [[winged gargoyle]], [[quasit]], [[black pudding]], [[wraith]], [[phantasm]], [[ghost]], [[maid]], [[weeping willow]], [[swamp nymph]].
+*[[Drow matron]] (difficulty 15): [[Unearthly drow]], [[hedrow wizard]], [[hedrow warrior]], [[drow]], [[sprow]], [[swamp nymph]], [[giant spider]], [[cave lizard]], [[large cave lizard]], [[quasit]].
+*[[Titan]] (difficulty 20): [[Storm giant]], [[fire giant]], [[frost giant]], [[hill giant]], [[stone giant]], [[giant]], [[son of Typhon]], [[dryad]], [[naiad]], [[oread]], [[deminymph]].
+*[[Embraced drowess]] (difficulty 27): [[Drow alienist]], [[hedrow blademaster]], [[edderkop]], [[hedrow wizard]], [[hedrow warrior]], [[drow mummy]].
+*[[Deepest one]] (difficulty 33): [[Deeper one]], [[deep one]], [[human]], [[mind flayer]], [[dark young]], [[umber hulk]], [[stumbling horror|stumbling]], [[wandering horror|wandering]], and [[shambling horror (dNetHack)|shambling horror]]s.
+*[[Orc of the ages of stars]] (difficulty 37): [[Deep wyrm]], [[red dragon]], [[white dragon]], [[black dragon]], [[blue dragon]], [[angband orc]], [[hedrow blademaster]], [[succubus]], [[incubus]], [[olog-hai]], [[siege ogre]], [[hell hound]].
+
+Rulers are chosen according to their [[difficulty]]. The chosen ruler will not have a difficulty greater than the average of your level and the dungeon level difficulty + 5, and will not be lower than {{frac|2|3}} of the dungeon level difficulty. If no prospective ruler fits these criteria, dNetHack will fall back on the standard set of throne room monsters.
+
+{{stub}}
+
+[[Category:dNethack]]}
+&&%s&& %s Alignment key (dNethack) {140813 2021-06-10T20:41:25Z {4001463 Actual-nh} /* The Second/Third Key of Neutrality */ Link [[dNetHack]] adds alignment quests/keys similar to [[SLASH'EM]], but substantially more complicated.   Each quest contains ''3'' keys instead of one, and almost all of them have a boss you need to fight.  You need 3 keys to open the doors to Gehennom, so it's not necessary to gather all of them.
+
+=Law Quest=
+{{main|Category:DNethack Law Quest}}
+
+==The First Key of Law==
+
+The First Key of Law is found in the [[User:Chris/dNetHack/dNethack_Dungeon_of_Ill-Regard|Dungeon of Ill-Regard]], and is guarded by [[Auton#Axus|Axus]].  He has a powerful stunning reflexive melee attack, so it's best to kill him from a distance if possible. He is _not_ magic resistant, so a wand of death will work on him.  After you kill him, he'll revive in a couple turns, and eating his corpse is fatal. Axus (and the autons on the level) is usually generated peaceful for lawful characters.
+
+==The Second Key of Law==
+
+The Etched Second Key of Law is found in [[User:Chris/dNetHack/dNethack_Arcadia|Arcadia]], and is guarded by [[Arsenal]].  He throws iron balls at you (2d6), showers you with magic missiles (2d6), and has a powerful kick (8d2).  He is a form of golem (or at least shares the glyph), and is resistant to death magic and all major elemental damage, though with decent AC and magic resistance he shouldn't pose a threat.
+
+==The Third Key of Law== 
+
+The Third Key of Law is found in the [[User:Chris/dNetHack/dNethack_Arcadian_Tower|Arcadian Tower]], and is guarded by [[Oona|Lady Oona]].  She has 2 melee physical attacks (2d8 each), but the real kicker is an active ''16d8'' elemental damage spell, and passive elemental damage.  Her affinity is chosen randomly each game, from fire, cold, and electricity. Some players opt not to kill her, and instead tame her. She makes a powerful pet, and is humanoid and thus can wear most kinds of armor.
+
+=Neutral Quest=
+
+{{main|Category:DNethack Neutral Quest}}
+
+==The First Key of Neutrality==
+
+The First Key of Neutrality is guarded by [[User:Chris/dNetHack/dNethack_Neutral_Quest_Monsters#Center_of_All|Center of All]]. He can be found anywhere in the main dungeon, appearing as part of standard monster generation (albeit with an extremely low chance). However, the bottom level of the [[User:Chris/dNetHack/dNethack_Outlands|Outlands]] has a greatly increased chance for him to spawn. If he spawns before you have reached this level, he will always be peaceful, and will levelport randomly.  When he does this, he leaves behind a footprint burned into the floor.
+
+==The Second/Third Key of Neutrality==
+
+[[Alhoon]]s are the guardians of the Second and Third Keys of Neutrality.  They are not unique like the other guardians, but a type of monster. However, only the 2 guardian alhoons ever spawn.  They are a form of undead master mind flayer, similar to a master lich. They cast the mage spells and have the cold touch of liches, combined with a intelligence draining tentacle attack.
+
+The first alhoon is on the Gulf of N'kai (3 levels under Sum of All, where Center of All often spawns).  The second is at the temple complex at R'lyeh, a level or two below that.
+
+=Chaos Quest=
+
+{{main|Category:DNethack Chaos Quest}}
+
+==The First Key of Chaos==
+
+The First Key of Chaos does not have a guardian that will drop it on death.  It's well-hidden instead.  If you don't want to figure it out yourself, please consult the [[First Key of Chaos spoiler]] page.
+
+==The Second Key of Chaos==
+
+===Final Fantasy Variant===
+
+The Second Key of Chaos is randomly placed somewhere in the [[User:Chris/dNetHack/dNethack_Chaos_Temple#Earth_Temple|Earth Temple]]. It can be in either the outside or inside section. You may want to deal with Lich, Fiend of Earth before trying to find it.
+
+===Mithardir Variant===
+
+The Second Key of Chaos is randomly placed on the second level of the Last Spire, guarded by the [[First_Wraithworm|First Wraithworm]]. The First Wraithworm can be a pain to deal with, especially for melee combatants, as he randomly blows you about the room and is difficult to hit. As such, it should not be attempted recklessly by weaker characters, and is best delayed until you are ready.
+
+===Tolkien Variant===
+
+The Second Key of Chaos will be randomly placed either in Minal Morgul, the Mordor Fortress, or the Spider Cave, whichever level a player visits first.
+
+==The Third Key of Chaos==
+
+===Final Fantasy Variant===
+
+[[Chaos]] himself has the Third Key of Chaos. Unless you really need it, or are already planning to get [[DNetHack_Artifacts#The_Black_Crystal|The Black Crystal]], then you may want to get a different alignment key to open the doors instead.  He's a powerful spellcaster, able to heal himself, summon high-level &, and cast other monster spells. His most dangerous part is his massive health pool.  He spawns with around 1500 hp, so any fight with him will take a very long time.  He's at the Chaos Temple, at the very end of the other elemental temples.  When he is killed, you are also able to pick up [[DNetHack_Artifacts#The_Black_Crystal|The Black Crystal]] (which grants slotless MR).
+
+===Mithardir Variant===
+
+The Third Key of Chaos will be dropped by the first [[Aspect_of_The_Silence|Aspect of The Silence]] killed by a player (not necessarily the first to spawn). Aspects of The Silence appear on the final level of the Mithardir Catacombs and players should be well prepared to deal with them before attempting to recover the key.
+
+===Tolkien Variant===
+
+The Third Key of Chaos is guarded by Lungorthin, Lord of the Balrogs. Lungorthin can easily defeated by engraving a ward on the up ladder and hitting him repeatedly as he comes near.
+
+[[Category:dNethack]]}
+&&%s&& %s First Key of Chaos spoiler {140917 2021-06-14T18:47:56Z {4001463 Actual-nh} Category: dNetHack Chaos Quest The First Key of Chaos is not generated in the dungeon. Instead, it can be created by naming a standard skeleton key "(The) First Key of Chaos".  Chaotic characters can do this at any time, characters of other alignments must generate Chaos, the last boss of the Chaos quest, before they can create this key. Technically, only the Third Key of Chaos needs to be generated, so a bones file will work as well.
+
+[[Category:DNethack Chaos Quest]]}
+&&%s&& %s MediaWiki:Abusefilter-warning-newuser-extlinks {106409 2017-07-30T18:42:17Z {4000180 Bcode} Friendlier note for people caught by [[Special:AbuseFilter/4]]. This is written assuming the user is not actually trying to spam because politely asking won't really stop a spammer. '''Wait a moment!''' You are adding one or more external links, and you seem to be new to this wiki. We would appreciate you taking a moment to review this advice:
+
+*Try to avoid looking like a spammer. Explaining your edit in the ''edit summary'' field helps avoid misunderstandings and makes reviewing edits a lot easier.
+*Wiki pages are [[mw:Help:Links|easy to link to]] using <code><nowiki>[[</nowiki></code> … <code><nowiki>]]</nowiki></code>. Instead of <span class=plainlinks><code>{{canonicalurl:Main Page}}</code></span>, just use <code>[[Main Page|<nowiki>[[Main Page]]</nowiki>]]</code>.
+*You can even link directly to [[wikipedia:Main Page|Wikipedia]] pages, for example <code>[[wikipedia:NetHack|<nowiki>[[wikipedia:NetHack]]</nowiki>]]</code>.
+
+If you made sure to follow this advice, all is well – just submit your edit again. Thank you for your contribution!}
+&&%s&& %s MediaWiki:Tag-newuser-extlinks {106412 2017-07-30T18:51:15Z {4000180 Bcode} more useful text for [[Special:RecentChanges]] adds external links}
+&&%s&& %s Studied {130753 2020-01-14T04:02:59Z {4001279 Umbire the Phantom}  '''Studied''' is a status ailment or debuff found in [[dNethack]].  Targets that have been studied are easier to hit, and take more damage from melee attacks.  Multiple instances of this debuff typically don't stack; instead, the more severe of the two studied values is used.  Examples of monsters that can apply this debuff are [[auton]]s ('the ''foo'' studies you carefully.') and [[orc captains]] ('The ''foo'' curses and urges ''<his/her>'' followers on.').
+
+[[Category:Properties]]
+[[Category:dNethack]]
+[[Category:dNethack properties]]}
+&&%s&& %s Category:Design {106530 2017-08-06T04:00:39Z {4000693 Phol ende wodan} Create Design category This category contains essays, proposals, and suggestions relating to the game design of [[NetHack]] that have been posted on the wiki.
+
+[[Category:Articles]]}
+&&%s&& %s You get a bad feeling about this. {106639 2017-08-11T05:03:01Z {4000449 SophiaMakoto} Redirected page to [[Figurine]] #REDIRECT [[Figurine]]}
+&&%s&& %s Guardian angel {106700 2017-08-14T15:14:02Z {4000415 Ihatesoldiera} Redirect to angel; think it's a bit better than redirecting to minion? #REDIRECT [[Angel]]}
+&&%s&& %s Military barracks {134789 2020-07-04T19:52:55Z {4000978 Aximili} Changed redirect target from [[Special room#Barracks]] to [[Barracks]] #REDIRECT [[Barracks]]}
+&&%s&& %s Draw bridge {106757 2017-08-18T22:38:43Z {4000894 Winny} Redirected page to [[Drawbridge]] #REDIRECT [[Drawbridge]]}
+&&%s&& %s Yecch! This stuff tastes like poison. {106766 2017-08-20T06:09:36Z {4000894 Winny} Redirected page to [[Potion of sickness]] #REDIRECT [[Potion of sickness]]}
+&&%s&& %s Metamorphosed nupperibo {106789 2017-08-20T15:59:45Z {4000354 Chris} Redirected page to [[Nupperibo#Metamorphosed nupperibo]] #REDIRECT [[Nupperibo#Metamorphosed_nupperibo]]}
+&&%s&& %s Ancient nupperibo {106790 2017-08-20T15:59:50Z {4000354 Chris} Redirected page to [[Nupperibo#Ancient nupperibo]] #REDIRECT [[Nupperibo#Ancient_nupperibo]]}
+&&%s&& %s Gnoll ghoul {137649 2021-02-09T18:27:54Z {4001463 Actual-nh} Fix double redirect (capitalization) #REDIRECT [[Gnoll_(dNetHack)#Gnoll_ghoul]]}
+&&%s&& %s Migo worker {106802 2017-08-20T20:15:41Z {4000354 Chris} Redirected page to [[Migo#Migo worker]] #REDIRECT [[Migo#Migo_worker]]}
+&&%s&& %s Migo soldier {106803 2017-08-20T20:21:57Z {4000354 Chris} Redirected page to [[Migo#Migo soldier]] #REDIRECT [[Migo#Migo_soldier]]}
+&&%s&& %s Migo philosopher {106804 2017-08-20T20:22:18Z {4000354 Chris} Redirected page to [[Migo#Migo philosopher]] #REDIRECT [[Migo#Migo_philosopher]]}
+&&%s&& %s Gnome queen {144498 2022-02-16T00:36:06Z {4001483 Cathartes} Changed redirect target from [[Gnome (monster class)#Gnome queen]] to [[Gnome (monster class)#Gnome ruler]] #REDIRECT [[Gnome_(monster_class)#Gnome_ruler]]}
+&&%s&& %s Gnome lady {144496 2022-02-16T00:34:36Z {4001483 Cathartes} Changed redirect target from [[Gnome (monster class)#Gnome lady]] to [[Gnome (monster class)#Gnome leader]] #REDIRECT [[Gnome_(monster_class)#Gnome_leader]]}
+&&%s&& %s Use darkgray {106815 2017-08-20T22:19:31Z {630 Paxed} #REDIRECT [[Options#use_darkgray]] #REDIRECT [[Options#use_darkgray]]}
+&&%s&& %s Use darkgrey {106816 2017-08-20T22:19:52Z {630 Paxed} #REDIRECT [[Options#use_darkgray]] #REDIRECT [[Options#use_darkgray]]}
+&&%s&& %s Damage reduction {107005 2017-08-27T21:11:08Z {4000693 Phol ende wodan} Redirect to damage reduction on armor class page #REDIRECT [[Armor class#Damage reduction]]}
+&&%s&& %s Des-file format (NetHack 3.4.3) {123557 2018-08-10T18:39:33Z {4000251 Netzhack} (x,y) is a pair of coordinates. '''NOTE: This is a guide to the des-file format for NetHack version 3.4.3. NetHack 3.6 and above use different syntax, and it would be confusing to store the differences on one page. Edit this page only for language or technical details relevant to 3.4.3. Go [[des-file format|here]] for information about the most recent version of the file format.'''
+
+The '''des-file format''' is the language which is used to describe the [[special level]]s for NetHack. It is compiled into a binary file by [[lev_comp]].
+
+It is not a ''real'' programming language: there is no flow control, and the order in which different NetHack features are created is fixed.
+
+There are two types of levels you can create: mazes and rooms. For {{sa|MAZE-type levels}} you "draw" one or more maps with ASCII characters and then describe the monsters, objects and so on that are in the map (example: [[Bigroom.des]]). For {{sa|ROOM-type levels}}, you describe rooms and their contents (example: [[Oracle.des]]). The maze-levels are easier to make and understand, and room-type levels do not offer as much control over the level.
+
+[[lev_comp]] will create a .lev-file for each MAZE and LEVEL definition in the file. These .lev-files will be loaded into NetHack to make the special levels. The .lev-files NetHack loads are actually defined in [[Dungeon.def format|dungeon.def]].
+
+[[UnNetHack]] uses a somewhat different [[des-file format (UnNetHack)|format]].
+
+{{Float right|__TOC__}}
+
+==Language syntax==
+All lines beginning with <tt>#</tt> are comments and are ignored by the level compiler, except between {{sa|MAP}} and [[#MAP|ENDMAP]].
+
+Example:
+ # This is a comment.
+
+===MAZE-type levels===
+
+Maze-type levels begin with {{sa|MAZE}}, followed with optional {{sa|FLAGS}}, optional {{sa|INIT_MAP}}, 0 or more {{sa|MESSAGE}}s and up to 9 maze-parts, each of which consists either of {{sa|NOMAP}} or {{sa|GEOMETRY}} and {{sa|MAP}}, followed by zero or more the random register initializers, one of each ({{sa|RANDOM_MONSTERS}}, {{sa|RANDOM_OBJECTS}}, {{sa|RANDOM_PLACES}}), followed by zero or more of the map details (everything else, eg. {{sa|MONSTER}}, {{sa|OBJECT}}, {{sa|TRAP}}, etc.)
+
+That is:
+
+*{{sa|MAZE}}
+*{{sa|FLAGS}}, optional
+*{{sa|INIT_MAP}}, optional
+*{{sa|MESSAGE}}, 0 or more
+*up to 9 map-parts, which consist of:
+**{{sa|NOMAP}} or {{sa|GEOMETRY}} and {{sa|MAP}}
+**{{sa|RANDOM_MONSTERS}}, optional
+**{{sa|RANDOM_OBJECTS}}, optional
+**{{sa|RANDOM_PLACES}}, optional
+**The rest of the definitions of this map-part
+
+Example:
+ MAZE:"test",' '
+ FLAGS:noteleport
+ MESSAGE:"Welcome!"
+ GEOMETRY:center,center
+ MAP
+ .....
+ .L.L.
+ .....
+ .L.L.
+ .....
+ ENDMAP
+ MONSTER:random,random,random
+ OBJECT:'%',random,random
+
+====MAZE====
+ MAZE:"foo",'X'
+
+*<tt>foo</tt> is the unique file name which will be used for this special level, up to 8 characters. For example: <tt>soko3-2</tt>. This file name which NetHack loads is defined by the way this level is defined in [[Dungeon.def format|dungeon.def]].
+*<tt>'X'</tt> is the [[#Map characters|fill map character]]. The map will be filled with this [[dungeon feature]] before anything else is done. This can also be <tt>random</tt>, which fills the whole level with a checkerboard grid of walls and stone, so you can use {{sa|MAZEWALK}} on it.
+
+Example:
+ MAZE:"soko3-2",' '
+
+====FLAGS====
+ FLAGS:flaglist
+
+<tt>flaglist</tt> is one or more of the following flags, separated by commas
+*<tt>noteleport</tt>: Player cannot teleport within the level.
+*<tt>hardfloor</tt>: The floor is too hard to dig.
+*<tt>nommap</tt>: [[magic mapping]] does not work.
+*<tt>arboreal</tt>: supposedly an outdoor map. Solid walls and secret corridors will be shown as trees, digging makes floor instead of corridor and randomly created corridors are made out of floor instead of corridor.
+*<tt>shortsighted</tt>: Monsters cannot see you from far away.
+
+Example:
+ FLAGS:noteleport,hardfloor
+
+====INIT_MAP====
+ INIT_MAP:'X', 'Y', smoothed, joined, lighted, walled
+
+This causes the level map to be initialized with a random map generator, similar to how the random [[Gnomish Mines]] look like.
+Each MAZE-level can contain only 0 or 1 of these definitions.
+*<tt>'X'</tt> is the "foreground" [[#Map characters|fill map character]]. This should be something the player can walk on, as the walkable part will be made out of this.
+*<tt>'Y'</tt> is the "background" [[#Map characters|fill map character]]. This will surround the foreground area, so can be solid or harmful to player.
+*<tt>smoothed</tt> is either <tt>true</tt> or <tt>false</tt>, and denotes whether the level will be "smoothed". This means that any foreground character surrounded by fewer than 3 foreground characters is changed to background character.
+*<tt>joined</tt> is either <tt>true</tt> or <tt>false</tt>, and denotes whether the level will be "joined", so that all parts are accessible by walking.
+*<tt>lighted</tt> is either <tt>lit</tt>, <tt>unlit</tt>, or <tt>random</tt>
+*<tt>walled</tt> is either <tt>true</tt> or <tt>false</tt>. This is equivalent of using a {{sa|WALLIFY}} -command.
+
+Examples:
+ INIT_MAP: 'L', '.', false, false, unlit, false
+ INIT_MAP: '.', ' ', true, true, random, true
+
+====MESSAGE====
+ MESSAGE:"string"
+
+You can have 0 or more of these per special level. Each message line gets separated with a <tt>--more--</tt> -prompt in the game.
+<tt>"string"</tt> is any message you want player to see when entering the level.
+
+Example:
+ MESSAGE: "Well done, mortal!"
+
+====NOMAP====
+ NOMAP
+
+Instead of {{sa|GEOMETRY}} and {{sa|MAP}}, you use this if you think that {{sa|INIT_MAP}} creates a good enough random map and you don't want to use any fixed map-parts.
+
+See also {{sa|MAP}}
+
+====GEOMETRY====
+ GEOMETRY:xadj,yadj
+
+This must be followed by a {{sa|MAP}} definition, and tells the approximate position of the following MAP-part on the level.
+*<tt>xadj</tt> is one of <tt>left</tt>, <tt>half-left</tt>, <tt>center</tt>, <tt>half-right</tt>, <tt>right</tt> or <tt>random</tt>
+*<tt>yadj</tt> is one of <tt>top</tt>, <tt>center</tt>, <tt>bottom</tt> or <tt>random</tt>
+
+Example:
+ GEOMETRY:left,top
+
+====MAP====
+ MAP
+ ...
+ ...
+ ...
+ ENDMAP
+
+This must be preceded by {{sa|GEOMETRY}} definition.
+You define a map-part by "drawing" with [[#Map characters|map characters]] between the MAP and ENDMAP. The map can be up to 21 lines high and each line can be up to 76 chars long. Each line must also be the same length. You can also use numbers inside the map, but those will be ignored; they're considered as line numbers.
+
+See also {{sa|NOMAP}}.
+
+====NON_DIGGABLE====
+ NON_DIGGABLE:region
+
+Sets the walls inside the region as non-diggable.
+
+Example:
+ NON_DIGGABLE:(00,00,13,12)
+
+====NON_PASSWALL====
+ NON_PASSWALL:region
+
+Players and monsters cannot phase through the walls inside the region
+
+Example:
+ NON_PASSWALL:(00,00,13,12)
+
+====RANDOM_PLACES====
+ RANDOM_PLACES:place,...
+
+With this command you can set up to 10 coordinate-pair registers, which you can access by using <tt>place[N]</tt> instead of a pair of coordinates in any other command. The registers are shuffled at level creation time.
+
+Example:
+ RANDOM_PLACES:(23,9),(37,14),(51,9)
+ OBJECT:'?',"genocide",place[0]
+
+====RANDOM_MONSTERS====
+ RANDOM_MONSTERS:'X',...
+
+With this command you can set up 10 monster symbol registers, which you can access by using <tt>monster[N]</tt> instead of a monster symbol in any other command. The registers are shuffled at level creation time.
+
+Example:
+ RANDOM_MONSTERS: 'E', 'X'
+ MONSTER:monster[0],random,(27,05)
+
+====RANDOM_OBJECTS====
+ RANDOM_OBJECTS:'X',...
+
+With this command you can set up 10 object class symbol registers, which you can access by using <tt>object[N]</tt> instead of a object class symbol in any other command. The registers are shuffled at level creation time.
+
+Example:
+ RANDOM_OBJECTS:'[',')','*','%'
+ OBJECT:object[0],random,(39,05)
+
+====DOOR====
+ DOOR:state,place
+
+Puts a door on the map.
+*<tt>state</tt> is one of the following: <tt>nodoor</tt>, <tt>locked</tt>, <tt>closed</tt>, <tt>open</tt> or <tt>random</tt>
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Example:
+ DOOR:locked,(10,5)
+
+====DRAWBRIDGE====
+ DRAWBRIDGE:place,dir,state
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>dir</tt> is one of the following: <tt>north</tt>, <tt>east</tt>, <tt>south</tt> or <tt>west</tt>
+*<tt>state</tt> is one of the following: <tt>nodoor</tt>, <tt>locked</tt>, <tt>closed</tt>, <tt>open</tt> or <tt>random</tt>
+
+Note that the drawbridge placement is different from door placement; the coordinates must be a place where the drawbridge would be when it's open, and from that place towards the direction there should be a wall, where the portcullis will be.
+
+Example:
+ DRAWBRIDGE:(25,18), north, closed
+
+====REGION====
+ REGION:(x1,y1,x2,y2), lighted, "type"
+
+Define a region on the map with certain light-state and type.
+*<tt>lighted</tt> is one of <tt>lit</tt>, <tt>unlit</tt> or <tt>random</tt>.
+*<tt>"type"</tt> is one of the [[#Room types|room types]].
+
+You can add <tt>filled</tt> or <tt>unfilled</tt>, it will denote whether the room will get stocked with the normal monsters or objects it would get. After that you can add <tt>true</tt> or <tt>false</tt> to denote whether the room is irregularly shaped. If the room is irregular, only the first pair of coordinates (x1,y1) must be inside the room, and the room must be closed off from other areas with non-floor [[#Map characters|map characters]]. Use the boundary symbol <tt>'B'</tt> in the {{sa|MAP}} to enclose an irregular room; it will be converted to floor symbol <tt>'.'</tt> after the level has been created.
+
+Examples:
+ REGION:(43,12,49,16),unlit,"ordinary"
+ REGION:(12,01,20,09),unlit,"morgue",unfilled
+ REGION:(11,03,29,10),lit,"temple",filled,true
+
+====STAIR-region====
+ STAIR:(x1,y1,x2,y2), (x3,y3,x4,y4), updown
+
+Places a stair within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4).
+*<tt>updown</tt> is either <tt>up</tt> or <tt>down</tt>, denoting the direction of the stairs.
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+
+Example:
+ STAIR:(0,0,79,20), (20,5,50,15), up
+ STAIR:levregion(01,0,79,20), (0,0,28,12), up
+ STAIR:(0,0,50,10), levregion(10,0,20,15), down
+
+====PORTAL====
+ PORTAL:(x1,y1,x2,y2), (x3,y3,x4,y4),"levelname"
+
+Places a magical portal within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4). The portal will level teleport player to the level with the name "levelname".
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+
+Example:
+ PORTAL:levregion(57,01,78,19),(0,0,0,0),"fire"
+ PORTAL:(0,0,75,19),(65,13,75,19),"air"
+
+====TELEPORT_REGION====
+ TELEPORT_REGION:(x1,y1,x2,y2),(x3,y3,x4,y4)
+
+Restricts the area where player can end up on the level when he [[level teleport]]s or falls in there. Player will end up within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4).
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+You can also add an optional direction parameter, either <tt>up</tt> or <tt>down</tt>, which will tell when this rule is applied; when player is coming from below or above.
+
+Example:
+ TELEPORT_REGION:(69,16,69,16),(0,0,0,0)
+ TELEPORT_REGION:levregion(56,00,79,20),levregion(01,00,55,20),down
+
+====BRANCH====
+ BRANCH:(x1,y1,x2,y2),(x3,y3,x4,y4)
+
+Places stairs or a magical portal to a dungeon branch within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4).
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+
+Example:
+ BRANCH:levregion(51,2,77,18),(0,0,40,20)
+
+====MAZEWALK====
+ MAZEWALK:place,dir
+
+Creates a random maze, starting from place.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>dir</tt> is one of the following: <tt>north</tt>, <tt>east</tt>, <tt>south</tt> or <tt>west</tt>
+
+Mazewalk turns map grids with solid stone (<tt>' '</tt>) into floor (<tt>'.'</tt>). From the starting position, it checks the mapgrid in the direction given, and if it's solid stone, it will move there, and turn that place into floor. Then it will choose a random direction, jump over the nearest mapgrid in that direction, and check the next mapgrid for solid stone. If there is solid stone, mazewalk will move that direction, changing that place and the intervening mapgrid to floor. Normally the generated maze will not have any loops.
+For example
+ MAP
+ TTTTTTT
+ T T T T
+ TTTTTTT
+ T T T T
+ TTTTTTT
+ ENDMAP
+Pointing mazewalk at that will create a small maze of trees, but unless the map (at the place where it's put into the level) is surrounded by something else than solid stone, mazewalk will get out of that MAP.  Substituting floor characters for some of the trees "in the maze" will make loops in the maze, which are not otherwise possible. Substituting floor characters for some of the trees at the edges of the map will make maze entrances and exits at those places.
+
+If the total area NOT covered by all maze-parts in the level is greater than 1/10 of the total area of the level, then the mazes in the level will get stocked with maze-specific stuff, such as [[minotaur]]s, traps and items, proportionally to the amount of space not covered by MAPs.
+
+Mazewalk will only work if the solid stone mapgrids in the level (where the MAP was put down) are on odd-numbered squares, both horizontally and vertically. You don't have to worry about this unless your MAP is 21 rows high or 76 columns wide, in which case you'll have to either make the MAP smaller, or move the places where the solid stone squares are.
+
+Also, MAZEWALK will fail in certain types of MAP-parts if you also use {{sa|WALLIFY}}, as that command is applied before MAZEWALKs.
+
+Example:
+ MAZEWALK:(00,06),west
+
+====WALLIFY====
+ WALLIFY
+
+Turns walls completely surrounded by other walls into solid stone <tt>' '</tt>.
+
+====LADDER====
+ LADDER:place, updown
+
+Places a ladder up or down at place. See also {{sa|STAIRS}}.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>updown</tt> is either <tt>up</tt> or <tt>down</tt>, denoting the direction of the stairs.
+
+Example:
+ LADDER:(11,05),down
+
+====GOLD====
+ GOLD:place, amount
+
+Places amount of gold in place.
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>amount</tt> is any positive integer number.
+
+Example:
+ GOLD:(5,5),12345
+
+===ROOM-type levels===
+
+Room-type levels begin with {{sa|LEVEL}}, followed by optional {{sa|FLAGS}}, optional {{sa|INIT_MAP}}, 0 or more {{sa|MESSAGE}}s, followed by optional random register initializers ({{sa|RANDOM_MONSTERS}} and {{sa|RANDOM_OBJECT}}), followed by 0 or more {{sa|ROOM}} and {{sa|SUBROOM}} definitions (and the contents for those rooms), followed by {{sa|RANDOM_CORRIDORS}}.
+
+That is:
+*{{sa|LEVEL}}
+*{{sa|FLAGS}}, optional
+*{{sa|INIT_MAP}}, optional
+*{{sa|MESSAGE}}, 0 or more
+*{{sa|RANDOM_MONSTERS}}, optional
+*{{sa|RANDOM_OBJECTS}}, optional
+**{{sa|ROOM}}, 0 or more
+**contents for the room (monsters, objects, traps, etc.)
+**{{sa|SUBROOM}}, 0 or more
+***contents for the subroom (monsters, objects, traps, etc.)
+*{{sa|RANDOM_CORRIDORS}}
+
+It's not possible to define arbitrarily shaped rooms with this type of level.
+
+====LEVEL====
+
+ LEVEL: "name"
+
+<tt>"name"</tt> is the unique file name for this level. Can be up to 8 chars long. This file name is defined by the way this level is defined in [[Dungeon.def format|dungeon.def]].
+
+Example:
+ LEVEL: "oracle"
+
+====RANDOM_CORRIDORS====
+
+ RANDOM_CORRIDORS
+
+Creates random corridors between the rooms in the level, so that all rooms are accessible.
+
+====ROOM====
+
+ ROOM: "type", lighted, pos, align, size
+
+Creates a room. The room will be placed on a position defined both by pos and align. pos defines the rough position (in a 5-by-5 grid on the screen), and align defines the room position within that. NOTE: Creation of a randomly located room may fail, especially if there's little free space to fit it on the level. Contents of such a room won't be created either.
+
+*<tt>"type"</tt> is one of the [[#Room types|room types]].
+*<tt>lighted</tt> is one of <tt>lit</tt>, <tt>unlit</tt> or <tt>random</tt>.
+*<tt>pos</tt> is either <tt>random</tt> or <tt>(xpos, ypos)</tt>, where both <tt>xpos</tt> and <tt>ypos</tt> are between 0 and 5. This is an approximate position on the screen.
+*<tt>align</tt> is either <tt>random</tt> or <tt>(xalign, yalign)</tt> and is the room alignment within the <tt>pos</tt>.
+**<tt>xalign</tt> is one of <tt>left</tt>, <tt>half-left</tt>, <tt>center</tt>, <tt>half-right</tt>, <tt>right</tt> or <tt>random</tt>
+**<tt>yalign</tt> is one of <tt>top</tt>, <tt>center</tt>, <tt>bottom</tt> or <tt>random</tt>.
+*<tt>size</tt> is either <tt>random</tt> or <tt>(width, height)</tt>.
+
+You can also give one additional parameter, which can either be <tt>true</tt> or <tt>false</tt>. This tells whether the room will get stocked by objects and monsters it would normally get (such as shopkeepers and items for sale for shops).
+
+Example:
+ ROOM: "ordinary", random, random, random, random
+ ROOM: "ordinary", lit, (3,3), (center,center), (11,9)
+
+====SUBROOM====
+
+ SUBROOM: "type", lighted, pos, size, "parent"
+
+Creates a room inside previously defined ROOM.
+
+*<tt>"type"</tt> is one of the [[#Room types|room types]].
+*<tt>lighted</tt> is one of <tt>lit</tt>, <tt>unlit</tt> or <tt>random</tt>.
+*<tt>pos</tt> is either <tt>random</tt> or <tt>(xpos, ypos)</tt>, where <tt>xpos</tt> and <tt>ypos</tt> define the absolute position of this subroom inside the parent room. (0,0) is the upper left corner of the parent.
+*<tt>size</tt> is either <tt>random</tt> or <tt>(width, height)</tt>.
+*<tt>"parent"</tt> is the name of the parent room, as defined with {{sa|NAME}}.
+
+You can also give one additional parameter, which can either be <tt>true</tt> or <tt>false</tt>. This tells whether the room will get stocked by objects and monsters it would normally get (such as shopkeepers and items for sale for shops).
+
+Example:
+ SUBROOM:"shop",lit,(10,10),(3,3),"town"
+ SUBROOM:"ordinary",random,(19,2),(2,2),"town"
+
+====NAME====
+
+ NAME: "string"
+
+Names the previously defined ROOM or SUBROOM. Subrooms need to know the name of their parent room, this has no other meaning.
+
+Example:
+ NAME: "town"
+
+====CHANCE====
+
+ CHANCE: int
+
+Assigns a creation chance to the previously defined ROOM or SUBROOM. The room walls and doors will get created no matter what, this just tells whether the room contents will be created. <tt>int</tt> should be in the 0-100 range. Only non-ordinary rooms can have this.
+
+Example:
+ CHANCE: 90
+
+====Room DOOR====
+
+ DOOR: secret, state, wall, pos
+
+Creates a door with certain state on the previously defined ROOM or SUBROOM. Note that Room DOOR format is different from MAZE-level {{sa|DOOR}}.
+
+*<tt>secret</tt> can be <tt>true</tt>, <tt>false</tt> or <tt>random</tt>
+*<tt>state</tt> is one of the following: <tt>nodoor</tt>, <tt>locked</tt>, <tt>closed</tt>, <tt>open</tt> or <tt>random</tt>
+*<tt>wall</tt> is one of the following: <tt>north</tt>, <tt>east</tt>, <tt>south</tt> or <tt>west</tt> and tells on what wall of the room the door will be created.
+*<tt>pos</tt> is either <tt>random</tt> or a positive integer, and tells how far from top or left the door will be.
+
+Example:
+ DOOR: false, closed, south, random
+
+===Common syntax===
+
+The following commands are common to both MAZE and ROOM-type levels. For the MAZE-levels, the coordinates used are the previously defined MAP, for ROOM-levels, it's either the previously defined ROOM or SUBROOM.
+
+====ALTAR====
+ ALTAR:place,align,type
+
+Places an altar on the previously defined map or ROOM or SUBROOM.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>align</tt> is either <tt>noalign</tt>, <tt>law</tt>, <tt>neutral</tt>, <tt>chaos</tt>, <tt>coaligned</tt>, <tt>noncoaligned</tt>, <tt>random</tt> or an alignment register <tt>align[N]</tt>, where N can be either 0,1 or 2.
+*<tt>type</tt> is one of <tt>sanctum</tt>, <tt>shrine</tt>, <tt>altar</tt> or <tt>random</tt>
+
+Example:
+ ALTAR:(50,14),chaos,altar
+ ALTAR:place[0],noalign,altar
+ ALTAR:(07,09),align[0],sanctum
+
+====CONTAINER====
+
+This defines a container that you can put items in. It accepts exactly the same parameters as {{sa|OBJECT}}. Normal content generation for this object is suppressed.
+
+Example:
+ CONTAINER:'(',"chest",(5,5)
+ OBJECT:'/',"wishing",contained
+
+====ENGRAVING====
+ ENGRAVING:place, type, "text"
+
+Creates an engraving on the floor.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>type</tt> is one of <tt>dust</tt>, <tt>engrave</tt>, <tt>burn</tt>, <tt>mark</tt> or <tt>random</tt>.
+*<tt>"text"</tt> is the text to engrave on the floor.
+
+Example:
+ ENGRAVING:(12,03), engrave, "You are now entering the Gnome King's wine cellar."
+
+====FOUNTAIN====
+ FOUNTAIN:place
+
+Places a fountain on the map.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Example:
+ FOUNTAIN:(10,08)
+
+====MONSTER====
+ MONSTER:'X',"monst",place
+
+*<tt>'X'</tt> is the monster class symbol, or <tt>random</tt>, or a {{sa|RANDOM_MONSTERS}} index
+*<tt>"monst"</tt> is the specific monster, or <tt>random</tt>
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Other things you can add to the monster definition:
+*<tt>hostile</tt> or <tt>peaceful</tt>
+*<tt>asleep</tt> or <tt>awake</tt>
+*For mimics and other shapechangers you can also add the following:
+**<tt>m_feature "[[dungeon_feature]]"</tt> to force the mimic to be a dungeon feature.
+**<tt>m_object "object_name"</tt> to force the mimic to be an object. object_name is the name of an object as they are in [[objects.c]]
+**<tt>m_monster "monster_name"</tt> to force the shapechanger to be a certain monster.
+*<tt>"Name"</tt> to name the monster.
+
+Optionally, you can put <tt>[NN%]</tt> right after <tt>MONSTER</tt> to make the monster generation optional. NN is a percentage chance of the monster being generated when the level is created.
+
+Examples:
+ MONSTER:'v',"dust vortex",(42,05)
+ MONSTER:'E',"earth elemental",(39,06),peaceful
+ MONSTER:'&',"Pestilence",place[0],hostile
+ MONSTER:random,random,random
+ MONSTER:random,random,(01,01), asleep
+ MONSTER:monster[0],random,(27,05)
+ MONSTER:'m',"giant mimic",place[1],m_feature "fountain"
+ MONSTER:'m',random,place[0], m_object "luckstone"
+ MONSTER:'@',"rogue",(35,06),peaceful,"Pug"
+ MONSTER[50%]:'P', "green slime", random
+
+====OBJECT====
+ OBJECT:'X',"name",place
+
+Each map-part can contain any number of object definitions.
+*<tt>'X'</tt>: a character denoting one of the object classes.
+*<tt>"name"</tt>: either an object name as listed in [[objects.c]], or <tt>random</tt>
+*<tt>place</tt>: either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>, or <tt>contained</tt>. If contained, then this object will be placed in the previously defined {{sa|CONTAINER}}.
+
+Optional stuff you can add to the object definition:
+
+*<tt>cursestate, "monster_id", spe</tt>
+*<tt>cursestate, spe</tt>
+*<tt>"monster_id", spe</tt>
+
+Where
+*<tt>cursestate</tt> is one of <tt>blessed</tt>, <tt>uncursed</tt>, <tt>cursed</tt> or <tt>random</tt>.
+*<tt>"monster_id"</tt> is a monster type, as defined in [[monst.c]]
+*<tt>spe</tt> is an integer, and defines different things depending on what kind of object is generated:
+**enchantment for [[armor]] and [[weapon]]s
+**charges for [[wands]], [[rings]], [[magic marker]]s and everything else that has charges.
+**historic and gender bit for [[statue]]s. 1 is historic, 2 is male, 4 is female. Adding the values together is possible, so you can create eg. historic, male statue with value 3 and historic, female with 5. Leaving the gender specification out will either result in a random gender, or if the monster is always of certain gender, then the statue will be that gender too. (eg. nymphs)
+**[[tin]]s: 1 means spinach, -1 is home-made.
+**[[container]]s: 1 means the box contains Shroedinger's cat.
+**[[oil lamp]]s and [[candle]]s: 0 means the lamp is out of oil.
+**[[Candelabrum]]: how many candles are attached to it.
+**[[scroll of mail]]: 1 means it was not delivered to current player.
+**[[egg]]s: 1 means hero laid it.
+**[[chest]]s: 2 means it's a royal coffer in a [[throne room]].
+
+After these you can also add a quoted string, which would become the object's name.
+
+Optionally, you can put <tt>[NN%]</tt> right after <tt>OBJECT</tt> to make the object generation optional. NN is a percentage chance of the object being generated when the level is created.
+
+Examples:
+ OBJECT:'%', "food ration", random
+ OBJECT:'*', random, (10,10)
+ OBJECT:'?', "genocide", place[0]
+ OBJECT[10%]:'"', "amulet of life saving", random
+ OBJECT:'%', "corpse", random, "archeologist", 0
+ OBJECT[50%]:')', "scimitar", contained, blessed, +2
+ OBJECT:'`', "statue", (0,0), "forest centaur", 1
+ OBJECT:'(', "crystal ball", (17,08), blessed, 5, "The Orb of Fate"
+
+====STAIR====
+ STAIR:place, updown
+
+Places a stair up or down at place. See also {{sa|STAIR-region}} and {{sa|LADDER}}.
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>updown</tt> is either <tt>up</tt> or <tt>down</tt>, denoting the direction of the stairs.
+
+Example:
+ STAIR:(70,08), up
+ STAIR:random, down
+ STAIR:place[3], up
+
+====TRAP====
+ TRAP:"name",place
+
+*<tt>"name"</tt> is the [[#Trap names|trap's name]], or <tt>random</tt>
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Optionally, you can put <tt>[NN%]</tt> right after <tt>TRAP</tt> to make the trap generation optional. NN is a percentage chance of the trap being generated when the level is created.
+
+Examples:
+ TRAP:"hole",(12,10)
+ TRAP:"anti magic",random
+ TRAP:random,random
+ TRAP[25%]:"polymorph",random
+
+====Map characters====
+{|class="prettytable striped"
+!character
+![[dungeon feature]]
+|-
+|<tt>' '</tt>
+|solid wall
+|-
+|<tt>'#'</tt>
+|corridor
+|-
+|<tt>'.'</tt>
+|room floor (Unlit, unless lit with {{sa|REGION}}-command)
+|-
+|<tt>'-'</tt>
+|horizontal wall
+|-
+|<tt>'&#124;'</tt>
+|vertical wall
+|-
+|<tt>'+'</tt>
+|door (State is defined with {{sa|DOOR}} -command)
+|-
+|<tt>'A'</tt>
+|air
+|-
+|<tt>'B'</tt>
+|crosswall / boundary symbol hack (See {{sa|REGION}})
+|-
+|<tt>'C'</tt>
+|cloud
+|-
+|<tt>'S'</tt>
+|secret door
+|-
+|<tt>'H'</tt>
+|secret corridor
+|-
+|<tt>'{'</tt>
+|fountain
+|-
+|<tt>'\'</tt>
+|throne
+|-
+|<tt>'K'</tt>
+|sink
+|-
+|<tt>'&#125;'</tt>
+|moat
+|-
+|<tt>'P'</tt>
+|pool of water
+|-
+|<tt>'L'</tt>
+|lava pool
+|-
+|<tt>'I'</tt>
+|ice
+|-
+|<tt>'W'</tt>
+|water
+|-
+|<tt>'T'</tt>
+|tree
+|-
+|<tt>'F'</tt>
+|iron bars
+|}
+
+====Trap names====
+"anti magic", "arrow", "bear", "board", "dart", "falling rock", "fire", "hole", "land mine", "level teleport", "magic portal", "magic", "pit", "polymorph", "rolling boulder", "rust", "sleep gas", "spiked pit", "statue", "teleport", "trap door", "web"
+
+====Room types====
+"ordinary", "throne", "swamp", "vault", "beehive", "morgue", "barracks", "zoo", "delphi", "temple", "anthole", "cocknest", "leprehall", "shop", "armor shop", "scroll shop", "potion shop", "weapon shop", "food shop", "ring shop", "wand shop", "tool shop", "book shop", "candle shop"
+
+== See also ==
+* [[Des-file format (UnNetHack)]]
+* [[Des-file format]]
+
+[[Category:Annotations]]
+{{noversion}}}
+&&%s&& %s Object materials {149375 2022-12-15T16:45:05Z {4001279 Umbire the Phantom} /* Material hatred */ expand {{patch
+ |name=Object materials
+ |author=L
+ |download=https://web.archive.org/web/20180902003236/http://l.j-factor.com/nethack/material.diff
+}}
+'''Object materials''' is the name of a system that allows various objects to generate made of something different from their ordinary base material. It was first introduced in [[NetHack brass]], and L later made it into a standalone [[patch]].
+
+==Summary==
+The general purpose of the patch is to increase the variance in equipment that a player may come across in ''NetHack'' and/or its variants, as well as the strategies employed with such items. This can have diverse effects on a given game: one hero may realize too late that their [[gold]] [[wand of death]] was a valid target for an overlooked leprechaun; another may employ a pair of [[mithril]] [[short sword]]s to slice their way through hordes of [[orc]]s; still others may try to assemble an all-silver full-body set of armor to thoroughly [[demon]]-proof themselves before entering [[Gehennom]]; and aspiring casters will try to wear as much non-metallic clothing as possible.
+
+===Artifacts===
+[[Artifact]]s, including artifact weapons, tend to have a set base material; it is sometimes possible to name or create certain artifacts such as [[Sting]] and [[Excalibur]], with a weapon of the desired material, though whether this is allowed depends on the variant.
+
+===Monsters and object materials===
+In games with some form of object materials included (typically variants), monsters also have various interactions with each type of object, the more common of which are listed below.
+
+====Material hatred====
+'''Material hatred''' is used to refer to any particular material that deals extra damage to a certain type of monster and cannot be safely touched by them, much like the interactions between [[werecreature]]s and [[silver]] in vanilla ''NetHack'' - e.g., [[Elf (monster attribute)|elves]] may have an aversion to [[iron]] weapons. Monsters with a material hatred will usually avoid using items of that material where possible, and [[racial equipment]] is generally expanded and/or altered to avoid generating monsters with weapons or armor of a hated material; [[death drop]]s will naturally ignore this restriction.
+
+====Golems====
+[[Golem]]s that are generated randomly or via [[polypiling]] may [[death drop]] items made of that material among the pile of objects that they leave behind as their standard "corpse".
+
+====Leprechauns====
+[[Leprechaun]]s are usually able to steal items made of [[gold]] in addition to [[zorkmids|gold coins]].
+
+====Croesus====
+[[Croesus]] often generates with weapons and/or armor that are made of gold.
+
+==Object materials by variant==
+Variants that incorporate some kind of object materials include [[GruntHack]], [[dNetHack]], [[xNetHack]], [[SpliceHack]], and [[EvilHack]]; GruntHack's implementation diverges the most from that of L's patch, and is thus much different from other variant implementations.
+
+Below is a list of each variant's implementation of object materials.
+
+* [[Object materials (GruntHack)]]
+* [[Object materials (dNetHack)]]
+* [[Object materials (xNetHack)]]
+* [[Object materials (SpliceHack)]]
+* [[Object materials (EvilHack)]]
+{{noversion}}
+[[Category:Object materials]]
+[[Category:Patches]]}
+&&%s&& %s Evil Patch Idea {148493 2022-10-05T00:54:15Z {4001279 Umbire the Phantom} de-SLEX {{otheruses|ideas for diabolical features|the variant|EvilHack}}
+
+An '''Evil Patch Idea''', often abbreviated to '''EPI''', is a [[YANI]] for NetHack that is considered to be a terrible idea either by its creator or the community, because if it were implemented, it would greatly increase the amount of frustration or annoyance in the game while having no particular redeeming qualities: a way for the game designers to be evil to the players.
+
+Usually, Evil Patch Ideas do not make the game literally unwinnable, but they might make it practically unwinnable. They are usually conceived on the spur of the moment and shared for amusement, Others may suggest modifications to make the ideas even more evil. Generally, they are intended to serve only as a graveyard of bad ideas that are fun to discuss.
+
+The '''Evil Variant''' is a hypothetical variant that combines all of the Evil Patch Ideas into one single variant of NetHack. At some point, a real Evil Variant was under development, intended as a sort of parody of ridiculous artificial difficulty; however, it was never published and is no longer being developed. Also not to be confused with [[EvilHack]], a variant under development by [[User:K2|K2]], which is satisfied with being as evil as a hybrid of [[GruntHack]] and [[SporkHack]] features.
+
+A browsable repository of Evil Patch Ideas from IRC is maintained by [[User:Jonadab|Jonadab]] and is located [http://jonadab.jumpingcrab.com/nethack-stuff/evil-patch-ideas/ here].
+
+Some examples of Evil Patch Ideas include:
+* Engraving with a wand of wishing uses a charge, but neither identifies the wand nor gives you a wish - you merely get "Nothing happens".
+* Every game, a random property or resistance is selected, and the player can never gain that property, intrinsically or extrinsically.
+* All the upstairs in Gehennom move every rnd(100) turns, and you periodically get amnesia while in Gehennom, so you forget your current level map.
+* The mysterious force can trigger on any level, not just in Gehennom, and it can happen regardless of whether the hero has the Amulet or is on the ascension run.
+* All thrown or fired objects always break when they hit, and all objects break when dropped on the ground even if not levitating.
+* Shapechanger monsters examine your resistances and equipment and deliberately turn into something you are vulnerable to.
+
+[[Category:YANI]]}
+&&%s&& %s EPI {107213 2017-09-09T03:05:31Z {4000693 Phol ende wodan} Create redirect to Evil Patch Idea #REDIRECT [[Evil Patch Idea]]}
+&&%s&& %s Evil Variant {107214 2017-09-09T03:06:19Z {4000693 Phol ende wodan} Create redirect to Evil Patch Idea #REDIRECT [[Evil Patch Idea]]}
+&&%s&& %s Gifts {107246 2017-09-11T19:41:50Z {4000821 Natenex} Redirected page to [[Sacrifice#gift]] #REDIRECT [[Sacrifice#gift]]}
+&&%s&& %s Price-identify {107248 2017-09-11T19:44:32Z {4000821 Natenex} Redirected page to [[Price identification]] #REDIRECT [[Price identification]]}
+&&%s&& %s Intelligent monster {146674 2022-07-16T07:12:50Z {4001279 Umbire the Phantom}  In ''[[NetHack]]'', an '''intelligent monster''' generally describes a non-[[animal]], non-[[mindless]] [[monster]].
+
+==Description==
+There is no actual flag for intelligence in the source code; however, certain behaviors such as item use and dungeon feature use are allowed only if a monster is non-animal and non-mindless.{{refsrc|src/muse.c|338|nethack=3.6.6|comment=[[Defensive item]] usage}}{{refsrc|src/muse.c|1092|nethack=3.6.6|comment=[[Offensive item]] usage}}{{refsrc|src/muse.c|1644|nethack=3.6.6|comment=[[Miscellaneous item]] usage}}{{refsrc|src/muse.c|1656|nethack=3.6.6|comment=[[Polymorph trap]] usage}}
+
+Certain monsters are intelligent, but might appear otherwise because they do not have hands to use items and wear armor with - however, they may still use other applicable dungeon features, e.g. escaping with [[stair]]s, jumping into [[hole]]s, or using [[polymorph trap]]s. [[Floating eyes]] and [[dragons]] are examples of such monsters.
+
+==List of intelligent monsters==
+* {{monclass| }}
+* {{monclass|&}}
+* {{monsymlink|salamander}}

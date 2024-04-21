@@ -1,0 +1,1000 @@
+Quaffing potions of booze also raises [[sanity]] by 5 points, as well as a second hidden stat explained below. However, once drunkenness is capped out at 3 potions per character level, drinking booze can no longer raise sanity above 50.
+
+====Drunkeness====
+dNetHack also has a "drunkenness" counter that tracks the number of potions of booze you've quaffed, which is capped at 3 times your [[experience level]]). If you are [[stunned]], or {{frac|5}} of the time if you are confused, and you've drunken more than three potions of booze total, you have a 
+
+ 1 / (number of potions drunk/3 + 1) 
+
+chance of ''not'' moving where you want to go. Your chance of moving unsuccessfully while confused is (formula)&nbsp;/&nbsp;5 and equal to the formula while stunned. In effect, the more drunk you are, the less likely you are to stumble around while confused or stunned for any reason - this has no effect on your chances of ''becoming'' confused or stunned.
+
+High levels of drunkenness allow [[Monk]]s to practice drunken boxing, and serve as the prerequisite for the [[Binder]] spirit [[Spirits (dNetHack)#Naberius, mysterious councilor|Naberius]] (e.g., his taboo requires you drink at least one potion of booze per three levels).
+
+===SpliceHack===
+In [[SpliceHack]], potions of booze can remove the [[afraid]] status effect. Thus they are worth collecting and carrying around. There are many guaranteed potions of booze generated in the [[Bar (SpliceHack)|Bar]].
+
+===xNetHack===
+In [[xNetHack]], dwarves also frequently generate with booze, and may be carrying up to 3 potions.
+
+===SlashTHEM===
+In [[SlashTHEM]], various roles start with potions of booze, and some of them :
+
+* The Bard role starts with 2-10 potions of booze, and gains access to the "booze" technique at level 10.
+* The [[Chef]] starts out with some potions of booze.
+* The [[Drunk]] starts with 5 potions of booze; they gain an extra 100 points of nutrition and heal up to [[rnz]](20 + [[experience level]]) hit points per potion quaffed. Drunks also start with access to a '''"booze"''' [[technique]] that allows them to simulate the effects of the potion, including the added benefits when used by them.
+* The Pirate starts with two or three potions of booze.
+
+[[Incantifier]]s that would receive booze in their starting inventory have them replaced with scrolls of {{scroll of|food detection}}, and  [[Clockwork Automaton (starting race)|clockwork automatons]] will instead receive potions of {{! of|oil}}.
+
+Player monster bards generate with five or six potions of booze.
+
+==Encyclopedia entry==
+This entry is also used for the [[potion of sleeping]].
+
+{{encyclopedia|
+On waking, he found himself on the green knoll whence he had
+first seen the old man of the glen.  He rubbed his eyes -- it
+was a bright sunny morning.  The birds were hopping and
+twittering among the bushes, and the eagle was wheeling aloft,
+and breasting the pure mountain breeze.  "Surely," thought Rip,
+"I have not slept here all night."  He recalled the occurrences
+before he fell asleep.  The strange man with a keg of liquor --
+the mountain ravine -- the wild retreat among the rocks -- the
+woe-begone party at ninepins -- the flagon -- "Oh! that flagon!
+that wicked flagon!" thought Rip -- "what excuse shall I make
+to Dame Van Winkle!"
+		[ Rip Van Winkle, a Posthumous Writing
+		  of Diedrich Knickerbocker, by Washington Irving ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Potions|Booze]]}
+&&%s&& %s Potion of extra healing {145193 2022-03-28T04:34:50Z {4001279 Umbire the Phantom} /* Description */ same as previous edit {{potion|name=extra healing|cost=100|muse=def}}
+
+A '''potion of extra healing''' is a type of potion that appears in ''[[NetHack]]''. 
+
+==Generation==
+All [[Tourist]]s start the game with 2 non-cursed potions of extra healing, while all [[Healer]]s start the game with 4 non-cursed potions.
+
+[[Intelligent]] monsters may [[Monster starting inventory|generate with]] a potion of extra healing as a [[defensive item]]. [[Shopkeeper]]s have a {{frac|2}} chance of starting with potions of extra healing.{{refsrc|src/makemon.c|675|version=NetHack 3.6.6}}
+
+You can make potions of extra healing via [[alchemy]] by dipping a [[potion of healing]] into a potion of {{! of|gain energy|gain level|or=1|speed}}.
+
+==Description==
+[[Quaff]]ing a potion of extra healing will [[healing|heal]] you for more than a standard [[potion of healing]], with the effect's strength dependent on [[beatitude]]. A blessed one heals 8d8 HP when quaffed, an uncursed one 6d8 HP, and a cursed one 4d8 HP; additionally, if this would bring your HP above its maximum, your maximum will increase by 2 for an uncursed potion, or 5 for a blessed potion. The potion also cures [[hallucination]], [[blindness]], and [[deafness]], and [[exercise]]s [[constitution]] and [[strength]]; if noncursed, it will also cure [[sickness]].{{refsrc|src/potion.c|999|version=NetHack 3.6.6}}
+
+Monsters can also quaff the potion to heal for the same amount, though it can only additionally cure blindness (if non-cursed); monsters hit by the potion are fully healed and, if the potion was non-cursed, are unblinded.{{refsrc|src/muse.c|972|nethack=3.6.6}} Pestilence is damaged by the potion, but the effects will always be completely resisted unless Pestilence is severely [[level drain]]ed first.{{refsrc|src/potion.c|1429|version=NetHack 3.6.6|comment=Healing potions do [[potion of sickness]] effects to Pestilence, subject to Pestilence's 100 [[monster magic resistance]]. This means that Pestilence needs to be drained below level 6 for the potions to have a few percent chance of affecting Pestilence.}}
+
+Inhaling [[vapors]] from a potion of extra healing of any [[beatitude]] will heal you 2 HP (up to your maximum HP), cure blindness and [[deaf]]ness if it was non-cursed, and exercise constitution; if you are [[polymorph]]ed, the health of your base form is adjusted as well.{{refsrc|src/potion.c|1659|version=NetHack 3.6.6}} 
+
+You can use potions of extra healing in [[alchemy]] by dipping (or dipping into) potions of {{! of|gain level|or=1|gain energy}} to get a [[potion of full healing]]. Dipping a [[poison]]ed weapon into the potion of extra healing will neutralize the poison and use it up.
+
+==Strategy==
+The potion of extra healing is generally more than useful enough for restoring HP (especially in emergencies), up to and partly through the midgame; in the later stages, they are more often used in alchemy to produce full healing potions. Weaker characters, typically including [[pacifist]]s or [[protection racket]] players, might quaff their stating potions right away for the maximum HP boost, or else quaff any they discover as soon as possible; other players can save it for emergencies or alchemy as necessary. In any event, blessing potions prior to quaffing if possible may also be preferable.
+
+Below is a table describing the amount of max HP gained from drinking potions of extra healing:
+
+{|class="prettytable"
+!BUC
+!Range
+!Mean
+!Std. Dev. (zσ)
+!90% Confidence (>-1.28155σ)
+!99% Confidence (>-2.32635σ)
+!99.9% Confidence (>-3.09023σ)
+|-
+|Blessed
+|8-64 HP
+|36 HP
+|6.481 HP
+|27.69427445 HP
+|20.92292565 HP
+|15.97221937 HP
+|-
+|Uncursed
+|6-48 HP
+|27 HP
+|5.612 HP
+|19.8079414 HP
+|13.9445238 HP
+|9.65762924 HP
+|}
+
+In practice, this means that for a blessed potion of extra healing, you are likely to heal at least 27 HP (19 HP for uncursed), and virtually guaranteed to heal at least 15 HP (9 HP for uncursed).
+
+===Smoky and milky potions===
+{{main|Smoky and milky potions}}
+Smoky and milky potions can pose an obstacle if either one ends up as the [[randomized appearance]] of the potion of extra healing. Smoky extra healing in particular presents a bind, as it often forces a choice between extra HP or the chance for a wish: in this specific case, the odds favor alchemizing the potions over trying to get a [[wish]] from one, especially if you have not yet fully explored certain parts of the dungeon and/or assembled most of your planned kit ([[ascension kit|ascension]] or otherwise). A smoky potion that generates a [[djinn]] is not remotely guaranteed to give you a wish; milky extra healing poses an even more direct danger, since a [[ghost]] appearing from the potion meant to save your life and freezing you in place is a potential death knell.
+
+==History==
+The potion of extra healing has been present in the game since Hack 1.21, a variant of [[Jay Fenlason's Hack]]. Hack121 also had the potion of extra hit points, which was excluded from later versions; its functions are effectively folded into the various healing potions.
+
+===Alchemy===
+With the [[Alchemy#Stacking|new alchemy stacking rules]] introduced in [[NetHack 3.6.0]], dipping a (sufficiently large) stack of extra healing potions will alchemize 5.5 of them on average; there is a further 10% chance of them exploding, losing any potential HP boosts from obtaining full healing. On average, you gain an extra 12.1 max HP per dip, compared to just drinking extra healing directly.
+
+As each dip uses up either a [[gain energy]] or a [[gain level]] potion, these 12.1 HP need to be weighted against 10.5 average max energy boost from blessed gain energy or various useful effects from gain level (which gives less than 12 max HP on average, but increases max energy as well, and also has other uses). This means that, in comparison to [[3.4.3]], alchemizing may be less desirable in terms of optimizing HP gain for spellcasting roles and/or characters who already have decent HP but are lacking in energy.
+
+==Messages==
+{{message|[[You feel]] much better.|You quaffed a potion of extra healing.}}
+{{message|<[[Foo]]> looks much better.|A monster quaffed a potion of extra healing.}}
+{{message|<Foo> looks sound and hale again.|A monster was hit with a potion of extra healing.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]] and its variants, two potions of extra healing can be found in the outside area of [[Grund's Stronghold]].
+
+Making a potion of extra healing using a [[chemistry set]] takes three charges.
+
+==References==
+<references />
+{{nethack-366}}
+[[Category:Potions|Extra healing]]}
+&&%s&& %s Potion of full healing {129684 2019-12-14T07:16:14Z {4000978 Aximili} Reorganize {{potion|name=full healing|cost=200|muse=def}}
+
+A '''potion of full healing''' can reliably heal up to 400 HP and cure many negative effects.
+
+== Effects ==
+
+When [[quaff]]ed, in addition to healing up to 400 HP, the potion can sometimes boost your maximum HP.
+
+If an extra 400 HP would be more HP than your maximum, a blessed potion will also increase your maximum HP by 8, and an uncursed potion will increase it by 4; a cursed potion will not increase your maximum HP. The potion will also cure [[hallucination]] and [[blindness]], and [[exercise]] [[constitution]] and [[strength]], and if not cursed, will cure [[sickness]].  
+
+If you have lost [[experience level]]s, a blessed potion will restore one, but it decreases your maximum experience level by one in the process. For example, if you are at level 14 and lose 4 levels down to 10, using blessed full healing will bring your level back up to 11 and your remembered maximum down to 13. Even if you want to restore the remaining levels with a [[potion of restore ability]], you will not be able to restore it back to 14. By using only full healing potions, you can restore up to half of your lost levels.
+
+Inhaling [[vapors]] (of potion of any [[beatitude]]) will heal you 3 HP, up to your maximum HP, and exercise constitution. If you're polymorphed, health of your base form is adjusted as well.{{refsrc|potion.c|1600|version=NetHack 3.6.1}}
+
+You can throw this potion at [[Pestilence]] or hit him with it to deal damage to him.
+
+Dipping a poisoned weapon into a potion of full healing will remove the poison coating.
+
+== Identification ==
+
+The potion is identified for healers from the start, even though they don't start with any.
+
+If a monster has one of these potions they will try to drink it if they are low on HP, possibly identifying it for you.
+
+==Strategy==
+
+If this potion's [[Randomized appearance|appearance]] is smoky or milky, you may get a [[djinn]] or a [[ghost]] when you quaff it. This is great if you need a [[wish]], but not so great if you have 3 HP left and were expecting to be fully healed. For this reason, it's not a good idea to rely on potions of full healing as a poor man's [[amulet of life saving]] in these rare cases.
+
+In [[alchemy]], this potion can be combined with a [[potion of gain energy]] or [[potion of gain level|gain level]] to produce a [[potion of gain ability]]. It can be produced by combining a [[potion of extra healing]] with a [[potion of gain energy]] or [[potion of gain level|gain level]].
+
+==References==
+<references />
+
+[[Category:Potions|Full healing]]
+{{nethack-361}}}
+&&%s&& %s Potion of healing {145199 2022-03-28T05:14:56Z {4001279 Umbire the Phantom} crossing wires... {{potion|name=healing|cost=100|muse=def}}
+
+A '''potion of healing''' is a type of potion that appears in ''[[NetHack]]''.
+
+==Generation==
+All [[Healer]]s start the game with 4 non-cursed potions of healing, and all [[Monk]]s start the game with 3 non-cursed potions of healing.
+
+[[Intelligent]] monsters may [[Monster starting inventory|generate with]] a potion of healing as a [[defensive item]]. [[Shopkeeper]]s have a separate {{frac|3|4}} chance to be generated with one.{{refsrc|src/makemon.c|684|version=NetHack 3.6.6}}
+
+The inventory of health food [[shop]]s has a 4% chance to contain a potion of healing on a given square.{{refsrc|src/shknam.c|320|version=NetHack 3.6.6}}
+
+==Description==
+[[Quaff]]ing the potion will [[healing|heal]] you and [[exercise]] [[constitution]], with the amount healed dependent on [[beatitude]]: a blessed potion of healing will heal you for 8d4 [[HP]], an uncursed one for 6d4, and a cursed one for 4d4. If quaffing a non-cursed potion would restore your HP above maximum, your maximum HP is also increase by 1. Non-cursed potions cure [[blindness]] and [[deafness]], and blessed ones also cure [[sickness]].
+
+Monsters can also quaff the potion to heal for the same amount, though it can only additionally cure blindness (if blessed); monsters hit by the potion are fully healed and, if the potion was blessed, are also unblinded.{{refsrc|src/muse.c|958|nethack=3.6.6}} Pestilence is damaged by the potion, but the effects will always be completely resisted unless Pestilence is severely [[level drain]]ed first.{{refsrc|src/potion.c|1429|version=NetHack 3.6.6|comment=Healing potions do [[potion of sickness]] effects to Pestilence, subject to Pestilence's 100 [[monster magic resistance]]. This means that Pestilence needs to be drained below level 6 for the potions to have a few percent chance of affecting Pestilence.}}
+
+Inhaling [[vapors]] from a potion of healing of any [[beatitude]] will heal 1 HP, cure blindness and [[deaf]]ness if it was blessed, and exercise constitution; if you are [[polymorph]]ed, the health of your base form is adjusted as well.{{refsrc|src/potion.c|1667|version=NetHack 3.6.6}} 
+
+You can use a potion of healing in [[alchemy]] by dipping (or dipping into) potions of {{! of|gain level|or=1|gain energy}} to get a [[potion of extra healing]]. Dipping a [[poison]]ed weapon into a potion of healing will remove the poison and use up the potion.
+
+==Strategy==
+The potion of healing is a decent resource for starting and early character; spellcasters are typically better off using the {{spell of|healing}} spell in most situations unless they are aiming to conserve power or reduce the weight of their inventory. Later in the game, when the potion's healing is less effective, you should consider alchemizing them into potions of extra healing, and then to {{! of|full healing}} if possible. If saving {{! of|speed}} potions for use in the late stages of the game, and/or reserving your other alchemy components for full healing potions, you can instead [[wield]] or [[throw]] healing potions at your pets, which always restores them to full health (although this is still considered [[abuse]]).
+
+==History==
+The potion of healing has been present in the game since Hack 1.21, a variant of [[Jay Fenlason's Hack]]. Hack121 also had the potion of extra hit points, which was excluded from later versions; its functions are effectively folded into the various healing potions.
+
+==Messages==
+{{message|[[You feel]] better.|You quaffed a potion of healing.}}
+{{message|<[[Foo]]> looks better.|A monster quaffed a potion of healing.}}
+{{message|<Foo> looks sound and hale again.|A monster was hit with a potion of healing.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]] and its variants, two potions of healing can be found in the outside area of [[Grund's Stronghold]].
+
+Making a potion of healing using a [[chemistry set]] takes two charges.
+
+===NetHack Fourk===
+In [[NetHack Fourk]], all non-Healer [[Sylph (starting race)|slyphs]] start with a potion of healing; slyph Healers are given a [[magic harp]] in place of the extra potion.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Potions|Healing]]}
+&&%s&& %s Bones {144468 2022-02-13T23:03:19Z {4001483 Cathartes} /* Substitutions */ bug has been fixed for 18 years A '''bones level''' is a [[level]] that is saved when you [[die]], which may be reloaded into some future game. Such levels are also known as '''bones files''' or simply '''bones'''.
+
+The game will store no more than one bones file per dungeon level. When a player enters a level for the first time and a bones file exists for that level, it will only be loaded as a bones level {{frac|3}} of the time;{{refsrc|bones.c|385|comment= "only once in three times do we find bones"}} otherwise, it will generate the usual level and the bones file will remain untouched. 
+
+Bones levels can be a double-edged sword: the '''bones pile''' they contain will have all the dead adventurer's possessions, but if they were killed by a monster it will still be present. If a second adventurer is killed in a bones level, the level may then again be saved as bones, creating a '''double bones'''; in some cases, a triple or even a quadruple bones is possible.
+
+As of [[NetHack 3.6.1]], some [[trap]]s in the earlier dungeon levels may be generated with a pre-aged corpse and a few cursed items on top of them; these are designed to simulate the "bones" of the trap's unfortunate victims. This does not occur with entirely non-lethal traps such as [[squeaky board]]s.
+
+==Creation==
+If you die in an eligible level, the chance of leaving bones is:
+
+<math>\frac{\lfloor \frac{depth}{4} \rfloor}{\lfloor \frac{depth}{4} \rfloor + 1}</math>{{refsrc|src/bones.c|344|nethack=3.6.6}}
+
+This means that the chance of leaving bones at DL 1&ndash;3 is 0%, DL 4&ndash;7 is 50%, DL 8&ndash;11 is 67%, DL 12&ndash;15 is 75%, DL 16&ndash;19 is 80%, etc.
+
+Ineligible levels for leaving bones include the following:<ref>{{function|bones.c|no_bones_level}}</ref> 
+*The first three levels of the [[dungeon]], as shown above
+*The first level of the [[Gnomish Mines]], if it is at DL 3. (However, you can still ''load'' bones anywhere in the mines.)
+*[[Mines' End]]
+*[[Sokoban]]
+*The [[Quest|Quest Home]] and [[Quest|Quest Goal]] levels
+*[[Fort Ludios]]
+*[[Medusa's Island]]
+*The [[Castle]]
+*[[Vlad's Tower]], top and bottom (but the middle level is eligible)
+*[[The Wizard's Tower]], top and bottom (but the middle level is eligible)
+*[[Fake Wizard's Tower]], with portal
+*The level containing the [[vibrating square]]
+*[[Moloch's Sanctum]]
+*The [[Elemental Planes]]
+*The [[Astral Plane]]
+*Any level with a portal (to the [[quest]], [[Fort Ludios]], or the [[Wizard's Tower]])
+*Any level with stairs leading to multiple different [[branch]]es
+
+Bones files in eligible [[special level]]s, such as [[Minetown]], may be loaded as bones at a different level than they were saved at, sometimes breaking other ad-hoc rules like 'no [[polymorph traps]] above dungeon level 8'.
+
+==Clues==
+
+Some things that may indicate that a level is a bones level:
+* An abnormally large concentration of different [[monster]]s.
+* Wounded monsters (can be identified with a [[stethoscope]], but note that ordinary traps can also wound monsters).
+* Broken [[door]]s (can be identified with [[far look]]).
+* Unusual holes in walls (but they may also be created by a [[tunneling monster]], especially if there are tunnels containing rocks nearby).
+* Empty or partly empty [[throne room]]s, [[zoo]]s, [[leprechaun hall]]s, or other [[special room]]s.
+* [[Engrave]]d messages other than those randomly placed by ''NetHack''.
+* Few to no [[item]]s lying on the floor.
+* Suspicious or unusual items around the level. For example, disarmed [[bear trap]]s are never generated randomly.
+* [[Container]]s with contents unlike those randomly generated, such as weapons and armor.
+* Piles of items related to specific monsters. A collection of [[quarterstaff]]s or [[leather armor]]s, or even a noticeable number of [[Elf (starting race)#Elven items|elven]], [[Dwarf#Dwarvish items|dwarvish]], or orcish items can indicate that some combat has occurred on the level before you arrived.
+* A [[ghost]], in a room other than a [[graveyard]]. Note that bones ghosts will always be named after the dead player, and a ghost with one of the [[Ghost#Ghost names|random names]] does not indicate bones. Also, a few special levels generate one random ghost when they are created; this also does not indicate bones.
+* A named [[mummy]], [[wraith]], [[vampire]], or [[green slime]].
+* [[Call|Named]] monsters.
+* Monsters which should not be generated for this particular level or at your current difficulty (for example, an [[archon]] on DL4).
+* Presence of [[corpse]]s, which are never randomly generated, except in the [[Valley of the Dead]], [[Minetown#Orcish Town|Orcish Town]], and on top of traps in the first four levels of the Dungeons of Doom or behind [[iron bars]]. (Corpses might also be caused by random monsters dying to traps.)
+* Presence of [[slime mold|fruit]] (slime mold) with a different name from the one you set. This is a dead giveaway.
+
+==Strategy==
+A bones level will contain some remnant of the player whose bones are laying about. Typically this is a [[ghost]] bearing the name of the player, which will be sleeping over the bones pile unless something woke it up. 
+
+Depending on what the player was killed by, a monster other than the ghost will appear:
+
+* If the player was killed by any {{white|V}} ([[vampire]], [[vampire lord]], or [[Vlad]]), a named (regular) [[vampire]] replaces the ghost.
+* If the player was killed by any {{white|W}} ([[wraith]], [[barrow wight]], or [[Nazgul]]), a named [[wraith]] replaces the ghost.
+* If the player was killed by a [[ghoul]], the ghost is replaced with a ghoul.
+* If the player was killed by a [[mummy]], the ghost is replaced with the appropriate mummy (human mummy, elf mummy, etc.)
+* If the player was killed or petrified by a [[cockatrice|footrice]], there is a statue of the player instead, even if the player did not die by [[stoning]].
+
+Killing or luring the ghost or monster away gives you access to the bones pile, which contains the entire inventory of the player when they died. Every item in the bones pile has an 80% chance of being cursed outright, and a 20% chance of retaining its original [[BUC]]. It is thus usually a [[bad idea]] to [[quaff]], [[read]], [[wield]], or [[wear]] anything from a bones pile until it has been properly BUC identified.  Turning off [[autopickup]] temporarily before you step onto the bones pile is a good idea, so you can look through the items at your leisure and don't accidentally encumber yourself by picking up many items at once.
+
+If there is a [[bag]] in the bones pile, it may be a [[bag of holding]] (unless the adventurer appears to be an early [[Rogue]] or [[Archeologist]], in which case it's probably just a sack). Since the bag may be cursed, it might not be wise to [[loot]] it on the spot and risk destroying its contents. Try to lift it; if you find it very difficult or impossible, it is likely a cursed bag of holding. If you can get it into your inventory, you can treat it with a [[scroll of remove curse]] or dip it in a [[potion of holy water]]. If not, you can zap a [[wand of cancellation]] at it on the floor to uncurse it. As a last resort, you can [[tip]] it.
+
+Beware! The original killer is still lurking about the level, probably not too far from the site of the bones. If you discover a bones pile with very advanced items, be very careful about running into whatever managed to kill your predecessor! A [[headstone]] generates under the bones pile; this means that you can't engrave [[Elbereth]] on that square to keep monsters from attacking you while you sort through it. If you need to fight, step into another square. Alternatively, stand on top of a [[scroll of scare monster]]. (There might even be one in the bones pile already.)
+
+On the other hand, you want to get at any wands of fire or lightning the player may have been carrying before monsters can use them against you. Luckily, the ghost on top is generated asleep and will prevent other monsters from moving onto the pile until you wake it up.
+
+==Forensics==
+===Item identification===
+Objects that the deceased player has [[name|#named]] will be reset to whatever description that object has in the current player's game. In other words, if the deceased had a yellow potion named "this burns when thrown" (meaning it was [[Potion of acid|acid]]), but acid in the current player's game is a purple potion, the potion will show up as purple, without a name. The exception to this rule is [[fruit]], which retains its name in bones piles. Thus, naming your fruit "Look out for the [[master mind flayer]]!" is a clever dying action to inform the next player about your demise. [[Engraving]] is a more restrictive method of issuing such warnings, as you can only engrave a maximum of eight characters per turn, which limits your final vocabulary to phrases like "[[mind flayer|purple&nbsp;h]]", "[[GWTWOD]]", or "[[Archon]]".
+
+Assuming that the game is being played on a public server that provides [[dumplog]]s, the less scrupulous may look up the dumplog to see what items were carried. As these logs include an ASCII image of the game map at time of death, determining which of the logs belongs to the body you found is simple. This is [[Cheating#Probably cheating|probably cheating]], though, and some players frown upon it.
+
+====Identification via the class of the deceased====
+When encountering a bones level, it can be advantageous to know some details of the deceased, or at least his or her class. For example, if you find a [[grave]] with a [[quarterstaff]], a randomly named [[cloak]], two [[spellbook]]s, and a [[magic marker]], you can be fairly certain the corpse is that of an early wizard, from which you can deduce that the cloak is a [[cloak of magic resistance]]. This method comes with no guarantees, but the more "indicator items" you find, the more certain you can be.
+{|class="prettytable striped"
+!Class 
+!is indicated by
+|-
+|Archeologist
+|[[bullwhip]], [[fedora]], [[tinning kit]]
+|-
+|Barbarian
+|[[two-handed sword]], [[battle-axe]]
+|-
+|Caveman
+|large number of [[rock]]s and/or [[flint stone]]s
+|-
+|Healer
+|[[scalpel]], [[stethoscope]]
+|-
+|Knight
+|[[lance]], many [[apple]]s and [[carrot]]s, [[saddle]] (possibly on a [[horse]])
+|-
+|Monk
+|many [[apple]]s and [[orange]]s, a [[robe]]
+|-
+|Priest
+|4 [[potions of water]], both of: [[mace]] and [[robe]]
+|-
+|Ranger
+|two large stacks of [[arrow]]s
+|-
+|Rogue
+|large stack of [[dagger]]s, [[sack]], [[lock pick]]
+|-
+|Samurai
+|large stack of [[ya]] (bamboo arrows), katana and short sword
+|-
+|Tourist
+|[[Hawaiian shirt]], [[expensive camera]], [[credit card]], stack of 4 [[scroll]]s
+|-
+|Valkyrie
+|[[long sword]], [[small shield]], dagger
+|-
+|Wizard
+|[[quarterstaff]], randomly named [[cloak]], two [[spellbooks]], two [[rings]], a few [[scrolls]] and [[potions]], one [[wand]]
+|}
+
+Rogues and Valkyries are hard to identify, since they both start with items common to other classes, or commonly generated.  A +3 small shield almost certainly used to belong to a Valkyrie, but to determine the [[enchantment]], you need to either [[identify]] or [[wear|try on]] the shield.
+
+==Substitutions==
+The following items will be substituted upon a save:
+{|class="prettytable striped"
+!Died with 
+!Saved with
+|-
+|[[Amulet of Yendor]]
+|cursed [[cheap plastic imitation of the Amulet of Yendor]]
+|-
+|[[Candelabrum of Invocation]]
+|cursed, used, unlit [[wax candle]]
+|-
+|[[Bell of Opening]]
+|cursed [[bell]]
+|-
+|[[Book of the Dead]]
+|cursed [[spellbook of blank paper]]
+|}
+
+Upon loading, the following artifacts are changed to their base type:
+* Your [[quest artifact]]
+* Any artifact that was already created in your game
+
+Note that the [[alignment]] of any quest artifact is not affected by the alignment of the deceased: if the [[Mitre of Holiness]] is found in bones, you will be unable to grasp it unless you are lawful, even if it was retrieved from Nalzok by a chaotic [[priest]].
+
+Additionally, certain monsters will never be saved in bones:{{refsrc|bones.c|226}}
+* [[Medusa]]
+* the [[Wizard of Yendor]]
+* [[Vlad the Impaler]]
+* your [[quest nemesis]]
+* your [[quest leader]]
+
+Their statues and corpses are unaffected ([[Bugs in NetHack 3.4.3#C342-54|bug C342-54]]), but upon revival, will turn into [[doppelganger]]s.<ref>{{commit|fbfb8e92abd9aa4e2420e5b24bb77eeddb926bc7|commit fixing unique monster bones revival}}</ref>
+
+Tame monsters will turn hostile.{{refsrc|bones.c|299}}
+
+==Ethics==
+Using bones items in a normal game is perfectly fine. Bones can often make a difficult game much easier by providing items that the current player has not "earned" yet. If you are going for some record, especially a [[speed run]], the [[ascension]] is likely more impressive if not using bones items at all.
+
+From a game design point of view, bones are potentially unbalancing, and a few players object to using bones items for this reason. Finding one's own bones is an even more difficult position. Luckily on a [[public server]] there are enough players that this is unlikely to happen too frequently.
+
+If the deceased player's [[dumplog]] is available, it can be used to identify items in the bones pile. This could be considered [[cheating]]. Many players do it, but endless debates rage on [[RGRN]] about the value of such wins. Please disclose dumplog usage.
+
+== Bones files locations ==
+On the Windows port, the data for a bones file is stored in the [[playground]] directory. As the filename contains clues to where the player died, it is trivial to identify potential bones levels. The file is created when a player dies on a bones-capable level and is deleted when a bones level is reached and incorporated in to an active game. If the player later dies on a bones-capable level, the file may be re-created with the appropriate filename.
+
+Thus, if the player observes the files within the playground, they can notice when a suitable level is coming up, and notice if the file is deleted, and thus know that they are on a bones level.
+
+The file naming format that is used is "bon''<nowiki><branch><role>.<level></nowiki>''", for example "bonM0.T" is the bones file for Minetown.
+
+Within the filename, ''<nowiki><branch></nowiki>'' is one of:
+* D &ndash; [[Dungeons of Doom]]
+* M &ndash; [[Gnomish Mines]]
+* G &ndash; [[Gehennom]]
+* T &ndash; [[Vlad's Tower]]
+* Q &ndash; [[Quest]]
+
+And ''<nowiki><role></nowiki>'':
+* Is normally "0", if part of the normal dungeon
+* Changes to "Bar" for [[Barbarian]], "Wiz" for [[Wizard]] etc - specific branches for [[quest]]s. In [[SLASH'EM]], can also be "Law", "Neu" and "Cha" for the [[alignment quest]]s.{{refsrc|files.c|617}}
+
+And ''<nowiki><level></nowiki>'' is one of:
+* Numbers 1 through 53 &ndash; ordinary levels eligible for leaving bones (this number is offset from the first of the branch appropriate&mdash;e.g. if the bones are on the second level of the mines, the filename would be "bonM0.2")
+* O &ndash; [[Oracle]] (if <nowiki><branch></nowiki> is "D", as the Oracle can only be in the Dungeons of Doom and Orcus Town shares "O")
+* T &ndash; [[Minetown]]
+* R &ndash; [[Rogue level]]
+* V &ndash; [[Valley of the Dead]]
+* A &ndash; [[Asmodeus]]' Lair
+* B &ndash; [[Baalzebub]]'s Lair
+* J &ndash; [[Juiblex]]'s Swamp
+* O &ndash; [[Orcus Town]] (if <nowiki><branch></nowiki> is "G", as Orcus Town can only be in Gehennom and the Oracle shares "O")
+* X &ndash; [[Wizard's Tower]]
+* N &ndash; [[Nymph level]] (exists in [[SLASH'EM]] and [[UnNetHack]])
+
+The file is not designed to be human-readable. The characters corresponding to each level and branch are defined in [[dungeon.def]].
+
+== Wizard mode ==
+In [[wizard mode]], you will be prompted when you reach a bones level with the message ''"Get bones? [yn] (n)"'', allowing you to selectively retrieve the bones file for that level. You'll also get the prompt ''"Unlink bones? [yn] (n)"''. Selecting ''y'' removes that bones file from the possible set of bones files for normal games.
+
+When you die on a bones-suitable level, you will be presented with the opportunity to ''"Save bones? [yn] (n)"'', again allowing you to selectively save bones files. If there was already a bones file for that level (i.e. you said no to getting bones when entering a level) you will also be prompted with ''"Bones file already exists. Replace? [yn] (n)"'', allowing you to selectively overwrite the bones file for that level.
+
+==Variants==
+===dNethack===
+In addition to the above monsters, [[dreadblossom swarm]]s and [[shade]]s leave a monster of the same type instead of a ghost if a bones file is created from them killing the player. [[Dread Seraph]]s leave [[skeletons]], and [[gnoll ghoul]]s will leave regular [[ghoul]]s. [[Binder (role in dNethack)|Binders]] will always leave [[broken shadow]]s (a weaker version of a shade) instead of ghosts in a bones file.
+
+Note that [[Mammon]] does not currently leave a golden statue in a bones file.
+
+===FIQHack===
+Bones in [[FIQHack]] are more dangerous than in vanilla: the ghost will have the same intrinsics as the deceased character, and there is also a 33% chance that the ghost will be replaced with a [[player monster]] that has the same inventory, spells, and intrinsics as the dead character.
+
+{{todo|Add information about changes introduced in variants (for example [[UnNetHack]])}}
+
+==References==
+<references/>
+
+==See also==
+*[[Hearse]]
+*[[Ghost]]
+*[[Options#bones|Options § bones]]
+
+{{featured}}
+[[Category:Dungeon features]]
+{{nethack-360|offset=1}}}
+&&%s&& %s I {144858 2022-03-08T08:49:29Z {4001279 Umbire the Phantom}  {{ASCII}}
+*{{white|i}} represents an [[imp]] or [[minor demon]]:
+** {{monsymlink|manes}}
+** {{monsymlink|homunculus}}
+** {{monsymlink|imp}}
+** {{monsymlink|lemure}}
+** {{monsymlink|quasit}}
+** {{monsymlink|tengu}}
+*{{white|I}} represents any monster that is [[invisibility|invisible]] or otherwise cannot be see by you for any other reason, but whose presence you are aware of. Prior to [[NetHack 3.3.0]], it was used to represent [[Stalker|invisible stalkers]].
+*Press {{kbd|i}} to bring up your [[inventory]].
+*Press {{kbd|shift|i}} to bring up your inventory of certain types of items only.
+
+== Variants ==
+=== UnNetHack === 
+[[UnNetHack]] introduces a new minor demon that uses this glyph, the {{brightgreen|i}} [[Uranium imp]]s
+
+=== SLASH'EM ===
+[[SLASH'EM]] introduces new creatures that use the {{white|i}} glyph:
+
+*{{white|i}} imp or minor demon:
+** {{monsymlink|dretch}}
+** {{monsymlink|rutterkin}}
+** {{monsymlink|nupperibo}}
+** {{monsymlink|blood imp}}
+[[Category:ASCII]]}
+&&%s&& %s Colon {131329 2020-01-23T03:07:07Z {4001313 Ardub23} [[NHW:Style guide#Variants|NHW:Style guide § Variants]] {{ASCII}}
+* {{white|:}} represents a [[lizard (monster class)|lizard]]:
+** {{monsymlink|newt}}
+** {{monsymlink|gecko}}
+** {{monsymlink|iguana}}
+** {{monsymlink|baby crocodile}}
+** {{monsymlink|lizard}}
+** {{monsymlink|chameleon}}
+** {{monsymlink|crocodile}}
+** {{monsymlink|salamander}}
+
+*Press {{kbd|:}} to use the [[near look]] command, which looks at the square you currently are on
+
+== Variants ==
+=== UnNetHack ===
+[[UnNetHack]] introduces one new creature that uses the {{white|:}} glyph:
+* {{monsymlink|giant turtle}}
+
+=== SLASH'EM ===
+[[SLASH'EM]] introduces new creatures that use the {{white|:}} glyph:
+
+** {{monsymlink|gila monster}}
+** {{monsymlink|rhaumbusun}}
+** {{monsymlink|basilisk}}
+** {{monsymlink|komodo dragon}}
+[[Category:ASCII]]}
+&&%s&& %s Quaff {104096 2016-11-10T19:16:03Z {4000693 Phol ende wodan} add quaff YAFM {{Keyboard Commands}}
+'''Quaffing''', done by hitting {{kbd|q}}, means drinking. Most often you quaff a [[potion]], but you may also quaff from a [[fountain]] or from a [[sink]].
+
+Quaffing a [[potion of invisibility]] obviously makes you invisible and so on, but with fountains and sinks the results may vary greatly. For example, quaffing from a fountain may release a [[water demon]] that may grant you a [[wish]], but it might also just summon an endless stream of snakes. If you quaff from a sink, you may find a random [[ring]], but then again you risk creating a [[water elemental]] instead.
+
+When the game asks you what you want to drink, you can enter a dash {{kbd|-}} to specify nothing, resulting in the [[YAFM]] ''"You mime drinking something"''.
+[[Category:Commands]]
+{{nethack-360}}}
+&&%s&& %s Quaffing {3759 2006-06-10T20:24:35Z {924 ZeroOne} #REDIRECT [[Quaff]] #REDIRECT [[Quaff]]}
+&&%s&& %s Left square bracket {63484 2011-01-15T13:31:50Z {831 Tjr} tty port (only?) {{ASCII}}
+*{{white|[}} represents a piece of [[armor]].
+*Press {{kbd|[}} to see what armor you are wearing.
+* Press {{kbd|[}} to select [[armor]] in a [[Menu_controls|menu]]. Supported by [[tty]] and [[curses interface]]s, see [[menu controls]].
+
+
+[[Category:ASCII]]}
+&&%s&& %s * {126875 2019-08-08T17:23:09Z {4001313 Ardub23} Rearranged to group similar things {{ASCII}}
+*{{white|*}} are [[rock]]s, [[stone]]s and [[gem]]s.
+*On the [[Rogue level]], {{white|*}} represents [[zorkmid|gold pieces]].
+*{{white|*}} is also used for drawing the [[digging]] beam.
+*Press {{kbd|*}} to get a list of your [[weapon]]s and [[armor]] in use.
+*When prompted to select an item from your inventory, pressing {{kbd|*}} shows a full list of items including ones that would be irrelevant.
+* Press {{kbd|*}} to select [[gem]]s and [[stone]]s in a [[Menu controls|menu]]. Supported by [[tty]] and [[curses interface]]s; see [[menu controls]].
+*[[Skill]]s flagged with '''*''' on the skill screen can be #[[enhance]]d once you have gained more levels.
+
+[[Category:ASCII]]}
+&&%s&& %s Oil lamp {149768 2023-01-14T17:21:48Z {4000867 K2} Undo revision 149767 by [[Special:Contributions/MrSurvivor1997|MrSurvivor1997]] ([[User talk:MrSurvivor1997|talk]]) you're overstating it. any mines strategies should be mentioned on the gnomish mines page {{tool
+  |color=yellow
+  |tile=[[image:lamp.png]]
+  |name=oil lamp
+  |appearance=[[lamp]]
+  |cost=10
+  |weight=20
+  |material=copper
+}}
+
+An '''oil lamp''' is a tool that appears in ''[[NetHack]]''. It appears as a '''[[lamp]]''' when unidentified, and is made of [[copper]]. It Oil lamps are one of many [[light source]]s available.
+
+==Generation==
+When you release a [[djinni]] from a [[magic lamp]], the lamp becomes an oil lamp.
+
+The following roles have a chance of starting with an oil lamp:{{refsrc|src/u_init.c|182|version=NetHack 3.6.6}}
+
+* [[Archeologist]] ({{frac|4}} chance) {{refsrc|src/u_init.c|671|version=NetHack 3.6.6}}
+* [[Barbarian]]s ({{frac|6}} chance) {{refsrc|src/u_init.c|685|version=NetHack 3.6.6}}
+* [[Healer]]s ({{frac|25}} chance) {{refsrc|src/u_init.c|699|version=NetHack 3.6.6}}
+* [[Monk]]s ({{frac|10}} chance) {{refsrc|src/u_init.c|719|version=NetHack 3.6.6}}
+* [[Priest]]s ({{frac|10}} chance) {{refsrc|src/u_init.c|731|version=NetHack 3.6.6}}
+* [[Valkyrie]]s ({{frac|6}} chance) {{refsrc|src/u_init.c|783|version=NetHack 3.6.6}}
+
+==Effects==
+[[Apply]]ing a [[beatitude|noncursed]] oil lamp you carry will turn it on, lighting darkened tiles in an area around it for 1000 to 1499 turns; if an oil lamp is cursed, it has only a 50% chance of lighting each time it is applied.{{refsrc|apply.c|1088}} Oil lamps can be refilled by [[read]]ing a [[scroll of charging]] or #[[dip]]ping it into a [[potion of oil]] while unlit. If you dip a lit oil lamp into a potion of oil, you are likely to cause a [[fireball]].
+
+===Light radius===
+An oil lamp has a light radius of three squares around the character.
+{{lightradius|r=3}}
+
+==Strategy==
+Oil lamps can be conserved by turning them off upon reaching a lit room or area. Cursed oil lamps are simply more tedious to turn on and provide just as much light, so they are not as urgent to bless or uncurse as other items.
+
+Oil lamps can be distinguished from magic lamps by [[price identification]]; an oil lamp's base price is 10zm, while a magic lamp's is 50. Magic lamps also burn indefinitely, so any lamp that eventually flickers and goes out is an oil lamp. You can also #[[rub]] the lamp a few times to see if a puff of smoke or a djinni emerges, though doing this with a non-blessed magic lamp is likely to release the djinni without granting a [[wish]]. Once a lamp is indirectly identified as an oil lamp, it can be [[Name##naming a class of items|type-named]] to differentiate them from unidentified magic lamps.
+
+==History==
+The oil lamp first appears in [[NetHack 2.3e]], where it is simply called a "lamp"; it was given its current name in [[NetHack 3.1.0]].
+
+==Messages==
+As the lamp runs out of turns, you will receive the following messages in order.
+
+{{message|The lamp flickers for a moment, then dies.|You attempted to light a cursed oil lamp and failed.}}
+{{message|Your lamp flickers.|The lamp has a couple hundred turns left.}}
+{{message|Your lamp flickers considerably.|The lamp has 50 or so turns left.}}
+{{message|Your lamp seems about to go out.|The lamp has about ten or twenty turns left.}}
+{{message|Your lamp has gone out.|The lamp will no longer provide light unless refilled or recharged.}}
+
+==See also==
+*[[Light sources#Lanterns and lamps|Light sources § Lanterns and lamps]]
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Grave {3799 2006-06-11T23:23:02Z {924 ZeroOne} #REDIRECT [[Headstone]] #REDIRECT [[Headstone]]}
+&&%s&& %s Potion of confusion {145185 2022-03-28T04:11:48Z {4001279 Umbire the Phantom} /* Description */ {{potion|name=confusion|cost=100|muse=off}}
+
+A '''potion of confusion''' is a type of [[potion]] that appears in ''[[NetHack]]''.
+
+==Generation==
+[[Intelligent]] monsters can generate with the potion as an [[offensive item]].{{refsrc|src/makemon.c|556|version=NetHack 3.6.6}}
+
+Mixing a potion of booze with a [[potion of enlightenment]] via [[dipping]] will [[alchemy|alchemize]] a potion of confusion.
+
+==Description==
+Quaffing the potion will, unsurprisingly, leave you [[confused]] for several [[turn]]s. The duration of the confusion depends on the [[beatitude]] of the potion:{{refsrc|src/potion.c|902|version=NetHack 3.6.6}}
+
+* blessed: {{rn1|7|8}} turns
+* uncursed: {{rn1|7|16}} turns
+* cursed: {{rn1|7|24}} turns
+
+Dipping a [[unicorn horn]] into a potion of confusion turns it into uncursed {{! of|water}}.
+
+Dipping the potion into a [[potion of gain energy]] or [[potion of gain level]] will alchemize the potion into either a [[potion of booze]] or a [[potion of enlightenment]].
+
+Inhaling the potion's [[vapor]]s confuses you for 1 to 5 turns.{{refsrc|src/potion.c|1700|nethack=3.6.6}} Monsters that are hit with a potion are confused, subject to their [[monster magic resistance]].{{refsrc|src/potion.c|1466|nethack=3.6.6}}
+
+==Strategy==
+While the potion can be occasionally useful for [[Confusion#Confused scroll effects|reading scrolls while confused]], there are many other sources of confusion that weigh less. As such, this potion tends to be thrown at monsters, or more frequently [[polypile]]d or made into water.
+
+==History==
+The potion of confusion has been present in the game since Hack 1.21, a variant of [[Jay Fenlason's Hack]].
+
+==Messages==
+{{message|Huh, What?  Where am I?|You quaffed a potion of confusion.}}
+{{message|What a trippy feeling!|As above while [[hallucination|hallucinating]].}}
+{{message|You feel somewhat dizzy|You were hit by a thrown potion.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], the [[Lawful Quest]] has a {{frac|2|5}} chance to generate a cursed potion of confusion among the items found in the Chamber of Junk.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Potions|Confusion]]}
+&&%s&& %s Potion of gain ability {148425 2022-10-05T00:01:36Z {4001279 Umbire the Phantom} de-SLEX {{potion|name=gain ability|cost=300}}
+
+The '''potion of gain ability''' is a potion in ''[[NetHack]]'' that can increase your [[attribute]]s.
+
+==Generation==
+Dipping a [[potion of gain energy]] or [[potion of gain level]] into a [[potion of full healing]] will produce a diluted potion of gain ability.
+
+==Effects==
+[[Quaff]]ing an [[uncursed]] [[potion]] increases a random attribute by one point; quaffing a blessed potion will increase all attributes by one point. Quaffing a [[cursed]] potion, or else quaffing a noncursed one while wearing a [[ring of sustain ability]], has no effect, and the [[potion]] will not be identified.
+
+Note that the uncursed potion will try only 6 times to find an attribute that isn't already at its maximum. If all six fail, it will just try and fail to raise the maxed stat, with no further effect.
+
+==Messages==
+{{message|You feel [strong/smart/wise/agile/tough/charismatic]!|You gained an attribute point.}}
+{{message|You're already as [strong/smart/wise/agile/tough/charismatic] as you can get.|You would have gained an attribute point, but it is already at its maximum.}}
+{{message|Ulch! That potion tasted foul!|You quaffed a cursed potion.}}
+{{message|Ulch! That potion smells terrible!|You smelled the vapors from a cursed potion.}}
+{{message|You have a peculiar feeling for a moment, then it passes.|You quaffed a non-cursed potion while having [[sustain ability]]. This may help identify a ring of sustain ability.}}
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], uncursed will attempt to raise an ability one point a few times and might fail. Blessed will always raise ''one'' stat, if possible.
+
+===xNetHack===
+In [[xNetHack]], a blessed potion of gain ability prompts the player to choose an attribute to increase, and the chosen attribute increases it by 1–2 points. An uncursed potion will not randomly choose an attribute that's already at its innate maximum.
+
+[[Category:Potions|Gain ability]]
+[[Category:UnNetHack]]
+{{nethack-366}}}
+&&%s&& %s Potion of sickness {145121 2022-03-27T15:53:20Z {4001279 Umbire the Phantom} Cleanup {{potion|name=sickness|cost=50}}
+A '''potion of sickness''' is a type of [[potion]] that appears in ''[[NetHack]]''.
+
+==Generation==
+[[Pestilence]] is known to generate with several potions of sickness.
+
+Potions of sickness are created 22.5% of the time from [[alchemy]] with random potions.
+
+==Description==
+If you quaff a potion of sickness, but you are not a [[Healer]] and do not have the [[sustain ability]] property, you are subject to multiple detrimental effects. Despite its name, this potion does not cause the terminal [[sickness]] associated with, e.g., food poisoning.
+
+The following effects can result from quaffing a potion of sickness:
+
+{|class="prettytable"
+!Case
+!You have no [[poison resistance]]
+!You have poison resistance
+|-
+|blessed
+|You lose 1 hit point.
+|You lose 1 hit point.
+|-
+|uncursed
+|You lose 1-10 hit points, one of your attributes is reduced by 3-6, abuse constitution.
+|You lose 1 hit point, one of your attributes is reduced by 1, abuse constitution.
+|-
+|cursed
+|You lose 1-15 hit points, one of your attributes is reduced by 3-6, abuse constitution.
+|You lose 1 hit point, one of your attributes is reduced by 1, abuse constitution.
+|}
+
+If you are a Healer, you are completely protected from these effects; if you have the sustain ability property, you are still subject to these effects, but your attributes are not reduced. Regardless of role or properties, quaffing a potion of sickness will also stop any [[hallucinating]], shocking you back to your senses; this is the only beneficial effect of the potion.
+
+===Dipping===
+As indicated by the [[#Messages|messages]] if you quaff a blessed potion or have poison resistance when quaffing one of any [[beatitude]], the potion is biologically contaminated [[potion of fruit juice|fruit juice]]; if you [[cancel]] the potion or #[[dip]] a [[unicorn horn]] into it, it will become a potion of fruit juice. Dipping a stack of fruit juice potions into a potion of sickness will 'contaminate' the stack, turning them into potions of sickness.
+
+If you dip [[dart]]s, [[arrow]]s, [[shuriken]], or [[crossbow bolt]]s into a potion of sickness, it will coat the projectile in [[poison]], using up the potion and prompting you to type-[[name]] it. Poisoned weapons do d6 extra damage and have a 10% chance of instant kill for non-resistant monsters; the poison has a 10% chance of wearing off on each successful attack.{{refsrc|uhitm.c|1349}}
+
+===Throwing and wielding===
+The potion can be [[throw]]n at monsters, or [[wield]]ed and swung at them, to reduce their hit points - non-immune monsters have their current HP and maximum HP halved, subject to separate chances of [[Magic resistance (monster)|resisting]]; if the monster's maximum HP is brought below the current HP, the current HP is reduced to the new maximum HP. This has no effect if the monster possesses a sickness attack or has poison resistance. While monsters do not throw or use potions of sickness, Pestilence will quaff potions of sickness to heal himself, much as other monsters would with a [[potion of healing]]; hitting Pestilence with the potion will have the same effect.
+
+==Strategy==
+Potions of sickness are typically best used for poisoning projectiles, though [[lawful]] characters will take a -1 hit to their [[alignment record]] for each use of a poisoned weapon; alchemy makes it somewhat easy to procure more potions for poisoning projectiles with. There are many powerful monsters, including some [[Quest nemeses]], that lack poison resistance and can be easily felled by e.g. a stack of poisoned darts; [[Tourist]]s in particular that can hold on to their stack of starting +2 darts can easily poison them to use as an effective weapon against the [[Master of Thieves]].
+
+While a potion of sickness can be used as a hallucination cure if you can mitigate the HP and attribute loss (e.g. with poison resistance, a [[potion of restore ability]], or a [[ring of sustain ability]]), they are only worth using for this purpose if you lack potions of {{! of|extra healing|full healing}} or a unicorn horn.
+
+For players that have no interest in poisoned weapons, this potion is a good candidate for [[dilution]].
+
+===Identification===
+Potions of sickness can be easily identified by dipping a unicorn horn into them, as discussed above; while cancelling the potions does the same, cancelling the [[potion of see invisible]] has the same effect. Dipping a non-poisoned [[missile]] weapon into a potion of sickness will form a coating on it, which is reliable for informal identification.
+
+==Messages==
+{{message|Yecch!  This stuff tastes like poison.|You quaffed a potion of sickness.}}
+{{message|(But in fact it was mildly stale <[[slime mold]]> juice.)|This line is added if the potion was blessed.}}
+{{message|(But in fact it was biologically contaminated <[[slime mold]]> juice.)|This line is added if you quaffed a non-blessed potion and have poison resistance; you only lose one attribute point.}}
+{{message|Fortunately, you have been immunized.|You are a [[Healer]], so you suffer no ill effects.}}
+{{message|You are shocked back to your senses!|You were hallucinating, and were cured by quaffing the potion.}}
+
+{{message|You feel weaker.|Your [[strength]] was lowered.}}
+{{message|Your muscles won't obey you.|Your [[dexterity]] was lowered.}}
+{{message|You feel very sick.|Your [[constitution]] was lowered.}}
+{{message|Your brain is on fire.|Your [[intelligence]] was lowered.}}
+{{message|Your judgement is impaired.|Your [[wisdom]] was lowered.}}
+{{message|You break out in hives.|Your [[charisma]] was lowered.}}
+
+{{message|<monster> looks rather ill.|A monster without immunity was hit by a potion of sickness, or [[Pestilence]] was hit by a [[potion of healing]].}}
+{{message|<monster> looks unharmed.|A monster with a sickness attack or poison resistance was hit by a potion of sickness.}}
+{{message|<potion> forms a coating on <item>.|You dipped a poisonable item into a potion of sickness.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], bladed weapons can be poisoned as well; poisoned weapons are also subject to a [[weight]]-based chance of losing their poisonous coating (1 in [10 - (weight/10)] chance).
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Potions|Sickness]]}
+&&%s&& %s Change of state {104240 2016-11-19T22:37:54Z {4000817 Wingedcatgirl}  {{stub}}
+
+NetHack has a basic knowledge of elementary physics. '''Change of state''' is one piece of that information.
+
+Any substance can come in several forms: solid, liquid and gas. In NetHack, a [[potion]] in the inventory might freeze, breaking it, or it might vaporize. These effects take place when, for example, [[wand of cold]] or [[wand of fire]] hits one. Inhaling the [[vapors]] has additional effects depending on the potion.
+
+Change of state can be used for benefit also. You can, for example, freeze a [[moat]] to cross it.
+
+[[Category:Strategy]]
+{{noversion}} <!-- Currently too stubby to be version-specific. -->}
+&&%s&& %s Clumsy {17054 2006-12-29T09:26:14Z {735 Shijun} redirected to [[Attribute]] #REDIRECT [[Attribute]]}
+&&%s&& %s Minetown {149674 2023-01-06T20:31:18Z {4000867 K2} Undo revision 149672 by [[Special:Contributions/MrSurvivor1997|MrSurvivor1997]] ([[User talk:MrSurvivor1997|talk]]) already implied {{level|Minetown|
+ |branch=Gnomish Mines
+ |from=5|to=8
+ |bones=yes
+ |mapping=yes
+ |teleport=yes
+ |digfloor=yes
+ |digwalls=yes
+ |variants=
+* {{sa|Town Square}}
+* {{sa|Alley Town}}
+* {{sa|College Town}}
+* {{sa|Grotto Town}}
+* {{sa|Bustling Town}}
+* {{sa|Bazaar Town}}
+* {{sa|Orcish Town}}
+}}
+'''Minetown''' is one of eight different maps, located on the 3rd or 4th level of the [[Gnomish Mines]]. This gives Minetown a 1/6 chance of being on levels 5 or 8 in the mines, and a 1/3 chance of being on levels 6 or 7 in the mines. As in the rest of the Mines, monster creation on this level is biased towards lawful monsters.
+
+In most games, Minetown is also the largest collection of [[shop]]s, but there is a 1/7 chance of the shopless [[Minetown#Orcish Town|Orcish Town]]; failing that, there is a chance that any given shop other than [[Izchak]]'s may not appear, which produces a 0.5% chance of having only Izchak's shop.
+
+==Maps==
+There are seven different Minetown variants, each with their own maps and guaranteed monsters. Note that Minetown is eligible to leave [[bones]], so the monsters (and the map) may be in a different state than is shown below.
+
+Also bear in mind that, as elsewhere in the Gnomish Mines, if you are playing a [[dwarf]] or [[gnome (starting race)|gnome]], two-thirds of the dwarves or gnomes that are listed in these descriptions will be made random monsters instead.
+
+{{upcoming|3.7.0|Any of the following maps may be mirrored and/or flipped.}}
+
+===Town Square===
+<div class='ttymap'><replacecharsblock rules="ttymap">
+G=[[Gnome_(monster)#Gnome|{{brown|G}}]]
+Ĝ=[[Gnome_(monster)#Gnomish_Wizard|{{brightblue|G}}]]
+H=[[Gnome lord|{{blue|G}}]]
+@=[[aligned priest|{{white|@}}]]
+%=[[door|{{red|+}}]]
+
+ ---------------------------------
+ |.%..|..|..%....%..|..|..|G.%...|
+ |.%..|..|..%....%..|..|..|..%...|
+ |.----%%----....----%%-%%----...|
+ |...............................|
+ |.-%%----%%-.......-%%%%-%%%-...|
+ |.|..|..|..|......{|.ĜĜ.|...|...|
+ |.|..|..|.G|.......|....|...|...|
+ |.----%%----.......|.@_.|foo|...|
+ |.............{....|....|...|...|
+ |.------%%%------.----------|...|
+ |.%....|...|....%.%....|....%...|
+ |.%.gen|.G.|lght%.%.H..|tool%...|
+ |.%....|...|....%.%....|....%...|
+ |.---------------.-----------...|
+ |...............................|
+ ---------------------------------
+</replacecharsblock></div>
+
+Izchak's light shop (marked "lght") is guaranteed, but the general store
+("gen"), food shop ("foo") and tool shop ("tool") have only a 90% chance of
+existing.
+
+Only one [[door|{{red|+}}]] on each wall is randomly made a door. This level contains two random traps.
+
+{|class="prettytable"
+!Monster!!Symbol!!Location
+|-
+|The Watch
+|[[watchman|{{lightgray|@@@@}}]][[Watch captain|{{green|@}}]]
+|Patrolling randomly
+|-
+|Priest
+|[[aligned priest|{{white|@}}]]
+|In temple
+|-
+|Gnomish Wizards
+|[[Gnomish wizard|{{brightblue|GG}}]]
+|In temple
+|-
+|Gnomes
+|[[Gnome (monster)|{{brown|GGG}}]]
+|In rooms marked with G
+|-
+|Gnome lord
+|[[Gnome lord|{{blue|G}}]]
+|In room opposite light shop
+|-
+|Gnomes
+|[[Gnome (monster)|{{brown|GGG}}]]
+|Outside mapped area
+|-
+|Dwarf
+|[[Dwarf (monster)|{{red|h}}]]
+|Outside mapped area
+|}
+
+===Alley Town===
+<div class='ttymap'><replacecharsblock rules="ttymap">
+G=[[Gnome_(monster)#Gnome|{{brown|G}}]]
+Ĝ=[[Gnome_(monster)#Gnomish_Wizard|{{brightblue|G}}]]
+@=[[aligned priest|{{white|@}}]]
+%=[[door|{{red|+}}]]
+
+ ---------------------------------
+ |...............................|
+ |.----....-----.----+--..-----..|
+ |.|..|---.|.@.%.%..|..|..|...|..|
+ |.|..|..|.|._.%.%..|..|..|lgt|..|
+ |.-%%|tl|.|.ĜĜ%.--------.|...|..|
+ |....|..|.|...%....%...|.-%%%-..|
+ |.{..-%%-.----|....%wan|........|
+ |..........%..|%%-.-----..-----.|
+ |....-%%-..%..|..|........%...|.|
+ |.-%%|..|.----|G.|%%%-....%foo|.|
+ |.|..|..|.%...|--|...|---.-----.|
+ |.|..|---.%gen|..|too|..%.......|
+ |.|.G|....%...|..|...|G.%.......|
+ |.----....-----+---------.....{.|
+ |...............................|
+ ---------------------------------
+</replacecharsblock></div>
+
+Izchak's light shop (marked "lgt" here) and the general store ("gen") are guaranteed to exist, but Alley Town has only a 30% chance of being generated with the tool shop marked "tl" and a 
+40% chance of having the one marked "too". The food shop ("foo") has a 90% chance of existing, and the quality apparel and accessories shop ("wan") a 30% chance.
+
+Only one [[door|{{red|+}}]] on each wall is randomly made a door. This level contains two random traps.
+
+{|class="prettytable"
+!Monster!!Symbol!!Location
+|-
+|The Watch
+|[[watchman|{{lightgray|@@@@}}]][[Watch captain|{{green|@}}]]
+|Patrolling randomly
+|-
+|Priest
+|[[aligned priest|{{white|@}}]]
+|In temple
+|-
+|Gnomish Wizards
+|[[Gnomish wizard|{{brightblue|GG}}]]
+|In temple
+|-
+|Gnomes
+|3 random [[Gnome (monster class)|{{white|G}}]]
+|In rooms marked with G
+|-
+|Gnomes
+|[[Gnome (monster)|{{brown|GGG}}]]
+|Outside mapped area
+|-
+|Dwarf
+|[[Dwarf (monster)|{{red|h}}]]
+|Outside mapped area
+|}
+
+===College Town===
+<div class='ttymap'><replacecharsblock rules="ttymap">
+G=[[Gnome_(monster)#Gnome|{{brown|G}}]]
+Ĝ=[[Gnome_(monster)#Gnomish_Wizard|{{brightblue|G}}]]
+@=[[aligned priest|{{white|@}}]]
+k=[[Kobold shaman|{{brightblue|k}}]]
+h=[[Kitten|{{white|f}}]]
+%=[[door|{{red|+}}]]
+
+ --------------------------------
+ |..............................|
+ |...--------.......-----------.|
+ |...|...|..|------.|.G|...|G.%.|
+ |...|boo|..|.....|.|..|lgt|..%.|
+ |...|...|%%|.._@.|.-%%|...|---.|
+ |...-%%%-..|..ĜĜ.|....-%%%-....|
+ |..........|.....|.............|
+ |........{.-%%%%%-.{...........|
+ |..............................|
+ |...-%%%-...........-%%-%%%-...|
+ |...|...|-------.---|..|...|...|
+ |...|too|kk|foo%.%..|.G|gen|...|
+ |...|...|hh|...%.%..|--|...|...|
+ |...-----%%-----.----..-----...|
+ |..............................|
+ --------------------------------
+</replacecharsblock></div>
+
+Izchak's light shop (marked "lgt") and the book shop ("boo") are
+guaranteed, but the general store
+("gen"), food shop ("foo") and tool shop ("tool") have only a 90% chance of
+existing.
+
+Only one [[door|{{red|+}}]] on each wall is randomly made a door. This level contains two random traps.
+
+{|class="prettytable"
+!Monster!!Symbol!!Location
+|-
+|The Watch
+|[[watchman|{{lightgray|@@@@}}]][[Watch captain|{{green|@}}]]
+|Patrolling randomly
+|-
+|Priest
+|[[aligned priest|{{white|@}}]]
+|In temple
+|-
+|Gnomish wizards
+|[[Gnomish wizard|{{brightblue|GG}}]]
+|In temple
+|-
+|Gnomes
+|3 random [[Gnome (monster class)|{{white|G}}]]
+|In rooms marked with G
+|-
+|Kobold shamans
+|[[Kobold shaman|{{brightblue|kk}}]]
+|In southwest room
+|-
+|Kitten
+|[[Kitten|{{white|f}}]]
+|In southwest room
+|-
+|Feline
+|A random [[Feline|{{white|f}}]]
+|In southwest room
+|-
+|Gnomes
+|[[Gnome (monster)|{{brown|GGG}}]]
+|Outside mapped area
+|-
+|Dwarf
+|[[Dwarf (monster)|{{red|h}}]]
+|Outside mapped area
+|}
+
+===Grotto Town===
+<div class='ttymap'><replacecharsblock rules="ttymap">
+general={{gray|g}}{{gray|e}}{{gray|n}}{{gray|e}}{{gray|r}}{{gray|a}}{{gray|l}}
+food={{gray|f}}{{gray|o}}{{gray|o}}{{gray|d}}
+G=[[Gnome_(monster)#Gnome|{{brown|G}}]]
+Ĝ=[[Gnome_(monster)#Gnomish_Wizard|{{brightblue|G}}]]
+@=[[aligned priest|{{white|@}}]]
+H=[[Gnome lord|{{blue|G}}]]
+I=[[Gnome (monster class)|{{gray|G}}]]
+J={{white|G}}
+A={{brightcyan|A}}
+a={{brightcyan|a}}
+B={{yellow|B}}
+b={{yellow|b}}
+C={{brightmagenta|C}}
+c={{brightmagenta|c}}
+D={{brightred|D}}
+d={{brightred|d}}
+E={{brightgreen|E}}
+Z=[[Chest|{{brown|(}}]]
+(={{white|(}}
+R={{white|&#61;}}
+
+ -----         ---------                                                    
+ |<..---  ------.......--    -------                       ---------------  
+ |.....---|.........--..|    |.....|          -------      |.............|  
+ --..|....|.---------|..|    |.._..|          |>...(|     --+---+--.----+|  
+  --.|-.....----     -CC-    |.....|  ------  --....----  |..|...|-.|.+..|  
+   --|.........|---  -CC--   ---+---  |..+.|--D---..-..---|..|--+-..--|..|  
+     ----.|....|..----...--    |.|    |..|.DDDDDD--+-.....-+--........--+|  
+        -----..|....|.....---- |.|    |I.|.------......--................|  
+     ------ |..|..........A..---.--   ---|.+..||.......-|..--------+--..--  
+     |food| --.c....---...A.......-----  |.|..||...{....|--|.........|..--  
+     |....|  |.c......|...|..........B---|.|..|--.......|  |.general.|EEE|  
+     ---+--------....-------...---...B..-|.|------....--|  -----------...|  
+  ------.---...-|...-|..|..|-...|..---...|.--..|...|....------- |.......--  
+  |..|-.........|aa--|..|..|--.....|-....|.....d..---...-|....| |.-------   
+  |..+...............-+---+-----..-|..........--....|-...+tool| |.|.Ĝ.SR    
+ -----.....{....----.............bb|...J.......|-...|...-|....| |.|...|     

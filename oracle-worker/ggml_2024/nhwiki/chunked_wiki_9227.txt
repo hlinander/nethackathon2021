@@ -1,0 +1,1000 @@
+
+==History==
+The Zookeeper's first appearance was in SLASH'EM precursor NetHack-- 3.0.10 as one of nine new roles in addition to the twelve in [[NetHack 3.0.10]]. The discussion thread in which the authors first announced the variant suggests that some of the new roles were taken from a list proposing a role for every letter of the alphabet. See [https://groups.google.com/d/msg/rec.games.hack/jg8YtQX1M3Y/tbBlteXdYY8J here] for the relevant post.
+
+After the release of [[NetHack 3.1.3]] in 1993, NetHack-- was updated to [[NetHack-- 3.1.3]] by porting some of the changes from NetHack-- 3.0.10 into a patch for the newest version. Due to some changes in the vanilla code, however, particularly NetHack 3.1's addition of the [[Quest]] branch, the Zookeeper and other roles were simply left out of the patch to maintain compatibility.
+
+The DAT folder for [[SLASH 6]] contains unused maps for quest levels for the removed roles; the Zookeeper nemesis would have been a {{mscl|Y}} named "The Great Black Ape", and the quest artifact would have been a [[magic whistle]] called The Golden Whistle. The code for the maps indicates that the quest would feature numerous [[feline]]s and [[apelike creature]]s.
+
+The Zookeeper role reappeared in the variant [[Slash'EM Extended]] alongside the other eight new NetHack-- 3.0.10 roles, and were carried over with many tweaks into SlashTHEM, which retooled the role to more closely resemble the proposed changes above.
+
+==References==
+<references/><!--replace with github cites when you find the time-->
+* NetHack-- 3.0.10 attrib.c line 117
+* NetHack-- 3.0.10 u_init.c line 215
+* SlashTHEM u_init.c line 2318 in v. 0.8
+* SlashTHEM role.c line 1660 in v. 0.8
+* SLASHTHEM u_init.c line 256 in v. 0.8
+* SLASHTHEM artilist.h line 601 in v. 0.8
+
+[[Category:Defunct features (SLASH'EM)]]
+[[Category:SlashTHEM]]
+[[Category:SlashTHEM roles]]}
+&&%s&& %s Expensive suit {148620 2022-10-05T08:58:26Z {4001279 Umbire the Phantom} tweak {{armor
+  |color=black
+  |name=expensive suit
+  |slot=shirt
+  |ac=0
+  |special=<ul><li>[[MC]] 2</li><li>+2 [[charisma]]</li></ul>
+  |cost=50
+  |weight=10
+  |material=cloth
+}}
+The '''expensive suit''' is a piece of [[armor]] in [[SlashTHEM]], filling the innermost ([[shirt]]) armor slot. The expensive suit is the starting armor for the [[Undertaker]] [[role]], carried over from [[NetHack-- 3.0.10]], the source of the role.
+
+Like other "shirts", the expensive suit has an [[AC]] of 0, and so does not add to your armor class unless [[enchant]]ed.  However, the suit has a [[magic cancellation]] of 2 ''and'' gives a +2 bonus to the wearer's [[charisma]].  
+
+==Strategy==
+These benefits make the expensive suit a better choice for the "shirt" slot than the [[T-shirt]] and [[Hawaiian shirt]]: instead of raising prices, shopkeepers will actually charge lower prices because of the customer's increased charisma from the stylish suit.  
+
+Whether the suit is better than [[Victorian underwear]], which grants MC 3 at the cost of a penalty to AC, depends on the player's circumstances.  A player who has no other choice of MC 3 armor&mdash;for example, a spellcaster, [[Monk]], or [[Jedi]] who cannot wear a [[mithril coat]] and wants to wear a [[cloak]] other than a [[cloak of protection]] or [[cloak of magic resistance|magic resistance]], or a player who simply has not found any other MC 3 armor&mdash;may prefer the underwear for its magic cancellation.  But in general, the suit's charisma bonus makes it arguably the best "shirt" in the game.
+
+==Artifacts==
+The expensive suit is the base item for an artifact, '''the Gambler's Suit'''.  This unaligned artifact grants [[protection]] while worn, acts as a [[luckstone]], and grants an extra +3 charisma, in addition to the standard charisma bonus.
+
+==References==
+*SlashTHEM objects.c line 523 in v. 0.8
+*SlashTHEM do_wear.c line 670 in v. 0.8
+*SlashTHEM artilist.h line 500 in v. 0.8
+
+[[Category:Armor]]
+[[Category:Defunct objects (SLASH'EM)]]
+[[Category:SlashTHEM]]}
+&&%s&& %s Orb {149450 2022-12-18T06:31:38Z {4001279 Umbire the Phantom} /* NetHack brass */* '''Orbs''' are magical [[tool]]s that appear in ''[[NetHack]]''. The only type of orb in the base game is the [[crystal ball]], which appears as a "[[glass orb]]" when unidentified.
+
+==Variants==
+Some ''NetHack'' variants add multiple types of orb, including new glass orbs.
+
+===SLASH'EM===
+Two variants whose code became the base for [[SLASH'EM]], [[NetHack Plus]] and [[SLASH 6]], feature three glass orbs in addition to the crystal ball - the [[orb of enchantment]], the [[orb of charging]], and the [[orb of destruction]]. The orbs are a [[deferred feature]]: their code can still be found in the SLASH'EM source, but has been commented out with the note that these had "potential for abuse".{{refsrc|apply.c|3570|version=SLASH'EM 0.0.7E7F2}}{{refsrc|objects.c|858|version=SLASH'EM 0.0.7E7F2}}
+
+===NetHack brass===
+[[NetHack brass]] includes the orb of charging and the orb of destruction, but instead of the orb of enchantment there is an [[orb of maintenance]] that can be used to repair [[erosion]] on a selected object.
+
+All glass orbs in NetHack brass weigh 75 units - the crystal ball can still be distinguished from the other three by [[price identification]].
+
+===EvilHack===
+EvilHack introduces the [[eight-ball]], an orb that is made of [[plastic]]. It serves as the [[base item]] for the [[Magic 8-Ball]], an [[artifact]] tool always carried by the [[Oracle]].
+
+==References==
+* SLASH 6 objects.c line 569
+* SLASH 6 apply.c line 2233
+* NetHack brass, objects.c line 669
+* NetHack brass, apply.c line 3281
+<references/>
+{{nethack-366|offset=1}}
+{{variant-343|offset=2}}
+[[Category:Items]]}
+&&%s&& %s Orb of enchantment {141560 2021-07-05T18:11:25Z {4001279 Umbire the Phantom}  {{tool
+| color=glass color
+| tile=[[image:crystal ball.png]]
+| name=orb of enchantment
+| appearance=glass orb
+| cost=750
+| weight=75
+  |material=glass
+}}
+
+The '''orb of enchantment''' was a tool that appeared in [[NetHack Plus]] and [[SLASH 6]]. It appeared as a [[glass orb]] when unidentified.
+
+In [[SLASH'EM]], the orb is a [[deferred feature]] - its code can still be found in the SLASH'EM source, but has been commented out with the note of "potential for abuse".{{refsrc|apply.c|3570|version=SLASH'EM 0.0.7E7F2}}{{refsrc|objects.c|858|version=SLASH'EM 0.0.7E7F2}}
+
+==Effects==
+[[Apply]]ing a charged orb of enchantment alters the enchantment of your primary wielded weapon, somewhat similar to a [[scroll of enchant weapon]]; this only works on items in the [[weapon]] and [[weapon-tool]] class. The effect varies dependent on the orb's [[beatitude]]:
+
+* If blessed, the orb will always attempt to increase the enchantment, with a 50% chance of increasing it by 1 and a 50% chance of increasing it by 2. (''"Your <weapon> glows silver"'').
+* If uncursed, the orb has a 2-in-3 chance of increasing the enchantment by 1 (''"Your <weapon> glows bright for a moment"''), and a 1-in-3 chance of decreasing it by 1. (''"Your <weapon> glows dark for a moment"'').
+* If cursed, the orb will always attempt to decrease the enchantment, with a 50% chance of decreasing it by 1 and a 50% chance of decreasing it by 2. (''"Your <weapon> glows black"'').  
+
+The maximum for enchantment via the orb is +5 - if a weapon that was +4 would have gained 2 points of enchantment, it will cut off at +5, and the orb will have no effect on a +5 weapon.
+
+Nothing will happen when applying an orb of enchantment with no charges.
+
+==Strategy==
+All non-[[crystal ball]] glass orbs have a base price of 750 [[zm]] and weigh 75 [[aum]], making it somewhat easier to tell an actual crystal ball apart from the other magical orbs. Beyond this, the three non-crystal ball orbs can only be distinguished by [[identification]] or use-testing.
+
+==Messages==
+{{message|Your <weapon> glows silver.|You applied a blessed orb of enchantment.}}
+{{message|Your <weapon> glows bright for a moment.|You applied an uncursed orb of enchantment, and it increased your weapon's enchantment.}}
+{{message|Your <weapon> glows dark for a moment.|You applied an uncursed orb of enchantment, and it decreased your weapon's enchantment.}}
+{{message|Your <weapon> glows black.|You applied a cursed orb of enchantment.}}
+{{message|This orb is burnt out.|The orb of enchantment had no charges.}}
+
+==References==
+<references/>
+{{noversion}}
+[[Category:NetHack Plus objects]]
+[[Category:SLASH 6 objects]]
+[[Category:Defunct objects (SLASH'EM)]]}
+&&%s&& %s Orb of charging {141576 2021-07-05T19:20:08Z {4001279 Umbire the Phantom} /* Strategy */ {{tool
+| color=glass color
+| tile=[[image:crystal ball.png]]
+| name=orb of charging
+| appearance=glass orb
+| cost=750
+| weight=75
+  |material=glass
+}}
+
+The '''orb of charging''' was a tool that appeared in [[NetHack Plus]] and [[SLASH 6]], and also appears in [[NetHack brass]]. It appears as a [[glass orb]] when unidentified.
+
+In [[SLASH'EM]], the orb is a [[deferred feature]] - its code can still be found in the SLASH'EM source, but has been commented out with the note of "potential for abuse".{{refsrc|apply.c|3570|version=SLASH'EM 0.0.7E7F2}}{{refsrc|objects.c|858|version=SLASH'EM 0.0.7E7F2}}
+
+==Effects==
+[[Apply]]ing a charged orb of charging allows you to select and recharge an item, similar to a [[scroll of charging]], and auto-identifies the orb. The effect is dependent on the beatitude of the orb.
+
+Nothing will happen when applying an orb of charging with no charges.
+
+==Strategy==
+All non-[[crystal ball]] glass orbs have a base price of 750 [[zm]] and weigh 75 [[aum]], making it somewhat easier to tell an actual crystal ball apart from the other magical orbs (outside of NetHack brass, where the crystal ball also weighs 75 aum). Beyond this, the three non-crystal ball orbs can be distinguished by [[identification]] or use-testing - the latter is risky due to the change of a glass orb being an [[orb of destruction]].
+
+==Messages==
+{{message|This orb is burnt out.|The orb had no charges.}}
+
+==References==
+<references/>
+{{variant-343}}
+[[Category:NetHack Plus objects]]
+[[Category:SLASH 6 objects]]
+[[Category:Defunct objects (SLASH'EM)]]
+[[Category:NetHack brass objects]]}
+&&%s&& %s Orb of destruction {141574 2021-07-05T19:19:37Z {4001279 Umbire the Phantom}  {{tool
+| color=glass color
+| tile=[[image:crystal ball.png]]
+| name=orb of destruction
+| appearance=glass orb
+| cost=750
+| weight=75
+  |material=glass
+}}
+
+The '''orb of destruction''' was a tool that appeared in [[NetHack Plus]] and [[SLASH 6]], and also appears in [[NetHack brass]]. It appears as a [[glass orb]] when unidentified.
+
+In [[SLASH'EM]], the orb is a [[deferred feature]] - its code can still be found in the SLASH'EM source, but has been commented out with the note of "potential for abuse".{{refsrc|apply.c|3570|version=SLASH'EM 0.0.7E7F2}}{{refsrc|objects.c|858|version=SLASH'EM 0.0.7E7F2}}
+
+==Effects==
+[[Apply]]ing an orb of destruction simply causes it to explode, destroying the orb and dealing [[D-notation|12d6]] damage. The damage is of the same type as that of [[magic missile]]s, and thus can be completely negated by [[magic resistance]]. Whether the orb is charged or not does not seem to have any impact on its effect.
+
+==Strategy==
+All non-[[crystal ball]] glass orbs have a base price of 750 [[zm]] and weigh 75 [[aum]], making it somewhat easier to tell an actual crystal ball apart from the other magical orbs (outside of NetHack brass, where the crystal ball also weighs 75 aum). Beyond this, the three non-crystal ball orbs can be distinguished by [[identification]] or use-testing - this is risky, since you may end up activating this orb.
+
+==References==
+<references/>
+{{variant-343}}
+[[Category:NetHack Plus objects]]
+[[Category:SLASH 6 objects]]
+[[Category:Defunct objects (SLASH'EM)]]
+[[Category:NetHack brass objects]]}
+&&%s&& %s Pack of floppies {148438 2022-10-05T00:07:59Z {4001279 Umbire the Phantom} de-SLEX {{wikipedia|Floppy disk}}
+{{tool
+  |color=red
+  |tile=
+  |name=pack of floppies
+  |appearance=box containing little plastic cards
+  |cost=300
+  |weight=0
+  |material=plastic
+}}
+The '''pack of floppies''' is a [[tool]] in [[NetHack: The Next Generation]]. When unidentified, it appears as a '''box containing little plastic cards'''.  [[Geek]]s start with a pack of floppies in their inventory.
+
+Most roles will have no use for a pack of floppies. However, the computer-savvy&mdash;namely, Geeks (and in [[SlashTHEM]], [[Graduate]]s)&mdash;are able to "read" the contents of floppies by [[apply]]ing them. This process allegedly involves looking at the magnetic surface, so it cannot be done if the player is [[blind]]. When you "read" the disk, you will see one of six things on it:
+
+* Microsoft Windows 3.1
+* Bill Gates
+*[https://en.wikipedia.org/wiki/Leisure_Suit_Larry_5:_Passionate_Patti_Does_a_Little_Undercover_Work Leisure Suit Larry V]
+* LINUX 1.00
+* your NetHack [[patch]]es
+* "nothing of importance"
+
+Which set of contents you find is randomly selected, not a property of the item, so you are unlikely to get the same message every time you read the floppies. (Possibly these are all on separate disks in the pack, and when you read the pack you select one at random.)  
+
+Most of these messages have no other effects. However, if you find "Microsoft Windows 3.1", you "shriek in pain" and become [[confused]] for 50-100 turns. If you find "Bill Gates", "You feel horrible", but there is no other effect.
+
+==Strategy==
+
+Because some scrolls give [[Confusion#Confused scroll effects|beneficial effects]] if read while confused, confusion is sometimes a desirable status, so the pack of floppies can actually be very useful to roles that are able to use it. Just apply it until you come across Windows, read your scroll(s), and then apply a non-cursed [[unicorn horn]] to cure the confusion. It can be used as a substitute for a cursed unihorn, with the advantage that there is no risk of unwanted effects like [[attribute]] loss or [[illness]] (other than 'feeling horrible', which does not affect gameplay).
+
+==Artifacts==
+The pack of floppies is the [[base item]] for two [[quest artifact]]s, the Nethack Sources and the Master Boot Disk.
+
+'''The Nethack Sources''' is the [[Geek]] quest artifact, a neutral-aligned pack of floppies that grants [[searching]], [[ESP]], and [[regeneration]] while carried. It can be [[invoke]]d to [[identify]] items, presumably by very fast [[source diving]].
+
+'''The Master Boot Disk''' is the quest artifact for the [[Graduate]] role in [[SlashTHEM]], a neutral-aligned pack of floppies that grants [[reflection]] while carried and can be invoked for [[phasing]]. (The Graduate role comes from a different role also called the Geek, which was renamed to avoid confusion with the NHTNG role.)
+
+*artilist.h 459, 465
+*artifact.c 1635
+
+==Origin==
+Floppy disks are a dated (1980s-1990s) form of data storage, consisting of circular pieces of a flexible material (hence "floppy disks") on which the data is magnetically recorded. With more efficient storage media such as flash drives and cloud storage available to modern computer users, floppies are now rarely seen, except occasionally on icons for saving files in computer programs, and some present-day computer users have probably never used a floppy disk, or even a computer that has a floppy drive. However, during the early years of [[NetHack]]'s development, floppy disks would have been a standard medium for storing and exchanging files, including personal copies of the NetHack source and patches, so they appear as part of the starting inventory of the Geek, a tribute to NetHack players.
+
+The name "floppy disks" is somewhat ironic. The flexible disc-shaped component is rarely seen outside of a rigid plastic protective case, from which it is normally never removed; instead, the entire case is slipped into the floppy drive.  Thus what are called "floppy disks" are actually stiff and rectangular&mdash;hence the "little plastic cards" of the unidentified appearance.
+
+[[Category: NetHack: The Next Generation]]
+[[Category: SlashTHEM]]}
+&&%s&& %s Category:NetHack: The Next Generation {96996 2015-10-14T00:04:16Z {4000629 Cherokee Jack} Started category for NHTNG Features present in [[NetHack: The Next Generation]].
+
+[[Category:Variants]]}
+&&%s&& %s Hacker's Food {147186 2022-08-03T22:18:52Z {4001600 Shadow Rider} vegan not vegetarian {{comestible
+  |color=metal
+  |name=Hacker's Food
+  |cost=45
+  |nutrition=800
+  |turns=1
+  |weight=10
+  |conduct=vegan
+}}
+
+The '''Hacker's Food''' is a type of [[comestible]] that appears in [[NetHack: The Next Generation]] and [[SlashTHEM]].
+
+==Generation==
+All [[Geek]]s begin the game with two Hacker's Foods in their inventory.
+
+Hacker's Foods can be found randomly generated, but they are quite rare, with the same probability of appearing as a [[pill]] or [[tortilla]].
+
+==Description==
+When eaten, a Hacker's food provides 800 [[nutrition]], the same as a normal [[food ration]].
+
+==Strategy==
+Hacker's Food can be eaten in a single turn, essentially making them improved [[K-ration|K-]]/[[C-ration]]s, and serve as an excellent source of quick nutrition in a pinch.
+{{variant-343}}
+[[Category:NetHack: The Next Generation comestibles]]
+[[Category:NetHack: The Next Generation items]]
+[[Category:SlashTHEM items]]
+[[Category:SlashTHEM comestibles]]}
+&&%s&& %s Redo {97006 2015-10-15T02:33:42Z {723 Scorchgeek} add redirect 'redo' → 'repeat previous command' (i.e., Ctrl-A) #REDIRECT [[Repeat previous command]]}
+&&%s&& %s Electric sword {146551 2022-07-03T20:28:42Z {4001279 Umbire the Phantom}  {{weapon
+ |color=metal color
+ |tile=
+ |name=electric sword
+ |smalldmg=1d12
+ |largedmg=1d16
+ |tohit= <nowiki>+2</nowiki>
+ |skill=long sword
+ |cost=200
+ |weight=16
+ |material=iron
+}}
+
+The '''electric sword''' is a type of [[weapon]] that appears in [[NetHack: The Next Generation]] and [[SlashTHEM]]. It uses the [[long sword]] skill, and is made of [[iron]]; despite its name, it does not deal [[shock]] damage.
+
+[[Shocker]] is an artifact weapon in both variants that uses the electric sword as its [[base item]].
+
+==Generation==
+[[Geek]]s in NetHack: The Next Generation and [[Hacker]]s in SlashTHEM start the game with a [[Enchantment|+1]] [[blessed]] electric sword.
+
+==Description==
+The electric sword has +2 to-hit and high damage against small and large monsters that eclipses even the [[katana]].<!--"In TNG, electric swords have a +d10 to-hit bonus against {{mcsl|Q}}" - need to verify this before restoring/deleting proper-->
+
+In SlashTHEM, an electric sword has a {{frac|10}} chance of "sparking to life" and dealing an extra d3 of damage against monsters without [[shock resistance]].
+
+==Strategy==
+The electric sword is a stellar weapon for roles capable of using long swords, but is incredibly rare to find outside of playing as a Geek or possibly encountering their [[bones]]. Any role that finds an electric sword and opts to make it their main weapon should [[rustproof]] it as soon as possible.<!--Assuming above commented info is true: "In TNG, as the only members of the {{mcsl|Q}} [[monster class]] are the [[quantum mechanic]] and [[quagga]], its advantage against them is not especially useful."-->
+{{stub}}
+{{variant-343}}
+[[Category: NetHack: The Next Generation weapons]]
+[[Category: SlashTHEM weapons]]}
+&&%s&& %s Tooth of an algolian suntiger {148434 2022-10-05T00:06:24Z {4001279 Umbire the Phantom} de-SLEX {{wikipedia|Algolian suntiger}}
+{{weapon
+ |color=white
+ |tile=
+ |name=tooth of an algolian suntiger
+ |appearance=very sharp tooth
+ |smalldmg=1d15
+ |largedmg=1d15
+ |tohit=5
+ |skill=knife
+ |cost=500
+ |weight=10
+ |material=mineral
+}}
+The '''tooth of an algolian suntiger''' is a [[weapon]] originally found in [[NetHack: The Next Generation]] and present in [[SlashTHEM]]. 
+
+It has striking similarities to the [[crysknife]]&mdash;a high-damage [[knife]]-type weapon of biological origin&mdash;and might possibly be the [[Douglas Adams]] equivalent of it (though the tooth of an Algolian Suntiger, while significant in ''The Hitchhiker's Guide to the Galaxy'', is not described as a weapon there). As its name suggests, it may be [[Death drop|dropped on death]] by algolian suntigers.
+
+The algolian suntiger tooth is an even better weapon than the [[vanilla]] crysknife, dealing [[D notation|1d15]] damage against small and large targets, more than the crysknife's 1d10, and has a [[to-hit]] bonus of +5, compared to the crysknife's +3. Unlike the worm tooth, the algolian suntiger tooth is an excellent weapon from the time it's dropped by its former owner, and can be used as-is from the time it's picked up, with no need to [[Scroll of enchant weapon|enchant]] it first. Best of all, the tooth requires no special treatment, so it will not revert to a useless item if it is ever dropped or put in a container. The tooth's potential as a weapon is balanced by its rarity: the probability of its being dropped by a slain algolian suntiger is 1 in 75. The tooth can be found as a randomly generated weapon, but with a low probability.
+
+==Other variants==
+The tooth of an algolian suntiger appears in [[SlashTHEM]], along with other features from NetHack: The Next Generation. However, in these variants the tooth has lost its superiority over the crysknife because the latter now deals 1d20 to small and 1d30 to large, as in [[SLASH'EM]]. The probability of getting a tooth from an algolian suntiger is low (1 in 75), while a [[long worm]] is guaranteed to drop a [[worm tooth]], so the only advantages the algolian suntiger tooth has in these versions are its higher to-hit bonus and its stability.
+
+The tooth of an algolian suntiger is made of [[mineral]], so one left on the ground may get devoured by one of the creatures that can [[lithivore|eat stone]] in these variants. (The crysknife is also made of mineral, but is likely to revert to an inedible worm tooth before any lithivore can find it.)
+
+==Origin==
+In ''The Hitchhiker's Guide to the Galaxy'', the "tooth of an Algolian Suntiger" is an ingredient in the [[potion of Pan Galactic Gargle Blaster|Pan-Galactic Gargle Blaster]], which "spreads the fires of the [https://en.wikipedia.org/wiki/Algol Algolian] suns deep into the heart of the drink". This is all that is said of Algolian Suntiger teeth, or, for that matter, of Algolian Suntigers.
+
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM]]}
+&&%s&& %s Chemistry set {148378 2022-10-04T23:01:35Z {4001279 Umbire the Phantom} de-SLEX {{template:tool|tile=|cost=500|weight=20|color=orange|name=chemistry set|appearance=box of obscure-looking glass devices
+|material=glass}}
+The '''chemistry set''' is a [[tool]] in [[NetHack: The Next Generation]] and [[SlashTHEM]], which provides a new way to get specific [[potion]]s that is analogous to making [[scroll]]s with the vanilla [[magic marker]]:
+
+* Each chemistry set has a number of [[charge]]s, which in-game represent its stock of potion ingredients, and are consumed when the set is used to make a potion. Each potion type in the game has a specific ingredient cost (see below). 
+* Like writing scrolls, making a potion requires a "blank" item&mdash;an [[#Bottle|empty bottle]].
+* The [[beatitude]] of the resulting potion is the average of the beatitudes of the set and the bottle, the [[magic marker#BUC|same way]] as with magic marker.
+* You can make potions you have not [[Discoveries|discovered]] yet, with a small chance of success. 
+
+''Unlike'' writing scrolls, making potions requires [[#Spellbook of chemistry|knowledge of chemistry]]. Potions made by the player are "selfmade" and have a luck-dependent chance of being [[#Selfmade potions|defective]].
+
+Note that a chemistry set is made up of fragile [[glass]]ware, which can shatter easily if thrown or kicked.
+
+==Prerequisites==
+===Spellbook of chemistry===
+{{spellbook|name=chemistry|prob=50|level=1|type=divination|turns=10|mgc=1|direction=non-directional}}
+Before you can use a chemistry set with certainty, you need to be familiar with chemistry. This can be learned by successfully reading a '''spellbook of chemistry'''. As long as you have the chemistry "spell" in your repertoire, you can use chemistry sets. Note that this is not a functional spell, and attempting to cast it will only produce a [[YAFM|funny message]] ("You call upon your chemical knowledge. Nothing happens.").
+
+If you try to use a chemistry set without knowing the "chemistry" spell, you may get the message "Huh? You don't understand anything about such stuff!" and one charge on the chemistry set will be used up.
+
+Trying to use a chemistry set without knowing chemistry will always fail in NHTNG. 
+{{clear}}
+
+===Bottle===
+{{template:tool|tile=|cost=5|weight=1|color=metal|name=bottle|material=glass}}
+Before you can make a new potion, you must have an empty '''bottle''' to contain it. The first thing that happens when you use a chemistry set is that you will be prompted to select a container from your inventory.
+
+Empty bottles can be found as randomly generated tools, but a much more common source of bottles is [[quaff]]ing potions, which will sometimes leave behind the empty container. ("You are left with the empty bottle.") If the potion was taken from a stack, so a new inventory slot is needed for the bottle, but there is no room in your pack, the bottle will drop to the floor. Bottles acquired in this way are naturally uncursed, regardless of the [[BUC]] status of the original potion. 
+
+Also, if you quaff a [[milky potion]] but no [[ghost]] appears, presumably due to extinction, you get to keep the empty bottle.
+
+Dipping an empty bottle in a [[fountain]] or [[moat]] fills it with water, making a [[potion of water]].
+
+==Potion cost==
+{|class="prettytable"
+!Potion
+!Charges
+|-
+|[[potion of extra healing|extra healing]]
+|3
+|-
+|[[potion of ESP|ESP]]
+|3
+|-
+|[[potion of gain ability|gain ability]]
+|3
+|-
+|[[potion of gain energy|gain energy]]
+|3
+|-
+|[[potion of invisibility|invisibility]]
+|3
+|-
+|[[potion of recovery|recovery]]
+|3
+|-
+|[[potion of see invisible|see invisible]]
+|3
+|-
+|[[potion of speed|speed]]
+|3
+|-
+|colspan="2"|
+|-
+|[[potion of cyanide|cyanide]]
+|4
+|-
+|[[potion of extreme power|extreme power]]
+|4
+|-
+|[[potion of gain level|gain level]]
+|4
+|-
+|colspan="2"|
+|-
+|[[potion of full healing|full healing]]
+|5
+|-
+|[[potion of gain health|gain health]]
+|5
+|-
+|colspan="2"|
+|-
+|[[potion of invulnerability|invulnerability]]
+|10
+|-
+|colspan="2"|
+|-
+|[[potion of heroism|heroism]]
+|20
+|}
+
+All other potions cost 2 charges by default.
+
+==Failure==
+If the chemistry set doesn't have enough charges to make your desired potion, the bottle will explode ("You seem to have made a mistake!") dealing 10 damage, or 25 if the chemistry set was cursed. Getting killed by such an explosion will give the report that you were killed by an "[[alchemic blast]]".
+
+If you attempt to make a potion you have not yet discovered, you have a [[rnl|luck-weighted chance]] of succeeding; otherwise, the bottle will explode.
+
+==Selfmade potions==
+Potions made using chemistry sets are flagged "selfmade" (compare homemade [[tin]]s) and can be defective. When you quaff one, there is a small chance that it will be "bad" (due to an error in the preparation) and possibly have harmful effects, poisoning you for up to 20 hit points OR making you [[Vomiting|nauseated]]. A death resulting from poisoning from a selfmade potion will be attributed to "bad chemical knowledge"; however, you will not lose any health if you have [[poison resistance]].
+
+The probability that a selfmade potion will be "bad" and the probability that quaffing it will have a negative effect are each [[Rnl|luck-weighted]], so the higher your [[luck]], the less likely you are to suffer harmful effects from quaffing your own potions.
+
+==Charging==
+Like most tools, a chemistry set can be recharged an indefinite number of times. An uncursed [[scroll of charging]] adds 1-5 charges. A blessed scroll adds 1-10 charges. A cursed scroll sets the number of charges to zero, unless the chemistry set is blessed.
+
+The maximum number of charges a chemistry set can have is 117. This may have something to do with the number of elements on [https://en.wikipedia.org/wiki/Periodic_table the current periodic table] (118).
+
+==See also==
+* [[Alchemy]]
+
+[[Category: NetHack: The Next Generation]]
+[[Category: SlashTHEM items]]}
+&&%s&& %s Spellbook of chemistry {148449 2022-10-05T00:14:45Z {4001279 Umbire the Phantom} cat #REDIRECT [[Chemistry set#Spellbook of chemistry]]
+
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Bottle {148443 2022-10-05T00:11:25Z {4001279 Umbire the Phantom} cat #REDIRECT [[Chemistry set#Bottle]]
+
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Gauntlets of typing {148551 2022-10-05T02:32:51Z {4001279 Umbire the Phantom} de-SLEX {{armor
+  |name=gauntlets of typing
+  |appearance={{random appearance}}
+  |slot=gloves
+  |ac=2
+  |cost=50
+  |weight=4
+  |material=leather
+  |color=brown
+}}
+'''Gauntlets of typing''' are the starting [[armor]] for the [[Geek]] [[role]] in [[NetHack: The Next Generation]] and [[SlashTHEM]]. Their only distinctive trait, as gauntlets, is having a base [[AC]] of 2, one more point than [[leather gloves]]. They are also made of [[leather]], making them essentially improved leather gloves.
+
+In [[SlashTHEM]] these are equivalent to the [[plasteel gloves]] from the [[Jedi patch]], except that they can [[rot]].
+
+[[Category: NetHack: The Next Generation]]
+[[Category: SlashTHEM]]}
+&&%s&& %s Potion of cyanide {148453 2022-10-05T00:21:21Z {4001279 Umbire the Phantom} de-SLEX {{wikipedia|Cyanide poisoning}}
+{{potion|name=cyanide|cost=300}}
+
+The '''potion of cyanide''' is a dangerous [[potion]] originally from [[NetHack: The Next Generation]], which also appears in [[SlashTHEM]]. Quaffing it has several bad effects: it makes you [[ill]], reduces your [[strength]] by up to 10 points, and costs a significant amount of [[health]]: [[D notation|4d16]] (4-64) if cursed, 2d16 (2-32) if uncursed, or 2d8 (2-16) if blessed.  
+
+The illness is classified as "vomitable" (like [[food poisoning]]) and can be cured if you can induce yourself to [[Vomiting|vomit]] (or in [[SlashTHEM]], find&mdash;or make&mdash;a [[toilet]]). Of course, a noncursed [[unicorn horn]] can help as well.
+
+A thrown potion of cyanide reduces the health of its target&mdash;a monster or yourself&mdash;to one-fifth of its current value. If the target had less than 10 health to begin with, it dies. Inhaling the [[vapors]] of a broken potion of cyanide will have the same effect on you.
+
+[[Poison resistance]] does not protect against the harmful effects of cyanide poisoning. In game terms this may mean that poison resistance only protects you from biological toxins, not from inorganic poisons like cyanide.
+
+==Messages==
+'''CN(-) + HCL <==> HCN + Cl(-)'''
+:You quaffed a potion of cyanide while not hallucinating.
+{{message|This tastes a little bitter; maybe it's some sort of medicine?|You quaffed a potion of cyanide while [[hallucinating]].}}
+{{message|You feel very, very, very sick!|You were hit by a potion of cyanide.}}
+{{message|<monster> looks deathly sick.|The monster was hit by a potion of cyanide and lost health.}}
+
+==Origin==
+"Cyanide" can refer to any number of chemical compounds containing the cyanide ion (CN(-)), most of which are very toxic&mdash;much more so than the NHTNG potion would imply. The "potion of cyanide" is presumably a liquid solution of a compound containing cyanide ions. While it is not unusual in NetHack for inhaling the vapors of shattered potions to have an effect similar to that of quaffing them, the case of cyanide vapors being toxic is supported by real science, as some cyanide solutions release hydrogen cyanide (HCN) gas, which is also toxic.
+
+Cyanide compounds are often said to have a bitter odor, hence the hallucinatory message. In popular culture this bitter odor or taste is often used as a clue that food or a beverage has been poisoned with cyanide (for example, in Roald Dahl's short story [https://en.wikipedia.org/wiki/The_Landlady_(Roald_Dahl) "The Landlady"]). While it is true that cyanide has a bitter odor, it can only be sensed with a special chemoreceptor which many people lack. So if for whatever reason you suspect your food or drink might have been spiked with cyanide, don't trust your sense of smell to tell you if it's safe!
+
+===Schroedinger's cat===
+The potion of cyanide figured in the NHTNG version of [[Schroedinger's Cat|Schroedinger's box]]. In the thought experiment, the box contained a mechanism that would kill a cat, by breaking a container of cyanide, if a certain quantum event occurred. Therefore, in NHTNG, if the player opened the box and discovered that the [[cat]] was alive, the box would contain a [[potion of radium]] (representing the quantum system being monitored) and an intact potion of cyanide. But if the box was open and the cat was dead, the box would contain a potion of radium and the [[corpse]] of a cat, but there would be no potion of cyanide, because it had been used up. 
+
+When Schroedinger's cat was added to regular NetHack, the potions of radium and cyanide were omitted from the code, because these items were not carried over.
+
+[[Category:Potions]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Potion of radium {148458 2022-10-05T00:25:38Z {4001279 Umbire the Phantom} de-SLEX {{wikipedia|Radium}}
+{{potion|name=radium|cost=300}}
+
+The '''potion of radium''' is a dangerous [[potion]] originally from [[NetHack: The Next Generation]], which also appears in [[SlashTHEM]]. Quaffing it makes you [[ill]], with up to fifty turns to live. 
+
+The illness is classified as "vomitable" (like [[food poisoning]]) and can be cured if you can induce yourself to [[Vomiting|vomit]] (or in [[SlashTHEM]], find&mdash;or make&mdash;a [[toilet]]). Of course, a noncursed [[unicorn horn]] can help as well.
+
+A target&mdash;a monster or yourself&mdash;hit by a thrown potion of radium has its health reduced to one-quarter of its current value. If you are hit by a potion of radium, it will never lower your health below 1 point, but monsters hit by the potion will be killed if it lowers their health to a fraction of 1. Inhaling the [[vapors]] of a broken potion of radium will have the same effect on you.
+
+[[Poison resistance]] does not protect against the harmful effects of radium exposure.
+
+==Messages==
+{{message|This was radioactive radium!|You quaffed a potion of radium while not hallucinating.}}
+{{message|For some reason, that potion tastes... orange. Yes, the color orange, not the fruit.|You quaffed a potion of radium while [[hallucinating]].}}
+{{message|You feel very sick!|You were hit by a potion of radium.}}
+{{message|<Monster> looks very sick.|The monster was hit by a potion of radium and lost health.}}
+
+==Origin==
+Radium was one of the first radioactive elements to be discovered, and is still probably one of the best known. Its most stable isotope or form, radium-226, gradually breaks down into radon, releasing radiation in the process; radon also breaks down in a similar manner. Its appearance in NetHack: The Next Generation grossly understates its potential dangers to human health.
+
+In NHTNG, swallowing radium causes immediate illness, which will cause you to die after fifty turns, but can be cured by making yourself vomit. In real life, you might not die within hours after swallowing radium; however, ingesting it would probably result in a portion of it remaining in the body, where it would continue to release radiation as it decayed, killing cells and damaging DNA, which in turn could cause cancer and other diseases that could kill you years later. Vomiting would probably not be effective at preventing accumulation in the tissues, except ''possibly'' if all of the radium was regurgitated before it could reach the intestines. 
+
+Also, NHTNG implies that one could safely carry radium in a (presumably) [[glass]] bottle, without any damage to one's health. In real life, merely holding radium, without special containers or protective clothing, would expose the body to harmful radiation, as many early researchers discovered when they observed skin damage after they had carried samples of radium close to their bodies for hours.
+
+A good example of why [[NetHack is not real life]].
+
+===Schroedinger's cat===
+The potion of radium figured in the NHTNG version of [[Schroedinger's Cat|Schroedinger's box]]. In the thought experiment, the box contained a mechanism that would kill a cat, by breaking a container of cyanide, if a certain quantum event occurred. Therefore, in NHTNG, if the player opened the box and discovered that the [[cat]] was alive, the box would contain a potion of radium (representing the quantum system being monitored) and an intact [[potion of cyanide]]. But if the box was open and the cat was dead, the box would contain a potion of radium and the [[corpse]] of a cat, but there would be no potion of cyanide, because it had been used up. 
+
+When Schroedinger's cat was added to regular NetHack, the potions of radium and cyanide were omitted from the code, because these items were not carried over.
+
+==References==
+[[Category:Potions]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Potion of extreme power {148454 2022-10-05T00:21:44Z {4001279 Umbire the Phantom} de-SLEX {{potion|name=extreme power|cost=300}}
+The '''potion of extreme power''' is a potentially useful [[potion]] originally in [[NetHack: The Next Generation]], which also appears in [[SlashTHEM]].
+
+As long as the potion is noncursed, quaffing it will increase both your [[health]] ''and'' your maximum health by the same amount: 1-10 points if uncursed, 1-20 points if blessed. Note that it will not set your hit points to the max like the [[potion of full healing]].
+
+If the potion is cursed, however, it will ''reduce'' both your health and maximum health by 1-10 points. It will never lower your hit points below 1, so the potion won't kill you, though a nearby monster might.
+
+==Messages==
+{{message|You feel very powerful!|You quaffed a blessed potion of extreme power and gained health.}}
+{{message|You feel powerful!|You quaffed an uncursed potion of extreme power and gained health.}}
+{{message|You have a bad taste in your mouth!|You quaffed a cursed potion of extreme power and lost health.}}
+
+[[Category:Potions]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Potion of recovery {148459 2022-10-05T00:26:00Z {4001279 Umbire the Phantom} de-SLEX {{potion|name=recovery|cost=300}}
+The '''potion of recovery''' is a potentially useful [[potion]] originally in [[NetHack: The Next Generation]], which also appears in [[SlashTHEM]].
+
+As long as the potion is non-cursed, quaffing it will set your [[health]] to its maximum value. If the potion is blessed, it also raises the maximum by 0-4 points. If the potion is cursed, it will have no effect, apart from displaying a [[YAFM|silly message]].
+
+==Messages==
+{{message|You feel much, much better.|You quaffed a noncursed potion of recovery.}}
+{{message|You decide to recover yourself. Nothing happens, however.|You quaffed a cursed potion of recovery and nothing happened.}}
+
+==Strategy==
+At first glance, the potion of recovery seems redundant, as there is already a potion of "full healing" from vanilla. But recovery has one advantage over full healing: as long as it is not cursed, it will ''always'' raise your health to its maximum, while full healing, despite what its name implies, only adds 400 HP to your current total, cutting off at the maximum.
+
+However, this advantage is only likely to be relevant to a player who has managed to get a max health in excess of 400. Otherwise, a potion of recovery is no more useful than a potion of full healing. Indeed, full healing has several advantages over recovery:
+
+* Full healing has other benefits besides giving hit points. It cures [[hallucination]] and [[blindness]], and, if not cursed, [[sickness]]. It [[exercise]]s [[constitution]] and [[strength]]. A blessed potion can restore lost [[experience level]]s as well. Recovery only restores lost hit points.
+* Full healing will add 4 health if uncursed, 8 if blessed; recovery only raises your max if blessed, and then by only 0-4 points.
+* Full healing still works if cursed, though it will not cure [[sickness]]. Recovery has no effect if cursed.
+* Full healing can be used to make a [[potion of gain ability]] in [[alchemy]]. Recovery currently has no alchemical function.
+
+Thus you may find full healing more useful than recovery. If you do find any potions of recovery, however, you may wish to keep them and quaff them instead of potions of full healing whenever your health gets dangerously low, saving full healing for its other benefits, like regaining lost experience levels, or curing status ailments when you don't have a good (non-cursed) [[unihorn]] handy.
+
+If you can spare any [[holy water]], bless your potions of recovery for the max HP gain, though the increment will rarely be as much as a potion of full healing will give. At any rate, blessing a potion of recovery carried in open inventory will make it less likely to be cursed (and therefore useless) by the time you need it.
+
+[[Category:Potions]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Potion of heroism {148455 2022-10-05T00:22:07Z {4001279 Umbire the Phantom} de-SLEX {{potion|name=heroism|cost=300}}
+
+The '''potion of heroism''' is a useful [[potion]] originally from [[NetHack: The Next Generation]], which also appears in [[SlashTHEM]]. 
+
+Quaffing a non-cursed potion of heroism has several (mostly beneficial) effects:
+*Increases your maximum health by 0-4 points and sets your health to the maximum (like a blessed [[potion of recovery]]).
+*Gives you the [[invulnerability]], [[speed]], and [[see invisible]] [[intrinsic]]s for a short period of time (10-19 if uncursed, 10-29 if blessed).
+*Has a [[Rnl|luck-dependent chance]] of [[blind]]ing you for the same duration.
+
+Quaffing a cursed potion of heroism removes any invulnerability you already have. Unless you are already invulnerable, this is harmless.
+
+==Messages==
+{{message|You are surrounded by a strong shimmering aura.|You quaffed a non-cursed potion of heroism.}}
+{{message|You feel cowardly.|You quaffed a cursed potion of heroism.}}
+
+==References==
+[[Category:Potions]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Zuggtmoy {97092 2015-10-26T15:32:08Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Demon Lords#Zuggtmoy]] #REDIRECT [[User:Chris/dNetHack/dNethack_Demon_Lords#Zuggtmoy]]}
+&&%s&& %s Baphomet {97093 2015-10-26T15:32:15Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Demon Lords]] #REDIRECT [[User:Chris/dNetHack/dNethack_Demon_Lords]]}
+&&%s&& %s Daughter Lilith {97094 2015-10-26T15:32:19Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#The Court of Lilith]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#The_Court_of_Lilith]]}
+&&%s&& %s Mammon {97095 2015-10-26T15:32:23Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#Mammon]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#Mammon]]}
+&&%s&& %s Malcanthet {97096 2015-10-26T15:32:26Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Demon Lords#Malcanthet]] #REDIRECT [[User:Chris/dNetHack/dNethack_Demon_Lords#Malcanthet]]}
+&&%s&& %s Mother Lilith {97097 2015-10-26T15:32:29Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#The Court of Lilith]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#The_Court_of_Lilith]]}
+&&%s&& %s Belial {97098 2015-10-26T15:32:34Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#Fierna and Belial]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#Fierna_and_Belial]]}
+&&%s&& %s Graz'zt {148928 2022-10-27T10:00:06Z {4001279 Umbire the Phantom} /* Description */* '''Graz'zt''' is a [[demon prince]] that appears within [[Gehennom]] in [[dNetHack]] and [[EvilHack]], with his role different depending on the variant.
+
+==Description==
+<simpletabs>
+dNetHack|{{monster
+ |name=Graz'zt
+ |symbol={{magenta|&}}
+ |tile=
+ |difficulty=40
+ |level=66
+ |experience=5694
+ |speed=18
+ |AC=-26
+ |MR=66
+ |align=-15
+ |frequency=0
+ |genocidable=No
+ |attacks=Claw 1d6 [[seduction]], Weapon 3d6 physical, Weapon 3d6 physical, Weapon 3d6 physical, Weapon 3d6 physical, Cast 6d6 [[mage spell]]
+ |weight=1500
+ |nutr=500
+ |size=medium
+ |resistances=[[fire]], [[poison]]
+ |resistances conveyed=[[poison]]
+ |attributes={{attributes|Graz'zt|fly=1|humanoid=1|seeinvis=1|pois=1|nopoly=1|demon=1|prince=1|male=1|hostile=1|stalk=1|nasty=1|strong=1|collect=1|wantsamul=1|wantsall=1|waitsforu=1|covetous=1|infravision=1|infravisible=1|hell=1|nocorpse=1|death=1|traitor=1|notame=1}}
+ |reference=
+}}
+
+===Generation===
+Graz'zt is one of the four demon princes whose lair can appear as the second Abyss level.
+
+He will always generate with Doomscreamer, a [[chaotic]] and [[intelligent]] [[artifact weapon]] whose base item is a [[two-handed sword]] and deals double damage against monsters without [[acid resistance]].
+
+===Details===
+Graz'zt will lead with a seduction attack that rolls against [[you]]r [[charisma]], [[constitution]], and [[intelligence]]. If you fail the check, Graz'zt may steal some of your possessions or force harmful equipment upon you; the effects of passing the check vary with your character's gender:
+
+* For women, Graz'zt will instead grant you a potential boon, up to and including monster [[genocide]]s or even [[wish]]es.
+* For men, however, an additional check is triggered that rolls against your current charisma; the check used is <code>(ACURR(A_CHA) < rn2(35))</code>, and failing this check causes Graz'zt to attack out of jealousy for heavy damage. He will still grant you the boon whether or not you pass the check, provided you survive his jealous attack - the check for it is coded in such a way that there is a significant chance of failure, even with the maximum of 25 charisma.
+
+Graz'zt will then teleport away after the seduction attempt; similar to [[foocubi]], if he approaches you while the attack is on cooldown, or else the attempt is blocked by chastity, he will then use his normal attack routine consisting of four weapon attacks and a spell per round.
+
+===Strategy===
+Grazz't has a tendency to summon hordes of monsters that can quickly overwhelm a player, so warding the upstairs and preparing an escape route are important considerations as well. While his melee attack is manageable particularly with acid resistance, his extended seduction attack is extremely dangerous.
+|-|
+EvilHack|
+{{ monster
+ |name=Graz'zt
+ |symbol={{magenta|&}}
+ |difficulty=53
+ |level=49
+ |experience=3136
+ |speed=12
+ |AC=-9
+ |MR=35
+ |align=-20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 4d8, Claw 6d6 [[stun]], [[monster spell|Spell-casting]] 4d6 (clerical), Claw 3d6 [[steal item]]
+ |resistances conveyed=None
+ |resistances=fire,cold,poison,level drain
+ |attributes={{attributes|Graz'zt|fly=1|see_invis=1|humanoid=1|pois=1|nopoly=1|stalk=1|hostile=1|pname=1|strong=1|nasty=1|prince=1|male=1|wantsamul=1|waitforu=1|infravisible=1|infravision=1|mh_demon=1|nocorpse=1|hell=1}}
+ |size=Large
+ |nutr=500
+ |weight=1000
+ |reference=[https://github.com/k21971/EvilHack/blob/master/src/monst.c#L3442 EvilHack - monst.c, line 3442]
+}}
+===Generation===
+Graz'zt is one of the four third-tier demon princes whose lair can appear in Gehennom.
+
+If Graz'zt appears in a game where [[Dirge]] has not yet been generated, it will appear in his possession.
+
+===Details===
+Graz'zt has a weapon attack, a claw attack that can [[stun]] you, a clerical spellcasting attack, and finally a third claw attack that can steal items from your inventory; the theft attack will always succeed if it lands, and he will teleport away afterward similar to a [[nymph]].
+
+===Strategy===
+Graz'zt theft ability and covetous behavior makes avoiding melee range a priority for most players - [[boulder fort]]s are the most consistent method to avoid being robbed blind, but beware of giants and monsters carrying {{wand of|striking|polymorph|or=1}} wands! For ranged offense while within the fort, you should use spells, wands or [[missile]] weapons that can consistently hit through his -9 AC. Weapons such as a tethered [[aklys]] or [[shuriken]], especially those that can deal [[shock]] and/or [[silver]] damage, are among your better options.
+
+If using magic against Graz'zt, be mindful about his [[Magic resistance (monster)|magic saving throw]] of 35. A [[wand of cancellation]] in particular has a roughly 50/50 chance to affect Graz'zt and nullify his theft attack, which stops him robbing you of your inventory - usually including your best armor and/or weapons that you were fending him off with. On rare occasions, Graz'zt's theft may work in a player's favor; for example, he might steal a bag you are carrying and rifle through its contents, leaving him vulnerable to attack for several turns. However, this should not be relied on, especially if he steals your primary container and begins taking out your {{! of|full healing}} potions, wands of cancellation/polymorph/etc., and other dangerous or valuable items.
+
+===History===
+Graz'zt was infamously difficult among the demon princes in EvilHack, to the point that his [[Magic resistance (monster)|MR score was nerfed]] in order to make melee strategies more viable.<ref>[https://github.com/k21971/EvilHack/commit/a8ac44afd1a3ce9c1030384a76b616fb08d5ea5d EvilHack commit a8ac44a: Adjust Graz'zt's magic resistance.]</ref>
+
+</simpletabs>
+
+==Encyclopedia Entry==
+{{encyclopedia|
+	The figure standing before the throne is darkly handsome,
+	an ebon-skinned man nearly 9 feet tall.  His slightly
+	pointed ears, yellow fangs, and six-fingered hands mark
+	him for the demon he is.
+		[ Hordes of the Abyss, by Ed Stark,
+		  James Jacobs, and Erik Mona ]
+}}
+
+==References==
+<references/>
+{{variant-343}}<!--{{variant-36x}}-->
+[[Category:dNetHack demon princes]]
+[[Category:EvilHack demon princes]]}
+&&%s&& %s Crone Lilith {97100 2015-10-26T15:32:41Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#The Court of Lilith]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#The_Court_of_Lilith]]}
+&&%s&& %s Leviathan {97101 2015-10-26T15:32:45Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#Leviathan]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#Leviathan]]}
+&&%s&& %s Creature in the ice {97102 2015-10-26T15:32:49Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#Leviathan]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#Leviathan]]}
+&&%s&& %s Mephistopheles {97103 2015-10-26T15:32:53Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#Mephistopheles and Baalphegor]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#Mephistopheles_and_Baalphegor]]}
+&&%s&& %s Pale Night {97104 2015-10-26T15:32:57Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Demon Lords#Pale Night]] #REDIRECT [[User:Chris/dNetHack/dNethack_Demon_Lords#Pale_Night]]}
+&&%s&& %s Baalphegor {97105 2015-10-26T15:33:01Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#Mephistopheles and Baalphegor]] #REDIRECT [[User:Chris/dNetHack/dNethack_Devil_Lords#Mephistopheles_and_Baalphegor]]}
+&&%s&& %s Dagon {97106 2015-10-26T15:33:04Z {4000659 Catullus} Redirected page to [[User:Chris/dNetHack/dNethack Demon Lords#Dagon]] #REDIRECT [[User:Chris/dNetHack/dNethack_Demon_Lords#Dagon]]}
+&&%s&& %s Verier {97107 2015-10-26T22:36:43Z {4000629 Cherokee Jack} Redirected page to [[User:Chris/dNetHack/dNethack Devil Lords#The Court of Lilith]] #REDIRECT [[User:Chris/dNetHack/dNethack Devil Lords#The Court of Lilith]]}
+&&%s&& %s Potion of Jolt Cola {148456 2022-10-05T00:24:09Z {4001279 Umbire the Phantom} de-SLEX {{potion|name=Jolt Cola|cost=300}}
+The '''potion of Jolt Cola''' is a [[potion]] in [[NetHack: The Next Generation]] which also appears in [[SlashTHEM]]. The [[Geek]] role starts with four potions of Jolt Cola.
+
+Quaffing Jolt Cola cures [[hallucination]] and, if non-cursed, gives you 5 points of [[health]]. If the increase would give you more than your current maximum, and the potion is blessed, your maximum health is adjusted to match your current health; otherwise, your health cuts off at the maximum. A blessed potion has a 10% chance of giving an extra [[experience level]] instead of health.
+
+A cursed potion reduces your health by 0-9 points. It will never lower your health below 1 point.
+
+==Message==
+{{message|You are jolted back to your senses.|You quaffed a potion of Jolt Cola, of any [[BUC]].}}
+{{message|You feel bad.|The potion you quaffed was cursed. This does not necessarily mean you lost health as a result.}}
+
+==Origin==
+[https://en.wikipedia.org/wiki/Jolt_Cola Jolt Cola] is a real brand of soft drink, originally manufactured by The Jolt Company, Inc., of Rochester, New York. Its marketing emphasizes the drink's high caffeine content. Though originally produced in the United States, it is well known in many other countries where it has been made and sold. It has a strong fan base among programmers and university students, which perhaps explains its association with the programmer-inspired Geek role. 
+
+The connection between Jolt Cola and programming is referenced in The Jolt Awards, an annual competition held by the coding website DrDobbs.com. The competition uses a logo similar to the brand logo, and Jolt Cola is served at the awards ceremony.
+
+==References==
+[[Category:Potions]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Potion of Pan Galactic Gargle Blaster {148457 2022-10-05T00:25:02Z {4001279 Umbire the Phantom} de-SLEX {{potion|name=Pan Galactic Gargle Blaster|cost=300}}
+The '''potion of Pan Galactic Gargle Blaster''' is a very distinctive [[potion]] in [[NetHack: The Next Generation]] which also appears in [[SlashTHEM]].
+
+Quaffing a Pan Galactic Gargle Blaster will make you feel "like having your brain smashed out by a slice of lemon wrapped around a large gold brick." This will have the practical effect of making you [[confused]] for [[D notation|6d7]] turns. (Significantly the maximum number of turns that can be rolled is [[Douglas Adams|42]].) If the potion is cursed, it has a 25% chance of lowering your [[intelligence]] by one point as well.
+
+A blessed Pan Galactic Gargle Blaster may have some beneficial effects. It has a 25% chance of curing [[lycanthropy]], like [[wolfsbane]] or [[holy water]], and restoring your [[health]] to its maximum. This will give the message "You feel remembered of very, very strong liquor." (Or, if [[hallucinating]], "You feel remembered of Zaphod Beeblebrox.")
+
+==Origin==
+{{wikipedia|Pan-Galactic Gargle Blaster}}
+The Pan-Galactic Gargle Blaster is a notorious cocktail from the series ''The Hitchhiker's Guide to the Galaxy'' by [[Douglas Adams]]. Invented by Zaphod Beeblebrox, sometime President of the Galaxy, the drink's recipe uses ingredients from various planets, including the [[tooth of an algolian suntiger]], which spreads "the fires of the Algolian suns deep into the heart of the drink."
+
+The series, its adaptations, and interviews with Douglas Adams indicate not only that consumption of the Pan-Galactic Gargle Blaster might be detrimental to human health, but also that preparing it on Earth might be prohibited by various environmental and weapons treaties, and by the laws of physics. 
+
+[[Category:Potions]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Glib {97140 2015-10-29T08:05:17Z {4000452 Bluescreenofdeath} Redirected page to [[Slippery fingers]] #REDIRECT [[Slippery_fingers]]}
+&&%s&& %s Scroll of consecration {148460 2022-10-05T00:26:32Z {4001279 Umbire the Phantom} de-SLEX {{scroll|name=consecration|cost=300|ink=25-49}}
+
+The '''scroll of consecration''' is a [[scroll]] in [[NetHack: The Next Generation]] which also appears in [[dNetHack]], [[Fourk]] and [[SlashTHEM]].
+
+When read, the scroll attempts to create an [[altar]] at your location. How much control you get over its alignment depends on the scroll's [[BUC]] status:
+
+{|class="wikitable"
+!Case
+!Effect
+|-
+|blessed
+|The scroll asks you to select the alignment of the altar to create. This includes the option to create an [[unaligned]] altar dedicated to [[Moloch]].
+|-
+|uncursed
+|The scroll creates a co-aligned altar, ''unless'' you are polymorphed into a [[demon]]. In that case the altar will always be chaotic, regardless of your own alignment.
+|-
+|cursed
+|The scroll creates an unaligned altar to Moloch.
+|}
+
+Depending on the alignment of the altar created, you may be rewarded or penalized:
+{|class="wikitable"
+!Alignment
+!Effect
+|-
+|co-aligned
+| +1 bonus to [[alignment record]], [[prayer timeout]] ''reduced'' by 1-100 turns
+|-
+|cross-aligned
+| -1 penalty to alignment record, prayer timeout ''increased'' by 1-100 turns
+|-
+|unaligned
+| -3 penalty to alignment record, prayer timeout ''increased'' by 1-300 turns
+|}
+
+==Restrictions==
+Altars cannot be built in [[corridor]]s (where [[furniture]] will never be found naturally) or on the [[Astral Plane]]. The latter would theoretically permit you to win the endgame without reaching one of the high altars, so appropriately this sort of behavior will incur an [[alignment]] penalty.
+
+==Messages==
+{{message|You feel claustrophobic!|You read the scroll on a tile ineligible for an altar (specifically a corridor tile).}}
+{{message|You sense the wrath of the gods.|You read the scroll on the Astral Plane, and incurred an alignment penalty.}}
+{{message|You build an altar.|You read the scroll successfully.}}
+{{message|Pronouncing arcane formulas, you consecrate the altar to <deity>.|Indicates the alignment of the altar.}}
+{{message|You feel comfortable.|You received a +1 alignment bonus for creating a co-aligned altar.}}
+{{message|You feel uncomfortable.|You received a -1 alignment penalty for creating a cross-aligned altar.}}
+{{message|You feel very uncomfortable.|You received a -3 alignment penalty for creating an altar to Moloch.}}
+
+==dNetHack==
+The behavior is different in dNetHack - a cursed scroll doesn't produce any altar, and a confused reading randomizes the alignment.
+
+==Fourk==
+You will find one free copy of this scroll in the [[magic chest]]. Reading the scroll while confused will generate another magic chest, which is linked to the other magic chests as usual.
+
+[[Category: Scrolls]]
+[[Category: NetHack: The Next Generation]]
+[[Category: SlashTHEM items]]}
+&&%s&& %s Scroll of undo genocide {148461 2022-10-05T00:27:30Z {4001279 Umbire the Phantom} de-SLEX   {{scroll
+|name=undo genocide
+|cost=300
+|ink=10-19
+  }}
+
+The '''scroll of undo genocide''' is a [[scroll]] introduced in [[NetHack: The Next Generation]], and also appears in [[SlashTHEM]].
+
+==Effect==
+When read, regardless of [[BUC]] status, the scroll self-identifies and prompts you to select a [[genocide]]d [[monster]] to ungenocide. The species selected will no longer be treated as genocided and can be randomly generated again.
+
+You will only be able to choose a single species, so this cannot be used to reverse [[Monster class|class]] genocides.
+
+===Exceptions===
+This scroll will not revive species that have become unavailable due to [[extinction]]; it only applies to those that have been deliberately genocided. Thus the scroll cannot be used to ensure that more than 120 of a certain monster can exist. Ungenociding will always succeed otherwise.
+
+Specifying an invalid species&mdash;this includes species that have not been genocided, and the species that cannot be ungenocided (the Ungenomold)&mdash;five times in a row will result in nothing being ungenocided.
+
+==Strategy==
+The undo genocide scroll is only of any use to a player who has genocided at least one species, so it will be meaningless to a genocideless player. Otherwise, it will only be useful on the rare occasion that you regret having exterminated a useful monster (e.g. the [[mind flayer]], for the [[intelligence]] or [[telepathy]] gain from eating the corpse), or you want to recover one useful species from a class you have wiped out.
+
+Reversing all of your genocides will not restore [[genocideless]] conduct; even though you made "amends" for your actions, you still benefited during the time when those monsters could not be generated.
+
+Outside of this scenario, the scroll is a textbook candidate for [[blanking]] or [[polypiling]], though it thankfully has no adverse effects from being read if cursed.
+
+==Messages==
+{{message|Such creatures do not exist in this world.|You named a nonexistent species.}}
+{{message|This creature has not been genocided.|You named a species that still exists, or became extinct.}}
+{{message|The race of <foos> now exist again.|You successfully ungenocided a species.}}
+
+[[Category:Scrolls]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Scroll of reverse identify {148554 2022-10-05T02:34:12Z {4001279 Umbire the Phantom} de-SLEX {{scroll|name=reverse identify|cost=300|ink=7-13}}
+
+The '''scroll of reverse identify''' is a [[scroll]] that appears in [[NetHack: The Next Generation]] and [[SlashTHEM]]. 
+
+==Description==
+When read, the scroll of reverse identify does the ''reverse'' of a standard [[scroll of identify]] and prompts you to enter the name of a item ([[gauntlets of power]]) or an item [[randomized appearance|appearance]] ([[hiking boots]]), whether or not you have the item in inventory. The item with the given name or appearance will be fully identified. How many items you can identify this way depends on the scroll's [[beatitude]]:
+
+{|class="wikitable"
+!Case
+!Number
+|-
+|blessed
+|1-5
+|-
+|uncursed
+|1-3
+|-
+|cursed
+|1
+|}
+
+==Strategy==
+The scroll provides a more novel way to [[Discoveries|discover]] and identify new items than the regular scroll: you can learn the appearance of any item including those that you want so you can recognize them later on, or an item(s) you previously saw or picked up and lost that you wish to replace.
+
+Using scrolls of reverse identify for the former can save [[wish]]es if used effectively: For example, if a player had not identified scrolls of [[charging]] and [[genocide]] but had a scroll of reverse identify, they could enter the name of those scrolls to have them formally identified. Wishing for a [[magic marker]] then lets them reliably write the scrolls and save the customary wish for them.
+
+Unidentified scrolls and potions lost to [[fire]] or [[wet]]ting, or rings destroyed by [[shock]] damage, are also ideal candidates to reverse identify using the scroll and see if they are worth replacing.
+{{variant-343}}
+[[Category:NetHack: The Next Generation scrolls]]
+[[Category:SlashTHEM scrolls]]}
+&&%s&& %s Bag of digestion {147870 2022-08-22T04:25:47Z {4000978 Aximili} de-slex {{tool|name=bag of digestion|appearance=bag|cost=100|weight=5|color=brown|material=cloth}}
+
+The '''bag of digestion''' is a [[container]] in [[NetHack: The Next Generation]] which also appears in [[SlashTHEM]].<ref>https://github.com/Soviet5lo/SlashTHEM/blob/develop/src/objects.c#L913</ref>
+
+Every time you [[loot]] or [[apply]] a bag of digestion, each of the items inside has a chance of disappearing, as with a cursed [[bag of holding]]. Unlike the bag of holding, the bag of digestion will still "eat" items even if non-cursed; the [[BUC]] status merely determines the probability that each item inside will disappear when you loot it:<ref>https://github.com/Soviet5lo/SlashTHEM/blob/develop/src/pickup.c#L2639</ref>
+
+{|class="wikitable"
+!Case
+!Probability
+|-
+|blessed
+|5%
+|-
+|uncursed
+|10%
+|-
+|cursed
+|50%
+|}
+
+As with a bag of holding, you will have to pay for any unpaid items destroyed by a bag of digestion in a shop.
+
+==Strategy==
+===Identification===
+The bag of digestion weighs and costs as much as the [[bag of holding]] and [[bag of tricks]], making [[price identification]] of unknown bags slightly more challenging in variants that include this item. A (charged) bag of tricks can be distinguished by [[apply]]ing it, but the bag of holding and bag of digestion will both behave as ordinary containers. Be careful not to put any valuables into unidentified bags with a base price of 100!
+
+One way to determine which type of bag you have&mdash;short of [[identification]]&mdash;might be to determine its [[BUC]] status by [[curse-testing]], [[uncurse]] it if necessary, and, once you are certain that it is not cursed, put junk items inside and loot it several times. If an item disappears even though the bag is non-cursed, you can be sure that you have a bag of digestion. 
+
+You may get faster results if the bag is uncursed rather than blessed (since an uncursed bag is twice as likely to destroy an item) and if you put in more than one item. If you put a single item into an uncursed bag, there is a 10% chance that it will disappear the next time you loot the bag, but if you put in five, the probability that at least one of them will disappear will be 40%, and if you put in ten, the probability will be 65%. [[Worthless glass]] may be useful for testing for a bag of digestion, as it's lightweight and available in different colors, naturally forming multiple stacks.
+
+Or, if the unidentified bag is known to be cursed and you have [[Options (SLASH'EM)#|showweight]] enabled, you can recognize a cursed bag of holding if it doubles the weight of items put inside. Purists may feel that this is [[cheating]], however.
+
+===Uses===
+
+For obvious reasons, using a bag of digestion to store your items is risky. Since use as a container is out of the question, the only possible use for a bag of digestion is as a garbage disposal, for destroying [[troll]] corpses and items like attack [[wand]]s that you don't want to keep but don't want monsters to get. Putting all of your unwanted wands into a bag of digestion and looting it until they disappear may be less tedious than zapping each one until it's burned out. You may wish to [[curse]] the bag so it empties faster.
+
+Unfortunately, this is not a valid way of getting rid of [[loadstone]]s, since they resist being put into containers.
+
+==References==
+<References />
+
+[[Category: Tools]]
+[[Category: NetHack: The Next Generation]]
+[[Category: SlashTHEM]]}
+&&%s&& %s Amulet of second chance {148555 2022-10-05T02:34:26Z {4001279 Umbire the Phantom} de-SLEX {{amulet|name=second chance|cost=150}}
+
+The '''amulet of second chance''' is an [[amulet]] in [[NetHack: The Next Generation]] which also appears in [[SlashTHEM]].
+
+Its function is identical to that of the [[amulet of life saving]], but with one significant difference: when (and if) you revive, it resets your [[health]], not to your maximum, but to the number of hit points you had before you were killed. If you were killed by a single hit, your health will be reset to the amount you had before the final blow&mdash;in essence, giving you a second chance to escape from the situation that killed you.
+
+==Strategy==
+This item is a dubious substitute for the existing amulet of life saving. If you want to resume playing after getting killed, it's far better to do so with full health, especially if you died from low hit points rather than, say, an [[instakill]] from [[poison]], [[illness]], or [[touch of death]]. Still, you may want to wear this if you don't have an amulet of life saving, though, as a randomly generated amulet is about twelve times more likely to be life saving than second chance, you'll probably find life saving first.
+
+[[Category: Amulets]]
+[[Category: NetHack: The Next Generation]]
+[[Category: SlashTHEM items]]}
+&&%s&& %s God-o-meter {147990 2022-08-27T22:30:46Z {4000978 Aximili} de-slex, sectioning {{template:tool|tile=|cost=500|weight=5|color=metal|name=god-o-meter|appearance=highly-complicated electronic device|material=iron}}
+
+The '''god-o-meter''' is a [[tool]] in [[NetHack: The Next Generation]], which also appears in [[SlashTHEM]], which gives you hints about your [[prayer timeout]]. When unidentified, it appears as a '''highly-complicated electronic device'''<ref>https://github.com/Soviet5lo/SlashTHEM/blob/e55b2b522cea66b463dd8a81d74f9b8ad7fa7bb3/src/objects.c#L1072</ref>.
+
+==Effects==
+When applied successfully, the god-o-meter will emit a black flash if your prayer timeout is nonzero (that is, it's not safe to pray), and an amber flash if it is zero (it is safe to pray). In [[wizard mode]], there is a 10% chance that the device will also display the number of turns in your prayer timeout.
+
+However, the device will only work if blessed. Otherwise, it will ''increase'' your prayer timeout by 0-99 turns if uncursed, or 0-199 if cursed. 
+
+Every time you use a god-o-meter, there is a 5% chance that it will explode, increasing your prayer timeout by 0-19 turns. This is not affected by [[BUC]] status.
+
+If you are [[blind]] you will not be able to see the readout on the god-o-meter. Fortunately this will not affect your prayer timeout.<ref>https://github.com/Soviet5lo/SlashTHEM/blob/de40ba1a62be65b69d8ee869965e0e3a6a72b03c/src/apply.c#L4369</ref>
+
+==Messages==
+{{message|Being blind, you cannot see it.|You were [[blind]], and the device did nothing.}}
+{{message|You feel uncomfortable.|The device was not blessed, and your prayer timeout was increased.}}
+{{message|You see a black flash from the device.|It is not safe to pray.}}
+{{message|You see an amber flash from the device.|It is safe to pray.}}
+{{message|Your prayer timeout is <n>.|You were playing in [[wizard mode]].}}
+
+==References==
+<References />
+
+[[Category:Tools]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM]]}
+&&%s&& %s Hitchhiker's Guide To The Galaxy {148423 2022-10-05T00:00:01Z {4001279 Umbire the Phantom} de-SLEX {{template:tool|tile=|cost=1000|weight=42|color=metal|name=Hitchhiker's Guide To The Galaxy|appearance=highly-complicated electronic device|material=iron}}
+
+The '''Hitchhiker's Guide To The Galaxy''', at least in [[NetHack: The Next Generation]] and [[SlashTHEM]], is a device that is mostly (comically) useless.
+
+[[Apply]]ing the HHGTTG while ''not'' [[hallucinating]] will simply [[confuse]] you for 1-10 turns ("So many knobs to turn! So many buttons to press!") Applying it ''while'' hallucinating will display a (false) [[rumor]].
+
+When unidentified, the Hitchhiker's Guide To The Galaxy appears as a '''highly-complicated electronic device'''. This is the same appearance as the [[god-o-meter]], though any randomly generated highly-complicated electronic device can be assumed to be a god-o-meter since the Hitchhiker's Guide cannot be randomly generated (its probability of being generated is 0).
+
+==References==
+{{todo|add a source citation from NetHack: the next generation code}}
+
+[[Category:Tools]]
+[[Category:NetHack: The Next Generation]]
+[[Category:SlashTHEM]]}
+&&%s&& %s Computer parts {148442 2022-10-05T00:11:00Z {4001279 Umbire the Phantom} de-SLEX As part of its programming theme, [[NetHack: The Next Generation]] includes four [[item]]s that are electronic or electrical components: the '''IC''' (integrated circuit, or "chip"), the '''diode''', the '''transistor''', and the '''relay'''. (These items also appear in [[SlashTHEM]], along with other features from NHTNG.) All four items are part of the [[tool]] [[item class|class]], but are nonfunctional. [[Apply]]ing any non-[[artifact]] computer part will return the message "You don't understand anything about electronics !!!" (or, if [[hallucinating]], "Hmm... is this stuff edible?") This will happen even for [[Geek]]s and [[Graduate]]s, who despite their familiarity with software apparently do not understand the hardware of the computers they use.
+
+==Properties==
+All four items are made of [[iron]] and have white-colored symbols. They differ in unidentified appearance and in value, with base cost apparently decreasing with technological obsolescence.
+
+{|class="wikitable"
+!Item
+!Appearance
+!Base Price
+!Weight
+|-
+|diode
+|two-wired thing
+|50
+|1
+|-
+|transistor
+|three-wired thing
+|100
+|1
+|-
+|IC
+|many-wired thing
+|5000
+|1
+|-
+|relay
+|four-wired thing
+|200
+|2
+|}
+
+Note that a cursed IC only has a base price of 250 [[zm]] when selling to a shopkeeper. In SlashTHEM, even non-cursed ICs sell for 500 zm, making them significantly less valuable.
+
+==Occurrence==
+Hostile computers (the PDP-9, PDP-11, Vax, and Cray) will drop 5-14 random components [[Death drop|when destroyed]]; each item has an equal probability of being a diode, transistor, or IC.
+
+The Geek role starts with 1-7 ICs.
+
+The relay is the [[base item]] for the '''Burned Moth Relay''', an artifact which gives [[protection]] while carried. When applied, it gives a message which identifies its base item ("There's a little badly burned moth in that relay!"). Geeks and Graduates get an additional message: "You feel remembered of the old times" (or, if hallucinating, "of when the net was flat").
+
+==Uses==
+As mentioned above, computer parts do not have any significant function when applied. Some of them, especially ICs, are relatively valuable, so they might be worth collecting to sell (like precious [[gem]]s) if you have found a general store or tool [[shop]].
+
+Polypiling computer parts will not create a computer monster. It might create an [[iron golem]], though. 
+
+==References==
+[[Category: NetHack: The Next Generation]]
+[[Category: SlashTHEM]]}
+&&%s&& %s Diode {97169 2015-11-03T00:05:41Z {4000629 Cherokee Jack} Redirect #REDIRECT [[Computer parts#Properties]]
+
+[[Category: NetHack: The Next Generation]]}
+&&%s&& %s Transistor {97170 2015-11-03T00:06:19Z {4000629 Cherokee Jack} Redirect #REDIRECT [[Computer parts#Properties]]
+
+[[Category: NetHack: The Next Generation]]}
+&&%s&& %s IC {97171 2015-11-03T00:06:54Z {4000629 Cherokee Jack} Redirect #REDIRECT [[Computer parts#Properties]]

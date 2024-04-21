@@ -1,0 +1,1000 @@
+&&%s&& %s Annotate {99940 2015-12-29T16:16:54Z {4000355 Dizzylizzy} create page '''#annotate''' is the [[extended command]] to specify one line of text to associate with the current dungeon level.
+
+The text you give will be visible with the #[[overview]] command. When you return to a level for which you have set an annotation, you receive the message, '''You remember this level as <annotation>.'''
+
+Annotation allows you to leave useful messages to yourself that #[[overview]] does not provide, such as where you've found a [[Unicorn#Unicorns_and_gems|co-aligned unicorn]], warnings to watch out for [[Mind flayer|nasty monsters]], or the location of the entrance to the [[Wizard's Tower]].
+
+[[Category:Extended commands]]
+{{stub}}
+{{nethack-360}}}
+&&%s&& %s Tileset/tile2360.py {131499 2020-01-26T06:17:33Z {4000978 Aximili} Add category ''This page contains a program that is meant to be downloaded and run on the user's computer. Editing is limited to logged-in users to discourage introduction of malicious code.''
+
+Here is a [[wikipedia:Python (programming language)|Python]] program that will take a [[NetHack 3.4.3]] [[tileset]] in BMP format and convert it to a form usable with 3.6.0.
+
+If you have a [[Mac]] or [[Linux]], you probably already have Python (or can install it with your package manager). Windows users can run this with [https://www.activestate.com/activepython ActiveState Python].
+
+Use <code>./tile2360.py -h</code> for a complete list of options. Most tilesets convert without needing any options; the program assumes that the image contains 40 tiles per row and that tiles are square, unless the tile size is given. The output file name just adds "-360" before the ".bmp" suffix, unless the command line specifies a different name.
+
+New tiles are created as follows:
+
+* Monster tiles are converted to grayscale to form statue tiles. To give better results with tilesets that do not use black backgrounds, the tile is compared to the [[floor]] tile; a pixel that is different from the floor is converted.
+
+* The number of [[scroll origins|scroll appearances]] increases from 25 to 41; tile2360.py repeats the first 16 scroll tiles to make 41.
+
+* The tile for the darkened portion of a [[floor]] is created by halving the luminance of the existing floor tile.
+
+* Eight other tiles are filled in with a placeholder, which appears as a solid red tile with a black X through it. This is for use by tileset authors, who can then fill in the missing tiles. The missing tiles are, in order:
+** [[glob]] of [[gray ooze]], [[brown pudding]], [[green slime]] and [[black pudding]], in that order; this is a block of four missing tiles appearing after the [[meat ring]]
+** [[novel]] -- this is a single missing tile appearing after all the [[spellbook]]s except the [[Book of the Dead]]
+** The [[vibrating square]] -- this is a single missing tile appearing after all the [[trap]]s
+** [[Poison cloud]] and [[valid position]] -- these are two missing tiles appearing after the sparkles
+
+ #!/usr/bin/env python
+ # tile2360.py -- convert NetHack 3.4.3 tile sets most of the way to 3.6.0
+ #
+ # Copyright (c) 2015, Ray Chason
+ # All rights reserved.
+ #
+ # Redistribution and use in source and binary forms, with or without
+ # modification, are permitted provided that the following conditions are met:
+ #
+ # 1. Redistributions of source code must retain the above copyright notice, this
+ #    list of conditions and the following disclaimer.
+ #
+ # 2. Redistributions in binary form must reproduce the above copyright notice,
+ #    this list of conditions and the following disclaimer in the documentation
+ #    and/or other materials provided with the distribution.
+ #
+ # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ # ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ # LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ # SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ # INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ # CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ # POSSIBILITY OF SUCH DAMAGE.
+ 
+ import argparse
+ import os.path
+ import struct
+ import sys
+ 
+ # A Bitmap image, with some extra methods for tile mapping
+ class Bitmap(object):
+     def __init__(self, inpname):
+         # TODO: This assumes the BITMAPINFOHEADER structure. Add support for
+         # other bitmap formats.
+ 
+         # Read the header
+         fp = open(inpname, "rb")
+         header = fp.read(54)
+ 
+         (magic,
+         self.bmp_size,
+         reserved,
+         self.image_offset,
+         self.header_size,
+         self.width,
+         self.height,
+         self.num_planes,
+         self.bits_per_pixel,
+         self.compression,
+         self.image_size,
+         self.horiz_res,
+         self.vert_res,
+         self.num_colors,
+         self.num_important_colors) = struct.unpack("<2s6L2H6L", header)
+ 
+         # Check various header fields for unsupported stuff
+         if magic != "BM":
+             raise RuntimeError, "%s is not in .BMP format" % inpname
+ 
+         if self.header_size != 40:
+             raise RuntimeError, "%s has an unsupported header type (%d)" % \
+                     (inpname, self.header_size)
+ 
+         if self.num_planes != 1:
+             raise RuntimeError, "%s has %d planes, not supported" % \
+                     (inpname, self.num_planes)
+ 
+         if self.compression != 0:
+             raise RuntimeError, "%s is compressed (%d), and not supported" % \
+                     (inpname, self.compression)
+ 
+         if self.bits_per_pixel not in (1, 2, 4, 8, 24, 32):
+             raise RuntimeError, "%s has %d bits per pixel, not supported" % \
+                     (inpname, self.bits_per_pixel)
+ 
+         # Read the palette
+         if self.bits_per_pixel <= 8:
+             if self.num_colors == 0:
+                 self.num_colors = 1 << self.bits_per_pixel
+             self.palette = [ None ] * self.num_colors
+             for i in xrange(0, self.num_colors):
+                 b, g, r, z = struct.unpack("<4B", fp.read(4))
+                 self.palette[i] = (b, g, r)
+         else:
+             self.palette = None
+ 
+         # Read the pixels
+         fp.seek(self.image_offset)
+         self.image = [ None ] * self.height
+         row_size = ((self.bits_per_pixel * self.width + 31) / 32) * 4
+         if self.bits_per_pixel <= 8:
+             # Palettized image; convert to 24 bit
+             pixels_per_byte = 8 / self.bits_per_pixel
+             mask = (1 << self.bits_per_pixel) - 1
+             for y in xrange(0, self.height):
+                 row_bytes = fp.read(row_size)
+                 row_bytes = map(
+                         lambda x : struct.unpack('<1B', x)[0],
+                         row_bytes)
+                 row = [ None ] * self.width
+                 self.image[self.height - 1 - y] = row
+                 shift = 8
+                 for x in xrange(0, self.width):
+                     if shift <= 0:
+                         shift = 8
+                     shift -= self.bits_per_pixel
+                     x_hi = x / pixels_per_byte
+                     i = (row_bytes[x_hi] >> shift) & mask
+                     row[x] = self.palette[i]
+         else:
+             # 24 or 32 bits per pixel
+             bytes_per_pixel = self.bits_per_pixel / 8
+             for y in xrange(0, self.height):
+                 row_bytes = fp.read(row_size)
+                 row_bytes = map(
+                         lambda x : struct.unpack('<1B', x)[0],
+                         row_bytes)
+                 row = [ None ] * self.width
+                 self.image[self.height - 1 - y] = row
+                 for x in xrange(0, self.width):
+                     x2 = x * bytes_per_pixel
+                     row[x] = tuple(row_bytes[x2 : x2 + 3])
+         self.bits_per_pixel = 24
+ 
+         # These are yet unknown
+         self.tile_width = None
+         self.tile_height = None
+         self.tiles_per_row = None
+         self.tile_rows = None
+         self.tiles = None
+ 
+     # Split the image into tiles
+     def split(self, tile_width, tile_height):
+         self.tile_width = tile_width
+         self.tile_height = tile_height
+         self.tiles_per_row = self.width / tile_width
+         self.tile_rows = self.height / tile_height
+         num_tiles = self.tiles_per_row * self.tile_rows
+         self.tiles = [ None ] * num_tiles
+ 
+         for t in xrange(0, num_tiles):
+             tile = [ None ] * tile_height
+             self.tiles[t] = tile
+             t_col = t % self.tiles_per_row
+             t_row = t / self.tiles_per_row
+             t_x = t_col * tile_width
+             t_y = t_row * tile_height
+             for y in xrange(0, tile_height):
+                 tile[y] = self.image[t_y + y][t_x : t_x + tile_width]
+ 
+     # Rearrange the tiles to match the NetHack 3.6.0 order
+     def remap(self, no_statues):
+         # If tile_map[X] = Y, the tile in position X for 3.6.0 comes from
+         # position Y for 3.4.3. Negative numbers indicate tiles that cannot
+         # be directly mapped.
+         tile_map = [
+             # Monsters
+                0,    1,    2,    3,    4,    5,    6,    7,    8,    9,
+               10,   11,   12,   13,   14,   15,   16,
+             # dingo (19) placed before dog (17)
+               19,   17,   18,
+               20,   21,
+             # winter wolf cub (23) placed before warg (22)
+               23,   22,
+               24,   25,   26,   27,   28,   29,
+               30,   31,   32,   33,   34,   35,   36,   37,   38,   39,
+               40,   41,   42,   43,   44,   45,   46,   47,   48,   49,
+               50,   51,   52,   53,   54,   55,   56,   57,   58,   59,
+               60,   61,   62,   63,   64,   65,   66,   67,   68,   69,
+               70,   71,   72,   73,   74,   75,   76,   77,   78,   79,
+               80,   81,   82,   83,   84,   85,   86,   87,   88,   89,
+               90,   91,   92,   93,   94,   95,   96,   97,   98,   99,
+              100,
+             # pony (104) placed before white unicorn (101)
+              104,  101,  102,  103,
+              105,  106,  107,  108,  109,
+              110,  111,  112,  113,  114,  115,  116,  117,  118,  119,
+              120,  121,  122,  123,  124,  125,  126,  127,  128,  129,
+              130,  131,  132,  133,  134,  135,  136,  137,  138,  139,
+              140,  141,  142,  143,  144,  145,  146,  147,  148,  149,
+              150,  151,  152,  153,  154,  155,  156,  157,  158,  159,
+              160,  161,  162,  163,  164,  165,  166,  167,  168,  169,
+              170,  171,  172,  173,  174,
+             # ettin (176) placed before storm giant (175)
+              176,  175,
+              177,  178,  179,
+              180,  181,  182,  183,  184,  185,  186,  187,  188,  189,
+              190,  191,  192,  193,  194,  195,  196,  197,  198,  199,
+              200,  201,  202,  203,  204,  205,  206,  207,  208,  209,
+             # green slime (211) placed before black pudding (210)
+              211,  210,
+              212,  213,  214,  215,  216,  217,
+             # python (219) placed before pit viper (218)
+              219,  218,
+              220,  221,  222,  223,  224,  225,  226,  227,  228,  229,
+              230,  231,  232,  233,  234,  235,  236,  237,  238,  239,
+              240,  241,  242,  243,  244,  245,  246,  247,
+             # ghoul (249) placed before giant zombie (248)
+              249,  248,
+              250,  251,  252,  253,  254,  255,  256,  257,  258,  259,
+              260,  261,  262,  263,  264,  265,  266,  267,  268,  269,
+              270,  271,  272,
+             # nurse (273) placed after sergeant (281)
+              274,  275,  276,  277,  278,  279,  280,  281,  273,
+              282,  283,  284,  285,  286,  287,  288,  289,
+              290,  291,  292,
+             # succubus (294) placed before horned devil (293)
+              294,  293,
+              295,  296,  297,  298,  299,
+              300,  301,  302,  303,  304,
+             # sandestin (319) placed before balrog (305)
+              319,  305,  306,  307,  308,  309,  310,  311,  312,  313,
+              314,  315,  316,  317,  318,
+              320,  321,  322,  323,  324,  325,  326,  327,  328,  329,
+              330,  331,  332,  333,  334,  335,  336,  337,  338,  339,
+              340,  341,  342,  343,  344,  345,  346,  347,  348,  349,
+              350,  351,  352,  353,  354,  355,  356,  357,  358,  359,
+              360,  361,  362,  363,  364,  365,  366,  367,  368,  369,
+              370,  371,  372,  373,  374,  375,  376,  377,  378,  379,
+              380,  381,  382,  383,  384,  385,  386,  387,  388,  389,
+              390,  391,  392,  393,
+ 
+             # Objects:
+                                      394,  395,  396,  397,  398,  399,
+              400,  401,  402,  403,  404,  405,  406,  407,  408,  409,
+              410,  411,  412,  413,  414,  415,  416,  417,  418,  419,
+              420,  421,  422,  423,  424,  425,  426,  427,  428,  429,
+              430,  431,  432,  433,  434,  435,  436,  437,  438,  439,
+              440,  441,  442,  443,  444,  445,  446,  447,  448,  449,
+              450,  451,  452,  453,  454,  455,  456,  457,  458,  459,
+              460,  461,  462,  463,  464,  465,  466,  467,  468,  469,
+              470,  471,  472,  473,  474,  475,  476,  477,  478,  479,
+              480,  481,  482,  483,  484,  485,  486,  487,  488,  489,
+              490,  491,  492,  493,  494,  495,  496,  497,  498,  499,
+              500,  501,  502,  503,  504,  505,  506,  507,  508,  509,
+              510,  511,  512,  513,  514,  515,  516,  517,  518,  519,
+              520,  521,  522,  523,  524,  525,  526,  527,  528,  529,
+              530,  531,  532,  533,  534,  535,  536,  537,  538,  539,
+              540,  541,  542,  543,  544,  545,  546,  547,  548,  549,
+              550,  551,  552,  553,  554,  555,  556,  557,  558,  559,
+              560,  561,  562,  563,  564,  565,  566,  567,  568,  569,
+              570,  571,  572,  573,  574,  575,  576,  577,  578,  579,
+              580,  581,  582,  583,  584,  585,  586,  587,  588,  589,
+              590,  591,  592,  593,  594,  595,  596,  597,  598,  599,
+              600,  601,  602,  603,  604,  605,  606,  607,  608,  609,
+              610,  611,  612,  613,  614,  615,  616,  617,  618,  619,
+              620,  621,  622,  623,  624,  625,  626,  627,  628,  629,
+              630,  631,  632,  633,  634,  635,  636,  637,  638,  639,
+              640,  641,
+               -1, # glob of gray ooze
+               -1, # glob of brown pudding
+               -1, # glob of green slime
+               -1, # glob of black pudding
+              642,  643,  644,  645,  646,  647,  648,  649,
+              650,  651,  652,  653,  654,  655,  656,  657,  658,  659,
+              660,  661,  662,  663,  664,  665,  666,  667,  668,  669,
+              670,  671,  672,  673,  674,  675,  676,  677,  678,  679,
+              680,  681,  682,  683,  684,  685,  686,  687,  688,  689,
+             # Random scroll appearances begin here
+              690,  691,  692,  693,  694,  695,  696,  697,  698,  699,
+              700,  701,  702,  703,  704,  705,  706,  707,  708,  709,
+              710,  711,  712,  713,  714,
+             # New random scroll appearances. Repeat the first 16 above
+              690,  691,  692,  693,  694,  695,  696,  697,  698,  699,
+              700,  701,  702,  703,  704,  705,
+             # Random scroll appearances end here
+              715,  716,  717,  718,  719,
+              720,  721,  722,  723,  724,  725,  726,  727,  728,  729,
+              730,  731,  732,  733,  734,  735,  736,  737,  738,  739,
+              740,  741,  742,  743,  744,  745,  746,  747,  748,  749,
+              750,  751,  752,  753,  754,  755,  756,  757,
+               -1, # Novel
+              758,  759,
+              760,  761,  762,  763,  764,  765,  766,  767,  768,  769,
+              770,  771,  772,  773,  774,  775,  776,  777,  778,  779,
+              780,  781,  782,  783,  784,  785,  786,  787,  788,  789,
+              790,  791,  792,  793,  794,  795,  796,  797,  798,  799,
+              800,  801,  802,  803,  804,  805,  806,  807,  808,  809,
+              810,  811,  812,  813,  814,  815,  816,  817,  818,  819,
+              820,  821,  822,  823,  824,  825,  826,  827,  828,
+ 
+             # Dungeon features, missiles, explosions, etc.
+              829,
+              830,  831,  832,  833,  834,  835,  836,  837,  838,  839,
+              840,  841,  842,  843,  844,  845,  846,  847,  848,
+               -2, # darkened part of a room
+              849,
+              850,  851,  852,  853,  854,  855,  856,  857,  858,  859,
+              860,  861,  862,  863,  864,  865,  866,  867,  868,  869,
+              870,  871,  872,  873,  874,  875,  876,  877,  878,  879,
+              880,  881,  882,  883,  884,  885,  886,  887,  888,  889,
+              890,  891,
+               -1, # vibrating square
+              892,  893,  894,  895,  896,  897,  898,  899,
+              900,  901,  902,  903,
+               -1, # poison cloud
+               -1, # valid position
+              904,  905,  906,  907,  908,  909,
+              910,  911,  912,  913,  914,  915,  916,  917,  918,  919,
+              920,  921,  922,  923,  924,  925,  926,  927,  928,  929,
+              930,  931,  932,  933,  934,  935,  936,  937,  938,  939,
+              940,  941,  942,  943,  944,  945,  946,  947,  948,  949,
+              950,  951,  952,  953,  954,  955,  956,  957,  958,  959,
+              960,  961,  962,  963,  964,  965,  966,  967,  968,  969,
+              970,  971,  972,  973,  974,  975,  976,  977,  978,  979,
+              980,  981,  982,  983,  984,  985,  986,  987,  988,  989,
+              990,  991,  992,  993,  994,  995,  996,  997,  998,  999,
+             1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009,
+             1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019,
+             1020, 1021, 1022, 1023, 1024, 1025, 1026, 1027, 1028, 1029,
+             1030, 1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039,
+             1040, 1041, 1042, 1043, 1044, 1045, 1046, 1047, 1048, 1049,
+             1050, 1051, 1052, 1053, 1054, 1055, 1056
+             # then repeat the monster glyphs to make statues
+         ]
+ 
+         # Map monsters, objects and dungeon features
+         map_size = len(tile_map)
+         new_tiles = [ None ] * (map_size + 394)
+         for i in xrange(0, map_size):
+             m = tile_map[i]
+             if m >= 0:
+                 new_tiles[i] = self.tiles[m]
+             elif m == -2:
+                 new_tiles[i] = self.darkenedTile(self.tiles[m - 1])
+             else:
+                 new_tiles[i] = self.placeHolderTile()
+ 
+         # Generate statue tiles
+         if no_statues:
+             for i in xrange(0, 394):
+                 new_tiles[i + map_size] = self.tiles[824] # statue
+         else:
+             for i in xrange(0, 394):
+                 new_tiles[i + map_size] = self.makeStatue(
+                         new_tiles[i], self.tiles[848])
+ 
+         # Update the number of tile rows
+         self.tile_rows = (len(new_tiles) + self.tiles_per_row - 1) \
+                 / self.tiles_per_row
+ 
+         # Add some blank tiles to fill out the last row
+         num_tiles = self.tile_rows * self.tiles_per_row
+         if len(new_tiles) < num_tiles:
+             blank_tile = self.blankTile()
+             while len(new_tiles) < num_tiles:
+                 new_tiles.append(blank_tile)
+         self.tiles = new_tiles
+ 
+     # Rejoin the tiles into a new image
+     def join(self):
+         # New image dimensions; normally width will be unchanged
+         self.width = self.tiles_per_row * self.tile_width
+         self.height = self.tile_rows * self.tile_height
+ 
+         # Create blank image
+         self.image = [ None ] * self.height
+         for i in xrange(0, self.height):
+             self.image[i] = []
+ 
+         # Add each tile to the end of its row
+         for i in xrange(0, len(self.tiles)):
+             t_row = i / self.tiles_per_row
+             t_y = t_row * self.tile_height
+             tile = self.tiles[i]
+             for j in xrange(0, self.tile_height):
+                 self.image[t_y + j].extend(tile[j])
+ 
+     # Write the image to the output file
+     def write(self, outname):
+         fp = open(outname, "wb")
+ 
+         # Write a palettized image if possible without degradation
+         self.buildPalette()
+         palette_map = {}
+         if self.bits_per_pixel <= 8:
+             for i in xrange(0, len(self.palette)):
+                 palette_map[self.palette[i]] = i
+ 
+         # Write the header, with placeholders for some fields
+         self.writeHeader(fp)
+ 
+         # Write the palette if any
+         if self.bits_per_pixel <= 8:
+             for i in xrange(0, self.num_colors):
+                 fp.write(struct.pack("<4B",
+                         self.palette[i][0],
+                         self.palette[i][1],
+                         self.palette[i][2],
+                         0))
+         self.image_offset = fp.tell()
+ 
+         # Write the pixels
+         row_size = ((self.bits_per_pixel * self.width + 31) / 32) * 4
+         if self.bits_per_pixel <= 8:
+             for y in xrange(0, self.height):
+                 row = self.image[self.height - 1 - y]
+                 bits = 0
+                 byte = 0
+                 count = 0
+                 for x in xrange(0, self.width):
+                     index = palette_map[row[x]]
+                     byte = (byte << self.bits_per_pixel) | index
+                     bits += self.bits_per_pixel
+                     if bits >= 8:
+                         fp.write(struct.pack("<1B", byte))
+                         byte = 0
+                         bits = 0
+                         count += 1
+                 if bits != 0:
+                     byte <<= 8 - bits
+                     fp.write(struct.pack("<1B", byte))
+                     count += 1
+                 while count < row_size:
+                     fp.write(struct.pack("<1B", 0))
+                     count += 1
+         else:
+             for y in xrange(0, self.height):
+                 row = self.image[self.height - 1 - y]
+                 for x in xrange(0, self.width):
+                     for byte in row[x]:
+                         fp.write(struct.pack("<1B", byte))
+                 count = len(row) * len(row[0])
+                 while count < row_size:
+                     fp.write(struct.pack("<1B", 0))
+                     count += 1
+ 
+         # Write the header with the correct offsets
+         self.bmp_size = fp.tell()
+         fp.seek(0)
+         self.writeHeader(fp)
+ 
+     # Given the existing image, build a palette if possible
+     # If there are more than 256 unique colors, build no palette; we will
+     # write a 24 bit bitmap
+     def buildPalette(self):
+         # Collect all colors present in the image
+         color_count = {}
+         for row in self.image:
+             for pixel in row:
+                 if pixel not in color_count:
+                     color_count[pixel] = 0
+                 color_count[pixel] += 1
+ 
+         # Get the list of unique colors; this will be the palette
+         palette = color_count.keys()
+         self.num_colors = len(palette)
+         if self.num_colors > 256:
+             # We will write a 24 bit bitmap
+             self.bits_per_pixel = 24
+             self.palette = None
+             return
+ 
+         # Arrange in descending order of occurrence
+         palette.sort(lambda a, b : color_count[b] - color_count[a])
+ 
+         # Set a valid bit-per-pixel count, with the fewest bits that will
+         # encompass the palette
+         self.palette = palette
+         if self.num_colors < 2:
+             self.bits_per_pixel = 1
+         elif self.num_colors < 4:
+             self.bits_per_pixel = 2
+         elif self.num_colors < 16:
+             self.bits_per_pixel = 4
+         else:
+             self.bits_per_pixel = 8
+ 
+     # A black tile, to fill the last row
+     def blankTile(self):
+         return [ [ (0, 0, 0) ] * self.tile_width ] * self.tile_height
+ 
+     # A placeholder tile, for the tiles that cannot otherwise be derived
+     # This will appear as a red block with a black X through it
+     def placeHolderTile(self):
+         red   = ( 0x00, 0x00, 0xFF )
+         black = ( 0x00, 0x00, 0x00 )
+         tile = [ None ] * self.tile_height
+         for y in xrange(0, self.tile_height):
+             tile[y] = [ red ] * self.tile_width
+         m = min(self.tile_width, self.tile_height)
+         for x in xrange(0, m):
+             tile[x][x] = black
+             tile[x][m - 1 - x] = black
+         return tile
+ 
+     # A tile at half brightness to the input
+     def darkenedTile(self, inptile):
+         outtile = [ None ] * len(inptile)
+         for y in xrange(0, len(outtile)):
+             inprow = inptile[y]
+             outrow = [ None ] * len(inprow)
+             outtile[y] = outrow
+             for x in xrange(0, len(inprow)):
+                 inp = inprow[x]
+                 out = ( inp[0] >> 1, inp[1] >> 1, inp[2] >> 1 )
+                 outrow[x] = out
+         return outtile
+ 
+     # A statue tile.
+     # To assist in transforming tile sets that do not use a black background,
+     # this accepts the floor tile. A pixel that is different from the floor
+     # tile is considered to be foreground, and converted to grayscale.
+     def makeStatue(self, inptile, floor):
+         outtile = [ None ] * len(inptile)
+         for y in xrange(0, len(outtile)):
+             inprow = inptile[y]
+             floor_row = floor[y]
+             outrow = [ None ] * len(inprow)
+             outtile[y] = outrow
+             for x in xrange(0, len(inprow)):
+                 inp = inprow[x]
+                 fl = floor_row[x]
+                 if inp == fl:
+                     # background
+                     out = inp
+                 else:
+                     # foreground
+                     gray = (inp[0] + inp[1] + inp[2]) / 3
+                     out = ( gray, gray, gray )
+                 outrow[x] = out
+         return outtile
+ 
+     # Write a BITMAPINFOHEADER-type header for a BMP file
+     def writeHeader(self, fp):
+         fp.write(struct.pack("<2s6L2H6L",
+                 "BM",
+                 self.bmp_size,
+                 0,
+                 self.image_offset,
+                 self.header_size,
+                 self.width,
+                 self.height,
+                 self.num_planes,
+                 self.bits_per_pixel,
+                 self.compression,
+                 self.image_size,
+                 self.horiz_res,
+                 self.vert_res,
+                 self.num_colors,
+                 self.num_important_colors))
+ 
+ # Convert one bitmap file
+ # inpname is the name of the file to be converted; args contains the arguments
+ # as parsed by the ArgumentParser object
+ def convertBitmap(inpname, args):
+     # Collect arguments from args
+     tile_width = args.tile_width
+     tile_height = args.tile_height
+     no_statues = args.no_statues
+     outname = args.output
+ 
+     # Provide default output file name
+     if outname is None:
+         d, n = os.path.split(inpname)
+         dot = n.rfind('.')
+         if dot != -1:
+             n = n[:dot]
+         n += '-360.bmp'
+         outname = os.path.join(d, n)
+ 
+     # Read the bitmap image
+     bmp = Bitmap(inpname)
+ 
+     # Provide default tile dimensions
+     if tile_width is None:
+         tile_width = bmp.width / 40
+     if tile_height is None:
+         tile_height = tile_width
+ 
+     # Split the bitmap into tiles
+     bmp.split(tile_width, tile_height)
+ 
+     # Remap into 3.6.0 arrangement
+     bmp.remap(no_statues)
+ 
+     # Rejoin into a single image
+     bmp.join()
+ 
+     # Write to disk
+     bmp.write(outname)
+ 
+ # Define command line arguments for this program
+ parser = argparse.ArgumentParser(
+             formatter_class=argparse.RawDescriptionHelpFormatter,
+             description='Convert NetHack 3.4.3 tile sets for use with 3.6.0',
+             epilog="""
+ If --tile-width is not specified, it is the image width divided by 40.
+ If --tile-height is not specified, it is equal to the tile width.
+ If --no-statues is specified, statue glyphs are copied from the 3.4.3 statue
+    glyph; if not, statue glyphs are generated by converting the monster glyphs
+    to grayscale.
+ 
+ Images must be in BMP format.
+ 
+ If --output is not specified, the output file name is <input-name>-360.bmp.
+ Multiple images can be converted, but only if --output is not specified.
+ """)
+ parser.add_argument('images', metavar='image', type=str, nargs='+',
+             help='Name of a tile set image for NetHack 3.4.3')
+ parser.add_argument('--tile-width', '-x', dest='tile_width', type=int,
+             help='Width of a single tile in pixels')
+ parser.add_argument('--tile-height', '-y', dest='tile_height', type=int,
+             help='Height of a single tile in pixels')
+ parser.add_argument('--no-statues', '-s', dest='no_statues',
+             action='store_true',
+             help='Do not derive statues from monsters')
+ parser.add_argument('--output', '-o', dest='output', type=str,
+             help='Name of output image')
+ 
+ args = parser.parse_args()
+ if len(args.images) > 1 and args.output is not None:
+     sys.stderr.write("Cannot specify --output with more than one image name\n")
+     sys.exit(1)
+ 
+ # Process each image in turn
+ rc = 0
+ for image in args.images:
+     if not convertBitmap(image, args):
+         rc = 1
+ sys.exit(rc)
+
+[[Category:Development]]}
+&&%s&& %s Bogusmon.txt {110333 2018-05-12T11:47:39Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/bogusmon.txt]]}
+&&%s&& %s Engrave.txt {110336 2018-05-12T11:48:09Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/engrave.txt]]}
+&&%s&& %s Epitaph.txt {110337 2018-05-12T11:48:19Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/epitaph.txt]]}
+&&%s&& %s Category:NetHack 3.6.0 source code {131508 2020-01-26T06:27:42Z {4000978 Aximili} Add category [[Category:Source code]]}
+&&%s&& %s Template:Dizzyref {100251 2016-01-01T21:09:29Z {4000688 DizzyBot} Created page with "<includeonly>{{#if:{{{name|}}}|{{#tag:ref|{{#if:{{{unnethack|}}}|<span class="plainlinks">[http://sourceforge.net/p/unnethack/code/{{{unnethack}}}/tree/trunk/{{{1}}}#l{{{2}}}..." <includeonly>{{#if:{{{name|}}}|{{#tag:ref|{{#if:{{{unnethack|}}}|<span class="plainlinks">[http://sourceforge.net/p/unnethack/code/{{{unnethack}}}/tree/trunk/{{{1}}}#l{{{2}}} {{{1}}} in UnNetHack revision {{{unnethack}}}, line {{{2}}}]</span>|[[Source:{{#ifeq:{{{version|}}}|||{{{version}}}/}}{{{1}}}#line{{{2}}}|{{{1}}}{{#ifeq:{{{version|}}}|||<span></span> in {{{version}}}}}, line {{{2}}}]]}}{{#if:{{{comment|}}} |<span>:</span> ''{{{comment}}}'' }}|name={{{name}}}}}|{{#tag:ref|{{#if:{{{unnethack|}}}|<span class="plainlinks">[http://sourceforge.net/p/unnethack/code/{{{unnethack}}}/tree/trunk/{{{1}}}#l{{{2}}} {{{1}}} in UnNetHack revision {{{unnethack}}}, line {{{2}}}]</span>|[[Source:{{#ifeq:{{{version|}}}|||{{{version}}}/}}{{{1}}}#line{{{2}}}|{{{1}}}{{#ifeq:{{{version|}}}|||<span></span> in {{{version}}}}}, line {{{2}}}]]}}{{#if:{{{comment|}}} |<span>:</span> ''{{{comment}}}'' }}}}}}</includeonly><noinclude>
+Essentially a combination of references footer tags and [[:Template:Sourcecode]].
+
+ <nowiki>{{refsrc|allmain.c|42}}</nowiki>
+will produce this footnote,{{refsrc|allmain.c|42}} and
+
+ <nowiki>{{refsrc|allmain.c|42|version=SLASH'EM 0.0.7E7F2}}</nowiki>
+will produce this second one.{{refsrc|allmain.c|42|version=SLASH'EM 0.0.7E7F2}}
+
+To link to the UnNetHack source, use
+ <nowiki>{{refsrc|src/mkroom.c|123|unnethack=1406}}</nowiki>
+This will produce this third reference.{{refsrc|src/mkroom.c|123|unnethack=1406}}
+
+(Currently, UnNetHack source references have to specify the directory.)
+
+ <nowiki>{{refsrc|monmove.c|219|comment=fleeing monsters stop holding you}}</nowiki>
+will produce this fourth one.{{refsrc|monmove.c|219|comment=fleeing monsters stop holding you}}
+
+You may also specify a <tt>name</tt> parameter so you can reference the same location in the code from multiple locations in the text, like this:
+ <nowiki>{{refsrc|engrave.c|814|name=venom_letter}} [some other text...] <ref name='venom_letter'/></nowiki>
+This will produce output like the following:{{refsrc|engrave.c|814|name=venom_letter}} [some other text...] <ref name='venom_letter'/>
+
+==See also==
+
+* [[Template:Reffunc]] - reference linking to function rather than to the line
+
+==References==
+<references/>}
+&&%s&& %s Category:Pages with unversioned Sourcecode templates {131550 2020-01-27T00:19:26Z {4000978 Aximili} Add category This category lists pages that use [[Template:Sourcecode]] but do not give a version.
+
+[[Category:NetHackWiki]]}
+&&%s&& %s Category:Pages with unversioned Refsrc templates {131549 2020-01-27T00:19:07Z {4000978 Aximili} Add category This category gathers pages that use [[Template:Refsrc]] but do not give a version.
+
+[[Category:NetHackWiki]]}
+&&%s&& %s Category:Pages with unversioned Reffunc templates {131548 2020-01-27T00:18:38Z {4000978 Aximili} Add category This category gathers pages that use [[Template:Reffunc]] but do not give a version.
+
+[[Category:NetHackWiki]]}
+&&%s&& %s Category:Pages with unversioned Function templates {131547 2020-01-27T00:17:57Z {4000978 Aximili} Add category This category gathers pages that use [[Template:Function]] but do not specify a version.
+
+[[Category:NetHackWiki]]}
+&&%s&& %s Deaf {100940 2016-01-07T03:48:44Z {663 Qazmlpok} Redirected page to [[Deafness]] #REDIRECT [[Deafness]]}
+&&%s&& %s Spellbook of Magic Missile {101004 2016-01-12T15:40:13Z {4000700 Verras} Capitalization matters #REDIRECT [[Spellbook of magic missile]]}
+&&%s&& %s Magic cancellation (3.4.3) {148543 2022-10-05T02:27:16Z {4001279 Umbire the Phantom} de-SLEX {{noversion}}
+
+{{caption||This page is for an older version of Nethack (3.4.3). For the current version see [[Magic cancellation]].}}
+
+{{For|the effects of a [[wand of cancellation]] or a [[spell of cancellation]]|Cancellation}}
+
+'''Magic cancellation''', or '''MC''' for short, is a property of some pieces of [[armor]] which protects the player from certain non-damage effects caused by a monster attacking and touching the player with some part of its body. Examples include [[poison]] from [[killer bee]] stings, [[lycanthropy]] caused by [[werejackal]] bites, and the [[green slime]]'s [[sliming]] attacks. Such attacks are referred to as ''special melee attacks'' in this article. A precise list of the special melee attacks that magic cancellation protects against is provided in the [[#How it works|section below]].
+
+A player is protected from special melee attacks by an aura of magic cancellation if one of the pieces of [[armor]] worn has magic cancellation. Each piece of armor has a magic cancellation number (MC number) ranging from 0 to 3, where 0 is the lowest (worst) and 3 is the highest (best). Note that magic cancellation is ''not'' cumulative — the player's magic cancellation is the maximum of that provided by any single piece of armor worn. This means that if you are wearing a [[chain mail]] with MC 1, ''and'' a [[dwarvish cloak]] with MC 2, then your magic cancellation is 2. Having the highest (best) magic cancellation means that only 1/50 of special melee attacks will succeed (assuming they would hit otherwise). This makes magic cancellation a high priority trait.
+
+Magic cancellation must not be confused with [[cancellation]] caused by a wand or spell, nor with [[magic resistance]]. See section [[#Difference between magic cancellation, cancelling a monster, and magic resistance|Difference between magic cancellation, cancelling a monster, and magic resistance]] for further details.
+
+==What magic cancellation protects against==
+Understanding how magic cancellation works requires some understanding of how an attack works in NetHack. An attack has two characteristics: ''attack type ''(e.g. bites and stings) and ''damage type ''(e.g. physical or poisonous). A [[soldier ant]] for instance, has two attacks: a bite which does 2d4 physical damage (i.e. ordinary damage), and a sting which does 3d4 [[poison]] damage. Magic cancellation will ''not'' protect against the 2d4 physical damage from the bite, ''nor'' will it prevent the 3d4 damage caused by the sting. It will however protect against the special effects from the [[poison]]ous sting, which randomly includes [[hitpoint]] reduction, [[attribute]] reduction, and [[instadeath]].
+
+There is no obvious pattern to what magic cancellation does and doesn't protect against. Shortly put, magic cancellation protects against ''certain'' attack types that deal a ''certain'' type of damage. This relation is shown in the table below. To be prevented by magic cancellation, both the attack type and damage type must be in the <span style="background-color:#ffdead;">orange area</span> of the table. If either the attack type or damage type is outside the orange area, magic cancellation will have ''no effect'' on the attack.
+
+In earlier versions of the game, the idea was that some types of armor covered your entire body surface, so the attacker effectively could not touch you despite his successful attack. Over time, with the addition of the [[cornuthaum]] and many types of special attacks, this point has become moot, and the current explanation can only be "it's magic".
+
+{|class="wikitable"
+!colspan="2"|Attack type
+!colspan="2"|Damage type
+|-
+!style="width:25%"|Attack type unaffected
+!width="250px" style="background:#ffdead; width:25%"|Attack type prevented
+!width="250px" style="background:#ffdead; width:25%"|Damage type prevented
+!style="width:25%"|Damage type unaffected
+|-
+|valign="top"|
+* [[Passive attack]]s
+* Spitting attacks
+* [[Engulfing attack]]s
+* [[Breath attack]]s
+* [[Explosion]]s from proximity
+* [[Explosion]]s from dying
+* [[Gaze attack]]s
+* [[Magic spell]]s
+* [[Ranged weapon]] attacks<ref group="note" name="melee_only"/>
+|valign="top" style="background:#ffdead;"|
+* Claw
+* Bite
+* Kick<ref group="note" name="never_applies"/>
+* Head butt<ref group="note" name="never_applies"/>
+* Touch
+* Sting
+* Tentacle attack<ref group="note" name="never_applies"/>
+* [[Holding attack]]s<ref group="note" name="never_applies"/>
+* Melee weapon attacks<ref group="note" name="melee_only"/>
+|valign="top" style="background:#ffdead;"|
+* [[Fire]] (burns scrolls and boils potions)
+* [[Cold]] (shatters potions)
+* [[Shock]] (detonates rings and wands)
+* [[Sleep]] (completely immobilized)
+* [[Poison]] (hitpoint and attribute reduction, [[instadeath]])
+* [[Paralysis]] (player completely immobilized)
+* [[Drain life]] (player loses levels)
+* [[Sticky attack]] (inability to move to another square)
+* [[Lycanthropy]] (player regularly changes form)
+* [[Slowing attack]] (reduces player speed)
+* [[Teleport]] (randomly teleports player)
+* [[Sliming]] (kills player in a few turns)
+* [[Disenchanting]] (reduces enchantment on items)
+* [[Dexterity]] or [[constitution]] draining [[poison]]
+* [[Power]] draining (reduces power)
+|valign="top"|
+* Ordinary physical
+* [[Magic missile]]
+* [[Disintegration]]
+* [[Acid]]
+* [[Blind]]ing
+* [[Stun]]ning
+* Leg damage by [[Xan]]s
+* [[Petrification]]
+* [[Gold stealing]] effects by [[leprechaun]]
+* [[Item stealing]]
+* [[Erosion]] (including [[rusting]], [[corroding]] and [[rotting]])
+* [[Confusion]]
+* [[Digestion]]
+* [[Healing]] effects by [[nurse]]s
+* [[Drowning]]
+* [[Intelligence drain]]
+* [[Disease]] effect by [[Juiblex]]
+* [[Seduction]]
+* [[Hallucination]]
+* [[Amulet stealing]] by the [[Wizard of Yendor]]
+* [[Intrinsic-stealing]] by [[gremlin]]s
+* Random [[clerical spell]], [[magic spell]]or [[breath weapon]] damage
+* Special damage of the [[Riders]]
+|-
+!Examples — unaffected due to attack type
+!style="background:#ffdead;" colspan="2"|Examples — prevented due to combination of attack type and damage type.
+!Examples — unaffected due to damage type
+|-
+|valign="top"|
+*[[Floating eye]] passive paralysis attack
+*[[Disenchanter]] passive disenchanting attack
+*[[Guardian naga]] spitting poison
+*[[Ice vortex]] engulfing cold
+*[[Red dragon]] fire breath
+*[[Yellow light]] blinding explosion
+*[[Medusa]] petrifying gaze
+*[[Pyrolisk]] fire gaze
+*[[Lich]] magic spells
+|valign="top" style="background:#ffdead;" colspan="2"|
+* [[Fire]] damage from a [[fire ant]] bite
+* [[Cold]] damage from a [[lich]] touch
+* [[Shock]] damage from an [[electric eel]] bite
+* [[Sleep]] caused by a [[homunculus]] bite
+* [[Poison]] damage from a [[killer bee]] sting
+* [[Paralysis]] caused by a [[guardian naga]] bite
+* [[Drain life]] by a [[barrow wight]] weapon attack
+* [[Sticky attack|Sticking-to]] caused by a [[large mimic]] bite
+* [[Lycanthropy]] caused by [[werejackal]] bite when it is in animal form
+* [[Slowing attack|Slowing]] caused by the [[Shade]] touch
+* [[Teleport]] caused by the [[quantum mechanic]] claw
+* [[Sliming]] caused by the [[green slime]] touch
+* [[Disenchanting]] by the [[disenchanter]] claw<ref group="note" name="not_passive"/>
+* Constitution draining [[poison]] by the [[rabid rat]] bite
+* Dexterity draining [[poison]] by the [[quasit]] claw
+|valign="top"|
+*Physical damage due to [[tiger]] claws
+*[[Medusa]] petrifying gaze
+*[[Raven]] blinding claws
+*[[Petrification]] (stoning) due to a [[cockatrice]]'s touch or passive hissing attack
+*[[Seduction]] due to [[succubus]] bites
+*[[Intelligence drain]] due to [[mind flayer]] tentacle attacks
+*[[Purple worm]] engulfing digestion
+*[[Drowning]] due to [[giant eel]] wrapping
+*[[Hallucination]] caused by a [[black light]] exploding
+*[[Erosion]] due to [[brown pudding]] bites
+*[[Nymph]] stealing claw
+|-
+|colspan="4"|
+<references group="note">
+<ref group="note" name="melee_only">Magic cancellation protects against special melee weapon attacks, such as [[level drain]] from a [[barrow wight]]s weapon, but it does ''not'' protect against weapons that are thrown or launched, such as [[poisoned]] arrows and darts.</ref>
+<ref group="note" name="never_applies">The type of damage done by every single kick, headbutt, tentacle attack, and grabbing attacks in the game are listed in the rightmost column "Damage type unaffected". And hence they all bypass magic cancellation.</ref>
+<ref group="note" name="not_passive">[[Disenchantment]] by the by the [[disenchanter]] claw is prevented, but magic cancellation does not however protect against the [[passive]] disenchanting attack, since passive attacks are listed in the leftmost column "Attack type unaffected".</ref>
+</references>
+|}
+
+==How the protection works==
+Magic cancellation protects the player by reducing the ''probability'' of special melee attacks occurring.
+* The attack must first hit the player. This means passing the player's [[armor class]]. Unless you are [[resistant]] to the damage type of the attack, you will be dealt damage, which reduces your [[hitpoints]]. This occurs regardless of whether the damage type was ordinary physical, or a special type such as [[poison]].
+* After this, there is a probability of special effects occurring, for instance:
+** 100% [[Sticking attack|Sticking-to]], [[teleport]], [[sliming]], [[disenchanting]], [[disease]]
+** 1/3  [[Drain level]] and [[paralysis]]
+** 1/4  [[Lycanthropy]], [[slowing attack]], and [[drain energy]]
+** 1/5  [[Sleep]]
+** 1/8  [[Poison]]
+* Finally, the attack must pass the player's magic cancellation aura. The chance of this happening is listed in the table below:
+
+{|class="wikitable"
+!Magic cancellation number 
+!Chance of attack succeeding
+|-
+|Magic Cancellation 0
+|<math>\frac{150}{150}</math>, i.e. 100%
+|-
+|Magic Cancellation 1
+|<math>\frac{101}{150}</math>, i.e. ~67%
+|-
+|Magic Cancellation 2
+|<math>\frac{52}{150}</math>, i.e. ~35%
+|-
+|Magic Cancellation 3
+|<math>\frac{3}{150}</math>, i.e. 2%
+|}
+
+If all these tests are passed, the player will suffer the special effect. In the case of [[fire]], [[cold]], and [[shock]], there is further a test for determining if any inventory items are damaged or destroyed.
+
+Magic cancellation is very useful, as can be seen from the following example. If you are wearing one of the best armors in the game, the [[gray dragon scale mail]], you are are attacked by a [[vampire]], then 1/3 of the vampire's successful bites cause you to lose a level. If however you wear an easy-to-find [[orcish cloak]] (MC 2) over the armor, the probability of the vampire's bites causing [[level drain]] will drop to <math>\frac{1}{3}\times\frac{52}{150}\approx 11.6\%</math>. An even better magic cancellation, such as that of an [[oilskin cloak]] (MC 3), would reduce the probability to <math>\frac{1}{3}\times\frac{3}{150}\approx 0.7 \%</math>.
+
+==Magic cancellation numbers of armors==
+All [[cloak]]s, some pieces of [[body armor]], and the [[cornuthaum]] provide non-zero magic cancellation. All other items in the game provide zero magic cancellation. The following list contains all the pieces of armor with non-zero magic cancellation:
+
+{|class="wikitable"
+!Armor name 
+!Armor type 
+!Magic cancellation number
+|-
+|[[alchemy smock]]
+|[[cloak]]
+|style="text-align:center" rowspan="8" |1
+|-
+|[[chain mail]]
+|[[body armor]]
+|-
+|[[mummy wrapping]]
+|[[cloak]]
+|-
+|[[orcish chain mail]]
+|[[body armor]]
+|-
+|[[orcish ring mail]]
+|[[body armor]]
+|-
+|[[leather cloak]]
+|[[cloak]]
+|-
+|[[splint mail]]
+|[[body armor]]
+|-
+|[[studded leather armor]]
+|[[body armor]]
+|-
+|[[cloak of displacement]]
+|[[cloak]]
+|style="text-align:center" rowspan="7" |2
+|-
+|[[cloak of invisibility]]
+|[[cloak]]
+|-
+|[[cornuthaum]]
+|[[helmet]]
+|-
+|[[crystal plate mail]]
+|[[body armor]]
+|-
+|[[dwarvish cloak]]
+|[[cloak]]
+|-
+|[[orcish cloak]]
+|[[cloak]]
+|-
+|[[plate mail]]
+|[[body armor]]
+|-
+|[[cloak of protection]]
+|[[cloak]]
+|style="text-align:center" rowspan="7" |3
+|-
+|[[cloak of magic resistance]]
+|[[cloak]]
+|-
+|[[dwarvish mithril-coat]]
+|[[body armor]]
+|-
+|[[elven cloak]]
+|[[cloak]]
+|-
+|[[elven mithril-coat]]
+|[[body armor]]
+|-
+|[[oilskin cloak]]
+|[[cloak]]
+|-
+|[[robe]]
+|[[cloak]]
+|}
+
+==Difference between magic cancellation, cancelling a monster, and magic resistance==
+Magic cancellation is a property of armor that reduces the probability of certain special monster melee attacks of succeeding. A monster can also be ''cancelled'' by zapping a [[wand of cancellation|wand]] or a [[spellbook of cancellation|spell]] of cancellation. This is somewhat different from magic cancellation. Cancelling a monster completely removes the monster's ability to perform its special melee attacks, while magic cancellation only reduces the probability of those attacks succeeding against the player. Also, the attacks affected by cancelling a monster are not exactly the same as those prevented through magic cancellation. See the article on [[cancellation]] to compare effects.
+
+Magic cancellation is not the same as [[magic resistance]]. Magic resistance is an [[extrinsic]] that protects against [[spell]], [[wand]], and [[trap]] effects and damage. It is important to remember that [[cloak of magic resistance|cloaks of magic resistance]] also provide the highest level of magic cancellation.
+
+Also note that the magical cancellation is different from intrinsic [[resistance]]s against [[fire]], [[cold]], and [[shock]] damage. If you suffer fire damage while [[fire resistance|fire resistant]], you won't be dealt hit point damage, but there is still a chance of items such as [[scroll]]s, [[spellbook]]s, and [[potion]]s being destroyed. Magic cancellation on the other hand won't prevent the damage, but it will reduce the probability of item-destroying effects occurring.
+
+==Common misconceptions==
+* Magic cancellation does ''not'' protect against paralyzing [[passive attacks]] nor [[gaze attack]]s, which include the attacks of [[floating eye]]s and [[Medusa]].
+* Magic cancellation ''partially'' protects against [[disenchanter]]s; it prevents the [[disenchantment]] though the claws, but not through the disenchanter's passive attack.
+* Magic cancellation does ''not'' protect against the touch nor against the [[cockatrice#Hissing attack|hissing attack]] of the [[cockatrice]]. It is however possible to [[cancellation|cancel]] the cockatrice itself, using a [[wand of cancellation]] or [[spell of cancellation]]. This will remove its ability to petrify by hissing only.
+* [[Monster]]s, including [[pet]]s, enjoy magic cancellation from armor just as the player does. This is especially important if you rely on a powerful pet, as monsters cannot gain [[intrinsic]] resistances from [[eat]]ing [[corpse]]s.
+
+==Strategy==
+Magic cancellation is a high priority trait, because it protects against many early game killers such as [[killer bee]]s and [[soldier ant]]s. Although [[orcish cloak|orcish]] and [[dwarvish cloak]]s have no effect on [[AC]], they both confer MC 2, which protects against roughly two thirds of special melee attacks. That makes them useful until [[mithril-coat]]s and the rarer MC 3 cloaks are found. Most players strive to have maximum magic cancellation (MC 3), but some favour the benefits conferred by a [[cloak of displacement]] (MC 2) while wearing [[dragon scale mail]] (MC 0).
+
+==References==
+<references />
+* [[Source:NetHack_3.4.3/src/mhitu.c|mhitu.c]]
+* [[Source:NetHack_3.4.3/include/monattk.h|monattk.h]]
+* [[Source:NetHack_3.4.3/src/monst.c|monst.c]]
+* [[Source:NetHack_3.4.3/src/mthrowu.c|mthrowu.c]]
+
+==External links==
+* [http://www.spod-central.org/~psmith/nh/armr-343.txt armr-343.txt]
+* [http://alt.org/nethack/topdeaths.html NAO top types of death]
+[[Category:Armor]]}
+&&%s&& %s Orcish town {101187 2016-01-18T01:15:55Z {663 Qazmlpok} Redirected page to [[Minetown#Orcish Town]] #REDIRECT [[Minetown#Orcish_Town]]}
+&&%s&& %s Anachrononaut quest {147353 2022-08-09T22:35:00Z {4001605 NetSysFire} link to [[trooper]], use appropriate capitalization like in other quest articles <div class="thumb tright">
+{|class="wikitable"
+!Home level
+|The Last Bastion
+|-
+!Locate level
+|City Ruins
+|-
+!Goal level
+|Ground Zero
+|-
+!Leader
+|Sarah the Last Oracle
+|-
+!Guardians
+|[[trooper]]s
+|-
+!Nemesis

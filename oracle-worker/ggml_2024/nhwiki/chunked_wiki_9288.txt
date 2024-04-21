@@ -1,0 +1,1000 @@
+{{clear}}
+=== Gelatinous ===
+''For the gelatinous cube monster, see [[gelatinous cube]].''
+
+'''Gelatinous''' is a new material in SpliceHack, notable for having a -4 damage penalty when used for weapons.
+
+==References==
+<references/>
+[[Category:Object materials]]
+[[Category:SpliceHack]]}
+&&%s&& %s The Blacksmith's Cookbook {146555 2022-07-03T22:52:06Z {4001279 Umbire the Phantom} Redirected page to [[Forge (dungeon feature)#The Blacksmith's Cookbook]] #REDIRECT [[Forge (dungeon feature)#The Blacksmith's Cookbook]]}
+&&%s&& %s Scroll of change material {146008 2022-05-19T15:38:45Z {4000978 Aximili} move strategy section up {{scroll|name=change material|cost=200|ink=8-15}}
+
+In [[SpliceHack]], the '''scroll of change material''' can warp the [[material]] of an item.
+
+== Effects ==
+
+When read, the scroll will affect a single item in your inventory. There is a {{frac|1|2}} chance of your [[wield]]ed item being targeted, if it exists. Otherwise a random piece of worn [[armor]] will be targeted.
+
+If no item was targeted you will abuse your strength and constitution if the scroll was [[cursed]]; you will [[exercise]] those stats if the scroll was not cursed.
+
+If an item was targeted, its material will be changed. If the scroll is cursed, the resulting material will be plastic if possible; additionally the item will be cursed and lose its [[erodeproof]]ing. If the scroll is [[blessed]], the item will be blessed.
+
+If you read the scroll while [[confused]], the effects are the same as when reading a cursed scroll.<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/read.c#L1937</ref>
+
+== Strategy ==
+{{main|Object materials (SpliceHack)}}
+
+Sometimes changing an object material is useful. In SpliceHack an armor's material can affect its [[AC]], and there are damage bonuses for using weapons made of [[iron]], [[copper]] and [[silver]]. Some materials such as [[mithril]] are also immune to [[erosion]].
+
+Reading cursed scrolls of change material (or scrolls of any beatitude while confused) should be avoided unless you intentionally want [[plastic]] armor or weapons. For armor normally made of [[cloth]] or [[leather]], plastic is not bad by comparison. However for armor normally made of [[iron]] or [[metal]], plastic offers relatively poor [[AC]]. Plastic weapons suffer a -2 damage penalty.<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/weapon.c#L531-L534</ref>
+
+Like most scrolls, scrolls of change material are single-use. If there are a high number of items to warp or the goal is to obtain a specific material, many scrolls may be required. In these cases, it may be desirable to use a [[transmuter (SpliceHack)|transmuter]] to change materials instead.
+
+== Messages ==
+
+{{message|Your skin crawls for a moment.|You read a scroll of change material and no item was targeted.}}
+{{message|You have a strange feeling for a moment, then it passes.|As above, but you were a [[beginner]].}}
+{{message|<item> glows with a strange yellow light!|You read a scroll of change material and an item was targeted.}}
+{{message|<item> glows with a sickly green light!|As above, but the scroll was cursed or you were confused.}}
+
+== References ==
+<References />
+
+[[Category:SpliceHack]]}
+&&%s&& %s Grue's Cavern {145979 2022-05-18T01:32:32Z {4001279 Umbire the Phantom}  {{level|Grue's Cavern|
+ |branch=Dungeons of Doom
+ |from=21|to=28
+ |bones=no
+ |teleport=no
+ |mapping=yes
+ |digfloor=yes
+ |digwalls=no
+ |variants=
+* {{sa|First version}}
+* {{sa|Second version}}
+}}
+
+The '''Grue's Cavern''' is a [[special level]] that appears in [[dNetHack]] and serves as a replacement for [[Medusa]] and [[Medusa's Island|her island]]. The entire level is [[non-teleport level|non-teleport]] and shrouded in darkness, and the player must defeat the [[Grue]] lurking within; the level is derived from the classic video game ''Zork'', which contained a Grue that would kill the player if they attempted to travel in darkness.
+
+==Common traits==
+Each version of the level contains 18 candles embedded in the walls, two chunks of fossil dark, nine to 11 traps, and various random items. The candles can be worth collecting as light sources can generally be used to drive the Grue away.
+
+Each level also includes two treasure piles. The first is the corpse of an unlucky Elvish adventurer killed by the Grue and his or her leftover equipment, including either a cloak of invisibility or a cloak of displacement. The second is a pile of loot such as might have been left behind by an unfortunate Zork adventurer: a lantern that has run out of power and a sack containing a [[Object_properties#Weapons|wrathful]] silver elven broadsword (doubtlessly of great antiquity), a magic torch, and a platinum bar (it seems that the adventurer unwisely chose to continue relying on their lantern!).
+
+The Grue will spawn asleep on the downstairs.
+
+==First version==
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+             ----      ---- ---- ---- -}}- -}}- ---- ---- ---- ----         
+      --------..--------..---}}---..---}}---}}---..---..---..---..---       
+      |.................................}}}}}}......................|       
+      |..............................{..}}}}}.......................|       
+    |-|....---..--------..---..--.......}---}.---}.---..---..---....|-|     
+   |-......| |..|      |..| |..||......}}| |}.| |.}| |..| |..| |......-|    
+  |-.......---..--------..---..--......}}---}.| |.}---..---..---.......-|   
+ |-...................}.............}}}}.}}}}.| |.......................-|  
+|-...................}.............}}}}.}}....| |........................-| 
+|...............---..---}}--...---}}---}}---..| |..---..---...............| 
+|.......<.......| |..| |.}|--..| |}}| |}}| |..| |..| |..| |.........>.....| 
+|...............---..---}.---..---}}---}}---..---..S#F..---...............| 
+|-.........................}}...}}}}}}}}}.....}}}..| |...................-| 
+ |-.......................}}}.}}}}}}}}}}.......}}..| |..................-|  
+  |-.......---..---}.---..---.}---}}.....---..---..| |..--------.......-|   
+   |-......| |..| |}}| |..| |.}| |}}.....| |..| |..| |..|      |......-|    
+    |-|....| |..---.}---..---.}---}......---..---..---..---  ---....|-|     
+      |....---...............}}}}}}..{....................|  |......|       
+      |...........----.......}}}}}}.......................|  |......|       
+      ---}}---..--|  |--}}---}}---}}---..---}}---}}---..---  ---}}---       
+        ---- ----      ---- -}}- -}}- ---- ---- ---- ----      ----         
+</replacecharsblock></div>
+
+==Second version==
+<div class="ttymap"><replacecharsblock rules="ttymap">
+                                                                            
+                                |--------|      |---|                       
+                             |---........--------...-----|                  
+                            |-....}}}}}}.................---------|         
+                           |-....}}}}}}}}.........................-|        
+     |-----|              |-......}}}}}}...........................-|       
+   |--.....--|           |-....-.............---------..............|       
+  |-.........--|        |-....-|-.........---|       |-.............|       
+  |............----------....-| |..-------|           |............-|       
+  |........................--|  |..|                  |-..........-|        
+  |........................|  |--..|     |-----|   |---....-----.-|         
+  |-.........--............----....|  |---.....-||--.....--|   |.|          
+   |-.......-||---.................-||-.........--.....--|     |.---|       
+    |----.--     |-.................--................-|      |-....-|      
+       |.-|      |-.................................--|       |......|      
+     |--.---------...----.........................--|         |...>..|      
+    |-...............-| |---..........--........--|           |......|      
+    |.................|    |-.....----||-.-...--|             |-....-|      
+    |........<........|     |-----|     |-|---|                |----|       
+    |-...............-|                                                     
+     |---------------|                                                      
+</replacecharsblock></div>
+{{variant-343}}
+[[Category:DNethack Special Levels]]}
+&&%s&& %s Madman quest {146225 2022-06-16T19:39:05Z {4000354 Chris} /* Post-quest */ The '''madman quest''' sees you fighting [[Doctor Archer]] for [[the Star of Hypernotus]], a amulet versus curses that protects against [[confusion]], [[stun]]ning, [[sanity]], and [[madness]] effects when carried.
+
+== Sickness attacks ==
+
+Many monsters (including nurses, some contaminated patients, and Doctor Archer) in the quest carry filth-crusted scalpels, which inflict deadly [[sickness]] on the PC. It is therefore inadvisable to attempt the quest without a unicorn horn or other means of curing illness. In a pinch, many monsters wear [[healer uniform]]s, which can be worn for sickness resistance.
+
+== Contaminated patients ==
+
+Once damaged, these monsters may transform into more dangerous forms. Dangerous forms include human dream leeches (which deal intelligence damage much like [[mind flayer]]s), coiling brawn (which deal high physical damage), fungal brains (which deal high magical damage), and byakhee (which are fast, deal high physical damage, and have a stunning attack). A patient may also transform into fulvous dead or skeletal humans, which are less dangerous.
+
+== Maps ==
+===False Home level===
+<div class="ttymap"><replacecharsblock rules="dnhttymap">
+@={{white|@}}
+
+                         -------------------                                
+                         |..|..|..|..|..|..|                                
+          ###            |F+|+F|F+|+F|F+|+F|                                
+          ###############S.................|                                
+          ### #   #      ||F+|+F|F+|+F|F+|.|                                
+   ###        #  ###     ||..|..|..|..|..|.|                                
+  #####       #  ###     |----------------.|                                
+  ##^##  ###  #  ###     |..|..|..|..|..|..|                                
+  #####  ###  #          |F+|+F|F+|+F|F+|..|                                
+   ###   ###  #   ###    |.................|                                
+    #     #   #  #####   |..|F+|+F|F+|+F|F+|                                
+    ###############@##   |..|..|..|..|..|..|                                
+      H      #   #####   |.----------------|                                
+     ###          ###    |.|..|..|..|..|..||                                
+    #####                |.|F+|+F|F+|+F|F+||                                
+    #####                |.................|                                
+     ###                 |F+|+F|F+|+F|F+|..|                                
+                         |..|..|..|..|..|.>|                                
+                         -------------------                                
+                                                                            
+</replacecharsblock></div>
+
+This is the first level of the quest, and contains the character that issues the psychic call for aid, Lady Constance, but is NOT the true quest home. If spoken to, Lady Constance will simply direct you farther into the quest.
+
+A variety of straitjacketed monsters can be found in the cells. These monsters are harmless, though some players may wish to kill them anyway to reduce message spam on the level.
+
+As this is not the true quest home level, the downstairs can be freely used.
+
+===Upper filler levels===
+<div class="ttymap"><replacecharsblock rules="dnhttymap">
+
+                         -------------------                                
+                         |.F.......--|.+...|                                
+                         |.+...---.F.|F-...|                                
+                         |--.--|.F.+.|.+...|                                
+                         |.+.F.|.+.--|F-...|                                
+                         |.F.+.|--.+.|.+...|                                
+                         |--.--|.+.F.|F-...|                                
+                         |.F.+.|.F.--|.+...|                                
+                         |.+.F.|--.F.|F-...|                                
+                         |--.--|.F.+.|.+...|                                
+                         |.+.F.|.+.--|F-...|                                
+                         |.F.+.|--.+.|.+...|                                
+                         |--.--|.+.F.|F-...|                                
+                         |.F.+.|.F.--|.+...|                                
+                         |.+.F.|--.F.|F-...|                                
+                         |--+--|.F.+.|.+...|                                
+                         |.....|.+.---F-...|                                
+                         |.....|--...+.....|                                
+                         -------------------                                
+                                                                            
+</replacecharsblock></div>
+
+This level does not exist in some games, as the Home level takes the place of the guaranteed upper filler level. Harmless straitjacketed monsters can once again be found in the two-square cells. The row of one-square cells on the right contains more dangerous monsters (coiling brawn, fungal brains, skeletons, and fulvous undead).
+
+===Home level===
+
+<div class="ttymap"><replacecharsblock rules="dnhttymap">
+@={{black|@}}
+1={{white|@}}
+(={{brown|(}}
+"={{brightgreen|"}}
+0={{brown|>}}
+
+                         -------------------                                
+                        ?S...|..|..|..|..|1|                                
+                         |.F+|F+|+F|F+|+F|.|                                
+                         |.F.............+.|                                
+                         |-|.>...........|-|                                
+                         |.F..----+----..+.|                                
+                         |.+..|.......|..F.|                                
+                         |-|..|.......|..|-|   -----                        
+                         |.+..|..FFF..|..F.|   |-#-|                        
+                         |.F..+..F@F..+..+.|   |"#0|                        
+                         |-|..|..FFF..|..|-|   |-#-|                        
+                         |.F..|.......|..+.|   -----                        
+                         |.+..|.......|..F.|                                
+                         |-|..----+----..|-|                                
+                         |.+...........<.F.|                                
+                         |.F.............+.|                                
+                         |-|+|+F|F+|+F|F+|-|                                
+                         |(..|..|..|..|....|                                
+                         -------------------                                
+                                                                            
+</replacecharsblock></div>
+
+This is the true Home level of the quest, where the quest leader (Cassilda the Iron Maiden) can be found and beyond which the PC cannot proceed without the quest leader's permission.
+
+Unusually, the [[quest artifact]] is also found on this level, in the secondary basement on the right. The level blocks teleportation and is undigable, but it is NOT unphaseable, so a source of [[phasing]] can be used to immediately claim the quest artifact (The quest artifact is normally accessed via a set of ladders beginning on the Goal level).
+
+The spot marked '?' behind the secret door in the top-left cell contains a small pile of [[booze]], [[potions of sleeping]], [[potions of enlightenment]], a [[potion of hallucination]] and a [[scroll of teleportation]].
+
+The spot marked '@' in the top-right cell has a [[doll of mollification]] and [[holy symbol of the black mother]], as well as a shackled dark daughter priestess (which requires 10 insight to see, and so often can't be perceived when first visiting the level).
+
+===Locate level===
+<div class="ttymap"><replacecharsblock rules="dnhttymap">
+9={{brown|<}}
+0={{brown|>}}
+(={{brown|(}}
+
+               ----------------------------------------                     
+               |,,,,,,,,,|....|(.(.(.(|....|,,,,,,,,,,|                     
+               |,,,,,,,,,|..>.|.......|....+,,,,,,,,,,|                     
+               |,,,,,,,,,|....----+----....|,,,,,,,,,,|                     
+               |,,,,,,,,,|---###########---|,,,,,,,,,,|                     
+               |,,,,,,,,,|..+#----+----#+..|,,,,,,,,,,|                     
+               |,,,,,,,,,F(.|#|e,,,,,e|#|.(F,,,-----,,|                     
+               |,,,,,,,,,|---#|,,,,,,,|#---|,,-------,|                     
+               |,,,,,,,,,|..|#|,,tPPT,|#|..|,,||###||,|                     
+               |,,,,,,,,,F(.+#+,TPPt,,+#+.(F,,||9#0||,|                     
+               |,,,,,,,,,|..|#|,,PPP,,|#|..|,,||###||,|                     
+               |,,,,,,,,,|---#|,,T,,,,|#---|,,-------,|                     
+               |,,,,,,,,,F(.|#|e,,,T,e|#|.(F,,,-----,,|                     
+               |,,,,,,,,,|..+#----+----#+..|,,,,,,,,,,|                     
+               |,,,,,,,,,|---###########---|,,,,,,,,,,|                     
+               |T,T,T,T,T|....----+----....|,,,,,,,,,,|                     
+               |eeeeeeeee+....|.......|.<..|,,,,,,,,,,|                     
+               |,,,,,,,,,|....|(.(.(.(|....|,,,,,,,,,,|                     
+               ----------------------------------------                     
+                                                                            
+</replacecharsblock></div>
+
+This level contains 2 hostile noblemen, 2 hostile noblewomen, 4 hostile healers, and 4 hostile nurses. These monsters are noteworthy for the useful potions, wands, and scrolls that they carry.
+
+The marked '(' are "writing desks," which may contain useful scrolls and books.
+
+===Lower filler level(s)===
+<div class="ttymap"><replacecharsblock rules="dnhttymap">
+9={{brown|<}}
+0={{brown|>}}
+\={{white|\}}
+
+               ------------------   -------------------                     
+               |AAAAAAAAA|>.....|---|.....>|AAAAAAAAAA|                     
+               |AAAAAAAAAF.\....S###S....\.FAAAAAAAAAA|                     
+               |AAAAAAAA----------#----------AAAAAAAAA|                     
+               |AAAAAAAA|...|<..|-S-|..>|...|AAAAAAAAA|                     
+               |AAAAAAAAF...|...+###+...|...FAAAAAAAAA|                     
+               |AAAAAAAA|...|...-----...|...|AA-----AA|                     
+               |AAAAAAAA---+--+--AAA--+--+---A-------A|                     
+               |AAAAAAAAA|-#-|#|AAAAA|#|-#-|AA||###||A|                     
+               |AAAAAAAAAF###S#|AAAAA|#S###FAA||9#0||A|                     
+               |AAAAAAAAA|-#-|#|AAAAA|#|-#-|AA||###||A|                     
+               |AAAAAAAA---+--+--AAA--+--+---A-------A|                     
+               |AAAAAAAA|...|...-----...|...|AA-----AA|                     
+               |AAAAAAAAF...|...+###+...|...FAAAAAAAAA|                     
+               |AAAAAAAA|...|>..|-S-|..>|...|AAAAAAAAA|                     
+               |AAAAAAAA----------#----------AAAAAAAAA|                     
+               |AAAAAAAAAF.\....S###S....\.FAAAAAAAAAA|                     
+               |AAAAAAAAA|>.....|---|.....>|AAAAAAAAAA|                     
+               ------------------   -------------------                     
+                                                                            
+</replacecharsblock></div>
+
+The downstair can be found in one of the marked spots (chosen at random).
+
+===Goal level===
+<div class="ttymap"><replacecharsblock rules="dnhttymap">
+@={{magenta|@}}
+(=[[chest|{{brown|(}}]]
+9={{brown|<}}
+H={{black|H}}
+
+               CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC                     
+               CAAAAAAAAAAAAAAAA-----AAAAAAAAAAAAAAAAAC                     
+               CAAAAAAAAAAA------...------AAAAAAAAAAAAC                     
+               CAAAAAAAAAAA|####+.(.+####|AAAAAAAAAAAAC                     
+               CAAAAAAAAAAA|#|---...---|#|AAAAAAAAAAAAC                     
+               CAAAAAAAAAAA|#|AA-----AA|#|AAAAAFFFFFAAC                     
+               CAAAAAAAAA|--S-|AAAAAAA|-S--|AAFF...FFAC                     
+               CAAAAAAAA-|....|-AAAAA-|....|-FF.....FFC                     
+               CAAAAAAAA|......|AAAAA|......|F.......FC                     
+               CAAAAAAAAF..<...|AAAAA|...<..S....@9..FC                     
+               CAAAAAAAA|......|AAAAA|......|F.......FC                     
+               CAAAAAAAA-|....|-AAAAA-|....|-FF.....FFC                     
+               CAAAAAAAAA|--S-|AAAAAAA|-S--|AAFF...FFAC                     
+               CAAAAAAAAAAA|#|AA-----AA|#|AAAAAFFFFFAAC                     
+               CAAAAAAAAAAA|#|---...---|#|AAAAAAAAAAAAC                     
+               CAAAAAAAAAAA|####+.(.+####|AAAAAAAAAAAAC                     
+               CAAAAAAAAAAH------...------AAAAAAAAAAAAC                     
+               CAAAAAAAAAAAAAAAA-----AAAAAAAAAAAAAAAAAC                     
+               CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC                     
+                                                                            
+</replacecharsblock></div>
+
+The upstairs are found in one of the two marked points (chosen at random), and a [[magic chest]] can be found at the other point. One of the two points marked with '(' has a special chest containing your starting kit. In addition, numerous normal chests containing normal chest loot can be found in the various attic rooms.
+
+A [[Lurking One]] can be found at the point marked 'H', presuming the character has sufficient [[insight]] to perceive the monster.
+
+Dr. Archer is generated wearing a [[cloak of magic resistance]].
+
+Finally, the up-ladder behind Dr. Archer gives access to the tower down to the [[quest artifact]].
+
+===="Starting" kits====
+
+== Post-quest ==
+
+Unlike most roles, Madmen find a second powerful monster and a second artifact in their quest.
+
+=== The Stranger ===
+
+[[The Stranger]] is a powerful [[insight]] monster first encountered in the same area as the quest artifact. It is unlikely (and indeed undesirable) that the PC will have enough insight to perceive the Stranger at this point. Instead, the player will need to manage the effects of the Stranger as it follows the PC throughout the next phase of the game, before finally gaining enough insight to directly confront the Stranger and end its harassment.
+
+=== Bokrug ===
+
+{{stub}}
+[[Category:dNethack]]
+[[Category:dNethack Quests]]}
+&&%s&& %s Adamantine {145993 2022-05-19T06:37:05Z {4000978 Aximili} Redirected page to [[Object materials (SpliceHack)#Adamantine]] #REDIRECT [[Object materials (SpliceHack)#Adamantine]]
+
+[[Category:Object materials]]}
+&&%s&& %s Orichalcum {145994 2022-05-19T06:37:44Z {4000978 Aximili} Redirected page to [[Object materials (SpliceHack)#Orichalcum]] #REDIRECT [[Object materials (SpliceHack)#Orichalcum]]
+
+[[Category:Object materials]]}
+&&%s&& %s Shadeweave {145995 2022-05-19T06:38:26Z {4000978 Aximili} Redirected page to [[Object materials (SpliceHack)#Shadeweave]] #REDIRECT [[Object materials (SpliceHack)#Shadeweave]]
+
+[[Category:Object materials]]}
+&&%s&& %s Gelatinous {146004 2022-05-19T07:41:55Z {4000978 Aximili} Redirected page to [[Object materials (SpliceHack)#Gelatinous]] #REDIRECT [[Object materials (SpliceHack)#Gelatinous]]
+
+[[Category:Object materials]]}
+&&%s&& %s Vulpenferno {149925 2023-02-10T17:05:07Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{ monster
+ |name=vulpenferno
+ |symbol={{red|d}}
+ |difficulty=12
+ |level=10
+ |experience=?
+ |speed=16
+ |AC=0
+ |MR=5
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Kick 2d3 physical, Touch 1d3 [[lightning]], Kick 2d3 physical, Passive (level + 1)d4 [[fire]]
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A vulpenferno|animal=1|nohands=1|carnivore=1|hostile=1|infravisible=1}}
+ |size=Small
+ |nutr=250
+ |weight=300
+}}
+The '''vulpenferno''' is a monster in [[SpliceHack]]. Vulpenfernoes have a lightning touch attack, a [[passive]] fire attack, and two physical kick attacks.
+
+== Strategy ==
+Vulpenfernoes are dangerous. Players without [[fire resistance]] or [[shock resistance]] can lose a lot of health fighting vulpenfernoes in melee, and risk having their [[wand]]s and [[ring]]s destroyed. Vulpenfernoes' high speed allows them to enter melee range quickly, especially in open spaces like a [[Big Room]].
+
+Like other monsters with passive attacks, vulpenfernoes should be fought with [[ranged weapon]]s or [[spell]]s, even if they enter [[melee]] range. Wands can hurt them too, but are vulnerable to the vulpenferno's lightning touch. It is best to keep wands and rings in a [[bag]] if a vulpenferno is nearby.
+
+Players using a melee weapon or bare hands against a vulpenferno should keep an [[escape item]] or source of [[healing]] handy, as the vulpenferno's passive attack will probably do a lot of damage. 
+
+[[Pet]]s should also be kept away from vulpenfernoes. Pets who attack multiple times per turn but lack [[fire resistance]] are particularly vulnerable.
+
+== History ==
+Early versions of SpliceHack had a monster called a '''nova fox''', which was renamed to '''vulpenferno''' in version 0.7.1.<ref>https://github.com/NullCGT/SpliceHack/commit/1273323d4839f3a7740795c3afa2e8a717742635</ref>
+
+== Encyclopedia entry ==
+{{encyclopedia|Vulpenfernoes are elemental foxes that hail from a world of fire and lightning. Their shrill cry signals death for those that cannot keep up with their speed. There are even rumors that they can turn magical attacks back against mages.}}
+
+== References ==
+<References />
+
+[[Category:SpliceHack Monsters]]}
+&&%s&& %s Nova fox {146014 2022-05-20T02:39:19Z {4000978 Aximili} Redirected page to [[Vulpenferno]] #REDIRECT [[Vulpenferno]]
+
+[[Category:Defunct features (SpliceHack)]]}
+&&%s&& %s Afraid {146020 2022-05-20T03:57:56Z {4000978 Aximili} /* Prevention */ formatting and links {{for|monsters being scared of the player|Scare}}
+
+In [[SpliceHack]], the player can sometimes become too '''afraid''' to control their actions.
+
+==Effects==
+The effects of being afraid are similar to the effects of being [[stunned]] or [[confused]]. The player cannot control the direction of their actions. The player also loses control of teleports and polymorphs.
+
+==Causes==
+* the roar of a [[dragon]], including [[Dragon (SpliceHack)|SpliceHack-specific dragons]]<ref>https://github.com/NullCGT/SpliceHack/blob/b29334720e353ee991bba3e657d22bacbe78a523/src/mon.c#L3854-L3874</ref>
+* the [[gaze]] of a [[bodak]] or [[eye of fear and flame]]
+* the scream of a [[banshee]]
+
+==Prevention==
+Fear-inducing gaze attacks can be avoided by being [[blind]]. Becoming blind after becoming afraid does not remove the fear, however.
+
+A dragon's roar will not scare a player who is ''both'' blind and [[deaf]]. There is also a random chance of resisting becoming afraid of a roar.
+
+==Cures==
+* waiting for the effect to time out
+* drinking {{of|potion|booze}} ("liquid courage")
+
+==Strategy==
+Players should save all the booze they can in case they become afraid. In particular, blessed booze can dispel the afraid effect without also causing confusion. There are many guaranteed potions of booze at the [[Bar (SpliceHack)|Bar]]: pick them up and keep them safe.
+
+A more drastic measure is to annihilate ([[genocide]]) all dragons: the other sources of fear are rarer and easier to deal with. However there are severe downsides to doing so: dragons drop valuable [[corpse]]s and [[dragon scales]] when they die. Additionally dragons can be good [[pet]]s. Annihilating dragons is probably only worth it to players pursuing the teetotal (no alcohol) [[unofficial conduct]].
+
+==References==
+<References />
+
+[[Category:SpliceHack]]}
+&&%s&& %s Category:Sokoban (UnNetHack) {146155 2022-06-11T18:13:28Z {4001279 Umbire the Phantom} Created page with "This category contains articles for the new maps that may be used as [[Sokoban (UnNetHack)|Sokoban]] levels in [[UnNetHack]]. {{variant-343}} [[Category:Sokoban]] Category:U..." This category contains articles for the new maps that may be used as [[Sokoban (UnNetHack)|Sokoban]] levels in [[UnNetHack]].
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]}
+&&%s&& %s Category:Sokoban (EvilHack) {146161 2022-06-11T18:58:13Z {4001279 Umbire the Phantom} Created page with "This category contains articles for the new maps that may be used as [[Sokoban (EvilHack)|Sokoban]] levels in [[EvilHack]]. <!--{{variant-36x}}--> [[Category:Sokoban]] Categ..." This category contains articles for the new maps that may be used as [[Sokoban (EvilHack)|Sokoban]] levels in [[EvilHack]].
+<!--{{variant-36x}}-->
+[[Category:Sokoban]]
+[[Category:EvilHack]]}
+&&%s&& %s Sokoban Level 1o {146187 2022-06-11T22:32:41Z {4001483 Cathartes} add missing final pushes <!-- Please do not copy this article to Wikia. -->
+'''Sokoban Level 1o''' is a new possible map for [[Sokoban]] that appears in [[GruntHack]] and [[SlashTHEM]]. It has 11 [[boulder]]s and 10 [[pit]]s, leaving one spare boulder.
+
+<div class="ttymap">{{lightgray|<replacecharsblock>
+<=[[Stairs|{{white|<}}]]
+>=[[Stairs|{{white|>}}]]
+^=[[pit|{{gray|^}}]]
+ =&nbsp;
+|={{white|&#124;}}
+-={{white|-}}
+0={{white|0}}
+?={{white|?}}
+? ={{gray|? }}
+0 ={{gray|0 }}
+^ ={{gray|^ }}
+< ={{gray|< }}
+> ={{gray|> }}
+newline=<br>
+
+      ------------
+     --..|.....|<| 0 boulder
+     |..0|00.0.|^| ^ pit
+     |-......0-|^| > starting position/downstairs
+     |...|.0..||^| < upstairs
+     |>0.|-.---|^| ? scroll of earth
+     --.--|0|  |^|
+    ---.--|.|  |^|
+    |....--.----^|
+    |.0..0..^^^..|
+    |.0..------??|
+    --...|    ----
+     -----        
+</replacecharsblock>}}</div>
+
+== Strategy ==
+The following solution solves the level without making any boulders 'stick', but may not be the fastest solution possible; improvements on solving and move organization are welcome.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+First set of moves:
+
+   ------------ 
+  --..|.....|<| '''G''' dddd d
+  |..A|BC.D.|^| '''J''' rrr*
+  |-......E-|^| '''I''' rrrr rrr*
+  |...|.F..||^| 
+  |@G.|-.---|^| 
+  --.--|H|  |^|
+ ---.--|.|  |^|
+ |....--.----^|
+ |.I..J..^^^..|
+ |.K..------..|
+ --...|    ----
+  -----        
+
+Second set of moves:
+
+   ------------ 
+  --..|.....|<| '''G''' urrr rrrr*
+  |..A|BC.D.|^| '''K''' urrr rrrr rrru*
+  |-......E-|^| 
+  |...|.F..||^| 
+  |>..|-.---|^| 
+  --.--|H|  |^|
+ ---.--|.|  |^|
+ |....--.----^|
+ |.......@.^..|
+ |.KG.------..|
+ --...|    ----
+  -----        
+
+Along the way, be sure pick up the two [[scroll of earth|scrolls of earth]] as soon as possible to ensure that no monsters get a hold of them; remember to verify their [[beatitude]] before reading them in Sokoban, and only do so if you have misplaced or broken some other boulders.
+
+Third set of moves:
+
+   ------------ 
+  --..|.....|<| '''A''' dd
+  |..A|BC.D.|^| '''C''' d
+  |-......E-|^| '''D''' ll
+  |...|.F..||^| '''E''' u
+  |>..|-.---|^| '''C''' llll
+  --.--|H|  |^|
+ ---.--|.|  |^|
+ |....--.----.|
+ |...........@|
+ |....------..|
+ --...|    ----
+  -----        
+
+Fourth set of moves:
+
+   ------------ 
+  --..|.....|<| '''F''' r
+  |...|BD.E.|^| '''C''' dddd ddrr rrrr rrru u*
+  |-C@.....-|^| '''H''' ddd_ ___r rrrr uuu*
+  |..A|.F..||^| 
+  |>..|-.---|^| 
+  --.--|H|  |^|
+ ---.--|.|  |^|
+ |....--.----.|
+ |............|
+ |....------..|
+ --...|    ----
+  -----        
+
+Fifth set of moves:
+
+   ------------ 
+  --..|.....|<| '''D''' dddd dddr rrrr uuuu*
+  |...|BD.E.|^| '''F''' lddd ddrr rrru uuuu*
+  |-.......-|^| '''E''' lldd dddd drrr rruu uuuu*
+  |..A|..F.||^| 
+  |>..|-.---|^| 
+  --.--|.|  |.|
+ ---.--|.|  |@|
+ |....--.----.|
+ |............|
+ |....------..|
+ --...|    ----
+  -----        
+
+Last set of moves:
+
+   ------------ 
+  --..|.....|<| '''B''' dlll dddd ddrr rrrr rrru uuuu uu*
+  |...|B....|^| 
+  |-.......-|.| 
+  |..A|....||@| 
+  |>..|-.---|.| 
+  --.--|.|  |.|
+ ---.--|.|  |.|
+ |....--.----.|
+ |............|
+ |....------..|
+ --...|    ----
+  -----        
+
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:GruntHack]]
+[[Category:SlashTHEM]]
+[[Category:Sokoban (GruntHack)]]
+[[Category:Sokoban (SlashTHEM)]]}
+&&%s&& %s Category:Sokoban (GruntHack) {146214 2022-06-14T01:33:53Z {4001279 Umbire the Phantom} Created page with "This category contains articles for the new maps that may be used as [[Sokoban]] levels in [[GruntHack]]. {{variant-343}} [[Category:Sokoban]] [[Category:GruntHack]]" This category contains articles for the new maps that may be used as [[Sokoban]] levels in [[GruntHack]].
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:GruntHack]]}
+&&%s&& %s You feel less concerned about becoming petrified. {146288 2022-06-25T19:00:44Z {4001483 Cathartes} everybody new to 3.7.0 is asking about this #REDIRECT [[Stoning#Stoning resistance]]}
+&&%s&& %s Forge {150209 2023-03-10T18:14:11Z {4001279 Umbire the Phantom} forgot this pothole for so long A '''forge''' is a furnace for melting or refining metal, and can also refer to a workshop or factory containing such a furnace, including a blacksmith's workshop. In terms of ''[[NetHack]]'', it may refer to one of the following:
+
+* A [[furnace]], a [[dungeon feature]] in [[SpliceHack]].
+* A [[Forge (dungeon feature)|forge]], a dungeon feature in [[EvilHack]] with functions inspired by furnaces.
+* [[The Forge]], a dungeon branch found in [[NetHack: The Next Generation]] and [[SlashTHEM]].
+
+{{disambig}}}
+&&%s&& %s Duri {146503 2022-07-03T11:29:43Z {4001279 Umbire the Phantom} /* Description */ '''Duri''' is a notable [[monster]] that appears in [[NetHack: The Next Generation]] and [[SlashTHEM]]. In both variants, he is a '''blacksmith''', {{white|@}}, that tends to [[The Forge]] and will forge selected artifact weapons for you at suitably hefty prices depending on the chosen artifact. 
+
+==Generation==
+Duri is the sole blacksmith generated in both variants. He is only found within The Forge, and is always generated [[peaceful]]; on level creation, he is placed in the open gap between the walls that separate both portions of his workshop.
+
+==Description==
+<simpletabs>
+NetHack: The Next Generation|{{monster
+ |name=blacksmith
+ |symbol={{white|@}}
+ |tile=[[Image:Duri.png]]
+ |difficulty=
+ |level=12
+ |experience=
+ |speed=18
+ |AC=0
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 4d4, weapon 4d4
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances=none
+ |resistances conveyed=none
+ |attributes={{attributes|A blacksmith|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1}}
+ |reference=
+}}
+In NetHack: The Next Generation, Duri is on par with a [[shopkeeper]] in terms of strength, though he lacks any [[magic resistance (monster)|MR score]].
+<!--monst.c directly from the TNG patch for comparison:
+          { "blacksmith", S_HUMAN, 12, 18, 0, 0, 0, G_NOGEN, 
+ 	  { { AT_WEAP, AD_PHYS, 4, 4 }, { AT_WEAP, AD_PHYS, 4, 4 },
+ 	    NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK },
+ 	  WT_HUMAN, 400, 0, MS_SMITH, MZ_HUMAN, 0, 0,
+ 	  M1_HUMANOID | M1_OMNIVORE, 
+  	  M2_NOPOLY | M2_HUMAN | M2_PEACEFUL | M2_STRONG, 0, C(HI_DOMESTIC) },-->
+|-|
+SlashTHEM|{{monster
+ |name=blacksmith
+ |symbol={{white|@}}
+ |tile=[[Image:Duri.png]]
+ |difficulty=
+ |level=25
+ |experience=
+ |speed=18
+ |AC=0
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 4d10, weapon 4d10
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances=none
+ |resistances conveyed=none
+ |attributes={{attributes|A blacksmith|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1}}
+ |reference=[https://github.com/Soviet5lo/SlashTHEM/blob/v0.9.7/src/monst.c#L4857 SlashTHEM 0.9.7 src/monst.c, line 4857]
+}}
+In SlashTHEM, Duri has been buffed to roughly the power level of a [[Black marketeer (SLASH'EM)|black marketeer]].<ref>[https://github.com/Soviet5lo/SlashTHEM/blob/v0.9.7/src/monst.c#L4858 SlashTHEM 0.9.7 src/monst.c, line 4858]</ref> He generates with the powerful artifact [[heavy hammer]] [[Warforger]], and wears [[silver dragon scale mail]], a [[cloak of displacement]], [[speed boots]], and a [[helm of brilliance]]; he also has an [[amulet of life saving]] and four potions of {{! of|full healing}}.
+</simpletabs>
+
+==References==
+<references/>
+{{stub}}
+{{variant-343}}
+[[Category:NetHack: The Next Generation monsters]]
+[[Category:SlashTHEM monsters]]}
+&&%s&& %s Blacksmith {146409 2022-06-29T14:15:50Z {4001279 Umbire the Phantom} Umbire the Phantom moved page [[Blacksmith]] to [[Duri]]: Actual name of the monster #REDIRECT [[Duri]]}
+&&%s&& %s Category:Wantsbell {146442 2022-06-30T13:27:02Z {4001279 Umbire the Phantom}  This category lists monsters marked as wanting the [[Bell of Opening]] in their monster templates.
+
+[[Category:Covetous]]}
+&&%s&& %s Forge (dungeon feature) {149435 2022-12-17T02:42:38Z {4001279 Umbire the Phantom} /* Forging */ reword, reorg A '''forge''' is a dungeon feature that appears in [[EvilHack]], and is represented primarily by a red left curly bracket, {{red|{}}. They can be used in manners similar to [[fountain]]s, e.g. [[dip]]ping items into it, but are filled with [[lava]] rather than [[water]] - you can also use them to forge specific [[weapon]]s and equipment, a feature adapted from the [[furnace]]s of [[SpliceHack]].<ref>[https://github.com/k21971/EvilHack/commit/996d2c80c5a78a6aa0b9cd34b2503e041f97fbff EvilHack commit 996d2c8: Player can create various types of armor and weapons using a forge.]</ref>
+
+==Forging==
+Forging requires a pair of component objects and a [[hammer]] of any type. There is no required skill or attribute score to craft a given item: you must simply stand on the same square as a forge and use the #forge command while wielding your chosen hammer. Then, place your two sets of objects on the forge in the desired order to forge them together into a new item.
+
+===The Blacksmith's Cookbook===
+'''The Blacksmith's Cookbook''' is the name of a [[novel]] that details a list of recipes for crafting various weapons and armor at a forge.<ref>[https://github.com/k21971/EvilHack/commit/0b6f457f8dc6b08ae67dd55021f8d50f75b2f1f2 The Blacksmith's Cookbook]</ref><ref>[https://github.com/k21971/EvilHack/blob/master/dat/tribute#L8740 EvilHack dat/tribute, line 8740]</ref> The book itself is not necessary for the forging process, and serves as a form of in-game reference. The first chapter is a general overview of how forging works, with subsequent chapters detailing possible combinations of all mundane objects and their end products&mdash;the list of recipes below is presented in the same order given by the in-game book.
+
+The Blacksmith's Cookbook is always found in a chest within [[Goblin Town]], placed behind the first section of [[iron bars]] across from a guaranteed forge; there is a 65% chance of a war hammer appearing in the chest as well. The book can also generate randomly or appear in bones files, making it possible to obtain multiple copies.
+
+===List of recipes===
+Below is a comprehensive list of forging recipes that are available in the game - for regular recipes, both objects must usually be [[metallic]] or [[gemstone]], with the exception of the recipe for [[barding]]. There also exist [[artifact weapon]]s and [[artifact]] armor that can only be made by forging two specific artifacts - this is the only way in the game to obtain these artifacts, as they will not generate randomly and cannot be wished for; creating an artifact at a forge will cause it to cool down and no longer be usable.
+
+While placing the components for the desired object will always produce the crafted item, order of placement is important as well. The crafted item will usually take on the material of the secondary object used: For example, a mithril scimitar used as a base with a steel spear will produce a steel trident, while using the same pair of objects with the steel spear as the base and the mithril scimitar as secondary produces a mithril trident; combinations that would result in a material that is not possible for the crafted item (e.g., [[copper]] for a dwarvish weapon) use the first item's material instead. In addition, the crafted item will also inherit the second object's [[beatitude]] as well as the higher between the two components' enchantments.
+
+[[Object properties]] have an additional effect on forging: when forging items using an object with a property, the forged object will inherit that property; if both objects have properties, the result will inherit the secondary object's properties. After forging using such items, the forge has a {{frac|6}} chance of disappearing.
+
+====Weapons====
+{|class="prettytable sortable"
+! First item
+! Second item 
+! Result
+|-
+| 2 [[dart]]s || [[dagger]] || 3-4 [[shuriken]]
+|-
+| 2 [[arrow]]s || dagger || [[spear]]
+|-
+| 2 [[elven arrow]]s || [[elven dagger]] || [[elven spear]]
+|-
+| 2 [[orcish arrow]]s || [[orcish dagger]] || [[orcish spear]]
+|-
+| 2 arrows || spear || [[dwarvish spear]]
+|-
+| 2 [[crossbow bolt]]s || spear || [[javelin]]
+|-
+| [[scimitar]] || spear || [[trident]]
+|-
+| 2 arrows || [[knife]] || dagger
+|-
+| 2 elven arrows || knife || elven dagger
+|-
+| 2 orcish arrows || knife || orcish dagger
+|-
+| dagger || [[stiletto]] || [[athame]]
+|-
+| knife || stiletto || [[scalpel]]
+|-
+| 2 arrows || 2 darts || knife
+|-
+| 2 crossbow bolts || knife || stiletto
+|-
+| dagger || spear || [[axe]]
+|-
+| axe || [[dwarvish short sword]] || [[dwarvish bearded axe]]
+|-
+| axe || [[broadsword]] || [[battle-axe]]
+|-
+| 2 crossbow bolts || dagger || short sword
+|-
+| 2 crossbow bolts || elven dagger || [[elven short sword]]
+|-
+| 2 crossbow bolts || orcish dagger || [[orcish short sword]]
+|-
+| short sword || dwarvish spear || dwarvish short sword
+|-
+| short sword || knife || scimitar
+|-
+| orcish short sword || knife || [[orcish scimitar]]
+|-
+| scimitar || [[long sword]] || [[saber]]
+|-
+| scimitar || short sword || broadsword
+|-
+| scimitar || elven short sword || [[elven broadsword]]
+|-
+| short sword || short sword || long sword
+|-
+| elven short sword || elven short sword || [[elven long sword]]
+|-
+| orcish short sword || orcish short sword || [[orcish long sword]]
+|-
+| broadsword || long sword || [[two-handed sword]]
+|-
+| long sword || long sword || [[katana]]
+|-
+| katana || two-handed sword || [[tsurugi]]
+|-
+| broadsword || dagger || [[runesword]]
+|-
+| [[pick-axe]] || dwarvish short sword || [[dwarvish mattock]]
+|-
+| dagger || [[war hammer]] || [[mace]]
+|-
+| mace || mace || heavy mace
+|-
+| 2 [[rubies]] || mace || [[rod]]
+|-
+| dagger || mace || [[morning star]]
+|-
+| orcish dagger || mace || [[orcish morning star]]
+|-
+| [[flail]] || mace || war hammer
+|-
+| war hammer || war hammer || heavy war hammer
+|-
+| flail || spear || [[aklys]]
+|-
+| mace || morning star || flail
+|-
+| broadsword || spear || [[partisan]]
+|-
+| stiletto || spear || [[ranseur]]
+|-
+| knife || spear || [[spetum]]
+|-
+| short sword || spear || [[glaive]]
+|-
+| glaive || javelin || [[lance]]
+|-
+| axe || ranseur || [[halberd]]
+|-
+| battle-axe || spear || [[bardiche]]
+|-
+| axe || spear || [[voulge]]
+|-
+| saber || spear || [[fauchard]]
+|-
+| grappling hook || spear || [[guisarme]]
+|-
+| guisarme || spear || [[bill-guisarme]]
+|-
+| heavy war hammer || spear || [[lucern hammer]]
+|-
+| war hammer || spear || [[bec de corbin]]
+|}
+
+===Armor===
+{| class="wikitable"
+! First item || Second item || Result
+|-
+| colspan="3"| '''Helms'''
+|-
+| [[dented pot]] || orcish dagger || [[orcish helm]]
+|-
+| dwarvish short sword || [[helmet]] || [[dwarvish helm]]
+|-
+| knife || war hammer || dented pot
+|-
+| dagger || dented pot || helmet
+|-
+| colspan="3"| '''Body Armor'''
+|-
+| [[chain mail]] || [[splint mail]] || [[plate mail]]
+|-
+| 3 [[dilithium crystal]]s || [[plate mail]] || [[crystal plate mail]]
+|-
+| chain mail || [[scale mail]] || splint mail
+|-
+| plate mail || plate mail || [[large splint mail]]
+|-
+| [[ring mail]] || scale mail || [[banded mail]]
+|-
+| ring mail || ring mail || chain mail
+|-
+| chain mail || [[dwarvish roundshield]] || [[dwarvish chain mail]]
+|-
+| chain mail || elven shield || [[elven chain mail]]
+|-
+| ring mail || orcish shield || [[orcish chain mail]]
+|-
+| ring mail || helmet || scale mail
+|-
+| large shield || helmet || ring mail
+|-
+| orcish shield || orcish helm || [[orcish ring mail]]
+|-
+| colspan="3"| '''Shields'''
+|-
+| dagger || helmet || [[small shield]]
+|-
+| elven dagger || small shield || [[elven shield]]
+|-
+| orcish shield || orcish shield || [[Uruk-hai shield]]
+|-
+| [[orcish boots]] || orcish helm || orcish shield
+|-
+| helmet || helmet || [[large shield]]
+|-
+| dwarvish helm || large shield || dwarvish roundshield
+|-
+| colspan="3"| '''Boots and gauntlets'''
+|-
+| mace || helmet || [[gauntlets]]
+|-
+| dwarvish short sword || gauntlets || [[dwarvish boots]]
+|-
+| orcish short sword || gauntlets || orcish boots
+|-
+| colspan="3"| '''Barding'''
+|-
+| plate mail || [[saddle]] || [[barding]]
+|-
+| barding || morning star || [[spiked barding]]
+|-
+| barding || [[shield of reflection]] || [[barding of reflection]]
+|}
+
+===Artifacts===
+Below are a list of the artifacts that can be obtained only through forging, and the two artifact components that each one requires. 
+
+{|class="prettytable sortable"
+! First item
+! Second item 
+! Result
+|-
+| [[Fire Brand]] || [[Frost Brand]] || [[Sword of Annihilation]]
+|-
+| [[Orcrist]] || [[Sting]] || [[Glamdring]]
+|-
+| [[Magicbane]] || [[Secespita]] || [[The Staff of the Archmagi]]
+|-
+| [[Grimtooth]] || [[Stormbringer]] || [[Shadowblade]]
+|-
+| [[Dragonbane]] || [[Grayswandir]] || [[Gauntlets of Purity]]
+|-
+| [[Trollsbane]] || [[Ogresmasher]] || [[Ashmar]]
+|}
+
+==Strategy==
+:''To be written.''
+
+==References==
+<references/>
+<!--{{variant-36X}}-->
+[[Category:EvilHack]]
+[[Category:EvilHack dungeon features]]}
+&&%s&& %s Pet abuse {146561 2022-07-04T16:19:41Z {4001279 Umbire the Phantom} Redirected page to [[Tameness#Abuse]] #REDIRECT [[Tameness#Abuse]]}
+&&%s&& %s Teraphim tannoth {146610 2022-07-08T23:55:31Z {4001279 Umbire the Phantom} Redirected page to [[Teraphim tannah]] #REDIRECT [[Teraphim tannah]]}
+&&%s&& %s Elder minotaur {150231 2023-03-12T05:48:41Z {4000251 Netzhack} /* Encyclopedia Entry */ Soft line breaks. {{monster
+ |name=elder minotaur
+ |symbol={{black|H}}
+ |difficulty=29
+ |level=26
+ |experience=1075
+ |speed=14
+ |AC=-8
+ |MR=25
+ |align=-4
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Claw 6d6, Claw 6d6, Hug 6d4, Head butt 8d4 knock-back damage
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A elder minotaur|animal=1|humanoid=1|carnivore=1|thick_hide=1|hostile=1|strong=1|nasty=1|wander=1|stalk=1|lord=1|infravisible=1|infravision=1|berserk=1|hell=1}}
+ |size=Huge
+ |nutr=900
+ |weight=2200
+ |reference=[https://github.com/k21971/EvilHack/blob/0.7.1/src/monst.c#L2035 EvilHack 0.7.1 monst.c, line 2035]
+}}
+
+An elder minotaur, {{black|H}}, is an even deadlier [[minotaur]] that appears in [[EvilHack]].
+
+==Encyclopedia Entry==
+{{encyclopedia|
+The Minotaur was a monster, half bull, half human, the offspring of Minos' wife Pasiphae and a wonderfully beautiful bull. ...  When the Minotaur was born Minos did not kill him. He had Daedalus, a great architect and inventor, construct a place of confinement for him from which escape was impossible. Daedalus built the Labyrinth, famous throughout the world. Once inside, one would go endlessly along its twisting paths without ever finding the exit.|[ Mythology, by Edith Hamilton ]
+}}
+
+{{stub|This page was automatically generated by a modified version of nhtohtml version 2.05w}}
+<!--{{variant-36x}]-->
+[[Category:EvilHack monsters]]}
+&&%s&& %s Orc town {146647 2022-07-11T06:07:07Z {630 Paxed} redirect #REDIRECT [[Minetown#Orcish_Town]]}
+&&%s&& %s Chaos Quest (dNethack) {146862 2022-07-21T13:15:40Z {4001279 Umbire the Phantom}  The '''Chaos Quest''' is one of the [[alignment quest]]s available in [[dNetHack]]. Unlike the [[Chaotic Quest]] of [[SLASH'EM]] and dNetHack's other alignment quests, there are three possible variants, each of which are referred to informally by number.
+
+==Chaos Temple Quest==
+{{main|Chaos Temple Quest}}
+The Temple of Chaos (informally "chaos1") is the first variant of the Chaos Quest, and doubles as a tribute to the ''Final Fantasy'' franchise, particularly the first game in the main series.
+
+==Mithardir Quest==
+{{Main|Mithardir Quest}}
+Mithardir (informally "chaos2") is the second variant of the Chaos Quest, themed after the Forgotten Realms setting of ''[[Dungeons & Dragons]]''.
+
+==Mordor Ruins Quest==
+{{Main|Mordor Ruins Quest}}
+The Ruins of Mordor (informally "chaos3") acts as the third variant of the Chaos Quest, deriving from a setting within [[J. R. R. Tolkien]]'s ''The Lord of the Rings''.
+{{stub}}
+{{variant-343}}
+[[Category:DNethack Chaos Quest]]}
+&&%s&& %s Chaos quest (dNethack) {146694 2022-07-17T05:04:27Z {4001279 Umbire the Phantom} Umbire the Phantom moved page [[Chaos quest (dNethack)]] to [[Chaos Quest (dNethack)]]: capitalization 6_9 #REDIRECT [[Chaos Quest (dNethack)]]}
+&&%s&& %s Chaos Temple Quest {148212 2022-09-22T16:15:07Z {4000354 Chris} /* Ancient Temple */  staircase explanation The '''Chaos Temple Quest''' (informally "chaos1") is one of three possible variants for the [[Chaos Quest (dNethack)|Chaos Quest]] in [[dNethack]].
+
+{{todo|Continue fleshing out article starting from Ancient Temple stairs/ladders, expand References tab maybe?}}
+
+==Areas==
+===Branch entrance===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+1=[[#Ruined Temple|{{magenta|^}}]]
+
+.  |.|...                         ...|.|  .
+.  |.|.-...-...             ...-...-.|.|  .
+.  |.|...............................|.|  .
+.--|.|-------------------------------|.|--.
+.||.....................................||.
+.||.-|------------|-|1|-|------------|-.||.
+.|---|            |-...-|            |---|.
+..........................................
+
+
+
+
+                   >---<
+                   ..-..
+                   .....
+</replacecharsblock></div>
+The two fixed "rooms" shown above are embedded in a [[Gnomish Mines]]-style cavern, which may additionally feature a network of maze-like passages. The up and down stairs are located close together at the bottom center of the map, while the [[magic portal]] to the branch proper is placed in the marked location at the top center of the map.
+
+Fourteen [[acid blob]]s are generated on level creation - random monster generation is biased toward chaotic monsters. There are twelve each of the following traps laid around the level: [[anti-magic field]]s, [[magic trap]]s, [[teleportation trap]]s, and [[level teleporter]]s. Fourteen random items are also scattered around the level; both these items and the traps may be generated embedded in the walls of the level.
+
+===Ruined Temple===
+<div class="ttymap"><replacecharsblock rules="dnhttymap">
+1=[[#Branch entrance|{{magenta|^}}]]
+2=[[#Ancient Temple|{{magenta|^}}]]
+3=[[Altar|{{red|_}}]]
+G=[[Sir Garland|{{white|@}}]]
+W=[[The Water Crystal|{{blue|(}}]]
+E=[[The Earth Crystal|{{brown|(}}]]
+A=[[The Air Crystal|{{brightgreen|(}}]]
+F=[[The Fire Crystal|{{red|(}}]]
+`=<u>[[Statue|{{white|`}}]]</u>
+(=[[chest|{{brown|(}}]]
+
+               |---|            |-----|            |---|                    
+ ,,T,,,,,,,,,,P|(|.|------------| ... |------------|.|(|,,,,P,,,T,,,,T,,,,P 
+ ,,,P,,T,,T,,,P|.+..............---.---..............+.|,T,,T,,,,,,,,,,TT,, 
+ ,T,,T,,,,,,T,P--|.|-----------|.......|-----------|.|--,,,,,,,,T,,,,,,,,,, 
+ ,,TT,,,T,,,,,,,T|.|...........----.----...........|.|,T,T,,,,T,,,,,T,,,,T, 
+ ,,,,,T,,,T,,,T,,|.|...............................|.|,,,,,,,,,,,T,P,,T,T,, 

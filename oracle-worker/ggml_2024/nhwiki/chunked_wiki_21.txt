@@ -1,0 +1,1000 @@
+* Change the WIZARD_NAME in include/[[config.h]] to your own username, then [[compile]] NetHack again. This may be rather cumbersome if you did not intend to recompile it beforehand.
+
+* Run gdb on NetHack using <tt>gdb `which nethack`</tt>. Some text will scroll by, but you can ignore it for now. Type <tt>run</tt> and press enter, NetHack should start. Create your character, or restore your save file, just as you would to play normally, then press control-c. NetHack should freeze up if you are using X11, or might disappear completely with the text console version. The terminal you started gdb in will have a prompt. It will replace NetHack in console mode, or it will be in the terminal for X11 NetHack. At the gdb prompt type <tt>set main::flags.debug = 1</tt> and press enter, then type <tt>cont</tt> and press enter. Congratulations, you are now in wizard mode!
+
+===macOS===
+
+As a Unix system, macOS has proper user accounts, and so you need to create a user named wizard (short name form, not full name). When logged in as that user, you can enter wizard mode by pasting
+ cd /Applications/NetHack.app/; ./Contents/MacOS/nethack -D
+into Terminal.app, which lives in the utilities folder. If you didn't install NetHack into the global applications folder, you will have to adjust the "/Applications/NetHack.app/" part accordingly.
+
+== Commands ==
+Wizard mode has several commands that are not present in the normal game:
+{| class="prettytable" align="left"
+!Key
+!Explanation
+|-
+|{{kbd|ctrl|E}}
+|detect secret doors and traps
+|-
+|{{kbd|ctrl|F}}
+|map the current level (even if magic mapping is blocked)
+|-
+|{{kbd|ctrl|G}}
+|create monster by name or class; specify * for a normal random monster
+|-
+|{{kbd|ctrl|I}}
+|show identities of items in pack
+|-
+|{{kbd|ctrl|O}}
+|same as [[Overview|#overview]] in [[NetHack 3.6.1]], or #wizwhere before
+|-
+|{{kbd|ctrl|T}}
+|do intra-level teleport
+|-
+|{{kbd|ctrl|V}}
+|do trans-level teleport
+|-
+|{{kbd|ctrl|W}}
+|make a wish
+|-
+|{{kbd|ctrl|X}}
+|show attributes including intrinsic attributes
+|}
+
+{{clear}}
+
+{| class="prettytable"
+!Extended command
+!Explanation
+|-
+|#levelchange
+|change experience level
+|-
+|#lightsources
+|show mobile light sources
+|-
+|#panic
+|[[panic]] test
+|-
+|#polyself
+|polymorph self
+|-
+|#seenv
+|show seen vectors
+|-
+|#stats
+|show memory statistics
+|-
+|[[Terrain|#terrain]]
+|show current level (more options than in normal play)
+|-
+|#timeout
+|look at timeout queue
+|-
+|#vanquished
+|disclose counts of dead monsters sorted in various ways
+|-
+|#vision
+|show vision array
+|-
+|#wizbury
+|[[Pit#Burying_objects|buries]] adjacent objects
+|-
+|#wizdetect
+|reveal hidden things around you (same as {{kbd|ctrl|E}})
+|-
+|#wizgenesis
+|create a monster (same as {{kbd|ctrl|G}})
+|-
+|#wizidentify
+|show identities of items in pack (same as {{kbd|ctrl|I}})
+|-
+|#wizintrinsic
+|give yourself any [[intrinsic]] for 30 turns
+|-
+|#wizlevelport
+|teleport to another level (same as {{kbd|ctrl|V}})
+|-
+|#wizmakemap
+|recreate the current dungeon level
+|-
+|#wizmap
+|map the current level (same as {{kbd|ctrl|F}})
+|-
+|#wizrumorcheck
+|validate first and last [[rumor]] for true and false set
+|-
+|#wizsmell
+|[[smell]] a monster
+|-
+|#wizwhere
+|show dungeon placement of all special levels
+|-
+|#wizwish
+|make a wish (same as {{kbd|ctrl|W}})
+|-
+|#wmode
+|show wall modes
+|}
+
+You can view the list of wizard mode commands at any time from the {{kbd|?}} menu, provided that you are in wizard mode. In any case the [[extended command]] #? shows you a list of all available extended commands.
+
+You can also use some additional [[environment variable]]s to help you debug: [[WIZKIT]], SHOPTYPE, SPLEVTYPE, and NH_HEAPLOG
+
+=== Wishing ===
+Wishing has much fewer limits in wizard-mode: you can wish for all [[trap]]s (except for holes/trap doors on levels with undiggable floor), certain [[dungeon feature]]s ([[fountain]]s, [[throne]]s, [[sink]]s, [[pool]]s, [[lava]], [[grave]]s, [[tree]]s and [[iron bars]]), [[artifact]]s, [[unique items]], exact number of charges or plusses on items that have those, exact number of stackable items and [[altar]]s with exact alignment (for example, "chaotic altar").
+
+=== Bones ===
+Whenever you enter a new dungeon level, if a [[bones]] file exists for that level, the game will ask you if you want to load that file. Otherwise, it will generate the level normally.
+
+== Options ==
+
+The following additional [[options]] are available in wizard mode. All of them are boolean options.
+
+{| class="prettytable"
+!Option
+!Explanation
+|-
+|menu_tab_sep
+|Formats menu entries using TAB to separate columns.
+|-
+|monpolycontrol
+|Prompts for the new form whenever any monster changes shape.
+|-
+|sanity_check
+|Runs more debug checks on monsters, objects, and map before each turn.
+|-
+|travel_debug
+|Shows the pathfinding progression for the [[travel]] command.
+|-
+|wizweight
+|Shows the [[weight]] of all objects.
+|}
+
+== Tips ==
+Suppose that you want to try an experiment by fighting a [[flesh golem]] with a [[wand of lightning]]. Enter wizard mode, then use {{kbd|ctrl|W}} to ask for a "wand of lightning" or an "uncursed wand of lightning (0:99)". Use {{kbd|ctrl|I}} to verify the identity of the wand. Then use {{kbd|ctrl|G}} and request a "flesh golem". You can also use {{kbd|ctrl|T}} to [[teleportation|teleport]] away from the flesh golem (even on a [[non-teleport level]]), since {{kbd|ctrl|G}} will cause it to spawn next to you.
+
+Want to instead send a tame flesh golem against [[Vlad]]? Use {{kbd|ctrl|V}} and type "?" to get a menu of significant dungeon levels. Choose "tower1", the top of [[Vlad's Tower]]. Use {{kbd|ctrl|F}} to map the level, {{kbd|ctrl|W}} to wish for a light source, and {{kbd|ctrl|T}} to teleport to Vlad's throne room. Finally, use {{kbd|ctrl|G}} and request a "tame flesh golem" to spawn your pet.
+
+=== Powering your character ===
+{{todo|Under what circumstances do to-hit, damage etc. bonuses still overflow? I was able to reproduce it in [[NetHack 3.6.1]] with two rings of increase accuracy, but not with one ring and a +127 weapon.}}
+
+There are some shortcuts to improve your character, so that you can skip straight to whatever you're testing:
+
+* #levelchange to set your level to whatever is appropriate. This is capped at 30 and doesn't give you the kind of stats that an actual level 30 character would have (extra HP/MP from potions, maxed out stats from exercise, etc)
+* Wish for "15 blessed [[potion of gain ability]]" to boost your [[attribute]]s.
+* Wish for "10 blessed [[potion of full healing]]" to boost your maximum [[HP]] or "10 blessed [[potion of gain energy]]" to boost max [[Pw]].
+* Wish for [[armor]] to reduce your [[AC]]. You could wish for a typical [[ascension kit]], or if you just want (near) invincibility, over-enchanted items like a blessed fireproof +50 [[cloak of magic resistance]] and a blessed +50 [[silver dragon scale mail]].
+* Wish for [[artifact]]s.
+* Wish for absurdly overenchanted weapons. A +20 [[Grayswandir]] will kill virtually every monster in one hit, and a stack of +50 silver daggers can be used as ridiculously powerful projectiles. Weapons with extremely high enchantments, like +127, will often miss due to [[integer overflow]] in the [[to-hit]] calculations (specifically, if the total bonus exceeds 127, it will wrap around into the negatives).
+* [[Intrinsic]]s are hard to gain. The best bet is either the appropriate [[ring]] or blessed [[tin]]s of [[dragon]] meat. If you need many intrinsics, you can also wish for an uncursed [[amulet of magical breathing]] which will help you eat more corpses. The extended command #wizintrinsic can also be used to gain any intrinsic temporarily, such as [[monster detection]]. Wizard mode characters already have free access to controlled [[teleportation]] without the intrinsics.
+* Create a tame [[Rider]]
+
+If you're doing more than a quick delve in wizard mode, you may want to use the [[Options#wizkit|wizkit]], which lets you give your character a list of items at the start of the game without having to wish for each one.
+
+=== Prayer ===
+Even wizard mode wishes will increase your [[prayer timeout]]. The wizard mode #[[pray]] command lets you "force the gods to be pleased", so this might not be a problem. If you want to make your god happy, you can {{kbd|ctrl|W}} wish for an [[altar]] of your alignment ("lawful altar", "neutral altar" or "chaotic altar"), then wish for "50 [[Umber hulk]] (or whatever other monster you please) corpses" and #[[offer]] away!
+
+=== Dealing with chameleons or doppelgangers ===
+If you are playing with #monpolycontrol but annoyed that some offscreen monster is repeatedly polymorphing, then wishing for "2 uncursed [[scroll of genocide|scrolls of genocide]]" and genociding "chameleon" or "doppelganger" will work.
+
+=== Levelcide ===
+If you read a blessed [[scroll of genocide]] and type <code>*</code> at the prompt, every monster on the level will be immediately removed, but no species are genocided. This is useful if you need privacy for complex experiments, or if you are severely overwhelmed by an immense horde. This method removes peaceful and tame monsters, so don't use it if you want to keep alive your pet, the [[Quest]] leader, priests, etc. However, the removal of any peaceful or tame monsters has no effect on luck or alignment that you would get from killing peaceful or tame monsters normally.
+
+=== Special rooms and levels ===
+If you want to test shopkeeper behavior or see a lot of soldiers, use the [[environment variable]] <code>SHOPTYPE</code> to guarantee that the appropriate room is generated on every level, so you won't have to hunt for it. (<code>SHOPTYPE=!</code> for a potion shop and <code>SHOPTYPE=s</code> for a barracks)
+
+Use <code>SPLEVTYPE</code> to guarantee that you get, for example, the Catacombs version of [[Mine's End]].
+
+=== Death ===
+You can die in wizard mode just as in any other game. However, if you do die, you have the option to '''Die? (yn)''' and deny death like [[explore mode]]. If you do choose to die, and are on an eligible level (including levels that are normally too shallow), you will get the option to '''Save bones? (yn)''' as well. If you die by, say, genociding yourself, you will get the prompt as well. The only times this will '''not''' work is if you [[levelport]] to a negative dungeon level or offer the Amulet of Yendor to Moloch; you can deny death, but you will find yourself on the surface and escape the dungeon.
+
+==Other==
+Wizard-mode games will prompt whether to <tt>Unlink bones?</tt> when entering a [[bones]] level. Answering 'y' will delete the bones file, 'n' will keep it.
+
+If you approach your [[quest leader]] without a high enough [[alignment record]] to get permission, but your experience level is high enough, you will be given the option to set your alignment record to 20.
+
+Special levels with less than 100% probability of appearing in the dungeon, such as the [[Big Room]], will always appear if there is space available.
+
+==SLASH'EM==
+In [[SLASH'EM]], in general, you can get into wizard mode by passing <tt>-uwizard -Z</tt> instead.
+
+On [[Debian]]/[[Ubuntu]], you need to start Slash'em as root using:
+ "sudo /usr/games/slashem -uwizard -Z".
+
+Wizard mode in SLASH'EM can be even more broken, thanks to the larger number of objects and artifacts. Some of those can grant powerful [[extrinsics]] that would be far harder to obtain in vanilla (but of course, this is wizard mode, it doesn't really matter). For example, if you have a [[ring of invisibility]], a [[shimmering dragon scale mail]], [[Nighthorn]] (or an [[amulet of reflection]], though that means you can't have the next one on at the same time), an [[amulet of magical breathing]], and a [[cloak of magic resistance]] (the armor and cloak can be both +127 for needlessly overpowered defense), you can become, for all intents and purposes, excruciatingly hard to get at to all but the deadliest monsters, even in SLASH'EM. For extra protection, it is very easy in wizard mode to be [[crowned]] ((coaligned altars + unicorn corpses) + (diamonds + coaligned unicorns)).
+
+== UnNetHack ==
+After enabling the showdmg option, the amount of damage inflicted will be printed during fight.
+
+==See also==
+*[[Wizard mode ascension]]
+*[[Explore mode]]
+*[[save scumming]]
+*[[cheating]]
+
+<references/>
+
+[[Category:Development]]
+{{nethack-361}}}
+&&%s&& %s V {134849 2020-07-06T14:37:28Z {4000903 Testbutt} more info on variants' keyboard commands, also add some punctuation {{ASCII}}
+* {{white|v}} represents a [[vortex]]:
+** {{monsymlink|fog cloud}}
+** {{monsymlink|dust vortex}}
+** {{monsymlink|ice vortex}}
+** {{monsymlink|energy vortex}}
+** {{monsymlink|steam vortex}}
+** {{monsymlink|fire vortex}}
+
+* {{white|V}} represents a [[vampire]]:
+** {{monsymlink|vampire}}
+** {{monsymlink|vampire lord}}
+** {{monsymlink|Vlad the Impaler}}
+
+*Press {{kbd|v}} to see the game [[version]].
+*Press {{kbd|shift|v}} to see the game history.
+*In [[AceHack]], [[DynaHack]], [[FIQhack]], [[Fourk]], [[NetHack4]], or [[UnNetHack]], press {{kbd|v}} to [[autoexplore]].
+*In [[AceHack]], [[DynaHack]], [[FIQhack]], [[Fourk]], or [[NetHack4]], press {{kbd|shift|v}} to [[invoke]], [[rub]], [[wand#breaking wands|break]] an item, or ignite a [[potion of oil]].
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|V}} glyph:
+
+*{{white|V}} vampire:
+** {{monsymlink|fire vampire}}
+** {{monsymlink|star vampire}}
+** {{monsym|vampire mage}}&nbsp;[[Vampire mage (SLASH'EM)|vampire mage]]
+** {{monsymlink|Count Dracula}}
+
+== Other ==
+* {{monsymlink|Anti-matter vortex}} - appears in [[NetHack brass]] and older versions of [[UnNetHack]]
+[[Category:ASCII]]}
+&&%s&& %s @ {132997 2020-03-21T23:17:49Z {4001313 Ardub23} Dummy edit: accidentally marked previous major edit as minor {{ASCII}}
+* [[You]] are an {{white|@}}, unless using the [[showrace]] option and playing a [[dwarf]], [[Gnome (starting race)|gnome]] or [[Orc (starting race)|orc]], or [[polymorph]]ed into something else.
+* {{white|@}} represents a human or elf:
+** {{monsymlink|aligned priest}}
+** {{monsymlink|archeologist}}
+** {{monsymlink|Arch Priest}}
+** {{monsymlink|barbarian}}
+** {{monsymlink|captain}}
+** {{monsymlink|caveman}}
+** {{monsymlink|Croesus}}
+** {{monsymlink|Dark One}}
+** {{monsymlink|doppelganger}}
+** {{monsymlink|elf-lord}}
+** {{monsymlink|elf}}
+** {{monsymlink|Elvenking}}
+** {{monsymlink|Grand Master}}
+** {{monsymlink|Green-elf}}
+** {{monsymlink|Grey-elf}}
+** {{monsymlink|guard}}
+** {{monsymlink|healer}}
+** {{monsymlink|high priest}}
+** {{monsymlink|Hippocrates}}
+** {{monsymlink|human}}
+** {{monsymlink|King Arthur}}
+** {{monsymlink|knight}}
+** {{monsymlink|lieutenant}}
+** {{monsymlink|Lord Carnarvon}}
+** {{monsymlink|Lord Sato}}
+** {{monsymlink|Master Assassin}}
+** {{monsymlink|Master Kaen}}
+** {{monsymlink|Master of Thieves}}
+** {{monsymlink|Medusa}}
+** {{monsymlink|monk}}
+** {{monsymlink|neanderthal}}
+** {{monsymlink|Neferet the Green}}
+** {{monsymlink|ninja}}
+** {{monsymlink|Norn}}
+** {{monsymlink|nurse}}
+** {{monsymlink|Orion}}
+** {{monsymlink|Pelias}}
+** {{monsymlink|priest}}
+** {{monsymlink|prisoner}}
+** {{monsymlink|ranger}}
+** {{monsymlink|rogue}}
+** {{monsymlink|samurai}}
+** {{monsymlink|sergeant}}
+** {{monsymlink|Shaman Karnov}}
+** {{monsymlink|shopkeeper}}
+** {{monsymlink|soldier}}
+** {{monsymlink|The Oracle}}
+** {{monsymlink|Thoth Amon}}
+** {{monsymlink|tourist}}
+** {{monsymlink|Twoflower}}
+** {{monsymlink|valkyrie}}
+** {{monsymlink|watch captain}}
+** {{monsymlink|watchman}}
+** {{monsym|werejackal_(human)}}&nbsp;[[werejackal]] in human form
+** {{monsym|wererat_(human)}}&nbsp;[[wererat]] in human form
+** {{monsym|werewolf_(human)}}&nbsp;[[werewolf]] in human form
+** {{monsymlink|wizard}}
+** {{monsymlink|Wizard of Yendor}}
+** {{monsymlink|Woodland-elf}}
+
+*Press {{kbd|@}} to toggle [[autopickup]] on or off.
+*Press {{kbd|@}} at a [[Menu_controls|menu to invert the selection]] globally.  Supported by [[tty]] and [[curses interface]]s, see [[menu controls]].
+
+== Variants ==
+=== UnNetHack ===
+[[UnNetHack]] introduces new creatures that use the {{white|@}} glyph:
+* {{monsymlink|mugger}}
+* {{monsymlink|black marketeer|variant=UnNetHack}}
+
+=== SLASH'EM ===
+[[SLASH'EM]] introduces new creatures that use the {{white|@}} glyph:
+
+*{{white|@}} human or elf:
+** {{monsymlink|werepanther}}
+** {{monsymlink|weretiger}}
+** {{monsymlink|weresnake}}
+** {{monsymlink|werespider}}
+** {{monsymlink|gibberling}}
+** {{monsymlink|grimlock}}
+** {{monsymlink|High-elf}}
+** {{monsym|drow}} [[Drow (monster)|drow]]
+** {{monsymlink|mugger}}
+** {{monsymlink|gypsy}}
+** {{monsymlink|black marketeer|variant=SLASH'EM}}
+** {{monsymlink|flame mage}}
+** {{monsymlink|ice mage}}
+** {{monsymlink|necromancer|variant=player monster}}
+** {{monsymlink|undead slayer}}
+** {{monsymlink|yeoman}}
+** {{monsymlink|High Flame Mage}}
+** {{monsymlink|High Ice Mage}}
+** {{monsymlink|Dark Lord}}
+** {{monsymlink|Van Helsing}}
+** {{monsymlink|Chief Yeoman Warder}}
+** {{monsymlink|Water Mage}}
+** {{monsymlink|Earth Mage}}
+** {{monsymlink|Colonel Blood}}
+** {{monsymlink|igniter}}
+** {{monsymlink|froster}}
+** {{monsymlink|embalmer}}
+** {{monsymlink|exterminator}}
+** {{monsymlink|Yeoman Warder}}
+
+=== xNetHack ===
+In [[xNetHack]], the "human or elf" [[monster class]] is split into two classes: {{white|@}} human, and {{white|Q}} elf.
+
+{{nethack-360}}
+[[Category:ASCII]]}
+&&%s&& %s Weight {146116 2022-06-07T07:41:35Z {4001279 Umbire the Phantom} /* Special rules */ In ''[[NetHack]]'', '''weight''' is a measure of an [[item]]'s heaviness. Carrying too much weight will increase your [[encumbrance]], rendering you burdened, stressed or possibly worse depending on the size of your load - fighting while significantly encumbered is not advised, as excessive weight lowers you [[speed]].
+
+''NetHack'' expresses item weight in '''aum''', short for "arbitrary unit of measurement". Normally, the only case where the game explicitly tells you an item's weight is when you purchase a [[glob]] of [[pudding]] from a [[shop]]. In [[wizard mode]], however, your inventory displays the weight of each carried item.
+
+==List of item weights==
+The following table below lists the weights of a few common items and a couple of monsters from lightest to heaviest, with all weights given in aum. Monsters have no specific weight while alive (they are instead classified by [[monster size|size]]), but their corpses do.
+
+{| class="prettytable striped"
+!Item
+!Weight (aum)
+|-
+|100 [[gold piece|gold pieces]]
+|1
+|-
+|[[gem]]
+|1
+|-
+|[[ring]]
+|3
+|-
+|[[scroll]]
+|5
+|-
+|[[wand]]
+|7
+|-
+|[[luckstone]]
+|10
+|-
+|[[tripe ration]]
+|10
+|-
+|[[lizard]] [[corpse]]
+|10
+|-
+|[[bugle]]
+|10
+|-
+|[[mirror]]
+|13
+|-
+|[[flail]]
+|15
+|-
+|empty [[bag]]
+|15
+|-
+|[[amulet]]
+|20
+|-
+|[[potion]]
+|20
+|-
+|[[food ration]]
+|20
+|-
+|[[lichen]] corpse
+|20
+|-
+|[[unicorn horn]]
+|20
+|-
+|[[mace]]
+|30
+|-
+|[[dragon scale mail]]
+|40
+|-
+|[[long sword]]
+|40
+|-
+|[[spellbook]]
+|50
+|-
+|[[fauchard]]
+|60
+|-
+|[[pick-axe]]
+|100
+|-
+|[[plate mail]]
+|450
+|-
+|[[iron ball]]
+|480
+|-
+|[[loadstone]]
+|500
+|-
+|[[human]] corpse
+|1450
+|-
+|[[dragon]] corpse
+|4500
+|-
+|[[boulder]]
+|6000
+|}
+
+===Special rules===
+If you are [[polymorph]]ed into a [[giant]], boulders in your inventory have no weight.
+
+A [[bag of holding]] modifies the weight of its contents - an uncursed bag of holding effectively reduces the weight of its contents by {{frac|2}}, and a blessed one does so by {{frac|3|4}}, while a cursed one doubles the weight. The weight of the bag itself is always 15 aum.
+
+==Strategy==
+In a few cases, weight testing can be a [[Identification#Weight identification|way to identify objects]], especially after [[price identification]].
+
+[[Category:Item attributes]]
+{{nethack-366}}}
+&&%s&& %s Template talk:Monster {140289 2021-05-25T20:09:39Z {4001463 Actual-nh} /* Covetous attribute, diet attributes */ Categories added; mistagging vs variants vs mixed The terms resistances and resistances conveyed should be changed to instrinsics and intrinsics conveyed. See [[leprechaun]] for a good example. They only convey teleportitis and it seems stupid to have to write teleportitis as a resistance (to what?).[[User:Addps4cat|Addps4cat]] 16:44, 6 September 2007 (UTC)
+
+The attributes of this template should be documented here. Where do you get the difficulty number and what's its scale? --[[User:ZeroOne|ZeroOne]] 21:25, 29 April 2006 (UTC)
+
+: It might be the [[ring of warning]] number, but I am not sure how that would work... --[[User:Kernigh|Kernigh]] 00:03, 30 April 2006 (UTC)
+
+::The numbers are given in the [http://www.juiblex.co.uk/nethack/VernonSpoilers/MonsterManual/ Monster Manual]. I still don't know if they have some meaning in the source or if they even exist there or not. --[[User:ZeroOne|ZeroOne]] 21:10, 30 May 2006 (UTC)
+
+:::i believe difficulty is generated by util/makedefs.c, see mstrength() in there --paxed
+
+: See [[monsters (by difficulty)]]. [[User:Addps4cat|Addps4cat]] 13:41, 27 September 2007 (UTC)
+
+Shouldn't this template also include the tty-symbol, like {{white|u}}, and the vanilla tile? --paxed
+
+Should it include HP? [[User:Lotte|Lotte]] 16:18, 16 December 2006 (UTC)
+: It's sort of complicated. See [[NetHackWiki:Ask an expert#Monster HP?]]. [[User:Addps4cat|Addps4cat]] 13:41, 27 September 2007 (UTC)
+
+I'd like to see the following info added to the template:
+
+#Hazards to eating the corpse
+#Probability of incurring said hazards
+#Probability of gaining resistances from eating the corpse
+
+Any thoughts?
+
+I also notice that when referring to a monster page, in addition to Difficulty and Attacks, I always want to know what Resistances it has. Any thoughts on adding/moving Resistances above the 'show details' link? Perhaps it could be moved back down once 'show details' is clicked? (I don't know that much about wiki coding
+: I don't think that should all go in the template. Maybe just list it in the wiki page. As it is the template is already too big. [[User:Addps4cat|Addps4cat]] 13:41, 27 September 2007 (UTC)
+::Why is there so much data we're trying to cram into the narrow monster template? Why not change the monster template layout to have both a wide main section and the current narrow section to address all the types of information to be conveyed? Or maybe have a wide template across the top of the monster page that gives quick details, then have the expandable narrow section on the right provide some of the more (subjectively!) "optional" data? That's my 2¢. &mdash; [[User:Qwip|Qwip]] 14:39, 27 September 2007 (UTC)
+:::I second this motion, it's just a big messy box that interferes with the rest of the page at this point. [[User:Addps4cat|Addps4cat]] 16:00, 29 November 2007 (UTC)
+
+== Incorrect capitalization ==
+
+I notice that this template lowercases the first letter of the monster's name. This is fine for ordinary monsters, but produces incorrect results for monsters with unique names (e.g. “Ashikaga Takauji” becomes “ashikaga Takauji”). One workaround would be to explicitly specify the ''name'' parameter for uniques; is there a better way? -- [[User:Killian|Killian]] 05:52, 12 May 2008 (UTC)
+
+== G_NOCORPSE and corpse nutrition ==
+
+If a monster never leaves a corpse, corpse nutrition is irrelevant; however in monst.c, there are some monsters that never leave a corpse whose nutrition is nonzero (e.g. skeleton [[Source:monst.c#2182]], whose corpse nutrition is 5).
+
+It would be logical to set corpse nutrition to zero on the wiki pages; this is the approach that was taken in http://www.spod-central.org/~psmith/nh/mon2-343.txt for example.
+
+On wikihack, it seems corpse nutrition is listed as it appears in monst.c. Sometimes a comment is added there parenthetically that a corpse is never generated. Sometimes nocorpse=1 is added to the attributes. Sometimes nothing is mentioned.
+
+Can we agree on a standard for this case? [[User:Rogerb-on-NAO|Rogerb-on-NAO]] 20:53, 21 May 2008 (UTC)
+
+:The standard should be the use of nocorpse=1 in all the monster wiki pages (if the monster leaves no corpse, of course). The lack of a standard for this seems to be from people not being aware of the new parameters for the monster template. Using the ''attributes'' parameter is technically optional and the template will be generated just fine without it, but that was done to keep backward compatibility for many pages that weren't expecting new parameters to be defined. I figured someone would have updated all the pages so that the newer parameters (i.e. ''attributes'' and ''reference'') are used (since I took a long break from NetHack and NetHackWiki), but that didn't happen. ;) —[[User:Shijun|Shijun]] 10:49, 8 August 2008 (UTC)
+::An old comment, but monsters should still list nutrition even if they never leave a corpse. It's still possible to "eat" them through engulfing attacks. If the monster would leave a corpse (ignoring NO_CORPSE), then you gain half the nutrition you would have gotten from eating the corpse regularly. Resistances, however, can never be conveyed through engulfing, so even if a lich "conveyes" cold resistance, it's impossible to get it. -- [[User:Qazmlpok|Qazmlpok]] 16:30, June 1, 2010 (UTC)
+
+== Gehennom-only tag and newbie misconceptions ==
+Quite often, people will encounter some Gehennom-only monster created e.g. by a polymorph trap and helpfully update the monsters wiki page with something like "created only in Gehennom and the Gnomish Mines", e. g. [[Bone_devil]].
+I propose someone knowledgable please ''change the "frequency" tag to "frequency (by <nowiki>[[normal mechanism]]s)</nowiki>"''. I'm volunteering to write up an according "normal mechanisms" page that points people the right places. -[[User:Tjr|Tjr]] 15:22, 29 August 2009 (UTC)
+:Done. --[[User:Paxed|paxed]] 16:38, 29 August 2009 (UTC)
+
+== Eating habits should go in template ==
+Please add a clear statement on monsters' eating habits to the template, even if it doesn't eat anything. This matters for the decision when you stop dragging your pet over that polytrap.
+Monsters can be
+* carnivorous (e. g. cats)
+* herbivorous (e. g. horses)
+* omnivorous (e. g. the player)
+* non-eating (e. g. vampires, demons, angelic beings)
+* metallivorous (xorn, rock mole; rust monster if rustprone)
+* special cases (e. g. ghoul, gelatinous cube)
+Also, some monsters can be tamed with appropriate food. -[[User:Tjr|Tjr]] 14:48, June 1, 2010 (UTC)
+:Currently, eating habits are listed as part of the attributes template. Do you want this information added as a separate "Diet" section of the monster template, or as an expansion to the attributes? -- [[User:Qazmlpok|Qazmlpok]] 16:30, June 1, 2010 (UTC)
+
+:: Basically, I want to know if a monster (e. g. [[salamander]]) really doesn't eat or if somebody forgot to put that info in. A separate diet section or an explicit carnivorous/non-eating/... tag both sound like good ideas how to go about it. [[User:Tjr|Tjr]] 17:09, June 1, 2010 (UTC)
+:::There are 3 main flags for eating; M1_CARNIVORE, M1_HERBIVORE, and M1_OMNIVORE. Omnivore is just the other two at the same time (M1_CARNIVORE|M1_HERBIVORE), and inediate is the absence of both. There is no separate flag for being inediate, and technically a rust monster or rock mole is considered inediate, as they have neither 'vore flag. Typically, if the attributes section is present, it's usually also comprehensive; I think most people that fill it in use autogenerating tools to do it, like myself. Finally, the [[inediate]] page does exist, and I believe it mentions every monster that will actually eat nothing -- [[User:Qazmlpok|Qazmlpok]] 17:37, June 1, 2010 (UTC)
+::::So if the information is present, why not assemble it in an easy-to-find way? [[User:Tjr|Tjr]] 12:07, June 2, 2010 (UTC)
+Why not? Well, because someone would have to modify the template and possibly many existing monster pages. I'm not going to touch the actual template myself. Eating habits are somewhat complicated, especially if you want to go through the Diet route. There's herbivorous, omnivorous, carnivorous, and inediate, and then potentially metal on top of all that. Umber hulks technically eat rock (Chewing through rock while polymorphed into an umber hulk both gives nutrition and breaks foodless), and mind flayers eat brains. There are plenty of other special cases, and tons in SLASH'EM.
+
+Marking monsters as inediate would require either a new "|inediate=1" flag to attributes, or to somehow determine the lack of "|carnivorous=1" etc and add it automatically. The latter wouldn't require going through every inediate monster and adding the new flag, but I know nothing about the programming logic used in the templates so I don't know how difficult it is to fill in text given the absence of flags. And, of course, adding a new Diet section to the monster template itself would require modifying every monster on the wiki. At the very least though, I consider the phrases "Eats fruits and vegetables" and "eats corpses" to be unclear, and if nothing else I think they should be replaced with "is herbivorous" and "is carnivorous" or similar. -- [[User:Qazmlpok|Qazmlpok]] 13:25, June 2, 2010 (UTC)
+: I changed the [[Template:attributes]], so it now shows "does not eat" if none of the 'vore flags are present. Is that sufficient? There should probably be a link to a page that lists exceptions, or something, at least... --[[User:Paxed|paxed]] 14:05, June 2, 2010 (UTC)
+
+== Corpse hazards should go in template ==
+
+[[User_talk:DemonSlayerThe3rd#Problems_with_.22corpse_safe_to_eat.22|Suggested by DemonSlayerThe3rd]], the edibililty of a corpse should be documented in the monster template. I'm thinking of a line like:
+
+"(edible|[[poisonous]]|[[acidic]]|[[food poisoning|old]]|[[petrifying]]|[[polymorph]]-inducing|[[were]]|[[stunning]]|[[hallucinogenic]]|[[sliming]]), (meaty|vegetarian|vegan), ([[human]]|[[elven]]|[[gnomish]]|[[dwarvish]]|[[orcish]]|[[cannibalism]]-safe) (corpse|when engulfed)"
+
+Aggravate monster, teleportitits, speed toggling, nurse healing, wraith level gain, and troll revival are borderline cases. They should probably be covered by "intrinsics conveyed". [[User:Tjr|Tjr]] 13:44, September 17, 2010 (UTC)
+:Vegan/Vegetarian/Meat is lookup - "All <classes> are vegan, all <classes> are vegetarian, all others are meat.
+:Elf/Orc/Human etc is already mentioned in Attributes. Also, I'm not sure it's cannibalism if you digest them.
+:As is Poisonous/Acidic
+:Food poisoning affects all corpses except lichens and acid blobs. I don't think it should be mentioned at all.
+:Edible is a misnomer if you intended it as an alternative to those choices. Only the riders are truly inedible. Poisonous corpses quickly become edible, acidic corpses quickly don't do enough damage to be inedible, stunning/hallucinogenic corpses are edible after obtaining a unicorn horn, sliming and stoning corpses are edible in extreme circumstances (polymorph, or sliming if you're desperate and have a source of fire). Polymorph-inducing can be helpful; it's not always bad, etc.
+:Polymorph-incuding, were, stunning, sliming, and stoning are done by lookup; these specific monsters cause these problems, others do not. Hallucination is caused by being a purple fungus or by having a stunning attack.
+:Just comments on implementation of this. I don't know how difficult it is to do the lookup stuff in the template itself. Either way it'll probably require modifying every single template on the site, although that wouldn't be too bad since some of them lack details anyways. -- [[User:Qazmlpok|Qazmlpok]] 15:50, September 17, 2010 (UTC)
+
+:     My exact words on the matter were, '''''"Also, on the template for the monsters, I believe there should be an "Etibility" section where you put whether it's vegan, safe to eat and what not."''''' I know there are several thing that come up with this, but I think this suggestion should just be out here. An example would be for instance, a hill orc. I belive the '''Edibility''' section would go below the '''Nutritional value''' (by positions). It would then list:
+:{| align="right" border="1" cellpadding="1" cellspacing="1" style="width: 0px; height: 176px;"
+|+hill orc
+| style="vertical-align: top; text-align: center;"|'''Weight'''
+| style="vertical-align: top;"|1000
+|-
+| style="vertical-align: top; text-align: center;"|'''Nutritional value'''
+| style="vertical-align: top;"|200
+|-
+| style="text-align: center;"|'''Edibility'''
+| style="vertical-align: top;"|
+:::::::::*meaty
+
+:::::::::*safe to eat otherwise
+|-
+| style="text-align: center;"|'''Size'''
+| style="vertical-align: top;"|
+Medium
+|}
+:It could be something like this. Maybe different wording but this is a general idea.
+
+:Now let's use a yellow mold as an example:
+
+:{| align="right" border="1" cellpadding="1" cellspacing="1" style="width: 256px; height: 106px;"
+|+yellow mold
+| style="text-align: center;"|'''Weight'''
+|50
+|-
+| style="text-align: center;"|'''Nutritional value'''
+|30
+|-
+| style="text-align: center;"|'''Edibility'''
+|
+::::::::*vegan
+::::::::*poisonous
+::::::::*hallucinogenic
+|-
+| style="text-align: center;"|'''Size'''
+|Small
+|}
+
+
+
+:As you can see, the effects of eating it are listed as well.
+
+:I hope this all makes sense. Remember, this is an ''idea'' of what it might look like.
+
+:
+
+:PS: how do you move Tables? XD✑DemonSlayerThe3rd♠ 19:37, September 17, 2010 (UTC)
+
+:: A flag for newbies it's safe to eat without precautions, and fleshing out an edibility section would be good.
+:: Elf/Orc/Human/etc, Poisonous/Acidic, and most of the more specific hazards would be moved there. Undead always leave old corpses, which should be mentioned briefly. Vegan implies vegetarian, poisonous implies "unsafe without proper resisstance" etc - I don't think that need be repeated. The benefit would be a one-stop place to check if the corpse is safe your for current character, targeted at intermediate players. [[User:Tjr|Tjr]] 17:54, September 17, 2010 (UTC)
+:: So something more like this? (edited tables)✑DemonSlayerThe3rd♠ 19:37, September 17, 2010 (UTC)
+:::That's great. I'd volunteer to do the work if I could. [[User:Tjr|Tjr]] 22:34, September 17, 2010 (UTC)
+:::I'd go around and edit as well. But I'd need a full list of all monsters and I'll be in wizard mode for a while. XD So if this goes into effect, I'll help s much as I can. Also, until I learn how to work with the type of editing format (the example on the page this talk page is about), I will only easily be able to add in the Edibility section to the other edit style (that shows the visual).✑DemonSlayerThe3rd♠ 04:06, September 18, 2010 (UTC)
+
+== Remove "Other attributes" header ==
+
+The "Other attributes" header is redundant; [[Template:Attributes|attributes]] already lists "A <monster>:". It also takes up half of the horizontal space. So I removed it. Jafet [[User:Jafet|@]].[[User talk:Jafet|&amp;]] 10:29, 15 November 2010 (UTC)
+
+== Monster sounds ==
+What do people think of adding a field for the sounds the monster makes when #chatted to (eg MS_SILENT, MS_ORC, etc)?  Perhaps it could link to a page that catalogs all the sounds monsters make under different circumstances, similar to [[Talking to vampires]]. -[[User:Ion frigate|Ion frigate]] 04:30, 27 November 2010 (UTC)
+
+== Incorrect weapon usage ==
+
+Just as in the case of the [[Minion of Huhetotl]], the infoboxes of many weapon-using monsters incorrectly state "physical damage". These vanilla monsters are affected:
+[[Hobbit]], 
+[[Mordor_orc]], 
+[[Uruk-hai]], 
+[[Orc-captain]], 
+[[Goblin]], 
+[[Hobgoblin]], 
+[[Orc]], 
+[[Hill_orc]], 
+[[Giant]], 
+[[Stone_giant]], 
+[[Hill_giant]], 
+[[Fire_giant]], 
+[[Frost_giant]], 
+[[Storm_giant]], 
+[[Titan]], 
+[[Troll]], 
+[[Ice_troll]], 
+[[Rock_troll]], 
+[[Olog-hai]], 
+[[Barrow_wight]], 
+[[Woodland-elf]], 
+[[Green-elf]], 
+[[Grey-elf]], 
+[[Elf-lord]], 
+[[Elvenking]], 
+[[Doppelganger]], 
+[[Guard]], 
+[[Aligned_priest]], 
+[[Soldier]], 
+[[Sergeant]], 
+[[Lieutenant]],
+[[Captain]],
+[[Croesus]], 
+[[Water_demon]], 
+[[Horned_devil]], 
+[[Erinys]], 
+[[Bone_devil]], 
+[[Yeenoghu]], 
+[[Orcus]], 
+[[Dispater]], 
+[[Sandestin]], 
+[[Lord_Carnarvon]], 
+[[Pelias]], 
+[[Shaman_Karnov]], 
+[[Hippocrates]], 
+[[King_Arthur]], 
+[[Arch_Priest]], 
+[[Orion]], 
+[[Master_of_Thieves]], 
+[[Lord_Sato]], 
+[[Twoflower]], 
+[[Norn]], 
+[[Neferet_the_Green]], 
+[[Thoth_Amon]], 
+[[Cyclops]], 
+[[Nalzok]], 
+[[Master_Assassin]], 
+[[Ashikaga_Takauji]], 
+[[Lord_Surtur]], 
+[[Dark_One]].
+
+Additionally, ranged weapons are handled inconsistently - sometimes, they are declared, sometimes not. Which monsters can use polearms?
+
+Perhaps it would be best to re-do all monster templates from scratch. --[[User:Tjr|Tjr]] 05:49, 17 December 2010 (UTC)
+:Polearm usage cannot be determined automatically (using nhtohtml) from [[monst.c]], AFAIK. --[[User:Paxed|paxed]] 06:55, 17 December 2010 (UTC)
+::Same with ranged weapons. Centaurs is one example that has ranged attacks declared, but monst.c simply declares it as a weapon attack (and thus so does nhtohtml). If someone knows how Nethack determines if a monster can wield polearms or use a bow, or throw daggers, it might be possible to modify the scripts to include that information.
+::Modifying all of those monster templates to state 'weapon' instead of 'physical' is certainly possible. I'm pretty sure that a lot of templates also have incorrect experience values and/or missing percentages on resistances conveyed, so it certainly wouldn't hurt to go through all of the templates and standardize them. -- [[User:Qazmlpok|Qazmlpok]] 13:03, 17 December 2010 (UTC)
+:::I fixed the infoboxes for the above monsters, as well as a few others that were missing (such as zombies). The infoboxes now state "Weapon" (or "Claw", etc.) instead of "Physical". --[[User:Erica|Erica]] 05:26, 2 October 2011 (UTC)
+
+== slashem monster frequency ==
+
+A lot of mostly-SLASHEM monsters still have monster frequency specied in the "old", non-numeric way:
+* "Not randomly generated": [[Abbot]],[[Amoeboid (SLASH'EM)]],[[Arch Priest]],[[Asmodeus]],[[Baalzebub]],[[Black Market]],[[Chromatic Dragon]],[[Cyclops]],[[Dispater]],[[Djinni]],[[Dwarf thief]],[[Embalmer (monster)]],[[Evil coins]],[[Evil food]],[[Exterminator]],[[Froster]],[[Geryon]],[[Ghoul queen]],[[Giant crab]],[[Gnome (SLASH'EM)]],[[Grand Master]],[[Guide]],[[Hippocrates]],[[Igniter]],[[Ixoth]],[[King Arthur]],[[King cobra]],[[Lord Carnarvon]],[[Lord Sato]],[[Lord Surtur]],[[Mail daemon]],[[Master Assassin]],[[Master of Thieves]],[[Migo]],[[Multiplying insect]],[[Nalzok]],[[Neferet the Green]],[[Ninja]],[[Norn]],[[Ogre mage]],[[Orcus]],[[Orion]],[[Pack rat]],[[Page]],[[Pelias]],[[Riders]],[[Roshi]],[[Scorpius]],[[Shadow]],[[Shadow ogre]],[[Shaman Karnov]],[[Student]],[[Thug]],[[Twoflower]],[[Warrior]],[[Yeoman Warder]]
+* "Very rare": [[Amoeboid (SLASH'EM)]],[[Asphynx]],[[Assassin bug]],[[Babau]],[[Bar-lgura]],[[Barking spider]],[[Basilisk]],[[Bat (SLASH'EM)]],[[Bearded devil]],[[Black troll]],[[Black wasp]],[[Blood imp]],[[Bloodworm]],[[Bovine]],[[Brownie]],[[Carrion crawler]],[[Caterwaul]],[[Chasme]],[[Chicken]],[[Cockatoo]],[[Crocodile]],[[Death dog]],[[Deep one]],[[Dingo puppy]],[[Drow (monster)]],[[Duergar]],[[Eye (SLASH'EM)]],[[Fire vampire]],[[Ghast]],[[Ghoul mage]],[[Giant badger]],[[Giant scorpion]],[[Gibberling]],[[Gila monster]],[[Gnoll]],[[Gnome (SLASH'EM)]],[[Goat]],[[Gray fungus]],[[Grimlock]],[[Gug]],[[Harpy]],[[Hellcat]],[[Hellrat]],[[Hydra]],[[Jelly (SLASH'EM)]],[[Juggernaut]],[[Kamadan]],[[Killer beetle]],[[Kobold (SLASH'EM)]],[[Komodo dragon]],[[Large dingo]],[[Mangler]],[[Migo]],[[Mist wolf]],[[Mold (SLASH'EM)]],[[Nabassu]],[[Nickelpede]],[[Nupperibo]],[[Orc (SLASH'EM)]],[[Parrot]],[[Phase spider]],[[Pit bull]],[[Pixie]],[[Quickling]],[[Rabid wolf]],[[Recluse spider]],[[Rhaumbusun]],[[Rutterkin]],[[Sabre-toothed cat]],[[Salamander]],[[Sandestin]],[[Scramper]],[[Shadow wolf]],[[Shoggoth]],[[Squealer]],[[Star vampire]],[[Troll mummy]],[[Tsetse fly]],[[Tunnel worm]],[[Two-headed troll]],[[Vampire mage (SLASH'EM)]],[[Vorpal jabberwock (SLASH'EM)]],[[Water hulk]],[[Wight]],[[Wolverine]],[[Wyvern]],[[Yellow jacket]],[[Zouthern animals]]
+*"Rare": [[Bovine]],[[Byakhee]],[[Chameleon]],[[Deep one]],[[Larva]],[[Mad scientist]],[[Migo]],[[Sheep]],[[Spined devil]],[[Zouthern animals]]
+*"Common": [[Gecko]],[[Iguana]]
+Could those be fixed, please? --[[User:Tjr|Tjr]] 15:20, 24 September 2011 (UTC)
+
+:I think I'm done with the vanilla monsters, and I'll get to the others as soon as possible. --[[User:Erica|Erica]] 05:27, 2 October 2011 (UTC)
+
+== Covetous attribute, diet attributes ==
+
+The "covetous" flag currently says that the monster wants "your quest artifact" among others. The only monster using this flag is the Wizard of Yendor, who in current versions can steal ''any'' quest artifact, so I'd suggest making the template say the monster wants "all quest artifacts". I don't know offhand if the Wizard will pick up other QAs from the floor or fight other monsters for them, but by far the most common case is him stealing them from you, so I think it's a safe change.
+
+Describing monsters as "eats corpses" or "eats fruits" is vague and misleading (carnivores won't eat lichen corpses, herbivores also eat carrots, and so forth). I think "is <carnivorous|herbivorous|omnivorous>" would be much more clear. "Does not eat" can probably be left alone, or changed to "is inediate" for consistency.
+--[[User:Darth l33t|Darth l33t]] ([[User talk:Darth l33t|talk]]) 17:54, 10 May 2021 (UTC)
+
+:Late seconding here, clarity would be a big plus. --[[User:Umbire the Phantom|Umbire the Phantom]] ([[User talk:Umbire the Phantom|talk]]) 13:49, 24 May 2021 (UTC)
+
+::I've clarified [[Template:Attributes]] regarding diet (although I left "can eat metal" and "does not eat" the same). There is more than one monster using covetous - I recently did a change so that wantsall and covetous, which had the exact same description, didn't both show up - so this will need further investigation. (I think I may see about automatically adding some categories such as "Covetous" to help keep track of what's what.) -[[User:Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) 17:23, 24 May 2021 (UTC)
+
+:::According to vanilla monst.c, the Wizard is the only one with M3_COVETOUS, and nothing has M3_WANTSALL (M3_COVETOUS was probably meant to be a mask to be applied against M3 to test whether a monster coveted anything, but in practice it's interchangeable with M3_WANTSALL). If anything else uses M3_COVETOUS, it's probably something from a variant. I think we might need a separate attribute/monster template for variants, because a variant could add new fields and/or change existing flags in a way that's incompatible with the vanilla template. Then we could update the vanilla covetous flag to match the Wizard's behavior. --[[User:Darth l33t|Darth l33t]] ([[User talk:Darth l33t|talk]]) 22:25, 24 May 2021 (UTC)
+
+::::(In vanilla (3.7.0, but I don't think it's changed), M3_WANTSALL and M3_COVETOUS are actually the exact same value - the "OR" of the various WANTS flags.) I'll see sometime soon (might be tonight, might be later in the week) about adding categories to check on variant usage; good point about those. -[[User:Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) 22:50, 24 May 2021 (UTC)
+
+:::::I have added [[:Category:Wantsarti]], [[:Category:Wantsall]], and [[:Category:Covetous]] - use of this template (or, to be more precise, [[Template:Attributes]]) with each of these flags automatically adds them to the appropriate category. I should probably rename the last to [[:Category:CovetousFlag]] and have [[:Category:Covetous]] include anything that is [[covetous]] - as in, has any of wants* or covetous. -[[User:Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) 00:11, 25 May 2021 (UTC)
+
+::::::I've added the various categories. It looks like the main question is if people are incorrectly tagging things as wantsall, covetous, or both - particularly with sometimes also having other more-specific tags - or if this is due to variants... or a mixture of the two, which is what I suspect. -[[User:Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) 20:09, 25 May 2021 (UTC)}
+&&%s&& %s Newt {147713 2022-08-20T09:14:23Z {4001279 Umbire the Phantom} /* Dudley's dungeon */* {{monster
+ |difficulty=1
+ |level=0
+ |experience=1
+ |speed=6
+ |AC=8
+ |MR=0
+ |align=0
+ |frequency=5
+ |genocidable=Yes
+ |attacks=Bite 1d2
+ |weight=10
+ |nutr=20
+ |size=Tiny
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A newt|=
+ |swim=1|amphibious=1|animal=1|nohands=1|carnivore=1}}
+ |reference=[[monst.c#line2849]]
+}}
+
+A '''newt''', {{monsym|newt}}, is a type of [[monster]] that appears in ''[[NetHack]]''.
+
+Eating a newt [[corpse]] or [[tin]] has a a {{frac|3}} to raise your current [[power]] by 1 to 3 points, and will always do so if it is less than or equal to {{frac|2|3}} of your maximum power - if this increase would raise you above your total maximum Power, there is a {{frac|3}} chance of increasing your maximum and current power by 1.{{refsrc|src/eat.c|958|version=NetHack 3.6.6}}
+
+==Generation==
+Newts are among the first monsters encountered in the dungeon, and are fairly common early on for low-level characters.
+
+==Strategy==
+Newts are primarily a nuisance for starting characters, and are a non-issue once you are decently armed and/or armored.
+
+==History==
+The newt first appears in [[NetHack 3.0.6]].
+
+==Origin==
+{{wikipedia|Newt}}
+{{wikipedia|Macbeth}}
+The newt is a type of salamander, with over 100 species in the subfamily Pleurodelinae. Like other salamanders, newts are lizard-like amphibians, but unlike most of them are semiaquatic, alternating between aquatic and terrestrial habitats - not all aquatic salamanders are considered newts. More than 100 known species of newts are found in North America, Europe, North Africa, and Asia. Newts metamorphose through three distinct developmental life stages: aquatic larva, terrestrial juvenile (eft), and adult. They return to the water every year to breed, otherwise living in humid, cover-rich land habitats.
+
+Adult newts have bodies similar to other salamanders, but lacking the grooved sides typical of others. Their skin secretions contain toxins employed as a defense mechanism against predators - the toxins are only dangerous if they are ingested or absorbed through mucous membranes or breaks in the skin. Newts can safely live alongside frogs and other amphibians, and may even be kept as pets.
+
+Newts have an association with witchcraft, due partly to their nature as salamanders and also due to the [[Wikipedia:William Shakespeare|Shakespeare]] tragedy ''[[wikipedia:Macbeth|Macbeth]]'', where "eye of newt" is named as a spell component in the incantation of the three witches (as quoted by the encyclopedia entry). It is commonly thought to be a cryptic name given to mustard plant seed in order to obscure their uses in herbology.
+
+==Messages==
+{{message|You feel a mild buzz.|You gained energy from eating newt meat.}}
+
+==Dudley's dungeon==
+Newts are featured prominently in [[Dudley's dungeon]], where early strips often featured Dudley dying at the hands of these typically-weak monsters, which is typically improbable in normal play ([[Floating eye|but not impossible by any means]]). This has become a common enough gag to the point that Dudley has a profound fear of them - however, most newer strips featuring newts killing Dudley are usually rated poorly and referred to as "newt jokes" or [[YANC]] ("Yet Another Newt Comic").
+
+One of the highest scores on [[NAO]] (eighth as of August 19, 2022) belongs to Adeon, who [https://s3.amazonaws.com/altorg/dumplog/Adeon/1234260131.nh343.txt intentionally died to a newt] for comedic value similar to the Dudley's dungeon joke.
+
+==Encyclopedia entry==
+{{encyclopedia|<poem>
+(kinds of) small animal, like a lizard, which spends most of
+its time in the water.
+{{right-align|[ Oxford's Student's Dictionary of Current English ]}}
+ 
+"Fillet of a fenny snake,
+In the cauldron boil and bake;
+Eye of newt and toe of frog,
+Wool of bat and tongue of dog,
+Adder's fork and blind-worm's sting,
+Lizard's leg and howlet's wing,
+For a charm of powerful trouble,
+Like a hell-broth boil and bubble."
+{{right-align|[ Macbeth, by William Shakespeare ]}}
+</poem>}}
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Wand of death {149330 2022-12-12T18:02:19Z {4001279 Umbire the Phantom} SLASH'EM {{wand
+ |name=death
+ |cost=500
+ |type=ray
+ |maxcharges=8
+ |abundance=0.5%
+ |spell=finger of death
+ |muse=off
+}}
+
+The '''wand of death''' is among the most powerful [[wand]]s available in ''[[Nethack]]''.
+
+==Generation==
+The wand of death is one of the rarest wands, making up only 0.5% of randomly generated wands.
+
+[[Orcus]] is always generated with a wand of death; other monsters with a [[monster difficulty|difficulty rating]] of 8 or more have a 1/35 chance of receiving it as an [[offensive item]] if eligible for one.
+
+==Effects==
+[[Zapping]] the wand of death in any direction fires a ray of death magic, similar to the {{spell of|finger of death}}, that instantly kills almost any [[monster]] it hits in its path, including the player character. As with all [[ray]]-type wands, it can rebound, and there is a chance that it will miss.
+
+[[Riders#Death|Death]], all major [[demon]]s, all [[nonliving]] monsters, and monsters with [[magic resistance|player-type magic resistance]] or [[reflection]] are completely unaffected; Death in particular will actually be healed and become stronger. Conversely, [[Riders#Pestilence|Pestilence]] and [[Riders#Famine|Famine]] are still susceptible.
+
+Zapping a wand of death directly at yourself results in an [[instadeath]], even if you have magic resistance or reflection&mdash;''unless'' you are [[polymorph]]ed into any of the unaffected monsters mentioned above.
+
+[[Apply]]ing the wand will break it, resulting in a standard magical explosion that deals a flat 16 damage for each remaining charge; although referred to as a "death field" in the associated message, magic resistance is not necessary to survive this explosion. See [[breaking wands]] for details.
+
+==Strategy==
+:{{For|the guaranteed wand from Orcus|Orcus#Strategy}}
+The fabled [[Gnome With the Wand of Death]] is one of the major sources of [[YASD]]; while an actual GWTWOD is very much an outlier scenario, it represents the much more likely possibility that any intelligent monster may find a wand that could end your game (to speak nothing of a wand of death specifically). It may be ideal to snag whatever wands you see as soon as possible, if only to keep them out of other monsters' hands; if an early wand discovery happens to be a wand of death, it should be saved only for immediate emergencies where the only alternative to not using a precious charge is dying. Be especially careful of rebounds and monsters with [[reflection]] if you lack reflection or [[magic resistance]] yourself, particularly if you bring one to [[Sokoban]].
+
+Identifying a wand of death is not too difficult: [[engraving]] with the wand of death provides the same message as the [[wand of sleep]], but the latter is much more common. The wand of death also has a base cost of 500 [[zm]], only shared with the [[wand of wishing]]. Identifying one in the possession of a monster is much more difficult for obvious reasons&mdash;if you learn that a monster has a wand of death without having been instantly killed by it, beware of bouncing rays and consider using an [[escape item]] unless you have reflection or magic resistance.
+
+Having reflection in particular tends to trivialize most of the wand's danger; if the reflected ray kills the user, you can then pick it up to preserve the remaining charges. [[Pacifist]]s with magic resistance or reflection may sometimes want to give a wand of death to a particularly dangerous monster in order to have them kill themselves with the rebounded/reflected ray&mdash;this is one of the pacifistic strategies for dealing with [[Medusa]], though she must be blinded first as killing her via reflection breaks the conduct.
+
+The wand of death is often employed in the late game to kill the [[Wizard of Yendor]], both during the initial meeting and every reappearance after; this is done to minimize the risk of him stealing [[quest artifact]]s, especially ones that provide magic resistance. Make sure that {{purple|@}} isn't a [[summon nasties|summoned]] [[Elvenking]] before taking your shot!
+
+==Messages==
+{{message|The bugs on the floor stop moving!|You engraved with a [[wand of sleep]] or a wand of death.}}
+{{message|You irradiate yourself with pure energy!|You zapped a wand of death directly at yourself.}}
+{{message|The wand shoots an apparently harmless beam at you.|As above, but you are polymorphed into a form immune to death rays.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], various monsters have [[death resistance]], which prevents them from dying immediately if hit by the wand - they will still take damage if hit by the wand. This includes a few monsters that would otherwise make enticing targets for a wand of death, such as the [[minotaur]], forcing you to dispose of them through an alternate means.
+
+===SporkHack===
+In [[SporkHack]], death rays will still cause damage and reduce your maximum hit points if you have magic resistance or reflection. If you have both, the damage and maximum HP loss are dramatically reduced.
+
+===EvilHack===
+In [[EvilHack]], wands of death function similarly to SporkHack, and additionally can only be recharged once. Orcus also no longer spawns with a wand of death, instead using the unique artifact [[Wand of Orcus]] (which his guaranteed wand in ''NetHack'' represents).
+
+{{nethack-366}}
+[[Category:Wands|Death]]
+[[Category:Instadeath]]}
+&&%s&& %s H {82882 2013-02-21T12:13:13Z {4000045 Bulwersator} [[UnNetHack]] introduces new creature that use the {{white|h}} glyph: *{{white|h}} humanoid: **{{magenta|h}} [[Cthulhu]] {{ASCII}}
+*{{white|h}} represents a [[humanoid]]:
+** {{monsymlink|hobbit}}
+** {{monsymlink|dwarf}}
+** {{monsymlink|bugbear}}
+** {{monsymlink|dwarf lord}}
+** {{monsymlink|dwarf king}}
+** {{monsymlink|mind flayer}}
+** {{monsymlink|master mind flayer}}
+
+*{{white|H}} represents a [[giant humanoid]]:
+** {{monsymlink|giant}}
+** {{monsymlink|stone giant}}
+** {{monsymlink|hill giant}}
+** {{monsymlink|fire giant}}
+** {{monsymlink|frost giant}}
+** {{monsymlink|storm giant}}
+** {{monsymlink|ettin}}
+** {{monsymlink|titan}}
+** {{monsymlink|minotaur}}
+** {{monsymlink|Cyclops}}
+
+*A [[direction]] key:
+**Press {{kbd|h}} to move west if [[numpad]] movement is off
+**Press {{kbd|shift|h}} to move far west if [[numpad]] movement is off
+
+*If the [[number_pad]] option is on, pressing {{kbd|h}} opens the help menu
+
+== UnNetHack ==
+[[UnNetHack]] introduces new creature that use the {{white|h}} glyph:
+*{{white|h}} humanoid:
+**{{magenta|h}} [[Cthulhu]]
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|h}} and {{white|H}} glyphs:
+
+*{{white|h}} humanoid:
+** {{monsymlink|dwarf thief}}
+** {{monsymlink|duergar}}
+** {{monsymlink|deep one}}
+** {{monsymlink|deeper one}}
+** {{monsymlink|deepest one}}
+*{{white|H}} giant humanoid:
+** {{monsymlink|The Largest Giant}}
+[[Category:ASCII]]}
+&&%s&& %s Tree {147925 2022-08-24T07:29:24Z {4000978 Aximili} sectioning, fix refsrc directories {{features}}
+'''Trees''' are represented by {{Green|±}}, or by {{Green|#}}, depending on your operating system and [[options]].
+
+==Generation==
+Tress can be found:
+* in the [[Ranger quest]]
+* in the home level of the following quests:
+** [[Priest quest|Priest]]
+** [[Monk quest|Monk]]
+** [[Barbarian quest|Barbarian]]
+* in some versions of:
+** [[Minetown]]
+** the [[Big Room]]
+** [[Medusa's Island]]
+
+==Kicking==
+Kicking a tree yields:{{refsrc|src/dokick.c|1087|nethack=3.6.0}}
+* A {{frac|2|3}} chance of being painful ([[abuse]]d strength and dexterity, possibly [[wounded legs]]); or
+* A one-time, {{frac|14|15}} chance of generating a quantity of a random fruit. ("Some <fruits> fall from the tree!") The fruit will be [[apple]]s, [[orange]]s, [[pear]]s, [[banana]]s, or [[Eucalyptus leaf|eucalyptus leaves]] (with equal probability). The quantity depends on your [[Luck]] (8&minus;[[rnl]](7)); or
+* A one-time summoning of [[killer bee]]s (quantity dependent on your Luck) ("You've attracted the tree's former occupants!").
+
+If the fruit gets caught in the branches, kick again to loosen them. Once you've gotten the fruit and the bees, kicking a tree will not do anything besides abusing your stats and injuring you.
+
+==Chopping==
+Applying an [[axe]] in the direction of a tree will destroy it and has a 20% chance of generating a single random fruit (with the same probabilities as above), even if you already got some fruit from the tree by kicking it.{{refsrc|src/dig.c|399|nethack=3.6.0}} Doing so in the line of sight of a [[watchman]] will anger him ("Halt, vandal! You're under arrest!"). [[Ray]]s will bounce off of trees without damaging them. Trees in undiggable areas, such as the [[Ranger quest]] home level, are petrified and cannot be chopped down.
+
+[[Tunneling monster]]s can also chop down trees; this is guaranteed to produce a single random [[fruit]]. 
+
+==History==
+In [[NetHack 3.6.0]], the Priest, Monk and Barbarian quests were modified to have trees.
+
+==Variants==
+===UnNetHack===
+Cutting down a tree in [[UnNetHack]] will leave behind 1 to 3 [[Quarterstaff|quarterstaves]] and/or [[club]]s. In addition, zapping a tree with a [[wand of death]] will turn it into a [[dead tree]].
+
+Given time, trees can also spread to adjacent squares as a result of the [[Dungeon Growths]] patch.
+
+===SLASH'EM===
+{{todo|New trees get spawned near existing trees?}}
+In [[SLASH'EM]], there is also a forest of trees in the [[Lawful Quest]].
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+I think that I shall never see
+A poem lovely as a tree.
+A tree whose hungry mouth is prest
+Against the earth's sweet flowing breast;
+A tree that looks at God all day,
+And lifts her leafy arms to pray;
+A tree that may in Summer wear
+A nest of robins in her hair;
+Upon whose bosom snow has lain;
+Who intimately lives with rain.
+Poems are made by fools like me,
+But only God can make a tree.
+|[ Trees - Joyce Kilmer ]
+}}
+
+==References==
+<references/>
+
+[[Category:Dungeon features]]
+{{nethack-366}}}
+&&%s&& %s Trees {2529 2006-04-30T17:43:25Z {509 Lotte} [[Trees]] moved to [[Tree]]: plural #REDIRECT [[Tree]]}
+&&%s&& %s Bell of Opening {143838 2021-12-15T03:00:25Z {4001483 Cathartes} update refs for 3.6.6 and add more refs, and clarify some things {{tool
+  |color=silver color
+  |tile=[[image:Bell of Opening.png]]
+  |name=Bell of Opening
+  |appearance=silver bell
+  |cost=5000
+  |weight=10
+  |material=silver
+}}
+
+The '''Bell of Opening''' is one of the [[unique items]] that appears in ''[[NetHack]]''. It is guarded by your [[quest nemesis]] along with your role's [[quest artifact]], and is needed for the [[Invocation ritual]] in order to access [[Moloch's Sanctum]]. It is made of [[silver]] and appears as a '''silver bell''' when unidentified.
+
+Like all Invocation items, the Bell of Opening cannot be put into a [[container]] and is impossible to destroy.
+
+==Generation==
+The Bell of Opening will always be placed in the inventory of the quest nemesis once [[you]] enter the goal level of your [[Quest]].{{refsrc|src/makemon.c|1310|version=NetHack 3.6.6}} The Bell always starts with three charges,{{refsrc|src/mkobj.c|955|version=NetHack 3.6.6}} and has a maximum of five charges.{{refsrc|src/read.c|586|version=NetHack 3.6.6}}
+
+==Effects==
+Applying a non-cursed Bell of Opening while it has charges will detect secret doors, [[magic portal]]s and [[trap]]s in your sight within a radius of 8 squares like a [[wand of secret door detection]],{{refsrc|src/apply.c|1124|version=NetHack 3.6.6}} and also cause you to be spit out if engulfed, like a [[wand of opening]].{{refsrc|src/apply.c|1069|version=NetHack 3.6.6}} If blessed, it will additionally open nearby objects and dungeon features such as [[door]]s, [[chest]]s, and [[drawbridge]]s within the same radius.{{refsrc|src/apply.c|1105|version=NetHack 3.6.6}}{{refsrc|src/detect.c|1584|version=NetHack 3.6.6}}{{refsrc|src/detect.c|1510|version=NetHack 3.6.6}} If cursed, it will instead wake nearby monsters and [[Book of the Dead#Raising the dead|raise the dead]] similar to the [[Book of the Dead]], but without reviving corpses.{{refsrc|src/apply.c|1080|version=NetHack 3.6.6}} When applied with no charges, it acts as a normal bell.
+
+Applying the non-cursed Bell with charges while not engulfed or else applying it during the Invocation while uncharged will fully [[auto-identify]] it.{{refsrc|src/apply.c|1132|version=NetHack 3.6.6}}
+
+==Strategy==
+Outside of the Invocation, the Bell of Opening can also double as a silver weapon for the [[shade]]-infested [[Orcus Town]], and may be of particular use to a [[Monk]] preserving their [[weaponless]] [[conduct]]. The Bell can also be used to find the secret door along the temple wall in [[Moloch's Sanctum]].
+
+==Origin==
+{{wikipedia|Bell, book, and candle}}
+The motif of "Bell, Book and Candle" originated as a Catholic ritual of excommunication by anathema, although in some works it is often portrayed in connection with exorcism (e.g., the Terry Pratchett/Neil Gaiman novel ''Good Omens''). One notable occurrence of the motif is in the 1985 computer role playing game ''Ultima IV: Quest of the Avatar'': the player must find the Bell of Courage, the Book of Truth, and the Candle of Love in order to enter the Abyss, the final dungeon of the game.
+
+The Bell of Opening is the only invocation ritual item that does not use an analogue from another folkloric source in addition.
+
+==Encyclopedia entry==
+{{encyclopedia|
+"A bell, book and candle job."
+The Bursar sighed.  "We tried that, Archchancellor."
+The Archchancellor leaned towards him.
+"Eh?" he said.
+"I _said_, we tried that Archchancellor," said the Bursar loudly,
+directing his voice at the old man's ear.  "After dinner, you
+remember?  We used Humptemper's _Names of the Ants_ and rang Old
+Tom."*
+"Did we, indeed.  Worked, did it?"

@@ -1,0 +1,1000 @@
+NetHack Plus defines the following monsters, in addition to those found in [[NetHack 3.1.3]]; most relate to the new roles:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[deep dragon]]||{{darkgray|D}}||No breath weapon; attack is [[drain life (monster attack)|drain life]]
+|-
+|[[water weird]]||{{brightblue|E}}||if WWEIRD defined at compile time
+|-
+|[[black marketeer]]||{{darkgray|@}}||if BLACKMARKET defined at compile time
+|-
+|[[doppelganger]]||{{white|@}}||
+|-
+|[[flame mage]]||{{brightred|@}}||
+|-
+|[[ice mage]]||{{white|@}}||
+|-
+|[[lycanthrope]]||{{white|@}}||
+|-
+|[[monk]]||{{white|@}}||
+|-
+|[[undead slayer]]||{{white|@}}||
+|-
+|[[Master Shifter]]||{{magenta|@}}||[[Doppelganger]] quest leader
+|-
+|[[High Flame Mage]]||{{magenta|@}}||[[Flame Mage]] quest leader
+|-
+|[[High Ice Mage]]||{{magenta|@}}||[[Ice Mage]] quest leader
+|-
+|[[High Lycanthrope]]||{{magenta|@}}||[[Lycanthrope]] quest leader
+|-
+|[[Grand Master]]||{{white|@}}||[[Monk]] quest leader
+|-
+|[[Master Slayer]]||{{white|@}}||[[Undead Slayer]] quest leader
+|-
+|[[Transmuter]]||{{magenta|@}}||[[Doppelganger]] quest nemesis
+|-
+|[[Water Mage]]||{{magenta|@}}||[[Flame Mage]] quest nemesis
+|-
+|[[Earth Mage]]||{{magenta|@}}||[[Ice Mage]] quest nemesis
+|-
+|[[Sir Lorimar]]||{{magenta|@}}||[[Lycanthrope]] quest nemesis
+|-
+|[[Master Kaen]]||{{magenta|@}}||[[Monk]] quest nemesis
+|-
+|[[Vecna|Master Vecna]]||{{magenta|L}}||[[Undead Slayer]] quest nemesis
+|-
+|[[shifter]]||{{white|@}}||[[Doppelganger]] quest guardian
+|-
+|[[igniter]]||{{white|@}}||[[Flame Mage]] quest guardian
+|-
+|[[froster]]||{{white|@}}||[[Ice Mage]] quest guardian
+|-
+|[[fiend]]||{{white|@}}||[[Lycanthrope]] quest guardian
+|-
+|[[intern]]||{{white|@}}||function unknown
+|-
+|[[abbot]]||{{white|@}}||[[Monk]] quest guardian
+|-
+|[[exterminator|exterminater]] ''[sic]''||{{white|@}}||[[Undead Slayer]] quest guardian
+|-
+|}
+
+== Objects ==
+
+Objects listed here are in addition to those in [[NetHack 3.1.3]].
+
+=== Artifacts ===
+
+Some artifacts have different properties from [[NetHack 3.1.3]], and [[Giantslayer]] is not present.  Artifacts not present in 3.1.3 are in boldface.
+
+Artifacts in NetHack Plus are the following
+
+{| class="wikitable"
+!Name!!Object!!Alignment!!Role!!Notes
+|-
+|[[Cleaver]]||[[battle-axe]]||Chaotic||Barbarian||Neutral in 3.1.3
+|-
+|'''[[Serpent's Tongue|Serpents Tongue]]''' ''[sic]''||'''[[dagger]]'''||'''Chaotic'''||&nbsp;||
+|-
+|[[Grimtooth]]||[[orcish dagger]]||Chaotic||&nbsp;||
+|-
+|'''[[Doomblade]]'''||'''[[orcish short sword]]'''||'''Chaotic'''||&nbsp;||
+|-
+|'''[[Elfrist]]'''||'''[[orcish spear]]'''||None||&nbsp;||
+|-
+|[[Stormbringer]]||[[runesword]]||Chaotic||&nbsp;||
+|-
+|'''[[Thiefbane]]'''||'''[[long sword]]'''||'''Chaotic'''||&nbsp;||if BLACKMARKET defined at compile time
+|-
+|'''[[Disrupter]]'''||'''[[mace]]'''||'''Neutral'''||Priest||
+|-
+|'''[[Luckblade]]'''||'''[[short sword]]'''||Neutral||
+|-
+|[[Mjollnir]]||[[heavy hammer]]||Neutral||Valkyrie||A [[war hammer]] in 3.1.3
+|-
+|[[Magicbane]]||[[athame]]||Neutral||Wizard
+|-
+|[[Frost Brand]]||[[long sword]]||Neutral||Ice Mage||No role in 3.1.3
+|-
+|[[Fire Brand]]||[[long sword]]||Neutral||Fire Mage||No role in 3.1.3
+|-
+|[[Dragonbane]]||[[broadsword]]||None||&nbsp;||Neutral in 3.1.3
+|-
+|'''[[Sword of Balance]]'''||'''[[silver short sword]]'''||'''Neutral'''||&nbsp;||
+|-
+|[[Giantkiller]]||[[dwarvish mattock]]||None||&nbsp;||A long sword named Giantslayer in 3.1.3
+|-
+|[[Vorpal Blade]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Grayswandir]]||[[silver saber]]||Lawful||&nbsp;||
+|-
+|'''[[Skullcrusher]]'''||'''[[club]]'''||'''Lawful'''||'''Caveman'''||
+|-
+|'''[[Quick Blade]]'''||'''[[elven short sword]]'''||'''Lawful'''||'''Elf'''||
+|-
+|'''[[Fire Dagger]]'''||'''[[dagger]]'''||'''Lawful'''||'''Healer'''||
+|-
+|[[Excalibur]]||[[long sword]]||Lawful||Knight||
+|-
+|[[Sunsword]]||[[long sword]]||Lawful||Priest||
+|-
+|[[Snickersnee]]||[[katana]]||Lawful||Samurai||
+|-
+|[[Demonbane]]||[[long sword]]||None||&nbsp;||Lawful in 3.1.3
+|-
+|[[Werebane]]||[[silver saber]]||None||&nbsp;||Lawful in 3.1.3
+|-
+|[[Trollsbane]]||[[morning star]]||None||&nbsp;||Chaotic in 3.1.3
+|-
+|[[Ogresmasher]]||[[war hammer]]||None||&nbsp;||Lawful in 3.1.3
+|-
+|[[Orcrist]]||[[elven broadsword]]||None||&nbsp;||Chaotic and Elf in 3.1.3
+|-
+|[[Sting]]||[[elven dagger]]||None||&nbsp;||Damages spiders rather than orcs; chaotic in 3.1.3
+|-
+|'''[[Holy Spear of Light]]'''||'''[[silver spear]]'''||'''Lawful'''||'''Undead Slayer'''||
+|-
+|'''[[Gauntlets of Defense]]'''||'''[[gauntlets of dexterity]]'''||'''Neutral'''||'''Monk'''||
+|}
+
+The following are [[Quest]] artifacts and appear only if MULDGN is defined at compile time.
+
+{| class="wikitable"
+!Name!!Object!!Alignment!!Role!!Notes
+|-
+|[[The Orb of Detection]]||[[crystal ball]]||Lawful||Archeologist||
+|-
+|[[The Heart of Ahriman]]||[[luckstone]]||Chaotic||Barbarian||Neutral in 3.1.3
+|-
+|[[The Sceptre of Might]]||[[quarterstaff]]||Lawful||Caveman||
+|-
+|'''[[The Medallion of Shifters]]'''||'''[[amulet of ESP]]'''||'''Neutral'''||'''Doppelganger'''||
+|-
+|[[The Palantir of Westernesse]]||[[crystal ball]]||Lawful||Elf||Chaotic in 3.1.3
+|-
+|'''[[The Candle of Eternal Flame]]'''||'''[[magic candle]]'''||'''Neutral'''||'''Flame Mage'''||
+|-
+|[[The Staff of Aesculapius]]||[[quarterstaff]]||Neutral||Healer||
+|-
+|'''[[The Storm Whistle]]'''||'''[[magic whistle]]'''||'''Neutral'''||'''Ice Mage'''||
+|-
+|[[The Magic Mirror of Merlin]]||[[mirror]]||Lawful||Knight||
+|-
+|'''[[The Staff of Withering]]'''||'''[[quarterstaff]]'''||'''Chaotic'''||'''Lycanthrope'''||
+|-
+|'''[[The Mantle of Knowledge]]'''||'''[[helm of brilliance]]'''||'''Neutral'''||'''Monk'''||
+|-
+|[[The Mitre of Holiness]]||[[helm of brilliance]]||Lawful||Priest||
+|-
+|[[The Master Key of Thievery]]||[[skeleton key]]||Chaotic||Rogue||
+|-
+|[[The Tsurugi of Muramasa]]||[[tsurugi]]||Lawful||Samurai||
+|-
+|[[The Platinum Yendorian Express Card]]||[[credit card]]||Neutral||Tourist||If MULDGN and TOURIST defined at compile time
+|-
+|'''[[The Holy Sword]]'''||'''[[silver saber]]'''||'''Lawful'''||'''Undead Slayer'''||
+|-
+|[[The Orb of Fate]]||[[crystal ball]]||Neutral||Valkyrie||
+|-
+|[[The Eye of the Aethiopica]]||[[amulet of ESP]]||Neutral||Wizard||
+|}
+
+=== Amulets ===
+
+All amulets appear as {{cyan|"}}.  NetHack Plus defines no amulets not present in [[NetHack 3.1.3]].
+
+=== Food ===
+
+Food items in NetHack Plus are those present in [[NetHack 3.1.3]], and the following:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-
+|[[holy wafer]]||{{white|%}}||
+|}
+
+=== Weapons ===
+
+Weapons in NetHack Plus are those present in [[NetHack 3.1.3]], and the following:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-
+|[[silver spear]]||{{lightgray|)}}||
+|-
+|[[silver dagger]]||{{lightgray|)}}||
+|-
+|[[axe of throwing]]||{{cyan|)}}||
+|-
+|[[silver long sword]]||{{lightgray|)}}||
+|-
+|[[heavy hammer]]||{{cyan|)}}||
+|-
+|[[silver mace]]||{{lightgray|)}}||
+|}
+
+=== Tools ===
+
+Tools in NetHack Plus are those in [[NetHack 3.1.3]], and the following:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-
+|[[magic candle]]||{{white|(}}||
+|-
+|[[orb of enchantment]]||{{cyan|(}}||
+|-
+|[[orb of charging]]||{{cyan|(}}||
+|-
+|[[orb of destruction]]||{{cyan|(}}||
+|-
+|[[medical kit]]||{{brown|(}}||
+|}
+
+=== Armor ===
+
+Armor items in NetHack Plus are those present in [[NetHack 3.1.3]], plus the following:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-
+|[[deep dragon scale mail]]||{{darkgray|[}}||
+|-
+|[[deep dragon scales]]||{{darkgray|[}}||
+|-
+|[[robe]]||{{red|[}}{{blue|[}}{{brightred|[}}{{green|[}}||
+|-
+|[[robe of protection]]||{{red|[}}{{blue|[}}{{brightred|[}}{{green|[}}||
+|-
+|[[robe of power]]||{{red|[}}{{blue|[}}{{brightred|[}}{{green|[}}||
+|-
+|[[robe of weakness]]||{{red|[}}{{blue|[}}{{brightred|[}}{{green|[}}||
+|-
+|[[bracers of defense]]||{{white|[}}||
+|-
+|[[bracers of absorption]]||{{white|[}}||
+|-
+|[[crystal shield]]||{{white|[}}||
+|}
+
+=== Potions ===
+
+Potions in NetHack Plus have randomized appearances (except for water), occurring as one of {{Green|!}} {{Cyan|!}} {{Red|!}} {{Magenta|!}} {{Brown|!}} {{Lightgray|!}} {{Darkgray|!}} {{Brightblue|!}} {{Brightgreen|!}} {{Brightred|!}} {{Brightmagenta|!}} {{Yellow|!}} {{White|!}}.
+
+NetHack Plus defines no potions that are not present in [[NetHack 3.1.3]].
+
+=== Scrolls ===
+
+All scrolls appear as {{white|?}}.
+
+NetHack Plus defines no scrolls that are not present in [[NetHack 3.1.3]].
+
+=== Wands ===
+
+Wands in NetHack Plus have randomized appearances, occurring as one of {{Cyan|/}} {{Brown|/}} {{Lightgray|/}} {{Brightcyan|/}} {{Yellow|/}} {{White|/}}.  They are, in addition to those in [[NetHack 3.1.3]]:
+
+* [[wand of enlightenment]]
+
+=== Spellbooks ===
+
+Spellbooks in NetHack Plus have randomized appearances (except for blank paper and the Book of the Dead), occurring as one of {{Blue|+}} {{Green|+}} {{Cyan|+}} {{Red|+}} {{Magenta|+}} {{Brown|+}} {{Lightgray|+}} {{Brightblue|+}} {{Brightgreen|+}} {{Brightcyan|+}} {{Brightred|+}} {{Brightmagenta|+}} {{Yellow|+}} {{White|+}}.  They are, in addition to the ones in [[NetHack 3.1.3]]:
+
+* [[spellbook of resist poison]]
+* [[spellbook of resist sleep]]
+* [[spellbook of know enchantment]]
+* [[spellbook of endure heat]]
+* [[spellbook of endure cold]]
+* [[spellbook of insulate|spellbook of insolate]] ''[sic]''
+* [[spellbook of enlighten]]
+* [[spellbook of enchant weapon]]
+* [[spellbook of enchant armor]]
+
+It should be noted here that spells in NetHack Plus (as in NetHack 3.1.3) work rather like wands, having a limited number of charges per read of a spellbook, and that spellbooks can only be read once.  Many of these spells, among them enlighten, enchant armor, and enchant weapon, would be unbalancing if combined with the [[Wizard Patch|modern spellcasting system]].
+
+=== Rings ===
+
+Rings in NetHack Plus have randomized appearances, occurring as one of {{Blue|<nowiki>=</nowiki>}} {{Green|<nowiki>=</nowiki>}} {{Cyan|<nowiki>=</nowiki>}} {{Red|<nowiki>=</nowiki>}} {{Brown|<nowiki>=</nowiki>}} {{Lightgray|<nowiki>=</nowiki>}} {{Darkgray|<nowiki>=</nowiki>}} {{Brightgreen|<nowiki>=</nowiki>}} {{Brightcyan|<nowiki>=</nowiki>}} {{Brightred|<nowiki>=</nowiki>}} {{Yellow|<nowiki>=</nowiki>}} {{White|<nowiki>=</nowiki>}}.  They are, in addition to those in [[NetHack 3.1.3]]:
+
+* [[ring of gain constitution]]
+
+=== Stones ===
+
+Stones in NetHack Plus are, in addition to those in [[NetHack 3.1.3]]:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-
+|[[stone of health]]||{{lightgray|*}}||
+|-
+|[[stone of rotting]]||{{lightgray|*}}||
+|}
+
+== Legacy ==
+
+NetHack Plus was eventually combined with [[NetHack-- 3.1.3]] to form the first version of [[SLASH]].
+
+[[NetHack brass]] adds some of the ideas of NetHack Plus to [[NetHack 3.4.3]].
+
+A few of the items, in particular the [[wand of enlightenment]] and [[ring of gain constitution]], were eventually accepted into [[vanilla]] NetHack.
+
+[[Category:SLASH'EM]]
+[[Category:Defunct variants]]
+{{noversion}}}
+&&%s&& %s Instrument {18683 2007-01-29T22:50:59Z {515 MadDawg2552} Redirecting to [[Musical instrument]] #REDIRECT [[Musical instrument]]}
+&&%s&& %s Music {18684 2007-01-29T22:51:13Z {515 MadDawg2552} Redirecting to [[Musical instrument]] #REDIRECT [[Musical instrument]]}
+&&%s&& %s Tourmaline stone {18692 2007-01-30T16:36:55Z {443 Kahran042} Redirecting to [[Defunct features]] #REDIRECT [[Defunct features]]}
+&&%s&& %s Onyx stone {18693 2007-01-30T16:37:28Z {443 Kahran042} Redirecting to [[Defunct features]] #REDIRECT [[Defunct features]]}
+&&%s&& %s Rotted {18694 2007-01-30T16:38:50Z {443 Kahran042} Redirecting to [[Erosion]] #REDIRECT [[Erosion]]}
+&&%s&& %s Cave-man {18719 2007-02-01T04:16:41Z {166 Creativename} Redirecting to [[Caveman]] #REDIRECT [[Caveman]]}
+&&%s&& %s MF {18721 2007-02-01T04:38:14Z {166 Creativename} Redirecting to [[Mind flayer]] #REDIRECT [[Mind flayer]]}
+&&%s&& %s MFs {18722 2007-02-01T04:42:56Z {166 Creativename} Redirecting to [[Mind flayer]] #REDIRECT [[Mind flayer]]}
+&&%s&& %s Randomised appearance {18740 2007-02-01T05:28:32Z {166 Creativename} [[Randomised appearance]] moved to [[Randomized appearance]]: As per conversion from British to American English. #REDIRECT [[Randomized appearance]]}
+&&%s&& %s Kingdom of Loathing {83021 2013-02-27T02:53:13Z {0 }  {{stub}}
+
+'''''Kingdom of Loathing''''' is an MMORPG (sort of) that features a level dedicated to ''[[NetHack]]''. This area has several monsters and items from NetHack (including the [[Amulet of Yendor]]) and contains several references to NetHack.
+
+The [[devnull tournament]] achieved the reverse in 2005, patching NetHack to add an area dedicated to the Kingdom of Loathing. The [http://nethack.devnull.net/tournament/trophies.shtml trophy description] states that "players accepting this Challenge must venture to the Kingdom of Loathing to defeat an alternate-universe [[Wizard of Yendor]]".
+
+==External links==
+* [http://www.Kingdomofloathing.com The Kingdom of Loathing website]
+* [http://kol.coldfront.net/thekolwiki/index.php/The_Dungeons_of_Doom KoL Wiki page about the area dedicated to NetHack]
+
+{{noversion}}
+
+[[Category:Games]]}
+&&%s&& %s Kingdom of loathing {18775 2007-02-02T02:18:53Z {761 Someone Else} [[Kingdom of loathing]] moved to [[Kingdom of Loathing]] #REDIRECT [[Kingdom of Loathing]]}
+&&%s&& %s To hit {18782 2007-02-04T01:17:55Z {515 MadDawg2552} Redirecting to [[To-hit]] #REDIRECT [[to-hit]]}
+&&%s&& %s Slippery {18810 2007-02-04T20:33:51Z {166 Creativename} Redirecting to [[Slippery fingers]] #REDIRECT [[Slippery fingers]]}
+&&%s&& %s Water damage {18812 2007-02-04T22:31:24Z {509 Lotte} redirect #REDIRECT [[Wet]]}
+&&%s&& %s Murdering {18829 2007-02-05T07:14:54Z {208 Djao} Redirecting to [[Murder]] #REDIRECT [[Murder]]}
+&&%s&& %s Murderer {18830 2007-02-05T07:15:12Z {208 Djao} Redirecting to [[Murder]] #REDIRECT [[Murder]]}
+&&%s&& %s Elven armor {133200 2020-04-01T01:48:55Z {4000978 Aximili} Changed redirect target from [[Elven item]] to [[Racial equipment#Elf]] #redirect [[Racial equipment#Elf]]}
+&&%s&& %s Humanoids {18855 2007-02-07T05:43:35Z {515 MadDawg2552} Redirecting to [[Humanoid]] #REDIRECT [[Humanoid]]}
+&&%s&& %s Autodig {29890 2008-03-05T18:47:27Z {630 Paxed} just redirect to [[Options#autodig]] #redirect [[Options#autodig]]}
+&&%s&& %s Rat {132810 2020-03-12T03:57:07Z {4000978 Aximili} /* SLASH'EM */ mention Rat King '''Rats''' are long-tailed [[rodent]]s, the three in the family being sewer rats, giant rats, and rabid rats. They are generally encountered in the early part of the dungeon. Their lycanthrope relative, the [[wererat]], can summon an entourage of these creatures as allies.
+
+==Sewer rat==
+{{monster
+ |name=sewer rat
+ |difficulty=1
+ |level=0
+ |experience=1
+ |speed=12
+ |AC=7
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 1d3
+ |weight=20
+ |nutr=12
+ |size=Tiny
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A sewer rat|sgroup=1|animal=1|nohands=1|carnivore=1|hostile=1|infravisible=1}}
+ |reference=[[monst.c#line734]]
+}}
+
+A '''sewer rat''' is just another weak monster, stronger than a [[newt]] but weaker than a [[kobold]].
+{{clear}}
+
+==Giant rat==
+{{monster
+ |name=giant rat
+ |difficulty=2
+ |level=1
+ |experience=8
+ |speed=10
+ |AC=7
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Bite 1d3
+ |weight=30
+ |nutr=30
+ |size=Tiny
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A giant rat|sgroup=1|animal=1|nohands=1|carnivore=1|hostile=1|infravisible=1}}
+ |reference=[[monst.c#line736]]
+}}
+
+A '''giant rat''' has slightly more health and nutritional value than its sewer rat brethren, but it moves more slowly.
+{{clear}}
+
+==Rabid rat==
+{{monster
+ |name=rabid rat
+ |difficulty=4
+ |level=2
+ |experience=17
+ |speed=12
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 2d4 [[poisonous]] ([[constitution]])
+ |resistances conveyed=None
+ |resistances=poison
+ |attributes={{attributes|A rabid rat|animal=1|nohands=1|pois=1|carnivore=1|hostile=1|infravisible=1}}
+ |size=Tiny
+ |nutr=5
+ |weight=30
+ |reference=[[monst.c#line742]]
+}}
+
+A '''rabid rat''' is the most dangerous member of the rat family in NetHack. It has a special [[constitution]]-draining [[poison]]ous bite, which has a slim chance of causing [[instadeath]] if not [[poison resistance|poison resistant]]. This bite can be protected against with high [[magic cancellation]]. Its corpse is poisonous, but will not grant poison resistance.
+{{clear}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+Rats are long-tailed rodents.  They are aggressive,
+omnivorous, and adaptable, often carrying diseases.
+ 
+"The rat," said O'Brien, still addressing his invisible
+audience, "although a rodent, is carnivorous.  You are aware
+of that.  You will have heard of the things that happen in
+the poor quarters of this town.  In some streets a woman dare
+not leave her baby alone in the house, even for five minutes.
+The rats are certain to attack it.  Within quite a small time
+they will strip it to the bones.  They also attack sick or
+dying people.  They show astonishing intelligence in knowing
+when a human being is helpless."
+|[ 1984, by George Orwell ]
+}}
+{{clear}}
+
+== Variants ==
+=== Convict patch ===
+The [[Convict]] patch and variants that implement it include larger species of rats.  Existing rats [[grow up]] into them.
+
+Convicts begin with a pet sewer rat and have a chance of taming or at least pacifying hostile rats by #[[chat]]ting with them.
+
+==== Enormous rat ====
+{{monster
+ |name=enormous rat
+ |symbol={{brown|r}}
+ |tile=
+ |difficulty=4
+ |level=3
+ |experience=28
+ |speed=9
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 1d6 physical
+ |weight=200
+ |nutr=100
+ |size=small
+ |resistances=
+ |resistances conveyed=
+ |attributes={{attributes
+ |An enormous rat|=
+ |nohands=1
+ |animal=1
+ |carnivore=1
+ |hostile=1
+ |infravisible=1
+ |hell=1
+ |sgroup=1
+ |notame=1
+ }}
+ |refline=
+}}
+
+In the Convict patch and most variants that incorporate it, giant rats grow up into '''enormous rats'''.
+
+The development version of [[UnNetHack]] removes the enormous rat, so giant rats grow up directly into rodents of unusual size.
+
+{{encyclopedia|
+	To set certain popular misconceptions to rest once and for all:
+	
+	1) He was not found wandering the sewers of London as a child during
+		the winter of 1864, unable to say anything more than "Powerful 
+		big rats, gentlemen."
+	
+	2) He was never exhibited in public houses to the curious; only 
+		briefly in July, 1865, to selected gentlemen of standing from 
+		the scientific and literary community.
+	
+	3) He did not have a vestigial tail.
+	
+	4) He did indeed have what most people would commonly understand 
+		as "eyes."
+	
+	5) He was not actually the pilot of the Zeppelin, although he did 
+		disappear for good following the explosion.
+
+	6) There is obviously no "underground kingdom beneath London, 
+		inhabited by huge, intelligent rodents." And even if there were,
+		and suggestion of Neil's involvement in the mazy territorial
+		negotiations between Londons Above and Below can be considered a
+		joke, and in poor taste at that.
+	
+	7) He was afraid of neither mirrors nor street conjurers.
+	
+	8) There were no tooth marks on the bones.
+|		[ The Season of Mists, Neil Gaiman ]
+}}
+{{clear}}
+=== Rodent of unusual size ===
+
+{{monster
+ |name=rodent of unusual size
+ |symbol={{brown|r}}
+ |tile=
+ |difficulty=8
+ |level=7
+ |experience=92
+ |speed=8
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 2d6 physical
+ |weight=500
+ |nutr=200
+ |size=medium
+ |resistances=
+ |resistances conveyed=
+ |attributes={{attributes
+ |A rodent of unusual size|=
+ |nohands=1
+ |animal=1
+ |carnivore=1
+ |hostile=1
+ |infravisible=1
+ |hell=1
+ |notame=1
+ }}
+ |refline=
+}}
+
+'''Rodents of unusual size''' (R. o. U. S.) are the strongest rats in the Convict patch and variants that include it.  
+
+Enormous rats grow up into R. o. U. S., except in the development version of [[UnNetHack]], where enormous rats are removed and giant rats grow up into R. o. U. S. instead.
+
+{{encyclopedia|
+	"Rodents Of Unusual Size? I don't think they exist."
+|		[The Princess Bride, by William Goldman ]
+}}
+
+{{clear}}
+
+===SLASH'EM===
+In ''[[SLASH'EM]]'', if you throw [[cheese]] at a sewer rat you might tame it, but since rats are not remarkable pets it's probably not worth the effort.
+
+SLASH'EM also includes a [[Rat King]].
+
+{{JAH}}
+{{slashem-7E7}}
+{{nethack-343|offset=1}}
+[[Category:Monsters]]
+[[Category:UnNetHack monsters]]
+[[Category:dNetHack monsters]]}
+&&%s&& %s Rats {18869 2007-02-07T22:47:42Z {515 MadDawg2552} Redirecting to [[Rat]] #REDIRECT [[rat]]}
+&&%s&& %s Gaze {18887 2007-02-09T20:53:53Z {560 Mogri} redirect Gaze attack #REDIRECT [[Gaze attack]]}
+&&%s&& %s Bribe {145537 2022-04-18T21:00:32Z {4001279 Umbire the Phantom} /* Bribing the Yendorian Army */ Certain monsters in ''[[Nethack]]'' can be '''bribed'''. Bribery always requires that the gold to be used is in open inventory; gold in containers cannot be accessed during the transaction.
+
+[[Aligned priest|Temple priests]] [[Protection racket|sell protection]]. This isn't normally called bribing.
+
+==Bribing in [[Gehennom]]==
+[[Demon prince]]s will ask you for a bribe when they first notice you, if you have gold in open inventory; refusing to bribe them will turn them hostile and they will never ask for a bribe again, whereas bribing them will prompt them to disappear for good, along with their entire inventory (except the invocation items).{{refsrc|monmove.c|399|comment=The amount requested never exceeds the amount in your wallet; you may offer less than the requested amount, but in this case the bribe may fail.}}{{refsrc|sounds.c|761}}
+
+* The amount asked is normally 21-100% of your visible gold. If the demon is not in hell, or if it is a chameleon in a form of demon, it will instead ask only 1-80% of your visible gold. If your alighnment is the same as demon's, the amount will be half of this. The amount is always rounded down.
+* If you have no gold in open inventory, or have so little that the amount above is zero, the demon prince will be hostile and will not ask for a bribe.
+* If you are [[polymorph]]ed into a demon, the demon prince will remain peaceful without requiring a bribe{{refsrc|minion.c|161}} and will attempt to teleport away.
+* If the prince is carrying the [[Amulet of Yendor]], he will ask for more gold than you have, thus ensuring that he won't disappear from the game with the Amulet.{{refsrc|minion.c|183}}{{reffunc|mon.c|mongone}}
+* If you are carrying the Amulet of Yendor at creation time, the demon cannot be bribed. Carrying the amulet at the time you meet the demon has no effect.
+* Wielding [[Excalibur]] at demon creation time or near the demon prevents bribing.{{refsrc|makemon.c|1050|comment=check at level generation time}}{{refsrc|minion.c|147|comment=check at meeting time}}
+* You cannot bribe a demon if you are [[deaf]].
+* Chaotic demons cannot be bribed. [[Orcus]] is the only one waiting in a lair.
+
+{{upcoming|NetHack 3.7.0|Wielding [[Demonbane]] now prevents you from bribing demons as Excalibur does.}}
+
+==Bribing the Yendorian Army==
+[[Soldier]]s can be bribed by by throwing a suitable amount of gold at them, turning them [[peaceful]]. On the [[Castle]] level, it is occasionally helpful to bribe a soldier to block a corridor for you, as hostile monsters will not route past peaceful ones.{{refsrc|dokick.c|319}} The required amount is:
+
+<math>
+x + \frac{G + 1d5 \times {\mathit XL}}{{\mathit Cha}}
+</math>
+
+<math>G</math> here represents the amount of gold you have in your open inventory; <math>X</math> is 150 for soldiers, 250 for sergeants, 500 for lieutenants, and 750 for captains. They only have a two in three chance of accepting the offer.{{refsrc|dokick.c|299}} 
+
+If you can't bag or drop your extra gold, the optimal amount to throw is:
+
+<math>
+\frac{(Cha \times X) + {\mathit (4 \times XL) + G}}{{1 + Cha}} + Cha
+</math>
+<!--the last +charisma is a fudge factor due to integer division-->
+
+The [[Watch]] cannot be pacified by bribing in this manner despite being [[mercenaries]], although you can pacify them by other means (see the section below in particular).
+
+==Bribing shopkeepers==
+Angry [[shopkeeper]]s will also accept bribes via the #[[chat]] command, or by throwing the necessary amount of gold at them. If you can afford the asking price, the shopkeeper will become peaceful again.{{refsrc|dokick.c|281}}{{refsrc|shk.c|1299}}
+
+* Pacifying a shopkeeper this way will also pacify any watchmen or watch captains on the level (usually [[Minetown]], but also some variants' [[Special level (SLASH'EM)#Mall|shopping mall]]).
+* Beware of throwing gold at peaceful shopkeepers: they have a chance of becoming hostile, as with any other peaceful monster pelted with money.
+
+==References==
+<references/>
+
+{{nethack-364}}
+[[Category:Strategy]]}
+&&%s&& %s Steed {51715 2010-08-09T04:24:41Z {0 } Redirect to Your_steed section of Riding #REDIRECT [[Riding#Your_steed]]}
+&&%s&& %s Invisible stalker {18907 2007-02-11T01:12:50Z {509 Lotte} Redirecting to [[Stalker]] #REDIRECT [[Stalker]]}
+&&%s&& %s Tourist Quest {18989 2007-02-17T17:00:35Z {509 Lotte} redirect #REDIRECT [[Tourist quest]]}
+&&%s&& %s Elven {18992 2007-02-17T17:02:22Z {509 Lotte} Redirecting to [[Elf]] #REDIRECT [[Elf]]}
+&&%s&& %s Burnt {33119 2008-06-16T10:26:53Z {701 Rogerb-on-NAO} redirect to [[burning]] disambiguation page #REDIRECT [[Burning]]}
+&&%s&& %s Copper {131976 2020-02-09T12:38:00Z {4000865 Tomsod} more copper items {{wikipedia|Copper}}
+
+'''Copper''' is a [[material]] that makes up some [[item]]s. Copper really refers to a family of copper-alloyed metals, susceptible to [[corrosion]] but not [[rust]] and of a similar color.  In-game, copper items are referred to as "copper", "bronze", or "brass".
+
+The prime example is the [[bronze plate mail]]. The other main copper items are [[light source]]s: the [[oil lamp]], [[magic lamp]] and [[brass lantern]].  Some [[musical instrument]]s ([[bugle]]s and [[bell]]s, specifically) are also copper.  There are no copper weapons.
+
+Three of the 28 randomized [[ring]]s are always copper, as are two of the 27 [[wand]]s.
+
+Copper can be eaten by [[rock mole]]s and [[xorn]]s, so the player might benefit from [[Eating jewelry|eating a copper ring]].
+
+[[Polypiling]] copper objects may result in either a stone golem or a clay golem{{refsrc|zap.c|1197|nethack=3.6.0}}.
+
+==References==
+<references />
+
+[[Category:Materials]]
+{{nethack-360}}}
+&&%s&& %s Joust {97199 2015-11-06T00:45:17Z {723 Scorchgeek} point redirect to correct section of page #REDIRECT [[lance#Jousting]]}
+&&%s&& %s Jousting {136946 2021-01-10T14:58:31Z {4001476 Infinigon} Changed redirect target from [[Lance]] to [[Lance#Jousting]] #REDIRECT [[Lance#Jousting]]}
+&&%s&& %s Template:DCorbett {106781 2017-08-20T13:24:06Z {4000180 Bcode} Text replacement - "http://alt.org" to "https://alt.org" {| align="CENTER" style="width: 80%; background-color: #F1F1DE; border:2px solid #999966; padding: 1em;"
+|''Parts of this page are based on a spoiler by [https://alt.org/nethack/mirror/www.geocities.com/dcorbett42/nethack/cockatrice.htm David Corbett]. The original license is unknown.''
+|}
+<noinclude>[[Category:License templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Boots of fumbling {19039 2007-02-20T01:07:20Z {509 Lotte} Redirecting to [[Fumble boots]] #REDIRECT [[Fumble boots]]}
+&&%s&& %s Broad sword {19040 2007-02-20T04:41:24Z {509 Lotte} Redirecting to [[Broadsword]] #REDIRECT [[Broadsword]]}
+&&%s&& %s Glove {19041 2007-02-20T04:42:10Z {509 Lotte} Redirecting to [[Gloves]] #REDIRECT [[Gloves]]}
+&&%s&& %s D notation {138745 2021-04-03T03:46:25Z {4001463 Actual-nh} Grammar/style '''D notation''', or '''Dice notation''', is a system to represent different combinations of dice in role-playing games. The system is borrowed from ''[[Dungeons & Dragons]]'', as are many aspects of ''[[NetHack]]'' - the source code implements this as the 'd function' in [[Source:Ref/d|ref/d]]. Throughout articles in this wiki, D notation is used to show the probability of an event or the damage of a weapon.
+
+==Notation==
+The notation has the form of '''''n''d''y''''', where ''n'' and ''y'' are variables:
+*''n'' is the number of dice rolled
+*''y'' is the number of faces on each die
+*If ''n'' is omitted, its value is 1.
+
+For example, if an article states that a [[weapon]] has a [[damage]] of 1d24 (''roll one die with 24 sides''), it can do a damage between 1 and 24. If an article states that a weapon does a damage of 2d24 (''roll two dice with 24 sides each''), it can do a damage of (1..24) + (1..24). When calculating potential damage from hit dice, hitmu(mhitu.c) sets the attack's base damage to ndy, then mhitm_ad_phys(uhitm.c) adds the weapon damage.
+
+An additional notation that can be encountered is '''''n''d''y'' &times;2''', for the [[double damage]] property. For example, [[Grayswandir]] has 1d8 &times;2 +(1d20) damage. This means that a single die roll of 1d8, plus enchantment, is multiplied by 2; the die is not rolled twice. The 1d20 is added to the result of the multiplication.
+
+Some cases, such as calculating the amount of conditions to be cured by a [[unicorn horn]], will use the result of one or more rolls to determine how many sides will be on a die used for a subsequent roll. For example, a blessed unicorn horn will cure (d(2d4) &minus; 1) ailments. Two four-sided dice will be rolled and their values summed, then a die with the number of sides equal to the prior result will be rolled, and finally one will be subtracted from the result. This produces a range of values weighted toward lower results.
+
+==Probabilities==
+{{randomvariable|name=d(n,x)|graph=3d6.svg|caption=[[wikipedia:Probability mass function|Probability mass function]] of a roll of 3d6 and [[wikipedia:probability density function|probability density function]] of the normal distribution with the same mean and standard deviation.|distribution=[[Wikipedia:discrete uniform distribution|uniform]] (n=1)<br/>[[wikipedia:triangular distribution|triangular]] (n=2)<br/>approx. [[wikipedia:normal distribution|normal]] (n>2)|mean=<math>n(x+1)/2</math>|stddev=<math>\sqrt{n(x^2-1)/12}</math>}}
+Rolling a single die gives any possible roll with equal probability, but multiple dice will tend to give many rolls in the middle of the range and few at the ends. Therefore, rolling 3d6 is not the same as rolling 1d16 and adding 2, even though both give a range from 3 to 18 and a mean (average) of 10.5.
+
+A roll of many dice approximates a [[wikipedia:normal distribution|normal distribution]] or "bell curve".
+
+This table gives the probabilities of each possible roll of 3d6:
+
+{| class="wikitable"
+!Roll!!Number of rolls!!Probability
+|-
+|3||1||0.00463
+|-
+|4||3||0.0139
+|-
+|5||6||0.0278
+|-
+|6||10||0.0463
+|-
+|7||15||0.0694
+|-
+|8||21||0.0972
+|-
+|9||25||0.116
+|-
+|10||27||0.125
+|-
+|11||27||0.125
+|-
+|12||25||0.116
+|-
+|13||21||0.0972
+|-
+|14||15||0.0694
+|-
+|15||10||0.0463
+|-
+|16||6||0.0278
+|-
+|17||3||0.0139
+|-
+|18||1||0.00463
+|}
+
+==External links==
+For visualizing or seeing the results of other rolls, see any of the following calculators:
+*[http://anydice.com/ Any Dice Dice Probability Calculator]
+*[http://anwu.org/games/dice_calc.html Dice Probability Calculator]
+*[http://topps.diku.dk/torbenm/troll.msp Troll dice roller and probability calculator]
+
+{{noversion}}
+[[Category:Strategy]]}
+&&%s&& %s FoodPois {64343 2011-01-31T14:52:40Z {630 Paxed} fix double redirect #REDIRECT [[Sickness#Food_poisoning]]}
+&&%s&& %s Commands (by key) {141245 2021-06-27T21:28:35Z {4001313 Ardub23} Added commands when number_pad is enabled {{keyboard commands}}
+Commands in (parentheses) are available only if [[Options#number_pad|number_pad]] is enabled; the directions given assume it is set to 1 or 2 (not the phone-style keypad layout). Commands in ''italics'' are available only in [[wizard mode]].
+
+{| class="sortable wikitable" border="1"
+|-
+!
+! Key
+!
+! Key + Shift
+! Key + Alt
+!
+! Key + Ctrl
+|-
+| a
+| [[Apply]]
+| A
+| Unequip multiple items
+| [[Adjust]]
+| SOH
+| Repeat previous command
+|-
+| b
+| [[Movement|Move]] [[Yuhjklbn|southwest]]
+| B
+| [[G|Go mode]] [[Yuhjklbn|southwest]]
+|
+| STX
+| [[G|Go mode]] [[Yuhjklbn|southwest]]
+|-
+| c
+| [[Door#Closing doors|Close door]]
+| C
+| [[Call]]
+| [[Chat]]
+| ETX
+| [[Quit]]
+|-
+| d
+| [[Drop]]
+| D
+| [[Drop|Drop multiple]]
+| [[Dip]]
+| EOT
+| [[Kick]]
+|-
+| e
+| [[Eat]]
+| E
+| [[Engraving]]
+| [[Enhance]]
+| ENQ
+| ''Search room''
+|-
+| f
+| [[Firing|Fire]]
+| F
+| [[Fight]]
+| [[Force]]
+| ACK
+| ''Map level''
+|-
+| g
+| [[G|Go mode]]
+| G
+| [[G|Go mode]]
+|
+| BEL
+| ''Create monster''
+|-
+| h
+| [[Movement|Move]] [[Yuhjklbn|west]] / ([[Help (in-game)|Help]])
+| H
+| [[G|Go mode]] [[Yuhjklbn|west]]
+|
+| BS
+| [[G|Go mode]] [[Yuhjklbn|west]]
+|-
+| i
+| [[Inventory]]
+| I
+| [[Inventory|Inventory specific types]]
+| [[Invoke]]
+| HT
+| ''Identify''
+|-
+| j
+| [[Movement|Move]] [[Yuhjklbn|south]] / ([[Jump]])
+| J
+| [[G|Go mode]] [[Yuhjklbn|south]]
+| [[Jump]]
+| LF
+| [[G|Go mode]] [[Yuhjklbn|south]]
+|-
+| k
+| [[Movement|Move]] [[Yuhjklbn|north]] / ([[Kick]])
+| K
+| [[G|Go mode]] [[Yuhjklbn|north]]
+|
+| VT
+| [[G|Go mode]] [[Yuhjklbn|north]]
+|-
+| l
+| [[Movement|Move]] [[Yuhjklbn|east]] / ([[Loot]])
+| L
+| [[G|Go mode]] [[Yuhjklbn|east]]
+| [[Loot]]
+| FF
+| [[G|Go mode]] [[Yuhjklbn|east]] / (Redraw screen)
+|-
+| m
+| [[M|Move only]]
+| M
+| [[M|Move only]]
+| [[Monster]]
+| CR
+| [[G|Go mode]] [[Yuhjklbn|south]]
+|-
+| n
+| [[Movement|Move]] [[Yuhjklbn|southeast]] / ([[Numeric prefix]])
+| N
+| [[G|Go mode]] [[Yuhjklbn|southeast]] / ([[Name]])
+| [[Name]]
+| SO
+| [[G|Go mode]] [[Yuhjklbn|southeast]] / ([[Annotate]])
+|-
+| o
+| [[Open]]
+| O
+| [[Options]]
+| [[Offer]]
+| SI
+| [[Overview]]
+|-
+| p
+| [[Shop#Normal transactions|Pay bill]]
+| P
+| [[Put on]]
+| [[Prayer|Pray]]
+| DLE
+| Repeat previous messages
+|-
+| q
+| [[Quaff]]
+| Q
+| [[Quiver]]
+| [[Quit]]
+| DC1
+| Resume pause
+|-
+| r
+| [[Read]]
+| R
+| [[Remove]]
+| [[Rub]]
+| DC2
+| Redraw screen
+|-
+| s
+| [[Search]]
+| S
+| [[Save]]
+| [[Sit]]
+| DC3
+| Pause
+|-
+| t
+| [[Throw]]
+| T
+| [[Take off]]
+| [[Turn undead]]
+| DC4
+| [[Teleport]]
+|-
+| u
+| [[Movement|Move]] [[Yuhjklbn|northeast]] / ([[Untrap]])
+| U
+| [[G|Go mode]] [[Yuhjklbn|northeast]]
+| [[Untrap]]
+| NAK
+| [[G|Go mode]] [[Yuhjklbn|northeast]]
+|-
+| v
+| [[Version]]
+| V
+| [[Game history]]
+| [[Version]]
+| SYN
+| ''[[Levelport]]''
+|-
+| w
+| [[Wield]]
+| W
+| [[Wear]]
+| [[Wipe]]
+| ETB
+| ''[[Wish]]''
+|-
+| x
+| [[Swap weapons]]
+| X
+| [[Twoweapon]]
+|
+| CAN
+| [[Base attributes]] ''and [[intrinsics]]''
+|-
+| y
+| [[Movement|Move]] [[Yuhjklbn|northwest]]
+| Y
+| [[G|Go mode]] [[Yuhjklbn|northwest]]
+|
+| EM
+| [[G|Go mode]] [[Yuhjklbn|northwest]]
+|-
+| z
+| [[Zap]]
+| Z
+| [[Spellcasting|Spellcast]]
+|
+| SUB
+| [[Shell escape]]
+|-
+| 1
+| [[Numeric prefix]] / (Move southwest)
+| !
+| [[Shell escape]]
+|
+| 
+|
+|-
+| 2
+| [[Numeric prefix]] / (Move south)
+| @
+| Toggle [[Autopickup]]
+|
+| NUL
+|
+|-
+| 3
+| [[Numeric prefix]] / (Move southeast)
+| #
+| [[Extended command]]
+|
+|
+|
+|-
+| 4
+| [[Numeric prefix]] / (Move west)
+| $
+| [[Purse]]
+|
+|
+|
+|-
+| 5
+| [[Numeric prefix]] / ([[G|Go mode]])
+| %
+|
+|
+|
+|
+|-
+| 6
+| [[Numeric prefix]] / (Move east)
+| ^
+| [[Trap ID]]
+|
+| RS

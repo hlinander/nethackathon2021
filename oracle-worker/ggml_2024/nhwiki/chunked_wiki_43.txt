@@ -1,0 +1,1000 @@
+With the Magic Mirror, a high-level Knight casting magic missile can deal over 100 damage, or more if they can arrange for their spell to rebound off a wall. This makes magic missile a potential alternative to the traditional [[wand of death]] for dispatching the [[Wizard of Yendor]] and [[high priest]] of Moloch. However, if the Wizard steals the Mirror, he gains magic resistance and complete immunity to magic missile and death rays, so keeping the Mirror in your bag is a safer option. As with all roles, don't count on a quest artifact as your only source of magic resistance.
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], a Knight can also be a [[lawful]] [[dwarf]]. Knights carrying any body armor heavier than [[studded leather armor]] receive a weight reduction for it equal to half the difference;{{refsrc|src/hack.c|3124|unnethack=1465}} this allows them to carry more while wearing heavy armor before becoming burdened.
+
+===SLASH'EM===
+
+See [[Knight/SLASH'EM]].
+
+===FIQHack===
+
+In [[FIQHack]], Knights can now be [[dwarves]] as well as humans. Knights are always warned before violating their honor code, and [[Dragonbane]] is the guaranteed first sacrifice gift for them.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+Here lies the noble fearless knight,
+Whose valour rose to such a height;
+When Death at last had struck him down,
+His was the victory and renown.
+He reck'd the world of little prize,
+And was a bugbear in men's eyes;
+But had the fortune in his age
+To live a fool and die a sage.
+|[ Don Quixote of La Mancha by Miquel de Cervantes Saavedra ]
+}}
+
+==References==
+<references/>
+
+{{nethack-366|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Roles]]}
+&&%s&& %s Monk {146832 2022-07-21T10:24:20Z {4000251 Netzhack} /* Encyclopedia entry */ The '''Monk''' is one of the player [[role]]s in ''NetHack''. Monks are always [[Human (starting race)|human]], and can be [[lawful]], [[neutral]], or [[chaotic]]. They are martial artists conforming to the "Shaolin Monk" stereotype. From the [[guidebook]]:
+
+{{guidebook|
+Monks are ascetics, who by rigorous practice of physical and mental disciplines have become capable of fighting as effectively without  weapons  as with.  They wear no armor but make up for it with increased mobility.
+}}
+
+The Monk is a good choice for a player who wants to practice both magic and hand-to-hand combat, but isn't interested in using weapons. It is a good class with which to achieve [[conduct]]s.
+
+Monks know all nonmagical armors from the start. Their [[special spell]] is {{spell of|restore ability}}. When [[crowned]], they get a spellbook of restore ability instead of the standard crowning sword.
+
+==Starting equipment==
+*+2 [[leather gloves]]{{refsrc|u_init.c|83|name=basic_starting}}
+*+1 [[robe]]<ref name='basic_starting'/>
+*a blessed [[spellbook]]<ref name='basic_starting'/> (equal chance of {{spell of|healing}}, {{spell of|protection}} or {{spell of|sleep}}{{refsrc|u_init.c|652}})
+*a random [[scroll]]<ref name='basic_starting'/> (not [[enchant weapon]]{{refsrc|u_init.c|938}})
+*3 [[potion of healing|potions of healing]] (possibly blessed)<ref name='basic_starting'/>
+*3 to 6 uncursed [[food ration]]s<ref name='basic_starting'/>
+*5 to 10 [[apple]]s<ref name='basic_starting'/>
+*5 to 10 [[orange]]s<ref name='basic_starting'/>
+*3 to 6 [[fortune cookie]]s<ref name='basic_starting'/>
+*20% chance of an uncursed [[magic marker]]{{refsrc|u_init.c|658}}
+**otherwise, 10% chance of an [[oil lamp]]{{refsrc|u_init.c|659}}
+
+{{upcoming|NetHack 3.7.0|Monks can no longer start with sleep. Instead they can start with confuse monster.}}
+
+== Intrinsics ==
+Monks gain intrinsics at these [[experience level]]s:{{refsrc|src/attrib.c|46|version=NetHack 3.6.1}}
+* XL 1: [[see invisible]], [[sleep resistance]], and [[speed]]
+* XL 3: [[poison resistance]]
+* XL 5: [[stealth]]
+* XL 7: [[warning]]
+* XL 9: [[automatic searching]]
+* XL 11: [[fire resistance]]
+* XL 13: [[cold resistance]]
+* XL 15: [[shock resistance]]
+* XL 17: [[teleport control]]
+
+In essence, Monks automatically acquire all of the intrinsics granted by crowning (and then some) by the time they reach level 17. 
+
+==Skills==
+
+{{Monk skill table}}
+Monks start with ''Basic'' skill in ''Martial arts'' and ''Healing spells''. The initial spellcasting skills are hardcoded in the function skill_init in [[Source:NetHack 3.4.3/src/weapon.c|weapon.c]], so even Monks starting with other spellbooks than healing start unskilled in ''Clerical'' or ''Enchantment'', but still basic skilled in ''Healing''.
+
+==Special rules==
+
+Monks have a [[multishot]] bonus for throwing shuriken.
+
+The things that make a Monk unique are the penalties imposed for non-Monkish behavior:
+
+===Vegetarianism===
+Monks feel guilty about eating non-[[vegetarian]] food, and suffer a small alignment penalty (-1 alignment) for doing so. As compensation for this, they gain intrinsics rapidly as they level up. The penalty can be considered a fair price for getting otherwise tricky to find intrinsics, such as [[telepathy]] or [[disintegration resistance]]. Because of these intrinsics, many players who want to play a [[vegetarian]], [[vegan]], or [[foodless]] character choose Monk. However, in general Monks should not feel required to maintain the vegetarian conduct. Unless they eat enough meat to make their alignment negative they shouldn't have any problems. This also provides an additional easy way for Monks to keep their alignment low enough to avoid [[crowning]].
+
+{{upcoming|NetHack 3.7.0|When [[Minetown]] is generated (but not loaded from [[bones]]), any [[delicatessen]] is converted to a health food store. (This was intended to already be implemented, but due to a bug, only the shopkeeper's name is affected.)}}
+
+===Fasting and over-eating===
+For monks, being weak from hunger [[exercise]]s [[wisdom]], but still [[exercise#Abuse|abuses]] strength as with other roles.{{refsrc|src/attrib.c|472|version=NetHack 3.6.6}} Being [[satiated]] abuses a monk's wisdom in addition to the normal abuse of [[dexterity]] experienced by all roles.{{refsrc|src/attrib.c|466|version=NetHack 3.6.6}} The exercise/abuse is registered on turns whose number is a multiple of 10.
+
+===No body armor, no shield===
+Monks are penalized for wearing [[body armor]] (all armors and mails; this doesn't include [[robe]]s, [[cloak]]s and [[shirt]]s) with a -20 [[to-hit]] penalty.{{refsrc|uhitm.c|267}} Other types of armor ([[boots]], [[gloves]], and [[helm]]s) carry no penalty. For a low-level Monk it is virtually impossible to hit while wearing body armor. However, some players start using body armor once they have reached a high experience level with enough [[dexterity]], [[strength]] and [[luck]] to overcome the [[to-hit]] penalty. The armor penalty doesn't apply if you are [[polymorph]]ed, so a Monk that gets his hands on a [[ring of polymorph control]] can turn into, say, a [[vampire lord]] and have no problem hitting while wearing armor.
+
+Monks get an additional hit bonus when not wearing a [[body armor]], not using a [[shield]], and not wielding a weapon. This bonus is [[experience level]] / 3 + 2.
+
+Wearing a shield or body armor makes a Monk incapable of dealing a "[[staggering blow]]", reducing his or her effectiveness in martial arts.
+
+==Strategy==
+
+===Character creation===
+For Monks planning to switch from martial arts to a weapon at some point, your best option is a [[sacrifice gift]]. In this case, lawful monks are most likely to receive a viable artifact weapon sooner due to the lineup of artifact long swords, which unrestricts the skill and allows basic-skilled usage of Excalibur; there is also the option of shooting for [[Grayswandir]]. Neutral sacrifice gifts are less reliable, while chaotic gifts are mostly useless; additionally, monks receive a different [[crowning]] gift from most other roles in the [[spellbook of restore ability]], and thus will have to either carry the book or wield an artifact in order to receive a more 'standard' crowning gift. A neutral Monk has the option of wishing for [[the Staff of Aesculapius]], the only artifact weapon they can naturally reach Basic skill in, although the usual [[Wish#Artifact_wishing|risks]] and [[Artifact blast|perils]] of wishing for an artifact apply.
+
+For those planning to maintain [[weaponless]] [[conduct]], chaotic Monks will have an easier time dealing with the [[mysterious force]], and chaotic gods also grant more prayer timeout reduction from [[sacrifice]], making it easier to farm [[spellbook]]s from an [[altar]].
+
+===Early game===
+
+====Objectives====
+
+Monks are pretty capable fighters in the early game. Martial arts do good enough damage, and the Monk's starting inventory is just fine. Many of the weapons and armor lying around in the early game are of little use. It is probably best to focus on learning spells and gaining protection.
+
+It is very likely that an [[amulet of reflection]] will be your source of reflection for the entire game, so heading to Sokoban early is a good idea.
+
+====Weapons====
+Monks can often get through the early game (or the entire game) with no weapons at all. If you really feel you need a ranged weapon, crossbows are plentiful in the Mines but wielding one is a hazard to any weaponless attempt. [[Shuriken]] are good if you can find some, but are subject to [[Projectile#Breakage|breakage]]. A small stack of [[spear|spears]], although heavy, is normally easily obtainable.
+
+A Monk is probably the best role for attempting a weaponless [[conduct]], since they can train up to Grand Master in martial arts. Indeed, at early stages of the games, hands are the best "weapon" for a Monk. There is no actual penalty for using weapons, but Monks can attain proficiency in very few weapon skills.
+
+====Armor====
+The 20 points to-hit penalty for wearing [[body armor]] is huge. This makes body armor entirely infeasible, except for pacifists. You should find a good helm and shoes, however, even if they are metallic. Keep your robe safe: it massively boosts your spellcasting and will be hard to replace early on.
+
+At the early stages of the game, it is not recommended to use a shield, as you lose your hit bonus for not using a shield or weapon, and it will additionally harm your spellcasting.
+
+====Spellcasting====
+All of the three possible starting spells are useful if used in conjuction with martial arts. Healing lets you fight longer, sleep prevents your enemies from fighting back, and protection can make up for armor deficiencies (if you cast it before going into your fights).
+
+Monk is the only role other than [[Wizard]] that can achieve at least a Basic proficiency in every [[Spellbook|magical school]]. This broad array of possible spells is useful for any Monk, but especially for one attempting a [[weaponless]] conduct.
+
+The starting [[robe]] gives Monks a massive bonus to [[spellcasting]] as well, twice what any other role gets from wearing one. Even taking into account base spellcasting penalties, a Monk with a robe will still enjoy a better total bonus than even a Wizard.
+
+Monks do not have the hungerless spellcasting available to Wizards, so wearing a [[ring of slow digestion]] is especially useful.
+
+===Mid game===
+====Objectives====
+Maximize your [[Luck]] as soon as possible once you get a luckstone. Once you have maximized your luck and have a good experience level, start trying on body armor to see if you can hit consistently. If you can, a lot of the problems surrounding armor will be resolved.
+
+Monks have one of the toughest quests in ''NetHack''. [[Master Kaen]] is legendarily difficult, and because he is a spellcaster you will want magic resistance before you meet him. Be sure to read up on his weaknesses. The phasing monsters on the Quest can swarm around you no matter where you hide. Combining all that with your difficult armor choices makes it likely that you will need to wait until after completing the Castle to embark on the Quest. Kaen is vulnerable to the effects of a [[scroll of scare monster]], making the fight with him much easier, so finishing the Castle shouldn't be as necessary if you have one.
+
+{{upcoming|NetHack 3.7.0|The scroll of scare monster no longer works on any @ or unique monster.}}
+
+Assembling an ascension kit can be a bit of a puzzle, seeing as you will likely avoid body armor and shields. Your alignment becomes very important once you start wishing for artifacts.
+
+If you decide to wish for artifacts, try to obtain magic resistance first (slotless if possible), and then half damage if you can get some. There are no lawful [[half physical damage]] artifacts, an important consideration given a Monk's [[AC]] challenges. Neutrals can get the weighty [[Orb of Fate]] for this, but for a spellcaster, the energy regeneration and branchporting of the [[Eye of the Aethiopica]] might be better. Neutrals can also sacrifice for [[Magicbane]] to get magic resistance and unrestrict dagger skill as a bonus. Chaotic Monks can get half physical damage via [[the Master Key of Thievery]].
+
+====Weapon====
+
+Typically, the only weapon worth using is a good, well-enchanted artifact weapon. Otherwise, bare-handed attacks will be more effective due to being restricted in almost every weapon skill.  To unlock a skill, you need to obtain a weapon of the same skill by sacrificing or by [[crowning]].
+
+====Armor====
+
+You should always wear a shield if you are wielding a weapon, as there is no additional penalty for using both a weapon and a shield. Since shields harm spellcasting, wear either a [[small shield]], which is not that bad, or a [[shield of reflection]], whose benefit of reflection is worth the spellcasting penalty.
+
+As for body armor, some players do not wear body armor at all. Most players do wear body armor during the middle or late game, as it solves a lot of problems.
+
+=====Avoiding body armor=====
+
+It is very important to lower your AC by all means. Another problem is obtaining [[magic resistance]] and [[magic cancellation]]. If you cannot hit anything while wearing body armor, and cannot get an artifact offering magic resistance, you might need to forego your robe in favor of a cloak of magic resistance.
+
+If you have no magic resistance, polymorph traps will be a serious problem, as stepping on one can destroy your cloak and/or shirt. Wear a [[ring of polymorph control]] or [[amulet of unchanging]] (unless you have a better amulet) stop yourself from polymorphing and breaking your armor. If you have neither, wear disposable junk armor below level 9. [[Automatic searching]] can also help you find and avoid polymorph traps, especially if you also have high luck.
+
+=====Wearing body armor=====
+
+The only body armors which are worth the downsides are [[gray dragon scale mail]] and [[silver dragon scale mail]].  [[GDSM_versus_SDSM|Picking one over the other]] depends on which extrinsics you already have from other sources.
+
+If you can almost but not quite hit consistently while wearing body armor, try augmenting your to-hit bonus with [[gauntlets of dexterity]] or a [[ring of increase accuracy]], or further increasing your [[experience level]].
+
+For Monks wearing body armor, it is a good idea to get rid of the penalty by self-polymorphing before the most demanding tasks, like killing [[Master Kaen]]; see [[Polymorph control#Good choices for self polymorph|the relevant section on polymorph control]] for a list of creatures who can wear all armor. Alternatively, you may simply remove your own body armor before the fight, provided your AC is good enough without it.
+
+====Spellcasting====
+Maxing out your healing and clerical spellcasting skills is probably not worth it if you can keep wearing your robe. Neutral Monks who cast lots of spells will likely want to wish for [[the Eye of the Aethiopica]] for energy regeneration.
+
+===Late game===
+
+====Objectives====
+In addition to rounding out your ascension kit, you might also want a silver object for fighting undead and demons in Gehennom. Weaponless Monks can remove their gloves and wear a silver ring for attacking [[shade]]s, or wield a silver non-weapon such as the Bell of Opening.
+
+The crowning gift of a spellbook of restore ability is often considered worthless, as its primary function will have long been superseded by the [[unicorn horn]], and a blessed [[potion of restore ability]] can also serve the same purpose while additionally restoring lost levels. Both this and the Monk's [[#Intrinsics|obtainable intrinsics]] from gaining experience levels suggest that a Monk player should probably avoid being crowned, so as to preserve a shorter [[prayer timeout]].
+
+{{upcoming|NetHack 3.7.0|Unicorn horns can no longer restore reduced attributes in vanilla NetHack, so the value of this spell has increased.}}
+
+====Weapons====
+A highly-enchanted double-damage weapon like one of [[Fire and Frost Brand|the Brands]], even at Unskilled, will do significantly more damage than martial arts at Grand Master level. See [http://www.steelypips.org/nethack/monk_faq.html The Monk FAQ] for an in-depth comparison of average damage. Monks not attempting the weaponless conduct may want to switch to using an artifact weapon once they get something powerful enough (and once they are high enough level to hit monsters even with the Unskilled to-hit penalty). Alternatively, using their existing weapon skills, a fully enchanted [[silver spear]] can also be effective, especially in [[Gehennom]] against the numerous [[silver-hating]] foes there.
+
+Obtaining weapons through sacrifice will unrestrict the relevant skills, which is especially important for Monks.
+
+[[Shuriken]] are a good ranged option for late game Monks. If you want a large number of them, you will probably have to polypile for them.
+
+====Armor====
+At this point you should be able to overcome the body armor penalty entirely with high stats and luck, or possibly through self-polymorph. You should be wearing body armor unless you have some good reason not to, are trying for the [[Conduct#Nudist|Nudist conduct]], or are roleplaying.
+
+Once you start wearing body armor, you should also get a [[shield]], which doesn't have any further adverse effects on melee combat if you already have body armor, and doesn't affect your martial arts. However, note that shields can impede spellcasting. A [[shield of reflection]] in particular can free up your amulet slot for something more useful.
+
+====Spellcasting====
+It is likely that extremely high level spells like [[finger of death]] will remain out of your reach, but don't underestimate the power of the middling spells. Magic missile in particular is probably your most powerful ranged attack.
+
+==Rank titles==
+
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:{{refsrc|role.c|157}}
+
+*XL 1-2: Candidate
+*XL 3-5: Novice
+*XL 6-9: Initiate
+*XL 10-13: Student of Stones
+*XL 14-17: Student of Waters
+*XL 18-21: Student of Metals
+*XL 22-25: Student of Winds
+*XL 26-29: Student of Fire
+*XL 30: Master
+
+== Quest ==
+{{main|Monk quest}}
+
+In the Monk quest, the player fights [[Master Kaen]] for [[the Eyes of the Overworld]].
+
+==Variants==
+
+===UnNetHack===
+In [[UnNetHack]], monks get a bonus point of AC while [[confusion|confused]] as a reference to the idea of drunken boxing.
+
+===SLASH'EM===
+In [[SLASH'EM]], Monks also have the largest number of [[technique]]s of any role. Most of these are martial arts-themed offensive moves that make the Monk a more balanced role.
+
+They don't suffer to-hit penalty for wearing body armor (unless fighting bare-handed).
+
+Their first sacrifice [[gift]] are the [[Gauntlets of Defense]].
+
+===dNetHack===
+
+In [[dNetHack]], Monks have a [[Monk revision (dnethack)|variety of special maneuvers]], including [[Monk moves (dnethack)|fighting-game-style]] attacks similar to SLASH'EM monk techniques. Monks also continue to gain intrinsics after level 17:
+* Level 19: [[acid resistance]]
+* Level 21: [[water walking]]
+* Level 23: [[sickness resistance]]
+* Level 25: [[disintegration resistance]]
+* Level 27: [[stoning resistance]]
+* Level 29: [[magic resistance]]
+* Level 30: [[drain resistance]]
+
+Their crowning gift is the [[dNetHack artifacts#Grandmaster's Robe|Grandmaster's Robe]], which improves their unarmed attacks while worn.
+
+===FIQHack===
+In [[FIQHack]], monks can be human or [[Elf (starting race)|elven]]. The monk [[crowning]] gift is a [[magic marker]] instead of a spellbook.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+One day, an army general invited the Buddhist monk I-Hsiu (literally, "One Rest") to his military head office for a dinner.  I-Hsiu was not accustomed to wearing luxurious clothings and so he just put on an old ordinary casual robe to go to the military base.  To him, "form is void".
+
+As he approached the base, two soldiers appeared before him and shouted, "Where does this beggar came from?  Identify yourself!  You do not have permission to be around here!"
+
+"My name is I-Hsiu Dharma Master.  I am invited by your general for a supper."
+
+The two soldiers examined the monk closely and said, "You liar.  How come my general invites such a shabby monk to dinner?  He invites the very solemn venerable I-Hsiu to our base for a great ceremony today, not you.  Now, get out!"
+
+I-Hsiu was unable to convince the soldiers that he was indeed the invited guest, so he returned to the temple and changed to a very formal solemn ceremonial robe for the dinner.  And as he returned to the military base, the soldiers observed that he was such a great Buddhist monk, let him in with honour.
+
+At the dinner, I-Hsiu sat in front of the table full of food but, instead of putting the food into his mouth, he picked up the food with his chopsticks and put it into his sleeves.  The general was curious, and whispered to him, "This is very embarrassing.  Do you want to take some food back to the temple?  I will order the cook to prepare some take out orders for you."  "No" replied the monk.  "When I came here, I was not allowed into the base by your soldiers until I wear this ceremonial robe. You do not invite me for a dinner.  You invite my robe. Therefore, my robe is eating the food, not me."
+|[ Dining with a General - a Zen Buddhism Koan ]
+}}
+
+==References==
+<references />
+
+{{nethack-360|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Roles]]}
+&&%s&& %s Caveman {148059 2022-09-04T17:18:13Z {4001279 Umbire the Phantom} /* Character creation */ reword {{Wikipedia|Caveman}}
+
+The '''caveman''' ('''cavewoman''' if female) is one of the player [[role]]s in NetHack. Cavemen can be either [[lawful]] or [[neutral]], and can be [[Human (starting race)|humans]], [[dwarves]] or [[Gnome (starting race)|gnomes]].
+
+Their [[special spell]] is [[spell of dig|dig]] and their default starting [[pet]] is a [[little dog]] called Slasher. Cavemen suffer no consequences from [[cannibalism]].  The [[guidebook]] has little to say about cavemen:
+          Cavemen  and  Cavewomen start with exceptional strength but,
+          unfortunately, with neolithic weapons.
+
+While worse than other melee fighters such as [[Valkyrie]] or [[Barbarian]], Caveman is still a relatively strong role because it often has high starting [[strength]] and [[constitution]]. The [[Sceptre of Might]] is also one of the best [[quest artifacts]] in the game.
+
+== Starting equipment ==
+Each caveman starts with the following:{{refsrc|src/u_init.c|49|version=NetHack 3.6.0}}{{refsrc|src/u_init.c|685|version=NetHack 3.6.0}}{{refsrc|src/mkobj.c|838|version=NetHack 3.6.0}}
+* a +1 [[club]]
+* a +2 [[sling]]
+* 10 to 22 [[flint stone]]s
+* 18 to 33 [[rock]]s
+* a +0 [[leather armor]]
+
+== Intrinsics ==
+Cavemen gain intrinsics at these [[experience level]]s:{{refsrc|src/attrib.c|32|version=NetHack 3.6.0}}
+* Level 7: [[speed]]
+* Level 15: [[warning]]
+
+== Skills ==
+{{Caveman skill table}}
+Cavemen start with ''Basic'' skill in ''Club'', ''Sling'' and ''Bare hands''.
+
+==Special rules==
+Cavemen do not suffer any penalty for cannibalism, and do not gain [[aggravate monster]] from eating domestic [[cat]] or [[dog]] corpses.
+
+Cavemen never get [[nausea]] from eating [[tripe ration]]s.
+
+Caveman have a role bonus for [[multishot]] for [[spear]] and [[sling]].{{refsrc|src/dothrow.c|136|version=NetHack 3.6.6}}
+
+== Strategy ==
+=== Character creation ===
+Cavemen are unlikely to ever cast a spell in their lives, so the primary factor in choice of starting race is pure physical power. Dwarves are clearly the superior choice, with generous HP growth and the highest possible maximum [[dexterity]] and [[constitution]]; [[infravision]] and a relatively peaceful [[Gnomish Mines]] are side benefits. Humans are a distant second choice due to a more hostile Mines and lack of infravision. Gnomes tend to have the least racial benefits for the role; their maximum [[strength]] and [[HP]] growth are poor, and their bonus [[energy]] and higher maximum [[intelligence]] are virtually useless for Cavemen.
+
+Cavemen are restricted in most of the strong one-handed weapon skills, so the deterministic nature of lawful sacrifice gifts can be an advantage. Your first gift is likely to be an artifact long sword, or even possibly [[Grayswandir]]; the former case unrestricts your long sword skill and allows accessing [[Excalibur]]. In addition to the lesser reliability of neutral sacrifice gifts, only humans and gnomes can be netural Cavemen, which carries the aforementioned drawbacks; [[The Sceptre of Might]] is also a stronger artifact in the hands of a lawful Caveman, especially once you reach [[Gehennom]].
+
+=== Early game ===
+
+==== Weapons ====
+Cavemen start with a ready source of ranged weapons in their [[sling]] and accompanying sets of [[flint stone]]s and [[rock]]s, but they are quite heavy and will make the player want to drop them very quickly. Like all ranged weapons, they're handy for wearing down powerful opponents or killing enemies with deadly passive attacks like [[floating eye]]s. Upon finding a replacement ranged weapon or two, you can freely drop all the starting rocks. The starting club should be just enough to tide the player over until they can find a better weapon.
+
+Cavemen can reach Expert in clubs, including the [[aklys]], which as of [[3.6.1]] is a tetherable weapon that will return 99% of the time when thrown while it is wielded. Once you locate a non-cursed aklys or two, it can easily pull double duty as both a ranged and melee weapon. [[Spear]]s, especially the [[dwarvish spear]], are also a solid weapon choice, since Cavemen are the only class besides the Ranger that can reach Expert in spear; they can also stack and be used as projectiles, and the dwarvish spear has the best base damage after the silver spear.
+
+==== Armor ====
+The starting [[leather armor]] should be dumped for anything better, hopefully a [[mithril-coat]], as soon as possible. Your very poor starting AC can improve substantially if you use your pet to curse-test all the armor you find, and continually swap out worse pieces for better ones. Leather rots, so stay away from puddings while you are wearing your starting suit. Due to Cavemen possessing the second-largest spellcasting penalty of all classes (topped only by the [[Barbarian]]), high AC should be the main priority. Non-human Cavemen could consider the [[protection racket]]; however, this is an unreliable strategy.
+
+====General====
+After gaining a few levels, non-human cavemen may want to head to the [[Gnomish Mines]] as soon as reasonably possible; they will not only have an easier time dealing with the inhabitants, but can more easily procure a better set of weapons and armor using their pet if they so choose. In addition to Minetown, an early visit to Sokoban is also worth considering for a source of [[permafood]].
+
+=== Mid game ===
+
+==== Weapons ====
+Cavemen are notably [[restricted]] in all swords. If you have access to a co-aligned altar, you may want to sacrifice for an [[artifact weapon]]--most of which are swords. Receiving a weapon from your god automatically un-restricts the corresponding skill. If lawful, you can [[#dip]] for [[Excalibur]], but it will still be restricted unless your god has given you a [[long sword]]. A well-enchanted [[spear]] is still a viable primary mid-game weapon; you can price-check for enchantment at a shop. You can find dwarvish spears in the Mines, and [[soldier]]s are often generated with normal spears.
+
+====Armor====
+Since they can neither #[[twoweapon]] nor cast many spells, cavemen need not worry as much about utilizing [[shield]]s; in the event you chance upon a wish, [[Sokoban]] has not provided an amulet of reflection, and you have not found one elsewhere, a [[shield of reflection]] is particularly useful to wish for. This leaves the amulet slot open, and the reflection will prove vital for the [[Caveman quest]].
+
+====General====
+Due to the nature of the quest, there is a guaranteed co-aligned [[temple]] on the first level of the quest branch. Normally, the temple will be effectively unavailable to you until you reach experience level 14, as your [[quest leader]] [[Shaman Karnov]] will keep rejecting you and sending you back to the main dungeon if you make a move for the altar. However, if you are [[fast]] enough to move adjacent to Shaman Karnov on his turn and then #chat to him, he will begin wandering around after returning you to the main dungeon. You can then come back to the home area and wait for him to move out of the way so you can get to the priest.
+
+The monster generation for quest levels favors [[bugbear]]s and other [[humanoid]]s, most of which are no trouble at this point outside of [[mind flayer]]s; [[hill giant]]s can provide valuable strength boosts from their corpses, and so it may be worth bringing a [[tinning kit]] along to avoid constant satiation. Bringing down the [[quest nemesis]], the [[Chromatic Dragon]], almost requires magic resistance and reflection, though there are alternative strategies; see that article for more detailed information. Once you have retrieved the Sceptre of Might, [[Erosion#Preventing and curing erosion|corrode-proof]] it as soon as possible.
+
+=== Late game ===
+==== Weapons ====
+Heading into the endgame, you must not rely on the Sceptre of Might as your only melee weapon or your only source of magic resistance, as the Sceptre can be stolen by the [[Wizard of Yendor]]. In case this happens, you need to be sure you have a backup weapon (one you would be willing to fight the Wizard with!) and a second source of magic resistance.
+
+==== Armor ====
+The shield of reflection is still a very useful item to have for your ascension kit, especially when combined with [[gray dragon scale mail]]; this provides redundant magic resistance in case the Sceptre is stolen, as well as the free amulet slot (e.g. for [[amulet of magical breathing|magical breathing]] or [[amulet of life saving|life saving]]).
+
+==== General ====
+Once you have reached XL 15 and received the warning intrinsic, leveling further is not strictly necessary; while improved hit rates and hit points are nice to have, [[alchemy]] and a [[blessed]] [[luckstone]] combined with high luck from sacrifices can easily provide a good substitute. In addition to alchemizing potions of [[full healing]], [[nurse]] corpses can be freely eaten by [[human]] Cavemen to recover full HP; blessed [[tin]]s of nurse meat provide a very effective healing resource for the late game alongside potions of full healing.
+
+As discussed earlier, most cavemen are unlikely to take up [[spell casting|spell-casting]]; even though a player can sufficiently boost their [[intelligence]] and opt for a robe, Cavemen can only advance their skill in attack and matter spells, and will very likely prefer wands and other magical items. Unlike the Barbarian's ability to cast [[haste self]], the Caveman's special spell, [[dig]], is of much more questionable utility, and [[wand of digging|wands of digging]] (which the player is likely to have several by that point) serve the same purpose for much less opportunity cost.
+
+==Rank titles==
+
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1-2: Troglodyte
+*XL 3-5: Aborigine
+*XL 6-9: Wanderer
+*XL 10-13: Vagrant
+*XL 14-17: Wayfarer
+*XL 18-21: Roamer
+*XL 22-25: Nomad
+*XL 26-29: Rover
+*XL 30: Pioneer
+
+== Quest ==
+
+{{main|Caveman quest}}
+
+The Caveman quest sees you fighting the [[Chromatic Dragon]] for [[The Sceptre of Might]].
+
+== Variants ==
+
+=== SLASH'EM ===
+
+Cavemen in [[SLASH'EM]] have a handful of benefits beyond their NetHack equivalents; most obvious is their natural 2-square vision range, making corridors and places like the [[Gnomish Mines]] substantially safer to explore. In addition, they are guaranteed [[Skullcrusher]] as their first sacrifice gift, which is a weapon that holds its own well into the late game. Lawful Cavemen will gain a point of alignment for commiting cannibalism, with the message "You honour the dead". Also, their starting stack of [[flint stone]]s can be [[upgrade]]d into [[luckstone]]s or [[healthstone]]s. Unfortunately, The Sceptre of Might is considerably worse in SLASH'EM, and is not recommended as a main weapon unless no other alternatives exist.
+
+The caveman's [[Primal roar]] [[technique]] can be a life-saver in early levels; using it temporarily boosts all your nearby pets up a tier in growth (a kitten becomes a housecat, a dog becomes a large dog, etc.). Enterprising Cavemen may find this technique useful in the late game as well, if they happen to find themselves with liches or gnolls as pets.
+
+=== UnNethack ===
+
+[[UnNethack]] gives Cavepeople a bit of help at the beginning: their starting pet is a [[wolf]].
+
+== Encyclopedia entry ==
+
+===Human cave(wo)man===
+{{encyclopedia|
+Now it was light enough to leave.  Moon-Watcher picked up the shriveled corpse and dragged it after him as he bent under the low overhang of the cave.  Once outside, he threw the body over his shoulder and stood upright - the only animal in all this world able to do so.
+Among his kind, Moon-Watcher was almost a giant.  He was nearly five feet high, and though badly undernourished weighed over a hundred pounds.  His hairy, muscular body was halfway between ape and man, but his head was already much nearer to man than ape.  The forehead was low, and there were ridges over the eye sockets, yet he unmistakably held in his genes the promise of humanity.
+|[ 2001: A Space Odyssey, by Arthur C. Clarke ]
+}}
+
+===Dwarvish/Gnomish cave(wo)man===
+{{encyclopedia|
+'Twas in a land unkempt of life's red dawn;
+Where in his sanded cave he dwelt alone;
+Sleeping by day, or sometimes worked upon
+His flint-head arrows and his knives of stone;
+By night stole forth and slew the savage boar,
+So that he loomed a hunter of loud fame,
+And many a skin of wolf and wild-cat wore,
+And counted many a flint-head to his name;
+Wherefore he walked the envy of the band,
+Hated and feared, but matchless in his skill.
+Till lo! one night deep in that shaggy land,
+He tracked a yearling bear and made his kill;
+Then over-worn he rested by a stream,
+And sank into a sleep too deep for dream.
+|[ The Dreamer, by Robert Service ]
+}}
+
+== References ==
+<references />
+
+{{nethack-366}}
+[[Category:Roles]]}
+&&%s&& %s Tripe ration {150140 2023-03-07T15:50:59Z {4001279 Umbire the Phantom} /* Generation */* {{comestible
+  |color=brown
+  |tile=[[image:tripe ration.png]]
+  |name=tripe ration
+  |cost=15
+  |nutrition=200
+  |turns=2
+  |weight=10
+  |conduct=meat
+}}
+
+A '''tripe ration''' is a type of [[comestible]] item that appears in ''[[NetHack]]''.
+
+==Generation==
+Tripe rations have the second-highest probability of all comestibles after [[food ration]]s: 14% of randomly generated comestibles will be tripe rations.
+
+[[Orc (starting race)|Orcish]] [[Ranger]]s start with a stack of 4-8 tripe rations in place of the role's standard [[cram ration]]s;{{refsrc|src/u_init.c|119|version=NetHack 3.6.7|Initial inventory for Rangers pre-substitution}} all orcish starting characters in non-[[Wizard]] roles may also start the game with 1-2 tripe rations as one of their random food items.{{refsrc|src/u_init.c|852|version=NetHack 3.6.7|comment=Extra food for orcs}} Any [[cram ration]]s or [[lembas wafer]]s will be replaced with tripe in both cases.{{refsrc|src/u_init.c|222|version=NetHack 3.6.7|comment=Orcish food substitutions}}
+
+[[Tourist]]s will often start with tripe rations among their initial stacks of food.{{refsrc|src/u_init.c|144|version=NetHack 3.6.7|Initial inventory for Tourists}}
+
+==Description==
+When eaten, tripe rations provide 200 [[nutrition]], but non-[[rotten]] tripe also has a {{frac|2}} chance of giving you [[Vomiting|nausea]] along with a single [[experience point]].{{refsrc|src/eat.c|1818|version=NetHack 3.6.7|name="dogfood"}} If you are a [[Caveman]], an [[Orc (starting race)|orc]] or a non-humanoid [[carnivorous]] monster (e.g., you became a canine through [[lycanthropy]]), you can eat it without becoming sick.{{refsrc|src/eat.c|1807|version=NetHack 3.6.7}} 
+
+Tripe rations are a [[treat]] for carnivorous pets such as [[dog]]s and [[cat]]s, and increases the [[pet]]'s [[apport]] when fed to them. [[Throw]]ing tripe to a hostile or peaceful cat or dog will [[tame]] it, as will other forms of meat save for corpses; carrying a tripe ration in your main inventory will make a carnivorous pet stick around closer to you.
+
+==Strategy==
+Tripe rations are primarily useful in the early game for pacifying or taming hostile [[domestic]] animals that can otherwise do serious damage, allowing you to preserve more dependable sources of nutrition. They can also be instrumental in stealing from early shops, especially when money is scarce - entering a shop that has tripe before your pet does can be useful, since even if you don't have the money to buy the tripe, it still counts for apport if you pick it up and drop it.
+ 
+Allowing your pet to eat tripe that you've recently handled raises apport, making the pet more likely to pick up items - keeping tripe in your inventory also entices carnivorous pets to keep close by, making pet management slightly easier. As tame cats and dogs will attempt to devour a tripe ration on sight, try to grab any tripe you see lying around before your pet can get to it, if only so you can raise that pet's apport.
+
+Non-orcish characters can use tripe a source of [[confusion]] for reading [[scroll]]s, similar to [[egg]]s. The experience point gained from eating a tripe ration can also be used to regain a recently [[drain life|drained]] [[experience level]], especially for [[pacifist]] [[conduct]].
+
+==History==
+Tripe rations have been present in the game since hack121, a port of [[Jay Fenlason's Hack]].
+
+In [[NetHack 3.4.3]] and previous versions, including some variants based on those versions, [[horse]]s could be pacified with a thrown tripe ration.<!--I feel like this is a general 3.6.xism, but if someone could name the specific version this change was made in, that'd be great.-->
+
+When starting races were introduced in [[NetHack 3.3.0]], [[Orc (starting race)|orcish]] player characters except for [[Wizards]] could start the game with tripe among their random extra food items.<ref>[[NetHack 3.3.0/u_init.c#line806|NetHack 3.3.0 u_init.c, line 806]]</ref> There was intended to be code for an orcish character's initial inventory that additionally gave them tripe rations in place of cram rations and lembas wafers, which is properly implemented in [[NetHack 3.6.2]].{{refsrc|src/u_init.c|223|version=NetHack 3.6.2}}{{refsrc|src/u_init.c|1055|version=NetHack 3.6.2}}
+
+==Origin==
+{{wikipedia|Tripe}}
+Tripe is a type of edible food made from the lining of the stomachs of various farm animals such as cattle, pigs and sheep, with the mucosal lining removed. Beef tripe is typically the most common type, made from a cow's stomach; other suitable animals include deer, antelope, goat, ox, and giraffes.
+
+The rations of tripe that appear in ''NetHack'' are "dressed tripe" or "washed tripe", prepared by cleaning the stomachs and trimming the fat off before boiling and bleaching, which turns it a white color more commonly associated with the tripe seen in market stalls and butchers' shops. Dressed tripe was a popular, nutritious and cheap dish for the British working classes from Victorian times until the latter half of the 20th century, but has since come to be regarded as a pet food, hence its portrayal in ''NetHack''. Dressed tripe remains a popular dish in many parts of continental Europe such as Portugal, Spain, France, and Italy.
+
+==Messages==
+{{message|Yak - dog food!|You ate a non-rotten tripe ration and are not an orc, gaining 1 experience point and having a {{frac|2}} chance to become nauseous for 1d14 (more) turns, unless you are a Caveman.<ref name="dogfood"/>}}
+{{message|That tripe ration was surprisingly good!|You ate tripe as a carnivorous non-humanoid.}}
+{{message|Mmm, tripe... not bad!|As above, while an orc.}}
+{{message|Tastes great! Less filling!|As above while also [[hallucinating]].}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+If you start from scratch, cooking tripe is a long-drawn-out affair.  Fresh whole tripe calls for a minimum of 12 hours of cooking, some time-honored recipes demanding as much as 24. To prepare fresh tripe, trim if necessary.  Wash it thoroughly, soaking overnight, and blanch, for 1/2 hour in salted water. Wash well again, drain and cut for cooking.  When cooked, the texture of tripe should be like that of soft gristle.  More often, alas, because the heat has not been kept low enough, it has the consistency of wet shoe leather.
+|[ Joy of Cooking, by I. Rombauer and M. Becker ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Comestibles]]}
+&&%s&& %s Scroll of earth {147736 2022-08-20T21:51:47Z {4001279 Umbire the Phantom} exp {{scroll|name=earth|cost=200|ink=4&ndash;7|muse=off}}
+
+A '''scroll of earth''' is a type of [[scroll]] the appears in ''[[NetHack]]''. It creates [[boulder]]s when read.
+
+==Generation==
+The first level of [[Sokoban]] always has two guaranteed scrolls of earth in a corner past the first set of pits.
+
+Monsters may receive a scroll of earth as a random [[offensive item]], but only if they are generated wearing a metal helm; if not, they will receive a [[wand of striking]] instead.{{refsrc|src/muse.c|1588|version=NetHack 3.6.6}}
+
+==Effects==
+Reading an uncursed scroll of earth will create 9 boulders - 8 around the reader and one on top of their head. A blessed scroll will create 8 boulders around the reader without dropping one on them, and a cursed scroll will create a single boulder over the reader's head. If there is a wall or [[door]] where a boulder would normally fall, that boulder will not be created. A boulder that falls on a monster does 1d20 points of damage and can wake up nearby monsters with the [[noise]]{{refsrc|src/read.c|1762|version=NetHack 3.6.6}} - if they are wearing a hard helmet, it bounces off and deals just 2 points of damage. A scroll of earth does no damage to amorphous, phasing, noncorporeal, or unsolid monsters.{{refsrc|src/read.c|1747|version=NetHack 3.6.6}}
+
+The scroll has no effect on the [[Rogue level]] and the [[Elemental Planes]], except for the [[Plane of Earth]].{{refsrc|src/read.c|1654|version=NetHack 3.6.6}} Reading a scroll of earth on a Sokoban level before solving that floor will decrease your [[Luck]] by 1.{{refsrc|src/read.c|1665|version=NetHack 3.6.6}}{{refsrc|src/trap.c|5435|version=NetHack 3.6.6}}
+
+Intelligent monsters can read this scroll for offensive purposes, but will only read them 10% of the time ''unless'' they would be unaffected by the boulders, or else are wearing a hard helmet. Monsters will not read the scroll in the above areas where the scroll has no effect.{{refsrc|src/muse.c|1204|version=NetHack 3.6.6}}
+
+If read while confused, the scroll will create [[rock]]s instead of boulders, using the same pattern based on the [[beatitude]] of the scroll.
+
+==Strategy==
+The scroll of earth can be used to create a "[[boulder fort]]". This is a relatively safe way to deal with a dangerous monster or horde of monsters - monsters will not be able to attack a player they cannot see, and the boulders prevent most monsters from approaching. While within this "fort", the player can use [[telepathy]] to detect them and attack with missile weapons and spells. Be careful of {{Spell of|force bolt}}s and {{wand of|striking}} wands, as they will destroy boulders. 
+
+Alternately, you can use the boulders to create your own choke poin, e.g. by carefully moving a single boulder to allow only one monster through. This is best done on a staircase, a [[scroll of scare monster]] and/or a permanent [[Elbereth]] square to allow a means of escape if things go poorly. You can also use the boulders to block off up [[stair]]s or [[ladder]]s to prevent [[demon lord]]s and other [[covetous]] monsters from warping and fleeing to another floor. Boulders from the scroll can also be used to trap [[aligned priest]]s in order to convert a [[temple]] [[altar]] - see their page for details.
+
+Scrolls of earth can be used to fill [[trapdoor]]s, [[hole]]s, and [[moat]]s - if you lack a source of [[levitation]], this can be another way to cross large bodies of water, such as [[Medusa's Island]] or the moat at the [[Castle]]. While you can use them to fill the Castle trap doors, keep in mind that filling all of them means you would need to dig one out again to reach Gehennom.
+
+===Sokoban===
+The scrolls of earth found in Sokoban are intended as backups in case boulders are destroyed or additional pits/holes need to be filled, and can be used to informally identify any other scrolls you may have picked up previously. Remember that reading any scroll of earth on an unsolved level will incur a Luck penalty, and try to identify their [[beatitude]] beforehand if possible - for example, a blessed scroll will leave more boulders free to move, and there are situations where a single boulder from a cursed scroll is preferable. You may also want to position yourself before reading depending on how many boulders are actually needed.
+
+Breaking boulders on unsolved levels also incurs a Luck penalty - as such, try not to let any intelligent monsters (e.g., [[nymph]]s) steal and use scrolls of earth in Sokoban, or you may be forced to repair your Luck ''and'' their mess. Thankfully, since monsters will hesitate to read the scroll unless they have a hard helm, you will usually be able to kill them fast enough.
+
+==History==
+The scroll of earth first appears in [[NetHack 3.3.0]].
+
+==Variants==
+Many variants add new Sokoban levels, including possible first level maps that include one or two scrolls of earth.
+
+===UnNetHack===
+In [[UnNetHack]]'s [[Black market (UnNetHack)|black market]], scrolls of earth have no effect 50% of the time.
+
+===SpliceHack===
+In [[SpliceHack]] and [[SpliceHack-Rewrite]], you can combine a scroll of earth with a [[leather drum]] at a furnace to make a [[drum of earthquake]].
+
+[[Dal Zethire]], the [[Cartomancer]] [[quest nemesis]], generates with a scroll of earth. 
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Scrolls|Earth]]}
+&&%s&& %s Scroll of amnesia {144219 2022-01-22T21:44:33Z {4001279 Umbire the Phantom}  {{scroll|name=amnesia|cost=200|ink=4&ndash;7}}
+
+The '''scroll of amnesia''' is the only indisputably harmful scroll. (Even the [[scroll of punishment]] gives you a heavy ball to use as a weapon.) Reading a scroll of amnesia makes you forget things and [[abuse]]s your [[wisdom]].
+
+==Effects==
+
+{{upcoming|NetHack 3.7.0|This scroll no longer makes you forget object identities and maps. It still makes you forget spells, and additionally makes you forget some of your skills. The Strategy section should note that using this scroll deliberately to forget skills is a valid strategy if you want to retrain in different skills; some skills can immediately be advanced again, but some have to be retrained with successful uses before they can be advanced.}}
+
+When you read a scroll of amnesia, you have a {{frac|1|3}} chance of forgetting up to 25% of all known level maps and a separate {{frac|1|3}} chance of forgetting up to 25% of object identities. (Up to 25% means that you have equal chance of forgetting 0%, or 1%, ..., or 24% of level maps or object identities.)
+
+You forget all traps on your current level (except any in which you are stuck), forget whether you are punished, and abuse your wisdom. If this causes you to forget the identity of scrolls of amnesia themselves, they are re-identified because learning scroll identity happens after resolving reading effects.{{refsrc|read.c|393|nethack=3.6.1|comment=Scoll identity is made known after call to scroll effects.}}
+
+Unless the scroll is blessed, you forget between one and all of your known spells. Being confused rolls this number twice and takes worse result. However, [[luck]] can decrease the number.{{refsrc|spell.c|1289|nethack=3.6.1|comment=Luck effect on number of spells forgotten.}} The chance for decrease goes from about {{frac|11}} at minimum luck (&minus;13) through {{frac|7}} at zero luck to about {{frac|3}} at maximum luck (+13). If the amount is decreased, instead of forgetting ''n'' spells, you forget between 1 and ''n'' spells. Each spell lost that way abuses your wisdom in addition to the one time guaranteed by reading the scroll.
+
+If the scroll is cursed or you are not confused, you forget all of the current level; otherwise you only forget about {{frac|6|7}} of the current level. ([[Sokoban]] maps are not forgotten.{{refsrc|read.c|796|nethack=3.6.1|comment=Sokoban maps are not forgotten.}})
+
+==Messages==
+
+{{message|Who was that [[Maud]] person anyway?}}
+{{message|Thinking of Maud you forget everything else.|You read a scroll of amnesia.}}
+{{message|As your mind turns inward on itself, you forget everything else.|You, a character named Maud, read a scroll of amnesia. (This is a prime example of [[TDTTOE]].)}}
+{{message|Your mind releases itself from mundane concerns.|You read a scroll of amnesia while [[hallucinating]].}}
+
+== Identification ==
+
+Scrolls of amnesia auto-identify when read. Monsters will not read them.
+
+== Strategy ==
+
+Scrolls of amnesia are useless, making them a perfect candidate for [[blanking]]. Because the effects of reading it are so problematic, it is best to ensure that an unidentified scroll is not amnesia before reading it. If [[price identification]] reveals a scroll's base price as 200zm, you should avoid reading it unless scrolls of amnesia are already identified.
+
+== History ==
+
+Forgetting only one spell is a [[Bugs in NetHack 3.4.3|bug in NetHack 3.4.3]]. The intended behavior is to forget between 1 and all of your spells starting at the bottom of your [[spellcasting]] menu. If you are confused, the number of forgotten spells is supposed to be +1 on top of that (limited to all of them of course).
+
+Prior to [[NetHack 3.6.0]], this scroll could be used to manage which [[spellbook]]s you get [[gift]]ed. Before reading the scroll, use {{kbd|+}} to sort the [[spellcasting]] menu so that forgotten spells or spells you want a book for appear last. [[Prayer#Favors and gifts|Altar farming]] will then be more likely select these spellbooks over ones still present.
+
+Another use could be to avoid blanking spellbooks&mdash;you can read them arbitrarily often provided you do not already have the spell in your [[spellcasting]] menu. NetHack 3.6.1 only removes memory of the spell but does not take it away from the list.{{refsrc|spell.c|1321|nethack=3.6.1|comment=Forgetting spell sets memory retention to zero.}}
+
+== Variants ==
+
+[[UnNetHack]] removes scrolls of amnesia from the game and adds [[scroll of flood|scrolls of flood]] in their place.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+Get thee hence, nor come again,
+Mix not memory with doubt,
+Pass, thou deathlike type of pain,
+Pass and cease to move about!
+'Tis the blot upon the brain
+That will show itself without.
+        ...
+For, Maud, so tender and true,
+As long as my life endures
+I feel I shall owe you a debt,
+That I never can hope to pay;
+And if ever I should forget
+That I owe this debt to you
+And for your sweet sake to yours;
+O then, what then shall I say? -
+If ever I should forget,
+May God make me more wretched
+Than ever I have been yet!
+|[ Maud, And Other Poems by Alfred, Lord Tennyson ]
+}}
+
+==References==
+<references/>
+
+{{DOD}}
+[[Category:Scrolls|Amnesia]]
+{{nethack-361}}}
+&&%s&& %s Scroll of charging {139153 2021-04-21T03:32:48Z {4001463 Actual-nh} /* UnNetHack */ Grammar/style {{scroll|name=charging|cost=300|ink=8–15}}
+
+A '''scroll of charging''' can be used to charge [[wand]]s, [[tool]]s, or [[ring]]s, or to increase your own magical [[energy]].
+
+== Effects ==
+
+The scroll of charging, when read, prompts the player to choose an item to which a number of uses (or "charges") will be [[charging|recharged]]. Blessed scrolls have a higher probability than uncursed scrolls to restore more charges on the item (and thus a higher chance to restore the maximum number of charges). Cursed scrolls will instead set the number of charges on the item to zero and increment the charge counter by 1.
+
+If read while confused, a noncursed scroll will instead increase your [[energy]] to the maximum, unless your energy is already at maximum, in which case your maximum energy will increase by 5-20 points.  If the scroll is cursed, it will instead reduce your current energy to 0.
+
+===Charging functionality===
+{{main|Charging}}
+
+====Wands====
+Blessed scrolls will always restore maximum charges to a previously uncharged [[wand of wishing]],{{refsrc|read.c|257|name=restored_charges}} and will always restore any given directional wand to at least 4 charges or any nondirectional wand other than wishing to 11 charges.<ref name="restored_charges"/>{{refsrc|read.c|255|name=maximum_charges}} Specifically, a target charge count is determined; this is a random number between the maximum charge count and 4 charges fewer than that<ref name="restored_charges"/> (4 to 8 for directional wands; 11 to 15 for nondirection wands other than wishing<ref name="maximum_charges"/>). Uncursed scrolls do the same, but adjust the target charge count to a random number from 1 to the original charge count.{{refsrc|read.c|258}} The wand then is adjusted to that target charge count if it had fewer charges previously.{{refsrc|read.c|260}} Otherwise, one charge is added.{{refsrc|read.c|261}} Wands can only be recharged a certain number of times before the wand explodes, dealing damage to you.
+
+====Tools====
+Except for a [[magic marker]], which can only be recharged once, all tools can be charged an unlimited number of times, with varying amounts of charges recharged depending on the item.
+
+====Rings====
+All rings that have a numeric bonus on them, such as the [[ring of adornment]], can have their enchantment modified by the scroll of charging. A blessed scroll will increase the enchantment between 1–3 points, an uncursed scroll will increase it by one, and a cursed scroll will decrease it by 1–2 points. Rings have a chance of being destroyed if the enchantment is too high or too low:
+
+{| class="wikitable"
+|-
+!Current enchantment
+|&le; &minus;1
+|0
+|1
+|2
+|3
+|4
+|5
+|6
+|&ge; 7
+|-
+!Chance of destruction
+|0%
+|0%
+|14%
+|29%
+|43%
+|57%
+|71%
+|86%
+|100%
+|}
+
+== Messages ==
+These messages are specific to the scroll of charging; for messages related to the act of charging, see the [[charging#Messages|charging]] article.
+
+{{message|This is a charging scroll.|You read a scroll of any beatitude.}}
+{{message|You feel charged up!|You read a noncursed scroll, while confused.}}
+{{message|You feel discharged.|You read a cursed scroll, while confused.}}
+{{message|You have a feeling of loss.|You tried to charge an item that cannot be charged. No effect.}}
+
+== Strategy ==
+Because of the scroll's function, two or three [[blessed]] scrolls of charging are often the best first [[wish]] to make from a [[wand of wishing]], to use when its initial charges run out. Or, if you have already identified the scroll of charging and you own some blessed paper, it may be better to wish for a [[magic marker]] and write the scroll yourself.
+
+The ring-charging property of the scroll can be somewhat useful, but typically the player will be interested in rings more suited to an [[ascension kit#rings|ascension kit]]. The scroll is often better kept for charging valuable wands and magic markers.
+
+Reading the scroll while confused is useful for [[wishless]] or artifact-wishless spellcasters, especially when their power is being drained by the [[Amulet of Yendor]]. Spellcasters who are able to obtain [[the Mitre of Holiness]] or [[the Eye of the Aethiopica]] might not need the confused charging effect quite as often. 
+
+==UnNetHack==
+In [[UnNetHack]], a blessed scroll of charging will (in addition to charging the item) also reveal the number of charges and the charge counter.
+
+== References ==
+<references/>
+
+[[Category:Scrolls|Charging]]
+{{nethack-343}}}
+&&%s&& %s Scroll of confuse monster {144664 2022-02-25T15:33:45Z {4001279 Umbire the Phantom} /* Strategy */ thank you nabru {{Languages}}
+{{scroll|name=confuse monster|cost=100|ink=6-11}}
+
+A '''scroll of confuse monster''' is a [[scroll]] that appears in [[NetHack]].
+
+==Description==
+Reading a noncursed scroll of confuse monster causes your hands to glow red, and will also prompt you to name the scroll. The red glow signifies that your next non-lethal hit will [[confuse]] the target monster unless you are in a form that lacks hands; the intensity of the glow represents how many uses of the ability you have. A blessed scroll will cause them to glow "a brilliant red" when read, which adds 2-9 (more) uses. Upon hitting a monster using your hands or a wielded weapon, a use is consumed and the monster must pass a check against its [[Magic resistance (monster)|magic resistance]], becoming confused if they fail the check. This does not occur if the target monster is already confused.{{refsrc|src/uhitm.c|2788|nethack=3.6.1}} 
+
+While there is no upper limit on uses that can be added, once at least 40 uses are stored, reading a noncursed scroll will only grant one additional use.{{refsrc|read.c|1177|version=NetHack 3.6.0|comment=after a while, repeated uses become less effective}} The [[spell of confuse monster]] has similar effects, depending on your skill level in [[enchantment spells]]; [[enlightenment]] after using either source will display "You are going to confuse monsters" in the status list.
+
+Reading a cursed scroll of confuse monster will instead confuse you for d100 (more) turns. The same occurs if you read a non-blessed scroll while already confused; reading a blessed scroll while confused will instead cure your confusion. If you are [[polymorph]]ed into any non-{{mcsl|@}} monster form, reading a scroll of any [[beatitude]] will also confuse you for d100 (more) turns.
+
+==Strategy==
+{{main|Confusion#Monster confusion}}
+The scroll of confuse monster can be a decent early-game supplement: confused monsters will fail to cast [[monster spells|spells]] properly, move erratically, and may even attack other hostile monsters nearby; they will also experience [[Confusion#Confused scroll effects|alternate effects]] from reading scrolls. Confusing a monster generally makes it much less likely to attack you directly, However, they are also unpredictable and not to be taken lightly, and will still try to use ranged abilities.
+
+The scroll is typically unlikely to see much use beyond that point, and tends to be a good candidate for [[blanking]]. The monster magic resistance of hostile monsters generally increases as you progress, making them generally less effective; while still somewhat useful, confusion also takes a backseat to other incapacitating spells and effects. A cursed scroll (or any scroll for non-{{white|@}} polyforms) can still serve as a source of confusion if you lack potions of {{! of|booze|confusion}} or a forgotten [[spell]]. Conversely, the confusion-removal effect of a blessed scroll that is read while confused is situational at best, and is often superseded by a [[unicorn horn]].
+
+==Messages==
+{{message|Your hands begin to glow red <even more>.|You read an uncursed scroll of confuse monster, with the latter appended if you already have uses stored.}}
+{{message|Your hands begin to tingle <even more>.|As above, while [[blind]]; this also applies if you are blind and confused.}}
+
+{{message|Your hands glow a brilliant red.|You read a blessed scroll of confuse monster.}}
+{{message|Your hands tingle very sharply.|As above, while blind.}}
+{{message|Your hands glow an even more brilliant red.|You read a blessed scroll with at least one use in store.}}
+{{message|Your hands tingle even more.|As above, while blind.}}
+
+{{message|Your hands no longer glow so brightly red.|You hit a monster in melee and consumed a usage of the ability, and you still have uses remaining.}}
+{{message|The tingling in your hands lessens.|As above, while blind.}}
+{{message|Your hands stop glowing red.|You hit a monster in melee and consumed your remaining use of the ability.}}
+{{message|Your hands stop tingling.|As above, while blind.}}
+{{message|<target> appears confused.|Your attack successfully confused the hit monster.}}
+
+{{message|You feel confused.|You read a cursed scroll of confusion, or a scroll of any beatitude when polymorphed into a non-{{white|@}} monster form.}}
+{{message|Your hands begin to glow purple.|You read an uncursed scroll while confused.}}
+{{message|A red glow surrounds your head.|You read a blessed scroll while confused and cured your confusion.}}
+{{message|A faint buzz surrounds your head.|As above, while blind.}}
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Scrolls|Confuse monster]]}
+&&%s&& %s Tool {150284 2023-03-21T04:01:30Z {4001279 Umbire the Phantom} follow-up {{items}}
+'''Tools''', represented by {{white|(}}, are the miscellaneous items in the game which don't fall into any other category, and include [[container]]s, light sources, and musical instruments. Most tools can be used by [[apply]]ing them via {{kbd|a}}.
+
+==Generation==
+Tools compose 8% of all randomly-generated items in the main dungeon and 12% in Gehennom.
+
+Some tools can be randomly generated as blessed or cursed: lighting sources, cans of grease, crystal balls, and figurines. Other tools created by normal random generation are always uncursed; the exception to this is the "fake [[bones]]" left on some early-dungeon [[trap]]s, which may include tools among the cursed items placed on that square.
+
+==List of tools==
+<!-- good columns to add might include Appearance, Material, and what (if anything) supersedes it -->
+{|class="prettytable sortable"
+! Name !! data-sort-type=number | Cost !! data-sort-type=number | Weight !! data-sort-type=number | Cost:weight ratio !! Use (where not obvious) !! data-sort-type=number | Prob (‰) !! Creation !! Magic?
+|-
+| colspan="8" style="background-color: #DDFFDD"| '''Character accessories'''
+|-
+|| [[blindfold]] || 20 zm || 2 || 10 || [[blindness|Blinds]] you || 50 ||||No
+|-
+|| [[lenses]] || 80 zm || 3 || 27 || [[Spellbook]] reading || 5 |||| No
+|-
+|| [[Eyes of the Overworld]] || 2500 zm || 3 || 833 || [[Enlightenment]] || 0 || [[Monk quest]] artifact || No
+|-
+|| [[towel]] || 50 zm || 2 || 25 || [[blindness|Blinds]] you, cleans face and hands || 50 |||| No
+
+|-
+| colspan="8" style="background-color: #DDFFDD" | '''[[Pet]] accessories'''
+|-
+|| [[leash]] || 20 zm || 12 || 1.67 || Keeps pets nearby || 65 |||| No
+|-
+|| [[saddle]] || 150 zm || 200 || .75 || [[Riding]] || 5 |||| No
+|-
+
+| colspan="8"  style="background-color: #DDFFDD"| '''[[Container]]s'''
+|-
+|| [[bag of holding]] || 100 zm || 15 || 5.67 || Makes items lighter || 20 || Contains 0-1 items || Yes
+|-
+|| [[chest]] || 16 zm || 600 || 0.027 || || 35 || Contains 0-5 items || No
+|-
+|| [[ice box]] || 42 zm || 900 || 0.047 || Keeps [[corpse]]s [[food poisoning|fresh]] || 5 || Contains 0-20 corpses || No
+|-
+|| [[large box]] || 8 zm || 350 || 0.023 || || 40 || Contains 0-3 items || No
+|-
+|| [[oilskin sack]] || 100 zm || 15 || 5.67 || Prevents [[wet|blanking]] || 5 || Contains 0-1 items || No
+|-
+|| [[sack]] || 2 zm || 15 || 0.133 || || 35 || Contains 0-1 items || No
+|-
+| colspan="4"  style="background-color: #DDFFDD"| '''[[Tonal instrument]]s''' ||style="background-color: #DDFFDD"| [[Passtune]] || colspan="4" style="background-color: #DDFFDD"|
+|-
+|| [[bugle]] || 15 zm || 10 || 1.5 || Aggravates nearby soldiers || 4 |||| No
+|-
+|| [[fire horn]] || 50 zm || 18 || 2.78 || Ray of fire || 2 |||| Yes
+|-
+|| [[frost horn]] || 50 zm || 18 || 2.78 || Ray of frost || 2 |||| Yes
+|-
+|| [[magic flute]] || 36 zm || 5 || 7.2 || Lulls monsters to [[sleep]] || 2 |||| Yes
+|-
+|| [[magic harp]] || 50 zm || 30 || 1.67 || [[Pet|Tames]] monsters || 2 |||| Yes
+|-
+|| [[tooled horn]] || 15 zm || 18 || 0.83 || [[Scare]]s monsters || 5 |||| No
+|-
+|| [[wooden flute]] || 12 zm || 5 || 2.4 || [[Peaceful|Pacifies]] [[snake]]s || 4 |||| No
+|-
+|| [[wooden harp]] || 50 zm || 30 || 1.67 || [[Peaceful|Pacifies]] [[nymph]]s || 4 |||| No
+|-
+| colspan="8"  style="background-color: #DDFFDD"| '''[[Atonal instrument]]s'''
+|-
+|| [[bell]] || 50 zm || 30 || 1.67 || Wakes monsters, summons [[nymph]]s || 2 |||| No
+|-
+|| [[Bell of Opening]] ||  5000 zm || 10 || 500 || [[Invocation]] || || get from [[quest nemesis]] || Yes
+|-
+|| [[drum of earthquake]] || 25 zm || 25 || 1 || Creates pits, [[scare]]s monsters, angers peacefuls || 2 |||| Yes
+|-
+|| [[leather drum]] || 25 zm || 25 || 1 || Wakes and [[scare]]s monsters || 4 |||| No
+|-
+|| [[magic whistle]] || 10 zm || 3 || 3.33 || Teleports [[pet]]s to you || 30 |||| Yes
+|-
+|| [[tin whistle]] || 10 zm || 3 || 3.33 || Calls [[pet]]s || 100 |||| No
+|-
+| colspan="8"  style="background-color: #DDFFDD"| '''[[Light source]]s'''
+|-
+|| [[brass lantern]] || 20 zm || 30 || 0.67 || || 30 |||| No
+|-
+|| [[Candelabrum of Invocation]] || 5000 zm || 10 || 500 || [[Invocation]] || || get from [[Vlad the Impaler|Vlad]] || Yes
+|-
+|| [[magic lamp]] || 50 zm || 20 || 2.5 || Possible [[wish]] || 15 |||| Yes
+|-
+|| [[oil lamp]] || 10 zm || 20 || 0.5 || || 45 |||| No
+|-
+|| [[tallow candle]] || 10 zm || 2 || 5 || [[Invocation]] || 20 || stack of 1 (4/7 prob.) or 2-7 (1/14 prob. each) || No
+|-
+|| [[wax candle]] || 20 zm || 2 || 10 || [[Invocation]] || 5 || stack of 1 (4/7 prob.) or 2-7 (1/14 prob. each) || No
+|-
+| colspan="8"  style="background-color: #DDFFDD"| '''[[Trap]]s'''
+|-
+|| [[beartrap]] || 60 zm || 200 || 0.3 || || 0 |||| No
+|-
+|| [[land mine]] || 180 zm || 300 || 0.6 || || 0 |||| No
+
+|-
+| colspan="8"  style="background-color: #DDFFDD"| '''[[Unlocking tool]]s'''
+|-
+|| [[credit card]] || 10 zm || 1 || 10 || || 15 |||| No
+|-
+|| [[The Platinum Yendorian Express Card]] || 7000 zm || 1 || 7000 || [[Charging]] || || [[Tourist quest]] artifact || No
+|-
+|| [[lock pick]] ('''osaku''' to [[Samurai]]) || 20 zm || 4 || 5 || || 60 |||| No
+|-
+|| [[skeleton key]] || 10 zm || 3 || 3.33 || || 80 |||| No
+|-
+|| [[The Master Key of Thievery]] || 3500 zm || 3 || 1166 || || 0 || [[Rogue quest]] artifact || No
+
+|-
+| colspan="8"  style="background-color: #DDFFDD"| '''[[Weapon-tool]]s'''
+|-
+|| [[grappling hook]] || 50 zm || 30 || 1.67 || || 20 |||| No
+|-
+|| [[pick-axe]] || 50 zm || 100 || 0.5 || Digging || 5 |||| No
+|-
+|| [[unicorn horn]] || 100 zm || 20 || 5 || Cure status effects, various other || 0 |||| Yes
+
+|-
+| colspan="8"  style="background-color: #DDFFDD"| '''Miscellaneous'''
+|-
+|| [[bag of tricks]] || 100 zm || 15 || 6.67 || Summoning monsters || 20 || 1-20 charges || Yes
+|-
+|| [[can of grease]] || 20 zm || 20 || 1 || Protects against [[mind flayer]]s, [[drowning attack]]s, and [[wet|water damage]] || 15 || 1-25 charges || No
+|-
+|| [[crystal ball]] || 60 zm || 150 || .4 || || 15 || 1-5 charges || Yes
+|-
+|| [[The Orb of Detection]] || 2500 zm || 150 || 16.7 || [[Invisibility]] || 0 || [[Archeologist quest]] artifact || No
+|-
+|| [[The Orb of Fate]] || 2500 zm || 150 || 16.7 || [[Level teleport]] || 0 || [[Valkyrie quest]] artifact || No
+|-
+|| [[expensive camera]] || 200 zm || 12 || 16.7 || [[Scare]] monsters || 15 |||| No
+|-
+|| [[figurine]] || 80 zm || 50 || 1.6 || Summons a monster || 25 |||| Yes
+|-
+|| [[horn of plenty]] || 50 zm || 18 || 2.78 || Produces [[comestible|food]] or some potions || 2 |||| Yes
+|-
+|| [[magic marker]] || 50 zm || 2 || 25 || Writes [[scrolls]] and [[spellbooks]] || 15 || 30-99 charges || Yes
+|- ||
+|| [[mirror]] || 10 zm || 13 || .77 || [[Nymph]] and [[foocubus]] control, [[Luck]] management, [[scare]] monsters || 45 |||| No
+|-
+|| [[The Magic Mirror of Merlin]] || 1500 zm || 13 || 115.385 || || 0 || [[Knight quest]] artifact || No
+|-
+|| [[stethoscope]] || 75 zm || 4 || 18.3 || Get monster status information, detect secret doors/corridors || 25 |||| No
+|-
+|| [[tin opener]] || 30 zm || 4 || 7.5 || || 35 |||| No
+|-
+|| [[tinning kit]] || 30 zm || 100 || .3 || Prevents [[troll]] resurrection, tins corpses for [[intrinsic]]s || 15 |||| No
+|}
+
+== Identification ==
+
+=== Bags ===
+
+A bag is either of the four: bag of tricks, sack, bag of holding, or oilskin bag.
+
+If you see an unknown bag, first try to loot it, unless you are low on HP (say, HP<25). If it is a bag of tricks, it "develops a huge set of teeth and bites you!", causes 1-10 points of damage, and becomes identified. Otherwise, you loot it like any container.
+
+If it is not a bag of tricks, it is either a sack (7/12 chance), a bag of holding (4/12 chance), or an oilskin bag (1/12 chance). (The chances are for randomly generated bag.)  
+
+Since sack costs 2, and all other bags cost 100, you can identify the sack with [[price identification]].
+
+To identify the bag of holding, pick up just enough stuff to be burdened, but if you drop a small object, you are not burdened anymore. Then put a lot of stuff into your bag. If you are not burdened anymore, it is a bag of holding.
+
+Oilskin bags are rare, and can be identified by not belonging to other types.
+
+If you found a bag in a 1*1 room at the last level of [[Sokoban]], it is a bag of holding.
+
+If you found a bag in a [[bones]] pile, it may well be a bag of holding, and has 80% chance of being cursed. When you open a bag of holding, each item has 1/13 chance of disappearing. You may want to uncurse the bag (wand of cancellation, holy water, scroll of remove curse) before looting it.
+
+=== Lamp ===
+
+Each lamp is either a magic lamp or an oil lamp.  A newly generated lamp has 1/4 chance of being magic.  Magic lamp costs 50, and oil lamp costs 10, so you can use price identification.
+
+If a lamp "flickers", "flickers considerably", "seems about to go out", or "has gone out", or "has no oil", it is an oil lamp.
+
+If an unknown lamp is blessed, and in case it is magic, you want to use it for a wish immediately, just try to rub it (don't forget to snuff it before) until you see a djinnie. If you rubbed it 20 times, and each time you got the message "Nothing happens", you have less than 1/3<sup>20</sup> (about 1 in 3.5 billion) chance it is a magic lamp.
+
+=== Whistle ===
+
+Just apply it. If you produce a "high whistling sound" or a "shrill whistling sound", it is a tin whistle. If you produce a "strange whistling sound", a "normal whistling sound", or a "high-pitched humming noise", it is a magic whistle.
+
+However, if you found it in bone piles, it is probably cursed. Cursed magic whistle has a 50% chance of producing a high-pitched humming noise, in which case it may wake up nearby monsters, so use with caution.  Newly generated whistles are always uncursed.
+
+Price identification doesn't work for whistles, as both cost 10.
+
+From randomly generated whistles, 3/13 are magic.
+
+=== Horn ===
+
+A horn is either a fire horn (5/11 chance), a frost horn, a tooled horn, or a horn of plenty (2/11 chance each).
+
+Tooled horn costs 18, other horns cost 50, so you can use price identification to separate tooled horns from others.
+
+You can identify a horn by applying it. 
+* If it produces food or water, it is a horn of plenty. 
+* If it asks "Improvise?", it is a tooled horn. You may play a tune, or improvise. In the latter case, you will wake up and scare nearby monsters.
+* If it asks for direction, it is either a fire horn or a frost horn. Give a direction to determine which one is it. Unless you have reflection, stand at a big corridor or one end of a big room to not hurt yourself.  Also be careful not to hurt your pets or peaceful monsters.
+* Note that uncharged fire or frost horn would behave as a tooled horn.
+
+=== Flute ===
+
+It is either a magic flute or a wooden flute. 1/3 of randomly generated flutes are magic.
+
+Magic flute costs 36, wooden flute costs 12, so price identification works.
+
+When played, with wooden flute you either "trill" or "toot", and with magic flute you "produce soft music".
+
+Uncharged magic flute behaves as a wooden flute.
+
+=== Harp ===
+
+It is either a magic harp or a wooden harp. 1/3 of randomly generated harps are magic.
+
+Both cost 50, so price identification does not work.
+
+When played, wooden harp priduces "lilting melody" or "twangs", while magic harp with charges "produce very attractive music".
+
+Uncharged magic harp behaves as a wooden harp.
+
+=== Drum  ===
+
+It is either a drum of earthquake or a leather drum. 1/3 of randomly generated drums are drums of earthquake.
+
+Both cost 25, so price identification does not work.
+
+When applied, a leather drum would "beat a deafening row!", awake and scare nearby monsters. A drum of earthquake would "produce a heavy, thunderous rolling!", awake and possibly scare all monsters on the level, and create pits around and possibly under you.
+
+Uncharged drum of earthquake behaves as a leather drum.
+
+While you can identify a drum by applying it, you may not want to do it, as the effects of the drum of earthquake are rather strong.
+
+=== Candle ===
+
+There are two kinds of these, a wax candle and a tallow candle. The only differences between wax and tallow candles are their lifespans, value, and that eating tallow candles breaks vegetarian conduct, so you probably don't need to identify a candle.  If you still want to, use price identification. Tallow candle costs 10, and wax candle costs 20.
+
+Tallow candles are much more common.  4/5 of all randomly generated candles, or stacks of candles, are tallow.
+{{nethack-343}}
+[[Category:Tools| ]]}
+&&%s&& %s Potion of booze {148418 2022-10-04T23:50:25Z {4001279 Umbire the Phantom} /* SlashTHEM */* {{potion|name=booze|cost=50}}
+
+A '''potion of booze''' is a type of non-[[magical item|magical]] potion that appears in ''[[NetHack]]''; [[Samurai]] see them as a '''potion of sake'''.{{refsrc|src/objnam.c|59|version=NetHack 3.6.6}}
+
+==Generation==
+One variant of [[Mine's End]], [[Mine's End#The Gnome King's Wine Cellar|The Gnome King's Wine Cellar]], will have at least 6 potions of booze.
+
+The inventory of [[delicatessen]]s has a 4% chance to contain a potion of booze on a given square.{{refsrc|src/shknam.c|267|version=NetHack 3.6.6}}
+
+Dipping a [[potion of confusion]] into a [[potion of gain energy]] or [[potion of gain level]] will [[alchemy|alchemize]] the potion into either a potion of booze or a [[potion of enlightenment]].
+
+[[Apply]]ing a [[horn of plenty]] with charges has a ~1.4% chance to generate a potion of booze.
+
+==Description==
+Quaffing a potion of booze provides [[nutrition]], abuses [[wisdom]] and may [[confuse]] you dependent on beatitude. The potion has the following specific effects:{{refsrc|src/potion.c|694|version=NetHack 3.6.6}}
+
+* blessed: abuses wisdom, provides 30 points of nutrition
+* uncursed: abuses wisdom, provides 20 points of nutrition, makes you confused for 3d8 (more) turns.
+* cursed: abuses wisdom, provides 10 points of nutrition, makes you confused for 3d8 (more) turns, makes you pass out for 1-15 turns.
+
+{{upcoming|NetHack 3.7.0|The duration of confusion from booze depends on your hunger: confusion from booze lasts for 2d8 (more) turns, plus an additional d8 per hunger level below satiated.}}
+
+Non-diluted potions also [[healing|heal]] 1 hit point.
+
+Hitting a monster with the potion will cause it to become confused, subject to [[monster magic resistance]].{{refsrc|src/potion.c|1467|nethack=3.6.6}} Breathing the potion's [[vapor]]s will confuse you for d5 (more) turns;{{refsrc|src/potion.c|1701|nethack=3.6.6}} monsters will not normally throw this potion. [[Alchemy|Mixing]] a potion of booze with a [[potion of gain level]] or a [[potion of gain energy]] creates a [[potion of hallucination]].{{refsrc|src/potion.c|1831|nethack=3.6.6}} Mixing a potion of booze with a [[potion of enlightenment]] creates a [[potion of confusion]].{{refsrc|src/potion.c|1868|nethack=3.6.6}}
+
+Dipping an [[amethyst]] into a potion of booze will turn the potion into a [[potion of fruit juice]].{{refsrc|src/potion.c|1827|version=NetHack 3.6.6}} This is a reference to amethysts' name coming from Greek ἀμέθυστος ("not drunk"). See [[amethyst|the article on amethysts]] for more details.
+
+==Strategy==
+Non-blessed potions of booze are sometimes used as a source of confusion for the alternate effects of reading [[scroll]]s, e.g. [[magic portal]] detection on the [[Planes]] using a [[scroll of gold detection]], or [[erodeproof]]ing your armor via the [[scroll of enchant armor]]. Blessed potions of booze are typically most preferred by [[foodless]] [[conduct]] players, who also alchemize them using the following [[Alchemy#Multiple step recipes|multi-step recipe]]:
+
+ junk → water → sickness → fruit juice → booze → blessed booze
+
+==History==
+Potions of booze first appear in [[Hack 1.0]].{{refsrc|hack.do.c|34|version=Hack 1.0}}
+
+It is considered a tradition for some players to take an [[ice box]] filled with potions of booze to the [[Astral Plane]] in preparation for the [[demigod bar]]; this is very much a [[stupid ascension trick]], and is much less frequent is recent versions.
+
+==Messages==
+{{message|Ooph! This tastes like liquid fire!|You quaffed a potion of booze.}}
+{{message|Ooph! This tastes like watered down liquid fire!|As above, but with a diluted potion.}}
+{{message|Ooph! This tastes like dandelion wine!|You quaffed a non-diluted potion while hallucinating.}}
+{{message|Ooph! This tastes like watered down dandelion wine!|As above with a diluted potion.}}
+
+==Variants==
+Many variants associate [[Dwarf (monster)|dwarves]] with drinking, to the point of often generating them with booze when not encountered within the [[Gnomish Mines]] (with the likely-shared assumption that dwarves always mine responsibly).
+
+===UnNetHack===
+In [[UnNetHack]], dwarves have a {{frac|6|7}} chance to be generated with a potion of booze.
+
+===dNethack===
+In [[dNethack]], booze is far more useful as a source of nutrition - drinking it gives 130 points of nutrition if uncursed, 140 if blessed, and 120 if cursed, along with healing you for HP equal to your level regardless of beatitude. However, drinking a cursed potion will render you nauseous for 15+5d4 turns afterwards, causing you to vomit if not cured.
+
+[[Bard]]s and [[Pirate]]s start with potions of booze. Dwarves encountered outside the Mines always have potions of booze, and [[player monster]] [[Bard (player monster)|bards]] and [[pirate (player monster)|pirate]]s can generate with them as well.
+

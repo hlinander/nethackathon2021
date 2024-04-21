@@ -1,0 +1,1000 @@
+&&%s&& %s Donate {15175 2006-11-01T23:21:04Z {515 MadDawg2552} Redirecting to [[Aligned priest]] #REDIRECT [[aligned priest]]}
+&&%s&& %s Crossbow bolts {15180 2006-11-02T00:26:37Z {515 MadDawg2552} Redirecting to [[Crossbow bolt]] #REDIRECT [[crossbow bolt]]}
+&&%s&& %s Stair {15196 2006-11-02T03:38:58Z {0 } Redirecting to [[Staircase]] #REDIRECT [[staircase]]}
+&&%s&& %s Branch {145405 2022-04-09T05:54:46Z {4001483 Cathartes} mention alignment bias of branches In ''[[NetHack]]'', '''branches''' are paths you can take within the [[Mazes of Menace]] that will lead you to various useful (and often optional) rewards. They are not to be confused with [[special level]]s, though most branches contain them &nbsp; the [[Big Room]] is a special level, but it is not a branch in the dungeon.  The [[monster frequency]] of randomly-generated monsters in dungeon branches may be biased toward specific [[alignment]]s.
+
+Below is a list of dungeon branches:
+
+* The [[Dungeons of Doom]], which contains the following dead-end branches:
+** The [[Gnomish Mines]], which is eight or nine levels deep and biased toward lawful alignment.
+** [[Sokoban]], which is always four levels high and biased toward neutral alignment.
+** The [[Quest]], which is 5-7 levels deep and contains your role's [[quest artifact]] as well as the [[Bell of Opening]].
+** [[Fort Ludios]], which may be accessible through a [[magic portal]] found in a [[vault]].
+* [[Gehennom]], which contains the following dead-end branch:
+**[[Vlad's Tower]], which is always 3 levels high, contains the [[Candelabrum of Invocation]], and is biased toward chaotic alignment.
+* The [[Endgame]], consisting of the four [[Elemental Planes]] and the [[Astral Plane]].
+
+The [[Wizard's Tower]] is not considered a dungeon branch, though it behaves similar to one for purposes of level teleportation.
+
+==Variants==
+===UnNetHack===
+[[UnNetHack]] makes some changes to existing branches and adds several new ones to the dungeon - see [[UnNetHack#Branch changes|UnNetHack § Branch changes]] for full details.
+
+==See also==
+* The [[Eye of the Aethiopica]], which can be [[invoked]] to teleport between dungeon branches.
+{{nethack-360}}
+[[Category:Dungeon branches]]}
+&&%s&& %s Throne room {146859 2022-07-21T12:32:44Z {4001279 Umbire the Phantom}  A '''throne room''' is a type of [[special room]] that appears in ''[[NetHack]]'', and contains an assortment of [[monster]]s, a [[throne]], and a [[chest]].
+
+==Generation==
+A throne room is generated with a {{frac|6}} chance in ordinary rooms-and-corridors levels from level 5 onwards, provided the level does not already have a [[shop]].{{refsrc|src/mklev.c|763|version=NetHack 3.6.6}} The monsters are always generated hostile and [[asleep]].{{refsrc|src/mkroom.c|348|version=NetHack 3.6.6}}
+
+The list of [[throne room monster]]s is as follows:{{refsrc|src/mkroom.c|738|version=NetHack 3.6.6}}
+* [[dragon]]s (on level 15+)
+* [[giant]]s (13+)
+* [[troll]]s (10+)
+* [[centaur]]s (6+)
+* [[orc (monster class)|orc]]s
+* [[bugbear]]s
+* [[hobgoblin]]s
+* [[gnome]]s
+* [[kobold]]s
+
+Deeper levels are skewed to harder monsters. The limits for ordinary random monsters (based on the average of your and the dungeon floor's level) do not apply. Extinct or genocided monsters will be replaced with ordinary random monsters. 
+
+Additionally, the throne may have one of the following monsters sitting on it:
+
+* [[Ogre king]]
+* [[Elvenking]]
+* [[Dwarf king]]
+* [[Gnome king]]
+
+The monster will have a [[mace]] in its inventory. Deeper levels will have higher level monsters sitting on the throne.{{refsrc|src/mkroom.c|247|version=NetHack 3.6.6}}
+
+===Special levels with throne rooms===
+There is a guaranteed throne room in [[Fort Ludios]] (if the Fort is generated at all), with [[Croesus]] situated on the throne.
+
+While there are also guaranteed thrones in the [[Castle]] and in [[Vlad's Tower]], the rooms they are located in are not considered throne rooms.
+
+==Strategy==
+Fighting all the monsters when they are awake can be dangerous for low-level characters, as most of the monsters can generate with [[wand]]s to use against you. Additionally, it is possible for early throne rooms with an otherwise-out of depth monster on the throne to generate - beware the Elvenking who rules over the sixth level!
+
+If you have [[stealth]], you can carefully pick off the denizens of a throne room one by one&mdash;most throne room monsters are slower than an unhasted player, making them vulnerable to hit-and-run, ranged attacks and/or funneling them into outside hallways. Centaurs are the fastest throne room monsters that can generate, and pose the biggest obstace to the above strategies&mdash;they often generate with ranged weapons of their own, and may hit you several times per turn in [[melee]].
+
+If luring throne room monsters into a hallway to fight, beware of monsters zapping a [[wand of digging]] down and leaving a hole between you and the throne room.
+
+==History==
+Throne rooms first appear in [[NetHack 1.3d]]; from this version to [[NetHack 3.6.0]], "royal" monsters could generate randomly in throne rooms, but they were not specifically placed on the throne (with the exception of Croesus) or given a mace until [[NetHack 3.6.1]];<ref>NetHack 3.6.1 commits: {{commit|4d7d63814a99b14acf0bcc96ddf567e966064b78|Throne room's throne is occupied by a king}}</ref> this addition is based on a patch by [[L (person)|Leon Arnott]].<ref>[https://web.archive.org/web/20180902003105/http://l.j-factor.com/nethack/mkroom.diff Zoos and Courts patch] on an archive of L's website</ref>
+
+==Messages==
+{{message|You hear the tones of courtly conversation.<br>You hear a sceptre pounded in judgment.<br>Someone shouts "Off with <his/her> head!"|An occupied throne room is present on the level.}}
+{{message|You hear Queen Beruthiel's cats!|As above while [[hallucinating]].}}
+{{message|You enter an opulent throne room!|You entered an occupied throne room.}}
+
+==Variants==
+Many 3.4.3-derived variants place a "royal" monster on the throne, and some of them additionally provide them with an enchanted mace or similar weapon.
+
+===dNetHack===
+In dNetHack, throne room monsters are often (75%) themed after a specific ruler. Rulers are chosen according to their [[difficulty]]: a chosen ruler will not have a difficulty greater than the average of your level and the dungeon level difficulty + 5, and will not be lower than {{frac|2|3}} of the dungeon level difficulty. If no prospective ruler fits these criteria, dNetHack will fall back on the standard set of throne room monsters.
+
+The ruler types and corresponding monsters for each room are as follows, roughly sorted in order of difficulty:
+
+* [[Kobold lord]] (difficulty 3): [[Kobold shaman]], [[large kobold]], [[kobold]], [[lemure]], [[imp]].
+* [[Gnome king]] or gnome queen (difficulty 6): [[Gnome lord]], [[gnome lord|gnome lady]], [[gnome]], [[gnomish wizard]], [[tinker gnome]], [[dwarf]], [[dwarf lord]], [[dwarf cleric]], [[hobbit]], [[leprechaun]], [[homunculus]].
+* [[Orc captain]] (difficulty 7): [[Orc shaman]], [[mordor orc]], [[hill orc]], [[hobgoblin]], [[goblin]], [[manes]], [[quasit]].
+* [[Dwarf king]] or [[dwarf queen]] (difficulty 8): [[Dwarf lord]], [[dwarf cleric]], [[dwarf]], [[gnome]], [[gnome lord]], [[gnome lord|gnome lady]], [[gnomish wizard]], [[hobbit]], [[leprechaun]].
+* [[Ogre king]] (difficulty 11): [[Ogre mage]], [[ogre lord]], [[ogre]], [[orc captain]], [[mordor orc]], [[tengu]], [[troll]], random [[H]].
+* [[Elvenking]] or Elvenqueen (difficulty 14): [[Elf lord]], elf lady, [[Grey-elf]], [[Green-elf]], [[Woodland-elf]], [[quickling]], [[dryad]], [[naiad]], [[Eladrin#Coure Eladrin|Coure Eladrin]], [[Eladrin#Noviere Eladrin|Noviere Eladrin]], [[Eladrin#Bralani Eladrin|Bralani Eladrin]], [[Eladrin#Firre Eladrin|Firre Eladrin]], [[Eladrin#Shiere Eladrin|Shiere Eladrin]], [[doppelganger]], [[wood troll]].
+* [[Vampire lord]] (difficulty 14): [[Vampire]], random [[Z]], random [[M]], [[flesh golem]], [[werewolf]], [[floating eye]], [[gargoyle]], [[winged gargoyle]], [[quasit]], [[black pudding]], [[wraith]], [[phantasm]], [[ghost]], [[maid]], [[weeping willow]], [[swamp nymph]].
+* [[Drow matron]] (difficulty 15): [[Unearthly drow]], [[hedrow wizard]], [[hedrow warrior]], [[drow]], [[sprow]], [[swamp nymph]], [[giant spider]], [[cave lizard]], [[large cave lizard]], [[quasit]].
+* [[Titan]] (difficulty 20): [[Storm giant]], [[fire giant]], [[frost giant]], [[hill giant]], [[stone giant]], [[giant]], [[son of Typhon]], [[dryad]], [[naiad]], [[oread]], [[deminymph]].
+* [[Embraced drowess]] (difficulty 27): [[Drow alienist]], [[hedrow blademaster]], [[edderkop]], [[hedrow wizard]], [[hedrow warrior]], [[drow mummy]].
+* [[Deepest one]] (difficulty 33): [[Deeper one]], [[deep one]], [[human]], [[mind flayer]], [[dark young]], [[umber hulk]], [[stumbling horror|stumbling]], [[wandering horror|wandering]], and [[shambling horror (dNetHack)|shambling horror]]s.
+* [[Orc of the ages of stars]] (difficulty 37): [[Deep wyrm]], [[red dragon]], [[white dragon]], [[black dragon]], [[blue dragon]], [[angband orc]], [[hedrow blademaster]], [[succubus]], [[incubus]], [[olog-hai]], [[siege ogre]], [[hell hound]].
+
+===GruntHack===
+From its first version onward, [[GruntHack]] always generates a [[racial monster|monster royal]] on the throne of a throne room; this implementation is much different from the L patch that was eventually merged into vanilla.
+
+===SlashTHEM===
+In [[SlashTHEM]], a "royal" monster always occupies the throne of a throne room, and is always given an [[ornate mace]].
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Special rooms]]}
+&&%s&& %s Swamp {134819 2020-07-05T00:40:33Z {4000978 Aximili} Update sources, some source diving A '''swamp''' is a [[special room]] with a checkered pattern of [[pool]]s containing [[giant eel]]s, [[piranha]]s and [[electric eel]]s.{{refsrc|src/mkroom.c|538|version=NetHack 3.6.6}} Various [[fungi]] are generated on some of the land spaces.
+
+==Generation==
+Swamp rooms have a 1/6 chance of generating on dungeon level 16 or lower, but only if almost every other type of special room fails to generate.{{refsrc|src/mklev.c|789|version=NetHack 3.6.6}}
+
+Swamp rooms occur together: up to 5 rooms on a level may be swamps.{{refsrc|src/mkroom.c|517|version=NetHack 3.6.6}} Swamp rooms are guaranteed to not have the upstair or downstair of the level.{{refsrc|src/mkroom.c|519|version=NetHack 3.6.6}}
+
+==Messages==
+
+{{message|You hear mosquitoes!}}
+{{message|You smell marsh gas!|There is a swamp on the level.}}
+{{message|You hear Donald Duck!|There is a swamp on the level, and you are [[hallucinating]].}}
+{{message|It looks rather muddy down here.|You are entering a swamp.}}
+{{message|It feels rather humid down here.|You are entering, and you are [[blind]].}}
+
+==Strategy==
+You can easily guess the presence of hidden doors in swamps, because of the absence of water pools near the door.
+
+Very small swamp rooms can generate just one water pool, easily mistaken for a [[fountain]], so be careful.
+
+The risks of [[drowning]] yourself or [[wet]]ting your inventory make swamps unappealing to traverse. Additionally, unlike other special rooms, swamps don't have much interesting loot. If you need to frequently pass through a level with swamps, and no swamp-free path exists between the upstair and downstair, consider [[dig]]ging your own.
+
+==See also==
+* [[Juiblex's Swamp]]
+
+==References==
+<References />
+
+{{nethack-366}}
+[[Category:Special rooms]]}
+&&%s&& %s Crypt {134766 2020-07-04T18:13:51Z {4000978 Aximili} Graveyard has its own page now #REDIRECT [[Graveyard]]}
+&&%s&& %s Opal stone {15220 2006-11-02T05:00:13Z {515 MadDawg2552} Redirecting to [[Gem]] #REDIRECT [[gem]]}
+&&%s&& %s Falling rock trap {147852 2022-08-22T03:36:49Z {4001279 Umbire the Phantom} rewrite a bit {{trap
+ |name=falling rock trap
+ |color=lightgray
+ |generation=Anywhere
+ |effect=Drops rocks
+}}
+
+A '''falling rock trap''' is a type of [[trap]] that appears in ''[[Nethack]]''.
+
+==Generation==
+If a [[trap door]] would be randomly generated on a level with a non-diggable floor, it is replaced with a falling rock trap.
+
+==Description==
+When triggered, the falling rock trap will either drop a [[rock]] that hits whoever triggered it on the head for 2d6 damage and lands on the ground, or disappears with a {{frac|15}} chance; if the victim is wearing a [[metallic]] [[helm]], the damage is reduced to 2.{{refsrc|src/trap.c|1020|version=NetHack 3.6.6|comment=Effect on player}}{{refsrc|src/trap.c|2246|version=NetHack 3.6.6|comment=Effect on monsters}}
+
+==Removal==
+One way to remove a falling rock trap is to trigger it repeatedly until it runs out of rocks.
+
+==Strategy==
+Early [[pet]] deaths are often due to this type of trap, earning it the nicknames "Puppy Pounder" and "Kitty Killer". The falling rock trap can be used as a source of rocks for cheap ammunition.
+
+One of the early game weaknesses of an [[elven leather helm]] is the fact that it does not protect against damage from falling rock traps.
+
+==History==
+The falling rock trap was added in [[NetHack 3.1.0]].
+
+==Messages==
+{{message|A trapdoor in the ceiling opens and a rock falls on your head!|You triggered a falling rock trap.}}
+{{message|A trapdoor in the sky opens and a rock falls on your head!|As above, but the trap is outdoors, e.g. in the Home level of some Quests.}}
+{{message|A trapdoor in the ceiling opens, but nothing falls out!|You triggered a falling rock trap, but it ran out of rocks and disappeared.}}
+{{message|A trapdoor in the sky opens, but nothing falls out!|As above, but the trap is outdoors.}}
+{{message|Fortunately, you are wearing a hard helmet.|Your metallic helmet protected you from the falling rock.}}
+{{message|Your <helmet> does not protect you.|Your non-metallic helmet did not protect you from the falling rock.}}
+{{message|<monster> is hit by a rock!|A monster triggered a falling rock trap.{{refsrc|src/trap.c|5217|version=NetHack 3.6.6}}}}
+{{message|A trap door above <monster> opens, but nothing falls out!|A monster triggered a falling rock trap but it ran out of rocks and disappeared.}}
+
+==References==
+<References />
+{{nethack-366}}
+[[Category:Traps]]}
+&&%s&& %s Wall {138305 2021-03-06T06:12:13Z {4001463 Actual-nh} Link xorn {{features}}
+The '''wall''' is a [[square|terrain type]] represented mainly by {{lightgray|-}} and {{lightgray|&#x7c;}}, or {{lightgray|&nbsp;}}.
+
+The solid black {{lightgray|&nbsp;}} generally represents [[solid rock|solid, unfinished rock]], and the other glyphs some kind of "finished" walls.
+
+There are a few ways to pass through walls.
+
+*You can [[dig]] through most walls.
+*You can [[phasing|pass through]] walls if you are [[polymorph]]ed into a [[monster]] that can do so.
+*A [[tunneling monster]] will randomly dig through walls, clearing a path for you.
+
+Sometimes items randomly generated [[zorkmid|gold]] and [[gem]]s are embedded in [[solid rock]] walls. This random loot will never be generated in finished walls. If a monster, such as a [[xorn]], is killed while phasing through a wall, any objects it is carrying will become embedded in the wall.
+
+If you don't have any means of digging, [[kick]]ing the wall will sometimes make the item fall loose, allowing you to pick it up.  You can also zap the objects with a [[wand of teleportation]] to move them to random locations on the level.  Embedded items can be polymorphed with a [[wand of polymorph]], but this does not remove them from the wall.
+
+Note that {{lightgray|&nbsp;}} can also represent [[air]].
+
+{{stub}}
+[[Category:Dungeon features]]
+{{nethack-343}}}
+&&%s&& %s Enchantment {143596 2021-11-08T00:12:10Z {723 Scorchgeek} /* Gloves */ note that enchanting GoP only increase AC because all enchanted armor does this; I found myself wondering if GoP had started giving extra AC! {{otheruses||the school of magic|Enchantment spells}}
+
+In ''[[NetHack]]'', an '''enchantment''' is the bonus (or penalty) that some items have (e.g., a ''+1'' [[leather armor]]). A bonus (+) increases the item's power, and a penalty (-) decreases the item's power. An item that is [[cursed]] at the time of its creation is more than likely going to have a penalty - likewise, an item created as blessed will often have a bonus.
+
+==Armor==
+When a piece of armor is enchanted, the enchantment is added to the armor's [[AC]] rating.
+
+You can increase the enchantment of armor using a non-cursed [[scroll of enchant armor]].  Be aware that a cursed scroll will ''decrease'' the enchantment.  Other ways to decrease the enchantment include the [[drain life|drain life spell]] and [[disenchanter|disenchanters]].
+
+===Gloves===
+*[[Gauntlets of power]].  These gauntlets increase your [[strength]] to 25 regardless of what the enchantment is.  The enchantment increases the AC the gauntlets give (as with any other armor).
+** In [[SLASH'EM]], these raise your strength to the 18/**, with further strength being given if the gauntlets are positively enchanted.
+*[[Gauntlets of dexterity]].  The enchantment on these gauntlets increases your [[dexterity]] and AC by its enchantment value.
+
+The enchantment on all other gloves acts the same way as for armor.
+
+===Helms===
+A [[helm of brilliance]] increases the wearer's [[intelligence]] and [[wisdom]] by its enchantment value.
+
+==Weapons==
+Attacking with a  [[weapon]] adds its enchantment to the weapon's [[to-hit]]{{refsrc|weapon.c|134}} and [[damage]]{{refsrc|weapon.c|262}} values. For example, attacking with a +1 [[dagger]] would add 1 to the to-hit throw, and 1 to the damage.  You can increase the enchantment of a weapon using a non-cursed [[scroll of enchant weapon]].  As with armor, a cursed scroll will ''decrease'' the enchantment.  Other ways to decrease the enchantment include the [[drain life|drain life spell]] and [[engraving]] with the weapon.
+
+Ascertaining the enchantment of a weapon can be useful, though sometimes tedious.  Your character apparently can make some distinctions because weapons with different enchantments do not [[Stackable|stack]] in inventory, but this doesn't tell you which stack has a better enchantment.  [[Identify#Straightforward_identification|Straightforward identification]] will tell you the exact enchantment of a weapon.  
+
+Ways to informally identify the enchantment of a weapon include
+* Studying the weapon's effectiveness in combat.  A [[stethoscope]] is very helpful for this, although early-game characters may notice differences in their chance to hit.
+* Attempting to [[engrave]] with the weapon.  Weapons which are "too dull to engrave with" are hindered by a disenchantment of -3 or worse.  If you're fighting with one of these, you should consider finding a better weapon a priority.
+* [[Cancellation|Canceling]] a weapon will adjust its enchantment to +0.
+* [[Price identification]] can be used to find positively enchanted weapons, but it cannot be used to differentiate non-positive enchantments. 
+* Noting the [[BUC]] state the weapon had when it was generated.  Items which were generated blessed <!--It looks like this is also true of uncursed?!  Am I reading the source right? --> (ignoring [[bones]] levels) are never negatively enchanted.  Items generated cursed are often negatively enchanted (though they can also be positively enchanted).
+
+The following methods are useful for [[stackable]] weapons:
+* Altering the enchantment of only part of a stack to rank two stacks relative to each other (e.g., engraving with a single dagger from a stack of 10 until it hits -3, thereby determining the enchantment of the remaining 9 items)
+* Paying attention to how commonly the items are generated.  Note that you should pay attention to the ''number of stacks of items'' generated, not simply the ''number of items'' generated. (See [[rne|rne(3)]]).
+* Formally identifying only one item from a stack and [[name|#naming]] the rest of the stack.
+
+==Rings==
+Some rings have an enchantment value associated with them:
+
+*[[ring of adornment]]
+*[[ring of gain constitution]]
+*[[ring of gain strength]]
+*[[ring of increase accuracy]]
+*[[ring of increase damage]]
+*[[ring of protection]]
+
+The enchantment determines how much the ring modifies your attributes and statistics.  For example, a ''+2 ring of protection'' will lower (i.e. improve) your AC by 2.  You can increase a ring's enchantment by [[charging]] it using a [[scroll of charging]] or [[the Platinum Yendorian Express Card]].
+
+==Losing enchantment==
+There are many ways an item might lose enchantment:
+
+*Enchanting an item too much will cause it to be destroyed.  See [[scroll of enchant armor]], [[scroll of enchant weapon]], and [[charging]] for more information.
+*Getting hit by a [[disenchanter]] will decrease enchantment on weapons and armor, and striking a disenchanter with an item will decrease that weapon's enchantment. Disenchanters remove only positive enchantment; a disenchanter will not remove negative enchantment or cause an unenchanted item to gain negative enchantment.
+*Reading a cursed scroll of enchant weapon or enchant armor.
+*Reading a cursed scroll of charging and selecting a ring as the target.
+*[[Engraving]] with an edged weapon other than a non-cursed [[athame]].
+*Casting a spell of [[drain life (spell)|drain life]] at the item
+
+[[Erosion]] does not affect the enchantment on an item.
+{{nethack-361}}
+[[Category:Item attributes]]
+
+
+==References==
+<references/>}
+&&%s&& %s Brown Mold {15267 2006-11-03T02:23:25Z {0 } Redirecting to [[Mold]] #REDIRECT [[Mold]]}
+&&%s&& %s To-hit {128122 2019-09-07T20:12:20Z {4001313 Ardub23} Replaced hyphens (-) with minus signs (−) where appropriate When attacking a [[monster]], you must make a successful '''to-hit''' [[D notation|roll]] to actually strike it. To do this, your to-hit bonus must exceed the roll of ''1d20''.{{refsrc|uhitm.c|478|comment=to-hit roll}} Otherwise, your attack misses.
+
+== Melee ==
+
+These are the factors that affect your chance of hitting in [[melee]]:
+
+=== Weapon and equipment ===
+
+* A bonus (or penalty) equal to the weapon's [[enchantment]], if using a [[weapon]].{{refsrc|weapon.c|133|comment=enchantment bonus for weapons}}
+* The natural to-hit bonus of the object used to strike.{{refsrc|weapon.c|137|comment=item to-hit bonus}}
+* The artifact's to-hit bonus, if using an [[artifact weapon]] against an appropriate target.{{refsrc|weapon.c|164|comment=artifact bonus}}
+* A bonus equal to the enchantment level(s) of any [[ring of increase accuracy|rings of increase accuracy]] you are wearing.{{refsrc|uhitm.c|236|comment=your to-hit bonus from rings, <code>u.uhitinc</code>}}
+* &minus;20 if you are a [[Monk]] wearing [[body armor]].{{refsrc|uhitm.c|267}}
+* If you are a Monk not wearing body armor or a [[shield]], and not [[wield]]ing any item, +(''experience level'' / 3)+2.{{refsrc|uhitm.c|267|comment=monk penalty and bonus}}
+
+=== Your characteristics and status ===
+
+* +1 for all melee attacks.{{refsrc|uhitm.c|236|comment=base +1 for melee}}
+* Bonuses based on your [[strength]] and [[dexterity]] (see [[#Strength bonus|strength table]] and [[#Dexterity bonus|dexterity table]]).{{refsrc|weapon.c|688|comment=strength and dexterity bonuses}}
+* A bonus equal to your [[Luck]].{{refsrc|uhitm.c|236|comment=Luck bonus}}
+* A bonus equal to your [[experience level]], if you are in your natural form.
+* A bonus equal to your [[monster level]] (hit dice) if you are [[polymorph]]ed.{{refsrc|uhitm.c|237|comment=natural and polymorphed level bonuses}}
+* +1 if you are at experience level 1 or 2.{{refsrc|weapon.c|703|comment=beginner to-hit bonus}}
+* &minus;1 if you are [[encumbrance|burdened]], &minus;3 if you are stressed, or &minus;5 if you are strained; if you are overtaxed or overloaded you will be unable to attack at all.{{refsrc|uhitm.c|277|comment=weight penalty}}
+* &minus;3 if you are currently [[trap]]ped.{{refsrc|uhitm.c|278|comment=trap penalty}}
+* If you are [[engulfing|engulfed]], you always hit.{{refsrc|uhitm.c|478|comment=always hit if engulfed}}
+
+=== Skills ===
+
+* A bonus or penalty from &minus;4 to +3 ([[#Weapon skill bonus|see table]]), depending on your [[skill]] with the wielded weapon, if you are not two-weaponing.{{refsrc|weapon.c|1109|comment=skill bonus}}
+* A penalty from &minus;9 to &minus;3 ([[#Two weapon penalty|see table]]), depending on your [[two weapon combat]] skill (or your weapon skill, if it is lower), if you are two-weaponing.{{refsrc|weapon.c|1118|comment=two weapon penalty}}
+* No bonus for [[bare hands]] or [[martial arts]] skill.{{reffunc|weapon.c|weapon_hit_bonus|comment=This function is never called because {{sourcecode|uhitm.c|283}} or {{sourcecode|uhitm.c|1957}} checks if you're wielding something}}
+* A penalty if riding a steed: &minus;2 if restricted or Unskilled in [[riding]], &minus;1 if Basic, and no penalty if Skilled or better.{{refsrc|weapon.c|1146|comment=base riding penalty}}
+* An additional &minus;2 if you engage in two weapon combat while riding a steed.{{refsrc|weapon.c|1154|comment=two weapon riding penalty}}
+
+=== Monster characteristics and status ===
+
+* The target monster's [[AC]].{{refsrc|uhitm.c|236|comment=monster AC}}
+* +2 (cumulative) against a stunned, fleeing, or sleeping monster.{{refsrc|uhitm.c|250|comment=monster status bonuses}}
+* +4 against a paralyzed monster.{{refsrc|uhitm.c|257|comment=paralyzed monster bonus}}
+
+=== Monster-specific ===
+
+* +2 for using a [[blessed]] weapon against a [[demon]] or [[undead]].{{refsrc|weapon.c|142|comment=blessed bonus against demons/undead}}
+* +2 for using any [[spear]] against a "[[kebabable]]" monster: [[xorn]]s, [[naga]]s, [[dragon]]s, [[jabberwock]]s, and [[giant]]s.{{refsrc|weapon.c|145|comment=spear versus "kebabable" monster}}
+* +4 for using a [[trident]] against any [[swimmer]] that is in [[water]].{{refsrc|weapon.c|149|comment=trident versus swimmers}}
+* +2 for using a trident against any {{monclasssym|S}} or {{monclasssym|;}} that is not in water.
+* +2 for using a [[pick-axe]] or [[dwarvish mattock]] against a [[xorn]] or [[earth elemental]].{{refsrc|weapon.c|155|comment=pick versus phasing and thick-skinned}}
+* +1 if you are hitting any [[orc]] as an [[elf (starting race)|elven]] hero currently in natural form, or [[polymorph]]ed into an [[elf (monster attribute)|elven monster]].{{refsrc|uhitm.c|264|comment=elves versus orcs}}
+
+== Ranged ==
+
+These are some of the factors that might affect your chance of hitting when [[throw]]ing or [[kick]]ing items, or when [[apply]]ing a [[polearm]]:
+
+* &minus;1 for all ranged attacks.{{refsrc|dothrow.c|1198|comment=base &minus;1 for ranged}}
+* A bonus equal to the enchantment level(s) of any [[ring of increase accuracy|rings of increase accuracy]] you are wearing.{{refsrc|uhitm.c|236|comment=your to-hit bonus from rings, <code>u.uhitinc</code>}}
+* The target monster's [[AC]].{{refsrc|uhitm.c|236|comment=monster AC}}
+* A bonus based on your [[dexterity]].
+* A bonus equal to your [[Luck]].{{refsrc|uhitm.c|236|comment=Luck bonus}}
+* A bonus equal to your [[experience level]], if you are in your natural form.
+* A bonus equal to your [[monster level]] (hit dice) if you are [[polymorph]]ed.{{refsrc|uhitm.c|237|comment=natural and polymorphed level bonuses}}
+* A bonus based on how far away the target is. A target adjacent to you gives a +2 bonus; this decreases by 1 for each move's worth of distance, to a maximum penalty of &minus;4.
+* &minus;2 if you are wielding any [[bow]] while wearing [[gauntlets of power]].
+* &minus;3 if you are wielding any [[bow]] while wearing [[gauntlets of fumbling]].
+* A bonus or penalty from &minus;2 to +5 ([[#Monster size bonus|see table]]), depending on the size of the target monster.
+* +2 against a sleeping monster.
+* +4 against a paralyzed monster.
+* +2 if the item used is a [[heavy iron ball]].
+* +6 if the item used is a [[boulder]].
+* A bonus (or penalty) equal to the weapon's [[enchantment]], if using a [[weapon]].
+* The natural to-hit bonus of the item, if it is a weapon or [[gem]].
+* +2 for using a [[blessed]] weapon against a [[demon]] or [[undead]].{{refsrc|weapon.c|142|comment=blessed bonus against demons/undead}}
+* +2 for using any [[spear]] against a "kebabable" monster: [[xorn]]s, [[naga]]s, [[dragon]]s, [[jabberwock]]s, and [[giant]]s.{{refsrc|weapon.c|145|comment=spear versus "kebabable" monster}}
+* +4 for using a [[trident]] against any [[swimmer]] that is in [[water]].{{refsrc|weapon.c|149|comment=trident versus swimmers}}
+* +2 for using a trident against any {{white|S}} or {{white|;}} that is not in water.
+* +2 for using a [[pick-axe]] or [[dwarvish mattock]] against a [[xorn]] or [[earth elemental]].{{refsrc|weapon.c|155|comment=pick versus phasing and thick-skinned}}
+* The artifact's to-hit bonus, if using an [[artifact weapon]] (or [[The Heart of Ahriman|artifact gem]]) against an appropriate target.{{refsrc|weapon.c|164|comment=artifact bonus}}
+* +1 if you are hitting any [[orc]] as an [[elf (starting race)|elven]] hero currently in natural form, or [[polymorph]]ed into an [[elf (monster attribute)|elven monster]].{{refsrc|dothrow.c|1232|comment=elves versus orcs}}
+* If you throw any gem at a [[unicorn]], it will always be caught.
+* If you throw your [[quest artifact]] at your [[quest leader]], and he/she is peaceful and not paralyzed, it will be caught and returned to you.
+* &minus;4 if you throw [[ammo]] without wielding the appropriate [[launcher]].
+* A bonus (or penalty) equal to the [[enchantment]] of your launcher, if firing ammo from it.
+* A penalty based on the [[erosion]] of your launcher, if firing ammo from it: &minus;1 if eroded, &minus;2 if very eroded, or &minus;3 if completely eroded.
+* The artifact's to-hit bonus, if firing appropriate ammo from an [[The Longbow of Diana|artifact launcher]], against an appropriate target.
+* +1 if you are an [[elf (starting race)|elf]] or [[Samurai]] firing any [[arrow]]s from any [[bow]].
+* An additional +1 if you are an [[elf (starting race)|elf]] firing [[elven arrow]]s from an [[elven bow]].
+* An additional +1 if you are a [[Samurai]] firing [[ya]] from a [[yumi]].
+* +4 if throwing or kicking a [[boomerang]].
+* +2 if throwing or kicking an item that counts as a throwing weapon.
+* &minus;2 if throwing or kicking an item that is neither a throwing weapon nor ammo.
+* A bonus or penalty from &minus;4 to +3 ([[#Weapon skill bonus|see table]]), depending on your [[skill]] with the thrown item, unless you throw ammo without wielding the appropriate launcher.
+
+== Spells ==
+
+Spells to-hit calculation is quite different. For ray spells, your to-hit bonus must exceed the result of 4 ''minus'' 1d20.
+
+The calculation  of the to-hit bonus is simple:
+
+* A bonus or penalty from &minus;4 to +3 ([[#Spell skill bonus|see table]]), depending on your [[skill]] with the spell school.{{refsrc|zap.c|2540|comment=skill bonus}}
+* A bonus based on your dexterity (see [[#Dexterity bonus|dexterity table]]).{{refsrc|zap.c|2548|comment=spell dexterity bonus}}
+* If the monster's AC is non-negative, add the monster's AC.
+* If the monster's AC is negative, add a random number between &minus;1 and its AC.
+
+Non-ray spells work differently. {{spell of|Force bolt}} will hit if the roll of a d20 is lower than (10 + target's AC), with no modification for dexterity or skill. Other beam and non-directional spells will always hit, but may be [[Magic resistance (monster)|resisted]].
+
+== Bonus tables ==
+
+=== Strength bonus ===
+
+The [[strength]] bonus applies to [[melee]] attacks only.
+
+{|class="prettytable"
+!Strength !! Bonus
+|-
+|3 to 5 || &minus;2
+|-
+|6 to 7 || &minus;1
+|-
+|8 to 16 ||0
+|-
+|17 to 18/50 || +1
+|-
+|18/51 to 18/99 || +2
+|-
+|18/** to 25 || +3
+|}
+
+=== Dexterity bonus ===
+
+The [[dexterity]] bonus applies to both [[melee]] and ranged attacks.
+
+{|class="prettytable"
+!Dexterity !! Bonus
+|-
+|3 || &minus;3
+|-
+|4 to 5 || &minus;2
+|-
+|6 to 7 || &minus;1
+|-
+|8 to 14 ||0
+|-
+|15 || +1
+|-
+|16 || +2
+|-
+|17 || +3
+|-
+|18 || +4
+|-
+|19 || +5
+|-
+|20 || +6
+|-
+|21 || +7
+|-
+|22 || +8
+|-
+|23 || +9
+|-
+|24 || +10
+|-
+|25 || +11
+|}
+
+=== Weapon skill bonus ===
+
+The weapon [[skill]] bonus applies to both melee and ranged attacks.
+
+{|class="prettytable"
+!Skill !! Bonus
+|-
+|Restricted or<br />Unskilled || &minus;4
+|-
+|Basic || 0
+|-
+|Skilled || +2
+|-
+|Expert || +3
+|}
+
+=== Spell skill bonus ===
+
+The spell [[skill]] bonus applies only to [[ray]] and [[beam]] attacks.
+
+{|class="prettytable"
+!Skill !! Bonus
+|-
+|Restricted or<br />Unskilled || &minus;4
+|-
+|Basic ||0
+|-
+|Skilled || +2
+|-
+|Expert || +3
+|}
+
+=== Two weapon penalty ===
+
+The [[two weapon combat]] penalty applies to melee attacks only. It uses the lesser of the two weapon combat skill and your primary weapon's skill.
+
+{|class="prettytable"
+!Skill !! Penalty
+|-
+|Restricted or Unskilled || &minus;9
+|-
+|Basic || &minus;7
+|-
+|Skilled || &minus;5
+|-
+|Expert || &minus;3
+|}
+
+=== Riding penalty ===
+
+The [[riding]] penalty applies if you are mounted on a steed, and varies based on your riding skill.
+
+{|class="prettytable"
+!Skill !! Penalty
+|-
+|Restricted or Unskilled || &minus;2
+|-
+|Basic || &minus;1
+|-
+|Skilled or Expert || 0
+|}
+
+=== Monster size bonus ===
+
+The monster size bonus applies to ranged attacks only.
+
+{|class="prettytable"
+!Size !! Bonus
+|-
+|Tiny || &minus;2
+|-
+|Small || &minus;1
+|-
+|Medium ||0
+|-
+|Large || +1
+|-
+|Huge || +2
+|-
+|Gigantic || +5
+|}
+
+==Variants==
+[[SporkHack]] does grant to-hit bonues for bare-hands or martial arts skill when hitting in melee without any wielded item. [[Monk]]s and [[Samurai]] get the [[martial arts]] bonus; other [[role]]s get the [[bare hands]] bonus.
+
+{|class="prettytable"
+!Skill !! Bare hands<br />bonus !! Martial arts<br />bonus
+|-
+|Unskilled || +1 ||''(n/a)''
+|-
+|Basic || +1 || +3
+|-
+|Skilled || +2 || +4
+|-
+|Expert || +2 || +5
+|-
+|Master || +3 || +6
+|-
+|Grand Master || +3 || +7
+|}
+
+== References ==
+
+<references />
+[[Category:Strategy]]
+{{nethack-343}}}
+&&%s&& %s Swimmer {148403 2022-10-04T23:35:58Z {4001279 Umbire the Phantom} de-SLEX A '''swimmer''' is any [[monster]] that has the <code>M1_SWIM</code> flag set. Only swimmers will be generated on the [[Plane of Water]].{{refsrc|makemon.c|66|version= NetHack 3.6.1}} Swimming is largely similar to [[amphibious]]ness, preventing a monster from [[drowning]].  One difference is that swimming monsters can pick up items underwater{{refsrc|dogmove.c|1263|version= NetHack 3.6.1}}.  Attacking a swimmer with a [[trident]] while it is in water gives a +4 [[to-hit]] bonus.{{refsrc|weapon.c|168|version= NetHack 3.6.1}}
+
+== List of swimmers ==
+=== Individual monsters ===
+* {{monsymlink|baby crocodile}}
+* {{monsymlink|crocodile}}
+* {{monsymlink|gremlin}}
+* {{monsymlink|mail daemon}}
+* {{monsymlink|newt}}
+* {{monsymlink|rust monster}}
+* {{monsymlink|water demon}}
+* {{monsymlink|water elemental}}
+* {{monsymlink|water nymph}}
+* {{monsymlink|water troll}}
+* {{monsymlink|woodchuck}}
+
+=== Entire classes ===
+* all snakes:
+** {{monsymlink|cobra}}
+** {{monsymlink|garter snake}}
+** {{monsymlink|pit viper}}
+** {{monsymlink|python}}
+** {{monsymlink|snake}}
+** {{monsymlink|water moccasin}}
+* all [[sea monster]]s:
+** {{monsymlink|electric eel}}
+** {{monsymlink|giant eel}}
+** {{monsymlink|jellyfish}}
+** {{monsymlink|kraken}}
+** {{monsymlink|piranha}}
+** {{monsymlink|shark}}
+
+=== Unique monsters ===
+* {{monsymlink|Medusa}}
+* {{monsymlink|Orion}}
+
+== You ==
+Swimming property can be obtained by [[polymorph]]ing into one of the above monsters or riding a swimming [[steed]].  It is very similar to [[magical breathing]], allowing you to stay in water but not preventing [[wet|water damage]].  Interestingly, while messages imply that you stay on the surface of water, you still cannot see your surroundings while swimming{{refsrc|trap.c|3693|version= NetHack 3.6.1}}.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], swimming ability can additionally be obtained by wearing [[gauntlets of swimming]] or reaching level 15 as a [[Yeoman]].  It's a bit more desirable property than in vanilla because of the [[create pool]] monster spell, although [[flying]] supersedes it.
+
+==Refs==
+<references />
+
+[[Category:Monster attributes]]
+{{nethack-361}}
+[[Category:SLASH'EM]]}
+&&%s&& %s A shiver runs up and down your spine! {15295 2006-11-03T17:03:22Z {0 } Redirect #REDIRECT [[Magic trap]]}
+&&%s&& %s Template:Weapon skill table {137213 2021-01-17T03:58:21Z {4001476 Infinigon}  <!-- GENERATED PAGE; DO NOT EDIT DIRECTLY -->
+{| class="prettytable Weapon-skilltable"
+! {{diagonal split header|[[Skill|Skill]]|[[Role|Role]]}} !! [[Archeologist|Arc]] !! [[Barbarian|Bar]] !! [[Caveman|Cav]] !! [[Healer|Hea]] !! [[Knight|Kni]] !! [[Monk|Mon]] !! [[Priest|Pri]] !! [[Rogue|Rog]] !! [[Ranger|Ran]] !! [[Samurai|Sam]] !! [[Tourist|Tou]] !! [[Valkyrie|Val]] !! [[Wizard|Wiz]]
+|-
+|[[dagger|dagger]]
+|class="basic"| b
+|class="basic"| b
+|class="basic"| b
+|class="skilled"| ''S''
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|class="basic"| b
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|-
+|[[knife|knife]]
+|class="basic"| b
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="expert"| '''E'''
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="skilled"| ''S''
+|-
+|[[axe|axe]]
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|-
+|[[pick-axe|pick-axe]]
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|-
+|[[short sword|short sword]]
+|class="basic"| b
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="basic"| b
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="basic"| b
+|-
+|[[broadsword|broadsword]]
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|-
+|[[long sword|long sword]]
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="basic"| b
+|class="expert"| '''E'''
+|class="restricted"| -
+|-
+|[[two-handed sword|two-handed sword]]
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="basic"| b
+|class="expert"| '''E'''
+|class="restricted"| -
+|-
+|[[scimitar|scimitar]]
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="skilled"| ''S''
+|class="basic"| b
+|class="restricted"| -
+|-
+|[[saber|saber]]
+|class="expert"| '''E'''
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="skilled"| ''S''
+|class="basic"| b
+|class="restricted"| -
+|-
+|[[club|club]]
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="basic"| b
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|-
+|[[mace|mace]]
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="expert"| '''E'''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|-
+|[[morning star|morning star]]
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="basic"| b
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="basic"| b
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|-
+|[[flail|flail]]
+|class="restricted"| -
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|-
+! {{diagonal split header|[[Skill|Skill]]|[[Role|Role]]}} !! [[Archeologist|Arc]] !! [[Barbarian|Bar]] !! [[Caveman|Cav]] !! [[Healer|Hea]] !! [[Knight|Kni]] !! [[Monk|Mon]] !! [[Priest|Pri]] !! [[Rogue|Rog]] !! [[Ranger|Ran]] !! [[Samurai|Sam]] !! [[Tourist|Tou]] !! [[Valkyrie|Val]] !! [[Wizard|Wiz]]
+|-
+|[[hammer|hammer]]
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="basic"| b
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="expert"| '''E'''
+|class="restricted"| -
+|-
+|[[quarterstaff|quarterstaff]]
+|class="skilled"| ''S''
+|class="basic"| b
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="basic"| b
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="basic"| b
+|class="basic"| b
+|class="basic"| b
+|class="basic"| b
+|class="expert"| '''E'''
+|-
+|[[polearms|polearms]]
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|-
+|[[spear|spear]]
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="expert"| '''E'''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="basic"| b
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="basic"| b
+|-
+|[[trident|trident]]
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="basic"| b
+|class="basic"| b
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="basic"| b
+|class="basic"| b
+|-
+|[[lance|lance]]
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|-
+|[[bow|bow]]
+|class="restricted"| -
+|class="basic"| b
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|-
+|[[sling|sling]]
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="basic"| b
+|class="basic"| b
+|class="skilled"| ''S''
+|-
+|[[crossbow|crossbow]]
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="basic"| b
+|class="basic"| b
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|-
+|[[dart|dart]]
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="restricted"| -
+|class="basic"| b
+|class="expert"| '''E'''
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="expert"| '''E'''
+|-
+|[[shuriken|shuriken]]
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="basic"| b
+|class="skilled"| ''S''
+|class="skilled"| ''S''
+|class="expert"| '''E'''
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|-
+|[[boomerang|boomerang]]
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|-
+|[[whip|whip]]
+|class="expert"| '''E'''
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="basic"| b
+|class="restricted"| -
+|class="restricted"| -
+|-
+|[[unicorn horn|unicorn horn]]
+|class="skilled"| ''S''
+|class="restricted"| -
+|class="basic"| b
+|class="expert"| '''E'''
+|class="restricted"| -

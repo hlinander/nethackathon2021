@@ -1,0 +1,1000 @@
+|[[image:priestess.png]]
+|[[priestess]]
+|-
+|[[image:wizard_of_balance_320.png]]
+|[[image:Neferet the Green.png]]
+|[[Wizard of Balance]]
+|&nbsp;
+|&nbsp;
+|&nbsp;
+|&nbsp;
+|&nbsp;
+|&nbsp;
+|}
+
+{|class="wikitable"
+|+<h2> OBJECTS </h2>
+|-
+|[[image:bell_of_opening_320.png]]
+|[[image:Bell of Opening.png]]
+|[[Bell of Opening]]
+|[[image:iron_shoes_320.png]]
+|[[image:iron shoes.png]]
+|[[iron shoes]]
+|[[image:murky_potion_320.png]]
+|[[image:murky potion.png]]
+|murky potion
+|}
+
+{|class="wikitable"
+|+<h2> OTHER </h2>
+|-
+|[[image:altar_320.png]]
+|[[image:altar.png]]
+|Altar
+|[[image:sub_mine_walls_0_320.png]]
+|&nbsp;
+|[[Gnomish Mines]] wall
+|[[image:sub_mine_walls_1_320.png]]
+|&nbsp;
+|[[Gnomish Mines]] wall
+|-
+|[[image:sub_mine_walls_2_320.png]]
+|&nbsp;
+|[[Gnomish Mines]] wall
+|[[image:sub_mine_walls_4_320.png]]
+|&nbsp;
+|[[Gnomish Mines]] wall
+|&nbsp;
+|&nbsp;
+|&nbsp;
+|}
+
+{{NGPL}}
+[[Category:16x16 tiles]]
+[[Category:History]]}
+&&%s&& %s Fortune cookie {131610 2020-01-28T04:43:41Z {4001279 Umbire the Phantom}  {{comestible
+  |name=fortune cookie
+  |tile=[[image:fortune cookie.png]]
+  |cost=7
+  |nutrition=40
+  |turns=1
+  |weight=1
+  |conduct=vegetarian (literate)
+  |color=yellow
+}}
+
+A '''fortune cookie''' is a [[comestible]] in ''[[NetHack]]'' that has a scrap of paper inside with a random [[rumor]].
+
+==Effects==
+Eating a fortune cookie provides 40 nutrition; unless you are [[blind]] (''"What a pity you cannot read it!"''), the fortune inside will automatically be read. [[Blessed]] fortune cookies always contain true rumors, cursed fortune cookies always contain false rumors, and uncursed fortune cookies may contain either. They will never be [[rotten]] when eaten, regardless of their beatitude.{{refsrc|eat.c|2641|nethack=3.6.0}} The fortune cookie can also be [[read]] normally, breaking and throwing away the cookie and reading the fortune inside.
+
+Eating a fortune cookie breaks [[vegan]] conduct, but not vegetarian (presumably because it was baked with eggs or dairy); reading the fortune breaks [[illiterate]] conduct.
+
+==Strategy==
+Because of their low weight and nutritional value, fortune cookies are useful for taming carnivorous domestic [[pet]]s.
+
+You can preserve vegan or [[foodless]] conduct by reading the cookie instead of eating it, which makes you break and throw away the actual cookie to read its paper. Illiterate conduct can be preserved by using it to tame pets as above; if they cannot be avoided entirely, you can blind yourself before eating the cookie.
+
+[[Category:Comestibles]]
+{{nethack-364}}}
+&&%s&& %s Leash {130705 2020-01-13T22:09:27Z {4001279 Umbire the Phantom}  {{todo|A cursed leash will keep you from falling through holes if your pet cannot "leap" adjacent. What other effects does a cursed leash have on player movememnt?}}
+{{tool
+  |color=leather color
+  |tile=[[image:leash.png]]
+  |name=leash
+  |cost=20
+  |weight=12
+  |material=leather
+}}
+
+A '''leash''' is a [[tool]] for keeping your [[pet]]s close to you, especially when using [[stairs]] or [[portal]]s.
+
+To attach a leash to a pet, {{kbd|a}}pply the leash to a pet that is adjacent to you. You can have up to two pets leashed at the same time, using two separate leashes. As of [[NetHack 3.6.3]], the pet in question cannot be [[unsolid]] and must have an extremity that the leash can actually be put on.
+
+To remove a leash from a pet, simply apply the leash to the pet that the leash is connected to. A cursed leash cannot be removed from the pet.
+
+== Movement == 
+Putting a leash on a pet will affect the way the pet moves and attacks, most of the time keeping it closer to you and acting more passively.
+
+If you move too far away from your leashed pet, it may "yowl" or make some other angry noise. While this will not hurt your pet (when using a non-cursed leash), the yowling can wake up other nearby monsters. With a cursed leash, this can choke your pet, dealing d2 damage to it and has a chance of reducing its [[tameness]]. If your pet is low on hit points, this can kill it.
+
+If you get even further away from your pet, a non-cursed leash will harmlessly snap loose from your pet, but a cursed leash will strangle your pet and kill it. You can get too far away by simply walking faster than your pet or moving while it is stuck around a corner or behind a door. 
+
+Teleporting when your leashed pet is not adjacent will cause the pet to jump to your location before you teleport, and the now-adjacent pet will follow you through the teleport; this will happen even if your pet is eating. However, if you are riding one pet while leashed to another, your leashed pet must be adjacent to teleport with you.
+
+When changing levels (traps, stairs, portals) when your pet is not adjacent or can't follow you, the leash will be harmlessly removed, even if it is cursed. <!--"It is possible to drag leashed [[pet]]s through closed [[door]]s. This is a [[bug]] marked to be fixed in the next release." Commenting this out for dated wording, and to be safe until I can verify the bug being fixed, which version if applicable, and update accordingly.-->
+
+A leashed pet will not want to move more than two squares away from you. Be aware that leashed pets will also not attack monsters that are not adjacent to you, unless that monster is exactly two cells above, below, or to the side of you. See below:
+
+<div class='ttyscreen'>
+<replacecharsblock>
+k=[[kobold|{{red|k}}]]
+f=[[kitten|{{white|f}}]]
+@={{white|@}}
+|={{lightgray|&#124;}}
+default={{lightgray|$1}}
+newline=<br>
+
+------- ------- ------- -------
+|...... |...... |...... |kkkkk.
+|.....| |.....| |.....| |kkkkk|
+|..k..| |.....| |..f..| |kkfkk|
+|.kfk.| |..kk.| |.kkk.| |k...k|
+|.k@k.| |..@fk| |..@..| |kk@kk|
+|.....| |..kk.| |.....| |kkkkk|
+-.----- -.----- -.----- -.-----
+</replacecharsblock>
+</div>
+
+The first three examples show where a monster could be attacked by your kitten. The fourth example shows where your kitten will not attack the kobold.
+
+Even if there is a solid wall between you and your pet, the leash will still stay connected. For example, if there were two parallel corridors, one square apart, that connected two rooms, you could walk down one corridor and your leashed pet could walk down the other and you'd both end up in the second room with the leash still attached.
+
+==Tameness==
+{{main|tameness}}
+A [[pet]] that becomes unleashed by a trap ([[level teleport]], [[trap door]], [[hole]], etc.) loses 1 point of tameness.
+
+A [[pet]] choked by a cursed leash may lose 1 point of [[tameness]]. This will never reduce tameness below 1. {{refsrc|apply.c|578}} The chance of this -1 loss being waived is 1 in [[tameness]].
+
+== Messages ==
+{{message|Your leash goes slack.|Your leashed pet just died of starvation.{{refsrc|dogmove.c|244}}}}
+{{message|The leash(es) snaps loose.|You were [[engulf]]ed by a monster, and your leash(es) was removed from your pet(s).{{refsrc|mhitu.c|1671}}}}
+{{message|Its leash suddenly comes loose.|You moved to another level, but your pet was unable to follow you because it is either eating, trapped, or carrying the [[Amulet of Yendor]].{{refsrc|dog.c|533}} "Its" is replaced with "His" or "Her" if your pet is humanoid.}}
+{{message|<pet>'s leash goes slack.|You moved to another level, but your pet was not near you and so was unable to follow you.{{refsrc|dog.c|575}}}}
+{{message|<pet> <whimper>s.|You are near a [[trap]] and your leashed pet is whimpering because of it.{{refsrc|dogmove.c|661}} The whimpering sound will wake up other nearby monsters.{{refsrc|sounds.c|402}}}}
+{{message|You pull on the leash.|You pulled on a non-cursed leash.{{refsrc|apply.c|586}} This has no significant effect on your pet other than causing him to growl, yowl, or whimper, which can wake up nearby monsters.}}
+{{message|<pet>'s leash snaps loose!|You pulled too hard on a non-cursed leash and your leash is now removed from your pet.{{refsrc|apply.c|583}}}}
+{{message|<pet> chokes on the leash!|You pulled on a cursed leash, which choked your pet. The pet takes d2 damage and has a chance of having its tameness reduced by one.{{refsrc|apply.c|577}}}}
+{{message|Your leash chokes <pet> to death!|You pulled too hard on a cursed leash, which choked your pet and caused enough injury to kill it.{{refsrc|apply.c|568}} You will receive all of the normal penalties of killing a pet.}}
+{{message|<pet> pulls free of his leash!|Your pet is just about to become untame or dead.{{refsrc|apply.c|389}}}}
+{{message|Your leash falls slack.|As above, but they are out of your sight.{{refsrc|apply.c|391}}}}
+{{message|You cannot leash any more pets.|You attempted to leash a third pet while two were already leashed.{{refsrc|apply.c|424}}}}
+{{message|Leash yourself? Very funny...|You tried to apply a leash to yourself.{{refsrc|apply.c|438}}}}
+
+== Strategy ==
+Leashes can be useful for [[curse-testing#Pet testing|curse-testing]] items with the aid of a pet, but not ''as'' useful, since leashed or whistled pets will not reliably give the "moves reluctantly" message for cursed items, in rare cases even if it moves by its own free will.
+
+A leash can be used to encourage pets to [[stealing from shops|steal from shops]], by dragging them out of the shop while they're still holding an item. The leash can also make it easier to drag, whistle, or displace your pet into a [[polymorph trap]].
+
+A leashed pet will "whine" or make other appropriate nervous sounds when it is around traps, even undetected traps. This can be useful for detecting traps, but is not completely reliable.
+
+Pay attention when your pet is eating, and when going through doorways or around corners, so that you don't pull on the leash and cause your pet to yowl.<ref>{{sourcecode|apply.c|588}} makes a choice between {{function|sounds.c|growl|x}}, {{function|sounds.c|yelp|x}} or {{function|sounds.c|whimper|x}}, all of which will wake up nearby monsters.</ref> When your pet yowls, it wakes up other monsters, which can be undesirable. If you move much faster than your pet, this will happen frequently, even if you are just traveling in a corridor or room. To avoid the yowling when you travel faster than your leashed pet, you can stop and rest when your pet gets too far away to give it a chance to catch up to you.
+
+In the [[Endgame]], a leash is better than a [[magic whistle]] because you might hit the portal when your pet is not adjacent.
+
+Protection runners often desire a leash so they can dig down and bypass dark [[Gnomish Mines|mines]] levels. If you have only one pet, you can dig two squares' length of corridor into rock, displace your pet into the end, and dig down. This will cause your pet to stay adjacent to you and fall down with you when you fall through the hole.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+They had splendid heads, fine shoulders, strong legs, and
+straight tails.  The spots on their bodies were jet-black and
+mostly the size of a two-shilling piece; they had smaller
+spots on their heads, legs, and tails.  Their noses and eye-
+rims were black.  Missis had a most winning expression.
+Pongo, though a dog born to command, had a twinkle in his
+eye.  They walked side by side with great dignity, only
+putting the Dearlys on the leash to lead them over crossings.
+|[ The Hundred and One Dalmatians, by Dodie Smith ]
+}}
+
+== References ==
+<references/>
+[[Category:Tools]]
+{{nethack-364}}}
+&&%s&& %s Shell escape {99230 2015-12-21T09:39:57Z {4000080 ChasonBot}  In game, the {{kbd|!}} key triggers the '''shell escape'''. This should send you to a command line; exit the shell to return to NetHack. The exact behavior varies by operating system.
+
+It only works if the person who compiled the game had SHELL defined in [[config.h]]. Persons who build the game for [[public server]]s or other environments in which the player should not reach a shell will disable it.
+
+In the [[source code]], the <tt>dosh</tt> function handles this. The code for this function, if any, is somewhere under the <tt>nethack-3.4.3/sys</tt> directory for your operating system.
+
+The file <tt>nethack-3.4.3/sys/unix/unixunix.c</tt> contains the source for shell-escaping for a [[Unix]] system. If there is a <tt>SHELL</tt> environment variable, then NetHack will start that program, else NetHack will attempt to run <tt>/bin/sh</tt>. In most shells, the <tt>exit</tt> command will then return you to NetHack. Since most Unix now have job control, you could just press {{kbd|Ctrl|Z}} to suspend NetHack and return to the calling shell instead of starting a subshell; for that reason some players may never think to use the shell escape.
+[[Category:Commands]]
+{{nethack-343}}}
+&&%s&& %s Template:Man {132946 2020-03-20T04:10:05Z {4000978 Aximili}  <div class="noprint sidebox" style="clear: right; border: solid #aaa 1px; margin: 0 0 1em 1em; font-size: 90%; background: #f9f9f9; width: 250px; padding: 4px; spacing: 0px; text-align: left; float: right;">
+<div style="float: left;">[[Image:Man icon.png|50px|none|Unix manual pages]]</div>
+<div style="margin-left: 60px;">[[Unix]] manual for '''{{{1|man}}}{{#if:{{{2|}}}|({{{2}}})}}:
+* [http://www.freebsd.org/cgi/man.cgi?query={{{1|man}}}{{#if:{{{2|}}}|&sektion={{{2|}}} }} FreeBSD]
+* [http://netbsd.gw.com/cgi-bin/man-cgi?{{{1|man}}}{{#if:{{{2|}}}|+{{{2}}} }} NetBSD]
+* [http://www.openbsd.org/cgi-bin/man.cgi?query={{{1|man}}}{{#if:{{{2|}}}|&sektion={{{2|}}} }} OpenBSD]
+* [https://linux.die.net/man/{{#if:{{{2|}}}|{{{2|}}}|1}}/{{{1|man}}} Linux]
+</div>
+</div><noinclude>
+Use as <tt><nowiki>{{man|program}}</nowiki></tt> or <tt><nowiki>{{man|program|section}}</nowiki></tt>; see [[Template talk:Man|talk page]].
+
+[[Category:Link templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template talk:Man {14384 2006-10-17T23:51:38Z {458 Kernigh} /* Usage */ "FreeBSD" -> "FreeBSD and Linux" == Usage ==
+{| class="prettytable" style="width: 100%;"
+|| <tt><nowiki>{{man|printf}}</nowiki></tt>{{man|printf}}
+|-
+|| <tt><nowiki>{{man|printf|3}}</nowiki></tt>{{man|printf|3}}
+|-
+|| <tt><nowiki>{{man|hack|6}}</nowiki></tt>{{man|hack|6}}
+|}
+You might want to avoid using the template for situations like hack(6); notice how the FreeBSD and Linux links finds nothing.}
+&&%s&& %s Setgid {147549 2022-08-15T13:48:11Z {4000978 Aximili} put suggestion in a todo {{man|setgid|2}}
+[[NetHack]] needs to be able to write files into a directory called the [[playground]]. This is necessary to save games, to delete saved games when loading them, to save [[persistent level]]s during gameplay, to log games, and to add to the list of high scores. However, on multiuser [[Unix]] systems, users should not have write permision to the playground ''except'' when they play NetHack. Why let users cheat, or worse, corrupt the saves of other users?
+
+The solution is to give write access for the playground not to the users, but to a special Unix group such as <tt>games</tt>. Then [http://www.freebsd.org/cgi/man.cgi?query=chown chown] the executable to user <tt>root</tt>, group <tt>games</tt> and set the '''setgid''' bit. When the game starts, the system will ''set'' the effective ''g''roup ''id'' to <tt>games</tt> and NetHack will have the privileges necessary to write to the [[playground]].
+
+This sort of arrangement dates back to [[Hack]], which needed this setup for the same reasons as NetHack does. Here is [[Hack 1.0.3]] upon [[User:Kernigh|Kernigh]]'s [[OpenBSD]] system:
+
+ $ ls -l /usr/games/hack
+ -r-xr-sr-x  1 root  games  250568 Mar  1  2006 /usr/games/hack
+ $ ls -ld /var/games/hackdir
+ drwxrwxr-x  3 root  games  512 Jul 18 15:50 /var/games/hackdir
+
+{{Todo|Perhaps someone should edit the page and provide this info for their NetHack installation. Note that the <tt>nethack</tt> command is a [[shell script]] and that the setgid executable might be in the playground somewhere.}}
+
+The "s" in "-r-xr-sr-x" indicates that '''setgid''' is set. The group of the setgid executable (here /usr/games/hack) and that of the playground (here /var/games/hackdir) must match.
+
+{{noversion}}
+[[Category:Development]]}
+&&%s&& %s Vi {132949 2020-03-20T04:19:40Z {4000978 Aximili} Add man page link {{man|vi}}
+Around here, '''Vi''' (being vee eye, not [[6|six]]) is most notorious as the origin of the use of [hjkl] for movement. '''Vi''', short for ''VIsual editor'', is a classic but controversial text editor for [[Unix]]. Vi's main benefit is that it works with any ordinary terminal. The editor doesn't require a desktop environment, thus it can be used via telnet or ssh - much like nethack.
+
+The programmers of vi did not care much about moving the cursor diagonally. The programmers of [[Rogue (game)]] adopted the [hjkl] movement system (likely because their keyboards lacked both numeric keypads and separate arrow keys) and added [yubn] for diagonal movement. NetHack adopts this [[yuhjklbn]] system.
+
+These days, the one reason that you might need to know "vi" is if you play on [[nethack.alt.org]] or [[slashem.crash-override.net]]. If you [[telnet]] in and try to edit your [[nethackrc]], you will find yourself in a vi-like editor called '''virus'''. If you aren't comfortable using a vi-like program to edit text, NAO also offers a web-based configuration editor. 
+== Usage ==
+
+Vi has two different ''modes'': one for giving commands to the editor, and one for editing the text. The editor starts out in the command-mode.
+
+{| class="prettytable"
+! Keys !! Command
+|-
+| {{kbd|i}} || Enter editing mode. (Insert)
+|-
+| {{kbd|a}} || Enter editing mode. (Append)
+|-
+| {{kbd|Esc}} || Return from editing mode back to command-mode.
+|-
+| {{kbd|h}}, {{kbd|j}}, {{kbd|k}} and {{kbd|l}} || Move cursor left, down, up and right
+|-
+| {{kbd|$}} || Move cursor to the end of line.
+|-
+| {{kbd|^}} || Move cursor to the beginning of line.
+|-
+| {{kbd|G}} || Move cursor to the end of the file.
+|-
+| {{kbd|:}}{{kbd|w}}{{kbd|Enter}} || Save changes to file.
+|-
+| {{kbd|:}}{{kbd|q}}{{kbd|!}}{{kbd|Enter}} || Quit without saving changes.
+|-
+| {{kbd|x}} || Delete the character under the cursor.
+|-
+| {{kbd|d}}{{kbd|d}} || Delete the line under the cursor.
+|-
+| {{kbd|p}} || Paste deleted text.
+|}
+
+
+You will find vi upon many [[Unix]] systems, though some [[GNU/Linux]] distros (notably [[Debian]] and [[Gentoo]]) leave it away from of the core system. To learn about vi in general, you could try to start with [http://www.bbc.co.uk/dna/h2g2/A306857 H2G2's brief description vi], then move to [http://everything2.com/index.pl?node_id=13588 vi@Everything2.com] for commands and tutorials. [[Wikipedia:Vi]] reveals the history of Vi, while [[Wiki:ViEditor]] explains how to pronounce "vi" and links to comparisons with [[Emacs]]. There is also improved version of Vi called [[w:c:vim|Vim]].
+[[Category:Development]]}
+&&%s&& %s Playground {146356 2022-06-28T23:05:44Z {4000251 Netzhack} Defined playground more narrowly, distinct from "hackdir". More to do. The '''playground''' is the name of the folder/directory where NetHack can write files.
+
+Like many programs, NetHack has executable and data files which do not change after installation; configuration files which can be adjusted by a user or administrator; and data files which change as the program runs.
+
+On some systems, such as older Windows versions, or when NetHack is installed in a single user's home directory, all of these files may be in the same place.
+
+More typically, however, especially on multi-user systems, the unchanging files are installed in one place – under <tt>/usr</tt> on [[Unix]], or under <tt>\Program Files\</tt> on Windows – and the variable files are kept under a directory where users have write access, such as <tt>/var</tt> on Unix or <tt>\AppData\</tt> on Windows. In this case, '''playground''' refers to the directory containing NetHack's variable files; a distinct directory with the executable and data files is called '''[[hackdir]]''' in some NetHack documents.
+
+The data includes dungeon descriptions, rumours ([[rumor.tru]] and [[rumor.fal]]), save files, temporary files during gameplay, the [[logfile]], and the [[record file|high scores list]].
+
+The default playground on Linux is <tt>/usr/games/lib/nethackdir/</tt>
+
+The default playground on FreeBSD is <tt>/usr/local/lib/nethack/</tt>
+
+In Debian (Lenny) and Ubuntu (Cosmic) the playground is <tt>/var/games/nethack</tt>
+
+On openSUSE, the playgrounds are located at <tt>/var/games/nethack</tt> and <tt>/usr/share/games/vulture-*</tt> for the various [[Vulture]].
+
+On FreeBSD it can also be located at <tt>/usr/local/share/nethack</tt>
+
+On Mac OS, it may be located at <tt>/Library/NetHack/nethackdir</tt> or, if installed via Homebrew, <tt>/usr/local/Cellar/nethack/<em><u>VERSION</u></em>/libexec/save</tt>
+
+On Windows, it may be located at <tt>%LocalAppData%\NetHack\<u>VERSION</u></tt>, such as <tt>%LocalAppData%\NetHack\3.6</tt>.
+[[Category:Annotations]]}
+&&%s&& %s Rumor.tru {67489 2011-02-02T21:02:32Z {4000077 Redirect fixer} Fixing double redirect from [[Source:Rumors.tru]] to [[Source:NetHack 3.4.3/dat/rumors.tru]]. #REDIRECT [[Source:NetHack 3.4.3/dat/rumors.tru]]}
+&&%s&& %s Rumor.fal {67487 2011-02-02T21:02:31Z {4000077 Redirect fixer} Fixing double redirect from [[Source:Rumors.fal]] to [[Source:NetHack 3.4.3/dat/rumors.fal]]. #REDIRECT [[Source:NetHack 3.4.3/dat/rumors.fal]]}
+&&%s&& %s Hit and run {139950 2021-05-17T04:41:08Z {4001463 Actual-nh} Link speed; clarify '''Hit and run''', also known as '''kiting''', is a tactic used for fighting [[monster]]s which may have powerful melee attacks but are [[speed|slower than]] the player, such as [[mimic]]s, [[black pudding]]s, and [[rothe]]s. It is known as '''hack-and-back''' in Angband circles.
+
+Since this technique allowed the player to kill most slower monsters trivially, given enough space, [[NetHack 3.6.0]] and [[NetHack 3.6.1]] added randomization to the monster and player speed systems, making the precise counting methods described below obsolete. Generally, it is still possible to kite monsters that are substantially slower than you, forcing them to spend most of their actions pursuing rather than attacking, but there is no longer a way to guarantee that they will spend ''all'' of their actions pursing.
+
+In 3.6.1, instead of accumulating movement points, monsters get an action for each 12 points of speed they have, plus a possible extra action with probability proportional to any extra movement they have beyond that. {{reffunc|mon.c|mcalcmove}} E.g., a [[mimic]] (speed 3) has a 3/12 = 25% chance of getting an action each turn, and a [[killer bee]] (speed 18) gets one guaranteed action plus a 6/12 = 50% chance of another one each turn, irrespective of preceding movement.  Thus, you should always assume that the monster's speed is rounded up to a multiple of 12, making the strategy below only useful if you are very fast or riding.
+
+{{todo|This isn't really the proper page to describe the monster speed system; is there any better one? (As far as I know, the 3.6 changes to the player speed system aren't documented anywhere on the wiki either...) Also, this page could do with some explanation of how 3.6 kiting is useful "if you are very fast or riding"}}
+
+==How it works in 3.4.3 and prior versions==
+
+A monster can use each turn it gets for either movement or attacking you, but not both. For example, if a monster moves at least twice as slowly as the player, it cannot melee you the turn immediately after it moves, and you can safely attack it on that turn.
+
+All slow monsters have to pause a turn at a predictable rhythm, e. g. always after three movements. You can hit such a monster as often as you wish without a single counterattack: You start stepping back immediately after you attack it, and then you attack it only when it moves adjacent to you right before its scheduled pause. You can use hit and run tactics for all of your attack types: melee, [[pounding]], missiles, and spells.
+
+Intrinsic and extrinsic [[speed]] are erratic, and you should act as if you have the minimum possible speed. When fast (i.e. [[wand of speed monster]], "You feel quick!", etc.) you get a 2 in 3 chance of +6 speed, and should act as if you are still moving at normal speed, rather than acting like you have a speed of 16, to avoid getting hit the 1/3 of the time your speed bonus doesn't apply. When you are '''very''' fast ([[speed boots]]), however, you are guaranteed at least 18 speed (and a 1 in 3 chance of another +6), and can successfully defeat anything slower than 18 while never getting hit. In both of these cases, when you get your extra move, you should rest and wait for the monster to move adjacent to you and then start the rhythm over again. Note that extra speed from [[polymorph]]ing yourself or [[riding]] is always reliable, so an unburdened player riding a [[warhorse]] should count his speed as 24.
+
+===Optimal rhythm===
+Here is a handy table to help you calculate your minimum speed:
+{| class="prettytable sortable striped" style="border:none; margin:0; padding:0; width: 22em;"
+|-
+! [[Encumbrance]] !! Normal speed !! [[Speed#Intrinsic speed (fast)|Fast]] (minimum) !! [[Speed#Extrinsic speed (very fast)|Very fast (minimum)]]
+|-
+| Unencumbered || 12 || 12 || 18
+|-
+| Burdened || 9 || 9 || 13.5
+|-
+| Stressed || 6 || 6 || 9
+|-
+| Strained || 3 || 3 || 4.5
+|-
+| Overtaxed || 1.5 || 1.5 || 2.25
+|}
+
+To calculate the optimal rhythm of hit-and-run, follow this process:
+*If your movement rate is at least double the [[monsters (by speed)|monster's movement rate]], take the ratio of the monster's rate divided by your movement rate, and round '''up''' to the nearest point on this table:
+
+{| class="prettytable"
+! Fraction !! Percentage !! Rhythm
+|-
+| 1/2 || 50% || move once, hit once
+|-
+| 1/3 || 33% || move once, hit twice
+|-
+| 1/4 || 25% || move once, hit three times
+|-
+| 1/5 || 20% || move once, hit four times
+|-
+| 1/6 || 16.7% || move once, hit five times
+|-
+| 1/7 || 14.3% || move once, hit six times
+|-
+| 1/8 || 12.5% || move once, hit seven times
+|}
+
+*If your movement rate is less than double the monster's movement rate, take the ratio of your rate divided by the monster's rate, and round '''up''' to the nearest point on this table:
+
+{| class="prettytable"
+! Fraction !! Percentage !! Rhythm
+|-
+| 9/10 || 90% || move nine times, hit once
+|-
+| 8/9 || 88.9% || move eight times, hit once
+|-
+| 7/8 || 87.5% || move seven times, hit once
+|-
+| 6/7 || 85.7% || move six times, hit once
+|-
+| 5/6 || 83.3% || move five times, hit once
+|-
+| 4/5 || 80% || move four times, hit once
+|-
+| 3/4 || 75% || move three times, hit once
+|-
+| 2/3 || 66.7% || move twice, hit once
+|}
+
+Examples:
+*An unburdened player without will move at 12, and a [[gnome]] will move at 6. Since 6/12 = 1/2 = 50%, the hit-and-run rhythm against a gnome will be move once, hit once; move once, hit once; etc.
+*An unburdened player with [[speed boots]] will move at a minimum speed of 18, and a [[black pudding]] will move at 6. Since 6/18 = 1/3, the hit-and-run rhythm against a black pudding will be move once, hit twice; move once, hit twice; etc. However, 1/3 of the time, you will move at 24, in which case you will end up moving twice in a row. In this case, simply rest until the black pudding moves adjacent to you and start again.  
+*A burdened player without will move at 9, and a [[chickatrice]] will move at 4. Since 4/9 = 44.4%, round up to 50% and follow the same rhythm as the gnome
+*A player riding a [[horse]] will move at 20, and a [[leocrotta]] will move at 18. Since 18/20 = 9/10, this player can safely hit the leocrotta after every nine moves. In practice, it is difficult to hit-and-run at this speed unless you have a loop to move around and there are no other monsters nearby. If the player were riding a [[warhorse]] (speed 24), 18/24 = 3/4, so the player could hit after every three moves.
+
+==Dangers==
+Hit and run is most likely to be successful if the monster in question is the only monster nearby. It's best to close doors or block off other exits to avoid having other foes intrude on your hit and run session. Hit and run is also much less useful when facing a creature that can attack you at range, since it will often choose to make a ranged attack instead of chasing.
+
+One common tactic is to hit and run in a circle, looping around a set of hallways, a boulder, or a cave formation that allows maneuverability all the way around. When doing this, watch out for monsters that could block the path ahead of you. Note that using hit and run on [[pudding]]s or other multiplying monsters is not totally safe since if the monster divides, that extra monster could appear adjacent to you and block the way or attack the next turn.
+
+== References ==
+<references />
+
+[[Category:Strategy]]
+{{nethack-361}}}
+&&%s&& %s Scumming {9064 2006-08-31T11:07:30Z {396 Jayt} disambiguating between save and start scumming '''Scumming''' refers to the dubious practices of [[save scumming]] and [[start scumming]], and to a lesser extent, [[farming]].
+
+{{disambig}}}
+&&%s&& %s False rumors {67488 2011-02-02T21:02:31Z {4000077 Redirect fixer} Fixing double redirect from [[Source:Rumors.fal]] to [[Source:NetHack 3.4.3/dat/rumors.fal]]. #REDIRECT [[Source:NetHack 3.4.3/dat/rumors.fal]]}
+&&%s&& %s Lightning {102298 2016-04-04T18:16:37Z {4000629 Cherokee Jack} Make this a disambiguation page '''Lightning''' occurs in NetHack in several forms:
+
+* A [[ray]] attack that deals [[shock]] damage, caused by:
+** The [[breath]] attack of a monster, such as a [[blue dragon]] or the [[Chromatic Dragon]]
+** A zapped or broken [[wand of lightning]]
+** The wrath of a deity whose [[Aligned priest|priest]] has been attacked
+* The [[Lightning (monster spell)|lightning]] [[monster spell]]
+* A [[Instakill|potentially deadly]] bolt of lightning sent by a deity to [[Anger#Smite|smite]] you for angering him/her
+* The occasional lightning strikes that occur while in a [[cloudy area|cloud]] on the [[Plane of Air]]
+* The lightning that strikes a target hit by [[Mjollnir]]
+* The [[Spellbook of lightning|lightning]] [[attack spell]] that can be learned in [[SLASH'EM]]
+
+The effects of these forms of lightning are covered by the '''[[shock]]''' article, which deals with electrical damage of any kind.  On this wiki, "lightning" may be used as a synonym for shock damage in general.
+
+{{Disambig}}
+{{nethack-343|offset=1}}
+{{slashem-7E7}}}
+&&%s&& %s Source talk:NetHack 3.4.3/dat/rumors.tru {64422 2011-01-31T19:15:30Z {4000027 Paxedbot} moved [[Source talk:Rumors.tru]] to [[Source talk:NetHack 3.4.3/dat/rumors.tru]]: Moving src to subdirs == Annotation and Linking ==
+
+Since this page is part of the source code, I'm not going to edit it without permission from an admin, but I think it would be nice if we could add links from rumours to pages which clarify what they mean (existing pages like [[Unicorn]], [[Nymph]] and [[Elbereth]] would be a good start).
+[[User:Ekaterin|Ekaterin]] 14:12, 31 August 2006 (UTC)
+:The principle at work for source pages is that you should not edit the lines of code themselves, but you should feel perfectly free to add annotations between the lines. I've added a few on this page. --[[User:Jayt|Jayt]] 14:33, 31 August 2006 (UTC)
+
+::I think it would make this page more clear if the links were added straight to their places. After all, strictly taken this isn't really source code but rather just a data file. Even the 'Category:Source code' could be removed from this. I could've imported it by just adding
+:#line
+:#numbers
+:#like
+:#this
+::but I figured we can change it later if you'd rather see it that way. Of course, then the individual lines couldn't be hotliked, but that isn't such a big drawback if the line numbers are still there. --[[User:ZeroOne|ZeroOne]] 20:10, 31 August 2006 (UTC)
+
+:::I suppose it is debatable whether adding a wikilink within a source code line is really modifying it, but this page provides short explanations, not just links, so we may as well link in the explanation text. I do think this file counts as source code though; I would call anything in the source tarball source code, simply because it comes straight from the DevTeam, as so is a primary source, in the historiographical sense, even though it isn't "code". --[[User:Jayt|Jayt]] 20:58, 3 September 2006 (UTC)
+== Categorization ==
+
+Many of the rumors state the same information in a similar way. For example,
+ 52.   Elbereth has quite a reputation around these parts.
+ 62.   Fiery letters might deter monsters.
+ 63.   For a good time engrave `Elbereth'.
+ 170.  They say that `Elbereth' is often written about.
+ 347.  Why would anybody in his sane mind engrave "Elbereth"?
+I think it'd be best if we categorized all of these under "Elbereth" and then had one annotation describing them all. Other categories could be, for example, "Intrinsics" and "Identification". Of course, it'd break the rule that we don't modify any of the source code itself (well, even then we're just rearranging it, not modifying it), but I think in this case it'd be a valuable enough tradeoff. --[[User:Eidolos|Eidolos]] 20:32, 3 September 2006 (UTC)
+
+:Are there really enough duplicates to warrant a category system? Wouldn't we just have 9 or 10 categories, and then ~300 non-categorised items? And as I wrote above, I do consider this a source file and so am reluctant to fiddle with it too much. --[[User:Jayt|Jayt]] 20:58, 3 September 2006 (UTC)
+
+::I think there are enough duplicates. I also think just about everything is categorizable. Having categories would make it easier for not only for the annotators, but also for the readers. Here's a starting point for the categories: intrinsics, identification, item properties, monster abilities, pets, religion, plot, and miscellaneous (for phase of the moon, etc.). Miscellaneous will probably be one of the smaller categories. We could have two separate pages as well, annotated&categorized and pristine. --[[User:Eidolos|Eidolos]] 21:17, 3 September 2006 (UTC)
+
+:If we do not change the line numbers, then I wouldn't consider it modifying the source file - anyone could see what line 1 is, what line 2 is, etc.  They'd have to hunt for the next line in sequence, but it would still be obvious how to get the original file (remove annotations and put lines in numerical order).  Besides, lines are chosen randomly, so permutation would have no effect on the meaning of the file even if the original line-numbers were discarded. --[[User:Stefanor|Stefanor]] 21:59, 3 September 2006 (UTC)
+
+:I think just rearranging them to minimize the number of annotations would be enough.  No need to bother with subheadings and a TOC.  I expect (people looking for an odd message to see what it means) to outnumber (people looking for how the game documents an obscure topic). --[[User:Stefanor|Stefanor]] 21:59, 3 September 2006 (UTC)
+
+::Subheadings and table of contents are automatic. There's no reason not to include them, except on pages like [[Main Page]]. :) We probably wouldn't have headings for anything but the ten or so main categories.--[[User:Eidolos|Eidolos]] 22:13, 3 September 2006 (UTC)
+
+::I wouldn't rearrange this file, like we haven't changed the order of subroutines in other source files. If anything, we could create articles called [[True rumors]] and [[False rumors]]. --[[User:ZeroOne|ZeroOne]] 22:15, 3 September 2006 (UTC)
+
+:::I'll do this then, at least for true rumors. --[[User:Eidolos|Eidolos]] 22:25, 3 September 2006 (UTC)
+
+::::Very nice! Thinking about it again, it's good that [[false rumors]] is just a redirect. They don't really need to be annotated, since they are just false. --[[User:ZeroOne|ZeroOne]] 00:06, 4 September 2006 (UTC)}
+&&%s&& %s Ranged weapon {132278 2020-02-23T18:10:07Z {4001279 Umbire the Phantom}  A '''ranged weapon''' is any [[weapon]] which can attack a monster not adjacent to you. Technically, [[Projectile|any item]] in the game could be a ranged weapon if thrown; colloquially, any [[item]] that can damage a monster at a distance could be considered a ranged weapon; including [[attack wand]]s, hurled potions and [[spell]]s. However, the [[source code]] officially designates some weapons as ranged:{{refsrc|weapon.c|341}}
+
+*all [[spear]]s (dwarvish spear, silver spear, elven spear, spear, orcish spear) including [[javelin]]s
+*[[shuriken]]
+*all types of [[arrow]]s ([[ya]], [[silver arrow]], [[elven arrow]], [[arrow]], [[orcish arrow]]) and [[crossbow bolt]]s
+*all [[dagger]]s (silver dagger, elven dagger, dagger, orcish dagger) and the [[knife]]
+*all stones ([[flint stone]], [[rock]], [[loadstone]], [[luckstone]])
+*[[dart]]
+*[[boomerang]]
+*[[cream pie]]
+
+==Monster usage==
+
+The order of preference in which hostile monsters will use a ranged weapon is:<ref>{{function|weapon.c|select_rwep}}</ref> 
+# [[cockatrice egg]], 
+# [[cream pie]] for [[Keystone Kop]]s, 
+# [[boulder]]s for [[giant]]s, 
+# [[polearm]]s or [[lance]] if you are in range, 
+# the above list, in order of priority and if a necessary launcher is available.
+
+Gems are inserted into said above list between luckstone and darts. The preference of [[polearm]]s is: [[halberd]], [[bardiche]], [[spetum]], [[bill-guisarme]], [[voulge]], [[ranseur]], [[guisarme]], [[glaive]], [[lucern_hammer]], [[bec_de_corbin]], [[fauchard]], [[partisan]], [[lance]]. Of course, polearms can only be used by "strong" monsters without a [[shield]].
+
+{{todo|1)Does a monster need a weapon attack to be able to use ranged weapons? 2) Track the calls to select_rwep - can confused/conflicted/scared/fleeing/healthy pets/hostiles/priests/shopkeepers/covetous monsters use ranged stuff?}}
+
+==See Also==
+* [[projectile]]
+* [[Pet#Weapons]] lists the order of preference of melee weapons
+
+==References==
+
+<references/>
+
+[[Category:Weapons]]
+{{todo|expand or merge}}
+{{nethack-343}}}
+&&%s&& %s Fumbling {139570 2021-05-06T18:07:45Z {187 Darth l33t} multishot '''Fumbling''' is a [[property]] acquired extrinsically by wearing [[gauntlets of fumbling]] or [[fumble boots]]. You also fumble when walking on [[ice]] unless you are wearing snow boots or are naturally cold resistant (e.g. a [[valkyrie]] or polymorphed into a [[winter wolf]]).
+Wearing cursed gauntlets of fumbling or fumble boots counts as a [[minor trouble]].
+
+==Effects==
+* [[Abuse]]s [[dexterity]] every five turns.
+* Every d20 turns, you'll slip or trip and be helpless for 2 turns if you attempt to move that turn; if you're carrying more than a certain amount, you'll make noise and alert nearby monsters; if you're riding, you'll fall off.
+* You fall when going down [[stairs]].
+* Your dexterity is abused if you try to move into a closed [[door]].
+* [[saddle|Saddling]] ridable monsters is less likely to succeed.
+* Attempting to mount a steed will always fail.
+* [[Digging]] with an implement may not succeed, and may cause it to hit you or be dropped.
+* Your chance of disarming a [[trap]] is halved.
+* You have no chance of disarming a [[container trap]] or trapped [[door]].
+* You have no chance of escaping traps.
+* Setting traps may cause them to go off.
+* Applying [[can of grease|cans of grease]] can cause you to drop them.
+* You are less likely when applying a [[bullwhip]] to produce the desired effect, and may drop it instead.
+* Kicking monsters or objects is less likely to be successful.
+* As a [[Valkyrie]], [[Mjollnir]] will hit your arm rather than be caught on its return.
+* Your [[multishot]] is impaired.
+* Returning [[boomerang]]s will hit you rather than be caught.
+* The following items will end up on the floor rather than in your inventory:
+** [[potion of oil|potions of oil]] that you light (if one of several)
+** wished-for items
+** tins made with a [[tinning kit]]
+** items from a [[horn of plenty]]
+** [[scroll of mail|scrolls of mail]]
+** [[gem]]s thrown at you while you're a [[unicorn]]
+** items stolen as a [[nymph]]
+** weapons snagged with a bullwhip
+** [[arrow]]s created by the [[Longbow of Diana]]
+** saddles removed from a steed
+** written [[scroll]]s and [[spellbook]]s.
+
+[[Category:Properties]]
+{{nethack-366}}}
+&&%s&& %s Thunderfist {142799 2021-09-20T05:42:08Z {4001279 Umbire the Phantom}  '''Thunderfist''' was an artifact [[lucern hammer]] (pronged polearm) that appeared in ''[[NetHack]]'', with similar properties to the modern [[Mjollnir]]. It existed only in [[NetHack 3.0.0]], [[3.0.1]] and [[3.0.2]].
+
+NetHack 3.0.0 was the first version to implement unique artifacts and featured several new artifacts - among them the lucern hammers named Thunderfist and [[Ogresmasher]]. The [[DevTeam]] may have erroneously chosen the lucern hammer as their [[base item]]s, unaware that it was a polearm. In [[NetHack 3.0.3]], the DevTeam added a new weapon type, the [[war hammer]], switched the base items of both artifacts to it, and renamed Thunderfist to Mjollnir.
+
+==Origin==
+The origin of the name "Thunderfist" is uncertain, but it appears in multiple computer games of the fantasy genre; the name tends to have association with both [[dwarf|dwarves]] and fighting. ''[[Angband]]'' has an artifact called the [http://angband.oook.cz/artifacts.php?q=Thunderfist Two-Handed Flail 'Thunderfist'].
+
+==Dudley's dungeon==
+In ''[[Dudley's dungeon]]'', Thunderfist is the subject of [[L (person)|L]]'s strip for [http://www.nicolaas.net/dudley/index.php?f=20050916 16 September 2005]. The strip tries to explain why Mjollnir is a lucern hammer, as if the change in 3.0.3 never happened.
+{{noversion}}
+[[Category:Defunct objects]]}
+&&%s&& %s Polearm {150300 2023-03-22T16:02:49Z {187 Darth l33t} /* Comparison table */ Japanese name {{Float right|__TOC__}}
+A '''polearm''' is literally a weapon on a pole. There is an abundance of polearm types in NetHack.  This is another feature of the game that echoes early editions of ''[[Dungeons & Dragons]]'', which were infamous for giving stats for many exotic polearms, while describing none of them.
+
+Monsters will attempt to use polearms in the following order: [[#Halberd|halberd]], [[#Bardiche|bardiche]], [[#Spetum|spetum]], [[#Bill-guisarme|bill-guisarme]], [[#Voulge|voulge]], [[#Ranseur|ranseur]], [[#Guisarme|guisarme]], [[#Glaive|glaive]], [[#Lucern hammer|lucern hammer]], [[#Bec de corbin|bec de corbin]], [[#Fauchard|fauchard]], [[#Partisan|partisan]], followed by the [[lance]]; and so this list is roughly from best to worst. Polearms can only be used by [[strong]] monsters without a [[shield]].
+
+The [[lance]] is, in real life, a polearm, but in NetHack it uses the lance [[skill]] instead of the polearm skill, due to its very different usage: ''by'' mounted soldiers instead of ''against'' them.
+
+== Generation ==
+
+Collectively, polearms make up about 6.4% of all randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s). The probabilities of each type range from 0.4% to 0.8%. 
+
+A few types of polearms are more common because they appear in the [[monster starting inventory|starting inventory]] of certain monsters.  Ranseurs, partisans, glaives, and spetums are the usual starting weapons of [[troll]]s.{{refsrc|src/makemon.c|392|version=NetHack 3.6.0}}  Lucern hammers may also be generated as a fall-back starting weapon for [[strong]] monsters that lack default weapons.{{refsrc|src/makemon.c|497|version=NetHack 3.6.0}}
+
+[[Watchmen]] and [[soldier]]s in the [[Yendorian Army]] often start with a random polearm.{{refsrc|src/makemon.c|196|version=NetHack 3.6.0}}
+
+==Comparison table==
+{|class="wikitable sortable striped"
+! Name !! Value !! Weight !! Prob&nbsp;(%) !! class="unsortable" | <abbr title="damage versus small monsters">Sdmg</abbr> !! <abbr title="average damage versus small monsters">Savg</abbr> !! class="unsortable" | <abbr title="damage versus large monsters">Ldmg</abbr> !! <abbr title="average damage versus large monsters">Lavg</abbr> !! class="unsortable" | Material !! Appearance !! class="unsortable" | Tile !! class="unsortable" | Glyph
+|-
+| [[halberd]] || 10 || 150 || 8 || d10 || 5.5 || 2d6 || 7 || iron || angled poleaxe || [[Image:Halberd.png]] || {{cyan|)}}
+|-
+| [[bardiche]] || 7 || 120 || 4 || 2d4 || 5 || 3d4 || 7.5 || iron || long poleaxe || [[Image:Bardiche.png]] || {{cyan|)}}
+|-
+| [[bill-guisarme]] || 7 || 120 || 4 || 2d4 || 5 || d10 || 5.5 || iron || hooked polearm || [[Image:Bill-guisarme.png]] || {{cyan|)}}
+|-
+| [[ranseur]] || 6 || 50 || 5 || 2d4 || 5 || 2d4 || 5 || iron || hilted polearm || [[Image:Ranseur.png]] || {{cyan|)}}
+|-
+| [[voulge]] || 5 || 125 || 4 || 2d4 || 5 || 2d4 || 5 || iron || pole cleaver || [[Image:Voulge.png]] || {{cyan|)}}
+|-
+| [[guisarme]] || 5 || 80 || 6 || 2d4 || 5 || d8 || 4.5 || iron || pruning hook || [[Image:Guisarme.png]] || {{cyan|)}}
+|-
+| [[lucern hammer]] || 7 || 150 || 5 || 2d4 || 5 || d6 || 3.5 || iron || pronged polearm || [[Image:Lucern hammer.png]] || {{cyan|)}}
+|-
+| [[spetum]] || 5 || 50 || 5 || d6+1 || 4.5 || 2d6 || 7 || iron || forked polearm || [[Image:Spetum.png]] || {{cyan|)}}
+|-
+| [[bec-de-corbin]] || 8 || 100 || 4 || d8 || 4.5 || d6 || 3.5|| iron || beaked polearm || [[Image:Bec de corbin.png]] || {{cyan|)}}
+|-
+| [[glaive]] (naginata) || 6 || 75 || 8 || d6 || 3.5 || d10 || 5.5 || iron || single-edged polearm || [[Image:Glaive.png]] || {{cyan|)}}
+|-
+| [[fauchard]] || 5 || 60 || 6 || d6 || 3.5 || d8 || 4.5 || iron || pole sickle || [[Image:Fauchard.png]] || {{cyan|)}}
+|-
+| [[partisan]] || 10 || 80 || 5 || d6 || 3.5 || d6+1 || 4.5 || iron || vulgar polearm || [[Image:Partisan.png]] || {{cyan|)}}
+|}
+
+== Polearms skill ==
+{{polearms skill table}}
+
+How skill affects range when applying a polearm:
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+newline=<br>
+@={{white|@}}
+X={{darkgray|X}}
+U={{yellow|U}}
+S={{orange|S}}
+E={{red|E}}
+
+ESUSE
+SXXXS
+UX@XU
+SXXXS
+ESUSE
+</replacecharsblock></div>
+
+The {{white|@}} is where your character is standing. Spaces marked with a {{darkgray|X}} are too close to be hit, spaces marked with a {{yellow|U}} can be hit even while Unskilled, spaces marked with a {{orange|S}} can only be hit when Skilled, and spaces marked with a {{red|E}} can only be hit when Expert. No role in vanilla NetHack can become Expert in polearms, but Knights can become Expert in lances, which use the same mechanic.
+
+All of the weapons listed on this page use the polearms skill:
+
+* halberd
+* bardiche
+* spetum
+* ranseur
+* partisan
+* voulge
+* glaive
+* fauchard
+* guisarme
+* bill-guisarme
+* lucern hammer
+* bec-de-corbin
+
+There are no [[artifact weapon|artifact]] polearms.
+
+== Mechanics ==
+{{main|Pounding}}
+Polearms are capable of attacking enemies from two squares away, but the procedure for using them is different from other weapons. A polearm must be wielded (like any weapon), and then ''[[apply|applied]]'' via the {{kbd|a}} command each time you want to strike. Attacking this way doesn't trigger [[passive attack]]s, but the polearm itself is still subject to [[erosion]] and loss of enchantment from a [[disenchanter]]. Pounding with a polearm while standing on [[Elbereth]] can cause it to fade and reduce your [[alignment record]], just like attacking in melee.
+
+If you are [[riding|mounted]], you may use polearms for melee attacks in the usual way (which ''does'' trigger passive attacks), but simply walking into an opponent on foot will only bash them with the pole; this deals d2 damage, with no bonuses, and does not train polearm [[skill]].
+
+== Strategy ==
+A character with a mount could make a polearm their primary weapon. Polearms deal less damage than other two-handed weapons in most circumstances, but they are an attractive option for roles such as [[Ranger]]s and [[Wizard]]s, who can ride but are restricted in most of the better melee weapon skills, and the ability to transition from pounding to melee without switching weapons is a tactical advantage. You'll need a backup weapon in case you're dismounted.
+
+One of the great uses of polearms is not for fighting mounted opponents, but for fighting [[sea monster]]s, since staying two squares away from water makes a character immune to their [[drowning attack]]. If you have no simpler method for dealing with the sea monsters, it can be worthwhile to grab the best polearm you find and spend some time training with it before going to a level with open water.
+
+In terms of differences between polearms, the halberd deals the most damage against small monsters, and the bardiche against large monsters; however, these are also among the heaviest options. The spetum deals high damage to both categories for only 50 weight; the ranseur is also a respectable lightweight polearm. The bec-de-corbin and lucern hammer offer poor damage for such heavy weapons.
+
+===Packed rooms===
+In leprechaun halls, throne rooms, and other rooms where every space is filled with monsters, a character with [[stealth]] can use polearms to attack monsters behind other monsters, protecting themselves from being attacked, and in some cases, preventing the target from moving.
+
+==Origin==
+{{wikipedia|Pole weapon}}
+Polearms were popular in warfare for combating mounted soldiers, and those with heavy armor. The polearms (arms on poles) increased leverage for cutting the armor, and increased reach for reaching above the horse.
+
+As time went on the various different weapon types borrowed heavily from each other and began to look like each other, which has led to a great deal of confusion over classification.  Warfare is, after all, a ruthlessly pragmatic matter, and classification is a hobby for comfortable people after the dust has settled.  If you search the internet now for examples of these weapons, you are likely to see weapons completely mislabeled as something different.
+
+The term "poleaxe" seems to mean an axe on a pole, and that is how it is used in NetHack's descriptions. However, the term in real life is considered a corruption of "pollax", the "poll" part meaning "head", denoting originally a tool for slaughtering animals by hitting them in the head with a spike (whence the verb "to poleaxe"). As with many other agricultural tools, it became yet another military polearm.
+
+==Halberd==
+{{weapon
+ |name=halberd
+ |tile=[[image:halberd.png]]
+ |appearance=angled poleaxe
+ |smalldmg=d10
+ |largedmg=2d6
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=10
+ |weight=150
+ |material=iron
+}}
+
+[[Image:Halberds.png|600px]]
+
+The '''halberd''' was a mainstay weapon in many armies for a long time. The halberd is a type of poleaxe in the most literal sense, an axe on a pole. Its main identifying feature is that the blade is always angled slightly downward, which explains NetHack's description of an '''angled poleaxe'''. In addition to the axe, halberds also have both a spear tip, and spike or hook on the rear for penetrating armor or hooking, making a versatile three-in-one weapon. Due to the popularity of this weapon, there are a wide variety of different styles, although some were only parade weapons. The halberd is one of the best NetHack weapons, and this is consistent with its role in real warfare.
+{{clear}}
+
+==Bardiche==
+{{weapon
+ |name=bardiche
+ |tile=[[image:bardiche.png]]
+ |appearance=long poleaxe
+ |smalldmg=2d4
+ |largedmg=3d4
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=7
+ |weight=120
+ |material=iron
+}}
+
+[[Image:Bardiches-Colored.png|168px]]
+
+NetHack calls the '''bardiche''' a '''long poleaxe''' and that is exactly right, if you assume that the "long" applies to "axe" and not "pole". A bardiche is nothing more than a long axe blade on a stick. The cutting blade was typically two feet long or more, and usually attached to the pole in two places (in the middle and the bottom). But it is mounted on one of the shortest poles for a polearm, only about five feet. So "short poleaxe" would be accurate also. This simple weapon's advantage was in its size and weight, not its subtlety. NetHack gets the weight wrong&mdash;a bardiche should be heavier than a halberd.
+{{clear}}
+
+==Spetum==
+{{weapon
+ |name=spetum
+ |tile=[[image:spetum.png]]
+ |appearance=forked polearm
+ |smalldmg=d6+1
+ |largedmg=2d6
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=5
+ |weight=50
+ |material=iron
+}}
+
+[[Image:Spetums.png]]
+
+The '''spetum''' is a spear with two more knife blades stuck on the sides. NetHack's "'''forked polearm'''" is vaguely accurate, but forked weapons, like the [[wikipedia:Military fork|military forks]] shown below, would more typically have side prongs that reach all the way up to the top. Over time variations were added and it more strongly resembled the ranseur. (The spetum may have grown into the ranseur, or they may have been developed independently.) NetHack gives this an advantage with large monsters, which doesn't quite make sense, as it is supposed to be a lighter polearm.
+
+[[File:Forks.jpg|400px]]
+{{clear}}
+
+==Ranseur==
+{{weapon
+ |tile=[[image:ranseur.png]]
+ |name=ranseur
+ |appearance=hilted polearm
+ |smalldmg=2d4
+ |largedmg=2d4
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=6
+ |weight=50
+ |material=iron
+}}
+
+[[Image:Ranseurs.png]]
+
+The '''ranseur''', the '''hilted polearm''', is essentially a spear with a hilt. The hilt served primarily to block opponents' weapons and possibly trap the weapon for disarming. The hilt was sometimes also used secondarily as an alternate way to attack. The hilt often hooked backwards also, so that it could be used as a hook. The ranseur was probably an all around better weapon than the spetum, but this is not the case in NetHack. In a perfect universe, NetHack would give this weapon an advantage when fighting monsters that use weapons, as that is where the hilt is useful.
+{{clear}}
+
+==Partisan==
+{{weapon
+ |name=partisan
+ |tile=[[image:partisan.png]]
+ |appearance=vulgar polearm
+ |smalldmg=d6
+ |largedmg=d6+1
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=10
+ |weight=80
+ |material=iron
+}}
+
+[[Image:Partisans.png]]
+
+The '''partisan''' also winds up looking much like the ranseur and spetum. Originally the partisan was a spear with small double axe blades added below it. This basic form is shown in the first partisan above; however you won't likely ever see a partisan that looks like this. The other forms are more typical. Note that while some of them look like spetums, they present broader protrusions than the knife-like spetum prongs. The partisan is also more likely to have a flat bladed tip, rather than the spiky blade of the spetum and ranseur. Over time partisans (or weapons called partisans) became more ornamental and ceremonial, which may explain why it is one of the weaker polearms, and also why it is referred to as a '''vulgar polearm'''.
+
+Perhaps one good way to differentiate between the spetum, the partisan, and the ranseur is to look for the edges on the prongs. Typically, a ranseur would have no edges, a partisan would have edges only facing out, and a spetum would have edges on both sides of the protrusions.
+{{clear}}
+
+==Voulge==
+{{weapon
+ |tile=[[image:voulge.png]]
+ |name=voulge
+ |appearance=pole cleaver
+ |smalldmg=2d4
+ |largedmg=2d4
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=5
+ |weight=125
+ |material=iron
+}}
+
+[[Image:Voulges-Colored.png|450px]]
+
+NetHack has it just right referring to the '''voulge''' as a '''pole cleaver''', as this weapon probably was invented as a meat cleaver on a pole. The voulge may look somewhat like a bardiche, but the blade is much shorter and the shaft is longer. It also may tend to look like the glaive, but would generally have a broader blade.
+{{clear}}
+
+==Glaive==
+{{weapon
+ |name=glaive
+ |tile=[[image:glaive.png]]
+ |appearance=single-edged polearm
+ |smalldmg=d6
+ |largedmg=d10
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=6
+ |weight=75
+ |material=iron
+}}
+
+[[Image:Glaives-Colored.png|250px]]
+
+If you could put a cleaver on a stick, why not just a knife? The '''glaive''' is basically just that, a knife on a stick; or as NetHack calls it, a '''single-edged polearm'''.
+
+[[Image:Naginata.png]]
+
+In NetHack the glaive is called a '''naginata''' if you are playing as a [[Samurai]]. A naginata is a Japanese polearm tipped with a curved blade similar to (although often shorter than) the blade of a katana.
+
+===Encyclopedia entry===
+{{encyclopedia|
+A Japanese pole-arm, fitted with a curved single-edged blade.
+The blades ranged in length from two to four feet, mounted on
+shafts about four to five feet long.  The naginata were cut
+with a series of short grooves near to the tang, above which
+the back edge was thinned, but not sharpened, so that the
+greater part of the blade was a flattened diamond shape in
+section.  Seen in profile, the curve is slight or non-
+existent near the tang, becoming more pronounced towards the
+point.
+
+"With his naginata he killed five, but with the sixth it
+snapped asunder in the midst and, flinging it away, he drew
+his sword, wielding it in the zigzag style, the interlacing,
+cross, reversed dragonfly, waterwheel, and eight-sides-at-
+once styles of fencing and cutting down eight men; but as he
+brought down the ninth with a mighty blow on the helmet, the
+blade snapped at the hilt."
+|[ Story of Tsutsui no Jomio Meishu from Tales of Heike ]
+}}
+{{clear}}
+
+==Fauchard==
+{{weapon
+ |name=fauchard
+ |tile=[[image:fauchard.png]]
+ |appearance=pole sickle
+ |smalldmg=d6
+ |largedmg=d8
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=5
+ |weight=60
+ |material=iron
+}}
+
+[[Image:Fauchards.png]]
+
+The '''fauchard''', which NetHack calls a '''pole sickle''', is distinguished from other single-edged polearms by having a curved blade with the sharp edge on the inside of the curve. This was not a very effective weapon, and fairly weak in play.
+{{clear}}
+
+==Guisarme==
+{{weapon
+ |name=guisarme
+ |tile=[[image:guisarme.png]]
+ |appearance=pruning hook
+ |smalldmg=2d4
+ |largedmg=d8
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=5
+ |weight=80
+ |material=iron
+}}
+
+[[Image:Guisarmes.png]]
+
+The '''guisarme''', like the voulge, started out as a peasant's weapon, made from a tool on a stick. In this case the tool is a '''pruning hook''', hence the weapon's unidentified description. While it was a somewhat useful cheap weapon, the lack of a spear point was a significant liability. It was good for pulling riders off of their mounts, but what do you do once they're off? It evolved to some degree, sometimes adding a reverse spike, but eventually guisarme became a generic term for any weapon with a hook, such that you had voulge-guisarmes and glaive-guisarmes.
+{{clear}}
+
+==Bill-guisarme==
+{{weapon
+ |name=bill-guisarme
+ |tile=[[image:bill-guisarme.png]]
+ |appearance=hooked polearm
+ |smalldmg=2d4
+ |largedmg=d10
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=7
+ |weight=120
+ |material=iron
+}}
+
+[[Image:Bill-guisarmes.png]]
+
+This leads us to the '''bill-guisarme'''. Bills, developed from an agricultural implement called the bill hook (still used today), were English weapons similar in shape to the guisarme, but perhaps with somewhat less hook in general. They followed a different evolution, such that any weapon that was similar to a glaive or fauchard, but with extra bits thrown in, was often called a bill. So, in terms of origination, bill-guisarme would be a bit redundant, but in terms of later meaning, a bill-guisarme was a bladed weapon with multiple sharpened edges and spikes, and with a hook. These weapons were very versatile, and used over long periods of time, second only to the halberd.
+
+There is a lot of confusion out there on guisarmes and bill-guisarmes. Often the bill-guisarme is called simply a guisarme. Also, many pictures purporting to be guisarmes are actually fauchard-forks, which is a fauchard, with a sharp spear point added to the back of the blade.
+{{clear}}
+
+==Lucern hammer==
+{{weapon
+ |name=lucern hammer
+ |tile=[[image:lucern hammer.png]]
+ |appearance=pronged polearm
+ |smalldmg=2d4
+ |largedmg=d6
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=7
+ |weight=150
+ |material=iron
+}}
+
+Despite the name, the '''lucern hammer''' is not really a hammer, and does not use the [[hammer]] skill. This confusion may have been responsible for the creation of [[Thunderfist]]. Similar confusion was common among players of the first edition of ''Advanced Dungeons & Dragons''.  ''AD&D'' cleric characters were denied the use of sharp weapons, restricting them generally to maces and war hammers. Any number of early clerics therefore ended up carrying around a lucern "hammer", which did more damage than a traditional war hammer.
+
+[[Image:Lucernhammers.png]]
+
+The lucern hammer is vaguely similar to the halberd, only instead of an axe blade, it presents a three-pronged hammer to its victim (hence the '''pronged polearm''' designation).
+{{clear}}
+
+==Bec-de-corbin==
+{{weapon
+ |name=bec-de-corbin
+ |tile=[[image:bec de corbin.png]]
+ |appearance=beaked polearm
+ |smalldmg=d8
+ |largedmg=d6
+ |tohit=<nowiki>+0</nowiki>
+ |skill=polearm
+ |size=two-handed
+ |cost=8
+ |weight=100
+ |material=iron
+}}
+
+[[Image:Becdecorbins.png]]
+
+The '''bec-de-corbin''' (literally "crow's beak") looks extremely similar to the lucern hammer; however the hammer side was sometimes blunt instead of pronged. The distinguishing characteristic though is that the spike was a thick beak-like shape designed only for puncturing (armor, or whatever). This is why it is the '''beaked polearm'''. The beak was the primary mode of attack; the hammer or claw was secondary. The spear tip was also generally less pointy than that of the lucern hammer.
+{{clear}}
+
+==SLASH'EM==
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+newline=<br>
+X={{lightgray|X}}
+.={{lightgray|.}}
+@={{white|@}}
+U={{yellow|U}}
+S={{orange|S}}
+
+UUUUU
+UXXXU
+UX@XU
+UXXXU
+UUUUU
+</replacecharsblock></div>
+
+In [[SLASH'EM]], the range of the polearm is expanded and not restricted by skill level.
+
+A new role, the [[Yeoman]], can reach Expert skill at polearms, and begins play with a [[Enchantment|+1]] partisan.
+
+[[Reaper]] is a lawful artifact [[halberd]] with a high bonus to damage.
+
+==References==
+<references/>
+
+{{basedon|name=Tom Fine|url=http://hea-www.harvard.edu/~fine/Fun/polearms.html}}
+{{nethack-360|offset=1}}
+{{featured}}
+[[Category:Weapons]]}
+&&%s&& %s NetHack 1.3d source code {12586 2006-09-28T13:22:19Z {396 Jayt} source code infobox {{NetHack source code}}
+This page contains links to the '''source code''' of [[NetHack 1.3d]]. This is an old release; for the latest release, see [[Source code]].
+
+This set of files is from the distribution found [http://www.juiblex.co.uk/nethack/source/nethack-1.3d.tar.gz here].
+
+{|style="width: 100%;"
+|style="width: 50%; vertical-align: top;"|
+=== Header files ===
+* [[NetHack 1.3d/config.h]]
+* [[NetHack 1.3d/date.h]]
+* [[NetHack 1.3d/edog.h]]
+* [[NetHack 1.3d/eshk.h]]
+* [[NetHack 1.3d/extern.h]]
+* [[NetHack 1.3d/flag.h]]
+* [[NetHack 1.3d/func_tab.h]]
+* [[NetHack 1.3d/gen.h]]
+* [[NetHack 1.3d/gold.h]]
+* [[NetHack 1.3d/hack.h]]
+* [[NetHack 1.3d/mfndpos.h]]
+* [[NetHack 1.3d/mkroom.h]]
+* [[NetHack 1.3d/monst.h]]
+* [[NetHack 1.3d/msdos.h]]
+* [[NetHack 1.3d/objclass.h]]
+* [[NetHack 1.3d/objects.h]]
+* [[NetHack 1.3d/obj.h]]
+* [[NetHack 1.3d/permonst.h]]
+* [[NetHack 1.3d/rm.h]]
+* [[NetHack 1.3d/spell.h]]
+* [[NetHack 1.3d/trap.h]]
+* [[NetHack 1.3d/wseg.h]]
+* [[NetHack 1.3d/you.h]]
+|style="width: 50%; vertical-align: top;"|
+=== Source files ===
+* [[NetHack 1.3d/apply.c]]
+* [[NetHack 1.3d/bones.c]]
+* [[NetHack 1.3d/cmd.c]]
+* [[NetHack 1.3d/decl.c]]
+* [[NetHack 1.3d/do.c]]
+* [[NetHack 1.3d/dog.c]]
+* [[NetHack 1.3d/dogmove.c]]
+* [[NetHack 1.3d/do_name.c]]
+* [[NetHack 1.3d/dothrow.c]]
+* [[NetHack 1.3d/do_wear.c]]
+* [[NetHack 1.3d/eat.c]]
+* [[NetHack 1.3d/end.c]]
+* [[NetHack 1.3d/engrave.c]]
+* [[NetHack 1.3d/fight.c]]
+* [[NetHack 1.3d/fountain.c]]
+* [[NetHack 1.3d/hack.c]]
+* [[NetHack 1.3d/invent.c]]
+* [[NetHack 1.3d/ioctl.c]]
+* [[NetHack 1.3d/lev.c]]
+* [[NetHack 1.3d/makedefs.c]]
+* [[NetHack 1.3d/makemon.c]]
+* [[NetHack 1.3d/mhitu.c]]

@@ -1,0 +1,1000 @@
+| rowspan=2 | scalding water
+| Lose 1d6 hit points.
+| 
+| "You take a sip of scalding hot water."
+|-
+| No effect.
+| you are fire resistant
+| "You take a sip of scalding hot water. It seems quite tasty."
+|-
+| rowspan=3 | {{frac|20}}
+| rowspan=2 | a rat
+| rowspan=2 | A [[sewer rat]] is created
+| you can see the created rat
+| "Eek! There's a sewer rat in the sink!"
+|-
+| you cannot see the rat
+| "Eek! There's something squirmy in the sink!"
+|-
+| nothing
+| No effect.
+| sewer rats are genocided or extinct
+| "The sink seems quite dirty."
+|-
+| rowspan=2 | {{frac|20}}
+| rowspan=2 | random uncursed potion
+| rowspan=2 | Same effect as quaffing that potion.
+| you can see
+| "Some <potion appearance> liquid flows from the faucet."
+|-
+| you are blind
+| "Some odd liquid flows from the faucet."
+|-
+| rowspan=2 | {{frac|20}}
+| random ring
+| A random ring is created, and you exercise wisdom.
+| 
+| "You find a ring in the sink!"
+|-
+| dirty water
+| No effect.
+| you already got a ring from this sink
+| "Some dirty water backs up in the drain."
+|-
+| {{frac|20}}
+| nothing
+| The sink becomes a fountain.
+| 
+| "The pipes break! Water spurts out!"
+|-
+| rowspan=2 | {{frac|20}}
+| a [[water elemental]]
+| A water elemental is created.
+| 
+| "The water moves as though of its own will!"
+|-
+| nothing
+| No effect.
+| water elementals are extinct
+| "The water moves as though of its own will! But it quiets down."
+|-
+| {{frac|20}}
+| hard water
+| You gain one experience point.
+| 
+| "Yuk, this water tastes awful."
+|-
+| {{frac|20}}
+| sewer water
+| You [[vomit]].
+| 
+| "Gaggg... this tastes like sewage! You vomit."
+|-
+| rowspan=2 | {{frac|20}}
+| rowspan=2 | toxic waste
+| You [[polymorph]].
+| 
+| "This water contains toxic wastes! You undergo a freakish metamorphosis!"
+|-
+| No effect.
+| You have [[unchanging]]
+| "This water contains toxic wastes!"
+|}
+
+===Identifying rings with a sink===
+All [[ring]]s can be identified by dropping them into sinks. The sink will show an effect depending on the type of ring. Rings of searching and slow digestion will never be lost; all other rings will be lost down the drain with 95% probability. Therefore, it is a good idea to test only if you have another ring of the same type as the one being tested, or if you are desperate.
+
+After receiving the message, you will be given the opportunity to name the kind of ring you dropped if you have not already named it. A ring of hunger will also not give you the opportunity if it fails to destroy an item.
+
+Most messages require you to not be [[blind]], and the ring of hunger requires that there be a (preferably worthless) object already on the sink. If these are not the case, you will just get "You hear the ring bouncing down the drain pipe".
+
+Any ring lost in the sink has a 20% chance of ending up [[buried]] under the sink square.{{refsrc|src/do.c|510|nethack=3.6.1}}
+
+{|class="wikitable"
+! Message
+! Type of ring
+! Notes
+|-
+| "You thought your [ring] got lost in the sink, but there it is!"
+| {{ring of|searching}}
+| Ring is not lost
+|-
+| "The ring is regurgitated!"
+| {{ring of|slow digestion}}
+| Ring is not lost
+|-
+| "The sink quivers upward for a moment."
+| {{ring of|levitation}}
+| 
+|-
+| "You smell rotten &lt;''[[fruit]]''&gt;."
+| {{ring of|poison resistance}}
+| 
+|-
+| "Static electricity surrounds the sink."
+| {{ring of|shock resistance}}
+| 
+|-
+| "You hear loud noises coming from the drain."
+| {{ring of|conflict}}
+| 
+|-
+| "The water flow seems fixed."
+| {{ring of|sustain ability}}
+| 
+|-
+| "The water flow seems stronger now."
+| {{ring of|gain strength}} (at least +0)
+| 
+|-
+| "The water flow seems weaker now."
+| {{ring of|gain strength}} (&minus;1 or worse)
+| 
+|-
+| "The water flow seems greater now."
+| {{ring of|gain constitution}} (at least +0)
+| 
+|-
+| "The water flow seems lesser now."
+| {{ring of|gain constitution}} (&minus;1 or worse)
+| 
+|-
+| "The water flow hits the drain."
+| {{ring of|increase accuracy}} (at least +0)
+| 
+|-
+| "The water flow misses the drain."
+| {{ring of|increase accuracy}} (&minus;1 or worse)
+| 
+|-
+| "The water's force seems greater now."
+| {{ring of|increase damage}} (at least +0)
+| 
+|-
+| "The water's force seems smaller now."
+| {{ring of|increase damage}} (&minus;1 or worse)
+| 
+|-
+| "Several flies buzz around the sink."
+| [[meat ring]]
+| 
+|-
+| "Several flies buzz angrily around the sink."
+| {{ring of|aggravate monster}}
+| 
+|}
+
+The messages in the following table are only given if you can see:
+
+{|class="wikitable"
+! Message
+! Type of ring
+! Notes
+|-
+| "Suddenly, <item> vanish(es) from the sink!"
+| {{ring of|hunger}}
+| An item must be on the sink. The message is given for each item that vanishes. Some items may resist, giving no message.{{refsrc|do.c|324|comment=Balls and chains bound to you will resist, whereas normal objects will resist with 1% chance, artifacts with 99% chance, and [[unique item]]s and the [[Amulet of Yendor]] always.}}
+|-
+| "The faucets flash brightly for a moment."
+| {{ring of|adornment}}
+| Does not distinguish negative enchantment
+|-
+| "The sink looks as good as new."
+| {{ring of|regeneration}}
+| 
+|-
+| "You don't see anything happen to the sink."
+| {{ring of|invisibility}}
+| 
+|-
+| "You see the ring slide right down the drain!"
+| {{ring of|free action}}
+| 
+|-
+| "You see some air in the sink."
+| {{ring of|see invisible}}
+| 
+|-
+| "The sink seems to blend into the floor for a moment."
+| {{ring of|stealth}}
+| 
+|-
+| "The hot water faucet flashes brightly for a moment."
+| {{ring of|fire resistance}}
+| 
+|-
+| "The cold water faucet flashes brightly for a moment."
+| {{ring of|cold resistance}}
+| 
+|-
+| "The sink looks nothing like a fountain."
+| {{ring of|protection from shape changers}}
+| 
+|-
+| "The sink glows silver for a moment."
+| {{ring of|protection}} (at least +0)
+| 
+|-
+| "The sink glows black for a moment."
+| {{ring of|protection}} (&minus;1 or worse)
+| 
+|-
+| "The sink glows white for a moment."
+| {{ring of|warning}}
+| 
+|-
+| "The sink vanishes."
+| {{ring of|teleportation}}
+| The sink is teleported to a new location on the same level that is out of sight. "Momentarily" vanishes if the teleportation failed. The ring is always lost unless teleportation fails.{{refsrc|src/do.c|305|version=NetHack 3.6.0}}
+|-
+| "The sink looks like it is being beamed aboard somewhere."
+| {{ring of|teleport control}}
+| 
+|-
+| "The sink transforms into a {feature}."
+| {{ring of|polymorph}}
+| The sink is turned into a [[fountain]], [[throne]], [[altar]], or [[grave]] with equal probability. The ring is always lost.{{refsrc|src/do.c|271|version=NetHack 3.6.0}}
+|-
+| "The sink momentarily looks like a regularly erupting geyser."
+| {{ring of|polymorph control}}
+| 
+|}
+
+== Strategy ==
+Quaffing from sinks is generally a dangerous gamble without much reward. At best you get a ring, which you could already get by kicking it (which is much safer). At worst, you get a potion of sickness or polymorph into something that will break your armor. The chance of something bad is significantly higher than the chance of something good (look at the chart of possibilities).
+
+On the other hand, kicking sinks is fairly safe provided you're past about experience level 5. [[Foocubi]] pose no significant threat and may be beneficial, and black puddings are slow enough that they won't kill you if you move carefully. It's unwise to kick sinks at low experience levels (1&ndash;3), since foocubi can cause instadeath through level drain.
+
+Remember that if you plan on [[eating jewelry]], only metal and wood rings are edible. Since you can't get the intrinsics from non-edible rings, you'll only need one to wear if you want that extrinsic; dropping one more down the sink isn't costing you very much.
+
+Ring identification is ''always'' safe, if costly, and you only need a single sink to do it. Therefore if you decide to quaff or kick sinks, it's in your best interest to leave at least one undamaged sink for your rings.
+
+==History==
+Putting on [[levitation boots]] while standing on the same square as a sink formerly caused the game to crash; this has been fixed as of [[NetHack 3.6.3]].
+
+A chance that a ring dropped down the sink can be found in the ground underneath was introduced in [[NetHack 3.6.1]].
+
+== Variants ==
+=== UnNetHack ===
+In [[UnNetHack]], a sink glows red rather than white when a [[ring of warning]] is dropped in.
+
+When quaffing from a sink, the random potion has a {{frac|13}} chance of being a [[potion of vampire blood]]. In addition, potions can now be of any BUC, depending on Luck with the following probabilities:
+
+* First, there is a 1 in (17 + Luck) chance of the potion being cursed. 
+* Then, if it isn't cursed, there is a 1 in (17 &minus; Luck) chance of the potion being blessed.
+* Then, if neither of those happened, the potion is uncursed.
+
+Lucky players might find it more worthwhile to drink from sinks, because the BUC of the random potion is random, and skewed toward blessed with high Luck. Additionally for vampires, the chance of getting a [[potion of vampire blood]] can be a large boon. However, it is still a significant gamble.
+
+=== SLASH'EM ===
+[[SLASH'EM]] has new messages for its new rings.<ref>http://www.statslab.cam.ac.uk/~eva/slashem/rings.html</ref>
+[[Intelligence]]- and [[wisdom]]-modifying rings cannot be distinguished via sink-dropping.
+
+{|class="wikitable"
+! Message
+! Type of ring
+! Notes
+|-
+| The sink looks groovy.
+| [[mood ring]]
+| 
+|-
+| You hear loud snores coming from the drain.
+| [[ring of sleeping|sleeping]]
+| Works when [[blind]].
+|-
+| The water flow seems faster now.
+| [[ring of gain dexterity|gain dexterity]] (at least +0)
+| 
+|-
+| The water flow seems slower now.
+| [[ring of gain dexterity|gain dexterity]] (&minus;1 or worse)
+| 
+|-
+| The water flow seems quicker now.
+| [[ring of gain intelligence|gain intelligence]] or [[ring of gain wisdom|gain wisdom]] (at least +0)
+| 
+|-
+| The water flow seems duller now.
+| [[ring of gain intelligence|gain intelligence]] or [[ring of gain wisdom|gain wisdom]] (&minus;1 or worse)
+| 
+|}
+
+The ring of polymorph and ring of teleportation will not modify the sink in any way.
+
+=== FIQHack ===
+
+In [[FIQHack]], you can retrieve any rings dropped down a sink by destroying the sink and digging a pit on that square.
+
+== References ==
+<references/>
+
+{{DOD}}
+{{nethack-366}}
+[[Category:Dungeon features]]
+[[Category:Identification]]}
+&&%s&& %s Food {2479 2006-04-26T01:05:51Z {458 Kernigh} #REDIRECT [[Comestible]]
+... bypass double redirect. #REDIRECT [[Comestible]]}
+&&%s&& %s Category:Items {56141 2010-11-11T19:36:10Z {831 Tjr} Text replace - "Wikihack" to "NetHackWiki" This category contains links to all articles about [[item]]s (objects). It is one crucial part of the [[NetHackWiki:Categories|category system of NetHackWiki]].
+[[Category:Articles]]}
+&&%s&& %s Category:Dungeon branches {4881 2006-07-13T17:41:50Z {396 Jayt} recat: [[Category:Levels]] This category contains links to articles about [[dungeon branch]]es.
+
+[[Category:Levels]]}
+&&%s&& %s Category:Tools {1956 2006-03-25T20:26:04Z {924 ZeroOne} initial version This category contains links to articles about [[tool]]s.
+
+[[Category:Items]]}
+&&%s&& %s Category:Gods {136851 2021-01-06T19:41:48Z {4001463 Actual-nh} Link This category contains articles about miscellaneous [[god]]s.
+
+[[Category:Religion]]}
+&&%s&& %s Category:Strategy {54033 2010-11-11T18:07:11Z {831 Tjr} Text replace - "NethackWiki" to "NetHackWiki" These articles are about '''[[strategy]]'''.
+
+Many [[NetHackWiki]] articles discuss strategies, and not all are listed here; each article about an [[item]], [[monster]], or [[dungeon branch]] could have a strategy for how to deal with it, in addition to a description. The pages in this category tend to be primarily about strategy.
+[[Category:Articles]]}
+&&%s&& %s Category:Wands {38816 2009-04-01T07:59:14Z {467 Killian} add to [[Category:Spellcasting]] [[Category:Items]]
+[[Category:Spellcasting]]}
+&&%s&& %s Ring {141387 2021-07-01T17:50:32Z {4001463 Actual-nh} /* Eating rings */ Missing period; added a bit more for stylistic reasons {{items}}
+A '''ring''', represented by {{white|<nowiki>=</nowiki>}}, is a type of [[magic]] item that appears in ''[[NetHack]]''. Rings produce a variety of effects when worn, and each ring always has a [[Randomized appearance#Rings|randomized appearance]].
+
+==Generation==
+Rings comprise 3% of all randomly-generated items in the main dungeon, 5% in containers, 5% on the [[Rogue level]], and 8% in [[Gehennom]]. All types of rings are equally likely to be generated.
+
+Of the rings marked as 90% cursed below, the remaining 10% are uncursed. The [[BUC]] status of chargeable rings is determined by the following table:
+{|class="prettytable"
+! !!&ge;&nbsp;+1!!+0!!&le;&nbsp;&minus;1!!Total
+|-
+!blessed
+|<span class="explain" title="181/1200">15.1%</span>
+|<span class="explain" title="1/240">0.4%</span>
+|<span class="explain" title="7/3000">0.2%</span>
+|<span class="explain" title="59/375">15.7%</span>
+|-
+!uncursed
+|<span class="explain" title="1/3">33.3%</span>
+|<span class="explain" title="1/60">1.7%</span>
+|<span class="explain" title="19/300">6.3%</span>
+|<span class="explain" title="31/75">41.3%</span>
+|-
+!cursed
+|<span class="explain" title="19/1200">1.6%</span>
+|<span class="explain" title="1/240">0.4%</span>
+|<span class="explain" title="307/750">40.9%</span>
+|<span class="explain" title="161/375">42.9%</span>
+|}
+
+All other rings are generated 10% cursed, 90% uncursed, and 0% blessed. [[Ring of invisibility|Rings of invisibility]] carried by [[Nazgul]] are always cursed.
+
+The initial [[enchantment]] of a chargeable ring has an [[rne|exponentially-weighted probability]], but tends to be in the range of &minus;3 to +3.
+
+==Description==
+Rings are worn by using {{kbd|P}} to put them on, and removed using {{kbd|R}}; one ring can be worn on each [[hand]]. While there is no difference between the left or the right in terms of the ring's effects, a [[cursed]] wielded [[weapon]] may prevent access to the right finger, and [[incubus|incubi]] will always place a [[ring of adornment]] on a woman's left hand.
+
+All rings have a weight of 3, except for the [[meat ring]] (which has a weight of 1). All rings except for the [[ring of shock resistance]] have a 1-in-3 chance of exploding when subjected to [[shock]] damage.{{refsrc|zap.c|4606|comment=destroy_item|nethack=3.6.0}}
+
+===Ring hunger===
+Furthermore, with the exception of the [[meat ring]] and chargeable rings at +0 charge, worn rings cause an additional nutrition point to be deducted once every 20 turns. This is cumulative&mdash;a player wearing two rings will lose 2 additional hunger points every 20 turns. This sense of "ring hunger" is distinct from the additional hunger-causing effects of rings of [[ring of regeneration|regeneration]], [[ring of conflict|conflict]], and [[ring of hunger|hunger]], all of which cause a nutrition point to be lost every other turn. The [[ring of slow digestion]] prevents ordinary nutrition consumption, but still causes ring hunger.
+
+For a full list of hunger causes and amounts, see the articles on [[nutrition]] and [[foodless]].
+
+{{Upcoming|NetHack 3.7.0|A +0 [[ring of protection]] now causes ring hunger if it is your only source of extrinsic protection. If you are wearing two rings of protection and the one on your left hand is +0, ring hunger applies to it, even if the right ring is charged.}}
+
+==Table of rings==
+{|class="prettytable"
+!Ring!!Cost!!Extrinsic granted!!Notes
+|-
+| [[meat ring]] ||5||None||symbolized by {{brown|%}}; never randomly generated
+|-
+|colspan="4"|
+|-
+| [[ring of adornment]]||100||+n [[charisma]]||chargeable
+|-
+| [[ring of hunger]]||100||[[hunger (property)|hunger]]||90% generated cursed
+|-
+| [[ring of protection]]||100||+n [[protection]]||chargeable
+|-
+| [[ring of protection from shape changers]]||100||[[protection from shape changers]]||
+|-
+| [[ring of stealth]]||100||[[stealth]]||
+|-
+| [[ring of sustain ability]]||100||[[sustain ability]]||
+|-
+| [[ring of warning]]||100||[[warning]]||
+|-
+|colspan="4"|
+|-
+| [[ring of aggravate monster]]||150||[[aggravate monster]]||90% generated cursed
+|-
+| [[ring of cold resistance]]||150||[[cold resistance]]||
+|-
+| [[ring of gain constitution]]||150||+n [[constitution]]||chargeable
+|-
+| [[ring of gain strength]]||150||+n [[strength]]||chargeable
+|-
+| [[ring of increase accuracy]]||150||+n to-hit bonus||chargeable
+|-
+| [[ring of increase damage]]||150||+n damage bonus||chargeable
+|-
+| [[ring of invisibility]]||150||[[invisibility]]||cursed if from a [[Nazgul]]
+|-
+| [[ring of poison resistance]]||150||[[poison resistance]]||
+|-
+| [[ring of see invisible]]||150||[[see invisible]]||
+|-
+| [[ring of shock resistance]]||150||[[shock resistance]]||
+|-
+|colspan="4"|
+|-
+| [[ring of fire resistance]]||200||[[fire resistance]]||
+|-
+| [[ring of free action]]||200||[[free action]]||
+|-
+| [[ring of levitation]]||200||[[levitation]]||
+|-
+| [[ring of regeneration]]||200||[[regeneration]]||
+|-
+| [[ring of searching]]||200||[[searching]]||
+|-
+| [[ring of slow digestion]]||200||[[slow digestion]]||
+|-
+| [[ring of teleportation]]||200||[[teleportitis]]||90% generated cursed
+|-
+|colspan="4"|
+|-
+| [[ring of conflict]]||300||[[conflict]]||
+|-
+| [[ring of polymorph]]||300||[[polymorphitis]]||90% generated cursed
+|-
+| [[ring of polymorph control]]||300||[[polymorph control]]||
+|-
+| [[ring of teleport control]]||300||[[teleport control]]||
+|}
+
+==Charging==
+Chargeable rings modify one of your [[attributes]] by ''n'', where ''n'' is the value of the ring's charge, which can be positive or negative. The [[enchantment]] of a chargeable ring (i.e., adornment, gain constitution, gain strength, increase accuracy, increase damage, or protection - may be altered by [[charging]], for example with a [[scroll of charging]] or the [[PYEC]].
+
+In contrast to most chargeable items, a ring retains its enchantment much like weapons and armor. [[Blessed]] charging adds 1 to 3 points of enchantment; [[cursed]] charging removes 1 to 2 points; and [[uncursed]] charging always adds 1. When a ring with a positive enchantment is charged, it has an {{frac|x|7}} chance of [[explosion|exploding]] (where ''x'' is the enchantment prior to charging); rings with enchantments of &le;&nbsp;&minus;5 or &ge;&nbsp;+7 will always explode when charged. Therefore, the highest possible enchantment is +9 by charging (and +10 by random generation).
+
+Below are the odds of using blessed scrolls of charging to achieve the enchantment on the top row starting from the enchantment listed in the left column without the ring exploding.
+{|class="prettytable"
+! !!&ge;&nbsp;+1!!&ge;&nbsp;+2!!&ge;&nbsp;+3!!&ge;&nbsp;+4!!&ge;&nbsp;+5!!&ge;&nbsp;+6!!&ge;&nbsp;+7!!&ge;&nbsp;+8!!+9
+|-
+! style="text-align: center"|From +0
+| style="text-align: center"|100%
+| style="text-align: center"|95%
+| style="text-align: center"|83%
+| style="text-align: center"|60%
+| style="text-align: center"|43%
+| style="text-align: center"|26%
+| style="text-align: center"|11%
+| style="text-align: center"|3.9%
+| style="text-align: center"|0.8%
+|-
+! style="text-align: center"|From +1
+| style="text-align: center"|N/A
+| style="text-align: center"|86%
+| style="text-align: center"|78%
+| style="text-align: center"|62%
+| style="text-align: center"|38%
+| style="text-align: center"|24%
+| style="text-align: center"|12%
+| style="text-align: center"|3.3%
+| style="text-align: center"|0.7%
+|-
+! style="text-align: center"|From +2
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|71%
+| style="text-align: center"|61%
+| style="text-align: center"|45%
+| style="text-align: center"|22%
+| style="text-align: center"|12%
+| style="text-align: center"|4.2%
+| style="text-align: center"|0.6%
+|-
+! style="text-align: center"|From +3
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|57%
+| style="text-align: center"|46%
+| style="text-align: center"|31%
+| style="text-align: center"|10%
+| style="text-align: center"|4.3%
+| style="text-align: center"|1.1%
+|-
+! style="text-align: center"|From +4
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|43%
+| style="text-align: center"|33%
+| style="text-align: center"|19%
+| style="text-align: center"|2.9%
+| style="text-align: center"|0.8%
+|-
+! style="text-align: center"|From +5
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|29%
+| style="text-align: center"|20%
+| style="text-align: center"|10%
+| style="text-align: center"|0.5%
+|-
+! style="text-align: center"|From +6
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|N/A
+| style="text-align: center"|14%
+| style="text-align: center"|9.5%
+| style="text-align: center"|4.8%
+|}
+
+==Strategy==
+{{main|Ring strategy}}
+Rings have various applications beyond simply wearing them. For example, topaz, sapphire, ruby, steel, diamond, and emerald rings can be used to make slow but semi-permanent [[engraving]]s. Since this is dependent on the appearance rather than the function of the ring, it can be done even if the ring isn't identified.
+
+===Eating rings===
+{{Main|Eating jewelry}}
+Eating rings is a way to permanently obtain the effects granted by wearing some rings - however, this is only possible for rings of metal or wood. See that article for more information.
+
+===Identification===
+{{main|Sink#Identifying rings with a sink}}
+When a ring is dropped on top of a [[sink]], you will get a message that can help you identify the ring. Since the ring is usually lost in the process, this is best done with rings that you have multiples of. If you are on the brink of [[starvation]] and have several unidentified rings, you may consider giving up all of them to a sink - the ring of slow digestion is not lost when dropped down the drain.
+
+==FIQHack==
+
+In [[FIQHack]] monsters can wear rings.  Also, you can retrieve rings from sinks by destroying the sink and digging a pit beneath it.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Three Rings for the Elven-kings under the sky,
+Seven for the Dwarf-lords in their halls of stone,
+Nine for Mortal Men doomed to die,
+One for the Dark Lord on his dark throne,
+In the Land of Mordor where the Shadows lie.
+One Ring to rule them all, One Ring to find them,
+One Ring to bring them all and in the darkness bind them
+In the Land of Mordor where the Shadows lie.
+|[ The Fellowship of the Ring, by J.R.R. Tolkien ]
+}}
+
+==References==
+<references/>
+
+{{DOD}}
+[[Category:Rings| ]]
+{{nethack-366}}}
+&&%s&& %s Category:Rings {13819 2006-10-09T19:11:18Z {509 Lotte} sortkeys done This category lists the [[ring]]s in NetHack.
+
+[[Category:Items]]}
+&&%s&& %s Orc (monster class) {150220 2023-03-12T05:23:05Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{For|other uses|Orc}}
+
+'''Orcs''' are a [[monster class]] that appear in ''[[NetHack]]'' of monsters represented by a lowercase letter {{white|o}}. All orcs are, unsurprisingly, [[orc (monster attribute)|orcish]].
+
+The orc monster class contains the following monsters:
+
+* {{monsymlink|goblin}}
+* {{monsymlink|hobgoblin}}
+* {{monsym|orc}} [[orc (monster)|orc]]
+* {{monsymlink|hill orc}}
+* {{monsymlink|Mordor orc}}
+* {{monsymlink|Uruk-hai}}
+* {{monsymlink|orc shaman}}
+* {{monsymlink|orc-captain}}
+
+==Common traits==
+Orcs hitting a [[riding|mounted player]] have a 50% chance of hitting the steed instead of the usual 25% chance that others have.{{refsrc|mhitu.c|341}} According to a comment in the [[source code]], this is because orcs "like to steal and eat horses and the like".
+
+Wielding [[Sting]] or [[Orcrist]] will [[warned of monster type|indicate the positions of any orcs on the current level]].
+
+===Generation===
+Orcs [[Monster starting inventory|typically wear]] orcish armor and ordinarily wield [[orcish dagger]]s or else [[orcish bow]]s and [[orcish arrow]]s, the latter of which are often poisoned. Orcs are also [[throne room]] monsters, and many of them can appear among the members of the "court".
+
+A variant of [[Minetown]] is overrun by orcs, with the usual inhabitants all killed - this "Orcish Town" will contain numerous named orcish monsters within and outside the walls. In a game with Orcish Town, more named orcs will be encountered throughout the [[Gnomish Mines]] and the [[Dungeons of Doom]], carrying loot that would normally be found there. This includes weapons such as the [[watch captain]]'s [[long sword]] or [[silver saber]] and even [[candle]]s (normally sold by [[Izchak]] and done so that players can still obtain seven for [[Candelabrum of Invocation|later in the game]]).
+
+==Strategy==
+Individually, goblins and orcs are generally easy targets unless you happen across one with a very powerful weapon or a wand. Orcs often appear in groups, however - even then their strength is not too great, but their poisoned weapons may catch you unaware and lead to an untimely death. [[Poison resistance]] and crowd-control tactics such as the following can make battles against them much easier:
+
+* Lure the orcs into a corridor, so never simultaneously fight more than one (or two, if they surround you).
+* Climb the [[staircase]], wait until you heal, then return to the level to kill the remaining orcs.
+* Engrave [[Elbereth]] and scatter the orcs while you pick them off.
+
+==Variants==
+===SLASH'EM===
+{{main|Orc (SLASH'EM)}}
+[[SLASH'EM]] introduces several new orcs:
+
+*{{monsymlink|war orc}}
+*{{monsymlink|great orc}}
+*{{monsymlink|snow orc}}
+*{{monsymlink|demon orc}}
+*{{monsymlink|Grund the Orc King}}
+
+===UnNetHack===
+In [[UnNetHack]], orcs will attack any elves they see (and vice versa) as part of Nephi's [[grudge]] patch.
+
+The [[deep orc]] is introduced as a new orc.
+
+==Origin==
+{{Wikipedia|Orc}}
+The orcs of ''NetHack'' are derived from ''[[Dungeons & Dragons]]'', which in turn are based on their portrayal in the works of [[J. R. R. Tolkien]].
+
+==Encyclopedia entry==
+{{encyclopedia|
+Orcs, bipeds with a humanoid appearance, are related to the goblins, but much bigger and more dangerous.  The average orc is only moderately intelligent, has broad, muscled shoulders, a short neck, a sloping forehead and a thick, dark fur. Their lower eye-teeth are pointing forward, like a boar's.
+Female orcs are more lightly built and bare-chested.  Not needing any clothing, they do like to dress in variegated apparels.  Suspicious by nature, orcs live in tribes or hordes.  They tend to live underground as well as above ground (but they dislike sunlight).  Orcs can use all weapons, tools and armors that are used by men.  Since they don't have the talent to fashion these themselves, they are constantly hunting for them.  There is nothing a horde of orcs cannot use.
+|[ Het Boek van de Regels; Het Oog des Meesters ]
+}}
+
+== References ==
+<references/>
+{{nethack-343}}
+[[Category:Monster classes]]}
+&&%s&& %s Dudley's dungeon {148717 2022-10-08T04:33:49Z {4001279 Umbire the Phantom} /* See also */ eh, I went to the trouble '''Dudley's dungeon''' is a ''[[NetHack]]''-themed webcomic about the adventures of a player character named Dudley.
+
+==History==
+[[File:Dudley-NetHack-344-Polymorph.png|thumb|right|A screenshot of a fan-made comic made in the interface.]]
+The first run of Dudley's dungeon was launched on February 2, 2004, created by Dion Nicolaas and hosted at [http://dudley.nicolaas.net his personal website] - it would finish on the last day of 2008, and the code used to create the comics would be made available to whoever mailed the author.
+
+From there, two separate continuations appeared:
+* The first, hosted at sadowl.com, began on January 12th, 2009, and uses the same code and title as the original version; unfortunately, it has not updated since January 2013, and the site is now defunct. An archive [https://web.archive.org/web/20180628091143/http://sadowl.com/dudley/index.php can be viewed here] at the Wayback Machine.
+* The second continuation, hosted at [https://alt.org/nethack/dudley/ alt.org] and created by [[User:Paxed|paxed]], has several differences, most notably [[Options#color|colors]] and a graphical editor. The source code for this comic is available [https://github.com/paxed/dudleysdungeon at github], and is active as recently as June 2022.
+
+==Description==
+Dudley's dungeon is set in the world of ''NetHack'', where Dudley is the player character seeking the [[Amulet of Yendor]]. The webcomic is in [[ASCII]], like NetHack in [[tty]] mode, so you can read it even if your web browser does not load graphics; anyone may design and submit their own version of a Dudley comic to the alt.org site for it to be commented and voted upon when published. However, do not forget to set proper options when reading it from a text browser (such as w3m or lynx), since otherwise popup explanations will interfere with the text of the comic.
+
+==Characters==
+Over the years, the comic has developed many characters recurring and otherwise.
+
+===Dudley===
+'''Dudley''', {{white|@}} is the main character of the webcomic. He is introduced in [http://www.nicolaas.net/dudley/index.php?f=20040202 the first strip] as a [[chaotic]] male [[Human (monster attribute)|human]] [[Rogue]], and uses various other role-race combinations throughout. Dudley gets himself into many of the terrible situations that can also be found in ''[[NetHack]]'' and brings out the humor in them - Dudley has a strong aversion to newts, developed from often meeting a comical end at the feet of one.
+
+Dudley has owned several [[pet]]s throughout the comic, most notably Fido and Dogley. Other pets have included a [[horse]] named Horseley, a [[long worm]] named [[wikipedia:MyDoom|MyDoom]], seven [[baby black dragon]]s that were promptly separated from Dudley when he fell through a [[trap door]].
+
+The two Dudleys of the continuation comics are considered separate characters and are aware of each other's worlds, but have yet to meet face-to-face (as of October 2009).<!--Check this when you get a chance...-->
+
+===Fido===
+'''Fido''', {{white|d}}, is one of Dudley's recurring pets, and first appears in the [http://www.nicolaas.net/dudley/index.php?f=20040212 February 12, 2004] strip. Fido is a normal [[dog]], with roughly the intelligence of one - while not a particularly good or bad pet, even he [http://www.nicolaas.net/dudley/index.php?f=20041129 has trouble with newts] sometimes.
+
+In [http://www.nicolaas.net/dudley/index.php?f=20040412 one set of strips] Fido is turned into a [[dragon]], then an {{white|e}} (either a [[sphere]] or [[floating eye]]), and finally a [[demon]].
+
+===Dogley===
+'''Dogley''', {{white|d}}, is another of Dudley's recurring pets, and is likely named as a mix of "Dudley" and "dog" (possibly influenced by Dilbert's dog, Dogbert). He  first appears in [http://www.nicolaas.net/dudley/index.php?f=20050819 the strip for August 19, 2005], and appears somewhat less often than Fido. Dogley is far more intelligent than a normal dog - certainly moreso than his owner. He is also more competent in combat than Dudley, similar to other pet dogs in many ''NetHack'' games; he is often turned into a [[dragon]] via [[polymorph]], and has saved Dudley many times while in dragon form.
+
+Dogley discovered and named the [[Dogley Dimension]], also known as an "infinite void" that exists between dungeon levels, via [[wizard mode]]. The Dogley Dimension is responsible for monster generation, caused by the collisions of floating [[hash mark]] symbols, and is what causes each [[hole]] to drop monsters and objects that fall through them into random squares on the same level. According to Dogley, the [[Wizard of Yendor]] uses wormholes through this space to connect [[staircase]]s.
+
+===Cherry===
+'''Cherry''' is an explorer who is on an adventure of her own in the dungeon, and is a neutral female [[chickatrice]] warrior that seeks the Seed of Life. Dudley regards Cherry as yet another monster, and as a result she tends to be a victim of his usual shenanigans and/or the misfortune that he attracts.
+
+Cherry debuts in a story arc (beginning with [http://www.nicolaas.net/dudley/index.php?f=20060817 the strip for August 17, 2006]) where Dudley frequently plays a chaotic male elven wizard. When Dudley hesitates to use a blessed [[scroll of genocide]] on a [[cockatrice nest]], [http://www.nicolaas.net/dudley/index.php?f=20060824 Cherry appears] and announces her quest for the Seed of Life. This causes Dudley to panic and go through with it, wiping Cherry out along with the cockatrices - her [[headstone]] reads, "killed by an unrelated plotline".
+
+Cherry re-appears in [http://www.nicolaas.net/dudley/index.php?f=20060925 the strip for September 25, 2006], having started another game, and locates a "human rogue called Dudley". Before she can attack him in retaliation, a [[mail daemon]] rushes to deliver a message to Dudley, shoving Cherry into a fountain and killing her - her headstone reads, "drowned in a deluge of mail".
+
+Cherry starts a third game in the [http://www.nicolaas.net/dudley/index.php?f=20070223 February 23, 2007] strip, prepared to solve her Dudley problem by using a blessed scroll of genocide against {{white|@}}. Unfortunately for her, Dudley kills Cherry and takes her [[corpse]] to use against some weak monsters, though she still complains all the while. Cherry gets the last laugh when Dudley falls into a [[pit]] while holding her corpse and is turned to stone.
+
+The [http://www.nicolaas.net/dudley/index.php?f=20080207 February 7, 2008] strip shows Cherry in the middle of another game, suddenly meeting Dudley in a corridor. Cherry has an uncursed scroll of genocide, and uses it to genocide [[Human (monster)|humans]]. The [[showrace]] option then reveals that Dudley is currently a dwarf, and he attacks Cherry.
+
+The [http://www.nicolaas.net/dudley/index.php?f=20080630 June 30, 2008] strip has Cherry facing the [[Wizard of Yendor]] and wondering why the Wizard keeps returning when she can simply stone him.
+
+Cherry's last appearance in the original comic is the [http://www.nicolaas.net/dudley/index.php?f=20080807 August 7, 2008] strip, where Dudley finds a tin of Cherry's meat; he eats it, mistaking the "Cherry" in the tin for fruit, and is turned to stone.
+
+===GWTWOD===
+The [[Gnome With the Wand of Death]] (GWTWOD) is a recurring character that first appears in [http://www.nicolaas.net/dudley/index.php?f=20050531&q=gnome the May 31, 2005 strip]. As implied by the name, the gnome's primary motive is to kill Dudley at inconvenient and unexpected moments.
+
+==Running gags==
+* [[Newt]]s: The punchlines of earlier strips frequently involved Dudley dying at the hands of incredibly weak monsters, with newts becoming the most common by far - [http://www.nicolaas.net/dudley/index.php?f=20040323 this strip] features the very first newt death. Around the time of the continuations, the joke was eventually criticized as overused, and most strips featuring newts killing Dudley are usually rated poorly and referred to as "newt jokes" or '''YANC''' ("Yet Another Newt Comic"). Comments posted by [[L (person)|L]] keep track of the various newt comics from the first run with a decent level of accuracy.
+** '''Newtbane''' was a [[long sword]] [http://www.nicolaas.net/dudley/index.php?f=20050428 named by Dudley] in the hopes that it would enable him to kill newts more easily, similar to artifacts like [[Sting]] and [[Orcrist]]; he was then killed by a newt similarly named '''Dudleyrist'''.
+* '''Yet another meta strip''' - a strip whose humor relies on commentary about the comic's jokes or other meta-comic tropes, Many of these strips also involve newts in some manner.
+* [[YASD]]: The primary source of humor in the comic is Dudley (and sometimes other monsters) dying in all sorts of inexplicable manners.
+
+==See also==
+* An archived [https://web.archive.org/web/20130404215409/http://www.comixpedia.org/index.php?title=Dudley%27s_dungeon Comixpedia page] about the webcomic
+* [https://allthetropes.org/wiki/Dudley's_dungeon Dudley's dungeon] on All The Tropes
+{{noversion}}
+[[Category:Dudley's dungeon]]
+[[Category:Community]]}
+&&%s&& %s Sewer rat {104869 2017-01-23T03:47:40Z {4000693 Phol ende wodan} Point at actual sewer rat #REDIRECT [[rat#Sewer_rat]]
+[[Category:Monsters]]}
+&&%s&& %s Riders {150061 2023-03-05T14:29:52Z {4001279 Umbire the Phantom} lede The '''Riders''' collective refers to members of the Four Horsemen of the Apocalypse&mdash;'''Death''', '''Famine''', and '''Pestilence''' (all {{magenta|&}})&mdash;that appear in ''[[NetHack]]'', and are among the last bosses that a player will encounter. The name itself has existed well before [[riding]] was implemented in the game.
+{{todo|Add info for EvilHack and other variants.}}
+
+==Generation==
+All three Riders will always generate on the [[Astral Plane]]. Pestilence in particular [[Monster starting inventory|is always generated with]] a small stack of [[potion of sickness|potions of sickness]].
+
+==Common traits==
+The Riders are some of the most physically damaging enemies in the game, in addition to the special effects each Rider's touch attacks possess, so beware facing them in melee with poor AC. Fortunately, Riders receive only a 10d8 roll for maximum HP, rather than the normal (monlvl)d8.{{refsrc|src/makemon.c|994|version=NetHack 3.6.6}} However, note that their HP maximum is preserved upon reviving.
+
+All three Riders can [[fly]], are humanoid, can regenerate themselves, can [[see invisible]] creatures, have [[teleport control]], and have a low natural armor class of -5. None of the Riders respect [[Elbereth]], and they also ignore the [[sanctuary]] effect given to you by a coaligned priest in their temple. In addition, all Riders can [[displace]] other monsters out of their way.{{refsrc|src/mon.c|1589|version=NetHack 3.6.6}}
+
+===Resistances===
+The Riders cannot be stoned and have all elemental resistances and full [[monster MR]]. The Riders are not disintegration-resistant, per se, in the way that black [[dragons]] are; however, attempting to disintegrate one of them will cause it to re-integrate instantly.  
+
+===Corpses and revival===
+Riders come back to life after being killed: after 12 turns, a Rider corpse has a {{frac|3}} chance of revival on each turn.{{refsrc|src/mkobj.c|1201|version=NetHack 3.6.6}} Their corpses cannot be polymorphed, and they will instantly revive if you try to pick them up, tin them, push a boulder on their square, etc.
+
+Eating a Rider's corpse kills you instantly; digesting monsters that try to eat a Rider will also instantly die and leave the Rider unharmed, and [[mind flayer]]s that try to eat a Rider's brain die instantly as well.{{refsrc|src/mhitm.c|903|version=NetHack 3.6.6}} If you survive with an [[amulet of life saving]], the corpse revives immediately anyway (and your [[wisdom]] is [[Exercise|abused]] for good measure).{{refsrc|src/eat.c|712|version=NetHack 3.6.6}} If the corpse can't revive, finishing the meal conveys [[teleport control]].
+
+===Teleportation===
+Teleportation has a special effect on Riders: if they are zapped with a wand of teleportation, there is a {{frac|12|13}} chance of them being teleported to a square adjacent to you. This makes teleporting them or their corpses a very [[Bad Idea]]—remember that in the latter case, they will be immediately revived.{{refsrc|src/teleport.c|1576|version=NetHack 3.6.6}}{{refsrc|src/teleport.c|1432|version=NetHack 3.6.6}}
+
+===Touch attacks and stunning===
+Each Rider can make two special touch attacks per turn. These are some of the deadliest attacks in ''NetHack''. If they would hit you with both attacks in the same turn, the game converts the second attack into a stunning touch; this has led to misconceptions that the Riders' main attacks specifically cause stunning. The stun effect also prevents you from fighting back effectively, so you'll probably have to use a [[unicorn horn]] to clear the status effect and hope you don't get hit with it again on the Rider's next attack. The special touch attacks do nothing against other monsters, however, as there is no case to handle these attack types in this situation—a second successful hit damages and stuns monsters as they would you.<ref>[https://github.com/NetHack/NetHack/issues/594 Issue #594: Riders' primary attack types do no damage to monsters]</ref>{{refsrc|src/mhitm.c|1449|version=NetHack 3.6.6|comment=Unhandled cases in mhitm.c default to 0 damage}}
+
+{{upcoming|3.7.0|Per [https://github.com/NetHack/NetHack/commit/017a8687e0b541a8e5848ef3037e25dc819208ca this commit] to fix issue #594, the Riders' touch attacks can now damage other monsters, depending on various factors:
+
+* Famine's touch attack will not do any damage to [[inediate]] monsters.
+
+* Pestilence's attack inflicts disease damage, which fungi and ghouls are unaffected by.
+
+* Death's touch does reduced damage to an undead monster.}}
+
+==The Four Horsemen==
+<simpletabs>
+ Death|{{monster
+ |name=Death
+ |difficulty=34
+ |level=30
+ |experience=1431
+ |speed=12
+ |AC=&minus;5
+ |MR=100
+ |align=0
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Deadly touch 8d8, Deadly touch 8d8
+ |weight=1450
+ |nutr=1
+ |size=Medium
+ |resistances=fire, cold, sleep, shock, poison, petrification, drain
+ |resistances conveyed=[[teleport control]] (but eating the corpse is an [[instadeath]])
+ |attributes={{attributes|Death|fly=1|humanoid=1|regen=1|seeinvis=1|tportcntrl=1|nopoly=1|stalk=1|hostile=1|pname=1|strong=1|nasty=1|infravisible=1|infravision=1|displaces=1}}
+ |reference=[[monst.c#line2743]]
+}}
+
+'''Death''' has a "deadly touch" melee attack, similar but unrelated to the [[touch of death]] [[monster spell]]; it reduces your maximum HP and can cause [[instadeath]]. If you are [[undead]], and Death attacks you, you see the message "Was that the touch of death?" and the attack does ordinary physical damage only. Otherwise, one of the following effects occurs:
+
+{| class="wikitable"
+!Probability!!Message!!Effect
+|-
+|15%||As below if magic resistant; otherwise, no special message.||If you have [[magic resistance]], this effect is the same as the one below. Otherwise, you die.
+|-
+|60%||"You feel your life force draining away..."||Does physical damage and reduces maximum [[hit points]].
+|-
+|25%||"Lucky for you, it didn't work!"||Does no damage and has no other effect.
+|}
+
+The maximum HP reduction scales with the proportion of your max HP to your [[experience level]]. If your max HP is at least 25 times your level or you are [[polymorph]]ed, all the damage is applied to your max HP. Below that threshold, the reduction scales down; with less than five times your level in max HP, you lose between zero and half the damage in max HP. Your max HP will never be reduced below your level.
+
+Zapping a [[wand of death]] or casting the {{spell of|finger of death}} spell at Death heals them. However, they are still damaged by the "death field" produced when [[Breaking wands|breaking]] a wand of death.
+
+Since [[NetHack 3.6.0]], as a tribute to Terry Pratchett, Death speaks in {{smallcaps|ALL CAPS}} and without quotation marks, as they do in the ''Discworld'' series of novels. Additionally, you will get [[YAFM]] if you [[chat]] to them while carrying a Terry Pratchett novel.
+
+{{upcoming|NetHack 3.7.0|Death's deadly touch replaces the 15% chance of instadeath with an effect that does 8d6+50 damage and reduces your maximum HP by half of the damage dealt; this also applies to the touch of death monster spell. However, if the resulting damage would reduce your maximum (and thus current) HP to zero, you die immediately (with no maximum HP reduction); this is an important distinction for certain cases such as [[polyself]].}}
+
+|-|
+Famine|{{monster
+ |name=Famine
+ |difficulty=34
+ |level=30
+ |experience=1431
+ |speed=12
+ |AC=&minus;5
+ |MR=100
+ |align=0
+ |frequency=Unique
+ |genocidable=No
+ |attacks= Touch 8d8 plus hunger, Touch 8d8 plus hunger
+ |weight=1450
+ |nutr=1
+ |size=Medium
+ |resistances=fire, cold, sleep, shock, poison, petrification 
+ |resistances conveyed=eating the corpse is an [[instadeath]]
+ |attributes={{attributes|Famine|fly=1|humanoid=1|regen=1|seeinvis=1|tportcntrl=1|nopoly=1|stalk=1|hostile=1|pname=1|strong=1|nasty=1|infravisible=1|infravision=1|displaces=1}}
+ |reference=[[monst.c#line2761]]
+}}
+
+Famine has a [[hunger]]-inducing melee attack that drains 40&ndash;80 nutrition points per hit unless you are already fainting from hunger. Due to this, it is common to carry and/or polypile for food that can be eaten quickly (e.g. [[lembas wafer]]s and [[K-ration]]s) in order to restore nutrition and avoid fainting, which is highly likely to be fatal at this juncture.
+|-|
+Pestilence|{{monster
+ |name=Pestilence
+ |difficulty=34
+ |level=30
+ |experience=1431
+ |speed=12
+ |AC=&minus;5
+ |MR=100
+ |align=0
+ |frequency=Unique
+ |genocidable=No
+ |attacks= Touch 8d8 plus [[disease]], Touch 8d8 plus [[disease]]
+ |weight=1450
+ |nutr=1
+ |size=Medium
+ |resistances=fire, cold, sleep, shock, poison, petrification 
+ |resistances conveyed=[[teleport control]] (but eating the corpse is an [[instadeath]])
+ |attributes={{attributes|Pestilence|fly=1|humanoid=1|regen=1|seeinvis=1|tportcntrl=1|nopoly=1|stalk=1|hostile=1|pname=1|strong=1|nasty=1|infravisible=1|infravision=1|displaces=1}}
+ |reference=[[monst.c#line2752]]
+}}
+
+Pestilence has a [[disease]]-spreading melee attack, and is healed by the potion of sickness, which they spawn with a small supply of. Conversely, potions of {{of|potion|healing|extra healing|and=1|full healing}} can damage Pestilence, but the effects will always be completely resisted unless Pestilence is severely level-drained first.{{refsrc|src/potion.c|1429|version=NetHack 3.6.6|comment=Healing potions do [[potion of sickness]] effects to Pestilence, subject to Pestilence's 100 [[monster magic resistance]]. This means that Pestilence needs to be drained below level 6 for the potions to have a few percent chance of affecting Pestilence.}} Spells of {{spell of|healing|and=1|extra healing}} will do 3d4 or 3d8 damage, which is halved due to the guaranteed resistance.{{refsrc|src/zap.c|392|version=NetHack 3.6.6}}
+|-|
+War|''[[You]]'' are War.
+
+In the game, if you #chat to one of the other Horsemen they ask, "Who do you think you are, War?"; the wording makes the meaning ambiguous, but a comment in the [[source code]] clarifies who they are referring to:{{refsrc|src/monst.c|2564|version=NetHack 3.6.6}}
+
+ /* Riders -- the Four Horsemen of the Apocalypse ("War" == player) 
+  */
+
+Furthermore, attempting to [[tin]] the corpse of a Rider gives the message, "Yes... But War does not preserve its enemies..."
+
+One of the messages a [[T-shirt]] can generate with is "Hello, I'm War!"{{refsrc|src/read.c|148|version=NetHack 3.6.6}}
+</simpletabs>
+
+==Strategy==
+The Riders resist most elemental attacks and have regeneration, but have low base HP—you can best kill them with ordinary physical attacks. Famine and Pestilence are both vulnerable to death rays, and all three Riders are vulnerable to magic missiles. In addition, Famine and Pestilence can have their maximum HP lowered if hit with [[Stormbringer]], as that HP value will be preserved upon their inevitable revival—for this same reason, you absolutely want to avoid zapping Death with a [[death ray]], which heals them and increases their maximum HP.{{refsrc|src/zap.c|606|version=NetHack 3.6.6}}
+
+Of the three riders, Pestilence is widely considered to be the most dangerous. Therefore, players often use [[telepathy]] to identify which altar is guarded by Pestilence, and then explore the other altars first in hopes of avoiding an encounter with them. [[Throw]]n healing potions can damage Pestilence and reduce their maximum hit points, while Pestilence is healed by any potions of sickness they quaff; the first time you kill them, be sure to dispose of their starting supply quickly afterward. 
+
+[[Acid blob]]s are a good candidate for filling up the Astral Plane to dismiss the Riders, as they can be created ''en masse'' with [[scroll of create monster|scrolls of create monster]] while confused. As a fallback method if you lack enough scrolls, reading the cursed [[Book of the Dead]] will create lots of graveyard monsters and only partially respect [[extinction]], but some of those monsters can be quite dangerous. The Riders cannot swap positions with a monster located in a square that is ineligible for corpse creation.
+
+===Getting rid of Riders permanently===
+Although the normal way to get the Riders off your back is simply to ascend, there are a few trickier methods.
+
+* The primary way to permanently banish them is to kill them, then fill every square on the level with monsters so that when they revive, there is nowhere for them to go. When you see the message "You feel much less hassled", a Rider corpse has started to decay, and will eventually rot away, provided that you do nothing to disturb it.{{reffunc|src/do.c|revive_mon|version=NetHack 3.6.1}}{{refsrc|src/do.c|1906|version=NetHack 3.6.6}}
+** While the level is filled with monsters, you can eat a Rider corpse without it reviving, provided you are wearing an [[amulet of life saving]]. (If your meal is interrupted, you will need another amulet.)
+** Attempting to pick up or [[tinning kit|tin]] a Rider corpse will still fail when there is nowhere for it to revive.
+* A hostile [[gelatinous cube]] can "eat" their corpse but not digest it, placing it into the cube's inventory. You could then steal it as a nymph. To destroy it, you can repeatedly loot a cursed bag of holding in 0 turns, or a number of other methods. The Rider corpses will give you severe encumbrance problems; if you are completely unable to lift 1450 units, the corpse will drop uselessly to the floor.
+* Famine and Pestilence can be tamed with charm monster if they are level-drained first (though they will [[Magic resistance (monster)|resist]] the spell {{spell of|drain life}}). Death is immune to level drain.
+
+==History==
+The three Riders first appear in [[NetHack 3.1.0]], alongside the revamped endgame featuring the Astral Plane.
+
+In [[NetHack 3.4.3]] and previous versions, along with some variants based on them, if you polymorph yourself into a [[green slime]], you can turn them to slime—the sliming touch attack is not considered magical. If you want, you can then tame the resulting green slimes. Similarly, a substantial herd of tamed green slimes stands some chance of turning a Rider into a slime, although this is only somewhat less risky.
+
+In [[NetHack 3.6.0]], the Riders are made immune to sliming and polymorph, and become able to displace other monsters. 
+
+The t-shirt message referencing War was added in [[NetHack 3.6.1]].
+
+The inability for Riders to displace monsters located on squares that cannot have corpses created on them (such as a closed door) was added in [[NetHack 3.6.3]], in order to ensure that Rider corpses are created when they are killed.
+
+===Related patches===
+{{patch|name=Seven Deadly Sins 1.0|author=GreyKnight|download=http://bilious.alt.org/?download=178|bilious=178}}
+[[GreyKnight]] has written a [http://bilious.alt.org/?178 rudimentary patch] which occasionally replaces the Riders with some or all of the [[wikipedia:Seven deadly sins|Seven Deadly Sins]]; the patch is hosted directly on Bilious.
+{{clear}}
+
+==Origin==
+{{wikipedia|Four Horsemen of the Apocalypse}}
+The [[wikipedia:Four Horsemen of the Apocalypse|Four Horsemen of the Apocalypse]] are characters in ''Revelation'', the last book of most common versions of the Christian Bible. The sixth chapter in particular has verses describing them as they appear when the Lamb (representing Jesus) opens six of the seven seals of the Apocalypse—all quotes are cited from the New International Version:
+
+{{message|I looked, and there before me was a white horse! Its rider held a bow, and he was given a crown, and he rode out as a conqueror bent on conquest.|Revelation 6:1-2, describing Pestilence—but [[#The White Horseman|see below]].}}
+
+{{message|I heard the second living creature say, 'Come!' Then another horse came out, a fiery red one. Its rider was given power to take peace from the earth and to make men slay each other.|Revelation 6:3-4, describing War.}}
+
+{{message|I looked, and there before me was a black horse! Its rider was holding a pair of scales in his hand. Then I heard what sounded like a voice among the four living creatures, saying, 'A quart of wheat for a day's wages, and three quarts of barley for a day's wages, and do not damage the oil and the wine!'|Revelation 6:5-6, describing Famine.}}
+
+{{message|I looked, and there before me was a pale horse! Its rider was named Death, and Hades was following close behind him.|Revelation 6:8, describing Death.}}
+
+{{message|They were given power over a fourth of the earth to kill by sword, famine and plague, and by the wild beasts of the earth.|Revelation 6:8-9}}
+
+===The White Horseman===
+The White Horseman's identity tends to vary widely with the translation of the passages—he is sometimes given the moniker of Conquest, and other times identified as Pestilence, with the latter being far more commonplace in allegories and portrayals within contemporary literature and popular media. While the description given in the chapter's first two verses is closer to the idea of Conquest, the phrasing of the verse following their introductions does give some credence to the idea of Pestilence being one of the Horsemen.
+
+That said, it is a matter of debate as to whether this passage refers to the fourth rider only, or to the four riders as a collective—among information cited to support the Conquest interpretation includes the later appearance of Christ mounted on a white horse in Revelation 19; the recurring motifs of the color white representing righteousness and the idea of Christ as conqueror throughout the Bible as a whole; and the literal conquest of the early Christian community by the Roman Empire and/or Parthian forces (associated with both archery and white horses).
+
+Vicente Blasco Ibáñez's 1916 novel, ''The Four Horsemen of the Apocalypse'', provides an early well-known interpretation of the White Horseman as Pestilence: "The horseman on the white horse was clad in a showy and barbarous attire. ... While his horse continued galloping, he was bending his bow in order to spread pestilence abroad. At his back swung the brass quiver filled with poisoned arrows, containing the germs of all diseases."<ref>{{cite book| last = Ibáñez | first = Vicente Blasco| year = 1916 | url = http://www.gutenberg.org/files/1484/1484-h/1484-h.htm | title = The Four Horsemen of the Apocalypse (ch V)}}</ref> ''NetHack'' is among the works that make use of this latter interpretation, as are other [[roguelikes]] such as [[ToME]].
+
+==Encyclopedia entry==
+{{encyclopedia|
+[Pestilence:] And I saw when the Lamb opened one of the seals,
+and I heard, as it were the noise of thunder, one of the four
+beasts saying, Come and see.  And I saw, and behold a white
+horse: and he that sat on him had a bow; and a crown was given
+unto him: and he went forth conquering, and to conquer.
+
+[War:] And when he had opened the second seal, I heard the
+second beast say, Come and see.  And there went out another
+horse that was red: and power was given to him that sat thereon
+to take peace from the earth, and that they should kill one
+another: and there was given unto him a great sword.
+
+[Famine:] And when he had opened the third seal, I heard the
+third beast say, Come and see.  And I beheld, and lo a black
+horse; and he that sat on him had a pair of balances in his
+hand.  And I heard a voice in the midst of the four beasts say,
+A measure of wheat for a penny, and three measures of barley
+for a penny; and see thou hurt not the oil and the wine.
+
+[Death:] And when he had opened the fourth seal, I heard the
+voice of the fourth beast say, Come and see.  And I looked, and
+behold a pale horse: and his name that sat on him was Death,
+and Hell followed with him.  And power was given unto them over
+the fourth part of the earth, to kill with sword, and with 
+hunger, and with death, and with the beasts of the earth.
+|[ Revelation of John, 6:1-8 ]
+}}
+
+==References==
+<references/>
+{{nethack-366|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Unique monsters]]}
+&&%s&& %s Class {1978 2006-03-30T00:17:22Z {458 Kernigh} Class moved to Role: As mentioned on [[Talk:Role]], NetHack uses the word [[role]] instead of [[class]]. #redirect [[Role]]}
+&&%s&& %s Category:ASCII {33129 2008-06-16T10:55:03Z {701 Rogerb-on-NAO} Bypass disambig for Character The goal of this category is to list an article about every [[ASCII character]].
+
+[[Category:User interface]]}
+&&%s&& %s American Standard Code for Information Interchange {85562 2013-06-01T20:30:39Z {4000180 Bcode} adjust the abbreviation note a bit; [[Template:wikipedia2|wikipedia2]] → [[Template:wikipedia|wikipedia]] {{wikipedia|ASCII}}
+{{ASCII}}
+The '''American Standard Code for Information Interchange''', normally abbreviated '''ASCII''', is a [[Wikipedia:character set|character set]] which a computer uses to store '''characters'''. ASCII specifies a method for computers to store printable characters such as letters A to Z, a to z, digits 0 to 9, punctuation, and spaces. ASCII also includes control characters such as newline. Most computers either use ASCII, or a superset of ASCII that adds more characters, such as accented letters, Cyrillic letters, CJK characters, or hieroglyphics.
+
+''[[NetHack]]'' uses ASCII for everything. The [[source code]] is in ASCII. If you play in [[tty]] mode (without [[DECgraphics]], [[IBMgraphics]], or color), everything on the screen is ASCII. Also, ASCII corresponds nicely with the keys found on most [[keyboard|QWERTY keyboards]] in the United States. In fact, in modern NetHack 3.x.x, the [[dungeon]] contains every printable ASCII character except "6", "7", "8", and "9"; "," (the comma) appears only on the [[Rogue level]]. Some older versions of NetHack did use "8" for [[Medusa]] and "9" for [[giant]]s, but [[NetHack 3.0.0]] made monster symbols refer to classes of monsters rather than necessarily single monsters, and now Medusa is @ and giants are H.
+
+The characters in the table to the right link to their informational page. The goal is to create an article in [[NetHackWiki]] for every character. In the article, mention which [[monster]] or [[object]] that character represents, and what that key does from the keyboard. Try to link to other articles; for example, [[d]] should link to both [[dog]] and [[drop]].
+
+NetHack also uses some non-printable ASCII characters for commands. Those are commands that use {{kbd|Ctrl}} key. Pressing {{kbd|Ctrl}} and another character sends a non-printable character. {{kbd|Alt}} key has similar function.
+
+For technical reasons, [[angle bracket]]s, [[curly bracket]]s, [[square bracket]]s, [[hash mark]]s, [[pipe]]s, or [[plus sign]]s can not be used in the names of articles. Also, an article name cannot contain only [[underscore]]s, and it cannot consist of exactly one or two [[dot]]s. Thus all of those articles have words for names.
+
+==See also==
+* [[Options#color]]
+{{noversion}}
+[[Category:ASCII| ]]}
+&&%s&& %s ASCII {1990 2006-04-01T00:24:10Z {458 Kernigh} #REDIRECT [[American Standard Code for Information Interchange]]
+[[Category:Acronyms]] #REDIRECT [[American Standard Code for Information Interchange]]
+[[Category:Acronyms]]}
+&&%s&& %s Template:GFDL {60771 2010-12-02T16:42:34Z {366 Ilmari Karonen} don't put [[Category:GFDL]] in itself, link to it from description <br style="clear:both;" />
+{| align="center"  style="width:95%; background-color:#f8f8f8; border:2px solid #e0e0e0;  padding:5px;"
+|-
+| [[Image:Heckert GNU white.svg|60px|GNU head]]
+| align="center" | ''Permission is granted to copy, distribute and/or modify this document under the terms of the '''[[w:GNU Free Documentation License|GNU Free Documentation License]]''', Version 1.2 or any later version published by the [[w:Free Software Foundation|Free Software Foundation]]; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled "[[GNU Free Documentation License|Text of the GNU Free Documentation License]]."'' {{languages|Template:GFDL}}
+|}
+<includeonly>{{#ifeq:{{FULLPAGENAME}}|Category:GFDL||[[Category:GFDL|{{PAGENAME}}]]}}</includeonly>
+<noinclude>
+
+Pages including this template are categorized in [[:Category:GFDL]].
+
+[[Category:License templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Rodney {143463 2021-10-27T19:58:47Z {4001279 Umbire the Phantom}  On NetHack Wiki, '''Rodney''' may refer to one of the following:
+
+* [[Yendor]], which is "Rodney" spelled backward
+* The nickname of the [[Wizard of Yendor]]
+* An [[Rodney (bot)|IRC bot]] in the [[nethack (IRC)|#nethack]] [[IRC]] channel
+* The default name of the player character in [[Rogue (game)|Rogue]]
+
+{{disambig}}}
+&&%s&& %s Yendor {131154 2020-01-20T06:18:26Z {4000978 Aximili} Add category The term '''Yendor''' was introduced to ''[[Rogue (game)|Rogue]]'' and then appeared in ''[[Hack]]'' and ''[[NetHack]]''. The word is "Rodney" spelled backwards, which probably is the original derivation, but it also feels linguistically appropriate to a fantasy game. This is doubtlessly due to [[Tolkien]]'s created languages of [[wikipedia:Sindarin|Sindarin]] and [[wikipedia:Quenya|Quenya]], in which the suffix "-(n)dor" corresponds to English "-land," as in Gondor ("stone land"), Mordor ("black land"), and many others. In the sincerest form of flattery, place-names ending in "-(n)dor" can be found throughout fantasy and science fiction, such as "the forest moon of Endor" in the film [[wikipedia:Star Wars Episode VI: Return of the Jedi|''Star Wars Episode VI: Return of the Jedi'']]. The word Yendor might also be a nod to the text-based adventure game series ''[[wikipedia:Zork|Zork]]'', where the land in which the games took place was called Quendor. Notably, the currency of both Yendor and Quendor is the same, the [[Zorkmid]].
+
+The following names in NetHack contain ''Yendor'':
+
+* '''[[Amulet of Yendor]]''', the goal, and its [[Cheap plastic imitation of the Amulet of Yendor|cheap imitation]]
+* '''[[Wizard of Yendor]]''' (aka [[Rodney]]), annoying wizard
+* '''[[Platinum Yendorian Express Card]]''', the [[Tourist]] [[quest artifact]]. Other [[credit card]]s might show "Yendorian Express" when read.
+* If applying an unpaid [[potion of oil]], you will get the message, "That will cost you (n) zorkmids ('''[[Yendorian Fuel Tax]]''')."
+* The soldiers and officers of the '''[[Yendorian Army]]'''. Though identified primarily as "soldier," "sergeant," etc., the [[NetHack encyclopedia|encyclopedia]] entry for them identifies them as ''Yendorian'' soldiers.
+
+{{noversion}}
+
+
+[[Category: Disambiguation]]}
+&&%s&& %s Amulet of lifesaving {2009 2006-04-02T23:08:02Z {924 ZeroOne} Amulet of lifesaving moved to Amulet of life saving: in the game, life saving is spelled with a space. #redirect [[Amulet of life saving]]}
+&&%s&& %s Angle bracket {131300 2020-01-22T05:37:11Z {4001313 Ardub23}  {{ASCII}}
+*{{lightgray|<}}, {{lightgray|>}}, {{brown|<}} and {{brown|>}} represent [[staircase]]s and [[ladder]]s. The gray characters are stairs and the brown ones ladders; the brackets pointing left lead upwards, those that point right lead downwards.
+*Press '''{{kbd|<}}''' or '''{{kbd|>}}''' to go up or down a staircase or ladder, or down into a [[hole]] or [[trap door]] you avoided. When asked for a direction, such as when applying a [[pick-axe]] or zapping a [[wand]], use these keys to direct your action up or down.
+*Press '''{{kbd|<}}''' or '''{{kbd|>}}''' to [[Menu_controls|go back or forward]] one page in a multi-page menu. This is supported by [[tty]] and [[curses interface]]s; see [[Menu controls]].
+
+[[Category:ASCII]]
+{{nethack-343}}}
+&&%s&& %s ? {74321 2011-10-19T15:37:31Z {0 }  {{ASCII}}
+* {{white|?}} is a [[scroll]]
+* Press {{kbd|?}} to get the [[help (in-game)|game help]]
+* When prompted to select items from your inventory, press {{kbd|?}} to show a menu of relevant items.
+* Press {{kbd|?}} to select [[scroll]]s in a [[Menu_controls|menu]]. Supported by [[tty]] and [[curses interface]]s, see [[menu controls]].
+* ''#?'' is an [[extended command]], displaying a list of all extended commands.
+
+[[Category:ASCII]]}

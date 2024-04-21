@@ -1,0 +1,1000 @@
+** Secondary extrinsics are not realized by wearing dragon scales on their own. They must be crafted into dragon-scaled armor for the secondary characteristics to function.
+** The armor is not made erodeproof, but if the scroll was blessed, its erosion is repaired and it becomes blessed.
+** If the scroll was cursed, the armor still fuses together, but becomes cursed and loses a point of enchantment. Otherwise, the armor's enchantment does not change, and any enchantment on the scales is discarded.
+** If you are confused, the scales meld into the armor and then the armor melds into you, polymorphing you into the corresponding dragon.
+* Reading enchant armor with scales but ''without'' body armor will polymorph you into the corresponding dragon. Wearing a shirt doesn't affect this.
+** If you have polymorph control, you can decline to become a dragon.
+** A blessed scroll gives you additional time as a dragon and a cursed scroll gives you less time.
+** Scaled armor is never destroyed or separated into its components when you become a dragon; it reverts back to your body armor when you revert.
+* You can change the color of the scales on body armor by wearing a new set of scales and reading enchant armor. The old scale color goes away.
+* There are no limitations on what body armor can be used.
+* "<Foo> dragon scale mail" no longer exists as an object, so it can't be wished for. If the player wishes for '<foo> dragon scale mail', they'll receive 'a set of <foo> dragon scales' instead.
+* Dragon-scaled body armor cannot be wished for. It must be crafted.
+* Player monsters that used to receive dragon scale mail now receive a standard random suit, dragon-scaled with a random color of dragon scales.
+* Shopkeepers charge a much higher price for a dragon-scaled piece of armor than they would for the same armor piece without scales.
+
+Dragon scales having secondary extrinsics was taken from [[SporkHack]], and then heavily modified &ndash; all dragon scales have a secondary extrinsic effect when fused with regular body armor and turned into dragon-scaled armor. Dragon scales worn on their own only exhibit their primary extrinsic, with one exception &ndash; [[gold dragon]]/[[chromatic dragon]] scales will give off light, regardless of whether it's just scales or dragon-scaled armor.
+{|class="prettytable sortable"
+!Dragon Scales !! Primary extrinsic !! Secondary extrinsic (dragon-scaled armor)
+|-
+|[[Blue dragon scales]]||[[shock resistance]]||confers [[speed]]
+|-
+|[[Black dragon scales]]||[[disintegration resistance]]||passive [[disintegration]] attack
+|-
+|[[Gray dragon scales]]||[[magic resistance]]||passive [[cancellation]] attack, cancellation protection
+|-
+|[[Green dragon scales]]||[[poison resistance]]||passive [[poison]] attack
+|-
+|[[Orange dragon scales]]||[[sleep resistance]]||passive [[slow]] attack
+|-
+|[[Red dragon scales]]||[[fire resistance]]||+1d6 to all melee damage, passive [[fire]] attack
+|-
+|[[Silver dragon scales]]||[[reflection]]||confers [[cold]] resistance
+|-
+|[[White dragon scales]]||[[cold resistance]]||freezes water and lava under foot, passive [[cold]] attack
+|-
+|[[Yellow dragon scales]]||[[acid resistance]]||confers [[stoning]] resistance
+|-
+|[[Shimmering dragon scales]]||[[displacement]]||confers [[stealth]]
+|-
+|[[Gold dragon scales]]||none||[[light source|light (radius dependent on BUC status)]], [[sickness resistance]]
+|-
+|[[Sea dragon scales]]||[[magical breathing]]||confers the ability to [[swim]]
+|-
+|[[Chromatic dragon scales]]||special (see below)||none
+|-
+|}
+
+What's new for EvilHack that you won't find elsewhere, is that the dragons these scales come from enjoy many of the same secondary extrinsics. Blue dragons are faster, red dragons hit harder, hitting a black dragon has a small chance of disintegrating the weapon you hit it with, etc.
+
+=== Crystal plate mail ===
+Probably one of the most under-utilized pieces of body armor around &ndash; decent AC and no material spellcasting penalties, but it's so heavy, wizard-types will steer clear of it. I've attempted to address this shortcoming in EvilHack, giving it much more utility and hopefully making it into a viable choice for spellcasters.
+
+Back story: crystal plate mail is forged from dilithium crystal, and can only be made by the most skilled of blacksmiths in conjunction with a powerful wizard. Dilithium is virtually transparent to magic; it almost acts like it doesn't exist. To some, this may seem like a bad thing, but for others it's a blessing.
+
+* Crystal Plate Mail weight reduced (from 450 aum to 150 aum).
+* Base material changed from glass to gemstone &ndash; no longer runs the risk of being shattered.
+* The base material change makes it much more expensive, and much more rare to find.
+* Crystal Plate Mail is immune to disintegration and the monster spell 'destroy armor'.
+* Crystal Plate Mail is the only body armor that does not incur a spell casting penalty when worn.
+* Can be dragon-scaled just like any other type of body armor.
+
+=== Chromatic Dragon scales ===
+As of EvilHack version 0.7.0, [[chromatic dragon scales]] have been made available. The only way to obtain them is to defeat [[Tiamat]], who is now a [[demon prince]] that potentially inhabits a lair deep within [[Gehennom]]. Tiamat will not leave a corpse, and the scales cannot be wished for, so if she doesn't drop them upon her death (1 in 3 chance), there is no chance of obtaining them.
+
+* Chromatic dragon scales can be crafted onto any worn body armor to make dragon-scaled armor, just like any other dragon scale.
+* When worn, the scales confer magic resistance only, and give off light. They must be crafted into dragon-scaled armor to receive all of the extrinsics available (poison/fire/cold/shock/sleep/acid/disintegration/stoning resistance and reflection) in addition to magic resistance and light.
+* Because Tiamat is so huge, the scales she drops are just large enough to fit a player playing as a [[giant]].
+
+=== Weapons ===
+A few new weapons were added to either flesh out a monster type, or to serve as a base for an artifact weapon.
+{|class="prettytable sortable"
+!Weapon
+!Symbol
+!Base type
+!Base material
+!Weight
+!Damage vs small
+!Damage vs large
+!Notes
+|-
+|[[Atlatl]]
+|{{black|)}}
+|[[Spear]]
+|wood
+|30 aum
+|1d8
+|1d12
+|Made specifically for the Archeologist quest artifact [[Xiuhcoatl]]. Does not appear randomly.
+|-
+|[[Dwarvish bearded axe]]
+|{{cyan|)}}
+|[[Axe]]
+|iron
+|70 aum
+|1d8
+|1d10
+|A one-handed axe of dwarven make whose damage output is comparable to that of a long sword. Can be used to disarm its target (wielded weapon or worn shield) by applying it, much the same as using a [[bullwhip]].
+|-
+|[[Elven long sword]]
+|{{brown|)}}
+|[[Long sword]]
+|wood
+|35 aum
+|1d10
+|1d12
+|Racial soldiers are a thing in EvilHack, and the elven types needed a long sword they could wield since elves have an aversion to iron. Lighter than its iron counterpart, but susceptible to fire damage. Damage output is on par with a [[katana]].
+|-
+|[[Orcish long sword]]
+|{{black|)}}
+|[[Long sword]]
+|iron
+|40 aum
+|1d8
+|1d10
+|Slightly less damage against large monsters versus a regular long sword.
+|-
+|[[Orcish scimitar]]
+|{{black|)}}
+|[[Scimitar]]
+|iron
+|40 aum
+|1d6
+|1d8
+|Slightly less damage against small monsters versus a regular scimitar. 
+|-
+|[[Orcish morning star]]
+|{{black|)}}
+|[[Morning star]]
+|iron
+|120 aum
+|1d4
+|1d6
+|Made specifically for two new monsters, the [[Goblin Outrider]] and the [[Goblin-captain]], but can appear randomly. 
+|-
+|[[Heavy mace]]
+|{{cyan|)}}
+|[[Mace]]
+|iron
+|50 aum
+|1d10
+|1d10
+|Base object for [[Demonbane]], can appear randomly. Damage output is significantly more than its weaker cousin, the [[mace]].
+|-
+|[[Heavy war hammer]]
+|{{cyan|)}}
+|[[Hammer]]
+|iron
+|60 aum
+|1d8
+|1d10
+|Base object for the artifacts [[Mjollnir]] and [[Ogresmasher]], can appear randomly. Damage output is significantly more than its weaker cousin the [[war hammer]].
+|-
+|[[Rod]]
+|{{red|)}}
+|[[Mace]]
+|gemstone
+|40 aum
+|1d6
+|1d8
+|Base object for [[The Sceptre of Might]] and the [[Wand of Orcus]], does not appear randomly. Damage output is slightly better than a [[mace]].
+|-
+|[[Staff of Divination]]
+|{{brown|)}}
+|[[Quarterstaff]]
+|wood
+|40 aum
+|1d6
+|1d6
+|The Staff of Divination confers a 50% boost to spellcasting any [[divination]]-based spells when wielded. This staff and others like it can help non-casters attempt to cast certain spells that normally would have been either extremely difficult or impossible to cast otherwise.
+|-
+|[[Staff of Healing]]
+|{{brown|)}}
+|[[Quarterstaff]]
+|wood
+|40 aum
+|1d6
+|1d6
+|The Staff of Healing confers a 50% boost to spellcasting any [[healing]]-based spells when wielded.
+|-
+|[[Staff of Holiness]]
+|{{white|)}}
+|[[Quarterstaff]]
+|bone
+|40 aum
+|1d6
+|1d6
+|The Staff of Holiness confers a 50% boost to spellcasting any [[clerical]]-based spells when wielded.
+|-
+|[[Staff of Matter]]
+|{{gray|)}}
+|[[Quarterstaff]]
+|mithril
+|30 aum
+|1d6
+|1d6
+|The Staff of Matter confers a 50% boost to spellcasting any [[matter]]-based spells when wielded. It is also slightly lighter than its counterparts.
+|-
+|[[Staff of Escape]]
+|{{black|)}}
+|[[Quarterstaff]]
+|wood
+|40 aum
+|1d6
+|1d6
+|The Staff of Escape confers a 50% boost to spellcasting any [[escape]]-based spells when wielded.
+|-
+|[[Staff of War]]
+|{{cyan|)}}
+|[[Quarterstaff]]
+|iron
+|50 aum
+|1d6
+|1d6
+|The Staff of War confers a 50% boost to spellcasting any [[attack]]-based spells when wielded. It is heavier than its counterparts, but also has an extra d2 to-hit bonus.
+|-
+|[[Triple-headed flail]]
+|{{white|)}}
+|[[Flail]]
+|bone
+|150 aum
+|1d12
+|3d6
+|Base object for the artifact [[Butcher]], does not appear randomly. Requires two hands to use for normal-sized players. Greatest damage output per hit of any base weapon in the game.
+|-
+|}
+
+=== Containers and tools ===
+{|class="prettytable sortable"
+!Item
+!Symbol
+!Base type
+!Base material
+!Weight
+!Notes
+|-
+|[[Iron safe]]
+|{{cyan|(}}
+|N/A
+|iron
+|900 aum
+|A secure container that can only be 'cracked' using a stethoscope. Cannot be physically locked again once it's been unlocked. Can appear randomly.
+|-
+|[[Eight ball]]
+|{{black|(}}
+|[[Orb]]
+|plastic
+|20 aum
+|The base item for the artifact [[Magic 8-Ball]]. Does not appear randomly.
+|-
+|[[Crystal chest]]
+|{{white|(}}
+|N/A
+|gemstone
+|500 aum
+|A rare and magical type of container that cannot be locked, unlocked or forced open by any physical means (the [[Bell of Opening]], [[Master Key of Thievery]] and the [[Platinum Yendorian Express Card]] are the three exceptions to this rule). The only way to open or lock this container is by magical means &ndash; a [[wand of opening]] or the spell 'knock' to unlock, or a [[wand of locking]] or the spell 'wizard lock' to secure. Otherwise, a crystal chest is immune to all other forms of magic, meaning it cannot be probed, cancelled, teleported, or polymorphed. This makes it the ideal container for the player to use to stash useful gear, as intelligent monsters will unlock and loot regular containers if given the chance, nor do monsters currently know how to use locking/unlocking magic. Crystal chests do not generate as trapped, and they can appear randomly.
+|-
+|[[Barding]]
+|{{cyan|(}}
+|N/A
+|iron
+|250 aum
+|Barding is armor for [[steed]]s. Throughout history, barding came in several shapes and sizes. In this setting, imagine barding protecting your steed's head/neck and flank all the way back to the start of where the [[saddle]] would be. It is applied to your steed just as you apply a saddle, and just like saddles, it's 'one size fits all'. The material the barding is made from determines how much extra AC protection it gives your steed (iron, the softer/more dense metals &ndash; 3 AC, steel or stone &ndash; 4 AC, mithril &ndash; 5 AC). It also affords some protection to your steeds head against any attacks that target it (zombie bite attack, mind flayer tentacle attack, etc). Barding can be enchanted just like any other piece of armor, and follows the same rules/behavior. To enchant barding, the player must have their steed wear it, and be mounted on their steed. When reading a [[scroll of enchant armor]], they'll be given the option to enchant the barding.
+|-
+|[[Spiked barding]]
+|{{cyan|(}}
+|N/A
+|iron
+|275 aum
+|Just like regular barding, but is covered with tiny sharp spikes that protrude outward. If your steed is [[engulfed]] while it's wearing spiked barding, the monster engulfing it will spit it back out.
+|-
+|[[Barding of reflection]]
+|{{gray|(}}
+|N/A
+|silver
+|275 aum
+|Just like regular barding, but it's fully reflective just like a [[shield of reflection]].
+|-
+|}
+
+=== Spellbooks ===
+An assortment of new spells have been added to EvilHack, both from [[GruntHack]] and [[SporkHack]].
+{|class="prettytable sortable"
+!Spell
+!Class
+!Level
+!Notes
+|-
+|[[Lightning]]
+|[[Attack]]
+|4
+|This spell shoots a powerful lightning bolt as a ray from the caster. Effects are basically the same as a [[wand of lightning]], damage output uses the same scale as the spells [[fireball]] and [[cone of cold]].
+|-
+|[[Poison Blast]]
+|[[Attack]]
+|5
+|Produces a cloud of noxious gas in a ray pattern, same effects much like a green dragons breath attack.
+|-
+|[[Acid Blast]]
+|[[Attack]]
+|6
+|A serious damage-causing spell, will transition from a ray to an area of effect spell much like the spells [[fireball]] and [[cone of cold]], damage output is on the same scale to creatures that do not resist acid. Can corrode objects in the target's inventory.
+|-
+|[[Repair Armor]]
+|[[Matter]]
+|3
+|When cast, repairs one level of damage to any worn piece of armor. Will not make armor items [[fixed]], but will bring them back to a new undamaged state. This spell is significant, as the monster spell 'destroy armor' can un-fix and damage your armor to the point that it's destroyed completely, even armor that is inherently [[erodeproof]]. The spell will choose a worn piece of armor at random to fix if unskilled in casting matter-based spells, otherwise at basic or higher skill, the player can select which piece of armor to repair.
+|-
+|[[Reflection]]
+|[[Matter]]
+|5
+|Creates a temporary reflective bubble around the caster, acts exactly the same as an amulet of reflection or silver dragon scales.
+|-
+|[[Flame Sphere]]
+|[[Matter]]
+|2
+|Creates a tame [[flaming sphere]] that will explode itself on any nearby enemies. Will dissipate if not used in a timely manner.
+|-
+|[[Freeze Sphere]]
+|[[Matter]]
+|2
+|Creates a tame [[freezing sphere]] that will explode itself on any nearby enemies. Will dissipate if not used in a timely manner.
+|-
+|}
+
+Several stock player spells have also had their levels altered to something that makes sense:
+* Dig &ndash; level 5 → 3
+* Sleep &ndash; level 1 → 2
+* Confuse monster &ndash; level 2 → 1
+* Detect monsters &ndash; level 1 → 3
+* Detect food &ndash; level 2 → 1
+* Charm monster &ndash; level 3 → 5
+* Detect unseen &ndash; level 3 → 2
+* Restore ability &ndash; level 4 → 2
+* Invisibility &ndash; level 4 → 3
+* Jumping &ndash; level 1 → 2
+
+Spellbook weights are now based on their level, the logic being the higher level the spell, the more pages needed to hold the formula. Level 4 spellbooks weigh the same as vanilla spellbooks; lower level weight less, higher level books weigh more.
+
+=== Additional item changes ===
+* The [[Amulet of Yendor]] has a chance of teleporting away to another location on the current level if dropped, whether by the player or a monster. How often that can happen depends on its BUC status ({{frac|2|3}} chance when cursed, {{frac|4}} chance when uncursed, and {{frac|16}} chance when blessed). This behavior is suppressed only in the [[Sanctum]]. Be warned &ndash; if you drop the Amulet on a level with open air and gravity is in effect, you run the risk of the Amulet teleporting to an open air spot, at which point it will fall away and land somewhere on the final demon prince level in Gehennom.
+* Wands in general can only be zapped once when at zero charges in an attempt to [[wrest]] them - the wand turns to dust afterward whether successful or not, but the odds of a successful wrest from zapping are dependent on its BUC status ({{frac|7}} chance when cursed, {{frac|6}} chance when uncursed, and {{frac|5}} chance when blessed).
+* Wand backfire patch: When zapping a cursed directional wand, there is a 1 in 8 chance of the wand instead firing it's ray at you.
+* Wands of wishing are more rare to find randomly, and are always charged once already (1:x). The [[Castle]] wand is still created as having never been charged (0:x).
+* Wands of death can be recharged only once.
+* Wands/scrolls/spellbook of light &ndash; if cast too close to monsters that can see, the light will blind them. If a friendly monster is blinded this way, there's a 33% chance that they'll become angry. Pets blinded this way have a 50% chance of losing a point of tameness.  
+* [[Amulet of flying]] &ndash; new amulet that allows the player to fly when worn.
+* Amulet of magic resistance &ndash; new amulet that provides magic resistance when worn.
+* Amulets of life saving do not work if cursed or worn by a non-living creature. This applies to monsters as well as the player.
+* Unicorn horns do not cure attribute loss anymore, but otherwise they act as expected. They are now one-handed weapons, with their damage output changed accordingly (1d8/1d10).
+* Magic markers now never generate randomly, nor will they appear in a player's starting inventory. Also, because they do not generate randomly, you cannot polypile for one. The only ways to obtain a marker are wishing for one, being lucky enough to find one in a bones pile, looting the crystal chest that belongs to the [[High priest]] of [[Moloch]] in the [[Sanctum]], or choosing the 'tool' as the prize for completing [[Sokoban]] (50&ndash;50 chance between a marker or a bag of holding). There is also a very small chance (10%) of finding one in the [[Goblin King]]'s treasure stash in Goblin Town and the final level of the Ice Queen's Realm.
+* Iron shoes were renamed to 'dwarvish boots'.
+* Many body armor types have had their weights reduced.
+* Many types of potions will have their effects diminished if diluted.
+* A luckstone will slow down your luck timeout based on its beatitude; a blessed luckstone no longer halts the timeout entirely.
+* Exploding bags of holding scatter their contents in a roughly 10 by 10 area. Breakable items (things made of glass, potions, etc) are subject to being destroyed from the force of the magical explosion.
+* Any item or object that is susceptible to being rusted, corroded, rotted, burned, or fractured can be completely destroyed via those methods unless [[fixed]].
+* Any item or object can be fixed by wielding the object and reading a [[scroll of enchant weapon]] while confused, if its material allows for it.
+* [[Magic lamp]]s can be wished for. Cursed magic lamps give off darkness instead of light (same radius); the aura of darkness overrides any light source.
+* Orcish boots are added &ndash; much like dwarvish boots, but of lesser quality.
+* Gauntlets &ndash; just regular iron-based gloves (known as 'tekko' if playing as a [[Samurai]]).
+* [[Gauntlets of protection]] &ndash; base item cloth, provides MC3 just as a [[cloak of protection]] does. The rarest of all gloves in the game.
+* Helm of speed &ndash; this helm allows the wearer to become [[very fast]] when worn.
+* Shield of light &ndash; gives off light when worn. It has the same light radius as gold dragon scales (based on its BUC status). The base material is gold, and it weighs 60 aum.
+* Shield of mobility &ndash; confers free action when worn. The base material is steel, and it weighs 50 aum.
+* [[Spellbook of cure sickness]] &ndash; is now directional and can be cast at other monsters as well as yourself.
+* Scroll of magic detection &ndash; detects magical objects on the current level and in the players inventory. An uncursed scroll will label such items as 'magical', a blessed scroll will identify fully those same items (but not their beatitude).
+* A [[Hawaiian shirt]] may be [[read]] to view its design (as no actual reading of text is involved, this does not break illiterate conduct).
+* Cursed wands of light cast darkness instead of light, just like a cursed scroll of light when read.
+* Monsters can drink restore ability to cure cancellation, or you can hit a monster with a potion of restore ability to forcibly uncancel them.
+* Cursed wands of invisibility will make its target visible if already invisible, and has a 50% chance of aggravating monsters on the current level if zapped at yourself while invisible. If the target is visible, nothing happens.
+* Wands of striking/force bolt spell will knock its target back one tile space if the damage output is sufficiently high enough (16 hit points of damage or greater).
+* Cursed locking tools (keys/lockpicks/credit cards) have a 20% chance of breaking with each use, whether locking or unlocking. Artifact locking tools are not affected.
+* Wands of nothing have a base price of 500 - the same as a wand of death or a wand of wishing.
+
+== Monsters ==
+EvilHack introduces several new monsters &ndash; some pulled in from other variants, others are custom creations not found in any other variant. Several stock monsters have also been changed to varying degrees.
+
+=== New monsters ===
+This section lists all of the new monsters introduced in EvilHack, and is just a brief overview of each monster and any outstanding abilities or features each has. The order listed here is the same order as these monsters appear in src/monst.c.
+
+{|class="prettytable sortable"
+!Monster
+!Symbol
+!Difficulty
+!Notes
+|-
+|[[Locust]]
+|{{gray|a}}
+|11
+|A small but dangerous flying insect that spawns in small groups. They can bite and sting, the latter of which can make the player terminally [[ill]].
+|-
+|[[Giant mosquito]]
+|{{orange|a}}
+|4
+|Tiny, fast flying insect that spawns in large groups. Their bite is weak, but has a small chance of poisoning the player much like a [[rabid rat]], affecting their constitution instead of dexterity. Being surrounded by a large group of these can be a serious problem for a lower-level player.
+|-
+|[[Queen ant]]
+|{{cyan|a}}
+|16
+|Much like a [[queen bee]], a queen ant is only found in [[anthole]]s guarded by either [[giant ant]]s, [[soldier ant]]s, or [[fire ant]]s. Queen ants have a tough exoskeleton, bite hard and deliver a venomous sting.
+|-
+|[[Giant cockroach]]
+|{{green|a}}
+|6
+|Small and fast, giant cockroaches are only found in areas with raw sewage &ndash; they do not spawn randomly. Giant cockroaches have a poisonous bite similar to a rabid rat, and can hide under objects.
+|-
+|[[Basilisk]]
+|{{brightgreen|c}}
+|16
+|Basically this &ndash; a larger, faster and all-around more deadly version of the [[cockatrice]].
+|-
+|[[Rabid dog]]
+|{{gray|d}}
+|4
+|Small mangy dog that is slightly stronger than a [[little dog]], but a bit slower. Its bite attack is the same poisonous bite that a rabid rat employs.
+|-
+|[[Weredemon]]
+|{{red|d}} / {{black|&}}
+|16 / 19
+|The most powerful of the [[lycanthrope]]s, weredemons are lesser demons that have been infected by a [[werewolf]]. They can change form into a [[hell hound]] and back again into demonic form, and can summon hell hounds or other demons to defend it. Like all other lycanthropes, they can infect others with [[lycanthropy]]. Weredemons are the only demon-class monster that can spawn outside of [[Gehennom]].
+|-
+|[[Bourbon]]
+|{{brown|d}}
+|22
+|One of a pair of German Shepherd dogs that guards [[Kathryn the Ice Queen]]. Bourbon is smaller but faster than her counterpart [[Ozzy]]. Cannot be killed, but can be defeated and forced to submit (becomes peaceful). Cannot be tamed or genocided.
+|-
+|[[Ozzy]]
+|{{brown|d}}
+|24
+|One of a pair of German Shepherd dogs that guards [[Kathryn the Ice Queen]]. Ozzy is slower but bigger than his counterpart [[Bourbon]]. Cannot be killed, but can be defeated and forced to submit (becomes peaceful). Cannot be tamed or genocided.
+|-
+|[[Cerberus]]
+|{{black|d}}
+|30
+|Cerberus is a unique monster that guards the gates to [[Gehennom]]. It has three powerful bite attacks, and can breathe fire. Cerberus is immune to [[Vorpal Blade]] as it has three heads - if one head is cut off, it grows back before the hero has a chance to remove the other two. Cannot be tamed or genocided.
+|-
+|[[Beholder]]
+|{{brown|e}}
+|16
+|Beholders spawn asleep 80% of the time, and are one of the most dangerous creatures in the game if woken up. They are slow, and cannot be detected by any means other than direct viewing or via warning - beholders will always show as a {{brightmagenta|5}} via warning, regardless of their level. It has a strong bite attack along with several different gaze attacks (slow, sleep, disintegration, stoning, cancellation), all of which can be negated by simply blinding oneself. Cannot be tamed nor genocided.
+|-
+|[[Magical eye]]
+|{{magenta|e}}
+|14
+|A serious nuisance, especially when encountered with other monsters. Harasses the player with six different gaze attacks at its disposal (slow, sleep, stun, fire, cold, luck) and is skittish, meaning it will evade and kite its target - making the magical eye somewhat difficult to kill. Eating its corpse will randomly increase or decrease the player's Luck by 2 points. Cannot be tamed nor genocided.
+|-
+|[[Saber-toothed tiger]]
+|{{yellow|f}}
+|14
+|The most dangerous of the feline family, saber-toothed tigers will only spawn in the [[Ice Queen's Realm]].
+|-
+|[[Hobbit pickpocket]] (formerly hobbit rogue)
+|{{black|h}}
+|3
+|Slightly more powerful than a regular [[hobbit]], and has an additional item stealing attack.
+|-
+|[[Alhoon]]
+|{{gray|h}}
+|30
+|A truly terrifying creature, alhoons are rogue [[master mind flayer]]s that sought our ultimate magical power, sacrificing their souls and becoming something akin to an [[arch-lich]]. Alhoon's do not have as many tentacle attacks as their mind flayer brethren, but they can cast powerful spells. They enjoy all of the strengths and weaknesses associated with being [[undead]].
+|-
+|[[Ice nymph]]
+|{{brightcyan|n}}
+|5
+|Ice nymph's are basically the same as any other [[nymph]], except that they are immune to cold-based attacks and only spawn in the [[Ice Queen's Realm]] or on [[Geryon]]'s level.
+|-
+|[[Goblin shaman]]
+|{{green|o}}
+|5
+|A weak goblin capable of [[monster spellcasting]], much the same as a [[kobold shaman]]. Eating its corpse (or any monster spellcaster's corpse) can confer intrinsic [[telepathy]].
+|-
+|[[Goblin outrider]]
+|{{cyan|o}}
+|5
+|One of a handful of monsters in EvilHack that can ride a [[steed]]. Slightly stronger than a regular [[goblin]], it always spawns riding a [[wolf]] and is created in small packs. Goblin outriders are usually equipped with some form of ranged attack; while not a serious threat by itself, its steed and small packs can be a concerning threat.
+|-
+|[[Goblin-captain]]
+|{{white|o}}
+|7
+|The strongest of the goblin race, and always spawns riding a saddled [[warg]]. Does not spawn in groups.
+|-
+|[[Woolly mammoth]]
+|{{orange|q}}
+|26
+|A gigantic creature, and the strongest of the S_QUADRUPED class. It can deal significant damage with twin tusk attacks, and it can use its trunk to grab and crush its target. Woolly mammoths are resistant to cold, and are the only creatures that can be ridden by [[Giant (starting race)|player giants]]. Will only spawn in the [[Ice Queen's Realm]].
+|-
+|[[Enormous rat]]
+|{{brown|r}}
+|7
+|Larger, stronger, and faster than a [[giant rat]], which can grow up into these if given the chance. Spawns in small groups.
+|-
+|[[Rodent of unusual size]]
+|{{brown|r}}
+|9
+|Stronger than an enormous rat, which can grow up into these. Does not spawn in groups.
+|-
+|[[Honey badger]]
+|{{black|r}}
+|12
+|A fearless, nasty rodent that loves to eat the lumps of [[royal jelly]] found in a [[beehive]]. Can tunnel through rock, and has a significant bite and claw attack. [[Killer bees]] are its natural enemy. Can spawn randomly, but any level generated with a beehive has a good chance of spawning 1d4 honey badgers. Incentive to get to that beehive before they do.
+|-
+|[[Jumping spider]]
+|{{cyan|s}}
+|5
+|Slightly stronger than a [[cave spider]] and has a poisonous bite. Spawns in small groups. Can jump at the player from a small distance.
+|-
+|[[Giant centipede]]
+|{{orange|s}}
+|20
+|A truly nasty monster, giant centipedes are larger than humanoids and are very fast. They have a serious venomous bite, and can wrap themselves around the player to prevent escape.
+|-
+|[[Lesser nightmare]]
+|{{green|u}}
+|5
+|An evil type of horse that is the starting default steed for the 'Dark Knight' player role, and is roughly equivalent to a [[pony]] that a regular [[Knight]] starts with, other than its poisonous bite. Can grow up into a [[Nightmare]].
+|-
+|[[Nightmare]]
+|{{green|u}}
+|8
+|A slightly stronger version of the Lesser nightmare, and is roughly on par with a [[horse]] in terms of hit points and speed. Can grow up into a [[Cauchemar]].
+|-
+|[[Cauchemar]]
+|{{green|u}}
+|10
+|The strongest of the [[Nightmare]]s, and is roughly the same in hit points and speed as a [[warhorse]].
+|-
+|[[Pegasus]]
+|{{white|u}}
+|20
+|Not flagged as a unique monster, but there is only one (or possibly two) in existence, and can only be found in the [[Ice Queen's Realm]]. Pegasi are strong horse-like creatures that have huge wings and can fly. Has two strong kick attacks and a nasty bite. Can be tamed and ridden.
+|-
+|[[Pale horse]]
+|{{gray|u}}
+|21
+|Unique monster, and is the steed ridden by [[Riders#Death|Death]]. Powerful in its own right, as are all of the Riders' steeds. Has a level-draining bite attack along with multiple kicking attacks. Is the only [[undead]] steed, as no living creature could endure such proximity to [[Death]] for any period of time and live.
+|-
+|[[White horse]]
+|{{white|u}}
+|21
+|Unique monster, and is the steed ridden by [[Pestilence]]. Has an armor disenchanting bite attack, along with multiple kicking attacks.
+|-
+|[[Black horse]]
+|{{black|u}}
+|21
+|Unique monster, and is the steed ridden by [[Famine]]. Has a slow-inducing bite attack, along with multiple kicking attacks.
+|-
+|[[Red horse]]
+|{{red|u}}
+|32
+|Unique monster, and is the steed granted to the player once they enter the [[Astral Plane]] (in lieu of an [[Angel]] minion) if their [[alignment record]] is of sufficient level (fervently aligned or greater). The player is War, one of the four [[Riders]], hence the red horse. The red horse is stronger than the steeds that the Riders employ, and has a decent chance of surviving along with the player if it's taken care of. Has a fire-based bite attack, along with multiple kicking attacks. Spawns with a blessed saddle.
+|-
+|[[Giant leech]]
+|{{black|w}}
+|8
+|Giant leeches are only found in raw sewage, and prefer to hide in pools of sewage if available. They can hide in raw sewage and sneak-attack unsuspecting players that get too close. Their bite causes them to stick to you, but because of their size, a player with a giant leech latched onto them may find it difficult to get away.
+|-
+|[[Archangel]]
+|{{brightcyan|A}}
+|25
+|About as strong as an [[Archon]], and are only found on the [[Astral Plane]]. Can cast clerical-based spells and can grab the player, not allowing them to escape. Cannot be tamed nor genocided.
+|-
+|[[Eldritch Ki-rin]]
+|{{black|A}}
+|21
+|An eldritch [[ki-rin]] is one that started its celestial life as a normal lawful ki-rin, and at some point lost its way and started following a path of darkness. In nearly all aspects, they are identical to their lawful brethren. The differences are that their alignment is strongly chaotic, they have unrestricted access to the dungeons (they can appear in Gehennom), and their appearance is extremely dark. Cannot be genocided, and cannot be tamed by lawful [[knight]]s, but are excellent steeds for chaotic knights.
+|-
+|[[Shimmering dragon]]
+|{{cyan|D}}
+|20
+|A shimmering dragon has a natural [[displacement]] intrinsic (which its scales can confer if worn), and has a breath attack the same as a [[gray dragon]]. The baby form of this dragon also exists.
+|-
+|[[Gold dragon]]
+|{{yellow|D}}
+|20
+|A gold dragon is much like a [[red dragon]] with a fire-based breath attack and is fire resistant. But it is also resistant to sickness-inducing attacks, and its scales confer sickness resistance to the player when worn. Its scales also light up when worn. The baby form of this dragon also exists.
+|-
+|[[Sea dragon]]
+|{{brightblue|D}}
+|20
+|A sea dragon is made primarily of water &ndash; its breath attack is a torrent of water that slams into its target, inflicting physical damage. Sea dragons are drawn to water and prefer to be in it rather than be on land. They are the only dragon that cannot fly, but they are also the only dragon that can swim and breathe underwater. Their engulfing attack can drown the player if they do not have a means of not requiring to breathe. Hitting it with unprotected iron weapons can cause those weapons to rust. Its scales confer magical breathing and the ability to swim. The baby form of this dragon also exists.
+|-
+|[[Fell beast]]
+|{{magenta|D}}
+|16
+|Like a dragon, but isn't one. The fell beast is the steed of the [[Nazgul]]. Has a fairly strong claw and bite attack. Cannot be tamed nor genocided.
+|-
+|[[Pseudodragon]]
+|{{brown|D}}
+|4
+|The new starting pet for the [[wizard]] player role. Is fast, can fly, and has a poison stinger at the end of its tail. Can grow up into an elder pseudodragon. Does not spawn randomly &ndash; the only way to obtain one is to either start with one as a [[wizard]], cast [[create familiar]] spell, or to find one on a bones level that was the pet of a deceased player.
+|-
+|[[Elder pseudodragon]]
+|{{brown|D}}
+|6
+|Slightly stronger version of the pseudodragon. Can grow up into an ancient pseudodragon.
+|-
+|[[Ancient pseudodragon]]
+|{{brown|D}}
+|8
+|The strongest of the pseudodragons, and is grown up sufficiently that it can be ridden as a steed.
+|-
+|[[Gray Fungus]]
+|{{gray|F}}
+|5
+|Nasty addition to the fungus-class of creatures. Only has a passive attack, but this attack can make the player terminally [[ill]].
+|-
+|[[Hill giant shaman]]
+|{{brightblue|H}}
+|10
+|The hill giant shaman is considered a mid-level spellcaster, and can cast from the pool of clerical-based monster spells.
+|-
+|[[Elder minotaur]]
+|{{black|H}}
+|29
+|A much stronger and harder hitting version of the [[minotaur]], only found in [[Gehennom]]. Along with the typical claw and headbutting attacks which can do serious amounts of damage, it can also grab the player and crush them, preventing escape. Cannot be tamed.
+|-
+|[[Snark]]
+|{{white|J}}
+|15
+|Weaker than a [[jabberwock]] and skittish. Is disintegration resistant, and its corpse can confer disintegration resistance when eaten. Cannot be genocided. One percent of snarks will turn into a boojum when attacked.
+|-
+|[[Boojum]]
+|{{yellow|J}}
+|21
+|Stronger and faster than a [[jabberwock]] and can do more damage per attack. Very rare, only appears when a snark is attacked, and it has the same intrinsic properties. One of its attacks can teleport the player across the map much like a [[quantum mechanic]].
+|-
+|[[Vorpal jabberwock]]
+|{{magenta|J}}
+|26
+|Strongest and most deadly of the [[jabberwock]] class of creatures, each of its claw attacks has a small chance of beheading its target if said target has a head. Can be killed in one hit with [[Vorpal Blade]]. Cannot be genocided.
+|-
+|[[Hobbit mummy]]
+|{{green|M}}
+|6
+|The [[hobbit]] player race exists, so hobbit mummies do also. Same characteristics as any other [[mummy]].
+|-
+|[[Giant anaconda]]
+|{{brightgreen|S}}
+|13
+|The largest and strongest of the [[snake]] family of creatures, it can grab onto the player and also engulf them with a digesting attack.
+|-
+|[[Shambling horror]]
+|{{brightcyan|U}}
+|15
+|This bizarre monster will always be something different from game to game. Its monster abilities, hit points, speed and other characteristics change every game and it's never the same monster twice. You may get lucky and encounter a very weak shambling horror, or have a game where they are incredibly powerful and would give any demon lord or prince a run for its money... or anything in between. Cannot be genocided.
+|-
+|[[Vampire mage]]
+|{{brightblue|V}}
+|26
+|One of the most powerful [[undead]] monsters in the game, the vampire mage enjoys all of the same attacks and abilities as a regular [[vampire]], but also has powerful magic at its disposal. These can make for powerful pets if you can overcome its natural [[magic resistance (monster)|magic resistance]] and keep it tame.
+|-
+|[[Baby owlbear]]
+|{{orange|Y}}
+|4
+|Since adult [[Owlbear]]s can lay eggs, baby owlbears naturally hatch from them. Baby owlbears do not have the crushing attack that their full grown counterparts have, but can be cause for concern if encountered in groups.
+|-
+|[[The Abominable Snowman]]
+|{{brightcyan|Y}}
+|27
+|A unique, powerful monster that guards the ice bridge in the [[Ice Queen's Realm]]. Has a devastating bite and dual-claw attack, and can pickup and throw boulders. It can also walk over water and freeze it underfoot, turning any pool into ice. Cannot be tamed or genocided.
+|-
+|[[Hobbit zombie]]
+|{{green|Z}}
+|3
+|Just like hobbit mummies, hobbit zombies exist because the [[hobbit]] is a playable race. Has the same characteristics as any other [[zombie]] found in EvilHack.
+|-
+|[[Revenant]]
+|{{brightblue|Z}}
+|15
+|The strongest of the S_ZOMBIE class of monsters, and will only spawn in the [[Ice Queen's Realm]]. Revenants are not true zombies - instead of infecting their target and making them ill, they can paralyze their prey with fear with a single touch. If a player is killed by any type of [[lich]], they will arise as a revenant.
+|-
+|[[Snow golem]]
+|{{brightcyan|'}}
+|25
+|Only found in the [[Ice Queen's Realm]]. Slow but strong and extremely hard-hitting. Can walk over open water and freeze it underfoot, turning it into ice.
+|-
+|[[Elven wizard]]
+|{{brightblue|@}}
+|11
+|Elven wizards are considered a mid-level spellcaster and can cast from the pool of wizard-based monster spells. They also have a ranged magic missile attack.
+|-
+|[[Charon]]
+|{{white|@}}
+|38
+|Unique humanoid - Charon stands right outside the entrance to [[Cerberus]]'s lair. Spawns peaceful, and can be chatted to for hints. Cannot be tamed or genocided.
+|-
+|[[The Rat King]]
+|{{black|@}}
+|14
+|The Rat King is a unique monster that is only found in a specific Mines' End level known as 'The Sewers of Waterdeep'. The Rat King is much like a [[wererat]] except that it never changes form and keeps its human appearance. It will attack with weapons, its bite can cause [[lycanthropy]], and it can also summon various rats if needed. Not an opponent to take lightly.
+|-
+|[[Kathryn the Ice Queen]]
+|{{brightcyan|@}}
+|36
+|Kathryn the Ice Queen is the boss monster found at the end of the [[Ice Queen's Realm]]. She is guarded by [[Bourbon]] and [[Ozzy]], who will become hostile and protect her if she is attacked. Kathryn the Ice Queen cannot actually be killed, but can be defeated. Upon defeat, she transforms into [[Kathryn the Enchantress]], who is peaceful and much more powerful. The Ice Queen has ascension-level gear, and has the full range of monster spells to cast at her disposal (some of these being geared towards cold-based attacks). Cannot be tamed or genocided.
+|-
+|[[Kathryn the Enchantress]]
+|{{yellow|@}}
+|104
+|If [[Kathryn the Ice Queen]] is defeated, the evil curse on her is lifted and she transforms into Kathryn the Enchantress. In this new form she is peaceful and makes her companions [[Bourbon]] and [[Ozzy]] peaceful as well. However, she is an order of magnitude more powerful than her ice queen form, and cannot be killed or even defeated.
+|-
+|[[Spectre]]
+|{{brightblue|&nbsp;}}
+|13
+|A more powerful form of [[ghost]], the spectre can always be found in [[Gehennom]]. They can use weapons and other gear that the player can use. If the player is killed by a spectre, or if the player dies and is of a high enough level (experience level greater than 21) and leaves bones, if they would have normally arisen as a [[ghost]], they will instead arise as a spectre.
+|-
+|[[Lava demon]]
+|{{orange|&}}
+|15
+|A new type of demon introduced with the addition of the [[Convict]] patch. Lava demons can be encountered during the convict quest, in [[Gehennom]], and can also be summoned via dipping objects into a forge.
+|-
+|[[Mind flayer larva]]
+|{{brightmagenta|;}}
+|8
+|Mind flayer larva are only ever found in mind flayer nurseries, on or after dungeon level 20. Relatively weak, they exist in shallow pools of water and will not venture from them. They have one attack, which is to attempt to attach itself to the player's face. If successful, the player has only one turn to kill or remove the mind flayer larva from its face. If not removed in time, the mind flayer larva burrows itself into the player's brain, killing them instantly. Players that die in this way will arise as a mind flayer (this is how mind flayer's enter into their adult form).  
+|-
+|[[Giant turtle]]
+|{{brightgreen|:}}
+|8
+|Very tough and hard to hit due to its protective shell, but also very slow. Has a moderately powerful bite attack.
+|-
+|[[Frost salamander]]
+|{{brightblue|:}}
+|13
+|Slightly stronger than their [[salamander]] counterparts, frost salamanders are only found in the [[Ice Queen's Realm]]. They prefer ice over any other terrain, can use weapons and have a cold-based touch and hug attack.
+|-
+|}
+
+=== Changes to existing monsters ===
+* The [[zombie]] &ndash; probably the most significant monster change in EvilHack and one of the key changes that makes this variant so difficult. Zombies now have two different attack types, one being a poisonous claw attack (effects and frequency are the same as a bite from a [[rabid rat]]), the other being a disease-inducing bite attack to the head. The latter is a very serious threat, as the ability to cure oneself from being terminally [[ill]] are almost non-existent in the early game. If the player becomes ill from a zombie bite, they only have a few turns to cure themselves, or they will die and turn into a zombie. This zombie can be encountered by other players if a bones file is generated. There is a very small chance that the player will be able to continue playing if they are turned into a zombie; however, they will be stuck in that form for the remainder of the game. A zombie's bite attack also has a chance of causing [[amnesia]]. Eating a zombie corpse will make the player ill and cause them to start turning into a zombie (tins of zombie meat 'cure' the meat and make it safe to eat). Attacking zombies at range and wearing a piece of armor that protects your head are highly recommended. Zombies can make other monsters terminally ill as well - the same methods used by the player to cure themselves of a terminal illness can be used/applied on monsters or pets also - intelligent monsters will seek out these items and use them if necessary.
+* Various overall changes &ndash; monster hit point generation is now determined by their size as well as what level they are. They also have the same armor class damage reduction that players enjoy. Intelligent monsters can use many more items against the player or for their own benefit, including stashing objects into bags and taking them back out, making a wish (either from the wand, or from a [[djinni]] appearing from a used smoky potion), activating any figurines it may have, unlocking and looting locked containers, wearing most rings, scrolls of remove curse to uncurse items in its inventory, scrolls of charging to recharge wands in its possession, and utilizing powerful wands against the player (polymorph and cancellation).
+* The [[Wizard of Yendor]] can use any artifact weapons or armor that he steals against the player.
+* [[Player monsters]] are now technically their own class of monster and are separate from how the actual player is defined in src/monst.c, and were purposely left out of the new monsters table as it would unnecessarily inflate that list. Player monsters differ here from vanilla NetHack in that they can spawn outside of the [[Astral Plane]], are yellow in color, and are kitted out in player-like gear starting at level 10, and then can be kitted out with ascension-level gear starting at level 20 &ndash; their hit dice and difficulty level roughly matches that of the actual player (this is based off of what experience level the actual player is when the player monster spawns). Their abilities closely match their role as well (wizards and priests can cast spells, rogues can steal items from inventory, etc). Player monster Knights spawn riding either a [[horse]] or a [[warhorse]]. [[Player monsters]] in EvilHack covet the [[Amulet of Yendor]] and will attempt to steal it, and if they steal it while on the [[Astral Plane]], will attempt to sacrifice it themselves. As you can imagine, if that happens, it is a game-ending event.
+* Unique demons (demon lords and princes) have their own special levels (randomly selected) in [[Gehennom]]; some will be encountered by the player at some point during their descent to the bottom. Many have all also been given the ability to cast clerical-type spells in addition to their regular attacks.
+* Unique demons now ask for a significantly greater amount of gold when attempting to bribe the player for safe passage.
+* Along with the group of vanilla NetHack creatures that are immune to magical [[scaring]], all quest leaders and nemesis, all demon lords and princes, player monsters, archangels and honey badgers are also immune to magical scaring.
+* The [[Riders]] have had their hit points increased significantly, and each Rider has its own steed which it rides, each with unique attacks and abilities.
+* Players can do battle with their [[quest leader]] if they turn hostile, and if they defeat their quest leader, it unlocks their quest and they can still finish it. Consequently, angering your quest leader or being banished from the quest is no longer a game-ending event.
+* [[Vlad the Impaler]] can cast wizard-based monster spells, and wields the artifact weapon [[Lifestealer]].
+* [[Medusa]] has been enhanced significantly, and is no longer an easy kill. Medusa's hit points and level have been increased, and she spawns wielding an enchanted orcish bow with a quiver full of enchanted and poisoned orcish arrows. The snakes on her head can attack (poisonous bite) and her own bite causes slow-stoning. Her gaze is still of the instant petrification type. Having reflection is no longer a guaranteed kill, as Medusa will shield her eyes from her own reflection 92% of the time. If the player is too far away (three or more spaces) from Medusa, her reflected gaze is too far away for her to notice and will not have any effect on her.
+* [[Juiblex]] has been enhanced, and has many more acid-based attacks at its disposal.
+* Stoning &ndash; monsters being stoned is a slow-stoning process, just as it is for the player.
+* The [[Yendorian army]] is now significantly changed, as there are now various races among the soldier, sergeant, lieutenant and captain ranks. It is not uncommon to see either human, elven, dwarvish, gnomish, orcish, hobbit, giant or centaurian races across all ranks, outfitted with appropriate gear given their race and size. The hit dice and difficulty rating for each rank is basically the same, regardless of race. As with player monsters, listing every single new rank and race of the Yendorian army would unnecessarily inflate the new monster list and was purposely left out.
+* All of the 'lord' and 'king' monsters that exist (dwarves, kobolds, gnomes, ogres, vampires, and elves) now have 'lady' and 'queen' counterparts. Their stats are the same, just that their title and gender have changed. To include all of these on the new monsters list would have been counter-productive and was left out on purpose. Vampire kings and queens have also been created &ndash; each are slightly stronger versions of their Vampire lord/lady counterparts, but are not as powerful as [[Vampire mage]]s.
+* [[Dragons]] have been significantly enhanced &ndash; they spawn with much more hit points (especially in the end game), can engulf creatures smaller than it and digest them, and their scales have some form of a secondary passive attack (which is passed on to the scales they drop upon death). Overall, they are now a much more worthy opponent befitting their status and are not to be taken for granted.
+* All [[elemental]] monsters can engulf creatures smaller than it &ndash; the fire elemental engulfing attack is fire-based, the earth elemental engulfing attack is much the same as an air elemental, and the water elemental engulfing attack can choke the player if they do not have a means of breathing underwater.
+* The [[gelatinous cube]] and [[green slime]] now have engulfing attacks &ndash; the green slime engulfing attack is the same as its touch attack ([[sliming]]), whereas the gelatinous cube engulfing attack is a modified version of the giant eel wrap attack. It will strangle the player unless they have a means of magical breathing, and not much time is afforded the player to escape before they die of suffocation. Since the gelatinous cube also has a paralyzing attack, this makes them a very fearsome monster and they should be avoided if at all possible.
+* Lichens now have a weak attack that does little damage but can slow its target down.
+* Leprechauns will steal not just gold pieces, but anything made of gold from the players inventory.
+* Tame vampire types will not revert back into their animal form.
+* All orcs are immune to poison, just like the orc player race.
+* Shape-changing monsters (except for vampires and were-creatures) will revert back to their original form when their polymorphed form dies. They cannot change form again once this happens.
+* Wargs can now be ridden by player orcs, and subsequently can only be tamed by the same.
+* The [[Elvenking]] has been renamed to 'Elven King'.
+* Color changes &ndash; the [[Wizard of Yendor]], mind flayers, and master mind flayers have had their color changed to bright magenta so as to make it possible to differentiate them from other monsters that they used to share the same color (magenta) with. Tigers are now orange, as they should have been from the get-go.
+* [[Mumakil]] and [[mastodon]]s, along with the woolly mammoth, can attack with their trunks, grabbing onto and crushing their target. Mumakil have also had their difficultly level increased to make it more in-line with the damage it delivers.
+* [[Salamander]]s can grab onto the player and pull them into [[lava]] if it is currently in a pool of lava.
+* [[Ghost]]s are more of a threat, as all incorporeal monsters can only be hit with blessed objects, or objects made of silver or bone. They can also turn invisible and back again, scaring the player and making them immobile for a brief period of time.
+
+=== Monster spells ===
+A few new monster spells have been added to EvilHack, and some existing spells have been tweaked or changed. The order listed here is the same as they are listed in src/mcastu.c, typically strongest to weakest.
+
+{|class="prettytable sortable"
+!Spell
+!Type
+!Status
+!Notes
+|-
+|[[Touch of death]]
+|Mage
+|existing
+|Vanilla NetHack behavior &ndash; no [[magic resistance]], you're dead. With MR, nothing happens. In EvilHack, if you have MR you'll take damage (8d6) and your maximum hit point level can be reduced slightly. Having MR and [[half spell damage]] together can reduce those effects even more.
+|-
+|[[Cancellation]]
+|Mage
+|new
+|Acts just like having a [[wand of cancellation]] zapped at the player. The spellcasting monster must be lined up with the player before it can cast this spell.
+|-
+|[[Acid blast]]
+|Mage
+|new
+|A powerful area of effect spell, does acid damage to its target. The damage output is dependent on the level of the monster casting it. The acid from this spell also has a chance of eroding any unprotected weapons or armor in open inventory.
+|-
+|[[Destroy armor (monster spell)|Destroy armor]]
+|Mage
+|existing
+|Vanilla NetHack behavior &ndash; if the player didn't have magic resistance, one piece of armor would be completely destroyed. In EvilHack, this spell isn't as direct, but is more insidious, and having magic resistance is no longer full protection against this spell. Any piece of armor being worn can have its [[fixed]] status removed, and then can be deteriorated to the point that it's completely destroyed. Even armor that is normally [[erodeproof]] (dragonhide and dragon scales, mithril, etc) is affected. Having MR keeps the erosion level at one per cast, otherwise the erosion level is of one to three levels per cast. The counterbalance to this spell is the player spell [[Repair Armor]]. Blessed pieces of armor have a small chance of resisting. Armor-based quest artifacts are immune to this spell, as is crystal plate mail.
+|-
+|[[Fire bolt]]
+|Mage
+|new
+|A small area of effect spell, this spell explodes a small fireball upon its target. Any flammable objects in open inventory are subject to being burned. This is a low-level spell, so access to this spell is given to every monster spellcaster that has access to mage-based spells.
+|-
+|[[Ice bolt]]
+|Mage
+|new
+|A small area of effect spell, this spell explodes a small ice storm upon its target. Any non-protected objects in open inventory are subject to being frozen. This is a low-level spell, so access to this spell is given to every monster spellcaster that has access to mage-based spells.
+|-
+|[[Summon minion]]
+|Clerical
+|new
+|Allows the monster spellcaster to summon a type of [[minion]] based on its alignment. Demons that can cast clerical-based spells are not given access to this spell as they already have the ability to gate in other demons.
+|-
+|[[Geyser]]
+|Clerical
+|existing
+|A powerful spell that causes a large geyser of water to slam into its target, causing physical damage (8d6). What's new to this spell vs vanilla NetHack is that it can now rust any unprotected worn armor.
+|-
+|[[Vulnerability]]
+|Clerical
+|new
+|The target of this spell temporarily becomes vulnerable to either fire, cold, shock or acid-based attacks, dropping its resistance (if any exists) by 50%.
+|-
+|[[Reflection (monster spell)|Reflection]]
+|Mage
+|new
+|A spell that creates a shimmering globe around the caster, granting them reflection for several turns.
+|}
+
+The [[cure self]] monster spell has not been altered, but some logic was introduced that makes this spell a priority if the spellcasting monster's hit points drop to a life-threatening level.
+
+[[Stone to flesh (monster spell)|Stone to flesh]] is an ability that  functions similarly to the [[stone to flesh]] spell for players, but works differently from other monster spells.<br>Any spellcasting monster of level 5 or higher can use this ability if they are not immobilized, with a random cooldown that can reach up to 7 turns; stoning is revamped so that it affects monsters gradually as it does you, and requires 5 turns to turn a monster completely to stone. This makes defeating particular bosses via stoning much more difficult, but not impossible.
+
+<hr>
+
+{{featured}}<!--{{variant-37x}}-->
+[[Category:EvilHack]]
+[[Category:Variants]]}
+&&%s&& %s Autodescribe {125590 2019-03-23T10:35:54Z {630 Paxed} #REDIRECT [[options#autodescribe]] #REDIRECT [[options#autodescribe]]}
+&&%s&& %s Template talk:Reffunc {125615 2019-03-26T15:51:38Z {4000894 Winny} /* Should all uses of this template use version= ? */ new section == Should all uses of this template use version= ? ==
+
+It seems quite a few pages use the unversioned reffunc: should we aim to add version to all of these occurrences (except for example usage on the template page)? &mdash; [[User:Winny|Winny]] ([[User talk:Winny|talk]]) 15:51, 26 March 2019 (UTC)}
+&&%s&& %s DNetHack SLEX {125625 2019-03-28T09:35:20Z {4000452 Bluescreenofdeath} Redirected page to [[DNHslex]] #REDIRECT [[DNHslex]]}
+&&%s&& %s NetHack 3.6.1/dat/history {125699 2019-04-10T08:31:17Z {4001290 Lysdexia} Lysdexia moved page [[NetHack 3.6.1/dat/history]] to [[Source:NetHack 3.6.1/dat/history]] #REDIRECT [[Source:NetHack 3.6.1/dat/history]]}
+&&%s&& %s NetHack 3.6.0/dat/history {125701 2019-04-10T08:31:59Z {4001290 Lysdexia} Lysdexia moved page [[NetHack 3.6.0/dat/history]] to [[Source:NetHack 3.6.0/dat/history]] #REDIRECT [[Source:NetHack 3.6.0/dat/history]]}
+&&%s&& %s Equine {142106 2021-08-18T14:10:13Z {4001523 Hieristmiah} Changed redirect target from [[Unicorn or horse]] to [[U]] #REDIRECT [[U]]}
+&&%s&& %s Equines {142107 2021-08-18T14:10:30Z {4001523 Hieristmiah} Changed redirect target from [[Unicorn or horse]] to [[U]] #REDIRECT [[U]]}
+&&%s&& %s Template talk:Monclassname {125781 2019-04-25T15:31:51Z {4000681 Andrio Celos} Created page with "=Plural monster class name?=  Would it be worth introducing another template that will give the plural name for a specified class? For example, <code><nowiki>{{monclassp|@}}</..." =Plural monster class name?=
+
+Would it be worth introducing another template that will give the plural name for a specified class? For example, <code><nowiki>{{monclassp|@}}</nowiki></code> could return {{white|@}} [[Human or elf|humans and elves]]. This is an example where <code><nowiki>{{monclass|@}}s</nowiki></code> isn't good enough.  - [[User:Andrio Celos|Andrio Celos]] ([[User talk:Andrio Celos|talk]]) 15:31, 25 April 2019 (UTC)}
+&&%s&& %s Master kaen {125804 2019-04-27T11:19:18Z {4000782 Nethacker} Redirected page to [[Master Kaen]] #REDIRECT [[Master_Kaen]]}
+&&%s&& %s Flimsy {135510 2020-08-06T04:24:57Z {4001313 Ardub23} 'helmet' → 'helm' '''Flimsy''' or soft items are all items [[Material|made of]] [[liquid]], [[wax]], [[veggy]], [[flesh]], [[paper]], [[cloth]] or [[leather]] in addition to [[rubber hose]]s.{{refsrc|include/obj.h|336|version=NetHack 3.6.1}}
+
+A flimsy [[helm]] can be worn by a monster with [[Body parts#Horns|horns]], as long as the monster is not [[tiny]] and has [[hands]];{{refsrc|src/do_wear.c|1663|version=NetHack 3.6.1}} the horns will pierce through the helm, which does not [[Deferred features|currently]] affect its function.{{refsrc|src/polyself.c|920|version=NetHack 3.6.1}} A non-flimsy helm will be pushed off your head if you [[Polyself|polymorph]] into a form with horns, even if it is [[cursed]], as will any helm that you have not yet finished putting on.
+
+Flimsy objects will not scratch a [[Gray stone|stone]]; rubbing them together will create streaks on the stone instead of scratches.{{refsrc|src/apply.c|2423|version=NetHack 3.6.1}}
+
+A flimsy [[weapon]] cannot be [[shatter]]ed by an attack with a two-handed weapon.{{refsrc|src/uhitm.c|791|version=NetHack 3.6.1}}
+
+==References==
+<references />
+
+[[Category:Materials]]
+{{nethack-361}}}
+&&%s&& %s Bars {125852 2019-05-10T17:38:36Z {4001293 Fweep} Redirected page to [[Iron bars]] #REDIRECT [[Iron bars]]}
+&&%s&& %s 3.6.2 {125853 2019-05-10T18:35:25Z {4001293 Fweep} Redirected page to [[NetHack 3.6.2]] #REDIRECT [[NetHack 3.6.2]]}
+&&%s&& %s DNethack SLEX {125898 2019-05-19T14:03:30Z {91 Bhaak} Redirection for DNethack SLEX #REDIRECT [[DNHslex]]}
+&&%s&& %s Law quest (dNethack) {125968 2019-05-26T15:20:43Z {4000354 Chris} Create page with maps and brief descriptions, but mark it as a stub because it's not up to date and generally rough around the edges. ==Branch Level==
+The level of the main dungeon containing the portal to the Lawful Quest will have the following layout:
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+                          -----    -----    -----                           
+ -----   -----   -----    -...-    -...-    -...-    -----   -----   -----  
+ -...-   -...-   -...-  ##.....####.....####.....##  -...-   -...-   -...-  
+ -....###.....###.....### -...-    -...-    -...- ###.....###.....###....-  
+ -...-   -...-   -...- H  ---S-    -----    -S---  H -...-   -...-   -...-  
+ --.--   -S---   ----- #     #   #########   #     # -----   ---S-   --.--  
+  ##    ###            #     #H###---S---###H#     #            ###    #    
+  #    ##      .....    #    #   --.....--   #    #    .....      ##   #    
+--.-- ##      .-----.   #   #    -.-----.-    #   #   .-----.      ## -.--- 
+-...S##       .-...-.   #   #    -.-...-.-    #   #   .-...-.       ##S...- 
+-...| HH#####H.-.^.-.   #   #    -.-.^.-.-    #   #   .-.^.-.H#####HH |...- 
+-...S##       .-...-.   #   #    -.-...-.-    #   #   .-...-.       ##S...- 
+--.-- ##      .-----.   #   #    -.-----.-    #   #   .-----.      ## -.--- 
+  #    ##      .....    #    #   --.....--   #    #    .....      ##   #    
+  ##    ###            #     #H###---S---###H#     #            ###    #    
+ --.--   -S---   ----- #     #   #########   #     # -----   ---S-   --.--  
+ -...-   -...-   -...- H  ---S-    -----    -S---  H -...-   -...-   -...-  
+ -....###.....###.....### -...-    -...-    -...- ###.....###.....###....-  
+ -...-   -...-   -...-  ##.....####.....####.....##  -...-   -...-   -...-  
+ -----   -----   -----    -...-    -...-    -...-    -----   -----   -----  
+                          -----    -----    -----                           
+</replacecharsblock></div>
+The [[magic portal]] to the quest branch will be located at one of the three marked spaces in the interior. The stairs up and down will be located in two of the outer rooms.
+
+On generation, the level will contain two of each rank of [[auton]].
+
+== The Paths of Law ==
+
+On passing through the magic portal, the [[hero]] will arrive at the Paths of Law, the first section of the Lawful Quest. 
+
+The Paths of Law has three levels. Each one is a randomly generated combination maze/cavern level. The stairs up to the next level are always in the center, but the portal arrival point on the first level and the stairs on the following levels can be located anywhere on the level.
+
+The stairway up from the last level of the Paths of Law leads to the Dungeon of Ill-Regard.
+
+== The Library of Law and the Dungeon of Ill-Regard ==
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+?=[[User:Chris/dNetHack/Items#Gold scroll of law|{{yellow|?}}]]
+e=[[Auton#Axus|{{magenta|e}}]]
+
+----------------------------------------------------------------------------
+---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.----
+---F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F----
+-.F.....................................................................F.--
+---.???????????????????????????????.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.----
+-.F.................................?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.F.--  
+---.???????????????????????????????.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.----
+-.F.................................?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.F.--
+---.???????????????????????????????.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.----
+-.F.....................................................................F.--
+---.???????????????????????????????<e.?????????????????????????????????.----
+-.F.....................................................................F.--
+---.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?????????????????????????????????.----
+-.F.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?...................................F.--
+---.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?????????????????????????????????.----
+-.F.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?...................................F.--
+---.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?.?????????????????????????????????.----
+-.F.....................................................................F.--
+---F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F----
+---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.----
+----------------------------------------------------------------------------
+</replacecharsblock></div>
+
+Each of the niches has a different chaotic monster in it, including some [[covetous]] creatures, which will not be able to warp to the hero's location. 
+
+[[Auton#Axus|Axus]], overlord of the autons and guardian of the First Key of Law, resides in the center of the level. Killing any [[auton]] on the level while Axus is alive will cause a new one to spawn beside him. Killing Axus will make all autons on the level, as well as all autons generated in the future, hostile. In addition to Axus, there are nine monotons, seven dutons, five tritons, two quatons, and two quinons, all randomly located on the level. Additional autons may spawn through random monster generation.
+
+Embedded in the interior walls are [[User:Chris/dNetHack/Items#Gold scroll of law|gold scrolls of law]], which can be dislodged by kicking or teleporting them. These are heavy (50 [[Weight|units]], equivalent to ten scrolls or a spellbook) but may be useful to well-aligned [[lawful]] players. In addition, there will be seven random [[scroll]]s on the level.
+
+There is a 10% probability of an artifact spellbook being generated at a random location. There may also be one or two random spellbooks, each with a 10% probability of being generated.
+
+As in the Paths of Law, the stairs up are located near the center, beside Axus, while the stairs down can be located anywhere along the perimeter of the level.
+
+The stairway up leads to the first level of Arcadia.
+
+== Arcadian Road ==
+
+The levels of the Arcadian Road are connected by [[magic portal]]s that are not initially visible, but are always located in the same (predictable) places.
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T...............................
+ T T T T T T T T T T T T T T T T T T T T T T T.............................^
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T...............................
+ T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+----------------------------------------------------------------------------
+</replacecharsblock></div>
+The large tree-filled area is [[Maze|maze-walked]], and the staircase down to the Dungeon is randomly placed somewhere on the level. The magic portal to the next level is located at the position marked. There are also eight [[soldier ant]]s, sixteen random [[a]], and eight random objects placed randomly on this level.
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+............................................................................
+.^.........................................................................^
+............................................................................
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+----------------------------------------------------------------------------
+</replacecharsblock></div>
+The large tree-filled areas are maze-walked, and the magic portals to the previous and next levels are marked. There are also eight [[soldier ant]]s, eight random [[a]], three [[soldier]]s, and one [[sergeant]], placed randomly. Four items are placed randomly around the level.
+
+== Harmonium Garrison ==
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[soldier|{{white|@}}]]
+##=[[drawbridge|{{brown|.}}{{brown|.}}]]
+
+------------------------------------------------------------------}}--------
+------------------------------------------------------------------}}--------
+T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.}}F@..-...
+ T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T }}---+--...

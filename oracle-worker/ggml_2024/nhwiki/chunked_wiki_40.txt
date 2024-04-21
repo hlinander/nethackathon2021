@@ -1,0 +1,1000 @@
+
+Intentionally blanking scrolls is often done by walking into a [[moat]] while carrying them - this is much more difficult if you have high [[Luck]], and care should be taken not to blank, dilute or rust any valuable items in your inventory at the same time.
+
+==History==
+The scroll of blank paper first appears in [[Hack 1.0]].
+
+==Messages==
+{{message|This scroll seems to be blank.|You "read" a scroll of blank paper.}}
+{{message|You can't write that! It's obscene!|You attempted to "write" a scroll of blank paper.}}
+
+==Variants==
+In variants that add a [[scroll of flood]] or [[scroll of water]], these scrolls cannot be made into blank paper by wetting them.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Scrolls|Blank paper]]}
+&&%s&& %s Lichen {148484 2022-10-05T00:48:09Z {4001279 Umbire the Phantom} de-SLEX {{monster
+ |difficulty=1
+ |level=0
+ |experience=4
+ |speed=1
+ |AC=9
+ |MR=0
+ |align=0
+ |frequency=4
+ |genocidable=Yes
+ |attacks=Touch [[sticky]]
+ |weight=20
+ |nutr=200
+ |size=Small
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A lichen|
+ |breathless=1|noeyes=1|nolimbs=1|nohead=1|=
+ |mindless=1|notake=1|hostile=1|neuter=1}}
+ |reference=[[monst.c#line1292]]
+}}
+
+A '''lichen''' is a [[fungus]]-based [[monster]] that appears in ''[[Nethack]]'', and is one of the easiest monsters to kill in the game. Their only attack is a [[sticky attack]] that holds the player in place briefly, but otherwise does no damage.
+
+A "[[master lichen]]" is one of the many [[hallucinatory monster|monsters]] that the player can see while [[hallucinating]].
+
+==Strategy==
+Lichen are extremely [[speed|slow]] and easily beaten even by beginning characters; however, their sticky attack does prevent you from attacking any other target except the lichen, which wastes that turn (''"You cannot escape from the lichen!"'') and forces you to focus on killing it first.
+
+Unlike most [[corpse]]s, lichen corpses never rot (though they do become old for the purposes of [[sacrifice]]), and can be carried indefinitely as normal [[comestible]]s which are always safe to [[eat]]. They provide 200 nutrition, but weigh the same as a [[food ration]], so they should ideally be eaten first to free up carrying capacity. Lichen corpses are also valid food choices for [[vegan]]s and vegetarians, and can be used to tame [[horse]]s.
+
+Dipping a lichen corpse into a [[potion of acid]] causes it to 'turn red around the edges', or orange if the potion is somehow diluted. This does not consume the potion.{{refsrc|src/potion.c|1949|version=NetHack 3.6.0}}
+
+==History==
+Lichen were added in [[NetHack 3.3.0]].
+
+[[NetHack 3.6.0]] added messages when a lichen corpse is dipped in acid.
+
+==Variants==
+The [[arch-lichen]] patch by Nodey for NetHack 3.4.3 allows the variant known as the arch-lichen (based off the [[arch-lich]]) to be patched into a game. 
+
+==Origin==
+{{wikipedia|Lichen}}{{wikipedia|Edible lichen}}
+Lichen are composite organisms that arise from algae or cyanobacteria living among filaments of multiple fungi species. They can occur in many environmental conditions, including several extreme ones, and can grow on almost any surface. They also have a history of being used in real life as food, hence their potential use as sources of long-term food in ''NetHack''. Real-life [[wikipedia:litmus|litmus]] tests use dyes extracted from lichens as a pH indicator, which is why lichen corpses in ''NetHack'' turn red when dipped into potions of acid.
+
+==Encyclopedia entry==
+{{encyclopedia|
+The chamber was of unhewn rock, round, as near as might
+be, eighteen or twenty feet across, and gay with rich
+variety of fern and moss and lichen.  The fern was in
+its winter still, or coiling for the spring-tide; but
+moss was in abundant life, some feathering, and some
+gobleted, and some with fringe of red to it.
+|[ Lorna Doone, by R.D. Blackmore ]
+}}
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Dagger {149670 2023-01-06T20:13:57Z {4001648 MrSurvivor1997} /* Strategy */ They are quite useful for forcing open boxes instead of risking breaking powerful weapons. A '''dagger''' is a versatile type of [[weapon]] that appears in ''[[NetHack]]''. They can be used either in [[melee]] or as a [[throw]]n [[projectile]]; they are typically cheap, plentiful, and more durable than [[arrow]]s, [[crossbow bolt]]s and [[dart]]s.
+
+Daggers are available in several kinds, each made of various [[material]]s (including [[silver]]) and dealing various amounts of damage.
+
+__TOC__
+{{clear}}
+
+==Types of dagger==
+
+===Dagger===
+{{weapon|name=dagger|tile=[[image:dagger.png]]|smalldmg=1d4|largedmg=1d3|tohit=<nowiki>+2</nowiki>|cost=4|weight=10|material=iron}}
+
+The ordinary dagger (appearance: "dagger") is the most common type (3.0% of randomly generated weapons), but there are others.  Daggers of this kind are made of [[iron]] and susceptible to [[erosion|corrosion]] from [[acid]]ic monsters and [[erosion|rusting]] from [[rust monster]]s and [[water]]. 
+
+{{clear}}
+
+===Orcish dagger===
+
+{{weapon|name=orcish dagger|tile=[[image:orcish dagger.png]]|appearance=crude dagger|smalldmg=1d3|largedmg=1d3|tohit=<nowiki>+2</nowiki>|cost=4|weight=10|material=iron|color=black|skill=dagger}}
+This dagger can be found on [[orc]]s (and in your starting inventory, if you're an orc). Its appearance as "crude dagger" is accurate (only d3 damage against small monsters instead of d4).
+
+Being made of iron, it is susceptible to [[erosion|corrosion]] from acidic monsters and [[erosion|rusting]] from rust monsters and water like an ordinary dagger.
+
+Orcish daggers constitute 1.2% of random weapon generation in the dungeon.
+{{clear}}
+
+===Elven dagger===
+
+{{weapon|name=elven dagger|tile=[[image:elven dagger.png]]|appearance=runed dagger|smalldmg=1d5|largedmg=1d3|tohit=<nowiki>+2</nowiki>|cost=4|weight=10|material=wood|color=brown|skill=dagger}}
+This dagger can be found on [[elves]] (and in your starting inventory, if you're an elf). It is superior to an ordinary dagger (d5 damage vs d4 against Small). It is also made of [[wood]], and therefore immune to corrosion and rusting. It can, however, become [[Erosion|burnt or rotted]], but this rarely happens in practice, since most sources of fire or rot damage don't affect weapons. [[Passive_attack#Fire|Passive fire attacks]] would be the most likely source.
+
+Naming an elven dagger "Sting" turns it into the artifact [[Sting]], if Sting does not yet exist.
+
+Elven daggers constitute 1.0% of randomly-generated weapons in the dungeon.
+{{clear}}
+
+===Silver dagger===
+
+{{weapon|name=silver dagger|tile=[[image:silver dagger.png]]|smalldmg=1d4+(1d20)|largedmg=1d3+(1d20)|tohit=<nowiki>+2</nowiki>|cost=40|weight=12|material=silver|color=gray|skill=dagger}}
+The silver dagger is a very rare item. It is normally equivalent to an ordinary dagger, but does an extra d20 damage against [[silver-hating]] creatures (e.g. [[werewolves]] and [[demons]]). As a result, a stack of highly enchanted silver daggers is among the deadliest weapons in [[Gehennom]]. Another benefit of the silver dagger compared to other daggers is that it is immune to all forms of [[erosion]].
+
+Silver daggers constitute 0.3% of randomly-generated weapons in the dungeon.
+
+====Average damage calculation of thrown silver daggers====
+The following average damage calculation shows the average amount of damage dealt ''per turn'' by throwing as many silver daggers as possible. We assume the player has [[expert skill]] in dagger, which gives a +2 damage bonus, and a [[multishot]] rate of 1d3 daggers. A blessed weapon deals 1d4 extra damage against [[demon]]s and [[undead]]. The worst case scenario is against a non-silver-hating, non-undead, non-demon large monster. The best case scenario is against a silver-hating undead/demon small monster.
+
+{|class="wikitable"
+!rowspan="2"|
+!colspan="2"|Weapon 
+|-
+!Uncursed silver dagger + 0
+!Blessed silver dagger +7
+|-
+!Against regular small monsters 
+|<math>\left(\frac{1+4}{2}+2\right)\times{\frac{1+3}{2}}=\bold{9}</math>
+|<math>\left(\frac{1+4}{2}+7+2\right)\times{\frac{1+3}{2}}=\bold{23}</math>
+|-
+!Against regular large monsters 
+|<math>\left(\frac{1+3}{2}+2\right)\times{\frac{1+3}{2}}=\bold{8}</math>
+|<math>\left(\frac{1+3}{2}+7+2\right)\times{\frac{1+3}{2}}=\bold{22}</math>
+|-
+!Worst case scenario 
+|<math>\left(\frac{1+3}{2}+2\right)\times{\frac{1+3}{2}}=\bold{8}</math>
+|<math>\left(\frac{1+3}{2}+7+2\right)\times{\frac{1+3}{2}}=\bold{22}</math>
+|-
+!Best case scenario
+|<math>\left(\frac{1+4}{2}+\frac{1+20}{2}+2\right)\times{\frac{1+3}{2}}=\bold{30}</math>
+|<math>\left(\frac{1+4}{2}+\frac{1+20}{2}+7+2+\frac{1+4}{2}\right)\times{\frac{1+3}{2}}=\bold{49}</math>
+|}
+
+==Dagger skill==
+
+{{dagger skill table}}
+
+The following weapons use the dagger skill:
+
+* dagger
+* elven dagger
+* orcish dagger
+* silver dagger
+* [[athame]]
+
+The following [[artifact weapon]]s use the dagger skill:
+
+* [[Grimtooth]] (orcish dagger)
+* [[Magicbane]] (athame)
+* [[Sting]] (elven dagger)
+
+==Generation==
+
+Daggers of all kinds make up 5.5% of randomly generated weapons in the dungeon.  As noted above, [[Racial equipment|racial]] daggers are commonly found on their respective racial monsters (elven daggers on [[elf (monster attribute)|elves]], orcish daggers on [[orc (monster class)|orcs]], including [[goblin]]s and [[hobgoblin]]s).  
+
+In addition, the following monsters may get some kind of dagger:
+* [[Hobbit]]s may start with an ordinary dagger (33%) or an elven dagger (33%).{{refsrc|src/makemon.c|302|version=NetHack 3.6.0}}
+* If a [[Dwarf#List of Dwarf monsters|dwarf]] does not start with a dwarvish short sword, mattock, axe, or dwarvish spear, there is a 33% chance that it will have a dagger.{{refsrc|src/makemon.c|336|version=NetHack 3.6.0}}
+* [[Soldier]]s in the [[Yendorian army]] have a 50% chance of getting a dagger if their primary weapon is a [[polearm]].{{refsrc|src/makemon.c|197|version=NetHack 3.6.0}}
+* In [[NetHack 3.6.0]], an orcish dagger may (with 25% chance) be the starting weapon for a [[Rogue (player monster)|rogue]] on the [[Astral Plane]].
+
+Several [[role]]s start the game with one or more daggers:
+* [[Valkyrie]]s get a +0 dagger.{{refsrc|src/u_init.c|153|version=NetHack 3.6.0}}
+* [[Ranger]]s get a +1 dagger (elven for [[Elf (starting race)|elves]], orcish for [[Orc (starting race)|orcs]]).{{refsrc|src/u_init.c|113|version=NetHack 3.6.0}}
+* [[Rogue]]s get a stack of +0 daggers (orcish for [[Orc (starting race)|orcs]]).{{refsrc|src/u_init.c|124|version=NetHack 3.6.0}}
+
+==Strategy==
+
+Daggers can be very useful in the early game, despite their weight and low base damage. A ranged volley denies monsters even the chance to swing at you, or at least softens them up before they can engage you. All classes except [[Monk]]s and [[Priest]]s can attain proficiency in dagger [[skill]] and may wish to do so, under the right circumstances.
+
+As daggers are very common, they are very useful for [[forcing]] open [[box]]es without risk of breaking a more powerful weapon, even a [[Barbarian]] may find it worth it to grab a dagger or two for both this and throwing.
+
+==[[SLASH'EM]]==
+
+SLASH'EM features two new types of dagger, as well as new dagger artifacts.
+
+===Dark elven dagger===
+
+{{weapon|name=dark elven dagger|tile=[[image:dark elven dagger.png]]|appearance=black runed dagger|smalldmg=1d5|largedmg=1d3|tohit=<nowiki>+2</nowiki>|cost=4|weight=10|material=wood|color=brown|skill=dagger}}
+This dagger is identical to an elven dagger, except in appearance.
+It may be generated in the inventory of [[drow]].
+{{clear}}
+
+===Great dagger===
+
+{{weapon|name=great dagger|tile=[[image:great dagger.png]]|appearance=great dagger|smalldmg=1d6|largedmg=1d7|tohit=<nowiki>+2</nowiki>|cost=500|weight=10|material=metal|color=black|skill=dagger}}
+This is the best non-artifact dagger in SLASH'EM. It deals 1d6 damage versus small enemies, and 1d7 versus large.
+It is never randomly generated.
+The only ways to obtain one are:
+* [[upgrading|upgrade]] a dark or normal elven dagger,
+* acquire the Necromancer quest artifact, [[The Great Dagger of Glaurgnaa]],
+* wish for one (although this is probably not worth it).
+WARNING: Great Daggers DO NOT STACK. '''This is by design.''' If you upgrade to a stack of Great Daggers, it will be stacked ONLY until they are thrown or dropped individually. After that, they will never stack again.
+{{clear}}
+
+===Artifact daggers in SLASH'EM===
+*[[The Great Dagger of Glaurgnaa]], the [[Necromancer]]'s quest artifact
+*[[Serpent's Tongue]], a chaotic artifact dagger that is the guaranteed first sacrifice gift for [[Necromancer]]s
+*SLASH'EM also introduces three non-dagger artifacts which use dagger skill: [[Deep Freeze]] and [[Firewall]], two new [[athame]]s, and [[The Stake of Van Helsing]], an artifact [[wooden stake]]
+
+===Dagger skill in SLASH'EM===
+All new roles in SLASH'EM can reach expert in dagger except the [[Yeoman]], who can reach skilled.
+{{Dagger skill table (SLASH'EM)}}
+
+==See also==
+
+* [[Athame]], a non-dagger which uses the dagger skill.
+* [[Grimtooth]], an artifact orcish dagger.
+* [[Sting]], an artifact elven dagger.
+* In SLASH'EM the [[Wooden stake]] uses the dagger skill and does 1d6 damage to both small and large targets.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+Is this a dagger which I see before me,
+The handle toward my hand? Come, let me clutch thee.
+I have thee not, and yet I see thee still.
+Art thou not, fatal vision, sensible
+To feeling as to sight? or art thou but
+A dagger of the mind, a false creation,
+Proceeding from the heat-oppressed brain?
+I see thee yet, in form as palpable
+As this which now I draw.
+|[ Macbeth, by William Shakespeare ]
+}}
+
+==References==
+<references/>
+[[Category:Weapons]]
+[[Category:Elven items|Dagger]]
+[[Category:Orcish items|Dagger]]
+{{nethack-360}}}
+&&%s&& %s Daggers {3311 2006-06-05T16:55:55Z {509 Lotte} [[Daggers]] moved to [[Dagger]]: plural to singular #REDIRECT [[Dagger]]}
+&&%s&& %s Tourist {146023 2022-05-20T16:45:14Z {4000251 Netzhack}  The '''Tourist''' is one of the [[role]]s in ''[[NetHack]]''. A Tourist has low starting [[HP]] and poor equipment, so playing one is quite the [[Role difficulty|challenge]] in the early levels, but they have the potential to become very powerful near the end of the game. Tourists always start as [[neutral]] [[Human (starting race)|humans]].
+
+The Tourist is inspired by [[Terry Pratchett]]'s ''[[wikipedia:Discworld|Discworld]]'' books; Twoflower, the tourist from these books, appears as the [[quest leader]] for the Tourist role.
+
+The [[guidebook]] has this to say about Tourists:
+ Tourists start out with lots of gold (suitable for shopping with), a credit card, lots of food, some maps, and an expensive camera. Most monsters don't like being photographed.
+
+==Starting equipment==
+* 1&ndash;1000 [[gold]] pieces
+* 21&ndash;40 +2 [[dart]]s
+* a +0 [[Hawaiian shirt]]
+* 10&ndash;20 random items of [[food]]
+* 4 [[Scroll of magic mapping|scrolls of magic mapping]]
+* 2 [[Potion of extra healing|potions of extra healing]]
+* an uncursed [[expensive camera]] with 30&ndash;99 charges
+* an uncursed [[credit card]]
+* 4% chance of a [[tin opener]]; otherwise:
+** 4% chance of a [[leash]]; otherwise:
+** 4% chance of a [[towel]]; otherwise:
+** 4% chance of an uncursed [[magic marker]]
+
+==Intrinsics==
+
+*XL 10: [[Searching]]
+*XL 20: [[Poison resistance]]
+
+==Skills==
+{{Tourist skill table}}
+Tourists start with Basic skill in ''darts''. Despite not starting with a melee weapon, they start Unskilled in ''Bare hands'', because only roles which can reach Master start with Basic skill in ''Bare hands'', and Tourists can only reach Skilled.
+
+Compensating somewhat for their poor starting equipment, a Tourist can advance to Basic skill in every type of weapon except [[club]]s. Therefore, a Tourist can make use of almost any weapon without restriction.
+
+==Special rules==
+[[Shopkeeper]]s recognize Tourists below experience level 15 as suckers and charge them an extra {{frac|3}} markup when buying and only offer {{frac|3}} the base price of sold items. (The same problem will be experienced by other roles when wearing a visible [[shirt]] or a [[dunce cap]].)
+
+Tourists have a +1 ''penalty'' with [[emergency spell]]s.
+
+Tourists don't receive the [[multishot]] bonus for being Skilled at any weapon other than darts. They do receive the bonus for becoming Expert at daggers.
+
+{{upcoming|NetHack 3.7.0|Tourists are the only role capable of reading a [[conical hat]]. Only {{frac|3}} of conical hats have any lettering, but those that do read either "DUNCE" or "WIZZARD", unambiguously identifying the hat.}}
+
+==Rank titles==
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1&ndash;2: Rambler
+*XL 3&ndash;5: Sightseer
+*XL 6&ndash;9: Excursionist
+*XL 10&ndash;13: Peregrinator/Peregrinatrix
+*XL 14&ndash;17: Traveler
+*XL 18&ndash;21: Journeyer
+*XL 22&ndash;25: Voyager
+*XL 26&ndash;29: Explorer
+*XL 30: Adventurer
+
+==Quest==
+{{main|Tourist quest}}
+The Tourist quest sees you fighting the [[Master of Thieves]] for [[the Platinum Yendorian Express Card]].
+
+==Strategy==
+===Character creation===
+The only choice available when generating a Tourist is their [[gender]], which is normally largely inconsequential; the Quest goal level for Tourists contains four guaranteed [[foocubus|incubi]] but only two succubi, however, so players who want to raise their level and energy as high as possible for spellcasting purposes will probably want their Tourist to be female. A Tourist that finds an [[amulet of change]] or a [[ring of polymorph control]] can use up the foocubi of one gender, then switch and start consorting with the other.
+
+===Early game===
+====Objectives====
+Tourists tend to start with comically low HP and strength, and no real [[armor]] to speak of. Thus, the early game must be played with extreme caution. Unlike most other roles, Tourists need to rely heavily on items that they find.
+
+It is critical to find armor as soon as possible. Tourists should use their starting pet to [[curse-test]] every weapon and piece of armor that they find. Non-cursed armor should be worn immediately, unless it [[encumbrance|encumber]]s you. In the early game, the most common source of magical armor items is an armor shop, and Tourists typically start out with enough gold to buy most of the good items in the shop.
+
+Heading directly for [[Sokoban]] or [[Minetown]] is a valid strategy, but the monsters may get too difficult too quickly. A very cautious strategy is to wait somewhere around dungeon level 3 or so and kill easy monsters until you gain a few levels, then descend deeper. 
+
+====Weapons====
+The initial stock of 21&ndash;40 +2 darts should be viewed as a bridge to a better weapon. Each dart will, on average, last for 4 throws (given that each dart has a {{frac|4}} chance of [[Missile#Breakage|breakage]] per throw), which means that Tourists will get about 84&ndash;160 dart throws before the supply is exhausted. Once a better weapon is found, any remaining darts should be kept for use in attacking monsters from long range, preferably after [[BUC|blessing]].
+
+At low experience levels, it is difficult to hit anything with a weapon in which you are unskilled, since unskilled usage confers a &minus;4 to-hit penalty. Hence, unless you find a high-damage weapon such as a [[dwarvish mattock]] or [[two-handed sword]], you find a highly enchanted weapon, or you are facing weak monsters, it is much safer to kill things by throwing your darts in the very early game. Once you do find a weapon that you want to train, you can use it on non-threatening monsters (such as [[lichen]]s, [[fog cloud]]s, and [[grid bug]]s) and save your darts for true challenges.
+
+By the time you reach experience level 5 or thereabouts, you will often have found a better weapon (such as a [[dwarvish mattock]], [[two-handed sword]], [[long sword]], [[silver saber]], or [[unicorn horn]]), which you can start using in place of the darts since your experience level is now high enough to partly offset the unskilled to-hit penalty. Of course, your weapon will not ''stay'' unskilled for long; you should advance it to at least basic as quickly as possible.
+
+====General====
+Take off your shirt immediately. It grants no [[AC]] or [[magic cancellation]], and could be destroyed by a [[polymorph trap]] or [[destroy armor (monster spell)|destroy armor]] [[monster spell]]. It should be enchanted when you have [[magic resistance]] to protect it from being destroyed.
+
+The most useful starting item for a Tourist is the [[expensive camera]]. The camera, when [[apply|applied]], will [[blind]] any monster standing in the way of the flash, and has a 75% chance of scaring monsters if used within two tiles. Fleeing monsters often won't stop to attack you, and you gain an accuracy bonus against them. This is useful for fighting or escaping difficult monsters. If you lack a [[towel]] or [[blindfold]], you can also flash yourself for temporary blindness to use [[telepathy]] or avoid a [[gaze attack]].
+
+A survival tool for the early Tourist is to write [[Elbereth]] in the dust. This may [[scare]] monsters away, allowing your pet to kill them while you retreat. Keep in mind that monsters blinded by your expensive camera will not respond to Elbereth!
+
+The credit card is useful for opening locked doors and chests without having to kick, bash, or pry them open. A [[key]] is still better if you can find one, because it can also re-lock them.
+
+Although the sucker markup seems like it would make shopping difficult, the Tourist's high natural [[charisma]] more than makes up for it. A Tourist will often get better prices than roles such as [[Barbarian]]s or [[Ranger]]s, even after the markup. Just don't forget about the buying and selling modifiers when performing [[price identification]].
+
+Tourists tend to start with a high charisma and above-average [[intelligence]], which makes consorting with [[foocubus|foocubi]] less risky than for other early-game characters. This can help them gain the last couple of levels to begin their Quest, which they'll want to complete as soon as possible for the PYEC and shop loot.
+
+===Midgame===
+====Objectives====
+Once you are able to bring your AC down below zero, and you obtain a better weapon than the starting darts, you have a reasonable chance at going after the [[luckstone]] in [[Mines' End]] and the prize at the end of [[Sokoban]]. After that, continue down the dungeon until you find the portal to the quest.
+
+The [[quest artifact]] for the Tourist is [[the Platinum Yendorian Express Card]]. This artifact is so useful that in most cases a Tourist should try to complete the [[Tourist quest|quest]] as soon as possible. The most important intrinsic to have for the quest is [[reflection]], because the quest's locate and goal levels contain several large rooms filled with soldiers armed with attack wands. The [[Master of Thieves]], the quest nemesis, is not particularly difficult compared to other quest nemeses, and any character capable of dispatching the soldiers should have no special trouble with him.
+
+{{upcoming|NetHack 3.7.0|As part of a general buff to quest leaders, the Master of Thieves has been made stronger, and thus his difficulty relative to other quest nemeses has increased.}}
+
+The quest also contains a sizable amount of loot: between the many [[shop]]s, [[barracks]] and [[graveyard]] treasure, and items generated along with the [[spider]]s, you will likely find an [[ascension kit]] item or two. Consider postponing sitting on the two [[throne]]s until you loot the entire branch. Further, the lower levels have several guaranteed [[captain]]s, which have a good chance of carrying at least one [[silver saber]].
+
+====Weapons====
+It's likely that you've found an altar at this stage, and can sacrifice for a good artifact weapon like [[Vorpal Blade]], [[Magicbane]], [[Mjolnir]], or [[Fire and Frost Brand|Fire/Frost Brand]]. Otherwise, you can enchant other good weapons like a long sword or silver saber that you may have found.
+
+====General====
+Tourists should seek out the same types of [[armor]] that a warrior-type character such as a [[Valkyrie]] or [[Barbarian]] would use. In most cases, it is not worth avoiding metal armor to improve spell casting rates, because Tourists suffer enormous spell casting penalties from even one peripheral piece of metal armor, and it is not practical to avoid metal armor entirely. Typical armor for a mid-game Tourist would be a [[mithril-coat]], [[iron shoes]], a [[dwarvish iron helm]] or [[orcish helm]], and an [[elven cloak]] or [[dwarvish cloak]], with perhaps one or two pieces of magical armor.
+
+===Late game===
+====Weapons====
+In the advanced stages of the game, a Tourist should have several [[artifact weapon]]s available from which to choose. Because Tourists have no weapon restrictions to speak of, any decent artifact weapon is a good choice. However, if you have a choice, the following weapons are especially desirable and are worth pursuing if your character has the opportunity (e.g., via a [[wish]]):
+
+* [[Grayswandir]] &ndash; Tourists can advance [[silver saber|sabers]] to Skilled. In most cases it must be obtained from a wish, since Tourists start out neutral. It can then be dual-wielded with another silver saber; this is the most powerful melee weapon combination for an endgame Tourist.
+* [[Magicbane]] &ndash; Tourists can advance daggers to expert and can get this by [[sacrifice|sacrificing]].
+* [[Mjollnir]] &ndash; Unless the enemy is shock-resistant, this weapon inflicts the most damage out of all the aligned weapons that a Tourist can obtain by sacrificing.
+
+Tourists can become skilled in [[two-weapon combat]], but this only becomes useful late in the game, when good weapons are available. Using two weapons is preferred unless your character needs a shield for [[reflection]]. For ranged weapons, highly enchanted [[darts]] or [[daggers]] work well, since both are readily available and Tourists can get to Expert skill in both daggers and darts. Of the two, darts are preferable since Tourists suffer a [[multishot]] penalty for all other weapons.
+
+===General===
+With regards to armor selection, a Tourist is no different from any other role and should follow the same guidelines as any other character in terms of assembling the various pieces of armor that form a typical [[ascension kit]]. One advantage you have over other roles is that you don't have to look for a shirt to complete your set.
+
+The main function of the Platinum Yendorian Express Card is that it can be #[[invoke]]d to charge wands and tools like a [[scroll of charging]]. Properly exploited, this function gives the Tourist the equivalent of a blessed scroll of charging every few hundred turns, a feat which is not possible with any other role. This makes the Tourist role one of the easiest to ascend once the quest has been completed.
+
+Wands have an increased chance of exploding each time they are charged, so a post-quest Tourist will usually want to keep several of each type of wand on hand to maximize the number of recharging opportunities. For rare wands, such as [[wand of death|wands of death]], a small number of such wands will last an entire game if properly managed. For common wands, such as [[wand of digging|wands of digging]], it is a good idea to maintain a rotating stock of such wands, discarding the ones which have been charged many times and replacing them with newer ones.
+
+The Platinum Yendorian Express Card can also be used to charge [[tool]]s. This is especially useful because most tools, unlike wands, can be recharged infinitely many times. For example, a [[horn of plenty]] combined with the Platinum Yendorian Express Card means that a Tourist can get by with carrying very little [[food]]. A [[bag of tricks]] can be used to [[create monster]]s indefinitely. Other useful chargeable tools include [[brass lantern]]s, [[crystal ball]]s, [[tinning kit]]s, [[magic harp]]s, [[magic flute]]s, [[fire horn]]s, [[frost horn]]s, the [[Bell of Opening]], and even the [[expensive camera]] that comes in the initial inventory.
+
+Certain [[ring]]s can be charged with the Platinum Yendorian Express Card as well. You may want to wear a +6 or +7 [[ring of increase damage]] full time, especially for [[two weapon combat]]. Since rings can explode when charged, a good strategy is keep two of the same type of ring, and charge the one with the lowest charge, so as to not risk destroying a highly charged ring.
+
+Because the game will not display the number of charges and recharges on an unidentified item, finding a [[spellbook of identify]] may be convenient for a Tourist.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], a Tourist may also be a [[Doppelganger (starting race)|doppelganger]] or a [[Hobbit (starting race)|hobbit]].
+
+===SporkHack===
+[[SporkHack]] offers a wider selection of races for various roles. An orc Tourist is an interesting choice that starts with [[potion of sickness|potions of sickness]]; dipping the starting darts into one offers an instant kill attack from the second move.
+
+===UnNetHack===
+In [[UnNetHack]], items in shops are [[Auto-identify|automatically identified]] when playing as a Tourist, regardless of whether the player has seen them before or not. Similarly, selling unidentified items will automatically identify them. [[Enchantment]]s and [[BUC]] status are not identified.
+
+===FIQHack===
+In [[FIQHack]], tourists ID shop items in the same manner as UnNetHack.  Additionally, a Tourist may be a [[gnome (starting race)|gnome]].  Tourists start with all of their optional equipment.  The [[magic marker]] that a tourist starts with is always 0:0.
+
+==Encyclopedia entry==
+{{encyclopedia|
+The road from Ankh-Morpork to Chrim is high, white and winding, a thirty-league stretch of potholes and half-buried rocks that spirals around mountains and dips into cool green valleys of citrus trees, crosses liana-webbed gorges on creaking rope bridges and is generally more picturesque than useful.
+Picturesque. That was a new word to Rincewind the wizard (BMgc, Unseen University [failed]). It was one of a number he had picked up since leaving the charred ruins of Ankh-Morpork. Quaint was another one. Picturesque meant -- he decided after careful observation of the scenery that inspired Twoflower to use the word -- that the landscape was horribly precipitous. Quaint, when used to describe the occasional village through which they passed, meant fever-ridden and tumbledown.
+Twoflower was a tourist, the first ever seen on the discworld. Tourist, Rincewind had decided, meant "idiot".
+|[ The Colour of Magic, by Terry Pratchett ]
+}}
+
+{{nethack-360|offset=1}}
+{{featured}}
+[[Category:Roles]]}
+&&%s&& %s Hawaiian shirt {13148 2006-10-02T15:27:01Z {396 Jayt} Redirecting to [[Shirt]] #REDIRECT [[Shirt]]}
+&&%s&& %s Food ration {150217 2023-03-12T05:18:14Z {4000251 Netzhack} /* Food ration */ Field separator {{comestible
+  |color=organic color
+  |name=food ration
+  |cost=45
+  |nutrition=800
+  |turns=5
+  |weight=20
+  |conduct=vegan
+}}
+
+A '''food ration''' is the most basic form of [[comestible]] that appears in ''[[NetHack]]''. [[Samurai]] know them as '''gunyoki''', which is likely to not be real-life Japanese.<ref>https://rec.games.roguelike.nethack.narkive.com/KM04loFL/etymology-of-the-word-gunyoki</ref>
+
+==Generation==
+Many [[role]]s start out with a number of these:
+
+* [[Archeologist]]s and [[Monk]]s start with 3 to 6 rations.{{refsrc|src/u_init.c|34|version=NetHack 3.6.6}}{{refsrc|src/u_init.c|91|version=NetHack 3.6.6}}
+* [[Barbarian]]s and [[Valkyrie]]s start with 1-2.{{refsrc|src/u_init.c|47|version=NetHack 3.6.6}}{{refsrc|src/u_init.c|156|version=NetHack 3.6.6}}
+* [[Tourist]]s start with a lot of random food, some of which may be food rations.{{refsrc|src/u_init.c|144|version=NetHack 3.6.6}}
+
+==Description==
+Food rations provide 800 nutrition when eaten, which is more than enough for most states of [[hunger]]. They are also suitable for [[vegan]]s, and may be thrown at [[cat]]s or [[dog]]s to tame them.
+
+Cursed food rations are always [[rotten]] when eaten. Uncursed food rations older than 30 [[turn]]s and blessed food rations older than 50 [[turn]]s have a {{frac|7}} chance of being rotten when eaten.
+
+==Strategy==
+Players that make it to the mid-game may start stashing excess food rations or else passing them up in favor of sustaining themselves on the [[corpse]]s of monsters they kill and/or stocking up on [[C-ration]]s or [[K-ration]]s they nab from [[soldier]]s. A [[lembas wafer]] provides similar nutrition while weighing much less (2 [[aum]] compared to 20 for food rations), though it may provide more or less depending on if you are playing an [[Elf (starting race)|elven]] or [[Orc (starting race)|orcish]] character.
+
+When preparing for the ascension run, it is common to stock up on lembas or other food items such as [[royal jelly]], usually by [[polypiling]] standard rations and other food; food that can be eaten quickly is particularly handy to have in the event [[Famine]] cannot be avoided on the [[Astral Plane]].
+
+==History==
+Food rations have been a part of the game since ''hack121'', a variant of [[Jay Fenlason's Hack]].
+
+==Variants==
+Some variants introduce new starting races with more atypical diets compared to the standard ones, which naturally impacts the use of food rations for them.
+
+===SLASH'EM===
+In [[SLASH'EM]], player [[Vampire (starting race in SLASH'EM)|vampires]] cannot eat food rations, and will start with potions of {{! of|vampire blood}} in place of the usual rations for their role. Vampires can still use rations to tame and/or pacify certain domestic animals.
+
+[[Killer food ration]]s are a type of [[evil food]] monster that can be encountered, and have a {{frac|3}} chance of dropping an actual food ration upon death.
+
+===UnNetHack===
+In [[UnNetHack]], player [[Vampire (starting race in UnNetHack)|vampires]] also start with potions of vampire blood replacing their role's typical rations.
+
+===dNetHack===
+In [[dNetHack]], [[Incantifier (dNetHack starting race)|Incantifiers]] feed off magic rather than consuming food, and with the exception of Tourists have their starting food rations replaced with scrolls of {{? of|food detection}}.
+
+Various races of [[Anachrononaut]] start with several [[protein pill]]s in lieu of food rations; said pills provide the same nutrition as a ration, but only require one turn to eat and weigh only 1 aum. Anachrononauts can ''only'' eat prepared food (including food rations) and cannot [[pray]], locking them out of a primary method to maintain nutrition early on. One viable approach for these Anachrononauts is to blitz [[Sokoban]]: the boulders are replaced with stone crates that contain the rations and other food normally found there, and the crates release their contents when broken or pushed into the level's [[pit]]s or [[hole]]s. The magic chest found on the last level is also a good place to store relatively-heavy food rations in the event the prize is not a [[bag of holding]].
+
+== Encyclopedia entry ==
+=== Food ration ===
+{{encyclopedia|
+The little girl stood on tip-toe and picked one of the nicest and biggest lunch-boxes, and then she sat down upon the ground and eagerly opened it.  Inside she found, nicely wrapped in white papers, a ham sandwich, a piece of sponge-cake, a pickle, a slice of new cheese and an apple.  Each thing had a separate stem, and so had to be picked off the side of the box; but Dorothy found them all to be delicious, and she ate every bit of luncheon in the box before she had finished.
+|[ Ozma of Oz, by L. Frank Baum ]
+}}
+
+=== Gunyoki ===
+{{encyclopedia|
+The samurai's last meal before battle.  It was usually made up of cooked chestnuts, dried seaweed, and sake.
+}}
+
+== References ==
+<references/>
+{{Nethack-366}}
+[[Category:Comestibles]]}
+&&%s&& %s Non-teleport level {133275 2020-04-07T19:12:05Z {187 Darth l33t} /* List of non-teleport levels */ 3.7.0 : ''"A mysterious force prevents you from teleporting!"''
+A '''non-teleport level''' is any level that prevents all forms of self-[[teleportation]] within the same level, whether from the [[scroll of teleportation]], [[teleportitis]], or any other such method. There are generally no restrictions on [[level teleport]]ing or branchporting with [[the Eye of the Aethiopica]]. However, you cannot levelport from [[Sokoban]], or in the quest without your [[quest leader]]'s permission. And you cannot leave the [[End Game]] in any other way than the portals.
+
+On a non-teleport level, you will not be able to escape the monsters by teleporting yourself, but neither will the monsters escape from you. Thus you might need to change from your usual [[strategy]].
+
+Even in 3.4.3, [[monster]]s have to learn teleport restrictions through personal experience. Monsters frequently waste one [[scroll of teleportation|scroll of teleportation]] trying to escape you. [[Nymph]]s, [[nurse]]s and [[foocubus|foocubi]] will still try to teleport away from you, but will always fail. Once an individual monster has attempted teleportation by such methods, or stepped on a teleport trap, on a non-teleport level, it does not do so again.{{refsrc|muse.c|457}}{{refsrc|muse.c|583}}{{refsrc|trap.c|1171}} Such a wised-up monster will also try not to wander onto any teleport trap (except to escape),{{refsrc|mon.c|1188}} and has a 75% chance of escaping traps it walks onto.{{refsrc|trap.c|1706}}
+
+On non-teleport levels, you can still teleport monsters and items; the only restrictions on teleporting are that creatures (including the player) cannot teleport themselves, and the [[quantum mechanic]]'s teleport attack does not work. Therefore, a [[wand of teleportation]] is an incredibly effective defense in high-density levels such as [[Moloch's Sanctum]] and the [[Astral Plane]].
+
+[[Covetous]] monsters will still be able to warp to the up-[[staircase]]. Covetous monsters include master and arch-[[lich]]es, [[Quest]] nemeses, and named [[demon]]s. Many levels where master liches tend to appear, such as demon lairs, are non-teleport. If you have [[telepathy]], you can easily see where such monsters are warping. However, even if you have [[teleport control]], you will not be able to follow them by teleporting. You will have to walk to the up staircase and endure injury while the monster warps and heals. Once you can reach the up staircase, stand on it to block it. This tactic does not work on the [[Astral Plane]]&mdash;covetous monsters will simply teleport to retreat a few spaces.
+
+If you are [[engulf]]ed on a non-teleport level, you cannot escape by teleporting yourself; however, if you teleport the engulfing monster, you will stay put and the monster will be teleported away. This is in contrast to regular levels, where you go with the engulfing monster.
+
+== List of non-teleport levels ==
+
+* All of [[Sokoban]]
+* The [[Quest]] home level
+* The [[Rogue]] and [[Samurai]] Quest goal levels
+* [[Fort Ludios]]
+* [[Medusa's Island]]
+* The [[Castle]]
+* The [[Valley of the Dead]]
+* [[Demon]] lairs ([[Asmodeus]], [[Baalzebub]], [[Juiblex]], and [[Orcus]])
+* All of [[Vlad's Tower]]
+* The [[Gehennom]] levels with [[wizard tower]]s
+* [[Moloch's Sanctum]]
+* The [[Endgame]]
+
+{{upcoming|NetHack 3.7.0|Demon lairs are no longer non-teleport, but demon lords and princes suppress the teleportation of you or any monster that isn't a demon lord or prince, in Gehennom.}}
+
+== SLASH'EM ==
+
+In addition, the following SLASH'EM levels are also no-teleport:
+
+* [[Grund's Stronghold]]
+* The [[Lawful Quest]]
+* The [[Black market (SLASH'EM)|black market]]
+* The [[Yeoman quest]] nemesis level
+* The additional demon lairs ([[Yeenoghu]], [[Geryon]], [[Dispater]], and [[Demogorgon]])
+
+However, teleportation is allowed in the [[Valley of the Dead]].
+{{nethack-343|offset=1}}
+{{slashem-7E7}}
+
+==References==
+<references/>
+[[Category:Strategy]]}
+&&%s&& %s Non-teleport levels {3360 2006-06-06T20:31:30Z {458 Kernigh} [[Non-teleport levels]] moved to [[Non-teleport level]]: Leave a redirect, but adopt a singular name for the article. #REDIRECT [[Non-teleport level]]}
+&&%s&& %s Cloak of magic resistance {143439 2021-10-26T22:11:27Z {4000251 Netzhack} /* Generation */ "Chance to do" means opportunity; "chance of doing" means probability. {{armor
+  |top={{cloak top}}
+  |name=cloak of magic resistance
+  |appearance={{random appearance}}
+  |slot=cloak
+  |ac=1
+  |special=<ul><li>[[magic cancellation|MC1]]</li><li>[[magic resistance]]</li></ul>
+  |cost=60
+  |weight=10
+  |material=cloth
+}}
+
+The '''cloak of magic resistance''' (commonly abbreviated '''CoMR''') is an item that appears in ''[[NetHack]]''. It is made of [[cloth]], and has a [[randomized appearance]]; the default one associated with it is an [[ornamental cope]].{{refsrc|src/objects.c|470|version=NetHack 3.6.6}}
+
+==Generation==
+All [[Wizard]]s start the game with a cloak of magic resistance.
+
+[[Aligned priest]]s - including [[high priest]]s and the [[Arch Priest]], the [[Priest]] [[quest leader]] - have a {{frac|1|21}} chance of being [[Monster starting inventory|generated with]] a cloak of magic resistance.{{refsrc|src/makemon.c|693|version=NetHack 3.6.6}} [[Master Kaen]], the [[Monk]] [[quest nemesis]], has a {{frac|1|11}} chance of being generated with a cloak of magic resistance, and will otherwise have a [[robe]].{{refsrc|src/makemon.c|696|version=NetHack 3.6.6}}
+
+Most non-[[Monk (player monster)|monk]] [[player monster]]s on the [[Astral Plane]] have a 87.5% chance of receiving a random magical cloak, and a further 12.5% chance of that cloak being a cloak of magic resistance - effectively ~10.94% to receive one.{{refsrc|src/mplayer.c|157|version=NetHack 3.6.6}}{{refsrc|src/mplayer.c|207|version=NetHack 3.6.6}} For [[Priest (player monster)|priests]], there is a 75% chance that the cloak will be made into a robe instead, reducing this effective chance to ~2.73%;{{refsrc|src/mplayer.c|217|version=NetHack 3.6.6}} [[Wizard (player monster)|Wizards]] similarly have a {{frac|1|2}} chance of forcing a cloak of magic resistance, resulting in an effective chance of 43.75%.{{refsrc|src/mplayer.c|248|version=NetHack 3.6.6}}
+
+==Effects==
+When worn, the [[cloak]] simply provides 1 AC, [[magic cancellation|MC1]], and [[magic resistance]]. Its non-AC effects are not affected by [[burning]].
+
+==Strategy==
+The cloak of magic resistance is considered a near-ubiquitous part of many [[ascension kit]]s, and is frequently paired with [[silver dragon scale mail]] (or another source of [[reflection]]) for combined protection from most attacks (e.g., preventing melee-range spells such as [[curse items]] while reflecting wands and breath attacks). SDSM/CoMR is also one of the more conducive combinations for certain late-game playstyles since it leaves slots free for other purposes: a worn [[amulet of life saving]], a hand free for [[twoweapon]]ing and/or two-handed weapons, or a lightweight [[small shield]] for casters going without a robe or [[Cloak of protection|protection]]. It also serves as a backup source of magic resistance if a [[quest artifact]] with the property is stolen.
+
+Monks may consider seeking out a cloak of magic resistance if they are going [[wishless]], avoiding artifacts, or are committed to not using body armor.
+
+===Identification===
+The cloak of magic resistance is the only [[Randomized appearance|randomized]] cloak that does not [[auto-identify]] on wearing or when taking effect, making it relatively trivial to informally identify. [[Invisible]] characters testing for one will want to revert to normal - a [[cloak of invisibility]] will not auto-identify if you are already invisible. Bones left behind by a dead Wizard very frequently have a cloak of magic resistance somewhere within the item pile.
+
+Some of the riskier methods removing, stashing or disabling all other sources of magic resistance, then stepping onto an [[anti-magic field]] or [[teleportation trap]]; unless you currently have poor AC, giving a hostile monster a [[wand of striking]] can also work. If you have magic resistance, the effect of the trap or wand will be nullified. Using a [[potion of enlightenment|potion]] or [[wand of enlightenment]] is far safer, but may not be as available due to item rarity.
+
+===Combat===
+The chance of a hostile aligned priest spawning with this cloak poses a potentially aggravating threat to players trying to avoid their spells, reducing the amount of effective ranged options; pets and thrown potions are still useful.
+
+Similarly, if Master Kaen generates with this cloak, he will prove a major inconvenience to most Monks as it nullifies the [[wand of death]]. However, it does not offer full protection against elemental attacks that Kaen lacks resistances to, and he is still vulnerable to [[disintegration]] from a [[polyself]]ed or pet [[black dragon]].
+
+For many players, the High Priest(ess) of Moloch generating with one is a worst-case scenario - most will save a wand of death charge for them, and being forced to fight them is very risky, especially in melee.
+
+==History==
+In [[NetHack 3.4.3]] and earlier versions, the cloak gives MC3.
+
+==Variants==
+In general, variants based on version 3.4.3 and earlier retain the cloak of magic resistance's MC3.
+
+===SLASH'EM===
+In [[SLASH'EM]], the cloak of magic resistance is the same as it was in NetHack 3.4.3 and earlier versions.
+
+Undead [[vampire]]s are often generated with [[opera cloak]]s, providing a reliable source if it is randomized to be the cloak of magic resistance; however, this will also give more spellcasting-reliant characters significant trouble, especially in the case of already-powerful [[vampire mage]]s.
+
+A cloak of magic resistance can be created by [[upgrading]] an [[elven cloak]] or [[oilskin cloak]].
+
+===UnNetHack===
+In [[UnNetHack]], [[Sokoban (UnNetHack)|Sokoban]] offers a cloak as one of the three types of prizes, which has a 50% chance of being a cloak of magic resistance. The [[Executioner]] will always be generated with one.
+
+===NetHack brass===
+In [[NetHack brass]], a cloak of magic resistance is one of the three possible [[Sokoban]] prize items.
+
+===dNetHack===
+In [[dNetHack]], the cloak no longer grants any AC, nor does it increase your defense rating, but still provides MC3.
+
+[[The Mantle of Heaven]] and [[The Vestment of Hell]] are [[artifact]] cloaks that always appear as ornamental copes, making it possible for them to be cloaks of magic resistance.
+
+===FIQHack===
+In [[FIQHack]], the cloak of magic resistance gives [[MC]]2.
+
+===xNetHack===
+In [[xNetHack]], [[Anaraxis the Black]] (the renamed Wizard quest nemesis) always generates wearing a cloak of magic resistance.
+
+===EvilHack===
+In [[EvilHack]], [[Giant (starting race)|giant]] Wizards no longer start with one as of v0.5 (being too large for cloaks), and are given an [[amulet of magic resistance]] instead. As of version 0.7, and like xNetHack, The Dark One will always generate wearing a cloak of magic resistance.
+
+==References==
+<references/>
+{{nethack-366|offset=1}}
+[[Category:Cloaks]]}
+&&%s&& %s Fountain {146117 2022-06-08T08:02:03Z {4000681 Andrio Celos} Fix broken source links {{features}}
+The '''fountain''' is a [[dungeon feature]] in ''[[NetHack]]'', represented primarily by a {{blue|<nowiki>{</nowiki>}} (''left curly bracket''). They are found randomly scattered throughout the dungeon, usually in rooms that do not have any other [[dungeon feature]] (i.e. [[chest]]s, [[sink]]s) in them. You can use a fountain by dipping items into it, [[quaff]]ing its water, and by digging down on it.
+
+Fountains on non-[[special level]]s have a {{frac|7}} (14%) chance of being magic,{{refsrc|src/mklev.c|1325|comment=This is the only place this is ever set for a floor tile that could be a fountain, and the special level loader does not execute this piece of code.}} an attribute that cannot be determined before use. Fountains created by [[dig]]ging on a [[sink]] are non-magical.
+
+==Glyphs and tiles==
+:''See also: [[IBMgraphics]]''
+
+While often seen as a blue left curly bracket, fountains may also possibly be represented by a {{blue|&para;}} (''pilcrow''), {{blue|&#x2320;}} (''top half integral'') or a {{blue|&#x407;}} (''Cyrillic capital letter YI''), depending on your [[operating system]] and [[options]].
+
+The representation of a fountain as a pilcrow, "&para;", is probably not intentional. The top-half integral, "⌠" (some fonts may not have this character), looks vaguely like a fountain and is probably what the [[DevTeam]] had in mind. The problem is that PC character sets vary from one country to another: The symbol "⌠" occurs at code point 0xF4 in the PC [[wikipedia:code page 437|code page 437]], which is used in the United States. Most of Europe, however, uses either [[wikipedia:code page 850|code page 850]] (Western Europe), [[wikipedia:code page 852|852]] (Eastern Europe using the Latin alphabet) or [[wikipedia:code page 866|866]] (Russia). Code page 850 has "&para;" at position 0xF4, code page 852 has "˘" and codepage 866 has "Ї".{{refsrc|src/drawing.c|348}}
+
+There is no good fix for 3.6.0, yet, but for Nethack 3.4.3, you can use Unicode to get the proper fountain symbol:
+
+<code>:OPTIONS=UTF8graphics</code><br/>
+<code>:SYMBOL='fountain':U+2320</code>
+
+For Windows users, the following script may provide a workaround. Call it, say, <code>RUN-NH.BAT</code>, drop it in the same directory as the NetHack.exe binary, and link the desktop icon to it:
+
+<code>:chcp 437</code><br/>
+<code>:NetHack</code>
+
+In the default set of tiles, fountains appear as [[Image:fountain.png]].
+
+==Quaffing==
+
+You can drink from a fountain by [[quaff]]ing its water while standing over it. Upon doing so you get a message indicating the results.
+
+===Magic fountains===
+A magic fountain produces one of the two following effects, as long as your natural [[Luck]] is non-negative:
+
+{|class="wikitable"
+!Probability!!Message!!Effect
+|-
+|{{frac|3|10}}
+|"The cool draught refreshes you."
+|You gain a small amount of [[nutrition]].
+|-
+|{{frac|7|10}}
+|"Wow! This makes you feel great!"<br />"A wisp of vapor escapes the fountain..."
+|Your [[wisdom]] is [[exercise]]d, and all your attributes are restored to their maximum (same effect as a blessed [[potion of restore ability]]). One attribute is increased by 1 (uncursed [[potion of gain ability]] effect); if your natural Luck is 4 or higher, this last effect will increase all your attributes by 1 (blessed potion effect).<br/>The fountain is no longer magic.
+|}
+
+"Natural Luck" refers to your Luck without the bonus from carrying a non-cursed luckstone. 
+
+In either case, the fountain will not dry up.
+
+===Non-magic fountains===
+Quaffing from a non-magic fountain, or magic with negative Luck:
+
+{|class="wikitable"
+!Probability!!Message!!Effect
+|-
+|{{frac|9|30}}
+|"The cool draught refreshes you."
+|You gain a small amount of [[nutrition]].
+|-
+|{{frac|9|30}}
+|"This tepid water is tasteless."
+|No effect.
+|-
+|{{frac|30}}
+|"You feel self-knowledgeable..."<br />"The feeling subsides..."
+|You see your attributes and exercise your wisdom (as with a wand or uncursed [[potion of enlightenment]]).
+|-
+|{{frac|30}}
+|"The water is foul! You gag and vomit."
+|You vomit and lose some nutrition.
+|-
+|rowspan="2"|{{frac|30}}
+|"The water is contaminated!"
+|You lose d10 HP and d4+2 strength, and your constitution is abused.<br />(if you are not poison resistant)
+|-
+|"Perhaps it is runoff from the nearby <fruit> farm."
+|You lose d4 HP<br />(if you are poison resistant)
+|-
+|{{frac|30}}
+|"An endless stream of snakes pour forth!"<br />"You hear something hissing!" (if blind)<br />"The fountain bubbles furiously for a moment, then calms." (if moccasins genocided)
+|d5+1 [[water moccasin]]s are created.
+|-
+|{{frac|30}}
+|"You unleash a water demon!"<br />"You feel the presence of evil." (blind)<br />"Grateful for his/her release, he/she grants you a wish!" (peaceful)<br />"The fountain bubbles furiously for a moment, then calms." (summoning failed)
+|A [[water demon]] is summoned. It has an (80+DL)/100 chance of being hostile (100% if you have the [[Amulet of Yendor]]); if not hostile, the demon grants one wish and then vanish.
+|-
+|{{frac|30}}
+|"You attract a water nymph!"<br />"You hear a seductive voice." (blind)<br />"A large bubble rises to the surface and pops." (unblind, water nymphs genocided or extinct)<br />"You hear a loud pop." (blind, water nymphs genocided or extinct)
+|A [[water nymph]] is summoned.
+|-
+|{{frac|30}}
+|"This water's no good!"
+|Each item in your inventory has {{frac|5}} chance of being cursed outright, you lose some nutrition, and your constitution is abused.  [[Magicbane]] does not protect against this cursing, nor do [[intelligent artifact]]s resist.{{refsrc|src/fountain.c|303|version=NetHack 3.6.1}}
+|-
+|{{frac|30}}
+|"You see an image of someone stalking you. But it disappears."<br />"You feel transparent." (blind, invisible)<br />"You feel very self-conscious. Then it passes." (blind, not invisible)
+|You gain [[see invisible]] and your wisdom is exercised.
+|-
+|{{frac|30}}
+|"You sense the presence of monsters."<br />"You have a strange feeling for a moment, then it passes." (no monsters, beginner, not hallucinating)<br />"You have a normal feeling for a moment, then it passes."(no monsters, beginner, hallucinating)<br />"You feel threatened." (no monsters, not hallucinating)<br />"You get the heebie jeebies." (no monsters, hallucinating)
+|You briefly see monsters on that level and exercise your wisdom. If there are no monsters on the level (other than you), no visible effect.
+|-
+|{{frac|30}}
+|"You spot a gem in the sparkling waters!" (unblind)<br />"You feel a gem here!" (blind)
+|You find a random valuable gem or piece of worthless glass, and your wisdom is exercised. If you have already acquired gems or gold from this fountain, a nymph is summoned instead (as above).
+|-
+|{{frac|30}}
+|"This water gives you bad breath!"
+|Monsters on the level flee from you for a while.
+|-
+|{{frac|30}}
+|"Water gushes forth from the overflowing fountain!" (pool created)<br />"Your thirst is quenched." (no pools created)
+|A number of [[pool]]s may be created in your vicinity just as if you had [[#Other fountain effects|dug into the fountain]]. Items lying near you may end up at the bottom of a pool.
+|}
+
+Finally, the fountain has a {{frac|3}} chance of drying up (except in [[Minetown]], where you'll always get one [[#Minetown|warning]]).
+
+==Dipping==
+
+If you [[dip|#dip]] a single ordinary long sword in a fountain, are at least experience level 5, and [[Excalibur]] doesn't already exist in your game, then there is a {{frac|6}} chance of something special happening to your long sword. If you are lawful, the long sword is converted into the blessed, uneroded, erodeproof Excalibur, and you exercise your wisdom. If you are neutral or chaotic, your long sword is cursed, loses its rustproofing, and may lose an enchantment, and you abuse your wisdom. The fountain then disappears. If you were dipping in [[Minetown]], this will anger the Minetown Watch whether you've been warned or not.
+
+In any other case, the dipping is handled normally. First, the object gets wet and does the appropriate things (scrolls and spellbooks blank, potions dilute, iron objects rust, lit objects go out, grease washes off, objects in a dipped non-oilskin container also get wet). Then special effects can happen (only 50% chance if wetting object already caused an effect{{refsrc|src/fountain.c|394}}):
+
+{|class="wikitable"
+!Probability!!Message!!Effect
+|-
+|{{frac|18|30}}
+|"A strange tingling runs up your arm." ({{frac|18}} chance)<br />"You feel a sudden chill." ({{frac|18}} chance)<br />No message ({{frac|16|18}} chance)
+|No effect.
+|-
+|{{frac|4|30}}
+|"The water glows for a moment." (uncursed, unblind)<br />"A feeling of loss comes over you." (item not cursed)
+|The dipped item is uncursed if cursed.
+|-
+|{{frac|30}}
+|No message.
+|The dipped item is cursed outright.
+|-
+|{{frac|30}}
+|"An endless stream of snakes pour forth!"<br />"You hear something hissing!" (if blind)<br />"The fountain bubbles furiously for a moment, then calms." (if moccasins genocided)
+|d5+1 [[water moccasin|water moccasins]] are created.
+|-
+|{{frac|30}}
+|"You unleash a water demon!"<br />"You feel the presence of evil." (blind)<br />"Grateful for his/her release, he/she grants you a wish!" (peaceful)<br />"The fountain bubbles furiously for a moment, then calms." (summoning failed)
+|A [[water demon]] is summoned. It has an (80+DL)/100 chance of being hostile (100% if you have the [[Amulet of Yendor]]); if not hostile, the demon grants one wish and then vanishes.
+|-
+|{{frac|30}}
+|"You attract a water nymph!"<br />You hear a seductive voice." (blind)<br />"A large bubble rises to the surface and pops." (unblind, water nymphs genocided or extinct)<br />"You hear a loud pop." (blind, water nymphs genocided or extinct)
+|A [[water nymph]] is summoned.
+|-
+|{{frac|30}}
+|"Water gushes forth from the overflowing fountain!" (pool created)<br />"Water sprays all over you." (no pools created)
+|A number of pools may be created in your vicinity. (Never two orthogonally adjacent, never on your square, the more likely the closer to you.) Items in your inventory are not at risk of getting wet.
+|-
+|{{frac|30}}
+|"You spot a gem in the sparkling waters!" (unblind)<br />"You feel a gem here!" (blind)
+|You find a random valuable gem or piece of worthless glass and your wisdom is exercised. If you have already acquired gems or gold from this fountain, pools may be created instead (as above).
+|-
+|{{frac|30}}
+|"An urge to take a bath overwhelms you."<br />"You lost some of your gold in the fountain!"
+|You lose some gold and your wisdom is abused. The amount you lose depends on the amount (GP) you have, as follows:
+* GP ≤ 10: 0 zorkmids
+* 11 ≤ GP ≤ 100: GP/10 zorkmids
+* 101 ≤ GP ≤ 10000: d(GP)/10 zorkmids
+* GP > 10000: d(10000)/10 zorkmids
+Gems and gold can now be found in this fountain again. Your inventory will not rust or be blanked.
+|-
+|{{frac|30}}
+|"Far below you, you see coins glistening in the water."
+|You find (2 &times; d(height + 1)) + 5 zorkmids, where "height" is your height above the bottom level of the current dungeon branch; your wisdom is exercised. If you have already acquired a gem or gold from this fountain, there is no effect.
+|}
+
+After each of the effects in the above table, the fountain has a {{frac|3}} chance of drying up (except in [[Minetown]], where you'll always get one [[#Minetown|warning]]).
+
+If wetting the object causes an effect, there is a 50% that no special effect happens. Therefore dipping a non-water potion in a fountain has only a {{frac|6}} chance of drying up the fountain because wetting the potion has the effect of diluting the potion, whereas dipping a rock in a fountain has a {{frac|3}} chance of drying up the fountain because wetting the rock has no effect on the rock.
+
+If you dip until it dries up or gives the desired result, you have 31.6% chance of an uncurse or 9.4% chance each of a curse / demon / nymph per fountain.
+
+==Other fountain effects==
+
+Digging down in a fountain square will probably create [[pool]]s in your vicinity. Eligible spaces are those within 7 spaces of you, arranged in a checkerboard fashion (which may either have potential pool spaces orthogonally or diagonally adjacent to the fountain). To become a pool, a space must be in a room, in line of sight, not have a boulder on it, and not be adjacent to an exit to the room (even an undetected secret door). It is more likely that spaces nearer you will become pools, but the fountain itself never will.{{reffunc|fountain.c|gush}}</ref>
+
+It is quite likely that digging a fountain in a very small room will produce no pools, and it is always possible to get no pools, but very unlikely in large rooms.
+
+The fountain is destroyed.
+* "Water gushes forth from the overflowing fountain!" (pool created)
+* "Water sprays all over you." (no pools created)
+
+The pools created can drown a pet or damage non-waterproof objects. This does not break [[pacifist]] conduct or [[anger]] your [[god]]. However, the [[Pet#Pet death messages|usual penalties]] apply.
+
+Kicking a fountain has a {{frac|2|3}} chance of exercising dexterity, and a {{frac|1|3}} chance of [[wet|wetting]] your boots. This can be used to identify [[kicking boots]]. Otherwise, like a [[sink]], it produces the message, "Ouch! That hurts!" You lose up to 5 hit points, abuse dexterity and strength, and possibly end up with a [[Wounded legs|wounded leg]].
+
+[[Gremlin]]s may multiply in a fountain. You can use the [[monster (command)|#monster]] command to do so if you are polymorphed into one. This has the usual {{frac|3}} chance of drying up the fountain.
+
+You cannot [[engrave]] on a fountain square.
+
+Dropping coins (or objects) on a fountain has no effect.
+
+== Probability of getting a wish == 
+
+Below is a table that gives the probability that a fountain on a given level will yield at least one wish before drying up when repeatedly dipped into or quaffed from.
+
+{|class="wikitable"
+!Dungeon level!!Probability of getting a wish
+|-
+|1
+|1.9%
+|-
+|2
+|1.8%
+|-
+|3
+|1.7%
+|-
+|4
+|1.6%
+|-
+|5
+|1.5%
+|-
+|6
+|1.4%
+|-
+|7
+|1.3%
+|-
+|8
+|1.2%
+|-
+|9
+|1.1%
+|-
+|10
+|1.0%
+|-
+|11
+|0.9%
+|-
+|12
+|0.8%
+|-
+|13
+|0.7%
+|-
+|14
+|0.6%
+|-
+|15
+|0.5%
+|-
+|16
+|0.4%
+|-
+|17
+|0.3%
+|-
+|18
+|0.2%
+|-
+|19
+|0.1%
+|-
+|20
+|0.0%
+|-
+|}
+
+Below is the justification for these numbers.
+
+The probability that a fountain on dungeon level <math>l</math> will ''not'' yield a wish on a single quaff or dip is
+:<math> \frac{29}{30}+\left(\frac{1}{30}\times\frac{80+l}{100}\right)</math>.
+
+The probability that a fountain on dungeon level <math>l</math> will dry up before yielding any wishes is then
+:<math> \sum_{n=1}^{\infty} \left(\frac{29}{30}+\left(\frac{1}{30}\times\frac{80+l}{100}\right)\right)^{n}\times\left(\frac{2}{3}\right)^{n-1}\times\frac{1}{3} = \frac{l+2980}{3040-2l}</math>
+
+The probability that a fountain on dungeon level <math>l</math> will yield at least one wish is then <math>1-\frac{l+2980}{3040-2l}</math>.
+
+== Minetown ==
+
+The first time each fountain in [[Minetown]] would otherwise dry up through quaffing or dipping, you will instead get a warning:
+
+{{message|The <watchman> yells: "Hey, stop using that fountain!"|A [[watchman]] or [[watch captain]] can see you, and you would have dried up the fountain.}}
+{{message|The flow reduces to a trickle.|You are not in view of the watch, but you would have dried up the fountain.}}
+
+The fountain ''will'' dry up the next time you quaff from or dip an object in this fountain (half the time if wetting the object caused an effect). This angers the Minetown watch, regardless of whether any of them can see you.
+
+Minetown fountains always dry up without warning when digging to create pools, or when the special effect from dipping a long sword into the fountain occurs. This also angers the watch.
+
+== Messages ==
+
+{{message|You hear bubbling water.}}
+{{message|You hear water falling on coins.}}
+{{message|You hear the splashing of a naiad.|There is a fountain somewhere on the level.}}
+{{message|You hear a soda fountain!|As above, but you are [[hallucination|hallucinating]].}}
+
+==Strategy==
+=== Fountain quaffing ===
+
+Fountain quaffing is the specific practice of immediately quaffing from every fountain you find, in the hope of releasing a [[water demon]] and getting an early [[wishing|wish]]. In a lesser form, most inexperienced players will unintentionally engage in this behavior; this is unfortunate as most fountain quaffers die after a few hundred turns, but those with experience don't mind because they can just start again. This is a form of [[metagaming]] considered fairly low. It is the reason why [[water moccasin]]s rank so highly on the [http://alt.org/nethack/topdeaths.html list of top deaths] on [[nethack.alt.org]], and perhaps the explanation why quaffing from fountains in general is a leading cause of death there (along with deaths to [[ant|Team Ant]]).  Wizards who start with a scroll of taming, a [[tooled horn]] or [[leather drum|drum]], or a [[spellbook of charm monster]] are slightly safer in this practice.
+
+===Magic fountain hunting===
+Some players prefer to go hunting for magic fountains for their blessed gain ability effect. This is typically an early-midgame strategy performed after the player is confident they have 4+ Luck and can deal with any of the negative fountain effects they might encounter from a normal fountain. It is a good idea to protect your inventory from curses with a sack. The approach is simple: repeatedly quaff from each randomly-placed fountain until something other than "The cool draught refreshes you." happens. If the fountain is magic, the something else will be the magic effect; if not, the random fountain effect will indicate a non-magic fountain. Don't bother quaffing in [[Minetown]], [[Mines' End]], the [[Oracle]] level, the [[Big Room]], the [[Castle]], or [[Juiblex's swamp]]&mdash;those are never magic. If you should happen to get a wish in the process, so much the better.
+
+You don't lose any expected wishes by doing so, but because the consequences of quaffing are worse than those of dipping, once you know a fountain is non-magical, if you want to try to get wishes from it it is best to do so by dipping objects not quaffing them.
+
+The expected number of items cursed per gain ability effect is {{frac|i|20}}, where i is the number of items you have in your inventory while quaffing. If you drop items (perhaps because you have no sack) it's worth noting that quaffing can put pools on nearby map squares, but not on the square of the fountain itself. <ref>http://www.chiark.greenend.org.uk/~damerell/games/magicfountain.txt</ref> You can drop items you really don't want cursed, such as your [[luckstone]], [[unicorn horn]], or [[bag of holding]], right on the fountain or in a nearby doorway while you quaff, to keep them from ending up at the bottom of a pool.
+
+=== Dipping for Excalibur ===
+
+An obvious strategy for [[lawful]] characters, especially [[valkyrie]]s and [[knight]]s who start the game with a longsword. As soon as they reach level 5, they start dipping their longsword into every (non-[[Minetown]]) fountain they can find until they receive [[Excalibur]]. At level 5, these combat-strong characters may even stand a decent chance against the more dangerous fountain effects, and the hoped-for eventual conversion of the thoroughly rusted, possibly now cursed longsword fixes these issues.
+
+=== Making holy water ===
+
+A [[potion of holy water]] (blessed potion of water) is useful for uncursing and blessing items as well as curing lycanthropy and illness. Potions could be converted into potions of water by dipping into a fountain twice, and then blessed on an [[altar]] as described in the holy water article. Unfortunately, the fountain has a chance of drying up before you have converted all of your potions. The same applies to blanking scrolls and spellbooks.
+
+The solution is to stand on a fountain and dig down. The fountain will be destroyed with a large chance of making several [[Moat|pools]] of water. Potions can then be dipped in them without using up your water supply. Unburden yourself, carry only items you want blanked, rusted or converted to potions of water, and jump into the pool. You will crawl out (and get a scary message). <!-- You can only drown if all adjacent tiles are occupied with monsters, boulders or wall. That's too corner-case to include it here. --> Alternatively, [[water walking boots]] or [[flying]] let you #[[dip]] while standing on the water without getting yourself wet. Beware that potions of acid might explode, although not always. If you jump into pools, they will never deal damage, identify, or convert to water, but they might survive.{{refsrc|src/trap.c|2723}} 
+=== Removing curses ===
+
+Once your character becomes powerful enough to withstand the bad fountain results (water demons, nymphs, and mocassins are the main ones to watch out for), dipping items (especially items that take no water damage) into fountains is one of the more readily-available means to uncurse them.  This is most useful for cursed [[unicorn horn]]s found in bones, and [[magic lamp]]s that happen to generate cursed (uncursing them via fountain means you need less holy water to eventually bless them). It can also be useful for cursed equipment; for instance [[levitation boots]] often generate cursed, provide an important extrinsic, and are usable even if rotted or burnt. (However, levitation boots cannot be dipped into a fountain while worn, so you need to uncurse them in advance.) You should not rely on being able to uncurse items this way, as the fountain will frequently dry up first, but it is frequently worth trying before resorting to consumables like [[scroll of remove curse|scrolls of remove curse]] or [[potion of holy water|potions of holy water]].
+
+=== Obtaining curses ===
+
+Some items are [[Unholy water#Possible uses|more useful cursed]]. If you don't find any [[bones]] piles, the next safest [[conduct]]-proof way to make [[unholy water]] is to dip a [[potion of water]] into fountains until it becomes cursed. Prepare for the hazards! This works best if the game shows the potion's [[BUC]] status because you won't get a message, but you can also keep testing if the potion still [[stack]]s with known-uncursed water. Once you have it, unholy water can be replicated just like holy water.
+
+If you want to kill e.g. 120 [[skeleton]]s, you might want to curse (and polymorph) many unicorn horns. You can curse a very large number of items at once by quaffing. Carry only those items plus the means to defend yourself against snakes, water demons, nymphs. Quaff from fountains until you get the message "This water's no good!" If you run out of fountains, use spellcasting monsters. You will likely need to uncurse your armor when you are finished.
+
+Of course, reading a blessed [[scroll of remove curse]] while confused provides a much safer way to make unholy water.
+
+=== Small swamps ===
+
+In very small rooms, a [[swamp]] may generate with just one water [[pool]], easily mistaken for a fountain. Be careful not to accidentally fall into pools.
+
+== Variants ==
+
+=== SLASH'EM ===
+
+[[SLASH'EM]] changes the chance of getting a wish from the water demon to (8 &minus; DL) / 20. Thus, on earlier levels the chance is a bit higher (on DL 1 the probability of getting a wish from a single fountain is 3.42%), but it never happens below DL 7.
+
+=== SporkHack ===
+In [[SporkHack]], only lawful [[Knight]]s can dip for [[Excalibur]].
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+Rest! This little Fountain runs
+Thus for aye: -- It never stays
+For the look of summer suns,
+Nor the cold of winter days.
+Whose'er shall wander near,
+When the Syrian heat is worst,
+Let him hither come, nor fear
+Lest he may not slake his thirst:
+He will find this little river
+Running still, as bright as ever.
+Let him drink, and onward hie,
+Bearing but in thought, that I,
+Erotas, bade the Naiad fall,
+And thank the great god Pan for all!
+|[ For a Fountain, by Bryan Waller Procter ]
+}}
+
+==References==
+
+<references/>
+
+{{DOD}}
+{{nethack-343|offset=1}}
+{{featured}}
+[[Category:Dungeon features]]}
+&&%s&& %s U {141156 2021-06-25T11:25:22Z {4001279 Umbire the Phantom}  {{ASCII}}
+* {{white|u}} represents a [[unicorn]] or [[horse]]:
+** {{monsymlink|white unicorn}}
+** {{monsymlink|gray unicorn}}
+** {{monsymlink|black unicorn}}
+** {{monsymlink|pony}}
+** {{monsymlink|horse}}
+** {{monsymlink|warhorse}}
+* {{monsymlink|umber hulk}}
+* 'U' is also a [[direction]]al key.
+** Press {{kbd|u}} to move north-east if [[numpad]] movement is off.
+** Press {{kbd|shift|u}} to move far north-east if [[numpad]] movement is off.
+* With [[number_pad]], {{kbd|u}} will [[untrap]].
+* In the [[source code]], the structure named <tt>u</tt> contains all the player-specific variables. See {{sourcecode|you.h|256}} for the structure definition.
+
+==Variants==
+=== SLASH'EM ===
+[[SLASH'EM]] introduces new creatures that use the {{white|u}} and {{white|U}} glyphs:
+
+*{{white|u}} unicorn:
+** {{monsymlink|Pegasus}}
+** {{monsymlink|Nightmare}}
+*{{white|U}} hulk:
+** {{monsymlink|water hulk}}
+
+===UnNetHack===
+[[UnNetHack]] introduces the [[Shambling horror (UnNetHack)|shambling horrors]], which are represented by {{cyan|U}}.
+
+===xNetHack===
+In [[xNetHack]], {{white|U}} now represents aberrations; umber hulks remain in this class, and {{brightmagenta|U}} [[mind flayers]], {{cyan|U}} [[quantum mechanics]], and {{green|U}} [[genetic engineers]] now use this glyph.
+
+===EvilHack===
+[[EvilHack]] also includes the [[Shambling horror (EvilHack)|shambling horror]], which uses the same glyph as in UnNetHack, as well as several other new monsters in the {{mcsl|u}} class:
+
+* [[lesser nightmare]]
+* [[nightmare]]
+* [[Cauchemar]]
+* [[Pegasus]]
+* [[Pale Horse]]
+* [[White Horse]]
+* [[Red Horse]]

@@ -1,0 +1,1000 @@
+:''See [[Template:Help/{{PAGENAME}}#Example]]''
+
+{{Category|Internationalization templates}}
+</noinclude>}
+&&%s&& %s Template:GPL {56562 2010-11-13T20:26:13Z {831 Tjr} 1 revision: Import mediawiki help files <br style="clear:both;" />
+{| align="center"  style="width:95%; background-color:#f8f8f8; border:2px solid #e0e0e0;  padding:5px;"
+|-
+| [[Image:Heckert GNU white.svg|50px|GNU head]]
+| align="center" | ''This work is'' '''''[[w:Free software|free software]]'''''; ''you can redistribute it and/or modify it under the terms of the '''[http://www.gnu.org/copyleft/gpl.html GNU General Public License]''' as published by the [[w:Free Software Foundation|Free Software Foundation]]; either version 2 of the license, or (at your option) any later version. This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.''
+|}
+<includeonly>[[Category:GPL images|{{PAGENAME}}]]</includeonly>
+<noinclude>[[Category:License templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Unsigned2 {78326 2012-06-05T05:23:50Z {0 }  {{{{{|safesubst:}}}unsigned|1={{{2}}}|2={{{1|}}}}}<noinclude>[[Category:Templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template talk:Unsigned2 {56612 2010-11-14T03:16:23Z {366 Ilmari Karonen} I don't think that's gonna work without some MediaWiki hacking ==ease of use==
+I wish the template could <nowiki>{{subst:</nowiki> the appropriate anonymous contributor all by itself. Usually, it's the last editor of the page. Please make the template look up the correct "input" parameters all by itself. [[User:Tjr|Tjr]] 00:32, 14 November 2010 (UTC)
+
+I (hope I) made the first argument default to <nowiki>{{#time: H:i, j M Y|{{REVISIONTIMESTAMP}}}} (UTC)</nowiki>, and the second one to <nowiki>{{REVISIONUSER}}</nowiki>. --[[User:Tjr|Tjr]] 02:46, 14 November 2010 (UTC)
+
+Didn't work.[[User:Tjr|Tjr]] 02:56, 14 November 2010 (UTC)
+
+:You could try it with <nowiki>{{<includeonly>safesubst:</includeonly>REVISIONUSER}}</nowiki> etc., but I don't think that's going to work: it'll just show ''your'' username and the time ''you'' edited the page.  I don't think MediaWiki has any parser function to get information about the ''previous'' editor.  I suppose one could be written, though.  (It probably wouldn't be quite as useful on busy wikis, but you're right, here there's a good chance that whoever left the comment was the previous editor.)  --[[User:Ilmari Karonen|Ilmari Karonen]] 03:16, 14 November 2010 (UTC)}
+&&%s&& %s Showbuc {79262 2012-09-03T18:02:00Z {4000259 RedFeather}  {{patch
+ |name=ShowBUC
+ |author=Pasi Kallinen
+ |download=http://bilious.alt.org/~paxed/nethack/nh343-showbuc.diff
+ |bilious=198
+}}
+
+This [[patch]] adds a config [[option]] to always show [[BUC]] status if it is known. By default, "[[uncursed]]" is never shown to [[priest]]s, or to anybody for [[items]] with known [[charge]]s or [[enchantment]].
+
+The [[NAO]] game server has this patch enabled.
+
+==See Also==
+* [[Options#showbuc]]
+
+[[Category:Patches]]}
+&&%s&& %s Category:License templates {56622 2010-11-14T05:19:36Z {366 Ilmari Karonen} create missing cat Templates for marking the licensing status of files and pages.
+
+[[Category:Templates]]}
+&&%s&& %s ShowBUC {56628 2010-11-14T06:28:42Z {630 Paxed} #REDIRECT [[Showbuc]] #REDIRECT [[Showbuc]]}
+&&%s&& %s MediaWiki:AJAXLogin.js {91336 2014-12-05T12:04:11Z {366 Ilmari Karonen} it's probably no longer necessary to tell people that they can use their old Wikia accounts to log in // <source lang="JavaScript">
+/*
+ * MediaWiki AJAX login script.
+ * This script uses jQuery UI and MediaWiki API to display an on-page login dialog
+ * when the user clicks on a login link.  (Middle-clicking still works normally).
+ *
+ * This is still an early version, and not all bugs have been worked out yet.
+ * Known bugs and issues include:
+ *  - There is no way to select if you want to log in permanently or for this
+ *    browser session only, it's always permanent.  The MediaWiki API doesn't
+ *    currently provide any way to change that, and since the *Token cookie is
+ *    HTTPOnly, it can't even be cleared by javascript.
+ *  - There's no localization, and the dialog text is hardcoded (except for the
+ *    site name).  We should use an API query to load the text.
+ *  - There is no "e-mail new password" button.  Worked around by providing a
+ *    link to the non-AJAX upload form.
+ *  - Username/password autocompletion works spottily if at all.  Need to figure
+ *    out how to trigger it reliably.
+ */
+
+mw.loader.using( 'jquery.ui.dialog', function () { $( function () {
+    var ajaxLoginDialog;
+
+    function doAjaxLogin ( user, pass, token ) {
+        var params = {
+            action : 'login',
+            lgname : user,
+            lgpassword : pass,
+            format : 'json'
+        };
+        if ( token ) params.lgtoken = token;
+        $.post( wgScriptPath + '/api.php', params, function ( data ) {
+            var error;
+            if ( data.error ) {
+                error = 'An internal error occurred: ' + data.error.info;
+            } else switch ( data.login.result ) {
+              case 'NeedToken':
+                doAjaxLogin( user, pass, data.login.token );
+                return;
+              case 'Success':
+                // XXX: for some reason, an immediate reload sometimes shows the user still logged out, so give it half a second...
+                setTimeout( function () {
+                    ajaxLoginDialog.dialog('close');
+                    if ( wgCanonicalNamespace == "Special" && wgCanonicalSpecialPageName == "Userlogout" ) {
+                        location.href = $('#mw-returnto a:first').attr('href');
+                    } else if ( wgAction == 'edit' || wgAction == 'submit' ) {
+                        var button = $( $('#wikiDiff').length ? '#wpDiff' : '#wpPreview' );
+                        if ( button.length ) button[0].click();
+                        else location.reload(true);  // probably a protected page we couldn't edit
+                    } else {
+                        location.reload(true);
+                    }
+                }, 500 );
+                return;
+              case 'Illegal':
+              case 'NotExists':
+                error = 'The user "' + user + '" does not exist on this wiki yet.';
+                ajaxLoginDialog.find('#ajaxLoginUsername').focus();
+                break;
+              case 'WrongPass':
+              case 'WrongPluginPass':
+                error = 'The password you gave was incorrect.  Please try again.';
+                ajaxLoginDialog.find('#ajaxLoginPassword').val( "" ).focus();
+                break;
+              default:
+                error = 'Unexpected login result code: ' + data.login.result;
+            }
+            ajaxLoginDialog.find('#ajaxLoginError').text( error );
+            ajaxLoginDialog.dialog( 'option', 'disabled', false );
+        }, 'json');
+    }
+
+    function ajaxLoginSubmit () {
+        var user = ajaxLoginDialog.find('#ajaxLoginUsername').val();
+        var pass = ajaxLoginDialog.find('#ajaxLoginPassword').val();
+        if (!/[^\s_]/.test(user)) {
+            ajaxLoginDialog.find('#ajaxLoginUsername').focus();
+        } else if ("" == pass) {
+            ajaxLoginDialog.find('#ajaxLoginPassword').focus();
+        } else {
+            ajaxLoginDialog.dialog( 'option', 'disabled', true );
+            ajaxLoginDialog.find('#ajaxLoginError').text( "" );
+            doAjaxLogin( user, pass );
+        }
+    }
+
+    ajaxLoginDialog = $(
+        '<form id=ajaxLoginForm><p>Don\'t have an account? <a href="' + wgScript + '?title=Special:UserLogin&type=signup" style="color:#0645AD">Create an account</a>.</p><div id=ajaxLoginError style="color:red;font-weight:bold;"></div><table><tr><th align=right><label for=ajaxLoginUsername>Username:</label></th><td><input id=ajaxLoginUsername name=wpName /></td></tr><tr><th align=right><label for=ajaxLoginPassword>Password:</label></th><td><input type=password id=ajaxLoginPassword name=wpPassword /></td></tr></table><p style="font-size:smaller">Forgot your password? <a href="' + wgScript + '?title=Special:UserLogin" style="color:#0645AD">Use this form</a>.</p></form>'
+    ).dialog( {
+        title : 'Log in to ' + wgSiteName,
+        buttons: { 'Log in' : ajaxLoginSubmit },
+        width : 400,
+        autoOpen : false,
+        modal: true
+    } );
+
+    ajaxLoginDialog.find('input').keyup( function (event) {
+        if (event.which == 13) ajaxLoginSubmit();  // submit on enter
+    } );
+
+    window.ajaxLogin = function (event) {
+        if (event) event.preventDefault();
+        ajaxLoginDialog.dialog('open').find('#ajaxLoginUsername').focus();
+        return false;
+    };
+
+    $('#pt-anonlogin a, a[href*="Special:UserLogin"]:not([href*="signup"], #ajaxLoginForm a)').click( window.ajaxLogin );
+} ); } );
+
+// </source>}
+&&%s&& %s Sokobag {56641 2010-11-14T09:24:51Z {0 } Redirected page to [[Sokoban Level 4a]] #REDIRECT [[Sokoban Level 4a]]}
+&&%s&& %s Reflectoban {56642 2010-11-14T09:27:07Z {0 } Redirected page to [[Sokoban Level 4b]] #REDIRECT [[Sokoban Level 4b]]}
+&&%s&& %s Stridently {56680 2010-11-15T03:56:32Z {831 Tjr} Redirected page to [[Alignment record#Checking your alignment]] #redirect [[Alignment record#Checking_your_alignment]]}
+&&%s&& %s Fervently {56681 2010-11-15T04:19:47Z {831 Tjr} Redirected page to [[Alignment record#Checking your alignment]] #redirect [[Alignment_record#Checking_your_alignment]]}
+&&%s&& %s MediaWiki:Print.css {81548 2012-11-20T18:22:21Z {630 Paxed} try a fix /*<pre> CSS placed here will affect the print output */
+
+/* The wiki name is mentioned enough times as is */
+#siteSub { display:none; }
+
+/* Hide some useless stuff in the footer */
+#footer-places,
+#footer-icons,
+#nhw-adlink { display:none; }
+
+/* Hide RC stuff */
+.page-Special_RecentChanges fieldset.rcoptions,
+.page-Special_RecentChanges .mw-usertoollinks,
+.page-Special_RecentChanges .mw-rollback-link { display:none; }
+
+
+.stub {
+ display:none;
+}
+
+.ttyscreen {
+ page-break-inside: avoid;
+ orphans:25;
+ widows:25;
+}
+
+pre {
+ border: 1px dashed #808080;
+ padding: 0.25em;
+}
+
+#catlinks,
+.printfooter {
+ display: none;
+}
+
+#footer {
+ border: none;
+ text-align: right;
+ font-size: smaller;
+}
+li#footer-info-viewcount {
+ display: none;
+}}
+&&%s&& %s Severed hand {103913 2016-09-28T20:25:42Z {4000608 EtriganZola}  {{comestible
+  |color=brown
+  |name=severed hand
+  |cost=0
+  |nutrition=40
+  |turns=1
+  |weight=1
+  |conduct=meat
+}}
+
+In SLASH'EM, a '''severed hand''' is generally only seen as the [[base item]] for [[the Hand of Vecna]]. It has strong parallels with an [[eyeball]]. It is not randomly generated, but you can find a normal one in a [[bones]] level, or you can even [[wish]] for one.
+
+The game will always ask for confirmation if one attempts to eat a severed hand ("Are you sure you want to eat that? [ynq] (n)"), as eating any [[artifact]] severed hand{{refsrc|eat.c|2128|version=SLASH'EM 0.0.7E7F2}} will do 150-199 damage. However, the only artifact severed hand is the [[Hand of Vecna]]. When eaten, a severed hand gives 40 nutrition points with the message: "This severed hand is delicious!". Oddly enough, it isn't considered cannibalism to eat one, it's just meat. A non-[[Hand of Vecna]] severed hand can't be sacrificed.
+
+==See also==
+*[[Hand of Vecna]]
+*[[eyeball]]
+*[[baseball bat]]
+*[[rapier]]
+*[[runesword]]
+*[[tsurugi]]
+
+==References==
+<references/>
+
+[[Category:SLASH'EM items]]}
+&&%s&& %s Eye of the beholder {63320 2011-01-14T01:57:17Z {723 Scorchgeek} fixed double redirect #REDIRECT [[The Eye of the Beholder]]}
+&&%s&& %s Eyeball {142766 2021-09-18T03:14:52Z {4001463 Actual-nh} Grammar/style {{comestible
+  |color=white
+  |name=eyeball
+  |cost=0
+  |nutrition=10
+  |turns=1
+  |weight=1
+  |conduct=meat
+}}
+
+An '''eyeball''' is a [[SLASH'EM]] [[comestible]] that serves as the [[base item]] for the [[Eye of the Beholder]]. It has strong parallels with a [[severed hand]]. It is not randomly generated, but you can find a normal one in a [[bones]] level if you already have the Eye of the Beholder, or you can even [[wish]] for one.
+
+Since eating any [[artifact]] eyeball does 150-199 damage{{refsrc|eat.c|2118|version=SLASH'EM 0.0.7E7F2}}, the game will always ask for confirmation upon attempting to eat one("Are you sure you want to eat that? [ynq] (n)"). However, the only artifact eyeball in the game is the [[Eye of the Beholder]]. When eaten, an eyeball gives 10 nutrition points with the message: "This eyeball is delicious!". In contrast to the Eye of the Beholder, an eyeball can't be sacrificed.
+
+==See also==
+*[[The Eye of the Beholder]]
+*[[severed hand]]
+*[[baseball bat]]
+*[[rapier]]
+*[[runesword]]
+*[[tsurugi]]
+
+==Rference==
+<references/>
+
+[[category:SLASH'EM items]]}
+&&%s&& %s Hand of vecna {56898 2010-11-16T15:14:31Z {831 Tjr} Redirected page to [[The Hand of Vecna]] #redirect [[The_Hand_of_Vecna]]}
+&&%s&& %s SLASH'EM source code {56926 2010-11-16T23:59:56Z {375 Ion frigate} Redirect to current version's source #REDIRECT [[SLASH'EM_0.0.7E7F2_source_code]]}
+&&%s&& %s Difficult {134876 2020-07-06T20:04:56Z {4000978 Aximili} Changed redirect target from [[Monsters (by difficulty)]] to [[Monster difficulty]] #redirect [[Monster difficulty]]}
+&&%s&& %s Template:Random true rumor {68785 2011-02-08T21:23:11Z {0 } Check the script at http://pastebin.com/raw.php?i=Su9PQsxF in [[MediaWiki:Common.js]]. <noinclude>[[Category:Templates|{{PAGENAME}}]]This template puts a placeholder on the page which is populated with a random true rumor via [[MediaWiki:Common.js]].<br/></noinclude><span class="nhw-randomtruerumor"><!-- this is the fallback in case Common.js fails -->Acid blobs should be attacked bare-handed.</span>}
+&&%s&& %s Net hack {56993 2010-11-18T10:04:42Z {366 Ilmari Karonen} #REDIRECT [[NetHack]] #REDIRECT [[NetHack]]}
+&&%s&& %s Sokoban level {56994 2010-11-18T10:05:27Z {366 Ilmari Karonen} #REDIRECT [[Sokoban]] #REDIRECT [[Sokoban]]}
+&&%s&& %s Nethack timeline {57009 2010-11-18T14:15:20Z {630 Paxed} #REDIRECT [[Game history]] #REDIRECT [[Game history]]}
+&&%s&& %s MediaWiki:Contributing {57023 2010-11-18T15:32:27Z {366 Ilmari Karonen} fix sidebar capitalization Contributing}
+&&%s&& %s Create familiar {57031 2010-11-18T18:52:02Z {831 Tjr} Redirected page to [[Spellbook of create familiar]] #redirect [[Spellbook of create familiar]]}
+&&%s&& %s Cure sickness {57032 2010-11-18T18:52:36Z {831 Tjr} Redirected page to [[Spellbook of cure sickness]] #redirect [[Spellbook of cure sickness]]}
+&&%s&& %s Dev/null/nethack tournament {57033 2010-11-18T18:57:16Z {831 Tjr} redirected because some of the automatic accessibility links screw up with the subpages feature. #REDIRECT [[:/dev/null/nethack tournament]]}
+&&%s&& %s FOOBIE BLETCH {57040 2010-11-18T19:03:58Z {831 Tjr} Redirected page to [[Randomized appearance#Scrolls]] #redirect [[Randomized_appearance#Scrolls]]}
+&&%s&& %s GARVEN DEH {57039 2010-11-18T19:03:55Z {831 Tjr} Redirected page to [[Randomized appearance#Scrolls]] #redirect [[Randomized_appearance#Scrolls]]}
+&&%s&& %s TEMOV {57038 2010-11-18T19:03:51Z {831 Tjr} Redirected page to [[Randomized appearance#Scrolls]] #redirect [[Randomized_appearance#Scrolls]]}
+&&%s&& %s Vlads tower {57057 2010-11-19T00:37:40Z {831 Tjr} Redirected page to [[Vlad's Tower]] #redirect [[Vlad's_Tower]]}
+&&%s&& %s Classes {57073 2010-11-19T11:20:47Z {0 } Redirected page to [[Role]] #redirect [[role]]}
+&&%s&& %s Forgotten spell {57084 2010-11-19T15:42:32Z {831 Tjr} Redirected page to [[Spellcasting#Forgotten spells]] #redirect [[Spellcasting#Forgotten_spells]]}
+&&%s&& %s Nethacker {57114 2010-11-20T07:01:36Z {831 Tjr} Redirected page to [[NetHack]] #redirect [[NetHack]]}
+&&%s&& %s Wiki hack {57115 2010-11-20T07:02:08Z {831 Tjr} Redirected page to [[NetHackWiki:About]] #redirect [[NetHackWiki:About]]}
+&&%s&& %s Nethack wiki {57116 2010-11-20T07:02:56Z {831 Tjr} Redirected page to [[Main Page]] #redirect [[Main_Page]]}
+&&%s&& %s Nethack spoilers {57117 2010-11-20T07:03:04Z {831 Tjr} Redirected page to [[Spoiler]] #redirect [[spoiler]]}
+&&%s&& %s Nethack spoiler {57118 2010-11-20T07:03:21Z {831 Tjr} Redirected page to [[Spoiler]] #redirect [[spoiler]]}
+&&%s&& %s Cursed armor {57119 2010-11-20T07:03:55Z {831 Tjr} Redirected page to [[Curse removal]] #redirect [[Curse removal]]}
+&&%s&& %s Game nethack {57120 2010-11-20T07:04:06Z {831 Tjr} Redirected page to [[NetHack]] #redirect [[NetHack]]}
+&&%s&& %s Nethack game {57121 2010-11-20T07:04:15Z {831 Tjr} Redirected page to [[NetHack]] #redirect [[NetHack]]}
+&&%s&& %s Nethack download {57124 2010-11-20T07:11:11Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Download nethack {57125 2010-11-20T07:12:12Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack windows {57126 2010-11-20T07:12:16Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack for windows {57127 2010-11-20T07:12:19Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Windows nethack {57128 2010-11-20T07:12:22Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack tiles {57129 2010-11-20T07:12:25Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Online nethack {57130 2010-11-20T07:14:03Z {831 Tjr} redirect to Nethack.alt.org. There are other servers, but this is what uninformed people likely want. #redirect [[Nethack.alt.org]]}
+&&%s&& %s Nethack online {57131 2010-11-20T07:14:18Z {831 Tjr} Redirected page to [[Nethack.alt.org]] #redirect [[Nethack.alt.org]]}
+&&%s&& %s Nethack sokoban {57132 2010-11-20T07:14:30Z {831 Tjr} Redirected page to [[Sokoban]] #redirect [[Sokoban]]}
+&&%s&& %s Sokoban nethack {57133 2010-11-20T07:14:38Z {831 Tjr} Redirected page to [[Sokoban]] #redirect [[Sokoban]]}
+&&%s&& %s Nethack pet {57134 2010-11-20T07:14:48Z {831 Tjr} Redirected page to [[Pet]] #redirect [[pet]]}
+&&%s&& %s Nethack armor {57135 2010-11-20T07:15:00Z {831 Tjr} Redirected page to [[Armor]] #redirect [[armor]]}
+&&%s&& %s Linux nethack {57136 2010-11-20T07:15:11Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Play nethack {57137 2010-11-20T07:15:27Z {831 Tjr} Redirected page to [[Nethack.alt.org]] #redirect [[Nethack.alt.org]]}
+&&%s&& %s Nethack android {57138 2010-11-20T07:15:47Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Android nethack {57139 2010-11-20T07:15:58Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack for android {57140 2010-11-20T07:16:14Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack qt {57141 2010-11-20T07:16:38Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Cursed artifacts {57142 2010-11-20T07:17:03Z {831 Tjr} Redirected page to [[Curse removal]] #redirect [[curse_removal]]}
+&&%s&& %s Qt nethack {57155 2010-11-20T09:43:26Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Psp nethack {57156 2010-11-20T09:44:21Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack for psp {57157 2010-11-20T09:44:25Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack psp {57158 2010-11-20T09:44:29Z {831 Tjr} Redirected page to [[NetHack#Download]] #redirect [[NetHack#Download]]}
+&&%s&& %s Nethack level {57159 2010-11-20T09:45:30Z {831 Tjr} Redirected page to [[Level]] #redirect [[Level]]}
+&&%s&& %s Nethack guide {57160 2010-11-20T09:49:20Z {831 Tjr} Redirected page to [[Standard strategy]] #redirect [[Standard_strategy]]}
+&&%s&& %s Command {79279 2012-09-04T09:00:01Z {0 }  #REDIRECT [[Commands]]}
+&&%s&& %s Nethack commands {57164 2010-11-20T09:56:20Z {831 Tjr} Redirected page to [[Category:Commands]] #REDIRECT[[:Category:Commands]]}
+&&%s&& %s Standard strategy (slashem) {134862 2020-07-06T19:51:56Z {4000978 Aximili} Changed redirect target from [[Standard strategy - SLASH'EM]] to [[Standard strategy (SLASH'EM)]] #redirect [[Standard strategy (SLASH'EM)]]}
+&&%s&& %s Menu controls {136921 2021-01-10T04:55:11Z {4001476 Infinigon} Moved pick up tip to the pick up page {{Keyboard commands}}
+Certain keys are used for '''menu controls''':
+
+{| class="prettytable"
+|-
+! Action
+! Default key
+! Configuration option
+! Notes
+|-
+| Go to next page
+| {{kbd|>}}
+| menu_next_page
+| In TTY, {{kbd|space}} is an alias for this.
+|-
+| Go to previous page
+| {{kbd|<}}
+| menu_previous_page
+|
+|-
+| Go to first page
+| {{kbd|^}}
+| menu_first_page
+|
+|-
+| Go to last page
+| {{kbd| {{!}}}}
+| menu_last_page
+|
+|-
+| Select items on page
+| {{kbd|,}}
+| menu_select_page
+|
+|-
+| Select all items
+| {{kbd|.}}
+| menu_select_all
+|
+|-
+| Deselect items on page
+| {{kbd|\}}
+| menu_deselect_page
+|
+|-
+| Deselect all items
+| {{kbd|-}}
+| menu_deselect_all
+|
+|-
+| Invert page selection
+| {{kbd|~}}
+| menu_invert_page
+|
+|-
+| Invert all selected
+| {{kbd|@}}
+| menu_invert_all
+|
+|-
+| Search and toggle
+| {{kbd|:}}
+| menu_search
+| Implemented by the TTY, Amiga, Gem and [[X11]] window ports.
+|}
+
+Also on some menus in the [[tty]] and [[curses interface]]s, pressing the symbol representing an item class ({{kbd|$}} {{kbd|)}} {{kbd|[}} {{kbd|?}} {{kbd|!}} {{kbd|+}} {{kbd|(}} {{kbd|*}}) will toggle all items in the corresponding item groups. The [[menu_objsyms]] option shows that in the menu headings.
+
+[[Category:Commands]]
+{{nethack-360}}}
+&&%s&& %s Locust {130815 2020-01-14T10:35:26Z {4001279 Umbire the Phantom}  {{monster
+ |name=locust
+ |tile=&nbsp;<!-- SporkHack has no tiles (yet?) -->
+ |difficulty=?
+ |level=9
+ |experience=?
+ |speed=12
+ |AC=?
+ |MR=?
+ |align=?
+ |frequency=?
+ |genocidable=Yes
+ |attacks=*1d8 physical
+*1d4 [[disease]]
+ |weight=?
+ |nutr=?
+ |size=?
+ |resistances=Poison
+ |resistances conveyed=Poison (? %)
+ |attributes={{attributes|A locust|animal=1|fly=1|nohands=1|pois=1|sgroup=1}}
+ |reference=
+}}
+The '''locust''' is a new [[monster]] that appears in [[SporkHack]] and [[UnNetHack]]. They are notable for their [[disease]] attack.
+
+==Strategy==
+If you encounter these before you have a [[unicorn horn]], then [[Elbereth]] may help to avoid being hit; if you have no means of curing disease in your inventory, be prepared to pray after fighting these. Late in the game, these may be summoned by [[aligned priest]]s who cast [[summon insects]]; your [[AC]] should be low enough by then to dodge the majority of locust attacks, so the unicorn horn remains a sufficient way to cure their disease.
+
+==Encyclopedia entry (UnNetHack) ==
+{{encyclopedia|
+	A minute invertebrate animal; one of the class _Insecta_. The
+	true insects or hexapods have the body divided into a head,
+	a thorax of 3 segments, each of which bears a pair of legs,
+	and an abdomen of 7 to 11 segments, and in development usually
+	pass through a metamorphosis. There are usually 2 pairs of wings,
+	sometimes one pair or none.
+		[ Webster's Comprehensive International Dictionary 
+		  of the English Language ]
+
+	Else, if thou refuse to let my people go, behold, to morrow will 
+	I bring the locusts into thy coast:
+	And they shall cover the face of the earth, that one cannot be able
+	to see the earth: and they shall eat the residue of that which is 
+	escaped, which remaineth unto you from the hail, and shall eat every
+	tree which groweth for you out of the field: 
+	And they shall fill thy houses, and the houses of all thy servants,
+	and the houses of all the Egyptians; which neither thy fathers, nor
+	thy fathers' fathers have seen, since the day that they were upon the
+	earth unto this day. And he turned himself, and went out from Pharaoh.
+		|[ Exodus, 10:4-6 ]
+}}
+{{stub}}
+
+[[Category:SporkHack monsters]]
+[[Category:UnNetHack monsters]]}
+&&%s&& %s NetHackWiki:Category {57365 2010-11-21T16:52:38Z {831 Tjr} Redirected page to [[NetHackWiki:Categories]] #redirect [[NetHackWiki:Categories]]}
+&&%s&& %s Hyphen {57439 2010-11-22T17:23:14Z {27 Ais523} redirect from name of ASCII symbol to the symbol itself, to bluen a link on [[Rogue]] #REDIRECT [[-]]}
+&&%s&& %s Slash'em monsters {57457 2010-11-22T21:34:37Z {630 Paxed} #REDIRECT [[Monster (SLASH'EM)]] #REDIRECT [[Monster (SLASH'EM)]]}
+&&%s&& %s Paralysed {57496 2010-11-23T11:10:48Z {366 Ilmari Karonen} #REDIRECT [[Paralysis]] #REDIRECT [[Paralysis]]}
+&&%s&& %s Paralyzed {57497 2010-11-23T11:12:42Z {366 Ilmari Karonen} redirect both spellings #REDIRECT [[Paralysis]]}
+&&%s&& %s Medusa's swamp {57501 2010-11-23T14:03:33Z {366 Ilmari Karonen} #REDIRECT [[Medusa's Island]] #REDIRECT [[Medusa's Island]]}
+&&%s&& %s Medusa's Swamp {57502 2010-11-23T14:04:07Z {366 Ilmari Karonen} #REDIRECT [[Medusa's Island]] #REDIRECT [[Medusa's Island]]}
+&&%s&& %s Daggerstorm {57506 2010-11-23T16:30:49Z {27 Ais523} #REDIRECT [[Storm#DaggerStorm]] #REDIRECT [[Storm#DaggerStorm]]}
+&&%s&& %s Attack wand {105890 2017-06-03T16:16:44Z {4000767 Gufier} Clarified reference to attack spells A general name for the types of [[wand]] which deal [[damage]] directly (often duplicating the effect of a [[Spellbook#Attack|spell of the Attack school]]): [[wand of fire]], [[wand of cold]], [[wand of lightning]], [[wand of magic missile]], and [[wand of striking]]. Most of these types of wands also have uses in NetHack unrelated to their uses in attacking opponents directly. However, they all share that purpose and work much the same way when used for that purpose, and so are often grouped together in strategy advice. The [[fire horn]] and [[frost horn]], while not being wands, also have similar uses to attack wands, and can be substituted for them in strategies that require them.
+
+If monsters [[Monster magic resistance|resist the attack]], the damage is cut in half.
+
+[[Intelligent]] [[monster]]s will use these wands on you.
+
+{{stub}}
+[[Category:wands]]
+{{nethack-343}}}
+&&%s&& %s Help:Talk page {57511 2010-11-23T17:52:50Z {366 Ilmari Karonen} #REDIRECT [[Help:Talk pages]] #REDIRECT [[Help:Talk pages]]}
+&&%s&& %s Log file {58788 2010-11-23T19:58:50Z {366 Ilmari Karonen} #REDIRECT [[Logfile]] #REDIRECT [[Logfile]]}
+&&%s&& %s Levitating {59818 2010-11-23T22:37:29Z {831 Tjr} Redirected page to [[Levitation]] #redirect [[Levitation]]}
+&&%s&& %s Identifiable {59819 2010-11-23T22:38:01Z {831 Tjr} Redirected page to [[Identification]] #redirect [[Identification]]}
+&&%s&& %s Speed runner {59833 2010-11-24T01:24:38Z {831 Tjr} Redirected page to [[Speed ascension]] #redirect [[Speed ascension]]}
+&&%s&& %s Tiny-sized {59837 2010-11-24T01:31:38Z {831 Tjr} Redirected page to [[Physical size]] #redirect [[Physical size]]}
+&&%s&& %s UI {59855 2010-11-24T16:57:24Z {630 Paxed} #REDIRECT [[User interface]] #REDIRECT [[User interface]]}
+&&%s&& %s Used armor dealership {59859 2010-11-24T17:35:37Z {635 PeterGFin} Typeofshop #REDIRECT [[Shop #Table of shops]]}
+&&%s&& %s Second-hand bookstore {59860 2010-11-24T17:36:06Z {635 PeterGFin} Redirected page to [[Shop#Table of shops]] #REDIRECT [[Shop #Table of shops]]}
+&&%s&& %s Liquor emporium {59861 2010-11-24T17:36:31Z {635 PeterGFin} Redirected page to [[Shop#Table of shops]] #REDIRECT [[Shop #Table of shops]]}
+&&%s&& %s Antique weapons outlet {59862 2010-11-24T17:36:54Z {635 PeterGFin} Redirected page to [[Shop#Table of shops]] #REDIRECT [[Shop #Table of shops]]}
+&&%s&& %s Delitacessan {59863 2010-11-24T17:37:42Z {635 PeterGFin} Redirected page to [[Shop#Table of shops]] #REDIRECT [[Shop #Table of shops]]}
+&&%s&& %s Jewelers {59864 2010-11-24T17:38:06Z {635 PeterGFin} Redirected page to [[Shop#Table of shops]] #REDIRECT [[Shop #Table of shops]]}
+&&%s&& %s Rare books {59866 2010-11-24T17:41:36Z {635 PeterGFin} Redirected page to [[Shop#Table of shops]] #REDIRECT [[shop #Table of shops]]}
+&&%s&& %s Lighting Store {59868 2010-11-24T17:43:19Z {635 PeterGFin} Redirected page to [[Shop#Table of shops]] #REDIRECT [[shop #Table of shops]]}
+&&%s&& %s Xlogfile {140999 2021-06-16T18:23:36Z {4001463 Actual-nh} /* File format */ Grammar/style {{DISPLAYTITLE:xlogfile}}
+{{stub}}
+
+{{patch
+ |name=xlogfile
+ |author=Aardvark Joe
+ |bilious=289
+}}
+
+'''xlogfile''', or the extended [[logfile]], is a [[compile-time option]] for NetHack that makes the game log more data at the end of a game than is stored by default in the regular [[logfile]]
+
+The xlogfile began as a [[patch]] for [[NetHack 3.4.3]]. It was incorporated into the mainline in [[NetHack 3.6.0]]. It is an optional feature, enabled by default, and can be removed by commenting out the definition of XLOGFILE in include/config.h.
+
+== File format ==
+
+The data is saved into a file named <code>xlogfile</code> in the same directory as the normal logfile. Each line contains several <tt>field=value</tt> pairs, delimited by tabs. For example:
+ version=3.6.3	points=972	deathdnum=0	deathlev=4	maxlvl=5	hp=0	maxhp=48	deaths=1	deathdate=20191206	birthdate=20191206	uid=5	role=Val	race=Hum	gender=Fem	align=Law	name=merpish	death=killed by a water elemental	conduct=0xf80	turns=3711	achieve=0x0	realtime=708	starttime=1575647272	endtime=1575647980	gender0=Fem	align0=Law	flags=0x4
+
+In the original patch, fields are delimited by colons.
+
+Most of the fields are self-explanatory, or are the same as in the normal [[logfile]]. Exceptions are:
+
+*[[conduct]]: A bitfield in hexadecimal format:
+**0x001: [[Foodless]]
+**0x002: Vegan
+**0x004: Vegetarian
+**0x008: [[Atheist]]
+**0x010: [[Never hit with a wielded weapon|Weaponless]]
+**0x020: [[Pacifist]]
+**0x040: [[Illiterate]]
+**0x080: Polypileless
+**0x100: Polyselfless
+**0x200: [[Wishless]]
+**0x400: Artifact wishless
+**0x800: Genocideless
+*achieve: A bitfield in hexadecimal format:
+**0x0001: Got the [[Bell of Opening]]
+**0x0002: Entered [[Gehennom]]
+**0x0004: Got the [[Candelabrum of Invocation]]
+**0x0008: Got the [[Book of the Dead]]
+**0x0010: Performed the [[Invocation]]
+**0x0020: Got the [[Amulet of Yendor]]
+**0x0040: Was in the [[End Game]]
+**0x0080: Was on the [[Astral Plane]]
+**0x0100: Ascended
+**0x0200: Got the [[Luckstone]] at [[Mines' End]]
+**0x0400: Finished [[Sokoban]]
+**0x0800: Killed [[Medusa]]
+**0x1000: [[Zen]] conduct intact
+**0x2000: [[Nudist]] conduct intact
+*realtime: How long the game was, in seconds.
+*starttime and endtime: Seconds since [[wikipedia:UNIX Epoch|UNIX Epoch]].
+*gender0: The original (starting) [[gender]].
+*align0: The original (starting) [[alignment]].
+*death: All colons are replaced with underscores, otherwise the same as in the normal logfile.
+*flags: A bitfield in hexadecimal format:{{reffunc|topten.c|encodexlogflags}}
+**0x1: [[Wizard mode]]
+**0x2: [[Discover mode]]
+**0x4: Never loaded a [[Bones]] file
+
+{{upcoming|NetHack 3.7.0|The fields <code>conductX</code> and <code>achieveX</code> are added that encode conducts and game achievements in text form, allowing for easier addition of new conducts and achievements and making the file easier to read by humans.}}
+
+==References==
+<references/>
+
+[[Category:Annotations]]
+[[Category:Patches]]
+{{nethack-366}}}
+&&%s&& %s Extended logfile {59878 2010-11-24T19:50:33Z {630 Paxed} #REDIRECT [[Xlogfile]] #REDIRECT [[Xlogfile]]}
+&&%s&& %s Monster MR {59885 2010-11-24T22:11:42Z {375 Ion frigate} Redirected page to [[Magic resistance (monster)]] #REDIRECT [[magic resistance (monster)]]}
+&&%s&& %s Rocks {59922 2010-11-25T15:21:31Z {27 Ais523} redirect from plural to singular #REDIRECT [[Rock]]}
+&&%s&& %s ODSM {59947 2010-11-26T03:09:13Z {375 Ion frigate} Redirected page to [[Orange dragon scale mail]] #REDIRECT [[Orange dragon scale mail]]}
+&&%s&& %s Slashem monsters {59961 2010-11-26T15:32:33Z {630 Paxed} #REDIRECT [[Monster (SLASH'EM)]] #REDIRECT [[Monster (SLASH'EM)]]}
+&&%s&& %s $1 {60120 2010-11-26T17:37:19Z {831 Tjr} Google does not interpret <script>. Redirect to let the Vector skin at least pass link juice around. #redirect [[Main_Page]]}
+&&%s&& %s Cockatoo {74069 2011-10-10T04:50:59Z {4000142 Erica} fix frequency {{ monster
+ |name=cockatoo
+ |difficulty=4
+ |level=3
+ |experience=31
+ |speed=15
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 1d4
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A cockatoo|animal=1|nohands=1|herbivore=1|wander=1|domestic=1|infravisible=1|sgroup=1}}
+ |size=Small
+ |nutr=30
+ |weight=75
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line331]]
+}}
+
+
+A cockatoo is a new domestic monster in [[SLASH'EM]].  It can be tamed with [[vegan]] food, but it does not make a terribly good pet. Although comparable to a [[kitten]] or [[little dog]], it cannot [[grow up]].
+
+It cannot fly, strangely enough.  Do not displace it into water or lava!
+
+==Sounds==
+
+Cockatoos share with [[parrot]]s an interesting array of sounds when #chatted to; see that article for more information.
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Parrot {148087 2022-09-05T12:11:57Z {4001605 NetSysFire} /* Variants */ - deslex {{ monster
+ |name=parrot
+ |difficulty=8
+ |level=7
+ |experience=95
+ |speed=15
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 2d6
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A parrot|animal=1|nohands=1|herbivore=1|wander=1|domestic=1|infravisible=1}}
+ |size=Small
+ |nutr=30
+ |weight=75
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line362]]
+}}
+A parrot is a monster introduced in [[SLASH'EM]].  It can be tamed with [[vegan]] food. It is slightly better in combat than a [[large dog]], but cannot be [[growing up|reared from a smaller form]].  Due to what may be an oversight, it does not fly: do not displace it into water or lava!
+
+==Sounds==
+Parrots (as well as [[cockatoo]]s) have some interesting things to say.  Chatting with them produces one of the following messages:
+
+ <monster> squaarks louldly!<ref>It is misspelled in the source code, see [[SLASH'EM 0.0.7E7F2/sounds.c#line664]]</ref>
+ <monster> says 'Polly want a lembas wafer!'
+ <monster> says 'Nobody expects the Spanish Inquisition!'
+ <monster> says 'Who's a good boy, then?'
+ <monster> says 'Show us yer knickers!'
+ <monster> says 'You'll never make it!'
+ <monster> whistles suggestively!
+ <monster> says 'What sort of a sword do you call that!'
+
+==Variants==
+The [[Pirate|Pirate patch]] adds a [[Parrot (Pirate patch)|parrot which flies]], as a possible starting [[pet]] for the Pirate role.
+
+==References==
+<references/>
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Pit bull {95193 2015-06-24T20:11:30Z {4000548 Quantum Immortal} /* Strategy */ {{ monster
+ |name=pit bull
+ |difficulty=12
+ |level=11
+ |experience=241
+ |speed=15
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 4d4
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A pit bull|animal=1|nohands=1|carnivore=1|strong=1|domestic=1|infravisible=1|nohell=1}}
+ |size=Medium
+ |nutr=250
+ |weight=800
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line421]]
+}}
+A '''pit bull''' is a [[domestic]] monster added in [[SLASH'EM]].  It is similar to a [[large dog]], but considerably stronger.
+==Strategy==
+While having a stronger dog is nice, by the time these animals appear you will probably want an even better pet.  Like most domestic animals in SLASH'EM, pit bulls are [[Need +x weapon to hit|unable to hurt a large variety of monsters]], since they hit as a +0 weapon.
+
+They are quite capable however in killing a priest that you might want to keep alive.
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Dingo puppy {74819 2011-11-16T04:06:23Z {4000142 Erica} fix frequency {{ monster
+ |name=dingo puppy
+ |difficulty=3
+ |level=2
+ |experience=20
+ |speed=18
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 1d6
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A dingo puppy|animal=1|nohands=1|carnivore=1|hostile=1|infravisible=1|nohell=1}}
+ |size=Small
+ |nutr=150
+ |weight=150
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line428]]
+}}
+
+A dingo puppy is a new monster in [[SLASH'EM]].  Aside from not being a [[domestic animal]], it is identical to a [[little dog]].  If you do manage to tame one, it can grow up to become a [[dingo]], and eventually a [[large dingo]].
+
+==Strategy==
+While not a huge threat, these can extinguish some of the weaker starting roles in SLASH'EM.  [[Ranged weapon]]s are advised if you are low on HP.
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Nhtohtml {60141 2010-11-26T22:11:01Z {630 Paxed} first info. '''nhtohtml''' is a perl script created by [http://www.cs.ubc.ca/~simra/ Robert Sim] which takes the monster data from NetHack [[source code]] files and creates HTML files for a bestiary website featuring information about the monsters.
+
+Nhtohtml can be downloaded from http://www.cim.mcgill.ca/~simra/nhtohtml/
+
+A modified version, which outputs wiki code, was used to create the basic monster data templates on this wiki.
+
+{{stub}}}
+&&%s&& %s Item class {60142 2010-11-26T22:14:50Z {630 Paxed} #REDIRECT [[Item]] #REDIRECT [[Item]]}
+&&%s&& %s Item classes {60143 2010-11-26T22:15:42Z {630 Paxed} #REDIRECT [[Item]] #REDIRECT [[Item]]}
+&&%s&& %s Object class {60144 2010-11-26T22:16:26Z {630 Paxed} #REDIRECT [[Item]] #REDIRECT [[Item]]}
+&&%s&& %s Object classes {60145 2010-11-26T22:16:53Z {630 Paxed} #REDIRECT [[Item]] #REDIRECT [[Item]]}
+&&%s&& %s NeXTSTEP tiles {99690 2015-12-28T19:50:53Z {679 Ray Chason} Delete a link to a deleted or nonexistent image {{wikipedia|NeXTSTEP}}
+[[Image:Nh343-nextstep.png|thumb]]
+
+The '''NeXTSTEP tiles''' is a recreation of a tileset used on a NeXTSTEP system. This tileset can be used with NetHack 3.4.3. The tiles are 10x10 pixels in size.
+
+The NeXTSTEP NetHack used one image per monster symbol, so eg. all [[ant]]s get one image, all [[blob]]s get another, and so on. The images have parts which are colored on the fly to make the distinction between different tiles.
+
+The newest version of NetHack for NeXTSTEP is v3.0i, so some new tiles had to be drawn from scratch.
+
+The original graphical NeXT port was done by Christoph Marquardt, and this new tileset was recreated from those tiles by [[User:Paxed]].
+
+==Links==
+
+*[http://bilious.alt.org/~paxed/nethack/nhsshot/ NetHack Tileset Screenshots]
+
+[[Category:User interface]]
+{{nethack-343}}}
+&&%s&& %s Large dingo {74820 2011-11-16T04:07:27Z {4000142 Erica} fix frequency {{ monster
+ |name=large dingo
+ |difficulty=7
+ |level=6
+ |experience=76
+ |speed=15
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 2d4
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A large dingo|animal=1|nohands=1|carnivore=1|strong=1|hostile=1|infravisible=1|nohell=1}}
+ |size=Medium
+ |nutr=250
+ |weight=800
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line442]]
+}}
+
+A '''large dingo''' is a new monster in [[SLASH'EM]].  Apart from not being a [[domestic]] animal, it is identical to a [[large dog]].  Should you tame a [[dingo]], it may eventually [[growing up|grow up]] to become a large dingo.
+
+==Strategy==
+Large dingos are probably not a threat by the time one encounters them.  They are not worth taming generally, as SLASH'EM provides plenty of domestic animals to tame which are stronger.
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Death dog {74821 2011-11-16T04:08:55Z {4000142 Erica} fix frequency {{ monster
+ |name=death dog
+ |difficulty=4
+ |level=2
+ |experience=17
+ |speed=12
+ |AC=7
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 1d10, Bite 1d10
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A death dog|animal=1|nohands=1|carnivore=1|hostile=1|traitor=1|sgroup=1|hell=1}}
+ |size=Small
+ |nutr=250
+ |weight=500
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line456]]
+}}
+A '''death dog''' is a new type of [[canine]] appearing in [[SLASH'EM]].  It is only generated in [[Gehennom]].  Despite its name, it lacks any special abilities or resistances.
+==Strategy==
+Death dogs do a large amount of damage for a creature with only two hit dice.  However, since they only appear in [[Gehennom]], they are unlikely to kill many players.  Be sure not to get surrounded, as they do tend to appear in groups.
+
+[[Chameleon]]s may mimic death dogs - be mindful, for it is one of their more dangerous forms.
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Rabid wolf {74822 2011-11-16T04:12:15Z {4000142 Erica} fix frequency {{ monster
+ |name=rabid wolf
+ |difficulty=8
+ |level=6
+ |experience=73
+ |speed=12
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 2d4 [[poisonous]] ([[constitution]])
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A rabid wolf|animal=1|nohands=1|carnivore=1|hostile=1|infravisible=1|traitor=1|nohell=1}}
+ |size=Small
+ |nutr=250
+ |weight=500
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line462]]
+}}
+A '''rabid wolf''' is a new monster in [[SLASH'EM]].  They have slightly more hitpoints than regular [[wolf|wolves]], and their bite is [[poisonous]].
+==Strategy==
+These are not a huge threat, since they are no faster than a normal player.  Take them down with [[ranged weapon]]s if you lack [[poison resistance]] and/or [[magic cancellation]], since their bite does have the potential to cause [[instadeath]].
+Unlike [[rabid rat]]s, the corpses of rabid wolves are safe to eat, and in fact provide a decent amount of [[nutrition]].
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Wolverine {82018 2012-12-19T08:53:03Z {4000045 Bulwersator} {{Wikipedia}} {{Wikipedia}}
+{{ monster
+ |name=wolverine
+ |difficulty=11
+ |level=9
+ |experience=198
+ |speed=15
+ |AC=4
+ |MR=0
+ |align=-8
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 4d6, Claw 2d6
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A wolverine|animal=1|nohands=1|carnivore=1|hostile=1|infravisible=1|nohell=1}}
+ |size=Medium
+ |nutr=350
+ |weight=850
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line503]]
+}}
+
+A '''wolverine''' is a relatively strong canid introduced in [[SLASH'EM]].
+==Strategy==
+Like its real-world counterpart, SLASH'EM's wolverines are capable of inflicting surprisingly large amounts of damage.  Be careful when you see one, for they do inflict rather more damage than monsters that start appearing around the same time.  Fortunately, they lack any [[resistance]]s: [[charm monster]] is guaranteed to work, and [[poison]] may instakill them.
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Template:Alignment {132839 2020-03-12T09:08:20Z {4001384 Stay Hydrated} replacing 의성향 to 질서, 혼돈성향 to 혼돈 {{#switch: {{lc:{{{1}}}}}
+ |l
+ |law
+ |lawful=[[Image:Lawful.png|20px]]Lawful
+ |white=[[Image:Lawful.png|20px]]White
+ |질서=[[Image:Lawful.png|20px]]질서
+ |흰색=[[Image:Lawful.png|20px]]흰색
+ |n
+ |neu
+ |neutral=[[Image:Neutral.png|20px]]Neutral
+ |gray
+ |grey=[[Image:Neutral.png|20px]]Grey
+ |중립=[[Image:Neutral.png|20px]]중립
+ |회색=[[Image:Neutral.png|20px]]회색
+ |c
+ |cha
+ |chaotic=[[Image:Chaotic.png|20px]]Chaotic
+ |black=[[Image:Chaotic.png|20px]]Black
+ |혼돈=[[Image:Chaotic.png|20px]]혼돈
+ |검은색=[[Image:Chaotic.png|20px]]검은색
+ |Unknown alignment
+}}
+<noinclude>
+
+This template shows a symbol and the alignment name:
+
+* <nowiki>{{alignment|l}}</nowiki> shows {{alignment|l}}
+* <nowiki>{{alignment|n}}</nowiki> shows {{alignment|n}}
+* <nowiki>{{alignment|c}}</nowiki> shows {{alignment|c}}
+
+Also accepts "law", "lawful", "neu", "neutral", "cha", "chaotic", or the colors "white", "gray" and "black".
+
+[[Category:Templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Game help {60237 2010-11-28T09:45:24Z {630 Paxed} #REDIRECT [[Help (in-game)]] #REDIRECT [[Help (in-game)]]}
+&&%s&& %s In-game help {60238 2010-11-28T09:45:53Z {630 Paxed} #REDIRECT [[Help (in-game)]] #REDIRECT [[Help (in-game)]]}
+&&%s&& %s Timeline of nethack {60257 2010-11-28T10:21:14Z {630 Paxed} #REDIRECT [[Game history]] #REDIRECT [[Game history]]}
+&&%s&& %s Sobokan {60376 2010-11-28T19:58:20Z {4000025 Mougoo} I misspell this every time I need the page! #REDIRECT [[Sokoban]]}
+&&%s&& %s Hurtle {60387 2010-11-28T21:44:20Z {831 Tjr} Redirected page to [[Levitation]] #redirect [[levitation]]}
+&&%s&& %s Dark part of a room {60407 2010-11-28T23:51:32Z {831 Tjr} Redirected page to [[Room]] #redirect [[room]]}
+&&%s&& %s Closed door {60408 2010-11-28T23:52:27Z {831 Tjr} Redirected page to [[Door]] #redirect [[door]]}
+&&%s&& %s Confuse monster {60409 2010-11-28T23:52:54Z {831 Tjr} Redirected page to [[Spellbook of confuse monster]] #redirect [[Spellbook of confuse monster]]}
+&&%s&& %s Dig beam {60410 2010-11-28T23:54:11Z {831 Tjr} Redirected page to [[Wand of digging]] #redirect [[Wand_of_digging]]}
+&&%s&& %s Earth {137364 2021-01-20T09:12:14Z {4001279 Umbire the Phantom}  On the [[Nethack wiki]], '''earth''' may refer to any of the following in ''[[NetHack]]'' or any of its [[variants]]:
+
+* [[Scroll of earth]]
+* [[Plane of Earth]]
+* [[Earth (god)]], the [[lawful]] [[flame mage]] [[god]] in [[SLASH'EM]]
+
+{{disambig}}}
+&&%s&& %s Ugh! That potion tasted foul! {60423 2010-11-29T01:16:19Z {831 Tjr} Redirected page to [[Potion of gain ability]] #redirect [[potion of gain ability]]}
+&&%s&& %s Kitty killer {147809 2022-08-22T01:41:07Z {4000978 Aximili} Switch redirect to standalone article #redirect [[Falling rock trap]]}
+&&%s&& %s Rock trap {147810 2022-08-22T01:41:30Z {4000978 Aximili} Switch redirect to standalone article #redirect [[Falling rock trap]]}
+&&%s&& %s Ulch! {141733 2021-07-15T03:10:49Z {4001483 Cathartes} correct capitalization '''"Ulch!"''' is an expression of revulsion that is seen in a few circumstances:
+*Eating a [[tainted]] corpse: '''"Ulch - that <food type> was tainted!"'''{{refsrc|src/eat.c|1619|version=NetHack 3.6.6}}
+*Eating a [[rustproof]] item while a [[rust monster]]: '''"Ulch - that <item> was rustproofed!"'''{{refsrc|src/eat.c|2500|version=NetHack 3.6.6}}
+*Quaffing a [[cursed]] [[potion of gain ability]]: '''"Ulch!  That potion tasted foul!"'''{{refsrc|src/potion.c|917|version=NetHack 3.6.6}}
+*Quaffing a [[cursed]] [[potion of restore ability]]: '''"Ulch!  This makes you feel mediocre!"'''{{refsrc|src/potion.c|600|version=NetHack 3.6.6}}
+*Inhaling [[vapors]] from either of the above: '''"Ulch!  That potion smells terrible!"'''{{refsrc|src/potion.c|1629|version=NetHack 3.6.6}}
+*A false [[rumor]]: '''"Ulch!  That meat was painted!"'''{{refsrc|dat/rumors.fal|361|version=NetHack 3.6.6}}
+
+==References==
+<references />
+
+[[Category:Messages]]
+{{nethack-366}}}
+&&%s&& %s Ulch {60441 2010-11-29T17:19:26Z {375 Ion frigate} Redirected page to [[Ulch!]] #REDIRECT [[Ulch!]]}
+&&%s&& %s Froster {131195 2020-01-20T22:10:02Z {4001279 Umbire the Phantom}  {{ monster
+ |name=froster
+ |difficulty=7
+ |level=5
+ |experience=66
+ |speed=10
+ |AC=10
+ |MR=10
+ |align=3
+ |frequency=Not randomly generated
+ |genocidable=No
+ |attacks=Weapon 1d6, Weapon 1d6
+ |resistances conveyed=poison (33%)
+ |resistances=poison
+ |attributes={{attributes|A froster|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|infravisible=1|hitasone=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line5323]]
+}}
+
+The '''Froster''' is the [[Ice Mage]] [[quest guardian]]. Instead of having [[cold resistance]], as one might expect, they have [[poison resistance]]. They are identical to the [[Igniter]], the [[Flame Mage]] quest guardian.
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Embalmer (monster) {60814 2010-12-02T21:44:05Z {375 Ion frigate}  {{ monster
+ |name=embalmer
+ |difficulty=8
+ |level=5
+ |experience=71
+ |speed=12
+ |AC=10
+ |MR=30
+ |align=0
+ |frequency=Not randomly generated
+ |genocidable=No
+ |attacks=Weapon 1d6, [[monster spell|Spell-casting]]
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A embalmer|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|magic=1|infravisible=1|hitasone=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line5383]]
+}}
+
+'''Embalmers''' are the [[Necromancer]] [[quest guardian]]s.  They can cast spells, but are otherwise unremarkable.
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Exterminator {131886 2020-02-06T11:45:25Z {4001279 Umbire the Phantom}  {{ monster
+ |name=exterminator
+ |difficulty=10
+ |level=8
+ |experience=118
+ |speed=10
+ |AC=10
+ |MR=10
+ |align=10
+ |frequency=Not randomly generated
+ |genocidable=No
+ |attacks=Weapon 1d8
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A exterminator|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|infravisible=1|hitasone=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line5440]]
+}}
+The {{questmon|exterminator|undead slayer|guardian}} They share the lower speed of their associated role, and have a somewhat higher base level than other quest guardians, but are otherwise unremarkable.
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Igniter {97233 2015-11-11T17:10:00Z {4000657 Skull}  {{ monster
+ |name=igniter
+ |difficulty=7
+ |level=5
+ |experience=66
+ |speed=10
+ |AC=10
+ |MR=10
+ |align=3
+ |frequency=Not randomly generated
+ |genocidable=No
+ |attacks=Weapon 1d6, Weapon 1d6
+ |resistances conveyed=poison (33%)
+ |resistances=poison
+ |attributes={{attributes|A igniter|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|infravisible=1|hitasone=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line5313]]
+}}
+
+'''Igniters''' are the [[Flame mage]] [[quest guardian]]s.  They do not actually have [[fire resistance]], but do have [[poison resistance]].  One could theoretically kill and eat them for that intrinsic, although it's probably [[bad idea|not a good idea]].Thay are identical to the [[Froster]]  
+
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Yeoman Warder {148824 2022-10-17T15:59:00Z {375 Ion frigate} Might as well give the reason {{Wikipedia}}
+{{ monster
+ |name=Yeoman Warder
+ |difficulty=7
+ |level=5
+ |experience=66
+ |speed=10
+ |AC=10
+ |MR=10
+ |align=3
+ |frequency=Not randomly generated
+ |genocidable=No
+ |attacks=Weapon 1d6, Weapon 1d6
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A Yeoman Warder|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|infravisible=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line5465]]
+}}
+
+The '''Yeoman Warder''' is the [[Yeoman]] [[quest guardian]].  Like Yeomen, they are slightly slower than average, but are otherwise unremarkable.
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Water Mage {131394 2020-01-25T06:45:36Z {4000978 Aximili} Add stub notice {{ monster
+ |name=Water Mage
+ |difficulty=34
+ |level=25
+ |experience=1060
+ |speed=10
+ |AC=-10
+ |MR=10
+ |align=20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=[[monster spell|Spell-casting]], [[monster spell|Spell-casting]], Weapon 1d6, Claw 1d4 [[covetous|amulet-stealing]]
+ |resistances conveyed=poison (100%)
+ |resistances=death magic, poison
+ |attributes={{attributes|The Water Mage|humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|stalk=1|hostile=1|nasty=1|collect=1|magic=1|wantsarti=1|waitforu=1|hitasfour=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line5088]]
+}}
+
+The '''Water Mage''' is the [[Flame mage]] [[quest nemesis]].  Do not underestimate him; he is a high-level spellcaster.  His base AC -10, the same as [[Master Kaen]]'s. He is identical to the [[Earth Mage]] (the [[Ice mage]] quest nemesis).

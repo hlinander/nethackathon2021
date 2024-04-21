@@ -1,0 +1,1000 @@
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Letters '''O''' and '''Q''' are skipped for clarity. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+First, a few boulders need to be rotated near the entrance so that '''M''' can be pushed into the position of '''N''':
+
+     ----                      '''R''' u
+     |..--                     '''W''' rd
+  ---|...--------------------- '''R''' ddll l
+  |..|.AB^^^^^^^^^^^^^^^^^^..| '''X''' llll l
+ --...-.C-------------------.| '''S''' uuuu d
+ |.D.....E..F......|       |.| '''L''' rrrr dd
+ |..|.G..-...----.-| ------|.| '''V''' uurr rr
+ --.|..--...|......|-|.....|.| '''P''' rr
+  |.|--..--.|..|H..|.+.....|.| '''N''' rr
+  |.| |....---I|.J.|-|.....|.| '''M''' llrr rr
+  |.|--..|..|.K..--|.+.....+.|
+ --.|..-.--.L....--|-|.....|--
+ |...M.N..P..-..R.||.+.....|
+ |...|..STU-V..W..|--|.....|
+ ----|......X..|..|  -------
+     |..|..|..-|@.|
+     --------------
+
+It is now possible to make it up to the holes by going along the left. Beware, pushing '''D''' the wrong way here can be hard to recover from:
+
+     ----                      '''D''' r
+     |..--                     '''A''' u
+  ---|...--------------------- '''B''' r*
+  |..|.AB^^^^^^^^^^^^^^^^^^..| '''A''' drrr*
+ --...-.C-------------------.| '''C''' urrr*
+ |.D.....E..F......|       |.| '''G''' urru urrr r*
+ |..|.G..-...----.-| ------|.| '''D''' rrrr uurr rrr*
+ --.|..--...|......|-|.....|.|
+  |.|--..--.|..|H..|.+.....|.|
+  |.| |....---I|.J.|-|.....|.|
+  |.|--.S|..|.K..--|.+.....+.|
+ --.|..-.--.....V--|-|.....|--
+ |....@M.N..P-....||.+.....|
+ |...|...TU-.R..L.|--|.....|
+ ----|.X.......|W.|  -------
+     |..|..|..-|>.|
+     --------------
+
+The boulders at the bottom can now be pushed around the outer edge of the level:
+
+     ----                      '''M''' llll ____ ____ ____ ___ uuuu uuur rrrr uurr rrrr*
+     |..--                     '''X''' uull ll__ ____ ____ ___ uuuu uuur rrrr uurr rrrr r*
+  ---|...--------------------- '''N''' llll ll__ ____ ____ ___ uuuu uuur rrrr uurr rrrr rr*
+  |..|......@.^^^^^^^^^^^^^..| '''S''' ddll lll_ ____ ____ ___ uuuu uuur rrrr uurr rrrr rrr*
+ --...-..-------------------.| '''U''' u
+ |.......E..F......|       |.| '''T''' llul lll_ ____ ____ ___ uuuu uuur rrrr uurr rrrr rrrr*
+ |..|....-...----.-| ------|.| '''U''' llll lll_ ____ ____ ___ uuuu uuur rrrr uurr rrrr rrrr r*
+ --.|..--...|......|-|.....|.| '''P''' ddll llll ____ ____ ___ uuuu uuur rrrr uurr rrrr rrrr rr*
+  |.|--..--.|..|H..|.+.....|.| '''R''' ldll llll uull l___ ___ uuuu uuur rrrr uurr rrrr rrrr rrr*
+  |.| |....---I|.J.|-|.....|.| '''L''' llll dlll lllu ulll ___ uuuu uuur rrrr uurr rrrr rrrr rrrr*
+  |.|--.S|..|.K..--|.+.....+.| '''W''' ulll ldll llll uull l__ uuuu uuur rrrr uurr rrrr rrrr rrrr r*
+ --.|..-.--.....V--|-|.....|-- '''V''' ddll lldl llll luul ll_ uuuu uuur rrrr uurr rrrr rrrr rrrr rr*
+ |.....M.N..P-....||.+.....|
+ |...|...TU-.R..L.|--|.....|
+ ----|.X.......|W.|  -------
+     |..|..|..-|>.|
+     --------------
+
+The last two holes can be filled by the two topmost boulders:
+
+     ----                      '''K''' r
+     |..--                     '''I''' uurr r
+  ---|...--------------------- '''H''' d
+  |..|.................@.^^..| '''I''' l
+ --...-..-------------------.| '''F''' l
+ |.......E..F......|       |.| '''E''' lluu ___ rrrr rrrr rrrr rrrr rr*
+ |..|....-...----.-| ------|.| '''F''' llll uu_ rrrr rrrr rrrr rrrr rrr*
+ --.|..--...|......|-|.....|.|
+  |.|--..--.|..|H..|.+.....|.|
+  |.| |....---I|.J.|-|.....|.|
+  |.|--..|..|.K..--|.+.....+.|
+ --.|..-.--......--|-|.....|--
+ |...........-....||.+.....|
+ |...|.....-......|--|.....|
+ ----|.........|..|  -------
+     |..|..|..-|>.|
+     --------------
+
+The level is now complete. Remember to check under boulder '''J''' for any items.
+
+     ----
+     |..--
+  ---|...---------------------
+  |..|...................@...|
+ --...-..-------------------.|
+ |.................|       |.|
+ |..|....-...----.-| ------|.|
+ --.|..--...|...I..|-|.....|.|
+  |.|--..--.|..|...|.+.....|.|
+  |.| |....---.|HJ.|-|.....|.|
+  |.|--..|..|..K.--|.+.....+.|
+ --.|..-.--......--|-|.....|--
+ |...........-....||.+.....|
+ |...|.....-......|--|.....|
+ ----|.........|..|  -------
+     |..|..|..-|>.|
+     --------------
+
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:GruntHack]]
+[[Category:EvilHack]]
+[[Category:SlashTHEM]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (GruntHack)]]
+[[Category:Sokoban (EvilHack)]]
+[[Category:Sokoban (SlashTHEM)]]}
+&&%s&& %s Sokoban Level 4f {146252 2022-06-25T01:21:26Z {4001279 Umbire the Phantom}  '''Sokoban Level 4f''' is one of the new possible maps for [[Sokoban]] in variants of ''[[NetHack]]''. It appears as one of the possible final level maps in [[UnNetHack]], [[DynaHack]], [[GruntHack]], [[SlashTHEM]] and [[EvilHack]]. It has 21 boulders and 18 holes, leaving 3 spare boulders.
+
+Behind the holes is the [[treasure zoo]], with the standard set of closets containing the Sokoban prizes. The prizes vary with each variant:<!--* In SlashTHEM, the prize is a bag of holding. Pending multiple playthroughs, anyway.-->
+
+* In UnNetHack, the prize is a choice from one of the following, a [[bag of holding]], a [[cloak]] (of [[cloak of magic resistance|magic resistance]] or [[cloak of displacement|displacement]]) and an [[amulet]] (of [[amulet of reflection|reflection]], [[amulet of life saving|life saving]] or [[amulet of ESP|ESP]]).
+* In EvilHack, the choice is instead between a prize tool (a bag of holding or a [[magic marker]]), a prize armor (a [[helm of speed]] or a pair of [[gauntlets of protection]]), or a prize amulet (an amulet of reflection or [[amulet of magic resistance|magic resistance]]).
+
+
+   -----                         0 boulder
+   |...------  -----   -------   ^ hole
+   |.0.0.0..|---...| --|.....|   > starting position
+  --..--.--.--...0.| |.+.....|   + door
+  |.0..0.....0.0...| |-|.....|--
+ --.....--.--..0.--- |.+.....+.|
+ |.00-----.|----.|   |-|.....|.|
+ |.....||>.| ---0--  |.+.....|.|
+ --..0.|--0--|..0.|  --|.....|.|
+  ---..---...|..0.|    ------|.|
+    |.00...-.0.00.|          |.|
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |...^^^^^^^^^^^^^^^^^^.|
+        |...--------------------
+        -----
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Letters '''O''' and '''Q''' are skipped for clarity. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+The first boulder can be cleared easily:
+
+   -----                         '''N''' dddd drr*
+   |...------  -----   -------
+   |.A.B.C..|---...| --|.....|
+  --..--.--.--...D.| |.+.....|
+  |.E..F.....G.H...| |-|.....|--
+ --.....--.--..I.--- |.+.....+.|
+ |.JK-----.|----.|   |-|.....|.|
+ |.....||@.| ---L--  |.+.....|.|
+ --..M.|--N--|..P.|  --|.....|.|
+  ---..---...|..R.|    ------|.|
+    |.ST...-.U.VW.|          |.|
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |...^^^^^^^^^^^^^^^^^^.|
+        |...--------------------
+        -----
+
+The boulders on the left side of the level need to be prepared for pushing:
+
+   -----                         '''F''' l
+   |...------  -----   -------   '''E''' r
+   |.A.B.C..|---...| --|.....|   '''K''' dd
+  --..--.--.--...D.| |.+.....|   '''J''' u
+  |.E..F.....G.H...| |-|.....|-- '''M''' ull
+ --.....--.--..I.--- |.+.....+.| '''S''' u
+ |.JK-----.|----.|   |-|.....|.|
+ |.....||>.| ---L--  |.+.....|.|
+ --..M.|--.--|..P.|  --|.....|.|
+  ---..---...|..R.|    ------|.|
+    |.ST...-.U.VW.|          |.|
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |..@.^^^^^^^^^^^^^^^^^.|
+        |...--------------------
+        -----
+
+The boulders on this side can now be funneled into the holes:
+
+   -----                         '''T''' ____ ____ ____ ____ _rrr dddr rr*
+   |...------  -----   -------   '''S''' d___ ____ ____ ____ rrrr dddr rrr*
+   |.A.B.C..|---...| --|.....|   '''M''' r
+  --..--.--.--...D.| |.+.....|   '''K''' rrdd ____ ____ ____ rrrr dddr rrrr*
+  |..EF......G.H...| |-|.....|-- '''M''' drrd d___ ____ ____ rrrr dddr rrrr r*
+ --J....--.--..I.--- |.+.....+.| '''J''' ddrd rrdd ____ ____ rrrr dddr rrrr rr*
+ |...-----.|----.|   |-|.....|.| '''A''' lddd dddr rdd_ ____ rrrr dddr rrrr rrr*
+ |.M...||>.| ---L--  |.+.....|.| '''B''' llld dddd drrd d___ rrrr dddr rrrr rrrr*
+ --.K..|--.--|..P.|  --|.....|.| '''C''' llll lddd dddr rdd_ rrrr dddr rrrr rrrr r*
+  ---.S---...|..R.|    ------|.| '''E''' dldd drrd d___ ____ rrrr dddr rrrr rrrr rr*
+    |.@T...-.U.VW.|          |.| '''F''' lldd ddrr dd__ ____ rrrr dddr rrrr rrrr rrr*
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |....^^^^^^^^^^^^^^^^^.|
+        |...--------------------
+        -----
+
+From here, the top-right chamber needs to be broken into from the bottom:
+
+   -----                         '''U''' r
+   |...------  -----   -------   '''P''' l
+   |........|---...| --|.....|   '''L''' uuuu
+  --..--.--.--...D.| |.+.....|   '''I''' l
+  |..........G.H...| |-|.....|-- '''H''' u
+ --.....--.--..I.--- |.+.....+.|
+ |...-----.|----.|   |-|.....|.|
+ |.....||>.| ---L--  |.+.....|.|
+ --....|--.--|..P.|  --|.....|.|
+  ---..---...|..R.|    ------|.|
+    |......-.U.VW.|          |.|
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |............@.^^^^^^^.|
+        |...--------------------
+        -----
+
+These boulders can be pushed around the level to get them into the holes:
+
+   -----                         '''G''' llll llll l___ ____ dddd rrdd rrrr dddr rrrr rrrr rrrr*
+   |...------  -----   -------   '''D''' dlll llll llll ll__ dddd rrdd rrrr dddr rrrr rrrr rrrr r*
+   |........|---...| --|.....|   '''L''' dlll llll llll l___ dddd rrdd rrrr dddr rrrr rrrr rrrr rr*
+  --..--.--.--.HLD.| |.+.....|   '''H''' rdll llll llll ll__ dddd rrdd rrrr dddr rrrr rrrr rrrr rrr*
+  |..........G.@...| |-|.....|-- '''I''' rrul llll llll lll_ dddd rrdd rrrr dddr rrrr rrrr rrrr rrrr*
+ --.....--.--.I..--- |.+.....+.|
+ |...-----.|----.|   |-|.....|.|
+ |.....||>.| ---.--  |.+.....|.|
+ --....|--.--|.P..|  --|.....|.|
+  ---..---...|..R.|    ------|.|
+    |......-..UVW.|          |.|
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |..............^^^^^^^.|
+        |...--------------------
+        -----
+
+The last two boulders:
+
+   -----                         '''V''' u
+   |...------  -----   -------   '''U''' l
+   |........|---...| --|.....|   '''W''' l
+  --..--.--.--.....| |.+.....|   '''R''' uuuu u___ llll llll llll dddd rrdd rrrr dddr rrrr rrrr rrrr rrrr r*
+  |................| |-|.....|-- '''W''' ruuu uuu_ llll llll llll dddd rrdd rrrr dddr rrrr rrrr rrrr rrrr rr*
+ --.....--.--....--- |.+.....+.|
+ |...-----.|----.|   |-|.....|.|
+ |.....||>.| ---.--  |.+.....|.|
+ --....|--.--|.P..|  --|.....|.|
+  ---..---...|..R.|    ------|.|
+    |......-..UVW.|          |.|
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |.................@.^^.|
+        |...--------------------
+        -----
+
+The level is now complete. You may want to check under boulders '''P''' and '''V''' for items.
+
+   -----
+   |...------  -----   -------
+   |........|---...| --|.....|
+  --..--.--.--.....| |.+.....|
+  |................| |-|.....|--
+ --.....--.--....--- |.+.....+.|
+ |...-----.|----.|   |-|.....|.|
+ |.....||>.| ---.--  |.+.....|.|
+ --....|--.--|.P..|  --|.....|.|
+  ---..---...|.V..|    ------|.|
+    |......-.U....|          |.|
+    |..--...|.....|          |.|
+    ----|-..------------------.|
+        |...................@..|
+        |...--------------------
+        -----
+
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:GruntHack]]
+[[Category:DynaHack]]
+[[Category:EvilHack]]}
+&&%s&& %s ToD {82428 2013-01-24T13:04:42Z {4000045 Bulwersator} Redirected page to [[Touch of death]] #REDIRECT[[Touch of death]]}
+&&%s&& %s Dilapidated armory {147931 2022-08-24T08:09:55Z {4000978 Aximili} sectioning {{patch
+ |author=[[L (person)|L]]
+ |download=http://l.j-factor.com/nethack/armory.diff
+ |bilious=159
+}}
+A '''dilapidated armory''' is a [[special room]] originally added in the Dilapidated Armouries [[patch]] and present in [[UnNetHack]].
+
+==Generation==
+Each square in an armory has a random piece of [[armor]] or a random [[weapon]], both of which are equally likely. All items generated with an armory are [[enchantment|unenchanted]]; additionally, if an item is [[erosion|rustable or rottable]], its rustiness/rottenness will be set to a random level, ranging from undamaged to "thoroughly" eroded.
+
+Each square in the armory has a 50% chance of a monster being generated on it; this will either be a random {{monclasssym|R}} (except the [[disintegrator]]) (2/3) or a [[brown pudding]] (1/3).
+
+Dilapidated armories are not generated above dungeon level 8 or if [[rust monster]]s are extinct/genocided.
+
+== Strategy ==
+While dilapidated armories may have useful weapons and armor, a method of repairing erosion or [[enchantment|enchanting]] them will be necessary to use most items usefully.
+
+[[Rust monster]]s in the armory may eat rustprone items in the armory before you can pick them up.
+
+As an armory has random {{monclasssym|R}} in it, out-of-depth monsters may be generated; this includes [[disenchanter]]s, which can easily kill most characters at the shallowest possible depth of an armory.
+
+Those playing the 4.0.0 version of UnNetHack beware! The armory can generate [[disintegrator]]s out of depth.
+
+== Messages ==
+{{message|You enter a dilapidated armory.|Message when entering the armory}}
+
+== dNetHack ==
+Dilapidated armories have also been implemented in [[dNetHack]], with several changes relative to the original patch.
+
+Each square in a dNethack armory has a {{frac|2|3}} chance of containing a random weapon, a {{frac|2|3}} chance of containing a random piece of armor, a second {{frac|6}} chance of containing a random weapon (~50% of these weapons will have positive enchantment between +1 and +3), and a second {{frac|6}} chance of containing a random piece of armor (~50% of which will have positive enchantment between +1 and +3). All forms of damage (rusted, corroded, rotted, or burnt) are eligible to occur to items in dNetHack armories.
+
+dNetHack armories contain between 1 and 2 [[rust monster]]s (generated sleeping) and 0&ndash;2 [[brown pudding]]s (dormant until the character comes into view).
+
+dNetHack dilapidated armories may be generated from dungeon level 2&ndash;14, but only if [[rust monster]]s are not extinct or genocided.
+
+=== Additional messages ===
+
+{{message|You hear water dripping onto metal.}}
+{{message|You hear a ceiling tile fall.|There is an armory on the level.}}
+{{message|You hear iron oxidize.}}
+{{message|You hear a military contractor making out like a bandit.|As above, while hallucinating.}}
+
+[[Category:Patches]]
+[[Category:DNethack]]
+[[Category:UnNetHack]]
+[[Category:Special rooms]]}
+&&%s&& %s Special room (UnNetHack) {82454 2013-01-26T01:44:04Z {4000236 Tungtn} Add probabilities for gardens and dilapidated armories [[UnNetHack]] contains new special rooms not included in vanilla NetHack.
+
+== Garden ==
+Room with [[nymph]]s and [[tree]]s.
+===Frequency===
+1 in 6 eligible rooms at dungeon level 8 and below.{{refsrc|src/mklev.c|763|unnethack=48}}
+===Messages===
+; "You enter a beautiful garden."
+: Upon entering, nonblind.
+; "The air here smells nice and fresh!"
+: Upon entering, blind.
+
+== Dilapidated armory ==
+{{main|Dilapidated armory}}
+===Frequency===
+1 in 6 eligible rooms at dungeon level 8 and below.{{refsrc|src/mklev.c|764|unnethack=50}}
+===Messages===
+; "You enter a dilapidated armory."
+: Upon entering.
+
+==Lemure pit==
+'''Lemure pits''' contain [[lemure]]s, and have a 1 in 10 chance of containing a [[horned devil]].
+===Frequency===
+only appear in [[Gehennom]] - note that this means that they never actually randomly appear, since there are no random rooms-and-corridors levels in Gehennom. However, Asmodeus' level features six of them (from [[SLethe]]).
+
+===Messages===
+; "You enter a pit of screaming lemures!"
+: Upon entering.
+
+==References==
+<references/>
+
+[[Category:UnNetHack]]}
+&&%s&& %s Category:UnNetHack {82458 2013-01-26T10:59:18Z {4000045 Bulwersator} Created page with "[[Category:Variants]]" [[Category:Variants]]}
+&&%s&& %s Template:Bilious {82689 2013-02-09T15:50:21Z {679 Ray Chason} Create this template to provide patch links on the bugs page [http://bilious.alt.org/?{{{1}}} Bilious #{{{1}}}]<noinclude>
+
+Usage: <nowiki>{{</nowiki>Bilious|''patch number''}}
+
+Intended for use in the list of [[bugs in NetHack 3.4.3]], to point to the Bilious database, and allow the links to be changed quickly if Bilious ever moves again.</noinclude>}
+&&%s&& %s Data Librarian {82729 2013-02-13T12:16:35Z {630 Paxed} first info '''Data Librarian''', or '''dlb''', is a small utility program that is used to pack all static files NetHack needs into a single "data library" file.
+
+This is only used if NetHack was compiled with <tt>DLB</tt> defined in config.h. Source code for this program is in util/dlb_main.c.
+
+The default name for the library file is "nhdat". 
+
+{{stub}}
+[[Category:Annotations]]}
+&&%s&& %s Dlb {82730 2013-02-13T12:17:01Z {630 Paxed} #REDIRECT [[Data Librarian]] #REDIRECT [[Data Librarian]]}
+&&%s&& %s Nhdat {82731 2013-02-13T12:17:17Z {630 Paxed} #REDIRECT [[Data Librarian]] #REDIRECT [[Data Librarian]]}
+&&%s&& %s Data librarian {82732 2013-02-13T12:17:43Z {630 Paxed} #REDIRECT [[Data Librarian]] #REDIRECT [[Data Librarian]]}
+&&%s&& %s DLB {82733 2013-02-13T12:18:08Z {630 Paxed} #REDIRECT [[Data Librarian]] #REDIRECT [[Data Librarian]]}
+&&%s&& %s ANTIMAGIC {82787 2013-02-15T19:35:47Z {4000045 Bulwersator} Redirected page to [[Property]] #REDIRECT[[Property]]}
+&&%s&& %s Nudist {124802 2018-12-02T13:03:40Z {4000865 Tomsod} an official conduct now #REDIRECT [[Conduct#Nudist]]}
+&&%s&& %s Cloak of mr {82866 2013-02-19T15:42:27Z {0 } Redirected page to [[Cloak of magic resistance]] #REDIRECT [[Cloak of magic resistance]]}
+&&%s&& %s Chocolate {82887 2013-02-21T13:46:55Z {91 Bhaak} Redirected page to [[UnNetHack]] #REDIRECT [[UnNetHack]]
+
+[http://soulfail.blogspot.ch/2010/07/question-of-taste.html A question of taste]}
+&&%s&& %s Cthulhu (UnNetHack) {82941 2013-02-23T15:15:40Z {4000180 Bcode} redirect to [[Cthulhu#UnNetHack]] for now #REDIRECT [[Cthulhu#UnNetHack]]}
+&&%s&& %s Cthulhu (SLASH'EM) {82942 2013-02-23T15:15:49Z {4000180 Bcode} redirect to [[Cthulhu#SLASH'EM]] for now #REDIRECT [[Cthulhu#SLASH'EM]]}
+&&%s&& %s Template:Monsym/Cthulhu (UnNetHack) {82943 2013-02-23T15:19:21Z {4000180 Bcode} UnNetHack Cthulhu, to allow using [[Template:Monsym]] for Cthulhu in UnNetHack. {{magenta|h}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/Cthulhu (SLASH'EM) {82944 2013-02-23T15:21:56Z {4000180 Bcode} SLASH'EM Cthulhu, for symmetry with [[Template:Monsym/Cthulhu (UnNetHack)]] and to allow for [[Template:Monsym/Cthulhu]] to be more generic {{magenta|&}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Pp {82947 2013-02-23T16:02:58Z {4000180 Bcode} typo <onlyinclude><includeonly>{{{{{{1}}}}}}</includeonly></onlyinclude>
+This template expands to its ''n''th parameter, where ''n'' is the first parameter.
+
+* "<nowiki>{{pp|1| foo |bar}}</nowiki>" expands to "{{pp|1| foo |bar}}"
+* "<nowiki>{{pp|2| foo |bar}}</nowiki>" expands to "{{pp|2| foo |bar}}"
+* "<nowiki>{{pp|3| foo |bar}}</nowiki>" expands to "{{pp|3| foo |bar}}"
+
+This template exists to include whitespace at the beginning/end of the result of an <tt><nowiki>{{#if:</nowiki>''condition''|''then''|''else''<nowiki>}}</nowiki></tt>.
+
+See [[metawikimedia:Template:Pp]] for more information.}
+&&%s&& %s Template:Monsym/cthulhu (UnNetHack) {82949 2013-02-23T16:10:51Z {4000180 Bcode} capitalization redirect, because of monsymlink always lowercasing. #REDIRECT [[Template:Monsym/Cthulhu (UnNetHack)]]}
+&&%s&& %s Template:Monsym/cthulhu (SLASH'EM) {82950 2013-02-23T16:12:04Z {4000180 Bcode} capitalization redirect for monsymlink, again #REDIRECT [[Template:Monsym/Cthulhu (SLASH'EM)]]}
+&&%s&& %s .des file format {82975 2013-02-24T10:58:12Z {4000045 Bulwersator} Redirected page to [[Des-file format]] #REDIRECT[[Des-file format]]}
+&&%s&& %s .des {82976 2013-02-24T10:58:23Z {4000045 Bulwersator} Redirected page to [[Des-file format]] #REDIRECT[[Des-file format]]}
+&&%s&& %s Vampire (starting race in UnNetHack) {140804 2021-06-10T13:45:41Z {4001463 Actual-nh} /* Nutrition */ Clarify {{otheruses|||Vampire}}
+
+[[UnNetHack]] offers a new playable [[race]], Vampire. Vampires are always [[chaotic]] and can play as a [[barbarian]], [[convict]], [[rogue]], or [[wizard]]. Vampires offer a very different play experience from the other races.
+
+==Starting properties==
+Vampires start with the following attributes:
+*[[Regeneration]] (hungerless)
+*[[Unbreathing]] (immunity to gas, spore, [[choking]], and [[drowning]] attacks--not the same as [[sleep resistance]])
+*[[Flying]] (not to be confused with [[levitation]])
+*[[Level-drain resistance]]
+
+Note that all of these intrinsics are actually properties of the base [[vampire]] monster form. As a result all of these intrinsics will be temporarily lost if you [[polymorph]] into another form.
+
+Vampires also have an extra attack – a [[bite]] – which can [[drain life]] if it hits. Since this second attack is available from the beginning, vampires start out as very good fighters.
+
+Vampires generally have superb stats, particularly their physical stats. The following table outlines their maximum (unaided) attribute levels.
+
+{|class="prettytable"
+!Character<br />[[race]]
+!Strength
+!Dexterity
+!Constitution
+!Intelligence
+!Wisdom
+!Charisma
+|-
+|Vampire
+|19
+|20
+|20
+|18
+|18
+|20
+|}
+
+Vampires who wear an [[Opera cloak]] get a +1 Charisma bonus: {{message|You look very impressive in your opera cloak}}
+
+
+For all of these advantages, vampires are set back by their difficulty in obtaining [[nutrition]]. They cannot eat food in the way that non-vampire adventurers can:{{refsrc|src/eat.c|126|unnethack=1406}} the vampire's only source of sustenance is blood from fresh corpses, potions of blood, and of vampire blood. On the upside, they can eat a corpse and still sacrifice it (e. g. for [[altar]] farming). Also, vampires are restricted in the two-weapon skill.{{fact}}
+
+Vampires also start with a small penalty to [[luck]] and [[alignment record|alignment]], -1 and -5 respectively.{{refsrc|src/u_init.c|864|unnethack=1406}} This means that vampires should not wish or pray before turn 600, and will need to kill a few monsters to gain positive alignment.
+
+==Strategy==
+===Nutrition===
+The early game as a vampire is primarily about [[nutrition]] management. The vampire can only drink fresh blood for nourishment. There are five ways to gain nutrition as a vampire: draining the blood of freshly killed corpses (you have 3 turns before the blood coagulates and becomes useless), draining blood with the biting attack ("You feed on the lifeblood"), drinking potions of blood or vampire blood, #praying to fend off starvation, and polymorphing into a form that can eat. This means that for most of the early and midgame, the comestibles you find in the dungeon ([[food ration]]s, [[tin]]s, etc.) will be useless to you. Since nutrition drawn from sucking blood is much less than that gained by eating a corpse, avoiding starvation is the primary challenge for a vampire until you can get your hands on a [[ring of slow digestion]].
+
+Vampires only have a 20% chance of gaining [[intrinsic]]s from draining corpses;{{refsrc|src/eat.c|464|unnethack=1406}} all corpses drained are subject to the 20% chance before considering any additional restrictions on gaining the intrinsic. For example a vampire draining a newt corpse has a 20% chance of possibly gaining power, but then must also pass the 33% chance a newt corpse has of conveying extra power. It is possible to gain [[strength]] by draining [[giant]] corpses, but one must pass both the 20% test for being a Vampire as well as meeting the 25% chance UnNetHack imposes on increasing strength. Combined with the vampire's inability to eat tins, the vampire's maximum strength of 19 will prove difficult to achieve without enhancement.
+
+On the upside, you are exempt from the penalties of [[cannibalism]], like [[caveman|cavemen]].{{refsrc|src/eat.c|61|unnethack=1406}} You will face no penalties for eating cats, dogs, and humans, whether in your normal form or polymorphed (vampires are way beyond that level of evil). Additionally there is an alignment bonus for draining the corpse of another vampire if you are still chaotic. In practice this is only possible with the corpse of a vampire bat.
+
+Non-vampire players polymorphed into a [[vampire]] have the same restrictions on eating as a player vampire,{{refsrc|src/eat.c|126|unnethack=1406}} but cannot commit cannibalism without penalties (unless they are normally a caveman or orc) - draining the corpse of a cat will still result in the normal penalties.{{refsrc|src/eat.c|61|unnethack=1406}}
+
+If your character would start with food rations, you will start with [[potion of vampire blood|potions of vampire blood]] instead.{{refsrc|src/u_init.c|259|unnethack=1406}} These are obviously much more difficult to replenish and also have the disadvantages of being heavy and susceptible to boiling. Later in the game you will find these potions as well as [[potion of blood|potions of blood]] on enemy vampires.  Players coming to UnNetHack from [[SLASH'EM]] should remember that UnNetHack does not have #[[technique]]s or [[medical kit]]s, so UnNetHack vampires, unlike [[Vampire (starting race in SLASH'EM)|their SLASH'EM counterparts]], cannot use the [[draw blood]] technique to acquire vampire blood.
+
+If you choose to play as a vampire, you will want to [[pray]] to alleviate hunger often. Beware the vampire's starting alignment and luck penalty. This means waiting until you are [[weak]] before calling on your [[god]]. You will find yourself doing this often. (An [[atheist]] vampire would be an extremely challenging conduct.) A [[ring of slow digestion]] will help you out enormously, eliminating the need for regular prayer altogether. In fact, the combination of one of these rings with the "life blood' draining passive attack (to gain nutrition), one could go the entire game without eating, and thus fill the requirements for [[foodless]], [[vegetarian]], and [[vegan]] conducts.
+
+Vampires can draw sustenance from their bite attack against certain monsters. Note that since your [[to-hit]] ratios will improve as your level increases, and since you will be fighting monsters that take longer to kill, you will find yourself adding nutrition the more you fight. In order to mitigate this, vampires should plan to fight weak monsters hand-to-hand or with a weak weapon they are unskilled in (such as a [[knife]]) in order to get in as many bites as possible and thus maximize the nutrition they gain from every monster encounter. A vampire player should think of every monster she encounters as an essential source of food, and avoid killing large numbers of weak monsters at once via conflict, spells, wands, etc. Vampires should also avoid wearing rings unnecessarily.
+
+Projects like retrieving stashes, farming, and returning to the minetown temple are all much more risky when you need to be constantly fighting to survive. Take advantage of the vampire's intrinsic regeneration to drain corpses '''before you finish a battle'''. [[Sleep]] magic is also extremely useful. [[Carnivore]] [[pet]]s will be useful only for a very brief segment of the early game – they will eat corpses that you need to drain.
+
+===Blood vs. lifeblood===
+There is a difference between "blood" and "lifeblood". "Blood" is what certain monsters have in their corpses, available for draining after they are killed. Draining blood will give you approximately 20% of the nutrition of eating the entire corpse.{{refsrc|include/obj.h|232|unnethack=1406}}{{refsrc|src/eat.c|2295|unnethack=1406}} Additionally, blood can be [[poison]]ous, [[acid]]ic, or hallucinogenic as the corpse would be. "Lifeblood", on the other hand, is the nutrition that is drained through the bite attack during combat and provides [[d notation|2d6*6]] nutrition (42 on average) on a successful drain.{{refsrc|src/uhitm.c|1720|unnethack=1406}} It is always safe to eat (never poisonous or acidic) and is extractable from anything with life force, even if it doesn't leave a corpse or contain blood (such as [[flaming sphere]]s, elementals, and [[grid bug]]s, but not undead).{{fact}} Vampires will automatically disable their secondary bite attack when fighting petrifying, disintegrating and sliming monsters, unlike in vanilla NetHack.{{refsrc|src/uhitm.c|2255|unnethack=1406}}
+
+===Magical breathing===
+By the late game the nutrition problem will mostly have resolved itself as you fight larger monsters with greater frequency. Hopefully you will also have access to a ring of slow digestion which you can equip permanently or intermittently to keep your hunger under control.
+
+Since vampires do not breathe, they cannot [[choke]]. As with the [[amulet of magical breathing]], overeating may cause you to vomit and lose nutrition. It is always safe to choose "Yes" when asked if you want to continue eating when already overstuffed. This is important because you will almost always be eating lifeblood when you are fighting as a vampire. If you are overstuffed you will not die, but you will simply not drain with your bite until you can handle the nutrition. This is unlike in [[SLASH'EM]], where you are at risk of occasionally losing a few turns in the midst of battle to alarm when you "choke". ("You regain your composure.")
+
+===Intrinsics===
+Since you will have a difficult time accumulating intrinsics as a vampire, getting oneself [[crowning|crowned]] is very useful. On the other hand, crowning will also increase prayer recovery time, which will put you at greater risk of starvation in the early and middle game. Note that vampires are immune to magical [[instadeath]] attacks like the [[touch of death]], but will also take double damage from [[Sunsword]], e.g. in the hands of an [[Archon]].
+
+===Flying===
+Flying is fun. Whereas levitation allows you to avoid traps, water and lava, but keeps you too high up to pick things up or otherwise interact with objects on the ground, flying gives you the best of both worlds. You will sail over traps and water and across the [[Plane of Air]] without having to mess around with boots, spells, rings or the [[amulet of flying]]. This is particularly convenient in the endgame as you race for the starting staircase.
+
+To enter a pit (to pick up items from inside) or use a hole (to escape) you must descend with {{kbd|>}}.
+
+===Stoning===
+While in vanilla NetHack players polymorphed into vampires have to be extra careful around [[petrify]]ing monsters, UnNetHack's vampire's are intelligent enough to "turn off" their bite attack against such creatures.{{refsrc|src/uhitm.c|2255|unnethack=1406}} However, any other action which would stone a normal player (kicking a cockatrice without boots, attacking it bare-handed, etc) will still stone a vampire.
+
+Vampires do have one additional difficulty around stoning monsters, though. Since they can only feed on fresh corpses,{{fact}} this makes [[lizard corpse]]s all but useless: vampires cannot drain them if they are more than a few turns old. It is still worth it for them to carry one, if only for the protection they provide on the new moon. However, vampires will also need to find a [[potion of acid]] or [[spellbook of stone to flesh]] as a means to reverse stoning.
+
+===Silver===
+Vampires can wield and wear silver items, but it blocks their natural regeneration ("You feel itchy"). Wearing gloves will negate this ("You feel relief"), and you can wear and wield these items without penalty. Thus a shield of reflection is of much less use to a vampire character without gloves. Also beware enemies with silver sabers, as you will be subject to the additional silver damage.
+
+===Other avoided targets===
+
+In addition to choosing not to bite petrifying monsters, UnNetHack's vampires also have built in protection against [[Riders]], [[green slime]]s, [[Medusa]], and [[disintegrator]]s.{{refsrc|src/uhitm.c|2255|unnethack=1406}}
+
+==References==
+<references/>
+
+[[Category:UnNetHack]]}
+&&%s&& %s Category:Stub {93433 2015-04-13T12:36:50Z {4000596 Train} I think this may prevent this page from showing up as a subcategory to [[:Category:Stubs]]. #REDIRECT [[:Category:Stubs]]}
+&&%s&& %s Trice corpse {83006 2013-02-26T10:58:03Z {4000266 Bejonas} Redirected page to [[Cockatrice]] #REDIRECT [[Cockatrice]]}
+&&%s&& %s Random number god {83019 2013-02-27T00:47:06Z {4000180 Bcode} → [[Random number generator]] #REDIRECT [[Random number generator]]}
+&&%s&& %s Fort Knox {142343 2021-09-04T21:51:20Z {4001279 Umbire the Phantom} Umbire the Phantom moved page [[Fort knox]] to [[Fort Knox]]: Capitalization #REDIRECT [[Fort Ludios]]}
+&&%s&& %s Template:Va {83145 2013-03-09T05:08:06Z {630 Paxed} "visible anchor" <includeonly><span id="{{{1}}}">{{{2|{{{1}}}}}}</span></includeonly><noinclude>
+This template creates an anchor in the text, so you can link to that location with <code><nowiki>[[#link|...]]</nowiki></code> syntax, or the {{tl|sa}} template. It does not turn the text into a link - if you want that, use {{tl|aa}}.
+
+==Usage==
+*<code><nowiki>{{va|foo}}</nowiki></code> creates an anchor '''foo''' and shows text '''foo'''
+*<code><nowiki>{{va|foo|bar}}</nowiki></code> creates an anchor '''foo''' and shows text '''bar'''
+
+==See also==
+*{{tl|anchor}}
+*{{tl|sa}}
+*{{tl|aa}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s KMH {83188 2013-03-09T14:21:46Z {831 Tjr} Redirected page to [[DevTeam#Core devteam]] #redirect [[DevTeam#Core_devteam]]}
+&&%s&& %s Kmh {83189 2013-03-09T14:22:10Z {831 Tjr} Redirected page to [[DevTeam#Core devteam]] #redirect [[DevTeam#Core_devteam]]}
+&&%s&& %s EbonHack {88362 2014-02-13T10:37:49Z {630 Paxed} version number change [[File:Ebonhack default.png|thumbnail|320px|EbonHack with the default vanilla tileset]]
+'''EbonHack''' is a graphical [[telnet]] frontend for NetHack created by David McCallum. The current version is 1.30 and can be downloaded from the EbonHack homepage.
+
+EbonHack can make use of the [[vt_tiledata]] extension on [[NAO]].
+
+==External links==
+*[http://www.junction404.com/#ebonhack EbonHack homepage]
+
+{{stub}}
+[[Category:Utilities]]}
+&&%s&& %s Ebonhack {83224 2013-03-13T17:41:14Z {630 Paxed} #REDIRECT [[EbonHack]] #REDIRECT [[EbonHack]]}
+&&%s&& %s Soiled {106782 2017-08-20T13:24:06Z {4000180 Bcode} Text replacement - "http://alt.org" to "https://alt.org" '''Soiled''' is a [[telnet]] client and a terminal emulator written in [[wikipedia:Haxe|Haxe]] and can be compiled into Adobe Flash application for use on a website.
+
+Soiled can use the extra information provided by [[vt_tiledata]]-option.
+
+==External links==
+*[http://code.google.com/p/soiled/ Soiled homepage]
+*[https://alt.org/nethack/soiled/ Soiled terminal on nethack.alt.org]
+
+{{stub}}
+[[Category:Utilities]]}
+&&%s&& %s Previous messages {83251 2013-03-14T18:42:47Z {630 Paxed} #REDIRECT [[Repeat previous messages]] #REDIRECT [[Repeat previous messages]]}
+&&%s&& %s Previous message {83252 2013-03-14T18:43:12Z {630 Paxed} #REDIRECT [[Repeat previous messages]] #REDIRECT [[Repeat previous messages]]}
+&&%s&& %s Cast spells {83260 2013-03-14T21:10:52Z {630 Paxed} #REDIRECT [[Spellcasting]] #REDIRECT [[Spellcasting]]}
+&&%s&& %s Ludios.des {83293 2013-03-16T15:58:57Z {831 Tjr} Redirected page to [[Source:NetHack 3.4.3/dat/knox.des]] #redirect [[Source:NetHack_3.4.3/dat/knox.des]]}
+&&%s&& %s Ludios.de {83295 2013-03-16T16:01:56Z {831 Tjr} Redirected page to [[Source:NetHack 3.4.3/dat/knox.des]] #redirect [[Source:NetHack_3.4.3/dat/knox.des]]}
+&&%s&& %s Submachinegun {83299 2013-03-16T21:06:21Z {630 Paxed} #REDIRECT [[Firearm]] #REDIRECT [[Firearm]]}
+&&%s&& %s Heavy machinegun {83300 2013-03-16T21:06:56Z {630 Paxed} #REDIRECT [[Firearm]] #REDIRECT [[Firearm]]}
+&&%s&& %s Scroll of flood {147553 2022-08-15T14:33:27Z {4000693 Phol ende wodan} I guess there should be an xnethack items category {{scroll|name=flood|cost=200|ink=10&ndash;19}}
+The '''scroll of flood''' is an item added in [[UnNetHack]], and also in [[xNetHack]] as the '''scroll of water'''.
+
+==Generation==
+In addition to random generation, a scroll of flood will be generated on top of a gravestone that reads "Apres moi, le deluge"; the phrase is French for ''"After me, the flood"''.
+
+==Effects==
+Reading a scroll of flood causes a flood which creates [[moat|pools of water]] around you.<ref>http://bilious.alt.org/?216</ref>
+
+If the scroll is uncursed, it creates water around you in a similar fashion to an overflowing [[fountain]], but with a higher probability per square, and a chance of including your own square. If the scroll is blessed, it will not create a pool underneath you. A cursed scroll restricts the flood to the square you're standing on, which could be useful when levitating over a tile of lava with something valuable sunk into it.
+
+If read while [[confused]], the scroll instead removes a circle of water from around you, with the radius dependent on its [[BUC]] status.
+
+In xNetHack, the scroll of water will never create a pool of water under the player. It also cannot be made into a [[scroll of blank paper]] via #[[dipping]].
+
+==References==
+<references/>
+
+[[Category:Scrolls|flood]]
+[[Category:UnNetHack items]]
+[[Category:xNetHack items]]}
+&&%s&& %s Ring of Increase Accuracy {83337 2013-03-19T21:54:09Z {831 Tjr} Redirected page to [[Ring of increase accuracy]] #redirect [[Ring_of_increase_accuracy]]}
+&&%s&& %s Refcard {83350 2013-03-20T20:55:46Z {630 Paxed} #REDIRECT [[Reference card]] #REDIRECT [[Reference card]]}
+&&%s&& %s Reference {83351 2013-03-20T20:56:06Z {630 Paxed} #REDIRECT [[Reference card]] #REDIRECT [[Reference card]]}
+&&%s&& %s Quick reference {83352 2013-03-20T20:56:34Z {630 Paxed} #REDIRECT [[Reference card]] #REDIRECT [[Reference card]]}
+&&%s&& %s Quick reference card {83353 2013-03-20T20:56:51Z {630 Paxed} #REDIRECT [[Reference card]] #REDIRECT [[Reference card]]}
+&&%s&& %s Template:Yes {137119 2021-01-16T01:12:26Z {4001476 Infinigon} category <noinclude>{| class="wikitable"
+|-
+|</noinclude>class="table-yes"|{{{1|Yes}}}<noinclude>
+|}
+
+This sets the table cell color. Takes one optional argument, which will be the table cell contents. Defaults to "Yes".
+
+This is a simplified version of [[wikipedia:Template:yes]].
+
+==See also==
+
+*{{tl|no}}
+*{{tl|partial}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:No {137120 2021-01-16T01:12:34Z {4001476 Infinigon} category <noinclude>{| class="wikitable"
+|-
+|</noinclude>class="table-no"|{{{1|No}}}<noinclude>
+|}
+
+This sets the table cell color. Takes one optional argument, which will be the table cell contents. Defaults to "No".
+
+This is a simplified version of [[wikipedia:Template:no]].
+
+==See also==
+
+*{{tl|yes}}
+*{{tl|partial}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:Partial {137121 2021-01-16T01:12:43Z {4001476 Infinigon} category <noinclude>{| class="wikitable"
+|-
+|</noinclude>class="table-partial"|{{{1|Partial}}}<noinclude>
+|}
+
+This sets the table cell color. Takes one optional argument, which will be the table cell contents. Defaults to "Partial".
+
+This is a simplified version of [[wikipedia:Template:partial]].
+
+==See also==
+
+*{{tl|no}}
+*{{tl|yes}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Home level {83386 2013-03-21T13:50:26Z {630 Paxed} #REDIRECT [[Quest]] #REDIRECT [[Quest]]}
+&&%s&& %s Locate level {83387 2013-03-21T13:51:26Z {630 Paxed} #REDIRECT [[Quest]] #REDIRECT [[Quest]]}
+&&%s&& %s Goal level {83388 2013-03-21T13:53:03Z {630 Paxed} #REDIRECT [[Quest]] #REDIRECT [[Quest]]}
+&&%s&& %s Spring of wolfsbane {83499 2013-03-23T20:59:15Z {831 Tjr} Redirected page to [[Sprig of wolfsbane]] #redirect [[Sprig_of_wolfsbane]]}
+&&%s&& %s Sprig of Wolfsbane {83500 2013-03-23T20:59:47Z {831 Tjr} Redirected page to [[Sprig of wolfsbane]] #redirect [[Sprig_of_wolfsbane]]}
+&&%s&& %s Wand of fireball {83539 2013-03-25T05:39:10Z {4000180 Bcode} categories {{wand
+ |name=fireball
+ |cost=300
+ |type=ray
+ |maxcharges=8
+ |spell=fireball
+ |abundance=0.5%
+}}
+The '''wand of fireball''' is a new wand added in [[SLASH'EM]], replicating the effect of the {{spell of|fireball}} spell. When zapped, it generates a ray that stops on hit (even when hitting a wall), causing a single explosion.
+{{stub}}
+{{slashem-7E7}}
+[[Category:Wands]]
+[[Category:SLASH'EM items]]
+[[Category:SLASH'EM]]}
+&&%s&& %s This burns! {83545 2013-03-26T12:22:58Z {0 } Redirected page to [[Potion of acid]] #REDIRECT [[Potion of acid]]}
+&&%s&& %s Template:Dagger skill table (SLASH'EM) {83547 2013-03-26T16:58:58Z {4000292 Prometheus77} created version with new SLASH'EM roles {| class="prettytable"
+! colspan="2" style="font-size:larger" | Dagger
+|-
+! Max !! Role
+|-
+| Basic
+|
+* [[Archeologist]], [[Barbarian]], [[Caveman]], [[Knight]], [[Samurai]]
+|-
+| Skilled
+|
+* [[Healer]], [[Yeoman]]
+|-
+| Expert
+|
+* [[Flame Mage]], [[Ice Mage]], [[Necromancer]], [[Rogue]], [[Ranger]], [[Tourist]], [[Undead Slayer]], [[Valkyrie]], [[Wizard]]
+|}}
+&&%s&& %s Passes walls {83552 2013-03-26T18:44:08Z {4000045 Bulwersator} Redirected page to [[Phasing]] #REDIRECT[[Phasing]]}
+&&%s&& %s Convict Role {83598 2013-03-28T02:26:48Z {4000180 Bcode} redirect to [[Convict]] from patch name #REDIRECT [[Convict]]}
+&&%s&& %s Convict patch {83599 2013-03-28T02:28:31Z {4000180 Bcode} redirect to [[Convict]] from informal name for the "Convict Role" patch #REDIRECT [[Convict]]}
+&&%s&& %s Template:Alternate tilesets {84139 2013-04-17T20:50:32Z {4000292 Prometheus77} wikilinked template title <includeonly><div class="thumb tright">
+{| class="prettytable collapsible collapsed" style="margin: 0;"
+!colspan="2"| {{{1|{{{title|{{PAGENAME}}}}}}}} ([[Template:Alternate tilesets|alternate tilesets]])
+|-
+!Default (32x32)
+|[[File:Default_32x32_{{{1|{{PAGENAME}}}}}.png|64x64px]]
+|-
+![[The Absurd NetHack Tileset|Absurd]] (128x128)
+|[[File:Absurd_128x128_{{{1|{{PAGENAME}}}}}.png|64x64px]]
+|-
+!RLTiles
+|[[File:RLTiles_{{{1|{{PAGENAME}}}}}.png|64x64px]]
+|-
+!PixelHack
+|[[File:PixelHack_{{{1|{{PAGENAME}}}}}.png|64x64px]]
+|-
+!NeXTSTEP
+|[[File:NeXTSTEP_{{{1|{{PAGENAME}}}}}.png|64x64px]]
+|-
+![[Abigaba tiles|Abigaba]]
+|[[File:Abigaba_{{{1|{{PAGENAME}}}}}.png|64x64px]]
+|-
+!Geoduck
+|[[File:Geoduck_{{{1|{{PAGENAME}}}}}.png|38x64px]]
+|-
+!lagged
+|[[File:lagged_{{{1|{{PAGENAME}}}}}.png|38x64px]]
+|}
+</div></includeonly><noinclude>
+{{alternate tilesets|giant ant}}
+Use this template to show alternate tilesets for a given monster/dungeon feature/item in its article. Requires uploading a png for each tile, with the following file name format: <tileset>_<tile name>.png, where <tile name> is the name of the tile graphic used in the glyph on the relevant page, and <tileset> is one of the following:
+*<tt>Default_32x32</tt>
+*<tt>Absurd_128x128</tt>
+*<tt>RLTiles</tt>
+*<tt>PixelHack</tt>
+*<tt>NeXTSTEP</tt>
+*<tt>Abigaba</tt>
+*<tt>Geoduck</tt>
+*<tt>lagged</tt>
+
+Additionally, an optional <tt>title</tt> parameter may be specified to adjust the name used in the title in case the tile name is unsuitable (e.g. "XIXAXA XOXAXA XUXAXA / scare monster").
+
+For example:
+*<tt><nowiki>{{alternate tilesets}}</nowiki></tt>
+*<tt><nowiki>{{alternate tilesets|giant ant|title=the most dangerous monster}}</nowiki></tt>}
+&&%s&& %s Tilesets {83660 2013-03-29T12:39:46Z {4000180 Bcode} redirect to [[tileset]]: someone might be looking for a list of tileset*s* #REDIRECT [[Tileset]]}
+&&%s&& %s Staff of Aesculaipus {148598 2022-10-05T05:50:25Z {4001279 Umbire the Phantom} so it is, I "un-misspelled" it when checking WhatLinksHere. can still truncate a little {{delete|Misspelled and unnecessary redirect - we already have [[Staff of Aesculapius]]}}
+#REDIRECT [[The Staff of Aesculapius]]}
+&&%s&& %s Abigaba tiles {131911 2020-02-07T05:28:46Z {679 Ray Chason} Provide link for a 3.6 version of this tile set [[File:Chozo32.png|right|thumb|The 3.4 tileset in PNG form. Must be converted to .bmp for use in NetHack.]]
+[[File:Chozo32-360.png|right|thumb|A conversion for 3.6, also in PNG form.]]
+
+The Abigaba tiles (also called Chozo tiles) are a set of ASCII-derivative [[tile]]s for [[NetHack]] and [[SLASH'EM]] that are designed to provide an experience somewhere between a graphical game and an ASCII-game. Monsters are rendered according to the letter of the alphabet that with which they are represented, but with fonts, colors, and embellishments suggestive of what they represent. Most other items ([[weapon]]s, [[potion]]s, [[scroll]]s, [[dungeon feature]]s, etc.) are purely graphical. The key advantage of Abigaba tiles is that it is easy and intuitive for experienced players to learn what the tiles represent, while still providing a level of graphic detail that appeals to newer players.
+
+Abigaba tiles are available as an option on several ports of NetHack and SLASH'EM, including Dirk Zimmerman's [[iNetHack]] and [[SLASH'EM (iPhone app)|SLASH'EM]] for iPhone and [[NetHack HD]] for iPad.
+
+Currently available versions are:
+*NetHack 32x32 tiles with highlighted corners
+*NetHack 32x32 tiles without highlighted corners
+*SLASH'EM 24x24 tiles
+
+==External links==
+*https://web.archive.org/web/20121029092206/http://www.multifoliate.com/nh/
+{{noversion}}
+
+[[Category:User interface]]}
+&&%s&& %s Abigaba {83672 2013-03-29T21:06:38Z {4000292 Prometheus77} Redirected page to [[Abigaba tiles]] #REDIRECT [[Abigaba tiles]]}
+&&%s&& %s Chozo {83673 2013-03-29T21:06:58Z {4000292 Prometheus77} Redirected page to [[Abigaba tiles]] #REDIRECT [[Abigaba tiles]]}
+&&%s&& %s Chozo tiles {83674 2013-03-29T21:07:16Z {4000292 Prometheus77} Redirected page to [[Abigaba tiles]] #REDIRECT [[Abigaba tiles]]}
+&&%s&& %s Abigaba tileset {83675 2013-03-29T21:07:39Z {4000292 Prometheus77} Redirected page to [[Abigaba tiles]] #REDIRECT [[Abigaba tiles]]}
+&&%s&& %s Chozo tileset {83676 2013-03-29T21:07:54Z {4000292 Prometheus77} Redirected page to [[Abigaba tiles]] #REDIRECT [[Abigaba tiles]]}
+&&%s&& %s Why do I keep dying {83691 2013-03-30T23:53:47Z {4000371 Omegacenti} shortens url, more chances to hit what the query is intending to look for, easier to post in to newbie player games :) #REDIRECT [[Why do I keep dying?]]}
+&&%s&& %s WDIKD? {83692 2013-03-30T23:58:39Z {4000371 Omegacenti} Abbreviation of Why do I keep dying which redirects to "Why do I keep dying?" #REDIRECT[[Why do I keep dying?]]}
+&&%s&& %s WDIKD {83693 2013-03-31T00:01:13Z {4000371 Omegacenti} redirect of WDIKD sans punctuation which redirects to "Why Do I keep Dying?" #REDIRECT [[Why do I keep dying?]]}
+&&%s&& %s Invocation item {83694 2013-03-31T04:51:56Z {4000180 Bcode} redirect → unique item #REDIRECT [[Unique item]]}
+&&%s&& %s Housecat {83712 2013-03-31T07:50:16Z {4000180 Bcode} redirect directly to housecat section #REDIRECT [[Cat#Housecat]]}
+&&%s&& %s List weapons {83725 2013-03-31T08:48:29Z {831 Tjr} woops #redirect [[)]]}
+&&%s&& %s List & reorder spells {83728 2013-03-31T08:49:49Z {831 Tjr} woops #redirect [[Plus_sign]]}
+&&%s&& %s List currently used tools {83724 2013-03-31T08:48:18Z {831 Tjr} Redirected page to [[(]] #redirect [[(]]}
+&&%s&& %s List currently worn amulet {83726 2013-03-31T08:48:49Z {831 Tjr} Redirected page to [["]] #redirect [["]]}
+&&%s&& %s List currently worn rings {83727 2013-03-31T08:49:06Z {831 Tjr} Redirected page to [[=]] #redirect [[=]]}
+&&%s&& %s List currently used weapons & armor {83730 2013-03-31T08:56:10Z {831 Tjr} woops #redirect [[Right_square_bracket]]}
+&&%s&& %s List currently worn armor {83731 2013-03-31T08:56:27Z {831 Tjr} Redirected page to [[Left square bracket]] #redirect [[Left_square_bracket]]}
+&&%s&& %s User blog:Zapwire {83732 2013-03-31T09:00:23Z {831 Tjr} make this d*** thing disappear from "special:wanted pages" #redirect [[User_talk:Zapwire]]}
+&&%s&& %s Creatures {83755 2013-04-01T08:44:14Z {4000045 Bulwersator} Redirected page to [[Monster]] #REDIRECT[[Monster]]}
+&&%s&& %s Template:Level {132009 2020-02-13T23:04:28Z {4001313 Ardub23} Use an en dash instead of a hyphen for range of values, e.g. "Level 5–9". If {{{to}}} starts with a minus sign (or hyphen), use 'to' instead, e.g. "Level −5 to −9" <includeonly><onlyinclude><div class="thumb tright">
+{| class="prettytable" style="margin: 0;"
+!colspan=2| {{{1}}}
+|-
+!Location
+|Level {{#ifeq:{{{from}}}|{{{to}}}|{{{from}}}|{{{from}}}{{#switch:{{padleft:|1|{{{to}}}}}|-|−=&#32;to&#32;|–}}{{{to}}}}} of {{#switch:{{{branch}}}|End Game|Gnomish Mines|Dungeons of Doom=the}}<br/>[[{{{branch}}}]]{{pp|{{#if:{{{probability|}}}|2|3}}|
+{{!}}-
+!Probability
+{{!}}{{{probability}}}|}}{{pp|{{#if:{{{variants|}}}|2|3}}|
+{{!}}-
+!Variants
+{{!}}
+{{{variants}}}|}}
+|-
+![[Bones]]
+|{{#switch:{{{bones|}}}|yes={{yes}}|no={{no}}|=''varies''|{{partial|{{{bones}}}}}}}
+|-
+![[magic mapping|Mappable]]
+|{{#switch:{{{mapping|}}}|yes={{yes}}|no={{no}}|=''varies''|{{partial|{{{mapping}}}}}}}
+|-
+![[teleportation|Teleportable]]
+|{{#switch:{{{teleport|}}}|yes={{yes}}|no={{no}}|=''varies''|{{partial|{{{teleport}}}}}}}
+|-
+![[digging|Diggable floor]]
+|{{#switch:{{{digfloor|}}}|yes={{yes}}|no={{no}}|=''varies''|{{partial|{{{digfloor}}}}}}}
+|-
+![[digging|Diggable walls]]
+|{{#switch:{{{digwalls|}}}|yes={{yes}}|no={{no}}|=''varies''|{{partial|{{{digwalls}}}}}}}
+|}
+</div></onlyinclude></includeonly>
+{{level|Delphi|
+ |branch=Dungeons of Doom
+ |from=5
+ |to=9
+ |bones=yes
+ |mapping=yes
+ |teleport=yes
+ |digfloor=yes
+ |digwalls=yes
+}} <!-- Keep this at the top so the page looks nicer. -->
+This is an infobox template for pages about (special) levels. Use it like this:
+
+ <nowiki>{{level|Delphi|
+  |branch=Dungeons of Doom
+  |from=5
+  |to=9
+  |bones=yes
+  |mapping=yes
+  |teleport=yes
+  |digfloor=yes
+  |digwalls=yes
+ }}</nowiki>
+
+resulting in the infobox shown to the right.
+
+There is also a <tt>probability</tt> parameter; specify this for levels that are not guaranteed to appear, like the [[Big Room]] in [[vanilla]].
+
+For a level with a constant location relative to its branch, set both <tt>from</tt> and <tt>to</tt> to the same number.
+
+The <tt>bones</tt>, <tt>mapping</tt>, <tt>teleport</tt>, <tt>digfloor</tt> and <tt>digwalls</tt> parameters can be passed "yes" or "no". Alternatively, a note may be specified describing how the flag applies only partially (for example, mentioning teleport regions). If any of these parameters is left unspecified, it will be displayed as ''varies''; this is intended for levels with multiple variants that have different flags, for example Mines' End. The flags common to all variants should still be specified.
+
+For levels with multiple variants, the <tt>variants</tt> parameter should be specified as a list of variants (wikilinked to their more specific description, if possible).
+
+[[Category:Infobox templates]]}
+&&%s&& %s Dwarf/ru {146847 2022-07-21T10:44:11Z {4000251 Netzhack} /* Encyclopaedia entry */ {{Languages}}
+{{Wikipedia|Dwarf}}
+
+== Расовые преимущества и ограничения ==
+В ''[[NetHack]]'' или ''[[SLASH'EM]]'' вы можете играть за '''Дворфа'''. Вы будете выглядеть как {{white|@}} (если не активируете  [[Options#showrace|showrace]]), но вы можете считать себя ''и'' {{white|@}} и буквой {{white|h}}. Хотя, использовать благословленный свиток [[genocide|геноцида]] для ликвидации [[mind flayer|пожирателей разума]] - плохая идея, так как это приведет к [[instadeath|мгновенной смерти]].
+
+Дворфы всегда [[Lawful|миролюбивы]]. Они могут быть [[Archeologist|Археологами]], [[Caveman|Дикарями]], или [[Valkyrie|Валькириями]]. 
+
+Дворфы обладают [[intrinsic|врожденным]] [[infravision|инфразрением]]. С точки зрения [[attribute|атрибутов]], Дворфы имеют высокие физические характеристики (самые высокие ловкость и телосложение), но это компенсируется низкими значениями интеллекта. В таблице ниже представлены их максимальные (без внешнего вмешательства) значения атрибутов.
+
+{| class="prettytable"
+! [[Race|Раса]]<br />персонажа
+! Сила
+! Ловкость
+! Телосложение
+! Интелект
+! Мудрость
+! Харизма
+|-
+| [[Dwarf|Дворф]]   || 18/** || 20 || 20 || 16 || 16 || 16
+|}
+В [[Gnomish Mines|Гномьих шахтах]] к Дворфам другие Дворфы относятся миролюбиво.
+
+Любопытно, что настоящий роли для Дворфа нет - Дикари примитивны, Археологи испытывающие отвращение к боям ученые, а Валькирии вообще женщины! Персонаж в привычном представлении воина/ремесленника/шахтера не доступен игроку в NetHack, по крайней мере в настоящее время. Эльфийский [[Ranger|Странник]] и Орочий [[Barbarian|Варвар]] выглядят намного ближе к их типичному образу.
+
+==Список Дворфийских [[monster|монстров]] ==
+
+В пещерах ванильного NetHack 3.4.3 могут повстречаться:
+* {{monsymlink|dwarf}}
+* {{monsymlink|dwarf lord}}
+* {{monsymlink|dwarf king}}
+* {{monsymlink|dwarf mummy}}
+* {{monsymlink|dwarf zombie}}
+
+==Дворфийские предметы==
+В файле [[objects.c]] версии 3.4.3 ванильного [[NetHack]] так же определено несколько Дворфийских объектов. Все они перечислены ниже. Урон от оружия взят из [[weap-343.txt]], а характеристики брони из [[armr-343.txt]].
+
+[[Weapon|Оружие]]:
+* [[Dwarvish mattock|Дворфийская мотыга]] (широкая кирка) - d12/d8+2d6
+* [[Dwarvish short sword|Дворфийский короткий меч]] (широкий короткий меч) - d7/d8
+* [[Dwarvish spear|Дворфийское копье]] (крепкое копье) - d8/d8
+
+[[Armor|Броня]]:
+* [[Dwarvish iron helm|Дворфийский железный шлем]] (каска) - AC 2
+* [[Dwarvish mithril-coat|Дворфийский мифриловый мундир]] - AC 6
+* [[Dwarvish cloak|Дворфийский плащ]] (закрытый плащ) - AC 0
+* [[Dwarvish roundshield|Дворфийский щит]] (большой круглый щит) - AC 2
+
+Вы можете использовать список выше для распознования предметов как Дворфийских. На данный момент в игре отсутствуют Дворфийские [[artifact|артефакты]]. Заметьте, что Дворфийская мотыга имеет пенальти -1 к урону.
+
+Дворфийские предметы выглядят исключительными поделками из металлов. (В противоположность этим грубым поделкам [[Orc|Орков]].) Мифриловый мундир никогда не ржавеет и не подвержен коррозии и имеет 3 единицы [[magic cancellation|погашения магии]], а так же на 1 очко защиты AC больше по сравнению с Эльфийским мифриловым мундиром, хотя безопасно [[scroll of enchant armor|зачаровать]] его можно только на +5, а Эльфийский можно зачаровывать до +7. Дворфийский плащ дает на 1 единицу AC меньше, чем Эльфийский и не добавляет [[extrinsic|внешней]] [[Stealth|Скрытности]]. Дворфийский щит тяжелее Эльфийского, хотя и имеет тот же AC.
+
+==Encyclopaedia entry==
+
+{{encyclopedia|
+Dwarfs have faces like men (ugly men, with wrinkled, leathery skins), but are generally either flat-footed, duck-footed, or have feet pointing backwards.  They are of the earth, earthy, living in the darkest of caverns and venturing forth only with the cloaks by which they can make themselves invisible, and others disguised as toads.  Miners often come across them, and sometimes establish reasonably close relations with them.... The miners of Cornwall were always delighted to hear a bucca busily mining away, for all dwarfs have an infallible nose for precious metals.
+Among other things, dwarfs are rightly valued for their skill as blacksmiths and jewellers: they made Odin his famous spear Gungnir, and Thor his hammer; for Freya they designed a magnificent necklace, and for Frey a golden boar.  And in their spare time they are excellent bakers.  Ironically, despite their odd feet, they are particularly fond of dancing.  They can also see into the future, and consequently are excellent meteorologists.  They can be free with presents to people they like, and a dwarvish gift is likely to turn to gold in the hand.  But on the whole they are a snappish lot.
+|[ The Immortals, by Derek and Julia Parker ]
+}}
+
+<references />
+
+{{nethack-343|offset=1}}
+{{slashem-7E7}}
+[[Category:Monsters]]
+[[Category:Races]]}
+&&%s&& %s Template talk:Languages {83925 2013-04-07T07:40:34Z {831 Tjr} /* Japanese */ bad idea ==Japanese==
+Maybe we should enable Japanese. There already is a Japanese language NetHack community. A read-only mirror is at http://nethack-users.sourceforge.jp/hackaholic/ On the one hand, the primary site blocks everybody located outside Japan, as an anti-spam measure. On the other hand, I'd like to lower barriers on our side.
+
+For example, [[Riding]] could get a subpage Riding/jp, which redirects to [http://nethack-users.sourceforge.jp/hackaholic/index.php?%BE%E8%C7%CF their article] [http://translate.google.de/translate?hl=de&sl=ja&tl=en&u=http%3A%2F%2Fnethack-users.sourceforge.jp%2Fhackaholic%2Findex.php%3F%25BE%25E8%25C7%25CF (translation)]. The redirect should use <nowiki><a href="link" rel=nofollow></nowiki> since they [http://sourceforge.jp/ticket/browse.php?group_id=381&tid=23833 didn't update their links to Wikia].
+
+* Do you think links would improve our wiki (if they agree)?
+* Is their site active enough for these purposes?
+* Should we ask them if they want to be linked to?
+* How do we ask so that they can save face about the Wikia and read-only issues?
+
+Thoughts, anyone? --[[User:Tjr|Tjr]] ([[User talk:Tjr|talk]]) 23:31, 6 April 2013 (UTC)
+
+:It's a bad idea, on second thoghts. --[[User:Tjr|Tjr]] ([[User talk:Tjr|talk]]) 07:40, 7 April 2013 (UTC)}
+&&%s&& %s Race/ru {83964 2013-04-08T17:11:04Z {4000374 Church} Created page with "{{Languages}}  ==Расы== '''Раса''', с которой вы начнете игру, может быть одной из следующих: [[human|человек]], [..." {{Languages}}
+
+==Расы==
+'''Раса''', с которой вы начнете игру, может быть одной из следующих: [[human|человек]], [[dwarf/ru|дворф]], [[elf|эльф]], [[gnome|гном]] или [[orc|орк]]. Люди могут выбрать любую [[role|роль]], в то время как остальные расы ограниченны в выборе. Раса влияет на начальное и максимальное значения [[Attribute|атрибутов]], отношения с монстрами той же расы, а так же безопасностью их [[Religion|жертвоприношения]]. Начальная раса так же определяет [[cannibalism|каннибализм]], и то, какие существа могут быть безопасно уничтожены [[genocide|геноцидом]].
+
+Превращение в эльфа, дворфа или другого монстра не меняет описанное выше. Кроме того, бог не подарит вам [[artifact|артефакта]], который бы наносил урон в текущей форме.
+
+Люди могут быть любого [[alignment|мировоззрения]] (ограничения накладывает роль), но другие расы напрямую выбирают мировоззрение: дворфы всегда миролюбивы, гномы нейтральны, а эльфы и орки хаотические.
+
+В целом, [[Dwarf/ru|дворфы]] сильные, [[Elf|эльфы]] и [[Gnome|гномы]] умные, [[Orc|орки]] имеют сопротивление ядам, а [[Human|люди]] хороши во всем по чуть-чуть.
+
+В [[guidebook|путеводителе]] для рас дают следующие советы:
+{{guidebook|Дворфы меньше, чем люди или эльфы, но крепкие и коренастые. Главная особенность Дворфов в их великолепных навыках металлургии и шахтерского ремесла. Броня Дворфов вторая по качеству, обгоняя даже мифриловую Эльфийскую.}}
+
+{{guidebook|Эльфы проворные, быстрые и чуткие; мало кто сможет убежать от Эльфа. Качество Эльфийских вещей дает им преимущество в оружии и броне.}}
+
+{{guidebook|Гномы самые маленькие, хотя почти равны Дворфам. Гномы - знатные шахтеры, а так же известно о их секретном подземном комплексе, находящемся в Mazes of Menace, полном богатств и опасностей.}}
+
+{{guidebook|Люди самая часто встречающаяся на поверхности раса, и в подземелье их тоже больше, в сравнении с представителями других рас. Хоть у них и нет особых способностей, они могут играть любую роль.}}
+
+{{guidebook|Орки - жестокая и дикая раса, которая ненавидит все живое (даже других орков). Больше всех остальных, Орки ненавидят Эльфов, и они будут стараться изо всех сил, что бы убить оппонента. Популярные у орков броня и оружие обычно низшего качества.}}
+
+==Расовые преимущества==
+{|class="prettytable"
+! Раса !! Врожденное !! Прочее
+|-
+|Дворфы|| - || Двойная [[Digging#Digging_speed|скорость копания]]
+|-
+|Эльфы|| [[sleep resistance|сопротивление сну]] на 4 уровне || Бонус [[Multishot|быстрой стрельбы]] для эльфийских стрел из [[elven bow|эльфийского лука]].
+|-
+|Гномы || - || Могут использовать не проклятый [[touchstone|тачстон]] как благословленный
+|-
+|Humans || - || Нет инфразрения
+|-
+|Orcs || [[poison resistance|сопротивление ядам]] с 1 уровня || Разрешен [[Cannibalism|канибализм]]. Бонус [[Multishot|быстрой стрельбы]] для орочьих стрел из [[orcish bow|орочьего лука]]
+|}
+
+==SLASH'EM==
+В [[SLASH'EM]] добавилось несколько новых рас, а так же допустимые мировоззрения и статистика оригинальных рас. Новые расы:
+
+* [[Drow]] - Могут усыплять противников голыми руками.
+* [[Doppelganger (starting race)|Doppelganger]] - Имеет природную [[protection|защиту]], очень высокие атрибуты и способность #youpoly
+* [[Hobbit (starting race)|Hobbit]] - [[fast|быстрые]]
+* [[Lycanthrope (starting race)|Lycanthrope]] - [[regeneration|регенерация]] и [[lycanthropy|ликантропия]]
+* [[Vampire (starting race)|Vampire]] - [[regeneration|регенерация]], очень высокие атрибуты, летает, но питаться может только свежей кровью
+
+{{nethack-343|offset=1}}
+{{slashem-7E7|}}
+[[Category:Races| ]]}
+&&%s&& %s Template:Monsym/deep orc {84037 2013-04-13T17:45:15Z {4000045 Bulwersator} Created page with "{{green|o}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{green|o}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/durin's bane {84040 2013-04-13T17:49:04Z {4000045 Bulwersator}  {{red|&}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/watcher in the water {84058 2013-04-13T21:02:55Z {4000180 Bcode} fix color {{magenta|;}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/crystal ice golem {84047 2013-04-13T17:52:53Z {4000045 Bulwersator}  {{brightblue|'}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/chillbug {84043 2013-04-13T17:51:29Z {4000045 Bulwersator} Created page with "{{brightblue|x}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{brightblue|x}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/blue slime {84044 2013-04-13T17:51:55Z {4000045 Bulwersator} Created page with "{{brightblue|P}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{brightblue|P}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/ice golem {84046 2013-04-13T17:52:49Z {4000045 Bulwersator}  {{brightcyan|'}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/dark angel {86773 2013-08-28T15:54:22Z {4000376 Guest41} Guest41 moved page [[Template:Monsym/black angel]] to [[Template:Monsym/dark angel]] {{black|A}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/white naga {84049 2013-04-13T17:54:21Z {4000045 Bulwersator} Created page with "{{white|N}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{white|N}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/executioner {84050 2013-04-13T17:54:46Z {4000045 Bulwersator} Created page with "{{magenta|@}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{magenta|@}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/weeping angel {84052 2013-04-13T17:56:52Z {4000045 Bulwersator} Created page with "{{gray|A}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{gray|A}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/enormous rat {84053 2013-04-13T17:57:47Z {4000045 Bulwersator} Created page with "{{brown|r}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{brown|r}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/rodent of unusual size {84054 2013-04-13T17:57:49Z {4000045 Bulwersator} Created page with "{{brown|r}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{brown|r}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/chromatic dragon (unnethack) {84091 2013-04-14T10:10:26Z {4000045 Bulwersator} Created page with "{{magenta|D}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>" {{magenta|D}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template:Monsym/punisher {84101 2013-04-14T11:03:22Z {4000180 Bcode} add punisher symbol, {{black|`}} {{black|`}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s Template talk:Alternate tilesets {84120 2013-04-16T14:56:05Z {4000292 Prometheus77} /* Continued on User:Prometheus77's page */ responded to TJR Below is a compilation of discussions relating to this page, originally posted on [[NetHackWiki:Community_Portal]], [[User_talk:Prometheus77]], [[User_talk:Bcode]], and [[User_talk:Paxed]].
+
+==Original discussion==
+
+I am one of a growing number of NetHack players using smartphones and tablets to play the game. Most of us use one of various graphical tilesets because they are more friendly to the new media (I prefer the Abigaba/Chozo tileset myself). As such, I've long wanted to add alternate tiles to articles on monsters/items/etc. to make NetHackWiki more usable to people like me. I create the [[Template:Alternate_tilesets]] for this purpose, which produces a result like so:
+{{Alternate tilesets|giant ant}}
+
+I'd like some help to get this ready for production:
+#Does anyone have a way of systematically cutting up large tileset files into numbered subfiles that can be renamed and uploaded to the wiki?
+#Can someone please fix the template to float *below* the monster, weapon, etc. template rather than next to it?
+#Can someone please fix the template to be expandable (e.g. "more" button) rather than always appearing, as it's quite large and could be distracting to many non-smartphone/tablet players
+
+Any other improvement suggestions welcome. Thanks!
+--[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 23:19, 28 March 2013 (UTC)
+
+: I agree this is a good idea. --[[User:Tjr|Tjr]] ([[User talk:Tjr|talk]]) 09:03, 29 March 2013 (UTC)
+
+:#This should be easy to automate, yes. I don't have an account with the bot flag set, though, and I certainly don't want to flood [[Special:RecentChanges]] with automated uploads (and it'd be good form to ask first, anyway).
+:#Someone with a better knowledge of CSS might want to look at that.
+:#[{{canonicalurl:Template:Alternate tilesets|diff=83658&oldid=83648}} Done].
+:Would there be a problem with renaming the <tt>name</tt> parameter/converting it into a numbered parameter? It seems it'd be the "main" parameter, anyway, so <tt><nowiki>{{alternate tilesets|giant ant}}</nowiki></tt> might be better. —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 12:28, 29 March 2013 (UTC)
+
+::Thanks, that's a significant improvement. Poking around on bilious.alt.org last night I found a page that does what we're looking for, but it seems to do it by loading the entire tileset file and cropping.
+::http://bilious.alt.org/~paxed/nethack/nhsshot/tilecmp.php
+::I'm not a skilled enough html programmer to try to implement something like this in the template, but it seems like it may be a better solution. It would be ideal if there was a way to have the template lookup xy coordinates for each tile, but I don't know if it's possible to put lookup functionality into a template.
+::--[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 13:42, 29 March 2013 (UTC)
+
+:::I'm not sure there's a good MediaWiki solution for this. The lookup thing could be done in a <tt><nowiki>{{#switch:…}}</nowiki></tt>, though I'm not sure it's worth it. That HTML/CSS-based cropping seems quite hackish to me. (Also, it doesn't allow us to link to a single tile, [[:File:Giant ant.png|like this]].) —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 14:57, 29 March 2013 (UTC)
+
+::::It wouldn't be too hard to code a MW extension that does lookups like converting a monster name into tile position within the large tile image. --[[User:Paxed|paxed]] ([[User talk:Paxed|talk]]) 16:12, 29 March 2013 (UTC)
+
+:::::The more I think about it, the less enthused I am with that solution. For one thing, it sounds difficult to implement. For another, it would entail loading several full tilesets for each page rather than just the tiles in question, which could bog down load times. I guess we're probably better off going the mass upload route.
+:::::On that note, if anyone has a solution that would allow them to cut up the files, I'm happy to take on doing the renaming by hand. We'll also need a way to do a mass upload to the server, since I'm not of a mind to upload several thousand individual files.
+:::::--[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 20:37, 29 March 2013 (UTC)
+
+::::::I already wrote a program to cut the tilesets (tested it on Geoduck's only so far, but should work on any tileset) and split them into many tiles.
+::::::As for uploading them, that should also be easy to automate, but it should be done using a bot-flagged account once there's consensus on the method to be used (no use for hundreds of unused images if it's done some other way). —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 20:48, 29 March 2013 (UTC)
+
+:::::::I edited the template to remove the multiple instances of Default (you really only need 32x32) and attempted to make all of the tiles scale to the same size (64 height). For some reason, it won't force smaller images to scale up to 64, however, so you still have for example NeXTSTEP tiles appearing at an unrecognizably small size. I note that looking at the file's page does scale it up in a nicely pixellated fashion (http://nethackwiki.com/wiki/File:NeXTSTEP_giant_ant.png), but apparently the <nowiki>[[file:foo.png|x32px]]</nowiki> syntax doesn't scale up, only down. Any help?
+:::::::Also, I noticed bilious has several tilesets that I didn't include: itakura, aoki, aoki2k5, and Kins. Any others we ought to include?
+:::::::--[[User:Prometheus77|Prometheus77]] ([[User talk:Prometheus77|talk]]) 11:20, 30 March 2013 (UTC)
+
+::::::::(There is no need to use an external link. You can just link to [[:File:NeXTSTEP giant ant.png]]. Please also see [[Help:Images]].)
+::::::::[{{canonicalurl:Template:Alternate tilesets|diff=83688&oldid=83682}} They're all 64px ''high'' now.] I decided to mostly keep the aspect ratio for Geoduck's and lagged's tiles, though. —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 16:20, 30 March 2013 (UTC)
+
+:::::::::I've done the second requested improvement (to make it go below other infoboxes – see the [[giant ant]] page for an example or try playing with it in the [[NetHackWiki:Sandbox|sandbox]]), too.[{{canonicalurl:Template:Alternate tilesets|diff=83775&oldid=83688}}] —[[User:bcode|bcode]]&nbsp;<sup>[[User talk:bcode|talk]]&nbsp;|&nbsp;[[Special:EmailUser/Bcode|mail]]</sup> 07:09, 2 April 2013 (UTC)
+
+==Continued on [[User:bcode]]'s page==
+

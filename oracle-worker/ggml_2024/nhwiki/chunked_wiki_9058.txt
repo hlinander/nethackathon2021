@@ -1,0 +1,1000 @@
+ sudo <fullPath>recover -d <playground> <UIDusername>
+
+For ubuntu systems, that would be something like this:
+ sudo /usr/lib/games/nethack/recover -d /var/games/nethack 1000Bob
+
+This will create a file "1000Bob" in "<playground>" directory. If successful it will give the message "recovered "1000Bob" to 1000Bob".
+
+*''<fullPath>recover'' Actually, the utility is not a normally accessible command, you need to use the full path to the executable. In Ubuntu systems, the full path is "/usr/lib/games/nethack/".
+
+*''<playground>'' is the [[Playground]] path where the temporary level files were put during gameplay. In Ubuntu systems, that would be "/var/games/nethack/save"
+
+*''<UIDusername>'' is the file name of the temporary files, without extension. You can easily guess it by inspecting the [[Playground]]. They are two components, the "UID" and the "username". It's the UID and username of the user on the system. The UID is a number unique for a user. On single user systems, the UID is usually "1000". The "username" is just the user name or log in . 
+
+If you are using official NetHack and your distribution does not come with '''recover''' you can download it from the official download-page at http://www.nethack.org/. Check first the other installed files.
+
+===Using the file again===
+
+Once you executed the recover command successfully, you need to give the created file the correct group.
+
+In general, run the command:
+
+ sudo chgrp games <playground><UIDusername>
+
+In the example:
+
+ sudo chgrp games /var/games/nethack/1000bob
+
+Then, you compress the file with:
+
+ sudo gzip <playground><UIDusername>
+
+In the example:
+
+ sudo gzip /var/games/nethack/1000bob
+
+This will create a file with the extension ".gz" or "<UIDusername>.gz". In the example "1000bob.gz".
+
+Then copy the file to the save directory:
+
+ sudo cp -p <playground><UIDusername>.gz <playground>/save/
+
+In the example:
+
+ sudo cp -p /var/games/nethack/1000bob.gz /var/games/nethack/save/
+
+With luck, you can play now. Ask for [[Libera|help]] if not.
+
+==External links==
+
+* [http://linux.die.net/man/6/nethack-recover recover manual]
+
+[[Category:Utilities]]
+{{nethack-343}}}
+&&%s&& %s Defaults.nh {13607 2006-10-07T21:24:45Z {630 Paxed} redirect to [[options]] #REDIRECT [[Options]]}
+&&%s&& %s .nethackrc {13608 2006-10-07T21:25:01Z {630 Paxed} redirect to [[options]] #REDIRECT [[Options]]}
+&&%s&& %s Knife {139948 2021-05-17T02:29:40Z {4000851 Radamanthe} /* Generation */ {{weapon
+| color=metal color
+| tile=[[image:knife.png]]
+| name=knife
+| smalldmg=1d3
+| largedmg=1d2
+| skill=knife
+| cost=4
+| weight=5
+| material=iron
+}}
+A '''knife''' is a kind of [[weapon]]. [[Samurai]] will know it as a '''shito'''. It can be used in [[melee]] or [[throw]]n. 
+
+==Knife skill==
+{{knife skill table}}
+
+The following weapons use the knife skill:
+
+* knife
+* [[stiletto]]
+* [[scalpel]]
+* [[worm tooth]]
+* [[crysknife]]
+
+There are no [[artifact weapon|artifact]] knives.
+
+==Generation==
+Knives make up about 2% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s).
+
+The knife can appear in many a monster's [[Monster starting inventory|starting inventory]]:
+
+* [[Mordor orc]]s, [[orc-captain]]s{{refsrc|src/makemon.c|359|version=NetHack 3.6.0}} and [[skeleton]]s{{refsrc|src/makemon.c|431|version=NetHack 3.6.0}} may be created with a single knife.
+* [[Yendorian army]] soldiers, watchmen and guards. have a 50% chance of getting a knife as a secondary weapon if their primary weapon is a [[polearm]].{{refsrc|src/makemon.c|197|version=NetHack 3.6.0}}
+* [[Barrow wight]]s and [[Nazgul]] are always generated with a knife and a [[long sword]].{{refsrc|src/makemon.c|423|version=NetHack 3.6.0}}
+
+==Description==
+Knives can be [[multishot]]; the knife class is the only [[ranged weapon]] class that gives [[Healer]]s a multishot bonus at Skilled level.{{refsrc|src/dothrow.c|117|version=NetHack 3.6.0}}
+
+As [[wield]]ed weapons, knives are generally some of the lowest damage weapons in ''NetHack''. The sole exception is the [[crysknife]], roughly comparable to a [[long sword]] in terms of damage; the next best knife is the rare [[scalpel]], whose damage is only on par with an [[orcish dagger]], and is mostly seen on Healers as their starting wielded weapon.
+
+==History==
+In [[NetHack 3.4.3]] and earlier versions, knives were not included in the list of weapons that could be [[multishot]].{{refsrc|src/dothrow.c|110|version=NetHack 3.4.3}}  As of [[NetHack 3.6.0]], any [[stackable]] weapon can be thrown multishot, if you are Skilled or higher in the appropriate weapon [[skill]].{{refsrc|src/dothrow.c|113|version=NetHack 3.6.0}}
+
+==Encyclopedia entries==
+===Knife===
+{{encyclopedia|
+Possibly perceiving an expression of dubiosity on their
+faces, the globetrotter went on adhering to his adventures.
+
+-- And I seen a man killed in Trieste by an Italian chap.
+Knife in his back.  Knife like that.
+
+Whilst speaking he produced a dangerous looking clasp knife,
+quite in keeping with his character, and held it in the
+striking position.
+
+-- In a knockingshop it was count of a tryon between two
+smugglers.  Fellow hid behind a door, come up behind him.
+Like that.  Prepare to meet your God, says he.  Chuck!  It
+went into his back up to the butt.
+|[ Ulysses, by James Joyce ]
+}}
+
+===Shito===
+{{encyclopedia|
+A Japanese stabbing knife.
+}}
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Weapons]]}
+&&%s&& %s Shito {24778 2008-01-22T02:52:38Z {575 MysterX} Redirecting to [[Knife]] #REDIRECT [[knife]]
+[[Category:Weapons]]}
+&&%s&& %s Stiletto {136175 2020-10-28T18:00:34Z {4001313 Ardub23} Ref tag after punctuation {{wikipedia}}
+
+{{weapon
+  |color=metal color
+  |name=stiletto
+  |tile=[[image:stiletto.png]]
+  |smalldmg=1d3
+  |largedmg=1d2
+  |skill=knife
+  |cost=4
+  |weight=5
+  |material=iron
+}}
+
+A '''stiletto''' is a kind of [[weapon]] that uses the [[knife]] skill. It can be used in [[melee]], or [[throw]]n. It is functionally equivalent to the regular knife, but has a lower chance of being randomly generated.
+
+Stilettos are [[stackable]] and can be thrown [[multishot]] if your knife [[skill]] is high enough;{{refsrc|src/dothrow.c|276|version=NetHack 3.6.0}} however, a more practical choice of [[projectile]] weapon would be the more common knife, or, if you have the option, a more damaging weapon such as the [[dagger]], [[shuriken]], or [[spear]].
+
+==Generation==
+Stilettos make up about 0.5% of randomly generated weapons (on the floor, in [[shop]]s, or as [[death drop]]s).
+
+[[Salamander]]s have a 1/21 chance of being created with a stiletto.{{refsrc|src/makemon.c|434|version=NetHack 3.6.0}}
+
+==History==
+
+Stilettos become stackable and eligible for multishot in [[NetHack 3.6.0]].
+
+==Appearance==
+Stilettos are daggers or knives with long thin blades designed primarily for stabbing.
+
+==Encyclopaedia entry==
+{{encyclopedia|
+Possibly perceiving an expression of dubiosity on their
+faces, the globetrotter went on adhering to his adventures.
+
+-- And I seen a man killed in Trieste by an Italian chap.
+Knife in his back.  Knife like that.
+
+Whilst speaking he produced a dangerous looking clasp knife,
+quite in keeping with his character, and held it in the
+striking position.
+
+-- In a knockingshop it was count of a tryon between two
+smugglers.  Fellow hid behind a door, come up behind him.
+Like that.  Prepare to meet your God, says he.  Chuck!  It
+went into his back up to the butt.
+|[ Ulysses, by James Joyce ]}}
+
+== References ==
+
+<references />
+
+{{stub}}
+
+[[Category:Weapons]]
+{{nethack-360}}}
+&&%s&& %s Axe {138547 2021-03-16T08:52:08Z {4001481 Stay Hydrated1} testing langauge template {{weapon
+  |color=metal color
+  |tile=[[image:axe.png]]
+  |name=axe
+  |smalldmg=1d6
+  |largedmg=1d4
+  |skill=axe
+  |cost=8
+  |weight=60
+  |material=iron
+}}
+
+{{Languages}}
+
+The '''axe''' is a type of [[melee]] [[weapon]] found in ''[[NetHack]]''. Axes can also be [[thrown]] and [[applied]] as tools.
+
+==Generation==
+Axes make up about 4% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s).  
+
+[[Barbarian]]s start with an axe as a secondary weapon 50% of the time.{{refsrc|src/u_init.c|673|version=NetHack 3.6.0}}
+
+In addition, [[dwarves]]{{refsrc|src/makemon.c|329|version=NetHack 3.6.0}} and [[ninja]]{{refsrc|src/makemon.c|272|version=NetHack 3.6.0}} have a chance of being generated with an axe.
+
+== Effects ==
+Axes do an extra d4 damage against [[wood golem]]s.{{refsrc|src/weapon.c|327|version=NetHack 3.6.0}}
+
+If your wielded weapon is an axe, you can open a non-blessed [[tin]] in six turns.{{refsrc|src/eat.c|1440|version=NetHack 3.6.0}}
+
+=== Applying ===
+Axes (and battle-axes) can be applied to chop in a specified direction through a [[door]] or a [[tree]]. The process of chopping with an axe is similar to [[dig]]ging with a [[pick-axe]] or [[dwarvish mattock]]. Applying an axe to a door is a safer way to open it than kicking it, because an axe will never destroy a [[shop]] door. ("This door seems too hard to chop through.") This spares you a 400-[[zorkmid]] bill for damages.
+
+Chopping down a tree has a 20% chance of generating a random [[fruit]], even if you already got fruit from the tree by [[kick]]ing it.{{refsrc|src/dig.c|400|version=NetHack 3.6.0}} Doing this within view of a [[Minetown]] [[watchman]] will anger him. ("Halt, vandal! You're under arrest!")
+
+== Axe skill ==
+{{axe skill table}}
+
+The "big brother" of the axe is the [[battle-axe]], which uses the same [[skill]] but does more respectable damage versus [[Physical size|small and large]] monsters, with the downside of being heavier and [[two-handed]].
+
+[[Cleaver]], a battle-axe, is the only [[artifact weapon]] in vanilla to use this skill.
+
+==Variants==
+In [[SLASH'EM]], the artifact [[long sword]] [[Giantslayer]] is replaced with [[Giantkiller]], an artifact axe.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|"For ev'ry silver ringing blow,
+Cities and palaces shall grow!"
+
+"Bite deep and wide, O Axe, the tree,
+Tell wider prophecies to me."
+
+"When rust hath gnaw'd me deep and red,
+A nation strong shall lift his head.
+
+"His crown the very Heav'ns shall smite,
+Aeons shall build him in his might."
+
+"Bite deep and wide, O Axe, the tree;
+Bright Seer, help on thy prophecy!"
+|[ Malcolm's Katie, by Isabella Valancey Crawford ]}}
+
+== References ==
+<references />
+
+{{nethack-364}}
+[[Category:Weapons]]}
+&&%s&& %s Battle-axe {141859 2021-07-31T04:09:39Z {4001483 Cathartes} /* Strategy */ link correct section {{weapon
+  |color=metal color
+  |tile=[[image:battle-axe.png]]
+  |name=battle-axe
+  |appearance=double-headed axe
+  |smalldmg=1d8+1d4 (2-12)
+  |largedmg=1d6+2d4 (3-14)
+  |skill=axe
+  |size=two-handed
+  |cost=40
+  |weight=120
+  |material=iron
+}}
+
+A '''battle-axe''' is a kind of [[melee]] [[weapon]], a more powerful [[two-handed]] version of the regular [[axe]].  When [[identification|unidentified]], it appears as a '''double-headed axe'''. Having a double head, the battle-axe is twice as heavy as the regular (single-headed) axe. [[Cleaver]] is the only [[artifact weapon|artifact]] battle-axe.
+
+Battle-axes, like plain axes, do an extra d4 damage against [[wood golem]]s,{{refsrc|src/weapon.c|327|version=NetHack 3.6.0}} and can be used to chop down doors.
+
+==Generation==
+In addition to being found randomly generated on new dungeon levels, in [[shop]]s, and as a [[death drop]], the battle-axe is one of a number of two-handed weapons that [[strong]] monsters can be generated wielding.{{refsrc|src/makemon.c|473|version=NetHack 3.6.0}}
+
+[[Barbarian]]s start with a battle-axe 50% of the time.{{refsrc|src/u_init.c|673|version=NetHack 3.6.0}} Cleaver is their guaranteed first [[sacrifice gift]].
+
+==Strategy==
+{{main|Two-handed}}
+
+While they may be powerful early-game choices, battle-axes are two-handed. This means that if a battle-axe become cursed while you wield it, you will [[Two-handed#Strategy|lose the ability to do a number of actions]]. In [[NetHack 3.6.0]] and later, players wielding two-handed weapons can use the #[[tip]] command to get items out of containers and onto the floor, so the curse is slightly more manageable than in earlier versions.
+
+== References ==
+<references />
+
+[[Category:Weapons]]
+{{nethack-362}}}
+&&%s&& %s Double-headed axe {13620 2006-10-08T01:50:11Z {467 Killian} #REDIRECT [[battle-axe]] #REDIRECT [[battle-axe]]}
+&&%s&& %s Battle axe {13621 2006-10-08T01:50:32Z {467 Killian} #REDIRECT [[battle-axe]] #REDIRECT [[battle-axe]]}
+&&%s&& %s Double headed axe {13622 2006-10-08T01:51:05Z {467 Killian} #REDIRECT [[battle-axe]] #REDIRECT [[battle-axe]]}
+&&%s&& %s Elven short sword {103641 2016-07-28T13:07:36Z {4000629 Cherokee Jack} Making this a redirect #REDIRECT [[Short sword#Elven short sword]]
+[[Category:Elven items|Short sword]]}
+&&%s&& %s Runed short sword {105867 2017-06-03T15:32:31Z {4000767 Gufier} Corrected double redirect #REDIRECT [[Short sword#Elven short sword]]}
+&&%s&& %s Orcish short sword {103642 2016-07-28T13:08:13Z {4000629 Cherokee Jack} Making this a redirect #REDIRECT [[Short sword#Orcish short sword]]
+[[Category:Orcish items|Short sword]]}
+&&%s&& %s Crude short sword {105869 2017-06-03T15:33:33Z {4000767 Gufier} Corrected double redirect #REDIRECT [[Short sword#Orcish short sword]]}
+&&%s&& %s Dwarvish short sword {103640 2016-07-28T13:06:29Z {4000629 Cherokee Jack} Making this a redirect #REDIRECT [[Short sword#Dwarvish short sword]]
+[[Category:Dwarvish items|Short sword]]}
+&&%s&& %s Broad short sword {105864 2017-06-03T15:30:59Z {4000767 Gufier} Corrected double redirect #REDIRECT [[Short sword#Dwarvish short sword]]}
+&&%s&& %s Scimitar {147327 2022-08-08T04:17:34Z {4001483 Cathartes} /* Scimitar skill */ eliminated in 3.7.0 {{weapon
+  |color=metal color
+  |name=scimitar
+  |tile=[[image:scimitar.png]]
+  |appearance=curved sword
+  |smalldmg=1d8
+  |largedmg=1d8
+  |skill=scimitar
+  |cost=15
+  |weight=40
+  |material=iron
+}}
+
+A '''scimitar''' is a kind of [[melee]] [[weapon]]. When [[identification|unidentified]], it appears as a '''curved sword'''.
+
+== Scimitar skill ==
+
+{{scimitar skill table}}
+
+{{upcoming|NetHack 3.7.0|Scimitars now use [[saber]] skill.  There is no longer a scimitar skill.  ({{commit|296a3ac246ae12218eccff46d3ef79f46eb9068f|commit 296a3ac2}})}}
+
+The scimitar is the only weapon to use the scimitar skill. There are no [[artifact weapon|artifact]] scimitars.
+
+==Generation==
+Scimitars make up about 1.5% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s). In addition, they are often the [[monster starting inventory|starting weapons]] for many [[orcish]] monsters, such as [[hobgoblin]]s, [[hill orc]]s,{{refsrc|src/makemon.c|381|version=NetHack 3.6.0}} [[Mordor orc]]s,{{refsrc|src/makemon.c|355|version=NetHack 3.6.0}} and [[orc captain]]s.{{refsrc|src/makemon.c|352|version=NetHack 3.6.0}}
+
+The [[statue]] of [[Perseus]] on [[Medusa's Island]] has a 50% chance of containing a [[blessed]] [[Enchantment|+2]] scimitar.{{refsrc|dat/medusa.des|59|version=NetHack 3.6.0}}{{refsrc|dat/medusa.des|158|version=NetHack 3.6.0}}{{refsrc|dat/medusa.des|276|version=NetHack 3.6.0}}{{refsrc|dat/medusa.des|376|version=NetHack 3.6.0}}
+
+== Strategy ==
+
+Scimitars deal respectable damage but are not often used. Most [[role]]s that can use them prefer the upgrade paths afforded by the [[long sword]] or [[silver saber]], the versatility of [[dagger]]s, or the sheer power of the [[unicorn horn]] or [[dwarvish mattock]]. 
+
+[[Role]]s with poor starting weapons, such as the [[Tourist]], might consider using a scimitar if found early. Some [[illiterate]] and [[wishless]] players, who can't enchant their weapon or wish for one, might find Perseus' scimitar to be the best non-[[artifact weapon|artifact]] one-handed weapon available.
+
+==Appearance==
+
+{{wikipedia|Scimitar}}
+
+The scimitar is a curved single edged sword. It originated in the Middle East. The curved design was good for slashing opponents while riding without getting stuck.
+
+The similar [[saber]] has a cross-guard connecting to the pommel (end of the hilt).
+
+== Encyclopedia entry ==
+{{encyclopedia|Oh, how handsome, how noble was the Vizier Ali Tebelin,
+my father, as he stood there in the midst of the shot, his
+scimitar in his hand, his face black with powder!  How his
+enemies fled before him!
+|[ The Count of Monte Cristo, by Alexandre Dumas ]}}
+
+== References ==
+<references/>
+
+[[Category:Weapons]]
+{{nethack-360}}}
+&&%s&& %s Elven broadsword {139084 2021-04-19T03:30:15Z {4001463 Actual-nh} /* Strategy */ Grammar/style {{weapon
+  |color=wood color
+  |tile=[[image:elven broadsword.png]]
+  |name=elven broadsword
+  |appearance=[[runed broadsword]]
+  |smalldmg=1d6+1d4
+  |largedmg=1d6+1
+  |skill=broadsword
+  |cost=10
+  |weight=70
+  |material=wood
+}}
+
+An '''elven broadsword''' is a type of one-handed [[melee]] [[weapon]] in ''[[NetHack]]''. It uses the [[broadsword]] skill. Like other [[elven item|elven weapons]] they are made of [[wood]], which is naturally immune to [[erosion|rust and corrosion]], but can still burn and rot.
+
+The elven broadsword is the base item for [[Orcrist]], which can also be created by [[Naming artifacts|naming a normal elven broadsword Orcrist.]]
+
+==Generation==
+Elven broadswords make up about 0.4% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s).
+
+All non-undead [[Elf (monster attribute)|elves]] have a 1 in 3 chance of being generated with an elven broadsword in their [[Monster starting inventory|starting inventory]].{{refsrc|src/makemon.c|244|version=NetHack 3.6.0}}
+
+==Strategy==
+Elven broadswords are a solid choice for #[[twoweapon]]ing, particularly due to their higher damage average against small monsters compared to normal broadswords. They also outdamage the [[long sword]] - another common two-weaponing candidate - in that regard (<tt>6</tt> versus the long sword's <tt>4.5</tt>); however, the long sword has a better damage average against large monsters (<tt>6.5</tt> compared to <tt>4.5</tt>).
+
+The elven broadsword is also a good candidate for chaotics when training for [[Stormbringer]], and it can also be used to make Stormbringer much more likely to appear as a [[sacrifice gift]] by naming Orcrist.
+
+===Average damage calculation===
+We assume the player is [[skilled]] in [[broadsword]] (the highest possible skill level for the weapon with any playable class), which gives a +1 damage bonus. A blessed weapon deals 1d4 extra damage against [[demon]]s and [[undead]]. The worst case scenario is against a non-undead, non-demon, large monster. The best case scenario is against a undead, demon, small monster.
+{|class="wikitable"
+! Weapon
+! Against regular small monsters
+! Against regular large monsters
+! Worst case scenario
+! Best case scenario
+|-
+|Blessed Elven broadsword +0 || <math>\frac{1+6}{2}+\frac{1+4}{2}+1=\bold{7}</math> || <math>\frac{1+6}{2}+1+1=\bold{5.5}</math> || <math>\frac{1+6}{2}+1+1=\bold{5.5}</math> || <math>\frac{1+6}{2}+\frac{1+4}{2}+\frac{1+4}{2}+1=\bold{9.5}</math>
+|-
+|Blessed Elven broadsword +7 || <math>\frac{1+6}{2}+\frac{1+4}{2}+1+7=\bold{14}</math> || <math>\frac{1+6}{2}+1+1+7=\bold{12.5}</math> || <math>\frac{1+6}{2}+1+1+7=\bold{12.5}</math> || <math>\frac{1+6}{2}+\frac{1+4}{2}+\frac{1+4}{2}+1+7=\bold{16.5}</math>
+|-
+|Blessed Elven broadsword +9 || <math>\frac{1+6}{2}+\frac{1+4}{2}+1+9=\bold{16}</math> || <math>\frac{1+6}{2}+1+1+9=\bold{14.5}</math> || <math>\frac{1+6}{2}+1+1+9=\bold{14.5}</math> || <math>\frac{1+6}{2}+\frac{1+4}{2}+\frac{1+4}{2}+1+9=\bold{18.5}</math>
+|}
+
+== References ==
+<references/>
+
+[[Category:Weapons]]
+[[Category:Elven items|Broadsword]]
+{{nethack-366}}}
+&&%s&& %s Two-handed sword {149494 2022-12-21T06:54:29Z {4001279 Umbire the Phantom} followup {{weapon
+  |color=metal color
+  |name=two-handed sword
+  |tile=[[image:two-handed sword.png]]
+  |smalldmg=1d12 (1-12)
+  |largedmg=3d6 (3-18)
+  |size=two-handed
+  |cost=50
+  |weight=150
+  |material=iron
+}}
+
+A '''two-handed sword''' is a kind of [[melee]] [[weapon]] that appears in ''[[NetHack]]''. It is one of the most damaging non-[[artifact weapon]]s in the game, and one of the most damaging among [[two-handed]] weapons.
+
+==Generation==
+A [[Enchantment|+0]] two-handed sword is one of the possible starting swords for [[Barbarian]]s.{{refsrc|src/u_init.c|44|version=NetHack 3.6.6}} Two-handed swords make up about 2.2% of randomly generated weapons (on the ground, as [[death drop]]s, and in [[shop]]s). 
+
+A two-handed sword is one of the weapons that can be given to a [[strong]] [[humanoid]] monster with a weapon attack, the ability to wield weapons and no other ruleset governing its [[monster starting inventory]], unless they are being generated on the [[Rogue level]]: the base odds are {{frac|14}} for normal monsters, {{frac|12}} for a monster that is a [[M2_LORD|lord]] or [[nasty]], {{frac|10}} for a monster that is an [[M2_PRINCE|overlord]] or both a lord and nasty, and {{frac|8}} for a monster that is both nasty and an overlord.{{refsrc|src/makemon.c|527|version=NetHack 3.6.6|common=Case for two-handed sword in "default" monster weapon generation}}
+
+[[Croesus]] is always generated with a two-handed sword if [[Fort Ludios]] appears in a game.{{refsrc|src/makemon.c|1308|version=NetHack 3.6.6}} One of the weapons guarded by the [[ghost]] on the [[Rogue level]] has a 50% chance of being a two-handed sword, with an enchantment ranging from -1 to +3 and a {{frac|3|4}} chance of generating as [[cursed]].{{refsrc|src/extralev.c|328|version=NetHack 3.6.6}}
+
+[[Player monster]]s, including those on the [[Astral Plane]], have an approximate 1.9% chance of generating with a two-handed sword before role replacements - [[Barbarian (player monster)|barbarians]] have a {{frac|4}} chance of receiving a two-handed sword in place of their initial primary weapon, bringing their odds to roughly 27%.{{refsrc|src/mplayer.c|171|version=NetHack 3.6.6}}
+
+==Two-handed sword skill==
+{{two-handed sword skill table}}
+
+The two-handed sword skill covers the use of two-handed swords and [[tsurugi]]. [[The Tsurugi of Muramasa]] is an [[artifact]] tsurugi that uses the skill.
+
+==Strategy==
+{{main|Two-handed}}
+Two-handed swords are solid early game weapons for their high damage rolls, particularly for weaker roles like [[Tourist]]s - but [[Two-handed#Wielding cursed two-handers|they can become a nuisance when cursed]], making it an unpopular choice to use past the [[Game stages#The mid game|mid-game]]. The #[[tip]] command can be used to get [[curse removal]] items out of a carried [[bag]], but most players will still prefer a one-handed and/or curse-resistant weapon to avoid this issue entirely.
+
+==History==
+The two-handed sword has been present in the game since Hack 1.21, a variant of [[Jay Fenlason's Hack]].
+
+From [[Hack 1.0]] to [[NetHack 3.0.10]], a two-handed sword can be [[name]]d [[Orcrist]], giving it a bonus d10 damage against [[Orc (monster)|orcs]]; prior to [[Hack 1.0.2]], naming Orcrist was not restricted to requiring this weapon. Until [[NetHack 3.0.0]], it is possible to have multiple "Orcrists" by naming two-handed swords this way - NetHack 3.0.0 made artifacts unique, and Orcrist used the two-handed sword as its [[base item]] until [[NetHack 3.1.0]], which made it an [[elven broadsword]] instead.
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] adds [[Deathsword]], an artifact two-handed sword.
+
+===UnNetHack===
+In [[UnNetHack]], [[Thiefbane]] is an artifact two-handed sword carried by [[Black market (UnNetHack)#One-eyed Sam|the black market proprietor One-eyed Sam]].
+
+===dNetHack===
+In [[dNetHack]], [[Rilmani#Aurumach Rilmani|Aurumach Rilmani]] will generate with a [[Gold (material)|gold]] two-handed sword enchanted to at least +4, and [[Wandering pirate#Githyanki pirate|wandering githyanki pirates]] are generated with a two-handed sword.
+
+===EvilHack===
+In [[EvilHack]], [[Lifestealer]] and [[The Sword of Kas]] are artifact two-handed swords.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Weapons]]}
+&&%s&& %s Tsurugi {139051 2021-04-18T20:02:46Z {4001279 Umbire the Phantom} /* Description */ {{weapon
+  |color=metal color
+  |name=tsurugi
+  |tile=[[image:tsurugi.png]]
+  |appearance=long samurai sword
+  |smalldmg=1d16
+  |largedmg=1d8+2d6 (3-20)
+  |tohit=<nowiki>+2</nowiki>
+  |skill=two-handed sword
+  |size=two-handed
+  |cost=500
+  |weight=60
+  |material=metal
+}}
+
+The '''tsurugi''' is a [[weapon]] that exists in ''[[NetHack]]''. When [[identification|unidentified]], it appears as a '''long samurai sword'''.
+
+==Generation==
+Tsurugi are not normally generated, and serve as the [[base item]] for [[the Tsurugi of Muramasa]] (which its [[encyclopedia]] entry alludes to). A player that already has the Tsurugi, or else chose the [[Samurai]] role, can find a plain tsurugi in [[bones]] files if the dead character(s) would have had the artifact themselves - it is also possible to [[wish]] for an ordinary one. 
+
+==Description==
+Tsurugi are heavily-damaging weapons that use the [[two-handed sword]] skill. They are inherently [[erodeproof]]ed, being made of [[metal]] rather than [[iron]].
+
+==Strategy==
+Though tsurugi do even more damage than ordinary [[two-handed sword]]s, they are subject to [[Two-handed weapon#Wielding cursed two-handers|the same disadvantage]]s. Any role that is [[Skill|unrestricted]] in two-handed swords can also [[twoweapon]], and there are weapon combinations that can do more damage than an ordinary tsurugi.
+
+==Origin==
+{{wikipedia}}
+A tsurugi is a Japanese straight-bladed, double-edged sword, making it easy to distinguish from the curved [[katana]].
+
+[[wikipedia:Kusanagi|Kusanagi]], one of the three Imperial Regalia of Japan, is said to be a tsurugi.
+
+==Encyclopedia entry==
+{{encyclopedia|The tsurugi, also known as the long samurai sword, is an
+ extremely sharp, two-handed blade favored by the samurai.
+ It is made of hardened steel, and is manufactured using a
+ special process, causing it to never rust.  The tsurugi is
+ rumored to be so sharp that it can occasionally cut
+ opponents in half!}}
+
+[[Category:Weapons]]
+{{nethack-366}}}
+&&%s&& %s Long samurai sword {13638 2006-10-08T03:04:02Z {467 Killian} #REDIRECT [[tsurugi]] #REDIRECT [[tsurugi]]}
+&&%s&& %s Naginata {24784 2008-01-22T02:56:43Z {575 MysterX} Redirecting to [[Polearm]] #REDIRECT [[polearm]]
+[[Category:Weapons]]}
+&&%s&& %s Halberd {25774 2008-02-25T00:32:43Z {282 Fredil Yupigo} Whoever made these redirect pages was a real moron. #REDIRECT [[polearm#Halberd]]}
+&&%s&& %s Lance {143476 2021-10-28T03:59:08Z {4001483 Cathartes} /* Generation */ not generated on soldiers in 3.7.0 {{weapon
+  |color=metal color
+  |tile=[[image:lance.png]]
+  |name=lance
+  |smalldmg=1d6
+  |largedmg=1d8
+  |cost=10
+  |weight=180
+  |material=iron
+}}
+
+The '''lance''' is a [[weapon]] that appears in ''[[NetHack]]''. It is designed for use in [[mount]]ed combat.
+
+==Generation==
+Lances make up about 0.4% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s), and are included among the [[polearm]]s that [[watchmen]] and [[soldier]]s in the [[Yendorian army]] can get as [[Monster starting inventory|starting weapons]].{{refsrc|src/makemon.c|196|version=NetHack 3.6.0}}{{refsrc|src/objects.c|236|version=NetHack 3.6.0}}
+
+{{upcoming|NetHack 3.7.0|Lances no longer generate as starting weapons on watchmen and soldiers.<ref>[https://github.com/NetHack/NetHack/commit/da859c5eb88e17d04ec2bb37e2c12842e9f4c4a9 fix github issue #623 - soldiers and mattocks]</ref>}}
+
+All [[Knight]]s start with a [[Enchantment|+1]] lance.{{refsrc|src/u_init.c|74|version=NetHack 3.6.0}}
+
+==Description==
+A lance can also be [[apply|applied]] to [[pound]] enemies that are two [[square]]s away; however, there is a [[to-hit]] penalty for applying the lance when the wielder is at Basic [[skill]] level or lower. The range increases with skill level to a knight's jump away or even diagonally at Expert skill, making it possible to stay a knight's jump away from monsters with ranged attacks and pound at them without them being able to retaliate.
+
+===Jousting===
+When attacking an adjacent monster in melee with a lance while mounted, there is a [[skill]]-dependent chance that you will '''joust''' the monster.{{reffunc|src/uhitm.c|joust.c|version=NetHack 3.6.0}}
+* You deal an additional 2d10 damage (2d2 if the lance is your secondary weapon).
+* The monster loses all its movement points, and is thus unable to act (again) this turn.
+* The monster is [[stun]]ned. This has little effect except making it easier to hit.
+* The monster is pushed back one space, unless it is too heavy ([[huge]] or larger), that space is occupied or deadly (e.g. a lava pool), or it cannot move (e.g. it is trapped).
+* Your lance has a chance of breaking. Positive luck will greatly reduce this chance. Your lance cannot break when jousting an [[unsolid]] monster. If there were an artifact lance, it would never break. Enchantment and [[beatitude]] do not affect the chance of the lance breaking.<ref>Breaking: {{frac|5}} of the time, if rnl(50)==(50&minus;1), the lance will break. It has a chance of 0.4% at 0 luck, about 0.01% at any positive luck, and for each negative luck the chance increases by about 0.4%.  See [[Source:NetHack 3.6.0/src/uhitm.c#line1256]]</ref>
+
+The approximate chance of your lance breaking per attempt to hit a solid monster is provided here:
+:{|class="prettytable"
+!Luck 
+!Break chance
+|-
+| &minus;13
+|1 in 18
+|-
+| &minus;5
+|1 in 43
+|-
+| &minus;1
+|1 in 126
+|-
+| 0
+|1 in 250
+|-
+| +1
+|1 in 9550
+|-
+| +5
+|1 in 10500
+|-
+| +13
+|1 in 12500
+|}
+
+Your chance of jousting is determined solely based on your lance skill (or, if you are using two weapons, the worse of lance or [[twoweapon]]):
+:{|class="prettytable"
+!Rank 
+!Jousting chance
+|-
+|Unskilled
+|20%
+|-
+|Basic
+|40%
+|-
+|Skilled
+|60%
+|-
+|Expert
+|80%
+|}
+
+==Lance skill==
+{{lance skill table}}
+
+How skill affects range when applying a lance:
+<div class="ttyscreen"><replacecharsblock>
+newline=<br>
+default={{lightgray|$1}}
+@={{white|@}}
+x={{lightgray|x}}
+U={{yellow|U}}
+S={{brightgreen|S}}
+E={{green|E}}
+
+.......
+.ESUSE.
+.SxxxS.
+.Ux@xU.
+.SxxxS.
+.ESUSE.
+.......
+</replacecharsblock></div>
+The {{white|@}} is where your character is standing. Spaces marked with a {{lightgray|x}} are too close to be hit, spaces marked with a {{yellow|U}} can be hit even while unskilled, spaces marked with a {{brightgreen|S}} can only be hit when skilled or expert, and spaces marked with an {{green|E}} can only be hit when expert.
+
+The lance is the only weapon to use the lance skill, and there are no [[artifact weapon|artifact]] lances.
+
+==Strategy==
+The lance is an extremely heavy weapon (more so than any other weapon in the game except the [[heavy iron ball]]), and its base damage is quite low. If you simply want a weapon for pounding, any other polearm is preferable to it. However, jousting more than makes up for the lance's base damage and allows it to become potentially the most powerful non-artifact weapon in the game, making it well worth using.
+
+As lances are difficult to come by, it will be hard for you to find a replacement should yours break. Positive Luck reduces the chance of breakage - with Luck of 0 or lower, you should probably only apply your lance at range, and switch to another weapon or retreat when opponents close in.
+
+A deadly jousting tactic is to let the monster come into applying range, then apply the lance on it until it moves adjacent, then hit it normally. Since at high skill levels a joust is nearly guaranteed, the monster will be pushed back for another round of lance thrusts, then will move adjacent again only to be jousted and so on until the monster is dead, usually without ever having an opportunity to attack.
+
+With their [[jump]]ing ability, even low-skill [[Knight]]s in an open space can make particularly good use of the strategy of keeping just enough distance between themselves and an opponent to apply their lance, denying it an opportunity to retaliate.
+
+Because jousting robs monsters of their movement points, at high lance skill many single opponents can be readily dealt with simply by repeatedly attacking them in melee with a lance. A successful joust will guarantee you get another turn before they can act. If you are fortunate enough to get jousts on the first action of every game turn, this will immobilize even extremely fast monsters. If the opponent in question is slower than normal speed, such as many of the [[Demon|named demons]], they are unlikely to get a single turn before you are through with them.
+
+As of [[NetHack 3.6.0]], applying a lance can scuff [[engraving]]s beneath you, just like attacking in melee.{{refsrc|src/apply.c|2879|version=NetHack 3.6.0}}
+
+==Origin==
+{{wikipedia|Lance}}
+The lance is basically a type of spear designed for use by mounted warriors. The stereotypical European knight's lance has a vamplate to prevent it from sliding out of their grip upon impact. They were usually one-use only, as they often broke.
+
+In contrast, the related [[spear]] is designed for thrusting and the [[javelin]] for throwing. A lance is too big for either thrusting or throwing.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], lances and other polearms can be used to pound squares only an Expert in vanilla ''NetHack'' could reach, even when unskilled.
+
+===SporkHack===
+[[SporkHack]] changes the additional jousting damage from 2d10 to 2d(5&nbsp;+ level&nbsp;/&nbsp;3).
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+With this the wind increased, and the mill sails began to turn
+about; which Don Quixote espying, said, 'Although thou movest
+more arms than the giant Briareus thou shalt stoop to me.'
+And, after saying this, and commending himself most devoutly
+to his Lady Dulcinea, desiring her to succor him in that trance,
+covering himself well with his buckler, and setting his lance
+on his rest, he spurred on Rozinante, and encountered with the
+first mill that was before him, and, striking his lance into
+the sail, the wind swung it about with such fury, that it broke
+his lance into shivers, carrying him and his horse after it,
+and finally tumbled him a good way off from it on the field in
+evil plight.
+|[ Don Quixote of La Mancha by Miquel de
+           Cervantes Saavedra ]
+}}
+
+==See also==
+* [[Polearm]]
+
+==References==
+<references/>
+
+[[Category:Weapons]]
+{{nethack-366}}}
+&&%s&& %s Broad pick {13645 2006-10-08T03:22:33Z {467 Killian} #REDIRECT [[dwarvish mattock]] #REDIRECT [[dwarvish mattock]]}
+&&%s&& %s Morning star {127118 2019-08-17T23:05:17Z {4001313 Ardub23} /* Appearance */ {{weapon
+  |color=metal color
+  |tile=[[image:morning star.png]]
+  |name=morning star
+  |smalldmg=2d4
+  |largedmg=1d6+1
+  |cost=10
+  |weight=120
+  |material=iron
+}}
+
+A '''morning star''' is a type of blunt [[weapon]].
+
+== Morning star skill ==
+
+{{morning star skill table}}
+
+The morning star is the only weapon to use the morning star skill. The only [[artifact weapon|artifact]] morning star is [[Trollsbane]].
+
+== Generation ==
+Morning stars make up about 1.2% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s).
+
+== Appearance ==
+{{wikipedia|Morning star (weapon)}}
+A morning star has a wooden handle with a spiked iron mass at the end.
+
+[[Category:Weapons]]
+
+== Encyclopedia ==
+{{encyclopedia|The morning star was a medieval weapon resembling a mace, but
+with a large spike on the end and smaller spikes around the
+circumference.  It was also known as the goedendag (from the
+Dutch word for "good day") and the holy water sprinkler (from
+its resemblance to the aspergillum sometimes used in the
+Catholic Mass).  It was used by both cavalry and infantry;
+the horseman's weapon typically had a shorter haft than the
+footman's, which might be up to six feet long.  It came into
+use in the beginning of the 14th century.
+The name "morning star" is often erroneously applied to the
+military flail (also known as the therscol), a similar weapon,
+but with the head attached by a short chain.
+|[ Dictionary of Medieval Knighthood and Chivalry,
+ by Bradford Broughton ]}}
+
+== See also ==
+
+*[[Mace]]
+*[[Flail]]
+
+{{nethack-360}}}
+&&%s&& %s Club {133585 2020-04-19T08:00:58Z {4001313 Ardub23} Fix references html tag {{weapon
+  |color=wood color
+  |tile=[[image:club.png]]
+  |name=club
+  |smalldmg=1d6
+  |largedmg=1d3
+  |cost=3
+  |weight=30
+  |material=wood
+}}
+
+A '''club''' is a kind of [[weapon]].  Clubs are made of [[wood]] and therefore will not be [[Erosion|rusted]] by [[rust monster]]s or [[wet]]ting; however, most [[iron]] weapons do more damage.
+
+== Club skill ==
+
+{{club skill table}}
+
+The club and the [[aklys]] both use the club skill. There are no [[artifact weapon|artifact]] clubs.
+
+==Generation==
+Clubs make up about 1.2% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s).  
+
+In addition, [[ogre]]s,{{refsrc|src/makemon.c|385|version=NetHack 3.6.0}} [[ettin]]s,{{refsrc|src/makemon.c|187|version=NetHack 3.6.0}} and [[Keystone Kop]]s of all ranks{{refsrc|src/makemon.c|346|version=NetHack 3.6.0}} may be generated with a club.
+
+[[Caveman|Cavepeople]] start with a [[Enchantment|+1]] club.{{refsrc|src/u_init.c|51|version=NetHack 3.6.0}}
+
+==SLASH'EM==
+[[SLASH'EM]] added two new items that use the club skill: the [[baseball bat]] and the [[torch]]. The first sacrifice gift for [[Rogue]]s is the [[Bat from Hell]], a chaotic baseball bat. The first sacrifice gift for Cavemen is [[Skullcrusher]], a lawful club.
+
+==References==
+<references/>
+[[Category:Weapons]]
+{{nethack-360}}}
+&&%s&& %s Rubber hose {146367 2022-06-28T23:20:13Z {4000251 Netzhack} /* Encyclopedia entry */ {{weapon
+  |color=brown
+  |tile=[[image:rubber hose.png]]
+  |name=rubber hose
+  |smalldmg=1d4
+  |largedmg=1d3
+  |skill=whip
+  |cost=3
+  |weight=20
+  |material=plastic
+}}
+
+A '''rubber hose''' is a rarely-seen [[weapon]] that appears in ''[[NetHack]]''. It uses the [[whip]] [[skill]], and is made of [[plastic]].
+
+==Generation==
+Rubber hoses are not randomly generated, and only appear in the [[Monster starting inventory|starting inventory]] of [[Keystone Kop]]s.
+
+==Strategy==
+Rubber hoses do more damage than the [[bullwhip]] against small and large monsters, and are not rendered ineffective by thick-skinned monsters. Nonetheless, it is an unremarkable weapon that lacks the bullwhip's other utilities (e.g., disarming monsters). Players that seek it out at all use it for [[polyfodder]], or else some novelty purpose as with most [[junk]].
+
+==History==
+The rubber hose first appears in [[NetHack 3.0.0]].
+
+==Encyclopedia entry==
+The Keystone Kops and the rubber hose share the same [[encyclopedia]] entry:
+{{encyclopedia|
+The Kops are a brilliant concept.  To take a gaggle of inept policemen and display them over and over again in a series of riotously funny physical punishments plays equally well to the peanut gallery and the expensive box seats.  People hate cops.  Even people who have never had anything to do with cops hate them.  Of course, we count on them to keep order and to protect us when we need protecting, and we love them on television shows in which they have nerves of steel and hearts of gold, but in the abstract, as a nation, collectively we hate them.  They are too much like high school principals.  We're very happy to see their pants fall down, and they look good to us with pie on their faces.  The Keystone Kops turn up--and they get punished for it, as they crash into each other, fall down, and suffer indignity after indignity.  Here is pure movie satisfaction.
+
+The Kops are very skillfully presented.  The comic originality and timing in one of their chase scenes requires imagination to think up, talent to execute, understanding of the medium, and, of course, raw courage to perform.  The Kops are madmen presented as incompetents, and they're madmen rushing around in modern machines.  What's more, the machines they were operating in their routines were newly invented and not yet experienced by the average moviegoer.  (In the early days of automobiles, it was reported that there were only two cars registered in all of Kansas City, and they ran into each other.  There is both poetry and philosophy in this fact, but most of all, there is humor.  Sennett got the humor.)
+|[ Silent Stars, by Jeanine Basinger ]
+}}
+{{nethack-366}}
+[[Category:Weapons]]}
+&&%s&& %s Quarterstaff {150299 2023-03-22T06:56:37Z {4001279 Umbire the Phantom} /* Variants */ organization and touch-ups {{weapon
+  |color=wood color
+  |tile=[[image:quarterstaff.png]]
+  |name=quarterstaff
+  |appearance=staff
+  |smalldmg=1d6
+  |largedmg=1d6
+  |size=two-handed
+  |cost=5
+  |weight=40
+  |material=wood
+}}
+
+A '''quarterstaff''' is a kind of [[two-handed]] [[weapon]] that appears in ''[[NetHack]]''. When unidentified, it simply appears as a '''staff'''. Quarterstaves are made of [[wood]], and thus susceptible to [[Erosion|burning and rotting]].
+
+==Generation==
+All [[Wizard]]s start with a [[blessed]] +1 quarterstaff.{{refsrc|src/u_init.c|162|version=NetHack 3.6.6}}
+
+Quarterstaves make up about 1.1% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s). [[Arch-lich]]es have a {{frac|2|9}} chance to be generated with a quarterstaff, but lack any weapon attacks and so will not use it in combat.{{refsrc|src/makemon.c|727|version=NetHack 3.6.6}}{{refsrc|src/monst.c|1538|version=NetHack 3.6.6}}
+
+[[Player monster]]s, including those on the [[Astral Plane]], have a slightly lower than 1% chance of generating with a quarterstaff as their initial weapon before role-based replacements: [[Healer (player monster)|Healers]] have a {{frac|3|4}} chance of their initial weapon being made into a quarterstaff for a total, while [[Wizard (player monster)|wizards]], including Newt from the [[Wizard quest]], have a {{frac|3|8}} chance for their weapon to be a quarterstaff.{{refsrc|src/mplayer.c|188|version=NetHack 3.6.6}} {{refsrc|src/mplayer.c|245|version=NetHack 3.6.6}}
+
+[[Wood golem]]s leave behind a pile of 2-8 quarterstaves as a special [[death drop]] instead of a [[corpse]].{{refsrc|src/mon.c|400|version=NetHack 3.6.6}}
+
+==Quarterstaff skill==
+{{quarterstaff skill table}}
+
+In ''NetHack'', only quarterstaves themselves use the quarterstaff skill. [[The Staff of Aesculapius]] is an [[artifact weapon|artifact]] quarterstaff.
+
+==Strategy==
+The quarterstaff is a more than adequate starting weapon for a Wizard, but is much less effective than other two-handed weapons for general combat (e.g., a [[battle-axe]] or [[two-handed sword]]); a Wizard in the early game may still consider enchanting theirs to survive.
+
+== History ==
+The quarterstaff is introduced in [[NetHack 3.0.0]].
+
+The Wizard's starting weapon was changed to a quarterstaff in [[NetHack 3.3.0]], as part of the process of merging the influential [[Wizard Patch]] against 3.2.X versions into the mainline game{{refsrc|u_init.c|161|version=NetHack 3.3.0}} - in [[NetHack 3.2.3]] and previous versions, their starting weapon is instead a +1 [[athame]].{{refsrc|u_init.c|156|comment=no source for 3.2.3 on the wiki|version=NetHack 3.2.0}} This was likely intended to compensate for increased power from the redesigned spellcasting system, which allows virtually unlimited casting of spells; it also indirectly nerfed their ability to make a reliably-engraved [[Elbereth]] (which could still be done, but required starting with an appropriate wand and was limited by its charges).
+
+==Variants==
+===Noble Patch===
+In the [[Noble|Noble Patch]] and variants that incorporate it, the [[adventuring wizard]] always generates with a quarterstaff.
+
+===SLASH'EM===
+In [[SLASH'EM]], [[Flame Mage]]s, [[Ice Mage]]s and [[Necromancer]]s also start with a blessed +1 quarterstaff.
+
+The [[lightsaber|double lightsaber]] is a new weapon that uses the quarterstaff skill. SLASH'EM's version of the [[Lethe patch]], [[SLethe]], also adds a [[silver-capped staff]] that deals additional damage against [[silver-hating]] monsters.
+
+===UnNetHack===
+In [[UnNetHack]], cutting down a tree will leave behind 1-3 quarterstaves and/or [[club]]s.
+
+A very burnt quarterstaff can be found along with the corpse of a wizard and a burnt [[robe]] on the second level of the [[Ruins of Moria]] (clearly intended to be a reference to Gandalf).
+
+===dNetHack===
+In [[dNetHack]], the [[khakkhara]] and iron bar also use the quarterstaff skill. The khakkhara does less base damage against large monsters, but is made of silver; the iron bar does more base damage to small monsters, but is not randomly generated and only appears upon destroying a set of [[iron bars]]. The double lightsaber also appears, where it is known as a double force-blade.
+
+[[Naberius]] is a [[spirit]] for [[Binder (dNetHack role)|Binders]] that grants skill in quarterstaff.
+
+===NetHack Fourk===
+In [[NetHack Fourk]], a wielded quarterstaff increases the success rate of [[spellcasting]], similar to a [[robe]].
+
+===FIQHack===
+In [[FIQHack]], in addition to improving spellcasting, a cursed quarterstaff that is welded to your hands does not block spellcasting.
+
+===xNetHack===
+In [[xNetHack]], the quarterstaff provides the same benefits as in FIQHack, improving spellcasting success rates and not blocking casting if wielded while cursed. This effect does not stack with other items that provide the same benefit, i.e., the robe and the [[wand of nothing]].
+
+===SpliceHack===
+In [[SpliceHack]], [[The Power Pole]] is an artifact quarterstaff that acts as the [[Dancer]] quest artifact.
+
+===EvilHack===
+In [[EvilHack]], there are now different spell-enhancing quarterstaves for every school of magic except [[enchantment spells]]. These staves boost the cast rates of spells for their respective spell schools, and are designed to make magic more viable for the various casting playstyles that would have had difficulty using  them otherwise. The bonus given is a flat +50% spell success chance, applied after all other checks besides the check for body armor.
+
+* Staves of divination are made of wood, and aid in the casting of [[divination spell]]s while wielded.
+* Staves of escape are made of wood, and aid in the casting of [[escape spell]]s while wielded.
+* Staves of healing are made of wood, and aid in the casting of [[healing spell]]s while wielded.
+* Staves of holiness are made of [[bone]], and aid in the casting of [[clerical spell]]s while wielded.
+* Staves of matter are made of [[mithril]], making them lighter compared to the other staves, and aid in the casting of [[matter spell]]s while wielded.
+* Staves of war are made of iron, and aid in the casting of [[attack spell]]s while wielded. This makes it heavier than its counterparts, but also grants it an extra +d2 to-hit.
+
+In addition, the [[base item]] of [[Magicbane]] is changed to a quarterstaff; all its other properties are unchanged.
+
+===SlashTHEM===
+In [[SlashTHEM]], in addition to SLASH'EM changes, the [[Acid Mage]] and [[Electric Mage]] also start with a blessed +1 quarterstaff. SlashTHEM introduces [[artifact weapon]] staves as well:
+
+* [[Shimmerstaff]] is an artifact silver-capped staff, and the first [[sacrifice gift]] for the [[Bard]].
+* The [[Cudgel of Cuthbert]] is an artifact quarterstaff and the [[Chevalier]] quest artifact.
+* [[The Staff of Withering]] is an artifact quarterstaff and the [[Lunatic]] quest artifact.
+
+==Encyclopedia entry==
+{{encyclopedia|
+So they stood, each in his place, neither moving a finger's
+breadth back, for one good hour, and many blows were given
+and received by each in that time, till here and there were
+sore bones and bumps, yet neither thought of crying "Enough,"
+or seemed likely to fall from off the bridge.  Now and then
+they stopped to rest, and each thought that he never had seen
+in all his life before such a hand at quarterstaff.  At last
+Robin gave the stranger a blow upon the ribs that made his
+jacket smoke like a damp straw thatch in the sun.  So shrewd
+was the stroke that the stranger came within a hair's breadth
+of falling off the bridge; but he regained himself right
+quickly, and, by a dexterous blow, gave Robin a crack on the
+crown that caused the blood to flow.  Then Robin grew mad
+with anger, and smote with all his might at the other; but
+the stranger warded the blow, and once again thwacked Robin,
+and this time so fairly that he fell heels over head into the
+water, as the queen pin falls in a game of bowls.
+|[ The Merry Adventures of Robin Hood, by Howard Pyle ]
+}}
+
+== References ==
+<references />
+{{nethack-366}}
+[[Category:Weapons]]}
+&&%s&& %s Aklys {149499 2022-12-21T07:24:25Z {4001279 Umbire the Phantom} tighten wording in some places {{weapon
+  |color=metal color
+  |tile=[[image:aklys.png]]
+  |name=aklys
+  |appearance=thonged club
+  |smalldmg=1d6
+  |largedmg=1d3
+  |skill=club
+  |cost=4
+  |weight=15
+  |material=iron
+}}
+
+An '''aklys''' is a type of [[weapon]] that appears in ''[[NetHack]]''. It uses the [[club]] skill, and is made of [[iron]]. When [[identification|unidentified]], it appears as a '''thonged club'''.
+
+An aklys has the same hit dice versus small and large [[monster]]s as a club, but is much lighter. Unlike a club, it can also be used as a [[projectile]] weapon, and gains a +2 [[to-hit]] bonus when [[throw]]n.{{refsrc|src/dothrow.c|1070|version=NetHack 3.6.6}} While wielded in the primary hand, the aklys is tethered to that hand - when thrown, it has a max range of 4 [[square]]s and behaves slightly like [[Mjollnir]], returning 99% of the time when thrown.{{refsrc|src/dothrow.c|1252|version=NetHack 3.6.6}}{{refsrc|src/dothrow.c|1318|version=NetHack 3.6.6}}{{refsrc|src/dothrow.c|1377|version=NetHack 3.6.6}} [[You]] will catch a tethered aklys 99% of the time if you are not [[impaired]] (i.e. [[blind]], [[stunned]], [[confused]], etc.) in some manner, and it will either land at your feet or hit you in the arm the rest of the time.{{refsrc|src/dothrow.c|1341|version=NetHack 3.6.6}}{{refsrc|src/dothrow.c|1347|version=NetHack 3.6.6}}
+
+==Generation==
+The aklys makes up about 0.8% of randomly generated weapons (on the ground, as [[death drop]]s, and in [[shop]]s). 
+
+An aklys is one of the weapons that can be given to a [[humanoid]] monster with a weapon attack, the ability to wield weapons and no other ruleset governing its [[monster starting inventory]], unless they are being generated on the [[Rogue level]]: the base odds are {{frac|14}} for normal monsters, {{frac|12}} for a monster that is a [[M2_LORD|lord]] or [[nasty]], {{frac|10}} for a monster that is an [[M2_PRINCE|overlord]] or both a lord and nasty, and {{frac|8}} for a monster that is both nasty and an overlord.{{refsrc|src/makemon.c|547|version=NetHack 3.6.6|common=Case for two-handed sword in "default" monster weapon generation}} For this reason, the weapon is often associated with [[gnomes]] - they qualify for this set of cases and generate in large numbers in the [[early game]], specifically in the [[Gnomish Mines]].
+
+==Strategy==
+Compared to a stack of a dozen daggers, one aklys is far lighter and can be reused indefinitely, at least until it fails to return—and even then, it can simply be retrieved to re-tether for future use. The aklys also has higher base damage than a dagger; although daggers can be multishot to do more damage, it is usually easier to find a blessed or enchanted aklys in the Mines, compared to a stack of above-average daggers.
+
+On the other hand, the aklys must be wielded before throwing if you expect it to return: this means one action will be used switching to it before firing, and another switching back if the target gets close and you have a more powerful weapon for melee. There is also the small chance of it backfiring and striking you upon return, though this does not deal much damage - a far more pressing concern is having your wielded aklys cursed, which prevents throwing ''and'' switching to a different weapon until it is uncursed.
+
+For [[Cavemen]] and [[Priest]]s, who cannot multishot daggers but can achieve Expert in club, an aklys is a worthwhile primary weapon for melee and ranged attacks alike&mdash;while other roles can utilize the aklys this way, they may also opt to use it as a backup ranged weapon when their primary projectile runs out, which in turn lets them save capacity by carrying fewer projectiles than they would otherwise. Those attempting a gnomish [[Unofficial conduct#Racial|racial ascension]] often consider the aklys as the only acceptable melee weapon—in practice, one is more likely to remember seeing a gnome using this weapon than any other monster.
+
+==History==
+The aklys first appears in [[NetHack 1.3d]], where it has a relative probability of 1 in 99 and weighs three units; for comparison, the [[two handed sword]] was the heaviest at four.<ref>http://groups.google.com/group/comp.sources.games/browse_thread/thread/ffca0cd03579c2d5/e566257de569b92b?lnk=st&q=aklys&rnum=1#e566257de569b92b</ref> This "rarity" was shared with many objects, including even the [[katana]], and remained unchanged until [[NetHack 3.4.3]].
+
+The ability to tether a wielded aklys, throw it and have it return to the player's hand is introduced in [[NetHack 3.6.1]].
+
+==Origin==
+{{wikipedia|Aklys}}
+The word "aklys" comes from the Latin ''aclys'' and Greek ''agkulis'', and refers to a Roman missile weapon; it is uncertain whether the "proper" plural would be "aklyses" (going by general English rules) or "aclydes" (by Latin rules)—in any case, the aklys [[Stackable|does not stack]], so it is unclear what ''NetHack'' would use.
+
+There are two types of aklys: one resembles a [[javelin]] and measured approximately 2 m (79 in) in length, and was thrown using a leather strap (or ''amentum''); the word was translated as "javelin" in English translations of Roman works such as the ''Aeneid''. The second type of aklys is a small spiked mace or club attached to the wielder's arm by a strap of adjustable length, ensuring the weapon could be retrieved after it was thrown.
+
+The aklys also appears in various fantasy games such as ''[[Dungeons & Dragons]]'', where it is found in ''[[wikipedia:Dragon (magazine)|Dragon Magazine]]'' Vol. 7, No. 2, as well as the 1985 ''Unearthed Arcana'' supplement by co-creator Gary Gygax. This aklys is directly patterned after the second, blunt type of aklys and serves as the basis for the weapon and its hit dice in ''NetHack''.
+
+==Variants==
+Some variants based on 3.4.3 may not have the updated behavior for the aklys introduced in later versions of vanilla ''NetHack''.
+
+===UnNetHack===
+[[UnNetHack]] is one of the 3.4.3-based variants that adjusts the aklys to behave like it does in current versions of ''NetHack''.
+
+===dNetHack===
+In [[dNetHack]], you and other monsters can [[apply]] an aklys to [[pound]] targets as with a [[polearm]].
+
+==Encyclopedia entry==
+{{encyclopedia|
+A short studded or spiked club attached to a cord allowing
+it to be drawn back to the wielder after having been thrown.
+It should not be confused with the atlatl, which is a device
+used to throw spears for longer distances.
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Weapons]]}
+&&%s&& %s Thonged club {13666 2006-10-08T07:09:55Z {467 Killian} #REDIRECT [[aklys]] #REDIRECT [[aklys]]}
+&&%s&& %s Flail {146868 2022-07-21T13:50:08Z {4001279 Umbire the Phantom} /* EvilHack */ {{weapon
+  |color=metal color
+  |tile=[[image:flail.png]]
+  |name=flail
+  |smalldmg=1d6+1
+  |largedmg=2d4
+  |cost=4
+  |weight=15
+  |material=iron
+}}
+A '''flail''' is a type of [[weapon]] that appears in ''[[NetHack]]''. For [[Samurai]], the flail will appear as a '''nunchaku'''.
+
+==Generation==
+Flails make up about 4% of weapons randomly generated on the floor, as [[death drop]]s or in [[shop]]s.
+
+[[Yeenoghu]] is [[Monster starting inventory|always generated with]] a flail, and [[sergeant]]s in the [[Yendorian army]] are generated with either a flail or a [[mace]].{{refsrc|src/makemon.c|200|version=NetHack 3.6.6}}{{refsrc|src/makemon.c|503|version=NetHack 3.6.6}}
+
+==Flail skill==
+{{flail skill table}}
+Flails and [[grappling hook]]s use the flail skill. There are no [[artifact weapon]]s that use the flail skill.
+
+Your skill level in flails determines how far you can reach with an [[applied]] grappling hook.
+
+==Strategy==
+A flail does decent damage and is relatively light, but is not particularly remarkable. Flails can be of use to certain roles such as [[Cavemen]] and [[Priest]]s.
+
+==History==
+The flail has been present in the game since [[hack121]], a port of [[Jay Fenlason's Hack]].
+
+==Origin==
+{{wikipedia|Flail (weapon)}}
+{{wikipedia|Nunchaku}}
+A flail is a weapon with a striking "head" attached to a handle by a flexible rope, strap, or chain; there are two primary types, though the word has been used somewhat loosely to describe any similarly-structured blunt weapon. Flails were generally employed to strike around a defender's shield or parry, but were imprecise and difficult to use in close combat or closely-ranked formations.
+
+Cylindrical-headed flails are two-handed weapons adapted from European agricultural tools used to remove the husks from grain by beating; they were considered a peasant's weapon, commonly used by infantry. One-handed "military" flails - sometimes called a "mace-and-chain" - had spiked metal heads on chains and appeared in late medieval art; however, the scarcity of artifacts suggests they were very rarely used, and varieties with long chains and short handles in particular would have been hazards to their wielder. Regardless, the latter are usually the depiction of choice for fantasy media such as ''[[Dungeons & Dragons]]'' (which ''NetHack'' takes the flail's traits and hit dice from).
+
+The ''nunchaku'' (sometimes known as "nunchuks" in English) is an Asian weapon consisting of two usually-wooden six-inch sticks connected at their ends by a 1-inch metal chain or a rope, and was popularized by martial artists Bruce Lee and Dan Inosanto. Nunchaku are traditionally held to have also been adapted from short flails originally employed in threshing rice, as were similar weapons such as the the three-section staff. The nunchaku is most widely used in martial arts such as Okinawan kobudō and karate - it is intended for training, since practicing with it enables the development of quick hand movements and improves posture. Modern nunchaku may be made of metal, plastic or fiberglass instead of the traditional wood; while toys and replicas may be made of polystyrene foam or plastic.
+
+==Variants==
+In some variants that integrate the [[Convict]] Patch, a wielded [[heavy iron ball]] functions as a [[melee]] weapon that uses the flail skill and may even train it when swung.
+
+===dNetHack===
+In [[dNetHack]], [[player monster]] [[Convict (player monster)|convicts]] have a {{frac|3|4}} chance to generate with a flail as their weapon.
+
+dNetHack also adds several artifact flails:
+
+* Quicksilver is an unaligned [[silver]] flail that grants +1d4 to hit and +1d8 damage, and grants an extra attack at [[experience level]] 16 (made with a -15 to-hit penalty); it can be [[invoked]] to toggle extrinsic [[speed]], as with [[speed boots]].
+* [[The Tentacle Rod]] is a [[Drow (starting race)|drow]]-favoring intelligent flail that grants +1d7 to-hit and +1 to damage, and is the primary [[quest artifact]] for renegade drow Priests, Rangers, Rogues, and [[Wizard]]s. It only receives half the normal damage bonus from strength, and receives no damage bonus from your skill or its enhancement; however, to-hit bonuses are applied as normal, and it has various effects when wielded or used to attack.
+* The The Three-Headed Flail is a chaotic and intelligent large flail wielded by [[Yeenoghu]]; if it hits a target, it makes two bonus attacks that each deal the standard weapon damage, and will [[confuse]] and [[stun]] the target if both of them land.
+* The Sting of the Poison Queen is a chaotic and intelligent large flail wielded by [[Shaktari]]; it grants +1d4 to-hit and +1d12 damage, is permanently [[poison]]ed, and grants [[magic resistance]] when wielded.
+
+===SpliceHack===
+In [[SpliceHack]], two flails can be combined at a [[furnace]] to create a [[triple flail]].

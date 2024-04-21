@@ -1,0 +1,1000 @@
+
+[[Category:Defunct features (SLASH'EM)]]
+[[Category:SLASH'EM]]}
+&&%s&& %s Smaug {96587 2015-09-18T20:54:14Z {4000629 Cherokee Jack} Changed categories {{Wikipedia|Smaug}}
+{{monster
+ |name=Smaug
+ |symbol={{red|D}}
+ |tile=
+ |difficulty=16
+ |level=
+ |experience=
+ |speed=10
+ |AC=0
+ |MR=20
+ |align=-14
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Breath (fire) 6d8, breath (fire) 2d6, claw (steal quest artifact) 2d8, bite 1d6, bite 2d4, claw 2d4
+ |weight=4500
+ |nutr=1800
+ |size=Gigantic
+ |resistances=Fire
+ |resistances conveyed=Fire
+ |attributes={{attributes|Smaug|thick=1|nohands=1|carnivore=1|fly=1|nopoly=1|pname=1|hostile=1|male=1|stalk=1|strong=1|greedy=1|jewels=1|magic=1|wantsarti=1|waitforu=1}}
+}}
+
+Smaug was the [[quest nemesis]] for the defunct [[User:Kahran042/Dwarf quest|Dwarf quest]] in SLASH'EM.
+
+==Encyclopedia entry==
+{{encyclopedia|
+"There he lay, a vast red-golden dragon, fast asleep; a thrumming
+came from his jaws and nostrils, and wisps of smoke, but his fires
+were low in slumber.  Beneath him, under all his limbs and his
+huge coiled tail, and about him on all sides stretching away
+across the unseen floors, lay countless piles of precious things,
+gold wrought and unwrought, gems and jewels, and silver
+red-stained in the ruddy light."|[ The Hobbit by J.R.R. Tolkien ]
+}}
+
+
+[[Category:Defunct features (SLASH'EM)]]
+[[Category:SLASH'EM]]}
+&&%s&& %s Slithy {150080 2023-03-06T06:11:48Z {4001279 Umbire the Phantom} touch up some '''Slithy''' is a property which [[monster]]s can have. It is explained in the code as meaning having a "serpent body", but some non-serpentine monsters also have the property, such as [[jellyfish]] and [[shark]]s.{{refsrc|monflag.h|89|version=NetHack 3.6.0}} 
+
+==Description==
+Slithy monsters have no legs, so they cannot [[kick]],{{refsrc|dokick.c|760|version=NetHack 3.6.0}} wear boots,{{refsrc|do_wear.c|1645|version=NetHack 3.6.0}}{{refsrc|polyself.c|944|version=NetHack 3.6.0}} [[Riding|ride]] a steed,{{refsrc|steed.c|221|version=NetHack 3.6.0}} or [[Jumping|jump]] (except with the {{spell of|jumping}} spell).{{refsrc|apply.c|1498|version=NetHack 3.6.0}}
+
+A slithy monster which is medium-[[size]]d or smaller can move through [[iron bars]].{{refsrc|mondata.c|303|version=NetHack 3.6.0}}
+
+==List of slithy monsters==
+The following monsters are flagged as slithy:
+
+* All {{monclass|w}}s
+* {{monsymlink|Couatl}}
+* All {{monclass|N}}s
+* All {{monclass|S}}s
+* All {{monclass|;}}s minus the {{monsymlink|kraken}}
+* {{monsymlink|Salamander}}s
+* {{monsymlink|Marilith}}s
+* {{monsymlink|Geryon}}
+
+==Origin==
+The word "slithy" was invented by Lewis Carroll, and appears in the first line of his famous nonsense poem "Jabberwocky":
+
+<pre>Twas brillig, and the slithy toves
+Did gyre and gimble in the wabe ...</pre>
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Properties]]}
+&&%s&& %s Strong {150075 2023-03-06T04:57:56Z {4001279 Umbire the Phantom} /* List of strong monsters */ proper plurals :''For the player stat, see [[strength]].''
+
+In ''[[NetHack]]'', some [[monster]]s are considered '''strong'''. This [[property]] is boolean (i.e. monsters either possess it or do not), and is governed by the <code>M2_STRONG</code> flag in [[monst.c]]. As a monster attribute, it is not entirely analogous to player [[strength]].
+
+==Effects for monsters==
+A strong monster has twice the [[monster carrying capacity|carrying capacity]] as a non-strong monster of the same weight.
+
+Only strong monsters may wield [[two-handed]] weapons.{{refsrc|src/weapon.c|537|version=NetHack 3.6.6}} Strong monsters have a {{frac|4}} to avoid being pulled around with a [[grappling hook]], and will instead pull around the player.{{refsrc|src/apply.c|3257|version=NetHack 3.6.6}}
+
+===Generation===
+{{main|Monster starting inventory}}
+A strong [[humanoid]] monster that has a weapon attack and the ability to wield weapons, is not being generated on the [[Rogue level]], and does not have its own set of rules governing its [[monster starting inventory]] can be generated with one of the following five weapon sets, with an equal probability of each:{{refsrc|src/makemon.c|512|version=NetHack 3.6.6|name="default"|common=Default set of cases for monster weapon generation}}
+
+# A [[battle-axe]]
+# A [[two-handed sword]]
+# A [[bow]] and 3-14 [[arrow]]s
+# A [[long sword]], or 
+# A [[lucern hammer]]
+
+The size of the die used in rolling for these weapons is determined by whether or not the monster is also a [[M2_LORD|lord]] to its kind, an [[M2_PRINCE|overlord]] to its kind, or is [[nasty]]; this is governed by an [[rnd]] equation that translates to {{sfrac|5|14 - ''N''}}, where ''N'' is the result of a "bias" variable that is incremented for each applicable property - 1 if the monster is a lord, 1 if the monster is nasty, and 2 if the monster is an overlord - and then multiplied by two:<ref name="default"/>
+
+* A normal strong monster uses a d14. ({{frac|5|14}} ≈ 35.71%)
+* Strong monsters that are either nasty or lords to their kind use a d12. ({{frac|5|12}} ≈ 41.67%)
+* Strong monsters that are both nasty and a lord to their kind, or else are an overlord to their kind, use a d10. ({{frac|5|10}} = 50%)
+* Strong monsters that are both nasty and an overlord to their kind use a d8. ({{frac|5|8}} = 62.5%)
+
+==Effects for the player==
+Polymorphing into a strong monster sets your [[strength]] to 18/**, regardless of your base [[race]].{{refsrc|src/polyself.c|673|version=NetHack 3.6.6}}
+
+If your [[steed]] is strong and gets entangled in a [[spider web]], it is treated as having a strength of 17 for the purpose of calculating its chance of breaking free, i.e. it has a {{frac|2}} chance to do so.{{refsrc|src/trap.c|1363|version=NetHack 3.6.6}}
+
+{{upcoming|3.7.0|As part of resolving [https://github.com/NetHack/NetHack/issues/679 issue #679] regarding congruence between non-player monsters and their player counterparts, {{commit|b6a3d4b984eb118ddb02f1605d76b1010df76055|commit b6a3d4b}} adds various special cases that alter strength caps for specific strong monsters, including some that ensure monster strength matches those of their playable counterparts:
+
+* Strength is capped at 18 for polyforms that lack the strong attribute.
+* Polymorphing into a strong [[Orc (monster class)|orc]] sets your strength to 18/50, matching the natural cap of a player orc; the exceptions are the [[Uruk-hai]], which confers 18/** strength as before, and the [[orc shaman]], which no longer has the M2_STRONG flag. The [[orc mummy]] is given the M2_STRONG flag.
+* Polymorphing into a strong [[Elf (monster attribute)|elf]] sets your strength to 18, matching the natural cap of a player elf. [[Elf (monster)|'Plain' elves]] no longer have the M2_STRONG flag.
+* Polymorphing into a non-[[undead]] [[Giant (monster attribute)|giant]] sets your strength to 19; polymorphing into an undead giant (i.e. zombie or mummy) instead sets it to 18/** as with other strong monsters.
+}}
+
+==List of strong monsters==
+The following monsters are strong:
+
+* all {{mcsl|t}}{{mcsl|u}}{{mcsl|C}}{{mcsl|D}}{{mcsl|E}}{{mcsl|H}}{{mcsl|J}}{{mcsl|N}}{{mcsl|O}}{{mcsl|T}}{{mcsl|U}}{{mcsl|V}}
+* {{monsymlink|large dog}}
+* {{monsymlink|winter wolf}}
+* {{monsymlink|hell hound}}
+* {{monsymlink|large cat}}
+* {{monsymlink|gargoyle}}
+* {{monsymlink|winged gargoyle}}
+* all living [[Dwarf (monster)|dwarves]]:
+** {{monsymlink|dwarf}}
+** {{monsymlink|dwarf lord}}
+** {{monsymlink|dwarf king}}
+* {{monsymlink|bugbear}}
+* {{monsymlink|giant mimic}}
+* all {{monclass|o}}s except [[goblin]]s
+* all {{monclass|q}}s except [[rothe]]s
+* all adult {{monclass|w}}s
+* all {{monclass|A}}s except [[Aleax]]es
+* {{monsymlink|ettin mummy}}
+* {{monsymlink|giant mummy}}
+* {{monsymlink|Nazgul}}
+* all {{monclass|Y}}s except [[monkey]]s
+* {{monsymlink|ettin zombie}}
+* {{monsymlink|giant zombie}}
+* {{monsymlink|skeleton}}
+* {{monsymlink|crocodile}}
+* {{monsymlink|kraken}}
+* {{monsymlink|flesh golem}}
+* {{monsymlink|clay golem}}
+* {{monsymlink|glass golem}}
+* {{monsymlink|iron golem}}
+* most {{monclass|@}} monsters, with these exceptions:
+** {{monsymlink|aligned priest}}
+** {{monsymlink|Green-elf}}
+** {{monsymlink|Grey-elf}}
+** {{monsymlink|high priest}}
+** {{monsymlink|nurse}}
+** {{monsymlink|The Oracle}}
+** {{monsymlink|werejackal}}
+** {{monsymlink|wererat}}
+** {{monsymlink|werewolf}}
+** {{monsymlink|Woodland-elf}}
+* {{monsymlink|sandestin}}
+* {{monsymlink|erinys}}
+* {{monsymlink|balrog}}
+* {{monsymlink|Asmodeus}}
+* all three [[Rider]]s
+
+==References==
+<references />
+{{nethack-366}}
+[[Category:Monster attributes]]
+[[Category:Properties]]}
+&&%s&& %s Rod of Lordly Might {148571 2022-10-05T03:04:27Z {4001279 Umbire the Phantom} de-SLEX {{artifact weapon
+  |color=metal color
+  |base=mace
+  |smalldmg=1d6+1 '''x2'''
+  |largedmg=1d6 '''x2'''
+  |tohit='''+1d3'''
+  |bonusversus=''any''
+  |affiliation=<ul><li>[[lawful]]</li><li>[[Noble]]</li></ul>
+  |whencarried=<ul><li>''(none)''</li></ul>
+  |whenwielded=<ul><li>''(none)''</li></ul>
+  |wheninvoked=<ul><li>''various effects'' ([[dNetHack]])</li></ul>
+  |cost=4000
+  |weight=30
+  |material=iron
+}}
+
+'''The Rod of Lordly Might''' is an [[artifact]] added in [[variant]]s that include the [[Noble]] role ([[dNetHack]] and [[SlashTHEM]]). It is the guaranteed first [[sacrifice gift]] for Nobles and [[lawful]] for [[wish]]ing purposes. 
+
+In all variants that include it, the Rod is generated as a [[mace]]. In dNetHack, however, it can be [[invoke]]d to transform it into any of a number of [[one-handed]] melee weapons ([[axe]], [[lance]], [[rapier]], [[spear]], and the starting [[mace]]). Besides changing form, the Rod has several additional invocation effects in that variant, some of which are accessible only while the Rod is in a particular form.
+
+In the development version of dNetHack, three [[race]]s have unique first sacrifice gifts for Nobles that replace the Rod. Droven Nobles and Elven Nobles receive [[dNetHack Artifacts#Sceptre of Lolth|the Sceptre of Lolth]] and [[dNetHack Artifacts#The Rod of the Elvish Lords|the Rod of the Elvish Lords]], respectively, which share the same limited invocation effects as the Rod of Lordly Might but have racial weapons as their base items and alternate forms. Dwarf Nobles receive [[dNetHack Artifacts#The Armor of Khazad-dam|the Armor of Khazad-dum]].
+
+== Invocation ==
+===dNetHack===
+In dNetHack, [[invoke|invoking]] the Rod of Lordly Might allows the player to choose one of several invocation effects:
+*'''At will''': The Rod can be ordered to assume a different form as often as desired.
+**Become [[Mace]]
+**Become [[Axe]]
+**Become [[Rapier]]
+**Become [[Spear]]
+**Become [[Lance]]
+**Fast engraving: While in rapier form, the Rod may be used to engrave as an [[athame]].
+*'''Limited''': these powers are limited by the artifact's invoke cooldown. Once you invoke one of them, you can't invoke any of these powers for <code>[[rnz]](100)</code> turns.
+**Become Ladder (Rod must be a mace):
+***''Prior to gaining the amulet'': Similar to quaffing a cursed potion of [[gain level]], allows you to escape through the ceiling to the level above.
+***''After gaining the amulet'': Similar to zapping a [[wand of digging]] downward, allows you to escape through the floor to the level below.
+***''While swallowed'': Similar to zapping a [[wand of digging]], the extending ladder seriously injures physical monsters engulfing you.
+**Show me my surroundings: Maps local area using [[clairvoyance]].
+**Inspire Fear: Scares nearby monsters that can see you.
+**Give me your life (Rod must be a spear): Drains two levels from one adjacent monster and heals you for 4d8 hp.
+**Kneel: Paralyzes one adjacent monster.
+
+Using the "Become Ladder" command while [[engulf]]ed will reduce the engulfing monster's HP to 1, with a few exceptions. If the monster is [[Juiblex]], [[User:Chris/dNetHack/dNethack_Devil_Lords#Leviathan|Leviathan]], or a rare [[Metroid#metroid queen|metroid queen]], its health will only be reduced by 25%.
+
+===SlashTHEM===
+In SlashTHEM, invoking the Rod reveals the location of all [[pets]] on the level, and increases the [[tameness]] of those that are within line of sight.
+
+==Messages==
+{{message|The Rod extends quickly, reaching for the <ceiling>!|The "Become Ladder" command was used prior to gaining the Amulet (dNetHack).}}
+{{message|The <ceiling> obediently yields before the Rod, and you climb to the level above.|The command succeeded.}}
+{{message|However, it is unable to pierce the <ceiling>.|The command failed because the player was on a level where the [[potion of gain level|gain level effect]] is blocked.}}
+{{message|The Rod begins to extend quickly upwards. However, a mysterious force slams it back into the <surface> below.|The command was used after gaining the Amulet (dNetHack).  A [[pit]] or [[hole]] is created below the player, as if a [[wand of digging]] was zapped downwards.}}
+{{message|The Rod quickly lengthens and pierces <foo>'s <stomach> wall!|The command was used while [[engulf]]ed by a physical monster, [[Wand of digging|reducing its health and expelling the player]].}}
+
+{{message|You thrust the Rod into the air, that all may know of your might.|The "Inspire Fear" command was used (dNetHack).}}
+
+{{message|The Rod glows and then fades. <Foo> suddenly seems weaker! You feel better.|The "Give Me Your Life" command was used successfully to drain life from a monster (dNetHack).}}
+
+{{message|The Rod glows and then fades. <Foo> kneels before you.|The "Kneel" command was used successfully to paralyze a monster (dNetHack).}}
+
+==References==
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/dnethack/commit/980737c5e4fca9299af8f797d159182f7c2bc242 Chris' Noble Patch]
+
+[[dNetHack Artifacts]]
+
+[[Category:Noble patch]]}
+&&%s&& %s Clarent {130245 2020-01-08T20:58:55Z {4001290 Lysdexia}  {{patch
+ |name=Clarent
+ |author=GreyKnight
+ |download=https://bilious.alt.org/?download=278
+ |bilious=278
+}}
+
+'''Clarent''' is an [[artifact]] sword in GreyKnight's [http://bilious.alt.org/?278 Clarent Patch]. The "other" sword from Arthurian legend (after [[Excalibur]]), Clarent is a proposed replacement for Excalibur as the lawful [[crowning]] gift, given that Excalibur can already be created easily by #dipping a [[long sword]] into any [[fountain]].
+
+When [[invoke]]d, Clarent reveals the location of all [[pet]]s on the level and increases the [[tameness]] of those within line of sight.
+
+Versions of Clarent have been incorporated into the variants [[dNetHack]] and [[SlashTHEM]].
+
+==dNetHack==
+{{artifact weapon
+  |name = Clarent (dNetHack)
+  |base = long sword
+  |material = iron
+  |color = metal color
+  |smalldmg = 1d8 '''+1d20'''
+  |largedmg = 1d12 '''+1d20'''
+  |tohit='''+2 + 1d10'''
+  |bonusversus=[[thick-skinned]] monsters
+  |skill = long sword
+  |cost = 4000
+  |weight = 40
+  |affiliation = [[lawful]]
+  |wheninvoked = <ul><li>detects [[pet]]s on level and increases [[tameness]]</li></ul>
+}}
+In dNetHack, [[dNetHack Artifacts#Clarent|Clarent]] is a lawful [[long sword]], the crowning gift for [[Knight]]s.  It has a +2+1d12 to-hit and +1d20 damage bonus versus [[thick-skinned]] creatures.  It also has +2 to-hit bonus versus [[phasing]] creatures.  When wielded by a Knight, Clarent does not resist being [[Twoweapon|held second]] to other [[dNetHack Artifacts|artifact weapons]]. 
+
+Clarent can be used as a [[digging|digging tool]].
+
+{{clear}}
+==SlashTHEM==
+In SlashTHEM, Clarent's base item class is [[short sword]], as in the patch.  It is the first [[sacrifice gift]] for [[Knight]]s and has a fixed +8 to-hit and +2 damage bonus versus [[thick-skinned]] creatures.  In addition, it functions as a [[luckstone]] while carried. 
+
+SlashTHEM inherits [[SLASH'EM]]'s lack of restrictions on [[Twoweapon#SLASH'EM|dual-wielding]] artifacts, so Clarent can be held second to another [[SlashTHEM artifacts|artifact weapon]] by any [[role]].
+
+==Origin==
+{{wikipedia|Clarent}}
+Clarent appears in the medieval poem ''Alliterative Morte Arthure'' alongside Caliburn (i.e. Excalibur) as a sword associated with [[King Arthur]].  In popular culture it is often identified with the sword that Arthur pulled from the stone, while Excalibur is identified with the sword Arthur received from the Lady of the Lake. 
+
+In the Clarent Patch, when Clarent is given to a crowned player, it appears embedded in a nearby wall, door, or tree, in a reference to the sword's mythos.  It can be retrieved using the #untrap command, if the player is [[alignment record|devoutly]] lawful.  Its function as a [[digging|digging tool]] also references the legend.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Clarent is the sword which Arthur drew forth from the stone,
+proving himself a rightful king.  It represents authority
+and leadership.  Clarent cleaves through stone easily, but
+only those dedicated to law can remove it from a stony
+grasp.}}
+
+==See also==
+[[Artifact YANIs]]
+
+[[Category:Patches]] [[Category:dNethack]] [[Category:SlashTHEM]]}
+&&%s&& %s Kiku-ichimonji {130331 2020-01-08T22:33:34Z {4001290 Lysdexia}  {{wikipedia}}
+{{artifact weapon
+  |color=metal color
+  |name=Kiku-ichimonji
+  |base=katana
+  |smalldmg=1d10 '''+12'''
+  |largedmg=1d12 '''+12'''
+  |tohit=<nowiki>+</nowiki>4
+  |skill=long sword
+  |affiliation=<ul><li>[[lawful]]</li><li>[[Samurai|(Samurai)]]</li></ul>
+  |cost=
+  |weight=
+  |material=iron
+}}
+
+'''Kiku-ichimonji''' is an [[Artifact_weapon|artifact]] [[katana]] from [[SlashTHEM]] and [[dNetHack]]. It simply does +''4'' to hit and +''12'' damage. It is the first sacrifice gift for [[Samurai]] in these variants.
+
+==Origin==
+"Kiku-ichimonji" (菊一文字) literally translates to "chrysanthemum and ichi character". It's a collective name given to the Japanese swords made by the thirteen swordsmiths who were in attendance to the emperor Go-Toba in 1208.
+
+The swordsmiths normally inscribed the character "Ichi" (一,one) as their signature. They further received permission to append the Imperial Chrysanthemum crest (菊, kiku).
+
+The artifact weapon is inspired by the ''[[wikipedia:Final Fantasy|Final Fantasy]]'' series, in which Kiku-ichimonji is typically one of the more powerful weapons of the Katana class.
+
+{{stub}}}
+&&%s&& %s Incantifier (dNetHack starting race) {142378 2021-09-06T09:15:13Z {4001279 Umbire the Phantom}  The '''Incantifier''' is a starting race available in [[dNetHack]] and [[SlashTHEM]]. Incantifiers can be any alignment or role, much like humans. You will see yourself as [[@|{{white|@}}]], and are considered the {{white|@}} [[human or elf]] [[monster class]] for game purposes.
+
+According to the dNetHack text:
+{{guidebook|Incantifiers eat magic, not food, and do not heal naturally.}}
+Source: DnD Planescape, Shemeska's Planescape Storyhour
+
+==Racial benefits and restrictions==
+===Recovery===
+Incantifiers do not recover [[hit points]] (HP) or [[energy]] (Pw) over time; in fact, they lose energy instead of [[nutrition]]. Incantifiers can gain energy by draining certain magical items, a special racial ability. Other than that, they can only gain hit points and energy through magical means or gaining levels.
+
+===Intrinsics===
+Incantifiers begin the game with [[intrinsic]] [[magic resistance]].
+
+While they cannot eat [[corpse]]s in order to gain other intrinsics, they are able to gain intrinsics by draining ({{kbd|q}}uaffing) [[potion of blood|potions of blood]]. Potions of blood can be created in ''dNetHack'' by applying a [[tinning kit]] to the corpse of a monster that has blood. Beware: incantifiers count as human, and draining a potion of human blood is [[cannibalism]] for them.
+
+Incantifiers can gain intrinsics by eating rings and amulets. They can eat any magical jewelry, regardless of the material it is composed of (since they are actually draining the jewelry's magic, not physically consuming the item). Their chance to gain intrinsics, and the intrinsics that they can gain, are the same as for [[eating jewelry]] after [[polymorph control|polymorphing]] into a form that can do so. Incantifiers also gain energy from eating jewelry, and should take care not to overeat while trying to acquire intrinsics in this way.
+
+===Enchantment sense===
+Incantifiers are sensitive to the magic contained in items. They can always see the [[enchantment]] level of [[weapons]] and [[armor]] and can tell if [[wand]]s are out of charges.
+
+<div id="eating magic"></div>
+===Eating magic===
+Incantifiers are magivores. They consume magic to live. Everything that causes a gain or loss of nutrition causes incantifiers to gain or lose energy instead. Incantifiers have vastly greater maximum energy than other [[race]]s, starting with over 1,800 and gaining much more per [[experience level]].
+
+With a few exceptions, incantifiers do not eat [[comestible|food]]. Instead, the {{kbd|e}}at command allows them to drain items of their enchantment, gaining energy in the process. Incantifiers can drain positively enchanted weapons (except [[stackable]] weapons, to prevent players from using stack enchantment to create a virtually inexhaustible power supply) and armor, charged wands, [[spellbook]]s, [[ring]]s, [[amulet]]s, and [[scroll]]s. Each drained enchantment point of weapon or armor is worth around 250 energy, as is each drained scroll, spellbook, ring or amulet. Each wand charge is worth around 50 energy. On weapons and armor this has the same effect as casting [[drain life]] on the item. On spellbooks it increments the read counter, like studying the spell, turning them into blank paper when it reaches maximum. Scrolls are turned blank immediately and wands are merely emptied. Rings and amulets are destroyed.
+
+Incantifiers can #[[untrap]] magic, polymorph, teleport, and level teleport traps (but not magic portals). Untrapping one of these traps grants 500 energy.
+
+Incantifiers may [[choke|die of overeating]], the same as any other race, though they explode rather than choke. They will become satiated at about half their max energy, but can continue "filling up" to the maximum safely - but not a single point further!
+
+Incantifiers are not able to drain artifacts.
+
+[[ring of slow digestion|Rings of slow digestion]] have no effect on incantifiers when worn, but can be drained for energy as with other rings.
+
+Having low energy does not count as [[trouble]], so incantifiers cannot have their energy restored by their god through prayer.
+
+The only exceptions to incantifiers' prohibition on normal food are corpses and tins which can provide energy when eaten, specifically: newt, aoa, and aoa droplet. Incantifiers can drain these items for energy as if they were magical, destroying them. These items can even be drained safely when it would put the incantifier over their maximum energy, causing their maximum energy to increase instead of causing the incantifier to explode.
+
+===Spellcasting===
+Incantifiers are innately very adept at [[spellcasting]], even more so than wizards. No matter their role, all incantifiers have a number of advantages in this regard.
+
+Incantifiers begin the game with very high [[attribute#intelligence|intelligence]] and their spellcasting stat is always intelligence, regardless of role.
+
+Incantifiers begin the game knowing the spells [[Force bolt]] and [[Healing]], although they are not necessarily skilled at casting them.
+
+Spellcasting has no nutrition cost for incantifiers.
+
+
+Incantifiers can reach [[expert]] skill in all seven schools of magic. Their initial skill level in each school is still determined by their role.
+
+When wearing a [[cornuthaum]], incantifiers gain its beneficial effects, as if they were wizards.
+
+===Maximum attributes===
+{|class="prettytable"
+!Character<br />[[race]]
+!Strength
+!Dexterity
+!Constitution
+!Intelligence
+!Wisdom
+!Charisma
+|-
+|Incantifier
+|18/**
+|18
+|18
+|18
+|18
+|18
+|}
+
+==Starting inventory==
+
+Incantifiers always begin the game with a [[spellbook of force bolt]] and a [[spellbook of healing]] in addition to any [[spellbooks]] that their role normally begins with. If the starting inventory for your role already includes a spellbook of force bolt ([[wizards]]) or a spellbook of healing ([[healers]] and possibly [[monks]]), it is replaced by a random spellbook from a school that is not restricted for your role.
+
+For most roles, incantfiers begin the game with a [[robe]] instead of the role's usual [[body armor]] or [[cloak]] and [[food detection|scrolls of food detection]] in place of regular food. The details of substituted items and affected roles are listed in the following table:
+
+{| class="prettytable"
+! Regular item                  !! Substitute                   !! Affected roles
+|-
+| [[Cloak of magic resistance ]] || [[Robe]]                     || [[Wizard]]
+|-
+| [[Cloak of displacement]]     || [[Robe]]                     || [[Ranger]]
+|-
+| [[Leather armor]]             || [[Robe]]                     || [[caveman|Caveman/cavewoman]], [[rogue]], [[valkyrie]]
+|-
+| [[Leather jacket]]            || [[Robe]]                     || [[Archeologist]], [[pirate]]
+|-
+| [[Ring mail]]                 || [[Robe]]                     || [[Barbarian]]
+|-
+| [[Splint mail]]               || [[Robe]]                     || [[Samurai]]
+|-
+| [[Food ration]]               || [[Scroll of food detection ]] || [[Archeologist]], [[barbarian]], [[monk]], [[noble|nobleman/noblewoman]], [[valkyrie]]
+|-
+| [[Cram ration]]               || [[Scroll of food detection]] || [[Binder (dNetHack role)|Binder]], [[pirate]], [[ranger]]
+|-
+| [[Tripe ration]]              || [[Scroll of food detection]] || [[Binder (dNetHack role)|Binder]]
+|-
+| [[Banana]]                    || [[Scroll of food detection]] || [[Pirate]]
+|-
+| [[Orange]]                    || [[Scroll of food detection]] || [[bard|Troubadour]], [[monk]]
+|- 
+| [[Potion of fruit juice]]     || [[Scroll of food detection]] || none
+|-
+| [[Potion of booze]]           || [[Scroll of food detection]] || [[bard|Troubadour]], [[pirate]]
+|}
+
+Notable exceptions:
+*Incantifier [[knights]] start with their usual [[chain mail]] instead of a robe
+*Incantifier [[binder (dNetHack role)|binder]]s start with their usual [[leather cloak]] instead of a robe
+*Incantifier [[healer]]s start with their usual [[User:Chris/dNethack/dNethack Items#Body Armor|healer uniform]] instead of a robe
+*Incantifier [[noble]]s start with their usual array of gender-specific fancy duds, none of which are replaced with a robe
+*Incantifier [[bard|troubadour]]s start with their usual leather cloak instead of a robe
+*Incantifier [[tourists]] start with their usual random [[food]] assortment, none of which is changed into scrolls of food detection. You can eat your [[Scroll of magic mapping|scrolls of magic mapping]] if you get desperate.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Several centuries ago, there existed a faction, now almost entirely extinct, called nowadays 'The Incantifers', then simply as The Magicians or The Wanters. They believed that magic, specifically arcane magic, was the key to power, indeed the only power that mattered in the multiverse. Gain enough knowledge of magic and skill in it and you could do anything. Even challenge The Lady....
+
+According to legend, at least two members of the Wanters tried just that. They died, horribly and spectacularly. Legend also says that one of them almost succeeded.
+
+Then one day, they vanished. Cutters looked up one morning and the Tower Sorcerous, the faction headquarters of the Wanters was simply gone. Nearly all of their members vanished with it, though a scant few remain to wander the planes.
+{{right-align|[ Shemeska's Story Hour, by Todd Stewart ]}}
+"They all ate magic. They ate other people's magic. Spells, items, anything they could buy, steal, or otherwise get a hold of. This place is sealed off from everything. There's no way out and you've got an entire faction of magic eating wizard suddenly bottled up with each other and no food source... except each other."
+{{right-align|[ Shemeska's Story Hour, by Todd Stewart ]}}
+}}
+
+[[Category:dNethack]]}
+&&%s&& %s Potion of clairvoyance {94961 2015-06-19T15:50:32Z {4000629 Cherokee Jack} Can't find any indication in source code that cornuthaums affect this form of clairvoyance {{potion
+|name=Clairvoyance|fullcost=100
+}}
+
+A '''potion of clairvoyance''' is a [[SLASH'EM]]-specific [[potion]]. If [[uncursed]], it grants a single application of [[clairvoyance]], revealing all corridors, walls, and [[stairs]] in a 19x11 region around [[you]] <ref>{{sourcecode|potion.c|779|version=SLASH'EM 0.0.7E7F2}}</ref>. Like [[Scroll of magic mapping|magic mapping]], this does not reveal [[secret door]]s, [[traps]], or [[objects]]. Unlike magic mapping, however, this works even if the level is designated [[Scroll of magic mapping|non-mappable]]. Unlike the [[spellbook of clairvoyance|clairvoyance spell]], this form of clairvoyance is not blocked by wearing a [[cornuthaum]] while not a [[wizard]].
+
+If [[blessed]], the potion grants 100-149 turns of [[intrinsic]] [[clairvoyance]], which gives you a 50% chance of mapping the surrounding 19x11 area every 15 turns <ref>{{sourcecode|potion.c|781|version=SLASH'EM 0.0.7E7F2}}</ref>. This is the same property that can be acquired from [[Aligned priest#Chatting, e.g. for protection|donating]] 200 to 400 times your [[experience level]] to an [[aligned priest]], but for a shorter duration than the 500-999 turns received from donating.
+
+A [[cursed]] potion will have no effect <ref>{{sourcecode|potion.c|776|version=SLASH'EM 0.0.7E7F2}}</ref>.
+
+== Messages ==
+
+{{message|Dude! See-through walls!|You drank a non-cursed potion while [[hallucinating]]}}
+
+== Strategy ==
+
+In a contest between the new-to-[[SLASH'EM]] potion of clairvoyance and the existing scroll of magic mapping, magic mapping wins out in most categories. The clairvoyance effect provided by the potion reveals the same tiles as magic mapping, but only in a small fraction of the map, centered on the player. Intrinsic clairvoyance from the blessed potion potentially increases the area that can be mapped, if the player is moving constantly to cover new area for the duration of the potion's effects (which the layout of the level, or [[Trap|its]] [[Monster (SLASH'EM)|contents]], may not permit), and does not fail the 50% roll every 15 turns. Even so, an uncursed scroll of magic mapping (or [[Spellbook of magic mapping|the spell]]) can still reveal the entire level in one turn, and in [[SLASH'EM]] a blessed scroll detects objects as well, saving the player a [[potion of object detection]] to boot. And scrolls [[weight|weigh]] 1/4 as much as potions, making a stack of scrolls of magic mapping a better choice for one's [[ascension kit|kit]].
+
+At best a potion of clairvoyance can save the player a few turns [[searching]] for [[secret passage]]s when he/she has no form of magic mapping or is on a non-mappable level where attempting magic mapping would [[Confusion|confuse]] [[you]] ("Your mind is filled with crazy lines!"). Most non-mappable levels in SLASH'EM have preset layouts, but the potion may be useful if the player is unfamiliar with the layout and does not wish to consult a map.
+
+Otherwise players may wish to pass up potions of clairvoyance, or save them for [[dilution]] for [[water prayer]].
+
+== References ==
+<references />
+
+{{stub}}
+[[Category:SLASH'EM]]
+[[Category:SLASH'EM items]]
+[[Category:Potions]]}
+&&%s&& %s Lareth {96580 2015-09-18T20:49:08Z {4000629 Cherokee Jack} Changed categories {{monster
+ |name=Lareth
+ |symbol={{black|@}}
+ |difficulty=25
+ |tile=
+ |level=
+ |experience=
+ |speed=15
+ |AC=0
+ |MR=50
+ |align=20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 4d8, weapon 2d5 (sleep), arcane spellcasting, arcane spellcasting
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Death, sleep
+ |resistances conveyed=Sleep
+ |attributes={{attributes|Lareth|hitasfour=1|humanoid=1|seeinvis=1|omnivore=1|nopoly=1|elf=1|human=1|strong=1|pname=1|hostile=1|nasty=1|male=1|collect=1|jewels=1|magic=1|stalk=1|wantsarti=1|waitforu=1}}
+}}
+
+Lareth was the [[quest nemesis]] for the defunct [[Gnome quest]].
+
+==Origin==
+Lareth the Beautiful was the antagonist of the AD&D module The Village of Hommlet, a cleric of Lolth known as "the dark hope of chaotic evil". As such, he refers to himself as the "Dark Hope" in one of his [[Gnome quest#Discouragement|maledictions]].
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Gollum {129995 2019-12-27T03:47:20Z {4001313 Ardub23} Boldface first mention of article subject {{Wikipedia|Gollum}}
+{{monster
+ |name=Gollum
+ |symbol={{black|h}}
+ |tile=
+ |difficulty=16
+ |level=
+ |experience=
+ |speed=10
+ |AC=-5
+ |MR=0
+ |align=-6
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 1d6, weapon 1d6, touch 1d2 (poison)
+ |weight=500
+ |nutr=200
+ |size=Small
+ |resistances=Poison
+ |resistances conveyed=Poison
+ |attributes={{attributes|Gollum|humanoid=1|omnivore=1|seeinvis=1|pois=1|nopoly=1|pname=1|strong=1|stalk=1|hostile=1|nasty=1|male=1|collect=1|jewels=1|magic=1|wantsarti=1|waitforu=1}}
+}}
+
+'''Gollum''' was the [[quest nemesis]] for the defunct [[Hobbit quest]].
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Bilbo Baggins {96571 2015-09-18T20:36:03Z {4000629 Cherokee Jack} Changed categories {{Wikipedia|Bilbo Baggins}}
+{{monster
+ |name=Bilbo Baggins
+ |symbol={{magenta|h}}
+ |tile=[[Image:Bilbo Baggins.png]]
+ |difficulty=20
+ |level=
+ |experience=
+ |speed=9
+ |AC=7
+ |MR=0
+ |align=6
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 1d8
+ |weight=500
+ |nutr=200
+ |size=Small
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|Bilbo Baggins|humanoid=1|omnivore=1|nopoly=1|pname=1|peaceful=1|strong=1|male=1|collect=1|magic=1|close=1}}
+}}
+
+Bilbo Baggins was the [[quest leader]] for the defunct [[Hobbit quest]].
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Clockwork automaton {148565 2022-10-05T02:46:59Z {4001279 Umbire the Phantom} deslex - can confirm it's present in THEM still '''Clockwork automaton''' (plural '''automatons''' or '''automata''') can refer either to:
+
+* A [[monster]] in the [[Biodiversity patch]], incorporated into [[dNetHack]] and [[SlashTHEM]]
+* A [[Clockwork Automaton (starting race)|starting race]] in [[dNetHack]] inspired by the monster, with a unique alternative to [[nutrition]] (also present in [[SlashTHEM]])
+
+{{disambig}}}
+&&%s&& %s Petty {94998 2015-06-20T07:25:44Z {4000548 Quantum Immortal} Redirected page to [[Poke ball]] #REDIRECT[[Poke ball]]}
+&&%s&& %s Satiation {95032 2015-06-20T18:32:26Z {0 } Redirected page to [[Nutrition]] #REDIRECT [[Nutrition]]}
+&&%s&& %s Chromatic dragon (UnNetHack) {147606 2022-08-16T13:07:12Z {4000251 Netzhack} /* Encyclopedia entry */ Soften line breaks {{monster
+ |name=chromatic dragon
+ |symbol={{monsym|chromatic_dragon}}
+ |tile=[[Image:Chromatic Dragon.png]]
+ |difficulty=16
+ |level=
+ |experience=
+ |speed=10
+ |AC=0
+ |MR=25
+ |align=0
+ |frequency=0 (not randomly generated)
+ |genocidable=Yes
+ |attacks=Breath 6d8, claw 2d4, bite 4d8, bite 4d8
+ |weight=4500
+ |nutr=1600
+ |size=Gigantic
+ |resistances=Fire, cold, sleep, disintegration, shock, poison, acid, stoning
+ |resistances conveyed=Fire (17%), cold (17%), sleep (17%), disintegration (17%), shock (17%), poison (17%)
+ |attributes={{attributes|A chromatic dragon|fly=1|thick=1|nohands=1|seeinvis=1|carnivore=1|oviparous=1|nopoly=1|hostile=1|stalk=1|strong=1|nasty=1|greedy=1|jewels=1|magic=1}}
+ |reference={{refsrc|src/monst.c|1469|unnethack=1986}}
+}}
+
+'''Chromatic dragons''' are a type of [[dragon]] introduced in [[UnNetHack]]. They share the same assortment of breath attacks and resistances as ''the'' [[Chromatic Dragon]], the [[Caveman|Cave(wo)man]] [[quest nemesis]], who is renamed Tiamat in ''UnNetHack''; however, they have a lower difficulty level and lack Tiamat's [[Monster spell|spellcasting]] and sting attacks.
+
+Chromatic dragons cannot be chosen as a polymorph form, and their eggs cannot be wished for.
+
+==Generation==
+Although chromatic dragons are not considered [[unique monster]]s, they are not randomly generated, nor can they be [[genocide]]d (or reverse genocided). They are only found at the bottom of the [[Dragon Caves]], a new [[branch]] added to [[Gehennom]], where several are guaranteed to appear in a lair.
+
+Chromatic dragons are the only dragons in ''UnNetHack'' to lack a baby form; chromatic dragon eggs will hatch into fully-grown dragons. Like all dragons, they may drop their [[chromatic dragon scales|scales]] [[death drop|upon death]].
+
+==Strategy==
+Chromatic dragons are the source of [[chromatic dragon scale mail]] for many players; the scales and their mail confer the resistances of every variety of [[dragon scale mail]], including [[petrification resistance]] (conferred by the 'stone dragon', which has a [[Dragon#UnNetHack|randomized name]]) and [[reflection]].{{refsrc|src/do_wear.c|625|unnethack=1986}} A [[wish]] for a statue of a figurine of a chromatic dragon is also worth considering, either to obtain scales in some manner or else keep as pets, and is the only way to generate them outside of the Dragon Caves; all statues are non-magical, so it is valid for a wish from a [[magic lamp]].
+
+As of UnNetHack 5.2.0, these resistances also include magic resistance, since omitting it was a bug, however any chromatic dragon-related wishes (including for statues or figurines) are now disallowed. {{refsrc|src/do_wear.c|636|unnethack=5.2.0}}
+
+==History==
+In earlier versions, players could attempt to acquire chromatic dragon scales without entering the Dragon Caves by wishing for one or more chromatic dragon eggs; this option was eliminated as of development version r1580.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Fearsome dragons who are channeling the powers of lesser dragons like their mother Tiamat.  Legends tell of a far away realm where these creatures can be found in large numbers.
+}}
+
+== References ==
+<references/>
+
+[[Category:UnNetHack monsters]]}
+&&%s&& %s Marauder's Map {148566 2022-10-05T02:49:22Z {4001279 Umbire the Phantom} de-SLEX {{artifact
+  |color=white
+  |glyph=?
+  |tile=[[Image:Scroll.png]]
+  |base=scroll of magic mapping
+  |affiliation = <ul><li>[[chaotic]]</li><li>[[Pirate|(Pirate)]]</li></ul>
+  |used = read
+  |whenused = [[clairvoyance]]
+  |wheninvoked = <ul><li>{{of|potion|object detection}}</li><li>[[artifact]] detection</li></ul>
+  |cost=2000
+  |weight=10
+}}
+
+The '''Marauder's Map''' is the first [[sacrifice gift]] for the [[Pirate]] role, incorporated into [[dNetHack]], [[SlashTHEM]] and [[SpliceHack]]. It is also the only [[artifact]] that Pirates can receive as a sacrifice gift. 
+
+The map is unusual among artifacts in that its base item is a [[scroll of magic mapping]], which is normally single-use. Reading this scroll does not destroy it. To compensate, however, reading the map only reveals the surroundings of the user (as by [[clairvoyance]]), instead of complete [[scroll of magic mapping|magic mapping]].
+
+When #[[invoke]]d, the Map first [[potion of object detection|detects all objects]] on the level, then detects [[artifact]]s.  The second check partially compensates for Pirates' inability to receive sacrifice gifts other than the Map.  Because their deity won't give them additional artifacts, Pirates can only wish for artifacts or find them while exploring.  The Map's invocation effect provides a way to check a level for generated artifacts the Pirate may have missed.
+
+The Marauder's Map is [[chaotic]] for [[bones]] and [[wish]]ing purposes.
+
+==Mythology==
+The Marauder's Map is inspired by the [[wikipedia:Magical objects in Harry Potter#The Marauder's Map|object of the same name]] from the ''[[wikipedia:Harry Potter|Harry Potter]]'' series by J. K. Rowling: a map which Harry receives from Fred and George Weasley in ''Harry Potter and the Prisoner of Azkaban''. At first sight, the map appears to be a blank parchment, but when activated by a special incantation the parchment becomes a map of Hogwarts School, which reveals not only many of the school's secret rooms and passageways, but also the presence and identity of people within the school, whose names appear on the map at their exact location.
+
+==References==
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+[[Category:Pirate patch]]}
+&&%s&& %s Treasury of Proteus {95109 2015-06-23T03:04:20Z {4000629 Cherokee Jack} Swapped pages to conform to other quest artifact pages starting with "The" #REDIRECT [[The Treasury of Proteus]]}
+&&%s&& %s The Treasury of Proteus {148414 2022-10-04T23:40:51Z {4001279 Umbire the Phantom} de-SLEX {{artifact
+  |color=brown
+  |glyph=(
+  |tile=[[Image:Chest.png]]
+  |base=chest
+  |affiliation = <ul><li>[[chaotic]]</li><li>[[Pirate|(Pirate)]]</li></ul>
+  |whencarried = <ul><li>[[magic resistance]]</li><li>blocks [[curse]]s</li><li>"King of the Hill"</li></ul>
+  |used = applied
+  |whenused = <ul><li>[[polypiling|polymorphs contents]]</li></ul>
+  |cost=2500
+  |weight=150
+}}
+
+'''The Treasury of Proteus''' is the [[quest artifact]] for the [[Pirate]] role, incorporated into [[dNetHack]] and [[SlashTHEM]]. Its base item is a [[Container#chest|chest]], but it [[weight|weighs]] just 150 units&mdash;the same as a [[crystal ball]]&mdash;which is one-quarter of the weight of a regular chest.
+
+The Treasury has the unique property of occasionally polymorphing items that have been placed inside it, according to the rules for [[polypiling]] objects.  (This never creates [[golem]]s, but items still can shudder or merge as usual.)  This offers users a means of polypiling items without a [[wand of polymorph|wand]], [[spellbook of polymorph|spell]], or [[potion of polymorph|potion]].
+
+While carried, the Treasury protects items in the player's inventory from [[curse items|becoming cursed]] (just like [[Magicbane]] when wielded). The explanation given for this is that the Treasury itself is so heavily and intrinsically cursed that it sucks in lesser curses like a black hole. (Indeed, the Treasury is generated cursed.) It also grants [[magic resistance]].
+
+The Treasury of Proteus is [[chaotic]] for [[bones]] and [[wishing]] purposes. As a quest artifact, it is [[intelligent artifact|intelligent]] and will [[artifact blast|blast]] non-Pirates who touch it.
+
+==King of the Hill==
+While the player is carrying the Treasury, hostile pirates will begin to appear as part of the random monster generation. If the player is not in [[Gehennom]], the [[Elemental Planes]], or the [[Astral Plane]], [[skeletal pirate]]s may be randomly generated. While the player is in [[Gehennom]], these will be replaced by demonic [[damned pirate]]s, and when the player reaches the [[end game]], astral [[githyanki pirate]]s will begin to appear.  These pirates are generated ''instead of'' other monsters, rather than in addition to them, are not particularly difficult for the areas in which they appear, and attack other monsters and fight among themselves even as they pursue you.  Overall, then, this is a beneficial effect.
+
+In the [[Pirate|Pirate patch]] code, having the Treasury in open inventory sets a flag named "ukinghill". A comment explains that this means that the player is "[[wikipedia:King of the Hill (game)|king of the hill]]", so implicitly the other pirates are pursuing the player in order to kill him/her and take the treasure.
+
+==Messages==
+{{message|You hear distant waves.}}
+{{message|You hear distant surf.}}
+{{message|You hear the distant sea.}}
+{{message|You hear the call of the ocean.}}
+{{message|You hear waves against the shore.}}
+{{message|You hear flowing water.}}
+{{message|You hear the sighing of waves.}}
+{{message|You hear quarrelling gulls.}}
+{{message|You hear the song of the deep.}}
+{{message|You hear rumbling in the deeps.}}
+{{message|You hear the singing of [[wikipedia:Proteus#In Greek mythology|Eidothea]].}}
+{{message|You hear the laughter of the [[wikipedia:Proteus|protean]] nymphs.}}
+{{message|You hear rushing tides.}}
+{{message|You hear the elusive sea change.}}
+{{message|You hear the silence of the sea.}}
+{{message|You hear the passage of the albatross.}}
+{{message|You hear dancing raindrops.}}
+{{message|You hear coins rolling on the seabed.}}
+{{message|You hear treasure galleons crumbling in the depths.}}
+{{message|You hear waves lapping against a hull.|Any one of these messages indicates that the Treasury has just polymorphed its contents.}}
+{{message|You feel a malignant aura surround the cursed treasure chest.|The Treasury has just blocked a curse.}}
+
+==Origin==
+{{Wikipedia|Proteus}}
+
+Proteus is a god in Greek mythology who is associated with the sea. He is known for his ability to change form as desired, which he often uses to escape mortals who seek him for his ability to foretell the future. Hence the Treasury's property of polymorphing objects entrusted to it.
+
+==References==
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+[[Category:Pirate patch]]
+[[Category:DNethack]]
+[[Category:SlashTHEM]]}
+&&%s&& %s Blackbeard's Ghost {148564 2022-10-05T02:44:52Z {4001279 Umbire the Phantom} de-SLEX {{monster
+ |name=Blackbeard's Ghost
+ |symbol={{magenta|.}}
+ |tile=[[File:Blackbeard's ghost.png]]
+ |difficulty=19
+ |level=15
+ |experience=505
+ |speed=12
+ |AC=-5
+ |MR=50
+ |align=-30
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 2d6 [[Physical damage|physical]], Weapon 2d8 physical, Claw 2d6 [[Covetous#The amulet stealing attack|Quest Artifact theft]]
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances=[[cold]], [[sleep]], [[disintegration]], [[poison]], [[petrification]]
+ |resistances conveyed=
+ |attributes={{attributes
+ |Blackbeard's Ghost|=
+ |fly=1
+ |wallwalk=1
+ |amphibious=1
+ |breathless=1
+ |humanoid=1
+ |unsolid=1
+ |carnivore=1
+ |herbivore=1
+ |omnivore=1
+ |nopoly=1
+ |undead=1
+ |human=1
+ |male=1
+ |hostile=1
+ |stalk=1
+ |nasty=1
+ |strong=1
+ |collect=1
+ |magic=1
+ |covetous=1
+ |waitsforu=1
+ |infravision=1
+ |infravisible=1
+ |nocorpse=1
+ |death=1
+ |noregen=1
+ }}
+}}
+'''Blackbeard's Ghost''' is a [[monster]] added in the [[Pirate|Pirate role patch]], implemented in [[dNetHack]] and [[SlashTHEM]]. He is the Pirate [[quest nemesis]].
+
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+[[Category:Pirate patch]]}
+&&%s&& %s Mayor Cummerbund {148563 2022-10-05T02:44:41Z {4001279 Umbire the Phantom} de-SLEX {{Wikipedia|Dread Pirate Roberts}}
+{{monster
+ |name=Mayor Cummerbund
+ |symbol={{magenta|@}}
+ |difficulty=23
+ |tile=[[File:Mayor cummerbund.png]]
+ |level=20
+ |experience=588
+ |speed=12
+ |AC=0
+ |MR=70
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 2d8 [[Physical damage|physical]], Weapon 2d8 physical
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances=[[poison]]
+ |resistances conveyed=
+ |attributes={{attributes
+ |Mayor Cummerbund|=
+ |humanoid=1
+ |seeinvis=1
+ |carnivore=1
+ |herbivore=1
+ |omnivore=1
+ |nopoly=1
+ |human=1
+ |male=1
+ |peaceful=1
+ |strong=1
+ |greedy=1
+ |jewels=1
+ |collect=1
+ |magic=1
+ |close=1
+ |infravisible=1
+ }}
+}}
+'''Mayor Cummerbund''' is a [[monster]] added in the [[Pirate|Pirate role patch]], implemented in [[dNetHack]] and [[SlashTHEM]]. He is the Pirate [[quest leader]].
+
+Mayor Cummerbund is generated with a [[leather cloak]], [[high boots]] and [[leather gloves]]. He also has a 33% chance of having a [[rustproof]] cutlass ([[scimitar]]), a 33% chance of having a [[fireproof]] [[leather jacket]], and a 66% chance of having a [[fireproof]] buckler ([[small shield]]).
+
+==Origin==
+"Cummerbund" is mentioned in the in-game encyclopedia entry for "Dread Pirate Roberts" as the given name of one of several pirates who formerly held the title of "Dread Pirate Roberts" in the book/film ''The Princess Bride'', so it is likely that the "Mayor Cummerbund" the player meets represents the same individual. 
+
+It is not clear if the quest is meant to take place before, after, or during Cummerbund's tenure as Dread Pirate Roberts, but in light of the tone of the encyclopedia entry chosen for him, it seems likely that it takes place after he has retired from full-time piracy to become leader of the pirate community on Tortuga.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Mine was a name that struck fear into men
+And regret into plenty of lasses
+Oh, how I wish I could take back those days
+As I stare at these empty beer-glasses
+
+I think of the times past when I had it all
+I toyed with men's wives and their daughters
+And in my pursuit of this ill-gotten wealth
+I stabbed and I slashed and I slaughtered.
+
+And for what?
+The men that I've fought
+Are matched by the number of women I've bought
+And for what?
+I've killed and I've shot
+And reddened the cold tears of children with blood
+And If I could go back and make my amends
+I'd make all those mistakes again
+I'd kill every last one of those bastards, my friend
+|[ Pirate Song, Alestorm ]
+}}
+
+==References==
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+[[Category:Pirate patch]]}
+&&%s&& %s Pirate brother {95373 2015-07-01T01:32:14Z {4000629 Cherokee Jack} Updated monster info {{Wikipedia|Brethren of the Coast}}
+{{monster
+ |name=pirate brother
+ |symbol={{white|@}}
+ |difficulty=11
+ |level=9
+ |experience=196
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=-3
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6 [[Physical damage|physical]], Weapon 1d6 physical
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances conveyed=
+ |attributes={{attributes
+ |A pirate brother|=
+ |humanoid=1
+ |carnivore=1
+ |herbivore=1
+ |omnivore=1
+ |nopoly=1
+ |human=1
+ |peaceful=1
+ |strong=1
+ |greedy=1
+ |collect=1
+ |infravisible=1
+ }}
+}}
+
+The '''pirate brother''' is a [[monster]] added in the [[Pirate|Pirate role patch]]. The pirate brother is the [[Pirate]] [[quest guardian]]. 
+
+Their main distinction from most other quest guardians (with the exception of the [[thug]]s in the [[Rogue quest]]) is that they [[likes gold|like gold]], and are therefore [[Monster starting inventory|likely to be generated carrying]] [[zorkmid|some]].
+
+In addition to gold, each pirate brother is generated with a cutlass ([[scimitar]]), [[leather armor]], and [[high boots]].
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+The Brethren or Brethren of the Coast were a loose 
+coalition of pirates and privateers commonly known as 
+buccaneers and active in the seventeenth and eighteenth
+centuries in the Atlantic Ocean, Caribbean Sea and 
+Gulf of Mexico.
+
+Based primarily on the island of Tortuga off the coast 
+of Haiti and in the city of Port Royal on the island of 
+Jamaica, the original Brethren were mostly French 
+Huguenot and British Protestants, but their ranks were 
+joined by other adventurers of various nationalities 
+including Spaniards, and even African sailors, as well 
+as escaped slaves and outlaws of various sovereigns.
+
+In keeping with their Protestant and mostly Common 
+Law heritage the Brethren were governed by codes of 
+conduct that favored legislative decision-making, 
+hierarchical command authority, individual rights, 
+and equitable division of revenues.
+|[ Brethren of the Coast, Wikipedia ]
+}}
+
+==References==
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+[[Category:Pirate patch]]}
+&&%s&& %s Category:SlashTHEM {131505 2020-01-26T06:23:16Z {4000978 Aximili} Add category This category contains [[SlashTHEM]] specific articles that may not have anything to do with vanilla [[NetHack]].
+
+[[Category:Variants]]}
+&&%s&& %s Category:Pirate patch {148354 2022-10-04T22:43:03Z {4001279 Umbire the Phantom} cat Features present in the [[Pirate]] patch.
+[[Category:Patches]]
+[[Category:DNethack]]
+[[Category:SlashTHEM]]}
+&&%s&& %s Category:Convict patch {148351 2022-10-04T22:42:32Z {4001279 Umbire the Phantom} cat Features present in the [[Convict]] patch.
+[[Category:Patches]]
+[[Category:dNethack]]
+[[Category:SlashTHEM]]
+[[Category:UnNetHack]]
+[[Category:EvilHack]]}
+&&%s&& %s Robert the Lifer {148561 2022-10-05T02:44:10Z {4001279 Umbire the Phantom} de-SLEX {{monster
+ |name=Robert the Lifer
+ |symbol={{white|@}}
+ |difficulty=23
+ |level=20
+ |experience=588
+ |speed=12
+ |AC=0
+ |MR=40
+ |align=-20
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6 [[Physical damage|physical]], Weapon 1d6 physical
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances conveyed=
+ |attributes={{attributes
+ |Robert the Lifer|=
+ |humanoid=1
+ |carnivore=1
+ |herbivore=1
+ |omnivore=1
+ |nopoly=1
+ |human=1
+ |male=1
+ |peaceful=1
+ |strong=1
+ |collect=1
+ |magic=1
+ |close=1
+ |infravisible=1
+ }}
+}}
+'''Robert the Lifer''' is a [[monster]] added in the [[Convict|Convict patch]], implemented in [[UnNetHack]], [[DynaHack]], [[dNetHack]], and [[SlashTHEM]]. He is the Convict [[quest leader]].
+
+According to the [[Convict quest|quest]] text, Robert the Lifer serves as the prison chaplain of Castle Waterdeep Dungeon, apparently as a priest of the [[chaotic]] [[god|deity]] [[God#Convict patch|Tymora]] (from the Forgotten Realms mythology). His title of [https://en.wiktionary.org/wiki/lifer lifer] implies that he is serving a life sentence there. He is the creator of the [[Iron Ball of Liberation]].
+
+==References==
+Reference: [http://nethack.edeca.net/karl/nethack-convict-0.7.diff Karl Garrison's Convict Patch]
+
+[[Category:Convict patch]]
+[[Category:UnNetHack monsters]]}
+&&%s&& %s Prison guard {140182 2021-05-24T08:43:25Z {4001279 Umbire the Phantom}  {{monster
+ |name=prison guard
+ |symbol={{cyan|@}}
+ |difficulty=14
+ |level=12
+ |experience=277
+ |speed=10
+ |AC=10
+ |MR=15
+ |align=-6
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 4d4 [[Physical damage|physical]], Weapon 4d4 physical
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances conveyed=
+ |attributes={{attributes
+ |A prison guard|=
+ |humanoid=1
+ |carnivore=1
+ |herbivore=1
+ |omnivore=1
+ |nopoly=1
+ |human=1
+ |merc=1
+ |hostile=1
+ |stalk=1
+ |strong=1
+ |collect=1
+ |infravisible=1
+ }}
+}}
+The '''Prison guard''' is a non-unique but non-randomly-generated [[monster]] added in the [[Convict|Convict patch]]. Prison guards are generated only in [[Convict quest|the quest]], as a challenge to the Convict seeking the [[Iron Ball of Liberation]].
+
+When a prison guard confronts the [[player]], it will demand a [[bribe]] ("The prison guard demands <bribe amount> to avoid re-arrest"). The expected bribe is the player's [[experience level]] * 500 [[zorkmid]]s. 
+
+If the bribe is paid, the guard will become peaceful (but not courteous&mdash;"Good. Now beat it, scum!") and leave the player alone.
+
+Like the [[watchman|Minetown watch]] and [[vault guard]]s, prison guards are coded as [[mercenaries]] and outfitted as such. The prison guard's target AC is -2, the same as for a Yendorian [[lieutenant]]. Like [[watch captain]]s, prison guards have a 50% chance of being generated with a [[silver saber]] instead of a [[long sword]].
+
+==References==
+Reference: [http://nethack.edeca.net/karl/nethack-convict-0.7.diff Karl Garrison's Convict Patch]
+
+[[Category:Convict patch]]

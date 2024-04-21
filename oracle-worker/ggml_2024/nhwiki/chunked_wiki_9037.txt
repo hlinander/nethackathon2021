@@ -1,0 +1,1000 @@
+|[[jellyfish]] ||	34	||	5
+|-	
+|[[Uruk-hai]] ||	33	||	5
+|-	
+|[[Mordor orc]] ||	33	||	5
+|-	
+|[[Kop Lieutenant]] ||	33	||	5
+|-	
+|[[bugbear]] ||	33	||	5
+|-	
+|[[killer bee]] ||	31	||	5
+|-	
+|[[wood nymph]] ||	28	||	5
+|-	
+|[[water nymph]] ||	28	||	5
+|-	
+|[[mountain nymph]] ||	28	||	5
+|-	
+|[[lemure]] ||	28	||	5
+|-	
+|[[ghoul]] ||	28	||	5
+|-	
+|[[leprechaun]] ||	59	||	4
+|-	
+|[[fog cloud]] ||	38	||	4
+|-	
+|[[woodchuck]] ||	35	||	4
+|-	
+|[[rock mole]] ||	35	||	4
+|-	
+|[[imp]] ||	33	||	4
+|-	
+|[[gnome lord]] ||	33	||	4
+|-	
+|[[pony]] ||	31	||	4
+|-	
+|[[straw golem]] ||	28	||	4
+|-	
+|[[rock piercer]] ||	28	||	4
+|-	
+|[[red naga hatchling]] ||	28	||	4
+|-	
+|[[paper golem]] ||	28	||	4
+|-	
+|[[kobold mummy]] ||	28	||	4
+|-	
+|[[guardian naga hatchling]] ||	28	||	4
+|-	
+|[[gray ooze]] ||	28	||	4
+|-	
+|[[golden naga hatchling]] ||	28	||	4
+|-	
+|[[elf zombie]] ||	28	||	4
+|-	
+|[[black naga hatchling]] ||	28	||	4
+|-	
+|[[baby crocodile]] ||	28	||	4
+|-	
+|[[kobold shaman]] ||	27	||	4
+|-	
+|[[Kop Sergeant]] ||	22	||	4
+|-	
+|[[hill orc]] ||	22	||	4
+|-	
+|[[Dwarf (monster)|dwarf]] ||	22	||	4
+|-	
+|[[giant ant]] ||	20	||	4
+|-	
+|[[centipede]] ||	19	||	4
+|-	
+|[[wererat]] ||	17	||	4
+|-	
+|[[werejackal]] ||	17	||	4
+|-	
+|[[rothe]] ||	17	||	4
+|-	
+|[[rabid rat]] ||	17	||	4
+|-	
+|[[monkey]] ||	17	||	4
+|-	
+|[[wererat]] ||	22	||	3
+|-	
+|[[werejackal]] ||	22	||	3
+|-	
+|[[kobold lord]] ||	22	||	3
+|-	
+|[[giant bat]] ||	22	||	3
+|-	
+|[[little dog]] ||	20	||	3
+|-	
+|[[kitten]] ||	20	||	3
+|-	
+|[[homunculus]] ||	19	||	3
+|-	
+|[[orc zombie]] ||	17	||	3
+|-	
+|[[iguana]] ||	17	||	3
+|-	
+|[[floating eye]] ||	17	||	3
+|-	
+|[[dwarf zombie]] ||	17	||	3
+|-	
+|[[orc]] ||	13	||	3
+|-	
+|[[Keystone Kop]] ||	13	||	3
+|-	
+|[[hobgoblin]] ||	13	||	3
+|-	
+|[[Gnome (monster)|gnome]] ||	13	||	3
+|-	
+|[[manes]] ||	8	||	3
+|-	
+|[[garter snake]] ||	8	||	3
+|-	
+|[[cave spider]] ||	8	||	3
+|-	
+|[[shrieker]] ||	28	||	2
+|-	
+|[[large kobold]] ||	13	||	2
+|-	
+|[[hobbit]] ||	13	||	2
+|-	
+|[[gas spore]] ||	12	||	2
+|-	
+|[[red mold]] ||	9	||	2
+|-	
+|[[green mold]] ||	9	||	2
+|-	
+|[[brown mold]] ||	9	||	2
+|-	
+|[[acid blob]] ||	9	||	2
+|-	
+|[[yellow mold]] ||	8	||	2
+|-	
+|[[gnome zombie]] ||	8	||	2
+|-	
+|[[giant rat]] ||	8	||	2
+|-	
+|[[gecko]] ||	8	||	2
+|-	
+|[[coyote]] ||	8	||	2
+|-	
+|[[human (monster)|human]] ||	6	||	2
+|-	
+|[[bat]] ||	6	||	2
+|-	
+|[[kobold]] ||	6	||	1
+|-	
+|[[goblin]] ||	6	||	1
+|-	
+|[[lichen]] ||	4	||	1
+|-	
+|[[fox]] ||	4	||	1
+|-	
+|[[sewer rat]] ||	1	||	1
+|-	
+|[[newt]] ||	1	||	1
+|-	
+|[[kobold zombie]] ||	1	||	1
+|-	
+|[[jackal]] ||	1	||	1
+|-	
+|[[grid bug]] ||	1	||	1
+|}
+
+== Difficulty algorithm (3.6.1 and earlier) ==
+In versions of NetHack prior to 3.6.2 (and derived variants), the monster's difficulty was calculated during compilation using the below algorithm, and stored in [[monstr.c]]. As of NetHack 3.6.2, difficulty is now stored in the monst.c as part of the mons array. All monsters have the same difficulty in 3.6.1 and 3.6.2.
+
+Start by setting the difficulty to the monster's base level, as defined directly in [[monst.c]].{{refsrc|util/makedefs.c|2117|nethack=3.6.0}}
+
+If the monster's base level is greater than 49 (meaning that it's either a mail daemon or a demon lord), instead set the initial difficulty to (base level - 6) / 2.
+
+Next, compute a bonus based on properties of this monster:
+* Start at 0.
+* Add 1 if the monster generates in small [[group]]s.
+* Add 2 if the monster generates in large [[group]]s.
+* Add 1 if the monster is capable of ranged attacks: whether it has any weapon, spellcasting, gaze, spit, or breath attacks.
+* Add 1 if the monster's base AC is between 0 and 3, inclusive.
+* Otherwise add 2 if the monster's base AC is -1 or lower.
+* Add 1 if the monster's [[speed]] is 18 or higher.
+* For each attack the monster has, add together all the following bonuses:
+** Add 1 if the attack is non-passive.
+** Add 1 if the attack is arcane spellcasting (AT_MAGC).
+** Add 1 if the monster is [[strong]] and the attack is a weapon attack (AT_WEAP).
+** Add 2 if the attack has a [[damage type]] of AD_DRLI (drain life), AD_STON (stoning), AD_DRST (strength poison), AD_DRDX (dexterity poison), AD_DRCO (consitution poison), or AD_WERE (lycanthropy).
+** Add 1 if the damage type is none of the above six types and is also not AD_PHYS (physical damage), ''and'' the monster is not a [[grid bug]].
+** Add 1 if the maximum attack damage for this attack is 24 or higher.
+* ''Subtract'' 2 if the monster is a [[leprechaun]].{{refsrc|util/makedefs.c|2156|nethack=3.6.0|comment=This is evidently to compensate for leprechauns' base level being artificially inflated, and to cancel out the 2 points they get from their gold-stealing attack. It is unclear why the bonus is not simply set to 0 here.}}
+
+Then, modify difficulty based on what the bonus worked out to be:
+* If the total bonus equals 0, subtract 1 from difficulty.
+* If the total bonus is 6 or higher, add half of the bonus, rounded down, to difficulty.
+* Otherwise, if the total bonus is between 1 and 5, add 1 + one-third of the bonus, rounded down, to difficulty.
+
+Finally, if difficulty is negative (only possible with very weak monsters like lichens), set it to 0.
+
+== References ==
+<references />
+
+{{DOD}}
+{{nethack-362}}
+[[Category:Monsters| ]]
+[[Category:Monster attributes]]}
+&&%s&& %s Monsters (by experience) {147504 2022-08-13T23:43:51Z {4001279 Umbire the Phantom} ref/version update This article is a list of [[monster]]s sorted by base [[experience]] value, then by [[difficulty]].
+
+This table was generated with the use of a modified version of [[User:Qazmlpok/nhtohtml|nhtohtml]] to calculate experience values as well, and are believed by the author to be accurate.  If there are discrepancies between these and those listed in the articles, please correct the article.
+
+In this table, "base" experience value refers to the number of experience points earned by the hero for killing the monster, assuming that the [[monster level|monster's level]] is equal to its base level. For more details about how the experience value of a monster is calculated in general, see [[experience points]].
+
+The [[giant eel]], [[electric eel]], and [[kraken]] are worth 1000 fewer experience points if you are wearing an [[amulet of magical breathing]] or are polymorphed into a form that cannot be drowned.{{refsrc|src/exper.c|119|version=NetHack 3.6.6}}
+
+{| class="prettytable sortable striped" style="border:none; margin:0; padding:0; width: 22em;"
+|-
+! Name !! Experience !! Difficulty
+|-
+| [[Demogorgon]] || 3197 || 57
+|-
+| [[Asmodeus]] || 2980 || 53
+|-
+| [[Baalzebub]] || 2169 || 45
+|-
+| [[Dispater]] || 1743 || 40
+|-
+| [[kraken]] || 1474 || 22
+|-
+| [[Geryon]] || 1460 || 36
+|-
+| [[Charon]] || 1346 || 38
+|-
+| [[Orcus]] || 1325 || 36
+|-
+| [[Riders#Death|Death]] || 1311 || 34
+|-
+| [[Pestilence]] || 1311 || 34
+|-
+| [[Famine]] || 1311 || 34
+|-
+| [[Wizard of Yendor]] || 1291 || 34
+|-
+| [[Vlad the Impaler]] || 1117 || 32
+|-
+| [[electric eel]] || 1101 || 10
+|-
+| [[giant eel]] || 1050 || 7
+|-
+| [[Yeenoghu]] || 998 || 31
+|-
+| [[Master Kaen]] || 995 || 31
+|-
+| [[high priest]] || 954 || 30
+|-
+| [[Grand Master]] || 953 || 30
+|-
+| [[arch-lich]] || 815 || 29
+|-
+| [[Juiblex]] || 811 || 26
+|-
+| [[Arch Priest]] || 776 || 30
+|-
+| [[Archon]] || 654 || 26
+|-
+| [[Croesus]] || 626 || 22
+|-
+| [[Cyclops]] || 572 || 23
+|-
+| [[Medusa]] || 554 || 25
+|-
+| [[Chromatic Dragon]] || 538 || 23
+|-
+| [[Minion of Huhetotl]] || 521 || 23
+|-
+| [[Nalzok]] || 521 || 23
+|-
+| [[Ixoth]] || 500 || 22
+|-
+| [[Thoth Amon]] || 499 || 22
+|-
+| [[Neferet the Green]] || 493 || 23
+|-
+| [[mastodon]] || 491 || 22
+|-
+| [[Master of Thieves]] || 488 || 24
+|-
+| [[balrog]] || 479 || 20
+|-
+| [[titan]] || 473 || 20
+|-
+| [[ki-rin]] || 472 || 21
+|-
+| [[King Arthur]] || 468 || 23
+|-
+| [[Lord Sato]] || 468 || 23
+|-
+| [[Norn]] || 468 || 23
+|-
+| [[Lord Carnarvon]] || 463 || 22
+|-
+| [[Pelias]] || 463 || 22
+|-
+| [[Shaman Karnov]] || 463 || 22
+|-
+| [[Hippocrates]] || 463 || 22
+|-
+| [[Orion]] || 463 || 22
+|-
+| [[Twoflower]] || 461 || 22
+|-
+| [[gray dragon]] || 460 || 20
+|-
+| [[silver dragon]] || 460 || 20
+|-
+| [[red dragon]] || 460 || 20
+|-
+| [[white dragon]] || 460 || 20
+|-
+| [[orange dragon]] || 460 || 20
+|-
+| [[black dragon]] || 460 || 20
+|-
+| [[blue dragon]] || 460 || 20
+|-
+| [[green dragon]] || 460 || 20
+|-
+| [[yellow dragon]] || 460 || 20
+|-
+| [[iron golem]] || 455 || 22
+|-
+| [[Master Assassin]] || 443 || 20
+|-
+| [[storm giant]] || 440 || 19
+|-
+| [[Dark One]] || 438 || 20
+|-
+| [[master lich]] || 426 || 21
+|-
+| [[Angel]] || 415 || 19
+|-
+| [[minotaur]] || 414 || 17
+|-
+| [[Scorpius]] || 414 || 17
+|-
+| [[Ashikaga Takauji]] || 413 || 19
+|-
+| [[Lord Surtur]] || 411 || 19
+|-
+| [[master mind flayer]] || 403 || 19
+|-
+| [[jabberwock]] || 399 || 18
+|-
+| [[purple worm]] || 399 || 17
+|-
+| [[pit fiend]] || 344 || 16
+|-
+| [[vampire lord]] || 339 || 14
+|-
+| [[Nazgul]] || 324 || 17
+|-
+| [[demilich]] || 320 || 18
+|-
+| [[glass golem]] || 313 || 18
+|-
+| [[shade]] || 309 || 14
+|-
+| [[skeleton]] || 299 || 14
+|-
+| [[ice devil]] || 296 || 14
+|-
+| [[nalfeshnee]] || 286 || 15
+|-
+| [[vampire]] || 277 || 12
+|-
+| [[stone golem]] || 261 || 15
+|-
+| [[disenchanter]] || 253 || 14
+|-
+| [[guardian naga]] || 247 || 16
+|-
+| [[Olog-hai]] || 247 || 16
+|-
+| [[baluchitherium]] || 247 || 15
+|-
+| [[bone devil]] || 240 || 13
+|-
+| [[Aleax]] || 238 || 12
+|-
+| [[mind flayer]] || 236 || 13
+|-
+| [[frost giant]] || 236 || 13
+|-
+| [[aligned priest]] || 234 || 15
+|-
+| [[ettin]] || 231 || 13
+|-
+| [[sandestin]] || 230 || 15
+|-
+| [[hell hound]] || 230 || 14
+|-
+| [[Oracle]] || 226 || 13
+|-
+| [[lich]] || 225 || 14
+|-
+| [[shopkeeper]] || 215 || 15
+|-
+| [[hezrou]] || 213 || 12
+|-
+| [[guard]] || 212 || 14
+|-
+| [[trapper]] || 210 || 14
+|-
+| [[captain]] || 205 || 14
+|-
+| [[Cerberus]] || 200 || 14
+|-
+| [[prisoner]] || 200 || 14
+|-
+| [[baby gray dragon]] || 200 || 13
+|-
+| [[baby silver dragon]] || 200 || 13
+|-
+| [[baby red dragon]] || 200 || 13
+|-
+| [[baby white dragon]] || 200 || 13
+|-
+| [[baby orange dragon]] || 200 || 13
+|-
+| [[baby black dragon]] || 200 || 13
+|-
+| [[baby blue dragon]] || 200 || 13
+|-
+| [[baby green dragon]] || 200 || 13
+|-
+| [[baby yellow dragon]] || 200 || 13
+|-
+| [[fire giant]] || 200 || 11
+|-
+| [[titanothere]] || 195 || 13
+|-
+| [[long worm]] || 195 || 10
+|-
+| [[nurse]] || 190 || 13
+|-
+| [[golden naga]] || 189 || 13
+|-
+| [[clay golem]] || 183 || 12
+|-
+| [[black pudding]] || 181 || 12
+|-
+| [[water troll]] || 180 || 13
+|-
+| [[queen bee]] || 180 || 12
+|-
+| [[ghost]] || 178 || 12
+|-
+| [[lurker above]] || 164 || 12
+|-
+| [[lieutenant]] || 161 || 12
+|-
+| [[watch captain]] || 161 || 12
+|-
+| [[archeologist]] || 161 || 12
+|-
+| [[barbarian]] || 161 || 12
+|-
+| [[knight]] || 161 || 12
+|-
+| [[rogue]] || 161 || 12
+|-
+| [[samurai]] || 161 || 12
+|-
+| [[tourist]] || 161 || 12
+|-
+| [[valkyrie]] || 161 || 12
+|-
+| [[ice troll]] || 160 || 12
+|-
+| [[elf]] || 156 || 12
+|-
+| [[caveman]] || 156 || 12
+|-
+| [[cavewoman]] || 156 || 12
+|-
+| [[healer]] || 156 || 12
+|-
+| [[priest]] || 156 || 12
+|-
+| [[priestess]] || 156 || 12
+|-
+| [[ranger]] || 156 || 12
+|-
+| [[wizard]] || 156 || 12
+|-
+| [[winged gargoyle]] || 153 || 11
+|-
+| [[monk]] || 151 || 11
+|-
+| [[giant mimic]] || 150 || 11
+|-
+| [[umber hulk]] || 149 || 12
+|-
+| [[couatl]] || 148 || 11
+|-
+| [[water demon]] || 148 || 11
+|-
+| [[rock troll]] || 144 || 12
+|-
+| [[Elvenking]] || 142 || 11
+|-
+| [[ogre king]] || 140 || 11
+|-
+| [[green slime]] || 140 || 8
+|-
+| [[doppelganger]] || 137 || 11
+|-
+| [[marilith]] || 135 || 11
+|-
+| [[zruty]] || 132 || 11
+|-
+| [[flesh golem]] || 132 || 10
+|-
+| [[barbed devil]] || 131 || 10
+|-
+| [[cockatrice]] || 129 || 8
+|-
+| [[vrock]] || 128 || 11
+|-
+| [[salamander]] || 127 || 12
+|-
+| [[hill giant]] || 126 || 10
+|-
+| [[erinys]] || 123 || 10
+|-
+| [[chickatrice]] || 120 || 7
+|-
+| [[horned devil]] || 111 || 9
+|-
+| [[fire vortex]] || 110 || 10
+|-
+| [[fire elemental]] || 102 || 10
+|-
+| [[black naga]] || 92 || 10
+|-
+| [[succubus]] || 92 || 8
+|-
+| [[incubus]] || 92 || 8
+|-
+| [[xorn]] || 91 || 11
+|-
+| [[giant]] || 91 || 8
+|-
+| [[stone giant]] || 91 || 8
+|-
+| [[wraith]] || 90 || 8
+|-
+| [[xan]] || 85 || 9
+|-
+| [[energy vortex]] || 83 || 9
+|-
+| [[air elemental]] || 78 || 10
+|-
+| [[earth elemental]] || 78 || 10
+|-
+| [[water elemental]] || 78 || 10
+|-
+| [[barrow wight]] || 78 || 7
+|-
+| [[steam vortex]] || 77 || 9
+|-
+| [[elf-lord]] || 75 || 11
+|-
+| [[large mimic]] || 73 || 9
+|-
+| [[sergeant]] || 70 || 10
+|-
+| [[wumpus]] || 70 || 9
+|-
+| [[pit viper]] || 69 || 9
+|-
+| [[giant mummy]] || 68 || 10
+|-
+| [[winter wolf]] || 67 || 9
+|-
+| [[hell hound pup]] || 67 || 9
+|-
+| [[cobra]] || 66 || 10
+|-
+| [[baby purple worm]] || 65 || 9
+|-
+| [[stalker]] || 65 || 9
+|-
+| [[giant zombie]] || 65 || 9
+|-
+| [[glass piercer]] || 64 || 9
+|-
+| [[ochre jelly]] || 64 || 8
+|-
+| [[owlbear]] || 64 || 7
+|-
+| [[shark]] || 62 || 9
+|-
+| [[freezing sphere]] || 61 || 8
+|-
+| [[flaming sphere]] || 61 || 8
+|-
+| [[shocking sphere]] || 61 || 8
+|-
+| [[gargoyle]] || 59 || 8
+|-
+| [[quantum mechanic]] || 57 || 9
+|-
+| [[warhorse]] || 55 || 9
+|-
+| [[ogre lord]] || 55 || 9
+|-
+| [[troll]] || 55 || 9
+|-
+| [[rust monster]] || 55 || 8
+|-
+| [[djinni]] || 55 || 8
+|-
+| [[sasquatch]] || 53 || 9
+|-
+| [[mountain centaur]] || 52 || 9
+|-
+| [[gelatinous cube]] || 52 || 8
+|-
+| [[pyrolisk]] || 52 || 8
+|-
+| [[red naga]] || 52 || 8
+|-
+| [[python]] || 52 || 8
+|-
+| [[warg]] || 50 || 8
+|-
+| [[small mimic]] || 50 || 8
+|-
+| [[ettin mummy]] || 50 || 8
+|-
+| [[wood golem]] || 50 || 8
+|-
+| [[ice vortex]] || 49 || 7
+|-
+| [[black light]] || 49 || 7
+|-
+| [[dwarf king]] || 47 || 8
+|-
+| [[abbot]] || 46 || 8
+|-
+| [[acolyte]] || 46 || 8
+|-
+| [[guide]] || 46 || 8
+|-
+| [[apprentice]] || 46 || 8
+|-
+| [[scorpion]] || 42 || 8
+|-
+| [[Grey-elf]] || 42 || 8
+|-
+| [[soldier]] || 42 || 8
+|-
+| [[watchman]] || 42 || 8
+|-
+| [[vampire bat]] || 41 || 7
+|-
+| [[leocrotta]] || 40 || 8
+|-
+| [[carnivorous ape]] || 40 || 8
+|-
+| [[large dog]] || 40 || 7
+|-
+| [[large cat]] || 40 || 7
+|-
+| [[tengu]] || 40 || 7
+|-
+| [[winter wolf cub]] || 39 || 7
+|-
+| [[giant spider]] || 39 || 7
+|-
+| [[mumak]] || 38 || 7
+|-
+| [[tiger]] || 37 || 8
+|-
+| [[elf mummy]] || 37 || 7
+|-
+| [[human mummy]] || 37 || 7
+|-
+| [[ettin zombie]] || 37 || 7
+|-
+| [[leather golem]] || 37 || 7
+|-
+| [[chameleon]] || 37 || 7
+|-
+| [[crocodile]] || 37 || 7
+|-
+| [[gremlin]] || 36 || 8
+|-
+| [[orc-captain]] || 36 || 7
+|-
+| [[page]] || 36 || 7
+|-
+| [[thug]] || 36 || 7
+|-
+| [[ninja]] || 36 || 7
+|-
+| [[roshi]] || 36 || 7
+|-
+| [[warrior]] || 36 || 7
+|-
+| [[spotted jelly]] || 36 || 6
+|-
+| [[forest centaur]] || 34 || 8
+|-
+| [[dust vortex]] || 34 || 6
+|-
+| [[leprechaun]] || 34 || 4
+|-
+| [[iron piercer]] || 33 || 6
+|-
+| [[werewolf]] || 31 || 7
+|-
+| [[horse]] || 31 || 7
+|-
+| [[ogre]] || 31 || 7
+|-
+| [[Green-elf]] || 31 || 7
+|-
+| [[student]] || 31 || 7
+|-
+| [[chieftain]] || 31 || 7
+|-
+| [[neanderthal]] || 31 || 7
+|-
+| [[attendant]] || 31 || 7
+|-
+| [[hunter]] || 31 || 7
+|-
+| [[gnome king]] || 31 || 6
+|-
+| [[brown pudding]] || 31 || 6
+|-
+| [[werewolf]] || 31 || 6
+|-
+| [[lynx]] || 29 || 7
+|-
+| [[panther]] || 29 || 7
+|-
+| [[yeti]] || 29 || 7
+|-
+| [[quivering blob]] || 29 || 6
+|-
+| [[yellow light]] || 29 || 5
+|-
+| [[water moccasin]] || 28 || 7
+|-
+| [[snake]] || 28 || 6
+|-
+| [[dwarf lord]] || 27 || 6
+|-
+| [[white unicorn]] || 27 || 6
+|-
+| [[gray unicorn]] || 27 || 6
+|-
+| [[black unicorn]] || 27 || 6
+|-
+| [[giant beetle]] || 26 || 6
+|-
+| [[wolf]] || 26 || 6
+|-
+| [[baby long worm]] || 26 || 6
+|-
+| [[raven]] || 26 || 6
+|-
+| [[orc mummy]] || 26 || 6
+|-
+| [[dwarf mummy]] || 26 || 6
+|-
+| [[gold golem]] || 26 || 6
+|-
+| [[piranha]] || 26 || 6
+|-
+| [[lizard]] || 26 || 6
+|-
+| [[killer bee]] || 26 || 5
+|-
+| [[plains centaur]] || 25 || 6
+|-
+| [[blue jelly]] || 25 || 5
+|-
+| [[quasit]] || 24 || 7
+|-
+| [[orc shaman]] || 23 || 5
+|-
+| [[gnomish wizard]] || 23 || 5
+|-
+| [[soldier ant]] || 22 || 6
+|-
+| [[Kop Kaptain]] || 22 || 6
+|-
+| [[Woodland-elf]] || 22 || 6
+|-
+| [[jaguar]] || 20 || 6
+|-
+| [[rope golem]] || 20 || 6
+|-
+| [[dingo]] || 20 || 5
+|-
+| [[dog]] || 20 || 5
+|-
+| [[housecat]] || 20 || 5
+|-
+| [[fog cloud]] || 20 || 4
+|-
+| [[fire ant]] || 19 || 6
+|-
+| [[violet fungus]] || 19 || 5
+|-
+| [[jellyfish]] || 19 || 5
+|-
+| [[ape]] || 17 || 6
+|-
+| [[gnome mummy]] || 17 || 5
+|-
+| [[human zombie]] || 17 || 5
+|-
+| [[kobold shaman]] || 17 || 4
+|-
+| [[rock mole]] || 17 || 4
+|-
+| [[woodchuck]] || 17 || 4
+|-
+| [[wood nymph]] || 16 || 5
+|-
+| [[water nymph]] || 16 || 5
+|-
+| [[mountain nymph]] || 16 || 5
+|-
+| [[bugbear]] || 15 || 5
+|-
+| [[Mordor orc]] || 15 || 5
+|-
+| [[Uruk-hai]] || 15 || 5
+|-
+| [[Kop Lieutenant]] || 15 || 5
+|-
+| [[imp]] || 15 || 4
+|-
+| [[gnome lord]] || 15 || 4
+|-
+| [[ghoul]] || 13 || 5
+|-
+| [[pony]] || 13 || 4
+|-
+| [[gray ooze]] || 13 || 4
+|-
+| [[lemure]] || 10 || 5
+|-
+| [[dwarf]] || 10 || 4
+|-
+| [[hill orc]] || 10 || 4
+|-
+| [[rock piercer]] || 10 || 4
+|-
+| [[Kop Sergeant]] || 10 || 4
+|-
+| [[kobold mummy]] || 10 || 4
+|-
+| [[red naga hatchling]] || 10 || 4
+|-
+| [[black naga hatchling]] || 10 || 4
+|-
+| [[golden naga hatchling]] || 10 || 4
+|-
+| [[guardian naga hatchling]] || 10 || 4
+|-
+| [[elf zombie]] || 10 || 4
+|-
+| [[straw golem]] || 10 || 4
+|-
+| [[paper golem]] || 10 || 4
+|-
+| [[baby crocodile]] || 10 || 4
+|-
+| [[kobold lord]] || 10 || 3
+|-
+| [[giant bat]] || 10 || 3
+|-
+| [[wererat]] || 10 || 3
+|-
+| [[werejackal]] || 10 || 3
+|-
+| [[shrieker]] || 10 || 2
+|-
+| [[centipede]] || 9 || 4
+|-
+| [[homunculus]] || 9 || 3
+|-
+| [[giant ant]] || 8 || 4
+|-
+| [[little dog]] || 8 || 3
+|-
+| [[kitten]] || 8 || 3
+|-
+| [[long worm tail]] || 8 || 1
+|-
+| [[werejackal]] || 7 || 4
+|-
+| [[rabid rat]] || 7 || 4
+|-
+| [[wererat]] || 7 || 4
+|-
+| [[monkey]] || 7 || 4
+|-
+| [[floating eye]] || 7 || 3
+|-
+| [[hobgoblin]] || 7 || 3
+|-
+| [[orc]] || 7 || 3
+|-
+| [[gnome]] || 7 || 3
+|-
+| [[Keystone Kop]] || 7 || 3
+|-
+| [[hobbit]] || 7 || 2
+|-
+| [[large kobold]] || 7 || 2
+|-
+| [[gas spore]] || 6 || 2
+|-
+| [[bat]] || 6 || 2
+|-
+| [[human]] || 6 || 2
+|-
+| [[kobold]] || 6 || 1
+|-
+| [[goblin]] || 6 || 1
+|-
+| [[rothe]] || 5 || 4
+|-
+| [[orc zombie]] || 5 || 3
+|-
+| [[dwarf zombie]] || 5 || 3
+|-
+| [[iguana]] || 5 || 3
+|-
+| [[acid blob]] || 4 || 2
+|-
+| [[brown mold]] || 4 || 2
+|-
+| [[green mold]] || 4 || 2
+|-
+| [[red mold]] || 4 || 2
+|-
+| [[fox]] || 4 || 1
+|-
+| [[lichen]] || 4 || 1
+|-
+| [[yellow mold]] || 3 || 2
+|-
+| [[manes]] || 2 || 3
+|-
+| [[cave spider]] || 2 || 3
+|-
+| [[garter snake]] || 2 || 3
+|-
+| [[coyote]] || 2 || 2
+|-
+| [[giant rat]] || 2 || 2
+|-
+| [[gnome zombie]] || 2 || 2
+|-
+| [[gecko]] || 2 || 2
+|-
+| [[mail daemon]] || 1 || 26
+|-
+| [[jackal]] || 1 || 1
+|-
+| [[sewer rat]] || 1 || 1
+|-
+| [[grid bug]] || 1 || 1
+|-
+| [[kobold zombie]] || 1 || 1
+|-
+| [[newt]] || 1 || 1
+|}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters| ]]}
+&&%s&& %s Monsters (by speed) {140707 2021-06-04T20:40:20Z {4001463 Actual-nh} Updated Vlad's entry This is a list of [[monster]]s sorted by [[speed]], then by [[difficulty]] and [[experience]] value.
+
+In general, you will be able to run away from any monster that travels at your speed or slower. For comparison purposes, here are some common speed benchmarks to help you decide whether to run or use a more strategic escape method in any given circumstance. For example, if you are unencumbered and wearing [[speed boots]] (very fast), you can outrun a leocrotta; if you are burdened and not fast or very fast, you will not be able to outrun a [[water demon]].
+
+{| class="prettytable sortable striped" style="border:none; margin:0; padding:0; width: 22em;"
+|-
+! [[Encumbrance]] !! Normal speed !! [[Speed#Intrinsic speed (fast)|Fast]] !! [[Speed#Extrinsic speed (very fast)|Very fast]]
+|-
+| Unencumbered || 12 || 16 || 20
+|-
+| Burdened || 9 || 12 || 15
+|-

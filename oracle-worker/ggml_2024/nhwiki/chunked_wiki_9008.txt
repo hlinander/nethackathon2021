@@ -1,0 +1,1000 @@
+Gray stones can be distinguished by [[price identification]]: the base price of a luckstone is 60 zorkmids, a touchstone is 45 zorkmids, and a flint stone or loadstone is 1 zorkmid.
+
+===Exploit===
+
+In [[NetHack 3.4.3]], a somewhat dubious way of distinguishing the difference between flint stones from luckstones is to use the [[naming artifacts|artifact naming trick]] by attempting to [[name]] (not [[call]]) them "[[The Heart of Ahriman]]". If the stone is a luckstone, your hand will slip as it is not possible to name the base item of an [[artifact]] after its artifact.
+
+This behavior is sometimes viewed as [[cheating]] and can be frowned upon in some circles as it relies on exploiting a bug. The bug is fixed in 3.6.0 and in many variants and in the [[NAO]] version of NetHack.
+
+==Variants==
+{{todo|Do whetstones, healthstones, or lumps of salt break when thrown?}}
+===SLASH'EM===
+[[SLASH'EM]] introduces two additional gray stone types: [[whetstone]]s and [[healthstone]]s. Any cursed gray stone that isn't a loadstone must be a healthstone, unless it came from a bones pile. Price identification is also useful: the whetstone's base price is 45zm, and the healthstone's is 60zm.
+
+===SporkHack===
+[[SporkHack]] introduces the [[salt chunk]]. Additionally, rubbing a flint stone with a metal object will strike sparks, scaring some monsters and identifying the stone.
+
+===xNetHack===
+[[xNetHack]] removes loadstones and introduces [[thiefstone]]s.
+
+{{nethack-361|offset=1}}
+{{slashem-7E7}}
+[[Category:Gems]]}
+&&%s&& %s Signed variable {140163 2021-05-23T15:36:33Z {4001463 Actual-nh} Grammar/style {{Wikipedia|Signed number representations}}
+
+'''Signedness''' is a property of nearly all of the numeric data types used within the NetHack [[source code]]. The word "signed" refers to that these variables can store negative values; unsigned variables cannot. Their use is responsible for the many seemingly non-round numbers found as limits within the game. For example, the lowest [[AC]] attainable on most machines is -128, because the AC value is stored in a signed 8-bit variable (<code>schar</code>) which can store up to 256 values: 127 positive numbers, zero, and 128 negative numbers. The lack of symmetry is due to the use of a [[wikipedia:Two's complement|two's complement]] representation. An unsigned 8-bit variable would be able to store zero and 255 positive values.
+
+Some older machines use other [[wikipedia:Signed number representations|signed number representations]], ending up with a different range of integers than two's complement.  These notations are rarely seen on the average person's desktop.  (Excess-N notation is still used for exponents of floating point numbers, but is rare for integers.)
+
+Signed variables are ubiquitous in the NetHack source code, even where it doesn't particularly make sense.  This is possibly due to different coding practices that prevailed among early developers -- [[Hack 1.0]] was released in December 1984, well before [[ISO C]] existed, and developers wrote their C code in quite different styles than what prevails today. Unsigned variables were possibly a new addition to C, and then-active programmers were not yet accustomed to using them.
+
+[[Score]], for example, is a signed variable (whose magnitude is dependent on machine word size; generally it's 32 bits, but today computers are shifting to 64-bit). Does a negative score make sense? It'd almost certainly be better to have the additional 2147483648 positive score values. Portability might be an issue -- perhaps unsigned variables are less portable than signed ones. Or it could be that the [[DevTeam]] simply didn't think anyone would achieve two billion points.
+
+Whether a variable is signed or not affects what happens during [[integer overflow]].
+
+[[Category:Development]]}
+&&%s&& %s Int {85044 2013-05-14T18:39:19Z {4000045 Bulwersator} Redirected page to [[Attribute#Intelligence]] #REDIRECT[[Attribute#Intelligence]]}
+&&%s&& %s NetHackWiki:Featured article candidates {137341 2021-01-20T02:51:35Z {4001476 Infinigon} mind flayer is featured Feb 2021; variant is not really feature-worthy because a lot of current feature articles are specific variants already If you think an article could be featured article material, but isn't yet, list it under ''Future candidates'' and somebody might improve it! [[NetHackWiki:Featured_articles]] describes how to feature an article.
+
+==Ready as-is==
+* [[Luck]]
+
+==Future candidates==
+* [[Polymorph]] (after a once-over to update to 3.6.0; the [[Polymorph control#Strategy|self-polymorph strategy]] section that's linked also wants some work first)
+* [[Invisibility]]
+* Lots of artifact weapons have good pages, examples:
+** [[Excalibur]]
+** [[Stormbringer]]
+** [[Sting]]
+** [[Vorpal Blade]]
+* [[Nethack 4]]
+* [[Monster frequency]]
+* [[speed ascension]], again, once the game-time strategy section gets expanded.
+* monster usable items once such a page gets written
+* [[woodchuck]]
+
+==Most visited (a safe but uninspiring choice)==
+* spellbook
+* attribute
+* ring
+* magic marker
+* quest
+* valkyrie
+* artifact weapon
+* priest
+* dragon
+[[Category:NetHackWiki]]}
+&&%s&& %s NetHackWiki:Featured articles {137342 2021-01-20T02:53:08Z {4001476 Infinigon} /* Criteria */ add nh366 as criterion '''Featured articles''' are those considered good enough to showcase on the [[Main Page]].
+
+==Howto==
+
+Be bold, just do it! We're happy for anybody who cares for featured articles.
+
+* Visit [[NetHackWiki:Featured article candidates]] if unsure what to feature.
+* Add {{tl|featured}} to the bottom of the new featured article.
+* Edit [[Template:Featured_articles/MONTH]] to change the featured article displayed on the main page for MONTH.
+* Update the list of past featured articles below.
+
+===Featured articles and [[NetHackWiki:Next version]]===
+The tags used with the project [[NetHackWiki:Next version]] occupy the same area to the right of the article title as the star that {{tl|featured}} displays.  This fact may lead to difficulty if an article, already tagged for NetHackWiki:Next version, later becomes featured.  The version tags all support an "offset" parameter, so they can play nice with {{tl|featured}} and with each other.  For example (and an extreme one), [[Altar]] has these tags:
+
+<nowiki>{{</nowiki>[[Template:nethack-343|nethack-343]]|offset=3}}<br/>
+<nowiki>{{</nowiki>[[Template:slashem-7E7|slashem-7E7]]|offset=2}}<br/>
+<nowiki>{{</nowiki>[[Template:variant-343|variant-343]]|offset=1}}<br/>
+{{tl|featured}}
+
+The results of the offset parameter are clearly visible at the top of [[Altar]].  The {{tl|noversion}} tag also supports the offset parameter, because while it should never need to be used with the other version tags, it still has to play nice with {{tl|featured}}.
+
+So, to add a star to an article bearing version tags, you must add one to the offset of each version tag, to shift them all one spot to the left and leave position zero open for the star.  If there is no offset parameter, then the offset is zero, and you must insert "|offset=1" into that template.
+
+==Criteria==
+
+A featured article should:
+
+* be complete and comprehensive
+* be up to date for NetHack 3.6.6
+* contain no errors
+* have no red links
+
+==List of featured articles==
+
+* September 2006: [[Mjollnir]]
+* October 2006: [[Jay Fenlason's Hack]]
+* November 2006: [[Digging for victory]]
+* December 2006: [[Ascension kit]]
+* January 2007: [[Altar]]
+* February 2007: [[NetHack units]]
+* March 2007: [[Foocubus]]
+* April 2007: [[Unicorn horn]]
+* May 2007: [[Sokoban]]
+* June 2007: [[Tourist]]
+* July 2007: [[Stealing from shops]]
+* August 2007: [[Charging]]
+* September 2007: [[Knight]]
+* October 2007: [[Alignment]]
+* November 2007: [[Protection racket]]
+* December 2007: [[The Eye of the Aethiopica]]
+* January 2008: [[Speed]]
+* February 2008: [[Cockatrice]]
+* March 2008: [[Bones]]
+* April 2008: [[Elbereth]]
+* May 2008: [[Wish]]
+* June 2008: [[Wizard of Yendor]]
+* July 2008: [[Monk]]
+* August 2008: [[Identification]]
+* September 2008: [[Alchemy]]
+* October 2008: [[Riders]]
+* November 2008: [[Samurai]]
+* December 2008: [[Wand]]
+* January 2009: [[Mazes of Menace]]
+* February 2009: [[Curse removal]]
+* March 2009: [[Archeologist]]
+* April 2009: [[Genocide]]
+* May 2009: [[Container]]
+* June 2009: [[Touchstone]]
+* July 2009: [[Statue]]
+* August 2009: [[Nymph]]
+* September 2009: [[Unofficial conduct]]
+* October 2009: [[Rogue level]]
+* November 2009: [[:/dev/null/nethack tournament]]
+* December 2009: [[Mimic]]
+* January 2010: [[Barbarian]]
+* February 2010: [[Engraving]]
+* March 2010: [[Magic cancellation]]
+* April 2010: [[Pony]]
+* May 2010: [[Property]]
+* June 2010: [[Speed ascension]]
+* July 2010: [[Scroll]]
+* August 2010: [[Fountain]]
+* September 2010: [[Autopickup exception]]
+* October 2010: [[Pacifist]]
+* November 2010: [[UnNetHack]]
+* December 2010: [[Planetar and Solar]]
+* January  2011: [[Wizard]]
+* February 2011: [[Curses interface]]
+* May 2011: [[twoweapon]]
+* June 2011: [[Hit points]]
+* July 2011: [[Armor]]
+* August 2011: [[Ranger]]
+* September 2011: [[Holy water]]
+* October 2011: [[Gem]]
+* November 2011: [[AceHack]]
+* December 2011: [[Demogorgon]]
+* February 2012: [[Spellbook of fireball]]
+* March 2012: [[Score]]
+* April 2012: [[Mine's End]]
+* June 2012: [[Junethack]]
+* October 2012: [[GruntHack]]
+* July 2014: [[Slash'EM Extended]]
+* January 2015: [[Polearm]]
+* February 2015: [[Bad Idea]]
+* October 2018: [[EvilHack]]
+* November 2018: [[The November NetHack Tournament]]
+* December 2018: [[Wizard of Yendor]]
+* January 2019: [[Tourist]]
+* March 2019: [[xNetHack]]
+* April 2019: [[SpliceHack]]
+* May 2019: [[Conduct]]
+* July 2019: [[Bones]]
+* August 2019: [[Alchemy]]
+* September 2019: [[Demogorgon]]
+* February 2021: [[Mind flayer]]
+
+[[Category:Featured articles| ]]
+[[Category:NetHackWiki]]}
+&&%s&& %s Template talk:Black {12874 2006-10-01T01:42:30Z {467 Killian} changed to {{darkgray}} for now We probably shouldn't use this template, as anything shown in it will just produce a black rectangle. -- [[User:Ray Chason|Ray Chason]] 15:05, 26 August 2006 (UTC)
+
+:Well, that's how [[ghost]]s and [[shade]]s appear... --[[User:ZeroOne|ZeroOne]] 17:29, 26 August 2006 (UTC)
+
+::Ghosts and shades are represented with a space (space as in what you get when you hit the space bar), and they actually have colors; the former is gray, the latter is black (but shows up as dark blue). I remap the ghost/shade glyph to X, which helps a lot (especially in bones detection, because ghosts appear with telepathy). In any case, I'm inclined to say don't use template:black at all. --[[User:Eidolos|Eidolos]] 17:34, 26 August 2006 (UTC)
+
+Given that there are quite a few monsters/items that have CLR_BLACK, should we re-purpose this template (or create a new one) to represent that consistently?  Note that actual display colour of black items doesn't seem to be consistent across ports (NAO uses blue, IIRC, but my Windows binary seems to use grey). --[[User:Killian|Killian]] 00:27, 30 September 2006 (UTC)
+:We have a [[Template:Darkgray|<nowiki>{{darkgray}}</nowiki>]] which represents the dark gray colour; I would be in favour of using this consistently for CLR_BLACK. -- [[User:SGrunt|SGrunt]] 05:26, 30 September 2006 (UTC)
+::I say use template:black (even though above I say not to :)) but do change what color it displays. I suggest dark blue. This is for consistency in the long run. --[[User:Eidolos|Eidolos]] 20:08, 30 September 2006 (UTC)
+::I agree with Eidolos above, let's use template:black. Currently CLR_BLACK is shown as dark blue on linux (and possibly other systems/configs), and as dark grey on DOS and some other systems/configs. It's possible the devteam will change this, so it'll show up as dark grey on linux too in the future. --[[User:Paxed|Paxed]] 20:40, 30 September 2006 (UTC)
+:::I've changed it to <nowiki>{{darkgray}}</nowiki> for now, so that I can start using it, but I don't mind blue either. --[[User:Killian|Killian]] 01:42, 1 October 2006 (UTC)}
+&&%s&& %s NetHack 3.1.1 {148855 2022-10-19T23:05:17Z {679 Ray Chason} /* Availability */ Google Groups is no longer useful; link to nethack.org {{NetHack Versions}}
+
+'''NetHack 3.1.1''' is the 17th public release of [[NetHack]] and the 13th by the [[DevTeam]].  [[Izchak Miller]] published it to the [[Usenet]] newsgroup comp.sources.games and the moderator approved it in March 1993.
+
+== Availability ==
+
+The original Usenet postings were archived on ftp.uu.net. That site no longer operates, but a copy is available at the [https://archive.org/details/Usenet_InfoMagic Internet Archive]; disc 2 has all the files of interest.
+
+The [[DevTeam]] has mirrored the Usenet posts on [https://nethack.org/download/3.1.1/ their web site].
+
+Copies of the UUNet files are available from the Internet Archive and from GitHub. They form a patch against [[NetHack 3.1.0]]. See [[NetHack 3.1.1/URL list|this URL list]] for downloading instructions.
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a NetHack 3.1.1 distribution at [http://www.juiblex.co.uk/nethack/source/nethack-3.1.1.tar.gz].
+
+== Significant changes ==
+
+NetHack 3.1.1 is principally a bug-fix release.
+
+Notable changes in NetHack 3.1.1 are:
+
+* [[Windows NT]] is now supported in text mode for the first time.  This version will probably exhibit bug [[W343-3]] in some locales.
+
+* The [[Amiga]] port now supports sound.
+
+* More [[Unix]] variants are supported.
+
+* The [[Amiga]], [[Mac]] and [[X11]] [[user interface]]s are further polished.
+
+== The adventurer ==
+
+The player may choose from these roles:
+
+{| class="prettytable"
+|-
+!Role!!Alignment
+|-
+|[[Archeologist]]||Lawful
+|-
+|[[Barbarian]]||Neutral
+|-
+|[[Caveman|Cave(wo)man]]||Lawful
+|-
+|[[Elf]]||Chaotic
+|-
+|[[Healer]]||Neutral
+|-
+|[[Knight]]||Lawful
+|-
+|[[Priest|Priest(ess)]]||Random
+|-
+|[[Rogue]]||Chaotic
+|-
+|[[Samurai]]||Lawful
+|-
+|[[Tourist]]||Neutral
+|-
+|[[Valkyrie]]||Neutral
+|-
+|[[Wizard]]||Neutral
+|}
+
+All classes permit male and female adventurers, except the Valkyrie which must be female.
+
+The adventurer has [[experience]], [[hit points]], [[magical energy]],
+[[armor class]], [[alignment]], and the six major [[attribute]]s.  He may
+advance to [[experience level]] 30.
+
+The initial [[pet]] is a little [[dog]] for Cavemen and Samurai, a [[kitten]] for Wizards,
+and a random choice of the two (or the user's choice in his [[options]]) for all others.
+
+== Dungeon features ==
+
+The main trunk of the dungeon begins at level 1, where the game begins, and proceeds down [[stairs]] to [[Medusa's Lair]] and the [[Castle]].  From there, it is necessary to enter a [[trap door]] to the [[Valley of the Dead]].  Further stairs down eventually lead to the invocation level.  Performing the [[invocation ritual]] at the [[vibrating square]] opens the stairs to the [[Sanctum]].
+
+With the [[Amulet of Yendor]] in hand, the adventurer may ascend from level 1 into the [[Plane of Earth]]; thence s/he may proceed through [[magic portal]]s to the planes of [[Plane of Air|Air]], [[Plain of Fire|Fire]], and [[Plain of Water|Water]], and thence to the [[Astral Plane]].  Offering the [[Amulet of Yendor]] on the correct [[high altar]] wins the game.
+
+Along the way, one will encounter these branches and special levels:
+
+* A second [[stair]] to the [[Gnomish Mines]].  Therein, one will find [[Mine Town]] and, at the end, the bottom level with a [[luckstone]].
+
+* The [[Oracle]] level.
+
+* A possible [[Bigroom]].
+
+* The [[Rogue level]].
+
+* The [[magic portal]] to the [[Quest]].
+
+* A possible [[magic portal]], inside a [[vault]], to [[Fort Ludios]].
+
+* [[Medusa's Lair]].
+
+* The [[Castle]].
+
+* The [[Valley of the Dead]].  [[Gehennom]] begins here, and it is no longer safe to [[pray]].
+
+* The lairs of [[Asmodeus]], [[Juiblex]], [[Baalzebub]], and [[Orcus]].
+
+* A second upward [[stairs|staircase]] to [[Vlad's Tower]].
+
+* The [[Wizard's Tower]]; it is visible but not accessible from here.
+
+* A [[Fake Tower]] containing a random [[Amulet]].
+
+* A [[Fake Tower]] containing a [[magic portal]] by which the Wizard's Tower may be entered.
+
+To win the game, it is necessary to complete these tasks:
+
+* Gather seven candles, possibly in the [[lighting shop]] (not yet tended by [[Izchak]]) in [[Mine Town]].
+
+* Complete the [[Quest]] and get the [[Bell of Opening]].
+
+* Kill [[Vlad the Impaler]] and get the [[Candelabrum of Invocation]].
+
+* Kill the [[Wizard of Yendor]] and get the [[Book of the Dead]].
+
+* Proceed to the [[vibrating square]] and perform the [[invocation ritual]].
+
+* Kill the [[high priest]] of [[Moloch]] and get the [[Amulet of Yendor]].
+
+* Escape from the dungeon.
+
+* Pass through the [[Elemental Planes]].
+
+* Arrive at the correct [[altar]] in the [[Astral Plane]].
+
+* Offer the [[Amulet of Yendor]] to the god of your [[alignment]].
+
+[[Special room]]s are:
+
+* [[throne room]]
+* [[swamp]]
+* [[vault]]
+* [[beehive]]
+* [[crypt]]
+* [[barracks]]
+* [[treasure zoo]]
+* [[Oracle]]
+* [[temple]]
+* [[shop]]
+
+Special [[dungeon feature]]s are:
+* [[pool]]
+* [[moat]]
+* [[water]]
+* [[drawbridge]]
+* [[lava]]
+* [[door]]
+* [[ladder]]
+* [[fountain]]
+* [[throne]]
+* [[sink]]
+* [[altar]]
+* [[ice]]
+* [[air]]
+* [[cloud]]
+
+Traps are:
+
+* [[arrow trap]]
+* [[dart trap]]
+* [[falling rock trap]]
+* [[squeaky board]]
+* [[bear trap]]
+* [[land mine]]
+* [[sleeping gas trap]]
+* [[rust trap]]
+* [[fire trap]]
+* [[pit]]
+* [[spiked pit]]
+* [[trapdoor]]
+* [[teleportation trap]]
+* [[level teleporter]]
+* [[magic portal]]
+* [[web]]
+* monsters disguised as [[statue]]s
+* [[magic trap]]
+* [[anti-magic field]]
+* [[polymorph trap]]
+
+A [[wand of wishing]] is guaranteed in the [[Castle]], in its modern position, and protected by [[Elbereth]], but not tucked inside a [[chest]].
+
+== Bestiary ==
+
+NetHack 3.1.1 introduces no new monsters.
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[giant ant]]||{{brown|a}}||
+|-
+|[[killer bee]]||{{yellow|a}}||
+|-
+|[[soldier ant]]||{{blue|a}}||
+|-
+|[[fire ant]]||{{red|a}}||
+|-
+|[[giant beetle]]||{{darkgray|a}}||
+|-
+|[[queen bee]]||{{magenta|a}}||
+|-
+|[[acid blob]]||{{green|b}}||
+|-
+|[[quivering blob]]||{{white|b}}||
+|-
+|[[gelatinous cube]]||{{cyan|b}}||
+|-
+|[[cockatrice]]||{{yellow|c}}||
+|-
+|[[jackal]]||{{brown|d}}||
+|-
+|[[werejackal]]||{{red|@}}/{{brown|d}}||
+|-
+|[[little dog]]||{{white|d}}||
+|-
+|[[dog]]||{{white|d}}||
+|-
+|[[large dog]]||{{white|d}}||
+|-
+|[[wolf]]||{{brown|d}}||
+|-
+|[[werewolf]]||{{brightred|@}}/{{brown|d}}||
+|-
+|[[warg]]||{{brown|d}}||
+|-
+|[[winter wolf]]||{{cyan|d}}||
+|-
+|[[hell hound pup]]||{{red|d}}||
+|-
+|[[hell hound]]||{{red|d}}||
+|-
+|[[floating eye]]||{{blue|e}}||
+|-
+|[[freezing sphere]]||{{white|e}}||
+|-
+|[[kitten]]||{{white|f}}||
+|-
+|[[housecat]]||{{white|f}}||
+|-
+|[[jaguar]]||{{brown|f}}||
+|-
+|[[large cat]]||{{white|f}}||
+|-
+|[[tiger]]||{{yellow|f}}||
+|-
+|[[gremlin]]||{{green|g}}||
+|-
+|[[hobbit]]||{{green|h}}||
+|-
+|[[dwarf]]||{{red|h}}||
+|-
+|[[bugbear]]||{{brown|h}}||
+|-
+|[[dwarf lord]]||{{blue|h}}||
+|-
+|[[dwarf king]]||{{magenta|h}}||
+|-
+|[[mind flayer]]||{{magenta|h}}||
+|-
+|[[manes]]||{{red|i}}||
+|-
+|[[homunculus]]||{{green|i}}||
+|-
+|[[imp]]||{{red|i}}||
+|-
+|[[lemure]]||{{brown|i}}||
+|-
+|[[quasit]]||{{blue|i}}||
+|-
+|[[tengu]]||{{cyan|i}}||
+|-
+|[[blue jelly]]||{{blue|j}}||
+|-
+|[[spotted jelly]]||{{green|j}}||
+|-
+|[[ochre jelly]]||{{brown|j}}||
+|-
+|[[kobold]]||{{brown|k}}||
+|-
+|[[large kobold]]||{{red|k}}||
+|-
+|[[kobold lord]]||{{magenta|k}}||
+|-
+|[[kobold shaman]]||{{brightblue|k}}||
+|-
+|[[leprechaun]]||{{green|l}}||
+|-
+|[[small mimic]]||{{brown|m}}||
+|-
+|[[large mimic]]||{{red|m}}||
+|-
+|[[giant mimic]]||{{magenta|m}}||
+|-
+|[[wood nymph]]||{{green|n}}||
+|-
+|[[water nymph]]||{{blue|n}}||
+|-
+|[[mountain nymph]]||{{brown|n}}||
+|-
+|[[goblin]]||{{lightgray|o}}||
+|-
+|[[hobgoblin]]||{{brown|o}}||
+|-
+|[[orc]]||{{red|o}}||
+|-
+|[[hill orc]]||{{yellow|o}}||
+|-
+|[[Mordor orc]]||{{blue|o}}||
+|-
+|[[Uruk-hai]]||{{darkgray|o}}||
+|-
+|[[orc shaman]]||{{brightblue|o}}||
+|-
+|[[orc-captain]]||{{magenta|o}}||
+|-
+|[[rock piercer]]||{{lightgray|p}}||
+|-
+|[[iron piercer]]||{{cyan|p}}||
+|-
+|[[rothe]]||{{lightgray|q}}||
+|-
+|[[mumak]]||{{lightgray|q}}||
+|-
+|[[leocrotta]]||{{red|q}}||
+|-
+|[[wumpus]]||{{cyan|q}}||
+|-
+|[[titanothere]]||{{lightgray|q}}||
+|-
+|[[baluchitherium]]||{{lightgray|q}}||
+|-
+|[[sewer rat]]||{{brown|r}}||
+|-
+|[[giant rat]]||{{brown|r}}||
+|-
+|[[rabid rat]]||{{brown|r}}||
+|-
+|[[wererat]]||{{brown|@}}/{{brown|r}}||
+|-
+|[[rock mole]]||{{lightgray|r}}||
+|-
+|[[cave spider]]||{{lightgray|s}}||
+|-
+|[[giant spider]]||{{magenta|s}}||
+|-
+|[[scorpion]]||{{red|s}}||
+|-
+|[[lurker above]]||{{lightgray|t}}||
+|-
+|[[trapper]]||{{green|t}}||
+|-
+|[[white unicorn]]||{{white|u}}||
+|-
+|[[gray unicorn]]||{{lightgray|u}}||
+|-
+|[[black unicorn]]||{{darkgray|u}}||
+|-
+|[[fog cloud]]||{{lightgray|v}}||
+|-
+|[[dust vortex]]||{{brown|v}}||
+|-
+|[[ice vortex]]||{{cyan|v}}||
+|-
+|[[energy vortex]]||{{brightblue|v}}||
+|-
+|[[steam vortex]]||{{blue|v}}||
+|-
+|[[fire vortex]]||{{yellow|v}}||
+|-
+|[[baby long worm]]||{{brown|w}}||
+|-
+|[[baby purple worm]]||{{magenta|w}}||
+|-
+|[[long worm]]||{{brown|w}}||
+|-
+|[[purple worm]]||{{magenta|w}}||
+|-
+|[[grid bug]]||{{magenta|x}}||
+|-
+|[[xan]]||{{red|x}}||
+|-
+|[[yellow light]]||{{yellow|y}}||
+|-
+|[[zruty]]||{{brown|z}}||
+|-
+|[[couatl]]||{{green|A}}||
+|-
+|[[Aleax]]||{{yellow|A}}||
+|-
+|[[Angel]]||{{white|A}}||
+|-
+|[[ki-rin]]||{{yellow|A}}||
+|-
+|[[Archon]]||{{magenta|A}}||
+|-
+|[[bat]]||{{brown|B}}||
+|-
+|[[giant bat]]||{{red|B}}||
+|-
+|[[vampire bat]]||{{darkgray|B}}||
+|-
+|[[plains centaur]]||{{brown|C}}||
+|-
+|[[forest centaur]]||{{green|C}}||
+|-
+|[[mountain centaur]]||{{cyan|C}}||
+|-
+|[[baby gray dragon]]||{{lightgray|D}}||
+|-
+|[[baby red dragon]]||{{red|D}}||
+|-
+|[[baby white dragon]]||{{white|D}}||
+|-
+|[[baby orange dragon]]||{{brightred|D}}||
+|-
+|[[baby black dragon]]||{{darkgray|D}}||
+|-
+|[[baby blue dragon]]||{{blue|D}}||
+|-
+|[[baby green dragon]]||{{green|D}}||
+|-
+|[[baby yellow dragon]]||{{yellow|D}}||
+|-
+|[[gray dragon]]||{{lightgray|D}}||
+|-
+|[[red dragon]]||{{red|D}}||
+|-
+|[[white dragon]]||{{white|D}}||
+|-
+|[[orange dragon]]||{{brightred|D}}||
+|-
+|[[black dragon]]||{{darkgray|D}}||
+|-
+|[[blue dragon]]||{{blue|D}}||
+|-
+|[[green dragon]]||{{green|D}}||
+|-
+|[[yellow dragon]]||{{yellow|D}}||
+|-
+|[[air elemental]]||{{cyan|E}}||
+|-
+|[[fire elemental]]||{{yellow|E}}||
+|-
+|[[earth elemental]]||{{brown|E}}||
+|-
+|[[water elemental]]||{{blue|E}}||
+|-
+|[[brown mold]]||{{brown|F}}||
+|-
+|[[yellow mold]]||{{yellow|F}}||
+|-
+|[[green mold]]||{{green|F}}||
+|-
+|[[red mold]]||{{red|F}}||
+|-
+|[[shrieker]]||{{magenta|F}}||
+|-
+|[[violet fungus]]||{{magenta|F}}||
+|-
+|[[gnome]]||{{brown|G}}||
+|-
+|[[gnome lord]]||{{blue|G}}||
+|-
+|[[gnomish wizard]]||{{brightblue|G}}||
+|-
+|[[gnome king]]||{{magenta|G}}||
+|-
+|[[giant]]||{{red|H}}||
+|-
+|[[stone giant]]||{{lightgray|H}}||
+|-
+|[[hill giant]]||{{cyan|H}}||
+|-
+|[[fire giant]]||{{yellow|H}}||
+|-
+|[[frost giant]]||{{white|H}}||
+|-
+|[[ettin]]||{{brown|H}}||
+|-
+|[[titan]]||{{magenta|H}}||
+|-
+|[[minotaur]]||{{brown|H}}||
+|-
+|[[stalker]]||{{white|I}}||
+|-
+|[[jabberwock]]||{{brightred|J}}||
+|-
+|[[Keystone Kop]]||{{blue|K}}||If KOPS defined at compile time
+|-
+|[[Kop Sergeant]]||{{blue|K}}||If KOPS defined at compile time
+|-
+|[[Kop Lieutenant]]||{{cyan|K}}||If KOPS defined at compile time
+|-
+|[[Kop Kaptain]]||{{magenta|K}}||If KOPS defined at compile time
+|-
+|[[lich]]||{{brown|L}}||
+|-
+|[[demilich]]||{{red|L}}||
+|-
+|[[master lich]]||{{magenta|L}}||
+|-
+|[[kobold mummy]]||{{brown|M}}||
+|-
+|[[gnome mummy]]||{{red|M}}||
+|-
+|[[orc mummy]]||{{lightgray|M}}||
+|-
+|[[elf mummy]]||{{green|M}}||
+|-
+|[[human mummy]]||{{lightgray|M}}||
+|-
+|[[ettin mummy]]||{{blue|M}}||
+|-
+|[[giant mummy]]||{{cyan|M}}||
+|-
+|[[red naga hatchling]]||{{red|N}}||
+|-
+|[[black naga hatchling]]||{{darkgray|N}}||
+|-
+|[[golden naga hatchling]]||{{yellow|N}}||
+|-
+|[[guardian naga hatchling]]||{{green|N}}||
+|-
+|[[red naga]]||{{red|N}}||
+|-
+|[[black naga]]||{{darkgray|N}}||
+|-
+|[[golden naga]]||{{yellow|N}}||
+|-
+|[[guardian naga]]||{{green|N}}||
+|-
+|[[ogre]]||{{brown|O}}||
+|-
+|[[ogre lord]]||{{red|O}}||
+|-
+|[[ogre king]]||{{magenta|O}}||
+|-
+|[[gray ooze]]||{{lightgray|P}}||
+|-
+|[[brown pudding]]||{{brown|P}}||
+|-
+|[[black pudding]]||{{darkgray|P}}||
+|-
+|[[quantum mechanic]]||{{cyan|Q}}||
+|-
+|[[rust monster]]||{{brown|R}}||
+|-
+|[[garter snake]]||{{green|S}}||
+|-
+|[[snake]]||{{brown|S}}||
+|-
+|[[water moccasin]]||{{red|S}}||
+|-
+|[[pit viper]]||{{blue|S}}||
+|-
+|[[python]]||{{magenta|S}}||
+|-
+|[[cobra]]||{{blue|S}}||
+|-
+|[[troll]]||{{brown|T}}||
+|-
+|[[ice troll]]||{{white|T}}||
+|-
+|[[rock troll]]||{{cyan|T}}||
+|-
+|[[water troll]]||{{blue|T}}||
+|-
+|[[Olog-hai]]||{{magenta|T}}||
+|-
+|[[umber hulk]]||{{brown|U}}||
+|-
+|[[vampire]]||{{red|V}}||
+|-
+|[[vampire lord]]||{{blue|V}}||
+|-
+|[[Vlad the Impaler]]||{{magenta|V}}||
+|-
+|[[barrow wight]]||{{lightgray|W}}||
+|-
+|[[wraith]]||{{darkgray|W}}||
+|-
+|[[Nazgul]]||{{magenta|W}}||
+|-
+|[[xorn]]||{{brown|X}}||
+|-
+|[[ape]]||{{brown|Y}}||
+|-
+|[[owlbear]]||{{brown|Y}}||
+|-
+|[[yeti]]||{{white|Y}}||
+|-
+|[[carnivorous ape]]||{{darkgray|Y}}||
+|-
+|[[sasquatch]]||{{lightgray|Y}}||
+|-
+|[[kobold zombie]]||{{brown|Z}}||
+|-
+|[[gnome zombie]]||{{brown|Z}}||
+|-
+|[[orc zombie]]||{{lightgray|Z}}||
+|-
+|[[elf zombie]]||{{green|Z}}||
+|-
+|[[human zombie]]||{{white|Z}}||
+|-
+|[[ettin zombie]]||{{blue|Z}}||
+|-
+|[[giant zombie]]||{{cyan|Z}}||
+|-
+|[[skeleton]]||{{white|Z}}||
+|-
+|[[straw golem]]||{{yellow|'}}||
+|-
+|[[rope golem]]||{{brown|'}}||
+|-
+|[[leather golem]]||{{brown|'}}||
+|-
+|[[wood golem]]||{{brown|'}}||
+|-
+|[[flesh golem]]||{{red|'}}||
+|-
+|[[clay golem]]||{{brown|'}}||
+|-
+|[[stone golem]]||{{lightgray|'}}||
+|-
+|[[iron golem]]||{{cyan|'}}||
+|-
+|[[human]]||{{white|@}}||
+|-
+|[[Woodland-elf]]||{{green|@}}||
+|-
+|[[Green-elf]]||{{brightgreen|@}}||
+|-
+|[[Grey-elf]]||{{lightgray|@}}||
+|-
+|[[elf-lord]]||{{brightblue|@}}||
+|-
+|[[Elvenking]]||{{magenta|@}}||
+|-
+|[[nurse]]||{{white|@}}||
+|-
+|[[shopkeeper]]||{{white|@}}||
+|-
+|[[guard]]||{{blue|@}}||
+|-
+|[[oracle]]||{{brightblue|@}}||
+|-
+|[[aligned priest]]||{{white|@}}||
+|-
+|[[high priest]]||{{white|@}}||
+|-
+|unarmored watchman||{{brown|@}}||If MUSE ''not'' defined at compile time (not in default build)
+|-
+|unarmored soldier||{{brown|@}}||If ARMY defined and MUSE ''not'' defined at compile time (not in default build)
+|-
+|[[soldier]]||{{lightgray|@}}||If ARMY defined at compile time
+|-
+|[[sergeant]]||{{red|@}}||If ARMY defined at compile time
+|-
+|[[lieutenant]]||{{green|@}}||If ARMY defined at compile time
+|-
+|[[captain]]||{{blue|@}}||If ARMY defined at compile time
+|-
+|[[watchman]]||{{lightgray|@}}||
+|-
+|[[watch captain]]||{{green|@}}||
+|-
+|[[Medusa]]||{{brightgreen|@}}||
+|-
+|[[Wizard of Yendor]]||{{magenta|@}}||
+|-
+|[[Croesus]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[ghost]]||{{lightgray|&nbsp;}}||
+|-
+|[[shade]]||{{darkgray|&nbsp;}}||
+|-
+|[[water demon]]||{{blue|&}}||
+|-
+|[[horned devil]]||{{brown|&}}||
+|-
+|[[succubus]]||{{lightgray|&}}||
+|-
+|[[incubus]]||{{lightgray|&}}||
+|-
+|[[erinys|erinyes]]||{{red|&}}||
+|-
+|[[barbed devil]]||{{red|&}}||
+|-
+|[[marilith]]||{{red|&}}||
+|-
+|[[vrock]]||{{red|&}}||
+|-
+|[[hezrou]]||{{red|&}}||
+|-
+|[[bone devil]]||{{lightgray|&}}||
+|-
+|[[ice devil]]||{{white|&}}||
+|-
+|[[nalfeshnee]]||{{red|&}}||
+|-
+|[[pit fiend]]||{{red|&}}||
+|-
+|[[balrog]]||{{red|&}}||
+|-
+|[[Juiblex]]||{{brightgreen|&}}||
+|-
+|[[Yeenoghu]]||{{magenta|&}}||Has the touch-of-death bug
+|-
+|[[Orcus]]||{{magenta|&}}||
+|-
+|[[Geryon]]||{{magenta|&}}||
+|-
+|[[Dispater]]||{{magenta|&}}||
+|-
+|[[Baalzebub]]||{{magenta|&}}||
+|-
+|[[Asmodeus]]||{{magenta|&}}||
+|-
+|[[Demogorgon]]||{{magenta|&}}||
+|-
+|[[Riders#Death|Death]]||{{magenta|&}}||
+|-
+|[[Pestilence]]||{{magenta|&}}||
+|-
+|[[Famine]]||{{magenta|&}}||
+|-
+|[[mail daemon]]||{{brightblue|&}}||If MAIL defined at compile time
+|-
+|[[djinni]]||{{yellow|&}}||
+|-
+|[[giant eel]]||{{cyan|;}}||
+|-
+|[[electric eel]]||{{blue|;}}||
+|-
+|[[kraken]]||{{red|;}}||
+|-
+|[[newt]]||{{yellow|<nowiki>:</nowiki>}}||
+|-
+|[[gecko]]||{{green|<nowiki>:</nowiki>}}||
+|-
+|[[iguana]]||{{brown|<nowiki>:</nowiki>}}||
+|-
+|[[baby crocodile]]||{{brown|<nowiki>:</nowiki>}}||
+|-
+|[[lizard]]||{{green|<nowiki>:</nowiki>}}||
+|-
+|[[chameleon]]||{{brown|<nowiki>:</nowiki>}}||
+|-
+|[[crocodile]]||{{brown|<nowiki>:</nowiki>}}||
+|-
+|[[archeologist]]||{{white|@}}||
+|-
+|[[barbarian]]||{{white|@}}||
+|-
+|[[caveman]]||{{red|@}}||
+|-
+|[[cavewoman]]||{{white|@}}||
+|-
+|[[elf]]||{{white|@}}||
+|-
+|[[healer]]||{{white|@}}||
+|-
+|[[knight]]||{{white|@}}||
+|-
+|[[priest]]||{{white|@}}||
+|-
+|[[priestess]]||{{white|@}}||
+|-
+|[[rogue]]||{{white|@}}||
+|-
+|[[samurai]]||{{white|@}}||
+|-
+|[[tourist]]||{{white|@}}||If TOURIST defined at compile time
+|-
+|[[valkyrie]]||{{white|@}}||
+|-
+|[[wizard]]||{{white|@}}||
+|-
+|[[Lord Carnarvon]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Pelias]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Shaman Karnov]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Earendil]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Elwing]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Hippocrates]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[King Arthur]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Arch Priest]]||{{white|@}}||If MULDGN defined at compile time
+|-
+|[[Master of Thieves]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Lord Sato]]||{{magenta|@}}||If MULDGN defined at compile time
+|-
+|[[Twoflower]]||{{white|@}}||If MULDGN and TOURIST defined at compile time
+|-
+|[[Norn]]||{{magenta|@}}||If MULDGN defined at compile time
+|-

@@ -1,0 +1,1000 @@
+* [[Wand of extra healing]] in [[SLASH'EM]] and other variants
+
+{{disambig}}}
+&&%s&& %s Color {76040 2012-01-31T20:36:00Z {831 Tjr} Redirected page to [[Colors]] #REDIRECT [[Colors]]}
+&&%s&& %s Jelly {132443 2020-02-28T20:44:19Z {4001279 Umbire the Phantom}  {{otheruses|the monster class|the comestible|Lump of royal jelly}}
+
+The '''jellies''' are a [[monster class]] represented by the glyph {{monclasssym|j}}:
+
+* [[Image:blue_jelly.png]] {{monsymlink|blue jelly}}
+* [[Image:spotted_jelly.png]] {{monsymlink|spotted jelly}}
+* [[Image:ochre_jelly.png]] {{monsymlink|ochre jelly}}
+
+==Body parts==
+'''Jelly''' also refers to the grouping of body parts for the forms of jellies and [[jellyfish]]. It affects the messages referring to the appropriate body parts as follows:
+
+{| class="prettytable"
+!Body part{{refsrc|hack.h|226}}!!Description
+|-
+|Arm||Pseudopod (tentacle for jellyfish)
+|-
+|Eye||Dark spot
+|-
+|Face||Front
+|-
+|Finger||Pseudopod extension (tentacle for jellyfish)
+|-
+|Fingertip||Pseudopod extremity
+|-
+|Foot||Pseudopod root (tentacle for jellyfish)
+|-
+|Hand||Grasp (tentacle for jellyfish)
+|-
+|Handed||Grasped
+|-
+|Head||Cerebral area
+|-
+|Leg||Lower pseudopod
+|-
+|Light Headed||Viscous
+|-
+|Neck||Middle
+|-
+|Spine||Surface
+|-
+|Toe||Pseudopod extremity (tentacle for jellyfish)
+|-
+|Hair||Ripples
+|-
+|Blood||Juices
+|-
+|Lung||Surface
+|-
+|Nose||Sensor
+|-
+|Stomach||Stomach
+|}
+
+==SLASH'EM==
+[[SLASH'EM]] introduces additional jellies:
+
+* [[Image:clear_jelly.png]] {{monsymlink|clear jelly}}
+* [[Image:yellow_jelly.png]] {{monsymlink|yellow jelly}}
+* [[Image:orange_jelly.png]] {{monsymlink|orange jelly}}
+* [[Image:rancid_jelly.png]] {{monsymlink|rancid jelly}}
+
+==References==
+<references/>
+
+{{nethack-343}}
+
+[[Category:Monster classes]]
+[[Category:Body parts]]}
+&&%s&& %s Fungus {145704 2022-04-28T14:48:00Z {4000978 Aximili} /* SpliceHack */ '''Fungus''' are a class of monsters, represented by {{monclasssym|F}}.
+
+* {{monsymlink|lichen}}
+* {{monsymlink|brown mold}}
+* {{monsymlink|yellow mold}}
+* {{monsymlink|green mold}}
+* {{monsymlink|red mold}}
+* {{monsymlink|shrieker}}
+* {{monsymlink|violet fungus}}
+
+The fungi are of little threat to a player, and all leave corpses that are classified as [[vegan]] food.
+
+They are [[immunity to sickness|immune to sickness]], so players polymorphed into a fungus can safely [[eat]] old [[corpse]]s.
+
+Lichen, shriekers, and violet fungi can move slowly; the molds are all sessile and unable to move.
+
+==Body parts==
+
+'''Fungus''' refers to the grouping of [[body parts]] for the forms of rhyzomic life. It affects the messages referring to the appropriate body parts as follows:{{refsrc|polyself.c|1177}}
+
+{| class="prettytable"
+!Bodypart{{refsrc|hack.h|226}}!!Description
+|-
+|Arm||Mycelium
+|-
+|Eye||Visual area
+|-
+|Face||Front
+|-
+|Finger||Hypha
+|-
+|Fingertip||Hypha
+|-
+|Foot||Root
+|-
+|Hand||Strand
+|-
+|Handed||Stranded
+|-
+|Head||Cap area
+|-
+|Leg||Rhizome
+|-
+|Light headed||Sporulated
+|-
+|Neck||Stalk
+|-
+|Spine||Root
+|-
+|Toe||Rhizome tip
+|-
+|Hair||Spores
+|-
+|Blood||Juices
+|-
+|Lung||Gill
+|-
+|Nose||Gill
+|-
+|Stomach||Interior
+|}
+
+== Variants ==
+
+=== SLASH'EM ===
+Fungi in [[SLASH'EM]] behave somewhat differently than in vanilla. The first change is that any fungus that leaves a corpse, other than a lichen, has a 90% chance of reviving in the same manner as a [[troll]];{{refsrc|mkobj.c|764|version=SLASH'EM 0.0.7E7F2}} however, fungi only leave corpses 1/3 of the time. The second change is that fungi may grow on old corpses, as opposed to the corpse simply rotting away over time.
+
+Lastly, there are [[Mold (SLASH'EM)|two new types of mold]], black and disgusting, which are dangerous to new players but whose corpses are safe to eat and may provide poison resistance.
+
+==== Growth from corpses ====
+After 51 turns, there is a 50% chance that a fungus will grow from an old corpse,{{refsrc|mkobj.c|765|version=SLASH'EM 0.0.7E7F2}} as long as the corpse is not "in adverse conditions";{{refsrc|do.c|1685|version=SLASH'EM 0.0.7E7F2}} specifically, the corpse must not be acidic{{refsrc|mkobj.c|811|version=SLASH'EM 0.0.7E7F2}} or located within/on top of water, ice, or lava.
+
+The fungus grown will be a random member of the [[fungus]] class, biased towards [[sessile]] fungi,{{refsrc|do.c|1680|version=SLASH'EM 0.0.7E7F2}} and will destroy the corpse via its growth:
+{|class="prettytable"
+|-
+! Fungus !! Likelihood
+|-
+| Brown || align="right" | 14.8%
+|-
+| Green || align="right" | 14.8%
+|-
+| Red || align="right" | 14.8%
+|-
+| Yellow || align="right" | 14.8%
+|-
+| Black || align="right" | 14.8%
+|-
+| Disgusting || align="right" | 14.8%
+|-
+| Violet fungus || align="right" | 3.7%
+|-
+| Shrieker || align="right" | 3.7%
+|-
+| Lichen || align="right" | 3.7%
+|}
+
+==== Strategy ====
+Only 1 in 54 eligible corpses will grow into a lichen, and those themselves only leave corpses 1 time in 3. Thus, it is best to eat corpses if you are hungry, and farm for lichens only if you are satiated, the corpse is poisonous or else is thought to be old and tainted.
+
+It may also be useful to eat larger corpses for the extra nutrition, and leave small ones for mold growth; only one mold may grow on a corpse, regardless of size, and corpses of small creatures tend to give negligible amounts of nutrition.
+
+However, for [[monk]]s, farming may be a good idea in order to keep the [[vegetarian]] conduct.
+
+=== SporkHack ===
+[[SporkHack]] introduces the {{monsymlink|gray fungus}}, which has a passive [[disease]] attack.
+
+=== SpliceHack ===
+[[SpliceHack]] adds some new fungi:<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/monst.c</ref>
+
+* {{orange|F}} [[volatile mushroom]]s are explosive
+* {{brightmagenta|F}} [[screamer]]s can deal [[sonic]] damage
+* Moldiers are humanoid fungi that can use items
+** {{brown|F}} [[Brown moldier]]
+** {{yellow|F}} [[Yellow moldier]]
+** {{green|F}} [[Green moldier]]
+** {{red|F}} [[Red moldier]]
+
+Fungi grow on corpses, similar to SLASH'EM.<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/do.c#L2016</ref>
+
+All fungi receive an extra d6 damage from copper.<ref>https://github.com/NullCGT/SpliceHack/blob/b3a1427a43fd6ecc6088129e72ac594a1d3e531f/src/mondata.c#L348</ref><ref>https://github.com/NullCGT/SpliceHack/blob/b3a1427a43fd6ecc6088129e72ac594a1d3e531f/src/mondata.c#L340</ref><ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/uhitm.c#L844</ref>
+
+== Encyclopedia entry ==
+{{encyclopedia|
+Fungi, division of simple plants that lack chlorophyll, true
+stems, roots, and leaves.  Unlike algae, fungi cannot
+photosynthesize, and live as parasites or saprophytes.  The
+division comprises the slime molds and true fungi.  True
+fungi are multicellular (with the exception of yeasts); the
+body of most true fungi consists of slender cottony
+filaments, or hyphae.  All fungi are capable of asexual
+reproduction by cell division, budding, fragmentation, or
+spores.  Those that reproduce sexually alternate a sexual
+generation (gametophyte) with a spore-producing one.  The
+four classes of true fungi are the algaelike fungi (e.g.,
+black bread mold and downy mildew), sac fungi (e.g., yeasts,
+powdery mildews, truffles, and blue and green molds such as
+Penicillium), basidium fungi (e.g., mushrooms and puffballs)
+and imperfect fungi (e.g., species that cause athlete's foot
+and ringworm).  Fungi help decompose organic matter (important
+in soil renewal); are valuable as a source of antibiotics,
+vitamins, and various chemicals; and for their role in
+fermentation, e.g., in bread and alcoholic beverage
+production.
+|[ The Concise Columbia Encyclopedia ]
+}}
+
+== References ==
+<references/>
+[[Category:Monster classes]]
+[[Category:Body parts]]
+{{nethack-343}}}
+&&%s&& %s Null {19867 2007-03-20T19:15:27Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#null]]}
+&&%s&& %s News {19868 2007-03-20T19:15:55Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#news]]}
+&&%s&& %s Msg window {19869 2007-03-20T19:16:22Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#msg_window]]}
+&&%s&& %s Msghistory {19871 2007-03-20T19:17:57Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#msghistory]]}
+&&%s&& %s Menu select page {19872 2007-03-20T19:17:43Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_select_page]]}
+&&%s&& %s Menu select all {19876 2007-03-20T19:22:25Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_select_all]]}
+&&%s&& %s Corridor {98539 2015-12-18T21:31:45Z {4000080 ChasonBot}  {{features}}
+'''Corridors''', represented by {{lightgray|#}} (or {{white|#}} if lit, or {{lightgray|▒}} (unlit) and {{lightgray|▓}} (lit) with [[IBMgraphics]] ), are passageways connecting [[room]]s in the [[Dungeons of Doom]] and [[Minetown]]. Not all corridors lead to rooms, and many have hidden sections (called a secret passage) which must be located by [[Search|searching]]. Others may have [[boulder]]s blocking your path. It is never impossible to progress further in the dungeon. If you come to a dead end, search all the walls until you find a secret passage. If a boulder is blocking your path, either destroy it (if you can) or drop everything you have so you can squeeze by the boulder and try to push it to a better location.
+
+Corridors are usually single file and always unlit. [[Telepathy]], [[Warning]] or [[Infravision]] are helpful when walking in corridors.
+
+[[Gehennom]] and [[Sokoban]] also have passageways and single file routes. However these are the level itself, rather than connecting rooms.
+
+With the exception of death drops and the occasional [[scroll of teleportation]], there is no loot in corridors, but mercifully the only traps are from '''ad aerarium '''or ''''Vlad was here' '''[[closet]]s.
+== Strategy ==
+===Advantages===
+Corridors are usually single file, so you are less likely to be overwhelmed by numbers alone. Also, since they are only one tile wide, enemies are lined up for convenient disposal by [[wand]]s, [[spell]]s or [[ranged attack]]s.
+
+If you are overwhelmed by a long column of enemies you can displace your [[pet]] and switch places with it for a few turns so you can recuperate.
+
+===Disadvantages===
+The darkness means you have difficulty locating enemies without [[telepathy]], [[warning]] or [[infravision]]. This is a bigger problem for those roles relying on ranged attacks. A light source helps you avoid [[monster]]s, but it also helps enemies find you.
+
+===Tips===
+Move diagonally past corners to save time and get around faster. Corridors end when you find a [[door]]. If you are on an early level be sure a [[locked]] door isn't a [[shop]] door (there will be an engraving, "Closed for inventory"), before you [[kick]] it down. If the corridor ends and there is no door, there is likely a secret door nearby.
+
+Use a light source if you can spare it to avoid any awkward encounters. A [[spellbook of light|light spell]] is particularly useful since it is permanent.
+
+See if you can establish a circuit, a series of rooms and corridors you can circle around indefinitely to hold off and kill monsters which are as slow or slower but more powerful than you (by running in a circle you will regain [[HP]] and [[Power]] over time). See [[hit and run]].
+
+== Creation of Corridors ==
+You can create corridors yourself with the aid of a [[pick axe]], [[dwarvish mattock]], [[spellbook of dig|dig spell]], [[wand of digging]] or polymorphing into a [[rock mole]] or [[umber hulk]]. If you find large amounts of [[rock]]s, [[gem]]s or [[gold]] in a corridor this is a sign it has been dug by a monster. Always think of the possibility of a [[bones]] file character.
+
+In particular, without a means of teleportation you need this ability to reach a [[Vault]], a 2x2 room filled with gold.
+[[Category:Dungeon features]]
+{{nethack-343}}}
+&&%s&& %s Menu search {19879 2007-03-20T19:23:18Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_search]]}
+&&%s&& %s Menu previous page {19880 2007-03-20T19:24:16Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_previous_page]]}
+&&%s&& %s Menu next page {19881 2007-03-20T19:24:55Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_next_page]]}
+&&%s&& %s Menu last page {19882 2007-03-20T19:25:16Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_last_page]]}
+&&%s&& %s Menu invert page {19884 2007-03-20T19:25:49Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_invert_page]]}
+&&%s&& %s Menu invert all {19885 2007-03-20T19:26:28Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_invert_all]]}
+&&%s&& %s Menu headings {19886 2007-03-20T19:27:04Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_headings]]}
+&&%s&& %s Menu first page {19887 2007-03-20T19:27:56Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_first_page]]}
+&&%s&& %s Menu deselect page {19888 2007-03-20T19:28:33Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_deselect_page]]}
+&&%s&& %s Menu deselect all {19889 2007-03-20T19:29:35Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menu_deselect_all]]}
+&&%s&& %s Menustyle {19890 2007-03-20T19:30:15Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#menustyle]]}
+&&%s&& %s Lootabc {19891 2007-03-20T19:30:14Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#lootabc]]}
+&&%s&& %s Lit corridor {19892 2007-03-20T19:32:56Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#lit_corridor]]}
+&&%s&& %s Legacy {19893 2007-03-20T19:33:41Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#legacy]]}
+&&%s&& %s Ignitr {19894 2007-03-20T19:35:01Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#ignintr]]}
+&&%s&& %s Horsename {19895 2007-03-20T19:36:40Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#horsename]]}
+&&%s&& %s Starvation {126275 2019-07-17T05:00:59Z {4001313 Ardub23} Added some links '''Starvation''' is a death caused by going an excessive period of time without food. It is a common way for newbies, low-level [[wizard]]s and those attempting the [[foodless]] conduct to die, although it is more common to be killed by a monster while fainted from lack of food.
+
+To reduce the risk of starvation, [[eat]] everything you kill which is safe to eat (if your [[pet]] will eat it, you normally can too). It is advisable not to linger on cleared levels, where your only food source is the monsters which are randomly generated. [[Ring]]s and [[amulet]]s increase your food consumption by 5% each, so if you are low on food you may wish to avoid wearing them. Be especially cautious of rings of [[Ring of regeneration|regeneration]], [[Ring of conflict|conflict]], and [[Ring of hunger|hunger]], all of which add 50% to your food consumption, and do not carry so much equipment that you are [[Stressed]] or worse. Casting spells consumes nutrition unless you are a wizard with Intelligence at least 17.
+
+If you are weak or fainting from hunger and have no food, [[pray]] and your god may fill your stomach (deities regard this as a major problem). Polymorphing into a new version of yourself or dying while wearing an [[amulet of life saving]] also resets your hunger status.
+
+The {{spell of|stone to flesh}} spell can turn a [[boulder]] into a [[huge chunk of meat]], which will take you from Fainting to Satiated; this is mostly useful for [[Healer]]s.
+
+It is possible to subsist entirely on a [[horn of plenty]] periodically recharged with the [[Platinum Yendorian Express Card]].
+[[Category:Strategy]]
+{{nethack-343}}}
+&&%s&& %s Stinking cloud {148350 2022-10-04T22:40:42Z {4001279 Umbire the Phantom} variant no longer covered In ''[[NetHack]]'' and its variants, '''stinking cloud''' may refer to:
+
+* [[Poison cloud|The gas clouds]] generated as a [[dungeon feature]].
+* The product of a [[scroll of stinking cloud]].
+* The stinking cloud form of a [[yochlol]] in [[dNetHack]].
+
+{{disambig}}}
+&&%s&& %s Align {19898 2007-03-20T20:02:53Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#align]]}
+&&%s&& %s Autoquiver {19899 2007-03-20T20:03:16Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#autoquiver]]}
+&&%s&& %s Catname {19900 2007-03-20T20:03:33Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#catname]]}
+&&%s&& %s Checkpoint {19901 2007-03-20T20:03:41Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#checkpoint]]}
+&&%s&& %s Checkspace {19902 2007-03-20T20:04:13Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#checkspace]]}
+&&%s&& %s Extmenu {19903 2007-03-20T20:04:53Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#extmenu]]}
+&&%s&& %s Effects {19904 2007-03-20T20:05:14Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#effects]]}
+&&%s&& %s Dogname {19906 2007-03-20T20:05:19Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#dogname]]}
+&&%s&& %s Cmdassist {19907 2007-03-20T20:06:49Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#cmdassist]]}
+&&%s&& %s Confirm {19908 2007-03-20T20:07:11Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#confirm]]}
+&&%s&& %s Packorder {19911 2007-03-20T20:14:41Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#packorder]]}
+&&%s&& %s Perm invent {19912 2007-03-20T20:15:23Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#perm_invent]]}
+&&%s&& %s Pickup burden {19913 2007-03-20T20:15:11Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#pickup_burden]]}
+&&%s&& %s Pickup types {19914 2007-03-20T20:15:53Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#pickup_types]]}
+&&%s&& %s Pettype {19915 2007-03-20T20:15:36Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#pettype]]}
+&&%s&& %s Prayconfirm {19916 2007-03-20T20:16:18Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#prayconfirm]]}
+&&%s&& %s Rest on space {19917 2007-03-20T20:16:35Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#rest_on_space]]}
+&&%s&& %s Pushweapon {19918 2007-03-20T20:16:39Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#pushweapon]]}
+&&%s&& %s Runmode {19919 2007-03-20T20:16:43Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#runmode]]}
+&&%s&& %s Safe pet {19920 2007-03-20T20:16:26Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#safe_pet]]}
+&&%s&& %s Scores {19921 2007-03-20T20:17:10Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#scores]]}
+&&%s&& %s Showexp {19922 2007-03-20T20:17:11Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#showexp]]}
+&&%s&& %s Showrace {19923 2007-03-20T20:17:26Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#showrace]]}
+&&%s&& %s Showscore {19924 2007-03-20T20:17:46Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#showscore]]}
+&&%s&& %s Silent {19925 2007-03-20T20:17:56Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#silent]]}
+&&%s&& %s Sortpack {19926 2007-03-20T20:18:05Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#sortpack]]}
+&&%s&& %s Sparkle {19938 2007-03-20T20:37:11Z {630 Paxed} oops... #REDIRECT [[Options#sparkle]]}
+&&%s&& %s Suppress alert {19930 2007-03-20T20:36:05Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#suppress_alert]]}
+&&%s&& %s Standout {19931 2007-03-20T20:35:31Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#standout]]}
+&&%s&& %s Timed delay {19932 2007-03-20T20:36:30Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#timed_delay]]}
+&&%s&& %s Toptenwin {19933 2007-03-20T20:36:05Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#toptenwin]]}
+&&%s&& %s Travel {144849 2022-03-07T10:26:31Z {4000865 Tomsod} _ are altars '''Travel''' is a feature in some ''[[NetHack]]'' ports that allows one to move quickly along any already explored path on the current level. '''Travel''' is especially helpful when used to move to staircases or thrones quickly. NetHack uses a shortest-path algorithm to find a safe route to the destination, which is then carried out quickly. Your travel will be interrupted if something sufficiently "interesting" happens, as with the {{kbd|g}} command; as of [[NetHack 3.6.3]], this also includes [[engraving]]s.
+
+Travel is activated using the [[underscore]] {{kbd|_}} key, then [[Targeting|selecting a destination]], then pressing the [[period]] {{kbd|.}} key. For example, to travel to the down staircase on the current level, type {{kbd|_}}{{kbd|>}}{{kbd|.}}, or to travel to an altar type {{kbd|_}}{{kbd|_}}{{kbd|.}}. Some ports allow travel to be activated by mouse-clicking (or touching with a touch-screen) on the destination. The travel command can also be prefixed with {{kbd|m}} to pop up a menu of interesting targets in sight, from which you can select the travel target.
+
+The [[Options#travel|'''travel''' configuration option]] turns the travel command on/off. The [[Options#runmode|'''runmode''' configuration option]] determines how often the screen updates when travelling and running.
+
+{{todo|Please clarify the algorithm that selects between multiple similar targets, such as when there are two downstairs or two thrones on a level.}}
+[[Category:Commands]]
+{{nethack-364}}}
+&&%s&& %s Verbose {19935 2007-03-20T20:36:24Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#verbose]]}
+&&%s&& %s Windowtype {19937 2007-03-20T20:37:08Z {630 Paxed} red #REDIRECT [[Options#windowtype]]}
+&&%s&& %s Align status {19940 2007-03-20T20:39:17Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#align_status]]}
+&&%s&& %s Align message {19941 2007-03-20T20:39:17Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#align_message]]}
+&&%s&& %s Ascii map {19942 2007-03-20T20:39:40Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#ascii_map]]}
+&&%s&& %s Eight bit tty {19943 2007-03-20T20:39:51Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#eight_bit_tty]]}
+&&%s&& %s Font map {19944 2007-03-20T20:40:04Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_map]]}
+&&%s&& %s Font menu {19945 2007-03-20T20:40:11Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_menu]]}
+&&%s&& %s Font status {19946 2007-03-20T20:40:39Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_status]]}
+&&%s&& %s Font message {19947 2007-03-20T20:40:03Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_message]]}
+&&%s&& %s Font text {19948 2007-03-20T20:40:56Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_text]]}
+&&%s&& %s Font size map {19949 2007-03-20T20:40:58Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_size_map]]}
+&&%s&& %s Font size menu {19950 2007-03-20T20:41:42Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_size_menu]]}
+&&%s&& %s Font size message {19951 2007-03-20T20:41:55Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_size_message]]}
+&&%s&& %s Config file {23701 2007-12-12T22:23:00Z {17 Addps4cat} fixed dbl redir #REDIRECT [[Options]]}
+&&%s&& %s Font size status {19973 2007-03-21T16:29:20Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_size_status]]}
+&&%s&& %s Font size text {19974 2007-03-21T16:30:17Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#font_size_text]]}
+&&%s&& %s Fullscreen {19975 2007-03-21T16:30:28Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#fullscreen]]}
+&&%s&& %s Hilite pet {19976 2007-03-21T16:31:02Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#hilite_pet]]}
+&&%s&& %s Large font {19977 2007-03-21T16:31:31Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#large_font]]}
+&&%s&& %s Map mode {19979 2007-03-21T16:32:01Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#map_mode]]}
+&&%s&& %s Mouse support {19980 2007-03-21T16:32:22Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#mouse_support]]}
+&&%s&& %s Player selection {19982 2007-03-21T16:34:27Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#player_selection]]}
+&&%s&& %s Popup dialog {19983 2007-03-21T16:34:44Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#popup_dialog]]}
+&&%s&& %s Preload tiles {19985 2007-03-21T16:35:12Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#preload_tiles]]}
+&&%s&& %s Scroll amount {19986 2007-03-21T16:35:24Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#scroll_amount]]}
+&&%s&& %s Scroll margin {19987 2007-03-21T16:34:51Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#scroll_margin]]}
+&&%s&& %s Softkeyboard {19988 2007-03-21T16:36:08Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#softkeyboard]]}
+&&%s&& %s Splash screen {19989 2007-03-21T16:36:20Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#splash_screen]]}
+&&%s&& %s Tiled map {19990 2007-03-21T16:36:44Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#tiled_map]]}
+&&%s&& %s Tile file {19991 2007-03-21T16:36:08Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#tile_file]]}
+&&%s&& %s Tile height {19992 2007-03-21T16:37:04Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#tile_height]]}
+&&%s&& %s Tile width {19993 2007-03-21T16:36:33Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#tile_width]]}
+&&%s&& %s Use inverse {19994 2007-03-21T16:37:50Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#use_inverse]]}
+&&%s&& %s Vary msgcount {19995 2007-03-21T16:38:02Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#vary_msgcount]]}
+&&%s&& %s Windowcolors {19996 2007-03-21T16:38:26Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#windowcolors]]}
+&&%s&& %s Wraptext {19998 2007-03-21T16:38:36Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#wraptext]]}
+&&%s&& %s Altkeyhandler {19999 2007-03-21T16:38:47Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#altkeyhandler]]}
+&&%s&& %s Altmeta {20000 2007-03-21T16:39:45Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#altmeta]]}
+&&%s&& %s BIOS {20001 2007-03-21T16:39:53Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#BIOS]]}
+&&%s&& %s Flush {20002 2007-03-21T16:40:16Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#flush]]}
+&&%s&& %s MACgraphics {20003 2007-03-21T16:40:28Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#MACgraphics]]}
+&&%s&& %s Page wait {20005 2007-03-21T16:42:48Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#page_wait]]}
+&&%s&& %s Rawio {20006 2007-03-21T16:43:11Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#rawio]]}
+&&%s&& %s Soundcard {20009 2007-03-21T16:46:10Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#soundcard]]}
+&&%s&& %s Subkeyvalue {20010 2007-03-21T16:46:31Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#subkeyvalue]]}
+&&%s&& %s Video {20011 2007-03-21T16:46:40Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#video]]}
+&&%s&& %s Videocolors {20012 2007-03-21T16:47:00Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#videocolors]]}
+&&%s&& %s Videoshades {20013 2007-03-21T16:47:11Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#videoshades]]}
+&&%s&& %s Configuration file {23495 2007-12-04T10:12:11Z {107 Blueshade} redirect to [[Options]], in this form it wasn't of particularly good use anyway... #REDIRECT [[Options]]}
+&&%s&& %s Slow digestion {20021 2007-03-21T17:13:39Z {630 Paxed} redirect to [[ring of slow digestion]] #REDIRECT [[ring of slow digestion]]}
+&&%s&& %s DES-file format {20022 2007-03-21T17:14:53Z {630 Paxed} redirect to [[des-file format]]. sillycaps... #REDIRECT [[des-file format]]}
+&&%s&& %s Dungeon features {20063 2007-03-23T14:56:19Z {630 Paxed} redirect to [[dungeon feature]] instead. #REDIRECT [[Dungeon feature]]}
+&&%s&& %s Dungeon.def {110335 2018-05-12T11:47:59Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/dungeon.def]]}
+&&%s&& %s WIZKIT {30501 2008-03-11T19:37:37Z {559 Mniot} redirect to Options#wizkit #REDIRECT [[Options#wizkit]]}
+&&%s&& %s Teleport away {20029 2007-03-21T17:40:46Z {630 Paxed} redirect to [[spellbook of teleport away]] #REDIRECT [[spellbook of teleport away]]}
+&&%s&& %s Room {135349 2020-07-27T01:47:37Z {4000693 Phol ende wodan} clear out most of 2007-era original article text since it was poorly written, was documented elsewhere, or was pointless (e.g. describing the anatomy of a room); rewrite strategy section '''Rooms''' are a feature ubiquitous in [[NetHack]]. A room is an area, usually rectangular, that is separated from other areas by [[wall]]s and is typically paved with [[floor]] terrain. 
+
+The [[Dungeons of Doom]] consist mostly of "room-and-corridor" levels, containing a number of rooms connected by [[corridor]]s. Some rooms contain [[stairs]], which connect different levels to each other. They also may contain [[dungeon feature]]s, [[monster]]s, [[objects]], and [[traps]], or may be turned into a [[special room]].
+
+
+       ------       --------        -------
+      #......#######|.......########+.....|                ------    -------
+      #|....|      #|.....<|        |>....|              ##.....|    |.....|
+      #|.....#     #|......|        |.....|                |....|   #+.....|
+      #|....|#     #|......|        ---.-.-               #+....|   #|.....|
+      #------#     #|......|           # #              ###----|-   #|.....|
+      # #    #     #---.----           # ###            #    ####   #-------
+      #      #     #########           ### #          ###     # #   ####
+      #      #           #               # #####      #     ### ###    #
+      #      #           #              -.-----+----###     #     #    #
+      #      ###         #              |..........|#       ########   #
+      #        #         #              |...........#      ------.-.---#
+ -----#        ###    #  #              |..........|       |...........#
+ |....#          # ------.----          ------------       |..........|
+ |...|           ##+.........|                             |..........|
+ |...|             |..........################             ------------
+ -----             |.........|                               #
+  #                |.........|
+                   -----------
+
+
+
+== Generation ==
+This section covers only typical non-special, room-and-corridor levels in the [[Dungeons of Doom]]. Rooms also appear in special levels and certain [[Quest]] filler levels, but those typically do not have the random generation described below.
+
+On each level, a number of rooms will be generated, and then they will be connected up by [[corridor]]s and [[door]]s. The algorithm for placing rooms makes it difficult to predict how many rooms a level will contain, but most levels contain between 5 and 10 rooms, with occasional appearances of levels with as few as 4 or as many as 12. On these levels, one room may be selected to become a [[special room]].
+
+[[Vault]]s are a special case: they do not count as a special room despite technically being one, and they are not connected to the rest of the level by corridors.
+
+{{upcoming|NetHack 3.7.0|Each level will also generate up to two [[themed room]]s, which can be irregularly shaped or contain interesting contents and terrain.}}
+
+There tends to be a fixed rather than area-based chance of generating dungeon features, monsters, objects, and traps in each non-special room. Therefore, a level with more rooms will contain more of these things.
+
+=== Lit rooms ===
+<!-- Math:
+"Lit check 1": rnd(1 + depth) < 11. Always true above level 10. On level 10, there is a 10/11 chance of passing this check; on level 11 there is a 10/12 chance, etc.
+"Lit check 2": rn2(77). Fixed 76/77 chance.
+Both lit checks must pass in order for a room to be lit.
+-->
+Rooms generate either as lit or unlit, meaning that every square in a room will be lit up or dark. The chance of a room being lit depends solely on the [[level difficulty]], with fewer lit rooms deeper into the dungeon:{{refsrc|src/sp_lev.c|1154|nethack=3.6.6}}
+
+Level 9 or above: <math>\frac{76}{77}</math>
+
+Level 10 or below: <math>\frac{76}{77}\cdot\frac{10}{\text{difficulty} + 1}</math>
+
+== Strategy ==
+Finding rooms is not always straightforward. If you see no obvious way forward, common tactics include:
+* Be persistent in [[search]]ing. If you can identify a large unexplored area of the map, more rooms may be hidden there. Search along the edges of this area, especially the walls of known rooms. Failing that, be aware that rooms can be as small as 2x3 and hence tucked into places you would not expect them.
+* Try using the [[terrain]] command to show the map without monsters or objects - the stairs may be hidden under a monster or object.
+* Use [[magic mapping]].
+* Fall down a [[pit]] or [[hole]] to go to a lower level, then explore back up.
+
+== References ==
+<references />
+
+[[Category:Dungeon features]]
+{{nethack-366}}}
+&&%s&& %s + {20044 2007-03-21T22:13:48Z {458 Kernigh} [[+]] moved to [[Plus sign]]: Revert; the new title and url seem to cause errors. #REDIRECT [[Plus sign]]}
+&&%s&& %s Xplevel {20055 2007-03-22T18:14:06Z {630 Paxed} redirect to [[experience level]] #REDIRECT [[Experience level]]}
+&&%s&& %s ^A {20059 2007-03-22T19:22:44Z {630 Paxed} redirect to [[A]] #REDIRECT [[A]]}
+&&%s&& %s ^P {20060 2007-03-22T19:24:20Z {630 Paxed} redirect to [[P]] #REDIRECT [[P]]}
+&&%s&& %s Environment variable {134792 2020-07-04T20:01:37Z {4000693 Phol ende wodan} ... but capitalize Treasure for consistency with the rest of the table NetHack checks a number of [http://en.wikipedia.org/wiki/Environment_variable environment variables].  Some are useful for anyone, some are just for [[wizard mode]].  HOME, MAIL, and TERM are used by many programs, not just NetHack, so caution should be taken when editing them.
+
+== General use ==
+* NETHACKOPTIONS - You can define configuration [[options]] here.
+* HACKOPTIONS - The same as NETHACKOPTIONS, but used only if NETHACKOPTIONS was not defined.
+* MAIL - On window ports that support reading mail, this should point to your mail spool file.
+* MAILREADER - On window ports that support reading mail, NetHack will spawn this mailreader to read your mail.
+* ROGUEOPTS - Set the ghost name in the [[Rogue level]]. For example, setting ROGUEOPTS's value to <code>name=Foo</code> would name the ghost to 'Foo'
+* TERM - Terminal type.
+* HOME - Your home directory.
+
+== Debugging ==
+All of these options except NH_HEAPLOG require that the game is in wizard mode.
+* WIZKIT - As the [[options#wizkit|wizkit option]], start with extra items.
+* SHOPTYPE - Forces the creation of a [[special room]] on every level, even if this would violate normal room creation rules. For example, setting this to <code>z</code> will make a [[Treasure zoo]] on every level. (see table to right)
+
+{|class="prettytable striped" style="float:right"
+! colspan="2" | SHOPTYPE values and their meanings
+|-
+!Letter
+!Room
+|-
+|z or Z
+|[[Treasure zoo]]
+|-
+|m or M
+|[[Graveyard]]
+|-
+|b or B
+|[[Beehive]]
+|-
+|t or T or \
+|[[Throne room]]
+|-
+|s or S
+|[[Barracks]]
+|-
+|a or A
+|[[Anthole]]
+|-
+|c or C
+|[[Cockatrice nest]]
+|-
+|l or L
+|[[Leprechaun hall]]
+|-
+|_
+|[[Temple]]
+|-
+|<nowiki>}</nowiki>
+|[[Swamp]]
+|-
+|g or G
+|General store
+|-
+|Object symbol
+|[[Shop]] that sells those objects
+|}
+
+* SPLEVTYPE - Forces NetHack to use certain layouts for the [[special level]]s that have multiple layouts. For example: <code>bigrm-2,minetn-5</code> would force the 2nd bigroom variant (with the dark and light areas), and the 5th minetown variant (the grotto town).
+* NH_HEAPLOG - If the value is a file name and NetHack can write to that file, all memory allocations and release information done by NetHack is written there.  This is only available if the MONITOR_HEAP [[compile-time options|compile-time option]] is enabled, which by default it it is not.
+
+[[Category:Development]]
+[[Category:Options]]
+{{nethack-343}}}
+&&%s&& %s ?oEW {20078 2007-03-23T18:31:08Z {0 } Redirecting to [[Scroll of enchant weapon]] #REDIRECT [[Scroll of enchant weapon]]}
+&&%s&& %s Martial arts {148144 2022-09-11T18:24:32Z {187 Darth l33t} reorg and update The '''Martial arts''' [[skill]] is used when attacking or [[kick]]ing enemies while wielding nothing. [[Monk]]s and [[samurai]] possess this skill, superior to the [[bare hands]] skill. The base damage for a martial arts attack is d4.
+
+When attacking using martial arts without a [[shield]], there is a chance of dealing a [[staggering blow]], knocking the enemy backwards.{{refsrc|uhitm.c|972}}
+
+==To-hit and damage==
+In [[NetHack]], an attack's skill-based damage bonus only applies if the attack rolls at least a 2 on its primary damage die.{{refsrc|uhitm.c|438}}{{refsrc|uhitm.c|904}} Therefore, the average damage for a d4 attack is not 2.5 + ''bonus'', but 2.5 + (0.75 * ''bonus''). This makes the +9 bonus for Grand Master skill less powerful than it might seem. 
+
+Attacking with martial arts causes [[silver damage]] if you are wearing a silver ring and no [[gloves]], similar to any wielded silver object. Blessed gloves or [[boots]] (when kicking) cause +d4 blessed damage against [[demon]]s and the [[undead]].
+
+In addition to the bonuses below, a Monk not wearing body armor or a shield gets an additional to-hit bonus of (''XL'' / 3) + 2.
+
+{| class="prettytable" style="text-align: center"
+! &nbsp;
+! colspan=3 | Bare-hand
+! colspan=3 | Martial
+|-
+! Skill Level
+! +Hit
+! +Dam
+! Avg.
+! +Hit
+! +Dam
+! Avg.
+|-
+!Unskilled
+||+1||0||1.5||style="color:gray"|''+2''||style="color:gray"|''+1''||style="color:gray"|''3.25''
+|-
+!Basic
+||+1||+1||2||+3||+3||4.75
+|-
+!Skilled
+||+2||+1||2||+4||+4||5.5
+|-
+!Expert
+||+2||+2||2.5||+5||+6||7
+|-
+!Master
+||+3||+2||2.5||+6||+7||7.75
+|-
+!Grand Master
+|style="color:gray"|''+3''||style="color:gray"|''+3''||style="color:gray"|''3''||+7||+9||9.25
+|}
+
+Note that both roles capable of martial arts start with Basic skill, and no roles can advance to Grand Master in bare hands, so two entries in the table are not actually possible.
+
+{{upcoming|NetHack 3.7.0|The martial arts damage bonus is now applied to all hits, though hits that roll a 1 on their d4 will still not train skill. The updated damage numbers are:}}
+
+{| class="prettytable" style="text-align: center"
+! &nbsp;
+! colspan=3 | Bare-hand
+! colspan=3 | Martial
+|-
+! Skill Level
+! +Hit
+! +Dam
+! Avg.
+! +Hit
+! +Dam
+! Avg.
+|-
+!Unskilled
+||+1||0||1.5||style="color:gray"|''+2''||style="color:gray"|''+1''||style="color:gray"|''3.5''
+|-
+!Basic
+||+1||+1||2||+3||+3||5.5
+|-
+!Skilled
+||+2||+1||2||+4||+4||6.5
+|-
+!Expert
+||+2||+2||2.5||+5||+6||8.5
+|-
+!Master
+||+3||+2||2.5||+6||+7||9.5
+|-
+!Grand Master
+|style="color:gray"|''+3''||style="color:gray"|''+3''||style="color:gray"|''3''||+7||+9||11.5
+|}
+
+==Martial arts skill==
+{{Martial arts skill table}}
+
+==Strategy==
+The samurai has recourse to much better attacks than martial arts, but the extra damage compared to bare hands can come in handy against [[acid blob]]s and other weapon-damaging monsters.
+Carrying some form of [[ranged attack]] will greatly reduce your need to resort to unarmed combat, and even a monk can benefit from having projectiles at his disposal.
+
+A [[ring of increase damage]] is a worthwhile possession for a monk who loses out on benefits of weapon [[enchantment]], and these can be [[eating jewelry|eaten]] if appropriately polymorphed and the ring is of the appropriate type (metal for [[metallivore]]s, wooden for a [[gelatinous cube]]). The skill level for martial arts can reach Grand Master with large bonuses eventually accumulating.
+
+In the late game, martial arts will inevitably fall behind other weapon skills due to the low base damage and lack of an enchantment bonus. A +6 [[spear]] at Basic skill deals about the same average damage as Grand Master martial arts, and only requires one skill slot rather than eight. A lawful Monk can unrestrict [[long sword]] skill by a [[sacrifice gift]] and then dip for [[Excalibur]], which even at +0 outdamages Grand Master martial arts, grants several useful effects, and again only needs one skill slot.
+
+Martial arts attacks do not break the [[never hit with a wielded weapon]] [[conduct]], but neither do attacks from wielded non-weapon items, or ranged attacks.
+
+==History==
+In 3.4.3 and some variants based on it, martial arts erroneously received no skill-based to-hit bonus, because the code which grants it is only called if you're wielding a weapon. This was fixed in 3.6.0.
+
+==Variants==
+
+===SporkHack===
+
+[[SporkHack]] grants a [[to-hit]] bonus if you advance the skill.
+
+===FIQHack===
+
+Martial arts have been buffed in [[FIQHack]]. Glove enchantment is used when calculating damage, and martial arts attacks no longer do only 1 damage 25% of the time.
+
+== References ==
+
+<references/>
+
+{{nethack-366|offset=1}}
+{{slashem-7E7}}
+[[Category:Weapons]]}
+&&%s&& %s Ken Arromdee {20084 2007-03-23T20:29:51Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Mike Stephenson {20085 2007-03-23T20:30:06Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Janet Walz {20086 2007-03-23T20:32:02Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Michael Allison {20087 2007-03-23T20:35:30Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s David Cohrs {20088 2007-03-23T20:35:37Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Jessie Collet {20089 2007-03-23T20:35:49Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Ken Lorber {20090 2007-03-23T20:36:31Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Dean Luick {20091 2007-03-23T20:36:38Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Pat Rankin {20092 2007-03-23T20:36:48Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Paul Winner {20093 2007-03-23T20:36:54Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Warwick Allison {20094 2007-03-23T20:37:00Z {630 Paxed} redirect to [[DevTeam]] #REDIRECT [[DevTeam]]}
+&&%s&& %s Detect treasure {20097 2007-03-23T20:44:26Z {630 Paxed} redirect to the spellbook #REDIRECT [[Spellbook of detect treasure]]}
+&&%s&& %s Prayer timeout {149228 2022-12-09T04:29:35Z {4001483 Cathartes} /* Typical prayer timeouts */ upcoming (3.7 fix for angering a god possibly shortening the prayer timeout) Your '''prayer timeout''' is the amount of time you need to wait before your [[god]] will accept another [[prayer]]. Gods in ''[[NetHack]]'' are often benevolent, but prefer if you wait some time between prayers. The initial value of your prayer timeout is set to 300, and decreases by one each game [[turn]]. That means it is generally safe to pray on turn 301, but not on 300. If you are [[fast]] or very fast, you may move more than once per game turn, and your prayer timeout may appear longer because you take more actions in the same number of game turns. A [[wand of enlightenment | wand]] or [[potion of enlightenment]] can be used to determine if it is safe to pray.
+
+The exact amount by which your prayer timeout increases after praying is a [[rnz|complex mathematical function]] involving several random variables, causing the increase to ''usually'' range between 50 and 1000, though it can be much higher on occasion (see the tables below for precise numbers).
+
+== Praying ==
+
+Your prayer timeout is reset by praying. The amount it is reset to depends on several things:
+*Whether you have been [[crowned]]{{refsrc|pray.c|1019}}.
+*If you've killed the [[Wizard of Yendor]] or have performed the [[invocation]]{{refsrc|spell.c|255}}{{refsrc|wizard.c|550}}.
+
+Also your prayer timeout may be incremented further if you've done any of the following actions:
+* Being converted to another [[align]]ment through cross-aligned [[sacrifice]]
+* Praying at an [[altar]] not of your alignment
+
+{{upcoming|NetHack 3.7.0|If the game goes on longer than 100 000 turns, the prayer timeout after successfully praying is now increased by 1 turn per 100 turns beyond that time. This is to counter denial of service on public servers by pasting the same commands indefinitely.<ref>https://github.com/NetHack/NetHack/commit/0968d06</ref>}}
+
+== Wishing ==
+
+A successful [[wish]] increases your prayer timeout. The 95% confidence value is an additional 145 turns and the 100% confidence value is 150 turns. See below for more information on confidence values.
+
+== Sacrificing corpse ==
+
+The only way to decrease your prayer timeout (other than waiting) is to [[sacrifice]] [[corpse]]s at a co-aligned altar. This is governed by the following formula which depends on your alignment.
+
+*Chaotic: <math>\frac{M \times 500}{24}</math>
+
+*Lawful and neutral: <math>\frac{M \times 300}{24}</math>
+
+Where <var>M</var> is the [[Monsters (by difficulty)|difficulty level]] of the monster the corpse came from. The value from above is then subtracted from your prayer timeout. You can determine if it is safe to pray depending on what [[Sacrifice#Prayer timeouts and sacrifice | message you received]] after your sacrifice.
+
+== Typical prayer timeouts ==
+
+The confidence value is the prayer timeout value that will result 95% of the time. In other words, if you've waited that many [[turns]], you can be 95% confident that you can pray again. As you can see, the 100% confidence value is extremely large and fairly useless except for those who fear the [[RNG]]. (Amusingly, for crowned characters, praying too early may actually shorten the prayer timeout.)
+
+{{upcoming|NetHack 3.7|Prior to {{commit|dde1ae2e9bf8ed6500e088a6c5f5d9adbb1b93c5}}, being smited by a god would unconditionally set prayer timeout to rnz(300), possibly making it shorter than the existing timeout, especially for a crowned character.  Being smited now sets the prayer timeout to whichever is greater: the existing prayer timeout, or rnz(300).}}
+
+{|class="prettytable"
+! Prayer !! 95% confidence !! 100% confidence if XL &le; 17 !! 100% confidence at XL 30
+|-
+| God is displeased || 1053 || 2998 || 5997
+|-
+| God is pleased || 1229 || 3498 || 6996
+|-
+| God is pleased, and you've been crowned OR are a [[demigod]]* || 3980 || 13493 || 26986
+|-
+| God is pleased, and you've been crowned AND are a [[demigod]]* || 7479 || 23488 || 46976
+|}
+
+<nowiki>*</nowiki>This refers to having killed the [[Wizard of Yendor]] or performed the [[invocation ritual]].
+
+The waiting time is graphed below as a function of the desired confidence level (assuming you are level 17 or lower): <gallery widths="100" captionalign="center">
+Image:PrayerTimeoutConfidenceHappy95.svg|Pleased, zoom 95-100%
+Image:PrayerTimeoutConfidenceHappy.svg|Pleased
+Image:PrayerTimeoutConfidenceCrowned.svg|Pleased, crowned
+Image:PrayerTimeoutConfidenceBoth.svg|Pleased, crowned & Rodney
+</gallery>
+
+== References ==
+<references/>
+
+{{nethack-343}}
+[[Category:Religion]]}
+&&%s&& %s Fruit (option) {20101 2007-03-23T20:50:29Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#fruit]]}
+&&%s&& %s Slasher {20103 2007-03-23T20:57:44Z {630 Paxed} redirect to [[pet name]] #REDIRECT [[Pet name]]}
+&&%s&& %s Sirius {20104 2007-03-23T20:58:54Z {630 Paxed} redirect to [[pet name]] #REDIRECT [[Pet name]]}
+&&%s&& %s Historic {104976 2017-02-12T16:34:58Z {4000693 Phol ende wodan} Fix redirect to historic statue section #REDIRECT [[Statue#Historic statues]]}
+&&%s&& %s Hidden door {141635 2021-07-06T18:16:09Z {4001463 Actual-nh} Make redirect anchor target work #REDIRECT [[Door#Secret_doors]]}
+&&%s&& %s Search command {36709 2008-12-04T08:07:21Z {523 Marcmagus} Redirect to search #REDIRECT [[Search]]}
+&&%s&& %s CoMR {20118 2007-03-24T14:27:52Z {630 Paxed} redirect to [[Cloak of magic resistance]] #REDIRECT [[Cloak of magic resistance]]}
+&&%s&& %s Mail (option) {20127 2007-03-24T14:54:20Z {630 Paxed} redirect to [[Options]] #REDIRECT [[Options#mail]]}
+&&%s&& %s Projectile {136235 2020-11-11T21:06:16Z {4000693 Phol ende wodan} /* Breakage */ typo '''Projectiles''' are any [[object]]s thrown or [[kick]]ed by [[you]] or a [[monster]], or shot with a launcher. Related but separate are [[ranged weapon]]s, which are [[weapon]]s monsters will attack you with from a distance.
+
+To throw a projectile you can either [[throw]] {{kbd|t}} it, or [[quiver]] {{kbd|Q}} a stack of it and then [[fire]] {{kbd|f}} from that stack. There is no bonus or penalty for using the fire command; it is merely a convenience. (Gold is an exception.)
+
+The [[autoquiver]] option can make firing simpler and works only with {{kbd|f}}.
+
+A [[greased]] projectile has a chance of slipping when thrown or fired.  A [[BUC|cursed]] projectile may also slip or misfire.
+
+== Thrown objects ==
+
+Any item can be thrown (and thus be considered a projectile) if the entity throwing it is strong enough. Use the {{kbd|t}}hrow command to provide a list of readily-thrown items. You can expand this list to include your entire inventory by pressing {{kbd|*}}.
+
+Some objects however are designed to be thrown:
+*[[boomerang]]s
+*[[dagger]]s
+*[[dart]]s
+*[[javelin]]s
+*[[knife|knives]]
+*[[shuriken]]
+*[[spear]]s
+
+The [[artifact weapon]] [[Mjollnir]] requires a [[strength]] of 25 to throw.{{refsrc|dothrow.c|85}} If thrown by a [[Valkyrie]], it will usually return to her hand.{{refsrc|dothrow.c|1021}} If that fails or if [[you]] are [[blind]], [[fumbling]], [[confused]], [[stunned]], or [[hallucinating]]{{refsrc|dothrow.c|867}}{{refsrc|dothrow.c|1026}} Mjollnir falls at your feet or you get hit.
+
+Since 3.6.1 the humble [[aklys]] is a proper thrown weapon with a Mjollnir-like behavior. It has no strength or role requirements but also averages far less damage (including possibly to yourself) than the artifact. Some roles restricted in ranged weapon fighting but with the [[Club#Club_skill|club skill]] may find it useful.
+
+These objects are unaffected by the use of a [[launcher]].
+
+== Launchers and their ammunitions ==
+
+Other objects, called ammunition projectiles, or shot projectiles, are designed to be used with a launcher.
+
+{| class="prettytable"
+! colspan="2" style="font-size:larger" | Launchers and their ammunitions
+|-
+! Launcher !! Ammunition allowed
+|-
+| Sling
+|
+* [[rock]]s, [[gem]]s, [[flint stone]]s, and other [[gray stone]]s
+|-
+| Bow
+|
+* [[arrow]]s, [[elven arrow]]s, [[orcish arrow]]s, [[silver arrow]]s, and [[ya]].
+|-
+| Crossbow
+|
+* [[crossbow bolt]]s
+|}
+
+To get the most out of the ammunition projectiles, you need to [[wield]] {{kbd|w}} the corresponding [[launcher]] before attempt to shoot the projectiles. Then you may [[throw]] {{kbd|t}} or [[quiver]] {{kbd|Q}} and [[fire]] {{kbd|f}} them just as you would the thrown projectiles.
+
+These shot projectiles can also be thrown in the absence of a [[launcher]], but they will be less effective.
+
+== Breakage ==
+
+Some projectiles may break (or '''mulch''') when they score a hit. Misses and projectiles that do not cross paths with any monsters never break. 
+
+[[Glass]] objects, including [[potions]], may also break when thrown regardless of whether they hit anything, but this is handled by a different code path which prints '''"An <object> shatters into a thousand pieces!"'''. Other projectile breakage of non-fragile objects is silent and prints nothing.
+
+The projectiles subject to breaking are:
+* [[arrow]]s, [[orcish arrow]]s, [[elven arrow]]s, [[silver arrow]]s, and [[ya]]
+* [[crossbow bolt]]s
+* [[dart]]s
+* [[shuriken]]
+* all [[gem]]s, [[rock]]s, and [[flint stone]]s
+
+All other thrown objects, such as [[dagger]]s, [[spear]]s, [[javelin]]s, [[knife|knives]], [[boomerangs]], and the other [[gray stone]]s, never break when thrown.
+
+[[Blessed|Blessing]] these projectiles lowers the chance of them breaking by an amount that depends on your [[Luck]]. [[Enchanting]] them also reduces this chance. [[Stone]]s and [[gem]]s cannot be [[enchanting|enchanted]], but if they are blessed they will benefit from the reduced chance of breaking due to Luck.
+
+The chance of breakage can be calculated as follows:
+
+# Compute <code>chance = 3 + erosion - enchantment</code>, where <code>erosion</code> is 3 if thoroughly [[erosion|eroded]], 2 if very eroded, 1 if just eroded, and 0 otherwise.  If the projectile has both types of erosion for its material, use the greater erosion only; erosions do not stack.
+# If <code>chance</code> is at least 2, the projectile has a <code>(chance-1)/chance</code> chance of breakage.  Otherwise, it has a 1/4 chance. This effectively means that all non-eroded projectiles that are +2 or higher will always have this base 1/4 chance of breakage; enchanting it further will not help.
+# If the projectile is blessed, it further decreases the chance of breaking, dependent on the character's luck. Specifically, if <code>rnl(4)</code> evaluates to 0, the projectile will not break. {{refsrc|dothrow.c|1522|version=NetHack 3.6.0|comment=Breakage: Blessed projectiles}}  Multiply the value from step 2 by the value from the table below.  The result is the total chance of the projectile breaking.
+
+{|class="prettytable"
+!Luck Range
+!Approximate chance of breakage (rnl(4) > 0)
+|-
+| -13 to -1
+|99.3%
+|-
+| 0 to 1
+|75%
+|-
+|2 to 4
+|50.5%
+|-
+|5 to 7
+|26.2%
+|-
+|8 to 13
+|1.8%
+|}
+
+===Longevity===
+If you have <math>n</math> projectiles and <math>p</math> is the chance of a projectile breaking on a single hit, the chance of the stack of projectiles lasting exactly <math>k</math> hits (where <math>n<k</math>) is:
+
+<math>(1-p)^{(k-n)} * p^n * {k-1 \choose n-1}</math>
+
+The median total number of uses you will get is approximately a little less than
+
+<math>\frac{n}{p}</math>
+
+For instance, if you have 50 projectiles, each with a 25% chance of breaking on each hit, you will get around 200 hits out of them. However, the distribution is fairly wide, so results may vary significantly.
+
+== Multishot ==
+
+{{main|Multishot}}
+
+Multiple [[dagger]]s, [[dart]]s, [[shuriken]], [[arrow]]s, [[crossbow bolt]]s, [[spear]]s, [[gem]]s, [[rocks]], and [[gray stone]]s can be fired or thrown in one turn.
+
+== Launchers and missiles in melee ==
+
+If a launcher (bow, sling, or crossbow), a launcher's ammo (arrow, bolt, etc.), or a missile (boomerang, shuriken, dart) is used in melee, only 1d2 damage is usually done (regardless of enchantment), and the skill will not be trained.{{refsrc|uhitm.c|568}}
+
+== Wishing ==
+
+{{main|Wish#Quantity}}
+
+All forms of [[arrow]]s, as well as [[dart]]s, [[crossbow bolt]]s, [[shuriken]], [[boomerang]]s, and [[rock]]s may be wished for up to 20 at a time. [[Gem]]s and [[gray stone]]s cannot be wished for in this way. (Note that this is generally not an effective use of wishes, although [[silver arrow]]s may be an exception under some circumstances.)
+
+== Strategy ==
+
+In fact, anything can be used as a projectile. [[Cockatrice]] [[egg]]s make popular missiles, and so do various [[potion]]s. (Bashing monsters with a [[wield]]ed one is more likely to score a hit, and will not petrify you.)
+
+Projectiles are good for softening targets from afar. Almost anything can even be shot and thrown past [[boulder]]s, which is often advantageous in [[Sokoban]]. There is a major exception: when you are [[levitation|levitating]], you cannot throw [[arrow]]s or [[crossbow bolt]]s past [[boulder]]s unless you are wielding the appropriate [[launcher]].
+
+You can throw almost anything at [[floating eye]]s or other enemies with only a [[passive attack]] (even your primary weapon, just be careful) if you lack the [[resistance]]s needed to attack them in melee.
+
+To exercise your skill with a projectile weapon designed to be thrown or shot from a launcher, you must [[throw]] {{kbd|t}} or [[fire]] {{kbd|f}} it and successfully hit an enemy, dealing at least 1 damage. [[Spear]]s, [[javelin]]s, [[knife|knives]], [[aklys|aklyses]] and [[dagger]]s are the exceptions. Those skills are also exercised by [[wield]]ing the weapon and striking foes in melee.
+
+{{stub|Something should be added, at least about skills. Exactly how does enhancing skill effect missile use? Does the damage you deal when wielding an arrow increase with higher bow skill? Perhaps the strategy section could feature more inter-missile comparisons?}}
+
+[[Category:Weapons]]
+
+==References==
+<references/>
+
+{{nethack-343}}
+[[Category:Weapons]]}
+&&%s&& %s Wallet of Perseus {150163 2023-03-07T20:12:27Z {4001279 Umbire the Phantom} expand {{artifact
+  |color=brown
+  |tile = [[file:bag.png]]
+  |glyph=(
+  |base=bag of holding
+  |affiliation=unaligned
+  |whencarried=Changes weight of items inside:<ul><li>1/6 [[blessed]]</li><li>1/3 [[uncursed]]</li><li>4x [[cursed]]</li></ul>
+  |used=applied
+  |whenused=Put in or remove items
+  |wheninvoked=''none''
+  |cost=10000
+  |weight=15
+}}
+
+The '''Wallet of Perseus''' is an unaligned [[artifact]] that appears in [[SLASH'EM]], [[SlashTHEM]] and [[Hack'EM]]. Its [[base item]] is a [[bag of holding]], and in Hack'EM it is made of [[dragonhide]].
+
+Despite its name, the Wallet of Perseus has no affiliation with the statue of [[Perseus]] on [[Medusa's Island]].
+
+==Generation==
+The Wallet of Perseus cannot be randomly generated and is only obtainable through [[wish]]ing, [[bones]], or [[sacrifice]].<ref>See [[SLASH'EM 0.0.7E7F2/mkobj.c]]; only weapons and armor have a chance of being made into artifacts</ref> Since it is an unaligned artifact, any player can receive it as a [[sacrifice gift]] at an [[altar]], but it will never be the first gift given.
+
+==Description==
+The Wallet of Perseus functions the same as any other bag of holding, but has improved [[weight]] reduction; it effectively reduces the weight of all items inside it to {{frac|3}} if uncursed, compared to {{frac|2}} with its base item. When blessed, the weight of its contents is reduced to {{frac|6}} compared to {{frac|4}} from a blessed bag of holding. Essentially, the Wallet of Perseus can hold roughly 50% more than a regular bag of holding when non-cursed; however, a cursed Wallet will ''quadruple'' the weight of its contents, double that of a cursed bag of holding. Like any bag of holding, the Wallet of Perseus will be destroyed if a charged [[wand of cancellation]] or [[bag of tricks]] is inserted.
+
+===Hack'EM===
+In Hack'EM, the Wallet of Perseus additionally grants [[protection]] while carried, making it the same as the [[Bag of the Hesperides]] from [[EvilHack]].
+
+==Strategy==
+While not essential for survival, [[Rogues]] and pack rats will find this an ''extremely'' useful artifact. Depending on play style and early game needs, it may even be worth spending a second or third wish to acquire. In the early to mid-game, transporting your stash with the Wallet of Perseus will only take a single trip.
+
+After a successful assault on [[Fort Ludios]], the Wallet enables players to strip the level of all its items and loot, including the [[landmine]]s, in about 3 trips. A particularly daring player can abscond with [[One-Eyed Sam]]'s marginally useful loot in a single excursion without even being encumbered.
+
+As with any bag of holding, keeping a wand of cancellation in a separate sack is worthwhile in the event you need to uncurse it.
+
+==Origin==
+{{Wikipedia|Perseus}}
+The Wallet of Perseus is named for the knapsack given to Perseus by the Hesperides, which was used to contain Medusa's head upon decapitating her. The knapsack also inspired the Bag of the Hesperides, an artifact in EvilHack with the same properties as the Wallet and additional extrinsic protection.
+
+==References==
+<references/>
+{{slashem-7E7}}
+{{variant-343|offset=1}}
+[[Category:SLASH'EM Artifacts]]
+[[Category:SlashTHEM artifacts]]
+[[Category:Hack'EM artifacts]]}
+&&%s&& %s Monster (command) {130171 2020-01-07T07:39:03Z {4001313 Ardub23} Minor formatting fixes and improvements; condensed table wikitext The '''#monster''' extended command allows [[you]] to use the special ability of a [[monster]] form you are [[polymorph]]ed into.  This may cost some [[energy]]. If you do not have any such ability, you will receive the message "Any special ability you may have is purely reflexive." If you are not polymorphed, you will receive the message "You don't have a special ability in your normal form!"
+
+{|class="prettytable sortable"
+! Monster !! Ability !! Cost in [[power]]
+|-
+| [[Black naga]] || Spit venom || —
+|-
+| [[Cave spider]] || Spin web || —
+|-
+| [[Cobra]] || Spit venom || —
+|-
+| [[Dragon]] || [[Breath|Breath weapon]] || 15
+|-
+| [[Giant spider]] || Spin web || —
+|-
+| [[Gremlin]] || Split while on a [[fountain]] or [[water]] || —
+|-
+| [[Guardian naga]] || Spit venom || —
+|-
+| [[Hell hound]] || Breath weapon || 15
+|-
+| [[Iron golem]] || Breath weapon || 15
+|-
+| [[Lurker above]] || Hide || —
+|-
+| [[Mimic]] || Mimic an item || —
+|-
+| [[Mind flayer]] || Psychic blast || 10
+|-
+| [[Nymph]] || Remove [[iron ball]]s caused by [[punishment]] || —
+|-
+| [[Piercer]] || Hide || —
+|-
+| [[Pyrolisk]] || Gaze || 15
+|-
+| [[Red naga]] || Breath weapon || 15
+|-
+| [[Shrieker]] || Shriek, [[Aggravate monster|aggravating]] monsters || —
+|-
+| [[Trapper]] || Hide || —
+|-
+| [[Umber hulk]] || Gaze || 15
+|-
+| [[Unicorn]] || Use [[unicorn horn|horn]] || —
+|-
+| [[Vampire]] || Change form || —
+|-
+| [[Werecreature]] || Summon other creatures of the same type || 10
+|-
+| [[Winter wolf]] || Breath weapon || 15
+|}
+
+==SLASH'EM==
+[[SLASH'EM]] introduces a number of new monsters that can use special abilities.
+
+{|class="prettytable sortable"
+! Monster !! Ability !! Cost in [[power]]
+|-
+| [[Acid worm]] || Spit venom || —
+|-
+| [[Babau]] || Gaze || 20
+|-
+| [[Barking spider]] || Spin web || —
+|-
+| [[Blinking eye]] || Gaze || 20
+|-
+| [[Bloodshot eye]] || Gaze || 20
+|-
+| [[Brownie]] || Remove [[iron ball]]s caused by [[punishment]] || —
+|-
+| [[Catoblepas]] || Gaze || 20
+|-
+| [[Chasme]] || Gaze || 20
+|-
+| [[Crystal golem]] || Breath weapon || 15
+|-
+| [[Diamond golem]] || Breath weapon || 15
+|-
+| [[Giant shoggoth]] || Hide || —
+|-
+| [[Glowing eye]] || Gaze || 20
+|-
+| [[Kamadan]] || Breath weapon || 15
+|-
+| [[Pixie]] || Remove [[iron ball]]s caused by [[punishment]] || —
+|-
+| [[Phase spider]] || Spin web || —
+|-
+| [[Quickling]] || Remove [[iron ball]]s caused by [[punishment]] || —
+|-
+| [[Recluse spider]] || Spin web || —
+|-
+| [[Rhaumbusun]] || Gaze || 20
+|-
+| [[Ruby golem]] || Breath weapon || 15
+|-
+| [[Sapphire golem]] || Breath weapon || 15
+|-

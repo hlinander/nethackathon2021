@@ -1,0 +1,1000 @@
+* Weapons can no longer generate with '''fumbling''', but armor still can.
+* "Properties applicable to most or all items" no longer includes projectile weapons, which only can have fire, cold, shock, thirsty or detonation.
+* Detonations are fire-based by default; they become cold-based with weapons of frost, and lightning-based with weapons of shock.
+* Price-wise, if an object has any property, its base price is increased by 50. In addition to this, each property double the overall price -- so if something's base price is 5, one property would have it at 110 ((50+5) * 2), two properties at 220 ((50+5) * 2 * 2), etc.
+
+==dNetHack==
+[[dNetHack]] uses a completely different version of object properties compared to most other variants. Objects with properties cannot be wished for and for the most part cannot be added to existing objects. They are primarily found in the initial inventories of certain monsters, and are also generated during the creation of certain special rooms and levels. Most properties appear in the item name when identified, but some will appear when unidentified as well. 
+
+=== Weapons ===
+Most weapon-enhancing properties add double damage of a certain type to the object when used as a weapon. Some of those come with a weaker form as well, which usually deals 2d6 damage instead. These bonuses only apply if you're making a valid weapon attack, so something like a flaming newt corpse grants no bonuses.
+
+* Flaming: Deals double fire damage, which can destroy items in the target's inventory. If the target is considered fire-vulnerable (doesn't resist fire but does resist cold), deals an addition 1x damage for a total of 3x. 
+** Red-hot: A weaker form of flaming, dealing 2d6 damage instead. Can still destroy items.
+* Freezing: Deals double cold damage, which can destroy items in the target's inventory. If the target is considered cold-vulnerable (doesn't resist cold but does resist fire), deals an addition 1x damage for a total of 3x. 
+** Frosted: A weaker form of freezing, dealing 2d6 damage instead. Can still destroy items.
+* Shocking: Deals double electrical damage, which can destroy items in the target's inventory.
+** Sparking: A weaker form of shocking, dealing 2d6 damage instead. Can still destroy items.
+* Sizzling: Deals double acid damage, which can destroy items in the target's inventory.
+** Acrid: A weaker form of sizzling, dealing 2d6 damage instead. Can still destroy items.
+* Sparkling: Deals double magic damage (same as [[magic missile]], checks player-style MR).
+** Glittering: A weaker form of sparkling, dealing 3d4 damage instead.
+* Misty: Deals double water damage, which is resisted by waterproofing (oilskin, white dragon scales, etc.). Deals an additional 1x damage to flaming monsters, earth elementals, iron golems, or chain golems.
+** Damp: A weaker form of misty, dealing 2d6 damage instead.
+* Psionic: Deals double damage, plus enchantment again for 3x enchantment and 2x base dice, to telepathic creatures. Has an addition 20% to trigger vs. non-telepathic but non-mindless creatures. Appears when telepathic (even when not blinded), or when fully identified. When not fully identified but seen via telepathy, appears as "whispering" instead of "psionic".
+** Rustling: A weaker form of psionic, dealing 2d12 damage instead. Follows the same rules for vulnerable targets as psionic. Appears when telepathic only, even if fully identified.
+* Anarchic: Deals double damage to non-chaotic targets. Only appears when the object is fully identified.
+** Unruly: A weaker form of anarchic. Only appears when the object is fully identified.
+* Concordant: Deals double damage to non-neutral targets. Only appears when the object is fully identified.
+** Accordant: A weaker form of concordant. Only appears when the object is fully identified.
+* Axiomatic: Deals double damage to non-lawful targets. Only appears when the object is fully identified.
+** Apodictic: A weaker form of axiomatic. Only appears when the object is fully identified.
+* Forge-hot: Deals 1d8 fire and 1d8 axiomatic damage.
+* Crystalline: Deals 1d8 cold and 1d8 axiomatic damage.
+* Arcing: Deals 1d8 shock and 1d8 axiomatic damage.
+* Holy: When blessed, deals double damage to targets vulnerable to blessed items. Appears when blessed with "holy" replacing "blessed" in the object's name, but doesn't require the object to be fully identified.
+** Consecrated: A weaker form of holy, dealing 2d6 damage instead. Appears with the same rules as holy.
+* Unholy: When cursed, deals double damage to targets vulnerable to cursed items. Appears when cursed with "unholy" replacing "cursed" in the object's name, but doesn't require the object to be fully identified.
+** Desecrated: A weaker form of unholy, dealing 2d6 damage instead. Appears with the same rules as unholy.
+* Flaying: slices armor of struck targets, damaging a random piece of worn armor 1+d4 times. If the armor is reduced to giving no protection, the armor will be destroyed. If the monster has no armor left, living monsters without thick skin will "scream from the pain" and be slowed by 6 movement points. Only appears when the object is fully identified.
+** Excoriating: a weaker form of flaying, only damaging worn armor by 1 point, and only slowing for 2 movement points. Only appears when the object is fully identified.
+* Morgul: When used against you, embeds you with a morgul-blade shard. When used versus a monster, drains 1d4 hp and max hp from the target, bypassing drain resistance. Morgul shards abuse constitution, wisdom, and charisma, killing you if they bring all of those stats below their minimums.
+** Morgul-shard: A weaker form of morgul, only giving you a shard if you didn't already have one in you. When used versus a monster, drains 1 hp and max hp.
+* Wrathful: When used to kill a monster, gains +0.25 damage vs that monster type, maxing out at 4 kills and 2x damage. This damage applies to all monsters of that kind, based on factions (zombified, skeletons, etc.), racial flags (demons, humans, etc.), or just the exact same monster.
+* Faded: The object is treated as shining, bypassing AC/DR of worn targets and always hitting insubstantial targets (shades, etc.).
+* Vorpal: Can decapitate/bisect/etc. monsters with a 5% chance. The vorpal type is chosen based off the object's damage types. Weapons that are both slashing and piercing decapitate the target, only slashing bisect the target, only piercing pierce the target's heart or heart-equivalent, and bludgeoning smash the target flat. Only appears when fully identified.
+
+===Armor===
+These are exclusively extrinsic properties applied to items in any worn slot, including rings, amulets, and wielded items; offhanded items do not count.
+
+* Flameproof: Grants fire resistance. Only appears when the object is fully identified. Flameproofed items are immune to fire damage.
+* Coldproof: Grants cold resistance. Only appears when the object is fully identified.
+* Voltproof: Grants shock resistance. Only appears when the object is fully identified.
+* Acidproof: Grants acid resistance. Only appears when the object is fully identified.
+* Magic-resistant: Grants magic resistance. Only appears when the object is fully identified.
+* Disintegration-proof: Grants disintegration resistance. Objects with this property can't be destroyed by disintegration attacks, but can be destroyed by other armor shredding attacks. Only appears when the object is fully identified.
+* Reflective: Grants normal reflection.
+* Woolen: Grants both fire and cold resistance. Woolen items are immune to fire damage.
+* Prayer-warded: Blocks effects that curse inventory items (such as the curse items monster spell). Also protects against [[mummy curse]]s.
+* Healing: Periodically heals the wearer (~0.5% to ~2% chance per turn). The healing effect occurs more often when the wearer is below 50% hp and when enemies are nearby. Heals up to 5d8 damage, but no more than 1/2 of the wearers lost HP will be healed. May heal sickness and sliming (5% chance per turn). Also known as "angel-haunted" when above 10 [[insight]].
+* Life-saving: If the wearer dies, their [[Amulet_of_life_saving|life will be saved]]. This property is lost after being triggered (but the piece of equipment itself is not harmed). Appears as "silver (or gold)-feather-encrusted" or "haloed" on objects that are not fully identified.
+* Self-greasing: If the object has a 2.5% chance of greasing itself each turn. Only appears when the object is not greased. Appears as "grease-secreting" when above 10 [[insight]].
+* Anarchic: Grants double DR vs lawful and neutral attackers, but only half DR vs chaotic attackers. Only appears when the object is fully identified.
+* Concordant: Grants double DR vs lawful and chaotic attackers, but only half DR vs neutral attackers. Only appears when the object is fully identified.
+* Axiomatic: Grants double DR vs neutral and chaotic attackers, but only half DR vs lawful attackers. Only appears when the object is fully identified.
+* Holy: When blessed, grants double DR vs. holy-hating attackers, but only half DR vs unholy-hating attackers. Only appears when the object is fully identified.
+* Unholy: When cursed, grants double DR vs. unholy-hating attackers, but only half DR vs holy-hating attackers. Only appears when the object is fully identified.
+
+==EvilHack==
+
+[[EvilHack]] has its own set of [[EvilHack#Object properties|object properties]].  It is based on the GruntHack system, with significant alterations:
+
+* There are fewer object properties and they are only applicable to weapons and armor, with the exception of artifacts, unique items and dragon scales/scale mail.
+* Items with object properties are less likely to be found in the dungeon, but can appear randomly on eligible magical items, and are more likely to occur with higher-level objects.
+** The odds of an eligible item having a magical property are 1 in 150, and those odds improve with dungeon depth. For [[player monster]]s, the odds of their weapon having a magical property is 1 in 20 if they are of a high enough level or areencountered on the Astral Plane. [[Angelic being]]s flagged as M2_LORD have a 1 in 16 chance of their long sword being generated with a magical property.
+** Regular armor and weapons obtained via [[sacrifice gift]] have a 1 in 8 chance of being generated with a magical property, provided the player has at least five [[Luck]].
+** There is a 1 in 100,000 chance of an eligible item randomly spawning with two properties.
+* A players' starting inventory will never have an object property.
+* Extrinsic properties that are applied to weapons or armor are active only when those objects are wielded/worn. With weapons, extrinsic properties work in the offhand whilst [[twoweaponing]].
+* Object properties can be wished for on an eligible item, but not on an already magical item (e.g. no wishing for a [[cloak of magic resistance]] and [[drain resistance]]). Object properties also cannot stack via wishing, e.g. you can't wish for a long sword of fire and venom.
+* Changing a regular item with object properties into an artifact (e.g., dipping for [[Excalibur]]) will strip that item of its object properties.
+* Wizards have an innate ability to 'sense' if an item is magical (much like a Priest knowing the [[beatitude]] of all items).
+
+The table below lists all available magical properties, what items they can be applied to, and what their function is.
+
+{|class="wikitable
+!Object property !! Armor !! Weapon !! Armor attributes !! Weapon attributes
+|-
+|Fire       || X || X || provides fire resistance          || does 1d5 + 3 of extra fire damage
+|-
+|Frost      || X || X || provides cold resistance          || does 1d5 + 3 of extra cold damage
+|-
+|Shock      || X || X || provides shock resistance         || does 1d5 + 3 of extra shock damage
+|-
+|Venom      || X || X || provides poison resistance        || does 1d2 + 10% chance of an additional 6-15 of extra poison damage, has a 10% chance of instakill by poison
+|-
+|Decay      || X ||   || provides drain resistance         ||
+|-
+|Oilskin    || X ||   || acts as being permanently greased, can only be applied to cloth armor pieces (e.g. "oilskin cloth elven helm") ||
+|-
+|ESP        || X || X || extrinsic telepathy when worn     || extrinsic telepathy when wielded
+|-
+|Searching  || X || X || extrinsic searching when worn     || extrinsic searching when wielded
+|-
+|Warning    || X || X || extrinsic warning when worn       || extrinsic warning when wielded
+|-
+|Excellence || X || X || charisma adjustment equal to the enchantment || charisma adjustment when wielded based on BUC status (25/18/6 &ndash; blessed/uncursed/cursed)
+|-
+|Fumbling   || X ||   || extrinsic fumbling when worn      ||
+|-
+|Hunger     || X || X || extrinsic hunger when worn        || extrinsic hunger when wielded
+|}
+
+[[Category:dNethack]]
+[[Category:DynaHack]]
+[[Category:EvilHack]]
+[[Category:FIQHack]]
+[[Category:GruntHack]]
+[[Category:Item attributes]]
+{{variant-343}}}
+&&%s&& %s Category:GruntHack items {76691 2012-03-17T03:45:09Z {712 SGrunt} Created page with "[[Category:GruntHack]]" [[Category:GruntHack]]}
+&&%s&& %s Felt marker {149188 2022-12-04T23:03:48Z {4001279 Umbire the Phantom} shorten {{Tool
+    |tile=[[image:magic marker.png]]
+    |cost=10
+    |weight=2
+    |color=red
+    |name=felt marker
+    |appearance=marker
+    |material=plastic
+}}
+
+A '''felt marker''' is a [[tool]] that appears in [[GruntHack]]. It is made of [[plastic]] and appears as a "[[marker]]" when unidentified.
+
+==Description==
+The felt marker is somewhat identical to the more-familiar [[magic marker]], and can be used to [[engrave]] - however, it cannot be used to write [[scroll]]s or [[spellbook]]s since the writing will fade from them immediately; scrolls written on with a felt marker are not used up. Additionally, a felt marker can be [[charged]] repeatedly, while a magic marker can only be charged once.
+
+Engraving on the floor with a felt marker produces [[graffiti]], which is semi-permanent.
+
+==Strategy==
+An unidentified felt marker is a source of great disappointment for players who believe they have stumbled upon a magic marker, only to watch the ink fade from a blank scroll. However, this does not preclude it from being useful: failing to write a scroll this way can be used to informally identify and type-[[name]] a felt marker without wasting the scroll, and using felt markers for engraving [[Elbereth]] can preserve wand charges for offensive use or escaping.
+{{variant-343}}
+[[Category:GruntHack items]]}
+&&%s&& %s Spellbook of psi bolt {81398 2012-11-03T17:25:10Z {630 Paxed} Text replace - "\[\[Spellbook of (dig|magic missile|fireball|cone of cold|sleep|finger of death|light|detect monsters|healing|knock|force bolt|confuse monster|cure blindness|drain life|slow monster|wizard lock|create monster|detect food|cause fear|clairvo {{spellbook|name=psi bolt|level=1|type=attack|turns=2|direction=beam}}
+
+The '''spellbook of psi bolt''', in [[GruntHack]], contains the spell '''psi bolt''', derived from the vanilla [[Psi bolt|monster spell of the same name]].
+
+It is essentially a one-square-range immediate {{Spell of|magic missile}}, dealing ([[XL|xplev]]/2+1)d6 damage (halved when used against [[Magic resistance|magic-resistant]] targets); higher-level spellcasters can therefore deal significant damage with this spell - a level 30 character deals 16d6 damage with magic missile, averaging 56 damage per hit. This spell's damage is doubled for [[Knight]]s by carrying [[the Magic Mirror of Merlin]].
+
+[[Category:GruntHack items|Psi bolt]]}
+&&%s&& %s Spellbook of lightning {92879 2015-03-24T15:08:55Z {4000548 Quantum Immortal}  {{spellbook|name=lightning|level=4|type=attack|turns=12|direction=ray|equiv=[[wand of lightning]]}}
+{{stub}}
+The '''spellbook of lightning''', from [[GruntHack]] and [[SLASH'EM]], teaches the '''lightning''' spell, largely identical to the [[wand of lightning]] except dealing ([[XL|xplev]]/2+1)d6 damage to non-[[Shock_resistance|shock-resistant]] targets instead of the 6d6 of the wand.
+
+It can be reflected, but magic resistance doesn't stop it.
+
+==See also==
+* [[Wand of lightning]]
+*[[Spellcasting (SLASH'EM)#SLASH'EM spellbooks|List of SLASH'EM spellbooks]]
+
+{{se-stub}}
+[[Category:SLASH'EM items]]
+[[Category:GruntHack_items|Lightning]]}
+&&%s&& %s Spellbook of poison blast {91358 2014-12-07T15:28:54Z {4000548 Quantum Immortal}  {{spellbook|name=poison blast|level=4|type=attack|turns=35|direction=ray/distant}}
+
+The '''spellbook of poison blast''', teaches the '''poison blast''' spell. It doesn't exist in vanilla, but in some variants.
+
+== Effects ==
+
+=== Unskilled / basic ===
+
+At unskilled or basic skill, poison blast generates a [[ray]] akin to the poison blast of a [[green dragon]] or [[iron golem]]; it deals ([[XL|xplev]]/2+1)d6 damage to non-[[poison resistance|poison resistant]] targets. If the blast hits the player, it has a 1 in 15 chance of being deadly poison ([[instadeath]]) and a 1 in 3 chance of dealing [[Attributes#Dexterity|dexterity]] damage.
+
+=== Skilled / expert ===
+
+At skilled and expert level, the spell may be targeted at a location no more than 10 squares away that is in sight and an open space. The explosion cannot be cast underwater or on the Plane of Water; if used while swallowed, it is automatically cast on your own location.
+
+Two to nine explosions are generated; the first is centered at the target location, and subsequent explosions are randomly placed on any of the nine squares around that point (unless swallowed).  Each explosion affects the surrounding squares as the unskilled/basic spell, with the exception that the player suffers only the damage and not the additional poisoning effects.
+
+==SLASH'EM==
+
+In [[SLASH'EM]], the spellbook is a level 4 attack spell. As with all spells in SLASH'EM, skilled/expert will not change the cast type to explosions and the spell will always produce rays unless the [[sigil of tempest]] and [[sigil of control]] [[technique]]s are active.
+
+==GruntHack==
+
+In [[GruntHack]] it's a level 5 attack spell.
+
+== See also ==
+
+* [[Spellbook of fireball]]
+* [[Spellbook of cone of cold]]
+* [[Spellcasting (SLASH'EM)#SLASH'EM spellbooks|List of SLASH'EM spellbooks]]
+
+[[Category:GruntHack items|Poison_blast]]
+[[Category:SLASH'EM]]
+[[Category:SLASH'EM items]]}
+&&%s&& %s Spellbook of acid blast {79078 2012-08-24T11:49:43Z {831 Tjr} Text replace - "armour" to "armor" {{spellbook|name=acid blast|level=6|type=attack|turns=36|direction=ray/distant}}
+
+The '''spellbook of acid blast''', from [[GruntHack]], teaches the '''acid blast''' spell.
+
+== Effects ==
+
+=== Unskilled / basic ===
+At unskilled or basic skill, poison blast generates a [[ray]] akin to the acid blast of a [[yellow dragon]]; it deals ([[XL|xplev]]/2+1)d6 damage to non-[[acid resistance|acid resistant]] targets and [[Erosion|corrodes]] weapon and armor on an independent 1-in-6 chance for each.
+
+=== Skilled / expert ===
+
+At skilled and expert level, the spell may be targeted at a location no more than 10 squares away that is in sight and an open space. The explosion cannot be cast underwater or on the Plane of Water; if used while swallowed, it is automatically cast on your own location.
+
+Two to nine explosions are generated; the first is centered at the target location, and subsequent explosions are randomly placed on any of the nine squares around that point (unless swallowed).  Each explosion deals damage as the unskilled/basic spell; only the damage is dealt, and weapons and armor are not eroded.
+
+== See also ==
+* [[Spellbook of fireball]]
+* [[Spellbook of cone of cold]]
+
+[[Category:GruntHack items|Acid_blast]]}
+&&%s&& %s Spellbook of touch of death {76948 2012-04-05T22:31:13Z {4000180 Bcode} missing "which" {{spellbook|name=touch of death|level=5|type=attack|turns=35|direction=beam}}
+
+{{stub}}
+The '''spellbook of touch of death''', from [[GruntHack]], teaches the '''touch of death''' spell, largely inspired by the vanilla [[Touch of death|monster spell of the same name]]. It is a one-square-range spell which instantly kills targets that are not [[non-living]], [[demon]]s, or [[magic resistance|magic resistant]].
+
+== See also ==
+* [[Spellbook of finger of death]]
+
+[[Category:GruntHack items|Touch of death]]}
+&&%s&& %s Dragon (GruntHack) {133161 2020-03-30T10:39:53Z {4001279 Umbire the Phantom}  {{monster
+ |name=shimmering dragon
+ |symbol={{monsym|shimmering_dragon}}
+ |tile=[[Image:Shimmering Dragon.png]]
+ |difficulty=19
+ |level=15
+ |experience=538
+ |speed=9
+ |AC=-1
+ |MR=20
+ |align=4
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Breath 4d6 [[Magic missile|magic missiles]], claw 4d4, claw 4d4, bite 4d8, [[engulf]] 2d10 [[digestion|digest]]
+ |weight=4500
+ |nutr=1500
+ |size=Gigantic
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A shimmering dragon|fly=1|thick=1|nohands=1|seeinvis=1|oviparous=1|carnivore=1|hostile=1|strong=1|nasty=1|greedy=1|jewels=1|magic=1}}
+}}
+{{monster
+ |name=baby shimmering dragon
+ |symbol={{monsym|baby_shimmering_dragon}}
+ |tile=[[Image:Baby shimmering dragon.png|Baby shimmering dragon]]
+ |difficulty=14
+ |level=12
+ |experience=284
+ |speed=9
+ |AC=2
+ |MR=10
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Claw 2d4, claw 2d4, bite 3d8
+ |weight=500
+ |nutr=500
+ |size=Huge
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A baby shimmering dragon|fly=1|thick=1|nohands=1|carnivore=1|hostile=1|strong=1|greedy=1|jewels=1}}
+}}
+{{stub}}
+In [[GruntHack]], '''dragons''' are more fearsome than their vanilla counterparts; they deal twice as much damage with their clawing attacks (4d4 vs. 2d4) and possess an [[engulfing]] [[digestion]] attack. Baby dragons now have a 3d8 bite (up from 2d6) and two 2d4 clawing attacks.
+
+== Shimmering dragons ==
+Shimmering dragons are present in GruntHack, as the [[deferred features|deferred feature]]; the adult form possess intrinsic [[displacement]].
+
+[[Category:GruntHack monsters]]}
+&&%s&& %s Category:GruntHack monsters {76705 2012-03-17T04:44:32Z {712 SGrunt} Created page with "[[Category:GruntHack]]" [[Category:GruntHack]]}
+&&%s&& %s Vampire mage (GruntHack) {76710 2012-03-17T04:52:02Z {712 SGrunt}  {{ monster
+ |name=vampire mage
+ |difficulty=27
+ |level=20
+ |experience=816
+ |speed=14
+ |AC=-4
+ |MR=50
+ |align=-9
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Claw 2d8 [[drain life]], Bite 1d8 [[drain life]], [[monster spell|Spell-casting]] 2d6
+ |resistances conveyed=None
+ |resistances=sleep, poison, level drain
+ |attributes={{attributes|A vampire mage|fly=1|breathless=1|humanoid=1|pois=1|regen=1|carnivore=1|undead=1|vampire=1|stalk=1|hostile=1|strong=1|nasty=1|lord=1|male=1|magic=1|infravisible=1|specialcorpse=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+}}
+{{stub}}
+The '''vampire mage''' is a [[racial monster]] in [[GruntHack]], from the deferred feature in [[NetHack]].  It is considerably stronger than a vampire lord, and is able to cast [[monster spell|spells]].
+
+[[Category:GruntHack monsters]]}
+&&%s&& %s Racial monster {149402 2022-12-15T19:51:24Z {4001279 Umbire the Phantom} todo '''Racial monsters''' refers to a feature in some variants of ''[[NetHack]]'' that allows certain monsters to generate as various [[race]]s. The feature first appears in [[GruntHack]], and also appears in [[SporkHack]] and [[EvilHack]].
+
+{{todo|Expand on Spork if at all possible, and see about other variants that apply.}}
+
+==GruntHack==
+In GruntHack, the following [[:Category:GruntHack monsters|monsters]] are eligible to be created as racial monsters:
+
+* [[Shopkeeper]]s;
+* [[Aligned priest]]s and the [[high priest]]s;
+* [[Werecreature]]s;
+* [[Zombie (GruntHack)|Zombies]], replacing the various vanilla [[zombie]]s;
+* Mummies, replacing the various vanilla [[mummy|mummies]];
+* [[Mage (GruntHack)|Shamans and mages]], replacing the [[kobold shaman]], [[orc shaman]], and [[gnomish wizard]];
+* [[Lord (GruntHack)|Lords and ladies]], replacing the [[kobold lord]], [[gnome lord]], [[dwarf lord]], [[Elf-lord]], and [[ogre lord]];
+* [[King (GruntHack)|Kings and queens]], replacing the [[gnome king]], [[dwarf king]], [[Elvenking]], and [[ogre king]];
+* [[Nurse]]s;
+* Members of the [[Yendorian army]];
+* The vault [[guard]];
+* [[Watchman|Watchmen]] and the [[watch captain]];
+* [[Vampire]]s, [[vampire lord]]s, and [[vampire mage (GruntHack)|vampire mages]]; and
+* [[Player monster]]s, with racial selection mirroring combinations available to the player.
+
+In addition to sharing the intrinsics of their respective base monsters, the various races yield an adjustment to the monster's level and difficulty for the purposes of monster generation. These adjustments are:
+
+{|class="prettytable"
+!Race!!Adjustment
+|-
+| [[Giant]]
+| +3
+|-
+| [[Ettin]]
+| +2
+|-
+| [[Ogre]]
+| +1
+|-
+| [[Human]]
+| 0
+|-
+| [[Dwarf]]
+|rowspan="2"|-1
+|-
+| [[Elf]]
+|-
+| [[Gnome]]
+|rowspan="2"|-2
+|-
+| [[Orc]]
+|-
+| [[Kobold]]
+| -3
+|}
+
+==SporkHack==
+In SporkHack, shopkeepers are the sole monsters that can generate with different races.
+
+==EvilHack==
+EvilHack's implementation of racial monsters uses a similar system to GruntHack, though it is applied to far fewer monsters:
+
+* Shopkeepers
+* Aligned priests and high priests
+* Watchmen
+* Members of the Yendorian army
+* Player monsters
+
+Monster leaders, monster rulers and "racial" undead (i.e. zombies and mummies) all remain as distinct monsters similar to vanilla ''NetHack''.
+
+===Racial equipment===
+Some items are changed and several new items are added in order to further flesh out racial monsters alongside many of the other new monsters added:
+
+* For dwarves, [[iron shoes]] are now dwarvish boots, and many dwarves can also generate with a [[dwarvish bearded axe]], a type of [[axe]] with damage comparable to a [[long sword]] and the ability to disarm monsters and remove their weapons or shields, similar to [[bullwhip]]s. Dwarven armor can be iron, steel, mithril, silver, or even gold or platinum; dwarvish weapons can be iron, steel, mithril or gemstone.
+* Elves can generate with [[elven long sword]]s, which has a base material of wood like other elven weapons rather than the [[iron]] of regular [[long sword]]s. The elven long sword is lighter and has damage closer to that of the [[katana]], but it is vulnerable to erosion from burning and rotting. Armor and weapons of elven make have a 60% to retain their base material (e.g. metal for elven chain mail, wood for elven daggers and short swords), and can otherwise be made of wood, copper, mithril, silver or gold. Mithril armor grants MC3 for elves compared with MC2 for other races, and iron sears elves and deals +1d8 bonus damage.
+* Orcs are given [[orcish scimitar]]s in places of standard [[scimitar]]s, and can also generate with [[orcish long sword]]s in lieu of normal long swords. They can also generate wearing orcish boots, since iron shoes are considered dwarvish boots. Armor and weapons of orcish make can be made of iron, bone and stone. Armor made of [[bone]] and [[stone]] grants MC3 when worn by orcs, and mithril sears elves and deals +1d8 bonus damage.
+{{variant-343}}<!--{{variant-36x}}-->
+[[Category:GruntHack]]
+[[Category:EvilHack]]}
+&&%s&& %s Zombie (GruntHack) {76716 2012-03-17T05:16:08Z {712 SGrunt} Zombie bites create more zombies. Who'd've thought? {{monster
+ |name=zombie
+ |symbol={{monsym|kobold_zombie}}
+ |tile=[[Image:Human_zombie.png]]
+ |difficulty=5
+ |level=4
+ |experience=41
+ |speed=6
+ |AC=8
+ |MR=0
+ |align=-3
+ |frequency=3
+ |genocidable=Yes
+ |attacks=Claw 1d8, bite [[sickness]] / int drain
+ |weight=1450
+ |nutr=400
+ |size=Small
+ |resistances=Cold, sleep, poison
+ |resistances conveyed=None
+ |attributes={{attributes|A zombie|specialcorpse=1|breathless=1|mindless=1|humanoid=1|pois=1|undead=1|stalk=1|hostile=1|infravision=1|lgroup=1}}
+}}
+{{stub}}
+
+'''Zombies''' in [[GruntHack]] are significantly more dangerous than their [[Zombie|vanilla counterparts]]. They possess a [[sickness]]-inducing bite attack which has a 1-in-5 chance of draining intelligence (as the [[mind flayer]]), revive (as per [[troll]]s and the [[Rider]]s), and can be [[racial monster|generated as any monster race]]. Racial creatures killed by zombies or by the sickness from a zombie bite will themselves turn into the respective type of zombie.
+
+Fortunately, all non-undead creatures hate zombies and will attack them on sight; this makes it very easy to deal with them if, say, there is a [[shopkeeper]] on hand.
+
+[[Category:GruntHack monsters]]}
+&&%s&& %s Mage (GruntHack) {76719 2012-03-17T05:26:34Z {712 SGrunt}  {{monster
+ |name=mage
+ |symbol={{brightblue|@}}
+ |tile=[[Image:Gnomish_wizard.png]]
+ |difficulty=7
+ |level=5
+ |experience=71
+ |speed=12
+ |AC=5
+ |MR=10
+ |align=-5
+ |frequency=1
+ |genocidable=Yes
+ |attacks=[[Monster spell|Spell-casting]] 0d0, weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A shaman|humanoid=1|omnivore=1|magic=1|infravisible=1|infravision=1}}
+}}
+
+{{monster
+ |name=shaman
+ |symbol={{brightblue|@}}
+ |tile=[[Image:Orc shaman.png]]
+ |difficulty=7
+ |level=5
+ |experience=71
+ |speed=12
+ |AC=5
+ |MR=10
+ |align=-5
+ |frequency=1
+ |genocidable=Yes
+ |attacks=[[Monster spell|Spell-casting]] 0d0, weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A shaman|humanoid=1|omnivore=1|greedy=1|jewels=1|magic=1|infravisible=1|infravision=1}}
+}}
+{{stub}}
+'''Mages''' and '''shamans''' in [[GruntHack]] are [[racial monster]]s representing spell-casters. Mages may be [[human]]s, [[elf|elves]], [[gnome]]s, [[giant]]s, or [[ogre]]s; shamans may be [[orc]]s, [[kobold]]s, or [[ettin]]s.
+
+[[Category:GruntHack monsters]]}
+&&%s&& %s Lord (GruntHack) {131230 2020-01-21T03:53:29Z {4001279 Umbire the Phantom}  {{monster
+ |name=lord / lady
+ |symbol={{blue|@}}
+ |tile=[[Image:Elf-lord.png]]
+ |difficulty=10
+ |level=7
+ |experience=105
+ |speed=14
+ |AC=10
+ |MR=10
+ |align=5
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Weapon 2d4, weapon 2d4
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A lord or lady|tunnel=1|needpick=1|humanoid=1|omnivore=1|strong=1|lord=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1}}
+}}
+'''Lords''' and '''ladies''' are [[racial monster]]s that appear in [[GruntHack]]. They replace the [[kobold lord]], [[gnome lord]], [[dwarf lord]], [[Elf-lord]], and [[ogre lord]].
+
+{{stub}}
+
+[[Category:GruntHack monsters]]}
+&&%s&& %s King (GruntHack) {76721 2012-03-17T05:34:13Z {712 SGrunt} also to start with {{monster
+ |name=king / queen
+ |symbol={{magenta|@}}
+ |tile=[[Image:Elvenking.png]]
+ |difficulty=13
+ |level=9
+ |experience=199
+ |speed=16
+ |AC=10
+ |MR=20
+ |align=6
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 2d6, 2d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A king or queen|tunnel=1|needpick=1|humanoid=1|omnivore=1|strong=1|prince=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1}}
+}}
+{{stub}}
+'''Kings''' and '''queens''' are [[racial monster]]s of [[GruntHack]], replacing the [[gnome king]], [[dwarf king]], [[Elvenking]], and [[ogre king]]. At least one king or queen is guaranteed to be generated in a [[throne room]].
+
+[[Category:GruntHack monsters]]}
+&&%s&& %s Vorpal jabberwock (GruntHack) {134518 2020-06-25T15:44:14Z {4000693 Phol ende wodan} replace with redirect to main vorpal jabberwock page #REDIRECT [[Vorpal jabberwock#GruntHack]]}
+&&%s&& %s Lady (GruntHack) {76725 2012-03-17T05:42:09Z {712 SGrunt} Redirected page to [[Lord (GruntHack)]] #REDIRECT [[Lord (GruntHack)]]}
+&&%s&& %s Shaman (GruntHack) {76726 2012-03-17T05:42:29Z {712 SGrunt} Redirected page to [[Mage (GruntHack)]] #REDIRECT [[Mage (GruntHack)]]}
+&&%s&& %s Queen (GruntHack) {76727 2012-03-17T05:42:48Z {712 SGrunt} Redirected page to [[King (GruntHack)]] #REDIRECT [[King (GruntHack)]]}
+&&%s&& %s NetHack 4 {124110 2018-09-29T20:17:35Z {4000368 Vroon} Added a mention of Hardfought as a NetHack 4 server. '''NetHack 4''' is a [[NetHack]] fork, created by combining [[AceHack]] and [[NitroHack]]. The "4" is part of the name, not a version number, and underlines the variant's aspirations to succeed vanilla [[NetHack 3.4.3]].
+
+A public NetHack 4 server is available; it can be accessed via [telnet://nethack4.org telnet nethack4.org] or [ssh://nethack@nethack4.org ssh nethack43@nethack4.org] (login "nethack43", password "nethack43"). The source code repository is http://nethack4.org/media/nethack4.git
+
+NetHack 4 can also be played (and compared with many other nethack variants) on the public server [https://nethackwiki.com/wiki/Hardfought Hardfought].
+
+==History==
+NetHack 4 was originally announced on [[wikipedia:April Fools' Day|April Fools' Day]] 2012 as the last announcement in a series of three on [[rec.games.roguelike.nethack]]:
+# [[UnNetHack]] 4.0.0, [https://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/261849837d0d8e42 announced as NetHack 4.0.0]
+# A development version of [[GruntHack]], [https://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/ade3da9173a7cc2a announced as NetHack 4.1.0]
+# A development version of NetHack 4 (possibly to be released as version 4.2.0 in the future), [https://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/cb0da1bf9d2c0ba1 announced as NetHack 4.2.0]
+
+Despite the presence of "NetHack 4" in all three of the announced release versions, the project is unrelated to [[UnNetHack]] and [[GruntHack]].
+
+There have been two releases since, both beta versions; 4.3-beta1 was released at the end of May 2014, just in time for the [[Junethack]] tournament; and 4.3-beta2 was released on 2 April 2015, just after the April Fools' festivities had died down.
+
+==Major differences==
+The following is a list of differences between NetHack 4 and generic NetHack 3.4.3. Most changes are focused on the game interface and the organization of the source code rather than gameplay.
+
+A full list of changes against NetHack 3.4.3 is available in the NetHack 4 source distribution, or on the NetHack 4 website [http://nethack4.org/latest/nethack4/doc/changelog.txt here].
+
+===Gameplay differences===
+* Food safety warnings. The player is given a warning if food is old enough to have turned, if it comes from a corpse which may be poisonous, or if the player is trying to eat when already satiated.
+* Attempting to move into shopkeepers, vault guards, or town guards never attacks them but instead invokes the "chat" function. 
+* Attempting to move into peaceful monsters brings up a warning instead of attacking them.
+* The monster AI has been improved, especially with regard to tracking and pets.  Pets are much better at following you and will use their special attacks against hostile monsters but will generally not attack peaceful monsters.
+* There is an "explore" command (bound to the keystroke "v") which can be used repeatedly to completely cover all unknown territory in the current level.
+* You can write scrolls or spellbooks without failure only if their type is formally identified. Otherwise there is a chance of failure, based on your luck and wisdom.
+* Most of the gameplay including the monsters and items is very similar to NetHack 3.4.3. However, the author is not opposed to changing these things in the future.
+** Manual examination of the sources suggests that monsters, items, and artifacts are identical between Nethack 4 and Nethack 3.4.3
+* Classic D&D Armor Class, where lower numbers are better, has been replaced with a "defense" stat that starts at 0 and increases as it improves.
+
+===Interface differences===
+* Map occupies top-left corner of screen with a persistent (sometimes truncated) inventory window, longer message history, and three-line status section on screen at all times
+* Keybinding menu available in [[options]] menu allowing assignment of any key to any command
+
+===New features===
+* Player can #annotate levels
+* Game keeps track of heroic deeds (character levels achieved, first time visiting levels)
+* Options set persist between games
+* Auto-explore
+
+===Problems===
+* Problems with 4.3-beta2 (that will be fixed in 4.3-beta3 and are fixed on the public server):
+** [[Mind flayers]] are much more likely to generate in the [[Gnomish Mines]] than they should be
+
+==See also==
+* [[Bugs in NetHack 4]]
+* [[NetHack 4 Network Protocol]]
+
+==External links==
+* [http://nethack4.org Official website]
+* [http://trac.nethack4.org/browser Source code]
+* [http://trac.nethack4.org/browser/README Readme file]
+* [http://nethack4.org/releases/4.3-beta1-changelog.html List of changes between NetHack 3.4.3 and NetHack 4.3-beta1]
+{{variant-343}}
+[[Category:Variants]]}
+&&%s&& %s Throne room monster {134638 2020-06-28T06:25:49Z {4000978 Aximili} Redirect to a better section of the same article #REDIRECT[[Throne#Court monster probability]]}
+&&%s&& %s Bugs in NetHack 4 {100259 2016-01-02T09:05:07Z {4000573 Elronnd} new bug tracker Like other [[NetHack]] [[variant]]s, [[NetHack 4]] has bugs. This page used to track the status of the [[Bugs in NetHack 3.4.3]] in NetHack 4, together with new bugs introduced in NetHack 4.
+
+The NetHack 4 project now uses a [https://trac.nethack4.org bug tracker]; the bugs listed on this page will be migrated to the new tracker. Please report new bugs there instead of adding to this page; this page's listing is now quite obsolete.
+
+Special thanks to everyone who helped to compile this list.
+
+NetHack 4's developers would appreciate feedback on these bugs, especially the ones marked as "Unclear" (if anyone knows what these bug reports mean, please let us know!), and the ones marked as "Unknown" (where typically nobody knows what to do to reproduce the bug).
+
+Key:
+
+* Fixed: The bug existed in NetHack 4 (or one of its predecessor variants, [[AceHack]] or [[NitroHack]]) and was fixed.
+* Incidentally fixed: The bug was fixed due to unrelated changes made in NetHack 4.
+* Fix available: The bug has a fix available for it in some other variant, but that fix has not yet been merged into NetHack 4.
+* Confirmed: The bug has been reproduced in NetHack 4 (typically with a save file recorded for it).
+* Moot: The bug's context no longer exists in NetHack 4.
+* Info available: The cause of the bug has been explained for NetHack 3.4.3 on this wiki, and thus further investigation was not worthwhile.
+* Debatable: There is some doubt as to whether this is a bug, or about whether it would be reasonable to fix it.
+* Unclear: It is not clear what the bug description refers to.
+* Unknown: The bug has not been reproduced in NetHack 4, but may well still exist.
+* Untested: An explanation has been proposed (typically, as a result of looking at the source), but the bug has not actually been reproduced in NetHack 4.
+
+==Inherited from Vanilla releases older than 3.4.3==
+{| class="prettytable sortable striped"
+! Number
+! Status
+! Migrated
+! Description (3.4.3)
+! Additional notes
+|-
+! {{aa|C341-1}}
+| Moot
+| {{/trackerstatus|moot}}
+| Monsters affected by stinking cloud always get angry at the hero even if the hero did not create the cloud.
+| This only affects bones files made on NetHack 3.4.0, which are not compatible with NetHack 4.
+|-
+! {{aa|C341-4}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| opthelp does not list use_inverse
+|-
+! {{aa|C341-5}}
+| Unknown
+| {{/trackerstatus|21}}
+| When you see your pet move, the pet may be referred to as "it". 
+|-
+! {{aa|C341-7}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Skilled or expert caster of fireball/cone of cold can't target a monster known only by infravision or ESP.
+| Fixed by Grunt.
+|-
+! {{aa|C341-10}}
+| Debatable
+| {{/trackerstatus|22}}
+| Fruit names ending in "us" are incorrectly considered plural.
+| Clearly singular -us words that someone might conceivably use as a slime-mold name include cactus, lotus, fetus, octopus, platypus, torus, walrus; clearly plural ones include caribous, kudzus, marabous, menus, zebus; ones that can be either include asparagus, acanthus; adjectives include citrus, nutritious.  Asparagus (the only one that's widely considered a food in the English-speaking world) and lotus (due to famously being eaten in the Odyssey) are the only such words that are even vaguely likely to turn up (unless someone is being deliberately over-the-top silly, in which case they deserve whatever weird message the game gives them).
+|-
+! {{aa|C341-18}}
+| Fixed
+| {{/trackerstatus|moot}}
+| ki-rins and couatls can wear (and may have) armor.
+| Shields, boots, gloves, and (non-metallic for ki-rin) helmets. Fixed by Grunt.
+|-
+! {{aa|C342-12}}
+| Unclear
+| {{/trackerstatus|23}}
+| There are a number of places that misuse "your". 
+|-
+! {{aa|C342-13}}
+| Unknown
+| {{/trackerstatus|24}}
+| Hangup can cause loss of objects being moved internally.
+|-
+! {{aa|C342-16}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If you self-genocide while polymorphed, the death message makes no sense. 
+| "You return to [racial] form.  DYWYPI?"  [[GruntHack]] changes this to "As you return to [racial] form, you die."
+|-
+! {{aa|C342-19}}
+| Fix available
+| {{/trackerstatus|25}}
+| Things that can kill you in the future (like stoning) can cause messages to show up out of order. 
+| "You are a statue.  Your skin begins to peel away." Fixed in [[GruntHack]].
+|-
+! {{aa|C342-22}}
+| Fix available
+| {{/trackerstatus|26}}
+| Monsters can hide under cockatrice corpses without getting stoned.
+| [[GruntHack]] contains a fix for this.
+|-
+! {{aa|C342-31}}
+| Unknown
+| {{/trackerstatus|27}}
+| You can get a message telling you a monster wields a weapon it already was wielding.
+| There's a FIXME at line 616 in weapon.c that could potentially be (indirectly) related.
+|-
+! {{aa|C342-36}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| If unable to see yourself while invisible and you are bestowed a spellbook, it doesn't show up on the display.
+| Seems to have been fixed by NitroHack's changes to the display engine.
+|-
+! {{aa|C342-46}}
+| Fix available
+| {{/trackerstatus|28}}
+| Cleric cast lightning doesn't blind as other lightning does.
+| Refers to the monster cleric spell, CLC_LIGHTNING. [[GruntHack]] fixes this.
+|-
+! {{aa|C342-50}}
+| Confirmed
+| {{/trackerstatus|29}}
+| If you're hiding on the ceiling and try to #sit, you automatically unhide. 
+| #sit, #monster, #sit: "You sit on the helm of brilliance.  It's not very comfortable...  You are already hiding."
+|-
+! {{aa|C342-51}}
+| Fixed
+| {{/trackerstatus|moot}}
+| The game thinks trappers hide on the ceiling.
+| In D&D, they apparently hide on the floor. Turns up in two known places: dislodging a trapper with a [[drum of earthquake]], and ambushing a monster while in trapper form. Fixed by Grunt.
+|-
+! {{aa|C342-54}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Statues of unique monsters in bones files are not handled correctly.
+| If the unique monster in question doesn't normally spawn on that level, and was rather brought there from some other level (in the other game), zapping stone to flesh at it causes a segfault.
+|}
+
+==Inherited from Vanilla 3.4.3==
+===C343-1 to C343-100===
+{| class="prettytable sortable striped"
+! Number
+! Status
+! Migrated
+! Description (3.4.3)
+! Additional notes
+|-
+! {{aa|C343-1}}
+| Unclear
+| {{/trackerstatus|5}}
+| At a pit the game can give messages with poor grammar.
+| Fix: https://github.com/tung/NitroHack/commit/5d40e9f86486141df827e2afef78e992c4aac01b (to reproduce levitate over pit, while blinded, drop something: "The food rations tumble into the pit.", "You hear The amulet of reflection tumbles downwards." )
+|-
+! {{aa|C343-2}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Wielded silver arrows don't cause silver damage on some silver-haters.
+| Fixed by Alex Smith.
+|-
+! {{aa|C343-3}}
+| Fix available
+| {{/trackerstatus|6}}
+| In the ranger quest, monsters can end up off the map to the left.
+| The special level loader introduces a two column gap to the left of the main maze area; Jonadab thinks the monsters get generated back there. [[GruntHack]] fixes this by removing the two column gap in the special level loader.
+|-
+! {{aa|C343-4}}
+| Fixed
+| {{/trackerstatus|moot}}
+| On the Rogue level, tunnelling through rock doesn't leave a passage.
+| Refers to '''[[Pet|tame]]''' tunneling ''monsters'', like [[umber hulk]]s, rather than a player with a pickaxe. Non-tame monsters cannot dig on the Rogue level. Fixed in [[GruntHack]] by disabling the ability of tame monsters to dig on the Rogue level.
+|-
+! {{aa|C343-5}}
+| Fixed
+| {{/trackerstatus|moot}}
+| In wizard mode, level teleport in the endgame can cause a crash if confused.
+| Fixed by Grunt.
+|-
+! {{aa|C343-6}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You can #sit on an object at the bottom of a pit that you are not in.
+| Fixed in AceHack and [[GruntHack]].
+|-
+! {{aa|C343-7}}
+| Fixed
+| {{/trackerstatus|moot}}
+| When a steed pushes a boulder into a pool, the message misuses "you".
+| Fixed by Alex Smith.
+|-
+! {{aa|C343-8}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Plural of Nazgul is Nazgul - not Nazguls
+| Fixed by Patric Mueller.
+|-
+! {{aa|C343-9}}
+| Fix available
+| {{/trackerstatus|7}}
+| Trap messages referring to a named steed when hallucinating are poorly worded.
+| If riding at the time, e.g. "You lead poor fire giant into a pit!". Fixed in [[GruntHack]], though by a more complicated means than necessary for vanilla / NH4.
+|-
+! {{aa|C343-10}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If there is a corpse in a pit, you have to enter the pit to pick it up but not to eat it.
+| Fixed in [[GruntHack]].
+|-
+! {{aa|C343-11}}
+| Moot
+| {{/trackerstatus|moot}}
+| If you ask for help ('?') at a "what direction" prompt, you don't get to enter a direction afterward if the cmdassist option is set.
+| cmdassist no longer exists.
+|-
+! {{aa|C343-12}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You can't use '>' to enter a pit.
+| Fixed by Patric Mueller.
+|-
+! {{aa|C343-13}}
+| Confirmed
+| {{/trackerstatus|8}}
+| On polymorph, you can get the message "It turns into it".
+| According to Grunt, this happens in vanilla if an invisible purple worm swallows a shapechanger. Confirmed in NH4 with an invisible pet w and a chameleon.
+|-
+! {{aa|C343-14}}
+| Fix available
+| {{/trackerstatus|12}}
+| The initial and any tombstone message resulting from eating an identified artifact is gramatically incorrect.
+| Requires choking on a formally IDed artifact. Fixed in [[GruntHack]].
+|-
+! {{aa|C343-15}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You can get a message that an invisible monster looks much better.
+| Fixed by Alex Smith.
+|-
+! {{aa|C343-16}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Player polymorphed as a xorn can't pick up items in pits.
+| Fixed by Sean Hunt.
+|-
+! {{aa|C343-17}}
+| Fixed
+| {{/trackerstatus|moot}}
+| After polymorphing into a xorn and returning to human form, player can be stuck in a pit that isn't there.
+| Fixed by Sean Hunt.
+|-
+! {{aa|C343-18}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Scaring a mimicing mimic gives an incorrect "turns to flee" message.
+| Fixed by Alex Smith.
+|-
+! {{aa|C343-19}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Dipping acid in a fountain may not destroy the acid.
+| Seems inconsistent about whether it's destroyed or not, despite exploding. Fixed on [[NAO]] and in [[GruntHack]].
+|-
+! {{aa|C343-20}}
+| Info available
+| {{/trackerstatus|9}}
+| When dying immediately on entering a level, the map may show you dying on the previous level.
+|-
+! {{aa|C343-21}}
+| Confirmed
+| {{/trackerstatus|10}}
+| Pets can be pulled through closed doors with a leash.
+|-
+! {{aa|C343-22}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You can untrap a monster in a pit while levitating.
+| Fixed by Grunt.
+|-
+! {{aa|C343-23}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Dungeon collapses after vault guard fails to lead you out.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-24}}
+| Moot
+| {{/trackerstatus|moot}}
+| Documented default for option "null" is "off"; default is actually "on".
+| The rendering no longer works like that anyway.
+|-
+! {{aa|C343-25}}
+| Fix available
+| {{/trackerstatus|13}}
+| You can trip over a cockatrice corpse safely.
+| Wear gauntlets of fumbling and walk around among cockatrice corpses.  "You see here a cockatrice corpse.  You trip over it.  You make a lot of noise!" Fixed in [[GruntHack]], where tripping is unsafe if not wearing boots.
+|-
+! {{aa|C343-26}}
+| Fixed
+| {{/trackerstatus|moot}}
+| A frozen swamp may be called a moat.
+| Go to Juiblex's Swamp and start zapping around with a wand of cold.  "The moat is bridged with ice!  You hear a cracking sound." Fixed, along with several related misuses of "moat", in [[GruntHack]] by greater use of [[Source:NetHack_3.4.3/src/mkmaze.c#waterbody_name|waterbody_name]].
+|-
+! {{aa|C343-27}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Kicked objects do not slide properly on air or water levels.
+| Fixed by Grunt. Fix ported, with modifications, by Sean Hunt.
+|-
+! {{aa|C343-28}}
+| Fixed
+| {{/trackerstatus|moot}}
+| There are several places that can't tell the difference between a "hat" and a "helmet."
+| There are some objects which are referred to in their descriptions as "hats" (elven leather helm -> "hat", dwarvish iron helm -> "hard hat", cornuthaum and dunce cap -> "conical hat"; one could argue that this applies to fedoras as well despite not having a separate description, as it's not a helmet). Several places in the code ("Fortunately, you are wearing a hard helmet"; "Your helmet blocks the attack to your head") always refer to the object in your armor slot as a helmet, even when it can't properly be described as a helmet (such as having a fedora block a mind flayer attack). Fixed by Grunt.
+|-
+! {{aa|C343-29}}
+| Fix available
+| {{/trackerstatus|14}}
+| When taking things out of a bag of holding, messages may say "lifting" instead of "removing."
+| This happens when you get the confirmation asking if you want to continue (because your encumbrance level would increase and you are over your threshold). Fixed in [[GruntHack]].
+|-
+! {{aa|C343-30}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Cursed scroll of destroy armor on cursed armor doesn't always interact correctly.
+| Alex Smith
+|-
+! {{aa|C343-31}}
+| Debatable / Fix available
+| {{/trackerstatus|15}}
+| If you hit a cockatrice with a weapon that breaks, you can be stoned.
+| Reproduced by wielding a boomerang in melee combat with negative luck. Fixed in [[GruntHack]].
+|-
+! {{aa|C343-32}}
+| Fixed
+| {{/trackerstatus|moot}}
+| When blind and levitating, the hero can still discover stairs.
+| Use the go down command.  "You are floating high above the stairs." Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-33}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Sometimes a monster may remain hidden under a corpse that has rotted away.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-34}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Mimics on the rogue level may try to mimic a closed door.
+| Fixed by Sean Hunt.
+|-
+! {{aa|C343-35}}
+| Info available
+| {{/trackerstatus|16}}
+| Polymorphed or shapechanged monsters may get the wrong number of hit points.
+| 
+|-
+! {{aa|C343-36}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Weight of corpses on special levels may not be calculated correctly.
+| This also goes for statues, e.g. the Oracle centaur statues.  Fixed by Grunt.
+|-
+! {{aa|C343-37}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Mimics may mimic a boulder over a pit or hole.
+| Also "a statue of a (monster) on a pit on the floor of the room" or "a pit on a stairway up". Fixed by Sean Hunt.
+|-
+! {{aa|C343-38}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Dismounting and kicking a monster that jumps may result in landing on the wrong side of a wall.
+| In very confined spaces, mnexto() may not be able to find a space next to you. Fixed by Grunt.
+|-
+! {{aa|C343-39}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| Restoring a game where the character is wielding Sting may result in temporary display errors during the restore process.
+| Cannot reproduce in NH4, probably due to the Nitrohack UI changes.
+|-
+! {{aa|C343-40}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Monster thrusting one of multiple wielded daggers gives misleading message.
+| Fixed by Grunt.
+|-
+! {{aa|C343-41}}
+| Fixed
+| {{/trackerstatus|moot}}
+| A rolling boulder falling into a pit you can't see only makes a sound if the hero is blind (or blindfolded).
+| If you only can't see it happen because it's dark, you get no sound. Fixed by Grunt.
+|-
+! {{aa|C343-42}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If a fire trap melts ice, it may trigger twice in the same turn.
+| Reproduced via polyself into a red dragon. Fixed by Grunt.
+|-
+! {{aa|C343-43}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| An invisible troll that revives may be shown until it moves.
+| Cannot reproduce in NH4, probably due to the Nitrohack UI changes.
+|-
+! {{aa|C343-44}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Shopkeepers, doors, and traps interact oddly.
+| Fixed by Grunt, ported by Sean Hunt
+|-
+! {{aa|C343-45}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Dropping the corpse of a unique monster without a personal name down the stairs gives a badly formed response.
+| Fixed by Sean Hunt.
+|-
+! {{aa|C343-46}}
+| Unknown
+| {{/trackerstatus|17}}
+| Breaking up a boulder or statue can result in pieces that are described incorrectly.
+| 
+|-
+! {{aa|C343-47}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Monster and hero have different odds to err when throwing a greased weapon.
+| Players throwing greased weapons have the same chance of them misfiring as if the object is cursed; monsters throwing projectiles suffer no penalty for throwing greased weapons at all. Fixed by Grunt.
+|-
+! {{aa|C343-48}}
+| Unknown
+| {{/trackerstatus|18}}
+| Killing your pet doesn't get you any experience when it should.
+| Vanilla: This might refer to the fact you won't break pacifist conduct if you branchport into an already-full level - pets and followers simply disappear. The pacifist page has a few more "safe" ways to kill things.
+|-
+! {{aa|C343-49}}
+| Fixed
+| {{/trackerstatus|moot}}
+| The boulder does not show up in a bones file caused by death by rolling boulder.
+| Fixed in [[GruntHack]] by allowing the boulder to finish moving before dealing damage to the player (this leaves the trap ready to snare whoever next comes across the bones). Possible alternative solution: place the boulder where the player is before triggering the damage in the current code flow, leaving the boulder on top of the corpse.
+|-
+! {{aa|C343-50}}
+| Fixed
+| {{/trackerstatus|moot}}
+| A sleeping steed may answer a #chat.
+| Alex Smith
+|-
+! {{aa|C343-51}}
+| Info available
+| {{/trackerstatus|19}}
+| Luck's effect on random events isn't always as intended.
+| 

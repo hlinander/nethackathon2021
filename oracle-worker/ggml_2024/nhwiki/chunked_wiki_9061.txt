@@ -1,0 +1,1000 @@
+{{message|<monster> falls to pieces!|An iron golem was hit by the trap and died.}}
+{{message|May <monster> rust in peace.|[[YAFM|As above, but the iron golem was tame and was out of sight.]]}}
+
+== Variants ==
+In [[SLASH'EM]] and [[dNetHack]], untrapping a rust trap will turn the trap into a [[fountain]] if successful.
+
+== References ==
+<References />
+{{nethack-366}}
+[[Category:Traps]]}
+&&%s&& %s Level teleporter {147831 2022-08-22T02:54:40Z {4000978 Aximili} explicit references block {{trap
+ |name=level teleporter
+ |color=magenta
+ |generation=level 5+, not [[non-teleport level]]
+ |effect=[[levelport]]s
+}}
+
+The '''level teleporter''' is a [[trap]] that teleports you to a random location on a random level.
+
+==Effects==
+If you have teleport control, then you can specify the level you will go to, unless you are stunned, fainted, paralyzed, or (with a {{frac|5}} probability) confused. Otherwise, you or monsters activating the trap will be teleported down at most three levels or up at most to the top of the main dungeon, but never down out of the main dungeon, or into the Sanctum before the invocation ritual. In the Endgame, you, monsters with the Amulet, and elementals on their plane cannot level teleport at all. All eligible target levels are equally likely.<ref>{{function|teleport.c|random_teleport_level}}</ref>
+
+After the player has triggered the trap once, it vanishes, whether the teleportation was successful or not. You may remain on the same level.
+
+[[Magic resistance]] will prevent you, but not monsters, from being teleported. Under certain conditions, you can use a normal teleport trap, even if you have magic resistance (see [[Teleportation trap]] for details). However, you cannot do the same with a level teleporter.<ref>{{sourcecode|trap.c|959}} (Level teleporter on you) and {{sourcecode|trap.c|1988}} (On monsters)</ref>
+
+{{upcoming|NetHack 3.7.0|You can now deliberately take a level teleport trap even if you have magic resistance with {{kbd|ctrl|t}}.}}
+
+==Removal==
+{{upcoming|NetHack 3.7.0|Level teleport traps can be removed by zapping them with the spell or wand of cancellation. The trap will explode for 23 to 38 damage.}}
+
+Set it off personally; it is not removed when a monster triggers it.
+
+==Messages==
+{{message|You shudder for a moment.|The trap kept you on the same level.}}
+{{message|You feel a wrenching sensation.|The teleportation was prevented by magic resistance or by being in the Endgame.}}
+
+== FIQHack ==
+In [[FIQHack]], level teleport traps do not disappear when used<ref>https://github.com/FredrIQ/fiqhack/blob/865c9091803e844b66255e122877ae6c70950e51/libnethack/src/teleport.c#L919</ref>.
+
+==References==
+<References />
+[[Category:Traps]]
+{{nethack-343}}}
+&&%s&& %s Anti-magic field {147920 2022-08-24T07:04:47Z {4000978 Aximili} appears in nethack {{trap
+ |name=anti-magic field
+ |color=brightblue
+ |generation=Anywhere
+ |effect=Pw loss, or HP loss if magic resistant
+}}
+
+The '''anti-magic field''' (also known as the '''anti-magic trap''') is a [[trap]] that appears in ''[[NetHack]]'' which can reduce your spell power or damage you.
+
+== Generation ==
+Anti-magic fields can be generated on most levels. They are also guaranteed on several [[special level]]s: 
+* the [[Knight quest]] locate level contains 7 anti-magic fields
+* the [[Wizard quest]] locate level contains an anti-magic field
+* almost every special level in [[Gehennom]] has at least one anti-magic field
+
+== Effects ==
+Anti-magic fields drain between 2 and your [[experience level]] + 1 points of your spell [[power]]. If this would cause your spell power to go below zero, your ''maximum'' spell power will be permanently reduced by that amount, and your spell power becomes zero. Anti-magic fields have no effect on your maximum spell power if it is zero.
+
+If you have [[magic resistance]], you take damage instead of losing power.  The damage is at least d4, with an additional d4 each if you:
+
+* have [[half physical damage]] or [[half spell damage]] (non-cumulative)
+* are wielding [[Magicbane]]
+* are carrying an [[artifact]] which grants magic resistance by being carried; your own [[quest artifact]] is exempt.
+
+If you have [[phasing]], you take {{frac|4}} as much damage, rounded up. {{refsrc|src/trap.c|1417|version=NetHack 3.6.6}}
+
+{{upcoming|3.7.0|Per {{commit|5c7c9d10ae7984667b533bb7038616dc81346a0f|this commit}}, anti-magic fields now drain 2d6 energy and half that of maximum energy.  If you have magic resistance, you take d4 damage in addition to the energy drain.}}
+
+===Effect on monsters===
+Monsters that have a special attack such as [[Monster spellcasting|spellcasting]] or a [[breath weapon]] will also be affected by this trap. The timeout for their special attack increases by 2d2 turns unless they are magic resistant, in which case they lose HP. This will also reveal the trap. Other monsters do not trigger this trap and do not reveal it when they pass over it. {{refsrc|src/trap.c|2591|version=NetHack 3.6.6}}
+
+== Removal ==
+When standing on an anti-magic field, you can [[dig]] down to replace it with a pit.
+{{upcoming|3.7.0|Per {{commit|c7229627137407d3056233f8e85b79830f0b6a57|this commit}}, anti-magic fields can be exploded by zapping [[cancellation]] at them.}}
+
+== Strategy ==
+These traps are usually harmless. In theory anti-magic fields could be harmful to some early-game [[spellcaster]]s, especially [[pacifist]]s who must cast [[spellbook of healing|healing]] often and cannot gain [[experience]] easily. Players who spend an early [[wish]] on a source of magic resistance may also be vulnerable.
+
+Intentionally stepping on an anti-magic field is a somewhat risky way of identifying the [[cloak of magic resistance]].
+
+== History ==
+The anti-magic field was introduced in [[NetHack 1.3d]].
+
+== Messages ==
+{{message|You feel your magical energy drain away.|You are not magic resistant, and your Pw was drained.}}
+
+{{message|You feel momentarily lethargic.|You are not magic resistant, but you have zero maximum Pw to drain.}}
+
+{{message|You feel sluggish.|You are magic resistant, and took less than {{frac|4}} your HP as damage.}}
+
+{{message|You feel very lethargic.|You are magic resistant, and took more than {{frac|4}} your HP as damage.}}
+
+{{message|You feel unbearably torpid!|You are magic resistant, and were killed by HP loss.}}
+
+{{message|<monster> seems lethargic.|A monster lost some Pw from an anti-magic field.}}
+
+{{message|<monster> is killed by the compression from an anti-magic field!|A magic-resistant monster lost enough HP from an anti-magic field to die.}}
+
+== References ==
+<References />
+{{nethack-366}}
+[[Category:Traps]]}
+&&%s&& %s Numpad {56258 2010-11-11T23:12:55Z {831 Tjr} make it redirect to correct section #REDIRECT [[Options#number_pad]]}
+&&%s&& %s Number pad {29887 2008-03-05T18:38:30Z {630 Paxed} proper redirect #REDIRECT [[Options#number_pad]]}
+&&%s&& %s DECgraphics {130184 2020-01-07T21:04:34Z {91 Bhaak} Pre-3.6.3 DECgraphics symbols for altar and iron bars (for those that hate the new ones as much as I do) '''DECgraphics''' is an [[option]] that displays walls as continuous lines rather than as broken dashes, which is the best that plain [[ASCII]] can do.  It also displays certain [[dungeon feature]]s with distinct symbols. DECgraphics is a smaller character set than [[IBMgraphics]], so it is missing some symbols, particularly on the Rogue level.
+
+DECgraphics requires a display device that displays [[wikipedia:DEC Special Graphics|DEC Special Graphics]]. DEC Special Graphics works by sending the terminal an escape code which tells it to toggle to an alternate character set with line drawing characters.  The curses SYMSET also uses DEC Special Graphics to approximate IBMgraphics.
+
+To use DECgraphics, the option must be set to TRUE, either in-game or in the configuration file.
+
+== The complete symbol list ==
+
+Because the DEC Special Graphics character set is limited and lacks the double line drawing characters, the Rogue level is rendered using only normal ASCII characters.
+
+The symbols affected by DECgraphics in the normal dungeon are listed here.  DEC Special Graphics is a 7bit system. The code points listed here use the NetHack internal representation, which sets the 8th bit high.
+
+{| class="prettytable striped"
+|-
+!Code point!!Usage!!Appearance!!ASCII
+|-
+|0xf8||vertical wall||&#x2502;||<nowiki>|</nowiki>
+|-
+|0xf1||horizontal wall||&#x2500;||-
+|-
+|0xec||top left corner||&#x250c;||-
+|-
+|0xeb||top right corner||&#x2510;||-
+|-
+|0xed||bottom left corner||&#x2514;||-
+|-
+|0xea||bottoom right corner||&#x2518;||-
+|-
+|0xee||cross wall||&#x253c;||-
+|-
+|0xf6||T up wall||&#x2534;||-
+|-
+|0xf7||T down wall||&#x252c;||-
+|-
+|0xf5||T left wall||&#x2524;||<nowiki>|</nowiki>
+|-
+|0xf4||T right wall||&#x251c;||<nowiki>|</nowiki>
+|-
+|0xfe||normal door||&#x00b7;||.
+|-
+|0xe1||vertical open door||&#x2592;||-
+|-
+|0xe1||horizontal open door||&#x2592;||<nowiki>|</nowiki>
+|-
+|0xfc||bars||&#x2260; or &#x03c0;||#
+|-
+|0xe7||tree||&#x00b1;||#
+|-
+|0xfe||room||&#x00b7;||.
+|-
+|0xf9||up ladder||&#x2264;||<
+|-
+|0xfa||down ladder||&#x2265;||>
+|-
+|0xfb||altar||&#x03c0; or _||_
+|-
+|0xe0||pool||&#x25c6;||}
+|-
+|0xfe||ice||&#x00b7;||.
+|-
+|0xe0||lava||&#x25c6;||}
+|-
+|0xfe||vertical open drawbridge||&#x00b7;||.
+|-
+|0xfe||horizontal open drawbridge||&#x00b7;||.
+|-
+|0xe0||under water||&#x25c6;||}
+|-
+|0xf8||vertical beam||&#x2502;||<nowiki>|</nowiki>
+|-
+|0xf1||horizontal beam||&#x2500;||-
+|-
+|0xef||swallow top center||&#x23ba;||-
+|-
+|0xf8||swallow middle left||&#x2502;||<nowiki>|</nowiki>
+|-
+|0xf8||swallow middle right||&#x2502;||<nowiki>|</nowiki>
+|-
+|0xf3||swallow bottom center||&#x23bd;||-
+|-
+|0xef||explosion top center||&#x23ba;||-
+|-
+|0xf8||explosion middle left||&#x2502;||<nowiki>|</nowiki>
+|-
+|0xf8||explosion middle right||&#x2502;||<nowiki>|</nowiki>
+|-
+|0xf3||explosion bottom center||&#x23bd;||-
+|-
+|}
+
+In the above table, "bars" and "altar" are listed with two appearances.  The first applies to 3.6.3 or newer.
+
+The second applies to 3.6.2 and prior.
+
+These symbols can be reinstated by putting the following line into the [[configuration file]]:
+  SYMBOLS=S_altar:_,S_bars:\m{
+
+
+[[Category:Options]]}
+&&%s&& %s Tooled horn {131945 2020-02-08T19:00:03Z {4001279 Umbire the Phantom} This seems like a general thing for the [[fleeing]] page. {{tool
+  |color=white
+  |tile=[[image:horn.png]]
+  |name=tooled horn
+  |appearance=[[horn]]
+  |cost=15
+  |weight=18
+  |material=bone
+}}
+
+A '''tooled horn''' is a tonal [[musical instrument]], and the only non-magical [[horn]].
+
+==Effects==
+
+Improvising with it will awaken (and possibly [[scare]]) nearby monsters &ndash; including [[pet]]s &ndash; and will [[abuse]] your [[wisdom]].{{refsrc|music.c|421}} Monsters are awakened if their distance to you is at most 5.48 times the root of your level, and are scared (if not resisted) if their distance to you is at most 3.16 times the root of your level. They have the usual [[monster magic resistance|resistance roll]] against the scare effect. BUC status has no effect.
+
+It can be used to play the [[passtune]] to enter the [[castle]].
+
+==Strategy==
+The tooled horn is a valuable item for [[pacifist]] players, as it can cause monsters that have engulfed you to spit you out. It will also scare monsters that do not respect [[Elbereth]] and unfreeze pets that have attacked a floating eye.
+
+==Messages==
+{{message|You produce a frightful, grave sound.|You successfully improvised with the horn.}}
+{{message|You extract a strange sound from the horn!|You successfully played a tune on the horn.}}
+{{message|What you produce is quite far from music...|You attempted to use the horn while confused.}}
+{{message|You can't play music underwater!|You attempted to use the horn underwater.}}
+
+== References ==
+<references />
+
+{{stub}}
+{{nethack-343}}
+[[Category:Musical instruments]]}
+&&%s&& %s Fire horn {133205 2020-04-01T02:21:59Z {4000978 Aximili} Redirected page to [[Fire and frost horn]] #REDIRECT [[Fire and frost horn]]}
+&&%s&& %s Wooden harp {144785 2022-03-05T17:15:48Z {4001279 Umbire the Phantom}  {{tool
+  |color=wood color
+  |tile=[[image:harp.png]]
+  |name=wooden harp
+  |appearance=[[harp]]
+  |cost=50
+  |weight=30
+  |material=wood
+}}
+
+A '''wooden harp''' is a type of [[musical instrument]] that appears in ''NetHack''. It is tonal and made of [[wood]], and appears as just a [[harp]] when unidentified.
+
+For [[Samurai]], the wooden harp is called a '''koto'''.
+
+==Description==
+[[Apply]]ing a wooden harp will play it; improvising will typically cause it to "twang", while trying to play specific notes produces a "strange sound", and both have no effect beyond exercising [[dexterity]].{{refsrc|src/music.c|639|version=NetHack 3.6.6}} If you are not [[confused]], there is a chance that it will instead play "a lilting melody" that pacifies any [[nymph]]s nearby; for this to occur, the sum of your [[experience level]] and a randomly rolled number between 0 and your current [[dexterity]] stat must exceed 25.{{refsrc|src/music.c|631|version=NetHack 3.6.6}}
+
+==Strategy==
+The wooden harp is easily and safely distinguished from a [[magic harp]] by attempting to play it - playing a magic harp with charges produces "very attractive music" and tame nearby monsters.
+
+As a tonal instrument, it can be used to play the [[passtune]] to enter the [[Castle]]. Outside of this, wooden harps are mainly used as [[polyfodder]].
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Musical instruments]]}
+&&%s&& %s Harp {143613 2021-11-09T00:14:44Z {4001279 Umbire the Phantom}  In ''[[NetHack]]'', a '''harp''' is one of two [[musical instrument]]s:
+
+* [[Wooden harp]] (2/3 probability)
+* [[Magic harp]]  (1/3 probability)
+
+Both cost 50 zm and weigh 30 [[aum]]. A wooden harp will either play "a lilting melody" (which pacifies [[nymph]]s), or else "twangs". If a harp produces "very attractive music", it is a magic harp instead.
+
+==Encyclopedia entry==
+{{encyclopedia|
+A triangular stringed instrument, often Magic.  Even when not Magic, a Harp is surprisingly portable and tough and can be carried everywhere on the back of the Bard or Harper in all weathers.  A Harp seldom goes out of tune and never warps. Its strings break only in very rare instances, usually because the Harper is sulking or crossed in love.  This is just as well as no one seems to make or sell spare strings. 
+{{right-align|[ The Tough Guide to Fantasyland, by Diana Wynne Jones ]}}
+
+After breakfast was over, the ogre called out: "Wife, wife, bring me my golden harp."  So she brought it and put it on the table before him.  Then he said: "Sing!" and the golden harp sang most beautifully.  And it went on singing till the ogre fell asleep, and commenced to snore like thunder.
+Then Jack lifted up the copper-lid very quietly and got down like a mouse and crept on hands and knees till he came to the table, when up he crawled, caught hold of the golden harp and dashed with it towards the door.  But the harp called out quite loud: "Master!  Master!" and the ogre woke up just in time to see Jack running off with his harp.
+|[ Jack and the Beanstalk, from English Fairy Tales, by Joseph Jacobs ]
+}}
+
+{{nethack-366}}
+{{disambig}}}
+&&%s&& %s Bugle {142815 2021-09-20T20:50:00Z {4001279 Umbire the Phantom} /* Encyclopaedia entry */ {{tool
+  |color=copper color
+  |tile=[[image:bugle.png]]
+  |name=bugle
+  |cost=15
+  |weight=10
+  |material=copper
+  |muse=def
+}}
+
+The '''bugle''' is a tonal [[musical instrument]] that appears in ''[[NetHack]]''. It is the only non-magical instrument that lacks a magical equivalent.
+
+==Generation==
+[[Sergeant]]s, lieutenants, and captains in the Yendorian Army have a {{frac|3}} chance of being generated with a bugle.
+
+==Effects==
+[[Apply]]ing a bugle will allow you to play it. Improvising can awaken or scare nearby monsters, as with a [[tooled horn]] - however, it will also awaken, anger, and unparalyze all [[soldiers]] and [[watchmen]] on the level.{{refsrc|music.c|426}}{{refsrc|music.c|163}} Improvising abuses your [[wisdom]]. 
+
+Soldiers themselves are capable of using bugles to the same effect - a soldier will only play it if there is another sleeping soldier in a 7&times;7 square around them.{{refsrc|muse.c|465}}
+
+{{upcoming|3.7.0|Per [https://github.com/NetHack/NetHack/commit/141a7915d6d4034353b6910515dc50e240f7f5b3 this commit], bugles work against fewer monsters, and some are completely immune.}}
+
+==Strategy==
+A bugle can be a good substitute for a tooled horn - they are lighter and have a good chance of scaring most monsters outside of the Yendorian Army. However, they cannot be safely used in [[Minetown]] unless you neutralize the watch, and it is best to look for [[barracks]] before using your bugle on later levels, including the [[Castle]].
+
+Bugles are also a reason to tread carefully when clearing out any barracks, as one of the higher-ranked fighters may carry one and will wake up their sleeping comrades the first chance they get, spoiling any [[sleep]] or [[stealth]]-based approach you were employing at that point.
+
+Bugles are very useful tools for the late game and [[Endgame]] - as a tonal instrument, they can play the [[passtune]] for the [[Castle]], and they can keep [[aligned priest|hostile priests]] from surrounding you in the [[Sanctum]] and drive away [[air elemental]]s on the [[Plane of Air]].
+
+{{upcoming|3.7.0|As a consequence of the above commit, priests and Angels are no longer scared by bugles.}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+'I read you by your bugle horn
+And by your palfrey good,
+I read you for a Ranger sworn
+To keep the King's green-wood.'
+'A Ranger, Lady, winds his horn,
+And 'tis at peep of light;
+His blast is heard at merry morn,
+And mine at dead of night.'
+|[ Brignall Banks, by Sir Walter Scott ]
+}}
+
+== References ==
+<references/>
+
+[[Category:Musical instruments]]
+{{nethack-364}}}
+&&%s&& %s Leather drum {137145 2021-01-16T02:01:12Z {4001476 Infinigon} /* Encyclopaedia entry */ "encyclopedia" {{tool
+|color=leather color
+|tile=[[image:drum.png]]
+|name=leather drum
+|appearance=[[drum]]
+|cost=25
+|weight=25
+|material=leather
+}}
+
+A '''leather drum''' is an atonal [[musical instrument]], so it cannot be used to play the [[passtune]]. It is one of the two [[drum]]s.
+
+== Effects ==
+[[Apply]]ing a leather drum (or a depleted [[drum of earthquake]]) will "beat a deafening row!"; this will awaken and [[scare]] nearby [[monster]]s - including [[pet]]s - and [[abuse]] your [[wisdom]].{{refsrc|music.c|459}}{{refsrc|music.c|61}} You will also become [[deaf]] for 30-49 (more) turns. Monsters are awakened if their distance to you is at most <math>6.3\sqrt{XL}</math>, and are scared (if not resisted) if their distance to you is at most <math>3.65\sqrt{XL}</math>, where <math>XL</math> is your [[experience level]], with the usual check against [[monster magic resistance]] against the scare effect.
+
+== Strategy ==
+The leather drum is not especially useful for most players, who will probably discard it or [[stash]] it for later [[polypiling]], hoping for a more valuable [[tool]]. In addition, even [[fleeing]] monsters are reluctant to retrace their steps;{{refsrc|monmove.c|935}} in a corridor, they will often get stuck between you and the square they came from and continue attacking you. This is a bug that is fixed in Nitrohack.<ref>[https://github.com/tung/NitroHack/commit/f71440b50978c44587b58c1f2d6c39aedd8474b7 The relevant Nitrohack commit on github]</ref>
+
+A drum can become useful on the [[Plane of Air]] to scare away [[air elementals]]. If applied every few steps or when an elemental begins to approach, it is possible to avoid being engulfed most of the time. If engulfed, beating the drum will cause them to expel you and flee, although it may take several applications.
+
+One role that may find it worthwhile to carry is the [[Knight]], as it can be used to awaken sleeping monsters and avoid an alignment penalty (it's still not the best tool for this job, as lighter and/or tonal instruments are also available). Since using it abuses wisdom, you might want to either restore stats lost to abuse with a [[unicorn horn]], or engrave a few [[Elbereth]] to compensate the wisdom [[abuse]] (effective only if your stats are very low). Rogues may also find it useful, as they get bonus damage against fleeing monsters and it is easier to scare a large number of monsters with a drum than to engrave Elbereth against each one.
+
+Illiterate heroes can use a drum or horn as an Elbereth replacement, at least in open rooms. The drum has a somewhat larger range (and a bit more weight) than a [[tooled horn]] and is applied directly without having to answer the "Improvise? (y/n)" query for a [[tonal instrument]].
+
+The drum is a valuable item for [[pacifist]] players, as it can cause monsters that have engulfed you to spit you out. It will also scare monsters that do not respect Elbereth and unfreeze pets that have attacked a [[floating eye]].
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+Many travelers have seen the drums of the great apes, and
+some have heard the sounds of their beating and the noise of
+the wild, weird revelry of these first lords of the jungle,
+but Tarzan, Lord Greystoke, is, doubtless, the only human
+being who ever joined in the fierce, mad, intoxicating revel
+of the Dum-Dum.
+|[ Tarzan of the Apes, by Edgar Rice Burroughs ]
+}}
+
+== References ==
+<references/>
+
+[[Category:Musical instruments]]
+{{nethack-364}}}
+&&%s&& %s Drum of earthquake {142534 2021-09-09T04:35:39Z {4000903 Testbutt} /* Effects */ {{tool
+  |color=leather color
+  |tile=[[image:drum.png]]
+  |name=drum of earthquake
+  |appearance=[[drum]]
+  |cost=25
+  |weight=25
+  |material=leather
+}}
+
+The '''drum of earthquake''' is a magical [[drum]] in ''[[NetHack]]''.
+
+==Generation==
+A drum of earthquake is generated with 4-8 charges.{{refsrc|mkobj.c|522}}
+
+== Effects ==
+
+{{float right|{{caption|{{EarthquakeArea}}|Size of pits and anger area.
+Numbers: minimum experience level to affect that spot.
+Red: 1-9, blue 10-19, green 20-29}}}}
+
+[[Apply]]ing a charged drum of earthquake will will "produce a heavy, thunderous rolling!" This will create several [[pit]]s around and possibly ''under'' you; it will wake up all [[monster]]s on the level, unfreezing them as well.{{refsrc|music.c|447}}{{refsrc|music.c|216}} Monsters hidden on the ceiling will be shaken off.
+
+Monsters within 23.7 Euclidean distance will [[flee]] if they don't [[monster magic resistance|resist]], and [[peaceful]] monsters within a 4*((u.ulevel - 1) / 3 + 1)+1 wide square centered on you will become hostile. The [[Wizard of Yendor]] and other "meditating" monsters will only be awakened in that square area.
+
+A drum with no charges behaves like a [[leather drum]], except that it doesn't cause deafness. 
+
+The power of this item increases massively as you level up{{refsrc|music.c|453}}; at [[XL]] 30 it will create large fields of pits, as opposed to just a few around you.
+
+The pits created by a drum of earthquake can destroy [[altar]]s similar to [[apply]]ing a [[wand of digging]], and works even on [[Digging|undiggable]] dungeon levels. The high altars in [[Moloch's Sanctum]] and the [[Astral Plane]] will be unaffected.
+
+==Strategy==
+{{main|Leather drum}}
+The drum of earthquake's random number and distribution of created pits makes it completely unreliable for opening a pit on a specific square. Be very careful using an unidentified drum on levels with peaceful monsters you don't want to provoke - in particular, creating an earthquake in [[Minetown]] or on the [[quest]] home level is a very [[bad idea]].
+
+For scenarios where you ''do'' want to wake up monsters, the drum of earthquake is likely the best means of awakening the [[Wizard of Yendor]] without having to cross the [[Wizard's Tower]]. [[Rogue]]s in particular can attract the attention of their [[quest nemesis]], the [[Master Assassin]], by applying the drum while standing at the bottom right square of the left section of the [[Rogue quest#Goal level|goal level]] - the earthquake effect will wake him up immediately.
+
+At a high level, it can be useful to immobilize most non-[[flying]] monsters on a level, such as the aligned priests and player monsters on the [[Astral Plane]]. It also has a niche application with [[levitation]] or [[flying]], where it can be used while doing either to slow down pursuing monsters.
+
+The same strategies for a leather drum apply to a drum of earthquake with no charges. Additionally, a spare drum of earthquake is suitable polyfodder as a magical tool, and especially so for [[pacifist]] [[conduct]] players since opening pits under monsters can kill them, which breaks the conduct.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], it can wake up [[Vlad the Impaler]], to get the Candelabrum without the [[alignment key]]s.
+
+==Encyclopedia entry==
+{{encyclopedia-redirect|leather drum}}
+
+==References==
+<references />
+
+{{nethack-343}}
+[[Category:Musical instruments]]
+[[Category:Magical tools]]}
+&&%s&& %s Drum {98600 2015-12-19T02:32:20Z {4000080 ChasonBot}  A '''drum''' might be one of two [[musical instrument]]s:
+
+* [[Leather drum]]       (2/3 relative probability)
+* [[Drum of earthquake]] (1/3 relative probability)
+
+
+Both items cost 25 [[zorkmid]]s, so [[price identification]] is not available to tell them apart. In addition a drum of earthquake with no [[charge]]s behaves exactly like a leather drum.
+
+{{disambig}}
+{{nethack-343}}}
+&&%s&& %s Grappling hook {149812 2023-01-23T22:49:26Z {4000251 Netzhack} /* Encyclopaedia entry */ soft line breaks {{weapon
+  |glyph=(
+  |tile=[[image:grappling hook.png]]
+  |color=metal color
+  |name=grappling hook
+  |appearance=iron hook
+  |smalldmg=1d2
+  |largedmg=1d6
+  |skill=flail
+  |cost=50
+  |weight=30
+  |material=iron
+}}
+
+A '''grappling hook''' is a [[tool]] that appears in ''[[NetHack]]''. When [[identification|unidentified]], it appears as an '''iron hook'''. It is also a [[weapon]] that uses the [[flail]] skill.
+
+{{upcoming|NetHack 3.7.0|It is no longer referred to as an iron hook, being identified by default, and always appears as "grappling hook". (The redirect [[iron hook]] should still be left because many variants still call it that.)}}
+
+== Effects ==
+
+=== Range ===
+You can [[apply]] a grappling hook to a location up to a distance determined by your skill in the use of flails:
+<div class="ttyscreen"><replacecharsblock>
+newline=<br>
+default={{lightgray|$1}}
+@={{white|@}}
+U={{yellow|U}}
+S={{brightgreen|S}}
+E={{brightred|E}}
+
+.......
+.ESUSE.
+.SUUUS.
+.UU@UU.
+.SUUUS.
+.ESUSE.
+.......
+</replacecharsblock></div>
+
+You can only apply the hook at a space you can see without [[astral vision]]. {{refsrc|src/apply.c|2962|nethack=3.6.0}}
+
+=== Possible Outcomes ===
+You can attempt to grab an [[item]] on that square, drag yourself towards a spot on the ground, attack a monster, drag a tiny [[monster]] to you, or you may end up accidentally hitting yourself (doing 10-19 points of damage). You cannot hit yourself if you are Skilled or Expert.
+
+If you are Unskilled or Basic, there are equal chances of nothing happening, hitting an item, hitting a monster, hitting the ground, or hooking yourself.{{refsrc|src/apply.c|2971|nethack=3.6.0}} If you are at least Skilled, you can select which target you are aiming for. If Skilled, you have a 50% chance of achieving what you try to, and a 95% chance at Expert; otherwise, there are equal chances of each outcome other than hooking yourself. If you can't decide which to choose, you may type enter to trigger a random effect.
+
+If you select or get an item or monster as a target, and there is no such thing present on the target space, nothing happens.
+
+=== Grabbing Items ===
+When grabbing an item, you will always snag the item that was last dropped on that square. Only one item from the stack at a time can be snagged this way.{{refsrc|src/apply.c|3014|nethack=3.6.0}} This can be used to snag items from the ground while [[Levitation|levitating]].
+
+=== Dragging Yourself ===
+When dragging yourself towards the ground, you will only be dragged one square. If you are trapped, you instead remain trapped and may take further damage from the trap. {{refsrc|src/dothrow.c|710|version=NetHack 3.6.0}}
+
+=== Monsters ===
+A [[tiny]] monster may be dragged with a 25% probability; otherwise, it is simply hit. Larger monsters are always hit. When grappling a monster that is at least of [[large]] size and/or [[strong]], there is a 25% chance that you will be pulled toward the ground instead, unless the space has [[water]] or [[air]], in which case there is no effect. {{refsrc|src/apply.c|3036|nethack=3.6.0}}
+
+==Encyclopaedia entry==
+
+{{encyclopedia|
+But as for Queequeg -- why, Queequeg sat there among them -- at the head of the table, too, it so chanced; as cool as an icicle.  To be sure I cannot say much for his breeding.  His greatest admirer could not have cordially justified his bringing his harpoon into breakfast with him, and using it there without ceremony; reaching over the table with it, to the imminent jeopardy of many heads, and grappling the beefsteaks towards him.
+|[ Moby Dick, by Herman Melville ]
+}}
+
+== References ==
+<references />
+
+[[Category:Tools]]
+[[Category:Weapons]]
+
+{{nethack-360}}}
+&&%s&& %s Template:Gold color {25850 2008-02-26T16:46:03Z {630 Paxed} cat sorting {{yellow|{{{1}}}}}<noinclude>
+----
+Use this template for items specified as having <code>HI_GOLD</code> color.
+
+[[Category:Logical color templates|Gold color]]
+</noinclude>}
+&&%s&& %s Candelabrum of invocation {14042 2006-10-15T04:59:14Z {467 Killian} #REDIRECT [[Candelabrum of Invocation]] #REDIRECT [[Candelabrum of Invocation]]}
+&&%s&& %s Bell of opening {14043 2006-10-15T04:59:39Z {467 Killian} #REDIRECT [[Bell of Opening]] #REDIRECT [[Bell of Opening]]}
+&&%s&& %s Meat stick {146667 2022-07-16T02:26:54Z {4001279 Umbire the Phantom}  {{comestible
+  |color=brown
+  |tile=[[image:meat stick.png]]
+  |name=meat stick
+  |cost=5
+  |nutrition=5
+  |turns=1
+  |weight=1
+  |conduct=meat
+}}
+
+A '''meat stick''' is a type of [[comestible]] that very rarely appears in ''[[NetHack]]''.
+
+==Generation==
+Meat sticks are only created by [[zap]]ping a [[spell]] of {{spell of|stone to flesh}} at a [[wand]] with the marble [[randomized appearance]].
+
+==Description==
+Meat sticks function similarly to [[tripe ration]]s - carnivorous [[pet]]s consider it a [[treat]], and keeping one in open inventory will cause them to try and stay close to you. When eaten, they give a meager 5 nutrition.
+
+==Strategy==
+Meat sticks are generally [[junk]] items - like [[meat ring]]s, they typically result from an accidental stone to flesh zap at yourself, or a deliberate one used to cure [[stoning]]. A meat stick's nutrition is also incredibly low - their best use is as a lightweight treat to feed any meat-eating pets or else tame carnivorous [[domestic animal]]s. They can also be used as [[polyfodder]] along with other comestibles when trying to stock up on lightweight food such as [[lembas wafer]]s.
+
+==History==
+The meat stick is introduced alongside the spellbook of stone to flesh in [[NetHack 3.3.0]].
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], meat sticks can be randomly generated as wares found in food stores.
+
+==Encyclopedia entry==
+{{encyclopedia-redirect|meatball}}
+{{nethack-366}}
+[[Category:Comestibles]]}
+&&%s&& %s Kelp frond {150037 2023-02-26T06:59:26Z {443 Kahran042} /* Strategy */ - Correct pluralization. {{comestible
+  |color=green
+  |tile=[[image:kelp frond.png]]
+  |name=kelp frond
+  |cost=6
+  |nutrition=30
+  |turns=1
+  |weight=1
+  |conduct=vegan
+}}
+
+A '''kelp frond''' is a kind of [[comestible]].
+
+== Generation ==
+
+It is only generated under water, in stacks of [[d notation|1d2]]: 1/10 chance of being generated in each [[pool]] square and 1/30 chance of being generated in each [[moat]] square.
+
+== Effects ==
+
+It is a vegetable, preserving both vegan and vegetarian conduct, and can be fed to herbivorous pets, though it counts only as food and not as a [[treat]] like apples.
+
+== Strategy ==
+
+Perhaps the easiest way to harvest kelp fronds is to cast {{spell of|detect treasure}} or {{spell of|detect food}}, [[levitation|levitate]] over the [[moat|water]] and apply a [[bullwhip]] down. [[Juiblex]]'s and [[Medusa]]'s lairs are good places to collect kelp, but watch out for the [[eel]]s. By the time a player has access to lots of kelp, food is usually not an issue anymore.
+
+== Encyclopedia entry ==
+{{encyclopedia|
+I noticed that all the plants were attached to the soil by 
+an almost imperceptible bond.  Devoid of roots, they seemed
+not to require any nourishment from sand, soil, or pebble. 
+All they required was a point of support -- nothing else.
+These plants are self-propagated, and their existence depends 
+entirely on the water that supports and nourishes them.
+Most of them do not sprout leaves, but sprout blades of
+various whimsical shapes, and their colors are limited to
+pink, carmine, green, olive, fawn, and brown.  I had the 
+opportunity to observe once more -- not the dried specimens
+I had studied on the _Nautilus_ -- but the fresh, living
+specimens in their native setting.
+        [ 20,000 Leagues Under the Sea, by Jules Verne ]
+}}
+
+{{stub}}
+[[Category:Comestibles]]
+{{nethack-360}}}
+&&%s&& %s Orange {145915 2022-05-07T09:35:49Z {4000251 Netzhack} /* Encyclopaedia entry */ {{comestible
+  |color=orange
+  |tile=[[image:orange.png]]
+  |name=orange
+  |cost=9
+  |nutrition=80
+  |turns=1
+  |weight=2
+  |conduct=vegan
+}}
+
+An '''orange''' is a kind of [[comestible]].  It is considered [[vegan]] food.
+
+==Encyclopaedia entry==
+Interestingly, the orange shares the same entry as the [[pear]], likely because it mentions both:
+
+{{encyclopedia|
+What was the fruit like?  Unfortunately, no one can describe a taste.  All I can say is that, compared with those fruits, the freshest grapefruit you've ever eaten was dull, and the juiciest orange was dry, and the most melting pear was hard and woody, and the sweetest wild strawberry was sour.  And there were no seeds or stones, and no wasps.  If you had once eaten that fruit, all the nicest things in this world would taste like medicines after it.  But I can't describe it.  You can't find out what it is like unless you can get to that country and taste it for yourself.
+|[ The Last Battle, by C.S. Lewis ]
+}}
+
+{{stub}}
+[[Category:Comestibles]]
+{{nethack-343}}}
+&&%s&& %s Pear {99003 2015-12-20T14:37:27Z {4000080 ChasonBot}  {{comestible
+  |color=brightgreen
+  |tile=[[image:pear.png]]
+  |name=pear
+  |cost=7
+  |nutrition=50
+  |turns=1
+  |weight=2
+  |conduct=vegan
+}}
+
+A '''pear''' is a kind of [[comestible]]. It is considered [[vegan]] food. When you eat a pear or an apple, some [[YAFM]]s appear if you are running [[UNIX]] or [[Mac OS]]. See [[Apple#Messages]] for more information.
+
+==Encyclopaedia entry==
+
+{{encyclopedia|
+What was the fruit like?  Unfortunately, no one can describe
+a taste.  All I can say is that, compared with those fruits,
+the freshest grapefruit you've ever eaten was dull, and the
+juiciest orange was dry, and the most melting pear was hard
+and woody, and the sweetest wild strawberry was sour.  And
+there were no seeds or stones, and no wasps.  If you had once
+eaten that fruit, all the nicest things in this world would
+taste like medicines after it.  But I can't describe it.  You
+can't find out what it is like unless you can get to that
+country and taste it for yourself.
+|[ The Last Battle, by C.S. Lewis ]
+}}
+
+{{stub}}
+[[Category:Comestibles]]
+{{nethack-343}}}
+&&%s&& %s Melon {131413 2020-01-25T10:18:24Z {4001279 Umbire the Phantom}  {{comestible
+  |color=brightgreen
+  |name=melon
+  |tile=[[image:melon.png]]
+  |cost=10
+  |nutrition=100
+  |turns=1
+  |weight=5
+  |conduct=vegan
+}}
+
+The '''melon''' is a kind of [[comestible]] in ''[[NetHack]]''. 
+
+==Effects==
+It is considered [[vegan]] food, and gives 100 nutrition when eaten. Thrown melons will "splat" and be wasted.{{refsrc|Dothrow.c|1678}}
+
+==Strategy==
+The melon shares the same color glyph with the [[corpse]] of [[Medusa]], which has an outside chance of resulting in [[YASD]] if the two are confused.
+
+==Encyclopaedia entry==
+
+{{encyclopedia|
+"What is it, Umbopa, son of a fool?" I shouted in Zulu.
+"It is food and water, Macumazahn," and again he waved the
+green thing.
+Then I saw what he had got.  It was a melon.  We had hit upon
+a patch of wild melons, thousands of them, and dead ripe.
+"Melons!" I yelled to Good, who was next me; and in another
+second he had his false teeth fixed in one.
+I think we ate about six each before we had done, and, poor
+fruit as they were, I doubt if I ever thought anything nicer.
+|[ King Solomon's Mines, by H. Rider Haggard ]
+}}
+
+==References==
+<references/>
+{{stub}}
+[[Category:Comestibles]]
+{{nethack-364}}}
+&&%s&& %s Banana {144526 2022-02-19T13:37:00Z {4001509 D4 wryyyy} fixed reference links {{comestible
+  |color=yellow
+  |tile=[[image:banana.png]]
+  |name=banana
+  |cost=9
+  |nutrition=80
+  |turns=1
+  |weight=2
+  |conduct=vegan
+}}
+
+A '''banana''' is a kind of [[comestible]].  It is considered [[vegan]] food.  Bananas can sometimes be obtained from [[tree]]s.  [[Ape]]s and [[monkey]]s can be [[tame]]d by bananas in [[3.6.1]]{{refsrc|src/mondata.h|208|nethack=3.6.1}}; these two monsters, along with the [[sasquatch]], regard bananas as [[treat]]s{{refsrc|src/dog.c|824|nethack=3.6.1}}, so you can train their [[apport]] with one.
+
+==Encyclopaedia entry==
+
+{{encyclopedia|
+He took another step and she cocked her right wrist in
+viciously.  She heard the spring click.  Weight slapped into
+her hand.
+"Here!" she shrieked hysterically, and brought her arm up in
+a hard sweep, meaning to gut him, leaving him to blunder
+around the room with his intestines hanging out in steaming
+loops.  Instead he roared laughter, hands on his hips,
+flaming face cocked back, squeezing and contorting with great
+good humor.
+"Oh, my dear!" he cried, and went off into another gale of
+laughter.
+She looked stupidly down at her hand.  It held a firm yellow
+banana with a blue and white Chiquita sticker on it.  She
+dropped it, horrified, to the carpet, where it became a
+sickly yellow grin, miming Flagg's own.
+"You'll tell," he whispered.  "Oh yes indeed you will."
+And Dayna knew he was right.
+|[ The Stand, by Stephen King ]
+}}
+
+==References==
+<references />
+
+{{stub}}
+[[Category:Comestibles]]
+{{nethack-361}}}
+&&%s&& %s Sprig of wolfsbane {149200 2022-12-06T19:11:33Z {4000251 Netzhack} /* Encyclopedia entry */ Hard whitespace out {{comestible
+  |color=green
+  |tile=[[image:sprig of wolfsbane.png]]
+  |name=sprig of wolfsbane
+  |cost=7
+  |nutrition=40
+  |turns=1
+  |weight=1
+  |conduct=vegan
+}}
+{{wikipedia|Aconitum}}
+Eating a '''sprig of wolfsbane''' will cure [[lycanthropy]].{{refsrc|src/eat.c|2191|version=NetHack 3.6.6}}
+
+Wolfsbane is a [[vegan]] food, and is also suitable food for herbivorous pets.
+
+Wielding wolfsbane has no effect on lycanthropes or wolves (as opposed to [[Clove of garlic|garlic]] or other [[The Banes|banes]]). You can't use wolfsbane to poison weapons, and it will not poison you if you eat it.
+
+Eating a cursed sprig of wolfsbane might interrupt your meal, so that half of the sprig remains uneaten. If you finish the meal it will nevertheless grant you relief from lycanthropy.
+
+== Generation ==
+
+[[Priest]]s begin the game with 1 or 2 sprigs of wolfsbane.
+
+== Origin ==
+[[NetHack is not real life]]; in real life, wolfsbane is extremely poisonous and should not be eaten. The name comes from the belief that it was unusually lethal to wolves.<ref>http://botanical.com/botanical/mgmh/a/aconi007.html</ref>
+
+==Encyclopedia entry==
+{{encyclopedia|1.  Any of various, usually poisonous perennial herbs of the genus Aconitum, having tuberous roots, palmately lobed leaves, blue or white flowers with large hoodlike upper sepals, and an aggregate of follicles.  2.  The dried leaves and roots of some of these plants, which yield a poisonous alkaloid that was formerly used medicinally.  In both senses also called monkshood.|[ The American Heritage Dictionary of the English Language, Fourth Edition. ]
+}}
+
+== References ==
+<references />
+
+
+[[Category:Comestibles]]
+{{nethack-366}}}
+&&%s&& %s Template:Organic color {25854 2008-02-26T16:47:31Z {630 Paxed} cat sorting {{brown|{{{1}}}}}<noinclude>
+----
+Use this template for items specified as having <code>HI_ORGANIC</code> color.
+
+[[Category:Logical color templates|Organic color]]
+</noinclude>}
+&&%s&& %s Royal jelly {14101 2006-10-15T22:49:34Z {761 Someone Else} [[Royal jelly]] moved to [[Lump of royal jelly]]: Actual name. #REDIRECT [[Lump of royal jelly]]}
+&&%s&& %s The Stake of Van Helsing {88073 2014-01-05T08:41:06Z {0 } Fixing the color of the glyph in the infobox. {{artifact weapon
+  |color=wood color
+  |appearance=wooden stake
+  |base=wooden stake
+  |smalldmg=1d6 '''+12'''
+  |largedmg=1d6 '''+12'''
+  |tohit='''+5'''
+  |bonusversus=''(all)''
+  |skill=dagger
+  |affiliation=<ul><li>[[lawful]]</li><li>[[Undead Slayer]]</li><li>[[intelligent artifacts|intelligent]]</li></ul>
+  |whencarried=[[magic resistance]]
+  |cost=5000
+  |weight=20
+  |material=wood
+}}
+'''The Stake of Van Helsing''' is the [[Undead Slayer]] [[quest artifact]] in [[Slash'EM]]. It is [[lawful]] for [[wish|wishing]] purposes. Its base item type is a [[wooden stake]], which uses the [[dagger]] skill.  It has a flat +5 to-hit and +12 to-damage against all monsters, and provides [[magic resistance]] when carried.  The name of the Stake is a reference to [[wikipedia:Abraham Van Helsing|Abraham Van Helsing]].
+
+As with any wooden stake, wielding it against a [[vampire]] or [[vampire bat]] gives a 10% chance of instantly killing the creature ("You plunge your stake into the heart of <vampire>"). Otherwise, it still does 2 + d6 extra damage ("You drive your stake into <vampire>").
+
+==Strategy==
+This is fairly nice as quest artifacts go.  Its damage bonus makes it strong enough to be a contender in SLASH'EM's endgame, while the periodic instakill is useful against annoyances such as [[vampire mage]]s and [[fire vampire|fire]]/[[star vampire]]s.  Slotless magic resistance is also very useful, although as usual, if you are an undead slayer yourself you won't want to rely on this artifact for it.  This is a decent candidate for a lawful artifact wish, especially given how the [[Sceptre of Might]] has been nerfed in SLASH'EM.
+
+Pacifists and other heavy pet-users will find this a very nice weapon for a pet [[Solar]]: it is one of the few ways to give them extrinsic [[magic resistance]], and its damage bonus greatly augments Solars' already-impressive fighting capabilities.
+
+[[Category:SLASH'EM Artifacts|Stake of Van Helsing]]
+[[Category:Quest artifacts|Stake of Van Helsing]]}
+&&%s&& %s Vladsbane {137958 2021-02-16T03:54:13Z {4001463 Actual-nh} Change to History anchor in Vlad the Impaler #REDIRECT [[Vlad the Impaler#History]]}
+&&%s&& %s Vladbane {14222 2006-10-16T06:06:05Z {712 SGrunt} #REDIRECT [[Vlad the Impaler]] #REDIRECT [[Vlad the Impaler]]}
+&&%s&& %s Vladsmasher {14223 2006-10-16T06:06:21Z {712 SGrunt} #REDIRECT [[Vlad the Impaler]] #REDIRECT [[Vlad the Impaler]]}
+&&%s&& %s Candy bar {98485 2015-12-18T16:31:06Z {4000080 ChasonBot}  {{comestible
+  |color=brown
+  |name=candy bar
+  |cost=10
+  |nutrition=100
+  |turns=1
+  |weight=2
+  |conduct=vegetarian
+}}
+
+A '''candy bar''' is a kind of [[comestible]] which breaks the [[vegan]] conduct. [[You]] will sometimes find one randomly in the dungeon.
+
+In [[comestible#Food strategy|food strategy]], a candy bar enjoys a high ratio nutrition per weight. At fourth place, it ranks better than a (5th) [[food ration]], but worse than a (2nd) [[pancake]] or (2nd) [[lump of royal jelly]]. You might save your candy bars until after you eat all of your rations.
+
+==Encyclopedia entry==
+{{encyclopedia|
+ Only once a year, on his birthday, did Charlie Bucket ever
+ get to taste a bit of chocolate.  The whole family saved up
+ their money for that special occasion, and when the great
+ day arrived, Charlie was always presented with one small
+ chocolate bar to eat all by himself.  And each time he
+ received it, on those marvelous birthday mornings, he would
+ place it carefully in a small wooden box that he owned, and
+ treasure it as though it were a bar of solid gold; and for
+ the next few days, he would allow himself only to look at it,
+ but never to touch it.  Then at last, when he could stand it
+ no longer, he would peel back a tiny bit of the paper
+ wrapping at one corner to expose a tiny bit of chocolate, and
+ then he would take a tiny nibble - just enough to allow the
+ lovely sweet taste to spread out slowly over his tongue.  The
+ next day, he would take another tiny nibble, and so on, and
+ so on.  And in this way, Charlie would make his ten-cent bar
+ of birthday chocolate last him for more than a month.
+ | [ Charlie and the Chocolate Factory, by Roald Dahl ]
+
+}}
+[[Category:Comestibles]]
+{{nethack-343}}}
+&&%s&& %s Pancake {98993 2015-12-20T13:37:22Z {4000080 ChasonBot}  {{comestible
+  |color=yellow
+  |name=pancake
+  |cost=15
+  |nutrition=200
+  |turns=2
+  |weight=2
+  |conduct=vegetarian
+}}
+
+A '''pancake''' is a kind of [[comestible]].  It is considered [[Conduct#Vegetarian|vegetarian]], but not [[Conduct#Vegan|vegan]]. It has a [[Nutrition/Weight|nutrition/weight ratio]] of 100, equal to that of [[lump of royal jelly|lumps of royal jelly]], which makes it the second most weight-efficient food in [[NetHack]], behind [[lembas wafer]]s.
+
+{{stub}}
+[[Category:Comestibles]]
+{{nethack-343}}}
+&&%s&& %s Lembas wafer {150139 2023-03-07T15:50:48Z {4001279 Umbire the Phantom} /* Generation */* {{comestible
+  |color=white
+  |name=lembas wafer
+  |cost=45
+  |nutrition=800 (1000 for elves and 600 for orcs)
+  |turns=2
+  |weight=5
+  |conduct=vegan
+}}
+
+A '''lembas wafer''' is a kind of [[comestible]] that appears in ''[[NetHack]]''. It is a [[vegan]] food that has the highest [[nutrition]]-to[[weight]] [[Nutrition/Weight|ratio]] of all comestibles at 800 nutrition to 5 units.
+
+Lembas wafers provide 1000 nutrition for [[Elf (starting race)|elves]], and only 600 nutrition for [[orc (starting race)|orc]]s.{{refsrc|src/eat.c|323|version=NetHack 3.6.7}} Lembas wafers can also be used to tame [[cat]]s and [[dog]]s.
+
+==Generation==
+Elven [[Ranger]]s start the game with a stack of 4-8 lembas wafers in place of the role's standard [[cram ration]]s.{{refsrc|src/u_init.c|119|version=NetHack 3.6.7|comment=Initial inventory for Rangers pre-substitution}}{{refsrc|src/u_init.c|119|version=NetHack 3.6.7|comment=Elven substitutions}}
+
+[[Tourist]]s will sometimes start with lembas wafers among their initial stacks of food.{{refsrc|src/u_init.c|144|version=NetHack 3.6.7|Initial inventory for Tourists}}
+
+==Strategy==
+Lembas wafers take only two turns to eat, which gives them a high nutrition per turn - for all characters excluding elves or orcs, they are tied for the highest with [[K-ration]]s. Orcs still gain 120 nutrition per [[aum]], making them worthwhile enough for orc characters to stock up on. Non-cursed lembas wafers are never [[comestible#Rotten food|rotten]], which also makes them a safe option if you must eat in the midst of combat or while fleeing.{{refsrc|src/eat.c|55|version=NetHack 3.6.7|name="nonrotting"}}
+
+The combination of their high nutrition/weight and nutrition/turn makes them highly suitable for use in [[ascension kit]]s, especially if players run into [[Famine]]. They are usually combined with a supply of K-rations for this purpose, and it is not uncommon for players to [[polypile]] food for more lembas.
+
+==History==
+The lembas wafer is introduced in [[NetHack 3.0.0]]. From this version to [[NetHack 3.4.3]], as well as variants based on those versions, lembas wafers could be [[rotten]] just the same as other food; non-cursed lembas was made exempt from this in [[NetHack 3.6.0]]. The differing nutrition values for elves and orcs were added in [[NetHack 3.6.1]].
+
+When starting races were introduced in [[NetHack 3.3.0]], [[Orc (starting race)|orcish]] player characters except for [[Wizards]] could start the game with lembas among their random extra food items.<ref>[[NetHack 3.3.0/u_init.c#line806|NetHack 3.3.0 u_init.c, line 806]]</ref> There was intended to be code for an orcish character's initial inventory that gave them [[tripe ration]]s in place of [[cram ration]]s and lembas wafers, which is properly implemented in [[NetHack 3.6.2]].{{refsrc|src/u_init.c|223|version=NetHack 3.6.2}}{{refsrc|src/u_init.c|1055|version=NetHack 3.6.2}}
+
+==Origin==
+{{wikipedia|lembas}}
+In the works of [[J.R.R. Tolkien]] set in Middle-Earth, lembas is a lightweight, extremely nourishing food made by the [[wikipedia:Elf (middle-earth)|elves]]. Lembas (or "waybread", as in the quoted excerpt used as the [[encyclopedia]] entry) was reputedly capable of keeping a "traveller on his feet for a day of long labour", and is given to the Fellowship to feed them on their journey.
+
+==Messages==
+{{message|A little goes a long way.|You ate a non-cursed lembas wafer as an elf.{{refsrc|src/eat.c|1826|version=NetHack 3.6.7}}}}
+{{message|!#?&* elf kibble!|You ate a non-cursed lembas wafer as an orc.{{refsrc|src/eat.c|1823|version=NetHack 3.6.7}}}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+In the morning, as they were beginning to pack their slender goods, Elves that could speak their tongue came to them and brought them many gifts of food and clothing for their journey.  The food was mostly in the form of very thin cakes, made of a meal that was baked a light brown on the outside, and inside was the colour of cream.  Gimli took up one of the cakes and looked at it with a doubtful eye.
+'Cram,' he said under his breath, as he broke off a crisp corner and nibbled at it.  His expression quickly changed, and he ate all the rest of the cake with relish.
+'No more, no more!' cried the Elves laughing.  'You have eaten enough already for a long day's march.'
+'I thought it was only a kind of cram, such as the Dalemen make for journeys in the wild,' said the Dwarf.
+'So it is,' they answered.  'But we call it lembas or waybread, and it is more strengthening than any foods made by Men, and it is more pleasant than cram, by all accounts.'
+|[ The Fellowship of the Ring, by J.R.R. Tolkien ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Comestibles]]
+[[Category:Elven items]]}
+&&%s&& %s Cram ration {150141 2023-03-07T15:55:35Z {4001279 Umbire the Phantom} generation {{comestible
+  |color=organic color
+  |name=cram ration
+  |cost=35
+  |nutrition=600 (700 for dwarves)
+  |turns=3
+  |weight=15
+  |conduct=vegan
+}}
+
+A '''cram ration''' is a kind of [[comestible]] that appears in ''[[NetHack]]''. It is a [[vegan]] food, and is lighter but less filling than a [[food ration]]; [[dwarf (starting race)|dwarves]] gain an additional 100 nutrition from cram rations.
+
+==Generation==
+[[Gnome (starting race)|Gnomish]] and [[Human (starting race)|human]] [[Ranger]]s start the game with a stack of 4-8 cram rations.{{refsrc|src/u_init.c|119|version=NetHack 3.6.7|comment=Initial inventory for Rangers pre-substitution}}
+
+[[Tourist]]s will sometimes start with cram rations among their initial stacks of food.{{refsrc|src/u_init.c|144|version=NetHack 3.6.7|Initial inventory for Tourists}}
+
+==Strategy==
+Non-cursed cram rations are a safer option than most other comestibles if you must eat while hostile monsters are nearby&mdash;they are never [[rotten]], relatively light and can be eaten in 3 turns.{{refsrc|src/eat.c|55|version=NetHack 3.6.7|name="nonrotting"}} This makes them particularly useful during the [[ascension run]] or an encounter with [[Famine]] in the [[Astral Plane]].
+
+==History==
+Cram rations first appear in [[NetHack 3.0.0]]. The inability of non-cursed cram rations to be rotten when eaten is introduced in [[NetHack 3.6.0]]; the extra nutrition for dwarves is added in [[NetHack 3.6.1]].
+
+When starting races were introduced in [[NetHack 3.3.0]], [[Orc (starting race)|orcish]] player characters except for [[Wizards]] could start the game with cram rations among their random extra food items.<ref>[[NetHack 3.3.0/u_init.c#line806|NetHack 3.3.0 u_init.c, line 806]]</ref> There was intended to be code for an orcish character's initial inventory that gave them [[tripe ration]]s in place of cram rations and [[lembas wafer]]s, which is properly implemented in [[NetHack 3.6.2]].{{refsrc|src/u_init.c|222|version=NetHack 3.6.2}}{{refsrc|src/u_init.c|1055|version=NetHack 3.6.2}}
+
+==Origin==
+Cram is a biscuit-like food in the Middle-Earth setting of [[J.R.R. Tolkien]], made by the human inhabitants of Lake-town and Dale and shared with the dwarves of the Lonely Mountain. While much less flavorful compared to elven lembas, cram is still very nutritious and is said to have kept fresh indefinitely, making for viable sustenance on long journeys. In ''The Hobbit'', Bilbo Baggins and the dwarves keep themselves fed with cram during the latter part of the Quest of Erebor; in ''The Fellowship of the Ring'', Gimli eats a tiny portion of a lembas cake expecting it to be a similar type of cram, but takes a liking to the food and eagerly finishes it.
+
+==Messages==
+{{message|This cram ration is bland.|You ate a non-cursed cram ration.}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+If you want to know what cram is, I can only say that I don't know the recipe; but it is biscuitish, keeps good indefinitely, is supposed to be sustaining, and is certainly not entertaining, being in fact very uninteresting except as a chewing exercise.  It was made by the Lake-men for long journeys.
+|[ The Hobbit, by J.R.R. Tolkien ]
+}}
+
+==Refrences==
+<references/>
+{{nethack-366}}
+[[Category:Comestibles]]}
+&&%s&& %s K-ration {150079 2023-03-06T06:07:47Z {4001279 Umbire the Phantom} follow-up {{comestible
+  |color=organic color
+  |name=K-ration
+  |cost=25
+  |nutrition=400
+  |turns=1
+  |weight=10
+  |conduct=vegan
+}}
+
+A '''K-ration''' is a kind of [[comestible]] that appears in ''[[Nethack]]''. Similar to a [[C-ration]], it can be eaten in one move, and is suitable for [[vegan]]s.
+
+==Generation==
+[[Yendorian Army]] fighters have a {{frac|3}} chance of [[monster starting inventory|being generated with]] a K-ration.{{refsrc|src/makemon.c|666|version=NetHack 3.6.6}}
+
+==Strategy==
+K-rations can be eaten in one move, making them valuable for quick nutrition in desperate situations, and are plentiful if you can clear out [[barracks]], such as those found in [[Fort Ludios]] and the [[Castle]]. Though K-rations and C-rations are effectively identical, K-rations have a higher nutrition value and are tied with the [[lembas wafer]] for the highest amount of nutrition per turn, unless you are an [[Elven (starting race)|elven]] character. This makes them highly preferred on the [[Astral Plane]], particularly if you have to deal with [[Famine]].
+
+==History==
+The K-ration first appears in [[NetHack 2.3e]].
+
+==Origin==
+{{wikipedia}}
+K-rations were daily combat rations for the US Army in World War II. Packed in three wax-paper boxes (one for each meal), they largely consisted of canned entrees and biscuits. The entrees were usually meat-based, and even the biscuits were not vegan, containing animal byproducts such as eggs and milk.<ref>http://www.kration.info/biscuits-2.html</ref>
+
+Intended as an emergency ration for short-term use, K-rations were lighter and more compact than [[C-ration|C-rations]]. They also provided significantly fewer calories than C-rations, in contrast to their superior nutritional value in ''Nethack'' (400 vs. 300). Despite K-rations' intended use as a short-term stopgap, in many cases they were given to soldiers for weeks or even months at a time. Their low caloric content often led to malnutrition, a situation made worse by their monotonous menus which frequently caused men to not eat the entire ration.
+
+==Messages==
+{{message|This K-ration is bland.|You ate a non-cursed K-ration.}}
+
+== Encyclopedia entry ==
+{{encyclopedia|
+The K ration was the [ Quartermaster Subsistence Research and Development Laboratory's ] answer to the demand for an individual, easy-to-carry ration that could be used in  assault and combat operations.  It was noted for compactness and superior packaging and was acknowledged as the ration that provided the greatest variety of nutritionally balanced components within the smallest space.
+|[ Special Rations for the Armed Forces, 1946-53, by Franz A. Koehler ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Comestibles]]}
+&&%s&& %s C-ration {148293 2022-10-02T07:12:11Z {375 Ion frigate} Put 1-turn eating in the lead - that's really the main feature of K/C-rations {{comestible
+  |color=organic color
+  |name=C-ration
+  |cost=20
+  |nutrition=300
+  |turns=1

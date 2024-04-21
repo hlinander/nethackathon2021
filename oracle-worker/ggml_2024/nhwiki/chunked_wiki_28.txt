@@ -1,0 +1,1000 @@
+In [[SLASH'EM]], Priests can be [[doppelganger]]s, [[drow]], [[elf|elves]], [[hobbit]]s, or [[human]]s.
+
+====Starting equipment====
+*blessed +0 [[mace]]
+*blessed +0 [[robe]] (note that in SLASH'EM, an ordinary robe does not enhance spellcasting; that requires a [[robe of power]])
+*blessed +2 [[small shield]]
+*1&ndash;2 blessed [[clove of garlic|cloves of garlic]]
+*1&ndash;2 blessed [[sprig of wolfsbane|sprigs of wolfsbane]]
+*[[spellbook of healing]]
+*spellbook of {{of|spellbook|force bolt|sleep|resist poison|resist sleep|detect food}}, {{of|spellbook|detect monsters|light|knock|or=1|wizard lock}}
+*random blessed [[scroll]]
+*4 potions of [[holy water]]
+*10% chance of [[magic marker]], otherwise 10% chance of light source (50% chance of [[oil lamp]], 50% chance of [[torch]]es)
+
+====Skills====
+Priest spell skills are different than in vanilla. Also of note, they can become skilled in [[long sword]].
+{{Priest skill table (SLASH'EM)}}
+
+====Techniques====
+{|class="prettytable"
+|'''Level'''
+|'''Technique'''
+|-
+|1
+|[[Turn undead]]
+|-
+|1
+|[[Blessing (technique)|Blessing]]
+|}
+
+
+====Strategy====
+In SLASH'EM, Priests get [[Disrupter]] as their first sacrifice gift, which is very useful in their quest as it grants +5 to hit and +30 to damage against the undead. It is not terribly useful as a main weapon, but makes a good secondary weapon to use against [[lich]]es and [[Vampire mage (SLASH'EM)|vampire mages]]. Make sure to enchant it to be able to hit undead with enchantment resistance!
+
+Lawful Priests can try to use [[Skullcrusher]], which can be gotten by sacrifice. If you are good at unmounted polearm tactics, then [[Reaper]] can be another option. The previously-good wish, [[the Sceptre of Might]], is a much weaker weapon in SLASH'EM; it now does a flat +3 to hit and +5 to damage against cross-aligned, instead of double damage.
+
+Neutral Priests do not get any new options and should go for [[Mjollnir]] (now a heavy hammer) or [[the Staff of Aesculapius]].
+
+Chaotic Priests can use the [[Bat from Hell]], which can by gotten by sacrifice. They can also use [[Plague]] or [[Hellfire]] for ranged combat; both may be obtained through sacrifice. Arrows shot from Plague are automatically poisoned, and bolts shot from  Hellfire explode and deal fire damage.
+
+===FIQHack===
+
+[[FIQHack]] priests can be [[Orcs]].
+
+Priests get a +20 bonus to effective XL when writing scrolls.  Thus at XL30 they can always write unknown scrolls.
+
+[[Turn undead|Turning undead]] has been buffed compared to vanilla.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+For the two priests were talking exactly like priests, piously, with learning and leisure, about the most aerial enigmas of theology.  The little Essex priest spoke the more simply, with his round face turned to the strengthening stars; the other talked with his head bowed, as if he were not even worthy to look at them.  But no more innocently clerical conversation could have been heard in any white Italian cloister or black Spanish cathedral.  The first he heard was the tail of one of Father Brown's sentences, which ended:  "... what they really meant in the Middle Ages by the heavens being incorruptible."  The taller priest nodded his bowed head and said:  "Ah, yes, these modern infidels appeal to their reason; but who can look at those millions of worlds and not feel that there may well be wonderful universes above us where reason is utterly unreasonable?"
+|[ The Innocence of Father Brown, by G.K. Chesterton ]
+}}
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Roles]]}
+&&%s&& %s Mind flayer {150280 2023-03-21T03:22:25Z {4001279 Umbire the Phantom} /* SLASH'EM */ word choice, accidental omission The '''mind flayer''', {{monsym|mind flayer}}, is an especially perilous type of [[monster]] that appears in ''[[NetHack]]''. They are [[omnivorous]] humanoids with octopus-like tentacled heads, and possess [[flight]], [[telepathy]], [[see invisible]], and [[infravision]]. The mind flayer can use its tentacle attacks to eat its victims' brains, draining [[intelligence]] and abusing [[wisdom]] while often inflicting [[amnesia]] - losing enough intelligence this way can be [[Brainlessness|irreversibly fatal]].
+
+A mind flayer can [[grow up]] into a '''master mind flayer''', {{monsym|master mind flayer}}; both share a colored glyph with the [[dwarf king]], {{monsym|dwarf king}}. Eating their [[corpse]]s can grant [[telepathy]] or raise intelligence by 1 point, with a 50% chance of each.{{refsrc|src/eat.c|1084|version=NetHack 3.6.6}}
+
+{{upcoming|NetHack 3.7.0|Mind flayer tentacle attacks no longer cause amnesia.}}
+
+==Other common traits==
+Mind flayers move at the same speed as an un-hasted, unburdened player character and can wear all armor. They will occasionally concentrate and release a blast of psychic energy, and can sense if you have telepathy yourself&mdash;"a faint wave of psychic energy" is a sign that one is present on the level. If you have telepathy and are within sight or telepathy range of a mind flayer, it will cause a wave of psychic energy to pour over you - a mindflayer that is hostile or under the effects of [[conflict]] will "lock on" to your mind or telepathy for d15 damage, which is affected by [[half spell damage]]; a peaceful or tame mind flayer will attack other monsters the same way, but also produces "soothing" energy that is harmless to you.
+
+===Generation===
+Randomly-generated mind flayers and master mind flayers are always generated hostile. They are also valid polymorph forms, meaning that you may encounter one far earlier in the dungeon either as the guise of a [[shapeshifter]] or the result of a [[polymorph trap]].
+
+Both types of mind flayer are notorious for potentially generating upon entering a floor of the [[Gnomish Mines]], where they are normally far too high difficulty to appear. These '''"minesflayers"''' are the result of the Mines levels specifying that one random humanoid ({{mcsl|h}}) monster should be generated at normal level creation; this is almost always a [[dwarf]], [[hobbit]], or [[bugbear]]. On occasion however, the function that chooses which humanoid monster should be generated totally ignores the difficulty of the monster it produces and creates a (master) mind flayer.
+
+==Descriptions==
+<simpletabs>
+Mind flayer|{{monster
+ |difficulty=13
+ |attacks=Weapon 1d4, Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]]
+ |level=9
+ |experience=263
+ |speed=12
+ |AC=5
+ |MR=90
+ |align=&minus;8
+ |frequency=1
+ |genocidable=Yes
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=none
+ |resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+ |attributes={{attributes|A mind flayer|humanoid=1|fly=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line449]]}}
+
+The mind flayer has a base AC of 5, and is likely the variety a player will encounter first.
+|-|
+Master mind flayer|{{monster
+ |name=master mind flayer
+ |difficulty=19
+ |level=13
+ |experience=416
+ |speed=12
+ |AC=0
+ |MR=90
+ |align=&minus;8
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d8, Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]]
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=none
+ |resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+ |attributes={{attributes|A master mind flayer|humanoid=1|fly=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line457]]
+}}
+
+The master mind flayer has a base AC of 0 and a stronger weapon attack, along with 5 tentacle attacks; it is otherwise identical to its previous form in many aspects.
+
+===Generation===
+In addition to the above, master mind flayers can be summoned by the [[summon nasties]] [[monster spell]].
+</simpletabs>
+
+==Strategy==
+Mind flayers and master mind flayers are considered a consistent, high-level threat throughout the entirety of the game due to the intelligence-draining attack, which has taught [[Lessons learned the hard way|many an unfortunate lesson]] to players. Brainlessness is an [[instadeath]] that ignores not only your current HP, but [[lifesaving]] as well&mdash;you will be brought back, only to immediately die again since your brain is still gone. If you die from intelligence drain while [[polymorph]]ed, you will also permanently die instead of reverting to your normal form. This makes mind flayers and their 'master' forms common targets for [[genocide]], as well as stellar pets for those who can procure a tame flayer.
+
+If in [[explore mode]] or [[wizard mode]] and you choose not to die of brainlessness, your intelligence is then boosted by two points.{{refsrc|src/eat.c|602|version=NetHack 3.6.6}}
+
+===Detection===
+If you start sensing waves of psychic energy, that is your cue to [[farlook]] and check whether any {{magenta|h}} you encounter is a dwarf&mdash;a somewhat common [[YASD]] is to mistake the mind flayer for an easier-to-kill dwarf king, then march in and have your brain promptly eaten. If you have telepathy, blinding yourself temporarily (e.g., via [[blindfold]] or [[towel]]) can be used to quickly confirm if a flayer is present on a level; dwarves also do not generate randomly inside [[Gehennom]], making detection there more trivial.
+
+===Combat===
+When fighting mind flayers, avoid melee-range combat if at all possible, especially if you are burdened and/or have low intelligence. Mind flayers respect [[Elbereth]] and can be deterred by standing on a [[scroll of scare monster]], though the former will not work in Gehennom. 
+A flayer's 90 [[magic resistance (monster)|MR]] will often resist many of the spells that manage to hit through their AC, and makes [[Scare|scaring]] them through other means a difficult task.
+
+An [[expensive camera]] or [[tooled horn]], while not as secure as Elbereth for the above reasons, can still frighten off mind flayers, especially in Gehennom where Elbereth is of no use. Beware that a fleeing mind flayer may still attack you, although it is much less likely to; additionally, a [[blind]]ed one will not respect Elbereth. Scaring a mind flayer also does not prevent them locking on to your mind or telepathy.
+
+[[Cancellation]] will not affect their brain-sucking attacks even if it successfully hits; projectiles such as [[dagger]]s or [[arrows]] are among your best resources to consistently deal damage. Alternately, if your [[ranged attack]] options are limited and melee is your only out, consider [[stoning]] them or taking other measures to prevent or minimize stat loss ([[#Preventing intelligence drain|discussed in more detail below]]).
+
+===Preventing intelligence drain===
+Wearing any [[greased]] [[helm]] prevents the mind flayer's tentacles from reaching your brain, but the grease has a {{frac|2}} chance to wear off with each attack; a non-greased helm has a {{frac|7|8}} chance of preventing each of the mind flayer's tentacle attacks. Mind flayers get multiple attacks per turn, so you should not rely solely on a greased helm, especially if you are unable to kill them quickly. Alternate possibilities include wearing a [[dunce cap]] or [[ring of sustain ability]]; both items will fix your intelligence stat (either at 6 or its current value), preventing stat loss and thus brainlessness, on top of the dunce cap's chance to block the tentacles. A blessed [[unicorn horn]] or [[potion of restore ability]] can also reverse the stat loss fairly quickly.
+
+Polymorphing into a headless monster will protect you from the intelligence drain attacks, which can mitigate the worst of their threat;{{refsrc|src/mhitu.c|1145|version=NetHack 3.6.6}}{{refsrc|src/eat.c|505|version=NetHack 3.6.6}} polymorphing into a normally [[mindless]] form will not protect you - as a comment in the relevant code says, players aren't mindless.{{refsrc|src/eat.c|581|version=NetHack 3.6.6}}{{refsrc|src/mhitu.c|1165|comment=Players aren't mindless|version=NetHack 3.6.6}}
+
+None of these methods will prevent amnesia from a successful brain-sucking, and you're likely to come out of the fight very forgetful&mdash;have a means of re-identifying items on hand if possible. You can use #[[name]] to label one of a particular type of item(s) that you consider vital and/or does not [[auto-identify]] as a precaution.
+
+{{upcoming|NetHack 3.7.0|In addition to mind flayer attacks no longer causing amnesia, unicorn horns will no longer restore lowered stats.}}
+
+===Genocide===
+While the amnesia and instadeath from brain-eating are enough to make both forms of mind flayer a popular target for genocide, '''do not attempt blessed genocide of mind flayers if you are a [[Dwarf (starting race)|dwarf]]!''' Using a blessed [[scroll of genocide]] will remove all {{mcsl|h}} from the current game ''including'' dwarves, serving as a particularly aggravating YASD for forgetful dwarven players.
+
+One or two "normal" genocides, either from the uncursed scroll or a [[throne]], should be used instead; the master mind flayer should ideally be targeted first, as regular mind flayers cannot be generated via summon nasties unless they randomly replace an [[extinct]]/genocided nasty.
+
+You should ideally '''always''' identify the beatitude of possible scrolls of genocide before reading, but this is especially true if you plan to eliminate mind flayers with one&mdash;that randomly read scroll you just found may be cursed, and the summoned horde of mind flayers will often result in a quick death, and even if you can scare them away, their psychic blasts may still overwhelm you. Also, be sure to mind your spelling, ''especially'' if you are a [[Monk]]&mdash;misspelling it as "master mindfalyer" will only parse the word "Master", one of the Monk's [[rank]] titles, and wipe out all monks including you.
+
+{{upcoming|NetHack 3.7.0|If a genocided monster with a pre-grown form (that is not explicitly a baby form) is chosen, and this form is not also genocided, it will appear in place of the genocided monster. For example, mind flayers can appear in place of genocided master mind flayers. This also happens if the chosen nasty is inappropriate for the location, such as an arch-lich outside Gehennom.}}
+
+===As pets===
+While highly desirable as [[pet]]s, taming a mind flayer is extremely hard and dangerous due to their monster magic resistance; you may be much better off using a [[polymorph trap]] on your current pet. Tame mind flayers make quick work of [[shopkeeper]]s, and their telepathic outreach only locks onto and damage hostile monsters - the harmless message it otherwise produces can be hidden with [[MSGTYPE]]. Remember that ''only'' tame and peaceful mind flayers will generate soothing psychic waves&mdash;if you see different messages related to psychic waves, are taking damage from them, and you are not generating [[conflict]], then a hostile mind flayer may be on the level.
+
+Be ''especially'' careful if your tame mind flayer becomes confused&mdash;they will turn those psychic waves on you! This also makes conflict similarly perilous. However, mind flayers' high monster magic resistance ensures that once it reaches level 15, they will become immune to conflict - and thus no threat to you or your brain matter - should you decide to use it.
+
+{{upcoming|NetHack 3.7.0|Per [https://github.com/NetHack/NetHack/commit/2f255560252b0c18ed468baf94b58654bd5413f7 this commit:]
+
+The chance to resist conflict now depends on the player's charisma, the monster's level, and the player's level. Conflict is resisted if <code>rnd(20) > min(19, (ACURR(A_CHA) - mtmp->m_lev + u.ulevel))</code> - thus, there is always at least a 5% chance to resist it. Conflict also now requires that the monster see the player, not that the monster be in the player's line of sight. These changes are imported from [[SporkHack]].}}
+
+Tame flayers excel at killing many other monsters due to their tentacle attacks: non-mindless monsters take an additional d10 of damage per brainsucking attack to simulate brain loss.{{refsrc|src/eat.c|499|version=NetHack 3.6.6}} However, there are a few monsters that in turn pose a serious threat should a mind flayer attempt to eat their brain:
+
+* [[Cockatrice]]s, chickatrices and [[Medusa]] will turn a mind flayer to stone if a tentacle attack lands.
+* [[Jellies]] have passive attacks that can easily rack up enough damage to kill an unlucky mind flayer attacking one.
+* Shapeshifters and [[green slime]]s are similarly dangerous: the former may go down quickly, but will polymorph a mind flayer that eats its corpse, while the latter is extremely likely to turn it into another slime.
+* [[Rider]]s that mind flayers target are immediately fatal if they manage to eat one's brain, though the Rider in question still takes the extra "brain loss" damage.{{refsrc|src/eat.c|621|version=NetHack 3.6.6}}
+
+[[Ochre jellies]] are a common sight in the late game, especially as a summonable nasty&mdash;consider giving your mind flayer any [[yellow dragon scales]] (or [[yellow dragon scale mail|dragon scale mail]]) that you happen upon to provide them with valuable [[acid resistance]]. 
+
+Mind flayers also have a tendency to attract [[covetous]] monsters with their psychic blasts; if approaching the goal level of your [[Quest]], the [[Wizard of Yendor]]'s [[Wizard's Tower|Tower]] or one of the many demon lairs of [[Gehennom]], you may want to leave them on another floor temporarily. Alternately, if you intend to draw covetous foes to the stairs this way, be prepared accordingly; in particular, a mind flayer pet or polyform can be used by [[Rogue]]s on [[Rogue quest|their quest]] to awaken the [[Master Assassin]], who will then warp to you from his otherwise inaccessible dwelling.
+
+{{upcoming|NetHack 3.7.0|From [https://github.com/NetHack/NetHack/commit/0891ef4e22ccb56bacd41ce302d4178c1c6525aa commit 0891ef4]: Monsters wearing alchemy smocks now additionally gain acid resistance instead of just [[poison resistance]], allowing for more flexibility in kitting out a tame mind flayer. Additionally, per [https://github.com/NetHack/NetHack/commit/2cad4ecec23d992d65f1f1c4c460bccb70b15b77 commit 2cad4ec], each individual covetous monster will pick either the upstairs or downstairs to warp to.}}
+
+===As a polymorph form===
+The master mind flayer is a very sought-after form for [[polyself]]: on top of flight, multiple attacks per turn, 0 base AC of 0 and no changes to armor or [[encumbrance]], its brain-eating attack is deadly to nearly anything. When eating a monster's brain, you gain d30 nutrition per successful tentacle attack and exercise wisdom, without risk of choking; if your intelligence is below its current maximum (e.g., your own brain was sucked), it will be increased by d4.{{refsrc|src/eat.c|562|version=NetHack 3.6.6}} The intelligence increase is subject to the normal polymorphed attributes rules, and will be reset when you revert to your normal form; among its few drawbacks are that your max HP may also drop significantly in this form, especially if polymorphing at a high level. The master mind flayer form also sees use in [[speed ascension]]s, especially with physically-weak [[Elven (starting race)|elven]] [[Wizard]]s.
+
+Naturally, players in mind flayer form face the same dangers as pet mind flayers, including potential death from triggering too many passive attacks. Furthermore, brainsucking a [[green slime]] causes delayed [[sliming]], and eating a [[cockatrice]]'s brain causes both immediate [[stoning]] '''and''' delayed stoning if the immediate stoning was stopped by an [[amulet of lifesaving]]. Sucking the brains of your [[race]] or other mind flayers will count as [[cannibalism]] as well, though this does not trigger a penalty for each ''individual'' brain-sucking attack{{refsrc|src/eat.c|649|version=NetHack 3.6.6}} - for Monks and vegan or vegetarians players, eating brains will also break those conducts. While you cannot choke directly from eating brains, you ''can'' become satiated&mdash;you will ''not'' receive a warning when oversatiated, and thus run a significant risk of choking from eating ''anything'' afterward, which is an instadeath even while polymorphed.
+
+==History==
+The mind flayer first appears in [[NetHack 3.1.0]], and the master mind flayer is introduced in [[NetHack 3.3.0]].
+
+From 3.1.0 to [[NetHack 3.4.3]], including some variants based on them, the game would not recognize the alternate spelling "mindflayer" when selecting a monster for [[genocide]]. This meant that from 3.3.0 to 3.4.3, a Monk that attempted to genocide "master mindflayer" would instead genocide "master", thus wiping out all Monks and ending the game. As mentioned above, "master" is one of the [[rank]] titles for Monks, and the parser ignored the 'unfamiliar' word "mindflayer";<ref>[http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/0d275920c73ced76/ rgrn thread]</ref> this was fixed in [[NetHack 3.6.0]].
+
+Master mind flayers are one of the many polyforms that can aid in [[pudding farming]] in earlier versions of the game where it was possible.
+
+==Origin==
+{{Wikipedia|Illithid}}
+Mind flayers are derived from ''[[Dungeons & Dragons]]'', where they appear in all editions and were also known as '''illithids'''; the illithid is considered "Product Identity" by Wizards of the Coast, and as such is not released under its Open Game License. Creator Gary Gygax stated that one of his inspirations was the cover painting of the Titus Crow book ''The Burrowers Beneath'' by Brian Lumley. The first mention of illithids is found in the first issue of TSR Games' official newsletter ''The Strategic Review''; they were included in the Eldritch Wizardry supplement for the original white box edition of the 1976 ''Dungeons & Dragons'' game, where they were depicted as Lawful Evil; they also appear in the first edition's Monster Manual; and the 3rd and 3.5 editions introduce playable illithids.
+
+The illithid is "a super-intelligent, man-shaped creature with four tentacles by its mouth which it uses to strike its prey"; a tentacle that hits penetrates to the brain and draws it forth, allowing the monster to devour it. Its major weapon is the 'mind blast', a short-range wave of "PSI force" which affects each opponent differently based on how intelligent it is, and can induce many ailments from confusion and insanity, up to coma and even death. In-universe, the origins of the illithids are subject to many conflicting stories.
+
+Illithid society is structured around a creature called an "[[elder brain|Elder Brain]]", which lives in a pool of cerebral fluid in the center of a city. Dead illithids have their brain extracted and taken to this pool to have its contents absorbed, which illithids believe a form of immortality; this Brain also functions as a vast library of knowledge that an illithid can call upon with a simple telepathic call. Psionic potential is thus an integral part of the illithid identity, and they typically communicate by projecting thoughts and feelings to each other.
+
+While illithids do have a patron deity known as Ilsensine, few of them actively worship her - both because they believe themselves the most powerful creatures in the universe, and because Ilsensine is more of an "abstract" deity that represents universal knowledge and one’s mastery of their own mind, a state that all illithids seek. Outcast illithids that turn to wizardry are often known to become [[alhoon]].
+
+==Messages==
+{{message|The <master> mind flayer's tentacles suck you!|A mind flayer has hit you with its brain-sucking attack.}}
+{{message|Your brain is eaten!|You lost intelligence and/or memory of items and floors to the brain-sucking attack.}}
+{{message|Your <helm> blocks the attack to your head.|Your worn helmet successfully protected you from its tentacle attack.}}
+{{message|You don't seem harmed.|You were protected you from the tentacle attack due to being in the form of a headless monster.}}
+{{message|Your last thought fades away.|You died of brainlessness.}}
+
+{{message|<Foo>'s brain is eaten!|A monster was hit by a mind flayer attack, and takes an extra d10 damage.}}
+{{message|<Foo> doesn't notice.|As above, but the 'victim' was mindless and takes no extra damage.}}
+{{message|<Foo>'s last thought fades away...|A monster was killed by the brain-sucking attack.}}
+{{message|Ingesting that is fatal.|You ate the brain of a Rider while in mind flayer form, dying instantly and abusing wisdom if you are revived by an amulet of life saving.{{refsrc|src/eat.c|554|version=NetHack 3.6.6}}}}
+
+{{message|You have a sad thought for a moment, then it passes.|A tame mind flayer was turned to stone from an attempt to eat a monster's brains.}}
+
+==Variants and patches==
+===Heck² patch===
+In the [[Heck² patch]], one of the possible special levels in the "heck-a" list is filled with mind flayers and master mind flayers.
+
+===Lethe patch===
+In the [[Lethe patch]], the Wizard's Manse map for the fifth floor of the [[Lethe Gorge]] has a [[throne room]] with three [[throne]]s occupied by a sleeping master mind flayer and two sleeping mind flayers; the master mind flayer generates with a [[wand of cancellation]], while one mind flayer generates with a [[wand of lightning]] and the other generates with a [[wand of sleep]].
+
+===SLASH'EM===
+Mind flayers and their master forms are somewhat different in [[SLASH'EM]]. The master mind flayer has three brain-eating attacks, while the normal mind flayer has five&mdash;an unusual reverse of the situation in vanilla ''NetHack''. More importantly, the [[ring of free action]] provides [[Luck]]-based protection against their brain-eating attacks, starting at a 50% of blocking each individual flay and increasing to a 90% chance at maxed-out Luck.{{refsrc|mhitu.c|954|version=SLASH'EM 0.0.7E7F2}} This, in combination with a greased helm, renders them somewhat less of a threat.
+
+While genociding mind flayers is still generally a worthwhile idea, there are more sources of amnesia present such as the [[potion of amnesia|potions of amnesia]] and the [[migo queen]]'s attacks, making it much less reliable as a preventative method against amnesia specifically.
+
+Both mind flayer polyforms are incapable of wearing helmets due to tentacle placement, but can still wear all other armor. In addition, SLASH'EM makes it so that any additional bite or tentacle attacks that would automatically process and result in death (e.g. by attacking a cockatrice) are simply not used; this does not apply to the weapon attack, so as always be mindful of fighting bare-handed.
+
+In the [[Lawful Quest]], the locked chamber in the middle of the Cloud Bank has a chance to house mind flayers known as the "Spice Girls": one named Ginger is guaranteed to appear, while two others named Victoria and Emma each have a {{frac|4|5}} chance of generating}}. They may be accompanied by two two master mind flayers named Mel B. and Mel C., who each have a {{frac|3|5}} chance of being generated. Ginger is generated on top of a [[fountain]] and a [[chest]] that has a [[wand of cold]] with 16 charges; the chest also has a {{frac|7|10}} chance of containing an [[amulet of flying]] (70% chance), and a {{frac|4|5}} chance of containing a [[wand of digging]], making it a possible boon for sufficiently tough players. If either type of mind flayer is genocided, they will be replaced by random monsters with the same names.
+
+SLASH'EM recognizes the "mindflayer" spelling, so it is okay to genocide "master mindflayer", but a typo like "master mindfalyer" will still wipe out all Monks (including you if you are one).
+
+===dNetHack===
+In [[dNetHack]], mind flayers and their master kin are considered [[Primordials (dnethack)|primordials]]. dNetHack also adds [[parasitic mind flayer]]s and [[parasitic master mind flayer]]s as well as [[alhoon]]s, master mind flayers that have turned to [[lich]]dom.
+
+The [[Drow Noble Quest]] involves infiltrating a colony of mind flayers and retrieving the [[quest artifact]], the [[Web of the Chosen]]; there are 16 mind flayers and 2 master mind flayers scattered about the goal level around the [[elder brain]], with the brain guarding the [[Bell of Opening]]. The quest artifact's actual owner, [[A'gone]], is locked up in a cell on the edge of the level, with her mind [[mindless|completely gone]] due to the mind flayers.
+
+====Anachrononaut quest====
+The [[Anachrononaut quest]] features mind flayers as somewhat major antagonists: in the "age before ages", they discovered and woshipped an eldritch "nascent thought" known as Ilsensine, and in bringing knowledge of it back to the past set off a chain of events that caused the end of the world. While they were overthrown and brought low, the [[god]]s of Law discovered Ilsensine and were consumed, followed by the other gods of the heavens (hence why Anachrononauts do not worship any). In order to change the future and gain a full-scoring ascension, you must gain access to your Quest from your [[quest leader]] before she dies, retrieve [[the Annulus]] and obtain the [[Amulet of Yendor]], then reach the lawful high altar on the [[Astral Plane]] and invoke the Annulus to purge Ilsensine's influence once and for all before ascending as normal.
+
+Mind flayers are one of the many quest monsters: {{frac|7}} of the randomly generated monsters are mind flayer-related - of those, {{frac|8}} are mind flayers, {{frac|8}} are master mind flayers, and the remaining monsters are either [[umber hulk]]s or [[brain golem]]s. Mind flayers are among the various [[H.P. Lovecraft]]-inspired r'lyehians that can appear as well, with a {{frac|7}} chance of a r'lyehian generating: mind flayers make up {{frac|16}} of randomly-generated r'lyehians. Many mind flayers are also scattered around the lower filler level(s) of the Quest upon the creation of those levels.
+
+===EvilHack===
+In [[EvilHack]], mind flayers and master mind flayers use {{brightmagenta|h}} in order to differentiate them more easily for dwarven royals. EvilHack also adds alhoons (which are implemented differently from dNetHack) as well as [[mind flayer larva]], which only generate within mind flayer nurseries. Mind flayer larva live in shallow [[pool]]s and can only reach adulthood by attaching themselves to a victim's face; if a player is attacked this way, they have only one turn to kill or remove the larva before it burrows itself into the player's brain, killing them instantly and turning them into a mind flayer that can be found in any resulting bones.
+
+Mind flayers are also [[Illithid (starting race)|a playable race]], referred to as illithids; in addition to the above, other illithids can also be found in the dungeon as any of the various [[racial monster]]s present within, e.g. shopkeepers and [[player monster]]s. Player illithids have [[psychic resistance]] that renders them immune to brain-eating attacks, including those from other mind flayers.
+
+===xNetHack===
+In [[xNetHack]], mind flayers are moved to the [[aberration]] [[monster class]], represented by {{white|U}}; this is done primarily for genocide purposes to avert a YASD for dwarven players, and also solves the problem of minesflayers.
+
+==Monster stats by variant==
+===Mind flayer===
+<simpletabs>
+SLASH'EM|{{monster
+|difficulty=13
+|attacks=Weapon 1d4, Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]]
+|level=9
+|experience=263
+|speed=12
+|AC=5
+|MR=90
+|align=&minus;8
+|frequency=1
+|genocidable=Yes
+|weight=1450
+|nutr=400
+|size=Medium
+|resistances=none
+|resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+|attributes={{attributes|A mind flayer|humanoid=1|fly=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1|traitor=1}}
+ |reference = [[SLASH'EM 0.0.7E7F2/monst.c#line816]]
+}}
+|-|
+dNetHack|{{monster
+ |name=mind flayer
+ |symbol={{magenta|h}}
+ |tile=
+ |difficulty=11
+ |level=9
+ |experience=293
+ |speed=12
+ |AC=5
+ |MR=90
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d4 physical, Tentacle 1d4 [[int drain]]
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances=[[poison]]
+ |resistances conveyed=[[poison]]
+ |attributes={{attributes|A mind flayer|fly=1|humanoid=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|traitor=1|notame=1}}
+ |reference=[https://github.com/Chris-plus-alphanumericgibberish/dNAO/blob/compat-3.21.1/src/monst.c#L881 dNetHack src/monst.c, line 881]
+}}
+|-|
+EvilHack|{{monster
+ |name=mind flayer
+ |difficulty=13
+ |level=9
+ |experience=236
+ |speed=12
+ |AC=5
+ |MR=90
+ |align=-8
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d4, Tentacles 2d1 [[intelligence]] drain, Tentacles 2d1 [[intelligence]] drain, Tentacles 2d1 [[intelligence]] drain
+ |resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+ |resistances=psychic
+ |attributes={{attributes|A mind flayer|humanoid=1|fly=1|see_invis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1|mh_illithid=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[https://github.com/k21971/EvilHack/blob/master/src/monst.c#L625 EvilHack - monst.c, line 625]
+}}
+|-|
+xNetHack|{{monster
+ |name=mind flayer
+ |symbol={{magenta|U}}
+ |difficulty=13
+ |attacks=Weapon 1d4, Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]]
+ |level=9
+ |experience=263
+ |speed=12
+ |AC=5
+ |MR=90
+ |align=&minus;8
+ |frequency=1
+ |genocidable=Yes
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=none
+ |resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+ |attributes={{attributes|A mind flayer|humanoid=1|fly=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[https://github.com/copperwater/xNetHack/blob/xnh7.0/include/monsters.h#L1961 xNetHack 7.0 include/monsters.h, line 1961]}}
+</simpletabs>
+===Master mind flayer===
+<simpletabs>
+SLASH'EM|{{monster
+ |name=master mind flayer
+ |difficulty=19
+ |level=13
+ |experience=416
+ |speed=12
+ |AC=0
+ |MR=90
+ |align=&minus;8
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d8, Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]]
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=none
+ |resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+ |attributes={{attributes|A master mind flayer|humanoid=1|fly=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1|traitor=1}}
+ |reference = [[SLASH'EM 0.0.7E7F2/monst.c#line825]]
+}}
+|-|
+dNetHack|{{monster
+ |name=master mind flayer
+ |symbol={{magenta|h}}
+ |tile=
+ |difficulty=18
+ |level=13
+ |experience=465
+ |speed=12
+ |AC=0
+ |MR=90
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d8 physical, Offhand Weapon 1d8 physical, Tentacle 1d4 [[int drain]], Tentacle 1d2 [[int drain]], Tentacle 1d2 [[int drain]]
+ |weight=3000
+ |nutr=800
+ |size=large
+ |resistances=[[poison]]
+ |resistances conveyed=[[poison]]
+ |attributes={{attributes|A master mind flayer|fly=1|humanoid=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|traitor=1|notame=1}}
+ |reference=[https://github.com/Chris-plus-alphanumericgibberish/dNAO/blob/compat-3.21.1/src/monst.c#L889 dNetHack src/monst.c, line 889]
+}}
+|-|
+EvilHack|{{monster
+ |name=master mind flayer
+ |difficulty=19
+ |level=13
+ |experience=403
+ |speed=12
+ |AC=0
+ |MR=90
+ |align=-8
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d10, Tentacles 2d1 [[intelligence]] drain, Tentacles 2d1 [[intelligence]] drain, Tentacles 2d1 [[intelligence]] drain, Tentacles 2d1 [[intelligence]] drain, Tentacles 2d1 [[intelligence]] drain
+ |resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+ |resistances=psychic
+ |attributes={{attributes|A master mind flayer|humanoid=1|fly=1|see_invis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1|mh_illithid=1}}
+ |size=Medium
+ |nutr=400
+ |weight=1450
+ |reference=[https://github.com/k21971/EvilHack/blob/master/src/monst.c#L633 EvilHack - monst.c, line 633]
+}}
+|-|
+xNetHack|{{monster
+ |name=master mind flayer
+ |symbol={{brightmagenta|U}}
+ |difficulty=19
+ |level=13
+ |experience=416
+ |speed=12
+ |AC=0
+ |MR=90
+ |align=&minus;8
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d8, Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]], Tentacle 2d1 [[int drain]]
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=none
+ |resistances conveyed=[[Telepathy]] (50%), +1 [[Intelligence]] (50%)
+ |attributes={{attributes|A master mind flayer|humanoid=1|fly=1|seeinvis=1|omnivore=1|hostile=1|nasty=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[https://github.com/copperwater/xNetHack/blob/xnh7.0/include/monsters.h#L1975 xNetHack 7.0 include/monsters.h, line 1975]
+}}
+</simpletabs>
+
+==Encyclopedia entry==
+{{encyclopedia|
+This creature has a humanoid body, tentacles around its covered mouth, and three long fingers on each hand.  Mind flayers are telepathic, and love to devour intelligent beings, especially humans.  If they hit their victim with a tentacle, the mind flayer will slowly drain it of all intelligence, eventually killing its victim.
+}}
+
+==References==
+<references/>
+{{nethack-366|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Monsters]]}
+&&%s&& %s Cursed spellbook {74683 2011-11-06T01:55:32Z {831 Tjr} redirect to [[Spellbook#Failure_effects_of_spellbook_reading]] after a text merge. #redirect [[Spellbook#Failure_effects_of_spellbook_reading]]}
+&&%s&& %s Create monster {132945 2020-03-20T04:00:11Z {4000978 Aximili} Avoid overlapping scope with other pages, just link to them. '''Create monster''' may refer to:
+* [[scroll of create monster]]
+* [[wand of create monster]]
+* spell from [[spellbook of create monster]]
+
+== See also ==
+
+* [[Monster creation]]
+* [[Extinctionism]]
+
+{{disambig}}}
+&&%s&& %s Contact-poisoned spellbook {74684 2011-11-06T01:56:01Z {831 Tjr} Redirected page to [[Spellbook#Failure effects of spellbook reading]] #redirect [[Spellbook#Failure_effects_of_spellbook_reading]]}
+&&%s&& %s Wrenching sensation {102060 2016-03-30T10:21:03Z {4000734 F-Bomb} Added another reason for seeing diagnostic message The message '''You feel a wrenching sensation''' can be caused by one of three things:
+*Reading a [[cursed spellbook]] or [[Spellbook#Failure_effects_of_spellbook_reading|failing to comprehend]] an uncursed spellbook, which then attempts to teleport (successfully or not)
+*Stepping on a [[teleport trap]] or [[level teleport trap]] while [[magic resistance|magic resistant]]
+*Teleportation effect from sitting on a [[throne]] (1 in 13 chance).
+==See also:==
+
+* [[You feel]]
+
+{{Disambig}}
+{{nethack-343}}}
+&&%s&& %s Curse {126369 2019-07-27T03:11:28Z {4001313 Ardub23} Changed redirect target from [[BUC]] to [[BUC#Cursed items]] #REDIRECT [[BUC#Cursed items]]}
+&&%s&& %s Polymorph {146660 2022-07-14T19:29:35Z {4000328 Fyr}  {{tocright}}
+'''Polymorph''' refers to the [[magic]] that changes one creature into a different species, or changes an [[object]] to another object of the same type. [[Shapeshifter]]s and [[werecreatures]] have similar, but slightly different abilities.
+
+This article deals mainly with monster- or self-polymorph. The practice of polymorphing objects is also known as '''[[polypiling]]''', and is explained in the article behind that link.
+
+Polymorph is one of the more complex aspects of ''NetHack''. It can be a great danger if not done under the control of the player, but a prepared player can use it to gain many benefits. If you are transformed unexpectedly, you may turn into a weaker monster or die instantly; your valuable [[armor]] may also be destroyed. A weak enemy may unexpectedly turn into a dangerous one. On the other hand, you can deliberately turn into a much stronger monster, or a monster with useful abilities. Weak [[pet]]s can be changed into powerful ones. You can also polymorph surplus items into more useful equipment.
+
+== Polymorphing ==
+You can aim a [[wand of polymorph|wand]] or [[spellbook of polymorph|spell of polymorph]] can be aimed at monsters or piles of items on the floor. Aiming downwards using {{kbd|>}} polymorphs the objects on your square; aiming upwards using {{kbd|<}} has no effect; and aiming at [[you]]rself using {{kbd|.}} will naturally polymorph you. [[Dip]]ping an object into a [[potion of polymorph]] will polymorph it.
+
+Other sources of polymorph do not apply to objects:
+* Wearing a [[ring of polymorph]] will polymorph you from time to time. It can [[eating jewelry|be eaten]] for a {{frac|3}} chance of acquiring the intrinsic.
+* Stepping into a [[polymorph trap]] will polymorph you or a monster. The trap disappears after you use it once, but monsters can use it indefinitely.
+* Quaffing a [[potion of polymorph]] will polymorph you or a monster.
+** Getting hit by this potion. Thankfully, monsters will not do this to you; only you can do this to them. [[Vapors]] will not polymorph you (good for use-testing).
+* [[Sink#Quaffing from a sink|Quaffing from a sink]] produces toxic wastes, or randomly dispenses potion of polymorph; both effects will polymorph you.
+* Eating the corpse of a [[chameleon]] or [[doppelganger]], or [[digestion|digesting]] a [[sandestin]].
+* Becoming afflicted with [[lycanthropy]], and thus polymorphing into a [[werecreature]] from time to time.
+
+The inventory of a polymorphed monster is not polymorphed, but worn armor can be destroyed or temporarily absorbed. [[Magic resistance]] blocks the effect of all "involuntary" polymorphs; this means that it will not protect from a ring of polymorph, which is considered to be worn voluntarily. A monster's [[Magic resistance (monster)|MR]] will protect it against polymorph traps.
+
+If you polymorph into a form that is not the same as your starting race, you break the [[polyselfless]] [[conduct]]. ("Changing" into your original race is not a polymorph, strictly speaking, and this article calls it "[[#Polymorphing into your own race|Polymorphing into your own race]]".) Polymorphing any object breaks the [[polypileless]] conduct.
+
+== Effects of polymorph ==
+:''For effects specific to yourself, see [[#Self-polymorph]].''
+
+=== Restrictions on polymorphing ===
+Certain monsters are off-limits to polymorph,{{refsrc|mondata.h|77|comment=See also [[monst.c]], which lists the monsters to which this applies.}} either by you or a monster; these include:
+* any monsters that have been [[genocide]]d.  This will result in the message ''"You feel rather <monster>-ish."'' (Note: Monsters which are [[extinct]], however, are still available for self-polymorph.)
+* all [[unique monster]]s.
+* the base player race monsters ({{monsymlink|human}}, {{monsymlink|dwarf}}, {{monsymlink|elf}}, {{monsymlink|gnome}}, {{monsymlink|orc}}), which exist to provide corpses when zombies and mummies are killed and for bones piles (dwarves and gnomes can also be generated normally, however these are still not permitted).   Non-human variants generated as monsters (e.g. {{monsymlink|dwarf lord}}, {{monsymlink|Elvenking}}) are permitted, as are the functionally-human {{monsymlink|Keystone Kop}}s.  You may also polymorph into your [[#Polymorphing into your own race|own race]].
+* any creature represented by [[human or elf|{{white|@}}]], except the Elven variants mentioned above.
+* the greater angelic beings: {{monsymlink|Angel}}s, {{monsymlink|ki-rin}}, and {{monsymlink|Archon}}s.  The lesser angels {{monsymlink|Couatl}} and {{monsymlink|Aleax}} are permitted.
+* "limited-edition" monsters: {{monsymlink|Nazgul}} and {{monsymlink|erinys}}.
+* {{monsymlink|ghost}}s and {{monsymlink|shade}}s.
+* natural shapeshifters: {{monsymlink|doppelganger}}s, {{monsymlink|chameleon}}s, and {{monsymlink|sandestin}}s.
+* {{monsymlink|water demon}}s, {{monsymlink|mail daemon}}s, {{monsymlink|djinni}}, and {{monsymlink|kraken}}s.
+
+=== System shock ===
+If you polymorph without polymorph control and it is not a [[#Polymorphing into other monsters|special case]], there is a {{sfrac|19 &minus; [[constitution|Con]]|20}} chance that it will fail, and you will instead suffer 1d30 damage and abuse constitution: "You shudder for a moment." This is called [[system shock]]. Monsters and pets can also be affected by the wand, potion, or spell of polymorph, with a fixed chance of {{frac|25}} after factoring in resistance. If the monster is affected, it will die instantly and not leave a corpse.
+
+=== Armor ===
+:''See also: [[Physical size]]''
+
+When a creature is wearing any torso armor ([[body armor]], [[shirt]], or [[cloak]]), and becomes something Large or bigger, a non-[[humanoid]] Medium or bigger, or a [[winged gargoyle]] or [[marilith]] (wings and extra arms don't fit), the armor will burst apart. (If you polymorph into a large [[whirly]] monster, the armor is not destroyed.) When this happens to a [[monster]], you hear a "ripping" or "cracking" sound, which warns you that a [[polymorph trap]] or shapeshifter may be present on the level.
+
+If you are wearing [[dragon scales]] or [[dragon scale mail]] and are polymorphed without polymorph control, you will turn into a [[dragon]] of the appropriate color and merge with your scales; shirts and cloaks are still destroyed. See [[dragon scale mail#Polymorph|Dragon scale mail § Polymorph]].
+
+When a creature becomes too small for its armor, the armor falls to the floor, also creating a distinctive noise ("a clank" or "a thud"). Monsters of size Small will shrink out of torso armor; Tiny monsters also shrink out of [[boots]], [[gloves]], [[shield]]s and [[helm]]s (they can wear no armor). [[Body parts|Handless]] monsters will drop gloves and shields. [[Body parts|Horned]] monsters will drop helmets. Non-[[humanoid]] monsters, or monsters without suitable body parts, also cannot wear certain types of armor.
+
+=== Other equipment ===
+Monsters can always wear [[rings]] and [[amulets]], although some may be physically unable to remove equipped items or put on additional ones in their new form.
+
+If you were wielding an object and your new form has no [[hands]], you will drop it.
+
+Polymorphing causes you to retouch all your inventory items,{{refsrc|polyself.c|839|nethack=3.6.1}} potentially causing [[artifact blast]]s or [[silver damage]].
+
+=== Encumbrance ===
+{{main|Encumbrance}}
+Smaller or more light-weight monsters cannot carry as much as larger ones. Non-[[humanoid]] monsters have especially limited capacity. When you are unexpectedly polymorphed into one, you may have to drop nearly all of your items before you can do anything useful.
+
+Your [[monster carrying capacity|carrying capacity]] is scaled by your form's corpse weight (or size if it leaves no corpse), and is affected by the monster "strong" attribute. See that article for the details.
+
+== Monsters ==
+
+[[Shapeshifter]]s and [[werecreatures]] have innate polymorph ability and will change to a different form from time to time. You can prevent them from doing this by wearing a [[ring of protection from shape changers]]. Other than that, a polymorphed monster or object stays in its new form permanently.
+
+If a monster is [[flee]]ing, it may use a potion or wand of polymorph, or an adjacent polymorph trap in a desperate move. A monster may also inadvertently step onto the trap. If it becomes a much more powerful monster, such as an [[arch-lich]], this can lead to [[YAAD]].
+
+When a monster polymorphs, the change is permanent. For example, if you change your [[dog]] into a [[dragon]], it will never become a dog again (except by chance in a subsequent polymorph).
+
+If you have [[lycanthropy]], you will sometimes polymorph into a creature (a [[jackal]], for example). There is also a monster in the game called a [[werejackal]], which changes occasionally from its [[human (monster attribute)|human]] form into a jackal. The similarity ends when you or the monster lose all HP in jackal form. You will become your normal race again, while the werejackal will die without transforming back into a human.
+
+=== Polymorphing monsters ===
+Since polymorphing a monster has unpredictable results, this tactic is only feasible for very powerful monsters, as they have a good chance of becoming a weaker one. Monsters with high [[experience level]] and [[magic resistance (monster)|monster MR]] may resist polymorphing, so this is not a reliable method to escape impending death. For example, the [[Riders]] cannot be polymorphed at level 30. An [[arch-lich]] at level 25 will resist 85% of the time if you are level 30 and attempt to polymorph it with a spell; it can never be polymorphed with a wand.
+
+Lawful and neutral characters may wish to polymorph humans such as [[shopkeeper]]s and [[aligned priest]]s before killing them, to avoid the penalties for [[murder]].
+
+=== Pets ===
+Your starting [[pet]] will only go so far: [[cat]]s and [[dog]]s reach a normal maximum of level 9 and 72 HP, for example. But you can get more out of it by polymorphing it.
+
+Since you cannot control the outcome of a pet's polymorph, the best way to do this is to use a [[polymorph trap]] repeatedly until you get a satisfactory result. The trap is never used up by pets and other monsters. If you have [[magic resistance]], you can step onto the trap and then [[displace]] your pet onto it. You can also step next to the trap and use a [[magic whistle]] until your pet happens to land on the trap. You can also [[leash]] your pet and stand next to the trap; it does not want to step onto the trap, but it eventually will. You can also [[read]] a [[scroll of earth]], push the boulders around the trap, and then displace your pet onto the trap. If you have many charges in a [[wand of polymorph]], or are able to cast the [[spellbook of polymorph|spell]], those are viable alternatives (but beware of system shock, as it will count as you having killed the pet!) Less workable methods are finding [[chameleon]] or [[doppelganger]] corpses for it to eat, or breaking a [[potion of polymorph]] on its body.
+
+Displacing your pet onto a trap decreases its [[tameness]] by one point. Be wary about displacing pets that have already become somewhat powerful monsters. Pets, like other monsters, can suffer a [[system shock]] if you are using the spell, wand, or potion. If the pet experiences a system shock, you will suffer the usual penalties for killing your pet.
+
+Once your pet turns into a [[gray dragon]] or its baby form, it acquires intrinsic magic resistance and will be immune to all forms of polymorph, except from [[Shapeshifter|eating corpses]]. If it acquires a high level and [[magic resistance (monster)|monster MR]], such as if it turns into an [[arch-lich]], it may also become immune. If you do not have a magic whistle or magic resistance to displace your pet, then [[sessile]] pets will not polymorph any further. Finally, if you get a [[shapeshifter]] and do not have a [[ring of protection from shape changers]], then it will only shapeshift on the trap. Otherwise, you can keep trying. See [[Pet#Preferred pets|Pet § Preferred pets]] for pets that many players find useful.
+
+You can also gain new pets by polymorphing into an [[oviparous]] creature and laying [[egg]]s.
+
+== Self-polymorph ==
+
+Having [[polymorph control]] allows you to specify what to polymorph yourself into, unless you are unconscious or stunned.  This is subject to the [[#Restrictions on polymorphing|game restrictions]]. For strategy, see [[Polymorph control#Strategy|Polymorph control § Strategy]].
+
+An [[amulet of unchanging]] blocks polymorph completely. If you are changed into a form that can [[metallivore|eat amulets]], eating one may also return you to your original form.
+
+If you are afflicted by [[lycanthropy]], a [[ring of protection from shape changers]] will not prevent you from turning to creature form.<ref>[[Source:NetHack_3.6.0/src/polyself.c#polyself]], PROT_FROM_SHAPE_CHANGERS cannot be found in the code</ref>
+
+=== Polymorphing into other monsters ===
+There are a few special cases when polymorphing in an uncontrolled manner:
+* If you are wearing [[dragon scales]] or a [[dragon scale mail]] while randomly polymorphed, you turn into a [[dragon]] of the same color.  See [[Dragon scale mail#Polymorph|Dragon scale mail § Polymorph]] and [[#Armor|effects on armor]].
+* If you are already polymorphed into a [[vampire]], you turn into a [[vampire bat]], a [[fog cloud]], or a [[wolf]].{{refsrc|polyself.c|530|version=NetHack 3.6.1}}
+* If you have [[lycanthropy]], you turn into the corresponding [[werecreature]].
+* You may also suffer [[#System shock|system shock]] and not polymorph.
+* Otherwise, you have a {{frac|5}} chance of [[#Polymorphing into your own race|turning into your own race]].
+* Otherwise, you turn into a random creature.
+
+If, while wearing [[dragon scales]] or a [[dragon scale mail]], you are polymorphed into a dragon of the same color, the dragon scales will be merged into your skin.
+
+=== Changing back ===
+Polymorphing yourself is never permanent, unless you polymorph into your own race (see {{sa|Polymorphing into your own race|sectionsign=1}}). Otherwise, you will stay in monster form for 499+1d500 turns.{{refsrc|polyself.c|396}} If your new monster form has a higher [[experience level]] than you, the timeout is scaled down in proportion to the levels.{{refsrc|polyself.c|452}}. To be precise, the polymorph duration will be multiplied by 
+
+<math>\frac {player XL} {monster XL}</math>.
+
+E.g., if a XL 2 player polymorphs into a master mind flayer (XL 13), the duration will be at most 153 turns:
+
+<math>999 * \frac {2}{13}</math>
+
+If the timeout ends but you are wearing an [[amulet of unchanging]], between 1 and (1&nbsp;+ 100&nbsp;&times; <var>mlevel</var>) turns are added to the timeout. <var>mlevel</var> refers to the [[monster level|monster form's experience level]]. Eating a mimic or stepping on a polytrap while magic resistant or unchanging have no effect on the timeout.
+
+If you are killed in your new form because your [[hit points|HP]] became zero, you will change back: "You return to <race> form!" You will return to your original form with the HP and Pw you had before you polymorphed. However, if you are wearing an [[amulet of unchanging]] or are killed in any other way, such as [[stoning]], [[sickness]], [[starvation|hunger]], [[nutrition#Hunger status|choking]], or a [[touch of death]], you will immediately die. Being beheaded by [[Vorpal Blade]] or bisected by [[the Tsurugi of Muramasa]] are considered deaths by HP loss and return you to original form.
+
+You can return to your normal form due to HP loss even when wearing an [[amulet of life saving]], and it is not used up. However, it will protect you from [[#System shock|system shock]].
+
+If you are polymorphed into a problematic form, you can zap a wand at yourself or throw an object upwards {{kbd|<}} so that it hits you, causing you to lose HP and change back. If you have [[trouble|no hands]], a [[prayer]] to your god may change you back as well. If a monster is attacking you and reducing your HP, these measures may be unnecessary.
+
+Another way to change back is to polymorph into your own race.
+
+Being a [[gray dragon]] gives you [[magic resistance]], so you cannot change back by looking for another polymorph trap.
+
+If you [[genocide]] your original race or your role while polymorphed, "You feel dead inside." If you subsequently return to that form, you will die, even if wearing an [[amulet of life saving]]: "Unfortunately, you are still genocided..." If you [[quit]] before you return to your base form, the game-end message will be "quit while already on Charon's boat".
+
+=== Attributes, intrinsics, and other stats ===
+{{todo|Please update: confirm 1 point drop in maximum power when unpolymorphing and whether it also applies to lycanthropy.}}
+Your new HP is [[HP#Monster|determined]] by the monster form's [[monster level|base level]]. This level is displayed instead of your experience level in the status bar, eg. <tt>[[hit dice|HD]]: 13</tt> for a [[master mind flayer]]. Your "real" level can be determined from [[fail|spell failure rates]] (e.g. for the quest). Any change in current or maximum HP is temporary. Your [[energy|Pw]] persists between forms.
+
+Your [[strength]], [[dexterity]], [[constitution]], [[intelligence]], and [[charisma]] (but not [[wisdom]]) are saved when you polymorph to a monster, and restored when you get back to your old form, no matter what happened when you were polymorphed. For instance, if you had strength 16 and polymorphed to a [[dragon]], your strength will be 18/**. If you eat a poisonous [[killer bee]] corpse, your strength may be reduced to 18/97, but after returning to an old form, your strength will again be 16.
+
+Things are different with [[intrinsic]]s. As a monster you will enjoy all intrinsics which you had before you polymorphed, all intrinsics of your new species, and all extrinsics acquired by magic items which you are wearing or wielding. You may acquire new intrinsics, and they will stay with you after returning to your old form. Therefore, if you became a dragon, it is a good idea to eat killer bees: the [[poison resistance]] which you obtain will stay with you, while the decline in your strength will not.
+
+Hunger is not affected by polymorphing or returning back, only by polymorphing into your own race.
+
+[[Amulet of change|Amulets of change]], if worn when polymorphed, change both your sex as your polymorphed form (if there are both male and female monsters of this kind) and your base form sex.
+
+Players polymorphed into a [[jabberwock]], adult [[dragon]], [[raven]], or [[crocodile]] will not stone monsters with a wielded cockatrice corpse.<ref>The exact condition for stoning a monster with a wielded cockatrice corpse seems to be: (in natural form or (hit with weapon attack or hit with claw attack in slot 1 or hit with claw attack in slot 2 as a foocubus or hit with any attack in slot 1 as any L)). This also excludes the invalid polyforms Ixoth, Demogorgon, and Chromatic Dragon.</ref>
+
+=== Polymorphing into your own race ===
+Polymorphing into your own race is a special case. It does not break [[polyselfless]] conduct. Instead of being temporarily changed to a monster, you see the message "You feel like a new <race>!" and your character is randomly and permanently changed:
+* It adjusts your [[experience level]] by &minus;2 to +2 levels.{{refsrc|polyself.c|138}}
+** If the new level is higher than 30, it becomes 30.
+** If the new level is lower than 1, you die ("Your new form doesn't seem healthy enough to survive.") If saved by an [[amulet of life saving]], you restore your old experience level.
+** If the new level is lower than the old one, it cannot be cured by a blessed [[potion of full healing]].
+** Your innate [[property|properties]], [[resistance]]s, and [[skill]] slots are adjusted to match your new level.
+* Your [[strength]], [[dexterity]], [[constitution]], and [[charisma]] change by &minus;2 to +2 points ([[attrib.c#redist_attr|attrib.c]]).
+* Your maximum [[HP]] and [[energy]] are readjusted according to your new level and [[attribute]]s in the following manner:{{refsrc|src/polyself.c|292|nethack=3.6.0}}
+** First, all HP and energy gained by leveling is removed.  (The game stores these values whenever you level.)
+** Then, the remainder is randomly multiplied by one of (80%, 90%, 100%, 110%), separately rolled for HP and energy.
+*** The result is set equal to the new level if it ends up lower.
+** Then your HP and energy are increased as if you'd leveled to your new level from 1, taking in account your current [[constitution]] and [[wisdom]] bonuses.
+** Finally, your current HP and energy are adjusted proportionally to the change of maximum HP and energy.
+* You have a {{frac|10}} chance of changing [[gender]].
+* It sets your [[nutrition]] to a random value from 500 to 999.{{refsrc|polyself.c|188}}
+* It cures both [[illness]] and [[food poisoning]].{{refsrc|polyself.c|190|comment=This calls {{function|potion.c|make_sick}} with <tt>SICK_ALL</tt>}}
+* It cures [[stoning]], if you had been stiffening.
+* It technically cures [[sliming]], but slime remains on your body; thus, the sliming process restarts and you have 10 turns to live.{{refsrc|polyself.c|210}}
+* If your current HP is now 0 or negative, but you have polymorph control, it becomes 1 instead.
+* If your current HP is now 0 or negative, and you do not have polymorph control, you die.
+** If you are wearing an [[amulet of life saving]], you survive, but the checks for sliming and [[artifact blast|retouching your inventory]] are skipped.
+
+It does not [[cure blindness]], nor does it remove any of your [[intrinsic]]s unless they were given by experience levels that you lost.
+
+This process has curing effects, but for healthy adventurers, the DevTeam seems to have intentionally designed this function so that there is an equal chance that each adjustment is beneficial or harmful. As [http://groups.google.com/group/rec.games.roguelike.nethack/msg/ce27e3ab8608630a xanthian explains to rgrn], the expected value of the level change is zero. Because this function does not call <tt>rnl</tt>, your [[luck]] has no effect here. You also cannot use a [[unicorn horn]] or other such cure to regain any lost levels or [[attribute]]s. A comment{{refsrc|polyself.c|144}} explains how the source code adjusts your peak level to prevent this. The [[attrib.c#redist_attr|redist_attr]] function sets both your current and peak attributes, too. The becoming of a new "man" many times is thus no way to raise your [[experience level]] or your attributes.  Performing it ''once'' after maximizing your constitution and wisdom may yield a maximum HP and energy boost, though, since the level-up bonuses were likely originally obtained with lower attributes.
+
+==== In 3.4.3 ====
+
+Prior to [[NetHack 3.6.0]], HP and energy changed differently: they were grown or shrunk in direct proportion to your level change, then a further adjustment of &minus;9 to +9 points was applied.{{refsrc|polyself.c|169|nethack=3.4.3}}  It was consequently possible to bias the changes deliberately.  At a very low experience level, polymorph has an equal chance of raising your level, or decreasing it and killing you. By cheating death with an [[amulet of life saving]], one could accumulate the effects of gaining levels, which multiplied [[hit points]] and [[power]]. This was known as the [[polyself bug]].
+
+=== Other special cases ===
+Polymorphing to your own race while being a monster just returns you to your basic form and then makes you "a new <race>" as in the previous section.
+
+Polymorphing to a monster while already being monster is equivalent to returning to your human form and immediately polymorphing to the target monster. If you polymorph to a monster while already the same species, you see the message "You feel like a new <species>!"
+
+== Variants ==
+=== SLASH'EM ===
+Polymorph in [[SLASH'EM]] functions in a considerably different way than in vanilla NetHack.  In SLASH'EM, all polymorph operations are temporary; this includes the polymorphing of monsters into other monsters and the polymorphing of objects.  Polymorphed items revert back to their original form after 500–999 turns,{{refsrc|timeout.c|455|version=SLASH'EM 0.0.7E7F2}} and polymorphed non-player monsters revert back to their original form after 1000–1999 turns.{{refsrc|timeout.c|590|version=SLASH'EM 0.0.7E7F2}} For monsters, the change can only be made permanent by [[stoning]] and [[Spellbook of stone to flesh|unstoning]] the polymorphed monster. Items can be "fixed" in their current form by dipping them in a [[potion of restore ability]].
+
+When a monster that has been polymorphed into another monster (by wand, spell, trap, etc.) is destroyed, it reverts to its original form with reduced HP. Thus, it is no longer possible to slay dangerous enemies such as [[shopkeeper]]s with polymorph (though you may be able to disable, immobilize, or slow them enough to rob them without killing them). Monsters such as chameleons and lycanthropes are much harder to kill under this system, because they have the option of reverting to a different form during combat.  Furthermore, it is no longer a simple matter to permanently upgrade your pet with polymorph.
+
+Polymorph can be caused by the attack of a [[genetic engineer]], and by using the #youpoly [[extended command]] for races and roles that have that ability.
+
+If you polymorph into an intelligent monster with an attack that requires direct contact (biting, tentacles, etc), you will not use this attack against petrifying monsters, as opposed to being instantly stoned.  Attacking bare-handed will still stone you, however. If melee damage rehumanizes you, your monster difficulty can be subtracted from your current and maximum hit points. This always occurs if the polymorph was controlled, and {{frac|3}} chance otherwise.{{refsrc|mhitu.c|2555|version=SLASH'EM 0.0.7E7F2}}
+
+Polymorphed objects in SLASH'EM will also, eventually, revert, making polypiling of rings, wands, and equipment much less effective (and potentially dangerous&mdash;if for example you start wearing an amulet of life saving that used to be an amulet of strangulation). However, a polymorphed object in SLASH'EM can be fixed to its new form by being dipped in a [[potion of restore ability]]. Objects that vanish after a single use, such as potions and scrolls, will operate normally, and the fact that they ''would have'' reverted does not change the effect they do have.  Objects which have been polymorphed and will eventually revert are not marked as such in a normal game, but in wizard mode will appear with the description "hazy", e.g. "a hazy key".
+
+=== xNetHack ===
+[[xNetHack]] includes a <tt>polyinit</tt> [[option]], which allows you to play the game permanently polymorphed into any monster except for [[unique monster]]s and [[player monster]]s. Besides those, this option allows forms that are normally inaccessible, such as an [[Archon]] or [[shade]], though the game may be unstable in this state. This is a non-scoring game mode.
+
+==References==
+<references />
+
+{{nethack-343|offset=1}}
+{{slashem-7E7}}
+[[Category:Spells]]}
+&&%s&& %s Spellbook of polymorph {99294 2015-12-21T14:40:37Z {4000080 ChasonBot}  {{spellbook|name=polymorph|level=6|type=matter|turns=48|direction=beam|equiv=[[wand of polymorph]]|abundance=1.01%}}
+
+The '''spellbook of polymorph''' allows you to cast the [[polymorph]] spell, casting a beam that changes any monster, item, or player it hits into something else of its type.
+
+== Strategy ==
+Polymorph is one of the most complicated and useful abilities in the game, and having its spellbook and being able to cast it is extremely useful if applied right. There are several aspects to polymorphing that having this spellbook allows you to do.
+
+First of all, you can cast it at monsters, pets, or yourself. Casting it at a monster is usually a bad idea (as it will frequently generate out-of-depth monsters), but ''may'' work if you meet an out-of-depth monster. Casting it at pets allows you to, basically, reroll pet forms until you get a strong one. Beware of [[system shock]]: any monster has a 1/25 chance of being instakilled by polymorph, if they don't resist the polymorph itself.  This will break [[pacifist]] conduct.  A [[polytrap]] is usually preferable for changing pet forms, since it does not carry the risk of system shock.
+
+Casting it at yourself will transform you into a random monster. This is not terribly useful and can even be ruinous depending on what form you get, but becomes very interesting and useful if you acquire a [[ring of polymorph control]], which allows you to select the form you wish to assume. An [[amulet of unchanging]] can be used to keep you in your current form without needed to recast polymorph.  This is risky, however, since if killed in creature form while wearing an amulet of unchanging, you will die instead of reverting.
+
+You can also [[polymorph]] junk items in the hope of generating something useful, a process called [[polypiling]]. Combined with [[The Eye of the Aethiopica]], you can do this repeatedly to generate valuable items out of common drops. Note, however, that polymorphed items will have the same BUC status, number of uses (if it is a [[wand]] or [[tool]]), enchantments and class. In addition, [[spellbook]]s will come out with one less use (but due to a bug, this does not matter unless you already know the spell), and there is a chance that polypiling will create a [[golem]] or simply destroy the item.
+
+Having access to the polymorph spell makes [[magic marker]]s almost redundant, because you can just keep polying your junk scrolls until you get the ones you want. You can then save your marker charges for writing [[spellbooks]], which are harder to poly for.  Make sure you don't polymorph too many scrolls at once, however, because you might create a [[paper golem]], losing all your scrolls.
+
+[[Category:Spellbooks|Polymorph]]
+{{nethack-343}}}
+&&%s&& %s Samurai {149264 2022-12-12T06:10:17Z {4001279 Umbire the Phantom} /* Late game */* {{wikipedia}}
+
+:<span class="dablink">'''Sam' redirects here. For the guardian of the [[black market]], see [[One-eyed Sam]].''</span>
+
+'''Samurai''' are Japanese warriors who adhere to the discipline of [[wikipedia:bushido|bushido]] (honor) and fight their enemies using ancient martial arts. Therefore they start out [[lawful]] and [[human (starting race)|human]], but can be of either gender. Their first [[Sacrifice#Gifts|sacrifice gift]] is [[Snickersnee]].
+
+The Samurai is one of the [[Role difficulty|strongest roles]] in the early game, and thus an excellent choice for a new player.  The [[guidebook]] describes them like this:
+               Samurai are the elite warriors of feudal Nippon.   They  are
+          lightly  armored  and  quick, and wear the dai-sho, two swords of
+          the deadliest keenness.
+
+== Starting equipment ==
+Each samurai starts with the following:{{refsrc|u_init.c|131}}{{refsrc|u_init.c|695}}
+* a +0 [[katana]] (samurai sword)
+* a +0 [[wakizashi]] (short sword)
+* a +0 [[yumi]] (bow)
+* 26 to 45 [[ya]] (bamboo arrows)
+* a +0 [[rustproof]] [[splint mail]]
+* a [[blindfold]] (20% chance){{refsrc|u_init.c|695}}
+
+Instead of a random pet, a samurai always starts with a little dog called Hachi. This is in reference to ''[[Wikipedia:Hachik%C5%8D|Hachikō]]'', a famous Japanese dog who faithfully waited for the return of his dead owner for nine years until his own death. ''Hachi'' means eight, in reference of his birth order in the litter, and ''ko'' implies affection.
+
+== Intrinsics ==
+Samurai gain intrinsics at these [[experience level]]s:{{refsrc|attrib.c|75}}
+* Level 1: [[speed]]
+* Level 15: [[stealth]]
+
+== Skills ==
+{{Samurai skill table}}
+Samurai start with ''Basic'' skill in ''Long sword'', ''Short sword'', ''Bow'', and ''Martial arts''
+
+
+== Special rules ==
+
+Samurai get a +1 bonus to [[multishot]] when firing ya from a yumi.
+
+Samurai may perform a [[shattering blow]] while wielding a katana; other roles must wield a two-handed weapon to perform one.
+
+=== Japanese names for items ===
+Since the samurai are Japanese, some of the game items use Japanese names in place of their regular English names when playing as a Samurai. The following is a list of those items with their Japanese names:
+
+{| class="prettytable"
+! English !! Japanese
+|-
+| [[short sword]] || ''[[wikipedia:Wakizashi|wakizashi]]''
+|-
+| [[broadsword]] || ''[[wikipedia:Ninja-To|ninja-to]]''
+|-
+| [[flail]] || ''[[wikipedia:Nunchaku|nunchaku]]''
+|-
+| [[glaive]] || ''[[wikipedia:Naginata|naginata]]''
+|-
+| [[lock pick]] || ''osaku''
+|-
+| [[wooden harp]] || ''[[wikipedia:Koto (musical instrument)|koto]]''
+|-
+| [[knife]] || ''shito''
+|-
+| [[plate mail]] || ''tanko''
+|-
+| [[helmet]] || ''[[wikipedia:Kabuto|kabuto]]''
+|-
+| [[leather gloves]] || ''yugake''
+|-
+| [[food ration]] || ''gunyoki''
+|-
+| [[potion of booze]] || ''potion of [[wikipedia:Sake|sake]]''
+|}
+
+There are also some regular items that are uniquely Japanese. Once identified, these are described using their Japanese name, regardless of which [[role]] you are playing. These items are the following:
+* [[ya]] ("bamboo arrow")
+* [[yumi]] ("long bow")
+* [[katana]] ("samurai sword")
+* [[tsurugi]] ("long samurai sword")
+* [[shuriken]] ("throwing star")
+
+Additionally some pieces of dialog are also changed. On losing a level or dying, you receive the message "Sayonara", instead of the usual "Goodbye"; when starting or loading a game, it greets you with "Konichi wa"; and friendly shopkeepers and priests greet you with "Irasshaimase".
+
+===Code of Conduct===
+The bushido code requires that samurai behave honorably.  Dishonorable acts will incur an [[alignment record|alignment penalty]] and display a guilt message.  Examples include:
+* [[Dig]]ging up a [[grave]]: &minus;1  ''"You disturb the honorable dead!"''
+* Attacking a [[peaceful]] or [[tame]] creature: &minus;1  ''"You dishonorably attack the innocent!"''
+* Attacking with a [[poison]]ed weapon: &minus;1  ''"You dishonorably use a poisoned weapon!"''
+
+A Samurai with a non-Lawful alignment (probably from wearing a [[helm of opposite alignment]]) will still receive the message, but will not suffer the alignment penalty.
+
+== Strategy ==
+
+=== Early game ===
+
+==== Weapons ====
+
+While it may be tempting to start [[two-weapon combat]] with your starting katana and wakizashi, the [[to-hit]] penalty is quite severe, the [[wakizashi]] is a middling weapon that uses a different weapon skill from your katana, and you won't train your base weapon skill while twoweaponing. It's better to use your katana alone, and wait until you've found another long sword later.
+
+As far as weapons go, the samurai should not bother with any sword other than a [[long sword]]. The katana they start with is the finest one-handed non-artifact weapon in the game. Since the samurai can reach expert level in [[two-weapon combat]] they are better off swinging two [[long sword]]s/katana than one of any larger non-artifact weapon. However, in the early game it is important to build up skill in individual weapons, which cannot be done while using two weapons.
+
+Of course, the samurai becomes even more powerful ''with'' an artifact weapon. Early options include [[Snickersnee]], a buffed-up katana that's your guaranteed first [[sacrifice gift]], or [[Excalibur]], an artifact weapon that has a {{frac|6}} chance of being created if you dip a long sword into a [[fountain]]. You may do this when you have attained [[experience level]] 5, though you may also wish to delay doing so until you have better HP or equipment to handle the possible fountain monsters. Note that you must use an actual long sword to accomplish this, do ''not'' dip your starting katana into a fountain to try to accomplish this. Once you have a decent artifact weapon and expert skill in long sword, slide your original katana over to the secondary hand in two-weapon combat, and it will continue to add its damage to your attacks. 
+
+The yumi is a good long distance ranged weapon, especially given your multishot bonus with ya. It will aid you in situations where melee combat may prove fatal&mdash;fighting [[floating eye]]s and [[cockatrice]]s for example. Since you're likely to want to switch to shuriken once you retrieve some from your Quest, consider not advancing bow skill to Expert to save three skill slots.
+
+==== General ====
+The samurai strategy is very simple: If it moves, stab it, and if it's [[sessile]], stab it anyway. Samurai are also good ranged warriors, receiving a bonus to hit and damage when shooting ya from a yumi. Samurai aren't good at [[spellcasting]], but are very unlikely to need it; the katana and splint mail they start with also make the first few levels a breeze.
+
+=== Mid game ===
+
+==== Objectives ====
+
+The Samurai quest item is the [[Tsurugi of Muramasa]], a powerful two-handed tsurugi with the ability to bisect enemies (i. e. kill them outright) 5% of the time, much like the [[Vorpal Blade]]. Therefore it is not a good idea to engage your quest nemesis in honourable melee combat, since he might bisect you; making things worse, he ignores [[Elbereth]].  It's better to zap him with a wand of death.  If you don't have one, other techniques include zapping him with a wand of sleep or hurling a potion of paralysis at him before attacking so that he can't fight back, protecting yourself with a [[scroll of earth]]  on the upstair and killing him with ranged attacks, [[polymorph]]ing into a [[black dragon]] and disintegrating him, and so forth.  If you have a strong melee attack, you could just wear an [[amulet of life saving]] and hope for the best, possibly retreating if you have to burn the amulet; actually, having an [[amulet of life saving]] is probably a good idea anyway no matter what strategy you choose, just in case you get unlucky.
+
+The quest is notable for producing a lot of loot, especially attack wands, which your opponents will use against you.  [[Reflection]], or at least resistance to sleep, fire, and cold, are highly desirable.
+
+==== Weapons ====
+
+With maxed strength and enchantment, shuriken and ya deal roughly comparable damage (since ya do not benefit from your [[strength|strength bonus]]). Ya are slightly more effective when you have a substantial [[ring of increase damage|damage bonus]], thanks to the Samurai's +1 multishot bonus when using them. Shuriken, on the other hand, do not require a wielded launcher (potentially saving valuable turns), and are generally more plentiful thanks to the [[Samurai quest|Quest]]. Since you take an [[alignment record]] penalty when using poisoned missiles, poisoning your entire stack is a [[Bad Idea]], but it might be worth poisoning a subset of your missiles to use against monsters such as [[minotaur]]s and [[mind flayer]]s, where killing them quickly is more important than a few points of alignment.
+
+The [[Tsurugi of Muramasa]] isn't as useful as it might seem, as it compares unfavorably to twoweaponing Excalibur and your starting katana, and doesn't provide any essential [[extrinsics]].
+
+=== Late game ===
+
+==== Weapons ====
+Samurai typically get the most out of two-weaponing, using Excalibur with an offhand katana or silver saber through the endgame; [[Frost Brand]], [[Fire Brand]] or [[Grayswandir]] can replace Excalibur in the primary slot if you have them available, and can also be swapped into that slot against specific monsters. If no other source of reflection is available for you, you can forgo two-weapon fighting for a [[shield of reflection]].
+
+==== General ====
+If you want to twoweapon in the late game and also wear an [[amulet of life saving]], you will probably want a [[cloak of magic resistance]] paired with [[silver dragon scale mail]], using a wish for the cloak if necessary. Relying on a quest artifact like the [[Magic Mirror of Merlin]] for magic resistance is risky, because the [[Wizard of Yendor]] can steal it, leaving you vulnerable to his [[touch of death]].
+
+==Rank titles==
+
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1-2: Hatamoto
+*XL 3-5: Ronin
+*XL 6-9: Ninja/Kunoichi
+*XL 10-13: Joshu
+*XL 14-17: Ryoshu
+*XL 18-21: Kokushu
+*XL 22-25: Daimyo
+*XL 26-29: Kuge
+*XL 30: Shogun
+
+== Quest ==
+{{main|Samurai quest}}
+
+The Samurai quest sees you fight [[Ashikaga Takauji]] for the [[Tsurugi of Muramasa]].
+
+==Variants==
+===Additional Japanese item names===
+
+In several variants, including [[SlashTHEM]], and [[NetHack--]], these additional items have Japanese names:
+
+{| class="prettytable"
+! Japanese !! English
+|- 
+| ''bokken'' (previously ''jo'')||club (actually means "wooden sword")
+|- 
+| ''dai-kyu''||bow
+|- 
+| ''jo'' (reassigned from club)||baseball bat (actually means "short staff")
+|- 
+| ''kaginawa''||grappling hook
+|- 
+| ''mizugumo''||[[water walking boots]]
+|- 
+| ''okonomiyaki''||pancake
+|- 
+| ''onigiri''||doughnut
+|- 
+| ''timbe''||small shield
+|}
+
+=== SLASH'EM ===
+Samurai can be played more or less the same way in [[SLASH'EM]] as in Vanilla. Just be a little more wary of enemies' stronger attack power, using your ya and scribbling the E word whenever enemies are near.
+
+* Their "kiii" [[technique]] gives a temporary boost to your attack power. Due to the Samurai's strong attack power you may never use it, but it can be useful if you're facing somewhat powerful enemies and want to take them out quickly.
+* SLASH'EM allows you to #twoweapon two artifacts at the same time. Considering that Samurai can easily get both [[Excalibur]] and [[Snickersnee]]&mdash;two of the most powerful weapons in the game&mdash;and are able to advance both longsword and #twoweapon to expert, this is a huge advantage.
+* Since a Samurai wielding both Excalibur and Snickersnee will do large amounts of damage even with zero enchantment, enchanting your weapons is a low priority. If you find any scrolls of enchant weapon, consider blessing it and enchanting your [[unicorn horn]]&mdash;enchanting unicorn horns increases their chances of working in SLASH'EM.
+* Once you have at least a [[submachine gun]] and a bunch of bullets, don't bother any more with the yumi. Firearms are superior to bows and arrows. Later, replace your submachine gun with an [[assault rifle]]. The assault rifle will be very good for the special cases where melee is a bad idea.
+* Save up gold for shops, or get good at stealing: along with rogues and barbarians, samurai are massively overcharged in shops, paying twice as much. This is mainly relevant when you find a [[magic lamp]] in a shop, which in SLASH'EM has a base price of 1000zm.
+*A good [[ascension kit]] for a Samurai is:
+**+7 [[Excalibur]] two-weaponed with +7 [[Snickersnee]] or other powerful artifact weapon
+**an [[amulet of life saving]] or [[amulet of flying]]
+**+5 [[silver dragon scale mail]]
+**+7 [[cloak of magic resistance]] (enchant an [[elven cloak]] to +7 and [[upgrading objects|upgrade]] it)
+**+5 [[gauntlets of power]] or [[gauntlets of dexterity]]
+**+5 fireproof [[speed boots]] for the extra attacks, [[jumping boots]] for the extra movement, [[water walking boots]] to be safe from [[create pool]], or +7 [[elven boots]] for the extra AC and stealth
+**+5 [[shirt]]
+**greased +5 [[helm of telepathy]] or +7 [[elven leather helm]]
+**A +7 [[assault rifle]] and bullets
+**All the other standard ascension kit items that all roles need (bag, rings, potions, wands, tools, etc.)
+
+=== dNethack ===
+[[dNethack]] expands the list of items with Japanese names. This list is presented alphabetized by Japanese name for easy lookup.
+
+{| class="prettytable"
+! Japanese !! English
+|-
+| ''bisento'' || [[halberd]]
+|-
+| ''bo'' || [[quarterstaff]]
+|-
+| ''bo-shuriken'' || [[dart]]
+|-
+| ''chokuto'' || [[long sword]]
+|-
+| ''dai tsuchi'' || [[war hammer]]
+|-
+| ''dou-maru'' || [[splint mail]]
+|-
+| ''dwarvish zaghnal'' || [[dwarvish mattock]]
+|-
+| ''gunyoki'' || [[food ration]]
+|-
+| ''hira-shuriken'' || [[shuriken]]
+|-
+| ''[[wikipedia:Kabuto|kabuto]]'' || [[helmet]]
+|-
+| ''kamayari'' || [[guisarme]]
+|-
+| ''kote of fumbling'' || [[gauntlets of fumbling]]
+|-
+| ''kote of power'' || [[gauntlets of power]]
+|-
+| ''kunai'' || [[dagger]]
+|-
+| ''silver kunai'' || [[silver dagger]]
+|-
+| ''jade o-yoroi'' || [[crystal plate mail]]
+|-
+| ''silver yari'' || [[silver spear]]
+|-
+| ''jo'' || [[club]]
+|-
+| ''[[wikipedia:Koto (musical instrument)|koto]]'' || [[wooden harp]]
+|-
+| ''magari yari'' || [[trident]]
+|-
+| ''[[wikipedia:Naginata|naginata]]'' || [[glaive]]
+|-
+| ''[[wikipedia:Ninja-To|ninja-to]]'' || [[broadsword]]
+|-
+| ''no-dachi'' || [[two-handed sword]]
+|-
+| ''[[wikipedia:Nunchaku|nunchaku]]'' || [[flail]]
+|-
+| ''ono'' || [[battle axe]]
+|-
+| ''osaku'' || [[lock pick]]
+|-
+| ''o-yoroi'' || [[plate mail]]
+|-
+| ''potion of [[wikipedia:Sake|sake]]'' || [[potion of booze]]
+|-
+| ''shito'' || [[knife]]
+|-
+| ''tanko'' || [[bronze plate mail]]
+|-
+| ''uma-yari'' || [[lance]]
+|-
+| ''[[wikipedia:Wakizashi|wakizashi]]'' || [[short sword]]
+|-
+| ''yugake'' || [[leather gloves]]
+|}
+
+Samurai now get an artifact yumi as a crowning gift, [[DNetHack artifacts#Yoichi no yumi|Yoichi no yumi]]. It grants +1d20 to hit, 2x damage to fired ya, and can be #invoked to create ya.  
+
+In addition, the guaranteed first sacrifice gift for a samurai is now [[DNetHack artifacts#Kiku-ichimonji|Kiku-ichimonji]].  It's a lawful samurai-favoring katana that grants +1d4 to hit and 1d12 to damage.
+
+[[DNetHack artifacts#Snickersnee|Snickersnee]] is relegated to a nameable artifact, which can be named at xplvl 18 by tourists and 30 by samurai.  It's now an intelligent knife, and has +1d3 to hit and +1d6 to damage, and a chance of beheading targets.
+
+Lastly, the [[DNetHack artifacts#The Kusanagi no Tsurugi|The Kusanagi no Tsurugi]] can be named at level 18, but only used as a weapon at 30.  It's an intelligent long sword with +1d20 to hit and +1d12 to damage. In addition, it may behead targets and will instantly kill elementals.  It grants energy regeneration while wielded, and searching and luck while carried.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+By that time, Narahara had already slipped his arm from the
+sleeve of his outer robe, drew out his two-and-a-half-foot
+Fujiwara Tadahiro sword, and, brandishing it over his head,
+began barreling toward the foreigners.  In less than a minute,
+he had charged upon them and cut one of them through the torso.
+The man fled, clutching his bulging guts, finally to fall from
+his horse at the foot of a pine tree about a thousand yards
+away.  Kaeda Takeji finished him off.  The other two Englishmen
+were severely wounded as they tried to flee.  Only the woman
+managed to escape virtually unscathed.
+|[ The Fox-horse, from Drunk as a Lord, by Ryotaro Shiba ]
+}}
+
+== References ==
+<references/>
+
+{{nethack-343|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Roles]]}
+&&%s&& %s Ring of levitation {131970 2020-02-09T05:04:00Z {4000978 Aximili} Split into sections {{ring
+ |name=levitation
+ |cost=200
+}}
+
+Wearing a '''ring of levitation''' causes you to levitate.
+
+== Identification ==
+
+Identifying a ring of levitation could not be any easier; just put the (ideally [[noncursed]]) ring on and see if you begin levitating!
+
+Dropping a ring of levitation into a [[sink]] produces the message, "The sink quivers upward for a moment."
+
+== Effects ==
+{{main|Levitation}}
+
+While you are levitating, you will float over some otherwise hazardous terrain and traps, but you will not be able to touch the ground to pick up items.
+
+Levitating over a [[sink]] removes any sources of levitation and causes you to crash to the ground; this can be useful in removing a [[cursed]] ring of levitation, or a ring of levitation under cursed [[gloves]].
+
+== Strategy ==
+A ring of levitation is favored in the [[ascension kit]] for providing levitation without taking up an armor slot like [[levitation boots]]. While it is not impossible to complete the game without a levitation source, a source of levitation makes crossing areas such as [[Medusa's Island]] and the [[Plane of Air]] much simpler.
+

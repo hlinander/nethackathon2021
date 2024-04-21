@@ -1,0 +1,1000 @@
+
+Dying may also create a [[bones]] file.
+
+A particularly spectacular character death, especially of a character that is was well on the way to [[ascension]], is often called a '''splat'''. Watching splats (live or on Splat TV) is a part of the [[Fun#The fun of social NetHack|fun of social ''NetHack'']].
+
+== Resurrection ==
+
+Death in ''NetHack'' is permanent, unlike in many other games; you only have one life, and you cannot go to an older save file. Doing so artificially—[[savescumming]]—is considered [[cheating]].
+
+However, there are a couple of in-game methods of cheating death.  If you run out of hit points while [[polymorph]]ed and not wearing an [[amulet of unchanging]], you will return to your normal form, but if you die in any other way while polymorphed, it will be permanent.  An [[amulet of life saving]] will bring you back from almost all deaths at the cost of one point of [[constitution]].  The exceptions are brainlessness from a mind flayer's attack and self-genocide.
+
+If playing in [[explore mode]] or [[wizard mode]], you can choose whether or not to die.
+
+== Messages ==
+
+{{message|You die...|The usual death message, shown when you die through [[hit point]] loss, [[nutrition|choking]], [[strength]] loss from the [[drain strength]] spell, and many special [[monster attack]]s including [[passive attack]]s.}}
+
+See individual pages for more specific messages seen on player death.
+
+{{nethack-364}}
+[[Category:Your character]]}
+&&%s&& %s Comestible {150120 2023-03-07T12:22:06Z {4001279 Umbire the Phantom} /* Rotten food */ clarify wraith corpses, relocate accordingly {{items}}
+In ''[[NetHack]]'', a '''comestible''' is any '''food''' or other edible items, {{white|%}}, that [[you]] can '''eat''' with the {{kbd|e}} command. Regular eating is required to keep up your [[nutrition]] levels and avoid [[starvation]], though it is possible to [[ascend]] [[foodless|without eating at all]]. [[Corpse]]s from dead [[monster]]s are among the most common type of comestible, but can rot away if left long enough - non-corpse comestibles do not rot away, and are generally called '''"permafood"'''.
+
+Some monsters can also eat food items - only a [[pet]] will do so regularly, and like you must eat to stay alive; hostile intelligent monsters may still pick up and carry around non-corpse food items. Certain monsters can also eat items besides comestibles (e.g., [[metallivore]]s eat metal items), and you can as well by [[polymorph]]ing into such monsters.
+
+==Generation==
+Most roles start with some amount of comestibles in their initial inventory, and the specific starting food for applicable roles also depends on the starting race of that particular character - [[Orc (starting race)|orcish]] non-Wizards also start with two random food items, each of which may come in a stack of two. Roles that do not start with food are [[Cavemen]], [[Human (starting race)|human]] [[Rogue]]s, [[Samurai]], and [[Wizard]]s.
+
+Comestibles comprise 20% of all randomly-generated items in the main [[dungeon]], 15% in [[container]]s, 22% on the [[Rogue level]], and 16% in [[Gehennom]]. [[Sokoban]] is a branch that always contains a large amount of food. Some monsters are also generated carrying food, such as [[soldier]]s, and many of them have a chance of leaving a corpse behind when killed - additionally, various [[special room]]s may either contain several food items (e.g., [[anthole]]s and [[beehive]]s), or else have several monsters that generate with food (e.g. [[barracks]]) and can themselves be eaten for food.
+
+All non-[[tin]] comestibles are normally generated [[uncursed]], with the exception of those in a player's [[bones]]. Non-corpse comestibles have a chance of being generated in stacks of two: the chance is {{frac|2}} for [[kelp frond]]s and {{frac|6}} for other food.{{refsrc|src/mkobj.c|870|version=NetHack 3.6.6}}{{refsrc|src/mkobj.c|881|version=NetHack 3.6.6}}
+
+==Description==
+Eating any comestible other than a [[Corpse#Aging|tainted corpse]] or a tin of rotten monster gives you its nutrition value; the nutrition is provided uniformly during eating, e. g. if an item takes 5 turns to eat, then after 2 turns of eating eat you receive 40% of its nutrition value. See [[Nutrition#hunger status|that article and its section on hunger]] for more information regarding nutrition - for the effects of eating a specific type of comestible, consult the articles linked in the list of comestibles below.
+
+===List of comestibles===
+{|class="prettytable striped sortable"
+!Item
+!Cost
+!<abbr title="Weight">Wgt</span>
+!<abbr title="Relative probability">Prob</span>
+!<abbr title="Nutrition">Nutr</span>
+!<abbr title="Nutrition per unit weight">Nutr/Wgt</span>
+!<abbr title="Number of turns required to eat">Time</span>
+!<abbr title="Nutrition per turn spent eating">Nutr/Time</span>
+!Conduct
+|-
+|[[food ration]] ||45 ||20 ||380 ||800 ||40 ||5 ||160 ||vegan
+|-
+|[[cram ration]]
+|35
+|15
+|20
+|<span class="explain" title="700 for dwarves">600</span>
+|<span class="explain" title="46.67 for dwarves">40</span>
+|3
+|<span class="explain" title="233.33 for dwarves">200</span>
+|vegan
+|-
+|[[C-ration]] ||20 ||10 ||0 ||300 ||30 ||1 ||300 ||vegan
+|-
+|[[K-ration]] ||25 ||10 ||0 ||400 ||40 ||1 ||400 ||vegan
+|-
+|[[tripe ration]] ||15 ||10 ||140 ||200 ||20 ||2 ||100 ||''none''
+|-
+|[[lembas wafer]]
+|45
+|5
+|20
+|<span class="explain" title="1000 for elves; 600 for orcs">800</span>
+|<span class="explain" title="200 for elves; 120 for orcs">160</span>
+|2
+|<span class="explain" title="500 for elves; 300 for orcs">400</span>
+|vegan
+|-
+|[[cream pie]] ||10 ||10 ||25 ||100 ||10 ||1 ||100 ||vegetarian
+|-
+|[[pancake]] ||15 ||2 ||25 ||200 ||100 ||2 ||100 ||vegetarian
+|-
+|[[candy bar]] ||10 ||2 ||13 ||100 ||50 ||1 ||100 ||vegetarian
+|-
+|[[fortune cookie]] ||7 ||1 ||55 ||40 ||40 ||1 ||40 ||<span class="explain" title="Breaks illiterate conduct if eaten while not blind">vegetarian</span>
+|-
+|[[tin]] (homemade) ||5 ||10 ||&mdash;* ||50 ||5 ||''varies'' ||''varies'' ||''varies''
+|-
+|tin of [[spinach]] (blessed) ||5 ||10 ||0.625* ||600 ||60 ||1–2 ||<span class="explain" title="average">450</span> ||vegan
+|-
+|tin of [[spinach]] (uncursed) ||5 ||10 ||11.25* ||401–600 ||<span class="explain" title="average">50.05</span> ||''varies'' ||''varies'' ||vegan
+|-
+|tin of [[spinach]] (cursed) ||5 ||10 ||0.625* ||201–600 ||<span class="explain" title="average">40.05</span> ||''varies'' ||''varies'' ||vegan
+|-
+|[[tin]] (other) ||5 ||10 ||62.5* ||''varies'' ||''varies'' ||''varies'' ||''varies'' ||''varies''
+|-
+|[[apple]] ||7 ||2 ||15 ||50 ||25 ||1 ||50 ||vegan
+|-
+|[[orange]] ||9 ||2 ||10 ||80 ||40 ||1 ||80 ||vegan
+|-
+|[[banana]] ||9 ||2 ||10 ||80 ||40 ||1 ||80 ||vegan
+|-
+|[[sprig of wolfsbane]] ||7 ||1 ||7 ||40 ||40 ||1 ||40 ||vegan
+|-
+|[[pear]] ||7 ||2 ||10 ||50 ||25 ||1 ||50 ||vegan
+|-
+|[[slime mold]] ||17 ||5 ||75 ||250 ||50 ||1 ||250 ||vegan
+|-
+|[[clove of garlic]] ||7 ||1 ||7 ||40 ||40 ||1 ||40 ||vegan
+|-
+|[[melon]] ||10 ||5 ||10 ||100 ||20 ||1 ||100 ||vegan
+|-
+|[[carrot]] ||7 ||2 ||15 ||50 ||25 ||1 ||50 ||vegan
+|-
+|[[eucalyptus leaf]] ||6 ||1 ||3 ||30 ||30 ||1 ||30 ||vegan
+|-
+|[[kelp frond]] ||6 ||1 ||0 ||30 ||30 ||1 ||30 ||vegan
+|-
+|[[meatball]] ||5 ||1 ||0 ||5 ||5 ||1 ||5 ||''none''
+|-
+|[[meat ring]] ||5 ||1 ||0 ||5 ||5 ||1 ||5 ||''none''
+|-
+|[[meat stick]] ||5 ||1 ||0 ||5 ||5 ||1 ||5 ||''none''
+|-
+|[[huge chunk of meat]] ||105 ||400 ||0 ||2000 ||5 ||20 ||100 ||''none''
+|-
+|[[egg]] ||9 ||1 ||85 ||80 ||80 ||1 ||80 ||vegetarian
+|-
+|[[lump of royal jelly]] ||15 ||2 ||0 ||200 ||100 ||1 ||200 ||vegetarian
+|-
+|[[corpse]] ([[lichen]]) ||5 ||20 ||0 ||200 ||10 ||3 ||66 ||vegan
+|-
+|[[corpse]] ([[lizard]]) ||5 ||10 ||0 ||40 ||4 ||3 ||13 ||''none''
+|-
+|[[corpse]] (other) ||5 ||''varies'' ||0 ||''varies'' ||''varies'' ||''varies'' ||''varies'' ||''varies''
+|}
+
+:<nowiki>*</nowiki> ''For details on the probability of randomly generated tins, see the [[tin]] article.''
+
+===Eating corpses===
+{{main|Corpse}}
+Corpses can give you varying amounts of nutrition along with useful [[intrinsic]] properties or even improved [[attribute]]s, though they can also be hazardous or even [[poison]]ous to eat. Corpses [[Corpse#Aging|age and eventually rot]], and eating an old enough one can damage you or even cause lethal [[food poisoning]].
+
+===Eating tins===
+{{main|Tin}}
+Tins either contain meat or other parts from monsters (called "tin of ''foo'' meat", or "tin of ''foo''" if vegetarian), or are tins of [[spinach]]. You can use a [[tinning kit]] on an intact corpse to make a tin of it, regardless of that corpse's age. Before you eat a tin, you are notified of its contents; if you chose not to eat it, you "discard the open tin" and it is used up.
+
+Tins of a monster generally have the same effects as eating that monster's corpse, though without any adverse effects from poison or acid. Their nutrition value depends on the preparation method, which is determined randomly when you open the tin. Tins made from tinning kits are always either homemade or rotten, depending on the kit's beatitude. Tins of fried monster will give you [[slippery]] fingers, while a tin of rotten monster has no nutritional value and will make you [[nauseous]], which causes you to vomit and lose nutrition unless it is cured. Cursed tins are always rotten, and {{frac|8}} of them are booby-trapped to explode upon opening.
+
+===Eating eggs===
+{{main|Egg}}
+Eggs provide 80 nutrition and do not rot away - rather, they become stale after 400 turns, and eating a stale egg makes you nauseated for 10d4 (more) turns, which causes you to eventually vomit unless cured.{{refsrc|src/eat.c|1875|version=NetHack 3.6.6}} {{frac|3}} of all generated eggs are of a random non-aquatic, [[oviparous]] monster and will eventually hatch if fresh; the rest are simply plain eggs; eating a [[cockatrice]] egg induces delayed [[stoning]] unless you have [[stoning resistance]].{{refsrc|src/eat.c|2232|version=NetHack 3.6.6}} The primary method to learn the type of a given egg is usually to [[identify]] it.
+
+The nausea does not occur if the egg turns out to be [[#Rotten food|rotten]], which is discussed in the section below - this is distinct from the egg being stale, although the message indicating nausea calls the egg "rotten".
+
+===Rotten food===
+Most non-tinned comestibles have a chance of being rotten when first eaten - this is different from being tainted, which only affects corpses that are left to rot and decay long enough. Comestibles that are uncursed and older than 30 turns, or blessed and older than 50 turns, have a {{frac|7}} chance of being rotten; cursed comestibles are always rotten, with the exception of fortune cookies. Lembas wafers and cram rations are never rotten ''unless'' they are cursed.{{refsrc|src/eat.c|57|version=NetHack 3.6.6|comment=Define nonrotting food items}}{{refsrc|src/eat.c|2674|version=NetHack 3.6.6|comment=Rotten food condition}} [[Wraith]] corpses that are rotten "rot away completely" and immediately disappear without giving you an [[experience level]], since they have zero nutrition.{{refsrc|src/eat.c|1676|version=NetHack 3.6.7}} 
+
+Corpses that make you feel sick, poison you, or else are tainted at time of eating are never rotten in this sense; acidic corpses cannot end up tasting rotten unless you have [[acid resistance]].{{refsrc|src/eat.c|1644|version=NetHack 3.6.6}} [[Lizard]] and [[lichen]] corpses do not become tainted from age or rot away, and are always safe to eat;{{refsrc|src/eat.c|52|version=NetHack 3.6.6|comment=Define nonrotting corpses}} [[acid blob]] corpses cannot become tainted from age even though they eventually rot away, and have the same conditions for "rotten food" as other acidic corpses.{{refsrc|src/eat.c|1616|version=NetHack 3.6.6}}
+
+Upon eating rotten food, you only receive {{frac|2}} of its nutrition value and are subjected to one of the negative effects listed below. The chances of each outcome and the message accompanying it vary depending on various factors, including whether you are [[blind]], [[hallucinating]] or otherwise:{{reffunc|eat.c|rottenfood|version=NetHack 3.6.1|name=rotten}}{{refsrc|src/eat.c|1550|version=NetHack 3.6.6}}
+
+{| class="wikitable unsortable"
+! rowspan="2" | Outcome
+! colspan="2" | Odds
+! rowspan="2" | Message
+! rowspan="2" | Notes
+|-
+! Not blind
+! Blind
+|-
+| Nothing
+| {{frac|3|8}}
+| {{frac|2}}
+| "Blecch! Rotten <food>!" 
+| Other messages below are appended to this one
+|-
+| Confusion for 2d4 (more) turns.
+| {{frac|4}}
+| {{frac|4}}
+| "You feel rather light-headed."<br>"You feel rather trippy." (if hallucinating) 
+| 
+|-
+| Blinded for 2d10 turns
+| {{frac|3|16}}
+| 0
+| "Everything suddenly goes dark."
+| Cannot occur if already blind
+|-
+| [[Sleep|Pass out]] for d10 turns
+| {{frac|3|16}}
+| {{frac|4}}
+| "The world spins and goes dark."<br>"The world spins and you slap against the <ground/saddle/...>"<br>"The world spins and you lose control of yourself."
+| 
+|}
+
+==Food strategy==
+One of the early goals for any player is to secure an adequate food supply; as discussed above, some roles enter the dungeon with a mostly non-perishable food supply. Most players starting their dungeon exploration will eat the corpses of slain hostiles, or else leave them for their pet (who may just as often get to the corpse first). As indicated by one of the many [[rumor]]s available, beginners to ''NetHack'' can use their pet as a very general guide on whether or not a given corpse is safe to eat or better avoided (e.g. [[kobold]] corpses and green and yellow [[mold]]); they will eventually learn what early corpses to prioritize for obtaining intrinsics as they obtain more game experience.
+
+The first consideration in most food-related strategy is typically whether or not you are attempting a [[conduct]] - [[vegetarian]] players will know to avoid anything containing meat, while [[vegan]] players have an even stricter requirement to avoid ''anything'' made with animal products, including eggs or dairy. Fortunately for them, the standard food rations and nameable fruit are always vegan-friendly - the challenge lies in obtaining intrinsics and other properties from the lower variety of diet-compliant corpses available. Players [[#Foodless conduct|looking to avoid food entirely]] have a different set of priorities altogether.
+
+The next consideration is finding a supply of food: [[Sokoban]] is a common target branch that has several guaranteed food items alongside other loot, and it is usually worth completing one or two floors in order to stockpile permafood. The [[Gnomish Mines]] is another common branch chosen for the abundance of [[gnome (monster)|gnomes]] and/or [[dwarf (monster)|dwarves]] that can be eaten, though this is very dependent on your race and alignment; the branch also contains [[Minetown]], which is likely to have a store or two that sells food (unless you happen upon Orctown).
+
+As you progress through the dungeon, it can be worth keep an eye out for [[anthole]]s and [[beehive]]s as well as [[barrack]]s - generally, you will encounter monsters with more nutritious corpses more frequently as you progress, and they will usually have higher odds to leave corpses as well. This makes food a less pressing issue, especially as [[giant]]s and eventually [[dragon]]s become more frequent; a [[tinning kit]] can be used to preserve these and other large corpses, both in order to avoid rapid satiation and to stockpile for other purposes like intrinsics and [[strength]] increases.
+
+[[Fort Ludios]] and the [[Castle]] have several barracks containing food-carrying soldiers, and [[container]]s for stashing the spare food in - even with a [[bag of holding]] on hand, it is better not to carry more food than needed, and both locations also work as general-purpose stashes. Be aware that using the [[drawbridge]] to crush monsters at the Castle will destroy any food and other items those monsters were carrying.
+
+===Food priority===
+Since different foods pack differing amounts of nutrition into a given size, it makes the most sense to eat "non-efficient" foods first and minimize the amount of your carrying capacity used for food. In order of increasing nutrition per unit weight:
+
+# Lizard corpses
+# Non-homemade tins
+# Known homemade tins, and [[stone to flesh]] products (i.e. meatballs, meat rings, meat stick, and huge chunk of meat)
+# Cream pies and lichen corpses
+# Tripe rations
+# Fruits and vegetables
+# C-rations
+# Food rations, K-rations, fortune cookies (never rotten), cram rations (slightly better for dwarves; never rotten if not cursed)
+# Nameable fruit and candy bar
+# Pancakes and lumps of royal jelly
+# Lembas wafers (never rotten if not cursed)
+
+If using this list as a guide, items closer to the bottom of the list should generally be saved for last, though other factors beyond carrying capacity (such as possibility of being rotten, intrinsics, healing, and available inventory slots) will also affect which food you elect to consume first. When eating in combat situations (especially when confronting [[Famine]] in the [[Astral Plane]]), non-rotting food that can be eaten quickly is generally best.
+
+===Situational food effects===
+Eating some other foods also produces various special effects, which can prove useful in certain situations - check the articles of those specific food items for more details.{{refsrc|src/eat.c|1789|version=NetHack 3.6.6}} Common uses for specific food include the following:
+
+* Tripe rations and eggs can be used to induce nausea on purpose, which eventually confuses you; garlic can also induce nausea if you are [[undead]].{{refsrc|src/eat.c|1836|version=NetHack 3.6.6}} This is often done to get the confused read effects of certain [[scrolls]].
+* A sprig of wolfsbane of any beatitude cures [[lycanthropy]].
+* [[Carrot]]s cure most forms of blindness, minus blindness caused by a cream pie.
+* Fortune cookies have fortunes that can be read after they are eaten to see a rumor, which is true or false depending on that cookie's beatitude; if you are observing vegan or foodless conduct, you can use the [[read]] command to see the fortune instead.
+* A lump of royal jelly increases your strength by one; non-cursed ones cure wounded legs and restore up to 20 HP. If this would make your HP higher than your current maximum, it has a {{frac|17}} chance of increasing your maximum HP by one, and sets your HP to to the new maximum.
+* A non-cursed [[eucalyptus leaf]] cures [[sickness]] and [[nausea]].
+
+===Foodless conduct===
+{{main|Foodless}}
+It is possible to ascend without eating food at all - this conduct may require the use of a [[ring of slow digestion]], though it is also possible to even ascend without ever gaining nutrition if you are fast (and lucky) enough. There are several alternate methods of procuring nutrition elsewhere, detailed in the article linked just above - below are some of the more common ones:
+
+* [[Pray]]ing to your [[god]] when weak or fainting from hunger may make your stomach content, setting your nutrition to 900 - this level of hunger is considered a major [[trouble]]. This is not possible in Gehennom, where your prayers are never answered positively.
+* [[Polymorph]]ing resets your hunger if you polymorph into your own race. Polymorphing into a metallivore to eat metallic items violates the foodless conduct, but preserves the [[vegan]] conduct unless you eat a tin.
+* An [[amulet of life saving]] revives you with at least 900 nutrition if you died.
+* A liquid diet does not violate foodless conduct - [[Potion of fruit juice|Potions of fruit juice]], [[Potion of water|potions of water]], [[Potion of booze|potions of booze]] (preferably blessed) and sipping from [[fountains]] each give a small amount of nutrition. While it is possible to live off of this, the math works out so that only [[Tourists]] can generate enough potions to last the entire game (with the blessed [[Platinum Yendorian Express Card]], a [[horn of plenty]], and a ring of slow digestion).
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] introduces various new comestibles, and makes it possible for corpses and randomly generated comestibles to be blessed or cursed.
+
+The [[pill]] and the [[mushroom]] have random effects.
+
+{|class="prettytable sortable"
+!
+!Symbol
+![[Zorkmid|COST]]
+![[Weight|WGT]]
+![[Probability|PROB]]
+![[Nutrition|NUTR]]
+![[Nutrition/Weight|NUTR/WGT]]
+![[Time (food)|TIME]]
+![[Nutrition/Time|NUTR/TIME]]
+!Notes
+|-
+|[[tortilla]]
+|{{white|%}}
+|9
+|2
+|?
+|80
+|40
+|1?
+|80
+|Vegetarian.
+|-
+|[[holy wafer]]
+|{{white|%}}
+|12
+|1
+|?
+|150
+|150
+|1
+|150
+|Vegetarian. Cures [[sickness]] or [[lycanthropy]] (unless your starting race is lycanthrope, in which case it damages you and reduces your [[strength]] and [[constitution]]). Restores [[HP]] if you're lawful, and does non-fatal damage if you're chaotic
+|-
+|[[Asian pear]]
+|{{brightgreen|%}}
+|8
+|2
+|?
+|75
+|37.5
+|1
+|75
+|Vegan.
+|-
+|[[Sandwich]]
+|{{white|%}}
+|10
+|10
+|?
+|100
+|10
+|1
+|100
+|
+|-
+|[[mushroom]]
+|{{black|%}}
+|9
+|5
+|?
+|90
+|18
+|1
+|90
+|Vegan. Can cause [[poison]]ing, [[stun]]ning, [[hallucination]], or increase [[strength]] by 1.
+|-
+|[[cheese]]
+|{{yellow|%}}
+|17
+|2
+|?
+|250
+|125
+|2
+|125
+|Vegetarian.
+|-
+|[[pill]]
+|{{brightmagenta|%}}
+|
+|
+|?
+|
+|
+|
+|
+|Vegetarian. Can grant a [[wish]], make you [[very fast]], increase your [[nutrition]], put you to [[sleep]], [[poison]] you, [[stun]] you, or cause [[hallucination]].
+|-
+|'''food ration'''
+|
+|45
+|20
+|380
+|800
+|40
+|5
+|160
+|'''Normal food rations, For reference'''
+|}
+
+== References ==
+<references/>
+{{nethack-366}}
+[[Category:Comestibles]]
+[[Category:Commands|Eat]]}
+&&%s&& %s Burdened {9650 2006-09-03T15:01:52Z {712 SGrunt} #REDIRECT [[Encumbrance]] #REDIRECT [[Encumbrance]]}
+&&%s&& %s Free {132774 2020-03-11T05:15:03Z {4000978 Aximili} Add wikipedia link {{wikipedia|Free software}}
+
+[[NetHack]] is '''free''' - free as in freedom and as in beer. You are free to study the [[source code]] of NetHack, to modify your copy of the game, to share copies of NetHack or your modified version, and to play the game. These actions would normally have infringed the copyright of the game, but the [[DevTeam]] has granted these rights as permission under the ''[[NetHack General Public License]]''.
+
+[[NetHackWiki]] is '''free''' in a similar manner. Anyone is free to read this [[wiki]], to copy pages from this wiki and edit them, and to share copies.
+
+== License restrictions ==
+However, these rights do come with restrictions. The README of [[NetHack 3.4.3]] states that after unpacking the [[source code]]:
+
+:''Before you do anything else, please read carefully the file called "license" in the 'dat' subdirectory.  It is expected that you comply with the terms of that license, and we are very serious about it.''
+
+So what are these restrictions, and why does the DevTeam use them? The first paragraph of the [[NetHack General Public License]] explains why.
+
+: ''The license agreements of most software companies keep you at the mercy of those companies.  By contrast, our general public license is intended to give everyone the right to share NetHack.  To make sure that you get the rights we want you to have, we need to make restrictions that forbid anyone to deny you these rights or to ask you to surrender the rights.  Hence this license agreement.''
+
+The restrictions have to do with preserving copyright notices, maintaining access to source code, and requiring all copies and modified versions to use the same license.
+
+== Copyleft ==
+One of the most important terms in the NetHack General Public License is the "copyleft": a requirement that modifications to a free work become free under the same terms. The NetHack GPL describes this requirement using the following legal language.
+
+: ''... cause the whole of any work that you distribute or publish, that in whole or in part contains or is a derivative of NetHack or any part thereof, to be licensed at no charge to all third parties on terms identical to those contained in this License Agreement ...''
+
+The last sentence of the license summarizes copyleft.
+
+: ''In other words, go ahead and share NetHack, but don't try to stop anyone else from sharing it farther.''
+
+The NetHack GPL does not use the word "copyleft", but the Free Software Foundation has [http://www.gnu.org/copyleft/copyleft.html spread this word]. Creative Commons uses the term "ShareAlike".
+
+The most important consequence of copyleft may be that commercial game vendors cannot borrow NetHack source code for a game unless they make their game into a free game.
+
+== Freedoms in practice ==
+=== Sharing the game ===
+During the 1980s, official releases of the game ''[[Hack]]'' went out through [[Usenet]]. The first releases of ''[[NetHack]]'' went out the same way. There were so many obstacles to obtaining copies of NetHack.
+
+# You had to have access to Usenet.
+# Your Usenet server had to offer the newsgroup that contained the NetHack sources.
+# The messages containing the NetHack source had to arrive at your Usenet server without becoming lost. NetHack consisted of multiple messages, so missing one part could be enough to stop you from obtaining a working game.
+# You had to access and copy the NetHack sources from the Usenet server before they expired as old messages.
+
+For NetHack to become a successful and popular game, there would have be a way for the people who had NetHack to give it to the people who missed it. The NetHack GPL was the document that provided the permission. Because of this permission, some FTP sites also started providing archives of NetHack, so that more people would become able to obtain it.
+
+Today, the [[DevTeam]] uses [[SourceForge]] to host their web site and to distribute the game. SourceForge provides NetHack over many mirrors. (They are careful to maintain each [[mirror]], because for each one they break, they lose 2 [[luck]], assuming that these mirrors obey NetHack rules. Fortunately, the numerous mirrors scare hostile [[monster]]s away from SourceForge.) It is very easy for anyone with an internet connection to download NetHack from SourceForge.
+
+However, the right for persons outside of SourceForge to share NetHack does remain important. This is the era of free operating systems, like [[Debian]] and [[FreeBSD]]. Free operating systems need great free games, including NetHack. The NetHack GPL permits these free operating systems to include or provide copies of NetHack, as source code or [[compiling|compiled]] for each system and processor architecture.
+
+=== Modifying the game ===
+Section 2 of the NetHack GPL permits the user to modify the game and share the modifications.
+
+During a past era, system administrators would install NetHack onto a server for several users to play. Though an administrator may apply secret modifications to the game to interest the players, in practice NetHack is already a sufficient game, and most administrators have plenty of other things to do after installing NetHack. Today, many players are on personal computers with no users able to program modifications to NetHack.
+
+Enter [[variant]]s and [[patch]]es. These things are somewhat numerous, and provide a way for the public to experience modifications to NetHack. The NetHack GPL facilitates the creation of variants of NetHack, patches of NetHack, variants of variants, patches of patches, and so on. [[SLASH'EM]] is the combination of many variants and patches. The [[DevTeam]] has actually merged selected features from SLASH'EM into [[vanilla]] NetHack.
+
+A license such as the NetHack GPL is not the only way to establish a culture of variants and patches. The ''[[Angband]]'' community also has them, even though their ''Moria license'' is not a copyleft and does not contain any explicit permission for modification. However, an author of a particular variant or patch to Angband may attempt prohibit any further modifications. An author of a particular variant or patch to NetHack may not do so, because users would point to the NetHack GPL.
+
+=== Studying and playing the game ===
+The NetHack GPL contains no restrictions in the area of studying and playing the game. (It does protect your right to obtain source code for the copy of NetHack that you receive, so that you may study the game or fix the game to make it playable.)
+
+You may install NetHack on an unlimited number of computers, with an unlimited number of users. Try counting the users on [[nethack.alt.org]], then imagining how much the administrators of that [[public server]] would have to pay in per-user royalties.
+
+There are many [[spoiler]]s for NetHack. Spoilers are documents that detail how the game works. This wiki is full of them, but the tradition of spoilers predates NetHackWiki by many years. Spoilers have become comprehensive because users are able to study the [[source code]] to determine exactly how the game behaves. Thus, [[we]] may refer to numerical values like [[luck]] or [[alignment record]] that the game does not directly reveal; we may list the probabilities of various events that happen when you take actions such as quaffing from a [[fountain]]; we may know the effects of reading a particular scroll, taking into account the [[beatitude]] of the scroll and whether the player is [[blind]] or [[confused]], without resorting to a lengthy process of trial and error.
+
+Some people do not like to play NetHack, because of the existence of these spoilers. As players play games like [[ADOM]], they will eventually produce spoilers using their collective experience, but such spoilers will never be as plentiful or comprehensive as those for a free game like NetHack.
+
+== Conclusion ==
+[[NetHack]] is a '''free''' game; the rights granted in the NetHack GPL have caused several important effects among the NetHack community. The fact that NetHack is easy to obtain, and that there are many [[variant]]s and [[patch]]es, and that [[spoiler]]s are possible, relies on the permissions in the NetHack GPL.
+[[Category:Licenses]]}
+&&%s&& %s Stairway {1898 2006-03-02T00:58:21Z {458 Kernigh} #REDIRECT [[Staircase]] #REDIRECT [[Staircase]]}
+&&%s&& %s Amulet of change {143097 2021-10-06T06:22:26Z {4001279 Umbire the Phantom}  {{amulet|name=amulet of change}}
+
+The '''amulet of change''' is an [[amulet]] that appears in ''[[NetHack]]''. 
+
+==Generation==
+There is a 13% chance that a randomly-generated amulet will be an amulet of change. This amulet is generated [[cursed]] 90.5% of the time, uncursed 9% of the time, and blessed .5% of the time.
+
+==Effects==
+[[Put on|Putting on]] an amulet of change of any beatitude will change the [[gender]] of the wearer, [[Auto-identify]]ing the amulet - the amulet always disintegrates afterward. If you are polymorphed into a single-sex monster, your base gender will be altered, but not your current one. There is a small exception to this regarding [[foocubi]] - i.e., a player shapeshifted into an incubus will change into a succubus and vice versa.
+
+Putting on this amulet does not break [[polyselfless]] [[conduct]]. [[Eating jewelry|Eating]] the amulet will have a {{frac|5}} chance of changing your gender.
+
+==Strategy==
+Though gender tends to have limited impact on gameplay, the amulet of change has some niche uses - e.g., a character may wish to become female in order to lay [[egg]]s from [[polymorph]]ing into [[oviparous]] creatures, such as [[dragon]]s. [[Tourist]]s looking to maximize their [[spellcasting]] potential through raising their [[experience level]] and [[energy]] may want an amulet of change to make use of the incubi and succubi present on the goal level of [[Tourist quest|their quest]].
+
+The amulet can also be used to intentionally create and ascend male [[Valkyrie]]s, a role/gender combination that is very hard to get otherwise.
+
+==History==
+The amulet of change first appears in [[NetHack 3.0.0]].
+
+==Messages==
+{{message|You are suddenly very <feminine/masculine>!|You put on an amulet of change.}}
+{{message|The amulet disintegrates!|The amulet was destroyed after being worn.}}
+{{message|You don't feel like yourself.|You put on an amulet of change while polymorphed into a single-sex monster, and your character's base sex has changed.}}
+
+{{DOD}}
+{{nethack-366}}
+[[Category:Amulets|Change]]}
+&&%s&& %s Amulet of life saving {147333 2022-08-08T05:29:05Z {4001483 Cathartes} /* Effects */ 3.7.0: does not restore full hp {{amulet|name=amulet of life saving}}
+
+The '''amulet of life saving''' is a valuable [[amulet]] in ''[[NetHack]]''. If you are wearing one and you [[death (character)|die]], the amulet literally saves your life and restores you to full [[hit point]]s. Having your life saved breaks the '''survivor''' semi-[[conduct]], with more details explained [[#Survivor|below]]. It cannot be [[Eating jewelry|eaten]] for [[intrinsic]]s ([[The DevTeam Thinks Of Everything|nice try, though]]).
+
+==Generation==
+There is a 7.5% chance that a [[Item#item generation|randomly-generated]] amulet will be an amulet of life saving, making these amulets fairly rare. However, there is a guaranteed amulet of life saving on the middle level of [[Vlad's Tower]].
+
+==Effects==
+If you die while wearing the amulet, it will save your life. The amulet disintegrates and becomes identified, and the following things (mostly good) happen to you:{{refsrc|src/end.c|707|version=NetHack 3.6.0}}
+* You lose 1 [[constitution]] point. 
+* Your hit point ''maximum'' is increased to either 10 or twice your experience level, whichever is higher, if it is less than this.
+* Your hit points are restored to the maximum.
+* Your [[nutrition]] is restored to 500, if it is less than this.
+* If you died from [[choking]] over your food, your nutrition becomes 900.
+* If you are [[sick]] and going to die immediately, you become cured.
+* If you are trapped in lava, you become untrapped.
+<!-- u.uswldtim = 0; - what does it do? -->
+
+The [[beatitude]] of the amulet does not change its effect in vanilla NetHack.
+
+{{upcoming|NetHack 3.7.0|Amulet of life saving only restores 50+10*⌊constitution/2⌋ hit points, instead of restoring to full hit points.  This is 60 HP at 3 constitution, and 170 HP at 25 constitution.  ({{commit|09cf464816e4c44618cb3880edc0f7146e5b9b1e}})}}
+
+== Limitations ==
+
+In some cases the amulet of life saving is not useful, or not as useful as you might expect.
+* Forfeiture through [[trickery]] does not count as death, so it ignores the amulet entirely.
+* If you die by self-[[genocide]] or [[brainlessness]], you will die again immediately, making the amulet moot. 
+* If you [[level teleport]] to a negative dungeon level, it will save your life but not your game - instead of dying, you will simply [[Escaping the dungeon|escape the dungeon]].
+* If you are killed by a [[drowning attack]], you will be resurrected, but remain held, making you prone to another drowning attack.
+
+==Identification==
+Living [[monster]]s can wear amulets of life saving as well; they will come back to life after they die, using up the amulet but also [[Identification|identifying]] it for you, provided you saw the revival happen. The amulet cannot protect monsters from genocide, although the amulet will still activate and be destroyed if a monster is wearing it when genocided. Non-living creatures ([[undead]], [[golem]]s, [[vortex|vortices]] and [[manes]]) cannot use the amulet. Monsters do not suffer brainlessness, and so can be saved from death by monsters with intelligence drain attacks.
+
+[[Enlightenment]] will give the message "Your life will be saved."
+
+==Messages==
+
+{{message|But wait... Your medallion begins to glow! [[You feel much better]]! The medallion crumbles to dust!|You died but were resurrected and the amulet is used up.}}
+{{message|But wait... Your medallion feels warm! You feel much better! The medallion crumbles to dust!|As above, while blind.}}
+{{message|Unfortunately your brain is still gone.|You died and were resurrected, and then die from brainlessness.}}
+{{message|Unfortunately you are still genocided...|You died and were resurrected, and then die from genocide.}}
+{{message|An energized cloud of dust begins to coalesce. Your body rematerializes, and you gather up all your possessions.|You were resurrected after teleporting to dungeon level 0.{{refsrc|src/teleport.c|672|version=NetHack 3.6.0|comment=The <tt>{{function|end.c|done|x}}</tt> call above only returns if your life was saved.}}}}
+{{message|But wait... <monster>'s medallion begins to glow! <monster> looks much better! The medallion crumbles to dust!|A monster died wearing the amulet. The amulet is identified.}}
+{{message|But wait... <monster>'s medallion begins to glow! <monster> reconstitutes! The medallion crumbles to dust!|A monster [[Explosion attack|exploded]] wearing the amulet. The amulet is identified.}}
+{{message|Unfortunately <monster> is still genocided...|A monster died and was resurrected, and then dies from genocide.}}
+{{message|Maybe not...|You killed a life-saved monster out of direct sight. The amulet is not identified.}}
+
+==Strategy==
+For an early character, an [[amulet of reflection]] may be a better choice, as reflection can save your life many times over; being life saved after a [[winter wolf cub]]'s frost blast, for example, is little consolation if the winter wolf is still around.
+
+The most common reason for an amulet of life saving not working is if [[YASD|you forgot to put it on]].
+
+Some players consider life saving an essential part of the [[ascension kit]], but others call it the "amulet versus YASD" and point out that another amulet is much more useful with various [[Ascension kit#Armor combinations|armor combinations]]. It also increases the level of risk you can afford, which lowers resource consumption (particularly in the [[Endgame]]).
+
+It can be extremely aggravating having your amulet of life saving [[steal|stolen]] by a [[nymph]]; once she puts it on, killing her will save ''her'' life, disintegrating the amulet. In addition to monsters wearing the amulet, you may spot a known amulet on the ground near one. Once a monster wears an amulet, it will not give it up voluntarily. Before that however, the amulet is simply a normal item, and can be retrieved. If this happens, there are three ways you can retrieve the amulet:
+
+* Kill or [[tame]] the offending monster. Nymphs in particular do not currently wear things immediately after stealing. She will wear it the next time she picks any item up, or if she [[polymorph]]s, assuming the new form can put amulets on. If you kill her before either of these things happen, you can retrieve it. Alternatively, you can tame her; monsters drop any unused inventory items on taming, and this should include the amulet if unworn. Pets can use amulets, however, so you'll need to get it back before she can.
+* [[Polymorph]] into a nymph and steal it back. This has the added advantage that a nymph will not steal from you while you're in that form.
+* Polymorph the nymph or other monster to be wearing an amulet of life saving until it becomes an [[undead]] creature, a [[golem]], a [[vortex]], or a [[manes]]. This is done easiest by using a nearby [[polymorph trap]] after taming the nymph; the other means of polymorph risk killing her by [[system shock]] and using up the amulet. Once the non-living monster is destroyed, the amulet will be dropped.
+
+You will not gain any experience for "killing" a monster whose life is saved, but it will still break [[pacifist]] conduct.
+
+==Survivor==
+NetHack keeps track of how many times your life has been saved by amulets of life saving. If this number is zero, and you end your game without dying (i.e. by [[ascension|ascending]], [[escape|escaping]] or [[quit]]ting), your end-of-game attributes list will include the line ''“You&nbsp;survived.”'' This is referred to as the survivor semi-conduct.
+If the number is not zero, the line will instead read ''“You survived after being killed ''[n&nbsp;times]''.”''
+
+If you are playing in [[explore mode]] or [[wizard mode]], choosing not to die will be treated as though you had used an amulet of life saving for the purposes of this counter.
+
+Surviving is usually an indicator that the player was lucky or skillful enough not to die during a particular game. In particular, survivor can add prestige to a [[foodless]] ascension, because it removes one of the game's alternative sources of [[nutrition]]. Exploiting the [[polyself bug]] to raise maximum HP is incompatible with surviving.
+
+==Variants==
+In [[UnNetHack]] and [[SporkHack]], a cursed amulet of life saving is not guaranteed to save your life; it will do so with a {{frac|3|4}} chance in UnNetHack{{refsrc|src/end.c|616|unnethack=1546}} and with a {{frac|2}} chance in SporkHack. Additionally, if you are not life-saved in SporkHack, your death will be logged as "killed by a cursed amulet of life saving" instead of your actual killer.
+
+===Variant messages===
+{{message|But ... the chain on your medallion breaks and it falls to the <floor>! You hear homeric laughter!|A cursed amulet of life saving did not save your life in UnNetHack.}}
+{{message|The chain on your medallion breaks, and you hear a faint giggling! Your medallion suddenly falls off! It doesn't look like you're going to make it after all...|A cursed amulet of life saving did not save your life in SporkHack.}}
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Amulets|Life saving]]}
+&&%s&& %s Kops Make Great Theft Prevention Experts {81358 2012-11-02T15:57:07Z {4000318 Godska} Syl '''[[Kop]]s Make Great Theft Prevention Experts''' is a [[NetHack]]-themed [[Wikipedia:mnemonic|mnemonic]] for prefixes from [[wikipedia:International System of Units|SI units of measurement]] (commonly called the metric system).
+
+The mnemonic '''K'''ops '''M'''ake '''G'''reat '''T'''heft '''P'''revention '''E'''xperts is to memorise the order of of prefixes for every third power of ten from 3 to 18:
+{| class="prettytable"
+|| '''k'''ilo- || '''M'''ega- || '''G'''iga- || '''T'''era- || '''P'''eta- || '''E'''xa-
+|-
+|| 10<sup>3</sup> || 10<sup>6</sup> || 10<sup>9</sup> || 10<sup>12</sup> || 10<sup>15</sup> || 10<sup>18</sup>
+|}
+
+Incidentally, the mnemonic is flawed. During actual gameplay, [[Keystone Kop]]s do not appear until ''after'' [[you]] rob a [[shop]]. Thus they do not actually prevent the theft, they only react to it. The [[shopkeeper]], by blocking the door, is actually the best theft prevention expert.
+
+[[Category:Community]]}
+&&%s&& %s Keystone Kop {148492 2022-10-05T00:52:58Z {4001279 Umbire the Phantom} de-SLEX {{wikipedia|Keystone Cops}}
+The {{monclasssym|K}} '''Keystone Kop''' [[monster class]] comprises human law enforcers of various ranks. While they are each not very difficult to eliminate on their own, their numbers are quite intimidating, and they can block your path long enough for more dangerous monsters to catch up with you.
+
+There are four kinds of Kops: {{sa|Keystone Kop}}s, {{sa|Kop Sergeant}}s, {{sa|Kop Lieutenant}}s and {{sa|Kop Kaptain}}s. Keystone Kops will not become extinct after 120 of each kind have been created,{{reffunc|makemon.c|propagate|comment=this function never marks non-randomly-generated (<code>G_NOGEN</code>) monsters such as Kops as extinct}} though they are genocidable.
+
+Unlike other [[human (monster attribute)|humans]], the Keystone Kop is a valid [[polymorph|polyform]], and they also respect Elbereth (but only when occupied by the [[player]]); although their symbol is {{monclasssym|K}}, they are considered human for all other purposes, including [[sacrificing]].
+
+==Generation==
+Kops are not randomly generated, and normally only appear when you overtly steal from a [[shop]]. If you step outside but remain near the shop, one swarm is created around you; if you [[teleport]] a long distance away or leave the level, one swarm is created around the shopkeeper and another around the down stairs. Each swarm consists of a number of ordinary Kops equal to the dungeon level plus [[d notation|d5]], {{frac|3}}+1 that many sergeants, {{frac|6}} that many lieutenants, and {{frac|12}} that many kaptains, rounded down in all cases. If the [[shopkeeper]] is pacified by any means, any remaining Kops are removed from the level, along with their inventories, including anything they may have picked up.
+
+The [[Tourist quest]] goal level generates several Kops in a "police station" in the left half of the level.
+
+Each Kop has a {{frac|3}} chance to receive a [[club]] or [[rubber hose]] (with equal probability) and a {{frac|4}} chance to receive 3 to 4 [[cream pie]]s. Kops never generate with an [[offensive item]], [[defensive item]], [[miscellaneous item]], or [[gold]], and never leave [[death drop]]s.
+
+==Keystone Kop==
+{{monster
+ |name=Keystone Kop
+ |difficulty=3
+ |level=1
+ |experience=13
+ |speed=6
+ |AC=10
+ |MR=10
+ |align=9
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Weapon 1d4
+ |weight=1450
+ |nutr=200
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A Keystone Kop|nogen=1|lgroup=1|humanoid=1|human=1|wander=1|hostile=1|male=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line1598]]
+}}
+{{clear}}
+==Kop Sergeant==
+{{monster
+ |name=Kop Sergeant
+ |difficulty=4
+ |level=2
+ |experience=22
+ |speed=8
+ |AC=10
+ |MR=10
+ |align=10
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Weapon 1d6
+ |weight=1450
+ |nutr=200
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A Kop Sergeant|nogen=1|sgroup=1|humanoid=1|human=1|wander=1|hostile=1|strong=1|male=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line1605]]
+}}
+{{clear}}
+==Kop Lieutenant==
+{{monster
+ |name=Kop Lieutenant
+ |difficulty=5
+ |level=3
+ |experience=33
+ |speed=10
+ |AC=10
+ |MR=20
+ |align=11
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Weapon 1d8
+ |weight=1450
+ |nutr=200
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A Kop Lieutenant|nogen=1|humanoid=1|human=1|wander=1|hostile=1|strong=1|male=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line1612]]
+}}
+{{clear}}
+==Kop Kaptain==
+{{monster
+ |name=Kop Kaptain
+ |difficulty=6
+ |level=4
+ |experience=46
+ |speed=12
+ |AC=10
+ |MR=20
+ |align=12
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Weapon 2d6
+ |weight=1450
+ |nutr=200
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A Kop Kaptain|nogen=1|humanoid=1|human=1|wander=1|hostile=1|strong=1|male=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line1619]]
+}}
+{{clear}}
+==Strategy==
+The Kops are a very good source of experience and [[cream pie]]s.
+
+One minor strategy with shopkeepers is to steal a gold piece from the shop and leave for a distant corner of the dungeon; this will summon a slew of Kops and their equipment, followed by the shopkeeper. After slaughtering the Kops, pay or [[charm monster|pacify]] the shopkeeper.   Note that Kops that evaporate in this way don't leave death drops.  Warning! If you angered him by something else than stealing, it will take at least 1000 gold to pacify him; make sure you have that much cash.
+
+Another option, if you are strong enough to deal with a mass of Kops but do not want to face an angry shopkeeper, is to push a boulder onto the doorway of the shop before you steal.
+
+==Origin==
+NetHack's Kops got their name from the [[wikipedia:Keystone Cops|Keystone Cops]], an incompetent bunch of policemen featured in a series of films from 1912 to 1917.
+
+==Variants==
+
+===Convict patch===
+In the [[Convict]] patch, and variants that integrate it, the [[Convict quest]] locate level has some Kops.
+
+===UnNetHack===
+In [[UnNetHack]], when a Kop is killed, there is a 1/5 chance that another is summoned near the stairs and a 1/5 chance that one appears on a random part of the level. In addition, the Kops can no longer be genocided.
+
+===SpliceHack===
+{{monster
+ |name=Korrupt Kop
+ |symbol={{cyan|K}}
+ |difficulty=5
+ |level=3
+ |experience=33
+ |speed=10
+ |AC=10
+ |MR=20
+ |align=11
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d8
+ |weight=1450
+ |nutr=200
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A Kop Lieutenant|nogen=1|humanoid=1|human=1|wander=1|hostile=1|strong=1|male=1|collect=1|infravisible=1}}
+ |reference=[https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/monst.c#L2562 SpliceHack 1.1.0 L2562]
+}}
+[[SpliceHack]] adds a new Kop, the Korrupt Kop. It is exactly like the Kop Lieutenant, except that it can sometimes be randomly generated.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+The Kops are a brilliant concept.  To take a gaggle of inept
+policemen and display them over and over again in a series of
+riotously funny physical punishments plays equally well to the
+peanut gallery and the expensive box seats.  People hate cops.
+Even people who have never had anything to do with cops hate
+them.  Of course, we count on them to keep order and to protect
+us when we need protecting, and we love them on television shows
+in which they have nerves of steel and hearts of gold, but in
+the abstract, as a nation, collectively we hate them.  They are
+too much like high school principals.  We're very happy to see
+their pants fall down, and they look good to us with pie on
+their faces.  The Keystone Kops turn up--and they get punished
+for it, as they crash into each other, fall down, and suffer
+indignity after indignity.  Here is pure movie satisfaction.
+
+The Kops are very skillfully presented.  The comic originality 
+and timing in one of their chase scenes requires imagination 
+to think up, talent to execute, understanding of the medium, 
+and, of course, raw courage to perform.  The Kops are madmen 
+presented as incompetents, and they're madmen rushing around 
+in modern machines.  What's more, the machines they were operating 
+in their routines were newly invented and not yet experienced 
+by the average moviegoer.  (In the early days of automobiles, 
+it was reported that there were only two cars registered in all 
+of Kansas City, and they ran into each other.  There is both 
+poetry and philosophy in this fact, but most of all, there is 
+humor.  Sennett got the humor.) 
+|[ Silent Stars, by Jeanine Basinger ]
+}}
+
+==References==
+<references />
+
+{{nethack-360}}
+[[Category:Monsters]]
+[[Category:Monster classes]]}
+&&%s&& %s Kop {1908 2006-03-06T01:21:39Z {458 Kernigh} #REDIRECT [[Keystone Kop]] #REDIRECT [[Keystone Kop]]}
+&&%s&& %s Potion {149924 2023-02-10T17:04:18Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{items}}
+'''Potions''', {{white|!}}, are [[magic]]al drinks that appear in ''[[NetHack]]''.
+
+All potions have a [[weight]] of 20, and are used by drinking them via the [[quaff]] command; other monsters may be subjected to the effects of some potions by [[wield]]ing the potion and hitting them with it, or else [[throw]]ing it at them. It is also possible to [[dip]] other items into potions; some potions can be mixed together in this way to produce other potions&mdash;this is called [[alchemy]]. 
+
+Potions do not leave behind the empty bottles when consumed; the bottle presumably evaporates or is otherwise disposed of when the potion is drunk.
+
+== Table of potions ==
+{|class="prettytable sortable"
+!Potion !! Cost !! Weight !! Relative probability{{refsrc|objects.c|722}} !! Appearance
+|-
+|{{of|potion|water}} (uncursed) || 0 || 20 || 6.9% || clear
+|-
+|{{of|potion|booze}} ||  50 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|fruit juice}} || 50 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|see invisible}} || 50 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|sickness}} || 50 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|confusion}} || 100 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|extra healing}} || 100 || 20 || 4.7% || [[Randomized appearance|random]]
+|-
+|{{of|potion|hallucination}} || 100 || 20 || 4% || [[Randomized appearance|random]]
+|-
+|{{of|potion|healing}} || 100 || 20 || 5.7% || [[Randomized appearance|random]]
+|-
+|{{of|potion|holy water}} || 100 || 20 || 1.15% || clear
+|-
+|{{of|potion|unholy water}} || 100 || 20 || 1.15% || clear
+|-
+|{{of|potion|restore ability}} || 100 || 20 || 4% || [[Randomized appearance|random]]
+|-
+|{{of|potion|sleeping}} || 100 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|blindness}} || 150 || 20 || 4% || [[Randomized appearance|random]]
+|-
+|{{of|potion|gain energy}} || 150 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|invisibility}} || 150 || 20 || 4% || [[Randomized appearance|random]]
+|-
+|{{of|potion|monster detection}} || 150 || 20 || 4% || [[Randomized appearance|random]]
+|-
+|{{of|potion|object detection}} || 150 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|enlightenment}} || 200 || 20 || 2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|full healing}} || 200 || 20 || 1% || [[Randomized appearance|random]]
+|-
+|{{of|potion|levitation}} || 200 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|polymorph}} || 200 || 20 || 1% || [[Randomized appearance|random]]
+|-
+|{{of|potion|speed}} || 200 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|acid}} || 250 || 20 || 1% || [[Randomized appearance|random]]
+|-
+|{{of|potion|oil}} || 250 || 20 || 3% || [[Randomized appearance|random]]
+|-
+|{{of|potion|gain ability}} || 300 || 20 || 4.2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|gain level}} || 300 || 20 || 2% || [[Randomized appearance|random]]
+|-
+|{{of|potion|paralysis}} || 300 || 20 || 4.2% || [[Randomized appearance|random]]
+|}
+
+==Generation==
+Potions constitute 16% of all randomly-generated [[item]]s in the main dungeon, 18% in containers, 22% on the Rogue level, and 1% in Gehennom.{{refsrc|mkobj.c|30}} Potion BUC distribution is as follows: {{frac|8}} cursed, {{frac|3|4}} uncursed, and {{frac|8}} blessed.{{refsrc|mkobj.c|545}}
+
+On top of random generation, potions can be found in [[shops]], and various monsters [[Monster starting inventory|are generated with]] certain potions.
+
+==Identification==
+There are many ways to identify potions, without resorting to the [[Identification#Straightforward_identification|obvious methods]]. Clear potions are always potions of water, and potions of oil are automatically identified for players starting with an [[oil lamp]].
+
+===Monsters===
+Most monsters will only use, pick up, or [[monster starting inventory|be created carrying]] the following potions:
+<div style="column-count:3;-moz-column-count:3;-webkit-column-count:3">
+* {{of|potion|confusion}}
+* {{of|potion|healing}}
+* {{of|potion|extra healing}}
+* {{of|potion|full healing}}
+* {{of|potion|sleeping}}
+* {{of|potion|blindness}}
+* {{of|potion|invisibility}}
+* {{of|potion|polymorph}} (difficulty &lt; 5 only)
+* {{of|potion|speed}}
+* {{of|potion|acid}}
+* {{of|potion|gain level}}
+* {{of|potion|paralysis}}
+</div>
+
+[[Nymph]]s will pick up anything, and are created with a potion of object detection half of the time.
+
+Monsters drink useful potions occasionally; if they are in line of sight when quaffing, you will observe any changes to their condition, which can formally or informally identify the potion. Monsters will never quaff harmful potions, but are likely to throw them at you.
+
+{{todo|Do monsters with the Likes_magic attribute pick up unusable potions?  Yes, most potions are magical (sickness, fruit juice, booze, acid, oil and water are not).  likes_magic covers wizards, dragons, winged gargoyles, salamanders, archons and numerous named monsters}}
+
+===Dip identification===
+The following table summarizes the effects of #[[dip]]ping items into potions (excluding alchemy). In most cases, dipping will consume your potion, but on occasion it will change the potion instead; both are listed where applicable in the "Resulting potion" column.
+
+{|class="prettytable"
+!Dipped object
+!Initial potion
+!Resulting potion
+!Message/Notes
+|-
+|rowspan="5"|[[Unicorn horn]]
+|[[Potion of oil]]
+|(Potion consumed)
+|{{message|Your unicorn horn gleams with an oily sheen.}}
+|-
+|[[Potion of sickness]]
+|[[Potion of fruit juice]]
+|
+|-
+|[[Potion of blindness]]
+|rowspan="3"|[[Potion of water]]
+|
+|-
+|[[Potion of confusion]]
+|
+|-
+|[[Potion of hallucination]]
+|
+|-
+|rowspan="3"|Poisoned projectiles
+|[[Potion of healing]]
+|rowspan="3"|(Potion consumed)
+|rowspan="3"|The projectiles become unpoisoned.
+{{message|A coating wears off the poisoned <weapons>.}}
+|-
+|[[Potion of extra healing]]
+|-
+|[[Potion of full healing]]
+|-
+|Unpoisoned projectiles
+|[[Potion of sickness]]
+|(Potion consumed)
+|The projectiles become poisoned. (Eligible projectiles are [[arrow]]s, [[crossbow bolt]]s, [[dart]]s, and [[shuriken]].)
+{{message|The <potion> forms a coating on the <weapons>.}}
+|-
+|Any polymorphable item
+|rowspan="2"|[[Potion of polymorph]]
+|(Potion consumed)
+|Most items will be polymorphed, but have a chance of resisting. If the item polymorphs into itself, you get the message "Nothing seems to happen."
+|-
+|Any [[Polypiling#Forbidden_items|non-polymorphable item]]
+|
+|{{message|Nothing happens.}}
+|-
+|[[Amethyst]]
+|[[Potion of booze]]
+|[[Potion of fruit juice]]
+|This is also useful for identifying the amethyst.
+|-
+|[[Lichen corpse]]
+|rowspan="3"|[[Potion of acid]]
+|
+|{{message|The lichen corpse turns red around the edges.}}
+("orange" if the potion is diluted)
+|-
+|Any [[iron]] or [[copper]] item
+|(Potion consumed)
+|The item will [[corrode]].
+|-
+|Any [[erodeproof]] iron or copper item.
+|
+|{{message|Somehow, your <item> is not affected by the corrosion. Interesting...}}
+|-
+|Any rusty or corroded [[weapon]]
+|[[Potion of oil]]
+|(Potion consumed)
+|The weapon loses one level of each erosion damage.
+{{message|Your <weapon> is less <corroded (and) rusty>.}}
+|-
+|Any other item
+|Any other potion
+|
+|{{message|Interesting...}}
+|}
+
+Unicorn horns are incredibly useful for identifying potions. If dipping a unicorn horn into a potion produced no effect, then the potion is ''probably'' safe to drink, although some harmful potions (notably {{of|potion|paralysis|and=1|sleeping}}) are not neutralized by a unicorn horn. Potions of booze will not be neutralized, but the negative effects can be dealt with as long as the potion is not cursed. Creating fruit juice using a unicorn horn or amethyst can also be useful when trying to identify the [[potion of see invisible]]; both produce the same message when quaffed.
+
+However, carelessly dipping a unicorn horn into every unidentified potion might present difficulties if it is transformed by a potion of polymorph. While unicorn horns are not too hard to come across, this is still best avoided if you only have one at the moment; this also breaks polypileless [[conduct]], and players adhering to it will want to refrain from dip-testing with ''anything'' but a [[wand of polymorph]] until they have potions of polymorph identified. Conversely, players with spare unicorn horns may want to do this for the chance of producing a useful (and possibly [[magical tool|magical]]) [[tool]], such as a [[magic marker]].
+
+Dip-testing with ammunition, such as a single dart or [[arrow]], can safely detect potions of polymorph, and has the added benefit of identifying potions of sickness, since they will poison the item; if dipping projectiles that you intend to use, you should dip test for polymorph and acid first.
+
+===Price identification===
+
+{{main|Price identification}}
+
+Most price categories have at least one good potion and one bad potion, so price identification needs to be combined with other methods to be useful. Price categories with just one harmful potion can be quaff-tested with very little preparation: for example if you have a carrot to cure blindness, you can quaff-test any 150 zm potion.
+
+{|class="prettytable"
+!Base cost
+!Potion types
+!Notes
+|-
+| 0
+|
+* {{of|potion|water}} (uncursed)
+| Useful to differentiate from holy and unholy water
+|-
+| 50
+|
+<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+* {{of|potion|booze}}
+* {{of|potion|fruit juice}}
+* {{of|potion|see invisible}}
+* {{of|potion|sickness}}
+</div>
+|
+In this category:
+* Sickness is harmful
+* Booze is inconvenient
+* [[Delicatessen]]s only buy or sell booze and fruit juice
+|-
+| 100
+|
+
+<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+* {{of|potion|confusion}}
+* {{of|potion|extra healing}}
+* {{of|potion|hallucination}}
+* {{of|potion|healing}}
+* {{of|potion|holy water}}
+* {{of|potion|unholy water}}
+* {{of|potion|restore ability}}
+* {{of|potion|sleeping}}
+</div>
+|
+In this category:
+* (Un)holy water will be clear potions, and can be ruled out instantly
+* Hallucination is harmful
+* Confusion and sleeping are troublesome if enemies are nearby
+|-
+| 150
+|
+<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+* {{of|potion|blindness}}
+* {{of|potion|gain energy}}
+* {{of|potion|invisibility}}
+* {{of|potion|monster detection}}
+* {{of|potion|object detection}}
+</div>
+|
+In this category:
+* Only blindness is harmful, and can be easily cured with a [[carrot]]
+* Invisibility will make it hard to leave a shop
+|-
+| 200
+|
+<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+* {{of|potion|enlightenment}}
+* {{of|potion|full healing}}
+* {{of|potion|levitation}}
+* {{of|potion|polymorph}}
+* {{of|potion|speed}}
+</div>
+|
+In this category:
+* Polymorph is harmful, but can easily be identified with a junk item
+* Levitation is a nuisance
+|-
+| 250
+|
+<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+* {{of|potion|acid}}
+* {{of|potion|oil}}
+</div>
+|
+In this category:

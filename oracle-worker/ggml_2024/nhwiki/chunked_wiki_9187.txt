@@ -1,0 +1,1000 @@
+|{{anchor|}}  NM343-17|| [https://github.com/sgrunt/GruntHack/commit/628c7ecac54ef8f55f09ae97e4e1e59e84e69dd4 GruntHack] || [[Prayer]] does not protect from [[stinking cloud]]. ([http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/fde6cafb958fdee6# rgrn post by Grunt])
+|
+|-
+|{{anchor|}}  C343-60||   || While using #twoweapon, if slippery fingers cause both weapons to slip from your hands, on the same turn, the messages can seem rather odd.  ([http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/b65233b8c38c94b9 rgrn post])
+|
+|-
+|{{anchor|}}  NM343-19||   || [[Pray]]ing{{refsrc|pray.c|1566}} or [[fainting]]{{refsrc|eat.c|1194}} resets the "sound" [[option]] to true.
+|
+|-
+|{{anchor|}}  NM343-20||   || Freshly slain corpses stack inconsistently: Say there is a stale stack of corpses on your altar. A way of making the fresh corpses created not get 'oldified' by the existing stale stack is to blind yourself when killing the new puddings; somehow this causes the newly generated corpses to be in a different stack.
+|
+|-
+|{{anchor|}}  NM343-21||   || Moving with the {{kbd|m}} or {{kbd|H}}{{kbd|J}}... commands into a [[warning]] symbol attacks (and stones you if applicable) if and only if it does not cover up an {{white|I}} known from previous searching or movement. (see also: [[m]], todo: document at [[cockatrice]], [[warning]], [[stethoscope]].) Things are even more complicated if you are blind, or if there are invisible monsters you can't see.
+Testing a blind player with a peaceful shopkeeper: If you apply a stethoscope and it says Akalapi is there, and then "you move into it", without "Pardon me, Alikapi.", and he doesn't get angry.
+|
+|-
+|{{anchor|}}  NM343-22||   || If you rename the statue or corpse of a unique monster, then reanimate/revive it, the unique monster will keep its new name permanently (and also gain a "the" prefix if its actual name has one).
+|
+|-
+|{{anchor|}}  UNL343-035||   || Wielding or alternate-wielding or quivering a potion of blindness will make you resist blindness from yellow lights and archons. [[Bugs_in_NetHack_3.4.3/Reports#Wielding_potions_of_blindness_confers_blindness_resistance|(report)]]
+|
+|-
+|{{anchor|}}  NM343-24||   || If the player dies and is lifesaved, then the game will leave them [[helpless]] until the next turn, except if they were repeating a command using a numerical prefix and at least one more repeat is left, in which case they are not left helpless and (if they died while performing the action, rather than on a monster turn) the movement energy used to perform the action is refunded.
+|
+|-
+|{{anchor|}}  NM343-25||   || Picking up gold doesn't honor the setting of [[Pickup burden|pickup_burden]] if the game is compiled without [[Compile-time_options#GOLDOBJ|GOLD_OBJ]] (no prompt when the [[encumbrance]] level is exceeded).
+|
+|-
+|    NM343-26||   || {{anchor|foocubus_disparity}}[[Demon#Demons_summoning_demons|Demon gating]] produces somewhat more incubi than succubi, especially on lower dungeon levels. Cause: [[Makemon.c#line1352]]. ([[User:Ilmari Karonen]] computed exact number some time ago.)
+|
+|-
+|{{anchor|}}  NM343-27||   || A [[des-file format#SUBROOM|SUBROOM]] with random size and location is always generated at the top or left edge of the parent ROOM.
+|
+|-
+|{{anchor|}}  NM343-28|| [http://bilious.alt.org/~paxed/nethack/nh343-impossible.diff Fix from Pat Rankin] || impossible() can mangle the parameter values. 
+|
+|-
+|{{anchor|}}  NM343-29||   || Jumping into portals with an item immediately before the portal prints messages out of order, and also autopickups the item (despite jumping over items not normally picking them up). ([[Bugs_in_NetHack_3.4.3/Reports#Jumping_into_portals_can_print_messages_out_of_order_or_incorrectly_pick_up_items|report]])
+|
+|-
+|{{anchor|}}  NM343-30||   || The travel command gets interrupted by engravings, even by dust engravings while blind. In every other respect, the game behaves as if you cannot feel the dust engraving while blind. ([http://www.gamefaqs.com/boards/582497-nethack/65706611/738643810 first observed by JoveHack])
+|
+|-
+|{{anchor|}}  UNL343-051|| [https://github.com/Bulwersator/UnNetHackPlus/commit/6e49c2972e68cfeb7e1a8d9a60bdf3750848d77a UnNetHackPlus] (note [https://github.com/Bulwersator/UnNetHackPlus/commit/161d691aefdbb8cdd050a9d6de6fcbdb6eaef9fc preceding refactoring] || Statues/figurines of golems hit with stone-to-flesh spell are [[Trap.c#line423|supposed]] to turn into flesh golems, not meatballs.
+
+|
+|-
+|{{anchor|}}  NM343-32||  || A player vampire lord who is wearing water walking boots and polymorphs into a non-flying form, will wet his stuff despite wearing water walking boots. A potion of levitation prevents this. ([http://bilious.alt.org/rgrn/?128317,128319,128321-128323,128336,128337,128339-128343#p128339 original report], [http://bilious.alt.org/rgrn/?128317,128319,128321-128323,128336,128337,128339-128343#p128342 source pointer], see also [[bug#C343-193|C343-193]])
+|
+|-
+|{{anchor|}}  NM343-33|| [https://github.com/Bulwersator/UnNetHackPlus/commit/e451c45ac70c367b56bd39792b6899175d7e3e1a UnNetHackPlus] || Stethoscope reports unaligned monsters as chaotic 
+|
+|-
+|{{anchor|}}  NM343-34|| [https://github.com/Bulwersator/UnNetHackPlus/commit/c786ec52c46f7f22bbaee3a1a15748013a1b9806 UnNetHackPlus] || Missing foo_on/foo_off calls for objects with strange delay values (this bug was not detectable by players, but after adding special effects for wearing affected armor [for example: fedora] code was not working properly)
+|
+|-
+|{{anchor|}}  NM343-35|| [https://github.com/Bulwersator/nethack-3.4.3-bugfix/commit/bb487fcc5cf961367ac79e6a1f8bf8a597bf3d7f UnNetHackPlus] || Color of mithril objects is wrong
+|
+|-
+|{{anchor|}}  NM343-36|| [https://github.com/Bulwersator/UnNetHackPlus/commit/f5b8fe9e5608e531009867907d39dcd5217ea877 UnNetHackPlus] || Four shopkeeper names disappeared in NetHack 2.2a ([https://groups.google.com/forum/?fromgroups=#!topic/rec.games.roguelike.nethack/yFfMPYM_hLU report]).
+|
+|-
+|{{anchor|}}  NM343-37|| [https://github.com/Bulwersator/UnNetHackPlus/commit/0f47db8c229f3e22b8b43c6db2739f565ffc5a7a UnNetHackPlus] || Player polymorphed into gremlin may multiply on fountain during levitation.
+
+|
+|-
+|{{anchor|}}  C343-217||   || some testing: I threw 13 daggers at a fog cloud from inside; on the 13th dagger, "You destroy the fog cloud!  You see here 12 blessed +0 daggers." but after that there were 13 daggers (as confirmed by the : command, too). So at least the message is wrong, even if the dagger isn't really lost.
+|
+|-
+|{{anchor|}}  NM343-39|| ||  Wands of teleportation do not auto-identify when you zap yourself. 
+|
+|-
+|{{anchor|}}  NM343-40|| ||  Corpse stacking ignores age. Easy to test with sacrificing - produce lizard corpse, drop on altar, wait till it is too old for sacrificing, produce new lizard corpse, drop it on altar. Corpses will stack and both will be too old for sacrifice. Now produce next lizard corpse and sacrifice it to confirm that "Nothing happens" is caused by old age of offered corpse.
+|
+|-
+|{{anchor|}}  NM343-41|| || Pick up unpaid oil potion in shop, lit it, pay Fuel Tax, drop and sell it for more than you lost on Fuel Tax
+|
+|-
+|{{anchor|}}  NM343-42|| || Attacking with polearm and dealing no damage will not violate conduct - see [[Apply.c#line2421]] in use_pole function.
+|
+|-
+|{{anchor|}}  NM343-43|| [https://github.com/tung/NitroHack/commit/f71440b50978c44587b58c1f2d6c39aedd8474b7 NitroHack by tung] || fleeing monsters getting stuck in corridors 
+|
+|-
+|{{anchor|}}  NM343-44|| {{Bilious|165}} || Two bugs relating to items vanishing from cursed bags of holding. 1) It doesn't use up a turn. 2) If it causes you to become unencumbered, the message saying so doesn't come until the following turn.
+|
+|-
+|{{anchor|}}  NM343-45|| || When a tileset other than the official tileset is used (which can be accomplished even in apparently secure setups), it's possible to distinguish between items with the same unidentified appearance (such as [[gem]]s, [[bag]]s, or [[musical instrument]]s), or to tell the real [[Amulet of Yendor]] apart from imitations). ([[Bugs_in_NetHack_3.4.3/Reports#Alternative_tilesets_can_spoil_the_identity_of_bags.2C_gems.2C_instruments.2C_fake_Amulets|Report]])
+|
+|-
+|{{anchor|}}  NM343-46|| || Removing [[red dragon scale mail]] in lava has no negative effects, even if the player is not otherwise fire resistant. ([[Bugs_in_NetHack_3.4.3/Reports#Removing_red_dragon_scale_mail_in_lava_causes_no_bad_effects|Report]])
+|
+|-
+|{{anchor|}}  NM343-47|| || Teleporting onto a [[sink]] while equipping [[levitation boots]] (e.g. due to a [[quantum mechanic]] attack) crashes the game. ([[Bugs_in_NetHack_3.4.3/Reports#Crash_when_teleporting_onto_a_sink_while_equipping_levitation_boots|Report]])
+|
+|-
+|{{anchor|}}  NM343-48||[https://github.com/Chris-plus-alphanumericgibberish/dnethack/commit/661f1f385359dc8a6a8c41b53d645c6ba5a31e36 Patch] (Although this is the dnethack github repository, this is a general patch) || If you [[dig]] downwards on a [[grave]], you may dig up a corpse or a zombie, and may be punished with an alignment penalty. If you zap a [[wand of digging]] downwards on a hard-floored level, the same thing happens. But if you BREAK the wand of digging instead, it just creates pits.
+|
+|-
+|  NM343-49|| || Reading a non-blessed scroll of amnesia is meant to forget at least one spell, and possibly all; instead it forgets exactly one spell.([https://groups.google.com/forum/#!original/rec.games.roguelike.nethack/f8qoQBKooBk/e9HcuVfKx4UJ Report])
+|}
+
+== Unlisted Bugs Addressed by the Dev Team ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Description!!Notes
+|-
+| UNL343-001 || Unlisted || Flying hero cannot easily get out of a pit. || See commit {{commit|c90746c670fe455c9a41168ba0f4bc7929136ba5|c90746...}}.
+|-
+| UNL343-002 || Unlisted || Exploding bag of holding can leave stale pointers in its wake. || Fixed but apparently never listed, see commits {{commit|8414b5214fbbdd9e27ecb2de69263c30f302e560|8414b5...}} and {{commit|786b810293c0a63235e4a4e50901979454939aec|786b81...}} and {{commit|01373731e551eac1c38b0659e56bbdfa031acd47|013737...}} and {{commit|556b64e797e2193390ab5d84a07a71f261ea930f|556b64...}}
+|-
+| UNL343-003 || Unlisted || Killing a monster with a potion of invisibility can cause out-of-order messages. || See commit {{commit|361e020847650399381e4aeca1627b2f24ca236c|361e02...}}.
+|-
+| UNL343-004 || Unlisted || Objects dipped in acid do not erode when they should. || See commit {{commit|7cb4b9d6622e9466bc7762c9ca216b17c17d1000|7cb4b9...}}.
+|-
+| UNL343-005 || Unlisted || Confirmation for entering Gehennom can appear out of sequence if the hero has levelported down before using the Valley stairs || See commit {{commit|7364f73ce7757e8308c5672b047f3d8d1283e8c8|7364f7...}}.
+|-
+| UNL343-006 || Unlisted || Pets with keys get the wrong flag set and so do not use them, and related bugs. || Fixed but apparently never listed, see commits {{commit|c1393e508f05dda4c32b292d202c6bc82f48a354|c1393e...}} and {{commit|74f08dcb224c063dfc71d2e501e6c5ac30fe3714|74f08d...}}
+|-
+| UNL343-007 || Unlisted || Grammar: "thy" is sometimes used before words starting with a vowel; it should be "thine" || See commit {{commit|940a70d6aefb9e123179bffd800b4c15fcfd30e4|940a70...}}.
+|-
+| UNL343-008 || Unlisted || [[Naming artifacts|Player can informally determine the (type) identity of certain items without using resources or even turns.]] || Fixed but apparently never listed, see commits {{commit|d5be1ff3f1d7e95f6f9c58d837795af62dcceb1c|d5be1f...}}, {{commit|c2e8fb61b83b0534e04d669926f0f26c33eeb5b0|c2e8fb...}}, {{commit|bcb9d35fe32d123f380e6a5d3c0bff33e0632a24|bcb9d3...}}, and {{commit|e181efb600a2055b405c73e9bc16ce431bd69d9e|e181ef...}}.
+|-
+| UNL343-009 || Unlisted || Burried or carried chests may miss out on magical trap detection. || See commit {{commit|bdf85bfa84eabfd5a94dcfabd9756d02d02eb964|bdf85b...}}.
+|-
+| UNL343-010 || Unlisted || Certain objects can be destroyed more than once in lava, causing a panic || Fixed but apparently never listed, see commit {{commit|baff3bc88b64d5681e2d2ac9f7ba10e27ffe1c3f|baff3b...}}
+|-
+| UNL343-011 || Unlisted || Messages about not being able to reach as an unskilled rider may be poorly worded in some cases. || Fixed but apparently never listed, see commit {{commit|4327fc88af07d3f73deaaae5438df968f5de0433|4327fc...}}
+|-
+| UNL343-012 || Unlisted || Poorly worded message can occur as a result of human sacrifice when you cannot see invisible. || Fixed but apparently never listed, see commit {{commit|bd3a5466dd4fafa050e8a6d109b13491a132ea4a|bd3a54...}}
+|-
+| UNL343-013 || Unlisted || Uncreated statues of stoning-resistant monsters can count against extinction limits. || Fixed but apparently never listed, see commit {{commit|aa77c621d617ec9321e4b540fc10c15470da6157|aa77c6...}}
+|-
+| UNL343-014 || Unlisted || Level arrival messages can appear out of sequence. || Can happen if player arrives via stairs while flying.  This bug cannot be triggered in 3.4.3.  See commit {{commit|ff553c6995a57f0c153a79fd0c20646ac2df7ad7|ff553c...}}.
+|-
+| UNL343-015 || Unlisted || Falling into lava can cause inappropriate messages. || You burn to a crips, even if you are e.g. a water elemental.  See commit {{commit|abb47e6fc6502c5a64e07cb24ab14720b12fbf8a|abb47e...}}.
+|-
+| UNL343-016 || Unlisted || Stat differences between baby and adult long worms are incorrect. || See commit {{commit|6bcfa8f88bce1bbd5351c27ecf3da2782d646699|6bcfa8...}}.
+|-
+| UNL343-017 || Unlisted || Message when fiding a hidden unnamed pet does not indicate its tameness. || See commit {{commit|a732a87ee2b52a508fb2ed7168c2fed755c859cd|a732a8...}}.
+|-
+| UNL343-018 || Unlisted || Unidentified wands may give confusing messages about an object is on an open door. || Rather arguable.  See commit {{commit|354f4254bc796d284a2bd0838b1f70108df4726b|354f42...}}.
+|-
+| UNL343-019 || Unlisted || Some quest-related messages don't really make sense. || See commit {{commit|03185043d88c3779f4456cb8ab423ee1a963dd7c|031850...}}.
+|-
+| UNL343-020 || Unlisted || Eating or polymorphing gold does not anger a vault guard; throwing the gold to him does. || See commit {{commit|ecb98e019c4b90d42b652f232e34f721acd44977|ecb98e...}} for the eating part; see commit {{commit|bd172eb167a0082e4882b1b02afe0970c0d6896b|bd172e...}} for throwing.
+|-
+| UNL343-021 || Unlisted || Hero can tell how quietly he walks while levitating. || See commit {{commit|d21d3d5ca84e1516283ea481dc6e2e5d2cbc7053|d21d3d...}}
+|-
+| UNL343-022 || Unlisted || A shopkeeper won't shake his head when he should. || See commit {{commit|d736570d0122daa6c03cd4c06ca0d0751856ecb4|d73657...}}
+|-
+| UNL343-023 || Unlisted || Attribute gain or loss may be reported when it does not occur, due to equipment. || See commit {{commit|bb8ec3e1d5598a4f217e62f7e30c8af925d9e80a|bb8ec3...}}
+|-
+| UNL343-024 || Unlisted || Being drained while polymorphed can give misleading messages. || See commit {{commit|d25ede081997fcfe6bcb6879b7914f76a78bc8bd|d25ede...}}.
+|-
+| UNL343-025 || Unlisted || Objects that become wielded when applied do not respect the pushweapon option. || See commit {{commit|9631e2b691afe22c237020a02068de0c55d2b1ae|9631e2...}}.
+|-
+| UNL343-025 || Unlisted || When dragging a punishment ball, chain does not remain between player and ball. || H216, see commit {{commit|7272de6881a94865566c461aeb734c2d980e3852|7272de...}}.
+|-
+| UNL343-026 || Unlisted || Bugles don't wake nearby creatures (except soldiers). || #H143, see commit {{commit|d04a0f808c05b32e2472599c8c97a40337b5cb6b|d04a0f...}}.
+|-
+| UNL343-027 || Unlisted || In the tty and Amiga ports, long query prompts could cause panics. || Reported by NAO.  See commits {{commit|3dc97916853f04d4332aaa37cdc9800060114351|3dc979...}} and commit {{commit|054a74d3781ee31e7ceea7fe1ba543808b5b7c24|054a74...}}.
+|-
+| UNL343-028 || Unlisted || Shop queries can cause panics. || See commits {{commit|9315307df266d7b1442410376f123c208c01a3c7|931530...}} and {{commit|39117162977acb4fbe5d678b84df76fd752c165e|391171...}}, not sure if {{commit|93b378fac61d7e84dc690532f3567d24f557dadf|93b378...}} may also be related.
+|-
+| UNL343-029 || Unlisted || Containers behave oddly in shops; contents are not always fully accounted for. || See commits {{commit|43e22a13891ed384c354725b0233d3fe96b85a1c|43e22a...}}, {{commit|4e25ab378b553c0110afc4ce395751e6446e4065|4e25ab...}}, {{commit|9d8f6fdc8ec182028be15abce3ea827aa6fef5fd|9d8f6f...}}, {{commit|bbda8102b5a027c1ba0a20d06a0eda40cf1f17c9|bbda81...}}, {{commit|bc9f91fce55bb3c4ad08dec9c40f141b165de5fb|bc9f91...}}, {{commit|0a7c5d6ad2b36074692065d0d98cfd3e09ff5bed|0a7c5d...}}, {{commit|ef2085bcafcd9ad1a45db43fa5212a62da9bbd52|ef2085...}}.
+|-
+| UNL343-030 || Unlisted || Objects generated via use of unpaid items are not always owned by the shop when they should be. || See commit {{commit|1e0960f8ef2c6fe07a34a8646aeae4ba20e28030|1e0960...}}.
+|-
+| UNL343-031 || Unlisted || Some shopkeeper messages were issued incorrectly, were excessively verbose, or failed to account for player characteristics. || See commits {{commit|0a7c5d6ad2b36074692065d0d98cfd3e09ff5bed|0a7c5d...}} and {{commit|b5633d17c35c41fc48b930b310c5ac252cdcfd29|b5633d...}}.
+|-
+| UNL343-032 || Unlisted || Deaths to cockatrices are sometimes reported incorrectly on tombstones and in bones. || See commits {{commit|2fa9bd03014830ee2cc046d90b7be9ec8679a463|2fa9bd...}} and {{commit|a29bf9d63dba22d216be9c638faee168e93acaad|a29bf9...}}.
+|-
+| UNL343-033 || Unlisted || If levitation times out when entering a trap, messages can seem to be duplicated if no monsters attack. || See commit {{commit|6a081301c62e01fe5402a4f207d87afbb635c064|6a0813...}}.
+|-
+| UNL343-034 || Unlisted || Some monsters can be slimed or otherwise eliminated that should be immune. || See commits {{commit|dd4f4efb595a605762f42080f4dcdb0ac5e96e80|dd4f4e...}} and {{commit|f834fdbdd084da5e51d2c4998b3a85fc8866ab18|f834fd...}}.  For ghosts, see C343-81.
+|-
+| UNL343-035 || Unlisted || Hero can resist blinding in unexpected ways. || Quivered potion of blindness, see commit {{commit|95729beb4a6bb5a0fa4a7e277a40c114e0767d97|95729b...}}.
+|-
+| UNL343-036 || Unlisted || Information can be leaked (in a minor way) when the game mentions an object you have not seen. || See commit {{commit|59354953cced79ec3ecce17c0541f8b451345d67|593549...}}.
+|-
+| UNL343-037 || Unlisted || Dipping worn items can cause results it should not. || Cursed worn armor becomes not worn when polymorphed, see commit {{commit|8d86a87a7bfc592897bceeca522b28754f99799f|8d86a8...}}.  Related to C343-229.
+|-
+| UNL343-038 || Unlisted || Intended feedback was not given when sacrificing the Amulet on an ordinary altar. || See commit {{commit|1505e3e7d722a9f6e6714f61a9104ef225ccc312|1505e3...}}.
+|-
+| UNL343-039 || Unlisted || Technical problems can result if stacks merge when a monster dies while multi-firing. || See commit {{commit|124040bcb909a107ff2f955fabf967e6913f3f10|124040...}}.
+|-
+| UNL343-040 || Unlisted || Activating a statue trap did not always result in an awake, hostile monster; also, statue traps count twice toward extinction. || See commits {{commit|f93b3837d80bef9495b5ddc175967187d856235f|f93b38...}} and {{commit|4b3b8b40473e0e948525eb1933925450df553a04|4b3b8b...}}.
+|-
+| UNL343-041 || Unlisted || Monsters did not use ranged attacks in some situations where they should. || Shooting past boulders, like the player can do.  See commits {{commit|f411d303ea1c8a464619e15c982fd796b3038044|f411d3...}} and {{commit|4f77e8b15662e262bfc71bbde9eca386225a914d|4f77e8...}}.
+|-
+| UNL343-042 || Unlisted || The GOLDOBJ configuration is buggy. || See commits {{commit|15122d269c99891360f90a66ea7d1a77234ef5ee|15122d...}} and {{commit|0bd89ff28d81723c37d6d0a9d6d7dd4f504ac5ff|0bd89f...}}.
+|-
+| UNL343-043 || Unlisted || Games can become unrecoverable if hangup occurs in certain situations; plus assorted other hangup-related issues. || See commits {{commit|f2d8a537187a9b46fac8028b1c6e232225a103d3|f2d8a5...}}, {{commit|538b91ddc9def26d2cf2635774dd8904cb995682|538b91...}}, and especially {{commit|b01f1f804fbeb80bb370f2535e0267e65fd8beeb|b01f1f...}} and {{commit|151dcad8fa1da3190b5afbc39ae338022697dfb9|151dca...}}, plus {{commit|72abae042b1744b533f471cd59bfba7364fac839|72abae...}}, {{commit|697ec97812ffd55273921cc092808bb6f03a69c3|697ec9...}},  {{commit|e93303eae4ca605d116a4c281541c55d53e67da9|e93303...}}, {{commit|fdbc2c9e860a46500b6ddba74b6e383bd0f2e4d4|fdbc2c...}}, {{commit|13b1aa6bc290a681990315f0bafe4d28ba1b5d4c|13b1aa...}},  {{commit|47f052e7b8a1e65c04245b3f8943170ba4c3d25d|47f052...}}, {{commit|dda8161ece15c69bb222e5c72ab8e5479a7eb8cc|dda816...}}, {{commit|0f0f7190f32597a34dd29b64f38790d104a12df4|0f0f71...}}, {{commit|aa97ea65b17a8d14d5c70151b3453f148a1c9e00|aa97ea...}}, {{commit|c5450cbe5e4a6f6db13c7da6c66d6c4477c02cde|c5450c...}}.
+|-
+| UNL343-044 || Unlisted || Engraving with an unseen empty wand can cause freed memory to be accessed. || See commit {{commit|5b88c67d97caba2180ce21eaa2783216ef41c576|5b88c6...}}.
+|-
+| UNL343-045 || Unlisted || Command line options for game mode can be used in unintended ways. || See commit {{commit|0ceebfc4b54dac968d1dfba7c4caf28e8c15284f|0ceebf...}}.
+|-
+| UNL343-046 || Unlisted || Hero could lock or unlock doors when this should not be possible. || See commit {{commit|2feff50e33c83732f5b7c2872ff657234413bf9b|2feff5...}}.
+|-
+| UNL343-047 || Unlisted || Special sources of monster creation can cause out-of-sequence messages. || See commit {{commit|e2f1ec76ace8ac0cb2a13644aaf59de3d0de8495|e2f1ec...}}.
+|-
+| UNL343-048 || Unlisted || Artifacts whose base item is not type-identified are listed incorrectly in some cases. || See commits {{commit|e16a078655429ac3c5103da61ac75220ad45f47d|e16a07...}} and {{commit|7a70ec2a0230ce779f2614d0abb2c3daed4c5741|7a70ec...}}.
+|-
+| UNL343-049 || Unlisted || Hero is not always subject to silver or bane damage when it would be appropriate. || See commits {{commit|25527a63157eec805bc4c6baad35b62af24bd35e|25527a...}}, {{commit|4fd36a4a55df04548689c74bc56cef660bef8fcb|4fd36a...}}, and {{commit|98b7550059e0568810467e6ded44e3ee79251eac|98b755...}}.
+|-
+| UNL343-050 || Unlisted || It is possible for the player to produce a large number of magic tools. || See commit {{commit|e91ff47ff0fd88fd5e5e7f956aa1bd19583229d5|e91ff4...}}.
+|-
+| UNL343-051 || Unlisted || Golem statues and figurines do not always revive as they should and in certain cases can cause a panic. || See commit {{commit|d8a0f734815d6d0d81151c7222e63efbfe3f7cd4|d8a0f7...}}.
+|-
+| UNL343-052 || Unlisted || Monsters that can be generated with a boulder are too common in Sokoban. || #H165, see {{commit|a7c73768954e448cb5864e6995e044b8cc62def4|a7c737...}}.
+|-
+| UNL343-053 || Unlisted || Bear traps don't do any physical damage. || See commit {{commit|0b05ca9ee72e16c24a296f400703c5879b2fb4d0|0b05ca...}}.
+|-
+| UNL343-054 || Unlisted || Zapping a wand of cold could cause ice to melt sooner. || See commit {{commit|985c74513e62f2e44482414c14e3ebb9b7c1ae40|985c74...}}.
+|-
+| UNL343-055 || Unlisted || Corpses rotting on ice use an incorrect formula. || #H174, no actual effect in 3.4.3, because ROT_ICE_ADJUSTMENT is 2.  See commit {{commit|b90a811a19c71e2fe13dcc4edeea2d97639900be|b90a81...}}.
+|-
+| UNL343-056 || Unlisted || Players and monsters sometimes change gender inappropriately. || Non-polymorph changing, e.g., lycanthropy. See commit {{commit|3c58c3b2353bee9e0e0200dd12c112ba2288b5fa|3c58c3...}}.
+|-
+| UNL343-057 || Unlisted || Steed cannot be targetted by taming or charm monster while riding. || See commit {{commit|7aaf588ef7fc50eb42ae27be295c11390781a5f9|7aaf58...}}.
+|-
+| UNL343-058 || Unlisted || Taming and charm monster give inadequate feedback. || #U1233, see commit {{commit|7aaf588ef7fc50eb42ae27be295c11390781a5f9|7aaf58...}}.
+|-
+| UNL343-059 || Unlisted || Intelligent monsters are not smart enough to cure stoning or sliming when they could, and one method that should work for the player is not reliable. || See commit {{commit|2aa7cb189b2cb29538279509d21ba9031da3763d|2aa7cb...}} for stoning.  For sliming see commits {{commit|9870c9aaa36fd6b77d50eefe5d983d6a84a5d53b|9870c9...}}k, {{commit|c59d53049e675a1177bf31127175f96bc71e9034|c59d53...}}, {{commit|696eaefbb522721c42c8237cfce5da7ce7b98627|696eae...}}, {{commit|6d33acd2af10b9bca1cf795c55a4db49ac53e16d|6d33ac...}}, {{commit|b85b3d47ffaa7a2c2bcf21086b5eda905ec07b39|b85b3d...}}.
+|-
+| UNL343-060 || Unlisted || Monsters sometimes don't hide when they should. || When the hero is away for a while.  See commit {{commit|62a33d981afc926d96a162c2247f94b2d29314c6|62a33d...}}.
+|-
+| UNL343-061 || Unlisted || Removal of monsters and their inventory does not clear worn flags first. || May not have visible symptoms in 3.4.3.  See commit {{commit|17240676605d483b706d9261248f9310ee9be20e|172406...}}; see also commit  {{commit|39533d5875d744fb17fc775bb629446eba4b845f|39533d...}}.
+|-
+| UNL343-062 || Unlisted || Explosions may be handled strangely when the hero is engulfed. || See commit {{commit|6aff1bfad1b81dd515947ed503286d67fe1255a7|6aff1b...}}.
+|-
+| UNL343-063 || Unlisted || Mirrors sometimes interact strangely with invisibility. || See commit {{commit|5ca566f0f2dbafd6c97a273aad040f070af2f45b|5ca566...}}.
+|-
+| UNL343-064 || Unlisted || Chance of a ridden steed counterattacking may be calculated incorrectly. || See commit {{commit|61cd699405db5d54d3c1254d467c93661060e989|61cd69...}}.
+|-
+| UNL343-065 || Unlisted || The names of monster body parts are given incorrectly when the player is hallucinating. || Bug report: when hero is hallucinating, mbodypart() references still describe the limbs/appendages/etc. of a monster's true form rather than of the type of monster which gets described to the player.
+|-
+| UNL343-066 || Unlisted || Enlightenment messages for some properties can be misleading, depending on other properties. || See commit {{commit|cac2dd4d33121f6a407928a5dec5b990840c98c4|cac2dd...}}.
+|-
+| UNL343-067 || Unlisted || Engulfing energy-drain attacks were not implemented, even though energy vortices are listed as having one. || See commit {{commit|d0a7d150230b48c604f86aa39e18e6cdfe389675|d0a7d1...}}.
+|-
+| UNL343-068 || Unlisted || Scales embedded in your skin are inconsistently reported. || See commit {{commit|3425a19dff334965e2f2d16e17b2b1615575c9a8|3425a1...}}
+|-
+| UNL343-069 || Unlisted || Potions thrown straight down while riding never hit your steed. || See commit {{commit|e6b2d5c33d72f1d4f587cd8039da5500f3067d4a|e6b2d5...}}.
+|-
+| UNL343-070 || Unlisted || Certain objects interact incorrectly with blindness when they change appearance. || See commits {{commit|403dd4ef951627eaf677083c697d646068ee41a1|403dd4...}}, {{commit|9269642f2a3957d5759e30352bb8eb44a081cde2|926964...}}.
+|-
+| UNL343-071 || Unlisted || Dormant code contained an incorrect reference to bigroom. || See commit {{commit|7ffa0780a683633127ede991d65db1c06c1cd76a|7ffa07...}}.
+|-
+| UNL343-072 || Unlisted || Amnesia effects can be preemptively mitigated and/or exploited. || See commit {{commit|0ee120b9b5a0d3fefa54b55a8ccdcb7758640920|0ee120...}}.
+|-
+| UNL343-073 || Unlisted || Thrown daggers are unbalanced compared to other ranged weapon options. || See commit {{commit|fa61c02151494089092fa73a1ce3d2a84d9b7dd7|fa61c0...}} for a start; needs balance testing to see if more is needed.
+|-
+| UNL343-074 || Unlisted || The same fall into a poisoned spiked pit trap could kill the player twice. || #H2225, see commit {{commit|f23e87f2b43bba2c8fdf79c9ccacd784adcd63a9|f23e87...}}.
+|-
+| UNL343-075 || Unlisted || Spellcasters at higher levels were increasingly likely to stick to boring spells. || See commit {{commit|fa94c173af386c74bdbc438e2162410eaf149fa9|fa94c1...}}.
+|-
+| UNL343-076 || Unlisted || Magic cancellation was unbalanced, and the protection intrinsic was nearly meaningless. || See commits {{commit|33d9b7131157bf54188c2cee1c8d0a78cbede9fe|33d9b7...}}, {{commit|5bd6ba0d1ced743d801da8014e5647ed334dab94|5bd6ba...}}, {{commit|aa382329dd9ac7ef0c690a8e381fd77d462ab924|aa3823...}}, {{commit|6df18e20bea808d30818a6a158bc14351e7b8bfb|6df18e...}}
+|-
+| UNL343-077 || Unlisted || On some terminals, there is either no way for the user to send Meta-key combinations to NetHack, or else in doing so they can get confused with Esc-key sequences. || See commits {{commit|7002734ca5d159728c518e5c9c576746ae7e5bf7|700273...}} and {{commit|2f1813cdd8cd7141b165534c763f3a6a6987cb39|2f1813...}}.
+|-
+| UNL343-078 || Unlisted || Shopkeepers do not assume ownership of pet-dropped items in certain cases when they should. || See commit {{commit|6a53009069dd2b474a288c9b2cc1ca8b364ceb13|6a5300...}}.
+|-
+| UNL343-079 || Unlisted || Double rounding could occur when multiple price adjustments were applied, resulting in final values being off by one. || See commit {{commit|c98133ac8081edc9a81b6b0b457d8909cf2c6696|c98133...}}.
+|-
+| UNL343-080 || Unlisted || Some monsters with claw attacks were unable to use cockatrice corpses correctly. || See commit {{commit|5f5721094b0d2178224bcc569827c464f048394a|5f5721...}}.
+|-
+| UNL343-081 || Not A Bug || Some monsters have hands that should not. || See commits {{commit|164f498a41094285704dac78f4fa4389a0b18894|164f49...}} and especially {{commit|8dfb62a9d66da771ed9578a446d1e7a9e2e87e35|8dfb62...}}.
+|-
+| UNL343-082 || Unlisted || Drawbridge code that meant to check whether the hero was asleep actually checked for restful sleep. || See commit {{commit|28ab93325e067faa79e18d15775b6ee47e4a822e|28ab93...}}.
+|-
+| UNL343-083 || Unlisted || Malicious data can create a potentially-exploitable buffer overflow. || See commit {{commit|50e12a87aa1b24d382c03d524c71168027f3bcd6|50e12a...}}.  See also commit {{commit|612755bfb5c412079795c68ba392df5d93874ed8|612755...}} for a similar but probably less exploitable issue.
+|-
+| UNL343-084 || Unlisted || Sometimes the wrong shopkeeper may take the hero's possessions. || See commit {{commit|67f3a26e5208d9bbda27ed9e6435dff89645d057|67f3a2...}}.
+|-
+| UNL343-085 || Unlisted || Wishing sometimes produced a different object than what the player clearly intended. || See commit {{commit|0acaa9bc1b741451deeaa8d1d375f06edc9b9087|0acaa9...}}.
+|-
+| UNL343-086 || Unlisted || Some messages on the Planes used inappropriate words. || See commit {{commit|ae01610f0df23917b6e8f027c71055cf077ffde6|ae0161...}}.
+|-
+| UNL343-087 || Unlisted || The maximum number of fruit names could be reached too easily. || See commits {{commit|2a2e2b299e2082159f8d439f67f04d84c681029d|2a2e2b...}} and {{commit|a0c6e6ef3f49d994048d443af687e3de3c178284|a0c6e6...}}.
+|}
+
+== References ==
+<references/>
+{{noversion}}
+[[Category:Bugs]]}
+&&%s&& %s Ascension kit (dNethack) {140143 2021-05-23T00:36:10Z {4001463 Actual-nh} /* Tools & miscellaneous items */ Better link {{variant-343}}
+The [[ascension kit]] is the nickname given to a set of items that are virtually required for a successful [[ascension]]. The '''dNethack ascension kit''' is similar to the vanilla ascension kit, but has some differences, due to new or increased threats to the player, the addition of new items, and changes to existing items. This article discusses the additional options and concerns presented by dNethack, and how they modify the standard ascension kit selection.
+
+==Common items==
+===Armor===
+
+====Cloak====
+
+*'''[[Oilskin cloak]]''': The oilskin cloak now protects your '''entire''' inventory from water damage. Given that the endgame has many Water Elementals and divine spellcasters (with their inventory-wetting geyser and acid rain spells), this cloak is a serious contender for inclusion in the ascension kit. Further, genociding ';' before reaching the Plane of Water causes a large army of (ungenocideable) [[deep one]]s to spawn in the Plane of Water, in place of the native seamonsters.
+**Other sources of Water Proofing
+***A R'lyehian faceplate (see below).
+***An ample supply of [[grease]] for your cloak, [[bag of holding]], and other critical items, or perhaps even an [[oilskin sack]], may be used instead.  A greased cloak will protect your entire inventory; however, because it wears off you will want to also grease or otherwise protect your bag and other critical gear.
+*** Permanent intrinsic water-proofing is the passive bonus from reading the [[Word of Creation#The Dividing Word of Creation/Cerulean Glyph|Dividing Word of Creation]] of the [[Mithardir Quest]].
+*'''[[Cloak of magic resistance]]''': Two cloaks of MR can be found on the [[Tulani Eladrin]] in the [[User:Chris/dNetHack/dNethack_Arcadian_Tower|Arcadian Tower]].
+**Other sources of Magic Resistance
+*** The amulet of nullify magic now exists, which grants MR while worn. It will block spellcasting though, so the cloak is likely better for wizards and other spellcasters. 
+*** [[Orihalcyon gauntlets]] offer magic resistance in the glove slot. 
+*** Magic resistance is offered by numerous dNethack artifacts, and slotless magic resistance can be obtained from two of the [[Alignment quest#Chaos|Chaos Quests]].
+
+====Body armor====
+{{main|User:Chris/dNetHack/Items#Changes_to_armor}}
+
+*'''[[Dragon scale mail]]''', usually silver or grey: This provides either reflection or magic resistance, 9 base points of [[AC]], and does not hinder spellcasting, but weighs 150 units (fairly heavy) and does not provide [[Magic cancellation]]. The other colors can be used to augment your offensive ability, or to plug a gap left in your energy resistances. Note that dragon scales can also provide resistances when converted into shields; see below. [[User:Chris/dNethack/dNethack_Items#Body_armor|The secondary effects]] are also useful.  If you're planning on going for silver dragon scale mail for improved reflection, consider a shield instead.  They don't grant as much AC, but leave the body slot open for either another DSM or for (crystal) plate mail.
+*'''Plate mail''', either regular or bronze: When fully enchanted, these provide lower AC than Dragon scale, as well as MC 3, but are heavy at over 200 units, and hinder spellcasting. If you can find high-elven plate (made from mithril, so it doesn't erode), maybe from a bones file, that is by far the better choice.  It gives 1/2 the dex bonus to AC, and weighs only 60 units.
+*'''Crystal plate mail''': When highly enchanted, this provides the lowest possible AC, does not hinder spellcasting, and MC 2, but is also the heaviest option at 250 units (1/4 the maximum unburdened carrying capacity).  This can be found at the top of the [[User:Chris/dNetHack/dNethack_Arcadian_Tower|Arcadian Tower]], but it's on the Tulani Eladrin.  A crystal plate mail can also be found in [[Vlad's tower]].  They can be safely enchanted to +7, and each enchantment counts for 2 points of AC.  Their base value is less than a normal plate mail, but fully enchanted they are much better.
+*'''Elven mithril-coat''': When enchanted to +7, gives 1 more point of AC than the dwarven variety. Both mithril coats grant MC3 and allow the character to apply their full dex bonus to AC, but still provide less of a bonus to AC than either of the other options. The coats are the lightest possible armor, however, weighing in at 40 units for dwarven and 20 units for elven coats.
+
+====Boots====
+*Boots with the "Hiking Boots" random appearance give a 100 unit boost to your carrying capacity when worn, and are therefore useful for carrying a larger kit. This can inform your choice between speed boots and jumping boots, if one of those types happens to have gotten this appearance.  
+*Very fast speed can also be gained from blue dragon scale mail/shield, so that may favor blue DSM/S in combination with jumping boots.
+*Boots with the appearance "Mud Boots" can also be very useful, as they protect you from drowning attacks. Mud boots in combination with a R'lyehian faceplate can replace a oilskin cloak, but you still won't be able to see.
+*'''Flying boots''': Replace levitation boots, and are much easier to put to good use.
+
+====Helmet====
+*'''Helm of drain resistance''': Since there are a few more sources of level drain in dNethack than in vanilla Nethack, drain resistance is a more useful property. Most players get by fine without this, though.
+*'''Cornuthaum''': As it provides [[MC]]2 from a slot other than the cloak or body armor slots, it can be helpful when fighting [[nightgaunt#dNethack|nightgaunts]].
+
+====Shield====
+*'''Dragon Scale Shields''': Dragon scales can be converted into a dragon scale shield via confused enchant armor. A dragon scale shield can be used to plug a gap in your resistances, but is inconveniently heavy at 75 units. They provide 3 points of AC and can be enchanted to +5. 
+*'''Shield of reflection''': No longer reflects dragon breath, so a silver dragon scale shield is a much better choice.
+
+====Shirt====
+*'''Ruffed shirt''': This grants a point of Charisma, but for all intents is interchangeable with the vanilla shirts.
+*'''Victorian underwear''': This grants [[MC3]] as well as providing an extra enchantable item, but its restrictive nature means that it also costs you 2 points of AC. A +5 set of underwear, therefore, provides only +3 net AC. Since it is not a cloak or suit of body armor, yet provides high MC, it can be very helpful when fighting [[nightgaunt#dNethack|nightgaunts]].
+
+===Rings===
+*'''Engagement ring''': This is a random appearance, rather than a separate type of ring. Engagement rings grant immunity to seduction attacks, in addition to their normal abilities. If you find yourself facing Pale Night, Belial, Malcanthet, Lilith, or Graz'zt, this ring may prove essential.
+*'''Rings of energy resistance''': Since you can no longer gain permanent energy resistances from eating corpses, these rings are more valuable. [[Crowning]] provides a full suite of intrinsic energy resistances, but if you don't get crowned, or if a [[gremlin]], [[phantasm]], or unique monster steals one of your resistances, you can use one or more of these rings to plug the gaps.  Note that the elemental crystals from Version 1 of the Chaos Quest can provide shock, cold, and fire resistance.  This only leaves sleep, disintegration, and poison resistance.
+*'''Ring of Free Action''': There are many more opportunities in dNethack for monsters to paralyze the player, and that tends to end in death. Some source of free action (and the ring is one of the easiest) is nearly as necessary as magic resistance.
+
+===Amulets===
+*'''Amulet of drain resistance''': Since there are a few more sources of level drain in dNethack than in vanilla Nethack, drain resistance is a more useful property. Most players get by fine without this, though.
+*'''Amulet versus curses''': Situational. If you're going to be fighting, say, a devil lord that likes the ''curse items'' monster spell, this may be useful.  It gives 100% resistance to this effect. It's almost always better to wear an amulet of life saving instead.
+*'''Amulet of reflection''': As amulets of reflection no longer reflect dragon breath, this may not be as good a choice anymore.  A silver dragon scale mail/shield will, and may be a better choice.
+*'''Amulet of nullify magic''': Bad choice for spellcasters, as it will block your own spellcasting. However, it grants magic resistance when worn. May be useful if you can't find/don't want a cloak of magic resistance or GDSM/S
+
+===Tools & miscellaneous items===
+*'''R'lyehian faceplate''': When worn over your eyes, this item protects your entire inventory from water, but blinds you (the visor is opaque, or perhaps transparent in a part of the spectrum outside your visual range). Given that the endgame has many Water Elementals and divine spellcasters (with their inventory-wetting geyser and acid rain spells), some form of waterproofing is essential.  Note that these are somewhat rare, but can be dropped by deep(er, est) ones and (master) mind flayers.
+**Other sources of waterproofing: see notes above under [[Ascension kit (dNethack)#Armor|armor]].
+
+===Wands===
+*'''[[Wand of opening]]''': Divine spellcasters (such as the priests on the Astral Plane) love to [[punish]] you. This wand (or the [[Knock]] spell) is an essential countermeasure.
+
+===Stoning Countermeasures===
+*Some high-level arcane spellcasters can cast Turn-to-stone as a monster spell. This spell is partially, but not completely, blocked by a [[lizard corpse]] in open inventory (much like a [[cockatrice]]'s hissing attack).
+**Therefore, you need at least one lizard corpse in open inventory at all times, as well as a means to cure stoning (possibly a second lizard corpse). Do not depend on a single lizard corpse for both, eating it would mean that you no longer resist the spell, and could immediately be affected a second time.
+***You should keep all items that allow you to cure stoning that you find in the game, and bring them on your ascension run in your [[bag of holding]]. You ''probably'' won't be affected by Turn-to-Stone more than once or twice in the entire game, but better safe than sorry!
+**Some races can't eat, and therefore can't use lizard corpses to cure stoning. These races will need potions of acid, lizard blood, or acidic blood for this purpose. They still need a single lizard corpse to help them resist Turn-to-Stone.
+** As an alternative, yellow dragon scale mail provides extrinsic stoning resistance.  Note that [[Medusa]] in dNethack is tameable.  Stoning resistance, pet blind Medusa, and a light source make a powerful combination.  Because she remains susceptible to reflection, the easiest way to grant stoning resistance to Medusa is by blinding her.
+
+===Quest Artifact===
+*The [[Wizard of Yendor]] can no longer steal your [[quest artifact]], so in many cases it can now serve as a reliable source of useful extrinsics.
+*You can no longer [[wish]] for any quest artifacts (though you may still find other roles' quest artifacts in bones files). Therefore, the contribution of quest artifacts varies from role to role.}
+&&%s&& %s You have fixed abilities. {90622 2014-10-06T17:28:38Z {0 } Redirected page to [[Ring of sustain ability]] #REDIRECT [[Ring of sustain ability]]}
+&&%s&& %s This cloak feels a little itchy. {90652 2014-10-07T23:44:38Z {0 } Redirected page to [[Poisonous cloak]] #REDIRECT[[Poisonous cloak]]}
+&&%s&& %s TDT {90663 2014-10-08T13:29:43Z {630 Paxed} oops #REDIRECT [[DevTeam]]}
+&&%s&& %s Potion of ESP {150072 2023-03-06T02:21:35Z {375 Ion frigate} This describes my current ranger {{potion|name=ESP|cost=150}}
+
+A '''potion of ESP''' is a [[potion]] introduced in [[SLASH'EM]]. It grants [[intrinsic]] [[telepathy]] temporarily if uncursed and permanently if blessed. If cursed, removes intrinsic telepathy.
+
+==Strategy==
+
+A character is by no means guaranteed to find a [[floating eye]] corpse; a blessed potion of ESP can be a useful way to gain the intrinsic for such unlucky ones.  They are also useful for non-chaotic characters wishing to commit [[murder]] who lack a [[tinning kit]].
+
+For players who already possess telepathy and don't anticipate losing it, these potions are a good candidate for dilution.
+
+[[Category:SLASH'EM]]
+[[Category:SLASH'EM items]]
+[[Category:Potions]]}
+&&%s&& %s Underground rivers {148544 2022-10-05T02:28:00Z {4001279 Umbire the Phantom} upd8 {{patch
+ |name=Underground Rivers
+ |author=Pasi Kallinen
+ |download=http://bilious.alt.org/~paxed/nethack/nh343-underground_rivers.diff
+ |bilious=194
+}}
+
+The Underground Rivers patch adds streams of water or lava to random rooms-and-corridors levels in the Dungeons of Doom. According to the readme, dungeons below dlvl 13 occasionally generate with rivers, either of water or lava. The code doesn't check for blocking the way, so there's a chance you might need either cross the river or dig around it to get to the stairs. Special rooms are not affected by the river.
+
+This patch does not invalidate bones or saves.
+{{noversion}}
+[[Category:Patches]]}
+&&%s&& %s You feel vibrations. {131024 2020-01-18T05:54:25Z {4000471 Thrawcheld} correct section link #REDIRECT[[You feel#You feel vibrations.]]}
+&&%s&& %s Doesn't seem to move {90816 2014-10-23T02:13:33Z {0 } Redirected page to [[Floating eye]] #REDIRECT [[Floating_eye]]}
+&&%s&& %s NetHack Scoreboard {148528 2022-10-05T01:56:46Z {4001279 Umbire the Phantom} /* Supported NetHack variants */ update '''NetHack Scoreboard''' is a website available at https://nethackscoreboard.org/ that aggregates statistical data from several public [[NetHack]] and [[variant]] servers. The website currently offers lists of recent games, ascended games, streaks, best conduct games and z-score rankings (including multi-variant z-score table) and also individual player pages. All of the pages can be viewed either by individual variant or aggregated from all [[variants]].
+
+Per-player data is aggregated by player name. Players who use different accounts on different servers will not have their stats combined into a single page. Experimental player name mapping feature is available on request.
+
+===Supported NetHack variants===
+
+The following variants are currently supported and/or tracked:
+
+* [[NetHack]]
+* [[AceHack]]
+* [[NetHack4]]
+* [[UnNetHack]]
+* [[SporkHack]]
+* [[GruntHack]]
+* [[dNetHack]]
+* [[NetHack Fourk]]
+* [[DynaHack]]
+* [[FIQHack]]
+* [[xNetHack]]
+* [[SpliceHack]]
+* [[SLASH'EM]]
+* [[EvilHack]]
+
+===Aggregated Public Servers===
+
+The following servers' data is being aggregated:
+
+* ''nethack.alt.org''
+* ''nethack4.org'' (both 4.2 and 4.3 versions)
+* ''eu.un.nethack.nu''
+* ''ascension.run'' ([[NetHack]] with [[nethack.alt.org#Differences_from_vanilla_Nethack|NAO patchset]], [[dNetHack]], [[NetHack Fourk]], [[FIQHack]], [[UnNetHack]], [[DynaHack]] and [[Nethack4]])
+* ''grunthack.org''
+* ''nethack.devnull.org'' (since 2006)
+* ''hardfought.org'' (several variants including patched [[GruntHack]])
+
+These servers are no longer in service, but information on their games is retained in the NetHack Scoreboard:
+
+* ''acehack.de'' (only [[AceHack]], vanilla log moved to [[nethack.xd.cm]])
+* ''acehack.eu''
+* ''dnethack.ilbelkyr.de''
+* ''sporkhack.com''
+
+===Alternative /dev/null/nethack Tournament Statistics===
+
+NetHack Scoreboard also contains alternative statistics for the annual [[devnull|/dev/null/nethack tournament]], available at [https://scoreboard.xd.cm/devnull/ https://scoreboard.xd.cm/devnull/].
+
+[[Category:Public servers]]}
+&&%s&& %s Role difficulty/Variants {147876 2022-08-22T04:34:42Z {4001279 Umbire the Phantom} ver Some ''NetHack'' [[variants]] add many roles of their own, and often change the behaviour of existing roles, substantially changing the information about [[role difficulty]]. This page contains the new information.
+
+==''SLASH'EM'' roles==
+''[[SLASH'EM]]'' has several new roles with varying levels of difficulty. Also, some of the original roles are more or less difficult in ''SLASH'EM'' than in vanilla ''[[NetHack]]'', due to differences in starting equipment, skills, abilities, and the character of the game. Below is a rough, subjective ordering of difficulty of various SLASH'EM roles, incorporating some stats on ascensions from the SLASH'EM server at slashem.crash-override.net.
+
+{|class="wikitable"
+!Rank
+!Role
+!Notes
+!Ascension rate*
+|-
+|1||[[Valkyrie]]||Starts with spear instead of long sword, but still the easiest; [[Mjollnir]] much more powerful in SLASH'EM||24%
+|-
+|2||[[Samurai]]||Fast speed more important in early game where you must flee often; Snickersnee and Excalibur make powerful weapon combo; charged 2x more in shops||13%
+|-
+|3||[[Knight]]||Start with [[plate mail]], [[long sword]], Str 18/**; much weaker as a spellcaster than in Vanilla||10%
+|-
+|4||[[Monk]]||Powerful [[technique]]s and automatic AC bonuses as level increases||6%
+|-
+|5||[[Yeoman]]||Two powerful guaranteed sacrifice gifts: [[Sword of Justice]] and [[Reaper]]||N/A
+|-
+|6||[[Barbarian]]||Charged 3x more in shops||N/A
+|-
+|7||[[Rogue]]||Ultra-powerful guaranteed sacrifice gift: [[Bat from Hell]] Charged 3x more in shops||4%
+|-
+|8||[[Caveman]]||Gets underground vision but the [[Sceptre of Might]] is considerably weaker||N/A
+|-
+|9||[[Wizard]]||Starts with more but lower-level spells||5%
+|-
+|10||[[Undead Slayer]]||Slow, weak fighter whose main advantages ([[drain resistance]] and [[immunity to sickness]]) are less important in early game than late game||N/A
+|-
+|11||[[Ranger]]||Bows require two hands to wield in SLASH'EM||1%
+|-
+|12||[[Flame Mage]]||Starts with a [[hell hound pup]] and a [[wand of fire]] but otherwise far weaker than Wizard||N/A
+|-
+|13||[[Priest]]||Can now use [[long sword]]s effectively||N/A
+|-
+|14||[[Ice Mage]]||Starts with a [[winter wolf]] but weaker than either Wizard or Flame Mage||3%
+|-
+|15||[[Necromancer]]||First sacrifice gift [[Serpent's Tongue]] moderately good, otherwise like [[Undead Slayer]] with drain resistance and immunity only mattering late in game||N/A
+|-
+|16||[[Archaeologist]]||[[Fedora]] acts as luckstone||N/A
+|-
+|17||[[Healer]]||First sacrifice gift [[Mirrorbright|will not be a weapon]]||N/A
+|-
+|18||[[Tourist]]||Starts with more gold and scrolls of magic mapping||N/A
+|}
+Note: Ascension rate equals the percentage of games for each role that ended in ascension on slashem.crash-override.net as of Feb. 13, 2013, given that (1) the race was not Doppelganger (too easy) or Vampire/Lycanthrope (too difficult), (2) the player had achieved at least one ascension on the server, and (3) at least 20 qualifying games had been played for that role. N/A indicates a sample size of < 20.
+
+In SLASH'EM, race is often more of a factor than role in determining success. In particular, [[Doppelganger (starting race)|Doppelgangers]] are far and away the most powerful race to play, [[Drow]] are extremely hardy in early game thanks to their barehanded sleep attack, and [[Vampire (starting race in SLASH'EM)|Vampires]] and [[Lycanthrope (starting race)|Lycanthropes]] are extremely challenging.
+
+==[[dNetHack]] roles==
+
+{|class="wikitable"
+!Role
+!Starting Difficulty
+!Quest Difficulty
+!Ascension Difficulty
+!Notes
+|-
+|'''Archeologist'''
+| Normal.  The starting +2 bullwhip makes an ok early weapon, the starting pickaxe simplifies exploration and allows early vault access, the starting touchstone allows early identification of valuable stones.
+| Normal. The Minion of Huhetotl hits quite hard and can cast spells, but he can be warded off.
+| Normal. Archeologists have no major advantages or disadvantages going into the end game.
+|
+|-
+|'''Anachrononaut'''
+| Easy.  Good AC and strong weapons make short work of early monsters.  Lack of prayer means that mistakes can be fatal, though.
+| Very Hard.  Abundant mind flayers, which can't be genocided due to the nature of the quest.  Beware of long-ranged death from mind blasts.  Additionally, enemies in the quest tend to use future tech weapons, which are very high damage.
+| Easy. Future tech complements the standard ascension kit well.
+|
+|-
+|'''Barbarian'''
+| Easy.  Strong starting weapon and stats makes up for bad AC.
+| Normal. Thoth Amon's spellcasting can pose a problem to non-magic resistant Barbarians, but his HP is unimpressive and a fast Barbarian can catch him off guard and kill him with the bonus melee attacks.
+| Easy.  The Barbarian's iterative attacks and full BAB gives them nearly unrivaled damage output.  The quest artifact is very powerful, providing several necessary resistances and giving unlimited uncurse.  MR and reflection are also provided, leaving the armor slots open for something like dNetHack's improved [[crystal plate mail]]. A fully enchanted crystal plate mail can give ''30'' AC! (16 base + 14 for enchantment)
+|
+|-
+|'''Binder'''
+| Hard. Bad starting weapons, bad AC, lousy stats.  Lucky draws for the first three spirits simplify the early game, otherwise progress slowly through the dungeon and let your pet do the bulk of the fighting.
+| Hard. The Binder needs to convert three temples, and thus have to deal with the three angry aligned priests, which are powerful on their own rights, as well as the minions summoned by the altars. The nemesis himself, Acererak, is a very tough foe with life-draining attacks and spell casting.
+| Easy.  Once a Binder reaches the level cap and unlocks all their spirits, they become extremely powerful.  A Binder with Gauntlets of Power and melee spirits bound rivals the Barbarian's damage output.
+| A Binder's overall power increases strongly with character level, unlike other roles who's overall power depends more on the equipment they find.  Orcish Binders almost don't need equipment.
+|-
+|'''Caveperson'''
+| Normal.  Decent starting weapon and stats makes short work of early enemies.
+| Hard. The Chromatic Dragon possesses over 500 HP, -20 AC, very damaging attacks and various spells, including summon nasties. She can be warded off with a scroll of scare monster, but even then it can take a very long time before she finally goes down, and during this time the scroll can be destroyed by a stray fire bolt.
+| Normal. Cavepersons have no major advantages or disadvantages going into the end game.
+|
+|-
+|'''Convict'''
+| Hard.  Low starting nutrition and bad starting alignment makes early starvation a distinct threat.  The heavy iron ball deals a lot of damage but has bad to-hit.
+| Easy. Warden Arianna's combat power is unimpressive, though the various prison guards and the lava demon around her lair can hit hard.
+| Normal.  Convicts don't become unusually powerful, though the artifacts they pick up on the quest greatly increase their carrying capacity, and allow them to phase through walls, which opens up some unique options.
+|
+|-
+|'''Healer'''
+| Hard.  Low damage starting weapon, low to-hit due to stats, and bad AC makes melee difficult.  No offensive spells or starting ranged weapon makes melee difficult to avoid.  Healing spells increase survivability, but low starting food makes starvation a worry.
+| Hard. There are several dragons in each level, which can pose a problem for Healers lacking a decent weapon. More dangerously, the quest nemesis can wield the artifact against you, but he can be warded off.
+| Hard.  The quest artifact is a good weapon, but is two-handed and thus can be a liability in the lategame.  Healers are saddled with a 1/2 BAB, which means they may have trouble hitting things in melee, even at level 30.  Finally, they may have trouble casting attack spells, due to their low skill caps in those schools.
+|
+|-
+|'''Knight'''
+| Easy. Decent starting weapon and armor. The starting long sword gives easy access to [[dNetHack artifacts#Excalibur|Excalibur]].
+| Hard. There is a unique red dragon on the quest home, and the quest nemesis is a spell casting nymph.
+| Easy. Their quest artifact lets them cast very damaging magic missile and cone of cold spells. Blessed Excalibur is fine endgame weapon, as is the [[dNetHack artifacts#The Rod of Seven Parts|Rod of Seven Parts]].
+|-
+|'''Monk'''
+| Easy.  Punch all the things.  The need to avoid body armor means AC will be bad. The possible starting spells (healing, sleep or protection) all help with greatly increasing early game survivability.
+| Normal. Master Kaen hits very hard, can cast spells and cannot be warded off with regular wards. Going toe-to-toe against him is usually suicide, so a Monk will need ways to damage him without retaliation. However, a well-enchanted Premium Heart, a means of sleep, and ideally free action can possibly make the quest easier. A triple Gorgoneion on the upstair might help as well.
+| Normal.  Martial arts are only so-so by default, but can be improved through artifacts.  Monks are likely to be gifted artifact armor, most of which is quite good.
+|
+|-
+|'''Madman'''
+| Very Hard.  The Madman begins the game stuck in a straitjacket (which prevents the use of hands), their gods start angry at them, they don't have a traditional pet, and occasionally find monsters disguised as other monsters. While skillful play can allow surprising progress to be made even in the face of all of these disadvantages, the Madman may ultimately depend on the RNG to provide a means of escaping the jacket. Playing as a Vampire can help the madman survive the early game.
+| Normal. The madman needs a unicorn horn and a decent weapon to take on the quest, and care must be taken around the quest enemies. However, the nemesis, while resilient, is not a serious threat.
+| Normal.  Madmen have no strong pluses or minuses going in to the late game. They do, however, need to be careful about gaining too much insight too quickly.
+| Madmen are a bit more incentivized than other roles to explore the depths of the Neutral Quest, which can be painful to vampires due to the amount of silver-damage found in the upper sections of the Neutral Quest. However, they also obtain a lot of the same rewards from their quest.
+|-
+|'''Noble'''
+| Normal.  Starts with a +2 rapier, but only so-so AC.  First Gift is a 2x damage melee weapon.
+| Hard.  The quest nemesis is a team of 4 adventurers, resulting in a surprisingly high damage output.
+| Normal.  The 2x damage First Gift and artifact cloak quest item can help the Noble fill out their ascension kit more easily than normal; however, they don't really increase the Noble's power beyond that of other well-prepared roles.
+|
+|-
+|'''Elven Noble'''
+| Easy.  AC starts ok and has room to be easily improved.  The +2 starting spear makes short work of early enemies.  The First Gift is a 2x damage melee weapon.  As an Elf, can use Elbereth.
+| Normal.  The quest nemesis is a spell casting wraith with a draining gaze; however, it is able to be warded off.
+| Normal. Your racial artifacts are quite strong, but your limited spell casting will make it difficult to eliminate dangerous enemies from a distance. Wands, strong pets, and warding will be of value to you in the late game.
+|
+|-
+|'''Female Droven Noble'''
+| Easy.  Very good starting AC, if only so-so weapons (The +2 whip is ok but not great, the crossbow is more powerful but will run out of ammo quickly). First gift is a 2x damage two-handed sliver melee weapon. Light-blindness does make the Gnomish Mines far more dangerous for drow than for other races.
+| Insanely Hard.  Abundant mind flayers, which can't be genocided due to the nature of the quest.  Beware of long-ranged death from mind blasts.  The nemesis is an Elder Brain, who will absolutely destroy unprepared characters, with powerful mage 'and' divine spells and a '2-square' reaching intelligence-draining attack.  It's almost impossible to do without a wand of death for the nemesis, and a crystal helm (which blocks all head tentacle attacks) will help you keep your intelligence. Standing just out of range and spamming the fire storm spell can make this quest considerably easier.
+| Normal.  The 2x damage First Gift and artifact cloak quest item can help the Noble fill out their ascension kit more easily than normal; however, they don't really increase the Noble's power beyond that of other well-prepared roles.
+|
+|-
+|'''Male Droven Noble'''
+| Easy, very similar to default nobles.  The +2 starting rapier makes up for only so-so AC.  First Gift is a 2x damage melee weapon.
+| Normal.  The quest nemesis can't be warded away, hits hard, and has a disease causing melee attack, but she is not resistant to death rays.  She is equipped with both a wand of death and an amulet of life saving.
+| Normal.  The 2x damage First Gift and artifact cloak quest item can help the Noble fill out their ascension kit more easily than normal; however, they don't really increase the Noble's power beyond that of other well-prepared roles.
+|
+|-
+|'''Dwarven Noble'''
+| Normal.  Decent starting weapon but only so-so AC.  As a dwarf, the mines are safer.  First gift is good artifact armor, which also confers MR.
+| Easy. Other than the Watcher in the Water, which can largely be avoided, there is little challenge to this quest. The hordes of orcs will be low level and a good source of random items, and Durin's Bane can be warded against or even simply tanked out if necessary.
+| Normal. The artifacts from your Quest work well together and can bear you through much of the game if they need to. The lack of ranged weaponry, however, can lead to some dangerous situations in Gehennom, so a good selection of wands or some other source of ranged damage may be necessary as well.
+|
+|-
+|'''Priest'''
+| Normal.  Decent starting weapon, and the ability to know BUC enables easy AC improvement.
+| Normal. The high volume of undead can be taken care off with turn undead. The nemesis hits quite hard and can cast spells, but he can be warded off.
+| Normal.  The quest artifact is a bit weak, but that can be compensated for without too much trouble.  The low skill caps can be troublesome, but Priests are at least a 3/4 BAB role.  Priests can also invoke artifacts a bit more frequently than other roles.  Priests also always receive the to-hit bonus granted by artifact weapons, even when attacking foes it would not normally apply vs.
+|
+|-
+|'''Pirate'''
+| Normal. High starting weapon skill and the flintlock can win most early game fights.
+| Easy. A Pirate that can survive against the soldiers and skeletal pirates will find no problem fighting Blackbeard's ghost.
+| Normal.  The Pirate's special rules for artifacts constrain them a bit, but their skill caps are fine, their crowning gift is decent, and their quest artifact converts some enemies into weaker pirate enemies. By the end of the game, they should have plenty of artifacts to choose from for their weapons.  Getting expert saber is nice, but skilled-expert axe, flail, spear, trident, crossbow, and more means that almost artifact can be used well in the right hands.  The sacrifice gift helps you identify these.
+|
+|-
+|'''Rogue'''
+| Normal. The starting stack of daggers can be thrown to take out enemies from afar. Furthermore in dNetHack, the daggers can be dipped in the potion of sickness for a very damaging ranged option.  Rogues can also have a small stack of daggers coated with paralysis venom (#dip into a potion of paralysis) to deal with more dangerous enemies.
+| Normal. The Master Assassin is not a threat, however the cruel level design means a Rogue needs to be prepared when entering the quest.
+| Normal.  Rogues have a very damaging attack option in the form of highly enchanted thrown daggers, that can serve as the main weapon during the endgame.
+|
+|-
+|'''Ranger'''
+| Normal. The cloak of displacement and bow can help easily avoid and take out early game foes, but the limited supplies of arrows must be managed carefully.
+| Easy. Scorpius's disease attacks can be mitigated with a unicorn horn, and outside of it he's not very impressive in melee.
+| Easy. Rangers can fire very damaging volleys of arrows from their quest artifact.  Depending on alignment, the quest gift will be a small stack of unbreakable artifact ammo.
+|
+|-
+|'''Gnome Ranger'''
+| Normal. The cloak of displacement and crossbow can help easily avoid and take out early game foes, but the limited supplies of bolts must be managed carefully.  Gnomes take the quest early, however.
+| Easy. Gnomes can enter the quest at level 6, and can easily complete the quest at that level.  The quest can be reached from the Gnomish Mines by dropping down through any hole.  The quest artifact is very powerful.
+| Easy.  The quest artifact is as good as the normal Ranger quest artifact, and helps stretch ammo supplies.  The two bolts are each almost as powerful as a full volley from the Longbow.
+| 
+|-
+|'''Samurai'''
+| Easy. Very good weapons, very good armor.
+| Normal. Ashikaga Takauji's instakilling attacks pose a very grave threat, but he's not magic resistant and thus should be taken out in one turn with a wand of death.
+| Normal.  The quest artifact is quite good, but is two handed and should be replaced during the lategame.
+|
+|-
+|'''Tourist'''
+| Hard. They must rely on their limited supply of darts in order to fix their lack of melee weapons and bad AC. The weapons that they can become somewhat proficient on (unicorn horns and sabers) are also hard to find in the early game.
+| Easy. The Master of Thieves poses no threat to Tourists that can make it to the quest.
+| Easy. Tourists have unlimited charging from the quest artifact, and can wish for future tech from the Anachrononaut role.  Tourists are, however, a 1/2 BAB role, and therefore can have trouble hitting high AC opponents, so care must still be taken.
+|
+|-
+|'''Troubadour'''
+| Hard. No starting weapons (unless you're an orcish troubadour), bad weapon skills and weak AC means they have to rely on buffing pets and have them do the fighting. On the upside, Troubadours gain EXP observing their pets kill enemies.  Troubadours can also build up skill with thrown daggers, which helps a lot in this phase of the game.
+| Normal. Aglaope's main strategy is teleporting you to her, clawing and robbing you before teleporting away to heal. Troubadours possessing teleport control and an engagement ring can chase after her and beat her face in safety, otherwise she can be a very annoying foe. By this point, the Troubadour should probably be using a stack of daggers as their main attack.
+| Hard.  Troubadours' bad weapon skills continue to be a liability in this phase of the game, as as a 1/2 BAB role they may have trouble hitting high AC enemies.  By this point their pets are probably very impressive, however.  A crystal armored Tulani with an artifact weapon, buffed by your beastmaster skill and your songs, can kill almost anything in the game.  The Troubadour may also wish for an Archon or Solar figurine.
+| 
+|-
+|'''Valkyrie'''
+| Normal. Average weapon, average armor and good stats give them an average early game.
+| Easy. With fire resistance, the quest level and the nemesis's [[dNetHack artifacts#Sol Valtiva|weapon]] poses little threat. Flying/levitation is essential to get past the lava pools.
+| Easy.  With all three Valkyrie weapons (Sol Valtiva, Mjollnir, and the Bow of Skadi) Valkyries have access to the three major elemental damage types.  They can use Mjollnir and the Bow of Skadi in gehennom, and Sol Valtiva against angels and other non-fire-resistant foes.  Lawful Valkyries can also use the Rod of Seven Parts.
+|
+|-
+|'''Wizard'''
+| Hard. Low damage starting weapon, low to-hit due to stats, and bad AC makes melee difficult. Force Bolt can easily kill most early game threats, but weak power supply limits its use. Furthermore, most early game AC solutions hamper with spellcasting, so a Wizard looking to improve their AC usually have to give up Force Bolt. Their first gift, Magicbane, is a very decent melee weapon though.
+| Normal. The Dark One's Flesh to Stone spell can cause delayed instant death, so several lizard corpses/stone to flesh spell is crucial. His other spells can be threatening, but with Magicbane most of them should be nullified.
+| Easy. With the various attack spells (finger of death, magic missile and fireball/cone of cold) as well as the powerful [[dNetHack artifacts#High-level artifacts|Wizard-exclusive nameable artifacts]], late game Wizards should be able to demolish everything in their way.
+|
+|-
+|'''Incantifier Wizard'''
+| Easy.  The massive quantities of power make casting spells incredibly easy.  Once he is confident, a incantifier wizard can easily clear the mines.  Make sure to grab any enchanted items, and stash it for food later.  Incantifier wizards can also quickly improve their AC by keeping an eye out for enchanted gear.  And make sure to watch your HP, as incantifiers don't naturally regen health.
+| Easy. Intrinsic magic resistance is nice, and the starting robe is quite useful for casting harder spells later.  Keep an eye out for rings with positive extrinsics, and consider eating some to gain it.  Rings of regeneration are very useful, as the extra hunger penalty doesn't seem to affect an incantifier  For the quests, make sure to bring lizard corpses in addition to acid, to prevent the Dark One's Flesh-to-Stone spell.  Lizards provide some resistance versus this, even if you can't eat them.  
+| Easy. Easy permanent intrinsics via ring eating, the Silver Key slows down food consumption massively (energy regen while carried), and the massive mana pool and spellcasting bonus provides easier casts of high-level spells. 
+|
+|}
+{{variant-343}}
+[[Category:Variants]]
+[[Category:Roles]]
+[[Category:Strategy]]}
+&&%s&& %s Fg {150212 2023-03-11T19:25:39Z {4000251 Netzhack} Added mnemonic {{DISPLAYTITLE:fg}}
+{{man|fg}}
+
+'''fg''' (mnemonic: "'''f'''ore'''g'''round") is a generic Linux/Unix utility that resumes execution of a suspended process.
+
+Sometimes, unwary users press {{kbd|Ctrl|Z}} by accident. This suspends the game and puts it in the background, giving a message similar to:
+
+ "[1]+ Stopped        nethack"
+
+Attempting to restart the game by rerunning "nethack" will give the message:
+
+"There is already a game in progress under your name. Destroy old game? [yn]"
+
+Say "no" to the above; you need to run the command "fg" in the original terminal to resume the frozen game. 
+
+If you have already killed the original terminal, then try killing nethack with "killall nethack"; then you might need to use the [[recover]] utility.
+
+[[Category:Development]]}
+&&%s&& %s Stopped nethack {91016 2014-11-11T16:33:23Z {0 } Redirected page to [[Fg]] #REDIRECT [[fg]]}
+&&%s&& %s + Stopped nethack {91017 2014-11-11T16:35:50Z {0 } Redirected page to [[Fg]] #REDIRECT [[fg]]}
+&&%s&& %s There is already a game in progress under your name. Destroy old game? {91024 2014-11-11T17:34:14Z {0 } Redirected page to [[Recover]] #REDIRECT [[Recover]]}
+&&%s&& %s Ctrl-Z {91019 2014-11-11T16:40:56Z {0 } Redirected page to [[Fg]] #REDIRECT [[fg]]}
+&&%s&& %s Crash {91025 2014-11-11T17:36:25Z {0 } Redirected page to [[Recover]] #REDIRECT [[recover]]}
+&&%s&& %s The game crashed {91026 2014-11-11T17:37:05Z {0 } Redirected page to [[Recover]] #REDIRECT [[recover]]}
+&&%s&& %s Recovering {91027 2014-11-11T17:37:44Z {0 } Redirected page to [[Recover]] #REDIRECT [[recover]]}
+&&%s&& %s Recovering a crash {91028 2014-11-11T17:38:13Z {0 } Redirected page to [[Recover]] #REDIRECT [[recover]]}
+&&%s&& %s Power cut {91029 2014-11-11T17:40:32Z {0 } Redirected page to [[Recover]] #REDIRECT [[recover]]}
+&&%s&& %s Power outage {91030 2014-11-11T17:41:11Z {0 } Redirected page to [[Recover]] #REDIRECT [[recover]]}
+&&%s&& %s Crashed {91031 2014-11-11T17:41:59Z {0 } Redirected page to [[Recover]] #REDIRECT [[recover]]}
+&&%s&& %s Tchulhu {91033 2014-11-11T18:27:12Z {0 } Redirected page to [[Cthulhu]] #REDIRECT [[Cthulhu]]}
+&&%s&& %s Chulhu {91034 2014-11-11T18:36:53Z {0 } Redirected page to [[Cthulhu]] #REDIRECT [[Cthulhu]]}
+&&%s&& %s Thulhu {91035 2014-11-11T18:42:31Z {0 } Redirected page to [[Cthulhu]] #REDIRECT [[Cthulhu]]}
+&&%s&& %s Chluchlu {91036 2014-11-11T18:47:48Z {0 } Redirected page to [[Cthulhu]] #REDIRECT [[Cthulhu]]}
+&&%s&& %s Chluhu {91037 2014-11-11T19:46:22Z {0 } Redirected page to [[Cthulhu]] #REDIRECT [[Cthulhu]]}
+&&%s&& %s Restore game {91232 2014-11-25T11:35:51Z {4000548 Quantum Immortal} Redirected page to [[Recover]] #REDIRECT [[Recover]]}
+&&%s&& %s How to restore game {91233 2014-11-25T11:36:58Z {4000548 Quantum Immortal} Redirected page to [[Recover]] #REDIRECT [[Recover]]}
+&&%s&& %s How to restore a game {91234 2014-11-25T11:37:41Z {4000548 Quantum Immortal} Redirected page to [[Recover]] #REDIRECT [[Recover]]}
+&&%s&& %s Shlushlu {91246 2014-11-27T05:22:47Z {4000548 Quantum Immortal} what a name, he must have suffered at school. i can never remember it #REDIRECT [[Cthulhu]]}
+&&%s&& %s Chlushlu {91247 2014-11-27T05:23:07Z {4000548 Quantum Immortal} what a name, he must have suffered at school. i can never remember it #REDIRECT [[Cthulhu]]}
+&&%s&& %s Bloodthirsty {91255 2014-11-27T10:05:29Z {4000548 Quantum Immortal} Redirected page to [[Stormbringer]] #REDIRECT [[Stormbringer]]}
+&&%s&& %s Wikia {91257 2014-11-27T10:41:25Z {4000548 Quantum Immortal} Redirected page to [[NetHackWiki:About#What is a wiki?]] #REDIRECT [[NetHackWiki:About#What is a wiki?]]}
+&&%s&& %s Wikinethack {91258 2014-11-27T10:41:31Z {4000548 Quantum Immortal} Redirected page to [[NetHackWiki:About#What is a wiki?]] #REDIRECT [[NetHackWiki:About#What is a wiki?]]}
+&&%s&& %s Stronghold {91343 2014-12-05T22:41:58Z {4000548 Quantum Immortal} Redirected page to [[Grund's Stronghold]] #REDIRECT [[Grund's Stronghold]]}
+&&%s&& %s Spellbook of enlighten {148465 2022-10-05T00:28:28Z {4001279 Umbire the Phantom} cat {{spellbook|name=enlighten|level=4|type=body|turns=15|direction=non-directional|equiv=[[wand of enlightenment]]}}
+
+'''Spellbook of enlighten''' is a [[spellbook]] in [[SLASH'EM]]. It is equivalent to the [[wand of enlightenment]].
+
+==See also==
+
+*[[wand of enlightenment]]
+*[[Spellcasting (SLASH'EM)#SLASH'EM spellbooks|List of SLASH'EM spellbooks]]
+
+{{se-stub}}
+[[Category:SLASH'EM items]]}
+&&%s&& %s Spellbook of acid stream {92863 2015-03-22T14:51:33Z {4000548 Quantum Immortal}  {{spellbook|name=acid stream|level=4|type=matter|turns=15|direction=directional}}
+
+'''Spellbook of acid stream''' is a [[spellbook]] in [[SLASH'EM]].
+
+It is equivalent to the breath of a [[yellow dragon]]. It doesn't dissolve [[iron bars]]. It isn't nullified by [[magic resistance]] but it is reflected. It can corrode weapons and armor.
+
+==See also==
+
+[[Spellcasting (SLASH'EM)#SLASH'EM spellbooks|List of SLASH'EM spellbooks]]
+
+{{se-stub}}
+[[Category:SLASH'EM items]]
+[[Category:SLASH'EM]]}
+&&%s&& %s Wizard hat {91400 2014-12-08T14:12:19Z {4000548 Quantum Immortal} Redirected page to [[Cornuthaum]] #REDIRECT[[Cornuthaum]]}
+&&%s&& %s Stopped {91411 2014-12-09T15:58:58Z {4000548 Quantum Immortal} Redirected page to [[Fg]] #REDIRECT[[Fg]]}
+&&%s&& %s 1 + Stopped {91412 2014-12-09T16:00:20Z {4000548 Quantum Immortal} Redirected page to [[Fg]] #REDIRECT[[Fg]]}
+&&%s&& %s 1+Stopped {91413 2014-12-09T16:00:42Z {4000548 Quantum Immortal} Redirected page to [[Fg]] #REDIRECT[[Fg]]}
+&&%s&& %s Fake Wizard's Towers {91447 2014-12-13T00:28:23Z {366 Ilmari Karonen} #REDIRECT [[Fake Wizard's Tower]] #REDIRECT [[Fake Wizard's Tower]]}
+&&%s&& %s Hit Points {91448 2014-12-13T00:33:04Z {366 Ilmari Karonen} #REDIRECT [[Hit points]] #REDIRECT [[Hit points]]}
+&&%s&& %s Bag of Holding {124663 2018-11-14T16:31:34Z {4000227 Kufat} Redirected page to [[Bag of holding]] #REDIRECT [[Bag_of_holding]]}
+&&%s&& %s Potion of salt water {140054 2021-05-19T23:57:26Z {4001463 Actual-nh} SporkHack items category '''Potion of salt water''' is a potion in [[SporkHack]].
+
+Drinking it can cause vomiting, potentially curing food poisoning but not illness.
+
+Dissolving a [[salt chunk]] in a [[potion of water]] will produce salt water.
+
+[[Category:SporkHack items]]
+{{stub}}}
+&&%s&& %s Canceled {91464 2014-12-13T14:12:33Z {4000548 Quantum Immortal} Redirected page to [[Cancellation]] #REDIRECT[[Cancellation]]}
+&&%s&& %s Nephi's grudge patch {91467 2014-12-13T14:32:09Z {4000548 Quantum Immortal} Redirected page to [[Grudge]] #REDIRECT[[grudge]]}
+&&%s&& %s Expert pudding farming {140099 2021-05-21T20:28:47Z {4001463 Actual-nh} I believe most of this has been nerfed as of 3.6.0 {{nethack-343}}
+== Expert Farming ==
+This expert farming guide is written for users who want to farm without the assistance of bots.
+
+== Mandatory requirements ==
+* A weak iron weapon, a -3 dagger works fine
+* A wand of fire/lightning for engraving 'Elbereth'
+* A pick-axe or other digging tool to create a nice hiding nook
+* Some Initial Food
+* A Black Pudding or a Sink to generate one
+* A Container of some sort (Not a Bag Of Holding)
+* Enough hit-points to survive several black pudding bites
+
+== Useful requirements ==
+* A ring of slow digestion, this should be one of your first priorities, once you have this you can start farming much faster
+* Reflection & Magic Resistance
+* A scroll of Earth on case a monster gets away with a wand of digging or to generate a boulder fort if necessary
+* A wand of striking, In case a boulder shows up
+* A Unicorn Horn
+* An Altar
+* Boots of Speed
+* A stethoscope, only really useful for initial farming
+
+== Preparation ==
+First, you need to find a level with either a Sink or method of generating a black pudding. A Sink can be kicked multiple times and always has a chance of spawning a pudding before it breaks. Be aware that it is possible to spawn a foocubus before a pudding, so be prepared.
+
+Ideally you want to find a level with an altar for offerings. However, this won't be all that useful. Once you start farming fast, you won't need an Altar as every non-quest artifact has a chance of being dropped.
+
+Once you have located a method of spawning a Pudding (or found a level with one available), the next thing you need to do is prepare your farming location. Ideally an [[Elbereth]] engraved stairs is a good choice, as it allows you to leave the level if necessary. A common farming locations may look like this:
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[Player|{{white|@}}]]
+P={{black|P}}
+
+      ##P@
+ -----.------
+ |..........|
+ ...........|
+ |....{.....|
+ |..........|
+ |..........|
+ ---.--------
+</replacecharsblock></div>
+
+The above farming location has various pros and cons:
+* It provides shelter from attacks from multiple angles
+* The P(udding) square puts you in harms way by one Monster
+* You have no escape
+* Attack wands are still able hit you
+
+A slightly better setup might be:
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[Player|{{white|@}}]]
+P={{black|P}}
+
+      @
+      #
+       #
+      #
+ -----.------
+ |..........|
+ ...........|
+ |....{.....|
+ |..........|
+ |..........|
+ ---.--------
+</replacecharsblock></div>
+
+The only advantage this offers is that you can no-longer be targeted easily by attack wands. However this creates an issue where large monsters may block the passage of Black Puddings.
+
+Once you have a farming location setup. Drop a chest and engrave 'Elbereth' on you Home square. Now Generate a Black Pudding and begin by splitting it slowly. You will find that if you aren't careful, that you may be able to kill off the initial puddings if they aren't given enough time to regain their health. Once you have a large amount of puddings ready you can begin automation.
+
+== Automation ==
+If you don't wish to use some sort of bot, you can make your farming on some servers easier by using MSGTYPE and AUTOPICKUP options.
+
+=== MSGTYPE ===
+Once you have a small farm going, you can begin an automation process. On some servers, this is significantly easier than vanilla nethack due to the MSGTYPE addition.
+
+Edit your config and insert the following:
+
+
+ #msgtypes for instant death!
+ MSGTYPE=stop "The couatl swings itself around you!"
+ MSGTYPE=stop "The electric eel swings itself around you!"
+ MSGTYPE=stop "The giant eel swings itself around you!"
+ MSGTYPE=stop "The kraken swings itself around you!"
+ MSGTYPE=stop "The python grabs you!"
+ MSGTYPE=stop "You don't feel very well."
+ MSGTYPE=stop "You are turning a little green."
+ MSGTYPE=stop "Your limbs are getting oozy."
+ MSGTYPE=stop "Your skin begins to peel away."
+ MSGTYPE=stop "You are turning into a green slime."
+ MSGTYPE=stop "You are slowing down."
+ MSGTYPE=stop "Your limbs are stiffening."
+ MSGTYPE=stop "It constricts your throat!"
+ MSGTYPE=stop "You find it hard to breathe."
+ MSGTYPE=stop "You're gasping for air."
+ MSGTYPE=stop "Your blood is having trouble reaching your brain."
+ MSGTYPE=stop "You can no longer breathe."
+ MSGTYPE=stop "You're turning blue."
+ MSGTYPE=stop "Your consciousness is fading."
+ MSGTYPE=stop "You feel deathly sick."
+ MSGTYPE=stop "You feel much worse."
+ MSGTYPE=stop "You feel even worse."
+ MSGTYPE=stop "* needs food, badly!"
+ 
+ ##msgtype for pudding farming
+ MSGTYPE=hide "You hit the black pudding*"
+ MSGTYPE=hide "The * divides as you hit it!"
+ MSGTYPE=hide "Your * looks completely corroded."
+ MSGTYPE=hide "You kill the *!"
+ MSGTYPE=hide "The * turns to flee!"
+ MSGTYPE=hide "You attack thin air."
+ MSGTYPE=hide "You hear a slow drip."
+ MSGTYPE=hide "You miss the *"
+ MSGTYPE=hide "You hear the footsteps of a guard on patrol."
+ MSGTYPE=hide "You caitiff!"
+ MSGTYPE=hide "The * oozes under the door."
+ MSGTYPE=hide "It divides as you hit it!"
+ MSGTYPE=hide "Your * feels completely corroded."
+ MSGTYPE=hide "You hear a * howling at the moon."
+ MSGTYPE=stop "The * hits!"
+ MSGTYPE=stop "The * strikes at you*"
+ MSGTYPE=stop "The * swings *"
+ MSGTYPE=stop "You are jolted with electricity!"
+ MSGTYPE=stop "You are splashed*"
+ MSGTYPE=hide "Your long sword named Excalibur is not affected."
+ MSGTYPE=stop "There are many objects*"
+ MSGTYPE=stop "*digging*" #You want to know when someone uses a / of digging
+ MSGTYPE=hide "The ware*changes*"
+ MSGTYPE=stop "*are suddenly very hot!"
+ MSGTYPE=stop "*are jolted with electricity!"
+ MSGTYPE=stop "*are suddenly very cold!"
+ 
+ #Testing for scroll detection
+ MSGTYPE=stop "*a scroll*"
+ MSGTYPE=stop "*boulder*"
+ 
+ MSGTYPE=stop "You are beginning to feel hungry."
+ MSGTYPE=stop "*faint*"
+ MSGTYPE=stop "You are getting the munchies"
+ MSGTYPE=stop "You are beginning to feel weak."
+ MSGTYPE=stop "*weak*"
+ MSGTYPE=stop "You faint from lack of food."
+ MSGTYPE=stop "You regain consciousness."
+ MSGTYPE=stop "*confuse*"
+
+
+The message types defined above will pause your farming when any of the following conditions are met:
+
+* You need food
+* You find a scroll of scare monster
+* You attack a monster that passively damages you
+* You become confused
+* You become in a situation where instant death is possible
+* When a monster picks up or uses a Wand of Digging
+
+=== Auto-pickup ===
+
+The following auto-pickup options will pickup all money, potions, wands, rings, amulets and scrolls. It also has some exceptions that will pickup magic markers and magic lamps.
+
+ OPTIONS=autopickup,pickup_types:$!/="?
+
+ autopickup_exception="<*magic marker*"
+ autopickup_exception="<*magic lamp*"
+ autopickup_exception="<*lamp called magic"
+
+When you stand on your Pudding square, you will automatically pickup all the items above, you can then move back to your Elbereth square and put all of the following items back in your chest. 
+
+=== Paste Farming ===
+
+The following example below will constantly attack left, check for scrolls, and save occasionally to prevent NAO crashes.
+
+ ;h;FhFhFhFhFhFhFhFhF;h;FhFhFhFhFhFhFhFhF
+
+Repeat this as many times as you like, Ideally you want to end this just before you become hungry, and end it with a 'Sy' so that your game is saved. NAO has issues in the past with long farming sessions where it may corrupt your game. Saving and quitting occasionally seems to prevent this.
+
+== Farming interruptions ==
+
+There are still some conditions you need to manually resolve, should they arise:
+* You need to eat food
+* You need to kill some monsters that aren't puddings that stand on your farming square
+* You need to resolve being stunned/confused/blinded/hallucinated
+* A wand of digging is used
+* A boulder is dropped on you or your pudding square
+* A scroll of scare monster is dropped
+
+Of all the above, the wand of digging situation can be the most frustrating to deal with. If a monster manages to pickup and use a wand of digging on your Pudding square the contents of that square get scattered several dungeon levels below you. It also creates a hole that you need to fill. Be sure to carry a scroll of earth in case this situation arrives.
+
+A boulder (usually from a giant) being dropped on you or your pudding square is also a likely situation over a long farming session. Make sure you have a pickaxe, and a wand of striking.
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[Player|{{white|@}}]]
+0=[[boulder|{{white|0}}]]
+
+      ##0@
+ -----.------
+ |..........|
+ ...........|
+ |....{.....|
+ |..........|
+ |..........|
+ ---.--------
+</replacecharsblock></div>
+In the situation above, lets assume a boulder was also thrown at you and has landed on your Elbereth Square. First, make sure there are no items on your square that can be destroyed by a striking blast. Use your pickaxe (not your wand of striking) to destroy the boulder(s) to the left. Move left and then use your wand of striking to destroy the boulder on your Elbereth Square.
+
+== Cleaning your pudding square ==
+Occasionally you are going to want to 'clean' your pudding square. NAO doesn't deal well with 100's of pages. The easiest way to do this is with a wand of polymorph. Make sure you have a bunch of AC, HP and a decent weapon and stand on your pudding square and zap downwards. This will cause a few items to be destroyed. Be careful of generated [[golem]]s though!
+
+== Making wishes ==
+After a while, you will get an abundant supply of smokey potions, magic lamps and maybe a few wands of wishing. While wands of wishing can be used while you are standing on your Elbereth square, the potions and lamps both required a empty tile for a Genie to be generated. Instead of using potions or lamps on your Elbereth square, use them on your pudding square while your Elbereth square is empty.
+
+==See also==
+*[[pudding farming]]
+
+[[Category:Farming]]}
+&&%s&& %s Bolt {91581 2014-12-19T08:02:15Z {4000452 Bluescreenofdeath} Redirected page to [[Crossbow bolt]] #REDIRECT [[Crossbow_bolt]]}
+&&%s&& %s Blecch {91582 2014-12-19T08:08:04Z {4000452 Bluescreenofdeath} Redirected page to [[Comestible#Rotten food]] #REDIRECT [[Comestible#Rotten_food]]}
+&&%s&& %s Blecch! {91583 2014-12-19T08:08:18Z {4000452 Bluescreenofdeath} Redirected page to [[Comestible#Rotten food]] #REDIRECT [[Comestible#Rotten_food]]}
+&&%s&& %s Sparkling water {91610 2014-12-22T00:54:44Z {4000548 Quantum Immortal} Redirected page to [[Lethe patch]] #REDIRECT[[Lethe patch]]}
+&&%s&& %s Sparkling water or molten lava {91611 2014-12-22T00:55:35Z {4000548 Quantum Immortal} Redirected page to [[Lethe patch]] #REDIRECT[[Lethe patch]]}
+&&%s&& %s Sparkling water or molten lava (sparkling water) {91612 2014-12-22T00:56:10Z {4000548 Quantum Immortal} Redirected page to [[Lethe patch]] #REDIRECT[[Lethe patch]]}
+&&%s&& %s Lethe water {91613 2014-12-22T00:57:41Z {4000548 Quantum Immortal} Redirected page to [[Lethe patch]] #REDIRECT[[Lethe patch]]}
+&&%s&& %s Cornucopia {91849 2015-01-11T20:07:22Z {0 } What it is. #REDIRECT [[Horn of plenty]]}
+&&%s&& %s Ordinary major demons {91879 2015-01-13T19:42:12Z {0 } created a redirect #REDIRECT [[Demon#Types of demons]]}
+&&%s&& %s Template:Monsters/expanded {91971 2015-01-25T00:01:28Z {366 Ilmari Karonen} let's see if this loads any faster on the main page <noinclude>
+
+This is a fully transcluded copy of {{tl|Monsters}}, using no subtemplates.  If any of the monster templates are changed, you can regenerate this copy by going to [[Special:ExpandTemplates]], typing <code><nowiki>{{Monsters}}</nowiki></code> into the input box, clicking OK and copying and pasting the output to this page below this message (following the <code>&lt;/noinclude&gt;</code> tag).
+
+</noinclude><span class="monsters">[[ghost|<span class="nhsym clr-lightgray">&nbsp;</span>]][[shade|<span class="nhsym clr-darkgray">&nbsp;</span>]][[giant beetle|<span class="nhsym clr-darkgray">a</span>]][[soldier ant|<span class="nhsym clr-blue">a</span>]][[giant ant|<span class="nhsym clr-brown">a</span>]][[queen bee|<span class="nhsym clr-magenta">a</span>]][[fire ant|<span class="nhsym clr-red">a</span>]][[killer bee|<span class="nhsym clr-yellow">a</span>]][[gelatinous cube|<span class="nhsym clr-cyan">b</span>]][[acid blob|<span class="nhsym clr-green">b</span>]][[quivering blob|<span class="nhsym clr-white">b</span>]][[chickatrice|<span class="nhsym clr-brown">c</span>]][[pyrolisk|<span class="nhsym clr-red">c</span>]][[cockatrice|<span class="nhsym clr-yellow">c</span>]][[jackal|<span class="nhsym clr-brown">d</span>]][[coyote|<span class="nhsym clr-brown">d</span>]][[werejackal (dog)|<span class="nhsym clr-brown">d</span>]][[wolf|<span class="nhsym clr-brown">d</span>]][[werewolf (dog)|<span class="nhsym clr-brown">d</span>]][[warg|<span class="nhsym clr-brown">d</span>]][[winter wolf cub|<span class="nhsym clr-cyan">d</span>]][[winter wolf|<span class="nhsym clr-cyan">d</span>]][[fox|<span class="nhsym clr-red">d</span>]][[hell hound pup|<span class="nhsym clr-red">d</span>]][[hell hound|<span class="nhsym clr-red">d</span>]][[Cerberus|<span class="nhsym clr-red">d</span>]][[little dog|<span class="nhsym clr-white">d</span>]][[dog|<span class="nhsym clr-white">d</span>]]<br/>[[large dog|<span class="nhsym clr-white">d</span>]][[dingo|<span class="nhsym clr-yellow">d</span>]][[floating eye|<span class="nhsym clr-blue">e</span>]][[shocking sphere|<span class="nhsym clr-brightblue">e</span>]][[beholder|<span class="nhsym clr-brown">e</span>]][[gas spore|<span class="nhsym clr-lightgray">e</span>]][[flaming sphere|<span class="nhsym clr-red">e</span>]][[freezing sphere|<span class="nhsym clr-white">e</span>]][[panther|<span class="nhsym clr-darkgray">f</span>]][[jaguar|<span class="nhsym clr-brown">f</span>]][[lynx|<span class="nhsym clr-cyan">f</span>]][[kitten|<span class="nhsym clr-white">f</span>]][[housecat|<span class="nhsym clr-white">f</span>]][[large cat|<span class="nhsym clr-white">f</span>]][[tiger|<span class="nhsym clr-yellow">f</span>]][[gargoyle|<span class="nhsym clr-brown">g</span>]][[gremlin|<span class="nhsym clr-green">g</span>]][[winged gargoyle|<span class="nhsym clr-magenta">g</span>]][[dwarf lord|<span class="nhsym clr-blue">h</span>]][[bugbear|<span class="nhsym clr-brown">h</span>]][[hobbit|<span class="nhsym clr-green">h</span>]][[dwarf king|<span class="nhsym clr-magenta">h</span>]][[mind flayer|<span class="nhsym clr-magenta">h</span>]][[master mind flayer|<span class="nhsym clr-magenta">h</span>]][[dwarf|<span class="nhsym clr-red">h</span>]][[quasit|<span class="nhsym clr-blue">i</span>]][[lemure|<span class="nhsym clr-brown">i</span>]][[tengu|<span class="nhsym clr-cyan">i</span>]]<br/>[[homunculus|<span class="nhsym clr-green">i</span>]][[manes|<span class="nhsym clr-red">i</span>]][[imp|<span class="nhsym clr-red">i</span>]][[blue jelly|<span class="nhsym clr-blue">j</span>]][[ochre jelly|<span class="nhsym clr-brown">j</span>]][[spotted jelly|<span class="nhsym clr-green">j</span>]][[kobold shaman|<span class="nhsym clr-brightblue">k</span>]][[kobold|<span class="nhsym clr-brown">k</span>]][[kobold lord|<span class="nhsym clr-magenta">k</span>]][[large kobold|<span class="nhsym clr-red">k</span>]][[leprechaun|<span class="nhsym clr-green">l</span>]][[small mimic|<span class="nhsym clr-brown">m</span>]][[giant mimic|<span class="nhsym clr-magenta">m</span>]][[large mimic|<span class="nhsym clr-red">m</span>]][[water nymph|<span class="nhsym clr-blue">n</span>]][[mountain nymph|<span class="nhsym clr-brown">n</span>]][[wood nymph|<span class="nhsym clr-green">n</span>]][[Uruk-hai|<span class="nhsym clr-darkgray">o</span>]][[Mordor orc|<span class="nhsym clr-blue">o</span>]][[orc shaman|<span class="nhsym clr-brightblue">o</span>]][[hobgoblin|<span class="nhsym clr-brown">o</span>]][[goblin|<span class="nhsym clr-lightgray">o</span>]][[orc-captain|<span class="nhsym clr-magenta">o</span>]][[orc|<span class="nhsym clr-red">o</span>]][[hill orc|<span class="nhsym clr-yellow">o</span>]][[iron piercer|<span class="nhsym clr-cyan">p</span>]][[rock piercer|<span class="nhsym clr-lightgray">p</span>]][[glass piercer|<span class="nhsym clr-white">p</span>]]<br/>[[mastodon|<span class="nhsym clr-darkgray">q</span>]][[rothe|<span class="nhsym clr-brown">q</span>]][[wumpus|<span class="nhsym clr-cyan">q</span>]][[mumak|<span class="nhsym clr-lightgray">q</span>]][[titanothere|<span class="nhsym clr-lightgray">q</span>]][[baluchitherium|<span class="nhsym clr-lightgray">q</span>]][[leocrotta|<span class="nhsym clr-red">q</span>]][[sewer rat|<span class="nhsym clr-brown">r</span>]][[giant rat|<span class="nhsym clr-brown">r</span>]][[rabid rat|<span class="nhsym clr-brown">r</span>]][[wererat (rodent)|<span class="nhsym clr-brown">r</span>]][[woodchuck|<span class="nhsym clr-brown">r</span>]][[rock mole|<span class="nhsym clr-lightgray">r</span>]][[cave spider|<span class="nhsym clr-lightgray">s</span>]][[giant spider|<span class="nhsym clr-magenta">s</span>]][[Scorpius|<span class="nhsym clr-magenta">s</span>]][[scorpion|<span class="nhsym clr-red">s</span>]][[centipede|<span class="nhsym clr-yellow">s</span>]][[trapper|<span class="nhsym clr-green">t</span>]][[lurker above|<span class="nhsym clr-lightgray">t</span>]][[pony|<span class="nhsym clr-brown">u</span>]][[horse|<span class="nhsym clr-brown">u</span>]][[warhorse|<span class="nhsym clr-brown">u</span>]][[black unicorn|<span class="nhsym clr-darkgray">u</span>]][[gray unicorn|<span class="nhsym clr-lightgray">u</span>]][[white unicorn|<span class="nhsym clr-white">u</span>]][[steam vortex|<span class="nhsym clr-blue">v</span>]][[energy vortex|<span class="nhsym clr-brightblue">v</span>]]<br/>[[dust vortex|<span class="nhsym clr-brown">v</span>]][[ice vortex|<span class="nhsym clr-cyan">v</span>]][[fog cloud|<span class="nhsym clr-lightgray">v</span>]][[fire vortex|<span class="nhsym clr-yellow">v</span>]][[baby long worm|<span class="nhsym clr-brown">w</span>]][[long worm|<span class="nhsym clr-brown">w</span>]][[baby purple worm|<span class="nhsym clr-magenta">w</span>]][[purple worm|<span class="nhsym clr-magenta">w</span>]][[grid bug|<span class="nhsym clr-magenta">x</span>]][[xan|<span class="nhsym clr-red">x</span>]][[black light|<span class="nhsym clr-darkgray">y</span>]][[yellow light|<span class="nhsym clr-yellow">y</span>]][[zruty|<span class="nhsym clr-brown">z</span>]][[couatl|<span class="nhsym clr-green">A</span>]][[Archon|<span class="nhsym clr-magenta">A</span>]][[Angel|<span class="nhsym clr-white">A</span>]][[Aleax|<span class="nhsym clr-yellow">A</span>]][[ki-rin|<span class="nhsym clr-yellow">A</span>]][[raven|<span class="nhsym clr-darkgray">B</span>]][[vampire bat|<span class="nhsym clr-darkgray">B</span>]][[bat|<span class="nhsym clr-brown">B</span>]][[giant bat|<span class="nhsym clr-red">B</span>]][[plains centaur|<span class="nhsym clr-brown">C</span>]][[mountain centaur|<span class="nhsym clr-cyan">C</span>]][[forest centaur|<span class="nhsym clr-green">C</span>]][[baby black dragon|<span class="nhsym clr-darkgray">D</span>]][[black dragon|<span class="nhsym clr-darkgray">D</span>]][[baby blue dragon|<span class="nhsym clr-blue">D</span>]]<br/>[[blue dragon|<span class="nhsym clr-blue">D</span>]][[baby silver dragon|<span class="nhsym clr-brightcyan">D</span>]][[silver dragon|<span class="nhsym clr-brightcyan">D</span>]][[baby orange dragon|<span class="nhsym clr-orange">D</span>]][[orange dragon|<span class="nhsym clr-orange">D</span>]][[baby shimmering dragon|<span class="nhsym clr-cyan">D</span>]][[shimmering dragon|<span class="nhsym clr-cyan">D</span>]][[baby green dragon|<span class="nhsym clr-green">D</span>]][[green dragon|<span class="nhsym clr-green">D</span>]][[baby gray dragon|<span class="nhsym clr-lightgray">D</span>]][[gray dragon|<span class="nhsym clr-lightgray">D</span>]][[Chromatic Dragon|<span class="nhsym clr-magenta">D</span>]][[baby red dragon|<span class="nhsym clr-red">D</span>]][[red dragon|<span class="nhsym clr-red">D</span>]][[Ixoth|<span class="nhsym clr-red">D</span>]][[baby white dragon|<span class="nhsym clr-white">D</span>]][[white dragon|<span class="nhsym clr-white">D</span>]][[baby yellow dragon|<span class="nhsym clr-yellow">D</span>]][[yellow dragon|<span class="nhsym clr-yellow">D</span>]][[water elemental|<span class="nhsym clr-blue">E</span>]][[earth elemental|<span class="nhsym clr-brown">E</span>]][[air elemental|<span class="nhsym clr-cyan">E</span>]][[stalker|<span class="nhsym clr-white">E</span>]][[fire elemental|<span class="nhsym clr-yellow">E</span>]][[lichen|<span class="nhsym clr-brightgreen">F</span>]][[brown mold|<span class="nhsym clr-brown">F</span>]][[green mold|<span class="nhsym clr-green">F</span>]][[shrieker|<span class="nhsym clr-magenta">F</span>]]<br/>[[violet fungus|<span class="nhsym clr-magenta">F</span>]][[red mold|<span class="nhsym clr-red">F</span>]][[yellow mold|<span class="nhsym clr-yellow">F</span>]][[gnome lord|<span class="nhsym clr-blue">G</span>]][[gnomish wizard|<span class="nhsym clr-brightblue">G</span>]][[gnome (monster)|<span class="nhsym clr-brown">G</span>]][[gnome king|<span class="nhsym clr-magenta">G</span>]][[storm giant|<span class="nhsym clr-blue">H</span>]][[ettin|<span class="nhsym clr-brown">H</span>]][[minotaur|<span class="nhsym clr-brown">H</span>]][[hill giant|<span class="nhsym clr-cyan">H</span>]][[stone giant|<span class="nhsym clr-lightgray">H</span>]][[Cyclops|<span class="nhsym clr-lightgray">H</span>]][[titan|<span class="nhsym clr-magenta">H</span>]][[Lord Surtur|<span class="nhsym clr-magenta">H</span>]][[giant|<span class="nhsym clr-red">H</span>]][[frost giant|<span class="nhsym clr-white">H</span>]][[fire giant|<span class="nhsym clr-yellow">H</span>]][[jabberwock|<span class="nhsym clr-orange">J</span>]][[vorpal jabberwock|<span class="nhsym clr-magenta">J</span>]][[Keystone Kop|<span class="nhsym clr-blue">K</span>]][[Kop Sergeant|<span class="nhsym clr-blue">K</span>]][[Kop Lieutenant|<span class="nhsym clr-cyan">K</span>]][[Kop Kaptain|<span class="nhsym clr-magenta">K</span>]][[lich|<span class="nhsym clr-brown">L</span>]][[master lich|<span class="nhsym clr-magenta">L</span>]][[arch-lich|<span class="nhsym clr-magenta">L</span>]][[demilich|<span class="nhsym clr-red">L</span>]]<br/>[[ettin mummy|<span class="nhsym clr-blue">M</span>]][[kobold mummy|<span class="nhsym clr-brown">M</span>]][[giant mummy|<span class="nhsym clr-cyan">M</span>]][[elf mummy|<span class="nhsym clr-green">M</span>]][[orc mummy|<span class="nhsym clr-lightgray">M</span>]][[human mummy|<span class="nhsym clr-lightgray">M</span>]][[gnome mummy|<span class="nhsym clr-red">M</span>]][[dwarf mummy|<span class="nhsym clr-red">M</span>]][[black naga hatchling|<span class="nhsym clr-darkgray">N</span>]][[black naga|<span class="nhsym clr-darkgray">N</span>]][[guardian naga hatchling|<span class="nhsym clr-green">N</span>]][[guardian naga|<span class="nhsym clr-green">N</span>]][[red naga hatchling|<span class="nhsym clr-red">N</span>]][[red naga|<span class="nhsym clr-red">N</span>]][[golden naga hatchling|<span class="nhsym clr-yellow">N</span>]][[golden naga|<span class="nhsym clr-yellow">N</span>]][[ogre|<span class="nhsym clr-brown">O</span>]][[ogre king|<span class="nhsym clr-magenta">O</span>]][[ogre lord|<span class="nhsym clr-red">O</span>]][[black pudding|<span class="nhsym clr-darkgray">P</span>]][[brown pudding|<span class="nhsym clr-brown">P</span>]][[green slime|<span class="nhsym clr-green">P</span>]][[gray ooze|<span class="nhsym clr-lightgray">P</span>]][[quantum mechanic|<span class="nhsym clr-cyan">Q</span>]][[disenchanter|<span class="nhsym clr-blue">R</span>]][[rust monster|<span class="nhsym clr-brown">R</span>]][[pit viper|<span class="nhsym clr-blue">S</span>]][[cobra|<span class="nhsym clr-blue">S</span>]]<br/>[[snake|<span class="nhsym clr-brown">S</span>]][[garter snake|<span class="nhsym clr-green">S</span>]][[python|<span class="nhsym clr-magenta">S</span>]][[water moccasin|<span class="nhsym clr-red">S</span>]][[water troll|<span class="nhsym clr-blue">T</span>]][[troll|<span class="nhsym clr-brown">T</span>]][[rock troll|<span class="nhsym clr-cyan">T</span>]][[Olog-hai|<span class="nhsym clr-magenta">T</span>]][[ice troll|<span class="nhsym clr-white">T</span>]][[umber hulk|<span class="nhsym clr-brown">U</span>]][[vampire lord|<span class="nhsym clr-blue">V</span>]][[vampire mage|<span class="nhsym clr-brightblue">V</span>]][[Vlad the Impaler|<span class="nhsym clr-magenta">V</span>]][[vampire|<span class="nhsym clr-red">V</span>]][[wraith|<span class="nhsym clr-darkgray">W</span>]][[barrow wight|<span class="nhsym clr-lightgray">W</span>]][[Nazgul|<span class="nhsym clr-magenta">W</span>]][[xorn|<span class="nhsym clr-brown">X</span>]][[carnivorous ape|<span class="nhsym clr-darkgray">Y</span>]][[ape|<span class="nhsym clr-brown">Y</span>]][[owlbear|<span class="nhsym clr-brown">Y</span>]][[monkey|<span class="nhsym clr-lightgray">Y</span>]][[sasquatch|<span class="nhsym clr-lightgray">Y</span>]][[yeti|<span class="nhsym clr-white">Y</span>]][[ghoul|<span class="nhsym clr-darkgray">Z</span>]][[ettin zombie|<span class="nhsym clr-blue">Z</span>]][[kobold zombie|<span class="nhsym clr-brown">Z</span>]][[gnome zombie|<span class="nhsym clr-brown">Z</span>]]<br/>[[giant zombie|<span class="nhsym clr-cyan">Z</span>]][[elf zombie|<span class="nhsym clr-green">Z</span>]][[orc zombie|<span class="nhsym clr-lightgray">Z</span>]][[dwarf zombie|<span class="nhsym clr-red">Z</span>]][[human zombie|<span class="nhsym clr-white">Z</span>]][[skeleton|<span class="nhsym clr-white">Z</span>]][[water demon|<span class="nhsym clr-blue">&</span>]][[mail daemon|<span class="nhsym clr-brightblue">&</span>]][[Juiblex|<span class="nhsym clr-brightgreen">&</span>]][[horned devil|<span class="nhsym clr-brown">&</span>]][[succubus|<span class="nhsym clr-lightgray">&</span>]][[incubus|<span class="nhsym clr-lightgray">&</span>]][[bone devil|<span class="nhsym clr-lightgray">&</span>]][[sandestin|<span class="nhsym clr-lightgray">&</span>]][[Yeenoghu|<span class="nhsym clr-magenta">&</span>]][[Orcus|<span class="nhsym clr-magenta">&</span>]][[Geryon|<span class="nhsym clr-magenta">&</span>]][[Dispater|<span class="nhsym clr-magenta">&</span>]][[Baalzebub|<span class="nhsym clr-magenta">&</span>]][[Asmodeus|<span class="nhsym clr-magenta">&</span>]][[Demogorgon|<span class="nhsym clr-magenta">&</span>]][[Death (monster)|<span class="nhsym clr-magenta">&</span>]][[Pestilence|<span class="nhsym clr-magenta">&</span>]][[Famine|<span class="nhsym clr-magenta">&</span>]][[erinys|<span class="nhsym clr-red">&</span>]][[barbed devil|<span class="nhsym clr-red">&</span>]][[marilith|<span class="nhsym clr-red">&</span>]][[vrock|<span class="nhsym clr-red">&</span>]]<br/>[[hezrou|<span class="nhsym clr-red">&</span>]][[nalfeshnee|<span class="nhsym clr-red">&</span>]][[pit fiend|<span class="nhsym clr-red">&</span>]][[balrog|<span class="nhsym clr-red">&</span>]][[Minion of Huhetotl|<span class="nhsym clr-red">&</span>]][[Nalzok|<span class="nhsym clr-red">&</span>]][[ice devil|<span class="nhsym clr-white">&</span>]][[djinni|<span class="nhsym clr-yellow">&</span>]][[rope golem|<span class="nhsym clr-brown">'</span>]][[leather golem|<span class="nhsym clr-brown">'</span>]][[wood golem|<span class="nhsym clr-brown">'</span>]][[clay golem|<span class="nhsym clr-brown">'</span>]][[glass golem|<span class="nhsym clr-cyan">'</span>]][[iron golem|<span class="nhsym clr-cyan">'</span>]][[stone golem|<span class="nhsym clr-lightgray">'</span>]][[flesh golem|<span class="nhsym clr-red">'</span>]][[paper golem|<span class="nhsym clr-white">'</span>]][[straw golem|<span class="nhsym clr-yellow">'</span>]][[gold golem|<span class="nhsym clr-yellow">'</span>]][[salamander|<span class="nhsym clr-orange">:</span>]][[iguana|<span class="nhsym clr-brown">:</span>]][[baby crocodile|<span class="nhsym clr-brown">:</span>]][[chameleon|<span class="nhsym clr-brown">:</span>]][[crocodile|<span class="nhsym clr-brown">:</span>]][[gecko|<span class="nhsym clr-green">:</span>]][[lizard|<span class="nhsym clr-green">:</span>]][[newt|<span class="nhsym clr-yellow">:</span>]][[jellyfish|<span class="nhsym clr-blue">;</span>]]<br/>[[electric eel|<span class="nhsym clr-brightblue">;</span>]][[giant eel|<span class="nhsym clr-cyan">;</span>]][[shark|<span class="nhsym clr-lightgray">;</span>]][[piranha|<span class="nhsym clr-red">;</span>]][[kraken|<span class="nhsym clr-red">;</span>]][[Grand Master|<span class="nhsym clr-darkgray">@</span>]][[Dark One|<span class="nhsym clr-darkgray">@</span>]][[guard|<span class="nhsym clr-blue">@</span>]][[captain|<span class="nhsym clr-blue">@</span>]][[elf-lord|<span class="nhsym clr-brightblue">@</span>]][[Oracle|<span class="nhsym clr-brightblue">@</span>]][[Green-elf|<span class="nhsym clr-brightgreen">@</span>]][[Medusa|<span class="nhsym clr-brightgreen">@</span>]][[werewolf (human)|<span class="nhsym clr-orange">@</span>]][[wererat (human)|<span class="nhsym clr-brown">@</span>]][[Woodland-elf|<span class="nhsym clr-green">@</span>]][[lieutenant|<span class="nhsym clr-green">@</span>]][[watch captain|<span class="nhsym clr-green">@</span>]][[Neferet the Green|<span class="nhsym clr-green">@</span>]][[Grey-elf|<span class="nhsym clr-lightgray">@</span>]][[soldier|<span class="nhsym clr-lightgray">@</span>]][[watchman|<span class="nhsym clr-lightgray">@</span>]][[Elvenking|<span class="nhsym clr-magenta">@</span>]][[Wizard of Yendor|<span class="nhsym clr-magenta">@</span>]][[Croesus|<span class="nhsym clr-magenta">@</span>]][[Lord Carnarvon|<span class="nhsym clr-magenta">@</span>]][[Pelias|<span class="nhsym clr-magenta">@</span>]][[Shaman Karnov|<span class="nhsym clr-magenta">@</span>]]<br/>[[Earendil|<span class="nhsym clr-magenta">@</span>]][[Hippocrates|<span class="nhsym clr-magenta">@</span>]][[King Arthur|<span class="nhsym clr-magenta">@</span>]][[Orion|<span class="nhsym clr-magenta">@</span>]][[Master of Thieves|<span class="nhsym clr-magenta">@</span>]][[Lord Sato|<span class="nhsym clr-magenta">@</span>]][[Norn|<span class="nhsym clr-magenta">@</span>]][[Thoth Amon|<span class="nhsym clr-magenta">@</span>]][[Master Kaen|<span class="nhsym clr-magenta">@</span>]][[Master Assassin|<span class="nhsym clr-magenta">@</span>]][[Ashikaga Takauji|<span class="nhsym clr-magenta">@</span>]][[werejackal (human)|<span class="nhsym clr-red">@</span>]][[sergeant|<span class="nhsym clr-red">@</span>]][[human (monster)|<span class="nhsym clr-white">@</span>]][[elf (monster)|<span class="nhsym clr-white">@</span>]][[doppelganger|<span class="nhsym clr-white">@</span>]][[nurse|<span class="nhsym clr-white">@</span>]][[shopkeeper|<span class="nhsym clr-white">@</span>]][[prisoner|<span class="nhsym clr-white">@</span>]][[aligned priest|<span class="nhsym clr-white">@</span>]][[high priest|<span class="nhsym clr-white">@</span>]][[Charon|<span class="nhsym clr-white">@</span>]][[archeologist (player monster)|<span class="nhsym clr-white">@</span>]][[barbarian (player monster)|<span class="nhsym clr-white">@</span>]][[caveman (player monster)|<span class="nhsym clr-white">@</span>]][[cavewoman (player monster)|<span class="nhsym clr-white">@</span>]][[healer (player monster)|<span class="nhsym clr-white">@</span>]][[knight (player monster)|<span class="nhsym clr-white">@</span>]]<br/>[[monk (player monster)|<span class="nhsym clr-white">@</span>]][[priest (player monster)|<span class="nhsym clr-white">@</span>]][[priestess (player monster)|<span class="nhsym clr-white">@</span>]][[ranger (player monster)|<span class="nhsym clr-white">@</span>]][[rogue (player monster)|<span class="nhsym clr-white">@</span>]][[samurai (player monster)|<span class="nhsym clr-white">@</span>]][[tourist (player monster)|<span class="nhsym clr-white">@</span>]][[valkyrie (player monster)|<span class="nhsym clr-white">@</span>]][[wizard (player monster)|<span class="nhsym clr-white">@</span>]][[Arch Priest|<span class="nhsym clr-white">@</span>]][[Twoflower|<span class="nhsym clr-white">@</span>]][[student|<span class="nhsym clr-white">@</span>]][[chieftain|<span class="nhsym clr-white">@</span>]][[neanderthal|<span class="nhsym clr-white">@</span>]][[High-elf|<span class="nhsym clr-white">@</span>]][[attendant|<span class="nhsym clr-white">@</span>]][[page|<span class="nhsym clr-white">@</span>]][[abbot|<span class="nhsym clr-white">@</span>]][[acolyte|<span class="nhsym clr-white">@</span>]][[hunter|<span class="nhsym clr-white">@</span>]][[thug|<span class="nhsym clr-white">@</span>]][[ninja|<span class="nhsym clr-white">@</span>]][[roshi|<span class="nhsym clr-white">@</span>]][[guide|<span class="nhsym clr-white">@</span>]][[warrior|<span class="nhsym clr-white">@</span>]][[apprentice|<span class="nhsym clr-white">@</span>]][[long worm tail|<span class="nhsym clr-brown">~</span>]][[strange object|<span class="nhsym clr-darkgray">]</span>]]</span>}
+&&%s&& %s You feel much, much better! {92147 2015-02-06T06:50:54Z {4000548 Quantum Immortal} Redirected page to [[Throne]] #REDIRECT[[Throne]]}
+&&%s&& %s Great Cthulhu {135339 2020-07-26T00:13:08Z {4000763 EasterlyIrk}  {{monster
+ |symbol={{green|&}}
+ |difficulty=100
+ |level=51
+ |experience=
+ |speed=3 (listed as 15)
+ |AC=0
+ |MR=127
+ |align=0 (neutral)
+ |frequency=0 (unique)
+ |genocidable=No
+ |attacks=Claw 100d4, Gaze (WIS drain 1d10), Poison 8d8
+ |weight=10000
+ |nutr=4000
+ |size=Bigger than (111% the size of) gigantic
+ |resistances=acid, poison, fire, cold, disint, shock, stoning, drain
+ |resistances conveyed=None
+ |attributes={{attributes|Great Cthulhu}}
+ |reference=
+}}
+
+'''Great Cthulhu''' is a monster from the [[dNetHack]] variant.
+
+==Strategy==
+Great Cthulhu is the second or third most dangerous creature in dNetHack, and as such should be avoided rather than confronted. Great Cthulhu is generated asleep on one of the altars in R'lyeh, and plan A should always be to keep him that way. Great Cthulhu can be sensed from standard warning distance (13&times;13) as "an unknown monster causing you dread" regardless of whether or not you have [[warning]]. Beware of squeaky boards near the upstair, as these can cause him to awaken. You may also want a [[wand of opening]] to lower the drawbridge, as the [[wand of striking]] will make a loud noise. If he spawns in one of the hidden side rooms, he will not be able to get out due to his large size.
+
+Should the character need to approach Great Cthulhu, it is vitally important to avoid looking at him. Extinguish light sources and remain out of sight or blind yourself. Great Cthulhu's gaze attack ''permanently'' reduces wisdom by 1d10 points, though not below 3. In this case, the character's wisdom is reduced to 3 and the character then takes 10 damage for each point of wisdom drain remaining. You will also suffer amnesia, including losing 25% of ''all'' spell memories. For this reason, it's best not to light up the level (it is naturally dark). Sustain ability prevents both the drain and damage, but not the amnesia.  
+
+It is vitally important to remain at least 2 squares away from Great Cthulhu if at all possible, as his melee attack deals around 250 damage on average and is essentially guaranteed to hit.
+

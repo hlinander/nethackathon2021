@@ -1,0 +1,1000 @@
+|-
+|line ''coord'',''coord''
+|A straight line drawn from one pair of coordinates to the other using Bresenham's line algorithm.
+|<tt>line (76,03),(55,19)</tt>
+|-
+|randline ''coord'',''coord'',''math expression''
+|A line that is guaranteed to start at one pair of coordinates and finish at the other, but uses a random walk to get there. Specifically, the algorithm uses a form of fractal noise: it takes the midpoint of the line, moves it to a random point nearby no farther than the user-provided roughness (the last argument), then recurses over each resulting half of the line with the roughness reduced to 2/3 of its previous value.
+|<tt>randline (00,10),(75,10),15</tt>
+|-
+|grow(''selection'')
+grow(''direction(s)'',''selection'')
+|Grows the provided selection by 1 in the specified directions, or in all directions if the first format is used.
+|<tt>grow(north,randline(20,12),(30,15),8)</tt>
+|-
+|filter(''percentage'',''selection'')
+|Independently for every space in the selection, keep it in the selection with a chance equal to the provided percentage; otherwise remove it.
+|<tt>filter(50%, fillrect(23,12,66,16))</tt>
+|-
+|filter(''selection1'',''selection2'')
+|Perform a set intersection operation on the two selections. Points that appear in both selections will be kept in the resulting selection; points that appear in only one or the other are removed.
+|<tt>filter(floodfill(23,23), fillrect(20,20,25,25))</tt>
+|-
+|filter(''mapchar'',''selection'')
+|This is a complicated one. If the mapchar is a simple character, then anything in the selection whose terrain type doesn't match that mapchar will be removed. If the mapchar is bundled with a ''lit'' or ''unlit'' light state, then anything in the selection whose light state doesn't match the provided state will additionally be removed, even if the mapchar matches. If the mapchar is bundled with a ''random'' light state, then matching mapchar locations in the selection have a 50% chance of being removed.
+|<tt>filter('.',fillrect(20,10,50,20))</tt>
+<tt>filter(('.',unlit),line(20,00),(30,05))</tt>
+|-
+|floodfill ''coord''
+|Performs a flood fill from the pair of coordinates provided, adding to the selection all the connected spaces with the same terrain type as the starting location. It does not fill across diagonals.
+|<tt>floodfill (34,15)</tt>
+|-
+|circle (''coord'', ''radius'' [, ''unfilled''])
+|Adds points in a ring around the given center point with the given radius, using McIlroy's Ellipse Algorithm. If "unfilled" is provided as an optional third argument the selection will be only that ring; otherwise the interior of the circle will also be added to the selection.
+|<tt>circle ((55,17),3)</tt>
+|-
+|ellipse (''coord'', ''xradius'', ''yradius'' [, ''unfilled''])
+|Same as the circle selection, but instead of a constant radius it is a more general ellipse whose x and y axes can be specified. Note that the des file is intended to specify the semi-x-axis and the semi-y-axis (the distances from the center to the right and top extremes of the ellipse), not the full axis lengths.
+|<tt>ellipse((55,17),10,4)</tt>
+|-
+|gradient (''type'', (''mindist'' - ''maxdist'' [, limited]), ''coord'' [, ''coord''])
+|Makes a radial gradient of probability that a space will independently be added to the selection. 
+* The center of the gradient is either the single coord if only one is provided, or the line between the two coords if two are provided. 
+* Within mindist of this center, no points will be added.
+* Between mindist and maxdist away from the center, each space has a probability of being added that linearly increases from 0% at mindist to 100% at maxdist. 
+* Beyond maxdist, the probability for each square is either 0% if the limited flag is present, or 100% if it is missing or specified as "unlimited". 
+* If the provided gradient type is "square" instead of "radial", the gradient will instead be square-shaped instead of circular/elliptical, but still emanating from the center point or line.
+|<tt> gradient (radial, (4-10, unlimited), (35,08),(39,08))</tt>
+|-
+|complement ''selection''
+|Inverts the selection across the whole level. Every point that was not in the selection will be added to it, and every point that was in the selection will be removed from it.
+|<tt>complement (fillrect(56,07,71,09))</tt>
+|}
+
+==MAZE-type levels==
+
+Maze-type levels begin with {{sa|MAZE}}, followed with optional {{sa|FLAGS}}, optional {{sa|INIT_MAP}}, 0 or more {{sa|MESSAGE}}s and up to 9 maze-parts, each of which consists either of {{sa|NOMAP}} or {{sa|GEOMETRY}} and {{sa|MAP}}, followed by zero or more the random register initializers, one of each ({{sa|RANDOM_MONSTERS}}, {{sa|RANDOM_OBJECTS}}, {{sa|RANDOM_PLACES}}), followed by zero or more of the map details (everything else, eg. {{sa|MONSTER}}, {{sa|OBJECT}}, {{sa|TRAP}}, etc.)
+
+That is:
+
+*{{sa|MAZE}}
+*{{sa|FLAGS}}, optional
+*{{sa|INIT_MAP}}, optional
+*{{sa|MESSAGE}}, 0 or more
+*up to 9 map-parts, which consist of:
+**{{sa|NOMAP}} or {{sa|GEOMETRY}} and {{sa|MAP}}
+**{{sa|RANDOM_MONSTERS}}, optional
+**{{sa|RANDOM_OBJECTS}}, optional
+**{{sa|RANDOM_PLACES}}, optional
+**The rest of the definitions of this map-part
+
+Example:
+ MAZE:"test",' '
+ FLAGS:noteleport
+ MESSAGE:"Welcome!"
+ GEOMETRY:center,center
+ MAP
+ .....
+ .L.L.
+ .....
+ .L.L.
+ .....
+ ENDMAP
+ MONSTER:random,random,random
+ OBJECT:'%',random,random
+
+Maze-type levels, or any level for which flags.is_maze_level is true in the code, have some different behaviors:
+* The level designer is expected to place any room furniture into rooms. Defining a throne room will only place a throne on non-maze-type levels, for instance.
+* Digging, where possible, will only dig one space, and will result in floor tiles being created instead of corridor tiles.
+* Mimics will mimic statues (instead of doors or boulders or objects).
+
+===MAZE===
+ MAZE:"foo",'X'
+
+*<tt>foo</tt> is the unique file name which will be used for this special level, up to 8 characters. For example: <tt>soko3-2</tt>. This file name which NetHack loads is defined by the way this level is defined in [[Dungeon.def format|dungeon.def]].
+*<tt>'X'</tt> is the [[#Map characters|fill map character]]. The map will be filled with this [[dungeon feature]] before anything else is done. This can also be <tt>random</tt>, which fills the whole level with a checkerboard grid of walls and stone, so you can use {{sa|MAZEWALK}} on it.
+
+Example:
+ MAZE:"soko3-2",' '
+
+===FLAGS===
+ FLAGS:flaglist
+
+This sets level.flags.<flag> as true for the whole level. Note that the flags are not fixed and can be changed over the course of the game: for example, raising the dead with the [[Book of the Dead]] sets level.flags.graveyard to true regardless of whether the level was previously a graveyard level.
+<tt>flaglist</tt> is one or more of the following flags, separated by commas:
+*<tt>noteleport</tt>: Teleportation within the level is blocked.
+*<tt>hardfloor</tt>: The floor is too hard to dig.
+*<tt>nommap</tt>: [[Magic mapping]] does not work.
+*<tt>arboreal</tt>: Supposedly an outdoor map. Solid walls and secret corridors will be shown as trees, digging makes floor instead of corridor and randomly created corridors are made out of floor instead of corridor.
+*<tt>shortsighted</tt>: Monsters cannot see you from far away.
+*<tt>mazelevel</tt>: Used when a ROOM-type level wants to set the maze level flag to be treated as a maze level, with the corresponding effects.
+*<tt>premapped</tt>: When the player enters the level, it is automatically mapped, including all traps and boulders. This is because it's only used for Sokoban at the moment.
+*<tt>shroud</tt>: Unseen locations on the level will not be remembered by the hero, instead of rendering as out-of-sight map, trap, and object glyphs like they normally do. No levels currently use this flag.
+*<tt>graveyard</tt>: Treats the level as a graveyard level (causes graveyard sounds and undead have a reduced chance of leaving corpses).
+*<tt>icedpools</tt>: Ice generated with the level will be treated as frozen pools instead of frozen moats.
+*<tt>solidify</tt>: Areas outside the specified level map are made undiggable and unphaseable. (Examples: Vlad's Tower, Sokoban, the Astral Plane)
+*<tt>corrmaze</tt>: If the level is a maze (not a maze-type level, an actual maze), the maze uses corridor tiles instead of floor tiles and solid rock instead of walls. Randomly generated mazes have a 1/3 chance of having corrmaze set.
+*<tt>inaccessibles</tt>: If inaccessible areas are generated, generate ways for them to connect to the "accessible" area. This tries first to create a secret door connecting it to the accessible area; if that fails it tries to create a hole or trapdoor; if that fails it tries to create an escape item (teleport items or digging tools). This code is not used for inaccessible [[closets]], which always get a scroll of teleportation.
+
+Example:
+ FLAGS:noteleport,hardfloor,graveyard
+
+===INIT_MAP===
+ INIT_MAP:'X', 'Y', smoothed, joined, lighted, walled
+
+This causes the level map to be initialized with a random map generator, similar to how the random [[Gnomish Mines]] look like.
+Each MAZE-level can contain only 0 or 1 of these definitions.
+*<tt>'X'</tt> is the "foreground" [[#Map characters|fill map character]]. This should be something the player can walk on, as the walkable part will be made out of this.
+*<tt>'Y'</tt> is the "background" [[#Map characters|fill map character]]. This will surround the foreground area, so can be solid or harmful to player.
+*<tt>smoothed</tt> is either <tt>true</tt> or <tt>false</tt>, and denotes whether the level will be "smoothed". This means that any foreground character surrounded by fewer than 3 foreground characters is changed to background character.
+*<tt>joined</tt> is either <tt>true</tt> or <tt>false</tt>, and denotes whether the level will be "joined", so that all parts are accessible by walking.
+*<tt>lighted</tt> is either <tt>lit</tt>, <tt>unlit</tt>, or <tt>random</tt>
+*<tt>walled</tt> is either <tt>true</tt> or <tt>false</tt>. This is equivalent of using a {{sa|WALLIFY}} -command.
+
+Examples:
+ INIT_MAP: 'L', '.', false, false, unlit, false
+ INIT_MAP: '.', ' ', true, true, random, true
+
+===MESSAGE===
+ MESSAGE:"string"
+
+You can have 0 or more of these per special level. Each message line gets separated with a <tt>--more--</tt> -prompt in the game.
+<tt>"string"</tt> is any message you want player to see when entering the level.
+
+Example (actual source from the Plane of Earth):
+ MAZE:"earth",' '
+ FLAGS: noteleport,hardfloor,shortsighted
+ MESSAGE: "Well done, mortal!"
+ MESSAGE: "But now thou must face the final Test..."
+ MESSAGE: "Prove thyself worthy or perish!"
+
+===NOMAP===
+ NOMAP
+
+Instead of {{sa|GEOMETRY}} and {{sa|MAP}}, you use this if you think that {{sa|INIT_MAP}} creates a good enough random map and you don't want to use any fixed map-parts.
+
+See also {{sa|MAP}}
+
+===GEOMETRY===
+ GEOMETRY:xadj,yadj
+
+This must be followed by a {{sa|MAP}} definition, and tells the approximate position of the following MAP-part on the level.
+*<tt>xadj</tt> is one of <tt>left</tt>, <tt>half-left</tt>, <tt>center</tt>, <tt>half-right</tt>, <tt>right</tt> or <tt>random</tt>
+*<tt>yadj</tt> is one of <tt>top</tt>, <tt>center</tt>, <tt>bottom</tt> or <tt>random</tt>
+
+Example:
+ GEOMETRY:left,top
+
+===MAP===
+ MAP
+ ...
+ ...
+ ...
+ ENDMAP
+
+This must be preceded by {{sa|GEOMETRY}} definition.
+You define a map-part by "drawing" with [[#Map characters|map characters]] between the MAP and ENDMAP. The map can be up to 21 lines high and each line can be up to 76 chars long. Each line must also be the same length. You can also use numbers inside the map, but those will be ignored; they're considered as line numbers.
+
+See also {{sa|NOMAP}}.
+
+===NON_DIGGABLE===
+ NON_DIGGABLE:region
+
+Sets the walls inside the region as non-diggable.
+
+Example:
+ NON_DIGGABLE:(00,00,13,12)
+
+===NON_PASSWALL===
+ NON_PASSWALL:region
+
+Players and monsters cannot phase through the walls inside the region
+
+Example:
+ NON_PASSWALL:(00,00,13,12)
+
+===RANDOM_PLACES===
+ RANDOM_PLACES:place,...
+
+With this command you can set up to 10 coordinate-pair registers, which you can access by using <tt>place[N]</tt> instead of a pair of coordinates in any other command. The registers are shuffled at level creation time.
+
+Example:
+ RANDOM_PLACES:(23,9),(37,14),(51,9)
+ OBJECT:'?',"genocide",place[0]
+
+===RANDOM_MONSTERS===
+ RANDOM_MONSTERS:'X',...
+
+With this command you can set up 10 monster symbol registers, which you can access by using <tt>monster[N]</tt> instead of a monster symbol in any other command. The registers are shuffled at level creation time.
+
+Example:
+ RANDOM_MONSTERS: 'E', 'X'
+ MONSTER:monster[0],random,(27,05)
+
+===RANDOM_OBJECTS===
+ RANDOM_OBJECTS:'X',...
+
+With this command you can set up 10 object class symbol registers, which you can access by using <tt>object[N]</tt> instead of a object class symbol in any other command. The registers are shuffled at level creation time.
+
+Example:
+ RANDOM_OBJECTS:'[',')','*','%'
+ OBJECT:object[0],random,(39,05)
+
+===DOOR===
+ DOOR:state,place
+
+Puts a door on the map.
+*<tt>state</tt> is one of the following: <tt>nodoor</tt>, <tt>locked</tt>, <tt>closed</tt>, <tt>open</tt> or <tt>random</tt>
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Example:
+ DOOR:locked,(10,5)
+
+===DRAWBRIDGE===
+ DRAWBRIDGE:place,dir,state
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>dir</tt> is one of the following: <tt>north</tt>, <tt>east</tt>, <tt>south</tt> or <tt>west</tt>
+*<tt>state</tt> is one of the following: <tt>nodoor</tt>, <tt>locked</tt>, <tt>closed</tt>, <tt>open</tt> or <tt>random</tt>
+
+Note that the drawbridge placement is different from door placement; the coordinates must be a place where the drawbridge would be when it's open, and from that place towards the direction there should be a wall, where the portcullis will be.
+
+Example:
+ DRAWBRIDGE:(25,18), north, closed
+
+===REGION===
+ REGION:(x1,y1,x2,y2), lighted, "type"
+
+Define a region on the map with certain light-state and type.
+*<tt>lighted</tt> is one of <tt>lit</tt>, <tt>unlit</tt> or <tt>random</tt>.
+*<tt>"type"</tt> is one of the [[#Room types|room types]].
+
+You can add <tt>filled</tt> or <tt>unfilled</tt>, it will denote whether the room will get stocked with the normal monsters or objects it would get. After that you can add <tt>true</tt> or <tt>false</tt> to denote whether the room is irregularly shaped. If the room is irregular, only the first pair of coordinates (x1,y1) must be inside the room, and the room must be closed off from other areas with non-floor [[#Map characters|map characters]]. Use the boundary symbol <tt>'B'</tt> in the {{sa|MAP}} to enclose an irregular room; it will be converted to floor symbol <tt>'.'</tt> after the level has been created.
+
+Examples:
+ REGION:(43,12,49,16),unlit,"ordinary"
+ REGION:(12,01,20,09),unlit,"morgue",unfilled
+ REGION:(11,03,29,10),lit,"temple",filled,true
+
+===STAIR-region===
+ STAIR:(x1,y1,x2,y2), (x3,y3,x4,y4), updown
+
+Places a stair within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4).
+*<tt>updown</tt> is either <tt>up</tt> or <tt>down</tt>, denoting the direction of the stairs.
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+
+Example:
+ STAIR:(0,0,79,20), (20,5,50,15), up
+ STAIR:levregion(01,0,79,20), (0,0,28,12), up
+ STAIR:(0,0,50,10), levregion(10,0,20,15), down
+
+===PORTAL===
+ PORTAL:(x1,y1,x2,y2), (x3,y3,x4,y4),"levelname"
+
+Places a magical portal within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4). The portal will level teleport player to the level with the name "levelname".
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+
+Example:
+ PORTAL:levregion(57,01,78,19),(0,0,0,0),"fire"
+ PORTAL:(0,0,75,19),(65,13,75,19),"air"
+
+===TELEPORT_REGION===
+ TELEPORT_REGION:(x1,y1,x2,y2),(x3,y3,x4,y4)
+
+Restricts the area where player can end up on the level when he [[level teleport]]s or falls in there. Player will end up within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4).
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+You can also add an optional direction parameter, either <tt>up</tt> or <tt>down</tt>, which will tell when this rule is applied; when player is coming from below or above.
+
+Example:
+ TELEPORT_REGION:(69,16,69,16),(0,0,0,0)
+ TELEPORT_REGION:levregion(56,00,79,20),levregion(01,00,55,20),down
+
+===BRANCH===
+ BRANCH:(x1,y1,x2,y2),(x3,y3,x4,y4)
+
+Places stairs or a magical portal to a dungeon branch within an area covered by (x1,y1,x2,y2) and not covered by (x3,y3,x4,y4).
+If the area is prefixed with <tt>levregion</tt> then the coordinates are relative to the whole level, otherwise the coordinates are relative to the last-defined {{sa|MAP}}.
+
+Example:
+ BRANCH:levregion(51,2,77,18),(0,0,40,20)
+
+===MAZEWALK===
+ MAZEWALK:place,dir
+
+Creates a random maze, starting from place.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>dir</tt> is one of the following: <tt>north</tt>, <tt>east</tt>, <tt>south</tt> or <tt>west</tt>
+
+Mazewalk turns map grids with solid stone (<tt>' '</tt>) into floor (<tt>'.'</tt>). From the starting position, it checks the mapgrid in the direction given, and if it's solid stone, it will move there, and turn that place into floor. Then it will choose a random direction, jump over the nearest mapgrid in that direction, and check the next mapgrid for solid stone. If there is solid stone, mazewalk will move that direction, changing that place and the intervening mapgrid to floor. Normally the generated maze will not have any loops.
+For example
+ MAP
+ TTTTTTT
+ T T T T
+ TTTTTTT
+ T T T T
+ TTTTTTT
+ ENDMAP
+Pointing mazewalk at that will create a small maze of trees, but unless the map (at the place where it's put into the level) is surrounded by something else than solid stone, mazewalk will get out of that MAP.  Substituting floor characters for some of the trees "in the maze" will make loops in the maze, which are not otherwise possible. Substituting floor characters for some of the trees at the edges of the map will make maze entrances and exits at those places.
+
+If the total area NOT covered by all maze-parts in the level is greater than 1/10 of the total area of the level, then the mazes in the level will get stocked with maze-specific stuff, such as [[minotaur]]s, traps and items, proportionally to the amount of space not covered by MAPs.
+
+Mazewalk will only work if the solid stone mapgrids in the level (where the MAP was put down) are on odd-numbered squares, both horizontally and vertically. You don't have to worry about this unless your MAP is 21 rows high or 76 columns wide, in which case you'll have to either make the MAP smaller, or move the places where the solid stone squares are.
+
+Also, MAZEWALK will fail in certain types of MAP-parts if you also use {{sa|WALLIFY}}, as that command is applied before MAZEWALKs.
+
+Example:
+ MAZEWALK:(00,06),west
+
+===WALLIFY===
+ WALLIFY
+
+Turns walls completely surrounded by other walls into solid stone <tt>' '</tt>.
+
+===LADDER===
+ LADDER:place, updown
+
+Places a ladder up or down at the given place. See also {{sa|STAIRS}}.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>updown</tt> is either <tt>up</tt> or <tt>down</tt>, denoting the direction of the stairs.
+
+Example:
+ LADDER:(11,05),down
+
+===GOLD===
+ GOLD:place, amount
+
+Places amount of gold in place.
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>amount</tt> is any positive integer number.
+
+Example:
+ GOLD:(5,5),12345
+
+==ROOM-type levels==
+
+Room-type levels begin with {{sa|LEVEL}}, followed by optional {{sa|FLAGS}}, optional {{sa|INIT_MAP}}, 0 or more {{sa|MESSAGE}}s, followed by optional random register initializers ({{sa|RANDOM_MONSTERS}} and {{sa|RANDOM_OBJECT}}), followed by 0 or more {{sa|ROOM}} and {{sa|SUBROOM}} definitions (and the contents for those rooms), followed by {{sa|RANDOM_CORRIDORS}}.
+
+That is:
+*{{sa|LEVEL}}
+*{{sa|FLAGS}}, optional
+*{{sa|INIT_MAP}}, optional
+*{{sa|MESSAGE}}, 0 or more
+*{{sa|RANDOM_MONSTERS}}, optional
+*{{sa|RANDOM_OBJECTS}}, optional
+**{{sa|ROOM}}, 0 or more
+**contents for the room (monsters, objects, traps, etc.)
+**{{sa|SUBROOM}}, 0 or more
+***contents for the subroom (monsters, objects, traps, etc.)
+*{{sa|RANDOM_CORRIDORS}}
+
+It's not possible to define arbitrarily shaped rooms with this type of level.
+
+===LEVEL===
+
+ LEVEL: "name"
+
+<tt>"name"</tt> is the unique file name for this level. Can be up to 8 chars long. This file name is defined by the way this level is defined in [[Dungeon.def format|dungeon.def]].
+
+Example:
+ LEVEL: "oracle"
+
+===RANDOM_CORRIDORS===
+
+ RANDOM_CORRIDORS
+
+Creates random corridors between the rooms in the level, so that all rooms are accessible.
+
+===ROOM===
+
+ ROOM: "type" [chance], lighted, pos, align, size
+
+Creates a room. The room will be placed on a position defined both by pos and align. pos defines the rough position (in a 5-by-5 grid on the screen), and align defines the room position within that. NOTE: Creation of a randomly located room may fail, especially if there's little free space to fit it on the level. Contents of such a room won't be created either.
+
+*<tt>"type"</tt> is one of the [[#Room types|room types]], in double quotes.
+*<tt>chance</tt> is optional; if type is something other than "ordinary", this represents the chance (in percent) that the room will actually be generated as this special room type. Otherwise it will be an ordinary room.
+*<tt>lighted</tt> is one of <tt>lit</tt>, <tt>unlit</tt> or <tt>random</tt>.
+*<tt>pos</tt> is either <tt>random</tt> or <tt>(xpos, ypos)</tt>, where both <tt>xpos</tt> and <tt>ypos</tt> are between 0 and 5. This is an approximate position.
+*<tt>align</tt> is either <tt>random</tt> or <tt>(xalign, yalign)</tt> and is the room alignment within the <tt>pos</tt>.
+**<tt>xalign</tt> is one of <tt>left</tt>, <tt>half-left</tt>, <tt>center</tt>, <tt>half-right</tt>, <tt>right</tt> or <tt>random</tt>
+**<tt>yalign</tt> is one of <tt>top</tt>, <tt>center</tt>, <tt>bottom</tt> or <tt>random</tt>.
+*<tt>size</tt> is either <tt>random</tt> or <tt>(width, height)</tt>.
+
+You can also give one additional parameter, which can either be <tt>true</tt> or <tt>false</tt>. This tells whether the room will get stocked by objects and monsters it would normally get (such as shopkeepers and items for sale for shops).
+
+Example:
+ ROOM: "ordinary", random, random, random, random
+ ROOM: "ordinary", lit, (3,3), (center,center), (11,9)
+
+===SUBROOM===
+
+ SUBROOM: "type", lighted, pos, size, "parent"
+
+Creates a room inside previously defined ROOM.
+
+*<tt>"type"</tt> is one of the [[#Room types|room types]].
+*<tt>lighted</tt> is one of <tt>lit</tt>, <tt>unlit</tt> or <tt>random</tt>.
+*<tt>pos</tt> is either <tt>random</tt> or <tt>(xpos, ypos)</tt>, where <tt>xpos</tt> and <tt>ypos</tt> define the absolute position of this subroom inside the parent room. (0,0) is the upper left corner of the parent.
+*<tt>size</tt> is either <tt>random</tt> or <tt>(width, height)</tt>.
+*<tt>"parent"</tt> is the name of the parent room, as defined with {{sa|NAME}}.
+
+You can also give one additional parameter, which can either be <tt>true</tt> or <tt>false</tt>. This tells whether the room will get stocked by objects and monsters it would normally get (such as shopkeepers and items for sale for shops).
+
+Example:
+ SUBROOM:"shop",lit,(10,10),(3,3),"town"
+ SUBROOM:"ordinary",random,(19,2),(2,2),"town"
+
+===NAME===
+
+ NAME: "string"
+
+Names the previously defined ROOM or SUBROOM. Subrooms need to know the name of their parent room, this has no other meaning.
+
+Example:
+ NAME: "town"
+
+===CHANCE===
+
+ CHANCE: int
+
+Assigns a creation chance to the previously defined ROOM or SUBROOM. The room walls and doors will get created no matter what, this just tells whether the room contents will be created. <tt>int</tt> should be in the 0-100 range. Only non-ordinary rooms can have this.
+
+Example:
+ CHANCE: 90
+
+===Room DOOR===
+
+ DOOR: secret, state, wall, pos
+
+Creates a door with certain state on the previously defined ROOM or SUBROOM. Note that Room DOOR format is different from MAZE-level {{sa|DOOR}}.
+
+*<tt>secret</tt> can be <tt>true</tt>, <tt>false</tt> or <tt>random</tt>
+*<tt>state</tt> is one of the following: <tt>nodoor</tt>, <tt>locked</tt>, <tt>closed</tt>, <tt>open</tt> or <tt>random</tt>
+*<tt>wall</tt> is one of the following: <tt>north</tt>, <tt>east</tt>, <tt>south</tt> or <tt>west</tt> and tells on what wall of the room the door will be created.
+*<tt>pos</tt> is either <tt>random</tt> or a positive integer, and tells how far from top or left the door will be.
+
+Example:
+ DOOR: false, closed, south, random
+
+===Common syntax===
+
+The following commands are common to both MAZE and ROOM-type levels. For the MAZE levels, the coordinates used are the previously defined MAP, for ROOM-levels, it's either the previously defined ROOM or SUBROOM.
+
+===ALTAR===
+ ALTAR:place,align,type
+
+Places an altar in the previously defined map or ROOM or SUBROOM.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>align</tt> is either <tt>noalign</tt>, <tt>law</tt>, <tt>neutral</tt>, <tt>chaos</tt>, <tt>coaligned</tt>, <tt>noncoaligned</tt>, <tt>random</tt> or an alignment register <tt>align[N]</tt>, where N can be either 0,1 or 2.
+*<tt>type</tt> is one of <tt>sanctum</tt>, <tt>shrine</tt>, <tt>altar</tt> or <tt>random</tt>
+
+Example:
+ ALTAR:(50,14),chaos,altar
+ ALTAR:place[0],noalign,altar
+ ALTAR:(07,09),align[0],sanctum
+
+===CONTAINER===
+
+This defines a container that you can put items in. It accepts exactly the same parameters as {{sa|OBJECT}}. Normal content generation for this object is suppressed.
+
+Example:
+ CONTAINER:('(',"chest"),(5,5){
+ OBJECT:('/',"wishing") }
+
+===ENGRAVING===
+ ENGRAVING:place, type, "text"
+
+Creates an engraving on the floor.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>type</tt> is one of <tt>dust</tt>, <tt>engrave</tt>, <tt>burn</tt>, <tt>mark</tt> or <tt>random</tt>. <tt>mark</tt> is the type used for graffiti.
+*<tt>"text"</tt> is the text engraved on the floor.
+
+Example:
+ ENGRAVING:(12,03), engrave, "You are now entering the Gnome King's wine cellar."
+
+===FOUNTAIN===
+ FOUNTAIN:place
+
+Places a fountain on the map.
+
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Example:
+ FOUNTAIN:(10,08)
+
+===GRAVE===
+ GRAVE:place,message
+
+Places a [[headstone]] on the map.
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>message</tt> is either a string which will be the epitaph on the grave, <tt>random</tt> (to place a random epitaph), or it can be left off entirely, in which case the grave will be blank.
+
+Examples:
+ GRAVE:(10,18),"Epitaph goes here"
+ GRAVE:(10,18),random
+ GRAVE:(10,18)
+
+===MONSTER===
+ MONSTER:'X',"monst",place
+
+*<tt>'X'</tt> is the monster class symbol, or <tt>random</tt>, or a {{sa|RANDOM_MONSTERS}} index
+*<tt>"monst"</tt> is the specific monster, or <tt>random</tt>
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Other things you can add to the monster definition:
+*<tt>hostile</tt> or <tt>peaceful</tt>
+*<tt>asleep</tt> or <tt>awake</tt>
+*For mimics and other shapechangers you can also add the following:
+**<tt>m_feature "[[dungeon_feature]]"</tt> to force the mimic to be a dungeon feature.
+**<tt>m_object "object_name"</tt> to force the mimic to be an object. object_name is the name of an object as they are in [[objects.c]]
+**<tt>m_monster "monster_name"</tt> to force the shapechanger to be a certain monster.
+*<tt>"Name"</tt> to name the monster.
+
+Optionally, you can put <tt>[NN%]</tt> right after <tt>MONSTER</tt> to make the monster generation optional. NN is a percentage chance of the monster being generated when the level is created.
+
+Examples:
+ MONSTER:'v',"dust vortex",(42,05)
+ MONSTER:'E',"earth elemental",(39,06),peaceful
+ MONSTER:'&',"Pestilence",place[0],hostile
+ MONSTER:random,random,random
+ MONSTER:random,random,(01,01), asleep
+ MONSTER:monster[0],random,(27,05)
+ MONSTER:'m',"giant mimic",place[1],m_feature "fountain"
+ MONSTER:'m',random,place[0], m_object "luckstone"
+ MONSTER:'@',"rogue",(35,06),peaceful,"Pug"
+ MONSTER[50%]:'P', "green slime", random
+
+===OBJECT===
+ OBJECT:('X',"name"),place
+
+Each map-part can contain any number of object definitions.
+*<tt>'X'</tt>: a character denoting one of the object classes.
+*<tt>"name"</tt>: either an object name as listed in [[objects.c]], or <tt>random</tt>
+*<tt>place</tt>: either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>, or <tt>contained</tt>. If contained, then this object will be placed in the previously defined {{sa|CONTAINER}}.
+
+Optional stuff you can add to the object definition:
+
+*<tt>cursestate, "monster_id", spe</tt>
+*<tt>cursestate, spe</tt>
+*<tt>"monster_id", spe</tt>
+*<tt>name:"name_given_object"</tt>
+*<tt>quantity:int</tt>
+
+Where
+*<tt>cursestate</tt> is one of <tt>blessed</tt>, <tt>uncursed</tt>, <tt>cursed</tt> or <tt>random</tt>.
+*<tt>"monster_id"</tt> is a monster type, as defined in [[monst.c]]
+*<tt>spe</tt> is an integer, and defines different things depending on what kind of object is generated:
+**enchantment for [[armor]] and [[weapon]]s
+**charges for [[wands]], [[rings]], [[magic marker]]s and everything else that has charges.
+**historic and gender bit for [[statue]]s. 1 is historic, 2 is male, 4 is female. Adding the values together is possible, so you can create eg. historic, male statue with value 3 and historic, female with 5. Leaving the gender specification out will either result in a random gender, or if the monster is always of certain gender, then the statue will be that gender too. (eg. nymphs)
+**[[tin]]s: 1 means spinach, -1 is home-made.
+**[[container]]s: 1 means the box contains Shroedinger's cat.
+**[[oil lamp]]s and [[candle]]s: 0 means the lamp is out of oil.
+**[[Candelabrum]]: how many candles are attached to it.
+**[[scroll of mail]]: 1 means it was not delivered to current player.
+**[[egg]]s: 1 means hero laid it.
+**[[chest]]s: 2 means it's a royal coffer in a [[throne room]].
+*<tt>name:"name_of_object"</tt> gives the object a name as though the #name command had been used.
+*<tt>quantity:int</tt> specifies the quantity of objects just defined to be created.
+
+Optionally, you can put <tt>[NN%]</tt> right after <tt>OBJECT</tt> to make the object generation optional. NN is a percentage chance of the object being generated when the level is created.
+
+Examples:
+ OBJECT:('%', "food ration"), random
+ OBJECT:('*', random), (10,10)
+ OBJECT:'?', "genocide", place[0]
+ OBJECT[10%]:('"', "amulet of life saving"), random
+ OBJECT:('%', "corpse"), random, "archeologist", 0
+ OBJECT[50%]:(')', "scimitar"), contained, blessed, +2
+ OBJECT:'`', "statue", (0,0), "forest centaur", 1
+ OBJECT:('(', "crystal ball"), (17,08), blessed, 5,name:"The Orb of Fate"
+ OBJECT:('%',"egg"), (05,04), montype:"yellow dragon"
+
+===SINK===
+ SINK:place
+
+Places a sink on the map.
+*<tt>place</tt> is either a pair of coordinates, a terrain selection, or random.
+
+===STAIR===
+ STAIR:place, updown
+
+Places a stair up or down at the given coordinates. See also {{sa|STAIR-region}} and {{sa|LADDER}}.
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+*<tt>updown</tt> is either <tt>up</tt> or <tt>down</tt>, denoting the direction of the stairs.
+
+Example:
+ STAIR:(70,08), up
+ STAIR:random, down
+ STAIR:place[3], up
+
+===TRAP===
+ TRAP:"name",place
+
+*<tt>"name"</tt> is the [[#Trap names|trap's name]], or <tt>random</tt>
+*<tt>place</tt> is either a pair of coordinates, a {{sa|RANDOM_PLACES}} place, or <tt>random</tt>
+
+Optionally, you can put <tt>[NN%]</tt> right after <tt>TRAP</tt> to make the trap generation optional. NN is a percentage chance of the trap being generated when the level is created.
+
+Examples:
+ TRAP:"hole",(12,10)
+ TRAP:"anti magic",random
+ TRAP:random,random
+ TRAP[25%]:"polymorph",random
+
+===Map characters===
+{|class="prettytable striped"
+!character
+![[dungeon feature]]
+|-
+|<tt>' '</tt>
+|solid wall
+|-
+|<tt>'#'</tt>
+|corridor
+|-
+|<tt>'.'</tt>
+|room floor (Unlit, unless lit with {{sa|REGION}}-command)
+|-
+|<tt>'-'</tt>
+|horizontal wall
+|-
+|<tt>'&#124;'</tt>
+|vertical wall
+|-
+|<tt>'+'</tt>
+|door (State is defined with {{sa|DOOR}} -command)
+|-
+|<tt>'A'</tt>
+|air
+|-
+|<tt>'B'</tt>
+|crosswall / boundary symbol hack (See {{sa|REGION}})
+|-
+|<tt>'C'</tt>
+|cloud
+|-
+|<tt>'S'</tt>
+|secret door
+|-
+|<tt>'H'</tt>
+|secret corridor
+|-
+|<tt>'{'</tt>
+|fountain
+|-
+|<tt>'\'</tt>
+|throne
+|-
+|<tt>'K'</tt>
+|sink
+|-
+|<tt>'&#125;'</tt>
+|moat
+|-
+|<tt>'P'</tt>
+|pool of water
+|-
+|<tt>'L'</tt>
+|lava pool
+|-
+|<tt>'I'</tt>
+|ice
+|-
+|<tt>'W'</tt>
+|water
+|-
+|<tt>'T'</tt>
+|tree
+|-
+|<tt>'F'</tt>
+|iron bars
+|}
+
+===Trap names===
+"anti magic", "arrow", "bear", "board", "dart", "falling rock", "fire", "hole", "land mine", "level teleport", "magic portal", "magic", "pit", "polymorph", "rolling boulder", "rust", "sleep gas", "spiked pit", "statue", "teleport", "trap door", "web"
+
+===Room types===
+"ordinary", "throne", "swamp", "vault", "beehive", "morgue", "barracks", "zoo", "delphi", "temple", "anthole", "cocknest", "leprehall", "shop", "armor shop", "scroll shop", "potion shop", "weapon shop", "food shop", "ring shop", "wand shop", "tool shop", "book shop", "candle shop"
+
+== See also ==
+* [[Des-file format (NetHack 3.4.3)]]
+* [[Des-file format (UnNetHack)]]
+
+[[Category:Annotations]]
+{{nethack-360}}}
+&&%s&& %s Hack {93145 2015-04-07T19:34:23Z {0 }  {{NetHack Versions}}
+* To '''hack''' something is to cut or slice at it without care to precision. For example, you could [[wield]] a [[weapon]] and hack a [[monster]]. See '''[[melee]]'''.
+* The game of '''''Hack''''' was a clone of ''[[Rogue (game)|Rogue]]'' named for the gameplay of hacking monsters. This game is the direct ancestor of ''[[NetHack]]''. [[Jay Fenlason]] started this game; see '''[[Jay Fenlason's Hack]]'''. [[Andries Brouwer]] made several changes and distributed the game over [[Usenet]]; see '''[[Hack 1.0]]''' through '''[[Hack 1.0.3]]'''. It was [[Mike Stephenson]] who added the "Net" prefix to distinguish the later game.
+* The Jargon File approximates a '''hack''' as ''"an appropriate application of ingenuity"''. This term is popular among computer programmers who hack on [[source code]] to make it do something. The end result of hacking on NetHack is often a '''[[patch]]'''.
+
+References: [http://www.dict.org/bin/Dict?Form=Dict2&Database=*&Query=hack hack (dict.org)], [http://www.catb.org/jargon/html/meaning-of-hack.html The Meaning of 'Hack' (Jargon File 4.4.7)].
+
+{{disambig}}}
+&&%s&& %s Category:Public servers {10235 2006-09-10T17:55:58Z {239 Eidolos} Blurb, [[Category:Community]]. This category is for [[NetHack]] and [[SLASH'EM]] [[public server]]s.
+
+[[Category:Community]]}
+&&%s&& %s Properties {10250 2006-09-10T23:06:21Z {396 Jayt} Redirecting to [[Property]] #REDIRECT [[Property]]}
+&&%s&& %s Difficulty {128541 2019-10-06T18:11:01Z {4000693 Phol ende wodan} This should not redirect to monster difficulty alone. Make disambiguation page. '''Difficulty''' can refer to:
+* [[Monster difficulty]], an attribute which controls monster generation
+* [[Level difficulty]], a number related to [[dungeon level]]
+* [[Role difficulty]], the relative challenge of winning with a given role
+
+
+{{disambig}}}
+&&%s&& %s Category:Monster attributes {96800 2015-10-02T14:09:55Z {4000596 Train}  
+{{todo|Define the boundaries of this category more fully. Define an "attribute" as opposed to a "property". Consider making this a sub-category of [[:Properties]].}}
+
+This category contains articles about the attributes of [[monster]]s.
+
+[[Category:Monsters]]}
+&&%s&& %s Score points {10262 2006-09-11T11:48:04Z {924 ZeroOne} #REDIRECT [[Score]] #REDIRECT [[Score]]}
+&&%s&& %s Category:Sokoban {74661 2011-11-05T15:07:40Z {27 Ais523} Undo revision 74610 by [[Special:Contributions/99.239.146.253|99.239.146.253]] ([[User talk:99.239.146.253|talk]]); Sokoban levels are special levels, and should appear in the category somehow This category is for all things related to [[Sokoban]].
+
+[[Category:Special levels]]
+[[Category:Dungeon branches]]}
+&&%s&& %s Astral Plane {150063 2023-03-05T16:07:35Z {4001279 Umbire the Phantom} Undo revision 149826 by [[Special:Contributions/MrSurvivor1997|MrSurvivor1997]] ([[User talk:MrSurvivor1997|talk]]) {{level|Astral Plane|
+ |branch=End Game
+ |from=-5
+ |to=-5
+ |bones=no
+ |mapping=no
+ |teleport=no
+ |digfloor=no
+ |digwalls=no
+}}
+The '''Astral Plane''' is the final level of ''[[NetHack]]''. In order to win, you must bring the [[Amulet of Yendor]] to the [[high altar]] of your [[alignment]] and #[[offer]] it to your [[deity]]. High altars cannot be converted, but it is possible to fool the gods by wearing a [[helm of opposite alignment]] to match your alignment to that of the altar.
+
+The Astral Plane is home to the three [[Riders]]&mdash;Death, Pestilence, and Famine&mdash;and to large numbers of [[aligned priest]]s, [[Angel]]s, and [[player monster]]s.
+
+==Map==
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[you|{{white|@}}]]
+R=[[door|{{red|+}}]]
+&=[[Riders|{{magenta|&}}]]
+P=[[high priest|{{white|@}}]]
+
+                              ---------------                              
+                              |.............|                              
+                              |..---------..|                              
+                              |..|.......|..|                              
+---------------               |..|.......|..|               ---------------
+|.............|               |..|..._...|..|               |.............|
+|..---------..--   ---------  |..|...P...|..|  ---------   --..---------..|
+|..|.......|...-- --.......-- |..|.......|..| --.......-- --...|.......|..|
+|..|.......|....---.........--|..----R----..|--.........---....|.......|..|
+|..|..._...+.....+.....&.....||.............||.....&.....R.....+..._...|..|
+|..|...P...|....---.........-----.........-----.........---....|...P...|..|
+|..|.......|...-- --.......--   -----+-----   --.......-- --...|.......|..|
+|..---------..--   ----R----    --.......--    ----R----   --..---------..|
+|.............|      |...--------.........--------...|      |.............|
+---------------      |.........|.....&.....|.........|      ---------------
+                     -------.@.--.........--.@.-------                     
+                           |....--.......--....|                           
+                           ---...----+----...---                           
+                             |...............|                             
+                             -----------------                             
+</replacecharsblock></div>
+
+The player enters the Astral Plane from a [[magic portal]] on the [[Plane of Water]] and will come out at one of the two spots marked with {{white|@}}. Doors marked in red are locked. Each half of the lower hall has an independent 60% chance of being replaced with a room, as such:
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[you|{{white|@}}]]
+R=[[door|{{red|+}}]]
+
+   ----R----    --....
+------...--------.....
+|..............|......
+|............@.--.....
+|...............--....
+|................----+
+|.....................
+----------------------
+</replacecharsblock></div>
+
+The three altar rooms are [[temple]]s containing the high altars, randomly assigned to lawful, neutral, and chaotic alignments (one of each), with an appropriately aligned peaceful [[high priest]] in each room. The three Riders are randomly assigned to the three round rooms, one to each. Also in each round room are four [[aligned priest]]s and two [[Angel]]s of Moloch. Each of the halls surrounding the temple rooms contains six priests and six Angels, two each of each alignment. The lower hall contains 4-9 hostile Angels of Moloch, and about half as many hostile random monsters. The level also contains three random {{mcsl|D}}, three random {{mcsl|L}}, three random {{mcsl|V}}, and 3-6 random [[player monster]]s.
+
+Coaligned priests and Angels may be peaceful. Hostile coaligned priests and Angels will be labeled "renegade", and there is no penalty for killing these priests as there is for killing other coaligned priests.
+
+Upon arriving at the Astral Plane, you may be sent tame or hostile Angels. If you are generating [[conflict]], your god will send one to four hostile Angels to fight you (and each other). If you are not generating conflict, and your [[alignment record]] is at least 9, your god will instead send a tame guardian Angel to assist you. This Angel will vanish and be replaced with the hostile ones if you later generate conflict in its presence.
+
+==Strategy==
+===On arrival===
+Try to be satiated when entering the Astral Plane as protection against Famine - though it abuses [[dexterity]], but that won't matter when you're going to ascend in a few minutes.
+
+When you enter the Astral Plane, you may need to deal with the multitude of hostile Angels in the first variant. Additionally, any master or arch-liches will quickly teleport to your location, and if you were generating conflict on arrival there will be the additional conflict Angels. After this, you may have a few moments of quiet to plan your final moves. The Riders ''usually'' cannot get to your starting location immediately, but it is possible for them to make a beeline for the door and open it.
+
+Identifying which Riders are in which rooms is important. Since the high altars are distributed at random, it is reasonable to start with the easiest target and go from there. A blessed [[potion of monster detection]] or the {{spell of|detect monsters}} spell cast at Skilled or Expert is best, but intrinsic [[telepathy]] will also do. Most players regard Pestilence as the most dangerous opponent, and Famine as the least, though your ranking may vary based on play style and equipment (e.g., Pestilence is vulnerable to death rays, while Death is not). The Riders are able to push monsters out of their way to get to you; killing them will buy you a few turns to get away from the corpse.
+
+===Moving===
+The Astral Plane's biggest danger is getting bogged down in the open, surrounded by opponents, while one or more of the Riders slowly push monsters aside and approach you. Thus, it is important to keep moving and avoid being surrounded. Opening doors quickly is important to keep moving. All doors start locked, and even at maximum strength they may resist multiple times. A [[wand of digging]] will always raze a door, allowing you to pass through diagonally, and will not be reflected by monsters in its path. Alternatively, a [[wand of opening]] or spell of [[knock]] will preserve the door, allowing you to lock it behind you to prevent most monsters from following you. The Riders can unlock a locked door, but are still restricted from moving diagonally, which can buy you a few turns.
+
+[[Jumping]] is a very powerful technique, since it allows you to cross many empty spaces in a single turn. There are two main ways to retain very fast [[speed]] while jumping: either wear [[speed boots]] and cast the {{spell of|jumping}} spell, or wear [[jumping boots]] and use [[potion of speed|potions of speed]] or the {{spell of|haste self}} spell. Using the jumping spell will consume more of your magical [[power]], but at expert skill it also allows you to make longer jumps. If you intend to do this, you should use the [[Candelabrum of Invocation]] or the {{spell of|light}} spell to illuminate your destination, since ordinary light sources will not reach expert jumping's maximum distance.
+
+The [[wand of teleportation]] is extremely useful for clearing paths through the monsters on the Astral Plane, and multiple wands work especially in conjunction with [[jumping]] and fast or better [[speed]]. Many players try to save their teleport wands for this occasion - be careful not to hit any of the Riders or their corpses with the beam, as the Rider will very likely appear next to you.
+
+===Finding the correct high altar===
+If you have a [[helm of opposite alignment]] in inventory and are willing to change teams at the last moment, you have a {{frac|2|3}} chance of ascending at the first altar you reach, and you are guaranteed to ascend at the second one. This effectively means you can pick any one temple or Rider and completely rule out the need to visit it. For neutral characters, a particular helm will either make you lawful or chaotic, even if you remove and put it back on multiple times. You could carry more than one helm if you have not predetermined their associated alignments to increase your odds of ascending at the first altar - be sure you are able to uncurse the helm, though.
+
+High priests are identifiable once you have reached their altar. If you try to [[chat]] with them while carrying no gold, the two cross-aligned priests will "not be interested", but the co-aligned one will go through the usual [[donation]]s routine (or give you "two bits for an ale", presumably just before you offer the Amulet and ascend to immortality). You can also use the [[near look]] command ({{kbd|:}}) while on top of the altar to determine which it is; this is most ideal for [[atheist]] conduct. In addition, note that adjacent monsters who respect [[sanctuary]] may flee if you are in the correct temple.
+
+===Special tactics===
+A creative strategy for thinning the hordes is to [[reverse genocide]] [[purple worm]]s, [[taming|tame]] them, then teleport them.
+
+Most creatures on the Astral Plane (with the notable exception of the Riders) are vulnerable to stoning attacks. If you can save a wish this long, wishing for a "blessed partly eaten chickatrice corpse" will allow you to mow down most opponents. Reverse genocide is another option, and you can do it in the Plane of Water just before entering the portal.
+
+[[Scroll of earth|Scrolls of earth]] will have no effect in the Astral plane. The only ways to obtain [[boulder]]s are either wishing (one by one), or polymorphing statues repeatedly until they turn into boulders. [[Reverse genocide]]d giants will not carry boulders, but giants created through a [[create monster]] effect can, if one has patience and no source of polymorph or wishing. Boulders can also be carried by a character polymorphed into a giant, and tame giants with boulders in their inventory can be brought onto the Astral Plane easily with a magic whistle (perhaps via taming the fire giants on the Plane of Fire). Boulders can then be used to keep monsters from entering the temples, or for [[Farming#Death farming|Death farming]].
+
+===Surviving===
+The priests are likely to use the [[summon insects]] spell on you. Like in the [[Sanctum]], you can use this to your advantage&mdash;the relatively harmless ants and beetles can shield you from the more dangerous priests and Angels. This will only partially shield you from the Riders.
+
+If you have the ability to cast spells, remember that the [[Amulet of Yendor]] will drain more power from you than normal. Dropping the Amulet to the ground before spellcasting preserves power at the cost of time spent dropping and picking it up. The {{spell of|magic missile}} spell is very powerful at high experience levels, especially if you are a [[Knight]] and are carrying [[the Magic Mirror of Merlin]]. Typically only Angels will resist magic missiles, and even the Riders will succumb quickly to a few casts. It takes less energy to make three missile attacks than to cast a single [[finger of death]].
+
+Good rings to wear on the Astral Plane are {{of|ring|free action|and=1|conflict}}. Wearing the ring of conflict will cause hostile angels to spawn around you instead of a tame one; however, they are usually avoidable, since they will often fight each other instead of you.
+
+Above all, pay attention! It is easy to get distracted by all the tumult and not notice, say, that Pestilence has made you sick and there is a timer running on your life. You still have as much time between turns as you need, inventory is still a "free" action, and so forth. Don't get so excited that you lose your cool.
+
+[[Image:Two_Bits.JPG|frame|center|A touching gesture from the High Priest of Ishtar as a Caveman prepares for immortality.]]
+
+==Origin==
+{{Wikipedia|Astral plane}}
+The astral plane, also called the "astral realm" or the "astral world", is a plane of existence postulated by various philosophies and religions. The term was popularized in the late 19th and early 20th century.
+
+It is often believed to be the world of the celestial spheres, crossed by the soul in its astral body on the way to being born and after death; another view holds that it is the entirety of spirit existence or spirit worlds where all consciousness resides, where those on Earth go when they die. It is generally populated by angels, spirits or other immaterial beings. 
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], the Riders do not have the ability to displace other monsters, so it is possible to shield yourself from them by letting weaker enemies surround you or deliberately placing sessile monsters at choke points.
+
+[[Unicorn horn]]s must be enchanted to work reliably, so make sure to bring a highly enchanted unicorn horn to deal reliably with [[Pestilence]]'s sickening attack.
+
+Because SLASH'EM introduces some powerful insects, the summon insects spell is much more annoying. Planning to cut through the insects with your melee weapon is not very practical. Make sure to bring enough [[wand of teleport|wands of teleportation]].
+
+===xNetHack===
+In [[xNetHack]], the Astral Plane is fully lit, eliminating the need to use a light source for [[jumping]]. Also, the random [[Vampire|{{white|V}}]] and [[Lich|{{white|L}}]] are replaced with random [[Angelic being|{{white|A}}]], so the player is much more likely to be faced with one or more [[Archon]]s.
+
+{{DOD}}
+{{nethack-366}}
+[[Category:Planes]]}
+&&%s&& %s Category:Planes {74662 2011-11-05T15:08:12Z {27 Ais523} Undo revision 74609 by [[Special:Contributions/99.239.146.253|99.239.146.253]] ([[User talk:99.239.146.253|talk]]); the Planes are all special levels, and so should appear in the category somehow This article is for the four [[Elemental Planes]] and the [[Astral Plane]].
+
+[[Category:Special levels]]
+[[Category:Dungeon branches]]}
+&&%s&& %s Astral plane {10292 2006-09-12T05:06:18Z {239 Eidolos} [[Astral plane]] moved to [[Astral Plane]]: Capitalization of Plane. #REDIRECT [[Astral Plane]]}
+&&%s&& %s Spoiler {146872 2022-07-21T14:13:56Z {4001279 Umbire the Phantom}  Generally, a '''spoiler''' is anything which reveals an ending or ruins a surprise. In the [[NetHack]] sense, a spoiler is a file documenting the behaviour of the game in great detail. Hundreds of different spoilers exist, from tables of weapons and monsters, to [[FAQ]]s, to comprehensive guides. Many are now out of date; be sure to check which version of NetHack the spoiler was written for.
+
+NetHackWiki articles, collectively, constitute a spoiler.
+
+Contrary to popular belief, it is possible to [[ascend]] without consulting spoilers. The [[Guidebook]] is generous if you pay close enough attention, [[The Oracle]] provides clues to the more arcane aspects of the game, and sheer bloody-minded persistence will see you through eventually. The first well-documented instance of a totally unspoiled player ascending is in [http://groups.google.com/group/rec.games.roguelike.nethack/msg/7568ea5e7052e214? this RGRN post.]
+
+==External links==
+* [http://www.steelypips.org/nethack/ Steelypips.org] hosts a NetHack site, run by Kevin Hugo and dedicated to spoilers for versions of the game up to 3.4.3.
+
+==See also==
+*[[:Category:Spoiler files|Spoiler files]]
+{{stub}}
+{{nethack-366}}
+[[Category:Strategy]]}
+&&%s&& %s FAQ {10300 2006-09-12T10:42:03Z {396 Jayt} Redirecting to [[Frequently asked questions]] #REDIRECT [[Frequently asked questions]]}
+&&%s&& %s Ascend {10301 2006-09-12T10:43:22Z {396 Jayt} Redirecting to [[Ascension]] #REDIRECT [[Ascension]]}
+&&%s&& %s Time {147183 2022-08-03T22:14:00Z {4001279 Umbire the Phantom} specifying in-article The real-world '''time''', '''date''' and '''moon phase''' affect gameplay. All are determined by your system clock. Technically it is possible to change the clock to get a desired moon phase or time, but this is considered [[cheating]].
+
+=={{anchor|Moon phase}}Moon phase and date==
+{{moon phase}}
+
+Just as in real life, the NetHack world goes through several '''phases of the moon'''. {{refsrc|hacklib.c|564}} These have an effect on gameplay.
+
+The date is only checked when the game is started or restored; if you keep playing without saving, you'll continue to see the effects even after the relevant period has passed (or not see the effects even though it has been reached). NetHack divides the month into eight phases of three or four days each; thus the full and new moon will be reported for a rather longer time than your calendar might depict.
+
+During a '''full moon''':
+
+* Your base [[Luck]] is increased by one.{{refsrc|timeout.c|166}} ('''"You are lucky! Full moon tonight."''')
+* [[Werecreature]]s, especially at night, will usually be in their animal form.{{refsrc|were.c|18}}
+* [[Dog]]s will howl at night when #[[chat]]ted to.{{refsrc|sounds.c|546}}
+* You have a chance of not being able to tame dogs at night; failed attempts will still pacify them, and you can try repeatedly.{{refsrc|dog.c|759}}
+
+During a '''new moon''':
+
+* You get the message '''"Be careful! New moon tonight."'''
+* Contrary to popular belief, Luck is not decreased.{{refsrc|allmain.c|33}}
+* If a [[cockatrice]] uses its hissing attack and you have no [[lizard]] [[corpse]], you will always start turning into stone, rather than having a 1-in-10 chance.{{refsrc|mhitu.c|1190}}
+{{upcoming|NetHack 3.7.0|Carrying a lizard corpse no longer negates the effect of a new moon on cockatrice hisses, as of {{commit|8a9dc00cde2cfe305c156a99a1d83129fe33e76e|commit 8a9dc00}}.}}
+
+NetHack knows when it is '''Friday the 13th''', and decreases your base Luck by one accordingly.{{refsrc|timeout.c|168}} The game gives a warning message: '''"Watch out! Bad things can happen on Friday the 13th."''' 
+
+If Friday the 13th happens to be a full moon, the modifiers to base Luck will cancel each other out. Between 1995 and 2025, Friday the 13th has occurred or will occur during (NetHack's definition of) a new or full moon on the following days:
+
+{| class="wikitable" style="float:left"
+! Date !! Year !! Phase
+|-
+|September 13 || 1996 || '''new'''
+|-
+|February 13 || 1998 || '''full'''
+|-
+|March 13 || 1998 || '''full'''
+|-
+|August 13 || 1999 || '''new'''
+|-
+|October 13 || 2000 || '''full'''
+|-
+|June 13 || 2003 || '''full'''
+|-
+|March 13 || 2009 || '''full'''
+|}
+
+{| class="wikitable" style="float:left"
+! Date !! Year !! Phase
+|-
+|June 13 || 2014 || '''full'''
+|-
+|November 13 || 2015 || '''new'''
+|-
+|January 13 || 2017 || '''full'''
+|-
+|July 13 || 2018 || '''new'''
+|-
+|September 13 || 2019 || '''full'''
+|-
+|October 13 || 2023 || '''new'''
+|-
+|June 13 || 2025 || '''full'''
+|}
+
+{{clear}}
+
+The [[NAO]] [https://alt.org/nethack/moon/pom.txt phase of moon page] shows both the current phase of the moon and when it will next be full moon.
+
+==Time==
+'''Night''' is 22:00 - 05:59 (10:00pm - 5:59am) according to your local clock, or according to the server's clock if playing remotely. At night:
+
+* Your chance of changing into your animal form when you have [[lycanthropy]] is one in every 60 moves instead of once in every 80 moves.{{refsrc|allmain.c|241}}
+* [[Gremlin]]s can steal [[intrinsics]].{{refsrc|mhitu.c|1428}}
+* Werecreatures can summon more easily, and are more likely to be in their animal form, particularly when the moon is full.
+
+'''Midnight''' is 0:00 - 0:59. At midnight:
+
+* [[Undead]] do twice as much damage.{{refsrc|mhitu.c|907}}
+* You get a different message when entering a [[graveyard]]. ("Run away! Run away!" instead of "You have an uncanny feeling..."){{refsrc|hack.c|1759}}
+
+Additionally, [[vampire]]s can give [[Talking to vampires|different messages]] when #chatted to at night and midnight.
+
+==Strategy==
+While changing the system clock is most certainly cheating, you may prefer to stop playing at night when around hostile gremlins, or at midnight when clearing out a graveyard.
+
+==References==
+<references/>
+
+{{DOD}}
+{{nethack-343}}
+[[Category:Strategy]]}
+&&%s&& %s Friday the 13th {10311 2006-09-12T11:18:30Z {396 Jayt} Redirecting to [[Time]] #REDIRECT [[Time]]}
+&&%s&& %s Watch out! Bad things can happen on Friday the 13th {10312 2006-09-12T11:19:13Z {396 Jayt} Redirecting to [[Time]] #REDIRECT [[Time]]}
+&&%s&& %s You are lucky! Full moon tonight {10314 2006-09-12T11:22:48Z {396 Jayt} Redirecting to [[Time]] #REDIRECT [[Time]]}
+&&%s&& %s Be careful! New moon tonight {10315 2006-09-12T11:23:16Z {396 Jayt} Redirecting to [[Time]] #REDIRECT [[Time]]}
+&&%s&& %s Night {10316 2006-09-12T11:24:03Z {396 Jayt} Redirecting to [[Time]] #REDIRECT [[Time]]}
+&&%s&& %s Midnight {10317 2006-09-12T11:24:10Z {396 Jayt} Redirecting to [[Time]] #REDIRECT [[Time]]}
+&&%s&& %s Date {10318 2006-09-12T11:24:17Z {396 Jayt} Redirecting to [[Time]] #REDIRECT [[Time]]}
+&&%s&& %s NetHackWiki:Redirects {56201 2010-11-11T19:39:34Z {831 Tjr} Text replace - "nethack.wikia.com" to "nethackwiki.com" NetHackWiki has the potential to become a one-stop spoiler for everything NetHack related. Asking what a message means is a very common question in [[RGRN]] and a common use for [[Rodney (bot)]]. The goal of the message redirection project is to have a redirect from every message in the game to a relevant article. A user should be able to copy a message straight from NetHack and paste it into the search box, and be enlightened.
+
+For messages which are caused by a single object, or in a single situation, there should be a single obvious page to redirect to. When a message has multiple causes, such as [[You feel guilty]], create a dedicated disambiguation page for it.
+
+There are thousands of messages in NetHack. Fortunately, MediaWiki is clever, and there is no significant penalty in creating thousands of redirect pages.
+
+----
+The syntax for a page that redirects to another page is to put <nowiki>#REDIRECT [[link]]</nowiki> on the first line. For example, the redirects at [[You feel sensitive]] and [[You feel sensitive!]] redirect to [[Warning]] by using:
+
+<pre>
+#REDIRECT [[Warning]]
+</pre>
+
+To actually reach the edit screen for the page, you can type an URL (like http://nethackwiki.com/wiki/You_feel_sensitive) or use this form:
+
+<createbox>
+width=50
+</createbox>
+[[Category:NetHackWiki]]}
+&&%s&& %s MediaWiki:Captcha-short {10327 2006-09-12T16:13:46Z {458 Kernigh} Tell users that they might need to solve an equation. Your edit includes new URL links; as a protection against automated spam, you'll need to type in the words that appear in this image (or solve the arithmetic equation):<br />
+([[Special:Captcha/help|What is this?]])}

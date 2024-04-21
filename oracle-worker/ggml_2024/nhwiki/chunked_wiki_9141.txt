@@ -1,0 +1,1000 @@
+  background-color:#f0f0f0;
+  margin-bottom:0;
+  padding:0.25em;
+}
+body.page-NetHackWiki_Community_Portal dl,
+body.ns-talk dl,
+body.ns-110 dl {
+  margin-bottom:0.5em;
+}
+
+
+/* [[Special:Contributions]] */
+body[class*=page-Special_Contributions] #bodyContent ul li:nth-child(odd) { background-color: #f0f0f0; }
+body[class*=page-Special_Contributions] #bodyContent ul li:hover { background-color:#e0e0e0; }
+
+/* in Special:RecentChanges : color the "(+X)" or "(-X)" (number of characters added or removed) */
+.mw-plusminus-pos { color:#004000; }
+.mw-plusminus-neg { color:#400000; }
+body.page-Special_RecentChanges .mw-line-even { background-color:#f0f0f0; }
+body.page-Special_RecentChanges .mw-line-even:hover,
+body.page-Special_RecentChanges .mw-line-odd:hover { background-color:#e0e0e0; }
+/* Special:RecentChanges with enhanced RC */
+.page-Special_RecentChanges table.mw-enhanced-rc.mw-collapsible td:first-child { width: 15px; }
+.page-Special_RecentChanges table.mw-enhanced-rc td.mw-enhanced-rc { width: 0 /* as narrow as the content allows */ }
+.page-Special_RecentChanges table.mw-enhanced-rc td.mw-enhanced-rc::before { display: inline-block; width: 0; font-family: sans-serif; content: '\00A0' } /* kluge to fix time stamp vertical alignment */
+.page-Special_RecentChanges table.mw-enhanced-rc { width: 100% }
+.page-Special_RecentChanges table.mw-enhanced-rc tr:hover { background-color:#e0e0e0; }
+
+/* [[Special:NewPages]] */
+.page-Special_NewPages #bodyContent li:hover { background-color: #e0e0e0; }
+
+/* [[Special:Log]] */
+.page-Special_Log #bodyContent li:nth-child(odd) { background-color: #f0f0f0; }
+.page-Special_Log #bodyContent li:hover { background-color: #e0e0e0; }
+
+
+
+/* [[Special:PopularPages]], [[Special:MostLinkedTemplates]], [[Special:MostLinkedCategories]], [[Special:MostLinkedPages]],
+   [[Special:MostCategories]], [[Special:MostRevisions]], [[Special:ProtectedPages]] */
+#bodyContent ul#mw-whatlinkshere-list li:nth-child(odd),
+#bodyContent .mw-spcontent ol li:nth-child(odd),
+#bodyContent .mw-spcontent ul li:nth-child(odd),
+.page-Special_ProtectedPages #bodyContent ul li:nth-child(odd),
+.page-Special_Categories #bodyContent ul li:nth-child(odd),
+.page-Special_ActiveUsers #bodyContent ul li:nth-child(odd),
+.page-Special_ListUsers #bodyContent ul li:nth-child(odd),
+.templatesUsed ul li:nth-child(odd),
+.page-Special_PopularPages ol li:nth-child(odd) { background-color: #f0f0f0; }
+#bodyContent ul#mw-whatlinkshere-list li:hover,
+#bodyContent .mw-spcontent ol li:hover,
+#bodyContent .mw-spcontent ul li:hover,
+.page-Special_ProtectedPages #bodyContent ul li:hover,
+.page-Special_Categories #bodyContent ul li:hover,
+.page-Special_ActiveUsers #bodyContent ul li:hover,
+.page-Special_ListUsers #bodyContent ul li:hover,
+.templatesUsed ul li:hover,
+.page-Special_PopularPages ol li:hover { background-color: #e0e0e0; }
+#bodyContent ul#mw-whatlinkshere-list:first-child > li,
+#bodyContent .mw-spcontent ol li,
+#bodyContent .mw-spcontent ul li,
+.page-Special_Categories #bodyContent ul li,
+.templatesUsed ul li,
+.page-Special_PopularPages ol li { width:40%; }
+.page-Special_ListUsers #bodyContent .mw-spcontent ul li,
+.page-Special_DoubleRedirects ol li { width:100% !important; }
+.page-Special_ListUsers #bodyContent ul li a:first-child,
+.page-Special_ActiveUsers #bodyContent ul li a.mw-userlink { display:inline-block; width:10em; }
+.page-Special_Categories #bodyContent ul li a:first-child,
+.page-Special_UnusedTemplates ol li a:first-child,
+.templatesUsed ul li a:first-child,
+.page-Special_MostLinkedTemplates ol li a:first-child,
+.page-Special_MostLinkedCategories ol li a,
+.page-Special_MostLinkedPages ol li a:first-child,
+.page-Special_MostCategories ol li a,
+.page-Special_MostRevisions ol li a:first-child,
+.page-Special_PopularPages ol li a { display:inline-block; width:75%; }
+.page-Special_DoubleRedirects ol li a:first-child,
+.page-Special_DoubleRedirects ol li a:nth-child(3) { display:inline-block; width:25%; }
+.page-Special_UncategorizedTemplates ol li a { display:inline-block; width:100%; }
+
+/* [[Special:AllPages]] */
+.allpageslist a {
+  display:block;
+  padding-left:0.25em;
+  padding-right:0.25em;
+}
+.allpageslist a:hover {
+  background-color:#e8e8e8;
+  border-radius:0.5em;
+}
+
+/* [[Special:LonelyPages]], [[Special:DeadendPages]], [[Special:WithoutInterwiki]], [[Special:UncategorizedPages]], [[Special:UnusedCategories]] */
+.page-Special_LonelyPages .mw-spcontent ol.special li a,
+.page-Special_WithoutInterwiki .mw-spcontent ol.special li a,
+.page-Special_UncategorizedPages .mw-spcontent ol.special li a,
+.page-Special_UnusedCategories .mw-spcontent ol.special li a,
+.page-Special_DeadendPages .mw-spcontent ol.special li a {
+  display:block;
+}
+
+
+/* Main page forum box */
+#mainpage-forum a.forum_new {
+  font-weight: bold;
+}
+#mainpage-forum h3 a { display:block; }
+#mainpage-forum h3 a:hover,
+#mainpage-forum li:hover {
+  border-radius: 0.5em 0.5em 0.5em 0.5em;
+  background-color: #F0D8FF;
+}
+#mainpage-forum li {
+  font-size: 80%;
+  padding-left: 1.5em;
+}
+#mainpage-forum li a:first-child {
+  display: block;
+  font-size: 125%;
+  margin: 0.25em 0 -0.25em -1em;
+}
+
+
+/* Hide the main page title */
+body.page-Main_Page h1.firstHeading { display:none !important; }
+
+/* extra buttons for edit dialog (from commons:MediaWiki:Common.css) */
+#editpage-specialchars {
+	padding: .5em;
+}
+#editpage-specialchars a {
+	color: black;
+	background-color: #cde !important;
+	font-weight: bold;
+	font-size: .9em;
+	text-decoration: none;
+	border: thin #069 outset;
+	padding: 0 .1em .1em;
+}
+#editpage-specialchars a:hover,
+#editpage-specialchars a:active {
+	background-color: #bcd;
+	border-style: inset;
+}
+
+/* Special:Search */
+.search-types .current {
+  background-color:#d0d0d0;
+  border-radius:0.5em;
+}
+
+#userloginForm {
+  float:none;
+  background-color: #f0f0f0;
+  width:46em;
+  margin-left: auto;
+  margin-right: auto;
+}
+#userlogin {
+  float:none;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f0f0f0;
+}
+
+/* page revision history */
+#pagehistory li:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+#pagehistory li:hover {
+  background-color: #f0f0f0;
+}
+#pagehistory li.selected {
+  background-color: #e8e8e8;
+  border: 1px dashed #808080;
+}
+
+/* targeting a section header */
+.mw-headline {
+  display:block;
+  float:left;
+}
+.mw-editsection {
+  float:right;
+}
+.mw-headline:target {
+  background-color:#fff0b0;
+}
+
+
+
+/* link icons for telnet and SSH links */
+
+div#content a[href^="telnet:"], div#content a.extiw[href^="telnet:"], .link-telnet {
+  /* [[File:Telnet-icon.png]] */
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAM1BMVEX///+goKCgoKATExMAAAAqKioDAwMtLS2MjIxmZmY0NDSPj49bW1sRERF1dXV4eHhVVVWcCAENAAAAAnRSTlMAuLMp9oYAAAA3SURBVHheTcxHEgAgCENRDPZ+/9OKDo7+1dsk9GWgGYLzdscghJiOhbnUyyZQCvqYh2x19p+9FkZsAUi9IX9TAAAAAElFTkSuQmCC") no-repeat scroll right center transparent;
+  padding-right: 13px;
+}
+
+div#content a[href^="ssh:"], div#content a.extiw[href^="ssh:"], .link-ssh {
+  /* [[File:Ssh-icon.png]] */
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAclBMVEX///+goKCdn5uWl5OgoKAAAAARERFERUJYWViIioW+tm6cnprv3lO4sWk0NDSPj4+MjIyxqmcDAwOxsrAoKCj041gtLS1OT03/+Lv/849mZmZwcW6SlI/j00/Lui+qp4FbW1v/8YFmZ2a5sWm7tGynpIBMSTSHAAAABHRSTlMAv3+/jugUkwAAAFRJREFUeF5NzEUOxEAMRFF3YjcGmWHo/lecamWTv3qyrKJHiu8UEXeNIM3gUC1inWvBorzGYN8hIdYi62ZMSInxmPfTnNW4Rr52MI6BBxg7vf98f3+ohAQc7MJkBQAAAABJRU5ErkJggg==") no-repeat scroll right center transparent;
+  padding-right: 13px;
+}
+
+blockquote {
+  border-left:4px solid #258;
+  padding-left:0.5em;
+}
+blockquote::before{
+  content:"\201C";
+  font-size:250%;
+  line-height: 1em;
+  font-weight:bold;
+  color:#258;
+  position: relative;
+}}
+&&%s&& %s Category:Top icon templates {53806 2010-11-10T21:21:26Z {366 Ilmari Karonen} separate supported and unsupported skins Templates for displaying icons at the top of the page.  The display depends on skin-specific styles at:
+* [[MediaWiki:Vector.css]],
+* [[MediaWiki:Monobook.css]] and
+* [[MediaWiki:Modern.css]].
+The following skin CSS files don't yet contain support top icons:
+* [[MediaWiki:Chick.css]],
+* [[MediaWiki:Standard.css]],
+* [[MediaWiki:Cologneblue.css]],
+* [[MediaWiki:Myskin.css]],
+* [[MediaWiki:Nostalgia.css]] and
+* [[MediaWiki:Simple.css]].
+
+[[Category:Templates]]}
+&&%s&& %s MediaWiki:Modern.css {53805 2010-11-10T21:17:29Z {366 Ilmari Karonen} topicon /* CSS placed here will affect users of the Modern skin */
+
+/* For positioning icons at top-right; copied from http://en.wikipedia.org/w/index.php?title=MediaWiki:Modern.css&oldid=381931547 */
+div.topicon {
+  display:block !important;
+  position:absolute;
+  top:2px;
+  z-index:100;
+}}
+&&%s&& %s Protection runner {53810 2010-11-10T22:14:48Z {831 Tjr} Redirected page to [[Protection racket]] #redirect [[protection racket]]}
+&&%s&& %s Protection run {53811 2010-11-10T22:15:17Z {831 Tjr} Redirected page to [[Protection racket]] #redirect [[protection racket]]}
+&&%s&& %s Flint {53813 2010-11-10T22:17:26Z {831 Tjr} Redirected page to [[Flint stone]] #redirect [[Flint_stone]]}
+&&%s&& %s MediaWiki:Watchlistedit-noitems {53822 2010-11-11T01:00:13Z {366 Ilmari Karonen} link to [[NetHackWiki:Community Portal#Watchlists missing on new wiki]] Your watchlist contains no titles.  If your account was imported from the old wiki at Wikia, follow [[NetHackWiki:Community Portal#Watchlists missing on new wiki|these instructions]] to transfer your old watchlist over.}
+&&%s&& %s MediaWiki:Nowatchlist {53823 2010-11-11T01:04:50Z {366 Ilmari Karonen} link to [[NetHackWiki:Community Portal#Watchlists missing on new wiki]] You have no items on your watchlist.  If your account was imported from the old wiki at Wikia, follow [[NetHackWiki:Community Portal#Watchlists missing on new wiki|these instructions]] to transfer your old watchlist over.}
+&&%s&& %s Medusa's island {53835 2010-11-11T06:22:58Z {366 Ilmari Karonen} #REDIRECT [[Medusa's Island]] #REDIRECT [[Medusa's Island]]}
+&&%s&& %s Wizard (player monster) {140894 2021-06-14T04:04:55Z {4001463 Actual-nh} /* Equipment */ Grammar/style {{monster
+ |name=wizard
+ |difficulty=12
+ |level=10
+ |experience=216
+ |speed=12
+ |AC=10
+ |MR=3
+ |align=0
+ |frequency=0
+ |genocidable=No (unless player is a wizard)
+ |attacks=Weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A wizard|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|magic=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2816|version=NetHack 3.6.0}}
+}}
+A '''wizard''' is a [[player monster]] corresponding to the [[wizard]] [[role]].
+
+== Generation ==
+
+{{main|Player monster#Generation}}
+
+Like other player monsters, wizards are never randomly generated and are thus rarely seen. [[Apprentice]]s can [[grow up]] into wizards; unlike apprentices, wizard player monsters are not actually capable of [[Monster spell|spellcasting]].
+
+The hostile player monsters on the [[Astral Plane]] may include one or more wizards.{{reffunc|mplayer.c|create_mplayers|version=NetHack 3.6.0}} Reading a cursed [[scroll of genocide]] as a wizard while [[confused]] will summon a number of wizard monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead wizard left on a [[bones level]] will revive the corpse or statue as a player monster. Wizard corpses will also be found in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|99|version=NetHack 3.6.0}} and a statue of a wizard may appear on [[Medusa's Island]].{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment=the code is very cryptic but fortunately has comments}} A peaceful wizard named Newt also appears on the final level of the [[wizard quest]].{{refsrc|dat/Wizard.des|369|version=NetHack 3.6.0}}
+
+Most wizards encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume the form of a wizard.
+
+===Equipment===
+
+{{main|Player monster#Equipment}}
+
+A normally generated (i.e. not revived or reverse-genocided) wizard will carry one of the following [[weapon]]s:
+
+* a [[quarterstaff]] or an [[athame]] with 37.5% probability each
+* a [[long sword]] or a randomly chosen [[melee]] weapon with 12.5% probability each
+
+The weapon's [[enchantment]] will be random between +0 and +3 (or between +4 and +8 if on Astral), and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each.
+
+Like other player monsters, wizards will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s.
+
+Wizards on the Astral Plane will also receive a randomly generated [[ascension kit]] containing [[dragon scale mail]] and various other pieces of [[armor]] (as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items), and will have a 50% chance of having their weapon made into an [[artifact]] of the same type (if possible). If this results in them receiving [[Magicbane]], its enchantment will be reduced to between +1 and +4 (since Magicbane is supposed to be less effective if overenchanted). Unlike other player monsters on the Astral, wizards will never have a [[shield]], and they have a 50% chance of having either black or silver dragon scale mail with a [[cloak of magic resistance]] (instead of random DSM with a random cloak), and a 75% chance of having a [[helm of brilliance]] instead of a random helmet.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.0}}
+
+==References==
+<references/>
+
+==External links==
+* [http://www.doc.ic.ac.uk/~pgp/nh/moninvent-343.txt Monsters' Equipment Spoiler by Boudewijn Waijers, Topi Linkala, and Philip Potter]
+{{nethack-361}}
+[[Category:Player monsters]]}
+&&%s&& %s Category:Player monsters {53844 2010-11-11T08:03:05Z {366 Ilmari Karonen} create cat Articles about [[player monster]]s.
+
+[[Category:Monsters]]}
+&&%s&& %s Arch.des {110309 2018-05-12T11:43:39Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Arch.des]]}
+&&%s&& %s Barb.des {110310 2018-05-12T11:43:49Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Barb.des]]}
+&&%s&& %s Bigroom.des {110311 2018-05-12T11:43:59Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/bigroom.des]]}
+&&%s&& %s Castle.des {110312 2018-05-12T11:44:09Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/castle.des]]}
+&&%s&& %s Caveman.des {110313 2018-05-12T11:44:19Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Caveman.des]]}
+&&%s&& %s Endgame.des {110314 2018-05-12T11:44:29Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/endgame.des]]}
+&&%s&& %s Gehennom.des {110315 2018-05-12T11:44:39Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/gehennom.des]]}
+&&%s&& %s Healer.des {110316 2018-05-12T11:44:49Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Healer.des]]}
+&&%s&& %s Knight.des {110317 2018-05-12T11:44:59Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Knight.des]]}
+&&%s&& %s Knox.des {110318 2018-05-12T11:45:09Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/knox.des]]}
+&&%s&& %s Medusa.des {110319 2018-05-12T11:45:19Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/medusa.des]]}
+&&%s&& %s Mines.des {110320 2018-05-12T11:45:29Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/mines.des]]}
+&&%s&& %s Monk.des {110321 2018-05-12T11:45:39Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Monk.des]]}
+&&%s&& %s Oracle.des {110322 2018-05-12T11:45:49Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/oracle.des]]}
+&&%s&& %s Priest.des {110323 2018-05-12T11:45:59Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Priest.des]]}
+&&%s&& %s Ranger.des {110324 2018-05-12T11:46:09Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Ranger.des]]}
+&&%s&& %s Rogue.des {110325 2018-05-12T11:46:19Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Rogue.des]]}
+&&%s&& %s Samurai.des {110326 2018-05-12T11:46:29Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Samurai.des]]}
+&&%s&& %s Sokoban.des {110327 2018-05-12T11:46:39Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/sokoban.des]]}
+&&%s&& %s Tourist.des {110328 2018-05-12T11:46:49Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Tourist.des]]}
+&&%s&& %s Tower.des {110329 2018-05-12T11:46:59Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/tower.des]]}
+&&%s&& %s Valkyrie.des {110330 2018-05-12T11:47:09Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Valkyrie.des]]}
+&&%s&& %s Wizard.des {110331 2018-05-12T11:47:19Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/Wizard.des]]}
+&&%s&& %s Yendor.des {110332 2018-05-12T11:47:29Z {4000688 DizzyBot} beep boop #REDIRECT [[Source:NetHack_3.6.1/dat/yendor.des]]}
+&&%s&& %s You feel yourself slowing down {53920 2010-11-11T13:56:38Z {831 Tjr} Redirected page to [[Speed#Extrinsic Speed .28very fast.29]] #redirect [[Speed#Extrinsic_Speed_.28very_fast.29]]}
+&&%s&& %s Category:NetHackWiki {70679 2011-05-29T20:38:02Z {0 } cat All articles about and issues with NetHack wiki are in Category:NetHackWiki.
+[[Category:Articles]]}
+&&%s&& %s Wikihack {91260 2014-11-27T10:43:27Z {4000548 Quantum Immortal} Redirected page to [[NetHackWiki:About#What is a wiki?]] #REDIRECT [[NetHackWiki:About#What is a wiki?]]}
+&&%s&& %s Template:Monsym/monster {68147 2011-02-05T14:09:35Z {4000027 Paxedbot} Add category {{white|@}}<noinclude>[[Category:Monster symbols|{{SUBPAGENAME}}]]</noinclude>}
+&&%s&& %s MediaWiki:Newusermessage-template {56254 2010-11-11T23:03:12Z {831 Tjr} try to make it substitute Template:Welcome subst:Welcome}
+&&%s&& %s MediaWiki:Newuseredit-summary {56350 2010-11-12T17:20:37Z {831 Tjr} cut comment that slipped into the bot's edit summary Welcoming new user}
+&&%s&& %s Archeologist (player monster) {139798 2021-05-13T00:07:02Z {4001279 Umbire the Phantom}  {{monster
+ |name=archeologist
+ |tile=[[File:Archeologist.png]]
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=3
+ |frequency=0
+ |genocidable=No (unless player is an archeologist)
+ |attacks=Weapon 1d6, weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|An archeologist|=
+ |humanoid=1|tunnel=1|needpick=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|monst.c|2718|version=NetHack 3.6.0}}
+}}
+
+An '''archeologist''' is a [[player monster]] corresponding to the [[archeologist]] [[role]].
+
+==Generation==
+{{main|Player monster#Generation}}
+
+Like other player monsters, archeologists are never randomly generated and are thus rarely seen. [[Student]]s found on the [[archaeologist quest]] home level can [[grow up]] to become archeologists.{{refsrc|src/mondata.c|963|version=NetHack 3.6.0}} Other archeologists are normally found on the [[Astral Plane]], where they may appear among the hostile player monsters.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref> Most archeologists encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume their form; in either case, the game refers to them by the [[rank]] title appropriate for the monster's level.
+
+Reading a cursed [[scroll of genocide]] as an archeologist while [[confused]] will summon a number of archeologist monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse of a dead archeologist or using [[stone to flesh]] on an archeologist statue will revive the corpse or statue as a player monster. In addition to [[bones]] levels, archeologist corpses can be found in graveyards including those in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|79|version=NetHack 3.6.0}} and their statues may appear on [[Medusa's Island]]{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}} as well as in [[cockatrice nest]]s.
+
+===Equipment===
+{{main|Player monster#Equipment}}
+
+An archeologist on the [[Astral Plane]] will carry either a [[bullwhip]] (50%), a [[long sword]] (25%) or a randomly chosen [[melee]] weapon (25%). The [[weapon]]'s [[enchantment]] will be random between +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters on the Astral Plane, archeologists will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, as well as a randomly generated [[ascension kit]] containing [[dragon scale mail]] and various other pieces of [[armor]] (as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items).
+
+==UnNetHack==
+In [[UnNetHack]], an archeologist corpse can sometimes be found under a boulder trap, and may be accompanied by the former adventurer's [[fedora]] and [[bullwhip]]; this is an homage to ''Indiana Jones''.
+
+==References==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-364}}}
+&&%s&& %s Template talk:Welcome {70478 2011-05-18T13:40:33Z {831 Tjr} /* Giving away full names */ done ==Bot flag==
+I gave the welcome bot user a bot flag, but welcoming still shows up on [[Special:RecentChanges]] when I hide bot edits. What's going wrong?[[User:Tjr|Tjr]] 02:43, 12 November 2010 (UTC)
+
+==Giving away full names==
+Should the welcome bot continue to give away the real-name on users' talk pages? Some people (including me) would not want that. Are registrants warned their name will be disclosed? --[[User:Tjr|Tjr]] 21:19, 11 April 2011 (UTC)
+
+:Deactivated. --[[User:Tjr|Tjr]] 13:40, 18 May 2011 (UTC)}
+&&%s&& %s Barbarian (player monster) {132131 2020-02-18T12:27:13Z {4001279 Umbire the Phantom}  {{monster
+ |name=barbarian
+ |tile=[[File:Barbarian.png]]
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=0
+ |frequency=0
+ |genocidable=No (unless player is a barbarian)
+ |attacks=Weapon 1d6, weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=poison
+ |resistances conveyed=None
+ |attributes={{attributes|A barbarian|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|monst.c|2725|version=NetHack 3.6.0}}
+}}
+
+A '''barbarian''' is a [[player monster]] corresponding to the [[barbarian]] [[role]]. Like a player barbarian, they have [[intrinsic]] [[poison resistance]].
+
+==Generation==
+{{main|Player monster#Generation}}
+
+Like other player monsters, barbarians are never randomly generated and are thus rarely seen. They are normally found on the [[Astral Plane]], where they may appears among the hostile player monsters.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref> Most barbarians encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume their form; in either case, the game refers to them by the [[rank]] title appropriate for the monster's level.
+
+Reading a cursed [[scroll of genocide]] as a barbarian while [[confused]] will summon a number of barbarian monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse of a dead barbarian or using [[stone to flesh]] on a barbarian statue will revive them as a player monster. In addition to [[bones]] levels, barbarian corpses can be found in graveyards including those in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|81|version=NetHack 3.6.0}} and their statues may appear on [[Medusa's Island]]{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}} as well as in [[cockatrice nest]]s.
+
+=== Equipment ===
+{{main|Player monster#Equipment}}
+
+A barbarian on the Astral Plane will carry either a [[two-handed sword]], a [[battle-axe]], a [[long sword]] or a randomly chosen [[melee]] weapon with 25% probability each. The [[weapon]]'s [[enchantment]] will be random between +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters on the Astral Plane, barbarians will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, a randomly generated [[ascension kit]] containing various pieces of [[armor]] as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items. The ascension kit given to barbarians will not include a [[shield]] if they are wielding a two-handed sword or a battle-axe, has only a 50% chance of including [[dragon scale mail]] instead of non-magical body armor, and will never include a [[helm of brilliance]].
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-364}}}
+&&%s&& %s Caveman (player monster) {132130 2020-02-18T12:26:58Z {4001279 Umbire the Phantom}  {{monster
+ |symbol={{monsym|caveman}}
+ |name=caveman / cavewoman
+ |tile=[[File:Caveman.png]][[File:Cavewoman.png]]
+ |difficulty=12
+ |level=10
+ |experience=216
+ |speed=12
+ |AC=10
+ |MR=0
+ |align=1
+ |frequency=0
+ |genocidable=No (unless player is a caveman or cavewoman)
+ |attacks=Weapon 2d4
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A caveman or cavewoman|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}{{attributes|A caveman also|male=1|does_too_eat=1}}{{attributes|A cavewoman also|female=1|does_too_eat=1}}
+ |reference={{sourcecode|src/monst.c|2732|version=NetHack 3.6.0}}
+}}
+
+A '''caveman''' or '''cavewoman''' is a [[player monster]] corresponding to the [[caveman]] [[role]].
+
+==Generation==
+{{main|Player monster#Generation}}
+
+Like other player monsters, cavemen and cavewomen are never randomly generated and are thus rarely seen.
+They are normally found on the [[Astral Plane]], where they may appears among the hostile player monsters.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref> Most cavemen and cavewomen encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume the form of a caveman or cavewoman; in either case, the game refers to them by the [[rank]] title appropriate for the monster's level.
+
+Reading a cursed [[scroll of genocide]] as a caveman or cavewoman while [[confused]] will summon a number of caveman or cavewoman monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse of a dead caveman or cavewoman or using [[stone to flesh]] on a caveman statue will revive them as a player monster. In addition to [[bones]] levels, caveman and cavewoman corpses can be found in graveyards including those in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|83|version=NetHack 3.6.0}}, and their statues may appear on [[Medusa's Island]]{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}} as well as [[cockatrice nest]]s.
+
+=== Equipment ===
+{{main|Player monster#Equipment}}
+
+A caveman or cavewoman on the Astral Plane will carry either a [[mace]] (75%), a [[club]] (12.5%), a [[long sword]] (6.25%) or a randomly chosen [[melee]] weapon (6.25%). The [[weapon]]'s [[enchantment]] will be random between  +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.
+
+Like other player monsters on the Astral Plane, cavemen and cavewomen will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, a randomly generated [[ascension kit]] containing various pieces of [[armor]] as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items. The ascension kit given to cavemen or cavewomen will never include a [[helm of brilliance]].{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-364}}}
+&&%s&& %s Cavewoman (player monster) {56275 2010-11-11T23:54:37Z {366 Ilmari Karonen} #REDIRECT [[Caveman (player monster)]] #REDIRECT [[Caveman (player monster)]]}
+&&%s&& %s Healer (player monster) {132129 2020-02-18T12:24:21Z {4001279 Umbire the Phantom}  {{monster
+ |name=healer
+ |difficulty=12
+ |level=10
+ |experience=216
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=0
+ |frequency=0
+ |genocidable=No (unless player is a healer)
+ |attacks=Weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=poison
+ |resistances conveyed=None
+ |attributes={{attributes|A healer|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2746|version=NetHack 3.6.0}}
+}}
+
+A '''healer''' is a [[player monster]] corresponding to the [[healer]] [[role]]. Like player healers, they have [[intrinsic]] [[poison resistance]].
+
+==Generation==
+{{main|Player monster#Generation}}
+
+Like other player monsters, healers are never randomly generated and are thus rarely seen. [[Attendant]]s found in the [[healer quest]] can [[grow up]] to become healers.{{refsrc|src/mondata.c|964|version=NetHack 3.6.0}} Other healers are normally found on the [[Astral Plane]], where they may appear among the hostile player monsters.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref> Most healers encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume their form; in either case, the game refers to them by the [[rank]] title appropriate for the monster's level.
+
+Reading a cursed [[scroll of genocide]] as a healer while [[confused]] will summon a number of healer monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse of a dead healer or using [[stone to flesh]] on a healer statue will revive them as a player monster. In addition to [[bones]] levels, healer corpses can be found in graveyards including those in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|85|version=NetHack 3.6.0}} and their statues may appear on [[Medusa's Island]]{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}} as well as in [[cockatrice nest]]s.
+
+=== Equipment ===
+{{main|Player monster#Equipment}}
+
+A healer on the Astral Plane will carry either a [[quarterstaff]] with 75% probability or a [[unicorn horn]], a [[scalpel]], a [[long sword]] or a randomly chosen [[melee]] weapon with 6.25% probability each.  The [[weapon]]'s [[enchantment]] will be random between  +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each.  There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters on the Astral Plane, healers will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, a randomly generated [[ascension kit]] containing various pieces of [[armor]] as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items. The ascension kit given to healers has a 75% chance of including either a [[helm of brilliance]] or a [[helm of telepathy]] instead of a random [[helmet]], and will have only half the usual chance of including a [[shield]] (43.75% vs. 87.5%).
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-364}}}
+&&%s&& %s Knight (player monster) {143640 2021-11-10T08:52:22Z {4001279 Umbire the Phantom}  {{monster
+ |name=Knight
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=3
+ |frequency=0
+ |genocidable=No (unless player is a Knight)
+ |attacks=Weapon 1d6, weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A Knight|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2753|version=NetHack 3.6.0}}
+}}
+
+A '''Knight''' is a [[player monster]] corresponding to the [[Knight]] [[role]]. Like player Knights, they are always lawful.
+
+==Generation==
+{{main|Player monster#Generation}}
+
+Like other player monsters, Knights are never randomly generated and are thus rarely seen. A peaceful Knight appears in each corner tower on the home level of the [[Knight quest]],{{refsrc|dat/Knight.des|67|version=NetHack 3.6.0}} and the [[quest guardian]] [[page]]s can [[grow up]] into Knights. Hostile Knights are found on the [[Astral Plane]], where they may appear among the hostile player monsters generated there.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref> Most Knights encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume their form; in either case, the game refers to them by the [[rank]] title appropriate for the monster's level.
+
+Reading a cursed [[scroll of genocide]] as a Knight while [[confused]] will summon a number of Knight monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse of a dead Knight or using [[stone to flesh]] on a Knight statue will revive them as a player monster. In addition to [[bones]] levels, Knight corpses can be found in graveyards, including two guaranteed corpses in the [[Valley of the Dead]]{{refsrc|dat/gehennom.des|87|version=NetHack 3.6.0}}. A statue of a Knight named [[Perseus]] is guaranteed to appear in all versions of Medusa's Island,<ref>{{sourcecode|dat/medusa.des|56|version=NetHack 3.6.0}}, {{sourcecode|dat/medusa.des|155|version=NetHack 3.6.0}}, {{sourcecode|dat/medusa.des|273|version=NetHack 3.6.0}}, {{sourcecode|dat/medusa.des|373|version=NetHack 3.6.0}}</ref> and the other player monster statues may also be Knights{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}}.
+
+=== Equipment ===
+{{main|Player monster#Equipment}}
+
+A normally generated (i.e. not revived or reverse-genocided) Knight will carry a [[long sword]] with 87.5% probability or a randomly chosen [[melee]] weapon with 12.5% probability. The [[weapon]]'s [[enchantment]] will be random between +0 and +3 (or between +4 and +8 if on the Astral Plane), and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters, Knights will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s. Knights on the Astral Plane will also receive a randomly generated [[ascension kit]] containing various pieces of [[armor]] as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items, and will have a 50% chance of having their weapon made into an [[artifact]] of the same type (if possible). Unlike some player monsters on Astral, Knights have only a 50% chance of wearing [[dragon scale mail]] instead of non-magical body armor.
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-366}}}
+&&%s&& %s Template:Moonphasenum {64219 2011-01-30T11:03:14Z {630 Paxed} cat sort key {{#expr: ((((({{#time:z|{{{time|}}}}} + ((11 * ({{#time:Y|{{{time|}}}}} mod 19) + 29) mod 30) + {{#ifexpr: (((11 * ({{#time:Y|{{{time|}}}}} mod 19) + 29) mod 30) = 25 and ({{#time:Y|{{{time|}}}}} mod 19) > 10) or ((11 * ({{#time:Y|{{{time|}}}}} mod 19) + 29) mod 30) = 24 |1|0}}) * 6) + 11) mod 177) / 22) mod 8 }}<noinclude><hr>
+
+This template calculates the moon phase as returned by {{function|hacklib.c|phase_of_the_moon}}.  The return value is an integer from 0 to 7, with 0 meaning [[new moon]] and 4 meaning [[full moon]].
+
+The template takes one optional parameter, <tt>time</tt>, specifying the time for which the phase should be calculated.  For details on valid time formats, see the documentation for the [[mw:Help:Extension:ParserFunctions#.23time|<nowiki>{{#time:}}</nowiki> parser function]].  The default time is the last time the page was parsed (which might be some time ago due to caching).
+
+'''Warning:''' I have not yet tested that the output of this function actually matches {{function|hacklib.c|phase_of_the_moon}}.  There might be bugs.
+
+== Examples ==
+
+These were last reparsed at at {{#time:r}}:
+* <nowiki>{{moonphasenum}}</nowiki> = {{moonphasenum}}
+* <nowiki>{{moonphasenum|time=yesterday}}</nowiki> = {{moonphasenum|time=yesterday}}
+* <nowiki>{{moonphasenum|time=tomorrow}}</nowiki> = {{moonphasenum|time=tomorrow}}
+* <nowiki>{{moonphasenum|time=+1 week}}</nowiki> = {{moonphasenum|time=+1 week}}
+* <nowiki>{{moonphasenum|time=1 January 2010}}</nowiki> = {{moonphasenum|time=1 January 2010}}
+* <nowiki>{{moonphasenum|time=2010-01-01}}</nowiki> = {{moonphasenum|time=2010-01-01}}
+
+[[Category:Templates|{{PAGENAME}}]]
+
+</noinclude>}
+&&%s&& %s Template:Moon phase {64220 2011-01-30T11:03:41Z {630 Paxed} cat sort key [[File:Moon phase {{moonphasenum|time={{{time|}}}}}.gif|thumb|{{{size|180}}}px|{{{align|right}}}|On {{#time:j F Y|{{{time|}}}}}, the [[moon]] {{#ifexpr:{{#time:U}}>{{#time:U|{{{time|}}}}}|was|{{#ifexpr:{{#time:U}}<{{#time:U|{{{time|}}}}}|will be|is}}}} {{#switch:{{moonphasenum|time={{{time|}}}}}
+|0=new. Be careful!
+|1=waxing crescent.
+|2=at first quarter.
+|3=waxing gibbous.
+|4=full. Good luck!
+|5=waning gibbous.
+|6=at last quarter.
+|7=waning crescent.
+}}]]<noinclude>
+
+This template shows the phase of the moon in NetHack.  It takes the following optional parameters:
+
+* '''time''': the time at which to show the moon phase.  Defaults to the time the page was last parsed (which might be some time ago due to caching).  Both absolute ("1 January 2010") and relative ("tomorrow") time specifications can be used.  See [[mw:Help:Extension:ParserFunctions#.23time]] for details.
+* '''size''': size of the image in pixels.  Default is 180.
+* '''align''': alignment of the image box.  Default is right.
+
+This template calculates the moon phase using [[Template:Moonphasenum]], which is based on {{function|hacklib.c|phase_of_the_moon}}.
+
+There are currently eight images, corresponding to the eight moon phases NetHack uses internally:
+<gallery>
+File:Moon phase 0.gif|new moon
+File:Moon phase 1.gif|waxing crescent
+File:Moon phase 2.gif|first quarter
+File:Moon phase 3.gif|waxing gibbous
+File:Moon phase 4.gif|full moon
+File:Moon phase 5.gif|waning gibbous
+File:Moon phase 6.gif|last quarter
+File:Moon phase 7.gif|waning crescent
+</gallery>
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Beholder (monster) {127821 2019-09-04T05:14:04Z {4001313 Ardub23} remove unused attribute parameters The '''beholder''' is a [[deferred feature]] in [[NetHack 3.6.0]], a powerful monster in the eye/sphere class. Code for the creature appears in the [[source code]] but as of version 3.6.0 is commented out, so the monster will not be encountered in the Mazes of Menace.
+[[Category:Deferred features]]
+
+Beholders are implemented in the variants [[SLASH'EM]] (as a [[unique monster]]) and [[dNetHack]] and [[GruntHack]] (as a non-unique but rare monster), with some distinct properties in each.
+
+== SLASH'EM ==
+
+{{ monster
+ |name=Beholder
+ |symbol={{gray|e}}
+ |difficulty=24
+ |level=15
+ |experience=538
+ |speed=9
+ |AC=&minus;4
+ |MR=70
+ |align=0
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Gaze 1d4 [[Catoblepas|Death]], Gaze 3d8, Gaze 1d3 [[stun]], Gaze 1d3 [[confusion]], Gaze 1d4 [[sleep]]
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|The  Beholder|fly=1|nolimbs=1|nohead=1|regen=1|nopoly=1|neuter=1|hostile=1|nasty=1|stalk=1|infravisible=1|waitforu=1|wantsall=1|nocorpse=1}}
+ |size=Large
+ |nutr=100
+ |weight=500
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line4590]]
+}}The '''Beholder''' is the quest nemesis for the [[Neutral Quest]]. It holds the [[Key of Neutrality]], one of the three [[Alignment key]]s; you need two of these keys to unlock the indestructible doors in [[Vlad's Tower]].   
+
+If the Beholder is killed by means that would not prevent it from leaving a [[corpse]]&mdash;in other words, not by [[Petrification|stoning]], [[Green slime|sliming]], or [[disintegration]]&mdash;it leaves behind [[the Eye of the Beholder]] instead of a regular corpse. Since the Beholder is not difficult to kill by physical or magical means, it should be easy to kill it in such a way as to get the Eye. 
+
+The Beholder combines the [[gaze]] attacks of various creatures: the [[catoblepas]] (instant death), [[bloodshot eye]] (stun), [[umber hulk]] (confusion), and [[chasme]] (sleep). It also has a damaging gaze attack which deals up to 24 damage.   
+
+Despite its description, it does not have a [[bite]] attack and is, in fact, possibly the easiest [[alignment quest]] nemesis.
+
+=== Strategy ===
+The easiest way to defeat the Beholder is to put on a [[blindfold]] or [[towel]] before entering its room, which will block all of its attacks.  Even if you don't have [[telepathy]], the Beholder is easy to find if you close the door behind you.  [[Reflection]] will only protect against the gaze of death: blinding yourself is almost always preferable.
+
+'''Important Note:''' There is an interesting quirk (possibly bug) about the Beholder's death gaze attack when you have reflection - it will not be reflected '''at all''' if the Beholder cannot see you (for example, if you are invisible). With other gaze attacks what usually happens is that you are protected from the effects of the gaze but the monster is not hit by it (because it can't see the reflection), but in the case of the Beholder's death gaze, it simply bypasses reflection entirely if it cannot see you. This means that if you are invisible, reflection will not protect you from instant death.{{refsrc|mhitu.c|2451|version=SLASH'EM 0.0.7E7F2}}
+
+You'll know it has been defeated when the game says "All that remains is a single eye..."
+
+=== Encyclopedia entry ===
+
+{{encyclopedia|
+The beholder (A.K.A the eye tyrant, the sphere of many eyes) 
+is most frequently found deep underground, although infrequently 
+it will lair in desolate wilderness.&nbsp; The globular body of this 
+monster is supported by levitation, and it floats slowly about 
+as it wills.&nbsp; Atop the sphere are ten eyestalks, while in its 
+central area are a great eleventh eye and a large mouth filled 
+with pointed teeth.&nbsp; Each of the eyes is said to have a different
+magical property, all of which are deadly or malicious.&nbsp; The 
+beholder is hateful, tricky, and avaricious and is known to have 
+a fondness for both traps and artifacts.
+|[ Adapted by Ben Lehman from Monstrous Manual, by TSR, Inc. ]
+}}
+
+{{clear}}
+== dNethack ==
+
+{{monster
+ |name=beholder
+ |symbol={{gray|e}}
+ |tile=[[File:Beholder (dnethack).png]]
+ |difficulty=10
+ |level=6
+ |experience=97
+ |speed=3
+ |AC=4
+ |MR=50
+ |align=&minus;10
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Gaze attack 4d6 [[random gaze type]], Gaze attack 4d6 [[random gaze type]], Passive 1d100 [[paralysis]]
+ |weight=1000
+ |nutr=1000
+ |size=medium
+ |resistances=[[fire]], [[cold]], [[shock]]
+ |resistances conveyed=
+ |attributes={{attributes
+ |A beholder|=
+ |fly=1
+ |amphibious=1
+ |breathless=1
+ |nohands=1
+ |nolimbs=1
+ |nohead=1
+ |pois=1
+ |nopoly=1
+ |neuter=1
+ |hostile=1
+ |infravisible=1
+ |hell=1
+ |notame=1
+ }}
+ |refline=
+}}
+
+Beholders in dNetHack attack twice per round with random gaze attacks, and share the [[floating eye]]'s paralysis gaze counterattack.
+
+Since the random gaze attacks include death and petrification gazes as well as damaging elemental gazes, it is best not to go near one without reflection ''and'' a blindfold.
+
+A beholder corpse does not rot, offers a lot of [[nutrition]], and grants [[clairvoyance]], but is very heavy.
+
+{{encyclopedia|
+"Beauty in things exists merely in the mind which contemplates them."
+|[ Moral and Political, by David Hume ]
+}}
+
+[[Category:dNetHack monsters]]
+
+{{clear}}
+==GruntHack==
+{{monster
+ |name=beholder
+ |symbol={{brown|e}}
+ |tile=
+ |difficulty=11
+ |level=6
+ |experience=?
+ |speed=3
+ |AC=4
+ |MR=0
+ |align=&minus;10
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Gaze 0d0 [[slow]], Gaze 2d25 [[sleep]], Gaze 0d0 [[disintegrate]], Gaze 0d0 [[petrification]], Gaze 2d4 [[cancellation]], Bite 2d4 [[physical]]
+ |weight=10
+ |nutr=10
+ |size=small
+ |resistances=[[cold]]
+ |resistances conveyed=
+ |attributes={{attributes
+ |A beholder|=
+ |fly=1
+ |amphibious=1
+ |breathless=1
+ |nohands=1
+ |nolimbs=1
+ |nohead=1
+ |nopoly=1
+ |neuter=1
+ |hostile=1
+ |infravisible=1
+ }}
+ |refline=
+}}
+
+In GruntHack, beholders pose a significant threat. They usually generate asleep, but when awake, they can [[petrification|instapetrify]] you, disintegrate you (the same kind of disintegration as gods do) and cancel your inventory. They're prime targets for [[genocide]] in Grunt. As in other variants, covering your eyes makes it nearly harmless with the exception of a relatively weak bite attack. Note that none of its attacks respect reflection.
+
+{{clear}}
+==Origin==
+The beholder is a well-known creature from ''[[Dungeons & Dragons]]'', one of the franchise's most iconic original creations. As described in the SLASH'EM encyclopedia entry (taken from a ''D&D'' manual), beholders have spherical bodies with a single large eye, ten smaller eyes on stalks above it, and a mouth full of teeth. The smaller eyes are used for offense or defense; each one has a different magical ability. Beholders are typically hostile to other creatures, and often hostile to one another.
+
+The artifact [[Eye of the Beholder]] is a pun on the saying "Beauty is in the eye of the beholder". (See the dNetHack encyclopedia entry, which quotes a similar phrase, though there is no artifact eye in that variant.) The word "beholder" is a less common (often poetic) synonym for "observer".
+
+==References==
+<references/>
+
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s MediaWiki:Common.js/showhide.js {56370 2010-11-13T12:35:15Z {630 Paxed} copy of [http://dev.wikia.com/index.php?title=ShowHide/code.js the show/hide code from wikia] /*<pre>*/
+/*<source lang=javascript>*/
+/*
+ * Copyright © 2009, Daniel Friesen
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the script nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY DANIEL FRIESEN ''AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL DANIEL FRIESEN BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+(function($) {
+
+	// CONFIG
+	var config = window.ShowHideConfig = $.extend(true, {
+		autoCollapse: 2,
+		userLang: true,
+		brackets: '[]',
+		linkBefore: false,
+		// German
+		de: {
+			show: "anzeigen",
+			hide: "verbergen",
+			showAll: "alle anzeigen",
+			hideAll: "alle verbergen"
+		},
+		// English
+		en: {
+			show: "show",
+			hide: "hide",
+			showAll: "show all",
+			hideAll: "hide all"
+		},
+		// Spanish
+		es: {
+			show: "Mostrar",
+			hide: "Ocultar",
+			showAll: "Mostrar todo",
+			hideAll: "Ocultar todo"
+		},
+		// French
+		fr: {
+			show: "montrer",
+			hide: "cacher",
+			showAll: "montrer tous",
+			hideAll: "cacher tous"
+		},
+		// Dutch
+		nl: {
+			show: "tonen",
+			hide: "verbergen",
+			showAll: "alles tonen",
+			hideAll: "alles verbergen"
+		}
+		// Make a post on the talkpage if you have i18n updates
+	}, window.ShowHideConfig || {});
+
+	// i18n function
+	function msg(name) {
+		if ( config.userLang && wgUserLanguage in config && name in config[wgUserLanguage] )
+			return config[wgUserLanguage][name];
+		if ( wgContentLanguage in config && name in config[wgContentLanguage] )
+			return config[wgContentLanguage][name];
+		return config.en[name];
+	}
+	
+	// common
+	$.fn.onLink = function(fn) {
+		return this.bind('click keypress', function(e) {
+			if ( e.type === 'click' || ( e.type === 'keypress' && ( e.keyCode === 13 || e.charCode === 32 ) ) )
+				fn.call(this, e);
+		});
+	};
+
+	/** Collapsible tables using jQuery
+	 *
+	 *  Description: Allows tables to be collapsed, showing only the header.
+	 */
+	function collapseTable( node, state ) {
+		var $table = $(node);
+		var $button = $table.find("tr:first > th:first .collapseLink");
+	
+		if (!$table.length || !$button.length) {
+			return false;
+		}
+		
+		if ( typeof state === 'boolean' )
+			$table.toggleClass('collapsed', !state);
+		else
+			$table.toggleClass('collapsed');
+		
+		var hidden = $table.hasClass('collapsed');
+		$table.find('> * > tr:not(:first):not(.nocollapse)')[hidden?"hide":"show"]();
+		$button.text( msg( hidden ? "show" : "hide" ) );
+	}
+
+	function createCollapseButtons() {
+		var NavigationBoxes = [];
+		$("table.collapsible").each(function() {
+			NavigationBoxes.push(this);
+			var $buttonLink = $('<span tabIndex=0 class=collapseLink />').text( msg("hide") )
+                                .css({ cursor: "pointer" })
+				.onLink(function(e) { collapseTable( $(this).closest('table') ); });
+			var $button = $("<span class=collapseButton />").css({
+				"float": "right",
+				textAlign: "right",
+				fontWeight: "normal",
+				width: "6em",
+				marginLeft: "-100%"
+			});
+			$button.append( document.createTextNode(config.brackets.substr(0, config.brackets.length/2)), $buttonLink, config.brackets.substr(config.brackets.length/2) );
+
+			var $header = $(this).find('tr:first > th:first').prepend($button);
+		});
+	
+		// if more Navigation Bars found than Default: hide all
+		if ($(NavigationBoxes).filter('.autocollapse').length >= config.autoCollapse)
+			$(NavigationBoxes).filter('.autocollapse').each(function() { collapseTable( this, false ); });
+		else
+			$(NavigationBoxes).filter('.collapsed').each(function() { collapseTable( this, false ); });
+	}
+
+	$( createCollapseButtons );
+
+	/*</pre>*/
+
+	/*<pre>*/
+
+	/** Dynamic Navigation Bars with jQuery
+	 *
+	 *  Base Description: See Wikipedia:Wikipedia:NavFrame.
+	 */
+
+	// shows and hides content and picture (if available) of navigation bars
+	function toggleNavigationBar( node ) {
+		var $navFrame = $(node);
+		var $navToggle = $navFrame.find(".NavHead:first .collapseLink");
+	
+		if (!$navFrame.length || !$navToggle.length) {
+			return false;
+		}
+	
+		$navFrame.toggleClass('NavVisible');
+		$navFrame.find('.NavPic, .NavContent').not($navFrame.find('.NavFrame .NavPic, .NavFrame .NavContent')).slideToggle();
+		$navToggle.text( msg( $navFrame.hasClass('NavVisible') ? "hide" : "show" ) );
+	}
+
+	// adds show/hide-button to navigation bars
+	function createNavigationBarToggleButton() {
+		var NavFrames = $('.NavFrame').addClass('NavVisible').each(function() {
+			var $navHead = $(this).find('.NavHead:first');
+			$navHead.filter('legend').append(' - ');
+			var $buttonLink = $('<span tabIndex=0 class=collapseLink />').text( msg("hide") )
+				.onLink(function(e) { toggleNavigationBar( $(this).closest('.NavFrame') ); });
+			var $button = $('<span class="NavToggle collapseButton" />')
+			if ( config.brackets )
+				$button.append( document.createTextNode(config.brackets.substr(0, config.brackets.length/2)), $buttonLink, config.brackets.substr(config.brackets.length/2) );
+			else
+				$button.append( $buttonLink );
+			$navHead[config.linkBefore?"prepend":"append"]($button);
+		});
+		// if more Navigation Bars found than Default: hide all
+		if (NavFrames.length >= config.autoCollapse)
+			NavFrames.not('.noautocollapse').each(function() { toggleNavigationBar(this); });
+		else
+			NavFrames.filter('.collapsed').each(function() { toggleNavigationBar(this); });
+	}
+
+	$( createNavigationBarToggleButton );
+
+	$(function() {
+		$('.NavGlobal').each(function() {
+			$('<span class=NavGlobalShow />').append(
+				document.createTextNode('['),
+				$('<span tabIndex=0 class=collapseLink />').text( msg("showAll") ).onLink(function(e) {
+					$('.NavFrame').each(function() { if ( !$(this).hasClass('NavVisible') ) toggleNavigationBar(this); });
+				}),
+				']'
+			).appendTo(this);
+			$(this).append(' ');
+			$('<span class=NavGlobalHide />').append(
+				document.createTextNode('['),
+				$('<span tabIndex=0 class=collapseLink />').text( msg("hideAll") ).onLink(function(e) {
+					$('.NavFrame').each(function() { if ( $(this).hasClass('NavVisible') ) toggleNavigationBar(this); });
+				}),
+				']'
+			).appendTo(this);
+		});
+	});
+	
+})(jQuery);
+/*</source>*/
+/*</pre>*/}
+&&%s&& %s MediaWiki:Common.js/nhsympopup.js {106858 2017-08-22T19:33:07Z {366 Ilmari Karonen} add explicit close button (like the old popup had), force the dialog to remember its position correctly /*<syntaxhighlight lang="javascript">*/
+
+/*
+   The following code is for the colored symbol "popup" window when editing.
+   Relies on specific behaviour of the logical color symbols.
+   Requires jQuery-UI (currently only to make the popup window draggable)
+
+   To use this, include this javascript and put <span class="NH_mk_sym_popup">Click here</span>
+   on the page somewhere. The span will be turned into a clickable link.
+*/
+
+jQuery(function ($) {

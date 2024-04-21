@@ -1,0 +1,1000 @@
+
+NetHack 3.2.0 has no fully authoritative source.  The [[DevTeam]] ceased to distribute NetHack by [[Usenet]] after [[NetHack 3.1.3]].  It was made available at UUNet, but no longer exists there; the main distribution site was by [[wikipedia:FTP|FTP]] at linc.cis.upenn.edu, but that site no longer accepts anonymous logins.
+
+A patch file for 3.2.0 to 3.2.1 is available from the Free Software Foundation at
+[ftp://ftp.gnu.org/non-gnu/nethack/nethack-3.2.0-3.2.1.patch.gz]. This patch applied cleanly in reverse (with tiny modifications) to the [ftp://ftp.gnu.org/non-gnu/nethack/nethack-3.2.1.tar.gz NetHack 3.2.1 tarball from the FSF] recreates a 3.2.0 version.
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a NetHack 3.2.0 distribution at [http://www.juiblex.co.uk/nethack/source/nethack-3.2.0.tar.gz].
+
+== Izchak Miller, 1935-1994 ==
+
+[[Izchak Miller]] was a professor at the University of Pennsylvania and a founding member of the [[DevTeam]].  Due to his passing in 1994, the NetHack 3.2 Series was dedicated to his memory.
+
+A special game-end tombstone gave the dedication, and is still available as a compile-time option by defining NH320_DEDICATION{{refsrc|rip.c|320|comment= Dedication tombstone in 3.4.3 rip.c.}}:
+
+               ----------                      ----------
+              /          \                    /          \
+             /    REST    \                  /    This    \
+            /      IN      \                /  release of  \
+           /     PEACE      \              /   NetHack is   \
+          /                  \            /   dedicated to   \
+          |                  |            |  the memory of   |
+          |                  |            |                  |
+          |                  |            |  Izchak Miller   |
+          |                  |            |   1935 - 1994    |
+          |                  |            |                  |
+          |                  |            |     Ascended     |
+          |       1001       |            |                  |
+       *  |     *  *  *      | *        * |      *  *  *     | *
+  _____)/\|\__//(\/(/\)/\//\/|_)________)/|\\_/_/(\/(/\)/\/\/|_)____
+
+== Significant changes ==
+
+NetHack 3.2.0 is a major release.
+
+Notable changes in NetHack 3.2.0 are:
+
+* Graphical [[tiles]] are supported for the first time, in the ports for [[X11]], [[Amiga]] and [[MS-DOS]].  Support for tiles in [[Windows NT]] is partially present but disabled.
+
+* The spellcasting system is revised.  Previously, spellbooks could be read only once, successfully or not, and [[spell]]s had charges, rather like wands, which could be stored indefinitely but required relearning once exhausted.  Now, spellbooks can be read several times, and spells cast until [[magical energy]] is exhausted; but the spells eventually time out.
+
+* Weapons proficiency is introduced.  In this version, it applies to weapons only.
+
+* Inventories and item choices can be made by menus.
+
+* [[Izchak]] now tends the lighting shop.
+
+* Change of [[alignment]] is now a bar to entering the [[Quest]].
+
+* New traps are the [[rolling boulder trap]] and the [[hole]].
+
+* New monsters are [[gargoyle]], [[winged gargoyle]], [[black light]] and [[salamander]].
+
+* [[Land mine]]s and [[bear trap]]s can now be disarmed and turned into the corresponding objects.
+
+* Other new objects are [[cornuthaum]], [[dunce cap]], [[T-shirt]], [[potion of oil]] and [[flint stone]].
+
+* The [[wand of wishing]] in the [[Castle]] no longer lies exposed on the floor, but is protected by a [[chest]].
+
+* Many smaller changes and bug fixes.
+
+== The adventurer ==
+
+The player may choose from these roles:
+
+{| class="prettytable"
+|-
+!Role!!Alignment
+|-
+|[[Archeologist]]||Lawful
+|-
+|[[Barbarian]]||Neutral
+|-
+|[[Caveman|Cave(wo)man]]||Lawful
+|-
+|[[Elf]]||Chaotic
+|-
+|[[Healer]]||Neutral
+|-
+|[[Knight]]||Lawful
+|-
+|[[Priest|Priest(ess)]]||Random
+|-
+|[[Rogue]]||Chaotic
+|-
+|[[Samurai]]||Lawful
+|-
+|[[Tourist]]||Neutral
+|-
+|[[Valkyrie]]||Neutral
+|-
+|[[Wizard]]||Neutral
+|}
+
+All classes permit male and female adventurers, except the Valkyrie which must be female.
+
+The adventurer has [[experience]], [[hit points]], [[magical energy]], [[armor class]], [[alignment]], and the six major [[attribute]]s.  He may advance to [[experience level]] 30.
+
+The initial [[pet]] is a little [[dog]] for Cavemen and Samurai, a [[kitten]] for Wizards, and a random choice of the two (or the user's choice in his [[options]]) for all others.
+
+== Dungeon features ==
+
+The main trunk of the dungeon begins at level 1, where the game begins, and proceeds down [[stairs]] to [[Medusa's Lair]] and the [[Castle]].  From there, it is necessary to enter a [[trap door]] to the [[Valley of the Dead]].  Further stairs down eventually lead to the invocation level.  Performing the [[invocation ritual]] at the [[vibrating square]] opens the stairs to the [[Sanctum]].
+
+With the [[Amulet of Yendor]] in hand, the adventurer may ascend from level 1 into the [[Plane of Earth]]; thence s/he may proceed through [[magic portal]]s to the planes of [[Plane of Air|Air]], [[Plain of Fire|Fire]], and [[Plain of Water|Water]], and thence to the [[Astral Plane]].  Offering the [[Amulet of Yendor]] on the correct [[high altar]] wins the game.
+
+Along the way, one will encounter these branches and special levels:
+
+* A second [[stair]] to the [[Gnomish Mines]].  Therein, one will find [[Mine Town]] and, at the end, the bottom level with a [[luckstone]].
+
+* The [[Oracle]] level.
+
+* A possible [[Bigroom]].
+
+* The [[Rogue level]].
+
+* The [[magic portal]] to the [[Quest]].
+
+* A possible [[magic portal]], inside a [[vault]], to [[Fort Ludios]].
+
+* [[Medusa's Lair]].
+
+* The [[Castle]].
+
+* The [[Valley of the Dead]].  [[Gehennom]] begins here, and it is no longer safe to [[pray]].
+
+* The lairs of [[Asmodeus]], [[Juiblex]], [[Baalzebub]], and [[Orcus]].
+
+* A second upward [[stairs|staircase]] to [[Vlad's Tower]].
+
+* The [[Wizard's Tower]]; it is visible but not accessible from here.
+
+* A [[Fake Tower]] containing a random [[Amulet]].
+
+* A [[Fake Tower]] containing a [[magic portal]] by which the Wizard's Tower may be entered.
+
+To win the game, it is necessary to complete these tasks:
+
+* Gather seven candles, possibly in [[Izchak]]'s [[lighting shop]] in [[Mine Town]].
+
+* Complete the [[Quest]] and get the [[Bell of Opening]].
+
+* Kill [[Vlad the Impaler]] and get the [[Candelabrum of Invocation]].
+
+* Kill the [[Wizard of Yendor]] and get the [[Book of the Dead]].
+
+* Proceed to the [[vibrating square]] and perform the [[invocation ritual]].
+
+* Kill the [[high priest]] of [[Moloch]] and get the [[Amulet of Yendor]].
+
+* Escape from the dungeon.
+
+* Pass through the [[Elemental Planes]].
+
+* Arrive at the correct [[altar]] in the [[Astral Plane]].
+
+* Offer the [[Amulet of Yendor]] to the god of your [[alignment]].
+
+[[Special room]]s are:
+
+* [[throne room]]
+* [[swamp]]
+* [[vault]]
+* [[beehive]]
+* [[crypt]]
+* [[barracks]]
+* [[treasure zoo]]
+* [[Oracle]]
+* [[temple]]
+* [[shop]]
+
+Special [[dungeon feature]]s are:
+* [[pool]]
+* [[moat]]
+* [[water]]
+* [[drawbridge]]
+* [[lava]]
+* [[door]]
+* [[ladder]]
+* [[fountain]]
+* [[throne]]
+* [[sink]]
+* [[altar]]
+* [[ice]]
+* [[air]]
+* [[cloud]]
+
+Traps are:
+
+* [[arrow trap]]
+* [[dart trap]]
+* [[falling rock trap]]
+* [[squeaky board]]
+* [[bear trap]]
+* [[land mine]]
+* [[rolling boulder trap]]
+* [[sleeping gas trap]]
+* [[rust trap]]
+* [[fire trap]]
+* [[pit]]
+* [[spiked pit]]
+* [[hole]]
+* [[trapdoor]]
+* [[teleportation trap]]
+* [[level teleporter]]
+* [[magic portal]]
+* [[web]]
+* monsters disguised as [[statue]]s
+* [[magic trap]]
+* [[anti-magic field]]
+* [[polymorph trap]]
+
+A [[wand of wishing]] is guaranteed in the [[Castle]], in its modern position, protected by [[Elbereth]] and a [[chest]].
+
+== Bestiary ==
+
+New monsters are indicated in boldface.
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[giant ant]]||{{brown|a}} [[image:giant ant.png]]||
+|-
+|[[killer bee]]||{{yellow|a}} [[image:killer bee.png]]||
+|-
+|[[soldier ant]]||{{blue|a}} [[image:soldier ant.png]]||
+|-
+|[[fire ant]]||{{red|a}} [[image:fire ant.png]]||
+|-
+|[[giant beetle]]||{{darkgray|a}} [[image:giant beetle.png]]||
+|-
+|[[queen bee]]||{{magenta|a}} [[image:queen bee.png]]||
+|-
+|[[acid blob]]||{{green|b}} [[image:acid blob.png]]||
+|-
+|[[quivering blob]]||{{white|b}} [[image:quivering blob.png]]||
+|-
+|[[gelatinous cube]]||{{cyan|b}} [[image:gelatinous cube.png]]||
+|-
+|[[cockatrice]]||{{yellow|c}} [[image:cockatrice.png]]||
+|-
+|[[jackal]]||{{brown|d}} [[image:jackal.png]]||
+|-
+|[[werejackal]]||{{red|@}} [[image:werejackal.png]]/{{brown|d}} [[image:werejackal_were.png]]||
+|-
+|[[little dog]]||{{white|d}} [[image:little dog.png]]||
+|-
+|[[dog]]||{{white|d}} [[image:dog.png]]||
+|-
+|[[large dog]]||{{white|d}} [[image:large dog.png]]||
+|-
+|[[wolf]]||{{brown|d}} [[image:wolf.png]]||
+|-
+|[[werewolf]]||{{brightred|@}} [[image:werewolf.png]]/{{brown|d}} [[image:werewolf_were.png]]||
+|-
+|[[warg]]||{{brown|d}} [[image:warg.png]]||
+|-
+|[[winter wolf]]||{{cyan|d}} [[image:winter wolf.png]]||
+|-
+|[[hell hound pup]]||{{red|d}} [[image:hell hound pup.png]]||
+|-
+|[[hell hound]]||{{red|d}} [[image:hell hound.png]]||
+|-
+|[[floating eye]]||{{blue|e}} [[image:floating eye.png]]||
+|-
+|[[freezing sphere]]||{{white|e}} [[image:freezing sphere.png]]||
+|-
+|[[kitten]]||{{white|f}} [[image:kitten.png]]||
+|-
+|[[housecat]]||{{white|f}} [[image:housecat.png]]||
+|-
+|[[jaguar]]||{{brown|f}} [[image:jaguar.png]]||
+|-
+|[[large cat]]||{{white|f}} [[image:large cat.png]]||
+|-
+|[[tiger]]||{{yellow|f}} [[image:tiger.png]]||
+|-
+|[[gremlin]]||{{green|g}} [[image:gremlin.png]]||
+|-
+|'''[[gargoyle]]'''||'''{{brown|g}}''' [[image:gargoyle.png]]||
+|-
+|'''[[winged gargoyle]]'''||'''{{magenta|g}}''' [[image:winged gargoyle.png]]||
+|-
+|[[hobbit]]||{{green|h}} [[image:hobbit.png]]||
+|-
+|[[dwarf]]||{{red|h}} [[image:dwarf.png]]||
+|-
+|[[bugbear]]||{{brown|h}} [[image:bugbear.png]]||
+|-
+|[[dwarf lord]]||{{blue|h}} [[image:dwarf lord.png]]||
+|-
+|[[dwarf king]]||{{magenta|h}} [[image:dwarf king.png]]||
+|-
+|[[mind flayer]]||{{magenta|h}} [[image:mind flayer 320.png]]||
+|-
+|[[manes]]||{{red|i}} [[image:manes.png]]||
+|-
+|[[homunculus]]||{{green|i}} [[image:homunculus.png]]||
+|-
+|[[imp]]||{{red|i}} [[image:imp.png]]||
+|-
+|[[lemure]]||{{brown|i}} [[image:lemure.png]]||
+|-
+|[[quasit]]||{{blue|i}} [[image:quasit.png]]||
+|-
+|[[tengu]]||{{cyan|i}} [[image:tengu.png]]||
+|-
+|[[blue jelly]]||{{blue|j}} [[image:blue jelly.png]]||
+|-
+|[[spotted jelly]]||{{green|j}} [[image:spotted jelly.png]]||
+|-
+|[[ochre jelly]]||{{brown|j}} [[image:ochre jelly.png]]||
+|-
+|[[kobold]]||{{brown|k}} [[image:kobold.png]]||
+|-
+|[[large kobold]]||{{red|k}} [[image:large kobold.png]]||
+|-
+|[[kobold lord]]||{{magenta|k}} [[image:kobold lord.png]]||
+|-
+|[[kobold shaman]]||{{brightblue|k}} [[image:kobold shaman.png]]||
+|-
+|[[leprechaun]]||{{green|l}} [[image:leprechaun.png]]||
+|-
+|[[small mimic]]||{{brown|m}} [[image:small mimic.png]]||
+|-
+|[[large mimic]]||{{red|m}} [[image:large mimic.png]]||
+|-
+|[[giant mimic]]||{{magenta|m}} [[image:giant mimic.png]]||
+|-
+|[[wood nymph]]||{{green|n}} [[image:wood nymph.png]]||
+|-
+|[[water nymph]]||{{blue|n}} [[image:water nymph.png]]||
+|-
+|[[mountain nymph]]||{{brown|n}} [[image:mountain nymph.png]]||
+|-
+|[[goblin]]||{{lightgray|o}} [[image:goblin.png]]||
+|-
+|[[hobgoblin]]||{{brown|o}} [[image:hobgoblin.png]]||
+|-
+|[[orc]]||{{red|o}} [[image:orc.png]]||
+|-
+|[[hill orc]]||{{yellow|o}} [[image:hill orc.png]]||
+|-
+|[[Mordor orc]]||{{blue|o}} [[image:Mordor orc.png]]||
+|-
+|[[Uruk-hai]]||{{darkgray|o}} [[image:Uruk-hai.png]]||
+|-
+|[[orc shaman]]||{{brightblue|o}} [[image:orc shaman.png]]||
+|-
+|[[orc-captain]]||{{magenta|o}} [[image:orc-captain.png]]||
+|-
+|[[rock piercer]]||{{lightgray|p}} [[image:rock piercer.png]]||
+|-
+|[[iron piercer]]||{{cyan|p}} [[image:iron piercer.png]]||
+|-
+|[[rothe]]||{{lightgray|q}} [[image:rothe.png]]||
+|-
+|[[mumak]]||{{lightgray|q}} [[image:mumak.png]]||
+|-
+|[[leocrotta]]||{{red|q}} [[image:leocrotta.png]]||
+|-
+|[[wumpus]]||{{cyan|q}} [[image:wumpus.png]]||
+|-
+|[[titanothere]]||{{lightgray|q}} [[image:titanothere.png]]||
+|-
+|[[baluchitherium]]||{{lightgray|q}} [[image:baluchitherium.png]]||
+|-
+|[[sewer rat]]||{{brown|r}} [[image:sewer rat.png]]||
+|-
+|[[giant rat]]||{{brown|r}} [[image:giant rat.png]]||
+|-
+|[[rabid rat]]||{{brown|r}} [[image:rabid rat.png]]||
+|-
+|[[wererat]]||{{brown|@}} [[image:wererat.png]]/{{brown|r}} [[image:wererat_were.png]]||
+|-
+|[[rock mole]]||{{lightgray|r}} [[image:rock mole.png]]||
+|-
+|[[cave spider]]||{{lightgray|s}} [[image:cave spider.png]]||
+|-
+|[[giant spider]]||{{magenta|s}} [[image:giant spider.png]]||
+|-
+|[[scorpion]]||{{red|s}} [[image:scorpion.png]]||
+|-
+|[[lurker above]]||{{lightgray|t}} [[image:lurker above.png]]||
+|-
+|[[trapper]]||{{green|t}} [[image:trapper.png]]||
+|-
+|[[white unicorn]]||{{white|u}} [[image:white unicorn.png]]||
+|-
+|[[gray unicorn]]||{{lightgray|u}} [[image:gray unicorn.png]]||
+|-
+|[[black unicorn]]||{{darkgray|u}} [[image:black unicorn.png]]||
+|-
+|[[fog cloud]]||{{lightgray|v}} [[image:fog cloud.png]]||
+|-
+|[[dust vortex]]||{{brown|v}} [[image:dust vortex.png]]||
+|-
+|[[ice vortex]]||{{cyan|v}} [[image:ice vortex.png]]||
+|-
+|[[energy vortex]]||{{brightblue|v}} [[image:energy vortex.png]]||
+|-
+|[[steam vortex]]||{{blue|v}} [[image:steam vortex.png]]||
+|-
+|[[fire vortex]]||{{yellow|v}} [[image:fire vortex.png]]||
+|-
+|[[baby long worm]]||{{brown|w}} [[image:baby long worm.png]]||
+|-
+|[[baby purple worm]]||{{magenta|w}} [[image:baby purple worm.png]]||
+|-
+|[[long worm]]||{{brown|w}} [[image:long worm.png]]||
+|-
+|[[purple worm]]||{{magenta|w}} [[image:purple worm.png]]||
+|-
+|[[grid bug]]||{{magenta|x}} [[image:grid bug 320.png]]||
+|-
+|[[xan]]||{{red|x}} [[image:xan.png]]||
+|-
+|[[yellow light]]||{{yellow|y}} [[image:yellow light.png]]||
+|-
+|'''[[black light]]'''||'''{{darkgray|y}}''' [[image:black light.png]]||
+|-
+|[[zruty]]||{{brown|z}} [[image:zruty.png]]||
+|-
+|[[couatl]]||{{green|A}} [[image:couatl.png]]||
+|-
+|[[Aleax]]||{{yellow|A}} [[image:Aleax.png]]||
+|-
+|[[Angel]]||{{white|A}} [[image:Angel.png]]||
+|-
+|[[ki-rin]]||{{yellow|A}} [[image:ki-rin.png]]||
+|-
+|[[Archon]]||{{magenta|A}} [[image:Archon.png]]||
+|-
+|[[bat]]||{{brown|B}} [[image:bat.png]]||
+|-
+|[[giant bat]]||{{red|B}} [[image:giant bat.png]]||
+|-
+|[[vampire bat]]||{{darkgray|B}} [[image:vampire bat.png]]||
+|-
+|[[plains centaur]]||{{brown|C}} [[image:plains centaur.png]]||
+|-
+|[[forest centaur]]||{{green|C}} [[image:forest centaur.png]]||
+|-
+|[[mountain centaur]]||{{cyan|C}} [[image:mountain centaur.png]]||
+|-
+|[[baby gray dragon]]||{{lightgray|D}} [[image:baby gray dragon.png]]||
+|-
+|[[baby red dragon]]||{{red|D}} [[image:baby red dragon.png]]||
+|-
+|[[baby white dragon]]||{{white|D}} [[image:baby white dragon.png]]||
+|-
+|[[baby orange dragon]]||{{brightred|D}} [[image:baby orange dragon.png]]||
+|-
+|[[baby black dragon]]||{{darkgray|D}} [[image:baby black dragon.png]]||
+|-
+|[[baby blue dragon]]||{{blue|D}} [[image:baby blue dragon.png]]||
+|-
+|[[baby green dragon]]||{{green|D}} [[image:baby green dragon.png]]||
+|-
+|[[baby yellow dragon]]||{{yellow|D}} [[image:baby yellow dragon.png]]||
+|-
+|[[gray dragon]]||{{lightgray|D}} [[image:gray dragon.png]]||
+|-
+|[[red dragon]]||{{red|D}} [[image:red dragon.png]]||
+|-
+|[[white dragon]]||{{white|D}} [[image:white dragon.png]]||
+|-
+|[[orange dragon]]||{{brightred|D}} [[image:orange dragon.png]]||
+|-
+|[[black dragon]]||{{darkgray|D}} [[image:black dragon.png]]||
+|-
+|[[blue dragon]]||{{blue|D}} [[image:blue dragon.png]]||
+|-
+|[[green dragon]]||{{green|D}} [[image:green dragon.png]]||
+|-
+|[[yellow dragon]]||{{yellow|D}} [[image:yellow dragon.png]]||
+|-
+|[[air elemental]]||{{cyan|E}} [[image:air elemental.png]]||
+|-
+|[[fire elemental]]||{{yellow|E}} [[image:fire elemental.png]]||
+|-
+|[[earth elemental]]||{{brown|E}} [[image:earth elemental.png]]||
+|-
+|[[water elemental]]||{{blue|E}} [[image:water elemental.png]]||
+|-
+|[[brown mold]]||{{brown|F}} [[image:brown mold.png]]||
+|-
+|[[yellow mold]]||{{yellow|F}} [[image:yellow mold.png]]||
+|-
+|[[green mold]]||{{green|F}} [[image:green mold.png]]||
+|-
+|[[red mold]]||{{red|F}} [[image:red mold.png]]||
+|-
+|[[shrieker]]||{{magenta|F}} [[image:shrieker.png]]||
+|-
+|[[violet fungus]]||{{magenta|F}} [[image:violet fungus.png]]||
+|-
+|[[gnome]]||{{brown|G}} [[image:gnome.png]]||
+|-
+|[[gnome lord]]||{{blue|G}} [[image:gnome lord.png]]||
+|-
+|[[gnomish wizard]]||{{brightblue|G}} [[image:gnomish wizard.png]]||
+|-
+|[[gnome king]]||{{magenta|G}} [[image:gnome king.png]]||
+|-
+|[[giant]]||{{red|H}} [[image:giant.png]]||
+|-
+|[[stone giant]]||{{lightgray|H}} [[image:stone giant.png]]||
+|-
+|[[hill giant]]||{{cyan|H}} [[image:hill giant.png]]||
+|-
+|[[fire giant]]||{{yellow|H}} [[image:fire giant.png]]||
+|-
+|[[frost giant]]||{{white|H}} [[image:frost giant.png]]||
+|-
+|[[ettin]]||{{brown|H}} [[image:ettin.png]]||
+|-
+|[[titan]]||{{magenta|H}} [[image:titan.png]]||
+|-
+|[[minotaur]]||{{brown|H}} [[image:minotaur.png]]||
+|-
+|[[stalker]]||{{white|I}} [[image:stalker.png]]||
+|-
+|[[jabberwock]]||{{brightred|J}} [[image:jabberwock.png]]||
+|-
+|[[Keystone Kop]]||{{blue|K}} [[image:Keystone Kop.png]]||If KOPS defined at compile time
+|-
+|[[Kop Sergeant]]||{{blue|K}} [[image:Kop Sergeant.png]]||If KOPS defined at compile time
+|-
+|[[Kop Lieutenant]]||{{cyan|K}} [[image:Kop Lieutenant.png]]||If KOPS defined at compile time
+|-
+|[[Kop Kaptain]]||{{magenta|K}} [[image:Kop Kaptain.png]]||If KOPS defined at compile time
+|-
+|[[lich]]||{{brown|L}} [[image:lich.png]]||
+|-
+|[[demilich]]||{{red|L}} [[image:demilich.png]]||
+|-
+|[[master lich]]||{{magenta|L}} [[image:master lich.png]]||
+|-
+|[[kobold mummy]]||{{brown|M}} [[image:kobold mummy.png]]||
+|-
+|[[gnome mummy]]||{{red|M}} [[image:gnome mummy 320.png]]||
+|-
+|[[orc mummy]]||{{lightgray|M}} [[image:orc mummy.png]]||
+|-
+|[[elf mummy]]||{{green|M}} [[image:elf mummy.png]]||
+|-
+|[[human mummy]]||{{lightgray|M}} [[image:human mummy.png]]||
+|-
+|[[ettin mummy]]||{{blue|M}} [[image:ettin mummy.png]]||
+|-
+|[[giant mummy]]||{{cyan|M}} [[image:giant mummy.png]]||
+|-
+|[[red naga hatchling]]||{{red|N}} [[image:red naga hatchling.png]]||
+|-
+|[[black naga hatchling]]||{{darkgray|N}} [[image:black naga hatchling.png]]||
+|-
+|[[golden naga hatchling]]||{{yellow|N}} [[image:golden naga hatchling.png]]||
+|-
+|[[guardian naga hatchling]]||{{green|N}} [[image:guardian naga hatchling.png]]||
+|-
+|[[red naga]]||{{red|N}} [[image:red naga.png]]||
+|-
+|[[black naga]]||{{darkgray|N}} [[image:black naga.png]]||
+|-
+|[[golden naga]]||{{yellow|N}} [[image:golden naga.png]]||
+|-
+|[[guardian naga]]||{{green|N}} [[image:guardian naga.png]]||
+|-
+|[[ogre]]||{{brown|O}} [[image:ogre.png]]||
+|-
+|[[ogre lord]]||{{red|O}} [[image:ogre lord.png]]||
+|-
+|[[ogre king]]||{{magenta|O}} [[image:ogre king.png]]||
+|-
+|[[gray ooze]]||{{lightgray|P}} [[image:gray ooze.png]]||
+|-
+|[[brown pudding]]||{{brown|P}} [[image:brown pudding.png]]||
+|-
+|[[black pudding]]||{{darkgray|P}} [[image:black pudding.png]]||
+|-
+|[[quantum mechanic]]||{{cyan|Q}} [[image:quantum mechanic.png]]||
+|-
+|[[rust monster]]||{{brown|R}} [[image:rust monster.png]]||
+|-
+|[[garter snake]]||{{green|S}} [[image:garter snake.png]]||
+|-
+|[[snake]]||{{brown|S}} [[image:snake.png]]||
+|-
+|[[water moccasin]]||{{red|S}} [[image:water moccasin.png]]||
+|-
+|[[pit viper]]||{{blue|S}} [[image:pit viper.png]]||
+|-
+|[[python]]||{{magenta|S}} [[image:python.png]]||
+|-
+|[[cobra]]||{{blue|S}} [[image:cobra.png]]||
+|-
+|[[troll]]||{{brown|T}} [[image:troll.png]]||
+|-
+|[[ice troll]]||{{white|T}} [[image:ice troll.png]]||
+|-
+|[[rock troll]]||{{cyan|T}} [[image:rock troll.png]]||
+|-
+|[[water troll]]||{{blue|T}} [[image:water troll.png]]||
+|-
+|[[Olog-hai]]||{{magenta|T}} [[image:Olog-hai.png]]||
+|-
+|[[umber hulk]]||{{brown|U}} [[image:umber hulk.png]]||
+|-
+|[[vampire]]||{{red|V}} [[image:vampire.png]]||
+|-
+|[[vampire lord]]||{{blue|V}} [[image:vampire lord.png]]||
+|-
+|[[Vlad the Impaler]]||{{magenta|V}} [[image:Vlad the Impaler.png]]||
+|-
+|[[barrow wight]]||{{lightgray|W}} [[image:barrow wight.png]]||
+|-
+|[[wraith]]||{{darkgray|W}} [[image:wraith.png]]||
+|-
+|[[Nazgul]]||{{magenta|W}} [[image:Nazgul.png]]||
+|-
+|[[xorn]]||{{brown|X}} [[image:xorn.png]]||
+|-
+|[[ape]]||{{brown|Y}} [[image:ape.png]]||
+|-
+|[[owlbear]]||{{brown|Y}} [[image:owlbear.png]]||
+|-
+|[[yeti]]||{{white|Y}} [[image:yeti.png]]||
+|-
+|[[carnivorous ape]]||{{darkgray|Y}} [[image:carnivorous ape.png]]||
+|-
+|[[sasquatch]]||{{lightgray|Y}} [[image:sasquatch.png]]||
+|-
+|[[kobold zombie]]||{{brown|Z}} [[image:kobold zombie.png]]||
+|-
+|[[gnome zombie]]||{{brown|Z}} [[image:gnome zombie.png]]||
+|-
+|[[orc zombie]]||{{lightgray|Z}} [[image:orc zombie.png]]||
+|-
+|[[elf zombie]]||{{green|Z}} [[image:elf zombie.png]]||
+|-
+|[[human zombie]]||{{white|Z}} [[image:human zombie.png]]||
+|-
+|[[ettin zombie]]||{{blue|Z}} [[image:ettin zombie.png]]||
+|-
+|[[giant zombie]]||{{cyan|Z}} [[image:giant zombie.png]]||
+|-
+|[[skeleton]]||{{white|Z}} [[image:skeleton.png]]||
+|-
+|[[straw golem]]||{{yellow|'}} [[image:straw golem.png]]||
+|-
+|[[rope golem]]||{{brown|'}} [[image:rope golem.png]]||
+|-
+|[[leather golem]]||{{brown|'}} [[image:leather golem.png]]||
+|-
+|[[wood golem]]||{{brown|'}} [[image:wood golem.png]]||
+|-
+|[[flesh golem]]||{{red|'}} [[image:flesh golem.png]]||
+|-
+|[[clay golem]]||{{brown|'}} [[image:clay golem.png]]||
+|-
+|[[stone golem]]||{{lightgray|'}} [[image:stone golem.png]]||
+|-
+|[[iron golem]]||{{cyan|'}} [[image:iron golem.png]]||
+|-
+|[[human]]||{{white|@}} [[image:human.png]]||
+|-
+|[[Woodland-elf]]||{{green|@}} [[image:Woodland-elf.png]]||
+|-
+|[[Green-elf]]||{{brightgreen|@}} [[image:Green-elf.png]]||
+|-
+|[[Grey-elf]]||{{lightgray|@}} [[image:Grey-elf.png]]||
+|-
+|[[elf-lord]]||{{brightblue|@}} [[image:elf-lord.png]]||
+|-
+|[[Elvenking]]||{{magenta|@}} [[image:Elvenking.png]]||
+|-
+|[[nurse]]||{{white|@}} [[image:nurse.png]]||
+|-
+|[[shopkeeper]]||{{white|@}} [[image:shopkeeper.png]]||
+|-
+|[[guard]]||{{blue|@}} [[image:guard.png]]||
+|-
+|[[oracle]]||{{brightblue|@}} [[image:oracle.png]]||
+|-
+|[[aligned priest]]||{{white|@}} [[image:aligned_priest.png]]||
+|-
+|[[high priest]]||{{white|@}} [[image:high priest.png]]||
+|-
+|[[soldier]]||{{lightgray|@}} [[image:soldier.png]]||
+|-
+|[[sergeant]]||{{red|@}} [[image:sergeant.png]]||
+|-
+|[[lieutenant]]||{{green|@}} [[image:lieutenant.png]]||
+|-
+|[[captain]]||{{blue|@}} [[image:captain.png]]||
+|-
+|[[watchman]]||{{lightgray|@}} [[image:watchman.png]]||
+|-
+|[[watch captain]]||{{green|@}} [[image:watch captain.png]]||
+|-
+|[[Medusa]]||{{brightgreen|@}} [[image:Medusa.png]]||
+|-
+|[[Wizard of Yendor]]||{{magenta|@}} [[image:Wizard of Yendor.png]]||
+|-
+|[[Croesus]]||{{magenta|@}} [[image:Croesus.png]]||
+|-
+|[[ghost]]||{{lightgray|&nbsp;}} [[image:ghost.png]]||
+|-
+|[[shade]]||{{darkgray|&nbsp;}} [[image:shade.png]]||
+|-
+|[[water demon]]||{{blue|&}} [[image:water demon.png]]||
+|-
+|[[horned devil]]||{{brown|&}} [[image:horned devil.png]]||
+|-
+|[[succubus]]||{{lightgray|&}} [[image:succubus.png]]||
+|-
+|[[incubus]]||{{lightgray|&}} [[image:incubus.png]]||
+|-
+|[[erinys]]||{{red|&}} [[image:erinys.png]]||
+|-
+|[[barbed devil]]||{{red|&}} [[image:barbed devil.png]]||
+|-
+|[[marilith]]||{{red|&}} [[image:marilith.png]]||
+|-
+|[[vrock]]||{{red|&}} [[image:vrock.png]]||
+|-
+|[[hezrou]]||{{red|&}} [[image:hezrou.png]]||
+|-
+|[[bone devil]]||{{lightgray|&}} [[image:bone devil.png]]||
+|-
+|[[ice devil]]||{{white|&}} [[image:ice devil.png]]||
+|-
+|[[nalfeshnee]]||{{red|&}} [[image:nalfeshnee.png]]||
+|-
+|[[pit fiend]]||{{red|&}} [[image:pit fiend.png]]||
+|-
+|[[balrog]]||{{red|&}} [[image:balrog.png]]||
+|-
+|[[Juiblex]]||{{brightgreen|&}} [[image:Juiblex.png]]||
+|-
+|[[Yeenoghu]]||{{magenta|&}} [[image:Yeenoghu.png]]||Has the touch-of-death bug
+|-
+|[[Orcus]]||{{magenta|&}} [[image:Orcus.png]]||
+|-
+|[[Geryon]]||{{magenta|&}} [[image:Geryon.png]]||
+|-
+|[[Dispater]]||{{magenta|&}} [[image:Dispater.png]]||
+|-
+|[[Baalzebub]]||{{magenta|&}} [[image:Baalzebub.png]]||
+|-
+|[[Asmodeus]]||{{magenta|&}} [[image:Asmodeus.png]]||
+|-
+|[[Demogorgon]]||{{magenta|&}} [[image:Demogorgon.png]]||
+|-
+|[[Riders#Death|Death]]||{{magenta|&}} [[image:Death.png]]||
+|-
+|[[Pestilence]]||{{magenta|&}} [[image:Pestilence.png]]||
+|-
+|[[Famine]]||{{magenta|&}} [[image:Famine.png]]||
+|-
+|[[mail daemon]]||{{brightblue|&}} [[image:mail daemon.png]]||If MAIL defined at compile time
+|-
+|[[djinni]]||{{yellow|&}} [[image:djinni.png]]||
+|-
+|[[giant eel]]||{{cyan|;}} [[image:giant eel.png]]||
+|-
+|[[electric eel]]||{{blue|;}} [[image:electric eel.png]]||
+|-
+|[[kraken]]||{{red|;}} [[image:kraken.png]]||
+|-
+|[[newt]]||{{yellow|<nowiki>:</nowiki>}} [[image:newt.png]]||
+|-
+|[[gecko]]||{{green|<nowiki>:</nowiki>}} [[image:gecko.png]]||
+|-
+|[[iguana]]||{{brown|<nowiki>:</nowiki>}} [[image:iguana.png]]||
+|-
+|[[baby crocodile]]||{{brown|<nowiki>:</nowiki>}} [[image:baby crocodile.png]]||
+|-
+|[[lizard]]||{{green|<nowiki>:</nowiki>}} [[image:lizard.png]]||
+|-
+|[[chameleon]]||{{brown|<nowiki>:</nowiki>}} [[image:chameleon.png]]||
+|-
+|[[crocodile]]||{{brown|<nowiki>:</nowiki>}} [[image:crocodile.png]]||
+|-
+|'''[[salamander]]'''||'''{{brightred|<nowiki>:</nowiki>}}''' [[image:salamander.png]]||
+|-
+|[[archeologist]]||{{white|@}} [[image:archeologist.png]]||
+|-
+|[[barbarian]]||{{white|@}} [[image:barbarian.png]]||
+|-
+|[[caveman]]||{{white|@}} [[image:caveman.png]]||
+|-
+|[[cavewoman]]||{{white|@}} [[image:cavewoman.png]]||
+|-
+|[[elf]]||{{white|@}} [[image:elf.png]]||
+|-
+|[[healer]]||{{white|@}} [[image:healer 320.png]]||
+|-
+|[[knight]]||{{white|@}} [[image:knight.png]]||
+|-
+|[[priest]]||{{white|@}} [[image:priest 320.png]]||
+|-
+|[[priestess]]||{{white|@}} [[image:priestess 320.png]]||
+|-
+|[[rogue]]||{{white|@}} [[image:rogue.png]]||
+|-
+|[[samurai]]||{{white|@}} [[image:samurai.png]]||
+|-
+|[[tourist]]||{{white|@}} [[image:tourist.png]]||If TOURIST defined at compile time
+|-
+|[[valkyrie]]||{{white|@}} [[image:valkyrie.png]]||
+|-
+|[[wizard]]||{{white|@}} [[image:wizard.png]]||
+|-
+|[[Lord Carnarvon]]||{{magenta|@}} [[image:Lord Carnarvon.png]]||
+|-
+|[[Pelias]]||{{magenta|@}} [[image:Pelias.png]]||
+|-
+|[[Shaman Karnov]]||{{magenta|@}} [[image:Shaman Karnov.png]]||
+|-
+|[[Earendil]]||{{magenta|@}} [[image:Earendil.png]]||
+|-
+|[[Elwing]]||{{magenta|@}} [[image:Elwing.png]]||
+|-
+|[[Hippocrates]]||{{magenta|@}} [[image:Hippocrates.png]]||
+|-
+|[[King Arthur]]||{{magenta|@}} [[image:King Arthur.png]]||
+|-
+|[[Arch Priest]]||{{white|@}} [[image:Arch Priest.png]]||
+|-
+|[[Master of Thieves]]||{{magenta|@}} [[image:Master of Thieves.png]]||
+|-
+|[[Lord Sato]]||{{magenta|@}} [[image:Lord Sato.png]]||
+|-
+|[[Twoflower]]||{{white|@}} [[image:Twoflower.png]]||If TOURIST defined at compile time
+|-
+|[[Norn]]||{{magenta|@}} [[image:Norn.png]]||
+|-
+|[[Wizard of Balance]]||{{magenta|@}} [[image:Wizard of balance 320.png]]||
+|-
+|[[Minion of Huhetotl]]||{{red|&}} [[image:Minion of Huhetotl.png]]||
+|-
+|[[Thoth Amon]]||{{magenta|@}} [[image:Thoth Amon.png]]||
+|-
+|[[Chromatic Dragon]]||{{magenta|D}} [[image:Chromatic Dragon.png]]||
+|-
+|[[Goblin King]]||{{magenta|o}} [[image:Goblin King.png]]||
+|-
+|[[Cyclops]]||{{lightgray|H}} [[image:Cyclops.png]]||
+|-
+|[[Ixoth]]||{{red|D}} [[image:Ixoth.png]]||
+|-
+|[[Nalzok]]||{{red|&}} [[image:Nalzok.png]]||
+|-
+|[[Master Assassin]]||{{magenta|@}} [[image:Master Assassin.png]]||
+|-
+|[[Ashikaga Takauji]]||{{magenta|@}} [[image:Ashikaga Takauji.png]]||
+|-
+|[[Lord Surtur]]||{{magenta|H}} [[image:Lord Surtur.png]]||
+|-
+|[[Dark One]]||{{darkgray|@}} [[image:Dark One.png]]||
+|-
+|[[student]]||{{white|@}} [[image:student.png]]||
+|-
+|[[chieftain]]||{{white|@}} [[image:chieftain.png]]||
+|-
+|[[neanderthal]]||{{white|@}} [[image:neanderthal.png]]||
+|-
+|[[High-elf]]||{{white|@}} [[image:High-elf.png]]||
+|-
+|[[attendant]]||{{white|@}} [[image:attendant.png]]||
+|-
+|[[page]]||{{white|@}} [[image:page.png]]||
+|-
+|[[acolyte]]||{{white|@}} [[image:acolyte.png]]||
+|-
+|[[thug]]||{{white|@}} [[image:thug.png]]||
+|-
+|[[ninja]]||{{white|@}} [[image:ninja.png]]||
+|-
+|[[roshi]]||{{white|@}} [[image:roshi.png]]||
+|-
+|[[guide]]||{{white|@}} [[image:guide.png]]||If TOURIST defined at compile time
+|-
+|[[warrior]]||{{white|@}} [[image:warrior.png]]||
+|-
+|[[apprentice]]||{{white|@}} [[image:apprentice.png]]||
+|-
+|}
+
+MUSE no longer controls any game feature, and so the unarmored watchman and unarmored soldier are removed.
+
+== Objects ==
+
+New objects are indicated in boldface.
+
+=== Artifacts ===
+
+Artifacts in NetHack 3.2.0 are:
+
+{| class="wikitable"
+!Name!!Object!!Alignment!!Role!!Notes
+|-
+|[[Excalibur]]||[[long sword]]||Lawful||Knight||
+|-
+|[[Stormbringer]]||[[runesword]]||Chaotic||&nbsp;||
+|-
+|[[Mjollnir]]||[[war hammer]]||Neutral||Valkyrie||
+|-
+|[[Cleaver]]||[[battle-axe]]||Neutral||Barbarian||
+|-
+|[[Grimtooth]]||[[orcish dagger]]||Chaotic||&nbsp;||
+|-
+|[[Orcrist]]||[[elven broadsword]]||Chaotic||Elf||User-nameable
+|-
+|[[Sting]]||[[elven dagger]]||Chaotic||&nbsp;||User-nameable
+|-
+|[[Magicbane]]||[[athame]]||Neutral||Wizard||
+|-
+|[[Frost Brand]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Fire Brand]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Dragonbane]]||[[broadsword]]||Neutral||&nbsp;||
+|-
+|[[Demonbane]]||[[long sword]]||Lawful||&nbsp;||
+|-
+|[[Werebane]]||[[silver saber]]||Lawful||&nbsp;||
+|-
+|[[Grayswandir]]||[[silver saber]]||Lawful||&nbsp;||
+|-
+|[[Giantslayer]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Ogresmasher]]||[[war hammer]]||Lawful||&nbsp;||
+|-
+|[[Trollsbane]]||[[morning star]]||Chaotic||&nbsp;||
+|-
+|[[Vorpal Blade]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Snickersnee]]||[[katana]]||Lawful||Samurai||
+|-
+|[[Sunsword]]||[[long sword]]||Lawful||&nbsp;||
+|}
+
+The following are [[Quest artifacts]]:
+
+{| class="wikitable"
+!Name!!Object!!Alignment!!Role!!Notes
+|-
+|[[The Orb of Detection]]||[[crystal ball]]||Lawful||Archeologist||
+|-
+|[[The Heart of Ahriman]]||[[luckstone]]||Neutral||Barbarian||
+|-
+|[[The Sceptre of Might]]||[[mace]]||Lawful||Caveman||Formerly a [[quarterstaff]]
+|-
+|[[The Palantir of Westernesse]]||[[crystal ball]]||Chaotic||Elf||
+|-
+|[[The Staff of Aesculapius]]||[[quarterstaff]]||Neutral||Healer||
+|-
+|[[The Magic Mirror of Merlin]]||[[mirror]]||Lawful||Knight||
+|-
+|[[The Mitre of Holiness]]||[[helm of brilliance]]||Lawful||Priest||
+|-
+|[[The Master Key of Thievery]]||[[skeleton key]]||Chaotic||Rogue||
+|-
+|[[The Tsurugi of Muramasa]]||[[tsurugi]]||Lawful||Samurai||
+|-
+|[[The Platinum Yendorian Express Card]]||[[credit card]]||Neutral||Tourist||If TOURIST defined at compile time
+|-
+|[[The Orb of Fate]]||[[crystal ball]]||Neutral||Valkyrie||
+|-
+|[[The Eye of the Aethiopica]]||[[amulet of ESP]]||Neutral||Wizard||
+|}
+
+=== Amulets ===
+
+All amulets appear as {{cyan|"}}; tiles are [[image:circular_amulet.png]] [[image:spherical_amulet.png]] [[image:oval_amulet.png]] [[image:triangular_amulet.png]] [[image:pyramidal_amulet.png]] [[image:square_amulet.png]] [[image:concave_amulet.png]] [[image:hexagonal_amulet.png]] [[image:octagonal_amulet.png]].
+
+Amulets in NetHack 3.2.0 are:
+
+* [[amulet of ESP]]
+* [[amulet of life saving]]
+* [[amulet of strangulation]]
+* [[amulet of restful sleep]]
+* [[amulet versus poison]]
+* [[amulet of change]]
+* [[amulet of reflection]]
+* [[amulet of magical breathing]]
+* [[Amulet of Yendor]] (and [[cheap plastic imitation of the Amulet of Yendor|cheap plastic imitation]]) [[image:Amulet_of_Yendor.png]]
+
+=== Food ===
+
+Food items in NetHack 3.2.0 are:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-

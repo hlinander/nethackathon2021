@@ -1,0 +1,1000 @@
+ |.....|-------|<.@...|
+ |.....|....|..--##-..|
+ |.....|........|..#.--
+ |.....|....--..|..#.|
+ |.....|-..........#.|
+ |-.|..||.------|..#.|
+ |-.|..--.......|..#.|
+ |..|...........-##-.|
+ |...................|
+ |.....-->|.....---..|
+ ---------------- ----
+
+==Next level==
+===UnNetHack===
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of possible third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:EvilHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Sokoban Level 1n {146176 2022-06-11T20:24:26Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 1n''' is one of the new possible maps for [[Sokoban]] Level 1 in [[UnNetHack]]; an altered version of this level may also appear as a second floor map in [[EvilHack]].
+
+==UnNetHack==
+In UnNetHack, this level has 16 [[boulder]]s and 18 [[pit]]s, but only 15 of them need to be filled, leaving 1 spare boulder. Like all Sokoban levels in UnNetHack, this level may be flipped horizontally or vertically.
+
+Beware of the [[lava]] near the end of this level, which can spell a very quick end to a promising character.
+
+ ----------------     0 boulder
+ |...|..|>|.--..|     ^ pit
+ |.|.|..0....0..---   > starting position/downstairs
+ |.|....--##--.0..--- < upstairs
+ |...|..|..<.|..00..| ? scroll of earth
+ --0-|0-|^##^|......| # iron bars
+  |.||.|-^^^^--.--.-- } lava
+  |.##.#}^^^^}#.##.|
+  |.||.|--^^--|.||.|
+ --.--.--|^^|-|.||.|
+ |......||^^|--0--0--
+ |..00..-|^^|-......|
+ |.0..0..|??|..---..|
+ -----..0...0....0..|
+     |.|....|..|...--
+     ---------------
+
+== Strategy ==
+
+The main idea here is to fill in both lanes of pits in the center to make enough room to push boulders horizontally into one of the sets of pits near the lava pools.
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+First, make your way to the lower left chamber, pushing the boulders the only way that prevents them from sticking other boulders:
+
+ ----------------     '''A''' ll
+ |...|..|@|.--..|     '''F''' dddd dd
+ |.|.|..A....B..---
+ |.|....--##--.C..---
+ |...|..|..<.|..DE..|
+ --F-|G-|^##^|......|
+  |.||.|-^^^^--.--.--
+  |.##.#}^^^^}#.##.|
+  |.||.|--^^--|.||.|
+ --.--.--|^^|-|.||.|
+ |......||^^|--H--I--
+ |..JK..-|^^|-......|
+ |.L..M..|??|..---..|
+ -----..N...O....P..|
+     |.|....|..|...--
+     ---------------
+
+Push the first boulder in.
+
+ ----------------     '''N''' rrru u*
+ |...|..|>|.--..|
+ |.|.|A......B..---
+ |.|....--##--.C..---
+ |...|..|..<.|..DE..|
+ --.-|G-|^##^|......|
+  |.||.|-^^^^--.--.--
+  |.##.#}^^^^}#.##.|
+  |.||.|--^^--|.||.|
+ --.--.--|^^|-|.||.|
+ |.@....||^^|--H--I--
+ |.FJK..-|^^|-......|
+ |.L..M..|??|..---..|
+ -----..N...O....P..|
+     |.|....|..|...--
+     ---------------
+
+Use the boulders in the lower left chamber to finish the right lane of pits:
+
+ ----------------     '''M''' u
+ |...|..|>|.--..|     '''L''' rrrr d__ rrrr uuu*
+ |.|.|A......B..---   '''M''' drd_ ___ rrrr uuuu*
+ |.|....--##--.C..--- '''K''' drrd ___ rrrr uuuu u*
+ |...|..|..<.|..DE..| '''J''' drrr d__ rrrr uuuu uu*
+ --.-|G-|^##^|......| '''F''' rrrr dd_ rrrr uuuu uuu*
+  |.||.|-^^^^--.--.--
+  |.##.#}^^^^}#.##.|
+  |.||.|--^^--|.||.|
+ --.--.--|^^|-|.||.|
+ |......||^^|--H--I--
+ |.FJK..-|^.|-......|
+ |.L..M..|.@|..---..|
+ -----......O....P..|
+     |.|....|..|...--
+     ---------------
+
+Use the last two boulders on the left to start work on the left lane:
+
+ ----------------     '''G''' dddd dd__ __ rddr rruu*
+ |...|..|>|.--..|     '''A''' dddd dddd d_ rddr rruu u*
+ |.|.|A......B..---
+ |.|....--##--.C..---
+ |...|..|..<.|..DE..|
+ --.-|G-|^##^|......|
+  |.||.|-^^.^--.--.--
+  |.##.#}^^@^}#.##.|
+  |.||.|--^.--|.||.|
+ --.--.--|^.|-|.||.|
+ |......||^.|--H--I--
+ |......-|^.|-......|
+ |.......|..|..---..|
+ -----......O....P..|
+     |.|....|..|...--
+     ---------------
+
+Break into the lower right chamber to continue filling the pits of the left lane:
+
+ ----------------     '''O''' rru
+ |...|..|>|.--..|     '''P''' llll lllu uuu*
+ |.|.|.......B..---   '''O''' dlll luuu uu*
+ |.|....--##--.C..---
+ |...|..|..<.|..DE..|
+ --.-|.-|^##^|......|
+  |.||.|-^^.^--.--.--
+  |.##.#}^^.^}#.##.|
+  |.||.|--^.--|.||.|
+ --.--.--|^.|-|.||.|
+ |......||..|--H--I--
+ |......-|@.|-......|
+ |.......|..|..---..|
+ -----......O....P..|
+     |.|....|..|...--
+     ---------------
+
+The next boulder needs to be moved to prevent the remaining boulders from getting stuck, but from there the boulders of the upper right chamber can be used to finish the left lane of pits and fill in one of the sets of three pits near the lava pools, which you should be careful of:
+
+ ----------------     '''I''' uuuu uu
+ |...|..|>|.--..|     '''H''' drrr ____ ____ ddll llll lluu uuuu*
+ |.|.|.......B..---   '''C''' dddd dddd rrr_ ddll llll lluu uuuu u*
+ |.|....--##--.C..--- '''D''' dldd dddd rrr_ ddll llll lluu uuuu l*
+ |...|..|..<.|..DE..| '''E''' d
+ --.-|.-|^##^|......| '''I''' ll
+  |.||.|-^^.^--.--.-- '''E''' rddd ddd_ ____ ddll llll lluu uuuu ul*
+  |.##.#}^^.^}#.##.|  '''I''' drrd dddd d___ ddll llll lluu uuuu ulu*
+  |.||.|--..--|.||.|
+ --.--.--|@.|-|.||.|
+ |......||..|--H--I--
+ |......-|..|-......|
+ |.......|..|..---..|
+ -----..............|
+     |.|....|..|...--
+     ---------------
+
+The level is now complete. Check under the final boulder in case an item happens to be underneath:
+
+ ----------------
+ |...|..|>|.--..|
+ |.|.|.......B..---
+ |.|....--##--....---
+ |...|..|..<.|......|
+ --.-|.-|.##^|......|
+  |.||.|-@..^--.--.--
+  |.##.#}...^}#.##.|
+  |.||.|--..--|.||.|
+ --.--.--|..|-|.||.|
+ |......||..|--.--.--
+ |......-|..|-......|
+ |.......|..|..---..|
+ -----..............|
+     |.|....|..|...--
+     ---------------
+
+==EvilHack==
+EvilHack removes the extra pits on the leftmost lane and adds a row of iron bars nearby, relocating the upstair to the north of it; the amount of boulders is unchanged. The above solution is applicable in its entirety for this version of the level, and leaves 1 spare boulder.
+
+ ----------------     0 boulder
+ |...|..|>|.--..|     ^ pit
+ |.|.|..0....0..---   > starting position/downstairs
+ |.|....--##--.0..--- < upstairs
+ |...|..|<...|..00..| # iron bars
+ --0-|0-|###^|......| } lava
+  |.||.|-.^^^--.--.-- 
+  |.##.#}.^^^}#.##.|
+  |.||.|--^^--|.||.|
+ --.--.--|^^|-|.||.|
+ |......||^^|--0--0--
+ |..00..-|^^|-......|
+ |.0..0..|..|..---..|
+ -----..0...0....0..|
+     |.|....|..|...--
+     ---------------
+
+== Next level ==
+UnNetHack's Sokoban branch has only three levels per game, collapsing the 'second' levels into the first floor, so the first level leads straight to the pool of third levels:
+
+* [[Sokoban Level 3a]]
+* [[Sokoban Level 3b]]
+* [[Sokoban Level 3c]]
+* [[Sokoban Level 3d]]
+* [[Sokoban Level 3e]]
+* [[Sokoban Level 3f]]
+* [[Sokoban Level 3g]]
+* [[Sokoban Level 3h]]
+* [[Sokoban Level 3i]]
+* [[Sokoban Level 3j]]
+* [[Sokoban Level 3k]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Template talk:Refsrc {133291 2020-04-08T22:03:04Z {663 Qazmlpok} /* Linking to /src */ ==Pages with messy citations==
+These pages have <nowiki><ref>...</ref></nowiki> tags without a template inbetween. Most are "messy" citations to the source code. More interesting are plain http:// references to the spoilers, wikipedia, or Google Groups. Maybe spoilers should link to <nowiki>[[Scrl-343.txt]]</nowiki>, Wikipedia to <nowiki>[[wikipedia:article]]</nowiki>, and RGRN to bilious.alt.org/rgrn. After all, Google Groups might disappear sometime. IMHO we should store the messages ids on the wiki now, and perhaps think up a plan for later.
+
+[[Aklys]],  [[Aligned_priest]],  [[Alignment]],  [[Altar]],  [[Angband]],  [[Anger]],  [[Archeologist_(player_monster)]],  [[Artifact_weapon]],  [[Athame]],  [[Barbarian]],  [[Barbarian_(player_monster)]],  [[Black_light]],  [[Boulder]],  [[Bribe]],  [[Bugle]],  [[C-ration]],  [[Can_of_grease]],  [[Canine]],  [[Caveman]],  [[Caveman_(player_monster)]],  [[Charging]],  [[Cloak_of_displacement]],  [[Closet]],  [[Cockatrice]],  [[Conduct]],  [[Conflict]],  [[Corpseless]],  [[Covetous]],  [[Demon]],  [[Dented_pot]],  [[Diet]],  [[Digging]],  [[Disintegration]],  [[Domestic_animal]],  [[Door]],  [[Double_Trouble]],  [[Double_damage]],  [[Dragon]],  [[Dragon_(SLASH%27EM)]],  [[Drain_for_gain]],  [[Drum_of_earthquake]],  [[Dunce_cap]],  [[Elfrist]],  [[Elven_broadsword]],  [[Elven_short_sword]],  [[Eucalyptus_leaf]],  [[Excalibur]],  [[Experience_level]],  [[Extended_command]],  [[Farming]],  [[Flint_stone]],  [[Floating_eye]],  [[Fort_Ludios]],  [[Fungus]],  [[Gauntlets_of_power]],  [[Giant]],  [[Glass]],  [[Gnome_(SLASH%27EM)]],  [[Goblin]],  [[Green_slime]],  [[Gypsy]],  [[Half_spell_damage]],  [[Healer_(player_monster)]],  [[Hellfire]],  [[Helm_of_opposite_alignment]],  [[High_priest]],  [[Holy_Spear_of_Light]],  [[Invisible_item_(SLASH%27EM)]],  [[Invoke]],  [[Jabberwock]],  [[Jumping_boots]],  [[K-ration]],  [[Katana]],  [[Knight_(player_monster)]],  [[Leather_armor]],  [[Leather_drum]],  [[Level_teleport]],  [[Loadstone]],  [[Lycanthropy]],  [[MS-DOS]],  [[Magic_resistance]],  [[Magicbane]],  [[Manes]],  [[Migo]],  [[Minetown]],  [[Mold_(SLASH%27EM)]],  [[Monk]],  [[Monk_(player_monster)]],  [[Monster]],  [[Monsters_(by_size)]],  [[Mood_ring]],  [[Moria]],  [[Naming_artifacts]],  [[NetHack_3.2.0]],  [[NetHack_3.2.1]],  [[NetHack_3.2.3]],  [[NetHack_3.3.0]],  [[NetHack_3.3.1]],  [[NetHack_3.4.0]],  [[NetHack_3.4.1]],  [[NetHack_3.4.2]],  [[NetHack_3.4.3]],  [[NetHack_units]],  [[Nickelpede]],  [[Non-teleport_level]],  [[Nymph]],  [[Offensive_item]],  [[Ogre_mage]],  [[Orcish_short_sword]],  [[Orcrist]],  [[Pacifist]],  [[Parrot]],  [[Perm]],  [[Pet]],  [[Phasing]],  [[Physical_size]],  [[Player_monster]],  [[Polymorph]],  [[Polymorph_trap]],  [[Potion_of_acid]],  [[Potion_of_blood]],  [[Potion_of_paralysis]],  [[Potion_of_polymorph]],  [[Prayer]],  [[Priest_(player_monster)]],  [[Projectile]],  [[Quest]],  [[Ranger_(player_monster)]],  [[Read]],  [[Religion]],  [[Riding]],  [[Ring_of_gain_dexterity]],  [[Ring_of_gain_intelligence]],  [[Ring_of_gain_wisdom]],  [[Ring_of_shock_resistance]],  [[Ring_of_sleeping]],  [[Rnl]],  [[Robe]],  [[Rock]],  [[Rogue_(player_monster)]],  [[SLASH%27EM_Artifacts]],  [[Samurai]],  [[Samurai_(player_monster)]],  [[Scare]],  [[Scissors]],  [[Score]],  [[Scroll_origins]],  [[Shield]],  [[Shop]],  [[Short_sword]],  [[Silver_short_sword]],  [[Sink]],  [[Sling]],  [[Small_shield]],  [[Special_level_(SLASH%27EM)]],  [[Spellbook]],  [[Spellbook_of_drain_life]],  [[Stackable]],  [[Statue]],  [[Stealing_from_shops]],  [[Stormbringer]],  [[Studded_leather_armor]],  [[Talking_to_vampires]],  [[Telepathy]],  [[The_Magic_Mirror_of_Merlin]],  [[The_Mitre_of_Holiness]],  [[The_Sceptre_of_Might]],  [[The_Staff_of_Aesculapius]],  [[The_Sword_of_Balance]],  [[Throne]],  [[Tin_whistle]],  [[To-hit]],  [[Torch]],  [[Tourist_(player_monster)]],  [[Towel]],  [[Trap]],  [[Trouble]],  [[UnNetHack]],  [[Unicorn_horn]],  [[Upgrading_objects]],  [[Valkyrie_(player_monster)]],  [[Wallet_of_Perseus]],  [[Wand]],  [[Wand_of_create_horde]],  [[Wand_of_create_monster]],  [[Wand_of_digging]],  [[Wand_of_magic_missile]],  [[Wand_of_opening]],  [[Wand_of_secret_door_detection]],  [[Wand_of_striking]],  [[War_hammer]],  [[Weapon]],  [[Welcome_message]],  [[Whetstone]],  [[Wish]],  [[Wizard_(player_monster)]],  [[Wizard_mode]],  [[Wizard_of_Yendor]],  [[Wizard_quest]],  [[Wraith]],  [[Yeenoghu]],  [[%5EZ]]. --[[User:Tjr|Tjr]] ([[User talk:Tjr|talk]]) 16:44, 22 September 2012 (UTC)
+
+==Linking to /src==
+This needs to be removed due to some pages linking to the header files, which are not in /src. [[Mindless]], for example. I don't know how this was set up before, but it wasn't necessary to specify the directory at all for vanilla 3.4.3 stuff. <nowiki>{{refsrc|foo.c|1234}}</nowiki> and <nowiki>{{refsrc|foo.h|1234}}</nowiki> both worked equally well. I think doing that again for 3.6.0 files would be the best, but if that isn't an option/feasible or whatever, it at least needs some way of linking to the header files, not just the source files. -- [[User:Qazmlpok|Qazmlpok]] ([[User talk:Qazmlpok|talk]]) 04:47, 6 January 2016 (UTC)
+:Before it was going via some manually maintained redirects. Those redirects now have different targets (to 3.6.0 rather than 3.4.3; changing this back would apparently cause problems for many external tools that depend on nethackwiki), so all the non-src links were broken anyway (at the end of 2015). I was aware that this would be a problem but decided it was better to do a change that made things less broken and stopped them getting worse, than to leave things as-is and have people unbreak things in a way that would cause problems later on (most likely when we get a bot to fix references).
+:If you specify a version explicitly (i.e. "version=NetHack 3.4.3" or "version=NetHack 3.6.0"), then you can (and must) give the src/ or include/ or whatever part within the first argument. That's a way to fix things that will work with both the old and the new version of the template, and doesn't lead to any confusion about which version the references are against. (That is, the automatic insertion of "src/" was only placed in an attempt to get some of the old, versionless links that were otherwise broken to work; I don't do it for any reference that includes a version. It won't have fixed all of them, and we should really be adding explicit versions to references anyway so that things don't break when 3.6.1 is released) [[User:Ais523|Ais523]] ([[User talk:Ais523|talk]])
+And the original problem is now being fixed via a bot (thanks, [[User:DizzyBot]]!). "src/" isn't inserted automatically any more; rather we use redirects, which effectively form a list of filenames. Once the bot has finished its work, both src/ and non-src/ links will work fine. (There will be some redlinks while the bot is running.) [[User:Ais523|Ais523]] ([[User talk:Ais523|talk]]) 07:48, 6 January 2016 (UTC)
+:This is an issue again. The github links break if src or include aren't explicitly included in the refsrc. A good example is [[Giant]] - the eat.c link fails with a 404, the src/sounds.c link works. Is it possible to have a bot update all the existing references again? -- [[User:Qazmlpok|Qazmlpok]] ([[User talk:Qazmlpok|talk]]) 22:03, 8 April 2020 (UTC)}
+&&%s&& %s Template:Reffunc {125614 2019-03-26T15:48:19Z {4000894 Winny} remove apparently obsolete note about "this is currently useless, as only the NetHack 3.4.3 source has such anchors" - version works with 3.6.1 and slashem for example <includeonly>{{#if:{{{name|}}}|{{#tag:ref|[[Source:{{#ifeq:{{{version|}}}|||{{{version}}}/}}{{{1}}}#{{{2}}}|{{{2}}}]]{{#if:{{{3|}}}||<nowiki> </nowiki>in [[Source:{{#ifeq:{{{version|}}}|||{{{version}}}/}}{{{1}}}|{{{1}}}]]}}{{#ifeq:{{{version|}}}|||<span></span> in [[{{{version}}}]]}}{{#if:{{{comment|}}} |<span>:</span> ''{{{comment}}}'' }}|name={{{name}}}}}|{{#tag:ref|[[Source:{{#ifeq:{{{version|}}}|||{{{version}}}/}}{{{1}}}#{{{2}}}|{{{2}}}]]{{#if:{{{3|}}}||<nowiki> </nowiki>in [[Source:{{#ifeq:{{{version|}}}|||{{{version}}}/}}{{{1}}}|{{{1}}}]]}}{{#ifeq:{{{version|}}}|||<span></span> in [[{{{version}}}]]}}{{#if:{{{comment|}}} |<span>:</span> ''{{{comment}}}'' }}}}}}{{#ifeq:{{{version|}}}||[[Category: Pages with unversioned Reffunc templates]]|}}</includeonly><noinclude>
+This template basically combines <nowiki><ref></nowiki> tags with what [[Template:Function]] does in analogy to [[Template:Refsrc]].
+
+Similar to [[Template:Function]], this template may be used for any element of the source code which has an anchor on the referenced page and not only functions.
+
+It may be used as follows:
+ <nowiki>{{reffunc|objnam.c|fruitname}}</nowiki>
+The above will produce this footnote:{{reffunc|objnam.c|fruitname}}
+
+You may optionally specify a different version:
+ <nowiki>{{reffunc|objnam.c|fruitname|version=SLASH'EM 0.0.7E7F2}}</nowiki>
+This will produce this reference:{{reffunc|objnam.c|fruitname|version=SLASH'EM 0.0.7E7F2}}
+
+You may also specify a comment:
+ <nowiki>{{reffunc|objnam.c|fruitname|comment=This function is referenced for example purposes}}</nowiki>
+The produced reference will look like this:{{reffunc|objnam.c|fruitname|comment=This function is referenced for example purposes}}
+
+To suppress display of the file name, specify a third positional parameter:
+ <nowiki>{{reffunc|objnam.c|fruitname|x}}</nowiki>
+The reference will then look like this:{{reffunc|objnam.c|fruitname|x}}
+
+A <tt>name</tt> parameter may be specified to be able to reference the same function from multiple locations in the text without duplicating reference texts, like this:
+ <nowiki>{{reffunc|objnam.c|fruitname|name=fruitname}} [some text in between...] <ref name='fruitname'/></nowiki>
+The result will look like this:{{reffunc|objnam.c|fruitname|name=fruitname}} [some text in between...] <ref name='fruitname'/>
+
+(The name given doesn't have to be the same as the function name; using the same name might be a good idea to avoid confusion, however.)
+
+== References ==
+<references/>
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Sokoban Level 3c {82504 2013-01-27T04:02:02Z {4000236 Tungtn} Update for newly added Sokoban levels <!-- Please do not copy this article to Wikia. -->This is one of the new possible maps for the middle level of [[Sokoban]] in [[UnNetHack]]. It has 15 [[boulder]]s and [[hole]]s, leaving no spare boulders. Like all Sokoban levels in UnNetHack, this level may be flipped horizontally or vertically.
+
+        ------------ 0 boulder
+ -------|<^^^^^^^..| ^ hole
+ |...|..|--------..| > starting position/downstairs
+ |.0....|..|    |^-- < upstairs
+ --.--0.|>.-----|^|
+  |..0.0--0..|..|^|
+  |.|..0.|.0....|^|
+  |.0.|0....---.|^|
+  |.....--.0---.|^|
+  ---.0.|..0....|^|
+    ---.|..0--..|^|
+     |..00..||....|
+     |.....-----..|
+     -------   ----
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+Push a boulder sufficiently out the way as you fill the first hole:
+
+        ------------ '''E''' ddd
+ -------|<^^^^^^^..| '''G''' rrrr dddd drru*
+ |...|..|--------..|
+ |.A....|..|    |^--
+ --.--B.|@.-----|^|
+  |..C.D--E..|..|^|
+  |.|..F.|.G....|^|
+  |.H.|I....---.|^|
+  |.....--.J---.|^|
+  ---.K.|..L....|^|
+    ---.|..M--..|^|
+     |..NO..||....|
+     |.....-----..|
+     -------   ----
+
+Get behind the boulders:
+
+        ------------ '''F''' ll
+ -------|<^^^^^^^..| '''B''' ud
+ |...|..|--------..| '''A''' r
+ |.A....|..|    |^--
+ --.--B.|>.-----|^|
+  |..C.D--...|..|^|
+  |.|..F.|......|^|
+  |.H.|I....---.|^|
+  |.....--EJ---.|^|
+  ---.K.|..L....|^|
+    ---.|..M--..|.|
+     |..NO..||...@|
+     |.....-----..|
+     -------   ----
+
+Solve another boulder to open up a loop around the big pillar:
+
+        ------------ '''L''' r
+ -------|<^^^^^^^..| '''J''' uurr rrdd dddr ruu*
+ |...|..|--------..|
+ |.@A...|..|    |^--
+ --.--B.|>.-----|^|
+  |..C.D--...|..|^|
+  |.|F...|......|^|
+  |.H.|I....---.|^|
+  |.....--EJ---.|^|
+  ---.K.|..L....|^|
+    ---.|..M--..|.|
+     |..NO..||....|
+     |.....-----..|
+     -------   ----
+
+The next five boulders are all solved more or less the same way:
+
+        ------------ '''L''' rrr_ ____ _ ddrr uuu*
+ -------|<^^^^^^^..| '''M''' urrr r___ _ ddrr uuuu*
+ |...|..|--------..| '''E''' drrr rr__ _ ddrr uuuu u*
+ |..A...|..|    |^-- '''O''' u
+ --.--B.|>.-----|^|  '''N''' rruu u
+  |..C.D--...|..|^|  '''O''' d
+  |.|F...|......|^|  '''N''' urrr rr__ _ ddrr uuuu uu*
+  |.H.|I....---.|^|  '''O''' ruur rrrr _ ddrr uuuu uuu*
+  |.....--E.---.|^|
+  ---.K.|...L...|.|
+    ---.|..M--..|@|
+     |..NO..||....|
+     |.....-----..|
+     -------   ----
+
+The next two boulders go through the bottom to be pushed in place:
+
+        ------------ '''I''' dddd _ rrru urrr rrdd rruu uuuu uu*
+ -------|<^^^^^^^..| '''K''' rdd_ _ rrru urrr rrdd rruu uuuu uuuu l*
+ |...|..|--------..|
+ |..A...|..|    |^--
+ --.--B.|>.-----|.|
+  |..C.D--...|..|@|
+  |.|F...|......|.|
+  |.H.|I....---.|.|
+  |.....--..---.|.|
+  ---.K.|.......|.|
+    ---.|...--..|.|
+     |......||....|
+     |.....-----..|
+     -------   ----
+
+The next boulder requires another boulder to be pushed to prevent the final boulders from sticking:
+
+        ------------ '''B''' u
+ -------|<^^^^^^.@.| '''D''' dddd dd_ rrru urrr rrdd rruu uuuu uuuu ll*
+ |...|..|--------..|
+ |..A...|..|    |.--
+ --.--B.|>.-----|.|
+  |..C.D--...|..|.|
+  |.|F...|......|.|
+  |.H.|.....---.|.|
+  |.....--..---.|.|
+  ---...|.......|.|
+    ---.|...--..|.|
+     |......||....|
+     |.....-----..|
+     -------   ----
+
+The last five boulders can be solved in more or less the same way:
+
+        ------------ '''C''' rrdd dddd ____ rrru urrr rrdd rruu uuuu uuuu lll*
+ -------|<^^^^^.@..| '''F''' ddrr ddd_ ____ rrru urrr rrdd rruu uuuu uuuu llll*
+ |...|..|--------..| '''H''' rdrr ddd_ ____ rrru urrr rrdd rruu uuuu uuuu llll l*
+ |..A.B.|..|    |.-- '''B''' dddr dddd d___ rrru urrr rrdd rruu uuuu uuuu llll ll*
+ --.--..|>.-----|.|  '''A''' rrrd dddd ddd_ rrru urrr rrdd rruu uuuu uuuu llll lll*
+  |..C..--...|..|.|
+  |.|F...|......|.|
+  |.H.|.....---.|.|
+  |.....--..---.|.|
+  ---...|.......|.|
+    ---.|...--..|.|
+     |......||....|
+     |.....-----..|
+     -------   ----
+
+The level is now complete:
+
+        ------------
+ -------|<.@.......|
+ |...|..|--------..|
+ |......|..|    |.--
+ --.--..|>.-----|.|
+  |.....--...|..|.|
+  |.|....|......|.|
+  |...|.....---.|.|
+  |.....--..---.|.|
+  ---...|.......|.|
+    ---.|...--..|.|
+     |......||....|
+     |.....-----..|
+     -------   ----
+
+== Next level ==
+
+The stairs up leads to the final level of Sokoban:
+
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+
+[[Category:Sokoban]]
+[[Category:UnNetHack]]}
+&&%s&& %s Sokoban Level 3d {144582 2022-02-23T02:28:35Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->This is one of the new possible maps for the third level of [[Sokoban]] in [[SLASH'EM]], and may appear as a second floor map in [[DynaHack]] and [[UnNetHack]]. It has 12 [[boulder]]s and [[hole]]s, leaving no spare boulders.
+
+In UnNetHack, this level may be flipped horizontally or vertically like all Sokoban levels.
+
+          ---------- 0 boulder
+     -----|.^^^^^..| ^ hole
+  ----...-|<-----..| > starting position/downstairs
+  |..0....---...|^-- < upstairs
+  |.0>0.0....0..|^|
+  |.|0--------.-|^|
+  |.|..0..|.....|^|
+  |.|.0.0.|.|...|^|
+ --.|..0|.|.----|^|
+ |..--....|.....|^|
+ |....0.|.|.......|
+ -----.--.........|
+    |.0...........|
+    |...---.......|
+    ----- ---------
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+'''Note:''' If a creature, e.g. a pet, followed you up the stairs to this level you may find yourself placed outside the ring of boulders. In such a case, the level is still solvable following the first steps in a different order dependent on which side of '''A''' you landed.
+
+First, you'll want to prepare the boulders as you go through the middle, around the top and out into the large open area:
+
+          ---------- '''F''' dd
+     -----|.^^^^^..| '''G''' r
+  ----...-|<-----..| '''J''' dr
+  |..A....---...|^-- '''K''' d
+  |.B@C.D....E..|^|  '''A''' rr
+  |.|F--------.-|^|  '''E''' rl
+  |.|..G..|.....|^|
+  |.|.H.I.|.|...|^|
+ --.|..J|.|.----|^|
+ |..--....|.....|^|
+ |....K.|.|.......|
+ -----.--.........|
+    |.L...........|
+    |...---.......|
+    ----- ---------
+
+The first boulders can now be funneled out through the bottom:
+
+          ---------- '''L''' ____ ____ rrrr rrrr rrru uu*
+     -----|.^^^^^..| '''J''' ll
+  ----...-|<-----..| '''K''' d___ ____ rrrr rrrr rrru uuu*
+  |....A..---...|^-- '''J''' ddd_ ____ rrrr rrrr rrru uuuu*
+  |.B>C.D....E@.|^|  '''H''' dddd d___ rrrr rrrr rrru uuuu u*
+  |.|.--------.-|^|  '''I''' lldd ddd_ rrrr rrrr rrru uuuu uu*
+  |.|...G.|.....|^|
+  |.|FH.I.|.|...|^|
+ --.|...|.|.----|^|
+ |..--..J.|.....|^|
+ |......|.|.......|
+ -----K--.........|
+    |.L...........|
+    |...---.......|
+    ----- ---------
+
+The remaining boulders travel along the outside of the level in a U-shape:
+
+          ---------- '''B''' l___ ____ ___ dddd ddrr rddr rrrr rrrr rruu uuuu uu*
+     -----|.^^^^^..| '''A''' l
+  ----...-|<-----..| '''C''' lll_ ____ ___ dddd ddrr rddr rrrr rrrr rruu uuuu uuu*
+  |....A..---...|^-- '''A''' dlll ____ ___ dddd ddrr rddr rrrr rrrr rruu uuuu uuuu ul*
+  |.B>C.D....E..|^|  '''D''' llll l___ ___ dddd ddrr rddr rrrr rrrr rruu uuuu uuuu ull*
+  |.|.--------.-|.|  '''E''' llll llll ll_ dddd ddrr rddr rrrr rrrr rruu uuuu uuuu ulll*
+  |.|...G.|.....|@|  '''F''' uuul l___ ___ dddd ddrr rddr rrrr rrrr rruu uuuu uuuu ulll l*
+  |.|F....|.|...|.|  '''G''' lllu ull_ ___ dddd ddrr rddr rrrr rrrr rruu uuuu uuuu ulll ll*
+ --.|...|.|.----|.|
+ |..--....|.....|.|
+ |......|.|.......|
+ -----.--.........|
+    |.............|
+    |...---.......|
+    ----- ---------
+
+The level is now complete:
+
+          ----------
+     -----|..@.....|
+  ----...-|<-----..|
+  |.......---...|.--
+  |..>..........|.|
+  |.|.--------.-|.|
+  |.|.....|.....|.|
+  |.|.....|.|...|.|
+ --.|...|.|.----|.|
+ |..--....|.....|.|
+ |......|.|.......|
+ -----.--.........|
+    |.............|
+    |...---.......|
+    ----- ---------
+
+== Next level ==
+
+The stairs up leads to the final level of Sokoban:
+
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+
+[[Category:Sokoban]]
+[[Category:UnNetHack]]}
+&&%s&& %s Sokoban Level 3e {146198 2022-06-12T02:18:46Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 3e''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It may appear as the second level of [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]], and may appear as a third level map in [[EvilHack]] and [[SpliceHack-Rewrite]]. It has 14 [[boulder]]s and [[hole]]s, leaving no spare boulders.
+
+This level may be flipped horizontally or vertically in UnNetHack, like all Sokoban levels there.
+
+     ------------------ 0 boulder
+  ----....|.........+.| ^ hole
+  |....--.|.........|^| > starting position/downstairs
+  |.0.....|.<.......|^| < upstairs
+ ---.----.|.........|^| # iron bars
+ |..0...0.-#-#-#-#-#-^|
+ |...00.00^^^^^^^^^^..|
+ |....0..0--#-#-#-#-..|
+ -->--.--.|...........|
+  |--..0..|.....00....|
+  |...00..|...........|
+  |....|..|...........|
+  ---------------------
+
+== Strategy ==
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels, it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+First, clear a way to the boulders closest to the holes and push them in:
+
+     ------------------ '''B''' u
+  ----....|.........+.| '''C''' r
+  |....--.|.........|^| '''F''' d
+  |.A.....|.<.......|^| '''G''' r*
+ ---.----.|.........|^| '''H''' lll
+ |..B...C.-#-#-#-#-#-^| '''I''' dddu uuu
+ |...DE.FG^^^^^^^^^^..| '''F''' l
+ |....H..I--#-#-#-#-..| '''I''' rr*
+ --@--.--.|...........| '''C''' uuud dddr rr*
+  |--..J..|.....KL....| '''F''' rrdd duuu urrr r*
+  |...MN..|...........|
+  |....|..|...........|
+  ---------------------
+
+Fill the next three holes with the boulders in the lower chamber:
+
+     ------------------ '''J''' rruu urrr rr*
+  ----....|.........+.| '''M''' urrr uuur rrrr r*
+  |....--.|.........|^| '''N''' rruu uurr rrrr r*
+  |.A.....|.<.......|^|
+ ---B----.|.........|^|
+ |........-#-#-#-#-#-^|
+ |...DE.....@.^^^^^^..|
+ |.H......--#-#-#-#-..|
+ -->--.--.|...........|
+  |--..J..|.....KL....|
+  |...MN..|...........|
+  |....|..|...........|
+  ---------------------
+
+Use the boulders in the entrance chamber to open a way to the halfway point:
+
+     ------------------ '''D''' d
+  ----....|.........+.| '''E''' rrrr rrrr rrr*
+  |....--.|.........|^| '''D''' rrrr urrr rrrr rr*
+  |.A.....|.<.......|^| '''H''' rrrr rrur rrrr rrrr r*
+ ---B----.|.........|^|
+ |........-#-#-#-#-#-^|
+ |...DE........@.^^^..|
+ |.H......--#-#-#-#-..|
+ -->--.--.|...........|
+  |--.....|.....KL....|
+  |.......|...........|
+  |....|..|...........|
+  ---------------------
+
+The last four pits can now be filled:
+
+     ------------------ '''K''' urrr rruu u*
+  ----....|.........+.| '''L''' rrrr uuuu u*
+  |....--.|.........|^| '''A''' r
+  |.A.....|.<.......|^| '''B''' ddrr rrrr rrrr rrrr rrru uu*
+ ---B----.|.........|^| '''A''' lddd rrrr rrrr rrrr rrrr ruuu u*
+ |........-#-#-#-#-#-^|
+ |................@...|
+ |........--#-#-#-#-..|
+ -->--.--.|...........|
+  |--.....|.....KL....|
+  |.......|...........|
+  |....|..|...........|
+  ---------------------
+
+The level is now complete:
+
+     ------------------
+  ----....|.........+.|
+  |....--.|.........|.|
+  |.......|.<.......|@|
+ ---.----.|.........|.|
+ |........-#-#-#-#-#-.|
+ |....................|
+ |........--#-#-#-#-..|
+ -->--.--.|...........|
+  |--.....|...........|
+  |.......|...........|
+  |....|..|...........|
+  ---------------------
+
+== Next level ==
+===UnNetHack===
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:EvilHack]]
+[[Category:SpliceHack-Rewrite]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (EvilHack)]]
+[[Category:Sokoban (SpliceHack-Rewrite)]]}
+&&%s&& %s Sokoban Level 3f {82507 2013-01-27T04:03:44Z {4000236 Tungtn} Update for newly added Sokoban levels <!-- Please do not copy this article to Wikia. -->This is one of the new possible maps for the middle level of [[Sokoban]] in [[UnNetHack]]. It has 13 [[boulder]]s and [[hole]]s, leaving no spare boulders. Like all Sokoban levels in UnNetHack, this level may be flipped horizontally or vertically.
+
+         ---------     0 boulder
+         |...|...----  ^ hole
+         |.0.+......|  > starting position/downstairs
+         |...|0|..|.|  < upstairs
+   -----------....|0|  # iron bars
+   |......0.........|
+   |.|.|.0--.|.|..|^|
+   |...|0....|....|^|
+  --0|.0.-------+-|^|
+ --...0..|....|...|^|
+ |...0|..#....#.0.|^|
+ |..0...-|....|...|^--
+ |.0-----|....|----..|
+ |>.|<^^^+....+^^^^..|
+ ---------------------
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+First, get to the holes:
+
+         ---------     '''G''' uu
+         |...|...----  '''D''' rrrr r
+         |.A.+......|
+         |...|B|..|.|
+   -----------....|C|
+   |......D.........|
+   |.|.|.E--.|.|..|^|
+   |...|F....|....|^|
+  --G|.H.-------+-|^|
+ --...I..|....|...|^|
+ |...J|..#....#.K.|^|
+ |..L...-|....|...|^--
+ |.M-----|....|----..|
+ |@.|<^^^+....+^^^^..|
+ ---------------------
+
+Fill the first six holes with the nearest boulders, counting the ones behind the locked doors:
+
+         ---------     '''C''' dd*
+         |...|...----  '''D''' rrrr dd*
+         |.A.+......|  '''K''' uuuu urrr ddd*
+         |...|B|..|.|  '''A''' rrrr rddd rrrd ddd*
+   -----------....|C|  '''B''' ulll rrrr rddd rrrd dddd*
+   |..........@D....|  '''E''' urrr rrrr rrrd dddd d*
+   |G|.|.E--.|.|..|^|
+   |...|F....|....|^|
+  --.|.H.-------+-|^|
+ --...I..|....|...|^|
+ |...J|..#....#.K.|^|
+ |..L...-|....|...|^--
+ |.M-----|....|----..|
+ |>.|<^^^+....+^^^^..|
+ ---------------------
+
+Open up a loop near the middle:
+
+         ---------     '''F''' dd
+         |...|...----  '''H''' l
+         |..........|  '''I''' l
+         |...|.|..|.|  '''F''' uuu
+   -----------....|.|  '''I''' rrr
+   |................|
+   |G|.|..--.|.|..|.|
+   |...|F....|....|.|
+  --.|.H.-------.-|.|
+ --...I..|....|...|.|
+ |...J|..#....#...|@|
+ |..L...-|....|...|.--
+ |.M-----|....|----..|
+ |>.|<^^^+....+^^^^..|
+ ---------------------
+
+It is now possible to fill the next four holes with boulders:
+
+         ---------     '''F''' u___ ____ _ rrrr rrrr rrrd dddd dddl*
+         |...|...----  '''I''' uuuu ____ _ rrrr rrrr rrrd dddd dddl l*
+         |..........|  '''H''' drru uuu_ _ rrrr rrrr rrrd dddd dddl ll*
+         |...|.|..|.|  '''J''' urrr uuuu _ rrrr rrrr rrrd dddd dddl lll*
+   -----------....|.|
+   |................|
+   |G|.|F.--.|.|..|.|
+   |...|.....|....|.|
+  --.|H..-------.-|.|
+ --.....I|....|...|.|
+ |...J|..#....#...|@|
+ |..L...-|....|...|.--
+ |.M-----|....|----..|
+ |>.|<^^^+....+^^^^..|
+ ---------------------
+
+Make sure to open the doors before continuing. After doing so, the final three boulders can be pushed into place:
+
+         ---------     '''G''' dddr rrr_ _ uuuu rrrr rrrr rrrd dddd dddl llll llll ll*
+         |...|...----  '''M''' uurr urrr _ uuuu rrrr rrrr rrrd dddd dddl llll llll lll*
+         |..........|  '''L''' lurr urrr _ uuuu rrrr rrrr rrrd dddd dddl llll llll llll*
+         |...|.|..|.|
+   -----------....|.|
+   |................|
+   |G|.|..--.|.|..|.|
+   |...|.....|....|.|
+  --.|...-------.-|.|
+ --......|....|...|.|
+ |....|..#....#...|.|
+ |..L...-|....|...|.--
+ |.M-----|....|----..|
+ |>.|<^^^.......@....|
+ ---------------------
+
+The level is now complete:
+
+         ---------
+         |...|...----
+         |..........|
+         |...|.|..|.|
+   -----------....|.|
+   |................|
+   |.|.|..--.|.|..|.|
+   |...|.....|....|.|
+  --.|...-------.-|.|
+ --......|....|...|.|
+ |....|..#....#...|.|
+ |......-|....|...|.--
+ |..-----|....|----..|
+ |>.|<.@.............|
+ ---------------------
+
+== Next level ==
+
+The stairs up leads to the final level of Sokoban:
+
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+
+[[Category:Sokoban]]
+[[Category:UnNetHack]]}
+&&%s&& %s Sokoban Level 3g {146195 2022-06-12T00:48:38Z {4001279 Umbire the Phantom}  <!-- Please do not copy this article to Wikia. -->'''Sokoban Level 3g''' is one of the new maps for [[Sokoban]] in some [[variant]]s of ''[[NetHack]]''. It may appear as the second level of [[Sokoban (UnNetHack)|Sokoban]] in [[UnNetHack]], and may appear as a possible third floor map in [[EvilHack]]. It has 9 [[boulder]]s and 9 [[hole]]s, leaving no spare boulders.
+
+In UnNetHack, this level may be flipped horizontally or vertically like all Sokoban levels.
+
+            ----        0 boulder
+   ---------|>.|        ^ hole
+ ---...|...--0.|---     > starting position/downstairs
+ |..00.|.....0.|..|     < upstairs
+ |.|...|...--0.^..|     # iron bars
+ |.|...|.00.|..--^|
+ |.|.----.|.--#--^|---
+ |.|0.|--.|..|<|..|..|
+ |.|..|....|.|.|..^..|
+ |.....0...|.|.--#--^--
+ |.|..---.--.|..|..|..|
+ |.----......#..#..^..|
+ |......-----|..|^-----
+ --------    |^--..|
+             |..^..|
+             |..----
+             ----
+
+== Strategy ==
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+
+First, rearrange the boulders to make some room to push around the two boulders in the entrance chamber:
+
+            ----        '''D''' llll
+   ---------|@.|        '''F''' dddd
+ ---...|...--A.|---     '''I''' lll
+ |..BC.|.....D.|..|     '''H''' uuu
+ |.|...|...--E.^..|     '''I''' u
+ |.|...|.FG.|..--^|     '''F''' llll l
+ |.|.----.|.--#--^|---  '''G''' lddd dl
+ |.|H.|--.|..|<|..|..|  '''D''' dddd dd
+ |.|..|....|.|.|..^..|
+ |.....I...|.|.--#--^--
+ |.|..---.--.|..|..|..|
+ |.----......#..#..^..|
+ |......-----|..|^-----
+ --------    |^--..|
+             |..^..|
+             |..----
+             ----
+
+Deal with the two boulders in the entrance chamber:
+
+            ----        '''A''' dlll ld
+   ---------|>.|        '''E''' ulll lrrr rrdr*
+ ---...|...--A.|---     '''A''' urrr rrdr rrd*
+ |..BC.|.......|..|
+ |.|H..|...--E.^..|
+ |.|...|....|..--^|
+ |.|.----.|.--#--^|---
+ |.|..|--.|..|<|..|..|
+ |.|I.|..@.|.|.|..^..|
+ |..F...GD.|.|.--#--^--
+ |.|..---.--.|..|..|..|
+ |.----......#..#..^..|
+ |......-----|..|^-----
+ --------    |^--..|
+             |..^..|
+             |..----
+             ----
+
+The middle passage enables the next four boulders to be pushed into the holes:
+
+            ----        '''D''' ____ ___ uuuu uurr rrrd rrrd d*
+   ---------|>.|        '''G''' r___ ___ uuuu uurr rrrd rrrd dddr*
+ ---...|...--..|---     '''F''' rrrr r__ uuuu uurr rrrd rrrd dddr rrd*
+ |..BC.|.......|..|     '''I''' drrr rr_ uuuu uurr rrrd rrrd dddr rrdd dl*
+ |.|H..|...--....@|
+ |.|...|....|..--.|
+ |.|.----.|.--#--^|---
+ |.|..|--.|..|<|..|..|
+ |.|I.|....|.|.|..^..|
+ |..F...GD.|.|.--#--^--
+ |.|..---.--.|..|..|..|
+ |.----......#..#..^..|
+ |......-----|..|^-----
+ --------    |^--..|
+             |..^..|
+             |..----
+             ----
+
+Rearranging the clump of three boulders allows them to fill the final holes:
+
+            ----        '''C''' d
+   ---------|>.|        '''B''' r
+ ---...|...--..|---     '''H''' dddd d___ rrrr ruuu uuur rrrr drrr dddd rrrd ddll ld*
+ |..BC.|.......|..|     '''B''' lddd ddd_ rrrr ruuu uuur rrrr drrr dddd rrrd ddll lddd l*
+ |.|H..|...--.....|     '''C''' lddd dd__ rrrr ruuu uuur rrrr drrr dddd rrrd ddll lddd lllu*
+ |.|...|....|..--.|
+ |.|.----.|.--#--.|---
+ |.|..|--.|..|<|..|..|
+ |.|..|....|.|.|.....|
+ |.........|.|.--#--.--
+ |.|..---.--.|..|..|..|
+ |.----......#..#...@.|
+ |......-----|..|^-----
+ --------    |^--..|
+             |..^..|
+             |..----
+             ----
+
+The level is now complete:
+
+            ----
+   ---------|>.|
+ ---...|...--..|---
+ |.....|.......|..|
+ |.|...|...--.....|
+ |.|...|....|..--.|
+ |.|.----.|.--#--.|---
+ |.|..|--.|..|<|..|..|
+ |.|..|....|.|.|.....|
+ |.........|.|.--#--.--
+ |.|..---.--.|..|..|..|
+ |.----......#..#.....|
+ |......-----|..|.-----
+ --------    |.--..|
+             |@....|
+             |..----
+             ----
+
+== Next level ==
+===UnNetHack===
+* [[Sokoban Level 4a]]
+* [[Sokoban Level 4b]]
+* [[Sokoban Level 4c]]
+* [[Sokoban Level 4d]]
+* [[Sokoban Level 4e]]
+* [[Sokoban Level 4f]]
+{{variant-343}}
+[[Category:Sokoban]]
+[[Category:UnNetHack]]
+[[Category:EvilHack]]
+[[Category:Sokoban (UnNetHack)]]
+[[Category:Sokoban (EvilHack)]]}
+&&%s&& %s Sokoban Level 4c {150267 2023-03-20T21:05:41Z {4001279 Umbire the Phantom} cats This is one of the new possible maps for the final level of [[Sokoban]] in [[UnNetHack]] and [[EvilHack]]. It has 15 boulders and holes.
+
+Behind the holes is the [[treasure zoo]], with the standard set of closets containing the Sokoban prizes. The prizes vary with each variant, and only one can be picked up:
+
+* In UnNetHack, the choices are a [[bag of holding]], a [[cloak]] (of [[cloak of magic resistance|magic resistance]] or [[cloak of displacement|displacement]]) and an [[amulet]] (of [[amulet of reflection|reflection]], [[amulet of life saving|life saving]] or [[amulet of ESP|ESP]]).
+* In EvilHack, the choices are instead a prize tool (a bag of holding or a [[magic marker]]), a prize armor (a [[helm of speed]] or a pair of [[gauntlets of protection]]), or a prize amulet (an amulet of reflection or [[amulet of magic resistance|magic resistance]]).
+
+             ---------  0 boulder
+             |..^^^^.|  ^ hole
+  -------    |..----+-- > starting position/downstairs
+  |>....-------^|.....| # iron bars
+ -----.0......|^|.....|
+ |...|-....--.|^|.....|
+ |.0.|..--....|^|.....|
+ |.0.|.0-----.|^|.....|
+ --.0.0.....|.|^|+----|
+  |.0..0---.|.|^#...+.|
+  |.|..0..|.|.|^|...|-|
+  |.|.|.|...|.|^#...+.|
+ --.---...|.|.|^|...|-|
+ |..0..----.|.|^#...+.|
+ |....0....0....|------
+ ----0..0|.0....|
+    |....|..-----
+    ---------
+
+== Strategy ==
+
+The following solution may not be very fast or organized. Improvements welcome. Like all Sokoban levels it can be solved without making any boulders 'stick'.
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a hole.
+

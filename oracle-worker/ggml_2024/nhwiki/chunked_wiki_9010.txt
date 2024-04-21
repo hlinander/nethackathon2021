@@ -1,0 +1,1000 @@
+|-
+| Overtaxed || 1.5 || 2 || 2.5
+|}
+
+== Monsters ==
+
+A monster with intrinsic speed (gained by e.g. a [[wand of speed monster]]) or extrinsic speed ([[speed boots]]) has four thirds their normal movement rate.{{refsrc|mon.c|501}}
+A slowed monster (e.g. by means of a [[wand of slow monster]]) has two thirds their normal movement rate.{{refsrc|mon.c|499}}
+
+In normal pet-versus-nonpet combat, regardless of its speed, no monster is intended to be able to attack another monster more than once per turn;{{refsrc|dogmove.c|630}} however, the parameter "after", documented as determining whether the monster has already attacked that turn, is always set to 0.{{refsrc|monmove.c|644}}{{refsrc|uhitm.c|386}}{{refsrc|monmove.c|512}} For pets, this means that speed beyond 12 not only makes it easier for them to keep up with you, but also allows them to deal more damage over time, just like it does for monsters fighting you. On a related note, the retaliatory attack against pets always has a 75% chance of occurring if the monster has not attacked that turn, regardless of movement points.{{refsrc|dogmove.c|638}}
+
+Monster attacks due to [[conflict]] or [[Confusion#Monster_confusion|confusion]] (and, with a 75% chance, retaliatory attacks against these {{refsrc|monmove.c|1015}}{{refsrc|mhitm.c|159}}) occur if the monster has enough movement points left to make an action (and will use those movement points up in the process, and cannot occur otherwise), even for retaliation attacks. For them, the speed system works almost like for you.
+
+== Strategy ==
+
+You can couple jumping, speed and self-polymorph to move through the dungeon as fast as possible.
+
+Starting with [[Polymorph#Self-polymorph|self-polymorph]], the [[air elemental]] is the fastest creature with 36 movement points. As an air elemental, you'll get three movements in every turn. However, being an air elemental has serious drawbacks. You have relatively weak attacks, you can't open, close, engrave, wear any armor or wield any tools. You can't put on or take off rings, though any ring you're wearing when you polymorph will still be worn. Strangely, you can put on and take off amulets, zap wands and spells, read scrolls and quaff potions. Because of this, Air Elementals make great travel forms, but terrible fighting forms.
+
+A less fast form, but still fast, is the [[Titan]] with 18 movement points. Titans have the obvious advantage of being able to fight well while still being fast.
+
+Your speed affects all forms equally, meaning you can get up to four movements in one turn as an air elemental, or three movements as a Titan.
+
+Another alternative is to be [[riding]], as a swift steed like a [[warhorse]] or [[unicorn]] can have up to 24 movement points, and intrinsic speed can make it even faster. [[Kick]]ing or [[whip]]ping a steed can make it gallop for 20-30 turns, which on average increases its movement to 1.5 times normal,{{refsrc|mon.c|506}} but this decreases [[tameness]] and risks being dismounted. Note that the increased speed also only applies when using automatically repeating forms of movement, such as [[travel]] or the {{kbd|g}} command.
+
+[[Jumping]] can be done on any of the movements turns, but it always advances to the next turn and resets your movement counter. Hence, if you're hasted, you should move as far as your hasted self can before advancing the turn counter, then, with your last movement, execute the jump. To accomplish this you will have to carefully watch the turn counter and know where you are in the cycle. Using this strategy as an [[air elemental]] will allow you to move up to seven squares in a single turn.
+
+The theoretically fastest method of movement, without using [[life saving]], is to be polymorphed into a [[punishment|punished]] monster with a speed of 24 (e.g. a [[warhorse]]), combined with a very fast speed; this gives two actions per turn, plus up to one from the speed, which can be used to throw the [[heavy iron ball]], pick it up again, then (hopefully) jump on the third action, which is slightly faster than moving three times and jumping as an air elemental. However, this is likely too unwieldy to be of much use in practice. (Life saving can be used to reduce helplessness/immobility/paralysis to one turn, allowing [[hurtling]] to be the theoretically fastest form of movement, but this is incredibly wasteful of resources, and very difficult to arrange a death at the right moment.)
+
+==dNethack==
+
+The [[wand of speed monster]] now grants temporary very fast speed, rather than permanent fast speed.
+
+==See also==
+*[[Monsters (by speed)]]
+
+==References==
+<references/>
+
+[[Category:Properties]]
+{{featured}}
+{{nethack-343|offset=1}}}
+&&%s&& %s Movement rate {8488 2006-08-26T17:04:04Z {712 SGrunt} #REDIRECT [[Speed]] #REDIRECT [[Speed]]}
+&&%s&& %s Wand of speed monster {147306 2022-08-06T14:53:52Z {4001597 Hordes} duplicate {{wand
+ |name=speed monster
+ |cost=150
+ |type=beam
+ |maxcharges=8
+ |abundance=5%
+ |muse=misc
+}}
+
+The '''wand of speed monster''' is a [[wand]] that appears in ''[[NetHack]]''.
+
+==Generation==
+Randomly generated monsters may receive a wand of speed monster as a [[miscellaneous item]], with a {{frac|6}} chance of one appearing in a monster's [[monster starting inventory|starting inventory]] if a speed item is chosen.{{refsrc|src/muse.c|2034|version=NetHack 3.6.6}}
+
+== Effects ==
+[[Zap]]ping the wand at yourself or a monster gives the target(s) [[intrinsic]] [[speed]]; gaining intrinsic speed by zapping yourself also [[exercise]]s [[dexterity]]. Monsters can zap the wand at themselves, and observing them doing so will [[auto-identify]] it. Monsters that you zap with this wand are capable of resisting its effect, dependent on a check against their [[magic resistance (monster)|magic resistance value]]; zapping a [[peaceful]] monster will anger it.
+
+[[Engraving]] with a wand of speed monster gives a unique message if you are not [[blind]], but does not auto-identify the wand.{{refsrc|src/engrave.c|680|version=NetHack 3.6.6}}
+
+==Strategy==
+Once you have zapped yourself with this wand, the intrinsic speed is permanent, and the wand is generally used for speeding up [[pet]]s and [[steed]]s afterward. Backup wands should be kept stashed elsewhere - including at least one in your 'main' inventory - in the event you are subjected to delayed [[stoning]] from a [[footrice]] or the slowing attacks of [[skeleton]]s and [[shade]]s.
+
+Pets may resist the wand's effect like any other monster, particularly if they are a high-have the same chance of resisting as any other monster; if zapping your pet does not generate a message, they may have resisted or else already have intrinsic speed.  If there is no message, the pet probably resisted, or was fast already. You can check to see if a pet has intrinsic speed (fast) by applying a [[stethoscope]] to the pet.
+
+==History==
+The wand of speed monster has been present in the game since Hack 1.21, a variant of [[Jay Fenlason's Hack]].
+
+==Messages==
+{{message|The bugs on the floor speed up!|You engraved with the wand.}}
+{{message|You speed up.|You gained intrinsic speed by zapping yourself.}}
+{{message|Your quickness feels more natural.|You gained intrinsic speed while you already had extrinsic speed.}}
+{{message|<Monster> is suddenly moving faster.|A monster was zapped with this wand and either became fast or is no longer slow.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], two wands of speed monster can be found in the outside area of [[Grund's Stronghold]]. This also applies to [[SlashTHEM]].
+
+===NetHack brass===
+In [[NetHack brass]], the wand of speed monster's effects are temporary.
+
+===xNetHack===
+In [[xNetHack]], the effects of the wand instead give you temporary very fast speed, making the wand in general more useful - its effects on monsters are unchanged. The temporary speed can be used to escape from a dire situation, or else close in quickly on a particularly troublesome monster to kill it faster. The [[potion of speed]] now grants intrinsic speed, as well as temporary very fast speed.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Wands|Speed monster]]}
+&&%s&& %s ISO C {8494 2006-08-26T17:10:13Z {679 Ray Chason} Redirect to ANSI C #REDIRECT [[ANSI C]]}
+&&%s&& %s Integer overflow {131994 2020-02-10T01:10:52Z {4000978 Aximili} See also: negative gold {{Wikipedia|Integer overflow}}
+
+'''Integer overflow''' is what occurs when a numeric variable exceeds its maximum capacity. Generally what happens, due to [http://en.wikipedia.org/wiki/Two%27s_complement two's complement arithmetic], is that the variable wraps to the opposite end of the range. So for a [[signed variable]], a negative value just beyond the range would become a large positive value, and vice versa. An [[unsigned variable]] that exceeds its capacity would become a small positive value, or zero. Subtracting too much from a small unsigned variable would produce a large value.
+
+A signed 8-bit variable (which is what [[AC]] uses) can store -128 to 127 inclusive. If your AC is -126 and you put on a piece of armor that would reduce your AC by five points, then your AC would become -131. -131 is too large for a signed 8-bit variable, so your new AC would be 124. 124 AC is of course ''extremely bad'', considering a naked human has 10 AC. Thankfully, this doesn't happen in the case of AC.
+
+Some integers in NetHack, like AC<ref>{{function|Do_wear.c|find_ac}}</ref> and alignment record<ref>{{function|Attrib.c|adjalign}}</ref>, have protection against overflow. One way you can detect whether an overflow would occur is if subtracting from a negative value produces a positive value, or adding to a positive value produces a negative value. In the case of AC, the code calculates your current AC in a larger variable (varies, but most likely 32 bits), and then checks if the smaller AC variable (8 bits) would overflow.
+
+Items with enchantments can go from -128 to +127 without overflowing.
+
+It is also possible to cause integer overflow of the weight of [[container]]s or the player's inventory, causing it to become negative. 4294968 [[loadstone]]s or 357914 [[boulder]]s in a chest will cause an overflow to about -2147483647, or -(2^31). This tends to cause the [[encumbrance]] status to go away. If inventory weight display is enabled, the player will see that the inventory weight and they will be able to pick up any object, provided that they have an inventory letter free. The player can also wish for objects such as boulders and not have them drop to the floor. Overflowing the player's inventory weight is only possible by wishing for cursed loadstones, and this usually can only be done in [[wizard mode]]. It is best to do this when the player is already carrying 52 different items so the loadstone will take up the '#' slot.
+
+==See also==
+
+* [[Negative gold]]
+
+==References==
+<references/>
+[[Category:Development]]
+{{nethack-343}}}
+&&%s&& %s Overflow {8500 2006-08-26T17:24:14Z {239 Eidolos} Redirect to [[Integer overflow]]. #REDIRECT [[Integer overflow]]}
+&&%s&& %s Queen bee {148332 2022-10-04T12:46:24Z {4001279 Umbire the Phantom} var {{monster
+ |difficulty=12
+ |level=9
+ |experience=225
+ |speed=24
+ |AC=-4
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Sting 1d8 [[poison]]ous
+ |weight=1
+ |nutr=5
+ |size=Tiny
+ |resistances=Poison
+ |resistances conveyed=Poison (60%)
+ |attributes={{attributes|A queen bee|=
+ |animal=1|fly=1|nohands=1|oviparous=1|pois=1|hostile=1|female=1|prince=1}}
+ |reference=[[monst.c#line132]]
+}}
+The '''queen bee''', {{monsym|queen_bee}}, is an [[insect]]oid [[monster]] that appears in ''[[NetHack]]''. It is a stronger version of the [[killer bee]].
+
+Queen bee corpses are [[poisonous]] to eat, but have a {{frac|3|5}} chance to convey [[poison resistance]].
+
+==Generation==
+Queen bees are not randomly generated, but are eligible forms for [[polymorph]]. Each [[beehive]] contains a single queen bee, including the guaranteed one within the [[Wizard's Tower]].
+
+Queen bees can hatch from [[eggs]], including ones laid by a player polymorphed into a queen bee - however, only {{frac|77}} of eggs laid will be queen bee eggs, and the rest will be killer bee eggs.{{refsrc|src/mon.c|3914|version=NetHack 3.6.6}}
+
+{{upcoming|NetHack 3.7.0|Killer bees can now eat [[royal jelly]] to [[grow up]] into queen bees if no queen already exists on the level. Pet killer bees will actively seek out nearby royal jelly to do this. This will kill them if queen bees are genocided.
+
+Rubbing non-cursed royal jelly on a killer bee [[egg]] will turn it into a queen bee egg; cursed royal jelly will kill the egg ('The egg quivers feebly'), while non-cursed jelly will revive it ('The egg quivers briefly'), and blessed jelly will make the newborn creature think [[you]] are its parent, so it is guaranteed to hatch tame.}}
+
+==Strategy==
+Queen bees are exceedingly [[fast]] at 24, tied with [[unicorn]]s, [[warhorse]]s and the [[mail daemon]] for [[Monsters (by speed)|third-highest among monsters]]. Their sting is also more than twice the strength of normal killer bees - unfortunate players that find an early beehive before obtaining [[poison resistance]] would do well to steer clear. Queen bees are also eligible forms for [[shapeshifter]]s such as the [[animal]]-favoring [[chameleon]], which can be a nasty surprise for similarly unlucky player. Even with poison resistance, you should be solidly armored with a weapon that can reliably land hits against their low AC.
+
+The queen bee is quite vicious on its own, but has 0 [[Magic resistance (monster)|MR score]] and remains as vulnerable to [[wand]]s and [[spell]]s as normal bees. More often than not a queen is accompanied by her hive, and improperly handling a swarm can result in damage piling up quickly even with poison resistance. [[Stealth]] is an excellent [[property]] to use in clearing beehives, and crowd-control tactics like scaring via [[bugle]] or [[tooled horn]] and funneling them through long hallways can keep the queen off your back until you have dealt with the weaker bees. 
+
+==History==
+The queen bee was introduced alongside beehives in [[NetHack 3.0.0]].
+
+==Origin==
+{{wikipedia|Queen bee}}
+A queen bee is typically an adult, mated female of the species that lives in a colony or hive of honey bees; the term "queen bee" can be more generally applied to any dominant, reproductive female in a eusocial bee species colony. The queen is usually the primary bee with fully developed reproductive organs, and thus the mother of most (if not all) of the bees in the beehive. Queens are developed from larvae selected by worker bees and specially fed with [[royal jelly]] in order to become sexually mature; the bees usually follow and fiercely protect the solitary queen.
+
+In some species such as the [[wikipedia:Schwarziana quadripunctata|Brazilian stingless bee]], a single nest may have multiple queens or even dwarf queens, ready to replace a dominant queen in a case of sudden death.
+
+==Messages==
+{{message|You feel very comfortable here.|You sat on a [[throne]] as a queen bee, and no effect occurred.}}
+
+==Variants==
+===SlashTHEM===
+In [[SlashTHEM]], the Gnome King's Apiary is a variant of [[Mines' End]] that contains a beehive with a queen bee and several killer bees, as well as a statue of a queen bee.
+
+===EvilHack===
+In [[EvilHack]], one to four [[honey badger]]s may spawn on any level with a beehive and will dig for it as fast as possible - this has the added peril of likely waking the queen and her hive before you are prepared to deal with either them or the badgers.
+
+==Encyclopedia entry==
+{{encyclopedia-redirect|bee}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Giant beetle {138438 2021-03-12T03:54:50Z {4001463 Actual-nh} Grammar/style {{monster
+ |difficulty=6
+ |level=5
+ |experience=56
+ |speed=6
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=3
+ |genocidable=Yes
+ |attacks=Bite 3d6
+ |weight=10
+ |nutr=10
+ |size=Large
+ |resistances=Poison
+ |resistances conveyed=Poison (33%)
+ |attributes={{attributes|A giant beetle|=
+ |animal=1|nohands=1|pois=1|carnivore=1|hostile=1|}}
+ |reference=[[monst.c#line128]]
+}}
+The '''giant beetle''', {{monsym|giant_beetle}}, is a [[monster]] in [[NetHack]].  Unlike the rest of its [[insect]]oid brethren, it is very [[speed|slow]], moving at half the speed of the player, and thus not usually seen as a significant threat; moreover, as opposed to real-life beetles, it cannot fly. They do hit fairly hard, however, so take care if you have poor HP or AC. Their corpses are poisonous, but have a 33% chance of imparting poison resistance.
+
+On some systems, dark gray items and creatures will be displayed as blue instead. This makes it easy to confuse giant beetles with their much more dangerous cousins, [[soldier ant]]s.
+
+{{upcoming|NetHack 3.7.0|Giant beetles now weigh 200 and provide 50 nutrition.}}
+
+==SLASH'EM==
+
+[[SLASH'EM]] adds the much more dangerous [[killer beetle]].
+
+==Encyclopaedia entry==
+
+{{encyclopedia|<poem>
+[ The Creator ] has an inordinate fondness for beetles.
+{{right-align|[ attributed to biologist J.B.S. Haldane ]}}
+ 
+The common name for the insects with wings shaped like
+shields (_Coleoptera_), one of the ten sub-species into
+which the insects are divided.  They are characterized by
+the shields (the front pair of wings) under which the back
+wings are folded.
+{{right-align|[ Van Dale's Groot Woordenboek der Nederlandse Taal ]}}
+</poem>}}
+
+[[Category:Monsters]]
+{{nethack-360}}}
+&&%s&& %s Ants {8512 2006-08-26T18:07:24Z {712 SGrunt} #REDIRECT [[Ant]] #REDIRECT [[Ant]]}
+&&%s&& %s Bee {150116 2023-03-07T12:03:44Z {4001279 Umbire the Phantom} It's a disambig, try to keep it brief On [[NetHackWiki]], '''bees''' can refer to one of two [[monster]]s that appear in ''[[NetHack]]'':
+
+* {{monsymlink|killer bee}}
+* {{monsymlink|queen bee}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+This giant variety of its useful normal cousin normally appears in small groups, looking for raw material to produce the royal jelly needed to feed their queen.  On rare occasions, one may stumble upon a bee-hive, in which the queen bee is being well provided for, and guarded against intruders.
+}}
+
+{{disambig}}
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Bees {8514 2006-08-26T18:09:35Z {712 SGrunt} #REDIRECT [[Bee]] #REDIRECT [[Bee]]}
+&&%s&& %s Beehive {134814 2020-07-04T23:45:36Z {4000978 Aximili} Update sources '''Beehives''' contain [[killer bee]]s and one [[queen bee]]. Roughly 1/3 of the squares will contain [[royal jelly]]. All residents are asleep when the room is generated.
+
+==Generation==
+A beehive has a 1/5 chance of generating in an ordinary rooms and corridors level that is at least dungeon level 10, and does not have a [[shop]], [[throne room]], [[leprechaun hall]], [[zoo]] or [[temple]].{{refsrc|src/mklev.c|778|version=NetHack 3.6.6}}
+
+Beehives will not be generated if bees are genocided or extinct.
+
+==Special levels with beehives==
+The [[Wizard's Tower]] has a beehive.
+
+==Messages==
+{{message|You hear a low buzzing.}}
+{{message|You hear an angry drone.|There is a beehive on the level.}}
+{{message|You hear bees in your bonnet!|There is a beehive on the level, you are [[hallucinating]] and wearing a helmet.}}
+{{message|You hear bees in your (nonexistent) bonnet!|There is a beehive on the level, you are [[hallucinating]] and not wearing a helmet.}}
+{{message|You enter a giant beehive!|You entered the hive.}}
+
+==Strategy==
+If you have [[poison resistance]] and [[stealth]], you can easily fight the bees one by one.
+
+==References==
+<References />
+
+{{nethack-366}}
+[[Category:Special rooms]]}
+&&%s&& %s Minotaur {146778 2022-07-21T02:48:03Z {4001279 Umbire the Phantom} /* As polyforms */ {{monster
+ |difficulty=17
+ |level=15
+ |experience=504
+ |speed=15
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Claw 3d10, claw 3d10, butt 2d8
+ |weight=1500
+ |nutr=700
+ |size=Large
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A minotaur|animal=1|humanoid=1|carnivore=1|hostile=1|strong=1|nasty=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line1445]]
+}}
+
+A '''minotaur''', {{monsym|minotaur}}, is an especially deadly [[monster]] that appears in ''[[NetHack]]''. They are carnivorous, humanoid [[animal]]s that are notoriously difficult to fight and deal out incredible amounts of damage with their clawing attacks and heabutt, leading to many deaths at their hands from even experienced players. Minotaurs are the strongest of the [[giant humanoid]] [[monster class]], and are also infamous for being one of the few monsters to ignore [[Elbereth]].
+
+==Generation==
+Minotaurs are not randomly generated; one or two minotaurs may be generated on creation of a normal floor that is a full-level [[maze]].{{refsrc|src/mkmaze.c|766|version=NetHack 3.6.6}} A [[sleeping]] minotaur is generated on the [[Ranger quest]] home level.{{refsrc|dat/Ranger.des|69|version=NetHack 3.6.6}} Two minotaurs are generated on the [[Plane of Earth]], including one in the cavern you enter from, and another appears on the [[Plane of Fire]].{{refsrc|dat/endgame.des|56|version=NetHack 3.6.6}}{{refsrc|dat/endgame.des|103|version=NetHack 3.6.6}}{{refsrc|dat/endgame.des|351|version=NetHack 3.6.6}}
+
+Minotaurs are eligible forms for [[polymorph]], and can also be summoned by the [[summon nasties]] [[monster spell]].
+
+A minotaur has a {{frac|3}} chance to [[Monster starting inventory|generate with]] a [[wand of digging]]; the minotaurs on Plane of Earth are guaranteed to generate with one.{{refsrc|src/makemon.c|707|version=NetHack 3.6.6}}
+
+==Strategy==
+Minotaurs are slightly faster than an unhasted [[hero]] at 15 [[speed]], and have a natural [[AC]] of 0; their three attacks have the highest damage ceiling in the game, short of the [[Riders]] themselves. Minotaurs represent such a gigantic physical threat that there is [[Armor class#How much is enough?|an entire section]] of the article on [[armor class]] dedicating to estimating how badly a minotaur can stomp a player at a given AC threshold. Be ready to employ some of the strategies listed below, and be sure to scan your inventory thoroughly when making [[Things To Do If You're Going to Die Next Turn|last-ditch efforts]] in a worst-case scenario.
+
+Thankfully, unless a hostile monster gets a "lucky" polymorph, you likely won't encounter a minotaur until you're near or in [[Gehennom]]. As minotaurs are not [[intelligent]], they cannot make use of weapons, armor or various other items, including the wand of digging they often generate with - minotaurs also have no [[Magic resistance (monster)|monster MR]] and lack any intrinsic resistances, making them very vulnerable to magic and other effects. One of the quickest ways to "handle" a hostile minotaur is to use a [[scroll of taming]] or other similar item; see [[#As pets|the below section]] for more information on that. They are also extremely susceptible to [[conflict]], which can turn their fearsome strength on other hostile monsters in the area, possibly including an unwitting summoner that generated one next to you.
+
+===Defeating minotaurs===
+A very fast spellcaster should be able to keep at a safe distance and wear the minotaur down, and other roles that can reach Expert [[skill]] in [[dagger]]s and/or [[bow]]s are capable of the same - the {{spell of|jumping}} spell or [[jumping boots]] can aid you in either case, though be careful not to get backed into a corner. While any strong enough player can theoretically outdamage a minotaur in melee, it is generally a [[bad idea]] to rely on raw damage alone - a minotaur can kill even highly-armored melee players like [[Valkyrie]]s carrying [[the Orb of Fate]] if they are particularly unlucky.
+
+Attack wands can weaken or impair a minotaur somewhat efficiently, especially if you have a [[wand of slow monster]] to reduce its speed (and thus its damage) or a [[wand of sleep]] to immobilize it; the [[wand of lightning]] can [[blind]] the minotaur as well as damaging it, and most wands can be made more effective by rebounding their [[ray]]s off maze walls. Minotaurs are even a worthy candidate for a [[wand of death]] or [[finger of death]] charge - be careful where you aim, as without [[magic resistance]] or [[reflection]] a rebound may inadvertently [[YASD|solve the problem harder than you intended]]. If all else fails, slow monster and sleep wands can also make it easier to escape, as can a wand of digging.
+
+Tools such as an [[expensive camera]] or a [[tooled horn]] are capable of scaring minotaurs, and the camera can additionally blind them - a blind minotaur is much less likely to hit you, significantly increasing your chance of surviving against one. A [[scroll of scare monster]] can also keep non-blinded minotaurs away, though be sure not to have other monsters [[burn]] it away from under you - they can also walk over the scroll when you are not standing on it. [[Boulder]] forts and [[acid blob]] formations can reliably keep a minotaur away while you prepare other counter-measures.
+
+If you have [[free action]], a thrown or (much more preferably) wielded [[potion of paralysis]] can buy you approximately 3-12 turns to kill it, run away, or prepare some of the other options mentioned. If all else fails, zap yourself or the minotaur with a [[wand of teleportation]] and hope that you can avoid encountering it down the line before you are ready to take it on again.
+
+Beware of running into a minotaur during a [[dig for victory]], especially in the [[undiggable]] [[Castle]] maze.
+
+===As pets===
+Due to their lack of monster MR, minotaurs can easily be tamed; their high damage and HP make them formidable fighters and somewhat popular pets. However, minotaurs lack resistances and most other properties, and their inability to wear equipment leaves them vulnerable to various monsters and traps, especially in the late game. Even so, their high damage can usually batter other monsters into submission before they can get a swing in, and keeping them fed is relatively easier in Gehennom, where you usually have most or all of the resistances you need at that point. Keeping them alive on the [[Planes]], on the other hand, is a fairly tall order, especially on the [[poison cloud]]-laden Plane of Fire.
+
+A minotaur's strength makes them a tempting candidate for [[credit cloning]] in [[shop]]s, though they are much likelier to try and kill the [[shopkeeper]] unless you are careful or have a [[magic whistle]] on hand.
+
+{{upcoming|3.7.0|Monsters can now gain intrinsics from eating corpses, making it possible for a minotaur to obtain [[poison resistance]] and [[fire resistance]] among others and increase their survivability.}}
+
+===As polyforms===
+Minotaurs are sometimes chosen as polyforms for their high speed and strength, though they cannot wear most armor save for [[helm]]s, and only cloth and leather helms can fit their head shape; they also lack other utilities such as [[flight]] or [[regeneration]], and are often passed over in favor of fellow nasties such as the [[master mind flayer]], who shares their natural AC of 0.
+
+==History==
+The minotaur was first present in Hack121, a variant of [[Jay Fenlason's Hack]], and also appears in [[Hack 1.0]]. From this version of Hack to [[NetHack 2.3e]], minotaurs used the {{white|m}} glyph. [[NetHack 3.0.0]] moves the minotaur to the {{white|H}} glyph; [[3.0.5]] introduces their immunity to Elbereth.
+
+From NetHack 3.0.5 to [[3.4.3]], including some variants based on these versions: minotaurs are also not affected by the scroll of scare monster. This behavior was explained in the following comment from the source code:<ref name="E">[http://unnethack.wordpress.com/2012/03/07/why-did-the-minotaur-cross-the-elbereth/ Why did the Minotaur cross the Elbereth? | UnNetHack & NetHack-De]</ref>
+
+<syntaxhighlight lang="c">
+ /* Note: minotaurs must be immune to scare monster
+  * to avoid abuse from creating them and taking
+  * their wands, then polymorphing 60 or so
+  * wands to get wishing...
+  */</syntaxhighlight>
+
+As of [[NetHack 3.0.8]], it is impossible to produce a [[wand of wishing]] by [[polypiling]], and the note was removed in [[3.1.0]]. The behavior remained unchanged until [[NetHack 3.6.0]], where minotaurs began respecting scrolls of scare monster while the player is standing on the scroll.
+
+Minotaurs were formerly capable of being generated in the mazes within the [[Big Room]] and the Catacombs variant of [[Mines' End]]; this was changed in [[NetHack 3.6.1]], as this often constituted severely out-of-depth monster generation.<ref>{{commit|32305ace5cfec0df0b88853c00d8b93fda787893|Commit 32305ac: Prevent minotaur in mines end and bigroom mazes}}</ref>
+
+==Origin==
+{{wikipedia|Minotaur}}
+As indicated by the excerpt from [[wikipedia:Edith Hamilton|Edith Hamilton's]] [[wikipedia:Mythology (book)|''Mythology'']], the minotaur originates in ancient Greek folklore from the punishment of [[wikipedia:Minos|King Minos of Crete]]. The word "minotaur" derives from the Ancient Greek Μῑνώταυρος, a compound of the name Μίνως (Minos) and the noun ταῦρος "bull", translated as "(the) Bull of Minos"; the word was originally a proper noun in reference to this mythical figure, and only became a common noun in 20th century fantasy works to refer to members of a generic "species" of bull-headed creatures.
+
+After ascending the throne of the island, Minos prayed to the sea god [[Poseidon]] to send him a beautiful snow-white bull as a sign of favour; Minos was to sacrifice the bull to honor Poseidon, but then decided to substitute a different bull and keep the original as his own. Poseidon retaliated by cursing Pasiphaë, Minos' wife, with a mad passion for the bull; Daedalus built her a wooden cow that she climbed inside in order to mate with the bull. The result of this union was the Minotaur, also known as Asterion or Asterius, born with the body of a human and the head of a bull. Following advice from the oracle at Delphi, Minos had [[wikipedia:Daedalus|Daedalus]] construct a gigantic Labyrinth to hold the Minotaur located near his palace in Knossos (hence the tendency of ''NetHack'' minotaurs to appear in mazes); Daedalus and his son [[wikipedia:Icarus|Icarus]] were then imprisoned to ensure no one would ever know the secret of the Minotaur or how to escape the Labyrinth.
+
+The most famous story of the Minotaur outside of his origin is likely the tale of [[wikipedia:Theseus|Theseus]] and his encounter with the beast-man, a subject of many classical artworks and media. As the Minotaur had no natural source of nourishment beyond nursing from his mother, he became ferocious as he grew older, devouring humans for sustenance. Minos required that seven Athenian youths and seven maidens, drawn by lots, be sacrificed every seventh or ninth year (or every year in some accounts) to be sent into the Labyrinth and devoured by the Minotaur. On the third such occasion, Theseus volunteered to stop this horror, taking the place of one of the youths; in Crete, Minos' daughter Ariadne fell madly in love with Theseus and helped him navigate the labyrinth, usually with a ball of thread that allowed him to retrace his path. Theseus found the Minotaur at the heart of the labyrinth and (depending on the source) slew it with his bare hands, his club, or a sword. He then led the young Athenians out of the labyrinth, and managed to escape with them and Ariadne.
+
+==Messages==
+{{message|You notice a bovine [[smell]].|A [[shapeshifter]] or other monster has turned into a minotaur (or [[rothe]]), and you cannot see them.}}
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], minotaurs respect Elbereth as of version 4.0.0.<ref name="E"/>
+
+===SLASH'EM===
+In [[SLASH'EM]], the minotaur [[Monsters with hits creatures as a +x weapon (SLASH'EM)|hits monsters as a +2 weapon]] and gains [[death resistance|intrinsic resistance to death magic]], removing the wand of death as an option against them.
+
+===dNetHack===
+In [[dNetHack]], minotaurs can no longer be tamed, and may additionally [[Traitor|turn on you]] should you somehow tame one. dNetHack also adds the [[minotaur priestess]], who uses clerical monster spells in lieu of claw attacks (though it is still not considered intelligent).
+
+A minotaur and minotaur priestess are generated in the [[shrouded dispensary]] inhabited by [[Illurien of the Myriad Glimpses]].
+
+===GruntHack===
+[[GruntHack]] introduces the [[elder minotaur]] in version 0.2.3, a much stronger minotaur that also appears in Gehennom and replaces the minotaurs found on the Planes. Elder minotaurs have more powerful claw and headbutt attacks alongside a crushing bearhug that prevents escape; they cannot be tamed or pacified.
+
+===EvilHack===
+In [[EvilHack]], minotaurs can send a target flying with their headbutt attacks. EvilHack also adds the elder minotaur from [[GruntHack]] and gives their heabutt attacks the same ability, along with a similar chance to generate with a wand of digging.
+
+==Monster stats by variant==
+<simpletabs>
+dNetHack|{{monster
+ |name=minotaur
+ |symbol={{brown|H}}
+ |tile=
+ |difficulty=17
+ |level=15
+ |experience=564
+ |speed=15
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Claw 3d10 physical, Claw 3d10 physical, Butt 2d8 physical
+ |weight=2200
+ |nutr=800
+ |size=large
+ |resistances=[[shock]]
+ |resistances conveyed=[[shock]]
+ |attributes={{attributes|A minotaur|humanoid=1|animal=1|carnivore=1|giant=1|hostile=1|nasty=1|strong=1|infravision=1|infravisible=1|hell=1|traitor=1|notame=1}}
+ |reference=[https://github.com/Chris-plus-alphanumericgibberish/dNAO/blob/compat-3.21.3/src/monst.c#L3817 dNetHack 3.21.3 monst.c, line 3817]
+}}
+|-|
+EvilHack|{{monster
+ |name=minotaur
+ |difficulty=17
+ |level=15
+ |experience=429
+ |speed=15
+ |AC=6
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Claw 3d10, Claw 3d10, Head butt 2d8 knock-back damage
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A minotaur|animal=1|humanoid=1|carnivore=1|hostile=1|strong=1|nasty=1|infravisible=1|infravision=1}}
+ |size=Large
+ |nutr=700
+ |weight=1500
+ |reference=[https://github.com/k21971/EvilHack/blob/0.7.1/src/monst.c#L2026 EvilHack 0.7.1 monst.c, line 2026]
+}}
+</simpletabs>
+
+==Encyclopedia entry==
+{{encyclopedia|The Minotaur was a monster, half bull, half human, the offspring of Minos' wife Pasiphae and a wonderfully beautiful bull....  When the Minotaur was born Minos did not kill him. He had Daedalus, a great architect and inventor, construct a place of confinement for him from which escape was impossible. Daedalus built the Labyrinth, famous throughout the world. Once inside, one would go endlessly along its twisting paths without ever finding the exit.
+[ Mythology, by Edith Hamilton ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Titan {149242 2022-12-10T20:21:08Z {4001641 Max webster} /* Strategy */ Fix malformed link. {{monster
+ |difficulty=20
+ |level=16
+ |experience=553
+ |speed=18
+ |AC=&minus;3
+ |MR=70
+ |align=9
+ |frequency=1
+ |genocidable=No
+ |attacks=Weapon 2d8, [[monster spell|Spell-casting]]
+ |weight=2300
+ |nutr=900
+ |size=Huge
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A titan|
+ |fly=1|humanoid=1|omnivore=1|strong=1|rockthrow=1|=
+ |nasty=1|collect=1|magic=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line1438]]
+}}
+A '''titan''', {{monsym|titan}}, is a powerful type of [[monster]] that appears in ''[[NetHack]]''. It is a [[giant humanoid]] that is a close cousin of the [[Giant (monster attribute)|giants]]: titans are capable of [[flight]] and [[Monster spellcasting|spellcasting]], as well as lifting and throwing [[boulder]]s. 
+
+==Generation==
+Titans are very rarely seen in the dungeon by random generation, and will not be generated in [[Gehennom]]; they are most likely to appear as [[peaceful]] for [[lawful]] characters. Titans are a valid form for [[polymorph]], and cannot be targeted for [[genocide]]. Randomly generated titans have a 50% chance of [[Monster starting inventory|generating with a boulder]].
+
+The second variant of [[Medusa's Island]] always places a titan in the entrance hall where the upstair is located. While even rarer than normal generation, it is also possible for a titan to appear within the [[quest]] branch for [[Caveman quest|Cave(wo)men]] and [[Valkyrie quest|Valkyries]].
+
+==Strategy==
+Titans are among the more difficult monsters that can be encountered in the deepest parts of the dungeon - the possible titan on Medusa's Island in particular is one of two significant obstacles on the average [[dig for victory]], with the other being the general presence of [[minotaur]]s. Their tendency to be peaceful towards lawful characters is considered a notable advantage compared to other alignments.
+
+Titans are alarmingly [[fast]] at 18 speed and possess a good [[AC]] of -3. They have a single weapon attack and one [[monster spell]] per round; while less physically damaging than other {{white|H}}, titans still make for tricky fights, especially when they [[summon nasties]]. [[Magic resistance]] can help protect against most of the spells in a titan's arsenal, and titans respect [[Elbereth]], but many of the nasties they can summon - minotaurs, [[elf-lord]]s, [[Elvenking]]s, [[captain]]s, and [[couatl]]s - do not.
+
+One way to avoid randomly-generated titans is to keep your [[experience level]] low. For example, assuming a character at XL 14, titans are only randomly generated starting at depths of 26 - the [[Dungeons of Doom]] can terminate on dungeon level 25 at highest and DL 29 at the lowest, and titans cannot appear in Gehennom, leaving the window of generation outside of [[shapeshifter]]s and [[polymorph]] traps narrow. However, they can still be randomly generated in the [[Castle]], on [[Medusa's Island]], via polymorph, or during the [[ascension run]].
+
+[[Taming]] and [[cancellation|cancelling]] are possible counters to titans, though both are risky due to their high [[Magic resistance (monster)|magic resistance]] of 70. For casters with a sufficiently high experience level, while the {{spell of|cancellation}} spell may be preferable to [[wand of cancellation|the wand]], those capable of the required skill level in [[matter spell]]s should invest in alternate and more direct options, such as the [[Wizard]]'s {{spell of|magic missile}}. Putting them to sleep is similarly risky, though success means having a few free turns to inflict the necessary damage without fear of retaliation; a [[wield]]ed [[potion of sleeping]] is a good choice for this. [[Cockatrice]] [[corpse]]s can render titans a non-issue with [[gloves]] and good [[to-hit]], and cockatrices are conveniently found among the nasties a titan can summon; [[conflict]] can also turn a titan's summoned nasties against them or each other, at minimum diverting their focus from you.
+
+===As pets===
+Titans are superb fighters and pet candidates, due to the combination of flight, spellcasting, weapon attack, excellent speed, and solid defenses. Their natural AC easily compensates for an inability to wear torso armor, and their size also makes them immune to [[engulfing]], which prevents an untimely [[instadeath]] by [[digestion]]. A given [[shield of reflection]] is ideal for protection from a [[wand of death]], and a [[unicorn horn]] is standard for any humanoid pet; ensure that the titan is wielding a suitably powerful one-handed weapon before leaving the shield for them, as they may instead wield the unicorn horn and leave no room to wear one.
+
+Titans and [[balrog]]s are among the best monsters that can be made pets via polymorph trap, and both can be outfitted with limited armor and weapons. Unlike balrogs titans are not [[inediate]], but can easily keep themselves fed - even so, be wary if a tamed titan becomes [[confused]] from [[hunger]].
+
+{{upcoming|3.7.0|Monsters that eat food can gain intrinsics from corpses, allowing a titan to gain [[poison resistance]] and other intrinsic resistances that can vastly increase their survival odds.}}
+
+==History==
+The titan is introduced in [[NetHack 3.0.0]].
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], titans can be genocided. They also resist [[death ray]]s.
+
+===dNetHack===
+In [[dNetHack]], titans are [[Primordials (dnethack)|primordials]], and can appear as the ruler of a [[throne room]] ([[Special room (dNetHack)|which functions rather differently]] in this variant); a titan's throne room audience will include many giants among them.
+
+===EvilHack===
+In [[EvilHack]], hostile titans are all the more threatening due to the increased number of monster spells - however, this also makes them even more popular as pets, since EvilHack allows tame spellcasting monsters and players in the form of a spellcasting monster to use those monster spells in combat. 
+
+== Encyclopedia entry==
+{{encyclopedia|
+Gaea, mother earth, arose from the Chaos and gave birth to
+Uranus, heaven, who became her consort.  Uranus hated all
+their children, because he feared they might challenge his
+own authority.  Those children, the Titans, the Gigantes,
+and the Cyclops, were banished to the nether world.  Their
+enraged mother eventually released the youngest titan,
+Chronos (time), and encouraged him to castrate his father and
+rule in his place.  Later, he too was challenged by his own
+son, Zeus, and he and his fellow titans were ousted from
+Mount Olympus.
+|[ Greek Mythology, by Richard Patrick ]
+}}
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Poisonous {8522 2006-08-26T18:23:51Z {712 SGrunt} #REDIRECT [[Poison]] #REDIRECT [[Poison]]}
+&&%s&& %s Demilich {50809 2010-07-05T23:50:10Z {831 Tjr} Redirected page to [[Lich#Demilich]] #REDIRECT [[Lich#Demilich]]}
+&&%s&& %s Master lich {47743 2010-04-05T21:45:47Z {831 Tjr} redirect Lich#Master_lich #REDIRECT [[Lich#Master_lich]]}
+&&%s&& %s Arch-lich {19018 2007-02-18T21:07:25Z {906 YASD} redirect to [[Lich#Arch-lich]] instead of just [[Lich]] #REDIRECT [[Lich#Arch-lich]]}
+&&%s&& %s Touch of death {140095 2021-05-21T20:22:54Z {4001463 Actual-nh} Currently, if it goes directly to DEAD, it actually doesn't even do the maximum HP reduction. (This may be a bug. And yes, I am compulsive about things being correct.) The '''touch of death''' is a [[monster spell]] cast by powerful spell-casting [[monsters]] (of level 21 or higher) in the game, such as [[arch-lich]]es and the [[Wizard of Yendor]]. It has no effect if you are [[magic resistance|magic resistant]] or [[hallucinating]], or [[polymorph]]ed into an [[undead]] monster or a [[demon]]; it can otherwise fail on a (13 in monster's level) chance. If the spell succeeds, as the name suggests, you [[instadeath|die instantly]].
+
+The Rider [[Death (monster)|Death]] has a "deadly touch" attack, which is unrelated other than the chance of instadeath, and an identical message if it fails.
+
+{{upcoming|NetHack 3.7.0|The touch of death now does 8d6+50 damage and reduces your maximum HP by half of the damage dealt; this also applies to Death's deadly touch if it would have had the instadeath effect. However, if the resulting damage would reduce both your maximum and current HP to zero, you die immediately (with no maximum hp reduction); this is an important distinction for certain cases such as [[polyself]].}}
+
+== Messages ==
+{{message|Oh no, (s)he's using the touch of death!|The monster casts the spell. If the spell succeeds, there are no further messages; you see the standard life saving messages if you wore an [[amulet of life saving]], or "[[Do you want your possessions identified?]]" otherwise.}}
+{{message|You seem no deader than before.|The spell failed because you are undead or a demon.}}
+{{message|You have an out of body experience.|The spell was countered by hallucination.}}
+{{message|Lucky for you, it didn't work!|The spell was countered by magic resistance or failed by random chance.}}
+
+{{upcoming|NetHack 3.7.0|{{message|You feel drained...|You were affected by a touch of death.}}}}
+
+== See also ==
+
+*[[mcastu.c#line332]] The touch of death spell.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monster spells]]
+[[Category:Instadeath]]}
+&&%s&& %s NetHack 3.1.2 {148854 2022-10-19T23:00:12Z {679 Ray Chason} /* Availability */ Google Groups is no longer useful; link to nethack.org {{NetHack Versions}}
+
+'''NetHack 3.1.2''' is the 18th public release of [[NetHack]] and the 14th by the [[DevTeam]].  [[Izchak Miller]] published it to the [[Usenet]] newsgroup comp.sources.games and the moderator approved it in June 1993.
+
+== Availability ==
+
+The [[DevTeam]] has mirrored the original Usenet posts at [https://nethack.org/download/3.1.2/ their web site]. The posts provide a patch against [[NetHack 3.1.1]], which is itself patched from [[NetHack 3.1.0]].
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a NetHack 3.1.2 distribution at [http://www.juiblex.co.uk/nethack/source/nethack-3.1.2.tar.gz].
+
+== Significant changes ==
+
+NetHack 3.1.2 is principally a bug-fix release.
+
+Notable changes in NetHack 3.1.2 are:
+
+* The [[Amiga]] and [[Mac]] ports are further polished.
+
+* The [[MS-DOS]] versions can use direct screen output instead of drivers such as ANSI.SYS, and can now be compiled for the PC-9800 architecture (which is principally used in Japan).
+
+* End-of-game disclosure is enhanced, now adding the body count and list of genocides.
+
+* Many bug fixes.
+
+== The adventurer ==
+
+The player may choose from these roles:
+
+{| class="prettytable"
+|-
+!Role!!Alignment
+|-
+|[[Archeologist]]||Lawful
+|-
+|[[Barbarian]]||Neutral
+|-
+|[[Caveman|Cave(wo)man]]||Lawful
+|-
+|[[Elf]]||Chaotic
+|-
+|[[Healer]]||Neutral
+|-
+|[[Knight]]||Lawful
+|-
+|[[Priest|Priest(ess)]]||Random
+|-
+|[[Rogue]]||Chaotic
+|-
+|[[Samurai]]||Lawful
+|-
+|[[Tourist]]||Neutral
+|-
+|[[Valkyrie]]||Neutral
+|-
+|[[Wizard]]||Neutral
+|}
+
+All classes permit male and female adventurers, except the Valkyrie which must be female.
+
+The adventurer has [[experience]], [[hit points]], [[magical energy]],
+[[armor class]], [[alignment]], and the six major [[attribute]]s.  He may
+advance to [[experience level]] 30.
+
+The initial [[pet]] is a little [[dog]] for Cavemen and Samurai, a [[kitten]] for Wizards,
+and a random choice of the two (or the user's choice in his [[options]]) for all others.
+
+== Dungeon features ==
+
+The main trunk of the dungeon begins at level 1, where the game begins, and proceeds down [[stairs]] to [[Medusa's Lair]] and the [[Castle]].  From there, it is necessary to enter a [[trap door]] to the [[Valley of the Dead]].  Further stairs down eventually lead to the invocation level.  Performing the [[invocation ritual]] at the [[vibrating square]] opens the stairs to the [[Sanctum]].
+
+With the [[Amulet of Yendor]] in hand, the adventurer may ascend from level 1 into the [[Plane of Earth]]; thence s/he may proceed through [[magic portal]]s to the planes of [[Plane of Air|Air]], [[Plain of Fire|Fire]], and [[Plain of Water|Water]], and thence to the [[Astral Plane]].  Offering the [[Amulet of Yendor]] on the correct [[high altar]] wins the game.
+
+Along the way, one will encounter these branches and special levels:
+
+* A second [[stair]] to the [[Gnomish Mines]].  Therein, one will find [[Mine Town]] and, at the end, the bottom level with a [[luckstone]].
+
+* The [[Oracle]] level.
+
+* A possible [[Bigroom]].
+
+* The [[Rogue level]].
+
+* The [[magic portal]] to the [[Quest]].
+
+* A possible [[magic portal]], inside a [[vault]], to [[Fort Ludios]].
+
+* [[Medusa's Lair]].
+
+* The [[Castle]].
+
+* The [[Valley of the Dead]].  [[Gehennom]] begins here, and it is no longer safe to [[pray]].
+
+* The lairs of [[Asmodeus]], [[Juiblex]], [[Baalzebub]], and [[Orcus]].
+
+* A second upward [[stairs|staircase]] to [[Vlad's Tower]].
+
+* The [[Wizard's Tower]]; it is visible but not accessible from here.
+
+* A [[Fake Tower]] containing a random [[Amulet]].
+
+* A [[Fake Tower]] containing a [[magic portal]] by which the Wizard's Tower may be entered.
+
+To win the game, it is necessary to complete these tasks:
+
+* Gather seven candles, possibly in the [[lighting shop]] (not yet tended by [[Izchak]]) in [[Mine Town]].
+
+* Complete the [[Quest]] and get the [[Bell of Opening]].
+
+* Kill [[Vlad the Impaler]] and get the [[Candelabrum of Invocation]].
+
+* Kill the [[Wizard of Yendor]] and get the [[Book of the Dead]].
+
+* Proceed to the [[vibrating square]] and perform the [[invocation ritual]].
+
+* Kill the [[high priest]] of [[Moloch]] and get the [[Amulet of Yendor]].
+
+* Escape from the dungeon.
+
+* Pass through the [[Elemental Planes]].
+
+* Arrive at the correct [[altar]] in the [[Astral Plane]].
+
+* Offer the [[Amulet of Yendor]] to the god of your [[alignment]].
+
+[[Special room]]s are:
+
+* [[throne room]]
+* [[swamp]]
+* [[vault]]
+* [[beehive]]
+* [[crypt]]
+* [[barracks]]
+* [[treasure zoo]]
+* [[Oracle]]
+* [[temple]]
+* [[shop]]
+
+Special [[dungeon feature]]s are:
+* [[pool]]
+* [[moat]]
+* [[water]]
+* [[drawbridge]]
+* [[lava]]
+* [[door]]
+* [[ladder]]
+* [[fountain]]
+* [[throne]]
+* [[sink]]
+* [[altar]]
+* [[ice]]
+* [[air]]
+* [[cloud]]
+
+Traps are:
+
+* [[arrow trap]]
+* [[dart trap]]
+* [[falling rock trap]]
+* [[squeaky board]]
+* [[bear trap]]
+* [[land mine]]
+* [[sleeping gas trap]]
+* [[rust trap]]
+* [[fire trap]]
+* [[pit]]
+* [[spiked pit]]
+* [[trapdoor]]
+* [[teleportation trap]]
+* [[level teleporter]]
+* [[magic portal]]
+* [[web]]
+* monsters disguised as [[statue]]s
+* [[magic trap]]
+* [[anti-magic field]]
+* [[polymorph trap]]
+
+A [[wand of wishing]] is guaranteed in the [[Castle]], in its modern position, and protected by [[Elbereth]], but not tucked inside a [[chest]].
+
+== Bestiary ==
+
+NetHack 3.1.2 introduces no new monsters.
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[giant ant]]||{{brown|a}}||
+|-
+|[[killer bee]]||{{yellow|a}}||
+|-
+|[[soldier ant]]||{{blue|a}}||
+|-
+|[[fire ant]]||{{red|a}}||
+|-
+|[[giant beetle]]||{{darkgray|a}}||
+|-
+|[[queen bee]]||{{magenta|a}}||
+|-
+|[[acid blob]]||{{green|b}}||
+|-
+|[[quivering blob]]||{{white|b}}||
+|-
+|[[gelatinous cube]]||{{cyan|b}}||
+|-
+|[[cockatrice]]||{{yellow|c}}||
+|-
+|[[jackal]]||{{brown|d}}||
+|-
+|[[werejackal]]||{{red|@}}/{{brown|d}}||
+|-
+|[[little dog]]||{{white|d}}||
+|-
+|[[dog]]||{{white|d}}||
+|-
+|[[large dog]]||{{white|d}}||
+|-
+|[[wolf]]||{{brown|d}}||
+|-
+|[[werewolf]]||{{brightred|@}}/{{brown|d}}||
+|-
+|[[warg]]||{{brown|d}}||
+|-
+|[[winter wolf]]||{{cyan|d}}||
+|-
+|[[hell hound pup]]||{{red|d}}||
+|-
+|[[hell hound]]||{{red|d}}||
+|-
+|[[floating eye]]||{{blue|e}}||
+|-
+|[[freezing sphere]]||{{white|e}}||
+|-
+|[[kitten]]||{{white|f}}||
+|-
+|[[housecat]]||{{white|f}}||
+|-
+|[[jaguar]]||{{brown|f}}||
+|-
+|[[large cat]]||{{white|f}}||
+|-
+|[[tiger]]||{{yellow|f}}||
+|-
+|[[gremlin]]||{{green|g}}||
+|-
+|[[hobbit]]||{{green|h}}||
+|-
+|[[dwarf]]||{{red|h}}||
+|-
+|[[bugbear]]||{{brown|h}}||
+|-
+|[[dwarf lord]]||{{blue|h}}||
+|-
+|[[dwarf king]]||{{magenta|h}}||
+|-
+|[[mind flayer]]||{{magenta|h}}||
+|-
+|[[manes]]||{{red|i}}||
+|-
+|[[homunculus]]||{{green|i}}||
+|-
+|[[imp]]||{{red|i}}||
+|-
+|[[lemure]]||{{brown|i}}||
+|-
+|[[quasit]]||{{blue|i}}||
+|-
+|[[tengu]]||{{cyan|i}}||
+|-
+|[[blue jelly]]||{{blue|j}}||
+|-
+|[[spotted jelly]]||{{green|j}}||
+|-
+|[[ochre jelly]]||{{brown|j}}||
+|-
+|[[kobold]]||{{brown|k}}||
+|-
+|[[large kobold]]||{{red|k}}||
+|-
+|[[kobold lord]]||{{magenta|k}}||
+|-
+|[[kobold shaman]]||{{brightblue|k}}||
+|-
+|[[leprechaun]]||{{green|l}}||
+|-
+|[[small mimic]]||{{brown|m}}||
+|-
+|[[large mimic]]||{{red|m}}||
+|-
+|[[giant mimic]]||{{magenta|m}}||
+|-
+|[[wood nymph]]||{{green|n}}||
+|-
+|[[water nymph]]||{{blue|n}}||
+|-
+|[[mountain nymph]]||{{brown|n}}||
+|-
+|[[goblin]]||{{lightgray|o}}||
+|-
+|[[hobgoblin]]||{{brown|o}}||
+|-
+|[[orc]]||{{red|o}}||
+|-
+|[[hill orc]]||{{yellow|o}}||
+|-
+|[[Mordor orc]]||{{blue|o}}||
+|-
+|[[Uruk-hai]]||{{darkgray|o}}||
+|-
+|[[orc shaman]]||{{brightblue|o}}||
+|-
+|[[orc-captain]]||{{magenta|o}}||
+|-
+|[[rock piercer]]||{{lightgray|p}}||
+|-
+|[[iron piercer]]||{{cyan|p}}||
+|-
+|[[rothe]]||{{lightgray|q}}||
+|-
+|[[mumak]]||{{lightgray|q}}||
+|-
+|[[leocrotta]]||{{red|q}}||
+|-
+|[[wumpus]]||{{cyan|q}}||
+|-
+|[[titanothere]]||{{lightgray|q}}||
+|-
+|[[baluchitherium]]||{{lightgray|q}}||
+|-
+|[[sewer rat]]||{{brown|r}}||
+|-
+|[[giant rat]]||{{brown|r}}||
+|-
+|[[rabid rat]]||{{brown|r}}||
+|-
+|[[wererat]]||{{brown|@}}/{{brown|r}}||
+|-
+|[[rock mole]]||{{lightgray|r}}||
+|-
+|[[cave spider]]||{{lightgray|s}}||
+|-
+|[[giant spider]]||{{magenta|s}}||
+|-
+|[[scorpion]]||{{red|s}}||
+|-
+|[[lurker above]]||{{lightgray|t}}||
+|-
+|[[trapper]]||{{green|t}}||
+|-
+|[[white unicorn]]||{{white|u}}||
+|-
+|[[gray unicorn]]||{{lightgray|u}}||
+|-
+|[[black unicorn]]||{{darkgray|u}}||
+|-
+|[[fog cloud]]||{{lightgray|v}}||
+|-
+|[[dust vortex]]||{{brown|v}}||
+|-
+|[[ice vortex]]||{{cyan|v}}||
+|-
+|[[energy vortex]]||{{brightblue|v}}||
+|-
+|[[steam vortex]]||{{blue|v}}||
+|-
+|[[fire vortex]]||{{yellow|v}}||
+|-
+|[[baby long worm]]||{{brown|w}}||
+|-
+|[[baby purple worm]]||{{magenta|w}}||
+|-
+|[[long worm]]||{{brown|w}}||
+|-
+|[[purple worm]]||{{magenta|w}}||
+|-
+|[[grid bug]]||{{magenta|x}}||
+|-
+|[[xan]]||{{red|x}}||
+|-
+|[[yellow light]]||{{yellow|y}}||
+|-
+|[[zruty]]||{{brown|z}}||
+|-
+|[[couatl]]||{{green|A}}||
+|-
+|[[Aleax]]||{{yellow|A}}||
+|-
+|[[Angel]]||{{white|A}}||
+|-
+|[[ki-rin]]||{{yellow|A}}||
+|-
+|[[Archon]]||{{magenta|A}}||
+|-
+|[[bat]]||{{brown|B}}||
+|-
+|[[giant bat]]||{{red|B}}||
+|-
+|[[vampire bat]]||{{darkgray|B}}||
+|-
+|[[plains centaur]]||{{brown|C}}||
+|-
+|[[forest centaur]]||{{green|C}}||
+|-
+|[[mountain centaur]]||{{cyan|C}}||
+|-
+|[[baby gray dragon]]||{{lightgray|D}}||
+|-
+|[[baby red dragon]]||{{red|D}}||
+|-
+|[[baby white dragon]]||{{white|D}}||
+|-
+|[[baby orange dragon]]||{{brightred|D}}||
+|-
+|[[baby black dragon]]||{{darkgray|D}}||
+|-
+|[[baby blue dragon]]||{{blue|D}}||
+|-
+|[[baby green dragon]]||{{green|D}}||
+|-
+|[[baby yellow dragon]]||{{yellow|D}}||
+|-
+|[[gray dragon]]||{{lightgray|D}}||
+|-
+|[[red dragon]]||{{red|D}}||
+|-
+|[[white dragon]]||{{white|D}}||
+|-
+|[[orange dragon]]||{{brightred|D}}||
+|-
+|[[black dragon]]||{{darkgray|D}}||
+|-
+|[[blue dragon]]||{{blue|D}}||
+|-
+|[[green dragon]]||{{green|D}}||
+|-
+|[[yellow dragon]]||{{yellow|D}}||
+|-
+|[[air elemental]]||{{cyan|E}}||
+|-
+|[[fire elemental]]||{{yellow|E}}||
+|-
+|[[earth elemental]]||{{brown|E}}||
+|-
+|[[water elemental]]||{{blue|E}}||
+|-
+|[[brown mold]]||{{brown|F}}||
+|-
+|[[yellow mold]]||{{yellow|F}}||
+|-
+|[[green mold]]||{{green|F}}||
+|-
+|[[red mold]]||{{red|F}}||
+|-
+|[[shrieker]]||{{magenta|F}}||
+|-
+|[[violet fungus]]||{{magenta|F}}||
+|-
+|[[gnome]]||{{brown|G}}||
+|-
+|[[gnome lord]]||{{blue|G}}||
+|-
+|[[gnomish wizard]]||{{brightblue|G}}||
+|-
+|[[gnome king]]||{{magenta|G}}||
+|-
+|[[giant]]||{{red|H}}||
+|-
+|[[stone giant]]||{{lightgray|H}}||
+|-
+|[[hill giant]]||{{cyan|H}}||
+|-
+|[[fire giant]]||{{yellow|H}}||
+|-
+|[[frost giant]]||{{white|H}}||
+|-
+|[[ettin]]||{{brown|H}}||
+|-
+|[[titan]]||{{magenta|H}}||
+|-
+|[[minotaur]]||{{brown|H}}||
+|-
+|[[stalker]]||{{white|I}}||

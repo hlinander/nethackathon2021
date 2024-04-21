@@ -1,0 +1,1000 @@
+| gnome
+| <monster> is a gnome.
+|-
+| orc
+| <monster> is an orc.
+|-
+| demon
+| <monster> is a demon.
+|-
+| merc
+| <monster> is a member of the Yendorian army.
+|-
+| lord
+| <monster> is a lord to its kind.
+|-
+| prince
+| <monster> is an overlord to its kind.
+|-
+| giant
+| <monster> is a giant.
+|-
+| male
+| <monster> is male.
+|-
+| female
+| <monster> is female.
+|-
+| neuter
+| <monster> is neither male nor female.
+|-
+| hostile
+| <monster> is normally generated hostile.
+|-
+| peaceful
+| <monster> is normally generated peaceful.
+|-
+| domestic
+| <monster> can be tamed by feeding.
+|-
+| wander
+| <monster> wanders randomly.
+|-
+| stalk
+| <monster> can follow you to other levels.
+|-
+| nasty
+| <monster> is [[M2_NASTY|nasty]].
+|-
+| strong
+| <monster> is strong.
+|-
+| rockthrow
+| <monster> can throw boulders.
+|-
+| greedy
+| <monster> likes gold.
+|-
+| jewels
+| <monster> likes gems.
+|-
+| collect
+| <monster> can pick up weapons and food.
+|-
+| magic
+| <monster> can pick up magical items.
+|-
+| wantsamul
+| <monster> wants the Amulet of Yendor.
+|-
+| wantsbell
+| <monster> wants the Bell of Opening.
+|-
+| wantsbook
+| <monster> wants the Book of the Dead.
+|-
+| wantscand
+| <monster> wants the Candelabrum of Invocation.
+|-
+| wantsarti
+| <monster> wants your quest artifact.
+|-
+| wantsall
+| <monster> wants the Amulet of Yendor, the Bell of Opening, the Book of the Dead, the Candelabrum of Invocation, and your quest artifact.
+|-
+| waitsforu
+| <monster> waits for you to come.
+|-
+| close
+| <monster> lets you close unless attacked.
+|-
+| covetous
+| <monster> wants the Amulet of Yendor, the Bell of Opening, the Book of the Dead, the Candelabrum of Invocation, and your quest artifact.
+|-
+| infravision
+| <monster> has infravision.
+|-
+| infravisible
+| <monster> can be seen through infravision.
+|-
+| nohell
+| <monster> does not appear in Gehennom.
+|-
+| hell
+| <monster> appears only in Gehennom.
+|-
+| sgroup
+| <monster> appears in small groups normally.
+|-
+| lgroup
+| <monster> appears in large groups normally.
+|-
+| nocorpse
+| <monster> never leaves a corpse.
+|-
+| oldcorpse
+| <monster> can leave an old <oldcorpse> corpse.
+|-
+| light
+| <monster> gives out light.
+|-
+| displaces
+| <monster> can displace other monsters
+|}
+
+The following attributes are specific to [[SLASH'EM]], from [[SLASH'EM 0.0.7E7F2/monflag.h]]:
+{|class="prettytable"
+! Attribute
+! Description
+|-
+| death
+| <monster> resists death magic.
+|-
+| drain
+| <monster> resists level drain.
+|-
+| plusone
+| <monster> requires a +1 weapon to hit.
+|-
+| plustwo
+| <monster> requires a +2 weapon to hit.
+|-
+| plusthree
+| <monster> requires a +3 weapon to hit.
+|-
+| plusfour
+| <monster> requires a +4 weapon to hit.
+|-
+| hitasone
+| <monster> hits creatures as a +1 weapon.
+|-
+| hitastwo
+| <monster> hits creatures as a +2 weapon.
+|-
+| hitasthree
+| <monster> hits creatures as a +3 weapon.
+|-
+| hitasfour
+| <monster> hits creatures as a +4 weapon.
+|-
+| vampire
+| <monster> is a vampire.
+|-
+| traitor
+| <monster> is capable of treachery.
+|-
+| notame
+| <monster> cannot be tamed.
+|-
+| vlgroup
+| <monster> appears in very large groups.
+|-
+| light1
+| <monster> gives out radius 1 light.
+|-
+| light2
+| <monster> gives out radius 2 light.
+|-
+| light3
+| <monster> gives out radius 3 light.
+|}
+
+The following attributes are specific to [[UnNetHack]]:
+{|class="prettytable"
+! Attribute
+! Description
+|-
+| groupattack
+| <monster> hits and runs in groups.
+|-
+| blinker
+| <monster> alternates between regenerating and attacking.
+|-
+| noregen
+| <monster> does not naturally regenerate.
+|-
+| moria
+| <monster> appears only in the Ruins of Moria.
+|-
+| sheol
+| <monster> may appear in Sheol.
+|-
+| nosheol
+| <monster> does not appear in Sheol.
+|-
+| stationary
+| <monster> does not move.
+|}
+
+NOTE: If none of the 'vore flags (<tt>herbivore, carnivore, omnivore, metallivore</tt>) are present, <tt>does not eat</tt> will be shown. Use the flag <tt>does_too_eat</tt> to override this without providing a <tt>*vore</tt> flag.
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Category:Templates {54035 2010-11-11T18:07:16Z {831 Tjr} Text replace - "NethackWiki" to "NetHackWiki" This category contains all the templates for NetHackWiki.
+[[Category:NetHackWiki]]}
+&&%s&& %s Gnome (monster class) {149869 2023-02-05T19:49:51Z {4000251 Netzhack} /* Encyclopedia entry */ Field separator '''Gnomes''' are a [[monster class|class of monsters]] that appear in large numbers in the [[Gnomish Mines]]. They are humanoids that are slower than the player, and are peaceful to gnomish and dwarven characters. Nevertheless, they are a frequent cause of death for incautious adventurers.
+
+==Monsters==
+===Gnome===
+A normal gnome is slow and weak, but can use weapons and wands. 
+{{monster
+ |name=gnome
+ |difficulty=3
+ |level=1
+ |experience=13
+ |speed=6
+ |AC=10
+ |MR=4
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d6
+ |weight=650
+ |nutr=100
+ |size=Small
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A gnome|
+ |sgroup=1|humanoid=1|omnivore=1|nopoly=1|=
+ |gnome=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line1450]]
+}}
+{{clear}}
+
+===Gnome lord===
+<span id="Gnome_leader"/>
+{{monster
+ |name=gnome lord
+ |difficulty=4
+ |level=3
+ |experience=33
+ |speed=8
+ |AC=10
+ |MR=4
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Weapon 1d8
+ |weight=700
+ |nutr=120
+ |size=Small
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A gnome lord|
+ |humanoid=1|omnivore=1|lord=1|male=1|=
+ |gnome=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line1457]]
+}}
+{{clear}}
+
+===Gnomish wizard===
+{{monster
+ |name=gnomish wizard
+ |difficulty=5
+ |level=3
+ |experience=38
+ |speed=10
+ |AC=4
+ |MR=10
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=[[Monster spell|Spell-casting]]
+ |weight=700
+ |nutr=120
+ |size=Small
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A gnomish wizard|
+ |humanoid=1|omnivore=1|gnome=1|magic=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line1464]]
+}}
+A '''gnomish wizard''' is a [[gnome]] dressed up as a [[wizard]]. Most of the time, its [[monster spell|spell attempts]] will fail, so they can easily be hit or killed by any other means. When the spells succeed, however, you can suffer [[stunning]] or a splitting headache; stunning is especially problematic against groups of gnomes, or in [[Minetown]] where carelessness may cause you to attack a [[watchman]] or [[shopkeeper]].
+{{clear}}
+
+===Gnome king===
+<span id="Gnome_ruler"/>
+{{monster
+ |name=gnome king
+ |difficulty=6
+ |level=5
+ |experience=61
+ |speed=10
+ |AC=10
+ |MR=20
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 2d6
+ |weight=750
+ |nutr=150
+ |size=Small
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A gnome king|
+ |humanoid=1|omnivore=1|gnome=1|prince=1|male=1|=
+ |collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line1471]]
+}}
+
+The gnome king is said to have a [[wine cellar]], located in the basement of the Gnomish Mines.
+{{clear}}
+
+==Generation==
+Gnomes other than gnomish wizards [[Monster starting inventory|are generated with]] one of the following: 3&ndash;14 [[dart]]s, a [[crossbow]] and 3&ndash;14 [[crossbow bolt|bolts]], a [[bow]] and 3&ndash;14 [[arrow]]s, 3&ndash;5 [[dagger]]s, an [[aklys]], or nothing. The probability of getting nothing is 36% for a [[gnome king]], 50% for a [[gnome lord]], and 64% for an ordinary gnome.
+
+Gnomes have a chance of getting a single [[candle]]: {{frac|20}} if in the [[Gnomish Mines]] when the level was generated, and {{frac|60}} otherwise. The candle will be tallow {{frac|3|4}} of the time, or wax otherwise. If generated on a dark level, the candle will be lit.{{refsrc|src/makemon.c|701|nethack=3.6.0}}
+
+With the exception of [[Minetown]], each floor of the Gnomish Mines will generate seven gnomes and one gnome lord, along with two random {{monclasssym|G}}. Minetown will generate varying amounts and types of gnomes based on which version is generated, with the exception of Orcish Town; Bazaar Town guarantees a gnome king in the northeastern room opposite the tool shop's designated location. Two variants of [[Mines' End]], the Gnome King's Wine Cellar and the Mimic of the Mines, also guarantee a gnome king. If the player is a [[Dwarf (starting race)|dwarf]] or [[Gnome (starting race)|gnome]], two-thirds of the [[dwarf (monster)|dwarves]] and gnomes generated this way are replaced with random monsters.
+
+All types of gnome may be generated in [[throne room]]s, with a gnome king eligible for generation on the [[throne]].
+
+==Strategy==
+In general, gnomes are not usually considered to be a big threat, especially on their own. However, large groups and the stronger versions can pose a challenge, particularly to a low-level adventurer taking on the Mines early.
+
+Gnomes can pick up and use wands; in rare cases this can lead to the infamous [[Gnome With the Wand of Death]] long before a player is prepared to deal with such a threat.
+
+== Variants ==
+===SLASH'EM===
+[[SLASH'EM]] features more gnome variants:
+
+* {{monsymlink|gnome warrior}}
+* {{monsymlink|gnome thief}}
+* {{monsymlink|deep gnome}}
+* {{monsymlink|Ruggo the Gnome King}}
+
+===dNetHack===
+{{monster
+ |name=gnome lady
+ |symbol={{blue|G}}
+ |tile=
+ |difficulty=5
+ |level=3
+ |experience=38
+ |speed=8
+ |AC=10
+ |MR=4
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 1d1 physical, Weapon 1d1 physical
+ |weight=700
+ |nutr=120
+ |size=small
+ |resistances=[[sleep]], [[poison]], [[petrification]], [[level drain]], [[disease]]
+ |resistances conveyed=[[poison]]
+ |attributes={{attributes
+ |A gnome lady|=
+ |humanoid=1
+ |omnivore=1
+ |nopoly=1
+ |gnome=1
+ |lord=1
+ |female=1
+ |collect=1
+ |infravision=1
+ |infravisible=1
+ |notame=1
+ }}
+ |refline=
+}}
+{{monster
+ |name=gnome queen
+ |symbol={{magenta|G}}
+ |tile=
+ |difficulty=7
+ |level=5
+ |experience=66
+ |speed=10
+ |AC=10
+ |MR=20
+ |align=0
+ |frequency=0
+ |genocidable=Yes
+ |attacks=Weapon 1d3 physical, Weapon 1d3 physical
+ |weight=750
+ |nutr=150
+ |size=small
+ |resistances=[[sleep]], [[poison]], [[petrification]], [[level drain]], [[disease]]
+ |resistances conveyed=[[poison]]
+ |attributes={{attributes
+ |A gnome queen|=
+ |humanoid=1
+ |omnivore=1
+ |nopoly=1
+ |gnome=1
+ |prince=1
+ |female=1
+ |collect=1
+ |infravision=1
+ |infravisible=1
+ |notame=1
+ }}
+ |refline=
+}}
+
+[[dNetHack]] has separate growth chains for male and female monsters. Female gnomes will grow up into gnome ladies and gnome queens, instead of female gnome lords and gnome kings.
+{{clear}}
+
+===GruntHack===
+In [[GruntHack]], [[Lord (GruntHack)|lords and ladies]] are racial monsters that replace gnome lords and other similar monsters; [[King (GruntHack)|kings and queens]] serve the same purpose for gnome kings, including generation on a throne in throne rooms.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+...  And then a gnome came by, carrying a bundle, an old fellow three times as large as an imp and wearing clothes of a sort, especially a hat.  And he was clearly just as frightened as the imps though he could not go so fast.  Ramon Alonzo saw that there must be some great trouble that was vexing magical things; and, since gnomes speak the language of men, and will answer if spoken to gently, he raised his hat, and asked of the gnome his name.  The gnome did not stop his hasty shuffle a moment as he answered 'Alaraba' and grabbed the rim of his hat but forgot to doff it.
+'What is the trouble, Alaraba?'  said Ramon Alonzo.
+'White magic.  Run!'  said the gnome ..
+                        [ The Charwoman's Shadow, by Lord Dunsany ]
+ 
+"Muggles have garden gnomes, too, you know," Harry told Ron as they crossed the lawn.
+"Yeah, I've seen those things they think are gnomes," said Ron, bent double with his head in a peony bush, "like fat little Santa Clauses with fishing rods..."
+There was a violent scuffling noise, the peony bush shuddered, and Ron straightened up.  "This is a gnome," he said grimly.
+"Geroff me! Gerroff me!" squealed the gnome.
+It was certainly nothing like Santa Claus.  It was small and leathery looking, with a large, knobby, bald head exactly like a potato.  Ron held it at arm's length as it kicked out at him with its horny little feet; he grasped it around the ankles and turned it upside down.
+|[ Harry Potter and the Chamber of Secrets, by J. K. Rowling ]
+}}
+
+== References ==
+<References />
+
+{{nethack-364|offset=1}}
+{{slashem-7E7}}
+[[Category:Monsters]]
+[[Category:Monster classes]]}
+&&%s&& %s Undead turning {144462 2022-02-13T21:44:57Z {4001483 Cathartes} Changed redirect target from [[Turn undead]] to [[Turn undead (disambiguation)]] #REDIRECT [[turn undead (disambiguation)]]}
+&&%s&& %s Free action {32279 2008-05-24T23:22:08Z {701 Rogerb-on-NAO} Categorize here - categorizing a ring as a property is not appropriate. #REDIRECT [[ring of free action]]
+ [[Category:Properties]]}
+&&%s&& %s Polymorph control {146636 2022-07-09T07:00:57Z {4001279 Umbire the Phantom} /* Advantage in combat */ '''Polymorph control''' is a [[property]], most commonly obtained by wearing a [[ring of polymorph control]], that allows you to choose what form you want to take when you [[polymorph]]. You will be asked "Become what type of monster? [type the name]". You can then choose to polymorph into a [[monster]]. Polymorph control will also allow you to decline a change in form brought upon by [[lycanthropy]] ("Would you like to become a &lt;''wolf/jackal/rat''&gt;?")
+
+[[Polymorph#Polymorphing into your own race|Polymorphing into your own species]] will cause you to "feel like a new &lt;''species''&gt;!" and cause random change to your scores. There is a 20% chance that this will happen in spite of polymorph control, even if a different monster is chosen.
+
+Polymorph control will not work if the player is [[stun]]ned or unconscious. However, possessing polymorph control will always negate the possibility of [[system shock]].
+
+== Strategy ==
+There are many reasons players may want to change to monster form.
+
+=== Advantage in combat ===
+:''See also: [[Monsters (by speed)]]''
+Some species have higher speed; polymorphing into one lets you move, attack and react faster to enemies&mdash;in short, deal more damage per turn. Some species also have multiple or additional attacks, dealing extra damage. Whenever you attempt to hit a monster, you use all of your form's attacks. If the monster has no weapon attacks but can wield a weapon, you typically get your weapon damage added to the first attack (which may be a claw move); if a monster has multiple weapon attacks, you hit with your weapon multiple times.{{refsrc|src/uhitm.c|2394|version=NetHack 3.6.6}} High-level monsters often have a lower base [[AC]], effectively giving you an AC bonus if you turn into one. If killed by HP loss while polymorphed, reverting to original humanoid form is in effect a "free" [[amulet of life saving]]. Polyself has vastly improved the record for game-time [[speed ascension]]s.
+
+Possible choices include:
+* [[Master mind flayer]]s have 0 base AC and can fly. They have five brain-sucking attacks; each one causes d10 damage to monsters with brains. This is one of the best forms to rack up damage in melee, and they can wear a cloak or armor for [[magic cancellation]]. However, mind flayer attacks also have some dangers: accidentally attacking/bumping a [[trice]] is another common instadeath; the mind-flayer's tentacles are bare skin, and no armor can cover them. Furthermore, the brain-sucking attack quickly makes the character fully satiated, and eating any comestible at that point will cause game-ending [[instadeath]]&mdash;you will ''not'' revert to original form. For this reason, [[stoning|delayed stoning]] (such as by eating a [[cockatrice]] egg) will have to be averted by something other than eating a lizard. 
+* [[Jabberwock]]s likely deal the most damage per turn of all polyforms (without an enchanted artifact weapon), and can fly. However, they cannot wear armor. A previous version of this wiki page claimed a wielded cockatrice corpse won't petrify monsters, but this is not true in version 3.6.6{{ref|wiztest}}. Possibly it was the case in 3.4.3.[[sourcedive needed]]
+* [[Minotaur]]s are a good compromise between speed and damage output.
+* [[Titan]]s can fly, have base AC &minus;3, and are faster than the other recommendations. As [[H|giants]], they can also manipulate [[boulder]]s, and cannot be [[engulfing|engulfed]].
+* [[Elvenking]]s are speed 12, base AC 10 (same as you) and HD 9. They allow you to hit with your weapon damage twice per move, with a 2d4 bonus to each attack. Note, however, that elven characters cannot use this form.
+* [[Vampire lord]]s are speed 14 with base AC 0 and HD 12. They regenerate and are unbreathing. This allows you to swim, and you cannot choke to death from wraith corpses (e.g. when oversatiated due to brain-eating in mmf form). Both V can see any @ on the same level as you, as if telepathic, without needing to be blind. Useful for finding shops and temples. Note however that V are silver-hating, and cannot wield silver sabers. (They can however throw silver daggers.) Before polymorphing to a V, check that rings of polymorph control don't happen to be silver rings.
+
+Out of the above monsters, only elvenkings, master mind flayers and vampire lords are medium-sized, and thus can wear all forms of [[armor]]. Jabberwocks and minotaurs are large, and titans are huge, so they cannot wear torso armor. They cannot benefit from the extra AC of that armor, nor from the [[magic resistance]], [[reflection]] or [[magic cancellation]] they provide.
+
+Pay attention to the base level of the species, as this determines your resulting HP. If it is not enough to survive combat, you may need to [[HP#Player|increase it]]. This is only worthwhile if you plan to be [[amulet of unchanging|unchanging]], as the increase is lost when you transform back. You also regenerate HP at the same rate as your species, so having [[regeneration]] or healing magic is useful.
+
+Be careful when using a form that has a contact attack. Attacking a [[footrice]] will cause [[stoning]] and biting a [[green slime]] causes [[sliming]]. Forms with many such attacks, such as mind flayers, may also suffer multiple splashes of acid when attacking [[j|jellies]].
+
+=== Special abilities ===
+When polymorphed into certain species, you can use their abilities with the [[monster (command)|#monster]] command:
+* A [[dragon]]'s [[breath]]. The black dragon's [[disintegration]] beam is a particular favorite, since few monsters are disintegration-resistant. For example, a [[monk]] can [[monk quest|defeat Master Kaen]] by flying over lava and breathing a blast of disintegration at him.
+* A [[werecreature]]'s ability to summon help. For example, a werewolf can summon tame wolves and winter wolves. They remain tame and you can [[#Pets|polymorph them into other pets]], or just keep them if they are good enough.
+* A [[gremlin]]'s ability to split near a source of water. This results in tame gremlins.
+* A [[mind flayer]]'s psychic blast, which wakes nearby monsters and can hurt them. Some players use this to wake inaccessible enemies such as the [[Master Assassin]] or the [[Wizard of Yendor]].
+
+=== Laying eggs ===
+Females who polymorph into [[oviparous]] monsters can [[sit|#sit]] to lay [[egg]]s, which hatch into [[pet]]s of the same species. This can be used to gain pets of powerful species, such as [[dragon]]s and [[purple worm]]s, although they usually hatch into baby forms that take a while to [[grow up]].
+
+You can then kill the dragons after they grow up and take their [[dragon scales|scales]]. However, dragons only leave their scales {{frac|3}} of the time.
+
+Another tactic is to lay [[cockatrice egg]]s and use them later to petrify enemies. Note that your [[Luck]] is penalized by &minus;1 each time you break your own eggs, to a maximum of &minus;5.<!-- Clarify: does the penalty stop occurring when your Luck is −5, or when you've been penalized 5 times? -->
+
+=== Gaining intrinsics ===
+Most of your attributes are reset when you return to original form, but you keep any intrinsics gained while in monster form. For example, if you eat poisonous corpses that damage your [[strength]], you may gain [[poison resistance]] and still keep your original strength when you change back.
+
+Another way to gain intrinsics is to polymorph into a [[metallivore]] or [[gelatinous cube]] and [[eating jewelry|eat rings and amulets]]. This way, you do not have to wear those items to enjoy their benefits. Note that some items cannot be eaten, some intrinsics cannot ever be gained, and some items have unwanted side effects. For example, the intrinsic from a [[ring of regeneration]] will also cause you to burn nutrition faster, even when your HP is full. Interestingly, it is possible to get both intrinsic [[polymorphitis]] and polymorph control from rings, allowing you to polymorph from time to time like a [[shapeshifter]] monster.
+
+It may also be useful to gain intrinsics of a species, if only temporarily. For example, you might turn into a silver [[dragon]] if you face a [[Gnome With the Wand of Death]]. Or you might turn into a [[winged gargoyle]] to pick up a [[cockatrice corpse]] without gloves. The [[xorn]]'s phasing ability can be used to move quickly on [[non-teleport level]]s, for example to get the Castle's [[wand of wishing]] without having to fight the army inside.
+
+Some more esoteric uses include turning into a [[nymph]] to steal items from other monsters; or a [[cockatrice]] to petrify monsters that attack you physically. Turning into a [[demon]] allows you to summon tame demons as you attack enemies bare-handed.
+
+=== Other uses ===
+Some players turn into an [[air elemental]] to travel, especially on the hectic [[Elemental Planes]]. Their base speed is 36, the highest of all monsters, and is further increased if the player has extra [[speed]]. They are permanently blind and cannot wear armor or use most items, so this strategy requires care. It is frequently used by players attempting [[speed ascension]]s.
+
+Turning into a [[pudding]] and then getting yourself split by an enemy's iron weapon will create a tame pudding. You can then strike it until it turns against you and then commence [[pudding farming]].
+
+A [[mountain centaur]] is the fastest form that can operate a [[pick-axe]], e.g. in the [[dig for victory]] phase of a [[speed run]].
+
+===Good choices for self-polymorph===
+
+Having a [[ring of polymorph]] and a [[ring of polymorph control]] allows a low level character to become more powerful. Good options for polymorphing include:<ref>http://ccphys.nsu.ru/~zvold/nethack/spoilers/32poly.txt</ref>
+
+{|class="prettytable"
+!Hit dice
+!Armor class
+|-
+|
+* greater than 14 = Excellent 
+* 12 to 14 = Very good
+* 9 to 11 = Good
+* 7 to 8 = Mediocre
+* 5 to 6 = Poor
+* 1 to 4 = Very poor
+|
+* less than &minus;3 = Excellent 
+* &minus;3 to &minus;2 Very good
+* &minus;1 to 0 Good
+* 1 to 3 Mediocre
+* 4 to 6 Poor
+* 7 to 10 Very poor
+|}
+
+{|class="prettytable"
+|+ class="nowrap" style="text-align:left" |'''Creatures which can wear all armor'''
+!Creature
+!Pros and cons
+|-
+|{{monsymlink|Aleax}}
+|
+*+ Good attacks (W1d6+W1d6+1d4).
+*+ Good hit dice (10).
+*+ Good base armor class (0).
+*+ [[cold resistance|Cold]], [[shock resistance|shock]], [[sleep resistance|sleep]], and [[poison resistance|poison resistant]]; [[see invisible]].
+*&minus; Slow (8).
+|-
+|{{monsymlink|gargoyle}}
+|
+*+ [[Stoning]] resistant; if you are turning to stone, polymorphing into a gargoyle will stop the stiffening process. Also useful for safely killing [[cockatrice]]s.
+*+ Good attacks (2d6+2d6+2d4).
+*+ Excellent base armor class (&minus;4).
+*+ Strength 18/**.
+*+ Doesn't breathe or eat.
+*&minus; Poor hit dice (6).
+*&minus; Slower than normal speed (10)
+|-
+|{{monsymlink|master mind flayer}}
+|
+*+ Brain sucking does excellent (5d10) damage against monsters with brains. Beware of monsters with helmets!
+*+ Gain nutrition without risk of choking when sucking brains 
+*+ Very good hit dice (13).
+*+ Good base armor class (0).
+*+ Can fly.
+*&minus; Comparatively weak attack against non-brained monsters (1d8), although you can wield a weapon
+*&minus; Can't safely attack cockatrices or green slimes.
+*&minus; Often an early genocide choice.
+*&minus; Risk of [[cannibalism]] by sucking the brains of your original race.
+*&minus; Usually fully satiated by sucking brains and will not be able to eat a lizard if [[stoning|delayed stoning]] has begun.
+|-
+|{{monsymlink|lich}},<br/>
+{{monsymlink|demilich}},<br/>
+{{monsymlink|master lich}},<br/>
+{{monsymlink|arch-lich}}
+||
+*+ Good attacks (1d10C+M0d0m, 3d4C+M0d0m, 3d6C+M0d0m, 5d6C+M0d0m).
+*+ Good, very good and excellent hit dice (11, 14, 17, 25).
+*+ Good, very good and excellent base armor class (0, &minus;2, &minus;4, &minus;6).
+*+ Cold, sleep, poison resistant; master lich is fire resistant; arch-lich is fire and shock resistant.
+*+ Doesn't breathe, doesn't eat, undead, regenerates.
+*&minus; Often an early genocide choice.
+*&minus; Slow.
+|-
+|{{monsymlink|vampire}},<br/>
+{{monsymlink|vampire lord}}
+||
+*+ Will drain levels from most other monsters.
+*+ Good and very good hit dice (10, 12).
+*+ Mediocre and good base armor class (1, 0).
+*+ Sleep and poison resistant.
+*+ Fast, strength 18/**.
+*+ Doesn't breathe, doesn't eat, undead, regenerates.
+*+ Can fly.
+*&minus; Can't safely attack cockatrices.
+*&minus; Vulnerable to [[Silver#Silver damage|silver]].
+|-
+|{{monsymlink|wood nymph}},<br/>
+{{monsymlink|water nymph}},<br/>
+{{monsymlink|mountain nymph}}
+||
+*+ Can steal objects from other monsters.
+*+ Can remove an [[Punishment|iron ball and chain]].
+*+ Can teleport.
+*+ Doesn't eat.
+*+ Water nymph can swim.
+*&minus; Very poor hit dice (3) and base armor class (9).
+|-
+|{{monsymlink|succubus}},<br/>
+{{monsymlink|incubus}}
+||
+*+ Can steal objects from other monsters.
+*+ Good base armor class (0).
+*+ Doesn't eat.
+*+ Can fly.
+*+ Fire and poison resistant.
+*&minus; Poor hit dice (6).
+*&minus; Can't safely attack cockatrices.
+|-
+|{{monsymlink|skeleton}}
+||
+*+ Very good hit dice (12).
+*+ Strength 18/**.
+*+ Cold, sleep, poison, and stone resistant; doesn't breathe.
+*&minus; Poor base armor class (4).
+*&minus; Slow (speed 8).
+|}
+
+{|class="prettytable"
+|+ class="nowrap" style="text-align:left" |'''Creatures which cannot wear all armor'''
+!Creature
+!Pros and cons
+|-
+|{{monsymlink|winged gargoyle}}
+|
+*+ [[Stoning]] resistant; if you are turning to stone, polymorphing into a gargoyle will stop the stiffening process. Also useful for safely killing [[cockatrice]]s.
+*+ Very good attacks (3d6+3d6+3d4).
+*+ Good hit dice (9).
+*+ Very Good armor class (&minus;2).
+*+ Fast (15), strength 18/**.
+*+ Can wear helm and boots.
+*+ Doesn't breathe or eat.
+*+ Winged gargoyle can fly and lay eggs (although these mostly hatch into regular [[gargoyle]]s).
+*&minus; You will break your shirt, body armor, and cloak
+|-
+|Adult [[dragon]]s (various)
+|
+* [[Black dragon]]s have a powerful [[disintegration]] breath attack which can instantly kill any foe, including extremely tough baddies such as [[Master Kaen]] and [[Demogorgon]].
+* [[Silver dragon]] is arguably the best general-purpose fighting dragon form due to its intrinsic [[reflection]].
+* [[Gray dragon]]s have [[magic resistance]], but the benefits are lessened since polymorph traps are no longer a dangerous threat (due to you having polymorph control). It is possible albeit difficult to create [[silver dragon scale mail|silver]] or [[gray dragon scale mail]] by polymorphing into one of these forms. Unless you are a female character initially, you'll have to polymorph repeatedly until you turn into a female form of the dragon, and then #sit to produce eggs. Raise the pet baby dragons until they turn into adults, and then have them killed. They might leave [[dragon scales]], which can be turned into [[dragon scale mail]] using a [[scroll of enchant armor]].
+* If you lack [[poison resistance]], you can easily gain it by polymorphing into a [[green dragon]] and eating [[poison]]ous corpses. Although the green dragon is poison resistant, you can still permanently gain the intrinsic by eating poisonous corpses ("''You feel especially healthy''").
+* If already wearing dragon scales or mail, you become that dragon.
+
+
+*+ Good attacks (B+3d8+1d4+1d4).
+*+ Excellent hit dice (15).
+*+ Good armor class (&minus;1).
+*+ Has an intrinsic depending on the color.
+*+ Can fly.
+*+ Strength 18/**.
+*+ Can lay eggs (if female) to produce good pets.
+*+ [[Breath]] weapon.
+*&minus; Cannot wear any armor nor wield any weapon.
+*&minus; You will break your shirt, body armor (except dragon scales), and cloak.
+*&minus; Can't safely attack [[cockatrice]]s (except [[yellow dragon]]s which are resistant to stoning).
+|-
+|{{monsymlink|titan}}
+|
+*+ Good attacks (W2d8+M0d0)
+*+ Very fast.
+*+ Excellent hit dice (16).
+*+ Very good armor class (&minus;3).
+*+ Strength 18/**.
+*+ Being [[huge]], cannot be engulfed (important on the [[Astral Plane]])
+*&minus; You will break your shirt, body armor, and cloak.
+|-
+|{{monsymlink|jabberwock}}
+|
+*+ Excellent attacks (2d10+2d10+2d10+2d10).
+*+ Excellent hit dice (15).
+*+ Very good armor class (&minus;2).
+*+ Can fly.
+*+ Strength 18/**.
+*+ Can wear boots, shield, and helm.
+*&minus; You will break your shirt, body armor, and cloak.
+*&minus; Can't safely attack cockatrices.
+|
+|-
+|{{monsymlink|marilith}}
+|
+*+ Excellent attacks with weapons (W2d4+W2d4) plus claws (2d4+2d4+2d4+2d4).
+*+ Excellent armor class (&minus;6).
+*+ Low base level (7) allows low level characters to stay polymorphed for the normal duration.
+*+ Fire and poison resistant, see invisible.
+*+/&minus; mediocre hit dice (7)
+*&minus; You will break your shirt, body armor, and cloak.
+*&minus; Cannot wear boots.
+|
+|-
+|{{monsymlink|cockatrice}}
+||
+*+ Can lay eggs to produce good pets.
+*+ Can stone most other monsters.
+*+ Poison and stone resistant.
+*&minus; Poor hit dice (5) and poor armor class (6).
+*&minus; You will drop your weapon and all armor.
+|-
+|{{monsymlink|purple worm}}
+||
+*+ Can engulf and digest most other monsters.
+*+ Can lay eggs to produce good pets.
+*+ Excellent hit dice (15).
+*&minus; Poor armor class (6).
+*&minus; You will break your shirt, body armor, and cloak.
+*&minus; You will drop your weapon, gloves, shield, helmet, and boots.
+*&minus; You can be stoned by engulfing cockatrices or Medusa.
+*&minus; Not good for attacking groups of monsters.
+|-
+|{{monsymlink|gelatinous cube}}
+||
+*+ Can eat organic rings.
+*+ Can paralyze most other monsters.
+*+ Fire, cold, shock, sleep, poison, acid, and stone resistant.
+*&minus; Poor hit dice (6) and very poor armor class (8).
+*&minus; You will drop your weapon and all armor.
+*&minus; You will break your shirt, body armor, and cloak.
+|-
+|{{monsymlink|rock mole}}
+||
+*+ Can eat metallic rings and amulets.
+*+ Can dig through walls.
+*&minus; Very poor hit dice (3).
+*&minus; You will drop your weapon and all armor.
+|-
+|{{monsymlink|umber hulk}}
+||
+*+ Can dig through walls.
+*+ Can confuse most other monsters.
+*&minus; You will break your shirt, body armor, and cloak.
+*&minus; Can't safely attack cockatrices.
+|-
+|{{monsymlink|xorn}}
+||
+*+ Can eat metallic rings and amulets.
+*+ Can phase through most terrain.
+** Obtain gems and gold entrapped in walls.
+** Rob [[vault]]s.
+** Reach [[Master Assassin]] at the [[Rogue quest]].
+** Find the [[vibrating square]] fast.
+*+ Good attacks (1d3+1d3+1d3+4d6).
+*+ Very good armor class (&minus;2).
+*+ Strength 18/**.
+*+ Fire, cold, and stone resistant; doesn't breathe.
+*&minus; You will break your shirt, body armor, and cloak.
+|}
+
+==SLASH'EM==
+In [[SLASH'EM]], polymorph control is an intrinsic which is given to a [[doppelganger (starting race)|doppelganger]] at level 9. For this reason, doppelgangers are an excellent race choice for newer players, as polymorph control makes them extremely powerful relatively early in the game.
+
+Furthermore, the number of attractive polymorph targets in SLASH'EM is significantly higher. Some worthwhile forms (in addition to those listed above):
+
+* [[Giant shoggoth]]s are about the most powerful form, making short work of just about any monster, including [[Black market (SLASH'EM)#One-eyed Sam|One-eyed Sam]]. They are stoning resistant, can eat metal, are quite fast, and have teleport control. Unfortunately, they are also blind and have no hands. Thus, they make poor traveling forms, but are excellent for problem-solving.
+* [[Crystal golem]]s are too large to wear body armor, but intrinsically possess magic resistance, reflection, fire, cold, sleep and shock resistance. They will always have 300 HP as well. While their melee attack only does the damage of your wielded weapon/bare-handed combat abilities, they also possess a random breath weapon, possibly including disintegration.
+* [[Master mind flayer]]s are still a good choice, but in SLASH'EM they oddly have fewer brain-eating attacks than normal mind flayers.
+* [[Fire vampire]]s and [[star vampire]]s are [[breathless]], [[regenerate|regenerating]], [[flying]], and make excellent fighting forms. Fire vampires can wear all types of armor, give out radius 2 [[light]], have 24 speed, a base level of 12 (same as a [[vampire lord]]), a base AC of 0, and additional attacks including a fire touch and level-draining bite. Star vampires can wear all types of armor excluding body armor (shirt, suit/robe, cloak), have 18 speed, base AC of &minus;5, a base level of 18, and can easily mow down enemies, doing up to 12d6 damage with six tentacle attacks per turn. Note that if you are playing the [[Vampire_(starting_race_in_SLASH%27EM)|vampire race]], any attempt to transform into any vampiric form will always result in failure, with the "You feel like a new (wo)man!" message and its attendant effects.
+* [[Gug]]s can wear all regular things, and have a paralyzing attack and 18 speed.
+
+Note that in SLASH'EM, forms that have a contact attack (bite, tentacle, claw, touch, etc.) will refrain from using that contact attack against a monster with a passive [[stoning]] attack ([[cockatrice]], [[chickatrice]], [[basilisk]], or [[asphynx]]), but you still need to exercise caution. Contact attacks will be disabled ''only'' if: (1) you attack with a wielded weapon, and (2) the monster is in the same form for the first attack and subsequent attacks. Thus, clawing, biting, or butting a cockatrice without wielding a weapon will stone you, but hitting one with a sword as a master mind flayer or vampire will not; that is, unless the cockatrice was polymorphed into (for example) a troll, and an early attack caused the troll to drop below 1 hp and revert to cockatrice form, in which case the subsequent attacks will still hit the cockatrice and result in a stoning instadeath. This latter case may be a bug. Note further that this limits polyself options for doppleganger monks who are attempting the weaponless conduct; they will always attempt their contact attacks.
+
+==References==
+<references />
+{{nethack-361}}
+[[Category:Properties]]}
+&&%s&& %s Prisoner {131708 2020-01-30T18:39:58Z {4001279 Umbire the Phantom}  {{monster
+ |difficulty=14
+ |level=12
+ |experience=272
+ |speed=12
+ |AC=10
+ |MR=0
+ |align= 0
+ |frequency=0
+ |genocidable=No
+ |attacks=Projectile as weapon, or if in range, uses melee weapon for 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A prisoner|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|infravisible=1|close=1}}
+ |reference=[[monst.c#line2385]]
+}}
+The '''prisoner''', {{monsym|prisoner}}, is a monster that rarely appears in ''[[NetHack]]''. Prisoners are found only in jail cells on some [[quest]] levels, such as the [[Tourist quest]] or [[Wizard quest]].
+
+==Strategy==
+Freeing a prisoner can give an [[alignment record|alignment bonus]]; although you may anger the guards, they will likely already be hostile to you at that point.
+
+==Encyclopedia entry==
+
+{{encyclopedia|<poem>
+ Where am I?
+   In the Village.
+ What do you want?
+   Information.
+ Whose side are you on?
+   That would be telling. We want
+   information ...
+   information ...
+ You won't get it.
+   By hook or by crook, we will.
+ Who are you?
+   The new Number 2.
+ Who is Number 1?
+   You are Number 6.
+ I am not a number! I am a free man!
+   -The Prisoner, by Patrick McGoohan
+</poem>}}
+
+{{stub}}
+[[Category:Monsters]]
+{{nethack-343}}}
+&&%s&& %s Acolyte {132139 2020-02-18T14:09:22Z {4001279 Umbire the Phantom}  {{monster
+ |difficulty=8
+ |level=5
+ |experience=71
+ |speed=12
+ |AC=10
+ |MR=20
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6, [[Monster spell#Clerical Spells|Spellcasting (clerical)]]
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|An acolyte|humanoid=1|omnivore=1|nopoly=1
+ |human=1|peaceful=1|strong=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line3158]]
+}}
+The {{questmon|acolyte|priest|guardian}} They are capable of [[Monster spell#Clerical Spells|clerical spell-casting]] similar to the player [[priest]] and other [[aligned priest]]s.
+
+Acolytes can [[grow up]] to become [[player monster]] [[priest (player monster)|priests]].{{refsrc|src/mondata.c|966|version=NetHack 3.6.0}}
+
+==Encyclopedia entry==
+{{encyclopedia|[...]  For the two priests were talking exactly like priests,
+piously, with learning and leisure, about the most aerial
+enigmas of theology.  The little Essex priest spoke the more
+simply, with his round face turned to the strengthening stars;
+the other talked with his head bowed, as if he were not even
+worthy to look at them.  But no more innocently clerical
+conversation could have been heard in any white Italian cloister
+or black Spanish cathedral.  The first he heard was the tail of
+one of Father Brown's sentences, which ended:  "... what they
+really meant in the Middle Ages by the heavens being
+incorruptible."  The taller priest nodded his bowed head and
+said:  "Ah, yes, these modern infidels appeal to their reason;
+but who can look at those millions of worlds and not feel that
+there may well be wonderful universes above us where reason is
+utterly unreasonable?"
+	[ The Innocence of Father Brown, by G.K. Chesterton ]}}
+
+== References ==
+<references/>
+
+{{nethack-364}}}
+&&%s&& %s Abbot {132154 2020-02-18T14:54:28Z {4001279 Umbire the Phantom}  {{monster
+ |difficulty=8
+ |level=5
+ |experience=66
+ |speed=12
+ |AC=10
+ |MR=20
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Claw 8d2, Kick 3d2 [[stun]], [[monster spell#clerical spells|Spell-casting]] (clerical)
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|An abbot|
+ |humanoid=1|herbivore=1|nopoly=1|human=1|=
+ |peaceful=1|strong=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line3151]]
+}}
+The {{questmon|abbot|monk|guardian}} They are capable of [[Monster spell#Clerical Spells|clerical spell-casting]], and their melee attacks are more powerful than other quest guardians, reflecting the monk's affinity towards martial arts.
+
+Like all monsters that have [[stunning]] attacks, eating an abbot's corpse inflicts [[hallucination]]{{refsrc|eat.c|1057|version=NetHack 3.6.0}} and is considered [[cannibalism]] (as monks can only be humans in vanilla), but this will not come up outside of a situation where [[unwinnable|the game is already lost]].
+
+==Generation==
+Unlike other quest guardians, and like their [[Grand Master]] and [[player monster]] [[Monk (player monster)|monks]], abbots are not [[Monster starting inventory|generated with]] a [[weapon]].
+
+==Encyclopedia entry==
+{{encyclopedia|
+For it had been long apparent to Count Landulf that nothing
+could be done with his seventh son Thomas, except to make him
+an Abbot or something of that kind.  Born in 1226, he had from
+childhood a mysterious objection to becoming a predatory eagle,
+or even to taking an ordinary interest in falconry or tilting
+or any other gentlemanly pursuits.  He was a large and heavy and
+quiet boy, and phenomenally silent, scarcely opening his mouth
+except to say suddenly to his schoolmaster in an explosive
+manner, "What is God?"  The answer is not recorded but it is
+probable that the asker went on worrying out answers for himself.
+|[ The Runaway Abbot, by G. K. Chesterton ]
+}}
+
+==References==
+<references/>
+
+{{nethack-364}}}
+&&%s&& %s Attendant {145894 2022-05-06T08:59:33Z {4000251 Netzhack} /* Encyclopedia entry */ {{monster
+ |difficulty=7
+ |level=5
+ |experience=61
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=3
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=Poison
+ |resistances conveyed=None
+ |attributes={{attributes|An attendant|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line3137]]
+}}
+The {{questmon|attendant|healer|guardian}} Like player and [[player monster]] healers, they have intrinsic [[poison resistance]].
+
+Attendants can [[grow up]] to become [[healer (player monster)|healers]].{{refsrc|src/mondata.c|964|version=NetHack 3.6.0}}
+
+{{upcoming|NetHack 3.7.0|Attendants are now neutral, as per healers (and healer player monsters).}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+I swear by Apollo the physician, and Aesculapius, and Health, and All-heal, and all the gods and goddesses, that, according to my ability and judgment, I will keep this Oath and this stipulation -- to reckon him who taught me this Art equally dear to me as my parents, to share my substance with him, and relieve his necessities if required; to look upon his offspring in the same footing as my own brothers, and to teach them this art, if they shall wish to learn it, without fee or stipulation; and that by precept, lecture, and every other mode of instruction, I will impart a knowledge of the Art to my own sons, and those of my teachers, and to disciples bound by a stipulation and oath according to the law of medicine, but to none others.  I will follow that system of regimen which, according to my ability and judgment, I consider for the benefit of my patients, and abstain from whatever is deleterious and mischievous.  [...]
+{{right-align|[ Hippocrates' Oath, translated by Francis Adams ]}}
+
+PHYSICIAN, n.  One upon whom we set our hopes when ill and our dogs when well.
+{{right-align|[ The Devil's Dictionary, by Ambrose Bierce ]}}
+}}
+
+==References==
+<References/>
+
+{{nethack-364}}}
+&&%s&& %s Apprentice {132159 2020-02-18T15:15:04Z {4001279 Umbire the Phantom}  {{monster
+ |difficulty=8
+ |level=5
+ |experience=71
+ |speed=12
+ |AC=10
+ |MR=30
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6, [[Monster spell#Mage Spells|Spellcasting (arcane)]]
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|An apprentice|humanoid=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|collect=1|magic=1|infravisible=1}}
+ |reference=[[monst.c#line3207]]
+}}
+The {{questmon|apprentice|wizard|guardian}} They are capable of [[Monster spell#Mage Spells|arcane spellcasting]].
+
+Apprentices can [[grow up]] to become [[wizard (player monster)|wizard]]s.{{refsrc|src/mondata.c|967|version=NetHack 3.6.0}}.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Ebenezum walked before me along the closest thing we could
+find to a path in these overgrown woods.  Every few paces he
+would pause, so that I, burdened with a pack stuffed with
+arcane and heavy paraphernalia, could catch up with his
+wizardly strides.  He, as usual, carried nothing, preferring,
+as he often said, to keep his hands free for quick conjuring
+and his mind free for the thoughts of a mage.
+ [ A Dealing with Demons, by Craig Shaw Gardner ]}}
+
+==References==
+<references/>
+
+{{nethack-364}}}
+&&%s&& %s Chieftain {149777 2023-01-15T18:40:01Z {4000251 Netzhack} /* Encyclopedia entry */ Soften line ends {{monster
+ |difficulty=7
+ |level=5
+ |experience=61
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=Poison
+ |resistances conveyed=None
+ |attributes={{attributes|A chieftain|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1

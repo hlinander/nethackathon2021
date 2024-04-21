@@ -1,0 +1,1000 @@
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+ARTIFACT       ITEM          COST  GENER  ALN  +HIT  +DAM  ATTACK  DEFEND
+~~~~~~~~~~~~~  ~~~~~~~~~~~~  ~~~~  ~~~~~  ~~~  ~~~~  ~~~~  ~~~~~~  ~~~~~~
+Demonbane      long sword   $2500  aborw  L    +d5    x2   demons
+Excalibur      long sword    4000   bcdw  L !  +d5  +d10           lev, search
+Grayswandir    silver saber  8000   borw  L    +d5    x2   silver  hallu
+Snickersnee    katana        1200   borw  LS    +0   +d8
+Sunsword       long sword    1500  aborw  L    +d5    x2   undead
+O Detection    crystal ball  2500   bq w  LA!                      mgc, spell
+S Might        mace          2500   bq w  LC!  +d5    x2   align   mgc
+M Mirr Merlin  mirror        1500   bq w  LK!                      mgc
+Mitre Holiness helm brllnce  2000   bq w  LP!                      undead, fire
+T Muramasa     tsurugi       4500   bq w  LS!   +0   +d8   bisect  luck
+      
+Cleaver        battle axe    1500  b orw  NB   +d3   +d6
+Giantslayer    long sword     200  b orw  N    +d5    x2   giants
+Magicbane      athame        3500  b orw  NW   +d3   +d4   magic   mgc, curse
+Mjollnir       war hammer    4000  b orw  NV   +d5  +d24   elec
+Vorpal Blade   long sword    4000  bcorw  N    +d5   +d1   behead
+H Ahriman      luckstone     2500  b q w  NB!   +5    x2   luck    stealth
+S Aesculapius  quarterstaff  5000  b q w  NH!   +0    x2   lev     lev, regen
+Eyes Overworld lenses        2500  b q w  NM!                      mgc
+PYEC           credit card   7000  b q w  NT!                      mgc, spell
+Orb of Fate    crystal ball  3500  b q w  NV!              luck    spell, phys
+Eye Aethiopica amulet ESP    4000  b q w  NW!                      mgc, spell
+
+Grimtooth      orcish dagger  300  b orw  C    +d2   +d6
+Orcrist        elv brdswd    2000  bnorw  C    +d5    x2   orcs
+Sting          elv dagger     800  bnorw  C    +d5    x2   orcs    warn, web
+Stormbringer   runesword     8000  bcorw  C !  +d5   +d2   lev     lev
+L Diana        bow           4000  b q w  CRa! +d5     0           reflect
+M Key Thievery skeleton key  3500  b q w  CRo!                     warn, phys
+
+Dragonbane     broadsword     500   borw       +d5    x2   dragon
+Fire Brand     long sword    3000   borw       +d5    x2   fire    fire
+Frost Brand    long sword    3000   borw       +d5    x2   cold    cold
+Ogresmasher    war hammer     200   borw       +d5    x2   ogres
+Trollsbane     morning star   200   borw       +d5    x2   trolls
+Werebane       silver saber  1500   borw       +d5    x2   were    were
+
+Bell Opening   silver bell    5000   g
+Can Invocation candelabrum    5000   g
+Book Dead      papyrus spbk  10000   g
+Amulet Yendor  amulet Yendor 30000   g
+
+
+Artifacts are listed above by alignment, then alphabetically with the
+Quest Artifacts listed later.  The name of each ARTIFACT may have been
+abbreviated to fit in the table above; see below for the official name.
+Artifacts are special instances of ordinary objects, and have all of the
+behaviors and properties of the ordinary ITEM in addition to those
+granted by the particular artifact; they are however considerably more
+valuable, as indicated by the COST field.
+
+The GENER field specifies all of the possible ways that a particular
+artifact may be generated.  Each artifact can only be generated _once_
+per game -- it cannot be generated again, even if the player never found
+the artifact, if the artifact is stolen, or if the artifact is destroyed.
+Note that in some cases, an ordinary object may be converted into an
+artifact, but no artifact will be converted into another artifact.  The
+meaning of the letters are as follows:
+ a  Humanoid angelic species have a 5% chance of being generated with a
+    blessed, rustproof Demonbane or Sunsword; 100% for Archons.
+ b  All artifacts on the current level are saved when a character dies
+    and creates a bones file.  If a new character visits the same level
+    and loads the bones file, the same artifacts will be created, except
+    under the following conditions.  If the artifact was already created
+    in the new player's game or is the new player's Quest Artifact, then
+    the artifact reverts to its ordinary object.  The Unique Items
+    (Bell of Opening, Candelabrum of Invocation, Book of the Dead, and
+    Amulet of Yendor) will revert into ordinary objects (cursed bell,
+    pile of used candles, cursed spellbook of blank paper, and cursed
+    fake amulet of Yendor, respectively).
+ c  If you pray and your god is very pleased, you may be crowned and get
+    a good artifact, though Wizards and Monks may instead receive a
+    spellbook of finger of death or restore ability respectively.  If a
+    lawful character is wielding an ordinary long sword when crowned, it
+    becomes Excalibur.  Neutrals get Vorpal Blade, regardless of what they
+    are wielding (if already wielding it, it goes "snicker-snack!").
+    Chaotics get Stormbringer, regardless of what they are wielding.  You
+    can only be crowned once.  If you were restricted to unskilled in the
+    weapon class of your alignment's artifact, the restriction is removed
+    so you may advance to basic skill.
+ d  If you #dip a single ordinary long sword in a fountain, are at least
+    experience level 5, and Excalibur doesn't already exist in your game,
+    then there is a 1/6 chance of something special happening to your
+    long sword.  If you are lawful, the long sword is converted into
+    the blessed, rustless, uncorroded, damageproof Excalibur and you
+    exercise your wisdom.  If you are neutral or chaotic, your long
+    sword is cursed, loses its rustproofing, may lose an enchantment,
+    and you abuse your wisdom.
+ g  This Unique Item is an essential part of the game, and can only be
+    obtained by killing (or stealing it from) the appropriate Nemesis.
+    These items are specially protected from being destroyed.  They
+    also do not count toward the number of artifacts that have been
+    generated.
+ n  An ordinary item can be converted into this artifact by #naming it.
+    The item must be singular, not already an artifact, of the same type
+    as the new artifact, and the new artifact must not already exist.
+    Answer that you want to #name a single item, and provide the short
+    name of the artifact (i.e. "Sting" instead of "elven dagger named
+    Sting").
+ o  This item may be given (non-cursed, and erodeproof if applicable) as
+    a gift from your god when #offering corpses.  You must sacrifice a
+    fresh corpse at a co-aligned altar, be in good standing with your god,
+    have non-negative luck, and be at least experience level 3. You will
+    only get artifacts that are of your alignment or none, and some
+    classes get certain artifacts as their first gift (if available).
+    Your first gift will always be co-aligned.
+    Orcs will never receive elven weapons, or vice versa.
+    The chance that you will be given a gift depends on the number of
+    artifacts already created in the game and how many of them were
+    gifts; the chance is 1/(10+(2*artifacts*gifts)).
+    If you receive a weapon artifact this way and were restricted in
+    its weapon class to unskilled, the restriction is removed so you
+    may advance to basic skill.
+ r  This artifact may be randomly generated in place of a regular item
+    (1/20 chance for each weapon).  In particular, antique weapons
+    outlets appear to frequently carry artifacts because a large number
+    of weapons are randomly generated there.  The player-monsters on the
+    Astral Plane also have a 50% chance that the weapon they are
+    generated will be upgraded to one of these random artifacts.
+ q  This is a Quest Artifact.  If you are of the same class as the
+    artifact, you can only obtain it by completing your Quest.
+    Otherwise it can only be obtained by bones levels or wishing.
+    If you are neither the same class nor the same alignment, you cannot
+    pick it up, wield it, or wear it.
+ w  This artifact can be wished for.  You may specify either the short
+    name of the artifact (e.g. "Magicbane") or the long name ("athame
+    named Magicbane"); capitalization does not matter.  You cannot wish
+    for Unique Items or your own Quest Artifact; there are also
+    limitations on wishing for other classes' Quest Artifacts based on
+    your class and alignment (see "q" above).  The chance of getting an
+    artifact from each wish depends on the number of artifacts already
+    created in the game:
+        ARTIFACTS   0     1     2     3    4    5    6      n
+        CHANCE     100%  100%  2/3   2/4  2/5  2/6  2/7  2/(n+1)
+
+The first letter of the ALN column indicates the alignment of the artifact
+(Lawful, Neutral, or Chaotic), if any.  When playing a class which can have
+multiple alignments, the alignment of the Quest Artifact will be adjusted
+to match the character's starting alignment.  A second letter specifies
+the class aligned to the artifact; alignments of these artifacts will also
+be adjusted if necessary. It also indicates which Quest Artifact belongs
+to each class, and for artifacts available as sacrifice gifts denotes that
+the artifact is the guaranteed first gift for that class.  Intelligent
+artifacts are indicated with a ! symbol.  All three conditions are
+considered each time you attempt to wish for, pick up, wield, wear,
+invoke, apply, or steal an artifact:
+ *  If the artifact is intelligent, then in order to touch the artifact
+    safely, you must have the same alignment as the artifact, must be of
+    the same class (or no class is specified), must have non-negative
+    alignment, and must not be in the form of something the artifact
+    specially attacks. Otherwise, you will be blasted by the artifact's
+    power, sustain 4d10 damage (2d10 if you have magic resistance), and
+    abuse your wisdom.
+    If you are of the wrong class and fail at least one of the other
+    conditions above, then the artifact will furthermore "evade your
+    grasp!" and you will not be able to use it at all.  
+ *  If the artifact is not intelligent, then you have only a 1/4 chance
+    of being blasted if you have a different alignment from the artifact
+    or have negative alignment (these two criteria not applying for
+    unaligned artifacts), or are in the form of something the artifact
+    specially attacks; damage is 4d4 (2d4 if you have magic resistance).
+    In any case, you will be able to use the artifact.
+ *  Orcrist and Sting will never blast non-orcs.
+Intelligent artifacts furthermore have an 80% chance of resisting being
+cursed by "malignant aura"-type curses.
+
+The +HIT column specifies any bonuses when calculating to-hit, and +DAM
+lists any bonuses or multiplier to damage.  For some artifacts, these
+adjustments only apply when hitting a specific type of monster.  See
+weap-343.txt to find out how these values are used in weapons calculations.
+Additional damage due to level drain, bisecting, or beheading are not
+included in the table above, but are listed in the weapon descriptions
+below.  Note that the chance of certain weapon artifact effects are
+based on your to-hit die roll.  This means that if you always hit a
+monster, the effect occurs with the published percentage; however, if
+you only hit a monster 1 in 20, then every hit you make causes the effect.
+
+The ATTACK and DEFEND fields list a brief summary of the offensive and
+defensive effects of each artifact; see the sections below for full
+descriptions of each artifact's abilities.  The effects of the Bell of
+Opening, Candelabrum of Invocation, and Book of the Dead are documented
+in tool-343.txt.  The powers of the Amulet of Yendor are listed in
+amul-343.txt.
+
+
+Lawful artifacts
+~~~~~~~~~~~~~~~~
+[Adapted from the spoilers "artifacts" by Boudewijn Waijers and "damages"
+by Henri Block and Hisashi Yoshida.]
+
+Demonbane
+  (lawful long sword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against demons (all & except Death,
+    Pestilence, Famine, the mail daemon, sandestins, and djinn).
+  Invoked
+    No effect.
+
+Excalibur
+  (lawful long sword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and +d10 damage to all monsters.
+    Confers level drain resistance and automatic searching.
+    Manual and automatic searching is more likely to succeed.
+    Even eyeless monsters will be able to locate you.
+    Demon princes will be generated hostile.
+  Invoked
+    No effect.
+
+Grayswandir
+  (lawful silver saber)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage to all monsters.
+    Confers hallucination resistance.
+    Silver damage against silver-hating creatures (a normal effect of
+    silver sabers).
+  Invoked
+    No effect.
+
+Snickersnee
+  (lawful katana)
+  Carried
+    No effect.
+  Wielded
+    +d8 damage to all monsters.
+  Invoked
+    No effect.
+  Note: Do not confuse this artifact with Vorpal Blade.
+
+Sunsword
+  (lawful long sword)
+  Carried
+    No effect
+  Wielded
+    +d5 to hit and x2 damage only against undead (ghosts, shades, and
+    all LMVWZ).
+    Acts as a light source.
+    Prevents blinding from light-based sources.
+  Invoked
+    No effect.
+
+The Orb of Detection
+  (lawful* Archeologist crystal ball)
+  Carried
+    Confers magic resistance and telepathy.
+    Half damage when attacked by spells.
+  Invoked
+    Toggles invisibility on/off.
+
+The Sceptre of Might
+  (lawful* Caveman mace)
+  Carried
+    Confers magic resistance.
+  Wielded
+    +d5 to hit and x2 damage only against monsters not of its alignment.
+  Invoked
+    Toggles conflict on/off.
+
+The Magic Mirror of Merlin
+  (lawful Knight mirror)
+  Carried
+    Confers magic resistance and telepathy.
+    Knights get double damage when: turning undead in any way; using
+    a spell of force bolt, magic missile, unskilled/basic cone of
+    cold, or drain life; or using a wand of striking.
+  Applied or wielded
+    Speaks to you (gives random rumour, from the true file if blessed,
+    the false file if cursed, or either if uncursed).
+
+  Invoked
+    No effect.
+
+The Mitre of Holiness
+  (lawful* Priest helm of brilliance)
+  Carried
+    Confers fire resistance.
+  Worn
+    Priests take half damage from undead (ghosts, shades, and all LMVWZ)
+    and demons (all & except Death, Pestilence, Famine, the mail daemon,
+    djinn, and sandestins).
+    Increase in intelligence and wisdom (normal helm effects).
+  Invoked
+    Boost in spell energy.
+
+The Tsurugi of Muramasa
+  (lawful Samurai tsurugi)
+  Carried
+    Acts as luckstone.
+  Wielded
+    +d8 damage to all monsters.
+    5% chance (based on your to-hit roll) of extra damage:
+      Monsters engulfing you are instantly killed.
+      Damage is doubled against big monsters.
+      All other monsters are instantly killed.
+  Invoked
+    No effect.
+
+
+Neutral artifacts
+~~~~~~~~~~~~~~~~~
+[Adapted from the spoilers "artifacts" by Boudewijn Waijers and "damages"
+by Henri Block and Hisashi Yoshida.]
+
+Cleaver
+  (neutral* battle axe)
+  Carried
+    No effect.
+  Wielded
+    +d3 to hit and +d6 damage to all monsters.
+  Invoked
+    No effect.
+
+Giantslayer
+  (neutral long sword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against giants, stone giants, hill
+    giants, fire giants, frost giants, storm giants, giant mummies,
+    giant zombies, Cyclops, and Lord Surtur.  Note that it does not
+    affect ettins or titans.
+  Invoked
+    No effect.
+
+Magicbane
+  (neutral* athame)
+  Carried
+    No effect.
+  Wielded
+    +d3 to hit to all monsters; +d4 damage to monsters that do not resist.
+    May also probe, stun, scare, or cancel (see art2-343.txt).
+    Confers magic resistance.
+    Protects inventory against 95% of curses.
+  Invoked
+    No effect.
+  Note: You can also engrave "Elbereth" with any non-cursed athame and
+    it won't dull the weapon.
+
+Mjollnir
+  (neutral* war hammer)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and +d24 damage against monsters that are NOT shock-
+    resistant.
+    May explode rings (other than shock resistance) or wands (other than
+    lightning) carried by the target.
+    Can only be thrown when you have strength 25 (such as with gauntlets
+    of power) and you are wielding it.  When thrown by Valkyries there is
+    a 99% chance that the artifact will return to you: if you are not
+    confused, stunned, blind, hallucinating, or fumbling, there is a
+    further 99% chance it will return directly to your hand, otherwise it
+    will either land at your feet or hit you (50/50 chance).
+    Can only be kicked one square.
+  Invoked
+    No effect.
+  Note: Does NOT provide shock resistance!
+
+Vorpal Blade
+  (neutral long sword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and +1 damage to all monsters.
+    Instantly kills Jabberwocks.
+    5% chance (based on your to-hit roll) of instantly killing monsters
+    by beheading.  Monster must not be headless, amorphous, non-corporeal,
+    or swallowing you.  Worms must be hit on their head segment.
+  Invoked
+    No effect.
+  Note: Do not confuse this artifact with Snickersnee.
+
+The Heart of Ahriman
+  (neutral* Barbarian luckstone)
+  Carried
+    Confers stealth.
+    +d5 to hit if thrown or slung at a monster; x2 damage if slung.
+  Invoked
+    Levitation; you can stop this levitation with '>' at will, or by
+    invoking the Heart again.
+
+The Staff of Aesculapius
+  (neutral Healer quarterstaff)
+  Carried
+    No effect.
+  Wielded
+    x2 damage to all non-level-drain-resistant monsters (all except
+    undead, demons, were-creatures, and Death).
+    Drains levels (1 to 8 hp) from non-level-drain-resistant monsters.
+    Confers hungerless regeneration and protection from level drain.
+  Invoked
+    Heals half hp loss, cures sickness, unblinds (except from cream or
+    venom) and unslimes.
+
+The Eyes of the Overworld
+  (neutral* Monk lenses)
+  Carried
+    Confer magic resistance.
+  Worn
+    Confer astral vision (X-ray vision and blinding immunity).
+    Prevent stunning effect of Archons' radiant gaze.
+  Invoked
+    Enlightenment.
+
+The Platinum Yendorian Express Card
+  (neutral Tourist credit card)
+  Carried
+    Confers magic resistance and telepathy.
+    Half damage when attacked by spells.
+  Invoked
+     Charges objects like a scroll of charging with the same blessed/
+     cursed status.  Only Tourists can perform blessed charging.
+
+The Orb of Fate
+  (neutral* Valkyrie crystal ball)
+  Carried
+    Confers warning and half spell damage.
+    Half damage when attacked physically.
+    Acts as a luckstone.
+  Invoked
+    Level teleport.
+
+The Eye of the Aethiopica
+  (neutral* Wizard amulet of ESP)
+  Carried
+    Confers magic resistance and faster energy regeneration.
+    Half damage when attacked by spells.
+  Worn
+    Confers telepathy (normal amulet effect).
+  Invoked
+    Transports you to the closest visited level of any dungeon branch you
+    have already visited. Will not work if you have the Amulet of Yendor
+    or are in the endgame.
+
+
+Chaotic artifacts
+~~~~~~~~~~~~~~~~~
+[Adapted from the spoilers "artifacts" by Boudewijn Waijers and "damages"
+by Henri Block and Hisashi Yoshida.]
+
+Grimtooth
+  (chaotic orcish dagger)
+  Carried
+    No effect.
+  Wielded
+    +d2 to hit and +d6 damage to all monsters.
+  Invoked
+    No effect.
+
+Orcrist
+  (chaotic elven broadsword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against orcs (all o, orc mummies, and
+    orc zombies).
+  Invoked
+    No effect.
+
+Sting
+  (chaotic elven dagger)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against orcs (all o, orc mummies, and
+    orc zombies).
+    Confers the warning intrinsic, specifically attuned to orcs.
+    Cuts through all webs.
+  Invoked
+    No effect.
+
+Stormbringer
+  (chaotic runesword)
+  Carried
+    No effect.
+  Wielded
+    Attacks tame and peaceful monsters without confirmation.
+    +d5 to hit and +d2 damage to all non-level-drain-resistant monsters
+    (all except undead, demons, were-creatures, and Death).
+    Drains levels (1 to 8 hp) from non-level-drain-resistant monsters.
+    Protects from level drain.
+  Invoked
+    No effect.
+
+The Longbow of Diana
+  (chaotic* Ranger bow)
+  Carried
+    Confers telepathy.
+  Wielded
+    Confers reflection.
+    +d5 to hit when firing arrows against all monsters.
+  Invoked
+    Creates 7-16 uncursed arrows if uncursed, 7-21 blessed arrows if
+    blessed, 6-11 cursed arrows if cursed.
+
+The Master Key of Thievery
+  (chaotic Rogue skeleton key)
+  Carried
+    Confers warning and teleport control.
+    Half damage when attacked physically.
+  Applied or wielded
+    Speaks to you (gives random rumour, from the true file if blessed,
+    the false file if cursed, or either if uncursed).
+  Invoked
+    Untraps boxes and doors with 100% success.
+
+Unaligned artifacts
+~~~~~~~~~~~~~~~~~~~
+[Adapted from the spoilers "artifacts" by Boudewijn Waijers and "damages"
+by Henri Block and Hisashi Yoshida.]
+
+Dragonbane
+  (unaligned broadsword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against dragons (all D).
+  Invoked
+    No effect.
+
+Fire Brand
+  (unaligned long sword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage against monsters that are NOT fire-resistant.
+    May boil potions or burn paper (other than scrolls of fire, spellbooks
+    of fireball, or the Book of the Dead) carried by the target.
+    Confers fire resistance.
+  Invoked
+    No effect.
+
+Frost Brand
+  (unaligned long sword)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage against monsters that are NOT cold-resistant.
+    May freeze potions (other than oil) carried by the target.
+    Confers cold resistance.
+  Invoked
+    No effect.
+
+Ogresmasher
+  (unaligned war hammer)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against ogres (all O).
+  Invoked
+    No effect.
+
+Trollsbane
+  (unaligned morning star)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against trolls (all T).
+  Invoked
+    No effect.
+
+Werebane
+  (unaligned silver saber)
+  Carried
+    No effect.
+  Wielded
+    +d5 to hit and x2 damage only against were-creatures in both human
+    and creature forms.
+    Attacks of were-creatures will not transfer lycanthropy.
+    Silver damage against silver-hating creatures (a normal effect of
+    silver sabers).
+  Invoked
+    No effect.
+
+
+* These artifacts are adjusted if necessary to match the starting
+alignment of a player of their class.
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Corrections and clarifications provided by Joe Bednorz, Patrick Clot,
+Bruce Cox, David Damerell, Kieron Dunbar, Rob Ellwood, Harold Hill,
+Scott Hill, Greg Nowak, Jaakko Rajakallio, Pat Rankin, Newell Rose,
+Darshan Shaligram, and Stanislav Traykov.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Art2-343.txt {105379 2017-04-28T02:20:36Z {4000180 Bcode} Protected "[[Art2-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:art2-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+art2-343.txt  Last edited 2006-05-04 for NetHack 3.4.3
+Magicbane and artifact selection strategy in NetHack 3.4
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+Magicbane
+~~~~~~~~~
+[Adapted from a spoiler courtesy of David Grabiner.]
+
+Magicbane has several special effects when wielded that make this
+artifact a very useful item.  It resists 95% of curses thrown at you,
+gives magic resistance, and can engrave without dulling.  As a weapon,
+it may (depending on the monster's magic resistance saving throw) add
+additional damage and magical effects.
+
+  ENCHANT  NORMAL  PROBE  STUN   SCARE  SCARE   SCARE   SCARE  AVE DMG
+                                        +STUN  +CANCL  +ST+CN
+  ~~~~~~~  ~~~~~~  ~~~~~  ~~~~   ~~~~~  ~~~~~  ~~~~~~  ~~~~~~  ~~~~~~~
+  Damage    2d4     3d4    4d4    4d4    5d4     5d4     6d4      --
+  Ave dmg   5.0     7.5   10.0    10.0   12.5    12.5    15.0     --
+    +0      60%     1.8%  18.2%   0.9%   9.1%    0.9%    9.1%    7.66
+    +1      60%     3.6%  16.4%   1.8%   8.2%    1.8%    8.2%    8.57
+    +2      60%     5.5%  14.5%   2.7%   7.3%    2.7%    7.3%    9.48
+    +3      60%    10.9%  19.1%   1.8%   3.2%    1.8%    3.2%   10.01
+    +4      60%    13.6%  16.4%   2.3%   2.7%    2.3%    2.7%   10.92
+    +5      60%    16.4%  13.6%   2.7%   2.3%    2.7%    2.3%   11.83
+    +6      60%    22.3%  12.7%   3.2%   1.8%      0%      0%   12.49
+    +7      60%    25.5%   9.5%   3.6%   1.4%      0%      0%   13.40
+    +8      60%    28.6%   6.4%   4.1%   0.9%      0%      0%   14.31
+    +9      60%    36.4%   3.6%     0%     0%      0%      0%   15.09
+   more     60%      40%     0%     0%     0%      0%      0%    6.00+bonus
+
+The above table describes the chance that each of the magical attacks
+will occur, assuming that the monster fails the magic resistance
+saving throw it gets to reduce their probability.  The ENCHANTment of
+Magicbane affects these probabilities; note that higher enchantments
+reduce the likelihood of the better attacks. (Negative enchantments
+have the same probabilities as at +0.)  Even the NORMAL, non-magical
+damage that occurs 60% of the time has an extra d4 damage above that
+of a normal athame unless the monster resists.  If any magical attacks
+occur, additional d4s of damage are added; at most one of the
+individual attacks may cause a magical effect as detailed below.
+
+The PROBE attack usually does nothing special beyond adding the d4 for
+the magical attack; if no other effect has occurred, there is a 1 in
+(3 * (absolute value of enchantment)) chance that the probe is
+insightful, giving the effect of a wand of probing. A probe is always
+insightful if Magicbane is at +0.
+  "The magic-absorbing blade probes <monster>!"
+  "The magic-absorbing blade prods <monster>!" (hallucinating)
+
+The STUN attack causes an additional d4 damage; if none of the later
+effects have occurred and been successful, it stuns the monster (or
+you, for 3 (more) turns, if you are being attacked by Magicbane).
+  "The magic-absorbing blade stuns <monster>!"
+  "The magic-absorbing blade amazes <monster>!" (hallucinating)
+
+The SCARE attack causes an additional d4 damage; if not combined with
+a CANCEL attack, causes the monster to flee for 3 (more) turns; the
+monster has a 50% chance of being given an opportunity to resist this
+effect. If you are being attacked by Magicbane and aren't
+magic-resistant, this effect paralyses you for 3 (more) turns.
+  "The magic-absorbing blade scares <monster>!"
+  "The magic-absorbing blade tickles <monster>!" (hallucinating)
+
+Finally, the CANCEL attack causes another additional d4 damage and has
+the same effect as a spell of cancellation (but with a fixed level of
+10 for resistance saving throw purposes). If the monster has the
+ability to cast spells, the effect adds one to your current and
+maximum spell energy. The monster may resist. If you are hit with
+Magicbane and you don't have magic-resistance, you are cancelled and
+lose one current and maximum spell energy.
+  "The magic-absorbing blade cancels <monster>!"
+  "The magic-absorbing blade purges <monster>!"
+
+In addition, any magical attack has a 1 in 12 chance of confusing the
+defender.
+
+The AVE DMG column in the table above summarizes the expected average
+damage for each enchantment level; it includes bonuses due to
+enchantment but not to weapon skills (athames are in the dagger
+class). (Again, note that a monster with a high base magic resistance
+saving throw may reduce the severity of the attacks that occur, as
+well as averting the potential magical effects; the quoted figures are
+for monsters with 0 MR.)  The Damage row lists the amount of damage
+each type of attack causes; the average of each attack type is given
+in the Ave dmg row.
+
+For those source divers who are interested in how the above values were
+obtained, the following table may help:
+    Enchant      +0   +1   +2   +3   +4   +5   +6   +7   +8   +9   more
+    * Probes/11   1    2    3    4    5    6    7    8    9   10   11
+    * Stuns/11   10    9    8    7    6    5    4    3    2    1    0
+    Scare roll    4    4    4    2    2    2    1    1    1    0    0
+    Cancel roll   2    2    2    1    1    1    0    0    0    0    0
+    Die roll 1   Can  Can  Can  Can  Can  Can  Sca  Sca  Sca   *    *
+    Die roll 2   Can  Can  Can  Sca  Sca  Sca   *    *    *    *    *
+    Die roll 3   Sca  Sca  Sca   *    *    *    *    *    *    *    *
+    Die roll 4   Sca  Sca  Sca   *    *    *    *    *    *    *    *
+    Roll 5-8      *    *    *    *    *    *    *    *    *    *    *
+    Roll 9-20    ----------- Normal, non-magical damage -------------
+
+What is the best enchantment for Magicbane?  If you simply want to cause
+the most damage, then the table indicates that you should enchant it as
+high as possible (safely to +7).  Fortunately, your odds of magic-
+resistance, curse-resistance, and engraving do not depend upon the
+enchantment.  However, if you want to maximize the best magical attacks
+of this artifact, it should be enchanted to +2.  Note that the only
+difference in the magical attacks between the +0 and the +2 Magicbane is
+a 3.7% change between probing and stunning.
+
+Magicbane is generally not the best weapon for combat, although
+medium-level characters with good dagger skill and poor skills in other
+weapon may find it their best choice.  Higher-level characters may want
+to wield it as their regular weapon to absorb curses while they are
+travelling through the dungeon, switching to something else to fight
+powerful monsters.
+
+
+Which artifact should I choose?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Adapted from a spoiler courtesy of David Grabiner.]
+
+If you get an early wish and decide to use it for a weapon, or if you
+have accumulated several artifact weapons, which weapon you should wield
+depends highly on your class because of the class limits on weapon
+skills.
+
+ARTIFACT weapons that are worth keeping are listed in the table below.
+Some artifacts are not listed, because they are only effective against
+a small subset of monsters.  The SKILL category of each artifact is
+listed, as well as the maximum skill level for each class (ABCH KMPRaRo
+STVW): - means restricted to unskilled, b means basic skill, s means
+skilled, and E means expert.  Note that if you receive an artifact as a
+gift by crowning or sacrificing, any restriction on its weapon class will
+be removed and you will be able to advance to basic skill.
+
+The table also indicates the damage range of each artifact against
+typical SMALL creatures, LARGE creatures, and major DEMONs.  The damage
+calculations assume that the artifact is enchanted as shown, you have
+expert skill, and that the artifact's special attacks apply to the
+monster; the Longbow of Diana assumes that you are using normal +0
+arrows fired at a rate of up to 4 a round (expert Ranger). Damage
+against major demons further assumes that the weapon is blessed and that
+the demon hates silver, is fire-resistant, and is drain-resistant.
+Finally, the table summarizes the average damage against major demons
+(DAVE), which are often the nastiest creatures in the dungeon. 
+Magicbane's actual damage is slightly greater due to its special
+attacks, but it doesn't make a difference here.
+
+ARTIFACT              SKILL         ABCH KMPRaRo STVW  SMALL LARGE DEMON DAVE
+~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~  ~~~~ ~~~~~~~ ~~~~  ~~~~~ ~~~~~ ~~~~~ ~~~~
++2 Magicbane    (MB)  Dagger        bbbs b--E E  bEEE   6-12  6-11  7-15 11.0
++7 Staff Aesculapius  Quarterstaff  sbEE -bEb -  bbbE  19-36 19-36 12-19 15.5
++7 Stormbringer (SB)  Broadsword    -s-- s--- s  sbs-  13-27 13-26 12-20 16.0
++7 Grimtooth          Dagger        bbbs b--E E  bEEE  11-18 11-18 12-22 17.0
++7 Sunsword           Long sword    -s-- E--- s  EbE-  10-17 10-21 11-25 18.0
++7 Fire Brand         Long sword    -s-- E--- s  EbE-  18-32 18-40 11-25 18.0
++7 Vorpal Blade       Long sword    -s-- E--- s  EbE-  11-18 11-22 12-26 19.0
++7 Longbow Diana      Bow           -bs- b-bE -  Eb--   1-32  1-32  2-48 19.9
++7 Snickersnee        Long sword    -s-- E--- s  EbE-  11-27 11-29 12-33 22.5
++7 Excalibur    (EX)  Long sword    -s-- E--- s  EbE-  11-27 11-31 12-35 23.5
++7 Cleaver            Axe           -Es- s--s -  -bEs  12-27 13-29 14-33 23.5
++7 Sceptre of Might   Mace          -sEb s-E- s  -b-b  20-30 18-28 20-32 26.0
++7 Mjollnir     (MJ)  Hammer        -Es- b-Eb b  -bE-  12-38 11-37 12-41 26.5
++7 Tsurugi Muramasa   Two-hand swd  -E-- s--- b  EbE-  11-32 13-37 14-41 27.5
++7 Demonbane          Long sword    -s-- E--- s  EbE-  10-17 10-21 20-44 32.0
++7 Frost Brand  (FB)  Long sword    -s-- E--- s  EbE-  18-32 18-40 20-44 32.0
++7 Grayswandir  (GS)  Saber         Eb-b s--- s  bsb-  18-32 18-32 20-56 38.5
+
+Six artifacts are particularly good all-purpose weapons and will be
+considered further.  
+
+* Magicbane (MB) has several magical effects (see section above) that
+  make it a good weapon even though it doesn't cause much damage
+  (particularly if you are limiting its enchantment to +2 to maximise
+  its special attacks). Magicbane is also good if you don't have
+  magic resistance or are short of ways to remove curses.
+* Stormbringer (SB) permanently drains levels from monsters --
+  although some species are resistant, including major demons -- and
+  will attack tame or peaceful creatures without confirmation, so it's
+  bad if you're trying to keep a pet.
+* Excalibur (EX) is easy to get if you are lawful (dip a long sword in
+  a fountain), has automatic searching, and is a somewhat effective
+  weapon.
+* Mjollnir (MJ) causes lightning damage, and when thrown by a Valkyrie
+  with strength 25, will usually return to your hand. Being a hammer,
+  it is good for classes who are restricted from blades. However, it
+  may destroy useful wands and rings carried by monsters.
+* Frost Brand (FB) causes cold damage, which makes it an excellent
+  all-around weapon. However, it may freeze useful potions carried by
+  monsters. Although Fire Brand similarly causes fire damage, most
+  major demons are fire-resistant.
+* Grayswandir (GS) doubles most of its damage (working best when fully
+  enchanted) and causes silver damage. Even though Grayswandir causes
+  the most damage to major demons, Frost Brand is slightly better
+  against ordinary large monsters.
+
+The table below compares these six artifacts for each character CLASS.
+The EARLY GAME recommendation assumes that you will quickly reach maximum
+skill in the weapon and that the weapon is enchanted to +2, which
+might be expected from wishing or limited enchantment.  The LATE GAME
+recommendation assumes that you are maximally skilled and that the weapon
+is enchanted as in the above table.  If a weapon is listed with a slash,
+this means that several are comparable and the choice may depend on other
+factors.  An artifact is listed in parentheses if its skill starts as
+restricted; you will usually want to obtain it or a weapon of its class
+as a divine gift in order to unrestrict the skill before using it.
+
+The weapons listed include any weapon which could reasonably be the best
+for that class, as well as weapons which may be obtained without a wish
+and which are close in quality:
+
+* Excalibur is a good weapon early in the game for lawful characters,
+  because it does almost as much damage as Frost Brand and can be
+  obtained without a wish; its lack of double damage makes it inferior
+  later, as Frost Brand's damage and strength bonuses will be doubled.
+* The Staff of Aesculapius and the Tsurugi of Muramasa, Quest
+  Artifacts for Healers and Samurai, are powerful weapons; they have
+  the disadvantage of requiring two hands, but both do more damage
+  early in the game than any other available weapon.  The Tsurugi
+  becomes inferior late in the game, because its damage bonus is not
+  doubled; the Staff is at a disadvantage in Gehennom because it will
+  lose its double damage against level-drain-resistant demons.
+* The Longbow of Diana, Quest Artifact for Rangers, is a highly useful
+  back-up weapon for fighting at a distance, but has the disadvantage
+  of extremely variable damage depending on the vagaries of multiple
+  shots, and the fact that the supply of arrows is unenchanted.
+
+    CLASS  EX  FB  GS  MB  MJ  SB  EARLY GAME      LATE GAME
+    ~~~~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~~~~~~~~~~~~~  ~~~~~~~~~
+     Arc   -   -   E   b   -   -   GS              GS
+     Bar   s   s   b   b   E   s   MJ              FB
+     Cav   -   -   -   b   s   -   MJ/(FB)/(EX)    (FB)/(GS)/MJ
+     Hea   -   -   b   s   -   -   SoA/MB/(MJ)/GS  SoA/(FB)/GS
+     Kni   E   E   s   b   b   s   FB/MJ/EX        FB
+     Mon   -   -   -   -   -   -   None            None
+     Pri   -   -   -   -   E   -   MJ/(FB)/(EX)    (FB)/MJ/(GS)
+     Ran   -   -   -   E   b   -   MB/LoD          MJ
+     Rog   s   s   s   E   b   s   MJ/SB/MB        FB/GS
+     Sam   E   E   b   b   -   s   ToM/FB/EX       FB
+     Tou   b   b   s   E   b   b   MJ/MB           GS/FB
+     Val   E   E   b   E   E   s   MJ/EX           FB/MJ
+     Wiz   -   -   -   E   -   -   MB              (FB)/(GS)
+
+It's interesting that Magicbane does so well early in the game; this is
+a side effect of the weapon skills.  Even for those classes which don't
+have it listed, it's a good artifact to wish for because it serves other
+useful purposes (magic resistance, engraving, and curse resistance).
+It's a useful weapon to keep as your main weapon after you have killed
+the Wizard; you can switch to Frost Brand when a lot of nasties appear,
+because Magicbane takes a long time to kill them, and powerful creatures
+will resist Magicbane's special attacks.
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Thanks again to David Grabiner.
+Corrections and clarifications provided by Joe Bednorz, Steven Bush,
+Andreas Dorn, Kate Nepveu, Mike Ruskai, Darshan Shaligram, and
+Boudewijn Waijers.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Food-343.txt {105389 2017-04-29T01:05:52Z {4000180 Bcode} Protected "[[Food-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:food-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+<html>food-343.txt  Last edited 2003-12-17 for NetHack 3.4.3
+Food and hunger in NetHack 3.4
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+FOOD                      COST  WGT  PROB   NUTR  NUTR/WGT  TIME
+~~~~~~~~~~~~~~~~~~~~~~~ : ~~~~  ~~~  ~~~~ : ~~~~  ~~~~~~~~  ~~~~
+Meat                    :                 :
+  meatball              : $  5    1    0  :    5      5       1
+  meat ring             :    5    1    0  :    5      5       1
+  meat stick            :    5    1    0  :    5      5       1
+  egg                   :    9    1   85  :   80     80       1
+  tripe ration          :   15   10  140  :  200     20       2
+  huge chunk of meat    :  105  400    0  : 2000      5      20
+  corpse                :    5  vary   0  : vary    vary    vary
+Fruits and vegetables   :                 :
+  kelp frond            :    6    1    0  :   30     30       1
+  eucalyptus leaf       :    6    1    3  :   30     30       1
+  clove of garlic       :    7    1    7  :   40     40       1
+  sprig of wolfsbane    :    7    1    7  :   40     40       1
+  apple                 :    7    2   15  :   50     25       1
+  carrot                :    7    2   15  :   50     25       1
+  pear                  :    7    2   10  :   50     25       1
+  banana                :    9    2   10  :   80     40       1
+  orange                :    9    2   10  :   80     40       1 
+  melon                 :   10    5   10  :  100     20       1
+  slime mold            :   17    5   75  :  250     50       1
+People food             :                 :
+  fortune cookie        :    7    1   55  :   40     40       1
+  candy bar             :   10    2   13  :  100     50       1
+  cream pie             :   10   10   25  :  100     10       1
+  lump of royal jelly   :   15    2    0  :  200    100       1
+  pancake               :   15    2   25  :  200    100       2
+  C-ration              :   20   10    0  :  300     30       1
+  K-ration              :   25   10    0  :  400     40       1
+  cram ration           :   35   15   20  :  600     40       3
+  food ration (gunyoki) :   45   20  380  :  800     40       5
+  lembas wafer          :   45    5   20  :  800    160       2
+  tin                   :    5   10   75  : vary    vary    vary
+
+Comestibles are listed above by category, then by increasing nutrition.
+Japanese names of items are listed in parentheses ().  The COST field
+denotes the base price of each item.  WGT specifies the weight (100
+zorkmids weighs 1).
+
+Food comprises 20% of all randomly-generated items in the main dungeon,
+15% in containers, 22% on the  Rogue level, and 16% in hell.  PROB is the
+relative probability of each subtype.  Eggs not laid by you have a
+roughly 1/3 probability of hatching.  Tins are 1/6 spinach and are 5%
+blessed, 90% uncursed, and 5% cursed.  All other comestibles will be
+generated uncursed.
+
+The nutrition of each item is listed under NUTR.  The cost of all items
+are based on the nutrition by the formula COST = (NUTR / 20) +5, with
+fractions rounded off.  Note that several previously archived spoilers
+did not correctly round their costs.  The ratio of nutrition to weight
+is listed in the NUTR/WGT column; lembas wafers have the best ratio.
+The amount of time needed to completely eat an item is given under TIME.
+
+
+Hunger and nutrition
+~~~~~~~~~~~~~~~~~~~~
+(Adapted from the spoiler "food" by Bryan Butler and J. Ali Harlow.)
+
+Each of the following conditions is checked on the turns shown; if it is
+the case, then you lose one more point of nutrition that turn.  Rings
+and amulets cause additional hunger as shown; the only exception is a
+ring that can be charged but is at +0. A ring of slow digestion prevents
+base ordinary food consumption, but still causes ring hunger.  You can
+therefore consume a maximum of 64 nutrition in 20 turns (if all of these
+conditions were met).
+  HOW OFTEN      CAUSE
+  ~~~~~~~~~~~~~  ~~~~~
+  Each turn      Ordinary food consumption, if carnivorous or herbivorous
+                 and not wearing a ring of slow digestion. When asleep,
+                 only about 10% as much is needed.
+  Odd turns      Regeneration from anything other than an artifact.
+  Odd turns      Encumbrance is stressed or worse.
+  Even turns     Hunger intrinsic (e.g., from a ring).
+  Even turns     Conflict from anything other than an artifact.
+  Turn 4 of 20   Ring worn on left hand (except a +0 ring).
+  Turn 8 of 20   Amulet worn.
+  Turn 12 of 20  Ring worn on right hand (except a +0 ring).
+  Turn 16 of 20  Carrying the Amulet of Yendor.
+
+Naturally, eating some food will make you gain the amount of nutrition
+in the food.  Your level of nutrition is described as follows:
+  2000 or more           Death from choking (under certain circumstances)
+  1000 or more           Satiated
+   150 to  999           Not hungry
+    50 to  149           Hungry
+     0 to   49           Weak
+  Below zero             Fainting
+  Below (-200)-(20*CON)  Death from starvation
+
+
+Corpses
+~~~~~~~
+(Adapted from the spoiler "corpses", by Boudewijn Waijers and
+Peter Snelling.)
+
+When a monster is killed, the probability of leaving a corpse depends on
+several factors:
+  PROB  CONDITIONS
+  ~~~~  ~~~~~~~~~~
+    0%  Killed by digestion or disintegration.
+    0%  Killed by stoning (creates a statue instead).
+    0%  Corpses are never generated on the Rogue level.
+    0%  Golems leave objects instead of a corpse.
+    0%  Some monsters never leave a corpse (e.g., Vlad, liches).
+  100%  Lizards, monsters of large size or bigger.
+  100%  The Riders and player-monsters on the Astral Plane.
+   1/2  Frequent monster that is not tiny
+   1/3  Monster appears infrequently or is tiny (but not both).
+   1/4  Monster both appears infrequently and is tiny.
+There is a further reduction of the above chances for undead creatures
+that die on a graveyard level: by 1/9 if it was killed by you or by
+1/3 if it was not killed by you (e.g., by a trap or another monster).  
+This means that wraiths have a better chance of leaving a corpse if you
+lead them to a stairway and let them follow you to a non-graveyard
+level, a technique called "wraith luring". For this purpose, the
+Castle and all levels of the Priest Quest are considered graveyard
+levels, as is any level on which undead have been summoned by the 
+cursed Book of the Dead or Bell of Opening.
+
+The nutrition, weight, and time needed to eat corpses is determined by
+the type of monster.  The blessed/cursed status of corpses adjusts how

@@ -1,0 +1,1000 @@
+!Lock
+|-
+|round
+|round
+|-
+|square
+|square
+|-
+|triangular
+|triangular
+|-
+|oval
+|oval
+|-
+|octagonal
+|octagonal
+|-
+|hexagonal
+|hexagonal
+|-
+|cylindrical
+|wide
+|-
+|irregular
+|notched
+|-
+|conical
+|large round
+|-
+|wedge-shaped
+|large square
+|}
+
+In time, the shaped keys were believed to add nothing of value to the game, and in [[NetHack 3.1.0]] they were removed.
+
+==Variants==
+
+=== SLASH'EM ===
+[[SLASH'EM]] changes unlocking tools, adding a chance of breaking<ref>{{sourcecode|lock.c|416|version=SLASH'EM 0.0.7E7F2}} boxes, chests</ref><ref>{{sourcecode|lock.c|518|version=SLASH'EM 0.0.7E7F2}} doors</ref>, and also adding some [[Alignment key|artifact keys]]. Blessed unlocking tools and artifact unlocking tools will never break. 
+
+==== Breakage ====
+{|class="wikitable"
+! Tool || Breakage Chance
+|-
+| rowspan=2 | credit card
+| 1/20
+|-
+| 1/30 ([[tourist]] picking a ''door'')
+|- 
+| skeleton key
+| 1/15
+|-
+| rowspan=2 | lockpick
+| 1/30
+|-
+| 1/40 ([[rogue]])
+|}
+
+==== Strategy ====
+Since the unlocking tools now break, it is a good idea to carry more than one on your person.
+There's nothing worse than locking yourself into a [[shop]], only to have your pick break when you try to get out again!
+
+Once you get an artifact unlocking tool, this becomes less of a problem.
+Generally, you'll only need to worry about it [[nymph | being]] ''[[pixie | stolen]]''.
+Note that the alignment keys are available to all players who progress far enough into the game.
+After this, use the key matching your alignment to avoid [[artifact blast]], and keep the other keys in your [[bag of holding]] or in a [[stash]].
+
+=== UnNetHack ===
+Starting with version 5.1, it is possible for [[UnNetHack]] monsters to pick up keys and use them to unlock doors.
+
+== See also ==
+* [[wand of opening]]
+* [[wand of locking]]
+* [[spellbook of knock]]
+* [[spellbook of wizard lock]]
+* [[The Master Key of Thievery]], an artifact skeleton key
+* [[The Platinum Yendorian Express Card]], an artifact credit card
+* [[Alignment key]] (SLASH'EM only)
+
+== References ==
+<references/>
+
+{{DOD}}
+[[Category:Tools]]
+{{nethack-360}}}
+&&%s&& %s Credit card {7170 2006-08-14T08:25:43Z {743 Sir Dagon} double redirect #REDIRECT [[Unlocking tool]]}
+&&%s&& %s Key {7169 2006-08-14T08:25:39Z {743 Sir Dagon} double redirect #REDIRECT [[Unlocking tool]]}
+&&%s&& %s Skeleton key {10343 2006-09-12T17:55:04Z {239 Eidolos} Fix double redirect. #REDIRECT [[Unlocking tool]]}
+&&%s&& %s Category:Levels {4873 2006-07-13T17:36:15Z {396 Jayt} created a holding category This category contains articles and subcategories about the dungeon levels.
+
+[[Category:Articles]]}
+&&%s&& %s Category:Special levels {4879 2006-07-13T17:39:41Z {396 Jayt} oops, needs special category link This category lists single recognizable levels, as opposed to complete branches listed at [[:Category:Dungeon branches]].
+
+[[Category:Levels]]}
+&&%s&& %s Category:Community {4883 2006-07-13T17:45:28Z {396 Jayt} created This category contains articles about 3rd-party creations relating to NetHack.
+
+[[Category:Articles]]}
+&&%s&& %s Category:Your character {4886 2006-07-13T17:47:47Z {396 Jayt} created category This category contains articles and subcategories relating to your character in NetHack.
+
+[[Category:Articles]]}
+&&%s&& %s Category:Images {53995 2010-11-11T18:05:37Z {831 Tjr} Text replace - "NethackWiki" to "NetHackWiki" This category contains images used in NetHackWiki.
+[[Category:NetHackWiki]]}
+&&%s&& %s Category:Materials {4897 2006-07-13T18:02:53Z {396 Jayt} recat: [[Category:Items]] This category contains articles about the different materials which items can be made from.
+
+[[Category:Items]]}
+&&%s&& %s Bag of tricks {146133 2022-06-09T20:50:30Z {4001279 Umbire the Phantom} /* Variants */ {{tool
+ |name=bag of tricks
+ |tile=[[image:bag.png]]
+ |appearance=bag
+ |cost=100
+ |weight=15
+ |color=brown
+ |material=cloth
+ }}
+
+A '''bag of tricks''' is a [[tool]] that appears in ''[[Nethack]]''. It appears as an ordinary [[bag]] when unidentified.
+
+==Generation==
+Bags of tricks are generated uncursed, with 1 to 20 charges.
+
+==Description==
+Though they are defined with the <code>CONTAINER</code> macro, bags of tricks are not actually containers: they never hold any items, nor can any be placed in them.{{refsrc|src/objects.c|653|version=NetHack 3.6.6}} Attempting to #[[loot]] a bag of tricks will cause it to bite you for d10 damage, which [[auto-identifies]] it; the death message associated with this is "killed by a carnivorous bag". 
+
+[[Apply]]ing a charged bag of tricks will use up one charge and either create one [[monster]] with 22/23 chance, or create 2 to 8 monsters with 1/23 chance; the bag is auto-identified in either case, and nothing happens when applying a bag with zero charges. If the bag has more than 10 charges, a blessed [[scroll of charging]] will add 6 to 10 charges, and if it has 10 or less, it will add 6 to 15 charges; an uncursed scroll will always add 1 to 5 charges. It cannot hold more than 50 charges, but can be recharged an unlimited number of times. 
+
+Using #[[tip]] with a bag of tricks will expend all the charges at once; placing a bag of tricks with charges into a [[bag of holding]] will cause a [[magical explosion]], destroying both bags as well as everything in the bag of holding. 
+
+{{upcoming|NetHack 3.7.0|Most contents of a destroyed bag of holding will be scattered as opposed to destroyed outright.}}
+
+==Strategy==
+If carrying a bag of holding, bags of tricks should be treated with the same caution as a [[wand of cancellation]]. Unless you need to create some monsters (for [[food]], [[sacrifice]] or [[experience]]), they are often best left alone or stashed elsewhere - a magical explosion can be a game-ending mistake.
+
+If you only want the bag to [[polypile]] with, apply it until it runs out of charges, and make sure you can deal with the generated monsters; they will all spawn at once if you #tip the bag, so beware! An uncharged bag of tricks is "safe", and if it polymorphs into another charged tool, the new tool's charges will be independent of the number of charges the bag had.
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], a charged bag of tricks has an equal chance of producing a creature as described above, or causing a random (mostly harmful) effect, such as briefly paralyzing the player, knocking a weapon from their hand, or spewing forth a three-square wide [[poison cloud]].{{refsrc|src/makemon.c|1812|unnethack=251}}
+
+{|class=wikitable
+!Chance
+!Effect
+|-
+|31/40
+|Creates a monster.
+|-
+|2/40
+|Spits out a random item.
+|-
+|1/40
+|Bag "wriggles away from you", causing it to drop.
+|-
+|1/40
+|Tries to pull you in, paralyzing for d4 turns.
+|-
+|1/40
+|Spits out a stinking cloud.
+|-
+|1/40
+|Causes hallucination for 10+d35 turns.
+|-
+|1/40
+|Yells "Boo!", scaring nearby monsters and possibly the player for a few turns.
+|-
+|1/40
+|Grows teeth and bites, as if looted.
+|-
+|1/40
+|Licks your wielded weapon from your hand, causing it to drop.
+|}
+
+The created item will be an [[iron chain]] if the bag is cursed or has been recharged. Otherwise, the game will make three attempts to create an item that weighs less than 100 aum and is small enough to fit in a container. If all three attempts generate invalid items, the bag "coughs nervously" and produces nothing.
+
+A bag of tricks with no charges can hold items like a regular sack;{{refsrc|src/makemon.c|1802|unnethack=251}} charging it again will destroy any items inside.{{refsrc|src/read.c|500|unnethack=251}} Since the bag of tricks is a "magical bag", it will also protect its [[fragile]] contents from shattering like a bag of holding; this also means that a cursed bag of tricks with no charges is subject to item loss like a cursed bag of holding. Both effects are possibly unintentional.<ref>[https://github.com/UnNetHack/UnNetHack/blob/master/src/dokick.c#L444 UnNetHack src/dokick.c, line 444]</ref>
+
+===SlashTHEM===
+[[SlashTHEM]] gives the bag of tricks the same properties as it has in UnNetHack.
+
+===FIQHack===
+Monsters in [[FIQHack]] are able to use bags of tricks against you, similar to a [[wand of create monster]].
+
+===DynaHack===
+In [[DynaHack]], bags of holding function as they do in UnNetHack.
+
+===EvilHack===
+In [[EvilHack]], monsters are also capable of using bags of tricks against player characters.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Hack 1.0 {150094 2023-03-06T07:29:37Z {4001279 Umbire the Phantom} Can remove that now we've found the 15th part {{NetHack Versions}}
+
+'''Hack 1.0''' is the first public release of [[Hack]].  [[Andries Brouwer]] published it to the (now-obsolete) [[Usenet]] newsgroup net.sources in December 1984.
+
+== Availability ==
+
+All 15 of the original Dec 1984 Usenet posts are available. The first 14 are available on Google Groups, while part 15 (Message-ID: <6257@mcvax.UUCP>) is available at "news019f2/b34/net/sources/2145" in the UTZOO Wiseman Usenet Archive.
+
+* [https://groups.google.com/groups?selm=6243%40mcvax.UUCP Part 1]
+* [https://groups.google.com/groups?selm=6244%40mcvax.UUCP Part 2]
+* [https://groups.google.com/groups?selm=6245%40mcvax.UUCP Part 3]
+* [https://groups.google.com/groups?selm=6246%40mcvax.UUCP Part 4]
+* [https://groups.google.com/groups?selm=6247%40mcvax.UUCP Part 5]
+* [https://groups.google.com/groups?selm=6248%40mcvax.UUCP Part 6]
+* [https://groups.google.com/groups?selm=6249%40mcvax.UUCP Part 7]
+* [https://groups.google.com/groups?selm=6250%40mcvax.UUCP Part 8]
+* [https://groups.google.com/groups?selm=6251%40mcvax.UUCP Part 9]
+* [https://groups.google.com/groups?selm=6252%40mcvax.UUCP Part 10]
+* [https://groups.google.com/groups?selm=6253%40mcvax.UUCP Part 11]
+* [https://groups.google.com/groups?selm=6254%40mcvax.UUCP Part 12]
+* [https://groups.google.com/groups?selm=6255%40mcvax.UUCP Part 13]
+* [https://groups.google.com/groups?selm=6256%40mcvax.UUCP Part 14]
+* [https://altavista.superglobalmegacorp.com/usenet/news019f2/b34/net/sources/2145.txt Part 15]
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a Hack 1.0 distribution at [http://www.juiblex.co.uk/nethack/source/ab_hack-1.0.tar.gz]; this is also available on NetHackWiki for browsing and annotation: [[Hack 1.0 source code]].
+
+== The adventurer ==
+
+The player may choose a [[Tourist]], a [[Archeologist|Speleologist]], a [[Barbarian|Fighter]],
+a [[Knight]], a [[Caveman|Cave-man]], or a [[Wizard]].  No option to play as female is available.
+
+The adventurer has [[experience]], [[hit points]], [[armor class]], and [[strength]].  He may advance to [[experience level]] 14.
+
+The initial [[pet]] is a little [[dog]].
+
+== Dungeon features ==
+
+The dungeon in Hack 1.0 has no branches; there is one way up and one way down.  The first 25 levels or so consist of rooms, and beyond that, the adventurer encounters mazes.
+
+Special rooms are [[shop]]s, [[treasure zoo]]s, and [[vault]]s.  If the player's login name is "david", David's Treasure Zoo appears much more frequently.
+
+The "david" in question is [[David S. H. Rosenthal]], who worked with [[Andries Brouwer]] in 1982. One of David's students at the Universiteit van Amsterdam demonstrated the need for the [[shopkeeper]] to have a limited wallet and be very strong when made angry by theft. A [[wand of digging]] was used to tunnel into the shop, and items were repeatedly removed and sold back to the shopkeeper; at that time, the shopkeeper had a bottomless wallet and never got angry, so the student became extraordinarily rich overnight.
+
+Traps are:
+
+* [[bear trap]]
+* [[arrow trap]]
+* [[dart trap]]
+* [[trapdoor]]
+* [[teleportation trap]]
+* [[pit]]
+* [[sleeping gas trap]]
+
+The [[Amulet of Yendor]] is found under a boulder in a maze level.  The [[Wizard of Yendor]] does not appear in Hack 1.0.
+
+== Bestiary ==
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[acid blob]]||a||&nbsp;
+|-
+|[[bat]]||B||&nbsp;
+|-
+|[[centaur]]||C||&nbsp;
+|-
+|[[chameleon]]||:||&nbsp;
+|-
+|[[cockatrice]]||c||Stoning by hissing is an [[instadeath]]
+|-
+|[[demon]]||&||&nbsp;
+|-
+|[[dog]]||d||&nbsp;
+|-
+|[[dragon]]||D||As the modern red dragon
+|-
+|[[ettin]]||e||&nbsp;
+|-
+|[[floating eye]]||E||&nbsp;
+|-
+|[[fog cloud]]||f||&nbsp;
+|-
+|[[freezing sphere]]||F||&nbsp;
+|-
+|[[gelatinous cube]]||g||&nbsp;
+|-
+|[[ghost]]||(space)||&nbsp;
+|-
+|[[giant ant]]||A||&nbsp;
+|-
+|[[giant beetle]]||b||&nbsp;
+|-
+|[[giant rat]]||r||&nbsp;
+|-
+|[[gnome]]||G||&nbsp;
+|-
+|[[guard]]||@||&nbsp;
+|-
+|[[hobgoblin]]||H||&nbsp;
+|-
+|[[homunculus]]||h||&nbsp;
+|-
+|[[imp]]||i||&nbsp;
+|-
+|[[jackal]]||J||&nbsp;
+|-
+|[[jaguar]]||j||&nbsp;
+|-
+|[[killer bee]]||k||&nbsp;
+|-
+|[[kobold]]||K||&nbsp;
+|-
+|[[large dog]]||d||&nbsp;
+|-
+|[[leocrotta]]||l||&nbsp;
+|-
+|[[leprechaun]]||L||&nbsp;
+|-
+|[[little dog]]||d||&nbsp;
+|-
+|[[long worm]]||w||if NOWORM ''not'' defined at compile time
+|-
+|[[lurker above]]||~||&nbsp;
+|-
+|[[mimic]]||M||&nbsp;
+|-
+|[[minotaur]]||m||&nbsp;
+|-
+|[[nurse]]||n||&nbsp;
+|-
+|[[nymph]]||N||&nbsp;
+|-
+|[[orc]]||O||&nbsp;
+|-
+|[[owlbear]]||o||&nbsp;
+|-
+|[[piercer]]||p||&nbsp;
+|-
+|[[purple worm]]||P||&nbsp;
+|-
+|[[quasit]]||Q||&nbsp;
+|-
+|[[quivering blob]]||q||&nbsp;
+|-
+|[[rust monster]]||R||Reduces enchantment rather than truly rusting
+|-
+|[[scorpion]]||s||&nbsp;
+|-
+|[[shopkeeper]]||@||&nbsp;
+|-
+|[[snake]]||S||&nbsp;
+|-
+|[[stalker]]||I||&nbsp;
+|-
+|[[tengu]]||t||&nbsp;
+|-
+|[[trapper]]||,||&nbsp;
+|-
+|[[troll]]||T||&nbsp;
+|-
+|[[umber hulk]]||U||&nbsp;
+|-
+|[[unicorn]]||u||&nbsp;
+|-
+|[[vampire]]||V||&nbsp;
+|-
+|[[violet fungi]]||v||&nbsp;
+|-
+|[[wraith]]||W||&nbsp;
+|-
+|[[wumpus]]||w||if NOWORM defined at compile time
+|-
+|[[xan]]||x||&nbsp;
+|-
+|[[xorn]]||X||&nbsp;
+|-
+|[[yellow light]]||y||&nbsp;
+|-
+|[[yeti]]||Y||&nbsp;
+|-
+|[[zombie]]||Z||&nbsp;
+|-
+|[[zruty]]||z||&nbsp;
+|-
+|}
+
+== Objects ==
+
+=== Artifacts ===
+
+Hack 1.0 has only one [[artifact]], [[Orcrist]].  Any weapon may be named Orcrist and will do d10 extra points damage to [[Orc (monster)|orcs]]. There can even be more than one Orcrist.
+
+In [[Hack 1.0.2]], Orcrist would be limited to [[two handed sword]]s.
+
+=== Amulets ===
+
+Only the [[Amulet of Yendor]] and the cheap plastic imitation exist in Hack 1.0.
+
+=== Food ===
+
+Food items in Hack 1.0 are:
+
+* [[food ration]]
+* [[tripe ration]]
+* [[pancake]]
+* [[lizard corpse|dead lizard]]
+* [[fortune cookie]]
+* [[carrot]]
+* [[tin]]
+* [[orange]]
+* [[apple]]
+* [[pear]]
+* [[melon]]
+* [[banana]]
+* [[candy bar]]
+* [[egg]]
+* [[clove of garlic]]
+* [[corpse]] (called ''dead foo'' rather than ''foo corpse'')
+
+The tin did not contain the remains of monsters, but rather a randomly-chosen food such as peaches or, if the adventurer is lucky, [[spinach]].
+
+The dead lizard was a found object rather than a corpse; live lizards did not exist in Hack 1.0.  It could reduce [[confusion]], but had no effect on [[cockatrice]]s.
+
+=== Weapons ===
+
+Weapons in Hack 1.0 are:
+
+* [[arrow]]
+* sling bullet
+* [[crossbow bolt]]
+* [[dart]]
+* [[rock]]
+* [[boomerang]]
+* [[mace]]
+* [[axe]]
+* [[flail]]
+* [[long sword]]
+* [[two-handed sword|two handed sword]]
+* [[dagger]]
+* [[worm tooth]]
+* [[crysknife]]
+* [[spear]]
+* [[bow]]
+* [[sling]]
+* [[crossbow]]
+
+=== Tools ===
+
+Tools in Hack 1.0 are:
+
+* [[tin whistle|whistle]]
+* [[magic whistle]]
+* [[expensive camera]]
+* [[ice box]]
+
+The ice box is the only container.  Then as now, it preserved corpses, and was generally too heavy (and too rare) to be useful for inventory management.
+
+=== Armor ===
+
+Armor items in Hack 1.0 are:
+
+* [[helmet]]
+* [[plate mail]]
+* [[splint mail]]
+* [[banded mail]]
+* [[chain mail]]
+* [[scale mail]]
+* [[ring mail]]
+* [[studded leather armor]]
+* [[leather armor]]
+* [[elven cloak]]
+* [[shield]]
+* [[leather gloves|pair of gloves]]
+
+=== Potions ===
+
+Potions in Hack 1.0 are:
+
+* [[Potion of restore ability|potion of restore strength]]
+* [[potion of booze]]
+* [[potion of invisibility]]
+* [[potion of fruit juice]]
+* [[potion of healing]]
+* [[potion of paralysis]]
+* [[potion of monster detection]]
+* [[potion of object detection]]
+* [[potion of sickness]]
+* [[potion of confusion]]
+* [[Potion of gain ability|potion of gain strength]]
+* [[potion of speed]]
+* [[potion of blindness]]
+* [[potion of gain level]]
+* [[potion of extra healing]]
+* [[potion of levitation]]
+
+=== Scrolls ===
+
+Scrolls in Hack 1.0 are:
+
+* [[scroll of enchant armor]]
+* [[scroll of destroy armor]]
+* [[scroll of confuse monster]]
+* [[scroll of scare monster]]
+* [[scroll of blank paper]]
+* [[scroll of remove curse]]
+* [[scroll of enchant weapon]]
+* scroll of damage weapon
+* [[scroll of create monster]]
+* [[scroll of taming]]
+* [[scroll of genocide]]
+* [[scroll of light]]
+* [[scroll of teleportation]]
+* [[scroll of gold detection]]
+* [[scroll of food detection]]
+* [[scroll of identify]]
+* [[scroll of magic mapping]]
+* [[scroll of amnesia]]
+* [[scroll of fire]]
+* [[scroll of punishment]]
+
+The scroll of damage weapon acts as the modern scroll of enchant weapon does when [[curse]]d.  The scroll of genocide acts, in all cases, as the modern blessed scroll; but most symbols refer to only one monster anyway.
+
+=== Wands ===
+
+Wands in Hack 1.0 are:
+
+* [[wand of light]]
+* [[wand of secret door detection]]
+* [[wand of create monster]]
+* [[wand of wishing]]
+* [[wand of striking]]
+* [[wand of slow monster]]
+* [[wand of speed monster]]
+* [[wand of undead turning]]
+* [[wand of polymorph]]
+* [[wand of cancellation]]
+* [[Wand of teleportation|wand of teleport monster]]
+* [[wand of make invisible]]
+* [[wand of digging]]
+* [[wand of magic missile]]
+* [[wand of fire]]
+* [[wand of sleep]]
+* [[wand of cold]]
+* [[wand of death]]
+
+=== Rings ===
+
+Rings in Hack 1.0 are:
+
+* [[ring of adornment]]
+* [[ring of teleportation]]
+* [[ring of regeneration]]
+* [[ring of searching]]
+* [[ring of see invisible]]
+* [[ring of stealth]]
+* [[ring of levitation]]
+* [[ring of poison resistance]]
+* [[ring of aggravate monster]]
+* [[ring of hunger]]
+* [[ring of fire resistance]]
+* [[ring of cold resistance]]
+* [[ring of protection from shape changers]]
+* [[ring of conflict]]
+* [[ring of gain strength]]
+* [[ring of increase damage]]
+* [[ring of protection]]
+* [[ring of warning]]
+* [[ring of teleport control]]
+
+Because [[charisma]] does not exist in Hack 1.0, the ring of adornment is a useless item.
+
+=== Gems ===
+
+Gems in Hack 1.0 are:
+
+* [[diamond]]
+* [[ruby]]
+* [[sapphire]]
+* [[emerald]]
+* [[turquoise stone]]
+* [[aquamarine stone]]
+* [[tourmaline stone]]
+* [[topaz stone]]
+* [[opal stone]]
+* [[garnet stone]]
+* [[amethyst stone]]
+* [[agate stone]]
+* [[onyx stone]]
+* [[jasper stone]]
+* [[jade stone]]
+
+and worthless pieces of blue, red, yellow, and green glass.
+
+=== Other items ===
+
+Other items not appearing in the above categories are:
+
+* [[heavy iron ball]]
+* [[iron chain]]
+* [[Boulder|enormous rock]]
+
+It is not possible to pick up an iron chain, nor can they be generated from [[iron golem]]s, because these do not exist in Hack 1.0.
+[[Category:History]]}
+&&%s&& %s Page {150229 2023-03-12T05:44:29Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{monster
+ |difficulty=7
+ |level=5
+ |experience=66
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=3
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6, Weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A page|
+ |humanoid=1|omnivore=1|nopoly=1|
+ |human=1|peaceful=1|strong=1|collect=1|
+ |infravisible=1}}
+ |reference=[[monst.c#line3144]]
+}}
+The {{questmon|page|knight|guardian}} Like player and [[player monster]] knights, they are lawful.
+
+Pages can [[grow up]] to become [[knight (player monster)|knights]].{{refsrc|src/mondata.c|965|version=NetHack 3.6.0}}
+
+==Encyclopedia entry==
+{{encyclopedia|
+A male servant or attendant; specifically, in chivalry, a lad or young man in training for knighthood, or a youth of gentle parentage attending a royal or princely personage.
+|[ Webster's Comprehensive International Dictionary of the English Language ]}}
+
+==References==
+<references/>
+
+{{nethack-364}}}
+&&%s&& %s NetHackWiki:Protected page {56061 2010-11-11T19:32:32Z {831 Tjr} Text replace - "Wikihack" to "NetHackWiki" [[NetHackWiki]] is a free community where anyone should be able to participate. Thus, almost without exception, every page features an "edit" tab allowing anyone to make changes or leave a comment. However, sometimes you will encounter a '''protected page''' which you cannot edit. In such cases, the [[NetHackWiki:administrators|administrators]] of NetHackWiki have decided to lock the page.
+
+If you cannot edit the page, then what can you do?
+* ''Leave a comment.'' Use the "discussion" tab to reach the "talk page", then edit and leave a comment. For example, you could ask another user to edit the protected page. Or discuss the situation in the [[NetHackWiki:Community Portal|Community Portal]].
+* ''Login.'' Some pages are only protected against unregistered users, usually to counter vandalism. Users with registered accounts can still edit. So [[Special:Userlogin|create a user account and login]]. (If you already have a Wikia or Memory Alpha account, then it works here.) Note that new users may need to a wait a few days before they can edit these pages.
+** Some pages are only semi-protected, which means your account needs to be a few days old before you can edit them.
+** If you later become an [[NetHackWiki:Administrators|administrator]], then you will be able to edit protected pages (in addition to protecting and unprotecting them). However, only registered users can become administrators.
+* ''Edit a different page.'' The vast majority of NetHackWiki articles are ''not'' protected.
+
+==== Links ====
+* [[Wikia:Protection]] explains why administrators sometimes lock a page.
+* '''[[Special:Log/protect]]''' records all protection and unprotection events.
+[[Category:NetHackWiki]]}
+&&%s&& %s Turn {148875 2022-10-20T19:48:41Z {4001628 Kontaurus} Created and inserted a frequency distribution of game length, sampled from NAO. XML errors on NAO prevented sampling of about 400 ascensions, but this contributor assumed there was no relationship between this error and the ascension's turn count.. {{otheruses|the unit of in-game time|the #turn command|Turn undead}}
+
+In ''[[NetHack]]'', the '''turn''' counter is displayed in the bottom right corner, provided that the time [[option]] is turned on. You start on turn one, and as a rule everything you do increments the counter. You may occasionally get a "free" turn if you are [[very fast]], due to the [[speed system]].
+
+Most operations relating to the user interface do not consume turns: checking your [[inventory]] (including seeing what's inside a [[container]]), changing the [[options]], using the [[far look]] command, accessing the [[encyclopedia]], using #[[enhance]], saving and restoring, and checking the message buffer ({{kbd|ctrl|p}}) are all free. Quivering projectiles ({{kbd|Q}}) is also free.
+
+Using the look command ({{kbd|:}}) is usually free, but will consume one turn if you are [[blind]]. You also get one free application of a [[stethoscope]] per turn, and use up a turn if you apply it again consecutively.
+
+==Game length==
+The term game length usually refers to the number of turns taken to ascend (or meet some other fate). The turns, or time, taken is highly dependent on your style of play. You may be able to ascend comfortably in 40,000 turns, or you may struggle to gather an [[ascension kit]] before 80,000 turns.
+
+Any ascension under 30,000 is widely considered fast, and anything under 20,000 turns is very fast. A small handful of players are able to ascend in under 15,000, while the world record is a mere [[Notable ascensions|2135 turns]]. The longest game on record at [[nethack.alt.org]] is [[DeathOnAStick]]'s 1.8M turn [[rock]]-[[polypiling]] epic.
+
+[[Image:Turncounts.png|thumb|none|left|550px|alt=Histogram showing frequency distribution of final turn counts (game length) of a sample of top ascensions on NAO, taken 18 October 2022.|Distribution of game lengths in vanilla NetHack 3.6.2-3.6.6 on NAO]]
+
+It is always possible to [[quit]] or [[escape]] in one turn, but it is also actually possible to die in one turn (for example, by immediately stepping onto a trap in the first room). This results in the message "[[Do not pass go.  Do not collect 200 zorkmids.]]"
+
+A [[1-turn ascension]] is possible in [[wizard mode]].
+
+==Overflow==
+The turn counter is a long integer, so its maximum value is 2,147,483,647 on 32-bit platforms (and a little over 9 quintillion (9,223,372,036,854,775,808) on 64-bit platforms). There is little danger of this overflowing, even in excruciatingly long [[extinctionist]] games.
+
+{{upcoming|NetHack 3.7.0|For games running over 100000 turns, prayer timeout increases by 1 every 100 turns, so prayer will eventually fail and you will starve to death. This was implemented to prevent denial-of-service attacks against [[public server]]s.
+
+If a game runs over one billion turns, it ends immediately in an escape:
+
+{{message|The dungeon capitulates.}}}}
+
+{{nethack-366}}
+[[Category:User interface]]}
+&&%s&& %s Turns {4923 2006-07-14T23:19:12Z {396 Jayt} redirecting to [[Turn]] #REDIRECT [[Turn]]}
+&&%s&& %s 1-turn ascension {139973 2021-05-17T18:25:36Z {187 Darth l33t} bug version no longer possible in 3.7 ===Wizard mode===
+A '''1-turn ascension''' is possible in [[wizard mode]]:
+
+# Level teleport ({{kbd|Ctrl|v}}) to the [[Plane of Earth]] – use {{kbd|?}} to see the menu and select the Plane of Earth ("-1" will not work), this will also automagically give you the Amulet of Yendor
+# Level teleport to the [[Astral Plane]]
+# Wish for a (lawful/neutral/chaotic) altar
+# #offer the Amulet
+
+Although this is four steps, none of them consume [[turn]]s in wizard mode. Players hoping to save themselves tremendous amounts of embarrassment should refrain from claiming this as a real ascension.
+
+===Bug exploit===
+If you don't consider exploiting bugs to be cheating, it is possible to achieve ascension on turn 1 in non-wizard mode.
+
+The bug is [[integer overflow]] of the turn counter.
+
+This will take very much effort to do manually, so it should be done with a [[paste]]d sequence instead. Using one does not allow responding to most interferences; they must be prevented or dealt with predictably.
+
+* [[Sounds]] could cause "--MORE--"; go to a dungeon level without anything that could cause them.
+* Attribute gains or losses from [[exercise]] or [[abuse]] could interfere by causing "--MORE--". Wear a [[ring of sustain ability]] to prevent this.
+* [[Monster]]s could interfere in many ways. They can be removed, but normally, new ones will spontaneously appear.
+** One way to stop this is by occupying all spaces with [[sessile]] monsters.
+*** Create a [[blue jelly]] or [[brown mold]], or use a pre-existing one, and attack it without [[cold resistance]] using something weak, causing it to divide. Continue until all spaces are occupied. You should move and choose the one to attack to avoid having them surround you.
+*** Choosing a level with little space and having ways to recover from the damage the monsters do will make this faster.
+*** [[Phasing]] monsters could appear in positions others cannot. The sum of your experience level and the dungeon level must be less than 20 so that they do not appear.
+** Another way is to [[genocide]] or make [[extinct]] every monster that can appear.
+*** Minimise your experience level and dungeon level to restrict the monsters that can appear.
+* Consumption of [[nutrition]] over time could also interfere.
+** Wear a [[ring of slow digestion]] to reduce it. Remove all other jewelry other than the ring of sustain ability, because they increase it.
+** [[Prayer]] can be used to regain nutrition. For it to be completely reliable, you must not be [[crowned]], and your god must not be [[anger|angry]].
+
+Write the following in a text editor:
+
+99999.<ESC>99999.<ESC>#pray<CR>y<ESC>
+
+If the "[[number pad]]" option is set to 1 or 2, [[Numeric prefix|add "n" before each "99999."]].
+
+Be sure to replace <ESC> with an actual escape character, and <CR> with an actual carriage return. These can be inserted, for example, with [[vi]]'s Ctrl-V command.
+
+Duplicate this line about 505,200 times, copy it into your paste buffer, paste it into NetHack's terminal, and wait approximately 19 days. This will overflow the turn counter, wrap around to -2,147,483,648 and slowly creep back up to zero. Each pasted line passes 8500 turns, so you must calculate precisely how many lines must be pasted to bring the counter back up to the right amount. As it approaches a reasonable negative value that should give you enough time, prepare to ascend, then offer the amulet to your deity as the counter ticks over to 1. 
+
+The hungry and weak status messages will interrupt the waiting command. You really need to wait until you are "weak" but not "fainting" 8499 turns later because "hungry" counts only as a minor problem, which will not always be solved by praying.
+
+If NetHack is compiled for a 64-bit platform, the "long" type will not wrap around until it gets to 9,223,372,036,854,775,808. The above trick still works in principle, but will take a few hundred million years to complete.
+
+{{upcoming|NetHack 3.7.0|For games running over 100000 turns, prayer timeout increases by 1 every 100 turns, so prayer will eventually fail and you will starve to death. This was implemented to prevent denial-of-service attacks against [[public server]]s.
+
+If a game runs over one billion turns, it ends immediately in an escape: {{message|The dungeon capitulates.}}}}
+
+{{noversion}}
+
+[[Category:Cheating]]}
+&&%s&& %s Palantir of Westernesse {4926 2006-07-14T23:29:28Z {458 Kernigh} #REDIRECT [[The Palantir of Westernesse]] #REDIRECT [[The Palantir of Westernesse]]}
+&&%s&& %s Hack 1.0.1 {93351 2015-04-11T13:14:37Z {4000605 HarJIT} /* Availability */ {{NetHack Versions}}
+
+'''Hack 1.0.1''' is the second public release of [[Hack]].  [[Andries Brouwer]] published it to the (now-obsolete) [[Usenet]] newsgroup net.sources in January 1985.
+
+== Availability ==
+
+Hack 1.0.1 first appeared as a [[patch]] against the [[Hack 1.0]] sources.  Google Groups has archived this patch at [https://groups.google.com/forum/message/raw?msg=net.sources/jRNnxnNh50I/O-N31akP1SYJ].  Because one part of the original [[Hack 1.0]] posting is not present at Google, the files in question must either be reconstructed before applying the patch, or obtained from elsewhere (see [[Hack 1.0#Availability]]).
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a Hack 1.0.1 distribution at [http://www.juiblex.co.uk/nethack/source/ab_hack-1.0.1.tar.gz], which does not have the benefit of the recovered original Part 15.
+
+== Significant changes ==
+
+* The pickup (,), option (o) and self-teleport (control-T) commands first appear in this version.
+* The HACKOPTIONS environment variable is recognized for the first time.
+* The tag "(with amulet)" now appears in the record file entry when an adventurer has the [[Amulet of Yendor]] in his possession at the end of the game.
+* Vault teleporters and the "[[ad aerarium]]" inscription appear for the first time.
+* The lurker above is now "'" instead of "~".
+
+== The adventurer ==
+
+The player may choose a [[Tourist]], a [[Archeologist|Speleologist]], a [[Barbarian|Fighter]],
+a [[Knight]], a [[Caveman|Cave-man]], or a [[Wizard]].  No option to play as female is available.
+
+The adventurer has [[experience]], [[hit points]], [[armor class]], and [[strength]].  He may advance to [[experience level]] 14.
+
+The initial [[pet]] is a little [[dog]].
+
+== Dungeon features ==
+
+The dungeon in Hack 1.0.1 has no branches; there is one way up and one way down.  The first 25 levels or so consist of rooms, and beyond that, the adventurer encounters mazes.
+
+Special rooms are [[shop]]s, [[treasure zoo]]s, and [[vault]]s.  If the player's login name is "david", David's Treasure Zoo appears much more frequently.
+
+Traps are:
+
+* [[arrow trap]]
+* [[bear trap]]
+* [[dart trap]]
+* [[pit]]
+* [[sleeping gas trap]]
+* [[teleportation trap]]
+* [[trapdoor]]
+
+The [[Amulet of Yendor]] is found under a boulder in a maze level.  The [[Wizard of Yendor]] does not appear in Hack 1.0.1.
+
+== Bestiary ==
+
+Hack 1.0.1 adds no new monsters.  The lurker above is now "'" instead of "~".
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[acid blob]]||a||&nbsp;
+|-
+|[[bat]]||B||&nbsp;
+|-
+|[[centaur]]||C||&nbsp;
+|-
+|[[chameleon]]||:||&nbsp;
+|-
+|[[cockatrice]]||c||Stoning by hissing is an [[instadeath]]
+|-
+|[[demon]]||&||&nbsp;
+|-
+|[[dog]]||d||&nbsp;
+|-
+|[[dragon]]||D||As the modern red dragon
+|-
+|[[ettin]]||e||&nbsp;
+|-
+|[[floating eye]]||E||&nbsp;
+|-
+|[[fog cloud]]||f||&nbsp;
+|-
+|[[freezing sphere]]||F||&nbsp;
+|-
+|[[gelatinous cube]]||g||&nbsp;
+|-
+|[[ghost]]||(space)||&nbsp;
+|-
+|[[giant ant]]||A||&nbsp;
+|-
+|[[giant beetle]]||b||&nbsp;
+|-
+|[[giant rat]]||r||&nbsp;
+|-
+|[[gnome]]||G||&nbsp;
+|-
+|[[guard]]||@||&nbsp;
+|-
+|[[hobgoblin]]||H||&nbsp;
+|-
+|[[homunculus]]||h||&nbsp;
+|-
+|[[imp]]||i||&nbsp;
+|-
+|[[jackal]]||J||&nbsp;
+|-
+|[[jaguar]]||j||&nbsp;
+|-
+|[[killer bee]]||k||&nbsp;
+|-
+|[[kobold]]||K||&nbsp;
+|-
+|[[large dog]]||d||&nbsp;
+|-
+|[[leocrotta]]||l||&nbsp;
+|-
+|[[leprechaun]]||L||&nbsp;
+|-
+|[[little dog]]||d||&nbsp;
+|-
+|[[long worm]]||w||if NOWORM ''not'' defined at compile time
+|-
+|[[lurker above]]||'||&nbsp;
+|-
+|[[mimic]]||M||&nbsp;
+|-
+|[[minotaur]]||m||&nbsp;
+|-
+|[[nurse]]||n||&nbsp;
+|-
+|[[nymph]]||N||&nbsp;
+|-
+|[[orc]]||O||&nbsp;
+|-
+|[[owlbear]]||o||&nbsp;
+|-
+|[[piercer]]||p||&nbsp;
+|-
+|[[purple worm]]||P||&nbsp;
+|-
+|[[quasit]]||Q||&nbsp;
+|-
+|[[quivering blob]]||q||&nbsp;
+|-
+|[[rust monster]]||R||Reduces enchantment rather than truly rusting
+|-
+|[[scorpion]]||s||&nbsp;
+|-
+|[[shopkeeper]]||@||&nbsp;
+|-
+|[[snake]]||S||&nbsp;
+|-
+|[[stalker]]||I||&nbsp;
+|-
+|[[tengu]]||t||&nbsp;
+|-
+|[[trapper]]||,||&nbsp;
+|-
+|[[troll]]||T||&nbsp;
+|-
+|[[umber hulk]]||U||&nbsp;
+|-
+|[[unicorn]]||u||&nbsp;
+|-
+|[[vampire]]||V||&nbsp;
+|-
+|[[violet fungi]]||v||&nbsp;
+|-
+|[[wraith]]||W||&nbsp;
+|-
+|[[wumpus]]||w||if NOWORM defined at compile time
+|-
+|[[xan]]||x||&nbsp;
+|-
+|[[xorn]]||X||&nbsp;
+|-
+|[[yellow light]]||y||&nbsp;
+|-
+|[[yeti]]||Y||&nbsp;
+|-
+|[[zombie]]||Z||&nbsp;
+|-
+|[[zruty]]||z||&nbsp;
+|-
+|}
+
+== Objects ==
+
+No new objects are introduced in Hack 1.0.1.
+
+=== Artifacts ===
+
+Hack 1.0.1 has only one [[artifact]], [[Orcrist]].  Any weapon may be named Orcrist and will do d10 extra points damage to [[orc]]s.  There can even be more than one Orcrist.
+
+In [[Hack 1.0.2]], Orcrist would be limited to [[two handed sword]]s.
+
+=== Amulets ===
+
+Only the [[Amulet of Yendor]] and the cheap plastic imitation exist in Hack 1.0.1.
+
+=== Food ===
+
+Food items in Hack 1.0.1 are:
+
+* [[apple]]
+* [[banana]]
+* [[candy bar]]
+* [[carrot]]
+* [[clove of garlic]]
+* [[corpse]] (called ''dead foo'' rather than ''foo corpse'')
+* [[egg]]
+* [[food ration]]
+* [[fortune cookie]]
+* [[lizard corpse|dead lizard]]
+* [[melon]]
+* [[orange]]
+* [[pancake]]
+* [[pear]]
+* [[tin]]
+* [[tripe ration]]
+
+The tin did not contain the remains of monsters, but rather a randomly-chosen food such as peaches or, if the adventurer is lucky, [[spinach]].
+
+The dead lizard was a found object rather than a corpse; live lizards did not exist in Hack 1.0.1.  It could reduce [[confusion]], but had no effect on [[cockatrice]]s.
+
+=== Weapons ===
+
+Weapons in Hack 1.0.1 are:
+
+* [[arrow]]
+* [[axe]]
+* [[boomerang]]
+* [[bow]]
+* [[crossbow bolt]]
+* [[crossbow]]
+* [[crysknife]]
+* [[dagger]]
+* [[dart]]
+* [[flail]]
+* [[long sword]]
+* [[mace]]
+* [[rock]]
+* [[sling]]
+* sling bullet
+* [[spear]]
+* [[two-handed sword|two handed sword]]
+* [[worm tooth]]
+
+=== Tools ===
+
+Tools in Hack 1.0.1 are:
+
+* [[expensive camera]]
+* [[ice box]]
+* [[magic whistle]]
+* [[tin whistle|whistle]]
+
+The ice box is the only container.  Then as now, it preserved corpses, and was generally too heavy (and too rare) to be useful for inventory management.
+
+=== Armor ===
+
+Armor items in Hack 1.0.1 are:
+
+* [[banded mail]]
+* [[chain mail]]
+* [[elven cloak]]
+* [[helmet]]
+* [[leather armor]]
+* [[leather gloves|pair of gloves]]
+* [[plate mail]]
+* [[ring mail]]
+* [[scale mail]]
+* [[shield]]
+* [[splint mail]]
+* [[studded leather armor]]
+
+=== Potions ===
+
+Potions in Hack 1.0.1 are:
+
