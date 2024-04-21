@@ -1,4 +1,4 @@
-with import <nixpkgs> {};
+with import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {};
 
 buildEnv {
     name="vinst";
@@ -14,5 +14,7 @@ paths = [ (python3.withPackages(ps: with ps; [
     dacite
     python-lsp-server
     ipython
+    requests
+    openai
 ])) protobuf ];
 }

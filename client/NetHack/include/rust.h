@@ -34,6 +34,14 @@ void send_session_event(const char *evt_name,
                         int32_t previous_value,
                         const char *string_value);
 
+void send_session_event_fat(const char *evt_name,
+                        int32_t value,
+                        int32_t previous_value,
+                        const char *string_value,
+                        const char* caused_by,
+                        const char* action_name);
+  
+
 void send_session_event_timed(const char *evt_name,
                               int32_t new_value,
                               int32_t previous_value,
@@ -41,5 +49,9 @@ void send_session_event_timed(const char *evt_name,
                               int32_t min_delay_seconds);
 
 void oracle_stfu(boolean stfu);
+
+void coconut_handle_pline(const char* text);
+
+void maybe_send_coconut_plines();
 
 #undef obj

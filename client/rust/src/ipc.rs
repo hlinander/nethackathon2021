@@ -1,4 +1,4 @@
-use crate::nh_proto::{self, SessionEvent};
+use crate::nh_proto::{self, CoconutSong, SessionEvent};
 use nh_proto::event::Msg;
 use prost::Message;
 use std::io::{Read, Write};
@@ -135,6 +135,13 @@ impl Ipc {
     pub fn wealth_tax(&mut self) -> Result<()> {
         match self {
             Self::Tcp(ipc) => ipc.wealth_tax(),
+            Self::Fake => Ok(()),
+        }
+    }
+
+    pub fn coconut_song(&mut self, song: CoconutSong) -> Result<()> {
+        match self {
+            Self::Tcp(ipc) => ipc.coconut_song(song),
             Self::Fake => Ok(()),
         }
     }
@@ -307,6 +314,16 @@ impl TcpIpc {
     pub fn wealth_tax(&mut self) -> Result<()> {
         let req = nh_proto::WealthTax {};
         self.send_event(Msg::WealthTax(req))?;
+        let status = self.read_message::<nh_proto::Status>()?;
+        if status.code == 0 {
+            Ok(())
+        } else {
+            Err(Error::Status(status))
+        }
+    }
+
+    pub fn coconut_song(&mut self, req: CoconutSong) -> Result<()> {
+        self.send_event(Msg::CoconutSong(req))?;
         let status = self.read_message::<nh_proto::Status>()?;
         if status.code == 0 {
             Ok(())

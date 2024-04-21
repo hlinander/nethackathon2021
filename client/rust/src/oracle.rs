@@ -30,7 +30,7 @@ use crate::{nh_api::obj_to_obj_data, oracle};
 static mut TOKIO_RUNTIME: Option<tokio::runtime::Runtime> = None;
 
 #[derive(Debug, Default, PartialEq, Copy, Clone)]
-enum MapObjectID {
+pub enum MapObjectID {
     #[default]
     None,
     Item,
@@ -50,12 +50,12 @@ impl MapObjectID {
 }
 
 #[derive(Clone, Default)]
-struct MapObject {
-    id: MapObjectID,
-    name: String,
-    symbol: char,
-    color: u8,
-    distance: f32,
+pub struct MapObject {
+    pub id: MapObjectID,
+    pub name: String,
+    pub symbol: char,
+    pub color: u8,
+    pub distance: f32,
 }
 
 impl MapObject {
@@ -121,7 +121,7 @@ struct PromptRequest {
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
     let ip = "10.10.10.5"; // hampoos
-                              // let ip = "172.26.2.104"; // jannix
+                           // let ip = "172.26.2.104"; // jannix
     let client = Client::builder()
         .connect_timeout(Duration::from_millis(2000))
         .http2_keep_alive_timeout(Duration::from_millis(2000))
@@ -329,7 +329,7 @@ const GLYPH_UNEXPLORED_OFF: u32 = NUMMONS + GLYPH_STATUE_OFF;
 const GLYPH_NOTHING_OFF: u32 = GLYPH_UNEXPLORED_OFF + 1;
 const MAX_GLYPH: u32 = GLYPH_NOTHING_OFF + 1;
 
-unsafe fn get_map_item_list() -> Vec<MapObject> {
+pub unsafe fn get_map_item_list() -> Vec<MapObject> {
     let mut o_iter = g.level.objlist;
     let player_pos = (u.ux as f32, u.uy as f32);
     let mut list = Vec::new();
@@ -386,7 +386,7 @@ unsafe fn get_map_item_list() -> Vec<MapObject> {
     list
 }
 
-unsafe fn get_tile_list() -> Vec<MapObject> {
+pub unsafe fn get_tile_list() -> Vec<MapObject> {
     let player_pos = (u.ux as f32, u.uy as f32);
     let mut tiles = Vec::new();
     let viz_array_addr = nethack_rs::g_viz_array();
@@ -441,7 +441,7 @@ unsafe fn get_tile_list() -> Vec<MapObject> {
     tiles
 }
 
-unsafe fn get_monster_list() -> Vec<MapObject> {
+pub unsafe fn get_monster_list() -> Vec<MapObject> {
     let mut m_iter = g.level.monlist;
     let player_pos = (u.ux as f32, u.uy as f32);
     let mut list = Vec::new();

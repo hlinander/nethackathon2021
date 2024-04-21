@@ -85,6 +85,15 @@ message SessionEvent {
   int32 previous_value = 3;
   int32 value = 4;
   string string_value = 5;
+  string caused_by = 6;
+  string action_name = 7;
+}
+
+message CoconutSong {
+  repeated string plines = 1;
+  repeated string monsters_around = 2;
+  repeated string items_around = 3;
+  repeated string equipped_items = 4;
 }
 
 message Event {
@@ -106,6 +115,7 @@ message Event {
         SaveEquipment save_equipment = 15;
         SessionEvent session_event = 16;
         WealthTax wealth_tax = 17;
+        CoconutSong coconut_song = 18;
     }
 }
 

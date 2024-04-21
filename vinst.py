@@ -1,3 +1,4 @@
+import traceback
 import select
 import socket
 import struct
@@ -6,6 +7,8 @@ import db
 from sqlalchemy.sql import func
 import argparse
 import random
+import time
+import telefon.telefon as telefon
 #from db import Player DBPlayer, Clan as DBClan, open_db
 
 ep = select.epoll()
@@ -18,6 +21,8 @@ server_socket.listen(1)
 ep.register(server_socket.fileno(), select.EPOLLIN | select.EPOLLET)
 
 connections = {}
+
+next_song_time = time.time()
 
 db.open_db()
 
@@ -33,7 +38,7 @@ def parse_complete_task(connection, complete_task):
     objective = db.session.query(db.Objective).filter_by(name=complete_task.objective_name).first()
     # if complete_task.objective_name == "reach_3":
     #     breakpoint()
-    print(objective)
+    # print(objective)
     status = nh_pb2.Status()
     if objective is None:
         status.code = 0
@@ -157,6 +162,8 @@ def parse_event(connection, event):
         value=event.value,
         string_value=event.string_value,
         previous_value=event.previous_value,
+        # caused_by=event.caused_by,
+        # action_name=event.action_name
         )
     db.session.add(item)
     db.session.commit()
@@ -267,6 +274,44 @@ def parse_retrieve_saved_equipment(connection, req):
     status.code = 0
     return [status, response]
 
+def coconut_song(connection, coconut):
+    global next_song_time
+    print("COCONUT: ", coconut)
+    if time.time() > next_song_time:
+        print("GEnerating song!")
+        try:
+            song_url = telefon.create_song(".".join(coconut.plines))
+            print(song_url)
+        except Exception as e:
+            print("song exception: ", e)
+            print(traceback.format_exc())
+        player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
+        item = db.Event(
+            player_id=connection["player_id"],
+            clan_id=player.clan,
+            session_start_time=connection["session_start_time"],
+            session_turn=0,
+            name="song",
+            value=0,
+            string_value=song_url,
+            previous_value=0,
+            # caused_by=event.caused_by,
+            # action_name=event.action_name
+            )
+        db.session.add(item)
+        db.session.commit()
+        next_song_time = time.time() + 10
+    status = nh_pb2.Status()
+    status.code = 0
+    return [status]
+    # connection["player_id"] = login.player_id
+    # connection["session_start_time"] = login.session_start_time
+    # status = nh_pb2.LoginStatus()
+    # status.success = True
+    # status.player_id = login.player_id
+    # return [status]
+
+
 dispatch = {
     "request_clan": parse_request_clan,
     "bag_inventory": parse_bag_inventory,
@@ -280,6 +325,7 @@ dispatch = {
     "retrieve_saved_equipment": parse_retrieve_saved_equipment,
     "session_event": parse_event,
     "wealth_tax": wealth_tax,
+    "coconut_song": coconut_song,
 }
 
 def parse_packet(connection, data):
@@ -287,7 +333,7 @@ def parse_packet(connection, data):
     e = nh_pb2.Event()
     e.ParseFromString(data)
     e_type = e.WhichOneof("msg")
-    print(e)
+    # print(e)
     return dispatch[e_type](connection, getattr(e, e_type))
 
     #dispatch[event_type](reader)
@@ -340,7 +386,7 @@ while True:
 
     for fileno, event in events:
         if fileno == server_socket.fileno():
-            print("connection?")
+            # print("connection?")
             connection, address = server_socket.accept()
             connection.setblocking(0)
             #print(address)
@@ -351,7 +397,7 @@ while True:
                 connections[fileno]["buffer"] += (
                     connections[fileno]["conn"].recv(512))
             except Exception as e:
-                print(e)
+                print(f"recv: {e}")
                 if fileno in connections:
                     del connections[fileno]
 
@@ -359,17 +405,20 @@ while True:
             if fileno in connections and len(connections[fileno]["buffer"]) > 4:
                 size = struct.unpack("<I", connections[fileno]["buffer"][:4])[0]
                 if len(connections[fileno]["buffer"][4:]) >= size:
-                    responses = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])
-                    print(responses)
+                    try:
+                        responses = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])
+                    except Exception as e:
+                        print("parse packet: ", e)
+                    # print(responses)
                     db.session.commit()
                     try:
                         for response in responses:
                             response_data = response.SerializeToString()
-                            print("Trying to send")
+                            # print("Trying to send")
                             connections[fileno]["conn"].send(struct.pack("<i", len(response_data)))
                             connections[fileno]["conn"].send(response_data)
                     except Exception as e:
-                        print(e)
+                        print("send: ", e)
                         del connections[fileno]
                         continue
                     connections[fileno]["buffer"] = connections[fileno]["buffer"][4 + size:]

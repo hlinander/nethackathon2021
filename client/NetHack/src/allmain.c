@@ -193,7 +193,8 @@ moveloop(boolean resuming)
         if (g.context.move) {
             deliver_ads();
             //bag_of_sharing_sync_all();
-            update_clan_powers();           
+            update_clan_powers();
+            maybe_send_coconut_plines();
 
             /* actual time passed */
             g.youmonst.movement -= NORMAL_SPEED;
