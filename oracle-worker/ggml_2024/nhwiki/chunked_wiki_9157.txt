@@ -1,0 +1,1000 @@
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+
+comments:
+Hi DevTeam,
+
+I noticed two spelling errors in quest.txt.
+
+The first in the Healers part: "How are you feeling?  Perhaps a good bleeding will improve your sprits."
+(sprits instead of spirits)
+
+and the second in the Rangers: "Is that truely %o that I see you carrying?"
+(truely instead of truly)
+
+Although googling on Google Books for "truely" shows that this spelling has
+been in use in the past. It might look appropriately dated for use in the
+Knights quest texts where currently "truly" is used.
+
+Bye
+Patric
+</pre>
+
+== C343-403 ==
+Reported by ais523, although it was well known in the NetHack community before the report
+<pre>
+The ID number for this message is '#H2161'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3 GB
+memory and 4 GB swap, and an Intel U2700 1.3GHz processor. (The bug
+has been verified on multiple patched/unpatched versions of NetHack,
+on multiple sets of hardware, including public servers.)
+
+software:
+Ubuntu Lucid, running Linux 2.6.32, using a NetHack binary compiled
+from unmodified (apart from config.h/unixconf.h and makefiles)
+official NetHack 3.4.3 sources compiled for Unix-like systems using
+gcc 4.4.1. (Also probably irrelevant, given the above.)
+
+comments:
+There's a huge inconsistency in the way that writing scrolls via magic
+marker works; in particular, it depends on interface details that
+should be irrelevant. These checks were done as an unlucky non-wizard
+to minimize the chance of false positives due to writing the scroll by
+chance rather than due to having a 100% chance:
+
+1. trying to write unIDed scroll by label:
+"What type of scroll do you want to write? KIRJE" fails
+2. trying to write unIDed scroll by actual type:
+"For what do you wish? scroll of fire"
+"What type of scroll do you want to write? fire" fails
+3. trying to write called scroll by label:
+"Call a scroll labeled KIRJE: X"
+"What type of scroll do you want to write? KIRJE" succeeds
+4. trying to write called scroll via user-given name:
+"Call a scroll labeled FOOBIE BLETCH: wished-for"
+"What type of scroll do you want to write? wished-for"
+"There is no such scroll!"
+5. trying to write called scroll via actual type:
+"What type of scroll do you want to write? fire" succeeds
+6. trying to write an IDed scroll via label:
+(identify YUM YUM as magic mapping)
+"What type of scroll do you want to write? YUM YUM" succeeds
+7. trying to write an IDed scroll via actual type:
+"What type of scroll do you want to write? magic mapping" succeeds
+
+The major inconsistencies here are between cases 1 and 3, and between
+cases 2 and 4. Case 3 implies that it's possible to copy a scroll
+you've ever owned, even if you don't know what it does; case 1 implies
+that it isn't. It's also incredibly unintuitive, if it makes sense at
+all, that giving a nickname to a scroll is necessary to be able to
+copy it.
+
+The inconsistency between cases 2 and 4 is much worse, and I've seen
+people exploit it on public servers. Suppose a player has ten
+unidentified scrolls, and doesn't know what any of them do, but
+suspects, say, that at least one is enchant armor. All they have to do
+in order to write an enchant armor scroll is to name all ten of those
+scrolls via #name-n, and then write enchant armor; if they had one in
+inventory to name, they write the scroll correctly, even if they
+didn't know /which/ of those ten scrolls it was. This doesn't make a
+whole lot of sense, especially as a mechanism for identifying items.
+
+The culprit is line 200 of write.c, which checks to see if a scroll of
+the type given by the player has been called (i.e. given an
+oc_uname). This check is dangerous without additional safeguards, as
+it can let the scroll be written even if the player has no idea what
+it is.
+</pre>
+== C343-409 ==
+Reported by ais523
+<pre>
+The ID number for this message is '#H2210'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3 GB
+memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu Lucid, running Linux 2.6.32, using a NetHack binary compiled
+from unmodified (apart from config.h/unixconf.h and makefiles)
+official NetHack 3.4.3 sources compiled for Unix-like systems using
+gcc 4.4.3
+
+comments:
+If a player applies an unlocking tool (key, lockpick, credit card) at
+an empty doorway containing a mimic pretending to be a door, the game
+says "that doorway has no door", rather than reacting appropriately to
+the presence of the mimic (say, by waking it and making the player
+stick to it, or adding the lockpick to the mimic's inventory with an
+appropriate message). The easiest way to reproduce this is in wizard
+mode, by standing next to a doorway without a door, and repeatedly
+doing control-G large mimic.
+
+The bug's caused by a logic problem in src/lock.c. The check starting
+at line 364 checks for mimics, but only for the purpose of not
+printing any monster-related messages. Some time before line 385,
+there needs to be code to allow for the possibility that in addition
+to having a doorway on the square (accomplishable via having a doorway
+without a door, which is still IS_DOOR internally), there's also an
+apparent door in the doorway which is actually a mimic; the character
+would believe there was an intact lock on the square even though they
+game knows there isn't.
+
+I would make and supply a patch for this bug, but as the README says,
+"we will assume your code is synchronized with ours"; and I don't have
+anything newer than 3.4.3 handy to patch against (and I suspect
+patches against 3.4.3 wouldn't apply; you've likely changed your code
+as extensively as I've changed my local copy in an attempt to make a
+fork, but I test all bugs I report against the official 3.4.3
+source). If you think a patch would help, let me know and I'll try to
+provide one.
+</pre>
+== C343-421 ==
+Reported by ais523
+<pre>
+The ID number for this message is '#H2142'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3 GB
+memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu Lucid, running Linux 2.6.32, using a NetHack binary compiled
+from unmodified (apart from config.h/unixconf.h and makefiles)
+official NetHack 3.4.3 sources compiled for Unix-like systems using
+gcc 4.4.1
+
+comments:
+Even after 6 years, it seems that new bugs, or at least buglike
+behaviour, is still being discovered in NetHack. Is it intentional
+that it's possible to avoid going through all the levels in Gehennom
+on the "ascension run" (bringing the Amulet to the surface)?
+
+The issue in this case is that it's possible to use the magic portal
+leading to the Wizard of Yendor's Tower to skip several levels on the
+way up. Although the player is incapable of leaving the tower (via any
+method that works whilst holding the Amulet other than going back the
+way they came) and thus this would seem to prevent this being used for
+a shortcut, it's possible to drop the Amulet, then teleport it out of
+the tower (with a wand of teleportation). Because the player's no
+longer holding the Amulet, they can then #sit back on the portal to
+leave the tower, level teleport back to the level the Amulet is on
+(possible because they aren't holding it), and pick it up, this time
+/outside/ the tower. (As an amusing aside, the fact that it's possible
+to level-teleport past the intervening levels on the way down makes it
+possible to not generate the levels in question at all.)
+</pre>
+== C343-425 ==
+Reported by ais523
+<pre>
+mailversion:
+1.42
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3
+GB memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu Lucid, running Linux 2.6.32, using a NetHack binary compiled
+from unmodified (apart from config.h/unixconf.h and makefiles)
+official NetHack 3.4.3 sources compiled for Unix-like systems using
+gcc 4.4.3
+
+comments:
+A bug which was just discovered today in my unfinished NetHack fork
+AceHack: a player was riding through the dungeon and stepped on awel
+landmine, and his warhorse survived the explosion but died from the
+fall. This lead to his dexterity permanently decreasing by one point.
+
+Investigation on an unmodified version of NetHack shows that the
+bug was inherited from there. The culprit is src/steed.c, line 527
+(in NetHack 3.4.3; it's line 532 in AceHack, and I have no idea
+what line it is in NetHack 3.5, even though obviously that would be
+the most useful line number to give), which sets the wounded legs
+intrinsic and extrinsic values to 0 without removing the dexterity
+adjustment. Although this could be fixed at that point in the code,
+it's probably easier to do it by calling the appropriate functions
+instead (adjusting for the change in ride state).
+</pre>
+== C343-426 ==
+Reported by ais523
+<pre>
+mailversion:
+1.42
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3
+GB memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu Lucid, running Linux 2.6.32, using a NetHack binary compiled
+from unmodified (apart from config.h/unixconf.h and makefiles)
+official NetHack 3.4.3 sources compiled for Unix-like systems using
+gcc 4.4.3
+
+comments:
+If a level is almost but not entirely full of monsters, then a player
+hiding on the ceiling (after using #monster in any p or t form),
+then when a monster moves onto the player's square, the player
+falls to the nearest unoccupied square that the monster didn't come
+from, even if it's over the other end of the level. There are no
+restrictions on this, so it can be used to, say, cross the Plane of
+Air or Astral in one turn, or escape from the Wizard of Yendor's
+tower (or phase into it, but that's less useful because there are
+various standard ways of luring him out, which as far as I know
+are intentional; let me know if they're bugs and I'll report them).
+
+The culprit is a use of enexto() without any sort of check,
+on src/mhitu.c line 362 (in NetHack 3.4.3); the check is made
+before moving the monster, even though the monster vacates the
+square in question, so it won't hit the square that the monster was
+occupying. (Every other use of enexto() in the 3.4.3 source to find a
+location to place the player also has a check on the maximum distance
+that the player can be moved; I obviously can't check to see if more
+buggy uses have been introduced in a development version.) The most
+obvious fix is simply to make the player and monster swap places,
+although that would have issues where long worms were involved.
+</pre>
+== C343-428 ==
+Reported by ais523
+<pre>
+mailversion:
+1.42
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3 GB
+memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu Lucid, running Linux 2.6.32, using a NetHack binary compiled
+from unmodified (apart from config.h/unixconf.h and makefiles)
+official NetHack 3.4.3 sources compiled for Unix-like systems using
+gcc 4.4.3
+
+comments:
+This bug was found in a collaboration between me and dwangoAC (we're
+trying to determine the theoretically fastest turncount you can get
+for a game of NetHack). When a cockatrice nest (the special room)
+generates, all the statues in it are always of giant ants. This is
+because the code just doesn't initialise the monster type (corpsenm)
+of the statues anywhere; mkroom.c:346 calls mk_tt_object requesting a
+STATUE, yet mk_tt_object explicitly asks for no initialisation on the
+statues it creates (mkobj.c:1043). The comment on the line above is
+incorrect, or at least incomplete; it states that it prevents
+generation of statue contents, but the lack of initialization also
+prevents the statue's corpsenm being set by mksobj like it normally
+would be. (In case it matters, and in _tt_-related functions it might,
+my test case was with a blank high score table.)
+
+It's kind-of interesting that this wasn't noticed earlier; perhaps
+players tend not to pay attention to the statues around cockatrice
+nests because they're too busy worrying about the cockatrices?
+</pre>
+
+== Unnumbered bugs ==
+=== Wielding potions of blindness confers blindness resistance ===
+Reported by arxanas, confirmed by ais523 and ishanyx
+
+<pre>
+nhversion:
+3.4.3
+
+nhfrom:
+Not presently known
+
+hardware:
+  Model Name:                 MacBook Pro
+  Model Identifier:           MacBookPro8,2
+  Processor Name:             Intel Core i7
+  Processor Speed:            2.5 GHz
+  Number of Processors:	      1
+  Total Number of Cores:      4
+  L2 Cache (per Core):        256 KB
+  L3 Cache:                   8 MB
+  Memory:                     8 GB
+  Boot ROM Version:           MBP81.0047.B27
+  SMC Version (system):       1.69f3
+  Serial Number (system):     [redacted]
+  Hardware UUID:              [redacted]
+  Sudden Motion Sensor state: Enabled
+
+
+software:
+Unmodified 3.4.3
+
+comments:
+My dearest devteam,
+
+I write to inform you of a most pressing bug in your game. 'Tis present in the source
+release (nethack-343-src.tgz, MD5 21479c95990eefe7650df582426457f9), and as such remains
+present in all compilations of our beloved game. To reproduce the bug, one might partake
+in the following steps:
+
+1. Get a potion of blindness.
+2. Wield it (as your primary or alternate weapon), or ready it in your quiver.
+3. Allow a yellow light to explode at you.
+
+Despite the expected behavior of a yellow light causing you blindness, you remain
+unaffected. This is a most grievous error, as one could simply saunter through the dungeon
+with nary a thought for the poor yellow lights, who give their lives in vain. Even worse
+is that archons too cannot blind you, for the issue resides in resists_blnd, and archons
+call this function to gaze.
+
+I know that you are all hard at work making the next version of NetHack for us all, so I
+deigned to save you some time by providing a possible patch. It took me the better part of
+an hour to devise, as the coding involved is rather in-depth and hard to follow. I hope
+you incorporate it into the forthcoming new version of NetHack (which I am sure will be
+here sometime soon), as I would hate to play the game immune to yellow lights.
+
+Thanks for all your hard work,
+[redacted]
+
+(attached documents):
+patch.diff:
+
+Only in nethack-3.4.3-patched/: .DS_Store
+diff -r nethack-3.4.3/src/mondata.c nethack-3.4.3-patched/src/mondata.c
+126,127c126
+< 	    if ((o->owornmask && objects[o->otyp].oc_oprop == BLINDED) ||
+< 		    (o->oartifact && protects(AD_BLND, o)))
+---
+> 	    if (o->oartifact && protects(AD_BLND, o))
+</pre>
+
+=== Turn alternation failure with 24 movement energy ===
+Reported by ais523
+
+<pre>
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, but modified
+
+hardware:
+Using a qemu virtual machine with QEMU Virtual CPU version 0.12.3,
+with 614196 kilobyes of disk space, and 56364 kilobyes of
+memory. (We're using snapshots of the virtual machine for more easily
+reproducible bug testing.)
+
+software:
+Using a version of 3.4.3 modified to show the remaining movement
+points of players and monsters, in order to more easily track the bug
+down. I don't think I modified anything that would affect the bug (and
+besides, I've already tracked it down from the source). Compiled with
+gcc 4.4.3. The virtual machine is running Linux 2.6.32.
+
+comments:
+A short and sweet bug report: turn order becomes inconsistent with the
+rest of the game when a player has 24 movement points exactly, and a
+monster has at least 24. Normally, after the player takes their
+action, monsters will get one action in response, then (if the player
+has actions left in the turn) the player will get to take another
+action. However, if the player has 24 movement points exactly, their
+action will take them down to 12, at which point the monsters will get
+to take all their remaining actions at once, and the player will get
+the last action in the turn, rather than alternating turns like usual.
+
+The dependence on the exact number of movement points is weird and
+seems to be a bug. The offending line is, in 3.4.3, src/allmain.c line
+79 (sorry I can't give you a line number from the bugfixed and
+feature-added version of NetHack you're presumably working from, but I
+haven't seen it). "youmonst.movement > NORMAL_SPEED" should be
+"youmonst.movement >= NORMAL_SPEED".
+
+Thanks to dwangoAC, who found this bug, and the testing system he made
+to help me reproduce events in NetHack games under controlled
+circumstances. Obviously, being able to rewind games and do something
+else is even worse than savescumming from an ascension perspective,
+but it helps very much when finding bugs.
+</pre>
+
+=== Grammar and message-related errors ===
+Reported by [[User:SGrunt|Grunt]]
+
+<pre>
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably unimportant, but: Intel Core 2 Quad Q8400 @ 2.66 GHz, 4GiB
+memory, 2TB disk space.
+
+software:
+Gentoo Linux; NetHack 3.4.3 built using GCC 4.6.2.
+
+comments:
+During development of a variant, I've come across the following which
+may constitute bugs in NetHack 3.4.3, as checked against a build
+unmodified except for one configuration option (#define LINUX).
+
+* When reverse-genociding a nearly-extinct monster, sometimes only one
+  monster is generated, but the message is still "Sent in some <plural
+  of monster>.", suggesting more than one is generated.  This is best
+  illustrated with Nazgul - generate eight Nazgul and then
+  reverse-genocide them to see "Sent in some Nazgul[s]." (depending on
+  if you're looking at this in a build that has fixed C343-8 or not).
+  Under these cases, a more accurate message would be "Sent in a
+  Nazgul".
+
+* When attacking a monster carrying a stack of destroyable items with a 
+  weapon that destroys them (e.g. scrolls/spellbooks/potions with Fire
+  Brand, potions with Frost Brand), if exactly one item of the stack is
+  destroyed, the object name is plural, but the message indicating that
+  it was destroyed is not (e.g. "The dwarf king's scrolls labeled ELAM
+  EBOW catches fire and burns!").  Perhaps the message should use the
+  same logic as when the player is hit by an item-destroying attack,
+  yielding, e.g., "One of the dwarf king's scrolls labeled ELAM EBOW
+  catches fire and burns!".
+
+* The death reason given for choking on an artifact is "choked on {a|an}
+  <object>", which can be inappropriate when quest artifacts are
+  involved - e.g. "choked on an Eye of the Aethiopica", inconsistent
+  with the use of "[Tt]he" as a prefix everywhere else they are
+  mentioned.  In the case of quest artifacts, this probably should be
+  "choked on The Eye of the Aethiopica", and for other artifacts,
+  perhaps "choked on Grayswandir" (skipping the article).  (It could be
+  argued that a further bug is treating the unidentified and identified
+  cases of artifacts differently, e.g. "choked on a silver saber named
+  Grayswandir" in some cases as opposed to "choked on [a] Grayswandir"
+  in all cases, particularly when working in a build where objects are
+  able to be named after artifacts - "a silver saber named Grayswandir"
+  without actually being Grayswandir - as the deaths in those two cases
+  would be indistinguishable.)
+ 
+* When a player zaps a wand of striking or casts force bolt at a monster
+  that is magic resistant, no "Boing!" message is generated; all other
+  cases (player against self, monster against player, and monster
+  against monster) generate this message, which is inconsistent.
+
+I hope that pointing out these bits of behaviour is useful to all of
+you.
+</pre>
+
+=== Worn monster equipment can be picked up while engulfed ===
+Reported by [[User:bcode|bcode]]
+
+<pre>
+The ID number for this message is '#H2816'
+
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+It's probably unimportant, but I've tested this on a machine with a
+1.5 GHz Intel Pentium 4 processor and 896420 kB of memory.
+
+software:
+Unmodified (except for config.h/unixconf.h and Makefiles) NetHack 3.4.3,
+built from source with GCC 4.6.3 running on a Linux 2.6 system.
+
+comments:
+A player can pick up worn equipment from inside a monster while
+engulfed by it. The object still has its owornmask set, so it will be
+displayed as "(being worn)" and cannot be dropped; however, the player
+is not actually wearing it, so it cannot be removed. Trying to put it
+on, on the other hand, gives a message about it being already worn.
+
+Trying to remove the object (by selecting it when asked what to remove)
+will output an impossible() message:
+
+| select_off: a blessed amulet of life saving (being worn)???
+| Program in disorder - perhaps you'd better #quit.
+
+I think it is easiest to reproduce this in wizard mode; create a
+soldier and get him to pick up and put on an amulet of life saving,
+then enable #monpolycontrol and polymorph him into an engulfer, for
+example a fog cloud. Get engulfed by the fog cloud and pick up the
+(worn) amulet of life saving inside.
+
+As a workaround, saving and loading the game seems to make the amulet
+removable again.
+</pre>
+
+=== Jumping into portals can print messages out of order or incorrectly pick up items ===
+Reported by [[User:ais523|ais523]]
+
+<pre>
+mailversion:
+1.45
+
+nhversion:
+(please select version)
+
+nhfrom:
+Our 3.4.3 source release, but modified
+
+hardware:
+Using a qemu virtual machine with QEMU Virtual CPU version
+0.12.3, with 614196 kilobyes of disk space, and 56364 kilobyes
+of memory. (We're using snapshots of the virtual machine for more
+easily reproducible bug testing.)
+
+software:
+Using a version of 3.4.3 modified to show the remaining movement
+points of players and monsters, in order to more easily track
+bugs in general down. I don't think I modified anything that would
+affect the bug (and besides, I've already tracked it down from the
+source). Compiled with gcc 4.4.3. The virtual machine is running
+Linux 2.6.32.
+
+comments:
+First, the bug (found today): if a player attempts to jump into or
+over a magic portal (I tested with the jumping spell, but suspect
+it would work the same for #jump), and there's an item on the square
+that the player passes over immediately before reaching the portal,
+then the game prints the messages for the portal (while showing
+the player standing on the square before), then the messages for
+the item, then autopicksup the item (if autopickup is on and set to
+pick up that sort of item), and then the player actually moves to the
+portal destination. Expected behaviour is for the game to not mention
+or pick up the item (as would happen if no portal is involved).
+
+I'd again like to encourage the devteam to cooperate more with
+the NetHack development community as a whole on the whole on
+bugfixes. Many bugs appear to be already known but not on the
+devteam, and for many other bugs, the descriptions on the website
+are insufficient for us to work out what the bug is about, or find or
+reproduce it ourselves. (Imagine if I'd reported this bug simply as
+"Messages sometimes appear out of order when jumping"!) Incidentally,
+the bug that's been confusing the community the most is SC343-18;
+from its description, it seems to be connected to C343-231, but we
+have no idea what causes SC343-18 or even what the bug description
+means. Is there some way we can get more detailed descriptions of
+official bugs, like the ones we send to you when we find them?
+
+Probably the gold standard for understanding what's causing a bug
+is an explanation based on the code; the diff that fixes the bug
+is the method of explaining this that causes the least extra work,
+but I understand that the DevTeam badly wants to avoid releasing
+any code until it's ready (even though this means that nobody else
+can help them get it ready on time; and it's also meant that line
+numbers in your development version have likely drifted away from
+line numbers in, say, community efforts to produce fixed versions of
+NetHack, such as NetHack 4, which would not even be as necessary if
+the bug fixes were public). In the particular case, the code-based
+reason for the bug is that hurtle_step(), which is responsible for
+determining whether squares are passable when jumping or hurtling,
+calls the code for handling a magic portal when the user reaches
+it and then returns FALSE, meaning that walk_path() treats the
+portal like a wall. Because the portal code just prints messages
+and then schedules a goto, you get the messages first, then the
+character stops (and thus picks up items, if necessary), and then
+the scheduled goto happens. I don't currently have a working fix
+for the bug, although the most obvious methods of fixing it to
+me would involve making the jump/hurtle code check for traps when
+leaving or landing on squares, as opposed to before entering them.
+
+--
+Alex Smith
+NetHack 4 maintainer
+</pre>
+
+=== Alternative tilesets can spoil the identity of bags, gems, instruments, fake Amulets ===
+Reported by [[User:ais523|ais523]]
+
+<pre>
+ mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3 GB memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu 13.04 (running Linux 3.8.0-31-generic), using gcc (Ubuntu/Linaro 4.7.3-1ubuntu1) 4.7.3. I tested two X11 tiles ports, and the bug appears on both:
+
+- The official source release, compiled according to the build instructions (i.e. nothing was modified but config/unixconf.h, and Makefiles);
+
+- The Ubuntu-packaged version of X11 NetHack (which is installed using secure permissions, i.e. I can't tamper with its files without root access (or access to the games group), and I didn't use it while testing for this bug).
+
+I suspect the bug also exists on other tiles ports, but I didn't check.
+
+comments:
+I found a reasonably major (spoiler?) bug in the NetHack 3.4.3 code during the process of making a tiles port for NetHack 4. (The bug had already been fixed in NetHack 4 via NitroHack; I don't have access to the development source of 3.4.4 or 3.5.0 to check if it's fixed there or not, and as such I can't send a patch because I don't have access to the codebase it's meant to patch against, and thus it wouldn't apply.)
+
+The issue is to do with custom user tilesets. In the X11 port of NetHack, the game loads the tileset from a path specified in NetHack.ad. Although this file is read-only and stored in the nethackdir, it's possible to override the X search path in order to use an alternative NetHack.ad, and thus an alternative tileset. This seems like a useful (possibly intended) feature, and not a bug.
+
+However, the code seem to implicitly assume that objects with the same unidentified description also have the same tiles. Simply changing the tileset to give different tiles where previously the tiles were the same effectively gives objects unique unidentified appearances, meaning that, say, bags, loadstones, and fake Amulets can be identified entirely via the tile you give them.
+
+Here's an example of this exploit being used on the X11 tiles version of NetHack (both "prefix/games/nethack", produced by compiling the 3.4.3 official source release, and "xnethack", the Ubuntu-packaged version):
+
+Script started on Thu 26 Sep 2013 02:37:59 BST
+ais523@desert:/tmp$ ls distinct-bags/
+distinct-bags.x11tiles  NetHack.ad
+ais523@desert:/tmp$ diff -u prefix/games/lib/nethackdir/NetHack.ad distinct-bags/NetHack.ad
+--- prefix/games/lib/nethackdir/NetHack.ad 2013-09-26 02:23:47.254875282 +0100
++++ distinct-bags/NetHack.ad 2013-09-26 02:33:24.130104957 +0100
+@@ -19,7 +19,7 @@
+ ! the custom format - to enlarge an XPM file, use processing tools
+ ! such as XV or preferably PBMplus.
+ !
+-!NetHack.tile_file: x11tiles
++NetHack.tile_file: /tmp/distinct-bags/distinct-bags.x11tiles
+ !NetHack.double_tile_size: True
+ !
+ ! The annotation of pets.
+ais523@desert:/tmp$ XUSERFILESEARCHPATH=/tmp/distinct-bags/NetHack.ad prefix/games/nethack -D
+ais523@desert:/tmp$ XUSERFILESEARCHPATH=/tmp/distinct-bags/NetHack.ad xnethack
+
+You didn't beat your previous score of 4 points.
+
+
+
+ais523@desert:/tmp$ exit
+
+Script done on Thu 26 Sep 2013 02:42:37 BST
+
+/tmp/distinct-bags/distinct-bags.x11tiles is a copy of x11tiles (which regular users have read access to), with numbers added on the bag tiles to make them distinct; likewise, /tmp/distinct-bags/NetHack.ad is a copy of NetHack.ad with the tileset changed.
+
+The game on the official NetHack source (which was in wizard mode for testing), I wished for a sack and a bag of holding, then threw both onto the ground. Here's the screenshot: <http://nethackwiki.com/wiki/File:Tiles-bugreport1-image1.png>. As you can see from the message buffer, the two bags are both indistinguishable to the character (I farlooked both of them), due to being unidentified. However, the difference in the bags is clearly visible to the player; the sack (tile 194) shows a "1", and the bag of holding (tile 196) shows a "3". This would allow a player to instantly recognise which bags were holding.
+
+In the securely installed game (which I played to prove that this exploit does not require the ability to modify game files), I started a Rogue, and threw my starting sack: <http://nethackwiki.com/wiki/File:Tiles-bugreport1-image2.png> In this case, the character knew its identity; but the point is to demonstrate that the exploit-containing tileset still works (you can see the "1" I drew on the sack).
+
+This exploit is more major than just bags; in particular, fake and real Amulets of Yendor have distinct tiles, as do loadstones.
+
+
+Other ports and variants of NetHack are likely to have a similar issue, if they use the same or similar tiles code to vanilla. (Interestingly, Slash'EM's default tileset actually has subtly different tiles for the various bags out of the box; I originally noticed this bug because NetHack 4's tileset is based on Slash'EM's, and although it's harder to reproduce in NetHack 3.4.3, it's still possible.) In particular, I strongly suspect that this bug exists on the widely-played Windows tiles version (which also has customizable tilesets).
+</pre>
+
+
+=== Crash while loading when riding and wielding Sting ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Wednesday, October 16, 2013 at 03:47:59
+
+The ID number for this message is '#H3031'
+
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+64 bit intel machine
+
+software:
+- Linux version 3.10.7-gentoo (root@localhost) (gcc version 4.6.3 (Gentoo 4.6.3 p1.13, pie-0.5.2) ) #3 SMP Sat Aug 17 14:48:51 CEST 2013
+- Windows 7 Enterprise N Service Pack 1
+
+comments:
+Hi DevTeam,
+
+A player on UnNetHack's public server un.nethack.nu experienced a crash while
+his game was loading while riding and wielding a SPFX_WARN conferring artifact.
+
+This has been traced back to an issue that is also present in vanilla NetHack.
+Although there it is less likely to happen as Sting is the only SPFX_WARN
+weapon and most players don't seem to consider Sting to be a useful weapon.
+
+For reproducing start up a knight, ride your pet, wish and wield Sting, save
+the game and then try to load again will crash the game. I could reproduce this
+on a 64 bit Linux and 64 bit Windows (on Windows, it didn't crash every time
+but on Linux it did always).
+
+It's possible that this bug is already fixed with C343-39 "Restoring a game
+where the character is wielding Sting may result in temporary display errors
+during the restore process." but from the description it's not obvious how to
+reproduce C343-39.
+
+The problematic code tries to activate the artifact properties which will
+result in a call to display_self() which will try to access u.usteed, even
+though the program hasn't properly restored that structure at that point yet.
+
+For fixing it I moved the part where the code calls setworn on all items in
+your inventory out of restgamestate() to the end of dorecover(). I couldn't
+notice any problems with that and at this later time, u.usteed is guarantee to
+be restored.
+http://bhaak.net/nethack/nh343-fix-crash-riding-sting.diff
+
+The stacktrace of the crash is this:
+Core was generated by `/opt/nethack-tmp/games/lib/nethackdir/nethack -D 4'.
+Program terminated with signal 11, Segmentation fault.
+#0  0x0000000000431658 in newsym (x=66, y=4) at display.c:717
+717                 if (senseself()) display_self();
+(gdb) bt
+#0  0x0000000000431658 in newsym (x=66, y=4) at display.c:717
+#1  0x00000000004328b3 in see_monsters () at display.c:1071
+#2  0x000000000040ff76 in set_artifact_intrinsic (otmp=0x17243a0, on=1 '\001', wp_mask=256) at artifact.c:451
+#3  0x0000000000571ea3 in setworn (obj=0x17243a0, mask=256) at worn.c:98
+#4  0x000000000051584f in restgamestate (fd=3, stuckid=0x7fff44f490c0, steedid=0x7fff44f490bc) at restore.c:413
+#5  0x0000000000515b65 in dorecover (fd=3) at restore.c:558
+#6  0x00000000005844bc in main (argc=3, argv=0x7fff44f49228) at ../sys/unix/unixmain.c:258
+
+Bye
+Patric
+
+
+</pre>
+
+=== Can't wish for rusty rustproof  ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Thursday, May 19, 2011 at 08:09:54
+
+The ID number for this message is '#H2285'
+
+mailversion:
+1.42
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+comments:
+Hi DevTeam,
+
+Wishing for a "rusty rustproof long sword" will only yield a "rusty long sword".
+
+Because of a restriction in objnam.c line 2641:
+"if (erodeproof && !eroded && !eroded2)"
+
+This seems to have been an intentional change for NetHack 3.3.0 as fixes33.0
+says "make sure non-erodable objects aren't eroded or erodeproof (could happen
+by wishing or object polymorph)".
+
+Although it is not clear to me why one shouldn't allow a user to wish for such
+a thing or why the erosion gets set instead of foo-proofness.
+
+Bye
+Patric
+</pre>
+
+=== Odd message when player swallowing monster dies by wrath of god ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Thursday, December 9, 2010 at 06:59:37
+
+The ID number for this message is '#H2200'
+
+Subject: Odd message when player swallowing monster dies by wrath of god
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+comments:
+Hi DevTeam!
+
+If the player manages to be swallowed by an electricity-resisting monster while
+drawing the wrath of a god, the swallowing monster will be hit by a wide-angle
+disintegration beam and still fry to a crisp (pray.c:495)
+
+I'm no native speaker but that does sound odd to me as IMO "fry" implies heat.
+It doesn't look like a proper message for a disintegration death.
+
+Although I'm not even sure how to properly trigger that message in vanilla. I
+had to give Juiblex MR_ELEC to test it.
+
+BTW, the message of bug C343-94 has a typo "re-anmiated".
+
+Bye
+Patric
+</pre>
+
+=== Crash when picking up an unpaid object between two shops ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Tuesday, June 29, 2010 at 08:37:20
+
+The ID number for this message is '#H2143'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+
+software:
+Gentoo Linux with kernel version 2.6.24.7
+gcc-Version 4.3.4 (Gentoo 4.3.4 p1.0, pie-10.1.5)
+glibc 2.10.1
+
+Hi DevTeam!
+
+Follow this procedure to reliably trigger a crash when picking up an unpaid
+object in a shop adjacent to another shop:
+
+You need two populated shops with sharing walls (e.g. minetn-7 the hardware
+store and Izchak's store).
+
+Enter part of the wall that is shared by both shops.
+
+You are greeted by Izchak but not by the other shopkeeper.
+
+Enter the hardware store and pick up any unpaid object.
+
+A crash results as bp is 0:
+#0  0x081691ae in add_one_tobill (obj=0x823b778, dummy=0 '\0') at shk.c:2107
+2107            bp->bo_id = obj->o_id;
+
+
+It's important that this procedure is not interrupted by a save and reload and
+that the hardware store hasn't been entered before. Otherwise the crash doesn't
+happen.
+
+
+u_entered_shop() isn't called for the hardware store and that's why the
+hardware store shopkeeper's bill_p (from the struct eshk) is not correctly
+initialized.
+
+Initializing bill_p in shkinit() from shknam.c fixes that:
+diff -uwr nethack-3.4.3/src/shknam.c shk-crash/src/shknam.c
+--- nethack-3.4.3/src/shknam.c  2003-12-08 00:39:13.000000000 +0100
++++ shk-crash/src/shknam.c      2010-06-29 14:30:34.000000000 +0200
+@@ -408,6 +408,7 @@
+        ESHK(shk)->visitct = 0;
+        ESHK(shk)->following = 0;
+        ESHK(shk)->billct = 0;
++       ESHK(shk)->bill_p = &ESHK(shk)->bill[0];
+ #ifndef GOLDOBJ
+        shk->mgold = 1000L + 30L*(long)rnd(100);        /* initial capital */
+ #else
+</pre>
+
+=== Unnecessary head shaking ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Thursday, June 10, 2010 at 09:31:51
+
+The ID number for this message is '#H2134'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+comments:
+Hi DevTeam!
+
+When the player dies and a shop is on the level, sometimes the message
+"$shopkeeper looks at your corpse, shakes her head, and sighs." appears when it
+shouldn't (and probably doesn't appear when it should but I didn't check for
+that).
+
+You can easily reproduce this bug if you stand in the top right corner of
+minetn-5 and die there.
+
+Like the player did in this game:
+http://un.nethack.nu/users/ctaboir/dumps/ctaboir.last.txt.html
+
+The shopkeeper of the general store will come and look at your corpse even
+though he shouldn't.
+
+This is due to a misplaced ')':
+
+diff -uwr nethack-linux/src/shk.c nethack-shk/src/shk.c
+--- nethack-linux/src/shk.c     2008-05-26 19:47:02.000000000 +0200
++++ nethack-shk/src/shk.c       2010-06-10 15:21:57.000000000 +0200
+@@ -1650,7 +1650,7 @@
+        /* the simplifying principle is that first-come */
+        /* already took everything you had.             */
+        if (numsk > 1) {
+-           if (cansee(shkp->mx, shkp->my && croaked))
++           if (cansee(shkp->mx, shkp->my) && croaked)
+                pline("%s %slooks at your corpse%s and %s.",
+                      Monnam(shkp),
+                      (!shkp->mcanmove || shkp->msleeping) ? "wakes up, " : "",
+
+
+Bye, Happy Hacking!
+</pre>
+
+=== Standout inconsistency ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Wednesday, March 10, 2010 at 11:56:33
+
+The ID number for this message is '#H2095'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+comments:
+Hi devteam,
+
+The option "standout" isn't correct documented in the Guidebook.
+
+It states there:

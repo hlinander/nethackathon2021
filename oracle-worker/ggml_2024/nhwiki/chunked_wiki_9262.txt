@@ -1,0 +1,1000 @@
+이 게임의 목표는 [[Astral Plane|아스트랄계]]에 있는 교차성향 [[high altar|주 제단]]에 [[Amulet of Yendor|옌도르의 아뮬렛]]을 바치는 것입니다. 이렇게 할 경우, 당신은 데미갓 일족으로 [[ascend|승천]]하게 됩니다.('필멸자여, 잘 하였도다!'). This does not take into account whether, or by what means, you have [[convert]]ed your alignment, so a [[helm of opposite alignment]] can be used to quickly ascend at a cross-aligned altar. However, you get a [[score]] multiplier of 2× if you never converted and are still of your starting alignment, or 1.5× if you converted and used a helm to change back.
+
+If you offer the Amulet on a cross-aligned high altar, that altar's god gains dominion over yours and allows you to [[escape]] in celestial disgrace. If you offer the Amulet on the high altar to [[Moloch]] in the [[Sanctum]], Moloch 'mercilessly snuffs out your life', or if you have [[life saving]], disintegrates you into a pile of dust, ignoring disintegration resistance. (If you [[Explore mode|somehow]] survive that, you again escape.)
+
+Offering a [[cheap plastic imitation of the Amulet of Yendor]] on a high altar gives a penalty of -1 luck and no other effect. However, if the amulet was ''identified'' as a fake, the penalty is instead -3 luck, -1 [[Alignment record|alignment]] and your god getting [[Anger|angry]] by 3.
+
+Offering a real or fake Amulet on a non-high altar does not end the game. If the altar is an unaligned altar in [[Gehennom]], your god gets angry and Moloch [[smite]]s you. Otherwise, if hallucinating, 'You feel homesick'; or if the altar is co-aligned, 'You feel an urge to return to the surface'; otherwise, 'You feel ashamed'.
+
+==자기 종족의 생명체 번제하기==
+당신이 번제하는 생명체가 당신 자신의 종족일 경우 당신이 혼돈 성향이라면 좋은 효과가, 아니라면 나쁜 효과를 얻게 됩니다. 
+해당 시체의 수명과는 관계가 없으므로, [[Zombie|좀비]]와 [[Mummy|미라]]도 제대로 작동할 것입니다.
+
+;당신이 혼돈일 경우<nowiki>:</nowiki>
+:당신은 성향 5 포인트를 얻게 됩니다.{{refsrc|pray.c|1219}}
+:제단이 혼돈일 경우, 당신은 운 2 포인트를 얻습니다. 제단이 무성향일 경우, 당신은 운 2 포인트를 잃습니다.{{refsrc|pray.c|1197}} 해당 제단이 교차성향일 경우, 당신의 운은 영향받지 않습니다. (하지만 하단의 교차성향 제단 부분에 적혀있듯이, 해당 제단은 개종될 것입니다)
+;당신이 혼돈이 아닐 경우<nowiki>:</nowiki>
+:당신이 데몬으로 폴리모프하지 않았다면, [[wisdom|지혜]]가 혹사됩니다.{{refsrc|pray.c|1173}} ("당신은 이 악랄한 죄를 후회할 것이다!")
+:당신은 성향 5 포인트를 잃게 됩니다.{{refsrc|pray.c|1214}}
+:당신의 신의 분노가 3 증가합니다.{{refsrc|pray.c|1215}}
+:당신의 운이 5 감소합니다.{{refsrc|pray.c|1218}}
+:당신은 [[wisdom|지혜]] 1 포인트를 잃습니다.{{refsrc|pray.c|1216}} 이는 [[unicorn horn|유니콘 뿔]]로 치유될 수 있습니다.
+:Outside of [[Gehennom]], your god will punish you as for [[pray]]ing too much (depending on the level of anger).{{refsrc|pray.c|1217}}
+:If the altar ''is'' chaotic, you'll destroy it and anger any attendant priest.{{refsrc|pray.c|1188}}
+;Whether or not you are chaotic<nowiki>:</nowiki>
+:If the altar is chaotic or unaligned, a demon may be summoned. The demon will be [[peaceful]] if you are chaotic and hostile otherwise. The first two demons will be [[Juiblex]] and [[Yeenoghu]] in any order, followed by [[foocubi]].{{refsrc|pray.c|1203}}
+:If you are polymorphed into a demon, "You find the idea very satisfying."; your [[wisdom]] is exercised.{{refsrc|pray.c|1170}}
+:If the altar is lawful or neutral, it will immediately be converted to chaotic (except on the [[Astral Plane]]),{{refsrc|pray.c|1180}} independent of your alignment; if there is a [[aligned priest|priest]] tending the altar, they will be angered.{{refsrc|pray.c|1181}}
+
+The check for same race is done before the check for a former pet and ignores the check for age, so same-race corpses are always fit for sacrifice until they rot away completely. This is just about the only time an undead creature is a valid sacrifice.
+
+Keep in mind that [[werecreature]]s are considered [[Human (monster attribute)|human]], so sacrificing them if your character is human will have the consequences described above.
+
+==애완동물 번제하기==
+길들여진 상태에서 사망한 생명체를 번제하는 것{{refsrc|pray.c|1223}}은 일반적으로 당신의 성향치를 3 잃게 만들고{{refsrc|pray.c|1229}} [[aggravate monster|몬스터 자극]] [[intrinsic|본능]]을 얻으며 "So this is how you repay loyalty?"라는 메시지를 받습니다.{{refsrc|pray.c|1231}}. 애완동물은 &minus;1의 번제 가치를 가지므로,{{refsrc|pray.c|1230}} 이것은 해당 제단의 신이 [[anger|분노]]하는 결과만 불러올 것입니다.{{refsrc|pray.c|1335|name=negative_value|comment=negative-value sacrifice will anger the altar's god}}{{reffunc|pray.c|gods_upset|name=gods_upset}} 그 시체는 소모되지 ''않을'' 것입니다. Former pets that have [[tameness|gone feral]] no longer count as pets, and may be killed and sacrificed as usual.
+
+==교차성향 제단들==
+[[File:NHC-Altar-Conversion.png|thumb|(Level + 2) / (Level + 8)]]
+
+당신은 교차성향 제단들에 번제함으로써 그것들을 변환시킬 수 있습니다.(하지만 주제단과{{refsrc|pray.c|1325}} [[Gehennom|게헨놈]]의 무성향 제단은 안 됩니다){{refsrc|pray.c|1343}}{{refsrc|pray.c|1346}} 실패할 경우 당신은 [[Luck|운]]을 1 잃고{{refsrc|pray.c|1406}}, [[wisdom|지혜]]를 혹사시킵니다.{{refsrc|pray.c|1407}} 성공할 경우 당신은 [[Luck|운]]을 1 얻고{{refsrc|pray.c|1384}}, 해당 제단은 교차성향이 됩니다. 캐릭터 레벨이 상승할 수록 변환시킬 확률도 증가합니다. [[aligned priest|해당 제단에 사제]]가 있는 채로 변환을 할 경우 그 사제가 당신을 공격하게 될 것입니다.{{refsrc|pray.c|1400}} 
+
+제단을 변환시킬 확률은 당신의 경험치 레벨에 따릅니다; 확률은 <math>\textstyle\frac{level + 2}{level + 8}</math>입니다.{{refsrc|pray.c|1380}}
+
+어떠한 경우에도, 제단을 보호하기 위해 [[minion|하수인]]들이 소환될 수도 있습니다.{{refsrc|pray.c|1398}}{{refsrc|pray.c|1410}}
+
+제단을 변환하려고 시도할 때, 당신은 "''당신은 <당신의 신>''과 ''<제단의 신>'' 간의 대립을 감지한다."라는 메시지를 받게 될 것입니다.
+변환이 성공할 경우 "당신은 ''<당신의 신>''의 힘이 상승하는 것을 느낀다."라는 메시지를, 실패할 경우 "불행히도, 당신은 ''<당신의 신>''의 힘이 감소하는 것을 느낀다."라는 메시지를 받게 될 것입니다.
+
+'전' 애완동물과 같이 음수값을 가지는 번제물은 변환 시도를 발생시키지 않을 것입니다. 이것은 대신 해당 제단의 신을 분노하게 만들며, 실제로는 당신의 신의 분노를 1 ''감소''시킬 것입니다.<ref name="negative_value"/><ref name="gods_upset"/> You will still suffer the usual effects of angering a god, including the loss of any divine protection and being smitten by the angry god. The pet corpse is not consumed, so you can cure as much anger as you like.
+
+{{anchor|altar_converts_you}}Attempting to convert an altar while your alignment is negative{{refsrc|pray.c|1346}} (or using a unicorn of your alignment; [[#Sacrificing unicorns|see below]] for details) may convert your alignment to that of the altar,{{refsrc|pray.c|1357}} take away 3 of your Luck{{refsrc|pray.c|1363}} and increase your prayer timeout by 300{{refsrc|pray.c|1364}} ("You have a sudden sense of a new direction"). Changing your alignment by any means resets your alignment record to zero.{{ref|httpsgithub.com/NetHack/NetHack/commit/3d1772a13b84e4643c8938010e4dca0931fa0406#diff-9e2fd3234ebdd323dee94c5cb5e8fdd3}}
+
+This can only be done once per game on a non-unaligned altar;{{refsrc|pray.c|1347}} if this happens before you have been admitted to the quest, the game will be [[unwinnable]]. 
+
+If you try to convert yourself a second time, or you sacrifice on unaligned altar in Gehennom, your sacrifice is rejected, you hear the voice "Suffer, infidel!", get &minus;5 to Luck,{{refsrc|pray.c|1371}} &minus;5 to alignment score,{{refsrc|pray.c|1368}} &minus;2 to wisdom,{{refsrc|pray.c|1372}} +3 to anger,{{refsrc|pray.c|1367}} and, unless in [[Gehennom]], you are punished by your current deity.{{refsrc|pray.c|1373}}
+
+If you sacrifice on cross-aligned high altar, you don't convert it or yourself. Instead, you are attacked by the altar's deity.
+
+As with coaligned altars, if you get a message saying "Nothing happens", then the corpse was too old and, indeed, nothing happened.
+
+==유니콘 번제하기==
+Sacrificing [[unicorn|유니콘]]s is complicated because the altar's alignment, your alignment, and the unicorn's alignment all factor into the outcome.{{refsrc|pray.c|1235}} A unicorn's alignment is represented by its color. The white is lawful, grey neutral, and black chaotic. The points to remember are:
+
+* Never sacrifice a unicorn on an altar of its own alignment. You lose one point of [[wisdom]]{{refsrc|pray.c|1243}} and the altar's god becomes angry, with the [[Prayer#Possible negative effects of praying|same effect]] as angering that god through prayer.{{refsrc|pray.c|1244}}<ref name="negative_value"/> If the altar is not of your alignment, your god's anger is reduced by one.<ref name="gods_upset"/>
+* Never sacrifice a unicorn of your own alignment (certainly not before you have completed the [[Quest]]). This acts as above if the altar is also of your alignment.{{refsrc|pray.c|1293|comment=<tt>unicalign == altaralign</tt> ist tested first}} If the altar is cross-aligned, this will set your alignment score to &minus;1,{{refsrc|pray.c|1257}} which makes your sacrifice convert ''you'' instead of the altar.
+* Never sacrifice a unicorn on a [[Altar#High altars|high altar]]. On an altar of your own alignment, this is unnecessary. On an altar of another alignment, this will not convert you or the altar, but only angers the altar's god.{{refsrc|pray.c|1340|version=NetHack 3.6.0|comment=The "try to convert high altar" branch doesn't actually convert anything.}}
+
+Each time you sacrifice a unicorn of a different alignment on your own altar, you get a +5 boost to your [[alignment record|alignment]]{{refsrc|pray.c|1251}} and the message "You feel appropriately {lawful | neutral | chaotic}",{{refsrc|pray.c|1249}} or "You feel you are thoroughly on the right path" if alignment is at maximum.{{refsrc|pray.c|1250}}
+
+The rest of the effects are summarized in the following table:
+
+{| class="wikitable"
+!width="13%"| 당신
+!width="20%"| 유니콘
+!width="20%"| 제단
+!width="47%"| 효과
+|-
+| rowspan="9" | {{alignment|질서}}
+| rowspan="3" | {{alignment|흰색}}
+| {{alignment|질서}} || 나쁨
+|-
+| {{alignment|중립}} || 당신은 중립이 되었습니다.
+|-
+| {{alignment|혼돈}} || 당신은 혼돈이 되었습니다.
+|-
+| rowspan="3" | {{alignment|회색}}
+| {{alignment|질서}} || 좋음
+|-
+| {{alignment|중립}} || 나쁨
+|-
+| {{alignment|혼돈}} || 제단을 변환하려 시도합니다.
+|-
+| rowspan="3" | {{alignment|검은색}}
+| {{alignment|질서}} || 좋음
+|-
+| {{alignment|중립}} || 제단을 변환하려 시도합니다.
+|-
+| {{alignment|혼돈}} || 나쁨
+|-
+| rowspan="9" | {{alignment|중립}}
+| rowspan="3" | {{alignment|흰색}}
+| {{alignment|질서}} || 나쁨
+|-
+| {{alignment|중립}} || 좋음
+|-
+| {{alignment|혼돈}} || 제단을 변환하려 시도합니다.
+|-
+| rowspan="3" | {{alignment|회색}}
+| {{alignment|질서}} || 당신은 질서가 되었습니다.
+|-
+| {{alignment|중립}} || 나쁨
+|-
+| {{alignment|혼돈}} || 당신은 혼돈이 되었습니다.
+|-
+| rowspan="3" | {{alignment|검은색}}
+| {{alignment|질서}} || 제단을 변환하려 시도합니다.
+|-
+| {{alignment|중립}} || 좋음
+|-
+| {{alignment|혼돈}} || 나쁨
+|-
+| rowspan="9" | {{alignment|혼돈}}
+| rowspan="3" | {{alignment|흰색}}
+| {{alignment|질서}} || 나쁨
+|-
+| {{alignment|중립}} || 제단을 변환하려 시도합니다.
+|-
+| {{alignment|혼돈}} || 좋음
+|-
+| rowspan="3" | {{alignment|회색}}
+| {{alignment|질서}} || 제단을 변환하려 시도합니다.
+|-
+| {{alignment|중립}} || 나쁨
+|-
+| {{alignment|혼돈}} || 좋음
+|-
+| rowspan="3" | {{alignment|검은색}}
+| {{alignment|질서}} || 당신은 질서가 되었습니다.
+|-
+| {{alignment|중립}} || 당신은 중립이 되었습니다.
+|-
+| {{alignment|혼돈}} || 나쁨
+|}
+
+''Note: You will lose any intrinsic protection whenever your alignment changes.''
+
+==Messages==
+{{message|Your sacrifice is consumed in a burst of flame!|The standard message indicating a successful sacrifice for neutral and chaotic characters. If it is not followed by any other message, it is safe to pray; otherwise, see below.}}
+{{message|Your sacrifice is consumed in a flash of light!|As above, if lawful.}}
+{{message|Your sacrifice disappears!|As above, if lawful and blind.}}
+{{message|Your sacrifice sprouts wings and a propeller and roars away!}}
+{{message|Your sacrifice puffs up, swelling bigger and bigger, and pops!}}
+{{message|Your sacrifice collapses into a cloud of dancing particles and fades away!|As above, if hallucinating. Which message you receive is randomly selected.}}
+
+{{message|The altar is stained with <race> blood.|The altar has been converted to chaotic via [[#Sacrificing creatures of own race|same-race sacrifice]].}}
+
+{{message|You have a hopeful feeling.|Your prayer timeout has been reduced, but is still nonzero. You may not pray.}}
+{{message|You have a feeling of reconciliation.|Your prayer timeout has been reduced to zero. Unless you have a cursed [[luckstone]], you may safely pray.}}
+
+{{message|An object appears at your feet!|You have received a gift, and your prayer timeout has been increased. You may not safely pray.}}
+
+{{message|You have a feeling of inadequacy.|Your god is angry at you, and your sacrifice has done nothing to reduce their anger. You may not safely pray.}}
+{{message|<Deity> seems slightly mollified.|Your god's anger has been reduced, but is still nonzero. You may not safely pray.}}
+{{message|<Deity> seems mollified.|Your god's anger has been reduced to zero. Sacrifice again to see if it is safe to pray.}}
+
+{{message|You feel partially absolved.|Your alignment was negative and has been increased by the level of the corpse, to a maximum of zero. Sacrifice again to see if it is safe to pray.}}
+
+{{message|You glimpse a four-leaf clover at your feet.|Your base Luck has been increased and is nonnegative. Unless you have a cursed [[luckstone]], you may safely pray.}}
+{{message|You think something brushed your foot.|As above, while blind.}}
+{{message|You see crabgrass at your feet. A funny thing in a dungeon.|As above, while hallucinating.}}
+{{message|So this is how you repay loyalty?|You attempted to sacrifice a former pet, and your alignment record was penalized by -3. The corpse was not consumed}}
+{{message|You have a sudden sense of a new direction.|You have been permanently converted to a new alignment.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], in addition to the usual benefits of sacrifice, you may have wielded and worn items [[bless]]ed by your god, or [[minion|minions]] granted as [[pets]]. The [[bless]]ing effect extends to ''any'' wielded or alternate-wielded item, not just weapons. Additionally, due to the many new artifacts in SLASH'EM, there is much more variation in the types of artifacts you may receive.
+
+====Sacrifice gifts in SLASH'EM====
+Lawful gifts:
+[[Demonbane]],
+[[Firewall]] ([[Flame mage]] 1st gift),
+[[Grayswandir]],
+[[Holy Spear of Light]],
+[[Orcrist]],
+[[Quick Blade]],
+[[Reaper]] ([[Yeoman]] 2nd gift),
+[[Skullcrusher]] ([[Caveman]] 1st gift),
+[[Snickersnee]] ([[Samurai]] 1st gift),
+[[Sting]],
+[[Sunsword]],
+[[Sword of Justice]] ([[Yeoman]] 1st gift)
+
+Neutral gifts:
+[[Cleaver]] ([[Barbarian]] 1st gift),
+[[Deluder]] ([[Wizard]] 2nd gift),
+[[Disrupter]] ([[Priest]] 1st gift),
+[[Gauntlets of Defense]] ([[Monk]] 1st gift),
+[[Giantkiller]],
+[[Luckblade]],
+[[Magicbane]] ([[Wizard]] 1st gift),
+[[Mirrorbright]] ([[Healer]] 1st gift),
+[[Mjollnir]] ([[Valkyrie]] 1st gift),
+[[Sword of Balance]],
+[[Vorpal Blade]],
+[[Whisperfeet]] ([[Tourist]] 1st gift)
+
+Chaotic gifts:
+[[Bat from Hell]] ([[Rogue]] 1st gift),
+[[Deathsword]] ([[Barbarian]] 2nd gift),
+[[Deep Freeze]] ([[Ice Mage]] 1st gift),
+[[Doomblade]],
+[[Elfrist]],
+[[Grimtooth]],
+[[Hellfire]],
+[[Houchou]],
+[[Plague]],
+[[Serpent's Tongue]] ([[Necromancer]] 1st gift),
+[[Stormbringer]]
+
+Unaligned gifts:
+[[Dragonbane]],
+[[Fire Brand]],
+[[Frost Brand]],
+[[Ogresmasher]],
+[[Trollsbane]],
+[[Wallet of Perseus]],
+[[Werebane]]
+
+===Slash'EM Extended===
+
+All of the above [[SLASH'EM]] rules also apply to [[Slash'EM Extended]], but offering any corpse on an altar also carries a 1% risk of the altar disappearing permanently.
+
+== History ==
+
+Until [[NetHack 3.6.0]], if the first sacrifice gift did not find any eligible artifacts, then no artifact gift would be given at all. This would most commonly happen with elven Priests or Rangers who named [[Sting]] and [[Orcrist]] in the hope of guaranteeing [[Stormbringer]] as their first gift, only to fail because Stormbringer had been generated in [[bones]] already. This would make it impossible to get any sacrifice gifts for the entire game unless they were to change their alignment.
+
+Changing your alignment would give an alignment bonus if you were lawful or a penalty if you were chaotic, instead of resetting your alignment record to zero.
+
+==References==
+<references />
+{{nethack-362}}
+[[Category:한국어]]}
+&&%s&& %s Binah sephirah {132822 2020-03-12T04:51:17Z {4000978 Aximili} Redirected page to [[Keter Sephiroth#Binah Sephirah]] #REDIRECT [[Keter Sephiroth#Binah Sephirah]]}
+&&%s&& %s Malkuth sephirah {132823 2020-03-12T04:52:28Z {4000978 Aximili} Redirected page to [[Keter Sephiroth#Malkuth Sephirah]] #REDIRECT [[Keter Sephiroth#Malkuth Sephirah]]}
+&&%s&& %s Chokhmah sephirah {132824 2020-03-12T04:53:01Z {4000978 Aximili} Redirected page to [[Keter Sephiroth#Chokhmah Sephirah]] #REDIRECT [[Keter Sephiroth#Chokhmah Sephirah]]}
+&&%s&& %s Gevurah sephirah {132825 2020-03-12T04:53:34Z {4000978 Aximili} Redirected page to [[Keter Sephiroth#Gevurah Sephirah]] #REDIRECT [[Keter Sephiroth#Gevurah Sephirah]]}
+&&%s&& %s Yesod sephirah {132826 2020-03-12T04:54:34Z {4000978 Aximili} Redirected page to [[Keter Sephiroth#Yesod Sephirah]] #REDIRECT [[Keter Sephiroth#Yesod Sephirah]]}
+&&%s&& %s Daat sephirah {132831 2020-03-12T05:02:33Z {4000978 Aximili} Redirected page to [[Keter Sephiroth#Daat Sephirah]] #REDIRECT [[Keter Sephiroth#Daat Sephirah]]}
+&&%s&& %s Numberpad {132832 2020-03-12T05:05:05Z {4000978 Aximili} Redirected page to [[Options#number pad]] #REDIRECT [[Options#number_pad]]}
+&&%s&& %s Windows NT {132836 2020-03-12T05:11:56Z {4000978 Aximili} Redirected page to [[Microsoft Windows]] #REDIRECT [[Microsoft Windows]]
+
+[[Category:Operating systems]]}
+&&%s&& %s The Banes {132860 2020-03-13T02:57:53Z {4001313 Ardub23} Ardub23 moved page [[The Banes]] to [[Bane]] over redirect: [[NHW:Style guide#Article names|NHW:Style guide § Article names]] – prefer singular noun #REDIRECT [[Bane]]}
+&&%s&& %s Light sources {132864 2020-03-13T03:15:50Z {4001313 Ardub23} Ardub23 moved page [[Light sources]] to [[Light source]] over redirect: Prefer singular noun over plural, per [[NHW:Style guide#Article names]] #REDIRECT [[Light source]]}
+&&%s&& %s Horror (dNetHack) {133457 2020-04-13T01:36:31Z {4001279 Umbire the Phantom} /* Generation */ {{monster
+ |name=horror
+ |symbol={{green|U}}{{yellow|U}}{{red|U}}
+ |tile=[[Image:shambling horror.png]] [[Image:stumbling horror.png]] [[Image:wandering horror.png]]
+ |difficulty=randomized
+ |level=randomized
+ |experience=randomized
+ |speed=randomized
+ |AC=randomized
+ |MR=randomized
+ |align=randomized
+ |frequency=1
+ |genocidable=No
+ |attacks=randomized
+ |weight=randomized
+ |nutr=randomized
+ |size=randomized
+ |resistances=randomized
+ |resistances conveyed=randomized
+ |refline=
+}}
+
+The '''horror''' is a type of monster appearing in [[dNetHack]]. They are part of the {{white|U}} class, which in dNetHack indicates an "unknown abomination". There are three species&mdash;the '''shambling horror''', '''stumbling horror''' and '''wandering horror'''; the statistics for each of these species are randomized every game.
+
+==Generation==
+Each game, the following attributes are randomized for each type of horror:
+
+* The [[speed]] is anywhere from 6 to 18 (slow to fast)
+* The [[AC]] is anywhere from 10 to &minus;20
+* The [[monster magic resistance|MR]] is anywhere from 0 to 100
+* The [[alignment]] is anywhere from 8 to &minus;8.
+* The [[size]] can be anything from tiny to gigantic.
+* The [[corpse]] weight and nutrition will match the size, but horrors [[corpseless|will normally never leave a corpse]].
+* The sounds they produce will always be a random humanoid sound.
+* The horror will have one random type of internal organs: none, normal, or non-differentiated (homogenous) organs.
+* The horror will have a level based on its attacks and flags, with a minimum level of 11.
+** If the horror should have a level below 11 based on attacks and flags, the entire horror will be re-randomized.
+
+A horror has up to 4 attacks, each with a random attack type and damage type:
+* The damage types encompass almost every type in the game, excluding Rider-only attacks, lycanthrope attacks, seduction (nymph or foocubus) attacks, and lethe attacks.
+* Not every damage type is possible for each attack type; inclusions are mostly based on whether there is a pre-existing monster with that attack combination already.
+
+The horror then gets up to 17 flags of each type (resistances, resistances conveyed, movement pattern, etc.), with the following conditions: 
+* The horror will never be polymorphable, always hostile, and never a werecreature.
+* Any contradictory flags (such as MT_ANIMAL and MT_MINDLESS) are filtered out, with one chosen from the set.  
+
+[[Category:dNetHack monsters]]}
+&&%s&& %s 3.6.5 {132940 2020-03-20T01:57:32Z {4000978 Aximili} Redirected page to [[NetHack 3.6.5]] #REDIRECT [[NetHack 3.6.5]]}
+&&%s&& %s Spell of turn undead {132941 2020-03-20T02:22:11Z {4001279 Umbire the Phantom} Redirected page to [[Spellbook of turn undead]] #redirect [[Spellbook of turn undead]]}
+&&%s&& %s M2 UNDEAD {132942 2020-03-20T02:22:49Z {4001279 Umbire the Phantom} Redirected page to [[Undead]] #redirect [[Undead]]}
+&&%s&& %s Security {149989 2023-02-18T04:27:18Z {4001483 Cathartes} /* Security vulnerabilities in NetHack */ link titles Sometimes security issues are found in ''NetHack''. These are more serious than usual [[bug]]s because they can assist a malicious user in gaining too much access to your computer, or even taking control. This is especially relevant for [[public server]]s, which allow large numbers of strangers to play ''NetHack'' on a sysadmin's machine.
+
+Usually, if the [[DevTeam]] knows about a security issue in ''NetHack'', they will disclose it to the public after a fix is available.
+
+'''To remain safe from security issues in NetHack, update to the latest version as soon as possible'''.
+
+== Security vulnerabilities in NetHack ==
+
+{|class="prettytable"
+!CVE
+!Description
+!Affected versions
+!Fixed in
+!External links
+|-
+|{{va|CVE-2023-24809}}
+|NetHack [[Call]] command buffer overflow
+|[[3.6.2]] to [[3.6.6]]
+|[[3.6.7]]
+|[https://www.nethack.org/security/CVE-2023-24809.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-24809 cve.mitre.org]
+|-
+|{{va|CVE-2020-5254}}
+|NetHack [[hilite_status]] parsing privilege escalation
+|[[3.6.1]] to [[3.6.5]]
+|[[3.6.6]]
+|[https://www.nethack.org/security/CVE-2020-5254.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5254 cve.mitre.org]
+|-
+|{{va|CVE-2020-5253}}
+|NetHack 3.4.3 privilege escalation
+|[[3.4.3]] and earlier
+|[[3.6.0]]
+|[https://www.nethack.org/security/CVE-2020-5253.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5253 cve.mitre.org]
+|-
+|{{va|CVE-2020-5214}}
+|Error recovery after syntax error in [[configuration file]] is subject to a buffer overflow
+|[[3.6.0]] to [[3.6.4]]
+|[[3.6.5]]
+|[https://www.nethack.org/security/CVE-2020-5214.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5214 cve.mitre.org]
+|-
+|{{va|CVE-2020-5213}}
+|[[Options#SYMBOL|SYMBOL]] configuration file option is subject to a buffer overflow
+|[[3.6.0]] to [[3.6.4]]
+|[[3.6.5]]
+|[https://www.nethack.org/security/CVE-2020-5213.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5213 cve.mitre.org]
+|-
+|{{va|CVE-2020-5212}}
+|[[menucolors|MENUCOLOR]] configuration file option is subject to a buffer overflow
+|[[3.6.0]] to [[3.6.4]]
+|[[3.6.5]]
+|[https://www.nethack.org/security/CVE-2020-5212.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5212 cve.mitre.org]
+|-
+|{{va|CVE-2020-5211}}
+|[[Options#AUTOCOMPLETE|AUTOCOMPLETE]] configuration file option is subject to a buffer overflow
+|[[3.6.0]] to [[3.6.4]]
+|[[3.6.5]]
+|[https://www.nethack.org/security/CVE-2020-5211.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5211 cve.mitre.org]
+|-
+|{{va|CVE-2020-5210}}
+|NetHack command line -w option parsing is subject to a buffer overflow
+|[[3.6.0]] to [[3.6.4]]
+|[[3.6.5]]
+|[https://www.nethack.org/security/CVE-2020-5210.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5210 cve.mitre.org]
+|-
+|{{va|CVE-2020-5209}}
+|NetHack command line parsing of options starting with -de and -i is subject to a buffer overflow
+|[[3.6.0]] to [[3.6.4]]
+|[[3.6.5]]
+|[https://www.nethack.org/security/CVE-2020-5209.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5209 cve.mitre.org]
+|-
+|{{va|CVE-2019-19905}}
+|NetHack: Privilege escalation/remote code execution/crash in configuration parsing
+|[[3.6.0]] to [[3.6.3]]
+|[[3.6.4]]
+|[https://www.nethack.org/security/CVE-2019-19905.html nethack.org] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-19905 cve.mitre.org]
+|-
+|{{va|CVE-2003-0359}}
+|Installing NetHack allows local users to gain privileges by replacing the original binaries with malicious code
+|[[3.4.0]] and earlier
+|[[3.4.1]]
+|[https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0359 cve.mitre.org] [https://www.debian.org/security/2003/dsa-316 debian.org]
+|-
+|{{va|CVE-2003-0358}}
+|Buffer overflow allows local users to gain privileges via a long -s command line option
+|[[3.4.0]] and earlier
+|[[3.4.1]], or [https://nethack.sourceforge.io/v340/bugmore/secpatch.txt patched 3.4.0]
+|[https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0358 cve.mitre.org] [https://www.debian.org/security/2003/dsa-316 debian.org]
+|}
+
+== Security vulnerabilities related to NetHack ==
+
+Sometimes, security issues arise from interactions between ''NetHack'' and other programs. These are not bugs in ''NetHack'' proper. 
+
+{|class="prettytable"
+!CVE
+!Description
+!Affected versions
+!External links
+|-
+|{{va|CVE-2006-1390}}
+|Configuration on [[Gentoo]] allows local users to execute arbitrary code via buffer overflows and overwrite arbitrary files via symlink attacks
+|[[3.4.3]]-r1 and earlier
+|[https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1390 cve.mitre.org] [https://www.securityfocus.com/archive/1/428743/100/0/threaded securityfocus.com]
+|-
+|{{va|CVE-1999-1477}}
+|Buffer overflow in GNOME libraries 1.0.8 allows local user to gain root access via a long --espeaker argument in programs such as NetHack
+|
+|[https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1477 cve.mitre.org]
+|}
+
+== See also ==
+
+* [https://dpmendenhall.blogspot.com/ David Mendenhall], the security researcher who found most of the security issues from [[3.6.0]] to [[3.6.5]]
+
+[[Category:Bugs]]}
+&&%s&& %s Spell of extra healing {133015 2020-03-23T03:01:52Z {4001279 Umbire the Phantom} Redirected page to [[Spellbook of extra healing]] #redirect [[Spellbook of extra healing]]}
+&&%s&& %s Thiefstone {148866 2022-10-20T02:09:16Z {4001294 Gorgor} Added reactivating thiefstones with potions of restore ability {{weapon
+  |color=gray
+  |glyph=*
+  |tile=[[Image:Gray stone.png]]
+  |name=thiefstone
+  |appearance=[[gray stone]]
+  |smalldmg=1d3
+  |largedmg=1d3
+  |skill=sling
+  |cost=1
+  |noenchant=true
+  |weight=10
+  |material=mineral
+}}
+
+The '''thiefstone''' is a new item introduced in ''[[xNetHack]]'' that appears as a [[gray stone]] when unidentified.
+
+==Generation==
+All thiefstones are generated [[cursed]].
+
+==Effects==
+If you pick up a cursed thiefstone, it may "steal" a magical item from your [[inventory]] and [[teleport]] itself along with the item to a "stash" somewhere on the same level; picking up a magical item while carrying a cursed thiefstone will cause it to jump out of your pack and teleport itself and the item to its stash. If you are standing on the same square as its stash in either case, nothing happens.
+
+Each thiefstone will select a spot to place stolen items in upon generation: in order of priority, it will start with a [[vault]], then any one-square closets, and finally any other square on the floor with a [[container]] on it. If the selected square has no container, a [[chest]] with random contents is generated in that spot; the thiefstone's stash will be found within the container.
+
+[[Apply]]ing or [[rub]]bing a non-cursed thiefstone on an applicable item will teleport that item to the stash area, but not the thiefstone itself; all non-cursed thiefstones can teleport magical items this way, and blessed ones can also teleport [[gem]]s and [[gold]].
+
+Throwing a blessed thiefstone at a [[gold golem]] and hitting it will teleport the golem to the square where its 'stash' is located; this includes players [[polymorph]]ed into gold golems, but will never work on anything carrying the [[Amulet of Yendor]]. Due to a bug, throwing is the only method that works on gold golems.<!--The original wording is slightly ambiguous, clarification would be lovely.-->
+
+[[Canceling]] a thiefstone will permanently prevent it from teleporting items. A cancelled thiefstone can be reactivated by [[dip]]ping it in a non-cursed Potion of Restore Ability, which will set its stash location to the player's current position.
+
+==Strategy==
+Thiefstones are highly inconvenient to come across for an unwary player, especially if it steals a vital magical item from you and ends up in a hard-to-reach spot early in the game. However, a non-cursed thiefstone can prove handy to keep around, as it provides a means of "automated" stashing for items and gold without having to travel directly to that stash's square; thiefstones can also be used to informally identify magical items.
+
+[[Category:XNetHack]]
+[[Category:XNetHack items]]}
+&&%s&& %s Discworld {133084 2020-03-27T01:23:51Z {4000693 Phol ende wodan} redirect to [[Terry Pratchett]] to fix another redlink #REDIRECT [[Terry Pratchett]]}
+&&%s&& %s Castle (UnNetHack) {150100 2023-03-06T15:34:33Z {4001279 Umbire the Phantom} /* Alt. Layout 2 */* [[UnNetHack]] adds two new versions of the '''[[Castle]]''' with different challenges and rewards.
+
+==Origin==
+{{patch|name=New Castle Levels 1.0|author=[[User:Paxed|Pasi Kallinen aka paxed]]|download=http://bilious.alt.org/?download=27|bilious=27}}
+The new castle layouts are based off a [[NetHack 3.4.2]] patch written by Pasi Kallinen (better known as [[User:Paxed|paxed]]).
+{{clear}}
+
+==Layouts==
+The new Castle variants have some basic similarities to the original: The player always enters the level somewhere in the maze, the main entrance is blocked by a [[drawbridge]], and there is a large number of monsters inside for the player to fight through. The main rewards are a [[wand of wishing]], along with storerooms filled with many weapons and armor. Trapdoors to the Valley of the Dead can be found inside as well. All castle versions are [[no-teleport]] levels, and only the maze can be [[dig|dug]] through.
+
+===Alt. Layout 1===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[Yendorian army|{{white|@}}]]
+D=[[Dragon|{{white|D}}]]
+C=[[Centaur|{{white|C}}]]
+#=[[Drawbridge|{{brown|#}}]]
+^=[[Trap door|{{brown|^}}]]
+(=[[Chest|{{brown|(}}]]
+`=[[statue|{{gray|`}}]]
+
+T...}}}}}}}}}..}}}}}}}}}}}}}}T}}}}}}..}}...}}}}}}}}}}}}}....T.....}}}}...T..
+...}}}}}}}}}}}}}}}}}}..}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}.......}}}}}}}.....
+.}}..}}}----------------------------------------------}}}}}}}..---------S---
+}}}}...^F...-|@@@@@@@@@|........|......S.^..^.+.....(|}}}}}}}}}|mmmmmmmmmmm|
+}}}}.}}}|....|@@@@@@@@@+........|...C..--------......|}.}}}}}}}|mmmmmmmmmmm|
+}}}..}}}|....+@@@@@@@@@|........+......|......|...D..|}..}}}}}.Smmmmmmmmmmm|
+}}}.T.}}|....|----------........|..C...|......|-D....|}}}}}}}}.|mmmmmmmmmmm|
+}}}...}}|----|.......|`.........|......|......--FFFF--}}}}.....|mmmmmmmmmmm|
+.}}}}}}}|(...|.LLLLL.|..........--FFFF-|......|}}}}}}}}}....T..|mmmmmmmmmmm|
+..}}}}..|(...S.LLLLL.S.\........S.^.^.^+..{...#}...............|mmmmmmmmmmm|
+T...}.}.|(...|.LLLLL.|..........--FFFF-|......|}}}}}}}}...}....|mmmmmmmmmmm|
+..}}.}}}|----|.......|`.........|..C...|......--FFFF--}}.}}}...|mmmmmmmmmmm|
+}}}}}.}}|....|----------........|...C..|......|-.....|}}}}}....|mmmmmmmmmmm|
+}}}}}.}}|....+@@@@@@@@@|........+....C.|......|....D.|}}}}}}}..|mmmmmmmmmmm|
+}}}}....|....|@@@@@@@@@+........|......--------.....D|}}}}}}}}.|mmmmmmmmmmm|
+}}}....^F...-|@@@@@@@@@|........|......S.^..^.+.....(|}}....}}}|mmmmmmmmmmm|
+}}..}...----------------------------------------------}..}...}}|mmmmmmmmmmm|
+}}.}}......}}}}...}}}}}}}..}}......}}}}}}}}}}}}}}}}}}}}.....}}}Smmmmmmmmmmm|
+}...}}...}}}}}}}}...}}.}..}}}}.T.}}}}}}}}}...}}}}}.}}}}}}}...}}|mmmmmmmmmmm|
+..T..}}}}}}}..}}}}}}}}}}.}}}}}}}..}}.}}}.......}}.}}...}}}}}}}.|mmmmmmmmmmm|
+}...}}}}}..T..}}}}..}}}}}}}}}}}}}}}}}}.....T..}}}}}}}}.}}}}}}..-------------
+</replacecharsblock></div>
+
+Three sharks, [[jellyfish]], giant eels, and [[electric eels]] lie scattered in the moat, and four dragons are in the turrets overlooking the drawbridge, which will use their breath on anyone trying to open it. Inside the castle, there are two barracks guarding the storerooms, five [[Centaur|centaur]]s watching the trapped hallways, two [[fire elemental]]s and [[fire vortex|fire vortices]] in the lava chamber, and a [[Titan]] (25%) or [[V]] (75%) sits on the throne, accompanied by two E, H, L, M, N, O, R, T, X, and Z (one of these types will be missing). Trapdoors block off the left side of the castle, necessitating finding a way to cross the gaps to get to the storerooms and chests. The storerooms behind the barracks each contain 15 pieces of armor and 15 weapons, and the 5 chests placed in the castle contain the following items:
+* The wand of wishing (chest is untrapped and on a burned Elbereth)
+* Two [[scrolls]], a [[spellbook]], and two gems
+* A wand, an [[amulet]], and two gems
+* Two scrolls, a spellbook, a [[potion]], and two gems
+* Random loot
+
+Climbing the upstairs from the Valley of the Dead puts the player on the left side of the level, necessitating a way to cross water if the player wants to backtrack (the guaranteed [[water walking boots]] in [[Vlad's Tower]] can help with this). It is possible for the Xorns to eat the iron bars or for an acid dragon to dissolve the iron bars, releasing the dragons from the turrets or, in the case of the Xorns, open up entrances at the back of the castle.
+
+===Alt. Layout 2===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@=[[Yendorian army|{{white|@}}]]
+P=[[Prisoner|{{gray|@}}]]
+H=[[Fire giant|{{yellow|H}}]]
+j=[[Ochre jelly|{{brown|j}}]]
+#=[[Drawbridge|{{brown|#}}]]
+>=[[Hole|{{brown|^}}]]
+^=[[Trap door|{{brown|^}}]]
+(=[[Chest|{{brown|(}}]]
+0=[[Boulder|{{gray|0}}]]
+
+---------------------------------------------.}}}}}}}.......................
+|...S(.S.(|(.S.(S@@@@@@@|.|@@@@@@@|....S.>FjS.}}}}}}........................
+|.|---F-F---F-F--@@@@@@@+.+@@@@@@@|....|-----}}}}}}.}.............------....
+|.S(|...........+@@@@@@@|.|@@@@@@@|.H..|...}}}}}}}.}}}}}..}.......|....|....
+|.|.F...........---------+---------+----}}}}}}}.......}}}}........+.|^.|....
+|.|-|.\.........+................^..|.}}}}}....}.....}}}}.........|....|....
+|.|.F...........---------#-----------}}}}}}..0.....0...}}}}.......------....
+|.S(|...........+@@@F}}}}}}}}}}}}}.}}}}}.}}}}...}.......}}}}}...............
+|.|---F--F-F--F-|@@@F}}.....}}}}}}}}}}.....}}}}..}.0..}}}}}}}}}.............
+|...|(.|(.|.(|.(S@@@F}.}...}...}}}}}}}........}}}}}}}}}}}}.}}}}}}}......}}}}
+|.{.-S--S---S--S|@@@F}}......}}}}-------S-------}}}}}}}-------}}}.}}}}}}}}}}
+|...............|----}}}}...}}..}|mmmmmmmmmmmmmmmmm}}mmmmmmmm|}}-}}}}}}}}}}}
+|.-+--+--+-------}}}}}}}}}}}.....|mmmmmmmmmmmmmmmmm}}}mmmmmmm}}---}}}}}}}}}}
+|.|P.|P.|.PF...}}}..........}....|mmmmmmmmmmmmmmmmmm}mmmmmmmmmmmm|...}}}}}}}
+|+--F--F----}}}}...---------}-----mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-----}}.}}.
+|.PF}....}}}}}}....|mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm}}.....
+----}}}}}}}...}}...|mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm|......
+}}}}}}}}}}}........+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmS......
+}}}}}}}}..}}.......|mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm|......
+}}}}}}.............|mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm|......
+}}}}...............---------------------------------------------------......
+</replacecharsblock></div>
+
+Overlooking the drawbridge is a barracks equipped with [[bow]]s and [[arrow]]s, two of which will be a blessed +0 [[elven bow]] and blessed +1 bow, and chances at [[silver arrow]]s or blessed, enchanted [[elven arrow]]s. In the throne room is a T sitting on the throne, accompanied by ten L, E, R, T, and/or O, who will be given a [[polearm|partisan, ranseur, septum, and bill-guisarme]] to help fight the player. The alcoves overlooking the throne room each contain a chest, and are guarded by secret doors, 4 [[iron golem]]s, and 6 dragons. One of the chests will have the wand of wishing (chest is untrapped and on a burned Elbereth), while the nine others have random loot. The two barracks at the top, in addition to the usual members of the [[Yendorian army]], will have 11 pieces of armor and 7 weapons each for the soldiers to use. There are also four [[prisoner]]s at the end of the left wing, two of which will be peaceful, and two trapdoors, a peaceful [[fire giant]], and an [[ochre jelly]] in the right wing. 
+
+Climbing the upstairs from the Valley of the Dead puts the player in the small building with the hole on the right side; the three [[boulder]]s placed nearby are there to help the player get back to the maze. Note that [[rust monster]]s in the throne room may eat the iron bars, releasing the iron golems and dragons to fight with the rest of the mob.
+
+==Strategy==
+Both new versions of the castle expose the player to dragon's breath before they can access the wand of wishing; this makes [[reflection]] even more important to acquire, as the wand of wishing is now a much riskier dive if one wants to get reflection from it.
+
+[[Category:UnNetHack Levels]]
+{{variant-343|offset=1}}}
+&&%s&& %s Fire and frost horn {138983 2021-04-15T04:31:56Z {4001427 Phollenback} fiqhack: horn damage tied to xl {{tool
+  |color=white
+  |tile=[[image:horn.png]]
+  |name=fire horn
+  |appearance=[[horn]]
+  |cost=50
+  |weight=18
+  |material=bone
+  |muse=off
+}}
+{{tool
+ |name=frost horn
+ |tile=[[image:horn.png]]
+ |appearance=[[horn]]
+ |cost=50
+ |weight=18
+ |color=white
+ |material=bone
+ |muse=off
+}}
+
+The '''fire horn''' and '''frost horn''' are rare [[musical instrument]]s that can deal elemental damage.
+
+==Generation==
+Fire and frost horns start with 4 to 8 charges.
+
+==Effects==
+[[Apply]]ing a fire or frost horn with charges left will prompt you to improvise; if you answer yes, the game will ask the player for a direction, and the horn will emit a [[ray]] of fire or cold respectively. This will [[auto-identify]] the horn.
+
+For each application of the horn, a number X is chosen between 6 and 11 inclusive.{{refsrc|src/music.c|600|nethack=3.6.6}}  Each monster hit with the ray will then be dealt [[d notation|Xd6]] damage, unless it [[resistance|resists]] the respective element.  (Contrast this with the respective [[wand]]s, for which the X always equals 6.)  Frost horns also deal Xd3 additional damage to monsters resistant to fire but not to cold, and fire horns deal 7 extra damage to monsters resistant to cold but not to fire.
+
+An uncharged fire or frost horn behaves the same as a [[tooled horn]]; answering no to the "Improvise?" prompt also lets you play the horn as a musical instrument without using up any charges.
+
+The horn can be [[recharge]]d an unlimited number of times, but can only hold up to 20 charges at once.  Each recharge adds 1d4 charges, or 2d4 if the scroll is blessed.
+
+==Identification==
+Apply an unidentified horn as soon as you find it.  If it produces an item, it's a [[horn of plenty]] and it will be [[auto-identify|auto-identified]] as such.  Otherwise, you can choose not to improvise to conserve a charge.  [[Tooled horn]]s can be eliminated by [[price identification]] (they cost only 15 [[zm]]); a horn that costs 50 zm and doesn't produce food must be either fire or frost.  There's no way to tell the two apart without direct identification or spending a charge.
+
+==Strategy==
+Fire and frost horns are offensively superior to their [[wand]] counterparts, dealing about 40% more damage on average.  They are also not destroyed by [[shock]] attacks.  Fire horns cannot be used to engrave [[Elbereth]], however.  Even after spending all the charges the horn is useful, as it becomes able to [[scare]] monsters.  Recharging them is generally unwise, as by the time you have ample access to [[charging]], you should also have collected more elemental wands than you could ever use, allowing you to save your charging scrolls for more important purposes.  A player that gets the [[PYEC]] and an elemental horn early may be an exception to this advice, though.
+
+As with all [[ray]]s, be careful not to aim the horn in the wrong direction and cause a [[YASD|potentially deadly rebound]], whether you are identifying it or using it against monsters; this also makes it somewhat difficult to use them in tight corridors.
+
+==FIQHack==
+
+In [[FIQHack]] fire and frost horns deal ([[experience level]] * d6) damage. This generally makes these horns less dangerous in the early game.
+
+==References==
+<References />
+
+[[Category:Musical instruments]]
+{{nethack-366}}}
+&&%s&& %s To-hit/ko {134220 2020-06-09T18:02:33Z {4001384 Stay Hydrated}  [[monster|몬스터]]를 공격할 때, 당신이 실제로 타격하기 위해서는 '''명중 [[D notation|굴림]]'''을 성공시켜야 합니다. 이것을 하기 위해서는 당신의 명중 보너스가 '''1d20'''의 굴림을 초과해야 합니다.{{refsrc|uhitm.c|478|comment=명중 굴림}} 그렇지 않으면, 당신의 공격은 빗나갑니다.
+
+== 근접 공격 ==
+
+[[melee|근접 공격]]을 할 확률에 영향을 주는 요소들은 다음과 같습니다:
+
+=== 무기와 장비 ===
+
+* [[weapon|무기]]를 사용중일 때, 무기의 [[enchantment|강화]] 수치에 해당하는 보너스(혹은 패널티){{refsrc|weapon.c|133|comment=무기의 강화 보너스}}
+* 타격할 때 쓰인 물체의 기본 명중 보너스{{refsrc|weapon.c|137|comment=아이템 명중 보너스}}
+* 적절한 목표에 [[artifact weapon|유물 무기]]를 사용할 때에 해당 유물의 명중 보너스{{refsrc|weapon.c|164|comment=유물 보너스}}
+* 당신이 착용하고 있는 [[ring of increase accuracy|명중률 상승의 반지]]의 강화 수치와 동일한 보너스{{refsrc|uhitm.c|236|comment=당신이 반지로부터 받는 명중 보너스,<code>u.uhitinc</code>}}
+* 당신이 [[body armor|몸통 방어구]]를 입고 있는 [[Monk|수도승]]이라면 명중률 &minus;20 {{refsrc|uhitm.c|267}}
+* 당신이 어떠한 몸통 방어구나 [[shield|방패]]를 착용하고 있지 않고, 어떠한 아이템도 [[wield|휘두르고]] 있지 않은 수도승이라면, 명중률 +(''경험 레벨'' / 3) +2.{{refsrc|uhitm.c|267|comment=수도승의 보너스와 패널티}}
+
+=== 당신의 특성과 상태 ===
+
+* 모든 근접 공격에 명중률 +1 {{refsrc|uhitm.c|236|comment=근접 공격에 기본적으로 +1}}
+* 당신의 [[strength|힘]]과 [[dexterity|민첩]]에 따른 보너스([[#Strength bonus|힘 표]]와  [[#Dexterity bonus|민첩 표]]를 참고하십시오.){{refsrc|weapon.c|688|comment=힘과 민첩 보너스}}
+* 당신의 [[Luck|운]] 수치와 동일한 보너스{{refsrc|uhitm.c|236|comment=운 보너스}}
+* 당신이 자연 상태일 때, [[experience level|경험 레벨]]과 동일한 보너스
+* 당신이 [[polymorph|폴리모프]] 상태일 때, 당신의 [[monster level|몬스터 레벨]](타격 주사위)과 동일한 보너스{{refsrc|uhitm.c|237|comment=자연 상태와 폴리모프 상태의 레벨 보너스}}
+* 당신의 경험 레벨이 1이나 2일 때, 명중률 +1 {{refsrc|weapon.c|703|comment=초심자 명중 보너스}}
+* 당신이 [[encumbrance|burdened]]일 때 &minus;1, stressed일 때 &minus;3, strained일 때 &minus;5를 받고; overtaxed이거나 overloaded일 때에는 전혀 공격할 수 없게 됩니다.{{refsrc|uhitm.c|277|comment=무게 패널티}}
+* 당신이 현재 [[trap|함정]]에 걸렸다면 &minus;3 {{refsrc|uhitm.c|278|comment=함정 패널티}}
+* 당신이 [[engulfing|삼켜졌다면]], 항상 명중합니다.{{refsrc|uhitm.c|478|comment=삼켜졌다면 항상 명중}}
+
+=== 기술 ===
+
+* 당신이 쌍수무기를 사용중이 아닐 때, 당신이 휘두르는 무기의 [[skill|기술]]에 따라 &minus;4 에서 +3까지의 보너스 또는 패널티 ([[#무기 기술 보너스|표를 보시오]]){{refsrc|weapon.c|1109|comment=스킬 보너스}}
+* 당신이 쌍수무기를 사용중일 때, 당신의 [[two weapon combat|쌍수무기 전투]] 기술에 따라 (또는 당신의 무기 기술입니다. 이 쪽이 더 낮다면 말입니다)  &minus;9 에서 &minus;3까지의 패널티 ([[#쌍수무기 패널티|표를 보시오]]){{refsrc|weapon.c|1118|comment=쌍수무기 패널티}}
+* [[bare hands|맨손]]이나 [[martial arts|무술]] 기술에는 보너스가 없습니다.{{reffunc|weapon.c|weapon_hit_bonus|comment=이 기능은 절대로 호출되지 않습니다. 왜냐하면 {{sourcecode|uhitm.c|283}}이나 {{sourcecode|uhitm.c|1957}}가 당신이 무언가를 휘두르고 있는지를 검사하기 때문입니다.}}
+* 말을 타고 있을 때에 패널티: [[riding|승마]]에 제한됨이거나 미숙함일 경우 &minus;2, 초보일 경우 &minus;1, 그리고 숙련됨 이상일 경우 패널티가 없습니다.{{refsrc|weapon.c|1146|comment=기본 승마 패널티}}
+* 당신이 말을 타고 있으면서 쌍수무기 전투에 임할 경우 추가적으로 &minus;2{{refsrc|weapon.c|1154|comment=쌍수무기 승마 패널티}}
+
+=== 몬스터의 특성과 상태 ===
+
+* 대상 몬스터의 [[AC]].{{refsrc|uhitm.c|236|comment=몬스터의 AC}}
+* 기절했거나, 도망가거나, 수면중인 몬스터에 대해 +2 (중첩 가능) {{refsrc|uhitm.c|250|comment=몬스터의 상태 보너스}}
+* 마비된 몬스터에 대해 +4{{refsrc|uhitm.c|257|comment=마비된 몬스터 보너스}}
+
+=== 특정 몬스터 ===
+
+* [[demon|데몬]]이나 [[undead|언데드]]에 대해 [[blessed|축복받은]] 무기를 사용 시 +2{{refsrc|weapon.c|142|comment=데몬/언데드에 대한 축복받음 보너스}}
+* [[kebabable|꼬치꽂이]]가 가능한 몬스터에 대해 [[spear|창]]을 사용 시 +2: [[xorn|쏘른]], [[naga|나가]], [[dragon|용]], [[jabberwock|재버워크]], 그리고 [[giant|거인]].{{refsrc|weapon.c|145|comment=창 대 "꼬치꽂이"가 가능한 몬스터}}
+* [[water|물]]에 있는 [[swimmer|헤엄치는 몬스터]]에 대해 [[trident|삼지창]] 사용 시 +4{{refsrc|weapon.c|149|comment=삼지창 대 헤엄치는 몬스터}}
+* 물 속에 있지 않은 {{monclasssym|S}}나 {{monclasssym|;}}에 대해 삼지창 사용 시 +2
+* [[xorn|쏘른]]이나 [[earth elemental|땅 원소]]에 대해 [[pick-axe|곡괭이]]나 [[dwarvish mattock|드워프제 곡괭이]]를 사용 시 +2 {{refsrc|weapon.c|155|comment=pick versus phasing and thick-skinned}}
+* 현재 자연 상태의 [[elf (starting race)|엘프]] 영웅이나 [[elf (monster attribute)|엘프족 몬스터]]로 [[polymorph|폴리모프]]한 상태로 아무 [[orc|오크]]나 타격 시 +1 {{refsrc|uhitm.c|264|comment=엘프 대 오크}}
+
+== 원거리 ==
+
+아이템을 [[throw|투척]]하거나 [[kick|걷어찰 때]], 또는 [[polearm|장창류]]를 [[apply|사용]]할 때 당신의 명중률에 영향을 주는 요소는 다음과 같습니다:
+
+* 모든 원거리 공격에 &minus;1{{refsrc|dothrow.c|1198|comment=원거리 공격에 기본적으로 &minus;1}}
+* 당신이 착용하고 있는 아무 [[ring of increase accuracy|명중률 상승의 반지]]의 강화 단계와 동일한 보너스{{refsrc|uhitm.c|236|comment=당신이 반지로부터 받는 명중 보너스, <code>u.uhitinc</code>}}
+* 대상 몬스터의 [[AC]]{{refsrc|uhitm.c|236|comment=몬스터 AC}}
+* 당신의 [[dexterity|민첩]]에 따른 보너스
+* 당신의 [[Luck|운]]과 동일한 보너스{{refsrc|uhitm.c|236|comment=운 보너스}}
+* 당신이 본래 상태일 때, [[experience level|경험치 레벨]]과 동일한 보너스
+* 당신이 [[polymorph|폴리모프]] 상태일 때, 당신의 [[monster level|몬스터 레벨]] (히트 다이스)와 동일한 보너스{{refsrc|uhitm.c|237|comment=자연 상태와 폴리모프 상태의 레벨 보너스}}
+* 대상이 얼마나 멀리 있는지에 따른 보너스. 당신과 인접한 대상은 +2 보너스를 줍니다. 이 수치는 한 칸씩 멀어질 때마다 1씩 감소하며, 최대 패널티인 &minus;4까지 감소합니다.
+* [[gauntlets of power|힘의 건틀릿]]을 착용하고 있을 때, 아무 [[bow|활]]이나 장비할 경우 &minus;2
+* [[gauntlets of fumbling|실수의 건틀릿]]을 착용하고 있을 때, 아무 [[bow|활]]이나 장비할 경우 &minus;3
+* 대상 몬스터의 크기에 따라 &minus;2 에서 +5까지의 보너스 혹은 패널티 ([[#몬스터 크기 보너스|표를 보시오]])
+* 자고 있는 몬스터에 대해 +2 
+* 마비된 몬스터에 대해 +4 
+* 만약 사용된 아이템이 [[heavy iron ball|무거운 쇠공]]일 경우 +2 
+* 만약 사용된 아이템이 [[boulder|바위]]일 경우 +6
+* [[weapon|무기]]를 사용중일 때, 무기의 [[enchantment|강화 수치]]와 동일한 보너스 (혹은 패널티)
+* 무기나 [[gem|보석]]의 자체 명중 보너스.
+* [[demon|데몬]]이나 [[undead|언데드]]에 대해 [[blessed|축복받은]] 무기를 사용할 경우 +2{{refsrc|weapon.c|142|comment=데몬이나 언데드에 대한 축복받은 보너스}}
+* "꼬치꽂이"가 가능한 몬스터에 대해 [[spear|창]]을 사용할 경우 +2 : [[xorn|쏘른]], [[naga|나가]], [[dragon|용]], [[jabberwock|재버워크]], 그리고 [[giant|거인]].{{refsrc|weapon.c|145|comment="꼬치꽂이"가 가능한 몬스터에 대한 창 보너스}}
+* [[water|물]]에 있는 [[swimmer|헤엄치는 몬스터]]에 대해 [[trident|삼지창]]을 사용할 경우 +4 {{refsrc|weapon.c|149|comment=삼지창 대 헤엄치는 몬스터}}
+* 물 속에 있지 않은 {{white|S}}나 {{white|;}}에 대해 삼지창을 사용할 경우 +2
+* [[xorn|쏘른]]이나 [[earth elemental|땅 원소]]에 대해 [[pick-axe|곡괭이]]나 [[dwarvish mattock|드워프제 곡괭이]]를 사용할 경우 +2{{refsrc|weapon.c|155|comment=pick versus phasing and thick-skinned}}
+* 적절한 목표에게 [[artifact weapon|유물 무기]] (혹은 [[The Heart of Ahriman|유물 보석]])를 사용할 경우 해당 유물의 명중 보너스{{refsrc|weapon.c|164|comment=유물 보너스}}
+* 현재 자연 상태의 [[elf (starting race)|엘프]] 영웅이나 [[elf (monster attribute)|엘프족 몬스터]]로 [[polymorph|폴리모프]]한 상태로 아무 오크나 타격할 경우 +1 {{refsrc|dothrow.c|1232|comment=엘프족 대 오크족}}
+* 당신이 아무 보석이나 [[unicorn|유니콘]]에게 던지면, 유니콘은 그것을 항상 잡을 것입니다.
+* 당신이 당신의 [[quest artifact|퀘스트 유물]]을 당신의 [[quest leader|퀘스트 리더]]에게 던졌고, 그/그녀가 평화 상태이며 마비되지 않았다면, 그/그녀는 그것을 항상 잡고 당신에게 돌려줄 것입니다.
+* 적절한 [[launcher|발사기]]를 장비하지 않은 상태로 [[ammo|탄약]]을 던질 경우 &minus;4
+* 발사기에서 탄약을 발사할 경우, 해당 발사기의 [[enchantment|강화 수치]]와 동일한 보너스 (또는 패널티)
+* 발사기에서 탄약을 발사할 경우, 해당 발사기의 [[erosion|부식 상태]]에 기반한 패널티: 부식됨일 경우 &minus;1, 매우 부식됨일 경우 &minus;2, 완전히 부식됨일 경우 &minus;3
+* 적절한 목표에 대해 [[The Longbow of Diana|유물 발사기]]로 적절한 탄약을 발사할 경우, 해당 유물의 명중 보너스.
+* 당신이 [[elf (starting race)|엘프]]거나 [[Samurai|사무라이]]이고, 아무 [[bow|활]]로 아무 [[arrow|화살]]이나 발사할 경우 +1
+* 당신이 [[elf (starting race)|엘프]]이고, [[elven bow|엘프제 활]]로 [[elven arrow|엘프제 화살]]을 발사할 경우 추가적으로 +1
+* 당신이 [[Samurai|사무라이]]이고, [[yumi|유미]]로 [[ya|야]]를 발사할 경우 추가적으로 +1
+* [[boomerang|부메랑]]을 던지거나 걷어찰 경우 +4
+* 투척 무기로 분류되는 아이템을 던지거나 걷어찰 경우 +2
+* 투척 무기나 탄약이 아닌 아이템을 던지거나 걷어찰 경우 &minus;2 
+* 당신이 적절한 발사기를 장비하지 않은 상태로 탄약을 던지지 않는 한, 던져진 아이템에 대한 [[skill|스킬]]에 따라 &minus;4에서 +3까지의 보너스 또는 패널티([[#무기 스킬|표를 보시오]])
+
+== 주문 ==
+
+주문 명중 계산은 약간 다릅니다. 방사선 주문의 경우, 당신의 명중 보너스는 반드시 4 ''빼기'' 1d20을 초과해야 합니다.
+
+명중 보너스의 계산법은 간단합니다:
+
+* 당신의 주문 계열 [[skill|기술]]에 따라 &minus;4 에서 +3까지의 보너스 또는 패널티. ([[#주문 기술 보너스|표를 보시오]]), {{refsrc|zap.c|2540|comment=기술 보너스}}
+* 당신의 민첩에 따른 보너스 ([[#민첩 보너스|민첩 표]]를 보시오).{{refsrc|zap.c|2548|comment=주문 민첩 보너스}}
+* 몬스터의 AC가 양수일 경우, 몬스터의 AC를 더합니다.
+* 몬스터의 AC가 음수일 경우, &minus;1부터 몬스터의 AC 값 사이의 무작위 값을 더합니다.
+
+비-방사선 주문은 다르게 작동합니다. [[Spell of force bolt|포스 볼트 주문]]은 d20의 값이 (10 + 상대의 AC)보다 낮을 경우 민첩이나 기술에 무관하게 명중합니다. 다른 일직선과 무방향성 주문은 항상 명중하지만, [[Magic resistance (monster)|저항받을 수도 있습니다]].
+
+== 보너스 표 ==
+
+=== 힘 보너스 ===
+
+[[strength|힘]] 보너스는 [[melee|근접]] 공격에만 적용됩니다.
+
+{|class="prettytable"
+!힘 !! 보너스
+|-
+|3 ~ 5 || &minus;2
+|-
+|6 ~ 7 || &minus;1
+|-
+|8 ~ 16 ||0
+|-
+|17 ~ 18/50 || +1
+|-
+|18/51 ~ 18/99 || +2
+|-
+|18/** ~ 25 || +3
+|}
+
+=== 민첩 보너스 ===
+
+[[dexterity|민첩]] 보너스는 [[melee|근접 공격]]과 원거리 공격에 모두 적용됩니다.
+
+{|class="prettytable"
+!민첩 !! 보너스
+|-
+|3 || &minus;3
+|-
+|4 ~ 5 || &minus;2
+|-
+|6 ~ 7 || &minus;1
+|-
+|8 ~ 14 ||0
+|-
+|15 || +1
+|-
+|16 || +2
+|-
+|17 || +3
+|-
+|18 || +4
+|-
+|19 || +5
+|-
+|20 || +6
+|-
+|21 || +7
+|-
+|22 || +8
+|-
+|23 || +9
+|-
+|24 || +10
+|-
+|25 || +11
+|}
+
+=== 무기 기술 보너스 ===
+
+무기 [[skill|기술]] 보너스는 근접 공격과 원거리 공격 모두에 적용됩니다.
+
+{|class="prettytable"
+!기술 !! 보너스
+|-
+|제한됨 또는<br />미숙함 || &minus;4
+|-
+|초보자 || 0
+|-
+|숙련자 || +2
+|-
+|전문가 || +3
+|}
+
+=== 주문 기술 보너스 ===
+
+주문 [[skill|기술]] 보너스는 [[ray|방사선]]과 [[beam|일직선]] 계열 공격에만 적용됩니다.
+
+{|class="prettytable"
+!기술 !! 보너스
+|-
+|제한됨 또는<br />미숙함 || &minus;4
+|-
+|초보자 ||0
+|-
+|숙련자 || +2
+|-
+|전문가 || +3
+|}
+
+=== 쌍수무기 패널티 ===
+
+[[two weapon combat|쌍수무기 전투]] 패널티는 근접 공격에만 적용됩니다. 이 행위는 당신의 주 무기 기술과 쌍수무기 전투 기술 중 낮은 쪽을 사용합니다.
+
+{|class="prettytable"
+!기술 !! 패널티
+|-
+|제한됨 또는<br />미숙함 || &minus;9
+|-
+|초보자 || &minus;7
+|-
+|숙련자 || &minus;5
+|-
+|전문가 || &minus;3
+|}
+
+=== 탑승 패널티 ===
+
+[[riding|탑승]] 패널티는 당신이 말을 타고 있을 때 적용되며, 당신의 탑승 기술에 따라 다르게 적용됩니다.
+{|class="prettytable"
+!기술 !! 패널티
+|-
+|제한됨 또는<br />미숙함 || &minus;2
+|-
+|초보자 || &minus;1
+|-
+|숙련자 또는<br />전문가 || 0
+|}
+
+=== 몬스터 크기 보너스 ===
+
+몬스터의 크기 보너스는 원거리 공격에만 적용됩니다.
+
+{|class="prettytable"
+!크기 !! 보너스
+|-
+|초소형 || &minus;2
+|-
+|소형 || &minus;1
+|-
+|중형 ||0
+|-
+|대형 || +1
+|-
+|초대형 || +2
+|-
+|특대형 || +5
+|}
+
+==변형판==
+[[SporkHack|스포크핵]]은 아무런 장비된 아이템 없이 하는 근접 공격에 맨손이나 무술 스킬 보너스를 부여합니다. [[Monk|수도승]]과 [[Samurai|사무라이]]는 [[martial arts|무술]] 보너스를 받습니다; 
+다른 [[role|직업]]들은 [[bare hands|맨손]] 보너스를 받습니다.
+
+{|class="prettytable"
+!스킬 !! 맨손<br />보너스 !! 무술<br />보너스
+|-
+|미숙함 || +1 ||''(n/a)''
+|-
+|초보자 || +1 || +3
+|-
+|숙련자 || +2 || +4
+|-
+|전문가 || +2 || +5
+|-
+|달인 || +3 || +6
+|-
+|대달인 || +3 || +7
+|}
+
+== 참고 ==
+디시인사이드의 Lmm 님께 감사를 표합니다.
+번역 참고에 많은 도움이 되었습니다.
+[[https://gall.dcinside.com/board/view/?id=rlike&no=316671&s_type=search_all&s_keyword=%EB%84%B7%ED%95%B5%EC%9C%84%ED%82%A4&page=1]]
+<references />
+[[Category:Strategy]]
+[[Category:한국어]]
+{{nethack-343}}}
+&&%s&& %s Trinsic {133375 2020-04-09T23:17:20Z {27 Ais523} redirect from a common developer name for this concept #REDIRECT [[Property]]}
+&&%s&& %s Spellbook of genocide {133386 2020-04-10T06:11:17Z {4000681 Andrio Celos} Apparently this was a thing. {{spellbook|name=genocide|level=7|turns=80|direction=non-directional|equiv=[[scroll of genocide]]|abundance=0.5%}}
+
+The '''spellbook of genocide''' would allow you to learn the '''genocide''' spell. It was removed in [[NetHack 3.1.0]].
+
+It could never be written and was not associated with any spell school, as these features did not yet exist in any version of ''NetHack'' which had the spell.
+
+==Effects==
+{{main|Genocide}}
+Casting the genocide spell would give the same effect as an uncursed [[scroll of genocide]], allowing [[you]] to wipe out a single species. Since skills did not yet exist, you could not get the effect of a blessed or cursed scroll of genocide from this spell.
+
+{{stub|Is this spell in any variants?}}
+
+[[Category:Spellbooks]]
+{{noversion}}}
+&&%s&& %s Template:Amulet of {133409 2020-04-10T21:26:33Z {4001313 Ardub23} Noted shortcut {{" of}} {{of|amulet|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}<noinclude>
+
+Use this template to link <em>up to five</em> amulet pages while only displaying the amulets' types. <code><nowiki>{{" of}}</nowiki></code> is a shortcut that redirects to this template.
+
+For example:
+
+:<code><nowiki>{{amulet of|change|restful sleep|and=1|strangulation}}</nowiki></code>
+:{{amulet of|change|restful sleep|and=1|strangulation}}
+
+This template works by calling {{t|of}}, to allow <code><nowiki>{{amulet of|...}}</nowiki></code> as an alternative to <code><nowiki>{{of|amulet|...}}</nowiki></code>. See [[Template:Of]] for details on the available parameters and how to use them; all of them will work the same for this template.
+</noinclude>}
+&&%s&& %s Template:" of {133408 2020-04-10T21:20:16Z {4001313 Ardub23} Redirected page to [[Template:Amulet of]] #REDIRECT [[Template:Amulet of]]}
+&&%s&& %s Template:Potion of {133410 2020-04-10T21:42:02Z {4001313 Ardub23} Created page with "<includeonly>{{of|potion|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude> Use this template to link <em>up to five</em> potio..." <includeonly>{{of|potion|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude>
+Use this template to link <em>up to five</em> potion pages while only displaying the potions' types. <code><nowiki>{{! of}}</nowiki></code> is a shortcut that redirects to this template.
+
+For example:
+
+:<code><nowiki>{{potion of|fruit juice|or=1|see invisible}}</nowiki></code>
+:{{potion of|fruit juice|or=1|see invisible}}
+
+This template works by calling {{t|of}}, to allow <code><nowiki>{{potion of|...}}</nowiki></code> as an alternative to <code><nowiki>{{of|potion|...}}</nowiki></code>. See [[Template:Of]] for details on the available parameters and how to use them; all of them will work the same for this template.
+</noinclude>}
+&&%s&& %s Template:! of {133411 2020-04-10T21:42:46Z {4001313 Ardub23} Redirected page to [[Template:Potion of]] #REDIRECT [[Template:Potion of]]}
+&&%s&& %s Template:Spellbook of {133412 2020-04-10T21:53:50Z {4001313 Ardub23} Created page with "<includeonly>{{of|spellbook|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude> Use this template to link <em>up to five</em> sp..." <includeonly>{{of|spellbook|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude>
+Use this template to link <em>up to five</em> spellbook pages while only displaying the spells' names. <code><nowiki>{{spell of}}</nowiki></code> and <code><nowiki>{{+ of}}</nowiki></code> are shortcuts that redirect to this template.
+
+For example:
+
+:<code><nowiki>{{spellbook of|magic missile|cone of cold|fireball}}</nowiki></code>
+:{{spellbook of|magic missile|cone of cold|fireball}}
+
+This template works by calling {{t|of}}, to allow <code><nowiki>{{spellbook of|...}}</nowiki></code> as an alternative to <code><nowiki>{{of|spellbook|...}}</nowiki></code>. See [[Template:Of]] for details on the available parameters and how to use them; all of them will work the same for this template.
+</noinclude>}
+&&%s&& %s Template:+ of {133414 2020-04-10T21:57:24Z {4001313 Ardub23} Redirected page to [[Template:Spellbook of]] #REDIRECT [[Template:Spellbook of]]}
+&&%s&& %s Template:Wand of {133719 2020-04-24T19:52:10Z {4001313 Ardub23} Better and more visible explanation of the technical restrictions preventing {{/ of}} <includeonly>{{of|wand|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude>
+Use this template to link <em>up to five</em> wand pages while only displaying the wands' types. <code><nowiki>{{/ of}}</nowiki></code> is <strong>not</strong> a shortcut, due to technical restrictions. <!-- While the page [[Template:/ of]] could function as a template, it could only be transcluded by "{{&#47; of}}", which is even worse than {{wand of}}. -->
+
+For example:
+
+:<code><nowiki>{{wand of|cancellation|teleportation|and=1|make invisible}}</nowiki></code>
+:{{wand of|cancellation|teleportation|and=1|make invisible}}
+
+This template works by calling {{t|of}}, to allow <code><nowiki>{{wand of|...}}</nowiki></code> as an alternative to <code><nowiki>{{of|wand|...}}</nowiki></code>. See [[Template:Of]] for details on the available parameters and how to use them; all of them will work the same for this template.
+</noinclude>}
+&&%s&& %s Template:Ring of {133417 2020-04-10T22:11:43Z {4001313 Ardub23} Created page with "<includeonly>{{of|ring|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude> Use this template to link <em>up to five</em> ring pa..." <includeonly>{{of|ring|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude>
+Use this template to link <em>up to five</em> ring pages while only displaying the rings' types. <code><nowiki>{{= of}}</nowiki></code> is a shortcut that redirects to this template.
+
+For example:
+
+:<code><nowiki>{{ring of|free action|conflict|and=1|levitation}}</nowiki></code>
+:{{ring of|free action|conflict|and=1|levitation}}
+
+This template works by calling {{t|of}}, to allow <code><nowiki>{{ring of|...}}</nowiki></code> as an alternative to <code><nowiki>{{of|ring|...}}</nowiki></code>. See [[Template:Of]] for details on the available parameters and how to use them; all of them will work the same for this template.
+</noinclude>}
+&&%s&& %s Template:= of {133418 2020-04-10T22:11:56Z {4001313 Ardub23} Redirected page to [[Template:Ring of]] #REDIRECT [[Template:Ring of]]}
+&&%s&& %s Template:Scroll of {133419 2020-04-10T22:16:50Z {4001313 Ardub23} Created page with "<includeonly>{{of|scroll|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude> Use this template to link <em>up to five</em> scrol..." <includeonly>{{of|scroll|{{{1}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|and={{{and|}}}|or={{{or|}}}|{{{5|}}}}}</includeonly><noinclude>
+Use this template to link <em>up to five</em> scroll pages while only displaying the scrolls' types. <code><nowiki>{{? of}}</nowiki></code> is a shortcut that redirects to this template.
+
+For example:
+
+:<code><nowiki>{{scroll of|charging|genocide|punishment|stinking cloud}}</nowiki></code>
+:{{scroll of|charging|genocide|punishment|stinking cloud}}
+
+This template works by calling {{t|of}}, to allow <code><nowiki>{{scroll of|...}}</nowiki></code> as an alternative to <code><nowiki>{{of|scroll|...}}</nowiki></code>. See [[Template:Of]] for details on the available parameters and how to use them; all of them will work the same for this template.
+</noinclude>}
+&&%s&& %s Template:? of {133420 2020-04-10T22:17:03Z {4001313 Ardub23} Redirected page to [[Template:Scroll of]] #REDIRECT [[Template:Scroll of]]}
+&&%s&& %s Alignment/ko {134234 2020-06-09T18:17:38Z {4001384 Stay Hydrated}  {{Wikipedia|Alignment (role-playing games)}}
+
+{{religion}}
+{{for|ways to change your alignment rating|alignment record}}
+''[[Nethack|넷핵]]''에서 '''성향'''은 3가지로 나뉩니다: '''질서''', '''중립''', 그리고 '''혼돈'''. 
+다음에 해당하는 것들은 성향을 가집니다:
+
+* [[Monster|몬스터]]들
+* [[Altar|제단]]들
+* [[Quest artifact|퀘스트 유물]]들
+* [[Artifact weapon|퀘스트 무기]]들
+* [[Dungeon branch|던전 분기점]]들
+* 당신의 [[Player|캐릭터]]
+
+당신의 캐릭터 성향에 더해서(질서, 중립, 혼돈에 무관하게), 당신의 캐릭터는 또한 ''[[alignment record|성향치]]''를 가집니다. 이는 [[source code|소스 코드]]에서 <tt>u.ualign.record</tt>로 언급되고는 합니다. 몇몇 스포일러들은 이 수치를 당신의 "성향"이라 말함으로써, 모호하게 만들기도 합니다.
+
+Altars to the evil god [[Moloch]] are considered '''unaligned'''&mdash;that is, not lawful, neutral or chaotic. Additionally, some artifact weapons are non-aligned. This only means that they express no preference for the alignment of their wielders, not that they are in some way allied to Moloch.
+
+The interactions between objects of different alignments are many and varied. Two things are ''co-aligned'' when their alignments are the same, or ''cross-aligned'' when they are different.
+
+==Your alignment==
+
+[[You]] choose your alignment during character creation. If you choose any race except [[human (starting race)|human]], your alignment is assigned implicitly: [[dwarf|dwarves]] are lawful, [[Gnome (starting race)|gnomes]] are neutral, and [[elf (starting race)|elves]] and [[orc (starting race)|orcs]] are chaotic. Humans may explicitly choose their alignment, although most roles have restrictions on permissible alignments. For example, [[Barbarian]]s cannot be lawful, [[Cavemen]] cannot be chaotic, and [[Knight]]s must be lawful.
+
+There are two ways to change your character's alignment. Wearing a [[helm of opposite alignment]] changes your alignment temporarily, and sacrificing at a cross-aligned [[altar]] under certain circumstances can convert your alignment permanently. If you permanently change your alignment before doing your [[quest]], however, the game will be [[unwinnable]].
+
+===Lawful===
+{| border="0" cellpadding="0" cellspacing="10" style="width: 100%;"
+|width="50%" valign="top"|
+====Lawful advantages====
+* Easy access to [[Excalibur]]: dip a long sword into a fountain after you reach experience level 5. This does ''not'' unrestrict long sword [[skill]], but see below.
+* You may receive [[Grayswandir]], the coveted [[artifact]] silver saber, as a [[sacrifice gift]].
+** If you don't receive Grayswandir and your role doesn't have a guaranteed first sacrifice gift, you will receive some sort of long sword. This unrestricts your long sword skill, allowing any lawful [[role]] to competently wield Excalibur.
+* The [[Gnomish Mines]] will have more peaceful monsters, so that branch is easier.
+* White [[unicorn]]s are slightly more common than other colors, to compensate for the fact that they don't appear in [[Gehennom]], making it easier to gain [[Luck]] early on.
+* Some nasty monsters - such as [[titan]]s, [[golden naga]]s, and especially [[Archon]]s - are co-aligned and will most often be peaceful.
+* You can reliably use a [[helm of opposite alignment]] on the chaotic high altar.
+|valign="top"|
+====Lawful disadvantages====
+* The [[mysterious force]] is harsher.
+* Because more unicorns will be coaligned, you may have more difficulty obtaining a [[unicorn horn]].
+* You lose [[intrinsic]] [[telepathy]] and two points of [[Luck]] if you commit [[murder]].

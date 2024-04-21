@@ -1,0 +1,1000 @@
+'''Usage''': Put this template on any page which is substantially based on an existing spoiler which carries no copyright statement:
+
+ <nowiki>
+ {{basedon
+ |name=Spoiler author
+ |url=Spoiler location
+ }}
+ </nowiki>
+
+The URL might be a link to Google Groups.
+
+See also: [[NetHackWiki:Copyrights]]
+[[Category:License templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Alignment record {147159 2022-08-03T11:38:47Z {4000251 Netzhack}  {{religion}}
+Your '''alignment record''' refers to your standing with your [[god]]. It is often simply called alignment, but it is not the same as [[Alignment|lawful/neutral/chaotic]] status. Its initial value is 0 for [[Caveman|Cave(wo)men]], [[Priest]]s, [[Tourist]]s, [[Valkyrie]]s and [[Wizard]]s, and 10 for [[Archeologist]]s, [[Barbarian]]s, [[Healer]]s, [[Knight]]s, [[Monk]]s, [[Rogue]]s, [[Ranger]]s, and [[Samurai]]. Its maximum is initially 10, and its upper bound increases by 1 for every 200 game turns. It has no lower bound. The value cannot be found precisely (except in [[wizard mode]]), but [[enlightenment]] or a [[stethoscope]] can give you a clue. Additionally, your [[quest leader]] will not permit you to go on your [[quest]] if your alignment record is below 20. This means you cannot enter the quest before turn 2000, which places an absolute lower limit on [[speed ascension]]s.
+
+Your alignment record gradually increases as you kill monsters, and decreases when you do actions your god disapproves of. This usually makes it easy to keep your record at the highest possible value, unless you have killed multiple peaceful monsters or are adhering to the [[pacifist]] conduct.
+
+==Effects of alignment record==
+Your alignment record factors into various important aspects of any given game:
+
+* You cannot go on the [[quest]] if your alignment record is less than 20.
+* The [[prayer#How your god decides what to grant|effect of a successful prayer]] depends on your alignment record:
+** You cannot safely pray if your alignment record is negative; your god will smite you.
+** If you pray with 0 alignment record, you have a [[Luck]]-dependent chance (see [[rnl]]) of your god either fixing one [[trouble|major problem]] or doing nothing.
+** If your alignment record is positive and less than 4, your god will only fix one major problem.
+** If your alignment record is at least 4, your god may, with a chance depending on your Luck and whether you are on a co-aligned [[altar]], fix more problems and possibly grant a favor.
+** If you have no major or minor problems and your alignment record is at least 14, your god will grant a favor.  The set of possible favors (including "no favor") depends on your Luck.
+** [[Crowning]] is a possible favor when your alignment record is at least 20 and you have at least 10 Luck.
+* If you are [[smite]]d by an opposing god, you are more likely to receive worse effects the higher your alignment record is.
+* Co-aligned monsters are more likely to be generated [[peaceful]] when your alignment record is high.
+* If you attempt to convert a cross-aligned altar by [[sacrifice]] when you have negative alignment record, you will be permanently converted to the altar's alignment (if you have not already permanently converted yourself).
+* Co-aligned artifacts will [[artifact blast|blast]] you if you have negative alignment record.
+
+== Checking your alignment ==
+[[Enlightenment]] by a wand or potion includes a statement of your alignment.  You can also apply a [[stethoscope]] or zap a [[wand of probing]] at yourself.
+
+{|class="wikitable"
+!Alignment statement!!Alignment range
+|-
+|  "You have transgressed." || &minus;9 or lower
+|-
+|  "You have sinned." || &minus;8 to &minus;4
+|-
+|  "You have strayed." || &minus;3 to &minus;1
+|-
+|  "You are nominally aligned." || 0
+|-
+|  "You are haltingly aligned." || 1 to 2
+|-
+|  "You are aligned." || 3
+|-
+|  "You are stridently aligned." || 4 to 8
+|-
+|  "You are fervently aligned." || 9 to 13
+|-
+|  "You are devoutly aligned." || 14 to 19
+|-
+|  "You are piously aligned." || 20 or higher
+|}
+
+If you have a negative alignment record and you probe yourself with a wand or a stethoscope, it will say you are "insufficiently" aligned without further subdivisions.
+
+==Ways to alter your alignment==
+
+In this table, MAX means your maximum alignment, which is 10&nbsp;+ {{sfrac|turns|200}}. This chart does not include the (large number of) monsters that you will get one or more alignment points for killing. Many of the following can have other effects as well, such as on [[luck]] or your god's [[anger]], but for brevity these are not shown here.
+
+Generally, for a character not attempting a pacifist conduct, alignment will be very close to the maximum.
+
+{|class="prettytable sortable"
+!Alignment
+!Role
+!Adjustment!!Cause
+|-
+|  Any
+|  Any
+|  &minus;{{sfrac|MAX|8}}|| Killing a friendly [[quest guardian]] ("That was probably a bad idea..."; "Whoopsie-daisy!" if hallucinating.){{refsrc|mon.c|1886}}
+|-
+|  Any
+|  Any
+|  &minus;99|| Offering the [[Amulet of Yendor]] on the high altar of another god (besides Moloch){{refsrc|src/pray.c|1544|version=NetHack 3.6.6}}
+|-
+|  Any
+|  Any
+|  &minus;15|| Killing a peaceful monster of a type which is "always peaceful" (see {{sa|sectionsign=1|Alignment gains from killing monsters}})
+|-
+|  Any
+|  Any
+|  &minus;15|| Killing your pet (stacks with &minus;3 for displacing into trap)
+|-
+|  Any
+|  Any
+|  &minus;5 || Killing a peaceful creature without angering it. (Killing a peaceful creature with one attack usually angers it before it dies, so this penalty is not normally incurred. However, killing an enemy with a [[beam]] attack such as [[force bolt]] will not. Monsters crushed by a [[drawbridge]] are also killed before they can become angry.)
+|-
+|  Any
+|  Any
+|  &minus;5 || Angering a coaligned priest
+|-
+|  Non-Chaotic
+|  Any
+|  &minus;5 || As a non-chaotic, sacrificing a member of your own race{{refsrc|pray.c|1213}}
+|-
+|  Any
+|  Any
+|  &minus;5 || Attempting to [[change alignment]] at an [[altar]] a second time
+|-
+|  Any
+|  Any
+|  &minus;5 || Attacking while standing on an [[Elbereth]] engraving, unless your attack damages the engraving. The engraving also disappears.
+|-
+|  Non-Chaotic
+|  Archeologist
+|  &minus;3 || As a non-chaotic Archeologist, digging up a grave ("You feel like a despicable grave-robber!")
+|-
+|  Any
+|  Any
+|  &minus;3 || Displacing your pet into a damaging trap (stacks with &minus;15 for killing)
+|-
+|  Any
+|  Any
+|  &minus;3 || Sacrificing your pet (if it died tame){{refsrc|pray.c|1229}}
+|-
+|  Any
+|  Any
+|  &minus;2 || Killing a coaligned priest
+|-
+|  Any
+|  Any
+|  &minus;1 || Praying on a non-coaligned altar, at a time when praying does not annoy your god{{refsrc|pray.c|803}}
+|-
+|  Lawful
+|  Any
+|  &minus;1 || As a lawful non-Archeologist, digging up a grave
+|-
+|  Any
+|  Knight
+|  &minus;1 || As a Knight, attacking a fleeing or sleeping monsters ("You caitiff!")
+|-
+|  Any
+|  Knight
+|  &minus;1 || As a Knight, eating while satiated ("You feel like a glutton!")
+|-
+|  Any
+|  Knight
+|  &minus;1 || As a Knight, digging down in a shop ("You feel like a common thief.")
+|-
+|  Any
+|  Samurai
+|  &minus;1 || As a Samurai, attacking a peaceful creature ("You dishonorably attack the innocent!")
+|-
+|  Lawful
+|  Samurai
+|  &minus;1 || As a lawful ''or'' a Samurai, attacking with a poisoned weapon
+|-
+|  Any
+|  Monk
+|  &minus;1 || As a Monk, eating meat ("You feel guilty.")
+|-
+|  Any
+|  Archeologist
+|  &minus;1 || As an Archeologist, breaking a historic statue ("You feel guilty about damaging such a historic statue.")
+|-
+|  Any
+|  Any
+|  &minus;1 || Sacrificing an identified [[cheap plastic imitation of the Amulet of Yendor]]
+|-
+|  Lawful
+|  Any
+|  &minus;1 || As a lawful, [[genocide|genociding]] a single [[Human (monster attribute)|human]] species{{refsrc|src/read.c|2239|nethack=3.6.4|name=genocide|comment=blessed scroll does not check for this}}
+|-
+|  Any
+|  Any
+|  &minus;1 || While riding, having your steed drown in water or lava
+|-
+|  Any
+|  Any
+|  &minus;1 || Angering a peaceful creature
+|-
+|  Any
+|  Any
+|  &minus;1 || Contributing 0 gold to a co-aligned priest ("Thou shalt regret thine action!"){{refsrc|priest.c|483}}
+|-
+|  Any
+|  Any
+|  &minus;1 || [[Sit]]ting on, [[engraving]] on, or [[kick]]ing a co-aligned altar while having more than &minus;rn2(4) alignment record.{{refsrc|src/pray.c|2283|nethack=3.6.6}}
+|-
+|  Lawful
+|  Any
+|  &minus;1 || As a lawful, stealing from a shop (reversed if shopkeeper is later made peaceful)
+|-
+|  Lawful
+|  Any
+|  &minus;1 || As a lawful, choosing not to pay for damage to a shop
+|-
+|  Lawful
+|  Any
+|  &minus;1 || As a lawful, lying when asked your name by a vault guard
+|-
+|  Chaotic
+|  Non-healer
+|  &minus;1 || As a chaotic non-Healer, casting a healing spell on a pet or peaceful creature, per creature.
+|-
+|  Chaotic
+|  Any
+|  +1 || As a chaotic, being seduced by a foocubus
+|-
+|  Chaotic
+|  Any
+|  +1 || As a chaotic, [[genocide|genociding]] a single [[Human (monster attribute)|human]] species<ref name='genocide'/>
+|-
+|  Any
+|  Any
+|  +1 || Praying successfully, with alignment 1 or less and none or a minor trouble{{refsrc|pray.c|805}}
+|-
+|  Any
+|  Any
+|  +1 || With alignment below &minus;5, contributing at least 200 times your experience (but less than 400 times your level) to a priest, getting clairvoyance{{refsrc|priest.c|503}}
+|-
+|  Chaotic
+|  Non-rogue
+|  +1 || As a chaotic non-Rogue, stealing from a shop (reversed if shopkeeper is later made peaceful)
+|-
+|  Chaotic
+|  Any
+|  +1 || As a chaotic, choosing not to pay for damage to a shop
+|-
+|  Lawful
+|  Any
+|  +1 || As a lawful, untrapping a monster (probability about 5&ndash;15%, depending on luck)
+|-
+|  Lawful
+|  Healer
+|  +1 || As a lawful ''or'' a Healer, casting a healing spell on a pet or peaceful creature, per creature
+|-
+|  Any
+|  Any
+|  +2 || Angering a non-coaligned priest
+|-
+|  Any
+|  Any
+|  +2 || Killing a non-coaligned priest
+|-
+|  Any
+|  Any
+|  +2 || With alignment positive, donating at least 600 times your experience level to a coaligned priest, if this is more than half your visible gold{{refsrc|priest.c|526}}
+|-
+|  Chaotic
+|  Archeologist
+|  +3 || As a chaotic Archeologist, digging up a grave
+|-
+|  Any
+|  Wizard, Tourist
+|  +3 || Freeing a [[prisoner]] during your quest
+|-
+|  Chaotic
+|  Any
+|  +5 || As a chaotic, sacrificing a member of your own race{{refsrc|pray.c|1218}}
+|-
+|  Any
+|  Any
+|  +5 || Sacrificing a non-coaligned unicorn on a coaligned altar
+|-
+|  Any
+|  Any
+| +10 || Offering the [[Amulet of Yendor]] on your god's high altar and [[ascend]]ing{{refsrc|src/pray.c|1555|version=NetHack 3.6.6}}
+|-
+|  Any
+|  Any
+|  up to +15||Killing a hostile monster of a type which is "always peaceful" (see {{sa|sectionsign=1|Alignment gains from killing monsters}})
+|-
+|  Any
+|  Any
+|  +{{sfrac|MAX|4}}|| Killing your [[quest nemesis]]
+|-
+|  Any
+|  Any
+|  +{{sfrac|MAX|4}}|| Killing a priest of Moloch
+|-
+|  Any
+|  Any
+|  set to &minus;99|| Offering the [[Amulet of Yendor]] on [[Moloch]]'s high altar in the [[Sanctum]]{{refsrc|src/pray.c|1527|version=NetHack 3.6.6}}
+|-
+|  Any
+|  Any
+|  set to &minus;{{sfrac|MAX|2}}|| Killing your quest leader
+|-
+|  Any
+|  Any
+|  set to &minus;1|| Sacrificing a coaligned unicorn on a non-coaligned altar (a conversion is likely to follow)
+|-
+|  Any
+|  Any
+|  set to 0|| With alignment negative, donating at least 600 times your experience level to a coaligned priest, if this is more than half your visible gold ''and'' this hasn't happened in the past 5000 turns{{refsrc|priest.c|523}}
+|-
+|  Any
+|  Any
+|  set to 0|| Changing alignment by wearing or removing a [[helm of opposite alignment]] or converting{{refsrc|src/attrib.c|1166|nethack=3.6.6}}
+|}
+
+; You feel partially absolved.
+If your god is not angry at you, but your alignment is negative, sacrificing monsters on a coaligned altar generally increases your alignment by the value of the sacrifice, up to a maximum of 0 alignment. See [[Sacrifice#Ordinary sacrifice|Sacrifice&nbsp;§ Ordinary sacrifice]] for details.
+
+{{basedon
+|name=Matthew Lahut
+|url=http://www.steelypips.org/nethack/pray.html
+}}
+
+== Alignment gains from killing monsters ==
+Normal alignment changes from killing monster are determined by the function <code>[[makemon.c#set_malign|set_malign(mtmp)]]</code>.  This is applied ''after'' the above modifiers.  So if you kill your quest leader, your alignment is actually set to &minus;{{sfrac|MAX|2}}&nbsp;&minus; 20.
+
+[[Alignment#Monster alignment|Monster alignment]] is defined for each monster in [[monst.c]]. It is largely independent of monster difficulty. In the table below, <code>malign</code> refers to the absolute value of the monster's alignment, and <code>max(a,b)</code> refers to whichever of a or b is higher.
+
+The alignment gain is calculated when a monster is generated.<ref name="monster generation">{{sourcecode|makemon.c|1067}} example of set_malign called at monster generation</ref> It is recalculated whenever a monster is tamed<ref name="taming">{{function|dog.c|tamedog}} taming (or making peaceful for untameable monsters) causes alignment gain to be recalculated</ref> or becomes peaceful.<ref name="taming"/><ref name="untrap">{{function|trap.c|reward_untrap}} monsters made peaceful by untrapping have alignment gain recalculated</ref> It is not recalculated when peaceful or tame monsters become hostile,<ref "setmangry">{{function|mon.c|setmangry}} angering monsters does not change alignment gain</ref> with the exception of the [[high priest]] of Moloch if he is angered when entering the [[temple]] in [[Moloch's Sanctum]].<ref name="sanctum">{{sourcecode|priest.c|352}} the high priest of Moloch's alignment gain is recalculated if you anger him by entering Moloch's Sanctum</ref> It is also not recalculated if you [[helm of opposite alignment|change alignment]], so the alignment values below are based on whether the monster was co-aligned ''at the time of its generation''.
+
+{|class="wikitable"
+!who!!peaceful!!hostile, coaligned!!hostile, cross-aligned
+|-
+|quest leader|| &minus;20||n/a||n/a
+|-
+|unaligned monsters ([[Wizard of Yendor]], [[Aligned priest|priests]] of [[Moloch]]) || 0 (the [[Valley of the Dead]] priest)||n/a||+20
+|-
+|"always peaceful"{{refsrc|monflag.h|131}} ([[shopkeeper]]s, [[aligned priest]]s) || &minus;3 &times; <code>max(5, malign)</code>||colspan=2|+3&nbsp;&times; <code>max(5, malign)</code> (e.g., hostile priests on the Astral Plane)
+|-
+|"always hostile"{{refsrc|monflag.h|130}} monsters (a very large list) || same as if hostile || 0 || <code>max(5, malign)</code>
+|-
+|all other monsters || &minus;3 &times; <code>max(3, malign)</code> if coaligned, else same as hostile || <code>max(3, malign)</code> || <code>malign</code>
+|}
+
+=== Examples ===
+* [[Vlad the Impaler]]: 0 if you're chaotic (co-aligned, always hostile); +10 otherwise (Vlad's alignment is &minus;10{{refsrc|monst.c|2019}})
+* A [[lichen]], a [[newt]], or [[Death (monster)|Death]]: +5 if you are lawful or chaotic (neutral, always hostile); 0 if you are neutral
+* A [[gnome (monster)|gnome]] or a [[air elemental]]: 0 if you are lawful or chaotic (neutral, can be peaceful); -9 if you are neutral and it was generated peaceful (&minus;3&nbsp;&times; 3, from max(3, malign)), or +3 if it was generated hostile (from max(3, malign))
+* The [[Minetown]] priest: &minus;15 (always peaceful, priest alignments are 5, 0, &minus;5)
+* A peaceful [[golden naga]], and you are lawful: &minus;16 (&minus;1 for attacking a peaceful monster, &minus;3&nbsp;&times; the naga's alignment of 5{{refsrc|monst.c|1778}})
+* A hostile golden naga, and you are lawful: +5 (the absolute value of the monster's alignment)
+* A peaceful golden naga, and you are not lawful: +4 (&minus;1 for peaceful, +5 for the naga's alignment)
+* A hostile golden naga, and you are not lawful: +5 (naga's alignment)
+
+As long as you are killing monsters and commit no major violations (killing quest leader, pet, priest), you can safely assume that your alignment is positive. If you need to raise your alignment quickly, kill easy always-hostile monsters, such as fungi, insects, or non-pet canines and felines.
+
+==FIQHack==
+
+Alignment penalties are calculated slightly differently in [[FIQHack]].  If you receive a penalty, your alignment is first set to 0, and then the penalty is subtracted<ref>https://github.com/FredrIQ/fiqhack/blob/865c9091803e844b66255e122877ae6c70950e51/libnethack/src/attrib.c#L733</ref>.
+
+==References==
+<references />
+
+{{nethack-343}}
+[[Category:Religion]]
+[[Category:Your character]]}
+&&%s&& %s Template:Religion {85061 2013-05-15T18:21:41Z {4000292 Prometheus77} added "sacrifice", arranged in ABC order <div class="thumb tright hoverlist">
+{| class="prettytable" style="margin: 0;"
+!style="text-align:center;"|'''''[[Religion]] in NetHack'''''
+|-
+|
+* [[aligned priest|priest]]s
+* [[alignment]]
+* [[alignment record]]
+* [[altar]]s
+* [[atheist|atheism]]
+* [[anger]]
+* [[god]]s
+* [[sacrifice]]
+* [[prayer]]
+* [[turn undead|turn undead]]
+|}
+</div>
+<noinclude>[[Category:Templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Template:NetHack source code {127368 2019-08-27T13:05:24Z {4001330 Rob110178} + 3.6.2 <div class="centered">
+{| class="prettytable" style="margin: 0; text-align:center;"
+!'''''Source code'''''
+|-
+|[[Hack 1.0 source code|1.0]] - [[NetHack 1.3d source code|1.3d]] - [[NetHack 1.4f source code|1.4f]] - [[NetHack 2.2a source code|2.2a]] - [[NetHack 2.3e source code|2.3e]] - [[NetHack 3.0.0 source code|3.0.0]] - [[NetHack 3.1.0 source code|3.1.0]] - [[NetHack 3.2.0 source code|3.2.0]] - [[NetHack 3.3.0 source code|3.3.0]] - [[NetHack 3.4.0 source code|3.4.0]] - [[NetHack 3.4.3 source code|3.4.3]] - [[NetHack 3.6.0 source code|3.6.0]] - [[Source code|3.6.1]] - [[Nethack 3.6.2 source code|3.6.2]]
+|-
+|[[Source code statistics|Statistics]] - [[Source diving]] - [[:Category:Annotations|Annotations]]
+|}
+</div>
+<noinclude>[[Category:Templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Monster difficulty {142452 2021-09-07T03:23:40Z {4001483 Cathartes} /* Difficulty values */ Vlad the Impaler drinks several potions of gain level!  Vlad the Impaler rises up, through the list!  (stats copied from [[Vlad the Impaler]] on the assumption that this page is the one out of date) A monster's '''difficulty''' is a number from 1 to 57 which represents the game's idea of how tough a monster is. It loosely correlates with a monster's [[monster level|base level]], but is often higher for monsters with special properties that might make them tougher.
+
+Difficulty is primarily used in the [[normal mechanism]] of monster generation to decide whether a candidate monster is appropriately difficult for the player to encounter. A monster is "too strong" to be randomly generated when its difficulty is greater than the average of your [[experience level]] and your [[dungeon level]]. It is "too weak" to be randomly generated when its difficulty is less than your dungeon level divided by 6, rounded down. (For this purpose, once you have the [[Amulet of Yendor]] your dungeon level is considered to be that of the [[Sanctum]], and in the endgame to be the depth of the Sanctum plus half your experience level.) Most of the less common mechanisms of monster generation do not have similar limits.
+
+Other effects of difficulty include:
+* How much your god appreciates a [[sacrifice]]d corpse (the dead monster's experience level doesn't matter).
+* Whether your god will be [[mollified]], if they are [[angry]]. You must sacrifice a monster corpse of difficulty 7 or greater (11 or greater if you are [[chaotic]]) in order to mollify the god.
+* The type of [[offensive item|offensive]], [[defensive item|defensive]], or [[miscellaneous item]] a monster may receive.
+* Whether a monster considers itself weak enough to try [[polymorph]]ing itself.
+
+__TOC__
+
+== Difficulty values ==
+
+This is a list of [[monster]]s sorted by [[difficulty]], then by [[experience]] value.
+
+This table was generated with the use of a modified version of [[makedefs]] to calculate experience values as well, and is believed by the author to be accurate.  If there are discrepancies between these and those listed in the articles, please correct the article.
+
+{|class="prettytable sortable striped"
+!Name
+!Experience
+!Difficulty
+|-	
+|[[Demogorgon]] ||	3297	||	57
+|-	
+|[[Asmodeus]] ||	3225	||	53
+|-	
+|[[Baalzebub]] ||	2333	||	45
+|-	
+|[[Dispater]] ||	1923	||	40
+|-	
+|[[Geryon]] ||	1625	||	36
+|-	
+|[[Orcus]] ||	1445	||	36
+|-	
+|[[Riders#Pestilence|Pestilence]] ||	1431	||	34
+|-	
+|[[Riders#Famine|Famine]] ||	1431	||	34
+|-	
+|[[Riders#Death|Death]] ||	1431	||	34
+|-	
+|[[Wizard of Yendor]] ||	1411	||	34
+|-	
+|[[Vlad the Impaler]] ||	1087	||	32
+|-	
+|[[Master Kaen]] ||	1095	||	31
+|-	
+|[[Yeenoghu]] ||	1073	||	31
+|-	
+|[[high priest]] ||	1054	||	30
+|-	
+|[[Grand Master]] ||	1053	||	30
+|-	
+|[[Arch Priest]] ||	876	||	30
+|-	
+|[[arch-lich]] ||	915	||	29
+|-	
+|[[Juiblex]] ||	899	||	26
+|-	
+|[[Archon]] ||	730	||	26
+|-	
+|[[mail daemon]] ||	1	||	26
+|-	
+|[[Medusa]] ||	634	||	25
+|-	
+|[[Master of Thieves]] ||	588	||	24
+|-	
+|[[Cyclops]] ||	662	||	23
+|-	
+|[[Neferet the Green]] ||	593	||	23
+|-	
+|[[Norn]] ||	588	||	23
+|-	
+|[[Lord Sato]] ||	588	||	23
+|-	
+|[[King Arthur]] ||	588	||	23
+|-	
+|[[Chromatic Dragon]] ||	586	||	23
+|-	
+|[[Nalzok]] ||	585	||	23
+|-	
+|[[Minion of Huhetotl]] ||	585	||	23
+|-	
+|[[kraken]] ||	1574	||	22
+|-	
+|[[Croesus]] ||	746	||	22
+|-	
+|[[mastodon]] ||	611	||	22
+|-	
+|[[Shaman Karnov]] ||	583	||	22
+|-	
+|[[Pelias]] ||	583	||	22
+|-	
+|[[Orion]] ||	583	||	22
+|-	
+|[[Lord Carnarvon]] ||	583	||	22
+|-	
+|[[Hippocrates]] ||	583	||	22
+|-
+|[[Twoflower]] ||	581	||	22
+|-	
+|[[Thoth Amon]] ||	547	||	22
+|-	
+|[[Ixoth]] ||	545	||	22
+|-	
+|[[iron golem]] ||	545	||	22
+|-	
+|[[ki-rin]] ||	552	||	21
+|-	
+|[[master lich]] ||	494	||	21
+|-	
+|[[balrog]] ||	575	||	20
+|-	
+|[[titan]] ||	553	||	20
+|-	
+|[[yellow dragon]] ||	535	||	20
+|-	
+|[[white dragon]] ||	535	||	20
+|-	
+|[[silver dragon]] ||	535	||	20
+|-	
+|[[red dragon]] ||	535	||	20
+|-	
+|[[orange dragon]] ||	535	||	20
+|-	
+|[[green dragon]] ||	535	||	20
+|-	
+|[[gray dragon]] ||	535	||	20
+|-	
+|[[blue dragon]] ||	535	||	20
+|-	
+|[[black dragon]] ||	535	||	20
+|-	
+|[[Master Assassin]] ||	503	||	20
+|-	
+|[[Dark One]] ||	498	||	20
+|-	
+|[[storm giant]] ||	536	||	19
+|-	
+|[[Ashikaga Takauji]] ||	488	||	19
+|-	
+|[[Lord Surtur]] ||	486	||	19
+|-	
+|[[Angel]] ||	485	||	19
+|-	
+|[[master mind flayer]] ||	416	||	19
+|-	
+|[[jabberwock]] ||	489	||	18
+|-	
+|[[glass golem]] ||	409	||	18
+|-	
+|[[demilich]] ||	376	||	18
+|-	
+|[[minotaur]] ||	504	||	17
+|-	
+|[[Scorpius]] ||	474	||	17
+|-	
+|[[purple worm]] ||	474	||	17
+|-	
+|[[Nazgul]] ||	376	||	17
+|-	
+|[[pit fiend]] ||	422	||	16
+|-	
+|[[Olog-hai]] ||	325	||	16
+|-	
+|[[guardian naga]] ||	295	||	16
+|-	
+|[[stone golem]] ||	345	||	15
+|-	
+|[[nalfeshnee]] ||	341	||	15
+|-	
+|[[baluchitherium]] ||	331	||	15
+|-	
+|[[sandestin]] ||	308	||	15
+|-	
+|[[aligned priest]] ||	294	||	15
+|-	
+|[[shopkeeper]] ||	287	||	15
+|-	
+|[[vampire lord]] ||	399	||	14
+|-	
+|[[skeleton]] ||	359	||	14
+|-	
+|[[shade]] ||	357	||	14
+|-	
+|[[ice devil]] ||	351	||	14
+|-	
+|[[disenchanter]] ||	301	||	14
+|-	
+|[[hell hound]] ||	290	||	14
+|-	
+|[[guard]] ||	284	||	14
+|-	
+|[[captain]] ||	277	||	14
+|-	
+|[[prisoner]] ||	272	||	14
+|-	
+|[[trapper]] ||	270	||	14
+|-	
+|[[lich]] ||	269	||	14
+|-	
+|[[frost giant]] ||	296	||	13
+|-	
+|[[ettin]] ||	291	||	13
+|-	
+|[[Oracle]] ||	286	||	13
+|-	
+|[[bone devil]] ||	285	||	13
+|-	
+|[[baby yellow dragon]] ||	272	||	13
+|-	
+|[[baby white dragon]] ||	272	||	13
+|-	
+|[[baby silver dragon]] ||	272	||	13
+|-	
+|[[baby red dragon]] ||	272	||	13
+|-	
+|[[baby orange dragon]] ||	272	||	13
+|-	
+|[[baby green dragon]] ||	272	||	13
+|-	
+|[[baby gray dragon]] ||	272	||	13
+|-	
+|[[baby blue dragon]] ||	272	||	13
+|-	
+|[[baby black dragon]] ||	272	||	13
+|-	
+|[[titanothere]] ||	267	||	13
+|-	
+|[[mind flayer]] ||	263	||	13
+|-	
+|[[water troll]] ||	246	||	13
+|-	
+|[[nurse]] ||	245	||	13
+|-	
+|[[golden naga]] ||	239	||	13
+|-	
+|[[vampire]] ||	327	||	12
+|-	
+|[[Aleax]] ||	298	||	12
+|-	
+|[[hezrou]] ||	267	||	12
+|-	
+|[[clay golem]] ||	249	||	12
+|-	
+|[[ghost]] ||	238	||	12
+|-	
+|[[queen bee]] ||	225	||	12
+|-	
+|[[watch captain]] ||	221	||	12
+|-	
+|[[Valkyrie (player monster)|valkyrie]] ||	221	||	12
+|-	
+|[[Tourist (player monster)|tourist]] ||	221	||	12
+|-	
+|[[Samurai (player monster)|samurai]] ||	221	||	12
+|-	
+|[[Rogue (player monster)|rogue]] ||	221	||	12
+|-	
+|[[lieutenant]] ||	221	||	12
+|-	
+|[[Knight (player monster)|knight]] ||	221	||	12
+|-	
+|[[black pudding]] ||	221	||	12
+|-	
+|[[Barbarian (player monster)|barbarian]] ||	221	||	12
+|-	
+|[[Archeologist (player monster)|archeologist]] ||	221	||	12
+|-	
+|[[Wizard (player monster)|wizard]] ||	216	||	12
+|-	
+|[[Ranger (player monster)|ranger]] ||	216	||	12
+|-	
+|[[Priest (player monster)|priestess]] ||	216	||	12
+|-	
+|[[Priest (player monster)|priest]] ||	216	||	12
+|-	
+|[[Healer (player monster)|healer]] ||	216	||	12
+|-	
+|[[Elf (monster)|elf]] ||	216	||	12
+|-	
+|[[Cavewoman (player monster)|cavewoman]] ||	216	||	12
+|-	
+|[[Caveman (player monster)|caveman]] ||	216	||	12
+|-	
+|[[lurker above]] ||	214	||	12
+|-	
+|[[ice troll]] ||	205	||	12
+|-	
+|[[rock troll]] ||	198	||	12
+|-	
+|[[umber hulk]] ||	194	||	12
+|-	
+|[[salamander]] ||	159	||	12
+|-	
+|[[fire giant]] ||	254	||	11
+|-	
+|[[Monk (player monster)|monk]] ||	211	||	11
+|-	
+|[[winged gargoyle]] ||	207	||	11
+|-	
+|[[water demon]] ||	196	||	11
+|-	
+|[[Elvenking]] ||	196	||	11
+|-	
+|[[ogre king]] ||	194	||	11
+|-	
+|[[doppelganger]] ||	191	||	11
+|-	
+|[[zruty]] ||	186	||	11
+|-	
+|[[giant mimic]] ||	186	||	11
+|-	
+|[[couatl]] ||	180	||	11
+|-	
+|[[marilith]] ||	177	||	11
+|-	
+|[[vrock]] ||	176	||	11
+|-	
+|[[xorn]] ||	139	||	11
+|-	
+|[[elf-lord]] ||	123	||	11
+|-	
+|[[electric eel]] ||	1129	||	10
+|-	
+|[[flesh golem]] ||	186	||	10
+|-	
+|[[barbed devil]] ||	179	||	10
+|-	
+|[[hill giant]] ||	174	||	10
+|-	
+|[[erinys]] ||	158	||	10
+|-	
+|[[fire vortex]] ||	142	||	10
+|-	
+|[[fire elemental]] ||	134	||	10
+|-	
+|[[black naga]] ||	132	||	10
+|-	
+|[[water elemental]] ||	126	||	10
+|-
+|[[earth elemental]] ||	126	||	10
+|-	
+|[[air elemental]] ||	126	||	10
+|-	
+|[[sergeant]] ||	118	||	10
+|-	
+|[[giant mummy]] ||	116	||	10
+|-	
+|[[cobra]] ||	90	||	10
+|-	
+|[[long worm]] ||	169	||	10
+|-	
+|[[horned devil]] ||	147	||	9
+|-	
+|[[xan]] ||	120	||	9
+|-	
+|[[wumpus]] ||	118	||	9
+|-	
+|[[stalker]] ||	113	||	9
+|-	
+|[[large mimic]] ||	113	||	9
+|-	
+|[[giant zombie]] ||	113	||	9
+|-	
+|[[baby purple worm]] ||	113	||	9
+|-	
+|[[baby long worm]] ||	113	||	9
+|-	
+|[[steam vortex]] ||	112	||	9
+|-	
+|[[glass piercer]] ||	106	||	9
+|-	
+|[[shark]] ||	104	||	9
+|-	
+|[[winter wolf]] ||	102	||	9
+|-	
+|[[hell hound pup]] ||	102	||	9
+|-	
+|[[energy vortex]] ||	101	||	9
+|-	
+|[[warhorse]] ||	97	||	9
+|-	
+|[[troll]] ||	97	||	9
+|-	
+|[[ogre lord]] ||	97	||	9
+|-	
+|[[sasquatch]] ||	95	||	9
+|-
+|[[pit viper]] ||	93	||	9
+|-	
+|[[quantum mechanic]] ||	92	||	9
+|-	
+|[[mountain centaur]] ||	88	||	9
+|-	
+|[[green slime]] ||	164	||	8
+|-	
+|[[cockatrice]] ||	149	||	8
+|-	
+|[[stone giant]] ||	127	||	8
+|-	
+|[[giant]] ||	127	||	8
+|-	
+|[[succubus]] ||	122	||	8
+|-	
+|[[incubus]] ||	122	||	8
+|-	
+|[[wraith]] ||	120	||	8
+|-	
+|[[djinni]] ||	97	||	8
+|-	
+|[[gargoyle]] ||	95	||	8
+|-	
+|[[wood golem]] ||	92	||	8
+|-	
+|[[warg]] ||	92	||	8
+|-	
+|[[small mimic]] ||	92	||	8
+|-	
+|[[ettin mummy]] ||	92	||	8
+|-	
+|[[shocking sphere]] ||	91	||	8
+|-	
+|[[freezing sphere]] ||	91	||	8
+|-	
+|[[flaming sphere]] ||	91	||	8
+|-	
+|[[ochre jelly]] ||	88	||	8
+|-	
+|[[dwarf king]] ||	83	||	8
+|-	
+|[[red naga]] ||	82	||	8
+|-	
+|[[python]] ||	82	||	8
+|-	
+|[[pyrolisk]] ||	82	||	8
+|-	
+|[[watchman]] ||	78	||	8
+|-	
+|[[soldier]] ||	78	||	8
+|-	
+|[[Grey-elf]] ||	78	||	8
+|-	
+|[[leocrotta]] ||	76	||	8
+|-	
+|[[gelatinous cube]] ||	76	||	8
+|-	
+|[[carnivorous ape]] ||	76	||	8
+|-	
+|[[tiger]] ||	73	||	8
+|-	
+|[[guide]] ||	71	||	8
+|-	
+|[[apprentice]] ||	71	||	8
+|-	
+|[[acolyte]] ||	71	||	8
+|-	
+|[[rust monster]] ||	70	||	8
+|-	
+|[[scorpion]] ||	67	||	8
+|-	
+|[[abbot]] ||	66	||	8
+|-	
+|[[forest centaur]] ||	64	||	8
+|-	
+|[[gremlin]] ||	61	||	8
+|-	
+|[[giant eel]] ||	1075	||	7
+|-	
+|[[chickatrice]] ||	136	||	7
+|-	
+|[[owlbear]] ||	94	||	7
+|-	
+|[[barrow wight]] ||	90	||	7
+|-	
+|[[tengu]] ||	76	||	7
+|-	
+|[[large dog]] ||	76	||	7
+|-	
+|[[large cat]] ||	76	||	7
+|-	
+|[[ice vortex]] ||	74	||	7
+|-	
+|[[black light]] ||	74	||	7
+|-	
+|[[leather golem]] ||	73	||	7
+|-	
+|[[human mummy]] ||	73	||	7
+|-	
+|[[ettin zombie]] ||	73	||	7
+|-	
+|[[elf mummy]] ||	73	||	7
+|-	
+|[[crocodile]] ||	73	||	7
+|-	
+|[[chameleon]] ||	73	||	7
+|-	
+|[[mumak]] ||	68	||	7
+|-	
+|[[warrior]] ||	66	||	7
+|-	
+|[[vampire bat]] ||	66	||	7
+|-	
+|[[thug]] ||	66	||	7
+|-	
+|[[roshi]] ||	66	||	7
+|-	
+|[[page]] ||	66	||	7
+|-	
+|[[orc-captain]] ||	66	||	7
+|-	
+|[[ninja]] ||	66	||	7
+|-	
+|[[winter wolf cub]] ||	64	||	7
+|-	
+|[[giant spider]] ||	64	||	7
+|-	
+|[[student]] ||	61	||	7
+|-	
+|[[ogre]] ||	61	||	7
+|-	
+|[[neanderthal]] ||	61	||	7
+|-	
+|[[hunter]] ||	61	||	7
+|-	
+|[[horse]] ||	61	||	7
+|-	
+|[[Green-elf]] ||	61	||	7
+|-	
+|[[chieftain]] ||	61	||	7
+|-	
+|[[attendant]] ||	61	||	7
+|-	
+|[[yeti]] ||	59	||	7
+|-	
+|[[panther]] ||	59	||	7
+|-	
+|[[lynx]] ||	59	||	7
+|-	
+|[[werewolf]] ||	56	||	7
+|-	
+|[[water moccasin]] ||	48	||	7
+|-	
+|[[quasit]] ||	36	||	7
+|-	
+|[[iron piercer]] ||	63	||	6
+|-	
+|[[werewolf]] ||	61	||	6
+|-	
+|[[spotted jelly]] ||	61	||	6
+|-	
+|[[gnome king]] ||	61	||	6
+|-	
+|[[quivering blob]] ||	59	||	6
+|-	
+|[[wolf]] ||	56	||	6
+|-	
+|[[piranha]] ||	56	||	6
+|-	
+|[[orc mummy]] ||	56	||	6
+|-	
+|[[lizard]] ||	56	||	6
+|-	
+|[[gold golem]] ||	56	||	6
+|-	
+|[[giant beetle]] ||	56	||	6
+|-	
+|[[dwarf mummy]] ||	56	||	6
+|-	
+|[[brown pudding]] ||	56	||	6
+|-	
+|[[dust vortex]] ||	54	||	6
+|-	
+|[[white unicorn]] ||	51	||	6
+|-	
+|[[gray unicorn]] ||	51	||	6
+|-	
+|[[dwarf lord]] ||	51	||	6
+|-	
+|[[black unicorn]] ||	51	||	6
+|-	
+|[[plains centaur]] ||	49	||	6
+|-	
+|[[snake]] ||	48	||	6
+|-	
+|[[Woodland-elf]] ||	46	||	6
+|-	
+|[[raven]] ||	46	||	6
+|-	
+|[[Kop Kaptain]] ||	46	||	6
+|-	
+|[[rope golem]] ||	44	||	6
+|-	
+|[[jaguar]] ||	44	||	6
+|-	
+|[[ape]] ||	41	||	6
+|-	
+|[[soldier ant]] ||	37	||	6
+|-	
+|[[fire ant]] ||	34	||	6
+|-	
+|[[blue jelly]] ||	45	||	5
+|-	
+|[[yellow light]] ||	44	||	5
+|-	
+|[[housecat]] ||	44	||	5
+|-	
+|[[dog]] ||	44	||	5
+|-	
+|[[dingo]] ||	44	||	5
+|-	
+|[[human zombie]] ||	41	||	5
+|-	
+|[[gnome mummy]] ||	41	||	5
+|-	
+|[[orc shaman]] ||	38	||	5
+|-	
+|[[gnomish wizard]] ||	38	||	5
+|-	
+|[[violet fungus]] ||	34	||	5
+|-	

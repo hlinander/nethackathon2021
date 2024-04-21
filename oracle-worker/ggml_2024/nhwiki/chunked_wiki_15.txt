@@ -1,0 +1,1000 @@
+&&%s&& %s Ring of adornment {130527 2020-01-12T01:29:49Z {4000978 Aximili} Add explicit identification section {{ring
+ |name=adornment
+ |cost=100
+}}
+
+Wearing a '''ring of adornment''' modifies [[charisma]].
+
+== Identification ==
+
+Dropping a ring of adornment into a [[sink]] produces the message, "The faucets flash brightly for a moment."
+
+== Effects ==
+
+The change in charisma is equal to the ring's [[enchantment]]; the enchantment can be altered by [[charging]].
+
+[[Succubus|Succubi]] will steal or ask for rings of adornment ("That <ring> looks pretty.  May I have it?" or "The succubus decides she'd like your <ring>, and takes it."). [[Incubus|Incubi]] will ask you to put on a ring of adornment if you're carrying one ("That <ring> looks pretty.  Would you wear it for me?" or "The incubus decides you'd look prettier wearing your <ring>, and puts it on your finger."). This happens regardless of the enchantment (positive, negative, or zero) on the ring.  Additionally, the ring will be identified. 
+
+== History ==
+
+In the original [[Rogue (game)|Rogue]], a ring of adornment was usually [[cursed]] as it did nothing but take up ring space and cause [[ring hunger]]. Similarly, for [[Game history|earlier versions of NetHack]], rings of adornment had no effect.
+
+== Strategy ==
+
+Don't keep unidentified rings on your inventory, or an Incubus might make you wear a cursed one with negative enchantment.
+
+Outside of improving foocubi encounter results and lowering shop prices, this ring is relatively useless and an excellent candidate for polypiling.
+
+[[Category:Rings|Adornment]]
+{{nethack-343}}}
+&&%s&& %s Ring of slow digestion {148181 2022-09-18T09:43:20Z {4001622 Greenbourne277} Behavior of ring when its cursed. {{ring
+ |name=slow digestion
+ |cost=200
+}}
+
+The '''ring of slow digestion''' is a ring that appears in ''[[NetHack]]''.
+
+==Effects==
+When worn, the ring nullifies the ordinary consumption of one [[nutrition]] per turn. Nutrition consumption from all other sources, including the [[ring hunger]] from the ring itself, is unaffected; in practice, this means that a non-spellcasting player can go without being hungry twenty times longer than normal. Wearing two rings does not cause the effect to stack.
+
+If a monster attempts to [[engulf]] and [[digest]] you while you are wearing this ring, you will be expelled immediately (i.e. the ring slows ''your'' digestion).
+
+A cursed ring still has its effect. 
+
+==Strategy==
+With two rings of slow digestion, and good technique, the player can go indefinitely long without losing any nutrition, because the ring hunger for each hand is calculated on different turns. Normally, this is counterproductive due to the higher nutrition consumption from multiple rings, since the effect does not stack; however, ring hunger for your left hand is calculated turn 4 (mod 20), while right hand hunger is calculated on turn 12 (mod 20). The idea is to wear both rings, but removing one of the rings for the turn that its hunger is calculated. No known ascensions have made use of this trick alone to ascend with the [[foodless]] conduct intact.
+
+{{upcoming|NetHack 3.7.0|The dual ring of slow digestion trick no longer works, as ring hunger is now random.}}
+
+===Identification===
+The ring of slow digestion is somewhat difficult to informally identify. Dropping it into a [[sink]] does not consume the ring, and produces a message about the ring being "regurgitated", and you can them name it in a prompt. The ring can also be formally identified by testing for it while inside a digesting monster, as indicated above, though this is naturally much riskier.
+
+You can identify a ring of slow digestion by its nutrition-cancelling property, though the process is complicated slightly if you are extensively testing rings. As soon as your [[nutrition]] level crosses a visible threshold (i.e. the display no longer shows you as Satiated or you become hungry, put on the (ideally [[noncursed]]) ring being tested and eat something that provides low nutrition, such as a [[fortune cookie]] (with a nutrition of 40). If you go a long time (e.g. as many as 800 turns for a fortune cookie) without recrossing that boundary, the ring is probably slow digestion.
+
+==Messages==
+{{message|You get regurgitated! Obviously the <[[foo]]> didn't like your taste.|You were engulfed by a digesting monster while wearing a ring of slow digestion.}}
+{{message|The ring is regurgitated|You dropped a ring of slow digestion into a sink. If unidentified, this will prompt you to [[name]] it.}}
+
+
+[[Category:Rings|Slow digestion]]
+{{nethack-364}}}
+&&%s&& %s Stethoscope {148891 2022-10-24T03:20:18Z {4001279 Umbire the Phantom} followup {{tool
+  |color=metal color
+  |tile=[[image:stethoscope.png]]
+  |name=stethoscope
+  |cost=75
+  |weight=4
+  |material=iron
+}} 
+
+The '''stethoscope''' is a [[tool]] that appears in ''[[NetHack]]'', and is used to determine the status of a [[monster]] and listen to dungeon acoustics.
+
+==Generation==
+All [[Healer]]s start the game with a stethoscope.
+
+==Usage==
+The stethoscope can be [[applied]] in any direction, including up, down, or at yourself; stethoscopes require a free hand to use, and will not function while you are [[deafness|deaf]]. Applying it to a monster will show you their name, [[alignment]], [[experience level]], [[hit points]], [[armor class]], and miscellaneous attributes of the target. Such attributes generally consist of impairments, but can be any of the following:{{reffunc|src/priest.c|mstatusline|version=NetHack 3.6.1}}
+
+*[[tame]]
+*[[peaceful]]
+*eating
+*[[cancelled]]
+*[[confused]]
+*[[blind]]
+*[[stunned]]
+*[[asleep]]
+*can't move
+*[[meditating]]
+*[[scare]]d
+*[[trap]]ped
+*[[fast]]/[[slow]]
+*[[Hiding|concealed]]
+*[[invisible]]
+*[[Holding|held]] by you/holding you
+*[[digest]]ing you
+*[[engulfing]] you
+*[[Riding|carrying]] you
+*[[shapeshifter]]
+
+In [[wizard mode]], applying a stethoscope to a [[pet]] displays its [[tameness]], hunger, and [[apport]]. [[Mimic]]s that are disguised as other objects will be revealed and uncloaked; the 'shapeshifter' attribute is only displayed for monsters in a different form from their "innate" one, and as such is not displayed for [[werecreature]]s.{{refsrc|src/priest.c|969|version=NetHack 3.6.6}} 
+
+When applied to yourself, it displays your [[experience level]], [[HP]], and [[AC]], an accurate appraisal of your [[alignment record]], and any of the following [[properties]]:{{reffunc|src/priest.c|ustatusline|version=NetHack 3.6.1}}
+
+*dying from [[food poisoning]]
+*dying from [[illness]]
+*[[stoning|solidifying]]
+*becoming [[sliming|slimy]]
+*being strangled
+*[[nausea]]ted
+*confused
+*blind/blinded by sticky goop/covered by sticky goop
+*stunned
+*[[wounded legs|injured leg(s)]]
+*[[slippery fingers|slippery hands]]
+*trapped
+*fast/very fast
+*concealed
+*invisible
+*holding <monster>
+*held by <monster>
+
+The stethoscope's use is free once per action, meaning that it doesn't count as your action for that turn; applying one twice in a row will increment the turn counter, and this does not stack with multiple stethoscopes.{{refsrc|src/apply.c|294|version=NetHack 3.6.6}}{{refsrc|src/apply.c|323|version=NetHack 3.6.6}} A cursed stethoscope has a 50% chance of just sounding your own heartbeat.{{refsrc|src/apply.c|356|version=NetHack 3.6.6}} 
+
+Applying a stethoscope to a tile with a secret [[door]] or [[Secret passage|passage]] reveals it; this does not exercise [[wisdom]].{{refsrc|src/apply.c|294|version=NetHack 3.6.6}}{{refsrc|src/detect.c|1732|version=NetHack 3.6.6|comment=Finding these by [[searching]] in particular exercises wisdom.}} Applying a stethoscope in certain other scenarios may produce [[YAFM]] - see [[#Messages|the Messages section]] below.
+
+==Strategy==
+Although a stethoscope is not essential for survival, it is an excellent source of tactical data when used early and often, and is thus one of the most frequently used tools. It may be a good idea to #[[adjust]] the stethoscope's inventory letter to something memorable, like the letter '''s'''.
+
+Unlike [[Magicbane]] and the [[wand of probing]], a stethoscope does not show items in the monster's inventory; however, the stethoscope has an unlimited amount of uses, and the monster's AC may provide a vague hint as to what armor they are wearing, depending on how different it is from their base AC.  This is particularly useful for early characters for whom [[dwarves]] and [[hobbit]]s are [[peaceful]]: a stethoscope will help reveal which ones are carrying armor worth using a pet to kill them for or even take the alignment record hit yourself, in particular [[mithril-coat]]s.
+
+An important use of the stethoscope is monitoring your pet's health. Consistently using the stethoscope allows you to gauge their [[experience level]], which is invaluable when attempting the [[protection racket]]. The stethoscope will also indicate when its [[hit points]] are critically low, and you can then heal it or else escort it away from danger. A stethoscope is also valuable when [[altar farming]] in order to properly appraise your alignment and avoid accidental [[crowning]].
+
+The stethoscope is fine for revealing hidden passageways and doors; manually [[searching]] via {{kbd|s}} is preferable if you wish to exercise Wisdom, but using the stethoscope is often much faster. It can also be used to safely decloak mimics, especially in [[shop]]s.
+
+Blind heroes (or those without [[see invisible]]) can use it to remove {{gray|I}} symbols without using up an action by searching or running into one normally.
+
+==History==
+The stethoscope first appears in [[NetHack 1.3d]].
+
+In [[NetHack 3.4.3]] and earlier versions, as well as variants based on those versions, applying a stethoscope to a disguised mimic would reveal its identity, but would not uncloak it. Unaligned monsters would be reported as chaotic - they have an alignment of &minus;128, which is a magic number for unaligned;{{refsrc|include/align.h|18|version=NetHack 3.6.6}} the code checks specifically for this number for other purposes (e.g., your [[alignment record]]), but for the stethoscope it is just a negative number.<ref>The only 'normally' unaligned monster (with unaligned alignment in monst.c) is the [[Wizard of Yendor]]; other monsters like [[Angel]]s, [[minion]]s, and [[priest]]s of [[Moloch]] have an unaligned alignment in their EPRI or EMIN structure, which overwrites their alignment in monst.c.</ref> Both of these were fixed in [[NetHack 3.6.0]].
+
+==Origin==
+{{wikipedia|stethoscope}}
+The stethoscope is a [[real life]] medical instrument used by doctors to examine a patient's heartbeat, hence its primary usage and appearance in the Healer's starting inventory. Its other uses, especially in SporkHack and UnNetHack, are inspired by the pop cultural trope of stethoscopes being used as a safe-cracking aid.
+
+==Messages==
+{{message|You hear your heart beat.|You applied a cursed stethoscope; this replaces the normal message half the time.}}
+{{message|You can't hear anything!|You applied a stethoscope while deaf.}}
+{{message|The <floor> seems healthy enough.|You applied a stethoscope down.}}
+{{message|You barely hear faint splashing.|You applied a stethoscope up or down while underwater.}}
+{{message|You hear the crackling of hellfire.|You applied a stethoscope to the floor of the [[castle]], beneath which lies [[Gehennom]].}}
+{{message|You hear a faint typing noise.|You applied a stethoscope to the edge of the map.}}
+{{message|You hear a hollow sound.  This must be a secret <door/passage>!|You applied a stethoscope to a wall concealing a secret door or passage, instantly revealing it.}}
+{{message|The <monster> interferes.|You applied a stethoscope to yourself while engulfed by a [[whirly]] monster, which is examined instead. This happens {{frac|3}} of the time, or {{frac|10}} if you are a Healer.{{refsrc|src/apply.c|307|version=NetHack 3.6.6}}}}
+{{message|The invisible monster must have moved.|You applied a stethoscope to an {{gray|I}} which represented a monster that is no longer there.}}
+{{message|You determine that <this/that> unfortunate being is dead.|You applied a stethoscope to a [[corpse]]; the message will use "this" if the corpse is at your feet, and "that" if it is on an adjacent square.)}}
+{{message|You hear a voice say, "It's dead, Jim."|As above, while hallucinating.}}
+{{message|You determine that <this/that> unfortunate being is mostly dead.|As a Healer, you examined a corpse that will revive.{{refsrc|src/apply.c|261|version=NetHack 3.6.6}}}}
+{{message|The <monster> appears to be in fine health for a statue.|You applied a stethoscope to a statue.}}
+{{message|The <monster> appears to be in remarkable health for a statue.|As above, but you are a Healer and the statue contains items.{{refsrc|src/apply.c|285|version=NetHack 3.6.6}}}}
+{{message|The <monster> appears to be in extraordinary health for a statue.|As above, but you are a Healer and the statue is on a [[statue trap]].{{refsrc|src/apply.c|283|version=NetHack 3.6.6}}}}
+{{message|You hear a voice say, "You're both stoned, Jim."|You applied a stethoscope to a statue while hallucinating.{{refsrc|src/apply.c|211|version=NetHack 3.6.6}}}}
+{{message|You hear nothing special.|You applied a stethoscope to something else (such as a [[boulder]]).}}
+
+==Variants==
+In [[SporkHack]], [[UnNetHack]], and [[EvilHack]], a stethoscope can be used to open an [[iron safe]].
+
+In EvilHack and [[xNetHack]], a stethoscope may be used to identify an [[egg]].
+
+===Advent calendar===
+In variants that incorporate the [[advent calendar]] patch, a stethoscope is one of the possible "Christmas present" tools.
+
+===SLASH'EM===
+SLASH'EM additionally displays the [[traitor]] attribute if used on a formerly tame monster that has turned on you.
+
+===ZAPM===
+In [[ZAPM]], the tricorder is the game's analogue to the stethoscope, and functions similarly.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Boulder {148914 2022-10-26T11:01:07Z {4001279 Umbire the Phantom} having item template on top looks cleaner at first but leaves an awkward gap, deal with that Later™ {{for|the option|option#boulder}}
+{{items}}
+{{item
+  |color=mineral color
+  |symbol=`
+  |tile=[[Image:Boulder.png]]
+  |name=boulder
+  |cost=0
+  |weight=6000
+}}
+
+A '''boulder''', {{lightgray|`}}, is a type of huge stone [[object]] that appears in ''[[NetHack]]''. Although boulders are considered items, they are large enough to block line of sight, and are too heavy for [[you]] to lift normally; furthermore, you cannot move to a space occupied by a boulder under most circumstances, though you can push them. Thus, in practice they are often more like a [[dungeon feature]] than an item. 
+
+The boulder symbol is customizable through the <tt>[[Options#boulder|boulder]]</tt> option; many players choose to change the symbol for boulders to make them more noticeable. Zero, {{lightgray|0}}, is a popular choice.
+
+==Generation==
+Boulders are usually randomly placed during level creation, and are generally found in corridors or as part of [[rolling boulder trap]]s.
+
+Reading a [[scroll of earth]] will cause one or several boulders to fall; if read while confused, several [[rock]]s will fall instead. Reading an uncursed scroll will cause one to fall in each square around you ''and'' on you, and reading a blessed scroll omits the boulder that would land on you - reading a cursed scroll causes a single boulder to fall on you. Monsters can also read this scroll with the same effects, though they are less likely to do so unless wearing a hard [[helm]].
+
+[[Sokoban]] is a [[dungeon branch]] dedicated to puzzles where boulders are used to fill pits, and is usually the reason for many players using the aforementioned <tt>boulder</tt> option - [[Luck]] penalties are usually assigned for creating or breaking boulders in this branch on an unsolved floor. See the article or the section below for more information.
+
+[[Polymorph]]ing [[statues]] will sometimes produce boulders. Boulders can be [[wish]]ed for one at a time, but unless you are in the form of a [[Giant (monster attribute)|giant]] or [[titan]], the boulder will immediately be dropped to the floor.
+
+===Monsters===
+Dwarves wielding [[pick-axe]]s or [[dwarvish mattock]]s and [[tunneling monster|other NPC monsters]] that dig around a level will leave behind boulders on 8.3% of diggable rock.{{refsrc|src/dig.c|1328|version=NetHack 3.6.6}}
+
+Non-[[undead]] giants and titans that are randomly generated have a {{frac|2}} chance of [[Monster starting inventory|being given a boulder]].{{refsrc|src/makemon.c|183|version=NetHack 3.6.6|comment=Special case for titans and most other giants}}
+
+==Description==
+You and other monsters cannot attack through boulders, but can use missile [[weapon]]s, [[wand]]s, and [[spell]]s to attack through them. A [[pick-axe]], a [[dwarvish mattock]], or a [[force bolt]] (from the spell or a [[wand of striking]]) will shatter boulders and leave behind several [[rock]]s (specifically 6 + ''d60''){{refsrc|src/zap.c|4720|version=NetHack 3.6.6|name=fracture_rock}}. A [[wand of teleportation]] will teleport the boulder as with any other item, and a beam of [[polymorph]] will transmute one into another item. Other wands, weapons and spells, particularly the [[wand of digging]], will have no effect on the boulder. Monsters will not target a wand of striking at boulders intentionally, and typically do so as a side effect of targeting you.
+
+A spell of [[stone to flesh]] turns a boulder into a [[huge chunk of meat]], which is a much less heavy object (though still quite heavy) with none of the boulder's unique properties.
+
+===Boulders and giants===
+Non-undead giants (including titans) can move over boulders, pick them up and even throw them. You can do the same if polymorphed into a giant using {{kbd|m}}, and will be given a prompt to do so if you attempt to push a boulder that cannot move in that direction. Boulders in a giant's inventory have no [[weight]], as opposed to the 6000 aum they would weigh otherwise; you can pick one up while in giant form even if all other inventory letters are in use, and it will be assigned a [[hash mark]] inventory slot ({{white|#}}, also used by [[loadstone]]s).
+
+If a giant throws a boulder at you, it will land on your square regardless of if it actually hits you - you may move off the square as normal, but attempting to re-enter the square will require pushing the boulder out of the way. If you have [[displacement]], or you are [[invisible]] and the giant throwing the boulder cannot [[see invisible]], a thrown boulder that misses will instead land at the square where the giant thought you were.
+
+===Rolling boulder traps===
+{{main|Rolling boulder trap}}
+The rolling boulder trap consists of a trigger square and a single boulder placed out in the open, usually in the same room as the trap, and requires a clear path to trigger.{{refsrc|src/trap.c|398|version=NetHack 3.6.6|name="mkroll_launch"}} If you or another monster steps on that square, the boulder will roll to the opposite side, usually hitting you or that monster along with anyone else in the boulder's path;{{refsrc|src/trap.c|1534|version=NetHack 3.6.6|name="dotrap"|comment=Handling for players activating the trap}}{{refsrc|src/trap.c|2690|version=NetHack 3.6.6|name="mintrap"|comment=Handling for monsters activating the trap}} being hit by a boulder deals d20 damage.The boulder will stop rolling if it runs into something that obstructs it - a boulder that crashes into another boulder will send the second boulder rolling some distance.
+
+The boulder will always roll to the other launch square on the opposite side if possible - as long as the boulder is on a launch square when the trap activates, the trap can set it rolling and will do so on repeated triggers.{{refsrc|src/trap.c|1771|version=NetHack 3.6.6}} A boulder trap will not trigger its boulder to roll if the path is obstructed by a wall, or the boulder is moved by anything other than the trap itself. A boulder set rolling by this trap can disappear midway through rolling if, for example, it fills a pit, hole or trap door, or it is caught by a giant that was in the way. Stepping on a rolling boulder trap that cannot trigger a boulder will cause the trap to disappear with no other effect.
+
+==Moving boulders==
+You (and other non-giant monsters) cannot travel past boulders without [[phasing]] - if you try to move onto a [[square]] containing a boulder, you will push it to the next square in line if possible; if there is more than one boulder on that square, you will try to push each boulder off in turn until one of them does not move.{{refsrc|src/hack.c|105|version=NetHack 3.6.6}}{{refsrc|src/hack.c|302|version=NetHack 3.6.6}} Pushing boulders this way [[exercise]]s [[strength]]. If you are [[riding]] and try to move onto a square with a boulder this way, your steed will push the boulder.{{refsrc|src/hack.c|310|version=NetHack 3.6.6}} You cannot push any boulders if you are [[levitating]], riding a levitating steed on else are on the [[Plane of Air]], due to lack of leverage.{{refsrc|src/hack.c|124|version=NetHack 3.6.6}} You also cannot push boulders if you are in a tiny-[[size]] form, though you can still squeeze past them.{{refsrc|src/hack.c|371|version=NetHack 3.6.6}}
+
+In the diagrams below, the {{white|#}} represents where the boulder will move:
+
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+@=[[you|{{white|@}}]]
+
+@     @     @       #     #     #     
+ `    `    `   #`@   `    `    `   @`#
+  #   #   #           @   @   @       
+</replacecharsblock></div>
+
+Boulders that have a wall, door or other obstruction (such as a monster or another boulder) in the direction you are pushing will not move, which does not use up a turn; you cannot push a boulder through a closed [[door]], and also cannot push a boulder diagonally through any door. You can "squeeze" through onto the same square as an obstructed boulder if you are not on a steed and either have an empty inventory (not counting any [[gold]]) or are at least 850 units below your carrying capacity.{{refsrc|src/hack.c|367|version=NetHack 3.6.6}} If a boulder becomes stuck in a corner, then you can not move it at all even if you squeeze onto its square, unless you are able to dig or otherwise maneuver around it.
+
+If a boulder is blocking a corridor and is pushed to a square that branches off, you can maneuver diagonally around it:
+
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+
+  #  
+##`##
+</replacecharsblock></div>
+
+More scenarios and applicable tactics are discussed in [[#Tactical boulder movement|the section on boulder movement below]].
+
+Pushing a boulder into a [[hole]], [[trap door]] or [[Spiked pit|either type]] of [[pit]] will [[#Boulders and other traps|''usually'' plug it]] and turn that square into normal floor{{refsrc|src/hack.c|210|version=NetHack 3.6.6}}{{refsrc|src/hack.c|224|version=NetHack 3.6.6}} - objects in a plugged pit are buried, while objects on or near the square of a hole or trap door may be knocked through before it is plugged.{{refsrc|src/dokick.c|1537|version=NetHack 3.6.6|name=impact_drop}}
+
+A boulder that is pushed, rolled or thrown into a [[moat]] will fill it {{frac|9|10}} of the time and create a floor tile that you can move across, and the remaining {{frac|10}} of the time it will disappear with a splash that wakes up monsters.{{refsrc|src/do.c|60|version=NetHack 3.6.6|name=fills_up}}{{refsrc|src/do.c|90|version=NetHack 3.6.6}} This probability is reversed for [[lava]], which causes the boulder to fill the square only {{frac|10}} of the time, and disappear otherwise<ref name="fills_up"/> - lava will splash onto you in either case, which deals 3d6 fire damage to you, burns away any [[slime]] and wakes up monsters;{{refsrc|src/do.c|106|version=NetHack 3.6.6}} [[fire resistance]] reduces this to d6 damage, and the damage can also be reduced by the [[half physical damage]] property.{{refsrc|src/do.c|111|version=NetHack 3.6.6}} 
+
+Boulders have a 3% chance of falling through a down stair if another thrown object lands on their square; this includes gold, but not rocks and [[gems]].{{refsrc|src/dokick.c|1431|version=NetHack 3.6.6}} You can also push them onto a [[teleport trap]] or [[level teleporter]], though there is a very low chance of it landing on the down stair's square.
+
+===Sokoban===
+{{main|Sokoban}}
+Sokoban is a branch with special rules for boulder pushing. Namely, you cannot push boulders in Sokoban diagonally until a floor is cleared. {{refsrc|src/hack.c|145|version=NetHack 3.6.6}} Additionally, there are [[Luck]] penalties for the following boulder-related actions, if the floor is not yet solved:{{refsrc|src/hack.c|361|version=NetHack 3.6.6}}{{refsrc|src/hack.c|374|version=NetHack 3.6.6}}
+
+*Squeezing past boulders
+*Moving onto or picking up boulders
+*Breaking, [[polymorph]]ing, or casting stone to flesh on boulders
+*Creating boulders with a scroll of earth
+
+===Boulders and other traps===
+{{todo|Account for trap doors, land mines and some other interactions.}}
+
+While boulders can be used to fill holes and pits (including spiked pits), the exact interactions and effects depend on a few factors, including: whether the boulder or the pit/hole occupied the square in question first; the source of a boulder that is moved into a pit or hole; the source of a pit or hole that occurred in a square with a pre-existing boulder; and where you are standing in relation to the pit or hole.
+
+Pushing a boulder into a pit or hole removes the boulder and the plugged trap, regardless of whether or not its location was known to the player character; items on the square of the pit are buried, while objects on or next to a hole's square may be buried or knocked through.<ref name="impact_drop"/> Boulders that land on the square of a pit or hole as a result of being thrown, dropped, sent from the sky by a scroll of earth, or else rolled via boulder trap will plug that trap and remove it, burying items as normal.
+
+If you are trapped in a pit and a boulder is dropped or rolled in on top of you, the effect varies depending on if you are a giant or not. If you are a giant, the pit is filled and you are instantly freed from it without any further effect - if you are not a giant, the pit will not be filled, and there is a chance during each attempt to escape the pit that it is filled by the boulder, leaving your leg is stuck in a leftover crevice that you must pull free from. [[Zapping]] a [[wand of teleportation]] down or [[apply]]ing it while the boulder is still on that square will teleport it elsewhere, allowing you to try escaping the pit as normal. Holes that are filled while you are on their square will be plugged, just as if you were standing next to that hole.
+
+Applying a charged [[drum of earthquake]] can create a pit underneath a boulder, which immediately fills the pit and also buries every item on that square underneath it{{refsrc|src/music.c|332|version=NetHack 3.6.6}} - interestingly, if there are multiple boulders on that square (e.g., usually from a giant dropping them all at once), they will ''also'' be buried, minus the boulder that fills the pit. If you are on top of a boulder and zap a wand of digging down on that square, you will create a hole or pit depending on the whether the level is diggable, and the trap is plugged immediately before anything can fall through or into it.{{refsrc|src/dig.c|816|version=NetHack 3.6.6|name=boulder_here}} If a boulder is already present on a square with a pit, and you manuever into that square and zap a wand of digging down, the boulder will fill the pit instead of creating a hole, with two different messages possible.<ref name="boulder_here"/>
+
+Though lacking any practical use, it is possible to get a boulder on top of a pit or hole outside of [[wizard mode]]: Drop a statue on top of the square via levitation, or by avoiding falling into the pit or hole when moving onto its square (which occurs with a {{frac|5}} chance).{{refsrc|src/trap.c|942|version=NetHack 3.6.6}} If you then polymorph the statue into a boulder, it will drop into and fill a pit, but not a hole - throwing other objects at a boulder that is placed on the same square as a hole in this way will cause it to fall ''through'' the hole and land on a lower level, as with boulders on a downward staircase.
+
+You cannot dig down with a pick-axe while on a square with a boulder, and breaking a wand of digging will not create a hole or pit under a boulder - both are due to special checks in the code.{{refsrc|src/apply.c|3417|version=NetHack 3.6.6|comment=Breaking the wand calls <code>dig_check</code> in dig.c}}{{refsrc|src/dig.c|226|version=NetHack 3.6.6|comment=<code>dig_check</code> checks for boulders here; <code>do_earthquake</code> is music.c does not call this function}}
+
+{{upcoming|3.7.0|Account for cases affected by {{commit|a18859ddb5a3407fb872538f73b67550907adf2f|commit a18859d}} - monsters that zap a wand of digging downward on an undiggable floor create a pit just as you do, and will usually fall into it immediately.}}
+
+==Strategy==
+{{todo|Expand this/other sections if possible.}}
+{{main|Boulder fort}}
+[[Image:Slashem boulders.png|thumb|Four of the boulders in this screenshot were blocking the long corridor, but through deft squeezing and pushing the hero pushed them into rooms. If that boulder in the lower-right had started at that position, it would likely be part of a boulder trap.]]
+Boulders are often used to protect [[stash]]es or [[polytrap]]s by pushing one on top of the desired square - boulders can also be arranged near a square to use as a "fort" that can keep most monsters away, minus hostile giants and phasing monsters like [[earth elemental]]s. [[Boulder fort]]s are usually created by reading a non-cursed scroll of earth, with blessed scrolls preferred to avoid taking damage in the process. 
+
+===Tactical boulder movement===
+Boulder placement is often an important consideration, whether simply traveling through the dungeon or else fighting and/or evading hostile monsters.
+
+These two boulders below are stuck against a wall, and you may only push them in two directions:
+
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+
+-----------          ------           
+|...`.....|          |....|    -------
+|.........|     #####..`...####......|
+|.........|     #    ------    |.....|
+---.-------   ###              -------
+</replacecharsblock></div>
+
+These boulders are completely stuck, and require digging (or squeezing in the second case) to move:
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+----     ----
+|`..     .``.
+|...     ....
+</replacecharsblock></div>
+
+However, it may still be possible to move them if there is a door that can be opened on the other side. For example, the door next to the boulder in the first diagram below is hidden, and once found and opened the boulder can be pushed through it. In the second diagram, only the first boulder can be pushed from other side of the door opened, which enables movement of the second.
+
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+----     -+--
+S`..     .``.
+|...     ....
+</replacecharsblock></div>
+
+===Boulders and monsters===
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+@=[[You|{{white|@}}]]
+I=[[Invisible monster|{{gray|I}}]]
+
+          #
+######@`I###
+   #        
+</replacecharsblock></div>
+
+In the above diagram, the space opposite the boulder in the corridor is occupied by an unknown monster. In most situations, you can wait a turn or two using {{kbd|.}} or {{kbd|s}} and then try pushing again to see if the monster has moved - in the diagram, the monster if so, you can gradually push the boulder down the corridor until you reach the fork and move around it.
+
+This is not the case in the next diagram below, where you must either squeeze past the boulder or remove the monster in question:
+
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+@=[[You|{{white|@}}]]
+I=[[Invisible monster|{{gray|I}}]]
+
+#
+##@`I#######
+
+</replacecharsblock></div>
+
+In cases such as the two above, you should also determine whether or not the monster on the other end is hostile if possible - [[telepathy]], [[monster detection]] and [[warning]] are generally useful methods to this end. If you discover a peaceful monster on the other side that you do not want to kill, you may want to try another route or else squeeze past the boulder, then push it back the other way. A [[magic whistle]] can bring [[pet]]s that block a boulder's path to your side. If all else fails, or else it is sufficiently early in the game, you may opt to drop most of your inventory with {{kbd|D}} and then squeeze onto the boulder to see who or what is obstructing you - squeezing is especially useful if there is a door, hidden space, or boulder on the other side.
+
+Once you confirm a hostile is on the other side, or you are willing to take the alignment penalty for killing a peaceful monster, you can squeeze past the boulder to fight them with whatever weapons you can bring onto the square (if any), or stay where you are and employ any [[ranged weapon]] or attack at your disposal: thrown [[projectile]]s, most spells and wands, etc. Throwing the wielded [[Mjollnir]] or a tethered aklys is somewhat risky as there is a 1% chance of the weapon failing to return, though a spare aklys can save you the trouble of having to retrieve other used projectiles from behind the boulder afterward.
+
+When faced with two consecutive boulders in a corridor, as shown below, you can squeeze past one to push the other:
+
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+##@``###
+###@`###
+###`@`##
+###`#@`#
+</replacecharsblock></div>
+
+Whenever squeezing through boulders, be sure to retrieve your dropped inventory as promptly as possible; one quick method is to taggle [[autopickup]] via {{kbd|@}} provided you have not set any exceptions, then move onto the square where you dropped your items.
+
+===Movement in Sokoban===
+The boulder movement rules in Sokoban are a source of complication in solving the puzzle, as monsters can appear within the pit- or hole-filled sections and obstruct your path while pushing boulders:
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+^=[[hole|{{brown|^}}]]
+@=[[you|{{white|@}}]]
+I=[[invisible monster|{{gray|I}}]]
+
+------------
+..@`I^^^^^..
+------------
+</replacecharsblock></div>
+
+Here, squeezing yourself onto a boulder's square will induce a -1 Luck penalty. The monster in question will try to avoid falling through the hole next to them, and so is likely to remain stuck unless they are killed or else end up moving onto the hole. This is especially troublesome if the monster in question is peaceful, as you most likely will take an alignment penalty as well in addition to the Luck penalty - pray that a co-aligned [[unicorn]] does not come between your boulder and the holes! When possible, always make sure that your path leading to the holes is as clear as possible before resuming pushing boulders - magic whistles are ideal to keep pets by you, and strategically placing known cursed items can be used to ward them off from wandering near the holes.
+
+In addition to cornered boulders, a 2x2 square composed of four boulders (or of boulders and wall squares) is likewise considered stuck by branch rules, as moving them diagonally is not permitted unless the floor was already solved:
+
+<div class="ttyscreen">
+<replacecharsblock rules="ttymap">
+......     ...|..
+..``..     ---`..
+..``..     ..``..
+......     ......
+</replacecharsblock></div>
+
+Be very careful in Sokoban to not stick boulders in the above manners, unless you are able to solve the level with the remaining boulders.
+
+==History==
+Boulders have been present in the game since [[Hack 1.0]]. From this version to [[NetHack 2.3e]], they were known as '''enormous rocks'''.
+
+==Messages==
+{{message|With <great/little> effort, you move the boulder.|You moved into a boulder and pushed it; the word "little" occurs if you are in the form of a giant or titan.}}
+{{message|You try to move the boulder, but in vain.|The boulder you are pushing is obstructed.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], rays from the spell of dig or wand of digging will vaporize boulders.
+
+Tiny monsters can squeeze past boulders, while hiding monsters such as [[cave spider]]s and [[slithy]] monsters such as [[snake]]s can use boulders to hide.
+
+===GruntHack===
+In [[GruntHack]], [[Giant (starting race)|player giants]] can move over and pick up boulders as other giants can.
+
+===SporkHack===
+[[SporkHack]] adds [[ceiling collapse trap]]s that may drop several boulders and rocks on and around the trap; they are capable of dealing immense damage that can potentially kill high-HP characters wearing a hard helmet.
+
+===EvilHack===
+In [[EvilHack]], boulders are stackable. Giants are also a playable race in EvilHack, with the same ability to pick move over and pick up boulders - a boulder carried by a player giant weighs 6 aum rather than 0, in order to prevent them amassing an endless amount; boulders can also be stacked like other [[projectile]]s.
+
+===SlashTHEM===
+In addition to [[SLASH'EM]] changes above, [[SlashTHEM]] also includes ceiling collapse traps from SporkHack; giants are also a playable race, with the ability to move over and pick up boulders as in other variants.
+
+==Encyclopedia entry==
+{{encyclopedia|
+I worked the lever well under, and stretched my back; the end of the stone rose up, and I kicked the fulcrum under.  Then, when I was going to bear down, I remembered there was something to get out from below; when I let go of the lever, the stone would fall again.  I sat down to think, on the root of the oak tree; and, seeing it stand about the ground, I saw my way.  It was lucky I had brought a longer lever.  It would just reach to wedge under the oak root.
+Bearing it down so far would have been easy for a heavy man, but was a hard fight for me.  But this time I meant to do it if it killed me, because I knew it could be done.  Twice I got it nearly there, and twice the weight bore it up again; but when I flung myself on it the third time, I heard in my ears the sea-sound of Poseidon.  Then I knew this time I would do it; and so I did.
+|[ The King Must Die, by Mary Renault ]
+}}
+
+== References ==
+<references />
+{{nethack-366}}
+[[Category:Items]]}
+&&%s&& %s Cream pie {143213 2021-10-16T20:57:41Z {4001279 Umbire the Phantom}  {{comestible
+  |color=white
+  |name=cream pie
+  |cost=10
+  |nutrition=100
+  |turns=1
+  |weight=10
+  |conduct=vegetarian
+}}
+
+A '''cream pie''' is a type of [[veggy]] [[comestible]] that appears in ''[[NetHack]]''.
+
+==Generation==
+[[Keystone Kops]] frequently generate with cream pies.
+
+==Description==
+[[Eat]]ing a cream pie provides 100 [[nutrition]] and  breaks the [[vegan]] [[conduct]], but preserves the [[vegetarian]] conduct. [[Throw]]ing a cream pie at a monster will [[blind]] them; monsters can throw cream pies at [[you]] for the same effect, which blinds you for up to 25 (more) turns.{{refsrc|src/mthrowu.c|643|version=NetHack 3.6.6}} [[Apply]]ing a cream pie will smash it onto your face, blinding yourself for the same amount of turns. [[Wield]]ing a cream pie and attacking with it will splatter the pie in the target monster's face.
+
+Attacking with thrown and/or wielded cream pies do no damage, and thus does not break [[pacifist]] conduct.
+
+If you are hit by a cream pie, you can #[[wipe]] your face or apply a [[towel]] to regain sight faster; applying a [[cursed]] towel may cause cream pie gunk to cover your face.
+
+Any cream pie in the path of a bolt from a {{spell of|force bolt}} [[spell]] or a [[zap]]ped [[wand of striking]] is destroyed.
+
+==Strategy==
+The viability of cream pies as a long-term food source is limited due to their low [[Nutrition/Weight|nutrition to weight ratio]]. Instead, cream pies are most frequently employed as a one-off source of blindness (e.g., to use intrinsic [[telepathy]]) if you have not obtained a [[blindfold]] or [[towel]]. They can also be useful if you are wearing a [[pair of lenses]] or the [[Eyes of the Overworld]] and do not want to use up turns removing them.
+
+Cream pies are also useful against [[gaze attack]]s, either by blinding yourself (e.g., to hit a [[floating eye]] safely) or the gaze-possessing monster (e.g. an [[Archon]]); the cream will eventually clear off, so repeated applications may be necessary in either case. Pacifist players will often wield a cream pie (or a whole stack of them) to avoid doing any damage if they accidentally hit a monster. 
+
+Keystone Kops are a readily-accessible source of cream pies, provided you can reliably kill them before they have a chance to throw any.
+
+==History==
+The cream pie first appears in [[NetHack 1.3d]].
+
+In [[NetHack 3.4.3]] and earlier versions, applying or otherwise destroying a wielded cream pie can crash the game; this is [[Bugs in NetHack 3.4.3#C343-218|bug C343-218]], and was fixed in October 2006.<ref>{{commit|15d933a07fc9ca2c2088752f92b5b3352f6a8b13|15d933...}}</ref><ref>{{commit|271632db58c9817bd9ac7a81d8816a7a07dd922d|271632...}}</ref><ref>{{commit|60c96674e9b5b8fb4e59d6914e45a372282eae60|60c966...}}</ref>In versions and derived variants that do not have this bug patched, you are safe if you immediately wield something else (or even nothing {{kbd|-}}), or else [[save]] and restore the game. The [[Bilious Patch Database]] also has a patch that addresses this - {{Bilious|342}}, added in January 2009.
+
+==Messages==
+{{message|What a mess!|A cream pie was destroyed by a force bolt from a spell or wand.}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Comestibles]]}
+&&%s&& %s Keystone Kops {2032 2006-04-09T14:29:00Z {924 ZeroOne} #REDIRECT [[Keystone Kop]] #REDIRECT [[Keystone Kop]]}
+&&%s&& %s NetHackWiki:Administrators {147363 2022-08-10T14:55:07Z {630 Paxed} K2 {{community}}
+
+An '''administrator''' or '''sysop''' of NetHackWiki is a user who can:
+* [[Help:Sysop deleting and undeleting|delete and undelete pages]]
+* [[Help:Protecting and unprotecting pages|protect and unprotect pages from editing]]
+* edit protected pages, including the [[:Image:Nethackwiki-logo.png|site logo]] and [[Special:AllMessages|interface]]
+* [[Help:Blocking users|block and unblock users from editing]]
+
+A '''bureaucrat''' of NetHackWiki is a user who can also promote other users into administrators or bureaucrats, and run global search and replace.
+
+Users who have been completely inactive for one year or longer will get their admin/bureaucrat rights removed.
+
+=== Logs of administrator actions ===
+* [[Special:Log/block]] ''blocking and unblocking users''
+* [[Special:Ipblocklist]] ''list of currently blocked users''
+* [[Special:Log/delete]] ''deleting and undeleting pages''
+* [[Special:Log/protect]] ''protecting and unprotecting''
+* [[Special:Log/rights]] ''bureaucrat actions''
+
+=== List of administrators ===
+[[Special:Listusers/sysop]] is the full and canonical list. Please update this section when necessary:
+
+* [[User:Ais523]] (admin)
+* [[User:bcode]] (admin)
+* [[User:dizzylizzy]] (admin)
+* [[User:dtype]] (bureaucrat, admin)
+* [[User:Ilmari Karonen]] ‎(admin)
+* [[User:Ion frigate]] ‎(admin)
+* [[User:K2]] ‎(bureaucrat, admin)
+* [[User:paxed]] ‎(bureaucrat, admin)
+* [[User:Phol_ende_wodan]] (admin)
+* [[User:Ray Chason]] ‎(bureaucrat, admin)
+* [[User:Tjr]] ‎(bureaucrat, admin)
+* [[User:ZeroOne]] ‎(bureaucrat, admin)
+
+===Former administrators and bureaucrats===
+* [[User:Eidolos]] ‎(admin)
+* [[User:Jayt]] ‎(admin)
+* [[User:Kernigh]] ‎(bureaucrat, admin)
+* [[User:Lotte]] ‎(admin)
+* [[User:Sgeo]] ‎(bureaucrat, admin)
+* [[User:Shijun]] ‎(admin)
+<!-- * [[User:WikiSysop]] ‎(bureaucrat, admin) -->
+
+[[Category:NetHackWiki]]}
+&&%s&& %s Libera {148494 2022-10-05T00:55:53Z {4001279 Umbire the Phantom} de-SLEX (someone should double check though) {{tocright}}
+
+'''Internet Relay Chat''', or '''IRC''', provides real-time chat, not a message board like [[rec.games.roguelike.nethack]].
+
+'''Libera''' is an Internet Relay Chat server network, where many members of the NetHack community communicate. NetHack is discussed on several IRC networks, but Libera has an especially large community.
+
+To connect, you need an [[wikipedia:IRC client|IRC client]]. The server is '''irc.libera.chat''', port 6697 (with TLS) or 6667 (plaintext).  Libera has a [https://libera.chat website]; you might want to read about [https://libera.chat/guides/registration registering your IRC nick].  Users without an IRC client may be interested in using Libera's [https://web.libera.chat/?channel=#nethack web client], powered by [https://kiwiirc.com KiwiIRC].
+
+== Channels ==
+=== Vanilla NetHack ===
+==== #nethack ====
+This channel is about [[NetHack]]. It is far more busy than either #slashem and #nethackwiki, with a lot of discussion about how to play the game. NetHack, fount of infinite [[patch]]es, [[wiki]] pages, and [[YASD]]s, actually interests many players well and often. There are usually lulls in conversation - don't assume the channel is dead just because nobody is saying anything.
+
+The [[nethack.alt.org]] community uses this channel, but so do other players. Sometimes when a player requests help, it is necessary to ask if the game is visible on NAO. A bot with the nick "[[Rodney (bot)|Rodney]]" reports NAO [[death (character)|death]]s (and ascensions) to the channel. Rodney plays a constructive role by inspiring discussion and also by providing spoilers through its ''learndb'' (learn database). It also helps you catch up on [http://alt.org/nethack/irc.php recent chatter].
+
+If [[nethack.alt.org]] seems to be down, try looking in #nethack. If this wiki seems to be down, try looking there or in #nethackwiki. The /topic message in the channel might give the problem and estimate when the service will be up again. If there is an outage and Rodney is gone or silent, you will still find players in this channel, playing local games or trying other [[public server]]s.
+
+This NetHack wiki is also on-topic in the channel. It is appropriate to ask for help with the wiki in this channel and to discuss the wiki. NetHackWiki began in October 2005 with some help from users in this channel. Since around August 2006, the /topic usually mentions this wiki.
+
+==== #nethack-dev ====
+This is the channel for discussion of the development and source code of NetHack and variants. Anything relating to NetHack's internals is on-topic here.
+
+==== ##nethack-discord ====
+A channel that acts as a bridge to the #nethack channel on the Roguelikes Discord server. Messages sent in this channel are relayed through the RLDiscord bot and repeated in Discord, and vice versa. This channel is generally for vanilla NetHack discussion, see ##nethack-variants for the corresponding variant channel. If you wish to join this channel on the Discord side, visit https://discord.gg/gZRGZp6.
+
+=== Public servers ===
+==== #hardfought ====
+This server prides itself on hosting a number of variants, including vanilla 3.4.3-nao, 3.7.0-hdf, and 1.3d, [[TNNT]], [[dNetHack]], [[EvilHack]], [[SpliceHack]], [[xNetHack]], [[GruntHack]], [[UnNetHack]], [[SporkHack]], [[notdNetHack]], [[NetHack 4]], [[FIQHack]], [[NetHack Fourk]], [[DynaHack]], [[Slash'EM]], and [[SlashTHEM]]. Quite active relative to the number of channel members, and a lot of NetHack game design discussion happens here as well due to several [[Devteam]] members and variant authors that hang out here. Channel OPS K2 and Tangles can always be found here, and there are several other community members who are available to assist with player issues or to field questions.
+
+The channel bot "Beholder" reports deaths and other game events in realtime. The bot also has several other functions that channel members can utilize (a full listing of commands can be found at https://www.hardfought.org/nethack/#bot-commands).
+
+The #nethack-hardfought discord channel acts as a bridge to the #hardfought IRC channel on the Roguelikes Discord server. Messages sent in this channel are relayed through the RLDiscord bot (nickname is "rld") and repeated in Discord, and vice versa.
+
+Even though discussion about [[NetHack]] and the other variants played on [[Hardfought]] are the primary focus, pretty much any topic is considered 'on-topic'.
+
+==== #ascension.run ====
+This is the channel for the what was formerly known as the [[nethack.xd.cm]] NetHack server, which hosts the same version of NetHack as [[nethack.alt.org]], as well as a number of NetHack variants. This channel and server also briefly went by the name/URL nethack.dank.ninja.
+
+==== #em.slashem.me ====
+Home channel of the em.slashem.me server, which hosts [[Slash'EM]], [[SLethe]], [[NetHack 3.6.0]], [[GruntHack]], and [[SporkHack]].
+
+=== Variants ===
+==== #nethack4 ====
+This is the official channel for discussion and development of [[NetHack 4]], [[FIQHack]] and [[NetHack Fourk]].
+
+==== #dnethack ====
+[[dNetHack]]'s IRC channel. Discussion of dNetHack also occurs in #acehack.de and #hardfought since those servers offer them.
+
+==== #unnethack ====
+This is the official IRC channel for [[UnNetHack]] where the developer and the public server admin usually can be found.
+
+There are several bots in #unnethack. Unrodney is the bot by the UnNetHack developer and it reports UnNetHack code commits and blog updates. Demogorgon is the bot for the public server, reporting starting, saving or ending game events and several in-game events like e.g. stealing items from shops, sokoban prize picking or killing of unique monsters.
+
+[[Pinobot]] is a bot that when asked provides the monster stats from any of the major variants.
+
+==== #grunthack ====
+[[GruntHack]]'s official IRC channel. GruntBot reports there from the public server at http://grunthack.org/.
+
+==== #sporkhack ====
+The [http://sporkhack.com home page] for the [[SporkHack]] [[variant]] states that they use the #sporkhack channel at freenode.
+
+==== #slashem ====
+This is a channel for [[SLASH'EM]].
+
+The channel has two Rodney-like bots. The bot Pallas reports deaths in the main playground [[slashem.crash-override.net]]. The bot SLethe reports deaths in the SLethe playground on slashem.crash-override.net. Pallas also reports on certain status changes to bugs in the [http://sourceforge.net/projects/slashem SourceForge project for SLASH'EM].
+
+Unfortunately, the channel mostly contains idlers and does not supply ready chat. At times, the occasional mention of SLASH'EM in the #nethack channel is more frequent that the discussion of anything in the #slashem channel.
+
+==== #evilhack ====
+[[EvilHack]]'s IRC channel. The developer [[User:K2|K2]] can usually be found here.
+
+==== ##nethack-variants ====
+A channel that acts as a bridge to the #nethack-variants channel on the Roguelikes Discord server. Similar to ##nethack-discord, the RLDiscord bot will repeat all messages to the other chat service.
+
+=== Others ===
+==== #nethackwiki ====
+This is the place editors and most active admins hang out and discuss wiki work. [[Rodney (bot)|Rodney]] announces all edits here.
+
+==== #junethack ====
+Every June, the [[Junethack]] tournament takes place. This channel is to Junethack as #devnull_nethack to the devnull tournament.
+
+==== #nethack.de ====
+Home channel of the nethack.eu server, with mostly German-language chat.
+
+==== #tnnt ====
+This is the channel for [[The November NetHack Tournament]].  Deaths and game events are reported by a bot in the channel during the tournament.
+
+==Other networks==
+Some IRC networks other than Libera have #nethack channels. Channels on different IRC networks are not currently linked, but contributions are welcome if there are places that should be noted here.
+
+==History==
+For many years, the official NetHack-related IRC channels were originally on the Freenode IRC network, until Freenode underwent a hostile takeover in May 2021, causing the former Freenode staff to leave and start Libera.  #NetHack and related channels were quickly set up on Libera, and it quickly became apparent that Freenode was no longer a good place for [[free]] projects' IRC channels.  See the [[wikipedia:Freenode|Wikipedia article about Freenode]] for more information.
+
+== Links ==
+* https://libera.chat ''web site of Libera''
+* The [http://nhqdb.alt.org/ #nethack quote db] captures the best chatter on IRC.
+
+[[Category:Community]]
+{{noversion}}}
+&&%s&& %s Irc.freenode.net {142094 2021-08-18T14:00:40Z {4001523 Hieristmiah} Changed redirect target from [[Freenode]] to [[Libera]] #REDIRECT [[Libera]]}
+&&%s&& %s God {150091 2023-03-06T06:58:54Z {4001279 Umbire the Phantom} lede {{religion}}
+{{otheruses|NetHack's deities|the item known as “GoD”|gauntlets of dexterity}}
+
+In ''[[NetHack]]'', the [[role]] of your adventurer determines the '''pantheon of gods''' that appear during the game. Each role's pantheon contains one [[lawful]], one [[neutral]], and one [[chaotic]] god; there is no functional difference in gameplay between gods of different alignments outside of which one you serve and which ones oppose you. These divine pantheons are listed as follows:
+
+{{gods}}
+
+Your task is to retrieve the [[Amulet of Yendor]] for the god of your alignment - to [[ascend]] and win the game, you must [[sacrifice]] the amulet at your god's [[high altar]], and you can sometimes #[[pray]] to your god in times of need. The pantheon for a priest(ess) is randomly selected from another single role; if a priest's lawful god is Blind Io, the neutral god is always going to be The Lady. The [[unaligned]] god is always [[Moloch]], who holds dominion over prayers and altars in [[Gehennom]].
+
+Of the other "unaligned" gods, [[Marduk]] is described in the [[introduction|introductory text]] as the Creator, from whom Moloch stole the Amulet of Yendor.[[Elbereth]] is the name of an elf-goddess that can be #[[engrave]]d to frighten most monsters, not including [[human]]s or [[elf|elves]].
+
+[[Atheist]] [[conduct]] tries to avoid actions directly involving the gods and other aspects of [[religion]].
+
+==Mythology==
+The NetHack pantheons (and related [[quest]]s) for each role are derived from a mix of real-world and fictional sources:
+
+*Archeologist:  [[Wikipedia:Aztec mythology|Aztec mythology]]
+*Barbarian:  [[Wikipedia:Robert E. Howard|Robert E. Howard's]] ''[[Wikipedia:Conan the Barbarian|Conan]]'' mythos
+*Caveman:  [[Wikipedia:Mesopotamian mythology|Mesopotamian mythology]]
+*Healer:  [[Wikipedia:Greek mythology|Greek mythology]]
+*Knight:  [[Wikipedia:Celtic mythology|Celtic mythology]]
+*Monk:  [[Wikipedia:Chinese mythology|Chinese mythology]]
+*Ranger:  [[Wikipedia:Roman mythology|Roman mythology]]
+*Rogue:  [[Wikipedia:Fritz Leiber|Fritz Leiber's]] ''[[Wikipedia:Fafhrd and the Gray Mouser|Fafhrd and the Gray Mouser]]'' mythos
+*Samurai:  [[Wikipedia:Japanese mythology|Japanese mythology]]
+*Tourist:  [[Terry Pratchett]]'s ''[[Wikipedia:Discworld|Discworld]]'' mythos
+*Valkyrie:  [[Wikipedia:Norse mythology|Norse mythology]]
+*Wizard:  [[Wikipedia:Egyptian mythology|Egyptian mythology]]
+
+===Other deities===
+*Marduk: [[Wikipedia:Babylonian mythology|Babylonian mythology]]
+*Moloch: Ammonite mythology (in the Bible in the form "Molech," q.v. 1 Kings 11:7; Moloch is the Greek form of the Hebrew מֹּֽלֶךְ found in LXX in 2 Kings 23:10)
+*Elbereth: [[J.R.R. Tolkien]]'s [[Wikipedia:Middle-earth|Middle-earth]] mythos
+*Arioch: [[Michael Moorcock]]'s ''[[Wikipedia:Elric of Melniboné|Elric of Melniboné]]'' mythos
+
+== Variants ==
+===[[SLASH'EM]]===
+{|class="wikitable"
+!
+!Lawful
+!Neutral
+!Chaotic
+|-
+![[Undead Slayer]]
+|[[Seeker]]
+|[[Osiris]]
+|[[Seth]]
+|-
+![[Flame Mage]]
+|[[Earth]]
+|[[Fire]]
+|[[Ash]]
+|-
+![[Ice Mage]]
+|[[Air]]
+|[[Frost]]
+|[[Smoke]]
+|-
+![[Yeoman]]
+|[[His Majesty]]
+|[[His Holiness]]
+|[[The Commons]]
+|-
+![[Necromancer]]
+|[[Nharlotep]]
+|[[Zuggothobal]]
+|[[Gothuulbe]]
+|}
+
+===Convict patch===
+The [[Convict]] patch adds the Convict as a new role with its own pantheon, based on the Forgotten Realms mythology.
+{|class="wikitable"
+!
+!Lawful
+!Neutral
+!Chaotic
+|-
+![[Convict]]
+|[[Ilmater]]
+|[[Grumbar]]
+|[[Tymora]]
+|}
+
+===Pirate patch===
+The [[Pirate]] patch adds the Pirate as a new role with its own pantheon
+{|class="wikitable"
+!
+!Lawful
+!Neutral
+!Chaotic
+|-
+![[Pirate]]
+|Davy Jones
+|the deep blue sea
+|the storm
+|}
+
+===[[SpliceHack]]===
+SpliceHack incorporates the Convict patch and Pirate patch. It has some original roles with their own pantheons.
+{|class="wikitable sortable"
+!Role
+!Lawful
+!Neutral
+!Chaotic
+!Source
+|-
+|[[Cartomancer]] || Johnny || Spike || Timmy || [https://magic.wizards.com/en/articles/archive/making-magic/timmy-johnny-and-spike-2013-12-03 Magic the Gathering archetypes]
+|-
+|[[Dragon rider]] || Enki || Enlil || Ereshkigal || [[wikipedia:Sumerian religion|Sumerian]]
+|-
+|}
+
+==Encyclopaedia entry==
+{{encyclopedia|
+Goddesses and Gods operate in ones, threesomes, or whole
+pantheons of nine or more (see Religion).  Most of them claim
+to have made the world, and this is indeed a likely claim in
+the case of threesomes or pantheons:  Fantasyland does have
+the air of having been made by a committee.  But all Goddesses
+and Gods, whether they say they made the world or not, have
+very detailed short-term plans for it which they are determined
+to carry out.  Consequently they tend to push people into the
+required actions by the use of coincidence or Prophecy, or just
+by narrowing down your available choices of what to do next:
+if a deity is pushing you, things will go miserably badly until
+there is only one choice left to you.
+|[ The Tough Guide to Fantasyland, by Diana Wynne Jones ]
+}}
+{{nethack-366}}
+[[Category:Religion]]}
+&&%s&& %s GoD {13095 2006-10-02T09:54:40Z {467 Killian} [[gauntlets of dexterity]] now exists; redirect there #REDIRECT [[gauntlets of dexterity]]
+[[Category:Acronyms]]}
+&&%s&& %s Scroll of light {144440 2022-02-09T22:04:04Z {4001483 Cathartes} upcoming 3.7.0 {{scroll|name=light|cost=50|ink=4–7}}
+
+A '''scroll of light''' is a [[scroll]] that appears in ''[[NetHack]]''.
+
+==Effects==
+Reading a noncursed scroll of light will created a radius of permanent light around you—an uncursed scroll creates light in a 5-square radius, while a blessed scroll creates a 9-unit radius of light. Reading a cursed scroll of light instead darkens a 5-square area around you. In either case, the scroll will [[auto-identify]].
+
+Reading the scroll of light while confused will create a radius of darkness corresponding to the scroll's [[beatitude]] around you. However, they also have a {{frac|5}} chance to instead summon a [[light (monster class)|light monster]]—reading noncursed scrolls while confused can summon a [[yellow light]], while the cursed scroll can summon a [[black light]]. The scroll will not auto-identify if it creates a monster.{{refsrc|src/read.c|1450|nethack=3.6.6}}
+
+{{upcoming|NetHack 3.7.0|Per [https://github.com/NetHack/NetHack/commit/5d3e237ffc6e39bf53ae006cd6d610973f8ffd77 this commit], [[Izchak]] may now stock scrolls of light in his shop.
+
+Reading the scroll while confused now instead summons multiple [[tame]] [[cancelled]] lights. An uncursed scroll will summon 3–4 {{monsymlink|yellow light}}s; a blessed scroll will summon 5–6 yellow lights; and a cursed scroll will summon 3–4 {{monsymlink|black light}}s (which are [[invisible]], but still provide light). Nothing will be summoned if the appropriate type of light is [[genocide]]d.
+
+Reading cursed and blessed scrolls of light while not confused may respectively decrease or increase the BUC status of [[Sunsword]], [[gold dragon scales]], and [[gold dragon scale mail]].  See {{commit|e8341dc9d79dbdc0013a287a9c8dfd627798883b|this commit}}.
+}}
+
+{|
+|-
+| {{caption|{{lightradius|r=5}}|Area lit by uncursed scroll}}
+| {{caption|{{darkradius|r=5}}|Area darkened by cursed scroll}}
+| {{caption|{{circleradius9|r=9}}|Area lit by blessed scroll}}
+|}
+
+==Strategy==
+While a scroll useful for lighting up a single room, the [[wand of light]] and the {{spell of|light}} spell tend to be more efficient, as is any light source [[tool]]. A player that has a consistent source of lighting can reliably save this scroll for [[blank scroll|blanking]].
+
+==History==
+The scroll of light has been present in the game since ''Hack 1.21'', a variant of [[Jay Fenlason's Hack]]. The confused reading of a scroll creating a yellow or black light was added in [[NetHack 3.6.0]]—variants based on previous versions retain the usual behavior for confused readings, though this is not always the case.
+
+==Messages==
+{{message|A lit field surrounds you!|You read a blessed or uncursed scroll.}}
+{{message|You are surrounded by darkness!|You read a cursed scroll, or a scroll of any beatitude while confused.}}
+
+{{message|Your <light source> goes out!|You read a cursed scroll or read any scroll of light while confused, and your lit [[lamp]] or [[lantern]] went out.}}
+{{message|Your <candle>'s flame is extinguished.|As above, with a [[candle]].}}
+{{message|Suddenly, the only light left comes from Sunsword!|As above, but you are wielding [[Sunsword]].}}
+
+{{upcoming|NetHack 3.7.0|
+{{message|Lights appear all around you!|You read the scroll while confused and summoned lights. This auto-identifies the scroll if you can see any of the lights.}}
+{{message|Tiny lights sparkle in the air momentarily.|You read the scroll while confused, but lights could not be summoned because they are genocided.}}
+{{message|The ambient light seems dimmer.|You read a cursed scroll of light while not confused.  This replaces the Sunsword message above.}}
+}}
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], reading a scroll of light while confused has a different effect than reading a cursed scroll. If blessed or uncursed, it will summon 5–10 [[yellow light]]s scattered throughout the level. If the scroll is cursed, it will instead summon up to 15 [[black light]]s.
+
+===xNetHack===
+In [[xNetHack]], an uncursed scroll of light illuminates a radius of 11 squares rather than 5. A blessed scroll illuminates the entire level, even areas that are not within line of sight. Otherwise, scrolls of light use the same behavior as NetHack 3.7.0.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Scrolls|Light]]
+[[Category:UnNetHack]]}
+&&%s&& %s Confused {2315 2006-04-14T03:11:56Z {458 Kernigh} #REDIRECT [[Confusion]] #REDIRECT [[Confusion]]}
+&&%s&& %s Confusion {144478 2022-02-13T23:43:04Z {4001483 Cathartes} /* Monster confusion */ [[revive]], not [[undead turning]] '''Confusion''', or the state of being '''confused''', is a [[property]] that affects [[you]] in the following ways:
+* You cannot cast spells.{{refsrc|src/spell.c|1014|version=NetHack 3.6.1}}
+* Attempting to loot an open square while confused with gold in inventory results in the message "Ok, now there is loot here," dropping a random amount of gold, after which normal looting takes place. Looting a throne while confused has other effects; see [[throne]].
+* You will not be asked for confirmation before attacking peaceful monsters.
+* When you walk or aim in a direction, there is a 20% chance of a random direction being chosen instead (similar to being [[stunned]], which has a 100% chance).{{refsrc|src/apply.c|349|version=NetHack 3.6.0}}{{refsrc|src/apply.c|2460|version=NetHack 3.6.0}}{{refsrc|src/cmd.c|3602|version=NetHack 3.6.0}}{{refsrc|src/dig.c|1043|version=NetHack 3.6.0}}{{refsrc|src/hack.c|1280|version=NetHack 3.6.0}}
+* When [[read]]ing [[scroll]]s, you will mispronounce the magic words,{{refsrc|src/read.c|357|version=NetHack 3.6.0}} which will cause different effects from what would occur normally.
+* Reading any [[spellbook]] will instead make you tear the book into pieces (1/3 chance),{{refsrc|src/spell.c|183|version=NetHack 3.6.0}} or else you will simply fail to learn it ("You find yourself reading the <first/next> line over and over again."){{refsrc|src/spell.c|195|version=NetHack 3.6.0}}
+* Wisdom is abused.{{refsrc|src/attrib.c|447|version=NetHack 3.6.0}}
+* You cannot throw or fire more than one projectile at a time.{{refsrc|src/dothrow.c|114|version=NetHack 3.6.0}}
+* [[Mjollnir]] will not return to your hand.{{refsrc|src/dothrow.c|1036|version=NetHack 3.6.0|comment=Here, "impaired" includes confusion}}
+* Your ability to engrave is impaired.{{refsrc|src/engrave.c|1029|version=NetHack 3.6.0}}
+* You cannot play instruments.{{refsrc|src/music.c|436|version=NetHack 3.6.0|comment=do_spec being unset prevents the special effects of magical instruments from working}}
+* You are less able to saddle a [[steed]]{{refsrc|src/steed.c|115|version=NetHack 3.6.0}} and cannot mount it.{{refsrc|src/steed.c|303|version=NetHack 3.6.0}}
+* You may be unable to control a [[level teleport]] ("Oops...") even if you have [[teleport control]] (4/5 chance of uncontrolled level teleport at zero [[luck]]).{{refsrc|src/teleport.c|623|version=NetHack 3.6.0|comment=this can happen even if you try to cancel the teleport, see {{sourcecode|src/teleport.c|616|version=NetHack 3.6.0}}.}}
+
+In short, being confused is generally a bad thing, but the effects of reading some scrolls while confused can be useful, and looting thrones while confused [[farming|can generate monsters]].
+
+== Causes ==
+
+If you are trying to confuse yourself, be aware that many of these actions have other possible bad consequences. You may want to lock yourself in a closet so that monsters can't gang up on you.
+
+* Attempting to cast a forgotten [[spell]] (can also [[stun]] you).{{refsrc|src/spell.c|845|version=NetHack 3.6.0}}
+* [[Quaff]]ing a [[potion of confusion]]{{refsrc|src/potion.c|857|version=NetHack 3.6.0}} or a non-blessed [[potion of booze]].{{refsrc|src/potion.c|645|version=NetHack 3.6.0}}
+* Reading a cursed [[scroll of confuse monster]], or any scroll of confuse monster while polymorphed into any non-{{monclasssym|@}}, or casting the [[spellbook of confuse monster|equivalent spell]].{{refsrc|src/read.c|1146|version=NetHack 3.6.0}}
+* Trying to magic-map a non-mappable level.{{refsrc|src/read.c|1494|version=NetHack 3.6.0}}
+* Reading a cursed or difficult spellbook (puts you at risk of other variety of bad effects).{{refsrc|src/spell.c|142|version=NetHack 3.6.0}}
+* Being affected by vapors of a [[potion of confusion]] or [[potion of booze]].{{refsrc|src/potion.c|1572|version=NetHack 3.6.0}}
+* Being exposed to an [[umber hulk]]'s [[gaze attack]],{{refsrc|src/mhitu.c|2066|version=NetHack 3.6.0}} or applying a mirror to yourself while polymorphed into an umber hulk.{{refsrc|src/apply.c|816|version=NetHack 3.6.0}}
+* Applying a cursed [[unicorn horn]].{{refsrc|src/apply.c|1751|version=NetHack 3.6.0}} Be sure to have a non-cursed one ready before attempting this, however, because one possible consequence is deadly sickness.
+* Eating a rotten [[egg]], a [[tin]] of something rotten, or a [[tripe ration]] as a non-orc/caveman/canine in an attempt to become nauseated (any food item has a chance of making you vomit, but eggs and tripe rations have the highest chance. You will need to wait some time to be confused, and cure the nauseating side-effect as well).
+* Applying a charged [[crystal ball]] unsuccessfully (puts you at risk of a variety of other bad effects).{{refsrc|src/detect.c|913|version=NetHack 3.6.0}}
+* Sitting on a [[throne]].{{refsrc|src/sit.c|265|version=NetHack 3.6.0}}
+* Being hit by [[Magicbane]], subject to [[magic cancellation]]. This includes throwing it upward {{kbd|<}}.
+* Monsters which are clerical spellcasters can confuse players without [[magic resistance]].
+* [[Yeenoghu]] has a confusion attack.
+
+== Cures ==
+
+* [[Apply]]ing a non-cursed [[unicorn horn]].
+* Eating a [[lizard]] corpse (reduces the timeout to 2 turns).
+* [[Prayer|Praying]] (confusion counts as a [[trouble|minor trouble]]).
+* Reading a blessed [[scroll of confuse monster]].
+* Waiting for it to wear off.
+
+== Confused scroll effects ==
+
+=== Useful effects ===
+
+While reading most scrolls when confused exhibits harmful or useless effects, there are a few confused effects from certain scrolls that have been proven quite useful:
+* [[Scroll of charging]]: If your energy is at maximum, you gain 5d4 maximum energy. Otherwise, your energy is increased to maximum.
+* [[Scroll of destroy armor]]: Makes one random worn armor rustproof/fireproof. Does not repair damage however. The scroll must be cursed.
+* [[Scroll of enchant armor]]: Makes one random worn armor rustproof/fireproof. If that armor had damage, it is repaired. The scroll must be non-cursed.
+* [[Scroll of enchant weapon]]: Makes your wielded weapon rustproof/fireproof. If it had damage, it is repaired. The scroll must be non-cursed.
+* [[Scroll of gold detection]]: You detect traps and portals (spaces with the ^ symbol) on the current level in Vanilla. In UnNethack, you detect random item class. If the scroll is cursed, they are shown as gold ($ symbol). Useful on the [[Elemental Planes]] or in the [[Gnomish Mines]] (due to the large amount of traps there).
+* [[Scroll of remove curse]]: All uncursed items in your inventory have a 25% chance of being blessed and a 25% chance of being cursed if the scroll is blessed. If the scroll is uncursed, then only worn and wielded items are considered. Useful for obtaining [[potion of unholy water|unholy water]].
+* [[Scroll of teleportation]]: Level-teleports you. If you have teleport control and are not also stunned then you will usually be able to choose which level to teleport to.
+* [[Scroll of taming]]: Tames monsters within an 11x11 square area. Also calms shopkeepers and watchmen. Some monsters can resist. The scroll must be non-cursed.
+* [[Scroll of create monster]]: Creates 13+ [[acid blob]]s.
+
+=== Risks ===
+
+Reading unknown scrolls while confused can help identify them. However, there are, as expected, certain risks involved:
+* [[Scroll of genocide]]: Uncursed: [[Instadeath]]. Cursed: You are surrounded by 4-6 monsters of your [[role]].
+* [[Scroll of earth]]: Blessed: Creates 2-6 rocks on each square around you. Uncursed: Creates 2-6 rocks on the same square as you and each open square around you. Cursed: Creates 2-6 rocks on the same square as you. Each rock does d3 damage, with the damage capped at two points, if you're wearing a metal helmet.
+* [[Scroll of fire]]: Lose one hit point, if not fire resistant. Potions, scrolls, and other flammable items in your inventory or at your feet may also be destroyed or damaged.
+* [[Scroll of light]]: Acts as a cursed scroll of light, darkening the area around you.
+
+== Monster confusion ==
+
+Monsters can be confused as well, but the effects on monsters are not identical to those that players experience. To distinguish the two, confused monsters are said to be afflicted by "monster confusion". Using a [[stethoscope]] or a [[wand of probing]] will reveal if the monster is confused. Monsters have a 1/50 chance of losing the monster confusion status on their turn.{{refsrc|src/monmove.c|380|version=NetHack 3.6.0}} If monsters have access to a non-cursed [[unicorn horn]] or a [[lizard corpse]] they will use it to clear the monster confusion status. Zapping healing spells at monsters (pets) does not un-confuse them, but bashing them with healing [[potion]]s does (and counts as [[Tameness#Abuse|abuse]]).
+
+When a monster is confused they exhibit different behavior:
+
+* Monsters may attack a random adjacent target instead of the player. This includes enemies without weapons who will attack [[cockatrice]]s, [[chickatrice]]s and [[Medusa]] and may [[Petrification|stone]] themselves.{{refsrc|src/mhitm.c|387|version=NetHack 3.6.0}}
+* Monsters that cast spells have a higher spell failure chance. For each spell cast, a random number chosen between ([1 to Monster's Level] * 10) is chosen - if this is less than 100, then the monster's spell will fail to cast. This gives the message '''The air crackles around <caster>.'''{{refsrc|src/mcastu.c|251|version=NetHack 3.6.0}}
+* Monsters may wander in a random direction instead of attacking
+* Monsters that can read scrolls will do so incorrectly and will be affected by the confused behavior as per the scroll
+* Monsters have less chance of avoiding an exploding [[drawbridge]]
+* Monsters cannot block incoming [[kick]]s
+* Monsters cannot shoot multiple projectiles
+
+To inflict monster confusion on a target, the player can do one of the following:
+
+* Hit a monster with a melee attack while under the effects of a [[scroll of confuse monster]]
+* Hit a monster with [[Magicbane]], which may randomly trigger the monster confusion effect{{refsrc|src/artifact.c|1100|version=NetHack 3.6.0}}
+* Hit a monster with a thrown [[potion of confusion]]
+* Have a tame umber hulk use its gaze attack against a monster
+* Have a tame black light attack a monster by exploding 
+* Be polymorphed into an umber hulk and use the [[Monster_(command)|#Monster command]] against a monster
+* Be polymorphed into a [[black light]] and attack a monster by exploding
+* Apply a [[looking glass]] to a non-[[blind]] [[umber hulk]]
+* [[Revive]] a [[bones file]] corpse that has the awake bones file ghost on or adjacent to the square the corpse is on. The resulting monster will be confused.
+
+==Variants==
+
+=== SLASH'EM ===
+
+In [[SLASH'EM]], confusion can be used with [[shopkeeper services]] to make [[unholy water]]. When confused, use the uncursing service on a [[potion of water]]. "You accidentally ask for the item to be cursed!" The potion of water will be cursed.
+
+=== UnNetHack ===
+
+In [[UnNetHack]] [[monk]]s get a bonus of a single point of AC while confused, as a reference to the idea of drunken boxing. This bonus applies to confusion from any source however, not just the confusion from a potion of booze.
+
+== History ==
+
+In ''[[Hack]]'', [[bat]]s could cause confusion. ''[[NetHack]]'' has now differentiated this so that [[stun]] and confusion are not the same. Bats and trapped [[door]]s can stun you; this causes you to move in random directions, like confusion would. However, only confusion will let you obtain different effects from reading scrolls.
+
+==See also==
+* [[Stun]]
+* [[Impaired]]
+
+== References ==
+<references />
+
+{{DOD}}
+
+{{nethack-360}}
+[[Category:Properties]]
+[[Category:Monster damage types]]}
+&&%s&& %s Category:GFDL {60770 2010-12-02T16:40:23Z {366 Ilmari Karonen} we're not GFDL any more This category is for images marked with {{tl|GFDL}}:
+
+{{GFDL}}
+
+All pages on this wiki ''used'' to be licensed under the GFDL, but the license was changed to [http://creativecommons.org/licenses/by-sa/3.0/ CC-By-SA 3.0] on June 19, 2009 in accordance with the relicensing provision in GFDL 1.3 section 11.
+
+[[Category:Images]]}
+&&%s&& %s Stunned {2321 2006-04-14T03:37:41Z {458 Kernigh} #REDIRECT [[Stun]] to pre-empt anyone who links here. #REDIRECT [[Stun]]}
+&&%s&& %s Stun {146068 2022-05-30T01:14:22Z {4001585 Godel9}  {{otheruses||the [[monster spell]]|Stun (monster spell)}}
+A player or monster that is '''stunned''' has lost control over its movements.
+Stunning is a distinct condition from [[confusion]] but has similar effects.
+
+== Player stunning ==
+The most noticeable effect of stunning on [[you]] is that whenever you try to choose a direction&mdash;to move, [[firing|fire]], [[zap]], [[apply]] some tools, et cetera&mdash;a random direction will be selected instead.  If you press a movement key you will always attempt to move, even if the direction attempted is blocked, say by a wall.  You will not be prompted for confirmation before attacking a [[peaceful]] or tame monster on an adjacent square, so as long as you are stunned there is a risk of accidentally angering peaceful monsters or [[Tameness#Abuse|abusing]] pets.
+
+Other effects of being stunned:
+* You can only throw or launch one projectile [[multishot|at a time]].  It will probably not go in the direction you intended.
+* You will be unable to [[teleport control|control your teleports]].
+* If you throw [[Mjollnir]], you will be unable to catch it.{{refsrc|src/dothrow.c|1174|version=NetHack 3.6.0}}
+
+Unlike confusion, there are few, if any, practical reasons to get yourself stunned.
+
+== Causes ==
+* Becoming [[vomiting|nauseous]] as an effect of eating [[tripe ration|tripe]], rotten [[egg]]s, rotten [[tin]]ned food, etc. 
+* Attempting to cast a forgotten [[spell]] (can also [[confuse]] you)
+* Applying a cursed [[unicorn horn]]
+* Opening or breaking a [[Trap#Door traps|trapped door]]
+* Opening a [[cursed]] [[tin]] that turns out to be trapped
+* Triggering a mind-altering gas [[container trap]]
+* Eating the corpse of a [[bat]] (any type) or [[stalker]]
+* Polymorphing into a [[bat]] or [[stalker]]
+* The [[stun (monster spell)|stun]] [[monster spell]]
+* The [[passive attack]] of a [[yellow mold]]
+* The melee attacks of an [[abbot]], [[Demogorgon]], [[Pestilence]] or [[Famine]]
+* The [[gaze attack]]s of [[Baalzebub]] and [[Archon]]s
+* Reading a cursed [[scroll of destroy armor]] while wearing cursed -7 armor
+* Trying to eat a [[rustproof]] item while polymorphed into a [[rust monster]]
+
+[[Magic cancellation]] does not prevent stunning attacks. [[Free action]] will limit the duration of stunning from a monster spell to 1 turn.
+
+{{upcoming|NetHack 3.7.0|Using a magic portal causes you to be stunned for three turns.}}
+
+== Cures ==
+
+Stunning can be cured by the following actions:
+* [[Apply]]ing an uncursed or blessed [[unicorn horn]]
+* [[Pray]]ing (stunning counts as a [[Trouble|minor trouble]])
+* Waiting for it to wear off
+
+The duration of stunning can be shortened by the following:
+* Eating a [[Lizard|lizard corpse]] will set the stun counter to 2
+* Getting blinded by an [[Archon]] while not wearing the [[Eyes of the Overworld]] will set the stun counter to 1 to 3 {{refsrc|src/mhitu.c|2109|version=NetHack 3.6.0}}
+* Getting stunned by a monster casting stunning while having [[magic resistance]] or [[Ring of free action|free action]] will set the counter to 1.{{refsrc|src/mcastu.c|455|version=NetHack 3.6.0}}
+
+If you are already stunned, putting on the ring of free action does not in itself affect the stun duration.
+
+== Monster stunning ==
+Stunning has a less significant effect on monsters than on the player. It has the following effects:
+
+* You (and only you) receive a +2 bonus to hit stunned monsters.
+* Stunned monsters cannot block or evade your kicks.
+* Stunned monsters are immune to your gaze attacks.
+* Stunned monsters are less likely to jump out of the way of a falling portcullis or off a closing drawbridge.
+* Stunned peaceful humanoids react differently when you #chat with them.
+* Stunned spellcasting monsters are more likely to cast undirected spells, just as they would if they weren't adjacent to you. If they do this, they still get their normal turns, however.
+
+Stunning does ''not'' cause a monster to move randomly or miss turns.
+
+Each move, a monster has a 1/10 chance that it will stop being stunned. Monsters are also able to use a unicorn horn to cure their own stunning. [[Bat]]s and [[Stalker]]s are permanently stunned, however.
+{{todo|Needs a new reference for bat/stalker stunning.}}
+
+Stunning can be inflicted on monsters by striking them with [[Magicbane]] or successfully [[joust]]ing them.
+
+==Messages==
+;You stagger...
+:You became stunned, from an explosion or spell.{{refsrc|src/potion.c|99|version=NetHack 3.6.0}}
+;You wobble in the saddle.

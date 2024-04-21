@@ -1,0 +1,1000 @@
+fast they become tainted; corpses on an ice surface age half as fast,
+corpses do not age while in iceboxes, and lizard and lichen corpses
+never become tainted (though they do become too old for sacrifice).
+Vampires, mummies and zombies leave corpses that are already considered
+old.  Tainted corpses do not provide either nutrition or intrinsics.
+
+(Adapted from a spoiler by Sascha Wostmann.)
+
+You can acquire useful intrinsics by eating certain corpses or tins.
+The blessed/cursed status does *not* change the likelihood of getting
+an intrinsic.  If the monster has more than one conferrable intrinsic,
+one is randomly picked, with equal probability among all possible.
+The CHANCE that the picked intrinsic is conferred varies among the
+different intrinsics; some are based on the level of the monster (LEV).
+If you get the intrinsic, you will get a MESSAGE (the second one if
+you are hallucinating).
+  INTRINSIC          CHANCE  MESSAGE
+  ~~~~~~~~~~~~~~~~~  ~~~~~~  ~~~~~~~
+  Fire resistance    LEV/15  "You feel a momentary chill."
+                             "You be chillin'."
+  Sleep resistance   LEV/15  "You feel wide awake"
+  Cold resistance    LEV/15  "You feel full of hot air"
+  Disintegration     LEV/15  "You feel very firm."
+    resistance               "You feel totally together, man."
+  Shock resistance   LEV/15  "Your health currently feels amplified!"
+                             "You feel grounded in reality."
+  Poison resistance  LEV/15  "You feel healthy."
+                             ("You feel especially healthy." if you had
+                             previously acquired non-permanent poison
+                             resistance by other means.)
+                             Note: 25% better chance if killer bee or
+                             scorpion.
+  Teleport           LEV/10  "You feel very jumpy."
+                             "You feel diffuse."
+  Teleport control   LEV/12  "You feel in control of yourself."
+                             "You feel centered in your personal space."
+  Telepathy           100%   "You feel a strange mental acuity."
+                             "You feel in touch with the cosmos."
+        
+Some corpses or tins have additional effects:
+  :bjDFNP  If you eat a lizard or any acidic monster, a possible stoning
+           process is stopped.
+           "You feel limber" (non-hallucinating)
+           "What a pity - you just ruined a future piece of art!"
+           (hallucinating with charisma <= 15)
+           "What a pity - you just ruined a future piece of fine art!"
+           (hallucinating with charisma > 15)
+
+  :  Eating a lizard has the supplemental effect of reducing stunning
+     or confusion timeouts to 2 turns, if higher.
+
+  :  Eating a newt ("eye of newt") may cause you to gain 1 to 3 energy
+     (2/3 chance, always if at two-thirds maximum energy or below). If
+     this would take you above your maximum energy, there is a 1/3 chance
+     that your maximum energy will be increased by one.
+       "You feel a mild buzz."
+
+  :@ Eating a chameleon or doppelganger makes you polymorph once.
+     (Eating doppelgangers may also be considered cannibalism if you
+     are human.)
+
+  h  a (master) mind flayer has a 50% chance of increasing your INT by
+     one. Otherwise, it confers telepathy.
+
+  m  Eating a mimic makes you mimic a pile of gold (or, if hallucinating,
+     an orange) for some turns, unless you have unchanging. The larger the
+     mimic the longer you imitate. During this time, you are shown as a
+     $-sign or %-sign.  If you are attacked, you revert to your previous
+     form.
+
+  yB Eating a bat will make you stunned for 30 (more) turns, or 60 (more)
+     turns for a giant bat.  In theory, this also holds for yellow lights
+     (but they don't leave corpses in recent versions).
+
+  E  When you eat a stalker's corpse and you are not invisible, you'll
+     become invisible for 50 to 149 turns. If you're already invisible,
+     you become permanently invisible and get the "see invisible"
+     intrinsic.  In both cases, you are stunned for 60 (more) turns.
+
+  F@ If the monster has a stun or hallucination attack or is a violet
+     fungus, you get hallucination for (another) 200 turns.
+
+  H  Eating a giant, stone giant, hill giant, fire giant, frost giant,
+     storm giant, or Lord Surtur will increase your strength.  If you
+     had less than 18 strength, then you have a 19/24 chance of gaining
+     one point, or a 1/24 chance each of gaining 2 to 6 points.  If you
+     had 18 strength or more, then you gain 1 to 10 points (equally
+     likely), or just one point if you had strength 18/85 or more, up to
+     18/** (or your racial maximum if lower).
+
+  P  Eating a green slime's corpse (unless polymorphed into a green slime,
+     a salamander, a flaming sphere, or a fire vortex or elemental; or you
+     have unchanging or were being slimed already) will slime you to death
+     in 10 turns.
+
+  Q  A quantum mechanic's corpse makes you toggle your speed.  If you
+     were not currently fast, you'll get fast; otherwise, you lose the
+     speed.
+
+  W  Eating a wraith's corpse lets you gain a level (unless the corpse
+     is rotten and rots away completely).
+
+  df If you eat any of little dog, dog, large dog, kitten, housecat, or
+     large cat, you'll get the intrinsic "aggravate monster" unless you
+     are a Caveman or an orc.  "You feel that eating the <monster> was a
+     bad idea."
+
+  c@ If you eat a cockatrice, chickatrice or Medusa's corpse and you
+     are neither stoning resistant nor are you polymorphed into a golem,
+     you'll be instantly killed by stoning.
+
+  @hGK  Eating something of your own species (Kops are human) is 
+        considered cannibalism unless you are a Caveman or an orc.  You
+        get the intrinsic "aggravate monster" and lose 2 to 5 luck.
+
+  @  Eating a were-creature makes you a lycanthrope of the same kind and
+     may be considered cannibalism if you are human.
+
+  @  Eating a nurse heals you up to max hitpoints and may be considered
+     cannibalism if you are human.
+
+  &  Eating Death, Pestilence or Famine is instantly fatal.
+
+
+Tins
+~~~~
+(Adapted from a spoiler by Sascha Wostmann.)
+
+You get up to 50 moves to open a tin; otherwise, you give up. If you are
+wielding a tin opener, it takes one turn; any dagger or crysknife, 3
+turns; or a pick-axe or axe, 6 turns. Failing this, if you have greasy
+fingers the tin will be dropped (if carried), otherwise it will take
+10+d(500/(DEX+STR)) turns to open (18/xx strengths being mapped to the
+range 19-21).  Blessed tins "open like magic" in one turn.  Cursed tins
+have a 1/8 chance of exploding and will always contain rotten food, so
+they won't give any nutrition but will make you even more hungry. 
+
+Tins made by you with a tinning kit are always homemade if not cursed. 
+All other tins are one of these fifteen possibilities: pureed (500),
+deep fried (60), homemade (50), pickled (40), soup (20), stir fried (80),
+candied (100), boiled (50), dried (55), szechuan (70), french fried (40),
+sauteed (95), broiled (80), smoked (50), or rotten (-50).  The number in
+the parentheses is the nutrition value of each.  You cannot tell in
+advance what type a given tin is.
+
+When you eat deep fried or french fried food, you get slippery fingers
+for up to 15 rounds, making you drop your wielded weapon.  You can shorten
+the time by (a)pplying a towel.  Don't forget to pick your weapon up again.
+
+You can obtain intrinsics from eating tins, with the same chance that
+you would have from eating the monster's corpse.  Note that the chance
+of getting an intrinsic does not change if the tin is blessed or
+cursed.
+
+One of the most useful tins is the tin of spinach. If the tin is cursed,
+you lose strength equivalent to eating a giant corpse.  Otherwise,
+eating the spinach "makes you feel like Popeye" (or Swee'pea while
+hallucinating) and gives you more strength equivalent to a giant corpse.
+Tins of spinach have a nutrition of 600.
+
+
+Other food
+~~~~~~~~~~
+(Adapted from a spoiler by Sascha Wostmann.)
+
+Eating a spring of wolfsbane cures lycanthropy.
+
+A carrot cures blindness.  Ever seen a rabbit with glasses? (It won't
+help with being creamed or envenomed, though.)
+
+Eating a fortune cookie gives you a rumor. You can also just (r)ead it
+without eating the cookie. The rumour is from the true file if the
+cookie is blessed, the false file if cursed, or either if uncursed.
+
+Eating a lump of royal jelly increases (decreases if cursed) your
+strength by one. If the jelly was cursed, you lose up to 20 hit points,
+otherwise you gain up to 20 HP and your wounded legs heal. If your
+actual HP would become higher than your maximum HP, there is a 1/17
+chance of increasing your maximum HP by one.
+
+Eating a cockatrice egg is a real bad idea if you're not polymorphed
+into something that resists stoning.  However, they are very useful when
+thrown at monsters.
+
+Eating green slime is also an extremely bad idea unless you're polymorphed
+into something fiery or a slime yourself (or have unchanging).
+
+Eating a eucalyptus leaf cures sickness or vomiting. They can also be
+a)pplied to give the effect of a tin whistle (cursed or uncursed) or a
+magic whistle (blessed; this has a 1/49 chance of unblessing the leaf).
+
+Eating tripe may make you vomit (50% chance) unless you are a Caveman
+or an orc, or polymorphed into a carnivorous non-humanoid.
+
+In addition to eating them, cream pies may be thrown to blind their target,
+or you can a)pply one directly to blind yourself.
+
+
+Eating objects
+~~~~~~~~~~~~~~
+(Adapted from a spoiler by Sascha Wostmann.)
+
+There are some conditions before you can eat an object. If you are
+polymorphed into a metallivore (rock mole, rust monster, or xorn), you
+may eat objects made of metal.
+
+If you are polymorphed into a gelatinous cube, the object is organic,
+and the object doesn't contain other objects, you may eat it.  This is
+different for real gelatinous cubes, which can eat a container and hold
+the non-organic contents of that container engulfed.  So when such a
+beasty eats your chest with all the artifacts, you may find them on its
+corpse.
+
+You can never eat Unique Items such as the Amulet or the invocation
+artifacts.
+
+Eating something that isn't actually food always takes only one move.
+The code addresses this issue by stating, "[We don't want] to deal with
+partly eaten plate mails, players who polymorph back to human in the
+middle of their metallic meal, etc...."
+
+Eating rings has a 1/3 chance of conferring the intrinsic of the ring.
+Eating amulets has a 1/5 chance of having an effect.  Not all intrinsics
+can be acquired this way.  See the spoilers "amul-343.txt" and
+"ring-343.txt".
+
+When you eat a leash with a monster on the other side, this monster gets
+unleashed.
+
+If you eat the iron ball or the chain while you are punished, the
+punishment is gone. If you eat the chain, the ball is still available to
+use as a weapon or to throw.
+
+When you try to eat something rustproof while being polymorphed into a
+rust monster, you spit it out non-rustproof and get stunned a few rounds.
+
+Eating a poisoned weapon has the same effect as eating poisonous corpses.
+You get poisoned if you're not resistant.
+
+Eating a non-cursed trident exercises wisdom. (This is apparently a
+US-centric pun having something to do with a brand of chewing gum.)
+"That was pure chewing satisfaction!"
+
+Eating a non-cursed flint stone exercises constitution. "Yabba-dabba
+delicious!" (Note however that there are no monsters capable of eating
+flint stones in the present version.)
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Thanks to Bruce Cox for proofreading the original version of this file.
+Further corrections and clarifications by Kieron Dunbar, Stephen S. Lee,
+Topi Linkala, Jim Monk, Ryan Murray, Rast, Robert R. Schneck, StarChaser,
+and Mike Stevenson.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Gems-343.txt {105391 2017-04-29T01:05:55Z {4000180 Bcode} Protected "[[Gems-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:gems-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+gems-343.txt  Last edited 2006-05-03 for NetHack 3.4.3
+Gems, stones, and luck in NetHack 3.4
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+GEMS AND STONES           COST  WGT  PROB    ENGR  COLORS
+~~~~~~~~~~~~~~~~~~~~~~~ : ~~~~  ~~~  ~~~~  : ~~~~  ~~~~~~
+Valuable gems           :                  :
+  dilithium crystal     :$4500    1   27*  : soft  white
+  diamond               : 4000    1   24*  : hard  white
+  ruby                  : 3500    1   21*  : hard  red
+  jacinth               : 3250    1   18*  : hard  orange
+  sapphire              : 3000    1   15*  : hard  blue
+  black opal            : 2500    1   12*  : hard  black
+  emerald               : 2500    1    9*  : hard  green
+  turquoise             : 2000    1    6*  : soft  green, blue
+  aquamarine            : 1500    1    1*  : hard  green, blue
+  citrine               : 1500    1    3*  : soft  yellow
+  amber                 : 1000    1    1*  : soft  yellowish brown
+  topaz                 :  900    1    1*  : hard  yellowish brown
+  jet                   :  850    1    1*  : soft  black
+  opal                  :  800    1    1*  : soft  white
+  chrysoberyl           :  700    1    1*  : soft  yellow
+  garnet                :  700    1    1*  : soft  red
+  amethyst              :  600    1    1*  : soft  violet
+  jasper                :  500    1    1*  : soft  red
+  fluorite              :  400    1    1*  : soft  green, blue, white, violet
+  jade                  :  300    1    1*  : soft  green
+  agate                 :  200    1    1*  : soft  orange
+  obsidian              :  200    1    1*  : soft  black
+Worthless gems          :                  :
+  black glass           :    0    1   76   : soft  black
+  blue glass            :    0    1   77   : soft  blue
+  green glass           :    0    1   77   : soft  green
+  orange glass          :    0    1   76   : soft  orange
+  red glass             :    0    1   77   : soft  red
+  violet glass          :    0    1   77   : soft  violet
+  white glass           :    0    1   77   : soft  white
+  yellow glass          :    0    1   77   : soft  yellow
+  yellowish brown glass :    0    1   77   : soft  yellowish brown
+Stones                  :                  :
+  luckstone             :   60   10   10   : soft  gray stone
+  touchstone            :   45   10    8   : soft  gray stone
+  flintstone            :    1   10   10   : soft  gray stone
+  loadstone             :    1  500   10   : soft  gray stone
+  rock                  :    0   10  100   : soft  rock
+
+Gems and stones are listed above by category, then by decreasing price.
+The COST field denotes the base price of each item.  WGT specifies the
+weight (100 zorkmids weighs 1).
+
+Gems comprise 8% of all randomly-generated items in the main dungeon,
+18% in containers, 0% on the Rogue level, and 10% in hell.  PROB
+is the relative probability of each subtype, except for those marked
+with an asterisk (valuable gems); the figures so marked instead
+represent the first level on which the gems can occur (this limitation
+only applying to the main dungeon, and these restrictions are only
+reviewed when creating a new level).  Permissible valuable gems have
+roughly equal probabilities of being generated among themselves, always
+set such that the total for the category as a whole is 171.
+
+Loadstones are always generated cursed (except potentially in containers),
+all others are uncursed.  Rocks appear in piles of 6 to 11.  Valuable gems,
+worthless gems, touchstones, and flint stones have a 1/6 chance of appearing
+in a pile of 2.
+
+The ENGR field denotes how the gem appears when you attempt to engrave
+with it (see below).  COLORS specifies the possible appearance of the
+gem.  If more than one color is possible, then one will be randomly
+chosen for the appearance.
+
+
+Identifying stones
+~~~~~~~~~~~~~~~~~~
+
+There are five different types of non-gem stones, and four of them
+are indistinguishably gray.
+
+rock
+  Rocks are immediately identified on examination, and pose little
+  difficulty or challenge to the adventurer. They make a cheap and usually
+  plentiful source of ammunition, should you lack or wish to conserve other
+  ranged attacks. ("Good ol' rock. Nothing beats that." -- Bart Simpson)
+
+touchstone
+  Touchstones are most readily distinguished by their effect when rubbed
+  with something hard, such as an iron weapon; they will make a "scritch,
+  scritch" sound. Their primary use is rubbing them with other gems and
+  stones (and, once identified, this is all they _can_ be used for); if
+  blessed (or also if uncursed, for Archeologists and gnomes), the object
+  rubbed with will be identified. The complete table of results that
+  distinguish them is as follows:
+
+  GRAY STONE        GEM       GLASS     HARD     RING
+  ~~~~~~~~~~~~~~~~  ~~~~~~~~  ~~~~~~~~  ~~~~~~~  ~~~~
+  good touchstone   ID        ID        scritch  streak
+  bad touchstone    streak    scratch   scritch  streak
+  other gray stone  cscratch  cscratch  scratch  cscratch
+
+  where "streak" denotes coloured streaks, "scratch" uncoloured scratch
+  marks, "cscratch" coloured scratch marks, and "scritch" the sound
+  "scritch scritch".
+
+  Other types of object may produce coloured streaks or scratches, but
+  will not provide any further useful information.
+
+  Note that being rubbed on a cursed touchstone may shatter gems or rocks
+  (but not other gray stones).
+
+
+luckstone
+  Luckstones can be identified by their effect (see "Luck" below) with the
+  help of enlightenment, by their valuation by shopkeepers, or by the
+  presence of the guaranteed luckstone at the top of a gems cache in the
+  Gnome King's Wine Cellar version of the bottom level of the Gnomish Mines.
+  (Or, indeed, by the Heart of Ahriman being one).
+
+loadstone
+  As noted above, loadstones are almost always generated cursed; furthermore,
+  they autocurse on being dropped or otherwise leaving the main inventory,
+  and a cursed loadstone cannot be let go of. It is therefore best to
+  identify them while they lie on the ground; kicking them will usually
+  elicit a "Thump!" rather than movement across the floor, but being
+  extremely strong (at least 22 strength; 18/** is not sufficient) while
+  wearing kicking boots or being a Samurai or Monk may allow some movement
+  (watch how far it goes).
+  
+flint stone
+  These exist primarily to make it hard to identify touchstones, loadstones
+  and luckstones, and are best identified by elimination of the other three.
+  They have few special properties, but do inflict somewhat more damage than
+  other stones or gems when used as sling ammunition.
+
+
+Identifying gems
+~~~~~~~~~~~~~~~~
+(Quoted in part from the spoiler "gems" by Bryan Butler.)
+
+    "I shall, with cultured taste,
+     Distinguish gems from paste..."
+         -- Reginald Bunthorne, in Gilbert and Sullivan's "Patience"
+
+There are now nine methods to identify gems: engraving, throwing at
+unicorns, killing glass golems, spell of stone to flesh, collecting a
+large number, scrolls or spells of identify, a touchstone, dipping
+an amethyst in potions of booze, and finding pre-placed gems.
+
+1.  Engraving with gems
+
+If a gem is listed as "hard" above, then you will see the following
+message when you attempt to (E)ngrave with the gem:
+    "You engrave in the <floor> with the <gem>."
+where <gem> is the appearance of the gem.  All hard gems are valuable,
+although some colors may have more than one possible identity.
+
+If the gem is "soft," you will see this message:
+    "You write in the dust with the <gem>."
+Soft gems may be valuable or worthless, so you will need an additional
+method to identify these gems.
+
+In either case, you can abort the engraving process by pressing Escape.
+If you choose to write a message, it will take one turn per character
+to engrave.  Not all types of floor can be engraved upon.  You may choose
+to #name a gem once you know its hardness (e.g., "soft blue").
+
+2.  Throwing gems at unicorns
+
+Throwing a gem to a non-tame unicorn can change your luck in one of several
+ways, depending on whether the gem is worthless or valuable, whether you
+are the same alignment as the unicorn (white = lawful, gray = neutral,
+and black = chaotic), and whether the gem type is already identified or
+named.
+
+  VALUE  ALIGN  KNOWN       ADVERB        LUCK CHANGE
+  ~~~~~  ~~~~~  ~~~~~~~~~~  ~~~~~~~~~~~~  ~~~~~~~~~~~
+  glass  other  unknown     graciously         0
+  glass  other  named       (see below*)       0
+  glass  other  identified  (see below*)       0
+  glass  same   unknown     graciously         0
+  glass  same   named       (see below*)       0
+  glass  same   identified  (see below*)       0
+   gem   other  unknown     hesitatingly   -1 to +1
+   gem   other  named       hesitatingly   -1 to +1
+   gem   other  identified  hesitatingly   -3 to +3
+   gem   same   unknown     gratefully        +1
+   gem   same   named       gratefully        +2
+   gem   same   identified  gratefully        +5
+
+In most cases, the message sequence is as follows:
+    "The <unicorn> neighs!  The <unicorn> catches the <gem>."
+    "The <unicorn> <ADVERB> accepts your gift."
+where the color of the unicorn and the color of the gem are appropriate
+for the situation. <ADVERB> comes from the table above, except where
+the column has a *, in which case there is a different message sequence:
+    "The <unicorn> neighs!"
+    "The <unicorn> catches the <glass>."
+    "The <unicorn> is not interested in your junk."
+after which the unicorn will promptly drop the "gem".
+
+3. Killing glass golems
+
+When a glass golem is destroyed, it leaves behind 2 to 8 worthless
+pieces of glass (each of which can be any of the colours), and
+never gems.
+
+4. Spell of stone to flesh
+
+The spell of stone to flesh will turn gemstones into meatballs, but
+leave worthless pieces of glass intact; #name a gem 'valuable' or
+similar before zapping the spell at it (and rename it afterwards should
+it be proven untrue), since it won't be around to #name after.
+
+5.  Collecting a large number of gems
+
+If you wait long enough, you'll accumulate a large number of gems.
+Since the probabilities of getting worthless pieces of glass are so
+much higher than getting true gems, you'll acquire them much faster
+than other gems. So, if you just wait long enough, and look at all of
+the gems of a certain color that you have, more often than not the gem
+of which you have the most is the worthless piece of glass. This is a
+bit risky, and usually takes much more time than other methods.
+
+6. Scrolls and spells of identify
+
+You can always use a scroll or spell of identify to determine whether a
+gem is valuable.  You will then recognize all gems of that same type,
+although you can lose this knowledge from a scroll of amnesia or (master)
+mind flayer attack. Shopkeepers will buy identified gems
+based on their full price; this is a good way to get money.
+
+7.  Rubbing on a touchstone
+
+Being rubbed on a blessed touchstone (or also uncursed for Archeologists,
+who start with one, and gnomes) will immediately identify any gem, as
+detailed under "touchstones" above.
+
+8.  Dipping amethysts into potions of booze
+
+When you dip an amethyst into a potion(s) of booze, the potion will turn
+into fruit juice ("a-methyst" means not intoxicated).  You can use this
+very special case to identify this type of soft violet gems.
+
+9.  Pre-placed gems
+
+Certain levels are guaranteed to be generated with diamonds, rubies,
+emeralds, and amethysts in well-defined positions.  Two versions of
+the bottom level of the Gnomish Mines (the Wine Cellar version and the
+Mimic of the Mines version) contain concealed chambers with these four
+types of gems and a guaranteed luckstone, together with assorted other
+* to confuse identification; the third version's are randomly
+scattered across the level.  The four corner rooms of Fort Ludios (if
+it is reachable in your game) each contain one of these four types of
+valuable gems.  Other levels may also be generated with piles of gems,
+but their type is not guaranteed, so these levels are not helpful in
+determining the identity of gems.
+
+
+Luck
+~~~~
+Luck is included here because of luckstones.
+
+Your luck affects many aspects of the game (too many to mention here),
+and is actually the sum of two components.  Base luck changes with events
+in the game, and may slowly return to a "baseline" level.  Bonus luck, on
+the other hand, is determined by what kind of luckstone (and certain
+artifacts) you are carrying.  Only a rough idea of your luck is given
+in the enlightenment list; the meaning of the messages is as follows:
+  TOTAL LUCK  MESSAGE
+  ~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <= -10    extremely unlucky
+   -9 to -5   very unlucky
+   -4 to -1   unlucky
+       0      luck is zero (debug mode only)
+    1 to 4    lucky
+    5 to 9    very lucky
+    >= 10     extremely lucky
+
+Your bonus luck -- and whether your base luck will return to its baseline
+level -- is controlled by luckstones and certain Quest Artifacts.  The
+effect of these "luckitems" depends on the number in your main inventory
+that are blessed, uncursed, and cursed (see table below).  Note that you
+can't do any better than one blessed luckitem, so you might as well keep
+any others in a bag (where they have no effect) as spares in case your
+main one is cursed.
+  NUMBER OF LUCKITEMS          BAD LUCK    GOOD LUCK   BONUS LUCK
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~   ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
+  None                         Times out   Times out   0 (no message)
+  More cursed than blessed     No timeout  Times out
+  Equal cursed and blessed     No timeout  No timeout
+  More blessed than cursed     Times out   No timeout
+  More cursed than non-cursed                          -3 "reduced luck"
+  Equal cursed and non-cursed                          +3 "extra luck"
+  More non-cursed than cursed                          +3 "extra luck"
+When you are enlightened about your luck, you are also told if you have
+bonus luck and if good/bad luck will not time out.
+
+Base luck is adjusted by each of the events described below.  It cannot
+be reduced below -10 or increased above +10 beyond the baseline.  In
+addition, every 600 turns (or 300 if you have the Amulet of Yendor or have
+angered your god), your luck will increase by one if it is less than your
+baseline luck and bad luck times out, and your luck will decrease by one if
+your luck is greater than your baseline luck and good luck times out.  Your
+baseline luck is +1 if you started or restored the game during a full moon,
+-1 if started/restored on Friday the 13th, and 0 if neither or both.
+  BASE ADJ  EVENT
+  ~~~~~~~~  ~~~~~
+     +1     Starting or restoring a game during a full moon.
+      0     Starting or restoring a game during a new moon.
+     -1     Starting or restoring a game on Friday the 13th.
+            NOTE: The above three are reversed before saving.
+     -2     Break a mirror.
+     -n     Breaking n eggs laid by you (at worst -5).
+     +1     Sitting on a throne (sometimes).
+      0     Throwing a worthless gem at a unicorn.
+  -3 to +3  Throwing valuable gem at cross-aligned unicorn.
+     +1     Throwing unknown valuable gem at co-aligned unicorn.
+     +2     Throwing named valuable gem at co-aligned unicorn.
+     +5     Throwing identified valuable gem at co-aligned unicorn.
+     -1     Hitting a blind floating eye (1 in 500 chance).
+     -1     Jumping in Sokoban.
+     -1     Breaking a boulder in Sokoban.
+     -1     Casting stone-to-flesh on a Sokoban boulder.
+     -1     Polymorphing a Sokoban boulder.
+     -1     Reading a scroll of earth in Sokoban.
+     -1     Being pulled by a thrown iron ball in Sokoban.
+     -1     Hurtling through the air in Sokoban due to Newton's 3rd Law.
+     -1     Walking (as a giant) or squeezing past a Sokoban boulder.
+     -1     Killing a tame or peaceful (sometimes) monster.
+     -2     Killing a peaceful human, and you are not chaotic.
+     -5     Killing a co-aligned unicorn.
+  -5 to -2  Cannibalism (eating your own species), unless an orc.
+  Set to 0  Praying with negative base luck (sometimes: "golden glow" boon).
+     -3     Praying on wrong altar.
+     -3     Praying before your prayer timeout has expired.
+     -5     A sacrifice (not your own race) on Moloch's altars in Gehennom.
+     -3     Being converted by trying to convert an altar.
+     -1     Otherwise unsuccessful at converting altar.
+     +1     Successfully converting an altar.
+     -1     Desecrating another god's altar.
+     +2     Sacrificing your own race on your own chaotic altar.
+     -2     Sacrificing your own race on Moloch's altar.
+     -5     Sacrificing your own race, you aren't chaotic.
+     -1     Sacrificing an unidentified fake Amulet of Yendor.
+     -3     Sacrificing an identified fake Amulet of Yendor.
+     +1     Sacrificing, slightly mollifying your god, negative luck.
+  Set to 0  Sacrificing, mollifying your god, negative luck.
+     +1     Sacrificing, having a hopeful feeling, negative luck.
+  Set to 0  Sacrificing, reconciling, negative luck.
+   0 to +5  Sacrificing, god happy.
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Thanks to Bruce Cox for proofreading the original version of this file.
+Further corrections and clarifications provided by David Damerell,
+Michael Deutschmann, Rob Ellwood, Yair Friedman, David Grabiner, Adam Kao,
+Nick Number, and Donald Welsh.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Pot1-343.txt {105399 2017-04-29T01:14:54Z {4000180 Bcode} Protected "[[Pot1-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:pot1-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+pot1-343.txt  Last edited 2004-02-16 for NetHack 3.4.3
+Potions and their direct effects in NetHack 3.4
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+POTION              COST  WGT  PROB   APPEARANCE
+~~~~~~~~~~~~~~~~~ : ~~~~  ~~~  ~~~~ : ~~~~~~~~~~
+booze      (sake) : $ 50   20   42  :
+fruit juice       :   50   20   42  :
+see invisible     :   50   20   42  :
+sickness          :   50   20   42  :
+confusion         :  100   20   42  :
+extra healing     :  100   20   47  :
+hallucination     :  100   20   40  :
+healing           :  100   20   57  :
+restore ability   :  100   20   40  :
+sleeping          :  100   20   42  :
+water             :  100   20   92  :  clear
+blindness         :  150   20   40  :
+gain energy       :  150   20   42  :
+invisibility      :  150   20   40  :
+monster detection :  150   20   40  :
+object detection  :  150   20   42  :
+enlightenment     :  200   20   20  :
+full healing      :  200   20   10  :
+levitation        :  200   20   42  :
+polymorph         :  200   20   10  :
+speed             :  200   20   42  :
+acid              :  250   20   10  :
+oil               :  250   20   30  :
+gain ability      :  300   20   42  :
+gain level        :  300   20   20  :
+paralysis         :  300   20   42  :
+
+Potions are listed above by increasing cost, then alphabetically.
+Alternative Japanese names for items are given in parentheses (). The
+COST field denotes the base price of each item.  WGT specifies the weight
+(100 zorkmids weighs 1).
+
+Potions comprise 16% of all randomly-generated items in the main dungeon,
+18% in containers, 22% on the Rogue level, and 1% in hell.  PROB is
+the relative probability of each subtype.  They appear 1/8 cursed,
+3/4 uncursed, and 1/8 blessed.
+
+Some types of potions have the same APPEARANCE when unidentified.  The
+appearance of the remaining potions are are randomized from the following
+descriptions:
+    ruby        pink        orange        yellow          emerald
+    dark green  cyan        sky blue      brilliant blue  magenta
+    purple-red  puce        milky         swirly          bubbly
+    smoky       cloudy      effervescent  black           golden
+    brown       fizzy       dark          white           murky
+
+
+Potion messages and effects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Adapted from the WCST spoiler "spoil803".)
+
+What happens when you (q)uaff a potion usually depends on whether the
+potion was blessed, uncursed, or cursed.  If a monster can quaff a potion,
+the effects upon the monster are documented below; all other potions won't
+be quaffed by monsters. 
+
+When a potion hits a monster, the monster will be awoken and has an 80%
+chance of losing one hit point (but not killed), and then suffers the
+effects described below.  If you didn't see the monster get hit, you will
+be told, "Crash!".  Monsters are not angered by potions of (extra|full)
+healing, (gain|restore) ability, speed, invisibility, water thrown at
+gremlins, or unholy water thrown at werecreatures, demons or undead; other
+potions will cause peaceful monsters to become hostile if you were the
+thrower.
+
+If a potion hits you, you lose 1 to 2 hit points and get the effects of
+breathing vapors described below unless the potion has a specific effect
+for hitting you.  You may also breathe vapors if you are near a potion
+when it breaks (e.g., it hit a monster, was hit by a wand of striking, or
+was kicked). If you are polymorphed into an unbreathing monster, the
+vapours will get into your eyes for the same effect. If you are polymorphed
+into a monster that neither breathes nor has eyes, vapours will have no
+effect.
+
+acid
+  Cures stoning.
+  If you are acid resistant, no effect.
+    "This tastes sour." (not hallucinating)
+    "This tastes tangy." (hallucinating)
+  blessed
+    You lose 1 to 4 hit points, and abuse your constitution.
+      "This burns a little!"
+  uncursed
+    You lose 1 to 8 hit points, and abuse your constitution.
+      "This burns like acid!"
+  cursed
+    You lose 2 to 16 hit points, and abuse your constitution.
+      "This burns a lot!"
+  hits monster
+    The monster loses the same number of hit points as you would on
+    quaffing the potion. Some monsters may resist.
+      "<monster> shrieks in pain!"
+      "<monster> writhes in pain!" (silent monster)
+  hits you
+    May be thrown by monsters.
+    If you are acid resistant, no effect. Otherwise, same effect as
+    quaffing potion.
+  vapors
+    Abuses your constitution.
+ 
+blindness
+  blessed
+    You are blinded for 125 to 324 (more) turns.
+      "A cloud of darkness falls upon you." (was unblind, not hallucinating)
+      "Oh, bummer!  Everything is dark!  Help!" (was unblind, hallucinating)
+      "You have a peculiar feeling for a moment, then it passes."
+        (was blind, not hallucinating)
+      "You have a normal feeling for a moment, then it passes."
+        (was blind, hallucinating)
+      "Your vision seems to dim for a moment but is normal now."
+        (blindness overcome by Eyes of the Overworld, not hallucinating)
+      "Your vision seems to dim for a moment but is happier now."
+        (blindness overcome by Eyes of the Overworld, hallucinating)
+  uncursed
+    You are blinded for 250 to 449 (more) turns.
+      (Same messages as above)
+  cursed
+    You are blinded for 375 to 574 (more) turns.
+      (Same messages as above)
+  hits monster
+    The monster is blinded for 64 to 126 (more) turns, or 64 to 95 if the
+    monster resists.  Monster blindness does not last longer than 127
+    turns, and (of course) the monster must have eyes.
+  vapors
+    May be thrown by monsters.
+    You become blind for 1 to 5 (more) turns.
+      "It suddenly gets dark."  (were unblind and not asleep)
+
+booze
+  blessed
+    You gain 30 nutrition.
+    You heal one hit point (if necessary; undiluted only).
+    You abuse your wisdom.
+      "Ooph!  This tastes like liquid fire!"  (undiluted, not hallucinating)
+      "Ooph!  This tastes like dandelion wine!"  (undiluted, hallucinating)
+      "Ooph!  This tastes like watered down liquid fire!"
+        (diluted, not hallucinating)
+      "Ooph!  This tastes like watered down dandelion wine!"
+        (diluted, hallucinating)
+  uncursed
+    You gain 20 nutrition.
+    You heal one hit point (if necessary; undiluted only).
+    You are confused for 3 to 24 (more) turns.
+    You abuse your wisdom.
+      (Same messages as above)
+  cursed
+    You gain 10 nutrition.
+    You heal one hit point (if necessary; undiluted only).
+    You are confused for 3 to 24 (more) turns.
+    You pass out for 1 to 15 turns.
+    You abuse your wisdom.
+      (Same messages as above)
+  hits monster
+    The monster becomes confused.  Some monsters may resist.
+  vapors
+    You become confused for 1 to 5 (more) turns.
+      "You feel somewhat dizzy."
+
+confusion
+  blessed
+    You are confused for 8 to 14 (more) turns.
+      "Huh, What?  Where am I?"  (not hallucinating, not already confused)
+      "What a trippy feeling!"  (hallucinating, not already confused)
+      "You have a peculiar feeling for a moment, then it passes."
+        (not hallucinating, already confused))
+      "You have a normal feeling for a moment, then it passes."
+        (hallucinating, already confused))
+  uncursed
+    You are confused for 16 to 22 (more) turns.
+      (Same messages as above)
+  cursed
+    You are confused for 24 to 30 (more) turns.
+      (Same messages as above)
+  hits monster
+    The monster becomes confused.  Some monsters may resist.
+  vapors
+    May be thrown by monsters.
+    You become confused for 1 to 5 (more) turns.
+      "You feel somewhat dizzy."
+
+enlightenment
+  blessed
+    You gain one point of intelligence and one point of wisdom.
+    You see your attributes and exercise your wisdom.
+      "You feel self-knowledgeable..."
+      "The feeling subsides."
+  uncursed
+    You see your attributes and exercise your wisdom.
+      "You feel self-knowledgeable..."
+      "The feeling subsides."
+  cursed
+    You abuse your wisdom.
+      "You have an uneasy feeling..."
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+extra healing
+  blessed
+    You gain 8 to 64 hit points.  If this would put you above your
+    maximum hit points, then your maximum is increased by 5 and your hit
+    points become this new maximum.
+    Cures sickness, blindness, and hallucination.
+    Exercises constitution and strength.
+      "You feel much better."
+  uncursed
+    You gain 6 to 48 hit points.  If this would put you above your
+    maximum hit points, then your maximum is increased by 2 and your hit
+    points become this new maximum.
+    Cures sickness, blindness, and hallucination.
+    Exercises constitution and strength.
+      "You feel much better."
+  cursed
+    You gain 4 to 32 hit points, up to your maximum.
+    Cures blindness and hallucination.
+    Exercises constitution and strength.
+      "You feel much better."
+  quaffed by monster
+    The monster gains the same number of hit points as if you quaffed it.
+    If this would put the monster above its maximum hit points, its
+    maximum is increased by 2 (even if cursed, 5 if blessed) and its hit
+    points become this new maximum.
+    The monster is unblinded.
+      "<monster> looks much better."  (if seen)
+  hits monster
+    If Pestilence, its current and maximum hit points are halved.  May
+    resist.
+      "Pestilence looks rather ill."  (if seen)
+    Otherwise, the monster is restored to maximum hit points.
+      "<monster> looks sound and hale again."  (if seen)
+  vapors
+    You heal up to 2 hit points, and exercise your constitution.
+    No message.
+
+fruit juice
+  blessed
+    You gain 30 nutrition (15 if diluted).
+      "This tastes like <fruit> juice."  (undiluted, not hallucinating)
+      "This tastes like 10% real <fruit> juice all-natural beverage."
+        (undiluted, hallucinating)
+      "This tastes like reconstituted <fruit> juice."
+        (diluted, not hallucinating)
+      "This tastes like 10% real reconstituted <fruit> juice all-natural
+      beverage."  (diluted, hallucinating)
+  uncursed
+    You gain 20 nutrition (10 if diluted).
+      (Same messages as above)
+  cursed
+    You gain 10 nutrition (5 if diluted).
+      "Yecch!  This tastes rotten."  (not hallucinating)
+      "Yecch!  This tastes overripe."  (hallucinating)
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+full healing
+  blessed
+    You gain 400 hit points.  If this would put you above your maximum
+    hit points, then your maximum is increased by 8 and your hit points
+    become this new maximum.
+    If you have lost any experience levels, one level is restored, to
+    a maximum of half the levels you have lost.
+    Cures sickness, blindness, and hallucination.
+    Exercises constitution and strength.
+      "You feel completely healed."
+  uncursed
+    You gain 400 hit points.  If this would put you above your maximum
+    hit points, then your maximum is increased by 4 and your hit points
+    become this new maximum.
+    Cures sickness, blindness, and hallucination.
+    Exercises constitution and strength.
+      "You feel completely healed."
+  cursed
+    You gain 400 hit points, up to your maximum.
+    Cures blindness and hallucination.
+    Exercises constitution and strength.
+      "You feel completely healed."
+  quaffed by monster
+    The monster's maximum hit points are increased by 4 (even if cursed,
+    8 if blessed) and its hit points become this new maximum.
+    The monster is unblinded.
+      "<monster> looks completely healed."  (if seen)
+  hits monster
+    If Pestilence, its current and maximum hit points are halved.  May
+    resist.
+      "Pestilence looks rather ill."  (if seen)
+    Otherwise, the monster is restored to maximum hit points.
+      "<monster> looks sound and hale again."  (if seen)
+  vapors
+    You heal up to 3 hit points, and exercise your constitution.
+      No message.
+
+gain ability
+  blessed
+    If you have sustain ability, no effect.
+      "You have a peculiar feeling for a moment, then it passes."
+        (not hallucinating)
+      "You have a normal feeling for a moment, then it passes."
+        (hallucinating)
+    Otherwise, all statistics are increased by one (up to maximum).
+      "You feel strong!"  (strength)
+      "You feel smart!"  (intelligence)
+      "You feel wise!"  (wisdom)
+      "You feel agile!"  (dexterity)
+      "You feel tough!"  (constitution)
+      "You feel charismatic!"  (charisma)
+      "Your cap constricts briefly, then relaxes again."
+      (you can't change wisdom or intelligence with dunce cap)
+      "You're already as <statistic> as you can get."  (if already maximum)
+  uncursed
+    If you have sustain ability, no effect.
+    Otherwise, one random statistic not at maximum is increased by one.
+    Up to six tries to pick a statistic are made.  If only one stat was
+    raisable, there is a 33.49% chance that it will do nothing!
+      (Same messages as above)
+  cursed
+    No effect.
+      "Ulch!  That potion tasted foul!"
+  hits monster
+    The monster is restored to maximum hit points.
+      "<monster> looks sound and hale again."  (if seen)
+  vapors
+    If cursed, no effect.
+      "Ulch!  That potion smells terrible!"
+      "Your eyes sting." (unbreathing)
+    If uncursed, one random statistic is RESTORED by one.  No message.
+    If blessed, all statistics are RESTORED by one.  No message.
+
+gain energy
+  blessed
+    Your energy and maximum energy are increased by 7 to 11.
+    Your wisdom is exercised.
+      "Magical energies course through your body."
+  uncursed
+    Your energy and maximum energy are increased by 2 to 6.
+    Your wisdom is exercised.
+      "Magical energies course through your body."
+  cursed
+    Your energy and maximum energy are decreased by 2 to 6, but not
+    below zero.
+    Your wisdom is exercised.
+      "You feel lackluster."
+  hits monster
+    No effect.
+  vapors
+    No effect.
+
+gain level
+  blessed
+    You get more hit points and energy.
+      "You feel more experienced."
+    If less than level 30, you gain one experience level and skill
+    advancement slot.
+      "Welcome to experience level <number>."
+    Your experience is set to a random amount midway to the next level (or
+    increased by what that would have been, if you're already at XL 30).
+  uncursed
+    You get more hit points and energy.
+      "You feel more experienced."
+    If less than level 30, you gain one experience level and skill
+    advancement slot.
+      "Welcome to experience level <number>."
+  cursed
+    If you have the Amulet and are on dungeon level 1, you go to the
+    Plane of Earth.

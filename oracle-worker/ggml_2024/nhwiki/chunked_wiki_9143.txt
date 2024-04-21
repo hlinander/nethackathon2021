@@ -1,0 +1,1000 @@
+The options can be given in any order. If the given ''options'' conflict each other, the latter is applied, except for the ''format'' options, where the options take the priority in the order of: '''frame'''; '''thumb''' (or '''thumbnail'''); '''frameless''' and/or '''border'''.
+
+If a parameter does not match any of the other possibilities, it is assumed to be the caption text.  Caption text shows below the image in '''thumb''' and '''frame''' formats, or as mouseover text in '''border''', '''frameless''' formats or when the format is omitted.  Caption text displayed in the '''thumb''' and '''frame''' formats may contain wiki links and other formatting.  In the other options, wiki-formatting will not work though transclusion will.
+
+If no caption text is supplied, a caption is automatically created showing the file name.  To completely remove the caption, set it to <code><nowiki><span title=""></span></nowiki></code>. For example, <code><nowiki>[[File:Example.jpg|20px|<span title=""></span>]]</nowiki></code> renders as [[File:Example.jpg|20px|<span title=""></span>]].
+
+=== Format ===
+The following table shows the effect of all available formats.
+
+{|class="wikitable plainlinks"
+|-
+!Description
+!You type
+!You get
+{{Help:Images/frame|frame=|ex=no format specified|float=no|inline=yes}}
+{{Help:Images/frame|frame=border|ex='''border''' results in a very small gray border|float=no|inline=yes}}
+{{Help:Images/frame|frame=frameless|ex='''frameless''', like thumbnail, respect user preferences for image width, but without border and no right float|float=no|inline=yes}}
+{{Help:Images/frame|frame=frameless|2=border|ex='''frameless''' and '''border'''|float=no|inline=yes}}
+{{Help:Images/frame|frame=frame|ex='''frame'''|float=yes|inline=no}}
+{{Help:Images/frame|frame=thumb|ex='''thumb''' or '''thumbnail'''|float=yes|inline=no}}
+|}
+
+When the height of an image in thumbnail is bigger than its width (i.e. in portrait orientation rather than lansdscape) and you find it too outstanding, you may try the option <code>upright</code>, which will try to adjust its size to more desirable size by reducing the height instead the width. The alternative is to specify the desired maximum height (in pixels) explicitly.
+
+Note that by writing <code>thumb={filename}</code>, you can use a different image for the thumbnail.
+
+=== Size and Frame ===
+Among different formats, the effect of the size parameter may be different, as shown below.
+* For how it appears when its size is not specified, see [[#Format|Format]] section above.
+* When the format is not specified, or only <code>border</code>ed, the size can be both reduced and enlarged to any specified size.
+* In the examples below, the original size of the image is 400 × 267 pixels.
+* An image with <code>frame</code> always ignores the size specification, the original image will be reduced if it exceeds the maximum size defined in user preferences.
+* The size of an image with <code>thumb</code> and <code>frameless</code> can be reduced, but can not be enlarged beyond the original size of the image.
+
+{|class="wikitable"
+|-
+! Format !! Reduced !! Enlarged
+{{Help:Images/size|frame=}}
+{{Help:Images/size|frame=border}}
+{{Help:Images/size|frame=frame}}
+{{Help:Images/size|frame=thumb}}
+{{Help:Images/size|frame=frameless}}
+|}
+
+=== Horizontal alignment ===
+Note that when using the <code>frame</code> or <code>thumb[nail]</code> formats, the default horizontal alignment will be <code>right</code>.
+
+{|class="wikitable"
+|-
+!Description
+!You type
+!You get
+{{Help:Images/frame|2=100px|frame=|ex='''no horizontal alignment specified''', or default alignment|inline=yes|float=no}}
+{{Help:Images/frame|2=100px|frame=none|ex=specify horizontal alignment as: '''none'''|inline=no|float=no}}
+{{Help:Images/frame|2=100px|frame=center|ex=specify horizontal alignment as: '''center'''|inline=no|float=no}}
+{{Help:Images/frame|2=100px|frame=left|ex=specify horizontal alignment as: '''left'''|inline=no|float=yes}}
+{{Help:Images/frame|2=100px|frame=right|ex=specify horizontal alignment as: '''right'''|inline=no|float=yes}}
+|}
+
+=== Vertical alignment ===
+The vertical alignment options take effect only if the image '''is''' rendered as an inline element and '''is not''' floating. They alter the way the inlined image will be vertically aligned with the text present in the same block before and/or after this image on the same rendered row.
+
+Note that the rendered line of text where inline images are inserted (and the lines of text rendered after the current one) may be moved down (this will increase the line-height conditionally by additional line spacing, just as it may occur with spans of text with variable font sizes, or with superscripts and subscripts) to allow the image height to be fully displayed with this alignment constraint.
+
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki>'''top:''' [[File:Example.jpg|20px|top]] [[File:Example.jpg|40px|top]] [[File:Example.jpg|40px|border|top]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki>'''text-top:''' [[File:Example.jpg|20px|text-top]] [[File:Example.jpg|40px|text-top]] [[File:Example.jpg|40px|border|text-top]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki><sup>super:</sup> [[File:Example.jpg|20px|super]] [[File:Example.jpg|40px|super]] [[File:Example.jpg|40px|border|super]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki>'''baseline:''' [[File:Example.jpg|20px|baseline]] [[File:Example.jpg|40px|baseline]] [[File:Example.jpg|40px|border|baseline]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki><sub>'''sub:'''</sub> [[File:Example.jpg|20px|sub]] [[File:Example.jpg|40px|sub]] [[File:Example.jpg|40px|border|sub]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki>'''default:''' [[File:Example.jpg|20px]][[File:Example.jpg|40px]] [[File:Example.jpg|40px|border]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki>'''middle:''' [[File:Example.jpg|20px|middle]] [[File:Example.jpg|40px|middle]] [[File:Example.jpg|40px|border|middle]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki>'''text-bottom:''' [[File:Example.jpg|20px|text-bottom]] [[File:Example.jpg|40px|text-bottom]] [[File:Example.jpg|40px|border|text-bottom]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+ <nowiki/>
+ <nowiki><p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2"></nowiki>
+ <nowiki><span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del></nowiki>
+ <nowiki>'''bottom:'' [[File:Example.jpg|20px|bottom]] [[File:Example.jpg|40px|bottom]] [[File:Example.jpg|40px|border|bottom]]</nowiki>
+ <nowiki><del>text</del></u></span></p></nowiki>
+
+results in the following (to show the alignment result more clearly, the text spans are overlined and underlined, the line-height is increased to 200% of the font-height, the font-height is emphasized with a yellow background covering the line margins, and the full line-height is shown with a dark gray border; additionally images of different sizes are aligned, including one with an additional border that adds some pixels to its specified dimensions and slightly changes its vertical alignment):
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+'''top:''' [[File:Example.jpg|20px|top]] [[File:Example.jpg|40px|top]] [[File:Example.jpg|40px|border|top]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+'''text-top:''' [[File:Example.jpg|20px|text-top]] [[File:Example.jpg|40px|text-top]] [[File:Example.jpg|40px|border|text-top]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+<sup>'''super:'''</sup> [[File:Example.jpg|20px|super]] [[File:Example.jpg|40px|super]] [[File:Example.jpg|40px|border|super]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+'''baseline:''' [[File:Example.jpg|20px|baseline]] [[File:Example.jpg|40px|baseline]] [[File:Example.jpg|40px|border|baseline]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+<sub>'''sub:'''</sub> [[File:Example.jpg|20px|sub]] [[File:Example.jpg|40px|sub]] [[File:Example.jpg|40px|border|sub]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+'''default:''' [[File:Example.jpg|20px]] [[File:Example.jpg|40px]] [[File:Example.jpg|40px|border]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+'''middle:''' [[File:Example.jpg|20px|middle]] [[File:Example.jpg|40px|middle]] [[File:Example.jpg|40px|border|middle]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+'''text-bottom:''' [[File:Example.jpg|20px|text-bottom]] [[File:Example.jpg|40px|text-bottom]] [[File:Example.jpg|40px|border|text-bottom]]
+<del>text</del></u></span></p>
+
+<p style="border:1px solid #AAA;background:#FF0;padding:0;font-size:150%;line-height:2">
+<span style="background:#FFF;color:#000;text-decoration:overline"><u><del>text</del>
+'''bottom:''' [[File:Example.jpg|20px|bottom]] [[File:Example.jpg|40px|bottom]] [[File:Example.jpg|40px|border|bottom]]
+<del>text</del></u></span></p>
+
+Notes:
+# The "middle" vertical alignment position of the image (which is also the default) usually refers to the middle between the x-height and the baseline of the text (on which the vertical middle of the image will be aligned, and on which usually the text may be overstroke), but not to the middle of the line-height of the font-height that refers to the space between the "text-top" and "text-bottom" positions ; the font-height excludes:
+#* the additional line separation spacing normally divided equally into two line-margins (here 0.5em, according to line-height set to 200%) above and below the font-height).
+#* the additional line spacing which may be added by superscripts and subscripts.
+# However, if the image height causes its top or bottom position to go above or below the normal full line-height of text, the middle position will be adjusted after the increasing the top and/or bottom line-margins so that the image can fit and align properly, and all images (including those with smaller heights) will be vertically centered on the adjusted middle position (for computing the effective line-height, the text of each rendered row with the larger font-height will be considered).
+# The "text-top" and "text-bottom" alignment positions also excludes the extra line spacing added by superscripts and subscripts, but not the additional line-spacing defined by the line-height.
+# The "top" and "bottom" alignment positions take into account all these extra line spacings (including superscripts and subscripts, if they are present in a rendered line span). When the image alignment constrains the image to grow above or below the normal line-spacing, and the image is not absolutely positioned, the image will cause the "top" and "bottom" positions to be adjusted (just like superscripts and subscripts), so the effective line-height between rendered lines of text will be higher.
+# The "underline", "overline" and "overstrike" text-decoration positions should be somewhere within these two limits and ''may'' depend on the type and height of fonts used (the superscript and subscript styles may be taken into account in some browsers, but usually these styles are ignored and the position of these decorations may not be adjusted); so these decorations normally don't affect the vertical position of images, relatively to the text.
+
+=== Stopping the text flow ===
+On occasion it is desirable to stop text (or other inline non-floating images) from flowing around a floating image.  Depending on the web browser's screen resolution and such, text flow on the right side of an image may cause a section header (for instance, <nowiki>== My Header ==</nowiki>) to appear to the right of the image, instead of below it, as a user may expect.  The text flow can be stopped by placing '''<nowiki><br style="clear: both" /></nowiki>''' before the text that should start below the floatting image.
+
+All images rendered as blocks (including non-floating '''center'''ed images, '''left'''- or '''right'''-floating images, as well as '''framed''' or '''thumbnail'''ed floating images) are implicitly breaking the surrounding lines of text (terminating the current block of text before the image, and creating a new paragraph for the text after them). They will then stack vertically along their left or right alignment margin (or along the center line between these margins for '''center'''ed images).
+
+=== Altering the default link target ===
+The following table shows how to alter the link target (whose default is the image description page) or how to remove it. Changing the link does not alter the format described in the previous sections.
+
+{|class="wikitable plainlinks"
+|-
+!Description
+!You type
+!You get
+{{Help:Images/frame|2=link=Main Page|ex=internal link}}
+{{Help:Images/frame|2=link=http://wikipedia.org|ex=external link}}
+{{Help:Images/frame|2=link=|ex=no link (external or file page)}}
+|}
+
+'''Warning :'''
+: The licencing requirements on your wiki may not allow you to remove all links to the description page that displays the required authors attributions, the copyrights statements, the applicable licencing terms, or a more complete description of the rendered image (including its history of modifications).
+: If you change or remove the target link of an image, you will then have to provide somewhere else on your page an explicit link to this description page, or to display the copyright and author statement and a link to the applicable licence, if they are different from the elements applicable to the embedding page itself.
+: Your wiki policy may restrict the use of the alternate link parameter, or may even enforce a prohibition of alternate link parameters for embedded media files (in which case, the link parameter will be ignored), or may only accept to them after validation by authorized users or administrators.
+
+== Rendering a gallery of images ==
+
+=== Gallery syntax ===
+It's easy to make a gallery of '''thumbnails only''', not other images, with the <code><nowiki><gallery></nowiki></code> tag. The syntax is:
+ <nowiki><gallery></nowiki>
+ Image:file_name.ext|caption
+ Image:file_name.ext|caption
+ {...}
+ </gallery>
+
+Note that the image code is not enclosed in brackets when enclosed in gallery tags. 
+
+Captions are optional, and may contain wiki links or other formatting.
+
+for example:
+ <nowiki><gallery></nowiki>
+ File:Example.jpg|Item 1
+ File:Example.jpg|a link to <nowiki>[[</nowiki>Help:Contents]]
+ File:Example.jpg
+ File:Example.jpg
+ File:Example.jpg| <nowiki>''italic caption''</nowiki>
+ File:Example.jpg|on page "<nowiki>{{</nowiki>PAGENAME}}"
+ </gallery>
+is formatted as:
+<gallery>
+File:Example.jpg|Item 1
+File:Example.jpg|a link to [[Help:Contents]]
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg|''italic caption''
+File:Example.jpg|on page "{{PAGENAME}}"
+</gallery>
+
+=== Optional gallery attributes ===
+The gallery tag itself takes several additional parameters, specified as attribute name-value pairs:
+
+<pre><gallery {parameters}>
+{images}
+</gallery></pre>
+
+* <code>caption={caption}</code>: sets a caption on the gallery.
+* <code>widths={width}px</code>: sets the widths of the images, default 120px. ''Note the plural, width'''s'''''
+* <code>heights={heights}px</code>: sets the (max) heights of the images.
+* <code>perrow={integer}</code>: sets the number of images per row.
+
+Example:
+
+Coding:
+<pre>
+<gallery widths=60px heights=60px perrow=7 caption="sunflowers are groovy">
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+</gallery>
+</pre>
+
+Result:
+<gallery widths=60px heights=60px perrow=7 caption="sunflowers are groovy">
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+File:Example.jpg
+</gallery>
+
+== Linking to an image without displaying it ==
+=== Link to description page ===
+If you put a colon (<code>:</code>) before <code>{{ns:image}}:</code>, the image will not be embedded and the link will lead to the description page of the file.
+
+ <nowiki>[[</nowiki>:{{ns:image}}:{{mediawiki:image_sample}}]]
+ <nowiki>[[</nowiki>:{{ns:image}}:{{mediawiki:image_sample}}|Sunflowers]]
+
+results in
+
+[[:{{ns:image}}:{{mediawiki:image_sample}}]]
+[[:{{ns:image}}:{{mediawiki:image_sample}}|Sunflowers]]
+
+=== Link to another page ===
+This will make a 50px width picture with a link to the page [[MediaWiki]]:
+
+ <nowiki>[[</nowiki>File:Wiki.png|50px|link=MediaWiki]]
+
+[[File:Wiki.png|50px|link=MediaWiki]]
+
+=== Link directly to the media file ===
+You can use the pseudo-namespace “{{ns:media}}” to link directly to a file without rendering it, bypassing the description page.
+
+ <nowiki>[[</nowiki>{{ns:media}}:{{mediawiki:image_sample}}]]
+ <nowiki>[[</nowiki>{{ns:media}}:{{mediawiki:image_sample}}|Sunflowers]]
+
+results in
+
+[[{{ns:media}}:{{mediawiki:image_sample}}]]
+[[{{ns:media}}:{{mediawiki:image_sample}}|Sunflowers]]
+
+You can also use:&nbsp;
+
+ <nowiki>[[</nowiki>{{#special:Filepath}}/{{mediawiki:image_sample}}]]
+
+which can be used to link to a potential file, even if it doesn't exist. You can also use:
+
+ <nowiki>{{</nowiki>FILEPATH:{{mediawiki:image_sample}}<nowiki>}}</nowiki>
+
+which generates an external URL to the file inline: {{FILEPATH:{{mediawiki:image_sample}}}}
+
+== Requisites ==
+Before using images in your page, the system administrator of your wiki must have {{mediawiki|Manual:Configuring file uploads|enabled file uploads}} and a user has to [[Help:Managing files|upload the file]]. System administrators may also set the wiki to accept files from {{mediawiki|Manual:Image Administration#Foreign Repositories|foreign repositories}}, such as the [http://commons.wikimedia.org/wiki/Main_Page Wikimedia Commons]. For server side image resizing it is necessary to have a scaler configured (such as GD2, ImageMagick, etc.).
+
+== Files at other websites == 
+You can link to an external file available online using the same syntax used for linking to an external web page.  With these syntaxes, the image will not be rendered, but only the text of the link to this image will be displayed.
+<pre>[http://url.for/some/image.png]</pre>
+
+Or with a different displayed text:
+<pre>[http://url.for/some/image.png link text here]</pre>
+
+Additional MediaWiki markup or HTML/CSS formatting (for inline elements) is permitted in this displayed text (with the exception of embedded links that would break the surrounding link):
+<pre>[http://www.example.com/some/image.png Example '''<del>rich</del>''' ''<ins>link text</ins>'' here.]</pre>
+which renders as: [http://www.example.com/some/image.png Example '''<del>rich</del>''' ''<ins>link text<ins>'' here.]
+
+If it is enabled on your wiki (see {{mediawiki|Manual:$wgAllowExternalImages}}), you can also embed external images. To do that, simply insert the image's url:
+<pre>http://url.for/some/image.png</pre>
+Currently, embedded images cannot be resized, but they may be formatted by surrounding MediaWiki markup or HTML/CSS code.
+
+If this wiki option is not enabled, the image will not be embedded but rendered as a textual link to the external site, just like above.
+
+{{Languages}}
+[[Category:Help|Images]]}
+&&%s&& %s Help:Links {56422 2010-11-13T20:25:44Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+There are four sorts of links in MediaWiki: 
+# '''[[#Internal links|internal links]]''' to other pages in the wiki
+# '''[[#External links|external links]]''' to other websites
+# '''[[#Interwiki links|interwiki links]]''' to other websites registered to the wiki in advance
+# '''[[#Interlanguage links|Interlanguage links]]''' to other websites registered as other language versions of the wiki
+
+== Internal links ==
+To add an internal link, enclose the name of the page you want to link to in double square brackets. When you save the page, you'll see the new link pointing to your page. If the page exists already it is displayed in blue, if it does not, in red.
+Selflinks to the current page are not transformed in URLs but displayed in bold.
+(If you really want to link to the current page, use an anchor (see below), or <nowiki>[[#top|current page]]</nowiki> which always links to the top.)
+
+The first letter of the target page is automatically capitalized, unless otherwise set by the admins, and spaces are represented as underscores (typing an underscore in the link will have a similar effect as typing a space, but is not recommended, since the underscore will also be shown in the text).
+
+{| border="1" class="wikitable"
+!Description
+!You type
+!You get
+|-
+|Internal link
+|<pre>[[Main Page]]</pre>
+|[[Main Page]]
+|-
+|Piped link 
+|<pre>[[Main Page|different text]]</pre>
+See also {{mediawiki|Meta:Help:Piped link}}
+|[[Main Page|different text]]	
+|-
+|Shortened sort-of-piped link 
+|<pre>[[Internationalisation]]s</pre>
+|[[Internationalisation]]s
+|-
+|Redirect
+|<pre>#REDIRECT [[Main Page]]</pre>
+See also [[Help:Redirects]]
+| &rarr; [[Main Page]]
+|-
+|Internal link to an anchor
+|<pre>[[#See also]]</pre>
+[[Help:Formatting|Section headings]] and the [[#top|top]] of the page are automatically anchored.
+|[[#See also]]
+|-
+|Internal link to an anchor from different text
+|<pre>[[#See also|different text]]</pre>
+|[[#See also|different text]]
+|-
+|Setting an internal link anchor
+|<pre><div id="NameOfAnchorHere">optional text</div></pre>
+Omit the "optional text" for invisible anchor.
+|<div id="NameOfAnchorHere">optional text</div>
+|-
+|Internal link to an anchor at another page
+|<pre>[[Help:Images#See also]]</pre>
+|[[Help:Images#See also]]
+|-
+|Internal link to the current page's talk page
+|<pre>[[{{TALKPAGENAME}}|Discussion]]</pre>
+See also [[Help:Magic_words#Page_names]]
+|[[{{TALKPAGENAME}}|Discussion]]
+|-
+|Internal link to the current page's edit page
+|<pre>[{{fullurl:{{PAGENAME}}|action=edit}} Edit]</pre>
+See also [[Help:Magic_words#URL_data]] and [[#External links]]
+|[{{fullurl:{{PAGENAME}}|action=edit}} Edit]
+|-
+|Internal link to a subpage
+|<pre>[[/example]]</pre>
+Shortcut for <nowiki>[[Help:Links/example]]</nowiki>. See also [[Help:Subpages]].
+|[[/example]]
+|-
+|Internal link to a subpage without the leading slash
+|<pre>[[/example/]]</pre>
+Shortcut for <nowiki>[[Help:Links/example|example]]</nowiki>.
+|[[/example/]]
+|-
+|Internal link to a category page
+|<pre>[[:Category:Help]]</pre>
+See also [[Help:Categories]]
+|[[:Category:Help]]
+|-
+|Internal link to an image or a file of other types
+|<pre>[[media:example.jpg]]
+
+[[media:example.pdf]]</pre>
+See also [[Help:Images]]
+|[[media:example.jpg]]
+
+[[media:example.pdf]]
+|-
+|Internal link to the user's user page
+|<pre>[[Special:MyPage]]</pre>
+|[[Special:MyPage]]
+|}
+
+== External links ==
+{| border="1" class="wikitable"
+!style="width:15%"|Description
+!style="width:45%"|You type
+!style="width:40%"|You get
+|-
+|External link
+|<tt><nowiki>http://mediawiki.org</nowiki></tt>
+|http://mediawiki.org
+|-
+|External link with different label
+|<tt><nowiki>[http://mediawiki.org MediaWiki]</nowiki></tt>
+|[http://mediawiki.org MediaWiki]
+|-
+|Numbered external link
+|<tt><nowiki>[http://mediawiki.org]</nowiki></tt>
+|[http://mediawiki.org]
+|-
+|External links with file icons
+|<tt><nowiki>
+[http://en.wikipedia.org/wiki/.avi video]
+[http://en.wikipedia.org/wiki/.ogg sound]
+[http://en.wikipedia.org/wiki/.pdf document]
+</nowiki></tt>
+<small>Currently supported extensions: ogm, avi, mpeg, mpg (video); ogg, mid, midi, mp3, wav, wma (audio); and pdf (document)</small>
+|
+[http://en.wikipedia.org/wiki/.avi video]<br/>
+[http://en.wikipedia.org/wiki/.ogg sound]<br/>
+[http://en.wikipedia.org/wiki/.pdf document]<br/>
+|-
+|External link to the same host
+|<tt><nowiki>http://{{SERVERNAME}}/pagename</nowiki></tt>
+|http://{{SERVERNAME}}/pagename
+|-
+|External link to other host passing the pagename
+|<tt><nowiki>http://google.com/search?q={{PAGENAMEE}}</nowiki></tt>
+|http://google.com/search?q={{PAGENAMEE}}
+|-
+|Mailto link
+|<tt><nowiki>[mailto:info@example.org email me]</nowiki></tt>
+|[mailto:info@example.org email me]
+|-
+|Mailto named with subject line and body
+|<tt><nowiki>[mailto:info@example.org?Subject=URL%20Encoded%20Subject&amp;body=Body%20Text info]</nowiki></tt>
+|[mailto:info@example.org?Subject=URL%20Encoded%20Subject&body=Body%20Text info]
+|}
+
+=== How to avoid auto-links ===
+By default, when you write a URL as is, it will be transformed to an external link.
+
+To avoid that effect, put the URL between <code>&lt;nowiki&gt;</code> tags as in:
+ <nowiki><nowiki>http://mediawiki.org</nowiki></nowiki>
+
+== Interwiki links ==
+Interwiki links are links with the internal link markup to a website registered in advance. For example, you can link to the Sunflower article on http://en.wikipedia.org by typing <code><nowiki>[[wikipedia:Sunflower]]</nowiki></code>, which will result in a link [[wikipedia:Sunflower]]. This is because <code><nowiki>http://en.wikipedia.org/wiki/</nowiki></code> is registered to your wiki by default with the prefix of <code>wikipedia</code>. ''This link may not work properly, if the admin of your wiki has changed the setting.'' Unlike internal links, interwiki links do not use page existence detection, so an interwiki link will appear blue even if the page does not exist on the remote wiki.
+
+Similar to internal page links, you can create piped links, with alternate link label, e.g. <code><nowiki>[[wikipedia:Sunflower|big yellow flower]]</nowiki></code>.
+
+Basically this is an abbreviation for longer URLs. A very similar link could be created as a normal external link by typing <code><nowiki>[http://en.wikipedia.org/wiki/Sunflower big yellow flower]</nowiki></code>, but interwiki links allow you to type out an easy and compact link, almost as if you are linking to a page on your own wiki.
+
+To edit the {{mediawiki|Manual:Interwiki table|interwiki table}} on your site, see the {{mediawiki|Extension:InterWiki|InterWiki extension}}.
+
+=== Interlanguage links ===
+If your wiki has other language versions, you may find “interlanguage links” in the [[Help:Navigation#Sidebar|sidebar]], just below [[Help:Navigation#Toolbox|toolbox]] in the box named “{{lcfirst:{{int:otherlanguages}}}}.”
+
+Interlanguage links behave similar to interwiki links, except that they are listed in the sidebar. To create an interlanguage link from a page, just type <code><nowiki>[[</nowiki>''language prefix'':pagename]]</code> wherever you like in the page; the language prefix is the prefix specified at your wiki for the other language version (typically the [[wikipedia:ISO 639|ISO language code]]).
+
+If you want to make the interlanguage link to appear in the content of the page, you can add a colon before the language prefix, e.g.  <code><nowiki>[[:en:Sunflower]]</nowiki></code>.
+
+== See also ==
+* [[Help:Linked images|Linked images]]
+
+{{Languages}}
+
+[[Category:Help|Links]]
+[[Category:Link|Links]]}
+&&%s&& %s Help:Links/example {56424 2010-11-13T20:25:44Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+This is an example subpage.
+
+{{Languages|Help:Links/example}}
+
+[[Category:Help|{{PAGENAME}}]]}
+&&%s&& %s Help:Magic words {74614 2011-11-04T21:44:56Z {0 } cat '''Magic words''' are strings of text that MediaWiki associates with a return value or function, such as time, site details, or page names. This page is about usage of standard magic words; for a technical reference, see {{Mediawiki|Manual:Magic words}}.
+
+There are three general types of magic words:
+*'''[[#Behavior switches|Behavior switches]]''': these are uppercase words surrounded by double underscores, ''e.g.'' '''__FOO__'''
+*'''[[#Variables|Variables]]''': these are uppercase words surrounded by double braces, ''e.g.'' '''<tt><tt><nowiki>{{FOO}}</nowiki></tt></tt>'''. As such, they look a lot like [[Help:Templates|templates]].
+*'''[[#Parser functions|Parser functions]]''': these take parameters and are either of the form '''<tt><tt><nowiki>{{foo:...}}</nowiki></tt></tt>''' or '''<tt><tt><nowiki>{{#foo:...}}</nowiki></tt></tt>'''. See also {{mediawiki|Help:Extension:ParserFunctions}}.
+
+Page-dependent magic words will affect or return data about the ''current'' page (by default), even if the word is added through a transcluded template or included system message.
+
+==Behavior switches==
+A behavior switch controls the layout or behaviour of the page and can often be used to specify desired omissions and inclusions in the content.
+
+{| class="prettytable"
+|-
+!{{Hl2}}| Word
+!{{Hl2}}| Description
+!{{Hl2}}| Versions
+|-
+|{{Hl3}} colspan="3"| '''Table of contents'''
+|-
+| <nowiki>__NOTOC__</nowiki>
+| Hides the table of contents (TOC).
+|
+|-
+|<nowiki>__FORCETOC__</nowiki>
+| Forces the table of content to appear at its normal position (above the first header).
+|
+|-
+| <nowiki>__TOC__</nowiki>
+| Places a table of contents at the word's current position (overriding <nowiki>__NOTOC__</nowiki>). If this is used multiple times, the table of contents will appear at the first word's position.
+|
+|-
+|{{Hl3}} colspan="3"| '''Editing'''
+|-
+| <nowiki>__NOEDITSECTION__</nowiki>
+| Hides the section edit links beside headings.
+|
+|-
+| <nowiki>__NEWSECTIONLINK__</nowiki>
+| Adds a link ([[MediaWiki:Addsection|"+" by default]]) beside the "edit" tab for adding a new section on a non-talk page (see {{mediawiki|m:Help:Section#Adding a section at the end|Adding a section to the end}}).
+| 1.7+
+|-
+| <nowiki>__NONEWSECTIONLINK__</nowiki>
+| Removes the link beside the "edit" tab on pages in talk namespaces.
+| {{mediawiki|rev:47522|1.15+}}
+|-
+|{{Hl3}} colspan="3"| '''Categories'''
+|-
+| <nowiki>__NOGALLERY__</nowiki>
+| Used on a category page, replaces thumbnails in the category view with normal links.
+| 1.7+
+|-
+| <nowiki>__HIDDENCAT__</nowiki>
+| Used on a category page, hides the category from the lists of categories in its members and parent categories (there is an option in the [[Help:Preferences|user preferences]] to show them).<!-- hiddencategory hiddencat hide category categories -->
+| 1.13+
+|-
+|{{Hl3}} colspan="3"| '''Language conversion'''
+|-
+| <nowiki>__NOCONTENTCONVERT__</nowiki><br /><nowiki>__NOCC__</nowiki>
+| On wikis with language variants, don't perform any content language conversion (character and phase) in article display; for example, only show Chinese (zh) instead of variants like zh_cn, zh_tw, zh_sg, or zh_hk.
+|
+|-
+| <nowiki>__NOTITLECONVERT__</nowiki><br /><nowiki>__NOTC__</nowiki>
+| On wikis with language variants, don't perform language conversion on the title (all other content is converted).
+| 
+|-
+|{{Hl3}} colspan="3"| '''Other'''
+|-
+| <nowiki>__START__</nowiki>
+| No effect.
+|
+|-
+| <nowiki>__END__</nowiki>
+| Explicitly marks the end of the article, to prevent MediaWiki from removing trailing whitespace. Removed in {{mediawiki|rev:19213|19213}}.
+| 1.1 - 1.8
+|-
+|  <nowiki>__INDEX__</nowiki>
+| Tell search engines to index the page (overrides {{mediawiki|Manual:$wgArticleRobotPolicies|$wgArticleRobotPolicies}}, but not robots.txt).
+| 1.14+
+|- 
+|  <nowiki>__NOINDEX__</nowiki>
+| Tell search engines not to index the page (ie, do not list in search engines' results).
+| {{mediawiki|rev:37973|1.14+}}
+|-
+|  <nowiki>__STATICREDIRECT__</nowiki>
+| On redirect pages, don't allow MediaWiki to automatically update the link when someone moves a page and checks "Update any redirects that point to the original title".
+| {{mediawiki|rev:37928|1.13+}}
+|}
+
+==Variables==
+Variables return information about the current page, wiki, or date. Their syntax is similar to [[Help:Templates|templates]]. Variables marked as "<span style="background:#FED;">'''[expensive]'''</span>" are tracked by the software, and the number that can be included on a page is limited.
+
+If a template name conflicts with a variable, the variable will be used (so to transclude the template [[{{ns:10}}:PAGENAME]] you would need to write <code><tt><nowiki>{{</nowiki>{{ns:10}}:PAGENAME<nowiki>}}</nowiki></tt></code>). In some cases, adding parameters will force the parser to treat a variable as a template; for example, <code><tt><nowiki>{{CURRENTDAYNAME|x}}</nowiki></tt></code> transcludes [[{{ns:10}}:CURRENTDAYNAME]].
+
+===Date & time===
+The following variables return the current date and time in UTC.
+
+Due to MediaWiki and browser caching, these variables frequently show when the page was ''cached'' rather than the current time.
+
+{| class="prettytable"
+|-
+!{{Hl2}}| Variable
+!{{Hl2}}| Output
+!{{Hl2}}| Description
+!{{Hl2}}| Versions
+|-
+|{{Hl3}} colspan="4"| '''Year'''
+|-
+| <tt><nowiki>{{CURRENTYEAR}}</nowiki></tt>
+| {{CURRENTYEAR}}
+| Year
+|
+|-
+|{{Hl3}} colspan="4"| '''Month'''
+|-
+| <tt><nowiki>{{CURRENTMONTH}}</nowiki></tt> 
+| {{CURRENTMONTH}}
+| Month (zero-padded number)
+|
+|-
+| <tt><nowiki>{{CURRENTMONTHNAME}}</nowiki></tt>
+| {{CURRENTMONTHNAME}}
+| Month (name)
+|
+|-
+| <tt><nowiki>{{CURRENTMONTHNAMEGEN}}</nowiki></tt>
+| {{CURRENTMONTHNAMEGEN}}
+| Month ([[w:genitive|genitive form]])
+|
+|-
+| <tt><nowiki>{{CURRENTMONTHABBREV}}</nowiki></tt>
+| {{CURRENTMONTHABBREV}}
+| Month (abbreviation)
+| 1.5+
+|-
+|{{Hl3}} colspan="4"| '''Day'''
+|-
+| <tt><nowiki>{{CURRENTDAY}}</nowiki></tt>
+| {{CURRENTDAY}}
+| Day of the month (unpadded number)
+|
+|-
+| <tt><nowiki>{{CURRENTDAY2}}</nowiki></tt>
+| {{CURRENTDAY2}}
+| Day of the month (zero-padded number)
+| 1.6+
+|-
+| <tt><nowiki>{{CURRENTDOW}}</nowiki></tt>
+| {{CURRENTDOW}}
+| Day of the week (unpadded number)
+|
+|-
+| <tt><nowiki>{{CURRENTDAYNAME}}</nowiki></tt>
+| {{CURRENTDAYNAME}}
+| Day of the week (name)
+|
+|-
+|{{Hl3}} colspan="4"| '''Time'''
+|-
+| <tt><nowiki>{{CURRENTTIME}}</nowiki></tt>
+| {{CURRENTTIME}}
+| Time (24-hour HH:mm format)
+|
+|-
+| <tt><nowiki>{{CURRENTHOUR}}</nowiki></tt>
+| {{CURRENTHOUR}}
+| Hour (24-hour zero-padded number)
+|
+|-
+|{{Hl3}} colspan="4"| '''Other'''
+|-
+| <tt><nowiki>{{CURRENTWEEK}}</nowiki></tt>
+| {{CURRENTWEEK}}
+| Week (number)
+|
+|-
+| <tt><nowiki>{{CURRENTTIMESTAMP}}</nowiki></tt>
+| {{CURRENTTIMESTAMP}}
+| YYYYMMDDHHmmss timestamp
+| 1.7+
+|}
+
+The following variables do the same as the above, but using the site's server config or $wgLocaltimezone.
+* <tt><nowiki>{{LOCALYEAR}}</nowiki></tt>
+* <tt><nowiki>{{LOCALMONTH}}</nowiki></tt>
+* <tt><nowiki>{{LOCALMONTHNAME}}</nowiki></tt>
+* <tt><nowiki>{{LOCALMONTHNAMEGEN}}</nowiki></tt>
+* <tt><nowiki>{{LOCALMONTHABBREV}}</nowiki></tt>
+* <tt><nowiki>{{LOCALDAY}}</nowiki></tt>
+* <tt><nowiki>{{LOCALDAY2}}</nowiki></tt>
+* <tt><nowiki>{{LOCALDOW}}</nowiki></tt>
+* <tt><nowiki>{{LOCALDAYNAME}}</nowiki></tt>
+* <tt><nowiki>{{LOCALTIME}}</nowiki></tt>
+* <tt><nowiki>{{LOCALHOUR}}</nowiki></tt>
+* <tt><nowiki>{{LOCALWEEK}}</nowiki></tt>
+* <tt><nowiki>{{LOCALTIMESTAMP}}</nowiki></tt>
+
+:''For more thorough time formatting, you may want to install [[Extension:ParserFunctions]] to use the [[Help:Extension:ParserFunctions#.23time|#time parser function]]''
+
+===Technical metadata===
+Revision variables return data about the '''latest edit to the current page''', even if viewing an older version of the page.
+{| class="prettytable"
+|-
+!{{Hl2}}| Variable
+!{{Hl2}}| Output
+!{{Hl2}}| Description
+!{{Hl2}}| Versions
+|-
+|{{Hl3}} colspan="4"| '''Site'''
+|-
+| <tt><nowiki>{{SITENAME}}</nowiki></tt>
+| {{SITENAME}}
+| The wiki's site name ({{mediawiki|Manual:$wgSitename|$wgSitename}}).
+|
+|-
+| <tt><nowiki>{{SERVER}}</nowiki></tt>
+| {{SERVER}}
+| domain URL ({{mediawiki|Manual:$wgServer|$wgServer}})
+|
+|-
+| <tt><nowiki>{{SERVERNAME}}</nowiki></tt>
+| {{SERVERNAME}}
+| domain name ({{mediawiki|Manual:$wgServerName|$wgServerName}})
+| - 1.16
+|-
+| <tt><nowiki>{{DIRMARK}}</nowiki></tt><br /><tt><nowiki>{{DIRECTIONMARK}}</nowiki></tt>
+| {{DIRMARK}}<br />{{DIRECTIONMARK}}
+| Outputs a unicode-directional mark that matches the wiki's default language's direction (<code>&amp;lrm;</code> on left-to-right wikis, <code>&amp;rlm;</code> on right-to-left wikis), useful in text with multi-directional text.
+| 1.7+
+|-
+| <tt><nowiki>{{SCRIPTPATH}}</nowiki></tt>
+| {{SCRIPTPATH}}
+| relative script path ({{mediawiki|Manual:$wgScriptPath|$wgScriptPath}})
+|
+|-
+| <tt><nowiki>{{STYLEPATH}}</nowiki></tt>
+| {{STYLEPATH}}
+| relative style path ({{mediawiki|Manual:$wgStylePath|$wgStylePath}})
+| 1.16+
+|-
+| <tt><nowiki>{{CURRENTVERSION}}</nowiki></tt>
+| {{CURRENTVERSION}}
+| The wiki's MediaWiki version.
+| 1.7+
+|-
+| <tt><nowiki>{{CONTENTLANGUAGE}}</nowiki></tt><br /><tt><nowiki>{{CONTENTLANG}}</nowiki></tt>
+| {{CONTENTLANGUAGE}}<br />{{CONTENTLANG}}
+| The wiki's default interface language ({{mediawiki|Manual:$wgLanguageCode|$wgLanguageCode}})
+| 1.7+
+|-
+|{{Hl3}} colspan="4"| '''Latest revision to current page'''
+|-
+| <tt><nowiki>{{REVISIONID}}</nowiki></tt>
+| {{REVISIONID}}
+| Unique revision ID
+| 1.5+
+|-
+| <tt><nowiki>{{REVISIONDAY}}</nowiki></tt>
+| {{REVISIONDAY}}
+| Day edit was made (unpadded number)
+| 1.8+
+|-
+| <tt><nowiki>{{REVISIONDAY2}}</nowiki></tt>
+| {{REVISIONDAY2}}
+| Day edit was made (zero-padded number)
+| 1.8+
+|-
+| <tt><nowiki>{{REVISIONMONTH}}</nowiki></tt>
+| {{REVISIONMONTH}}
+| Month edit was made (zero-padded number)
+| 1.8+<br/>Changed to zero-padded number in {{mediawiki|rev:66200|1.17+}}
+<!--|-
+| <tt><nowiki>{{REVISIONMONTH1}}</nowiki></tt>
+| {{REVISIONMONTH1}}
+| Month edit was made (unpadded number)
+| {{mediawiki|rev:66200|1.17+}}-->
+|-
+| <tt><nowiki>{{REVISIONYEAR}}</nowiki></tt>
+| {{REVISIONYEAR}}
+| Year edit was made
+| 1.8+
+|-
+| <tt><nowiki>{{REVISIONTIMESTAMP}}</nowiki></tt>
+| {{REVISIONTIMESTAMP}}
+| Timestamp as of time of edit
+| 1.8+
+|-
+| <tt><nowiki>{{REVISIONUSER}}</nowiki></tt>
+| {{REVISIONUSER}}
+| The username of the user who made the most recent edit to the page, or the current user when previewing an edit
+| {{mediawiki|rev:48149|1.15+}}
+|-style="background:#FED;"
+| <tt><nowiki>{{PAGESIZE:</nowiki>''page name''<nowiki>}}</nowiki></tt>
+| {{PAGESIZE:Help:Magic_words}}
+| '''[expensive]''' Returns the byte size of the specified page.
+| {{mediawiki|rev:33551|1.13+}}
+|-
+| <tt><nowiki>{{PROTECTIONLEVEL:</nowiki>''action''<nowiki>}}</nowiki></tt>
+| protection level
+| Outputs the protection level (e.g. 'autoconfirm', 'sysop') for a given action (e.g. 'edit', 'move') on the current page or an empty string if not protected.
+| {{mediawiki|rev:45587|1.15+}}
+|-
+|{{Hl3}} colspan="4"| '''Affects page content'''
+|-
+| <tt><nowiki>{{DISPLAYTITLE:</nowiki>''title''<nowiki>}}</nowiki></tt>
+|
+| Format the current page's title header. The value must be equivalent to the default title: only capitalization changes and replacing spaces with underscores. It can be disabled or enabled by {{mediawiki|Manual:$wgAllowDisplayTitle|$wgAllowDisplayTitle}}; disabled by default before 1.10+, enabled by default thereafter.
+| 1.7+
+|-
+| <tt><nowiki>{{DEFAULTSORT:</nowiki>''sortkey''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{DEFAULTSORTKEY:</nowiki>''sortkey''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{DEFAULTCATEGORYSORT:</nowiki>''sortkey''<nowiki>}}</nowiki></tt>
+|
+| Used for categorizing pages, sets a default [[Help:Categories|category sort key]]. For example if you put <tt><nowiki>{{DEFAULTSORT:Smith, John}}</nowiki></tt> at the end of [[John Smith]], the page would be sorted under "S" by default in categories.
+| 1.10+
+|}
+
+===Statistics===
+Numbers returned by these variables normally contain separators (commas or spaces, depending on the local language), but can return raw numbers with the ":R" flag (for example, <code><tt><nowiki>{{NUMBEROFPAGES}}</nowiki></tt></code> &rarr; {{NUMBEROFPAGES}} and <code><tt><nowiki>{{NUMBEROFPAGES:R}}</nowiki></tt></code> &rarr; {{NUMBEROFPAGES:R}}). Use "|R" for magic words that require a parameter like PAGESINCATEGORY (for example <code><tt><nowiki>{{PAGESINCATEGORY:Help}}</nowiki></tt></code> and <code><tt><nowiki>{{PAGESINCATEGORY:Help|R}}</nowiki></tt></code>).
+{| class="prettytable"
+|-
+!{{Hl2}}| Variable
+!{{Hl2}}| Output
+!{{Hl2}}| Description
+!{{Hl2}}| Versions
+|-
+|{{Hl3}} colspan="4"| '''Entire wiki'''
+|-
+| <tt><nowiki>{{NUMBEROFPAGES}}</nowiki></tt>
+| {{NUMBEROFPAGES}}
+| Number of wiki pages.
+| 1.7+
+|-
+| <tt><nowiki>{{NUMBEROFARTICLES}}</nowiki></tt>
+| {{NUMBEROFARTICLES}}
+| Number of pages in {{mediawiki|Manual:Using custom namespaces#Content namespaces|content namespaces}}.
+|
+|-
+| <tt><nowiki>{{NUMBEROFFILES}}</nowiki></tt>
+| {{NUMBEROFFILES}}
+| Number of uploaded files.
+| 1.5+
+|-
+| <tt><nowiki>{{NUMBEROFEDITS}}</nowiki></tt>
+| {{NUMBEROFEDITS}}
+| Number of page edits.
+| {{mediawiki|rev:21319|1.10+}}
+|-
+| <tt><nowiki>{{NUMBEROFVIEWS}}</nowiki></tt>
+| {{NUMBEROFVIEWS}}
+| Number of page views. Usually useless on a wiki using [[Manual:Cache|caching]].
+| {{mediawiki|rev:42721|1.14+}}
+|-
+| <tt><nowiki>{{NUMBEROFUSERS}}</nowiki></tt>
+| {{NUMBEROFUSERS}}
+| Number of registered users.
+| 1.7+
+|-
+| <tt><nowiki>{{NUMBEROFADMINS}}</nowiki></tt>
+| {{NUMBEROFADMINS}}
+| Number of users in the ''sysop'' {{mediawiki|Manual:User rights|group}}.
+| 1.7+
+|-
+| <tt><nowiki>{{NUMBEROFACTIVEUSERS}}</nowiki></tt>
+| {{NUMBEROFACTIVEUSERS}}
+| Number of active users, based on the criteria used in [[Special:Statistics]].
+| {{mediawiki|rev:47392|1.15+}}
+|-style="background:#FED;"
+| <tt><nowiki>{{PAGESINCATEGORY:</nowiki>''categoryname''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{PAGESINCAT:Help}}</nowiki></tt>
+| {{PAGESINCATEGORY:Help}}<br />{{PAGESINCAT:Help}}
+| '''[expensive]''' Number of pages in the given [[Help:Categories|category]] (replace "Help" with the relevant category name).
+| {{mediawiki|rev:32932|1.13+}}
+|-
+| <tt><nowiki>{{NUMBERINGROUP:</nowiki>''groupname''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{NUMINGROUP:</nowiki>''groupname''<nowiki>}}</nowiki></tt>
+| {{NUMBERINGROUP:bureaucrat}}<br />{{NUMINGROUP:bureaucrat}}<br /><small><nowiki>({{NUMBERINGROUP:bureaucrat}} used here)</nowiki></small>
+| Number of users in a specific {{mediawiki|Manual:User rights|group}}.
+| {{mediawiki|rev:40116|1.14+}}
+|-
+| <tt><nowiki>{{PAGESINNS:</nowiki>''index''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{PAGESINNAMESPACE:</nowiki>''index''<nowiki>}}</nowiki></tt>
+| ''not enabled''
+| Number of pages in the given [[Help:Namespaces|namespace]] (replace ''index'' with the relevant [[Manual:Namespace|namespace index]]). For instance, <tt><nowiki>{{PAGESINNAMESPACE:</nowiki>''14''<nowiki>}}</nowiki></tt> will output the number of category pages. <tt><nowiki>{{PAGESINNS:0}}</nowiki></tt> differs from <tt><nowiki>{{NUMBEROFARTICLES}}</nowiki></tt> in that the former includes redirects and disambiguation pages. Disabled by default, enable with {{mediawiki|Manual:$wgAllowSlowParserFunctions|$wgAllowSlowParserFunctions}}. 
+| 1.7+
+|}
+
+===Page names===
+{| class="prettytable"
+|-
+!{{Hl2}}| Variable
+!{{Hl2}}| Output
+!{{Hl2}}| Description
+!{{Hl2}}| Versions
+|-
+| <tt><nowiki>{{FULLPAGENAME}}</nowiki></tt>
+| {{FULLPAGENAME}}
+| Namespace and page title.
+| 1.6+
+|-
+| <tt><nowiki>{{PAGENAME}}</nowiki></tt>
+| {{PAGENAME}}
+| Page title.
+|
+|-
+| <tt><nowiki>{{BASEPAGENAME}}</nowiki></tt>
+| {{BASEPAGENAME}}
+| Page title excluding the current [[Help:Subpages|subpage]] and namespace ("Title/foo" on "Title/foo/bar").
+For more complex splitting, use <nowiki>{{</nowiki>[[Help:Extension:ParserFunctions#.23titleparts|#titleparts:]] <nowiki>}}</nowiki> from [[Help:Extension:ParserFunctions|ParserFunctions extension]].
+| 1.7+
+|-
+| <tt><nowiki>{{SUBPAGENAME}}</nowiki></tt>
+| {{SUBPAGENAME}}
+| The [[Help:Subpages|subpage]] title ("foo" on "Title/foo").
+| 1.6+
+|-
+| <tt><nowiki>{{SUBJECTPAGENAME}}</nowiki></tt>
+| {{SUBJECTPAGENAME}}
+| The namespace and title of the associated content page.
+| 1.7+
+|-
+| <tt><nowiki>{{TALKPAGENAME}}</nowiki></tt>
+| {{TALKPAGENAME}}
+| The namespace and title of the associated talk page.
+| 1.7+
+|}
+
+The <tt><nowiki>{{BASEPAGENAME}}</nowiki></tt> and <tt><nowiki>{{SUBPAGENAME}}</nowiki></tt> magic words only work in namespaces that have subpages enabled.  See {{mediawiki|Manual:$wgNamespacesWithSubpages}} for information on enabling subpages.
+
+The following are equivalents encoded for use in MediaWiki URLs (i.e. spaces replaced with underscores and some characters [[w:percent-encoding|percent-encoded]]):
+* <tt><nowiki>{{FULLPAGENAMEE}}</nowiki></tt>
+* <tt><nowiki>{{PAGENAMEE}}</nowiki></tt>
+* <tt><nowiki>{{BASEPAGENAMEE}}</nowiki></tt>
+* <tt><nowiki>{{SUBPAGENAMEE}}</nowiki></tt>
+* <tt><nowiki>{{SUBJECTPAGENAMEE}}</nowiki></tt>
+* <tt><nowiki>{{TALKPAGENAMEE}}</nowiki></tt>
+
+As of {{mediawiki|rev:46662|1.15+}}, these can all take a parameter, allowing specification of the page to be operated on, instead of just the current page:
+* <tt><nowiki>{{PAGENAME:Template:Main Page}}</nowiki></tt> &rarr; '''{{PAGENAME:Template:Main Page}}'''
+
+
+{{Warning|Page titles containing certain characters, such as single quotes (') or asterisks <tt>*</tt>, may produce unexpected results when handled with these magic words, e.g. <tt><nowiki>{{PAGESINCATEGORY:{{PAGENAME}}}}</nowiki></tt>. See bugs {{mediawiki|bugzilla:14779|14779}}, {{mediawiki|bugzilla:16474|16474}}.}}
+
+===Namespaces===
+{| class="prettytable"
+|-
+!{{Hl2}}| Variable
+!{{Hl2}}| Output
+!{{Hl2}}| Description
+!{{Hl2}}| Versions
+|-
+| <tt><nowiki>{{NAMESPACE}}</nowiki></tt>
+| {{NAMESPACE}}
+| Name of the page's namespace
+|
+|-
+| <tt><nowiki>{{SUBJECTSPACE}}</nowiki></tt><br /><tt><nowiki>{{ARTICLESPACE}}</nowiki></tt>
+| {{SUBJECTSPACE}}<br />{{ARTICLESPACE}}
+| Name of the associated content namespace
+| 1.7+
+|-
+| <tt><nowiki>{{TALKSPACE}}</nowiki></tt>
+| {{TALKSPACE}}
+| Name of the associated talk namespace
+| 1.7+
+|}
+
+The following are equivalents encoded for use in MediaWiki URLs (spaces replaced with underscores and some characters percent-encoded):
+* <tt><nowiki>{{NAMESPACEE}}</nowiki></tt>
+* <tt><nowiki>{{SUBJECTSPACEE}}</nowiki></tt>
+* <tt><nowiki>{{TALKSPACEE}}</nowiki></tt>
+
+As of {{mediawiki|rev:46630|1.15+}}, these can take a page name parameter and will return the namespace of the page name parameter, instead of the current page's:
+* <tt><nowiki>{{NAMESPACE:Template:Main Page}}</nowiki></tt> &rarr; '''{{NAMESPACE:Template:Main Page}}'''
+* <tt><nowiki>{{SUBJECTSPACE:Template:Main Page}}</nowiki></tt> &rarr; '''{{SUBJECTSPACE:Template:Main Page}}'''
+* <tt><nowiki>{{TALKSPACE:Template:Main Page}}</nowiki></tt> &rarr; '''{{TALKSPACE:Template:Main Page}}'''
+
+==Parser functions==
+
+Parser functions are very similar to variables, but take one or more parameters (technically, any magic word that takes a parameter is a parser function), and the name is sometimes prefixed with a hash to distinguish them from templates.
+
+This page only describes parser functions that are integral to the MediaWiki software. Other parser functions may be added by MediaWiki extensions such as the {{mediawiki|Extension:ParserFunctions|ParserFunctions extension}}. For those see [[Help:Extension:ParserFunctions]].
+
+===URL data===
+{| class="prettytable"
+|-
+!{{Hl2}}| Parser function
+!{{Hl2}}| Input → Output
+!{{Hl2}}| Description
+!{{Hl2}}| Versions
+|-
+| <tt><nowiki>{{localurl:</nowiki>''page name''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{localurl:</nowiki>''page name''<nowiki>|</nowiki>''query_string''<nowiki>}}</nowiki></tt>
+| <nowiki>{{localurl:MediaWiki}}</nowiki> → {{localurl:MediaWiki}}<br /><nowiki>{{localurl:MediaWiki|printable=yes}}</nowiki>  → {{localurl:MediaWiki|printable=yes}}
+| The relative path to the title. 
+|
+|-
+| <tt><nowiki>{{fullurl:</nowiki>''page name''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{fullurl:</nowiki>''page name''<nowiki>|</nowiki>''query_string''<nowiki>}}</nowiki></tt><br /><tt><nowiki>{{fullurl:</nowiki>''interwiki:remote page name''<nowiki>|</nowiki>''query_string''<nowiki>}}</nowiki></tt>
+| <nowiki>{{fullurl:Category:Top level}}</nowiki> → {{fullurl:Category:Top level}}<br />
+<nowiki>{{fullurl:Category:Top level|action=edit}}</nowiki> → {{fullurl:Category:Top level|action=edit}}
+| The absolute path to the title. This will also resolve [[Manual:Interwiki|Interwiki]] prefixes.
+| 1.5+
+|-

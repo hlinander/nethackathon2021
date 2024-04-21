@@ -1,0 +1,1000 @@
+:You became stunned while [[riding]].{{refsrc|src/potion.c|97|version=NetHack 3.6.0}}
+;You can't seem to think straight.
+:You became stunned from [[vomiting|nausea]].
+;You feel a bit steadier.
+:Your stunning wore off.
+;You feel less wobbly now.
+:Your stunning wore off, while you were [[hallucinating]].{{refsrc|src/potion.c|92|version=NetHack 3.6.0}}
+
+==SLASH'EM==
+* Stunning is one of the possible effects of eating a [[mushroom]] or pink [[pill]].
+* The [[glowing eye]], [[bloodshot eye]], the [[beholder (monster)#SLASH'EM|Beholder]], and [[Planetar and Solar]] have stunning gaze attacks.  The [[byakhee]] and [[astral deva]] have stunning melee attacks, and the [[yellow jelly]] has a stunning passive attack.
+* Stunning can be cured by eating a white pill from a [[medical kit]] (if you are not already [[Illness|sick]], [[blind]], [[hallucinating]], [[vomiting]] or confused, ''and'' if the pill does not fail) or by praying (not sitting) on a [[toilet]].
+* You cannot use the [[research]] [[technique]] while stunned.
+
+==See also==
+* [[Confusion]]
+* [[Impaired]]
+
+==References==
+<references/>
+
+{{nethack-343}}
+[[Category:Properties]]
+[[Category:Monster damage types]]}
+&&%s&& %s Search {143210 2021-10-16T00:25:42Z {4001279 Umbire the Phantom}  {{Keyboard Commands}}
+:<span class="dablink">''"Searching" redirects here. For the property, see [[Automatic searching]].''</span>
+
+The '''search''' command is a feature in ''[[Nethack]]'' that searches the 8 squares surrounding [[you]] for [[secret door]]s, [[secret passage]]s, [[hiding|hidden]] or [[invisible]] monsters, and hidden [[trap]]s.
+
+==Description==
+{{for2|the source reference that dictates searching odds|{{function|detect.c|dosearch0}}}}
+
+By pressing the {{kbd|s}} key, you will search each of the surrounding squares. Your chance of success for searching depends generally on [[Luck]] and any items with applicable bonuses, and varies with the dungeon features that can potentially be revealed. Successfully discovering a dungeon feature via searching [[exercise]]s [[wisdom]]. Hidden monsters are usually revealed immediately by searching, while invisible monsters found via searching will have their square marked with an {{white|I}} - beware, as they may move to another square afterward.
+
+For secret doors or corridors, you will reveal them if [[rnl]](7&nbsp;&minus;&nbsp;bonus) is zero - the default bonus is zero, and wearing a [[pair of lenses]] increases it by 2; wielding [[Excalibur]] adds its enchantment (or subtracts it if negatively enchanted) to the bonus. This bonus to searching cannot exceed 5.
+
+For traps, you will find one next to you if [[rnl]](8) is zero - [[statue trap]]s will activate, while other traps will not trigger upon being revealed.
+
+===Automatic searching===
+The [[automatic searching]] property will cause you to automatically search every turn - this search functions very similarly to the command, except that it does not find monsters. Some roles can gain this as an [[intrinsic]], and it is granted extrinsically by wielding [[Excalibur]] or wearing a [[ring of searching]].
+
+==Strategy==
+Early characters may have a difficult time revealing traps and dungeon features - a new character will have a roughly 22% chance of missing a door after 10 times searching the same spot. It is common to use a [[numeric prefix]] before the search command (e.g., "22s") to maximize the chance of revealing adjacent hidden doors or passages for a new character; a character with high Luck can usually uncover secrets reliably with ten or eleven searches. Applying a [[stethoscope]] can speed up things significantly, but does not exercise wisdom.
+
+One method of efficient searching to find a hidden door leading out of a room is to select a three-square range along the wall, type "22s", then move three spaces along the wall and repeat until you find the door.
+
+Searching is often used as an alternative to [[rest]]ing for passively regenerating HP and power, since it can exercise wisdom if you find a hidden trap or door - however, the time spent searching is proportional to your [[encumbrance]], while resting lets you wait as though you were unburdened. Searching is ideal if you are waiting in a safe area between battles and can easily become unburdened, while resting is preferable when dealing with heavier loads.
+
+===Zen===
+{{main|Zen}}
+Searching is a critical skill for any [[zen]] conduct player, as until they can obtain a source of [[telepathy]], movement will prove dangerous without a way to detect monsters; moving blindly will anger a peaceful creature if you attempt to walk onto their square without seeing them, even when using the safe-move function ({{kbd|m}}).
+
+Zen players should search after almost every step they take, which can reveal the position of monsters nearby and allow you to navigate safely around them - safe-moving into a square marked with {{white|I}} will give the normal response if a peaceful or tame monster is occupying it ("Pardon me, <foo>."), or simply move onto that square if it is empty. Searching while blind will also "map" the level for you much faster, since it reveals the squares surrounding you.
+
+===Probabilities===
+The table below displays your chances of searching success, based on your current [[Luck]] and whether you are using any equipment which aids searching.
+
+{|class="prettytable"
+!rowspan="2"|Luck
+!rowspan="2"|Traps
+!colspan="3"|Secret doors & corridors
+|-
+!Normal
+!Lenses
+!+5 Excalibur
+|-align="right"
+|&le;&nbsp;&minus;3
+|&lt;0.24%
+|&lt;0.27%
+|&lt;0.38%
+|&lt;0.94%
+|-align="right"
+| &minus;2 to 2
+|12%
+|14%
+|20%
+|50%
+|-align="right"
+|3 to 5
+|25%
+|28%
+|40%
+|99%
+|-align="right"
+|6 to 8
+|37%
+|42%
+|59%
+|99%
+|-align="right"
+|9 to 11
+|49%
+|56%
+|78%
+|99%
+|-align="right"
+|12 to 13
+|61%
+|70%
+|98%
+|99%
+|}
+To find a given trap or secret door, the number of trials to be 95% certain of success:
+<!-- Based on the data in the above table; since I don't know the level of precision in those figures, my two decimal places, here, is likely not as much precision as it sounds. --Feagradze. -->
+{|class="prettytable"
+!rowspan="2"|Luck
+!rowspan="2"|Traps
+!colspan="3"|Secret doors & corridors
+|-
+!Normal
+!Lenses
+!+5 Excalibur
+|-align="right"
+|&le;&nbsp;&minus;3
+|>1247
+|>1108
+|>787
+|>317
+|-align="right"
+| &minus;2 to 2
+|23.43
+|19.86
+|13.43
+|4.32
+|-align="right"
+|3 to 5
+|10.41
+|9.12
+|5.86
+|1
+|-align="right"
+|6 to 8
+|6.48
+|5.5
+|3.36
+|1
+|-align="right"
+|9 to 11
+|4.45
+|3.65
+|1.98
+|1
+|-align="right"
+|12 to 13
+|3.18
+|2.49
+|1
+|1
+|}
+
+==FIQHack==
+In [[FIQHack]], searching functions in a considerably different manner than in vanilla ''NetHack''. Searching may detect secret doors, secret passages, and hidden traps up to 5 tiles away - with non-negative Luck, searching will always reveal any hidden doors or passages that are adjacent to you, but the effectiveness decreases as the distance from the player increases.
+
+The base formula for searching in FIQ hack is: {{sfrac|<var>x</var>|20 &times; 2<sup>(distance &minus; 1)</sup>}} capped at 5 tiles away ({{sfrac|<var>x</var>|320}}, i.e. {{sfrac|16}} with the base search rate)
+
+<var>x</var> is 20 + Luck + (ring enchantment &times; 5), plus 5 with lenses. This value is no lower than 1 and has no maximum.
+
+If this check passes, doors and corridors will always be revealed, meaning at base Luck and no negatively enchanted rings of searching, you will always find secret doors and corridors. Traps must, in addition to this, pass another check: {{sfrac|<var>x</var>|6}}, where <var>x</var> is 1 normally or 2 + ring enchantment with the extrinsic searching.
+
+Automatic searching is not longer constant, and instead occurs at a rate of {{sfrac|3}} with the intrinsic property, or {{sfrac|3 + total ring enchantment|6}} of the time with the extrinsic property. With a ring of searching enchanted to +2 or greater, you will usually detect traps before stepping on them, reducing your need to search manually.
+
+A +3 ring of searching with base Luck will find traps {{frac|5|6}} of the time when you are next to it, and about half the time you will spot a trap two tiles away. A +4 ring base Luck will always find traps next to you - further enchantment only helps you detect hidden and secret things from a greater distance.
+
+Finding hidden monsters works exactly the same as in vanilla - automatic searching will not help you find hidden monsters, nor will they be revealed further away than next to you.
+
+An object with the searching [[object property]] does ''not'' gain additional effectiveness from enchantment, but merely grants the [[automatic searching]] extrinsic. They do, however, still gain the benefit of having extrinsic automatic searching rather than intrinsic, meaning it processes more often and finds trap more reliably (i.e. it searches half of the time instead of {{frac|3}}, and finds traps {{frac|3}} of the time rather than {{frac|6}}).
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Commands]]}
+&&%s&& %s Light {140679 2021-06-03T08:18:43Z {4001094 Luxidream}  {{otheruses|illumination of the dungeon|the monster class|Light (monster class)}}
+
+There is '''light''' in the dungeon. Each square is either ''lit'' or ''unlit''. Within the range of your [[vision]], you can see any [[monster]] or [[object]] on a lit square. This works even if the monster or object is on the other side of a room, and even if you must look past some dark squares. [[Corridor]]s are usually dark. [[Room]]s can be lit or unlit; the frequency of dark rooms tends to increase at deeper [[dungeon level]]s. Occasionally, entire dungeon levels will be dark, particularly in [[branch]]es such as [[Gehennom]] or the [[Gnomish Mines]].
+
+* [[Wall]]s and closed [[door]]s limit your vision. You cannot see into another room, unless you look through a suitable passageway.
+* Light is useless when you are [[blind]].
+* There are ways to cause darkness, such as by using a [[cursed]] [[scroll of light]].
+* Some locations, such as under [[water]], cannot be lit. You can light the inside of a [[vortex]], if engulfed, but there is little reason to do so.
+
+There are ways to make more light:
+* ''permanently'', with a '''[[scroll of light]]''', '''[[wand of light]]''', or the spell from a '''[[spellbook of light]]'''.
+* ''temporarily'', by switching on a light source such as an [[oil lamp]] or [[magic lamp]].
+
+==See also==
+* [[light sources]]
+* [[infravision]]
+{{nethack-343}}
+[[Category:Strategy]]}
+&&%s&& %s Blind {2326 2006-04-14T04:52:30Z {458 Kernigh} #REDIRECT [[Blindness]] ... I have a preference for nouns, but someone else might change this later. #REDIRECT [[Blindness]]}
+&&%s&& %s Blindness {147172 2022-08-03T15:48:24Z {4000251 Netzhack}  '''Blindness''' is a property that appears in ''[[NetHack]]''. Blindness occurs when your sight is impaired, rendering you unable to see most things on a level and omits any and all messages related to actions that you would otherwise see.
+
+The [[zen]] [[conduct]] consists of playing the entire game blinded.
+
+==Description==
+When moving normally while blind, using [[near look]] via {{kbd|:}} or picking up items via {{kbd|,}}, you will automatically use your hands to feel for items on the ground. Moving onto a seemingly empty square with a monster on it will cost you a move (without attacking), show the monster as {{white|I}} and anger it if [[peaceful]], even while safe-moving via {{kbd|m}}.{{refsrc|src/uhitm.c|137|version=NetHack 3.6.0}} Moving into a square with an {{white|I}} or warning symbol will cause you to attack that square - safe-moving via {{kbd|m}} will function as normal if a monster is occupying the square, or move into the square normally if it is empty.
+
+If you possess intrinsic or extrinsic [[telepathy]] while blind, all non-[[mindless]] monsters on the level are displayed - interactions with these monsters are handled normally, both for normal movement and safe-moving via {{kbd|m}}. [[Monster detection]] granted via a blessed potion or casting of the spell at Skilled lets you see all monsters on the level even while blind, and they are also handled normally for purposes of movement. The [[Eyes of the Overworld]] will not prevent blinding, but the [[astral vision]] conferred by wearing them will allow you to see while blind, and therefore breaks zen conduct. [[Warning]] also functions as normal, as it does not rely on you being able to see the monsters in question.
+
+Messages describing actions such as monster-versus-monster-combat that you cannot see are omitted, and gaze attacks will have no effect on you while blind.
+
+====Object appearances====
+While blind, most unidentified objects will show up only as their object class (e.g. "a potion", "a ring", "a long sword" etc.), including artifacts - only amulets and food are treated as "seen" while blind. [[Poison]]ing and [[erosion]] status of weapons are still shown; erodeproofing and charges are only shown if formally identified (even if you erodeproofed it yourself while blind). Any [[dilution]] in potions is only displayed if you know that potion's appearance. While blind, you cannot class-name unidentified objects, and any individual names will not be displayed (but will affect [[stack]]ing and artifact naming).
+
+Other objects that you will always know the appearance of are:
+
+* [[Egg]]s laid by you.{{refsrc|src/sit.c|305|version=NetHack 3.6.0}}
+* The appearance of your starting inventory and that of your pet.{{refsrc|src/u_init.c|1074|version=NetHack 3.6.0}}{{refsrc|src/dog.c|193|version=NetHack 3.6.0}}
+
+You can "hear" the appearance of a [[scroll]] if a monster reads the label, though it will not [[auto-identify]] since you will not be able to see the result of most scrolls. The same is true for [[potion]]s - you can still hear them being quaffed, but cannot see the result. [[polypile|Polymorphing]] any object and [[alchemy|alchemizing]] or fully diluting potions will render it unseen.
+
+As most sources of blindness are generally temporary, you will learn the appearance of any unidentified object you picked up upon the blindness wearing off. However, there are inevitably cases where a cure is not immediately available for long-term blinding, and zen conduct in particular makes it vital to learn how to [[#Discovering object|work around this]].
+
+===Monsters===
+Blindness works somewhat differently for you than it does for other monsters in the game - a blind monster will move and attack erratically, and suffers a [[to-hit]] penalty. Blinded monsters do not respect [[Elbereth]] if they would have normally, and cannot use any gaze attacks they possess.
+
+==Sources==
+Blindness can occur through various methods:
+
+* A [[quaff]]ed, [[wield]]ed or [[thrown]] [[potion of blindness]]
+* A [[ray]] of [[lightning]], e.g. from a [[wand of lightning|wand]] or the [[breath]] of a [[blue dragon]]
+* [[Engraving]] with a wand of lightning
+* [[Breaking wands|Breaking]] a [[wand of light]]
+* The flash of an [[expensive camera]]
+* A thrown, wielded or applied [[cream pie]]
+* [[Polymorph]]ing into a monster with no eyes.
+* Being hit by any blinding attack, such as [[blinding venom]], the blast of a [[yellow light]] or the melee attack of a raven
+* Being hit by the [[Blind (monster spell)|blind]] or [[Lightning (monster spell)|lightning]] [[monster spell]]s{{refsrc|src/mcastu.c|559|version=NetHack 3.6.0}}
+* One of the many effects of a [[magic trap]], which will also [[deaf]]en you
+* [[Sit]]ting on a [[throne]]
+* Wearing a blindfold or towel
+* Applying a cursed towel with 50% chance
+* Applying a cursed [[unicorn horn]]{{refsrc|src/apply.c|1885|version=NetHack 3.6.1}}
+* Eating [[food]] that turns out to be rotten with a 3/16 chance, unless you are already blind{{refsrc|src/eat.c|1547|version=NetHack 3.6.6}}
+* Reading a cursed or difficult [[spellbook]]
+* Walking inside a [[poison cloud]]{{refsrc|src/region.c|929|version=NetHack 3.6.0}}
+
+==Internals==
+In the game's code, three forms of blindness are recognized:
+
+===Blinded===
+"Blinded"{{refsrc|include/youprop.h|85|version=NetHack 3.6.0}} refers to all forms of blindness that are intrinsic - that is, you would be blind if you were not wearing or wielding anything and polymorphed into a monster form with eyes. The game records the number of turns you are blinded.
+
+====Creamed====
+Being "creamed"{{refsrc|include/you.h|320|version=NetHack 3.6.0}} means you have a substance over your eyes physically restricting your vision. The game also records the number of turns you are creamed. It is a subset of being "blinded", and stacks with blindness - items causing or curing creaming increment the number of turns you creamed and blinded by the same amount, so it is always less than or equal to the number of turns you are blinded.
+
+"Creamed" status will always time out first - e.g., if you are blinded for 100 turns, and 50 turns later you become creamed for a duration of 20 turns, you will be blinded for a total of 70 more turns - the ''first'' 20 of which you are considered creamed.
+
+"Creaming" actions include:
+* Being hit by or applying a cream pie
+* Being hit by blinding venom
+* Applying a cursed towel
+
+Actions that cure creaming are:
+*[[Wipe|Wiping]] your face
+*Applying a noncursed towel
+
+With the exception of prayer, which cures both, all other actions and cures affect blindness only if it cures either of the ailments.
+
+===Blind===
+"Blind"{{refsrc|include/youprop.h|88|version=NetHack 3.6.0}} means you currently cannot see. You can be "blind" without being "blinded", if your eyes are covered by a blindfold or a towel, or you polymorph into a monster with no eyes. You can be "blinded" without being "blind" if you have astral vision.
+
+==Strategy==
+===Curing blindness===
+In addition to allowing any inflicted blindness to time out, there are many ways to cure blindness. You can cure being "blinded" by doing any of the following:
+
+* Apply a non-cursed unicorn horn{{refsrc|src/apply.c|1997|version=NetHack 3.6.1}}
+* [[Invoke]] [[the Staff of Aesculapius]]
+* Eat a [[carrot]]
+* Cast a spell of {{spell of|cure blindness}} or {{spell of|extra healing}}
+* Drink a non-cursed [[potion of healing]], any [[potion of extra healing]], or and [[potion of full healing]].
+* [[Prayer]] can cure you of being "blinded", though this form of blindness is considered a minor trouble.
+
+"Creamed" blindness can be cured by using the #[[wipe]] command, apply a noncursed towel, or prayer. If you are rendered blind from a worn towel or blindfold and it is not cursed, you can simply remove it - having a cursed blindfold or towel stuck to your face is considered a major problem, and thus a safe prayer is likely to solve it. You can also uncurse them by using a [[scroll of remove curse]], the [[spell of remove curse]], or dipping them in a [[potion of holy water]].
+
+If polymorphed into an eyeless form, you can polymorph to a different form with eyes or return to normal.
+
+===Resisting blindness===
+There are a few items that allow you to resist blindness as well.
+
+* While you are wielding [[Sunsword]], you will be protected from light-based sources of blindness.{{refsrc|src/mondata.c|153|version=NetHack 3.6.0}}{{refsrc|include/artilist.h|153|version=NetHack 3.6.0}} This includes yellow lights, magic traps, and wands of lightning.{{refsrc|src/mhitu.c|1929|version=NetHack 3.6.0}}{{refsrc|src/trap.c|3051|version=NetHack 3.6.0}} {{refsrc|src/zap.c|2157|version=NetHack 3.6.0}}{{refsrc|src/zap.c|3978|version=NetHack 3.6.0}}
+* Wearing a blindfold or towel can protect from blinding gazes and some other sources, such as blinding attacks - it will not prevent blindness from quaffed or thrown potions, however.
+* Astral vision granted from The Eyes of the Overworld does not cure or resist blindness, but allows you to see despite it.
+
+===Navigating while blind===
+Moving normally while blind means you may bump into or even attack unseen monsters - you could inadvertently kill your [[pet]] or anger a [[shopkeeper]], making it incredibly dangerous to do so without telepathy or monster detection. Being blinded in [[Minetown]] or other similar areas may get you on the wrong side of the [[watch]] as well. Stormbringer in particular is made even more risky to wield than it [[Bloodthirsty|already is]].
+
+Very special care should be taken on levels with [[cockatrice]]s - if there is a cockatrice corpse on the ground, feeling around for objects while blind may resulting in an instant [[stoning]] unless you are wearing [[gloves]]. Even worse, if you are blind and warned, moving with {{kbd|m}} into a cockatrice without wielding anything or wearing gloves will still stone you if the warning symbol does not cover an undisplayed {{white|I}}.
+
+Moving with {{kbd|m}} followed by a direction allows you to ignore items on the ground and avoid attacking monsters, though you will still angers any peacefuls you bump into if you could not see them. A [[stethoscope]] can be applied for free once per turn to determine if something is in your path and it is unsafe to move there. Allowing unseen hostile monsters to attack you first is risky, even if you attack the specific square you were hit from - some may be fast enough to move away after attacking, resulting in a wasted turn attacking the {{white|I}} where they previously were. Nearby peacefuls and pets add to the danger, since you cannot see if they stepped into any square previously occupied by a hostile (or worse, killed the hostile themselves in the pet's case). In rare cases, #[[chat]]ting is useful to test for non-silent monsters since it does not use a turn if you get no answer.
+
+Telepathy and warning are the best properties to have in case you are blinded, since warning complements telepathy by revealing the positions of most mindless monsters - while even these properties combined will not reveal all possible monsters, the few mindless monsters not revealed by warning are generally not a threat at most points where you have access to both. (Further corner cases stem from [[hide]]rs, [[mimic]]s, Stormbringer, {{kbd|F}}, and deactivating [[safe_pet]].)
+
+===Discovering objects===
+You can make an object "seen" and gain knowledge of its appearance and type via formal [[identification]], as well as through various other methods.
+
+A blessed [[potion of object detection]] reveals the appearance of all objects on the current dungeon level, recursively including the contents of [[container]]s.{{reffunc|detect.c|object_detect|version=NetHack 3.6.0}} A [[wand of probing]] will grant non-recursive knowledge of any objects it is zapped at, including the contents of containers and the inventory of any monsters in its path; you can also zap it at yourself in order to see your inventory.{{refsrc|src/zap.c|434|version=NetHack 3.6.0}}{{refsrc|src/zap.c|1811|version=NetHack 3.6.0}}{{refsrc|src/zap.c|2369|version=NetHack 3.6.0}}
+
+You can [[dip]] items in holy/unholy water when blind, allowing you to learn their beatitude. Buying or selling something at a [[shop]] will have the shopkeeper identify its appearance for you, with the exception of items in containers, [[stealing from shops|stolen]] merchandise, or items covered by your [[credit]] when you [[teleport]] out.{{refsrc|src/shk.c|2323|version=NetHack 3.6.0}}
+
+Your [[quest leader]] will identify your own [[quest artifact]] and the real [[Amulet of Yendor]] for you.{{refsrc|src/quest.c|213|version=NetHack 3.6.0}}{{refsrc|src/quest.c|227|version=NetHack 3.6.0}} Additionally, the [[crowning]] gift you would receive if neutral or chaotic is made "seen" if you are already holding it. The special attacks of the [[Tsurugi of Muramasa]] and [[Vorpal Blade]] will always reveal their appearance upon activating.{{refsrc|src/artifact.c|1261|version=NetHack 3.6.0}}{{refsrc|src/artifact.c|1278|version=NetHack 3.6.0}}{{refsrc|src/artifact.c|1308|version=NetHack 3.6.0}}{{refsrc|src/artifact.c|1324|version=NetHack 3.6.0}}.
+
+Other methods of object identification include:
+* Eating one of a stack of [[tins]] will make the remaining ones known.
+* Astral vision allows you to see objects while blinded - but remember that this will break zen conduct.
+
+==Messages==
+{{message|Pardon me, <foo>.|You moved with {{kbd|m}} into a pet either displayed as {{white|I}} or properly seen.{{refsrc|src/hack.c|1409|version=NetHack 3.6.0}}}}
+{{message|You move right into [<foo>.|You moved with {{kbd|m}} into a non-tame monster that was either either displayed as {{white|I}} or properly seen.{{refsrc|src/hack.c|1411|version=NetHack 3.6.0}}}}
+{{message|Wait! There's something there you can't see!|You moved onto a seemingly empty square. This does not attack whatever was on that square, but does anger them if they were peaceful.}}
+
+==References==
+<references/>
+{{nethack-361}}
+[[Category:Properties]]
+[[Category:Monster damage types]]}
+&&%s&& %s Xorn {150187 2023-03-09T12:39:41Z {4001279 Umbire the Phantom} copyedit {{monster
+ |difficulty=11
+ |level=8
+ |experience=139
+ |speed=9
+ |AC=&minus;2
+ |MR=20
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Claw 1d3, Claw 1d3, Claw 1d3, Bite 4d6
+ |weight=1200
+ |nutr=700
+ |size=Medium
+ |resistances=Fire, Cold, Stoning
+ |resistances conveyed=None
+ |attributes={{attributes|A xorn|=
+ |breathless=1|wallwalk=1|thick=1|metallivore=1|hostile=1|strong=1}}
+ |reference=[[monst.c#line2054]]
+}}
+
+The '''xorn''' is a [[monster]] that appears in ''[[NetHack]]''. It is the only member of the {{monclasssym|X}} '''xorn''' [[monster class]]. 
+
+The xorn is notable for its ability to [[phase]] through [[wall]]s and [[metallivore|eat metal]]. Xorns are also unbreathing and resistant to fire, cold, and stoning.
+
+Xorns are [[kebabable]], granting a +2 [[to-hit]] bonus when using a weapon that uses the [[spear]] or [[javelin]] skills against them. They are also susceptible to [[digging]] attacks, granting a +2 to-hit bonus to when using [[pick-axe]]s or [[dwarvish mattock]]s to attack them.
+
+==Generation==
+Xorns are rarely randomly generated and may not be encountered until much deeper within the dungeon or its branches; some xorns are likely to be generated in the [[throne room]] of the [[Castle]] at level creation.
+
+Xorns are the second [[quest]] monster for the [[Monk quest]] and [[Wizard quest]]; they also function as the [[Monk]]'s second quest monster "class", and are thus slightly more common for them than [[Wizard]]s.
+
+Xorns can also be generated on the [[Plane of Earth]] by digging with a pick-axe.
+
+==Strategy==
+Xorns have a decent [[AC]] of &minus;2 and four attacks including an extremely nasty bite, and their phasing can make them difficult to evade; however, they move at a slow 9 speed and respect [[Elbereth]]. Thanks to this behavior, they can be dispatched with sufficient caution – however, players should not use non-disposable iron [[projectile]]s against xorns. Xorns can be lethal to players with low AC who try to out-melee them, particularly Monks embarking on their quest – their phasing can thwart [[boulder fort]] strategies employed against [[Master Kaen]].
+
+While xorns cannot cross [[moat]]s and pools of water (such as the moat in the Castle), players polymorphed into xorns can – in the case of the Castle it is often enough to lure them across the drawbridge and raise it behind you if you are phasing or otherwise trying to avoid them. Xorns also cannot be destroyed by the drawbridge under normal circumstances due to their phasing; however, if there are two phasing monsters on both squares of the drawbridge (the portcullis and the moat in front), one of them will be killed if the drawbridge is raised.
+
+===Polyself===
+Due to their unusual abilities, xorns are one of the most useful monsters to [[polyself|polymorph]] into for various applications:
+
+* [[Eating jewelry]] for [[intrinsic]]s
+* Phasing across difficult-to-navigate levels such as [[Asmodeus' Lair]] or the [[Rogue quest#Stronghold of the Master Assassin|Stronghold of the Master Assassin]] - note that you cannot phase across the boundary between the two parts of [[Moloch's Sanctum]], or anywhere on the [[Astral Plane]]
+* Heading directly to the [[wand of wishing]] in the [[Castle]] during a speedrun or with a weak character
+
+Xorns can wear [[armor]], but cannot wear body armor or cloaks; morphing into a xorn will destroy them if you are wearing any, so be sure to remove these items before making the transformation. Remember that you can cross water while polymorphed into a xorn, although other xorns cannot.
+
+Additionally, be mindful of where you are when your polyself is potentially about to expire: If you return to normal form while phasing through a wall adjacent to open space, you will be able to move into it. However, if you return to normal form while phasing through the middle of solid stone with no adjacent space, you will be unable to move&mdash;if this happens you can [[teleport]] out, [[pray]] (since being stuck in a wall without having phasing is a [[major problem]]), or re-polymorph yourself into a xorn or [[earth elemental]].
+
+==History==
+The xorn is introduced in ''Hack for PDP-11'', a variant of [[Jay Fenlason's Hack]].
+
+In [[NetHack 3.4.3]], xorns were subject to a few [[Bugs in NetHack 3.4.3|notable bugs]]:
+
+* Xorns could be created in inaccessible areas, such as outside the Sokoban walls. This was [[Bugs in NetHack 3.4.3#C343-151|bug C343-151]].
+* When a player polymorphed into a xorn returned to their normal form and was in open space, they would be stuck in a [[pit]] that doesn't exist; this was [[Bugs in NetHack 3.4.3#C343-17|bug C343-17]].
+
+==Origin==
+{{wikipedia|Xorn (Dungeons & Dragons)}}
+The xorn originates from ''[[Dungeons & Dragons]]'', where it debuts in the 1st Edition Monster Manual of ''Advanced Dungeons & Dragons''. Xorns come from the Elemental Plane of Earth and are depicted as odd and radially-symmetrical creatures: a large mouth sits at the top of their rocky body, surrounded by three long arms interspersed with their three eyes and three stumpy legs. All of their limbs are evenly spaced, and their arms end in sharp talons. 
+
+Like many creatures from their Elemental Plane, xorns can travel through ground and stone as if it were water; xorns encountered outside their home plane are not especially peaceful, but typically only attack anything that attacks them first or else impedes their hunting for the usual xorn diet of scavenged [[Lithivore|stone and minerals]] (including some types of metals). This may explain the unused message present in the code of ''NetHack'' for eating [[flint stone]]s.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], xorns [[Monsters with hits creatures as a %2Bx weapon (SLASH'EM)|hit as +2 weapons]].
+
+===dNetHack===
+In [[dNetHack]], the [[User:Chris/dNetHack/Elder Elemental Eye|Elder Elemental Eye]] at any level of reinforcement can protect against xorns.
+
+===SlashTHEM===
+In [[SlashTHEM]], on top of SLASH'EM changes xorns are additionally lithivorous and can eat stone in addition to metal.
+
+==Encyclopedia entry==
+{{encyclopedia|
+A distant cousin of the earth elemental, the xorn has the
+ability to shift the cells of its body around in such a way
+that it becomes porous to inert material.  This gives it the
+ability to pass through any obstacle that might be between it
+and its next meal.
+}}
+{{nethack-366}}
+[[Category:Monsters]]
+[[Category:Monster classes]]}
+&&%s&& %s X {142388 2021-09-06T10:39:19Z {4001279 Umbire the Phantom}  {{ASCII}}
+* {{white|x}} represents a [[xan]] or [[mythical/fantastic insect]].
+** {{monsymlink|grid bug}}
+** {{monsymlink|xan}}
+
+* {{white|X}} represents a [[xorn]], which is the only member of its [[monster class]].
+
+* Press {{kbd|x}} to [[Swap weapons|swap]] your primary and secondary weapons.
+* Press {{kbd|shift|x}} to begin [[two-weapon combat]].
+* Press {{kbd|ctrl|x}} to display your [[base attributes]].
+* Engrave the character '''x''' to engrave without breaking [[Illiterate]] [[Conduct]].
+* [[X11|X Window System]]
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|x}} glyph:
+
+*{{white|x}} electric bug:
+** {{monsymlink|spark bug}}
+** {{monsymlink|arc bug}}
+** {{monsymlink|lightning bug}}
+
+[[Category:ASCII]]}
+&&%s&& %s Larva {81361 2012-11-03T07:28:32Z {0 }  The '''larva''', '''maggot''', and '''dung worm''' form a chain of related monsters added in [[SLASH'EM]].
+== Larva ==
+{{ monster
+ |name=larva
+ |difficulty=2
+ |level=1
+ |experience=8
+ |speed=6
+ |AC=9
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Bite 1d2
+ |resistances conveyed=sleep (7%)
+ |resistances=sleep, poison
+ |attributes={{attributes|A larva|animal=1|slithy=1|nolimbs=1|pois=1|regen=1|notake=1|hostile=1|wander=1|stalk=1|neuter=1|sgroup=1}}
+ |size=Medium
+ |nutr=100
+ |weight=150
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line1704]]
+}}
+A '''larva''', {{white|w}}, is a [[worm]] that appears in [[SLASH'EM]]. This is among the easiest monsters to defeat. Its [[corpse]] is poisonous but has a small chance of granting [[sleep resistance]].
+
+{{clear}}
+== Maggot ==
+{{ monster
+ |name=maggot
+ |difficulty=3
+ |level=2
+ |experience=17
+ |speed=9
+ |AC=5
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Bite 1d3
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A maggot|animal=1|conceal=1|slithy=1|nolimbs=1|carnivore=1|notake=1|hostile=1|sgroup=1}}
+ |size=Small
+ |nutr=10
+ |weight=10
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line1714]]
+}}
+A larva can grow up (down?) into a '''maggot''', {{white|w}}. Unlike a larva, a maggot is neither poisonous to eat nor do they provide sleep resistance. They are also significantly smaller, weighing only 10 and also providing only 10 nutrition.
+
+{{clear}}
+== Dung worm ==
+{{ monster
+ |name=dung worm
+ |difficulty=4
+ |level=3
+ |experience=28
+ |speed=9
+ |AC=5
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Bite 1d4
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A dung worm|animal=1|slithy=1|nolimbs=1|carnivore=1|notake=1|hostile=1|sgroup=1}}
+ |size=Small
+ |nutr=10
+ |weight=10
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line1721]]
+}}
+A larva can grow up into a '''dung worm''', {{black|w}}, the final stage of the SLASH'EM worm growth chain. They are identical to the younger maggot apart from doing 1d4 damage instead of 1d3 and having a higher base level.
+
+{{se-stub|Page should probably be renamed.}}
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Category:Comestibles {21122 2007-06-01T23:53:25Z {0 }  A [[comestible]] <tt>%</tt> is anything edible.
+
+''Edible'' does not imply that you should eat it. Some [[corpse]]s are poisonous.
+
+[[Category:Items]]}
+&&%s&& %s Category:Roles {4888 2006-07-13T17:49:05Z {396 Jayt} recat: [[Category:Your character]] Your character can have one of several [[role]]s, from [[Barbarian]] to [[Wizard]].
+
+[[Category:Your character]]}
+&&%s&& %s Flame mage {128639 2019-10-14T23:02:59Z {4001230 Warpguncody} added flame mages quote from guide book A '''flame mage''' is a [[role]] specific to the game ''[[SLASH'EM]]''. This role is a weaker spellcaster than [[wizard]], but a better fighter. Your starting spells, items, and pet are associated with [[fire]], and you have special bonuses relating to fire magic. You even start with fire resistance. Unfortunately, you do not get [[hungerless casting]], and are not able to reach the same skill levels in spellcasting as the wizard. The first sacrifice gift for flame mages is [[Firewall]], a [[Alignment|lawful]] [[athame]] that has +4 [[To-hit|to-hit]] and does +4 [[Damage|damage]] to non-[[fire resistant]] monsters. it can be [[lawful]], [[neutral]] or [[chaotic]]. they can be [[Human (starting race)|humans]] [[elf (starting race)|elves]] [[gnome (starting race)|gnomes]] [[Orc (starting race)|orc]] [[Doppelganger (starting race)|doppelganger]] [[Drow|drow]] [[Hobbit (starting race)|hobbit]] According to the guidebook: 
+{{guidebook|Flame Mages have managed to harness mystical energies into the control of the element of fire. Notwithstanding their pet hell hounds, woe be unto anyone who stands in the way of a skilled mage casting a fireball.}}        
+
+Your [[pet]] is a [[hell hound pup]]. If you have [[color]], you become a red {{red|@}}.
+
+== Starting inventory ==
+* a [[blessed]] +1 [[quarterstaff]]
+* an [[uncursed]] +0 [[studded leather armor]]
+* 2 uncursed [[food ration]]s
+* a scroll
+* a potion
+* a ring
+* a [[wand of fire]]
+* three [[spellbook]]s; {{Spell of|flame sphere}}, {{Spell of|fireball}} and either {{Spell of|light}} or {{Spell of|detect monsters}}
+Like a wizard, a flame mage has a quarterstaff and some food. However, a wizard starts with more random [[magic]] items, while a flame mage always has a [[spellbook of flame sphere]] and a [[spellbook of fireball]].
+
+==Intrinsics==
+*XL 1: [[Fire resistance]]
+*XL 7: Polymorph into baby [[red dragon]] form
+*XL 13: [[Cold resistance]]
+*XL 14: Polymorph into adult [[red dragon]] form
+
+To use your polymorph ability, you must use the extended command #youpoly.
+
+==Skills==
+{|class="prettytable"
+!style="font-size:larger" colspan="2"|Flame mage skills
+|-
+!Max
+!Skills
+|-
+|Basic
+|
+* ''Weapons:'' [[whip]], [[hammer]]
+* ''Spells:'' [[healing spells|healing]], [[enchantment spells|enchantment]], [[protection spells|protection]]
+|-
+|Skilled
+|
+* ''Weapons:'' [[knife]], [[long sword]], [[staff|quarterstaff]], [[unicorn horn]], [[scimitar]], [[saber]], [[paddle]], [[mace]]
+* ''Spells:'' [[attack spells|attack]], [[body spells|body]]
+* ''Combat:'' [[bare hands]], [[two weapon combat]], [[riding]]
+|-
+|Expert
+|
+* ''Weapons:'' [[dagger]], [[short sword]]
+* ''Spells:'' [[matter spells|matter]], [[divination spells|divination]]
+|}
+
+==Techniques==
+{|class="prettytable"
+|'''Level'''
+|'''Technique'''
+|-
+|1
+|[[Reinforce memory]]
+|-
+|3
+|[[Power surge]]
+|-
+|5
+|[[Draw energy]]
+|-
+|10
+|[[Sigil of tempest]]
+|-
+|20
+|[[Sigil of discharge]]
+|}
+
+==Quest==
+{{main|Flame mage quest}}
+
+The [[Flame Mage quest]] sees you fighting the [[Water Mage]] for [[The Candle of Eternal Flame]]. 
+
+==Gods==
+*Lawful: Earth
+*Neutral: Fire
+*Chaotic: Ash
+
+==Rank titles==
+
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1-2: Spark
+*XL 3-5: Igniter
+*XL 6-9: Broiler
+*XL 10-13: Combuster
+*XL 14-17: Torcher
+*XL 18-21: Scorcher
+*XL 22-25: Incinerator
+*XL 26-29: Disintegrator
+*XL 30: Flame-Master
+
+== [[Strategy]] ==
+Flame mages are strong spell casters as well as respectable fighters. They can reach expert level in [[matter spells]] and skilled in [[saber]], [[long sword]] and [[twoweapon|two-weapon fighting]] (letting them effectively fight with most of the best artifacts in the game). Bear in mind that hobbits cannot twoweapon, no matter how skilled they become with the individual weapons.  Note that the Flame Mage also has access to the much improved [[Crysknife]] in SLASH'EM, a suitable choice lacking any artifact weapons.
+
+=== Early game: use fire, beware fire ===
+Early in the game, fireball is a difficult spell; you might start with a 75% failure rate. Flame sphere is easy to cast, but difficult to use effectively. Flame sphere actually summons a tame {{Monsym|flaming_sphere}}. Like a pet, this [[sphere]] will wander around and sometimes attack an enemy, but like a sphere, it will explode on attack. Frustratingly, a flame sphere might wait several turns before attacking. You might also have a leftover sphere, which will follow you around and might attack a peaceful monster, even a shopkeeper. Unlike with a pet, the [[god]]s will blame you if your spell being harms a peaceful monster. In addition, peaceful creatures attacked by one of your flame spheres will become hostile to you. However, you will get full experience for monsters killed by your flame spheres.
+
+Therefore the wand of fire is the best source of fire in the beginning of the game. Use it against a monster that ''must'' die quickly. A bolt from a wand can bounce from a wall and hit you, but remember, as a flame mage, you are immune to fire. (Your armor, scrolls, spellbooks, and potions might still be ruined, though). The wand of fire is also excellent for engraving "Elbereth." It may be preferable to use the wand for only this purpose unless you are being attacked by something that does not respect Elbereth, like a lycanthrope.
+
+Keep that hell hound pup around, and get it stronger! Let the puppy kill anything weak or otherwise undeserving of your attention. About five levels or so of kills will see him turn into a fully-grown hell hound, capable of clearing out nearly anything in the dungeons you may come across in the early game, including the Minetown priest.
+
+=== Midgame: balance spellcasting advancement with melee prowess ===
+Once the flame mage has gotten past the early game and has managed to acquire some decent armor, strong artifacts, and reached at least skilled in matters spells, it's on to SLASH'EM's dangerous midgame. Due to natural fire resistance, a flame mage will have an easier time surviving the wands and grenades of [[Grund's Stronghold]] and the [[fire vampire]]s in the [[Chaotic Quest]], but the midgame should be played carefully. Keep Firewall handy to engrave Elbereth to get out of scrapes, and consider making straight for the [[Black market (SLASH'EM)|black market]] after obtaining the [[luckstone]] from [[Mine's End]]. Getting [[reflection]] and [[magic resistance]] are priorities, as is [[dragon scale mail]], and if you have found a [[ring of polymorph control]] and a way to [[polymorph]], you should be able to get all three of these from One-Eyed Sam. If you don't have a way to kill Sam (or don't want to), a foray into the [[Wyrm Caves]] can be very profitable, especially if you already have reflection. Since the quest artifact, the [[Candle of the Eternal Flame]], does not provide magic resistance, there is little to be gained from embarking early on the quest. The [[Water Mage]] is not an overly difficult foe, but since he doesn't respect Elbereth and can cast [[finger of death]], prepare accordingly.
+
+Since [[fireball]] is the flame mage's special spell, once you reach skilled in matter spells, you should make liberal use of it. Note however that the flame mage doesn't have a good way of recharging energy. Therefore if you get a [[wish]] early enough in the game that you can reliably get an [[artifact]] out of it, you may consider wishing for an alignment-appropriate [[quest artifact]] that gives you more energy: the [[Mitre of Holiness]] if you are [[lawful]], the [[Eye of the Aethiopica]] if you are [[neutral]], and the [[Great Dagger of Glaurgnaa]] if you are [[chaotic]]. Flame sphere continues to be useful in the midgame because at skilled it produces two spheres per casting instead of one.
+
+You should also get some strong weapons and invest skill slots in getting them to skilled, as well as [[two weapon combat]] if your race allows for it. A lawful flame mage should be able to get [[Excalibur]] from a [[long sword]] in a weapon shop, the [[Rat King]], or a [[barrow wight]] or [[watch captain]] along the way (getting [[crowned]] is a last resort if all else fails). A neutral flame mage may consider getting crowned for [[Vorpal Blade]], and a chaotic may do the same for [[Stormbringer]]. Other good candidates, if you find them or manage to get them as sacrifice gifts or as wishes, include [[Sword of Justice]], [[Grayswandir]], [[Bat from Hell]], [[Doomblade]], [[Fire Brand]], [[Frost Brand]], and [[Serpent's Tongue]]. In a pinch, Firewall is pretty effective at melee as well. Good non-artifact weapons include the [[crysknife]], [[silver saber]], or [[silver long sword]].
+
+==== Quest ====
+{{main|Flame mage quest}}
+The Flame Mage quest item is the [[the Candle of Eternal Flame]]. Guarding it is the [[Water Mage]], who is located at the bottom of three levels of mostly water and lava squares populated by [[water elemental]]s and [[rust monster]]s. Completing the Quest, indeed, just talking to the [[High Flame Mage]], is impossible without some method of crossing lava and water, be it a form of levitation, flying, or a wand of ice. The Quest is a relatively easy one, but should not be attempted before gaining [[magic resistance]] as the [[Water Mage]] will use {{spell of|finger of death}}.
+
+===Late game: Get your kit and get ready to ascend ===
+The late game for the flame mage is more similar to a [[knight]] than a [[wizard]], unless you manage to wish for the [[Eye of the Aethiopica]] or find it in a bones file. You will be spending most of your time meleeing foes to conserve energy, and will use your magic on truly tough opponents. It's also worth keeping an assault rifle obtained from a [[Yendorian army]] member and investing in a stack of enchanted bullets. These can be obtained in abundance in [[Fort Ludios]], by stealing from [[One-Eyed Sam]], or in the [[Castle]]. These will help greatly with the [[Demon Prince]]s and tough foes on the [[Astral Plane]]. Once you have your kit ready, collect the invocation items and head to the [[Wizard's Tower]] to start the final run.
+
+A good [[ascension kit]] for a Flame Mage is:
+*One of the following: +5 [[speed boots]] for the extra attacks, +7 [[elven boots]] for the AC, +5 [[jumping boots]] for the extra movement, or +5 fireproof [[water walking boots]] to survive [[create pool]] spells
+*+7 [[cloak of magic resistance]] (enchant an [[elven cloak]] to +7 and then [[upgrading objects|upgrade]] it)
+*+5 [[gauntlets of dexterity]]
+*+5 [[silver dragon scale mail]] if no other [[reflection]], or [[deep dragon scale mail]] if no other [[drain resistance]]
+*+5 [[helm of brilliance]]
+*an [[amulet of life saving]] or [[amulet of flying|flying]] if you already have [[reflection]] and [[drain resistance]] covered, otherwise an [[amulet of reflection]] or [[amulet of drain resistance|drain resistance]] depending on your need
+*If unable to two-weapon, either a +5 [[small shield]] or a +5 [[shield of reflection]] (the latter will severely inhibit spellcasting)
+*If able to two-weapon:
+**Lawful: +7 [[Excalibur]] as primary for the drain resistance, another powerful artifact, [[crysknife]], or silver weapon as secondary
+**Neutral: Either two powerful artifact weapons ([[Magicbane]], [[Mjollnir]], [[Fire Brand]], [[Frost Brand]], or [[Vorpal Blade]],), or one powerful artifact weapon and a crysknife or silver weapon
+**Chaotic: Either two powerful artifact weapons ([[Bat from Hell]], [[Doomblade]], [[Serpent's Tongue]], [[Fire Brand]], or [[Frost Brand]]), or one powerful artifact weapon and a crysknife or silver weapon; consider wielding [[Stormbringer]] as primary for the drain resistance if you don't travel with pets or minions
+*All the other items (rings, wands, tools, etc.) in a standard ascension kit
+
+
+[[Category:SLASH'EM roles]]}
+&&%s&& %s Rock {149916 2023-02-10T16:53:31Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{weapon
+  |color=gray
+  |glyph=*
+  |tile=[[Image:Rock.png]]
+  |name=rock
+  |appearance=rock
+  |smalldmg=1d3
+  |largedmg=1d3
+  |skill=sling
+  |cost=0
+  |noenchant=true
+  |weight=10
+  |material=mineral
+}}
+:''For the dungeon feature, see [[Solid rock]]''.
+
+A '''rock''' is a common type of [[stackable]] [[stone]] that appears in ''[[Nethack]]''. You can use them as a [[projectile]] weapon by [[throw]]ing them or [[firing]] them from a [[wield]]ed [[sling]]; slung rocks can also be [[multishot]]. They are considered to be made of [[mineral]], and have no resale value in [[shop]]s.
+
+==Generation==
+The [[Caveman]] [[role]] starts with 18-33 rocks to use as sling ammo.{{refsrc|src/u_init.c|55|version=NetHack 3.6.6}}
+
+In addition to random generation, rocks can be found or made in various circumstances:
+
+* Hitting [[statue]]s and [[boulder]]s with [[digging tool]]s, a [[wand of striking]] or a {{spell of|force bolt}} spell will shatter them into several rocks.
+
+* Using a [[footrice]] [[corpse]] or egg for [[stoning]] [[tiny]]-sized monsters produces rocks instead of a [[statue]]. [[Clay golem]]s also [[death drop|collapse into several rocks]] upon death. Hitting a footrice with an [[egg]] will turn it into a rock.
+
+* The [[falling rock trap]] will drop a rock on the head of whatever triggers it, dealing 2d6 damage; a metal [[helm]] heavily reduces damage.
+
+* [[Read]]ing a [[scroll of earth]] while [[confused]] will cause several rocks to fall, with the patterns being the same as a normal scroll of earth.
+
+* Zapping a [[ray]] from the [[wand of digging]] or {{spell of|dig}} spell upwards can cause a rock to fall on your head.
+
+* [[Tunneling monster]]s leave rocks behind as they dig around the level, and [[metallivore]]s sometimes produce rocks after eating metallic objects.
+
+==Strategy==
+Rocks are incredibly commonplace, and can accordingly be put to several uses by players.
+
+===Combat===
+As weapons, rocks are the most accessible means of dealing with enemies from a distance in the early game - even without a sling, they can provide a useful option against [[sessile]] or slow-moving foes with dangerous melee or passive attacks, such as [[mold]]s, [[floating eye]]s and [[jellies]]. This is especially useful for spellcasting characters (e.g. [[wizard]]s) aiming to preserve their magic [[power]] for other purposes, or else any character lacking a viable choice or looking to preserve better weapons (such as [[daggers]] or [[darts]]). The player can carry as many as they deem necessary without encumbering themselves; once no longer needed or more reliable options are found, the rocks can safely be disposed of as [[junk]].
+
+===Other uses for rocks===
+The [[stone to flesh]] spell turns rocks into meatballs, which is the only other way to do so besides casting the spell at a tiny-sized statue. Meatballs can be used to train the [[apport]] of a carnivorous or omnivorous pet, and [[polypiling]] meatballs via the wand or spell can easily create enough food to last the entire game — the odds of getting one or more food items with at least 100 nutrition from a non-shuddering polymorph is 48.3%.
+
+Rocks themselves can be polypiled into valuable [[gem]]s for various uses, from selling to jewelers to maximizing [[Luck]] with [[unicorn]]s, or to haul them with you during the [[ascension run]] for a much higher [[score]] (with one example being [[DeathOnAStick]]'s infamous gem-farming ascension attempt).
+
+As starvation is mostly a threat only in the early game and usually only until [[Sokoban]], this is generally only useful if a [[wand of polymorph]] be found early, food is particularly rare, or a player is maintaining specific [[conduct]]s (where [[vegan]] [[extinctionist]] is a particularly gruesome combination). It can also be used to lower [[encumbrance]] from carrying food if the polymorph produces a sizable stack of [[lembas wafer]]s.
+
+==History==
+Rocks as items are introduced in [[Hack 1.0]]. Prior to this, early versions of hack121 and PDP-11, variants of [[Jay Fenlason's Hack]], did not have rocks - they instead used various types of "bullets", specifically [[sling bullets]].
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], various rocks appear on both variants of the [[Ruins of Moria]]'s last floor. The intact variant has 21 rocks within the Twenty-First Hall, along with a flint stone and a [[lembas wafer]]; the "ruined" variant instead has the first versions statue's shattered into piles of rocks, and other rock piles are scattered across the map.
+
+===SlashTHEM===
+In [[SlashTHEM]], [[lithivore]]s can consume rocks, and they consider it a treat similarly to carnivorous pets and meatballs.
+
+==Encyclopedia entry==
+{{Encyclopedia|
+Bilbo saw that the moment had come when he must do something. He could not get up at the brutes and he had nothing to shoot with; but looking about he saw that in this place there were many stones lying in what appeared to be a now dry little watercourse.  Bilbo was a pretty fair shot with a stone, and it did not take him long to find a nice smooth egg-shaped one that fitted his hand cosily.  As a boy he used to practise throwing stones at things, until rabbits and squirrels, and even birds, got out of his way as quick as lightning if they saw him stoop; and even grownup he had still spent a deal of his time at quoits, dart-throwing, shooting at the wand, bowls, ninepins and other quiet games of the aiming and throwing sort - indeed he could do lots of things, besides blowing smoke-rings, asking riddles and cooking, that I haven't time to tell you about.  There is no time now.  While he was picking up stones, the spider had reached Bombur, and soon he would have been dead.  At that moment Bilbo threw.
+The stone struck the spider plunk on the head, and it dropped senseless off the tree, flop to the ground, with all its legs  curled up.
+        [ The Hobbit, by J.R.R. Tolkien ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Gems]]
+[[Category:Weapons]]}
+&&%s&& %s Hell hound pup {35570 2008-10-16T19:36:51Z {0 } Redirecting to [[Canine#Hell hound pup]] #REDIRECT [[Canine#Hell hound pup]]}
+&&%s&& %s Hell hound {35569 2008-10-16T19:35:49Z {0 } Redirecting to [[Canine#Hell hound]] #REDIRECT [[Canine#Hell hound]]}
+&&%s&& %s Mold {148130 2022-09-09T17:44:01Z {4000978 Aximili} Deslex A '''mold''' is a type of monster that appears in ''[[NetHack]]''. All molds are part of the {{monclass|F}} [[monster class]].
+
+==Common traits==
+Molds come in several colors, and each possesses a specific [[passive attack]]. All molds are [[sessile]] and [[vegan]].
+
+All molds except for the green mold have a small chance to convey [[poison resistance]] when eating their [[corpse]] or [[tin]].
+
+==Description==
+<simpletabs>
+Brown mold|{{monster
+ |name=brown mold
+ |difficulty=2
+ |level=1
+ |experience=9
+ |speed=0
+ |AC=9
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=[[passive attack|Passive]] (level + 1)d6 [[cold]]
+ |weight=50
+ |nutr=30
+ |size=Small
+ |resistances=Cold, poison
+ |resistances conveyed=Cold (3%), poison (3%)
+ |attributes={{attributes|A brown mold|
+ |breathless=1|noeyes=1|nolimbs=1|nohead=1|mindless=1|notake=1|hostile=1|neuter=1}}
+ |reference=[[monst.c#line1299]]
+}}
+
+The '''brown mold''' has a passive attack that causes cold damage. Repeatedly attacking a brown mold can cause it to [[multiply]] due to your body heat.
+
+Eating a brown mold corpse is harmless and has a 3% chance of granting poison resistance or [[cold resistance]].
+|-|
+Green mold|{{monster
+ |name=green mold
+ |difficulty=2
+ |level=1
+ |experience=9
+ |speed=0
+ |AC=9
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=[[passive attack|Passive]] (level + 1)d4 [[acid]]
+ |weight=50
+ |nutr=30
+ |size=Small
+ |resistances=Acid, petrification 
+ |resistances conveyed=None
+ |attributes={{attributes|A green mold|
+ |breathless=1|noeyes=1|nolimbs=1|nohead=1|acid=1|mindless=1|notake=1|hostile=1|neuter=1}}
+ |reference=[[monst.c#line1313]]
+}}
+
+The '''green mold''' has a passive attack that causes [[acid]] damage. The corpse of a green mold is acidic to eat.
+
+Green molds are marked in the source as conveying [[stoning resistance]], but no code actually reads this flag when their corpse is eaten, so they end up conveying nothing.{{refsrc|src/monst.c|1321|nethack=3.6.6}}
+|-|
+Red mold|{{monster
+ |name=red mold
+ |difficulty=2
+ |level=1
+ |experience=9
+ |speed=0
+ |AC=9
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=[[passive attack|Passive]] (level + 1)d4 [[fire]]
+ |weight=50
+ |nutr=30
+ |size=Small
+ |resistances=Fire, poison
+ |resistances conveyed=Fire (3%), poison (3%)
+ |attributes={{attributes|A red mold|
+ |breathless=1|noeyes=1|nolimbs=1|nohead=1|mindless=1|
+ |notake=1|hostile=1|neuter=1|infravisible=1}}
+ |reference=[[monst.c#line1320]]
+}}
+
+The '''red mold''' is infravisible and has a passive attack that causes [[fire]] damage.
+
+Eating a red mold corpse is harmless and has a 3% chance of granting poison resistance or [[fire resistance]].
+|-|
+Yellow mold|{{monster
+ |name=yellow mold
+ |difficulty=2
+ |level=1
+ |experience=8
+ |speed=0
+ |AC=9
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=[[passive attack|Passive]] [[stun]]
+ |weight=50
+ |nutr=30
+ |size=Small
+ |resistances=Poison
+ |resistances conveyed=Poison (7%)
+ |attributes={{attributes|A yellow mold|
+ |breathless=1|noeyes=1|nolimbs=1|nohead=1|mindless=1|
+ |pois=1|notake=1|hostile=1|neuter=1}}
+ |reference=[[monst.c#line1306]]
+}}
+
+The passive attack of the '''yellow mold''' does no damage, and instead [[stun]]s you for (level + 1)d4 turns. Its corpse is [[poisonous]] ''and'' hallucinogenic to eat.
+</simpletabs>
+{{clear}}
+
+==Strategy==
+Most molds can be safely left alone unless they are blocking your path. As you are not likely to possess the required resistance for each of their passives early in the game, if attacking them it is best to use any [[ranged weapon]] you have - even [[rock]]s or junk [[dagger]]s will suffice. While your [[pet]] can also handle the mold, bad luck with weaker pets can result in them taking more damage passively than they can successfully deal.
+
+Since brown and red mold corpses are not harmful and provide a small amount of nutrition, it's usually a good idea to eat them for the small chance you will be granted an intrinsic.
+
+==Variants==
+===SLASH'EM===
+{{main|Mold (SLASH'EM)}}
+
+[[SLASH'EM]] features two new types of mold: the [[black mold]] and the [[disgusting mold]]. Their passive attack causes poison damage by way of spores - a nonbreathing character will be unaffected. Mold may also generate on rotting corpses, and mold corpses themselves have a chance to revive, similar to [[troll]]s. Also in SLASH'EM, molds may grow on rotting corpses.
+
+Older versions and patches had molds taking on the name of any named corpses they grew on.
+
+===SpliceHack===
+{{main|Moldier}}
+
+[[SpliceHack]] allows fungi to generate on rotting corpses, similar to SLASH'EM. SpliceHack also adds moldiers: humanoid molds that can use weapons and other items.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Mold, multicellular organism of the division Fungi, typified
+by plant bodies composed of a network of cottony filaments.
+The colors of molds are due to spores borne on the filaments.
+Most molds are saprophytes.  Some species (e.g., penicillium)
+are used in making cheese and antibiotics.
+|[ The Concise Columbia Encyclopedia ]
+}}
+
+==References==
+<references/>
+{{nethack-366|offset=1}}
+{{slashem-7E7}}
+[[Category:Monsters]]}
+&&%s&& %s = {61996 2010-12-28T20:24:08Z {214 Dptr1988} Used workaround template. {{ASCII}}
+*{{white|<nowiki>=</nowiki>}} is a [[ring]]
+*Press {{kbd|{{=}}}} to get a list of rings you are currently wearing
+
+[[Category:ASCII]]}
+&&%s&& %s Category:Slash'EM {9351 2006-08-31T23:14:28Z {396 Jayt} redirect; do category redirects work now? #REDIRECT [[:Category:SLASH'EM]]}
+&&%s&& %s Hit points {138990 2021-04-15T22:27:39Z {4001427 Phollenback}  == Player ==
+
+'''Hit points''', also known as '''HP''' or '''hp''', are your life. If your hit points reach zero, you usually [[die]]. The only ways of avoiding death in this case are to wear an [[amulet of life saving]], be in [[wizard mode]], or be in [[discover mode]]. If you are [[polymorph]]ed at the time, you will return to your natural form, unless you are wearing an [[amulet of unchanging]], in which case you will die.  Also, some deaths, known as [[instadeath]]s, kill you regardless of your hit points at the time.  Many of these, including [[stoning]] and [[brainlessness]], will still kill you if you are polymorphed.
+
+More hit points are automatically gained whenever the player gains a new [[experience level]]. How much, depends on the [[race]], [[role]] and [[constitution]]. Fighter classes, such as a [[barbarian]] (but not a [[ranger]]), generally start the game with more hit points and receive more hit points at each new level than other classes, such as a [[tourist]].
+
+Hit points can also be gained with some potions. [[Quaff]]ing a [[potion of healing]] or [[potion of extra healing]] if already at maximum hit points gives you one or two (or five, in case of a blessed potion of extra healing) more hit points. A [[potion of full healing]] raises your maximum hit points by four - eight if blessed.
+
+Other ways to raise maximum hit points include "[[nurse dancing]]" (letting a nurse hit you while wielding no [[weapon]] and wearing no [[armor]]), a favor ("You are surrounded by a golden glow.") from [[pray]]ing to your [[god]] at an [[altar]], and beneficial effects from a [[foocubus|incubus or succubus]] encounter.
+
+If your maximum hit points are no more than 5*(2+XL) where XL is your experience level (i.e. HP ≤ 15 at level 1, 20 at level 2 and so on), then when you pray with very low hit points, your god will increase your maximum HP by a random amount as well as healing you. This is a handy trick to use in the early game, especially for weak characters.
+
+===Messages===
+{{Wikipedia|Cŵn Annwn}}
+{{Wikipedia|Banshee}}
+Once you have seen one of these messages, you will not see another for 50 turns.{{refsrc|hack.c|2102}}
+;You hear the howling of the CwnAnnwn...
+:You have less than 1/10 of your total hit points left.
+;You hear the wailing of the Banshee...
+:You have only 1 hit point left.
+;Valkyrie/Wizard/Elf, your life force is running out.
+:You have less than 1/10 of your total hit points left, are a [[Valkyrie]], [[Wizard]] or [[Elf (starting race)|Elf]] character, and have fewer than four intrinsics.
+;Valkyrie/Wizard/Elf, all of your powers will be lost...
+:You have less than 1/10 of your total hit points left, are a Valkyrie, Wizard or Elf character, and have at least four [[intrinsic]]s.
+;Valkyrie/Wizard/Elf is about to die.
+:You have only 1 hit point left and are a Valkyrie, Wizard or Elf character.
+
+Those Valkyrie/Wizard/Elf messages are references to the video game Gauntlet, made by Atari.
+
+At least one other message relating to hit points does not observe the 50-move rule:
+
+;You don't have enough stamina to move
+:You are [[encumbrance|stressed]] or higher, have less than your maximum hit points, and have less than 5 hit points (if [[polymorph]]ed) or less than 10 (if not polymorphed). This does not occur on the [[Plane of Air]], nor if you are overloaded (if overloaded, "You collapse under your load" as you normally would).{{refsrc|hack.c|884}}
+=== Hit point regeneration ===
+
+Under normal circumstances, you recover hit points naturally with the passage of time.{{refsrc|allmain.c|171|comment=Normal HP regeneration}}
+
+If you are below level 10, you will regenerate one hit point every ''(42 / (level + 2)) + 1'' turns (see chart).
+
+If you are level 10 or above, you will regenerate every third turn. If your Constitution is 12 or lower, you get one hit point. Otherwise, you get ''d(Con)'' hitpoints up to a maximum of your level minus 9.
+
+If you are polymorphed, you instead regenerate one hit point every 20 turns.{{refsrc|allmain.c|166|comment=HP regeneration while polymorphed}}
+
+If your [[encumbrance]] is Stressed or worse, you will only regenerate hit points on turns when you aren't moving.
+
+If you have the [[regeneration]] ability, you will regenerate one hit point on any turn you did not do so above.
+
+{|class="prettytable"
+! Level
+! Turns
+! HP
+|-
+| 1
+| 15
+| 1
+|-
+| 2
+| 11
+| 1
+|-
+| 3
+| 9
+| 1
+|-
+| 4
+| 8
+| 1
+|-
+| 5
+| 7
+| 1
+|-
+| 6
+| 6
+| 1
+|-
+| 7
+| 5
+| 1
+|-
+| 8
+| 5
+| 1
+|-
+| 9
+| 4
+| 1
+|-
+| 10+
+| 3
+| 1 or d(Con)
+|}
+
+=== Hit points gained on level gain and starting hitpoints ===
+
+The number of hit points and maximum hit points gained when gaining a level at is calculated differently depending on whether you have reached your role's ''cutoff'' experience level.{{refsrc |exper.c|181 }}{{refsrc |attrib.c|621 }}{{refsrc |role.c|50 }}{{refsrc |you.h|113 }}
+
+If your [[experience level]] is less than your cutoff level, the amount gained is randomized; otherwise, it is not.{{refsrc|attrib.c|638|comment=Both <tt>lofix</tt> are always 0; both <tt>hirnd</tt> are always 0}}
+
+Your [[role]] and [[race]] both add a certain number of hit points; in the case of below-cutoff characters, this number is specified as [[d notation|''n''-sided die]]. A bonus (or malus) based on your [[constitution]] is then added.
+
+You always gain at least one hit point per level.{{refsrc|attrib.c|658}}
+
+Note that the point gains below apply even when "gaining a level" at experience level 30.  In this case, the point gains are the only effect.
+
+For a new character, the starting maximum hitpoints is a constant: simply the sum of the base starting hitpoints for the role and the race.  The constitution bonus does not apply here.{{refsrc |u_init.c|568 }}{{refsrc |allmain.c|504 }}
+
+{| class="prettytable striped"
+! Role{{refsrc|role.c|27}}
+! cutoff
+! pre-cutoff
+! post-cutoff
+! starting
+|-
+| [[Archeologist|Arc]]
+| 14
+| d8
+| 1
+| 11
+|-
+| [[Barbarian|Bar]]
+| 10
+| d10
+| 2
+| 14
+|-
+| [[Caveman|Cav]]
+| 10
+| d8
+| 2
+| 14
+|-
+| [[Healer|Hea]]
+| 20
+| d8
+| 1

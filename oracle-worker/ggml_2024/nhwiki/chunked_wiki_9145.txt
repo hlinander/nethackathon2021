@@ -1,0 +1,1000 @@
+| <tt>69.208.0.0</tt>
+| align=right | 1
+| <tt>01000101.11010000.00000000.00000000</tt>
+|}
+
+==References==
+* [[wikipedia:Classless Inter-Domain Routing|Classless Inter-Domain Routing]]
+
+==External links==
+* [http://www.find-ip-address.org/ip-country/ IP Address Ranges Block] gives you complete IP ranges for certain countries.
+* [http://apps.csc.fi/laskin2.html Netmask calculator] which helps in making the correct decision for range blocks.
+* [http://tools.wikimedia.de/~chm/blockcalc.php Rangeblock-Calculator] gives you the range you should use when blocking.
+
+{{Languages|Help:Range blocks}}
+
+[[Category:Help|Range blocks]]
+[[Category:Block|Range blocks]]}
+&&%s&& %s Help:Recent changes {56452 2010-11-13T20:25:50Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+
+'''Recent changes''' is a [[Help:special page|special page]] that lists recent changes in reverse order, with creation date and time, change in the page size, user who created the page, and [[help:edit summary|edit summary]].  It also provides links to [[Help:patrolled edits|patrol]] these new edits when that feature is enabled.
+
+This feature is accessible at [[Special:RecentChanges]]. The page results are adjustable using settings the [[Help:Preferences#Recent_changes|Preferences section "Recent changes"]].
+
+This special page can be [[Help:transclusion|transcluded]], with the first unnamed parameter specifying how many entries should be displayed.
+
+<pre>{{Special:RecentChanges/50}}</pre>
+
+Additional parameters may be used in a comma separated list such as:
+
+<pre>{{Special:RecentChanges/days=5,limit=40}}</pre>
+
+{|class="sortable wikitable"
+!parameter!!value type!!class="unsortable"|description
+|-
+|days||integer||Maximum number of days to display
+|-
+|limit||integer||Maximum number of entries to display
+|-
+|hidebots|| || Hide [[Help:Bots|bots]]
+|-
+|bots|| || Show bots
+|-
+|hideminor|| || Hide [[Help:minor edit|minor edit]]s
+|-
+|minor|| || Show minor edits
+|-
+|hideliu|| || Hide logged in users (LIU)
+|-
+|hidepatrolled|| ||Only show pages which have not been [[Help:patrolled edits|patrolled]].
+|-
+|hideanons|| || Hide [[Help:Anonymous user|Anonymous user]]s
+|-
+|hidemyself|| || Hide the logged in user's own changes
+|}
+
+==See also==
+* {{mediawiki|Manual:Configuration settings#Recent changes}}
+* {{meta|Help:Recent_changes|Further reading on the Meta-Wiki}}
+
+{{Languages}}
+
+[[Category:Help|{{PAGENAME}}]]
+[[Category:Recent changes|{{PAGENAME}}]]
+[[Category:Special pages|{{PAGENAME}}]]}
+&&%s&& %s Help:Redirects {56454 2010-11-13T20:25:50Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+
+Redirects are used to forward users from one page name to another. They can be useful if a particular article is referred to by multiple names, or has alternative punctuation, capitalization or spellings.
+
+==Creating a redirect==
+You may start a new page with the name you want to direct from (see [[Help:Starting a new page]]). You can also use an existing page that you are making inactive as a page by going to that page and using the "edit" tab at the top. In either case, you will be inserting the following code at the very first text position of the Edit window for the page:
+ <nowiki>#REDIRECT [[</nowiki>''pagename''<nowiki>]]</nowiki>
+where ''pagename'' is the name of the destination page. The word "redirect" is not case-sensitive, but there must be no space before the "#" symbol. Any text before the code will disable the code and prevent a redirect. Any text or regular content code after the redirect code will be ignored (and should be deleted from an existing page). However, to put or keep the current page name listed in a Category, the usual tag for that category is entered or kept on a line after the redirect code entry.
+
+You should use the 'preview' button below the Edit window, or Alt-P, to check that you have entered the correct destination page name. The preview page will not look like the resulting redirect page, it will look like a numbered list, with the destination page in blue:  
+ 1. REDIRECT  <span style="color:blue">''pagename''</span>
+If the ''pagename'' as you typed it is not a valid page, it will show in red. Until there is a valid destination page, you should not make the redirect.
+
+==Viewing a redirect==
+After making a redirect at a page, you can no longer get to that page by using its name or by any link using that name; and they do not show up in wiki search results, either. However, near the top of the destination page, a notice that you have been forwarded appears, with the source pagename as an active link to it. Click this to get back to the redirected page, showing the large bent arrow symbol and the destination for the redirect.
+
+By doing this, you can do all the things that any wiki page allows. You can go to the associated discussion page to discuss the redirect. You can view the history of the page, including a record of the redirect. You can edit the page if the redirect is wrong, and you can revert to an older version to remove the redirect.
+
+==Deleting a redirect==
+There's generally no need to delete redirects. They do not occupy a significant amount of database space. If a page name is vaguely meaningful, there's no harm (and some benefit) in having it as a redirect to the more relevant or current page. 
+
+If you do need to delete a redirect, e.g. if the page name is offensive, or you wish to discourage people from referring to a concept by that name, then you simply go to the redirect page as mentioned above, and follow the procedures at [[Help:Deleting a page]].
+
+==Double redirects ==
+A double redirect is a page redirecting to a page which is itself a redirect, and it will not work. Instead, people will be presented with a view of the next redirect page. This is a deliberate restriction, partly to prevent infinite loops, and partly to keep things simple. 
+
+However, you could look out for double redirects and eliminate them by changing them to be 1-step redirects instead. You are most likely to need to do this after a significant [[Help:Moving a page|page move]]. Use the "what links here" toolbox link to find double redirects to a particular page, or use [[Special:DoubleRedirects]] to find them throughout the whole wiki.
+
+== A redirect to a page in the category namespace ==
+To prevent a page that redirects to a category from appearing in the category, precede the word "Category" with a colon: 
+ <nowiki>#REDIRECT [[:Category:Glossary]]</nowiki>
+
+{{Languages|Help:Redirects}} 
+
+[[Category:Help|Redirects]]}
+&&%s&& %s Help:Searching {56456 2010-11-13T20:25:50Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+:'''''NB''' This page summarizes the search function. More detailed information about available options can be found on the [[wikipedia:Wikipedia:Searching|Search documentation page]] on English Wikipedia.''
+
+The quickest way to find information in MediaWiki is to look it up directly. In the top right of your screen there is a '''{{lcfirst:{{int:search}}}}''' box with two buttons under it labeled "{{int:searcharticle}}" and "{{int:searchbutton}}". 
+
+<div style="border:1px solid #ababff; background: #fdfdff; padding: 1em; margin: 1.1em 1em 1em 0em; font-size:105%">
+Put your keyword in the searchbox.
+* '''{{int:searcharticle}}''' - (or ''Enter'' on keyboard) will take you automatically to the article, if it exists.
+* '''{{int:searchbutton}}''' - will search the text of all pages on the wiki (with some restrictions, see below).
+</div>
+
+If you clicked “{{int:searcharticle}}”, or you clicked “{{int:searchbutton}}” and the page you were looking for did not exist, you will be presented with a list of articles that matched your search criteria (or a message that no matches were found).  
+
+== How it works ==
+Here's how the search works:
+
+* Only the article content is searched - the page title is ignored.
+* The article content is searched in its raw (wikitext) form - i.e., it searches the text that appears in the edit box when you click “{{lcfirst:{{int:edit}}}}”, not the rendered page.  This means that content coming from an included template will not be picked up, but the target of piped links will be.
+* Even if you enclose a phrase in quotes, the search looks for each word individually.  e.g., if you enter "world war 2" it will return pages that contain "world" and "war" and "2".
+* The search is not case-sensitive, so "MediaWiki", "mediawiki" and "MEDIAWIKI" all give the same result.
+
+== Restricting the search ==
+If you click the “{{int:searchbutton}}” button without filling in anything, you will be taken to “Special:Search” which gives you extra searching options (also available from any search results list)
+
+You may find it useful to restrict a search to pages within a particular [[Help:Namespaces|namespace]] e.g., only search within the {{ns:2}} pages. Tick the namespaces you require for this search. 
+
+By default only the [[Help:Namespaces|namespaces]] specified in your [[Help:Preferences|preferences]] will be searched.  Logged-in users can change their preferences to specify the namespaces they want to search by default. This can be done by selecting and deselecting boxes in the ”search” section of user preferences.
+
+__NOTOC__
+{{Languages}}
+
+[[Category:Help|Searching]]
+[[Category:Search|Searching]]}
+&&%s&& %s Help:Signatures {56458 2010-11-13T20:25:50Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+Users can easily '''sign''' their posts at the end of a comment. Signing is normally done on [[Help:Talk pages|talk pages]] only, not on conjointly written articles.
+
+== Default signature options ==
+There are three default options. Four tildes are standard (full signature). Typing three tildes results in a username-only signature (without timestamp). Typing five tildes results in a pure timestamp (without username).
+
+{| class="wikitable"
+! Function
+! Wiki markup (replaced when saving)
+! Resulting wiki code
+! Resulting display 
+|-
+| Signature plus timestamp
+| <pre>~~~~</pre>
+|
+<code><nowiki>[[</nowiki>{{ns:2}}:Username|Username]] 12:34, 1 February 2008 (UTC)</code>
+| [[{{ns:2}}:Username|Username]] 12:34, 1 February 2008 (UTC)
+|- 
+| Signature alone
+| <pre>~~~</pre>
+|
+<code><nowiki>[[</nowiki>{{ns:2}}:Username|Username]] </code>
+| [[{{ns:2}}:Username|Username]]
+|-
+| Timestamp alone
+| <pre>~~~~~</pre>
+| <code>12:34, 1 February 2008 (UTC)</code>
+| 12:34, 1 February 2008 (UTC)
+|}
+
+If you edit without logging in, your IP address will take the place of a username. Usernames and IP addresses are also stored in [[Help:Page history|page histories]] as a record of who wrote what, so others can always verify signatures.
+
+The common format to type a signature – two hyphens (or a long dash) followed by four tildes (<code>-- '''<nowiki>~~~~</nowiki>'''</code>) – is derived from the computer network Usenet, where two hyphens mark a signature block. Note that the hyphens or dash are not inserted automatically and have to be entered (unless you customize your signature to include them, see an example in the next section).
+
+The actual signature string, the tildes, automatically get substituted with username (linked to the appropriate user page) and timestamp (time/date), when you save a signed edit. This helps other users to follow the chronological order of discussions, and to identify the author of a particular comment. 
+
+If you don't find the tilde on your keyboard, you can use the signature button [[{{ns:image}}:Button sig.png|text-bottom|link=|signature button]] of the default [[Help:Edit toolbar|edit toolbar]] as a typing aid.
+
+Signatures do not work in edit summaries (they do not translate from <nowiki>~~~~</nowiki> there).
+
+Note that timestamps are currently formatted by default and saved according to the default locale conventions (language, script, date and time format) used on each wiki, and '''not''' according to the conventions of your current preferred language.
+
+== Customized signatures ==
+Registered users can customize their signature (the part between the two hyphens and the timestamp) by changing the field "{{int:yournick}}" in their [[Help:Preferences|preferences]]. By default, anything you enter there will be wrapped with <code><nowiki>[[ ]]</nowiki></code>. To use a special linking (without this automatic link), you have to enable “Raw signatures.” Then you can add Wiki markup and also HTML (as far as allowed on the wiki) as you like, but the maximum length is 255 characters. Please note that striking signatures are often disliked by other users.
+
+Note that if you customize your signature, you should avoid displaying the identity of another unrelated user account, unless you also own this account or are explicitly authorized by this user: the link should unambiguously point to '''your''' effective user page or talk page on the local wiki. However, changing your signature will '''not''' override the username that is recorded in page histories. Some wikis may also have defined a restricting policy about the usage of external links or images in signatures. Look at the policies documented and on enforced your local wiki about user accounts and identities.
+
+If you enable “Raw signatures” but don't add any customized signature string, you'll sign with your unlinked username.
+
+The most common customizations are the following:
+
+{| class="wikitable"
+! Purpose
+! Raw signature
+! Resulting signature display (generated by four tildes)
+|-
+| Embedding the dashes in the signature
+| 
+<code><nowiki>-- [[</nowiki>{{ns:2}}:Username|Username]]</code>
+| -- [[{{ns:2}}:Username|Username]] 12:34, 1 February 2008 (UTC)
+|-
+| Adapting the displayed username to your convenience
+| 
+<code><nowiki>[[</nowiki>{{ns:2}}:Username|Preferred User Name]]</code>
+| [[{{ns:2}}:Username|Preferred User Name]] 12:34, 1 February 2008 (UTC)
+|-
+| Adding a talk page link
+| 
+<code><nowiki>[[</nowiki>{{ns:2}}:Username|Username]] (<nowiki>[[</nowiki>{{ns:3}}:Username|talk]])</code>
+| [[{{ns:2}}:Username|Username]] ([[{{ns:3}}:Username|talk]]) 12:34, 1 February 2008 (UTC)
+|}
+
+{{Languages}} 
+[[Category:Help|Signatures]]}
+&&%s&& %s Help:Skins {56460 2010-11-13T20:25:50Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+
+A '''skin''' defines a look and feel for the MediaWiki interface. Although the look and feel varies between skins, in general all skins have the same interface components. Each skin can show the same interface component differently, by showing it in different colours or positioning it differently on the page.
+
+To try out the available skins and change skin, click on the [[Special:preferences|my preferences]] link while logged in, then click on the "{{MediaWiki:Prefs-skin/en}}" tab. You can preview the available skins before choosing them, by clicking on the ({{MediaWiki:Skin-preview/en}}) link next to each skin.
+
+== Default skins ==
+By default, MediaWiki includes the following skins:
+* Chick
+* Classic
+* Cologne Blue
+* Modern
+* MonoBook (default)
+* MySkin
+* Nostalgia
+* Simple
+* [[media:MediaWiki Skin Vector.png|Vector]]
+
+While you can choose whichever skin you like, bear in mind that some wikis will incorporate templates or layout elements that will not display as intended in some of these skins. Generally speaking, sticking with MonoBook (or whatever the wiki's default skin is) will ensure you see pages as intended.
+
+== Customization ==
+Users familiar with {{mediawiki|Manual:Interface/Stylesheets|Cascading Style Sheets}} (CSS) can customize the current skin's file by creating a subpage of their userpage and naming it after the skin plus a .css postfix, "[[Special:Mypage/monobook.css|User:Yourname/monobook.css]]" for example. CSS placed in this sheet overrides the skin's CSS. This requires your site admin to have enabled this feature &mdash; if it is enabled, you will see advice text at the top of your custom CSS page about clearing your browser's cache.
+
+== See also ==
+* [[Help:Preferences]]
+* [[Manual:Gallery of user styles]] (no official skins)
+
+{{Languages|Help:Skins}}
+
+[[Category:Help|{{PAGENAME}}]]
+[[Category:Skin|{{PAGENAME}}]]}
+&&%s&& %s Help:Special pages {56462 2010-11-13T20:25:51Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+'''Special pages''' are pages that are created by the software on demand. They are located in their own [[Help:Namespaces|namespace]] ''Special:'' and are not editable directly as other pages. 
+
+Some special pages depend on the [[Help:Preferences|preferences]] that have been set by a user, e.g. the number of titles which is displayed on a user's [[Help:Watchlist|watchlist]].
+
+==List of special pages==
+Clicking the link ''[[Special:Specialpages]]'' will take you to a list of all special pages on a wiki. Such a link is often accessible in the [[Help:Navigation#Toolbox|toolbox]] on the left hand panel. Some special pages can be [[Help:Transclusion|transcluded]].
+
+* [[Help:New images|New images]] (includable)
+* [[Help:New pages|New pages]] (includable)
+* [[Help:Preferences|Preferences]]
+* [[Help:Random page|Random page]]
+* [[Help:Recent changes|Recent changes]] (includable)
+* [[Help:Watchlist|Watchlist]]
+* ...
+
+{{Languages|Help:Special pages}}
+[[Category:Help|Special pages]]
+[[Category:Special Pages| ]]}
+&&%s&& %s Help:Starting a new page {56464 2010-11-13T20:25:51Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+There are several ways to start a new page. These can vary based on the type of page started, as well as the wiki and namespace.
+
+== Using Wikilinks ==
+MediaWiki makes it very easy to link wiki pages using a standard syntax (see [[Help:Links|Links]]). If you (or anyone else) create a link to an article that doesn't exist yet, the link will be coloured red, <span style="color: #ba0000">like this</span>.
+
+Clicking a red link will take you to the edit page for the new article.  Simply type your text, click save and the new page will be created.
+
+Once the page has been created, the link will change from <span style="color: #ba0000">red</span> to <span style="color: #002bb8;">blue</span> (<span style="color: #5a3696;">purple</span> for pages you've visited) indicating that the article now exists.
+
+Usually this is the best way to create a new page, because it means that right from the start, the page will be linked from at least one other place on the wiki (and typically you will want to mesh it into other related pages later). If you are creating a new page without creating any link to it, you may need to ask yourself: Does this page really fit in with the topics already covered in the wiki? Also, how are you expecting visitors to find this page? Normally there is no reason to create a page without first creating a red link to it.
+
+== From the search page ==
+If you search for a page that doesn't exist (using the search box and “{{int:go}}” button on the left of the page) then you will be provided with a link to create the new page. 
+
+== Using the URL ==
+You can use the wiki's URL for creating a new page. The URL to an article of the wiki is usually something like this:
+*<code><nowiki>http://www.example.net/index.php/</nowiki>'''ARTICLE'''</code> &nbsp;&nbsp; or
+*<code><nowiki>http://www.example.net/wiki/</nowiki>'''ARTICLE'''</code>
+
+If you replace <code>'''ARTICLE'''</code> with the name of the page you wish to create, you will be taken to a blank page which indicates that no article of that name exists yet. Clicking the "{{int:edit}}" [[Help:Navigation#Page Tabs|page tab]] at the top of the page will take you to the edit page for that article, where you can create the new page by typing your text, and clicking submit.
+
+== Create redirects to your new page == 
+Don't forget to setup redirects when you create a page. If you think another person may search for the page you've created by using a different name or spelling, please create the proper redirect(s). See [[Help:Redirects]]
+
+== Protecting your new page ==
+Normally a new wiki page can be edited by other people (that is one of the main ideas of a wiki!) However, a sysop could '[[Help:Protected pages|protect]]' the page, if desired, to prevent normal users from editing it.
+
+{{Languages}}
+
+[[Category:Help|Starting a new page]]}
+&&%s&& %s Help:Subpages {56466 2010-11-13T20:25:51Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+'''Subpages''' introduce some hierarchical organization into wiki pages, with levels of the hierarchy separated by slashes (<code>/</code>).
+
+=== Where it works ===
+By default, MediaWiki's subpage feature is turned off in the main namespace, but can be used on [[Help:Talk pages|talk pages]] and [[Help:User page|user pages]]. See [[Help:Namespaces]]. In namespaces where the feature is switched off, any slashes (/) within a page name are simply part of the page name and do nothing special.
+
+=== How it works ===
+Slashes (/) within a page name break the page into parent and subpages, recursively, e.g.:
+
+* [[Help:Subpages]] - this page
+* [[Help:Subpages/subpage]] - child page
+* [[Help:Subpages/subpage/sub-subpage]] - grandchild page
+
+Note that the part of page names after a slash is case sensitive '''including the first letter'''.
+
+In subpages, a link back to antecedent pages will automatically appear at the top. These links do not appear, however, if the antecedent pages have not yet been created.
+
+=== Use of subpages ===
+There are various uses for the subpage feature. Some of the typical usages of subpages are:
+* to create archives of old discussions under a [[Help:Talk pages|talk page]]
+* to create scratchpad editing spaces under a [[Help:User page|user page]]
+* to create other language versions of a document in multilingual wikis
+
+Subpages are useful for organising information hierarchically. On the other hand, subpages tend to have a long name that is hard to remember, so it may be more user-friendly to use them as little as possible. You can also organize pages with the [[Help:Category|category]] feature, which is more suitable for creating a hierarchical network of information. 
+
+==See also==
+* [[Meta:Help:Link#Subpage feature]]
+* [[Help:Variables#Page names]]
+* [[Special:PrefixIndex]] &ndash; Provides a list of subpages.
+
+{{languages}}
+
+[[Category:Help|{{PAGENAME}}]]
+[[Category:Subpage|{{PAGENAME}}]]}
+&&%s&& %s Help:Subpages/subpage {56468 2010-11-13T20:25:51Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+This is a '''subpage''' of [[Help:Subpages]], created as an example of the feature.
+
+* [[Help:Subpages]] – parent page
+* [[Help:Subpages/subpage]] – this page
+* [[Help:Subpages/subpage/sub-subpage]] – child page
+
+When the parent page actually exists, a link to the parent page automatically appears under the page name header at the top. If the subpage feature is turned off, this will not appear.
+
+{{Languages|Help:Subpages/subpage}}
+
+[[Category:Help|{{PAGENAME}}]]
+[[Category:Subpage|{{PAGENAME}}]]}
+&&%s&& %s Help:Subpages/subpage/sub-subpage {56470 2010-11-13T20:25:51Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+This is a '''sub-subpage''' of [[Help:Subpages]], created as an example of the feature.
+
+* [[Help:Subpages]] – grandparent page
+* [[Help:Subpages/subpage]] – parent page
+* [[Help:Subpages/subpage/sub-subpage]] – this page
+
+When the antecedent pages actually exist, the links to antecedent pages automatically appear under the page name header at the top, creating a [[wikipedia:Breadcrumb (navigation)|breadcrumb]]. If the subpage feature is turned off, this will not appear.
+
+{{Languages|Help:Subpages/subpage/sub-subpage}}
+
+[[Category:Help|{{PAGENAME}}]]
+[[Category:Subpage|{{PAGENAME}}]]}
+&&%s&& %s Help:Sysop deleting and undeleting {56472 2010-11-13T20:25:51Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+'''Deleting a page''' is a straightforward operation for anyone with [[Help:Sysops and permissions|sysop permissions]]. Users without such permissions can still remove text from wiki pages, or propose/request that a page should be deleted. See [[Help:Deleting a page]].
+
+== Before deleting ==
+Sysops should also be aware of the general advice given on [[Help:Deleting a page]] (In particular, note that there are many situations where a deleting is too drastic. Often a redirect is more appropriate for example)
+
+Before deleting you could perform various checks:
+* Use the "What links here" tool. This gives an indication as to how important a page is, and what subjects it relates to. Perhaps the page is still linked to prominently from many places. All incoming links will become red links if you proceed with the delete. Ideally all incoming links should be changed/removed, if there is genuinely no need for this page to exist. You could do this work prior to deleting, or ask others in the wiki community to do it.
+* Check the page history and the associated talk page. Who was proposing the deletion? Does anyone disagree? Has it been properly discussed? Did people have adequate time to raise objections? Did somebody vandalise a page, which then led to a deletion proposal? 
+
+The care taken over these things might depend on the size of the wiki community, and how clear-cut the case for deletion is. Remember that only sysop users can undo a delete action, so to a normal user the information appears to be lost forever.
+
+== Use the 'delete' tab ==
+Sysops should see a 'delete' tab at the top of every page. Click this to delete the page. You will be asked to confirm, and to supply a "Reason for deletion". This is a short textual description of why the page is being deleted. Your action will appear on the recent changes display, and in the deletion log ([[Special:Log]]).
+
+== Undeleting ==
+To undelete a page you must navigate to the exact page name of the page. You can find this in the deletion log ([[Special:Log]]) if you dont remember it.
+
+You should then see a link to "View or restore n deleted edits". Tick the box next to the revision you wish to restore.
+
+==Configuring deletion reasons==
+The list of reasons in the dropdown box is maintained at [[MediaWiki:Deletereason-dropdown]].
+
+{{languages|Help:Sysop deleting and undeleting}}
+[[Category:Help|Sysop deleting and undeleting]]}
+&&%s&& %s Help:Sysops and permissions {56474 2010-11-13T20:25:51Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+The way '''permissions''' are set-up on different wikis can vary, but the default MediaWiki installation has several different permissions available; most notably the sysop and bureaucrat permissions.
+
+== Soft security - There ''are'' no permissions ==
+
+Wikis are often set up to be freely and openly editable. This means anyone can edit the pages, often without even registering/logging in. This is only possible because wikis offer a unique kind of "soft security". By making it very simple to monitor edits, and revert changes to retrieve an older version of a page, a wiki doesn't need to be very restrictive at all.
+
+There ''are'' no permissions. Everyone is an administrator. You don't need permission to edit, and you are encouraged to "be bold", go forth and edit!
+
+...at least that is the theory. In practice MediaWiki software does offer many options related to permissions.
+
+== Sysops ==
+By default MediaWiki provides extra functionality to a group of trusted users called 'sysops' (or known more generally as 'administrators') Most of the time this should go largely unnoticed by the normal users of a wiki community. Everyone can get involved in editing pages, and even undertaking drastic reorganisation of the wiki. The extra powers of a sysop user are intended for use in settling disputes and preventing repeated vandalism.
+
+=== Who are the sysops? ===
+You can find out who the sysops are at [[Special:ListUsers/sysop]]
+
+=== What can a sysop do? ===
+There are a number of extra features available to sysops. The key ones are as follows:
+
+;Protecting and unprotecting pages, and editing protected pages
+:'Protecting' a page prevents normal users from editing the page at all. There are several reasons why a particular page might be protected. For more information see [[Help:Protected pages]]. For sysop information see [[Help:Protecting and unprotecting pages]]
+
+;Deleting pages, and undeleting.
+:A page can be deleted semi-permanently, such that it is no longer available (even in the page histories) for normal users. Normal users do not have this power. See [[Help:Deleting a page]]. For sysop information see [[Help:Sysop deleting and undeleting]].
+
+;Blocking a user or IP address, and unblocking them.
+:Users can be blocked from the wiki. This is a useful way of keeping out persistent vandals. Users are identified by their registered user name, or by I.P. address, and can be blocked permanently, or just short length of time to give them a "cooling off" period. See [[Help:Blocking users]]
+
+;Patrolling, and seeing patrolled edits.
+:This is a way of coordinating with other sysops, to ensure that every edit of the wiki has been checked over by a trusted user. See [[Help:Patrolled edits]]
+
+== Bureaucrats ==
+Another level of permissions within a default MediaWiki set-up, is the 'bureaucrat' group.
+
+The main thing a bureaucrat can do, which 'sysop' cannot, is '''promote users to be sysops''' (and demote sysops to normal users).  See [[Help:Assigning permissions]]
+
+
+== See Also ==
+
+* {{mediawiki|Manual:Administrators}}
+
+{{languages|Help:Sysops and permissions}}
+[[Category:Help|Sysops and permissions]]}
+&&%s&& %s Help:Tables {56476 2010-11-13T20:25:52Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+'''Tables''' may be authored in wiki pages using either XHTML table elements directly, or using wikicode formatting to define the table. XHTML table elements and their use are well described on various web pages and will not be discussed here. The benefit of wikicode is that the table is constructed of character symbols which tend to make it easier to perceive the table structure in the article editing view compared to XHTML table elements.
+ 
+As a general rule, it is best to avoid using a table unless you need one. Table markup often complicates page editing.
+
+== Wiki table markup summary ==
+{|cellpadding="5" cellspacing="0" border="1" width="60%"
+|
+ <nowiki>{|</nowiki>
+| '''table start'''
+|-
+|
+ <nowiki>|+</nowiki>
+| table '''caption,''' ''optional;'' only between '''table start''' and first '''table row'''
+|-
+|
+ <nowiki>|-</nowiki>
+| '''table row,''' ''optional on first row'' -- wiki engine assumes the first row
+|-
+|
+ <nowiki>!</nowiki> 
+| '''table header''' cell, ''optional.'' Consecutive '''table header''' cells may be added on same line separated by double marks (<code>!!</code>) or start on new lines, each with its own single mark (<code>!</code>).
+|- 
+|
+ <nowiki>|</nowiki>
+| '''table data''' cell, ''required!'' Consecutive '''table data''' cells may be added on same line separated by double marks (<code><nowiki>||</nowiki></code>) or start on new lines, each with its own single mark (<code><nowiki>|</nowiki></code>).
+|-
+|
+ <nowiki>|}</nowiki>
+| '''table end''' 
+|}
+*The above marks must '''start on a new line''' except the double <code>||</code> and <code>!!</code> for optionally adding consecutive cells to a line. However, blank spaces at the beginning of a line are ignored.
+*'''XHTML attributes.''' Each mark, except table end, optionally accepts one or more XHTML attributes. Attributes must be on the same line as the mark. Separate attributes from each other with a single space. 
+**Cells and caption (<code>|</code> or <code>||</code>, <code>!</code> or <code>!!</code>, and <code>|+</code>) hold content. So separate any attributes from content with a single pipe (<code>|</code>). Cell content may follow on same line or on following lines.
+**Table and row marks (<code>{|</code> and <code>|-</code>) do not directly hold content. Do ''not'' add pipe (<code>|</code>) after their optional attributes. If you erroneously add a pipe after attributes for the table mark or row mark the parser will delete it ''and'' your final attribute if it was touching the erroneous pipe!
+*'''Content''' may (a) follow its cell mark on the same line after any optional XHTML attributes or (b) on lines below the cell mark. Content that uses wiki markup that itself needs to start on a new line, such as lists, headings, or nested tables, must be on its own new line.
+*'''Escaping''' to insert a pipe (<code>|</code>) character into a table use the &lt;nowiki&gt; markup
+
+==Basics==
+The following table lacks borders and good spacing but shows the simplest wiki markup table structure.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{|
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+</pre>
+|
+{|
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+|}
+
+The cells in the same row can be listed on one line separated by <code>||</code> (two pipe symbols). If the text in the cell contains a line break, use <code><nowiki><br /></nowiki></code> instead.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{|
+|Orange||Apple||more
+|-
+|Bread||Pie||more
+|-
+|Butter||Ice<br />cream||and<br />more
+|}
+</pre>
+|
+{|
+|Orange||Apple||more
+|-
+|Bread||Pie||more
+|-
+|Butter||Ice<br />cream||and<br />more
+|}
+|}
+
+Extra spaces within cells in the wiki markup, as in the wiki markup below, do not affect the actual table rendering.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{|
+|  Orange    ||   Apple   ||   more
+|-
+|   Bread    ||   Pie     ||   more
+|-
+|   Butter   || Ice cream ||  and more
+|}
+</pre>
+|
+{|
+|  Orange    ||   Apple   ||   more
+|-
+|   Bread    ||   Pie     ||   more
+|-
+|   Butter   || Ice cream ||  and more
+|}
+|}
+
+You can have longer text or more complex wiki syntax inside table cells, too:
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{|
+|Lorem ipsum dolor sit amet, 
+consetetur sadipscing elitr, 
+sed diam nonumy eirmod tempor invidunt
+ut labore et dolore magna aliquyam erat, 
+sed diam voluptua. 
+
+At vero eos et accusam et justo duo dolores
+et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum
+dolor sit amet. 
+|
+* Lorem ipsum dolor sit amet
+* consetetur sadipscing elitr
+* sed diam nonumy eirmod tempor invidunt
+|}
+</pre>
+|
+{|
+|Lorem ipsum dolor sit amet, 
+consetetur sadipscing elitr, 
+sed diam nonumy eirmod tempor invidunt
+ut labore et dolore magna aliquyam erat, 
+sed diam voluptua. 
+
+At vero eos et accusam et justo duo dolores
+et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum
+dolor sit amet. 
+|
+* Lorem ipsum dolor sit amet
+* consetetur sadipscing elitr
+* sed diam nonumy eirmod tempor invidunt
+|}
+|}
+
+=== Table headers ===
+Table headers can be created by using "<code>!</code>" (exclamation mark) instead of "<code>|</code>" (pipe symbol). Headers usually show up bold and centered by default.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{|
+! Item
+! Amount
+! Cost
+|-
+|Orange
+|10
+|7.00
+|-
+|Bread
+|4
+|3.00
+|-
+|Butter
+|1
+|5.00
+|-
+!Total
+|
+|15.00
+|}
+</pre>
+|
+{|
+! Item
+! Amount
+! Cost
+|-
+|Orange
+|10
+|7.00
+|-
+|Bread
+|4
+|3.00
+|-
+|Butter
+|1
+|5.00
+|-
+!Total
+|
+|15.00
+|}
+|}
+
+===Caption===
+A '''table caption''' can be added to the top of any table as follows.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{|
+|+Food complements
+|-
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+</pre>
+|
+{|
+|+ Food complements
+|-
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+|}
+
+== XHTML attributes ==
+You can add XHTML attributes to tables. For the authoritative source on these, see [http://www.w3.org/TR/REC-html40/struct/tables.html the W3C's HTML 4.01 Specification page on tables].
+
+=== Attributes on tables ===
+Placing attributes after the table start tag (<code>{|</code>) applies attributes to the entire table.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{| border="1"
+|Orange
+|Apple
+|12,333.00
+|-
+|Bread
+|Pie
+|500.00
+|-
+|Butter
+|Ice cream
+|1.00
+|}
+</pre>
+|
+{| border="1"
+|Orange
+|Apple
+|12,333.00
+|-
+|Bread
+|Pie
+|500.00
+|-
+|Butter
+|Ice cream
+|1.00
+|}
+|}
+
+=== Attributes on cells ===
+You can put attributes on individual '''cells'''. For example, numbers may look better aligned right.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{| border="1"
+|Orange
+|Apple
+|align="right" | 12,333.00
+|-
+|Bread
+|Pie
+|align="right" | 500.00
+|-
+|Butter
+|Ice cream
+|align="right" | 1.00
+|}
+</pre>
+|
+{| border="1"
+|Orange
+|Apple
+|align="right"|12,333.00
+|-
+|Bread
+|Pie
+|align="right"|500.00
+|-
+|Butter
+|Ice cream
+|align="right"|1.00
+|}
+|}
+
+You can also use '''cell''' attributes when you are listing multiple '''cells''' on a single line. Note that the '''cells''' are separated by <code>||</code>, and within each '''cell''' the attribute(s) and value are separated by <code>|</code>.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{| border="1"
+| Orange || Apple     || align="right" | 12,333.00
+|-
+| Bread  || Pie       || align="right" | 500.00
+|-
+| Butter || Ice cream || align="right" | 1.00
+|}
+</pre>
+|
+{| border="1"
+| Orange || Apple     || align="right" | 12,333.00
+|-
+| Bread  || Pie       || align="right" | 500.00
+|-
+| Butter || Ice cream || align="right" | 1.00
+|}
+|}
+
+===Attributes on rows===
+You can put attributes on individual '''rows''', too.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{| border="1"
+|Orange
+|Apple
+|align="right"|12,333.00
+|-
+|Bread
+|Pie
+|align="right"|500.00
+|- style="font-style:italic; color:green;"
+|Butter
+|Ice cream
+|align="right"|1.00
+|}
+</pre>
+|
+{| border="1"
+|Orange
+|Apple
+|align="right"|12,333.00
+|-
+|Bread
+|Pie
+|align="right"|500.00
+|- style="font-style:italic; color:green;"
+|Butter
+|Ice cream
+|align="right"|1.00
+|}
+|}
+
+====Simple one-pixel table border====
+The default table formatting uses the "border-collapse: separate" model, which adds table cell spacing (which also separates the table outer border from its content cells). Even with a zero cellspacing, the borders of consecutive cells (and of the overall table container) will add up, so to get a one-pixel separation between cells, you need to selectively remove one or more of the four borders of cells.
+
+Such tables may be formatted more simply, using the "border-collapse: collapse" CSS property; in this table formatting model, the cellspacing attribute (or the CSS "border-spacing:" property) and the table's "padding:" CSS property is ignored and only the larger border of adjacent inner cells (or the table border for outer cells) will be used.
+
+An example of the above for one-pixel table border, using each model (without need for external extensions):
+
+{|border="1" cellspacing="0" cellpadding="2"
+|-
+!|You type
+!width="150"|You get
+|-
+|
+<pre style="font-size: 80%">
+{|style="border-collapse: separate; border-spacing: 0; border-width: 1px; border-style: solid; border-color: #000; padding: 0"
+|-
+!style="border-style: solid; border-width: 0 1px 1px 0"| Orange
+!style="border-style: solid; border-width: 0 0 1px 0"| Apple
+|-
+|style="border-style: solid; border-width: 0 1px 0 0"| Bread
+|style="border-style: solid; border-width: 0"| Pie
+|}
+</pre>
+|
+{|style="margin: 0; border-collapse: separate; border-spacing: 0; border-width: 1px; border-style: solid; border-color: #000; padding: 0"
+|-
+!style="border-style: solid; border-width: 0 1px 1px 0"| Orange
+!style="border-style: solid; border-width: 0 0 1px 0"| Apple
+|-
+|style="border-style: solid; border-width: 0 1px 0 0"| Bread
+|style="border-style: solid; border-width: 0"| Pie
+|}
+|-
+|
+<pre style="font-size: 80%">
+{|style="border-collapse: collapse; border-width: 1px; border-style: solid; border-color: #000"
+|-
+!style="border-style: solid; border-width: 1px"| Orange
+!style="border-style: solid; border-width: 1px"| Apple
+|-
+|style="border-style: solid; border-width: 1px"| Bread
+|style="border-style: solid; border-width: 1px"| Pie
+|}
+</pre>
+|
+{|style="border-collapse: collapse; border-width: 1px; border-style: solid; border-color: #000"
+|-
+!style="border-style: solid; border-width: 1px"| Orange
+!style="border-style: solid; border-width: 1px"| Apple
+|-
+|style="border-style: solid; border-width: 1px"| Bread
+|style="border-style: solid; border-width: 1px"| Pie
+|}
+|}
+
+Notes :
+* When using the "border-width:" CSS shortcut property, the order of the four space-separated specified values is: top, right, bottom, left. When there are fewer than 4 values, the value for left takes its default from the value for right, the value for bottom takes its default from the value for top, and the value for right takes its default from the value for top.
+* The HTML attributes (such as "width=", "border=", "cellspacing=", "cellpadding=") do not need any length unit (the pixel unit is assumed). The CSS style properties (which override the HTML attributes) require an explicit length unit (if the value is not 0) such as "px" for the pixel.
+
+===HTML colspan and rowspan===
+
+You can use HTML '''colspan''' and '''rowspan''' attributes on cells for advanced layout.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre>
+{| border="1"
+!colspan="6"|Shopping List
+|-
+|rowspan="2"|Bread & Butter
+|Pie
+|Buns
+|Danish
+|colspan="2"|Croissant
+|-
+|Cheese
+|colspan="2"|Ice cream
+|Butter
+|Yoghurt
+|}
+</pre>
+|
+{| border="1"
+!colspan="6"|Shopping List
+|-
+|rowspan="2"|Bread & Butter
+|Pie
+|Buns
+|Danish
+|colspan="2"|Croissant
+|-
+|Cheese
+|colspan="2"|Ice cream
+|Butter
+|Yoghurt
+|}
+|}
+
+===With HTML attributes and CSS styles===
+[[Manual:CSS|CSS]] style attributes can be added with or without other HTML attributes.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre style="white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap; white-space:pre-wrap; word-wrap:break-word; word-break:break-all;">
+{| style="color:green; background-color:#ffffcc;" cellpadding="10" cellspacing="0" border="1"
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+</pre>
+|
+{| style="color:green; background-color:#ffffcc;" cellpadding="10" cellspacing="0" border="1"
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+|}
+
+'''Attributes''' can be added to the caption and headers as follows.
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-
+|
+<pre style="white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap; white-space:pre-wrap; word-wrap:break-word; word-break:break-all;">
+{| border="1" cellpadding="20" cellspacing="0"
+|+ align="bottom" style="color:#e76700;" |''Food complements''
+|-
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+</pre>
+|
+{| border="1" cellpadding="20" cellspacing="0"
+|+ align="bottom" style="color:#e76700;" |''Food complements''
+|-
+|Orange
+|Apple
+|-
+|Bread
+|Pie
+|-
+|Butter
+|Ice cream 
+|}
+|}
+
+===Accessibility of table header cells===
+Table header cells do not explicitly specify which table data cells they apply to (those on their right on the same row, or those below them on the same column). When the table is rendered in a visual 2D environment, this is usually easy to infer.
+
+However when tables are rendered on non-visual medias, you can help the browser to determine which table header cell applies to the description of any selected cell (in order to repeat its content in some accessibility helper) using a scope="row" or scope="col" attribute on table header cells. In most cases with simple tables, you'll use scope="col" on all header cells of the first row, and scope="row" on the first cell of the following rows:
+
+{| cellspacing="0" border="1"
+!style="width:50%"|You type
+!style="width:50%"|You get
+|-

@@ -1,0 +1,1000 @@
+&&%s&& %s MediaWiki:Captcha-createaccount {10328 2006-09-12T16:13:49Z {458 Kernigh} Tell users that they might need to solve an equation. As a protection against automated spam, you'll need to type in the words that appear in this image (or solve the arithmetic equation) to register an account:<br />
+([[Special:Captcha/help|What is this?]])}
+&&%s&& %s Horn of plenty {148157 2022-09-14T21:16:07Z {187 Darth l33t} generalize strategy {{tool
+| color=white
+| tile=[[image:horn.png]]
+| name=horn of plenty
+| appearance=[[horn]]
+| cost=50
+| weight=18
+  |material=bone
+}}
+A '''horn of plenty''' is one of the magical [[horn]]s, but unlike the other horns, it ''cannot'' be used as a [[musical instrument]].{{refsrc|apply.c|2958|comment=case for HORN_OF_PLENTY in doapply}} It is created with 1 to 20 [[charging|charges]] and it may contain up to 50 charges. When applied, it produces [[food]] (including {{of|lump|royal jelly}}) or a potion of {{of|potion|water|fruit juice|booze|acid|sickness}}, or {{of|potion|oil}}.{{refsrc|mkobj.c|106|comment=make the object}}{{refsrc|objects.c|722|comment=potion probabilities}}{{refsrc|objects.c|668|comment=food probabilities}}{{refsrc|objnam.c|2721|comment=rnd_class renames object using base probabilities}} The [[BUC]] of the item produced is the same as that of the horn.
+
+==Food probabilities==
+{{frac|12|13}} of the time, a horn of plenty produces a comestible, in the following ratios. Multiples may be created if the food code permits.
+
+{|class="prettytable striped sortable"
+! scope="col" | Item
+! scope="col" | Class probability
+! scope="col" | Overall probability
+|-
+| [[tripe ration]] || 14% || 12.9%
+|-
+| random [[egg]] || 8.5% || 7.8%
+|-
+| [[eucalyptus leaf]] || 0.3% || 0.3%
+|-
+| [[apple]] || 1.5% || 1.4%
+|-
+| [[orange]] || 1% || 0.9%
+|-
+| [[pear]] || 1% || 0.9%
+|-
+| [[melon]] || 1% || 0.9%
+|-
+| [[banana]] || 1% || 0.9%
+|-
+| [[carrot]] || 1.5% || 1.4%
+|-
+| [[sprig of wolfsbane]] || 0.7% || 0.6%
+|-
+| [[clove of garlic]] || 0.7% || 0.6%
+|-
+| [[slime mold]] || 7.5% || 6.9%
+|-
+| [[lump of royal jelly]] || 5.4% || 5%
+|-
+| [[cream pie]] || 2.5% || 2.3%
+|-
+| [[candy bar]] || 1.3% || 1.2%
+|-
+| [[fortune cookie]] || 5.5% || 5.1%
+|-
+| [[pancake]] || 2.5% || 2.3%
+|-
+| [[lembas wafer]] || 2% || 1.8%
+|-
+| [[cram ration]] || 2% || 1.8%
+|-
+| [[food ration]] || 32.6% || 30.1%
+|-
+| random [[tin]], including [[spinach]] || 7.5% || 6.9%
+|}
+
+The remaining {{frac|13}} of the time, the horn produces a potion, in the following ratios:
+
+{|class="prettytable striped sortable"
+! scope="col" | Potion
+! scope="col" | Class probability
+! scope="col" | Overall probability
+|-
+| [[potion of booze]] || 18.6% || 1.4%
+|-
+| [[potion of sickness]] || 4.2% || 0.3%
+|-
+| [[potion of fruit juice]] || 18.6% || 1.4%
+|-
+| [[potion of acid]] || 4.4% || 0.3%
+|-
+| [[potion of oil]] || 13.3% || 1%
+|-
+| [[potion of water]] || 40.8% || 3.1%
+|}
+
+In the tables above, class probability is chance within class (potion or food), and overall probability is the chance relative to all possible items.
+
+For [[food]] generation, the standard room probabilities for food generation{{refsrc|objects.c|668|comment=food probabilities}} are used. If a [[food ration]] is generated, there is a 1 in 7 chance this will be changed to a [[lump of royal jelly]] instead. When generating a [[potion]], the standard room probabilities for potion generation{{refsrc|objects.c|722|comment=potion probabilities}} will be used initially. In the event that the selected [[potion]] is magical, a new potion is created from the non-magical set of potions. This will in turn be re-generated until it is not a [[potion of sickness]]. Therefore, the only way to receive a [[potion of sickness]] is if it is generated initially.
+
+==Strategy==
+For a [[Tourist]], or any neutral character with [[the Platinum Yendorian Express Card]], a blessed horn of plenty is a great item as it can be recharged an unlimited number of times with little opportunity cost. While in a normal game one doesn't generally need the extra food, the ability to produce an indefinite amount of potions and food has several non-trivial uses:
+
+* The unlimited food and potion source can be essential in multi-conduct games. In particular, it makes the Tourist a viable candidate for a liquid diet: a [[foodless]] [[atheist]] true [[polyselfless]] [[survivor]] (see the link below).
+* Having a renewable source of royal jelly (and to a lesser degree, spinach) gives vegetarian characters a good chance of maxing out their [[strength]], which is otherwise very difficult without being able to eat [[giant]] corpses.
+* The potions can be used to provide an indefinite supply of {{of|potion|holy water}}, or can be used for [[polypiling]] or [[alchemy]].
+* Those attempting [[stupid ascension trick]]s such as [[Farming#Death farming|Death farming]] might prefer a horn of plenty to prayer as a food source, though prayer is easier to automate.
+* If [[smoky potion]]s are one of sickness, fruit juice, or booze, acid, or oil, the horn can be used as a (slow) [[wish]] engine.
+
+For characters without access to the PYEC, recharging the horn isn't likely to be a good use for a valuable [[scroll of charging]]. Bless it if you can spare the holy water, use it until it's out of charges, then save it for polypiling or discard it.
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], there is a very small chance (about {{frac|250}}) that the potion generated will be a [[Potion of blood|blood-red potion]]. This potion has an 80% chance of being a potion of blood, and a 20% chance of being a potion of vampire blood. Other than the starting inventories of vampires, this is the only time blood-red potions are generated anywhere in the game.  
+
+===SLASH'EM===
+In [[SLASH'EM]] and variants based on it, the potion generated can be any non-[[magical item|magical]] one ''except'' sickness and {{of|potion|blood}}, the latter not being generated randomly.  Thus, in SLASH'EM itself the only difference is lack of potions of sickness; in, say, [[SlashTHEM]], any of the new non-magical potions (such as {{of|potion|cyanide|and=1|Jolt Cola}}) can be generated.
+
+==References==
+<references />
+
+==External links==
+* [http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/999ebb59ef609239/a987da11a8df6d6b?lnk=gst&q=ciompi+horn+of+plenty#a987da11a8df6d6b Liquid diet tourist] using a horn of plenty
+{{nethack-366}}
+[[Category:Tools]]
+[[Category:Musical instruments]]}
+&&%s&& %s Ettin {147680 2022-08-19T22:42:32Z {4001279 Umbire the Phantom} /* Origin */* {{monster
+ |difficulty=13
+ |level=10
+ |experience=291
+ |speed=12
+ |AC=3
+ |MR=0
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Melee weapon 2d8, melee weapon 3d6, can use projectiles
+ |weight=1700
+ |nutr=500
+ |size=Huge
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|An ettin|animal=1|humanoid=1|carnivore=1|hostile=1|strong=1|nasty=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line1424]]
+}}
+
+The '''ettin''', {{monsym|ettin}}, is a type of [[monster]] that appears in ''[[NetHack]]''. They are [[giant humanoid]]s that are close to [[giant (monster attribute)|giants]] in many respects, but do not have the <code>[[M2 GIANT|M2_GIANT]]</code> flag and are considered [[animal]]s rather than [[intelligent monster]]s.
+
+Due to their two heads, ettins ignore stealth {{frac|9|10}} of the time.{{refsrc|src/monmove.c|225|version=NetHack 3.6.6|comment=A comment just a few lines above states that "ettins are hard to surprise".}} Their anatomy does not affect decapitation by [[Vorpal Blade]], which still functions as normal.
+
+==Generation==
+Randomly generated ettins [[Monster starting inventory|are always created with]] a [[club]]. Ettins may be also created by a hostile [[spellcaster]] casting the [[summon nasties]] [[monster spell]].
+
+Ettin [[zombie]]s and [[mummies]] leave behind ettin corpses upon death.
+
+==Strategy==
+Ettins are [[strong]] and move as fast as a player without speed; they can hit fairly hard and often, but lack the [[boulder]]-hurling strength of their giant cousins, though they are capable of using other projectiles. An ettin's lack of [[Magic resistance (monster)|MR score]] and inability to wear armor renders them quite vulnerable against a well-kitted player - most who encounter ettins have already dealt with their [[undead]] kin, and are generally able to fight live ones with little trouble.
+
+==History==
+The ettin has been present in the game since ''Hack for PDP-11'', a variant of [[Jay Fenlason's Hack]] - from this version to the publicly distributed versions of ''[[Hack]]'' edited by [[Andries Brouwer]], they used the {{white|e}} glyph. Their [[undead]] forms were introduced in [[NetHack 3.0.0]].
+
+A commented-out interaction is present in the code that would give [[YAFM]] when using the #[[chat]] [[extended command]] and selecting yourself while in the form of an ettin (''"You discover that your other head makes boring conversation."''); the rationale was that it would raise all sorts of questions about ettins being able to wear multiple [[helm]]s or [[amulet]]s, as well as similar queries about multi-limbed monsters such as the [[marilith]].{{refsrc|src/sounds.c|1043|version=NetHack 3.6.6}}
+
+==Origin==
+The word "ettin" is an archaic English word, derived from the Old English ''Eoten'' and cognate to the Germanic/Old Norse ''Jötunn''. Each of these words has been used to mean "giant" in some fashion. Their portrayal as two-headed and giant-like may be derived from [[J. R. R. Tolkien]]: the Ettenmoors are a region in Middle Earth inhabited by [[troll]]s, and Tolkien's ''Guide to the Names in The Lord of the Rings'' states the root to be the word ''eten'' which means “troll" or "ogre”; the second chapter of ''The Hobbit'' also has a character comment on trolls as being slovenly and lacking table manners, "even those with only one head each", implying that trolls are normally two-headed.
+
+The ettins from ''[[Dungeons & Dragons]]'', and many later portrayals of ettin, are likely patterned after this - ''Dungeons & Dragons'' ettins are generally ugly and very unintelligent brutes that also possess some orcish traits, and are descended from giants through the lineage of the two-headed Julian and Arno, Annam the All-Father's weakest sons. Their names translate in-universe to "ugly giant" in ancient Common and "runt" in Jotun; they are chaotic-aligned and have even worse table manners than Tolkien's trolls. Giant two-headed trolls, or "fell trolls", also exist in the setting and are believed to be a cross between troll and ettin.
+
+The first ''Monster Manual'' depicts ettins as nocturnal two-headed giants that dwell in remote places and live underground, and establishes the ettin's advantages against stealthy foes that are used in later editions. ''NetHack'' borrows these elements, as well as their hit die (2-16 using the left arm and 3-18 using the right), with their lack of intelligence as the apparent rationale for the "animal" flag.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], ettins [[Monsters with hits creatures as a +x weapon (SLASH'EM)|hit as a +2 weapon]].
+
+===dNetHack===
+In [[dNetHack]], ettins hate [[iron]] much like other giants.
+
+===GruntHack===
+In [[GruntHack]], ettins are eligible to be [[shaman (GruntHack)|racial shamans]].
+
+==Encyclopedia entry==
+{{encyclopedia|
+The two-headed giant, or ettin, is a vicious and unpredictable hunter that stalks by night and eats any meat it can catch.
+}}
+
+==References==
+<references />
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Dart {146855 2022-07-21T11:40:58Z {4001279 Umbire the Phantom} /* Strategy */ {{weapon
+|name=dart
+|tile=[[image:dart.png]]
+|smalldmg=1d3
+|largedmg=1d2
+|cost=2
+|weight=1
+|material=iron
+|color=cyan
+|skill=dart
+}}
+
+'''Darts''' are a type of [[projectile]] that appear in ''[[NetHack]]''. They are the most common type of [[ranged weapon]].
+
+==Generation==
+[[Tourist]]s start with {{rn1|20|21}} +2 darts.{{refsrc|src/u_init.c|768|nethack=3.6.6}}{{refsrc|src/u_init.c|143|nethack=3.6.6}}
+
+{{frac|4}} of [[kobold]]s are [[monster starting inventory|generated with]] {{rn1|12|3}} darts.{{refsrc|src/makemon.c|456|nethack=3.6.6}} {{frac|4}} of [[ninja]] are generated with {{rn1|6|6}} darts.{{refsrc|src/makemon.c|266|nethack=3.6.6}}{{refsrc|src/mkobj.c|803|nethack=3.6.6}}
+
+[[Dart trap]]s will shoot darts when activated, and untrapping them will produce 50&minus;[[rnl]](50) darts.{{refsrc|src/trap.c|4241|nethack=3.6.6}}
+
+==Dart skill==
+{{dart skill table}}
+Darts are the only weapons to use the '''dart''' skill, and there are no [[artifact weapon|artifact]] darts. The skill can only be trained by throwing the darts.
+
+==Description==
+As with most other projectiles, darts are used by [[throw]]ing or [[firing]] them, and are ineffective in melee. They may [[Projectile#Breakage|break]] after hitting a monster, which is based on their [[enchantment]], [[beatitude]] and [[Luck]]; depending on role and skill, they may also be [[multishot]]. Like other missile weapons, darts that are cursed occasionally slip from your hand and hit the ground or fly in a different direction.
+
+Dipping darts in a [[potion of sickness]] will [[poison]] them, adding d6 damage and 10% chance of [[instadeath]] per dart against non-poison resistant foes.
+
+==Strategy==
+Because of their initial low damage and high chance of breakage, [[dagger]]s or an [[aklys]] are generally preferable choices for your primary thrown weapon in the early game. However, darts can still be of use as disposable projectiles, particularly against otherwise [[sessile]] monsters; darts are also incredibly common and light, can be poisoned, and do not require a launcher. They also gain damage bonuses from [[strength]], and combined with high Luck and enchantment, they can last through a significant amount of the game.{{refsrc|src/uhitm.c|1101|nethack=3.6.6|comment=damage bonus from strength}}
+
+Tourists in particular should manage their starting darts carefully as they work their way to a viable weapon and armor - once suitably kitted out, you can supplement your weapon of choice with darts as a ranged option; Tourists are unrestricted in every skill ''except'' clubs like the aklys. A stack of enchanted and poisoned darts thrown at Skilled or better is also enough to bring down their [[quest nemesis]], the [[Master of Thieves]], with relative ease.
+
+==External links==
+* An [http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/c8d7b9e06b5ac0d2/6851d872865d86ae?lnk=gst&rnum=2#6851d872865d86ae RGRN discussion on the usefulness of darts].
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Weapons]]}
+&&%s&& %s Dart trap {147580 2022-08-16T06:54:51Z {4000978 Aximili} Switch redirect to standalone article #REDIRECT [[Arrow and dart trap]]}
+&&%s&& %s Dgn comp {147869 2022-08-22T04:20:29Z {4000978 Aximili} todo {{DISPLAYTITLE:dgn_comp}}
+'''dgn_comp''' is the utility program that converts the dungeon definition file [[Dungeon.def format|dungeon.def]] into a binary file, which is used by NetHack to determine how the dungeon branches and what [[special level]]s are used and where.
+
+{{todo|Verify that dgn_comp is still used in 3.6.6 and 3.7.0}}
+[[Category:Annotations]]}
+&&%s&& %s Dungeon.def format {98602 2015-12-19T02:32:21Z {4000080 ChasonBot}  {{DISPLAYTITLE:dungeon.def format}}
+'''[[dungeon.def]]''' is the file that describes how the dungeon branches and what [[special level]]s are used and where. It is compiled into a binary file by [[dgn_comp]]
+
+{{Float right|__TOC__}}
+
+===Comments===
+
+All lines beginning with <tt>#</tt> are comments and are ignored by the compiler.
+
+Example:
+
+ # This is a comment.
+
+===DUNGEON===
+
+ DUNGEON: "name" "bonetag" (base, range)
+
+This is used to define a new dungeon.
+
+*<tt>"name"</tt> is the name of the dungeon
+*<tt>"bonetag"</tt> is the character used in file names when a [[bones]] file is created in this dungeon, or <tt>"none"</tt>, in which case no bones will be created in the dungeon.
+*<tt>base</tt> and <tt>range</tt> define the dungeon depth.
+
+You can also add an optional integer, which is the chance of this dungeon being generated.
+
+Example:
+ DUNGEON: "The Dungeons of Doom" "D" (25, 5)
+
+===ENTRY===
+
+ ENTRY: lvl
+
+Set the entry level for this dungeon. 0 means from the top, negative number means the level from the bottom (-1 is the bottom level), greater than 0 means the level number from the top of the dungeon.
+
+Example:
+ ENTRY: -1
+
+===DESCRIPTION===
+
+ DESCRIPTION: flag
+
+Sets a flag for the previously defined DUNGEON. You can use as many DESCRIPTION lines as you want.
+
+flag is one of the following flags:
+*<tt>town</tt>
+*<tt>hellish</tt>
+*<tt>mazelike</tt>
+*<tt>roguelike</tt>
+
+Example:
+ DESCRIPTION: mazelike
+
+===ALIGNMENT===
+
+ ALIGNMENT: flag
+
+Sets the alignment for the previously defined {{sa|DUNGEON}}. Only one of these per dungeon allowed.
+
+flag is one of the following flags:
+*<tt>unaligned</tt> (or its synonym <tt>noalign</tt>)
+*<tt>lawful</tt>
+*<tt>neutral</tt>
+*<tt>chaotic</tt>
+
+Example:
+ ALIGNMENT: lawful
+
+===PROTOFILE===
+
+ PROTOFILE: "str"
+
+Sets the special level prototype filename. This is used when loading the lev-file from disk. See MAZE in [[Des-file format#MAZE|Des-file format]].
+
+Example:
+ PROTOFILE: "tower"
+
+===BRANCH===
+
+ BRANCH: "name" @ (base, range) type dir
+
+Adds a branch to the previously defined {{sa|DUNGEON}}.
+
+*<tt>"name"</tt> is the name of the branch. You must later define a DUNGEON with the same name.
+*<tt>base</tt> and <tt>range</tt> define the depth where the branch occurs.
+*<tt>type</tt> is optional (defaults to <tt>stair</tt>), or one of the following:
+**<tt>stair</tt>, a two-way stair
+**<tt>no_up</tt>, no up staircase
+**<tt>no_down</tt>, no down staircase
+**<tt>portal</tt>, portal connection
+*<tt>dir</tt> is optional (defaults to <tt>down</tt>), or is one of the following:
+**<tt>up</tt>
+**<tt>down</tt>
+
+Example:
+ BRANCH: "Vlad's Tower" @ (9, 5) up
+
+===CHAINBRANCH===
+
+ CHAINBRANCH: "name" "chain" + (base, range) type dir
+
+Adds a branch to the previously defined {{sa|DUNGEON}}. This is similar to {{sa|BRANCH}}, except the depth depends where a {{sa|LEVEL}} occurs in the previously defined DUNGEON.
+
+*<tt>name</tt> is the name of the branch. You must later define a DUNGEON with the same name.
+*<tt>chain</tt> is a name of a previously defined LEVEL in this DUNGEON.
+*<tt>base</tt> and <tt>range</tt> define the branch depth, relative to <tt>chain</tt>.
+*<tt>type</tt> and <tt>dir</tt> as in {{sa|BRANCH}}
+
+Example:
+ CHAINBRANCH: "Gehennom" "castle" + (0, 0) no_down
+
+===LEVEL===
+
+ LEVEL: "name" "bonetag" @ (base, range) chance
+
+Adds a special level to the previously defined {{sa|DUNGEON}}. See also {{sa|RNDLEVEL}}.
+
+*<tt>name</tt> is the name of this special level, and is used for loading the special levels from disk. You must define a special [[Des-file format|des-level]] with the same name.
+*<tt>bonetag</tt> is a single character used in a filename when this level leaves a [[bones]], or <tt>"none"</tt>, in which case no bones will be created in the level. This should be unique among all special levels in this dungeon.
+*<tt>base</tt> and <tt>range</tt> define the branch depth
+*<tt>chance</tt> is optional, gives the % chance of this level existing in any given game.
+
+Example:
+ LEVEL: "oracle" "O" @ (5, 5)
+
+===RNDLEVEL===
+
+ RNDLEVEL: "name" "bonetag" @ (base, range) chance nlevels
+
+Adds a special level to the previously defined {{sa|DUNGEON}}, with several variants for the des-level. See also {{sa|LEVEL}}.
+
+*<tt>name</tt> is the name of this special level, used for loading the special levels from disk. The name format will be <tt>name-num</tt>, where <tt>num</tt> is the variant of the level to be loaded. For example, <tt>bigrm-3</tt>. See also [[Des-file format#MAZE|MAZE]] or [[Des-file format#LEVEL|LEVEL]] in the [[Des-file format]] article.
+*<tt>bonetag</tt> is a single character used in a filename when this level leaves a [[bones]], or <tt>"none"</tt>, in which case no bones will be created in the dungeon. This should be unique among all special levels in this dungeon.
+*<tt>base</tt> and <tt>range</tt> define the branch depth
+*<tt>chance</tt> is optional, gives the % chance of this level existing in any given game.
+*<tt>nlevels</tt> is the number of different special level layout versions or variants for this particular level.
+
+Example:
+ RNDLEVEL: "bigrm" "B" @ (10, 3) 40 5
+
+===LEVELDESC===
+
+ LEVELDESC: flag
+
+Defines flags for a previously defined {{sa|LEVEL}} or {{sa|RNDLEVEL}}.
+
+<tt>flag</tt> is the same as {{sa|DESCRIPTION}} has.
+
+Example:
+ LEVELDESC: town
+
+===LEVALIGN===
+
+ LEVALIGN: flag
+
+Defines alignment of a previously defined {{sa|LEVEL}} or {{sa|RNDLEVEL}}.
+
+<tt>flag</tt> is the same as {{sa|ALIGNMENT}} has.
+
+Example:
+ LEVALIGN: chaotic
+
+===CHAINLEVEL===
+
+ CHAINLEVEL: "name" "bonetag" "chain" + (base, range) chance
+
+Adds a special level to the previously defined {{sa|DUNGEON}}. This is similar to {{sa|LEVEL}}, except the depth depends where another LEVEL occurs in the previously defined DUNGEON.
+
+*<tt>name</tt> is the name of this special level. used for loading the special levels from disk.
+*<tt>bonetag</tt> is a single character used in a filename when this level leaves a [[bones]], or <tt>"none"</tt>, in which case no bones will be created in the level. This should be unique among all special levels in this dungeon.
+*<tt>chain</tt> is a name of a previously defined LEVEL in this DUNGEON.
+*<tt>base</tt> and <tt>range</tt> define the level depth, relative to <tt>chain</tt>.
+*<tt>chance</tt> is optional, gives the % chance of this level existing in any given game.
+
+Example:
+ CHAINLEVEL: "wizard2" "X" "wizard1" + (1, 0)
+
+===RNDCHLEVEL===
+
+ RNDCHLEVEL: "name" "bonetag" "chain" + (base, range) chance nlevels
+
+Adds a special level to the previously defined {{sa|DUNGEON}}, with several variants for the des-level. This is similar to {{sa|CHAINLEVEL}}, except the depth depends where another LEVEL occurs in the previously defined DUNGEON.
+
+*<tt>name</tt> is the name of this special level. used for loading the special levels from disk. The name format will be <tt>name-num</tt>, where <tt>num</tt> is the variant of the level to be loaded. For example, <tt>bigrm-3</tt>. See also MAZE in [[Des-file format#MAZE|MAZE]] or [[Des-file format#LEVEL|LEVEL]] in the [[Des-file format]] article.
+*<tt>bonetag</tt> is a single character used in a filename when this level leaves a [[bones]], or <tt>"none"</tt>, in which case no bones will be created in the level. This should be unique among all special levels in this dungeon.
+*<tt>chain</tt> is a name of a previously defined LEVEL in this DUNGEON.
+*<tt>base</tt> and <tt>range</tt> define the level depth, relative to <tt>chain</tt>.
+*<tt>chance</tt> is optional, gives the % chance of this level existing in any given game.
+*<tt>nlevels</tt> is the number of different special level layout version for this particular level.
+
+[[Category:Annotations]]
+{{nethack-343}}}
+&&%s&& %s Vulture's Eye {69576 2011-03-19T23:29:37Z {679 Ray Chason} Fix double redirect #REDIRECT [[Vulture]]}
+&&%s&& %s Vulture's Claw {69577 2011-03-19T23:29:56Z {679 Ray Chason} Fix double redirect #REDIRECT [[Vulture]]}
+&&%s&& %s NetHack 2.2a source code {12588 2006-09-28T13:22:55Z {396 Jayt} source code infobox {{NetHack source code}}
+This page contains links to the '''source code''' of [[NetHack 2.2a]].
+This is an old release; for the latest release, see [[Source code]].
+
+This set of files is from the distribution found
+[http://www.juiblex.co.uk/nethack/source/nethack-2.2a.tar.gz here].
+
+{|style="width: 100%;"
+|style="width: 50%; vertical-align: top;"|
+=== Header files ===
+
+* [[NetHack 2.2a/config.h]]
+* [[NetHack 2.2a/date.h]]
+* [[NetHack 2.2a/edog.h]]
+* [[NetHack 2.2a/eshk.h]]
+* [[NetHack 2.2a/extern.h]]
+* [[NetHack 2.2a/flag.h]]
+* [[NetHack 2.2a/func_tab.h]]
+* [[NetHack 2.2a/gen.h]]
+* [[NetHack 2.2a/gold.h]]
+* [[NetHack 2.2a/hack.h]]
+* [[NetHack 2.2a/mfndpos.h]]
+* [[NetHack 2.2a/mkroom.h]]
+* [[NetHack 2.2a/monst.h]]
+* [[NetHack 2.2a/msdos.h]]
+* [[NetHack 2.2a/objclass.h]]
+* [[NetHack 2.2a/objects.h]]
+* [[NetHack 2.2a/obj.h]]
+* [[NetHack 2.2a/onames.h]]
+* [[NetHack 2.2a/permonst.h]]
+* [[NetHack 2.2a/rm.h]]
+* [[NetHack 2.2a/spell.h]]
+* [[NetHack 2.2a/trap.h]]
+* [[NetHack 2.2a/wseg.h]]
+* [[NetHack 2.2a/you.h]]
+|style="width: 50%; vertical-align: top;"|
+=== Source files ===
+* [[NetHack 2.2a/alloc.c]]
+* [[NetHack 2.2a/apply.c]]
+* [[NetHack 2.2a/bones.c]]
+* [[NetHack 2.2a/cmd.c]]
+* [[NetHack 2.2a/decl.c]]
+* [[NetHack 2.2a/do.c]]
+* [[NetHack 2.2a/dog.c]]
+* [[NetHack 2.2a/dogmove.c]]
+* [[NetHack 2.2a/do_name.c]]
+* [[NetHack 2.2a/dothrow.c]]
+* [[NetHack 2.2a/do_wear.c]]
+* [[NetHack 2.2a/eat.c]]
+* [[NetHack 2.2a/end.c]]
+* [[NetHack 2.2a/engrave.c]]
+* [[NetHack 2.2a/fight.c]]
+* [[NetHack 2.2a/fountain.c]]
+* [[NetHack 2.2a/hack.c]]
+* [[NetHack 2.2a/invent.c]]
+* [[NetHack 2.2a/ioctl.c]]
+* [[NetHack 2.2a/lev.c]]
+* [[NetHack 2.2a/makedefs.c]]
+* [[NetHack 2.2a/makemon.c]]
+* [[NetHack 2.2a/mhitu.c]]
+* [[NetHack 2.2a/mklev.c]]
+* [[NetHack 2.2a/mkmaze.c]]
+* [[NetHack 2.2a/mkobj.c]]
+* [[NetHack 2.2a/mkshop.c]]
+* [[NetHack 2.2a/mon.c]]
+* [[NetHack 2.2a/monmove.c]]
+* [[NetHack 2.2a/monst.c]]
+* [[NetHack 2.2a/msdos.c]]
+* [[NetHack 2.2a/objnam.c]]
+* [[NetHack 2.2a/o_init.c]]
+* [[NetHack 2.2a/options.c]]
+* [[NetHack 2.2a/pager.c]]
+* [[NetHack 2.2a/pcmain.c]]
+* [[NetHack 2.2a/pctty.c]]
+* [[NetHack 2.2a/pcunix.c]]
+* [[NetHack 2.2a/polyself.c]]
+* [[NetHack 2.2a/potion.c]]
+* [[NetHack 2.2a/pray.c]]
+* [[NetHack 2.2a/pri.c]]
+* [[NetHack 2.2a/prisym.c]]
+* [[NetHack 2.2a/read.c]]
+* [[NetHack 2.2a/rip.c]]
+* [[NetHack 2.2a/rnd.c]]
+* [[NetHack 2.2a/rumors.c]]
+* [[NetHack 2.2a/save.c]]
+* [[NetHack 2.2a/search.c]]
+* [[NetHack 2.2a/shk.c]]
+* [[NetHack 2.2a/shknam.c]]
+* [[NetHack 2.2a/sit.c]]
+* [[NetHack 2.2a/spell.c]]
+* [[NetHack 2.2a/steal.c]]
+* [[NetHack 2.2a/termcap.c]]
+* [[NetHack 2.2a/timeout.c]]
+* [[NetHack 2.2a/topl.c]]
+* [[NetHack 2.2a/topten.c]]
+* [[NetHack 2.2a/track.c]]
+* [[NetHack 2.2a/trap.c]]
+* [[NetHack 2.2a/u_init.c]]
+* [[NetHack 2.2a/unixmain.c]]
+* [[NetHack 2.2a/unixtty.c]]
+* [[NetHack 2.2a/unixunix.c]]
+* [[NetHack 2.2a/vault.c]]
+* [[NetHack 2.2a/version.c]]
+* [[NetHack 2.2a/wield.c]]
+* [[NetHack 2.2a/wizard.c]]
+* [[NetHack 2.2a/worm.c]]
+* [[NetHack 2.2a/worn.c]]
+* [[NetHack 2.2a/write.c]]
+* [[NetHack 2.2a/zap.c]]
+|}
+
+==Other files==
+
+* [[NetHack 2.2a/rumors.base]]
+* [[NetHack 2.2a/rumors.kaa]]
+* [[NetHack 2.2a/rumors.mrx]]
+
+[[Category:NetHack 2.2a source code| ]]}
+&&%s&& %s Category:NetHack 2.2a source code {10457 2006-09-14T23:31:03Z {396 Jayt} created category, in [[Source code]] This category contains articles containing the source code to [[NetHack 2.2a]].
+
+[[Category:Source code]]}
+&&%s&& %s Meat ring {149203 2022-12-07T01:04:43Z {4001279 Umbire the Phantom} /* Description */* {{comestible
+  |color=brown
+  |tile=[[image:meat ring.png]]
+  |name=meat ring
+  |cost=5
+  |nutrition=5
+  |turns=1
+  |weight=1
+  |conduct=meat
+}}
+
+A '''meat ring''' is a type of [[comestible]] that very rarely appears in ''[[NetHack]]''.
+
+==Generation==
+Meat rings are are only created by [[zap]]ping a [[spell]] of {{spell of|stone to flesh}} at a [[ring]] with a [[mineral]] or [[gemstone]] [[randomized appearance]].
+
+==Description==
+Meat rings give 5 [[nutrition]] when eaten and can be worn like normal rings, but have no effect (not even [[ring hunger]]); you can still drop a meat ring onto a [[sink]] similar to normal rings, though this also has no effect beyond giving a specific message. Like [[tripe ration]]s, meat rings are considered a [[treat]] for carnivorous [[pet]]s.
+
+==Strategy==
+Like [[meat stick]]s, most meat rings are accidental creations from an accidental stone to flesh zap at yourself, or a deliberate one used to cure [[stoning]]. A meat ring provides very little nutrition, and are best used as lightweight treats to feed any meat-eating pets or else tame carnivorous [[domestic animal]]s - they can also be used as [[polyfodder]] to try and turn into lightweight food such as [[lembas wafer]]s.
+
+If you cannot uncurse a cursed mineral or gemstone ring any other way, a viable method is to drop all ''other'' mineral and gemstone items and then cast stone to flesh on yourself - the cursed ring can then be eaten off your finger, with the only remaining concern being adverse effects of [[Food#rotten food|rotten food]].
+
+===List of mineral and gemstone rings===
+Rings with the following randomized appearances can be turned into meat rings:
+
+* agate
+* black onyx
+* clay
+* coral
+* diamond
+* emerald
+* granite
+* jade
+* moonstone
+* opal
+* ruby
+* sapphire
+* tiger eye
+* topaz
+
+==History==
+The meat ring is introduced alongside the spellbook of stone to flesh in [[NetHack 3.3.0]].
+
+==Messages==
+{{message|Several flies buzz around the sink.|You dropped a meat ring into a sink.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], meat rings can be randomly generated as wares found in food stores.
+
+==Encyclopedia entry==
+{{encyclopedia-redirect|meatball}}
+{{nethack-366}}
+[[Category:Comestibles]]
+[[Category:Rings]]}
+&&%s&& %s Class difficulty {10512 2006-09-15T10:32:00Z {396 Jayt} [[Class difficulty]] moved to [[Role difficulty]]: NetHack uses role #REDIRECT [[Role difficulty]]}
+&&%s&& %s Archeologist quest {148008 2022-08-29T17:39:32Z {187 Darth l33t} Strategy section The [[Archeologist]] quest pits you against the [[Minion of Huhetotl]] for [[The Orb of Detection]]. For more information on the quest [[branch]] in general, see the [[quest]] article.
+<div class="thumb tright">
+{|class="wikitable"
+!Home level
+|The College of Archeology
+|-
+!Locate level
+|The Tomb of the Toltec Kings
+|-
+!Goal level
+|The Crypt
+|-
+!Leader
+|[[Lord Carnarvon]]
+|-
+!Guardians
+|[[students]]
+|-
+!Nemesis
+|The [[Minion of Huhetotl]]
+|-
+!Quest Artifact
+|[[The Orb of Detection]]
+|}
+</div>
+==Levels==
+
+Random monsters on this Quest are generated with the following
+frequencies:
+* 24/35  (69%)  random S
+* 24/175  (14%)  human mummy
+* 6/175  (3%)  random M
+* 1/7  (14%)  normal random monster
+
+===The College of Archeology===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+@={{msl|student}}
+W={{msl|watchman}}
+;={{msl|giant eel}}
+s={{gray|S}}
+
+............................................................................
+............................................................................
+...................................................................s........
+..............................s.............................................
+....................}}}}}}}}}}}}}}}}}}}}}}}}};}}}}}}}}}}}}}.................
+....................}-------------------------------------}.................
+....................}|..S......+.................+W......|}....^............
+....................}|S---------------+----------|.....>.|}.................
+....................}|.|...............|.......+.|.......|}.................
+....................}|.|..@@@..........|--------.--------|}.s...............
+....................;|.S.\@.@..........+.................+..Ms..............
+....................}|.|..@@@..........|--------.--------|}.ss..............
+....................}|.|...............|.......+.|.......|}.ss..............
+....................}|S---------------+----------|.......|}.M...............
+....................}|..S......+.................+W......|}.................
+....................}-------------------------------------}.................
+....................}}}}}}}}}}}}};}}}}}}}}}}}}}}}}}}}}}}}}}.................
+....................M.......................................................
+............................................................................
+..........s.................................................................
+</replacecharsblock></div>
+
+The two-way magic portal back to the Dungeons of Doom is at the marked
+point. Lord Carnarvon occupies the throne, where there is also a chest;
+there are also eight students in the throneroom. A watchman occupies
+each of the front anterooms (both the one with the downstair and
+without). There are three giant eels in the moat, and two random M and
+eight random S just outside the College door; there are three random S
+and one random M around the level further away from the building. The
+level contains six random traps. Each snake will have a random
+object generated at its location, to potentially hide under.
+The entire level is no-teleport and has undiggable walls and floor.
+
+===Upper filler level===
+This is an "ordinary" room-and-corridor level, with six rooms, one human
+mummy, six random S (with hiding-objects), eight random other objects,
+and four random traps.
+
+===The Tomb of the Toltec Kings===
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+K=[[spiked pit|{{darkgray|^}}]]
+P=[[pit|{{darkgray|^}}]]
+`=[[statue trap|{{gray|`}}]]
+A=[[anti-magic field|{{brightblue|^}}]]
+M=[[magic trap|{{brightblue|^}}]]
+R=[[rolling boulder trap|{{gray|^}}]]
+
+.....................................K......................................
+...................................................P........................
+........................K...................................................
+........................-------------------------------.....................
+........................|....|.S......................|.....M...............
+.......................K|._..|.|.-+------------------.|.....................
+........................|....|.|.|.|.........|......|.|.....................
+........................|....|.|.|.|.........|......|.|.................`...
+........................|---+|.|.|.|..---....+......|.|K....................
+........................|....|.|.|.|--|.|....|......|.|.....................
+........................|._..S.|R|.+..S>|--S-----S--|.|K....................
+........................|....|.|.|.|--|.|....|......+.|.....................
+........................|---+|.|.|.|..---....|.------.|.........A...........
+........................|....|.|.|.|.........|.|....+.|.....................
+........................|....|.|.|.|.........|+|....|-|.....................
+........................|._..|.|.-------------+------.SP....................
+........................|....|.S........R.............|.....................
+...<....................-------------------------------.....................
+.......................P.......P............................................
+..........................K.....................P...........................
+</replacecharsblock></div>
+
+There is one altar of each alignment, randomly arranged; each room they
+are in is considered an abandoned temple. Randomly placed around the
+level are seven human mummies, two random M, and eighteen random S (with
+hiding-objects); there are fifteen other random objects. The tomb
+contains two marked rolling boulder traps; the marked traps outside the
+building are six spiked pits, five non-spiked pits, a magic trap, a
+statue trap, and an anti-magic trap; there are two further statue traps,
+two sleeping gas traps, and three dart traps randomly placed on the
+level. The scattered engravings "X marks the spot" are random and have
+no particular significance.
+The entire level has undiggable walls and floor. Teleportation is
+permitted.
+
+===Lower filler level(s)===
+These are "ordinary" room-and-corridor levels, with six rooms, one human
+mummy, three random M, three random S (with hiding-objects), nine random
+other objects, and four random traps.
+
+===The Crypt===
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+^=[[Rolling boulder trap|{{gray|^}}]]
+
+                                  ---------                                 
+                                  |..|.|..|                                 
+                       -----------|..S.S..|-----------                      
+                       |.|........|+-|.|-+|........|.|                      
+                       |.S........S..|.|..S........S.|                      
+                       |.|........|..|.|..|........|.|                      
+                    ------------------+------------------                   
+                    |..|..........|.......|..........|..|                   
+                    |..|..........+.......|..........S..|                   
+                    |..S..........|...<...+..........|..|                   
+                    |..|..........|.......|..........|..|                   
+                    ------------------+------------------                   
+                       |.|........|..|.|..|........|.|                      
+                       |.S........S..|.|..S...^..._S.|                      
+                       |.|........|+-|.|-+|........|.|                      
+                       -----------|..S.S..|-----------                      
+                                  |..|.|..|                                 
+                                  ---------                                 
+</replacecharsblock></div>
+
+The [[Minion of Huhetotl]], with the [[Bell of Opening]] and the Orb of
+Detection, is at the marked chaotic altar; the room is considered an
+abandoned temple, and the marked trap in it is a rolling boulder trap.
+There are six random other traps placed around the level; additionally,
+eight human mummies, one random M, and eighteen random S (with
+hiding-objects); and fourteen random other objects. The walls of the
+Crypt are undiggable; teleportation is permitted.
+
+==Messages==
+
+===Entry===
+
+First time:
+
+ You are suddenly in familiar surroundings.  The buildings in the distance
+ appear to be those of your old alma mater, but something is wrong.  It looks
+ as if there has been a riot recently, or the College of Archeology has
+ been under siege. 
+ 
+ All of the windows are boarded up, and there are objects scattered around
+ the entrance.
+ 
+ Strange forbidding shapes seem to be moving in the distance.
+
+Next time:
+
+ Once again, you are back at the College of Archeology.
+
+If already rejected twice due to bad alignment:
+
+ You are back at the College of Archeology.
+ You have an odd feeling this may be the last time you ever come here.
+
+===Quest guardians===
+
+If #chatting before the quest is complete:
+
+ "Did you see Lash LaRue in 'Song of Old Wyoming' the other night?"
+ "Hey man, got any potions of hallucination for sale?"
+ "Did you see the artifact %Lord Carnarvon brought back from the last dig?"
+ "So what species do *you* think we evolved from?"
+ "So you're Lord Carnarvon's prize pupil!  I don't know what he sees in you."
+
+If #chatting after the quest is complete:
+
+ "Did you see Lash LaRue in 'Song of Old Wyoming' the other night?"
+ "Hey man, got any potions of hallucination for sale?"
+ "I guess you are guaranteed to make full professor now."
+ "So, what was worse, the Minion of Huhetotl or your entrance exams?"
+ "The Orb of Detection is impressive, but nothing like the bones I dug up!"
+
+===Quest leader===
+
+When you first meet your quest leader:
+
+ "Finally you have returned, <player>.  You were always
+ my most promising student.  Allow me to see if you are ready for the
+ most difficult task of your career."
+
+When you return, having been rejected due to lack of experience:
+
+ "Again, <playername>, you stand before me.
+ Let me see if you have gained experience in the interim."
+
+This message is not currently used:
+
+ "Once more, <playername>, you have returned from the field.
+ Are you finally ready for the task that must be accomplished?"
+
+When you are expelled from the quest for having failed the alignment test
+seven times:
+
+ "<playername>, you have failed us.  All of my careful training has been in
+ vain.  Begone!  Your tenure at this college has been revoked!
+ 
+ "You are a disgrace to the profession!"
+
+When being rejected due to lack of experience:
+
+ "<playername>, you are yet too inexperienced to undertake such a demanding
+ quest.  A mere <currentrank> could not possibly face the rigors demanded and
+ survive.  Go forth, and come here again when your adventures have further
+ taught you."
+
+When being rejected due to having worse than pious alignment:
+
+ "<Playername>!  I've heard that you've been using sloppy techniques.  Your
+ results lately can hardly be called suitable for a <currentrank>!
+ 
+ "How could you have strayed from the <lawful|neutral> path?  Go from here, and
+ come back only when you have purified yourself."
+
+When finally assigned the quest:
+
+ "Grave times have befallen the college, for the Minion of Huhetotl has
+ stolen the Orb of Detection.  Without it, the board of directors of
+ the university will soon have no choice but to revoke our research grants.
+ 
+ "You must locate the entrance to the Tomb of the Toltec Kings.  Within it,
+ you will find the Minion of Huhetotl.
+ 
+ "You must then defeat the Minion of Huhetotl and return the Orb of Detection
+ to me.
+ 
+ "Only in this way will we be able to prevent the budget cuts that could
+ close this college.
+ 
+ "May the wisdom of <Quetzalcoatl|Camaxtli> be your guide."
+
+====Encouragement====
+
+If you subsequently chat to your quest leader, you are encouraged:
+
+ "Beware, for the Minion of Huhetotl is powerful and cunning."
+ "To locate the entrance to the Tomb of the Toltec Kings, you must pass many traps."
+ "A Minion of Huhetotl may be vulnerable to attacks by magical cold."
+ "Call upon <Quetzalcoatl|Camaxtli> when you encounter the Minion of Huhetotl."
+ "You must destroy the Minion of Huhetotl.  It will pursue you otherwise."
+ "The Orb of Detection is a mighty talisman.  With it you can destroy the Minion of Huhetotl."
+ "Go forth with the blessings of <Quetzalcoatl|Camaxtli>."
+ "I will have my students watch for your return."
+ "Remember not to stray from the true <lawful|neutral> path."
+ "You may be able to sense the Orb of Detection when you are near."
+
+===Locate and goal levels===
+
+When first entering the locate level:
+
+ A plain opens before you.  Beyond the plain lies a foreboding edifice.
+ 
+ You have the feeling that you will soon find the entrance to the Tomb of the Toltec Kings.
+
+When returning:
+
+ Once again, you are near the entrance to the Tomb of the Toltec Kings.
+
+When first entering the goal level:
+
+ A strange feeling washes over you, and you think back to things you
+ learned during the many lectures of Lord Carnarvon.
+ 
+ You realize the feeling must be the presence of the Orb of Detection.
+
+When returning:
+
+ The familiar presence of the Orb of Detection is in the ether.
+
+===Quest nemesis===
+
+When first encountering the quest nemesis:
+
+ "So, <playername>, you think that you can succeed in recovering
+ the Orb of Detection, when your teacher, Lord Carnarvon, has already failed.
+ 
+ "Come, try your best!  I shall destroy you, and gnaw on your bones."
+
+Upon further meetings:
+
+ "Again you try to best me, eh <playername>?  Well, you shall fail again.
+ 
+ "You shall never recover the Orb of Detection.
+ 
+ "I shall bear your soul to the Plane of Origins for my master's pleasure."
+
+And on the 4th and subsequent meetings:
+
+ "You persist yet <playername>!  Good.  Now, you shall die!"
+
+When you have the Orb of Detection, but the Minion is still alive:
+
+ "I shall have the Orb of Detection from you, <playername>, then feast
+ upon your entrails!"
+
+====Discouragement====
+
+The Minion will occasionally utter maledictions:
+
+ "Try your best, <playername>.  You cannot defeat me."
+ "I shall rend the flesh from your body whilst you still breathe!"
+ "First you, <playername>, then I shall destroy your mentor, Lord Carnarvon."
+ "Tiring yet, <playername>?  I draw my power from my master and cannot falter!"
+ "I shall rend thy soul from thy body and consume it!"
+ "You are far too <lawful|neutral> -- it weakens you.  You shall die in this place."
+ "<Quetzalcoatl|Camaxtli> has forsaken you!  You are lost now!"
+ "A mere <currentrank> cannot hope to defeat me!"
+ "If you are the best Lord Carnarvon can send, I have nothing to fear."
+ "Die Archeologist!  I shall exhibit your carcass as a trophy."
+
+===Victory===
+
+When picking up your quest artifact:
+
+ The power of the Orb of Detection flows through your body! 
+ You feel as if you could now take on the Wizard of Yendor himself and win, but
+ you know you must return the Orb of Detection to Lord Carnarvon.
+
+When killing the nemesis:
+
+ The body of the Minion of Huhetotl dissipates in a cloud of noxious fumes.
+
+When returning to your quest leader:
+
+ Lord Carnarvon touches the Orb of Detection briefly, gazes into it,
+ then smiles at you and says:
+ 
+ "Well done, <playername>.  You have defeated the Minion of Huhetotl and
+ recovered the Orb of Detection.  But I fear that it shall never be safe
+ here.
+ 
+ Please take the Orb of Detection with you.  You, <playername>, can
+ guard it now far better than I.
+ 
+ May the blessings of <Quetzalcoatl|Camaxtli> follow you and guard you."
+
+When subsequently throwing the Orb of Detection to Lord Carnarvon:
+
+ "Careful, <playername>!  The Orb of Detection might break, and that would be
+ a tragic loss.  You are its keeper now, and the time has come to
+ resume your search for the Amulet.  The Dungeons of Doom await your
+ return through the magic portal that brought you here."
+
+===Post-quest===
+
+When talking to Lord Carnarvon after the quest:
+
+ "Welcome back, <playername>.  Have you progressed with your quest to
+ regain the Amulet of Yendor for <Quetzalcoatl|Camaxtli>?"
+
+When talking to Lord Carnarvon after getting the [[Amulet of Yendor|Amulet]]
+
+ "Congratulations, <playername>.  I wondered if anyone could prevail against
+ the Wizard and the minions of Moloch.  Now, you must embark on one
+ final adventure.
+ 
+ "Take the Amulet, and find your way onto the astral plane.
+ There you must find the altar of <Quetzalcoatl|Camaxtli> and sacrifice the
+ Amulet on that altar to fulfill your destiny.
+ 
+ "Remember, your path now should always be upwards."
+
+== Strategy ==
+If you intend to altar farm in the locate level, it's best not to convert the other altars. Trying to engrave on a cross-aligned altar allows you to reduce your [[Luck]] in a controlled fashion to avoid [[crowning]].
+
+== UnNetHack ==
+[[UnNetHack]] replaces the [[Orb of Detection]] with the [[Itlachiayaque]], an artifact [[shield of reflection]] that confers [[ESP]], [[half spell damage]] and [[fire resistance]]. When invoked, it produces targettable [[scroll of stinking cloud|stinking cloud]].
+
+
+{{DOD}}
+[[Category:Quests]]

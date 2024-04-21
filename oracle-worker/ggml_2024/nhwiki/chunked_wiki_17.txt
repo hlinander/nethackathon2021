@@ -1,0 +1,1000 @@
+| 11
+|-
+| [[Knight|Kni]]
+| 10
+| d8
+| 2
+| 14
+|-
+| [[Monk|Mon]]
+| 10
+| d8
+| 1
+| 12
+|-
+| [[Priest|Pri]]
+| 10
+| d8
+| 1
+| 12
+|-
+| [[Rogue|Rog]]
+| 11
+| d8
+| 1
+| 10
+|-
+| [[Ranger|Ran]]
+| 12
+| d6
+| 1
+| 13
+|-
+| [[Samurai|Sam]]
+| 11
+| d8
+| 1
+| 13
+|-
+| [[Tourist|Tou]]
+| 14
+| d8
+| 0
+| 8
+|-
+| [[Valkyrie|Val]]
+| 10
+| d8
+| 2
+| 14
+|-
+| [[Wizard|Wiz]]
+| 12
+| d8
+| 1
+| 10
+|}
+{| class="prettytable striped"
+! Race{{refsrc|role.c|406}}
+! pre-cutoff
+! post-cutoff
+! starting
+|-
+| [[Human (starting race)|Human]]
+| d2
+| 1
+| 2
+|-
+| [[Elf (starting race)|Elf]]
+| d1
+| 1
+| 1
+|-
+| [[Dwarf (starting race)|Dwarf]]
+| d3
+| 2
+| 4
+|-
+| [[Gnome (starting race)|Gnome]]
+| d1
+| 0
+| 1
+|-
+| [[Orc (starting race)|Orc]]
+| d1
+| 0
+| 1
+|}
+{| class="prettytable"
+! [[Constitution|Con]]
+! modifier{{refsrc|attrib.c|649}}
+|-
+| ≤ 3
+| -2
+|-
+| ≤ 6
+| -1
+|-
+| ≤ 14
+| 0
+|-
+| ≤ 16
+| +1
+|-
+| = 17
+| +2
+|-
+| = 18
+| +3
+|-
+| ≥ 19
+| +4
+|}
+
+== Monster ==
+A [[monster]]'s hit points is based on its [[monster level|level]], modified in some rare cases by other things.{{refsrc|makemon.c|918}}
+
+===Normal case===
+Default initial hit points:
+hp = [[D notation|(monster level)d8]].{{refsrc|makemon.c|937}}
+
+If a monster has a level of 0, their hp is simply 1d4.{{refsrc|makemon.c|935}}
+
+===Elementals===
+An [[elemental]]'s hit points are calculated normally, except that on its home elemental plane they are tripled.{{refsrc|makemon.c|938}}
+
+===Golems===
+[[Golem]]s' hit points are fixed and determined by type:{{refsrc|makemon.c|918}}{{refsrc|makemon.c|1534}}
+{|class="prettytable"
+! Hit points !! Golems
+|-
+| 20 || [[paper golem]], [[straw golem]]
+|-
+| 30 || [[rope golem]]
+|-
+| 40 || [[flesh golem]], [[gold golem]], [[leather golem]]
+|-
+| 50 || [[clay golem]], [[wood golem]]
+|-
+| 60 || [[glass golem]], [[stone golem]]
+|-
+| 80 || [[iron golem]]
+|}
+
+===Riders===
+[[Riders]] are a very special case; from the source code{{refsrc|makemon.c|920}}:
+:''We want low HP, but a high mlevel so they can attack well''
+
+Their hp is 10d8
+
+===Adult dragons===
+An adult [[dragon]]'s hp depends on whether or not the player is in the endgame.{{refsrc|makemon.c|930}}
+;Not in endgame
+:hp = (monster level)d4 + 4 * (monster level)
+;In endgame
+:hp = 8 * (monster level)
+
+===Player monsters===
+The player monsters generated when the hero arrives on the [[Astral Plane]] or the final level of the [[Wizard quest]] have more hit points than their level would normally indicate:{{refsrc|mplayer.c|141}}
+;On the Astral Plane
+:hp = (monster level)d10 + d30 + 30 
+;On the Wizard quest (Newt the Wizard and Pug the Rogue) 
+:hp = (monster level)d10 + 30
+
+===Guardian angel===
+The hero's [[Angel|guardian angel]] on the Astral Plane uses the same hit point formula as the player monsters on that level:{{refsrc|do.c|1406}}
+:hp = (monster level)d10 + d30 + 30
+
+===Special===
+Some other monsters have fixed hit points. Any monster with a defined level of 50-127 calculates its hp by:{{refsrc|makemon.c|923}}
+:hp = 2 * ((monster level) - 6)
+Their actual level is then approximated by:
+:level = hp / 4
+Those monsters are the named demons and the mail daemon.  The complete table for vanilla NetHack is as follows:
+{|class="prettytable"
+! Monster !! Hit points !! Level
+|-
+| {{monsymlink|Juiblex}} || 88 || 22
+|-
+| {{monsymlink|Yeenoghu}} || 100 || 25
+|-
+| {{monsymlink|mail daemon}} || 100 || 25
+|-
+| {{monsymlink|Orcus}} || 120 || 30
+|-
+| {{monsymlink|Geryon}} || 132 || 33
+|-
+| {{monsymlink|Dispater}} || 144 || 36
+|-
+| {{monsymlink|Baalzebub}} || 166 || 41
+|-
+| {{monsymlink|Asmodeus}} || 198 || 49
+|-
+| {{monsymlink|Demogorgon}} || 200 || 50
+|}
+
+===Raising monster maximum hit points===
+{{main|Monster level}}
+Monsters (including [[pet]]s) gain levels by raising their hit points. Thus advancing levels and increasing hit points are one and the same goal for them.
+
+==FIQHack==
+
+The HP regeneration rate has been modified in [[FIQHack]] as follows:
+
+* +1hp/turn for regen
+* +0.33hp/turn for healers
+* +0.03*level hp/turn
+* +0.03*(constitution - 5) hp/turn
+* min cap is +0.01 hp/turn
+
+In addition, [[hunger]] from the [[ring of regeneration]] only applies when you aren't at maximum HP.
+
+See the [[FIQHack/New HP growth|FIQHack HP page]] for more info.
+
+==References==
+<references/>
+
+== External links ==
+* [http://www.steelypips.org/nethack/343/hppw-343.txt HP and power starting values, level increases, and regeneration in NetHack 3.4.3]
+
+{{nethack-343|offset=1}}{{featured}}
+[[Category:Your character]]
+[[Category:Monster attributes]]}
+&&%s&& %s HP {2363 2006-04-15T22:51:11Z {924 ZeroOne} [[HP]] moved to [[Hit points]]: Should be written open. We don't have articles called [[Ch]], [[Pw]], etc, do we? #REDIRECT [[Hit points]]}
+&&%s&& %s Hitpoints {2364 2006-04-15T22:53:48Z {924 ZeroOne} #REDIRECT [[Hit points]] #REDIRECT [[Hit points]]}
+&&%s&& %s O {85556 2013-06-01T15:53:22Z {4000045 Bulwersator} /* SLASH'EM */ == UnNetHack == [[UnNetHack]] introduces new creature that use the {{white|o}}:  *{{white|o}} orc: ** {{monsymlink|deep orc}} {{ASCII}}
+* {{white|o}} represents an [[orc]]:
+** {{monsymlink|goblin}}
+** {{monsymlink|hobgoblin}}
+** {{monsymlink|orc}}
+** {{monsymlink|hill orc}}
+** {{monsymlink|Mordor orc}}
+** {{monsymlink|Uruk-hai}}
+** {{monsymlink|orc shaman}}
+** {{monsymlink|orc-captain}}
+
+* {{white|O}} represents an [[ogre]]:
+** {{monsymlink|ogre}}
+** {{monsymlink|ogre lord}}
+** {{monsymlink|ogre king}}
+
+*Press {{kbd|shift|o}} to set game [[options]]
+*Press {{kbd|o}} [[open]] a door
+
+== UnNetHack ==
+[[UnNetHack]] introduces new creature that use the {{white|o}}:
+
+*{{white|o}} orc:
+** {{monsymlink|deep orc}}
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|o}} and {{white|O}} glyphs:
+
+*{{white|o}} orc:
+** {{monsymlink|war orc}}
+** {{monsymlink|great orc}}
+** {{monsymlink|Grund the Orc King}}
+** {{monsymlink|snow orc}}
+** {{monsymlink|demon orc}}
+*{{white|O}} ogre:
+** {{monsymlink|ogre mage}}
+** {{monsymlink|shadow ogre}}
+[[Category:ASCII]]}
+&&%s&& %s G {137734 2021-02-11T07:12:03Z {4001483 Cathartes} link [[Movement]] so readers can get details on what "go mode" does {{ASCII}}
+*{{white|g}} represents a [[gremlin]]:
+** {{monsymlink|gremlin}}
+** {{monsymlink|gargoyle}}
+** {{monsymlink|winged gargoyle}}
+
+*{{white|G}} represents a [[gnome (monster class)|gnome]]:
+** {{monsymlink|gnome}}
+** {{monsymlink|gnome lord}}
+** {{monsymlink|gnomish wizard}}
+** {{monsymlink|gnome king}}
+
+*Pressing {{kbd|g}} or {{kbd|shift|g}} activates the ''go'' mode. Pressing {{kbd|g}} and then the direction key takes you to that direction until you hit the wall, a monster, or something else interesting. Numpad {{kbd|5}} works the same way. See [[Movement]] for details.
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|g}} and {{white|G}} glyphs:
+
+*{{white|g}} gremlin:
+** {{monsymlink|statue gargoyle}}
+*{{white|G}} gnome or gnoll:
+** {{monsymlink|gnome thief}}
+** {{monsymlink|deep gnome}}
+** {{monsymlink|gnome warrior}}
+** {{monsymlink|Ruggo the Gnome King}}
+** {{monsymlink|gnoll}}
+** {{monsymlink|gnoll warrior}}
+** {{monsymlink|gnoll chieftain}}
+** {{monsymlink|gnoll shaman}}
+
+{{nethack-343}}
+[[Category:ASCII]]}
+&&%s&& %s R {137317 2021-01-20T00:02:25Z {4001476 Infinigon} link to "redraw screen" {{ASCII}}
+* {{white|r}} represents a [[rodent]]:
+** {{monsymlink|sewer rat}}
+** {{monsymlink|giant rat}}
+** {{monsymlink|rabid rat}}
+** {{monsym|wererat_(rodent)}}&nbsp;[[wererat]]
+** {{monsymlink|rock mole}}
+** {{monsymlink|woodchuck}}
+
+*{{white|R}} represents a {{monsymlink|rust monster}} or {{monsymlink|disenchanter}}.
+*Press {{kbd|r}} to [[read]] something
+*Press {{kbd|shift|r}} to [[remove]] a worn accessory item, for example a [[ring]] or an [[amulet]]. Do not confuse this with {{kbd|shift|t}}, which is for taking off armor.
+*Press {{kbd|ctrl|r}} to [[Redraw screen|redraw the screen]].
+
+==UnNetHack==
+[[UnNetHack]] introduces a new creature that uses the {{white|R}} glyph:
+* {{monsymlink|Disintegrator}} (from the [[Biodiversity patch]])
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|r}} glyph:
+
+*{{white|r}} rodent:
+** {{monsymlink|rabbit}}
+** {{monsymlink|black rat}}
+** {{monsymlink|rabid rabbit}}
+** {{monsymlink|pack rat}}
+** {{monsymlink|hellrat}}
+** {{monsymlink|Rat King}}
+[[Category:ASCII]]}
+&&%s&& %s E {145038 2022-03-26T01:47:38Z {4001279 Umbire the Phantom}  {{ASCII}}
+* {{white|e}} represents an eye or sphere:
+** {{monsymlink|gas spore}}
+** {{monsymlink|floating eye}}
+** {{monsymlink|freezing sphere}}
+** {{monsymlink|flaming sphere}}
+** {{monsymlink|shocking sphere}}
+* {{white|E}} represents an [[elemental]]:
+** {{monsymlink|stalker}}
+** {{monsymlink|air elemental}}
+** {{monsymlink|fire elemental}}
+** {{monsymlink|earth elemental}}
+** {{monsymlink|water elemental}}
+* Press {{kbd|e}} to [[eat]].
+* Press {{kbd|shift|e}} to [[engrave]] something on the ground.
+* Press {{kbd|alt|e}} to [[enhance]] your weapons skill.
+* '''E''' is often used as a shorthand for [[Elbereth]], for example "You can E with a wand of fire".
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] introduces new creatures that use the {{white|e}} glyph:
+
+* {{white|e}} eye or sphere:
+** {{monsymlink|glowing eye}}
+** {{monsymlink|bloodshot eye}}
+** {{monsymlink|blinking eye}}
+** {{monsymlink|Beholder}}
+
+===UnNetHack===
+[[UnNetHack]] also has a different set of creatures from vanilla that use the {{white|e}} glyph:
+
+* {{white|e}} eye or sphere:
+** {{brightmagenta|e}} evil eye
+** {{green|e}} dungeon fern spore
+** {{blue|e}} arctic fern spore
+** {{red|e}} blazing fern spore
+** {{yellow|e}} swamp fern spore
+** {{brown|e}} fern spore
+** Floating eyes use the same glyph with a different color: {{monsym|floating eye (UnNetHack)}}
+
+There is also a new function that uses the {{kbd|E}} key:
+
+* Press {{kbd|Ctrl|E}} to instantly engrave Elbereth in the dust.
+{{nethack-366}}
+[[Category:ASCII]]}
+&&%s&& %s Four Horsemen of the Apocalypse {10332 2006-09-12T17:53:14Z {239 Eidolos} Fix double redirect. #REDIRECT [[Riders]]}
+&&%s&& %s Hit point {2371 2006-04-16T03:16:33Z {364 Ihope127} #REDIRECT [[Hit points]] #REDIRECT [[Hit points]]}
+&&%s&& %s Elbereth {141792 2021-07-22T21:11:02Z {4001313 Ardub23} /* Types of monster */ Reformatted monster class links using {{mcsl}} {{Wikipedia|Varda}}
+[[Image:Elbereth three scripts.JPG|thumb|right|The name "Elbereth" rendered in three of the writing systems created by J.R.R. Tolkien. From top to bottom: 1. The "tehta mode" of the [[wikipedia:Tengwar|Tengwar]] script; 2. The "Mode of Beleriand," another Tengwar script; 3. The [[wikipedia:Cirth|"Angerthas Moria"]] or "runic" script. The degradation patterns seem to imply the Latin alphabet is used for engravings by ''NetHack'' characters rather than any of these writing systems.]]
+''Parts of this entry were adapted from the NetHack [http://www.steelypips.org/nethack/elbereth_faq.html Elbereth FAQ] by Kate Nepveu.''
+
+'''Elbereth''' (also called the '''E-word''' or sometimes just '''E''') is, in the writings of [[J.R.R. Tolkien]], the name of a divine being worshipped by elves. In ''[[Nethack]]'', [[engraving]] her name on a square prevents most [[monster]]s from attacking [[you]] while you are on that square. Use of Elbereth is [[Why do I keep dying|a key survival strategy]] for new [[player]]s or characters, and the difference between death and survival in many games.
+
+==Effects==
+A monster that ''respects'' Elbereth will not attack you in melee combat (hand to hand) or cast a directed spell at you while you are standing on a square where the word "Elbereth" is written. The word must be by itself on the square, with no extra characters before or after it. Elbereth has no effect on squares you are not occupying, making [[scrolls of scare monster]] more attractive for purposes such as protecting a [[stash]]. Additionally, monsters that respect Elbereth will be [[scare]]d if they are next to you and while you are standing on Elbereth.{{refsrc|monmove.c|240}} This causes them to flee. Most monsters in the game respect Elbereth; [[#Monsters that do not respect Elbereth|see below]] for exceptions.
+
+Elbereth will ''not'' protect you from any missile or spell attack, nor anything else that allows a monster to inflict damage from a distance, such as a [[dragon]]'s breath attack. It will not make monsters peaceful, or protect anything on another square (such as your pet); hostile monsters will still want to kill you, and will do anything they will ordinarily do to harm you, ''except'' attack you hand-to-hand. It will also not work in [[Gehennom]] or the [[endgame]]. ("The power of the Valar extends only so far.")
+
+Elbereth stops working when it degrades into a different word, so if you are writing in the dust ({{kbd|E}}{{kbd|-}}), you might want to continually check on it with the {{kbd|:}} key. Attacking a monster by any means or performing certain other hostile actions will immediately erase any Elbereth engraving under you and reduce your [[alignment record]] by 5. ("'''You feel like a hypocrite.'''")
+
+Elbereth engraved onto a headstone will not work.{{reffunc|engrave.c|sengr_at|comment=Function used to check for Elbereths}} This is done specifically to prevent players from naming themselves "Elbereth" and making a permanently engraved Elbereth square when you die.
+
+Partial exceptions exist where Elbereth will still protect you from non-melee; no monster already ''fleeing'' from you due to Elbereth can use its [[ranged attack]]s while adjacent, and are much less likely to do so even when not adjacent. Any [[dragon]] will choose [[melee]] over its [[breath]] weapon if it is adjacent to you, and if it cannot engage you because of Elbereth, it will not attack you at all.
+
+Elbereth is case-insensitive, but engraving "Elbereth" as written, with capital "E", will exercise [[wisdom]], so it is most beneficial to do it this way. You can use Elbereth while engrave-testing wands for this added bonus.
+
+== Monsters that do not respect Elbereth ==
+
+===Types of monster===
+No monster represented by {{mcsl|@}}{{refsrc|monmove.c|134}} or {{mcsl|A}}{{refsrc|monmove.c|136|comment=<tt>mtmp->data == &mons[PM_ANGEL]</tt> covers angels and <tt>is_lminion(mtmp)</tt> covers monsters with the <tt>M2_MINION</tt> flag (<tt>is_minion</tt>) that are of lawful alignment (<tt>(mon)->data->maligntyp >= A_COALIGNED</tt>) with the possible exception of [[angel]]s (see {{sourcecode|mondata.h|22}}). As all angelic beings in vanilla and most variants are lawful and have the M2_MINION flag (or are angels), this condition is equivalent to "any capital A" (or <tt>mtmp->data->mlet == S_ANGEL</tt>).}} will respect the word, nor will [[minotaur]]s,{{refsrc|monmove.c|137}} or the [[Riders]].{{refsrc|monmove.c|137}} [[Keystone Kops]] and their officers, while human for many game purposes, ''will'' respect Elbereth.<ref>{{sourcecode|monmove.c|899}}, {{sourcecode|mondata.h|84}}, {{sourcecode|monst.c|1603}}</ref> Shapechangers will respect it while they are in a form that otherwise would, and will not respect it while in a form that otherwise would not (such as a werecreature in human form). Certain monsters – [[shopkeeper]]s, [[guard]]s, [[high priest]]s and the [[Wizard of Yendor]] – will never respect it,{{refsrc|monmove.c|134}} even if they are polymorphed into a form that otherwise would.
+
+===Tame monsters===
+Any tame or peaceful monster will not respect Elbereth.{{refsrc|monmove.c|135}} This is obviously not a problem in terms of avoiding attacks, as these monsters generally won't attack you. This ''does'' mean, however, that if you plan on using [[conflict]] to dispose of a group of monsters while waiting on an Elbereth square, you may have to endure attacks from any pets you have with you.
+
+===Blinded monsters===
+A blinded monster that can ordinarily see will not respect Elbereth while it is blind. This makes it unadvisable to use a [[camera]], for instance, while you are hiding behind the power of Elbereth; blind monsters can not read the word anymore and will attack you. This is distinct from ''unseeing'' monsters, such as [[gelatinous cube]]s, which do not have sight in the first place and ''will'' respect Elbereth.
+
+== Chances of engraving ==
+You are not guaranteed to engrave perfectly if you are impaired (such as being [[blind]]) or writing in the dust. If you are writing in the dust (with fingers, a wand, a soft gem, etc.) or are scrawling in blood, your [[Engrave#Chances of engraving|chances of messing up each letter]]{{refsrc|engrave.c|999}} add up to a (0.96&nbsp;+ 0.04&nbsp;&times; {{sfrac|2|94}})<sup>8</sup> or about 72.7% on each attempt, as each of the eight letters in Elbereth must be engraved or "mis"-engraved correctly for the word to have power. It is entirely possible to require three, four, or even more attempts to get a correct "Elbereth" written in the dust, so you must not wait until you are one turn from death to get this done! If you can see, you can inspect your work with the "look" command, ('''[:]'''), which does not take a turn to do unless blind. You will also know it is working if you see the message, "The <monster> turns to flee."
+
+== Speed and quality ==
+Engraving techniques may be classified as fast (fingers, [[wand]], [[athame]]) or slow (other weapons, hard gems) (see [[Engraving#Speed]] for details). With a fast method, you can engrave up to 9 characters (enough for one Elbereth) immediately; this takes one move, and has immediate effect&mdash;affected monsters will not get another attack (if the engrave succeeds). This is almost always the preferred way to use Elbereth.
+
+Alternatively, you can engrave between 10 and 19 characters per game turn with a fast method, or 1 character per game turn with a slow method. This takes the whole turn ''to finish'', and is not effective until the turn is over, so monsters typically get an attack during that time (unless you are on a free turn due to being fast or very fast). And, while doing this, any existing engraving is obscured, so any Elbereths that you have already written are '''ineffective''' during this turn.
+
+If you engrave multiple characters with a slow method, or more than 19 characters with a fast method, it takes more than 1 turn. Throughout these turns the engraving offers no protection and you are 'helpless': unlike reading a [[spellbook]] or eating a [[food ration]], you won't be interrupted if something attacks you. No monster will respect Elbereth until your entire engraving is finished.
+
+Engravings may be classified as permanent (will not degrade), semi-permanent (will degrade slowly), or temporary (will degrade very quickly).
+
+For a permanent Elbereth, use a [[wand of fire]] or [[wand of lightning]] to burn it. The wand of lightning can blind you, but that is an acceptable risk during an emergency. (Note that the blindness takes effect ''after'' the engraving is completed&mdash;you will not increase your risk of misengraving through blindness.) Otherwise, unless you can easily [[cure blindness]] or protect your [[eyes]], avoid any engraving with the wand of lightning.  Permanent Elbereths are useful in combat situations, but because they always require a wand charge it is best to save them for difficult situations rather than using them routinely. Permanent Elbereths will not erode from being stood on or walked over, but can be eliminated through techniques such as engraving over them or engraving with a [[wand of polymorph]].
+
+You can engrave a fast semi-permanent Elbereth using a non-cursed [[athame]], a [[wand of digging]] or a charged [[magic marker]] (consuming four charges). Athames are the best way to engrave Elbereth in routine combat as they engrave semi-permanently and are not reliant on charges. Unfortunately, athames are difficult to find. They are never randomly generated, so you need to pick one up from a [[master lich]]'s or [[arch-lich]]'s inventory, get gifted [[Magicbane]] from your [[god]] or [[wish]] for one. Wizards' first sacrifice gift is Magicbane so they have the easiest time getting hold of an athame.
+
+You can make a temporary "engraving" (actually just drawing in the dust on the floor, or writing in blood if you are polymorphed into a [[vampire]]) with your fingers by responding "-" when asked what to engrave with, or you can use a soft gemstone, or any wand other than fire, lightning, or digging (certain wands may have undesirable effects on the engraving itself, such as polymorphing it). This is fast, but subject to the {{frac|25}} chance of mis-engraving per letter, and any movement, such as fighting or throwing missiles, will damage the engraving. Even standing still on the engraving will eventually degrade it, as no one stands perfectly still. However, one can levitate after engraving to keep the engraving from being eroded (if it is not already).
+
+Semi-permanent Elbereths will erode over time as they are walked over or stood upon, but not nearly as quickly as will temporary (finger) engravings. See [[Engraving#Durability]].
+
+===Slow engraving methods===
+Hard gemstones, any ring with a hard gemstone set in it, and bladed weapons can be used to engrave semi-permanent Elbereths, but these techniques are slow and will make weapons dull (other than athames which are fast to engrave and do not dull from it), and is thus generally not recommended.
+
+If you really want to engrave with a slow method, do it one letter at a time as engraving more than one character at a time is dangerous due to being rendered helpless while engraving.
+
+Another drawback of slow engraving is that, if you only have slow ways to do a semi-permanent Elbereth, you have no safe way to repair it once it is eroded. You can't add a fast dust Elbereth over the top; and slow engraving obscures any Elbereth already on the ground, so you can't add more free semi-permanent Elbereths in safety. So you are then forced to use up a charge for a permanent Elbereth, or a wand of digging to update your semi-permanent Elbereth. Hence slow Elbereths are very unsuitable for combat situations.
+
+A funny wrinkle in the engraving rules means that an ordinary +0 weapon will not be able to engrave the entire word "Elbereth" at one go&mdash;you will only get as far as "Elberet" before the weapon reaches -3 and is too dull for engraving. It ''will'' work, however, if you engrave first "Elb" (for minus one to the weapon), then add "ereth" to the current engraving (for an additional minus two).
+
+=== Elbereth and levitation ===
+If you [[levitation|levitate]] over an Elbereth, the word will take longer than normal to degrade as long as you are levitating over the square, providing an advantage while fighting off large numbers of monsters. Note, however, that during an emergency, it is usually preferable to burn a permanent Elbereth using a wand, assuming that you have enough wand charges to spare.
+
+==Strategy==
+A key insight for new players is that Elbereth can be pre-engraved on retreat squares long before the character gets into trouble.  Players may pause to engrave a durable form of Elbereth at various choke points in hallways (or just off them), near stairs, etc.  Cautious players may leave a trail of Elbereth-engraved squares leading back to [[stairs]], so that they are never far from safety.  Elbereth should ''not'' be viewed as only a last resort when the character is down to 1 HP!
+
+Another good use of Elbereth, especially when surrounded, is to engrave it on the floor and wait for your [[HP]] to recover. Once you've recovered sufficiently, scuff the engraving and resume attacking. When monsters realize that you are no longer protected, engrave it again. This tactic can be very useful for [[Experience level|level grinding]].
+
+If you engrave the word as "ElBereth", there's a 1 in 32 chance that when it degrades, it will degrade to "Elbereth", which will still protect you. This won't exercise wisdom, but has a small chance of saving your life in some desperate situations. Capitalizing other letters is not helpful, as only the capital letter B has a chance of degrading to its lowercase counterpart.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+... Even as they stepped over the threshold a single clear
+voice rose in song.
+
+        A Elbereth Gilthoniel,
+        silivren penna miriel
+        o menel aglar elenath!
+        Na-chaered palan-diriel
+        o galadhremmin ennorath,
+        Fanuilos, le linnathon
+        nef aear, si nef aearon!
+
+Frodo halted for a moment, looking back.  Elrond was in his
+chair and the fire was on his face like summer-light upon the
+trees.  Near him sat the Lady Arwen.  [...]
+He stood still enchanted, while the sweet syllables of the
+elvish song fell like clear jewels of blended word and melody.
+"It is a song to Elbereth," said Bilbo.  "They will sing that,
+and other songs of the Blessed Realm, many times tonight.
+Come on!"
+|[ The Fellowship of the Ring, by J.R.R. Tolkien ]
+}}
+
+== History ==
+Before [[NetHack 3.6.0]], the game [[Compile-time options|may be compiled without]] Elbereth (option name ELBERETH). The #version command will tell whether ''NetHack'' was compiled with or without the ELBERETH feature. Since 3.6.0 Elbereth is always included.
+
+Also, Elbereth was effectual even when you weren't on it so long as there was at least one object on said Elbereth square&mdash;similar to the current behavior of a [[scroll of scare monster]]. Because of this, a common technique used in many applications&mdash;commonly to herd monsters&mdash;would be to create a large number of Elbereth squares with a gold piece on them.  In addition, if Elbereth was present anywhere in the engraving (e.g. "EngberethElberethElbcrelh"), it would still constitute a valid Elbereth square, making engraving Elbereth multiple times and then fighting monsters a valid strategy.
+
+Additionally, Elbereth was effectual in [[Gehennom]] and the [[Endgame]].
+
+In 3.6.0, Elbereth would not necessarily erode while attacking, but each time a monster flees from Elbereth, there is a chance that 1 character will be eroded on the square with the Elbereth engraving.{{refsrc|src/monmove.c|309|version=NetHack 3.6.0}} This applies even for engravings that would otherwise be permanent, such as those burned by a wand of fire or an engraving you are levitating over. The chance of a character being eroded in this way is 100% for an engraving in dust, {{frac|26}} for a semipermanent engraving, and {{frac|52}} for permanent.{{reffunc|src/engrave.c|wipe_engr_at|version=NetHack 3.6.0}} This is in addition to the [[Engraving#Durability|normal chance of erosion for any engraving]].
+
+== Variants ==
+=== UnNetHack ===
+In [[UnNetHack]], "Elbereth" can be written in the dust with your fingers with {{kbd|ctrl|e}}. If you are wielding an [[athame]], that will be used instead. Beware: this shortcut will ''not'' automatically switch back to your fingers if you wield a cursed athame.
+
+UnNetHack tracks the number of times Elbereth is engraved in your conducts; specifically, how many engravings of Elbereth were successfully completed by you.
+
+As of version 4.0.0 of [[UnNetHack]], [[minotaur]]s now respect Elbereth. However, the following additional monsters will no longer respect Elbereth{{refsrc|src/monmove.c|146|unnethack=1406}}:
+
+* [[Cthulhu]]
+* [[Vlad the Impaler]]
+* all quest nemeses
+* all unique demons
+
+=== NetHack 4 ===
+[[NetHack 4]], like UnNetHack, allows Elbereth to be written in the dust with your fingers with {{kbd|ctrl|e}}, but doesn't make use of a wielded athame.
+
+NetHack 4 also tracks the number of times Elbereth is engraved, but unlike UnNetHack, only counts the number of times the complete "Elbereth" is attempted, so partial engravings like "Elb", "ere" and "th" aren't caught, nor are completions of parts of "Elbereth" on the floor already.
+
+Elbereth can be disabled entirely in a game of NetHack 4 by setting the '<tt>elbereth</tt>' birth option to '<tt>false</tt>' before starting a new character.
+
+=== SLASH'EM ===
+You can burn Elbereth into the floor with a lit [[lightsaber]] as if using a wand of fire or lightning.
+
+=== NetHack brass ===
+Avoid engraving Elbereth with wands in [[NetHack brass]]. While vanilla uses 1 wand charge per engraving, NetHack brass can consume extra charges. An engraving with a wand of fire, for example, costs the usual 1 charge engraving with a wand, an extra 1 charge because the wand is a wand of fire, ''plus'' 1 charge for ''each'' letter engraved. To burn Elbereth successfully, you would need 10 charges in your wand of fire; you probably do not have them.
+
+=== SporkHack ===
+In [[SporkHack]], Elbereth doesn't always work. On weaker monsters, it works most of the time, but especially against higher-level monsters it's no longer perfect protection. That said, it works often enough that it's almost certainly worth using everywhere that it's worth using in vanilla or [[SLASH'EM]].
+
+=== AceHack ===
+In [[AceHack]], the word "Elbereth" has no special meaning, but a heptagram is an incredibly similar concept, a shape that can be engraved on the ground that repels monsters. It is identical to an Elbereth in vanilla ''NetHack'', except that it does not exercise wisdom when engraved. Because it is a shape rather than a word, it cannot be engraved directly using the normal methods; instead, after pressing {{kbd|E}} and choosing an item or fingers to engrave with, a heptagram is drawn by pressing {{kbd|h}}. Also, a heptagram can be quickly dust-engraved by pressing {{kbd|.}}; this is the usual way to draw heptagrams in AceHack.
+
+=== Slash'EM Extended ===
+In [[Slash'EM Extended]], Elbereth doesn't always work (similar to SporkHack). Even if it works, the monster may just be "startled for a moment" instead of turning to flee, however there is a small chance that {{white|@}}, {{white|A}}, or other non-Elbereth-respecting monsters will be affected. Unique monsters (including demon lords and princes), quest nemeses, and other very powerful monsters are still immune, though.
+
+Unlike SLASH'EM, a lit lightsaber cannot burn engravings in Slash'EM Extended. It can, however, create hard engravings similar to an athame or wand of digging.
+
+The wand of digging can engrave up to 50 characters, or 6 Elbereths, in a single turn.
+
+=== dNetHack ===
+dNetHack has phased out Elbereth in favor of [[ward]]s, which your character learns from [[spellbooks]]. Elbereth still works against [[orc]]s and [[Nazgul]], however.
+
+=== FIQHack ===
+
+[[FIQHack]] has two Elbereth changes ported from vanilla 3.6.x:
+* Elbereth no longer works just because there is an object on the same square.
+* Attacking while standing on Elbereth will cause it to vanish.
+
+Additionally:
+* [[Quest nemeses]] no longer respect Elbereth.
+* [[Conflict]] deactivates Elbereth.
+
+==References==
+<references/>
+
+== See also ==
+* [[Scroll of scare monster]]
+* [http://www.steelypips.org/nethack/elbereth_faq.html Elbereth FAQ] by Kate Nepveu
+
+{{nethack-361|offset=1}}
+{{featured}}
+
+[[Category:Strategy]]
+[[Category:Gods]]}
+&&%s&& %s Blessed {2381 2006-04-16T14:34:01Z {364 Ihope127} #REDIRECT [[BUC]] #REDIRECT [[BUC]]}
+&&%s&& %s Uncursed {2382 2006-04-16T14:34:15Z {364 Ihope127} #REDIRECT [[BUC]] #REDIRECT [[BUC]]}
+&&%s&& %s Cursed {2383 2006-04-16T14:34:29Z {364 Ihope127} #REDIRECT [[BUC]] #REDIRECT [[BUC]]}
+&&%s&& %s T {50376 2010-06-28T21:26:52Z {42 AlphaPikachu578} Added SLASH'EM creatures. {{ASCII}}
+* {{white|t}} represents a {{monsymlink|lurker above}} or {{monsymlink|trapper}}.
+
+* {{white|T}} represents a [[troll]]:
+** {{monsymlink|troll}}
+** {{monsymlink|ice troll}}
+** {{monsymlink|rock troll}}
+** {{monsymlink|water troll}}
+** {{monsymlink|Olog-hai}}
+
+*Press {{kbd|t}} to [[throw]] something
+*Press {{kbd|shift|t}} to [[take off]] [[armor]]
+*Press {{kbd|ctrl|t}} to [[teleport]] if you have the means to do so
+
+* On the [[status line]], T stands for time, or [[turn]]s.
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|T}} glyph:
+
+*{{white|T}} troll:
+** {{monsymlink|two-headed troll}}
+** {{monsymlink|black troll}}
+[[Category:ASCII]]}
+&&%s&& %s A {138845 2021-04-08T16:17:46Z {4001381 Qt} Add link to insect page {{ASCII}}
+*{{white|a}} represents an [[insect]]:
+** {{monsymlink|giant ant}}
+** {{monsymlink|killer bee}}
+** {{monsymlink|soldier ant}}
+** {{monsymlink|fire ant}}
+** {{monsymlink|giant beetle}}
+** {{monsymlink|queen bee}}
+
+*{{white|A}} represents an [[angelic being]]:
+** {{monsymlink|couatl}}
+** {{monsymlink|Aleax}}
+** {{monsymlink|Angel}}
+** {{monsymlink|ki-rin}}
+** {{monsymlink|Archon}}
+
+*Press {{kbd|a}} to use or [[apply]] an item
+*Press {{kbd|shift|a}} to [[take off]] multiple items at once
+*Press {{kbd|ctrl|a}} to redo the previous command
+
+== Variants ==
+* UnNetHack and SporkHack add the {{monsymlink|snow ant}}.
+* SporkHack also adds the {{monsymlink|locust}}.
+
+=== SLASH'EM ===
+In [[SLASH'EM]], there are 14 new [[monster (SLASH'EM)|monster]]s that use {{white|a}} and 5 that use {{white|A}}:
+*{{white|a}} [[insect]]:
+**{{darkgray|a}} [[assassin bug]]
+**{{yellow|a}} [[black wasp]]
+**{{gray|a}} [[giant flea]]
+**{{gray|a}} [[giant louse]]
+**{{gray|a}} [[giant tick]]
+**{{darkgray|a}} [[giant wasp]]
+**{{orange|a}} [[killer beetle]]
+**{{green|a}} [[migo drone]]
+**{{magenta|a}} [[migo queen]]
+**{{yellow|a}} [[migo warrior]]
+**{{monsymlink|snow ant}}
+**{{brown|a}} [[spitting beetle]]
+**{{green|a}} [[tsetse fly]]
+**{{yellow|a}} [[yellow jacket]]
+*{{white|A}} [[angelic being]]:
+**{{blue|A}} [[movanic deva]]
+**{{brightcyan|A}} [[monadic deva]]
+**{{white|A}} [[astral deva]]
+**{{cyan|A}} [[Planetar]]
+**{{brown|A}} [[Solar]]
+
+[[Category:ASCII]]}
+&&%s&& %s B {85423 2013-05-29T14:19:49Z {4000180 Bcode} rm list breaks; this is supposed to be one list {{ASCII}}
+*{{white|b}} represents a blob:
+** {{monsymlink|acid blob}}
+** {{monsymlink|quivering blob}}
+** {{monsymlink|gelatinous cube}}
+*{{white|B}} represents a bat or bird:
+** {{monsymlink|bat}}
+** {{monsymlink|giant bat}}
+** {{monsymlink|raven}}
+** {{monsymlink|vampire bat}}
+*A [[direction]] key:
+**Press {{kbd|b}} to move south-west if [[numpad]] movement is off
+**Press {{kbd|shift|b}} to move far south-west if [[numpad]] movement is off
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new enemies that use the {{white|b}} and {{white|B}} glyphs:
+* {{white|b}} blob:
+** {{monsymlink|jiggling blob}}
+** {{monsymlink|lava blob}}
+** {{monsymlink|static blob}}
+** {{monsymlink|burbling blob}}
+* {{white|B}} bat or bird:
+** {{monsymlink|rhumbat}}
+** {{monsymlink|athol}}
+** {{monsymlink|hellbat}}
+** {{monsymlink|mongbat}}
+** {{monsymlink|mobat}}
+** {{monsymlink|harpy}}
+** {{monsymlink|byakhee}}
+** {{monsymlink|nightgaunt}}
+[[Category:ASCII]]}
+&&%s&& %s Options {148894 2022-10-25T15:22:05Z {4001138 LarryFluckiger} Reformatted the table of operating systems and option file locations. {{tocright}}
+The game '''options''' affect the look and feel of the game.
+
+They can be changed:
+* permanently in the [[#Configuration file|configuration file]] at one of the following locations:
+** '''[[Windows]]''' (as of Nethack 3.6.2): '''.nethackrc''' located in %USERPROFILE%\NetHack\)
+** '''[[DOS]] and [[Windows]]''' (before 3.6.2): '''defaults.nh''' in the same directory as <tt>nethack.exe</tt> or <tt>nethackW.exe</tt>)
+** '''[[Unix]]''' (unix-based or unix-like systems, including macOS and Linux): '''~/.nethackrc''' 
+** '''pre-OSX-[[Mac]] and [[BeOS]]''': '''NetHack Defaults''' 
+** '''[[Amiga]], [[Atari]], [[OS/2]] and [[VMS]]''': '''NetHack.cnf'''
+* temporarily by using the [[#In-game|in-game]] options screen, accessible by pressing {{kbd|shift|o}} in the game
+* each time the game is run, on the [[#Command line|command line]].
+* when the game is [[Compile-time options|compiled]].
+
+There are two types of options, ''boolean'' and ''compound'' options. Boolean options toggle a setting on or off, while compound options take more diverse values.
+
+==Configuration file==
+Options are usually prefixed by '<tt>OPTIONS=</tt>' on each line.
+
+Name a boolean option in the configuration file to turn it on, and prefix it with 'no' or '!' to turn it off. Options can be combined into one line for brevity:
+ OPTIONS=boulder:0, color, autodig, !cmdassist, norest_on_space
+For compound options, the option name and value are separated by a colon:
+ OPTIONS=catname:Mirri
+The above two lines set <tt>[[#boulder|boulder]]</tt> to <tt>0</tt>, enable <tt>[[#color|color]]</tt> and <tt>[[#autodig|autodig]]</tt>, disable <tt>[[#cmdassist|cmdassist]]</tt> and <tt>[[#rest_on_space|rest_on_space]]</tt>, and set your [[#catname|cat's name]] to Mirri.
+
+Any line beginning with a '#' is a comment; i.e. the line is ignored.
+
+'''Persistent options:''' Some options are marked persistent, and are saved and reloaded along with the game. Changing a persistent option in the configuration file applies only to new games.
+
+If a configuration file does not exist, create a new one that's appropriate for your system with a text file editor. (For Mac macOS Terminal, use ~/.nethackrc instead of NetHack Defaults)
+
+==In-game==
+The in-game configuration menu is brought up by pressing {{kbd|shift|o}}. It is similar to an item selection menu, where you use alphabetic letters to select which options to change. Boolean options are toggled on or off, while you are prompted to enter new values for compound options.
+
+Some options cannot be changed in-game.
+
+==Command line==
+You can also set options from the command line by setting the <tt>NETHACKOPTIONS</tt> environment variable. If the value starts with '\' or '/' or '@', it is considered to be a config file name. For example:
+ NETHACKOPTIONS=boulder:0, color, autodig
+or
+ NETHACKOPTIONS=@/home/username/.nethackrc
+
+==Options==
+===AUTOCOMPLETE===
+Enable or disable autocompletion when entering particular extended commands. Listing them in a comma-separated list enables, prefixing with <tt>!</tt> disables. Example:
+
+ AUTOCOMPLETE=zap,!annotate
+
+===acoustics===
+Enable messages about what your character hears. Boolean option, defaults to TRUE.
+
+===align===
+Your starting [[alignment]]. Compound option, with possible values of <tt>lawful</tt>, <tt>neutral</tt>, <tt>chaotic</tt>, or <tt>random</tt>. The first letter may be given alone. Prefix with ! to exclude that alignment from being picked randomly. Cannot be set in-game. Example that excludes chaotic:
+ OPTIONS=align:!c
+
+===autodescribe===
+Automatically describe the terrain under cursor when asked to get a location on the map. The [[#whatis_coord|whatis_coord]] option controls whether the description includes map coordinates. It can be toggled by typing <tt>#</tt> while targeting.
+
+===autodig===
+Automatically dig, if you're wielding a [[digging tool]] and moving into a place that can be dug. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===autoopen===
+Walking into a door attempts to open it. Boolean option, defaults to TRUE. Persistent.
+
+===autopickup===
+{{main|Autopickup}}
+Automatically pick up things onto which you move. See also [[#pickup_types|pickup_types]], [[#pickup_burden|pickup_burden]], [[#pickup_thrown|pickup_thrown]], and [[Autopickup_exception]]s. Boolean option, defaults to TRUE. Can be set in-game.
+
+===AUTOPICKUP_EXCEPTION===
+{{main|Autopickup_exception}}
+Autopickup exceptions allow you to specify particular expression matches for more nuanced autopickup usage. See the main article for usage information.
+
+===autoquiver===
+Automatically [[quiver]] some suitable weapon if your quiver empties when [[firing]]. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+=== BIND ===
+Change the key bindings of special keys, menu accelerators, or extended commands. You can specify multiple bindings for a single command. The format is a comma-separated list, with colon-separated keybinding and command. A binding overrides an existing key usage. Example:
+ BIND=!:loot,^v:untrap,M-x:terrain
+See [[Binding keys]] for a more detailed description and a list of bindable special commands.
+
+===blind===
+Start the character permanently blind. Boolean option, defaults to FALSE. Persistent.
+
+===bones===
+Allow saving and loading bones files. Boolean option, defaults to TRUE. Persistent.
+
+===boulder===
+Set the symbol used to display [[boulder]]s. For example <tt>boulder:0</tt>
+Compound option with default value of <tt>`</tt>. Can be set in-game.
+
+Can also be defined using ASCII value, and without the <tt>OPTIONS</tt> prefix simply as
+ BOULDER=48
+For example, <tt>BOULDER=64</tt> would be equal to <tt>OPTIONS=boulder:@</tt>.
+See also [[Custom map symbols#BOULDER]]
+
+This option has been superseded by the <tt>SYMBOLS=</tt> format described in the [[#symset|symset]] option, though this method still functions.
+
+===catname===
+Set the name of your starting [[kitten|cat]]. Compound option, and it cannot be set within game. See also [[#dogname|dogname]] and [[#horsename|horsename]]. Example:
+ OPTIONS=catname:Whiskers
+
+===character===
+Synonym for [[#role|role]].
+
+===checkpoint===
+Save game state after each level change, for possible [[recover]]y after program crash. Boolean option, defaults to TRUE. Can be set in-game.
+
+===checkspace===
+Check free disk space before writing files to disk. You may have to turn this off if you have more than 2 GB free space on the partition used for your save and level files. A boolean option, defaults to on. Only applies when MFLOPPY was defined during compilation.
+
+=== CHOOSE ===
+Choose at random one of the comma-separated parameters as an active section name. Lines in other sections are ignored. This allows for a fine-tuned options set for particular roles. Example:
+
+ CHOOSE=char A,char B
+ [char A]
+ OPTIONS=role:arc,race:dwa,align:law,gender:fem
+ [char B]
+ OPTIONS=role:wiz,race:elf,align:cha,gender:mal
+
+===clicklook===
+Allows looking at things on the screen by navigating the mouse over them and clicking the right mouse button. Boolean option, defaults to FALSE.
+
+===cmdassist===
+NetHack provides some additional command assistance when it detects some anticipated mistakes. Boolean option, defaults to TRUE. Can be set in-game.
+
+===confirm===
+Have user confirm attacks on [[peaceful]] creatures. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===dark_room===
+Draw unseen (line-of-sight blocked) areas of lit rooms as if they were unlit. Boolean value, defaults to FALSE. Persistent.
+
+===disclose===
+Controls the prompts at the end of the game. Possible values are
+*<tt>i</tt> - disclose your [[inventory]]
+*<tt>a</tt> - disclose your [[attributes]]
+*<tt>v</tt> - summarize monsters you've killed
+*<tt>g</tt> - list [[genocide]]d monsters
+*<tt>c</tt> - display [[conduct]]
+*<tt>o</tt> - display dungeon overview
+Each of those values can be preceded with a value that tells how it behaves. The possible values are
+*<tt>y</tt> - prompt, defaults to yes
+*<tt>n</tt> - prompt, defaults to no
+*<tt>+</tt> - disclose without prompting
+*<tt>-</tt> - don't disclose, don't prompt
+The listing of killed monsters can be sorted, so there are two additional choices for <tt>v</tt>:
+*<tt>?</tt> - prompt you and default to ask on the prompt;
+*<tt>#</tt> - disclose it without prompting, ask for sort order.
+For example
+ OPTIONS=disclose:yi na +v -g -c -o
+
+Persistent.
+
+===dogname===
+Set the name of your starting [[dog]]. Compound option, and it cannot be set within game. See also [[#catname|catname]] and [[#horsename|horsename]]. Example:
+
+ OPTIONS=dogname:Cujo
+
+===extmenu===
+Does extended commands interface pop up a menu? Boolean option, defaults to FALSE. Only implemented for the TTY windowport.
+
+===female===
+An obsolete synonym for <tt>[[#gender|gender]]:female</tt>. Cannot be set in-game.{{todo|Since it is "obsolete" can we delete this section? It is handled by the [[#gender|gender]] option.}}
+
+===fixinv===
+An object's inventory letter sticks to it when it's dropped, so when you pick it up again, it will have the same inventory letter, unless there is already another item in your inventory using that letter. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===force_invmenu===
+Commands asking for an inventory item will show a menu instead of a text query with possible menu letters. Boolean option, default is FALSE.
+
+===fruit===
+Set the name of the [[slime mold|user-definable fruit]]. Compound option, takes a string, with a default value of <tt>[[slime mold]]</tt>. Can be set in-game.
+
+===gender===
+Sets the [[gender]] of your character. A compound option, with possible values of <tt>male</tt>, <tt>female</tt>, or <tt>random</tt>. Default value is to pick an appropriate gender randomly. Cannot be set in-game.
+
+===goldX===
+When filtering objects based on blessed/cursed state (BUCX), this options specifices whether to include gold as X (unknown state) when on, and U (uncursed) when off. Default is off.
+
+===help===
+If more information is available for an object looked at with the [[what is]] {{kbd|/}} command, ask if you want to see it. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===herecmd_menu===
+When using a windowport that supports mouse and clicking on yourself or next to you, show a menu of possible actions for the location. Same as herecmdmenu and therecmdmenu commands.
+
+===hilite_pet===
+Visually distinguish [[pets]] from similar animals (This includes both your starting pet and any monsters you happen to tame along the way). Boolean option, defaults to FALSE. Can be set in-game.
+
+===hilite_pile===
+Visually distinguish piles of objects from individual objects. Boolean option, defaults to FALSE.
+
+===hilite_status===
+If the [[#statushilites|statushilites]] option is set, this option allows you to customize your game display by setting thresholds to change the color or appearance of fields in the status bar.
+
+This is an "experimental feature" in NetHack 3.6.0 (in particular, it is missing from all official binaries, but most public servers enable it). In NetHack 3.6.1, it has been changed significantly and uses some different syntax.
+
+For a full guide on configuring status hilites, see [[Status hilites]].
+
+The whole feature can be disabled by turning the [[#statushilites|statushilites]] option off.
+
+===hitpointbar===
+Show a hit point bar graph behind your name and title. Only available for TTY and Windows GUI, and only when statushilites is on.
+
+===horsename===
+Set the name of your starting [[pony|horse]]. Compound option, and it cannot be set within game. See also [[#catname|catname]] and [[#dogname|dogname]].
+
+===ignintr===
+Ignore interrupt signals, including breaks. Boolean option, defaults to FALSE. Not implemented on Mac. Can be set in-game. Persistent.
+
+===implicit_uncursed===
+Omit "uncursed" from inventory lists, if possible. Boolean option, defaults to TRUE.
+
+===legacy===
+Display an introductory message when starting the game. Boolean option, defaults to TRUE. Cannot be set in-game.
+
+===lit_corridor===
+Distinguish visually between lit and unlit [[corridor]]s. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===lootabc===
+Use the old <tt>a</tt>, <tt>b</tt> and <tt>c</tt> keyboard shortcuts in the [[loot]]ing menu. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===mail===
+Enable [[mail]] delivery during the game. Boolean option, defaults to TRUE. Only meaningful if NetHack was compiled with MAIL. Can be set in-game.
+
+===male===
+An obsolete synonym for <tt>[[#gender|gender]]:male</tt>. Cannot be set in-game.{{todo|Since it is "obsolete" can we delete this section? It is handled by the [[#gender|gender]] option.}}
+
+===mention_walls===
+Give feedback when walking against a wall. Boolean value, defaults to FALSE.
+
+===menucolors===
+{{main|Menucolors}}
+Enable coloring menu lines. Boolean value, defaults to FALSE. See main article for how to set menucolors with particular expression matches.
+
+===menustyle===
+Controls the interface used when you need to choose various objects (in response to the Drop command, for instance). Persistent. Compound option, with following possible values:
+
+{|class="prettytable striped"
+!Option
+!Description
+|-
+|<tt>traditional</tt>
+|prompt for object class characters, followed by an object-by-object prompt for all matching items
+|-
+|<tt>combination</tt>
+|prompt for object classes of interest, then display a menu of matching objects
+|-
+|<tt>partial</tt>
+|skip the object class filtering and immediately display a menu of all objects
+|-
+|<tt>full</tt>
+|display a menu of object classes, and then a menu of matching objects
+|}
+
+===menu_deselect_all===
+Menu character accelerator to deselect all items in a menu. Implemented by the Amiga, Gem, X11 and tty ports. Compound option, with default of <tt>'-'</tt>. Cannot be set in-game.
+
+===menu_deselect_page===
+Menu character accelerator to deselect all items on this page of a menu. Implemented by the Amiga, Gem and tty ports. Compound option, with default of <tt>'\'</tt>. Cannot be set in-game.
+
+===menu_first_page===
+Menu character accelerator to jump to the first page of a menu. Implemented by the Amiga, Gem and tty ports. Compound option, with default of <tt>'^'</tt>. Cannot be set in-game.
+
+===menu_headings===
+Controls how the headings in a menu are highlighted. Compound option, with possible values of <tt>none</tt>, <tt>bold</tt>, <tt>dim</tt>, <tt>underline</tt>, <tt>blink</tt>, or <tt>inverse</tt>. Not all ports can actually display all types.
+
+===menu_invert_all===
+Menu character accelerator to toggle the selections in a menu. Implemented by the Amiga, Gem, X11 and tty ports. Compound option, with default of <tt>'@'</tt>. Cannot be set in-game.
+
+===menu_invert_page===
+Menu character accelerator to toggle the selection on this page of a menu. Implemented by the Amiga, Gem and tty ports. Compound option, with default of <tt>'~'</tt>. Cannot be set in-game.
+
+===menu_last_page===
+Menu character accelerator to jump to the last page of a menu. Implemented by the Amiga, Gem and tty ports. Compound option, with default of <tt>'|'</tt>. Cannot be set in-game.
+
+===menu_next_page===
+Menu character accelerator to goto the next page of a menu. Implemented by the Amiga, Gem and tty ports. Compound option, with default of <tt>'>'</tt>. Cannot be set in-game.
+
+===menu_objsyms===
+Show object symbols in menu headings in menus where the object symbols act as menu accelerators. Boolean option, defaults to FALSE.
+
+===menu_overlay===
+Do not clear the screen before drawing menus, and align menus to the right edge of the screen. Only for the TTY windowport. Boolean option, defaults to TRUE.
+
+===menu_previous_page===
+Menu character accelerator to goto the previous page of a menu. Implemented by the Amiga, Gem and tty ports. Compound option, with default of <tt>'<'</tt>. Cannot be set in-game.
+
+===menu_search===
+Menu character accelerator to search for a menu item. Implemented by the Amiga, Gem and X11 ports. Compound option, with default of <tt>':'</tt>. Cannot be set in-game.
+
+===menu_select_all===
+Menu character accelerator to select all items in a menu. Implemented by the Amiga, Gem, X11 and tty ports. Compound option, with default of <tt>'.'</tt>. Cannot be set in-game.
+
+===menu_select_page===
+Menu character accelerator to select all items on this page of a menu. Implemented by the Amiga, Gem and tty ports. Compound option, with default of <tt>','</tt>. Cannot be set in-game.
+
+===menu_tab_sep===
+Use tabs to separate menu names from their values. This option is only shown when in wizard-mode, and is only meant for testing purposes. <!--FIXME: move to wizmode section?-->
+
+===msghistory===
+Number of message-window messages to save. Compound option, takes a positive number, with default of 20. Maximum and minimum values depend on the window port; For the TTY, [[X11]] and Gem ports the minimum is 20 and maximum 60. Cannot be set in-game.
+
+===msg_window===
+How to show the latest messages recalled with <tt>^P</tt>. Compound option, with the following possible values:
+
+{|class="prettytable striped"
+!Option
+!Description
+|-
+|<tt>single</tt>
+|show single message
+|-
+|<tt>combination</tt>
+|two messages as single, then as full
+|-
+|<tt>full</tt>
+|full window, oldest message first
+|-
+|<tt>reversed</tt>
+|full window, newest message first
+|}
+
+You can use the first letter of an option to specify that option. For backwards compatibility, no value needs to be given; in that case defaults to '<tt>full</tt>', or it can be negated like a boolean option, in which case defaults to '<tt>single</tt>'.
+Can be set in-game only if playing the TTY windowport.
+
+===MSGTYPE===
+{{main|MSGTYPE}}
+
+Can be used to hide obnoxious messages or emphasize dangerous ones. See main article for how to use MSGTYPEs.
+
+===name===
+The name of your character. Compound option, defaults to your user name. If set to <tt>player</tt>, then NetHack will ask for the user name, even on systems where it normally wouldn't. If suffixed with dash and character role letter (one of <tt>-A -B -C -H -K -M -P -Ra -Ro -S -T -V -W</tt>), then also defines the character role, or if suffixed with <tt>-@</tt>, then selects a random role.
+Cannot be set in-game.
+
+===news===
+Read the NetHack <tt>news</tt> file at start of game, if present. Boolean option, defaults to TRUE.
+
+===nudist===
+Start the character with no armor. Boolean option, defaults to FALSE. Persistent.
+
+===null===
+Send padding NULLs to terminal. A boolean, defaults to FALSE. Only used if you compiled NetHack with TERMCAP and without TIMED_DELAY. Persistent.
+
+===number_pad===
+Use the number keys to move instead of [[hjklyubn]]. Valid options are:
+
+{|class="prettytable striped"
+!Option
+!Description
+|-
+|<tt>0</tt>
+|move by letters; 'yuhjklbn'
+|-
+|<tt>1</tt>
+|move by numbers; digit {{kbd|5}} acts as {{kbd|G}} movement prefix
+|-
+|<tt>2</tt>
+|like 1 but {{kbd|5}} works as {{kbd|g}} prefix instead of as {{kbd|G}}
+|-
+|<tt>3</tt>

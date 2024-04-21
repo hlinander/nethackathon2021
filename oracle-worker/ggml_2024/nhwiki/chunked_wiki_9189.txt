@@ -1,0 +1,1000 @@
+winCE: disable processing of double-click messages if the first click
+	causes map to scroll
+winCE: help text windows close immediately after open (unhandled WM_KEYDOWN in mhtext.c)
+winCE: correct coordinates used by action button
+winCE: wrap/unwrap text option for text windows
+winCE: hardware keyboard detection
+winCE: hide keypad when hardware keyboard is present
+winCE: backport message window highlighting from winnt port
+winCE: new icon with recommended image sizes
+pocketpc: menu window closes on up/down keys from first/last position
+win32gui: better handling of "more" prompt for messages that would have scrolled
+	off the window
+win32gui: set correct checkmark on "Lock Windows" menu item on startup
+win32gui: redraw message window on resizing (it does not update properly otherwise)
+win32gui: fixed copy/paste error in read registry settings function
+win32gui: improved calculation of the size of the menu window
+win32gui: made auto-arrange windows on/off option (it was reset automatically
+	which was unintuitive and in some cases annoying
+win32gui: fix a possible crash with AltGr-4 WM_KEYDOWN handling
+win32gui: use whatever alternate tile set is loaded in the menus
+win32tty: prevent early error messages from flashing by too fast and not seen
+win32tty: work around problem where display symbols were wrong or unrecognizable
+	on systems where the default language for non-Unicode programs was not 
+	set to "US English" - courtesy Ray Chason
+win32tty: work around problem where some characters did not show up if the
+	console code page was other than 437
+X11: support dynamic switching of map mode via tiled_map option
+X11: added support for hilite_pet to text map mode
+X11: ensure vertical scrollbar shows up in text display windows
+X11: fix typo in mouse click sanity check; result might have pointed to
+	spurious location after window resizing
+platforms that support hangup: SAFERHANGUP to avoid losing objects in transit
+	between lists when hangup occurs, and also avoid cheats due to
+	well-timed hangups to stop a long melee
+build-from-source: dlb utility can handle arbitrary number of files
+
+
+General New Features
+--------------------
+when you're teetering on the edge of a pit you can use '>' to enter the pit
+when you're flying over a pit you can use '>' to enter the pit
+when asked for a direction, a response of '?' yields help and then asks again
+when adding an item to inventory, try to stack it with the quiver slot
+	before trying against other carried objects
+#adjust can be used to split an inventory stack
+cockatrice meat has a distinct flavor to some
+wish request for "<something> armor" will match item named "<something> mail"
+Fire Brand and Frost Brand have a chance to avoid taking rust damage
+support ^R (and ^L in numpad mode) to request display repaint during direction
+	choosing and location choosing prompting modes
+intelligent pets will use keys to unlock doors
+destroyed drawbridge leaves some iron chains
+give feedback when a nearby monster grows into a stronger form
+familiars are now created without any starting inventory
+using the 'f' command when quiver is empty will fill quiver with player's
+	response to the "what to throw?" prompt
+breaking a wand with the apply command has a chance to wrest an extra charge
+burying a punishment ball no longer ends your punishment
+#tip command (with M-T shortcut) to empty a container's contents onto floor
+add clicklook option to allow looking at things on the display by clicking 
+	right mouse button when floating mouse pointer over them
+Izchak's lighting store is now able to stock oil for your lamp
+provide core support for saving of messsage history in save file
+the following actions can now be continued after save/restore: digging, 
+	eating, studying, removing armor
+hero-created and monster-created ice will eventually melt away
+extend Warning to include ice danger
+wishing for particular variety of tin contents (deep fried, broiled, etc.)
+debug-mode wishing for random monster(s) via '*'
+debug-mode viewing of fully identified object descriptions without 
+	actually identifying the objects
+health-food store that stocks monk-appropriate foods in mine town when monk
+give more information about your attributes in debug mode
+polywarn to give intrinsic monster detection of limited species while polymorphed
+rocks can skip on the water sometimes allowing them to pass over water creatures
+vampires can now shapeshift into bats and fog clouds; the latter can be done at 
+	will to slip through locked doors
+shapeshifted vampire will transform back to vampire form after you defeat it and
+	continue to fight in its native form
+container lknown flag for locked/unlocked/broken awareness
+container cknown flag for container content awareness
+plname is stored in the save file on all platforms now
+introduce support for negation of role, race, align, gender values to eliminate
+	them from random selection and the pick list of startup choices
+some intelligent pets will avoid cannibalism
+keep track of which monsters were cloned from other monsters
+cloned and revived monsters become worth fewer points than ordinary ones
+number_pad:3 run-time option to use inverted phone keypad layout for movement
+number_pad:-1 to swap function of y and z keys; z to move NW, y to zap wands
+display spell retention information in the spell menu
+tame ghouls can eat old eggs
+new effect for reading a scroll of light while confused
+allow digging an adjacent pit with wand of digging while trapped in a pit
+#terrain command to show unobstructed view of map (w/o mons, objs, traps)
+digging can activate or disarm some types of traps
+some monsters can eat tins in addition to corpses to cure some ailments
+add Roderick Schertler's pickup_thrown patch
+add ability to sort the list when viewing known spells with '+' command
+describe magic cancellation from worn armor in enlightment/end-of-game feedback
+disclose half physical and/or spell damage in enlightment/end-of-game feedback
+rephrase see invisibility enlightenment feedback when unable to see at all
+add atmospheric sound messages for temples
+sometimes give announcement message when monsters teleport to hero's vicinity
+obsolete config file keywords: GRAPHICS, OBJECTS, TRAPS, EFFECTS
+deprecated options: IBMGraphics, DECGraphics, boulder
+new options: symset, roguesymset for choosing a symbol set from the symbols file
+new config file keyword: SYMBOLS for overriding character symbol values by name
+opening magic frees from bear traps and webs, activates trap doors
+closing magic activates bear traps and webs
+locking converts a hole into a trap door; striking does the opposite
+add Malcolm Ryan's Statue Glyphs patch
+lembas and cram never rot unless cursed
+multiple squeaks for squeaky boards
+include time, user ID, and play mode in paniclog entries
+add oracle and rumor regarding priestly donations
+anti-magic traps have alternate effect on targets who have magic resistance
+the Amulet can be offered to Moloch
+javelins and spears now share the same weapon skill
+all stackable weapons are capable of being thrown/shot for multi-shot volleys
+worm teeth and crysknives have become stackable
+improved container interface
+acid can destroy iron bars
+OPTIONS=playmode:normal|explore|debug to choose mode without command-line
+score bonus for ascending is reduced or denied for changing alignment
+player can give a monster class when asked for type of monster to poly into
+likewise when asked about type for #monpolycontrol
+both controlled self-polymorph and #monpolycontrol accept ESC, "*" or "random"
+	when asking for type of monster; ESC aborts #polyself command
+scroll of taming/spell of charm monster now gives some feedback
+doppelgangers can take on the shape of alternate roles' quest guardians
+pile_limit option to control when to switch to "there are objects here"
+	vs listing objects on floor when hero goes over objects while moving
+some monsters will use fire to prevent selves being turned into green slime
+add `#vanquished' debug mode command
+C and #name commands are now same and use menu to choose monster vs object
+hallucination provides partial protection against gaze attacks
+attempting to read "dull" spellbook might cause hero to fall asleep
+dipping prompt is more precise
+using F to attack wall/boulder/statue while wielding pick digs/breaks target
+shapechangers shouldn't receive starting inventory of their initial shape
+streamline old ^X output and integrate it with enlightenment feedback;
+	new ^X output includes expanded form of abbreviated bottom line info
+"killed by X" becomes "killed by a chameleon imitating X" when appropriate
+eating disenchanter corpses is now considered risky
+make '[' command more precise when poly'd hero has embedded dragon scales/mail
+fainting while wielding a cockatrice corpse will be fatal
+Sunsword's light radius depends on its curse/bless state
+Add M-C and M-R meta-key shortcuts for #conduct and #ride, respectively 
+can now use ESC to cancel out of prompts for playing musical instruments
+being crowned gives an additional benefit:  one extra skill slot/credit
+chatting to a gecko or shopkeeper while hallucinating gives alternate message
+mimic posing as door might steal hero's key when [un]locking is attempted
+polymorphing into a dragon while wearing dragon scale mail will cause that
+	mail to revert to dragon scales
+adopt/adapt/improve the Paranoid_Quit patch; default is paranoid_confirm:pray
+	paranoid_confirm:Confirm when requiring "yes" instead of y to confirm,
+				 also require explicit "no" to reject
+	paranoid_confirm:quit    yes vs y to quit or to enter explore mode
+	paranoid_confirm:die     yes vs y to die in explore or wizard mode
+	paranoid_confirm:bones   yes vs y to save bones when dying in wizard mode
+	paranoid_confirm:attack  yes vs y to attack a peaceful monster
+	paranoid_confirm:pray    y to confirm #pray; supersedes prayconfirm
+	paranoid_confirm:Remove  always pick from inventory for 'R' and 'T'
+flexibility for specifying "detect <foo>" vs "<foo> detection" when wishing
+when a sokoban puzzle has been completed (last pit or hole filled in),
+	stop assessing luck penalties and lift most movement restrictions
+'`' command to show discoveries for one class of objects
+add "about nethack" to '?' menu as an alternate way to view 'v'+'#version'
+display version and build information at startup
+repeatedly setting the fruit option will check to see if fruits have been
+    created, so the user can't easily overflow the maximum this way
+bones files now include extra data to identify dead hero and reason for death
+dipping multiple potions in another potion may only dip part of their stack
+make being inside a stinking cloud (when not immune or resistant) become a
+	major trouble which is fixable by prayer
+introduce some variation in monster movement rates
+
+
+Platform- and/or Interface-Specific New Features
+------------------------------------------------
+pcmain: check for dlb_init failure rather than relying on dungeon open failure
+win32gui: support perm_invent
+win32gui: menu option to add/remove windows captions
+win32gui: support for saving/restoring message history
+win32gui: added menu options "Copy ASCII Screenshot To Clipboard" and "Save 
+	ASCII Screenshot To File"
+win32tty: support for 'selectsaved' option for menu of existing save files
+	to choose from at game startup
+tty: add window port routines for saving/restoring message history
+tty: enhanced role, race, &c selection at start of new game
+smartphone: added "Type Cmd" command that allows to type arbitrary commands 
+	using phone keypad
+smartphone: added Q(quiver) command to "Attack" layout
+smartphone: fixed F command to prompt for direction
+unix,vms: altmeta option to handle terminals which send "ESC c" for Alt+c
+
+
+Code Cleanup and Reorganization
+-------------------------------
+removed OVLx section dividers previously  used for TRAMPOLINE overlay system
+move all flags that are system or port specific from flag struct to sysflags 
+	struct which is used only if SYSFLAGS is defined
+all fields in flags struct are unconditionally present
+monst cham field now a short and uses mons[] index
+rearrange some monster ordering to follow rule #2 listed at top of monst.c
+change region player_flags to more appropriate unsigned int instead of boolean
+remove remains of sync_hunger, which has been ifdef'd out for years
+new mextra structure housing pointers to mname, egd, epri, eshk, emin, edog
+consolidate vault.h, epri.h, eshk.h, emin.h and edog.h into new mextra.h
+new oextra structure housing pointers to oname, omonst, omid, olong, and omailcmd
+drawing symbols for DECGraphics, IBMGraphics, MACgraphics are now stored in an
+	external symbol file that can be changed without rebuilding
+new hints-based configuration system
+allow documentation to be specialized to the options in the game binary
+add param to winsys ini routines to allow cleaner shifting during startup
+</pre>
+==References==
+<references/>
+{{NGPL}}}
+&&%s&& %s Swimming {92339 2015-02-15T00:20:19Z {366 Ilmari Karonen} Redirected page to [[Swimmer]] #REDIRECT [[Swimmer]]}
+&&%s&& %s Sliming resistance {92408 2015-02-21T09:30:19Z {4000582 UnicodingUnicorn} Redirected page to [[Sliming]] #REDIRECT[[sliming]]}
+&&%s&& %s Cthulhu Mythos {92411 2015-02-21T15:39:22Z {4000548 Quantum Immortal} Redirected page to [[H.P. Lovecraft]] #REDIRECT[[H.P. Lovecraft]]}
+&&%s&& %s H.P. Lovecraft {149147 2022-12-03T21:35:06Z {4001279 Umbire the Phantom} adjust {{wikipedia|H. P. Lovecraft}}
+
+'''Howard Phillips Lovecraft''' (August 20, 1890 – March 15, 1937) was an American writer of weird, science, fantasy, and horror fiction born in Providence, Rhode Island. He is best known for his creation of the '''Cthulhu Mythos''' and the fantasy and science fiction elements that it incorporated, which in turn led to the codification of the cosmic horror genre.
+
+Lovecraft began writing speculative fiction in pulp magazines in 1913, and would start writing stories for what became known as the Cthulhu Mythos as early as 1920, beginning with "The Call of Cthulhu" - much of his work was published in Weird Tales, and though he was virtually unknown and unable to support himself from his literary work during his lifetime, he is now regarded as one of the most significant 20th-century authors of supernatural horror fiction. This is owed to a scholarly revival of Lovecraft's work in the 1970s that led to more widespread discovery of his work, as well as criticism of political views he held until after the Great Depression.<!--and that's all we'll get into about that.-->
+
+Lovecraft's works, their many direct adaptations and spiritual successors and the later contributions of other authors formed the Mythos as we currently know it - major themes include fear of the unknown, the nature of knowledge, and the idea that humanity is a fragile part of cosmic existence that could be swept away at any moment. The word "Lovecraftian" has since come to describe any being, location or thing that is considered sufficiently alien and unknowable in nature.
+
+While vanilla ''[[NetHack]]'' has not actively drawn from any of Lovecraft's works and/or the Cthulhu Mythos, several NetHack [[variant]]s and [[patch]]es contain monsters and themes derived from them; [[SLASH'EM]] has [[Cthulhu]] and several other creatures of Lovecraftian origin among the various new monsters added, and [[dNetHack]] has arguably the most direct Lovecraftian influence present in its themes and design, as well as its monster lineup. The [[mind flayer]] as it appears in ''NetHack'' is not directly inspired by Lovecraft or the Mythos, but is commonly depicted as a humanoid similar to Cthulhu in appearance - the mind flayers' role in other works also plays on the themes of cosmic horror.
+
+Below is a list of various features in variants of ''NetHack'' that are inspired in part or in whole by Lovecraft and the Cthulhu Mythos.
+
+==Variants and patches featuring Lovecraftian influence==
+===[[dNetHack]]===
+dNetHack explicitly bills itself as "featuring horror elements reminiscent of those found in ''Call of Cthulhu''" - both the original story and the tabletop game of the same name - and also incorporates many other elements from Lovecraft-influenced games and works, as well as mechanics that measure the player character's mental well-being and their ability to see "beyond the veil". dNetHack also portrays mind flayers and the deep ones as "r'lyehian", derived from the name of the sunken city [[R'lyeh]] that appears in "The Call of Cthulhu".
+
+For details on [[sanity]] and [[insight]], visit the linked articles - '''both of them contain major spoilers for dNetHack.''' Below is a non-exhaustive list of other dNetHack features inspired by the works of Lovecraft and the Chtulhu Mythos:
+
+'''Roles'''
+
+* [[Madman (dNetHack role)|Madperson]]
+
+'''Deities'''
+
+* [[Lobon]]
+* [[Tamash]]
+* [[Zo-Kalar]]
+
+'''Monsters'''
+
+* [[shoggoth]]
+* [[byakhee]]
+* [[migo]]:
+** [[migo worker]]
+** [[migo soldier]]
+** [[migo philosopher]]
+** [[migo queen]]
+* [[nightgaunt]]
+* [[deep one]]
+** [[deeper one]]
+** [[deepest one]]
+* [[mind flayer]]
+* [[Great Cthulhu]]
+
+'''Items'''
+
+* R'lyehian faceplate
+* Artifacts
+** [[The Hand-Mirror of Cthylla]]
+** The [[Necronomicon]]
+** [[Nodensfork]]
+
+'''Locations'''
+
+* [[Neutral Quest]]
+** Drowned City of R'lyeh
+
+===Lethe patch===
+* [[Gehennom (Lethe patch)]]
+** Cthulhu's Sanctum
+
+===[[SLASH'EM]]===
+* [[Migo]]:
+** {{monsymlink|migo drone}}
+** {{monsymlink|migo warrior}}
+** {{monsymlink|migo queen}}
+* {{monsymlink|byakhee}}
+* {{monsymlink|nightgaunt}}
+* {{monsymlink|deep one}}
+** {{monsymlink|deeper one}}
+** {{monsymlink|deepest one}}
+* {{monsymlink|shoggoth}}
+** {{monsymlink|giant shoggoth}}
+* {{monsymlink|star vampire}}
+* {{monsymlink|fire vampire}}
+* {{monsymlink|Cthulhu}}
+
+===[[UnNetHack]]===
+* {{monsymlink|Cthulhu}}
+{{noversion}}
+[[Category:Notable people]]
+[[Category:Cthulhu Mythos]]}
+&&%s&& %s Category:Cthulhu Mythos {131556 2020-01-27T05:10:56Z {4000978 Aximili} Added to "Monsters" category: all members except Lovecraft himself are monsters Monsters of the Cthulhu Mythos.
+
+[[Category:Monsters]]}
+&&%s&& %s Dungeon Growths {97358 2015-12-04T15:00:15Z {4000629 Cherokee Jack} Adding to Patches category {{patch
+ |author=Pasi Kallinen
+ |download=https://bilious.alt.org/~paxed/nethack/nh340-dgn_growths.diff
+ |bilious=35
+}}
+
+The '''Dungeon Growths''' [[patch]], written by Pasi Kallinen, adds code that enables plant life of various forms to grow and spread in the dungeon. It is most notably incorporated into the popular [[UnNetHack]] [[variant]] of the game.
+
+The patch contains two major elements: herb growth and tree growth.
+
+== Herb Growth ==
+The patch considers certain plant-based items to be herbs. When left on an appropriate tile for a long time, these items have a chance of multiplying. 
+
+Land herbs multiply when left on the [[floor]]:
+* [[sprig of wolfsbane]]
+* [[clove of garlic]]
+* [[carrot]]
+
+Water herbs multiply while underwater:
+* [[kelp frond]]
+
+Trees will also occasionally drop a single "ripe" [[fruit]] onto an adjacent tile. This can be any kind of 'fruit' you can get by kicking a tree, including [[eucalyptus leaf|eucalyptus leaves]].
+
+== Tree growth ==
+[[Tree]]s in the dungeon can potentially seed trees to nearby squares. While this growth is slow, it can mean that unattended trees can become dense forests by the time levels are revisited in the ascension run.
+
+[[Category: Patches]]}
+&&%s&& %s Guild {92473 2015-02-23T17:34:12Z {4000548 Quantum Immortal} Redirected page to [[The Guild of Disgruntled Adventurers]] #REDIRECT[[The Guild of Disgruntled Adventurers]]}
+&&%s&& %s Scroll strategy {123337 2018-07-22T06:46:47Z {4001094 Luxidream}  Scrolls are represented by {{white|?}} and have a weight of 5. Each one has a different effect when you read it,
+some effects highly desirable, some not. Most of them are useful in some way, and this page isn't comprehensive by any means. Be creative!
+
+You may want to read about [[scrolls]] first.
+== Always useful scrolls ==
+
+Scrolls of enchant weapon are common, useful, and easy to [[price ID]], with their unique base price of 60. Like most scrolls, they're better used when blessed, but the player's immediate survival is often much more important than hoarding resources for a future that might not come. Don't be afraid of "wasting" these before getting an [[artifact weapon]] or [[holy water]]. Weapons enchanted above +5 have a substantial chance of evaporating if you attempt to enchant them further.
+
+The [[scroll of enchant armor]] is one of the most valuable scrolls in the game. Better AC greatly reduces damage to the player and is one of the primary factors that influence player progression. Even without a powerful weapon, a player with a very good AC can last for quite a while. Early in the game, they're best used on items that you'll likely keep, such as any gloves or helm, or any magical armor such as a [[cloak of magic resistance]] or [[speed boots]]. If the player lacks [[magic resistance]] or [[polymorph control]], it is not advised to enchant items in the shirt, body armor, or cloak slot, as these can be destroyed if the player is unfortunate enough to step on a [[polymorph trap]]. Fortunately, like enchant weapon, enchant armor is very easy to price identify, only sharing its base cost of 80 with remove curse, a scroll that is also safe to read identify. Be sure to [[curse-test]] both this and the enchant weapon scroll before reading, though.
+
+A [[scroll of charging]] is especially handy to have around. Maybe you want to recharge your [[magic marker]] or [[wand of death]],
+unless the scroll is cursed, you can recharge it. Some objects explode after experiencing the [[charging]] process too many times, 
+so be careful. These scrolls are rare, so save the ones you have. They are relatively cheap to write for their utility, however, so consider using magic marker charges on them.
+
+The [[scroll of teleportation]] is a good [[escape item]], particularly in the early game where most levels do not prohibit teleporting. Cursed scrolls can be convenient if the player doesn't have another means of [[level teleportation]] or [[branchport|branchporting]]. They're extremely common as a [[defensive item]] that monsters are eligible to carry, so most of them can be blanked. Monsters are likely to identify this scroll for you early on.
+
+The [[scroll of genocide]] is very powerful, and how you choose to use it depends on its BUC status. See [[genocide]]. It has potential utility at any point in the game, and can be used as an escape item, to produce dragons for their [[dragon scale mail]], or to wipe out [[Lich|entire]] [[mind flayer|classes]] of powerful monsters. Although its base scroll class of 300 can be very dangerous, all of them can be safely read identified if they are blessed.
+
+A [[scroll of scare monster]] is a powerful item indeed. Unlike most scrolls, its most powerful effect occurs when it is dropped, scaring all monsters except for [[A]] and the [[Riders]]. After the Elbereth nerf that occurred in 3.6.0, these can save your life against anything from killer bees to [[Demogorgon]]. It's a good idea to have one in a container that you can [[#tip]] in an emergency. There is a guaranteed scroll under the [[Sokoban]] prize. Although it is cursed, and will crumble when you pick it up, it allows you to identify them easily.
+
+== Useful early- and mid-game scrolls ==
+
+Scrolls of identify should be kept and used. Even if they are cursed, they still allow you to identify one item, and identifying items
+can show you the enchantment, identity, and [[BUC]] status of the item. They are the cheapest scroll, and are usually easily discernible due to their frequency in generation. Use them to identify items that are difficult to identify safely or discern from others in their price ranges, such as rings and amulets.
+
+The [[scroll of remove curse]] can be used to remove curses on wielded and worn items if it is uncursed, uncursing the player's entire inventory when blessed. They see use in removing curses in otherwise useful armor and rings, and uncursing accidentally worn items or loot from [[bones]] files. Later in the game, they can be used to create [[unholy water]] or to mitigate the effect of [[curse items]].
+
+Although it can be difficult to identify due to its common base price of 100, the [[scroll of confuse monster]] can be used in a pinch to attempt to confuse an attacker. It becomes far less useful later, serving only as a source of confusion for the player [[portal detection methods|should they need it]].
+
+A [[scroll of taming]] is rare and difficult to identify as well, but many earlygame monsters lack good monster MR, making them vulnerable to taming's charm monster effect. This can be used to get moderately powerful pets or just to escape a sticky situation.
+
+== Scrolls with specialized uses ==
+
+Many players rely on the [[scroll of magic mapping]] in [[Gehennom]]. Manually exploring Gehennom is a chore that most players choose to streamline, although this is strictly a luxury and shouldn't be prioritized. Earlier in the game, their main usage is to navigate dark levels in the [[Gnomish Mines]] or to locate vaults more easily.
+
+While near useless in the early game, the [[scroll of gold detection]] is valuable on the Elemental Planes to locate portals.
+
+The [[scroll of destroy armor]] has some uses. If you are wearing cursed armor
+without a scroll of remove curse, you could drop all your other armor and read the scroll (this will not work if the
+scroll is cursed, it will lower the enchantment of the armor instead), destroying the armor. Later in the game, cursed scrolls of destroy armor can be used to [[fooproof]] armor if read when confused.
+
+== Scrolls to blank ==
+
+The [[scroll of amnesia]] should be blanked. Its effect ([[amnesia]]) offers zero benefit to the player.
+
+The [[scroll of light]] may see marginal use at the very beginning of the game, but is otherwise worthless. Its effect is easily superseded by any source of light, such as oil lamps, the wand of light, or candles. It is easy to identify and type name due to its unique base price of 50.
+
+Unless you are pursuing some esoteric stupid ascension trick, the [[scroll of punishment]] is also a prime candidate for blanking.
+
+The [[scroll of fire]] may be blanked, as it is far too weak to be of any use in combat and can damage inventory items. It can be used to cure [[sliming]] in a pinch until you have [[spellbook of cure sickness|better]] [[amulet of unchanging|means]] [[wand of fire|available]].
+
+{{stub}}
+[[Category:Strategy]]
+{{nethack-361}}}
+&&%s&& %s + Stopped slashem {92662 2015-03-08T04:03:29Z {4000548 Quantum Immortal} Redirected page to [[Fg]] #REDIRECT[[Fg]]}
+&&%s&& %s 1+ Stopped slashem {92663 2015-03-08T04:04:34Z {4000548 Quantum Immortal} Redirected page to [[Fg]] #REDIRECT[[Fg]]}
+&&%s&& %s Gazetteer {131476 2020-01-26T05:50:07Z {4000978 Aximili} Add category The gazetteer is a collection of level spoilers by [[Dylan O'Donnell]].  Originally available at [http://www.spod-central.org/~psmith/nh/gazetteer/ www.spod-central.org/~psmith/nh/gazetteer], the domain name (or server) doesn't seem to exist anymore.  It is, however, still available [http://nethack.uib.no/spoilers/ here] and on [http://web.archive.org/web/20130318145834/http://www.spod-central.org/~psmith/nh/ the internet archive].
+
+[[Category:Community]]}
+&&%s&& %s Dawnhack {92776 2015-03-16T17:53:34Z {4000573 Elronnd} Redirected page to [[Tileset#Pictographic tiles]] #redirect[[Tileset#Pictographic_tiles]]}
+&&%s&& %s Geoduck {92781 2015-03-16T17:56:14Z {4000573 Elronnd} Redirected page to [[Tileset#ASCII-derivative tiles]] #redirect [[Tileset#ASCII-derivative_tiles]]}
+&&%s&& %s Wasp {92788 2015-03-16T18:25:51Z {4000548 Quantum Immortal} /* See also */ cat '''Wasps''' are [[SLASH'EM]] [[monster]]s resembling [[killer bee]]s. They are very fast, always appearing in large swarms and possessing the overall glyph of {{white|a}} along with other insects.
+
+They are three types of wasps, all of which are considerably more dangerous than [[killer bee]]s.
+
+* {{monsymlink|yellow jacket}}
+* {{monsymlink|black wasp}}
+* {{monsymlink|giant wasp}}
+
+==Biology==
+
+Wasps and Bees are different orders of insects. Not to be confused with each other. Among other things, wasps tend to be predators, bees just feed on nectar and pollen.
+
+==Encyclopaedia entry==
+No entry.
+
+==See also==
+
+*[[Bee]]
+*[[Ant]]
+
+{{disambig}}
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s You have a feeling of inadequacy. {92811 2015-03-19T17:35:10Z {4000548 Quantum Immortal} Redirected page to [[Anger]] #REDIRECT[[Anger]]}
+&&%s&& %s Tile absurd {92821 2015-03-20T14:46:41Z {0 } It's a redirect. #redirect [[The_Absurd_NetHack_Tileset]]}
+&&%s&& %s Leocrota {92923 2015-03-28T05:10:44Z {4000548 Quantum Immortal} Redirected page to [[Leocrotta]] #REDIRECT[[Leocrotta]]}
+&&%s&& %s Wand strategy {147618 2022-08-16T18:46:07Z {4000251 Netzhack} /* Wands That Are Always Useful */ Pleonasm out __NOTOC__
+There are 24 wands in NetHack.  
+
+Management of wands is an important part of the game.  Some wands are useful early in the game but become nearly useless later.  Some wands are frequently carried for immediate use, while others are often kept in [[stash|stashes]].  Wands are heavier than rings or scrolls (though only a third the weight of potions), so choices must be made.
+
+Note that all wands have value as [[polyfodder]].  Some wands with offensive potential may be picked up simply to keep them out of enemy hands.
+
+Another important consideration with wands is deciding which are worth recharging, as scrolls of charging (and/or magic markers to make them) are typically a scarce resource.
+
+== Wands That Are Always Useful ==
+
+'''[[Wand of wishing|Wand of wishing]]''': See the [[Wand of wishing|wand's page]] for full details.  These wands are always good to have. It's hard to beat getting an item of your choice, and you'll likely end up using a few charges before Gehennom to obtain [[magic resistance|rare]] and [[reflection|necessary]] extrinsics. However, there are strategies in which people save a wish for as late as the [[Astral Plane]].
+
+'''[[Wand of death]]''': A very powerful offensive tool. Particularly valuable as a last-ditch weapon when facing a difficult opponent, or for efficiently dispatching the [[Wizard of Yendor]] and other endgame threats.
+
+'''[[Wand of secret door detection]]''': Often stashed until the [[endgame]], when it is useful for finding the secret door in [[Moloch's Sanctum]] and the portals in the [[Elemental Planes]].
+
+'''[[Wand of digging]]''': These are the fastest way to cut through rock, which is helpful in some situations, such as the [[Plane of Earth]], or as an escape item when zapped downwards. A digging tool (such as a [[pick-axe]]) can do the same things, but is much slower.
+
+'''[[Wand of fire]]''' and '''[[wand of lightning]]''': Although useful for their attack potential early on, their real value lies in their ability to burn permanent [[Elbereth]] squares.
+
+'''[[Wand of teleportation]]''': Useful both as an escape item and for teleporting enemies away.  Prized for crowd control. While you can't teleport yourself in no-teleport areas, it can always be zapped at enemies to teleport them.
+
+'''[[Wand of polymorph]]''': Since self polymorph is of limited duration (and random without a source of [[polymorph control]]), this wand is useful early on for polymorphing pets or polypiling, and later in order to polyself into a metallivore for [[Eating jewelry|jewelry eating]].
+
+'''[[Wand of cancellation]]''': There are many uses for this wand &mdash; see [[Wand of cancellation|its page]].
+
+== Wands That Are Useful Early ==
+
+'''[[Wand of striking]]''' and '''[[wand of magic missile]]''': The low damage potential of these wands for ranged attacks makes them less useful as the game progresses.  Early on, they are worth keeping, especially if you don't have good ranged options.  You're likely to find many of these, so the best strategy is to use and drop as they are not worth recharging. Keep in mind that they are likely to miss against monsters with good AC, especially the wand of striking. The wand of striking can also be used to break [[boulders]].
+
+'''[[Wand of slow monster]]''': Early in the game, this wand can be used to cripple fast monsters, allowing you to escape or use [[hit and run]] tactics. As monster MR increases later in the game, they become less useful, but still have a niche in that they can disrupt engulfing vortices and [[air elementals]].
+
+'''[[Wand of light]]''': Useful in lighting the [[Gnomish Mines]].  Not worth recharging.
+
+'''[[Wand of create monster]]''': When sacrificing repeatedly for a gift, the wand of create monster eliminates the wait for a random monster to come along.
+
+'''[[Silver]] wand''': Whichever wand type happens to be [[Randomized_appearance#Wands|made of silver]] can be wielded as a weapon in the early game before you have sufficient resources to fight [[lycanthropes]] by more conventional means.
+
+== Wands That Are Useful Through Midgame ==
+
+'''[[Wand of sleep]]''': Eventually monsters you encounter will be too powerful to be bothered by sleep spells, and some monsters are never vulnerable, but from early to midgame, this is a handy part of your ranged toolkit.  Probably not worth recharging.
+
+'''[[Wand of cold]]''': Although useful for offensive purposes early on, the wand is useful later for freezing water if no levitation source is available.
+
+== Wands of Limited Utility ==
+
+'''[[Wand of enlightenment]]''': The usefulness of this wand depends on whether you have an [[identification]] source (for ring/amulet identification) and how well you [[notetaking|keep notes]] on intrinsics you receive.  Some players keep this wand in their stash rather than carrying it.  Unless you are starved for identification and rely on this wand exclusively for discerning magic items' properties, you are unlikely to need to recharge it.
+
+'''[[Wand of make invisible]]''': This is typically a single-use wand: you zap yourself to gain the invisibility intrinsic.  Note that zapping pets does not confer a benefit.
+
+'''[[Wand of undead turning]]''': This wand's chief value is in reviving corpses, which is useful in limited scenarios, such as bringing back fallen pets or killing a dragon again to try for its [[dragon scale mail]].
+
+'''[[Wand of speed monster]]''': Zapping yourself (or your pet) with this wand gives you the [[speed]] intrinsic.  These tend to be wands used once.
+
+== Wands That Are Usually Polyfodder ==
+
+'''[[Wand of opening]]''': There are some minor uses such as getting un-[[engulfed]] or removing [[punishment]] but is otherwise a prime candidate for polyfodder.
+
+'''[[Wand of locking]]''': Can create [[door]]s in empty doorways, which is sometimes useful. Apart from that [[skeleton key]]s are simpler and can be used infinitely.
+
+'''[[Wand of probing]]''': A [[stethoscope]] can be used infinitely to obtain the same information, though probing does also reveal the monster's inventory.
+
+'''[[Wand of nothing]]''': Only useful as polyfodder.
+
+{{nethack-360}}
+[[Category:Strategy]]}
+&&%s&& %s Arioch {144115 2022-01-09T21:42:12Z {4000227 Kufat} Chaos Lord in source material, chaotic crowning in NH '''Arioch''' is the name of a [[chaotic]] god that plays a very minor role in ''[[NetHack]]''.
+
+==Description==
+When [[chaotic]] players are [[crowned]], they receive the title "Glory of Arioch". This title shows up as one of the character's [[properties]] seen through [[enlightenment]].
+
+==Origin==
+{{wikipedia|Deities in the Elric series#Lords of Chaos}}
+The name originally appears in the Bible within the Book of Genesis as the name of the "King of Ellasar", who participated in the Battle of the Vale of Siddim. In the ''Elric'' series by English author [[People of secondary interest to Nethack#Michael Moorcock|Michael Moorcock]], Arioch is the Chaos Lord served by the family line of Elric of Melniboné, the wielder of [[Stormbringer]], which is why the title and weapon are both granted upon crowning a chaotic character.
+
+==Encyclopedia entry==
+{{encyclopedia|Arioch, the patron demon of Elric's ancestors; one of the most
+powerful of all the Dukes of Hell, who was called Knight of
+the Swords, Lord of the Seven Darks, Lord of the Higher Hell
+and many more names besides.
+|[ Elric of Melnibone, by Michael Moorcock ]
+}}
+
+[[Category:Gods]]
+{{nethack-366}}}
+&&%s&& %s People of secondary interest to NetHack {149417 2022-12-16T23:38:39Z {4001279 Umbire the Phantom} /* Douglas Adams */ has its own article now This article is a list of various notable '''people of secondary interest''' to the game of ''[[NetHack]]'' and its variants, explaining each person's works and the contributions to the game that they inspired.
+
+==Frank Herbert==
+{{wikipedia|Frank Herbert}}
+'''Frank Herbert''' (October 8, 1920 – February 11, 1986) was an American science fiction author, best known for the 1965 novel ''[[wikipedia:Dune (novel)|Dune]]'' and its five sequels. He also wrote short stories and worked as a newspaper journalist, photographer, book reviewer, ecological consultant, and lecturer.
+
+''Dune'' is the best-selling science fiction novel of all time, and considered to be among the classics of the genre. Set in the distant future, it explores various themes: humanity's evolution; planetary science and ecology; and the intersection of religion, politics, economics and power in a future where humankind has undertaken the colonization of space.
+
+The most noteworthy features adapted from ''Dune'' are the [[long worm]], [[worm tooth|its teeth]] and the [[crysknives]] that can be fashioned from them. A quote from Frank Herbert's ''[[wikipedia:The Dosadi Experiment|The Dosadi Experiment]]'' also provides the [[encyclopedia]] entry for the [[gas spore]] and its fellow [[sphere]]s.
+
+==Michael Moorcock==
+{{wikipedia|Michael Moorcock}}
+'''Michael Moorcock''' (b. 18 December 1939) is an English writer of science fiction and fantasy who has published literary novels, and is also a successful musician. His best selling works are the ''[[wikipedia:Elric of Melniboné|"Elric of Melniboné"]]'' stories centered around the titular sorcerer, who is frail, anemic and albino - Elric represents a deliberate reversal of clichés associated with [[Tolkien]]-inspired fantasy adventures.
+
+As emperor of Melniboné Elric can call upon [[Arioch]], a Lord of Chaos and Duke of Hell who serves as the traditional patron of the rulership and alternates between aiding Elric and antagonizing him. Elric is also the wielder of the demonic black blade [[Stormbringer]], which is similarly his greatest asset ''and'' greatest hindrance: it confers enough strength and vitality for Elric to shake off his otherwise-required herbal regimen - as well as augmenting his fighting prowess - but the blade instead feeds on the souls of intelligent beings. A recurring theme in the series is how this codependency between sword and wielder brings doom to everything Elric holds dear, despite his best intentions.
+
+A significant amount of Moorcock's influence on fantasy is based in his portrayals of the metaphyisical conflict between [[wikipedia:Law and Chaos|Law and Chaos]] - among many other things, this has partly and indirectly influenced the [[chaotic]] alignment's portrayal in ''NetHack''. Stormbringer is the weapon gifted to a crowned chaotic character, who their [[god]] declares a soul-stealer for "the Glory of Arioch"; this may also reflect Elric's role as [[wikipedia:Eternal Champion (character)|the Eternal Champion]].
+
+==Jack Vance==
+{{wikipedia|Jack Vance}}
+'''John Holbrook "Jack" Vance''' (August 28, 1916 – May 26, 2013) was an award-winning American mystery, fantasy, and science fiction writer who published most of his work under the name '''Jack Vance'''. Among Vance's many achievements are the 1984 World Fantasy Award for Life Achievement; Guest of Honor at the 1992 World Science Fiction Convention in Orlando, Florida; becoming the 15th Grand Master of the The Science Fiction and Fantasy Writers of America in 1997; and induction into the Science Fiction Hall of Fame in 2001.
+
+Jack Vance's main influence on fiction that is most relevant to ''NetHack'' is the "Vancian" magic system, which can be seen in ''[[Dungeons & Dragons]]'' - the magic system in use is explicitly inspired by Vance's ''Dying Earth'' series, where magic users forget learned spells immediately upon casting them, and must re-study in order to cast them again. A Vancian-style system for [[spellcasting]] was present in ''NetHack'' from versions [[1.3d]] to [[3.2.3]] - this was phased out with [[NetHack 3.3.0]]'s integration of the [[Wizard Patch]] and its revamp of the spellcasting system. ''NetHack'' now uses a more traditional casting system with magic points rather than a set number of uses; however, knowledge of the spell lasts a limited amount of turns, and can be refreshed when necessary by reading the appropriate spellbook (which can themselves be read a limited amount of times).
+
+Vance's works have had other varying, indirect influences on ''NetHack'' as well: The [[Monk]] [[quest artifact]], [[The Eyes of the Overworld]], is derived from the story of the same name written by Vance. The [[encyclopedia]] entry for the [[sandestin]] uses an excerpt from another of his stories, ''Rhialto the Marvellous''. Many other monsters and features in variants of ''NetHack'' were indirectly influenced by Vance and his works as well.
+
+===Influence on variants===
+[[Vecna]] is a highly-notable ''D&D'' villain whose name is an anagram of Vance, and appears in [[SLASH]], [[SLASH'EM]], [[SlashTHEM]], and [[EvilHack]]. In ''D&D'' lore, he is an incredibly powerful wizard-turned-lich who was betrayed and destroyed by his right-hand servant [[Kas]], who used a [[The Sword of Kas|powerful sword]] that Vecna either created or procured for him, depending on the source. Vecna's only remnants from the pitched battle were left hand and eye, which he never recovered even after resurfacing as a demigod - these became [[Hand of Vecna|powerful]] [[Eye of Vecna|artifacts]], and at least one can be obtained in each of those variants, typically only by killing Vecna.
+
+The term "[[wikipedia:Grue (monster)|grue]]" originated in Jack Vance's ''Dying Earth'' series, used to describe a human-bat hybrid predator. The "grue" is most famously remembered as the darkness-dwelling monster in the 1977 computer game ''Zork'' - the [[devnull tournament]] had an [[Grue challenge|homage]] to ''Zork'' as one of the many challenges, and the [[Grue]] itself is an actual monster in [[dNetHack]].
+
+==Fritz Leiber==
+{{wikipedia|Fritz Leiber}}
+'''Fritz Reuter Leiber Jr.''' (December 24, 1910 – September 5, 1992) was an American writer of fantasy, horror, and science fiction. He is considered one of the fathers of "sword and sorcery" fiction, coining the term in response to a 1961 letter from Michael Moorcock in the fanzine ''Amra''. Moorcock initially proposed the term "epic fantasy" as a name for the sort of fantasy-adventure story written by Robert E. Howard -  Leiber replied in the journal ''Ancalagon'' by suggesting "'sword-and-sorcery' as a good popular catchphrase for the field".
+
+Leiber's greatest influence on the "sword and sorcery" genre is the ''Fafhrd and the Gray Mouser'' series of stories about a barbarian-and-thief pair of unlikely heroes, taking place in and around the city of Lankhmar - the two titular characters were based on Leiber and his friend, Harry Otto Fischer. Numerous writers have since paid homage to them and its characters; [[Terry Pratchett]]'s city of Ankh-Morpork in particular bears more than a passing resemblance to Lankhmar. While Pratchett asserted this was unintended on his part, he does lean into it with the mention of a swordsman-thief "The Weasel" and his giant barbarian comrade "Bravd" in the opening scenes of the first ''[[Discworld]]'' novel.
+
+Most of Leiber's influence on ''NetHack'' is naturally related to the [[Rogue]] role - [[The Master of Thieves]] serves as the Rogue [[quest leader]], likely in acknowledgement of the above connection to Pratchett. The [[pantheon]] consists of [[Issek]], [[Mog]], and [[Kos]], which are derived from the setting of the ''Fafhrd'' stories.
+
+In terms of variants, [[SLASH 6]] had the artifact [[rapier]] Scalpel, which was modeled after the Gray Mouser's weapon of choice - the artifact still exists as a [[deferred feature]] in the data of [[SLASH'EM]], and was finally re-implemented in [[SlashTHEM]] as the [[Mouser's Scalpel]]. In the [[Convict]] patch integrated into many variants, the role of lawful [[god]] is given to Ilmater, a male deity from the Forgotten Realms setting of ''Dungeons & Dragons'' that is described as similar to the god Issek.
+
+==David S. H. Rosenthal==
+{{wikipedia|David S. H. Rosenthal}}
+'''David Stuart Holmes Rosenthal''' (born 1948 in Cambridge, United Kingdom) is a notable British-American computer scientist who also works in digital preservation, and has worked at companies such as Nvidia and Sun. He was once a co-worker of [[Andries Brouwer]], and [[David's Treasure Zoo]] is named for him; in [[Hack 1.0]] and [[Hack 1.0.1]], a player whose login name was "david" would encounter the treasure zoo much more frequently.<ref>[[Source:Hack_1.0/mklev.c#line147|Hack 1.0 mklev.c, line 147]]</ref> Versions of the game released long after include a [[rumor]] hinting at this.
+
+The name also has a somewhat ironic connection: During the development of Hack 1.0, one of David's students at the Universiteit van Amsterdam used a [[wand of digging]] during their game to tunnel into a [[shop]] and steal its inventory, which was then sold back to the [[shopkeeper]]. At the time, the shopkeeper had a bottomless wallet and never got angry, so the student's character became extraordinarily rich overnight - this prompted early changes to shopkeeper behavior and inventory, including limiting the size of their wallet, increasing their stats, and making them turn hostile if the player attempts to steal items from them.
+
+==References==
+<references/>
+{{noversion}}
+[[Category:Community]]
+[[Category:Notable people]]}
+&&%s&& %s Michael Moorcock {132838 2020-03-12T05:14:13Z {4000978 Aximili} fix double redirect #REDIRECT[[People of secondary interest to NetHack#Michael Moorcock]]}
+&&%s&& %s The ice-cold blade freezes the {93005 2015-04-01T04:55:25Z {4000548 Quantum Immortal} Redirected page to [[Fire and Frost Brand]] #REDIRECT[[Fire and Frost Brand]]}
+&&%s&& %s SlashTHEM {148720 2022-10-08T05:31:54Z {4001279 Umbire the Phantom} detail, fix link {{todo|Severely outdated, bring up to snuff}}
+'''SlashTHEM''' is a ''[[NetHack]]'' variant, specifically one of [[SLASH'EM]], that is currently maintained and developed by [[user:Soviet5lo|Soviet5lo]]. The GitHub page can be viewed [https://github.com/Soviet5lo/SlashTHEM/blob/develop here] - a changelog of differences between versions can be found [https://github.com/Soviet5lo/SlashTHEM/blob/develop/CHANGELOG-NG.md here], while an older changelog of differences from before version numbers were used is linked [https://github.com/Soviet5lo/SlashTHEM/blob/master/CHANGELOG-Old.md here].
+
+Originally, SlashTHEM was a variant of [[Slash'EM Extended]] version 75 called "Slash'EM Extended Mod"; its name was then changed to SlashTHEM (short for "Super Lotsa Added Stuff Hack&mdash;The Heavily Extended Mod"). Since diverging further from Slash'EM Extended, SlashTHEM's primary goal is to balance the game back to SLASH'EM levels while remaining significantly more challenging - this included reverting several of the changes made in Slash'EM Extended or removing them out right as of early 2020, though some of its influence from early versions remains present. Another primary goal is to ensure that all of the roles and races present in the game each feel unique.
+
+==Major changes==
+Below is a list of the more significant changes in SlashTHEM compared to SLASH'EM and vanilla NetHack, as well as features from other variants that were adopted both directly and through older versions of Slash'EM Extended.
+
+===General changes===
+* A large amount of new [[artifacts]] have been introduced: every role is guaranteed one [[sacrifice gift]], which heavily reduces the reliability of camping at an altar for a specific artifact. Some quest artifacts for roles added in Slash'EM Extended have been buffed changed to become more useful.
+* "Guaranteed" artifacts no longer count against you for the purpose of sacrifice gifts. This includes:
+** The three [[alignment key]]s and the [[alignment quest]] artifacts
+** The special level artifacts adapted from Nethack: The Next Generation
+** [[Thiefbane]] and [[Warforger]]
+* [[Slings]] now gain a [[strength]] bonus, making them very powerful ranged weapons for high-strength characters.
+* Several new [[SlashTHEM items|objects]] have been added from other variants and patches.
+** Resistance [[properties]] are more accessible via items and corpses - and more necessary, due to the plethora of monsters.
+* The roles and races new to SLASH'EM that survived the transition from the former Slash'EM Extended variant have been retooled and touched-up.
+** A new original role in the [[Chef]], specifically based on [https://github.com/Soviet5lo/SlashTHEM/commit/0d176006e0d5ae6bd58308edc32c4acfc8247424 a concept planned by the developer] back in 2009.
+
+===Changes by origin===
+These specific changes and features were imported from other patches, as well as active and older variants of ''NetHack'' and SLASH'EM, and are arranged by origin:
+
+* [[NetHack-- 3.0.10]] - [[NetHack-- 3.1.3]]:
+** Items: [[sharpened pencil]] and [[expensive suit]]
+* [[NetHack Plus]]:
+** The [[Lunatic]] is a role heavily styled after the Lycanthrope role of NetHack Plus.
+* [[NetHack: The Next Generation]]
+** [[The Forge]] has been fully re-implemented - players now have the option of paying large amounts of gold to get an artifact created, depending on how much has been paid. The blacksmith [[Duri]] has also been raised in level to compensate, and now starts with equipment similar to [[One-eyed Sam]].
+* [[SporkHack]]
+** Gnomish racial [[armor]] - the [[gnomish helm]], [[gnomish suit]] and [[gnomish boots]]
+* Slash'EM Extended
+** Roles:
+*** The [[Acid Mage]] and [[Electric Mage]], which have an opposite relationship that parallels the [[Flame Mage]] and [[Ice Mage]], are retained and retooled.
+*** Fyr's role ideas - the [[Corsair]], [[Diver]] and [[Gladiator]] - are also included and similarly retooled.
+** Races:
+*** [[Giant (starting race)|Giants]], [[Ogre (starting race)|ogres]] and [[Troll (starting race)|trolls]] - formerly known as gigants, ogros and trollors - are playable races.
+* Miscellaneous patches
+** The [[rubber gloves]] and [[gauntlets of reflection]] from patches by Mikael Lind
+
+==Strategy==
+As of version 0.7, the game is a bit harder than [[SLASH'EM]], but still reasonably so. Some dangerous new attacks:
+
+*wither: bypasses fooproofing
+*passive disintegration: will disintegrate your weapon, bypasses disintegration resistance.
+
+Be careful of item stealing monsters, they are a good deal of them. If SLASH'EM loves baby dragons, SlashTHEM loves stealing monsters (true in version 0.7).  You can defend from some of them by zapping your entire inventory with a [[wand of make invisible]].  Probably the worst are the mermaid, deep sea thieving fish and the swamp nymph. The mermaid and deep sea thieving fish are sea monsters so good luck getting your stuff back even if you kill them. There are some others, but these are the most frequent. The swamp nymph has a passive illness attack, so you should attack her with ranged weapons.
+
+The weight cap is much higher, and lots of objects are lighter. So you can carry much more, with weight been less of a problem. Early in the game, you can carry a box to put your stuff inside, in the same manner as a bag. You can carry around an icebox with several corpses in it without being burdened. With a bag of holding, you can pick up all the junk you find for selling to shops or polypiling. The wallet of Perseus is really overkill.
+
+You can get all resistances, at least extrinsically. You can even get petrification and illness resistances, which are otherwise impossible to get in SLASH'EM. On the other hand, all resistances are more important than before because of new monster attacks.
+
+In the [[Lawful Quest]], be prepared with scare monster scrolls for the mind flayer room, because you can't engrave on the floor of the cloud bank any more. Bring a tinning kit, scroll of charging or some other way to charge the guaranteed tinning kit. At least bring an icebox or two and put the dragons and mind flayer corpses in, for later. Because of all the new monsters, it is more difficult to get telepathy, you can very well not have it even in the mid-game. The guaranteed [[mind flayer]]s are the most probable source of telepathy now. The dragon corpses are now even more valuable for any missing intrinsic, especially sleep and disintegration (new monster attacks). Dragon corpses are so big, though, that they may grow mold while you are eating them. 
+
+In general, water levels are filled with numerous sea monsters. You should be prepared with telepathy, or at least warning and ranged attacks. Quite a few of them have stealing attacks or are lycanthropes.
+
+In Gehennom, in the Sheol branch, beware of father Dagon and mother Hydra at the final sheol level. They both are capable of +100 damage in one turn, so keep your guard up.
+
+In Moloch's Sanctum, beware of [[Cthulhu]]. He can strike for +100 of damage, amnesia attacks and ignores Elbereth. When defeated he explodes in a stinking cloud only to reform in some turns. Once you have the amulet, get out of there as fast as possible, preferably with a cursed potion of gain level.
+
+==Availability==
+It is currently playable at the [[Hardfought]] server.
+
+Apparently, it's not as hard to compile on *nix as Slash'EM Extended once was, so compiling at home is more feasible.
+
+===Compiling in Ubuntu variants===
+Here how to compile it on Ubuntu variants, and probably other UNIX systems. The final result is available above for download.
+
+*Install what you'll need:
+
+    sudo apt-get install libncurses5-dev bison flex checkinstall make
+
+*Download the source files from the server:
+
+    git clone https://github.com/Soviet5lo/SlashTHEM
+
+*Move in the created directory:
+
+    cd SlashTHEM
+
+*In the future, you can update the source code with this command.
+
+    git remote update
+
+*Run the setup script
+
+    sh ./sys/unix/setup.sh
+
+*A minor edit in the makefile
+
+    gedit ./src/Makefile
+
+Comment out line 340. This "WINTTYLIB = -ltermlib", should become this "#WINTTYLIB = -ltermlib".
+
+uncomment line 339. This"#WINTTYLIB = -lncurses", should become this "WINTTYLIB = -lncurses". And don't forget to save.
+
+*Now compile and install. The command will also create a sloppy package( Warning, it will take a while!):
+
+    make ; sudo checkinstall
+
+*Easy uninstall with your regular package manager.
+
+===Compiling in FreeBSD===
+'''Note: This only works if you have the GNU version of make (should be an executable called "gmake")'''
+
+* Get the code
+ git clone https://github.com/Soviet5lo/SlashTHEM.git && cd SlashTHEM
+
+* Get the Makefiles where they need to be
+ sh sys/unix/setup.sh && ln -s sys/unix/GNUmakefile ./GNUmakefile
+
+* (Optional) Change options to suit your preference: You can:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change the value of PREFIX in GNUmakefile
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change the values of WIZARD and WIZARD_NAME in include/config.h</li></ul>
+
+* build
+ gmake -f GNUmakefile
+
+* And, install!!!
+ gmake -f GNUmakefile install
+
+===Compiling in Mac OSX===
+'''Note: This has only been tested on OSX 10.10.0, 10.10.5, and 10.12.6'''
+
+Compiling on Mac OS X is very similar to compiling on Linux, but this section is meant to clear up ambiguity which may cause problems.
+
+*Open "Terminal.app"
+
+    Located at "/Applications/Terminal.app/"
+
+*Download the source files from the server:
+
+    git clone https://github.com/Soviet5lo/SlashTHEM
+
+*Move in the created directory:
+
+    cd SlashTHEM
+
+*In the future, you can update the source code with this command.
+
+    git remote update
+
+*Run the setup script
+
+    sh ./sys/unix/setup.sh
+
+*A minor edit in the makefile
+
+    vi ./src/Makefile
+
+'''Type a Colon, type `340` into the prompt, then press `enter/return` to go to line 340
+
+'''Comment out line 340.''' This "WINTTYLIB = -ltermlib", should become this "#WINTTYLIB = -ltermlib".
+
+'''uncomment line 339.''' This"#WINTTYLIB = -lncurses", should become this "WINTTYLIB = -lncurses". '''And don't forget to save!'''
+
+*Now compile and install (taking a few minutes, maybe logging some warnings, but no errors if all goes well):
+
+    make ; sudo make install
+
+'''Note: `sudo make install` will prompt you for a password. As you type, the characters typed will not appear on the screen. This is a standard security precaution, just type your password normally and press "enter/return" when you finish.'''
+
+You're done! If all went well, you should be able to open a new Terminal window with "Command-N", and type `slashthem` to start the game. You may receive some errors about an invalid username/game name. If this happens, edit "Makefile" (inside the slashem directory) and comment out "GAME = slashem" and uncomment "GAME = slashem.prg".  Run it once like that, and then un-comment/re-comment and run again. It may require a terminal restart to be active though.
+
+===Possible bug on OS X===
+The most likely bug to come across is probably related to missing dependencies. Most of these can be resolved through Homebrew, a package manager for Mac OS X.
+
+*Getting Homebrew
+Got to the [http://brew.sh Homebrew Homepage] and follow the given instructions to install Homebrew.
+
+*Getting the dependencies
+With Homebrew installed, open a new Terminal window and type
+    brew install ncurses bison flex make
+This attempts to install all of the SlashThem dependencies. Once this process is complete, you may go back through the installation instructions.
+
+==Ancestors==
+{{SLASH'EMtimeline}}
+
+==See also==
+*[[SlashTHEM artifacts]]
+*[[SlashTHEM items]]
+*[[SlashTHEM monsters]]
+*[[SlashTHEM traps]]
+*[[SlashTHEM races]]
+*[[SlashTHEM roles]]
+*[[Deferred and defunct features (SlashTHEM)]]
+
+==External links==
+* [https://github.com/Soviet5lo/SlashTHEM GitHub page]
+* [https://github.com/Soviet5lo/SlashTHEM/releases Windows (x64) builds].
+{{variant-343}}
+[[Category:SlashTHEM]]
+[[Category:Variants]]}
+&&%s&& %s Ascension.run {148504 2022-10-05T01:03:10Z {4001279 Umbire the Phantom} /* Previous iterations */* [https://ascension.run/ ascension.run] was a public [[NetHack]] [[server]] retired since 2021.  The server is currently hosted by [[user:deepy|deepy]] and administered by [[user:kerio|kerio]], though the domain belongs to Adeon.  A successor to [[acehack.de]], the server was originally named nethack.xd.cm but was renamed to nethack.dank.ninja, because xd.cm just wasn't dank enough.  Then someone discovered that the domain name ascension.run was available.
+
+Things it used to host:
+*[[nethack.alt.org#Differences_from_vanilla_Nethack|NAOHack (3.4.3)]]
+*[[robotfindskitten]]
+*[[dNetHack]]
+*[[SlashTHEM]]
+*[[NetHack Fourk]]
+*[[UnNetHack]]
+*[[DynaHack]]
+*[[NetHack4]]
+*[[User:FIQ/FIQhack|FIQhack]]
+
+==Previous iterations==
+nethack.dank.ninja has been known as nethack.xd.cm in the past, acehack.de before that, and originally acehack.eu.  Nethack.xd.cm hosted the following games:
+
+*[[nethack.alt.org#Differences_from_vanilla_Nethack|NAOHack]]
+*[[dNetHack]]
+*[[SlashTHEM]]
+*[[NetHack Fourk]]
+*[[SporkHack]]
+*[[DynaHack]]
+
+It also previously hosted [[Slash'EM Extended]], but this was removed after the variant began to deliberately implement [[Evil Patch Idea]]s and the [[Evil Variant]] [[Sokoban]] levels.
+
+Acehack.de hosted the following games:
+
+*[[AceHack]]
+*[[Nethack.alt.org#Differences_from_vanilla_Nethack|naohack]]
+*[http://robotfindskitten.org/ robotfindskitten]
+*[[Leaked_development_version|Leakhack]]
+*[[Slash'EM Extended]]
+*[[1.3d|nethack 1.3d]] (for the length of [[Junethack]] 2014)
+
+==Design==
+Although the site has made some [https://web.archive.org/web/20150412054935/https://nethack.xd.cm/ questionable] design decisions in the past, the [https://nethack.dank.ninja/ current] appearance is quite conservative and unlikely to offend anyone.
+
+[[Category:Public servers]]}
+&&%s&& %s Naohack {93050 2015-04-03T05:38:04Z {4000573 Elronnd} Redirected page to [[Nethack.alt.org#Differences from vanilla Nethack]] #REDIRECT [[Nethack.alt.org#Differences_from_vanilla_Nethack]]}
+&&%s&& %s Negative gold {142442 2021-09-07T02:19:48Z {4001279 Umbire the Phantom}  '''Negative gold''' is a [[bug]] in [[NetHack 3.4.3]] that occurs as a side effect of [[integer overflow]]. If a stack of more than 2147483647 gold pieces is ever created, it becomes negative because it is interpreted as a signed integers. (In some 64-bit builds, you need a considerably larger stack to produce the effect; 64-bit negative gold is not widely understood, because some of its effects are based on all 64 bits and and some on only the bottom 32.) A stack of negative gold has several strange properties.
+
+==Creation==
+In [[wizard mode]], wish for the highest possible amount of gold (2147483647). Then, wish for 1 more gold piece. When combined, the stack turns into -2147483648 gold. You can then optionally wish for more gold to make it more manageable.
+
+In unpatched versions of NetHack 3.4.3, it was also possible to produce negative gold using a [[bug]] in the implementation of the [[stone to flesh]] spell. If you cast the spell at a monster who was petrified with gold in inventory and who has ever been tame, the monster will be unpetrified with two stacks of gold in inventory. Although this normally only produces linear growth, because the bug only duplicates one stack, taming the monster can manipulate it to drop and pick up the stacks, merging them. Enough doublings will overflow the stack to a negative size, This is normally done with a [[nymph]], which has infinite carry capacity and thus can carry the very large stacks of gold produced. The bug was patched out on most [[public server]]s and by most [[variant]]s, and was fixed in NetHack 3.6.0.
+
+==Properties==
+Negative gold had some strange properties (which still probably apply if you obtain it using wizard mode):
+* Because it has negative weight, negative gold decreases your burden level. A maximum-sized stack of negative gold has a negative weight approximately equivalent to that of -42949 [[loadstone]]s.
+* Eating negative gold (as a rock mole or other [[metallivore]]) makes you more hungry. A maximum-sized stack can make you [[fainting|faint]] for over 30,000 turns.
+* Negative gold reacts strangely with [[shop]]s. Dropping it, instead of giving you credit, gives you debt. Then, if you leave the store, the [[Keystone Kops]] come after you. Likewise, if negative gold is already in a shop (say because you dropped it there earlier and have pacified the shopkeeper), picking it up will give you credit rather than debt.
+* You cannot split a stack of negative gold; attempting to drop just part of it will always drop the entire stack.
+{{noversion}}
+[[Category:Bugs]]}
+&&%s&& %s Program in disorder - perhaps you'd better {93140 2015-04-07T04:30:37Z {4000548 Quantum Immortal} Redirected page to [[Impossible]] #REDIRECT[[Impossible]]}
+&&%s&& %s Striped shirt {148515 2022-10-05T01:08:02Z {4001279 Umbire the Phantom} de-SLEX {{variant-343}}
+{{armor
+  |color=gray
+  |name=striped shirt
+  |slot=shirt
+  |ac=0
+  |special=get banned from [[shop]]s
+  |cost=2
+  |weight=5
+  |material=cloth
+}}
+The '''striped shirt''' is a type of [[shirt]] added in the [[Convict|Convict Patch]], and found in all variants that include the Convict role: [[UnNetHack]], [[DynaHack]], [[dNetHack]], and [[SlashTHEM]].  Convicts begin the game wearing a [[cursed]] striped shirt as a prison uniform.
+
+As a part of the Convict's armor ensemble, the striped shirt is equivalent to the existing [[shirt]]s, the T-shirt and Hawaiian shirt.  It has a base [[AC|armor count]] value of 0 (but will contribute its enchantment value to the wearer's AC total) and can be worn under regular [[body armor|torso armor]].
+
+What makes this shirt different from the others is that if a [[shopkeeper]] sees you wearing an uncovered striped shirt, (s)he will conclude that you are a fugitive from the law and will not merely hike up prices, as with the other shirts, but will actually stand in the doorway of the establishment, blocking entry: "I don't serve your kind here."  
+
+This will only happen if there is a worn, uncovered striped shirt.  Shopkeepers will not notice shirts under torso armor or a cloak, and they will not object if a scruffy visitor tries to sell them something that looks suspiciously like a discarded prison uniform.  However, shopkeepers who have seen a customer in stripes ''even once'' will remember the sight and continue to refuse access, even after the customer removes the shirt or covers it up.
+
+In UnNetHack, black marketeer [[Black market (UnNetHack)#One-eyed Sam|One-eyed Sam]] is an exception: if she sees a customer wearing a striped shirt, she will reduce her prices.
+
+==Strategy==
+Along with finding something to eat and [[Anger|appeasing your deity]], losing the conspicuous prison uniform is one of the first tasks on the Convict's to-do list for the [[early game]].  Unfortunately, the Convict's former captors at [[Convict quest|Castle Waterdeep Dungeon]] have cleverly given their inmates cursed uniforms, so unfortunately you can't just peel it off.
+
+A newly escaped Convict has a few options for dealing with his or her uniform:
+
+* '''Hide it.''' The easiest temporary solution is to put on any (ideally non-cursed) torso armor or cloak you find, until you find a permanent solution.  Shopkeepers will not notice a striped shirt under torso armor or a cloak&mdash;but be careful not to remove the covering garment in front of them.  Take care not to change your clothes inside or within sight of a store.
+
+* '''Uncurse it.'''  Possibly the most ideal option, as the non-cursed shirt can be just as useful as other [[shirt]]s if worn discreetly.  When you find a non-cursed scroll that might be [[scroll of remove curse|remove curse]] or [[scroll of enchant armor|enchant armor]], strip down to your shirt and read it.  If you satisfy your deity early enough, (s)he might uncurse the clothing as a [[favor]], or provide some [[holy water]] that can be used to uncurse it.  In a pinch, you can try [[dip]]ping the shirt repeatedly into a [[fountain]], but this is probably risky behavior for a beginner.
+
+* '''Destroy it.''' This is one scenario where the otherwise despised [[scroll of destroy armor]] comes in handy.  Strip down to your shirt and read the scroll.  Even reading an unidentified scroll may be worthwhile, in the event that it turns out to be remove curse or enchant armor.  Alternately, a [[black dragon|black/disintegration dragon]] might helpfully reduce the shirt to dust for you, but by the time you are seeing black dragons and are [[Resistances|able to survive]] their breath, you will most likely have solved the shirt problem already.
+
+* '''Give it to a nymph.'''  Fortunately, [[nymph]]s will take striped shirts just as readily as they will other cursed equipment.  (They might even help with the [[punishment|ball and chain]], too.)  Unfortunately, they are likely to take other things in the same encounter.
+
+* '''Strip for a foocubus.'''  Any fantasies a prison uniform might suggest are lost on [[foocubi]], who will (offer to) take it off, along with the rest of a partner's clothing.  Unfortunately, recent escapees are not likely to be very [[Intelligence|smart]] or [[Charisma|attractive]], so the rest of the experience might be [[Foocubus#Negative effects|unhealthy]] for them.
+
+Note that even without a visible striped shirt, you may still attract the attention of [[vault guard]]s and [[watchman|the authorities]] in [[Minetown]], on the basis of facial recognition alone ("Hey! You are the one from the wanted poster!").  They will not recognize you if you are [[polymorph]]ed (or, in [[dNetHack]], if your face is covered by something other than a [[pair of lenses]]).
+
+==Other==
+In [[dNetHack]], it appears that not even [[potion of amnesia|amnesia]] can make shopkeepers forget your criminal associations.
+
+[[Category:Armor]]
+[[Category:Convict patch]]
+[[Category:UnNetHack]]
+[[Category:DNethack]]}
+&&%s&& %s Clockwork Automaton (starting race) {144158 2022-01-17T10:40:58Z {4000763 EasterlyIrk} update a bit of out of date / unclear information Source: [[Biodiversity patch]](modified)
+
+== Racial benefits and restrictions ==
+
+Clockwork Automata may be [[Archeologist]]s, [[Binder]]s, [[Knight]]s, [[Monk]]s, [[Priest]]s, [[Samurai]] or [[Troubadour]]s. (As [[android]]s, they can be [[Anachrononaut]]s.) They are neutrally or lawfully aligned.
+
+Clockwork automata do not recover HP normally, instead they must stand still ('.') and repair themselves. They will recover HP faster as they gain levels. They may also use potions or other magic to recover hp. Their stats can't be abused or exercised, but they can use potions of gain ability as normal.
+
+Clockwork automata do not eat food. Rather, they must be wound up using any [[skeleton key]]. They are not able to do this themselves, instead they must either have one of their allies do it or pay another monster with hands to have it done. Each turn is worth 10 [[nutrition]].
+
+Clockwork automata can drink potions, and potions of oil provide some healing and nutrition. Blood potions may provide resistances. 
+
+Rings of slow digestion have no effect on clockwork automata.
+
+Clockwork automata can adjust their clockspeed with the #monster command. High speed doubles the automaton's moves per turn, but increases nutrition loss by 4x. Low speed halves the automaton's moves per turn, but reduces normal nutrition use to 1/10 turns. Switching to high speed burns 10 nutrition. Switching to other speeds does not carry a nutrition penalty. Over-wound automata can't maintain low clockspeed, and under-wound automata can't maintain high speed.
+
+Clockwork automata do not breathe and start out with resistance to stoning, poison and sickness. They gain shock res at XL5, cold res at XL10 and fire res at XL15.
+
+Clockwork automatons may sacrifice with impunity (other than gifted pets). They're not specifically exempt from same-race sacrifice, but since all normally spawning clockwork monsters also don't leave corpses, it never becomes an issue.
+
+Clockwork do not benefit from the normal effects of booze, including sanity restoration and your drunkenness counter.
+
+== Stats ==
+
+{|class="prettytable"
+!Character<br />[[race]]
+!Strength
+!Dexterity
+!Constitution
+!Intelligence
+!Wisdom
+!Charisma
+|-
+|Clockwork Automaton
+|18/**
+|18
+|18
+|18
+|18
+|18
+|}
+
+== Upgrades ==
+
+Upgrades are not mutually exclusive: you can have one of each and some can be taken multiple times. Any upgrade action consumes an upgrade kit, and other components where applicable as noted below:
+
+*Phase engine: Walk through walls, at the cost of 10x nutrition consumption.  Activate and deactivate via the #monster menu.
+**''Requires'': subethaic component
+*Stove upgrades: Gain the ability to eat or drink certain kinds of items, in combination with potions of water, to gain nutrition.  If you do not drink water while using these upgrades, you will heat up instead of gaining nutrition, adding extra damage to your attacks, but potentially damaging your inventory and melting yourself.
+**Oil Stove: Gain nutrition from drinking potions of oil in combination with potions of water
+***''Requires'': nothing
+**Wood Stove: Gain nutrition from eating woody corpses or dried tins in combination with potions of water.
+***''Requires'': tinning kit
+**Hellfire Furnace: Gain nutrition from eating almost anything in combination with water, but only 1/10 the normal amount
+***''Requires'': hellfire component
+*Switch Upgrades: Alter how switching clockspeeds using the #monster command works.
+**Efficient Switch: Switching to high speed mode no longer consumes 10 nutrition
+***''Requires'': crossbow
+**Fast Switch: Switching speeds no longer costs a turn.
+***''Requires'': nothing
+*Armor Plating: Your natural AC bonus goes from 3 to 10.
+**''Requires'': archaic plate mail
+*Magic Furnace: Consume magic items to gain magic energy. Destroys the consumed item
+**''Requires'': disenchanter corpse
+*Scrap Maw: Eat rustable items to regain HP.
+**''Requires'': scrap
+*High Tension Spring: Increase your maximum nutrition by 2000. This upgrade can be take multiple times.
+**''Requires'': nothing
+
+== Encyclopaedia entry ==
+
+{{encyclopedia|
+	I am not an unimaginable thing
+	My thoughts are tangible
+	though they're full of springs
+	I don't have the heart to send you untruthful words
+	My skin is cold to the touch and made from the earth
+|[ Automatonic Electronic Harmonics, Music & Lyrics By David Michael Bennett ]
+}}
+
+[[Category:DNethack]]
+[[Category:Patches]]}
+&&%s&& %s Luck Blade {93320 2015-04-11T04:29:46Z {4000603 Jailbird} redirect Luck Blade to Luckblade #REDIRECT [[Luckblade]]}
+&&%s&& %s Hack 1.0/rumors {93343 2015-04-11T12:52:52Z {4000605 HarJIT} Redirected page to [[Source:Hack 1.0/rumors]] #REDIRECT [[Source:Hack 1.0/rumors]]}
+&&%s&& %s Hack 1.0/data {93348 2015-04-11T13:09:21Z {4000605 HarJIT} Redirected page to [[Source:Hack 1.0/data]] #REDIRECT [[Source:Hack_1.0/data]]}
+&&%s&& %s Drow (starting race) {141480 2021-07-04T05:24:40Z {4001313 Ardub23} No links in section headers; minor cleanup Drow, also known as dark elves, are a possible starting [[race]] in some [[variant]]s. According to the guidebook:
+{{guidebook|Drow are the dark elves of the sunless realm. Well suited to the dungeon environment, they have much in common with standard elves, but their specialty is their sleep attack.}}
+
+== SLASH'EM ==
+
+In [[SLASH'EM]], the drow race is most noted for their bare-handed [[sleep]] attack. While SLASH'EM's regular [[Elf (starting race)|elves]] are lawful or neutral, drow are chaotic. Drow ''are'' elven but they are unlike other elves.{{refsrc|monst.c|3757|version=SLASH'EM 0.0.7E7F2|comment=drow have M2_ELF flag}}
+
+When drow fight [[bare hands|bare-handed]], their melee attacks will sometimes put [[monster]]s to sleep; this makes them an excellent choice for new SLASH'EM players. Like other elves, [[player]] drow gain [[sleep resistance]] at experience level 4.{{refsrc|attrib.c|135|version=SLASH'EM 0.0.7E7F2}} Unlike other elves, drow do not have [[infravision]], nor are they [[infravisible]].
+
+Drow are dark elves, more out-of-place at the surface than in the [[dungeon]]. Drow can take the roles of [[Barbarian]], [[Flame Mage]], [[Ice Mage]], [[Necromancer]], [[Priest]], [[Ranger]], [[Undead Slayer]], or [[Wizard]]; they play chaotic for all of them.
+
+During the early game, drow survive well if they fight bare-handed. Monsters will wake soon after the drow puts them to sleep, but not if the drow attacks repeatedly. In this way, the drow can win many fights without taking any damage after the monster slept. Even if surrounded, the drow's sleep attack helps them fight multiple opponents or flee into a corridor. Drow who forget to try bare-handed combat will find the game much more difficult. However, many monsters have sleep resistance and must be dealt with differently. Drow with high bare-handed combat skill can even take down shopkeepers in hand-to-hand battles without taking a hit. The trade-off for this remarkable power comes later, when the drow finds its maximum stat scores limited. (Though the limits are the same as other elves)
+{|class="wikitable"
+![[Strength|Str]]
+![[Dexterity|Dex]]
+![[Constitution|Con]]
+![[Intelligence|Int]]
+![[Wisdom|Wis]]
+![[Charisma|Cha]]
+|-
+|18
+|18
+|16
+|20
+|20
+|18
+|}
+
+A droven [[Barbarian]] is an easy race-role combination and allows the player to begin fighting bare-handed before switching to a better weapon like a [[battle-axe]] or [[artifact]].
+
+It is not possible to [[twoweapon]] as a drow, though the option, annoyingly, still appears.
+
+===References===
+<references />
+
+{{slashem-7E7}}
+[[Category:SLASH'EM races]]
+
+== dNetHack ==
+
+Drow in [[dNetHack]] are significantly different from their appearance in SLASH'EM.
+
+=== Racial benefits and restrictions ===
+
+Drow may be any role that elves can be ([[Anachrononaut]]s, [[Convict]]s, [[Noble]]s, [[Pirate]]s, [[Priest]]s, [[Ranger]]s, or [[Wizard]]s). They are always [[chaotic]].
+
+Drow can see perfectly in the dark, but can only see 1 square in the light and can't see into lit areas.  They can create a patch of darkness using the #monster command, or explore lit rooms slowly. Using the #monster command consumes 10 power. If the player has less than 10 max power, then it costs all of what they have.  As a result, the first couple dungeon/experience levels can be slow, waiting for your power to recharge.
+
+Drow receive either a [[cave spider]] or a [[baby crocodile]] as a starting pet. They may also saddle and mount [[giant spider]]s, [[crocodile]]s, [[giant turtle]]s, [[Cave lizard|riding lizard]]s, and [[salamander]]s.  Drow Nobles receive either a saddled giant cave spider or a saddled riding lizard, depending on gender.
+
+Drow casting the ''summon insects'' [[monster spell]] will instead summon [[spiders]].
+
+Drow start with strong racial weapons and armor, though these items have some significant drawbacks as well.
+
+==== Maximum stats ====
+
+Instead of improved elven Wisdom, drow receive a bonus to maximum Charisma.  Otherwise they have the same limits as elves  (including boosted Dexterity which both races have in dNetHack).
+

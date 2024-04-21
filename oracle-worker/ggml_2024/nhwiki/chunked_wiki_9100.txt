@@ -1,0 +1,1000 @@
+ NetHack*map*white:              white
+
+
+[[Category:User interface]]
+[[Category:Annotations]]
+{{nethack-343}}}
+&&%s&& %s Unbreathing {94728 2015-06-11T06:39:27Z {4000596 Train} making redirect #REDIRECT [[Breathless]]}
+&&%s&& %s Common YANIs {84604 2013-05-04T07:01:15Z {4000045 Bulwersator} Redirected page to [[Yet Another New Idea]] #redirect[[Yet Another New Idea]]}
+&&%s&& %s Choatic {20504 2007-04-16T17:53:22Z {294 Gattman} Redirect to Alignment #REDIRECT [[Alignment]]}
+&&%s&& %s The wand unsuccessfully fights your attempt to write! {20505 2007-04-16T20:21:49Z {0 } Redirect #REDIRECT [[Wand of striking]]}
+&&%s&& %s The wand unsuccessfully fights your attempt to write {20506 2007-04-16T20:23:39Z {294 Gattman} Redirecting to [[Wand of striking]] #REDIRECT [[Wand of striking]]}
+&&%s&& %s Athiest {135330 2020-07-25T14:15:03Z {4000978 Aximili} Changed redirect target from [[Conduct#Athiest]] to [[Conduct#Atheist]] #REDIRECT [[Conduct#Atheist]]}
+&&%s&& %s You hear clanking from the pipes... {20520 2007-04-19T04:54:46Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s You hear clanking from the pipes {20521 2007-04-19T04:55:00Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s You hear snatches of song from among the sewers {20522 2007-04-19T04:55:23Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s You hear snatches of song from among the sewers... {20523 2007-04-19T04:55:37Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s Yuk, this water tastes awful {20524 2007-04-19T04:56:00Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s Yuk, this water tastes awful. {20525 2007-04-19T04:56:15Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s Gagg... this tastes like sewage! You vomit. {20526 2007-04-19T04:56:59Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s Gagg... this tastes like sewage! You vomit {20527 2007-04-19T04:57:14Z {509 Lotte} Redirecting to [[Sink]] #REDIRECT [[Sink]]}
+&&%s&& %s Trickery {145481 2022-04-13T10:10:59Z {4001279 Umbire the Phantom}  The game declares a '''trickery''' when it detects manipulation of a [[level]] file or [[bones]] file.  Such an occurrence is taken as evidence of [[cheating]] and the game is declared forfeit.
+
+A trickery that occurs in the absence of cheating is a [[bug]].
+
+Events that end the game in trickery are:
+
+* Removing a [[level]] file from a game in progress, possibly an attempt to cause the level to be generated anew.
+
+* Renaming a [[bones]] file in an attempt to load it on a different level from where it was generated.  This only happens if the bones file is actually loaded.
+
+* Copying a level file from a different game.
+
+* Copying a level file out of the playground, [[save|saving]], restoring, and then copying the level file back in (even if the level hasn't changed; it's the process ID that is checked).
+
+Some operating systems do not support process IDs; on these, the game cannot detect cross-game or cross-session copying of level files, and will not declare a trickery.
+
+Not all possible cheating with level or bones files is detected as trickery.  A level file could be copied out of the [[playground]] and then copied back in, restoring the level to its previous state; or a bones file, once used, could be copied back into the playground for a future game.  [[Scumming]] with level files ''will'' be detected as trickery if the user [[save]]s and restores in the meantime, because that would be a different session of the game.
+
+==Consequences of trickery==
+
+If the game is in [[wizard mode]], the message "You are a very tricky wizard, it seems." is printed, and the game continues (except for deleted level files).  Otherwise, the game immediately ends.  An [[amulet of life saving]] will not continue the game.
+
+A game that ends due to trickery is not eligible to leave [[bones]].
+
+==References==
+[[bones.c#line409|bones.c line 409]] -- detects renaming of bones files, which if undetected would use the bones on a different level from where they were generated.
+
+[[do.c#line1102|do.c line 1102]] -- opens a level file for an already-generated level, to enter the level; declares a trickery if the file can't be opened.
+
+[[restore.c#line722|restore.c line 722]] -- detects renaming of level files to appear on a different level (dlvl != lev) and copying of level files from another game or a different session of the same game (pid != hpid).
+
+[[save.c#line245|save.c line 245]] -- opens a level file to copy its contents to the save file; declares a trickery if the file can't be opened.
+
+[[save.c#line351|save.c line 351]] -- opens the "level 0 file", which is not a true level file but contains the state of the game at the last level change; declares a trickery if it can't be opened or if the file belongs to a different game or session from this one.
+
+[[Category:Cheating]]
+{{nethack-343}}}
+&&%s&& %s Level teleport trap {147805 2022-08-22T01:38:28Z {4000978 Aximili} Switch redirect to standalone article #REDIRECT [[Level teleporter]]}
+&&%s&& %s Special rooms {20555 2007-04-22T09:27:50Z {218 DrAlgorythm} Redirect #REDIRECT [[Special room]]}
+&&%s&& %s Flame sphere {30497 2008-03-11T18:45:44Z {309 Gneek} Useless article, redirected to sphere #REDIRECT [[sphere]]}
+&&%s&& %s Steal gold {99321 2015-12-21T17:40:54Z {4000080 ChasonBot}  '''Steal gold''' is the primary attack of a [[leprechaun]]. The usual effect of a leprechaun hitting is ''"Your purse feels lighter"''. The leprechaun is then [[teleport|teleported]] randomly to another part of the level, unless it is a no-teleport level.
+
+There a several defenses to this attack, as listed in the [[leprechaun]] entry. 
+
+If you are [[polymorph]]ed into a leprechaun, you must consider the trade-off between making a theft-teleport and escaping, or staying with your [[inventory]] (which is inevitably dropped on the floor apart from one or two choice items).
+
+[[Category:Monster damage types]]
+{{nethack-343}}}
+&&%s&& %s Growing up {145695 2022-04-28T07:45:40Z {4000978 Aximili} /* Variants */ add splicehack '''Growing up''' is the process in which a monster turns into a larger version of itself (''e.g.,'' a [[kitten]] turns into a [[housecat]]). Monsters grow from killing monsters and gaining levels, from the effects of a [[potion of gain level]], or from [[wraith]] [[corpse]]s.
+
+== Natural growth ==
+
+If a monster kills another monster, its maximum and current [[HP]] will both increase.<ref>{{function|makemon.c|grow_up|version=NetHack 3.6.0}}</ref>  If its maximum hp are increased above the ''threshold'' for its current level, it will gain a level.  There is a limit to maxhp and levels a monster can gain in this way.
+
+The monster will increase maxhp by d(victim level + 1), but no more than enough to bring it to the minimum for the next level.  Current hp will increase by d(increase in maxhp) - 1.
+
+The hp threshold for most monsters is 8 * current level (4 for level 0).  Exceptions are [[golem]]s and [[elemental]]s on their home plane.
+
+The maximum level attainable via this method is 3/2 of the base level for the current monster type (or the next type if there is a more "grown up" form), but no less than 5 and normally no greater than 49.{{refsrc|src/makemon.c|1700|version=NetHack 3.6.0}}  Player monsters can reach level 30, and monsters which have a minimum level greater than 49 ([[demon#Unique_demons_and_summoning|named demons]]) have a maximum level of 50.  If an increase in maxhp would increase the monster's level above this maximum, its maxhp are reset to the threshold for its current level.
+
+=== Examples ===
+* ''a [[dog]] (currently level 4, maxhp 31) kills a [[kobold shaman]] (level 2). Its maxhp can increase by 1-3. If it gains 2-3 maxhp, it will become level 5, with maxhp of 33.''
+* ''a [[large dog]] (currently level 9, maxhp 70) kills a [[dwarf king]] (level 6) and would gain 4 maxhp.  Its maxhp do not increase beyond 72.''
+
+{{todo|It would be nice to have a table on a separate page of each monster and its "natural" maximum level and hp}}
+
+== Magical growth ==
+
+A monster drinking a potion of gain level or eating a wraith corpse will gain a level and increase its current and maximum hp by d8. 
+
+Monsters may exceed their natural level limit in this way, although they may not exceed a hard limit of 49 (50 for named demons). Additionally, pets eating wraith corpses cannot exceed their base level by 15{{refsrc|src/dogmove.c|336|version=NetHack 3.6.0}} (but engulfing live wraiths still works<ref>{{function|mon.c|meatobj|version=NetHack 3.6.0}}</ref>).<!-- Non-tame gelatinous cubes eating wraith corpses are also exempt, but that is way too corner-case. --> They may subsequently increase their maximum HP to the cap for their new level by killing monsters.
+
+==Changing form==
+If a monster gains a level so that its current level equals or exceeds the minimum level of its next available form, it will "grow up" into that form (e.g. a [[little dog]] which reaches level 4 will become a [[dog]].) If you can see or detect the monster, you will receive a message to that effect: "The [[kitten]] grows up into a [[housecat]]" or "The [[soldier]] becomes a sergeant".
+
+<span id="Growing up into a genocided form"></span><!-- This used to be a section heading; someone might link to it. -->
+Growing up does not allow a monster to take a [[genocide]]d form. If the new form is genocided, the monster dies and does not leave a [[corpse]]. [[Extinct]] forms are nonetheless allowed.{{refsrc|src/makemon.c|1731|version=NetHack 3.6.0}} This will generate the message "As [[foo]] grows up into [[foo]], s/he <expires/dies>!" if you can see or otherwise detect the monster.
+
+Growing up is a one-way process, and [[level drain]]ing a grown-up monster will not cause it to revert to a lesser form. The only possible way for a monster to retake its previous form is [[polymorph]]ing them, which yields no real benefit.
+
+While many players may only ever notice the growth of [[domestic]] pets (dogs, cats, and horses), a surprising number of monsters can grow up in this manner. The possible form changes are as follows:<ref>{{function|mondata.c|grownups data structure|version=NetHack 3.6.0}}</ref>
+
+'''Domestic animals:'''
+* [[little dog]] → [[dog]] → [[large dog]]
+* [[kitten]] → [[housecat]] → [[large cat]]
+* [[pony]] → [[horse]] → [[warhorse]]
+'''Baby monsters:'''
+* [[chickatrice]] → [[cockatrice]]
+* [[hell hound pup]] → [[hell hound]]
+* [[winter wolf cub]] → [[winter wolf]]
+* [[baby gray dragon]] → [[gray dragon]]
+* [[baby silver dragon]] → [[silver dragon]]
+* [[baby shimmering dragon]] → [[shimmering dragon]] ([[deferred]])
+* [[baby red dragon]] → [[red dragon]]
+* [[baby white dragon]] → [[white dragon]]
+* [[baby orange dragon]] → [[orange dragon]]
+* [[baby black dragon]] → [[black dragon]]
+* [[baby blue dragon]] → [[blue dragon]]
+* [[baby green dragon]] → [[green dragon]]
+* [[baby yellow dragon]] → [[yellow dragon]]
+* [[baby gold dragon]] → [[gold dragon]] ([[NetHack 3.7.0]])
+* [[red naga hatchling]] → [[red naga]]
+* [[black naga hatchling]] → [[black naga]]
+* [[golden naga hatchling]] → [[golden naga]]
+* [[guardian naga hatchling]] → [[guardian naga]]
+* [[baby long worm]] → [[long worm]]
+* [[baby purple worm]] → [[purple worm]]
+* [[baby crocodile]] → [[crocodile]]
+'''Orcs and elves:'''
+* [[orc]] / [[hill orc]] / [[Mordor orc]] / [[Uruk-hai]] → [[orc-captain]]
+* [[elf]] / [[Woodland-elf]] / [[Green-elf]] / [[Grey-elf]] → [[elf-lord]] → [[elvenking]]
+'''Other humanoids:'''
+* [[kobold]] → [[large kobold]] → [[kobold lord]]
+* [[gnome]] → [[gnome lord]] → [[gnome king]]
+* [[dwarf]] → [[dwarf lord]] → [[dwarf king]]
+* [[ogre]] → [[ogre lord]] → [[ogre king]]
+* [[mind flayer]] → [[master mind flayer]]
+'''Undead:'''
+* [[lich]] → [[demilich]] → [[master lich]] → [[arch-lich]]
+* [[vampire]] → [[vampire lord]]
+* [[manes]] → [[lemure]] 
+'''Giant animals:'''
+* [[sewer rat]] → [[giant rat]]
+* [[cave spider]] → [[giant spider]]
+* [[bat]] → [[giant bat]]
+'''Soldiers, Kops and watchmen:'''
+* [[soldier]] → [[sergeant]] → [[lieutenant]] → [[captain]]
+* [[Keystone Kop]] → [[Kop Sergeant]] → [[Kop Lieutenant]] → [[Kop Kaptain]]
+* [[watchman]] → [[watch captain]]
+'''Quest guardians:'''
+* [[student]] → [[archeologist]]
+* [[attendant]] → [[healer]]
+* [[page]] → [[knight]]
+* [[acolyte]] → [[priest]]
+* [[apprentice]] → [[wizard]]
+'''Other:'''
+* [[small mimic]] → [[large mimic]] → [[giant mimic]]
+* [[aligned priest]] → [[high priest]]
+
+Although [[queen bee]]s can lay [[killer bee]] [[egg]]s, and [[winged gargoyle]]s can lay [[gargoyle]] eggs, such offspring are sterile and will not grow into their parent forms.
+
+==Variants==
+=== SLASH'EM ===
+Several monsters added in [[SLASH'EM]] also are capable of growing up
+* [[pile of killer coins]] → [[large pile of killer coins]] → [[huge pile of killer coins]]
+* [[dingo puppy]] → [[dingo]] → [[large dingo]]
+* [[larva]] → [[maggot]] → [[dung worm]]
+* [[giant tick]] → [[giant flea]] → [[giant louse]]
+* [[deep one]] → [[deeper one]] → [[deepest one]]
+* [[lamb]] → [[sheep]]
+* [[shoggoth]] → [[giant shoggoth]]
+* [[gnoll]] → [[gnoll warrior]] → [[gnoll chieftain]]
+* [[migo drone]] → [[migo warrior]]
+* [[vampire lord]] → [[vampire mage_(SLASH'EM)|vampire mage]]
+* [[baby shimmering dragon]] → [[shimmering dragon]]
+* [[baby deep dragon]] → [[deep dragon]]
+* [[gnome lord]] → [[gnome warrior]] (This is a change from vanilla)
+
+=== UnNetHack ===
+* [[sewer rat]] → [[giant rat]] → [[rodent of unusual size]]
+
+In the [[Convict|Convict patch]] and some other [[variant]]s that include it, the giant rat grows up into the [[enormous rat]] before it becomes the rodent of unusual size. In the latest version of the UnNetHack source code, however, the enormous rat has been removed and giant rats now grow up directly into R.O.U.S.
+
+=== SpliceHack ===
+[[SpliceHack]] adds new monsters that can grow up, and gives some monsters from vanilla the ability to grow up:<ref>https://github.com/NullCGT/SpliceHack/blob/Spl-R-1.1.0/src/mondata.c#L1070</ref>
+
+* [[little dog]] → [[dog]] → [[large dog]] → [[guard dog]]
+* [[winter wolf pup]] → [[winter wolf cub]] → [[winter wolf]]
+* [[kitten]] → [[housecat]] → [[large cat]] → [[fat cat]]
+* [[sewer rat]] → [[giant rat]] → [[rodent of unusual size]]
+* [[zoo bat]] → [[gaol bat]]
+* [[baby violet dragon]] → [[violet dragon]]
+* [[crocodile]] → [[killer croc]]
+* [[ichneumon larva]] → [[giant ichneumon]]
+* [[grid bug]] → [[spark bug]] → [[arc bug]] → [[lightning bug]]
+* [[manes]] → [[lemure]]
+* [[rock piercer]] → [[iron piercer]] → [[glass piercer]] → [[diamond piercer]]
+* [[dust vortex]] → [[dust devil]]
+* [[werewolf]] → [[pack lord]]
+* [[deep one]] → [[deeper one]] → [[deepest one]]
+* [[pig]] → [[feral hog]]
+* [[ratman]] → [[ratman squeaker]]
+* [[giant spider]] → [[monstrous spider]]
+* [[maggot]] → [[giant fly]]
+* [[kraken]] → [[thing from below]]
+* [[ghost]] → [[spectre]]
+* [[martial artist]] → [[grandmaster]]
+* [[movanic deva]] → [[monadic deva]] → [[astral deva]]
+* [[shrieker]] → [[screamer]]
+* [[red mold]] → [[red moldier]]
+* [[yellow mold]] → [[yellow moldier]]
+* [[green mold]] → [[green moldier]]
+* [[brown mold]] → [[brown moldier]]
+* [[ghoul]] → [[ghast]]
+
+== References ==
+
+<references/>
+
+{{nethack-343}}
+[[Category:Monster attributes]]
+[[Category:Pets]]}
+&&%s&& %s Treat {130052 2020-01-01T22:18:46Z {4001331 KNHCat}  A '''treat''' is an item of food that can be carried to make your [[pet]] follow you more closely, or fed to your pet to increase its [[apport]] (which will make it more likely to fetch things for you, including things that [[stealing from shops|belong to someone else]]).
+
+The best-known treat is the [[tripe ration]] for carnivorous pets including cats and dogs, but they also like meat created with the [[stone to flesh]] spell. [[Meatball]]s are easiest to create and carry around, but [[meat ring]]s, [[meat stick]]s and [[huge chunks of meat]] count as treats, too.  Herbivorous (i.e. vegan) pets such as [[horse]]s are fond of [[apple]]s and [[carrot]]s.
+
+[[Omnivorous]] [[pet]]s like everything which [[carnivore]]s and [[herbivore]]s like. Most humanoid monsters are omnivorous. Bananas are treats for [[monkey]]s, [[ape]]s, and [[Apelike_creature|anything represented by a Y]].  [[Metallivore]]s ([[rock mole]]s, [[rust monster]]s, and [[xorn]]s) regard non-[[rustproof]]ed [[iron]] as a treat.
+
+== Uses of treats ==
+
+Carrying a treat in your main inventory (not in a bag or other container) makes your pets follow you more closely.{{refsrc|dogmove.c|558|nethack=3.6.0}} Normally, pets will freely roam up to four squares away from you in open areas like rooms, but if you're carrying a treat, they'll mostly try to stay right next to you.
+
+Another way to use treats is to feed them to your pets as "rewards".  Specifically, eating a treat that you've carried before increases the pet's [[apport]],{{refsrc|dogmove.c|283|nethack=3.6.0}} making it more likely to pick up items and bring them to you.  This can be useful if you're trying to train your pet to [[stealing from shops|steal from shops]].
+
+Treats can also be thrown at hostile [[domestic animal]]s (cats, dogs and horses) to tame them.  However, contrary to a common misconception, treats are ''not'' required for this; any food item that the animal can eat will do, unless it splats (egg, melon, cream pie).  For example, dogs can be tamed with food rations, pancakes or royal jelly, and horses can be tamed with garlic or vegan corpses. See [[Diet#Pets]] for an exhaustive list.
+
+Only domestic animals can be tamed by throwing them food &mdash; for example, a [[unicorn]] will not like it if you throw it an apple.
+
+Creatures will typically make an immediate mad dash towards any nearby treats, and will immediately devour the treat once they reach it, so if you wish to pick up any item which is regarded as a treat by a nearby creature, you will need to do so very rapidly.
+
+=== Strategy ===
+
+If you only have one treat, save it for keeping pets close by.  Spare treats can be fed to pets to increase their apport.  While treats can also be used to tame new pets, avoid wasting your last treat on that, unless you're acutely short of "people food".
+
+If you find a tripe ration or other treat for sale in a shop, and somehow manage to reach it before your pet does, you should pick it up and drop it.  You will not be charged for it, but it now counts as having been carried by you, and eating it will therefore increase your pet's apport.  Alternatively, if it's the first treat you've found, consider buying it if you can afford it.
+
+A treat and a [[bag]] can be very useful for getting you pet to [[stealing from shops|steal from shops]], even with low apport.  Basically, you hide the treat in the bag while your pet roams in the shop.  Once it picks up an item you want, pull the treat out of the bag and wait for the pet to come to you.  In a pinch, a [[large box]] can be used instead of a bag.
+
+== List of treats ==
+
+=== Carnivore or omnivore ===
+
+* [[tripe ration]]
+* [[meatball]]
+* [[meat ring]]
+* [[meat stick]]
+* [[huge chunk of meat]]
+
+=== Herbivore or omnivore ===
+
+* [[apple]]
+* [[carrot]]
+
+=== Apelike herbivore or omnivore ([[monkey]], [[ape]], [[sasquatch]]) ===
+
+* [[banana]]
+
+=== Ghoul ===
+
+* old corpses
+
+=== Metallivore ===
+
+* any non-rustproof [[iron]] object
+
+== References ==
+<references/>
+
+{{nethack-360}}
+[[Category:Comestibles]]
+[[Category:Strategy]]
+[[Category:Pets]]}
+&&%s&& %s Death drop {148207 2022-09-21T14:52:50Z {187 Darth l33t} standardize Kops name In ''[[NetHack]]'', when the player kills a [[monster]], it may sometimes leave behind a random item that it did not already have when alive; these items are known as '''death drops'''.
+
+==Description==
+If a monster is neither [[corpseless]] nor a [[Keystone Kop]] (of any rank), it has a 1/6 chance of leaving a random item upon death.{{refsrc|mon.c|2200|version=NetHack 3.6.0}} Death drops can be left even if the corpse [[Corpse#Corpse generation odds|failed to generate]], but any circumstances that explicitly prevent the monster from leaving a corpse will prevent a death drop as well (e.g. [[stoning]], [[drawbridge]], [[disintegration]], [[digestion]], [[undead]] on a [[graveyard]] level, and a few others).{{refsrc|mon.c|2289|nethack=3.6.1}} There is also a penalty against small monsters, who can only leave [[food ration]]s, [[leash]]es, [[figurine]]s, or items that [[weight|weigh]] at most three units. The game only tries to generate the item once; if it isn't eligible (as per above), no death drop is left.
+
+Death drops use the normal object generation mechanism, so the object class of the dropped item depends on which level the monster was killed in. {{refsrc|mkobj.c|26|version=NetHack 3.6.0}} See [[Object#Item generation]] for a table of object class probabilities.
+
+Cloned monsters (such as [[gremlins]] that have multiplied) cannot leave death drops, nor can any monster occupying the player's square (such as engulfers or mounts).{{refsrc|mon.c|2202|version=NetHack 3.6.0}}
+
+==Special drops==
+Some monsters additionally always leave behind certain non-random body parts:{{reffunc|mon.c|make_corpse}}
+{| class="wikitable"
+! Monster || Item
+|-
+| [[dragon]] || [[dragon scales]] (1/3 chance, 1/20 if revived)
+|-
+| [[unicorn]] || [[unicorn horn]] (1/2 chance if revived)
+|-
+| [[long worm]] || [[worm tooth]]
+|-
+| [[iron golem]] || ''2d6'' [[iron chain]]s
+|-
+| [[glass golem]] || ''2d4'' [[worthless pieces of glass]]
+|-
+| [[clay golem]] || ''49 + 1d20'' (avg. 59.5) [[rock]]s
+|-
+| [[stone golem]] || [[statue]] of a stone golem
+|-
+| [[wood golem]] || ''2d4'' [[quarterstaff]]s
+|-
+| [[leather golem]] || ''2d4'' [[leather armor]]s
+|-
+| [[gold golem]] || ''100-200'' [[gold piece]]s ([[Luck]]-weighted)
+|-
+| [[paper golem]] || ''1d4'' [[blank scroll]]s
+|-
+| [[gray ooze]]
+| rowspan=4 | a small [[glob]]
+|-
+| [[brown pudding]]
+|-
+| [[black pudding]]
+|-
+| [[green slime]]
+|}
+
+==See also==
+*[[Monster starting inventory]]
+*[[offensive item]]
+*[[defensive item]]
+*[[miscellaneous item]]
+
+==References==
+<references/>
+{{nethack-364}}
+[[Category:Strategy]]}
+&&%s&& %s Scrolls of magic mapping {20644 2007-04-26T15:47:30Z {0 } Redirecting to [[Scroll of magic mapping]] #REDIRECT [[scroll of magic mapping]]}
+&&%s&& %s Potions of healing {20645 2007-04-26T15:48:17Z {0 } Redirecting to [[Potion of healing]] #REDIRECT [[potion of healing]]}
+&&%s&& %s NetHackWiki:Meets {21761 2007-07-23T17:42:19Z {678 Raxvulpine} /* Boston roguelike meet */ This article is for real-life meetups relating to Nethack and other roguelikes.
+
+== London roguelike meet ==
+
+This meet was formerly known as the London rgrn, but there is an ongoing attempt to expand its scope to include other roguelikes.
+
+Canonical date and time: The last Saturday of every odd-numbered month (January, March etc.) from 2:00 pm until the meet breaks up.
+
+Canonical location: [http://www.individualpubs.co.uk/pembury/ The Pembury Tavern]
+
+== Boston roguelike meet ==
+
+This happened twice before in imitation of the London meet, and it was fun, so we're doing it again. User Raxvulpine doesn't plan to host another until November, but others are welcome to if they want to.
+
+[[Category:Community]]}
+&&%s&& %s Emergency {141476 2021-07-04T04:44:52Z {4001483 Cathartes} Changed redirect target from [[Spellcasting]] to [[Emergency spell]] #REDIRECT [[Emergency spell]]}
+&&%s&& %s Spellcasting {147176 2022-08-03T15:55:49Z {4000251 Netzhack} /* Basics */ {{Keyboard commands}}
+{{for|monsters' spellcasting mechanics|monster spells}}
+
+In ''[[NetHack]]'', '''spellcasting''' is the act of casting a [[spell]], done by using the '''{{kbd|Z}}''' command. Casting a spell uses [[you]]r innate magical [[power]] as a source, rather than using an external source of magic such as a [[scroll]] or [[wand]].
+
+[[Healer]]s, [[Monk]]s, [[Priest]]s and [[Wizard]]s begin the game with knowledge of one or more spells, whose corresponding spellbooks appear in their initial [[inventory]]; other [[role]]s must find at least one [[spellbook]] and successfully [[read]] it first.
+
+==Basics==
+You must know at least one spell in order to cast; when casting a spell, a menu of known spells and their chance of failure is displayed. You can also view your list of known spells by pressing {{kbd|+}}, and pressing {{kbd|+}} again allows you to rearrange the spells so you can place them on more convenient letters.
+
+A spell's chance of failure is affected by your spellcasting [[attribute]] (either [[intelligence]] or [[wisdom]]), [[experience level]], [[skill]] level, your role's innate magical affinity, and what [[armor]] you are wearing: [[metal]] armor in particular can impact chances of success, as well as any worn shield and their material if applicable. Failure rates can be reduced by wearing a [[robe]], and can be additionally reduced further if the spell is an [[emergency spell]] or your role's [[special spell]]. For details, see the article section on how to [[#Calculating spell success rate|calculate spell failure chance]].
+
+When you attempt to cast a spell, the game rolls for success or failure against this rate, with a message coming up if you failed to cast the spell; otherwise, the spell immediately takes effect, prompting for a direction if necessary. [[Training]] skills in spell schools is done by successfully casting spells in that school, and raises the percentage by an amount equal to the spell's level; the spell itself does not have to directly affect anything.
+
+Casting spells requires a certain amount of [[energy]] and [[nutrition]] proportionate to the spell's level; failing to cast a spell correctly uses up only a portion of that energy, and the {{spell of|detect food}} spell does not drain nutrition when cast.{{refsrc|src/spell.c|982|version=NetHack 3.6.0|comment=Failing to correctly cast a spell wastes only half of casting cost.}}{{refsrc|src/spell.c|929|version=NetHack 3.6.0|comment=[[Detect food]] has no casting hunger cost.}} Wizards have access to [[hungerless casting]] that can reduce or even eliminate nutrition costs, based on their intelligence score. 
+
+You cannot cast a spell if you lack the required energy, and in certain circumstances your energy or nutrition can be drained enough that an otherwise successful spell will end up failing; see [[#Spellcasting costs|spellcasting costs]] for further information. There are also other circumstances and requirements that can affect spellcasting:
+
+* You cannot cast spells if you are [[stunned]].{{refsrc|src/spell.c|644|nethack=3.6.6}}
+* Your [[strength]] must be at least 4 to cast a spell, unless you are trying to cast {{spell of|restore ability}}.
+* You cannot be [[overtaxed]] or overloaded in terms of encumbrance.
+* You must also be capable of physically vocalizing the spell to cast it{{refsrc|src/spell.c|644|nethack=3.6.6}} – [[strangulation]] and polyforms that are headless, only make animal sounds or are otherwise incapable of speaking (e.g., [[grid bug]], [[jabberwock]], [[mimic]], [[jaguar]]) will stop you from casting spells.
+* You must also have at least one free hand to direct the energy – this means you cannot cast if there are [[cursed]] weapons or [[shield]]s in both hands.
+** This only applies if you are in a form that has hands; polyforms that lack hands do not prevent you from casting.
+* If [[confused]], you can attempt to cast spells, but they will always fail with the same effects as random spell failure.
+
+While using [[teleport at will]] is also considered to be a cast of a spell, and follows many of the same rules as casting {{spell of|teleport away}}, there are a few notable differences - teleport at will ignores failure rates, for instance.
+
+==Spellcasting costs==
+Each spell costs an amount of energy equal to 5 times the spell's level in order to cast;{{refsrc|src/spell.c|908|version=NetHack 3.6.0|comment=Spell cost.}} if you are carrying the [[Amulet of Yendor]], it drains an amount of energy between 1 point and 2 times the usual cost as you attempt to cast.{{refsrc|src/spell.c|952|version=NetHack 3.6.1|comment=Amulet of Yendor's penalty on spell cost.}}. If you do not have the required energy to cast the spell, nothing happens; if the Amulet drains enough energy to prevent the spell being cast, this uses up a move.{{refsrc|src/spell.c|956|version=NetHack 3.6.1|comment=Attempting to cast a remembered spell without enough energy uses a move if Amulet drain occurred.}} If you have the energy for a spell and fail to cast it correctly, only half of that spell's energy cost (rounded down) is used up.
+
+In addition, casting any spell other than detect food uses an amount of nutrition equal to two times the energy cost; this is usually 10 times the spell's level, before factoring in reduced-hunger casting for Wizards (hungerless casting ignores this entirely). A failed cast of a spell costs as much as a successful one, and carrying the Amulet has no impact on nutrition costs. Being weak and very close to fainting from [[hunger]] can prevent you from properly casting any spell other than detect food; fainting will outright prevent casting of those other spells, regardless of whether or not you have hungerless casting.
+
+As an example, casting a level 3 spell normally requires 15 energy and 30 nutrition; if you fail to cast it, only 7 energy is used. When carrying the Amulet of Yendor, there is an energy penalty of 1 to 30 points, so the total energy cost varies from 16 to 45. The nutrition cost will always be 30 regardless of the circumstance.
+
+==Forgotten spells==
+Spell knowledge lasts for 20,000 turns after learning the spell from a spellbook; a spell is forgotten once this duration expires, and forgotten spells are marked with an asterisk <tt>*</tt> in the casting menu. Re-reading a spellbook for a spell with a timeout at or below 1,000 turns will refresh knowledge of that spell and reset the timeout to 20,000 turns;{{refsrc|src/spell.c|379|version=NetHack 3.6.0|comment=Refreshing or learning a spell.}} attempting to read a spellbook before the timeout is low enough will not use up a reading of the spellbook (meaning it will not result in a [[usage fee]] with unpaid spellbooks in a [[shop]]).{{refsrc|src/spell.c|376|version=NetHack 3.6.0|comment=Reading book of keenly known spell.}}
+
+Attempting to cast a forgotten spell will leave you confused and/or stunned, with the duration dependent on the level of the forgotten spell; this does not consume any nutrition or power. The exact effects of casting a forgotten spell are as follows:{{reffunc|src/spell.c|spell_backfire|version=NetHack 3.6.0|comment=Casting a forgotten spell.}}
+
+{| class="prettytable"
+! Probability !! Effect
+|-
+| 40%
+|
+* confused for (''spell-level'' + 1) * 3 turns
+|-
+| 30%
+|
+* confused for (''spell-level'' + 1) * 2 turns
+* stunned for (''spell-level'' + 1) turns
+|-
+| 20%
+|
+* confused for (''spell-level'' + 1) turns
+* stunned for (''spell-level'' + 1) * 2 turns
+|-
+| 10%
+|
+* stunned for (''spell-level'' + 1) * 3 turns
+|}
+
+Forgotten spells are a common way to deliberately become confused and invoke the alternative effects of certain [[scroll]]s.
+
+==Calculating spell success rate==
+The spell failure rate given in the spellcasting menu is calculated using the listed algorithm below, and the values in the table below this list, with higher numbers signifying harsher penalties (limited to a maximum of 20):
+
+* Start with the "base" value associated with your role.
+* Each role also has an "Emergency" modifier for [[emergency spell]]s - specifically, {{spell of|remove curse}} and all [[healing spells]] except for {{spell of|stone to flesh}} - that is applied when casting such a spell.{{refsrc|src/spell.c|1618|version=NetHack 3.6.0|comment=List of emergency spells.}}
+* If you are wearing any [[shield]], add the amount in the "shield" field. Though these amounts are small, note that wearing any shield other than a [[small shield]] also incurs a severe penalty later in the success chance calculation.
+* If you are wearing [[metallic]] [[armor|body armor]], add the amount in the "Suit" field.
+** If you are also wearing a [[robe]], only add half the amount (rounded down).{{refsrc|src/spell.c|1601|version=NetHack 3.6.0|comment=[[Robe]] worn over metallic armor halves the spellcasting penalty of the armor.}}
+** If you are wearing a robe ''without'' metallic armor, then ''subtract'' the amount in the "Suit" field. {{refsrc|src/spell.c|1603|version=NetHack 3.6.0|comment=Robe worn without metallic body armor increases spellcasting chance.}}
+* If you are wearing a metallic [[helmet]] other than the [[helm of brilliance]], add 4.{{refsrc|src/spell.c|95|version=NetHack 3.6.0|comment=Metal helmets interfere with the mind.}}{{refsrc|src/spell.c|1608|version=NetHack 3.6.0|comment=[[Helm of brilliance]] imposes no spellcasting penalty.}}
+* If you are wearing metallic [[gloves]], add 6.{{refsrc|src/spell.c|96|version=NetHack 3.6.0|comment=Casting channels through the hands.}}
+* If you are wearing metallic [[boots]], then add 2.{{refsrc|src/spell.c|97|version=NetHack 3.6.0|comment=All metal interferes to some degree.}}
+* If you are casting the corresponding special spell for your role (also listed in the table), ''subtract'' 4.
+
+{| class="prettytable striped"
+!Class
+!Base
+!Emergency
+!Shield
+!Suit
+!Stat
+!Special spell
+|-
+| [[Archeologist]]
+| 5
+| 0
+| 2
+| 10
+| [[Intelligence|Int]]
+| {{spell of|Magic mapping}}
+|-
+| [[Barbarian]]
+| 14
+| 0
+| 0
+| 8
+| [[Intelligence|Int]]
+| {{spell of|Haste self}}
+|-
+| [[Caveman]]
+| 12
+| 0
+| 1
+| 8
+| [[Intelligence|Int]]
+| {{spell of|Dig}}
+|-
+| [[Healer]]
+| 3
+| -3
+| 2
+| 10
+| [[Wisdom|Wis]]
+| {{spell of|Cure sickness}}
+|-
+| [[Knight]]
+| 8
+| -2
+| 0
+| 9
+| [[Wisdom|Wis]]
+| {{spell of|Turn undead}}
+|-
+| [[Monk]]
+| 8
+| -2
+| 2
+| 20
+| [[Wisdom|Wis]]
+| {{spell of|Restore ability}}
+|-
+| [[Priest]]
+| 3
+| -2
+| 2
+| 10
+| [[Wisdom|Wis]]
+| {{spell of|Remove curse}}
+|-
+| [[Ranger]]
+| 9
+| 2
+| 1
+| 10
+| [[Intelligence|Int]]
+| {{spell of|Invisibility}}
+|-
+| [[Rogue]]
+| 8
+| 0
+| 1
+| 9
+| [[Intelligence|Int]]
+| {{spell of|Detect treasure}}
+|-
+| [[Samurai]]
+| 10
+| 0
+| 0
+| 8
+| [[Intelligence|Int]]
+| {{spell of|Clairvoyance}}
+|-
+| [[Tourist]]
+| 5
+| 1
+| 2
+| 10
+| [[Intelligence|Int]]
+| {{spell of|Charm monster}}
+|-
+| [[Valkyrie]]
+| 10
+| -2
+| 0
+| 9
+| [[Wisdom|Wis]]
+| {{spell of|Cone of cold}}
+|-
+| [[Wizard]]
+| 1
+| 0
+| 3
+| 10
+| [[Intelligence|Int]]
+| {{spell of|Magic missile}}
+|}
+
+{{upcoming|NetHack 3.7.0|[[Knight]]s can now cast clerical spells as if they were not wearing metallic body armor, including the bonus for any worn robes.}}
+
+Next, calculate your base chance of success, which is 5.5 times either your intelligence or wisdom depending on your role (see the "Stat" field). The maximum natural human Int/Wis of 18 gives a 99% base success rate. This chance is modified by the following factors:
+
+* SKILL level (Unskilled = 0, Basic = 1, Skilled = 2, Expert = 3)
+* spell level (LVL)
+* experience level (XL)
+
+The formula used to modify this chance is:{{refsrc|src/spell.c|1643|version=NetHack 3.6.0|comment=Spellcasting chance formula.}}
+:difficulty = (LVL * 4) - (SKILL * 6) - (XL/3) - 5
+
+If ''difficulty'' is positive, the spell is considered difficult. Your chance is reduced according to the following formula. A difficulty of 1 therefore gives a 53% penalty, and a difficulty of 9 gives a 100% penalty.
+:<math>\text{chance} = \text{base chance} - \sqrt{(900 \times \text{difficulty}) + 2000}</math>
+If it is negative, it will be increased with diminishing returns: the absolute value is multiplied by (15/LVL), capped at 20, and added to
+the base chance. A level 1 spell therefore achieves the full 20% bonus with a difficulty of -2. A level 7 spell cannot achieve a better difficulty than -5, which gives a bonus of 10%.
+
+The resulting chance is clipped to the range of 0% to 120% success. If you are wearing a shield larger than a small shield, the chance is then reduced to {{frac|4}} of the amount, or else halved if it is the special spell for your role{{refsrc|src/spell.c|1673|version=NetHack 3.6.0|comment=Big shields significantly impair spellcasting.}} Finally, the chance of success is adjusted by your total penalty using the following formula:
+:<math>\text{actual chance} = \frac{\text{chance} \times (20-\text{penalty})}{15} - \text{penalty}</math>
+The result is clipped to the range of 0% to 100% success.
+
+One non-obvious consequence of this calculation is that sometimes gaining an experience level divisible by 3 can have a very large effect on the success rate of some spells.<ref>http://www.chiark.greenend.org.uk/~damerell/games/spellcliff.txt</ref>
+{|class="prettytable"
+|'''Spell Level'''
+|'''Skill Level'''
+|'''XL for large improvement'''
+|-
+|2
+|unskilled
+|9
+|-
+|3
+|unskilled
+|21
+|-
+|4
+|basic
+|15
+|-
+|5
+|basic
+|27
+|-
+|5
+|skilled
+|9
+|-
+|6
+|skilled
+|21
+|-
+|7
+|expert
+|15
+|}
+
+===Minimum spell failure rates===
+Because "chance" in the above section is capped at 120%, there is a point where improving your skill, spellcasting stat, or level will not decrease spellcasting failure rates. The only way to decrease failure rates below the listed minimum is to reduce your spellcasting penalty (by putting on a robe or removing penalizing armor). The following table shows the minimum spell failure rates for a given penalty, not including the penalty change of -4 from your special spell:
+
+{|class="prettytable"
+|'''Penalty'''
+|'''Min. failure rate'''
+|'''...with large shield'''
+|'''...with large shield, special spell'''
+|-
+| ≤-4
+| 0
+| 60+3*penalty
+| 0
+|-
+| -3
+| 0
+| 51
+| 5
+|-
+| -2
+| 0
+| 54
+| 10
+|-
+| -1
+| 0
+| 57
+| 15
+|-
+| 0
+| 0
+| 60
+| 20
+|-
+| 1
+| 0
+| 63
+| 25
+|-
+| 2
+| 0
+| 66
+| 30
+|-
+| 3
+| 0
+| 69
+| 35
+|-
+| 4
+| 0
+| 72
+| 40
+|-
+| 5
+| 0
+| 75
+| 45
+|-
+| 6
+| 0
+| 78
+| 50
+|-
+| 7
+| 3
+| 81
+| 55
+|-
+| 8
+| 12
+| 84
+| 60
+|-
+| 9
+| 21
+| 87
+| 65
+|-
+| 10
+| 30
+| 90
+| 70
+|-
+| 11
+| 39
+| 93
+| 75
+|-
+| 12
+| 48
+| 96
+| 80
+|-
+| 13
+| 57
+| 99
+| 85
+|-
+| 14
+| 66
+| 100
+| 90
+|-
+| 15
+| 75
+| 100
+| 95
+|-
+| 16
+| 84
+| 100
+| 100
+|-
+| 17
+| 93
+| 100
+| 100
+|-
+| ≥18
+| 100
+| 100
+| 100
+|}
+
+== Effects ==
+Many spells have a corresponding wand, scroll or potion whose effects are similar or exactly the same.{{refsrc|src/spell.c|1044|version=NetHack 3.6.0|comment=wand similar}}{{refsrc|src/spell.c|1096|version=NetHack 3.6.0|comment=scroll similar}}{{refsrc|src/spell.c|1112|version=NetHack 3.6.0|comment=potion similar}}
+
+===Range===
+The distance of a [[beam]]-type spell ranges from 6–13 squares.{{refsrc|src/zap.c|2849|version=NetHack 3.6.0|comment=beam spell range}} The distance of the [[ray]] from a spell of {{spell of|dig}} ranges from 8–25 squares;{{refsrc|src/dig.c|1442|version=NetHack 3.6.0|comment=dig spell range}} all other ray-type spells have a range of 7–13 squares.{{refsrc|src/zap.c|3846|version=NetHack 3.6.0|comment=ray spell range}}
+
+===To-hit===
+For applicable offensive spells, the chance of hitting a target with a given AC is based on a d20 roll, with an additional spell bonus calculated by taking the sum of all penalties and bonuses from your [[dexterity]] and the relevant spell skill (similar to physical combat).{{refsrc|src/zap.c|3733|version=NetHack 3.6.0|comment=spell to hit calculation}}{{refsrc|src/zap.c|2906|version=NetHack 3.6.0|comment=spell hit bonus}}
+
+If the chance is 0, success is calculated using this formula, where <math>B</math> is the spell bonus:
+
+<math>d10 < AC + B</math>
+
+Otherwise, negative AC is 'weakened' to a random number between -1 and the actual AC, and the success is calculated using this formula, where <math>B</math> is the spell bonus and the chance is represented by <math>X</math>:{{refsrc|src/hack.c|294|version=NetHack 3.6.0|comment=negative ac weakened}}
+
+<math>3 - X < AC + spell bonus</math>
+
+===Damage===
+A spell damage bonus based on intelligence (INT) and [[experience level]] (XL) is used in most attack spell damage calculations:{{reffunc|src/zap.c|spell_damage_bonus|version=NetHack 3.6.0|comment=spell damage bonus}}
+
+{| class="prettytable"
+! Criteria !! Bonus
+|-
+! INT <= 9
+| -3
+|-
+! INT <= 13 OR XL < 5 
+| 0
+|-
+! INT <= 18
+| +1
+|-
+! INT <= 24 OR XL < 14 
+| +2
+|-
+! INT = 25
+| +3
+|}
+
+Each spell has its own damage calculations that usually include this bonus in some manner:
+
+* [[Force bolt]]:
+** 2d12 + spell damage bonus{{refsrc|src/zap.c|160|version=NetHack 3.6.0|comment=force bolt damage}}
+* [[Drain life]]:{{refsrc|src/zap.c|371|version=NetHack 3.6.0|comment=drain life damage}}{{reffunc|src/makemon.c|monhp_per_lvl|version=NetHack 3.6.0|comment=drain life damage routine}}
+** base d8
+*** d4 for level 0 monsters
+*** 4-8 for adult [[dragon]]s
+*** 5-8 for [[named demon]]s (though they are normally immune)
+*** (base health) / (base level) for [[golem]]s
+** Spell damage bonus is added after factoring the above, then damage is halved if the monster resists: otherwise, the spell deals double damage and also inflicts damage to max [[HP]]
+* [[Magic missile]]:{{reffunc|src/zap.c|zhitm|version=NetHack 3.6.0|comment=routine containing mm and cold damage}}
+** (XL / 2 + 1)d6 + spell damage bonus
+** no damage if the monster has [[magic resistance]]
+* [[Cone of cold]] (below Skilled):{{reffunc|src/zap.c|zhitm|version=NetHack 3.6.0|comment=routine containing mm and cold damage}}
+** (XL / 2 + 1)d6 + spell damage bonus; additional (XL / 2 + 1)d3 if monster has fire resistance
+* [[Fireball]] (below skilled){{refsrc|zap.c|4035|nethack=3.6.1}}
+** Base 12d6 damage explosion centered at the monster; no spell damage bonus
+** modified like Skilled below
+* Cone of cold and fireball (skilled or expert){{refsrc|src/spell.c|1010|version=NetHack 3.6.0|comment=skilled cold and fireball}}
+** 2 to 9 explosions covering a 3 x 3 space, the first centered on a starting point up to 10 steps away, remaining centered randomly 9 spaces centered on starting point
+** base + spell damage on each monster in affected space for each explosion
+** Cone of Cold and monster has fire resistance or Fireball and monster has cold resistance: double damage{{refsrc|src/explode.c|400|version=NetHack 3.6.0|comment=skilled cold and fireball resistance adjustments}}
+** Monster resists: 1/2 damage
+** additional damage for destroyed items{{refsrc|explode.c|445|nethack=3.6.1}}
+
+==Strategy==
+The three primary methods to improve your spellcasting rates are:
+
+* Increasing the relevant spellcasting attribute.
+* Increase your skill in the desired spell school(s).
+* Wear armor appropriate to your role's spellcasting abilities.
+
+===Role and attribute strategy===
+Your casting attribute, role Base value (per [[#Calculating spell success rate|the above table]]), and metal armor determine your success chance for low-level spells. Experience level and spell school skill can raise your chance for high-level spells up to the chance of low-level spells, but will not make low-level spells more reliable.
+
+Each point of your spellcasting attribute up to 16 is significant in determining your success chance with "easy" spells. Roles with lower base spellcasting penalties (i.e. "base" values of 5 or lower) may be able to get by with fewer points in that attribute, but tend to start with that attribute at the racial maximum in any case. An intelligence or wisdom score of 17-18 is significant for roles with higher base penalties or low-penalty roles wearing metal armor; score of 19-22 are significant for high-level spells that the 20-point "easy" bonus does not apply to; and scores of 23 or higher are only significant for "difficult" spells, which generally have low success chances regardless.
+
+With a base success chance of 120%, your spellcasting penalty (Base modified by armor) must be 6 or less to achieve an overall 100% success chance. Roles that can achieve this without a [[robe]] are [[Archeologist]], [[Healer]], [[Priest]], [[Tourist]], and [[Wizard]]. Roles that can achieve this when casting emergency spells or their special spell are [[Knight]] and [[Monk]]. Roles that can achieve this with their special spell only are [[Ranger]], [[Samurai]], [[Rogue]], and [[Valkyrie]]. The remaining two roles, [[Barbarian]] and [[Caveman]], cannot achieve 100% success chance in any spell without a robe.
+
+===Skill and experience strategy===
+Spells are much easier to cast when their [[#Skills and experience|difficulty]] is zero or less. The following table lists the most difficult spell level that is still considered ''easy'' (i.e. with no penalty for spell level) given a set of particular experience and skill levels.
+
+{| class="prettytable"
+! colspan="5" | Highest ''easy'' spell level
+|-
+! Xlvl !! Unskilled !! Basic !! Skilled !! Expert
+|-
+! 1–2
+| 1 || 2 || 4 || 5
+|-
+! 3–8
+| 1 || 3 || 4 || 6
+|-
+! 9–14
+| 2 || 3 || 5 || 6
+|-
+! 15–20
+| 2 || 4 || 5 || 7
+|-
+! 21–26
+| 3 || 4 || 6 || 7
+|-
+! 27–30
+| 3 || 5 || 6 || 7
+|}
+
+If your Intelligence or Wisdom is high, spells of this level or below are likely to have a near-100% base success chance. It is still possible to cast non-easy spells, but they tend to have much lower success chances. One exception is a high-level Monk wearing a robe; they get enough of a bonus from it that even difficult spells of up to level 5 can be 100% reliable. With 22 wisdom from a [[helm of brilliance]], level 6 spells can also have a 100% success chance.
+
+==History==
+Spellcasting was introduced along with spellbooks in [[NetHack 1.3d]]. A spell first had to be learned by transcribing it from the spellbook, which would then disappear from your inventory afterward - if the transcription was successful, you could then cast the spell a limited number of times before it expired, and another spellbook was needed if you wished to cast it again. Armor blocking spellcasting was introduced in [[NetHack 3.2.0]]; the integration of the [[Wizard Patch]] into [[NetHack 3.3.0]] marks the origin of the current spellcasting system.
+
+In [[NetHack 3.6.0]] and previous versions, the Amulet of Yendor would increase the cost of casting a spell, instead of draining energy as you tried to cast it. This meant that it would also increase the nutrition cost, and it would not prevent emergency uses of a spell. In the example above of casting a level 3 spell, if you had only 16 energy left, you could still try again and again, without using any time, until the random penalty is rolled as 1.<ref>https://github.com/NetHack/NetHack/commit/8ff02c11d9979497396d4921bf0d7cf81808c5d1</ref> This was fixed in [[NetHack 3.6.1]].
+
+==Variants==
+Many variants of ''NetHack'' end up making changes to the spellcasting system in some manner.
+
+===SLASH'EM===
+{{main|Spellcasting (SLASH'EM)}}
+[[SLASH'EM]] makes several changes to NetHack's spellcasting: New spells have been added, and several existing ones have been reshuffled. SLASH'EM roles also tend to be more proficient in spell skills than their vanilla counterparts.
+
+===FIQHack===
+[[FIQHack]] has many changes to spellcasting for both players and monsters:
+
+* There are four new spells, all of which are level 7:
+** [[Spellbook of charging|Charging]] (enchantment), which is equivalent to an uncursed [[scroll of charging]].
+** [[Spellbook of phase|Phase]] (escape), which gives 21-60 (additional) turns of [[phasing]].
+** [[Spellbook of astral eyesight|Astral eyesight]] (divination), gives 11-30 turns of [[astral vision]].
+** [[Spellbook of summon nasty|Summon nasty]] (clerical), which is equivalent to the vanilla monster spell and summons tame monsters if you target a hostile monster.
+* The spell of identify is altered:
+** When cast at unskilled, the spell only identifies object type, appearance, and artifacts.
+** At Basic, it also IDs enchantment, object properties, charge count, tin content and egg type.
+** At Expert, the spell identifies fooproof state.
+* Various other spells have their levels changed:
+** Dig is level 2
+** Identify is level 2
+** Cancellation is level 5
+** Teleport away is level 5
+** Polymorph is level 7
+** Create familiar is level 2
+* The [[spell of create monster]] is replaced with the [[spell of summoning]]. Summoned monsters disappear after a set number of turns, based on casting skill.
+* [[Magic missile]] does less damage if cast at levels lower than expert.
+* Spellcasting no longer exercises wisdom; some spells can be [[Spell maintenance|maintained]], which slowly drains energy but provides a continuous effect.
+* Instead of a spell failure percentage, the amount of power required to cast a spell changes:
+** Spell cost is (base cost) * 100 / success%. Force bolt costs 5pw at 0% fail, 10pw at 50% fail, 20pw at 75% fail, 500pw at 99% fail, 1000pw at 100% fail (treated as 99.5%)
+** The Amulet doubles spell cost, instead of randomly draining 2-3x energy per spell.
+* Monsters use the same spellcasting system as players, which means that high-level spellcasting monsters have a lot of energy and can cast multiple spells quickly. Monsters can also pick up and read spellbooks to gain new spells.
+** The [[curse items]] monster spell no longer exists, but certain curse effects are stronger and more common.
+** Bones ghosts may be replaced by equivalent player monsters with the same spells as the late player.
+
+==External links==
+* [http://nethack.gridbug.de/spells.html NetHack Spell Failure Rate Calculator] (JavaScript)
+** [http://nethack.gridbug.de/SpellFailureRates.html Older version of the above]
+
+==References==
+<references/>
+{{DOD}}
+{{nethack-366}}
+[[Category:Spellcasting]]
+[[Category:Commands]]}
+&&%s&& %s Trouble {148253 2022-09-28T23:45:47Z {4000114 Derekt75} /* Major troubles */ quantify "slightly" {{for|the Wizard of Yendor's ability to clone himself|Double Trouble}}
+
+A '''trouble''' is an unfortunate condition that might be fixed by a [[pray]]er to your [[god]]. There are two kinds: a '''major trouble''' is more serious and will usually be fixed by any successful prayer, whereas a '''minor trouble''' is less serious and will usually only be fixed when praying on a coaligned [[altar]].
+
+== Major troubles ==
+
+This table lists major troubles, from most to least urgent. If you have multiple troubles, and only one is fixed, it will be the first one in this table.
+
+{| class="prettytable"
+! Trouble !! Condition !! Remedy
+|-
+! Stoning
+| You are [[stoning|turning to stone]] by some non-instantaneous means.
+| The stoning condition is cured.
+|-
+! Sliming
+| You are [[sliming|turning to slime]].
+| The sliming condition is cured.
+|-
+! Strangulation
+| You are wearing an [[amulet of strangulation]], of any [[BUC]].
+| The amulet is destroyed.
+|-
+! Standing in lava
+| You are trapped in [[lava]].
+| You are [[teleport]]ed to a safe position.
+|-
+! Sickness
+| You are afflicted by a [[disease]] attack or by [[food poisoning]]
+| Your [[sickness]] is cured.
+|-
+! Severe hunger
+| Your [[hunger]] status is ''weak'' or worse.
+| Your [[nutrition]] value is set to 900.
+|-
+! Low HP
+| Your current [[hit points]] are critically low. See below for specifics
+| Your max HP is increased 1d5 if below 5*level + 11, and your HP is restored to maximum.
+|-
+! Lycanthropy
+| You are afflicted by [[lycanthropy]].
+| Your lycanthropy is cured.
+|-
+! Extreme encumbrance
+| Your [[encumbrance]] is ''overtaxed'' or worse, and your [[strength]] has been drained by at least 4.
+| Your strength is restored to its normal value.
+|-
+! Stuck in a wall
+| You are surrounded in all eight directions by solid rock, the edges of the map, or blocked [[boulder]]s. Boulders are considered blocked by rock, map edges, and other boulders, but only if you are not a [[giant]]. [[Xorn]]s and [[earth elemental]]s are never considered stuck.
+| You are teleported to a safe position. In [[NetHack 3.6.1]], if this fails, you are given [[phasing]] for 4d4+4 turns.
+|-
+! Cursed levitation
+| You are wearing a cursed [[ring of levitation]] or cursed [[levitation boots]].
+| The item is made uncursed.
+|-
+! No free hands
+| You have no free hands. This can be caused by wielding a cursed [[two-handed weapon]], wielding a cursed weapon and a cursed [[shield]], or by being polymorphed into a form that has no hands.
+| Any curse on your wielded weapon is removed; this will not remove the curse on your shield. If your polymorphed form has no hands, you are reverted to your normal form, provided you are ''not'' wearing an [[amulet of unchanging]]. If you are, and the amulet is cursed, the curse is removed instead.
+|-
+! Cursed blindness
+| You are wearing a cursed [[blindfold]] or cursed [[towel]].
+| The item is made uncursed.
+|}
+
+===Critical HP===
+In versions of NetHack prior to 3.6.0 and derived variants, your current HP is considered critically low when it is less than or equal to {{frac|7}} of your maximum HP, or less than or equal to 5 HP.
+
+NetHack 3.6.0 changes the calculation to take your [[experience level]] into account. If your maximum HP is greater than (level&nbsp;&times;&nbsp;15), it will be treated as being (level&nbsp;&times;&nbsp;15) for this purpose. Your level is also used to determine what fraction of your maximum HP is considered critically low:
+{| class="prettytable"
+!Experience level !! Threshold
+|-
+| 1&ndash;5 <!-- Ranks 0 and 1 -->
+| {{frac|5}}
+|-
+| 6&ndash;13 <!-- Ranks 2 and 3 -->
+| {{frac|6}}
+|-
+| 14&ndash;21 <!-- Ranks 4 and 5 -->
+| {{frac|7}}
+|-
+| 22&ndash;29 <!-- Ranks 6 and 7 -->
+| {{frac|8}}
+|-
+| 30 <!-- Rank 8 -->
+| {{frac|9}}
+|}
+
+If your current HP is less than or equal to the given fraction of your maximum HP, or less than or equal to 5, you are considered critically injured.
+
+== Minor troubles ==
+
+This table lists minor troubles, from most to least urgent. If you have multiple minor troubles (and no major ones), but only one is fixed, it will be the first one in this table.
+
+{| class="prettytable"
+! Trouble !! Condition !! Remedy
+|-
+! Punishment
+| You are attached to an [[punishment|iron ball and chain]].
+| Your punishment is lifted.
+|-
+! Cursed fumbling
+| You are wearing cursed [[gauntlets of fumbling]] or [[fumble boots]].
+| The item is made uncursed.
+|-
+! Cursed item
+| You have a cursed item worn or wielded, a cursed item in your alternate-weapon slot, or a cursed [[luckstone]] or [[loadstone]] in your open inventory. ([[The Tsurugi of Muramasa]] counts as a luckstone.)  Since [[NetHack 3.6.1]], a worn cursed [[helm of opposite alignment]] is not considered a problem.
+| The item is made uncursed.
+|-
+! Cursed saddle
+| You are [[riding]] a steed with a cursed [[saddle]].
+| The item is made uncursed.
+|-
+! Blindness

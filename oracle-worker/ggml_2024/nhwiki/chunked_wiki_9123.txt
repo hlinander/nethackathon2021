@@ -1,0 +1,1000 @@
+{{nethack-343}}
+[[Category:User interface]]}
+&&%s&& %s Default tileset scaled to 20x20 {97897 2015-12-12T16:50:12Z {679 Ray Chason} This page has not been updated for 3.6.0 This [[tileset]] makes the whole map fit on a 1600 pixel-wide screen resolution.
+
+Created by enlarging the default [[tile]]s using the Scale2x algorithm, then scaling down.
+
+This image needs to be converted to .xpm format to be used in [[NetHack]].
+
+[[Image:X11tiles-20-20.png]]
+
+[[Image:Rogue.png|120px]] Default Rogue
+<br clear="all" />
+[[Image:Rogue-20-20.png|120px]] Default Rogue scaled to 20x20
+<br clear="all" />
+
+{{nethack-343}}
+[[Category:User interface]]}
+&&%s&& %s Default tileset scaled to 32x32 {97901 2015-12-12T16:52:16Z {679 Ray Chason} This page has not been updated for 3.6.0 Created by enlarging the default tiles using the Scale2x algorithm.
+
+This image needs to be converted to either .bmp (for Windows GUI) or to .xpm format (for [[X11]]) to be used in nethack.
+
+[[Image:X11tiles-32-32.png]]
+
+[[Image:Rogue.png|120px]] Default Rogue
+<br clear="all" />
+[[Image:Rogue-32-32.png|120px]] Default Rogue scaled to 32x32
+<br clear="all" />
+
+{{nethack-343}}
+[[Category:User interface]]}
+&&%s&& %s Default tileset scaled to 24x24 {97899 2015-12-12T16:51:28Z {679 Ray Chason} This page has not been updated for 3.6.0 This [[tileset]] makes the whole map fit on a 1920 pixel-wide screen resolution.
+
+Created by enlarging the default [[tile]]s using the Scale2x algorithm (x3), then scaling down.
+
+This image needs to be converted to .xpm format to be used in [[NetHack]].
+
+[[Image:X11tiles-24-24.png]]
+
+[[Image:Rogue.png|120px]] Default Rogue
+<br clear="all" />
+[[Image:Rogue-24-24.png|120px]] Default Rogue scaled to 24x24
+<br clear="all" />
+
+{{nethack-343}}
+[[Category:User interface]]}
+&&%s&& %s Intrinsic protection {125232 2019-02-07T03:55:35Z {4001140 Grabiner} /* Strategy */ In 3.6.0 and later, no need to wait to purchase the 9th point of protection '''Intrinsic protection''' is an [[intrinsic]] [[property]] which grants a bonus to [[AC]] independent of any armor or other equipment you may be wearing.  It is commonly known as '''divine protection''', as it is typically gained and lost via divine intervention.
+
+== Gaining intrinsic protection ==
+
+You can gain one or more points of intrinsic protection by doing any of the following:
+
+* Donating to a peaceful [[aligned priest]] of any alignment in a [[temple]], including a cross-aligned temple or a [[valley of the dead|temple to Moloch]], but not a desecrated temple.
+** Donate at least 400 but less than 600 times your [[XL]]; guaranteed up to 9 points of intrinsic protection, unlikely after that.
+* As a [[Prayer#Favors_and_gifts|favor]] from [[prayer]].
+** Luck must be at least 6.
+* [[Eating jewelry|Eating]] a [[ring of protection]].
+** Gain intrinsic protection equal to the ring's bonus if successful.
+
+== Losing intrinsic protection ==
+
+All of your intrinsic protection is lost if you do any of the following:
+
+* Incite ''any'' god to [[Anger#Smiting|smite]] you. This includes:
+** [[Prayer|Praying]] when it is unsafe to pray.
+** Sacrificing a former pet.
+** Sacrificing a coaligned unicorn.
+** Sacrificing any unicorn on an altar of the same alignment as the unicorn.
+** (If not chaotic) Sacrificing a member of your own race.
+** Offering an [[identification|identified]] [[cheap plastic imitation of the Amulet of Yendor]] on your own [[high altar]] in the [[Astral plane]].
+* Kill a coaligned priest.
+* Put on or remove a [[helm of opposite alignment]].
+* Attempting to put on a [[helm of opposite alignment]] in the quest.
+* Convert yourself to another alignment through [[Altar|sacrifice]].
+* Have your protection stolen by a [[gremlin]].
+
+An exception is attempting to convert a [[high altar]] on the [[Astral Plane]] - the god will smite you, but you will not lose your protection.
+
+==Precise mechanics==
+Technically, protection is split up into two properties: the protection intrinsic (HProtection {{refsrc|youprop.h|302}} as FROMOUTSIDE) and how much AC you get (u.ublessed).
+
+The intrinsic determines whether u.ublessed affects your armor class.{{refsrc|do_wear.c|1610}} It is set by every type of action that can gain you protection, and can only be unset by a gremlin's special attack. 
+On the other hand, u.ublessed is modified only by sacrifice, prayer, removing or attempting to wear a helm of opposite alignment, or by eating the ring.
+
+If you donate at least 400*XL but less than 600*XL gold to a priest, you can execute the code that gives you protection. This happens always if u.ublessed<9, and with a one in u.ublessed chance if u.ublessed < 20.{{refsrc|priest.c|507}} The prayer favor case is largely analogous, but it does not have this limit.{{refsrc|pray.c|972}} In either case, if you already have the protection intrinsic, u.ublessed is incremented by one. If not, you get it, and you gain 2-4 points of protection only if u.ublessed was zero (otherwise u.ublessed is left unchanged). There is an equal probability of gaining 2, 3, or 4 points.
+
+Beginning with [[NetHack 3.6.0]], you always gain protection if you previously had protection but lost it to a gremlin. Thus one donation restores all previous protection.{{refsrc|pray.c|611|version=NetHack 3.6.0}}
+
+If you eat a ring of protection and "magic spreads through your body" (1/3 chance), the protection intrinsic is set unconditionally and the ring's enchantment is added to u.ublessed.
+
+Examples:
+* (in [[NetHack 3.6.0]]) If you bought 15 points of protection and a gremlin then steals it, your next donation of 400 times experience level will restore your 15 points of protection.
+** (in [[NetHack 3.4.3]]) Each time you try to buy protection from a priest you will have a 1/15 chance of reactivating your 15 points of protection.
+* If you bought 15 points of protection and lost it by being [[smite|smitten]] by a god, the next time you buy protection you will have 1 point of protection.
+* If you bought 15 points of protection, lost it by being smitten by a god, AND felt vulnerable from a gremlin attack, the next time you buy protection you will have 2-4 points of protection.
+
+== Strategy ==
+
+The ability to purchase protection from priests makes donations one of the most common uses for gold, especially gold in very large quantities.
+
+In Nethack 3.4.3, you may not want to purchase the 9th point of protection from a priest:  if a [[gremlin]] makes you feel vulnerable later, it will be much easier to get your protection back if you only have 8 points of intrinsic protection.
+
+As unholy water prayer is one of the means of losing intrinsic protection, if you intend to pray to make unholy water, it is a good idea to do so ''before'' purchasing protection.
+
+The [[protection racket]] meta-strategy is an approach to purchasing a great deal of divine protection via donating to the priest in [[Mine Town]] early in the game.
+
+{{nethack-343}}
+
+==See also==
+* [[Protection]]
+
+==References==
+<references/>
+[[Category:Religion]]
+[[Category:Properties]]}
+&&%s&& %s Divine protection {37024 2008-12-21T08:15:41Z {523 Marcmagus} [[Divine protection]] moved to [[Intrinsic protection]]: More generic name considering rings #REDIRECT [[Intrinsic protection]]}
+&&%s&& %s Juiblex's swamp {137935 2021-02-16T03:07:52Z {4000681 Andrio Celos} Link to [[NetHack 3.7.0]] specifically. {{level|Juiblex's swamp|
+ |branch=Gehennom
+ |from=4|to=7
+ |bones=yes
+ |mapping=yes
+ |teleport=no
+ |digfloor=yes
+ |digwalls=yes
+}}
+[[Juiblex]]'s swamp is a [[special level]] in [[Gehennom]] that is covered with water. It is located between the 4th and 7th levels of Gehennom (and therefore on DL 29-36).  [[Juiblex]], a slug-like [[demon lord]], lurks there (unless already generated in some other way, such as a [[chaotic]] [[sacrifice]] or [[demon gating]]).
+
+Juiblex's swamp is eligible to leave bones files. The entire level is no-teleport. You can dig down through the floor, but you will have trouble with water filling your pit (even with a wand of digging).
+
+{{upcoming|NetHack 3.7.0|The demon lairs are no longer no-teleport levels, but the presence of the demon lord or prince will block others from teleporting.}}
+
+==Map==
+The central part of the level is fixed, as follows:
+
+<div class="ttyscreen"><replacecharsblock rules="ttymap">
+{=[[fountain|{{white|{}}]]
+#=[[moat|{{blue|<nowiki>}</nowiki>}}]]
+&={{msl|Juiblex}}
+i={{msl|lemure}}
+
+..#####.#####.#####.#####.#####.#####.#####.#####..
+.###.#####..###..#####..###..#####..###..#####.###.
+###.{.##..##.#.##.##.###...###.###..###..####.{.###
+.###.##.###.##.##.##...##.##.....##.....#....#.###.
+..###..###.##.##.##..##.....##.###.##.###########..
+.###..#####.##.##.##...#####.....##.######.....###.
+###..##...##..##.###.###...###.###.#.####..P.P..###
+##.####...#####.#...###..P..###.#.###.####.....####
+#.####.##.#..#.#######..P&P..###.###.##..##iii####.
+.####.####....#####.###..P..###.####.##..##...###.#
+####..##.##..####...####...###.#####.####.######.##
+###...##...###..############.....####.##...#..#.###
+.###..##.####....##..###..##.....####.###.#....###.
+..###.####..##..##..##..##..##.###..#.#..###..###..
+.###.####....####..##....#######...###....####.###.
+###.{.###....###..###....###..##...###....###.{.###
+.###.#####..###..#####..###..#####..###..#####.###.
+..#####.#####.#####.#####.#####.#####.#####.#####..
+</replacecharsblock></div>
+
+This core of the level is surrounded by a similar mixture of land and water (though with two guaranteed islands to ensure at least one place for each stair to go; the upstair is to the right of the above area, and the downstair to the left).
+
+Juiblex is at the exact centre of the map; three [[lemure]]s occupy the large island on the centre-right of the map above, and all but (a random) one of the marked fountains are actually [[giant mimic]]s masquerading as fountains. (If you have genocided giant mimics, they will be replaced with random monsters that also inexplicably masquerade as fountains, while moving and attacking normally.) The mapped area also contains six random [[P]], five random [[b]], five random [[j]], five random [[F]], two random [[m]], and two [[jellyfish]]; two [[sleeping gas trap]]s, two [[anti-magic trap]]s, and two [[magic trap]]s; six random potions, three random food items, one boulder and finally two random gems (or piles of gems) at the bottom of the pools on the lemures' island.
+{{DOD}}
+[[Category:Special levels]]
+{{nethack-343}}}
+&&%s&& %s Houchou {149948 2023-02-13T04:31:46Z {375 Ion frigate} just wiz-tested this one; seriously, they couldn't have special-cased this thing to bypass a fairly common item? {{artifact
+  |color=metal color
+  |glyph=(
+  |tile=[[Image:spoon.png]]
+  |base=spoon
+  |affiliation = [[chaotic]]
+  |used = thrown
+  |whenused = [[instakill]]
+  |cost=50000
+  |weight=1
+}}
+
+'''Houchou''' (pronounced /[[wikipedia:Help:IPA/English|ˈhoʊtʃoʊ]]/ HOH-choh) is a chaotic artifact [[spoon]] in [[SLASH'EM]]. It is thrown at a target, and if it hits, it [[instakill]]s the victim. There is no defense against Houchou, but if it hits a target, the tool itself is always destroyed in the process.
+
+==Obtaining==
+
+Because its base item is not randomly generated<ref>[[SLASH'EM 0.0.7E7F2/objects.c#line791]]</ref>, Houchou will never be found randomly. It can be given as a gift to chaotic characters or wished for by anyone.  Being [[gift]]ed Houchou unrestricts [[dart]] skill.
+
+==Strategy==
+
+Overall, this is one of the weakest sacrifice gifts.  It can only be used once, meaning it provides no lasting benefit to your character, and the fact that it can miss makes it a poor option both for emergency situations, and for taking out powerful peaceful monsters, such as [[shopkeeper]]s and [[aligned priest|priest]]s.  Later on, it can be used to bypass one particularly difficult fight (for example [[Demogorgon]]), but mostly this item just gets in the way of getting a better sacrifice gift, such as [[Doomblade]] or the [[Bat from Hell]].  Note that throwing Houchou is at least safe: monsters will not throw it back at you, since they are not programmed to throw weapon-tools.
+
+The best use of this item is simply to ascend with it. With a price of 50000, it equals about 28 [[dilithium crystal]]s in [[score]] points, while weighing only as much as a single gem.
+
+If thrown upwards, Houchou will kill ''you''.  Also, don't try to take out [[One-eyed Sam]] with this: his [[amulet of life saving]] ''will'' save him, and he (and his assistants) will be quite angry and ready to behead you with [[Thiefbane]].
+
+==Origin==
+包丁 (''hōchō'') is Japanese for "kitchen knife".
+
+In the Japanese RPG ''[[wikipedia:Final Fantasy IV|Final Fantasy IV]]'', there is a kitchen knife that could be thrown to instantly kill or severely damage almost any monster. The English localization changed this item to "Spoon", but oddly (and humorously), its effect when used&mdash;instant, violent death&mdash;was kept. It is thus that SLASH'EM's Houchou is a spoon.
+
+==References==
+<references/>
+
+[[Category:SLASH'EM Artifacts|Houchou]]}
+&&%s&& %s Category:SLASH'EM Artifacts {140027 2021-05-19T03:05:54Z {4001463 Actual-nh} Category:Artifacts This category contains articles about [[artifact]]s found only in [[SLASH'EM]].
+[[Category:SLASH'EM items]]
+[[Category:Artifacts]]}
+&&%s&& %s Aethiopica {37124 2008-12-24T13:51:33Z {570 Muad} Redirecting to [[The Eye of the Aethiopica]] #REDIRECT [[The Eye of the Aethiopica]]}
+&&%s&& %s Gypsy {149956 2023-02-14T07:41:26Z {375 Ion frigate} Remove refs section: the sole ref is now an inline link {{monster
+|name=gypsy
+|difficulty=24
+|level=20
+|speed=12
+|AC=&minus;2
+|MR=90
+|align=0
+|experience=619
+|frequency=2
+|genocidable=Yes
+|attacks=Claw 2d12 (Steals [[intrinsic|intrinsics]]), [[Monster spell|Spellcasting]]
+|size=Medium
+|weight=1450
+|nutr=400
+|resistances=[[Death ray|death magic]], [[sleep]], [[poison]]
+|resistances conveyed=causes [[teleportitis]] (100%)
+|attributes={{attributes|A gypsy|=
+|humanoid=1|regen=1|seeinvis=1|tport=1|omnivore=1|nopoly=1|human=1|peaceful=1|strong=1|greedy=1|magic=1|traitor=1}}
+|reference=[[SLASH'EM 0.0.7E7F2/monst.c#line3796]]
+}}
+
+The '''gypsy''', {{monsym|gypsy}}, is a [[human]] monster that appears in [[SLASH'EM]] and [[SlashTHEM]]. [[Chat]]ting to a gypsy grants access to a unique set of services.
+
+Eating the [[corpse]] or [[tin]] of a gypsy will always convey [[teleportitis]].
+
+==Generation==
+The prison in the south half of [[Grund's Stronghold]] has a {{frac|10}} chance to contain a peaceful gypsy.
+
+A hostile gypsy may potentially appear as one of the many {{mcsl|@}} generated within the [[Lawful Quest]]'s Chamber of Junk.
+
+==List of services==
+A gypsy will offer do any of the following if you chat to her:
+
+* Fortune telling
+* Play three card monte
+* Play ninety nine
+* Pawn gems
+
+The gypsy has a deck of 72 cards that is used for fortunes and ninety-nine (but not three card monte). If the deck is fully exhausted, the gypsy will reshuffle the deck.
+
+Gold and gems given to a gypsy are removed from the game, rather than transferred to her inventory - this is likely to discourage purchasing services or pawning a large number of gems in the hopes of getting a wish and then recovering them by killing the gypsy afterwards.
+
+==Fortune telling==
+The gypsy reads your fortune and charges you 50[[zm]] of credit - the effects of the fortune depend on the card. Any card not in the lists below has no effect.
+
+===Cards with an effect===
+
+{| class="prettytable striped"
+!Card!!Image!!Effect
+|-
+|Zero of trumps||The Fool||You lose one point of [[wisdom]] and 3 points of [[Luck]].
+|-
+|1 of trumps||The Magician||The gypsy reveals the location of the portal to the [[Wizard's Tower]] if you haven't killed [[Wizard of Yendor|him]]; if you have killed him at least once, he will resurrect and teleport to your current location.
+|-
+|2 of trumps||The High Priestess||If you do not have the [[Amulet of Yendor]], the gypsy will see the [[high altar]] in [[Moloch's Sanctum]], revealing the number of the level it occupies. If you have the amulet, she will instead see "a high altar [[Astral Plane|in the heavens...]]"
+|-
+|3 of trumps||The Oracle||"I see an [[The Oracle|Oracle]] on level <oracle level>".
+|-
+|4 of trumps||The Lovers||A [[foocubus]] of the opposite sex appears.
+|-
+|5 of trumps||The Chariot||"For 5000 credit I will [[level teleport|teleport]] you to a level of your choosing!"
+|-
+|6 of trumps||Strength||Your strength increases by one point, and you gain the [[half physical damage]] intrinsic for 500&ndash;1000 turns.
+|-
+|7 of trumps||The Hermit||"You feel like hiding!" You gain [[teleportitis]] for 300&ndash;600 turns and [[invisibility]] for 500&ndash;1000 turns.
+|-
+|8 of trumps||The Wheel of Fortune||"You feel lucky!" Your Luck increases by 3.
+|-
+|9 of trumps||Justice||An [[erinys]] is summoned, ignoring extinction.
+|-
+|10 of trumps||Punishment||You are [[punishment|punished]]. If you are already punished when drawing this card, you are subjected to the [[curse items]] [[monster spell]]'s effect.
+|-
+|11 of trumps||The Devil||[[Moloch]] summons a [[minion]] to attack you.
+|-
+|12 of trumps||Sorcery||Your role's [[spellcasting]] stat (either [[wisdom]] or [[intelligence]]) increases by one point, and you gain the [[half spell damage]] intrinsic for 500&ndash;1000 turns.
+|-
+|13 of trumps||Death||You are subjected to a [[touch of death]].
+|-
+|14 of trumps||The Tower||Gives the location of [[Vlad's Tower]].
+|-
+|15 of trumps||The Star||"The gypsy reaches behind your head and pulls out a <gem>."<br/>You receive a precious [[gem]], based on the month as described below; this will automatically identify the gem. There is a {{frac|6}} chance of getting two gems.
+|-
+|16 of trumps||The Moon||Resets and gives the current [[phase of the moon]], changing Luck to match the possibly new moon phase.
+|-
+|18 of trumps||The Judgment||"I see a [[quest]] on level <quest level>"
+|-
+|19 of trumps||Infinity||"For 10000 credit, I will grant you a [[wish]]". If you have the required gold and accept, you can wish for an object - afterward, the gypsy is [[Cancellation|canceled]] (can be checked with a [[stethoscope]]). The next time Infinity is drawn, the gypsy disappears. ("I wish I wasn't here!")
+|}
+
+====Gems that a gypsy can give you with "The Star"====
+{| class="prettytable striped"
+!Month!!Gem!!Value
+|-
+|January||Garnet||700
+|-
+|February||Amethyst||600
+|-
+|March||Aquamarine||1500
+|-
+|April||Diamond||4000
+|-
+|May||Emerald||2500
+|-
+|June||Opal||800
+|-
+|July||Ruby||3500
+|-
+|August||Chrysoberyl||700
+|-
+|September||Sapphire||3000
+|-
+|October||Black opal||2500
+|-
+|November||Topaz||900
+|-
+|December||Turquoise||2000
+|}
+
+===Cards which do nothing, but have a message===
+
+{| class="prettytable striped"
+!Card!!Image!!Message
+|-
+|2 of rings||Change||Your powers will be put to the test soon
+|-
+|3 of rings||Works||You will meet new challenges
+|-
+|4 of rings||Power||Your strength will aid you greatly in times to come
+|-
+|5 of rings||Worry||Your worst nightmares will come true
+|-
+|8 of rings||Prudence||Next full moon is an excellent time to try to please your god
+|-
+|9 of rings||Gain||Your wishes will become true
+|-
+|3 of swords||Sorrow||Your relationships will be shaky
+|-
+|6 of swords||Science||Your intellect will aid you soon
+|-
+|7 of swords||Futility||You should stop trying to bend fate
+|-
+|9 of swords||Cruelty||The cards are stacked against you.
+|-
+|10 of swords||Ruin||When the full moon rises terrible things will happen to you.
+|-
+|2 of wands||Dominion||You must not let evil overcome you
+|-
+|3 of wands||Virtue||Keep active or woe will overcome you
+|-
+|4 of wands||Completion||You should stick to your path
+|-
+|5 of wands||Strife||When Mars is out, it will be a time of bloodshed for you
+|-
+|6 of wands||Victory||If you stick to your path, great things will happen to you
+|-
+|7 of wands||Valour||Your strength will be put to the test in coming times
+|-
+|9 of wands||Adjustment||Beware, it will not be a safe time for you next full moon
+|-
+|2 of shields||Love||You should work on your relationships.
+|-
+|5 of shields||Disappointment||Disappointment waits for you around the corner
+|-
+|6 of shields||Pleasure||The full moon is the time for you to develop relationships
+|-
+|7 of shields||Debauch||You will meet someone tall, dark and handsome
+|-
+|8 of shields||Indolence||Your god will be short tempered during the new moon
+|-
+|9 of shields||Happiness||Your dreams will come true
+|-
+|17 of trumps||The Sun||"It is the witching hour.  Beware of the undead!" if it's midnight, "It is nighttime.  Beware of creatures of the night!" if it's nighttime, "It is daytime.  Shouldn't you be working?" if it's daytime
+|-
+|}
+
+All other cards not listed above do nothing and have no effect.
+
+==Three card Monte==
+The aim of this game is simple: you choose a card, and the card might or might not be the right one. If you choose the right card, you win your bet in credit. Whether or not you win is based on your Luck, the previous card you chose, and the amount and result of your previous bet. Note that your chances of winning a game are independent of the specific gypsy you are betting with: your chance of winning is tracked across all gypsies, based on the above factors.
+
+The formula it follows is complex; a full explanation can be found [http://www.angelfire.com/trek/mazewest/spoilers/gypsy_006e4.txt here], but the relevant points can be summarized as follows:
+
+* The first time you bet, you are guaranteed to win. Note you are only guaranteed to win the first bet played overall, '''not''' the first bet played with any specific gypsy.
+* Betting larger amounts makes you more likely to lose the ''next'' bet you make.
+* Losing a bet makes you more like to win the next bet, and vice versa.
+* Picking the same card twice in a row makes you less likely to win the ''next'' bet.
+* When a gypsy says "You win! Wasn't that easy?", provided you have maxed-out Luck, you are very nearly guaranteed (specifically, a {{frac|1479|1480}} chance) to win the next bet.
+
+==Ninety-nine==
+The gypsy shuffles the deck at the start of each game of ninety-nine. Each player draws three cards and take turns playing cards, drawing after each turn. Non-trump and non-face cards add to the total score, with a maximum of 99, and a minimum of 0 (see below for other card effects). If your opponent cannot play a card, you win.
+
+Note that the cards held in hand or played in the last game of ninety-nine will be taken out of the deck when you ask for the gypsy to read your fortune.
+
+{|class="prettytable striped"
+!Card!!Effect!!Strategy
+|-
+|Kings||Put the score to ninety-nine||Can always be played
+|-
+|Queens and Jacks||Diminish the points by 10||Cannot be played unless score is above 10
+|-
+|The Fool||Can't be played||Will stay till the end of the game in your hand
+|-
+|All other trumps||Don't do anything to the points||Always safe to play
+|-
+|All the other cards||Add their value to score||Cannot exceed 99 points if played.
+|}
+
+==Pawn gems==
+This allows you to sell identified gems to the gypsy for an amount of credit equal to the base price of the gem.
+
+==Strategy==
+In general, the main goal of interacting with gypsies is to gain wishes - [[magic resistance]] is crucial in the event the Death card comes up, and it is also advisable to have a means of removing [[punishment]] and restoring [[Luck]]. Beyond this, you should at least be equipped to defeat any demons generated by the fortunes. This is ideally best done before you have awakened and/or killed Rodney. It is a good idea to [[call]] a cancelled gypsy so that you do not accidentally waste further gems on her.
+
+You will need 3,600 credit to go through the entire deck of cards - if playing during the month of April, however, the gems received through "The Star" will always be greater than this cost. This gives players the option of repeatedly going through the entire deck while refusing to accept the wish each time, slowly collecting diamonds and other gems/positive effects.
+
+===Farming wishes===
+
+Through [[reverse genocide]] in a safe area such as [[Sokoban]], you can gain a large number of wishes even with no gems and very little gold by exploiting three-card monte.  Assuming you have never interacted with gypsies, the procedure is as follows:
+
+* Bet nearly everything with one gypsy.  It can be helpful to [[call|#call]] the gypsies to keep track of them.
+* Changing the card you choose every time, make 1-gold bets until the gypsy says "You win! Wasn't that easy?"
+* Bet nearly everything again.  
+* Repeat the above two steps until you have 13600 credit.
+* Read your fortune until you get a wish.  
+** Be prepared to restore your Luck if you draw The Fool; a nearby [[unicorn]] of your alignment can be handy for this, as you will be getting a good number of gems from drawing your fortune.
+** The Hermit card will give you temporary teleportitis; for this reason, it is easier (though not absolutely necessary) to use a no-teleport level.
+** If you draw the Punishment card, it is advisable to remove the ball before drawing your fortune with the next gypsy: if you already punished, that card will instead curse your items.
+* Make sure to wish for enough [[magic marker]]s and/or cursed scrolls of genocide to continue reverse genociding gypsies.
+
+While it is possible to employ this strategy with as little as 1 gold (doubling your large wager each time), it goes far more quickly if you have 13600 gold to start with.  Once 120 gypsies have been created, they will become [[extinct]] and reverse genocide will no longer work. 
+
+As mentioned above, magic resistance is critical for attempting this strategy.  You must also be able to fight off major demons (erinyes and minions of Moloch).
+
+===Fighting===
+Be ''very'' careful not to anger gypsies - they are high-level spellcasters with a good [[AC]] of -2, [[regeneration]] and very high [[magic resistance (monster)|monster MR]]. They can hit hard and steal intrinsics in the manner of a [[gremlin]], and will gladly curse your items, [[summon nasties]], and possibly even perform a [[touch of death]]. There is almost no benefit to killing one, especially since they do not retain the gold and gems given to them, unless they were hostile to begin with (e.g., the Lawful Quest). For extinctionists and players looking to try their luck, leaving them to a powerful [[pet]] is the safest approach.
+
+Killing gypsies will be considered [[murder]] for non-chaotic characters.
+
+{{slashem-7E7}}
+[[Category:SLASH'EM monsters]]}
+&&%s&& %s Gypsies {37245 2009-01-05T17:29:53Z {523 Marcmagus} [[Gypsies]] moved to [[Gypsy]]: Singular #REDIRECT [[Gypsy]]}
+&&%s&& %s Asmodeus' Lair {147513 2022-08-14T15:04:31Z {4001279 Umbire the Phantom} . {{level|Asmodeus' Lair|
+ |branch=Gehennom
+ |from=2|to=7
+ |bones=yes
+ |teleport=no
+ |mapping=yes
+ |digfloor=yes
+ |digwalls=Maze only
+}}
+'''Asmodeus' Lair''' is a [[special level]] somewhere between the 2nd and 7th levels of [[Gehennom]] (and therefore between DL 27 and DL 36).
+
+The entire level is no-teleport, and is eligible to leave [[bones]] files.
+
+{{upcoming|NetHack 3.7.0|Demon lairs are no longer no-teleport levels, but the presence of the demon lord or prince will block others from teleporting.}}
+
+==Map==
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+F=[[fire trap|{{brightred|^}}]]
+P=[[spiked pit|{{darkgray|^}}]]
+&={{msl|Asmodeus}}
+8={{msl|ghost}}
+H={{msl|horned devil}}
+
+---------------------
+|.............|.....|
+|....P........S.....|
+|---+------------...|
+|.....|.........|-+-----------------------------------
+|..---|...H.....|....................................|
+|..|..S.F.......|....................................+
+|..|..|....8&>..|....................................|
+|..|..|.........|-+-----------------------------------
+|..|..-----------...|
+|..S..........|.....|
+---------------------
+</replacecharsblock></div>
+The lair itself constitutes the core of the level, and is surrounded by undiggable walls. The remainder of the level is filled with an ordinary Gehennom-like maze, and the upstair will always be on the left-hand side of the maze.
+
+The right-hand room contains three random {{mcsl|&}} as well as a [[fire trap]], a [[magic trap]], and an [[anti-magic trap]]; all are placed at random. The room with the downstair is occupied by [[Asmodeus]], a [[ghost]] and a [[horned devil]], each of which are generated on the marked squares at level creation. Three random {{mcsl|V}} and a random {{mcsl|L}} are placed randomly within the left side of this area. The marked traps are a fire trap just inside the door of Asmodeus' room and a [[spiked pit]] in the top-left chamber; two magic traps, a [[sleeping gas trap]], an anti-magic trap, and another fire trap are placed randomly within the left side of the area, as are three scrolls, two weapons, two pieces of armor, two potions, and a gem (all chosen randomly).
+
+==Strategy==
+This level is notorious for being extremely irritating to navigate: the floor is no-teleport, the walls of the lair core shown above are undiggable, and the stairs are always somewhere to the left of the lair, ensuring that players must always walk all the way to the right side and then back to the left when moving up or down a floor. There are a couple of ways you can circumvent this:
+
+* On the way down, you can use a [[wand of digging]] or [[pick-axe]] to dig a hole near the stairs so you only have to deal with it in one direction.
+* On the way up, you can quaff a cursed [[potion of gain level]] to go directly up one level. You will end up in a random place on the level above as if you had [[levelport]]ed in. This works even with the [[Amulet of Yendor]] during the [[ascension run]], although the [[mysterious force]] still applies.
+* In either direction, you can [[polyself]] into a [[phasing]] monster such as a [[xorn]] and pass through the walls. This is rarely useful, as it is time-consuming and annoying to remove armor and polymorph just to cross a single level, and is especially dangerous if you have woken up the [[Wizard of Yendor]] and/or your body armor is your primary source of [[magic resistance]].
+* You could also [[level teleport]] past, but this is probably a waste of a teleport scroll, and does not work when you have the Amulet.
+
+==SpliceHack==
+{{main|Asmodeus' Lair (SpliceHack)}}
+
+[[SpliceHack]] changes the layout of the layout of the lair significantly, adding a fortress, a river and drawbridges. 
+
+{{DOD}}
+{{nethack-366}}
+[[Category:Special levels]]}
+&&%s&& %s Baalzebub's Lair {145374 2022-04-06T23:15:54Z {4000978 Aximili} add splicehack {{level|Baalzebub's Lair|
+ |branch=Gehennom
+ |from=6|to=9
+ |bones=yes
+ |teleport=no
+ |mapping=yes
+ |digfloor=yes
+ |digwalls=outside core
+}}
+'''[[Baalzebub]]'s Lair''' is a [[special level]] somewhere between the 6th and 9th levels of [[Gehennom]] (and therefore between DL 31 and DL 38). It may contain the stairs to [[Vlad's Tower]].
+
+This level is eligible to leave [[bones]] files. The entire level is no-teleport.
+
+{{upcoming|NetHack 3.7.0|The demon lairs are no longer no-teleport levels, but the presence of the demon lord or prince will block others from teleporting.}}
+
+== Map ==
+
+<div class="ttyscreen"><replacecharsblock rules="ttymap">
+H={{msl|horned devil}}
+&={{msl|Baalzebub}}
+8={{msl|ghost}}
+B={{msl|barbed devil}}
+
+--------------------------------------------------
+.................................................|
+-------------------------------------------------
+|                    ---               ----      
+|          ----      |   ------------  |         
+| ------      |  --------|..........|---         
+| F....|  --------...........--------------      
+---....---|..................S..H.........|----  
+....--....S..----------------|.....&......S.>.|  
+---....---|..................|.......8B...|----  
+| F....|  --------...........-----S--------      
+| ------      |  --------|..........|---         
+|          ----     |    ------------  |         
+|                   ---                ----      
+-------------------------------------------------
+.................................................|
+--------------------------------------------------
+</replacecharsblock></div>
+
+Note that the level differs slightly from its .des file definition.
+
+The lair itself constitutes the right-hand side of the level. The central core is fly-shaped and surrounded by undiggable walls, although it is possible to dig from the northern tunnel all the way to the southern one, if you are so inclined. Also note that the floor can be dug, so a wand of digging is still a useful escape item here. The left-hand side of the level is filled with ordinary Gehennom-like maze, and contains the upstair.
+
+The rectangular chamber is occupied by [[Baalzebub]], a [[ghost]], a [[horned devil]], and a [[barbed devil]]. Three random [[V]] and a random [[L]] are placed randomly in the central area, as are two [[fire trap]]s, a [[sleeping gas trap]], a [[spiked pit]], two [[magic trap]]s, and an [[anti-magic trap]]; also three scrolls, two weapons, two pieces of armor, two potions, and a gem (all chosen randomly). There is a 50% chance that the secret doors in Baalzebub's room are flipped vertically.
+
+== SpliceHack ==
+
+{{main|Baalzebub's Lair (SpliceHack)}}
+
+In [[SpliceHack]], Baalzebub's lair is surrounded by a swamp.
+
+{{DOD}}
+[[Category:Special levels]]
+{{nethack-361}}}
+&&%s&& %s Very heavy iron ball {37312 2009-01-08T16:16:43Z {630 Paxed} redirect to [[Punishment]] #REDIRECT [[Punishment]]}
+&&%s&& %s David's Treasure Zoo {37406 2009-01-13T20:27:05Z {0 } Redirecting to [[Zoo]] #REDIRECT [[Zoo]]}
+&&%s&& %s Hallucinatory messages {138337 2021-03-07T02:06:45Z {4001463 Actual-nh} Link beginner for "strange feeling" While [[hallucination|hallucinating]], you may encounter some unexpected messages. The following is a comprehensive list of the available messages. All appearances of "<color>" will be replaced with one of the following: ultraviolet, infrared, bluish-orange, reddish-green, dark white, light black, sky blue-pink, salty, sweet, sour, bitter, striped, spiral, swirly, plaid, checkered, argyle, paisley, blotchy, guernsey-spotted, polka-dotted, square, round, triangular, cabernet, sangria, fuchsia, wisteria, lemon-lime, strawberry-banana, peppermint, romantic, or incandescent.
+
+;You feel less trippy now.
+:Your period of [[confusion]] wore off.{{refsrc|potion.c|66}}
+;You feel less wobbly now.
+:Your period of [[stun]]ning wore off.{{refsrc|potion.c|82}}
+;Far out! Everything is all cosmic again!
+:Your period of [[blindness]] wore off.{{refsrc|potion.c|184}}
+;Your vision seems to brighten but is sadder now.
+:Your period of [[blindness]] wore off, while wearing the [[Eyes of the Overworld]].{{refsrc|potion.c|200}}
+;Oh, bummer! Everything is dark! Help!
+:You became [[blindness|blind]].{{refsrc|potion.c|208}}
+;Your vision seems to dim but is happier now.
+:You became [[blindness|blind]] while wearing the [[Eyes of the Overworld]].{{refsrc|potion.c|226}}
+;As you open the bottle, an enormous <monster> emerges!
+:You quaffed a [[milky potion]] and a [[ghost]] appeared.{{refsrc|potion.c|316}}
+;You have a normal feeling for a moment, then it passes.
+:You quaffed a potion with no net effect, or whenever you would have a [[beginner|strange feeling]].{{refsrc|potion.c|398}}
+;This tastes like <nowiki>[watered down]</nowiki> dandelion wine!
+:You quaffed a <nowiki>[diluted]</nowiki> [[potion of booze]].{{refsrc|potion.c|499}}
+;Yecch! This tastes overripe.
+:You quaffed a cursed [[potion of fruit juice]] or [[potion of see invisible]].{{refsrc|potion.c|561}}
+;This tastes like 10% real <nowiki>[reconstituted]</nowiki> all-natural beverage.
+:You quaffed a <nowiki>[diluted]</nowiki> non-cursed [[potion of fruit juice]] or [[potion of see invisible]].{{refsrc|potion.c|564}}
+;You are shocked back to your senses!
+:You quaffed a [[potion of sickness]] to end hallucination.{{refsrc|potion.c|692}}
+;What a trippy feeling!
+:You quaffed a [[potion of confusion]].{{refsrc|potion.c|698}}
+;This tastes tangy.
+:You quaffed a [[potion of acid]] while acid resistant.{{refsrc|potion.c|884}}
+;You feel a little normal.
+:You quaffed or were hit by a [[potion of polymorph]].{{refsrc|potion.c|896}}
+;You hear a voice say, "It's dead, Jim."
+:You applied a [[stethoscope]] down at a corpse.{{refsrc|apply.c|174}}
+;You produce a normal whistling sound.
+:You applied a non-cursed (or cursed, half of the time) [[magic whistle]].{{refsrc|apply.c|331}}
+;Yow! The mirror stares back!
+:You applied a [[mirror]] to yourself, while polymorphed into a [[floating eye]].{{refsrc|apply.c|624}}
+;You look <color>.
+:You applied a mirror to yourself, while not polymorphed into a floating eye, [[umber hulk]], or any [[V]].{{refsrc|apply.c|635}}
+;You give the fish a chance to fix their makeup.
+:You applied a mirror in a direction while underwater.{{refsrc|apply.c|659}}
+;You suddenly feel trippy.
+:You became confused via a cursed [[unicorn horn]]{{refsrc|apply.c|1464}}
+;Oh, wow, look at the pretty shards.
+:You destroyed a [[gem]] by rubbing it against a cursed [[touchstone]] while not blind.{{refsrc|apply.c|1879}}
+;Oh wow, man<nowiki>:</nowiki> Fractals!
+:You rubbed a gem against a noncursed [[touchstone]] while not blind.{{refsrc|apply.c|1894}}
+;You give yourself a facial.
+:You applied a [[cream pie]].{{refsrc|apply.c|2446}}
+;Your body takes on a normal transparency…
+:You [[invoke]]d an artifact to become [[invisible]].{{refsrc|artifact.c|1395}}
+;Your body takes on a normal transparency…
+:You ate a [[ring of invisibility]].{{refsrc|eat.c|1507}}
+;A normal force teleports you away…
+:You were killed by a falling [[drawbridge]], but were [[amulet of life saving|lifesaved]].{{refsrc|dbridge.c|401}}
+;<Monster> drinks the <lava/moat> and disappears.
+:A monster was forced into the [[moat]]/[[lava]] by the [[drawbridge]] and died.{{refsrc|dbridge.c|724}}
+;<Monster> gets into some heavy metal!
+:A monster was killed by a destroyed [[drawbridge]].{{refsrc|dbridge.c|918}}
+;You sense something nearby.
+:You used [[potion of object detection|object detection]].{{refsrc|detect.c|432}}
+;You get the heebie jeebies.
+:You used [[potion of monster detection|monster detection]] without any monsters on the level, while not a [[beginner]].{{refsrc|detect.c|604}}
+;All you see is funky <color> haze.
+:You applied an uncharged [[crystal ball]] while not blind.{{refsrc|detect.c|832}}
+;You grok some groovy globs of incandescent lava.
+:You successfully applied a charged [[crystal ball]].{{refsrc|detect.c|835}}
+;Whoa! Psychedelic colors, <nowiki>[babe/dude]</nowiki>!
+:You successfully applied a charged [[crystal ball]].{{refsrc|detect.c|837}}
+;The crystal pulses with sinister <color> light!
+:You successfully applied a charged [[crystal ball]].{{refsrc|detect.c|840}}
+;You see goldfish swimming above fluorescent rocks.
+:You successfully applied a charged [[crystal ball]].{{refsrc|detect.c|843}}
+;You see tiny snowflakes spinning around a miniature farmhouse.
+:You successfully applied a charged [[crystal ball]].{{refsrc|detect.c|845}}
+;Oh wow... like a kaleidoscope!
+:You successfully applied a charged [[crystal ball]].{{refsrc|detect.c|847}}
+;Dude! The living dead!
+:You dug up a [[grave]], creating a [[zombie]].{{refsrc|dig.c|790}}
+;I want my mummy!
+:You dug up a [[grave]], creating a [[mummy]].{{refsrc|dig.c|795}}
+;There is a <color> flash as <object> hits the altar.
+:You dropped a [[cursed]] or blessed object on an [[altar]].{{refsrc|do.c|243}}
+;Whoa! Everything looks different.
+:You arrive on a level you [[scroll of amnesia|forgot]].{{refsrc|do.c|1306}}
+;Whoa! Everything seems different.
+:You arrive on a level you [[scroll of amnesia|forgot]], while blind.{{refsrc|do.c|1306}}
+;You are surrounded by twisty little passages, all alike.
+:You arrive on a level you [[scroll of amnesia|forgot]].{{refsrc|do.c|1306}}
+;Gee, this looks like uncle Conan's place…
+:You arrive on a level you [[scroll of amnesia|forgot]].{{refsrc|do.c|1306}}
+;Gee, this seems like uncle Conan's place…
+:You arrive on a level you [[scroll of amnesia|forgot]], while blind.{{refsrc|do.c|1306}}
+;You feel bummed for a moment.
+:Your pet starved.{{refsrc|dogmove.c|248}}
+;You can't kick something that's in a tizzy!
+:You attempted to kick something in a (spiked) [[pit]] or web.{{refsrc|dokick.c|422}}
+;You would never recognize it anyway.
+:You attempted to [[Call]] a monster something.{{refsrc|do_name.c|234}}
+;My brain hurts!
+:You put on a [[dunce cap]] or [[helm of opposite alignment]].{{refsrc|do_wear.c|334}}
+;What a pity - you just ruined a future piece of <nowiki>[fine]</nowiki> art!
+:You fixed petrification. Message will say "fine art" if charisma is over 15.{{refsrc|eat.c|531}}
+;You be chillin'.
+:You gained [[fire resistance]].{{refsrc|eat.c|685}}
+;You feel totally together, man.
+:You gained [[disintegration resistance]].{{refsrc|eat.c|713}}
+;You feel grounded in reality.
+:You gained [[shock resistance]].{{refsrc|eat.c|725}}
+;You feel diffuse.
+:You gained [[teleportitis]].{{refsrc|eat.c|746}}
+;You feel centered in your personal space.
+:You gained [[teleport control]].{{refsrc|eat.c|756}}
+;You feel in touch with the cosmos.
+:You gained [[telepathy]]{{refsrc|eat.c|767}}
+;You can't resist the temptation to mimic an orange.
+:You ate a [[mimic]] corpse.{{refsrc|eat.c|859}}
+;You suddenly dread being peeled and mimic <race> again.
+:Your [[mimic]]king timeout ended.{{refsrc|eat.c|866}}
+;You feel rather trippy.
+:You became confused via eating rotten food.{{refsrc|eat.c|1205}}
+;Oh wow, like, superior, man!
+:You ate a [[food ration]] while hungry or worse.{{refsrc|eat.c|1383}}
+;Tastes great! Less filling!
+:You ate a [[tripe ration]] while an orc.{{refsrc|eat.c|1392}}
+;My, that was a primo <fruit>!
+:You ate a non-cursed [[slime mold]].{{refsrc|eat.c|1420}}
+;Segmentation fault -- core dumped.
+:You ate an [[apple]] or [[pear]].{{refsrc|eat.c|1430}}
+;Bus error -- core dumped.
+:You ate an [[apple]] or [[pear]].{{refsrc|eat.c|1432}}
+;Yo' mama -- core dumped.
+:You ate an [[apple]] or [[pear]].{{refsrc|eat.c|1433}}
+;This <food> is grody!
+:You ate a food that would have tasted terrible.{{refsrc|eat.c|1448}}
+;This <food> is gnarly!
+:You ate a food that would have tasted delicious.{{refsrc|eat.c|1453}}
+;Four out of five dentists agree.
+:You ate a non-cursed [[trident]].{{refsrc|eat.c|1633}}
+;You now have a lesser case of the munchies.
+:You ate and are now only [[hungry]].{{refsrc|eat.c|2351}}
+;You are getting the munchies.
+:You became hungry.{{refsrc|eat.c|2352}}
+;You still have the munchies.
+:You ate and are now only [[weak]].{{refsrc|eat.c|2364}}
+;The munchies are interfering with your motor capabilities.
+:You became weak.{{refsrc|eat.c|2365}}
+;From the murky drain, a hand reaches up… --oops--
+:One effect of quaffing from a [[sink]]{{refsrc|fountain.c|593}}
+;You've fallen, and you can't get up.
+:You are trapped in a (spiked) [[pit]].{{refsrc|hack.c|1162}}
+;You have an out-of-body experience.
+:A monster cast [[touch of death]] on you.{{refsrc|mcastu.c|338}}
+;You feel (trippy/trippier)!
+:You became [[confusion|confused]] from a monster spell.{{refsrc|mcastu.c|624}}
+;Ouch! You've been slimed!
+:You were hit by an [[acid]] attack.{{refsrc|mhitu.c|1735}}
+;You mood ring glows <color>.
+:Message when wearing a [[ring of warning]] (before 3.3.1){{refsrc|mon.c|353}}
+;Your spider-sense is tingling…
+:Message from intrinsic [[warning]] (before 3.3.1){{refsrc|mon.c|367}}
+;Whoopsie-daisy!
+:You killed a quest leader friendly.{{refsrc|mon.c|1886}}
+;You hear the studio audience applaud!
+:You killed your pet.{{refsrc|mon.c|1897}}
+;As <monster> opens the bottle, an enormous <monster> emerges!
+:Monster received a [[ghost]] from quaffing a [[milky potion]].{{refsrc|muse.c|87}}
+;<monster>'s body takes on a normal transparency.
+:Monster became [[invisible]].{{refsrc|muse.c|1761}}
+;What a pity - <monster> just ruined a future piece of art!
+:Monster used an object to cure [[stoning]].{{refsrc|muse.c|2162}}
+;(paranoid delusion)
+:Used with [[far look]], when you are warned of the monster.{{refsrc|pager.c|222}}
+;The <monster> inside the box is dead!
+:You opened [[Quantum mechanic|Schrodinger's Box]]{{refsrc|pickup.c|2062}}
+;Far out, man! You can see right through yourself.
+:You became invisible with see invisible.{{refsrc|pline.c|434}}
+;Far out, man! You can't see yourself.
+:You became invisible without see invisible.{{refsrc|pline.c|434}}
+;There's a tiger in your tank.
+:Through [[prayer]], you regained lost [[attribute]] points.{{refsrc|pray.c|405}}
+;Looks like you are back in Kansas.
+:Through [[prayer]], you ended [[hallucination]].{{refsrc|pray.c|438}}
+;You feel that <god> is bummed.
+:A god [[smiting|smote]] you.{{refsrc|pray.c|573}}
+;You feel that <god> is pleased as punch.
+:Devout [[alignment record]] clue.{{refsrc|pray.c|796}}
+;You feel that <god> is ticklish.
+:Strident [[alignment record]] clue.{{refsrc|pray.c|798}}
+;You feel that <god> is full.
+:[[Alignment record]] clue.{{refsrc|pray.c|799}}
+;Your sacrifice sprouts wings and a propeller and roars away!
+:You sacrificed.{{refsrc|pray.c|1101}}
+;Your sacrifice puffs up, swelling bigger and bigger, and pops!
+:You sacrificed.{{refsrc|pray.c|1104}}
+;Your sacrifice collapses into a cloud of dancing particles and fades away!
+:You sacrificed.{{refsrc|pray.c|1107}}
+;You feel homesick.
+:You attempted to offer the [[Amulet of Yendor]] before reaching the [[Astral Plane]].{{refsrc|pray.c|1266}}
+;You realize you have made a boo-boo.
+:You attempted to offer an unidentified [[cheap plastic imitation of the Amulet of Yendor]].{{refsrc|pray.c|1306}}
+;<God> seems groovy.
+:After sacrifice, your god is less angry.{{refsrc|pray.c|1425}}
+;<God> seems cosmic (not a new fact).
+:After sacrifice, your god is no longer angry.{{refsrc|pray.c|1430}}
+;The gods seem tall.
+:Your sacrifice did nothing to appease your god's anger.{{refsrc|pray.c|1436}}
+;You realize the gods are not like you and I.
+:Your sacrifice reduced your [[prayer timeout]], but it is still nonzero.{{refsrc|pray.c|1451}}
+;Overall, there is a smell of fried onions.
+:Your sacrifice reduced your [[prayer timeout]] to zero.{{refsrc|pray.c|1457}}
+;You see crabgrass at your <feet>. A funny thing in a dungeon.
+:Your sacrifice increased your [[luck]].{{refsrc|pray.c|1493}}
+;poohbah
+:Replaces [[priest]].{{refsrc|priest.c|270}}
+;Being so trippy, you screw up…
+:You read a scroll while confused.{{refsrc|read.c|134}}
+;You feel the power of the Force against you!
+:You read a [[scroll of remove curse]] while confused.{{refsrc|read.c|896}}
+;You feel in touch with the Universal Oneness.
+:You read a [[scroll of remove curse]] while not confused.{{refsrc|read.c|901}}
+;Wow! Modern art.
+:You read a [[scroll of magic mapping]] on a non-mappable level.{{refsrc|read.c|1076}}
+;Your mind releases itself from mundane concerns.
+:You read a [[scroll of amnesia]].{{refsrc|read.c|1112}}
+;You bump into an invisible tree. Ouch!
+:You entered a forcefield (deferred feature).{{refsrc|region.c|819}}
+;You tawt you taw a puttie tat!
+:You lost [[see invisible]].{{refsrc|sit.c|423}}
+;You hear a soda fountain!
+:[[Fountain]] level sound.{{refsrc|sounds.c|54}}
+;You hear dishes being washed!
+:[[Sink]] level sound.{{refsrc|sounds.c|63}}
+;You hear Queen Beruthiel's cats!
+:[[Throne]] room level sound.{{refsrc|sounds.c|73}}
+;You hear Donald Duck!
+:[[Swamp]] level sound.{{refsrc|sounds.c|94}}
+;You hear the quarterback calling the play.
+:Unlooted [[vault]] level sound.{{refsrc|sounds.c|125}}
+;You hear Ebenezer Scrooge!
+:[[Vault]] level sound.{{refsrc|sounds.c|137}}
+;You hear bees in your [(nonexistent)] bonnet!
+:[[Beehive]] level sound [while not wearing a helmet].{{refsrc|sounds.c|155}}
+;The <hair> on your <head> seems to stand up.
+:[[Graveyard]] level sound.{{refsrc|sounds.c|177}}
+;You hear General MacArthur!
+:[[Barracks]] level sound.{{refsrc|sounds.c|190}}
+;You hear Doctor Doolittle!
+:[[Zoo]] level sound.{{refsrc|sounds.c|213}}
+;You hear Neiman and Marcus arguing!
+:[[Shop]] level sound.{{refsrc|sounds.c|235}}
+;You hear someone say "No more woodchucks!"
+:[[Oracle]] level sound.{{refsrc|sounds.c|252}}
+;You hear a loud ZOT!
+:[[Oracle]] level sound.{{refsrc|sounds.c|253}}
+;Maybe you should find a designated driver.
+:You were attempting to [[riding|ride]] a steed.{{refsrc|steed.c|207}}
+;It felt good to get out of the rain.
+:You dismounted an unnamed steed.{{refsrc|steed.c|519}}
+;You are turning into a <monster>.
+:You were two turns away from becoming a [[green slime]].{{refsrc|timeout.c|115}}
+;You have become a <monster>.
+:You had become a [[green slime]].{{refsrc|timeout.c|116}}
+;Egads! They bite your feet!
+:You [[fumbling|fumbled]] over an item.{{refsrc|timeout.c|645}}
+;You trip over your own elbow.
+:You [[fumbling|fumbled]].{{refsrc|timeout.c|664}}
+;You slip on a banana peel.
+:You [[fumbling|fumbled]].{{refsrc|timeout.c|668}}
+;Batteries have not been invented yet.
+:Your [[brass lantern]] (in inventory) just flickered.{{refsrc|timeout.c|727}}
+;They shriek!
+:Some [[candle]]s just stopped burning.{{refsrc|timeout.c|972}}
+;You notice a crease in the linoleum.
+:You triggered a [[squeaky board]] trap.{{refsrc|trap.c|735}}
+;You hear someone bowling.
+:You heard a [[rolling boulder trap]] being set off.{{refsrc|trap.c|1366}}
+;Up, up, and awaaaay! You're walking on air!
+:You begin [[levitation|levitating]].{{refsrc|trap.c|2270}}
+;Bummer! You've splashed down.
+:You ceased [[levitation|levitating]] over [[water]] or [[lava]].{{refsrc|trap.c|2377}}
+;Bummer! You've crashed.
+:You ceased [[levitation|levitating]] by falling into a [[Sokoban]] trap.{{refsrc|trap.c|2377}}
+;Bummer! You've hit the ground.
+:You ceased [[levitation|levitating]] otherwise.{{refsrc|trap.c|2378}}
+;You hear the moon howling at you.
+:[[Magic trap]] effect.{{refsrc|trap.c|2524}}
+;You suddenly yearn for Cleveland.
+:[[Magic trap]] effect.{{refsrc|trap.c|2533}}
+;You smell hamburgers.
+:[[Magic trap]] effect.{{refsrc|trap.c|2541}}
+;You sink like the Titanic.
+:You fall into [[water]] without being able to swim.{{refsrc|trap.c|2843}}
+;Your keel hits the bottom.
+:You fall into [[water]] while amphibious.{{refsrc|trap.c|2871}}
+;What a groovy feeling!
+:Chest trap effect.{{refsrc|trap.c|3757}}
+;The floor runs like butter!
+:You cast {{spell of|stone to flesh}} downward, erasing any stone engravings.{{refsrc|zap.c|2424}}
+
+==References==
+<references />
+[[Category:Messages]]
+{{nethack-343}}}
+&&%s&& %s Fishing pole {148441 2022-10-05T00:10:24Z {4001279 Umbire the Phantom} de-SLEX {{weapon
+  |name=fishing pole
+  |smalldmg=1d2
+  |largedmg=1d6
+  |skill=polearm
+  |cost=50
+  |weight=30
+  |material=iron
+}}
+
+A '''fishing pole''' is a new [[weapon-tool]] in [[SLASH'EM]], which can be used as a [[polearm]] weapon. Its main use is to fish. Applying a fishing pole will prompt you for a location. The range of a fishing pole is the same as [[pounding]] with a regular polearm, but without a minimum range.
+
+== Fishing ==
+Applying a fishing pole on a water square may have the following effects : 
+*You hook yourself, dealing yourself 10-19 points of damage.
+*You hook an item on the target square, retrieving it.
+*You may ''"snag some garbage from the water"'', which gives you an uncursed +0 pair of [[low boots]]. This can only occur once. 
+*You catch tonight's dinner, a [[cram ration]].
+
+=== Dry Land ===
+Note that you may still apply a fishing pole to a square when that square is on dry land.
+Usually, there is no need to do this, as most items may simply be picked up.
+However, if the item is at the bottom of a [[spiked pit]], it might be safer to fish for the item than to try your luck with [[poison | poisonous]] spikes. Also, for [[Vampire (starting race)|vampire players]] with their intrinsic [[flight]], this is one of the few ways available to them to pick up items in the bottom of a pit.
+
+=== Sinks and Toilets ===
+You may use a fishing pole on sinks and toilets, although this has no special use:
+*You hook yourself, dealing yourself 10-19 points of damage.
+*You hook an item on the target square, retrieving it.
+*You pull a [[sewer rat]] out of the sink, ''"Eek! There's a sewer rat there!"''
+Generally speaking, it is much faster and safer to simply walk over to the plumbing and pick up the item.
+
+== Strategy ==
+A potentially powerful, albeit slow, use for the fishing pole is to catch a large number of cram rations. Once you've caught as many as you can carry, you can sell them at shops to get gold or [[credit]]. Also, keep in mind that you will catch cram rations frequently enough that you will never starve while fishing (unless you're a [[Vampire (starting race)|vampire]]).
+
+=== Combat ===
+Fishing poles are not very damaging as weapons.
+However, since they are light and have no minimum range, you may consider keeping one around instead of another polearm.
+Since they are fairly rare, you will want to abstain from trying for better than +5/+6, lest your only pole evaporate.
+
+== References ==
+{{todo|Someone familiar with SLASH'EM should add references}}
+<references />
+
+[[Category:SLASH'EM items]]}
+&&%s&& %s Giant humanoid {138393 2021-03-08T01:48:26Z {4001279 Umbire the Phantom} Updating src citations and version The '''giant humanoid''' [[monster class]] contains monsters represented by {{white|H}}:
+
+*{{monsymlink|Giant}}
+** {{monsymlink|Stone giant}}
+** {{monsymlink|Hill giant}}
+** {{monsymlink|Fire giant}}
+** {{monsymlink|Frost giant}}
+** {{monsymlink|Storm giant}}
+** {{monsymlink|Lord Surtur}}
+** {{monsymlink|Cyclops}}
+*{{monsymlink|Ettin}}
+*{{monsymlink|Titan}}
+*{{monsymlink|Minotaur}}
+
+Giant humanoids are designated internally by the macro '''S_GIANT''';{{refsrc|monsym.h|45|comment=S_GIANT macro}}{{refsrc|include/monsym.h|48|version=NetHack 3.6.6|comment=S_GIANT macro as of 3.6.6}} this is not to be confused with the <code>[[M2_GIANT]]</code> flag used for all forms of giant, though all non-[[undead]] giants are part of the monster class anyway.
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Monster classes]]}
+&&%s&& %s Monsters appear from nowhere {37512 2009-01-20T09:41:01Z {0 } redirect summon nasties message #REDIRECT [[Summon nasties]]}
+&&%s&& %s Monsters appear from nowhere! {37513 2009-01-20T09:42:14Z {0 } Redirecting to [[Summon nasties]] #REDIRECT [[Summon nasties]]}
+&&%s&& %s Destroy the thief, my pets! {37514 2009-01-20T09:43:13Z {0 } Redirecting to [[Summon nasties]] #REDIRECT [[Summon nasties]]}
+&&%s&& %s You hear a muffled cracking {72884 2011-09-08T00:02:33Z {0 } message redirect #redirect [[Container#Breakable items]]}
+&&%s&& %s NetHackWiki talk:ProblemReports/17836 {56080 2010-11-11T19:33:02Z {831 Tjr} Text replace - "Wikihack" to "NetHackWiki" I tried following the link from @Play to Vulture's and it worked fine in Firefox 3 and whichever Explorer comes with Vista.  Here's a test link:  [[Vulture's]].--[[User:Ray Chason|Ray Chason]] 22:18, 23 January 2009 (UTC)
+
+== Problem solved ==
+
+On the day this report was written, the external links to the Vulture's website did indeed redirect to a Lighthouse login page. As of 2009-01-27 though, the external links go to the appropriate pages. This problem has been solved. —[[User:Shijun|Shijun]] 16:35, 27 January 2009 (UTC)
+:Perhaps I misunderstood the original report, and the reporter misunderstood the intent of the problem-reports system.  If the trouble was with Clive Crous's website, then that's for Clive Crous to solve, and there's little if anything that either the Wikia staff or the NetHackWiki sysops can do.  I'm going to mark this report as closed.--[[User:Ray Chason|Ray Chason]] 22:41, 27 January 2009 (UTC)}
+&&%s&& %s Hallucination monster {37567 2009-01-25T17:46:41Z {366 Ilmari Karonen} 19:42 <Dentarthur> oh there it is.  I was searching for "hallucination monster" :/ #REDIRECT [[Hallucinatory monster]]}
+&&%s&& %s Chained blitz {62841 2011-01-08T19:23:03Z {630 Paxed} use a table The '''chained blitz''' is a complicated [[technique]] [[SLASH'EM]] Monks get at level 1, where you chain together your available techniques using the direction keys.
+
+The technique chains together the other monk combat techniques, with new attacks being added as you learn techniques through leveling. However, the elemental Wards and Chi healing are not available for use in Chained blitz. 
+Using a skill in a blitz does not use it up outside the blitz, and most techniques can be used multiple times in the same combo.
+
+When used, the Chained blitz first displays a screen showing the various techniques and their key combinations. Then, an input box appears where the selected moves are typed using the eight directional keys.If too many techniques are attempted, or if the techniques are not input properly, then the blitz fails, you receive the message "You stumble!", and the Chained blitz is used up.
+
+The chained blitz starts out with a maximum of two moves. The maximum is increased to three at level 10, four at level 20, and five at level 30.
+
+
+The techniques that can be used in a chained blitz are separated into three categories:
+
+- [[Chi strike]], [[Air dash]], [[Elemental fist]], and [[Power surge]] are starters.
+
+- [[Pummel]] is a chain.
+
+- [[Ground slam]] and [[Spirit bomb]] are finishers.
+
+
+While most techniques can be used multiple times in a single blitz, they have to be used in sequential order by their type. So three chains and a finisher would work, while a chain followed by a starter would fail. Also, the finishers must be the last move in the blitz, and so cannot be used more than once per blitz.
+
+
+When inputting the selected techniques, two of the same key combinations cannot be used in a row. However, the techniques that can be used multiple times each have two different key combinations, that can be alternated between to chain them. So, a blitz could be made of five pummels, as long as you alternated between the LRL and RLR key combinations.
+
+
+The key combinations are:
+
+( U = Up, RU = Right Up, R = Right, RD = Right Down, D = Down, LD = Left Down, L = Left, and LU = Left Up )
+
+{| class="wikitable"
+|-
+| Chi Strike
+| L + LD + D + R '''''or''''' L + LD + D + RD + R
+|-
+| Air dash
+| R + R '''''or''''' L + L
+|-
+| Elemental fist
+| U + U + R + RD + D + L '''''or''''' U + RU + R + RD + D + LD + L
+|-
+| Power surge
+| D + D + R + RD + D + R + R '''''or''''' D + RD + RD + RD + R
+|-
+| Pummel
+| L + R + L '''''or''''' R + L + R
+|-
+| Ground slam
+| D + D + D + D
+|-
+| Spirit bomb
+| D + U + D + U + U + D + D + D
+|}
+
+[[Category:SLASH'EM]]
+[[Category:Techniques]]}
+&&%s&& %s Chi strike {37954 2009-02-16T13:56:05Z {924 ZeroOne} {{se-stub}} The '''chi strike''' is a technique in [[SLASH'EM]]. During the chi strike, you have a short (based on level) amount of time to do extra damage on strike. When you perform the chi strike, you get the message "Your hands surge with power."
+
+{{se-stub}}

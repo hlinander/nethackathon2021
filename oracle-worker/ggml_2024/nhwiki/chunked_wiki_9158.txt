@@ -1,0 +1,1000 @@
+  standout
+    Boldface monsters and ``--More--'' (default off).
+
+But in the current codebase standout is only used for highlighting the end of
+pager windows.
+
+Looking at code from 3.0.x it probably was true at that time, but no longer
+nowadays.
+
+Also, this option doesn't do much and as the standout terminal sequence is
+usually shown as inverse on modern terminals, wouldn't it be best to integrate
+it into use_inverse?
+
+Bye
+Patric
+</pre>
+
+=== No attacks when swallowed by tame monster ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Thursday, February 11, 2010 at 03:42:45
+
+The ID number for this message is '#H2084'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+software:
+
+comments:
+Hi DevTeam!
+
+kerio92 from #nethack on freenode told me about some interesting interaction
+between tame monsters with engulfing attack and ring of conflicts.
+
+While wearing a ring of conflict the player can get engulfed by a tame monster.
+
+If the player takes off the ring of conflict inside the tame monster, the
+player can stay indefinitely long inside the monster and is *not subject to any
+attacks* (no digestion from purple worms, no elemental damages from vortices,
+etc.).
+
+As those attacks are more of a passive nature (I don't think a tame purple worm
+can stop his stomach from digesting) I think they should also work with tame
+monsters.
+
+This patch should fix that:
+--- nethack-linux/src/monmove.c 2008-05-26 19:47:02.000000000 +0200
++++ nethack-tame-engulfing/src/monmove.c        2010-02-11 09:30:16.000000000 +0100
+@@ -548,6 +548,8 @@
+ /*     Now, attack the player if possible - one attack set per monst   */
+
+         if (!mtmp->mpeaceful ||
+ +           /* Attacks work even when engulfed by tame monsters */
+ +           (u.uswallow && mtmp == u.ustuck) ||
+             (Conflict && !resist(mtmp, RING_CLASS, 0, 0))) {
+                 if(inrange && !noattacks(mdat) && u.uhp > 0 && !scared && tmp != 3)
+                 if(mattacku(mtmp)) return(1); /* monster died (e.g. exploded) */
+</pre>
+
+=== "You are protected" from a +0 ring of protection ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Thursday, January 14, 2010 at 09:08:25
+
+The ID number for this message is '#H2076'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+comments:
+Hi DevTeam!
+
+If one is wearing a +0 ring of protection one gets the "You are protected."
+message during enlightment.
+
+In general, if intrinsic and extrinsic protection neutralize each other, you
+get this message.
+
+The code in cmd.c:1016 only makes a distinction between values lesser than 0
+and the rest. No special treatment of a value of 0.
+
+Is this a side effect for getting this message while wearing a cloak of
+protection?
+
+Bye
+Patric
+</pre>
+
+=== Randomly placed doors not properly placed ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Wednesday, December 23, 2009 at 03:36:29
+
+The ID number for this message is '#H2063'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, but modified
+
+hardware:
+vendor_id       : GenuineIntel
+cpu family      : 15
+model           : 4
+model name      : Intel(R) Pentium(R) 4 CPU 3.20GHz
+
+software:
+Gentoo Linux with kernel version 2.6.24.7
+gcc-Version 4.3.2 (Gentoo 4.3.2-r3 p1.6, pie-10.1.5)
+glibc 2.10.1
+
+comments:
+Hi DevTeam!
+
+I've been having a "rn2(0) attempted" bug in UnNetHack for some time and now
+found the reason for it. It's not a off-by-one bug that gets triggered with the
+room levels of vanilla, but it prevents random placed doors to get placed at
+every possible place.
+
+If I just add a level like the following to the vanilla code, it triggers a
+"Floating exception" in vanilla by calling rn2(0) (I've replaced bigrm-1 for
+easier debugging):
+
+LEVEL: "bigrm-1"
+ROOM: "ordinary" , lit, random, random, (76,17)
+NAME: "room"
+
+SUBROOM: "ordinary", lit, (60,12), (6,1), "room"
+DOOR: false, closed, west, random
+
+
+The problem is that the height of the room is only 1 tile and a door should get
+placed randomly on such a short wall.
+
+In line 623 of src/sp_lev.c this results in a difference of 0:
+dpos = rn2((dwall == W_WEST || dwall == W_EAST) ?
+  (broom->hy - broom->ly) : (broom->hx - broom->lx));
+
+I'm not sure if this bug is the same as S343-2 ("1x1 room in special level can
+trigger panic due to off by one error (does not affect official room set)").
+
+Although in the vanilla code there are no rooms that small, randomly placed
+doors never gets placed at the last possible place because of this bug.
+
+Happy holidays!
+Patric
+</pre>
+
+=== Robbing rogue not getting +1 alignment ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Tuesday, August 11, 2009 at 07:39:18
+
+The ID number for this message is '#H2003'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+software:
+
+comments:
+Hi DevTeam,
+
+When robbing a shop as a lawful character one gets a -1 alignment penalty.
+
+A chaotic character gets a +1 alignment bonus but not if it is a Rogue.
+
+Does that make sense?
+
+The relevant source code is in shk.c in rob_shop() at line 494 (at line 984 in
+make_happy_shk() is the reversal of the alignment change):
+if (!Role_if(PM_ROGUE)) /* stealing is unlawful */
+  adjalign(-sgn(u.ualign.type));
+
+Bye
+Patric
+</pre>
+
+=== Drawbridge killed gas spore not exploding ===
+Reported by [[User:Bhaak|Patric Mueller]]
+
+<pre>
+Below is what you submitted to The_DevTeam on Tuesday, April 7, 2009 at 06:52:37
+
+The ID number for this message is '#H1843'
+
+mailversion:
+1.41
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+comments:
+Hi there!
+
+Killing a gas spore with a falling portcullis doesn't cause it to explode.
+
+The gas spore explosion part is handled in corpse_chance() in mon.c.
+
+e_died() in dbridge.c calls xkilled with the option to not generate corpses and
+therefore corpse_chance isn't called in this case.
+
+Bye
+Patric
+</pre>
+
+=== Removing [[red dragon scale mail]] in lava causes no bad effects ===
+<pre>
+The ID number for this message is '#H3032'
+
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3
+GB memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu raring, running Linux 3.8.0, compiled from unmodified
+(apart from config.h/unixconf.h and makefiles) official NetHack
+3.4.3 sources compiled for Unix-like systems using gcc 4.4.3
+
+comments:
+If the player's only source of fire resistance is red dragon scale
+mail, the player enters lava while wearing the RDSM, and then removes
+it, the lava has the same effect as it would on a fire-resistant
+player, even though the player no longer has any fire resistance
+sources. (The player can even sit on the lava in that state with no
+bad effects other than a few points of damage.) I'm not 100% sure on
+the cause, but it probably involves a failure to call spoteffects()
+somewhere where it needs to be called.
+
+I've been trying to determine whether this is on the bug list
+already, but the only bug that potentially seems to fit is
+SC343-18. Is this that bug, or something else?
+</pre>
+
+=== Crash when teleporting onto a sink while equipping levitation boots ===
+<pre>
+The ID number for this message is '#H3033'
+
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+hardware:
+Probably irrelevant, but it's a Toshiba Satellite netbook with 3
+GB memory and 4 GB swap, and an Intel U2700 1.3GHz processor.
+
+software:
+Ubuntu raring, running Linux 3.8.0, compiled from unmodified
+(apart from config.h/unixconf.h and makefiles) official NetHack
+3.4.3 sources compiled for Unix-like systems using gcc 4.4.3
+
+comments:
+If a player is putting on levitation boots, then during the
+helplessness period (negative multi) afterwards, gets teleported
+onto a sink (this is easy to test via means of a quantum mechanic,
+teleport control, and no magic cancellation), the game crashes.
+
+Basically what happens is that Boots_on() (which is called at the
+end of the helplessness period) looks at uarmf in order to determine
+which item to wear, with no NULL check. If the boots get unequipped
+while wearing them (e.g. via a sink), uarmf is NULL by the time
+Boots_on() runs, meaning that the game segfaults. The easiest fix
+is to add a null check to the *_on() functions, that causes them to
+not run if the armour is no longer equipped by the time its effects
+would start applying.
+
+(The "most correct" fix would be to use an occupation callback,
+combined with tracking the item being equipped the same way that,
+say, the 'book' global variable does for spellbooks. This would be
+symmetrical with A, rather than symmetrical with T. I'm currently
+in the process of rewriting NetHack 4 to do this, but the patch is
+very large and would not easily be backported to NetHack 3.4.3.)
+</pre>
+
+=== Erroneously rustproof splint mail for samurai ===
+<pre>
+The ID number for this message is '#H3034'
+
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+software:
+NetHack 3.4.3, found in the source release.
+
+comments:
+As a samurai, splint mails generated via mksobj()
+on the first turn of the game or in the quest
+branch will always begin rustproof. This is
+supposed to "simulate lacquered armor" (mkobj.c,
+line 564); however, this applies even to
+splint mail you e.g. wished for. As this allows
+you to receive rusty rustproof splint mail from
+a wish, I think this is not intended, given that
+this specific result isn't normally allowed
+(objnam.c, line 2641 only proceeds to set the
+erodeproof flag if you didn't also wish for the
+object as eroded).
+
+Additionally, you will know about the rustproof
+state of the object; this is also inconsistent
+with the normal outcome of wishing for an
+erodeproof object.
+</pre>
+
+===<tt>panic()</tt> when trying to drop destroyed object===
+<pre>
+The ID number for this message is '#H3039'
+
+mailversion:
+1.45
+
+nhversion:
+3.4.3
+
+nhfrom:
+Our 3.4.3 source release, unmodified
+
+software:
+NetHack 3.4.3, present in the source release
+(tested on multiple systems)
+
+comments:
+When using the 'D' command to drop multiple items at once, the game will
+panic if it tries to drop an item that has been destroyed in between
+("extract_nobj: object lost"). Mostly, this shouldn't happen. However,
+if one of the items is a lit potion of oil and you are levitating,
+it will explode when it hits the floor, possibly destroying other items
+you were going to drop.
+
+The problem seems to be that the code assumes the items selected to be
+dropped still exist when they are to be actually dropped, i.e., that
+dropping items will not affect other items. As shown above,
+that isn't the case.
+</pre>
+
+===Flesh golems are healed for too much from shock attacks===
+<pre>
+Flesh golems are supposed to only be healed for 1/6 the shock damage that
+would occur if non-resistant, but is healed the full amount instead due to
+a typo
+</pre>
+
+===Long worms and Elbereth===
+<pre>
+If a long worm is scared by Elbereth but can't get anywhere, it will hit you,
+bypassing Elbereth. This attack pattern will use the otherwise unused
+wormhitu() codepath, leading to each tail segment next to you also hitting
+you for damage.
+</pre>
+
+===Monster branch stair usage bug===
+<pre>
+Monsters never use branch stairs to escape, due to a bug in find_defensive
+that assumes that branch stairs are not considered stairs.
+</pre>
+
+===Intrinsic disintegration resistance shields the inventory===
+<pre>
+Intrinsic disintegration resistance protects against armor damage -- you may
+or may not consider this a bug, but scshunt [a DevTeam member] changed the
+behaviour of this in NetHack4 last year
+</pre>
+
+===nasty() is broken===
+<pre>
+nasty() is broken in several ways: replacement monsters can be asleep/non-hostile,
+the "retry if chosen monster isn't aligned with caster" instead makes the summoning
+create several monsters (capped at 20) until one neutral or coaligned summon is
+created (where it bails out to the next summon), creating potentially up to 200
+monsters in theory (this is however incredibly unlikely due to the selection of
+nasties).
+</pre>
+
+===cast protection gives too little AC===
+<pre>
+A typo for the "AC without the spell" value results in the protection spell
+giving less AC than it's supposed to.
+</pre>
+
+===Scrolls of light when blind===
+<pre>
+Scrolls/spells of light is blocked if you're engulfed, which makes sense.
+This block is lifted if you're blind, which makes less sense.
+</pre>
+{{noversion}}
+[[Category:Bugs]]}
+&&%s&& %s FoD {73158 2011-09-14T14:23:07Z {80 B jonas} Redirected page to [[Spellbook of finger of death]] #REDIRECT [[Spellbook of finger of death]]}
+&&%s&& %s Cloudy area {73313 2011-09-20T15:03:27Z {0 } Redirected page to [[Cloud#Cloudy area]] #reDirect [[Cloud#Cloudy area]]}
+&&%s&& %s Fog/vapor cloud {73314 2011-09-20T15:04:05Z {0 } Redirected page to [[Cloud#Fog/vapor cloud]] #reDirecT [[Cloud#Fog/vapor cloud]]}
+&&%s&& %s Unlink bones? {73318 2011-09-20T19:55:13Z {630 Paxed} #REDIRECT [[Wizard mode#Other]] #REDIRECT [[Wizard mode#Other]]}
+&&%s&& %s Unlink bones {73319 2011-09-20T19:55:54Z {630 Paxed} #REDIRECT [[Wizard mode#Other]] #REDIRECT [[Wizard mode#Other]]}
+&&%s&& %s Disarm {125513 2019-03-18T23:43:02Z {4001279 Umbire the Phantom}  '''Disarming''' is a method use to remove an opponent's weapon in combat. There are two primary means of disarming foes:
+
+* A [[Bullwhip#Tricks|bullwhip]] can be used to disarm opponents.
+* The [[Disarm_(technique)|disarm]] [[technique]] is available to all roles in [[SLASH'EM]].
+
+{{disambig}}}
+&&%s&& %s Rust monster or disenchanter {130832 2020-01-14T22:15:40Z {4001313 Ardub23}  The [[monster]]s in the '''rust monster or disenchanter''' [[monster class]] are:
+* {{monsymlink|rust monster}}
+* {{monsymlink|disenchanter}}
+
+Rust monsters and disenchanters can both degrade equipment. This monster class is a prime candidate for [[genocide]]. A rust monster corpse is safe to eat; however, eating a disenchanter is likely to be undesirable because it will remove one of your [[intrinsic]]s.
+
+[[Category:Monster classes]]
+{{nethack-360}}}
+&&%s&& %s Fungus or mold {73626 2011-09-27T05:17:46Z {0 } redirect to [[Fungus]] #redirect [[Fungus]]}
+&&%s&& %s Humanoid (monster class) {98768 2015-12-19T17:34:10Z {4000080 ChasonBot}  '''Humanoids''' are a class of monster represented by {{white|h}}. They include:
+* {{monsymlink|hobbit}}
+* {{monsymlink|dwarf}}
+* {{monsymlink|bugbear}}
+* {{monsymlink|dwarf lord}}
+* {{monsymlink|dwarf king}}
+* {{monsymlink|mind flayer}}
+* {{monsymlink|master mind flayer}}
+
+All humanoids have the [[humanoid]] and [[omnivore]] monster attributes.
+[[Category:Monster classes]]
+{{nethack-343}}}
+&&%s&& %s Pair of gloves {73490 2011-09-24T16:59:05Z {635 PeterGFin} Redirected page to [[Gloves]] #REDIRECT [[Gloves]]}
+&&%s&& %s Disarm (technique) {73624 2011-09-27T05:04:41Z {0 } add cat '''Disarm''' is a [[technique]] in [[SLASH'EM]]. It is available to all roles and races upon reaching skilled in any [[skill|weapon skill]]. It is necessary to use a weapon to disarm a foe; bare hands and martial arts skills cannot be used to disarm foes and do not grant the technique. Unlike most techniques, there is no timeout.
+
+Disarm can only be used if you can see the target and the target's weapon. The target's weapon must not be cursed. If you are fumbling, there is an additional 90% chance of failure. 
+
+A successful disarm is based upon the level of the technique and your skill level with the weapon. Higher skill levels will result is more effective disarms, moving the weapon onto your square or into your inventory instead of below the target's feet.
+<!--
+num is set to a random number between (your disarm technique level + 15) and 0. This is then multiplied by 2 if you are an expert with your wielded weapon. If the result is below 10, the disarm fails. Otherwise, another random number between 0 and (num+10) is taken. This is used to determine the type of disarm.
+
+{| class="prettytable"
+!Roll
+!Result
+|-
+| 0-19
+| The weapon is dropped to the target's feet.
+|-
+| 20-29
+| The weapon is dropped to your feet.
+|-
+| 30+
+| The weapon is placed into your inventory, if possible. A petrifying corpse will kill you if you are not wearing gloves.
+|}
+-->
+== Messages ==
+{{message|You aren't wielding a proper weapon!|You are not wielding a weapon.}}
+{{message|You aren't capable of doing this!|You are not at least skilled in your current weapon.}}
+{{message|What do you think <monster> is?  A sword swallower?|You are currently engulfed by <monster>}}
+{{message|Why don't you try wielding something else instead.|You attempted to disarm yourself.}}
+{{message|You don't know where to aim for!|You attempted to disarm a remembered monster.}}
+{{message|You don't see anything there!|You attempted to disarm a non-existant or unseen monster.}}
+{{message|You can't disarm an unarmed foe!|The target is not wielding a weapon.}}
+{{message|You can't see <monster> weapon!|The target is wielding an invisible weapon and you do not [[see invisible]].}}
+{{message|You knock <monster>'s <weapon> to the floor!|You successfully disarmed <monster>. The weapon is at your feet.}}
+{{message|You snatch <monster>'s <weapon>!|You successfully disarmed <monster>. The weapon is added to your inventory, if possible.}}
+{{message|Snatching <monster>'s corpse is a fatal mistake.|You snatched the corpse of a petrifying monster without wearing gloves or possessing stone resistance.}}
+{{message|You knock <weapon> from <monster>'s grasp!|You successfully disarmed <monster>. The weapon is at <monster>'s feet.}}
+{{message|<monster> evades your attack.|You failed to disarm <monster>.}}
+{{message|You fail to dislodge <monster>'s <weapon>.|As above, but monster is paralyzed or asleep.}}
+[[Category:Techniques]]}
+&&%s&& %s Monk (player monster) {131286 2020-01-21T17:19:15Z {4001279 Umbire the Phantom}  {{monster
+ |name=monk
+ |difficulty=11
+ |level=10
+ |experience=211
+ |speed=12
+ |AC=10
+ |MR=2
+ |align=0
+ |frequency=0
+ |genocidable=No (unless player is a monk)
+ |attacks=Claw 1d8, kick 1d8
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A monk|=
+ |humanoid=1|herbivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1|male=1}}
+ |reference={{sourcecode|src/monst.c|2760|version=NetHack 3.6.0}}
+}}
+
+A '''monk''' is a [[player monster]] corresponding to the [[monk]] [[role]].
+
+== Generation ==
+
+{{main|Player monster#Generation}}
+
+Like other player monsters, monks are never randomly generated and are thus rarely seen. The hostile player monsters on the [[Astral Plane]] may include one or more monks.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref>
+
+Reading a cursed [[scroll of genocide]] as a monk while [[confused]] will summon a number of monk monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead monk left on a [[bones level]] will revive the corpse or statue as a player monster. The [[Valley of the Dead]]{{refsrc|dat/gehennom.des|76|version=NetHack 3.6.0}} does not usually contain monk (or priest) corpses, except possibly in the graveyards.
+
+Most monks encountered in the main dungeon will turn out to be [[doppelganger]]s, who may temporarily assume the form of a monk.
+
+=== Equipment ===
+
+{{main|Player monster#Equipment}}
+
+A normally generated (i.e. not revived or reverse-genocided) monk will be equipped with a robe (100% chance), a random piece of headgear (7/8 chance) and a random shield that cannot be a small shield (7/16 chance). Unlike other player monsters, monks are martial artists who will never be generated with a melee weapon; however, they have a 33% chance of being generated with [[shuriken]]. {{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters, monks will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s. Monks on the Astral Plane will also receive a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and an ascension kit.
+
+== History ==
+
+Monks started being generated with shuriken in [[NetHack 3.6.0]].
+
+== References ==
+<references/>
+[[Category:Player monsters]]
+{{nethack-364}}}
+&&%s&& %s Priest (player monster) {139174 2021-04-21T06:56:22Z {4001279 Umbire the Phantom}  {{monster
+ |symbol={{monsym|priest}}
+ |name=priest / priestess
+ |tile=[[File:Priest.png]][[File:Priestess.png]]
+ |difficulty=12
+ |level=10
+ |experience=216
+ |speed=12
+ |AC=10
+ |MR=2
+ |align=0
+ |frequency=0
+ |genocidable=No (unless player is a priest or priestess)
+ |attacks=Weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A priest or priestess|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}{{attributes|A priest also|male=1|does_too_eat=1}}{{attributes|A priestess also|female=1|does_too_eat=1}}
+ |reference={{sourcecode|src/monst.c|2767|version=NetHack 3.6.0}}
+}}
+
+A '''priest''' or '''priestess''' is a [[player monster]] corresponding to the [[priest]] [[role]].
+
+{{upcoming|NetHack 3.7.0|Priests are now referred to as "clerics".}}
+
+==Generation==
+{{main|Player monster#Generation}}
+
+Like other player monsters, priests and priestesses are never randomly generated and are thus rarely seen.
+No priests or priestesses are normally found outside the [[Astral Plane]], where they may appears among the hostile player monsters generated there.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref> [[Acolytes]] found in the [[priest quest]] can also [[grow up]] to become priests.{{refsrc|src/mondata.c|966|version=NetHack 3.6.0}}
+
+Reading a cursed [[scroll of genocide]] as a priest or priestess while [[confused]] will summon a number of priests or priestesses, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead priest or priestess left on a [[bones level]] will revive the corpse or statue as a player monster. Priest and priestess corpses are not found in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|76|version=NetHack 3.6.0}} except possibly in the graveyards, and a statue of a priest or priestess may appear on [[Medusa's Island]].{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment=the code is very cryptic but fortunately has comments}}.
+
+Most priests or priestesses encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume their form.
+
+===Equipment===
+
+{{main|Player monster#Equipment}}
+
+A priest or priestess on the Astral Plane will carry either a [[mace]] (50%), a [[long sword]] (25%) or a randomly chosen [[melee]] weapon (25%). The [[weapon]]'s [[enchantment]] will be random between +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}{{refsrc|src/mplayer.c|215|version=NetHack 3.6.6}}
+
+In the [[ascension kit]], the random [[cloak]] will be changed to a [[robe]] (3/4 chance),{{refsrc|src/mplayer.c|217|version=NetHack 3.6.6}} the random [[helm|headgear]] will be changed to a [[helm of brilliance]] (3/8 chance) or to a [[helm of telepathy]] (3/8 chance),{{refsrc|src/mplayer.c|219|version=NetHack 3.6.6}} a [[shield]] will be included only 7/16 of the time (compared to 7/8 for most roles),{{refsrc|src/mplayer.c|221|version=NetHack 3.6.6}} and [[dragon scale mail]] will be replaced by other [[body armor]] half the time.{{refsrc|src/mplayer.c|215|version=NetHack 3.6.6}}
+
+Priests and priestesses will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, a randomly generated [[ascension kit]] containing various pieces of [[armor]] as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items. 
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-366}}}
+&&%s&& %s Ranger (player monster) {129904 2019-12-21T04:17:06Z {4000978 Aximili} Changes to sectioning {{monster
+ |name=ranger
+ |tile=[[File:Ranger.png]]
+ |difficulty=12
+ |level=10
+ |experience=216
+ |speed=12
+ |AC=10
+ |MR=2
+ |align=-3
+ |frequency=0
+ |genocidable=No (unless player is a ranger)
+ |attacks=Weapon 1d4
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A ranger|=
+|humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2781|version=NetHack 3.6.0}}
+}}
+
+A '''ranger''' is a [[player monster]] corresponding to the [[ranger]] [[role]].
+
+== Generation ==
+
+{{main|Player monster#Generation}}
+
+Like other player monsters, rangers are never randomly generated and are thus rarely seen. No rangers are normally found outside the [[Astral Plane]], where they may appears among the hostile player monsters generated there.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref>
+
+Reading a cursed [[scroll of genocide]] as a ranger while [[confused]] will summon a number of ranger monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead ranger left on a [[bones level]] will revive the corpse or statue as a player monster. Ranger corpses will also be found in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|89|version=NetHack 3.6.0}} and a statue of a ranger may appear on [[Medusa's Island]].{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}}
+
+Most rangers encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume the form of a ranger.
+
+=== Equipment ===
+
+{{main|Player monster#Equipment}}
+
+A ranger on the Astral Plane will carry either an [[elven dagger]] (50%), a [[long sword]] (25%) or a randomly chosen [[melee]] weapon (25%). The [[weapon]]'s [[enchantment]] will be random between +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters on the Astral Plane, rangers will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, as well as a randomly generated [[ascension kit]] containing [[dragon scale mail]] and various other pieces of [[armor]] (along with a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items).
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-360}}}
+&&%s&& %s Rogue (player monster) {129905 2019-12-21T04:18:31Z {4000978 Aximili} Changes to sectioning {{monster
+ |name=rogue
+ |tile=[[File:Rogue.png]]
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=-3
+ |frequency=0
+ |genocidable=No (unless player is a rogue)
+ |attacks=Weapon 1d6, weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A rogue|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|greedy=1|jewels=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2788|version=NetHack 3.6.0}}
+}}
+
+A '''rogue''' is a [[player monster]] corresponding to the [[rogue]] [[role]].
+
+== Generation ==
+
+{{main|Player monster#Generation}}
+
+Like other player monsters, rogues are never randomly generated and are thus rarely seen. A peaceful rogue named Pug appears on the final level of the [[Wizard quest]].{{refsrc|dat/Wizard.des|367|version=NetHack 3.6.0}} Other than that, no rogues are normally found outside the [[Astral Plane]], where they may appear among the hostile player monsters generated there.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref>
+
+Reading a cursed [[scroll of genocide]] as a rogue while [[confused]] will summon a number of rogue monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead rogue left on a [[bones level]] will revive the corpse or statue as a player monster. Rogue corpses will also be found in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|91|version=NetHack 3.6.0}} and a statue of a rogue may appear on [[Medusa's Island]].{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}}
+
+Most rogues encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume the form of a rogue.
+
+=== Equipment ===
+
+{{main|Player monster#Equipment}}
+
+A rogue on the Astral Plane will carry either a [[short sword]] (25%), an [[orcish dagger]] (25%), a [[long sword]] (25%) or a randomly chosen [[melee]] weapon (25%). The [[weapon]]'s [[enchantment]] will be random between  +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible. There are no artifact short swords in the game, but plenty of artifact long swords, and a rogue's orcish dagger may turn out to be [[Grimtooth]], if that artifact has not been generated yet.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters on the Astral Plane, rogues will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, as well as a randomly generated [[ascension kit]] containing [[dragon scale mail]] and various other pieces of [[armor]] (as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items).
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-360}}}
+&&%s&& %s Samurai (player monster) {133450 2020-04-12T09:17:17Z {4001279 Umbire the Phantom}  {{monster
+ |name=samurai
+ |tile=[[File:Samurai.png]]
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=3
+ |frequency=0
+ |genocidable=No (unless player is a samurai)
+ |attacks=Weapon 1d8, weapon 1d8
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A samurai|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2795|version=NetHack 3.6.0}}
+}}
+
+A '''samurai''' is a [[player monster]] corresponding to the [[samurai]] [[role]].
+
+==Generation==
+{{main|Player monster#Generation}}
+
+Like other player monsters, samurai are never randomly generated and are thus rarely seen. They are normally found outside of the [[Astral Plane]], where they may appear among the hostile player monsters generated there.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref> Most samurai encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume their form; in any case, the game refers to them by the [[rank]] title appropriate for the monster's level.
+
+Reading a cursed [[scroll of genocide]] as a samurai while [[confused]] will summon a number of samurai monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead samurai left on a [[bones level]] will revive the corpse or statue as a player monster. Samurai corpses can be found in graveyards including those in the [[Valley of the Dead]],{{refsrc|dat/gehennom.des|93|version=NetHack 3.6.0}} and their statues may appear on [[Medusa's Island]]{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}} as well as in [[cockatrice nest]]s.
+
+=== Equipment ===
+{{main|Player monster#Equipment}}
+
+A samurai on the Astral Plane or in the Samurai quest will carry either a [[katana]] (50%), a [[long sword]] (25%) or a randomly chosen [[melee]] weapon (25%). The [[weapon]]'s [[enchantment]] will be random between +4 and +8 on the astral plane, or between +0 and +3 otherwise, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. On the Astral Plane, there is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters, samurai will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s. The ones on the Astral Plane will also carry a randomly generated [[ascension kit]] containing [[dragon scale mail]] and various other pieces of [[armor]] (as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items).
+
+==References==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-366}}}
+&&%s&& %s Tourist (player monster) {129907 2019-12-21T04:20:49Z {4000978 Aximili} Changes to sectioning {{monster
+ |name=tourist
+ |tile=[[File:Tourist.png]]
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=0
+ |frequency=0
+ |genocidable=No (unless player is a tourist)
+ |attacks=Weapon 1d6, weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A tourist|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2802|version=NetHack 3.6.0}}
+}}
+
+A '''tourist''' is a [[player monster]] corresponding to the [[tourist]] [[role]].
+
+== Generation ==
+
+{{main|Player monster#Generation}}
+
+Like other player monsters, tourists are never randomly generated and are thus rarely seen.
+No tourists are normally found outside the [[Astral Plane]], where they may appear among the hostile player monsters generated there<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref>.
+
+Reading a cursed [[scroll of genocide]] as a tourist while [[confused]] will summon a number of tourist monsters, although they won't have their usual equipment.  Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead tourist left on a [[bones level]] will revive the corpse or statue as a player monster. Tourist corpses will also be found in the [[Valley of the Dead]]{{refsrc|dat/gehennom.des|95|version=NetHack 3.6.0}}, and a statue of a tourist may appear on [[Medusa's Island]]{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}}.
+
+Most tourists encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume the form of a tourist.
+
+=== Equipment ===
+
+{{main|Player monster#Equipment}}
+
+A tourist on the Astral Plane will carry either a a [[long sword]] (50%) or a randomly chosen [[melee]] weapon (50%). The [[weapon]]'s [[enchantment]] will be random between +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each.  There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+Like other player monsters on the Astral Plane, tourists will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, as well as a randomly generated [[ascension kit]] containing [[dragon scale mail]] and various other pieces of [[armor]] (as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items).
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-360}}}
+&&%s&& %s Priestess (player monster) {73558 2011-09-25T16:01:30Z {4000142 Erica} create as a redirect #REDIRECT [[Priest (player monster)]]}
+&&%s&& %s Valkyrie (player monster) {140600 2021-06-02T04:55:34Z {4001463 Actual-nh} /* History */ 3.7.0 {{monster
+ |name=valkyrie
+ |tile=[[File:Valkyrie.png]]
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=-1
+ |frequency=0
+ |genocidable=No (unless player is a valkyrie)
+ |attacks=Weapon 1d8, weapon 1d8
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=cold
+ |resistances conveyed=None
+ |attributes={{attributes|A valkyrie|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|female=1|collect=1|infravisible=1}}
+ |reference={{sourcecode|src/monst.c|2809|version=NetHack 3.6.0}}
+}}
+
+A '''valkyrie''' is a [[player monster]] corresponding to the [[valkyrie]] [[role]]. Like a player valkyrie, they have [[intrinsic]] [[cold resistance]].
+
+== Generation ==
+
+{{main|Player monster#Generation}}
+
+Like other player monsters, valkyries are never randomly generated and are thus rarely seen. No valkyries are normally found outside the [[Astral Plane]], where they may appear among the hostile player monsters generated there.<ref>{{function|mplayer.c|create_mplayers|version=NetHack 3.6.0}}</ref>
+
+Reading a cursed [[scroll of genocide]] as a valkyrie while [[confused]] will summon a number of valkyrie monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead valkyrie left on a [[bones level]] will revive the corpse or statue as a player monster. Valkyrie corpses will also be found in the [[Valley of the Dead]]{{refsrc|dat/gehennom.des|97|version=NetHack 3.6.0}}, and a statue of a valkyrie may appear on [[Medusa's Island]].{{refsrc|src/sp_lev.c|1896|version=NetHack 3.6.0|comment= the code is very cryptic but fortunately has comments}}
+
+Most valkyries encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume the form of a valkyrie.
+
+===Equipment===
+
+{{main|Player monster#Equipment}}
+
+A valkyrie on the Astral Plane will carry either a [[war hammer]] (50%), a [[long sword]] (25%) or a randomly chosen [[melee]] weapon (25%).  The [[weapon]]'s [[enchantment]] will be random between +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible. 
+
+Like other player monsters on the Astral Plane, valkyries will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, as well as a randomly generated [[ascension kit]] containing various other pieces of [[armor]] (as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items). The ascension kit of a valkyrie only has a 50% chance of containing [[dragon scale mail]]; the other 50% of the time, it will contain some other body armor.{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+== History ==
+All player monster valkyries are chaotic, unlike player valkyries, which can be lawful or neutral; prior to [[NetHack 3.1.0]], player valkyries could be chaotic.
+
+{{upcoming|NetHack 3.7.0|By default, player monster valkyries are now lawful, but will be neutral if a player valkyrie starts out as neutral.}}
+
+== References ==
+<references/>
+
+[[Category:Player monsters]]
+{{nethack-364}}}
+&&%s&& %s Spotted jellies {73605 2011-09-26T20:19:23Z {831 Tjr} Redirected page to [[Spotted jelly]] #redirect [[spotted jelly]]}
+&&%s&& %s Blue jellies {73606 2011-09-26T20:19:31Z {831 Tjr} Redirected page to [[Blue jelly]] #redirect [[blue jelly]]}
+&&%s&& %s Displaced {73648 2011-09-27T11:14:31Z {831 Tjr} Redirected page to [[Displacement]] #redirect [[displacement]]}
+&&%s&& %s Aerarium {73743 2011-09-30T22:52:00Z {630 Paxed} #REDIRECT [[Closet]] #REDIRECT [[Closet]]}
+&&%s&& %s Irc {142101 2021-08-18T14:06:08Z {4001523 Hieristmiah} Changed redirect target from [[Freenode]] to [[Libera]] #REDIRECT [[Libera]]}
+&&%s&& %s Captcha {73794 2011-10-01T10:24:06Z {630 Paxed} #REDIRECT [[CAPNTHLA]] #REDIRECT [[CAPNTHLA]]}
+&&%s&& %s CAPTCHA {73795 2011-10-01T10:25:14Z {630 Paxed} #REDIRECT [[CAPNTHLA]] #REDIRECT [[CAPNTHLA]]}
+&&%s&& %s MediaWiki:Previewnote {81443 2012-11-09T22:26:00Z {630 Paxed} Remove the link to the edit text, it's already shown in current mediawiki <div class="previewnote-inner-msg">
+'''Remember that this is only a preview.'''
+Your changes have not yet been saved!
+</div>}
+&&%s&& %s Heptagramless {74080 2011-10-10T11:55:15Z {27 Ais523} create redirect #REDIRECT [[Unofficial conduct#Elberethless]]}
+&&%s&& %s AceHack {134904 2020-07-07T17:45:32Z {4000903 Testbutt} more cross-linking between related pages '''AceHack''' is a [[variant]] of NetHack, focusing on gameplay very similar (although not quite identical) to vanilla NetHack, and an improved interface. Work on AceHack as a standalone variant stopped in 2012, after it was merged with [[NitroHack]] to form [[NetHack 4]]. At present, it is still in an unfinished alpha status, but is nonetheless playable.
+
+AceHack's codebase is mostly based on that of [[NetHack 3.4.3]], but also contains code from [[UnNetHack]] (which in turn contains several changes that originally came from AceHack), [[SLASH'EM]], and [[GruntHack]], as well as versions of several [[patch]]es (often rewritten ones).
+
+== Gameplay changes ==
+The few gameplay changes in AceHack (other than straightforward [[bug]] fixes, which tend to change gameplay when they fix exploits) are mostly designed to compensate for the removal of interface drawbacks, to reduce the chance of unavoidable bad luck, or to permit a simpler equivalent to what would otherwise be degenerate strategies, and err on the side of making the game easier:
+* [[Spellbook]]s can be read even before [[you|your]] memory of the spell wears out.
+* The [[vibrating square]] is visible from a distance.
+* Several items that can be trivially identified now self-identify, such as [[jumping boots]] (when worn), [[scroll of identify|scrolls of identify]] (when picked up in a shop), and [[potion of oil|potions of oil]] (at the start of the game).
+* [[Floating eye]]s, rather than [[paralysis|paralyzing]] a player who attempts to melee them, instead use a gaze that forces players to miss. (They still have their normal effect on monsters.)
+* [[Stormbringer]] gives the [[aggravate monster]] extrinsic, rather than confirming attacks on peaceful and tame monsters.
+* [[Amnesia]] no longer causes any information to be forgotten that could be remembered simply via keeping notes, instead giving gameplay effects such as removing [[spells]] and [[skills]], and causing items to become informally rather than formally identified.
+* [[swap weapons|Swapping]] your wielded and readied weapons no longer costs a turn. (Readying a weapon directly, something not possible in vanilla NetHack but possible in AceHack, does.)
+* Dropping a [[container]] on an [[altar]] identifies the [[beatitude]] of its contents, if it would identify the beatitude of the container itself. (In a related change, un[[BCU]]ed items now stack with BCUed items that they would otherwise stack with, so there is no incentive to deliberately refuse to learn the beatitude of an item.)
+* You cannot destroy a [[bag of holding]] by placing a [[bag of tricks]] or [[wand of cancellation]] in it; doing so will drain all charges from the latter item instead. You ''can'' destroy bags of holding by nesting them, but will get a confirmation first.
+* [[Candle]]s are a lot more likely to be generated in the [[Gnomish Mines]], typically in the inventory of gnomes (who will actually use the candles). This is to make it very unlikely that the game will have insufficient randomly-generated candles to perform the [[Invocation]].
+* The [[scroll of charging]] identifies the number of charges remaining on an object (in addition to its usual effects; this is also still an effect of the [[scroll of identify]]). The same effects (charging and identification) also reveal the number of remaining turns that a [[light source]] will continue to provide light.
+* The [[weight]]s of inventory items are now visible, whenever the player would be able to touch them to check their weight. (Thus, [[cockatrice corpse]]s and [[gray stone]]s do not have visible weights outside the player's inventory.)
+
+Additionally, the monster AI has been improved, particularly for [[pets]]. There were some unintentional balance changes as a side-effect of this, particularly for [[pacifist]]s; the author intends to fix these before release.
+
+One highly notable change is that [[Elbereth]] no longer has any special effect; however, its effect is still available in AceHack, as the [[heptagram]], which is identical to an engraved Elbereth, except that it's a symbol rather than a word, and does not [[exercise]] [[Wisdom]]. It can most simply be dust-engraved by pressing {{kbd|.}}.
+
+== Meta-gameplay changes ==
+Although AceHack tries to keep the gameplay much the same, it changes the goals of the game unrelated to winning/losing, such as [[scoring]] and [[conducts]], to make them more interesting:
+* The [[illiterate]] conduct has been split into "no reading or writing of text" (still called "illiterate") and "no writing of heptagrams" ("[[heptagramless]]").
+* A new "solo mode" prevents [[bones files]] from being loaded, and makes [[startscumming]] visible (normally, AceHack allows players to view and reroll their stats and inventory before starting the game).
+* Game score follows an entirely different algorithm, designed to make scorebearing items like [[gem]]s and [[zorkmid]]s have a significant effect on scoring, as well as several other categories (such as [[experience level]]), and to penalise spending excessive lengths of time trying to grind up a few more points. It also emphasizes scoring well in every scoring category rather than focusing on just one.
+
+Several more game modes are intended to be added to AceHack eventually (such as Adeon's "Heaven or Hell" variant); there is also a multiplayer version of AceHack under development (intended to eventually be merged with the main codebase), but it is not yet playable. There is also a plan to track more conducts than at present.
+
+== Options changes ==
+AceHack has a philosophy of eliminating options that players will rarely want to change from the defaults, and making sure that the defaults for options are sane. There are typically fewer than ten options that can be changed from within the game, although the list of which options are available tends to change based on player feedback; options are kept only if there is widespread disagreement about what their default value should be (such as <tt>[[floorcolor]]</tt>), if they are needed for compatibility with certain types of terminal (such as <tt>[[color]]</tt> or <tt>[[DECgraphics]]</tt>), or if their setting may need to be changed within a game (such as the <tt>[[pickup_types]]</tt>).
+
+== Interface changes ==
+AceHack's most radical changes are in its interface; most obviously, it makes much greater use of color than vanilla NetHack, to allow the player to determine facts about monsters and squares more easily without having to [[farlook]]. (For instance, background color is used to distinguish [[tame]], [[peaceful]] and [[hostile]] monsters, and to show which squares have [[stair]]s under [[item]]s.) 
+
+The game's command system has also been redone (although most vanilla commands, apart from rarely-used ones like {{kbd|G}} and {{kbd|v}}, still work); the intent is to reduce the number of keystrokes required to type commands, and reduce the risk involved in typing on a laggy connection. The game also tries to detect some inherently dangerous actions (like walking into [[lava]] or meleeing a peaceful [[shopkeeper]]), and instead of displaying a yes/no prompt (which can easily be triggered by accident when using {{kbd|y}} to move), requires a prefix; for instance, {{kbd|m}}{{kbd|k}} (or {{kbd|m}}{{kbd|8}}) would be needed to deliberately move north into lava. (AceHack's default keybindings are a hybrid between the [[numpad]] and [[vi-keys]] control systems, with either working to move, and {{kbd|#}} being used for command repeat as well as for [[extended command]]s.) There are also several convenience features such as opening doors merely by walking into them, and [[autoexplore]].
+
+AceHack also contains a tutorial mode that teaches players the basics of the commands and gameplay. (It has since been copied by UnNetHack.)
+
+== Internal changes ==
+AceHack has several internal changes from NetHack; the main user-visible effects of this are a main menu which allows anyone to enter [[explore mode]] and (except on public servers) [[debug mode]], and a different (and hopefully easier to use) build system.
+
+== Descendants ==
+The interface/convenience improvements from Acehack, such as the more detailed [[base attributes]] screen and the [[autoexplore]] command, have been integrated into more recently-updated variants such as [[DynaHack]], [[FIQhack]], [[Fourk]], and [[NetHack4]]. 
+
+== External links ==
+* [https://github.com/deepy/acehack/blob/master/doc/fixes36.0 Changelog listing differences between NetHack and AceHack]
+* [https://github.com/deepy/acehack Source code]
+{{variant-343|offset=1}}
+{{featured}}
+[[Category:Variants]]}
+&&%s&& %s Pound sign {99060 2015-12-20T19:38:00Z {4000080 ChasonBot}  The '''pound sign''', £, is not used by NetHack. You may have been looking for the [[hash mark]].
+{{nethack-343}}}
+&&%s&& %s Gold (material) {149352 2022-12-13T20:40:16Z {4001279 Umbire the Phantom} /* SlashTHEM */* '''Gold''' is a [[material]] that appears in ''[[NetHack]]''. It is an inherently [[erosion]]-proofed type of metal.
+
+There are few items made of gold in the game outside of the [[gold piece]]s used as currency for zorkmids - [[ring]]s with the [[randomized appearance]] of "gold ring" are made of gold, as is the [[Candelabrum of Invocation]]; spellbooks with the randomized appearance of "gold spellbook" are still made of paper like most others. [[Metallivores]] can eat any gold item minus the Candelabrum, and [[polypiling]] enough gold items may create a [[gold golem]].
+
+A noncursed [[scroll of gold detection]] will reveal all gold pieces and gold golems on the level; a blessed scroll will additionally detect other items made of gold.
+
+==Strategy==
+Eating gold tends to occur in the form of [[rock mole]]s eating any gold they encounter while [[tunnel]]ing through the dungeon, and later [[xorn]]s doing the same while phasing; while eating gold coins has no real application, eating gold rings can be a factor in [[eating jewelry]] while polymorphed into a metallivore. 
+
+==Variants==
+Variants often add other items made of gold, and the [[object materials]] system used in many variants incorporates gold as a potential material for metallic objects.
+
+Monster interactions with gold are also altered depending on the variant:
+
+* [[Leprechaun]]s and other monsters with gold-based attacks can target items made of gold as well as the player's money.
+* [[Croesus]] is often given a set of gold armor, sometimes with a gold weapon to boot.
+* Gold golems may drop other items made of gold alongside gold coins upon death.
+
+===GruntHack===
+In [[GruntHack]], [[iron]] objects including those of dwarvish make have a very rare chance to be made of gold, as do elven weapons and shields. Gold is a heavy material and tends to be impractical as armor - gold armor has 2 less AC compared to its iron counterparts (minimum 0).
+
+===xNetHack===
+In [[xNetHack]], gold is similarly heavy, with 50% more weight compared to iron, and gives 2 less AC as armor - however, blunt weapons made of gold gain a +2 damage bonus. [[Itlachiayaque]], the [[Archeologist]] [[quest artifact]] for the variant, is a gold [[shield of reflection]]; [[Sunsword]] has its base material changed to gold. Two new randomized appearances for wands, the "gold wand" and the "gilded wand", are composed of gold.
+
+Leprechauns are capable of stealing any item that is made of gold in addition to your money. Croesus will always generate with a gold two-handed sword and gold body armor - the armor has a {{frac|1|8}} to be plate mail, and will otherwise be [[chain mail]].<ref>[https://github.com/copperwater/xNetHack/blob/7.0-savebreaking/src/makemon.c#L250 xNetHack 0.7 src/makemon.c, line 250]</ref>
+
+Blessed [[thiefstone]]s are capable of "stealing" gold coins and other items made of gold and teleporting them to a "stash" square if you [[apply]] or [[rub]] one against them. They can also teleport gold golems to their keyed square if you hit them with a blessed thiefstone in melee or by throwing one at them - this includes you if you rub it on your hand while in [[polyself|the form]] of a gold golem.
+
+===SlashTHEM===
+In [[SlashTHEM]], [[goldbug]]s can eat any gold objects in your inventory using their bite attack.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Materials]]}
+&&%s&& %s Category:Quest leaders {74219 2011-10-16T07:05:14Z {0 } Created page with "This is a list of quest leaders. [[Category:Quests]] [[Category:Unique monsters]]" This is a list of quest leaders.
+[[Category:Quests]]
+[[Category:Unique monsters]]}
+&&%s&& %s Category:Quest nemeses {74221 2011-10-16T07:06:12Z {0 } Created page with "This is a list of quest nemeses. [[Category:Quests]] [[Category:Unique monsters]]" This is a list of quest nemeses.
+[[Category:Quests]]
+[[Category:Unique monsters]]}
+&&%s&& %s Category:Quest guardians {74223 2011-10-16T07:14:08Z {0 } Created page with "List of quest guardians. [[Category:Quests]] [[Category:Monsters]]" List of quest guardians.
+[[Category:Quests]]
+[[Category:Monsters]]}
+&&%s&& %s Acehack {74315 2011-10-19T14:56:21Z {27 Ais523} caps redirect that can't be automatically figured out by MediaWiki #REDIRECT [[AceHack]]}
+&&%s&& %s Heptagram {74317 2011-10-19T15:09:45Z {27 Ais523} #REDIRECT [[Elbereth#AceHack]] #REDIRECT [[Elbereth#AceHack]]}
+&&%s&& %s Question mark {74320 2011-10-19T15:36:13Z {0 } Redirected page to [[?]] #RedIrECt [[?]]}
+&&%s&& %s Pacifist/screen {131487 2020-01-26T06:05:27Z {4000978 Aximili} Add category ==Pacifist Key Bindings for GNU Screen==
+Many attempted [[pacifist]] games end abruptly with accidentally [[Pacifist#Team gecko|bump-killing]] weak monsters, breaking pacifist conduct. One of the more extreme solutions to this problem is to use [[Wikipedia:GNU_Screen|GNU Screen]] to remap the movement keys so they are all prefixed with {{kbd|m}}. For example, pressing {{kbd|k}} will actually send {{kbd|m}}{{kbd|k}} to the game. This eliminates the possibility of bump-killing (unless you're wielding [[Stormbringer]], but that would be a silly weapon choice for a pacifist), but can make other activities, like inventory management or choosing a direction to apply a [[stethoscope]] or [[key]], somewhat annoying.
+
+[[#RC Files|Below]] is a set of three screen rc files that allow you to switch "pacifist mode" on and off while playing. After creating these files, you can start nethack with:
+  screen -c ~/.screenrc-pacifist telnet nethack.alt.org
+When you hit {{kbd|F11}}, the key bindings are activated. Pressing {{kbd|F12}} returns the bindings to normal. While the key bindings are activated, you can hit {{kbd|ctrl|t}} to send the next movement key as-is, without the {{kbd|m}} prefix.
+
+===RC Files===
+Simply create these three files and start nethack as above. The keys to turn pacifist mode on/off can be modified in ~/.screenrc-pacifist by replacing "F1" and "F2" with the keys of your choice. Type "k1" though "k9" to use the {{kbd|F1}} through {{kbd|F9}} keys, "k0" is {{kbd|F10}}, and "F1" and "F2" are the {{kbd|F11}} and {{kbd|F12}} keys, respectively. You can also use, for example, {{kbd|ctrl|o}} by typing "^o" and omitting the "-k" argument.
+
+====~/.screenrc-pacifist====
+ # Hit F11 (not F1!) to enable pacifist key bindings
+ bindkey -k F1 source ~/.screenrc-pacifist-on
+ # Hit F12 (not F2!) to disable pacifist key bindings
+ bindkey -k F2 source ~/.screenrc-pacifist-off
+
+====~/.screenrc-pacifist-on====
+ # Enable pacifist key bindings:
+ # Defuse movement keys so they won't attack.
+ # Unfortunately, deactivates autopickup.
+ bindkey 'h' stuff 'mh'
+ bindkey 'y' stuff 'my'
+ bindkey 'k' stuff 'mk'
+ bindkey 'u' stuff 'mu'
+ bindkey 'l' stuff 'ml'
+ bindkey 'n' stuff 'mn'
+ bindkey 'j' stuff 'mj'
+ bindkey 'b' stuff 'mb'
+ # make control-t the unbound-prefix
+ bindkey "\024" mapdefault
+ wall "Pacifist mode activated!"
+
+====~/.screenrc-pacifist-off====

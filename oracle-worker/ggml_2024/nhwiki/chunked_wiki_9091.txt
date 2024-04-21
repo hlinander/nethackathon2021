@@ -1,0 +1,1000 @@
+| Magical
+|
+|-
+|{{monsymlink|lich}}
+| 11
+| Magical
+|
+|-
+|{{monsymlink|aligned priest}}
+|12
+|Clerical
+|
+|-
+|{{monsymlink|master mind flayer}}
+|13
+|Psychic blast
+|
+|-
+|{{monsymlink|demilich}}
+| 14
+| Magical
+|
+|-
+|{{monsymlink|Dark One}}
+| 15
+| Magical
+|
+|-
+|{{monsymlink|Ixoth}}
+| 15
+| Magical
+|
+|-
+|{{monsymlink|Minion of Huhetotl}}
+| 16
+| Magical
+|
+|-
+|{{monsymlink|Thoth Amon}}
+| 16
+| Magical
+|
+|-
+|{{monsymlink|Chromatic Dragon}}
+| 16
+| Magical
+|
+|-
+|{{monsymlink|Nalzok}}
+| 16
+| Magical
+|
+|-
+|{{monsymlink|ki-rin}}
+| 16
+| Magical
+|
+|-
+|{{monsymlink|titan}}
+| 16
+| Magical
+|
+|-
+|{{monsymlink|master lich}}
+| 17
+| Magical
+|
+|-
+|{{monsymlink|Archon}}
+|19
+| Magical
+|
+|-
+|{{monsymlink|Neferet the Green}}
+|20
+| Magical
+|
+|-
+|{{monsymlink|arch-lich}}
+|25
+| Magical
+|
+|-
+|{{monsymlink|Grand Master}}
+|25
+|Clerical
+|
+|-
+|{{monsymlink|high priest}}
+|25
+|Clerical
+|
+|-
+|{{monsymlink|Arch Priest}}
+|25
+|Clerical
+|
+|-
+|{{monsymlink|Master Kaen}}
+|25
+|Clerical
+|
+|-
+|{{monsymlink|Wizard of Yendor}}
+|30
+| Magical
+|
+|-
+|{{monsymlink|Orcus}}
+|30
+| Magical
+|
+|-
+|{{monsymlink|Dispater}}
+|36
+| Magical
+|
+|-
+|{{monsymlink|Asmodeus}}
+|49
+|
+| Has a unique magical cold attack.
+|-
+|{{monsymlink|Demogorgon}}
+|50
+| Magical
+|
+|}
+
+===Exceptions===
+The following sources of damage, though they may be considered spells, are not affected by half spell damage:
+*The [[magic missile]] attack from [[angel]]s, [[Yeenoghu]], [[gray dragon]]s and the [[Chromatic Dragon]].
+*The [[Oracle]]'s [[passive]] magic missile attack.{{refsrc|uhitm.c|2228}}
+*The [[geyser]] monster spell, which is considered physical damage.{{refsrc|mcastu.c|495}}
+*Any spells cast or wands zapped by the player.{{refsrc|zap.c|3185}}{{refsrc|zap.c|3265}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], the [[Yeoman]] quest artifact, the [[Crown of Saint Edward]], also confers half spell damage.
+
+==See also==
+*[[Half physical damage]]
+
+==References==
+<references/>
+
+{{stub}}
+{{nethack-366}}}
+&&%s&& %s Half physical damage {98728 2015-12-19T14:33:42Z {4000080 ChasonBot}  '''Half physical damage''' is an [[extrinsic]] property which halves any physical [[damage]] taken.  This property is currently conferred only by carrying [[The Master Key of Thievery]] or [[The Orb of Fate]].
+
+A more limited form of this effect is bestowed upon [[priest]]s wearing [[the Mitre of Holiness]], which halves attack damage from [[undead]] and [[demon]]s only.
+
+Note that carrying a second half physical damage artifact does not further reduce damage taken.
+
+==SLASH'EM==
+[[SLASH'EM]] adds two more items which give this very useful property - [[The Hand of Vecna]] and [[Gauntlets of Defense]].  These make [[wishing]] for an artifact with half physical damage less desirable, as the Hand of Vecna can be obtained by any character in SLASH'EM's mid-game, and provides hungerless regeneration and cold resistance as well as half physical damage.
+{{stub}}
+
+==See also==
+* [[half spell damage]]
+{{nethack-343}}}
+&&%s&& %s Skill points {19378 2007-03-03T13:30:13Z {924 ZeroOne} #REDIRECT [[Skill]] #REDIRECT [[Skill]]}
+&&%s&& %s Custom map symbols (historic) {99678 2015-12-28T02:59:37Z {679 Ray Chason} Link back to the new page ''Most of the content of this page is historic. As of [[NetHack 3.6.0]], only BOULDER and WARNINGS are still accepted. See [[Custom map symbols]] for equivalent features in 3.6.0.''
+
+The [[NetHack 3.4.3]] configuration file (.nethackrc on [[Unix]], defaults.nh on [[MS-DOS]] and [[Windows]] including Windows CE, NetHack Defaults on [[Mac]] and [[BeOS]], and NetHack.cnf on [[Amiga]], [[Atari]], [[OS/2]] and [[VMS]]) provides several options to set '''custom map symbols'''.
+
+== The options ==
+
+The options take the form VARIABLE = number number number....  They are shown here in the form that gives the default [[IBMgraphics]] symbols when [[wikipedia:code page 437|code page 437]] is set.
+
+=== BOULDER ===
+
+This option takes one number, to set the symbol for a boulder:
+
+ BOULDER = 039
+
+The default appearance is <tt>`</tt>.  This can also be set using <tt>OPTIONS=boulder:`</tt>.
+
+=== GRAPHICS ''(historic)'' ===
+
+This option takes 92 numbers, to set the symbols for all fixed parts of the dungeon and certain special effects; that is, all symbols except for monsters and objects:
+
+ GRAPHICS = 032 179 196 218 191 192 217 197 193 194 \
+            180 195 250 254 254 043 043 240 241 250 \
+            176 177 060 062 060 062 095 124 092 035 \
+            244 247 250 247 250 250 035 035 032 035 \
+            247 094 094 094 094 094 094 094 094 094 \
+            094 094 094 094 094 094 094 094 034 094 \
+            094 094 094 179 196 092 047 042 033 041 \
+            040 048 035 064 042 047 045 092 179 179 \
+            092 045 047 047 045 092 179 032 179 092 \
+            045 047
+
+If you set GRAPHICS, you do not need to set DUNGEON, TRAPS, or EFFECTS.
+
+The order of the symbols is as follows:
+
+{| class="wikitable"
+|-
+!Symbol!!Number!!Appearance
+|-
+|dark part of a room||032||(blank)
+|-
+|vertical wall||179||&#x2502;
+|-
+|horizontal wall||196||&#x2500;
+|-
+|top left corner||218||&#x250C;
+|-
+|top right corner||191||&#x2510;
+|-
+|bottom left corner||192||&#x2514;
+|-
+|bottom right corner||217||&#x2518;
+|-
+|cross wall||197||&#x253C;
+|-
+|T up wall||193||&#x2534;
+|-
+|T down wall||194||&#x252C;
+|-
+|T left wall||180||&#x2524;
+|-
+|T right wall||195||&#x251C;
+|-
+|doorway||250||&#x00B7;
+|-
+|vertical open door||254||&#x25A0;
+|-
+|horizontal open door||254||&#x25A0;
+|-
+|vertical closed door||043||+
+|-
+|horizontal closed door||043||+
+|-
+|iron bars||240||&#x2261;
+|-
+|tree||241||&#x00B1;
+|-
+|floor of room||250||&#x00B7;
+|-
+|dark corridor||176||&#x2591;
+|-
+|lit corridor||177||&#x2592;
+|-
+|staircase up||060||<
+|-
+|staircase down||062||>
+|-
+|ladder up||060||<
+|-
+|ladder down||062||>
+|-
+|altar||095||_
+|-
+|grave||124||<nowiki>|</nowiki>
+|-
+|throne||092||\
+|-
+|sink||035||#
+|-
+|fountain||244||&#x2320;
+|-
+|pool||247||&#x224B;
+|-
+|ice||250||&#x00B7;
+|-
+|lava||247||&#x224B;
+|-
+|vertical open drawbridge||250||&#x00B7;
+|-
+|horizontal open drawbridge||250||&#x00B7;
+|-
+|vertical closed drawbridge||035||#
+|-
+|horizontal closed drawbridge||035||#
+|-
+|air||032||(blank)
+|-
+|cloud||035||#
+|-
+|water||247||&#x224B;
+|-
+|arrow trap||094||^
+|-
+|dart trap||094||^
+|-
+|falling rock trap||094||^
+|-
+|squeaky board||094||^
+|-
+|bear trap||094||^
+|-
+|land mine||094||^
+|-
+|rolling boulder trap||094||^
+|-
+|sleeping gas trap||094||^
+|-
+|rust trap||094||^
+|-
+|fire trap||094||^
+|-
+|pit||094||^
+|-
+|spiked pit||094||^
+|-
+|hole||094||^
+|-
+|trap door||094||^
+|-
+|teleportation trap||094||^
+|-
+|level teleporter||094||^
+|-
+|magic portal||094||^
+|-
+|web||034||"
+|-
+|statue trap||094||^
+|-
+|magic trap||094||^
+|-
+|anti-magic field||094||^
+|-
+|polymorph trap||094||^
+|-
+|vertical beam||179||&#x2502;
+|-
+|horizontal beam||196||&#x2500;
+|-
+|left-slanting beam||092||\
+|-
+|right-slanting beam||047||/
+|-
+|digging beam||042||*
+|-
+|camera flash beam||033||!
+|-
+|boomerang left||041||)
+|-
+|boomerang right||040||(
+|-
+|shield effect 1||048||0
+|-
+|shield effect 2||035||#
+|-
+|shield effect 3||064||@
+|-
+|shield effect 4||042||*
+|-
+|swallow top left||047||/
+|-
+|swallow top center||045||-
+|-
+|swallow top right||092||\
+|-
+|swallow middle left||179||&#x2502;
+|-
+|swallow middle right||179||&#x2502;
+|-
+|swallow bottom left||092||\
+|-
+|swallow bottom center||045||-
+|-
+|swallow bottom right||047||/
+|-
+|explosion top left||047||/
+|-
+|explosion top center||045||-
+|-
+|explosion top right||092||\
+|-
+|explosion center left||179||&#x2502;
+|-
+|explosion center||032||(blank)
+|-
+|explosion center right||179||&#x2502;
+|-
+|explosion bottom left||092||\
+|-
+|explosion bottom center||045||-
+|-
+|explosion bottom right||047||/
+|}
+
+=== DUNGEON ''(historic)'' ===
+
+This option takes 41 numbers, to set the symbols for all fixed parts of the dungeon except for traps:
+
+ DUNGEON = 032 179 196 218 191 192 217 197 193 194 \
+           180 195 250 254 254 043 043 240 241 250 \
+           176 177 060 062 060 062 095 124 092 035 \
+           244 247 250 247 250 250 035 035 032 035 \
+           247
+
+These are the same as the first 41 numbers in GRAPHICS; consequently, if you set GRAPHICS, you do not need to set DUNGEON.
+
+The configuration file has a commented-out version of DUNGEON that is claimed to set the default IBMgraphics; in fact, it differs from the above in that it sets stairs to 243 and 242, appearing as &#x2264; and &#x2265;.
+
+The order of the symbols is as follows:
+
+{| class="wikitable"
+|-
+!Symbol!!Number!!Appearance
+|-
+|dark part of a room||032||(blank)
+|-
+|vertical wall||179||&#x2502;
+|-
+|horizontal wall||196||&#x2500;
+|-
+|top left corner||218||&#x250C;
+|-
+|top right corner||191||&#x2510;
+|-
+|bottom left corner||192||&#x2514;
+|-
+|bottom right corner||217||&#x2518;
+|-
+|cross wall||197||&#x253C;
+|-
+|T up wall||193||&#x2534;
+|-
+|T down wall||194||&#x252C;
+|-
+|T left wall||180||&#x2524;
+|-
+|T right wall||195||&#x251C;
+|-
+|doorway||250||&#x00B7;
+|-
+|vertical open door||254||&#x25A0;
+|-
+|horizontal open door||254||&#x25A0;
+|-
+|vertical closed door||043||+
+|-
+|horizontal closed door||043||+
+|-
+|iron bars||240||&#x2261;
+|-
+|tree||241||&#x00B1;
+|-
+|floor of room||250||&#x00B7;
+|-
+|dark corridor||176||&#x2591;
+|-
+|lit corridor||177||&#x2592;
+|-
+|staircase up||060||<
+|-
+|staircase down||062||>
+|-
+|ladder up||060||<
+|-
+|ladder down||062||>
+|-
+|altar||095||_
+|-
+|grave||124||<nowiki>|</nowiki>
+|-
+|throne||092||\
+|-
+|sink||035||#
+|-
+|fountain||244||&#x2320;
+|-
+|pool||247||&#x224B;
+|-
+|ice||250||&#x00B7;
+|-
+|lava||247||&#x224B;
+|-
+|vertical open drawbridge||250||&#x00B7;
+|-
+|horizontal open drawbridge||250||&#x00B7;
+|-
+|vertical closed drawbridge||035||#
+|-
+|horizontal closed drawbridge||035||#
+|-
+|air||032||(blank)
+|-
+|cloud||035||#
+|-
+|water||247||&#x224B;
+|}
+
+=== TRAPS ''(historic)'' ===
+
+This option takes 22 numbers, to set the symbols for all traps:
+
+ TRAPS = 094 094 094 094 094 094 094 094 094 094 \
+         094 094 094 094 094 094 094 034 094 094 \
+         094 094
+
+These are the same as the 42nd through 63rd numbers in GRAPHICS; consequently, if you set GRAPHICS, you do not need to set TRAPS.
+
+The order of the symbols is as follows:
+
+{| class="wikitable"
+|-
+!Symbol!!Number!!Appearance
+|-
+|arrow trap||094||^
+|-
+|dart trap||094||^
+|-
+|falling rock trap||094||^
+|-
+|squeaky board||094||^
+|-
+|bear trap||094||^
+|-
+|land mine||094||^
+|-
+|rolling boulder trap||094||^
+|-
+|sleeping gas trap||094||^
+|-
+|rust trap||094||^
+|-
+|fire trap||094||^
+|-
+|pit||094||^
+|-
+|spiked pit||094||^
+|-
+|hole||094||^
+|-
+|trap door||094||^
+|-
+|teleportation trap||094||^
+|-
+|level teleporter||094||^
+|-
+|magic portal||094||^
+|-
+|web||034||"
+|-
+|statue trap||094||^
+|-
+|magic trap||094||^
+|-
+|anti-magic field||094||^
+|-
+|polymorph trap||094||^
+|}
+
+=== EFFECTS ''(historic)'' ===
+
+This option takes 29 numbers, to set the symbols for special effects:
+
+ EFFECTS = 179 196 092 047 042 033 041 040 048 035 \
+           064 042 047 045 092 179 179 092 045 047 \
+           047 045 092 179 032 179 092 045 047
+
+These are the same as the 64th through 92nd numbers in GRAPHICS; consequently, if you set GRAPHICS, you do not need to set EFFECTS.
+
+The order of the symbols is as follows:
+
+{| class="wikitable"
+|-
+!Symbol!!Number!!Appearance
+|-
+|vertical beam||179||&#x2502;
+|-
+|horizontal beam||196||&#x2500;
+|-
+|left-slanting beam||092||\
+|-
+|right-slanting beam||047||/
+|-
+|digging beam||042||*
+|-
+|camera flash beam||033||!
+|-
+|boomerang left||041||)
+|-
+|boomerang right||040||(
+|-
+|shield effect 1||048||0
+|-
+|shield effect 2||035||#
+|-
+|shield effect 3||064||@
+|-
+|shield effect 4||042||*
+|-
+|swallow top left||047||/
+|-
+|swallow top center||045||-
+|-
+|swallow top right||092||\
+|-
+|swallow middle left||179||&#x2502;
+|-
+|swallow middle right||179||&#x2502;
+|-
+|swallow bottom left||092||\
+|-
+|swallow bottom center||045||-
+|-
+|swallow bottom right||047||/
+|-
+|explosion top left||047||/
+|-
+|explosion top center||045||-
+|-
+|explosion top right||092||\
+|-
+|explosion center left||179||&#x2502;
+|-
+|explosion center||032||(blank)
+|-
+|explosion center right||179||&#x2502;
+|-
+|explosion bottom left||092||\
+|-
+|explosion bottom center||045||-
+|-
+|explosion bottom right||047||/
+|}
+
+=== OBJECTS ''(historic)'' ===
+
+This option takes 17 numbers, to set the symbols for objects:
+
+ OBJECTS = 093 041 091 061 034 040 037 033 063 043 \
+           047 036 042 096 048 095 046
+
+The order of the symbols is as follows:
+
+{| class="wikitable"
+|-
+!Symbol!!Number!!Appearance
+|-
+|Invalid object||093||]
+|-
+|Weapon||041||)
+|-
+|Armor||091||[
+|-
+|Ring||061||=
+|-
+|Amulet||034||"
+|-
+|Tool||040||(
+|-
+|Food||037||%
+|-
+|Potion||033||!
+|-
+|Scroll||063||?
+|-
+|Spellbook||043||+
+|-
+|Wand||047||/
+|-
+|Gold||036||$
+|-
+|Gem||042||*
+|-
+|Boulder||096||`
+|-
+|Ball||048||0
+|-
+|Chain||095||_
+|-
+|Venom||046||.
+|}
+
+=== MONSTERS ''(historic)'' ===
+
+This option takes 60 numbers, to set the symbols for monsters:
+
+ MONSTERS = 097 098 099 100 101 102 103 104 105 106 \
+            107 108 109 110 111 112 113 114 115 116 \
+            117 118 119 120 121 122 065 066 067 068 \
+            069 070 071 072 000 074 075 076 077 078 \
+            079 080 081 082 083 084 085 086 087 088 \
+            089 090 064 032 039 038 059 058 126 093
+
+The order of the symbols is as follows:
+
+{| class="wikitable"
+|-
+!Symbol!!Number!!Appearance
+|-
+|ant||097||a
+|-
+|blob||098||b
+|-
+|cockatrice||099||c
+|-
+|dog||100||d
+|-
+|eye||101||e
+|-
+|feline||102||f
+|-
+|gremlin||103||g
+|-
+|humanoid||104||h
+|-
+|imp||105||i
+|-
+|jelly||106||j
+|-
+|kobold||107||k
+|-
+|leprechaun||108||l
+|-
+|mimic||109||m
+|-
+|nymph||110||n
+|-
+|orc||111||o
+|-
+|piercer||112||p
+|-
+|quadruped||113||q
+|-
+|rodent||114||r
+|-
+|spider||115||s
+|-
+|trapper||116||t
+|-
+|unicorn||117||u
+|-
+|vortex||118||v
+|-
+|worm||119||w
+|-
+|xan||120||x
+|-
+|light||121||y
+|-
+|zruty||122||z
+|-
+|angel||065||A
+|-
+|bat||066||B
+|-
+|centaur||067||C
+|-
+|dragon||068||D
+|-
+|elemental||069||E
+|-
+|fungus||070||F
+|-
+|gnome||071||G
+|-
+|giant||072||H
+|-
+|(unused)||&nbsp;||&nbsp;
+|-
+|jabberwock||074||J
+|-
+|Kop||075||K
+|-
+|lich||076||L
+|-
+|mummy||077||M
+|-
+|naga||078||N
+|-
+|ogre||079||O
+|-
+|pudding||080||P
+|-
+|quantum mechanic||081||Q
+|-
+|rust monster||082||R
+|-
+|snake||083||S
+|-
+|troll||084||T
+|-
+|umber hulk||085||U
+|-
+|vampire||086||V
+|-
+|wraith||087||W
+|-
+|xorn||088||X
+|-
+|yeti||089||Y
+|-
+|zombie||090||Z
+|-
+|human||064||@
+|-
+|ghost||032||(blank)
+|-
+|golem||039||'
+|-
+|demon||038||&
+|-
+|eel||059||;
+|-
+|lizard||058||:
+|-
+|worm tail||126||~
+|-
+|mimic||093||]
+|}
+
+=== WARNINGS ===
+
+This option takes six numbers, to set the symbols for warnings:
+
+ WARNINGS = 048 049 050 051 052 053
+
+The order of the symbols is as follows:
+
+{| class="wikitable"
+|-
+!Symbol!!Number!!Appearance
+|-
+|Level 0 warning||048||0
+|-
+|Level 1 warning||049||1
+|-
+|Level 2 warning||050||2
+|-
+|Level 3 warning||051||3
+|-
+|Level 4 warning||052||4
+|-
+|Level 5 warning||053||5
+|}
+
+== Numbers and their appearances ==
+
+To use these options, it is necessary to know which number will appear as which symbol.
+
+=== Printable ASCII (032-126) ===
+
+The printable ASCII symbols will appear the same on nearly all platforms.
+
+{|class="wikitable"
+|-
+!Code!!Appearance
+|-
+|032||(blank)
+|-
+|033||!
+|-
+|034||"
+|-
+|035||#
+|-
+|036||$
+|-
+|037||%
+|-
+|038||&
+|-
+|039||'
+|-
+|040||(
+|-
+|041||)
+|-
+|042||*
+|-
+|043||+
+|-
+|044||,
+|-
+|045||-
+|-
+|046||.
+|-
+|047||/
+|-
+|048||0
+|-
+|049||1
+|-
+|050||2
+|-
+|051||3
+|-
+|052||4
+|-
+|053||5
+|-
+|054||6
+|-
+|055||7
+|-
+|056||8
+|-
+|057||9
+|-
+|058||:
+|-
+|059||;
+|-
+|060||&lt;
+|-
+|061||=
+|-
+|062||&gt;
+|-
+|063||?
+|-
+|064||@
+|-
+|065||A
+|-
+|066||B
+|-
+|067||C
+|-
+|068||D
+|-
+|069||E
+|-
+|070||F
+|-
+|071||G
+|-
+|072||H
+|-
+|073||I
+|-
+|074||J
+|-
+|075||K
+|-
+|076||L
+|-
+|077||M
+|-
+|078||N
+|-
+|079||O
+|-
+|080||P
+|-
+|081||Q
+|-
+|082||R
+|-
+|083||S
+|-
+|084||T
+|-
+|085||U
+|-
+|086||V
+|-
+|087||W
+|-
+|088||X
+|-
+|089||Y
+|-
+|090||Z
+|-
+|091||[
+|-
+|092||\
+|-
+|093||]
+|-
+|094||^
+|-
+|095||_
+|-
+|096||`
+|-
+|097||a
+|-
+|098||b
+|-
+|099||c
+|-
+|100||d
+|-
+|101||e
+|-
+|102||f
+|-
+|103||g
+|-
+|104||h
+|-
+|105||i
+|-
+|106||j
+|-
+|107||k
+|-

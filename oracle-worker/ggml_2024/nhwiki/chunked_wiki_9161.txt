@@ -1,0 +1,1000 @@
+|-
+! {{aa|C343-52}}
+| Confirmed
+| {{/trackerstatus|11}}
+| Worn or wielded objects destroyed by dipping into lit potions of oil are not handled properly; this can result in odd game behavior.
+| For example, if you dip your (worn) thoroughly burned robe into lit oil until it's destroyed and then try to wear another cloak you can't, because you're already wearing the robe, even though you aren't.
+|-
+! {{aa|C343-53}}
+| Unknown
+| {{/trackerstatus|20}}
+| If a shopkeeper is trapped adjacent to the door, the game may get confused and issue impossible or panic messages.
+| TJR says break a wand of digging while standing next to the shopkeeper.
+|-
+! {{aa|C343-54}}
+| Fixed
+| {{/trackerstatus|moot}}
+| "Ulch" cannibalism message grammar is poor.
+| Alex Smith
+|-
+! {{aa|C343-55}}
+| Fixed
+| {{/trackerstatus|moot}}
+| "Ulch" messages have inconsistent capitalization.
+| Alex Smith
+|-
+! {{aa|C343-56}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Gas spores can't attack while hero is praying.
+| A spurious "starts to attack you, but pulls back" message is displayed, even though gas spores have only passive attacks. Fixed in [[GruntHack]].
+|-
+! {{aa|C343-57}}
+| Fixed
+| {{/trackerstatus|moot}}
+| #enhance command descriptions in Guidebook and game do not match.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-58}}
+| Fixed
+| {{/trackerstatus|moot}}
+| #conduct command description grammar is poor
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-59}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Engulfer stoned swallowing hero polymorphed to cockatrice causes incorrect screen display. If hero has ball & chain, game can panic.
+| Reproduced with a hostile trapper.  The t remained on the display in its original location adjacent to the polyselfed hero for several turns, even though there was a statue of a trapper on the tile with the hero. Fixed by Grunt; ported by SEan Hunt
+|-
+! {{aa|C343-60}}
+| Unknown
+| {{/trackerstatus|30}}
+| Several messages delivered when hero's fingers are slippery have poor grammar.
+| 
+|-
+! {{aa|C343-61}}
+| Moot
+| {{/trackerstatus|moot}}
+| Using a WIZKIT including the quest artifact will crash the game at startup.
+| WIZKIT is not currently supported in NetHack 4.
+|-
+! {{aa|C343-62}}
+| Unknown
+| {{/trackerstatus|31}}
+| Riding into a magic portal gives an extra, useless message.
+| You may be told "<steed> is still eating.", but it comes through with you regardless.
+|-
+! {{aa|C343-63}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You can drink from a sink, fountain, or while underwater while swallowed.
+| Confirmed by quaffing from fountain while engulfed by purple worm.  In a similar vein, #praying on a cross-aligned altar also works. Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-64}}
+| Fixed
+| {{/trackerstatus|moot}}
+| A black light leaves an hallucinated corpse while exploding.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-65}}
+| Fixed
+| {{/trackerstatus|moot}}
+| A monster that "shrieks in pain" may not awaken others nearby.
+| Addressed in GruntHack; Additional info on the wiki.
+|-
+! {{aa|C343-66}}
+| Confirmed
+| {{/trackerstatus|32}}
+| Co-aligned unicorns in a bones file may be hostile.
+| Happens when the unicorns were also co-aligned for the former player and he angered them before getting himself killed.
+|-
+! {{aa|C343-67}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| Finding a statue when searching while blind doesn't update map.
+| Cannot reproduce in NH4, probably fixed by Nitrohack display changes.
+|-
+! {{aa|C343-68}}
+| Untested
+| {{/trackerstatus|33}}
+| Incorrect message may be given when a spellcasting monster summons other monsters.
+| may be a pluralization issue if extinction lets only one of the
+monsters materialize.
+|-
+! {{aa|C343-69}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Attempting to add more candles than needed to a candelabrum with at least one candle gives an incorrect message.
+| bcode says: have six candles already attached, then try to attach more than one. Fixed by Grunt.
+|-
+! {{aa|C343-70}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Experience may not be correctly gained for monsters causing nonphysical damage.
+| cf. [[exper.c#line76]] and commentary there. Fixed by Grunt.
+|-
+! {{aa|C343-71}}
+| Fixed
+| {{/trackerstatus|moot}}
+| When swapping places with a pet pushes it into a trap, the messages are out of order.
+| "A gush of water hits Chmee's right forelimb!  You displaced Chmee."  Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-72}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You get confusing messages when you stop levitating while on a flying steed.
+| Fixed by Grunt, ported by Sean Hunt.
+|-
+! {{aa|C343-73}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Trying to kick a monster on a level forbidding teleport may give a bogus "teleports" message. 
+| "You kick the tengu.  The tengu teleports, easily evading your clumsy kick." Fixed by Grunt.
+|-
+! {{aa|C343-74}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Entering a long running, uninterruptible command (e. g. engraving) after stoning starts will kill you.
+| Patric Muller
+|-
+! {{aa|C343-75}}
+| Unknown
+| {{/trackerstatus|34}}
+| Eating Medusa's corpse may not work properly.
+| 
+|-
+! {{aa|C343-76}}
+| Fix available
+| {{/trackerstatus|35}}
+| A tin of Medusa meat isn't warned about properly.
+| Warned as in from blessed [[scroll of food detection]]; no warning is given about it being "very dangerous", as with other monsters that cause petrification. (Medusa's corpse is also warned about incorrectly, warning about poison instead of petrification.) Fixed in [[GruntHack]].
+|-
+! {{aa|C343-77}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Some messages referring to monsters that look like horses refer to claws.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-78}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Digging in an existing hole charges you for the time it takes to dig the whole hole.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-79}}
+| Unclear
+| {{/trackerstatus|36}}
+| "Mr." or "Ms." may show up in front of names when it should not.
+| Look at done_in_by() in end.c, I guess?
+|-
+! {{aa|C343-80}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Tame monsters with multiple attacks may allow themselves to be killed through passive attacks.
+| "The black unicorn misses the red mold.  The black unicorn is suddenly very hot!  The black unicorn misses the red mold.  The black unicorn is suddenly very hot!  The black unicorn is killed!" Fixed by Grunt.
+|-
+! {{aa|C343-81}}
+| Confirmed
+| {{/trackerstatus|moot}}
+| Ghosts can be slimed.
+| Reproduced by Grunt.
+|-
+! {{aa|C343-82}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Land mine explosion on a drawbridge doesn't work right. 
+| Pit is formed, but the usual drawbridge-destruction effects do not occur. Fixed in [[GruntHack]] by having the drawbridge be destroyed with no other effects. Ported by Sean Hunt.
+|-
+! {{aa|C343-83}}
+| Fixed
+| {{/trackerstatus|moot}}
+| An eating pet will miss out on ascension.
+| The bug is in [[Source:dog.c#line482|keepdogs()]] in dog.c, where the checks in lines [[Source:dog.c#line514|514]]-[[Source:dog.c#line527|527]] don't check for pets_only (set only in case of ascension or celestial disgrace escape). Fixed by Grunt.
+|-
+! {{aa|C343-84}}
+| Fixed
+| {{/trackerstatus|moot}}
+| "finally finished" may be displayed when not eating.
+| Bug relates to the nomovemsg variable being left set and unmul() being called later for an unrelated reason.  An easy way to trigger it is to eat lizard corpses off the floor with nothing in inventory but worn armor in the presence of several hostile nymphs while your nutrition is between 1500 and 2000.  When it asks if you want to stop eating, say no.  (You'll stop anyway as soon as a nymph seduces you, but saying no causes nomovemsg to remain set.)  Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-85}}
+| Unclear
+| {{/trackerstatus|37}}
+| Sometimes the hero can't move when conscious.
+| 
+|-
+! {{aa|C343-86}}
+| Unknown
+| {{/trackerstatus|38}}
+| Hero can appear to be in the wall after destroying a drawbridge.
+| I thought I'd maybe found something related, but that turned out to be {{sa|C343-266}}.
+|-
+! {{aa|C343-87}}
+| Unknown
+| {{/trackerstatus|39}}
+| Sometimes shop items the hero is forced to buy can be sold twice.
+| 
+|-
+! {{aa|C343-88}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Polymorphing a statue into a boulder can leave an incorrect display.
+| Alex Smith
+|-
+! {{aa|C343-89}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Unpaid objects damaged or improved in shops are not accounted for properly.
+| If you pick up some armor and are quoted a price then read a scroll of enchant armor before paying, the price does not change UNLESS you drop the armor and pick it up again, in which case it then does.  Enchant weapon works the same way. Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-90}}
+| Fixed
+| {{/trackerstatus|moot}}
+| "I u" with only one item unpaid lists the price twice. 
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-91}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Auto-cursing armor does not do so when worn by monster.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-92}}
+| Unknown
+| {{/trackerstatus|40}}
+| A blind player may find a trap which then fails to show up on the map.
+| 
+|-
+! {{aa|C343-93}}
+| Confirmed
+| {{/trackerstatus|41}}
+| Astral vision can confuse the ; command. 
+| A monster on the opposite side of a solid maze wall may be said to be seen through normal vision as well as astral vision; in fact, normal vision cannot see it.  At other times no mention is made of how you see something, even though it is only visible through astral vision.
+|-
+! {{aa|C343-94}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Probing a re-animated statue may cause a panic.
+| Patric Muller
+|-
+! {{aa|C343-95}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If killed by the wish from a magic lamp (or similar situation) and a bones file is produced, the bones file has the lamp in the wrong state.
+| Create bones by using a magic lamp to wish for something that will blast you for more damage than you can survive.  On loading the bones in another game, bless the lamp and rub it.  A percentage of the time, you can get a second wish.
+|-
+! {{aa|C343-96}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| If player aborts "In what direction?" question, prompt may remain displayed.
+| NH4 says, "What a strange direction!"
+|-
+! {{aa|C343-97}}
+| Moot
+| {{/trackerstatus|moot}}
+| ctrl + r and ctrl + l don't work in numberpad mode
+| NetHack4 allows all keys to be rebound individually, so there isn't a numpad mode as such.
+|-
+! {{aa|C343-98}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Chatting with quest leader brought back from the dead doesn't work.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-99}}
+| Unsure
+| {{/trackerstatus|42}}
+| Hero can still see for brief period after being blinded by potion vapors.
+| If you kill a monster with a wielded potion of blindness and get blinded in the process, the corpse is shown, but I'm not sure whether this is a bug and also not sure whether this is what the bug description refers to.
+|-
+! {{aa|C343-100}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Game may crash if thrown potion hits bars before a monster.
+| Patric Muller
+|-
+|}
+
+===C343-101 to C343-200===
+{| class="prettytable sortable striped"
+! Number
+! Status
+! Migrated
+! Description (3.4.3)
+! Additional notes
+|-
+! {{aa|C343-101}}
+| Unknown
+| {{/trackerstatus}}
+| The hero can see some things while asleep.
+| No longer sure about this one, intend to retest it.
+|-
+! {{aa|C343-102}}
+| Unknown
+| {{/trackerstatus}}
+| Messages delivered when the ceiling collapses on a swallowed hero need revision.
+| 
+|-
+! {{aa|C343-103}}
+| Info available.
+| {{/trackerstatus|moot}}
+| The hero is not protected from a mind flayer during successful prayer.
+| Fixed at some point
+|-
+! {{aa|C343-104}}
+| Info available.
+| {{/trackerstatus|423}}
+| Message from angry shopkeeper giving a price when hero picks up an object has poor spacing and construction.
+| 
+|-
+! {{aa|C343-105}}
+| Debatable
+| {{/trackerstatus}}
+| Message given when restoring a game refers to original gender and form, not current.
+| 3.4.3 list says this is not a bug.  I'm inclined to agree.
+|-
+! {{aa|C343-106}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Sunsword continues to glow after its wielder dies.
+| See [[Sunsword]]. Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-107}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Killing your own steed never leaves a corpse.
+| Happens when you are riding at the time.  Easily reproduced by zapping an attack wand downward. Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-108}}
+| Incidentally fixed.
+| {{/trackerstatus|moot}}
+| Entering "e-" does not remove the prompt. 
+| NH4 does keep record of such prompts, and the answers, in the message window, but it doesn't remain anywhere it shouldn't.
+|-
+! {{aa|C343-109}}
+| Fixed
+| {{/trackerstatus|moot}}
+| There is a grammar error in the Tourist leader's greeting.
+| Alex Smith
+|-
+! {{aa|C343-110}}
+| Unknown
+| {{/trackerstatus}}
+| Game can crash if shopkeeper dies while character is praying.
+| Tried several times with strong pets and failed to reproduce.
+|-
+! {{aa|C343-111}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Grammar of some graveyard sounds messages is wrong in some cases.
+| Alex Smith
+|-
+! {{aa|C343-112}}
+| Unknown
+| {{/trackerstatus}}
+| Hero and monster afflicted with lycanthropy are treated differently.
+| 
+|-
+! {{aa|C343-113}}
+| Info available
+| {{/trackerstatus}}
+| When flying down a hole or a ladder, the messages are inaccurate.
+| 
+|-
+! {{aa|C343-114}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Removing some but not all the boulders from a location confuses the vision system.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-115}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Sleeping or paralyzed unicorns can catch gems.
+| Fixed by Grunt, ported by Sean.
+|-
+! {{aa|C343-116}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Grammar error in messages related to choking on gold.
+| Patric Muller
+|-
+! {{aa|C343-117}}
+| Confirmed
+| {{/trackerstatus|424}}
+| Gaining and losing levels in normal and monster form do not balance.
+| I was an XL7 human tourist, polymorphed into an elf, lost two levels to a vampire, polymorphed back to human, and was XL4.  I then polymorphed to elf again, lost one level, polymorphed back to human, and my new form was too weak to survive.
+|-
+! {{aa|C343-118}}
+| Confirmed
+| {{/trackerstatus|moot}}
+| Some messages use "mirror" where they should use "looking glass."
+| The function use_mirror (in apply.c) had the word "mirror" hardcoded in half a dozen messages, and there's one in uhitm.c as well.  Grunt suggests fixing it by calling simple_typename().  Looks like this one has been fixed.  The only remaining place where "mirror" is hardcoded is in the death reason, "gazing into a mirror", which is fine (because death identifies everything).
+|-
+! {{aa|C343-119}}
+| Moot
+| {{/trackerstatus|moot}}
+| Options IBMgraphics, DECgraphics, and MACgraphics interact oddly in the config file, resulting in odd listings from the O command.
+| NetHack4 uses Unicode graphics.
+|-
+! {{aa|C343-120}}
+| Debatable
+| {{/trackerstatus|moot}}
+| There is no warning when hitting floating eyes.
+| The 3.4.3 list says this is not a bug.
+|-
+! {{aa|C343-121}}
+| Confirmed
+| {{/trackerstatus}}
+| Eating various brains which should have special handling, don't.
+| This most likely refers to the Riders; if you try to swallow one whole, you're told "digesting any of it is fatal".
+|-
+! {{aa|C343-122}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Alignment of Angels is not handled consistently.
+| Fixed by Grunt; ported by Sean Hunt
+|-
+! {{aa|C343-123}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Plural of "mother-in-law" is incorrect.
+| Alex Smith
+|-
+! {{aa|C343-124}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You can't rub a touchstone on gold.
+| You can, but only if the touchstone is not formally identified. Fixed by Sean Hunt
+|-
+! {{aa|C343-125}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Killing a vault guard outside a vault gives incorrect feedback.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-126}}
+| Debatable
+| {{/trackerstatus}}
+| When wielding Grayswandir, feedback from a trapped chest may be wrong.
+| If the chest trap is colored gas (which normally stuns and hallucinates), and you are not already stunned, the message is the same whether you have hallucination resistance or not.  (However, the message does not specifically say anything about hallucination.)
+|-
+! {{aa|C343-127}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If a vault guard leads the hero to gold in the rock, inappropriate feedback is given.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-128}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Feedback for gas spore explosion when hallucinating could be improved.
+| If you or a monster are caught in the explosion, it is always called "the gas spore's explosion", one of the only situations wherein a monster's correct name is always used while you are hallucinating. Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-129}}
+| Info available
+| {{/trackerstatus|moot}}
+| Canceling objects in or near a shop doorway may make the shopkeeper think you are a thief.
+| The error’s in zap.c; it checks to see if you’re in the shop, rather than whether the object is.  Looks like somebody has already fixed this one, or at least changed and commented it.
+|-
+! {{aa|C343-130}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Sometimes you can't rub an arbitrary object on a touchstone.
+| Some things can be rubbed on any unidentified gray stone but not on a formally identified touchstone. Fixed by Sean Hunt.
+|-
+! {{aa|C343-131}}
+| Unclear
+| {{/trackerstatus}}
+| Message has poor grammar if hero killed when stealing cockatrice corpse from a monster.
+| Death message is "petrified by stolen cockatrice corpse"; it should be "petrified by a stolen cockatrice corpse".  (Suspect this may have been fixed, but cannot test it right now due to possibly unrelated desyncs when attacking while polyselfed into a nymph.)
+|-
+! {{aa|C343-132}}
+| Untested
+| {{/trackerstatus}}
+| Message when death caused by kicking an object can be too verbose.
+| Grunt says: I've thought that this refers to "killed by kicking a runed broadsword named Stormbringer" if the artifact was not identified, as opposed to "killed by kicking Stormbringer".  The former behaviour has been acknowledged to be a bug to me in response to a related bug report of my own. 
+|-
+! {{aa|C343-133}}
+| Unclear
+| {{/trackerstatus}}
+| Effects of varying consuming Medusa are inconsistent.
+| Description does not adequately differentiate this bug from C343-75 and/or C343-76.
+|-
+! {{aa|C343-134}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Being petrified by swallowing a cockatrice violates foodless conduct.
+| Fixed by Grunt; cherry-picked by Sean Hunt
+|-
+! {{aa|C343-135}}
+| Confirmed
+| {{/trackerstatus|425}}
+| Several quest messages are inappropriate if the hero is blind.
+| The messages in question are ones issued upon entering certain levels for the first time.  Arc, Cav, Tou, Wiz quests have issues that I noticed.
+|-
+! {{aa|C343-136}}
+| Fixed
+| {{/trackerstatus|moot}}
+| A samurai quest guardian message uses "ninja" where "ronin" is intended.
+| Patric Muller
+|-
+! {{aa|C343-137}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Demons may demand money from (and get paid by) a fainted hero.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-138}}
+| Confirmed
+| {{/trackerstatus|426}}
+| Some spheres pick up objects and some don't.
+| Tame flaming and shocking spheres (at least) pick stuff up.  Hostile ones don't, and you cannot if polyselfed into any kind of e, because you can't reach the floor.
+|-
+! {{aa|C343-139}}
+| Confirmed
+| {{/trackerstatus}}
+| There's no feedback when an unseen drawbridge opens or closes.
+| The first time you play the passtune, you get feedback no matter what.  Subsequently, you only get feedback if you can see or if something interesting happens (e.g., a monster gets crushed).
+|-
+! {{aa|C343-140}}
+| Confirmed
+| {{/trackerstatus}}
+| Pets may continue eating after being paralyzed or falling asleep.
+| Actually, if you use a stethoscope in wizmode you see that their hunger is changed all at once when they start eating, and I'm pretty sure the corpse is removed at that time too; the only real multi-turn effect of a pet eating is the inability to move, which is redundant with sleep or paralysis.  However, in recent savebreak, pets now eat in a single turn, which is Ticket 427.
+|-
+! {{aa|C343-141}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Running, searching, and resting should stop wnen levitation ends.
+| Quaff an uncursed potion of levitation and use a numeric prefix to rest for 9999 turns.  This was previously listed as Confirmed but appears to be Fixed in savebreak
+|-
+! {{aa|C343-142}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Shopkeepers can be identified while hallucinating.
+| Fixed by Grunt; ported by Sean Hunt
+|-
+! {{aa|C343-143}}
+| Unknown
+| {{/trackerstatus}}
+| Leprechauns stealing gold from a mounted hero cause oddly worded messages.
+| 
+|-
+! {{aa|C343-144}}
+| Confirmed
+| {{/trackerstatus|moot}}
+| Creatures that can fit under doors can't fit through diagonal gaps.
+| Tested with black puddings.  Refers to diagonal passages through rock only (they do fit between boulders ok).  As of 2014 April, I can no longer reproduce this in savebreak.  Perhaps it has been fixed?
+|-
+! {{aa|C343-145}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Mattock is mishandled when forcing locks.
+| You bash a lock with a pickaxe (i.e. it is considered blunt), but pry with a mattock (i.e. bladed). Fixed by Sean Hunt.
+|-
+! {{aa|C343-146}}
+| Untested
+| {{/trackerstatus|428}}
+| Unseen wand of striking becomes known if zapped by unseen monster and it hits a door.
+| mbhit calls doorlock, which returns true if anything happens; when doorlock returns true, mbhit calls makeknown without checking cansee
+|-
+! {{aa|C343-147}}
+| Fixed
+| {{/trackerstatus|moot}}
+| The game panics if a magic trap tames a monster that just expelled the hero.
+| per Grunt: mon.c:583 still refers to the old invalid monster (more detail on rgrn). Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-148}}
+| Unknown
+| {{/trackerstatus}}
+| Changing locations while asleep lets you see objects or read engravings.
+| I didn't reproduce the described bug, but I did discover that upon waking up the display is not properly updated until you move.
+|-
+! {{aa|C343-149}}
+| Info available
+| {{/trackerstatus|429}}
+| Polymorphed spellbooks don't behave as intended.
+| If the spell wasn't present in the spellcasting Z menu when you read the book, it is never blanked, regardless how many times it was already polymorphed.
+|-
+! {{aa|C343-150}}
+| Untested
+| {{/trackerstatus|430}}
+| Gender and/or size of some quest quest leaders and nemeses are wrong.
+| The following do not have a gender specified (in monst.c):  The Grand Master, The Arch Priest, The Minion of Huhetotl, Ixoth, Master Kaen, Nalzok, Scorpius, The Master Assassin, and the Dark One.  At least some of them should.  Also, the encyclopedia entries for Orion and for the Norn seem to imply they should be larger (currently they are sized as MZ_HUMAN).
+|-
+! {{aa|C343-151}}
+| Info available
+| {{/trackerstatus}}
+| Monsters can teleport to or be created outside of legal area in special levels.
+| Examples are xorns off the map in Sokoban or ghosts on the edge of the map of the Astral Plane.
+|-
+! {{aa|C343-152}}
+| Unknown
+| {{/trackerstatus}}
+| Using a cursed lamp while blind may give inappropriate messages.
+| Well, you can tell whether it's lit or not, but that seems intentional.
+|-
+! {{aa|C343-153}}
+| Confirmed
+| {{/trackerstatus|431}}
+| Player polymorphed into guardian naga spits the wrong kind of venom.
+| "Your venom burns the dog!"  (I guess this is acid.)  However, when a guardian naga attacks me, "The venom blinds you."
+|-
+! {{aa|C343-154}}
+| Partially Confirmed
+| {{/trackerstatus|432}}
+| Candles are fireproof.
+| Falling into lava does destroy them, but zapping with a wand of fire doesn't seem to (neither when they are in the player's possession nor when they are on the floor), nor falling into a fire trap (while holding them in open inventory).
+|-
+! {{aa|C343-155}}
+| Probably fixed
+| {{/trackerstatus}}
+| Proper names may be incorrectly preceeded by "the" when hallucinating.
+| Some of the capitalized entries in bogusmons should (and do) get the article ("The Ravenous Bugblatter Beast of Traal", "the Klingon", etc.), which is all very well, but others very clearly should not and yet currently do ("The Totoro", "The Barney the Dinosaur", "The Morgoth", "The Godzilla", "The Smokey the bear", "The King Kong").  The code needs a way to distinguish these two cases -- either two separate lists, or some kind of flag to indicate which ones that should not use "the". Allegedly fixed by Grunt; fix ported with fixups by Sean Hunt. Still not sure if it catches all cases.
+|-
+! {{aa|C343-156}}
+| Unsure
+| {{/trackerstatus}}
+| Reading scrolls may give redundant feedback messages.
+| Read cursed remove curse while confused: "As you read the scroll, it disappears." ... "The scroll disintegrates."
+|-
+! {{aa|C343-157}}
+| Untested
+| {{/trackerstatus|434}}
+| Worms don't have scales.
+| Because worms have M1_SLITHY, mbodypart uses snake_parts for them, but it should not.
+|-
+! {{aa|C343-158}}
+| Untested
+| {{/trackerstatus|434}}
+| Krakens have tentacles.
+| mbodypart needs to special-case them; it does not.
+|-
+! {{aa|C343-159}}
+| Fixed
+| {{/trackerstatus|434}}
+| Stalkers have a head.
+| mbodypart uses vortex_parts for all v and E, but stalkers should probably get humanoid_parts instead. Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-160}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Name "leather spellbook" is misleading.
+| Alex Smith
+|-
+! {{aa|C343-161}}
+| Fixed
+| {{/trackerstatus|moot}}
+| A scroll of charging that has disappeared may still show in the list of things to charge.
+| Fixed by Jared Minch.
+|-
+! {{aa|C343-162}}
+| Fix available
+| {{/trackerstatus|435}}
+| Using Magicbane may cause an ungrammatical message.
+| A player on NAO reports, "The magic-absorbing blade stuns Chops!  Chops are confused."  (Chops was a named monster encountered on a bones level.)  Have not yet tried to reproduce on NH4.  {{bilious|445}} has a patch for vanilla NetHack.
+|-
+! {{aa|C343-163}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Antholes are mispopulated under some conditions.
+| Fixed by Jared Minch
+|-
+! {{aa|C343-164}}
+| Untested
+| {{/trackerstatus}}
+| Cancelled nurses may give inappropriate messages.
+| Believed to be related to #chat, she'll say things like "Take off your shirt, please" even though she can't do use the "attack" around which those messages are flavored.
+|-
+! {{aa|C343-165}}
+| Info available
+| {{/trackerstatus}}
+| Scroll of mail can be abused slightly.
+| Perhaps this refers to the fact shopkeepers will eventually start charging for mail if you pick up enough of them.  Alternately, may refer to using the mail daemon on Astral to clear a path.
+|-
+! {{aa|C343-166}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Pits dug in vault guard's corridor don't get removed.
+| Fixed by Grunt; ported by Sean Hunt.
+|-
+! {{aa|C343-167}}
+| Unknown
+| {{/trackerstatus}}
+| Length of time swallowed is sometimes calculated incorrectly.
+| 
+|-
+! {{aa|C343-168}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Shattering a monster's weapon doesn't work right if the weapon is part of a stack of more than one.
+| Fixed by Jared Minch
+|-
+! {{aa|C343-169}}
+| Confirmed
+| {{/trackerstatus|436}}
+| Autopickup fails during a failed untrap attempt.
+| Player is involuntarily repositioned onto the trapped tile, but items there are not automatically picked up.
+|-
+! {{aa|C343-170}}
+| Info available
+| {{/trackerstatus}}
+| Damage by silver weapons is sometimes higher than intended when hero is polymorphed.
+| Perhaps this refers to the fact players hit multiple times with the same weapon if polymorphed into a form with several weapon attacks, e. g. Aleax or marilith.
+|-
+! {{aa|C343-171}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Silver weapon damage message is sometimes missing when hero is polymorphed.
+| Patric Muller
+|-
+! {{aa|C343-172}}
+| Fix available
+| {{/trackerstatus|437}}
+| Crash could occur when monster uses potion or food to cure stoning or confusion.
+| [https://github.com/chasonr/nethack-3.4.3-bugfix/commit/7da438e44d491aa6098ce75df65650521f166028 Patch for vanilla NetHack]
+|-
+! {{aa|C343-173}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Monster eating lizard corpse is not handled correctly.
+| jmminch says a monster eating a lizard corpse for confusion lost speed, but this is now fixed.
+|-
+! {{aa|C343-174}}
+| Untested
+| {{/trackerstatus}}
+| Drum of earthquake gives inappropriate message if hero or monster is in a pit.
+| If a monster is already in a pit, and the drum tries to create a pit there, then "<monster> falls into a chasm!" even though it was already in the pit.
+|-
+! {{aa|C343-175}}
+| Confirmed
+| {{/trackerstatus|438}}
+| Chatting to hostile prisoners may give an inappropriate message.
+| Description is off:  it's tame prisoners who have the problem.  They say, "Sorry, I'm all out of wishes."  (Hostile prisoners say, "This will teach you not to disturb me!")
+|-
+! {{aa|C343-176}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Disintegration breath hitting equipment carried by monsters is not handled properly; if the monster life-saves the situation is worse; saddles are especially troublesome.
+| "The invisible saddled ki-rin is not saddled." (Fixed by dthaler in 68795f405ba)
+|-
+! {{aa|C343-177}}
+| Unknown
+| {{/trackerstatus}}
+| First false rumor is displayed as gibberish on some platforms.
+| So far I've only built NetHack4 on Debian x86-64.
+|-
+! {{aa|C343-178}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Wisdom is mishandled when rumors are used for random graffiti.
+| getrumor() exercises or abuses wisdom, which doesn't really make sense when it's being used to generate random graffitti on the floor.
+|-
+! {{aa|C343-179}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If a monster is killed by a drawbridge while carrying a potion of acid, the game may panic.
+| Patric Muller
+|-
+! {{aa|C343-180}}
+| Unknown
+| {{/trackerstatus}}
+| In an obscure case on special levels, troll corpses may fail to revive and lizard corpses may revive.
+| 
+|-
+! {{aa|C343-181}}
+| Fixed
+| {{/trackerstatus|moot}}
+| The hero is welcomed to Delphi even if the Oracle was previously angered.
+| Fixed by Jared Minch
+|-
+! {{aa|C343-182}}
+| Mostly Fixed
+| {{/trackerstatus}}
+| Putting on the Eyes of the Overworld while blind gives an ungrammatical message.
+| "You are blasted by the pair of lenses' power! You are now wearing an Eyes of the Overworld. You can see!"  (This is fixed in savebreak.)  Also, the possessive form (the Eyes of the Overworld's), which shows up if you are blasted by their power when they are identified, is arguable.  (This is not changed in savebreak.)
+|-
+! {{aa|C343-183}}
+| Confirmed
+| {{/trackerstatus|439}}
+| Jumping over an already seen trap may give an ungrammatical message.
+| "You pass right over a anti-magic field."  The message is also semantically odd for a falling rock trap, due to the word "over".
+|-
+! {{aa|C343-184}}
+| Confirmed
+| {{/trackerstatus}}
+| Levitation via worn equipment is not implemented for monsters.
+| Tame barbed devil wears levitation boots but does not levitate as a result.
+|-
+! {{aa|C343-185}}
+| Unknown
+| {{/trackerstatus}}
+| No message is generated when attempting to name a monster that cannot be named by the player.
+| "The Oracle does not like being called names!"  Seems okay.  I must be missing something. Idea: what about calling your pet "Mr. Asidonhopo"?
+|-
+! {{aa|C343-186}}
+| Untested
+| {{/trackerstatus|440}}
+| Some messages referring to "priestess" say "priest."
+| uhitm.c hardcodes "The priest mutters a prayer."
+|-
+! {{aa|C343-187}}
+| Confirmed
+| {{/trackerstatus}}
+| Meditating monsters continue meditating when affected by something which wakes sleeping monsters.
+| For example, playing a leather drum does not awaken them.
+|-
+! {{aa|C343-188}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| Specifying role and/or race and an invalid alignment in NETHACKOPTIONS or config file causes a misleading message.
+| "Incompatible alignment."
+|-
+! {{aa|C343-189}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Temple donations and protection lost to gremlin attack interact incorrectly.
+| Patric Muller
+|-
+! {{aa|C343-190}}
+| Unknown
+| {{/trackerstatus}}
+| Monsters can hide while trapped or holding the hero.
+| 
+|-
+! {{aa|C343-191}}
+| Unsure
+| {{/trackerstatus}}
+| When an unseen monster forces a polymorphed hero out of hiding, feedback is insufficient.
+| May refer to the fact that the message when you fall from the ceiling (when polyselfed into a piercer) goes straight into the old messages without passing go or collecting two hundred dollars.  You can, however, see it with ^p. As best I can figure, this happens because you don't get a chance to move (which is probably by design; hostile piercers don't get a chance to move after falling either).
+|-
+! {{aa|C343-192}}
+| Incidentally fixed or moot.
+| {{/trackerstatus|moot}}
+| If invocation is performed while hero is trapped, hero remains trapped.
+| Bug cannot be triggered in NH4 because it is impossible to be trapped while standing on the vibrating square:  "You can't set a bear trap here." / "The floor here is too hard to dig."
+|-
+! {{aa|C343-193}}
+| Unknown
+| {{/trackerstatus}}
+| Polymorphed hero can fall into water once and crawl out twice.
+| 
+|-
+! {{aa|C343-194}}
+| Confirmed
+| {{/trackerstatus|443}}
+| Saving and restoring a game while punished and swallowed sometimes loses the ball and chain.
+| I read an uncursed scroll of punishment, tried to pick up ball but it burdened me, so I set it back down, then I got swallowed by a purple worm, saved, restored, and the ball and chain were gone.
+|-
+! {{aa|C343-195}}
+| Unknown
+| {{/trackerstatus}}
+| Glass wand thrown and broken in a shop is not charged for.
+| 
+|-
+! {{aa|C343-196}}
+| Untested
+| {{/trackerstatus|444}}
+| Wielded light source may get missed by rust trap.
+| According to Aardvark Joe, your lamp will go out if the water hits your body, but never if the water hits the arm wielding the lamp itself.
+|-
+! {{aa|C343-197}}
+| Confirmed
+| {{/trackerstatus|445}}
+| Attacking a hidden monster sensed via ongoing monster detection is interrupted inapropropriately.
+| "Wait!  There's a snake hiding under an uncursed pear!"  Yeah, I kind of knew that.
+|-
+! {{aa|C343-198}}
+| Incidentally fixed
+| {{/trackerstatus|moot}}
+| Playing in a 20 or 21 line window can cause the game to crash.
+| I'm guessing that this is fixed.  I made no attempt to reproduce it.
+|-
+! {{aa|C343-199}}
+| Moot
+| {{/trackerstatus|moot}}
+| The database entry for "monk" has a typo.
+| There should be a comma after the quotation.  Traditional typesetting would do this: "No," replied the monk.  Modern style (developed within the last thirty years) might put the comma outside the quote.  NH4 currently does not have this database entry, however.
+|-
+! {{aa|C343-200}}
+| Info available
+| {{/trackerstatus}}
+| In the quest, it's possible to accidently skip the locate level
+| e. g. by falling down a hole several levels.
+|-
+|}
+
+===C343-201 to C343-300===
+{| class="prettytable sortable striped"
+! Number
+! Status
+! Migrated
+! Description (3.4.3)
+! Additional notes
+|-
+! {{aa|C343-201}}
+| Unknown
+| {{/trackerstatus}}
+| Phrasing of message when one monster attacks another with stacked weapons is odd.
+| 
+|-
+! {{aa|C343-202}}
+| Confirmed
+| {{/trackerstatus|446}}
+| Pushing a boulder onto a level teleporter trap could cause repeated messages.
+| Happens about three times out of ten.  "You push the boulder and suddenly it disappears!  You push the boulder and suddenly it disappears!"  May be triggered when the levelport selects the level you and the boulder are currently on, and the code runs again to select a different destination.
+|-
+! {{aa|C343-203}}
+| Confirmed
+| {{/trackerstatus}}
+| Hero arriving on a very crowded level may land on a monster causing game state corruption and possibly a crash.
+| mnexto failed (do.c)?  Program in disorder - perhaps you'd better save.  rloc(): couldn't relocate monster Program in disorder - perhaps you'd better save.  (As of 2014 April 25, I can no longer reproduce this in savebreak.)
+|-
+! {{aa|C343-204}}
+| Confirmed
+| {{/trackerstatus|448}}
+| Hero grabbed or engulfed due to conflict should be released when conflict ends.
+| Not only are you not released, but it's not obvious how to get out without harming your pet.
+|-
+! {{aa|C343-205}}
+| Confirmed
+| {{/trackerstatus|449}}
+| Changes in hallucination state are not reflected properly when also mimicing.
+| "Oh wow!  Everything feels so cosmic!" ... "You return to human form!  Far out! Everything is all cosmic again!"  Again?  Update: the hiding is not relevant here; this bug can also be reproduced when polyselfing into other blind monsters, e.g., a gelatinous cube.
+|-
+! {{aa|C343-206}}
+| Unknown
+| {{/trackerstatus|476}}
+| Divine gifts resulting from #offer are identified when blind.
+| 
+|-
+! {{aa|C343-207}}
+| Unknown
+| {{/trackerstatus}}
+| Certain items that should never be created in Gehennom can be created there.
+| Most likely refers to spellbooks, although the circumstances are unknown. Possibly refers to objects generated in boxes/chests?
+|-
+! {{aa|C343-208}}
+| Unknown
+| {{/trackerstatus}}
+| Hero can be blinded while fainted.
+| "You faint from lack of food.  It explodes!  You seem unaffected by it.  You regain consciousness."  Perhaps the dev team intended it to wake and blind you?
+|-
+! {{aa|C343-209}}
+| Unlisted
+| {{/trackerstatus|moot}}
+| 
+| Was this number ever assigned?
+|-
+! {{aa|C343-210}}
+| Untested
+| {{/trackerstatus|450}}
+| Hero can "feel a bit steadier" while unconscious.
+| Aardvark Joe says, eat a bat corpse, then quaff a potion of sleeping.
+|-
+! {{aa|C343-211}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Engraving under water gives a poorly worded message.
+| Patric Muller
+|-
+! {{aa|C343-212}}
+| Unknown
+| {{/trackerstatus}}
+| If the hero is killed by a thrown potion of burning oil, the game will panic.
+| 
+|-
+! {{aa|C343-213}}
+| Fix available
+| {{/trackerstatus}}
+| Display of stinking cloud may be incorrect when wearing Eyes of the Overworld.
+| Believed to be fixed in GruntHack.
+|-
+! {{aa|C343-214}}
+| Unknown
+| {{/trackerstatus}}
+| Monster escaping by changing levels in the wizard tower may end up outside the tower too easily.
+|
+|-

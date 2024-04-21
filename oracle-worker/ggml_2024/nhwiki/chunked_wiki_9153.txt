@@ -1,0 +1,1000 @@
+ gender    : female       (originally female)
+ alignment : neutral      (originally neutral)
+ level     : 1 (exp: 0, 20 needed)
+ abilities : St:16 Dx:9 Co:13 In:14 Wi:13 Ch:8
+ naturally : St:16 Dx:9 Co:13 In:14 Wi:13 Ch:8
+ burden    : 201 (burdened at 776)
+ Deities
+ Chaotic   : Mars             
+ Neutral   : Venus             (s,c)
+ Lawful    : Mercury          
+ Other Information
+ i - Inventory
+ a - Intrinsic abilities
+ v - Vanquished creatures
+ c - Conducts followed
+ s - Score breakdown
+</div>
+In addition to the information in the screen in vanilla NetHack, it also shows [[attribute|ability scores]], stats about the player's [[encumbrance]] situation, [[experience points]] required to [[experience level|level up]], and is one method of gaining access to other information about the character as well ([[inventory]], [[intrinsic]]s, vanquished creatures, [[conducts]], and a breakdown of the player's [[score]]).  This screen is also used in AceHack's [[AceHack#Descendants|descendants]].
+
+==See also==
+* [[enlightenment]]
+<!--* An [[amulet of change]] or [[Polymorph#Polymorphing_from_human_to_human_etc.|polyself]] can change your gender.
+* [[helm of opposite alignment]], [[Altar#Danger_in_sacrificing]]-->
+[[Category:Commands]]
+{{nethack-343}}}
+&&%s&& %s Base Attributes {62805 2011-01-08T15:55:46Z {630 Paxed} #REDIRECT [[Base attributes]] #REDIRECT [[Base attributes]]}
+&&%s&& %s Paralyze {143469 2021-10-27T20:56:46Z {4001279 Umbire the Phantom}  On NetHack Wiki, "'''paralyze'''" may refer to any of the following:
+
+* The [[paralysis]] status affliction
+* A [[potion of paralysis]]
+* The [[Paralyze (monster spell)|paralyze]] [[monster spell]]
+
+{{disambig}}}
+&&%s&& %s Paralyzation {62839 2011-01-08T19:16:25Z {630 Paxed} #REDIRECT [[Paralyze]] #REDIRECT [[Paralyze]]}
+&&%s&& %s Paralysation {62840 2011-01-08T19:17:07Z {630 Paxed} #REDIRECT [[Paralyze]] #REDIRECT [[Paralyze]]}
+&&%s&& %s Puppy {62849 2011-01-08T19:40:56Z {4000066 Usethe4ce} redirect to [[Dog#Little_dog|Dog]] #REDIRECT [[Dog#Little_dog]]
+[[Category:Monsters]]}
+&&%s&& %s Attacking {62904 2011-01-08T22:16:20Z {630 Paxed} #REDIRECT [[Combat]] #REDIRECT [[Combat]]}
+&&%s&& %s Diet {148485 2022-10-05T00:48:42Z {4001279 Umbire the Phantom} de-SLEX The '''diet''' of a monster describes which types of things it will eat. 
+
+Every monster, including yourself, is restricted to eating only certain [[material]]s. Solid foods that are edible to your starting character are generally classified as [[comestible]]s, but if you [[polymorph]] into a different type of monster, you may find yourself snacking on such things as shirts or wands. Further, many types of monsters have strong innate preferences with regard to meats and vegetable matter. 
+
+==Your diet==
+
+You, as a monster endowed with free will, are restricted only by your physical capacity to consume. Still, your diet is determined by what you are. Most character types are omnivores, although [[monk]]s are effectively herbivores, suffering an alignment penalty for eating non-vegetarian food. Being a carnivore or herbivore (or even inediate) does not restrict your ability to eat, but does make the respective food types more delicious. 
+
+You are the only creature that can open a [[tin]] of food. You can also quaff any form of [[Foodless#Restoring nutrition|liquid nourishment]], provided you are capable of drinking. When [[polymorph]]ed into a new type of monster, you can eat whatever that monster type can eat, in addition to the usual [[comestibles]]. Note, however, that being ''capable'' of eating something does not mean that you ''should'' eat it; eating a dead [[cockatrice]] by mistake has ended many a game, and eating your own race carries the penalties of [[cannibalism]]. 
+
+Three [[conducts]] tracked by the game entail ''voluntarily'' restricting your diet: vegetarian, vegan, and [[foodless]]. 
+
+==Pets==
+
+Most types of monsters eat only when [[tameness|tame]], i.e., your [[pet]]s; the exceptions are metallivores and other unique diets, which largely avoid safe comestibles. A pet encountering something it is capable of eating will decide whether to eat it according to its dietary preference and its degree of [[nutrition|hunger]], with due care to avoid harmful meals. A pet [[cat]], for example, will eat a banana only when starving. Diet also determines which foods will tame a [[domestic animal]] and which foods a pet considers a [[treat]]. Thus it is helpful to be aware of the diets of your [[pet]]s or potential pets you want to [[tame]] (that pony wants an apple, not a yucky tripe ration!), besides watching out for monsters that might go after your treasures (a rock mole ate my gold stash!). 
+
+Most [[pet]]s must continually eat to stave off [[Nutrition#Nutrition_and_pets|starvation]]. Besides a normal state of contentment, a pet has two degrees of hunger. ''Hungry'' is what a [[stethoscope]] and #[[chat]]ting indicate. ''Starving'' means the pet "is confused from hunger" or "you feel worried about" it, and implies the pet's maximum hit points are reduced to 25%. Beyond that, it will cease to be your pet, either dying or, if on another level, becoming [[tameness|hostile]]. 
+
+Pets react differently to various [[food]]s according to how appealing they find it. From best to worst, the grades of food are as follows.<ref>[[Source:edog.h#line10]] for definition of food grades</ref><ref>[[Source:dog.c#dogfood]] for food classification</ref>
+
+{|class="prettytable"
+!Food&nbsp;grade
+!Internal&nbsp;name
+!Effect
+|-
+|'''treat'''
+|DOGFOOD
+|A delicious [[treat]] suitable for [[apport|training]].{{refsrc|dogmove.c|170}} Will make pets follow more closely.{{refsrc|dogmove.c|427}}. Pets will "catch" it, which is purely cosmetic.{{refsrc|dog.c|780}}
+|-
+|'''good'''
+|CADAVER
+|Will be eaten happily.<ref>{{sourcecode|dogmove.c|297}} and {{sourcecode|dogmove.c|675}}</ref>
+|-
+|'''hungry'''
+|ACCFOOD
+|Will be eaten if hungry,<ref>{{sourcecode|dogmove.c|675}} {{sourcecode|dog.c|780}}, {{sourcecode|dothrow.c|1382}}</ref> but the pet will seek it out only if starving.{{refsrc|dogmove.c|297}} (Try throwing the food at the pet.) The minimum food grade needed for taming.{{refsrc|dog.c|808}} The worst quality food that will to suppress the message "[[Foo]] moves only reluctantly."{{refsrc|dogmove.c|377}}
+|-
+|starving
+|MANFOOD (ACCFOOD when starving)
+|Will be eaten only if starving.<ref>[[Source:dog.c#dogfood]] technically reclassifies some of it as ACCFOOD when starving.</ref> Otherwise, the pet wants to apport the food.{{refsrc|dogmove.c|377}}
+|-
+|''inedible''
+|MANFOOD, APPORT, POISON, UNDEF, TABU<!--Yes, MANFOOD features twice because dogfood reclassifies only some items when starving.-->
+|Will be left untouched even while the poor creature starves to death.
+|}
+
+Untame [[domestic animal]]s (dogs, cats, and horses) will not eat spontaneously but will react favorably to food you throw at them (apart from eggs, melons, and cream pies that hit their target and splat 99% of the time). If the food is considered grade "hungry" or better, the animal will eat it and become [[tame]]; this is an easy way to [[Pet#New_pets|acquire pets]]. Any other [[comestible]] will not be eaten but will [[peaceful|pacify]] the animal and remove any [[fear]] effects.<ref>{{sourcecode|dothrow.c|1383}} (see also definition of befriend_with_obj at {{sourcecode|mondata.h|190}})</ref><ref>{{sourcecode|dog.c|756}}: "worst case, at least it'll be peaceful" (see also {{function|dog.c|dogfood|x}} above)</ref> 
+
+Carnivores and herbivores evaluate food in very different ways, tabulated below. The obvious trend to bear in mind is that carnivores prefer meats and herbivores prefer vegetable matter. Omnivores generally apply the more favorable grade out of both. 
+
+{|class="prettytable"
+!Food
+!Carnivores
+!Herbivores
+|-
+|[[tripe ration]], or meat [[meat ring|ring]]/[[meat stick|stick]]/[[meatball|ball]]/[[huge chunk of meat|chunk]]
+|'''treat'''
+|''inedible''
+|-
+|safe [[egg]] (do not throw!)
+|'''good'''
+|''inedible''
+|-
+|safe [[corpse]], non-vegan
+|'''good'''
+|''inedible''
+|-
+|safe [[corpse]], [[vegan]]
+|''inedible''
+|'''good'''
+|-
+|[[apple]], [[carrot]]
+|starving
+|'''treat'''
+|-
+|non-vegan people food:
+*[[lump of royal jelly]]
+*[[cream pie]] (do not throw!)
+*[[candy bar]]
+*[[fortune cookie]]
+*[[pancake]]
+*[[lembas wafer]]
+*[[food ration|food]]/[[cram ration|cram]]/[[K-ration|K]]-/[[C-ration|C]]-ration
+|'''hungry'''
+|starving
+|-
+|other [[vegan]] [[comestibles]]:
+*[[kelp frond]]
+*[[eucalyptus leaf]]
+*[[orange]]
+*[[pear]]
+*[[melon]]
+*[[sprig of wolfsbane]]
+*[[clove of garlic]]
+*[[slime mold]]
+*[[banana]] ('''treat''' for any [[apelike creature]])
+|starving
+|'''hungry'''
+|-
+|[[tin]]
+|''inedible''
+|''inedible''
+|-
+|harmful [[corpse]] unless resistant:
+*[[acid]]ic
+*[[poison]]ous
+*[[petrify]]ing (including [[cockatrice]] eggs)
+*old (&ge;50 turns, except lizards and lichens)
+*[[Rider]]s
+|''inedible''
+|''inedible''
+|}
+
+== Types of diet ==
+
+=== Omnivore ===
+
+Most [[humanoid]] monsters, including yourself initially, are [[omnivore]]s. This diet is essentially a combination of [[carnivore]] and [[herbivore]]. 
+
+=== Carnivore ===
+
+[[Carnivore]]s are monsters that (when [[tame]]d) prefer to eat meat. [[Tripe]] and meat created with [[stone to flesh]] are considered [[treat]]s. They will eat any safe [[corpse]]s and [[egg]]s that they find on the ground. They will eat "people food" such as [[food ration]]s, [[pancake]]s, or [[fortune cookie]]s if they are hungry and [[vegetarian]] food such as [[fruit]] and [[melon]]s if starving. They will not eat [[vegan]] corpses such as [[mold]] or [[lichen]]s, nor will they eat [[tin]]s.
+
+=== Herbivore ===
+
+[[Herbivore]]s are monsters that (when [[tame]]d) prefer to eat vegetable matter such as [[fruit]], vegetables, [[fungus|fungi]], and other plants. [[Apple]]s and [[carrot]]s are considered [[treat]]s. They will eat safe [[vegan]] [[corpse]]s such as [[lichen]]s, [[mold]], [[shrieker]]s, [[blob]]s, and [[jelly|jellies]] if they find them lying on the ground. They will also eat [[melon]]s, [[orange]]s, [[pear]]s, [[wolfsbane]], [[garlic]], [[kelp frond]]s, and so on, but only when hungry. If they are very hungry, they will eat some people food like [[food ration]]s, [[pancake]]s, and [[lembas]]. They will never eat meat products, meaty corpses, [[egg]]s, or [[tin]]s.
+
+=== Metallivore ===
+
+[[Metallivore]]s subsist on [[metal]]s, including not only metallic weapons and armor but also rings, amulets, and wands made of metal. In fact, a useful strategy is to [[polymorph]] into a metallivore to gain [[intrinsics]] by [[eating jewelry]]. They also eat tins of food, biting right through the tasty metal. Non-rustproof [[iron]] objects are considered [[treat]]s. Unlike [[xorn]]s and [[rock mole]]s, [[rust monster]]s are restricted to the one metal that can rust, [[iron]].
+
+Metallivorous monsters and players do not get hungry (unless they also eat meat or vegetables), but ring and amulet hunger still apply.
+
+=== Inediate ===
+
+[[Inediate]] monsters do not need to eat any kind of food to stay alive, and cannot eat anything. Most monsters that are [[undead]], [[demon]]ic, [[Angelic being|angelic]], or otherwise magical in nature are inediate. 
+
+=== Special cases ===
+Several monsters have unique diets.
+* {{monsymlink|Gelatinous cube}}s eat [[wood]], [[leather]], and [[cloth]], and engulf most everything else.
+* {{monsymlink|Mind flayer}}s eat the brains out of living monsters.
+* {{monsymlink|Umber hulk}}s can chew through [[solid rock]], which gives them nutrition.  They cannot, however, eat items made of rock ([[mineral]], as it is called in-game).
+* {{monsymlink|Ghoul}}s eat only [[Food poisoning|old]] corpses.
+
+None of these monsters need to eat to stay alive.
+
+=== Internals ===
+Internally, the diet of a monster type is indicated by the flags M1_CARNIVORE and M1_HERBIVORE; both flags are set for an omnivore, and neither is set for inediates. The M1_METALLIVORE flag denotes a metallivore. Interestingly, a monster with M1_METALLIVORE but not M1_CARNIVORE or M1_HERBIVORE is considered inediate for in-game purposes.
+
+==SlashTHEM==
+[[SlashTHEM]] features [[lithivore|lithivorous]] monsters. Lithivores subsist on [[stone]]s&mdash;not only rocks and gems, but also any other items made of [[mineral]], [[bone]], [[gemstone]], or [[glass]]. [[Polymorph]]ing into a lithivore allows the player to gain [[intrinsics]] by [[eating jewelry]]. Lithic objects are considered [[treat]]s for lithivores.
+
+== See also ==
+* [[Comestible]]s
+* [[Nutrition]]
+* [[Treat]]s
+* [[Domestic animal]]s
+
+== References ==
+<references />
+
+[[Category:Monster attributes]]
+{{nethack-343}}}
+&&%s&& %s Points {62932 2011-01-09T10:02:29Z {630 Paxed} #REDIRECT [[score]] #REDIRECT [[score]]}
+&&%s&& %s The door swings shut, and locks! {62964 2011-01-09T20:11:44Z {630 Paxed} #REDIRECT [[Wizard lock]] #REDIRECT [[Wizard lock]]}
+&&%s&& %s Template:Lightradius {72484 2011-08-25T12:00:46Z {831 Tjr} Unprotected "[[Template:Lightradius]]": end of testing <noinclude>
+This template shows a radius of light around a light source.
+
+Uses the following named parameters:
+*<tt>r</tt>, radius of the light. defaults to 4
+*<tt>origin</tt>, the center of the light. defaults to {{white|@}}
+*<tt>inside</tt>, area in the radius. defaults to {{yellow|x}}
+*<tt>outside</tt>, area outside the radius. defaults to {{lightgray|.}}
+
+For example: <nowiki>{{lightradius|r=3}}</nowiki> or <nowiki>{{lightradius|r=3|inside={{lightblue|e}}}}</nowiki>
+
+4:
+</noinclude><div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+.={{{outside|{{lightgray|.}}}}}
+0={{{origin|{{white|@}}}}}
+default={{#ifexpr:{{{r|4}}}>=$1|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+
+...55555...
+..5444445..
+.544333445.
+54432223445
+54321112345
+54321012345
+54321112345
+54432223445
+.544333445.
+..5444445..
+...55555...
+</replacecharsblock>
+</div><noinclude>
+3:
+{{lightradius|r=3}}
+2:
+{{lightradius|r=2}}
+1:
+{{lightradius|r=1}}
+Other params:
+{{lightradius|r=3|origin={{yellow|H}}|inside={{red|~}}|outside={{cyan|.}}}}
+
+
+== See also ==
+* {{tl|circleradius9}} (same as this template, but goes up to 9)
+* {{tl|circleradius15}} (same as this template, but goes up to 15)
+* {{tl|jumpradius}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Inventory letter {63032 2011-01-10T19:26:48Z {831 Tjr} Redirected page to [[Adjust]] #redirect [[adjust]]}
+&&%s&& %s Statue trap {148775 2022-10-10T11:19:05Z {4001279 Umbire the Phantom} /* dNetHack */* {{trap
+ |name=statue trap
+ |color=white
+ |glyph=`
+ |generation=level 8+
+ |effect=Statue on its space comes to life
+}}
+
+A '''statue trap''' is a type of [[trap]] that appears in ''[[NetHack]]''. They resemble normal [[statue]]s, but will spring to life if you disturb them or step on their square.
+
+==Generation==
+Trap statues contain the [[monster starting inventory|inventory a monster normally starts with]]. Unlike ordinary statues, they cannot contain [[spellbook]]s. Randomly generated trap statues are extremely unlikely to depict a co-aligned [[unicorn]].{{refsrc|src/trap.c|373|version=NetHack 3.6.6}}
+
+Three statue traps appear on the [[Archeologist quest]] locate level, and two appear on the [[Wizard quest]] locate level.
+
+{{upcoming|NetHack 3.7.0|The statuary from [[UnNetHack]] appears as a possible themed room, and contains 1-3 statue traps.}}
+
+==Effects==
+When you walk on the trap, it will transform the topmost statue on that square into the monster it depicts.{{refsrc|src/trap.c|1398|version=NetHack 3.6.6}}{{refsrc|src/trap.c|749|version=NetHack 3.6.6}} The statue trap will activate if you [[search]] while on a square next to it, and will also activate in response to applying a [[pick-axe]], zapping a {{spell of|force bolt}} or zapping a [[wand of striking]]. Monsters will never set off these traps.{{refsrc|src/trap.c|2584|version=NetHack 3.6.6}}
+
+Though this animation works similarly to the {{spell of|stone to flesh}} spell, using the spell itself will not activate the trap, and it is treated as a normal statue - the spell will reanimate the statue if the monster was fleshy, and will otherwise turn it into a [[meatball]].
+
+Applying a [[stethoscope]] as a [[Healer]] will give a distinct message without activating the trap.{{refsrc|src/apply.c|283|version=NetHack 3.6.6|name=statuetrap}}
+
+==Removal==
+Statue traps are removed if you activate them or else remove the statue in some way - note that as described above, the usual methods of breaking a statue will only activate it instead. If possible, you can carry over a lighter statue of a weaker monster to throw onto the trap - as the statue trap animates the topmost statue on the pile, the old one will be inanimate once it activates.  You can also zap a [[wand of teleportation]] to move the statue elsewhere, or else zap a [[wand of polymorph]] to turn it into a weaker statue or perhaps even a [[boulder]].
+
+==Strategy==
+It is a good idea to [[far look]] at any statue you see, especially those that are out of place in your current area - a random statue in the Mines is very likely to be either a statue trap or a product of a [[bones]] file. Avoid stepping on the squares of any statues that depict monsters you would rather not fight, and do not come within a square of such statues if you have [[automatic searching]].
+
+Throwing a statue onto the trap can also provide an unorthodox means to revive a petrified pet, e.g. for [[illiterate]] [[conduct]] play.
+
+==Messages==
+{{message|The <monster> appears to be in extraordinary health for a statue.|As above, but you are a Healer and the statue is on a statue trap.<ref name="statuetrap"/>}}
+{{message|Instead of shattering, the statue of a <monster> suddenly comes to life!|You tried to destroy a statue, but it was actually a statue trap.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], one of the Lawful Quest obstacles is a statue trap of an [[arch-lich]] placed in the middle of a swampy room, with a cursed -9 set of gray dragon scales on the same space. The arch-lich's inventory has wands of {{wand of|fireball|create horde|speed monster|and=1|make invisible}}, all of which have one charge each save for the wand of fireball; it also contains a [[cockatrice]] [[corpse]] and a cursed -1 pair of [[leather gloves]].
+
+===UnNetHack===
+In [[UnNetHack]], there are two [[Random vault (UnNetHack)|random vaults]] that can generate with statue traps: the statuary is a room full of statues that may contain up to three trapped statues (with each one having a 50% chance of generating), while the "Ozymandias' Tomb" vault has two statue traps of an [[Elvenking]] and a [[werejackal]] next to a [[throne]].
+
+===dNetHack===
+In [[dNetHack]], the [[Law quest (dNethack)|Law quest]] has several statue traps at the top of the Arcadian Tower where [[Oona]] resides. All the statues in the room except the [[djinni]] are trapped and have heavily-enchanted gear inside - the djinni statue is untrapped and named "Qadeej, of the Wind Dukes of Aaqa", and contains [[The Rod of Seven Parts]].
+
+The palace of [[Demogorgon]] in [[User:Chris/dNetHack/Branches/Brine Flats#Demogorgon's palace|the Brine Flats]] has a trapped statue of [[Shaktari]].
+
+===EvilHack===
+In EvilHack, the statuary can appear as a special room, and is the same as in UnNetHack.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Traps]]}
+&&%s&& %s Template talk:Lightradius {63065 2011-01-11T06:59:43Z {630 Paxed} /* radius=5 is shown as 4 */ for radius=9, template needs changes. ==radius=5 is shown as 4==
+See [[Spellbook_of_light]].
+
+What about lit radius 9, lit radius 5, dark radius 5 for the scroll of light? --[[User:Tjr|Tjr]] 00:41, 11 January 2011 (UTC)
+:Fixed for lit radius 5 only. --[[User:Tjr|Tjr]] 00:48, 11 January 2011 (UTC)
+::I think the template should be changed a bit in the case of radius 9 etc. Would be a bit excessive having a huge area displayed for eg. radius 1. --[[User:Paxed|paxed]] 06:59, 11 January 2011 (UTC)
+
+==Similar template for non-light uses?==
+Could we have a similar template for other area effects, such as where a [[wand of secret door detection]] works and where you can [[jump]] to? --[[User:Tjr|Tjr]] 00:39, 11 January 2011 (UTC)
+
+:Here you go: {{tl|jumpradius}}.  For /oSDD, I ''think'' this is correct:
+<div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+.={{lightgray|.}}
+x={{lightgray|x}}
+@={{white|@}}
+
+...................
+.......xxxxx.......
+.....xxxxxxxxx.....
+...xxxxxxxxxxxxx...
+...xxxxxxxxxxxxx...
+..xxxxxxxxxxxxxxx..
+..xxxxxxxxxxxxxxx..
+.xxxxxxxxxxxxxxxxx.
+.xxxxxxxxxxxxxxxxx.
+.xxxxxxxx@xxxxxxxx.
+.xxxxxxxxxxxxxxxxx.
+.xxxxxxxxxxxxxxxxx.
+..xxxxxxxxxxxxxxx..
+..xxxxxxxxxxxxxxx..
+...xxxxxxxxxxxxx...
+...xxxxxxxxxxxxx...
+.....xxxxxxxxx.....
+.......xxxxx.......
+...................
+</replacecharsblock>
+</div>
+:--[[User:Ilmari Karonen|Ilmari Karonen]] 01:59, 11 January 2011 (UTC)}
+&&%s&& %s Template:Jumpradius {64229 2011-01-30T11:15:01Z {630 Paxed} cat sort key <noinclude>
+This templates shows the squares reachable using various levels of the [[spellbook of jumping|jumping spell]] and other methods of [[jumping]].
+
+'''Usage:''' <nowiki>{{jumpradius|</nowiki>skill=''n''<nowiki>}}</nowiki>
+
+
+Uses the following named parameters:
+*<tt>skill</tt>, jumping skill level. 0=knight.
+*<tt>origin</tt>, the center of the light. defaults to {{white|@}}
+*<tt>inside</tt>, area in the radius. defaults to {{brightblue|x}}
+*<tt>outside</tt>, area outside the radius. defaults to {{lightgray|.}}
+
+== Examples ==
+0 = [[Knight]]:
+{{jumpradius|skill=0}}
+1 = Unskilled / [[jumping boots]]:
+</noinclude><div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+.={{{outside|{{lightgray|.}}}}}
+@={{{origin|{{white|@}}}}}
+default={{#ifexpr:{{{skill|1}}}>=$1|{{{inside|{{brightblue|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+
+...........
+....444....
+..4321234..
+..3101013..
+.420111024.
+.4111@1114.
+.420111024.
+..3101013..
+..4321234..
+....444....
+...........
+</replacecharsblock>
+</div><noinclude>
+2 = Basic:
+{{jumpradius|skill=2}}
+3 = Skilled:
+{{jumpradius|skill=3}}
+4 = Expert:
+{{jumpradius|skill=4}}
+
+== See also ==
+* {{tl|lightradius}}
+* {{tl|circleradius9}}
+* {{tl|circleradius15}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:Circleradius15 {64224 2011-01-30T11:05:46Z {630 Paxed} cat sort key <div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+.={{{outside|{{lightgray|.}}}}}
+0={{{origin|{{white|@}}}}}
+A={{#ifexpr:{{{r|15}}}>=10|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+B={{#ifexpr:{{{r|15}}}>=11|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+C={{#ifexpr:{{{r|15}}}>=12|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+D={{#ifexpr:{{{r|15}}}>=13|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+E={{#ifexpr:{{{r|15}}}>=14|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+F={{#ifexpr:{{{r|15}}}>=15|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+default={{#ifexpr:{{{r|15}}}>=$1|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+
+............FFFFFFF............
+.........FFFEEEEEEEFFF.........
+.......FFEEEDDDDDDDEEEFF.......
+......FEEDDDCCCCCCCDDDEEF......
+.....FEEDDCCBBBBBBBCCDDEEF.....
+....FEDDCCBBAAAAAAABBCCDDEF....
+...FEDDCBBAA9999999AABBCDDEF...
+..FEEDCBBA99988888999ABBCDEEF..
+..FEDCBBA9988777778899ABBCDEF..
+.FEDDCBA988776666677889ABCDDEF.
+.FEDCBA99876655555667899ABCDEF.
+.FEDCBA98766544444566789ABCDEF.
+FEDCBA9987654433344567899ABCDEF
+FEDCBA9876544322234456789ABCDEF
+FEDCBA9876543211123456789ABCDEF
+FEDCBA9876543210123456789ABCDEF
+FEDCBA9876543211123456789ABCDEF
+FEDCBA9876544322234456789ABCDEF
+FEDCBA9987654433344567899ABCDEF
+.FEDCBA98766544444566789ABCDEF.
+.FEDCBA99876655555667899ABCDEF.
+.FEDDCBA988776666677889ABCDDEF.
+..FEDCBBA9988777778899ABBCDEF..
+..FEEDCBBA99988888999ABBCDEEF..
+...FEDDCBBAA9999999AABBCDDEF...
+....FEDDCCBBAAAAAAABBCCDDEF....
+.....FEEDDCCBBBBBBBCCDDEEF.....
+......FEEDDDCCCCCCCDDDEEF......
+.......FFEEEDDDDDDDEEEFF.......
+.........FFFEEEEEEEFFF.........
+............FFFFFFF............
+</replacecharsblock>
+</div><noinclude>
+
+This template displays circles of radius up to 15 centered on the {{white|@}}, as tabulated in [[Source:vision.c#Circles|vision.c]].
+
+'''Usage:''' <nowiki>{{circleradius15|</nowiki>r=''radius''}}
+
+Uses the following named parameters:
+*<tt>r</tt>, radius of the light.
+*<tt>origin</tt>, the center of the light. defaults to {{white|@}}
+*<tt>inside</tt>, area in the radius. defaults to {{yellow|x}}
+*<tt>outside</tt>, area outside the radius. defaults to {{lightgray|.}}
+
+
+(Note: The formula used for the circles appears to be ''dx''<sup>2</sup> + ''dy''<sup>2</sup> ≤ ''r''<sup>2</sup> + ''r'', as it matches the precalculated tables in vision.c.)
+
+== See also ==
+* {{tl|lightradius}} (same as this template, but only goes up to 5)
+* {{tl|circleradius9}} (same as this template, but only goes up to 9)
+* {{tl|jumpradius}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Liquor store {63079 2011-01-11T20:52:25Z {630 Paxed} redirect #REDIRECT [[Shop#Table of shops]]}
+&&%s&& %s Scrolls of scare monster {63139 2011-01-12T14:03:49Z {831 Tjr} Redirected page to [[Scroll of scare monster]] #redirect [[scroll of scare monster]]}
+&&%s&& %s Worthless pieces of glass {63148 2011-01-12T14:29:24Z {831 Tjr} Redirected page to [[Gem]] #redirect [[Gem]]}
+&&%s&& %s MSGTYPE {124020 2018-09-18T17:12:40Z {4000693 Phol ende wodan} Rewrites for 3.6.1: is now an official option, fix up examples and organize into sections '''MSGTYPE''' is an [[option]] introduced in [[NetHack 3.6.0]] which adds configuration [[option]]s allowing the user to change how messages are displayed. For specific messages, it can force a <tt>--More--</tt> prompt, prevent messages from printing repeatedly, or prevent unimportant messages from printing at all.
+
+Prior to 3.6.0, it existed as a [[patch]] against [[NetHack 3.4.3]]. [http://bilious.alt.org/?397 You can get it as a patch here.]
+
+== Format ==
+The format is
+ MSGTYPE=foo "string to match"
+Where "foo" is one of "hide", "stop" or "norep", and the string to match is a message to be matched. Regular expressions are supported.
+
+*"hide" hides the message, so it's never shown.
+*"stop" always prompts for <tt>--More--</tt> after the message.
+*"norep" shows the message, but not again if no other message is shown in between.
+*"show" shows the message, each time. This is the default, and probably never needs to be explicitly configured.
+
+When multiple string expressions match a message, the last matching rule is used. Thus, put the general cases first, and exceptions below.
+
+== Uses ==
+MSGTYPE can be used to:
+* call attention to delayed instadeaths.
+* kill typeahead in dangerous or conduct-wrecking situations.
+* focus attention on the important parts of battle by removing the less serious "spam".
+* reduce the amount of spaces you need to type for common actions.
+* ignore functionally useless common messages.
+<!-- "automatic Elbereth spellchecker" used to be on this list but I wasn't able to find an example of how this could be done -->
+
+You might want different configurations for different stages of the game.
+
+== Examples ==
+ # displacing pets
+ MSGTYPE=hide "You swap places with .*"
+ 
+ # unclogging the screen
+ MSGTYPE=hide "Your tentacles suck the .*"
+ 
+ # items on floor
+ MSGTYPE=norep "You see here a.*"
+ 
+ # delayed instadeaths
+ MSGTYPE=stop "The .* (grabs|swings itself around) you!"
+ MSGTYPE=stop "You don't feel very well."
+ MSGTYPE=stop "You are turning a little green."
+ MSGTYPE=stop "Your limbs are getting oozy."
+ MSGTYPE=stop "Your skin begins to peel away."
+ MSGTYPE=stop "You are turning into a green slime."
+ MSGTYPE=stop "You are slowing down."
+ MSGTYPE=stop "Your limbs are stiffening."
+ MSGTYPE=stop "It constricts your throat!"
+ MSGTYPE=stop "You find it hard to breathe."
+ MSGTYPE=stop "You're gasping for air."
+ MSGTYPE=stop "Your blood is having trouble reaching your brain."
+ MSGTYPE=stop "You can no longer breathe."
+ MSGTYPE=stop "You're turning blue."
+ MSGTYPE=stop "Your consciousness is fading."
+ MSGTYPE=stop "You feel deathly sick."
+ MSGTYPE=stop "You feel (much|even) worse."
+ 
+ # Things that aren't dangerous by themselves but could kill you if you don't notice.
+ MSGTYPE=stop "You fail to cast the spell correctly."
+ MSGTYPE=stop "You see here a c(hi|o)ckatrice corpse." 
+ MSGTYPE=stop "You are beginning to feel weak."
+ 
+ # Don't speed past wrest message when wresting
+ MSGTYPE=stop "You wrest .*"
+ 
+ # Don't miss the vibrating square
+ MSGTYPE=stop "You feel a strange vibration under your *."
+ MSGTYPE=stop "You feel a strange vibration beneath you."
+
+[[Category:Options]]
+{{nethack-361}}}
+&&%s&& %s Msgtype {63165 2011-01-12T15:42:13Z {630 Paxed} #REDIRECT [[MSGTYPE]] #REDIRECT [[MSGTYPE]]}
+&&%s&& %s Template:Circleradius9 {64227 2011-01-30T11:12:03Z {630 Paxed} cat sort key <div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+.={{{outside|{{lightgray|.}}}}}
+0={{{origin|{{white|@}}}}}
+A={{#ifexpr:{{{r|9}}}>=10|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+B={{#ifexpr:{{{r|9}}}>=11|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+C={{#ifexpr:{{{r|9}}}>=12|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+D={{#ifexpr:{{{r|9}}}>=13|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+E={{#ifexpr:{{{r|9}}}>=14|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+F={{#ifexpr:{{{r|9}}}>=15|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+default={{#ifexpr:{{{r|15}}}>=$1|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+
+DCBBAA9999999AABBCD
+CBBA99988888999ABBC
+BBA9988777778899ABB
+BA988776666677889AB
+A99876655555667899A
+A98766544444566789A
+9987654433344567899
+9876544322234456789
+9876543211123456789
+9876543210123456789
+9876543211123456789
+9876544322234456789
+9987654433344567899
+A98766544444566789A
+A99876655555667899A
+BA988776666677889AB
+BBA9988777778899ABB
+CBBA99988888999ABBC
+DCBBAA9999999AABBCD
+</replacecharsblock>
+</div><noinclude>
+
+This template displays circles of radius up to 9 centered on the {{white|@}}, as tabulated in [[Source:vision.c#Circles|vision.c]].
+
+'''Usage:''' <nowiki>{{circleradius9|</nowiki>r=''radius''}}
+
+Uses the following named parameters:
+*<tt>r</tt>, radius of the light.
+*<tt>origin</tt>, the center of the light. defaults to {{white|@}}
+*<tt>inside</tt>, area in the radius. defaults to {{yellow|x}}
+*<tt>outside</tt>, area outside the radius. defaults to {{lightgray|.}}
+
+(Note: The formula used for the circles appears to be ''dx''<sup>2</sup> + ''dy''<sup>2</sup> ≤ ''r''<sup>2</sup> + ''r'', as it matches the precalculated tables in vision.c.)
+
+== See also ==
+* {{tl|circleradius15}} (same as this template, but goes up to 15)
+* {{tl|lightradius}} (same as this template, but only goes up to 5)
+* {{tl|jumpradius}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:Caption {81700 2012-11-25T20:10:47Z {630 Paxed} show the example <onlyinclude><includeonly><div class="caption"><div class="captioninner">{{{1}}}<div class="captiontext">{{{2}}}</div></div></div></includeonly></onlyinclude>
+
+{{caption|{{lightradius|r=4}}|Light source, radius 4}}
+
+<nowiki>{{caption|{{lightradius|r=4}}|Light source, radius 4}}</nowiki>
+
+
+You probably want to use this with [[Template:Float left]] or [[Template:Float right]].
+
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Indirect identification {63456 2011-01-15T10:38:43Z {831 Tjr} Redirected page to [[Identification#Passive identification]] #redirect [[Identification#Passive_identification]]}
+&&%s&& %s Use testing {63457 2011-01-15T10:38:50Z {831 Tjr} Redirected page to [[Identification#Passive identification]] #redirect [[Identification#Passive_identification]]}
+&&%s&& %s Template:Float right {140692 2021-06-03T19:49:23Z {630 Paxed} link to centered template <includeonly><div class="floatright" style="float:right; clear:right;">{{{1}}}</div></includeonly><noinclude>
+
+This template floats text right.
+ <nowiki>{{float right|This text is floated.}}</nowiki>
+
+{{float right|This text is floated.}}
+
+This text is not floated.
+
+
+See also [[Template:Float left]], [[Template:Centered]]
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Template:Float left {140693 2021-06-03T19:49:46Z {630 Paxed} link to centered template <includeonly><div class="floatleft" style="float:left; clear:left;">{{{1}}}</div></includeonly><noinclude>
+
+This template floats text left.
+ <nowiki>{{float left|This text is floated.}}</nowiki>
+
+{{float left|This text is floated.}}
+
+This text is not floated.
+
+
+See also [[Template:Float right]], [[Template:Centered]]
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Template:Roles {64215 2011-01-30T11:00:33Z {630 Paxed} cat sort key <includeonly>{{#switch:{{{1|0}}}
+|0=[[Archeologist]] - [[Barbarian]] - [[Caveman]] - [[Healer]] - [[Knight]] - [[Priest]] - [[Monk]] - [[Ranger]] - [[Rogue]] - [[Samurai]] - [[Tourist]] - [[Valkyrie]] - [[Wizard]]
+|1=[[Arc]] - [[Bar]] - [[Cav]] - [[Hea]] - [[Kni]] - [[Pri]] - [[Mon]] - [[Ran]] - [[Rog]] - [[Sam]] - [[Tou]] - [[Val]] - [[Wiz]]
+}}</includeonly><noinclude>
+
+Shows links to all player roles.
+
+Takes one parameter
+
+*{{tl|roles|0}} -> {{roles|0}}
+*{{tl|roles|1}} -> {{roles|1}}
+
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Pack {63225 2011-01-12T20:59:16Z {630 Paxed} #REDIRECT [[Inventory]] #REDIRECT [[Inventory]]}
+&&%s&& %s Backpack {63226 2011-01-12T20:59:59Z {630 Paxed} #REDIRECT [[Inventory]] #REDIRECT [[Inventory]]}
+&&%s&& %s Elfrist {147994 2022-08-28T03:59:56Z {4000978 Aximili} mention the obvious {{artifact weapon
+  |color=metal color
+  |name=Elfrist
+  |base=orcish spear
+  |smalldmg=1d5 '''+15'''
+  |largedmg=1d8 '''+15'''
+  |tohit='''+5'''
+  |bonusversus=[[elf|elves]]
+  |skill=spear
+  |affiliation=<ul><li>[[chaotic]]</li></ul>
+  |cost=300
+  |weight=30
+  |material=iron
+}}
+
+'''Elfrist''' is a chaotically aligned orcish spear added in [[SLASH'EM]] that deals extra damage to [[Elf (monster)|elves]].<ref>http://www.angelfire.com/trek/mazewest/spoilers/arti_007e6.txt</ref> It is another [[artifact]] in the game that can be created by [[name|#name]]-ing, along with [[Sting]] and [[Orcrist]]. To do so type in #name, select a normal orcish spear, and name it Elfrist. To make sure you did it correctly, you may now try to name the spear into something completely different&mdash;all artifacts resist naming. Elfrist can also be given as a gift by sacrificing.
+
+This weapon is worth keeping if found, since its flat damage bonus large enough to use without raising your skill in spears. However, since elves in midgame are relatively weak enemies, it is almost never worth creating by naming.
+
+== References ==
+<references />
+
+[[Category:SLASH'EM artifact weapons]]}
+&&%s&& %s Sword of Balance {63262 2011-01-13T06:52:31Z {25 AileTheAlien} Redirected page to [[The Sword of Balance]] #REDIRECT [[The Sword of Balance]]}
+&&%s&& %s Luckblade {139016 2021-04-17T20:29:30Z {4001279 Umbire the Phantom}  {{artifact weapon
+  |name = Luckblade
+  |base = short sword
+  |material = iron
+  |color = metal color
+  |smalldmg = 1d6 '''+5'''
+  |largedmg = 1d8 '''+5'''
+  |tohit='''+5'''
+  |skill = short sword
+  |cost = 1000
+  |weight = 30
+  |affiliation = [[neutral]]
+  |whencarried = <ul><li>[[Luck item|acts as a luckstone]]</li></ul>
+}}
+
+'''Luckblade''', also written as '''Luck Blade''', is a [[neutral]] [[artifact weapon]] found in some variants. It is introduced in [[SLASH'EM]] as an artifact [[short sword]], and is changed to a [[broadsword]] in [[DynaHack]], [[EvilHack]] and [[UnNetHack]].
+
+It has a flat +5 to-hit and damage bonus, and acts as a [[luckstone]] when carried.
+
+==Generation==
+Luckblade is the guaranteed first sacrifice gift for [[Convict]]s.
+
+==Strategy==
+Luckblade's flat damage and to-hit bonuses make it a worthwhile early gift, especially for Convicts. As an early [[luck item]], it also provides a major boon even if it becomes outclassed as a weapon choice, although it remains a decent choice for [[twoweapon]]ing for a good while. Outside of a [[silver saber]], Luckblade may be preferable to most non-artifact weapons in this regard.
+
+===SLASH'EM===
+A player who finds Luckblade early will have to balance the benefit of training it past basic versus spending precious skill slots on more powerful weapons, [[riding]], #twoweapon, or spells.
+
+[[Category:Artifact weapons]]
+[[Category:SLASH'EM Artifacts]]
+[[Category:Convict patch]]
+[[Category:UnNetHack Artifacts]]
+[[Category:Variant luck items]]}
+&&%s&& %s The Sword of Balance {145819 2022-05-01T08:58:12Z {4000978 Aximili} splicehack {{artifact weapon
+  |color=white
+  |name=Sword of Balance
+  |base=silver short sword
+  |smalldmg=1d6 '''+5''' +(1d20)
+  |largedmg=1d8 '''+5''' +(1d20)
+  |tohit='''+2'''
+  |bonusversus=[[alignment|non-neutral]]
+  |skill=short sword
+  |affiliation=<ul><li>[[neutral]]</li></ul>
+  |cost=5000
+  |weight=30
+  |material=silver
+}}
+
+The '''Sword of Balance''' is an [[artifact weapon|artifact]] [[silver short sword]] that appears in [[SLASH'EM]], [[SlashTHEM]] and [[SpliceHack]]. It is neutral-aligned, and has +2 to hit and +5 to damage against cross-aligned monsters.
+
+==Strategy==
+The Sword of Balance is relatively weak, with only a modest damage bonus against non-neutral monsters, and proves quite unimpressive against the various always-hostile neutral monsters. It can prove a handy weapon for the much tougher [[Werecreature (SLASH'EM)|werecreatures]] present in SLASH'EM and its variants - as werefoo are always chaotic and the [[silver]] will inflict extra damage - but is thoroughly outclassed by [[Werebane]] in this regard.
+
+The Sword of Balance is a viable artifact for #[[twoweapon]]ing, as the silver damage is quite useful in [[Gehennom]], and its damage bonus makes it preferable to an ordinary [[silver saber]]. However, characters with access to artifacts like [[Skullcrusher]] or [[Doomblade]] will much prefer them as their offhand weapon.
+
+==History==
+In previous versions of SLASH'EM, this weapon could be #[[name]]d in the manner of [[Sting]] or [[Orcrist]]. This was changed to no longer be possible in the latest stable release.<ref>http://slashem.sourceforge.net/stable.html</ref>
+
+==SpliceHack==
+In SpliceHack, the flat damage and to-hit bonuses are converted into dice rolls.
+
+==References==
+<references/>
+{{slashem-7E7|offset=1}}
+{{variant-343}}
+[[Category:Artifact weapons]]
+[[Category:SLASH'EM Artifacts|Sword of Balance]]}
+&&%s&& %s Your sacrifice is consumed in a burst of flame {63297 2011-01-13T21:06:26Z {831 Tjr} Redirected page to [[Altar#Ordinary sacrifice]] #REDIRECT [[Altar#Ordinary_sacrifice]]}
+&&%s&& %s Your sacrifice is consumed in a flash of light {63298 2011-01-13T21:06:48Z {831 Tjr} Redirected page to [[Altar#Ordinary sacrifice]] #REDIRECT [[Altar#Ordinary_sacrifice]]}
+&&%s&& %s Your sacrifice is consumed in a flash of light! {63299 2011-01-13T21:07:00Z {831 Tjr} Redirected page to [[Altar#Ordinary sacrifice]] #REDIRECT [[Altar#Ordinary_sacrifice]]}
+&&%s&& %s Ncurses {63304 2011-01-13T22:11:32Z {831 Tjr} Redirected page to [[Curses interface]] #redirect [[Curses_interface]]}
+&&%s&& %s Windowborders {63305 2011-01-13T22:11:54Z {831 Tjr} Redirected page to [[Curses interface#Configuration Options]] #redirect [[Curses_interface#Configuration_Options]]}
+&&%s&& %s Moloch's sanctuary {63334 2011-01-14T02:28:05Z {831 Tjr} Redirected page to [[Moloch's Sanctum]] #redirect [[Moloch's_Sanctum]]}
+&&%s&& %s ELBERETH {63335 2011-01-14T02:28:18Z {831 Tjr} Redirected page to [[Elbereth]] #redirect [[Elbereth]]}
+&&%s&& %s Special level (slashem) {63379 2011-01-14T03:15:58Z {831 Tjr} Redirected page to [[Special level (SLASH'EM)]] #redirect [[Special_level_(SLASH'EM)]]}
+&&%s&& %s Special levels (slashem) {63380 2011-01-14T03:16:11Z {831 Tjr} Redirected page to [[Special level (SLASH'EM)]] #redirect [[Special_level_(SLASH'EM)]]}
+&&%s&& %s Vomiting {128700 2019-10-17T08:41:31Z {4000681 Andrio Celos} Update for NetHack 3.6.2 '''Vomiting''' or '''nausea''' is a [[property|status affliction]] caused by eating 
+
+*[[tripe]] as a non-orc non-caveman non-carnivore
+*old [[egg]]s
+*rotten [[tin]]s
+*[[Clove of garlic|garlic]], while [[Polyself|polymorphed]] into an [[undead]] monster
+
+After a while, it will cause you to become [[confused]], then [[stunned]], and finally vomit and lose 20 points of [[nutrition]].{{refsrc|timeout.c|src/211|nethack=3.6.2}} The final act of vomiting leaves you helpless for 2 turns, and actually cures [[food poisoning]], though you cannot count on vomiting before you die: vomiting takes 14 turns, while food poisoning will kill you in 10 + 1d9 turns.
+
+If you are polymorphed into a [[rat]], you cannot vomit, but are still helpless for 2 turns. {{refsrc|src/mondata.c|439|nethack=3.6.2}}
+
+A few uses of a [[unicorn horn]], casting {{spell of|cure sickness}}{{refsrc|src/spell.c|1181|nethack=3.6.2}}{{refsrc|src/potion.c|1168|nethack=3.6.2}} or a [[eucalyptus leaf]] will cure the condition (and let you keep the nutrition). 
+
+When you are nauseated, you [[Exercise|abuse]] constitution once in every 5 turns (3 times in total).{{refsrc|src/attrib.c|506|nethack=3.6.2}}
+
+==Messages==
+You receive the following messages:{{refsrc|src/timeout.c|160|nethack=3.6.2}}
+
+{{message|You are feeling mildly nauseated.|You are nauseated for 14 more turns.}}
+{{message|You feel slightly confused.|You are nauseated for 11 more turns. You actually become confused for 2d4 (more) turns when the timeout reaches 8, then 6 turns.}}
+{{message|You can't seem to think straight.|You are nauseated for 8 more turns. You actually become stunned for 2d4 (more) turns when the timeout reaches 6 turns.}}
+{{message|You feel incredibly sick.|You are nauseated for 5 more turns.}}
+{{message|You are about to vomit.|You are nauseated for 2 more turns.}}
+{{message|You are about to hurl.|You are nauseated for 2 more turns while [[hallucinating]].}}
+{{message|You vomit!|You vomit, leaving you helpless for 2 turns.}}
+{{message|You hurl chunks!|You vomit while hallucinating.}}
+{{message|Your [stomach] heaves convulsively!|You vomit while hungry to the point of fainting already. This still cures food poisoning.}}
+{{message|Your jaw gapes convulsively.|You are polymorphed into a creature that cannot vomit.}}
+
+==SporkHack==
+In [[SporkHack]], drinking a glass of salt water can also make you vomit.
+
+==References==
+<references/>
+[[Category:Properties]]
+{{nethack-362}}}
+&&%s&& %s Nausea {63395 2011-01-14T03:44:16Z {831 Tjr} Redirected page to [[Vomiting]] #redirect [[vomiting]]}
+&&%s&& %s Nauseated {63396 2011-01-14T03:44:27Z {831 Tjr} Redirected page to [[Vomiting]] #redirect [[vomiting]]}
+&&%s&& %s Asidonhopo {63399 2011-01-14T03:47:00Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Donation {63400 2011-01-14T03:48:04Z {831 Tjr} Redirected page to [[Aligned priest#.23Chatting.2C e.g. for protection]] #redirect [[Aligned_priest#.23Chatting.2C_e.g._for_protection]]}
+&&%s&& %s Buried {133424 2020-04-10T23:03:17Z {4001313 Ardub23} Fix section-targeted link "'''Buried'''" may refer to:
+*[[Pit#Buried objects|Buried items]]
+*[[Deferred features#Burying|Buried creatures]], a deferred feature
+{{disambig}}}
+&&%s&& %s Tinfoil hat {63403 2011-01-14T03:55:28Z {831 Tjr} Redirected page to [[Tin foil hat]] #redirect [[Tin_foil_hat]]}
+&&%s&& %s Extrinsics {63404 2011-01-14T03:56:39Z {831 Tjr} Redirected page to [[Property#Extrinsic properties]] #redirect [[Property#Extrinsic_properties]]}
+&&%s&& %s Lizard (monster class) {149506 2022-12-21T10:17:20Z {4001279 Umbire the Phantom} add croc notes, tweak ref In ''[[NetHack]]'', the '''lizard''' [[monster class]] contains [[monster]]s represented by the symbol {{white|:}}. It is not to be confused with the monster known as the [[lizard]], which is a member of this class.
+
+The lizard monster class consists of:
+
+* {{monsymlink|newt}}
+* {{monsymlink|gecko}}
+* {{monsymlink|iguana}}
+* {{monsymlink|lizard}}
+* {{monsymlink|chameleon}}
+* {{monsymlink|crocodile}}
+** {{monsymlink|baby crocodile}}
+* {{monsymlink|salamander}}
+
+==Strategy==
+Most early lizards are unremarkable and easy to handle, including the lizard itself. Of the few that can actually trouble players, the chameleon's difficulty is entirely dependent on what it shapeshifts into, and it is fairly likely you may encounter it in an easy-to-dispatch form; conversely, the salamander does not even appear in a game normally until [[Gehennom]]. The crocodile is capable of inflicting severe damage unless fought with care, but has a lower speed that can be taken advantage of.
+
+==Appearance==
+"Lizard" is a category that includes all form of non-[[snake]] reptiles and amphibians, both mundane and fantastic. While the chameleon and salamander are named for real-world animals, the former is portrayed in a much more fantastic fashion, and the latter is based on a monster from ''[[Dungeons & Dragons]]''. With the exception of the salamander, all lizards are classified as [[animal]]s.
+
+==xNetHack==
+In [[xNetHack]], version 3.0 previously changed the glyph for this monster class to {{white|l}} (lowercase L) to avoid using a punctuation glyph; [[leprechaun]]s were merged into the {{monclass|i}} class. This was reverted in version 6.0.<ref>[https://github.com/copperwater/xNetHack/commit/6f0e0260b088cdf79cb5f857a48c428714bfce78 xNetHack commit 6f0e026: "Move lizards back to : and leprechauns back to l"]</ref>
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monster classes]]}
+&&%s&& %s Underwater {63406 2011-01-14T03:58:50Z {831 Tjr} Redirected page to [[Moat]] #redirect [[Moat]]}
+&&%s&& %s Equipment {63407 2011-01-14T04:00:29Z {831 Tjr} redirect to jewelry -- I hope this is correct, given it's used only in the bugs list and in start scumming. #redirect [[jewelry]]}
+&&%s&& %s Change alignment {63408 2011-01-14T04:01:55Z {831 Tjr} Redirected page to [[Altar#Cross-aligned altars]] #redirect [[Altar#Cross-aligned_altars]]}
+&&%s&& %s Locked {63409 2011-01-14T04:02:49Z {831 Tjr} Redirected page to [[Lock]] #redirect [[Lock]]}
+&&%s&& %s Firearms {63410 2011-01-14T04:03:38Z {831 Tjr} Redirected page to [[Firearm]] #redirect [[Firearm]]}
+&&%s&& %s You have a peculiarly sad feeling for a moment, then it passes. {63412 2011-01-14T04:07:48Z {831 Tjr} Redirected page to [[Pet#Protect your pet]] #redirect [[Pet#Protect_your_pet]]}
+&&%s&& %s Vault's guard {63413 2011-01-14T04:08:20Z {831 Tjr} Redirected page to [[Guard]] #redirect [[guard]]}
+&&%s&& %s Summoning {63414 2011-01-14T04:09:08Z {831 Tjr} Redirected page to [[Demon#Demon summoning]] #redirect [[Demon#Demon_summoning]]}
+&&%s&& %s Bones files {63416 2011-01-14T04:10:47Z {831 Tjr} Redirected page to [[Bones]] #redirect [[Bones]]}
+&&%s&& %s Level Teleport {63417 2011-01-14T04:15:33Z {831 Tjr} Redirected page to [[Level teleport]] #redirect [[level teleport]]}
+&&%s&& %s Discover mode {63418 2011-01-14T04:16:37Z {831 Tjr} Redirected page to [[Explore mode]] #redirect [[Explore_mode]]}
+&&%s&& %s Divine Protection {63421 2011-01-14T04:49:56Z {831 Tjr} Redirected page to [[Intrinsic protection]] #redirect [[intrinsic_protection]]}
+&&%s&& %s Holy Spear of Light {125938 2019-05-23T14:05:49Z {4000251 Netzhack} /* Invocation */ Removed an abuse of "as such" {{artifact weapon
+  |color = white
+  |name = Holy Spear of Light
+  |base = silver spear
+  |smalldmg = 1d6 (+1d20) '''+10'''
+  |largedmg = 1d8 (+1d20) '''+10'''
+  |tohit = '''+5'''
+  |bonusversus = [[undead]]
+  |skill = spear
+  |affiliation = <ul><li>[[lawful]]</li><li>[[intelligent artifacts|intelligent]]</li></ul>
+  |wheninvoked = <ul><li>illuminates a 12-square radius</li><li>damages undead</li></ul>
+  |cost = 4000
+  |weight = 36
+  |material = silver
+}}
+
+The '''Holy Spear of Light''' is a rather useful artifact added in [[SLASH'EM]]<ref>http://www.angelfire.com/trek/mazewest/spoilers/arti_007e6.txt</ref>. It is lawful, intelligent, has +5 to-hit and +10 damage to undead monsters: [[L]], [[M]], [[W]], [[Z]], [[ghost]]s and [[shade]]s. The Spear's best use is its [[invocation]], which permanently lights a section of the dungeon, and also damages undead and demons caught in the light. High level undead such as Vecna have a chance of resisting. Being a [[spear]], it also provides the +2 to-hit bonus against [[kebabable]] monsters.
+
+== Invocation ==
+The spear's most noteworthy use is its invocation power:
+: ''"The Holy Spear of Light shines brightly for an instant!"'' (if not [[blind]])
+: ''"The Holy Spear of Light grows warm for a second!"'' (if blind)
+The spear illuminates an area with a radius of 12 squares centered on the player. Note that this is larger than even a ''blessed'' [[scroll of light]], with a 9-square radius, making the spear very useful for lighting your way. Non-spellcasters will probably want to blank all the extra scrolls of light they have. Note that the spear is intelligent and will therefore blast you if you are not Lawful. 
+
+Within this radius, undead and [[demon]]s take damage.
+: ''"<monster> burns in the radiance!"'' (if you can see the monster)
+: ''"You hear cry(ies) of intense pain!"'' (if you can't)
+This damage will never actually kill these monsters; A minimum of one remaining hit point is ensured. This will also not anger any peaceful undead it affects or decrease tameness of tame undead.
+
+Note that if [[player|you]] are playing as a [[vampire (starting race)|vampire]] or are [[polymorph]]ed into an undead or demon, your hit points will be divided by 100, with no minimum cutoff of one hit point. Death from this hit point loss will '''''not''''' revert you to your normal form, and will instead kill you outright. 
+Also note that [[difficulty|high-level]] or [[MR|high-MR]] monsters may resist this damage altogether.
+
+=== Damage Done to Monsters ===
+Hitpoints are divided by <math>10 - \frac{distance^2}{10}</math>:
+{|class="wikitable"
+! Distance from player
+! Damage taken (% of monster HP)
+|-
+| 1
+| 89.90
+|-
+| 2
+| 89.58
+|-
+| 3
+| 89.01
+|-
+| 4
+| 88.10
+|-
+| 5
+| 86.67
+|-
+| 6
+| 84.38
+|-
+| 7
+| 80.39
+|-
+| 8
+| 72.22
+|-
+| 9
+| 47.37
+|-
+| 10+
+| 0.00
+|}
+
+== References ==
+<references/>
+
+[[Category:Artifact weapons]]
+[[Category:SLASH'EM Artifacts|Holy Spear of Light]]
+[[Category:SLASH'EM items]]
+[[Category:SLASH'EM]]}
+&&%s&& %s SDD {63461 2011-01-15T11:54:40Z {831 Tjr} Redirected page to [[Wand of secret door detection]] #redirect [[wand of secret door detection]]}
+&&%s&& %s Template:Darkradius {64228 2011-01-30T11:12:47Z {630 Paxed} cat sort key <noinclude>
+This template shows a radius of darkness around a darkness source. Takes one parameter, the radius. For example: <nowiki>{{darkradius|r=3}}</nowiki>
+
+4:
+</noinclude><div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+.={{yellow|.}}
+0={{white|@}}
+default={{#ifexpr:{{{r|4}}}>=$1|{{lightgray|x}}|{{yellow|.}}}}
+
+...55555...
+..5444445..
+.544333445.
+54432223445
+54321112345
+54321012345
+54321112345
+54432223445
+.544333445.
+..5444445..
+...55555...
+</replacecharsblock>
+</div><noinclude>
+3:
+{{darkradius|r=3}}
+2:
+{{darkradius|r=2}}
+1:
+{{darkradius|r=1}}
+
+== See also ==
+* {{tl|lightradius}} (lit)
+* {{tl|circleradius9}} (lit, but goes up to 9)
+* {{tl|circleradius15}} (lit, but goes up to 15)
+* {{tl|jumpradius}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Wand of create horde {148431 2022-10-05T00:04:31Z {4001279 Umbire the Phantom} cats  {{wand
+   |name=create horde
+   |cost=300
+   |type=non-directional
+   |maxcharges=19
+  }}
+
+This is one of the new wands introduced in [[Slash'EM]].<ref>http://www.statslab.cam.ac.uk/~eva/slashem/wands.html</ref>
+When zapped, it creates 6-12 monsters.
+When a monster zaps it, creates 11-14 monsters. 
+
+Be careful trying to identify wands as engraving with the wand of create horde has the same effect as zapping it.
+You identify the wand if any of the new monsters are seen.
+Try as hard as you can to keep these wands out of the hands of intelligent monsters; it is quite feasible for such a monster to fill most of the level with monsters that way, creating upwards of 200 monsters or so. In addition, they are worth keeping as they, combined with a burned [[Elbereth]] square, can be quite useful for sacrificing.
+
+Breaking the wand creates an explosion dealing 1d(8*charges) damage and creates monsters around you.
+
+==References==
+<references />
+
+[[Category:Wands|Create horde]]
+[[Category:SLASH'EM items]]
+[[Category:SlashTHEM]]}
+&&%s&& %s NetHackWiki talk:Templates {63508 2011-01-15T21:49:29Z {630 Paxed} didn't get around to it yet. and fixed the link. ==Missing Templates==
+Would be nice to have some info on the [[:Template:Lightradius]], [[:Template:Circleradius9]] and [[:Template:Circleradius15]].
+Not sure where the best place to put this is, but it was definitely hard for me to find out about it, as a new-ish wiki editor.
+
+Also, is there a template for damage calculations on weapons?
+If not, can we get one?
+Doing the math and sticking it in a table by hand would be better automated/standardized.
+Maybe have them in a collapsed table by default if they are too large?
+
+Last, the link at the bottom of the page to "all templates" seems to be broken.
+[[User:AileTheAlien|AileTheAlien]] 21:44, 15 January 2011 (UTC)
+:I actually thought about adding missing templates to the page, but didn't get around to it yet. Feel free to do it ;)  And I fixed the link to the all templates. --[[User:Paxed|paxed]] 21:49, 15 January 2011 (UTC)}
+&&%s&& %s Opthelp {67359 2011-01-31T23:43:53Z {4000027 Paxedbot} Fix double src redirect #REDIRECT [[Source:NetHack 3.4.3/dat/opthelp]]}
+&&%s&& %s Template:Bugstatus {67575 2011-02-03T17:35:27Z {630 Paxed} cat <onlyinclude><includeonly>class="bugstatus {{#ifeq:{{{1|unknown}}}|Fixed|nextversion|{{#replace:{{lc:{{{1|unknown}}}}}| |_}}}}"|{{{1|Unknown}}}</includeonly></onlyinclude>
+
+This template is meant to be used in [[Bugs in NetHack 3.4.3]] tables, for color-coding the bug status table cells.
+
+
+{| class="prettytable"
+|{{bugstatus|Open}}
+|-
+|{{bugstatus|Not a bug}}
+|-
+|{{bugstatus|fixed}}
+|-
+|{{bugstatus|Fixed}}
+|-
+|{{bugstatus|Help}}
+|-
+|{{bugstatus|Superseded}}
+|-
+|{{bugstatus}}
+|-

@@ -1,0 +1,1000 @@
+=== Technical details ===
+To advance a skill, you need to have enough free ''skill slots'' and to have practiced it enough. You gain a skill slot each time you gain an [[experience level]], and being [[Crowning|crowned]] also grants one skill slot - this means there is a maximum of 30 skill slots available. Higher skill levels require more skill slots. 
+Skills that are non-weapon based (spellcasting, bare-handed combat, and riding) use half as many skill slots as weapon-based skills.<ref>[[Source:NetHack_3.4.3/src/weapon.c#slots_required|weapon.c, function slots_required]]</ref> If you lose an experience level, you will also lose a skill slot, which may result in losing your most recently earned skill.
+
+The table below shows the total number of successful uses of a skill required to reach each level and the skill slots required to advance. If you start with a skill at Basic, you are also precredited with 20 successful uses of that skill.
+
+{|class="prettytable"
+!Skill level
+!Successful uses
+!Slots required for weapons
+!Slots required for non-weapons
+|-
+|Unskilled
+|0
+|
+|
+|-
+|Basic
+|20
+|1
+|1
+|-
+|Skilled
+|80
+|2
+|1
+|-
+|Expert
+|180
+|3
+|2
+|-
+|Master
+|320
+|
+|2
+|-
+|Grand Master
+|500
+|
+|3
+|}
+
+Hitting a [[monster]] for more than one point of damage (including from a distance) counts as a successful use of a weapon skill. For bare-handed combat, a successful use is only scored 50% of the times you hit a monster; for martial arts, 75%.{{refsrc|uhitm.c|546}}{{refsrc|uhitm.c|907}} As with weapon attacks, a check is made to see if your skill damage bonus applies (see below).  [[Riding]] a total distance of 101 squares counts as a successful use of the riding skill.{{refsrc|steed.c|357}} Successfully casting a level ''n'' spell counts as ''n'' successful uses of the corresponding spell casting skill.{{refsrc|spell.c|960}}
+
+== Effects ==
+
+=== Spellcasting ===
+Improving spellcasting skills improves your chances of casting spells in that school successfully. Certain spells also have better effects when cast at skilled level or above. {{spell of|Cone of cold}} and {{spell of|fireball}} create explosions rather than a ray;{{refsrc|spell.c|829}} and {{spell of|detect monsters}}, {{spell of|confuse monster}}, {{spell of|levitation}}, {{spell of|remove curse}}, {{spell of|detect food}}, {{spell of|cause fear}}, {{spell of|identify}}, {{spell of|haste self}}, {{spell of|detect treasure}}, and {{spell of|restore ability}} all have the effect of a blessed potion or scroll.{{refsrc|spell.c|901}}{{refsrc|spell.c|917}} {{spell of|Protection}} takes twice as long to decay if cast as expert.{{refsrc|spell.c|673}} {{spell of|Jumping}} allows you to [[Jumping#Range|jump farther]] based on your skill level, with a bonus even for Basic skill.{{refsrc|spell.c|950}}  [[To-hit]] chance of most [[ray]]-type spells ([[sleep]], [[magic missile]], unskilled/basic [[cone of cold]], and [[finger of death]]) also depends on your skill level.{{reffunc|zap.c|spell_hit_bonus}}
+
+=== Weapons ===
+Improving weapon skills improve your to-hit and damage bonuses. [[Bare hands]] combat and [[martial arts]] skills are an exception to this rule: In 3.4.3 they never granted a [[to-hit]] bonus,{{refsrc|uhitm.c|283|comment=<tt>uwep</tt> is false if no weapon is wielded}} and in both 3.4.3 and 3.6.0 their [[damage]] bonus applies only to 50% and 75% (respectively) of all hits.{{refsrc|uhitm.c|546}}{{refsrc|uhitm.c|904}}
+
+Quoting from [http://www.steelypips.org/nethack/343/weap-343.html Kate Nepveu's spoilers]:
+
+==== Weapon skill levels and bonuses ====
+
+{| class="prettytable" style="text-align: center"
+! 
+! colspan=2 | Needed
+! colspan=2 | Weapon
+! colspan=2 | Two-weapon
+|-
+! Skill level
+! Hits
+! Exp
+! +Hit
+! +Dam
+! +Hit
+! +Dam
+|-
+!Unskilled
+|0||0||−4||−2||−9||−3
+|-
+!Basic
+|20||1||0||0||−7||−1
+|-
+!Skilled
+|80||2||2||1||−5||0
+|-
+!Expert
+|180||3||3|||2||−3||1
+|}
+
+{| class="prettytable" style="text-align: center"
+! 
+! colspan=2 | Needed
+! colspan=2 | Riding
+! colspan=2 | Bare-hand
+! colspan=2 | Martial
+|-
+! Skill level
+! Hits
+! Exp
+! +Hit
+! +Dam
+! +Hit
+! +Dam
+! +Hit
+! +Dam
+|-
+!Unskilled
+|0||0||−2||0||+1||0||+2||+1
+|-
+!Basic
+|20||1||−1||0||+1||+1||+3||+3
+|-
+!Skilled
+|80||1||0||+1||+2||+1||+4||+4
+|-
+!Expert
+|180||2||0||+2||+2||+2||+5||+6
+|-
+!Master
+|320||2||—||—||+3||+2||+6||+7
+|-
+!Grand Master
+|500||3||—||—||+3||+3||+7||+9
+|}
+
+=== Riding ===
+
+Your skill at [[riding]] affects your chances of successfully applying a [[saddle]].{{refsrc|steed.c|112}} It also affects your chance of hitting{{refsrc|weapon.c|1147}} and the damage you inflict{{refsrc|weapon.c|1216}} when riding. Also, you need at least Basic skill to pick up items or loot a container on the ground{{refsrc|pickup.c|1468}} or search one for traps,{{refsrc|trap.c|3494}} dip something into a [[pool]],{{refsrc|potion.c|1554}} set a trap{{refsrc|apply.c|2031}} or disarm one{{refsrc|trap.c|3110}} or engrave on the floor{{refsrc|engrave.c|139}} while riding. Also, if your steed is capable of lifting (and moving over) [[boulder]]s, you need Basic skill to make them use this ability.{{refsrc|hack.c|269}}
+
+== Skill tables ==
+
+{| class="prettytable Spell-skilltable"
+! colspan="2" | Key
+|-
+|class="restricted"| - || Restricted
+|-
+|class="basic"| b || Basic
+|-
+|class="skilled"| ''S'' || Skilled
+|-
+|class="expert"| '''E''' || Expert
+|-
+|class="master"| '''''M''''' || Master
+|-
+|class="grandmaster"| '''''GM''''' || Grand Master
+|}
+
+
+=== Weapon skills ===
+
+{{weapon skill table}}
+
+=== Other combat skills ===
+
+{{combat skill table}}
+
+=== Spell skills ===
+
+{{spell skill table}}
+
+== Variants ==
+=== SLASH'EM ===
+
+In [[SLASH'EM]], advancing a [[Spellcasting (SLASH'EM)|spell]] skill costs as much as weapon skills.<ref>[[Source:SLASH'EM_0.0.7E7F2/weapon.c#line990]]</ref>
+
+=== UnNetHack ===
+
+[[UnNetHack]] changes the number of successful uses of a skill required to reach each level.  These values are:
+
+{|class="prettytable"
+!Skill level
+!Successful uses
+!Old value
+|-
+|Unskilled
+|0
+|0
+|-
+|Basic
+|100
+|20
+|-
+|Skilled
+|200
+|80
+|-
+|Expert
+|400
+|180
+|-
+|Master
+|800
+|320
+|-
+|Grand Master
+|1600
+|500
+|}
+
+Spell skills, however, advance four times as fast until the player is Skilled in the relevant skill, after that, the skill only advances twice as fast as shown in the table above.
+
+== References ==
+<references/>
+
+[[Category:Your character]]
+{{nethack-343}}}
+&&%s&& %s Male {10714 2006-09-20T10:37:58Z {396 Jayt} Redirecting to [[Gender]] #REDIRECT [[Gender]]}
+&&%s&& %s Female {10715 2006-09-20T10:44:51Z {396 Jayt} Redirecting to [[Gender]] #REDIRECT [[Gender]]}
+&&%s&& %s Neuter {10716 2006-09-20T10:45:12Z {396 Jayt} Redirecting to [[Gender]] #REDIRECT [[Gender]]}
+&&%s&& %s Flying {141730 2021-07-14T22:59:25Z {4001279 Umbire the Phantom} Reformat, update sole reference link '''Flying''' is an intrinsic [[property]] that appears in ''[[NetHack]]'', Monsters that fly are defined in the [[source code]] with the  '''<code>M1_FLY</code>''' flag.{{refsrc|include/monflag.h|70|version=NetHack 3.6.6}}
+
+Flight allows a [[monster]] to avoid contact with the ground as with [[levitation]], but additionally allows control over vertical movement - while flying, you can pick up items on the floor, go down stairs, use ranged weapons without hurtling in the opposite direction, and so on. Broadly speaking, flight gives almost all of the benefits of levitation with none of the downsides.
+
+==Description==
+The detailed effects of flying are as follows:
+
+* You can pass over [[pit]]s, [[hole]]s, [[trap door]]s, [[squeaky board]]s, and [[bear trap]]s without triggering them. (Pits and holes in [[Sokoban]] will still trap you.)
+* You can pick up items in pits and spiked pits without falling in. If you begin flying while stuck in a pit, you can escape in one turn.
+* You can descend into holes and trap doors with the {{kbd|>}} command.
+* [[Land mine]]s have a chance of not being triggered, and will not wound your legs.
+* You can move over [[lava]] and [[moat|water]] safely, and you can [[dip]] items into water.
+* You have a better chance of avoiding being killed by a collapsing [[drawbridge]].
+* You can move freely over ice and on the [[Plane of Air]].
+* [[Wounded legs]] do not reduce your [[encumbrance|carrying capacity]].
+* You suffer no ill effects from descending stairs when encumbered, [[fumbling]], or [[punishment|punished]].
+* You [[escaping the dungeon|escape the dungeon]] rather than dying if you [[level teleport]] to a level between &minus;9 and &minus;1.
+* You cannot snag underwater items with a [[bullwhip]] unless you start levitating.<!--Seems like a bug. Is this still true in 3.6.4?-->
+* If you begin [[phasing]] through something solid, you will stop flying until you are in open space again.
+
+Even though all {{mcsl|e}} possess the <code>M1_FLY</code> flag, they levitate rather than fly.
+
+===List of flying monsters===
+The following monsters are capable of flight:
+
+* {{monsymlink|killer bee}}
+* {{monsymlink|queen bee}}
+* {{monsymlink|winged gargoyle}}
+* {{monsymlink|mind flayer}}
+* {{monsymlink|master mind flayer}}
+* {{monsymlink|homunculus}}
+* {{monsymlink|lurker above}}
+* {{monsymlink|xan}}
+* {{monsymlink|couatl}}
+* {{monsymlink|air elemental}}
+* {{monsymlink|fire elemental}}
+* {{monsymlink|stalker}}
+* {{monsymlink|titan}}
+* {{monsymlink|jabberwock}}
+* {{monsymlink|wraith}}
+* {{monsymlink|succubus}}
+* {{monsymlink|incubus}}
+* {{monsymlink|balrog}}
+* any monster represented by {{mcsl|v}}, {{mcsl|y}}, {{mcsl|B}}, {{mcsl|D}}, or {{mcsl|V}}
+
+These monsters listed below are also capable of flight, but are not valid [[polymorph]] forms:
+
+* {{monsymlink|Angel}}
+* {{monsymlink|ki-rin}}
+* {{monsymlink|Archon}}
+* {{monsymlink|Ixoth}}
+* {{monsymlink|Vlad the Impaler}}
+* {{monsymlink|Medusa}}
+* {{monsymlink|Wizard of Yendor}}
+* {{monsymlink|ghost}}
+* {{monsymlink|shade}}
+* {{monsymlink|Juiblex}}
+* {{monsymlink|Yeenoghu}}
+* {{monsymlink|Orcus}}
+* {{monsymlink|Geryon}}
+* {{monsymlink|Dispater}}
+* {{monsymlink|Baalzebub}}
+* {{monsymlink|Asmodeus}}
+* {{monsymlink|Demogorgon}}
+* {{monsym|Death}} the [[Riders]]
+* {{monsymlink|mail daemon}}
+* {{monsymlink|djinni}}
+* {{monsymlink|Minion of Huhetotl}}
+* {{monsymlink|Nalzok}}
+
+==Obtaining flight==
+The only way to obtain this property is to [[polyself]] into one of the flying monsters listed above, or [[ride]] one as a steed. The eligible flying steeds are:
+
+* {{monsymlink|couatl}}
+* {{monsymlink|ki-rin}}
+* {{monsymlink|jabberwock}}
+* any monster represented by {{mcsl|D}}
+
+{{upcoming|NetHack 3.7.0|Flying can be gained extrinsically by wearing an [[amulet of flying]].}}
+
+==Bugs==
+You can sometimes displace flying monsters by [[kick]]ing them. If the "''foo'' swoops, nimbly evading your kick" then it is moved to a vacant square randomly selected from those nearest to you.{{refsrc|dokick.c|209}} This means that on sufficiently crowded levels, it is possible for a flying creature to swoop through a wall. (This is possibly an effect of [[Bugs in NetHack 3.4.3#C343-38|bug C343-38]]; it is hard to tell from its description.)
+
+<!-- (Need confirmation of when these behaviors were changed)
+==History==
+
+Prior to NetHack ?.?.?, [[xan]]s' attacks were unable to reach flying opponents, and flying players were unable to pick up items in pits. However, [[container]]s in pits could still be looted.
+-->
+==Variants==
+The [[amulet of flying]] is an item that originated in [[SLASH'EM]] and has since appeared in many variants.
+
+Various new flying races and monsters (and thus additional polyforms) are often added in variants - the [[Vampire (starting race)|vampire]]  player race]] has intrinsic flight in all variants.
+
+===SLASH'EM===
+In SLASH'EM, the amulet of flying cannot be [[eating jewelry|eaten]] to gain intrinsic flight. You can use a [[fishing pole]] to snatch items from pits while flying.
+
+SLASH'EM also introduces many new flying monsters.
+
+===NetHack Fourk===
+In [[NetHack Fourk]], the amulet of flying is an available item. [[Valkyrie]]s also have intrinsic flight.
+
+===EvilHack===
+[[EvilHack]] also has the amulet of flying as well as several new flying monsters of its own.
+
+===UnNetHack===
+[[UnNetHack]] adds the amulet of flying.
+
+===xNetHack===
+[[xNetHack]] has the amulet of flying.
+
+===dNetHack===
+[[dNetHack]] allows players to obtain the property via boots of flight. The [[Half-dragon (starting race)|half-dragon]] race also receives the flight intrinsic at XL 14.
+
+===SpliceHack===
+In [[SpliceHack]], the [[Angel (starting race)|angel]] race has intrinsic flight.
+
+==References==
+<references/>
+{{DOD}}
+[[Category:Properties]]
+{{nethack-366}}}
+&&%s&& %s Category:Properties {10718 2006-09-20T11:21:05Z {396 Jayt} created category, in [[Your character]] This category contains articles about the various intrinsic and extrinsic [[property|properties]] which you and monsters can possess in NetHack.
+
+[[Category:Your character]]}
+&&%s&& %s M1 FLY {10746 2006-09-20T11:57:45Z {396 Jayt} Redirecting to [[Flying]] #REDIRECT [[Flying]]}
+&&%s&& %s Fly {10747 2006-09-20T11:58:06Z {396 Jayt} Redirecting to [[Flying]] #REDIRECT [[Flying]]}
+&&%s&& %s Food poisoning {63925 2011-01-26T06:08:45Z {4000066 Usethe4ce} merge into [[Sickness]] #REDIRECT [[Sickness#Food_poisoning]]}
+&&%s&& %s You are surrounded by a golden glow {109217 2018-03-23T18:48:58Z {4001130 CctheOwl} Confirmed that the same is true for 3.6.0 and updated the version appropriately. '''"You are surrounded by a golden glow"''' is the message given when your god grants you a [[favor]] in the form of some extra [[hit points]].
+
+[[Category:Messages]]
+{{nethack-360}}}
+&&%s&& %s You are surrounded by a golden glow. {10752 2006-09-20T12:50:32Z {924 ZeroOne} #REDIRECT [[You are surrounded by a golden glow]] #REDIRECT [[You are surrounded by a golden glow]]}
+&&%s&& %s Compiling {146142 2022-06-10T21:02:03Z {4001138 LarryFluckiger} /* Windows */ This page contains help on '''compiling''' NetHack 3.6, either the officially released version (3.6.0) or the version from the development sources (as of 2016 October).  Compiling is necessary if you want to try out the dev team's latest changes when they haven't released a compiled version yet, or if you want to apply a [[patch]], e.g. from the [http://bilious.alt.org/ bilious database] or make changes of your own.
+
+Information about compiling NetHack 3.4.3 can still be found in [https://nethackwiki.com/mediawiki/index.php?title=Compiling&oldid=99565 an old version of this article, q.v.].
+
+==Obtaining the officially released sources==
+
+The official released NetHack source can be found here:
+http://nethack.org/v360/download-src.html
+
+Once you have obtained the tarball, you will need to extract it, either using standard tools (<tt>tar -xvf nethack-360-src.tgz</tt>) or some other archive extractor that can handle the tar and gzip formats.
+
+Note that if you use a graphical archive extractor like 7zip, you may have to extract twice: once to decompress the gzip and obtain the plain tar file, and a second time to extract the actual contents.
+
+==Obtaining the development sources==
+
+The development source repository is available at http://git.code.sf.net/p/nethack/NetHack
+
+If you have git installed, you can retrieve a copy of the repository using either of the following commands:
+
+<tt>git clone https://github.com/NetHack/NetHack</tt>
+
+alternately:
+
+<tt>git clone http://git.code.sf.net/p/nethack/NetHack</tt>
+
+(It doesn't matter which repository you use; they're both mirrors of the public portion of the dev team's repository.)
+
+This will create a subdirectory (a.k.a., a "folder") called 'NetHack', in the current directory, and the new subdirectory, 'NetHack', will be a git repository, containing a working copy of the latest public development source for what will eventually become NetHack 3.6.1.
+
+==Preparing to compile==
+
+===Gathering build tools===
+
+In order to build NetHack, you will neet at minimum the following tools:
+* a C compiler (typically 'gcc' or 'clang')
+* 'make' (typically Gnu 'make', and note in particular that Microsoft's 'nmake' won't work)
+* 'flex' and 'bison', or some other suitable lex/yacc implementation
+* common libraries (including development headers); these should be includeded if you have a complete working build environment (e.g., if you have installed build-essential on Debian-derived systems, you should have them).  I don't know a complete list of all the libraries that are required, but I believe the list includes standard POSIX regular expression libraries, termcap/terminfo, and of course the standard C library.  Beyond that, I'm not sure.
+* any libraries (including development headers) needed for the specific ports you wish to build; if this is the first time you are building NetHack, it is recommended that you start by building the Unix TTY port first, as it is the easiest and has no additional requirements of its own beyond the ones that all the ports require.
+
+Note that you will need copies of all these on the platform for which you are building NetHack.  Cross-compiling NetHack, if even possible, is much more complicated and far beyond the scope of this article.
+
+===Selecting a hints file===
+
+The new build system introduced in NetHack 3.6.0 is based on "hints files", which inform the rest of the build system about various things which might differ from one system to another, and which you might wish to customize when building, even if you are making no changes to the actual game.  Things like which directory to install the game's binaries into, which directory to use for storing the game data, which flags to pass to the compiler, and even basic facts like what the compiler on your system is called, are all specified in the hints file.  A hints file is simply a plain text file, formatted like a shell script, that contains hints for the NetHack build system, in the form of setting variables.
+
+You can find a collection of existing hints files in the sys/unix/hints/ directory.  You may find that one of them is closer to what you want than others.  For example, the 'linux' hints file is designed for a single-user install in ~/nh/install; whereas, the 'unix' hints file is designed for a traditional system-wide install in /usr.  Look through the existing hints files and see if you can find one that is a close fit for your needs.
+
+===Modifying a hints file===
+
+If you need to combine or modify a hints file, here are some useful things to know:
+* Lines starting with # are comments.  You can thus prepend # to an existing line to comment it out, rendering it ineffective but leaving it there for reference.
+* There are four main directories that need to be specified: 'HACKDIR', 'SHELLDIR', 'INSTDIR', and 'VARDIR'.  These are often based on a 'PREFIX' directory, which is not itself used directly for anything, but the others are typically located inside of it.
+* The CHOWN and CHGRP variables should contain the commands used to change ownership and group-ownership of files, respectively.  Setting it to a command that doesn't do anything (such as 'yes' or 'true', as the stock 'linux' hints file does) will result in permissions not being changed, which is typically not what you want except possibly for a single-user install.  If you are modifying the 'linux' hints file to build on a Linux system, you will probably want to change these lines.
+* The WINSRC, WINOBJ, and WINLIB lines control which window port you will build.  If this is your first time compiling NetHack, it is recommended to start with the TTY port, which is easiest to build successfully.
+* In 3.7.0, hints/linux tends not to compile, but hints/linux-debug works fine. VARDIR seems to need '/var' to be at the end of the path you choose, or else the game won't start because it can't find the scoreboard. You may also want to remove 'CFLAGS+=-DPANICLOG_FMT2' because it generates tons of warnings.
+
+==Running the build setup script==
+
+Once you have selected and possibly modified a hints file, you are almost ready to run the setup script.  Run "make fetch-lua".
+
+Then on most platforms, setup is done with the following command:
+<tt>sys/unix/setup.sh sys/unix/hints/whichever_hints_file_you_are_using</tt>
+
+On non-Unix platforms, the setup process may be slightly different.  See the documentation for your platform. The setup script should copy the needed build-system files (e.g., makefiles) into place and modify them as needed.
+
+===Windows===
+
+For Nethack 3.6 on Windows, it's a good idea to follow the instructions inside <tt>sys\winnt\Install.nt</tt>. The following assumes that you have your compiler and coreutils from projects such as MinGW and GnuWin32.
+
+* Navigate to <tt>sys\winnt</tt> and run <tt>nhsetup.bat</tt>.
+
+* Navigate to <tt>src</tt> and edit <tt>Makefile.gcc</tt>.
+
+* Inside the Makefile, you're going to want to edit or check the following things:
+** Do you want the outputted binary to belong in <tt>..\binary</tt>, or somewhere else?
+** Are you compiling for a specific architecture (x86 or x64)? If so, edit <tt>TARGET_CPU</tt>.
+** Do you want Curses window port support? If so, uncomment <tt>ADD_CURSES=Y</tt> and make sure that you've cloned the PDCurses repository from https://github.com/wmcbrine/PDCurses.
+** TODO: (Test this, I only wanted the terminal interface) Do you want Qt support? You're going to want to change this option and specify the location of the Qt directory.
+** On Line 484, are the compiler macros set up correctly? Mine were not, as Chocolatey links the compilers to standard <tt>gcc</tt> filenames instead of <tt>mingw32-gcc.exe</tt>. Comment out the <tt>#ifndef</tt> directive and specify the compilers.
+
+* Make with your <tt>make</tt> program. For me, the invocation was <tt>mingw32-make -f Makefile.gcc install</tt>. Note that if you don't specify the <tt>-f Makefile.gcc</tt> option, you'll get an error, as the standard <tt>Makefile</tt> is for Visual Studio's <tt>nmake</tt> program.
+{{upcoming|NetHack 3.7.0|Nethack 3.7 has good support for building, running, and debugging in Visual Studio 2017, 2019, and 2022, including a working solution file. Tools such as MinGW and GnuWin32 are not required. See <tt>sys\windows\Install.windows</tt> for instructions. After building the project, you may need to rename the "symbols.template" file in the target director to "symbols".}}
+
+==Compiling==
+
+At this point, you may be able to just run the 'make' command and get a working build.
+
+==Installing==
+
+If the build goes well, you can (as root/superuser if necessary, or with sudo) use the 'make install' command to install your newly compiled NetHack.
+
+==Creating the system config file==
+
+When you try to run your new build, it will complain that there is no syscf file and refuse to do anything until you create that file.  The syscf file is allowed to be empty; it just has to exist.  Simply create an empty file named sysconf in your HACKDIR and nethack will run normally.
+
+Depending on which hints file you used, some permissions may need to be changed before the game can be run as a regular user.
+
+[[Category:Development]]
+{{nethack-360}}}
+&&%s&& %s Patching {132950 2020-03-20T04:20:35Z {4000978 Aximili} Add man page link {{man|patch}}
+Here is a short guide on '''patching''' your NetHack sources, assuming you have already managed to [[compiling|compile]] your copy.
+
+==On Windows==
+
+This assumes you have a basic knowledge of [[compiling]] and similar.
+
+*Download the patch binary zip package from http://gnuwin32.sourceforge.net/packages/patch.htm, and unpack that into the bin directory of MinGW, so that the patch.exe will be in the same directory as mingw32-make.exe (e.g. c:\mingw\bin).
+
+*Find the diff-file you want to patch, and download it on to your computer, preferably in the NetHack sources root directory, <tt>c:\nh343</tt>.
+Note that linux-style line endings will cause problems, you need to convert those into Windows-style ones! You can do this for example copypasting the contents of that file from a browser window into Notepad, and then saving the notepad file. The following code assumes the patch is [[Menucolors]], so to use any other patch just replace <code>nh343-menucolor.diff</code> with the filename of the patch.
+
+*Start <tt>cmd.exe</tt> and do the following:
+ cd c:\nh343
+ path=%path%;c:\mingw\bin
+ patch -p1 < nh343-menucolor.diff
+
+
+The <tt>1</tt> after the <tt>-p</tt> might need to be changed to <tt>0</tt> or possibly <tt>2</tt> for other patches.
+
+note: On MS-Windows, the patchfile must be a text file, i.e. CR-LF must be used as line endings. A file with LF may give the error: "Assertion failed, hunk, file patch.c, line 343," unless the option '--binary' is given.
+
+note: Newer version of windows require administrative privileges to run files named patch, which can break GNU patch, see here for a workaround: http://jameswynn.com/2010/03/gnu-patch-in-windows-7-or-vista/
+
+==Linux, and Unix in general==
+
+The typical way to patch is to stand in the root directory of the nethack source tree, apply the patch:
+ patch -p''num'' < ''my.patch''
+and then examine the warning or error messages, if any.
+
+"-p''num''" is used to strip path prefixes from the patch before trying to apply it.
+For example, if the patch contains lines on the form:
+
+ --- slashem-0.0.7E7F1-orig/dat/Jedi.des 1970-01-01 01:00:00.000000000 +0100
+ +++ slashem-0.0.7E7F1/dat/Jedi.des      2005-07-20 14:55:01.434612456 +0200
+
+you should strip off one level.  You should strip off two levels if the patch says:
+
+ --- a/slashem/dat/Jedi.des 1970-01-01 01:00:00.000000000 +0100
+ +++ b/slashem/dat/Jedi.des 2005-07-20 14:55:01.434612456 +0200
+
+[[Category:Development]]}
+&&%s&& %s Eucalyptus leaf {145338 2022-04-03T15:54:29Z {4000693 Phol ende wodan} /* Generation */ between big rooms, medusa, quest and themed rooms, there is way too much variance to calculate overall probability of eucalyptus leaves. Just give per-tree probability. {{comestible
+  |color=green
+  |tile=[[image:eucalyptus leaf.png]]
+  |name=eucalyptus leaf
+  |nutrition=30
+  |turns=1
+  |weight=1
+  |cost=6
+  |conduct=vegan
+}}
+
+A '''eucalyptus leaf''' is a [[vegan]] food item with some non-nutritional uses.
+
+{{upcoming|NetHack 3.7.0|The eucalyptus leaf now provides only 1 nutrition.}}
+
+== Effects ==
+
+Eating a non-cursed one will cure [[sickness]] and [[nausea]].{{refsrc|eat.c|1725}} It can also be applied as a whistle, and acts as a [[magic whistle]] if blessed and a [[tin whistle]] otherwise. There is a 2% chance that a [[blessed]] eucalyptus leaf will become unblessed after being used as a whistle.{{refsrc|apply.c|2874}}
+
+== Generation ==
+Eucalyptus leaves are fairly rare, making up only 0.3% of all food items. However, there is a 19.4% chance of getting some from any given [[tree]] (first by kicking it until it produces food, then by cutting it down). As such, the odds of finding any are much better if your game happens to have a [[Big Room]], [[Medusa's Island]], [[Quest]], or [[themed room]]s containing lots of trees. There is a 4.7% chance of some in [[Sokoban]]. Minetown has a 7.2% chance of eucalyptus leaves, mostly due to a 35.1% chance from kicking and then cutting down both trees in [[Minetown#Bustling Town|Bustling Town]]. [[Barbarian]]s, [[Monk]]s, [[Priest]]s, and [[Ranger]]s are nearly guaranteed to obtain some from the trees in their quest home levels. [[Pacifist]]s should know that eucalyptus leaves are not [[Monster_starting_inventory|generated in any monster's inventory]], as opposed to [[death drop]]s.
+
+== Trivia ==
+The effect of using a eucalyptus leaf as a magic whistle seems to be based on the Australian 1960s TV show ''[[wikipedia:Skippy the Bush Kangaroo|Skippy the Bush Kangaroo]]'', which had a recognizable theme call played on a eucalyptus leaf. Skippy came bounding through the bush to whoever played the eucalyptus leaf.
+
+== References ==
+
+<references />
+[[Category:Comestibles]]
+{{nethack-361}}}
+&&%s&& %s Slime {147564 2022-08-16T01:07:31Z {4000693 Phol ende wodan} deslexify and also add the "Slime" status bar condition '''Slime''' can refer to:
+* the [[green slime]] monster
+* the [[sliming]] attack of that monster
+* the status condition of slowly turning to slime, represented by "Slime" on the [[status line]], which results from interacting with green slimes
+
+[[Slime mold]]s, despite the name, are not related.
+
+Slime is the internal name for the [[gelatinous]] material in [[SpliceHack]]: see [[Object materials (SpliceHack)]].
+
+{{disambig}}
+{{nethack-366}}}
+&&%s&& %s Crystal {140875 2021-06-13T03:48:20Z {4001279 Umbire the Phantom} Removed redirect to [[Gemstone]] On this wiki, '''crystal''' may refer to either of the following:
+
+* Crystal objects which are usually made of [[glass]].
+* [[Gemstone]], an item material that is sometimes referred to as crystal, particularly in [[object materials]] systems.
+
+{{disambig}}}
+&&%s&& %s Gemstone {149365 2022-12-14T22:05:29Z {4001279 Umbire the Phantom} /* EvilHack */ clear leftovers {{otheruses|the material|the items|gem}}{{For|the material that non-gem "crystal" objects in NetHack are made of|glass}}
+'''Gemstone''' is a [[material]] that appears in ''[[NetHack]]''.
+
+==Description==
+All [[gem]]s that are not worthless pieces of glass - which appear as 'gems' until identified - are made out of gemstone. [[Ring]]s with the following [[randomized appearance]]s are made of gemstone:
+
+* Agate
+* Black onyx
+* Diamond
+* Emerald
+* Jade
+* Moonstone
+* Ruby
+* Sapphire
+* Tiger eye
+* Topaz
+
+[[Polypiling]] gemstone objects may result in either a stone golem or a clay golem.{{refsrc|zap.c|1304|version=NetHack 3.6.6}}
+
+==Variants==
+In variants with an [[object materials]] system, many more objects including weapons and armor can be made of gemstone - sometimes referred to as '''crystal''' by the game. It is generally a high-quality material for weapons and armor, but such items also very expensive and often hard to come by.
+
+===SLASH'EM===
+[[SLASH'EM]] introduces [[Golem (SLASH'EM)|new types of golem]] that are made of gemstone - the ruby, sapphire, diamond, and crystal golems. All gemstone golems have a powerful physical attack and a breath weapon; the diamond golem can used a random breath attack, similar to the [[Chromatic Dragon]]. All four varieties of golem drop gems of their respective material upon death, with the crystal golem leaving behind a pile of random valuable gems.
+
+===GruntHack===
+In [[GruntHack]], gemstone is the heaviest and most expensive among object materials, but provides a +2 bonus to AC relative to iron armor and is immune to [[erosion]].
+
+===dNetHack===
+In [[dNetHack]], gemstone is an available material for objects - new items that are made of gemstone include the [[fossil dark]] and [[magicite]].
+
+Valuable gems can also be used as focusing crystals for [[lightsaber]]s to produce different-colored 'blades'; worthless pieces of glass will always result in a red lightsaber.
+
+===xNetHack===
+In [[xNetHack]], gemstone provides a +2 AC bonus for armor similar to GruntHack, but is much lighter in comparison to most metals save for [[mithril]].
+
+Wands with the randomized appearance of "hexagonal" are now made of quartz.
+
+===EvilHack===
+In [[EvilHack]], gemstone functions similarly to xNetHack in terms of armor and AC. Gemstone weapons additionally gain a +3 damage bonus if they deal slashing or piercing damage; dwarven-made weapons have a 5% chance to generate with gemstone material.
+
+The following items have a base material of gemstone:
+
+* [[Sunsword]] (crystal)
+* [[The Sword of Kas]] 
+* [[Crystal plate mail]]
+* [[Rod]]s
+* [[Crystal chest]]s
+
+===SlashTHEM===
+In addition to SLASH'EM changes, [[SlashTHEM]] adds two randomized appearances for amulets, "tetraedical" and "isocaedical", that are composed of gemstone; both appearances are associated with the [[amulet of second chance]] and [[amulet of data storage]] in the code respectively.
+
+==References==
+<references />
+
+[[Category:Materials]]
+{{nethack-366}}}
+&&%s&& %s Metal {146557 2022-07-04T02:12:54Z {4000227 Kufat}  '''Metal''' is a [[material]] used for metallic objects that are not [[iron]], [[mithril]], [[copper]], [[platinum]], [[silver]], or [[Gold (material)|gold]]. Metal objects do not rust or otherwise [[erosion|erode]]. 
+
+The following objects are metal:
+* [[ya]]
+* [[scalpel]]
+* [[tsurugi]]
+* [[whistle]]
+* [[tin]]
+* some [[wand]]s (tin, iridium, zinc, aluminium, and uranium)
+
+==Variants==
+In [[UnNetHack]], the following items are also metal:
+* [[crystal pick]]
+* [[tinfoil hat]]
+
+[[Category:Materials]]
+{{nethack-360}}}
+&&%s&& %s Bone {98464 2015-12-18T15:30:54Z {4000080 ChasonBot}  :''For the remains of a dead player, see [[bones]].''
+'''Bone''' is a [[material]]. Only ivory [[ring]]s and horns ([[tooled horn|tooled]], [[frost horn|frost]], [[fire horn|fire]], [[horn of plenty|plenty]] and [[unicorn horn|unicorn]]) are made of bone. [[Worm tooth|Worm teeth]] are actually made of an undefined material{{refsrc|objects.c|139}} and thus can be burnt, whereas other bone objects are naturally fireproof. Polymorphing bone items might create a [[skeleton]]. Note that bone is not considered [[organic]].
+
+==References==
+
+<references/>
+
+[[Category:Materials]]
+{{nethack-343}}}
+&&%s&& %s Plastic {144984 2022-03-20T12:40:22Z {4001279 Umbire the Phantom}  '''Plastic''' is a [[material]] for objects that occurs in ''[[NetHack]]''. Plastic items can be [[erode|burnt]].
+
+The items made of plastic are as follows:
+
+* [[ice box]]es
+* [[credit card]]s
+* [[expensive camera]]s
+* [[magic marker]]s
+* [[rubber hose]]s
+* the [[cheap plastic imitation of the Amulet of Yendor]]
+
+==SLASH'EM==
+Of the new [[SLASH'EM]] items, [[fly swatter]]s and [[green lightsaber]]s are made of plastic.  [[Polypiling]] plastic objects may create a [[plastic golem]], which drops [[credit card]]s on death.
+{{nethack-343}}
+[[Category:Materials]]}
+&&%s&& %s You feel sensitive! {40573 2009-06-20T02:38:41Z {102 Bitplane}  #REDIRECT [[Warning]]
+[[Category:Messages]]}
+&&%s&& %s You feel sensitive {40608 2009-06-20T02:46:18Z {102 Bitplane}  #REDIRECT [[Warning]]
+[[Category:Messages]]}
+&&%s&& %s Sensitive {10887 2006-09-22T14:03:15Z {396 Jayt} Redirecting to [[Warning]] #REDIRECT [[Warning]]}
+&&%s&& %s Mine's End {10821 2006-09-21T22:16:50Z {924 ZeroOne} [[Mine's End]] moved to [[Mines' End]]: The mines are generally referred to as mines, not a mine. The capitalization of "end" may, however, be discussed. #REDIRECT [[Mines' End]]}
+&&%s&& %s Source talk:True rumors {123817 2018-08-28T01:07:39Z {4000693 Phol ende wodan} reply to Hoanwan regarding page merge Are we ordering this within the categories based on rumor number or resistance type? I think we should stick with rumor number. [[User:Lotte|Lotte]] 01:44, 22 September 2006 (UTC)
+
+:IMHO, people who are looking for a specific rumour will use the search facility and won't care about the order, while people who are just browsing would prefer the more logical order.  Having said that, I am not an admin here, just a veteran Nethacker. [[User:Ekaterin|Ekaterin]] 10:37, 22 September 2006 (UTC)
+
+Some rumours are tough to explain.  I have been using three question marks (???) as an indication that I'm not happy with the explanation of a rumour.  I suggest that people not delete them unless they also replace the explanation with something more convincing. [[User:Ekaterin|Ekaterin]] 19:54, 26 September 2006 (UTC)
+
+:"Zap yourself and see what happens" - at a guess, this comes from pre-Guidebook days when it wasn't obvious that you ''could'' zap yourself.
+
+:Similarly, "A wand of cancellation is like a wand of polymorph" probably just means that they can both be used on objects as well as monsters. [[User:Robin Johnson|Robin Johnson]] 21:59, 26 September 2006 (UTC)
+
+:: The latter could mean that both cancellation and polymorph have the ability to change items into other items (e.g. scroll of foo into blank scroll). For the former, [http://groups.google.com/group/rec.games.roguelike.nethack/msg/99b7bb097f6c3c09 Ken Arromdee has stated] that false rumors are actually worthless rumors, so maybe true rumors are not so much true as helpful. I guess zapping yourself ''could'' be helpful if you didn't know you could :-) --[[User:Jayt|Jayt]] 22:53, 26 September 2006 (UTC)
+
+:"218.  They say that eating a cram ration is a smart move." - Might be referring to a "cram session", i.e. a short intense burst of studying in order to get as much information into your head as possible. I noticed that out of all the "-ration" comestibles, cram rations are pretty solidly in the middle when comparing weight, and nutrition/time. Could it be that they're just the best overall ration? K-/C-rations are better nutr/time-wise, but you have to slaughter soldiers for them, which isn't always a viable choice when you're starving.--[[User:Xazak|Xazak]] 14:35, 29 December 2007 (UTC)
+
+== Potions rust monsters hate??? ==
+
+Logically the potion rust monsters hate would be oil, but I can't find any sign of that in the source code. [[User:Ekaterin|Ekaterin]] 20:01, 28 September 2006 (UTC)
+::Since oil reverses rust damage, and in D&D rust monsters eat rust for sustenance, it makes sense.
+
+== Merge with Rumor_messages ==
+
+I've just updated [[Rumor messages]] with the changes between 3.4.3 and 3.6.1. I haven't touched this page as it doesn't have a version tag and I don't fancy trying to work out what it actually contains.
+
+I have noticed that a merge header was added to the main page in 2010. Is there a process for mergers? Is this just waiting for someone to go through the (large amount of) original content on each page? [[User:Hoanwan|Hoanwan]] ([[User talk:Hoanwan|talk]]) 22:00, 27 August 2018 (UTC)
+
+: Merging is infrequent enough that I don't think there's a process. Ultimately, yes, the main reason it hasn't happened yet is because no one so far has decided to go through and merge the original content. If someone wants to do ''part'' of the work, we could probably start making edits on the Rumor messages page, and stick a todo on it warning that it's incompletely merged with this one.
+: The main difference between the two pages is that this one groups them into topics, and the other one appears to just go through rumors.tru in order. Here's what I think a merged page should probably look like:
+: One large table with four columns: Rumor number (line in the file), rumor text, category (the way they're categorized on this page, probably taking the lowest-level subcategory), and annotations (for the purposes of merging, it's OK to leave them blank for rumors that have no annotation). The columns should be sortable, so readers can sort the table whichever way they prefer.
+: This does lose the multiple levels of categorization that exist on this page, but that's probably OK. The way this page is structured now makes it inflexible to change. --[[User:Phol ende wodan|Phol ende wodan]] ([[User talk:Phol ende wodan|talk]]) 01:07, 28 August 2018 (UTC)}
+&&%s&& %s Brass interface patch {82015 2012-12-19T03:51:30Z {679 Ray Chason} LInk to NetHack Plus [[User:Kernigh|Kernigh]] distributes a '''brass interface patch''' containing ports of five [[vanilla]] interface [[patch]]es to [[NetHack brass]] 040923 with the intention of bringing to NetHack brass an experience similar to that at [[nethack.alt.org]]. The patch fixes a few bugs (especially for those upon [[Unix]]), including one that could cause an [[infinite loop]] to hang the game in [[Gehennom]]. It also updates some [[help (in-game)|help]] files and the [[Guidebook]]. You need a copy of [[NetHack brass]] 040923 to apply the patch against.
+
+Download the patch from:
+: http://kernigh.pbwiki.com/f/brass-interface-01.diff
+
+== setup.sh and config.h ==
+Those on [[Unix]] should run setup.sh in sys/unix ''after'' applying this patch (for a fix to the top-level Makefile). For Unix users, the patch also creates a new option CONFIGFILE in section 3 of [[config.h]]. The intent is that by setting CONFIGFILE is ".brassrc", the game will try to load ~/.brassrc before loading ~/.nethackrc so that some users can maintain separate configurations for brass and vanilla, but users without ~/.brassrc still use ~/.nethackrc.
+
+The patch will enable all of the new defines in config.h by default (in fact it will also try to enable AUTOPICKUP_EXCEPTIONS). To make good use of the patch, you also need to set up some [[option]]s in your NetHack config file.
+
+== From the README ==
+At 23 September 2004, Youkan modified the source code of NetHack 3.4.3 and ported some code from Stephan White's [[NetHack Plus]] to form the variant called NetHack brass 040923.
+
+At 22 September 2006, [[User:Kernigh|Kernigh]] ported five interface patches from 3.4.3 to brass 040923, fixed a bug of infinite loops in mkriver in mkmap.c, updated the Guidebook and some help files, removed some compiler warnings and fixed a problem in the Unix Makefiles. The five patches were:
+* Jukka Lahtinen's [[dump]], [[showborn]] and [[sortloot]] patches
+* Pasi Kallinen's [[menucolors]] patch (see README.menucolor)
+* Shachaf & Oren Ben-Kiki's [[statuscolors]] patch (see README.statuscolors)
+
+== Errata for version 0.1 ==
+* The patch modifies Guidebook.mn and Guidebook.tex but ''not'' Guidebook.txt (to reduce the size of the patch). Unix users can use the Makefile to remake Guidebook.txt from Guidebook.mn. (The Makefile normally ignores Guidebook.txt and creates another one called Guidebook.)
+** Guidebook.mn and Guidebook.tex still do not explain how to use menucolors or statuscolors.
+* The dump patch required some significant changes to work on NetHack brass and to avoid clashing with the statuscolors patch. Upon a dump (and remember to set the dump option to a filename), [[item]]s and [[riding|ridden monsters]] should appear correctly in the screen dump, while skills show as percentages in the skills dump. There might still be some bugs.
+* There is a severe bug in [[NetHack brass]] which could cause an infinite loop in when generating rivers in the maze level below [[Medusa's Island]]. On systems with unsigned "char", the C compiler was converting -1 to 255. Fortunately, this patch fixes the problem by declaring those integers as signed characters.
+
+[[Category:Patches]]}
+&&%s&& %s You feel controlled! {40580 2009-06-20T02:41:14Z {102 Bitplane}  #REDIRECT [[Teleport control]]
+[[Category:Messages]]}
+&&%s&& %s You feel controlled {40559 2009-06-20T02:35:02Z {102 Bitplane}  #REDIRECT [[Teleport control]]
+[[Category:Messages]]}
+&&%s&& %s Controlled {10879 2006-09-22T13:56:23Z {396 Jayt} Redirecting to [[Teleport control]] #REDIRECT [[Teleport control]]}
+&&%s&& %s You feel in control of yourself. {40602 2009-06-20T02:46:12Z {102 Bitplane}  #REDIRECT [[Teleport control]]
+[[Category:Messages]]}
+&&%s&& %s You feel less sensitive {40604 2009-06-20T02:46:14Z {102 Bitplane}  #REDIRECT [[Warning]]
+[[Category:Messages]]}
+&&%s&& %s You feel less sensitive! {40566 2009-06-20T02:37:14Z {102 Bitplane}  #REDIRECT [[Warning]]
+[[Category:Messages]]}
+&&%s&& %s You feel uncontrolled {40610 2009-06-20T02:46:22Z {102 Bitplane}  #REDIRECT [[Teleport control]]
+[[Category:Messages]]}
+&&%s&& %s You feel uncontrolled! {40571 2009-06-20T02:38:26Z {102 Bitplane}  #REDIRECT [[Teleport control]]
+[[Category:Messages]]}
+&&%s&& %s You feel centered in your personal space. {40558 2009-06-20T02:34:47Z {102 Bitplane}  #REDIRECT [[Teleport control]]
+[[Category:Messages]]}
+&&%s&& %s The Eye of Misspelling {10895 2006-09-22T14:14:32Z {924 ZeroOne} #REDIRECT [[The Eye of the Aethiopica]] #REDIRECT [[The Eye of the Aethiopica]]}
+&&%s&& %s Logfile {98846 2015-12-20T00:35:08Z {4000080 ChasonBot}  '''logfile''' is the file that contains a line of data for each game played. This file is in the same directory as the nethack executable binary.
+
+Each line contains several fields, separated by a space, for example:
+
+    #: 1     2   3 4 5 6 7  8 9        10       11   12  13  14  15  16
+ data: 3.4.3 916 0 5 6 0 28 1 20060611 20060611 1031 Wiz Gno Fem Neu paxed,killed by a boiling potion
+
+The fields are as follows:
+
+#version. In this case, it's <tt>3.4.3</tt>
+#score
+#dungeon number. These correspond to the DUNGEON-definitions in [[dungeon.def]]-file.
+#*0 The Dungeons of Doom
+#*1 Gehennom
+#*2 The Gnomish Mines
+#*3 The Quest
+#*4 Sokoban
+#*5 Fort Ludios
+#*6 Vlad's Tower
+#*7 Elemental Planes. The dungeon level -field denotes the plane.
+#dungeon level. This is normally positive, except in the case of [[Elemental Planes]]:
+#*-5 Astral Plane
+#*-4 Plane of Water
+#*-3 Plane of Fire
+#*-2 Plane of Air
+#*-1 Plane of Earth 
+#maximum level
+#hit points
+#maximum hit points
+#number of deaths. This increases even if the death was averted with [[amulet of life saving]].
+#end date in YYYYMMDD format
+#start date in YYYYMMDD format
+#user ID. This is the UID NetHack runs as, and is only relevant for operating systems that use userIDs.
+#[[role]]
+#[[race]]
+#[[gender]]
+#[[alignment]]
+#name and reason for game ending, separated by a comma
+
+==See Also==
+* [[xlogfile]]
+
+==References==
+*[[topten.c]]
+
+[[Category:Stubs]]
+[[Category:Annotations]]
+{{nethack-343}}}
+&&%s&& %s Record file {99100 2015-12-20T22:38:26Z {4000080 ChasonBot}  '''record file''' is the high-score file. The file is in NetHack's [[playground]] directory (on some systems the same directory as the NetHack executable binary) and the file format is the same as [[logfile]].
+
+When [[compiling]] NetHack from [[source]], you can change the number of entries saved into the record file by editing {{sourcecode|topten.c|36}} and thereabouts:
+*<tt>NAMSZ</tt> defines the maximum length of username saved into the record file.
+*<tt>PERSMAX</tt> defines how many entries are allowed for a single player for each [[role]]. If <tt>PERS_IS_UID</tt> is also defined, then the UID of the NetHack process is used to distinguish users, otherwise the user name is used.
+*<tt>POINTSMIN</tt> says how many points are needed, at minimum, to get into the record file.
+*<tt>ENTRYMAX</tt> is the maximum number of entries kept in the record file.
+[[Category:Stubs]]
+[[Category:Annotations]]
+{{nethack-343}}}
+&&%s&& %s IPBT {144113 2022-01-09T04:17:12Z {4001200 Nutterbutter} Installation instructions no longer work. Download link is for older version. Newer version requires cmake to install. Lubuntu 16.04 has problems with the cmake install. '''IPBT''' is a [[ttyrec]] player written by Simon Tatham, author of [[PuTTY]]. It is easiest to run on [[Unix]], but can be made to work on other operating systems. The name is an acronym, expanding into '''It's Play-Back Time'''.
+
+There are several good reasons to use IPBT: it allows you to rewind files, it allows you to play at linear or [https://en.wikipedia.org/wiki/Logarithmic_scale logarithmic] speeds, it allows you to jump to specific frames. The disadvantage is that IPBT must load the entire ttyrec file before it begins play; this is less of a problem for [[NetHack]] than for large, repetitive games like [[Angband]].
+
+==Downloading, installing and compiling==
+
+<<<This is for an older version and the download link no longer works. Current version requires cmake, so installation steps are different>>
+
+You will need a working compiler and related utilities. This includes at least <tt>gcc</tt> and <tt>make</tt>. You will also need the ncurses headers. On Debian, Ubuntu, and some other distributions, they are in the package libncurses5-dev.
+
+Download the latest version of IPBT from [http://www.chiark.greenend.org.uk/~sgtatham/ipbt/ http://www.chiark.greenend.org.uk/~sgtatham/ipbt/] ([https://www.chiark.greenend.org.uk/~sgtatham/ipbt/ipbt-20190601.d1519e0.tar.gz direct link]), unarchive, and make:
+ $ wget https://www.chiark.greenend.org.uk/~sgtatham/ipbt/ipbt-20190601.d1519e0.tar.gz
+ $ tar zxfv ipbt-20190601.d1519e0.tar.gz
+ $ cd ipbt-20190601.d1519e0/
+ $ ./configure
+ $ make
+
+You can now run IPBT from the current directory:
+ <tt>./ipbt <ttyrecfile></tt>
+
+Here are the commands; most of them are case insensitive.
+
+ * `q' quits IPBT.
+ * Space (or '>') moves forward by a frame. Prefix it with a number
+   to skip multiple frames at a time.
+ * `b' (or '<') moves back by a frame. Prefix it with a number to
+   move backwards by multiple frames at a time.
+ * `o' toggles the on-screen display, which shows the current status
+   of ipbt (such as frame number and play speed).
+ * `L' toggles logarithmic time compression (which has little effect
+   on small delays but massively compresses long ones).
+ * Typing a number followed by `x' causes play to proceed at that
+   many times normal speed (e.g. `3x' means play at triple speed).
+   Typing just `x' is equivalent to `1x': it restores normal speed.
+ * `X' is like `x', but slows down rather than speeding up: `2X'
+   means half speed and `3X' means one third speed. `X' on its own
+   restores normal speed, just like `x'.
+ * `g' jumps to the beginning of the animation. Prefixing a number
+   jumps to a particular frame.
+ * `G' jumps to the end of the animation. Prefixing a number jumps
+   to that many frames from the end.
+ * `p' (and also `s', for historical reasons) toggles pause mode.
+   Pause mode is initially enabled.
+ * `/' searches forward.
+ * `?' (or `\') searches backwards.
+ * `n' searches the same string in the same direction.
+ * `N' searches the same string in the opposite direction.
+
+==Patches==
+
+[[User:Eidolos|Eidolos]] has written a search history feature for ipbt that hasn't (yet?) been incorporated into the main build. Get it at [http://sartak.katron.org/misc/ipbt_search_history.diff http://sartak.katron.org/misc/ipbt_search_history.diff]. Press the up or down keys to scroll through your history while typing a search query.
+
+[[Category:Utilities]]}
+&&%s&& %s It's Play-Back Time {10900 2006-09-22T15:41:57Z {396 Jayt} Redirecting to [[IPBT]] #REDIRECT [[IPBT]]}
+&&%s&& %s Category:Utilities {10901 2006-09-22T15:42:54Z {396 Jayt} blurb, created in [[Category:Community]] This category contains articles about 3rd-party utilities written for NetHack players.
+
+[[Category:Community]]}
+&&%s&& %s Quest portal {147928 2022-08-24T07:54:21Z {4000978 Aximili} suggest merger {{merge|[[magic portal]]}}
+The '''quest [[portal]]''', {{magenta|^}}, is the [[trap]] that warps you between the main [[Dungeons of Doom]] and the [[Quest]]. On a certain level of the [[dungeon]] below the [[branch]] to [[Sokoban]], you will receive a request for help from your [[quest leader]]. Players must search for it; methods include walking on every square of every room, or watching for a [[monster]] (even your own [[pet]]) to stumble into it.
+
+The quest portal will appear above the [[Castle]], between [[dungeon level]]s 11 and 16, and 6 or 7 levels below the [[Oracle]]. The quest portal will not generate in a vault, in a room with either the upstairs or downstairs, and on a floor that also has a portal to [[Fort Ludios]]. In some games, the quest portal will actually be upon the [[Rogue level]].
+
+Because the portal is a trap, a [[confusion|confused]] [[scroll of gold detection]] will reveal its location. A [[wand of secret door detection]] or {{spell of|detect unseen}} spell will also reveal nearby traps, including the portal. 
+
+If you attack the quest leader, have converted your alignment, or fail the alignment test more than seven times, the portal will disappear permanently, which can render the game [[unwinnable]]. See the quest leader page for more details.
+
+== SLASH'EM ==
+For those playing [[SLASH'EM]], there are three additional quest portals that appear in dungeon levels 15 to 20; these go to the [[Lawful Quest]], [[Neutral Quest]] and [[Chaotic Quest]]. There is no special message for these three portals, and they can be searched out as usual, but no two of the four portals can be in the same level.
+
+[[Category:Dungeon features]]
+{{nethack-343}}}
+&&%s&& %s Bags of holding {10919 2006-09-22T18:12:31Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s Oilskin sacks {10920 2006-09-22T18:12:44Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s Sacks {10921 2006-09-22T18:12:46Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s Chests {10922 2006-09-22T18:12:50Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s Large boxes {10923 2006-09-22T18:12:57Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s Ice boxes {10924 2006-09-22T18:13:02Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s Bags of tricks {10925 2006-09-22T18:13:10Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s Containers {10926 2006-09-22T18:13:32Z {396 Jayt} Redirecting to [[Container]] #REDIRECT [[Container]]}
+&&%s&& %s X11 configuration {20721 2007-04-29T17:12:09Z {630 Paxed} redirect to [[X11]] #REDIRECT [[X11]]}
+&&%s&& %s You feel very jumpy. {40570 2009-06-20T02:38:17Z {102 Bitplane}  #REDIRECT [[Teleportitis]]
+[[Category:Messages]]}
+&&%s&& %s You feel diffuse. {40560 2009-06-20T02:35:17Z {102 Bitplane}  #REDIRECT [[Teleportitis]]
+[[Category:Messages]]}
+&&%s&& %s You feel less jumpy {40565 2009-06-20T02:36:39Z {102 Bitplane}  #REDIRECT [[Teleportitis]]
+[[Category:Messages]]}
+&&%s&& %s You feel less jumpy. {40585 2009-06-20T02:41:28Z {102 Bitplane}  #REDIRECT [[Teleportitis]]
+[[Category:Messages]]}
+&&%s&& %s You feel less attractive. {40603 2009-06-20T02:46:13Z {102 Bitplane}  #REDIRECT [[Aggravate monster]]
+[[Category:Messages]]}
+&&%s&& %s You feel less attractive {40584 2009-06-20T02:41:25Z {102 Bitplane}  #REDIRECT [[Aggravate monster]]
+[[Category:Messages]]}
+&&%s&& %s Orb of Weight {10941 2006-09-22T22:21:06Z {775 Stefanor} fix dbl redirect #REDIRECT [[The Orb of Fate]]}
+&&%s&& %s SC343-10 {10938 2006-09-22T21:10:11Z {712 SGrunt} #REDIRECT [[Polyself bug]] #REDIRECT [[Polyself bug]]}
+&&%s&& %s Polyself bug {147907 2022-08-23T21:48:16Z {4001279 Umbire the Phantom} rw The '''polyself bug''' was a fairly serious flaw in the handling of self-[[polymorph]] in the case where the [[hero|character]] [[Polymorph#Polymorphing into your own race|polymorphs into their own race]] ("You feel like a new <race>!"). It is [[Bugs in NetHack 3.4.3#SC343-10|listed]] as SC343-10:
+
+ SC343-10: Player can raise HP and Pw by dancing with vampires.
+
+To exploit this bug, a player would need to boost their [[hit point]] and [[energy]] maximums through any applicable method, e.g. [[drain for gain]] or simply drinking enough non-[[cursed]] potions of {{potion of|healing|extra healing|full healing}}, and/or {{potion of|gain energy}}. The player then [[level drain]]s themselves to reach experience level one - methods to level drain yourself include the {{spell of|drain life}} spell, hitting yourself with [[Stormbringer]] or [[The Staff of Aesculapius]], or the attack of a level-draining monster, e.g. any [[Wraith (monster class)|wraith]] or [[Vampire (monster class)|vampire]], as alluded to in the official description of the bug.
+
+Once this is done, the act of [[polyself]] into your own race has a chance of adjusting your experience level. A polyself into your own race at level one is highly likely to kill you from dropping it to 0, but can also increase it to 2 or 3 - increasing your level by polyself will approximately double your hit points and triple your power, and draining your level back to one does not fully offset this.{{refsrc|polyself.c|161}}
+
+This means that, with several [[amulet of life saving|amulets of life saving]], repeatedly polymorphing into your own race and draining level back to one can significantly increase your hit points and power, usually to the cap of a 32-bit [[signed integer]]. [[Pudding farming]] is often used to acquire a healthy quantity of amulets for this purpose.
+
+This bug was fixed in [[Nethack 3.6.0]].
+
+==References==
+<references/>
+{{noversion}}
+[[Category:Bugs]]}
+&&%s&& %s Signed integer {10947 2006-09-23T01:32:26Z {239 Eidolos} Redirect to [[Signed variable]]. #REDIRECT [[Signed variable]]}
+&&%s&& %s Slimed {10949 2006-09-23T03:52:31Z {509 Lotte} redirect #REDIRECT [[Sliming]]}
+&&%s&& %s Slippery fingers {103617 2016-07-20T23:49:34Z {4000693 Phol ende wodan} Fix error with source ref to 3.4.3 '''Slippery fingers''' are a result of eating deep fried or french fried food from a [[tin]], trying to use a cursed [[can of grease]], or trying to apply or #dip a cursed [[potion of oil]]. They last d15 [[turn]]s.
+
+When your fingers are slippery, you drop any non-cursed [[weapon]] you were wielding (which can be problematic in a [[shop]]). If you are not wielding a weapon, or you are wielding a cursed weapon, your non-cursed rings may slip from your fingers.{{refsrc|do_wear.c|2020|version=NetHack 3.6.0}} Applying a [[towel]] effectively cleans your fingers. Putting gloves on does not remove or cover this effect, due to forces of physics yet unfathomed.  The lesson here is to watch exactly what it is you are eating/applying, as slippery fingers can very easily lead to a swift death if said tin or grease was used out of pure necessity.
+
+As of NetHack 3.6.0, stir fried food from a tin can also cause slippery fingers.
+
+==References==
+<references/>
+{{stub}}
+
+[[Category:Properties]]}
+&&%s&& %s Land mine {147830 2022-08-22T02:54:10Z {4000978 Aximili} remove stub notice {{wikipedia}}
+
+{{trap
+ |name=land mine
+ |color=red
+ |generation=level 6+, [[Fort Ludios]]
+ |effect=Explodes, creates pit, wounds legs
+}}
+
+{{tool
+  |color=red
+  |tile=[[Image:landmine.PNG]]
+  |name=land mine
+  |cost=180
+  |weight=300
+  |material=iron
+}}
+
+A '''land mine''' is a [[tool]] that can be carried around, and then [[apply|applied]] to produce a land mine [[trap]].
+
+==Generation==
+If you [[untrap|#untrap]] an activated land mine trap, it will turn (back) into the land mine item.
+
+Activated land mines are only randomly generated at dungeon level 6 or lower. There are also many in the treasure room in [[Fort Ludios]].
+
+==Effects==
+Trying to set a land mine while [[fumbling]], or setting a [[cursed]] landmine has a chance of detonating it instead. The chance is modified by [[Luck]]; if your Luck is maxed, the chances are very slim. Setting a land mine while [[riding]] a steed with [[skill|Unskilled]] in Riding has the same chance of failure, and an even worse chance if also fumbling or using a cursed landmine, also causing it to detonate.
+
+Land mines explode when triggered, which will do 1-16 damage, [[wounded legs|wound your legs]] and leave behind a pit. You may untrap a land mine from an adjacent square, and then pick it up and install it elsewhere, similar to a bear trap.
+
+[[Monsters]] have only a 1 in 3 chance of setting off a land mine when they step on one.{{refsrc|trap.c|2084}}  [[Flying]] creatures are even less likely to set one off (and won't ever fall in the resulting [[pit]]), although there is still a slim chance that air currents will activate the mine.{{refsrc|trap.c|2092}}  Land mines can also be set off by rolling [[boulder]]s.
+
+Any items on the same square as an active land mine will be blasted around the room (or destroyed, if fragile) when it goes off.
+
+A land mine that is triggered adjacent to a body of water like a [[pool]] or [[moat]] will create a pit that immediately fills with water, likely immersing you in the process.
+
+==Strategy==
+Be careful, as you can set off your own land mines if you move on to that [[square]] or fail to untrap them. Ensure your land mine isn't cursed, you aren't fumbling, and you aren't riding.
+
+Since some monsters tend to pick up items left lying around, you might be able to lure victims on to your land mines with bait that appeals to them.
+
+===Mine fields===
+Because monsters can often get past them, placing a single land mine is usually not that effective.  However, you can set several mines to make a mine field, which might be handy for dealing with certain [[special room]]s filled with monsters.  You could also use a mine field to protect the area around a [[stash]]. It can also be used as a warning system to alert you to the presence of monsters: ''"Kaablamm!  You hear an explosion in the distance!"''
+
+==Messages==
+{{message|KAABLAMM!!! You triggered a land mine!|A land mine beneath you detonated.}}
+{{message|KAABLAMM!!! <monster> triggers a land mine!|A monster set off a land mine.}}
+{{message|Kaablamm! You hear an explosion in the distance!|An unseen monster set off a land mine.}}
+{{message|You discover a trigger in a pile of soil below you.|You are [[levitating]] or [[flying]] over a land mine. The trap becomes identified.}}
+{{message|KAABLAMM!!! The air currents set it off!|You are levitating or flying over a land mine, but it detonated anyway.}}
+{{message|KAABLAMM!!! The rolling boulder triggers a land mine.|A [[rolling boulder trap]] rolled over and detonated a land mine.}}
+
+==SLASH'EM==
+In SLASH'EM, you can also recover a few more from [[Special_level_(SLASH'EM)#Grund's_Stronghold | Grund's Stronghold]], assuming the monsters there don't set them off.
+
+==References==
+<references/>
+[[Category:Tools]]
+[[Category:Traps]]
+{{nethack-343}}}
+&&%s&& %s Liquid {98839 2015-12-19T23:35:03Z {4000080 ChasonBot}  '''Liquid''' is a [[material]]. Only [[venom]] is made of liquid.
+
+[[Potion]]s, [[water]], [[lava]] and some [[monster]]s could theoretically be described as liquid, but they are not, and their prospective status as liquids has no impact on gameplay.
+
+[[Category:Materials]]
+{{nethack-343}}}
+&&%s&& %s Wax {99476 2015-12-22T05:42:34Z {4000080 ChasonBot}  '''Wax''' is a [[material]]. In vanilla NetHack, only wax and tallow [[candle]]s are made of wax. In [[SLASH'EM]], [[magic candle]]s are also made of wax.
+
+[[Category:Materials]]
+{{nethack-343}}}
+&&%s&& %s Flesh {131703 2020-01-30T08:45:04Z {4001279 Umbire the Phantom}  '''Flesh''' is a [[material]]. It refers to the real-life equivalent of ''"meat"''&mdash;i.e. the muscle, fat, entrails, and skin of an animal.
+
+Most [[corpse]]s are made of flesh, as well as the following items:
+
+* [[tripe ration]]
+* [[egg]]
+* [[meatball]]
+* [[meat stick]]
+* [[huge chunk of meat]]
+* [[meat ring]]
+
+Monsters "made" of meat are often described as '''fleshy'''; this property determines, among other things, whether or not a [[statue]] of that monster will be brought to life.
+
+All flesh items are unsuitable for [[vegan]] characters to eat, and all except eggs are unsuitable for [[vegetarian]]s as well.
+
+If a player [[polypile]]s enough flesh items on a single square, they have a chance of creating a [[flesh golem]].
+
+[[Category:Materials]]
+{{nethack-364}}}
+&&%s&& %s Paper {132243 2020-02-22T17:33:15Z {4001279 Umbire the Phantom}  '''Paper''' is a [[material]]. All [[scroll]]s and [[books]] are made of paper.
+
+If the player is caught in any source of [[fire]] damage, paper items in their inventory have a chance of catching fire and burning, with the exception of the [[Book of the Dead]].
+
+[[Paper golem]]s can be randomly generated in the Dungeons of Doom; they may also form as a result of [[polypiling]] several paper objects, and are instantly killed by some [[fire]] attacks.
+
+[[Category:Materials]]
+{{nethack-364}}}
+&&%s&& %s Category:Extended commands of NetHack brass {17206 2006-12-30T23:09:19Z {735 Shijun} added to [[Category:Extended commands]] There are a few [[extended command]]s that exist in [[NetHack brass]] but not [[vanilla]].
+
+[[Category:Extended commands]]
+[[Category:NetHack brass]]}
+&&%s&& %s You have a momentary vision {10988 2006-09-23T18:52:43Z {509 Lotte} Redirecting to [[Potion of hallucination]] #REDIRECT [[Potion of hallucination]]}
+&&%s&& %s You have a momentary vision. {10989 2006-09-23T18:53:05Z {509 Lotte} Redirecting to [[Potion of hallucination]] #REDIRECT [[Potion of hallucination]]}
+&&%s&& %s Hangup {148547 2022-10-05T02:31:18Z {4001279 Umbire the Phantom} de-SLEX A '''hangup''' occurs when you disconnect a [[terminal]] from the programs running in it. Originally, "hangup" referred to the process of ending a telephone call by placing (or hanging up) the phone on the hook. Some terminals connected to computers using phone lines (for example, with old [[DOS]] or [[Macintosh]] software like the communication modes of Microsoft Works or AppleWorks) and became subject to hangup. With windowing systems, you can now cause hangups by closing [[terminal emulator]]s or DOS prompts with programs still running on them. With the Internet, you can cause a hangup by quitting your [[telnet]] or [[ssh]] client while still running programs. More generally, a hangup is any instance when a parent process quits.
+
+If you hangup while [[NetHack]] is running, then (on systems with the SIGHUP [[signal]], such as [[Unix]], [[VMS]] and [[Microsoft Windows]]), the hangup function at [[save.c#line83]] will save your game. For players who use NetHack's [[tty]] interface, an easy way to save the game is to close the terminal emulator or telnet client with NetHack's [[tty]] interface inside it.
+
+Beware of hanging up during a prompt, as it has the effect of [[esc|cancelling]] the prompt. You will not get a refund on your [[wish]] or [[genocide]] order. If a hangup is triggered after offering the [[Amulet of Yendor]] on the [[Astral Plane]] but before [[Ascension|ascending]], you will render the game [[unwinnable]]; upon reloading the game, you will not have the amulet and be stuck on the Astral Plane!
+
+One of the listed [[bugs in NetHack 3.4.3#SC342-3|bugs]] involves some method of using hangup to cheat. [[Cheating#Hangup_saves]] describes some ways to cheat using a hangup save. [[DevTeam]] member Pat Rankin provided some information about how this bug is fixed in the [[next version]] of NetHack in [https://bilious.alt.org/rgrn/?130838-130845,130848,130851,130868-130875#p130868 this Usenet post.]
+
+== Variants ==
+In [[NetHack 4]], the game is saved continuously, meaning that a hangup has the same effect as simply quitting the game. When reloading the game, it returns to the exact same point (perhaps even at a prompt or in the middle of a turn) via replaying all user commands that were input since the last time the game could be saved in the normal way.
+
+[[Category:Development]]
+{{nethack-343}}}
+&&%s&& %s You feel a mild buzz. {40555 2009-06-20T02:33:46Z {102 Bitplane}  #REDIRECT [[Newt]]
+[[Category:Messages]]}

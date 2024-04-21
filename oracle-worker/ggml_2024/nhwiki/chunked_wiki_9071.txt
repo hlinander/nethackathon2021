@@ -1,0 +1,1000 @@
+&&%s&& %s Auto-identify {125049 2019-01-11T20:05:16Z {4000227 Kufat} Very little that's version-specific; NAO no longer runs a fork for 3.6.1, though. Sometimes, the game will '''auto-identify''' an [[object]] after [[you]] or a [[monster]] does something with it. This is a contraction for ''automatically [[identify]]'', and means that you identified a type of object without explicitly using the [[scroll of identify]] or [[spellbook of identify]]. Common ways to auto-identify an object include the [[engrave-test]]ing of [[wand]]s, letting monsters use certain objects, and (to possibly dangerous effect) yourself using an unidentified object.
+
+Your character now recognizes that type of object; it adds the object to the list of discoveries that appears when you press {{kbd|\}}.
+
+For example, when you hear a monster read an unfamiliar spell [[scroll]], then see the monster teleport away, [[we]] say that the game has ''auto-identified'' the [[scroll of teleportation]]. Now, you know which other scrolls (in your [[inventory]] or elsewhere) are scrolls of teleportation, and you saved a scroll of identify in learning this.
+
+The difference between auto-identification and explicit identification (from the scroll or spell) is that the latter also reveals the [[beatitude]], [[enchantment]] and [[charge]]s of one object.
+
+You might still think that you know the identity of an object, even if [[NetHack]] did not auto-identify it. Suppose that you wore an unidentified ring and quaffed a [[potion of enlightenment]] to discover that it gave you [[cold resistance]], or you dropped the ring in a [[sink]] and compared the message with a [[spoiler]]. You might know what kind of ring it is, even when the game does not tell you. In these cases, the game will still label the item with its randomized appearance, but you can use the [[name|(N)ame]] command ({{kbd|N}} if you use the numpad-based control scheme, or #name which always works) to name it yourself. (e.g. the game might still describe that ring of cold resistance as "an engagement ring" but you can (N)ame it "cold resistance" and from then on all engagement rings would be labeled "cold resistance")
+
+[[Category:Strategy]][[Category:Identification]]
+{{nethack-361}}}
+&&%s&& %s Ill {63936 2011-01-26T06:46:15Z {4000066 Usethe4ce} redirect to [[Sickness]] #REDIRECT [[Sickness#Illness]]}
+&&%s&& %s Corpses {16296 2006-12-10T23:58:15Z {0 } Redirecting to [[Corpse]] #REDIRECT [[Corpse]]}
+&&%s&& %s Vaults {16304 2006-12-11T00:40:44Z {0 } Redirecting to [[Vault]] #REDIRECT [[Vault]]}
+&&%s&& %s Template:Purple {25897 2008-02-28T04:23:57Z {679 Ray Chason} I'll let this stand, and make it synonymous with brightmagenta {{brightmagenta|{{{1}}}}}<noinclude>
+[[Category:Function templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Template:Chartreuse {16356 2006-12-12T22:37:58Z {924 ZeroOne} [[Template:Chartreuse]] moved to [[User:Pokemonman/Chartreuse]]: Create test templates first into your own userspace, please. #REDIRECT [[User:Pokemonman/Chartreuse]]}
+&&%s&& %s Template talk:Chartreuse {16358 2006-12-12T22:38:01Z {924 ZeroOne} [[Template talk:Chartreuse]] moved to [[User talk:Pokemonman/Chartreuse]]: Create test templates first into your own userspace, please. #REDIRECT [[User talk:Pokemonman/Chartreuse]]}
+&&%s&& %s Medical kit {148445 2022-10-05T00:13:33Z {4001279 Umbire the Phantom} cat {{tool|name=medical kit|tile=[[File:medical kit.png]]|appearance=leather bag|cost=500|weight=25|color=brown|material=leather}}
+
+A '''medical kit''' is a [[tool]] in [[SLASH'EM]].It appears as a '''leather bag''' when unidentified, but cannot hold anything except pills, bandages, and phials. To view the contents of a medical kit, drop it and #loot it. There is no way to refill an empty medical kit.
+
+Only [[Healer]]s can use the bandages (to bandage their wounds as part of their [[surgery]] technique). Only [[Vampire (starting race in SLASH'EM)|vampiric]] players can use the phials (to [[draw blood|draw]] off a phial of their own blood for later consumption).
+
+Anyone can apply a medical kit to swallow a pill from it, but only Healers can reliably do this successfully, and then only if the kit is not cursed. If the pill works, it will cure your first trouble from the following list: sickness, blindness not caused by something on your face, hallucination, vomiting, confusion, stunning, and loss of hit points (it will heal you by 10–19 HP but won't increase your maximum). If the pill fails, it may have no effect, cause HP loss, or make you deathly sick.
+
+{|class="wikitable"
+|+ Success probability
+|-
+!Status !! Healer !! Monk, Priest, Samurai, or Undead Slayer !! Other role
+|-
+|Blessed || 1 || {{frac|5|6}} || {{frac|3|4}}
+|-
+|Uncursed || 1 || {{frac|2}} || {{frac|4}}
+|-
+|Cursed || {{frac|3}} ||  {{frac|6}} || {{frac|12}}
+|}
+
+==SpliceHack==
+Medical kits existed in early versions of [[SpliceHack]] but were later removed. They are a [[defunct features (SpliceHack)|defunct]] feature of SpliceHack.
+
+==See also==
+* [[Pill]]: for pink pills, which are found separately and function differently from the pills in medical kits
+
+==External links==
+* [http://www.statslab.cam.ac.uk/~eva/slashem/tools.html This spoiler on tools in SLASH'EM] has more detail on medical kits.
+
+[[Category:SLASH'EM items]]
+[[Category:Defunct features (SpliceHack)]]}
+&&%s&& %s Solid rock {131815 2020-02-03T05:33:15Z {4001313 Ardub23}  {{features}}
+'''Solid rock''' is a [[terrain type]] that makes up the unneeded space in the dungeon. It is possible to dig through one square of solid rock with a [[pick-axe]] or [[dwarvish mattock]], and several squares with a [[wand of digging|wand]] or [[spellbook of dig|spell]] of digging. [[Tunneling monster]]s can also dig through solid rock, although some need digging tools in order to do so. Monsters will only ever use wands of digging to escape down a floor; they will never dig horizontally with one.
+
+Most solid rock can be dug through, but the solid rock which borders the edge of the map cannot. This is to prevent needless digging of the map. Digging the edge of the map in the main dungeon will typically produce a message saying "This wall is too hard to dig into." If trying to dig outside of the screen, "Clash!" will instead be given.{{refsrc|dig.c|898}}
+
+Once removed, solid rock cannot be reformed. The only alternatives are moving [[boulder]]s around and possibly creating doors with the [[wand of locking|wand]] or [[spellbook of wizard lock|spell]] of locking.
+
+== Phasing ==
+{{main|Phasing}}
+Some monsters, such as [[xorn]]s, have the ability to move through rock and other normally impassable terrain.
+
+{{stub}}
+
+==References==
+<references />
+
+[[Category:Dungeon features]]
+{{nethack-343}}}
+&&%s&& %s Terrain type {16395 2006-12-16T03:00:03Z {509 Lotte} redirect #REDIRECT [[Square]]}
+&&%s&& %s Regeneration {99108 2015-12-20T23:38:31Z {4000080 ChasonBot}  '''Regeneration''' is a [[property]] that speeds the recovery of [[HP]] drastically; your character gains 1 HP on every [[turn]] (s)he would not normally do so.{{refsrc|allmain.c|166}}
+
+It is acquired as an [[extrinsic]] through [[put on|putting on]] a [[ring of regeneration]] or wielding the [[Healer]]'s [[quest artifact]], the [[Staff of Aesculapius]]. It can only be acquired as an [[intrinsic]] by [[eating jewelry|eating]] a ring of regeneration if the ring is of suitable material and you are [[polymorph]]ed into a monster that can eat it, or by polymorphing into a monster with innate regeneration: all [[vampire]]s, [[vampire bat]]s, [[werecreature]]s, [[imp]]s, [[lemure]]s, [[quasit]]s, all [[troll]]s, all [[lich]]es, [[Archon]]s, the [[Wizard of Yendor]] and [[Rider]]s.
+
+Regeneration also burns [[nutrition]] faster; namely, one point of it every odd turn, unless the source is an [[artifact]].{{refsrc|eat.c|2137}} Note that a digested ring of regeneration '''will''' use nutrition. This may be a good or a bad thing, depending on whether there is a scarcity of food or a corpse that you wish to eat; the former tends to be the case in [[Game stages#The early game|the early game]], whereas the latter situation is common in the late game.
+
+==See also==
+*[[Hit points]]
+
+==References==
+<references/>
+
+[[Category:Properties]]
+{{nethack-343}}}
+&&%s&& %s Tainted {132371 2020-02-26T16:42:18Z {4001279 Umbire the Phantom} Changed redirect target from [[Sickness#Food poisoning]] to [[Corpse#Aging]] #REDIRECT [[Corpse#Aging]]}
+&&%s&& %s Gecko {137253 2021-01-18T07:17:42Z {4001279 Umbire the Phantom}  {{monster
+ |difficulty=2
+ |level=1
+ |experience=8
+ |speed=6
+ |AC=8
+ |MR=0
+ |align=0
+ |frequency=5
+ |genocidable=Yes
+ |attacks=Bite 1d3
+ |weight=10
+ |nutr=20
+ |size=Tiny
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A gecko|animal=1|nohands=1|carnivore=1|hostile=1}}
+ |reference=[[monst.c#line2655]]
+}}
+{{wikipedia|gecko}}
+
+A '''gecko''', {{monsym|gecko}}, is a [[monster]] that appears in ''[[NetHack]]''. It is encountered in the earliest dungeon floors, and is one of the first {{mcsl|:}} the player may encounter.
+
+[[Chatting]] to a gecko while [[hallucinating]] gives [[YAFM]].{{refsrc|src/sounds.c|519|nethack=3.6.0}}{{refsrc|src/sounds.c|545|nethack=3.6.0}}
+
+==Strategy==
+Even for a starting player, geckos are fairly harmless to deal with unless they are low on HP.
+
+==Messages==
+{{message|15 minutes could save you 15 <currency>.|You chatted to a gecko while hallucinating; this is a reference to GEICO, an insurance company that uses a gecko as a mascot.}}
+
+==Encyclopedia entry==
+{{encyclopedia-redirect|lizard}}
+
+==References==
+<references/>
+
+[[Category:Monsters]]
+{{nethack-366}}}
+&&%s&& %s Intelligent artifacts {16422 2006-12-17T15:13:20Z {509 Lotte} [[Intelligent artifacts]] moved to [[Intelligent artifact]]: plural #REDIRECT [[Intelligent artifact]]}
+&&%s&& %s Salamander {147706 2022-08-20T08:30:49Z {4001279 Umbire the Phantom} /* Origin */8 {{monster
+ |difficulty=12
+ |level=8
+ |experience=159
+ |speed=12
+ |AC=-1
+ |MR=0
+ |align=-9
+ |frequency=1
+ |genocidable=No
+ |attacks=Weapon 2d8, Touch 1d6 [[fire]], bearhug 2d6, bearhug 3d6 fire (scrolls, potions and spellbooks may be affected)
+ |weight=1500
+ |nutr=400
+ |size=Medium
+ |resistances=Fire, Sleep
+ |resistances conveyed=Fire (53%)
+ |attributes={{attributes|A salamander|
+ |hell=1|humanoid=1|slithy=1|thick=1|pois=1|stalk=1|=
+ |hostile=1|collect=1|magic=1|infravisible=1}}
+ |reference=[[monst.c#line2689]]
+}}
+A '''salamander''', {{monsym|salamander}}, is a type of [[monster]] in ''[[NetHack]]''. Salamanders are the strongest of the [[lizard (monster class)|lizard]] [[monster class]], and the only member of the monster class that is not an [[animal]].
+
+A salamander has four attacks - a weapon attack, a fiery touch and two bearhug attacks, the second of which is also fiery. Salamanders resist [[fire resistance|fire]] and [[sleep resistance|sleep]], and are immune to [[genocide]] and [[sliming]]. Eating a salamander's corpse or meat has a 53% chance of conveying [[fire resistance]], though their corpses are poisonous.
+
+If you [[chat]] to a salamander, they will "mumble incomprehensibly".
+
+==Generation==
+Salamanders are only randomly generated in [[Gehennom]], though they are also a valid form for [[polymorph]], e.g. from [[polymorph trap]]s. Eight salamanders are generated upon reacing the [[Plane of Fire]].
+
+Salamanders [[Monster starting inventory|are generated with]] either a [[spear]] ({{frac|6|7}} chance), a [[trident]] ({{frac|2|21}} chance), or a [[stiletto]] ({{frac|21}} chance).{{refsrc|src/makemon.c|483|version=NetHack 3.6.6}}
+
+==Strategy==
+Salamanders are usually not too difficult to face for a player that has reached Gehennom, though being caught in their bearhug may leave you vulnerable to more vicious monsters in the air unless you kill them or break their grip quickly. However, a salamander has no [[Magic resistance (monster)|MR score]], leaving it vulnerable to wands as well as various tools - this makes scaring one into releasing you fairly trivial.
+
+Salamanders are the only monsters that will eat a [[glob of green slime]] to cure [[stoning]], as they are fiery and not subject to sliming.
+
+===As a polyform===
+If you are using [[polymorph]] to cure [[sliming]], a salamander is the best fiery monster form available, as they are not [[eyeless]] and possess arms to pick up and wield items. Salamanders are [[humanoid]], [[slithy]] and move at the same base speed - they have a natural [[AC]] of -1 and can also wear all armor minus [[boots]]. As a salamander, you can safely eat globs from [[green slime]]s to cure stoning.
+
+Of note is that you can safely quaff a lit [[potion of oil]] as a salamander, which exercises [[wisdom]].
+
+==History==
+The salamander first appears in [[NetHack-- 3.1.3]], and are among the many monsters from that variant added to [[SLASH 6]]. Salamanders make their vanilla ''NetHack'' debut in [[NetHack 3.2.0]].
+
+==Origin==
+{{wikipedia|Salamander}}
+"Salamander" refers to both a real-life species of animal and a fantastic creature. Real-life salamanders are amphibians characterized by their lizard-like appearance: slender bodies, blunt snouts, short limbs projecting at right angles to the body, and a tail. All ten families of salamander - including Salamandridae, whose members have bodies without the grooved sides typical of others, and are mostly known as [[newt]]s - are grouped together under the order Urodela, and their traits vary widely by species.
+
+Most salamanders have at most four toes on their front legs, and at most five on their rear legs; some species have fewer, while others may even lack hind limbs. Salamanders typically lay eggs in water and have aquatic larvae, but some species in harsher environments may even reproduce while still in the larval state. Some species are fully aquatic throughout their lives, others take to the water intermittently, and still others are entirely terrestrial and become capable of regenerating lost limbs and other damaged parts of their bodies in adulthood.
+
+Some salamanders have have poison-secreting skin and bright warning coloration to advertise their toxicity - this trait was noted as far back as Ancient Greece, where writers such as Theocritus and Pliny the Elder believed that salamander secretions were used in medicine and poisons. Salamanders often prefer habitats that are in or near cool, damp and/or watery areas, and species diversity is highest in eastern North America.
+
+===Salamanders in fantasy===
+{{wikipedia|Cultural depictions of salamanders}}
+Though the default [[tileset]] makes it resemble the animal, the salamanders of ''NetHack'' are derived from ''[[Dungeons & Dragons]]'', whose salamanders are reptilian humanoids with a pair of arms and a tail that originated on the Elemental Plane of Fire - a significant population migrated from there to areas such as the Firelands and the Peaks of Flame via portal. Their culture is known for metalsmithing and creating weapons that utilized the power of flame, and they often wielded spears and used their tails to constrict their enemies; their skin was so hot that even the merest touch caused burns.
+
+Some of these traits and other qualities associated with "fantastic" salamanders by classical, medieval and renaissance lore are themselves derived from real salamanders: Certain writings of Pliny the Elder's time exaggerated the salamander's poisonous skin to the extent that a single salamander could supposedly taint the fruit of any tree that it climbed, and any water from a well that it fell into would become lethal. This is likely the basis for the burning skin that the salamanders of ''Dungeons & Dragons'' have - and may also be why the salamanders of ''NetHack'' are poisonous to eat and have "burning" touch and hug attacks.
+
+The [[wikipedia:Talmud|Talmud]] also describes the salamander as a product of fire, whose blood grants immunity from fire to anyone smeared in it; Hermeticist beliefs originating in Renaissance Europe considered salamanders fiery creatures as a result of them "mysteriously" appearing when the rotting logs they hibernated in were brought indoors and put on a fire. The philosopher [[wikipedia:Saint Augustine|Saint Augustine]] argues in ''[[wikipedia:The City of God|The City of God]]'' that salamanders are proof of eternal punishment, since the flames they inhabited could be used to burn sinful humans forever - this may partly explain why ''NetHack'' salamanders typically only appear in Gehennom.
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], salamanders are guaranteed polyforms for [[Doppelganger (starting race)|Dopplegangers]] at experience level 8, and are a solid choice for similar reasons as in vanilla.
+
+===UnNetHack===
+In [[UnNetHack]], one of One-Eyed Sam's assistants in the [[Black market (UnNetHack)|black market]] is a salamander named Izzy; the black market was adapted from [[SLASH'EM]], where Izzy was originally a [[rhaumbusun]].
+
+===dNetHack===
+In [[dNetHack]], [[Drow (starting race)|player drow]] are capable of applying [[saddle]]s to salamanders and using them as [[steed]]s.
+
+The [[Chaos Temple Quest|Chaos Temple variant]] of the [[Chaos Quest (dNetHack)|Chaos Quest]] generates two salamanders in the domain of [[Kary, the Fiend of Fire]].
+
+===SlashTHEM===
+In addition to SLASH'EM notes above, [[SlashTHEM]] makes salamanders the second [[quest monster]] for the [[Firefighter quest]], and 14% of the monsters randomly generated in that branch will be salamanders; the lizard monster class is also the second quest class for [[Firefighter]]s, and salamanders may appear among the 3% of randomly generated monsters selected from this class. Five salamanders are generated on the home, locate and goal floors at level creation; one salamander is placed within the upper filler level(s) upon their generation; and two are placed within the lower filler level(s) upon their generation.
+
+===SpliceHack===
+In [[SpliceHack]], the [[Black market (SpliceHack)|black market]] uses the same layout as in SLASH'EM, and includes Izzy the salamander as one of the assistants.
+
+Ten hostile salamanders are generated upon entering the [[City of Brass]].
+
+===notdNetHack===
+{{main|Salamander (starting race)}}
+[[notdNetHack]] adds the salamander as a playable starting race.
+
+===EvilHack===
+In [[EvilHack]], salamanders can move through [[lava]] and will attempt to [[drown]] players in the lava with their bearhug, similar to [[python]]s and [[eels]] in water. This is significantly more dangerous, as a successful attack will usually destroy most of the player's inventory along with killing them outright.
+
+EvilHack also adds the [[frost salamander]], a stronger icy counterpart of the salamander that only appears in the [[Ice Queen's Realm]]; it uses the same hit dice and attack routine as a vanilla salamander (though with cold damage), and thus cannot drown you.
+
+==Encyclopedia entry==
+{{encyclopedia|
+For hundreds of years, many people believed that salamanders were magical. In England in the Middle Ages, people thought that fire created salamanders. When they set fire to damp logs, dozens of the slimy creatures scurried out. The word salamander, in fact, comes from a Greek word meaning "fire animal".
+|[ Salamanders, by Cherie Winner ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Template:Cite book {16438 2006-12-18T16:35:36Z {908 Yidda} Add cite book template <includeonly><cite class="book" style="font-style:normal" {{
+  #if: {{{ref|}}}
+  |{{#ifeq:{{{ref}}}|none||id="{{{ref}}}"}}
+  |{{#if:{{{last|}}} | {{#if:{{{year|}}} | id="Reference-{{{last}}}-{{{year}}}" }} }}
+}}>{{
+  #if: {{{author|{{{last|}}}}}}
+  | {{
+    #if: {{{authorlink|}}}
+    | [[{{{authorlink}}}|{{
+      #if: {{{last|}}}
+      | {{{last}}}{{ #if: {{{first|}}} | , {{{first}}} }}
+      | {{{author}}}
+    }}]]
+    | {{
+      #if: {{{last|}}}
+      | {{{last}}}{{ #if: {{{first|}}} | , {{{first}}} }}
+      | {{{author}}}
+    }}
+  }}
+}}{{
+  #if: {{{author|{{{last|}}}}}}
+  | {{ #if: {{{coauthors|}}} | <nowiki>;</nowiki>&#32;{{{coauthors}}} }}
+}}{{
+  #if: {{{origdate|}}}
+  | &#32;<nowiki>[</nowiki>{{{origdate}}}]
+  | {{
+    #if: {{{origyear|}}}
+    | {{
+      #if: {{{origmonth|}}}
+      | &#32;<nowiki>[</nowiki>{{{origmonth}}} {{{origyear}}}]
+      | &#32;<nowiki>[</nowiki>{{{origyear}}}]
+    }}
+  }}
+}}{{
+  #if: {{{date|}}}
+  | &#32;({{{date}}})
+  | {{
+    #if: {{{year|}}}
+    | {{
+      #if: {{{month|}}}
+      | &#32;({{{month}}} {{{year}}})
+      | &#32;({{{year}}})
+    }}
+  }}
+}}{{ #if: {{{author|{{{last|}}}}}} | .
+}}{{
+  #if: {{{chapter|}}}
+  | &#32;“{{
+    #if: {{{chapterurl|}}}
+    | [{{{chapterurl}}} {{{chapter}}}]
+    | {{{chapter}}}
+}}”,}}{{
+  #if: {{{editor|}}}
+  | &#32;{{{editor}}}: 
+}} <i>{{
+  #if: {{{url|}}} | [{{{url}}} {{{title}}}] | {{{title}}}
+}}</i>{{
+  #if: {{{format|}}} | &#32;({{{format}}})
+}}{{
+  #if: {{{others|}}} | , {{{others}}}
+}}{{
+  #if: {{{edition|}}} | , {{{edition}}}
+}}{{
+  #if: {{{language|}}} | &#32;(in {{{language}}})
+}}{{
+  #if: {{{publisher|}}}
+  | {{#if: {{{format|}}}{{{others|}}}{{{edition|}}} | ,&#32; | .&#32; }}{{ 
+    #if: {{{location|}}} 
+    | {{{location}}}:&#32;
+  }}{{{publisher}}}
+}}{{
+  #if: {{{pages|}}} | ,&#32;{{{pages}}}
+}}{{
+  #if: {{{doi|}}} | . [[Digital object identifier|DOI]]:[http://dx.doi.org/{{{doi}}} {{{doi}}}]
+}}{{
+  #if: {{{id|}}} | . {{{id}}}
+}}{{
+  #if: {{{accessdate|}}}
+  | . Retrieved on [[{{{accessdate}}}]]
+  | {{
+    #if: {{{accessyear|}}}
+    | . Retrieved {{
+      #if: {{{accessmonth|}}}
+      | on [[{{{accessmonth}}} {{{accessyear}}}]]
+      | during [[{{{accessyear}}}]]
+    }}
+  }}
+}}.{{ #if: {{{quote|}}} | &nbsp;“{{{quote}}}”
+}}</cite></includeonly><noinclude>{{/doc}}</noinclude>}
+&&%s&& %s Template:JAH {64272 2011-01-30T12:32:50Z {630 Paxed} cat <div class="license_jah">
+''This page is based on a spoiler by [http://www.juiblex.co.uk/nethack/VernonSpoilers.html J. Ali Harlow].''
+</div>
+<noinclude>[[Category:License templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Ochre jelly {142208 2021-08-27T16:59:13Z {4001463 Actual-nh} /* Strategy */ Upcoming {{monster
+ |difficulty=8
+ |level=6
+ |experience=88
+ |speed=3
+ |AC=8
+ |MR=20
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=[[Engulf]]s and covers with [[acid]]ic slime 3d6, Passive 3d6 [[acid]]
+ |weight=50
+ |nutr=20
+ |size=Medium
+ |resistances=Acid, stoning
+ |resistances conveyed=none
+ |attributes={{attributes|An ochre jelly|breathless=1|amorphous=1|noeyes=1|nolimbs=1|nohead=1|mindless=1|acid=1|notake=1|hostile=1|neuter=1}}
+ |reference=[[monst.c#line518]]
+}}
+
+The '''ochre jelly''', {{monsym|ochre jelly}}, is an [[acidic]] [[amoeboid]] [[monster]] that appears in ''[[NetHack]]''. It is the only non-[[sessile]] member of the [[jelly]] [[monster class]].
+
+==Generation==
+Ochre jellies are the second quest monster encountered on the [[Knight quest|Knight's]] [[Quest]] branch, and have a 14% chance of being generated. Several ochre jellies are generated on the floors beyond the home level.
+
+Ochre jellies may also be created by a hostile [[spellcaster]] casting the [[summon nasties]] [[monster spell]].
+
+==Strategy==
+Like other jellies, the ochre jelly has a passive to watch out for that can [[corrode]] [[iron]] or [[copper]] objects. However, they can also chase and [[engulf]] you - this covers you in acidic slime, but does ''not'' corrode objects.
+
+Ochre jellies are still quite slow and can be easily outrun, allowing you to pick them off at a distance with corrode-proofed or disposable projectiles - you can also simply run away if you aren't prepared to handle them. Their passive acid attack does 3d6 damage as opposed to the (XL + 1)d6 of [[spotted jelly|spotted]] and [[blue jellies]], but being engulfed may force you to attack and trigger this passive multiple times. A [[wand of digging]] or [[spell of dig]] will immediately free you and reduce their HP to 1.
+
+For players keeping [[mind flayer]] [[pets]] or using the polyform, each tentacle attack will trigger the passive; [[acid resistance]] via [[yellow dragon scales]]/[[yellow dragon scale mail|scale mail]] (or a spare [[alchemy smock]] for polymorphed players) will easily counteract this.
+
+{{upcoming|3.7.0|After [https://github.com/NetHack/NetHack/commit/0891ef4e22ccb56bacd41ce302d4178c1c6525aa this commit], monsters now gain acid resistance from a worn alchemy smock.}}
+
+==History==
+The ochre jelly was introduced in [[NetHack 3.0.0]].
+
+==SLASH'EM==
+In SLASH'EM, the engulfing attack can corrode objects in open inventory, including your [[alignment key]].
+
+[[Category:Monsters]]
+{{nethack-366}}}
+&&%s&& %s Category talk:Monsters {16483 2006-12-19T21:41:34Z {908 Yidda}  Shouldn't unique monsters be a sub-catagory here?}
+&&%s&& %s Category talk:Unique monsters {16486 2006-12-19T21:56:03Z {560 Mogri} good suggestion I think this should be a sub-catagory of Monsters, but that both Monsters and Unique Monsters should show up at the bottom of unique monster pages. (in response to the update summary for Geryon)
+
+: Makes sense to me. Very few of the unique monsters are tagged unique, by the way, and the ones that are don't seem to be tagged monsters at present. --[[User:Mogri|Mogri]] 21:56, 19 December 2006 (UTC)}
+&&%s&& %s Explore mode {146997 2022-07-25T02:26:55Z {4001597 Hordes} /* Death */ [[Explore mode]] is a special game mode intended for players still learning the basics. It grants several advantages to the player, including the ability to cheat death.
+
+It can be invoked in a new or existing game by starting NetHack with the -X option, setting [[Options#playmode|playmode]] config option, or in an existing game via the '''#exploremode''' extended command. In an existing game, you will be prompted for confirmation. Once entered, a character may not leave explore mode. When an explore mode game ends, the [[score]] is not saved to the [[record file]].
+
+[[Public servers]], including [[nethack.alt.org]], will most often disable explore mode.
+
+==Death==
+
+The most prominent feature of explore mode allows you to refuse [[death (character)|death]] at will.  When your character would die, you are prompted as follows:
+
+ Die? [yn]
+
+Type {{kbd|n}}, and you receive the message "Okay, so you don't die." The game then continues as normal, with the usual effects of life saving. The [[amulet of life saving]] takes priority; wearing one on a valid death will consume the amulet with no prompt. You can refuse any sort of death, even ones that standard life saving wouldn't protect you from. However, you cannot refuse any other end to your game, such as [[trickery]] or [[escaping the dungeon]].
+
+If you refuse death from [[brainlessness]], your [[intelligence]] is arbitrarily set to 5 ("You feel like a scarecrow.").  If you refuse death from self-[[genocide]], you survive as the last of your race or role. Trying to genocide the same thing again conciously will fail, but the uncursed scroll while confused still works.
+
+==Save file==
+
+Explore mode gives you the option to keep your old save file whenever you restore a game. This allows you to keep a permanent save slot (like many other games), which can be used to undo a sequence of play without having to start a new game. (Note that, if available, [[wizard mode]] may be even more powerful for this sort of exploration.)
+
+ Do you want to keep the save file? [yn] (n)
+
+==Wand of wishing==
+If you start a new game in explore mode, your character will have a pre-identified uncursed (0:3) [[wand of wishing]], in addition to their standard starting inventory. Existing characters who enter explore mode do not receive the wand.
+
+==Enlightenment==
+
+Inputting {{kbd|ctrl|x}} while in explore mode will display attributes as if you had used an uncursed wand or potion of [[enlightenment]].
+
+==Strategy==
+
+Explore mode has some value for players who install their distro's NetHack binaries on a [[Unix]] system, and lack the correct username to enter wizard mode. The main obstacle for these players is the bother of either creating a user account with the correct name, or [[compiling]] NetHack from [[source code]]. These players can use the explore mode's wand of wishing to play with specific [[object]]s.
+
+Some players invoke explore mode on characters they believe have no chance of survival, in order to continue their game when it would otherwise be impossible.
+
+Players in explore mode may develop abnormal [[strategy|strategies]]. For example, instead of dealing with a [[soldier ant]] in an appropriate way, an explore mode player might just melee it, ignoring how many deaths this takes. Then they repeat this process with the next difficult monster, dying hundreds of times in the same game.
+
+Instead of (or as well as) explore mode, consider how [[Elbereth]], proper [[pet]] use, or [[Why do I keep dying?|other strategies]] could help you.
+
+==See also==
+
+*[[Wizard mode]]
+*[[Wizard mode ascension]]
+*[[Save scumming]]
+*[[Cheating]]
+
+[[Category:Development]]
+[[Category:Commands|X]]
+{{nethack-360}}}
+&&%s&& %s You hear a slurping sound {16505 2006-12-20T16:53:36Z {0 } Hearing dozens of slurping sounds in one turn without knowing what it means does a really good job of freaking you out. #REDIRECT [[gelatinous cube]]}
+&&%s&& %s Mumak {143903 2021-12-17T23:41:32Z {4001279 Umbire the Phantom} /* SlashTHEM */ {{wikipedia|Mûmak}}
+{{monster
+ |difficulty=7
+ |level=5
+ |experience=68
+ |speed=9
+ |AC=0
+ |MR=0
+ |align=&minus;2
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Butt 4d12, Bite 2d6
+ |weight=2500
+ |nutr=500
+ |size=Large
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A mumak|animal=1|thick=1|nohands=1|herbivore=1|hostile=1|strong=1|infravisible=1}}
+ |reference=[[monst.c#line753]]
+}}
+A '''mumak''' (plural '''mumakil''') is a [[quadruped]] that appears in [[NetHack]]. It is a enormous elephant that is slow, but ferocious.
+
+==Strategy==
+While they may not be the ''most'' dangerous of the {{mcsl|q}} class, mumakil are a still a powerful threat that can do large amounts of damage. Mumakil have the most powerful single melee attack in the game other than the [[Riders]]', with their headbutt making a mockery of all but the sturdiest armor; their HP and [[AC]] of 0 also let them withstand significant punishment before succumbing.
+
+When fighting a mumak, take advantage of its low speed&mdash;use ranged weapons, polearms, wands, spells, or [[hit and run]]. Mumakil have a thick hide, so they take no damage from [[kick]]s, among other things - while stronger characters like [[Valkyrie]]s or [[Barbarian]]s may be sufficiently prepared for the encounter, mumakil tend to be a frequent cause of [[Death (character)|death]] for weaker or underprepared players trying to fight them in melee.
+
+==Variants==
+===dNetHack===
+[[dNetHack]] adds a younger form in [[mumak calf|mumak calves]], which can grow up into mumakil; they have the same difficulty and share many of the mumakil's stats, with the exception of damage, weight and nutrition value. Mumakil themselves are now higher difficulty and appear deeper into the dungeon.
+
+===SlashTHEM===
+In [[SlashTHEM]], players polymorphed into mumakil or [[mastodon]]s get intrinsic immunity to [[amnesia]] and improved [[spell]] retention ("an elephant never forgets"), the same as wearing an [[amulet of data storage]]. This feature originated in the Ring of Memory patch, which the amulet's function is based on.
+
+==Origin==
+Mumakil originate from ''The Lord of the Rings''.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+... the Mumak of Harad was indeed a beast of vast bulk, and
+the like of him does not walk now in Middle-Earth; his kin
+that live still in latter days are but memories of his girth
+and majesty.  On he came, ... his great legs like trees,
+enormous sail-like ears spread out, long snout upraised like
+a huge serpent about to strike, his small red eyes raging.
+His upturned hornlike tusks ... dripped with blood.
+|[ The Two Towers, by J.R.R. Tolkien ]
+}}
+
+[[Category: Monsters]]
+{{nethack-366}}}
+&&%s&& %s Roguelikes {16539 2006-12-22T06:13:21Z {0 } Redirecting to [[Roguelike]] #REDIRECT [[Roguelike]]}
+&&%s&& %s Unofficial conduct {149321 2022-12-12T16:25:16Z {4001279 Umbire the Phantom} actually it was better to leave them signed, adjust accordingly {{tocright}}
+
+'''Unofficial conducts''' are [[conduct]]s that are not tracked by the vanilla version of [[NetHack]]. They are typically enforced by the [[player]]s themselves only, though some [[variant]]s track various unofficial conducts.
+
+Playing on a [[public server]] that records [[ttyrec]]s of your games is a good way to prove that you did an unofficial conduct.
+
+==Popular conducts==
+Of the unofficial conducts, these tend to get attempted most often, usually in vanilla games.
+
+===Survivor===
+Never have your life saved by an [[amulet of life saving]]. It's okay to wear one, so long as you never trigger it by dying. It's also okay to die in a polymorphed form and return to your normal form; this doesn't count as being killed. Choosing not to die in [[explore]] or [[wizard mode]] also breaks this conduct.
+
+Vanilla NetHack actually tracks this, but not as a formal conduct. If you manage to [[ascension|ascend]] without being lifesaved, you get "You survived" in the attributes list; otherwise it states how many times you have been killed.
+
+===Petless===
+Never have a [[pet]] of any sort. The starting pet can be turned off from the [[options]] file, and most other ways of obtaining pets are very deliberate and easy to avoid. The one exception is the charming effect of a [[magic trap]], which is possible to trigger without any warning and will instantly tame adjacent monsters.
+
+===Polymorphed===
+Go through the entire game and ascend while polymorphed. Popular choices include baby dragons, lizards, chickatrices, kittens, little dogs, and rats. Bonus points if you have no hands. More amazing the weaker your polymorphed form is. Every variant which currently offers polyinit mode starts you out with permanent intrinsic unchanging, so you will not be able to repolymorph or revert to your base race, which would be considered breaking the conduct.
+
+===Elberethless===
+Never engrave [[Elbereth]]. A stricter version of this conduct would also mean never using the word to scare off monsters in places like Sokoban or the Castle where it's already engraved, but most of the variants that track this conduct only track when you engrave it. This conduct doesn't restrict you from other methods of scaring monsters, such as [[instrument]]s, coaligned [[temple]]s, or the [[scroll of scare monster]].
+
+=== Extinctionism ===
+{{main|Extinctionism}}
+Kill every monster in all the levels until none spawn any more. This is more about patience and dedication than it is about avoiding any specific behavior. It can be done to varying degrees: some extinctionists only kill everything that can be naturally generated with [[create monster]]; others will repeatedly stone and unstone [[statue]]s of various rare or unique monster types in order to have them treated as extinct. Versions of NetHack that produce [[dumplog]]s will show extincted species in the dumplog.
+
+===Minimum score===
+{{main|Score#How to minimize score}}
+You may not gain [[score]] in any way. This precludes killing monsters, using scrolls, wands, and potions before formally identifying them, and a few other activities. Unfortunately, you also get points for the depth of the [[Sanctum]], so not every game can attain the theoretical minimum.
+
+=== Bonesless ===
+Never load a [[bones file]]. While many bones files are from relatively early in the game and don't contain much that's particularly useful, they might contain large piles of powerful items, artifacts, or other loot which make the game significantly easier for an adventurer who finds and collects them. Therefore, an ascension that never loaded a bones file couldn't have been able to take advantage of such windfalls. You can force the game not to load bones files by turning the [[Options#bones|bones]] option off in your configuration file.
+
+Vanilla NetHack does track whether you have loaded any bones files, but similar to Survivor this is not listed in-game as a conduct or reported in the logfile as one.
+
+== Conducts in variants ==
+
+===Celibate===
+Never have sex with an [[incubus]] or [[succubus]], which may give you positive effects such as gaining levels.
+
+===Toolless===
+One may not pick up or use any [[tool]]s, with the exception of one's [[quest artifact]] (if applicable) and the [[Bell of Opening]]. At the beginning, one should drop all of one's tools on the starting square before proceeding.
+
+This restriction has many consequences:
+* You cannot use bags or containers. Multiple [[stash]]es scattered throughout the dungeon will probably be necessary.
+* You cannot use [[unicorn horn]]s, so you need a different source of curing and cannot dip-test.
+* You will have a hard time keeping more than one or two [[pet]]s, since you cannot use [[whistle]]s or [[leash]]es.
+* You will be forced to stumble around in the dark unless you manage to obtain a [[Sunsword]] or spend a lot of time casting [[spellbook of light|light spells]]. This can be alleviated through [[monster detection]] and [[magic mapping]].
+* You cannot [[magic marker|write]] extra scrolls or spellbooks.
+* You will not be able to easily [[blind]] yourself for [[telepathy]] purposes, because you cannot use [[towel]]s or [[blindfold]]s.
+* You will not be able to [[ride]], except on your starting [[horse]] or [[pony]] if you have one.
+* You will also have to make do without many moderately useful items like [[grease]], a [[tinning kit]], a [[stethoscope]], [[figurine]]s, a [[camera]] or all varieties of [[instrument]] (which in turn means that you cannot control the [[drawbridge]] at the [[Castle]]).
+
+=== Identifyless ===
+You may not read a [[scroll of identify]], cast the spell, or take advantage of an insight granted by a throne (which may require avoiding thrones altogether, as their insight has a 20% chance of identifying your entire inventory ''without prompting for confirmation''). More specific methods, such as [[price identification]] or [[enlightenment]] techniques are acceptable.
+
+=== Table of variant tracked conducts ===
+{|class="wikitable sortable"
+! Conduct !! Notes !! Variant
+|-
+|rowspan="10"| Elberethless || rowspan="10"|  || NetHack4
+|-
+| NetHack Fourk
+|-
+| FIQHack
+|-
+| UnNetHack
+|-
+| dNetHack
+|-
+| SpliceHack
+|-
+| DynaHack
+|-
+| GruntHack
+|-
+| SporkHack
+|-
+| [[Hardfought]]'s build of vanilla
+|-
+|rowspan="3"| No pudding splits || rowspan="3"| Never split a pudding || NetHack4
+|-
+| NetHack Fourk
+|-
+| FIQHack
+|-
+|rowspan="4"| Polymorphed || rowspan="4"| || NetHack4
+|-
+| NetHack Fourk
+|-
+| FIQHack
+|-
+| xNetHack
+|-
+| Perfectly aligned || Never lose a point of [[alignment]] || NetHack Fourk
+|-
+|rowspan="2"| No Sokoban penalties || rowspan="2"| Never get a [[Luck]] penalty in [[Sokoban]] || NetHack Fourk
+|-
+| UnNetHack
+|-
+| Jewelryless || Never wear rings, amulets, or eyewear ([[eating jewelry]] is fine) || NetHack Fourk
+|-
+| Unihornless || Never applied a [[unicorn horn]] (using one as a weapon is fine) || NetHack Fourk
+|-
+| Containerless || Never applied or looted [[container]]s || NetHack Fourk
+|-
+| Toolless || Never applied (or looted) any tools || NetHack Fourk
+|-
+| Fountainless || Never interact with a [[fountain]] || NetHack Fourk
+|-
+| Sinkless || Never interact with a [[sink]] || NetHack Fourk
+|-
+| Quaffless || Never quaff a potion (other uses like throwing are fine) || NetHack Fourk
+|-
+|rowspan="2"| Conflictless || rowspan="2"|Never generate [[conflict]] || NetHack Fourk
+|-
+| xNetHack
+|-
+| Invisibleless || Never turn [[invisible]] || NetHack Fourk
+|-
+| Displacementless || Never become [[displaced]] || NetHack Fourk
+|-
+| Reflectionless || Never have [[reflection]] || NetHack Fourk
+|-
+| Magic-wishless || Never wish for a magic item || UnNetHack
+|-
+| Unique items pacifist || Never kill any of the unique guardians of the Bell, Book, Candelabrum, or Amulet || UnNetHack
+|-
+|rowspan="2"| Bonesless || rowspan="2"| || UnNetHack
+|-
+| xNetHack
+|-
+| Deathdropless || Monster never drop any items upon their death || UnNetHack
+|-
+| Racial armor || Never wear armor not associated with your race || UnNetHack
+|-
+| Racial weapons || Never wield weapons not associated with your race || UnNetHack
+|-
+| Heaven or Hell || Game mode where everything has one hit point, but you have three extra lives || UnNetHack
+|-
+| Hell and Hell || Game mode where only you have one hit point || UnNetHack
+|-
+| Wardless || Never draw a warding symbol || dNetHack
+|-
+| Identifyless || Never magically identify items || dNetHack
+|-
+| Shop identifyless || Never identify items via shopkeeper service || dNetHack
+|-
+|rowspan="3"| Celibate || rowspan="3" |  || SLASH'EM
+|-
+| SpliceHack
+|-
+| xNetHack
+|-
+|rowspan="3| Permahallu || rowspan="3"| Hallucinate for the entire game || xNetHack
+|- 
+| SpliceHack
+|-
+| UnNetHack
+|- 
+|rowspan="2"| Permadeaf || rowspan="2"| Go deaf for the entire game || xNetHack
+|-
+| SpliceHack
+|- 
+| Artifactless || Never touch an artifact || xNetHack
+|-
+| Petless || Never have a pet || xNetHack
+|-
+| Unfair-scareless || Never cause a monster to flee by standing on a spot such as Elbereth or a coaligned temple || xNetHack
+|-
+| Techniqueless || Never use a technique || SpliceHack
+|-
+| Teetotal || Never drink alcohol || SpliceHack
+|-
+| Permafumbling || Be fumbling for the entire game || SpliceHack
+|-
+| Illfated || Game mode where very high difficulty monsters can generate || SpliceHack
+|-
+| Intrinsicswap || Game mode where gaining a non-poison resistance via a corpse causes the player to lose all other resistances || SpliceHack
+|-
+|rowspan="2" | Marathon || rowspan="2" | Game mode where you begin with 999 HP that can never be replenished || SpliceHack
+|-
+| UnNetHack
+|}
+
+==Other conducts==
+This is where users can post their own conducts. You must give some description to the ways the conduct makes NetHack harder, as well as your signature without a timestamp(<nowiki>~~~</nowiki>).
+
+===AC10===
+
+The goal of this conduct is to maintain an [[AC]] of 10 for the entire game. This doesn't mean you must be armorless however. A mummy wrapping is the only potentially useful [[armor]] with 0 AC when unenchanted. Others can have their innate AC lowered by as much as 3 with various forms of [[erosion]] (that [[brown pudding]] could be your friend). Some useful 0 AC items might be a rusty helm to protect from falling rock traps, burned or rotted magical cloaks, a rusted helm of telepathy or opposite alignment, rusty gauntlets of power and all manner of degraded magical footwear. Pesky enchantments can be removed with [[cancellation]] or by the friendly neighborhood [[disenchanter]]. [[Protection]], whether purchased, worn on your finger, from casting or even [[Prayer#Favors_and_gifts|prayer with high luck]] breaks the conduct. [[Half physical damage]] artifacts are permissible however. Erode-proof armors such as dragon scales (mail is rather pointless) and silver shields can be offset with a sufficient number of  [[Scroll_of_enchant_armor#Cursed|cursed scrolls of enchant armor]]. A variety of styles, roles and strategies suggest themselves, with only a heavy reliance on melee being a probable non-starter... 
+
+[[User:Jimeikner|--every]]
+
+===Artifactless===
+Ascend the game without any artifacts beyond the ones necessary for the Invocation ritual (the [[Bell of Opening]], the [[Book of the Dead]] and the [[Candelabrum of Invocation]]).
+
+===Barter===
+[[You]] reject the bourgeois Yendorian economy.  This forbids the carrying of gold in open inventory.  
+# All gold must be dropped on turn 1.  
+# No gold may be picked up, or taken out of a container.  
+# No gold may be carried into a new level (follows from rule [1]).
+# It is permitted to shop with gems.
+# The probity of coin consumption was for a while disputed.  It was decided in the end that this might be one of the most definitive ways to destroy the Yendorian economy.  Therefore, floor-based coin consumption as a [[metallivore]] is actively encouraged.  In fact, floor-based consumption of [[Fort Ludios]] earns the title ''Barter Hero'', and if you achieve a floor-based consumption of every single coin in the game, then don't even bother [[ascend|ascending]], you made it to ''Barter Marshal''.   
+# (Some [[Forum:Jack Vance|Vancian]] mental gymnastics may be required here) It is permitted to shop by barter of containers that already contain gold.
+Barter has some features of [[User:SaintD|SaintD's]] [[Unofficial_conduct#Moneyless|Moneyless]] conduct, but is a bit more liberal as it allows shopping.
+
+=== Carnivore ===
+Basically, the opposite of [[Conduct#Vegan|vegan]]: you must only eat corpses that come from animals. This excludes eating food rations, fruit and tins of spinach. 
+
+Probably, the easiest role/race for this will be [[Caveman|Cavemen]] and [[Orc (starting race)|orcs]] (no penalty for cannibalism or eating the corpses of domestic animals), but downright impossible, or ill-advised, for [[Monk]]s. --[[User:Nabru|nabru]]
+
+=== Cartographer ===
+You must discover every single square of dungeon on every map and leave all doors open. The idea is that the entire world is now accessible to any future travelers. This adds a lot of time, and there is no closed door protection. Some people do this already on accident, and of course, once you have mapping spells it is trivial. For added headache, also make sure all dungeon tiles are physically connected. -- Funkopedia
+
+=== Grid bug ===
+You can't move diagonally, but you can [[jump]]. This is challenging because you will need to spend in most cases two turns to perform a movement. Another, more difficult version is that you can't even perform directional actions diagonally, such as [[kick]], [[fight]], zap [[wands]] or [[spells]], [[throw]] ecc. --Orl
+
+===Inventoryless===
+You must drop your entire starting inventory within the first few turns, and cannot pick up anything except invocation artifacts, the Amulet of Yendor and whatever other items are absolutely necessary to win the game. Bonus conduct: no using items (scrolls, spellbooks, corpses etc.) lying on the floor either. Probably easiest for monk and wizard. [[User:Bluescreenofdeath|Bluescreenofdeath]] ([[User talk:Bluescreenofdeath|talk]])
+
+===Ironless Elf===
+Apparently elves are allergic to iron. To keep this conduct simple in vanilla, no weapons or armor made of iron may be wielded or worn. This includes Stormbringer, Magicbane and GoP. Tools and projectiles (either thrown or launched) are exempt however. Amulets, being made of iron (with the exceptions of the Amulet of Yendor and its cheap plastic imitations), are prohibited as is any ring randomly labeled as "iron". Elf rangers would seem to be the best adapted to this conduct although wizards are also a possibility. A priest's starting mace could be quite a handicap though... 
+
+[[User:Jimeikner|--every]]
+
+===Moneyless===
+
+* You must drop all your starting gold on turn 1.
+* You may not pick up gold.
+* You may not pick up gems besides gray stones.
+* Bonus conduct: No gold rings.
+* You may not sell items in shops. (Price-ID OK.)
+* You may eat coins as a [[Metallivore]] if standing on them.
+
+--[[User:SaintD|SaintD]]
+
+===Parochial===
+Ascend without ever once entering any of the option dungeon branches (the Gnomish Mines, Sokoban, or Fort Ludios). Most characters will have a 50% chance of accidentally choosing the down stairs to the Mines, but an Archaeologist can avoid this by digging down and then coming back up and noting which stairs are safe. Archaeologists are also advantaged in making up for the loss of the guaranteed luckstone in the Mines, since they can dig for and readily identify luckstones in the regular dungeon.
+[[User:Fyr|Fyr]] ([[User talk:Fyr|talk]])
+
+===Punished===
+Play the entire game punished. For getting punishment at the start of the game, either play as a [[Convict]] in a [[variant]] that has that role, start-scum for a [[scroll of punishment]] or pray several times and hopefully don't get killed. There is a known punished atheist ascension on [[RGRN]]: [http://groups.google.com/group/rec.games.roguelike.nethack/browse_frm/thread/b4bf330c6aacc136 SATAP Punished Atheist]
+
+===Racer===
+If you see downward stairs, you must take them.
+
+===Racial===
+Racial ascensions require the player to make use of [[Racial equipment|weapons and armor appropriate for the character's race]]. "Soft" racial conducts require the player to use racial armor and weapons whenever possible (thus allowing any race to use a T-shirt or Hawaiian shirt, because there are no race-specific items for the [[shirt]] slot). "Hard" racial conducts require that the player '''only''' use race-specific items in the weapon and armor slots (thus making shirts and [[glove]]s completely unavailable). It is generally acceptable to use items that are not technically race-specific, but have a strong association with that race (such as the [[aklys]] for gnomes).
+
+The acceptable items for each race are as follows:
+
+*'''[[Dwarf]]:''' [[Dwarvish mattock]], [[dwarvish short sword]], [[dwarvish spear]], [[dwarvish cloak]], [[dwarvish iron helm]], [[dwarvish mithril-coat]], [[dwarvish roundshield]], [[iron shoes]].
+*'''[[Elf (starting race)|Elf]]:''' [[Elven dagger]], [[elven short sword]], [[elven spear]], [[elven broadsword]], [[elven bow]], [[elven arrow]], [[elven mithril-coat]], [[elven cloak]], [[elven boots]], [[elven shield]], [[elven leather helm]].
+*'''[[Gnome (starting race)|Gnome]]:''' [[Aklys]], [[crossbow]], [[crossbow bolt]].
+*'''[[Orc (starting race)|Orc]]:''' [[Orcish dagger]], [[orcish short sword]], [[orcish spear]], [[orcish bow]], [[orcish arrow]], [[orcish chain mail]], [[orcish ring mail]], [[orcish cloak]], [[orcish helm]], [[orcish shield]], [[Uruk-hai shield]].
+*'''[[Human (starting race)|Human]]:''' [[chain mail]], [[dagger]], [[high boots]], [[knife]], [[large shield]], [[leather cloak]], [[leather gloves]], [[long sword]], [[low boots]], [[plate mail]], [[ring mail]], [[short sword]], [[silver saber]], [[small shield]], [[spear]]<!--non-exhaustive, fill in any that might've been missed-->
+
+There are no restrictions on items that are neither weapons nor armor.
+
+Racial ascensions obviously vary in difficulty depending on the race. A hard racial elf suffers from little more than a lack of access to dragon mail or powerful artifacts, while a hard racial gnome is playing a nude conduct with a substandard weapon.
+
+*A page of racial ascensions can be found here: [http://groups.google.ca/group/rec.games.roguelike.nethack/browse_thread/thread/45f835e3a077cec8/a5ec41d2593ec24e?]
+*A racial orc, combined with the illiterate conduct: [http://groups.google.ca/group/rec.games.roguelike.nethack/browse_thread/thread/a942fef4197d9033/5a956e85015c2aae?]
+
+Many variants give bonuses to certain monsters wearing appropriate racial equipment, and often expand on the amount of racial equipment available.
+
+Humans are generally not used for racial ascensions. --[[User:Snikers|Snikers]]
+
+(Some people play Humans counting the equipment from Keystone Kops and Minetown Guards as racial) -LL
+
+=== Stick user ===
+You may only use wands to cause damage and otherwise affect the dungeon. No use of weapons is allowed to #force locks or attack. You should rely on powerful pets. The [[wizard]], a role with some of the best damage potential from spells, is one of the best roles for this conduct. -- [[User:Kalon|Kalon]] 01:34, 7 April 2008 (UTC)
+
+===Stubborn===
+Go through the entire game with your starting equipment. This is a difficult task, because you cannot use any rings, amulets, weapons, spellbooks, or items other than the ones with which you started. This is nearly impossible for the Tourist role, which is designed to buy necessary items.
+
+Exceptions are allowed for the [[Amulet of Yendor]], the [[Bell of Opening]], and any of the items absolutely necessary to retrieve the [[Amulet of Yendor]] or the [[quest artifact]] that you earn through the [[quest]]. --[[User:Edrobot|Edrobot]]
+
+===Taciturn===
+Don't use #[[chat]]. As a result, you cannot talk to your pet (you'll need a [[stethoscope]] for that), and you cannot buy protection from priests.
+
+A more difficult version would be to avoid any commands that might involve talking, such as #[[pray]], #[[offer]], or [[p]]ay. [[User:Uruwi|Uruwi]] ([[User talk:Uruwi|talk]])
+
+==See also==
+*[[Speed ascension]]
+*[[Stupid Ascension Tricks]]
+
+{{nethack-360|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Untracked conducts]]}
+&&%s&& %s Unofficial conducts {16683 2006-12-25T18:23:09Z {0 } Redirecting to [[Unofficial conduct]] #REDIRECT [[Unofficial conduct]]}
+&&%s&& %s Squares {16590 2006-12-23T01:40:28Z {0 } Redirecting to [[Square]] #REDIRECT [[Square]]}
+&&%s&& %s Kobold shaman {35617 2008-10-18T17:20:38Z {0 } Redirecting to [[Kobold#Kobold shaman]] #REDIRECT [[Kobold#Kobold shaman]]}
+&&%s&& %s Large kobold {35615 2008-10-18T17:18:45Z {0 } Redirecting to [[Kobold#Large kobold]] #REDIRECT [[Kobold#Large kobold]]}
+&&%s&& %s Template:Patch {70193 2011-05-03T18:01:47Z {630 Paxed} bilious hostname update <div class="thumb tright">
+{| class="prettytable" style="margin:0"
+!colspan="2"| '''{{{name|{{PAGENAME}}}}}'''
+|-
+!Author
+|{{{author|''unknown''}}}
+|-
+!Download
+|{{#if:{{{download|}}}|[{{{download}}} link]|''unknown''}}
+|-
+![[Bilious Patch Database|Bilious PatchDB]]
+|style="background-color: #ccffcc;"|{{#if:{{{bilious|}}}|[http://bilious.alt.org/?{{{bilious}}} {{{bilious}}}]|''unknown''}}
+|}
+</div><noinclude>
+When writing an article about a [[patch]], you can use this template to create an infobox. Call it like this:
+ <nowiki>{{</nowiki>patch
+  |name=''NAME''
+  |author=''AUTHOR''
+  |download=''<nowiki>http://link/to/patch</nowiki>''
+  |bilious=''BILIOUS NUMBER''
+ <nowiki>}}</nowiki>
+
+'''Name''' is an optional parameter that defaults to the page's name. The other parameters are also optional; if a parameter is omitted, ''unknown'' is substituted in the box, and no link is generated.  Any use of this template should have at least one of '''download''' or '''bilious'''.
+
+The '''bilious number''' is generates a link to <nowiki>http://bilious.alt.org/?</nowiki>''number'' in the [[Bilious Patch Database]]. Supply a number if possible, because the PatchDB contains a lot of useful info and users can edit it. This template highlights the link.
+
+[[Category:Infobox templates|Patch]]
+</noinclude>}
+&&%s&& %s Kobold lord {35616 2008-10-18T17:19:41Z {0 } Redirecting to [[Kobold#Kobold lord]] #REDIRECT [[Kobold#Kobold lord]]}
+&&%s&& %s Rabid rat {87079 2013-09-12T04:07:18Z {0 } Redirected page to [[Rat#Rabid rat]] #REDIRECT [[rat#Rabid rat]]
+[[Category:Monsters]]}
+&&%s&& %s Statuscolors {132816 2020-03-12T04:25:08Z {4000978 Aximili} add sections, mention 3.6.x status_hilites {{patch
+ |name=Statuscolors
+ |author=Shachaf & Oren Ben-Kiki
+ |download=http://www.ben-kiki.org/oren/statuscolors/nh343-statuscolors.patch
+ |bilious=142
+}}
+
+The '''statuscolors''' [[patch]] for [[3.4.3]] allows the user to configure colors for the bottom status line; these colors vary as the [[HP]] and [[Pw]] change and status indicators appear and disappear. This patch is modeled after the [[menucolors]] patch, which allows the user to configure colors for menu items. Both patches only operate in the [[tty]] interface. The user must put STATUSCOLOR lines into their [[nethackrc]], or the statuscolors patch does nothing.
+
+In versions [[3.6.1]] and later, [[status hilites]] are included by default. The rest of this article is mainly useful for those on earlier versions.
+
+== Comparison to HPmon ==
+
+Statuscolors patch does the same as [[HPmon]], and more; HPmon only colors the [[HP]] display. However, the fact that statuscolors does nothing without configuration from the [[nethackrc]] might be viewed as a regression. The Statuscolors patch is used on [[nethack.alt.org]], while an expanded version of HPmon exists in [[GruntHack]].
+
+The HPmon patch only overwrites the HP display with a colorised version, occasionally neglecting to do this (in which case the display is not colorised) or writing the numbers at the wrong position. The statuscolors patch actually modifies the code in [[botl.c]] that generates the status line, thus inserting color. However, this brings the statuscolors patch into conflict with the [[dumplog]] patch, which tries to modify the same code to support the provision of a string to the end-of-game character dump. [[NetHack brass]] players can use the [[brass interface patch]] which provides one possible resolution to this conflict.
+
+== Usage ==
+
+To enable statuscolors:
+
+ OPTIONS=statuscolors
+
+To specify statuscolor options, write:
+
+ STATUSCOLOR=<option>,<option>
+
+Numeric options have the format <tt><nowiki><field>%<max-percent>:<color-option></nowiki></tt>. For example:
+
+ STATUSCOLOR=hp%15:red&bold,pw%100=green
+
+Text options have the format <tt><nowiki><text>:<color-option></nowiki></tt>. Text is case-insensitive. For example:
+
+ STATUSCOLOR=hallu:orange,foodpois:red&inverse&blink
+
+On NAO, you can also specify exact values:
+
+ STATUSCOLOR=hp.1:red&inverse,hp<8:red,hp>50:grey
+
+A color option is a <tt><nowiki><color></nowiki></tt> followed by an optional sequence of <tt><nowiki>&<attr></nowiki></tt>. Color and attribute names are case insensitive. Valid colors are: black, blue, brown, cyan, gray, green, lightblue, lightcyan, lightgreen, lightmagenta, magenta, none, orange, red, white, yellow.
+
+Valid attributes are: blink, bold, dim, inverse, none, underline.
+
+A reasonable set of defaults might be:
+
+ # HP
+ STATUSCOLOR=hp%100=green,hp%66=yellow,hp%50=orange
+ STATUSCOLOR=hp%33=red&bold,hp%15:red&inverse,hp%0:red&inverse&blink
+ # Pw
+ STATUSCOLOR=pw%100=green,pw%66=yellow,pw%50:orange,pw%33=red&bold
+ # Carry
+ STATUSCOLOR=burdened:yellow,stressed:orange,strained:red&bold
+ STATUSCOLOR=overtaxed:red&inverse,overloaded:red&inverse&blink
+ # Hunger
+ STATUSCOLOR=satiated:yellow,hungry:orange,weak:red&bold
+ STATUSCOLOR=fainting:red&inverse,fainted:red&inverse&blink
+ # Mental
+ STATUSCOLOR=hallu:yellow,conf:orange,stun:red&bold
+ # Health
+ STATUSCOLOR=ill:red&inverse,foodpois:red&inverse,slime:red&inverse
+ # Other
+ STATUSCOLOR=held:red&inverse,blind:red&inverse 
+
+[[Category:Patches]]}
+&&%s&& %s Warhorse {35626 2008-10-18T17:36:48Z {0 } Redirecting to [[Pony#Warhorse]] #REDIRECT [[Pony#Warhorse]]}
+&&%s&& %s Pony {150067 2023-03-05T18:05:25Z {4001659 Vadnyclovek} wrong grammar {{tocright}}
+A '''pony''' is a somewhat common monster, represented by the letter {{brown|u}}. Ponies move quickly and hit multiple times a turn, and may prove troublesome for a low-level player unless they can pacify them or get their pet to kill them. A pony can [[grow up]] into a '''horse''', and then into a '''warhorse'''; horses and warhorses are especially fast.
+
+As a [[herbivore]], throwing a pony, horse or warhorse a vegetarian treat (e.g. [[carrot]]s and [[apple]]s) will [[tame]] it. Other vegetarian food ([[pear]], [[lichen]] corpse, [[kelp frond]]) has a chance of working, too. 
+
+Throwing a tripe ration (or any other non-vegetarian food) to a hostile horse will make the horse peaceful, even though the horse will not eat it (and the tripe can be safely retrieved), just as throwing vegan food at a hostile dog or cat will make it peaceful. Vegetarian food will keep ponies fed 5 times as long as players and their larger brethren 4 times as long,<ref>{{function|dogmove.c|dog_nutrition}}</ref> with exceptions for starving pets.<ref>{{function|dogmove.c|dog_eat}}</ref> [[Chat]] with your pet horse or use a [[stethoscope]] to find out if it is hungry.
+
+==Riding==
+{{main|Knight}}
+Pet horses can be [[saddle]]d and [[riding|ridden]], giving the player the speed of the mount. Because pets feed mostly on the corpses of fallen monsters and few of them are vegetarian, horses are harder to keep fed than other pets. This is especially important for Knights, who start their game with a tame saddled pony, though they do have several carrots and apples in their starting inventory; this both makes it easier to mount their steed much earlier and keep them fed long enough to find a more "permanent" source of food. Further details for knights and maintaining horses are provided in their article linked above.
+
+==Pony==
+{{monster
+ |name=pony
+ |difficulty=4
+ |level=3
+ |experience=31
+ |speed=16
+ |AC=6
+ |MR=0
+ |align= 0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Kick 1d6, Bite 1d2
+ |weight=1300
+ |nutr=250
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A pony|animal=1|nohands=1|herbivore=1
+ |wander=1|strong=1|domestic=1|infravisible=1}}
+ |reference=[[monst.c#line913]]
+}}
+
+===Encyclopedia entry===
+{{encyclopedia|
+Hey! now! Come hoy now! Whither do you wander?
+Up, down, near or far, here, there or yonder?
+Sharp-ears, Wise-nose, Swish-tail and Bumpkin,
+White-socks my little lad, and old Fatty Lumpkin!
+[...]
+Tom called them one by one and they climbed over the brow and stood in a line.  Then Tom bowed to the hobbits.
+
+"Here are your ponies, now!" he said.  "They've more sense (in some ways) than you wandering hobbits have -- more sense in their noses. For they sniff danger ahead which you walk right into; and if they run to save themselves, then they run the right way."
+|[ The Fellowship of the Ring, by J.R.R. Tolkien ]
+}}
+{{clear}}
+
+==Horse==
+{{monster
+ |name=horse
+ |difficulty=7
+ |level=5
+ |experience=61
+ |speed=20
+ |AC=5
+ |MR=0
+ |align= 0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Kick 1d8, Bite 1d3
+ |weight=1500
+ |nutr=300
+ |size=Large
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A horse|animal=1|nohands=1|herbivore=1
+ |wander=1|strong=1|domestic=1|infravisible=1}}
+ |reference=[[monst.c#line920]]
+}}
+
+===Encyclopedia entry===
+{{encyclopedia|
+King Richard III: A horse! a horse! my kingdom for a horse!
+Catesby: Withdraw, my lord; I'll help you to a horse.
+King Richard III: Slave, I have set my life upon a cast,
+And I will stand the hazard of the die:
+I think there be six Richmonds in the field;
+Five have I slain to-day instead of him.
+A horse! a horse! my kingdom for a horse!
+|[ King Richard III, by William Shakespeare ]
+}}
+{{clear}}
+
+==Warhorse==
+{{monster
+ |name=warhorse
+ |difficulty=9
+ |level=7
+ |experience=97
+ |speed=24
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Kick 1d10, Bite 1d4
+ |weight=1800
+ |nutr= 350
+ |size=Large
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A warhorse|animal=1|nohands=1|herbivore=1
+ |wander=1|strong=1|domestic=1|infravisible=1}}
+ |reference=[[monst.c#line927]]
+}}
+Warhorses are higher level than [[large dog]]s and [[large cat]]s. They can become just high enough in level to attack [[shopkeeper]]s, for whom they are rarely an adequate match. Warhorses should be kept out of shops.
+
+===Encyclopedia entry===
+{{encyclopedia|
+King Richard III: A horse! a horse! my kingdom for a horse!
+Catesby: Withdraw, my lord; I'll help you to a horse.
+King Richard III: Slave, I have set my life upon a cast,
+And I will stand the hazard of the die:
+I think there be six Richmonds in the field;
+Five have I slain to-day instead of him.
+A horse! a horse! my kingdom for a horse!
+|[ King Richard III, by William Shakespeare ]
+}}
+
+==Pet horses==
+Horses are common pets, as Knights start with a pony, and all horses can be tamed with vegetarian treats as noted above.
+
+Taming wild horses is usually easy, because all sizes of horse are considered [[domestic animal]]s. Throwing a vegetarian [[treat]] at a hostile or peaceful horse will tame it. Throwing any other comestible at a horse will at least render it peaceful, with the exception of [[cream pie]]s and [[egg]]s (which will break on impact).
+
+All vegetarian treats ([[apple]]s or [[carrot]]s) can be used to train your horse to [[apport|fetch]].
+
+You can #[[chat]] with your horse to get an idea of how it is feeling:
+* it will neigh if it is caught in a [[trap]], [[confusion|confused]], [[scare|fleeing]], or [[tameness]] is below 5.
+* if it is hungry, it will whinny.
+* the rest of the time it will whicker.
+
+== Body parts ==
+'''Horse''' also refers to the grouping of body parts for the forms of horses and unicorns. It affects the messages referring to the appropriate body parts as follows.
+
+{| class="prettytable"
+!Body part{{refsrc|hack.h|226}}!!Description
+|-

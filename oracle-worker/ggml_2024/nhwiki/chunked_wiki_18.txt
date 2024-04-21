@@ -1,0 +1,1000 @@
+|by numbers using phone key layout; 123 above, 789 below
+|-
+|<tt>4</tt>
+|combines 3 with 2; phone layout plus MSDOS compatibility, where {{kbd|5}} means {{kbd|g}}, {{kbd|alt|5}} means {{kbd|G}}, and {{kbd|alt|0}} mean {{kbd|I}}
+|-
+|<tt>-1</tt>
+|by letters but use {{kbd|z}} to go northwest, {{kbd|y}} to zap wands (for German keyboards)
+|}
+
+With <tt>number_pad</tt> set to <tt>1</tt>, <tt>2</tt>, <tt>3</tt>, or <tt>4</tt>, counts need to be prefixed with {{kbd|n}} ({{kbd|n}}{{kbd|5}}{{kbd|0}}{{kbd|s}} to search 50 times). Also, some [[extended command]]s are available in a short form ({{kbd|l}} performs #[[loot]], {{kbd|u}} performs #[[untrap]], etc).
+
+For backwards compatibility, number_pad without a value is synonymous to <tt>number_pad:1</tt>.
+
+===packorder===
+Sets the order of item classes shown in [[inventory]]. Compound option, takes a string of up to 14 characters, with default values of <tt>")[%?+!=/(*`0_</tt>. Omitted types are filled in at the end from the previous order. Can be set in-game. Persistent.
+
+===paranoid_confirmation===
+A space-separated list of specific situations where alternate prompting is desired. The default is <tt>paranoid_confirmation:pray</tt>.
+
+{|class="prettytable striped"
+!Option
+!Description
+|-
+|<tt>Confirm</tt>
+|for any prompts which are set to require "yes" rather than 'y', also require "no" to reject instead of accepting any non-yes response as no
+|-
+|<tt>quit</tt>
+|require "yes" rathern than 'y' to confirm quitting the game or switching into non-scoring explore mode
+|-
+|<tt>die</tt>
+|require "yes" rather than 'y' to confirm dying (applies only to [[explore mode]])
+|-
+|<tt>bones</tt>
+|require "yes" rather than 'y' to confirm saving bones data when dying in [[wizard mode|debug mode]]
+|-
+|<tt>attack</tt>
+|require "yes" rather than 'y' to confirm attacking a peaceful monster
+|-
+|<tt>pray</tt>
+|require 'y' to confirm an attempt to pray rather than immediately praying; on by default
+|-
+|<tt>wand-break</tt>
+|require "yes" rather than 'y' to confirm breaking a wand. (NetHack 3.6.2 only)
+|-
+|<tt>Were-change</tt>
+|require "yes" rather than 'y' to confirm changing form due to lycanthropy when hero has polymorph control. (NetHack 3.6.2 only)
+|-
+|<tt>Remove</tt>
+|require selection from inventory for {{kbd|R}} and {{kbd|T}} commands even when wearing just one applicable item
+|-
+|<tt>all</tt>
+|turn on all of the above
+|}
+
+{{upcoming|NetHack 3.7.0|{{commit|03c715f17960efde6c121631bffa61cff25fddb6|This commit}} introduces <tt>paranoid_confirmation:swim</tt>, which will prevent you from walking onto water or lava unless you prefix the movement with {{kbd|m}}.}}
+
+By default, the pray choice is enabled, the others disabled. To disable it without setting any of the other choices, use <tt>paranoid_confirmation:none</tt>. To keep it enabled while setting any of the others, include it in the list:
+
+ OPTIONS=paranoid_confirmation:attack pray Remove
+
+===perm_invent===
+Show permanent inventory window. Boolean option, defaults to FALSE. Not used on TTY. Can be set in-game. Persistent.
+
+===pettype===
+Sets your preferred [[pet]] type. A compound option, with possible value of <tt>cat</tt>, <tt>dog</tt>, or use <tt>none</tt> to start a game without a pet. Cannot be set in-game.
+
+===pickup_burden===
+Prompt for confirmation before picking up items that will push the character's [[encumbrance]] past a given level -- <tt>Unencumbered</tt>, <tt>Burdened</tt>, <tt>streSsed</tt>, <tt>straiNed</tt>, <tt>Overtaxed</tt>, or <tt>overLoaded</tt>. This will '''not''' prompt the player when picking up a [[loadstone]].{{refsrc|src/pickup.c|1404|version=NetHack 3.6.6}} Defaults to <tt>S</tt>. Persistent.
+
+===pickup_thrown===
+If this option is on and [[#autopickup|autopickup]] is also on, try to pick up things that you threw, even if they aren't in [[#pickup_types|pickup_types]] or match an [[Autopickup_exception|autopickup exception]]. Boolean option, defaults to TRUE. Persistent.
+
+===pickup_types===
+Specify the object types to be picked up when [[#autopickup|autopickup]] is on. Default is <tt>all</tt> to pick up all types. For example "<tt>pickup_types:?!/</tt>" would pick up all [[scroll]]s, [[potion]]s and [[wand]]s. Persistent.
+
+===pile_limit===
+When walking across a pile of objects on the floor, threshold at which the message "there are few/several/many objects here" is given instead of showing a popup list of those objects. A value of 0 means "no limit" (always list the objects); a value of 1 effectively means "never show the objects" since the pile size will always be at least that big; default value is 5. Persistent.
+
+===playmode===
+Values are <tt>normal</tt>, <tt>explore</tt>, or <tt>debug</tt>. Allows selection of [[explore mode]] (also known as discovery mode) or debug mode (also known as wizard mode) instead of normal play. [[Debug mode]] might only be allowed for someone logged in under a particular user name (on multi-user system) or it might be disabled entirely. Requesting it when not allowed or not possible results in explore mode instead. NAO has both Explore and Debug modes disabled entirely. Default is normal play.
+
+===pushweapon===
+If you [[wield]] something when you are already wielding something else, the old [[weapon]] is pushed into the alternate weapon slot. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===race===
+Set your character's [[race]]. A compound option, with possible values of <tt>human</tt>, <tt>elf</tt>, <tt>dwarf</tt>, <tt>gnome</tt>, <tt>orc</tt>, or <tt>random</tt>, with default of random. If you prefix a <tt>!</tt> to the value, you can exclude that race from being picked randomly. Cannot be set in-game. Persistent.
+
+===rest_on_space===
+Space [[wait]]s for a turn. This is considered by some as a very easy way to get killed.
+
+Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===role===
+Set your character's [[role]]. Can also be <tt>random</tt>. A compound option. See [[#name|name option]] for an alternate method of specifying your role. Normally only the first letter of the value is examined, with <tt>r</tt> being the exception with <tt>Rogue</tt>, <tt>Ranger</tt>, and <tt>random</tt> values. If you prefix an option with <tt>!</tt>, you can exclude that role from being picked randomly. Cannot be set in-game. Persistent.
+
+===roguesymset===
+This option may be used to select one of the named symbol sets found within the [[Source:NetHack_3.6.0/dat/symbols|symbols]] file to alter the symbols displayed on the screen on the [[rogue level]].
+
+===rlecomp===
+When writing out a save file, perform a run length compression of the map. Not all ports support run length compression. It has no effect on reading an existing save file.
+
+===runmode ===
+Set the screen updating interval for multi-turn actions, eg. running or traveling. Can be set in-game. Compound option with the following possible values:
+
+{|class="prettytable striped"
+!Option
+!Description
+|-
+|<tt>teleport</tt>
+|update the map after movement has finished
+|-
+|<tt>run</tt>
+|update the map after every seven or so steps (default)
+|-
+|<tt>walk</tt>
+|update the map after each step
+|-
+|<tt>crawl</tt>
+|like walk, but pause briefly after each step
+|}
+
+===safe_pet===
+Prevents you from (knowingly) attacking your pet by moving into it. TRUE is the best setting as attacking a pet, should you wish to, is easily accomplished using the [[fight]] command. Boolean option, defaults to TRUE. Can be set in-game.
+
+===sanity_check===
+This option turns on debugging output, and is only available in [[wizard mode]]. Boolean option, defaults to FALSE. <!--FIXME: wizmode section?-->
+
+===scores===
+Control what part of hiscore list to show at the end of game. Compound option. Can be set in-game. Persistent. Accept the following options, separated by spaces:
+*<tt>o</tt> - show my own score. Can be prefixed with <tt>!</tt> to not show own score.
+*<tt>Xa</tt> - show X scores around own score
+*<tt>Xt</tt> - show X scores from the top
+For example:
+ OPTIONS=scores:10t 2a o
+
+===showexp===
+Displays the exact number of experience points next to your [[experience level]] on the [[status line]]. Useful for seeing how close you are to the next level, but it may increase the length of the status line a lot, pushing important notifications (like Hungry, Ill, FoodPois, etc.) off the end.
+
+Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===showrace===
+Uses the symbol for your race instead of {{white|@}}. That's {{white|h}} for [[dwarves]], {{white|o}} for [[orc (starting race)|orcs]] and {{white|G}} for [[gnome (starting race)|gnomes]]. Elves are still {{white|@}}. This could be useful for reminding you not to [[genocide]] your racial glyph but is not widely used. Boolean option, defaults to FALSE. Can be set in-game.
+
+===showscore===
+Shows your approximate accumulated score on the bottom line. Boolean option, defaults to FALSE. Can be set in-game. Persistent. Only available if NetHack was compiled with SCORE_ON_BOTL.
+
+===silent===
+Stops your terminal's [[Bell (terminal)|bell]] sounding. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===sortloot===
+Controls the sorting behavior of the pickup lists for inventory and #[[loot]] commands and some others. Persistent. The possible values are:
+
+{|class="prettytable striped"
+!Option
+!Description
+|-
+|<tt>full</tt>
+|always sort the lists
+|-
+|<tt>loot</tt>
+|only sort the lists that don't use inventory letters, like with the #[[loot]] and pickup commands
+|-
+|<tt>none</tt>
+|show lists the traditional way without sorting
+|}
+
+===sortpack===
+Groups similar kinds of objects in your inventory. TRUE is highly recommended. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===SOUND===
+{{main|User sounds}}
+Allows user-defined sound file to be played when a message is shown.
+
+===sparkle===
+Display sparkly effect for resisted magical attacks (e.g. a fire attack on a fire-resistant monster). It can be helpful to turn this off on the [[Plane of Fire]], otherwise a dozen or more sparkles will occur per turn. See also [[#timed_delay|timed_delay]].
+
+Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===standout===
+Uses standout mode (reverse video) for displaying "<tt>--More--</tt>". Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===status_updates===
+Allow updates to the status lines at the bottom of the screen (default true).
+
+===statushilites===
+Controls how many turns status hilite behaviors highlight the field. If negated or set to zero, disables status hiliting.
+
+Only useful when you have status hilite rules configured; see the [[#hilite_status|hilite_status]] option for more information.
+
+===statuslines===
+Allows you to choose whether your status bar has 2 or 3 lines. Can also be set during the game. Your user interface must support at least 25 rows, when using the value of 3. This is especially useful in [[Curses interface]].
+
+===suppress_alert===
+Prevent alert notification messages about feature changes in a NetHack version and the previous versions. Compound option, accepts a string describing a NetHack version. Can be set in-game. Currently only one use, which is to prevent the [[quiver]] and [[quit]]-command changes:
+ OPTIONS=suppress_alert:3.3.1
+
+===symset===
+{{main|symset}}
+
+Select the symbols used to display the game. Replaces the DECgraphics, IBMgraphics, and MACgraphics options.
+
+* NHAccess (Recommended for blind players)
+* MACgraphics
+* IBMGraphics_2
+* IBMGraphics_1
+* IBMgraphics
+* DECgraphics
+
+Individual symbols may be set using the following format:
+
+ SYMBOLS=S_boulder:0
+ SYMBOLS=S_golem:7
+ SYMBOLS=S_ghost:8
+
+For a complete list of symbol names, please see the [[symset]] article.
+
+===time===
+Displays elapsed game time, in turns, on the status line. Very useful for estimating prayer timeouts, spell lifespan, and more. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===timed_delay===
+On TTY interfaces ([[unix]] and [[VMS]]), use a timer instead of sending extra screen output when attempting to pause for a display effect. On [[MSDOS]] without the termcap lib, chooses whether or not to pause for visual effect.  See also [[#sparkle|sparkle]].
+
+Boolean option, defaults to TRUE if configured into the program. Can be set in-game. Persistent.
+
+===tombstone===
+Prints an ASCII tombstone when you die. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===toptenwin===
+Prints the top ten high scores in a window rather than stdout. This isn't very useful unless you are using a [[GUI]] version. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
+
+===travel===
+Enables the [[travel]] command. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===verbose===
+Chooses whether or not to display certain non-essential messages, such as doors being destroyed. Boolean option, defaults to TRUE. Can be set in-game. Persistent.
+
+===vt_tiledata===
+{{main|vt_tiledata}}
+Boolean option. Turning it on will output extra information in the datastream in the form of escape code "ESC [ ... z", meant for graphical frontends. See also [[EbonHack]].
+
+===whatis_coord===
+When using the <tt>/</tt> ([[What is|what is]]) or <tt>;</tt> ([[Far look|far look]]) commands to [[Targeting|look around on the map]] with autodescribe on, display coordinates after the description. Also works in other situations where you are asked to pick a location.
+
+The possible settings are:
+*<tt>c</tt> - compass ('east' or '3s' or '2n,4w')
+*<tt>f</tt> - full compass ('east' or '3south' or '2north,4west')
+*<tt>m</tt> - map &lt;x,y&gt; (map column x=0 is not used)
+*<tt>s</tt> - screen [row,column] (row is offset to match tty usage)
+*<tt>n</tt> - none (no coordinates shown). Default.
+
+The whatis_coord option is also used with the sub-commands <tt>m</tt>, <tt>M</tt>, <tt>o</tt>, and <tt>O</tt> when using <tt>/</tt>, where the 'none' setting is overridden with 'map'.
+
+===whatis_filter===
+When using the <tt>m</tt>, <tt>o</tt>, <tt>d</tt>, <tt>x</tt> or <tt>a</tt> keys to [[Targeting|select a location on the map]], allows filtering the possible targets. It can be set by typing <tt>"</tt> while targeting. It can be set to:
+*<tt>n</tt> - no filtering (default)
+*<tt>v</tt> - in view only
+*<tt>a</tt> - in same area only (e.g. same room or same corridor)
+
+The area-filter tries to be slightly predictive; if you're standing on a doorway, it will consider the area on the side of the door you were last moving toward.
+
+===whatis_menu===
+When using the <tt>m</tt>, <tt>o</tt>, <tt>d</tt>, <tt>x</tt> or <tt>a</tt> keys to [[Targeting|select a location on the map]], uses a menu to pick a target. Otherwise, typing a lowercase letter will cycle through targets from nearest to furthest, and an uppercase letter from furthest to nearest. It can be toggled by typing <tt>!</tt> while targeting. Boolean, default off.
+
+===whatis_moveskip===
+When [[Targeting|selecting a location on the map]], and using shifted movement keys or meta-digit keys to fast-move, instead of moving 8 units at a time, move by skipping the same glyphs. It can be toggled by typing <tt>*</tt> while targeting. Boolean, default off.
+
+===windowtype===
+Select which windowing system to use, such as <tt>tty</tt> or <tt>X11</tt> (default depends on version). Cannot be set in-game. Example:
+ OPTIONS=windowtype:tty
+
+===wizkit===
+[[Wizard mode]]-only option. Specifies the path to a text file that contains a list of item names, one per line, up to a maximum of 128 lines. Each line is processed by the function that handles wishing. For example
+
+In your config file:
+ WIZKIT=wizkit.txt
+
+And the contents of <tt>wizkit.txt</tt>:
+ blessed [[scroll of monster detection|monster detection]]
+ [[ring of levitation]]
+ [[amulet of yendor]]
+ 2 blessed [[scroll of genocide|genocide]]
+
+Makes your character start with those items in inventory, in addition to the normal starting items.
+
+===zerocomp===
+When writing out a save file, perform zero-comp compression of the contents. Not all ports support zero-comp compression. It has no effect on reading an existing save file.
+
+== Window Port Customization Options ==
+
+===align_message===
+Where to align or place the message window. Compound option, with possible values of <tt>top</tt>, <tt>bottom</tt>, <tt>left</tt>, or <tt>right</tt>. Cannot be set in-game.
+
+===align_status===
+Where to align or place the status window. Compound option, with possible values of <tt>top</tt>, <tt>bottom</tt>, <tt>left</tt>, or <tt>right</tt>. Cannot be set in-game.
+
+===ascii_map===
+NetHack should display an [[ASCII]] character map if it can. Boolean option. Can be set in-game.
+
+===color===
+{{Main|colors}}
+NetHack should display color if it can for different [[monster]]s, [[object]]s, and [[dungeon feature]]s. This option matters only for the TTY windowport. Boolean option, defaults to TRUE on most systems including Windows and Mac. Can be set in-game.
+
+In case the default color scheme is hard to distinguish on your monitor, you might want to [[Colors#Changing_terminal_colors|edit the color preferences in your terminal emulator]].
+
+If you are looking for colors of the wiki itself, see [[:Category:Function_templates]] and [[User:Paxed/ReplaceCharsBlock]].
+
+===eight_bit_tty===
+NetHack should pass eight-bit character values straight through to your terminal. Boolean option, defaults to FALSE. Can be set in-game.
+
+===font_map===
+NetHack should use a font by the chosen name for the map window.
+
+===font_menu===
+NetHack should use a font by the chosen name for menu windows.
+
+===font_message===
+NetHack should use a font by the chosen name for the message window.
+
+===font_status===
+NetHack should use a font by the chosen name for the status window.
+
+===font_text===
+NetHack should use a font by the chosen name for text windows.
+
+===font_size_map===
+NetHack should use this size font for the map window.
+
+===font_size_menu===
+NetHack should use this size font for menu windows.
+
+===font_size_message===
+NetHack should use this size font for the message window.
+
+===font_size_status===
+NetHack should use this size font for the status window.
+
+===font_size_text===
+NetHack should use this size font for text windows.
+
+===fullscreen===
+NetHack should try and display on the entire screen rather than in a window. Boolean option, defaults to false. Cannot be set in-game.
+
+If the game cannot be displayed in fullscreen through this option and you are using the tty interface, you can usually adjust your terminal emulator configuration to achieve a similar effect (e.g. by increasing the font size).
+
+===large_font===
+NetHack should use a large font.
+
+===map_mode===
+NetHack should display the map in the manner specified. Used in Windows port to choose between tiles or different sizes of ASCII. Consult defaults.nh for possible options.
+
+===mouse_support===
+Use mouse for moving around. A boolean, defaults to FALSE. Is displayed, but cannot be set in-game.
+
+===player_selection===
+NetHack should pop up dialog boxes, or use prompts for character selection. Compound option. Cannot be set in-game.
+
+===popup_dialog===
+NetHack should pop up dialog boxes for input. Boolean option, defaults to false. Can be set in-game.
+
+===preload_tiles===
+NetHack should preload tiles into memory. Boolean option, defaults to true. Cannot be set in-game.
+
+===scroll_amount===
+NetHack should scroll the display this many map cells when the hero reaches the [[#scroll_margin|scroll_margin]]. A compound option, accepts a positive number. Cannot be set in-game.
+
+===scroll_margin===
+NetHack should scroll the display when the hero or cursor is this number of cells away from the edge of the window. A compound option, accepts a positive number. Cannot be set in-game.
+
+===selectsaved===
+NetHack should display a menu of existing saved games for the player to choose from at game startup, if it can. Not all ports support this option.
+
+===softkeyboard===
+Display an on-screen keyboards; handhelds are most likely to support this. Boolean option, defaults to off. Cannot be set in-game.
+
+===splash_screen===
+NetHack should display an opening splash screen when it starts up. Boolean option, defaults to yes.
+
+===tile_width===
+Specify the preferred width of each tile in a tile capable port. Compound option, accepts a positive number. Cannot be set in-game.
+
+===tile_height===
+Specify the preferred height of each tile in a tile capable port. Compound option, accepts a positive number. Cannot be set in-game.
+
+===tile_file===
+Specify the name of an alternative tile file to override the default. Compound option. Cannot be set in-game.
+
+===tiled_map===
+NetHack should display a tiled map if it can. Boolean option, Cannot be set in-game.
+
+===use_darkgray===
+Use bold black instead of blue for black glyphs (TTY only). Boolean option.
+
+===use_inverse===
+Displays certain things in reverse video. Boolean option, defaults to FALSE on non-Win32 platforms. Can be set in-game.
+
+===vary_msgcount===
+NetHack should display this number of messages at a time in the message window. Compound option, accepts a positive number. Cannot be set in-game. Implemented only for the Atari GEM, Win32 GUI and WinCE builds.
+
+===windowcolors===
+NetHack should display windows with the specified foreground/background colors if it can. Compound option. Cannot be set in-game.
+ OPTIONS=windowcolors:''wintype'' ''fground''/''bground''
+where ''wintype'' is one of <tt>menu</tt>, <tt>message</tt>, <tt>status</tt>, <tt>text</tt>,
+and ''fground'' and ''bground'' are colors, either a hexadecimal <tt>#rrggbb</tt>,
+one of the named colors (<tt>black</tt>, <tt>red</tt>, <tt>green</tt>, <tt>brown</tt>,
+<tt>blue</tt>, <tt>magenta</tt>, <tt>cyan</tt>, <tt>orange</tt>, <tt>brightgreen</tt>, <tt>yellow</tt>, <tt>brightblue</tt>,
+<tt>brightmagenta</tt>, <tt>brightcyan</tt>, <tt>white</tt>, <tt>trueblack</tt>, <tt>gray</tt>, <tt>purple</tt>,
+<tt>silver</tt>, <tt>maroon</tt>, <tt>fuchsia</tt>, <tt>lime</tt>, <tt>olive</tt>, <tt>navy</tt>, <tt>teal</tt>, <tt>aqua</tt>),
+or one of Windows UI colors (<tt>activeborder</tt>, <tt>activecaption</tt>,
+<tt>appworkspace</tt>, <tt>background</tt>, <tt>btnface</tt>, <tt>btnshadow</tt>, <tt>btntext</tt>,
+<tt>captiontext</tt>, <tt>graytext</tt>, <tt>greytext</tt>, <tt>highlight</tt>, <tt>highlighttext</tt>,
+<tt>inactiveborder</tt>, <tt>inactivecaption</tt>, <tt>menu</tt>, <tt>menutext</tt>, <tt>scrollbar</tt>,
+<tt>window</tt>, <tt>windowframe</tt>, <tt>windowtext</tt>).
+
+Example:
+ OPTIONS=windowcolors:menu white/black message green/yellow status white/blue text #ffffff/#000000
+
+===wraptext===
+NetHack port should wrap long lines of text if they don't fit in the visible portion of the window. Boolean, defaults to false. Can be set in-game.
+
+<!-- ---------------------------------------- -->
+<!-- ---------------------------------------- -->
+<!-- ---------------------------------------- -->
+
+== Platform-specific Customization options ==
+
+===altkeyhandler===
+Select an alternate keystroke handler dll to load. The name of the handler is specified without the .dll extension and without any path information. Win32 only. Cannot be set in-game. NetHack comes with <tt>nhdefkey.dll</tt>, <tt>nhraykey.dll</tt>, and <tt>nh340key.dll</tt>. If you are using a non-US keyboard layout and cannot type the dollar sign or the hash mark, try nhraykey.
+
+===altmeta===
+Enables [[extended command]] shortcuts, such as {{kbd|alt|d}} to [[dip]].<ref name="unixesc">{{kbd|esc}} followed by {{kbd|d}} on unix systems also works</ref> Boolean option, default is off, except on Amiga. Can be set in-game. Is saved into the savefile.{{refsrc|src/options.c|54|nethack=3.6.0}}
+
+===BIOS===
+Use BIOS calls to update the screen display quickly and to read the keyboard (allowing the use of arrow keys to move) on machines with an IBM PC compatible BIOS ROM. Boolean option, default off. OS/2, PC, and ST NetHack only. Cannot be set in-game.
+
+===DECgraphics===
+Use DEC line-drawing characters. Won't work for all terminals. Boolean option, defaults to TRUE. Can be set in-game. Turning this on sets [[#IBMgraphics|IBMgraphics]] to FALSE.
+
+Starting with [[NetHack 3.6.0]], this option is equivalent to [[symset]]:DECgraphics.
+
+===flush===
+Prevent typeahead. Boolean option, defaults to off. Only usable on Amiga. Can be set in-game.
+
+===IBMgraphics===
+{{main|IBMgraphics}}
+
+Use IBM extended characters. Won't work for all terminals. Boolean option, defaults to FALSE. Only implemented for the TTY windowport. Can be set in-game.
+
+Starting with [[NetHack 3.6.0]], this option is equivalent to [[symset]]:IBMgraphics.
+
+===MacGraphics===
+Use Mac-specific character set to display map. A boolean, Mac-only, defaults to on. See also [[#IBMgraphics|IBMgraphics]] and [[#DECgraphics|DECgraphics]].
+
+Starting with [[NetHack 3.6.0]], this option is equivalent to [[symset]]:MACgraphics.
+
+===page_wait===
+Show --more-- after a page of messages. A boolean, Macs only, defaults to on.
+
+===rawio===
+Force raw (non-cbreak) mode for faster output and more bulletproof input (MS-DOS sometimes treats `^P' as a printer toggle without it) Default off, OS/2, PC, and ST NetHack only.
+Note: DEC Rainbows hang if this is turned on. Cannot be set in-game.
+
+===soundcard===
+Compound option, defaults to on. Only for the PC NetHack. Cannot be set in-game.
+
+===subkeyvalue===
+(Win32 tty NetHack only). May be used to alter the value of keystrokes that the operating system returns to NetHack to help compensate for international keyboard issues. <tt>OPTIONS=subkeyvalue:171/92</tt> will return 92 to NetHack, if 171 was originally going to be returned. You can use multiple subkeyvalue statements in the config file if needed. Cannot be set in-game.
+
+===video===
+Set the video mode used. PC NetHack only. Values are <tt>autodetect</tt>, <tt>default</tt>, or <tt>vga</tt>. Setting <tt>vga</tt> (or <tt>autodetect</tt> with vga hardware present) will cause the game to display tiles.
+Cannot be set in-game.
+
+===videocolors===
+Set the color palette for PC systems using NO_TERMS (default <tt>4-2-6-1-5-3-15-12-10-14-9-13-11</tt>, PC NetHack only). The order of colors is red, green, brown, blue, magenta, cyan, bright.white, bright.red, bright.green, yellow, bright.blue, bright.magenta, and bright.cyan.
+Cannot be set in-game.
+
+Note: If the <tt>#version</tt>-command shows <tt>screen control via foo</tt>, where foo is one of <tt>mactty</tt>, <tt>BIOS</tt>, <tt>DJGPP fast</tt>, <tt>VGA graphics</tt> or <tt>WIN32 console I/O</tt>, then your version of NetHack supports setting videocolors.
+
+===videoshades===
+Set the intensity level of the three gray scales available (default is <code>videoshades:dark-normal-light</code>, PC NetHack only). If the game display is difficult to read, try adjusting these scales; if this does not correct the problem, try !color.
+
+Possible values are the 3 brightnesses (dark, normal, light) separated by hyphens, eg. <code>videoshades:dark-normal-light</code> or <code>videoshades:normal-dark-normal</code>.
+
+Cannot be set in-game.
+
+
+
+<!-- ---------------------------------------- -->
+<!-- ---------------------------------------- -->
+<!-- ---------------------------------------- -->
+
+==References==
+<References />
+
+{{nethack-361}}}
+&&%s&& %s W {105706 2017-05-11T23:12:13Z {4000903 Testbutt}  {{ASCII}}
+* {{white|w}} represents a [[worm]]:
+** {{monsymlink|baby long worm}}
+** {{monsymlink|baby purple worm}}
+** {{monsymlink|long worm}}
+** {{monsymlink|purple worm}}
+
+* {{white|W}} represents a [[Wraith (monster class)|wraith]]:
+** {{monsymlink|barrow wight}}
+** {{monsymlink|wraith}}
+** {{monsymlink|Nazgul}}
+
+* press {{kbd|w}} to [[wield]] a [[weapon]]
+* press {{kbd|shift|w}} to [[wear]] some [[armor]]
+* In [[wizard mode]] press {{kbd|ctrl|w}} to [[wish]] for something
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces new creatures that use the {{white|w}} and {{white|W}} glyphs:
+
+*{{white|w}} worm:
+** {{monsymlink|larva}}
+** {{monsymlink|maggot}}
+** {{monsymlink|dung worm}}
+** {{monsymlink|acid worm}}
+** {{monsymlink|bloodworm}}
+** {{monsymlink|tunnel worm}}
+** {{monsymlink|rot worm}}
+*{{white|W}} wraith:
+** {{monsymlink|wight}}
+
+== AceHack ==
+In [[AceHack]], [[Nethack 4]], [[FIQhack]], and [[Fourk]], two existing monsters have been moved from the removed [[space|{{black|&nbsp;}}]] monster class to the {{white|W}} monster class, to make them easier to see:
+* [[Ghost|{{white|W}}]] [[ghost]]
+* [[Shade|{{brightblue|W}}]] [[shade]]
+
+[[Category:ASCII]]}
+&&%s&& %s Pet {149735 2023-01-12T08:45:00Z {4001605 NetSysFire} /* dNetHack preferred pets */ - typo {{tocright}}
+A '''pet''' is a tame [[monster]] that accompanies and assists [[you]] through the dungeon. By default, each character starts with a pet, and you can acquire many more through various methods. The [[tameness]] of a pet is affected by how well you care for it.
+
+{{todo|pet #chatting messages need to be linked from here. A pet equipment section is already present, but if possible could be expended with tips from a relevant [http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/eb707f2f94de9105# rgrn thread]}}
+
+==Starting pet==
+Every character enters the dungeon with a pet, unless the player has specifically set [[Options#pettype|pettype:none]] in their [[configuration file]]. If your role has a definite pet type in the table below, your pet will always be of that type; for other roles, it will either be the pet type you have configured, or a [[kitten]] or a [[little dog]] with equal probability. Note that only [[Knights]] can start with a [[pony]].
+
+The pet will begin the game already [[call|named]] if you have set the [[Options#catname|catname]], [[Options#dogname|dogname]], or [[Options#horsename|horsename]] options in the configuration file; in addition, certain roles have built-in default pet names if you did not specify a name. Names of pets (and other critters) can be changed using the [[call]] or [[name]] commands.
+
+:{|class="prettytable"
+!Role 
+!Pet 
+!Default name
+|-
+|[[Barbarian]]
+|&lt;random&gt;
+|Idefix (if [[little dog]])
+|-
+|[[Caveman]]
+|[[little dog]]
+|Slasher
+|-
+|[[Knight]]
+|[[pony]]
+|
+|-
+|[[Ranger]]
+|[[little dog]]
+|Sirius
+|-
+|[[Samurai]]
+|[[little dog]]
+|Hachi
+|-
+|[[Wizard]]
+|[[kitten]]
+|
+|}
+
+==Taming==
+In addition to starting with one as above, there are other methods to obtain pets: most monster types can be tamed and made into pets with a [[scroll of taming]], [[magic harp]], or spell of {{spell of|charm monster}}.
+
+[[Domestic animal]]s (all growth stages of [[dog]], [[cat]], and [[horse]]) can be tamed by throwing certain types of [[food]] at them:
+* Dogs and cats can be tamed with "people food" - [[food ration]]s, [[pancake]]s, [[fortune cookie]]s, etc. - and meat such as [[tripe ration]]s, fresh meaty corpses that are not harmful, and items such as [[meatball]]s created with {{spell of|stone to flesh}}. [[Egg]]s can also be used, but they usually just break when thrown.
+* Horses can be tamed with fruits (including the user-specified custom fruit), vegetables, and and most safe [[vegetarian]] corpses.
+* During a [[time|full moon]], dogs of any growth stage have a 5/6 chance of becoming [[peaceful]] instead of tame. Repeated attempts may still succeed.
+* Domestic animals can also be pacified by throwing food items at them that they will not eat, including tins or old corpses.
+
+===Spells, books and scrolls===
+The spell of charm monster can be used to tame an adjacent monster, as can a non-cursed scroll of taming, subject to a check versus [[magic resistance (monster)|monster magic resistance]]; the scroll can also have its range extended by reading it while [[confused]]. The spell {{Spell of|create familiar}} will create a tame domestic animal ({{frac|3}} chance) or a tame random monster ({{frac|2|3}} chance, unless the randomly created monster is of an untameable type).
+
+When not standing on the [[vibrating square]], reading the blessed [[Book of the Dead]] can tame coaligned [[undead]] monsters and increases the tameness of those that are already pets.
+
+===Magic harps===
+[[Apply]]ing a magic harp with charges can tame monsters around you, with the range of the effect dependent on your experience level.
+
+===Djinni and wishes===
+[[Quaff]]ing a [[Smoky and milky potions|smoky]] [[potion]] or [[rub]]bing a [[magic lamp]] can summon a [[djinni]], which may randomly be tame. The odds of it being tame are never very high, though they are highest when the potion or lamp is uncursed. A released djinni that offers a [[wish]] can be used to obtain a desired pet, often in the form of a blessed [[#Figurine|figurine]] - certain pets can only be obtained easily in this way, if at all.
+
+===Figurines===
+Monster [[figurine]]s can be used to generate the monster depicted by the figurine. There is always a chance of the generated monster being tame, with the odds at their highest if the figurine is blessed. Figurines can bypass some [[#Restrictions |taming restrictions]], although a majority of such ineligible monsters cannot have figurines of them created in the first place.{{refsrc|mkobj.c|902|nethack=3.6.0|comment=Figurines follow normal monster generation, but with humans forbidden}}
+
+===Demon gating===
+While [[polymorph]]ed into any [[major demon]] other than a [[balrog]] or [[foocubus]], attacking in [[melee]] with your [[bare hands]] can [[Demon#Summoning while polymorphed|gate in other demons]]. Demons gated this way have a {{frac|5|6}} of being the same type as your current form, and a {{frac|6}} chance of being any random demon of your alignment.
+
+===Eggs===
+If a fresh monster [[egg]] hatches while being carried in open inventory, the baby monster may be generated tame. [[Dragon]] eggs and eggs laid by the player always hatch tame, as will 50% of any other eggs if the player character is [[male]]. The easiest way to get eggs of a given species is to become a female monster of that species and lay the eggs yourself.
+
+===Werecreatures===
+If you are a [[werecreature]], you can use [[Monster (command)|#monster]] to summon your brethren for a cost of 10 [[Pw]]; their species is dependent on your were-species, and they will always arrive tame.
+
+===Traps===
+Two [[trap]]s can actually aid in obtaining tamed monsters with their effects:
+
+* A [[magic trap]] will tame adjacent monsters with 4.8% probability whenever it gives you the [[charisma]]-raising effect. This effect does not check monster MR, so it can tame otherwise resistant monsters. However, magic traps also have a variety of effects, many of which are harmful, so be prepared to deal with them if you intend to gamble on the charisma effect.
+
+* The [[polymorph trap]] polymorphs most monsters that step on it, and already-tame monsters that are weak and/or low on HP will deliberately jump onto them. A [[leash]] can be used to guide pets onto them, and this can be used in conjunction with methods of generating more tame monsters (such as a [[gremlin]] multiplying in water or the werecreature form's #monster ability) to produce armies of high-quality pets.
+
+===The Astral Plane===
+You will be given a tame 'guardian' [[Angel]] upon entering the [[Astral Plane]], unless you are generating [[conflict]] or badly [[Alignment record|aligned]]; the Angel will also disappear if you generate conflict at any point after entrance.
+
+==Restrictions==
+Certain monsters cannot be made tame no matter what you do; in most cases, they will be made [[peaceful]] instead. They are:
+
+* [[Quest nemesis|Quest nemeses]], [[Medusa]], and the [[Wizard of Yendor]], none of whom can even be made peaceful.
+* [[Human]]s (any {{mcsl|K}} or {{mcsl|@}} except [[elf (monster attribute)|elves]]); [[werecreature]]s can be tamed, but only while in creature form.
+* [[Shopkeeper]]s, [[guard]]s, [[aligned priest]]s, [[quest leader]]s, and the Wizard of Yendor can all be polymorphed or slimed, but will remember who they were, and still resist taming; at most, except for the Wizard they can be made peaceful.
+* [[Covetous]] monsters: [[Demon#Unique demons|unique demons]], [[Vlad the Impaler]], and [[lich|master- and arch-liches]].
+* Hostile [[minion]]s sent after you by an angry god.
+* [[Demon]]s, unless you yourself are polymorphed into a demon.
+
+These restrictions are only checked at the time the monster would be made tame; existing monsters changing to these forms (e.g. a demilich that grows up into a master lich, a werecreature reverting to human form) will not become untame. Notably, the [[Riders]] are not inherently untameable, though their 100 monster MR makes it very difficult; Famine and Pestilence can be [[level drain]]ed to the point of lowering their monster MR that is effectively lower, although it may take many tries. Death is immune to level drain, and so cannot be tamed.
+
+==Pet diets==
+A freshly tamed pet's hunger starts out at 1000. For the three cardinal domestic species, the same appropriate foods that work for [[#Taming|taming]] also work for routine feeding are as for taming. Eggs are appropriate for feeding carnivorous and omnivorous pets like dogs and cats, but they should be dropped with the '''d''' command, not [[throw]]n; eggs that pets will not eat are probably [[cockatrice]] eggs, and should be #named and saved. Additionally, starving pets will eat some foods which they will not otherwise (e.g., starving horses will eat "people food" such as food rations).
+
+Pets gain two to eight times more nutrition than players from food (smaller ones gain more), but take the same time to eat it;{{refsrc|dogmove.c|91}} a starving pet will "devour" the food, taking only half the normal time required to eat it, but also gaining only {{frac|3|4}} the nominal nutrition. Generally, your pets (especially the carnivorous ones) will feed themselves from the monsters they kill. Pets will never eat food that would cause them harm, unless they have the appropriate resistance (e.g., pets without [[poison resistance]] won't eat poisonous corpses).
+
+A pet that becomes [[hungry]] will reach "starving" status in 500 turns; a starving pet becomes confused and will have their maximum hit points divided by 3.{{refsrc|dogmove.c|223}} You can get an idea of whether a pet is [[hungry]] or not if you #[[chat]] with them frequently - in many cases (though not all), their vocalizations will change noticeably (e.g., a hungry dog "barks" while an otherwise content dog "yips".) Pet monsters that are [[inediate]] usually do not become hungry, but also cannot have their tameness increased through feeding them.
+
+Pets can be trained to more reliably drop items near you by giving them [[treat]]s after they drop something; this willingness to 'fetch' is known as [[apport]].
+
+===Preferred foods===
+Depending on a pet's diet, the food it is  willing to eat falls into one of four categories:
+* Treats, which can be used to increase the pet's apport
+* Good food, which the pet will eat even when not hungry
+* Acceptable food, which the pet will eat only if hungry or starving
+* Emergency food, which the pet will eat only if starving
+
+The following rules apply to the majority of pets:
+:{|class="prettytable"
+!Class
+![[Carnivore]]
+![[Herbivore]]
+|-
+|Treat
+|
+* [[tripe ration]]s
+* items created by the spell of [[stone to flesh]]
+|
+* [[apple]]s
+* [[carrot]]s
+|-
+|Good
+|
+* meaty [[corpse]]s
+* [[egg]]s
+|
+* vegan corpses (any of {{white|b}} {{white|j}} {{white|F}})
+|-
+|Acceptable
+|
+* "people food"
+|
+* vegan non-corpse non-"people" comestibles
+|-
+|Emergency
+|
+* vegan non-corpse non-"people" comestibles
+|
+* "people food"
+|}
+
+"People food" includes:
+* [[food ration|food]], [[cram ration|cram]], [[C-ration|C]] and [[K-ration]]s
+* [[lembas wafer]]s
+* [[cream pie]]s
+* [[pancake]]s
+* [[candy bar]]s
+* [[fortune cookie]]s
+
+Omnivorous pets use the highest of the carnivorous and herbivorous rankings of a food item; e.g. apples, carrots, and tripe are all treats to them.
+
+===Diet exceptions===
+The following are exceptions to the normal rules:
+
+* Pets won't eat anything that would harm them (e.g. poisonous, [[acid]]ic, or [[stoning]]-inducing) unless they have the appropriate resistance. They will also avoid eating "old" tainted corpses, with the exception of [[lizard]]s and [[lichen]]s (which never rot away).
+* Non-slimeproof pets will only consider a [[glob of green slime]] if they're starving.
+* [[Ghoul]]s are technically [[inediate]], but will eat old corpses and old eggs, and consider the former treats.
+* [[Banana]]s are treats to herbivorous and omnivorous {{mcsl|Y}}.
+* [[Carrot]]s are treats to [[blind]] carnivores, who will eat them to regain their sight.
+* [[Metallivore]]s consider non-[[rustproof]] [[iron]] items a treat, and other metal items are acceptable food; thus, only metallivores will eat [[tin]]s. A metallivore will not eat an [[amulet of strangulation]] or [[ring of slow digestion]], and throwing iron weapons at a metallivore is a bad idea, even if they would eat them afterward.
+* [[Gelatinous cube]]s consider organic non-food items acceptable.
+* [[Humanoid]]s other than [[ogre]]s, [[orc (monster attribute)|orc]]s, and [[kobold]]s will not commit [[cannibalism]] unless starving;[[Elf (monster attribute)|elves]] will not commit cannibalism even if starving.
+* None of the above pet types will eat your role's [[quest artifact]], any [[unique item]]s, or [[Rider]] corpses. Pets have a 95% chance of passing up other [[artifact]]s, assuming they would normally eat the base item.
+
+==Pet behavior==
+Pets will very generally try to stay close to your position, though they are prone to wandering off; a pet with more [[speed]] is usually (though not always) better at keeping up with you. Carrying food that a pet considers a treat (e.g. tripe rations) will cause them to follow you more closely. All tamed monsters will [[follow]] you up and down [[stairway]]s and through [[portal]]s if they are adjacent to you when you enter, unless they cannot move or are in the middle of an action (e.g. eating).
+
+===Cursed items===
+Pets tend to avoid squares where a cursed item is present. If a pet does enter such a square, the message displayed is "<pet> steps reluctantly over a(n) <item>". Note that the item listed is ''not'' necessarily the cursed item -- it's whatever item happens to be "on top" of the square.
+
+This message is not displayed if you displace the pet onto the square, or if there's food on the square that the pet wants to eat. Divine minion pets are not bothered by cursed items.{{refsrc|dogmove.c|671}}
+
+===Traps===
+Pets will also try to avoid known traps where possible. If leashed, a pet may "whine" or "whimper" to indicate that a trap is near, even if it hasn't been detected yet.
+
+===Movement===
+Applying a [[tin whistle]] or a [[bell]] can cause them to seek you out and stay close for a certain amount of turns; a [[magic whistle]] will warp them immediately to your side. Applying a [[leash]] to a pet will keep them closer to you, though it alters and limits their movement as well: leashed pets can end up stuck around corners depending on where you and the pet move. Leashed pets will also move reluctantly over cursed items more often, and will whine if they sense a trap is nearby (though they still risk walking into the trap themselves). A leashed pet that can move always follows you when you travel via stairs or a portal, even if they are not adjacent to you.
+
+====Displacing a pet====
+If you try to walk on a pet's square, you have a {{frac|6|7}} chance of displacing it and switching places unless you are punished, in a [[shop]], or the pet is a [[long worm]].{{refsrc|uhitm.c|318}} If you fail to displace your pet ({{frac|7}}), then the pet will become [[Scare#Methods|scared]] for 1-6 turns. If the pet cannot move, but you otherwise would swap places, you have a {{frac|6}} chance of swapping places anyway.{{refsrc|uhitm.c|338}}
+
+{{upcoming|NetHack 3.7.0|It is no longer possible to displace a pet out of a trap, directly onto a trap, into water or into other hazardous terrain. It is also no longer possible to displace a sleeping or paralysed pet, but a sessile pet can sometimes be displaced. It may be possible to displace a pet near a trap, causing it to move onto the trap.}}
+
+===Combat===
+Unless confused, pets will generally only attack monsters that are not you, a [[quest leader]], a [[quest guardian]], or another pet.{{refsrc|dogmove.c|624}} In addition, they will also avoid attacking monsters that are at least two levels higher than they are.{{refsrc|dogmove.c|616}} A pet will not attack peaceful monsters if they are below 25% of their maximum HP.{{refsrc|dogmove.c|622}}
+
+A pet will not attack a [[floating eye]] 90% of the time, provided the pet can see; it will also avoid attacking a [[gelatinous cube]] 90% of the time.{{refsrc|dogmove.c|617}}{{refsrc|dogmove.c|620}} Pets will additionally avoid attacking monsters whose maximum passive damage exceeds their current hit points.{{refsrc|dogmove.c|621}} A pet will not attack a monster who can turn them to stone if the pet is not stoning-resistant.{{refsrc|dogmove.c|627}} [[Conflict]] overrides all of these restrictions and will cause a pet to attack any nearby monster (or you), subject to a check versus monster magic resistance.
+
+{{upcoming|NetHack 3.7.0|Pets are now more careful about attacking higher-level monsters, compared to their own level, as their own health drops. Pets will not attack a monster above a certain level, as described in the table below; note that a healthy pet can now attack monsters 2 levels higher.}}
+
+{|class="prettytable"
+! Pet's HP !! Maximum level (from 3.7.0)
+|-
+| Full health || Pet's level + 2
+|-
+| At least 80% of maximum || Pet's level + 1
+|-
+| At least 60% of maximum || Pet's level
+|-
+| At least 40% of maximum || Pet's level – 1
+|-
+| At least 20% of maximum || Pet's level – 2
+|-
+| Below 20% of maximum || Pet's level – 3 <ref>Pets still will not attack peaceful monsters if below 25% health. This contradicts a comment in the source code implying the peaceful-monster check applies to all monsters.</ref>
+|}
+
+===Abuse and death===
+{{main|Tameness#Abuse}}
+In general, abusing your pet involves attacking it in any form, even if you were [[confused]], [[stun]]ned or otherwise impaired. Killing your pet outright carries a &minus;15 penalty to [[alignment record]] and &minus;1 [[Luck]] penalty{{refsrc|src/mon.c|2474|version=NetHack 3.6.6}}{{refsrc|src/mon.c|2505|version=NetHack 3.6.6}} - displacing your pet in a manner that causes its immediate death (i.e., into a trap or [[pool]] of water) carries a &minus;15 penalty and [[anger]]s your [[god]].
+
+If your pet died and left a corpse, you can try to resurrect it using a [[Wand of undead turning|wand]] or spell of [[turn undead]]; a [[scroll of food detection]] or the spell of {{spell of|detect food}} can be used to locate your pet's corpse before it rots away. If it was turned to stone, you can try the spell of {{spell of|stone to flesh}}.
+
+Pets that are revived or saved by an amulet of life saving are not guaranteed to revive tame - if you killed the pet yourself or [[Abuse (pet)|abused]] it at least three times, it will never revive tame and has only a 1-in-(times abused) chance of being peaceful; if you abused it at least ten times, it will always revive as hostile.<ref>{{sourceref|wary_dog}}</ref> If you didn't kill your pet and abused it at most twice, its tameness becomes a random number between zero and its prior tameness, with equal probability; if this new number is zero, the pet is no longer tame, but it still has a 50% chance of being peaceful. A pet that remains tame after being revived, or else is re-tamed manually, retains its tameness value and has its nutrition, abuse and apport reset as though it was a brand new pet.
+
+Attempting to [[sacrifice]] the corpse of a pet that died while it was tame at an altar will anger that altar's god - doing the same at a cross-aligned altar will actually ''reduce'' your own god's anger. A pet that went feral or was otherwise untamed prior to dying is suitable to sacrifice.
+
+There is no special penalty for abandoning or losing track of pets, eating your pets' corpses or (surprisingly)  [[genocide|genociding]] your pet's species or class. Keep in mind that the normal effects of corpses of the pets' species still apply, such as [[cannibalism]] or [[aggravate monster]] from [[cat]] and [[dog]] corpses.
+
+==Pet growth==
+Like [[you]], pets level up by defeating monsters. However, while your character gains experience points that build towards new experience level, the pets gain a random number of [[hit point]]s between one and the defeated monster's level plus one, and their level is increased to roughly match their maximum hit point total.{{refsrc|makemon.c|1775|version=NetHack 3.6.1}} A pet's health, level and status can be monitored via a [[stethoscope]] or a [[wand of probing]].
+
+The maximum HP threshold for most monsters is 8 times their current level (or 4 for level 0), with the exception of [[golem]]s and [[elemental]]s on their home [[Elemental Plane]]. The maximum level for a monster is {{frac|3|2}} of that monster's base level, or the next type if that monster has a more "grown up" form; said maximum will normally be no greater than 49.{{refsrc|src/makemon.c|1700|version=NetHack 3.6.0}}
+
+See [[growing up]] for more details about pet advancement.
+
+==Pets and equipment==
+{{main|Armor#Monsters, pets, and armor}}
+Tamed [[intelligent]] monsters that have hands can use items they pick up, and humanoid ones can wear and even replace [[armor]]. They will also use other items such as [[potion]]s, [[scroll]]s and even certain [[tool]]s. As mentioned above, pets will not pick up cursed items, and will avoid moving onto them where possible; silver-hating pets will always avoid touching silver items.{{refsrc|dog.c|722}}
+
+Intelligent pets will quaff or throw various potions if they pick one up; for example, they can quaff a potion of {{of|potion|healing|or=1|extra healing}} if low on HP, and will throw harmful potions such as {{of|potion|acid|or=1|sleeping}} at other monsters.
+
+===Weapons and armor===
+Only [[medium]]-sized monsters can wear body armor or [[shirt]]s, and only medium or smaller monsters will fit into cloaks. All monsters know the enchantment of armor, and will replace a worn piece of armor with one that gives more AC, regardless of any other properties conveyed - e.g., a +3 [[small shield]] takes priority over a +0 [[shield of reflection]].{{refsrc|worn.c|463}}{{refsrc|hack.h|284}}
+
+Pets with a weapon attack will pick up and wield weapons, and select which one to wield based on type. They prefer (in this order): any usable artifact weapon, cockatrice or chickatrice corpse, ''tsurugi'', runesword, ''dwarvish mattock'', ''two-handed sword'', ''battle-axe'', katana, ''unicorn horn'', crysknife, trident, long sword, elven broadsword, broadsword, scimitar, silver saber, morning star, elven short sword, dwarvish short sword, short sword, orcish short sword, mace, axe, dwarvish spear, silver spear, elven spear, spear, orcish spear, flail, bullwhip, ''quarterstaff'', javelin, aklys, club, pick-axe, rubber hose, war hammer, silver dagger, elven dagger, dagger, orcish dagger, athame, scalpel, knife, worm tooth.{{refsrc|src/weapon.c|638|version=NetHack 3.6.6}} (Weapons in italics are two-handed, and will be chosen only if the monster is [[strong]] and is not wearing a shield. A cockatrice corpse will not be chosen if it would immediately stone the monster. Stilettos and grappling hooks will never be chosen.)
+
+If a monster has a wielded artifact weapon and picks up another one, it can switch to the new artifact and drop the old one, provided the new artifact is not cross-aligned and the conditions for two-handed weapons are met (if applicable). ("Can" here means the first admissible artifact in the game's internal list of carried objects is chosen.) 
+
+Pets can also make use of [[ranged weapon]]s if they come across any, and will also use their [[breath weapon]] if they have one.{{refsrc|src/dogmove.c|1118|nethack=3.6.1|name=ranged_pet_attack}}
+
+===Tools and other items===
+Some pets can carry around a [[unicorn horn]] to apply if afflicted with a status condition, or a [[key]] to unlock doors with. Some pets can also put on amulets of {{of|amulet|life saving|or=1|reflection}}; they have no preference in this regard. A [[nonliving]] monster that ends up wearing an amulet of life saving (typically due to being polymorphed from the form they put it on with) will not use up the amulet if they die.
+
+==Steeds==
+{{main|Riding}}
+Certain pets can serve as steeds for your character if they have a [[saddle]] placed on them. Mounting a steed reduces their tameness, making it imperative to treat them well and keep them fed where possible.
+
+==Strategy==
+From a general outlook, having a tamed monster by your side can serve several useful purposes - they can help kill hostile monsters, [[Curse-testing#Pet testing|detect cursed items]], and even aid in [[stealing from shops]] without angering the [[shopkeeper]]. A pet can also kill a peaceful monster that you want a particular item from, such as a [[Dwarf (monster)|dwarf's]] [[pick-axe]], without any penalties - you are not ocnsidered responsible for monsters that your pet kills. Pets can also enlighten newer players to certain aspects of the game, such as which corpses are (mostly) safe to eat and which monsters are safe to attack in melee.
+
+However, pets can also be a hassle to manage. If strong enough, they will attack peaceful monsters, such as [[aligned priest]]s, that you want to keep alive; pets on the weaker side that are left to constantly pick fights may eventually end up killed. Additionally, unless given stealth in some manner they will wake up nearby monsters, particularly [[nymph]]s and [[leprechaun]]s, that you would rather leave asleep. Pets can also snatch up corpses you were hoping to eat and get in the way of vital spells, wand shots or [[ranged attack]]s. The more pets you have, the more tedious it becomes to keep them with you, and the more the above problems multiply - though a [[magic whistle]] can alleviate many of them.
+
+One particular "quirk" with regards to pets is the relative weakness of most starting pets - [[falling rock trap]]s and [[pit]]s are enough to immediately kill an unfortunate kitten or little dog, and spectactularly unlucky players may see them die to a [[gecko]] or [[jackal]]. Players invested in their pet's survival may consider letting them finish off weak monsters like [[grid bug]]s or [[newt]]s to quickly gain levels early on, so that it can become strong enough to survive the traps and encounters in the lower dungeon levels.
+
+Another important factor to remember is that pets only provide clues to ''non-fatal'' corpses and ''noncursed'' objects. This is generally more relevant to understanding the difference between "not cursed" and "safe to use-test" - the helmet your dog walked over with no trouble might be a [[dunce cap]] or [[helm of opposite alignment]].
+
+===Feeding pets===
+Carnivorous pets are easy to feed, to the point that you have to prevent them from stealing corpses you want to eat; conversely, herbivorous pets are somewhat trickier to feed due to the relative lack of safe pet-friendly foodstuffs, and are more likely to become confused from hunger as a result. [[Tree]]s such as the ones in most variants of [[Minetown]] can drop several fruits and veggy food items if kicked, though there is the risk of attracting [[killer bee]]s or (in Minetown's case) angering the [[Watch]]; it is also possible to create them by [[polypiling]] comestibles.
+
+For horse owners in particular, a common trick usually employed by Knights is to allow the horse to reach starving levels of hunger, then leave the level for a while, and re-enter to toss the now-wild horse a treat, resetting its nutrition and tameness. Non-knights with a horse (or other steed that can be re-tamed this way) can instead opt to mount and dismount their steed repeatedly untill it un-tames.
+
+An inediate pet does not have to eat, but also cannot have its tameness increased with food; this makes inediate pets harder to keep tame, especially if you or they have the misfortune to step on a level-changing trap. Losing a [[vampire lord]] or [[Archon]] to a [[level teleport]]er is a terrible happenstance, not least because they will use whatever kit they were given against you.
+
+===Caring for pets===
+As pets are at their most vulnerable during their weaker stages, [[Trap#Strategy|trap detection]] is a especially useful skill to hone in order to protect them. Actively leading your pet(s) rather then letting them "lead" you makes it easier to provide a clear path for it, whether or not you use them to detect traps - even stronger pets can be "threatened" by an inopportune [[trap door]] if it separates you from them long enough for the pet(s) to become hostile. For other non-relocating traps such as pits and [[bear trap]]s, you want to #[[untrap]] the pet as soon as possible; be warned that unsuccessfully attempting to remove a bear trap will injure your pet, and if done repeatedly may kill it. When untrapping pets, make sure there is a safe square for them to access.
+
+Obtaining [[telepathy]] as soon as possible is an ideal goal for most pet owners in order to avoid abusing or killing them while [[blind]]ed. Telepathy is also ideal to spot and eliminate digesting monsters such as [[purple worm]]s, [[trapper]]s and [[lurkers above]], who can potentially engulf and kill your pet instantly. Pets are also vulnerable to polymorph traps, which in practice is as likely to turn them into a sessile [[mold]] or [[jelly]] as it is to turn them into something stronger.
+
+If you are [[hallucinating]], try using the #chat command to figure out which of the strange beings around you is your pet. A less reliable option is to wait and see how the creature in question moves and whether or not it attacks you.
+
+===Equipment for pets===
+The best way to equip a pet is to gather the desired items and leave them in a dead end, then stand on them until your pet comes near; swap places with the pet and keep them  standing over the pile until they picks up something and start using it. If a pet drops something they had been using, you will need to swap places again to pick up their old stuff. For replacing equipment, the best way to do that is in a 2-square long corridor with a locked door. As pets tend to avoid picking up items when you are nearby, this method may take a while; locking them in a closet will often be faster if you don't have any items to replace. Pets with high apport are more likely to pick up things if you are not within their sight - be sure the pet isn't carrying a key of its own.
+
+If you want your pet to keep a specific artifact, give it to it while it is carrying as few objects as possible.
+
+====Armor and extrinsics====
+A pet that can be armored should be given [[magic resistance]], [[magic cancellation]], and [[reflection]]. All items that work for the player also work for monsters that can wear them, with some notes and exceptions:
+
+* [[Speed boots]] make monsters fast, but not very fast.
+* An [[alchemy smock]] confers only [[poison resistance]].
+* Monster spellcasting is not hindered by metal armor.
+* [[Dragon scales]] and [[dragon scale mail]] provide their extrinsics as usual, other armor properties than those discussed do not affect monsters.
+
+After deciding what extrinsics you can give your pet, the rest of their armor selection should be focused on improving AC.
+
+{{upcoming|NetHack 3.7.0|Pets can gain fire, cold, shock, sleep, poison, and disintegration resistances by eating corpses. This makes reflection a less crucial property, although death rays are still an issue, and puts inediate pets at a relative disadvantage.}}
+
+===Equipment for pet owners===
+There is a lot of equipment that can make pets more useful or make keeping them close easier.
+
+* Magic whistles will bring all pets to as close to the player as possible. [[Eucalyptus leaf|Eucalyptus leaves]] will act like magic whistles if blessed. A tin whistle is a fine substitute if neither is available.
+* Stethoscopes will reveal information about your pet, including how injured it is, its level, and its maximum HP. Wands of probing will also give you this information and any equipment the pet is wearing, but they are less efficient due to their limited number of charges.
+* Leashes will keep pets nearby.
+* Saddles can be used to ride some pets. [[Randomized appearance#Gloves|Riding gloves and boots]] will make applying a saddle easier.
+* Carried treats will cause pets to stay close to the player; this can be annoying if they're always underfoot.
+* Spells of (extra) healing for healing pets, charm monster for acquiring new pets, stone to flesh for making treats for carnivores and omnivores.
+* The wand or spell of undead turning and the spell of stone to flesh can revive pets; they may revive hostile.
+* The [[spell of detect monster]] and/or [[potion of monster detection]] to locate pets.
+* The wand of speed monster or [[potion of speed|potions of speed]] to make pets fast.
+* Potions of healing, extra healing, full healing, restore ability, and gain ability will all restore a monster to full hit points if it hits them (wielded or thrown). Hitting a pet with a wielded potion counts as abuse, however.
+* Potions of unholy water will heal 2&ndash;12 HP for demons, undead, and lycanthropes.
+* A key to lock your pet in a room or closet, so it can heal, or equip itself, or to have it not attack something you want kept alive. Some pets may be smart enough to pick up keys and unlock doors.
+* A [[blindfold]] or [[towel]] if you have [[telepathy]] to locate your pets.
+* A [[bag of holding]] (or a sack) is useful to carry all the other stuff and pet food, keep treats hidden, and to [[Stealing from shops|rob shops]].
+* [[Crystal ball]]s, including the [[Orb of Fate]] and the [[Orb of Detection]], can be used for detecting traps that could harm pets, and can be recharged indefinitely with [[the Platinum Yendorian Express Card]]; crystal balls are rather heavy to carry, however.
+
+===Preferred pets===
+<!--Split into its own article?-->
+The following is a list of monsters that make good pets.  It is divided into two parts: the first consists of pets which a player might specifically work to obtain, for example through a wish or a polymorph trap. The second consists of pets that are useful (e.g. if you get them through a polytrap or magic trap), but not usually worth any extra effort to obtain.
+
+====Worth the effort of trying to obtain====
+* The [[Archon]] is by general consensus the best all-around pet, with a high maximum level, powerful physical attacks, the ability to heal and haste itself, and its blinding gaze. They can fly, don't eat, and can wield weapons and wear some armor. Archons are rare to find and difficult to tame, however, and a hostile Archon is a dangerous foe to stand near as you repeatedly try to tame it. Monsters blinded by the Archon won't respect [[Elbereth]], a possible concern for low-level characters. A "blessed [[figurine]] of an Archon" is a common first wish for [[pacifist]]s, and is popular in general.  They cannot be obtained from a polytrap, and therefore must be wished for or found, and they never leave corpses to [[revive]].
+* [[Ki-rin]] don't eat, can fly, and have superb attacks. In particular it is noteworthy as it can take a saddle as well, making it an excellent mount, especially given that its high [[Magic resistance (monster)|magic resistance]] and base level will prevent it from bucking you if you are generating [[conflict]]. They are best for a [[knight]], as it will irrevocably lose one point of [[tame]]ness each time a non-knight mounts it.  Like Archons, ki-rin are not found via polytraps and never leave corpses.
+* [[Titan]]s have excellent base level, armor class, and magic resistance, are fast, can [[Monster spell|spell-cast]], fly, wield a weapon, and wear non-body armor.  They are too large to be [[engulf]]ed, and so won't be instantly killed by digesting monsters, a common cause of death for Archons and ki-rin. They do eat, which, though sometimes an inconvenience, does mean their [[tameness]] will increase.  Thus when you fall down a [[Hole|shaft]] that herd of pet Titans won't be wild by the time you find your way back. They can leave corpses to revive, and are large enough to always do so if their manner of death permits it. Titans can be obtained from a polymorph trap, and may be the strongest pet available by such means.
+* [[Purple worm]]s of high enough level can swallow and thus instantly kill almost any enemy. A pet worm can be leveled up quickly by setting it loose in a [[graveyard]] containing [[wraith]]s. Their [[engulfing]] attack is not subject to corpse-leaving odds. However, that means you need to keep them away from [[chameleon]]s, [[doppelganger]]s, and [[green slime]], which will transform your pet into something less effective. Digested monsters don't leave corpses for you to eat, nor any special drops they otherwise would, such as [[unicorn horn]]s. Some powerful monsters such as Titans and dragons are too large to be engulfed.
+* [[Balrog]]s have very powerful attacks, a high base level, and a good armor class. They're a valid polymorph form, making them more practical to acquire than Archons or ki-rin, and are [[inediate]], so they'll be more available for combat than purple worms or Titans. Their base speed is fairly low.
+
+====Nice to have if you get one====
+* [[Centaur]]s can use weapons and (some) armor, may be saddled and ridden, and are easy to keep fed. These are potentially excellent early pets for heroes with a {{Spell of|charm monster}} spell or a [[Scroll of taming]].
+* [[Cockatrice]]s can petrify many foes. They don't have much HP, however, and their low maximum level will prevent them from attacking tougher monsters. Consider using [[conflict]] to force your pet 'trice into combat (and watch your messages to be sure you aren't [[stoning|turning to stone]]).
+* [[Dragon]]s can fly, can serve as a mount, and have very good attacks. Silver and gray dragons are immune to [[death ray]]s; the former is also immune to disintegration blasts, while the latter is immune to polymorph traps. Yellow dragons are stoning-resistant. In [[3.6.0]] and older versions, they only used their [[breath weapon]]s in the presence of [[conflict]], and then only in your direction; as of [[3.6.1]], pets are allowed to use a breath or spit weapon against hostile monsters.<ref name='ranged_pet_attack' />  Pet dragons can be obtained by [[polymorphing]] yourself and laying eggs; eggs hatch into baby dragons which can [[grow up]] to full size.
+* [[Winged gargoyle]]s can fly and also have decent [[AC]] and attacks; in addition, they are resistant to [[stoning]] and starvation.  Winged gargoyles are very hard to get by egg-laying; most winged gargoyle eggs hatch into regular gargoyles, and gargoyles do not grow up to winged gargoyles.
+* [[Jabberwock]]s, especially [[wand of speed monster|hasted]], have excellent damage potential, and can fly and take a saddle. They lack resistances, though, and are thus vulnerable to being lost to traps, death or disintegration rays, and cockatrices.
+* Arch-[[lich]]es can reach terrifyingly high levels, are always by your side even without the aid of a [[magic whistle]], can heal themselves, and have a powerful freezing touch attack. They are impotent against cold-resistant monsters, however, and frequently get in your way.  Since they will always teleport to your side, it can be very difficult to prevent them from killing [[aligned priest|priest]]s and [[shopkeeper]]s. You cannot tame master- or arch-liches directly, but you can tame a lich or demilich and let it grow up.
+* A [[Mastodon]] can substitute for a [[jabberwock]] as a pet. It has the same speed, and they have higher maximum level (30), which means more HP and being aggressive against more difficult enemies. Mastodons do in 8d8 damage instead of the jabberwock's 8d10, but that's still quite a lot. They're herbivores, so you can eat most of corpses they leave behind.
+* [[Mind flayer]]s do a lot of melee damage with their tentacle attacks, and can clear out monsters from a distance with their psychic blasts, which won't damage you as long as the flayer isn't hostile. A confused pet flayer could be disastrous, however, so make sure it has a [[unicorn horn]]. A psychic blast could also wake the [[Wizard of Yendor]] before you're ready to deal with him. Their very large number of attacks per turn also make them very weak to [[passive attack]]s&mdash;keep them away from [[jelly|jellies]]!
+* [[Minotaur]]s are fast, hit very hard, and are guaranteed to appear on a maze-type level. They have 0 [[MR]], so a [[scroll of taming]] is guaranteed to snare one on the first try (the [[spellbook of charm monster|spell of charm monster]] is of course dependent on your casting success rate).
+* [[Skeleton]]s don't breathe, don't eat, slow monsters, wield weapons, and will resist cold, sleep, poison, petrification, and wands and fingers of death.  They are not randomly generated, but can be found in [[Orcus-town]] or produced by a polytrap or by polypiling unihorns.
+* [[Troll]]s have good physical attacks, and if killed may revive tame. They may also revive hostile, however, so be careful. Make sure your other pets don't eat your former pet's corpse.
+* [[Vampire]]s and [[vampire lord]]s don't breathe or eat, can fly, can wield all weapons and armor, and will regenerate. They are also immune to [[finger of death|death rays]]. But in 3.6 vampires now spontaneously turn into fog clouds, wolves, and—especially—vampire bats and remain in that form unless defeated in battle. Wolves and vampire bats do eat (and move fast enough to steal corpses from you) but they are nearly useless in battle compared to vampires. You can keep a vampire pet in its true form with a [[ring of protection from shape changers]]. In addition, protection from shape changers is necessary to permanently change the form of a vampire or vampire lord - without it, polymorphing them will just result in them taking their vampire bat form, which can change again as normal.
+
+==Messages==
+===Death===
+There are a number of subtly different messages associated with the death of a pet.
+
+{{message|You hear the rumble of distant thunder...|You killed it yourself. Penalty &minus;15 alignment and &minus;1 Luck.}}
+{{message|You hear the studio audience applaud!|As above while hallucinating.}}
+{{message|You feel guilty about losing your pet like this.|You displaced it causing it to drown or die. Penalty &minus;15 alignment and an angry god.}}
+{{message|You feel sad for a moment.|Pet starved to death.}}
+{{message|<Pet> starves.|Pet starved to death in your presence.}}
+{{message|You have a sad feeling for a moment, then it passes.|Pet died in combat or due to a trap.}}
+{{message|You have a melancholy feeling for a moment, then it passes.|Pet (light or sphere) exploded.}}
+{{message|You have a peculiarly sad feeling for a moment, then it passes.|Pet turned to stone.}}
+{{message|You have a sad thought for a moment, then it passes.|Pet (master) [[mind flayer]] ate the brain of [[Medusa]].}}
+{{message|You have a strangely sad feeling for a moment, then it passes.|Pet [[clay golem]] was [[cancellation|canceled]] by a [[gremlin]].}}
+{{message|You have a queasy feeling for a moment, then it passes.|Pet [[purple worm]], [[trapper]], or [[lurker above]] swallowed one of the [[Rider]]s.}}
+{{message|May <pet> rust in peace.|Pet [[iron golem]] was hit by a [[Erosion|rusting attack]].}}
+{{message|May <pet> rot in peace.|Pet [[wood golem]] was hit by a [[Erosion|rotting attack]].}}
+{{message|May <pet> roast in peace.|Pet [[paper golem|paper]] or [[straw golem]] was hit by a [[Fire|fire attack]].}}
+
+===Hunger===
+{{message|&lt;pet&gt; is confused from hunger.|Your pet is starving. It becomes confused from hunger, its maximum HP is reduced to 25%, and it has 250 more turns to live.{{refsrc|dogmove.c|235}}}}
+{{message|You feel worried about your &lt;pet&gt;.|As above, but your pet is out of sight.}}
+
+==Variants==
+===SLASH'EM===
+{{main|Pet (SLASH'EM)}}
+
+[[SLASH'EM]] makes various changes to the pet-keeping system, adding god-granted minions as well as pets that can turn [[traitor]]; pets and other monsters in SLASH'EM that are polymorphed will also eventually return to their normal form upon being killed or after a certain amount of turns, much like the player would.<!--http://www.statslab.cam.ac.uk/~eva/nethack/pets2.html spoiler-->
+
+===GruntHack===
+In [[GruntHack]], hostile monsters will aggressively seek out your pets to attack them - this makes it much harder to keep early pets in particular alive. GruntHack also uses the same rules for polymorphing non-player monsters as SLASH'EM: polymorphed pets return to normal when they die or the polyform expires.
+
+===AceHack===
+[[AceHack]] implements ranged combat for pets; however, they currently die much faster than in vanilla, as monsters are more aggressive toward them. (This is planned to be fixed before release.)
+
+===dNetHack===
+[[dNetHack]] implements several changes and improvements for pets.<!--should probably get its own article.-->
+
+* Ranged combat and spellcasting is enabled for pets.
+* Pets and hostile monsters will more actively seek out and attack each other.
+* The total number of pets on the current dungeon level is limited to {{frac|3}} the character's [[charisma]] score.  If this limit is exceeded, the weakest pets will quickly untame, typically becoming peaceful.
+* {{spell of|Charm monster}} and [[scroll of taming|scrolls of taming]] are now single-target spells.
+* The character can now take any item from a pet using the #[[loot]] command, and may equip pets with armor using the #equip command.
+** Armor now has an intrinsic size. Most pieces of armor must be the same size and the creature you want to wear the armor. Armor of unspecified size is Medium (human) sized.
+*** Most armor found randomly in the dungeon is sized for humans.
+** Body armor and helms also have an intrinsic shape.
+*** Most armor and helms found randomly in the dungeon are shaped for humanoids (no modifier displayed).
+*** Barded armor fits roughly animal-shaped creatures, such as dogs, cats, horses, lizards, and spiders.
+*** Barded helms fit creatures with long heads, such as dogs, cats, horses, lizards, and snakes.
+*** Segmented armor fits roughly-snake shaped creatures, mostly snakes and most nagas.
+*** Snakeneck helms fit creatures with snake-like heads and necks attached to non-snake bodies. Examples are serpent men of Yoth, serpent-necked lionesses, bandersnatches, and jabberwocks.
+*** Centaur armor fits creatures with humanoid torsos attached to roughly animal-shaped lower bodies, which includes proper centaurs as well as driders (sprow, however, have humanoid bodies).
+*** Snakeleg armor fits creatures with humanoid torsos attached to serpentine lower bodies.  Examples include mariliths, salamanders, and ancient nagas.
+*** Snakeback armor fits creatures with combined serpentine and animal-like body plan.  [[Deep Wyrm]]s and [[Deep Wyrmling]]s are the only such creatures.
+* A new skill, beast mastery, is implemented. Higher skill improves pets' damage and AC, and cause pets further away to follow you downstairs. The skill is trained by witnessing your pets engaging in combat. Convicts, droven priests, dwarven nobles and wizards can get basic beast mastery, knights, elven, droven nobles and tourist can get skilled, and healers, troubadours, nobles and rangers can get expert.
+* Two new commands, #wait and #come allows you to tell a pet to stay on the current level or follow you between levels as normal. These are useful if you want to have a pet not follow you but find it difficult to do so because of the increased follow range due to high beast mastery skill.
+
+==== dNetHack preferred pets ====
+
+* If wishing for a pet, the strongest non-unique angels are the best candidates.
+** The counterpart of the vanilla Archon is the [[Throne Archon]], a high-damage spellcaster that favors the lightning bolt spell and can buff itself. Its large size makes it harder find equipment for.
+** A [[Light Archon]] fires volleys of 7 (magically created) silver arrows for high potential damage against demons, but its large size and irregular body shape make equipping one difficult.
+** A [[Surya Deva]] frequently casts ''mass cure'', healing all nearby peaceful monsters as well as the player.  Independent dancing blade means it can attack multiple targets per turn. It also casts ''fire pillar''. Its large size makes it harder to find equipment for, and each component of the Surya has a lower damage output than other choices. Fire damage is less useful than lightning.
+** A [[Mahadeva]] deals very high single-target melee damage and has the highest base level (30). However, it's also incredibly dangerous to have as a pet. Its weapon attack will make repeated attacks until it finally misses, and conventional wisdom would be to give it gauntlets of dexterity maybe and a weapon with good to-hit. This is a really awful idea. If the Mahadeva gets [[confused]] you can very easily find yourself dead in a single turn unless you've got excellent AC (as in, "good even for end-game AC"). If you do, be careful to stay at range from your pet whenever possible.
+** A [[Tulani Eladrin]] casts cold, shock, and fire damage spells, and its medium size means you can easily find and enchant a full set of armor for it. However, it can catch the player in fireball explosions. It has the lowest base level (18) and chooses spells randomly, so damage drops off against targets with resistances. It only uses one weapon attack per turn.
+** An [[Ara Kamerel]] comes with a [[Kamerel Vajra]] and casts [[open wounds]] in combat, resulting in high single-target damage. It resists shock damage and petrification. It reincarnates using gold golems, though it reverts to level 15 in the process. Itsarge size makes it harder to find equipment for, and its speed of 9 is rather slow. It can be permanently killed by some enemies.
+** An [[ancient of death]] inhales life and exhales death once per round, and is able to affect enemies through walls. However, its speed of 4 is very slow.
+** An [[ancient of ice]] is a less useful version of the ancient of death, since more targets resist fire and ice.
+* If searching the dungeon for endgame-capable pets:
+** Lady [[Oona]] has a decent base level (20), and her medium size means you can easily find and enchant equipment for her.  She can wield weapons and casts a strong elemental damage spell. However, she is slow (speed 9), and her elemental damage spell is either fire, lightning, or cold, chosen randomly at the start of the game.
+** [[Medusa]] has a decent base level (20), and her medium size means you can easily find and enchant equipment for her, though her snake-like lower body does complicate matters. She can wield weapons and has numerous natural attacks. She constantly petrifies anything able to see her, though MC3 armor will block this effect.
+** [[Grue]] has a decent base level (20) and is very fast in the dark, with very high damage. It has a digestion attack and can be ridden. Its nonstandard body-type makes it unable to equip most types of armor, however. It can sometimes get itself killed by using its digestion attack.
+** A strong [[Darkness_given_hunger|Darkness given hunger]] can be a surprisingly effective pet in the end game, particularly for players with a high pet cap, as enemy monsters with iron weapons will constantly divide your pet to create a small army around you. You will most likely want a means of mass healing your pets to keep them in good condition, such as the [[Bard|Troubadour]]'s Meditative Healing song or the mass healing spell, and you will also need a ring of slow digestion to ward off engulfing attacks from any confused pets or pets that turn on you as pudding division causes you to exceed your pet cap.
+
+===FIQHack===
+In [[FIQHack]], pets actively seek out hostile monsters to pursue. Applying a tin whistle will temporarily disable this behavior.
+
+When considering what equipment to wear, you can throw items to intelligent, non-paralyzed pets to force them to pick them up. Pets will prefer items thrown at them over anything else - the more recently thrown, the better.
+
+==See also==
+* [[Apport]] &ndash; a measure of a pet's willingness to fetch items
+* [[Tameness]] &ndash; a measure of a pet's loyalty to its owner
+* [[Growing up]] &ndash; for information about pet advancement
+
+== External links ==
+* [http://web.archive.org/web/20100726084129/http://www.nethack.de/spoiler/32pets.txt What are the best pets? by Kevin Hugo]
+* [http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/b2ae347a4341976e/9f1796db44d11534?q=#9f1796db44d11534 How to make your pet follow you]
+
+==References==
+<references/>
+{{nethack-362}}
+[[Category:Pets| ]]}
+&&%s&& %s Scoring {2401 2006-04-17T20:44:41Z {924 ZeroOne} [[Scoring]] moved to [[Score]]: Needed a redirect anyway and the article does not mention the word "scoring" in the beginning, only "score" #REDIRECT [[Score]]}
+&&%s&& %s Template:Unsigned {132106 2020-02-18T04:56:07Z {4001313 Ardub23} Lead with a proper em dash rather than two hyphens <span style="font-size: smaller;" class="autosigned">—&#8239;Preceding [[NetHackWiki:Style_guide#Sign_your_posts|unsigned]] comment added by [[User:{{{1}}}|{{{1}}}]] ([[User talk:{{{1}}}|talk]] • [[Special:Contributions/{{{1}}}|contribs]]) {{{2|}}}</span><noinclude>[[Category:Templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Reflection {140839 2021-06-11T23:50:12Z {4001279 Umbire the Phantom} Yes, actually, thank you for that. '''Reflection''' is a [[property]] in ''[[NetHack]]'' that causes magical [[ray]]s to bounce back from whatever they hit.
+
+==Effects==
+If a [[cold]], [[fire]], [[sleep]], [[lightning]], {{of|wand|death}}, or [[disintegration]] ray hits a monster with reflection, it will have no effect and rebounds back in the direction it originated from. Reflection also protects against [[floating eye]]s' passive paralysis attack and [[Medusa]]'s stoning [[gaze]]. If Medusa can see the monster that reflects her gaze, she turns to stone instead. Reflection does not protect against [[beam]]s.
+
+==Sources==
+Reflection can be obtained [[extrinsic]]ally from the following items:
+
+* [[Amulet of reflection]]
+* [[Shield of reflection]]
+* [[Silver dragon scales]] or [[silver dragon scale mail]]
+* Wielding [[the Longbow of Diana]], the [[Ranger]] [[quest artifact]]
+* Wielding [[Dragonbane]]
+
+The item must have the property of reflection, rather than merely being reflective; [[crystal plate mail]] and [[mirror]]s cannot grant reflection. The only way to obtain [[intrinsic]] reflection is to [[polymorph]] into a [[silver dragon]].
+
+The top level of [[Sokoban]] has a 50% chance of containing an uncursed amulet of reflection. In most versions of [[Medusa's Island]], the statue of Perseus has a 75% chance of containing a cursed +0 [[shield of reflection]]; in the version that generates a [[titan]], the chance is 25%.
+
+==Strategy==
+Reflection is a high priority in the early game, and the preferred means of obtaining it are usually an amulet of reflection or silver dragon scale mail (SDSM). Players who get a wish from a [[magic lamp]] in the [[Gnomish Mines]] often use it for SDSM; dragon scale mail does not interfere with spellcasting, making it ideal for roles such as Wizards. A shield of reflection hinders spellcasting and prevents [[two-weapon combat]] and use of [[two-handed]] weapons, and is thus a preferred wish for roles who do not seek to use either skill, e.g. a [[Caveman]].
+
+Reflection is especially important because of high-damage wand and breath attacks. A [[black dragon]]'s disintegration breath can kill you [[Instadeath|instantly]], unless you have reflection or [[disintegration resistance]]. It is very hard to gain disintegration resistance without killing a black dragon first, so reflection is the best option.
+
+Later in the game, reflection's protective use begins to be superseded as you obtain all elemental resistances and [[magic resistance]]. However, it is still an important property because it prevents inventory damage from attack wands and breath weapons. Without reflection, keeping wands and rings in open inventory is much more dangerous.
+
+Staying out of monsters' line of fire is not as viable an alternative, because monsters can move and zap at the same time. However, in melee range, breath attacks are impossible and wand usage is much decreased, so movement tactics and an [[Elbereth]] cage can double for reflection in special circumstances.
+
+==Messages==
+{{todo|This doesn't list all reflection messages yet.}}
+{{message|But it reflects from your <foo>!|A [[ray]] hitting you was reflected.}}
+{{message|For some reason you are not affected.|As above, while you are blind.}}
+{{message|But it reflects from <monster>'s <foo>!|A ray hitting a monster was reflected.}}
+{{message|It reflects from your <foo>!|A lightning bolt from an [[Anger#Smiting|angry god]] was reflected.}}
+{{message|For some reason you're unaffected.|As above, while you are blind.}}
+{{message|<Monster>'s gaze is reflected by your <foo>.|A reflectable [[gaze attack]] against you was reflected.}}
+{{message|Medusa doesn't seem to notice that her gaze was reflected.|[[Medusa]]'s reflected gaze attack had no effect because she can't see the reflection.}}
+{{message|The gaze is reflected away by <its> <foo>!|A reflectable gaze attack against a monster was reflected.}}
+
+==History==
+Dragonbane's reflection property was added in [[NetHack 3.6.1]].
+
+==Variants==

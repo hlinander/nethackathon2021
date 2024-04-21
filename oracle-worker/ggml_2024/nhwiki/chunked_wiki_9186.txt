@@ -1,0 +1,1000 @@
+| ||See commit {{commit|ae9c10ea07be8a56adc06a1c97120ba17190d786|ae9c10...}}.
+|-
+|{{va|C343-280}}
+|{{bugstatus|Fixed}} 2007-Apr|| ||Ranged polearm attack doesn't always work properly.
+| ||See commit {{commit|ae9c10ea07be8a56adc06a1c97120ba17190d786|ae9c10...}}.
+|-
+|{{va|C343-281}}
+|{{bugstatus|Fixed}} 2007-Apr|| ||Kicking shop-owned food is not always accounted for correctly.
+| ||For taming pets with kicked food, see commit {{commit|4409f483694dc4e33b0b75f26a3f1a22372993f5|4409f4...}}.  Not sure if this handles the egg case.
+|-
+|{{va|C343-282}}
+|{{bugstatus|Fixed}} 2007-Apr|| ||Damage calculation may be wrong when hero is polymorphed into a pudding.
+| ||#H172, involves negative AC, see commit {{commit|8748bf53348a3fd5d3f20677aa5ca3a7d6639067|8748bf...}}.
+|-
+|{{va|C343-283}}
+|{{bugstatus|fixed}} 2007-Apr|| ||Long walks take a non-optimial path.
+| ||#H261, see commit {{commit|b4f39da9dd057a97b1896a00dcaea08e570789a4|b4f39d...}}.
+|-
+|{{va|C343-284}}
+|{{bugstatus|Fixed}} 2007-Apr|| ||Activating a shop-owned figurine sometimes don't entail shop charges.||If you pick up and drop a cursed figurine, the timer will stay live. Will this eventually incur charges?
+|See also commit {{commit|d8a0f734815d6d0d81151c7222e63efbfe3f7cd4|d8a0f7...}} for the stone-to-flesh case.
+|-
+|{{va|C343-285}}
+|{{bugstatus|Fixed}} 2007-Apr|| ||Water elementals can be trapped in a bear trap.
+| ||#Q431, see commit {{commit|0b05ca9ee72e16c24a296f400703c5879b2fb4d0|0b05ca...}}.
+|-
+|{{va|C343-286}}
+|{{bugstatus|Fixed}} 2007-Apr|| ||Polymorph and lycanthropy do not interact properly.
+| ||#U1233, see commit {{commit|3c58c3b2353bee9e0e0200dd12c112ba2288b5fa|3c58c3...}}.
+See also commits {{commit|c86f9ff008d95f76601464e907cb4869df2e1d34|c86f9f...}} and {{commit|2bd1f86cffa6d1736cd0d5a20a99b656d927785b|2bd1f8...}} for related issues pertaining to worn/wielded items.
+|-
+|{{va|C343-287}}
+|{{bugstatus|fixed}} 2007-May|| ||Hero polymorphed into monster with kick attack doesn't get bonus from ring of increase damage when kicking.
+| ||See commit {{commit|18a467617b32894deef93a635e3217c30eedf7e1|18a467...}}.
+|-
+|{{va|C343-288}}
+|{{bugstatus|Fixed}} 2007-May|| ||The message "a monster appears" can show up when multiple monsters appear.
+| ||See commit {{commit|2872c27e132cac982af0f46711914803d500a313|2872c2...}}.
+|-
+|{{va|C343-289}}
+|{{bugstatus|fixed}} 2007-May|| ||If magical removal of a steed's saddle is fatal to the hero, the saddle may still be on the steed in a bones file.
+| ||See commit {{commit|933c1846b921ab43189d1ed166cbdc62e225aadd|933c18...}}.
+|-
+|{{va|C343-290}}
+|{{bugstatus|fixed}} 2007-May|| ||Rings do not show up in the "what do you want to charge?" prompt when they should. ||Applies to oil lamps, too.
+|See commit {{commit|ae36e5b3b309393c71779ba65812e2f86ff20bff|ae36e5...}} for the rings.  Not sure if it handles the lamp case.
+|-
+|{{va|C343-291}}
+|{{bugstatus|Fixed}} 2007-May|| ||Backstab bonus interacts incorrectly with thrown weapons and two-weapon mode. || Two-weapon does not get backstab at all while each fired weapon does individually.
+|#H291, see commit {{commit|a1a4a45033f5e20cb73c7fca7ab1a527e5e416d0|a1a4a4...}}.
+|-
+|{{va|C343-292}}
+|{{bugstatus|Fixed}} 2007-May|| ||Touching a pile of objects while blind does not always work correctly.
+| ||#285, see commit {{commit|ace5a30ab575213a3cf9fdd0c9885f14b32b351a|ace5a3...}}.
+|-
+|{{va|C343-293}}
+|{{bugstatus|Fixed}} 2007-May|| ||There are a number of errors changing words between singular and plural forms.
+| ||See commits {{commit|894e7f0267eacb60438e1162e7f86d53a716167d|894e7f...}}, {{commit|15e79e99b9b8790cc723936db5bdca4b1704ac90|15e79e...}}, {{commit|befae3f110e63e110d174d68e6a0ada1af421aad|befae3...}}, {{commit|91da47501f5a56cffd717bbaf88beab1126a07b0|91da47...}}, {{commit|6df91448c1ecf675a9104ff1c4bab1ace89aed51|6df914...}}, {{commit|695fc96e99dc65f91a5cabad3044460bf17f1205|695fc9...}},  {{commit|5d690ae073c951d0b529020c6fb0fd285016a5fe|5d690a...}}, {{commit|706d2dc11ffa2c4ee86bf2f372a41013935a6979|706d2d...}}, 
+{{commit|c980cf55e0d8dcf9b2dde57871641eea9c6daa08|c980cf...}}.
+|-
+|{{va|C343-294}}
+|{{bugstatus|fixed}} 2007-May|| ||Orcs and gnomes do not respond to #chat when they should.
+| ||See commit {{commit|cb5504b38e9359db6d860575fca7a15971223ff4|cb5504...}}.
+|-
+|{{va|C343-295}}
+|{{bugstatus|fixed}} 2007-Jun|| ||Casting stone-to-flesh on self while wielding a figurine can cause the game to panic.
+| ||See commits {{commit|d8a0f734815d6d0d81151c7222e63efbfe3f7cd4|d8a0f7...}} and {{commit|f36845269336380b3e1085444aa881a9b40405e7|f36845...}}.
+|-
+|{{va|C343-296}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Sunsword doesn't work as expected against shades.
+| ||See commits {{commit|237615f9d9d7507b5ab9ba1c47b1857cf3e9a543|237615...}}, {{commit|14b0060e4266e01f7b37ff8cc1477d57821a8d65|14b006...}},  {{commit|174182f0e421f91f770e6e2a8f5ebaa8ba16744d|174182...}}.
+|-
+|{{va|C343-297}}
+|{{bugstatus|fixed}} 2007-Jun|| ||Lit potion may survive hero dying from splattered oil burning on the floor.
+| ||See commit {{commit|b805ba7bc39df5df1d41a1dce95d7e4fb0f2a459|b805ba...}}.
+|-
+|{{va|C343-298}}
+|{{bugstatus|fixed}} 2007-Jun|| ||Kicking at "empty space" uses no time.
+| ||#H331, see commit {{commit|dab873154e299df912352fa608fa490ff27ec940|dab873...}}.
+|-
+|{{va|C343-299}}
+|{{bugstatus|fixed}} 2007-Jun|| [https://github.com/Bulwersator/UnNetHackPlus/commit/342f12c64ca1e6257407b4549d1a9bd87481ed96 UnNetHackPlus] ||Killing tame engulfer from inside gives a warning message.
+| ||See commit {{commit|78d9a4186a07d96161252dc72642169350c04515|78d9a4...}}.
+|-
+|{{va|C343-300}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Amulet of strangulation may kill forms that can't be strangled.
+| ||#332, see commit {{commit|4be43239a846926ea6b71961508d56ac83e8ded9|4be432...}}.
+|-
+|{{va|C343-301}}
+|{{bugstatus|fixed}} 2007-Jun|| ||Nymphs can steal things they can't pick up.||They can steal Rider corpses from gelatinous cubes. The bug might instead refer to nymphs stealing things that they don't naturally pick up, like [[potion]]s.
+|#H333, refers to boulders.  See commit {{commit|2ff8b1687454478a006e86c2304c1281791e86ec|2ff8b1...}}.  Not sure, but I think the fix may also be relevant for the gold duplication exploit.
+|-
+|{{va|C343-302}}
+|{{bugstatus|fixed}} 2007-Jun|| ||Amnesia of object discoveries may forget to forget one thing. || Thanks to [[read.c#line501]] player doesn't forget anything when the "count * percent" is smaller than 50. In other words player that knows identify of single object will never loose memory of it via mind flayer attack.
+|See commit {{commit|47348b92d71e27c6260795dfe003f6997d26193f|47348b...}}.
+|-
+|{{va|C343-303}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Gem probabilities are not reset properly on level revisit. || The {{function|o_init.c|setgemprobs|x}} function is only called when a level is generated; thus, the probabilities appropriate for the most recently generated level will be remembered when revisiting an already generated level.
+|See commit {{commit|c89d5f2075cb34135dd2bfd5e08ec486e81755e0|c89d5f...}}.
+|-
+|{{va|C343-304}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Message given when damaging a closed drawbridge may refer to a wall.
+| ||See commit {{commit|2b29d993156ef00f112c6800e256ce3a73cba632|2b29d9...}}.
+|-
+|{{va|C343-305}}
+|{{bugstatus|Fixed}} 2007-Jun|| [https://github.com/Bulwersator/UnNetHackPlus/commit/5fe2a65a35bb5006a7b1b54c6ce1032687a4c055 GruntHack] ||Attacking with an applied polearm ignores the "confirm" option.
+| ||See commit {{commit|bb5ade42935cbaa69400c60deef62d796a937379|bb5ade...}}.
+|-
+|{{va|C343-306}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Engulfer under influence of conflict or confusion can swallow a monster and not be affected by water/lava/trap under monster until next turn.
+| ||See commit {{commit|f8fcaf8cbd7a7e67cadf702073e86551390796aa|f8fcaf...}}.
+|-
+|{{va|C343-307}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Unicorn horn interacts incorrectly with ring of sustain ability. ||Non-cursed restores, but cursed does not decrement attributes.
+|See commit {{commit|8d880dd143a5bce173e885ea5af6929786b015a1|8d880d...}}.
+|-
+|{{va|C343-308}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||A hidden, dead monster can revive hidden under its own corpse.
+| ||#H363, see commit {{commit|2f9d711237d010430258fec15c61a6826e7eb2a2|2f9d71...}}.
+|-
+|{{va|C343-309}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Dropping Heart of Ahriman may give odd message sequence.
+| ||See commit {{commit|66f95ef37c11bf58ee5bb0ccedccd6f9cd515ce7|66f95e...}}.
+|-
+|{{va|C343-310}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Applying an unpaid stack of potions of oil forces hero to buy all of them.
+| ||See commit {{commit|e08b97597c5e967dd2175328509ce7533289cd75|e08b97...}}.
+|-
+|{{va|C343-311}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Price of unpack shop items may change when hero is forced to buy. ||For example, hunger status has an effect on food prices.
+|See commit {{commit|e08b97597c5e967dd2175328509ce7533289cd75|e08b97...}}.
+|-
+|{{va|C343-312}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Monster can attack with a polearm it was unable to wield.
+| ||See commit {{commit|8dbbd1d2d0bd44545572bbea2053b112ffa05406|8dbbd1...}}.
+|-
+|{{va|C343-313}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||"You trip over it" may appear even after you know what "it" is.
+| ||#H348, see commit {{commit|283b681072095657f0c703327fce2ac9a59a84c4|283b68...}}. 
+|-
+|{{va|C343-314}}
+|{{bugstatus|Fixed}} 2007-Jun|| ||Drowning on the Plane of Water lists cause of death as "drowned in a moat."
+| ||See commit {{commit|ed1e29f9ca51cef5c0d93842a0b15e04b871c376|ed1e29...}}.
+|-
+|{{va|C343-315}}
+|{{bugstatus|fixed}} 2007-Jun|| ||Small monsters dropping items due to weight use the wrong weights.
+| ||See commit {{commit|d34e557df5076453be7f8970da001ed835fbd2dc|d34e55...}}.
+|-
+|{{va|C343-316}}
+|{{bugstatus|fixed}} 2007-Jun|| ||Monsters who shouldn't will attack the Wizard to get the Amulet. ||See also SC343-19.
+|Double Trouble, particularly.  See commit {{commit|a7e312aedc62eccb4f5a11ef674912a4b9894184|a7e312...}}.
+|-
+|{{va|C343-317}}
+|{{bugstatus|Fixed}} 2007-Jul|| ||Bones data can contain odd characters from player's dogname, catname, or fruit options; this can cause odd terminal-dependent behavior.||NetHack fails to sanitise characters taken from options.
+|#H620, see commit {{commit|f847518f4a6e48988a02f965dc4709a4240d1625|f84751...}}.
+|-
+|{{va|C343-318}}
+|{{bugstatus|fixed}} 2007-Jul|| ||Opening or closing the castle drawbridge using music takes no time.
+| ||See commit {{commit|382bbf7f8e16caefb8ca2a59b0a68ab6e40e1d57|382bbf...}}.
+|-
+|{{va|C343-319}}
+|{{bugstatus|Fixed}} 2007-Jul|| ||Grid bugs can be forced to move diagonally, e. g. by displacing a tame one.
+| ||See commits {{commit|1a9c99797a72f1a5a8d190b38b101cfadfe2507a|1a9c99...}} and {{commit|9b1f0899b0846bae689fea380e94c610ba304340|9b1f08...}}.
+|-
+|{{va|C343-320}}
+|{{bugstatus|Fixed}} 2007-Jul|| ||Reading scroll of mail break illiterate conduct.
+| ||#H894, see commit {{commit|e58458ef42d9c1061f1b818942c9163ca79ffc37|e58458...}}, but actually the NAO fix might be preferable, since the mail option is really only relevant for server play anyway.
+|-
+|{{va|C343-321}}
+|{{bugstatus|Fixed}} 2007-Jul|| ||Hero and monsters can walk through a long worm's tail diagonally.
+| ||See commit {{commit|ce018468c4e6d55a12ca9e13ef1a83f52915e6be|ce0184...}}.
+|-
+|{{va|C343-322}}
+|{{bugstatus|Fixed}} 2007-Jul|| ||Forced attack on a boulder says "you attack thin air."
+| ||#Q397, see commits {{commit|f17e97bac604e0fcb9fe39dd07b08e1600aba865|f17e97...}} and {{commit|83bb85c8af603bc1f7afc386ce1fd06a11639228|83bb85...}}.  Also for walls and doors, see commit {{commit|aac603a446ec73170efb35c7aca5688928a39d87|aac603...}}.
+|-
+|{{va|C343-323}}
+|{{bugstatus|Fixed}} 2007-Jul|| ||Objects dropped as a monster dies don't interact properly with the environment.|| See also #362.
+|Over water, see commit {{commit|16ad2bd0b85ef63cc83759ffeeb40cef90797811|16ad2b...}}.
+|-
+|{{va|C343-324}}
+|{{bugstatus|fixed}} 2007-Aug||{{Bilious|332}}|| Cutting a long worm in two will crash the game if the cut takes the worm to 1 HP or if long worms had become extinct.
+| ||See commit {{commit|03eb70acab772db1a59abe93f279c958024c9729|03eb70...}}.
+|-
+|{{va|C343-325}}
+|{{bugstatus|Fixed}} 2007-Aug|| || Hole in ice may be described as a "moat."
+| ||#H1232, see commits {{commit|4c83db0294f654346c931464f3babc7acf4227f5|4c83db...}} and {{commit|4e8bf120145401b78ac24320faab64ece5aeee95|4e8bf1...}}.
+|-
+|{{va|C343-326}}
+|{{bugstatus|Fixed}} 2007-Aug|| || Open and close commands may give inappropriate feedback near a drawbridge.
+| ||See commit {{commit|1c545eb678b31ccbfb35885855b8ea7358e90fdf|1c545e...}}.
+|-
+|{{va|C343-327}}
+|{{bugstatus|fixed}} 2007-Aug|| || Message "suddenly you cannot see the" monster can be displayed when the monster remains visible for some reason.
+| ||See commit {{commit|557650ac555a13d97677d99128c548a6260b3d7b|557650...}}.
+|-
+|{{va|C343-328}}
+|{{bugstatus|Fixed}} 2007-Sep|| || Messages when opening a tin may imply implausible timing.
+| ||See commit {{commit|6bf7c5a1eb9da05d380980750e34ccfddda3d1d8|6bf7c5...}}.
+|-
+|{{va|C343-329}}
+|{{bugstatus|fixed}} 2007-Sep|| || A just-dead monster may still claim to be fleeing.
+| ||#H1371, see commit {{commit|86fccb4e1a0c8851623898454f54a2b7265f9b87|86fccb...}}.
+|-
+|{{va|C343-330}}
+|{{bugstatus|Fixed}} 2007-Sep|| || Wrong message may be delivered when seeing a pet eating.
+| ||See commit {{commit|47c9aa0ff6a4bc67d8172811198f26e267244628|47c9aa...}}.
+|-
+|{{va|C343-331}}
+|{{bugstatus|Open}} 2007-Sep|| || Sleeping monster reacts to a mirror.
+| ||
+|-
+|{{va|C343-332}}
+|{{bugstatus|Fixed}} 2007-Sep|| || The message given when multiple potions of acid explode refers to a single potion. || Refers to stacks of acid exploding when you go for a swim.
+|See commit {{commit|eca287ab89cf71ffbfd6cfdb18f4d6652d79f42e|eca287...}}.
+|-
+|{{va|C343-333}}
+|{{bugstatus|fixed}} 2007-Sep|| || Vault guard asks hero's name while hero is engulfed.
+| ||#H1378, see commit {{commit|01f954a855af930613c62992e9517e479fa8f475|01f954...}}.
+|-
+|{{va|C343-334}}
+|{{bugstatus|Fixed}} 2007-Sep|| || Defining GOLDOBJ drops a slot from the inventory.
+| ||See commit {{commit|2ad3afee05074a6c158619fdca8c010f4b167f41|2ad3af...}}.
+|-
+|{{va|C343-335}}
+|{{bugstatus|fixed}} 2007-Nov|| || Cloak of invisibility and blindness do not interact reasonably.
+| ||See commit {{commit|bdb0930316187f6c0f7bfddd9e18066bb68a92ca|bdb093...}}.
+|-
+|{{va|C343-336}}
+|{{bugstatus|Fixed}} 2007-Nov|| || A shapechanger starting out in changed form gets incorrect inventory items. || They get items appropriate for their polymorphed form.
+|See commit {{commit|408a36bc5f2483fa1bc02c82fa8e77a4e3e3c5ae|408a36...}}.
+|-
+|{{va|C343-337}}
+|{{bugstatus|Fixed}} 2007-Nov|| || It's possible to create an object of 0 gold pieces. || You have to [[larn|drop 4294967296 (MAXUINT+1) gold]]. Doing that twice crashes the game. Fixed on [[NAO]].
+|See commits {{commit|7c860335c16bfb8382eab4b75ebd01dbd1a69120|7c8603...}},  {{commit|c06c7bbf5e6e267dd2e357ac6909d87c08fd6894|c06c7b...}}, and {{commit|53d22badf6565c7f72d070c6a75c557d418e05af|53d22b...}}.
+|-
+|{{va|C343-338}}
+|{{bugstatus|Fixed}} 2007-Nov|| || Wizard-mode command sanity_check misses nested containers and migrating monsters.
+| ||#H1419, see commit {{commit|44a7f87c08bcbfa1a847c91c53577b29002748b1|44a7f8...}}.
+|-
+|{{va|C343-339}}
+|{{bugstatus|Fixed}} 2007-Nov|| || Screen and time are not always updated properly when opening or closing doors while blind.
+| ||See commits {{commit|44c1677ac1ab7e2bbb3916a5bfe147139e44b212|44c167...}} and {{commit|97c2f8ef03efad2ca41dd57f163da302a0159061|97c2f8...}}.
+|-
+|{{va|C343-340}}
+|{{bugstatus|Fixed}} 2007-Dec|| || Secret door detection does not interact properly with features of the Planes of Water and Air. || The [[next version]] promises to make wands of secret door detection find portals even behind clouds (but not update the screen).
+|See commit {{commit|e2eba2ae9a050d03ecb4b8d0bdf3f415072d06f2|e2eba2...}}.
+|-
+|{{va|C343-341}}
+|{{bugstatus|Open}} 2007-Dec|| || In minetown, it's possible to teleport into a room that requires digging to escape from.
+| ||
+|-
+|{{va|C343-342}}
+|{{bugstatus|Fixed}} 2007-Dec|| || Potion thrown by monster which hits long worm's tail says it hit its tail.
+| ||See commit {{commit|faa3543063276624844d0fac3005e62710e92a8b|faa354...}}.
+|-
+|{{va|C343-343}}
+|{{bugstatus|Fixed}} 2008-Feb|| [https://github.com/sgrunt/GruntHack/commit/fbf885966b11084817ad2ca2003db3bd5e28d079 GruntHack] || Helm of Opposite alignment gives incorrect piety level. || Currently, you retain your [[alignment record]], e. g. it is possible to gain alignment for robbing a shop while chaotic and calming the shopkeeper while lawful.
+|#1586, see commit {{commit|3d1772a13b84e4643c8938010e4dca0931fa0406|3d1772...}}.
+|-
+|{{va|C343-344}}
+|{{bugstatus|fixed}} 2008-Feb|| || NetHack thinks jellyfish have heads.
+| ||#H1406, see commit {{commit|28a6a8df9f415bcd59de2292245cd432c83b02a5|28a6a8...}}.
+|-
+|{{va|C343-345}}
+|{{bugstatus|fixed}} 2008-Feb|| [https://github.com/Bulwersator/UnNetHackPlus/commit/aba5543d03c5c0d914c51705d3166e8d5a687660 GruntHack] || Attempting to remove cursed lenses gives a message with poor grammar.
+| ||See commits {{commit|fb043c5f01d3b0d9c2f65634de3c081f71510bed|fb043c...}} and {{commit|5c41d720cae4b8f31520e4aa2b394f33336e7043|5c41d7...}} for groundwork; see commit {{commit|89a86618d0eebc1ccbdcccca763344dc90492943|89a866...}} for the actual fix.
+|-
+|{{va|C343-346}}
+|{{bugstatus|Fixed}} 2008-Feb|| || Attempting to put on some items when the item is already wielded or quivered and failing for a variety of reasons gives a message with poor grammar.
+| ||Might possibly be related to commit {{commit|d8a45a57b500e70c26ce15b22d248edca59270be|d8a45a...}}.
+|-
+|{{va|C343-347}}
+|{{bugstatus|Fixed}} 2008-Feb|| || Picking up and wearing an unknown ring while blind sometimes gives out too much information. || [http://groups.google.com/group/rec.games.roguelike.nethack/msg/489eaa84e7e749b2 RGRN discussion]
+|See commit {{commit|d8a45a57b500e70c26ce15b22d248edca59270be|d8a45a...}}.
+|-
+|{{va|C343-348}}
+|{{bugstatus|Fixed}} 2008-Feb|| || Exercise before polymorph may affect polymorphed character.
+| ||See commit {{commit|d3b9d28f066df6262d1bd725e7856153aedbc5d2|d3b9d2...}}.
+For the opposite case, see also commit {{commit|b99f8a0ebb5f3ef958133b2b1a2f75a01726caf8|b99f8a...}}.
+|-
+|{{va|C343-349}}
+|{{bugstatus|Fixed}} 2008-Mar|| || An identify scroll is wasted if space is typed and steps off the end of the inventory list.
+| ||See commit {{commit|da172c5773716633e367d809110047d6962509bb|da172c...}}.
+|-
+|{{va|C343-350}}
+|{{bugstatus|Fixed}} 2008-Mar|| || Eels don't hide when they are supposed to.
+| ||See commit {{commit|e8624a3285ffb6e4a44634a0d9451d8f585d3f1d|e8624a...}}.
+|-
+|{{va|C343-351}}
+|{{bugstatus|fixed}} 2008-Mar|| [https://github.com/sgrunt/GruntHack/commit/63dbb6485ccc8df690cdbd8eb2cec4d0f30139e4 GruntHack] || Alchemy-caused explosions don't wake nearby monsters.
+| ||#M57, see commit {{commit|a023e8188f5176ef32c99c0b9973feb9bffc0d9b|a023e8...}}.
+|-
+|{{va|C343-352}}
+|{{bugstatus|fixed}} 2008-Mar|| || Secret doors in lit walls don't always display properly.
+| ||See commit {{commit|6e07a2ffe11d4c303cc698221bb791e48677bcc4|6e07a2...}}.
+|-
+|{{va|C343-353}}
+|{{bugstatus|Fixed}} 2008-Apr|| || Aborting key or lock pick with escape uses a turn.
+| ||See commit {{commit|2d1eb28e678cbff8745257d6c00b7098b84868ea|2d1eb2...}}.
+|-
+|{{va|C343-354}}
+|{{bugstatus|Fixed}} 2008-Apr|| || Probing while engulfed ignores the fact that the hero is in the monster.
+| ||#H43, see commits {{commit|b6b522398daf639e0c597afd6ee0e112c7efe52d|b6b522...}},  {{commit|17f63949bc5e6e89730f5d40848542d8e4c8d561|17f639...}}, {{commit|9f2322b1f86a7588b687112a5added37f7a9980c|9f2322...}}.
+
+|-
+|{{va|C343-355}}
+|{{bugstatus|fixed}} 2008-May|| [https://github.com/sgrunt/GruntHack/commit/ccf75ee3bce3fe3295870c262ad28845e9f0bac8 GruntHack] || Archeologists start out at basic skill level in sling. || This is a side effect of their touchstone, which is considered sling ammunition.
+|See commit {{commit|d5ca34a45b80450620cf689d8c25acc5b3f1876d|d5ca34...}}.
+|-
+|{{va|C343-356}}
+|{{bugstatus|Fixed}} 2008-Jun|| || Wearing an amulet of restful sleep confuses internal sleep state bookkeeping. || Perhaps related is the fact you can cure instrinsic restful sleep (from eating the amulet) by putting on and removing an amulet of restful sleep.
+|#H1662, see commits {{commit|9dce52ea987c566a58d7db22cbbda271279871f1|9dce52...}} and {{commit|6a259a1464af762adb31645c97f306d49c91d73f|6a259a...}}.
+|-
+|{{va|C343-357}}
+|{{bugstatus|fixed}} 2008-Jul|| || Rust monsters may chew non-ferrous items.
+| ||
+|-
+|{{va|C343-358}}
+|{{bugstatus|Fixed}} 2008-Aug|| || If no co-aligned artifacts are available for gifting when required, gifting fails repeatedly. || For example, this can mean trouble for elven priests who have named Sting and Orcrist in hopes of getting Stormbringer as their first sacrifice gift.
+|See commit {{commit|e053cb3447efa7ef96d6cea3b54e0196adade5d5|e053cb...}}.
+|-
+|{{va|C343-359}}
+|{{bugstatus|fixed}} 2008-Aug|| || Setting the fruit name fails if the new name is already known but happens to be not at the end of an internal list.
+| ||See commits {{commit|60b7b2c0f0b60d439bc1e64839665cddb6984aca|60b7b2...}},   {{commit|35493a3545fb1f3f79cc84e2e213e92a4052ce29|35493a...}}, and {{commit|22a03424dd571d66a9f6a2c30032dc105da01fe2|22a034...}}.  See also commit {{commit|5d690ae073c951d0b529020c6fb0fd285016a5fe|5d690a...}} for singular/plural issues.
+|-
+|{{va|C343-360}}
+|{{bugstatus|fixed}} 2008-Nov|| || A monster wearing a suit can still put on a shirt. || But they (correctly) have to take off cloaks first.
+|See commit {{commit|1179bb964c39b72a779d04329b476801a3d54bf6|1179bb...}}.
+|-
+|{{va|C343-361}}
+|{{bugstatus|Fixed}} 2008-Nov|| || The message "you feel shuddering vibrations" does not always get displayed when it should.
+| ||See commit {{commit|6870660aba089477a0ff7862e5a9f3ca0544e3f6|687066...}}.
+|-
+|{{va|C343-362}}
+|{{bugstatus|Fixed}} 2008-Nov|| || Objects dropped during polymorph may be incorrectly polymorphed.
+| ||See commit {{commit|b0478ecef85a550e0e34def1d3c2a7cae799eafc|b0478e...}}.
+|-
+|{{va|C343-363}}
+|{{bugstatus|Fixed}} 2008-Nov|| || The case of monsters eating green slime corpses is not handled correctly.
+| ||See commit {{commit|bb5820b493fd5899df32431fc02bb0d5c300cfcc|bb5820...}}.  See also commit {{commit|2aa7cb189b2cb29538279509d21ba9031da3763d|2aa7cb...}} for anti-stoning properties.
+|-
+|{{va|C343-364}}
+|{{bugstatus|Fixed}} 2008-Nov|| || If player's hand slips while naming an object, 'z' is never picked as the new letter. || [[Naming_artifacts]]?
+|See commit {{commit|83eb72c0fd0376c3af8a6829ca5f66ff5ed2814d|83eb72...}}.
+|-
+|{{va|C343-365}}
+|{{bugstatus|Fixed}} 2008-Nov|| || Hero may remove armor for nymph or succubus while asleep.
+| ||#H1743, see commit {{commit|fd799733c277c77657dc5302524e306ac0fa9e3c|fd7997...}}.
+|-
+|{{va|C343-366}}
+|{{bugstatus|Fixed}} 2008-Dec|| || Concealed mimic not always revealed when it should be.||A [[stethoscope]] will appraise but not uncloak a mimic. See also [[#SC343-17]].
+|#H1749, see commit {{commit|2cbc40caf74f410163b68cbc36c52836cd4c5f96|2cbc40...}}.  See also commit {{commit|0def692d5f99cf344e19f616da4c2097fbaff02b|0def69...}}.
+|-
+|{{va|C343-367}}
+|{{bugstatus|Fixed}} 2008-Dec|| || Fainting with a wielded cockatrice corpse doesn't behave as expected.
+| ||#H1733, see commit {{commit|655a340f69976f4e273f4a4a74fe89a06ed2c2ea|655a34...}}.
+|-
+|{{va|C343-368}}
+|{{bugstatus|Fixed}} 2009-Jan|| || Blinded hero knows too much about a monster summoning insects.
+| ||#H1755, see commit {{commit|4b1116f4d0b2ebfd186acee0e3f1bdfdd176a519|4b1116...}}.
+|-
+|{{va|C343-369}}
+|{{bugstatus|fixed}} 2009-Jan|| || Mounted hero on life-saved steed gets repeated warning messages until hero dismounts.
+| ||See commit {{commit|624df671c61d806805bfaffd70c975aa3c9fb4bf|624df6...}}.
+|-
+|{{va|C343-370}}
+|{{bugstatus|Open}} 2009-Jan|| || Travel ({{kbd|_}}) command can get stuck trying to plot a path past an interesting dungeon feature, for example, a trap or fountain. ||[http://bilious.alt.org/rgrn/?129162 Possibly related bug]
+|
+|-
+|{{va|C343-371}}
+|{{bugstatus|Fixed}} 2009-Jan|| || Stethoscopes can sometimes be used more often than intended. ||If you save and resume, you can use it again for free. On an aside, saving and restoring loses the movement points you gain from speed, and makes your exercise prior to the save worth less.
+|
+|-
+|{{va|C343-372}}
+|{{bugstatus|Fixed}} 2009-Jan|| || A fatal explosion can give the player messages in the wrong order if carried items are destroyed.
+| ||See commit {{commit|8c90e9ae7b4c89c8d5f12a99654de0728160c357|8c90e9...}}.
+|-
+|{{va|C343-373}}
+|{{bugstatus|Fixed}} 2009-Feb|| || Shopkeepers can polymorph into forms that don't let them do their jobs. || A blue jelly shopkeeper will buy and sell, but it won't move to block or unblock the door.
+|#H1798.  There are multiple facets to this.  See commits {{commit|1c66428a26022a6f79dadcd12823c8dad9107363|1c6642...}} (ability to talk) and {{commit|1a6289a5ecdc56d1bdcae7fc1b6c45deb5672a63|1a6289...}} (limbs).
+|-
+|{{va|C343-374}}
+|{{bugstatus|Fixed}} 2009-Feb|| || When polymorphed into a grid bug, attempting to move in an illegal direction is handled ungracefully.
+| ||See commit {{commit|414e83fb7832e602896155b40df35f5f660dff0f|414e83...}}.
+|-
+|{{va|C343-375}}
+|{{bugstatus|Fixed}} 2009-Feb|| || A mimic posing as a statue is not handled properly.
+| ||See commit {{commit|71219bf0930d7a0b04fabaeb3853e14c2d816c12|71219b...}}.
+|-
+|{{va|C343-376}}
+|{{bugstatus|fixed}} 2009-Feb|| || When trying to move down, Hero can be levitating and stuck in the floor at the same time.
+| ||#H1803, see commit {{commit|84ca1773e53e60865bbf501c703d76c3115e98f4|84ca17...}}.  See also commit {{commit|817976661fa3e0ef2040bc504e589210a5db8279|817976...}}.
+|-
+|{{va|C343-377}}
+|{{bugstatus|Fixed}} 2009-Feb|| || Hero hidden from monster is still treated as a normal target for range attack.
+| ||#H1812, see commit {{commit|dc8d285179e947357217647febf99e759cf18bfb|dc8d28...}}.
+|-
+|{{va|C343-378}}
+|{{bugstatus|Fixed}} 2009-Feb|| || Hero hiding as a small mimic can end up stuck to a monster after returning to human form.
+| ||See commit {{commit|121b9e97224f3096e1d2db99417f96265cfcb224|121b9e...}}.
+|-
+|{{va|C343-379}}
+|{{bugstatus|Fixed}} 2009-Apr|| || Spelling errors "sprit" and "truely" in quest text.
+| ||#H1810, see commit {{commit|ce89e6dc3331174895b3d7a98f8d025085928a69|ce89e6...}}.
+|-
+|{{va|C343-380}}
+|{{bugstatus|fixed}} 2009-Apr|| || Mimics pretending to be doors show up on the Rogue level.
+| ||See commit {{commit|a2257ebb1a0eac8fb668293265b994d827f240c9|a2257e...}}.
+|-
+|{{va|C343-381}}
+|{{bugstatus|Fixed}} 2009-Apr|| || Attacking by applying a polearm doesn't scuff engraving under hero.
+| ||#H1816, see commit {{commit|e11c136bc9d5e254ab97fa533d32cc8f25c4e53e|e11c13...}}.  Also grappling hooks.
+|-
+|{{va|C343-382}}
+|{{bugstatus|Fixed}} 2009-Apr|| || Auto-wielding a polearm may take no time. ||Does this also apply to pick-axes when you start digging?
+|See commit {{commit|e11c136bc9d5e254ab97fa533d32cc8f25c4e53e|e11c13...}}.
+|-
+|{{va|C343-383}}
+|{{bugstatus|Fixed}} 2009-Apr|| [https://github.com/sgrunt/GruntHack/commit/7831df3dda7f811c0609cba0523e6b24bdf1d23e GruntHack] || Applying a bullwhip while hero is at edge of map may cause a panic or crash.
+| ||See commits {{commit|e11c136bc9d5e254ab97fa533d32cc8f25c4e53e|e11c13...}} and {{commit|b71b3e920af4b143bdfcb0b443de68343f099235|b71b3e...}}.
+|-
+|{{va|C343-384}}
+|{{bugstatus|fixed}} 2009-May|| || Cutting a level 0 long worm in half may lead to a worm with 0 HP, which may cause a crash. ||Fixed on [[NAO]].
+|#H1826, see commit {{commit|077606bc0184a85c4574d8ffb68305d842d896fa|077606...}}.
+|-
+|{{va|C343-385}}
+|{{bugstatus|Fixed}} 2009-May|| || {{kbd|D}} command doesn't handle {{kbd|u}} choice correctly if only unpaid items are inside containers.
+| ||See commit {{commit|1ab038dca5e4228668b15f5001b301c81358ac35|1ab038...}}.
+|-
+|{{va|C343-386}}
+|{{bugstatus|Fixed}} 2009-May|| || [[Randomized appearance#Rings|Pearl]] [[ring]]s can [[erosion|rust]].
+| ||See commit {{commit|80322ee47df1d933a372dd079c2b9125607dd898|80322e...}}.
+|-
+|{{va|C343-387}}
+|{{bugstatus|Fixed}} 2009-May|| || [[T-shirt]]s can be [[illiterate|read]] when covered.
+| ||See commit {{commit|35d9a7c9782d79ccfc2de08efbcfc996b9b2cf9e|35d9a7...}}.
+|-
+|{{va|C343-388}}
+|{{bugstatus|Fixed}} 2009-Jul|| || [[Spell]] [[damage]] and low [[intelligence]] interact incorrectly.
+| ||See commit {{commit|2dfe3f45c1dcf7575f97c6e90a7ec762c1e53113|2dfe3f...}}.
+|-
+|{{va|C343-389}}
+|{{bugstatus|Fixed}} 2009-Jul|| || [[Dragon]] breath and certain other effects hitting a hidden [[door|secret door]] does not damage it.
+| ||See commit {{commit|8f3c74d8045733b6d6839098a5c164476d47cd84|8f3c74...}}.
+|-
+|{{va|C343-390}}
+|{{bugstatus|Fixed}} 2009-Jul|| || Breaking a [[wand]] which may zap but not damage a door gives an odd message.
+| ||See commits {{commit|71ed473cf6b88285d85e45fae7860080d3eeebba|71ed47...}} and {{commit|8f3c74d8045733b6d6839098a5c164476d47cd84|8f3c74...}}.
+|-
+|{{va|C343-391}}
+|{{bugstatus|fixed}} 2009-Jul|| || Hero [[polymorph]]ed into a [[mimic]] with {{kbd|<nowiki>#</nowiki>monster|link=0}} and hiding as an object does not unhide when [[polymorphing]] into a non-mimic. ||The same applies to pet mimics [[magic whistle|whistled]] over a [[polytrap]].
+|See commit {{commit|ad1dec0745e7caa46fc72f07af24ba531b1dccec|ad1dec...}}.
+|-
+|{{va|C343-392}}
+|{{bugstatus|Fixed}} 2009-Aug|| || A [[stun]]ned [[monster]] may both walk away from the hero and keep [[Holding_attack|holding]] him.
+| ||See commit {{commit|aeecad91b28f541d895abffae59cad9e76b495bf|aeecad...}}.
+|-
+|{{va|C343-393}}
+|{{bugstatus|Fixed}} 2009-Aug|| || The messages produced when [[throw]]ing a [[poison]]ed [[weapon]] which loses its [[poison]] are in a confusing order.
+| ||#H1911, see commit {{commit|e6734237395288801b0291a130525c6717837133|e67342...}}.
+|-
+| {{aa|C343-394}}
+|{{bugstatus|fixed}} 2009-Aug||{{bilious|340}}|| [[Throw]]ing a [[potion of acid]] into [[water]] may [[panic]] the game.|| "may" == "will".  Related to C343-19, -179 and -268.
+|
+|-
+|{{va|C343-395}}
+|{{bugstatus|Not a bug}} 2009-Aug|| || Spelling errors at the [[genocide]] prompt may have unintended consequences. || Specifically, genociding "[[Monk#Rank_titles|master]] [[mind flayer|mindflayer]]" as a [[monk]] is fatal.
+|Status notwithstanding, see commit {{commit|fe5d79c85943314831f6a0a931aece8401462194|fe5d79...}}
+|-
+|{{va|C343-396}}
+|{{bugstatus|Fixed}} 2009-Sep|| || [[Shopkeeper]] does not charge hero for an unsold [[boulder]] that is destroyed with a [[pick-axe]].
+| ||
+|-
+|{{va|C343-397}}
+|{{bugstatus|fixed}} 2009-Sep|| || A badly formed message may be produced if a [[pick-axe]] is applied to a [[boulder]] and the [[boulder]] is removed by a [[monster]].
+| ||#H1996, see commit {{commit|e450ca626d91b6fb56048e2ca8cb5e358d938587|e450ca...}}.
+|-
+|{{va|C343-398}}
+|{{bugstatus|fixed}} 2009-Sep|| || The game may crash if a wielded [[potion of polymorph]] is drunk.
+| ||#H2010, wielded.  See commit {{commit|1ad1e07d7a1ffa38ea0eccf046ea0ec3ed3c9b40|1ad1e0...}}.
+|-
+|{{va|C343-399}}
+|{{bugstatus|fixed}} 2010-Apr|| || Messages referring to a named [[vault]] guard have grammatical errors.
+| ||#H2081, see commit {{commit|0c0d68a63194984779a20223474944f09698db6d|0c0d68...}}.
+|-
+|{{va|C343-400}}
+|{{bugstatus|Fixed}} 2010-Jul|| || Wearing a [[cloak of displacement]] identifies it even if hero [[blindness|can't see]].
+| ||#H2150, see commit {{commit|8aecc6620416e01f72ec8dc653d4b7ae3a8fc540|8aecc6...}}.
+|-
+|{{va|C343-401}}
+|{{bugstatus|Fixed}} 2010-Jul|| || Wearing an [[elven cloak]] identifies it even if hero is already [[stealth]]y.
+| ||See commit {{commit|8aecc6620416e01f72ec8dc653d4b7ae3a8fc540|8aecc6...}}.
+|-
+|{{va|C343-402}}
+|{{bugstatus|Fixed}} 2010-Jul|| || Putting on a [[ring of stealth]] never identifies it. ||A workaround is to check if putting on elven boots gives a message.
+|See commit {{commit|8aecc6620416e01f72ec8dc653d4b7ae3a8fc540|8aecc6...}}.
+|-
+|{{va|C343-403}}
+|{{bugstatus|Fixed}} 2010-Aug|| || Hero can [[magic marker|write]] a [[scroll]] not sufficiently [[identification|identified]]. || You can write any scroll you have named, even if you don't know the "scroll called FOOBIE NO IDEA" is the scroll you are trying to write. (''[[Bugs_in_NetHack_3.4.3/Reports#C343-403|original report]]'')
+|#H2161, see commit {{commit|fefeda5422b8b016325606dc638a884bf90722e2|fefeda...}}.
+Also #H2059, see commit {{commit|403dd4ef951627eaf677083c697d646068ee41a1|403dd4...}}.  
+|-
+|{{va|C343-404}}
+|{{bugstatus|Fixed}} 2010-Aug|| || [[Magic marker|Writing]] a [[scroll]] can give a badly phrased message if the [[scroll]] is known by its appearance.
+| ||See commit {{commit|fefeda5422b8b016325606dc638a884bf90722e2|fefeda...}}.
+|-
+|{{va|C343-405}}
+|{{bugstatus|Fixed}} 2010-Sep|| || Some [[quest artifact]]s are too easily affected by [[stone-to-flesh]]. ||The [[Heart of Ahriman]]
+|See commit {{commit|b0a70e81ddea9dbb2fd21285037db2eaefcdfee9|b0a70e...}}.
+|-
+|{{va|C343-406}}
+| {{bugstatus|Fixed}} 2011-Jan|| [https://github.com/Bulwersator/UnNetHackPlus/commit/2304213f3e68baa89a539984cde950ded066ddd0 UnNetHackPlus] || One of the [[coyote]] names is spelled wrong. || ''Nemesis ridiculii'' (from ''Soup or Sonic'') is misspelled as ''Nemesis riduclii''.
+|#H2198, see commits {{commit|1ee750949e1f2444f6ab14a90beca986a3358c57|1ee750...}}, 43348e...<!-- ErrorB: 43348efb4567386b2092e12c1dc4e49bc606e710 -->, and {{commit|cfe2636740391705bd6e4120975022b6e51baf13|cfe263...}}.
+|-
+|{{va|C343-407}}
+| {{bugstatus|Fixed}} 2011-Jan|| || If reading an unknown [[scroll of teleport]] puts the hero on another [[scroll of teleport]], the second one is still treated as unknown.
+| ||#H2195, see commits {{commit|6c3bfda7d9289a8cf555597e1804627ed8981a6d|6c3bfd...}}, and {{commit|0c1b96470e4feb9b17e332f958a5172fee108558|0c1b96...}}, and 914277...<!-- ErrorB: 91427722ceec7a0c12452c3e81b921681ccd9b08 -->.
+|-
+|{{va|C343-408}}
+| {{bugstatus|Fixed}} 2011-Feb|| || Being killed by a [[monster]] with a long name can send the game into an infinite loop.
+| ||#H2162, see commit {{commit|8047d6a5f87caf11c12d32b855971ab2aff1c565|8047d6...}}.
+|-
+|{{va|C343-409}}
+| {{bugstatus|Fixed}} 2011-Feb|| [https://github.com/sgrunt/GruntHack/commit/18465ffea7214bff81ec5b5687222b63cdd7460b GruntHack] || [[Unlocking tool|Unlocking]] a [[mimic]] pretending to be a [[door]] is not handled properly. || (''[[Bugs_in_NetHack_3.4.3/Reports#C343-409|original report]]'')
+|#H2210, see commit {{commit|1dcaa1621bc7150871792501a9390dd931ff3e4d|1dcaa1...}}.
+|-
+|{{va|C343-410}}
+| {{bugstatus|Fixed}} 2011-Mar|| || Using an [[Unlocking tool|unlocking]] [[tool]] on a [[boulder]] that's really a [[mimic]] and located in a [[door]]way is not handled properly.
+| ||#H2154, see commits {{commit|e379b245d4ebd613957a1ddf1124d892041c0cb0|e379b2...}} and {{commit|3b6c59c7fc1b84b40efa35bfd6410a9c0abc2731|3b6c59...}}.
+|-
+|{{va|C343-411}}
+| {{bugstatus|Fixed}} 2011-Mar|| || A [[purple worm]] can end up in [[wall]] or rock when swallowing a [[ghost]] or [[xorn]].
+| ||See commit {{commit|72ca7456465dbf68a56fa7a679d5e9f6e0f9b8dc|72ca74...}}.
+|-
+|{{va|C343-412}}
+| {{bugstatus|Fixed}} 2011-Mar|| || Unpaid [[shop]] items [[stealing from shops|stolen]] from hero remain on hero's bill.
+| ||See commit {{commit|3e28b6a164a97c890e4708f7bcf0a920bd2fa1a3|3e28b6...}}.
+|-
+|{{va|C343-413}}
+| {{bugstatus|Fixed}} 2011-Mar|| || While [[blindness|blind]], some actions resulting in "Wait! That's a [[monster]]!" for a [[mimic]] posing as a [[door]] do not update the display correctly.
+| ||See commit {{commit|5632b4c456b54d8da64d976241d5f381661c5abb|5632b4...}}.
+|-
+|{{va|C343-414}}
+| {{bugstatus|Fixed}} 2011-Mar|| || {{kbd|<nowiki>#</nowiki>untrap|link=0}} of a known [[trap]] location with a concealed [[mimic]] gives correct message but does not update the display.
+| ||See commit {{commit|5632b4c456b54d8da64d976241d5f381661c5abb|5632b4...}}.
+|-
+|{{va|C343-415}}
+| {{bugstatus|Fixed}} 2011-Mar|| || [[Mail daemon]]s can be created when populating [[special level]]s with [[demon]]s. || [[Vlad's Tower]] is such a place.
+|See commits {{commit|9e7df53b84d2121a3690b2a1d61d1f0c2b7f4820|9e7df5...}} and {{commit|95f5e029d87064930dd6d17bd4ca741dfaca7d57|95f5e0...}}.
+|-
+|{{va|C343-416}}
+| {{bugstatus|Fixed}} 2011-Mar|| || Being [[disintegration|disintegrated]] by [[prayer|divine wrath]] gives an inappropriate message.
+| ||#H2200, see commit {{commit|df9e4b345dd5f32d2d78d54cb0299599e085c2c8|df9e4b...}}.
+|-
+|{{va|C343-417}}
+| {{bugstatus|Fixed}} 2011-Mar|| || [[Polymorph]]ing into a [[human]] form may give a message with the wrong [[gender]].
+| ||See commit {{commit|cc7d1ff9a8646618ec77ae602dba75d73d0344bb|cc7d1f...}}.
+|-
+|{{va|C343-418}}
+| {{bugstatus|fixed}} 2011-Aug|| || [[Weight]] of non-[[BUC|cursed]] [[bag of holding]] is sometimes off by one. ||Possibly, this refers to multiple stacks of gold in any bag: two stacks of $49 weigh 0, but one stack of $98 weighs 1. This might relate to shop-owned versus hero-owned gold.
+|#2236, see commit {{commit|3e44a5fcdc1b407a6bd0779b121eb4bf1af2aa26|3e44a5...}}.
+|-
+|{{va|C343-419}}
+| {{bugstatus|fixed}} 2011-Aug|| || With [[options|option]] [[number_pad]] set to 2, {{kbd|M|5}} (or {{kbd|Alt|5}} or {{kbd|Shift|Keypad5}}) does not work as the {{kbd|G}} movement prefix.
+| ||#2251, see commit {{commit|3148c15ee56b7413a3bc0440cd9df4b01615eeb4|3148c1...}}.
+|-
+|{{va|C343-420}}
+| {{bugstatus|Fixed}} 2011-Aug|| || [[Keystone Kop|Kops]] may not be dismissed if the [[shopkeeper]] changes levels. || You might want to pacify the shopkeeper on his home level. If necessary, steal a gold piece and pay him off again.
+|#2253, see commit {{commit|8df1e4d6cbabe20551602fc99eebb77261fc7e09|8df1e4...}}.
+|-
+|{{va|C343-421}}
+| {{bugstatus|fixed}} 2011-Aug|| || Object [[teleportation|teleport]] in and around the [[Wizard's Tower]] doesn't work as intended. || (''[[Bugs_in_NetHack_3.4.3/Reports#C343-421|original report]]'')
+|#2142, see commit {{commit|cc03c15978d30d0d09d977e219227b141204ef35|cc03c1...}}.
+|-
+|{{va|C343-422}}
+| {{bugstatus|Fixed}} 2011-Aug|| || There are inconsistencies in [[erosion|damage]] applied to objects when encountering [[lava]] in different ways.
+| ||See commit {{commit|9cad30853620fcf583e904a143a4105a8faef1e0|9cad30...}}.  See also commit {{commit|6c7c8e1d3412b742f733a1677aa7e5ec74aa1ed8|6c7c8e...}}.
+|-
+|{{va|C343-423}}
+| {{bugstatus|Fixed}} 2011-Aug|| || Under some circumstances player can tell if [[bones]] file is created. || "Your body rises from the dead as <monster>..." if killed by a slime/W/V/M.
+|#H2259, see commit {{commit|4151ab500f21e7635985e37a4ddf5380190a5eeb|4151ab...}}.
+|-
+|{{va|C343-424}}
+| {{bugstatus|fixed}} 2011-Aug|| || Unlit [[Candelabrum of Invocation|candelabrum]] becomes unlightable if [[candle]]s have exactly one turn of fuel left and it was applied in the wrong location.
+| ||#2276, see commit {{commit|b16fa5084ee7605ce6d2133b67592acbee7a6e80|b16fa5...}}.
+|-
+|{{va|C343-425}}
+| {{bugstatus|fixed}} 2011-Sep|| || If a [[steed]]'s legs are [[wounded legs|wounded]] while being [[riding|ridden]] and the hero dismounts before the legs heal, the hero's [[dexterity]] will stay reduced. || (''[[Bugs_in_NetHack_3.4.3/Reports#C343-425|original report]]'')
+|#2382, see commit {{commit|edaa9440b7884ee889a0b456e69c1e6f6274d279|edaa94...}}.
+|-
+|{{va|C343-426}}
+| {{bugstatus|Fixed}} 2011-Sep|| || A [[polymorph]]ed hero [[hiding]] on the [[ceiling]] may be forced to drop to an inappropriate position. || (''[[Bugs_in_NetHack_3.4.3/Reports#C343-426|original report]]'')
+|#H2384, see commit {{commit|8d5a04a1c04367894cd3c450d14475837dacdf02|8d5a04...}}.
+|-
+|{{va|C343-427}}
+| {{bugstatus|Fixed}} 2011-Sep|| || Inappropriate message claiming a [[paralysis|paralyzed]] [[monster]] "turns to [[scare|flee]]" may appear.
+| ||#H2397, see commit {{commit|8f07e5ee392e84b410a5227350b2b3dd81986c77|8f07e5...}}.
+|-
+|{{va|C343-428}}
+| {{bugstatus|Fixed}} 2011-Sep|| || [[Statue]]s in a [[cockatrice]] nest are wrong type if the [[score]] file is empty. || (''[[Bugs_in_NetHack_3.4.3/Reports#C343-428|original report]]'')
+|#H2428, see commit {{commit|4aaf41de1056058651038092d823859b45b0748e|4aaf41...}}.
+|-
+|{{va|C343-429}}
+| {{bugstatus|fixed}} 2011-Sep|| || When using a [[display]] that scrolls the [[dungeon level|map]], [[teleportation|teleporting]] [[player|hero]] may display off the map momentarily.
+| ||See commit {{commit|c7a867ec78e4329bdce65d28d3cbce39481bf36d|c7a867...}}.
+|-
+|{{va|C343-430}}
+| {{bugstatus|Fixed}} 2011-Nov|| || It's too easy to open [[tin]]s.
+| ||Polyself.  See commit {{commit|1e65061989d42c3950f5e19b23ddc36bf83b6e12|1e6506...}}.
+|-
+|{{va|C343-431}}
+| {{bugstatus|Fixed}} 2011-Nov|| || Killing a [[vault guard]] results in a message about "dropping minvent."
+| ||See commit {{commit|bd172eb167a0082e4882b1b02afe0970c0d6896b|bd172e...}}.
+|-
+|{{va|C343-432}}
+| {{bugstatus|Fixed}} 2011-Nov|| || In a [[vault]] corridor: some [[trap]]s could be left lying around.
+| ||See commit {{commit|30b3e5a2ea3474a4e67bc86f9b8b2d050ee026c6|30b3e5...}}.
+|-
+|{{va|C343-433}}
+| {{bugstatus|Fixed}} 2011-Nov|| || In a [[vault]] corridor: you can end up with lighted rock.
+| ||See commit {{commit|30b3e5a2ea3474a4e67bc86f9b8b2d050ee026c6|30b3e5...}}.
+|-
+|{{va|C343-434}}
+| {{bugstatus|Fixed}} 2011-Nov|| || In a [[vault]] corridor: when [[blind]], you can be stuck and not be told why.
+| ||See commit {{commit|30b3e5a2ea3474a4e67bc86f9b8b2d050ee026c6|30b3e5...}}.
+|-
+|{{va|C343-435}}
+| {{bugstatus|Fixed}} 2011-Nov|| || In a [[vault]] corridor: various kinds of problems may result from having an iron ball.
+| ||See commit {{commit|30b3e5a2ea3474a4e67bc86f9b8b2d050ee026c6|30b3e5...}}.
+|-
+|{{va|C343-436}}
+| {{bugstatus|Fixed}} 2011-Nov|| || Hero can [[levitate]] and [[fly]] where it makes no sense.
+| ||#2242 (underwater) and #2292 (phasing).  See commits {{commit|f48de2f336441085e2019676353e348ea9ecce07|f48de2...}}, {{commit|282f8e8e70fb6fee65a2d8f5e1c1cca97a053104|282f8e...}}, and {{commit|98cb2eda549b8fe7fcb762c79e6a4114e7282a23|98cb2e...}}.
+|-
+|{{va|C343-437}}
+| {{bugstatus|Fixed}} 2011-Nov|| || [[Gremlin]]s sometimes don't respond properly to light.
+| ||#2495, see commit {{commit|897d527837b78792bdf0d7a94983f6edc16c1f68|897d52...}}.
+|-
+|{{va|C343-438}}
+| {{bugstatus|fixed}} 2011-Nov|| || Typo "[[zorkmid|gold]] piecess" may occur when [[shop|selling]] items in a [[container]].
+| ||See commit {{commit|3337f05af8045e2104600948e5bc2e9652420803|3337f0...}}.
+|-
+|{{va|C343-439}}
+| {{bugstatus|fixed}} 2011-Dec|| || Running NetHack in a terminal window with more than 255 rows or columns produces display errors.
+| ||#H2488, see commit {{commit|eef41ba4a83b7b291e0785899c2f9ab24f1c088d|eef41b...}}.
+|-
+|{{va|C343-440}}
+| {{bugstatus|Fixed}} 2011-Dec|| || If the game [[panic]]s with the [[player|hero]] [[moat|underwater]], the hero may be restored on top of the water.
+| ||See commits {{commit|e072ebd3fa2e921a876f2afb890bd40ed8585fb6|e072eb...}} and {{commit|e055b2820e62574b0a971eb31f393b334d504fd1|e055b2...}}.
+|-
+|{{va|C343-441}}
+| {{bugstatus|Fixed}} 2012-Jan|| || [[Automatic searching|Autosearching]] while [[blindness|blind]] doesn't update the map when it should.
+| ||See commit {{commit|fdf037a89f3b49044bf49270b316cd66cbc6ff86|fdf037...}}.
+|-
+|{{va|C343-442}}
+| {{bugstatus|Fixed}} -|| || [[Drain life]] shouldn't override [[drain resistance]] of objects.
+|}
+
+=== Spoiler core bugs ===
+{| class="prettytable sortable striped"
+!Name!!Status!!Patch!!Description!!Additional info
+|-
+|{{va|SC342-3}}
+|{{bugstatus|Fixed}} 2004-Jan|| ||[[Hangup]] can be used to cheat.||If you are slowly turning to stone and trigger a hangup after you are already immobile, you will be granted one action on restoring.
+|The turning to stone thing may be unrelated; this bug may actually be about object destruction, see commits {{commit|baff3bc88b64d5681e2d2ac9f7ba10e27ffe1c3f|baff3b...}} and especially {{commit|83b73be40cfc80be174980ba81750c5c45bfcd24|83b73b...}}.  Also see commits {{commit|35d9a7c9782d79ccfc2de08efbcfc996b9b2cf9e|35d9a7...}}, {{commit|47dad80337c38df94878b584559ecb21de03d041|47dad8...}}, and {{commit|f4688654948f1de048099a9b0da29c5b9da9a256|f46886...}}.
+|-
+|{{va|SC343-1}}
+|{{bugstatus|Fixed}} 2004-Jan|| ||[[Monster]]s that can't blow can still use a [[whistle]].|| You can also use whistle with active amulet of strangulation
+|See commits {{commit|661f91009bac1c0a99fd708867b6eb8deead5da5|661f91...}} and {{commit|6f0fb33e9fc826d5acc478d4038e71f29faeb51a|6f0fb3...}} and possibly also {{commit|89022d94fd6e874c5bfdbb3d704eb1dff5c8bbe3|89022d...}}
+|-
+|{{va|SC343-2}}
+|{{bugstatus|fixed}} 2004-Jun|| ||If you are [[poison resistant]], [[potion of sickness|potions of sickness]] can only kill you if they are [[blessed]].
+| ||See commit {{commit|93cdf2b7f7a07e6b9652d251514bc349a0196ea4|93cdf2...}}
+|-
+|{{va|SC343-3}}
+|{{bugstatus|fixed}} 2004-Aug|| ||[[Water walking boots]] are not handled properly on [[lava]].
+| ||U1079, see commits {{commit|c91ac3274c272152fe5fc046a8d53a6197563745|c91ac3...}} and maybe {{commit|83b73be40cfc80be174980ba81750c5c45bfcd24|83b73b...}} and also {{commit|aa98091bfadaf392fee57752657e23e90e4b06f9|aa9809...}}  (this last one is more general than the boots).   See also {{commit|baff3bc88b64d5681e2d2ac9f7ba10e27ffe1c3f|baff3b...}} for the panic.
+|-
+|{{va|SC343-4}}
+|{{bugstatus|Fixed}} 2004-Oct|| ||Reviving [[corpse]]s or reanimating [[statue]]s in a [[shop]] does not get charged correctly.
+| ||#U782, see commit {{commit|eaae10c837dc07a4712a2175cc35c01a873c70bf|eaae10...}} 
+Also applies to broken statues and boulders, see {{commit|fe10f991a657d172e5966c6e4ea63f22ee11ea02|fe10f9...}}
+|-
+|{{va|SC343-5}}
+|{{bugstatus|fixed}} 2004-Nov|| ||Breaking [[container]] contents in a [[shop]] doesn't always charge for them.
+| ||#U1202, see commits {{commit|6336dbbb65e7dbe37c562021d795bbaed6b86394|6336db...}} and {{commit|5d25ed46aaadb6ed49179cddd01f7d7e9e1f068c|5d25ed...}}
+|-
+|{{va|SC343-6}}
+|{{bugstatus|fixed}} 2004-Nov|| ||Stealing a stack of items from a [[shop]] sometimes results in only being charged for one.
+| ||See commit {{commit|6336dbbb65e7dbe37c562021d795bbaed6b86394|6336db...}}
+|-
+|{{va|SC343-7}}
+|{{bugstatus|fixed}} 2005-Mar|| ||[[Zap]]ping an unknown [[wand]] while [[blind]] sometimes gives out too much information.
+| ||May be related to commits {{commit|dfb1a421ed1fb2899cbbec3dfdc44bd7c51bb269|dfb1a4...}} and {{commit|8225790b08760a5466eb1cee2f2dbf433ca65d55|822579...}}
+|-
+|{{va|SC343-8}}
+|{{bugstatus|fixed}} 2005-May|| ||Re-animating a [[statue]] containing [[gold]] produces too much gold.||Works on former pets, shopkeepers, and other "special" statues. See the [http://tasvideos.org/GameResources/DOS/Nethack.html TAS writeup].
+|See commits {{commit|0f13d56446a43c8af90e3422f6c0cddc509435fb|0f13d5...}} and {{commit|35a35de6ddde214dcfc4524d7bbc041f25b270f5|35a35d...}} and the somewhat more interesting {{commit|046714c1b6b2ca97c19ac10688187df6aa137a96|046714...}}
+|-
+|{{va|SC343-9}}
+|{{bugstatus|Fixed}} 2005-Oct|| ||[[Medusa]] corpse from a level file behaves incorrectly.
+| ||See commits {{commit|8f8538e527c334c2cf7901087fddb06600510da0|8f8538...}} and {{commit|213e3e4d00f49a332855fdde50c97e81f93a8f00|213e3e...}}
+|-
+|[[SC343-10]]
+|{{bugstatus|Fixed}} 2005-Sep|| ||Player can raise [[HP]] and [[Pw]] by dancing with [[vampire]]s.||This is the infamous [[polyself bug]].
+|See commit {{commit|25a9c0ca4b74f0b9079caef954e99950286d75cd|25a9c0...}}
+|-
+|[[SC343-11]]
+|{{bugstatus|fixed}} 2006-Jan||{{Bilious|337}}||It's possible to easily find the identity of a [[high priest]] on the [[Astral plane]].||This is the infamous [[Astral call bug]].
+|#H4, see commit {{commit|a43a3ac9887df7b9cd03e96f3a003848a0deb5f0|a43a3a...}} for astral call proper.  See commit {{commit|9abdff361ba214d5ae6f473c4da562967dbc8c9a|9abdff...}} for wand of probing and other related cases.
+|-
+|[[SC343-12]]
+|{{bugstatus|fixed}} 2006-Feb||{{Bilious|337}}||Hero using [[telepathy]] can abuse [[Call]] on the [[Astral Plane]].
+| ||
+|-
+|{{va|SC343-13}}
+|{{bugstatus|Open}} 2006-Apr|| ||While [[blind]] and [[levitating]], too much information may be presented. ||Does this refer to messages about monsters scared by an Elbereth engraving? Or typing {{kbd|>}} to identify the stairs? Or to the ability to identify ground types (ice, floor, altar, grave, etc.) when hovering over them?
+|See commit {{commit|cc31b256342e38cb581df234779ceb23fa54fd98|cc31b2...}}.
+|-
+|{{va|SC343-14}}
+|{{bugstatus|Fixed}} 2006-Aug|| ||[[Shopkeeper]]s and [[priest]]s may be [[teleport]]ed out of their [[shop]] or [[temple]] too easily.
+| ||See commit {{commit|c91c9addb9fdc8cde2d4e9daf90b96447e8d2b18|c91c9a...}}.
+|-
+|{{va|SC343-15}}
+|{{bugstatus|Fixed}} 2006-Oct|| ||[[Nurse]]s are not stoned by hero polymorphed into cockatrice.
+| ||#U856, see commit {{commit|365440853b43c0b322fda3cab0fc5f8caa2263e1|365440...}}.
+|-
+|{{va|SC343-16}}
+|{{bugstatus|fixed}} 2007-Feb|| ||Gelatinous cubes can engulf Rider corpses.
+| ||#Q417, see commit {{commit|0b95104f0e4d983bb6f4afa27ed04aa23f99f294|0b9510...}}.
+|-
+|{{va|SC343-17}}
+|{{bugstatus|Fixed}} 2007-Mar|| ||Stethoscope may unhide hidden mimic.
+| ||#H254, see commits {{commit|b8a51d364973173c8e844839e49e643428455da2|b8a51d...}} and {{commit|0def692d5f99cf344e19f616da4c2097fbaff02b|0def69...}}.
+|-
+|{{va|SC343-18}}
+|{{bugstatus|fixed}} 2007-Mar|| ||Escaping from lava can leave hero outside of time. || Refers to some general timing issues with when lava checks are run (e.g. removing fire resistance sources in lava does not instakill the player).
+|#H260, see commits {{commit|d302e6252be60cbb63ef4ce7de7dc446ae710e64|d302e6...}} and especially {{commit|cba99b52c38b212cd81b5f3e37bebfe0a88aaa7c|cba99b...}}, plus commit {{commit|7a084228847d76af3af4a4b81eed1cb8534ce65d|7a0842...}}.
+|-
+|{{va|SC343-19}}
+|{{bugstatus|fixed}} 2007-Sep|| || Monsters seeking the Amulet attack temple priests to get it.
+| ||See commit {{commit|9df113a97308492a50ebbfea8ad75a3a86f3cecd|9df113...}}.
+|-
+|{{va|SC343-20}}
+|{{bugstatus|fixed}} 2007-Nov|| || Hangup save while picking up gold in a shop may duplicate the gold.
+| ||See commit {{commit|645461d7504632780e546fcd4c8ea5f8938b01c0|645461...}}.
+|-
+|{{va|SC343-21}}
+|{{bugstatus|fixed}} 2007-Dec|| || Accounting is incorrect for containers dropped in a shop that does not sell them.
+| ||
+|-
+|{{va|SC343-22}}
+| {{bugstatus|Fixed}} -|| || The [[travel]] command allows [[grid bug]]s to move one step diagonally.
+|}
+
+== Windows-only bugs ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Patch!!Description!!Additional info
+|-
+|{{va|W341-13}}
+|{{bugstatus|Fixed}} 2004-Jan|| ||"Lock Windows" menu item has wrong checkmark at startup
+| ||
+|-
+|{{va|W341-14}}
+|{{bugstatus|Fixed}} 2004-Jan|| ||[[Message window]] does not update properly if resized.
+| ||
+|-
+|{{va|W342-6}}
+|{{bugstatus|Not a bug}} 2004-Jan|| ||Checkboxes are drawn wrong.
+| ||
+|-
+|{{va|W343-1}}
+|{{bugstatus|fixed}} 2006-May|| ||Redirecting [[score]] output through a pipe doesn't work.
+| ||See commit {{commit|3e2f7f946db9758b6a312fb9563d2fe642b93a07|3e2f7f...}}.
+|-
+|{{va|W343-2}}
+|{{bugstatus|Not a bug}} 2004-Jan|| ||Windows 98 is unable to load [[tiles]] that are too large.  This is an OS issue.
+| ||
+|-
+|{{va|W343-3|[[W343-3]]}}
+|{{bugstatus|fixed}} 2006-Sep||{{Bilious|313}}||Under the Polish version of Windows 2000 SP4, screen output with a raster font shows wrong characters for many [[dungeon features]].
+| ||See commits {{commit|ea80f61b6fb620ebb8b1031e546e6f8897ba2835|ea80f6...}}, {{commit|94b66d0be5bd6cdcc9ad5f1bebf7c1f5d1e1dbbf|94b66d...}}, and commit 54abb4...<!-- ErrorB: 54abb4b77726714f13d6680279c661de5b478cde -->; probably also relies on {{commit|253bf359af4a34ca051bcb008a2043a8d7125911|253bf3...}} and all the intervening follow-up Unicode SYMSET stuff.
+|-
+|{{va|W343-4|[[W343-4]]}}
+|{{bugstatus|fixed}} 2004-Feb||{{Bilious|313}}||Keyboard may stop responding after locking or unlocking a door when using altkeyhandler=[[nhraykey.dll]]
+| ||
+|-
+|{{va|W343-5}}
+|{{bugstatus|Fixed}} 2005-Jan|| ||Error messages early in the game startup sequence may flash by unreadably.
+| ||See commit {{commit|7b83a76bffdcef9f07c46810e63e5359dbc7cd86|7b83a7...}}
+|-
+|{{va|W343-6}}
+|{{bugstatus|Fixed}} 2006-May|| ||Attempting to start NetHack from within a zip utility doesn't work (this is not a bug) and gives a misleading error message <tt>panic Cannot open dungeon description - "dungeon"</tt> (this is the bug).
+| Go back to the installation instructions and finish the install.
+|See commit {{commit|1a01343c6386ad5e75a0e35ae8393d8338fe22c6|1a0134...}}.
+|-
+|{{va|W343-7}}
+| {{bugstatus|Open}} -|| || Using both <tt>nethack.exe</tt> and <tt>nethackW.exe</tt> can cause <tt>nethackW.exe</tt> to display the top scores list in a series of windows.
+|}
+
+== X11-only bugs ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Description
+|-
+|{{va|X343-1}}
+|{{bugstatus|fixed}} 2004-Oct||The scrollbar for a text window may be missing when needed.
+| ||See commits {{commit|4c9d16195370ca329140be7e9e3ab89e06f4abcf|4c9d16...}} and {{commit|a6bff50803615c6e4c5eab891058941846237974|a6bff5...}}
+|-
+|{{va|X343-2}}
+|{{bugstatus|fixed}} 2005-Mar||[[use_inverse]] is broken in [[tty]] mode.
+| ||
+|-
+|{{va|X343-3}}
+|{{bugstatus|fixed}} -||[[Sanity check]] for mouse position after window resize is wrong.
+|}
+
+== Linux-only bugs ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Description
+|-
+|{{va|L343-1}}
+| {{bugstatus|fixed}} -|| Window resize is not supported by default.
+|}
+
+== Macintosh-only bugs ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Patch!!Description!!Additional info
+|-
+|{{va|M343-1}}
+|{{bugstatus|fixed}} 2004-Aug||[http://www.nethack.org/v343/bugmore/src-diff-mac.txt DevTeam]||Release code does not build under Carbon.||This patch does not apply cleanly.
+|Possibly related commits include {{commit|a744b6b5bf53faaaa333167ff2ada68225e17c72|a744b6...}} {{commit|3b2efac99ce03a53589f3d71ad6760258e277bc0|3b2efa...}}
+{{commit|f4322a56fbb5ec4b348371e6a2f90794948d129a|f4322a...}} {{commit|e0c659435f6a5b0090f78f5b174a3853b15de9bf|e0c659...}} b7a43f...<!-- ErrorB: b7a43fa72c53d60659f01dab312f2fa6b7ecb2f5 -->
+|-
+|{{va|M343-2}}
+|{{bugstatus|Open}} 2004-Sep|| ||nethack-343-mac-term.pkg.sit only: "No write permission to lock perm!" error. Only happens on clean installs of 10.3.x (not upgraded systems). (See M343-3 for 10.4.)||
+| ||Maybe see commits 0c8e8b...<!-- ErrorB: 0c8e8b489c7de4e0d9b274beb2e04863c79b052f --> and/or d5ea21...<!-- ErrorB: d5ea218d939943c0b17b782c07d162919a7fe1ff -->
+|-
+|{{va|M343-3}}
+|{{bugstatus|Open}} 2005-Jun|| ||nethack-343-mac-term.pkg.sit only: "No write permission to lock perm!" error. Only happens on 10.4 (See M343-2 for 10.3.)||
+| ||Not sure, maybe one of the following: d8d88f...<!-- ErrorB: d8d88f2027883c78385ac8da737a90f77c30f9c7 --> 168651...<!-- ErrorB: 168651083e0f64b87be4f4d2c213c3c7d338715d --> ac308b...<!-- ErrorB: ac308b96fd769416734d12998d65eb93d77479a2 --> eab697...<!-- ErrorB: eab697270e2852e244229065c91b83d30e011694 --> 274049...<!-- ErrorB: 274049c4d430c6554bfb7645ebfdc72dcbeccf00 --> 284653...<!-- ErrorB: 284653e8c7bef06035fb11db32e874749436bc8d -->
+|-
+|{{va|M343-4}}
+|{{bugstatus|Open}} -|| ||In the Qt port, {{kbd|Command|Z}} crashes the game and prevents it from restarting.||
+|}
+
+== Qt-only bugs ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Description
+|-
+|{{va|Q341-1}}
+|{{bugstatus|Fixed}} 2004-Jan||Randomly generating characters doesn't always follow user requests.
+| ||
+|-
+|{{va|Q341-3}}
+|{{bugstatus|Open}} 2004-Jan||[Mac only] {{kbd|q}} and {{kbd|/}} keys send additional characters when pressed.
+| ||
+|-
+|{{va|Q343-1}}
+|{{bugstatus|Open}} 2004-Jan||[[Explore]] or [[debug mode]] only: {{kbd|ctrl|x}} doesn't show the [[intrinsics]] screen.
+| ||
+|-
+|{{va|Q343-2}}
+|{{bugstatus|fixed}} -||Saved games are not found if the game is built with the prefix option.
+|}
+
+== Windows-CE-only bugs ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Description
+|-
+|{{va|CE343-1}}
+|{{bugstatus|Not a bug}} 2006-Jan||Attempting to load an alternative [[tile set]] fails.
+| ||
+|-
+|{{va|CE343-2}}
+|{{bugstatus|fixed}} 2009-Nov|| Help text windows close immediately.
+| ||See commit {{commit|142f13de3f2362666b3973e928a1449f8250c170|142f13...}}.
+|-
+|{{va|CE343-3}}
+|{{bugstatus|fixed}} 2009-Nov|| Action button points to wrong screen location.
+| ||See commit {{commit|142f13de3f2362666b3973e928a1449f8250c170|142f13...}}.
+|-
+|{{va|CE343-4}}
+|{{bugstatus|fixed}} 2009-Nov|| pocketpc: menu window closes if scrolled off top or bottom
+| ||See commit {{commit|142f13de3f2362666b3973e928a1449f8250c170|142f13...}}.
+|-
+|{{va|CE343-5}}
+|{{bugstatus|fixed}} 2009-Nov|| Input is translated when command helper is hidden.
+| ||See commit {{commit|142f13de3f2362666b3973e928a1449f8250c170|142f13...}}.
+|-
+|{{va|CE343-6}}
+|{{bugstatus|fixed}} -|| Text window does not scroll left on left arrow.
+|}
+
+== Build-from-source bugs ==
+{| class="prettytable sortable striped"
+!Name!!Status!!Description
+|-
+|{{va|S343-1}}
+|{{bugstatus|Open}} 2004-Jan||gnome port refers to file t32-1024.xpm for large tiles that doesn't exist
+| ||
+|-
+|{{va|S343-2}}
+|{{bugstatus|fixed}} 2006-Jan||1x1 room in [[special level]] can trigger [[panic]] due to off by one error (does not affect official room set)
+| ||#H30, see commit {{commit|e2dd0a12ae0ac734a5776324d0e0eec1fbbb5542|e2dd0a...}}
+|-
+|{{va|S343-3}}
+|{{bugstatus|fixed}} 2006-Jul||makedefs may fail to compile if <tt>sizeof(time_t) != sizeof(long)</tt>
+| ||See commits {{commit|699330928d9a59c2a22e82a01de8aba4e00b32ac|699330...}}, {{commit|90f640a93510ce1b654c0b138223c3e2782a2009|90f640...}}, {{commit|9c79bb275862d382e884a602c32665f958901504|9c79bb...}}, {{commit|d611cd76c5fca843b132756a0c6668fe83bb488b|d611cd...}}, {{commit|98a09101b1f30558c891ab06ccafdf55d32a0a7b|98a091...}}, {{commit|dafb1c089ecf2f3b1a538fa529a7834f429a8053|dafb1c...}}, maybe 
+{{commit|65e12e036264faa2872b1dba426dbc7b1fad7dd8|65e12e...}}, and possibly {{commit|003aea0ce3707c444a5bcee88c186ffd6b81bc5e|003aea...}}, 
+{{commit|999424aecc96e1c5481e50df92006b35ac5c9d3d|999424...}}, {{commit|00768fce8baba4ef5cb23caeb38eb4675327fe6b|00768f...}}, and {{commit|e9a6ed37667bede7cf3ba850cf4a9bfc911e50cb|e9a6ed...}}.
+|-
+|{{va|S343-4}}
+|{{bugstatus|fixed}} 2006-Jul||NetHack does not compile under Microsoft VC2005.
+| ||See commits {{commit|d09c37423959274c02a3abc0f1ac3ba7c7348ce5|d09c37...}}, {{commit|174b985267e9a02aa3f1abbfdd3dbb49b0f57796|174b98...}}, {{commit|6adc731634b653ae06e7bf0569c0a9f5a3e3c0fc|6adc73...}}, {{commit|7394b0a353c07207556572f4df3f68f7c4016796|7394b0...}}, {{commit|96c61630191e5b4d9748e538d5e8a06c755ea072|96c616...}}, {{commit|e822fc1c6072d2a806642fac7bd36fcb8c913df9|e822fc...}}, 57e65a...<!-- ErrorB: 57e65a4acdce1730491165a658681c3f474bf0b6 -->, eef9a5...<!-- ErrorB: eef9a53c35243938411d6eeffdfe59d7eb2b9d45 -->, cf9f8d...<!-- ErrorB: cf9f8df2fbead4d5d2f33c623dac94efa34bb5d3 -->, {{commit|557f94c83af11a1333a0af01e2dd94f044cfd5ca|557f94...}}.
+|-
+|{{va|S343-5}}
+|{{bugstatus|fixed}} 2007-Feb||The prototype and definition for finish_map don't match properly.
+| ||See commit {{commit|c937cc0091e859c70cdc1728cbe0b008087b17ff|c937cc...}}.
+|-
+|{{va|S343-6}}
+|{{bugstatus|fixed}} 2007-Mar||Game does not compile under FreeBSD 6.1.
+| ||#H264, see commit {{commit|57d55b8e121d4cebb47ae3abee975b20f1aeec71|57d55b...}}.
+|-
+|{{va|S343-7}}
+|{{bugstatus|fixed}} 2007-Nov|| DLB doesn't work under VMS if a file used by NetHack and without a dot in its name matches a VMS logical name.
+| ||#H1409, see commits {{commit|a675cc6ed7523a1881b4e94b1942db0466e9442b|a675cc...}} and {{commit|96247e7fd971e2a5ee85472ba0891486cd0c2406|96247e...}}.
+|-
+|{{va|S343-8}}
+|{{bugstatus|fixed}} 2007-Dec|| NetHack does not compile under Microsoft VS2008 Express Edition.
+| ||
+|-
+|{{va|S343-9}}
+|{{bugstatus|fixed}} 2007-Dec|| If time_t changes from 32- to 64-bits due to (e.g.) compiler upgrades, save files will not be compatible between old and new builds.
+| ||See commits {{commit|d430db0718871863338be262ceed70ad37d3864b|d430db...}} and {{commit|67d5fb148106501258f546ecb421fb2fb407a570|67d5fb...}}.
+|-
+|{{va|S343-10}}
+|{{bugstatus|fixed}} 2007-Dec|| Windows 64-bit mode compile produces warnings in random.c.
+| ||See commit {{commit|9c3f6f78b9379084efa4bffad57f9cbc6214680a|9c3f6f...}}.
+|-
+|{{va|S343-11}}
+|{{bugstatus|fixed}} 2007-Dec|| Smartphone keyboard does not work. (Possible reference to:  The [http://www.heise.de/mobil/handygalerie/o2/xda-cosmo-1006/ XDA Cosmo] aka [http://forum.xda-developers.com/forumdisplay.php?f=309 HTC S620] is a Windows Mobile smartphone with a keyboard, yet Nethack insists on mapping every command to the twelve keys 0-9*#.)
+| ||See commit cdb194...<!-- ErrorB: cdb19424162bb48a6dbd83527cb29f673f5026c9 -->.
+|-
+|{{va|S343-12}}
+| {{bugstatus|Fixed}} -|| Game may fail to compile or give warnings if <tt>sizeof(char *) != sizeof(int)</tt>.
+|}
+
+== Bugs not mentioned on the DevTeam's website ==
+{| class="prettytable sortable striped"
+!Name!!Patch!!Description
+|-
+|C343-204 NM343-1||   || The hero can teleport on a non-teleport level: Get engulfed by a tame engulfer using conflict, end conflict, apply a magic whistle.
+|
+|-
+|{{anchor|}}  NM343-2||   || The boulder from a [[rolling boulder trap]] can be generated on top of a lava pool. {{refsrc|trap.c|1584}}
+|
+|-
+|{{anchor|}}  NM343-3||   || It is impossible to paste (e. g. "ElberethElbereth") into the windows tiles build. This works on OS X, however.
+|
+|-
+|{{anchor|}}  NM343-4||   || The game sometimes behaves as if a series of spurious non-attacking movement commands were typed after #looting a container.
+|
+|-
+|{{anchor|}}  NM343-5||   || Confused #looting a throne does not destroy it.
+|
+|-
+|{{anchor|}}  NM343-6||   || The "hilite_pet" option does not work on monsters only seen due to the monster detection spell.
+|
+|-
+| C343-391 ?   NM343-7||   || Polymorphing a cloaked pet mimic (by whistling it onto a polytrap) does not unhide it, even if it turns into a non-mimic.
+|
+|-
+|{{anchor|}}  NM343-8||   || You can reliably trigger [[clairvoyance]] ([[aligned priest|donation]], [[cornuthaum]], [[amulet of yendor|Amulet]]) by far-looking {{kbd|;}} or wall-walking on turns divisible by 15 until your surroundings are mapped.
+|
+|-
+|{{anchor|}}  NM343-9||   || Killing a monster with a rolling boulder trap breaks pacifist conduct if and only if the trap was ''not'' known.
+|
+|-
+|{{anchor|}}  NM343-10|| [http://l.j-factor.com/nethack/bribe.diff "L" (Leon Arnott)] ||You can't bribe the [[watch]]. It's debatable if this qualifies as a bug.
+|
+|-
+|{{anchor|jabberwock}}  UNL343-080 and UNL343-081|| ||Jabberwocks can wield things and hit monsters with them, but monsters will not get petrified, take silver damage, etc. ([http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/d11ced6ca647d34c/9ba52c38dc9c4390#9ba52c38dc9c4390 Report])
+|
+|-
+|{{anchor|}}  NM343-12||   || Declining to attack a peaceful monster still burns nutrition without using up the turn.
+|
+|-
+|{{anchor|}}  NM343-13||   || Declining to kick a peaceful monster still uses up a turn and wakes nearby monsters.
+|
+|-
+|{{anchor|}}  NM343-14||   || Turns do not alternate correctly if the player has 24 movement energy exactly, and a monster has at least 24 movement energy. ([[Bugs in NetHack 3.4.3/Reports#Turn_alternation_failure_with_24_movement_energy|Report]])
+|
+|-
+|{{anchor|}}  NM343-15||   || Having multi-turn armor stolen by a nymph or monkey while you're putting on a helm of brilliance or gauntlets of dexterity can leave your current and maximum stats permanently affected.
+|
+|-
+|{{anchor|}}  NM343-16||   || Lifesaving during slow [[engraving]] causes the engraving to appear on the ground before it should be completed, but (even if an [[Elbereth]]) not be effective at scaring monsters until it would have been completed. ([http://groups.google.com/group/rec.games.roguelike.nethack/msg/6cdc78c171a41545 ''rgrn post'']) Teleportitis while engraving has a similar effect: at the new location, you still work on the engraving on the old spot.
+|
+|-

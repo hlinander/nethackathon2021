@@ -1,0 +1,1000 @@
+!Window port!!Platform!!Support!!Notes
+|-
+|[[TTY]]||[[Linux]] and [[Mac]]||Yes||
+|-
+|TTY||[[Windows]]||Yes||
+|-
+|TTY||[[MS-DOS]]||Yes||
+|-
+|[[Curses]]||Linux and Mac||Yes||
+|-
+|Curses||Windows||No||
+|-
+|Curses||MS-DOS||Yes||If WANT_DOSVGA is specified at build time
+|-
+|Win32||Windows||Yes||
+|-
+|[[Qt]]||Windows, Linux and Mac||Yes
+|-
+|[[X11]]||Linux and Mac||Yes||No supplementary characters
+|}
+
+==How to configure==
+
+The file "symbols" contains several configurations for the map. In the supplied configuration, "Enhanced1" specifies Unicode characters.
+
+A character may be specified using this form:
+
+ S_vwall: U+2502
+
+The quoted form used for other symbol types is not supported.
+
+One may specify a symbol for a specific monster as follows:
+
+ G_female_giant_ant: U+E000
+
+One glyph symbol is defined for every glyph code. About half of these codes can never occur; the largest reason is that eight glyphs are allocated for [[swallow]] attacks for each monster, but only a few monsters can swallow.
+
+Color can be assigned to each glyph:
+
+ G_female_giant_ant: U+E000/200-100-50
+
+The numbers are intensity for red, green and blue, ranging from 0 to 255
+
+==Outstanding bugs==
+* Some configurations may not support supplemental characters or full color.
+* A large number of configured symbols may cause delays in starting the program.
+* Symbols for objects are accepted but not displayed. The default [[ASCII]] characters appear instead.
+* The --dumpglyphids is not supported on all platforms.}
+&&%s&& %s Axus {148783 2022-10-10T23:07:23Z {4001605 NetSysFire} created redirect #redirect [[Auton#Axus]]}
+&&%s&& %s M2 LORD {149348 2022-12-13T19:33:47Z {187 Darth l33t} refs header {{DISPLAYTITLE:M2_LORD}}
+In ''[[NetHack]]'', the <code>'''M2_LORD'''</code> monster flag (and the <code>is_lord()</code> macro that queries it) indicates that a [[monster]] is a "lord" to its kind. The following monsters are lords:
+* {{monsymlink|winged gargoyle}}
+* {{monsymlink|dwarf lord}}
+* {{monsymlink|kobold lord}}
+* {{monsymlink|ki-rin}}
+* {{monsymlink|Archon}}
+* {{monsymlink|gnome lord}}
+* {{monsymlink|ogre lord}}
+* {{monsymlink|vampire lord}}
+* {{monsymlink|vampire mage}} ([[deferred features|deferred]])
+* {{monsymlink|elf-lord}}
+* {{monsymlink|aligned priest}}
+* {{monsymlink|Juiblex}}
+* {{monsymlink|Yeenoghu}}
+
+==Description==
+Being a lord has the following effects:
+* A lord that can wield weapons and has no special rules for its species is [[monster starting inventory#weapons|more likely to receive a weapon]].{{refsrc|src/makemon.c|518|version=NetHack 3.6.6}}
+* When throwing [[projectile]]s, a lord gets a +1 [[multishot]] bonus.{{refsrc|src/mthrowu.c|175|version=NetHack 3.6.6}}
+* An {{monclass|A}} lord that receives a weapon or shield (i.e. an Archon) is guaranteed to receive a [[shield of reflection]], and its weapon will always be upgraded to [[Sunsword]] or [[Demonbane]] if the chosen artifact doesn't exist.{{refsrc|src/makemon.c|332|version=NetHack 3.6.6}}
+* [[Demon summoning]] by same-race sacrifice will summon a demon lord if possible, falling back to a major demon if both lords have already been generated.{{refsrc|src/pray.c|1415|version=NetHack 3.6.6}}
+{{nethack-366}}
+[[Category:Monster attributes]]
+
+==See also==
+* [[M2_PRINCE]]
+
+==References==}
+&&%s&& %s Priest of Moloch {148826 2022-10-17T23:00:58Z {375 Ion frigate} While we don't need articles for every "Priest of <God>", I think it's worth putting this one in, since they're guaranteed to appear every game - make it clear they're not a distinct monster #REDIRECT [[aligned priest]]}
+&&%s&& %s Giant Caverns {148833 2022-10-18T07:37:55Z {375 Ion frigate} We should perhaps make it consistent whether special-level article titles include "the", but for now we need this redirect #REDIRECT [[The Giant Caverns]]}
+&&%s&& %s M2 PRINCE {149350 2022-12-13T19:38:09Z {187 Darth l33t} /* Description */ line# {{DISPLAYTITLE:M2_PRINCE}}
+The <code>M2_PRINCE</code> monster flag (and the <code>is_prince()</code> macro that queries it) indicates that a monster is an "overlord" to its kind. The following monsters are princes:
+* {{monsymlink|queen bee}}
+* {{monsymlink|dwarf king}}
+* {{monsymlink|gnome king}}
+* {{monsymlink|ogre king}}
+* {{monsymlink|Vlad the Impaler}}
+* {{monsymlink|Elvenking}}
+* {{monsymlink|high priest}}
+* {{monsymlink|Wizard of Yendor}}
+* {{monsymlink|Croesus}}
+* {{monsymlink|Orcus}}
+* {{monsymlink|Geryon}}
+* {{monsymlink|Dispater}}
+* {{monsymlink|Baalzebub}}
+* {{monsymlink|Asmodeus}}
+* {{monsymlink|Demogorgon}}
+==Description==
+Being a prince has the following effects:
+* A prince that can wield weapons and has no special rules for its species is [[monster starting inventory#weapons|much more likely to receive a weapon]].{{refsrc|src/makemon.c|518|version=NetHack 3.6.6}}
+* When throwing [[projectile]]s, a prince gets a +2 [[multishot]] bonus.{{refsrc|src/mthrowu.c|173|version=NetHack 3.6.6}}
+* A prince's weapon will always be at least +1, and its armor will be at least +0.{{refsrc|src/makemon.c|1952|version=NetHack 3.6.6}}
+* [[Demon summoning]] by same-race sacrifice cannot summon a demon prince. Only [[demon lords and princes]] can summon demon princes with their melee attacks.
+
+==See also==
+* [[M2_LORD]]
+==References==
+[[Category:Monster attributes]]
+{{nethack-366}}}
+&&%s&& %s Strange feeling {148844 2022-10-18T20:58:49Z {4001605 NetSysFire} i feel like this is a redirect worth having #redirect [[You have a strange feeling for a moment then it passes]]}
+&&%s&& %s Category:SLASH'EM techniques {148902 2022-10-25T21:17:41Z {4001279 Umbire the Phantom} Umbire the Phantom moved page [[Category:SLASH'EM Techniques]] to [[Category:SLASH'EM techniques]]: lmao caps This category contains articles about [[technique]]s that occur in [[SLASH'EM]].
+[[Category:Techniques]]}
+&&%s&& %s Category:SLASH'EM Techniques {148903 2022-10-25T21:17:41Z {4001279 Umbire the Phantom} Umbire the Phantom moved page [[Category:SLASH'EM Techniques]] to [[Category:SLASH'EM techniques]]: lmao caps #REDIRECT [[:Category:SLASH'EM techniques]]}
+&&%s&& %s Coatl {148954 2022-10-29T07:47:15Z {375 Ion frigate} Plausible misspelling from people who are thinking of things like quetzcoatl #REDIRECT [[Couatl]]}
+&&%s&& %s Plant {149008 2022-11-10T17:04:44Z {4001605 NetSysFire} new redirect #redirect [[Plant (dNetHack)]]}
+&&%s&& %s Monster weapon preference {149566 2022-12-30T05:47:13Z {4000978 Aximili} category and link When selecting a [[weapon]] in their inventory to use (whether one they [[Monster starting inventory|started with]] or [[Pick up#Monsters|picked up]]), [[monster]]s follow a set of rules intended to help them inflict maximum damage.  Broadly speaking, based on the monster's distance to the player, it will choose the "best" weapon from one of three lists: a list for melee distance, a list for polearm range, and a list for all other ranges.
+
+Notably, monster weapon choice is unaffected by the [[BUC]] status or [[enchantment]] of the weapons they possess - only the base type matters.
+
+Below is an enumeration of the lists that monsters choose from, as well as details of how they decide what list to choose from.
+
+==Choosing a ranged weapon==
+
+In general, monsters that are not adjacent to the player throw the first of the following items that they find in their inventory:
+
+* [[dwarvish spear]], [[silver spear]], [[elven spear]], [[spear]], [[orcish spear]], [[javelin]], [[shuriken]], [[ya]], [[silver arrow]], [[elven arrow]], [[arrow]], [[orcish arrow]], [[crossbow bolt]], [[silver dagger]], [[elven dagger]], [[dagger]], [[orcish dagger]], [[knife]], [[flint]], [[rock]], [[loadstone]], [[luckstone]], [[gemstone]]<ref>Gemstones are not explicitly in the list of preferred items, but if the list has iterated to darts, and the monster has gems and a sling, it will choose to throw the gems.</ref>, [[dart]]
+
+Monsters will not attempt to throw certain types of ammunition without the appropriate launcher. If they have the appropriate launcher, they will wield it, and if not, they will keep looking for another type of weapon to throw. Specifically:
+
+* Monsters will not throw any kind of arrow unless they have a [[bow]].  If they have more than one type of bow, they choose in the following order: [[yumi]], [[elven bow]], bow, [[orcish bow]].
+* Monsters will not throw crossbow bolts without a [[crossbow]].
+* Monsters will not throw flint, rocks, loadstones, luckstones or gemstones without a [[sling]].  
+** Monsters that like gems will not throw them, even if they have a sling.
+** Monsters cannot throw cursed loadstones.<ref>This makes it very rare for monsters to fire loadstones, since they are always generated cursed on the ground and auto-curse upon leaving the player's inventory.  If you really want to see this happen, [[cancel]] a loadstone.</ref>
+
+Monsters will not automatically unwield their launcher once they run out of ammunition, although they may switch to another weapon once the player comes within range, as detailed below.  Additionally, monsters cannot throw a weapon if it is welded to their hand: monsters can throw cursed daggers if the player has kept their distance, but once the player comes within melee range, they will wield the dagger(s) and be unable to throw them.
+
+==Choosing a polearm==
+
+If a monster is in range to hit the player with a polearm, but is still out of melee range, they will use the polearm in preference to a ranged weapon. They pick polearms in the following order:
+
+* [[halberd]], [[bardiche]], [[spetum]], [[bill guisarme]], [[voulge]], [[ranseur]], [[guisarme]], [[glaive]], [[lucern hammer]], [[bec de corbin]], [[fauchard]], [[partisan]], [[lance]]
+
+Similar to launchers, monsters will continue wielding a polearm in melee range if they possess no suitable melee weapon.  Monsters are special-cased to not attempt to use a polearm if their current weapon is welded to their hand: this allows them to continue to fire throwable weapons such as daggers.
+
+==Choosing a melee weapon==
+
+If a monster is in melee range (or feels it will shortly be), it chooses the first of the following weapons that it possesses:
+
+* any [[artifact]] weapon, [[cockatrice corpse|cockatrice/chickatrice corpse]], [[tsurugi]], [[runesword]], [[dwarvish mattock]], [[two-handed sword]], [[battle axe]], [[katana]], [[unicorn horn]], [[crysknife]], [[trident]], [[long sword]], [[elven broadsword]], [[broadsword]], [[scimitar]], [[silver saber]], [[morning star]], [[elven short sword]], [[dwarvish short sword]], [[short sword]], [[orcish short sword]], [[mace]], [[axe]], [[dwarvish spear]], [[silver spear]], [[elven spear]], [[spear]], [[orcish spear]], [[flail]], [[bullwhip]], [[quarterstaff]], [[javelin]], [[aklys]], [[club]], [[pick axe]], [[rubber hose]], [[war hammer]], [[silver dagger]], [[elven dagger]], [[dagger]], [[orcish dagger]], [[athame]], [[scalpel]], [[knife]], [[worm tooth]]
+
+Monsters wielding weapons are subject to a few restrictions:
+
+* Monsters that are neither stoning-resistant nor wearing gloves cannot wield cockatrice/chickatrice corpses.
+* Monsters that are not [[strong]] cannot wield two-handed weapons, nor can monsters that are wearing a [[shield]].
+* [[Silver-hating]] monsters cannot wield [[silver]] weapons.
+
+Due to what may be a bug, monsters picking up an artifact weapon will always wield it, even if they were already wielding a "better" artifact.
+
+==Strategy==
+
+In general, the mechanics of monster weapon choice will not affect the player's actions very much.  However, there are a few things to keep in mind:
+
+* Be careful about leaving cockatrice corpses where monsters may find and wield them!  In particular, chaotic casters [[summon nasties|summoning nasties]] can create a corpse-leaving cockatrice and a glove-wearing captain in a single spell.  Also, be very cautious in areas like the [[Castle]] and [[Fort Ludios]] that contain many [[Yendorian Army]] members: even after the soldiers have been slain, humanoid monsters may still pick up and wear their gloves.
+* Occasionally, early monsters such as [[Mordor orc]]s and [[Woodland-elves]] may prove more dangerous with their bows than their melee weapons, especially if their arrows are [[poisoned]]. In that case, it may be advantageous to rush into melee range to make them switch weapons.
+* A bullwhip in the hands of a monster can be very dangerous, as it allows them to disarm you.  However, the bullwhip is fairly low on the priority list: that is why [[balrog]]s are never found wielding bullwhips, despite being guaranteed to start with one.  A particularly paranoid player might pick up any bullwhips they find, and drop them on a pile containing a "better" weapon.
+* While it is theoretically possible to reduce a weapon-wielding monster's damage output by saddling them with a bad weapon (e.g. a cursed bow or a burnt rotted -5 [[Sting]]), in practice this is not worth attempting.  The turns taken trying to set up such a situation are better spent simply killing the monster.
+* An observant but unspoiled player can learn what weapons do higher base damage by watching what weapons monsters choose: they are (roughly) ordered by base damage.
+
+==Sources==
+
+Most of this information comes from [[Source:NetHack_3.6.1/src/weapon.c|weapon.c]], specifically the functions <code>select_hwep</code> and <code>select_rwep</code>.  Some is also adapted (and updated) from Dylan O'Donnell's [https://www.steelypips.org/nethack/343/weap-343.html#early NetHack Weapons spoiler].
+
+[[Category:Monster Inventory]]}
+&&%s&& %s Projectiles {149082 2022-11-25T07:48:16Z {4000498 NDos} Redirect plural to singular #REDIRECT [[projectile]]}
+&&%s&& %s Hack'EM {150317 2023-03-24T12:54:04Z {4000401 Hackemslashem} /* Archaeologist */ Starts with only 1 spellbook. {{DISPLAYTITLE:Hack'EM}}
+{{tocright}}
+
+
+    O                                             ,  /\  .  <br>   8                                            //`-||-'\\ <br>,--8--,  _    _            _    ______ __  __  (| -=||=- |)<br>  |:|   | |  | |          | |  |  ____|  \/  |  \\,-||-.// <br>  |˙|   | |__| | __ _  ___| | _| |__  | \  / |   `  ||  '  <br>  |˙|   |  __  |/ _` |/ __| |/ /  __| | |\/| |      ||<br>  | |   | |  | | (_| | (__|   <| |____| |  | |      ||<br>  | |   |_|  |_|\__,_|\___|_|\_\______|_|  |_|      ||<br>  \ /                                               ()<br>   .
+      
+
+'''Hack'EM''' is a project started by [[User:Hackemslashem]] with the goal of becoming the next successor to [[SLASH'EM]]. 
+Simply put, Hack'EM is "Hack, Extended Mechanics."
+
+== About ==
+
+=== Welcome to Hack'EM! ===
+
+The first objective of this project was to bring [[SLASH'EM]] content to a modern NetHack platform:
+* Port over most of the content from SLASH'EM and attempt to take the "next steps" for it.
+* If something doesn't work, is buggy, or is easily abusable, attempt to fix it or remove it.
+* If something is bland or feels unfinished - attempt to flesh it out.
+* Add all the quality-of-life features that are available in the variant market.
+* As of current date - most of these objectives have been completed or are in the finishing stages.
+
+Hack'EM was based on [[EvilHack]] for a few reasons:
+* Evil is based on 3.6, and already contained many important updates and bug fixes.
+* Its inherently more difficult, but in ways that seem to work with SLASH'EM.
+* Many quality-of-life features already baked in.
+* EvilHack also had lots of small tweaks and gameplay changes that seemed to work with SLASH'EM content.
+* EvilHack has an amazing dedicated community, and without their help, Hack'EM wouldn't have been able to grow and mature!
+
+=== Changes from SLASH'EM ===
+
+Here is where Hack'EM diverges:
+
+* The [[Drow (starting race)|Drow]] has not been ported, but it will probably be inherited from EvilHack's future implementation.
+
+* The [[alignment quests]] are not mandatory anymore, as currently the artifact doors in Vlad's and the artifact keys that the quest nemeses possess are not implemented. This is mostly due to porting issues. The quest guardians are also new and each protect a power artifact in place of the alignment keys.
+
+* [[Techniques]] have been implemented with updates and bug fixes. New techniques are featured! See the [techniques section| https://nethackwiki.com/wiki/Hack%27EM#Techniques] for more details.
+
+These features have been removed or replaced:
+* Skipped races: [[Lycanthrope (starting race)|Lycanthrope]].
+* Skipped monsters: [[Gypsies]], Doctor Frankenstein, Frankenstein's Monster
+* Skipped items: 
+** [[wand of fireball]]
+** [[lab coat]]
+** heavy hammer (evil had heavy war hammer)
+** [[rocket launcher]], [[grenade launcher]], [[rocket]], [[stick of dynamite]]
+** Silver short sword/long sword/mace (object materials has these covered)
+** dark elven bow, dark elven arrow, dark elven dagger, dark elven short sword, dark elven mithril-coat
+** [[Giantkiller]] (Evil has [[Giantslayer]]), [[Nighthorn]], [[The Eye of the Beholder]], [[The Hand of Vecna]] (SLASH'EM version)
+** [[Alignment keys]]: Key of Law, The Key of Neutrality, The Key of Chaos
+* Skipped spellbooks:
+** [[spellbook of enchant armor]]
+** [[spellbook of enchant weapon]]
+** [[spellbook of resist poison]]
+** [[spellbook of resist sleep]]
+** [[spellbook of endure cold]]
+** [[spellbook of endure heat]]
+** [[spellbook of insulate]]
+** These all require implementing a IMMUNE property for full 100% temporary resistances, which doesn't really work with Evil's partial resistance system.
+* The [[Guild of Disgruntled Adventurers]] is removed and replaced by mini-guild special rooms
+* [[Frankenstein's Lab]] is removed
+* The [[Mall]] has been moved to the Town Branch
+* The [[Kobold level]] has been moved to the Town Branch
+* The variations on the vibrating square levels have NOT been imported - the EvilHack version remains.
+* None of the SLASH'EM Demon prince lairs have been imported.
+* Removed [[Monsters with hits creatures as a +x weapon (SLASH'EM)|"Hits as +x weapon"]] property from SLASH'EM monsters
+* Removed [[Monsters with need +x weapon to hit (SLASH'EM)|"Need +x weapon to be hit"]] property from SLASH'EM monsters
+* Removed the extra [[artifact blast]]ing (6d6 to 8d10) from SLASH'EM; this mechanic does not seem to add much to the game other than making early wishes less useful and killing unknowing players.
+* Removed [[wraith]] corpse nerf. In SLASH'EM there was a reduced probability of gaining levels with a mix of other effects.
+* Removed the [[https://nethackwiki.com/wiki/Polymorph#SLASH.27EM|temporary polymorph]] mechanic for objects. There is no "hazy" status for polymorphed objects. This mechanic was not imported for 2 reasons: it makes it possible to create overpowered weapons (ie: +127 weapons) and it is also not intuitive for new players since it contradicts the vanilla behavior of polymorphed items.
+* Removed SLASH'EM polymorph behavior for monsters; when killed shapeshifters could immediately poly into their polyform (or different form if a chameleon or similar). This mechanic was quite frustrating to deal with, especially concerning new threats like [[weretiger]]s or [[werepanther]]s. In SLASH'EM you could be forced to kill the same shapechanger many times before it would finally die in it's base form. The EvilHack behavior replaces this so that a shapechanger cannot poly again once it has been killed in it's polyform.
+
+=== Changes from EvilHack ===
+
+Another objective was to trim some of the [[EvilHack]] content. Some things did not fit, were too difficult, or left better as an Evil only feature.
+
+* #forge has been renamed to #craft for working with [[Forge (dungeon feature)|forges]]. The reason is to make #force and #craft auto-complete. #forge still has the same meta shortcut:  M('F')
+* Removed two-weaponing weight-based restrictions imposed in EvilHack.
+* Monsters can no longer use wands of wishing to get wishes - if they get a wish from a smoky potion they will still attempt to get something powerful.
+* The first level of Sokoban is guaranteed to have 2 scrolls of earth.
+* Removed the monster riding monster mechanic.
+* Monster spawn rates are simplified a bit from EvilHack:
+    Monster spawn rates increase to 4x normal once you've performed the invocation. After that, all denizens of the dungeon are aware of what has happened and nasties will spawn on each level's upstairs.
+* Baalzebub, Geryon, Dispater are back to being demon princes. They should be bribable again.
+* [[Graz'zt]] no longer has an item stealing attack, replaced with physical attack instead.
+* Reduced the chance Rodney gets an amulet of magic resistance to 1 in 13 times (changed from Evil where it was 50%).
+* The Riders only get 40 + d(10, 8) HP instead of 100 + d(10, 8).
+* Some of the dragon scales have had buffs or different secondary effects added. All scales grant passive effects now. See the section on Dragon Scales for details.
+* Removed The [[Magic 8-Ball]] (The Oracle gets a regular eight ball). Eight balls are still in the game but very rare, and they can be read like the Magic 8-Ball can.
+* Removed the "indestructible" drawbridge from the VotD; it can be destroyed like a regular drawbridge now.
+* Removed the [[Wand of Orcus]]. Orcus gets his standard wand of death now.
+* Cavemen get [[Keolewa]] as their second sacrifice gift now ([[Skullcrusher]] is first)
+* Zapping light around peaceful monsters could anger them. This mechanic has been removed except for when you break a wand of light.
+* Removed the [[Goblin Town]] branch and requirement to defeat [[Goblin King]], Minetown can be accessed normally.
+* Mines river/sewage generation only occurs on levels deeper than Minetown.
+* Unicorn Horns have been reverted back to a 2-handed d12 weapon.
+* Giants can wear mummy wrappings and any giant can wear [[large splint mail]].
+* Tortles can wear mummy wrappings.
+* Improved the chances of item randomly spawning with two properties to 1 in 3141. (In Evil the chances are 1 in 100000)
+* Spellcasting monsters have to see you in order to cast summon nasties.
+* Spellcasting monsters have had their spell range limited by their level (gnomish mages are level 3 and can only cast fire bolt in a radius of 2-3 tiles instead of 13). 
+* Changed timeout for monster spell of stone to flesh to timeout 2d7 instead of rn2(7).
+* Removed engulfing attack from gelatinous cube, water elemental, earth elemental, and fire elemental. The Splice elementals (magma, mud, ice, acid) still can engulf.
+* Removed cursed weapons reverse hitting (was in EvilHack and Splice)
+** Cursed weapons will miss 25% of the time now instead of 20% to compensate.
+* Magicbane could cause a Bag of Holding explosion, this mechanic has been removed. Magicbane is safe for any Bag of Holding.
+* Removed all passive attacks from baby dragons.
+* Revert EvilHack sacrifice gift changes: Instead of a mix of "regular" items and artifacts, players will receive only artifacts (unless you get a minion as a gift).
+* Removed accompanying artifact defenders when wishing for artifacts.
+* Revert the standard cursed wand backfire chance from 1-in-30 to 1-in-100.
+* Illithids used to get flying at level 12, now they start with flying.
+* Centaurs used to get jumping at level 5, now they start with jumping.
+
+=== More Content! ===
+
+Originally, hackemslashem intended this variant to be a modern port of SLASH'EM. However, once he reached close to the completion of that goal he found that there was quite a lot in other variants that he loved and just could not pass on including. When deciding on what to import, he mostly went by two criteria:
+1) Does it improve the player's experience (Quality of Life, Fun)?
+and 
+2) Does it complement the existing SLASH'EM content and/or EvilHack content?
+
+
+So far, content from many other forks has also been integrated:
+* [[SpliceHack]]: A majority of Splice has been imported since it seems to fit well with the SLASH'EM themes but also because development on this variant has stalled. The creator of SpliceHack (Kes) has given her blessing for us to assimilate all SpliceHack content into Hack'EM.
+* [[SlashTHEM]]: Similar to Splice, a lot of content was ported from this variant because development on it is mostly stalled.
+* [[slashem-up]]/[[slashem9]]: These are two forks of SLASH'EM that were developed in the past. Where possible I have integrated their updates.
+* [[UnNetHack]]: Many QoL features and mechanics have been imported.
+* [[xNetHack]]: Many mechanics and updates have been imported.
+* [[dNetHack]]: Fun gameplay tweaks and artifacts have been imported (ex: armor with special appearances has special bonuses) with plans to import much more.
+* [[Slash'EM Extended]]: A few interesting things have been cherry-picked from slex, like toilet amulet ID and allowing mummies to be summoned by Call Undead.
+
+If you have an idea for a feature that would port well, please suggest it!
+
+== Quality-of-Life Features ==
+
+'''Object lookup has been fleshed out:'''
+* Object lookup shows more information, including object properties and special effects from materials.
+* Artifacts can be looked up in the item database (currently only works if accessed through the inventory, requiring you to have possession of the artifact)
+* Weapons show bonus damage and effects resulting from materials.
+
+=== Auto-identification ===
+* All roles start out knowing these basic items:
+** potions of water
+** blank scrolls
+** scrolls of identify
+* Auto-ID dunce cap upon wearing (Un)
+* Auto-ID jumping boots (AceHack)
+* Auto-ID some potions when inhaling their vapors
+* Auto-ID scroll of scare monster on pickup if it turns to dust (Un)
+* Auto-ID scroll of teleportation when teleporting any distance after reading one
+* Auto-ID scrolls of remove curse when items' curses are removed (Un)
+* Auto-ID wand of teleportation on seeing the successful effect on a monster (Un)
+* Auto-ID wands with unambiguous effects and messages (Un)
+* Auto-ID wand of undead turning if engraving produces a message (Un)
+* Auto-ID wands of probing and secret door detection when engraved with (Un)
+* Auto-ID vanishing wands if the other 2 have been identified (Un)
+* Auto-ID wands of sleep or death if their counterpart has been identified (Un)
+* Auto-ID wands of healing or extra healing if their counterpart has been identified
+* Auto-ID rings dropped into a sink when message is shown (Un)
+* Auto-ID amulets dropped into toilets, if possible (slex)
+* Auto-ID for ring of regeneration (Un)
+* Auto-ID whistles on use (Un)
+* Auto-ID [[whetstone]]s when used with a water source.
+* Auto-ID magic flutes and harps on use (Un)
+* Auto-ID magic lamps and oil lamps when rubbing (Un)
+* Auto-ID loadstones upon discovering the inability to drop them (Un)
+* Auto-ID flintstones when rubbed on iron weapons (evil)
+* Auto-ID water walking boots when worn (xnh)
+* Auto-ID [[tinfoil hat]] when worn
+* Auto-ID BUC of products from BUC identified item generator (UnNetHackPlus)
+* Rustproof/erodeproof/fixed status is known by default for all items (DynaHack)
+* A blessed scroll of charging will (in addition to charging the item) also reveal the number of charges and the charge counter
+* After a while of using a wielded weapon, you will identify it and it's enchantment (evil)
+* Throne insight now recursively identifies all items in your possession and in your containers (fiq)
+
+=== Other QoL ===
+
+* Paranoid swim and paranoid trap
+* The player's magic cancellation (MC) is shown in the status bar (evil)
+* Realtime display option is now available (evil)
+* Show prayer stats in Attributes menu [^X screen] (from UnNetHack, originally from dNetHack)
+* Attempting to open "." acts as an alias for #loot
+* > < to auto-travel to stairs (from Unnethack)
+* Control+Direction now kicks in that direction
+* You can reread a spellbook to refresh your memory at any time
+* Blessed stethoscopes can identify eggs (on the floor)
+* When identified, scrolls of enchant armor ask what armor to enchant.
+* Remove "Auto-select every item" when putting into containers (Un)
+* Default shopkeeper sell prompt to N (xnh)
+* Regeneration only causes additional hunger when injured (Un)
+* 1-damage hits still train weapon/unarmed skills (from DynaHack)
+* Chargeable rings may get charged when hit with electricity (3.7)
+* Useless +0 rings are generate very rarely (xnh)
+* Monsters are prevented from picking up gold in shops (Un)
+* Monsters don't blame the player for falling down holes the player dug. Pit traps still count.
+* The Astral Plane is always lit (xnh)
+* The passtune range has been extended by 1 (xnh)
+* Switching between your main and alternative weapon does not take any turns (from dnh)
+* Monks eventually stop receiving the "You feel guilty" message for breaking vegetarian conduct (xnh)
+* Removed repeated coughing of player when poison resistance renders stinking clouds harmless.
+* Removed all random secret corridors (xnh)
+* Removed the Quest turn limit (Un)
+* Removed the mysterious force
+* Deliberate level teleporter activation ignores magic resistance (3.7)
+* Potions have been made more useful from a small collection of patches (see the Alchemy Mechanics section)
+* Extrinsic resistances protect items from elemental damage. For example, wearing a ring of fire resistance will protect your scrolls and potions from fire damage.
+* '''Magical Explosions:''' Players cannot put known wands of cancellation or magical bags into bags of holding anymore (dnh). This also applies when #tipping into your bag of holding, you will flick away explosive items if you have the item and the BoH identified.
+* If a player charges a depleted Bag of Tricks/Rats with contents - it will now explode and scatter the contents instead of deleting them.
+* All roles (except Caveman) get their special spell granted when they reach level 12 (SpliceHack)
+* Pets will not use rings of teleportation.
+* Slightly discourage pets with ranged attacks (ie: hell hound pups) from attacking strong peacefuls like watch captains or shopkeepers.
+* Projectile unidentification has been left out (prevents merging projectiles in 3.7)
+
+=== Wiz-Mode updates ===
+* #wizclear (^z), clears all monsters on level (splice)
+* Can wish for monsters with ^w (Un)
+
+=== Wishing shortcuts ===
+
+Note: Capitalization does not matter when using these.
+
+{|class="prettytable sortable"
+!Item
+!Shortcut
+|-
+|Amulet of ESP
+|AoESP
+|-
+|Amulet of Life Saving
+|AoLS
+|-
+|Bag of Holding
+|BoH
+|-
+|Cloak of Displacement
+|CoD
+|-
+|Cloak of Invisibility
+|CoL
+|-
+|Cloak of Magic Resistance
+|CoMR
+|-
+|Gauntlets of Dexterity
+|GoD
+|-
+|Gauntlets of Power
+|GoP
+|-
+|Helm of Brilliance
+|HoB
+|-
+|Helm of Opposite Alignment
+|HoOA
+|-
+|Helm of Telepathy
+|HoT
+|-
+|Levitation Boots
+|BoL
+|-
+|Magic Lamp
+|ML
+|-
+|Magic Marker
+|MM
+|-
+|Potion of Extra Healing
+|PoEH
+|-
+|Potion of Gain Level
+|PoGL
+|-
+|Potion of Monster Detection
+|PmD
+|-
+|Potion of Water
+|PoW
+|-
+|Ring of Conflict
+|RoC
+|-
+|Ring of Polymorph Control
+|RoPC
+|-
+|Ring of Teleport Control
+|RoTC
+|-
+|Scroll of Identify
+|SoI
+|-
+|Scroll of Remove Curse
+|SoRC
+|-
+|Scroll of Annihilation
+|SoA/SoG
+|-
+|Scroll of Annihilation
+|genocide
+|-
+|Scroll of Charging
+|SoC
+|-
+|Scroll of Enchant Armor
+|SoEA
+|-
+|Scroll of Enchant Weapon
+|SoEW
+|-
+|Shield of Reflection
+|SoR
+|-
+|Speed Boots
+|BoS
+|-
+|Unicorn Horn
+|UH
+|-
+|Wand of Create Monster
+|WoCM
+|-
+|Wand of Teleportation
+|WoT
+|-
+|Wand of Undead Turning
+|WoUT
+|-
+|Water Walking Boots
+|BoWW
+|-
+|Kiku-ichimonji
+|kiku
+|}
+
+
+== Mechanics Changes ==
+
+* If the player tries to hit a monster with a weapon they are restricted/unskilled in, or any non-weapon object, they'll never have better than a 75% chance of landing a hit (bare-handed is exempt).
+* The player is unable to regenerate hit points while in the Valley of the Dead – healing via other methods (potions, healing spells) is still possible.
+* Stoning – monsters being stoned is a slow-stoning process, just as it is for the player.
+* Merged scimitar and saber skills.
+* Add celibate conduct (SLASH'EM)
+* Galloping duration depends on riding skills (idea by Beolach, code by Pasi Kallinen)
+
+=== Mold/Fungus resurrection ===
+
+* Ported from from xnh, which ported from SLASH'EM.
+* Corpses have a chance to mold and grow a random F.
+* Petrifying monster corpses only grow green mold.
+* The resurrection rates have been tapered back a bit, so it's not as pervasive as in Slash'EM - but there are more F monsters that can spawn (including moldiers at deeper levels).
+* Moldy corpses can be used with different potions (see the [https://nethackwiki.com/wiki/Hack%27EM#Malcolm_Ryan.27s_Brewing_Patch| brewing patch details])
+
+=== Elbereth ===
+
+* You cannot use Elbereth until you've learned it in-game (via rumor, reading it, etc).
+* Conflict negates Elbereth.
+* Elves & hobbits start out knowing Elbereth
+* Orcs can never learn it. Player orcs can't learn Elbereth even if polyd.
+* When a lawful is crowned the Hand of Elbereth, they learn Elbereth if they have not already.
+
+=== Scare Monster ===
+
+* Several more creatures are immune to Elbereth and Scare Monster:
+** any unique monsters including the Wizard of Yendor, quest nemeses, the Riders.
+** all angelics (any A)
+** humans (any @), player monsters
+** Any monsters affected by conflict or in berserk mode are also immune.
+
+=== Extended/New Commands ===
+
+* #force can also be used on doors while wielding a weapon (SLASH'EM)
+* #loot can be used at your pet to both give and take away items from its inventory.
+* #naming glitches have been nerfed - Players can no longer #name items for identification clues. On attempting to name a regular object with a related artifact name (ie: naming a candle "The Candle of Eternal Flame"), your hand will always slip.
+* Monks can break boulders and statues using martial arts skill at skilled level or higher (shift + f and then a movement key).
+* Rogues can steal from monsters by using 'thievery', (must be bare-handed to use, press shift + f and then a movement key).
+* Convicts can #chat with rats to pacify or tame them.
+* Necromancers can #chat with zombies to pacify or tame them.
+* Changed #forge to #craft.
+* #technique accesses your role's available techniques.
+
+=== Resistances/Intrinsics ===
+
+==== Partial Resistances ====
+* Intrinsic resistances are no longer binary, but are percentages instead. The spread is 5% to 50% resistance gained from eating per corpse. Damage reduction from various attacks is determined by how much partial resistance the player has to it.
+* Reflection is not 100%; it can lessen the effects of an attack it reflects, but will never negate it.
+* The "shower of missiles" monster attack is not completely negated by magic resistance.
+* See Invisible is now just temporary from potions, eating stalkers, and fountains. (Evil) 
+* Restful sleep regenerates hp (we can get restful sleep property from the Amulet of Restful Sleep or a Ring of Sleeping)
+
+==== Afraid status: ====
+
+* The player can sometimes become too afraid to control their actions and will run away from the object of fear.
+* similar to the effects of being stunned or confused, but you will still be able to use items as normal.
+* Attempting to throw projectiles while afraid usually results in them slipping.
+* Caused by dragon roars, some monster attacks, and the wand of fear.
+
+==== "Stable" property ====
+* Protects you(or monsters) from clobber and hurtle attacks.
+
+
+==== Sonic Resistance property (from Splice) ====
+
+* Protects you(or monsters) from sonic attacks.
+* Since this property is only available from extrinsic sources, it will always also protect your items from sonic destruction.
+
+==== Psychic Resistance property ====
+* (from Splice and Evil)
+* Illithids start with psychic resistance.
+* Protects you from forgetting skills, spells, and other things from potions and scrolls of amnesia, as well as mind flayer and zombie attacks.
+* Protects you from an illithids psionic wave and tentacle attacks.
+* Protects from most fear attacks, including dragon roars.
+* Wearing items that give psychic resistance stop you from being afraid.
+
+==== Larva Carrier property ====
+
+* Some monsters can infect you with eggs!
+* If the larva are allowed to hatch, they emerge from your body dealing significant damage in the process. Plus you have to deal with the new monsters in front of you.
+
+You can cure this condition with a few different methods:
+* quaffing potions of sickness
+* eating a pill
+* invoking the Staff of Aesculapius
+* invoking the Healing Hands technique
+* receiving a disease attack from a monster
+* being zapped by a cure sickness spell
+
+=== Upgrading/Tinker ===
+
+* Upgrading mechanic via potions of gain level (from SLASH'EM)
+* Instead of crystal balls upgrading to magic markers, they upgrade to lenses (going to markers didn't make much sense, and it wasn't too useful since the marker would only have a handful of charges)
+* Removed a lot of the weapon upgrades, since now a lot of those are covered by forge recipes. A few still remain for quarterstaves and boomerangs.
+* Added many upgrade paths for special armors
+* The flintstone-to-healthstone exploit has been fixed; flintstones only upgrade one at a time.
+
+=== Conflict ===
+
+* When causing conflict, it now takes the player's charisma score into account. 
+* The formula is 'charisma - monster level + player level' 
+* if that value is greater than 19, clamps it to be 19. 
+* There's then a percentage chance (rnd(20)) against the value generated on whether conflict kicks in or not. 
+* So even with charisma and your xp level maxed out, there's still a 5% chance of conflict not working. 
+* Also, the monsters affected have to see you for conflict to work.
+
+=== Dexterity ===
+
+* Dexterity can directly affect the player's AC, for better or worse. See the chart below for details.
+** Being encumbered negates AC bonuses from dexterity.
+** Wearing any kind of heavy metallic body armor (not mithril) or other rigid material (bone, stone, wood) will also negate dexterity bonuses.
+
+{| class="wikitable"
+|-
+! Dexterity
+! AC change
+|-
+| <= 6
+| +3
+|-
+| 7-9
+| +1
+|-
+| 10-14
+| none
+|-
+| 15-16
+| -1
+|-
+| 17-18
+| -2
+|-
+| 19-20
+| -3
+|-
+| 21-23
+| -4
+|-
+| 24-25
+| -5
+|-
+|}
+
+=== Amnesia/Forgetting ===
+
+* Potions of amnesia can also inflict this effect. Potions of amnesia always have the "sparkling" appearance.
+* Can make you lose Elbereth knowledge if you had it.
+* Can make you forget forget about shambling horrors.
+* Can make you lose intrinsic telepathy.
+* Can make you lose "eaten knowledge", which doppelgangers use to poly into different forms.
+* Psychic Resistance protects from amnesia forgetting. Sources include rings of psychic resistance and being an illithid.
+
+=== Religion/Prayer/Alters ===
+
+* If an unaligned altar generates with a priest of Moloch, that priest will be hostile to all roles except infidels. 
+* This means the VoTD priest is always hostile and unable to give donations (unless, of course, you are an infidel.)
+* Sacrifice offerings can sometimes bless random objects (From SLASH'EM)
+
+=== Minions ===
+
+* SLASH'EM had a mechanic for getting aligned minions as gifts from your god when you sacrifice or pray with low health. I ported most of this mechanic over but added some more restrictions because in my opinion, minions were broken in SLASH'EM and too easy to obtain (Lawfuls could get Solars and Planetars!).
+* Here are the new limitations; minions are not granted when:
+** You are under level 5.
+** You have negative luck.
+** You have been crowned
+** You have completed the quest
+** You have been expelled from the quest
+** You have any pets on the current level (prevents overcrowding)
+
+* The player will also have to hit a 1 on this roll: 
+** 1 in 10 + (4 * number of gifts granted)
+
+* Minion pets cannot betray you. However, be aware they they do seem to lose tameness quickly if left alone on a level so do try to keep your minion with you if it's important to your survival.
+
+=== Dungeon growth patch ===
+
+* Another feature ported over from Slash'EM
+* This enables trees to slowly branch out in the dungeon and occasionally drop ripe fruits/leaves.
+* It also promotes the growth of herbs left on the ground or water.
+* Herbs that are left unattended will occasionally sprout more of the same kind around surrounding tiles.
+* These include: [[garlic]], [[wolfsbane]], [[catnip]], [[carrot]]s, [[mushroom]]s, [[pineapple]]s, [[kelp frond]]s
+    
+* Some of these are not technically herbs but they still do spread prolifically. 
+* Herbs in the water will move with water currents.
+* One strategy to try is leaving these items on the ground early in the game and then coming back after a few thousand turns to see what you have "farmed."
+* Level with trees have a chance of an additional axe (to aid with potential overgrowth)
+
+=== Alchemy ===
+
+* Alchemic blast damage is doubled, but acid resistance halves it (xnh)
+
+==== Malcolm Ryan's Brewing Patch ====
+
+* Enables the player to dip mold corpses in potions of fruit juice to start a fermentation timer that will eventually turn the potion into something else dependent on the mold.
+* Dipping green mold into fruit juice produces acid. 
+* Dipping red mold into fruit juice produces booze
+* Dipping brown mold into fruit juice produces sleeping 
+* lichens, shriekers, and non-F corpses do not ferment.
+* Dipping cursed molds into fruit juice produces sickness.
+
+Note: This also makes the shopkeeper charge you for shop-owned fruit juice that you begin fermenting. This allows you to buy the new, possibly more expensive potion at the cost of the fruit juice.
+
+==== Potions can now be poured down into sinks (xnh) ====
+
+* Allows for safer identification of potions by dumping them down the drain, leaving the hero to suffer only vapor effects.
+* This is done by selecting a potion to #dip while standing on top of a sink. If a potion of polymorph is poured down a sink, it polymorphs it.
+
+==== Gem Alchemy ====
+
+* Acid is no longer a useless endgame potion!
+* Gems dissolve in acid to produce new potions.
+* If the acid is cursed there is a guaranteed alchemical explosion, otherwise there is always a 1 in 30 chance of an explosion.
+* Use the object lookup (on a gem) to see what potion is created from a particular gem.
+* Note: Smoky potions cannot be produced with this method.
+
+As a couple of examples:
+* Opals turn into "cloudy" potions"
+* Jade turns into "dark green"
+
+==== Oily Corpses patch ====
+
+* There is a 20% chance upon starting to eat a corpse of certain slippery monsters (e.g. most slithy, non-snakelike monsters and most blobby monsters) that your fingers get slippery. Tins of them are not slippery unless caused by the tin preparation.
+
+== Techniques ==
+
+* Removed limit breaking from techniques. This was the primary attribute of techniques that was broken in SLASH'EM. One could simply lower their HP and gain unlimited access to some of the techs for some fairly unbalanced advantages.
+
+* [[Revivification]] technique) and the spirit bomb spell (which was the Monk's [[Spirit bomb]] technique)
+* Gnomish shopkeepers sometimes offer the expensive [[tinker]] service
+* In addition the [[weapon practice]] technique, some shopkeepers offer a firearms training service.
+* Double damage (from DeathVision or Staff of Rot) is handled properly for techs.
+
+=== Changes to existing techniques ===
+
+{|class="prettytable"
+!Technique
+!Notes
+!Origin
+|-
+
+|[[chained blitz]]
+|
+* Monk blitz tech
+* Chain blitz tech now shows how many blitz moves you have available.
+* Chain blitz now shows input feedback as you type the blitz commands.
+* Chain blitz shows helpful feedback for incorrect inputs.
+* Chain blitz only costs energy if a successful command sequence is input; invalid commands also don't use up the tech.
+* Chain blitz commands can also be terminated with ; or :
+* Updated blitz commands to be shorter and more intuitive; 
+* commands with 2 versions are always mirrored.
+* Instead of wasting a move when making a mistake in chain blitz, it just cancels the tech and let's the player try again.
+|SLASH'EM
+|-
+
+|[[air dash]]
+|
+* Monk blitz tech
+|SLASH'EM
+|-
+
+|[[elemental fist]]
+|
+* Monk blitz tech
+* Elemental fist can inflict sonic damage.
+* Added some rare bonus crits for elemental fist (inspired by SpliceHack skills)
+|SLASH'EM
+|-
+
+|[[chi strike]]
+|
+* Monk blitz tech
+|SLASH'EM
+|-
+
+|[[chi healing]]
+|
+* Monk blitz tech
+|SLASH'EM
+|-
+
+|[[pummel]]
+|
+* Monk blitz tech
+|SLASH'EM
+|-
+
+|[[ground slam]]
+|
+* Monk blitz tech
+|SLASH'EM
+|-
+
+|[[uppercut]]
+|
+* New blitz tech for monks.
+* It's a powerful alternate to ground slam which creates a pit.
+* Does double damage to targets with heads.
+* Influenced by stunning fist skill from Splice.
+|Hack'EM
+|-
+
+|[[spirit bomb]]
+|
+* Monk blitz tech
+* Buffed spirit bomb technique damage.
+|SLASH'EM
+|-
+
+|[[jedi jump]]
+|
+* Jedi
+|SlashTHEM
+|-
+
+|[[charge saber]]
+|
+* Jedi
+|SlashTHEM
+|-
+
+|[[telekinesis]]
+|
+* Jedi
+* Can disarm/trigger traps and remotely pickup objects.
+* Rearranged the telekinesis logic into a loop, so player doesn't waste MP on invalid targets.
+* Added new traps that can be disarmed.
+|SlashTHEM
+|-
+
+|[[force push]]
+|
+* Jedi
+* Jedi gain a force-push technique at level 14.
+* Using the force push tech while engulfed breaks you out.
+|Hack'EM
+|-
+
+|[[berserk]]
+|
+|SLASH'EM
+|-
+
+|[[kiii]]
+|
+* Kii technique timeout gets extended on successful hits.
+* Samurai
+|SLASH'EM
+|-
+
+|[[research]]
+|
+* Archaeologist
+|SLASH'EM
+|-
+
+|[[surgery]]
+|
+* Healer
+|SLASH'EM
+|-
+
+|[[reinforce memory]]
+|
+* General tech for spellcasters that lets them refresh their memory of a spell that is getting low in retention.
+|SLASH'EM
+|-
+
+|[[missile flurry]]
+|
+* Ranger
+|SLASH'EM
+|-
+
+|[[weapon practice]]
+|
+* General tech for some melee roles to let them train up skills without fighting.
+|SLASH'EM
+|-
+
+|[[eviscerate]]
+|
+* Tech for the deferred Lycanthrope/Lunatic
+|SLASH'EM
+|-
+
+|[[healing hands]]
+|
+* Knight and Priest tech.
+|SLASH'EM
+|-
+
+|[[calm steed]]
+|
+* Yeoman
+|SLASH'EM
+|-
+
+|[[turn undead]]
+|
+* As in SLASH'EM, #turn is now a technique.
+* Knights, priests, and undead slayers get this technique.
+|SLASH'EM
+|-
+
+|[[vanish]]
+|
+* Gnomes
+|SLASH'EM
+|-
+
+|[[cutthroat]]
+|
+* Rogue
+|SLASH'EM
+|-
+
+|[[blessing]]
+|
+* Priest
+|SLASH'EM
+|-
+
+|[[primal roar]]
+|
+* Caveman
+* Instead of the Primal Roar tech temporarily poly-upgrading pets, we full heal them and the duration has been extended.
+|SLASH'EM
+|-
+
+|[[liquid leap]]
+|
+* Doppelganger
+|SLASH'EM
+|-
+
+|[[critical strike]]
+|
+* Rogue
+|SLASH'EM
+|-
+
+|[[raise zombies]]
+|
+* Necromancer
+|SLASH'EM
+|-
+
+|[[revivification]]
+|
+* Removed revive tech from healers; necromancers get it at level 14.
+* Priests can also get this tech at level 30.
+|SLASH'EM
+|-
+
+|[[tinker]]
+|
+* Gnomes
+|SLASH'EM
+|-
+
+|[[rage eruption]]
+|
+|SLASH'EM
+|-
+
+|[[blink]]
+|
+* Hobbits
+|SLASH'EM
+|-
+
+|[[draw energy]]
+|
+* General spellcaster tech
+* Draw energy tech now uses grass, puddles, sewage, and dead trees in it's calculation.
+* Necromancers get a bonus for using draw energy near graves.
+|SLASH'EM
+|-
+
+|[[disarm]]
+|
+* Any role can get this tech by advancing a weapon skill to Skilled.
+|SLASH'EM
+|-
+
+|[[dazzle]]
+|
+* Vampirics
+|SLASH'EM

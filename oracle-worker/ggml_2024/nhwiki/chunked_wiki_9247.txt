@@ -1,0 +1,1000 @@
+''(Note: some entries have been removed from this list due to being incorporated into vanilla.)''
+* Drop the XL threshold for the Quest to 10. Players are expected to judge their readiness for themselves.
+* Remove the poison instadeath entirely. (This applies for monsters too; poisoned weapons can no longer kill them outright.)
+* Remove the [[mysterious force]].
+* The #terrain command works even when you are confused, stunned, or otherwise impaired.
+* Martial arts always adds its skill bonuses to damage, instead of getting nothing one-quarter of the time.
+* Spellbooks can be reread at any time. If you have more than 2000 turns left of remembering the spell, it will prompt you to make sure you really want to.
+* Chameleons no longer turn into out-of-difficulty forms. This actually goes for any shapechanger that happens to pick "random monster" as something to turn into, but a sandestin or a doppelganger that decides to turn into a nasty or player monster will still do that even if the nasty or player monster is out of difficulty.
+* If the game is misconfigured somehow and the game version doesn't match the version of the save you're trying to load, it asks if you want to delete the save rather than automatically deleting it.
+* Hitting Escape or an arrow key at the wish prompt, or failing to enter a valid wish 5 times, will not result in you receiving a random item.
+* Applying an unlocking device to a door will not give you a "[Un]lock it?" prompt, unless you are autounlocking the door.
+* Entering an invalid character to search for in a crystal ball will prompt you again rather than wasting its use.
+* Pets won't attack a gas spore if you're adjacent to it.
+* Loadstones are removed.
+* When you drop a container on an altar, you will see colored flashes corresponding to its contents one level deep. This beatitude-identifies all of the contained objects.
+* Relaxed object merging rules: objects will merge even when the erosionproofing, beatitude, or enchantment value on one of them is not known (as long as those values actually match).
+* Prior to version 5.1, amnesia used to be removed outright, but following 3.7's change to amnesia mechanics it was reintroduced. Amnesia works the same as it does in 3.7.0, making you forget spells and skills instead of objects and maps, and no longer happens when a mind flayer eats your brain. The scroll of amnesia is the only source, and it is less common than it is in vanilla.
+* You can't be expelled from the quest permanently and make the game unwinnable. You will be exiled, but the portal will remain open, and the quest leader will be angered if you return.
+* If your quest leader dies, you will be able to enter the quest. However, if the quest leader dies by any means, there are drawbacks: Luck always times out to -4, good luck always times out, bad luck never times out, and you will get no alignment bonus from killing the quest nemesis.
+* If you polymorph a container that has contents in it, they spill out onto the ground and are not affected by the polymorph.
+* Sokoban level flipping from 3.7 is removed on account of it being massively unpopular.
+* You can #loot an adjacent pet to exchange items with it without having to drop them on the floor as an intermediary. By selecting gear they have equipped, you can make them unequip it so you can then take it from them. In wizard mode, this works on any monster.
+* Magic portals are never hidden; they are readily visible like holes are.
+
+== Spells ==
+Spells can no longer fail. Instead, vanilla's percentage chance of failure is translated into an inflated Pw cost, using the following formula. It is intended to be simpler and rely less on a bunch of role-specific stats.
+# Compute a percentage as follows:
+## Start with your role's base spellcasting ability (see below table).
+## +5% per experience level.
+## +5% per point of Intelligence.
+## If you are wielding a [[wand]] that matches the spell, such as a wand of light while casting the spell of light, +30%. (It will have no effect on wand charges.)
+## &minus;25% per spell level.
+## &minus;50% for metallic [[body armor]].
+## &minus;30% for wearing a bulky (oc_large) [[shield]], or &minus;15% for non-bulky. Bulky shields are large, Uruk-hai, and dwarvish roundshield.
+## &minus;15% for wearing a metallic shield, independent of the above penalty.
+## &minus;20% for a metallic [[helm]] that isn't a [[helm of brilliance]].
+## &minus;35% for metallic [[gloves]].
+## &minus;10% for metallic [[boots]].
+## If you are wearing a robe, or wielding a quarterstaff or wand of nothing, halve the total penalty for worn armor. These halvings don't stack with each other.
+## If [[Skill|Expert]] in the spell and above 100%, set to 100%. If Skilled and above 80%, set to 80%. If Basic and above 60%, set to 60%. If Unskilled and above 40%, set to 40%. 
+## If below 0%, set to 0%.
+# Pw cost of the spell = (spell level × 5) / percentage. (If percentage is 0, the spell would require infinite Pw for you to cast and is uncastable.)
+
+{|class="wikitable"
+!Arc !! Bar !! Cav !! Hea !! Kni !! Mon !! Pri !! Ran !! Rog !! Sam !! Tou !! Val !! Wiz
+|-
+|30% ||  0% ||  5% || 40% || 15% || 35% || 40% || 10% || 15% || 10% || 20% || 25% || 50%
+|}
+
+Pw regeneration is also overhauled, using FIQHack's algorithm. You get the sum of the following sources of Pw per turn (fractions carry over for the next turn):
+* + {{sfrac|3 × XL|100}}
+* + {{sfrac|3 × Wis|100}}
+* + {{sfrac|33|100}} if you are a [[Wizard]]
+* + 1 if you have [[energy regeneration]]
+
+Some spells are removed:
+* Cure blindness, invisibility, and detect food no longer randomly generate. They can still be wished for or written.
+* Identify is removed outright. It cannot be wished for or written.
+
+Some spell levels are tweaked:
+* {{spell of|Dig}}: 5 → 3
+* {{spell of|Detect monsters}}: 1 → 3
+* {{spell of|Clairvoyance}}: 3 → 2
+* {{spell of|Charm monster}}: 3 → 6
+* {{spell of|Detect unseen}}: 3 → 2
+* {{spell of|Turn undead}}: 6 → 2
+* {{spell of|Jumping}}: 1 → 2
+* {{spell of|Invisibility}}: 4 → 1
+* {{spell of|Sleep}}: 1 → 2
+
+Other spell-related changes include:
+* Wielding a spellbook cuts the Pw cost of casting its spell in half, rounded up. This can only bring it as low as its base 5×level Pw cost, no lower.
+* Rebalance spellbook failure effects; notably a failure causes confusion instead of paralysis, and paralysis only happens as a side effect of level 5+ books. The steal gold effect is also replaced with the book biting you. A new level 1+ effect is the book dropping one level in BUC.
+* Spellbooks disintegrate if and only if they are already cursed
+* Blessed and cursed spellbooks act as +/− 10 Int, instead of guaranteeing success and failure.
+* Throw out the complicated spellbook delay formula; all spellbook delays are now 10×level.
+* Hungerless casting prevents you from being "too hungry to cast a spell".
+* If a cursed quarterstaff is welded to both of your hands, spellcasting is not blocked like it is for other welded two-handed weapons.
+* Stone to flesh on a stone object that doesn't otherwise turn into a monster will turn it into an amount of meatballs proportional to its weight.
+* The "geyser" monster spell can rust your items and will instakill you if you are an iron golem.
+* If you are Skilled or Expert in attack spells, you can choose to cast the non-advanced version of fireball and cone of cold, after committing to casting the spell. Doing this reduces the spell cost by 50% (but you can't cast the spell if you don't have the energy available to cast the advanced spell).
+* The summon nasties monster spell scales based on the summoner's level rather than the player's and is guaranteed to create at least 3 monsters.
+* One result of the above changes is that [[elven shield]]s - which still default to [[wood]] in xNetHack - and [[small shield]]s work identically in terms of spellcasting; unless the character can't take 10 extra weight units or 4 extra gold cost, the first is much better.
+
+== Object materials ==
+The [[object materials]] patch, which allows objects to exist as a different material from their object type's base material and which allows for all sorts of interesting ways to do things. Many types of objects can have a different material selected when they are generated. The list of eligible items is much larger than in the original patch, and the lists of possible materials for each type of object are more complex.
+
+Some important facts about various materials and their behavior:
+{|class="wikitable
+!Material !! Erodeability !! Effects
+|-
+|[[Glass]] ||  || Always shatters when thrown, and occasionally shatters when used in melee or as armor. However, it is possible to shatterproof glass weapons and armor via the normal methods of erodeproofing, such as confused scrolls of enchant weapon. Bladed glass weapons have a +3 damage bonus. Glass helms offer metal-like protection against falling objects, but may shatter if hit by a heavy object. Glass body armor may also shatter if hit by a heavy thrown object.
+|-
+|[[Silver]] || Corrode || Bonus damage to weres, vampires, shades, and demons.
+|-
+|[[Gold]] || || Blunt gold weapons have a +2 damage bonus. Leprechauns can steal any item made of gold from your inventory, not just gold coins.
+|-
+|[[Platinum]] || ||  Blunt platinum weapons have a +2 damage bonus.
+|-
+|[[Stone]] || || Blunt stone weapons have a +1 damage bonus.
+|-
+|[[Plastic]] || Burn || Plastic weapons have a &minus;2 damage penalty.
+|-
+|[[Paper]] || Burn, rot || Paper weapons have a &minus;2 damage penalty.
+|-
+|[[Wood]] || Burn, rot || Wooden bladed weapons have a &minus;1 damage penalty. Wooden helms offer metal-like protection against falling objects.
+|-
+|[[Mithril]] || || Mithril body armor always grants at least MC2.
+|-
+|[[Bone]] || Burn || Can hit shades, bypassing their usual immunity to physical attacks. Positively enchanted bone armor will intercept a level drain that hits you, instead draining a point of enchantment from the armor. Bone helms offer metal-like protection against falling objects.
+|-
+|[[Iron]] || Rust, corrode || Bonus damage to elves, nymphs, and lesser demons.
+|-
+|[[Metal]] || || Explicitly not iron; many items are changed to this so that elves can use them.
+|-
+|[[Copper]] || Corrode || Bonus damage to fungi and monsters with disease/decay attacks; copper armor can sometimes nullify falling Ill (stacking 20% chance with each piece of copper armor worn)
+|-
+|[[Cloth]] and [[leather]] || Burn, rot ||
+|}
+
+Artifacts always have one specific material. Usually this is just the base object's default material, with a few exceptions: Sunsword is gold; Grayswandir, Werebane, and Demonbane are silver; and the Platinum Yendorian Express card is platinum.
+
+Wishes are not allowed to specify the object material, except in wizard mode. Wished-for objects always have the base material (unless they're one of the artifacts listed above).
+
+Mithril-coats were a tricky issue, as they were material-specific and weren't left like that. They have been replaced with elven ring mails (2 AC, made of copper by default) and dwarvish ring mails (4 AC). When these are made out of mithril, they behave identically to mithril-coats. Elves' and dwarves' armor might not generate as mithril, but whenever a hobbit gets an elven ring mail, it is always mithril. Dwarf lords and kings that happened to get a dwarvish ring mail have an increased chance of it being mithril.
+
+Elven weapons now have a base material of copper, instead of wood (making Sting and Orcrist copper). 
+
+Certain golems (gold, paper, leather, iron, glass, wood) may drop items made of their respective material rather than their regular drops. This has some restrictions for balance; potions, scrolls and spellbooks will never be generated from glass and paper golems; however, wands are fair game.
+
+Certain items are renamed due to having a material-specific name. Mostly this just takes the form of removing the material from the name, but consult objects.c to be sure. One important case is that since regular bells can now be silver, a "silver bell" is ''not'' the Bell of Opening&mdash;that is now an "engraved silver bell" when unidentified.
+
+=== Numerical quantity changes ===
+The material of an object affects its weight, price, and AC (for armor only). 
+
+To compute the weight of an object, multiply its item type's weight by the density of its actual material and divide it by the density of its base material. Note that the densities may be inexact due to deliberate changes for gameplay balance. (In general, it's assumed that an object of a new material is made solidly of the new material). For example, a mithril chain mail, which has a base material of iron, will weigh {{frac|50|80}} = {{frac|5|8}} as much as a regular chain mail, whereas a gold chain mail will weigh 1.5 times as much.
+
+To compute the price of an object, do the same multiplication. A mithril chain mail costs {{frac|50|10}} = 5 times as much as a regular one. Note that most items made of their base material will weigh and cost the same as they did before object materials were added; in other words, the base prices and weights in the object's statblock weren't changed.
+
+To compute the AC bonus of an object, subtract the base material's AC from the actual material's AC, then add this to the regular AC bonus of the armor. This has a floor at 0, because a poor material can't make the armor worse than wearing no armor at all; if the armor is metal, its floor is 1 instead. The resulting value is then effectively the new "base" as far as erosion is concerned&mdash;for instance, an iron small shield will grant 2 points of AC instead of 1, but it will go down to 0 when it gets very rusty or thoroughly rusty, instead of bottoming out at 1.
+
+{|class="wikitable sortable"
+! Material !! Relative density || Price (zm/aum) || AC 
+|-
+| Liquid     || 10  ||   1 || 0
+|-
+| Wax        || 15  ||   1 || 1
+|-
+| Vegetable  || 10  ||   1 || 1
+|-
+| Flesh      || 10  ||   3 || 3
+|-
+| Paper      || 5   ||   2 || 1
+|-
+| Cloth      || 10  ||   3 || 2
+|-
+| Leather    || 15  ||   5 || 3
+|-
+| Wood       || 30  ||   8 || 4
+|-
+| Bone       || 25  ||  20 || 4
+|-
+| Dragonhide || 20  || 200 || 10
+|-
+| Iron       || 80  ||  10 || 5
+|-
+| Metal      || 70  ||  10 || 5
+|-
+| Copper     || 85  ||  10 || 4
+|-
+| Silver     || 90  ||  30 || 5
+|-
+| Gold       || 120 ||  60 || 3
+|-
+| Platinum   || 120 ||  80 || 4
+|-
+| Mithril    || 50  ||  50 || 6
+|-
+| Plastic    || 20  ||   3 || 3
+|-
+| Glass      || 60  ||  20 || 5
+|-
+| Gemstone   || 55  || 500 || 7
+|-
+| Mineral    || 70  ||  10 || 6
+|}
+
+=== New material hatred ===
+The silver-hating code has been generalized so that it can be applied to any group of monster types for any specific material. By default, this deals d6 damage to them on contact (d3 if it's the player handling an object) and cause messages like "The [monster] flinches at the touch of [material]!" and "The [material] broadsword hurts to touch!" Also by default, if the player hates a material, they are still capable of handling an object made of it (it's not literally untouchable). Due to a vanilla bug, the player is always capable of picking up an object made of a hated material with no bad effects. Monsters will not wear objects that are made of a material they hate.
+
+Elves (including elvish players), nymphs, and lesser demons hate cold iron (which is all iron in the game). Undead variants of monsters that hate iron such as elf zombies, however, do not hate iron. Iron hatred uses the defaults described above. If you are playing as an elf, any iron items in your starting inventory will be converted to copper.
+
+Fungi and monsters that use disease or decay attacks, as well as Pestilence, hate copper. This uses the defaults described above.
+
+Hatred of silver does ''not'' use the defaults described above; it works the exact same as it does in vanilla, dealing d20 damage and being un-handleable by a silver-hating player.
+
+To make things easier for elvish players in particular, some common-sense rules have been added so that the player doesn't directly touch items as often. If you wield something made of hated material while wearing gloves, or wear body armor made of hated material while wearing a shirt, this does not count as touching them and you will not take damage.
+
+Additionally, some items' base materials have been tweaked to make certain artifacts not hate elves.
+* Runeswords and therefore Stormbringer are now metal.
+* Athames and therefore Magicbane are now metal.
+* All amulets and therefore the Eye of the Aethiopica are now metal.
+* Most rings that were iron are now metal, except for two where the description makes it obvious that it is iron (iron ring, steel ring).
+
+== Quest overhauls ==
+A longer-term xNetHack project is to overhaul many of the quests to make them more interesting and flavorful.
+
+Currently, the only fully overhauled quest is the [[Archeologist]]'s:
+* The story is changed: the new artifact, Itlachiayaque, has been located, but a rival team of better funded, more ruthless archeologists is trying to get there first.
+* A human named Schliemann is the leader of the rival archeologists, replacing the Minion of Huhetotl as the quest nemesis. Uniquely among nemeses for the moment, he does not covetous-warp.
+* The home, locate, goal, and filler levels are all replaced completely, with the lower filler levels using an all-new level generator implemented completely in Lua.
+* Monsters in the quest generally lean more towards mummies, and especially human mummies, than snakes. Note also that mummies now inflict withering.
+* Much of the quest loot consists of items made of gold and other precious-metal variants of items. 
+
+== New levels, updated levels, and level generation ==
+=== Maze rooms ===
+Filler levels (non-special and non-vibrating-square) that have a full-level maze now generate rooms into the maze. Some of these may have walls removed, creating large open areas; others may have doors that align with the regular maze passages. In Gehennom, these rooms are now Gehennom-exclusive special rooms:
+* Demon dens containing demons and piles of loot
+* Submerged rooms consisting entirely of water, with sea monsters. Somewhere underwater, there is also a chest containing 1000&ndash;2000 gold, 0&ndash;9 gems, and a 10% chance of a magic lamp.
+* Lava rooms containing pools of lava and salamanders.
+* Slaughterhouses containing animal corpses, leashes, knives, and a couple of live mariliths. Entering or walking around inside this room can trigger nausea, with a higher chance if your Constitution is lower.
+* Seminaries of Moloch, a regular temple room with altar to Moloch and peaceful attendant priest of Moloch but also with some hostile priests of Moloch.
+
+For mazes between Medusa and the Castle, rooms still generate, but any special rooms will be Dungeons of Doom special rooms (swamps, treasure zoos, leprechaun halls, and so on).
+
+=== Themed rooms ===
+There are significant changes to themed rooms on top of what currently exists in vanilla 3.7.0-dev. The level parser has been enhanced to allow themed rooms and their subrooms to be filled or designated as special rooms, and to apply minimum and maximum level difficulty cutoffs to control when a theme room can generate. A few vanilla rooms are tweaked, and many new rooms have been added (some based on UnNetHack and EvilHack random vaults).
+
+'''Adjusted vanilla rooms:'''
+* "Spider room" will only appear on levels 10+.
+* "Boulder room" will only appear on levels 4+.
+* "Fake Delphi" has one fountain in the center and a couple centaur statues in the outer room.
+
+'''New themed rooms:'''
+* A cluster of four square interconnected 3×3 rooms.
+* A barbell-shaped room connecting two 3×3 rooms with a doored, walled corridor (vertical and horizontal).
+* A room containing a bunch of graffiti.
+* A room filled with small 1×1 pillars. Sometimes, these pillars will be trees instead, and then the room will have a grass floor, contain wood nymphs, and may have statues and a wooden figurine of a wood nymph, only if wood nymphs are an appropriate difficulty for the level.
+* A boomerang-shaped room (left and right rotations).
+* A 1-wide rectangular corridor (surrounding a chunk of normal stone).
+* A room featuring an {{mcsl|O}}, {{mcsl|M}}, {{mcsl|Z}}, or {{mcsl|T}} monster in a cage of iron bars.  It can also be a {{mcsl|D}} below level 12. From EvilHack.
+* A room split horizontally or vertically into two subrooms with either walls or iron bars. From EvilHack.
+* A room containing a 2×2 subroom in any corner. From EvilHack.
+* A vault containing 1&ndash;2 chests with random contents, not connected to the rest of the dungeon like a gold vault.
+* A room containing an X of water connecting its corners.
+* A miniature 7×7 maze.
+* A horizontal corridor with a bunch of closets along the top and bottom, some of them containing monsters or objects.
+* A wide room containing between one and three 2×2 beehives.
+* A large honeycomb-shaped room with randomly connected cells, which is a beehive.
+* A room where each square becomes cloud, ice, grass, lava, pool, or tree with a 30% chance. From UnNetHack.
+* A room containing a ring of floor tiles surrounding a "swimming pool" filled with water, which contains a few random sea monsters and possibly a chest with gold and gems. (Unlike the Gehennom submerged special room, there is no magic lamp.)
+* A long, narrow (height only 1 or 2) room. From UnNetHack.
+* A room populated with several random {{mcsl|F}}, {{mcsl|b}}, {{mcsl|j}}, {{mcsl|P}}, and [[gas spore]]s. From UnNetHack.
+* Ozymandias' Tomb, a 7×7 room with a throne, some traps, a couple statue traps and an engraving. Only appears deep in the dungeon. From UnNetHack.
+* A room filled mostly or entirely with gas spores.
+* A homage room to the /dev/null Pool challenge, containing six "pockets" and nine numbered boulders.
+* A room containing two 3x3 shops, one weapon and one armor, with an aisle around them. ''Has also been added to vanilla 3.7.0-dev.''
+* A four-way circle-and-cross room with a possible tree or fountain in the middle.
+* A room subdivided into four square 3x3 rooms directly adjoining each other.
+* A prison cell made of iron bars in the corner of a room, possibly containing a prisoner and rat.
+* A large room containing obstacle terrain (e.g. trees, pools, lava) in a vertically symmetric shape.
+* A room containing a small area with a couple chests and rats, with no doors connecting it.
+* An anti swimming pool, consisting of a ring of water around the edges and a rectangle of solid ground in the middle.
+* A dragon hall with an enormous pile of gold, gems and other loot, with dragon eggs and baby and adult dragons of random colors atop the pile.
+* A water themed room containing pools, fountains, possibly a sink, and water nymphs.
+* A meadow consisting of grass with a couple trees.
+* A garden consisting of grass, more trees, fountains, and random nymphs.
+* A room consisting of three connected rhombi.
+* A spiral-shaped room with a random feature or item in the center.
+* A kitchen containing lots of necessities for cooking food.
+* An abandoned shop containing mimics and a few items.
+* An anthole which procedurally generates in such a way as to have a random irregular configuration each time.
+
+=== Entirely new special levels ===
+* Mines' End variant: jonadab's Gnomish Sewer (a dark twisty water level with many rings), with some updates to make it more playable
+* Two Oracle variants. In both of them, the Oracle is in a ring of pools rather than a subroom. One variant only has 3 fountains but does have trees.
+* Monk home level: Replaced entirely. It is now a proper monastery under siege, with a bit more elemental diversity.
+* Monk upper filler level: Replaced entirely. It is now a path through grassy river-crossed foothills.
+* Monk locate level: Replaced entirely. It is now a switchbacked hike across a mountain leading to the entrance to Kaen's underground fortress.
+* Ranger home level: Replaced entirely. It is now essentially Khor's design, with a couple small differences.
+* Barbarian upper filler levels: Still a big open field of mostly nothing, but now contains large random outcrops of rock.
+* Barbarian lower filler levels: Mostly the same as the upper filler levels, but dark.
+* Barbarian goal level: Replaced completely; now features more of a straight up fight with a big horde of humanoids suitable to a barbarian. Thoth Amon resides in the center of a barricaded village; note that there is no longer an altar here.
+* Frontier Town: Not an "entirely new" level, but a reintroduction of the pre-ransacking Orcish Town as an eighth Minetown variant.
+* Big Room variant: jonadab's "Tea Party", containing a number of interestingly shaped obstacles as well as the usual monsters and objects.
+* Vlad's Cavern: a new fourth level at the bottom of the Vlad's Tower branch, which is entered when you take the stairs up from Gehennom. It is mostly composed of air terrain representing an abyss that will severely harm or kill you if you fall into it (see "Air terrain" below) with a few islands of rock and a number of roving vampires.
+
+=== Special level changes ===
+* Add Izchak back to Orcish Town, alive in a barricaded shop, and scatter around the gear that was carried by the dead denizens, as well as the items from the other three destroyed shops.
+* Several doors in the Castle and Fort Ludios are changed to iron doors.
+* Each Castle barracks will individually either open into the throne room like in vanilla, or into the courtyard. The doors no longer generate locked.
+* The Astral Plane is fully lit instead of mostly dark.
+* The random V and L on Astral are replaced with random A (watch out for Archons!)
+* "Outdoors" levels will never generate falling rock traps.
+* Fort Ludios's portal generates in the first vault that is generated below level 10.
+* The titan on one of the Medusa levels is replaced with two golden nagas.
+* Sokoban and the Castle no longer have Elbereth engravings under the prize. (They still have scrolls of scare monster.)
+* The Rogue tribute level is removed.
+* The Big Room, if it generates, appears on levels 13-15 instead of 10-12.
+* The items in Vlad's Tower are no longer guaranteed, except the candles which there are still guaranteed to be at least 8 of.
+* The Vibrating Square level is no longer entirely a maze. It contains three large rooms in the top two thirds, a random one of which has the Vibrating Square in the center, and two small rooms near the bottom, a random one of which contains the upstairs. The rest of the level is a maze.
+
+=== Other ===
+* Non-spiked pits occasionally generate in graveyards, and they are flavored as open graves.
+* Treasure zoos generate only animal monsters.
+* Upper Mines filler levels are always lit; Lower Mines filler levels are always dark.
+* Doors are much less likely to be secret doors on early levels, and will never be secret doors on the first 3 levels.
+* Standard room-and-corridor levels generate more items (a {{frac|2|5}} recursive chance per room rather than a {{frac|3}} chance).
+* Secret passages will never generate on the first four dungeon levels, and have an increasing but much smaller than vanilla chance of generating after that.
+* Certain levels, primarily Quest ones (and not the Planes), are flagged as "outdoors". This has a few effects: scrolls of earth won't work, and traps that rely on a ceiling existing (rust and falling rock traps) won't generate. Door traps aren't affected. Also, stuff thrown upwards won't "hit the ceiling".
+* Add grass terrain, which appears as a green comma ({{green|,}}). Grass currently does not do anything special besides provide cover for concealing monsters. If fire explodes or is zapped over grass, it will burn and revert to regular floor.
+* Trees will sometimes generate in non-special Dungeons of Doom rooms.
+* The first room of the dungeon always contains graffiti containing one random true rumor.
+* When a cockatrice generates during level creation, and it is not inside a special room, a few statues may generate near it.
+* Tool shops stock touchstones with a 2% frequency, and potions of oil with a 3% frequency.
+* Secret corridor squares no longer generate as part of room-and-corridor levels (except for the occasional closet).
+* Rolling boulder traps outside the Quest have a 5% chance of containing the remains of a dead archeologist under the boulder. There will always be a fedora and sometimes a bullwhip, each of which is at least +2.
+
+== Monsters ==
+For details of monster letter rearrangement and recoloration, see {{sa|Monster recoloration and letter rearrangement|sectionsign=true}} below.
+
+=== New monsters ===
+Black mold ({{black|F}}): is sessile with a passive attack that causes deathly illness. Eating it also causes deathly illness. 
+Phoenix ({{orange|B}}): Difficulty 20, may be peaceful to lawful players, attacks with bites and fire claws, and when it is killed it explodes in a ball of fire producing a phoenix egg that will soon hatch again into a new phoenix.
+
+=== Changes to existing monsters ===
+* Bribing demon lords demand 50d500 gold, regardless of what the hero is carrying, and may be successfully shortchanged depending on the hero's Charisma.
+* More monsters generate when a level is created, and the normal generation rate is slowed down.
+* Green slimes have an engulfing attack that starts sliming.
+* Orc-captains are considered a lord to their kind, and their speed is increased from 5 to 9.
+* Hitting a gremlin with light will anger it.
+* Spiders may rarely spin a web upon moving. This feature has been ported to vanilla, and works differently from the original xNetHack implementation, but the vanilla behavior has been backported to xNetHack.
+* Charmers and seducers (nymphs and foocubi) introduce themselves before charming/seducing you. Nymphs have classical Greek-style names; demons have demonic names.
+* When metallivores eat metal from the ground, there is a {{frac|6|7}} chance that the metal is placed into their inventory rather than destroyed outright.
+* Monsters without hands cannot rub things. This primarily affects polyselfs.
+* Rebrand the {{white|U}} monster class as "aberrations". (Umber hulks are in fact aberrations and remain in this class.)
+* [[Minesflayer]]s can no longer generate, because flayers are no longer on the {{white|h}} glyph.
+* Elves can be genocided as a class by non-elf players without killing yourself, because elves are no longer on the {{white|@}} glyph.
+* Monsters that could already hide under objects ("concealing monsters") can now also hide under grass, thrones, sinks, altars, graves, and ladders without needing an object for cover.
+* Concealing monsters move at normal speed through spaces that they can remain concealed in, though they still usually balk at leaving their cover.
+* If the player moves to a different level and happens to arrive on a space that is already occupied by a monster, the monster will always be displaced.
+* All magical create monster sources (spell, wand, scroll, bag of tricks) suppress creating monster groups, for monsters that generate in groups. That is, a cursed scroll of create monster will still create a lot of assorted monsters, but if the game randomly picks "hill orc" as a monster to create, it won't also create a group of hill orcs.
+* Bribable demon lords will announce their displeasure to you when you approach them with no money, rather than attacking silently.
+* Being incorporeal, ghosts are now vulnerable only to the things that hit shades (attack spells, silver, bone, blessed, certain artifacts). Unlike shades, they do not take silver damage.
+* Ghosts additionally have significantly different behavior: their 1-damage touch attack is removed. Instead, hostile ones will turn invisible every so often, and try to follow you and appear out of nowhere next to you. If they succeed in doing this, you get paralyzed for three turns (like other ghost scares, free action doesn't block this). {{frac|3}} of ghosts will generate invisible.
+* Ghosts' stats are changed up: they now have a base level of 4 in order to reduce their tanky hit dice, their speed is increased from 3 to 5, their AC is increased from &minus;5 to 5, and their magic resistance is increased from 50 to 80.
+* Pets will lose a point of tameness after being off the player's level for 50&ndash;100 turns instead of exactly 75.
+* The maximum monster level that pets will attack based on their current health is changed:
+** 100%: up to level + 2 (pets could not attack this high before)
+** 80%+: up to level + 1
+** 60%+: up to same level
+** 40%+: up to level &minus; 1
+** 25%+: up to level &minus; 2
+** below 25%: will not attack anything (same as before)
+* Gnomish wizards, kobold shamans, and orc shamans are now telepathic, and their corpses may occasionally convey telepathy.
+* Eating the corpse of any casting monster uses the same logic as newt corpses in that it may recover a little bit of Pw and increase Pw max by one.
+* Hobbits may generate carrying various items of produce.
+* All orc-class monsters are naturally poison resistant.
+* Dragons roar of their own accord every so often, waking up monsters.
+* Magic-liking monsters (e.g. spellcasters) will pick up magical tools.
+* Monsters can use magic flutes.
+* Vampires can be instakilled by staking them through the heart. This is done by getting a natural 20 on a hit with a wooden piercing weapon.
+* All gaze attacks are completely negated by hallucination.
+* 20% of nurses are generated with a scalpel.
+* Monster group size is now capped based on low depth rather than low experience level.
+* Cockatrices' hissing now begins stoning {{frac|5}} of the time, but if you are deaf, the attack is negated.
+* Maces given to aligned priests are never cursed.
+* Yeenoghu's magic missile attack does 6d6 damage.
+* Demon princes gate in twice as many demons as lesser demons do. Demon lords don't gate in as many, but still more than a regular demon will.
+* Goblins generate in small groups.
+* The Wizard of Yendor gains a 2d6 weapon attack (with which he will use artifact weapons he steals from you).
+* Water elementals have a passive rust attack.
+* Mumakil now have a base level of 10 and a difficulty of 15.
+* Pets can eat enough food to get satiated, meaning they will no longer be interested in eating food off the ground. They will still eat treats thrown to them while satiated.
+* Centaurs try to keep their distance from you, avoiding melee combat.
+* Monsters will wear helms of telepathy and amulets of ESP, becoming telepathic.
+* Monsters that are the remnant of a dead player (ghosts, zombies, etc) cannot be renamed. Also, ghosts can never be renamed even if they did not come from a bones file.
+* All nymphs are herbivorous (and thus not an inediate polyform).
+* Salamanders, all Kops, leprechauns, and all corpse-leaving i-class monsters (imps, tengu, quasits, homunculi) are now carnivorous. This mainly means that they are capable of eating meat when tamed and prefer it over veggy food, and they are not an inediate polyform.
+* Watch captains generate with a key.
+* Monsters will prefer wearing an amulet of life saving or reflection over ESP or guarding. They do not wear any other amulets.
+* Zombies and trolls do not rise from the dead if they have been cancelled or beheaded.
+* Killing a quest guardian decreases your Luck by 4 and increments your god's anger by 1, in addition to its existing alignment penalty.
+* Killing your quest leader sets your Luck to -10 and increments your god's anger by 7, in addition to its existing alignment penalty.
+* If you are generating conflict, monsters ignore any Elbereth or scare monster scroll you are on.
+* Nazgul cannot be genocided.
+* Nazgul can see invisible innately.
+* Nazgul can shriek, which awakens and may stun the player and various nearby monsters within a radius of 10. They will shriek less often if the player is not in line-of-sight. The shriek always affects elves, and never affects orcs, undead, and animals. Higher Charisma gives you a slightly better chance of resisting the stunning effect.
+* All monsters in the A class are immune to death magic.
+* Couatls and ki-rin are shock, sleep, and poison resistant; ki-rin are additionally cold resistant.
+* Werewolves and all mindless monsters are sleep resistant.
+* Tame vampires will not shapeshift out of their vampire form, allowing you to give them equipment they won't randomly drop.
+* Monsters can generate with a potion of hallucination as an offensive item and can throw it at the player. This steals a little probability from them generating with a sleeping potion.
+* Monsters can displace peacefuls out of their way just like the player, unless the peaceful being displaced is larger than they are.
+* Monsters no longer start equipping gear instantly upon doing other actions; they will take a turn to do it. However, they will no longer attempt to equip gear as long as they think the player is nearby.
+* Monkeys get a short one-time burst of speed after stealing an item.
+* Lieutenants count as lords, which prevents them from generating with bad gear and increases their multishot by 1.
+* Captains count as princes, which improves their starting gear and increases their multishot by 2.
+* The chance that a falling piercer will miss its target is (Dex)% for the player, and (monster speed)% for monsters.
+* Monsters fighting the player in melee will use ranged attacks if they have no melee weapon available. For instance, if they have a bow and arrows, they will fire the arrows at you point-blank rather than trying to bash you with the bow.
+* Quasits are buffed in several ways: speed raised from 15 to 18, their poisonous bite can drain 1d4 points of Dexterity instead of 1d2, generate in small groups, 25% of them generate invisible, and they can see invisible. Their monster difficulty is increased from 7 to 9.
+* Piranha have a second 2d6 bite attack, and their speed is raised from 12 to 18.
+* Hobbits that generate with a sling will also get a stack of 4 + 1d6 flint stones or rocks to use with it.
+* All H monsters can be instakilled with a shot from a sling, on a critical hit and if you are Skilled in sling.
+* Yellow lights, fire elementals, and gold dragons emit radius 2 light, not radius 1.
+* Mimics will imitate appropriate objects or furniture when inside a wider variety of special rooms, such as leprechaun halls, beehives and barracks.
+* Mordor orcs and Uruk-hai may generate with orcish spears as their weapon.
+* Any monster that generates with one spear can generate with a stack of them.
+* Pit fiends now have an attack that creates a pit underneath their target, and they will use their hug attack to hurl the target down into the pit. Occasionally, a pit that existed before the attack can be enlarged into a hole. If the target is levitating or flying, it will not get stuck in the pit and won't take damage from the pit itself, but will still take damage from being hurled in.
+* When you (or another creature) polymorph into a snaky form that is not Gigantic, you will slither out of your body armor instead of breaking it.
+* Spheres now explode with real explosions that hit the 8 squares around them and items on the floor. Note that this makes them capable of destroying items. However, if the player is polymorphed into a sphere and explodes, their carried gear will be safe from the explosion.
+* Spheres' difficulties are raised from 8: flaming and freezing spheres are difficulty 9 and shocking spheres difficulty 10.
+* When you dig out of an engulfer's stomach, its HP is halved rather than set to 1. If the engulfer is additionally amorphous, its HP is only reduced by 25%.
+* Anaraxis the Black, the Wizard nemesis, wears a cloak of magic resistance.
+* When you kill the Wizard or perform the Invocation, the upper limit of difficulty for monster generation is removed.
+* The chance of a good result from a foocubus is changed to <math>\frac{Int + Cha}{25 + (5 * \text{ seducer lvl}) + (20 \text{ if in Gehennom})}</math>. Note that there is no longer a cap on the combined total of Intelligence and Charisma.
+* Wood nymphs' speed is decreased to 10, slower than a normal-speed player. Their base level remains 3 and their difficulty remains 5.
+* Water nymphs' base level is increased to 4 (giving them a bit more HP) and their difficulty is increased to 6. Their speed remains 12.
+* Mountain nymphs' speed is increased to 15; their base level is increased to 5; and their difficulty is increased to 7.
+* Paper and straw golems, similar to wood golems, will instantly rot and die when hit with a brown pudding's decay attack.
+* 5% of humanoid, non-lord A monsters (Angels and Aleaxes) generate with a harp. 20% of the time this is a magic harp; the rest of the time it is regular.
+* 2.5% of dwarves inside the Mines and 12.5% of dwarves outside the Mines generate with d3 potions of booze.
+* Skeletons occasionally drop bone skeleton keys.
+* Covetous monsters will attempt to equip an item they covet if it comes into their possession and it is equippable. (This applies only to quest artifacts in practice.)
+* Monsters can throw potions of oil as an offensive item. If the monster is confused, it may forget to light the potion beforehand; getting hit with unlit oil gives you slippery fingers.
+* Mummies are now able to inflict a '''withering''' status effect. This has the following effects:
+** Every turn, a withering creature loses 1 or 2 hit points (0 or 1 if it is a creature like a troll that regenerates), until the withering times out.
+** Withering creatures do not regenerate HP like normal, though items such as healing potions work the same to restore HP.
+** Creatures that die to withering attacks do not leave a corpse.
+** When the player is withering, a "Wither" status is shown on the status line. Status hilites can be used to configure this status like normal. It's also covered under 'major-troubles' in status hilites.
+** Prayer can fix withering, but unicorn horns cannot. Life-saving also will prevent death from HP loss due to withering, but does not cure the condition itself.
+** The various mummies inflict increasingly higher durations of withering as they increase in difficulty.
+** You can #rub silver items on yourself while withering to cure part or all of the affliction. The amount of withering cured depends on the weight of the silver items. The items will corrode, then get destroyed by doing this (artifacts resist destruction 50% of the time). The Bell of Opening cannot corrode or get destroyed, so it instead loses charges.
+** Invoking the Staff of Aesculapius also cures withering.
+* The Oracle has a 66% chance of generating with a potion of hallucination.
+* Croesus can move other monsters out of his way similar to how the Riders can.
+* Elves (including the player) can always squeeze diagonally between two trees, no matter how much they're carrying.
+* Stunned monsters move and hit things randomly, the same as if they're confused. (But they will not get confused effects if they try to read a scroll.)
+* Woodchucks can randomly generate on February 2, Groundhog Day.
+
+== Object changes ==
+=== Thiefstone ===
+A '''thiefstone''' is a magical gray stone that "steals" items out of your inventory.
+* Stolen items are deposited in a certain space on the level (its "stash location") on which the thiefstone was generated, no matter where the hero happens to be.
+** If there is a container on this space, stolen items will automatically go into it.
+** A newly generated thiefstone will try to choose its stash location in this order: a vault, a closet, any other space with a container on it. Whichever space it chooses, if there is no container there already, it will generate a chest there containing random contents.
+** A wished-for thiefstone will be keyed to the space the player is currently standing on, and will not search the level for stash locations.
+* Thiefstones will only steal inherently magical items. Blessed ones will also steal gold, items made of gold, and all gems (including glass). They will never steal equipped items.
+* All thiefstones are generated cursed.
+* When you pick up a cursed thiefstone, it may pull some magical item out of your pack and teleport itself and the item off to its stash.
+** Unless you happen to be standing on its stash location already, in which case it does nothing.
+* If you are carrying a cursed thiefstone and pick up a magical item, the thiefstone jumps out of your pack and teleports itself and the item off to its stash.
+* Thiefstones can be cancelled, making them unable to teleport items. However, a cancelled thiefstone can be reactivated by dipping it in a non-cursed potion of restore ability, which resets its stash location to the player's current location.
+* Applying or rubbing a non-cursed thiefstone on some item that it will steal will send the item off to the stash, but not the thiefstone itself.
+* Hitting a gold golem with a blessed thiefstone, in melee or thrown, will teleport the gold golem to the keyed location. Works on players polyselfed into gold golems, but will never work on anything carrying the Amulet. Also works if you rub it on your hand while polymorphed into a gold golem.
+
+=== Other new objects ===
+* '''[[Ring of carrying]]''': chargeable 200zm ring that increases or decreases carrying capacity by 5% per enchantment. If dropped down a sink, "The sink looks like it can hold [more/less] water than before." It will auto-identify when worn, if it is not +0.
+* '''Scroll of water''': highly similar to UnNetHack's [[scroll of flood]], but will never create water underneath the player. Also like in UnNetHack, they will sometimes appear on a random headstone reading "Apres moi, le deluge."
+* Not new objects, but two randomized wand appearances "gold" and "gilded" are added; these are made out of gold and are eligible to be stolen by leprechauns.
+
+=== Removed objects ===
+* spellbook of identify
+* loadstone
+* ranseur, spetum, voulge, fauchard, bardiche, guisarme, bill-guisarme, lucern hammer
+
+=== Behavior changes ===
+* The blessed scroll of destroy armor asks the player which piece of armor to destroy.
+* You can rub rocks together or on touchstones to break them, occasionally producing flint stones.
+* Flint stones' weight is reduced to 2 aum.
+* The wand of speed monster zapped at the player gives temporary very fast speed instead of intrinsic speed.
+* The potion of speed gives intrinsic speed and a short duration of very fast speed.
+* The amulet of life saving does not work if the player is polymorphed into a nonliving form.
+* The unicorn horn is a slightly poorer weapon (1d8/1d10), and it no longer restores lost ability points when applied. However, it is now a one-handed weapon, and if you wield it in your main hand without gloves, it will be applied passively to cure disease and other status effects every turn without needing to be applied.
+* Potions may be #dipped in sinks to pour them down the drain, causing the hero to suffer its vapor effects.
+* Add vapor effects for all potions, and make most of them unambiguously identify the potion.
+* Dropping a ring down a sink has an 80% chance of the ring being buried beneath it, rather than 20%.
+* Dwarvish and Uruk-hai shields count as bulky.
+* Scrolls of identify always identify 7/4/1 items for B/U/C; a full inventory ID is no longer possible from the scroll.
+* Potions of oil cannot be diluted. If you notice it failing to dilute, it gets identified automatically.
+* Uncursed food no longer gives "Blecch! Rotten food!"; cram and lembas never do even when cursed.
+* Scalpels do 1d5 damage versus small monsters and 1d7 damage versus large.
+* Reduce the weight of land mines to 40.
+* Reduce the weight of beartraps to 50.
+* {{frac|40}} of random non-artifact weapons generate erodeproof. {{frac|40}} of remaining erodible weapons will generate with some amount of erosion.
+* Stinking clouds (including those on the [[Plane of Fire]]) no longer use a predefined rhombus shape; instead, they will expand from their origin point to fit the terrain. Be cautious about using scrolls of stinking cloud in closed spaces. They don't use a pure breadth-first search; the edges of the cloud can be fuzzy and unpredictable in open areas.
+* Tins, or rather their labels, can be read. {{frac|5}} of tins will honestly tell the type of monster they contain; the rest lie or give funny messages. Player-made tins are not labeled.
+* C- and K-rations can also be read.
+* Random tins can be prepared as "gourmet foo", which gives 350 nutrition, or "stale foo", which gives 25 nutrition.
+* French fried and deep fried tins give increased amounts of nutrition compared to vanilla (80 and 100 nutrition respectively).
+* 50% of szechuan tins have a free fortune cookie inside that you get after eating the tin.
+* Extrinsic sources of fire, ice, and shock resistance protect all of your potions, scrolls, rings, and wands from burning, freezing, and exploding from shocks.
+* Force bolts from the wand of striking and spell of force bolt will smash down iron bars (unless the bars are set to nondiggable). This is very loud and wakes up a lot of monsters.
+* Charged rings' initial enchantment uses an rne(2) call instead of the capped rne(3) that vanilla uses, and only 2% of chargeable rings will generate as +0. Practically, this means the chance of generating a ring with a high enchantment is much more likely. The formula is from FIQHack, with light modification to make uncursed rings positive more frequently than they are there.
+* Wands of wishing no longer randomly generate.
+* Blessed wands wrest on {{frac|7}} of uses, and uncursed wands wrest on {{frac|23}} of uses. Cursed wands continue to wrest on only {{frac|121}} of uses.
+* Spellbooks' weight depends directly on their spell level, so you can tell what level a book is by looking at its weight. The weight is 30 plus 5 per spell level.
+* War hammers are made into a two-handed weapon that deals 2d6 damage to small creatures and 2d8 to large creatures.
+* Poisoned melee weapons do d10+6 damage to non-resistant creatures, but only 25% of the time.
+* Reading a confused scroll of earth will summon earth elementals and dust vortices rather than rocks.
+* Weapons and armor generated with "lord" monsters can never be generated with a negative enchantment.
+* Magic lamps always release a djinni when rubbed, and no longer just puff smoke or do nothing.
+* {{frac|30}} of randomly generated tins are booby-trapped, exploding when opened.
+* The amulet of life saving only heals your HP up to 100; it does not restore all hit points.
+* The scroll of scare monster no longer scares unique monsters.
+* Crystal balls have many more charges (starting with d25) and weigh only 100. Gazing into them no longer paralyzes you. A blessed or cursed ball counts as +5 or &minus;5 to your Int when determining if you successfully use it. They will never explode unless cursed.
+* Uncursed charging of a crystal ball, horn of plenty, bag of tricks, or can of grease will refill d5+5 charges instead of just d5.
+* Potions of acid no longer freeze when hit with cold damage.
+* Reading a scroll of identify while confused will "identify yourself" and give enlightenment.
+* Cursed wands explode upon use 3.33% of the time instead of 1%.
+* L's Cursed Wand Backfire Patch: zapping a cursed directional wand will cause it to backfire and zap you 10% of the time. This is independent of the 3.33% chance that it simply explodes.
+* Statues hit by a wand of opening will drop their contents without breaking. (The spell of knock doesn't work.)
+* Every time you finish eating a candy bar, you have a 1% chance of gaining a level, a reference to "rare candy" in ''Pokémon''.
+* Cursed amulets of life saving only work 50% of the time. 
+* Applying a blessed stethoscope at an egg on the floor next to you will tell you the egg's species.
+* Candles, lamps, and other ignitable items can be ignited by sources of fire, typically in situations when other burnable items such as scrolls would catch fire.
+* Dropping a ring of polymorph control down a sink causes it to transform into another sink. The new sink can have a fresh black pudding and foocubus generated from it (though it doesn't generate a new buried ring).
+* A tiny fraction of erodable objects generate greased.
+* Flint stones and hard gems break 50% less often than softer stones when used as projectiles.
+* Fruits generated at level creation may be named after holiday foods on certain holidays.
+* The scroll of stinking cloud can be centered up to sqrt(50) squares away (up to 7 squares orthogonally plus 1 perpendicular to that, or 5 diagonally).
+* The amulet of life saving decreases current and maximum Constitution by 2 points each when it saves your life. The maximum Constitution cannot be restored via restore ability, though it can be restored by gain ability or exercise.
+* Alchemic blasts deal twice as much damage as they do in vanilla: (number of potions mixing + d9) &times; 2. Acid resistance halves this damage.
+* Carrying the Amulet of Yendor disrupts your teleport control. (As in vanilla, it still blocks one third of all intra-level teleports.)
+* Blessed gain ability potions raise a single attribute by 1-2 points, allowing the player to choose which.
+* Noncursed gain ability potions that try to raise an attribute randomly will always successfully pick something to raise, provided there is some raiseable attribute. "Innate improvement" raises, such as an innate Strength raise while wearing gauntlets of power, count as raiseable.
+* Wielding a ring and reading enchant weapon will enchant the ring, with identical effects as reading a charging scroll of the same beatitude.
+* Wielding certain non-magical tools with magical counterparts (e.g. pea whistle / magic whistle) and reading enchant weapon sometimes enchants them and turns them into that magical counterpart.
+* Worn armor weighs 75% of its regular weight. E.G., a chain mail that weighs 300 will weigh 225 while you wear it.
+* Blowing up a bag of holding identifies the bag of holding (and the wand of cancellation if that was what caused the explosion), and gives some experience points.
+* Chests or boxes made of metal cannot be destroyed by #force with a blunt weapon.
+* L's Oily Corpses Patch: eating the corpses of certain slippery monsters (slithy, non-snakelike monsters and most blobby monsters has a 20% chance of making your hands slippery. Does not affect tins.
+* Certain valuable items have boosted base costs: 200 for magic markers, 500 for magic lamps, and 5000 for wands of wishing.
+* Randomly generated paper bags may contain a potion of booze.
+
+== Artifact changes ==
+* Mjollnir wakes up monsters in a radius of 6 when you attack with it and lightning strikes the monster.
+* Mjollnir can be invoked (with the same invoke timeout as any other artifact) to direct a lightning bolt dealing 8d6 damage, more than a wand of lightning.
+* Mjollnir and Ogresmasher are both indirectly affected by the war hammer change above, gaining a lot more damage but becoming two-handed.
+* Ogresmasher is now quite powerful and is an "ogre-bane" in name only. It now has +d3 to-hit and +d8 damage versus ''all'' monsters, and has a new unique ''heavy hit'' feature: on critical hits ({{frac|20}} of hits, like Vorpal Blade), a small or tiny monster will be crushed and instakilled, whereas a medium or larger monster will be slowed and stunned. It still confers a Constitution of 25 when wielded. Its base cost is raised to 1200 to account for this.
+* Dragonbane is now a dwarvish spear instead of a long sword. It gives vision of dragons when wielded and does +d10 damage to dragons. Its base cost is raised to 2500.
+* Demonbane is now a silver mace instead of an iron long sword. It gives vision of demons when wielded, and glows white when demons are nearby.
+* Fire and Frost Brand are now short swords instead of long swords, but also can be twoweaponed with each other, unlike any other artifacts.
+* Fire Brand instakills flammable golems and green slimes. They will only drop items they were carrying, and will not produce any paper or wooden items, etc.
+* The Sceptre of Might is now the ''Priest'' quest artifact. It confers drain resistance when wielded instead of magic resistance, and has the Mitre of Holiness's invoke power of giving an energy boost instead of toggling conflict.
+* The Mitre of Holiness is removed.
+* The new Caveman quest artifact is ''Big Stick''. It is a club that has +d5 to hit and +d12 versus all monsters, confers stealth when carried, and magic resistance when wielded. Its invoke power toggles hungerless conflict.
+* Grimtooth is now permanently poisoned (and the only melee weapon that can be poisoned) and confers poison resistance when wielded. Its base cost is raised to 1000. However, not every hit causes bonus poison effects.
+* Werebane now gives vision of weres when wielded and does +d10 damage to werecreatures.
+* Giantslayer now gives vision of giants when wielded and does +d10 damage to giants. Its base cost is raised to 500.
+* Trollsbane now gives hungerless regeneration when wielded, gives vision of trolls when wielded, and does +d10 damage to trolls. Its base cost is raised to 1000.
+* Obtaining Excalibur by dipping it in a fountain will set its enchantment to +0 if it was negative. Obtaining it by crowning sets its enchantment to +3 if it was lower than that.
+* Vorpal Blade deals +1d8 damage to everything, instead of +1.
+* The Orb of Detection is removed and replaced with [[Itlachiayaque]] as the Archeologist quest artifact. It is a gold shield of reflection that confers fire resistance and warning when carried, and reflection when worn (of course). Archeologists' spellcasting rates are not affected by wearing it, but other roles get the normal penalty for metal shields. It has two invoke effects, either of which can be selected at invoke time: create a stinking cloud just like reading a scroll of stinking cloud of the shield's beatitude, or gaze into it for the same effect as a crystal ball.
+* New artifact, [[Mirror Brand]], an unaligned shatterproof glass short sword that confers reflection. When attacking a monster wielding a weapon, it computes damage as if the monster's weapon had been used to hit itself, and adds that as bonus damage. No bonus damage if the target is not wielding a weapon. It can be dual-wielded with Fire or Frost Brand, and vice versa.
+
+== Trap changes ==
+'''New door traps''': Replacing the KABOOM!! stunning [[door]] trap. The available traps depend on the current [[level difficulty]]. All of the following impact monsters and players as symmetrically as possible.
+{|class="wikitable"
+! Trap !! Dlvl !! Triggers !! Effects
+|-
+|Screechy hinges || 1+ || Closing, opening
+|Awakens nearby monsters.
+|-
+|Self-locking mechanism || 1+ || Opening, closing, unlocking
+|Shuts and locks itself. If you try to unlock it after it's locked, the trap is automatically removed.
+|-
+|Static shocking doorknob || 2+ || Opening, closing, unlocking, failed untrapping
+|Zaps for d(level difficulty × 2) + 1 shock damage. Damage is reduced by 75% for shock resistance. The trap is automatically removed.
+|-
+|Falling bucket of water || 3+ || Opening, breaking, failed untrapping
+|Classic bucket-propped-above-a-door prank. ({{frac|Level difficulty|5}})+1 items in your inventory are randomly wetted; containers and their contents are safe. The trap is automatically removed.
+|-
+|No hinges, falling forward || 6+ || Opening, breaking, failed untrapping
+|Door is rigged without hinges, falling away from you. You crash on top of the door and are stunned for 2d4 turns. Destroys the door.
+
+This effect also happens if you try to kick open the other "no hinges" trapped door.
+|-
+|No hinges, falling backward || 8+ || Opening, failed untrapping
+|Door is rigged without hinges, falling on top of you. This makes you helpless for 3 turns. Destroys the door.
+|-
+|Boulder dropping out of the ceiling || 10+ || Opening, breaking, failed untrapping
+|You break a tripwire, dropping a boulder out of the ceiling on you (it will drop on the door space if you open the door from a distance). The trap is automatically removed.
+|-
+|Hot doorknob || 12+ || Opening, closing, failed untrapping
+|Burns you for d(level difficulty) damage. If you have fire resistance, damage is halved. If you are wearing any gloves, damage is halved again and the gloves may be eroded. If you are specifically wearing "padded gloves", damage is entirely negated (because they are designed for heat).
+|-
+|Fiery explosion || 15+ || Opening, breaking, failed untrapping
+|Causes a fiery explosion dealing d(level difficulty) damage centered on the door. The explosion is normal (it may burn your inventory and is resistable normally, no special effects). Destroys the door.
+|}
+Several of these traps can generate on open doors as well as closed ones.
+
+Other trap changes:
+* Magic traps' taming effect is changed to pacification, due to petless conduct shenanigans.
+* The player does not trigger rolling boulder traps unless actually standing on the ground (the same as monsters).
+* Polymorph traps disappear whenever they polymorph any monster.
+* Polymorph traps no longer generate out-of-difficulty monsters.
+* If you force-fight a web from an adjacent square while wielding a bladed weapon, you attempt to cut it away and destroy it. Success is dependent on your Str and your weapon's enchantment, and there are not any bad failure effects.
+* If you are wielding Sting, you auto-destroy any web when you try to move out of it, allowing you to complete your move normally rather than remaining on the web square for another turn.
+* Ammo that comes out of a launcher trap is stored as one stack, so its ammo will all be identical and you will get the same amount of items from it whether you repeatedly trigger it or untrap it.
+* Dart and arrow traps generate with 15+1d20 ammo, and rock traps generate with 5+1d10.
+* Poison darts from traps deal Con damage 60% of the time and higher HP damage when they don't deal Con damage. However, poison dart traps don't appear until depth 7.
+* The player's unchanging does not protect their steed from a polymorph trap. Magic resistance still will, however.
+* When disarming a trap that shoots ammo (e.g. a dart trap), the ammo is placed into your inventory instead of on the floor.
+
+== Dungeon features ==
+'''Iron doors''' ({{cyan|+}}, {{cyan|{{!}}}}, {{cyan|-}}) are doors that cannot be destroyed by most means of brute force. This includes digging rays, picks, non-metallivore tunneling, giant smashing, force bolts, or kicking. All other ways of interacting with doors normally (opening, unlocking, untrapping, etc) work the same on them. They can be trapped with the same traps as any other door. Certain methods of destroying doors do work on iron doors: falling into a chasm from an earthquake, being blown up by a land mine, being chewed through by a metallivorous tunneler, being disintegrated by a disintegration ray. They are randomly generated on filler levels: if (level difficulty > 10 + 1d50), a door will be generated as iron. They currently only exist in the [[Castle]] as far as special levels are concerned.
+
+Miscellaneous:
+* "Klunk!" from kicking a sink is less likely.
+* All sinks on non-special levels now generate with one ring buried beneath them.
+* "Flupp!" effect from kicking a sink will dislodge and spit up one ring buried under the sink.
+* Throne insight always gives a full inventory identify.
+* Sinks are recolored from {{gray|#}} to {{blue|\}}.
+* Drawbridges are recolored from {{brown|#}} to {{orange|+}}.
+* You can move into double doors diagonally if both are non-closed.
+
+== Role and race changes ==
+* Most roles' starting Pw is boosted so that those who start with spells are generally able to cast them without wielding the spellbook.
+* Rangers begin the game with two beartraps.
+* Rogues begin the game with thiefstones pre-identified.
+* Wizards get four spellbooks in starting inventory (force bolt, magic missile, and two random). They no longer get the scrolls, potions, rings, and wand they previously started with.
+* Healers' starting Int is boosted at the cost of starting Wis and Cha.
+* Priests' starting Int is boosted.
+* Monks' starting Wis is boosted.
+* Archeologists start the game with a grappling hook. (They can also advance Flail skill to expert so that they can use it.)
+* Monk quest text is heavily revised (this is currently incomplete; most of the nemesis stuff isn't edited yet). This was because it was a carbon copy of the Priest quest text.
+* Tourists begin the game with walking shoes (low boots).
+* Archeologists start the game with all types of worthless glass identified.
+* Rogues' backstab bonus is capped based on their skill level in the weapon they're using: d2/d4/d10/d20/d30. They also gain a flat +1/+2/+3 damage for Basic/Skilled/Expert.
+* Rogues get the backstab bonus on a wide variety of other monster statuses in addition to fleeing: trapped, frozen, unmoving, sleeping, stunned, confused, and blinded.
+* Several races can get a guaranteed minimum skill in certain areas:
+** Orcs can always reach Skilled in scimitar.
+** Dwarves can always reach Skilled in pick-axe.
+** Gnomes can always reach Basic in club and crossbow.
+** Elves can always reach Basic in enchantment spells.
+* Cavemen no longer start with any rocks. Instead, they get 10 extra flint stones.
+* Port L's Wounds patch, which gives healers extra information about how damaged monsters are. It prints a message whenever you see a monster's HP drop to a different level of woundedness, and you can also see how wounded a monster is via farlook, provided you can actually see the monster.
+* Monks will stop seeing "You feel guilty" messages.
+* Archeologists can safely enchant a +4 or +5 fedora (allowing them to get to +7 safely).
+
+== Conducts ==
+* '''Artifactless conduct''': never touch an artifact. (Invocation items and the Amulet don't count; they're unique items, not artifacts.)
+* '''Petless conduct''': zero tame monsters the whole game. Start with OPTIONS=!pet configured, and never tame a pet at any point.
+** If you enter the Astral Plane having followed petless conduct up until then, no guardian angel will be sent.
+* '''Never scare an enemy with impunity''': never cause a monster to flee by standing on a square that prevents it from attacking you.
+** Scrolls of scare monster, Elbereth, and being in a coaligned temple all count as this. To break the conduct, you must actually be next to a hostile monster and it must turn to flee.
+** This conduct is ''not'' broken in your coaligned temple on the Astral Plane, even if you scare hostiles with it.
+* '''Permanent hallucination''': exactly what it sounds like. Enable with OPTIONS=hallucination.
+* '''Permanent deafness''': ditto for deafness. Enable with OPTIONS=deaf.
+* '''Survivor''': the game already tracked this, but it is promoted to a full conduct and recorded in the xlogfile.
+* '''Celibate''': never lay with a foocubus.
+* '''Conflictless''': never generate conflict.
+* Illiterate conduct is no longer broken by naming an artifact.
+* Bonesless conduct is broken only by loading bones, not by starting the game with the 'bones' option set to true.
+
+== Other gameplay changes ==
+'''Sentient arising from the dead''': Occasionally when you die to vampires, green slimes, mummies, or anything else that would have made you arise from the grave, you turn into that monster but retain your sanity, and continue playing with permanent intrinsic unchanging. In xNetHack, zombies are also able to arise from the grave.
+* Green slime: {{frac|2}} chance
+* Zombie: {{frac|4}} chance
+* Ghoul: {{frac|5}} chance
+* Wraith: {{frac|6}} chance
+* Mummy: {{frac|8}} chance
+* Vampire: {{frac|10}} chance
+
+'''FIQHack XP curve''': This is an XP curve that keeps the player gaining experience levels through the late game, for a typical playing style of killing lots of monsters. Up until level 10 it's the same as vanilla, and thereafter with triangle numbers: 5000 XP to go from 10 to 11, 6000 from 11 to 12, and so on.
+
+'''Weapon names for good weapons''': A feature ported from NetHack Fourk. Non-cursed weapons that generate with +2 (or +1 rustproof) or better enchantment have a chance of being given a random vaguely macho object name, such as "Monster Slayer" or "[weapon] of Glory", or a name indicating they belonged to someone from the high score list. These are not artifacts and have no special qualities; the only thing the name denotes is that this weapon has a good enchantment, which makes it visible to players who might otherwise ignore it. The higher the enchantment, the higher the chance is that the weapon gets a name. Names are never given to weapons that are cursed or below +2 (except for rustproof and +1).
+
+'''Polyinit mode''': You can begin the game permanently polymorphed into any non-unique, non-player-monster monster (even ones that you can't polymorph into normally, like Archons, but take note that the game is not totally stable if you do). Do this by setting OPTIONS=polyinit:[monster] in your config file. Similar to sentient arising from the dead, this gives you permanent intrinsic unchanging, and you will die when your HP runs out. This is a non-scoring game mode.
+
+'''Artiwishing/artigifting rebalance''': As mentioned above, the odds of you getting a wished artifact are dependent only on the amount of artifact wishes you have previously made. Ditto for artifact gifts; the odds for a gift are dependent only on the number of (artifact) gifts you have already received. This means that artifacts you create by naming and artifacts you find randomly generated or in bones will ''not'' count against you when wishing or getting gifts. However, to compensate for this, the chances of a successful artifact wish are reduced. Your odds of getting an artifact on a wish are <math>\frac{1}{artiwishes + 1}</math>, which gives odds of 1, {{frac|2}}, {{frac|3}}, ... instead of vanilla's 1, 1, {{frac|2|3}}, {{frac|2|4}}, ...
+
+'''The Grudge Patch''': Ported from 3.4.3 with some changes. Various monsters "grudge" each other, attacking each other even if they are both hostile to the player. It also allows non-pets to attack pets that they grudge on their own initiative; however, pets that grudge each other will not attack each other. The grudging pairs of monsters are:
+* Purple worms (and babies) versus shriekers.
+* Quest guardians versus hostiles.
+* Elves versus orcs.
+* Angels versus demons.
+* Woodchucks versus the Oracle.
+* Ravens versus floating eyes.
+* Zombies and liches versus things that can be turned into zombies (see below).
+* Hobbits versus Nazgul.
+* Vampires (including shapeshifted ones) versus werewolves.
+* Spiders versus x and a monsters (but not vice versa).
+* Bats versus flying insects (but not vice versa).
+* Felines versus rats (but not vice versa).
+* Vault guards versus leprechauns (but not vice versa).
+
+'''Moldy growths on corpses''': Ported from SLASH'EM. Corpses that are old enough to possibly be tainted when eaten may spontaneously go moldy and grow a random F-class monster on them. About 5% of corpses will turn moldy. If the corpse was already an F-class monster, it won't grow mold. If the corpse is acidic, it can only produce green mold.
+
+'''Malcolm Ryan's Brewing Patch''': Ported and incorporated. This lets you dip mold corpses in potions of fruit juice to begin fermenting them; after a while they will turn into other types of potion. Green mold turns to acid, yellow mold turns to confusion, violet fungus turns to hallucination, brown mold turns to sleeping, and red mold turns to booze. Black mold or any cursed mold creates sickness.
+
+'''The Zombie Apocalypse''': Zombie corpses will occasionally revive by themselves, similar to trolls but with a lower overall chance. Zombies and liches can now turn things they kill into zombies: when they make a melee kill on a monster that has a zombie form, it will immediately turn into that zombie form. If the killer was tame, the new zombie will be too; otherwise it will be hostile. Also extends the Grudge Patch to this: zombies will grudge monsters that they can zombify, and vice-versa.
+
+'''Monster intrinsics''': Monsters that eat intrinsic-conferring corpses can gain intrinsics from them with the same odds as the player has. Currently, they are only capable of gaining telepathy and the various resistances (not teleport control, strength gain, etc). Most monsters that eat corpses are pets, but non-pet gelatinous cubes and purple worms are also capable of it.
+
+'''Cooperative telepathy''': If you are telepathic (intrinsically or extrinsically), you can see all other monsters on the level that are telepathic, without needing to be blinded or for them to be within a certain range. This includes monsters that aren't naturally telepathic but have gained it by other means, such as by eating corpses or wearing an amulet of ESP. Cooperative telepathy works both ways: if you can see some other monster with it, that monster knows exactly where you are and won't be fooled by displacement or invisibility.
+
+'''Ammo breakage revisions''': Like in NetHack Fourk, the chance of breaking thrown or fired ammunition depends mainly on your current and maximum level in the ammo's associated skill. Negatively enchanted and cursed ammo breaks more often, whereas positively enchanted and blessed ammo breaks less often, but these factors are less significant than your skill levels.
+
+'''Monster maximum HP and size changes''': Monster hit die size depends on their actual size. Medium monsters use a d8, as before. Tiny use a d5, Small use a d7, Large a d10, Huge a d14, and Gigantic a d18. Dragons no longer use a special maximum HP formula, and the Riders get 40+8d8 rather than 10d8. A number of monster sizes are also adjusted:
+* Now Small: giant ant, giant rat, centipede, lemure, baby crocodile, all naga hatchlings
+* Now Medium: Medusa
+* Now Large: electric eel, cobra, xorn, all vortices, all baby dragons, all elementals
+* Now Huge: mastodon, balrog
+* Now Gigantic: kraken, mumak, Juiblex
+
+'''Player sexuality option''': You can specify a desired sexual orientation for your character in your config file with OPTIONS=orientation:[orientation]. This can be "straight"/"heterosexual", "gay"/"homosexual", or "bi"/"bisexual". Your orientation influences which foocubi can seduce you. Bisexual characters can be seduced by any foocubus, so to balance this, foocubi roll twice after each encounter to see if they get a severe headache. When you summon a foocubus by kicking a sink, it will always be an appropriate gender for seducing you.
+
+'''dtsund-DSM''': Named after the person who originated the idea, this is a system in which dragon scale mail is replaced by regular body armors with scales fused onto them.
+* Dragon scales are now worn in the cloak slot, providing their dragon's extrinsic, AC 3, and MC 0.
+* Reading enchant armor while wearing body armor under scales fuses them together, causing that armor to gain +3 AC and confer the matching extrinsic.
+** The armor is not made erodeproof, but if the scroll was blessed, its erosion is repaired and it becomes blessed.
+** If the scroll was cursed, the armor still fuses together, but becomes cursed and loses a point of enchantment. Otherwise, the armor's enchantment does not change, and any enchantment on the scales is discarded.
+** If you are confused, the scales meld into the armor and then the armor melds into you, polymorphing you into the corresponding dragon.
+* Reading enchant armor with scales but ''without'' body armor will polymorph you into the corresponding dragon. Wearing a shirt doesn't affect this.
+** If you have polymorph control, you can decline to become a dragon.
+** A blessed scroll gives you additional time as a dragon and a cursed scroll gives you less time.
+** Scaled armor is never destroyed or separated into its components when you become a dragon; it reverts back to your body armor when you revert.
+* You can change the color of the scales on body armor by wearing a new set of scales and reading enchant armor. The old scale color goes away.
+* Reading enchant armor while wearing scales will always target the scales (rather than picking randomly).
+* There are no limitations on what body armor can be used.
+* "Foo dragon scale mail" no longer exists as an object, so it can't be wished for.
+* Body armor cannot be wished for with dragon scales on it either. It must be crafted.
+* Player monsters that used to receive dragon scale mail now receive a standard suit scaled with a random color of dragon scales.
+* Shopkeepers charge a much higher price for a dragon-scaled piece of armor than they would for the same armor piece without scales.
+
+'''Air terrain''': Appears outside the Plane of Air, and is treated as a very long drop.
+* Currently appears exclusively in the Vlad's Cavern level but will likely be added to some quests in the future.
+* Is colored black. This won't affect anything by default, since the glyph is still a blank space, but it's recommended to change it to something else. For instance, `SYMBOLS=S_air:}` will render it as a black brace.
+* Can be safely traversed by levitation, flying, walking on the ceiling if there is one, or riding a steed that does any of those things.
+* Stepping into air will make you fall to a level beneath yours - it does not necessarily kill you, but causes 12d20 damage, stuns you, and wounds your legs for 60+10d10 turns.
+** The level beneath Vlad's Cavern is the Gehennom level containing the stairs up to the Vlad branch.
+* Items that fall into air normally end up somewhere random on the level below, but there is a 25% chance per item that it gets broken or lost forever. This never happens to unique items such as the Amulet.
+* Monsters can't be pushed or hurtle out into midair (though this may change when upcoming 3.7 code is merged).
+* Requires an m movement prefix to move into if you are not safe to move into it. If ParanoidSwim is turned on, it additionally requires you to say yes to "Really step off the cliff?"
+
+'''L's Bullwhip Patch''': Ported with modifications.
+* Whip skill counts towards whether you proficiently apply a whip (e.g. to disarm an opponent). Dexterity matters less.
+* Applying a whip against solid terrain like a wall is ineffective.
+* Snapping a whip in open air, including if you fail to hit a monster with it, may make a "CRACK!" sound which causes animals within 2 squares of you to flee if they fail a resistance check.
+* The chance of cracking a whip depends on whip skill and dexterity. Maximum is 100% chance and minimum is 25%.
+
+'''Indestructible items:''' Wielding a scroll, potion, ring, wand, or spellbook and reading confused enchant weapon will make it indestructible.
+* An indestructible item cannot be destroyed by fire, cold, or shock, or blanking by water.
+* Indestructible wands cannot be snapped.
+* "indestructible" is valid to wish for, and is another synonym for "erodeproof", similar to "fixed".
+* Methods of removing erodeproofing, such as reading cursed confused enchant weapon, strip an item's indestructibility.
+
+Miscellaneous:
+* Magic lamps can be wished for.
+* All roles now have a standardized "cutoff level" of 12 for maxHP and maxPw gains.
+* Change the can of grease's material to plastic and color it bright blue.
+* Change hexagonal wand material to quartz (gemstone).
+* Throwing 1 gold piece upwards makes you flip it and get heads or tails.
+* Melee combat makes noise: it awakens monsters around the combat in a radius dependent on the attacker's size. For a stealthy player, the radius is reduced but not eliminated.
+* Score given for the deepest level reached stops counting after 45 (the highest possible Sanctum level), so any game can achieve the theoretical minimum score.
+* Genociding green slime while turning into slime will stop the sliming, unlike in vanilla where you die to "slimicide".
+* Gods now consider the food you are carrying in inventory when answering a prayer.
+** Being Weak or Fainting is no longer considered a major trouble for prayer purposes if you have enough food in inventory.
+** If you are in need of both nutrition and HP, your god will prioritize feeding you if you are Fainting, but will prioritize healing you if you are Weak.
+** Corpses, eggs, globs, tins, and anything in a locked container do not count towards your total food.
+** If you have maintained foodless conduct so far, your god will treat you as if you don't have any food.
+** If you have sufficient food but are praying specifically to fix your hunger, drop the food to make it not count.
+* When you die and are eligible to leave bones, you are asked if you want to write your own epitaph, which will appear on your headstone as text. This does not necessarily mean that bones will be created.
+* Hard helms don't reduce damage from a falling object very much if the object is heavy, and will only halve the damage from a falling piercer instead of capping it at 2.
+* Invisibility and see invisible are no longer available as permanent intrinsics (except by getting them via your role). Items granting them extrinsically are unchanged. Sources that used to give you the intrinsic still do, but temporarily: wand zaps grant 50+d50 turns, stalkers grant 200+d200 of each, potions grant (200|400|600)+d200 based on their beatitude, random effects from thrones and fountains grant 1000+d1000, and eating the rings grants 600+d200.
+* If the player is a martial arts user, polymorphed into a sasquatch, or wearing kicking boots, they can no longer miss a monster completely with a clumsy kick.
+* A gravestone will be created in a bones file if the player dies on grass or a corridor, in addition to regular floor.
+* Having extrinsic unchanging when turning to slime merely pauses the slime timer rather than eliminating the sliming effect entirely. (Intrinsic unchanging from corrupting after death or polyinit mode no longer affects sliming at all.)
+* Kicking at undetected secret doors and corridors is more likely to be successful, and never causes wounded legs. (Kicking real walls still will.)
+* The melee strength bonus is applied to ammo slung from a sling.
+* Gas clouds block line of sight to areas behind them.
+* Hallucination prevents petrification (you are already stoned).
+* The player is held responsible for any monster that gets killed by a trap on the player's turn.
+* Magic missiles deal half damage if the target has magic resistance, rather than zero damage. Half spell damage also halves the damage from magic missiles, and stacks with magic resistance's halving.
+* Half physical damage no longer applies when you zap yourself with a wand unless it is a wand of striking.
+* Chaotic characters no longer incur a -1 alignment penalty for healing their pets (though they still do for healing peacefuls, unless the peaceful is at maximum HP). They also no longer incur a penalty for angering peaceful monsters.
+
+== Interface changes ==
+=== Engravings visible on map ===
+Engravings can be seen from a distance, via magic mapping or just looking at the square from across a room or similar. The glyph is a tilde, the same as the Vibrating Square. The color depends on the sort of engraving it is:
+* {{brown|~}} Dust engraving
+* {{gray|~}} Scratched/carved engraving (athame, wand of digging). To avoid color conflict, webs are changed to {{white|"}} (white).
+* {{black|~}} Burnt engraving
+* {{red|~}} Scrawl of blood
+* {{brightgreen|~}} {{brightblue|~}} {{brightmagenta|~}} Graffiti
+
+The engraving symbol is implemented as a full tile, including in the default tileset.
+
+=== Monster and object lookup (pokedex) ===
+'''Monster lookup''' is more or less ported directly from FIQHack; '''object lookup''' is new. These allow you to use the / (whatis) command to see a bunch of detailed information about the monster or object you're looking up. It is displayed above the encyclopedia entry. 
+
+Information for monsters is things like size, speed, attacks, resistances, and intrinsics conferred. Information for objects varies more based on class, but contains things like weight, base cost, whether it's magical, base AC, weapon skill, and weapon damage.
+
+=== YAFM ===
+* Hit the Escape key while grappled or engulfed.
+* Rub an identified touchstone on your hand while polyselfed into a glass golem.
+* Attempt to apply "-".
+* Kill a jabberwock while hallucinating.
+* Observe a monster grow up while hallucinating.
+* Die while hallucinating and view your vanquished creatures list.
+* Hear a dwarf digging while hallucinating.
+* Eat a long worm.
+* Die to green slime (permanently) while hallucinating.
+* Fail to get a wished-for artifact while hallucinating.
+* Ascend while hallucinating.
+* #chat to a wall.
+* Yearn for your distant homeland as a hallucinating valkyrie.
+* Hear a wererat change form while hallucinating.
+* Stake a vampire through the heart while hallucinating.
+* Hit a devil with an egg.
+* Play a cursed magic whistle or magic flute while hallucinating.
+* Drop a heavy iron ball while hallucinating.
+* Eat a glob of brown pudding.
+* Fumble noisily while hallucinating.
+* See a lantern on the floor get dim while hallucinating.
+* Watch something step on a squeaky board while hallucinating.
+* Do nothing special except be hallucinating.
+* Smell rotten eggs from a failed or prompt-cancelled scroll of stinking cloud.
+* Attempt to chop down a petrified tree while hallucinating.
+* Read a blank scroll while confused.
+
+=== Walking into liquids and traps ===
+You may not move into a water or lava square unless you either know you are safe (e.g. by levitating or wearing [fireproof] water walking boots) or specifically request it by moving with the 'm' command beforehand. If you have the '''paranoid_confirmation:swim''' option set, it will ask for further confirmation. If you answer yes or don't have this option set, you will try to unsafely move onto the liquid. This is intended to prevent "fatfingering" into harmful liquids.
+
+A message will be printed for unambiguity: "You avoid stepping into the [liquid]." The first time this happens in a game, it will notify you that you can use m-movement to enter the liquid intentionally.
+
+If you have the '''paranoid_confirmation:trap''' set, you may not move into a trap square without being prompted for confirmation and affirming that you do want to move there. If you are obviously immune to the effects of the trap (for instance, if you are a fire-resistant monster carrying no burnables trying to move onto a fire trap), you will not be asked to confirm.
+
+Of course, neither of these protections is active if you are stunned or confused.
+
+=== Miscellaneous ===
+* Add Dudley as a ghost name.
+* Lots of new hallucinatory monsters, hallucinatory gods, random engravings, rumors, headstones, shirt messages, angelic and demonic taunts, and major Oracle consultations.
+* Many new encyclopedia quotations and a few non-quotation entries.
+* When you ascend with a non-starting alignment, the end-of-game reason is "ascended (in dishonor)".
+* The Ranger pantheon changes Mercury (lawful) to Apollo and Venus (neutral) to Diana.
+* Whenever monsters polymorph in sight of the hero, print a message saying what they turned into.
+* Correct "Thou cannot escape my wrath, mortal!" to "canst not".
+* Paying exactly {{frac|10}} of your gold to a priest will "pay your tithe".
+* Bones levels now have a level sound: the same "eerie feeling" as in walking into an abandoned temple.
+* Merge FIQ's [https://github.com/fredriq/nethack/tree/getobj_floor getobj patch], which adds - (for hands) and , (for items on the floor or dungeon features) to getobj prompts ("What do you want to [apply/eat/drink/...]?").
+* Water walking boots will self-identify if you step onto water or lava with no levitation or flying source and don't fall in. If on lava, their fireproofness will also be identified.
+* Branch stairs are recolored to display as {{yellow|<}} and {{yellow|>}}.
+* On the Ctrl-X status screen, the last turn you prayed is shown.
+* Lawful altars are recolored as {{yellow|_}}, on the grounds that white underscore is indistinguishable from gray in many terminals. The other altar colors are the same as vanilla.
+* Always print a message when the hero sees monsters get created.
+* You can rub things on your hand.
+* Add the hilite_hidden_stairs patch, which hilites hidden stairs in red. It is an option that defaults to true.
+* If you have progressed beyond being a [[beginner]], and do something that would break weaponless conduct, you are prompted to confirm whether you really want to.
+* If you die while stuck in creature form, your actual killer is given, plus ", while stuck in creature form". Previously, ''any'' death while stuck in creature form would ignore your actual killer and just show "killed while stuck in creature form".
+* Instead of percentages, the spell menu just shows you how many turns you have left to remember each spell.
+* Easter egg for reading a dwarvish ring mail.
+* Suppress useless "Unknown command" messages in the dumplog; it will treat it as if those messages had never been printed.
+* First encounters with a (visible) boss will print a multiline chunk of flavor text.
+* When a wand gives an unambiguous message while engraving with it, it becomes type-identified automatically.
+* Peaceful monsters are underlined by default (in tty and curses; not necessarily added to other text-based ports). You can toggle this with the "underline_peacefuls" option.
+* Hitting the letter of a carried item while viewing it with the inventory command will bring up its encyclopedia and object lookup entries.
+* Port inventory weight display from UnNetHack: items in your inventory (and in related messages) gain a {N} display after their name denoting the weight of that item. This can be toggled via the ''invweight'' flag.
+* Port inventory fullness summary from FIQHack: when viewing inventory, the top line shows how many items out of 52 you are carrying and how much weight you are carrying relative to your current carrying capacity.
+* Add hallucinatory verbs for god voices.
+* Add a new paranoid confirmation option "throw"; when on, it prompts for confirmation when you try to throw ammo with no matching launcher for it.
+* When the game hits an impossible() call ("Program in disorder"), it gives better instructions for reporting the bug.
+* Auto-identify the potion of acid when it explodes due to coming in contact with water.
+* Port L's Colored Walls Patch from 3.4.3. This changes the color of walls in various dungeon branches and certain types of special rooms.
+* If you try to attack a monster in melee after 100 turns while you still have pacifist conduct intact, you are prompted to confirm whether you really want to attack it.
+* Stat increase and decrease messages use comparative forms (e.g. "You feel stronger!")
+* Hunger messages are more explicit about being from hunger (e.g. "You are beginning to feel weak from hunger.")
+* The #enhance menu shows your skill cap in each skill and your percent towards enhancing it if you have partially trained it.
+* Give a message for cursed worn and wielded items becoming uncursed.
+* Rays appear as blasts of nonsensical things when hallucinating.
+* Rename the Chromatic Dragon to Tiamat.
+* Rename the Dark One to Anaraxis the Black.
+* Replace most of the Caveman quest text with monosyllabic speech patterns.
+* The Vibrating Square is now colored yellow.
+* Equipping cursed gear, or having equipped gear become cursed, prints a message about it welding to your body. This also automatically identifies it as cursed.
+* Running and using the travel command can no longer push boulders.
+* When an encyclopedia entry is shown, it displays the search string that was used to find the entry, as well as the string in the encyclopedia it matched.
+* In wizard mode, you can teleport into locations that can't be teleported into normally, and a message prints if you teleport on a normally non-teleport level.
+* If you attack something with Cleaver and there would be peacefuls in its arc of attack, you attack only the main target. Using F to fight attacks in the whole arc.
+* The #conduct command (and thus the dumplog) shows how many items you polymorphed during your game.
+* If you have nothing quivered and are wielding a weapon that will return to your hand when thrown, the f (fire) command selects your wielded weapon, unless you have autoquiver turned on and the game finds something else to quiver.
+* Riders have unique messages for when they resurrect.
+* Monks have role-specific hello/goodbye messages.
+* If you wield a weapon you do not have at least Basic skill in, you will get a "You begin bashing monsters" message the next time you attack with it.
+* A message is printed when you see a monster wake up.
+* Doing a #loot while standing over a single container and there is no adjacent monster to loot will automatically loot the container without prompting.
+* You can configure the color of a monster species to whatever you wish. This can be done by setting "MONSTERCOLOR=species:color" in the configuration file (e.g. "MONSTERCOLOR=floating eye:yellow"), or via the 'monstercolor' compound option in-game. They do not persist when the game is saved and restored, but any settings in the configuration file are loaded upon restore.
+* Entry message for Sokoban: "The floor here is covered in deep perpendicular grooves", explaining why you can't push boulders diagonally.
+* The levels with the stairs for Sokoban, the Mines, and Vlad's Tower all now have ambient level sounds. The Sokoban one only persists until the first level of Sokoban is complete; the Vlad one persists only while Vlad is still alive.
+* Shopkeepers address all Knights and high-level Healers and Monks with a role-specific title.
+* If you have encountered a shopkeeper, the message "You hear someone cursing shoplifters" uses the shopkeeper's name.
+* Magic flutes and harps autoidentify when you play them with charges remaining even if they have no other effect.
+* Fire and frost horns print a message describing the bolt they create.
+* When a container is opened, you can select a new 't' option to transfer items to a different container in your inventory or on your square without having to put them into your inventory. You must have already opened and know the contents of the second container.
+* L's Descriptive Hits Patch has been added with modifications, which changes messages like "You hit foo" and "Foo hits" into more descriptive messages based on the attacking weapon or type of monster attack.
+* Also the descriptive misses system from EvilHack, which changes a lot of miss messages into messages about a piece of the defender's gear blocking the attack.
+* Several additional Oracle consultations.
+
+== Monster recoloration and letter rearrangement ==
+Significant changes (those regarding actual monster letter differences):
+* Ghosts are merged into the {{white|W}} class, to move them away from punctuation.
+* {{white|U}} is now a class for aberrations. Mind flayers, quantum mechanics, and genetic engineers are moved into it alongside umber hulks.
+* Elves are moved into the now-vacant {{white|Q}} monster class (for Quendi).
+
+Other than that, many monsters are recolored so that there are no duplicate monster glyphs. The following is a full table of monster glyph differences:
+{|class="wikitable"
+|+ Monster letter changes
+|-
+! Monster !! Vanilla glyph !! xNetHack glyph
+|-
+|[[Ghost]] || {{white|&nbsp;}} || {{white|W}}
+|-
+|[[Shade]] || {{black|&nbsp;}} || {{black|W}}
+|-
+|[[Mind flayer]] || {{magenta|h}} || {{magenta|U}}
+|-
+|Master mind flayer || {{magenta|h}} || {{brightmagenta|U}}
+|-
+|[[Quantum mechanic]] || {{cyan|Q}} || {{cyan|U}}
+|-
+|[[Genetic engineer]] || {{green|Q}} || {{green|U}}
+|-
+|[[Bugbear]] || {{brown|h}} || {{orange|o}}
+|-
+|[[Elf (monster)]] || {{white|@}} || {{white|Q}}
+|-
+|[[Woodland-elf]] || {{green|@}} || {{green|Q}}
+|-
+|[[Green-elf]] || {{brightgreen|@}} || {{brightgreen|Q}}
+|-
+|[[Grey-elf]] || {{gray|@}} || {{gray|Q}}
+|-
+|[[Elf-lord]] || {{blue|@}} || {{blue|Q}}
+|-
+|[[Elvenking]] || {{magenta|@}} || {{magenta|Q}}
+|}
+
+{|class="wikitable"
+|+ Recolors
+|-
+! Monster !! Vanilla glyph !! xNetHack glyph
+|-
+|Wraith || {{black|W}} || {{gray|W}}
+|-
+|Barrow wight || {{gray|W}} || {{brightblue|W}}
+|-
+|Werejackal || {{red|@}}/{{brown|d}} || {{brown|@}}/{{green|d}}
+|-
+|Wererat || {{brown|r}} || {{yellow|r}}
+|-
+|Werewolf || {{orange|@}}/{{brown|d}} || {{orange|@}}/{{orange|d}}
+|-
+|Wolf || {{brown|d}} || {{gray|d}}
+|-
+|Warg || {{brown|d}} || {{black|d}}
+|-
+|Coyote || {{brown|d}} || {{blue|d}}
+|-
+|Floating eye || {{blue|e}} || {{cyan|e}}
+|-
+|Titanothere || {{gray|q}} || {{yellow|q}}
+|-
+|Baluchitherium || {{gray|q}} || {{orange|q}}
+|-
+|Giant rat || {{brown|r}} || {{red|r}}
+|-
+|Rabid rat || {{brown|r}} || {{green|r}}
+|-
+|Aleax || {{yellow|A}} || {{gray|A}}
+|-
+|Shrieker || {{magenta|F}} || {{brightmagenta|F}}
+|-
+|Minotaur || {{brown|H}} || {{orange|H}}
+|-
+|Arch-lich || {{magenta|L}} || {{brightmagenta|L}}
+|-
+|Gnome and variants || {{brown|G}}/{{red|M}}/{{brown|Z}} || {{brown|G}}/{{orange|M}}/{{orange|Z}}
+|-
+|Orc (monster) || {{red|o}} || {{blue|o}}
+|-
+|Mordor orc || {{blue|o}} || {{red|o}}
+|-
+|Human and variants || {{white|@}}/{{gray|M}}/{{white|Z}} || {{white|@}}/{{white|M}}/{{white|Z}}
+|-
+|Owlbear || {{brown|Y}} || {{orange|Y}}
+|-
+|Sasquatch || {{gray|Y}} || {{red|Y}}
+|-
+|Imp || {{red|i}} || {{orange|i}}
+|-
+|Kops || {{blue|K}}/{{blue|K}}/{{cyan|K}}/{{magenta|K}} || {{gray|K}}/{{red|K}}/{{green|K}}/{{blue|K}}
+|-
+|Erinys || {{red|&}} || {{green|&}}
+|-
+|Barbed devil || {{red|&}} || {{cyan|&}}
+|-
+|Marilith || {{red|&}} || {{brightcyan|&}}
+|-

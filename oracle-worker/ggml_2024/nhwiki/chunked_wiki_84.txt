@@ -1,0 +1,1000 @@
+|[[ring of teleportation]]
+|[[teleportitis]]
+|-
+|[[ring of warning]]
+|[[warning]]
+|}
+
+In [[3.6.0]] and later, digesting (positively enchanted) rings of protection, increase damage, and increase accuracy gives diminishing returns if you already have high intrinsic bonus of the same type.{{reffunc|eat.c|bounded_increase}}  Specifically, if digesting a +''n'' ring would put you above +9, the +''n'' bonus is reduced to a random number between 1 and ''n''; if you have +19 or more, you have a (''n''-1) in ''n'' chance of getting a single extra point (otherwise you get nothing); at +39 or above digesting rings has no effect.
+In older versions of NetHack, due to a bug fixed in [[NetHack 3.6.2|3.6.2]], eating a ring while wearing another ring of the same type could actually '''reduce''' your intrinsic bonus.
+
+Most of these intrinsics can come from sources besides rings, although eating them may still be useful. For example, they provide a [[pacifist]] way to obtain resistances, or a safe way to obtain [[teleport control]] without the risk of [[teleportitis]] from a [[tengu]].
+
+Notably, eating rings is the only source of intrinsic [[conflict]], [[regeneration]], [[hunger]], [[polymorphitis]], [[polymorph control]], [[protection from shape changers]], [[ring of increase damage|increased damage]] or [[ring of increase accuracy|increased accuracy]]. Furthermore, intrinsic [[searching]] and [[warning]] are only granted to certain [[roles]] at certain experience levels, and [[stealth]] is hard to get as an intrinsic, whereas rings may confer them to any player.
+
+However, some of these intrinsics come with downsides. Regeneration and conflict permanently increase your hunger rate in addition to their useful properties; hunger, of course, simply does so with no benefit. These effects are cumulative. Hunger from eating rings of regeneration or conflict is part of the regeneration or conflict effect itself, and thus it cannot be separately removed by a [[gremlin]]. Polymorphitis is not a desirable property even for characters with polymorph control: each polymorph still has a 20% chance of polymorphing you into your own race, in which case random stat shuffling can occur.
+
+== Effects of eating amulets ==
+
+{|class="prettytable"
+!Amulet
+!Effect
+|-
+|[[amulet of change]]
+|change gender
+|-
+|[[amulet of ESP]]
+|gain [[telepathy]]
+|-
+|[[amulet of life saving]]
+|no effect<ref name="nice try">A comment in the source says "nice try".</ref>
+|-
+|[[amulet of magical breathing]]
+|gain [[magical breathing]]
+|-
+|[[amulet of reflection]]
+|no effect<ref name="nice try"></ref>
+|-
+|[[amulet of restful sleep]]
+|gain [[restful sleep]]
+|-
+|[[amulet of strangulation]]
+|immediately choke
+|-
+|[[amulet of unchanging]]
+|unpolymorph
+|-
+|[[amulet versus poison]]
+|
+gain [[poison resistance]]
+|-
+|colspan="3"|
+|-
+|[[cheap plastic imitation of the Amulet of Yendor]]
+|inedible
+|-
+|[[Amulet of Yendor]]
+|
+inedible
+|}
+
+The only amulet which is generally useful to eat is the amulet of magical breathing. All the others either give no effect, a property which is easily obtainable otherwise, or a property which is downright harmful.
+
+{{upcoming|NetHack 3.7.0|[[Amulet of guarding|Amulets of guarding]] provide +2 intrinsic protection when eaten. [[Amulet of flying|Amulets of flying]] provide no effect when eaten<ref name="nice try"></ref>.}}
+
+== Strategy ==
+You will usually need to eat many rings or amulets to get any given intrinsic.
+If you are limited in ways to polymorph yourself it's important to have duplicates readily available, so you can eat them all before you revert to your normal form.
+Short of [[polypiling]] it is unlikely you'll have enough to be almost certain to get the intrinsic for amulets:
+
+{|class="wikitable"
+! Rings Eaten !! Likelihood of Intrinsic (%)
+|-
+| 1 || 33.3333
+|-
+| 2 || {{#expr:((1 - ((2 / 3)^2)) * 100) round 4}}
+|-
+| 3 || {{#expr:((1 - ((2 / 3)^3)) * 100) round 4}}
+|-
+| 4 || {{#expr:((1 - ((2 / 3)^4)) * 100) round 4}}
+|-
+| 5 || {{#expr:((1 - ((2 / 3)^5)) * 100) round 4}}
+|-
+| 6 || {{#expr:((1 - ((2 / 3)^6)) * 100) round 4}}
+|-
+| 12 || {{#expr:((1 - ((2 / 3)^12)) * 100) round 4}}
+|-
+| 18 || {{#expr:((1 - ((2 / 3)^18)) * 100) round 4}}
+|-
+| 23 || {{#expr:((1 - ((2 / 3)^23)) * 100) round 4}}
+|-
+| 29 || {{#expr:((1 - ((2 / 3)^29)) * 100) round 4}}
+|}
+
+{|class="wikitable"
+! Amulets Eaten !! Likelihood of Intrinsic (%)
+|-
+| 1 || 20.0000
+|-
+| 2 || {{#expr:((1 - ((4 / 5)^2)) * 100) round 4}}
+|-
+| 3 || {{#expr:((1 - ((4 / 5)^3)) * 100) round 4}}
+|-
+| 4 || {{#expr:((1 - ((4 / 5)^4)) * 100) round 4}}
+|-
+| 6 || {{#expr:((1 - ((4 / 5)^6)) * 100) round 4}}
+|-
+| 8 || {{#expr:((1 - ((4 / 5)^8)) * 100) round 4}}
+|-
+| 11 || {{#expr:((1 - ((4 / 5)^11)) * 100) round 4}}
+|-
+| 21 || {{#expr:((1 - ((4 / 5)^21)) * 100) round 4}}
+|-
+| 31 || {{#expr:((1 - ((4 / 5)^31)) * 100) round 4}}
+|-
+| 42 || {{#expr:((1 - ((4 / 5)^42)) * 100) round 4}}
+|-
+| 52 || {{#expr:((1 - ((4 / 5)^52)) * 100) round 4}}
+|}
+
+=== Chargeable rings ===
+If you're trying to get high intrinsic bonus to-hit/damage/AC, you will obviously want to eat rings as highly charged as you can find. However, [[charging]] them manually is usually not worth a thought unless you have the [[Platinum Yendorian Express Card]] or several spare [[magic marker]]s. Even then, you need to balance increased charge with a risk of explosion, and because of this consideration, charging beyond +3 is usually a waste: even the [[blessed]] scroll will give you a ring with an average of 5 charges 4/7th of the time and nothing otherwise, so the expected charge is 20/7 which is less than 3 you started with; [[uncursed]] charging fares even worse.
+
+Enchanting +2 rings always increases expected ''charge''; however, due to how digesting them works, you will want to avoid that if you only have access to uncursed charging (PYEC as non-Tourist) and already have a +8 or higher intrinsic bonus: at this level, +2 rings only give +1.5 to the bonus on average, +3 rings give +2, and 2*5/7 is less than 1.5. Similarly, at +19 or above, +2 rings give +0.5, +3 rings give +0.67, and uncursed charging is undesirable as well. Blessed-charging +2 rings, however, is always fine.
+
+You will obviously want to give first priority to enchanting +0 rings (and +1 rings if your bonus is already +19) as they don't contribute to your bonus at all when digested. [[Cancel]] negatively-charged rings instead of trying to enchant them.
+
+==Limitations==
+
+{{todo|There was an rgrn thread some time ago stating protection does not wrap around, i. e. it is stored in a 16-bit integer and clipped to 8 bit after the fact.}}The amount of protection or damage and accuracy bonus you can obtain this way is only limited by the number of rings in the game (provided they have an edible appearance). However, these attributes are stored in a signed char, so you do not want your total bonus (including weapon / armor type and enchantment, skill level, worn rings etc) to exceed +127 lest it wrap around and become negative.
+
+== History ==
+In '''NetHack 3.4.3''', rings of protection, increase damage and increase accuracy had no limitations beyond the 33% to acquire the bonus in the first place.
+
+== SLASH'EM ==
+SLASH'EM offers five new ring materials and five new functions. Ridged rings can be eaten by any metallivore. The other four, wedding, obsidian, plain, and glass rings, cannot be eaten by any monster. 
+
+{|class="wikitable"
+!Ring
+!Intrinsic granted
+|-
+| [[mood ring]]
+| no effect
+|-
+| [[ring of sleeping | sleeping]]
+| [[restful sleep]]
+|-
+| [[ring of gain dexterity | dexterity]]
+| +n [[dexterity]] until unpoly
+|-
+| [[ring of gain intelligence | intelligence]]
+| +n [[intelligence]] until unpoly
+|-
+| [[ring of gain wisdom | wisdom]]
+| +n [[wisdom]] until unpoly
+|}
+
+{|class="prettytable"
+!Amulet
+!Effect
+|-
+| [[amulet of flying]]
+| no effect
+|-
+| [[amulet of drain resistance]]
+| no effect
+|-
+| [[amulet versus stone]]
+| reverses stoning
+|}
+
+
+{{nethack-360}}
+[[Category:Strategy]]
+
+== References ==
+<references/>}
+&&%s&& %s Doors {7345 2006-08-15T20:58:26Z {396 Jayt} Redirecting to [[Door]] #REDIRECT [[Door]]}
+&&%s&& %s Plot {133177 2020-03-30T14:06:25Z {4001279 Umbire the Phantom}  #REDIRECT [[Story]]}
+&&%s&& %s Farming {149265 2022-12-12T06:14:34Z {4001279 Umbire the Phantom} /* Death farming */ title for thread '''Farming''' is a general gaming term used to define any kind of repetitive behavior designed for a specific benefit, usually in the form of better loot or an increased level and stats. Opinions on the practice vary widely, from being a common and accepted practice to being discouraged as against the spirit of the game.
+
+In a game like ''[[NetHack]]'', some of these opinions are more polarized than usual, due to the age of the game as well as the ways in which some of the more common methods of farming can trivialize much of the gameplay (e.g., by removing most of the challenge from assembling an [[ascension kit]]). However, there are still elements of the game that can pose a significant threat to all but the most dedicated farmers, and players electing to farm for a given purpose must weigh the amount of time and resources spent in return for the desired reward(s).
+
+==Changes to farming in NetHack==
+The types of farming possible in ''NetHack'' are many and varied; major changes made by the [[DevTeam]] in the transition from [[NetHack 3.4.3]] to [[3.6.0]] were designed to address certain exploits and other methods that certain kinds of farming were reliant on. These changes limited the benefits that can be derived from most of them - and in a couple of cases, rendering them completely useless. For example, many farming methods rely upon cloned monsters; in 3.6.0, a bitfield labeled <code>mcloned</code> is added that tracks how the monster was generated; among other things, this prevents the splitting of monsters if the split monster is rendered extinct (though the splitting itself does not respect extinction).{{refsrc|src/makemon.c|766|version=NetHack 3.6.0}}{{refsrc|src/mhitu.c|2739|version=NetHack 3.6.0}}
+
+==List of current farming methods==
+The methods listed in this section are usable in current versions, though they may undergo significant changes as the game is updated.
+
+===Altar scumming===
+{{main|Altar farming}}
+
+Hanging around an [[altar]] and sacrificing anything that comes along is a natural part of many legitimate games of ''NetHack'', but some feel that taking this to extremes is scumming, particularly when combined with any of the other applicable farming methods detailed below.
+
+===Gremlin farming===
+[[File:Gremlin farming screenshot.png|thumb|That's a lot of gremlins...]]
+While [[gremlin]]s normally stop dividing once their [[hit point]] maximum falls to 1, it's possible to induce them to divide indefinitely by using a [[ring of conflict]]. This works because whenever a monster kills something, such as another gremlin, its hit point maximum is increased, which allows it to divide again.{{refsrc|src/makemon.c|1831|nethack=3.6.6|comment=hit points gained after killing another monster}} Since on average a gremlin gains more than one maximum hit point when it kills another gremlin, more gremlins can easily be created provided they are given enough time to heal and divide. As indicated previously, gremlin division also does not respect [[extinction]].
+
+Gremlins will not [[death drop]] most items due to their size, but can still drop valuables such as [[gems]], [[ring]]s, and even the normally-rare [[magic marker]]. Cloned monsters in 3.6.0 and later versions cannot leave death drops at all and give diminishing [[experience]] returns;{{refsrc|src/mon.c|2202|version=NetHack 3.6.0}}{{refsrc|src/exper.c|133|version=NetHack 3.6.0}} gremlin farming is thus much less effective for loot, but still viable as they leave corpses that can be used for sacrificing.
+
+To "breed" gremlins effectively, the following steps are advisable:
+* Use an open, watery level. You need lots of [[pool]]s for the gremlins to divide in, and an open area for conflict to be most effective.
+* Try to keep the level clear of other monsters and traps. Remember that fully divided gremlins only have one hit point, and therefore die ''very'' easily.
+* Don't keep the ring of conflict on all the time. Instead, only put it on for one turn, take it off again immediately, and wait several turns for the surviving gremlins to fully heal and divide before putting it on again. This also keeps you less hungry and the gremlins less vulnerable to attacks by other monsters.
+* ''Don't'' do this at night. Even if you stand on [[Elbereth]] or a [[scroll of scare monster]], the gremlins will still sometimes hit you when you wear conflict, risking your [[intrinsic]]s in the process.
+
+===Medusa farming===
+Characters with a source of [[reflection]] or a [[mirror]] and the [[stone to flesh]] spell can easily stone and revive [[Medusa]] as many times as they like. No death drops are generated this way, but it does provide an easy source of experience points.
+
+This trick has also been nerfed in NetHack 3.6.0, as repeatedly killing a revived monster eventually starts yielding diminishing [[XP]] rewards.
+
+===Quest farming===
+====Giant farming====
+If you are playing as a [[Valkyrie]], you can hang out on the home level of your [[Valkyrie quest|quest]] and kill [[giant]]s for strength gain and [[death drop]]s.  This can be done easily by waiting in the building with the [[Norn]] using the [[numeric prefix]] command and then venturing out to kill and consume a giant when you become [[hungry]].
+
+===Throne looting===
+[[Loot|#Looting]] a [[throne]] while [[confusion|confused]] will generate a [[throne room]] monster and give it a fraction of your [[gold]] if no [[chest]] is on the level; a forgotten spell is a reliable, unlimited source of confusion. If throne monsters are rendered [[extinct]], ordinary random monsters are generated instead. In 3.6.0 and later versions, creating a monster now has a 10% chance of marking the throne as "looted", which will prevent it from any new monsters; additionally, confused looting now consumes a turn. Throne looting is thus still possible, but is no longer farmable to anywhere near the same extent.
+
+===Werecreature farming===
+Since [[werecreature]]s in their animal form can summon animals when attacking you, they can be used as a inexhaustible monster source. A reasonably safe farm is somewhat tedious to set up, but it can be a viable (and [[conduct]]-proof) alternative to the usual [[create monster|monster creation]] methods, since it has not yet been nerfed as of [[3.6.1]].
+
+{{float right|{{caption|1=<div class=ttyscreen>
+<replacecharsblock rules="ttymap">
+d=[[werecreature|{{brown|d}}]]
+`=[[boulder|{{lightgray|`}}]]
+
+.|    .|  
+.|#   .|d 
+.+#   .+` 
+.|    .|  
+</replacecharsblock>
+</div>|2=A farm made out of a [[closet]]}}}}
+
+The main idea is to trap the werecreature in a locked space connected diagonally to a door.  Since monsters cannot move diagonally through a doorway, but can attack, you can easily "switch" the monster creation process by moving in and out of the doorway.  You can use an existing [[closet]] as the base -- simply dig a square to the side, trap the monster there, and block the original closet square with a boulder.  If you have a [[wand of locking]], you can construct the farm in pretty much any room (including near an [[altar]]).
+
+Luring the werecreature into the trap can be troublesome.  The easiest way is to temporarily [[tame]] it, but [[illiterate]]s may find it difficult.  Since werecreatures are not [[follower]]s, moving them between levels without taming is also difficult. (You can get them to fall down [[hole]]s, or kill them and [[wand of undead turning|undead turn]] their corpse.)
+
+Once in place, you just need to endure its attacks.  You will inevitably be infected by [[lycanthropy]], so you need some way of managing it: either [[Werebane]], an [[amulet of unchanging]], or a [[ring of polymorph control]] (make sure to turn [[options|paranoid_confirmation:Were-change]] on if using the ring).  It helps to have a means of curing it, as well (like [[prayer]]).  Anyway, after a few turns of attacking you the monster will summon help, after which you should step aside and deal with them.
+
+Summoned monsters can be used for most usual purposes (food, death drops, sacrifice, etc.) but note that being infected with lycanthropy makes eating them [[cannibalism]] and reduces the chance of a [[favor|prayer boon]], because your god will prioritize fixing the lycanthropy first.  If you have Werebane, however, this is not a concern.
+
+All three kinds of [[werecreature]]s can be used, but wererats summon rats which have poisonous attacks and rarely leave corpses, and werewolves can summon [[winter wolf|winter wolves]] whose rays of cold can cause unwanted destruction (like the death of the original werewolf). If you can deal with them, however, they can give [[cold resistance]] (but mind the [[cannibalism]] penalty). Wolves leave corpses very often but are tougher in general, making werejackals an optimal choice for low-level characters.
+
+Overall, it's a tedious and somewhat situational strategy, but if you're sacrificing for a powerful artifact and have gotten Werebane instead, it can be considered.
+
+===Wraith farming===
+First, retrieve the [[Book of the Dead]]. This works best if you refrain from killing the [[Wizard of Yendor]], because then he won't randomly appear until you perform the [[Invocation Ritual]]. Reading the [[cursed]] Book can summon [[wraith]]s (as well as other [[undead]], including [[lich]]es, so genocide what you cannot deal with). However, it also marks the current level as a [[graveyard]]. This means that you should lead wraiths to another (nongraveyard) level before killing them for their corpses. Recall that eating a [[wraith]] corpse at [[experience level]] 30 will still increase your maximum [[HP]] and [[power]].
+
+===Vault guard farming===
+Since [[guard]]s generate without limit, it is possible to farm guards by entering a [[vault]] and killing guards. You can summon guards if you are inside a vault by blowing a cursed [[tin whistle]] (which you can obtain from the first guard that comes). Killing the guards yourself will subject you to a [[murder]] penalty (if you are not chaotic) and decrease your [[alignment record]] (for killing a peaceful monster, regardless of your alignment). If have a [[helm of opposite alignment]] and are or can become chaotic, you can avoid the murder penalty and reset your alignment record when you are done farming by putting on or removing the helm.
+
+You can also have a strong [[pet]] kill guards for you to avoid penalties, but you will not receive [[death drop]]s this way, limiting spoils to the [[offensive item]]s, [[defensive item]]s, and [[miscellaneous item]]s that guards may generate with. You may want to use the [[menu_search]] key binding (default {{kbd|:}}) to search for items when you are in the [[pick up]] menu to avoid scrolling through a list of the dead guards' [[junk]] weapons and armor.
+
+==List of deprecated methods==
+Due to the major divergence between versions, the following methods detailed below are either mostly inapplicable to current versions, or else severely reduced in effectiveness. They are still applicable to 3.4.3 at latest, as well as many variants based on pre-3.6 versions; changes made from the 3.6 series forward and their effects on the strategy are noted where appropriate.
+
+===Kraken farming===
+In 3.4.3, [[kraken]] can be killed trivially when on dry land, and their corpses can be revived using [[undead turning]]. This means you can continue killing the same monsters near-indefinitely, racking up a very high score with very little effort. To get the most out of such farming, you can trap kraken by digging walls in the following pattern:
+
+<div class="ttyscreen"><replacecharsblock rules="ttymap">
+;={{msl|kraken}}
+#=[[corridor|{{gray|#}}]]
+ =[[solid rock|{{gray|&nbsp;}}]]
+
+ # # # # # # # #
+# # ; ; ; ; ; ; 
+ # ; ; ; ; ; ; #
+# ; ; ; ; ; ; # 
+ ; ; ; ; ; ; # #
+# # # # # # # # 
+</replacecharsblock></div>
+
+This allows a farmer to repeatedly cast [[undead turning]] and [[finger of death]] along the diagonals with copy-and-paste - kraken are [[Physical size|huge]] monsters, and so cannot squeeze diagonally between walls.
+
+3.6.0 and later versions make this strategy vastly more dangerous, if not impossible - kraken will no longer revive while on land, and leaving them in water puts the player at risk of instadeath by [[drowning]] attack.
+
+===Pudding farming===
+{{main|Pudding farming}}
+In 3.4.3, a common tactic was to advance your character to the point where they could easily defeat [[black pudding]]s, then carefully use weak weapons to divide them without killing them; this allowed players to "farm" by killing as many puddings as they wish for [[death drop]]ped items, and their corpses can be [[sacrifice]]d for a variety of benefits. Players can continue this process (and even automate it) until they possess thousands of hit points, maximum [[AC]], and hundreds of [[wand of wishing|wands of wishing]]&mdash;at a point where a player is considering this and has the means to do so, the only primary obstacle is the amount of effort they are willing to dedicate (which ironically proved an effective deterrent).
+
+3.6.0's changes rendered this method of farming completely ineffective by removing the majority of its benefits. One such major change is the <code>mcloned</code> bitfield that tracks cloned monsters, used to prevent them from leaving death drops of any kind. Another such change is the addition of [[glob]]s, which replace regular corpses as the remains of black puddings; these are left behind in a special method similar to [[golem]]s, and thus puddings can no longer provide any death drops or sacrifice material.
+
+===Throne farming===
+Throne farming was once perhaps the fastest way in the game to generate lots of monsters, and the only method available without breaking any conducts; monster generation would also not use up a turn or risk any damage to the throne, allowing indefinite farming for whatever items you desire (from [[dragon scales]] to [[dragon scale mail|convert into mail]] to various [[potion]]s, [[wand]]s and [[scroll]]s. This is no longer possible as of 3.6.0, since confused looting now uses up a turn and has a 10% change of marking the throne as "looted", preventing further monster generation from that throne.
+
+For 3.4.3, earlier versions and some variants based on them, undiggable no-teleport levels work best to prevent monsters from ruining your setup; at most, you will only have to use up one charge from a wand of teleportation to send a troublesome monster off. Each [[quest]] home level generates the quest leader on a suitable throne - you can make them wander away if you move adjacent on a free turn, and then say no to the "really attack?" prompt. You might want to engrave concentric circles of [[Elbereth]] (as done when [[DSM#Acquiring dragon scales|farming dragon scales]] and/or use a boulder fort to protect yourself from ranged attacks. Illiterate conduct players can get a monster to read the [[scroll of earth]], then stand on a scroll of scare monster and confuse themselves, using a cursed [[unicorn horn]] if they did not start with a spell to forget.
+
+At this point, the only threat left is the potential of [[sickness]]; the chance of dying to terminal illness can be almost completely removed by [[polymorph]]ing into a [[ghoul]] to gain [[sickness resistance]] beforehand, or applying a preferably-blessed unicorn horn to cure it. Unattended copy-paste farming is only possible if you confuse yourself with an expired spell or are [[amulet of unchanging|permanently a ghoul]]; setting <code>[[option#menustyle|menustyle=traditional]]</code> in your config file can make the paste script execute the spellcasting faster.
+
+===Death farming===
+This is only borderline scumming, as any character capable of doing it is more than capable of ascending. The goal might be to gain large numbers of exotic items to ascend with, to gain billions of points, or (most commonly) to impress onlookers.
+
+# [[Eating jewelry|Eat]] [[ring of increase damage|rings of increase damage]] until you have a high enough intrinsic damage bonus to kill [[Death (monster)|Death]] in one hit (+60 should work).
+# Clear the [[Astral plane]] of all distractions.
+# Increase your [[polearm]] proficiency to skilled.
+# Trap [[Riders|Death]] in a corner on the Astral plane, like so:
+
+<div class="ttyscreen"><replacecharsblock rules="ttymap">
+&={{msl|Death}}
+j={{msl|blue jelly}}
+@=[[You|{{white|@}}]]
+`=[[boulder|{{gray|`}}]]
+
+----
+|&j.
+|j`@
+|jj.
+</replacecharsblock></div>
+
+In this example, Death is trapped between [[blue jelly|blue jellies]] and a [[boulder]]. He cannot move, but you can hit him with a polearm while he is in line of sight. Once he's dead (in one hit), attempt to push the boulder over his corpse. This will revive him. You can then repeat the procedure. You can work out the exact sequence of key strokes used in a complete cycle of this process (in this case, for example, "aahy.jyk"), and copy this line a few thousand times in a text editor, then paste the whole lot into the NetHack interface.
+
+The result will be many thousand death-dropped items and a very high score. If the number of death-dropped items exceeds 32,767 on the same square, the game will probably crash,<ref>[http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/3f97bcf24f034605/5f51813967ab27a8?q=#5f51813967ab27a8 RGRN thread: [BUG] menucolors patch segfaults]</ref> so periodically checking Death's square and redistributing the items (possibly by teleporting them away, or polymorphing them together) is necessary. This is because the number of items present on a [[square]] is stored in a [[signed variable|signed short]] when the items are listed.
+
+This method no longer works as of 3.6.0, because Riders can [[displace]] other monsters; thus, the jelly fort will not work to contain Death. It is still possible to kill Death (or other Riders) arbitrarily many times, but not with this method of automation. Additionally, revived monsters give diminishing experience points and score, down to {{frac|64}} of the base value, which means that it will take much longer to achieve billions of points.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Farming|*]]}
+&&%s&& %s Altar scumming {9067 2006-08-31T11:09:52Z {396 Jayt} fix redirect #REDIRECT [[Farming]]}
+&&%s&& %s Kraken farming {85902 2013-06-13T16:17:32Z {4000123 DoubleU} Redirected page to [[Farming#Kraken farming]] #REDIRECT [[Farming#Kraken farming]]}
+&&%s&& %s Death farming {126950 2019-08-10T23:32:37Z {4001313 Ardub23} Changed redirect target from [[Farming]] to [[Farming#Death farming]] #REDIRECT [[Farming#Death farming]]}
+&&%s&& %s Samurai sword {7355 2006-08-16T03:26:03Z {509 Lotte} redirect #REDIRECT [[Katana]]}
+&&%s&& %s Ladder {108705 2018-01-02T06:42:03Z {4001094 Luxidream} Updated version, no change {{features}}
+A '''ladder''' is a [[dungeon feature]] which acts exactly like a [[staircase]], except these only appear in [[Vlad's Tower]] and the [[Wizard's Tower]]. It is represented by {{brown|>}} or {{brown|<}}, for a down ladder or up ladder, respectively. The differences between a ladder and a stairway, that objects dropped on a ladder are more likely to fall down, and that you receive a message when climbing ladders. Some patches display branches as ladders instead of stairways to make them stand out more. 
+
+[[Category:Dungeon features]]
+{{nethack-360}}}
+&&%s&& %s Ring of regeneration {143549 2021-11-02T21:05:44Z {187 Darth l33t}  {{ring
+ |name=regeneration
+ |cost=200
+}}
+
+The '''ring of regeneration''' is an [[item]] in [[NetHack]]. While wearing it, a character heals more quickly but also becomes more hungry.
+
+== Identification ==
+
+It is possible for a player to identify this ring by putting on the ([[noncursed]]) ring, throwing an object upwards {{kbd|<}}, and examining their healing rate. The normal healing rate without regeneration is some HP every few turns.
+
+Dropping a ring of regeneration into a [[sink]] produces the message, "The sink looks as good as new."
+
+== Effects ==
+
+The ring grants [[extrinsic]] [[regeneration]]. Regeneration causes you to heal one [[HP]] on any [[turn]] you would otherwise heal none. Regeneration is not cumulative, so wearing two such rings, or a ring along with another regeneration source, grants no further benefit.
+
+Unfortunately, regeneration burns [[nutrition]] very quickly: every odd-numbered turn your nutrition is decremented. This is in addition to the standard nutrition cost of wearing the ring itself.
+
+== Strategy ==
+
+Especially at very low levels, this ring is valuable because it makes much faster game play possible. The same thing goes for players who spend most of their time [[polymorph]]ed, e.g. [[speed run]]ners, because they naturally heal only one point per 20 turns. However, late-game characters with high [[experience level]]s and [[constitution]] have enough natural healing that regeneration becomes a minor benefit, making the ring a poor choice for the [[ascension kit]].
+
+Because of the increased hunger, a player should only wear one if he's hurt, or about to become so, or if he is satiated and wishes to become less satiated quickly to eat corpses for intrinsics.
+
+[[Category:Rings|Regeneration]]
+{{nethack-366}}}
+&&%s&& %s History {7378 2006-08-16T21:49:57Z {239 Eidolos} Redirect to [[Game history]]. #REDIRECT [[Game history]]}
+&&%s&& %s Ring of teleport control {129674 2019-12-14T05:35:59Z {4000978 Aximili} Add explicit identification section {{ring
+ |name=teleport control
+ |cost=300
+}}
+
+Wearing a '''ring of teleport control''' conveys the [[teleport control]] [[extrinsic]]. This is an incredibly useful property, especially when combined with [[teleportitis]] or a means of [[level teleportation]]. [[Eating jewelry|Eating]] a ring of teleport control grants the property as an [[intrinsic]].
+
+== Identification ==
+
+One of the ways to identify a ring of teleport control is to [[teleport]] (usually with a [[teleport trap]] or [[scroll of teleportation|scroll]]) while wearing an (ideally [[noncursed]]) ring. If you can choose your destination, you have the teleport control ability. Dropping a ring of teleport control into a [[sink]] produces the message, ''"The sink looks like it is being beamed aboard somewhere."''
+[[Category:Rings|Teleport control]]
+{{nethack-361}}}
+&&%s&& %s Template:Clear {56550 2010-11-13T20:26:11Z {831 Tjr} 1 revision: Import mediawiki help files <div style="clear:both;"></div><noinclude>[[Category:Utility templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Ravens {7432 2006-08-17T13:38:54Z {396 Jayt} Redirecting to [[Raven]] #REDIRECT [[Raven]]}
+&&%s&& %s Credit cloning {130930 2020-01-16T02:12:14Z {4001279 Umbire the Phantom}  '''Credit cloning''' is the act of dropping [[gold]] in a shop to build up credit, and then removing the gold without erasing the credit. Then, the credit with the shopkeeper remains, and you have your gold back. There are several ways to accomplish this, mostly involving pets, but occasionally using hostile monsters as well. By repeatedly credit cloning and selling items to a shopkeeper, it is possible to get all of their gold, and then all of their items from the built-up credit.
+
+In [[NetHack 3.6.0]], you can no longer do this with loose gold, so you need to use a [[container]] to allow the gold to be stolen as a group. Most pets will only pick up a single piece of gold, with gold-loving monsters being the exception. This means a distinct advantage for [[Rogues]] and [[Archeologists]], who both start with an uncursed [[sack]], and can therefore employ the technique of credit cloning right from the start, while other classes have to acquire some kind of container first.
+
+==Strategy==
+The [[strategy]] of '''credit cloning''' is simple:
+* Move all objects in the [[shop]] to a single pile. Drop a [[cursed]] item to prevent your [[pet]] from moving on to it.
+* Drop [[gold]] into the shop. The [[shopkeeper]] will give you credit for the gold.
+* Let your pet [[stealing from shops|steal]] the gold for you (a [[leash]] or [[magic whistle]] is very helpful here). (If you can, get a [[leprechaun]] to do it instead; that's sometimes easier.)
+* Go to the pile and buy as much as you can from your credit.
+* Sell all the recently bought items, even items that you own. It helps to put all the merchandise in a single bag and drop it at once.
+* You may need to buy and sell several times before you can exhaust your credit if you had a lot of starting credit.
+* Drop the old and new gold in the shop and repeat from letting your pet steal it.
+
+Repeat the technique till the shopkeeper has no gold – you will know this because the shopkeeper offers you credit instead of gold when you try to sell the item – and you have enough credit to buy everything that you want from the shop.
+
+The technique is very time consuming and should not be done if you don't have [[slow digestion]], a good amount of [[food]], or a good relationship with your god. The slowest part is waiting for your pet to steal the gold, so a good starting quantity helps, too.
+
+Credit cloning is more effective if you have a [[sack]] – or still better, a [[bag of holding]]. You can put all your gold into the sack, along with as many items as your pet can carry (preferably expensive ones). You can then have your pet carry the bag outside the shop and resell the items over and over to get all the shopkeeper's gold very quickly.
+
+The point is to steal gold instead of merchandise, since gold has the highest value-to-weight ratio of all items in the game (except artifacts and identified gems) and is universally accepted. However, in the beginning, you might need to have your pet steal items.
+
+The best shops for credit cloning, therefore, are ones with lightweight expensive items like [[rings]], [[wands]] and identified [[gem]]s. Delicatessens are probably the safest, because they stock food, but are also very time-consuming because the items are so cheap until you make much [[holy water]]. General stores are also good because you can sell many of your own items at the beginning, increasing the size of the initial pile of gold.
+
+===Using pets===
+Be careful that your pet doesn't starve to death while credit-cloning. If you are just starting a game and plan to credit clone, try not to let your pet pick up any items until you have reached a shop. By keeping the pet's [[apport]] from decreasing prematurely, you optimize its shoplifting ability.
+
+Sometimes your pet will not pick up your "stealing bag" because it is [[monster carrying capacity|too heavy]].
+
+The spreadsheet [[File:Nh_inventory_weight.ods|Nh_inventory_weight.ods]] can do the math for you, and the below table ''has already done it'' for certain popular pets.
+
+{|class="prettytable"
+! Pet type
+! Corpse weight
+! Can carry unassisted
+! in uncursed [[bag of holding]]
+! in blessed [[bag of holding]]
+|-
+|[[kitten]]/[[little dog]]     ||    150 ||    52 || 72 || 145
+|-
+|[[housecat]]/[[dog]]     ||    200 ||    69 || 106 || 213
+|-
+|[[large cat]]/[[large dog]]     ||    250 ||    1000 || 1968 || 3937
+|-
+|[[pony]]     ||    1300 ||    1000 || 1968 || 3937
+|-
+|[[horse]]     ||    1500 ||    1034 || 2036 || 4073
+|-
+|[[warhorse]]||    1800 ||    1241 || 2450 || 4901
+|-
+|[[mind flayer]] ||1450|| 500 || 970 || 1940
+|-
+|[[minotaur]] || 1500 || 1035 || 2040 || 4080
+|-
+|[[balrog]] || 1450 || 1063 || 2095 || 4189
+|}
+
+===Using hostile monsters===
+{|class="prettytable"
+!Monsters which will pickup gold in shops
+|-
+|[[orc]]s
+|-
+|[[dwarf|dwarves]]
+|-
+|[[centaur]]s
+|-
+|[[ogre]]s
+|-
+|[[orc mummy|orc mummies]]
+|-
+|[[leprechaun]]s
+|}
+Certain monsters will pick up gold in a shop. These monsters will chase you into shops where you have left a pile of gold. Once they have picked up the gold, they will follow you out of the shop, where you can kill them, retrieve the gold, and repeat. Just as with pets, shopkeepers will show no alarm when these monsters swipe from them.
+
+Some strategies for this:
+* Whenever paying for ''anything'' in a shop, it is better to drop the money on the ground and pay out of your credit, rather than paying directly.
+* When you are in the shop, the shopkeepers may stand on the square just inside the door and block the monsters from entering the shop. He will step aside from this square if you are in a direct line with it and at least a full square away from it.
+* Some monsters, especially orcs and dwarves, will sense gold buried in the earth and loiter near it rather than following you to a shop. Dropping a trail of single gold coins will induce them to follow you.
+* Occasionally a monster will have already picked up so much weight (rocks, armor) that they will not be able to pick up any gold.
+* In a shop with gold on the floor, monsters may choose to chase and attack you, rather than picking up the gold. If you have placed the gold anywhere but in a corner, you can get them to follow you until they are standing on the gold. Move to a space where they are not in a direct line with you (e.g. a knight's move away.) They will then pick up the gold.
+* Pets are actually a hindrance to this strategy; they tend to kill the monsters before the monsters have left the shop. So lock up your pets or strand them on an adjacent level.
+* [[Orc shaman]]s may also swipe magical items as well as gold.
+* Applying a [[figurine]] of a gold loving monster or casting [[stone to flesh]] on a statue of one inside of a shop is another method. Leprechauns are usually the only monster small enough to make transporting the statue feasible, however. This is of little use in vanilla NetHack, but is one of the few ways to credit clone in the [[Black market (SLASH'EM)|black market in SLASH'EM]].
+
+== SLASH'EM ==
+Credit cloning is slightly more difficult in SLASH'EM than in vanilla, but also significantly more useful. The [[shopkeeper services]] mean that it is useful to have credit in a shop even after the shopkeeper's gold has been exhausted and all useful items have been purchased. Pets are no longer guaranteed to pick up an entire pile of gold, so it is no longer possible to simply drop a pile of gold and have your pet kitten pick it up. It is necessary to place the gold into a sack or other container first. Fortunately, the shopkeeper identification service makes it much easier to identify valuable gems, and the massive increase in magic lamp price makes draining gold from shops quick if one is generated.
+
+==References==
+
+<references/>
+[[Category:Strategy]]
+{{nethack-360}}}
+&&%s&& %s How to help {53943 2010-11-11T14:35:44Z {831 Tjr}  #REDIRECT [[NetHackWiki:How to help]]}
+&&%s&& %s Welcome {7457 2006-08-17T16:01:19Z {396 Jayt} Redirecting to [[Template:Welcome]] #REDIRECT [[Template:welcome]]}
+&&%s&& %s Extinctionist {7465 2006-08-17T16:14:41Z {396 Jayt} Redirecting to [[Extinctionism]] #REDIRECT [[Extinctionism]]}
+&&%s&& %s Polymorph trap {147921 2022-08-24T07:09:56Z {4000978 Aximili} /* Preventing monster use */ remove nested parens A '''[[polymorph]] [[trap]]''' changes you to a new species, in the same manner as a polymorph [[spell]], [[potion]] or [[wand]].
+
+==Generation==
+
+They will not be generated on dungeon levels 1 to 7.{{refsrc|mklev.c|1231|polymorph traps not generated if dlvl < 8}} The only guaranteed polymorph trap is on the [[wizard quest]] locate level.
+
+==Effects==
+
+You, and the trap, are not affected if you have either [[magic resistance]] or [[unchanging]]. Magic resistance will protect your [[steed]].
+
+If you are affected, the following may happen:
+
+* If you have [[polymorph control]], you get to choose which monster to become.
+* If you are wearing dragon scales or dragon scale mail, you turn into that color dragon.{{refsrc|polyself.c|266|comment= dragon armor polymorph}} If you were also wearing a cloak, it will be ripped apart (destroyed). Wearing gray dragon scale mail will prevent the polymorph from happening.
+* If you have [[lycanthropy]], you switch between your animal and were forms.{{refsrc|polyself.c|277|comment= lycanthrope polymorph}}
+* If you are a [[vampire]] or [[vampire bat]], you switch between the two.{{refsrc|polyself.c|282|comment= vampire bat polymorph}}
+* Otherwise, you have a (19-[[Constitution|Con]])/20 chance of suffering a system shock: you sustain d30 damage and abuse your constitution.
+
+If none of the above happened, you either polymorph into a random monster for 500-999 turns,{{refsrc|polyself.c|396}}{{refsrc|polyself.c|452|comment=time-out for polymorph}} shorter if your polymorphed level is higher than your native level, or if you polymorph into your own race and see: "You feel like a new &lt;race&gt;". This redistributes your [[attribute]]s and changes your [[experience level]] by up to two levels.
+
+This transformation will destroy your shirt, body armor and cloak if you polymorph into something large or bigger, a non-humanoid medium or bigger, or a [[winged gargoyle]] or [[marilith]] (wings and extra arms don't fit).
+
+The trap then disappears.
+
+{{upcoming|NetHack 3.7.0|Polymorph traps can be removed by zapping them with the spell or wand of cancellation. The trap will explode for 23 to 38 damage.}}
+
+==Use by monsters==
+If a monster uses a polymorph trap, the [[Polymorph#Armor|normal sounds]] will be heard for a shapeshift. Note that if you have telepathy and you see a monster standing still and polymorphing, it could be either a polymorph trap or a [[shapeshifter]].
+
+A polymorph trap turns a monster into any of 269 equally likely, non-human, non-limited-edition species.{{refsrc|trap.c|2121}}{{refsrc|mon.c|2412}}{{refsrc|mon.c|2376}}
+
+Monsters can [[Magic resistance (monster)|resist]] polymorph traps.{{refsrc|trap.c|1253|comment= monsters may resist polymorph traps}} Polymorph traps count as a wand for these purposes (level 12).
+
+Monsters may deliberately jump onto polymorph traps if their [[difficulty]] is at most five, or simply blunder onto them.{{reffunc|muse.c|find_misc}}{{reffunc|muse.c|use_misc}}{{refsrc|monmove.c|1049}} Even if monsters deliberately jump onto the trap, they still have a greater chance of becoming out-of-depth monsters than if they had used an item of polymorph.{{refsrc|muse.c|1789}}
+
+For this reason, it's safest not to traverse the lower areas of the [[Gnomish Mines]] until one has [[magic resistance]] and is sufficiently powerful to deal with monsters like [[jabberwock]]s, [[lich]]es, and [[vampire]]s that can potentially be created by these traps.
+
+==Strategy==
+===Protecting yourself===
+If you have valuable armor which you would rather not have destroyed by the trap, you can proceed in relative safety by searching ({{kbd|s}}) every square until you find it. This strategy works best if you have high [[Luck]]. Contrary to popular belief, a [[pair of lenses]] and the enchantment on [[Excalibur]] have no effect on the chance of finding a trap. Characters with low [[Luck]] may have to search many times to reveal an adjacent trap &ndash; see [[luckstone]], [[sacrifice]], [[altar]], and [[unicorn]] on how to improve your Luck. A [[crystal ball]] or [[confused]] [[scroll of gold detection]] will reliably reveal the location of polymorph traps on the level, although a crystal ball is not safe to use with low [[intelligence]]. A [[wand of secret door detection]] may be zapped in rooms to determine if a polymorph trap is present; the [[spellbook of detect unseen|spell of detect unseen]] has the same effect.
+
+If you do not have [[magic resistance]], there are other ways to reliably protect yourself from polymorph traps. Wearing a [[ring of polymorph control]] is good protection against polymorph traps, as you can always choose a safe form into which to polymorph. An [[amulet of unchanging]] will also protect you from transforming. 
+
+You can mitigate the effects of breaking your shirt, body armor, and cloak by enchanting other armor pieces that are unlikely to be destroyed or replaced, such as [[gloves]] or a [[helm]].
+
+The presence of out-of-depth monsters, or unusual, [[Gehennom]]-only, or non-randomly generated monsters such as [[woodchuck]]s, is a likely indicator of a polymorph trap on the level. If several unusual monsters are grouped in a single area a polymorph trap is almost certainly nearby; check this with [[telepathy]]. Proceed with caution.  If you are in the Mines, and either gnomes or dwarves are peaceful to you, then a grouping of peaceful monsters that should normally be hostile, no matter what the depth, is a solid sign of a polymorph trap (i.e. a peaceful long worm and minotaur at Mine's End).
+
+===Polymorphing pets===
+If you are immune to being polymorphed, you can displace your pet onto the trap to have it turn into a random monster. You can keep doing this until your pet is something useful or powerful, or turns into a (baby) [[gray dragon]], at which point it too is magic resistant, and is no longer affected by the trap. If you aren't immune to being polymorphed, consider using a leash on your pet and standing next to a polymorph trap. Chances for a pet to walk over the trap are much higher this way. Another way is to push boulders to make a two square trap and thus forcing your pet to move between the trap and an empty space. After a desirable morph is reached, you can block the trap with a boulder.
+
+You can also use a [[magic whistle]] to make your pet land on the trap until you get a desirable morph or a [[gray dragon]]. Combine the polymorph trap and magic whistle with some pet treats like [[tripe]] or a horse friendly treat like an apple and you can get a pretty nice pet. Note: pets that eat in your presence tend to stay tame longer. The [[winged gargoyle]] is a great pet, but it doesn't eat. Standing on the trap and displacing the correct pet onto it works best. Each move, you have 6/7 chance of swapping places (never if it's a [[long worm]] or you are [[punishment|punished]]),{{refsrc|uhitm.c|318}} 1/7 chance if it is sessile.{{refsrc|uhitm.c|338}}
+
+If you have neither magic resistance nor a magic whistle, you have no way to cause a [[sessile]] pet to be polymorphed by the trap; generating one of these (such as a [[blue jelly]]), would end the attempt, but at least protect the trap from other monsters.
+
+If your pet is polymorphed into a pudding, you may want to try to split it, possibly yielding more pets to polymorph. As the name is cloned along with it, you may want to rename one. See [[Tameness#Abuse|Abuse]] for ramifications of attacking and splitting your pet. Follow the usual advice on splitting puddings if you are not familiar; doing this carelessly is an easy way to accidentally kill your pet.
+
+===Preventing monster use===
+Polymorph traps are a resource, but they can also be quite dangerous if you leave them lying around unprotected: some weak but intelligent monsters will willingly jump into the trap to likely become something stronger (luckily including pets), which can be a bad thing depending on how much stronger it becomes. In [[NetHack 3.4.3]], you could protect a polymorph trap by dropping an item and engraving [[Elbereth]] on it. This would prevent most monsters from stepping onto the trap. Alternatively, if you didn't have protection from the trap, you could drop an item and engrave Elbereth on each tile adjacent to the trap. You can also dig down on the polymorph trap with a [[pick-axe]]: since only one [[trap]] can exist on a square, the resultant [[pit]] will remove the polymorph trap. Pushing a [[boulder]] on the trap will only protect it from most monsters &ndash; notably, tiny ones can still use it. (In case no boulders are handy, you can make a boulder fall down stairs by throwing a non-rock object onto it.)
+
+==References==
+
+<references/>
+
+{{nethack-343}}
+[[Category:Traps]]}
+&&%s&& %s Polytrap {7470 2006-08-17T16:33:36Z {396 Jayt} Redirecting to [[Polymorph trap]] #REDIRECT [[Polymorph trap]]}
+&&%s&& %s Polymorph traps {7471 2006-08-17T16:34:00Z {396 Jayt} Redirecting to [[Polymorph trap]] #REDIRECT [[Polymorph trap]]}
+&&%s&& %s You hear a thud {128953 2019-11-01T17:53:47Z {4001343 Towardsdawn2} All polymorphs can produce this message #REDIRECT [[Polymorph#Armor]]}
+&&%s&& %s You hear a clank {128954 2019-11-01T17:54:16Z {4001343 Towardsdawn2} All polymorphs can produce this message #REDIRECT [[Polymorph#Armor]]}
+&&%s&& %s You hear a cracking sound {128950 2019-11-01T17:52:29Z {4001343 Towardsdawn2} Linked to section #REDIRECT [[Polymorph#Armor]]}
+&&%s&& %s You hear a ripping sound {128952 2019-11-01T17:53:08Z {4001343 Towardsdawn2} All polymorphs can produce this message not just traps #REDIRECT [[Polymorph#Armor]]}
+&&%s&& %s Category:Traps {7476 2006-08-17T16:39:54Z {396 Jayt} created This category contains articles about [[trap]]s.
+
+[[Category:Dungeon features]]}
+&&%s&& %s Polyfodder {7486 2006-08-17T17:47:31Z {924 ZeroOne} #REDIRECT [[Polypiling]] #REDIRECT [[Polypiling]]}
+&&%s&& %s Theft {7499 2006-08-17T19:25:21Z {396 Jayt} disambiguating '''Theft''' in NetHack can refer to:
+
+* [[Stealing from shops]]
+* A monster's [[theft (attack)|theft attack]]
+
+The [[Wizard of Yendor]] also refers to you as a thief after you've found the [[Amulet of Yendor|Amulet]].
+
+{{disambig}}}
+&&%s&& %s Stealing {150016 2023-02-20T06:59:36Z {4001483 Cathartes} redirect to [[Theft]] #REDIRECT [[Theft]]}
+&&%s&& %s Template:Merge {64255 2011-01-30T12:06:09Z {630 Paxed} cat <div class="merge">
+A user has suggested this page be '''merged''' with ''"{{{1}}}"''
+</div><noinclude>
+'''Usage''': <nowiki>{{merge|[[otherpage]]}}</nowiki>.
+
+This adds the page to [[:Category:Pages to be merged]].
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude><includeonly>[[Category:Pages to be merged]]</includeonly>}
+&&%s&& %s Categories {53933 2010-11-11T14:34:11Z {831 Tjr}  #REDIRECT [[NetHackWiki:Categories]]}
+&&%s&& %s Policy {53948 2010-11-11T14:36:12Z {831 Tjr}  #REDIRECT [[NetHackWiki:Policy]]}
+&&%s&& %s Cancellation {150165 2023-03-07T20:15:57Z {4001279 Umbire the Phantom} /* Considering when to cancel */ possessive {{For|the cancellation effects caused by armor|Magic cancellation}}
+
+'''Cancellation''' is the term for removing magical charges and [[BUC|blessed/cursed]] status from an object or disabling the special attack of a monster. The most common source of cancellation is the [[wand of cancellation]]. A few are able to use the [[spellbook of cancellation]]. [[Magicbane]] can sometimes cancel things it hits. [[Foocubi]] can spontaneously become cancelled. Some [[potion]]s can be transformed by dipping [[unicorn horn|thin]][[amethyst stone|gs]] in them, but this is not quite cancellation. [[Gremlin]]s can also use their intrinsic-stealing attack to cancel other monsters.
+
+== Cancellation of objects ==
+Cancellation has the following effects on objects:
+* the object becomes [[uncursed]]
+* the object's enchantment is set to +0 (applies to [[weapon]]s, [[weapon-tool]]s, and [[armor]])
+* all charges are removed from the object if it is magical ([[wand]]s to (x:-1), magical [[tool]]s to (x:0), [[ring]]s to +0); non-magical tools, the [[wand of nothing]], and the [[wand of cancellation]] do not lose charges
+* [[scroll]]s and [[spellbook]]s (except the [[scroll of mail]] and [[spellbook of cancellation]]) are blanked
+* most [[potion]]s are converted to uncursed water
+** potions of [[potion of see invisible|see invisible]] and [[potion of sickness|sickness]] become uncursed [[potion of fruit juice|fruit juice]]
+** potions of [[potion of booze|booze]], [[potion of fruit juice|fruit juice]], and [[potion of oil|oil]] are unchanged except for their BUC status
+
+''"In short, cancellation is quite thorough."''
+
+Except for certain scrolls, spellbooks, and potions, cancelled objects do not change type. Cancelling a [[bag of holding]] or [[magic lamp]] will merely uncurse it, not turn it into a [[sack]] or [[oil lamp]]. Cancelling an [[artifact]] will not turn it into a non-artifact. Cancellation has no effect on the objects inside a [[container]].
+
+Cancelled wands end up with (x:-1) charges. Cancelled wands can be recharged subject to normal restrictions on wand charging, but cannot be wrested; if they are zapped or engraved with, they will turn to dust.
+
+Irina Rempt has written an excellent and thorough [http://web.archive.org/web/20100405073536/http://www.nethack.de/spoiler330/cancellation.txt spoiler on cancelling objects]. Consult it for more details.
+
+== Cancelling yourself ==
+If you zap a wand of cancellation at yourself, every item in your inventory (''except'' the wand itself) will become [[#Cancellation of objects|cancelled]]. Breaking a wand of cancellation that has charges will produce the same outcome. All equipment will revert to uncursed and +0, all spellbooks and scrolls will turn blank, etc. This affects only items, i. e. the naked player monster is not cancelled. Do not do this with a wand that you think is a wand of make invisible. Self-cancellation is one means of removing [[BUC|cursed]] gear; just be sure to drop or bag everything else before zapping. Polymorphed players revert, unless [[unchanging]].{{refsrc|zap.c|2258}}
+
+A corner case: You are immune to cancellation if you have [[magic resistance]], unless you are zapping yourself. Monsters cannot zap cancellation in Vanilla, so <!--What is the following phrase trying to say? -->this matters only for the point of maximum power you lose when hit by [[Magicbane]] (and unpolymorphing).
+
+== Cancellation of monsters ==
+Monsters have an opportunity to [[Magic resistance (monster)|resist]] cancellation effects. If the monster fails, it is cancelled and loses most of its special abilities.
+
+===Abilities stopped by cancellation===
+The following attacks and special abilities are entirely stopped by cancellation:
+* Everything [[magic cancellation]] protects against, and passive versions of the same:
+** [[Fire]] (e.g., a [[fire ant]]'s burning attack)
+** [[Cold]] (e.g., a [[winter wolf]]'s breath)
+** [[Shock]] (e.g., an [[electric eel]]'s bite)
+** [[Sleep]] (e.g., a [[homunculus]]' bite)
+** [[Poison]] (e.g., a [[killer bee]]'s sting)
+** [[Paralysis]] (e.g., a [[guardian naga]]'s bite)
+** [[Drain life]] (e.g., a [[vampire]]'s bite)
+** [[Sticky attack]] (e.g., a [[large mimic]]'s bite)
+** [[Lycanthropy]] (e.g., a [[werejackal]]'s bite while it is in animal form)
+** [[Slowing attack]] (e.g., a [[shade]]'s touch)
+** [[Teleport]] by a [[quantum mechanic]]'s claw
+** [[Sliming]] by a [[green slime]]'s touch
+** [[Disenchanting]] by a [[disenchanter]]'s claw
+** [[Power]] draining by an [[energy vortex]]
+** Constitution draining [[poison]] from a [[rabid rat]]'s bite
+** Dexterity draining [[poison]] from a [[quasit]]'s claw
+* [[Monster spell|Spellcasting]]
+* [[Gaze attack]]s
+* [[Breath attack]]s (e.g., from [[dragon]]s)
+* [[Erosion]] attacks ([[rusting]], [[corroding]], and [[rotting]]) and passive erosion effects
+* [[Drowning attack]]s (cancellation will prevent a [[sea monster]] from swinging itself around you, but if it is already holding you cancellation will not prevent drowning)
+* [[Blind]]ing attacks by light (e.g., by a [[yellow light]])
+* [[Confusion]] attacks (e.g., from [[Yeenoghu]])
+* [[Stun]]ning attacks
+* [[Petrification]] attacks
+* [[Acid]] attacks
+* [[Seduction]] of [[succubus|succubi]] and [[incubus|incubi]] (by attack or #[[chat]])
+* [[Leprechaun]] gold stealing
+* [[Nymph]] item stealing
+* [[Gremlin]] intrinsic-stealing
+* [[Xan]] leg attack
+* [[Nurse]] healing attack
+* [[Division|Dividing]] by [[pudding]]s
+* [[Explode|Exploding]] attacks from [[sphere]]s and [[Light (monster class)|lights]]
+* Mimicking ability of [[mimic]]s
+* Spitting attacks (e.g., by cobras)
+* [[Summoning]] abilities of some [[demon]]s and [[lycanthrope]]s
+* [[Coyote]] funny names
+
+Cancelling [[clay golem]]s causes them to be destroyed immediately (this is because they, according to legend, are animated by an inscription on their forehead, which the wand erases).
+
+{{upcoming|NetHack 3.7.0|The ability of [[zombie]]s and [[lich]]es to raise corpses is also negated by cancellation.
+
+In addition, cancelling a [[troll]] or its corpse will prevent it from reviving. ([https://github.com/NetHack/NetHack/commit/fae75f5930bf8e7707a31b019f7fe415c6705cdd commit])}}
+
+===Abilities not stopped by cancellation===
+Some attacks which are not magical in nature cannot be cancelled; these include:
+* the special attacks of the [[Riders]] (disease for [[Pestilence]], hunger for [[Famine]], and touch of death for [[Death (monster)|Death]])
+* the blinding attack of [[raven]]s
+* a [[mind flayer]]'s brain-sucking attack
+* the passive attacks of the [[Oracle]]
+* passive [[acid]] splashing
+* [[Grabbing attack]]s (e.g., an [[owlbear]]'s hug)
+* [[Engulfing]]
+* [[Juiblex]]'s disease attack
+* The [[Wizard of Yendor]]'s amulet stealing
+* corpses of [[Troll]]s and the [[Riders]] returning to life
+
+{{upcoming|NetHack 3.7.0|A [[displacer beast]]'s natural [[displacement]] defense is also unaffected by cancellation.}}
+
+===Notes===
+Cancelling a [[cockatrice]] or chickatrice prevents it from [[stiffening]] you with its hissing, but direct physical contact with it or its corpse can still cause [[stoning]].
+
+Cancelling [[Medusa]] removes her stoning gaze, which also means that she cannot be stoned with a reflecting item. Similarly, cancelling a floating eye means it cannot be paralyzed by its reflection.
+
+Cancelling items inside a [[shop]] will anger the [[shopkeeper]].
+
+===Un-cancelling===
+It is possible to un-cancel most monsters by [[stoning]] them and then casting [[stone to flesh]] on their statue. This does not work on a [[foocubus]] or a [[nymph]], though.{{refsrc|zap.c|511}} Also, some monsters resist [[stoning]], and [[tiny-sized]] monsters can turn into [[rock]]s or [[meatball]]s in the process. You can also un-cancel most [[monster]]s if they die and leave a [[corpse]]. [[Zap]] the [[corpse]] with a [[wand of undead turning]] - it will come back to life uncancelled.
+
+== Cancelling the floor ==
+[[Engraving]] on the floor or [[zap]]ping downwards with a [[wand of cancellation]] will cause any previously created engraving on the floor space to disappear.
+
+; "The engraving on the &lt;floor&gt; vanishes!"
+
+This is the same result as for a [[wand of make invisible]] and a [[wand of teleportation]], so a wand of cancellation cannot be uniquely identified in this manner.
+
+== Considering when to cancel ==
+Suppose you need some blank scrolls and spellbooks and some potions of water, because you plan to use your [[magic marker]] and make [[holy water]]. If you have a [[wand of cancellation]], one strategy is to put all your junk scrolls, spellbooks, and potions into one pile, then zap it with only one charge. However, it is usually easier to [[wet]] those kinds of items rather than cancelling them. The advantage of cancelling in the early game is that you do not need to use [[fountain]]s, which are sometimes rare, and can cause nasty side effects. Once you find a pool or moat, or break a fountain to make a pool, you can save cancellation for use against [[monster]]s.
+
+A few items can be rendered useful by cancelling them: a perfectly useless cursed -5 pair of [[levitation boots]], for example, will cancel to a perfectly good uncursed +0 pair.
+
+Cancellation is usually the only way to uncurse a cursed [[bag of holding]] without any drawbacks. If it is cursed, its weight is multiplied by 2; so if a player with a well filled blessed bag of holding dies, the bones file may contain a cursed bag of holding with 8 times the weight it had in the previous game. This will probably make it too heavy for you to be able to pick it up and uncurse it, even if you have maximized your [[carrying capacity]] and are carrying no other items. You can still [[loot]] or [[tip]] it, but if you do this, every item in the bag has a 1/13 chance of vanishing. The best tactic is to pick up anything from the bones pile that can be damaged by cancellation (especially wands, because their beatitude is mostly irrelevant anyway), and cancel the remaining items. The contents of the bag, just like with any other container, will not be cancelled.
+
+If you are wielding a cursed two-handed weapon in [[Gehennom]], you may have problems uncursing it if your [[scroll of remove curse|scrolls of remove curse]] and [[holy water]] are all stored in containers (which you cannot open), because neither prayer nor spellcasting is possible in that state. If you cannot leave Gehennom without lifting the curse (e.g. because you have no free hands to gain levitation for [[Juiblex]]'s lair), you may have to resort to dropping everything you can, then cancelling yourself. This will also cancel all the rest of your worn equipment, and so is only recommended in emergencies. (Some players drop potions of holy water in strategic places as a preventive measure.) [[NetHack 3.6.0]] has added the [[tip]] command precisely to deal with such emergencies.
+
+==Variants==
+
+Monsters in [[GruntHack]], [[SLASH'EM]], [[FIQHack]], and [[EvilHack]] can zap wands of cancellation at the player. Study the [[wand of cancellation]] article for more details.
+
+In [[SLASH'EM]], [[Gypsy|Gypsies]] spontaneously cancel after they gave a wish. They cannot be [[#Un-cancelling|un-cancelled]] as well.
+
+Also in SLASH'EM, cancelling a monster also has a chance to cancel some of its items.  This applies to cancelling attacks of [[The Banes]] and [[Magicbane]] as well.
+
+==References==
+<references/>
+
+{{nethack-361}}
+[[Category:Strategy]]}
+&&%s&& %s Scroll of mail {145656 2022-04-27T08:56:18Z {4001279 Umbire the Phantom}  {{scroll
+ |name=scroll of mail
+ |appearance=stamped scroll
+ |tile=[[Image:Scroll of mail.png]]
+ |cost=0
+ |ink=2
+}}
+
+The '''scroll of mail''' is a type of [[scroll]] that appears in some versions of ''[[NetHack]]''. On some systems, the [[mail daemon]] can deliver mail with message from outside NetHack to your [[hero]], and [[read]]ing the scroll will show the message. Reading this scroll naturally breaks [[illiterate]] [[conduct]]; you will be warned if attempting to read sent mail would do so.
+
+== Generation ==
+Mail scrolls are never generated randomly in the dungeon (although in some versions of NetHack, the mail daemon delivers them at random). You can turn the [[Options#mail|option "mail"]] off to prevent scrolls of mail being delivered.
+
+The source of the scrolls varies according to which operating system you play on: 
+* On UNIX and Linux, you can set up an alert for incoming email.
+* On DOS, scrolls with random messages are delivered now and then. [[Public server]]s often allow people watching a game to send short messages to the person playing the game. An error in wishing for mail [[body armor]] may also leave the player with a scroll of mail instead (i.e. a wish for "blessed greased fixed +3 dragon mail" will produce a blessed greased scroll of mail). In theory, you could acquire as many of these scrolls as you want by sending many messages to yourself.
+
+If the <code>MAIL</code> [[compile-time option]] isn't defined, scrolls of mail don't exist in the game. Attempting to write one will reject the name, and wishing for one will give a random scroll instead. The official [[Windows]] binaries don't define <code>MAIL</code>.
+
+== Strategy ==
+Unlike other scrolls, scrolls of mail lack many of their gameplay applications:
+
+* They will not [[polymorph]] into other objects or be consumed by polypiling, they just turn into junk mail.{{refsrc|zap.c|1040}}{{refsrc|zap.c|1156}}{{refsrc|zap.c|1241}}
+* They cannot get [[wet]].{{refsrc|trap.c|2712}}{{refsrc|potion.c|1467}}
+* They are not affected by [[cancellation]].
+* A [[gelatinous cube]] gains no nutrition by eating one. ("This junk mail is less than satisfying."){{refsrc|eat.c|2000}}
+* If you wish for or write a scroll of mail, or you discover a [[bones]] file with someone else's mail, it will be "junk mail addressed to the finder of the Eye of Larn". (The roguelike [[Larn]] would send the user mail when they won.){{refsrc|objnam.c|2524}}{{refsrc|read.c|660}}{{refsrc|write.c|233}}{{refsrc|bones.c|88}}
+
+However, they can still affect a game in the following ways:
+
+* They weigh as much as any other scroll (5), so you can become burdened by mail.
+* They can be thrown to propel yourself backward while [[levitating]].<ref>https://nhqdb.alt.org/?2390</ref>
+* Huge quantities of mail scrolls can be used for a [[Stealing from shops|shop-robbing]] exploit known as the "200 rock steal".
+* Large amounts of scrolls of mail can be used as "fodder" against [[curse items]].
+
+==History==
+In [[NetHack 3.4.3]] and earlier versions, reading a scroll of mail immediately breaks [[illiterate]] [[conduct]]; a scroll of mail will also "activate" an [[Elbereth]] square in these versions. As of [[3.6.0]], the reminder for illiterate conduct is included, and Elbereth's mechanics mean that scrolls of mail no longer affect squares with Elbereth engraved.
+
+== See also ==
+* [[Mail daemon]]
+
+==References==
+<references />
+{{nethack-366}}
+[[Category:Scrolls|Mail]]}
+&&%s&& %s Pets {7519 2006-08-18T13:48:21Z {396 Jayt} Redirecting to [[Pet]] #REDIRECT [[Pet]]}
+&&%s&& %s Scroll of enchant weapon {149975 2023-02-16T08:42:55Z {4000251 Netzhack} Conjugation, then some c/e {{scroll
+ |name=enchant weapon
+ |cost=60
+ |ink=8-15
+}}
+
+A '''scroll of enchant weapon''' is a type of [[magical item|magical]] [[scroll]] that appears in ''NetHack''.
+
+==Description==
+When read, the scroll alters the [[enchantment]] of your currently [[wield]]ed [[weapon]] - this includes weapon-tools such as [[dwarvish mattock]]s, [[pick-axe]]s and [[unicorn horn]]s. If you are wielding a stack of weapons, the scroll will affect all of them at once. Using a non-cursed scroll on a [[worm tooth]] will transform it into a [[crysknife]], and using a cursed scroll on a crysknife will turn it back into a worm tooth.{{refsrc|wield.c|707}}{{refsrc|wield.c|716}}
+
+Reading the scroll will [[auto-identify]] it if used on a weapon whose enchantment you have knowledge of. If the weapon's enchantment is not known, the scroll's effect is the same, but it will prompt you to [[name]] the scroll instead of auto-identifying. An uncursed scroll will always try to increase the current weapon's enchantment by one point, a cursed scroll will decrease it by 1,{{refsrc|read.c|982}} and a blessed scroll may enchant by more than one point depending on the current enchantment. A cursed weapon that is enchanted by reading this scroll will be made uncursed.{{refsrc|wield.c|693|version=NetHack 3.6.0}} If you read a scroll of enchant weapon without wielding a weapon or [[weapon-tool]], you will [[exercise]] your [[dexterity]] instead (or abuse it if the scroll is cursed).{{refsrc|wield.c|701}}
+
+===Blessed===
+The table below displays how many points can potentially be added to the enchantment of a weapon by reading a blessed scroll:
+
+{|class="prettytable striped"
+! Enchantment !! Points added by blessed scroll
+|-
+| -5 to -3 || up to 4
+|-
+| -2 to +2 || up to 3
+|-
+| +3 to +5 || up to 2
+|-
+| +6 to +8 || 1 (if weapon does not evaporate)
+|}
+
+If the weapon's current enchantment is +5 or less and you read a blessed scroll, the scroll will add 1 to (3 &ndash; (current enchantment)/3) points.{{refsrc|read.c|985|name=uncursed_blessed_bonus}} If the current enchantment is +6 or more, the blessed scroll will behave the same as an uncursed scroll.{{refsrc|read.c|984|name=plus_nine}}<ref>In fact, because 3 &ndash; (6/3) = 1, the blessed scroll behaves like an uncursed scroll at +6, even though the code refers to enchantments above +9.</ref> Weapons whose present enchantment is +5 or less can be safely enchanted further; weapons at +6 or above will have a {{frac|2|3}} chance of evaporating instead when enchanted, and weapons at +9 and above have only a 1-in-(current enchantment) chance of gaining another point of enchantment.{{refsrc|wield.c|730|name=limit}}<ref name="plus_nine"/>
+
+===Cursed===
+A cursed scroll of enchant weapon decreases the enchantment of your current weapon by 1; all artifact weapons except [[Sting]] and [[Orcrist]] will resist this {{frac|9|10}} of the time.{{refsrc|wield.c|724}} A weapon already at -6 or below has a 2/3 chance of evaporating.<ref name="limit"/> 
+
+===Confused===
+If read while confused, the scroll will instead affect that weapon's [[erosion]] status - a non-cursed scroll will [[erodeproof]] your weapon and fixes any existing damage.{{refsrc|read.c|964|name=erodeproof}}{{refsrc|read.c|976}} A cursed scroll will remove the erodeproofing instead.<ref name="erodeproof"/>
+
+==Strategy==
+As +5 is the highest enchantment a weapon can have without risk of evaporating from enchanting it further, it is common to read uncursed scrolls of enchant weapons to raise a weapon's enchantment, then read a blessed one at +5 try to raise it to +7, There are a few ways of disenchanting a +6 weapon that results from this:
+* Reading a cursed scroll of enchant weapon. Artifacts resist 90% of the time.
+* Engraving one letter, if the weapon is edged. Artifacts do not resist this. Note that [[athame]]s only dull when they are cursed.
+* Hitting a [[disenchanter]]. Artifacts resist 90% of the time. Note that engaging a disenchanter also risks disenchanting your armor.
+* Placing it on the ground and zapping {{spell of|drain life}} at it. Artifacts resist 90% of the time.
+
+===Identification===
+There are only two scrolls with a base cost of 60[[zm]]: the scroll of enchant weapon and the [[scroll of blank paper]], which has a fixed appearance. Therefore, any unrecognized scroll determined to have a value of 60 is a scroll of enchant weapon.
+
+===Overenchanting===
+While possible, enchanting a weapon beyond +7 is generally time consuming and risky to consider. The possibility of evaporation makes this a very [[bad idea]] to attempt with an artifact unless you really don't care about losing it.
+
+The most common way to attempt overenchantment is to use a huge single [[stack]] of weapons. Usually this means [[dagger]]s or lightweight, plentiful projectiles such as [[dart]]s, [[arrow]]s, and [[crossbow bolt]]s from monsters and traps. Projectile weapons benefit more from overenchantment than melee weapons since you can [[multishot]] them at high skill levels.
+
+A single scroll of enchant weapon can enchant a large stack at once. This greatly reduces the number of scrolls that you need to get a good amount of +8 or +9 weapons. 
+# Collect a large stack of daggers (say 200) or whatever stackable weapon you want.
+# Rustproof and enchant them all up to +7 with the same number of scrolls as it takes to produce a single +7 non-stackable weapon.
+# Split the stack up into four stacks of 50 +7 daggers each, and attempt to overenchant each stack. It is likely but not guaranteed that at least one stack will survive. 
+# Divide your stack of 50 +8 daggers again into four stacks of 12-13 daggers each, and read another four scrolls on the four stacks to attempt to get a stack of +9 daggers.
+# If you want you can even continue enchanting the +9 daggers one by one until you get one to +10, but the amount of scrolls needed to get this far is probably not worth the extra enchantment at this point.
+
+Polymorphing weapons does not change their enchantment. Thus a large stack of weapons can be overenchanted and then [[polypile]]d into [[silver dagger]]s, [[silver saber]]s, [[katana]]s, or whatever other non-artifact weapon you want.
+
+In certain cases (such as a [[Healer]] with a [[unicorn horn]], an [[archeologist]] with a [[dwarvish mattock]], a [[Knight]] preparing to be crowned with [[Excalibur]], or those trying [[conducts]]) it may be worthwhile to overenchant non-stackable weapons. The table below shows how many copies of a given +7 weapon must be risked in order to have a certain degree of confidence that at least one +8/+9/+10 weapon will be successfully enchanted. It is impossible to guarantee, with 100% confidence, that this will succeed. The table assumes that the weapon is already +7 when starting the process.
+
+{|class="prettytable"
+!Bonus !!+7!!+8!!+8!!+8!!+8!!+8!!+9!!+9!!+9!!+9!!+9!!+10!!+10!!+10!!+10!!+10
+|-
+!Confidence
+|—||50%||75%||85%||90%||'''95%'''||50%||75%||85%||90%||'''95%'''||50%||75%||85%||90%||'''95%'''
+|-
+!Attempts
+|—||1.71||3.42||4.68||5.68||'''7.39'''||5.88||11.77||16.11||19.55||'''25.43'''||35.08||74.16||101.49||123.18||'''160.27'''
+|}
+
+<!--
+' Chance. Given percentage, returns how many trials.
+Chance(certainty,probability) = Log(1-certainty)/Log(1-probability)
+	Function Chance(certainty,probability) is defined
+
+' For +8...
+Chance(0.5,1/3) = 1.709511291
+Chance(0.75,1/3) = 3.419022583
+Chance(0.85,1/3) = 4.678873587
+Chance(0.90,1/3) = 5.678873587
+Chance(0.95,1/3) = 7.388384879
+
+' Odds of it not vaporizing twice in a row.
+(1/3)^2
+	Ans = 0.111111111
+' Nine. Not that I couldn't do that in my head...
+
+' For +9...
+Chance(0.50,1/9) = 5.884949192
+Chance(0.75,1/9) = 11.769898385
+Chance(0.85,1/9) = 16.106903463
+Chance(0.90,1/9) = 19.549378059
+Chance(0.95,1/9) = 25.434327251
+Quite Easily Done. [/lame joke] -->
+<!-- +10 is {(1/3)^3}*(1/2), or [1 in 54]. Same crap, different odds... -->
+
+If you are going to try this, make sure to save at least one of your most highly enchanted weapon. Don't accidentally vaporize all of the weapons you were trying to enchant.
+
+== Messages ==
+''All of the following messages only appear if you are not blind (unless noted otherwise).''
+{{message|Your <weapon> glows blue for a moment.|You added one level of enchantment while reading a non-cursed scroll of enchant weapon.}}
+{{message|Your <weapon> glows blue for a while.|You added two or more levels of enchantment while reading a non-cursed scroll of enchant weapon.}}
+{{message|Your <weapon> violently glows blue for a while.|You read a scroll of enchant weapon and no enchantment was added.}}
+{{message|Your <weapon> glows black for a moment.|Your weapon lost enchantment via a cursed scroll.}}
+{{message|Your <weapon> faintly glows black.|Your artifact weapon resisted the effects of the cursed scroll.}}
+{{message|Your <weapon> violently glows blue for a while and then evaporates.|You unsuccessfully enchanted your weapon above +5 or below -5 (2/3 chance).}}
+{{message|Your <weapon> evaporates.|As above if blind.}}
+{{message|Your <weapon> is covered by a shimmering golden shield!|Your weapon was made erode-proof via reading a non-cursed scroll while [[confused]].}}
+{{message|Your <weapon> looks as good as new!|As above if weapon was damaged.}}
+{{message|Your <weapon> feels as good as new!|As above if blind.}}
+{{message|Your <weapon> is covered by a mottled purple glow!|Your weapon's erode-proofing was removed via a cursed scroll.}}
+{{message|Your weapon feels warm for a moment.|You read a cursed or non-cursed scroll while blind and confused with erode-proofing either added or removed.}}
+{{message|Your weapon seems sharper now.|Your worm tooth was converted to a crysknife via a non-cursed scroll.}}
+{{message|Your weapon seems duller now.|Your crysknife was converted to a worm tooth via a cursed scroll.}}
+{{message|Your right <hand> flinches!|You enchanted [[Magicbane]] up to an enchantment of two or more.}}
+{{message|Your right <hand> itches!|You enchanted Magicbane above +0.}}
+{{message|Your <weapon> suddenly vibrates unexpectedly.|Your Elven or [[artifact]] weapon was enchanted above level 5.}}
+{{message|Your <hands> twitch.|You read a non-cursed scroll of enchant weapon with no weapon wielded. Your dexterity is exercised.}}
+{{message|Your <hands> itch.|You read a cursed scroll of enchant weapon with no weapon wielded. Your dexterity is abused.}}
+{{message|You have a strange feeling for a moment, then it passes.|You are a [[beginner]], and you read a scroll of enchant weapon with no weapon wielded. Your dexterity is exercised (abused if cursed).}}
+{{message|You have a normal feeling for a moment, then it passes.|You are a [[beginner]], and you read a scroll of enchant weapon with no weapon wielded while hallucinating.}}
+
+==See also==
+*[[Scroll of enchant armor]]
+*[[Erosion]]
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], it's possible to safely overenchant any +7 weapon(s) to +8 by wielding it when [[crowned]] as the [[Hand of Elbereth]], with the relevant disadvantages of crowning.
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Scrolls|Enchant weapon]]}
+&&%s&& %s Scroll of destroy armor {142207 2021-08-27T16:10:56Z {4001279 Umbire the Phantom}  {{otheruses|the scroll, which "destroy armor" redirects to|the [[monster spell]] that shares many similar messages|Destroy armor (monster spell)}}
+{{scroll
+ |name=destroy armor
+ |cost=100
+ |ink=5-9
+}}
+
+The '''scroll of destroy armor''' is a [[scroll]] that appears in ''[[NetHack]]''. The [[randomized appearance|random label]] [[Scroll origins|associated with it]] in [[objects.c]] is JUYED AWK YACC.{{refsrc|src/objects.c|829|version=NetHack 3.6.6}}
+
+==Description==
+Reading the scroll of destroy armor will destroy one piece of worn armor as follows: First, the outermost armor on your torso is determined, i.e. [[cloak]], [[body armor]], and [[shirt]] in that order. Then the scroll checks in order whether you are wearing a [[helmet]], [[gloves]], [[boots]], and/or a [[shield]]. For each one of these four items that you are wearing, there is a 75% chance that it will be selected over the previously selected one (or 100% if no armor has been selected yet).<ref>{{function|do_wear.c|some_armor}}</ref>
+
+If you are wearing a full set of armor, the chances of each piece being selected are as follows:
+:* 0.39% cloak
+:* 1.17% helmet
+:* 4.69% gloves
+:*18.75% boots
+:*75.00% shield
+
+If a cursed scroll targets cursed armor in this way, it [[stun]]s you for 10-19 turns and lowers that armor's [[enchantment]] by one (unless it is at -7) instead of destroying it. 
+
+If you read the scroll while you are not wearing armor, your [[strength]] and [[constitution]] are abused. If you are not a [[beginner]], the scroll will be identified - otherwise, "[[you have a strange feeling for a moment, then it passes]]".
+
+Reading a non-cursed scroll while confused removes erodeproofing on a piece of armor, targeted in the same way as above - reading a cursed scroll while confused instead ''applies'' erodeproofing a piece of armor, but does not repair it if damaged the way reading a [[scroll of enchant armor]] while confused does.
+
+==Strategy==
+The scroll of destroy armor is a typical example of what makes randomly read-testing scrolls a [[bad idea]] without identifying it beforehand in some manner. In terms of [[price identification]], it costs the same base price as the [[scroll of fire]], which is similarly (if not more) perilous to a random scroll reader. Wearing only non-cursed disposable armor makes this scroll safer to read and identify - while wearing none at all will also identify it through its unique message, this may be less preferable depending on how willing to tolerate stat abuse you are at that point.
+
+However, intentionally reading a noncursed scroll can reliably destroy cursed pieces of armor when done after removing all other armor. The confused effect of reading a cursed scroll is also useful for protecting armor - though it does not repair damage, it allows you to save the latter scrolls for actual enchantments if you are only erodeproofing. Writing the cursed scroll with a [[magic marker]] can also save ink compared to scrolls of enchant armor.
+
+==History==
+The scroll of destroy armor has been present in the game since the first version of [[Hack]].
+
+==Messages==
+{{message|Your cloak crumbles and turns to dust!<br/>Your armor turns to dust and falls to the &lt;floor&gt;!<br/>Your shirt crumbles into tiny threads and falls apart!<br/>Your helmet turns to dust and is blown away!<br/>Your gloves vanish!<br/>Your boots disintegrate!<br/>Your shield crumbles away!|One of your worn pieces of armor was destroyed from reading the scroll.}}
+{{message|Your <armor> vibrates.|You read a cursed scroll of destroy armor and it targeted a piece of cursed armor you were wearing.}}
+{{message|Your skin itches.|You read the scroll while wearing no armor.}}
+{{message|Your bones itch.|As above while confused.}}
+{{message|Your <armor> glows purple for a moment.|You read the scroll while confused.}}
+{{message|Your <armor> vibrates for a moment.|As above, while also blind.}}
+
+==xNetHack==
+In [[xNetHack]], reading the blessed scroll of destroy armor allows you to select which piece of armor to destroy.
+
+==References==
+<references/>
+[[Category:Scrolls|Destroy armor]]
+{{nethack-366}}}
+&&%s&& %s Scroll of fire {134411 2020-06-21T22:54:21Z {4001392 Mackeyth}  {{scroll
+ |name=fire
+ |cost=100
+ |ink=4&ndash;7
+}}
+The '''scroll of fire''' causes an explosion of [[fire]].
+
+==Identification==
+
+The scroll self-identifies when read. If you have the option to price identify scrolls, this scroll has the same price as another dangerous scroll, the [[scroll of destroy armor]]. Remove armor and drop scrolls, [[spellbook]]s and [[potion]]s before reading these scrolls in this price range to minimize damage to your inventory. Stand at least one square away from vulnerable items so that the items don't take collateral damage. Reading the scroll near [[peaceful]] creatures (such as [[shopkeeper]]s and [[aligned priest]]s) will anger them, so when identifying them do so away from them. In a shop, the damage from this scroll may affect nearby fire-vulnerable items, which you will be liable to pay for.
+
+==Effects==
+{{float right|{{caption|{{circleradiussquared6|r=31|inside={{yellow|C}}}}|Spots you can center the explosion on}}}}
+
+Reading an uncursed scroll of fire creates an explosion of fire in a 3&times;3 square area centered on the player. This deals 2&ndash;3 fire damage to [[you]] and any monsters around you, doubled if a creature has resistance to cold but not to fire (such as a [[blue jelly]]). Acting as a weak [[fireball]], it boils [[potion]]s, damages worn [[armor]], and burns [[scroll]]s and [[spellbook]]s in your inventory, monster inventories, and on the ground. You are unaffected if [[fire resistant]], and your armor is safe if [[fireproof]].
+
+Reading a cursed scroll has the same effect as an uncursed scroll, but only deals 1&ndash;2 damage to each target.
+
+Reading a blessed scroll allows you to center the explosion on a nearby visible square (with the same restrictions as a [[scroll of stinking cloud]]),{{refsrc|read.c|1619|nethack=3.6.1}} and the explosion deals 15, 20, or 25 damage.
+
+If read while [[Confusion|confused]] and not fire resistant, you instead lose 1 HP with no effect on your inventory or your gloves.
+
+This scroll will never be destroyed by fire that normally affects carried items, such as the effects resulting from [[wand of fire|wands of fire]] or [[fire trap]]s.
+
+==Strategy==
+
+The explosion of fire burns away any [[Green slime|slime]] covering you. Also, since it is fireproof, it can be carried in [[Gehennom]] without being destroyed by the fire traps.
+
+==Messages==
+
+Reading the scroll gives the following messages:
+
+{{message|This is a scroll of fire!|The scroll is blessed and was just use-identified.}}
+{{message|The scroll erupts in a tower of flame!|Standard effect.}}
+{{message|Where do you want to center the explosion?|The scroll is blessed. You are prompted for a nearby square.}}
+{{message|The water around you vaporizes violently!|You were underwater.}}
+{{message|Oh, look, what a pretty fire in your <hands>.|You were confused, fire-resistant, and unblind.}}
+{{message|You feel a pleasant warmth in your <hands>.|You were confused, fire-resistant, and blind.}}
+{{message|The scroll catches fire and you burn your <hands>.|You were confused and not fire-resistant.}}
+{{message|The slime that covers you is burned away!|You were turning into a [[green slime]], but the process was stopped.}}
+
+==History==
+
+Before [[NetHack 3.6.1]], a blessed scroll of fire acted just like the uncursed scoll, but did 3&ndash;5 damage in the explosion. It was widely considered useless, and a prime candidate for [[blanking]].
+
+==References==
+
+<references />
+
+[[Category:Scrolls|Fire]]
+{{nethack-343}}}
+&&%s&& %s Fire resistant {7524 2006-08-18T14:13:54Z {396 Jayt} Redirecting to [[Fire resistance]] #REDIRECT [[Fire resistance]]}
+&&%s&& %s Scroll of food detection {134974 2020-07-11T05:41:13Z {4000978 Aximili} /* Messages */ Add todo: replace messages for the spell with messages for the scroll! {{scroll
+ |name=food detection
+ |cost=100
+ |ink=4-7
+}}
+The '''scroll of food detection''' reveals the location of all [[comestible]]s on the level.
+__TOC__
+==Effects==
+Reading an uncursed scroll of food detection detects and reveals the location of all [[comestible]]s on the level, including those on the ground and in monster inventories; if blessed, you additionally acquire the [[food appraisal]] intrinsic. If the scroll is cursed, or you are confused regardless of the [[BUC]]-status of the scroll, you will detect [[potion]]s instead. Detecting either food or potions using this scroll will [[auto-identify]] it.
+
+==Strategy==
+The most obvious use is to efficiently track down food if you are [[hungry]] and/or short on comestibles; remember that the scroll will display all comestibles, including [[corpse]]s that are [[tainted]] from age, [[poison]]ed, or otherwise harmful (e.g. [[petrification]] from a [[footrice]] corpse). Unless you have food appraisal (e.g. from a blessed scroll), you will not get any warning before eating such a corpse, so do not chow down carelessly. The food appraisal intrinsic from the scroll is also useful to prevent breaking [[conduct]]s; however, it will only warn you once before the intrinsic is lost and will need to be reapplied. 
+
+The potion-detecting capability of cursed and/or confused readings of the scroll have a niche application for finding useful potions, such as [[smoky potion]]s or a [[potion of gain level]], before a monster can grab it, or else kill a monster before they can use it; this functionality can be duplicated by other means, however.
+
+Once you learn the [[spell of detect food]] or are at a point where food is not much of a concern anymore, this scroll is a good candidate for [[blanking]]. 
+
+==Messages==
+{{todo|These are the messages for the spell. Where are the messages for the scroll?}}
+
+Replace &lt;nose&gt; in the messages with the appropriate equivalent based on your current form.
+
+{{message|Your &lt;nose&gt; starts to tingle.|You cast the spell at skilled or expert level and gained the food appraisal intrinsic. This is printed following any of the other messages when casting the spell at skilled level or higher, with exceptions noted below.}}
+{{message|Your &lt;nose&gt; starts to tingle and you smell food.|You cast the spell at skilled or expert level, there are comestibles on the level, and you gain the food appraisal intrinsic.}}
+{{message|Your &lt;nose&gt; continues to tingle and you smell food.|As above, but you already have the food appraisal intrinsic.}}
+{{message|Your &lt;nose&gt; twitches then starts to tingle.|You cast the spell at skilled level or higher, but there were no comestibles on the level, and you gain the food appraisal intrinsic.}}
+{{message|Your &lt;nose&gt; twitches.|You cast the spell at any level, and there were no comestibles on the level; additionally, you cast the spell at skilled level or higher, and already have the food appraisal intrinsic.}}

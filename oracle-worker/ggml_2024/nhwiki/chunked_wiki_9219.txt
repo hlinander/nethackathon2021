@@ -1,0 +1,1000 @@
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Wandering pirate {148514 2022-10-05T01:07:45Z {4001279 Umbire the Phantom} de-SLEX '''Wandering pirates''' are monsters that appear in [[dNetHack]] and the [[Pirate|Pirate patch]]. When carrying the Pirate [[quest artifact]], [[the Treasury of Proteus]], wandering pirates will occasionally appear and fight the player for the Treasury. These monsters are otherwise not randomly generated in the game, although skeletal pirates will randomly appear in the [[Pirate quest]], and several skeletal pirates and damned pirates are guaranteed to appear on certain levels of the quest. 
+
+In bones levels, dead [[Pirate]]s may return as skeletal pirates.
+
+These monsters are also included in [[SlashTHEM]], along with other features of the Pirate role.
+{{todo|Are wandering pirate species part of random monster generation in SlashTHEM?}}
+
+==Generation==
+Wandering pirate generation uses a mechanism separate from ordinary monster generation. While the player [[The Treasury of Proteus#King of the Hill|has the Treasury in open inventory]], there will be a 20% chance that whenever a new monster is randomly generated, it will be replaced with one or more wandering pirates. Wandering pirates will always be of a type appropriate for the theme of that part of the dungeon: damned pirates in [[Gehennom]], githyanki pirates in the [[end game]], skeletal pirates elsewhere.
+
+The difficulty, attack strength, and armor quality of the type of wandering pirate the player encounters increase with the stage of the game where they appear, but otherwise they are significantly weaker than the monsters that could have been generated otherwise, especially because of their lack of special abilities or attacks. Although they all implicitly want the Treasury, none of the three types is designated as [[covetous]], so they can't teleport to the Pirate carrying the artifact, and none of the monsters have a [[Theft (attack)|thieving]] attack. They will also fight with other monsters and one another.
+
+By preventing more difficult monsters from being generated, this effect of carrying the Treasury may actually be more helpful than harmful to the player.  Also, in dNetHack they provide a way to acquire more [[bullet]]s for the Pirate's starting [[flintlock]], as anything [[firearms]]-related is otherwise incredibly rare in this variant.
+
+==Skeletal pirate==
+{{monster
+ |name=skeletal pirate
+ |symbol={{white|Z}}
+ |difficulty=7
+ |level=5
+ |experience=96
+ |speed=8
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6 [[Physical damage|physical]]
+ |weight=300
+ |nutr=5
+ |size=medium
+ |resistances=[[cold]], [[sleep]], [[poison]], [[petrification]]
+ |resistances conveyed=
+ |attributes={{attributes
+ |A skeletal pirate|=
+ |amphibious=1
+ |breathless=1
+ |mindless=1
+ |humanoid=1
+ |undead=1
+ |hostile=1
+ |wander=1
+ |nasty=1
+ |strong=1
+ |collect=1
+ |infravision=1
+ |sgroup=1
+ |nocorpse=1
+ |death=1
+ |notame=1
+ |noregen=1
+ }}
+}}
+'''Skeletal pirates''' first appear during the [[Pirate quest]]. In addition to making up about 55% of all hostile monsters [[Quest#Monsters|randomly generated]] in the quest, several are guaranteed to appear on each level of the quest. They will continue to appear as wandering pirates after the player leaves the quest.
+
+Skeletal pirates [[Monster starting inventory|are generated with]] a [[rusty]] cutlass ([[scimitar]]) or [[knife]] and a [[rotted]] [[leather jacket]] or pair of [[high boots]].  In dNetHack they also get some rusty [[bullet]]s and either a rusty [[flintlock]] or another knife.
+{{clear}}
+==Damned pirate==
+{{monster
+ |name=damned pirate
+ |symbol={{white|&}}
+ |difficulty=12
+ |level=10
+ |experience=286
+ |speed=12
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 2d6 [[Physical damage|physical]]
+ |weight=300
+ |nutr=5
+ |size=medium
+ |resistances=[[fire]], [[sleep]], [[poison]], [[petrification]]
+ |resistances conveyed=
+ |attributes={{attributes
+ |A damned pirate|=
+ |amphibious=1
+ |breathless=1
+ |mindless=1
+ |humanoid=1
+ |demon=1
+ |hostile=1
+ |wander=1
+ |nasty=1
+ |strong=1
+ |collect=1
+ |infravision=1
+ |sgroup=1
+ |nocorpse=1
+ |death=1
+ |notame=1
+ }}
+}}
+'''Damned pirates''' appear as wandering pirates while the player is traveling through [[Gehennom]] with the Treasury. In addition, a few are guaranteed to appear on the lower levels of the quest. 
+
+Damned pirates are generated with a [[cursed]] cutlass and a rotted and cursed [[leather armor]].  In dNetHack they also get some [[bullet]]s and a cursed [[flintlock]].
+{{clear}}
+==Githyanki pirate==
+{{monster
+ |name=githyanki pirate
+ |symbol={{white|h}}
+ |difficulty=18
+ |level=15
+ |experience=507
+ |speed=16
+ |AC=&minus;7
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 3d6 [[Physical damage|physical]]
+ |weight=300
+ |nutr=5
+ |size=medium
+ |resistances=[[sleep]], [[shock]], [[poison]], [[petrification]]
+ |resistances conveyed=[[sleep]]
+ |attributes={{attributes
+ |A githyanki pirate|=
+ |humanoid=1
+ |hostile=1
+ |wander=1
+ |nasty=1
+ |strong=1
+ |collect=1
+ |infravision=1
+ |sgroup=1
+ |notame=1
+ }}
+}}
+'''Githyanki pirates''' begin to appear as wandering pirates once the player reaches the [[Elemental Planes]] and [[Astral Plane]]. 
+
+Githyanki pirates are generated with a [[two-handed sword]], [[bronze plate mail]], [[leather gloves]], and [[high boots]].
+
+===Origin===
+Githyanki are humanoids from ''[[Dungeons & Dragons]]''. Bred from human slaves by the illithids ([[mind flayer]]s), they later revolted and established their own society on the Astral Plane.
+{{clear}}
+
+==References==
+Reference: [https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+[[Category:Pirate patch]]
+[[Category:dNetHack monsters]]}
+&&%s&& %s Pirate (player monster) {125537 2019-03-19T03:30:57Z {4001279 Umbire the Phantom} Updating reference and removing dead links {{monster
+ |name=pirate
+ |symbol={{white|@}}
+ |difficulty=12
+ |level=10
+ |experience=221
+ |speed=12
+ |AC=10
+ |MR=1
+ |align=-3
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6 [[Physical damage|physical]], Weapon 1d6 physical
+ |weight=1450
+ |nutr=400
+ |size=medium
+ |resistances conveyed=
+ |attributes={{attributes
+ |A pirate|=
+ |humanoid=1
+ |carnivore=1
+ |herbivore=1
+ |omnivore=1
+ |nopoly=1
+ |human=1
+ |strong=1
+ |collect=1
+ |infravisible=1
+ }}
+}}
+A '''pirate''' is a [[player monster]] added in the [[Pirate|Pirate patch]], corresponding to the Pirate [[role]]. Like other player monsters in vanilla NetHack, pirates are never randomly generated and are thus rarely seen. No pirates are normally found outside the [[Astral Plane]], where they may appear among the hostile player monsters generated there.<ref>{{function|mplayer.c|create_mplayers}}</ref>
+
+Reading a cursed [[scroll of genocide]] as a Pirate while [[confused]] will summon a number of pirate monsters, although they won't have their usual equipment. Using [[undead turning]] on the corpse or [[stone to flesh]] on the statue of a dead pirate left on a [[bones level]] will revive the corpse or statue as a player monster.  Pirate corpses will also be found in the [[Valley of the Dead]],{{refsrc|gehennom.des|61}} and a statue of a pirate may appear on [[Medusa's Island]].{{refsrc|sp_lev.c|1004|comment= the code is very cryptic but fortunately has comments}}
+
+Most pirates encountered in the main dungeon will turn out to be [[doppelganger]]s, which may temporarily assume the form of a pirate.
+
+== Equipment ==
+
+{{todo|Check source for any differences in pirate player monster starting equipment}}
+
+A pirate on the Astral Plane will carry either a [[long sword]] (50%) or a randomly chosen [[melee]] weapon (50%). The [[weapon]]'s [[enchantment]] will be random between +4 and +8, and it will be either [[erodeproof]] or [[greased]] (but not both) with 33.3% probability each. There is a 50% chance that the weapon will be made into an [[artifact]] of the same type, if possible.
+
+Like other player monsters on the Astral Plane, pirates will also be equipped with [[d notation|1d3]] random [[offensive item]]s, 1d3 random [[defensive item]]s and 1d3 random [[miscellaneous item]]s, as well as a randomly generated [[ascension kit]] containing [[dragon scale mail]] and various other pieces of [[armor]] (as well as a [[cheap plastic imitation of the Amulet of Yendor]], some [[gold]] and other items).{{reffunc|mplayer.c|mk_mplayer|version=NetHack 3.6.1}}
+
+== References ==
+<references/>
+[https://github.com/Chris-plus-alphanumericgibberish/NetHack/compare/master...Chris_s_Pirate_Patch.diff Chris's Pirate Patch]
+
+[[Category:Pirate patch]]
+[[Category:Player monsters]]}
+&&%s&& %s High Lycanthrope {96578 2015-09-18T20:47:46Z {4000629 Cherokee Jack} Changed categories {{monster
+ |name=High Lycanthrope
+ |symbol={{magenta|@}}
+ |tile=
+ |difficulty=20
+ |level=
+ |experience=
+ |speed=12
+ |AC=0
+ |MR=40
+ |align=-20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Bite 3d6, bite 3d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=Poison
+ |resistances conveyed=Poison
+ |attributes={{attributes|The High Lycanthrope|hitasfour=1|humanoid=1|omnivore=1|nopoly=1|human=1|pname=1|peaceful=1|strong=1|male=1|collect=1|magic=1|close=1}}
+}}
+
+The High Lycanthrope was the [[quest leader]] for the defunct [[Lycanthrope quest]].
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Sir Lorimar {96584 2015-09-18T20:51:18Z {4000629 Cherokee Jack} Changed categories {{monster
+ |name=Sir Lorimar
+ |symbol={{magenta|@}}
+ |tile=
+ |difficulty=25
+ |level=
+ |experience=
+ |speed=15
+ |AC=-10
+ |MR=40
+ |align=-20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 2d6, weapon 2d6, claw (steal quest artifact) 2d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=Death
+ |resistances conveyed=None
+ |attributes={{attributes|Sir Lorimar|hitasfour=1|humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|pname=1|hostile=1|stalk=1|male=1|collect=1|magic=1|wantsarti=1|waitforu=1}}
+}}
+
+Sir Lorimar was the [[quest nemesis]] for the defunct [[Lycanthrope quest]].
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Master Shifter {96583 2015-09-18T20:50:50Z {4000629 Cherokee Jack} Changed categories {{monster
+ |name=Master Shifter
+ |symbol={{magenta|@}}
+ |tile=
+ |difficulty=20
+ |level=
+ |experience=
+ |speed=12
+ |AC=0
+ |MR=30
+ |align=0
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 2d4, weapon 2d4
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|The Master Shifter|hitasfour=1|humanoid=1|omnivore=1|nopoly=1|human=1|pname=1|peaceful=1|strong=1|male=1|collect=1|magic=1|close=1}}
+}}
+
+The Master Shifter was the [[quest leader]] for the defunct [[Doppelganger quest]].
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Transmuter {145711 2022-04-29T03:13:13Z {4000978 Aximili} other uses: splicehack monster {{otheruses|SLASH'EM quest nemesis|the SpliceHack monster|Transmuter (SpliceHack)}}
+{{monster
+ |name=Transmuter
+ |symbol={{magenta|@}}
+ |tile=
+ |difficulty=25
+ |level=
+ |experience=
+ |speed=10
+ |AC=-10
+ |MR=30
+ |align=-20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Arcane spellcasting, arcane spellcasting, claw (steal quest artifact) 2d8, claw (steal quest artifact) 2d8, claw (steal quest artifact) 2d8, claw (steal quest artifact) 2d8
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=Death, fire, cold, shock, poison
+ |resistances conveyed=Fire (25%), cold (25%), shock (25%), poison (25%)
+ |attributes={{attributes|Transmuter|hitasfour=1|carnivore=1|seeinvis=1|nopoly=1|hostile=1|pname=1|stalk=1|strong=1|nasty=1|greedy=1|jewels=1|magic=1|wantsarti=1|waitforu=1}}
+}}
+
+Transmuter was the [[quest nemesis]] for the defunct [[Doppelganger quest]].
+
+[[Category:SLASH'EM]]
+[[Category:Defunct features (SLASH'EM)]]}
+&&%s&& %s Wandering Pirate {95495 2015-07-03T13:34:57Z {4000629 Cherokee Jack} Redirected to lowercase pirate page #REDIRECT [[Wandering pirate]]}
+&&%s&& %s Drow Noble Quest {144830 2022-03-06T02:27:55Z {4001279 Umbire the Phantom} /* Goal level */ The '''Drow Noble quest''' sees you returning to your house fortress to exterminate a colony of [[mind flayer]]s and retrieve the [[DNetHack_Artifacts#The_Web_of_the_Chosen|Web of the Chosen]]. For more information on the quest [[branch]] in general, see the [[quest]] article.
+
+==Maps==
+===Home level===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+                                       .                  |..|---|---|---|  
+    >..        .......  ---------------S----------        |..|###|###|###|. 
+     ...     ........   |.......|....|...|.......|       .|..|###|###|###|. 
+        ................|.......|....|...|.......|      ..|..|###|###|###|. 
+    ......        ......|.......|....|...|.......|     ...|..|-+-|-+-|-+-|. 
+  ..... ................|...|-+-|-+----+-|-+-----|    ....|................ 
+ ..   ... ..............|...|...|........|...|...|   .....F...............  
+  .....         ........|...|...+........+...+...|  ......|.............    
+   .....................|...|...|........|...|...| .......F................ 
+       .................+...|---|........|---|---|........|.................
+     .................  |---|...|........|...|...+........+.......  ....... 
+   .....................|...|...|........|...|...|........|.......  ......  
+    ....................|...|...+........+...|...| .......F...............  
+.      .................|...|...|........|...|...|  ......|...............  
+..    .....      .......|...----|-+----+-|-+-|...|   .....F................ 
+.... ....          .....|.......|...|....|.......|    ....|..|-+-|-+-|-+-|. 
+... ...            .....|.......+...|....|.......|     ...|..|###|###|###|. 
+..   ...       .......  |.......|...|..\.|.......|      ..| .|###|###|###|. 
+.      ...  .....       --------------------------       .|  |###|###|###|. 
+        .....                                             |  |---|---|---|  
+</replacecharsblock></div>
+
+The Quest leader is located on the [[throne]] to the south.  Both the portal and the downstair are located on the left-hand side of the map.
+
+The [[throne]] on this level is special, as it belongs to those chosen by Lolth. Sitting on it while wearing your quest artifact brings up a menu allowing you to chose a variety of special effects. Each effect may only be used once. They are: 
+* ''Order a [[genocide]]'' (uncursed genocide) 
+* ''Grant an audience'' (create some random [[pet]]s)
+* ''Demand tribute'' (make a [[wish]])
+* ''Use your insight'' ([[identify]] a few items from your pack).
+
+===Upper filler level(s)===
+This is a [[Mines]]-style level.
+
+===Locate level===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+                        --------------------------                        
+                    -----###|.+...|....|...+.|###-----                    
+                -----###|###|.|...+....+...|.|###|###-----                
+        ---------###|###|###|.|-+-|....|-+-|.|###|###|###---------        
+    -----###|###|###|###|-+-|.|...|....|...|.|-+-|###|###|###|###-----    
+    |###|###|###|###|-+--...|.|...|....|...|.|...--+-|###|###|###|###|    
+    |###|###|###|-+--.......|.|...|.\..|...|.|.......--+-|###|###|###|    
+----|###|-+---+--....-----..|.--------------.|..-----....--+---+-|###|----
+|###|-+--............|###|..|................|..|###|............--+-|###|
+|###+................+###|..--------++--------..|###+................+###|
+|###|-+--............|###|......................|###|............--+-|###|
+----|###|-+---+--....-----......................-----....--+---+-|###|----
+    |###|###|###|-+--.............------.............--+-|###|###|###|    
+    |###|###|###|###|-+--.........|....|.........--+-|###|###|###|###|    
+    -----###|###|###|###|-+--.....|.<..|.....--+-|###|###|###|###-----    
+        ---------###|###|###|-+-|.|....|.|-+-|###|###|###---------        
+                -----###|###|###|.|-++-|.|###|###|###-----                
+                    -----###|###|........|###|###-----                    
+                        ----|###|--------|###|----                        
+                            -----        -----                            
+</replacecharsblock></div>
+
+There are many [[worm]]s and [[fungi]] scattered around this level, as well as [[Umber Hulk]]s.  The downstair is located randomly.
+
+As with the throne on the Home level, the throne here will allow you to use its powers on demand after you recover your quest artifact.
+
+===Lower filler level(s)===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+                            ------------------                            
+                    ---------................---------                    
+              -------................................-------              
+         ------.........---------........---------.........------         
+      ----........-------       |........|       -------........----      
+    ---......------             |........|             ------......---    
+  ---.....----            -------........-------            ----.....---  
+---.....---       ---------....................---------       ---.....---
+|.......|    ------....................................------    |.......|
+|.......|    |..............................................|    |.......|
+|.......|    ------....................................------    |.......|
+---.....---       ---------....................---------       ---.....---
+  ---.....----            -------........-------            ----.....---  
+    ---......------             |........|             ------......---    
+      ----........-------       |........|       -------........----      
+         ------.........---------........---------.........------         
+              -------................................-------              
+                    ---------................---------                    
+                            ------------------                            
+</replacecharsblock></div>
+
+This level contains some random monsters.  The upstair in the outer ring, the downstair is located somewhere in the center.
+
+===Goal level===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+1=[[Elder_brain|{{magenta|U}}]]
+
+      ---------------       ------------------       ---------------      
+      |..|...|......|--------................--------|......|...|..|      
+      |..|...|---F---.............------.............---F---|...|..|      
+      |..--F---.........---------.------.---------.........---F--..|      
+      -F--........-------||.....|........|.....||-------........--F-      
+    ---......------......||.....|........|.....||......------......---    
+  ---.....----....|......|---+---.... ...---+---|......|....----.....---  
+---.....------....---+-----........ ... .......-----+---....------.....---
+|.......|....--+---..................}.................--+---....|.......|
+|.......|....+................... ..}1}.. ..................+....|.......|
+|.......|....--+---..................}.................--+---....|.......|
+---.....------....---+-----........ ... .......-----+---....------.....---
+  ---.....----....|......|---+---.... ...---+---|......|....----.....---  
+    ---......------......||.....|........|.....||......------......---    
+      -F--........-------||.....|........|.....||-------........--F-      
+      |..--F---.........---------.------.---------.........---F--..|      
+      |..|...|---F---.............------.............---F---|...|..|      
+      |..|...|......|--------................--------|......|...|..|      
+      ---------------       ------------------       ---------------      
+</replacecharsblock></div>
+
+The quest nemesis, the [[elder brain]], hovers over a pool of water in the center of this level.  Beware, for the brain casts two spells per turn and has a brain-sucking attack with a two-square reach.  Once the brain is dead, you will need some way to get the [[Bell of Opening]] out of the pool. In addition to the brain, there are 16 [[mind flayer]]s and 2 master mind flayers scattered about the level, as well as [[umber hulk]]s and [[grimlock]]s.
+
+'''A'gone''', the current owner of the Quest artifact, is locked up in one cells on the edge of the level, her mind having been destroyed by the mind flayers. You will need the [[force bolt]] spell or a [[wand of striking]] to break the iron bars of the cells, so that you can slay her and claim the artifact for your own.
+
+==Messages==
+===Entry===
+First time:
+ You arrive in familiar surroundings. You're <i>(sic)</i> house's fortress is 
+ close before you.  
+ 
+ The psychic call of your mother rings loud in your mind.
+
+Next time:
+ Once again, you stand outside your house.
+
+If already rejected twice due to bad alignment:
+ You have the oddest feeling that this may be the last time you
+ are to vist <i>(sic)</i> your house.
+
+===Quest guardians===
+
+If #chatting before the quest is complete:
+ "Oh, <playername>!  You're back.  Well, Mother wanted to speak with you."
+ "Oh, its <i>(sic)</i> you.  I thought you died in that dungeon."
+ "The life-cavern colony went silent cycles ago."
+ "I'd hate to see someone put a dagger in your pretty little back.
+ Perhaps you should consider an alliance with me."
+ "The Web of the Chosen represents the favor of Lolth."
+
+If #chatting after the quest is complete:
+ "Oh, <playername>!  You're back.  Mother was just talking about you. She does
+ that quite a bit, now."
+ "You again?  I heard you were on your way to gehennom!"
+ "So it was the illithids that destroyed the life-cavern colony."
+ "(...You're Mother's favorite now.  You should leave, any ally 
+ you tried to make would just stick a dagger in your back.)"
+ "Is that truely the Web of the Chosen that I see you carrying?  YOU are the favored
+ of Lolth?"
+
+===Quest leader===
+
+When you first meet your quest leader:
+ "<playername>!  I am glad Lolth returned you to me.
+ 
+ "A great opportunity lies before us.  But first, I must see if 
+ you have the required abilities to sieze <i>(sic)</i> this chance."
+
+When you return, having been rejected due to lack of experience:
+ "Once again you kneel before me, <playername>.  Are you ready know?"
+
+This message is not currently used:
+ "Ah, back again, <playername>?  I will determine your readiness..."
+
+When you are expelled from the quest for having failed the alignment test
+seven times:
+ "<playername>!  You have failed me for the last time!
+ 
+ "You are no longer my daughter!  Go now into exile!"
+
+When being rejected due to lack of experience:
+ "%p, you are yet too inexperienced to withstand the demands of that
+ which I need you to do.  An An'kin might be able to do this thing.
+ 
+ "Return to me when you have learned more, daughter."
+ "<playername>, you are yet too inexperienced to withstand the demands of
+
+When being rejected due to having worse than pious alignment:
+ "You have strayed, <playername>!  You know that Lolth requires
+ that we maintain a pure devotion to things chaotic!
+ 
+ "Return when you have purified yourself, and not before!"
+
+When finally assigned the quest:
+ "You are indeed ready, <playername>.  I shall tell you what has transpired,
+ and what you must do:
+ 
+ "A short time ago, the life-cavern colony went suddenly silent.
+ My greatest rival, sensing an opportunity for further glory,
+ sent her most talented daughter to the colony, the girl recently
+ taken by Lolth as her Chosen priestess.  Her mission was to 
+ learn the cause of the silence and to bring justice to those 
+ responsible.
+ 
+ "The girl failed, for that was the last anyone has heard of her.
+ I have been grooming you as her rival to the title of Chosen.
+ It is too late for you to best her in life, but you can still
+ prove your superiority.
+ 
+ "Go, travel to the life-cavern colony, learn the cause of the 
+ silence and bring justice to those responsible.  Recover
+ the Web of the Chosen and bring glory to our house, and shame
+ to my rival's."
+
+====Encouragement====
+
+If you subsequently chat to your quest leader, you are encouraged:
+ "Why are you still here?  Get on with it, or face my wrath!"
+ "Go now!"
+ "Others will also be seeking the Web of the Chosen."
+ "Let Lolth be your guide."
+ "Do not delay."
+ "That colony is an important food producer."
+ "Fungi grow freely in the life caverns."
+ "To infiltrate DRA-MUR-SHOU, you must be very stealthy."
+ "Go, my daughter."
+ "You can triumph, <playername>, if you trust in Lolth."
+
+===Locate and goal levels===
+
+When first entering the locate level:
+ You have arrived at the life cavern colony.  The smell of death is
+ heavy in the air, and you hear the crash of colapsing walls in the
+ distance.
+
+When returning:
+ Once again, you descend into the life-cavern.
+
+When first entering the goal level:
+ You descend into a weird place, in which the rough cave walls take on
+ the complex, wrinkled appearance of a humanoid brain.
+ 
+ LITTLE DROWLING, YOU ARE LOST.  FOR NONE BUT THE LOST COME TO 
+ DRA-MUR-SHOU, FRAGMENT OF PENUMBRA.  YOUR MIND, YOUR THOUGHTS
+ AND MEMORIES, BELONG TO US NOW.  YOU ARE LOST.
+
+When returning:
+ Once again, you enter the wrinkled caverns of the illithids.
+
+===Quest nemesis===
+
+When first encountering the quest nemesis:
+ YOU SHOULD KNEEL.  FOR YOU STAND BEFORE THE ELDER BRAIN OF
+ DRA-MUR-SHOU, SEED OF PENUMBRA.
+
+Upon further meetings:
+ ALL TIME IS ONE BEFORE ME.  THE MOMENT OF YOUR BIRTH AND
+ DEATH IS ONE TO ME.
+
+And on the 4th and subsequent meetings:
+ SUBMIT.
+
+When you have (artifact), but (nemesis) is still alive:
+ ABANDON YOUR SELF.
+
+====Discouragement====
+
+(nemesis) will occasionally utter maledictions:
+ GIVE IN TO ME.
+ REST.
+ GIVE UP.
+ WHY DO YOU STRUGGLE?
+ DO NOT BE AFRAID.
+ WE HAVE AND SHALL RULE ALL.  EVEN LOLTH HAS AND SHALL 
+ SUBMIT TO US.
+ YOU PROLONG YOUR SUFFERING.
+ TO WHAT END DO YOU STRIVE?
+ PENUMBRA HANGS OVER ALL.
+ WE RULED AND SHALL RULE ALL.
+
+===Victory===
+
+When picking up your quest artifact:
+ You fill with pride as you pick up the Web of the Chosen.
+ 
+ You shall succeed where your rival has failed, and claim the
+ Amulet of Yendor besides.
+
+When killing the nemesis:
+ I SHALL HAUNT Y O U  T I L L   T  H  E   E  N  D    O   F   
+ T   I    M     E      .       .        .
+
+When returning to your quest leader:
+ "<playername>!  You have succeeded!  I feared it was not possible!
+ 
+ "You have returned with the Web of the Chosen!
+ 
+ "My daughter, Chosen of Lolth, I know that great things
+ lie ahead of you.  Go now, return to The Dungeons of Doom
+ and your quest for the Amulet of Yendor."
+
+When subsequently throwing the Web of the Chosen to Mother:
+ "The silver Web of the Chosen guards Lolth's champion
+ against lightning and acid, and reflects beams and
+ lessens the impact of magical spells.
+ 
+ "That you are its bearer brings great honor to our
+ house.  Go now, return with it to your quest for
+ the Amulet of Yendor?"
+
+===Post-quest===
+
+When talking to Mother after the quest:
+ "Welcome, daughter.  How have you fared on your quest for the
+ Amulet of Yendor?"
+
+When talking to Mother after getting the [[Amulet of Yendor|Amulet]]:
+ "You have it!  You have recovered the Amulet of Yendor!
+ Now attend to me, daughter, and I will tell you what must be done:
+ 
+ "The Amulet has within it magic, the capability to transport you to
+ the Astral Plane, where the High Altar of %d resides.
+ 
+ "To activate this magic, you must travel upwards as far as you can.
+ When you reach the temple, sacrifice the Amulet to %d.
+ 
+ "Thus will you fulfill your destiny."
+
+{{stub}}
+
+[[Category:dNethack]]
+[[Category:dNethack Quests]]}
+&&%s&& %s Monster carrying capacity {149857 2023-02-05T16:16:26Z {187 Darth l33t} /* Weighty monsters */ special rules A monster's '''carrying capacity''' is calculated based on its weight or size relative to a human.{{refsrc|src/mon.c|1185|version=NetHack 3.6.6}}
+
+==Weighty monsters==
+If the monster has non-zero weight, its carrying capacity is
+
+<math>\frac{{1000 \times \text{monster weight}}}{\text{weight of human}} (\times \frac{1}{2} \text{if not strong})</math>.
+
+The weight of a human is 1450 for this calculation.{{refsrc|include/permonst.h|34|version=NetHack 3.6.6}}  If a [[strong]] monster would have less than 1000 carrying capacity based on this calculation, then its carrying capacity is set to 1000.
+
+This can be simplified to <math>\frac{\text{weight}}{2.9}</math> if the monster is not strong, and <math>\frac{\text{max}(\text{weight}, 1450)}{1.45}</math> if the monster is strong.
+
+Some monsters have special rules for their carrying capacity:
+
+* [[Nymph]]s have functionally unlimited carrying capacity, although they won't pick up [[boulder]]s or [[statue]]s.{{refsrc|src/mon.c|1294|version=NetHack 3.6.6|comment=The function returns before the nymph's actual carrying capacity is checked.}}
+* [[giant (monster attribute)|Giant]]s can carry any number of boulders.{{refsrc|src/mon.c|1290|version=NetHack 3.6.6}}
+
+==Weightless monsters==
+If the monster has zero weight, its carrying capacity is
+
+<math>\frac{1000 \times \text{monster size}}{\text{size of human}} (\times \frac{1}{2} \text{if not strong})</math>.
+
+The numerical value used for monster size is that used for [[physical size]]: 0 for tiny, 1 for small, 2 for medium, 3 for large, 4 for huge, and 7 for gigantic.  Humans have medium (2) size.{{refsrc|include/monflag.h|165|version=NetHack 3.6.6}}
+
+==Notes==
+Despite the source code comment mentioning [[corpseless]] monsters,{{refsrc|src/mon.c|1196|version=NetHack 3.6.6}} the formula based on monster size is only used for monsters with a ''weight'' of 0.  Thus, a corpseless [[lich]], with medium (2) size and 1200 weight, uses the formula for weighty monsters and has a carrying capacity of 413, not 500.  A [[wraith]], with medium size and 0 weight, uses the formula for weightless monsters and has a carrying capacity of 500.
+
+==Examples==
+
+{|class="prettytable sortable"
+! Monster
+! Weight
+! Strong?
+! Size
+! Carrying capacity
+|-
+|[[kitten]] || 150 || No || 1 (small) || 51
+|-
+|[[housecat]] || 200 || No || 1 (small) || 68
+|-
+|[[large cat]] || 250 || Yes || 1 (small) || 1000
+|-
+|[[little dog]] || 150 || No || 1 (small) || 51
+|-
+|[[dog]] || 400 || No || 2 (medium) || 137
+|-
+|[[large dog]] || 800 || Yes || 2 (medium) || 1000
+|-
+|[[pony]] || 1300 || Yes || 2 (medium) || 1000
+|-
+|[[horse]] || 1500 || Yes || 3 (large) || 1034
+|-
+|[[warhorse]] || 1800 || Yes || 3 (large) || 1241
+|-
+|[[lich]] || 1200 || No || 2 (medium) || 413
+|-
+|[[wraith]] || 0 || No || 2 (medium) || 500
+|-
+|[[air elemental]] || 0 || Yes || 4 (huge) || 2000
+|-
+|[[mind flayer]] || 1450 || No || 2 (medium) || 500
+|-
+|[[Archon]] || 1450 || Yes || 3 (large) || 1000
+|-
+|[[dragon]] || 4500 || Yes || 7 (gigantic) || 3103
+|}
+
+==References==
+<references/>
+
+{{nethack-366}}}
+&&%s&& %s Normal mechanism {146531 2022-07-03T17:35:24Z {4001483 Cathartes} Changed redirect target from [[Monster creation]] to [[Monster creation#Normal monster selection]] #REDIRECT [[Monster creation#Normal monster selection]]}
+&&%s&& %s Eyeless {98647 2015-12-19T06:32:47Z {4000080 ChasonBot}  '''Eyeless''' monsters do not have eyes.
+
+In general, eyeless monsters are protected (or prevented, depending on perspective) from things that affect through the eyes; particularly, many sources of [[blindness]]. They have no apparent trouble finding and subsequently [[death|killing]] you; however, whatever sense they move by does not carry over to [[polymorph]]ed players, who are simply made permanently blind.
+
+An eyeless monster or player is unaffected by:
+*a thrown [[potion of blindness]]{{refsrc|potion.c|1083}}.
+*if also [[breathless]], thrown{{refsrc|potion.c|1160}} or [[Alchemy#Explosions|exploding]]{{refsrc|potion.c|1672}} [[potions]].
+*a [[black light]]'s hallucination attack.{{refsrc|mhitm.c|925}}{{refsrc|uhitm.c|1675}}
+*a [[floating eye]]'s paralysis attack.{{refsrc|mhitm.c|1328}}{{refsrc|mhitu.c|2529}}
+{{comment|*an [[Archon]]'s or a [[yellow light]]'s blinding attack.{{refsrc|mondata.c|112}}
+*blinding venom.{{refsrc|uhitm.c|829}}}}
+*any blinding attack.{{refsrc|mondata.c|147}}
+*any [[gaze attack]].{{refsrc|polyself.c|981}}
+*the blinding effect of a [[scroll of stinking cloud|stinking cloud]]{{refsrc|region.c|929}} (although they are still subject to the HP loss)
+
+Eyeless monsters are unable to:
+*block your [[kick]]s.{{refsrc|dokick.c|198}}
+*read scrolls of [[scroll of teleportation|teleportation]]{{refsrc|muse.c|466}} or [[scroll of earth|earth]].{{refsrc|muse.c|1074}} {{comment|In theory, scrolls of fire are also out of reach; see line1086.}}
+
+==References==
+<references/>
+
+[[Category:Properties]]
+{{nethack-343}}}
+&&%s&& %s Dungeon fern sprout {95635 2015-07-08T01:12:31Z {4000629 Cherokee Jack} Moved to new category #REDIRECT [[Dungeon fern]]
+[[Category:UnNetHack monsters]]}
+&&%s&& %s Dungeon fern spore {95636 2015-07-08T01:13:21Z {4000629 Cherokee Jack} Moved to new category #REDIRECT [[Dungeon fern]]
+[[Category:UnNetHack monsters]]}
+&&%s&& %s Punish {95591 2015-07-07T00:15:53Z {4000629 Cherokee Jack} Redirect #REDIRECT [[Punishment]]}
+&&%s&& %s Oh wow, man: Fractals! {95592 2015-07-07T00:28:39Z {4000629 Cherokee Jack} Redirect #REDIRECT [[Touchstone]]}
+&&%s&& %s This tastes like castor oil. {95593 2015-07-07T00:32:33Z {4000629 Cherokee Jack} Redirect #REDIRECT [[Potion of oil]]}
+&&%s&& %s You are being punished for your misbehavior! {95594 2015-07-07T00:37:08Z {4000629 Cherokee Jack} Redirect #REDIRECT [[Punishment]]}
+&&%s&& %s Category:UnNetHack monsters {95604 2015-07-08T00:02:59Z {4000629 Cherokee Jack} Added to Monsters category This category contains [[monster]]s found in the variant [[UnNetHack]] that do not appear in the current version of [[NetHack]] (3.4.3).
+[[Category:UnNetHack]]
+[[Category:Monsters]]}
+&&%s&& %s Acid Mage quest {148380 2022-10-04T23:02:15Z {4001279 Umbire the Phantom} cats {{todo|Role exists in [[SlashTHEM]] - retool accordingly if needed}}
+The [[Acid Mage]] quest ses you fighting the [[Lightningrod]] for [[Slow Blade]]. For more information on the quest [[branch]] in general, see the [[quest]] article.
+<div class="thumb tright">
+{|class="wikitable"
+!Home level
+|Slime Pit
+|-
+!Locate level
+|Electric Power Station
+|-
+!Goal level
+|The Lightningrod's Domain
+|-
+!Leader
+|[[Acidsnort]]
+|-
+!Guardians
+|[[Attendant]]s
+|-
+!Nemesis
+|[[Lightningrod]]
+|-
+!Quest Artifact
+|[[Slow Blade]]
+|}
+</div>
+
+==Levels==
+Random monsters on this Quest are generated with the following frequencies:
+*96/175 (55%) [[drow matron]]
+*24/175 (14%) random [[A]]
+*24/175 (14%) [[titan]]
+*6/175 (3%) random [[H]]
+*1/7 (14%) normal random monster
+
+===Slime Pit===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+x=[[Acidsnort|{{green|@}}]]
+@=[[attendant|{{white|@}}]]
+P=[[pit|{{darkgray|^}}]]
+
+..............^..................... . .....................................
+................................... ... ....................................
+.................................... . .....................................
+................................... ... ....................................
+.................................... . .....................................
+..............................}}}}}}}P}}}}}}}...............................
+............................}}}|----...----|}}}.............................
+...........................}}|--...........--|}}............................
+.................... . . . }|-...............-|} . . . .....................
+................... . . . .}|.......@@@.......|}. . . . ....................
+............................P.......@x@.......P.............................
+................... . . . .}|.......@@@.......|}. . . . ....................
+.................... . . . }|-...............-|} . . . .....................
+...........................}}|--...........--|}}............................
+............................}}}|----...----|}}}.............................
+..............................}}}}}}}P}}}}}}}...............................
+.................................... . .....................................
+................................... ... ....................................
+.................................... . .....................................
+................................... ... ....................................
+</replacecharsblock></div>
+
+The magic portal is at the marked point. [[Acidsnort]] is at the point marked {{green|@}}, where there is also a chest and a chaotic altar, surrounded by eight [[attendant]]s. There is a pit at each entrance to the circle. The level also contains 16 random monsters and two random traps.
+
+The entire level is no-teleport, and has undiggable walls.
+
+===Upper filler level===
+This is a cavernous level, with seven random monsters; seven random objects; and four random traps.
+
+===Electric Power Station===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+P=[[pit|{{darkgray|^}}]]
+K=[[spiked pit|{{darkgray|^}}]]
+B=[[squeaky board|{{brown|^}}]]
+M=[[magic trap|{{brightblue|^}}]]
+
+                                                                            
+ <.       ....            ......            .>.        .......         ..   
+  ..     ......S...     ..........         .....       ........       ....  
+   ..    .. ...   .    ......... ..          K           .....       ....   
+    ..  ..        .      .....    ..         .             ..       .....   
+     ....         .         ..     ..        S               ..        ..   
+    ....          S        ..       ..      ....               ..      ..   
+    .....        ...      ..         ..    ........              ..    ..   
+   ......      ......   ...           ..  ............           ...  ...   
+    ....      .. ....   ....       ........................SM...S......     
+       ..    P.   ..     ...     ........................         ..        
+        ..  ..          ..       ........................          ..       
+  ....   ....          ..         ........................         ..       
+ ......   ..          ..    ...    ....................           ..        
+  ....   ....        ..    .....    ............                 ..         
+   ..   ..  ..      ..       ...  .S    ............          ....     ...  
+   .. ..     ..............    ....      B...........      ....  ..   ..... 
+    ...                   ..            ..     ....    .....      ..   .... 
+                           ..............         ......           .....    
+</replacecharsblock></div>
+
+The stairs are at the marked positions. The marked traps are a pit, a spiked pit, a squeaky board, and a magic trap; the level also has 23 random monsters, two random traps, and fifteen random items. The entire level has undiggable walls and floor. Teleportation is permitted. Note that due to the lack of actual walls, magic mapping the level will only show you the location of the down stairs.
+
+===Lower filler level(s)===
+These are cavern levels, with seven random monsters; eleven random objects; and four random traps.
+
+===The Lightningrod's Domain===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+e={{msl|shocking sphere}}
+1=[[arch-titan|{{brightmagenta|H}}]]
+X={{gray|X}}
+
+                                                                            
+  ...                                                                  ...  
+ .X....................................................................X... 
+  ...                                +                                 ...  
+   .     ............     .......    .                   .......        .   
+   .  .............................  .       ........   .........S..    .   
+   .   ............    .  ......     .  1    .      .    .......   ..   .   
+   .     .........     .   ....      +       . ...  .               ..  .   
+   .        S          .      1  ...XXX...   .S.    .S...............   .   
+   .  ...   .     ...  .         3..eee...          .                   .   
+   . ........    .....S.+.......+..Xe\eX.3+........+.                1  .   
+   .  ...      1  ...    S       ...eee...           ..      .....      .   
+   .                    ..       ...XXX...            ..      ......    .   
+   .      .......     ...            +       ....    ....    .......... .   
+   . ..............  ..              .      ......  ..  .............   .   
+   .     .............      1        .  1  ..........          ......   .   
+  X..                                +                                 X..  
+ .......................................................................... 
+  ...                                                                  ...  
+                                                                            
+</replacecharsblock></div>
+
+The [[Lightningrod]], with the [[Bell of Opening]] and [[Slow Blade]], occupies the [[throne]], where there is also a [[chest]]; surrounding him are eight [[shocking sphere]]s and eight other random monsters, marked with {{gray|X}}. There are also six [[arch-titan]]s embedded in the walls, from where they can freely cast spells and summon monsters while protected from the player. The points in the corner rooms marked with {{gray|X}} each indicate a random monster. Each of the shocking spheres in the Lightningrod's room is standing on a random object; there are five further random objects located randomly around the level, as well as six [[trap]]s.
+
+The entire level has undiggable walls. Teleportation is permitted.
+
+==Messages==
+===Transporter level===
+On descending to the level where the transporter is located:
+ You receive a faint telepathic message from Acidsnort:
+ Your help is urgently needed at Slime Pit!
+ Look for a ...ic transporter.
+ Ye kouldn't quite make out that last message.
+ 
+===Entry===
+First time:
+ You are at Slime Pit, and since Acidsnort is calling for you, something obviously
+ has to be wrong. There are weird creatures around here, too...
+ Could it be that Slime Pit has been defiled by some evil force?
+
+Next time:
+ Once again, you are back at Slime Pit.
+
+If already rejected twice due to bad alignment:
+ You are back at Slime Pit.
+ You have an odd feeling this may be the last time you ever come here.
+
+===Quest guardians===
+If #chatting before the quest is complete:
+ "Greetings, fellow Mage."
+ "We're being overrun by fierce creatures!"
+ "Help us fight the infestation!"
+ "Some sinister force is spawning bad things here!"
+ "Better look for Acidsnort quick, he may need your help!"
+
+If #chatting after the quest is complete:
+ "Good luck, <currentrank>!"
+ "Go on and use your powers!"
+ "You're quite skilled, <playername>."
+ "Thanks for putting the Lightningrod out of his misery."
+ "You did a good job, <playername>."
+
+===Quest leader===
+When you first meet your quest leader:
+ "<playername>, grave times have befallen us. We will need four (sic) help.
+ Do you think you're ready?"
+
+When you return, having been rejected due to lack of experience:
+ "Welcome back, <playername>. Are you ready to help us now?"
+
+This message is not currently used:
+ "<playername>! Time is running out! We need you to help us right now!"
+
+When you are expelled from the quest for having failed the alignment test seven times:
+ "You're too late, <playername>! All hope is lost. We will never be able to
+ fight the infestation now.
+ Please go away and let me and my fellows die in peace."
+
+When being rejected due to lack of experience:
+ "<playername>, you aren't yet ready to fight the Lightningrod. Train your skills until
+ you are a Corroder, and then come back at once."
+
+When being rejected due to having worse than pious alignment:
+ "Sorry <playername>, but we can't trust you yet. Try to prove your valor
+ and then come back to me at once."
+
+When finally assigned the quest:
+ "<playername>, we're being overrun by evil creatures. This must be the work of
+ the Lightningrod, a terrible being that can control minds!
+ You will need to go to Electric Power Station and get back Slow Blade, and also defeat the Lightningrod.
+ Now go!"
+
+====Encouragement====
+If you subsequently chat to your quest leader, you are encouraged:
+ "Don't underestimate the power of the Lightningrod."
+ "Journey forth to Electric Power Station and put the Lightningrod out of his misery."
+ "You must get back Slow Blade!"
+ "Slow Blade is a powerful artifact. If you find it, get it back to me."
+ "Please be quick on your quest, <playername>."
+ "You're a <currentrank>, you should be able to help us."
+ "<deity> may protect you on your path."
+ "Beware, the Lightningrod may resist some of your attacks."
+ "Good luck on your quest! Now go!"
+ "If you don't defeat the Lightningrod soon, the creatures will overrun our Slime Pit!"
+
+===Locate and goal levels===
+When first entering the locate level:
+ The entrance to Electric Power Station must be somewhere around here.
+ You feel you're getting closer to the source of all these creatures.
+
+When returning:
+ Once again, you are near the entrance to Electric Power Station.
+
+When first entering the goal level:
+ This must be the place where the Lightningrod lurks. It's Electric Power Station, obviously.
+ Now you must find Slow Blade somewhere around here.
+
+When returning:
+ Once again, you enter the Lightningrod's domain.
+
+===Quest nemesis===
+When first encountering the quest nemesis:
+ the Lightningrod notices you and gets ready to battle you.
+ You know you have to fight him for Slow Blade and the Bell of Opening.
+
+Upon further meetings:
+ the Lightningrod's presence haunts you.
+
+And on the 4th and subsequent meetings:
+ You are stricken with fear as the Lightningrod comes closer to you.
+
+When you have the Slow Blade, but the Lightningrod has not been destroyed:
+ You still need to fight the Lightningrod if you ever want to get Slow Blade back.
+
+====Discouragement====
+The Lightningrod does not speak, but will occasionally make its presence known:
+ the Lightningrod screams eerily.
+ The presence of the Lightningrod lets the hair on the back of your neck stand up.
+ Your visions are blurring...
+ You suddenly remember some dreadful happenings from your past.
+ Did something just move?
+ The air around Electric Power Station seems icy cold.
+ This place is giving you the creeps.
+ You seem to see a white rabbit jumping around.
+ The walls seem to be closing in on you.
+ You still have time to flee with your life...
+
+===Victory===
+When picking up your quest artifact:
+ Finally! Slow Blade is yours. Now you need to bring it back to Acidsnort.
+ Maybe he'll reward you.
+
+When destroying the nemesis:
+ You destroy the Lightningrod, making sure it cannot haunt you any more.
+

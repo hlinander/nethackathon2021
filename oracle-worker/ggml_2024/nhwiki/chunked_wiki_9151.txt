@@ -1,0 +1,1000 @@
+For the colors of the wiki itself, see [[:Category:Function_templates|function templates]] and [[User:Paxed/ReplaceCharsBlock|ReplaceCharsBlock]].
+
+== Monitor ==
+
+Even the appearance of the RGB colors is not fixed, but can vary depending on your display hardware and software.  Some issues that can affect color rendering include:
+
+* Your computer may or may not apply [[wikipedia:gamma correction|gamma correction]] to colors (and, if it does, it may or may not be properly calibrated).  Also, different monitors may have different natural gamma values, and on some monitors the gamma value may even be adjustable.
+* [[wikipedia:Cathode ray tube|CRT]] and [[wikipedia:LCD|LCD]] monitors have different [[wikipedia:color gamut|color gamut]]s, affecting the colors they can display.
+* The brightness, contrast and color temperature of the monitor can also vary, and are often subject to user adjustment.
+* Finally, ambient lighting and variations in the human eye itself can affect the appearance of colors.
+
+What all this comes down to is that colors which look nice and easily visible to one person may not look as good to another.  Thus, picking a good color palette is ultimately a personal, subjective choice.
+
+== Changing terminal colors ==
+
+When playing without tiles, you can adjust the colors used by your terminal/console. For example, if dark blue on black background is nearly invisible, try changing the dark blue color in your console color settings.
+
+=== PuTTY ===
+The colors for [[PuTTY]] can be changed in the putty settings, or you could use [http://bilious.alt.org/~paxed/wintermcolors.php Windows Console colors editor] which can also create a registry file for putty. Alternatively, the [https://github.com/AlexAkulov/putty-color-themes putty-color-themes] repository has many color themes ready.
+
+=== rxvt ===
+From the command line: <tt>rxvt -color4 lightblue</tt>.
+
+rxvt colors can also be set via the [[X11]] resources as seen in the xterm configuration below by using <tt>Rxvt*color4: lightblue</tt> in <tt>~/.Xdefaults</tt>
+
+=== xterm ===
+From the command line: <tt>xterm -xrm "XTerm*color4: lightblue"</tt>
+
+Similar to setting [[X11]] resources, you can change the colors used by xterm, by putting eg. the following in <tt>~/.Xdefaults</tt>:
+ XTerm*color4: lightblue
+And then doing <tt>xrdb -merge ~/.Xdefaults</tt> to set the resource. Starting xterm after that will use the lightblue color.
+
+=== mintty (Cygwin) ===
+Changing the ANSI terminal colors in mintty doesn't seem possible using the GUI color options; you can, however, specify color preferences by editing <tt>~/.minttyrc</tt>.  
+
+The syntax is <tt>ColorName=R,G,B</tt>, putting each new entry on a new line.
+
+For example:
+  BoldBlue=202,169,250
+
+Colors are referred to by their ANSI names - <tt>Black</tt>, <tt>Blue</tt>, <tt>Red</tt>, <tt>Magenta</tt>, <tt>Green</tt>, <tt>Cyan</tt>, <tt>Yellow</tt> and <tt>White</tt>; prefix these with <tt>Bold</tt> when referring to the secondary, highlighted version of the color.
+
+=== Linux console ===
+You can output an OSC control sequence to change a color. The format is: <tt>Esc]Pnrrggbb</tt>, where Esc means the escape character. nrrggbb is a sequence of 7 hexadecimal digits, where ''n'' is the color number, and ''rr'', ''gg'' and ''bb'' are the red, green and blue parts of the color.
+
+You can do this with the <tt>echo</tt> command, for example:
+  echo -e '\e]P40000ff'
+This will set the fourth color (dark blue) to the RGB values 0, 0, and 255. To reset all colors, use this sequence:
+  echo -e '\e]R'
+You might want to put this into a script so you don't have to do this manually every time you play.
+
+=== Windows ===
+You can edit the colors in the command prompt settings.
+
+
+== Internal NetHack color codes ==
+
+Internally, the colors in NetHack are specified using the 16 CLR_* color codes (including NO_COLOR, a dark gray used as the default color) defined in the file [[Source:color.h|includes/color.h]].
+
+{|class="wikitable"
+!color name
+!numeric value
+|-
+|CLR_BLACK
+|0
+|-
+|CLR_RED
+|1
+|-
+|CLR_GREEN
+|2
+|-
+|CLR_BROWN
+|3
+|-
+|CLR_BLUE
+|4
+|-
+|CLR_MAGENTA
+|5
+|-
+|CLR_CYAN
+|6
+|-
+|CLR_GRAY
+|7
+|-
+|NO_COLOR
+|8
+|-
+|CLR_ORANGE
+|9
+|-
+|CLR_BRIGHT_GREEN
+|10
+|-
+|CLR_YELLOW
+|11
+|-
+|CLR_BRIGHT_BLUE
+|12
+|-
+|CLR_BRIGHT_MAGENTA
+|13
+|-
+|CLR_BRIGHT_CYAN
+|14
+|-
+|CLR_WHITE
+|15
+|-
+|CLR_MAX
+|16
+|}
+
+
+The same file also defines a number of "logical" colors for different materials and effects which map to these 16 colors: for example, both leather and wood are defined to be CLR_BROWN.
+
+{|class="wikitable"
+!logical name
+!color name
+|-
+|HI_OBJ
+|CLR_MAGENTA
+|-
+|HI_METAL
+|CLR_CYAN
+|-
+|HI_COPPER
+|CLR_YELLOW
+|-
+|HI_SILVER
+|CLR_GRAY
+|-
+|HI_GOLD
+|CLR_YELLOW
+|-
+|HI_LEATHER
+|CLR_BROWN
+|-
+|HI_CLOTH
+|CLR_BROWN
+|-
+|HI_ORGANIC
+|CLR_BROWN
+|-
+|HI_WOOD
+|CLR_BROWN
+|-
+|HI_PAPER
+|CLR_WHITE
+|-
+|HI_GLASS
+|CLR_BRIGHT_CYAN
+|-
+|HI_MINERAL
+|CLR_GRAY
+|-
+|DRAGON_SILVER
+|CLR_BRIGHT_CYAN
+|-
+|HI_ZAP
+|CLR_BRIGHT_BLUE
+|}
+
+== Terminal color codes ==
+
+On systems where NetHack outputs text to be displayed in a terminal (rather than handling text rendering by itself), the internal color codes defined in color.h are mapped to [[wikipedia:ANSI escape codes|ANSI escape codes]] or equivalent codes defined in the system [[wikipedia:terminfo|terminfo]].  This mapping is specified in win/tty/termcap.c, and (for a mapping of 16 to 16 colors) is surprisingly platform-dependent.  Notable quirks include:
+
+* On systems defining MICRO <small>(''which are these?'')</small>, CLR_BLUE is mapped to the same color code as CLR_BRIGHT_BLUE, presumably because the default blue is considered too dark.
+* On many (most?) systems <small>(''which?'')</small>, no color codes are defined for CLR_BLACK, CLR_GRAY and NO_COLOR, leaving them all as the default text color (usually gray).
+* On Unix systems using terminfo, CLR_BLACK is actually aliased to CLR_BLUE.  There is a comment saying that this is done to avoid trying to display black text on a (presumed) black background, as it might not be visible.
+* On the [[wikipedia:Atari TOS|Atari TOS]] port, several of the darker colors are mapped to their bright counterparts.  <small>(''Which ones? The code is kind of confusing...'')</small>
+
+On some systems, the mapping from NetHack colors to terminal colors may be adjusted using the [[options#videocolors|videocolors]] option.
+
+== RGB colors ==
+
+On some systems, NetHack directly maps the 16 internal color codes to RGB colors.  On others, this task is left for the terminal emulator, while on some (mainly older) systems, the color choices may even be determined by the graphics hardware.
+
+{{todo|List some NetHack/terminal color palettes here.}}
+
+=== mtty palette===
+
+
+:<onlyinclude><span style="color:#000000; background-color:#AAAAAA; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Black</span></onlyinclude>
+:<onlyinclude><span style="color:#880000; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Red</span></onlyinclude>
+:<onlyinclude><span style="color:#008800; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Green</span></onlyinclude>
+:<onlyinclude><span style="color:#553300; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Brown</span></onlyinclude>
+:<onlyinclude><span style="color:#000088; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Blue</span></onlyinclude>
+:<onlyinclude><span style="color:#770077; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Magenta</span></onlyinclude>
+:<onlyinclude><span style="color:#007777; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Cyan</span></onlyinclude>
+:<onlyinclude><span style="color:#888888; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Gray</span></onlyinclude>
+:<onlyinclude><span style="color:#EEEE00; background-color:#606060; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Orange</span></onlyinclude>
+:<onlyinclude><span style="color:#00FF00; background-color:#606060; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Bright green</span></onlyinclude>
+:<onlyinclude><span style="color:#EEEE00; background-color:#606060; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Yellow</span></onlyinclude>
+:<onlyinclude><span style="color:#0000FF; background-color:#606060; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Bright blue</span></onlyinclude>
+:<onlyinclude><span style="color:#EE00EE; background-color:#606060; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Bright magenta</span></onlyinclude>
+:<onlyinclude><span style="color:#00EEEE; background-color:#606060; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">Bright cyan</span></onlyinclude>
+:<onlyinclude><span style="color:#000000; background-color:#FFFFFF; font-family: monospace; padding: 2px; font-weight: bold; font-size: large;">White</span></onlyinclude>
+
+==See Also==
+* [[Template:Monsters]]
+* [[Options#color]]
+* [[Options#MONSTERCOLOR]]
+
+[[Category:User interface]]
+{{nethack-343}}}
+&&%s&& %s Asterisk {61972 2010-12-28T18:46:49Z {214 Dptr1988} Asterisk redirect #REDIRECT [[*]]}
+&&%s&& %s Template:= {61995 2010-12-28T20:23:23Z {214 Dptr1988} Created workaround template. =<noinclude>[[Category:Workaround templates|{{PAGENAME}}]]</noinclude>}
+&&%s&& %s Jewelry {98803 2015-12-19T20:34:36Z {4000080 ChasonBot}  '''Jewelry''' is a term which collectively refers to objects you put on with {{kbd|P}}, namely
+* [[ring]]s,
+* [[amulet]]s,
+* [[lenses]] and [[blindfold]]s.
+
+See also [[eating jewelry]] and [[Shop#Table_of_shops|jeweler shop]].
+{{disambig}}
+{{nethack-343}}}
+&&%s&& %s Shift {143935 2021-12-19T11:42:25Z {4001279 Umbire the Phantom}  As with most [[roguelike]]s, ''[[NetHack]]'' has more than enough commands to necessitate using upper and lower case letters. A player usually accesses upper case commands by means of the '''shift key'''. Although pressing caps lock can do so as well, using this method is generally undesirable, since lower case commands tend to be for more common actions. The commands that require a shift key are detailed in the image below using blue text:
+
+[[File:Keyboard shortcuts.svg|center|600px]]
+
+On this wiki, upper case commands may be referred to with either the shift key combination or a key with the specific case of the letter. Using the example of putting on [[jewelry]], this means either <nowiki>{{kbd|shift|p}}</nowiki> ({{kbd|shift|p}}) or <nowiki>{{kbd|P}}</nowiki> ({{kbd|P}}). For the sake of consistency and consideration of keyboard layouts that don't include a shift key, the latter is used.
+{{noversion}}
+[[Category:User interface]]}
+&&%s&& %s Jewellery {62026 2010-12-30T05:43:33Z {375 Ion frigate} British spelling #REDIRECT [[jewelry]]}
+&&%s&& %s SLASH'EM artifacts {137526 2021-02-04T08:03:13Z {4001279 Umbire the Phantom}  The following is a list of '''[[SLASH'EM]] [[artifact]]s''', including those present in vanilla ''[[Nethack]]''.  Note that some of the general artifact behaviors have been changed.
+
+In particular:
+*Artifacts in vanilla that inflict a random amount of extra damage ([[Excalibur]] for example) in SLASH'EM always inflict the maximum; the same is applied to to-hit bonuses as well. This makes them much more useful in general.
+*Artifacts which do their damage against a particular type of monster ([[Sting]] for example) also have a 15% chance of [[cancellation|cancelling]] said monsters.
+*It is possible for roles to have more than one guaranteed artifact gift.  They will always be given in the same order.
+*It is possible to [[twoweapon]] two artifact weapons. (Attempting this in vanilla NetHack only produces the message ''“Your <artifact weapon> resists being held second to another weapon!”'')
+
+Some of the individual artifacts have been changed as well. For example, [[the Sceptre of Might]] now only inflicts an extra 5 damage on cross-aligned monsters, instead of double damage.
+
+== List of artifacts ==
+:''See [[Source:SLASH'EM 0.0.7E7F2/artilist.h]], [[Source:SLASH'EM 0.0.7E7F2/artifact.c]] or the article for each artifact for more details.''  <ref>Borrowed heavily from http://www.angelfire.com/trek/mazewest/spoilers/arti_007e6.txt</ref>
+{| class="wikitable sortable striped"
+|-
+! rowspan="2" | Artifact name
+! rowspan="2" | Base item type
+! rowspan="2" | [[Alignment]]<ref name="art_align">The hero's [[quest artifact]] and any guaranteed [[sacrifice gift]]s are adjusted to the hero's ''starting'' [[alignment]].  For example, for a wizard who starts chaotic, [[Magicbane]], [[Deluder]] and [[The Eye of the Aethiopica]] are generated chaotic.  See [[Source:SLASH'EM 0.0.7E7F2/artifact.c#line56]].</ref>
+! rowspan="2" | [[Intelligent artifact|Intelligent]]
+! class="unsortable" colspan="3" | Special properties
+! class="unsortable" rowspan="2" | Obtaining
+|-
+! class="unsortable" | Carried
+! class="unsortable" | Used (Worn, Wielded, Applied, or Read)
+! class="unsortable" | [[Invoke|Invoked]]
+|-
+| [[Bat from Hell]]
+| [[baseball bat]]
+| [[chaotic]]
+| No
+| 
+| +3 to-hit & +20 damage.
+|
+| First [[sacrifice gift]] for [[Rogue]]s.  Not randomly generated.
+|-
+| [[The Candle of Eternal Flame]]
+| [[magic candle]] (candle)
+| [[neutral]]
+| Yes
+| [[Warning]]. [[Teleport control]]. [[Cold resistance]].
+|
+| Summon [[Elemental|fire elemental]].
+| [[Quest artifact]] for [[Flame mage]]s.
+|-
+| [[Cleaver]]
+| [[battle-axe]] (two-headed axe)
+| [[neutral]]
+| No
+|
+| +3 to-hit & +6 damage.
+|
+| First [[sacrifice gift]] for [[Barbarian]]s.
+|-
+| [[The Crown of Saint Edward]]
+| [[helm of telepathy]] (random helmet)
+| [[lawful]]
+| Yes
+| [[Magic resistance]]. [[Half spell damage]].
+|
+| 
+| [[Quest artifact]] for [[Yeoman|Yeomen]].
+|-
+| [[Deathsword]]
+| [[two-handed sword]]
+| [[chaotic]]
+| No
+|
+| +5 to-hit & +14 damage to [[human]]s.
+|
+| Second [[sacrifice gift]] for [[Barbarian]]s.
+|-
+| [[Deep Freeze]]
+| [[athame]]
+| [[chaotic]]
+| No
+|
+| +5 to-hit & +5 damage to non-cold-resistant monsters. [[Cold resistance]].
+|
+| First [[sacrifice gift]] for [[Ice mage]]s.  Not randomly generated.
+|-
+| [[Deluder]]
+| [[cloak of displacement]] (random cloak)
+| [[neutral]]
+| No
+| [[Luck]].
+| [[Stealth]].
+|
+| Second [[sacrifice gift]] for [[Wizard]]s.
+|-
+| [[Demonbane]]
+| [[long sword]]
+| [[lawful]]
+| No
+|
+| +5 to-hit, x2 damage & 15% chance of [[cancellation]] to major [[demon]]s.
+|
+| May be given to a new [[angelic being]].
+|-
+| [[Disrupter]]
+| [[mace]]
+| [[neutral]]
+| No
+|
+| +5 to-hit & +30 damage to [[undead]].
+|
+| First [[sacrifice gift]] to [[Priest]]s.
+|-
+| [[Doomblade]]
+| [[orcish short sword]] (crude short sword)
+| [[chaotic]]
+| No
+|
+| +10 damage. 25% chance of 5d4 extra damage.
+|
+|
+|-
+| [[Dragonbane]]
+| [[broadsword]]
+| [[unaligned]]
+| No
+|
+| +5 to-hit, x2 damage & 15% chance of [[cancellation]] to [[dragon]]s.
+|
+|
+|-
+| [[Elfrist]]
+| [[orcish spear]] (crude spear)
+| [[chaotic]]
+| No
+|
+| +5 to-hit, +15 damage & 15% chance of [[cancellation]] to [[elf|elves]].
+|
+| May be produced by [[name|naming]] an ordinary orcish spear Elfrist.
+|-
+| [[Excalibur#SLASH'EM|Excalibur]]
+| [[long sword]]
+| [[lawful]]
+| Yes
+|
+| +5 to-hit & +10 damage.  [[Drain resistance]]. [[Search]]ing. Hostile [[demon prince]]s. Monster tracking.
+|
+| May be produced for lawful adventurers at [[fountain]]s. Lawful [[crowning#alignment gift|crowning gift]].  Not randomly generated.
+|-
+| [[The Eye of the Aethiopica]]
+| [[amulet of ESP]] (random amulet)
+| [[neutral]]
+| Yes
+| [[Magic resistance]]. [[Energy]] regeneration. [[Half spell damage]].
+|
+| Branchport.
+| [[Quest artifact]] of [[Wizard]]s.
+|-
+| [[The Eye of the Beholder]]
+| [[eyeball]]
+| [[neutral]]
+| No
+|
+|
+| Special damage, including possible [[instadeath]] of hero!
+| Obtained by killing the [[Beholder]] (found in the [[Neutral Quest]]).
+|-
+| [[The Eyes of the Overworld]]
+| [[pair of lenses]]
+| [[neutral]]
+| Yes
+| [[Magic resistance]]
+| [[Astral vision]]. Protection against [[blindness]] & gazes.
+| [[Enlightenment]].
+| [[Quest artifact]] of [[Monk]]s.
+|-
+| [[Fire and Frost Brand|Fire Brand]]
+| [[long sword]]
+| [[unaligned]]
+| No
+|
+| +5 to-hit & x2 damage to non-fire-resistant monsters. [[Fire resistance]].
+|
+|
+|-
+| [[Firewall]]
+| [[athame]]
+| [[lawful]]
+| No
+|
+| +4 to-hit & +4 damage non-fire-resistance monsters. [[Fire resistance]].
+|
+| First [[sacrifice gift]] for [[Flame mage]]s.  Not randomly generated.
+|-
+| [[Fire and Frost Brand|Frost Brand]]
+| [[long sword]]
+| [[unaligned]]
+| No
+|
+| +5 to-hit & x2 damage to non-cold-resistant monsters. [[Cold resistance]].
+|
+|
+|-
+| [[Gauntlets of Defense]]
+| [[gauntlets of dexterity]] (random gauntlets)
+| [[neutral]]
+| No
+|
+| [[Half physical damage]].
+| [[Invisibility]].
+| First [[sacrifice gift]] for [[Monk]]s.
+|-
+| [[Giantkiller]]
+| [[axe]]
+| [[neutral]]
+| No
+|
+| +5 to-hit, x2 damage & 15% chance of [[cancellation]] to [[giant]]s.
+|
+|
+|-
+| [[Grayswandir]]
+| [[silver saber]]
+| [[lawful]]
+| No
+|
+| +5 to-hit & x2 damage. Removal of effect of [[hallucination]].
+|
+|
+|-
+| [[The Great Dagger of Glaurgnaa]]
+| [[great dagger]]
+| [[chaotic]]
+| Yes
+| [[Magic resistance]]
+| +8 to-hit, +4 damage & level drain to cross-aligned monsters.
+| [[Energy]] boost.
+| [[Quest artifact]] of [[Necromancer]]s.
+|-
+| [[Grimtooth]]
+| [[orcish dagger]] (crude dagger)
+| [[chaotic]]
+| No
+|
+| +2 to-hit & +6 damage.
+|
+|
+|-
+| [[The Hand of Vecna]]
+| [[severed hand]]
+| [[chaotic]]
+| No
+| Hungerless [[regeneration]]. [[Half physical damage]]. [[Cold resistance]].
+| [[Drain resistance]]
+| Special damage, including possible damage to hero!
+| Obtained by killing [[Vecna]] (found in the [[Chaotic Quest]]).
+|-
+| [[The Heart of Ahriman]]
+| [[luckstone]]
+| [[neutral]]
+| Yes
+| [[Stealth]].
+| As projectile, +5 to-hit & x2 damage.
+| [[Levitation]].
+| [[Quest artifact]] of [[Barbarian]].
+|-
+| [[Hellfire]]
+| [[crossbow]]
+| [[chaotic]]
+| No
+|
+| +5 to-hit, +7 damage, & +2d6 fire damage.  [[Fire resistance]].
+|
+|
+|-
+| [[Holy Spear of Light]]
+| [[silver spear]]
+| [[lawful]]
+| Yes
+| [[Light]] source.
+| +5 to-hit & +10 damage to [[undead]].
+| [[Light]] area.  Special damage to [[undead]].
+|
+|-
+| [[Houchou]]
+| [[spoon]]
+| [[chaotic]]
+| No
+|
+| [[Instadeath|Instakill]].
+|
+|
+|-
+| [[Alignment key|The Key of Chaos]]
+| [[skeleton key]] (key)
+| [[chaotic]]
+| Yes
+|
+| Unbreakable. Opens doors [[Vlad's Tower]].
+|
+| Generated with [[Vecna]] (found in the [[Chaotic Quest]]).
+|-
+| [[Alignment key|The Key of Law]]
+| [[skeleton key]] (key)
+| [[lawful]]
+| Yes
+|
+| Unbreakable. Opens doors [[Vlad's Tower]].
+|
+| Generated with [[Nightmare]] (found in the [[Lawful Quest]]).
+|-
+| [[Alignment key|The Key of Neutrality]]
+| [[skeleton key]] (key)
+| [[neutral]]
+| Yes
+|
+| Unbreakable. Opens doors [[Vlad's Tower]].
+|
+| Generated with the [[Beholder]] (found in the [[Neutral Quest]]).
+|-
+| [[The Longbow of Diana]]
+| [[bow]]
+| [[chaotic]]
+| Yes
+| [[Telepathy]].
+| +5 to-hit. [[Reflection]].
+| Create [[arrow]]s.
+| [[Quest artifact]] of [[Ranger]]s.
+|-
+| [[Luckblade]]
+| [[short sword]]
+| [[neutral]]
+| No
+| [[Luck]].
+| +5 to-hit & +5 damage.
+|
+|
+|-
+| [[The Magic Mirror of Merlin]]
+| [[mirror]] (looking glass)
+| [[lawful]]
+| Yes
+| [[Magic resistance]]. [[Telepathy]]. x2 to some spell damage.
+| [[Rumor]]s.
+|
+| [[Quest artifact]] of [[Knight]]s.
+|-
+| [[Magicbane#SLASH'EM|Magicbane]]
+| [[athame]]
+| [[neutral]]
+| No
+|
+| +3 to-hit.  Special damage. [[Magic resistance]]. Protects against [[Curse_items|cursing]].
+|
+| First [[sacrifice gift]] for [[Wizard]]s.
+|-
+| [[The Master Key of Thievery]]
+| [[skeleton key]] (key)
+| [[chaotic]]
+| Yes
+| [[Warning]]. [[Half physical damage]]. [[Teleport control]].
+| [[Rumor]]s.
+| [[Untrap]]s containers with guaranteed success.
+| [[Quest artifact]] of [[Rogue]]s.
+|-
+| [[Mirrorbright]]
+| [[shield of reflection]] (polished silver shield)
+| [[neutral]]
+| No
+|
+| [[Hallucination]] resistance.
+|
+| First [[sacrifice gift]] for [[Healer]]s.
+|-
+| [[The Mitre of Holiness]]
+| [[helm of brilliance]] (random helmet)
+| [[lawful]]
+| Yes
+| [[Fire resistance]].
+| Half damage from [[undead]] & [[demon]]s.
+| [[Energy]] boost.
+| [[Quest artifact]] of [[Priest]]s.
+|-
+| [[Mjollnir#SLASH'EM|Mjollnir]]
+| [[heavy hammer]]
+| [[neutral]]
+| No
+|
+| +5 to-hit & +24 damage to non-shock-resistant monsters. Can return when thrown.
+|
+| First [[sacrifice gift]] for [[Valkyrie]]s.
+|-
+| [[Nighthorn]]
+| [[unicorn horn]]
+| [[lawful]]
+| No
+|
+| [[Reflection]].
+|
+| Obtained by killing [[Nightmare]] (found in the [[Lawful Quest]]).
+|-
+| [[Ogresmasher]]
+| [[war hammer]]
+| [[unaligned]]
+| No
+|
+| +5 to-hit, x2 damage & 15% chance of [[cancellation]] to [[ogre]]s.
+|
+|
+|-
+| [[The Orb of Detection]]
+| [[crystal ball]] (glass orb)
+| [[lawful]]
+| Yes
+| [[Magic resistance]]. [[Half spell damage]]. [[Telepathy]].
+|
+| [[Invisibility]].
+| [[Quest artifact]] of [[Archeologist]]s.
+|-
+| [[The Orb of Fate]]
+| [[crystal ball]] (glass orb)
+| [[neutral]]
+| Yes
+| [[Half physical damage]]. [[Half spell damage]]. [[Warning]]. [[Luck]].
+|
+| [[Level teleport]].
+| [[Quest artifact]] of [[Valkyrie]]s.
+|-
+| [[Orcrist]]
+| [[elven broadsword]] (runed broadsword)
+| [[lawful]]
+| No
+|
+| +5 to-hit, x2 damage & 15% chance of [[cancellation]] to [[orc]]s.
+|
+| May be produced by [[name|naming]] an ordinary elven broadsword Orcrist.
+|-
+| [[Plague]]
+| [[dark elven bow]] (black runed bow)
+| [[chaotic]]
+| No
+|
+| +5 to-hit & +7 damage. [[Poison]]s arrows.  [[Poison resistance]].
+|
+|
+|-
+| [[The Platinum Yendorian Express Card]]
+| [[credit card]]
+| [[neutral]]
+| Yes
+| [[Magic resistance]]. [[Half spell damage]]. [[Telepathy]].
+|
+| [[Charging]].
+| [[Quest artifact]] of [[Tourist]]s.
+|-
+| [[Quick Blade]]
+| [[elven short sword]] (runed short sword)
+| [[lawful]]
+| No
+|
+| +9 to-hit & +2 damage.
+|
+|
+|-
+| [[Reaper]]
+| [[halberd]] (angled poleaxe)
+| [[lawful]]
+| No
+|
+| +5 to-hit & +20 damage.
+|
+| Second [[sacrifice gift]] for [[Yeoman|Yeomen]].
+|-
+| [[The Sceptre of Might#SLASH'EM|The Sceptre of Might]]
+| [[mace]]
+| [[lawful]]
+| Yes
+| [[Magic resistance]].
+| +3 to-hit & +5 damage to cross-aligned monsters.
+| [[Conflict]].
+| [[Quest artifact]] of [[Cavepeople]].
+|-
+| [[Serpent's Tongue]]
+| [[dagger]]
+| [[chaotic]]
+| No
+|
+| +2 to-hit & x2 damage.  Extra poison damage.
+|
+| First [[sacrifice gift]] for [[Necromancer]]s.
+|-
+| [[Skullcrusher]]
+| [[club]]
+| [[lawful]]
+| No
+|
+| +3 to-hit & +10 damage.
+|
+| First [[sacrifice gift]] for [[Cavepeople]].
+|-
+| [[Snickersnee]]
+| [[katana]] (samurai sword)
+| [[lawful]]
+| No
+|
+| +8 damage.
+|
+| First [[sacrifice gift]] for [[Samurai]].
+|-
+| [[The Staff of Aesculapius]]
+| [[quarterstaff]] (staff)
+| [[neutral]]
+| Yes
+|
+| +3 to-hit, x2 damage & level drain to non-drain-resistant monsters. Hungerless [[regeneration]].
+| Healing, cures [[sickness]], [[blindness]], & [[sliming]].
+| [[Quest artifact]] of [[Healer]]s.
+|-
+| [[The Stake of Van Helsing]]
+| [[wooden stake]]
+| [[lawful]]
+| Yes
+| [[Magic resistance]]
+| +5 to-hit & +12 damage. Extra damage against [[vampire]]s & [[vampire bat]]s, including 10% chance of [[instadeath|instakill]].
+|
+| [[Quest artifact]] of [[Undead slayer]]s.
+|-
+| [[Sting]]
+| [[elven dagger]] (runed dagger)
+| [[lawful]]
+| No
+|
+| +5 to-hit & x2 damage to [[orc]]s.  [[Warned of monster type|Warning of orcs]].  Cuts through webs.
+|
+| May be produced by [[name|naming]] an ordinary elven dagger Sting.
+|-
+| [[The Storm Whistle]]
+| [[magic whistle]] (whistle)
+| [[lawful]]
+| Yes
+| [[Warning]]. [[Teleport control]]. [[Fire resistance]].
+|
+| Summon [[Elemental|water elemental]].
+| [[Quest artifact]] of [[Ice mage]]s.
+|-
+| [[Stormbringer]]
+| [[runesword]]
+| [[chaotic]]
+| Yes
+|
+| +5 to-hit, +2 damage & level drain to non-drain-resistant monsters. [[Drain resistance]]. Bloodthirsty.
+|
+| Chaotic [[crowning#alignment gift|crowning gift]].
+|-
+| [[Sunsword]]
+| [[long sword]]
+| [[lawful]]
+| No
+|
+| +5 to-hit & x2 damage to [[undead]]. [[Light]].  Protection from light-based [[blindness|blinding]].
+|
+| May be generated with some [[angelic being]]s.
+|-
+| [[Sword of Balance]]
+| [[silver short sword]]
+| [[neutral]]
+| No
+|
+| +2 to-hit & +5 damage to cross-aligned monsters.
+|
+|
+|-
+| [[Sword of Justice]]
+| [[long sword]]
+| [[lawful]]
+| No
+|
+| +5 to-hit & +12 damage cross-aligned monsters.
+|
+| First [[sacrifice gift]] for [[Yeoman|Yeomen]].
+|-
+| [[Thiefbane]]
+| [[long sword]]
+| [[chaotic]]
+| No
+|
+| +5 to-hit, +1 damage, level drain, 15% chance of [[cancellation]] & 10% chance of [[Instadeath|beheading]] to all [[@]].
+|
+| Generated with [[Black market (SLASH'EM)#One-eyed Sam|One-eyed Sam]] (found in the [[Black market (SLASH'EM)|black market]]).  Cannot be randomly generated, granted by a god, or wished for, even if the black market hasn't yet been found.
+|-
+| [[Trollsbane]]
+| [[morning star]]
+| [[unaligned]]
+| No
+|
+| +5 to-hit, x2 damage & 15% chance of [[cancellation]] to [[troll]]s.
+|
+|
+|-
+| [[The Tsurugi of Muramasa]]
+| [[tsurugi]] (long samurai sword)
+| [[lawful]]
+| Yes
+| [[Luck]].
+| 10% chance of extra damage, including possible [[Instadeath|bisection]].
+|
+| [[Quest artifact]] for [[Samurai]].
+|-
+| [[Vorpal Blade]]
+| [[long sword]]
+| [[neutral]]
+| No
+|
+| +5 to-hit & +1 damage. 10% chance of [[Instadeath|beheading]]. Instantly kills [[jabberwock]]s.
+|
+| Neutral [[crowning#alignment gift|crowning gift]].
+|-
+| [[Wallet of Perseus]]
+| [[bag of holding]] (bag)
+| [[unaligned]]
+| No
+|
+| Reduced weight (increase if cursed).
+|
+| Cannot be randomly generated, as the game never attempts to convert tools to artifacts.
+|-
+| [[Werebane]]
+| [[silver saber]]
+| [[unaligned]]
+| No
+|
+| +5 to-hit, x2 damage & 15% chance of [[cancellation]] to [[werecreature]]s. Protection from [[lycanthropy]].
+|
+|
+|-
+| [[Whisperfeet]]
+| [[speed boots]] (random boots)
+| [[neutral]]
+| No
+| [[Luck]].
+| [[Stealth]].
+|
+| First [[sacrifice gift]] for [[Tourist]]s.
+|}
+
+== References ==
+<references/>
+
+== See also ==
+* [[SLASH'EM artifact weapons]]
+* [[Artifact|NetHack artifacts]]
+* [[Quest artifact]]
+* [[Artifact blast]]
+* [[Artifact YANIs]]
+
+[[Category:SLASH'EM Artifacts| ]]}
+&&%s&& %s Quick Blade {149951 2023-02-14T07:23:57Z {375 Ion frigate} Remove incorrect fact I added over a decade ago: Quick Blade is present in SLASH 6 (1996), but quick blades are not present in Dungeon Crawl 1.1 (1997) ; the names are probably just a coincidence {{artifact weapon
+|name = Quick Blade
+|base = elven short sword
+|material = wood
+|color = cyan
+|smalldmg = 1d8 '''+2'''
+|largedmg = 1d8 '''+2'''
+|tohit = '''+9'''
+|skill = short sword
+|cost = 1000
+|weight = 30
+|affiliation = [[lawful]]
+}}
+
+'''Quick Blade''' is an [[artifact]] weapon in [[SLASH'EM]]. It is a [[lawful]] [[elven short sword]] with a +9 bonus to hit and a +2 bonus to damage against all monsters. Despite its name, it does not grant [[speed]].
+
+==Strategy==
+Unfortunately, this weapon is likely to be useless in most games. Its principal advantage is its to-hit bonus, making for reliable (and hence, "quick", as compared to a less accurate weapon) damage against monsters with low [[AC]]. However, this advantage is only useful in the early game, where this weapon is rarely seen. Its damage bonus is not nearly enough even for SLASH'EM's mid-game, let alone the late game. A lawful character who receives it as a first sacrifice gift might find it useful for a while, but will definitely want to sacrifice for something better later on.
+
+[[Category:SLASH'EM Artifacts]]}
+&&%s&& %s Deathsword {69869 2011-04-14T22:16:37Z {663 Qazmlpok} Fix size, as per talk page {{artifact weapon
+  |color=cyan
+  |name=Deathsword
+  |base=two-handed sword
+  |smalldmg=1d12 '''+14'''
+  |largedmg=3d6 '''+14'''
+  |tohit='''+5'''
+  |size=two-handed
+  |bonusversus=[[human]]s
+  |skill=two-handed sword
+  |affiliation=<ul><li>[[chaotic]]</li><li>[[barbarian]]</li></ul>
+  |cost=5000
+  |weight=150
+  |material=iron
+}}
+
+'''Deathsword''' is a chaotic artifact [[two-handed sword]] in [[SLASH'EM]].  It gives +5 to hit and +14 damage against all [[human]]s.  It is the second guaranteed sacrifice gift for [[barbarian]]s; however, it will not be given to human, [[Doppelganger (starting race)|doppelganger]] or [[Lycanthrope (starting race)|lycanthropic]] barbarians.  It can be given to [[vampire (starting race)|vampires]], however.
+
+==Strategy==
+This weapon has too narrow a damage range to be that useful.  One might think to use it against [[shopkeeper]]s, but anyone embarking on such an endeavor would do well to remember that SLASH'EM's shopkeepers have had their base level doubled as compared to vanilla.  Additionally, since they don't carry attack wands, they will gladly use their powerful melee attacks against you.  One possible use for this weapon might be against the [[aligned priest]]s in [[Moloch's Sanctum]] and the [[Astral Plane]], but there are likely to be better options (two-weaponing, the [[Bat from Hell|best weapon in SLASH'EM]], etc).  Mostly, for non-human barbarians, this weapon just stands in the way of getting a better artifact.
+
+[[Category:SLASH'EM Artifacts]]}
+&&%s&& %s Disrupter {142869 2021-09-22T01:37:53Z {4001279 Umbire the Phantom}  {{artifact weapon
+  |name = Disrupter
+  |color=metal color
+  |base=mace
+  |smalldmg=1d6+1 '''+30'''
+  |largedmg=1d6 '''+30'''
+  |tohit='''+5'''
+  |bonusversus=[[undead]]
+  |affiliation=<ul><li>[[neutral]]</li><li>[[priest]]</li></ul>
+  |cost=500
+  |weight=30
+  |material=iron
+}}
+
+'''Disrupter''' is an [[artifact]] [[mace]] that appears in [[SLASH'EM]] and [[SlashTHEM]]. It is [[neutral]] and acts as the first [[sacrifice gift]] for [[Priest]]s. Disrupter has +5 to-hit and +30 damage bonuses versus [[undead]].
+
+==Strategy==
+The weapon is well worth keeping for any character not restricted in maces. Similar to [[Sunsword]], the bonus covers a somewhat-limited range of monsters - but as with Sunsword, that range includes many high-level threats. In addition to the returning [[lich]]es and [[vampire]]s, there are various new undead spellcasters such as the ghoul mage, vampire mage and ghoul queen that can ruin unprepared players.
+
+While the flat damage is enough to secure kills against undead normally, it is still worth using {{scroll of|enchant weapon}} scrolls on Disruptor to improve its hit rate and ensure that it can handle [[Need +x weapon to hit|enchantment-resistant]] monsters.
+{{slashem-7E7|offset=1}}
+{{variant-343}}
+[[Category:SLASH'EM Artifacts]]
+[[Category:SlashTHEM artifacts]]}
+&&%s&& %s Giantkiller {62125 2011-01-01T07:26:41Z {375 Ion frigate}  {{artifact weapon
+  |color=metal color
+  |name=Giantkiller
+  |base=axe
+  |smalldmg=1d6 '''x2'''
+  |largedmg=1d4 '''x2'''
+  |tohit='''+5'''
+  |bonusversus=[[giant]]s
+  |affiliation=<ul><li>[[neutral]]</li></ul>
+  |cost=800
+  |weight=60
+  |material=iron
+}}
+'''Giantkiller''', a neutral [[axe]], replaces the long sword [[Giantslayer]] in [[SLASH'EM]].  It does double damage against [[giant]]s of all types (monsters represented by {{White|H}}, except for [[titan]]s and [[ettin]]s), and has a 15% chance per hit to [[cancel]] said monsters.
+==Strategy==
+This weapon is even more useless than its vanilla counterpart, since it has a much weaker base item.  Giants are rarely dangerous enough to be a threat even in vanilla, and SLASH'EM does not introduce any new ones (save for [[the Largest Giant]]).  Even if giants were a significant threat, this weapon is hardly more effective than a normal [[long sword]] against them - it's actually less effective at lower enchantments.
+
+[[Category:SLASH'EM Artifacts]]}
+&&%s&& %s Firewall {127839 2019-09-04T17:28:46Z {4001163 Pinkbeast} rv good faith edit; artifact weapons typically referred to as eg "Mjollnir" unless the game gives them a capitalised "The" like eg Muramasa. {{artifact weapon
+  |color=metal color
+  |name=Firewall
+  |base=athame
+  |smalldmg=1d4 '''+4'''
+  |largedmg=1d3 '''+4'''
+  |tohit=<nowiki>+</nowiki>5
+  |bonusversus=not fire resistant
+  |skill=dagger
+  |affiliation=
+*[[lawful]]
+*[[flame mage]]
+  |whenwielded=
+*[[fire resistance]]
+  |cost=400
+  |weight=10
+  |material=iron
+}}
+'''Firewall''' is a [[lawful]] [[athame]] which serves as a first sacrifice gift for [[flame mage]]s in [[SLASH'EM]]. It provides [[fire resistance]] when wielded, and has +4 to hit and damage against monsters which are not fire-resistant. As an athame, it can [[engrave]] repeatedly and quickly without dulling, provided it is not cursed.
+
+==Strategy==
+It will work for most flame mages much as [[Magicbane]] works for [[wizard]]s: as a moderately effective weapon, received as a first sacrifice gift, which is used for engraving [[Elbereth]]. Most flame mages will ultimately want a stronger weapon, however, since +4 damage is quite underwhelming in SLASH'EM's mid and late games. Firewall should definitely be kept for engraving Elbereth, however. Note that like its big brother [[Fire Brand]], it can destroy potions and scrolls that monsters are carrying.
+
+==See also==
+* [[Magicbane]], the counterpart weapon for [[wizard]]s
+* [[Deep Freeze]], the counterpart weapon for [[ice mage]]s
+
+[[Category:SLASH'EM Artifacts]]
+[[Category:SLASH'EM items]]
+[[Category:SLASH'EM]]}
+&&%s&& %s Bat from hell {62131 2011-01-01T09:53:01Z {630 Paxed} #REDIRECT [[Bat from Hell]] #REDIRECT [[Bat from Hell]]}
+&&%s&& %s The wallet of perseus {63324 2011-01-14T02:00:11Z {831 Tjr} Redirected page to [[Wallet of Perseus]] #REDIRECT [[Wallet_of_Perseus]]}
+&&%s&& %s The wallet of Perseus {63323 2011-01-14T02:00:06Z {831 Tjr} Redirected page to [[Wallet of Perseus]] #REDIRECT [[Wallet_of_Perseus]]}
+&&%s&& %s Wallet of perseus {63325 2011-01-14T02:00:26Z {831 Tjr} Redirected page to [[Wallet of Perseus]] #REDIRECT [[Wallet_of_Perseus]]}
+&&%s&& %s Esc {62142 2011-01-01T14:43:49Z {831 Tjr} expand a bit: NAO patches '''Esc'''-key is used to cancel prompts. What happens then depends on the prompt that was cancelled. For example:
+*[[wish]]ing prompt will give you a random item.
+*<tt>--more--</tt> prompt in the TTY windowport will suppress the rest of the messages.
+
+On [[NAO]], [[NetHack]] has been [[patch]]ed to make escape clear the input, and only the second escape cancels.
+
+Instead of pressing escape once per turn at the <tt>--MORE--</tt> prompt, you might want to configure your [[MSGTYPE]] [[patch]] [[option]]s in your config file. 

@@ -1,0 +1,1000 @@
+* If you read a [[scroll of remove curse]] while [[confusion|confused]], each affected uncursed object will have a 25% chance of becoming cursed and 25% chance of becoming blessed. The same objects are affected as when not confused, such as wielded objects, worn items, leashes in use, and carried loadstones. 
+* Cursed scrolls of enchant weapon and armor will curse the item they target.
+* High-level spellcasting monsters (notably [[lich]]es and the [[Wizard of Yendor]]) can randomly [[curse items]] in your inventory during combat. The message received is "You feel a malignant aura surround you."{{refsrc|src/sit.c|326|version=NetHack 3.6.1}} [[Magic resistance]] and [[half spell damage]] reduce the amount of items that are cursed (but will not nullify the attack), while [[Magicbane]] will "catch the curse" and nullify the attack 95% of the time when wielded.
+* Quaffing from fountains can have a cursing effect on every item in your inventory (see [[fountain]] for details).
+* #[[dip]]ping items in fountains can curse and uncurse items ({{frac|4|30}} chance of uncursing, {{frac|1|30}} chance of cursing). It is never blessed.
+* A [[loadstone]] will [[autocursing|curse itself automatically]], making it impossible to drop should you pick it up again, and picking up a blessed [[scroll of scare monster]] will remove its blessing.
+* The [[dunce cap]] and the [[helm of opposite alignment]] can be generated uncursed, but [[Autocursing|autocurse]] when worn, preventing you from removing them by normal means.
+* A blessed [[eucalyptus leaf]] may be [[apply|applied]] and used as a [[magic whistle]]; this act has a {{frac|50}} chance of removing the blessing.
+
+===Removal of either curse or blessing ===
+* [[Cancellation|Cancelling]] an item will remove any blessing or curse, but may also have other (probably detrimental) effects such as removing enchantment or emptying a wand of charges.
+* [[Alchemy]] results are always uncursed.
+
+==Game messages==
+In-game, the phrase "Items of unknown B/C/U status" appears in the drop menu, but the "BUC" ordering is more common in discussions.
+
+==Generation==
+The random generation rate for blessed or cursed items varies as shown in the table below.
+{|class="prettytable"
+! Item !! Blessed !! Uncursed !! Cursed
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Amulet]]s'''
+|-
+|[[amulet of change]]||0.50%||9.50%||90.50%
+|-
+|[[amulet of restful sleep]]||0.50%||9.50%||90.50%
+|-
+|[[amulet of strangulation]]||0.50%||9.50%||90.50%
+|-
+|Other amulets||5.00%||90.00%||5.00%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Weapon]]s'''
+|-
+|All weapons||8.64%||78.18%||13.18%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Armor]]'''
+|-
+|[[helm of opposite alignment]]||0.95%||8.60%||90.45%
+|-
+|[[gauntlets of fumbling]]||0.95%||8.60%||90.45%
+|-
+|[[fumble boots]]||0.95%||8.60%||90.45%
+|-
+|[[levitation boots]]||0.95%||8.60%||90.45%
+|-
+|Other armor||8.72%||78.96%||12.31%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Comestible]]s'''
+|-
+|Tins||5.00%||90.00%||5.00%
+|-
+|Other comestibles||0.00%||100.00%||0.00%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Scroll]]s'''
+|-
+|All scrolls||12.50%||75.00%||12.50%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Spellbook]]s'''
+|-
+|All spellbooks||2.94%||94.12%||2.94%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Potion]]s'''
+|-
+|All potions||12.50%||75.00%||12.50%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Ring]]s'''
+|-
+|[[ring of aggravate monster]]||0.00%||10.00%||90.00%
+|-
+|[[ring of hunger]]||0.00%||10.00%||90.00%
+|-
+|[[ring of polymorph]]||0.00%||10.00%||90.00%
+|-
+|[[ring of teleportation]]||0.00%||10.00%||90.00%
+|-
+|[[ring of adornment]]||15.73%||41.33%||42.93%
+|-
+|[[ring of protection]]||15.73%||41.33%||42.93%
+|-
+|[[ring of gain constitution]]||15.73%||41.33%||42.93%
+|-
+|[[ring of gain strength]]||15.73%||41.33%||42.93%
+|-
+|[[ring of increase accuracy]]||15.73%||41.33%||42.93%
+|-
+|[[ring of increase damage]]||15.73%||41.33%||42.93%
+|-
+|Other rings||0.00%||90.00%||10.00%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Wand]]s'''
+|-
+|All wands||2.94%||94.12%||2.94%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Tool]]s'''
+|-
+|[[tallow candle]]||10.00%||80.00%||10.00%
+|-
+|[[wax candle]]||10.00%||80.00%||10.00%
+|-
+|[[brass lantern]]||10.00%||80.00%||10.00%
+|-
+|[[oil lamp]]||10.00%||80.00%||10.00%
+|-
+|[[magic lamp]]||25.00%||50.00%||25.00%
+|-
+|[[can of grease]]||5.00%||90.00%||5.00%
+|-
+|[[crystal ball]]||25.00%||50.00%||25.00%
+|-
+|[[figurine]]||12.50%||75.00%||12.50%
+|-
+|Other tools||0.00%||100.00%||0.00%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''[[Gem]]s/[[Stone]]s'''
+|-
+|[[loadstone]] on floor||0.00%||0.00%||100.00%
+|-
+|loadstone in a container||0.00%||9.98%||91.02%
+|-
+|Other stones||0.00%||100.00%||0.00%
+|-
+| colspan="4" style="background-color: #DDFFDD"| '''Other'''
+|-
+|Other||0.00%||100.00%||0.00%
+|}
+
+Items generated on "[[fake bones]]" are cursed 100% of the time.
+
+==Encyclopedia entry==
+The [[NetHack encyclopedia]] has this to say about cursed items:
+
+{{encyclopedia|
+Curses are longstanding ill-wishings which, in Fantasyland,
+often manifest as semisentient.  They have to be broken or
+dispelled.  The method varies according to the type and
+origin of the Curse:
+[...]
+4.  Curses on Rings and Swords.  You have problems.  Rings
+have to be returned whence they came, preferably at over a
+thousand degrees Fahrenheit, and the Curse means you won't
+want to do this.  Swords usually resist all attempts to
+raise their Curses.  Your best source is to hide the Sword
+or give it to someone you dislike.
+|[ The Tough Guide to Fantasyland, by Diana Wynne Jones ]
+}}
+
+==References==
+<references/>
+
+[[Category:Acronyms]]
+[[Category:Item attributes]]
+{{nethack-361}}}
+&&%s&& %s ; {50386 2010-06-28T21:56:02Z {42 AlphaPikachu578} Added SLASH'EM creatures. {{ASCII}}
+* {{white|;}} represents a [[sea monster]]:
+** {{monsymlink|jellyfish}}
+** {{monsymlink|piranha}}
+** {{monsymlink|shark}}
+** {{monsymlink|giant eel}}
+** {{monsymlink|electric eel}}
+** {{monsymlink|kraken}}
+* Press {{kbd|;}} to use the [[far look]] command.
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces one new creature that uses the {{white|;}}
+
+*{{monsymlink|giant crab}}
+[[Category:ASCII]]}
+&&%s&& %s Staircase {144571 2022-02-22T00:35:23Z {4001279 Umbire the Phantom}  {{features}}
+A '''staircase''' or '''stairway''' is represented by either a {{Lightgray|<}} or {{Lightgray|>}} character, depending on whether the stairs go up or down. A staircase will take you to another dungeon level above or below you. There are also other means of connecting levels: [[ladder]]s and [[portal]]s. While ladders mean no difference in use, portals are a magical connection and may be unusable.
+
+== Occurrence ==
+
+Usually there are two staircases per level: one upstairs and one downstairs. Each staircase is accessible in both directions, except the one leading from the [[Valley of the Dead]] to the [[Castle]] level: there's no downstairs on the castle level, so do not accidentally block all the trapdoors!
+
+On branching levels, there are additional staircases. These are the entrance level to the [[Gnomish Mines]] and to [[Sokoban]] with one additional staircase. In [[Gehennom]], there are the levels containing the [[Wizard's Tower]] which have one or two additional ladders. The [[vibrating square]] is actually a hidden down staircase that can only be revealed by performing the [[invocation ritual]].
+
+The bottom levels of the [[Gnomish Mines]], [[Gehennom]] and the [[Quest]] as well as the top level of [[Sokoban]] only contain one staircase, obviously.
+
+One other staircase is very important, and that's the upstairs from level 1. If you don't possess the [[Amulet of Yendor]] and climb up these stairs, you [[Escaping the dungeon|escape from the dungeon]] and lose the game. If you carry the Amulet, you reach the [[Elemental Planes]] and start the [[Endgame]]. In both cases, you can't return, and you are warned with the message "Beware, there will be no return!"
+
+== Mechanics ==
+
+You go down on a downstairs using the {{kbd|>}} or go up on an upstairs using the {{kbd|<}} command to arrive at another dungeon level.  You cannot go down while [[levitating]].  If you descend a downstairs while [[burdened]], [[punished]], or [[fumbling]], you always fall down the stairs unless you are also [[flying]].  If you fall down, you get a small amount of damage, you are removed from your [[steed]], and will petrify you if you are wielding a [[trice corpse]] (as either primary or secondary weapon), but does not otherwise harm your inventory.
+
+Items dropped on the down staircase have a chance of falling down the staircase, as well as potentially "disturbing" items already lying there (and causing them to fall down as well).
+
+== Strategy ==
+
+===Trap doors===
+
+When you find the downstairs, have a peek immediately. This way, if you fall down a [[trap door]], you can find your way up faster. This can be very helpful in the early game, especially in the cavernous and possibly dark [[Mines]], when you don't want to travel down too fast.
+
+===Engraving===
+
+Staircases are commonly [[engrave|engraved]] upon, with either a note to the player reminding them of something of importance on the level, or with [[Elbereth]], which the player can stand upon to safely fight an enemy that teleports to the upstairs during combat.
+
+===Monsters following===
+Note that some monsters can follow you up and down stairs; see the [[follower]] article for more information.
+
+=== If you cannot find a staircase to the next level ===
+
+* Use [[Terrain|#terrain]] to see the map without objects. You may have discovered the staircase already, but it may be covered by an object.
+* Try moving (or destroying) a [[boulder]]. It may cover a staircase.
+* Try [[Search|searching]]. Staircases themselves are never hidden, but the rooms containing them may be behind a [[secret door]] or hidden [[corridor]] square. The screen is more or less full of rooms on every floor of the dungeon, so if you notice that you haven't uncovered rooms on one side of the screen, try looking for a door that might lead that way.
+* Step on every tile that contains an item. Staircases can be hidden under useless items. It is also a good idea to make sure the up staircase is free of items to ease your return trip. If a tile with more than one, but less than enough to produce the "there are several objects here" message, you don't see the stairs message.
+* Kill those harmless jellies and puddings. Frustratingly, they are sometimes stairs-squatting. (If you must attack one of these monsters, watch your health carefully, as their passive counterattack can often prove fatal to low-level characters.)
+* If all else fails, use a [[pick-axe]], [[wand of digging]], or the [[dig]] spell to dig &gt; (downward), creating a hole in the ground. You can then search the next dungeon level for the up staircase. It is usually a good idea to locate the up staircase before proceeding further into the dungeon.
+
+==History==
+
+In ''[[Rogue (game)|Rogue]]'' (the predecessor to NetHack) stairs were represented as {{white|%}} (percent sign). ''[[Hack]]'' started using {{white|<}} (left angle bracket) and {{white|>}} (right angle bracket), like ''NetHack'' normally does. In Rogue, there was always one stairway: down if you had not found the [[Amulet of Yendor]], or up if you had found it. Hack and ''NetHack'' introduced an innovation where old levels were saved to disk, allowing you to freely travel up and down. Thus, the [[Rogue level]] of NetHack in homage to [[Rogue (game)|Rogue]] contains two percent signs.
+
+==Dudley's dungeon==
+
+In the webcomic [[Dudley's dungeon]], a theory has been proposed by [[Dogley]], that staircases are wormholes going through the magical void between the levels and can be accessed by visiting ''level 4.5''. For more information on this, see [[Dogley Dimension]].
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+Up he went -- very quickly at first -- then more slowly -- then
+in a little while even more slowly than that -- and finally,
+after many minutes of climbing up the endless stairway, one
+weary foot was barely able to follow the other.  Milo suddenly
+realized that with all his effort he was no closer to the top
+than when he began, and not a great deal further from the
+bottom.  But he struggled on for a while longer, until at last,
+completely exhausted, he collapsed onto one of the steps.
+"I should have known it," he mumbled, resting his tired legs
+and filling his lungs with air.  "This is just like the line
+that goes on forever, and I'll never get there."
+"You wouldn't like it much anyway," someone replied gently.
+"Infinity is a dreadfully poor place.  They can never manage to
+make ends meet."
+{{right-align|[ The Phantom Tollbooth, by Norton Juster ]}}
+
+Dr. Ray Stantz: Hey, where do those stairs go? 
+Dr. Peter Venkman: They go up. 
+{{right-align|[ Ghostbusters, directed by Ivan Reitman, 
+          written by Dan Ackroyd and Harold Ramis ]}}
+}}
+
+[[Category:Dungeon features]]
+{{nethack-343}}}
+&&%s&& %s Escaping the dungeon {142999 2021-09-29T17:58:57Z {443 Kahran042}  '''Escaping the dungeon''' is a means of ending a ''[[NetHack]]'' game without [[quit]]ting, [[Death (character)|dying]], or [[ascension|ascending]]. The [[player character]] survives, but fails or is unable to continue their quest for the [[Amulet of Yendor]].
+
+There are three ways to escape the dungeon in normal gameplay. The easiest and most obvious is simply to climb the [[staircase]] on level 1 without the Amulet of Yendor. Alternatively, you can teleport to any level from &minus;1 to &minus;9 while [[flying]] or [[levitation|levitating]], or to any negative level while wearing an [[amulet of life saving]]. Finally, you can reach the [[Astral Plane]] and sacrifice the [[Amulet of Yendor]] to the wrong [[god]], which results in "escaping the dungeon in celestial disgrace".
+
+In [[explore mode]], you can offer the Amulet of Yendor to [[Moloch]] and refuse to die to both of his attempts to kill you. If you do, you will then be ejected from the dungeon in "a cloud of black smoke". In [[wizard mode]], you can wish for a [[magic portal]], which will lead to nowhere and cause you to escape the dungeon when activated.
+
+{{upcoming|NetHack 3.7.0|If a game runs over one billion turns, it ends immediately in an escape:
+
+{{message|The dungeon capitulates.}}}}
+
+==See also==
+* [[Unwinnable]]
+{{nethack-364}}
+[[Category:Strategy]]}
+&&%s&& %s Closet {140345 2021-05-27T14:34:49Z {4001463 Actual-nh} Link A '''closet''' is a single square located behind a door. Often the door is a [[secret door]]. 
+
+Closets are referred to as '''niches''' in the source code{{refsrc|mklev.c|462}}.
+
+One in seven closets (14%) are generated without doors leading to them. The only way to get to these is for a corridor to be generated adjacent to them, or to teleport or dig in. Such closets always have a [[scroll of teleportation]] inside, and a [[potion of object detection]] will reveal its presence. Every closet has either a door or a scroll of teleportation. Occasionally a closet is connected with a corridor, so if you find a scroll in a corridor next to a room before monsters could have dropped it, it is teleportation. When an inaccessible closet is generated, there is an additional 33% chance of a random item being generated there.
+
+In Nethack 3.6.0, such inaccessible closets have a 20% chance of having [[iron bar]]s generated where the door would be{{refsrc|src/mklev.c|529|version=NetHack 3.6.0}}. If this occurs, there is a 66% chance that a human or elf corpse will be generated in the closet. As this is the only time iron bars are randomly generated, this will give away the location of the closet with a guaranteed scroll of teleportation inside.
+
+There is sometimes writing in the dust outside. The engraving '''ad aerarium''' (from the Latin "to the treasure") indicates that the closet contains a [[vault]] teleporter, and the engraving '''[[Vlad the Impaler|Vlad]] was here''' indicates that there is a [[trap door]] inside. On deeper levels, a closet marked with ''ad aerarium'' may have a [[level teleporter]] instead. This is a [[pun]] on a supposed secondary meaning<ref>This does not appear to be an actual secondary meaning. It may be an error on the part of the [[DevTeam]], which could be due to confusion between the prefixes <i>aes-</i> relating to money, from which 'aerarium' derives, and <i>aer-</i>, which relates to air/sky/flight.</ref> of "aerarium" as sky.
+
+Monsters can be generated inside closets just like on any other square.
+
+==References==
+<references/>
+
+{{nethack-360}}
+[[Category:Dungeon features]]}
+&&%s&& %s Secret door {131354 2020-01-23T22:29:30Z {4001313 Ardub23} Targeted relevant section #REDIRECT [[Door#Secret doors]]}
+&&%s&& %s Door {148089 2022-09-06T06:09:44Z {4000978 Aximili} /* Door traps */ abusing strength and constitution {{features}}
+'''Doors''' are represented by {{brown|+}} when closed, and {{brown|-}} or {{brown|{{!}}}} when open: {{brown|-}} when the door is in a vertical wall and  {{brown|{{!}}}} in a horizontal wall. Doors are distinct from [[drawbridge]]s and [[trap door]]s.
+
+== Opening ==
+Doors can be generated locked or unlocked. Unlocked doors are opened using the [[open|open command]] ({{kbd|o}}), or by simply moving into them if the [[Options#autoopen|autoopen]] option is set to TRUE. Locked doors can be passed in a variety of ways:
+* Unlocking by [[apply]]ing a [[skeleton key]], [[lock pick]], or [[credit card]] to the door. In [[Minetown]], if unlocking takes you more than one turn, you may receive a [[Watchman#Angering the watch|warning from a watchman]] if they are present.
+* [[Zap]]ping a [[wand of opening]] or [[spellcasting|casting]] the {{spell of|knock}} spell at it. This unlocks the door but does not open it.
+* Breaking the door down with force, with any of the below methods. This should not be done in [[Minetown]] when [[watchman|watchmen]] or their [[watch captain|captains]] are present, or if a shop is on the other side. Note that doors with "[[Closed for inventory]]" written in the dust next to them are locked doors to shops.
+** [[Kick]]ing it until it is smashed to pieces.
+** Zapping a [[wand of striking]],{{refsrc|src/zap.c|3436|version=NetHack 3.6.6}}{{refsrc|src/lock.c|1018|version=NetHack 3.6.6}} [[wand of fire]], [[wand of lightning]], [[wand of cold]],{{refsrc|src/zap.c|4622|version=NetHack 3.6.6}} or [[wand of digging]]{{refsrc|src/dig.c|1505|version=NetHack 3.6.6}} at it, or casting the equivalent spells {{spell of|force bolt}}, {{spell of|fireball}}, {{spell of|cone of cold}}, or {{spell of|dig}} at it, destroying the door.  Striking and force bolt are [[noise|noisy]]; the other methods are not.
+** Applying an [[axe]], [[pick-axe]], or [[dwarvish mattock]] on a door. A shop door will be "too hard" to chop into.
+
+===Door traps===
+Doors may be booby-trapped. Opening them causes 1d(5+level) damage if your dungeon level is less than 5, and 1d(7+{{sfrac|level|2}}) otherwise, in addition to [[stun]]ning you, [[abuse|abusing]] [[strength]] and abusing [[constitution]].{{refsrc|src/trap.c|5171|version=NetHack 3.6.6}} It is possible to untrap a door using the [[untrap|#untrap]] command. {{refsrc|src/trap.c|4581|version=NetHack 3.6.6}}
+
+== Closing ==
+Open doors can be closed using the [[close|close command]] ({{kbd|c}}). Zapping a [[wand of locking]] at it will close (and lock) it.
+
+== Locking ==
+Doors can be locked by [[apply]]ing a [[skeleton key]] or a [[lock pick]] to a closed door, casting the {{spell of|wizard lock}} spell, or by using a [[wand of locking]]. [[Shopkeeper]]s can unlock and open doors with a key, and the [[Riders]] can unlock doors on the [[Astral Plane]].
+
+== Monsters getting through ==
+Monsters can unlock locked doors if they have hands and a [[key]] (but not other tools) and are not [[Physical size|tiny]]. For this reason, you might want to dispose of keys if you lock up the Minetown watch. The [[Rider]]s and the [[Wizard of Yendor]] can unlock doors even without a tool.{{refsrc|monmove.c|638}}
+
+[[Titan]]s, [[giant zombie]]s, and all [[giant]]s can bust down locked doors. [[Amoeboid]]s and [[fog clouds]] can flow beneath locked doors, and [[phasing]] monsters pass right through them.
+
+== Creation ==
+A destroyed door, or any square leading to a corridor, can be turned into a fully functional door by zapping a [[wand of locking]] or casting the {{spell of|wizard lock}} spell at it. A destroyed door is not shown on the map, but can be detected with the [[near look]] command ({{kbd|:}}). This effectively means that any destroyed bit of wall can be replaced with a door (although they cannot be created elsewhere). This is one way to make a room impenetrable even to [[umber hulk]]s, although it's not likely to have much use.
+
+== Secret doors ==
+Some walls are in fact secret doors, which can be discovered by [[search]]ing, brute force, or [[magic]].
+
+Searching is done with the {{kbd|s}} key, and is aided by wearing a [[ring of searching]] or [[lenses]], or by wielding [[Excalibur]]. [[Luck]] affects the chance of a searching successfully, so players who mistreat their luck can find themselves stuck on a dungeon level with no obvious exit. Applying a [[stethoscope]] to a wall will always reveal whether it is a secret door.
+
+The brute force method involves [[kick]]ing at walls, applying a [[pick-axe]], or zapping {{spell of|force bolt}} at a likely position where a secret door might be. This is very time-consuming and often dangerous.
+
+The magical method involves using a [[wand of secret door detection]] or the spell of {{spell of|detect unseen}}; these will immediately reveal any secret doors within a 13-square radius.  A blessed [[scroll of magic mapping]] reveals secret doors on the entire level.
+
+== Messages ==
+{{message|You feel an unexpected draft.|Whenever a monster breaks a door, there is a one-third chance of this message;{{refsrc|dig.c|1089}} it is also affected by the [[verbose]] option.}}
+{{message|As you kick the door, it <crashes open/shatters to pieces>!|You [[kick]]ed down a closed door.}}
+{{message|WHAMMM!!!|You kicked a closed door, but failed to kick it down. This does not injure your legs.}}
+{{message|Ouch! You bump into a door.|You are [[blind]], [[stun]]ned, or [[fumbling]], or you have a [[dexterity]] rating lower than 10, and you tried to walk onto a square with a closed door. This abuses your dexterity.}}
+{{message|It won't come off the hinges.|You used the [[pick up]] command while standing on an open door's square with no items on it.}}
+{{message|KABOOM!! The door was booby-trapped!|You activated a door trap.}}
+
+== Strategy ==
+=== Use in combat ===
+Doors do not allow either monsters or you to pass through diagonally. This can be a great advantage when fighting multiple foes. A door like the entrance to the [[treasure zoo]] at the top of [[Sokoban]] can become a killing ground for monsters who will stream through one by one, allowing you to avoid some of their ranged attacks - beware directional rays from wands and breath weapons, though!
+
+=== Exercising strength ===
+Opening and closing doors exercises your [[strength]] every time the door resists. However, doors are less likely to resist if your strength or luck is high.
+
+This technique is only useful for luckless [[Healer]]s with strength as weak as 7 or 8. With decent physical [[attribute]]s and luck, the odds of the door resisting become very low. For example, if the character's physical [[attribute]]s average say 16 with a [[luck]] of 4, the chance of the door resisting becomes {{frac|184}} (0.54%). This means that the [[player]] has to open and close the door 100 to 200 times to exercise the strength [[attribute]] once.
+
+== Variants ==
+=== SLASH'EM ===
+In [[SLASH'EM]], doors can be [[force]]d open the same way chests can.
+
+=== xNetHack ===
+In [[xNetHack]], secret doors are less likely to appear on earlier dungeon levels; they will not appear at all before level 4.
+
+xNetHack introduces iron doors, which cannot be destroyed by most brute-force methods (such as kicking and force bolts). These occasionally replace ordinary doors as the player reaches deeper dungeon levels.
+
+The stunning door trap is replaced by a variety of traps with effects such as [[wet]]ting your inventory, [[burn]]ing your hands or gloves, or creating [[noise]] with screechy hinges. The full list is found at [[xNetHack#Trap changes|xNetHack § Trap changes]].
+
+== Encyclopedia entry ==
+{{encyclopedia|
+Through me you pass into the city of woe:
+Through me you pass into eternal pain:
+Through me among the people lost for aye.
+Justice the founder of my fabric mov'd:
+To rear me was the task of power divine,
+Supremest wisdom, and primeval love.
+Before me things create were none, save things
+Eternal, and eternal I endure.
+All hope abandon ye who enter here.
+|[ The Inferno, from The Divine Comedy of Dante
+                 Alighieri, translated by H.F. Cary ]
+}}
+
+==References==
+<references/>
+[[Category:Dungeon features]]
+{{nethack-360}}}
+&&%s&& %s Category:Dungeon features {84720 2013-05-04T21:57:12Z {4000045 Bulwersator} fix link You find '''[[dungeon feature]]s''' in the [[dungeon]]. These can be [[door]]s, [[doorway]]s, [[fountains]], [[staircase]]s, [[trap]]s, [[water]], ..., and if [[you]] ever find it, the [[drawbridge]].
+
+[[Dungeon level]]s (like that of [[The Oracle]]) and [[dungeon branch]]es (like the [[Gnomish Mines]]) have subcategories here, [[:Category:Special levels]] and [[:Category:Dungeon branches]].
+
+The dungeon features also include [[room]]s, especially [[special room]]s. Rooms might need their own category later.
+
+[[Category:Levels]]}
+&&%s&& %s Lock pick {10342 2006-09-12T17:55:01Z {239 Eidolos} Fix double redirect. #REDIRECT [[Unlocking tool]]}
+&&%s&& %s Poison resistance {141926 2021-08-02T00:16:36Z {4001279 Umbire the Phantom} Formatting messages, re-added nurse: https://github.com/NetHack/NetHack/issues/159 '''Poison resistance''' is considered one of the most essential [[intrinsic]]s in the game. This [[resistance]] protects against the harmful effects of [[poison]], including [[instadeath]]. For example, a [[dart trap]] might shoot out a deadly poisoned [[dart]].
+
+Poison resistance does not protect you from [[sickness|food poisoning]]. It only partly protects you from the bad effects of [[potion of sickness]].
+
+==Sources==
+Many corpses that offer poison resistance are themselves poisonous or otherwise dangerous (notable exceptions are the corpses of [[shrieker]]s, which can usually be found early). There are, however, many safe ways of acquiring poison resistance. For example, [[ring of poison resistance|rings]] and [[amulet versus poison|amulets]] both include one that protects you against poison. [[Green dragon scale mail]] also protects against poison.
+
+[[Barbarian]]s, [[healer]]s and [[orc (starting race)|orc]]s have a natural poison resistance. [[Monk]]s get a natural poison resistance when they reach [[experience level]] 3 and [[tourist]]s at level 20. Poison resistance is also granted when you are [[crowning|crowned]].
+
+You can safely obtain poison resistance from a corpse in one of the following ways:
+
+* Eat a non-poisonous corpse that grants the intrinsic.
+* Use a [[tinning kit]] to make a poisonous corpse safe (bear in mind that not all poisonous monsters grant poison resistance).
+* Wear an item that grants poison resistance. This could be a [[ring of poison resistance]], an [[amulet versus poison]], an [[alchemy smock]], or [[green dragon scale mail]] or [[green dragon scales|scales]].
+* Use a [[unicorn horn]] to negate the strength drain caused by eating a poisonous corpse (this works because unlike poison attacks, corpse poison cannot cause instadeath, although it causes some HP loss).
+* Wear a [[ring of sustain ability]] to avoid the strength drain from eating a poisonous corpse.
+* If you know you can pray and you have lost more than 4 strength, pick up junk to be overtaxed, and pray to reverse the strength loss after eating poisonous corpses.
+
+{{upcoming|NetHack 3.7.0|Unicorn horns can no longer restore strength, so this tactic is not recommended unless you can cast the [[Spellbook of restore ability|restore ability spell]] or don't mind using [[prayer]].}}
+
+
+===Safe corpses===
+
+The following corpses provide a chance of gaining poison resistance, and are not dangerous to eat:
+
+{|class="prettytable sortable striped"
+!Monster                     !! Conduct !!                           Difficulty !!                           Chance
+|-
+|[[red mold]]                || vegan   || style="text-align:right" |         2 || style="text-align:right" |    3%
+|-
+|[[brown mold]]              || vegan   || style="text-align:right" |         2 || style="text-align:right" |    3%
+|-
+|[[cave spider]]             || meaty   || style="text-align:right" |         3 || style="text-align:right" |    7%
+|-
+|[[red naga hatchling]]      || meaty   || style="text-align:right" |         4 || style="text-align:right" |   10%
+|-
+|[[flesh golem]]             || meaty   || style="text-align:right" |        10 || style="text-align:right" |   12%
+|-
+|[[centipede]]               || meaty   || style="text-align:right" |         4 || style="text-align:right" |   13%
+|-
+|[[blue jelly]]              || vegan   || style="text-align:right" |         5 || style="text-align:right" |   13%
+|-
+|[[shrieker]]                || vegan   || style="text-align:right" |         2 || style="text-align:right" |   20%
+|-
+|[[golden naga hatchling]]   || meaty   || style="text-align:right" |         4 || style="text-align:right" |   20%
+|-
+|[[guardian naga hatchling]] || meaty   || style="text-align:right" |         4 || style="text-align:right" |   20%
+|-
+|[[quasit]]                  || meaty   || style="text-align:right" |         7 || style="text-align:right" |   20%
+|-
+|[[pyrolisk]]                || meaty   || style="text-align:right" |         8 || style="text-align:right" |   20%
+|-
+|[[red naga]]                || meaty   || style="text-align:right" |         8 || style="text-align:right" |   20%
+|-
+|[[black unicorn]]           || meaty   || style="text-align:right" |         6 || style="text-align:right" |   27%
+|-
+|[[gray unicorn]]            || meaty   || style="text-align:right" |         6 || style="text-align:right" |   27%
+|-
+|[[white unicorn]]           || meaty   || style="text-align:right" |         6 || style="text-align:right" |   27%
+|-
+|[[quivering blob]]          || vegan   || style="text-align:right" |         6 || style="text-align:right" |   33%
+|-
+|[[golden naga]]             || meaty   || style="text-align:right" |        13 || style="text-align:right" |   67%
+|}
+
+===Unsafe corpses===
+
+The following corpses and globs are among those that provide poison resistance, but are mildly dangerous:
+
+{|class="prettytable sortable striped"
+!Monster                  !! Conduct    !!                           Difficulty !!                           Chance !! Notes
+|-
+|[[yellow mold]]          || vegan      || style="text-align:right" |         2 || style="text-align:right" |    7% || poisonous and hallucinogenic
+|-
+|[[homunculus]]           || meaty      || style="text-align:right" |         3 || style="text-align:right" |    7% || poisonous
+|-
+|[[gray ooze]]            || vegetarian || style="text-align:right" |         4 || style="text-align:right" |    7% || acidic
+|-
+|[[brown pudding]]        || vegetarian || style="text-align:right" |         6 || style="text-align:right" |    7% || acidic
+|-
+|[[black pudding]]        || meaty      || style="text-align:right" |        12 || style="text-align:right" |    7% || acidic
+|-
+|[[tengu]]                || meaty      || style="text-align:right" |         7 || style="text-align:right" |   13% || may also confer [[teleportitis]]
+|-
+|[[Chromatic Dragon]]     || meaty      || style="text-align:right" |        23 || style="text-align:right" |   17% || poisonous, Caveman [[quest nemesis]]
+|-
+|[[black naga hatchling]] || meaty      || style="text-align:right" |         4 || style="text-align:right" |   20% || acidic
+|-
+|[[violet fungus]]        || vegan      || style="text-align:right" |         5 || style="text-align:right" |   20% || [[Hallucination|hallucinogenic]]
+|-
+|[[jellyfish]]            || meaty      || style="text-align:right" |         5 || style="text-align:right" |   20% || poisonous
+|-
+|[[soldier ant]]          || meaty      || style="text-align:right" |         6 || style="text-align:right" |   20% || poisonous
+|-
+|[[Wizard of Yendor]]     || meaty      || style="text-align:right" |        34 || style="text-align:right" |   25% || [[cannibalism]] for humans
+|-
+|[[snake]]                || meaty      || style="text-align:right" |         6 || style="text-align:right" |   27% || poisonous
+|-
+|[[water moccasin]]       || meaty      || style="text-align:right" |         7 || style="text-align:right" |   27% || poisonous
+|-
+|[[killer bee]]           || meaty      || style="text-align:right" |         5 || style="text-align:right" |   30% || poisonous
+|-
+|[[giant beetle]]         || meaty      || style="text-align:right" |         6 || style="text-align:right" |   33% || poisonous
+|-
+|[[giant spider]]         || meaty      || style="text-align:right" |         7 || style="text-align:right" |   33% || poisonous
+|-
+|[[gremlin]]              || meaty      || style="text-align:right" |         8 || style="text-align:right" |   33% || poisonous
+|-
+|[[pit viper]]            || meaty      || style="text-align:right" |         9 || style="text-align:right" |   40% || poisonous
+|-
+|[[cobra]]                || meaty      || style="text-align:right" |        10 || style="text-align:right" |   40% || poisonous
+|-
+|[[xan]]                  || meaty      || style="text-align:right" |         9 || style="text-align:right" |   47% || poisonous
+|-
+|[[scorpion]]             || meaty      || style="text-align:right" |         8 || style="text-align:right" |   50% || poisonous
+|-
+|[[black naga]]           || meaty      || style="text-align:right" |        10 || style="text-align:right" |   53% || acidic
+|-
+|[[queen bee]]            || meaty      || style="text-align:right" |        12 || style="text-align:right" |   60% || poisonous
+|-
+|[[nurse]]                || meaty      || style="text-align:right" |        13 || style="text-align:right" |   73% || cannibalism for humans, bugged in pre-[[3.6.2]] versions<ref>[https://github.com/NetHack/NetHack/issues/159 Closed Issue #159: Nurse meat has the flag for conferring poison resistance, but doesn't.]</ref>
+|-
+|[[guardian naga]]        || meaty      || style="text-align:right" |        16 || style="text-align:right" |   80% || poisonous
+|-
+|[[Scorpius]]             || meaty      || style="text-align:right" |        17 || style="text-align:right" |  100% || poisonous, Ranger quest nemesis
+|-
+|[[green dragon]]         || meaty      || style="text-align:right" |        20 || style="text-align:right" |  100% || poisonous
+|-
+|[[Master Kaen]]          || meaty      || style="text-align:right" |        31 || style="text-align:right" |  100% || cannibalism for humans, Monk quest nemesis
+|}
+
+===Very unsafe corpses===
+Unless you are polymorphed into a stoning-resistant form, eating any of these corpses will '''instantly''' result in [[YASD]]. If, however, you are in a stoning-resistant form before getting poison resistance, these corpses can provide it permanently. Note that tinning them does '''not''' make them safe to eat.
+
+{|class="prettytable sortable striped"
+!Monster         !! Conduct !!                           Difficulty !!                           Chance !! Note
+|-
+|[[chickatrice]] || meaty   || style="text-align:right" |         7 || style="text-align:right" |   27% || [[petrifies]] when touched or eaten
+|-
+|[[cockatrice]]  || meaty   || style="text-align:right" |         8 || style="text-align:right" |   33% || petrifies when touched or eaten
+|-
+|[[Medusa]]      || meaty   || style="text-align:right" |        25 || style="text-align:right" |  100% || petrifies when eaten
+|}
+
+==Messages==
+{{message|You feel healthy.|You received poison resistance by eating an applicable corpse or tin, or by reaching level 3 as a Monk; an exclamation point is present in the last case.}}
+{{message|You feel especially healthy.|As above, while having extrinsic poison resistance (from a ring, amulet, etc.) or poison resistance from level gain.}}
+{{message|You feel hardy!|You received poison resistance by reaching level 20 as a Tourist.}}
+{{message|You feel a little sick!|You lost poison resistance due to a gremlin attack at night or eating a [[disenchanter]] corpse.}}
+{{message|You feel less healthy/hardy!|You lost poison resistance due to level drain as a Monk or Tourist.}}
+{{message|You seem unaffected by the poison.|You ate a poisonous corpse, but suffered minimal damage due to poison resistance.}}
+{{message|The poison doesn't seem to affect you.|You were hit with a poisonous attack or poisoned weapon, but suffered no additional effects due to poison resistance.}}
+
+==External links==
+*[http://web.archive.org/web/20071018034842/http://www.geocities.com/dcorbett42/nethack/corpse.htm Eating Corpses For Food And Intrinsics]
+
+==References==
+<references/>
+
+{{nethack-361}}
+[[Category:Resistances]]}
+&&%s&& %s Poison {148882 2022-10-22T19:07:40Z {187 Darth l33t} poisonous corpses '''Poison''' is one of the most annoying hazards of the [[early game]] for any player who has not yet gained [[poison resistance|immunity to it]].
+
+There are many ways in which a NetHack character will come into contact with poison.  Some monsters wield poisoned weapons or fire poisoned arrows, while others such as killer bees have a poisonous sting or bite.<ref>{{function|Attrib.c|poisoned}}</ref>  Poison is also used in many of the traps in the dungeons.  Finally, certain kinds of [[corpse]]s are poisonous, and cause 1 to 15 HP and 1 to 4 strength loss when eaten,{{refsrc|src/eat.c|1583|version=NetHack 3.6.0}} but never [[instadeath]], though the HP loss may be enough to kill a player with low health.
+
+Poisoning from eating a poisonous corpse is different from [[food poisoning]], which is a type of [[sickness]].
+
+==Effects==
+The effects of poison are:
+* [[HP]] loss.
+* Loss of [[attribute]] points, especially [[strength]] but also [[dexterity]] and [[constitution]].  A [[potion of sickness]] can reduce ''any'' of your attributes.
+* Small probability of an [[instadeath]], depending on the type of poison exposure. This probability is per exposure, not per source.
+
+{{upcoming|NetHack 3.7.0|Per {{commit|d0b11fd2c05dae5ebc7a3ff6425257e6ed372894}}, poison no longer has a chance of instakilling the player.  Instead of the instakill, the player suffers 6+4d6 damage, half that of max maximum HP loss, and loss of attribute points.}}
+
+==Statistics==
+{|class="wikitable"
+!Source!!Chance of poison!!Chance of deadly!!Chance of stat damage
+|-
+|Monster [[melee]] attack||1 in 8 successful attacks that pass your [[magic cancellation]]||1 in 30 poison attacks||1 in 6 poison attacks will damage either [[strength]], [[dexterity]] or [[constitution]] depending on the monster.
+|-
+|Monster ranged attack||?||1 in 30 successful attacks with a poisoned thrown weapon{{refsrc|src/attrib.c|258|version=NetHack 3.6.0}}||1 in 2 chance of damaging [[strength]]
+|-
+|Poisoned [[dart trap]]||1 in 6||1 in 10 hits||1 in 2 chance of damaging [[constitution]]
+|-
+|Poisoned [[spiked pit]]||1 in 6||1 in 8 falls||5 in 8 chance of damaging [[strength]]
+|-
+|Noxious gas [[container trap]]||depends on luck||1 in 15 chance||1 in 3 chance of damaging [[strength]]
+|-
+|Poisoned needle container trap||depends on luck||1 in 10 chance||1 in 2 chance of damaging [[constitution]]
+|-
+|Poison blast attack from an [[iron golem]] or [[green dragon]]||?||1 in 15 chance||1 in 3 chance of damaging [[dexterity]]
+|-
+|Poisonous corpse||4 in 5||none||always damages [[strength]], deals d15 HP damage
+|}
+
+== Poisonous corpses ==
+The following monsters leave poisonous corpses:
+
+* all {{mcsl|k}}
+* all {{mcsl|a}} except [[giant ant]]s and [[fire ant]]s
+* all {{mcsl|S}} except [[garter snake]]s and [[python]]s
+* all [[werecreature]]s
+* [[gremlin]]s
+* [[manes]], [[homunculi]], [[lemure]]s
+* [[rabid rat]]s
+* [[giant spider]]s, [[scorpion]]s
+* [[xan]]s
+* [[vampire bat]]s
+* (baby) [[green dragon]]s
+* [[yellow mold]]s
+* adult [[guardian naga]]s
+* [[quantum mechanic]]s
+* [[Medusa]]
+* [[jellyfish]]
+* [[salamander]]s
+* the [[Chromatic Dragon]]
+* [[Scorpius]]
+<!-- and many more that are either nocorpse or leave different corpses -->
+
+Note that a corpse being poisonous is independent of its monster having poison resistance and/or granting poison resistance when eaten.
+
+== Strategy ==
+===Poison resistance===
+The best way to protect yourself from poison is to obtain [[poison resistance]] as soon as possible.  Intrinsic poison resistance is granted by eating any of a large variety of corpses (listed in [http://www.steelypips.org/nethack/343/drgn-343.html Dylan's Dragon Resistances spoiler]).  Most, but not all, of these corpses are poisonous themselves, so it is not advisable to eat them without some way of avoiding or curing the strength loss.  It can be avoided by wearing an external source of poison resistance (e.g. an [[amulet versus poison]]) or a ring of sustain ability, and it can be cured by applying a unicorn horn. [[Tinning kit|Tinning]] the corpse is another option; the tinned meat will no longer be poisonous but will still convey the intrinsic.
+
+Several roles start with poison resistance or gain it at an early level.  [[Barbarian]]s and [[Healer]]s have starting poison immunity, as do [[orc (starting race)|orc]]s.  [[Monk]]s gain it at level 3.
+
+===Avoiding poison===
+There are other precautions you can take to protect against specific encounters with poison:
+* High [[magic cancellation]] protects against poisonous bites and stings but not poisoned weapons.
+* Unless you know that you can fix the stat loss, don't drink unidentified potions that could be a non-blessed potion of sickness.
+* Don't try to untrap dart traps until you have poison resistance.
+* If a random scroll you read turns out to be stinking cloud, discharge it harmlessly by choosing to center the cloud a long way away from you.
+* Learn what corpses are poisonous, and don't eat them until you have poison resistance.
+
+===Treating attribute loss===
+Repeated exposure to poison at the beginning of the game is likely to reduce your strength and [[carrying capacity]], thus limiting the [[weight]] of your [[inventory]]. You want to find a noncursed [[unicorn horn]] and [[apply]] it repeatedly to regain strength.  When you see the message "This makes you feel great!", all your stats have been fully restored.
+
+[[Potion of restore ability|Potions]] and [[Spellbook of restore ability|spells of restore ability]] can restore lost attributes, but a unicorn horn is the best solution. You can also [[pray]]: being [[overtaxed]] with at least four points of strength drain is considered [[major trouble]], and having any reduced attributes at all is considered [[minor trouble]].
+
+{{upcoming|NetHack 3.7.0|Unicorn horns can no longer restore strength.}}
+
+===Poisoning weapons===
+You can hurl poisonous [[missile]]s yourself. Poisoned weapons do an additional d6 damage and have a 10% chance of [[instadeath]] against non-poison resistant foes.
+Missiles become poisoned if [[dip]]ped into a [[potion of sickness]]—[[arrows]] of any kind, as well as [[crossbow bolts]], [[dart]]s, and [[shuriken]] may be poisoned this way.{{refsrc|include/obj.h|200|version=NetHack 3.6.0}}
+However, [[lawful]] gods do not approve of poisoned weapons, and will exact a small [[Alignment record|alignment penalty]] from followers who use them.
+
+== Food poisoning versus poisonous corpses ==
+Differences between [[food poisoning]] and poisoning from poisonous corpses:
+
+* Food poisoning comes from corpses that have become "tainted" from age (this includes the corpses of [[zombie]]s and [[mummy|mummies]]), while poisonous corpses are toxic from the moment they hit the ground.  
+* Eating a poisonous corpse has an immediate, not necessarily lethal effect, while food poisoning causes [[sickness]] that will kill you after a few turns, unless you are able to [[Sickness#Remedies|cure]] it in time.
+* A poisonous corpse will give the message "Ecch - that must have been poisonous!", while food poisoning is indicated by "Ulch - that meat was tainted!   You feel deathly sick."  
+* Poison resistance protects against the effects of eating poisonous corpses.  Only [[sickness resistance]] protects against food poisoning.
+
+Food poisoning can be avoided by eating only fresh corpses.  The other type of poisoning can be avoided by learning which corpses are inherently poisonous.
+
+It is possible for a corpse to be both poisonous ''and'' tainted.  A rotting [[kobold]] corpse fits both criteria, as does the corpse left by a [[kobold zombie]] or [[kobold mummy|mummy]].
+
+==Variants==
+
+===SLASH’EM===
+
+In [[SLASH'EM]], you can also poison weapons by dipping them in a [[toilet]].
+
+=== UnNetHack ===
+In [[UnNetHack]], the chance of an instadeath from poison is replaced with a "very toxic" poison that damages max HP and does strength damage, reducing the chance or frustrating [[YASD]] (though it is still nearly always fatal to low level characters). Other detriments of being poisoned remain the same.
+
+===FIQHack===
+[[FIQHack]] also eliminates poison instadeath and replaces it with permanent attribute damage, which cannot be fixed via potion or unicorn horn. Additionally, poison resistance only halves poison damage, ensuring that it is never completely safe to eat a poisonous corpse; chances of attribute reduction are also lowered to one third of the time, and the attribute loss itself is reduced by a third.
+
+Since poison resistance only partially protects you in FIQHack, the [[amulet versus poison]] and the [[ring of poison resistance]] are even more useful as they completely protect you from the effects of poison.
+
+== References ==
+
+<references />
+{{stub}}
+[[Category:Monster damage types]]
+[[Category:Monster attributes]]
+{{nethack-343}}}
+&&%s&& %s Instadeath {150146 2023-03-07T17:50:31Z {4001279 Umbire the Phantom} start on rediects '''Instadeath''' stands for instant [[death (character)|death]]. An instadeath causes death in zero time and allows no intervention. These effects do not count as [[HP]] damage and thus cannot be survived through [[self-polymorph]].
+
+Causes of instadeaths are:
+* [[Stoning|Turning to stone]] (unless [[stoning resistance|stoning resistant]]), which can be caused by:
+** Touching a cockatrice or chickatrice [[corpse]] without worn gloves
+*** Passing a square with a cockatrice or chickatrice [[corpse]] while [[Blindness|blind]] and not [[Levitation|levitating]] is considered as touching the corpse.
+** [[Eat|Eating]] a cockatrice or chickatrice corpse, or eating the corpse of [[Medusa]]
+** [[Kick|Kicking]] a cockatrice or chickatrice corpse without worn boots
+** Trying to [[sacrifice]] or [[Tinning kit|tin]] a cockatrice or chickatrice corpse without worn gloves, even if it is already lying on the [[altar]]
+** Falling into a pit, hole, or trapdoor while wielding a cockatrice or chickatrice corpse
+*** Includes deliberately flying down a hole, although flying over a pit is safe
+** Falling down [[stairs]] due to being [[burdened]] while wielding a cockatrice or chickatrice corpse
+** Attacking a cockatrice or chickatrice while polymorphed into a creature with a [[Cockatrice#Petrification by a living cockatrice|contact attack]], or when not wielding a weapon and not wearing gloves
+** Seeing [[Medusa]]'s [[Gaze attack|gaze]], unless [[blind]] or [[reflection|reflecting]]. ([[Invisibility]] protects her, not you.)
+** Being hit by a thrown cockatrice [[egg]]
+* Being hit by a death ray while not having [[magic resistance]], and not polymorphed into a [[demon]] or [[undead]]. This can be achieved by:
+** Zapping yourself with a [[wand of death]] or a {{spell of|finger of death}} &mdash; this will kill you even if you have magic resistance. ("You irradiate yourself with pure energy!")
+** Zapping a [[wand of death]] or [[finger of death]], and being hit by the ray reflecting off a wall or a monster's [[reflection]]. [[Reflection]] will protect against this.
+** Having a monster zap you with a wand of death. [[Reflection]] can also protect against this.
+* Being touched by the [[touch of death]] while not having [[magic resistance]], not polymorphed into a [[demon]] or [[undead]], and not [[Hallucination|hallucinating]].
+* Being fatally [[poison]]ed by a monster attack, a poisoned weapon, or a [[spiked pit]], unless you have [[poison resistance]]. ([[Quaff]]ing a [[potion of sickness]] or eating a poisonous corpse will never instakill you, but may kill you by HP loss or strength drain.)
+* [[Nutrition|Choking]] on your food
+* [[Starvation|Starving]] to death
+* [[Drowning]] in a body of water
+** If you fall into a body of water with no adjacent land, you'll drown unless you are [[breathless]] or [[amphibiousness|amphibious]].
+** Falling into water with excessive [[encumbrance]] may drown you even if there is adjacent land. There is a chance that you drop some inventory instead.
+* Standing near a collapsing [[drawbridge]]
+* Genociding your own race by reading a [[scroll of genocide]] or sitting on a [[throne]]. Reading a non-cursed scroll of genocide while [[confusion|confused]] always results in self-genocide.
+* Falling into [[lava]] without fire resistance
+* Intentionally [[level teleport]]ing yourself to level 0 or any negative-numbered level &mdash; level 0 is nowhere, &minus;1 to &minus;9 are "above the clouds", and &minus;10 and above are Heaven. Teleporting to a level "above" 0 will not instakill you if you are [[levitation|levitating]] or [[flying]], but the game will end anyway by [[escaping the dungeon]].
+** Even though levels &minus;1 to &minus;5 ''do'' exist in the game code (they are the [[Elemental Planes]] and [[Astral Plane]]), you need the real [[Amulet of Yendor]] to enter them, and you can't levelport while carrying it.
+* Being hit by a disintegration breath (from a [[black dragon]] or the [[Chromatic Dragon]]) without reflection or disintegration resistance. If you are wearing a [[shield]], it disintegrates, saving you; otherwise, if you are wearing [[body armor]], that and any cloak disintegrate, again saving you (but likely leaving you with a very poor [[armor class]] and vulnerable to the rebound).
+* Being hit by a lightning bolt from an [[Anger|angry]] god without reflection or shock resistance
+* Being hit by a [[wide-angle disintegration beam]] from an angry god without disintegration resistance. Reflection and armor will not protect you in this case.
+* Being level drained below experience level 1
+* Eating any of the [[Rider]]s' corpses (note that [[food appraisal]] does not warn you)
+* [[Digest]]ing any of the [[Rider]]s
+* Having your brain eaten by a [[mind flayer]]
+* Offering the [[Amulet of Yendor]] to Moloch on the unaligned high altar in the [[Moloch's Sanctum|Sanctum]]
+
+The following will instantly kill the player in most situations, but are not instadeath since they deal HP damage equal to twice the player's maximum HP instead of simply killing them. A player polymorphed into a monster will survive and return to their base form.
+* Being [[behead]]ed by [[Vorpal Blade]] or [[bisect]]ed by [[the Tsurugi of Muramasa]] (5% chance per hit)
+
+Dying on turn one generates the message "[[Do not pass go. Do not collect 200 zorkmids.]]" This is a reference to the board game ''[[Wikipedia:Monopoly (game)|Monopoly]]''.
+
+==Instakilling monsters==
+In many situations, it is very helpful for a player to have a way to instantly kill other monsters. Here are some methods of instantly killing monsters, listed roughly in order from most common to most obscure. Not all methods work on all monsters; for example, [[undead]] monsters resist death rays.
+
+* Zap a monster with a [[wand of death]] or {{spell of|finger of death}}
+* Hit a monster with a [[poison]]ed weapon (10% chance)
+* Zap a monster with a [[wand of polymorph|wand]], [[potion of polymorph|potion]], or [[spellbook of polymorph|spell]] of polymorph (small chance of fatal [[system shock]])
+* Hit a monster with a wielded or thrown [[cockatrice corpse]] or [[cockatrice egg]]
+* Disintegrate a monster with a [[black dragon]]'s disintegration breath
+* Engulf a monster with a [[engulfing|swallowing monster]] such as a [[purple worm]] or [[trapper]]
+* Open, close, or destroy a [[drawbridge]] on top of a monster
+* Attack a monster with [[Vorpal Blade]] or [[the Tsurugi of Muramasa]] (5% chance per hit for most monsters, Vorpal Blade is a 100% chance if the monster is a [[jabberwock]])
+* Displace a pet into [[water]] or [[lava]]
+* Cause a monster engulfing you to be struck by a lightning bolt from an [[Anger|angry]] god
+* Cause a monster engulfing you to be struck by a [[wide-angle disintegration beam]] from an angry god (requires it to survive the aforementioned lightning bolt, generally by being [[shock resistant]])
+* Polymorph into a sea monster with a drowning attack, and repeatedly attack monsters while being in water (breathless monsters will survive this type of attack). The chance of wrapping around a target monster is only about 10%, but if it's successful, the next melee attack will instakill the monster.
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] features several new instadeaths. They are:
+
+* Being hit by a gaze of death from a [[Catoblepas]] or the [[Neutral Quest#The Beholder|Beholder]]
+* Asking a [[gypsy]] to read your fortune and drawing Death while not having magic resistance
+* Being hit by [[Thiefbane]] (10% chance)
+* Being hit by [[Serpent's Tongue]] without poison resistance (10% chance)
+* Being hit by a [[wooden stake]] as a [[vampire]]
+* Invoking [[the Eye of the Beholder]] with your luck less than &minus;9.
+* Being hit by [[Houchou]]
+
+===dNetHack===
+dNetHack features the following insteadeaths:
+* Being on the same level as a dying [[mandrake]], while you have 100 or fewer hit points.  [[Hallucination]] or the [[spirits|seal]] of Ose will prevent this.
+
+===FIQHack===
+
+[[FIQHack]] does not have poison instadeath. Instead, you suffer permanent attribute loss, which cannot be cured by a [[unicorn horn]] or [[potion]].
+
+== See also ==
+* [[Delayed instadeath]], which also results in sudden death but allows for emergency intervention.
+* [[Trickery]], which ends a game instantly as an anti-cheating measure and is not considered death
+
+{{nethack-343|offset=1}}
+{{slashem-7E7}}
+[[Category:Instadeath|*]]}
+&&%s&& %s Gnome With the Wand of Death {147723 2022-08-20T10:20:44Z {4001279 Umbire the Phantom} oop In ''NetHack'', [[intelligent monster]]s can make use of attack [[wand]]s; this includes both very weak monsters and very powerful wands. While the most powerful wands cannot generate in the inventories of most early intelligent monsters, there is nothing stopping one from appearing on the ground where any such monster is free to pick it up. In the most extreme case, the [[Random Number God]] will dispatch a [[gnome (monster)|gnome]] that came across a [[wand of death]] &ndash; this proverbial '''"gnome with the wand of death"''' represents the classic [[YASD|unfair death]]. 
+
+==Description==
+[[Image:Gwtwod.png|thumb|400px|The wrath of the RNG]]
+The Gnome With the Wand of Death represents an existential threat to a player character that will not have found any means of defense at that point, especially in the [[Gnomish Mines]]. This is by no means restricted to gnomes - [[hobbit]]s, [[goblin]]s and [[kobold]]s are just as capable of picking up what turns out to be a powerful wand and blasting you to death as soon as they get a turn. Even [[magic resistance]] is no guarantee of safety, as it does not protect against elemental wands like the [[wand of cold]] and [[wand of lightning]].
+
+To lessen the risk of this occurring, [[pick up]] any unknown wands you find on the floor and [[engrave]]-test them to [[Wand#Engrave-identification|identify]] the wands. At worst, you will identify non-threatening wands that can be put to use for other tasks. Intelligent hostile monsters that lack damaging attacks, such as [[foocubi]], [[nymphs]], and [[nurses]], may still attack you with wands - nymphs are particularly dangerous and capable of stealing wands from you to zap, especially on [[non-teleport level]]s.
+
+==Origin==
+The idea of a gnome with a wand of death has been about for some considerable time; [http://groups.google.co.uk/group/rec.games.roguelike.nethack/msg/df380142b739519c the first use of the joke] in [[rgrn]] appears to have been by [[Torsten Edelmann]] in 1996, and it is [http://groups.google.co.uk/group/rec.games.roguelike.nethack/msg/519c9b8dc397ab4a described as ''proverbial''] by 2002.
+
+==Dudley's dungeon==
+In [[Dudley's dungeon]], the [[Dudley's dungeon#Gnome With the Wand of Death|Gnome With the Wand of Death]] is a recurring character that first appears in the strip for [http://www.nicolaas.net/dudley/index.php?f=20050531&q=gnome May 31, 2005] - here, the gnome aptly demonstrates that the "wand of death" need not be a literal one.
+{{nethack-366}}
+[[Category:Acronyms]]
+[[Category:Dudley's dungeon]]}
+&&%s&& %s GWTWOD {19466 2007-03-05T04:13:32Z {166 Creativename} To move to main article. #REDIRECT [[Gnome With the Wand of Death]]}
+&&%s&& %s Gnome with the wand of death {18392 2007-01-21T08:38:09Z {166 Creativename} Redirecting to [[Gnome With the Wand of Death]] #REDIRECT [[Gnome With the Wand of Death]]}
+&&%s&& %s Strength {150055 2023-03-05T07:38:22Z {4001279 Umbire the Phantom} /* Exercising and abusing strength */* '''Strength''' is an [[attribute]] in [[NetHack]].
+
+==Percentile strength==
+Like all attributes, strength ranges between 3 and 25. However, as in early editions of [[Dungeons & Dragons]], strength has the unique property that values between 18 and 19 are given in ''percentage'' terms rather than jumping straight from 18 to 19, as with other attributes. For example, a strength of 18/35 means roughly that one is 35% of the way between 18 strength and 19 strength. Depending on race, characters can attain a maximum strength of 18, 18/50 or 18/** (which stands for 18/100) in their natural form, and need [[gauntlets of power]] or a [[ring of gain strength]] to increase strength to 19 or more. However, for gameplay purposes, there are not very many differences between a strength of 18/** and a strength of 25. Specifically, increasing your strength from 18/** to 25 will increase your [[encumbrance|carrying capacity]] (but only if your constitution is less than 17), make objects [[throw]]n or [[kick]]ed by you travel further, and allow you to throw [[Mjollnir]] if you have it.
+
+==Effects==
+Strength corresponds to the ability to have more [[weight]] in [[you]]r [[inventory]]. Also, the stronger you are, the more damage you do in melee combat, and the farther you can [[throw]] objects.
+
+===Uses of strength===
+
+Strength is required for the following activities:
+
+* To cast [[spells]], you need strength of at least 4.{{refsrc|spell.c|742}}
+* To [[jump]] (except with [[spellbook of jumping|the spell]]) or do self-[[teleportation]], you need strength of at least 6.{{refsrc|apply.c|1261}}{{refsrc|spell.c|505}}
+* To break most [[wand]]s, you need strength of at least 10; balsa wands can be broken with as low as 5 strength.{{refsrc|apply.c|2621}}
+* To throw [[Mjollnir]], you need strength of 25.{{refsrc|dothrow.c|85}}
+
+{{upcoming|NetHack 3.7.0|Glass wands can also be broken with 5 strength.}}
+
+Strength affects the following activities:
+
+* Greater strength usually allows you to carry more inventory without being [[encumbrance|encumbered]].{{reffunc|hack.c|weight_cap}}
+* Greater strength speeds setting a [[bear trap]].{{refsrc|apply.c|2027}}
+* Greater strength speeds escape from a [[web]].{{refsrc|trap.c|1007}}
+* Greater strength increases [[digging]] speeds.{{refsrc|dig.c|272}}{{reffunc|weapon.c|abon|name=abon}}
+* Greater strength makes it more likely to [[kick]] open a [[door]] or [[secret corridor]].{{refsrc|dokick.c|697}}{{refsrc|dokick.c|791}}{{refsrc|dokick.c|816}}{{refsrc|dokick.c|1046}}
+* Greater strength increases damage done to monsters when [[kick]]ing them.{{refsrc|dokick.c|34}}
+* Greater strength makes it more likely to successfully open or close a [[door]].{{refsrc|lock.c|562}}{{refsrc|lock.c|682}}
+* Greater strength makes a [[shopkeeper]] charge you more for destroying a shop wall.{{refsrc|dig.c|348}}{{refsrc|hack.c|381}}
+* Greater strength increases the range for [[throw]]ing objects.{{refsrc|dothrow.c|943}}{{refsrc|dothrow.c|1739}}
+* Greater strength speeds opening [[tin]]s.{{refsrc|eat.c|1182}}
+* Strength greater than 18 makes it possible to shatter a door when kicking it instead of just breaking it open.{{refsrc|dokick.c|1054}}
+* Greater strength allows better accuracy when fighting and increases damage per hit, as shown by the following table:<ref name="abon"/>{{reffunc|weapon.c|dbon}}
+
+{| class="prettytable striped"
+! strength
+! to-hit
+! damage
+|-
+| 3&ndash;5 || &minus;2 || &minus;1
+|-
+| 6&ndash;7 || &minus;1 || 0
+|-
+| 8&ndash;15|| 0 || 0
+|-
+| 16 || 0 || +1
+|-
+| 17 || +1 || +1
+|-
+| 18 || +1 || +2
+|-
+| 18/01&ndash;18/50 || +1 || +3
+|-
+| 18/51&ndash;18/75 || +2 || +3
+|-
+| 18/76&ndash;18/90 || +2 || +4
+|-
+| 18/91&ndash;18/99 || +2 || +5
+|-
+| 18/**&ndash;25 || +3 || +6
+|}
+
+The to-hit adjustment applies to all melee attacks.{{refsrc|uhitm.c|390}}{{refsrc|uhitm.c|236}} The damage adjustment affects melee and thrown weapons unless attacking with [[mirror]]s that break,{{refsrc|uhitm.c|708}} [[egg]]s,{{refsrc|uhitm.c|752}} [[cream pie]]s,{{refsrc|uhitm.c|849|name=venom_pie_no_dbon}} [[blinding venom]],<ref name="venom_pie_no_dbon"/> or [[acid venom]].{{refsrc|uhitm.c|864}} It does not affect items fired from a launcher.{{refsrc|uhitm.c|895}}
+
+===Strength in game formulas===
+Some of the game formulas require strength to be an integer between 3 and 25 (without percentages). When that is needed, ''[[NetHack]]'' will map strengths between 18/01 and 21 as follows:{{reffunc|attrib.c|acurrstr}}
+
+{| class="prettytable striped"
+! A strength of...
+! maps to...
+|-
+| 18/01&ndash;18/31 || 19
+|-
+| 18/32&ndash;18/81 || 20
+|-
+| 18/82&ndash;21 || 21
+|}
+
+This mapping is used for:
+
+*Calculating [[Encumbrance|carrying capacity]]{{refsrc|hack.c|2162}}
+*Calculating the damage done by kicking{{refsrc|dokick.c|34}}
+*Calculating the maximum distance traveled by [[throw|thrown]] or [[kick|kicked]] objects{{refsrc|dokick.c|452}}{{refsrc|dothrow.c|943}}
+*Calculating the chance of kicking down a door{{refsrc|dokick.c|697}}
+*Calculating the time it takes to open a non-blessed tin by hand{{refsrc|eat.c|1182}}
+*Calculating the chance of opening or closing an unlocked door{{refsrc|lock.c|704|version=NetHack 3.6.1}}{{refsrc|lock.c|840|version=NetHack 3.6.1}}
+
+
+For example, the maximum range of a thrown [[dagger]] is Str/2 squares. Thus, if your strength is 18/31, you can throw a dagger 9 squares (19/2 rounded down), but if your strength is 18/32, you can throw it 10 squares (20/2 rounded down).
+
+===Events that alter strength===
+
+Strength may increase when:
+
+* you eat a [[giant]] [[corpse]]{{refsrc|eat.c|926}}
+* you eat non-cursed [[royal jelly]]{{refsrc|eat.c|1692|name=royal jelly}} or [[spinach]]{{refsrc|eat.c|1122|name=spinach}} ("you feel like Popeye!")
+* you are at least [[Nutrition#hunger status|weak]], and eat or pray, and are no longer weak{{refsrc|eat.c|2346}}
+
+Potions of gain ability and lumps of royal jelly will only increase your strength by 1 (e.g., from 18/01 to 18/02). Spinach and giant corpses sometimes increase your strength by more than one. If the corpse or tin will increase strength and your strength is less than 18, there's a 1 in 4 chance of increasing your strength by 1d6 points. If the corpse or tin increases strength and your strength is between 18 and 18/84, your strength will be increased by 1d10. If your strength is at least 18/85, it can only be increased by 1.{{refsrc|attrib.c|163}}
+
+Strength may decrease when:
+
+* you become hungry to the point of being weak{{refsrc|eat.c|2344}}
+* you are affected by the [[drain strength]] monster spell{{refsrc|mcastu.c|409}}
+* you are [[poison]]ed{{refsrc|spell.c|155}}{{refsrc|eat.c|1293}}{{refsrc|eat.c|1973}}{{refsrc|fountain.c|265}}
+* you eat cursed [[royal jelly]]<ref name="royal jelly"/> or [[spinach]]<ref name="spinach"/>
+
+There are many ways to [[exercise]] your strength. One popular way is to push [[boulder]]s around. (One possibility: whenever [[you]] need to heal, spend your time pushing a boulder back and forth at one of the higher dungeon levels.)
+
+===Messages===
+{{message|You feel strong!|You gained a point of strength.}}
+{{message|You feel very strong!|You gained more than a point of strength.}}
+{{message|You must have been exercising diligently.|In addition to the above, if the gain was due to exercise.}}
+{{message|You feel weak!|You lost a point of strength.}}
+{{message|You haven't been exercising properly.|In addition to the above, if the loss was due to [[exercise#abuse|abuse]].}}
+
+===Exercising and abusing strength===
+Strength is exercised by the following:
+* Being [[stressed]]{{refsrc|attrib.c|338}} or [[strained]]{{refsrc|attrib.c|339}} (once every ten turns)
+* Having intrinsic [[regeneration]] from eating a [[ring of regeneration]] (once every five turns){{refsrc|attrib.c|354}} (wearing a ring or wielding [[the Staff of Aesculapius]] does '''not''' exercise strength)
+* [[Kicking]] a [[door]], whether or not you succeed in opening it, unless you cause a booby trapped door to explode{{refsrc|dokick.c|1056}}{{refsrc|dokick.c|1060}}{{refsrc|dokick.c|1090}}
+* [[Throw]]ing a [[heavy iron ball]]{{refsrc|dothrow.c|1348}} or a [[boulder]]{{refsrc|dothrow.c|1362}}
+* Pushing a boulder, unless you are [[riding]] a steed{{refsrc|src/hack.c|303|nethack=3.6.6}}
+* Trying to [[force]] a [[lock]] using a blunt weapon, whether or not you succeed (using a bladed weapon exercises dexterity){{refsrc|lock.c|142}}{{refsrc|lock.c|207}}
+* Attempting to open{{refsrc|src/lock.c|716|version=NetHack 3.6.1}} or close{{refsrc|src/lock.c|846|version=NetHack 3.6.1}} a door, which resists
+* Being healed by a [[nurse]] (one in three chance){{refsrc|mhitu.c|1405}}
+* Consorting with a [[foocubus]] and getting the "You feel restored to health!" message{{refsrc|mhitu.c|2347}}
+* Being healed by [[fire]] as an [[iron golem]], or by [[lightning]] as a [[flesh golem]]{{refsrc|polyself.c|1291}}
+* Drinking a [[potion of extra healing]] or [[potion of full healing|full healing]]{{refsrc|potion.c|813}}
+* Reading a non-cursed [[scroll of enchant armor]] while not wearing armor{{refsrc|read.c|680}}
+* Attacking a monster in melee{{refsrc|uhitm.c|379}}
+
+Strength is abused by the following:
+* Being [[weak]] from hunger on a turn whose number is a multiple of 10{{refsrc|attrib.c|325}}
+* Being hit{{refsrc|ball.c|777}} or dragged{{refsrc|ball.c|784}} by an [[iron ball]] while descending stairs
+* Hurting your leg by [[kicking]]{{refsrc|dokick.c|1003}}
+* Straining a muscle when kicking at empty space{{refsrc|dokick.c|1031}}
+* Kicking a booby trapped door, causing it to explode{{refsrc|dokick.c|1051}}
+* Being hurt in any kind of explosion{{refsrc|explode.c|364}}{{refsrc|trap.c|3686}}{{refsrc|trap.c|3855}}{{refsrc|potion.c|1671}}{{refsrc|zap.c|1841}}{{refsrc|zap.c|3940}}
+* Being choked or crushed by a monster's attack{{refsrc|mhitu.c|930}}
+* While polymorphed into a [[black pudding|black]] or [[brown pudding]], being divided by a monster's attack{{refsrc|mhitu.c|960}}
+* Having your leg pricked by a [[xan]]{{refsrc|mhitu.c|1175}}
+* Being burned by an [[acid]] attack{{refsrc|mhitu.c|1458}}, including an engulfing attack{{refsrc|mhitu.c|1175}} and a breath attack{{refsrc|zap.c|3175}}, without acid resistance
+* Being subjected to a monster's acid passive attack{{refsrc|uhitm.c|2176}}
+* Being digested (without [[slow digestion]]){{refsrc|mhitu.c|1713}}
+* Being pummeled by debris (by an [[air elemental]]){{refsrc|mhitu.c|1727}}
+* Consorting with a foocubus, and getting the "You feel exhausted" message{{refsrc|mhitu.c|2314}}
+* Breaking out of your armor when [[polymorph]]ing{{refsrc|polyself.c|579}}
+* Reading a cursed [[scroll of enchant armor]] while not wearing armor{{refsrc|read.c|680}}
+* Reading a [[scroll of destroy armor]] while not wearing armor, if you are [[confusion|confused]]{{refsrc|read.c|789}}, or the scroll is non-cursed{{refsrc|read.c|800}}
+* Sitting while trapped in a [[spiked pit]]{{refsrc|sit.c|83}}
+* Being choked by an [[amulet of strangulation]] (once every turn){{refsrc|timeout.c|108}}
+* Being hit by a [[falling rock trap|falling rock]]{{refsrc|trap.c|726}}
+* Falling into a [[pit]], [[spiked pit|spiked]] or not{{refsrc|trap.c|938}}
+* Zapping yourself with a [[wand of striking]] or a force bolt spell{{refsrc|zap.c|1895}}
+* Being hit by a [[magic missile]] (but not if you zapped yourself or the attack is passive){{refsrc|zap.c|3082}}
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Your character]]}
+&&%s&& %s Dexterity {141213 2021-06-26T21:21:19Z {4001463 Actual-nh} /* Effects */ Links '''Dexterity''' is an [[attribute]] in [[NetHack]].
+
+==Effects==
+Dexterity has a multitude of effects, of which the most significant is probably that it affects your chance of hitting monsters, whether in melee combat or with a missile or spell.
+
+There is no direct way to increase your intrinsic dexterity apart from drinking a blessed [[potion of gain ability]] (or the corresponding [[fountain]] effect) which increases all stats by one. However, there are ways to [[exercise]] it, for example repeatedly picking locks. It is also exercised by fighting monsters, disarming traps, and reading a non-cursed [[Scroll of enchant weapon]] while not wielding a weapon.
+
+Be aware that dexterity is easy to [[abuse]]. If you are trying to train it up, avoid being [[nutrition#hunger status|satiated]] and do not allow yourself to become [[encumbrance|strained]] or overtaxed. Being [[stunned]], [[paralyzed]], or having [[wounded legs]] is also bad for dexterity.
+
+A pair of [[gauntlets of dexterity]] magically increases (or decreases) [[you]]r dexterity by the amount of its enchantment, to a maximum of 25.
+
+{| class="prettytable striped" 
+!| dexterity 
+!| to-hit 
+|- 
+|| 3 || &minus;3 
+|-
+|| 4&ndash;5 || &minus;2
+|-
+|| 6&ndash;7 || &minus;1
+|-
+|| 8&ndash;14 || 0
+|-
+|| 15 || +1
+|-
+|| 16 || +2
+|-
+|| 17 || +3
+|-
+|| 18 || +4
+|-
+|| 19 || +5
+|-
+|| 20 || +6
+|-
+|| 21 || +7
+|-
+|| 22 || +8
+|-
+|| 23 || +9
+|-
+|| 24 || +10
+|-
+|| 25 || +11
+|}
+Reference: {{sourcecode|dothrow.c|1200}}; {{sourcecode|weapon.c|705}}.
+
+===Messages===
+{{message|You feel agile! You must have been working on your reflexes.|Your dexterity increased due to [[exercise]].}}
+{{message|You feel clumsy! You haven't been working on reflexes lately.|Your dexterity decreased due to [[exercise#abuse|abuse]].}}
+
+===Exercising and abusing dexterity===
+Dexterity is exercised by the following:
+* Successfully [[kick]]ing a monster{{refsrc|dokick.c|84}}
+* Uncovering or opening a [[secret door]] by kicking{{refsrc|dokick.c|798}}
+* Uncovering a secret corridor by kicking{{refsrc|dokick.c|818}}
+* Destroying a throne by kicking it{{refsrc|dokick.c|841}}
+* Kicking an altar (which is a [[bad idea]]){{refsrc|dokick.c|872}}
+* Kicking a fountain{{refsrc|dokick.c|885}}
+* Kicking a sink without hurting your leg{{refsrc|dokick.c|953}}{{refsrc|dokick.c|964}}{{refsrc|dokick.c|976}}{{refsrc|dokick.c|987}}
+* [[Kick]]ing [[fruit]] out of a [[tree]]{{refsrc|dokick.c|917}}
+* Kicking a closed or locked [[door]]{{refsrc|dokick.c|1044}}
+* Successfully catching a returning [[boomerang]]{{refsrc|dothrow.c|932}}
+* Hitting a monster by throwing a weapon, weapon-tool, gem{{refsrc|dothrow.c|1316}}, [[heavy iron ball]]{{refsrc|dothrow.c|1352}} or [[boulder]]{{refsrc|dothrow.c|1364}}
+* Trying to move without levitation or flying on the [[Plane of Air]], failing, and getting the "It's hard to walk in thin air" message{{refsrc|hack.c|914}}
+* Using an unlocking tool to try to lock or unlock a closed door, box or chest, whether or not you succeed{{refsrc|lock.c|102}}{{refsrc|lock.c|125}}
+* Trying to [[force]] a [[lock]] using a bladed weapon, whether or not you succeed, even if the weapon breaks (using a blunt weapon exercises strength){{refsrc|lock.c|142}}{{refsrc|lock.c|157}}{{refsrc|lock.c|207}}
+* Playing a [[flute]] or [[harp]] (magic or wooden){{refsrc|music.c|391}}{{refsrc|lock.c|398}}{{refsrc|music.c|437}}{{refsrc|lock.c|445}}
+* Spinning a [[web]], when polymorphed into a spider{{refsrc|polyself.c|841}}
+* Casting the [[haste self]] spell or quaffing a potion of speed{{refsrc|polyself.c|746}}, or breathing the potion's vapors{{refsrc|potion.c|1275}}
+* Gaining intrinsic [[speed]] from a [[wand of speed monster]]{{refsrc|zap.c|2020}}
+* Attempting to disarm a container{{refsrc|trap.c|3512}} or door{{refsrc|trap.c|3574}} trap (whether or not you succeed)
+* Hitting a monster in melee, unless you are engulfed and would have missed if you had not been engulfed{{refsrc|uhitm.c|480}}
+* Stealing gold from a monster, when polymorphed into a leprechaun{{refsrc|uhitm.c|1425}}
+* Reading a non-cursed [[scroll of enchant weapon]], while not wielding a weapon or weapon-tool{{refsrc|wield.c|701}}
+
+Dexterity is abused by the following:
+* Being [[satiated]] on a turn whose number is a multiple of 10{{refsrc|attrib.c|320}}
+* Being [[strained]]{{refsrc|attrib.c|340}} or [[overtaxed]]{{refsrc|attrib.c|341}} (once every ten turns)
+* Having [[wounded legs]] (unless you are riding), [[fumbling]], or being [[stun]]ned (once every five turns){{refsrc|attrib.c|362}}
+* Missing wildly when kicking a tiny, non-flying monster while levitating{{refsrc|dokick.c|173}}
+* Hurting your leg by kicking{{refsrc|dokick.c|1002}}
+* Kicking at empty space (whether or not you strain a muscle){{refsrc|dokick.c|1025}}

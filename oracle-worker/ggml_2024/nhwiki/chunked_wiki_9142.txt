@@ -1,0 +1,1000 @@
+  var dialog = null;
+  var currentColor = "white", currentSymbol = "@";
+
+  function buildDialog () {
+    dialog = $('<div title="Color Symbols" class="nhw-color-symbol-picker">');
+
+    // color picker buttons
+    var colors = $('<p style="white-space: pre">').appendTo(dialog);
+    [
+      "black", "blue", "green", "cyan", "red", "magenta", "brown", "lightgray",
+      "darkgray", "brightblue", "brightgreen", "brightcyan", "orange", "brightmagenta", "yellow", "white"
+    ].forEach( function (color) {
+      $('<span class="nhsym colorPicker">').addClass('clr-' + color).attr('title', color).appendTo(colors);
+    } );
+
+    // character picker buttons
+    var symbols = $('<p style="white-space: pre">').appendTo(dialog);
+    for (var charCode = 32; charCode < 127; charCode++) {
+      var symbol = String.fromCharCode(charCode);
+      $('<span class="nhsym symbolPicker">').text(symbol).appendTo(symbols);
+      if (charCode % 16 == 15) symbols.append('\n');
+    }
+
+    // sample display & template code
+    var sample = $('<p style="white-space: pre"><span class="nhsym sampleDisplay"></span> <code class="sampleMarkup"></code></p>').appendTo(dialog);
+
+    // live update
+    function updateSelection(color, symbol) {
+      dialog.find('.colorPicker, .sampleDisplay').text(symbol);
+      dialog.find('.symbolPicker, .sampleDisplay').removeClass('clr-' + currentColor).addClass('clr-' + color);
+
+      var quotedSymbol = symbol;
+      if ( /[={|}]/.test(symbol) ) {
+        quotedSymbol = '&#' + symbol.charCodeAt(0) + ';';
+      }
+      dialog.find('.sampleMarkup').text("{{" + color + "|" + quotedSymbol + "}}");
+
+      currentColor = color;
+      currentSymbol = symbol;
+    }
+    updateSelection(currentColor, currentSymbol);
+
+    // add click handlers
+    dialog.find('.colorPicker').click( function () {
+      updateSelection( $(this).attr('title'), currentSymbol );
+    } );
+    dialog.find('.symbolPicker').click( function () {
+      updateSelection( currentColor, $(this).text() );
+    } );
+
+    // fix cursor style
+    dialog.find('.nhsym:not(.sampleDisplay)').css( 'cursor', 'pointer' );
+
+    // create dialog
+    var pos = null;
+    dialog.dialog( {
+      autoOpen: false,
+      modal: false,
+      resizable: false,
+      height: "auto",
+      width: "auto",
+      buttons: {
+        "Close": function () { dialog.dialog("close") },
+        "Insert symbol": function () {
+          mw.toolbar.insertTags( $(this).find('.sampleMarkup').first().text(), "", "" );
+        }
+      },
+      create: function (event) {
+        $(event.target).parent().css('position', 'fixed');
+      },
+      // XXX: jQuery UI's draggable widget seems to handle fixed positioning fine, but the
+      // dialog widget that uses it doesn't (yet) have proper support and tends to reset
+      // the vertical position to zero. This kluge forces the dialog to stay where it was.
+      close: function (event) {
+        var dialogElem = $(event.target).parent();
+        pos = { top: dialogElem.css('top'), left: dialogElem.css('left') };
+      },
+      open: function (event) {
+        if (pos) $(event.target).parent().css(pos);
+      }
+    } );
+  }
+
+  // show dialog on click
+  $('.NH_mk_sym_popup').wrapInner('<a href="#">').children(1).click( function () {
+    mw.loader.using([ 'mediawiki.toolbar', 'jquery.ui.dialog' ]).then( function () {
+      if (!dialog) buildDialog();
+
+      if (!dialog.dialog("isOpen")) dialog.dialog("open");
+      else dialog.dialog("close");
+    } );
+    return false;
+  } );
+} );
+
+/*</syntaxhighlight>*/}
+&&%s&& %s Help:Assigning permissions {56398 2010-11-13T20:25:40Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+"'''Assigning permissions'''" means granting users extra rights within the wiki software (or revoking these rights). This is done by going to the [[Special:UserRights]] page, and adding users into a "group" which has specific rights. The first thing to note however, is that this action requires special permissions itself! 
+
+== Bureaucrats == 
+
+By default, you will need to be a 'Bureaucrat' (in the 'Bureaucrat' group) before you can access the [[Special:UserRights]] page. The first user created when setting up a MediaWiki installation is a bureaucrat. Other users can always contact one of the bureaucrats to request a change of permissions. Find out who these people are at [[Special:ListUsers/bureaucrat]]. In a small wiki there might typically be only one such user or maybe two.
+
+== Promoting users to Sysops and Bureaucrats ==
+
+The [[Special:UserRights]] page allows you (if you have access) to set which groups a user is in. A common task would be to put a user into the 'Sysop' group. This will grant the user various extra rights, such as deleting pages, and blocking users. See [[Help:Sysops and permissions]] for more details.
+
+Obviously giving a user such rights implies that you '''trust''' the user, both in terms of being non-malicious, and also as somebody with sufficient competence in using the wiki software, and in dealing with the wiki community. People hoping to become sysops should read [[Help:Sysops and permissions]]. However it should be noted that actions of a sysop user are (almost) entirely reversible, by other sysop users, and so it can be a good idea to dish out these extra permissions to a number of users in order to
+* spread the workload of day-to-day sysop operations such as blocking vandals and deleting pages.
+* make things more democratic, and decrease any perception of a single dictator running the community
+* allow competent users the power they need to make progress with wiki refactoring.
+* reward valued contributors/community members
+
+== Processes ==
+If you have many sysops, you may start to need documented processes governing their actions. e.g. when should a page be protected versus leaving it unprotected? You may even reach the point where you need a documented procedure for deciding who gets to be a sysop, and who should have their sysop rights revoked. To manage all of this, you may wish to promote several users into the 'Bureaucrat' group (a smaller number of your most trusted users) to spread the workload managing the promoting/demoting of sysops.  On some large wikis, users are voted in by other users before they are granted extra permissions, and sysops have their rights revoked by a committee who investigate accusations of misconduct. Such processes are unlikely to be necessary in anything but the largest of wiki communities.
+
+== Other permissions ==
+Beyond promoting/demoting of Sysops and Bureaucrats, you can also allow a user to operate as a 'bot', meaning their edits do not show up on recent changes.
+
+== See also ==
+* {{mediawiki|Manual:User_rights_management|Manual:User rights management}}
+
+{{Languages|Help:Assigning permissions}}
+[[Category:Help|Assigning permissions]]}
+&&%s&& %s Help:Blocking users {56400 2010-11-13T20:25:40Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+'''Blocking users''' is an action that [[Help:Sysops and permissions|sysops]] can perform upon users or IP addresses to prevent them from editing the wiki.
+
+==Blocking==
+Blocking users is fairly straightforward, visit [[Special:BlockIP]] and follow these steps:
+
+# '''IP Address or username''': Enter in the username, IP address, or [[Help:Range blocks|IP range]] to block in the "User" field. If blocking a username, make sure to check the spelling since nonexistent users can be blocked as well. Instead of typing this information in manually, it is also possible to click on a "block" link in recent changes, contributions pages, or history pages, which will automatically fill in this field with the appropriate username or IP address. A "Block this user" link is also present in the toolbox when viewing User and User talk pages.
+# '''Expiration''': Select when the block should expire from the drop-down, or manually type in an expiration time of the block. When manually typing in a time, follow the [http://www.gnu.org/software/tar/manual/html_node/Date-input-formats.html GNU standard format]. The default options in the drop-down may be modified at [[MediaWiki:Ipboptions]].
+# '''Reason (optional)''': The reason selected from the drop-down combined with the other/additional reason specified will be used as the message displayed to the blocked user when they try to edit. The default reasons in the drop-down may be modified at [[MediaWiki:Ipbreason-dropdown]].
+# '''Select additional block options (optional)''': Depending on if a username or IP is being blocked and other options that may have been enabled, some or all of these options will be displayed on the form. Please see [[Manual:Block and unblock#Configuration settings related to blocking]] for information of how to enable or disable some of the following options.
+#* ''Block anonymous users only'': This option is only available when blocking an IP address. When selected, registered users who try to edit using a blocked IP address will still be able to edit. Otherwise, they will be unable to edit as well.
+#* ''Prevent account creation'': Selecting this option will prevent the blocked username or IP address from creating new accounts.
+#* ''Automatically block the last IP address used by this user, and any subsequent IPs they try to edit from'': This option is only available when blocking a username. When selected, the user's IP will become "autoblocked" (these show up as numbers such as #17 on [[Special:IPBlockList|the active block list]]) for a short period of time and any other IP addresses that the blocked user tries to edit from will be blocked as well.
+#* ''Prevent user from sending e-mail'': This option is only available when blocking a username. When this option is selected, the user will be unable to use the [[Special:EmailUser]] interface.
+#* ''Hide username from the block log, active block list and user list'': When selected, the blocked username or IP address will not be added to the [[Special:Log/block|block log]], the [[Special:IPBlockList|active block list]], or the [[Special:ListUsers|user list]]. Other users with the ability to view these hidden entries will still be able to see and unblock the username or IP address. This option is not enabled in a default installation of MediaWiki; the person putting the block in place must have the ''hideuser'' permission.  See {{mediawiki|Manual:User_rights|Manual:User rights}}.
+#* ''Watch this user's user and talk pages'': When selected, this adds the blocked user's user page and user talk page to your watchlist.
+# Double-check everything you entered and click on '''Block this user'''. A message should appear saying if the block was successful or unsuccessful.
+
+==Unblocking==
+To unblock a username or IP address, go to the [[Special:IPBlockList|active block list]] and click on the (unblock) link next to the user or IP you wish to unblock. Then, enter in an optional reason and click on the unblock button. A message should appear saying if the unblock was successful or unsuccessful.
+
+==What it means to be blocked==
+Blocked users are unable to [[Help:Editing pages|edit pages]], [[Help:Managing files|upload files]], [[Help:Moving a page|move pages]], and perform other actions that additional {{mediawiki|Manual:User_rights|user rights}} would grant. Effectively, this makes the wiki read only for those users. Sysops or others with access to the blocking and unblocking interface may still block and unblock others (including themselves) while blocked.
+
+==See Also==
+*{{mediawiki|Manual:Block and unblock}}
+
+{{Languages|Help:Blocking users}}
+[[Category:Help|Blocking users]]
+[[Category:Block|Blocking users]]}
+&&%s&& %s Help:Bots {56402 2010-11-13T20:25:40Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+
+A '''bot''' is a computer program that automatically retrieves or updates wiki pages when it is executed. In general, bots are used for repetitive maintenance tasks, whose volume and characteristics are too large to be performed manually by users.
+
+Developing and executing bots is normally outside the role of normal users, requires programming experience and must be done in coordination with the wiki's [[Help:Sysops and permissions|admins]]. 
+
+By default, bot edits are hidden in [[Special:RecentChanges|{{ns:special}}:{{MediaWiki:Recentchanges}}]]. 
+
+== Framework and interface for bot development ==
+Bots do not access the wiki through the normal graphical user interface. MediaWiki has an API (Application Programming Interface) available for this purpose. An API is a protocol for standardised communication between two computer programs. Check {{mediawiki|API:Client code}} for more information.
+
+To access a wiki through the API a bot must have a user account, which has been granted 'bot' [[Help:Assigning permissions|permissions]].
+
+=== pywikipediabot ===
+{{mediawiki|meta:pywikipediabot}} provides a framework for the development of bots, which are commonly used to perform maintenance tasks such as adding a footer to some categorized pages ({{mediawiki|meta:pywikipediabot/add_text.py|add_text.py}}), adding some [[Help:Links|wikilinks]] ({{mediawiki|meta:pywikipediabot/replace.py|replace.py}}), moving old contents of [[Help:Talk pages|talk pages]] to [[Help:Subpages|subpages]] ({{mediawiki|meta:pywikipediabot/archivebot.py|archivebot.py}}), editing [[Help:Categories|categories]] ({{mediawiki|meta:pywikipediabot/category.py|category.py}}), or managing [[Help:Templates|templates]] ({{mediawiki|meta:pywikipediabot/template.py|template.py}}).
+
+== The MassEditRegex extension ==
+[[:mw:Extension:MassEditRegex|Extension:MassEditRegex]] provides an alternative way to perform mass edits using regular expressions, through a special page in the wiki. Only admins can normally use this extension.
+
+== See also ==
+* {{mediawiki|meta:Bot}}
+
+{{Languages}}
+
+[[Category:Help|{{PAGENAME}}]]}
+&&%s&& %s Help:Categories {56404 2010-11-13T20:25:40Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+MediaWiki enables you to categorize pages and files by appending one or more '''Category''' {{#ifeq:Category|{{ns:category}}||'''({{ns:category}})'''}} tags to the content text. Adding these tags creates links at the bottom of the page that take you to the list of all pages in that category, which makes it easy to browse related articles.
+
+==Adding a page to a category==
+To add a page or uploaded file to a category, simply edit the page and add the following text (where '''''Name''''' is the name of the category you want to add it to).
+
+ <nowiki>[[</nowiki>{{ns:category}}:'''''Name''''']]
+
+Any number of {{ns:category}} tags may be added to the page and the page will be listed in all of them. {{ns:category}} tags are usually added at the very bottom of the page for the convenience of other editors.
+
+===Sort key===
+By default, a page is sorted under the first letter of its full name ''including the namespace''. Also, MediaWiki groups accented characters separately from their unaccented version, so pages starting by À, Á, Ä, will be listed under separate headings, instead of under heading A.
+
+A ''sort key'' specifies under which letter heading, and where in the category list, the page will appear. You can add a sort key by placing it inside the tag after a pipe character. For example, the tag below will add the page under heading "S".
+
+ <nowiki>[[</nowiki>{{ns:category}}:'''''Name'''''|'''''Sort''''']]
+
+Sort keys are case-sensitive, and spaces and other characters are also valid. The order of the sections within a category follows the Unicode sort order. The sort key does not change the page title displayed in the category.
+
+==Creating a category page==
+Categories exist even if their page has not been created, but these categories are isolated from others and serve little purpose for organization or navigation.
+
+A category is created by creating a page in the '''''Category:''''' namespace. A category page can be created the same way as other wiki pages (see [[Help:Starting a new page]]); just add "<code>{{ns:category}}:</code>" before the page title.
+
+To avoid extra work, try searching within your wiki before creating a new category. The list of all categories can be found in "{{int:specialpages}}" in the "{{lcfirst:{{int:toolbox}}}}" box of the [[Help:Navigation#Sidebar|sidebar]].
+
+Unlike other wiki pages, it is not possible to rename (move) a category. It is necessary to create a new category and change the {{ns:category}} tag on every page. The new category will not have the older category's page history, which is undesirable if there are many revisions.
+
+==Managing the category hierarchy==   
+Categories may belong to other categories in a hierarchy. Since category pages are much like any other page, a {{ns:category}} tag may be added to the bottom of a category page. 
+
+It is a good idea to organize all categories into a hierarchy with a single top level category. The category structure can take the form of a tree with separate branches, but more often will have a graph structure. Generally, there should be a contiguous chain of parent-child links between each category and the top level category. 
+
+==Hidden categories==
+The categories that a page is in are normally listed at the bottom of the page. A category can be hidden from this list by adding the [[Help:Magic words|magic word]] "<code><nowiki>__HIDDENCAT__</nowiki></code>" to the category page. Hidden categories are not hidden from category pages ({{bugzilla|15550}}).
+
+Users can choose to see hidden categories in a separate "{{int:hidden-categories}}" list, by checking "{{int:tog-showhiddencats}}" in the "{{int:prefs-rendering}}" section of [[Special:Preferences]].
+
+Hidden categories are automatically added to [[:Category:{{mediawiki:hidden-category-category}}]]. This category is specified in the system message [[MediaWiki:Hidden-category-category]].
+
+==Linking to a category==
+To create a link to a category, use a leading colon before the category name (without this colon, the current page would be added to the category):
+
+:<code><nowiki>[[</nowiki>:{{ns:category}}:Help]]</code> &rarr; '''[[:{{ns:category}}:Help]]''' 
+
+To change the link text, write the text inside the link tag after a pipe:
+
+:<code><nowiki>[[</nowiki>:{{ns:category}}:Help|Help category]]</code> &rarr; '''[[:{{ns:category}}:Help|Help category]]'''
+ 
+[[Help:Redirects|Redirect pages]] that redirect to categories must also use the colon, otherwise they will be added to the category instead of redirecting.
+
+==Redirecting a category==
+Like normal wiki pages, category pages can be redirected to other normal or category pages.
+
+{{Languages}}
+[[Category:Help|Categories]]}
+&&%s&& %s Help:Deleting a page {56408 2010-11-13T20:25:41Z {831 Tjr} 1 revision: Import mediawiki help files {{#ifexist: Template:PD Help Page/{{SUBPAGENAME}}|{{PD Help Page/{{SUBPAGENAME}}}}|{{PD Help Page}}}}
+
+
+
+== When not to delete a page ==
+Typically you would delete a page if the contents are entirely inappropriate and do not match the purposes of the Wiki. In other situations, you would take a less extreme course of action, for example:
+
+* The page should have a different title -- See [[Help:Moving a page]]
+* The contents should have been placed on a different page -- Add the contents to the other page, and then supply a redirect. See [[Help:Redirects]]
+* The contents are already on a different page -- Delete the duplicate content and leave a redirect. That way, the page title, which made sense to somebody, will helpfully redirect to the information. See [[Help:Redirects]]
+* The page is out-of-date -- Re-word sentences to be in the past tense, to make the page an historical record. Alternatively, label the information as out-of-date, with a warning notice.
+
+An actual delete is generally necessary only if the ''title'' of the page is inappropriate. In other situations, a merge and redirect is more appropriate.
+
+=== Proposing changes ===
+Deciding on appropriate content/page titles can be a difficult aspect of Wiki organization, and one which can often provoke debates. If the merge or deletion you have in mind is one which might cause upset, you should propose the change first. Do this by leaving a note to give your reasons on the [[Help:Talk pages|talk page]]. You might also establish a system for labeling the page with a delete/merge proposal template, to make everybody aware of your intentions.
+
+=== Unlinking a page ===
+The 'What links here' toolbox feature (bottom of left sidebar) will tell you which other Wiki pages link to the current page. Always use this feature to check before proceeding with deleting. These related pages will need to be edited for their links to reflect the change.
+
+== Deletion itself ==
+'''Normal users cannot permanently delete a Wiki page'''. This is a deliberate design feature, and is an important part of why wikis work. Every kind of editing operation can be reverted by any other user, and that includes resurrecting deleted content. It doesn't cause significant wasted space; and with nothing but a 'delete' label, the page is effectively deleted anyway.
+
+'[[Help:Sysops and permissions|Sysop]]' users ''are'' able to delete a page semi-permanently. See [[Help:Sysop deleting and undeleting]]. Typically 'sysops' might look for delete labels, and do a proper delete on these pages, after a period of time. If for some reason you need a page to be deleted more quickly than that, you will need to contact a 'sysop' to request this.
+
+==See also==
+* [[Help:Sysops and permissions]]
+
+{{Languages|Help:Deleting a page}}
+
+{{Help/Category|Help}}}
+&&%s&& %s Help:Editing pages {56412 2010-11-13T20:25:41Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+It's very easy to edit the contents of a wiki. It only takes a few clicks.
+
+# Click the "'''{{int:edit}}'''" [[Help:Navigation#Page Tabs|page tab]] at the top of the page.
+# Make changes to the text.
+# Click the "'''{{int:savearticle}}'''" button.
+
+Simple as that!
+
+== Editing rules, editing conventions, and formatting ==
+The number one rule of wiki editing, is to ''be bold''. Dive in and make changes. Other people can correct mistakes later, so have confidence, and give it a try! There can be all kinds of editing conventions, rules, and philosophy governing the editing of wiki pages, but the "be bold" rule overrides these!
+
+In general try to write clearly and concisely and make sure you are always aiming to do something which improves the wiki contents. An edit might be to contribute whole paragraphs or pages full of information, or it could be as simple as fixing a typo or spelling mistake.
+
+When you need to use some type of formatting e.g. new headings or bold text, you do this using wiki syntax. See [[Help:Formatting]] for some of the common types of formatting used.
+
+== Edit Summary ==
+Before you save a change, you can enter a short note in the '''{{int:summary}}''' box describing your changes. Don't worry too much about this, or spend too much time thinking about it, but try to give a little description of what you just changed e.g. "''fixed typo''" or "''added more information about sunflowers''".
+
+The summary gets stored alongside your edit, and allows people to [[Help:Tracking changes|track changes]] in the wiki more effectively.
+
+== Preview ==
+It's a good idea to use the "'''{{int:showpreview}}'''" button to see what your change will look like, before you save it. This is also related to [[Help:Tracking changes|tracking changes]] because every time you save, this is displayed to others as a separate change. This isn't something to worry about too much, but it's good to get into the habit of eliminating mistakes in your own work, by using a preview before saving, rather than saving several minor corrections afterwards.
+
+==Show changes==
+Another option is the "'''{{int:showdiff}}'''" button which allows you to see the differences between the current version and your edited version.
+
+== Other types of editing ==
+With wiki edits you can start a new page, move (or rename) a page, or even delete a page:
+* [[Help:Starting a new page]]
+* [[Help:Moving a page]]
+* [[Help:Deleting a page]]
+Remember you should always aim to improve the overall contents of the wiki with your edits.
+
+== Discussion ==
+Every article has its own “talk page” where you can ask questions, make suggestions, or discuss corrections. See [[Help:Talk pages]] 
+
+{{Languages}}
+
+[[Category:Edit]]
+[[Category:Help|{{PAGENAME}}]]}
+&&%s&& %s Help:External searches {56414 2010-11-13T20:25:41Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+It is possible to create an external searches of a topic using key words using a template.
+
+For example, this is something that would work for Google:
+
+<pre style="overflow: auto"><nowiki>
+<span style="border: 1px solid #CCD5DB;">[[Image:GoogleIcon.PNG]] [http://www.google.com/search?safe=off&q={{{1|Wiki}}} {{{1|Google}}}]</span>
+<noinclude>
+==Usage==
+Allows to establish a link to a search query at the Google search engine:
+<div style="display:table; width:auto;"><pre>
+{{Google|Term1+Term2+Term3}}
+&lt;/pre></div>
+[[Category:Template|Google]]
+</noinclude></nowiki></pre>
+
+The usage is very simple and easy to use. <nowiki>{{Google|firstTerm+Second+etc}}</nowiki> 
+
+It is also possible to do phrases by using %22Term1+Term2+etc%22
+
+*External searches are useful where an article requires certain keywords to make an effective search.
+*For the editor it allows making searches of web more quickly and painlessly.
+
+Other applications of the template include searching Forums, for bug reports of the same type for software development wikis where the wiki and forum work together.
+
+Note: Wikipedia has an [[Help:Links#Interwiki_links|interwiki prefix]] with a similar effect, so you can link to google results with <nowiki>[[Google:firstTerm+Second+etc]]</nowiki>, although templates are still useful for linking other search engines.
+
+For a clear advantage of implementing a template over the default Google interwiki prefix, consider the following, modified example:
+
+<pre style="overflow: auto"><nowiki>
+<span style="border: 1px solid #CCD5DB;">[[Image:GoogleIcon.PNG]] [http://www.google.com/search?safe=off&q={{urlencode:{{{1|Wiki}}}}} {{{1|Google}}}]</span>
+<noinclude>
+==Usage==
+Allows to establish a link to a search query at the Google search engine:
+* <code>{{Google|Term1 Term2 Term3}}</code>
+* <code>{{Google|"a phrase"}}</code>
+[[Category:Template|Google]]
+</noinclude></nowiki></pre>
+
+Note the application of MediaWiki [[Help:Magic words|magic word]] <code>urlencode</code>. This grants us the convenience and elegance of entering the query string in a Wikipedia article in the same literal form we would enter it in Google search box, including spaces and quotation marks instead of representing them indirectly with <code>+</code> and <code>%20</code>.
+
+{{languages}}
+
+[[Category:Help|External Searches]]
+[[Category:Search|External Searches]]}
+&&%s&& %s Help:Formatting {61243 2010-12-09T10:37:18Z {4000007 Jafet} Missed some uses {{PD Help Page}}
+You can format your text using wiki markup. This consists of normal characters like asterisks, single quotes or equal signs which have a special function in the wiki, sometimes depending on their position. For example, to format a word in ''italic'', you include it in two pairs of single quotes like <code><nowiki>''this''</nowiki></code>.
+
+== Text formatting markup ==
+
+{| class="wikitable"
+! Description
+! width=40% | You type
+! width=40% | You get
+|-
+! colspan="3" style="background:#ABE" | character (inline) formatting – ''applies anywhere''
+|-
+| Italic text
+| <pre>
+''italic''
+</pre>
+|
+''italic''
+|-
+| Bold text
+| <pre>
+'''bold'''
+</pre>
+|
+'''bold'''
+|-
+| Bold and italic
+| <pre>
+'''''bold & italic'''''
+</pre>
+|
+'''''bold & italic'''''
+|-
+| Escape wiki markup
+| <pre>
+&lt;nowiki>no ''markup''</nowiki&gt;
+</pre>
+|
+<nowiki>no ''markup''</nowiki>
+|-
+! colspan="3" style="background:#ABE" | section formatting – ''only at the beginning of the line''
+|-
+| Headings of different levels 
+| <pre>
+= Level 1 =
+== Level 2 ==
+=== Level 3 ===
+==== Level 4 ====
+===== Level 5 =====
+====== Level 6 ======
+</pre>
+----
+'''Note:''' An article with 4 or more headings automatically creates a [[wikipedia:Wikipedia:Section#Table of contents (TOC)|table of contents]].
+|
+= Level 1 =
+== Level 2 ==
+=== Level 3 ===
+==== Level 4 ====
+===== Level 5 =====
+====== Level 6 ======
+|-
+| Horizontal rule
+| <pre>
+Text above
+----
+Text below
+</pre>
+|
+Text above
+----
+Text below
+|-
+| Bullet list
+|
+<pre>
+* Start each line
+* with an [[Wikipedia:asterisk|asterisk]] (*).
+** More asterisks gives deeper
+*** and deeper levels.
+* Line breaks<br />don't break levels.
+*** But jumping levels creates empty space.
+Any other first character ends the list.
+</pre>
+|
+* Start each line
+* with an [[Wikipedia:asterisk|asterisk]] (*).
+** More asterisks gives deeper
+*** and deeper levels.
+* Line breaks<br />don't break levels.
+*** But jumping levels creates empty space.
+Any other first character ends the list.
+|-
+| Numbered list
+|
+<pre>
+# Start each line
+# with a [[Wikipedia:Number_sign|number sign]] (#).
+## More number signs gives deeper
+### and deeper
+### levels.
+# Line breaks<br />don't break levels.
+### But jumping levels creates empty space.
+# Blank lines
+
+# end the list and start another.
+Any other first character also
+ends the list.
+</pre>
+|
+# Start each line
+# with a [[Wikipedia:Number_sign|number sign]] (#).
+## More number signs gives deeper
+### and deeper
+### levels.
+# Line breaks<br />don't break levels.
+### But jumping levels creates empty space.
+# Blank lines
+
+# end the list and start another.
+Any other first character also
+ends the list.
+|-
+| Definition list
+| <pre>
+;item 1
+: definition 1
+;item 2
+: definition 2-1
+: definition 2-2
+</pre>
+|
+;item 1
+: definition 1
+;item 2
+: definition 2-1
+: definition 2-2
+|-
+| Adopting definition list to indent text
+| <pre>
+: Single indent
+:: Double indent
+::::: Multiple indent
+</pre>
+----
+'''Note:''' This workaround may be controversial from the viewpoint of accessibility.
+|
+: Single indent
+:: Double indent
+::::: Multiple indent
+|-
+| Mixture of different types of list
+|
+<pre>
+# one
+# two
+#* two point one
+#* two point two
+# three
+#; three item one
+#: three def one
+# four
+#: four def one
+#: this looks like a continuation
+#: and is often used
+#: instead<br />of &lt;nowiki><br />&lt;/nowiki>
+# five
+## five sub 1
+### five sub 1 sub 1
+## five sub 2
+</pre>
+----
+'''Note:''' The usage of <code>#:</code> and <code>*:</code> for breaking a line within an item may also be controversial.
+|
+# one
+# two
+#* two point one
+#* two point two
+# three
+#; three item one
+#: three def one
+# four
+#: four def one
+#: this looks like a continuation
+#: and is often used
+#: instead<br />of <nowiki><br /></nowiki>
+# five
+## five sub 1
+### five sub 1 sub 1
+## five sub 2
+|-
+| Preformatted text{{anchor|pre}}
+| <pre>
+ Start each line with a space.
+ Text is '''preformatted''' and
+ ''markups'' '''''can''''' be done
+</pre>
+----
+'''Note:''' This way of preformatting only applies to section formatting. Character formatting markups are still effective.
+|
+ Start each line with a space.
+ Text is '''preformatted''' and
+ ''markups'' '''''can''''' be done
+|}
+
+== Paragraphs ==
+MediaWiki ignores single line breaks. To start a new paragraph, leave an empty line. You can force a line break within a paragraph with the HTML tags <code>&lt;br /></code>.
+
+== HTML tags ==
+Some [[wikipedia:HTML|HTML]] tags are allowed in MediaWiki, for example <code>&lt;code></code>, <code>&lt;div></code>, <code><nowiki><span></nowiki></code> and <code><nowiki><font></nowiki></code>. These apply anywhere you insert them.
+
+{| class="wikitable"
+! Description
+! width=40% | You type
+! width=40% | You get
+|-
+| Underscore
+| <pre>
+<u>underscore</u>
+</pre>
+|
+<u>underscore</u>
+|-
+| Strikethrough
+| <pre>
+<del>Strikethrough</del>
+
+or
+
+<s>Strikethrough</s>
+</pre>
+|
+<del>Strikethrough</del>
+
+or
+
+<s>Strikethrough</s>
+|-
+| Fixed width text
+| <pre>
+<code>Source code</code>
+
+or
+
+<tt>Fixed width text</tt>
+</pre>
+|
+<code>Source code</code>
+
+or
+
+<tt>Fixed width text</tt>
+|-
+| Blockquotes
+| <pre>
+text above
+text above
+<blockquote>blockquote</blockquote>
+text below
+text below
+</pre>
+|
+text above
+text above
+<blockquote>blockquote</blockquote>
+text below
+text below
+|-
+| Comment
+| <pre>
+<!-- This is a comment -->
+Comments are only visible
+in the edit window.
+</pre>
+|
+<!-- This is a comment -->
+Comments are only visible
+in the edit window.
+|-
+| Completely preformatted text
+| <pre>
+<pre> Text is '''preformatted''' and
+''markups'' '''''cannot''''' be done&lt;/pre>
+</pre>
+----
+'''Note:''' For marking up of preformatted text, check the "Preformatted text" entry at the bottom of the previous table.
+|
+<pre> Text is '''preformatted''' and
+''markups'' '''''cannot''''' be done</pre>
+</pre>
+|-
+| '''Customized''' preformatted text
+| <pre>
+<pre style="color:red">
+Text is '''preformatted'''
+with a style and
+''markups'' '''''cannot''''' be done
+&lt;/pre>
+</pre>
+----
+'''Note:''' A CSS style can be named within the <code>style</code> property.
+|
+<pre style="color:red">
+Text is '''preformatted'''
+with a style and
+''markups'' '''''cannot''''' be done
+</pre>
+|}
+
+== HTML symbols ==
+An HTML symbol entity is a sequence of characters that produces one particular character. For example, <code>&amp;rarr;</code> produces a right arrow "<code>&rarr;</code>" and <code>&amp;mdash;</code> produces an em dash "<code>&mdash;</code>". HTML symbol entities are allowed in MediaWiki and are sometimes used in advanced editing for two main reasons: to insert characters not normally available on keyboards:
+
+:<tt>&amp;copy;</tt>&nbsp;&rarr; '''&copy;'''
+:<tt>&amp;delta;</tt>&nbsp;&rarr; '''&delta;'''
+
+and to prevent the parser from interpreting and displaying HTML tags and symbols:
+
+:<tt>&amp;amp;euro;</tt>&nbsp;&rarr; '''<tt>&amp;euro;</tt>'''
+:<tt>&amp;euro;</tt>&nbsp;&rarr; '''&euro;'''
+
+:<tt>&amp;lt;span style="color:green;">Green&amp;lt;/span></tt>&nbsp;&rarr; '''<tt>&lt;span style="color:green;">Green&lt;/span></tt>'''
+:<tt>&lt;span style="color:green;">Green&lt;/span></tt>&nbsp;&rarr; '''<span style="color:green;">Green</span>'''
+
+The following is a list of characters that can be produced using HTML symbols. Hover any character to find out the symbol that produces it. Some symbols not available in the current font will appear as empty squares.
+
+{| class="wikitable" align=center width=100%
+! colspan=32 | HTML Symbol Entities
+|- align=center
+| <span title="&amp;Aacute;">&Aacute;</span>
+| <span title="&amp;aacute;">&aacute;</span>
+| <span title="&amp;Acirc;">&Acirc;</span>
+| <span title="&amp;acirc;">&acirc;</span>
+| <span title="&amp;acute;">&acute;</span>
+| <span title="&amp;AElig;">&AElig;</span>
+| <span title="&amp;aelig;">&aelig;</span>
+| <span title="&amp;Agrave;">&Agrave;</span>
+| <span title="&amp;agrave;">&agrave;</span>
+| <span title="&amp;alefsym;">&alefsym;</span>
+| <span title="&amp;Alpha;">&Alpha;</span>
+| <span title="&amp;alpha;">&alpha;</span>
+| <span title="&amp;amp;">&amp;</span>
+| <span title="&amp;and;">&and;</span>
+| <span title="&amp;ang;">&ang;</span>
+| <span title="&amp;Aring;">&Aring;</span>
+| <span title="&amp;aring;">&aring;</span>
+| <span title="&amp;asymp;">&asymp;</span>
+| <span title="&amp;Atilde;">&Atilde;</span>
+| <span title="&amp;atilde;">&atilde;</span>
+| <span title="&amp;Auml;">&Auml;</span>
+| <span title="&amp;auml;">&auml;</span>
+| <span title="&amp;bdquo;">&bdquo;</span>
+| <span title="&amp;Beta;">&Beta;</span>
+| <span title="&amp;beta;">&beta;</span>
+| <span title="&amp;brvbar;">&brvbar;</span>
+| <span title="&amp;bull;">&bull;</span>
+| <span title="&amp;cap;">&cap;</span>
+| <span title="&amp;Ccedil;">&Ccedil;</span>
+| <span title="&amp;ccedil;">&ccedil;</span>
+| <span title="&amp;cedil;">&cedil;</span>
+| <span title="&amp;cent;">&cent;</span>
+|- align=center
+| <span title="&amp;Chi;">&Chi;</span>
+| <span title="&amp;chi;">&chi;</span>
+| <span title="&amp;circ;">&circ;</span>
+| <span title="&amp;clubs;">&clubs;</span>
+| <span title="&amp;cong;">&cong;</span>
+| <span title="&amp;copy;">&copy;</span>
+| <span title="&amp;crarr;">&crarr;</span>
+| <span title="&amp;cup;">&cup;</span>
+| <span title="&amp;curren;">&curren;</span>
+| <span title="&amp;dagger;">&dagger;</span>
+| <span title="&amp;Dagger;">&Dagger;</span>
+| <span title="&amp;darr;">&darr;</span>
+| <span title="&amp;dArr;">&dArr;</span>
+| <span title="&amp;deg;">&deg;</span>
+| <span title="&amp;Delta;">&Delta;</span>
+| <span title="&amp;delta;">&delta;</span>
+| <span title="&amp;diams;">&diams;</span>
+| <span title="&amp;divide;">&divide;</span>
+| <span title="&amp;Eacute;">&Eacute;</span>
+| <span title="&amp;eacute;">&eacute;</span>
+| <span title="&amp;Ecirc;">&Ecirc;</span>
+| <span title="&amp;ecirc;">&ecirc;</span>
+| <span title="&amp;Egrave;">&Egrave;</span>
+| <span title="&amp;egrave;">&egrave;</span>
+| <span title="&amp;empty;">&empty;</span>
+| <span title="&amp;emsp;">&emsp;</span>
+| <span title="&amp;ensp;">&ensp;</span>
+| <span title="&amp;Epsilon;">&Epsilon;</span>
+| <span title="&amp;epsilon;">&epsilon;</span>
+| <span title="&amp;equiv;">&equiv;</span>
+| <span title="&amp;Eta;">&Eta;</span>
+| <span title="&amp;eta;">&eta;</span>
+|- align=center
+| <span title="&amp;ETH;">&ETH;</span>
+| <span title="&amp;eth;">&eth;</span>
+| <span title="&amp;Euml;">&Euml;</span>
+| <span title="&amp;euml;">&euml;</span>
+| <span title="&amp;euro;">&euro;</span>
+| <span title="&amp;exist;">&exist;</span>
+| <span title="&amp;fnof;">&fnof;</span>
+| <span title="&amp;forall;">&forall;</span>
+| <span title="&amp;frac12;">&frac12;</span>
+| <span title="&amp;frac14;">&frac14;</span>
+| <span title="&amp;frac34;">&frac34;</span>
+| <span title="&amp;frasl;">&frasl;</span>
+| <span title="&amp;Gamma;">&Gamma;</span>
+| <span title="&amp;gamma;">&gamma;</span>
+| <span title="&amp;ge;">&ge;</span>
+| <span title="&amp;gt;">&gt;</span>
+| <span title="&amp;harr;">&harr;</span>
+| <span title="&amp;hArr;">&hArr;</span>
+| <span title="&amp;hearts;">&hearts;</span>
+| <span title="&amp;hellip;">&hellip;</span>
+| <span title="&amp;Iacute;">&Iacute;</span>
+| <span title="&amp;iacute;">&iacute;</span>
+| <span title="&amp;Icirc;">&Icirc;</span>
+| <span title="&amp;icirc;">&icirc;</span>
+| <span title="&amp;iexcl;">&iexcl;</span>
+| <span title="&amp;Igrave;">&Igrave;</span>
+| <span title="&amp;igrave;">&igrave;</span>
+| <span title="&amp;image;">&image;</span>
+| <span title="&amp;infin;">&infin;</span>
+| <span title="&amp;int;">&int;</span>
+| <span title="&amp;Iota;">&Iota;</span>
+| <span title="&amp;iota;">&iota;</span>
+|- align=center
+| <span title="&amp;iquest;">&iquest;</span>
+| <span title="&amp;isin;">&isin;</span>
+| <span title="&amp;Iuml;">&Iuml;</span>
+| <span title="&amp;iuml;">&iuml;</span>
+| <span title="&amp;Kappa;">&Kappa;</span>
+| <span title="&amp;kappa;">&kappa;</span>
+| <span title="&amp;Lambda;">&Lambda;</span>
+| <span title="&amp;lambda;">&lambda;</span>
+| <span title="&amp;lang;">&lang;</span>
+| <span title="&amp;laquo;">&laquo;</span>
+| <span title="&amp;larr;">&larr;</span>
+| <span title="&amp;lArr;">&lArr;</span>
+| <span title="&amp;lceil;">&lceil;</span>
+| <span title="&amp;ldquo;">&ldquo;</span>
+| <span title="&amp;le;">&le;</span>
+| <span title="&amp;lfloor;">&lfloor;</span>
+| <span title="&amp;lowast;">&lowast;</span>
+| <span title="&amp;loz;">&loz;</span>
+| <span title="&amp;lrm;">&lrm;</span>
+| <span title="&amp;lsaquo;">&lsaquo;</span>
+| <span title="&amp;lsquo;">&lsquo;</span>
+| <span title="&amp;lt;">&lt;</span>
+| <span title="&amp;macr;">&macr;</span>
+| <span title="&amp;mdash;">&mdash;</span>
+| <span title="&amp;micro;">&micro;</span>
+| <span title="&amp;middot;">&middot;</span>
+| <span title="&amp;minus;">&minus;</span>
+| <span title="&amp;Mu;">&Mu;</span>
+| <span title="&amp;mu;">&mu;</span>
+| <span title="&amp;nabla;">&nabla;</span>
+| <span title="&amp;nbsp;">&nbsp;</span>
+| <span title="&amp;ndash;">&ndash;</span>
+|- align=center
+| <span title="&amp;ne;">&ne;</span>
+| <span title="&amp;ni;">&ni;</span>
+| <span title="&amp;not;">&not;</span>
+| <span title="&amp;notin;">&notin;</span>
+| <span title="&amp;nsub;">&nsub;</span>
+| <span title="&amp;Ntilde;">&Ntilde;</span>
+| <span title="&amp;ntilde;">&ntilde;</span>
+| <span title="&amp;Nu;">&Nu;</span>
+| <span title="&amp;nu;">&nu;</span>
+| <span title="&amp;Oacute;">&Oacute;</span>
+| <span title="&amp;oacute;">&oacute;</span>
+| <span title="&amp;Ocirc;">&Ocirc;</span>
+| <span title="&amp;ocirc;">&ocirc;</span>
+| <span title="&amp;OElig;">&OElig;</span>
+| <span title="&amp;oelig;">&oelig;</span>
+| <span title="&amp;Ograve;">&Ograve;</span>
+| <span title="&amp;ograve;">&ograve;</span>
+| <span title="&amp;oline;">&oline;</span>
+| <span title="&amp;Omega;">&Omega;</span>
+| <span title="&amp;omega;">&omega;</span>
+| <span title="&amp;Omicron;">&Omicron;</span>
+| <span title="&amp;omicron;">&omicron;</span>
+| <span title="&amp;oplus;">&oplus;</span>
+| <span title="&amp;or;">&or;</span>
+| <span title="&amp;ordf;">&ordf;</span>
+| <span title="&amp;ordm;">&ordm;</span>
+| <span title="&amp;Oslash;">&Oslash;</span>
+| <span title="&amp;oslash;">&oslash;</span>
+| <span title="&amp;Otilde;">&Otilde;</span>
+| <span title="&amp;otilde;">&otilde;</span>
+| <span title="&amp;otimes;">&otimes;</span>
+| <span title="&amp;Ouml;">&Ouml;</span>
+|- align=center
+| <span title="&amp;ouml;">&ouml;</span>
+| <span title="&amp;para;">&para;</span>
+| <span title="&amp;part;">&part;</span>
+| <span title="&amp;permil;">&permil;</span>
+| <span title="&amp;perp;">&perp;</span>
+| <span title="&amp;Phi;">&Phi;</span>
+| <span title="&amp;phi;">&phi;</span>
+| <span title="&amp;Pi;">&Pi;</span>
+| <span title="&amp;pi;">&pi;</span>
+| <span title="&amp;piv;">&piv;</span>
+| <span title="&amp;plusmn;">&plusmn;</span>
+| <span title="&amp;pound;">&pound;</span>
+| <span title="&amp;prime;">&prime;</span>
+| <span title="&amp;Prime;">&Prime;</span>
+| <span title="&amp;prod;">&prod;</span>
+| <span title="&amp;prop;">&prop;</span>
+| <span title="&amp;Psi;">&Psi;</span>
+| <span title="&amp;psi;">&psi;</span>
+| <span title="&amp;quot;">&quot;</span>
+| <span title="&amp;radic;">&radic;</span>
+| <span title="&amp;rang;">&rang;</span>
+| <span title="&amp;raquo;">&raquo;</span>
+| <span title="&amp;rarr;">&rarr;</span>
+| <span title="&amp;rArr;">&rArr;</span>
+| <span title="&amp;rceil;">&rceil;</span>
+| <span title="&amp;rdquo;">&rdquo;</span>
+| <span title="&amp;real;">&real;</span>
+| <span title="&amp;reg;">&reg;</span>
+| <span title="&amp;rfloor;">&rfloor;</span>
+| <span title="&amp;Rho;">&Rho;</span>
+| <span title="&amp;rho;">&rho;</span>
+| <span title="&amp;rlm;">&rlm;</span>
+|- align=center
+| <span title="&amp;rsaquo;">&rsaquo;</span>
+| <span title="&amp;rsquo;">&rsquo;</span>
+| <span title="&amp;sbquo;">&sbquo;</span>
+| <span title="&amp;Scaron;">&Scaron;</span>
+| <span title="&amp;scaron;">&scaron;</span>
+| <span title="&amp;sdot;">&sdot;</span>
+| <span title="&amp;sect;">&sect;</span>
+| <span title="&amp;shy;">&shy;</span>
+| <span title="&amp;Sigma;">&Sigma;</span>
+| <span title="&amp;sigma;">&sigma;</span>
+| <span title="&amp;sigmaf;">&sigmaf;</span>
+| <span title="&amp;sim;">&sim;</span>
+| <span title="&amp;spades;">&spades;</span>
+| <span title="&amp;sub;">&sub;</span>
+| <span title="&amp;sube;">&sube;</span>
+| <span title="&amp;sum;">&sum;</span>
+| <span title="&amp;sup;">&sup;</span>
+| <span title="&amp;sup1;">&sup1;</span>
+| <span title="&amp;sup2;">&sup2;</span>
+| <span title="&amp;sup3;">&sup3;</span>
+| <span title="&amp;supe;">&supe;</span>
+| <span title="&amp;szlig;">&szlig;</span>
+| <span title="&amp;Tau;">&Tau;</span>
+| <span title="&amp;tau;">&tau;</span>
+| <span title="&amp;there4;">&there4;</span>
+| <span title="&amp;Theta;">&Theta;</span>
+| <span title="&amp;theta;">&theta;</span>
+| <span title="&amp;thetasym;">&thetasym;</span>
+| <span title="&amp;thinsp;">&thinsp;</span>
+| <span title="&amp;THORN;">&THORN;</span>
+| <span title="&amp;thorn;">&thorn;</span>
+| <span title="&amp;tilde;">&tilde;</span>
+|- align=center
+| <span title="&amp;times;">&times;</span>
+| <span title="&amp;trade;">&trade;</span>
+| <span title="&amp;Uacute;">&Uacute;</span>
+| <span title="&amp;uacute;">&uacute;</span>
+| <span title="&amp;uarr;">&uarr;</span>
+| <span title="&amp;uArr;">&uArr;</span>
+| <span title="&amp;Ucirc;">&Ucirc;</span>
+| <span title="&amp;ucirc;">&ucirc;</span>
+| <span title="&amp;Ugrave;">&Ugrave;</span>
+| <span title="&amp;ugrave;">&ugrave;</span>
+| <span title="&amp;uml;">&uml;</span>
+| <span title="&amp;upsih;">&upsih;</span>
+| <span title="&amp;Upsilon;">&Upsilon;</span>
+| <span title="&amp;upsilon;">&upsilon;</span>
+| <span title="&amp;Uuml;">&Uuml;</span>
+| <span title="&amp;uuml;">&uuml;</span>
+| <span title="&amp;weierp;">&weierp;</span>
+| <span title="&amp;Xi;">&Xi;</span>
+| <span title="&amp;xi;">&xi;</span>
+| <span title="&amp;Yacute;">&Yacute;</span>
+| <span title="&amp;yacute;">&yacute;</span>
+| <span title="&amp;yen;">&yen;</span>
+| <span title="&amp;yuml;">&yuml;</span>
+| <span title="&amp;Yuml;">&Yuml;</span>
+| <span title="&amp;Zeta;">&Zeta;</span>
+| <span title="&amp;zeta;">&zeta;</span>
+| <span title="&amp;zwj;">&zwj;</span>
+| <span title="&amp;zwnj;">&zwnj;</span>
+|}
+
+== Other formatting ==
+Beyond the text formatting markup shown above, here are some other formatting references:
+
+* [[Help:Links|Links]]
+* [[Help:Images|Images]]
+* [[Help:Tables|Tables]]
+
+{{Languages}}
+
+[[Category:Help|Formatting]]}
+&&%s&& %s Help:Images {56418 2010-11-13T20:25:43Z {831 Tjr} 1 revision: Import mediawiki help files {{PD Help Page}}
+This page explains the '''image''' syntax when editing the wiki. You or another user must usually [[Help:Managing files|upload an image]] before you can use it on a page.
+
+Images that are stored on a MediaWiki server are usually rendered by using the <code>File:</code> namespace prefix (but the legacy <code>Image:</code> namespace prefix is still supported as a synonym) as the target of a MediaWiki link. The alternate <code>Media:</code> namespace prefix is also usable to reference the original media file content (for rendering or downloading it separately, out of any MediaWiki page).
+
+== Supported media types for images ==
+The following file formats are supported by Mediawiki by default:
+* .jpg or .jpeg : bitmap image compressed in the standard JPEG format (this lossy format is most suitable for photographs).
+* .png : bitmap image in the ''Portable Network Graphics'' format (specified by the ''W3 Consortium'').
+* .gif : bitmap image in the legacy ''Graphics Interchange Format''.
+
+Other formats used on Wikimedia, and commonly enabled elsewhere (These may require extra set up beyond what is enabled by default):
+* .svg : scalable image in the ''Scalable Vector Graphics'' format (specified by the ''W3 Consortium''). See [[Manual:Image_Administration#SVG]].
+* .tiff : Tagged image format. Often used for high-resolution archival photographs. Often used with [[Extension:PagedTiffHandler]].
+* .ogg, .oga, .ogv : Ogg multimedia (audio or video) Not an image format, but treated similarly. Often used with [[Extension:OggHandler]]
+* .pdf : multipaged documents in the ''Portable Document Format'' (initially specified by ''Adobe''). Often used in conjunction with [[Extension:PdfHandler]]
+* .djvu : multipaged bitmap documents in the ''DejaVu'' format (most often, scans of books). See [[Manual:How to use DjVu with MediaWiki]]
+*: Only a single page of a .pdf or .djvu file is shown at one time.
+
+Other media types may be supported depending on how Mediawiki is set up. Typically they can be uploaded but not displayed inline unless a helper extension is installed.
+
+== Rendering a single image ==
+
+=== Syntax ===
+The full syntax for displaying an image is:
+ <nowiki>[[</nowiki>File:''filename.extension''|''options''|''caption'']]
+
+where ''options'' can be zero or more of the following, separated by pipes ('''|'''):
+* ''[[#Format|Format]]'' option: one of '''border''' and/or '''frameless''', '''frame''', '''thumb''' (or '''thumbnail''');
+*: Controls how the rendered image is formatted and embedded in the rest of the page.
+* ''[[#Size and Frame|Resizing]]'' option: one of
+** ''{width}'''''px''' — Resizes the image to fit within the given maximum width in pixels, without restricting its height;
+** '''x'''''{height}'''''px''' — Resizes the image to fit within the given maximum height in pixels, without restricting its width;
+** ''{width}'''''x'''''{height}'''''px''' — Resizes the image to fit within the given width and height in pixels;
+** '''upright''' — Resizes an image to fit within reasonable dimensions, according to user preferences (suitable for images whose height is larger than width).
+*: Note that the image will always retain its aspect ratio, and can only be reduced (not increased) in size unless it's in a scalable media type (bitmap images cannot be scaled up).
+*: The default maximum size depends on the ''format'' and the internal image dimensions (according to its media type).
+* ''[[#Horizontal alignment|Horizontal alignment]]'' option: one of '''left''', '''right''', '''center''', '''none''';
+*: Controls the horizontal alignment (and inline/block or floating styles) of the image within a text (no default value).
+* ''[[#Vertical alignment|Vertical alignment]] option'': one of '''baseline''', '''sub''', '''super''', '''top''', '''text-top''', '''middle''', '''bottom''', '''text-bottom''';
+*: Controls the vertical alignment of a non-floating inline image with the text before or after the image, and in the same block (the default vertical alignment is '''middle''').
+* ''[[#Altering the default link target|Link]] option'': one of
+** '''link='''''{target}'' — Allows to change the target (to an arbitrary page title, or URL) of the generated link, activable on the rendered image surface;
+** '''link=''' (with an empty value) —  ({{mediawiki|rev:41727|MediaWiki 1.14+}}) Displays an image without any activable link; e.g. <code><nowiki>[[</nowiki>File:Example.jpg|20px|link=]]</code> renders as [[File:Example.jpg|20px|link=]].
+*: Note that the '''link''' option cannot be used in conjunction with '''thumb''' or '''thumbnail''', as '''thumb''' is always meant to link to the larger version of the image.
+*: In addition, '''link''' cannot be used with '''frame'''.
+* Other specific options:
+** '''alt='''''{alternative text}'' — ({{mediawiki|rev:41837|MediaWiki 1.14+}}) Defines the alternative text (maps to the HTML attribute <code>alt="..."</code> of the generated <code>&lt;image /&gt;</code> element) of an image that will be rendered if either the referenced image cannot be downloaded and embedded, or if the support media must use the alternative description text (e.g. when using a Braille reader or with accessibility options set by the user in its browser).
+** '''page='''''{number}'' — Renders the specified page number (currently only applicable when showing a .djvu or .pdf file).
+

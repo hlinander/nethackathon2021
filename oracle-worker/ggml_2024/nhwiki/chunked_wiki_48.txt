@@ -1,0 +1,1000 @@
+
+The magic lamp is subject to a few [[rumors]], with all but one of them being true.
+
+==Generation==
+Magic lamps cannot be [[wish]]ed or [[polypile]]d for, and you will instead get an ordinary [[oil lamp]].  As random loot, they are normally generated 25% [[blessed]], 50% [[uncursed]], and 25% [[cursed]].
+
+==Description==
+While also used to illuminate areas like a normal oil lamp, a magic lamp will never run out of power. Additionally, each time you [[rub]] a magic lamp, there is a 1/3 chance that "You see a puff of smoke", and another 1/3 chance that "Nothing happens"; the remaining 1/3 of the time, a [[djinni]] appears, and the lamp is [[auto-identified]] and turned into an oil lamp of the same [[BUC]] with 1000-1500 turns of charges.<ref>{{function|apply.c|dorub}}</ref>
+
+One of the following five outcomes occurs at this point, with the relative probability depending on the [[beatitude]] of the lamp:<ref>{{function|potion.c|djinni_from_bottle}}</ref>
+
+{|class="prettytable"
+!Blessed!!Uncursed!!Cursed!!Outcome
+|-
+|80%||20%||5%||Grants one [[wish]], then disappears.<br />"I am in your debt. I will grant one wish!"
+|-
+|5%||20%||5%||Remains as a [[pet]].<br />"Thank you for freeing me!"
+|-
+|5%||20%||5%||Remains as a [[peaceful]] monster.<br />"You freed me!"
+|-
+|5%||20%||5%||Speaks, then vanishes.<br />"It is about time!"
+|-
+|5%||20%||80%||Remains in its regular state (hostile, or sometimes peaceful, if you are neutral).<br />"You disturbed me, fool!"
+|}
+
+==Strategy==
+Always make sure a magic lamp is blessed before rubbing - an early magic lamp stands a high chance of being wasted if you rub it without knowing its [[BUC]] status. Be wary of rubbing unpaid magic lamps as well, as the shopkeeper will charge you a usage fee if you manage to extract the genie. Thankfully, magic lamps are easily distinguished from normal ones via [[price identification]].
+
+Some players prefer an inexhaustible light source to an extra wish, depending on their circumstances; the lamp can always be rubbed for a wish later with no trouble, making it a useful tool to bring into [[Gehennom]] and other dark areas. If you reach the [[Astral Plane]] with a magic lamp, it may be worth blessing for the chance to wish up a necessary item, though it can also serve as a light source for [[jumping]].
+
+==History==
+The magic lamp first appears in [[NetHack 2.3e]].
+
+==Origin==
+{{wikipedia|Aladdin}}
+
+The idea of a djinni dwelling in a magic lamp was popularized by the Middle-Eastern folk tale ''Aladdin''. It is one of the best-known tales associated with ''The Book of One Thousand and One Nights'' (''The Arabian Nights''), despite not being part of the original text - it was added by the French Antoine Galland, based on a folk tale he heard from the Syrian storyteller Hanna Diyab.
+
+The tale has many variations, and the lamp is typically an item that the impoverished Aladdin retrieves from a booby-trapped cave for a sorceror pretending to be a sibling of his late father. After escaping the cave with the aid of a djinni in a magic ring, Aladdin brings the lamp to his mother, who tries to rub it clean so they can sell it to buy food for their supper; this releases a second far more powerful genie appears who is bound to do the bidding of the person holding the lamp. 
+
+==Variants==
+Some variants alter the magic lamp's base price to make it less ridiculously easy to purchase.
+
+===Advent calendar===
+In variants using the [[advent calendar]] patch, the magic lamp is one of many possible 'Christmas presents' in the 24th room.
+
+===SLASH'EM===
+In [[SLASH'EM]], the magic lamp's base cost is increased to 1000[[zm]]; even more expensive magic lamps can be found in [[Black market (SLASH'EM)|the black market]]. SLASH'EM also adds the [[magic candle]], and obtaining one means that magic lamps can be safely rubbed for their wishes.
+
+[[The Sunless Sea]] is a [[Special level (SLASH'EM)|special level]] that features a guaranteed magic lamp, though it may be underwater.
+
+===UnNetHack===
+{{main|Wish#UnNetHack}}
+In [[UnNetHack]], wishes cannot be used on magical items unless they are from a [[wand of wishing]]. However, magic lamps are made eligible for wishing themselves, as they are not guaranteed sources of wishes themselves. [[Black market (UnNetHack)|The black market]] still has a chance to sell magic lamps at exorbitant prices.
+
+The [[Ruins of Moria]] branch always contains an uncursed magic lamp on the last floor, carried by the [[Watcher in the Water]].
+
+===dNetHack===
+In [[dNetHack]], a special level called [[The Sea (dNetHack)|The Sea]] contains a guaranteed magic lamp, similar to The Sunless Sea of SLASH'EM. Each map also has a guaranteed [[amulet of magical breathing]] in the event the lamp is underwater.
+
+===NetHack Fourk===
+In [[NetHack Fourk]], it is possible to use a blessed [[scroll of wishing]] to wish for a magic lamp.
+
+===EvilHack===
+In [[EvilHack]], magic lamps can be wished for. Additionally, cursed magic lamps give off darkness instead of light; the aura of darkness covers the same radius, and overrides any light source.
+
+===The November NetHack Tournament===
+In [[The November NetHack Tournament]], magic lamps cannot be placed into the [[swap chest]].
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Wand of striking {143616 2021-11-09T01:44:27Z {723 Scorchgeek} /* Strategy */ fix typo {{wand
+ |name=striking
+ |cost=150
+ |type=beam
+ |maxcharges=8
+ |abundance=7.5%
+ |spell=force bolt
+ |muse=off
+}}
+
+The '''wand of striking'''  is a [[wand]] that appears in ''[[NetHack]]''.
+
+==Generation==
+Wands comprise 4% of all randomly-generated items in the main dungeon, 6% in containers, 5% on the Rogue level, and 8% in Gehennom. There is a 7.5% chance that a randomly-generated wand will be a wand of striking.
+
+== Effects ==
+Zapping this wand has the same effect as the {{spell of|force bolt}} spell, dealing 2d12 damage to any [[monster]]s in its path as well as destroying [[boulder]]s, [[door]]s, [[statue]]s, [[drawbridge]]s, and fragile items such as [[potion]]s. Therefore, it is to be used with caution. Wands of striking have a fixed chance of hitting; if the roll of a d20 is lower than (10 + monster's AC), the strike hits.{{refsrc|src/makemon.c|164|version=NetHack 3.6.1}}
+
+A wand of striking will normally have no effect on items carried by monsters. However, if the zap kills a monster, it will also strike the items that the monster drops. This makes zapping [[nymph]]s dangerous, because they are weak enough to be killed by a single zap, and tend to carry [[mirror]]s that give a &minus;2 luck penalty when broken.
+
+Engraving with a wand of striking gives the unique message "The wand unsuccessfully fights your attempt to write!", as a [[pun]] on a writers' strike. This does not [[auto-identify]] the wand.
+
+==Strategy==
+If an intelligent monster gets its hands on a wand of striking, keep in mind that force bolts cannot be reflected; however, [[magic resistance]] makes it harmless. ("Boing!")
+
+For attacking monsters, a wand of striking is usually superior to a [[wand of magic missile]], dealing much more damage (2d12 rather than 2d6). Its beam does not reflect, meaning it cannot be used to strike twice with one zap, and it may destroy objects, but the increased damage usually outweighs the downsides. Starting at experience level 6, the {{spell of|magic missile}} spell begins to out-damage wands of striking; the wand's fixed to-hit rolls also make them unsuitable for use in the late game, where many monsters have zero AC or less.
+
+If you can't cast force bolt, you should keep at least one charge of a wand of striking as you descend to the [[Castle]] level. The safest and most convenient way to enter is to just blast the [[drawbridge]] to bits, though you may wish to use the drawbridge to crush enemy monsters before destroying it to pass the square. It is incredibly risky, though, to attempt to cross the drawbridge while it's still intact.
+
+===Polymorph===
+The given confidence of getting a wand of striking from [[polypiling|polymorphing a wand]]:
+{|class="prettytable"
+!Confidence
+|{{frac|7.5|95}}
+|25%
+|50%
+|60%
+|75%
+|85%
+|90%
+|95%
+|99%
+|-
+!Polymorphs
+|1
+|3.5
+|8.43
+|11.14
+|16.86
+|23.07
+|28
+|36.43
+|56
+|}
+
+This table does not include the chance of a wand [[System shock|shuddering]], so the number of wands required to reach this level of confidence will almost surely be higher; the effective number of polymorphs is as per the table, however.
+
+==History==
+A wand of striking first appeared in [[Rogue (game)|''Rogue'']] version four,<ref>http://rogue.rogueforge.net/vade-mecum/#staves</ref> where it never missed and would deal 1d8+3 damage, with a one in twenty chance of instead dealing 3d8+9 (overall, an average of 8.95 damage).
+
+In [[Jay Fenlason's Hack|''Hack'']], at least as far as version 1.0.2, it always appeared as a ''zinc wand''.<ref>[http://homepages.cwi.nl/~aeb/games/hack/uni87a/part1. http://homepages.cwi.nl/~aeb/games/hack/uni87a/part1.]<!--The dot is part of the URL, but it's not automatically recognized as such in a bare URL link, hence the need for brackets. The URL is duplicated to keep it from showing up as just [3] in the ref list.--></ref> It was mentioned in a [[rumor]] which stated, "Eventually all wands of striking do strike."<ref>[http://homepages.cwi.nl/~aeb/games/hack/uni87a/part2. http://homepages.cwi.nl/~aeb/games/hack/uni87a/part2.]</ref> Indeed, the sure-strike ability had been removed, and it followed an [[AC]] roll. Even as early as this version the damage was changed to 2d12<ref>[http://homepages.cwi.nl/~aeb/games/hack/uni87a/part9. http://homepages.cwi.nl/~aeb/games/hack/uni87a/part9.]</ref>—which it remains to this day.
+<!-- Uh, not actually 100% sure about the always part. Just that it's defined... it could still potentially shuffle the appearance after the fact. -->
+
+==References==
+<references/>
+
+[[Category:Wands|Striking]]
+{{nethack-364}}}
+&&%s&& %s Real life {19189 2007-02-26T03:38:29Z {166 Creativename} Completely unneeded and useless in my opinion, and mostly unrelated to NetHack. #REDIRECT [[NetHack is not real life]]}
+&&%s&& %s Wand of slow monster {149337 2022-12-12T18:46:14Z {4001279 Umbire the Phantom} /* Variants */ sent before I double checked {{wand
+ |name=slow monster
+ |cost=150
+ |type=beam
+ |maxcharges=8
+ |abundance=5%
+ |spell=slow monster
+}}
+
+A '''wand of slow monster''' is a type of [[wand]] that appears in ''[[NetHack]]''. 
+
+==Description==
+[[Zapping]] a wand of slow monster in a given direction will produce a [[beam]] that causes monsters in its path to [[speed|slow down]], with a chance for affected monsters to resist based on their [[monster magic resistance|MR score]] (using the equation {{sfrac|MR|112&nbsp;−&nbsp;[[monster difficulty|difficulty]]}} - monsters with [[intrinsic speed]] will instead return to normal speed. Monsters will not zap this wand. Slowed monsters move at {{frac|2|3}} of their normal movement speed; slowing down any monster or returning them to normal speed with the wand will [[auto-identify]] it.
+
+If zapped while you are [[engulfed]] by a [[whirly]] monster (e.g. a [[vortex]] or [[air elemental]]), you will disrupt the monster and be released.
+
+If you zap yourself with a wand of slow monster while you have intrinsic speed, you will lose that intrinsic and [[abuse]] [[dexterity]] - otherwise, nothing happens.
+
+[[Engraving]] with the wand will cause the bugs on the floor to slow down; while this is a unique message, it will not auto-identify the wand.
+
+==Strategy==
+Whirly monsters are immune to the [[wand of digging]], making the wand a valuable escape item when engulfed by them. Slowing whirly monsters such as an [[energy vortex]] can let a faster player (e.g. with [[speed boots]]) build up valuable distance to attack them at range, and many whirly monsters have an MR score of 30 at most - the [[fog cloud]] has an even lower score at 0, and will never resist the wand. Air elementals are the most worrisome whirlies by far, and still move at twice a player's normal speed even when slowed; the wand still provides a valuable escape from being engulfed and pummeled with debris for several turns.
+
+For other monsters, the wand of slow monster is best used at range against faster low-MR threats such as [[soldier ant]]s, [[leocrotta]]s or [[winged gargoyle]]s. More powerful threats usually have a much higher MR score and are better handled through other means such as [[scaring]] or [[paralysis]]; spellcasters are likely to re-haste themselves after some amount of turns.
+
+A wand of slow monster is trivial to identify via engraving, since no other wand will produce the same message.
+
+==History==
+The wand of slow monster has been present in the game since hack121, a variant of [[Jay Fenlason's Hack]].
+
+==Messages==
+{{message|The bugs on the &lt;floor&gt; slow down!|You engraved with a charged wand of slow monster. This is a unique message, however the wand is not [[Auto-identify|auto-identified]].}}
+{{message|<Monster> seems to be moving slower.|You zapped a monster which did not resist.}}
+{{message|You disrupt <monster>! A huge hole opens up...|You zapped a whirly monster that you were engulfed in, and were expelled.}}
+{{message|You slow down.|You lost the speed intrinsic by zapping yourself with a wand of slow monster.}}
+{{message|Your quickness feels less natural.|As above, but you still have extrinsic speed from wearing speed boots.}}
+
+==Variants==
+===FIQHack===
+In [[FIQHack]], [[free action]] prevents you or a monster from being slowed with the wand or other sources {{frac|2|3}} of the time. [[Blue dragon scale mail]] also grants full protection from slowing effects such as being zapped with the wand.
+<!--===EvilHack===
+In [[EvilHack]], monsters will use the wand of slow monster against you offensively.-->
+
+==See also==
+* [[Spellbook of slow monster]]
+* [[Wand of speed monster]]
+{{nethack-366}}
+[[Category:Wands|Slow monster]]}
+&&%s&& %s Beartrap {147763 2022-08-21T08:04:09Z {4000978 Aximili} /* Messages */ add metallivore message {{tool
+  |color=metal color
+  |tile=[[image:beartrap.png]]
+  |name=beartrap
+  |appearance=beartrap
+  |cost=60
+  |weight=200
+  |material=iron
+}}
+
+A '''beartrap''' is a [[tool]] object that can be used to create a '''bear trap''' ({{Cyan|^}} [[image:bear trap.png]]) on the ground. This is a [[trap]] that will clamp onto any monster or adventurer unlucky enough to stumble onto it, dealing 2d4 damage.
+
+The beartrap item is usually obtained by [[untrap]]ping a live bear trap. These can be [[apply|applied]] on the ground to create a [[trap]] to clamp onto monsters unlucky enough to not avoid the trap, rendering them immobile until they escape. Monsters that are too [[monster size|small]], [[amorphous]], [[whirly]], [[unsolid]] or [[flying]] won't be trapped, and [[metallivore]]s can eat the trap.  Be careful, as you can still get caught in your own bear trap if you step on it or fail to disarm it.
+
+==Becoming trapped==
+
+You will escape a bear trap under the following circumstances:
+
+* If you are [[levitation|levitating]] or [[flying]], you will avoid the trap. If the trap is hidden, it will not be revealed.
+* If you are polymorphed into a form that is [[amorphous]], [[whirly]] or [[unsolid]], you will avoid the trap.
+* If you are polymorphed into a form that is ''tiny'' or ''small'', and you are not riding a steed, you will avoid the trap.
+
+If none of these apply, you have a {{frac|4|5}} chance of avoiding the bear trap if you are already aware of it and are not [[fumbling]]. Otherwise, you are caught.
+
+Being caught in a bear trap renders you unable to move, in addition to the damage it deals. When caught in a bear trap, you are unable to [[kick]]. During this time, you still can attack and be attacked.
+
+If you trigger the trap when riding, it affects your steed instead of you. Monsters can be trapped too.{{refsrc|trap.c|2271|version=NetHack 3.6.2}}
+
+==Escaping==
+
+The ordinary way to escape a bear trap is to try to move out of it. For some reason, trying to move diagonally is most effective, allowing you to escape in 4–7 moves;{{refsrc|hack.c|1077|nethack=3.6.0}} this will move you diagonally out of the trap even if a wall is in the way. Attempting to move orthogonally requires about five times as many moves to escape.
+
+Another way to escape from a bear trap is to use [[teleport]], [[level teleport]], or [[branchport]] to move yourself away from it. You can also polymorph yourself into a form that cannot be held by a bear trap, due to size or body composition.
+
+Zapping a [[wand of opening]] or casting [[knock]] downward will instantly release you.{{refsrc|zap.c|2744|nethack=3.6.1}}
+
+Finally, it is possible to [[jump]] out of a bear trap. This carries a penalty, however: you will take ''d10'' damage and suffer [[wounded legs]] for 500–1499 turns.
+
+Oddly, [[beartrap]]s reset themselves after someone escapes from them.
+
+==Disarming==
+
+Once you know the location of a bear trap, you can attempt to [[untrap|#untrap]] it. You cannot disarm a bear trap that is holding you, so you must escape the trap first. When you attempt to disarm the trap, there is a chance that you will be accidentally caught in it instead. If you successfully disarm the trap, it will be replaced by a beartrap item on the ground.
+
+It is also possible to remove a bear trap by eating it, if you are [[polymorph]]ed into a [[metallivore]]. Unlike untrapping, you can eat a bear trap that is holding you, and there is no chance of accidentally triggering the trap. However, eating the trap will obviously not produce a beartrap item.
+
+==Alignment issue==
+If you are lawful, you suffer a &minus;1 alignment penalty if you set a bear trap.
+
+==Strategy==
+A beartrap can be applied in a narrow corridor to slow down pursuers.  They can be used when [[stealing from shops]] to prevent the [[shopkeeper]] from blocking the [[door]]. A stuck monster is also an easy target for [[ranged attack]]s.
+
+It takes some time to set a beartrap&mdash;if a hostile monster comes near, you will stop setting the trap (in much the same way an approaching monster can interrupt a meal). It may help to retreat around a corner or down a long passage to give yourself time to apply the trap.  Because of the time delay in setting the trap, it does not make a very useful tool for emergency getaways. The time needed to set the trap is doubled if you are [[blind]].
+
+Trying to set a beartrap while [[fumbling]], or setting a [[cursed]] beartrap has a chance of getting you stuck in the beartrap. The chance is modified by [[Luck]]; if your Luck is maxed, the chances are very slim. Setting a beartrap while [[riding]] a steed with [[skill|Unskilled]] in Riding has the same chance of failure, and an even worse chance if also fumbling or using a cursed beartrap; however, failing on a steed simply results in the beartrap item falling to the floor harmlessly.
+
+A beartrap (the item) can be [[polymorph]]ed as normal; the 'bear trap' (the trap) is not affected by polymorph.
+
+==Messages==
+
+{{message|A bear trap closes on your <foot>!|You triggered a bear trap.}}
+{{message|<monster> is caught in a bear trap!|A monster triggered a bear trap.}}
+{{message|You hear the roaring of an angry bear!|An unseen [[owlbear]] or [[bugbear]] just triggered a bear trap.}}
+{{message|You howl in anger!|You triggered a bear trap while polymorphed into an owlbear or bugbear.}}
+{{message|<monster> eats a bear trap!|A metallivore ate a bear trap.{{refsrc|src/trap.c|2176|version=NetHack 3.6.6}}}}
+
+==References==
+
+<references/>
+
+[[Category:Tools]]
+[[Category:Traps]]
+{{nethack-360}}}
+&&%s&& %s Expensive camera {146603 2022-07-08T22:23:27Z {4001279 Umbire the Phantom} /* SlashTHEM */ {{tool
+  |color=black
+  |tile=[[image:expensive camera.png]]
+  |name=expensive camera
+  |cost=200
+  |weight=12
+  |material=plastic
+}}
+
+An '''expensive camera''' is a type of [[tool]] that appears in ''[[Nethack]]''. It is [[fragile]] and made of [[plastic]].
+
+==Generation==
+Expensive cameras are always randomly generated uncursed with 30 to 99 charges.
+
+All [[Tourist]]s start with an expensive camera. 
+
+==Effects==
+When [[applied]] in the direction of a monster that has eyes, the flash of an expensive camera (whose beam is represented by {{white|[[!]]}}) will [[blind]] that monster, as well as typically [[scaring]] it - applying a cursed camera has a 50% chance of blinding you for 1d25 turns instead when applied. Applying a camera at a [[sleeping]] monster will wake it up with no further effects. {{refsrc|src/uhitm.c|3119|version=NetHack 3.6.6}} [[Gremlin]]s will take d4 damage from the flash, which cannot kill them this way.{{refsrc|src/uhitm.c|3126|version=NetHack 3.6.6}} 
+
+Affected monsters that are adjacent are blinded permanently, while others that are farther away are blinded for up to 13 turns, depending on the distance.{{refsrc|src/uhitm.c|3121|version=NetHack 3.6.6|comment=minimum non-adjacent dist2() is 4, so no more than 1 + 50/4 turns}} Monsters hit by the flash will also flee with a {{frac|3|4}} chance, provided they are no more than 2 squares away from you - [[shopkeeper]]s cannot be scared by the flash of an expensive camera.{{refsrc|src/uhitm.c|3135|version=NetHack 3.6.6}} 
+
+If wielded and used to attack, the expensive camera will break and do no damage; it shares this property with the [[cream pie]].{{refsrc|src/uhitm.c|892|version=NetHack 3.6.6|comment=attacking with a wielded camera}} Breaking a camera in any way has a {{frac|3}} chance of releasing a "picture-painting demon", which will be a [[homunculus]] {{frac|2|3}} of the time and an [[imp]] the remaining {{frac|3}} - the resulting demon will be peaceful unless the camera was cursed.{{refsrc|src/dothrow.c|1943|version=NetHack 3.6.6|comment=<code>release_camera_demon</code> is described here}}
+
+Like most other tools, a camera has no limit on [[charging]]. Applying an unpaid expensive camera induces a 10% [[usage fee]].
+
+==Strategy==
+An expensive camera is a solid [[escape item]] and scaring tool, and is the only known item that can cause the [[Riders]] to flee from you. Cameras are also the only way to permanently blind a monster, which is useful if you need it alive, but are unable to render it peaceful and don't want it to chase you (often the case with [[foocubi]]) - remember that blinded hostile monsters will not respect [[Elbereth]] and may still attack you in melee while fleeing, particularly in closed spaces where they may not be able to get clear of you.
+
+A camera can be a viable method for blinding yourself via applying it at {{kbd|.}}, either in order to use your intrinsic [[telepathy]], or else to avoid the longer blinding from a [[yellow light]] when it explodes (d25 turns v. 10d20). The risk of ''accidentally'' blinding yourself with a cursed camera is usually only a concern for cameras found in [[bones]] piles.
+
+You can use a camera to wake up a sleeping monster, including your [[pet]], making it useful for [[Knight]]s in particular; this does not work on [[paralyzed]] monsters, and should be avoided around rooms of monster that you don't want to wake up prematurely, e.g. in [[barracks]]. [[Pacifist]] and [[illiterate]] [[conduct]] players will appreciate having an expensive camera to scare monsters, as will players attempting a [[protection racket]].
+
+==History==
+The expensive camera first appears in [[Hack 1.0]], introduced as part of the Tourist role's starting inventory and the TOURIST [[compile-time option]].
+
+==Origin==
+The "picture-painting demon" generated from a broken camera is based on how cameras work in [[Terry Pratchett]]'s ''[[Discworld]]'' series of novels.
+
+==Messages==
+{{message|You succeed in destroying the expensive camera. Congratulations!|You broke a wielded expensive camera by attacking a monster with it.}}
+{{message|The picture-painting demon is released!|You generated an imp or homunculus by breaking an expensive camera.}}
+
+==Variants==
+Many variants incorporate the [[advent calendar]] room, which may have an expensive camera as the Christmas present in the 24th room.
+
+===SlashTHEM===
+[[SlashTHEM]] incorporates the [[photography patch]] created by Nephi, allowing you to take [[photograph]]s of various things and store them in a [[photo album]].
+
+Graduates start the game with an expensive camera.
+
+===SpliceHack===
+In [[SpliceHack]] and [[SpliceHack-Rewrite|its rewritten version]], the expensive camera is retooled as a '''"holographic card"''' for [[Cartomancer]]s, and otherwise functions exactly the same. Their [[quest nemesis]], [[Dal Zethire]], also generates with an expensive camera.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s The DevTeam Thinks of Everything {142483 2021-09-07T18:52:08Z {4000251 Netzhack} Netzhack moved page [[The DevTeam Thinks Of Everything]] to [[The DevTeam Thinks of Everything]]: Correct title case in English: prepositions, esp. short ones, are not capitalized (except as first word). The capital O in the abbreviation is not affected. '''The DevTeam Thinks Of Everything''', abbreviated as '''TDTTOE''', is a term used to describe when the NetHack [[DevTeam]] anticipated the player getting into an unusual situation, and programmed in special behavior for that case. This means that if you think of doing something "clever" in the game, the DevTeam most likely thought of it too, and the game will produce a realistic but unexpected response.
+
+== Message examples ==
+
+One prominent example is seen when attempting to [[Dip|#dip]] a potion into itself:
+
+ This is a potion bottle, not a Klein Bottle!
+
+Or, similarly, placing a [[Container|bag]] inside itself:
+
+ That would be an interesting topological exercise.
+
+Or you might speculate that you might be able to cure your [[blindness]] by applying and removing a [[blindfold]], but
+
+ You were wearing a blindfold.  You still cannot see.
+
+Or you might know that [[tip]] is designed for spilling items out of containers, but decide to try tipping your [[fedora]]:
+
+ You briefly doff your fedora.
+
+== Gameplay example ==
+
+As a far more complex example, upon [[Pray|#praying]] to your [[god]] when he/she is sufficiently angry, [[you]] may receive the following from your god:
+
+ Thou hast angered me.
+
+This is followed by a (usually) fatal bolt of lightning striking you from the heavens. However, with [[shock resistance]], the attack can be survived. This is then repeated with a [[wide-angle disintegration beam]], but with [[disintegration resistance]], this can also be survived. If this occurs, then:
+
+ You bask in its black glow for a minute...
+ [Your god] says: "I believe it not!"
+
+Obviously, this example has much more effect on the actual gameplay than the previous trivial messages.
+
+== See also ==
+[https://tvtropes.org/pmwiki/pmwiki.php/Main/DevelopersForesight This is a trope on TVTropes.] Originally, the trope was named "The DevTeam Thinks Of Everything" based on NetHack, but then got changed to "Developers' Foresight" because its editors were misusing it as "The DevTeam Thinks Of Something Cool".
+
+[[Category:Development]]
+[[Category:Messages|*]]
+[[Category:Acronyms]]}
+&&%s&& %s Ghost {144466 2022-02-13T22:46:39Z {4001483 Cathartes} /* Turning */ link [[revive]] instead of [[undead turning]], because that is the more relevant concept {{Wikipedia|Ghost}}
+{{monster
+ |difficulty=12
+ |level=10
+ |experience=238
+ |speed=3
+ |AC=&minus;5
+ |MR=50
+ |align=&minus;5
+ |frequency=0
+ |genocidable=No
+ |attacks=Touch 1d1
+ |weight=1450
+ |nutr=0
+ |size=Medium
+ |resistances=Cold, Disintegration, Sleep, Poison, Stoning
+ |resistances conveyed=None
+ |attributes={{attributes|A ghost|
+|nocorpse=1|fly=1|breathless=1|wallwalk=1|humanoid=1|unsolid=1|=
+|nopoly=1|undead=1|stalk=1|hostile=1|infravision=1}}
+ |reference=[[monst.c#line2515]]
+}}
+
+A '''ghost''', {{monsym|ghost}}, is a type of [[monster]] in [[NetHack]]. In vanilla, the ghost and [[shade]] are the only members of the "[[ghost (monster class)|ghost]]" [[monster class]].
+
+==Generation==
+{{main|Bones}}
+Ghosts are most likely to appear in bones levels, copies of levels where previous players died. Most causes of death will leave a player ghost behind; see the article on bones files for more information and exceptions. These ghosts are generated asleep on top of their original inventories, and has the same experience level as the late player; their pet(s) may be nearby, and are very likely to have turned feral. Any objects that were carried in the deceased player's main inventory have an 80% chance of becoming cursed, even if they were originally blessed. Other objects on the level and the contents of containers in the player's inventory maintain their BUC status.
+
+Ghosts will also appear in [[graveyard]]s, including the [[Valley of the Dead]]'s three large graveyards and the graveyard in [[Orcus Town]]. A ghost is also generated on the [[Rogue level]], in [[Asmodeus' Lair]], and in [[Baalzebub's Lair]]. 
+
+Ghosts will occasionally spawn when you step into haunted [[temple]]s. Quaffing a [[milky potion]] may cause a ghost to appear.
+
+===Ghost names===
+Ghosts of past players found in bones files are named after the dead adventurer they represent. The ghost generated on the [[Rogue level]] is named ''Michael Toy'', ''Kenneth Arnold'', or ''Glenn Wichman''.
+
+Ghosts created on other special levels have a 1/7 chance of being given your character's name. Otherwise, they are given a random name from the following list:<ref>{{function|do_name.c|rndghostname}}</ref>
+
+{|
+|
+*Adri
+*Andries
+*Andreas
+*Bert
+*David
+*Dirk
+*Emile
+*Frans
+*Fred
+*Greg
+*Hether
+|
+*Jay
+*John
+*Jon
+*[[Shaman Karnov#trivia|Karnov]]
+*Kay
+*Kenny
+*Kevin
+*Maud
+*Michiel
+*Mike
+*Peter
+||
+*Robert
+*Ron
+*Tom
+*Wilmar
+*Nick Danger
+*Phoenix
+*Jiro
+*Mizue
+*Stephan
+*Lance Braccus
+*Shadowhawk
+|}
+
+==Strategy==
+Ghosts are ''very'' slow and do very little damage, and in most scenarios involving a bones pile they can usually be led away with little trouble. However, they possess a very low AC, and will likely evade most attacks if met at a low experience level. If you are unable to dispatch them via regular attack, [[kicking]] them may work instead. Even though the ghost may not be too difficult to dispatch, be wary that you do not forget about their original killer - you may very well [[YASD|become a ghost yourself]] if you are careless and the monster is still present.
+
+By default, ghosts and shades are represented by a blank space, making them difficult to see and almost impossible to locate by [[telepathy]]. Some players use the [[Option#symset|SYMBOLS]] option to give ghosts and shades a different appearance, such as {{white|X}} or {{white|8}}. This makes them easier to see and allows you to quickly identify bones levels by telepathy.
+
+===Turning===
+When a player leaves a bones file, they leave a corpse and a ghost under regular circumstances; if you [[revive]] the corpse, the ghost inhabits the player's corpse on the item pile, removing the ghost. If successful, the message '''"<Name>'s ghost is suddenly drawn into its former body!"''' is displayed.
+
+The ghost must be on or adjacent to the square the corpse is on, and must be awake to be turned. The corpse can be of a [[polymorph]]ed form if the target died while in another form, e.g. from wearing an [[amulet of unchanging]]. If the ghost is [[tame]], then the resulting monster is tame, and is otherwise generated peaceful or hostile as normal based on your [[alignment]] and race. The monster will also be confused upon resurrection.
+
+==xNetHack==
+In [[xNetHack]], the ghost's base level is reduced to 4, their speed is increased to 5, their AC is increased to 5, and their magic resistance is increased to 80.
+
+Similar to shades, ghosts can only be hit by magic, blessed weapons, [[artifact weapon]]s, or objects made of silver or bone. Unlike shades, ghosts do not take [[silver damage]].
+
+Instead of their 1-damage touch attack, hostile ghosts turn [[invisible]] every so often and try to frighten the player by reappearing next to them. When this happens, the player is paralyzed for three turns. This is not prevented by [[free action]], but it will not work if the player is able to sense the invisible ghost. {{frac|3}} of ghosts will generate invisible.
+
+==Encyclopedia entry==
+{{encyclopedia|
+And now the souls of the dead who had gone below came swarming up from Erebus -- fresh brides, unmarried youths, old men with life's long suffering behind them, tender young girls still nursing this first anguish in their hearts, and a great throng of warriors killed in battle, their spear-wounds gaping yet and all their armor stained with blood.  From this multitude of souls, as they fluttered to and fro by the trench, there came a moaning that was horrible to hear. Panic drained the blood from my cheeks.
+|[ The Odyssey, (chapter Lambda), by Homer ]
+}}
+
+==See also==
+*[[Shade]]
+
+==References==
+<references/>
+
+[[Category:Monsters]]
+{{nethack-364}}}
+&&%s&& %s Sphere {149978 2023-02-16T08:47:00Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line break {{monster
+ |name=flaming sphere
+ |difficulty=8
+ |level=6
+ |experience=91
+ |speed=13
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Explode 4d6 [[fire]]
+ |weight=10
+ |nutr=10
+ |size=Small
+ |resistances=fire
+ |resistances conveyed=None
+ |attributes={{attributes|A flaming sphere|=
+ |nocorpse=1|fly=1|breathless=1|nolimbs=1|nohead=1|mindless=1|hostile=1|neuter=1|infravisible=1|light=1}}
+ |reference=[[monst.c#line318]]
+}}
+{{monster
+ |name=freezing sphere
+ |difficulty=8
+ |level=6
+ |experience=91
+ |speed=13
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Explode 4d6 [[cold]]
+ |weight=10
+ |nutr=10
+ |size=Small
+ |resistances=cold
+ |resistances conveyed=None
+ |attributes={{attributes|A freezing sphere|=
+ |nocorpse=1|fly=1|breathless=1|nolimbs=1|nohead=1|mindless=1|hostile=1|neuter=1|infravisible=1|nohell=1}}
+ |reference=[[monst.c#line310]]
+}}
+{{monster
+ |name=shocking sphere
+ |difficulty=8
+ |level=6
+ |experience=91
+ |speed=13
+ |AC=4
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Explode 4d6 [[shock]]
+ |weight=10
+ |nutr=10
+ |size=Small
+ |resistances=shock
+ |resistances conveyed=None
+ |attributes={{attributes|A shocking sphere|=
+ |nocorpse=1|fly=1|breathless=1|nolimbs=1|nohead=1|mindless=1|hostile=1|neuter=1|infravisible=1|light=1}}
+ |reference=[[monst.c#line325]]
+}}
+'''Spheres''', {{white|e}}, are a class of [[monster]] in [[NetHack]]. This class is made up of monsters that act like "living mines", with the ability to self-destruct and cause damage.
+
+Monsters in this class:
+* {{monsymlink|flaming sphere}}
+* {{monsymlink|freezing sphere}}
+* {{monsymlink|shocking sphere}}
+* {{monsymlink|gas spore}}
+
+{{monsymlink|Floating eye}}s are represented by the same character as spheres, but their behavior is significantly different. Floating eyes do not self-destruct.
+
+{{monsymlink|Black light}}s and {{monsymlink|yellow light}}s are not spheres, but they self-destruct in a similar manner.
+
+==Characteristics==
+[[Dexterity|Dextrous]] players can sometimes dodge the explosions partially or completely, while players with the correct [[resistance]] might not be harmed by the blast.
+
+Flaming, freezing, and shocking spheres will actively seek you out and explode when next to you.  If you manage to kill them before they can do this, they will not explode and items in your inventory are not damaged.  The explosion does not affect other nearby creatures.  
+
+Gas spores ({{monsym|gas_spore}}) are different in that they will never attack you and explode only if killed. However, gas spores explosions cover 3-by-3 square, thus even if a [[player|character]] survives the blast, other monsters might be killed.
+
+{{upcoming|NetHack 3.7.0|Spheres now create actual explosions with their attacks. These affect a 3×3 area around their target, and can hit other monsters. Notably, they can now also destroy carried and dropped items within the blast. Previous to [https://github.com/NetHack/NetHack/commit/9942b65df78dd55a7806ec6ea2821693a7131c97 this commit], resistances would not protect inventory items with one exception: a ring of shock resistance would protect itself, but nothing else. (From observation, this increased the likelihood of players [[genocide|genociding]] at least shocking spheres, likely mainly due to the item damage threat.) Now, resistances from worn or wielded items have a 99% chance of protecting your inventory, and thanks to [https://github.com/NetHack/NetHack/commit/67295bc706525934c461a0d940ca0da39fc302d2 this commit] wearing non-metallic gloves will protect worn rings. If you polymorph into a sphere and explode, the explosion will not affect your own inventory.}}
+
+==Body parts==
+'''Sphere''' also refers to the grouping of [[body parts]] for the forms of bulbous entities. It affects the messages referring to the appropriate body parts as follows:{{refsrc|polyself.c|1177}}
+
+{| class="prettytable"
+!Bodypart{{refsrc|hack.h|226}}!!Description
+|-
+|Arm||Appendage
+|-
+|Eye||Optic nerve (cornea for [[floating eye]]s)
+|-
+|Face||Body
+|-
+|Finger||Tentacle
+|-
+|Fingertip||Tentacle tip
+|-
+|Foot||Lower appendage
+|-
+|Hand||Tentacle
+|-
+|Handed||Tentacled
+|-
+|Head||Body
+|-
+|Leg||Lower tentacle
+|-
+|Light Headed||Rotational
+|-
+|Neck||Equator
+|-
+|Spine||Body
+|-
+|Toe||Lower tentacle tip
+|-
+|Hair||Cilia
+|-
+|Blood||Life force
+|-
+|Lung||Retina
+|-
+|Nose||Olfactory nerve
+|-
+|Stomach||Interior
+|}
+
+From these descriptions, spheres are almost perfectly round (references to geometric properties of spheres) but have long tentacles as "limbs", small cilia as hair and rather than internal organs, they refer to retina and nerves alone. Strange creatures indeed.
+
+==History==
+NetHack [[3.4.3]] was subject to [[Bugs_in_NetHack_3.4.3|bug C343-138]] which allowed some spheres to pick up [[object]]s, but prevented others from doing so.
+
+==SLASH'EM==
+In [[SLASH'EM]], [[Pet|tame]] flame and freezing spheres can be summoned by spells of {{spell of|flame sphere}} and {{spell of|freeze sphere}} respectively.  A monster attacked by one of your spheres is treated as if you had attacked it directly: peaceful monsters are angered, XP is awarded to you for a kill, etc. They are, of course, useless if the opposing monsters resist fire or cold. Too much use can also cause swift extinction of the species.
+
+==Encyclopedia entry==
+{{encyclopedia|
+The attack by those who want to die -- this is the attack against which you cannot prepare a perfect defense.
+                       --Human aphorism
+|[ The Dosadi Experiment, by Frank Herbert ]
+}}
+
+==References==
+<references />
+
+{{nethack-360|offset=1}}
+{{slashem-7E7}}
+[[Category:Body parts]]
+[[Category:Monster classes]]}
+&&%s&& %s Lycanthropes {18256 2007-01-19T01:17:09Z {0 } Redirecting to [[Werecreature]] #REDIRECT [[Werecreature]]}
+&&%s&& %s Mimics {18257 2007-01-19T01:18:08Z {0 } Redirecting to [[Mimic]] #REDIRECT [[Mimic]]}
+&&%s&& %s Spell {73420 2011-09-24T03:41:41Z {0 } category A '''spell''' in [[NetHack]] is a magical power granted through the study of [[spellbook]]s. Other types of magic and magical objects exist in the game (such as [[scroll]]s, [[ring]]s, and [[wand]]s), but the word spell is reserved almost exclusively for the innate kind that consumes your magical [[energy]]. [[Spell]]casting without [[Hungerless casting|hungerless casting]] or [[Reduced-hunger casting|reduced-hunger casting]] (both of which are granted only to high-[[Intelligence|intelligence]] [[Wizard|wizards]]) incurs a hunger penalty.
+
+Main articles:
+*[[spellcasting]]
+*[[spellbook]]s
+*[[monster spell]]s
+{{disambig}}}
+&&%s&& %s Magic marker {149181 2022-12-04T08:11:59Z {4001279 Umbire the Phantom} /* SLASH'EM */* {{template:tool|tile=[[image:magic marker.png]]|cost=50|weight=2|color=red|name=magic marker|material=plastic}}
+
+A '''magic marker''' is a [[magical tool]] in ''[[NetHack]]'' that can be used to write magic [[scroll]]s and [[spellbook]]s. It is a highly sought-after item for this reason alone, especially for [[Wizard]]s; with [[Luck]], you have a good chance of writing scrolls and spellbooks that you have not even identified yet.
+
+==Generation==
+Various roles have a somewhat low chance of starting their game with a magic marker:
+
+* [[Monk]]s and [[Wizard]]s have the highest chance of getting a magic marker at 20% ({{frac|5}} chance).{{refsrc|src/u_init.c|717|version=NetHack 3.6.6|comment=Marker odds for monks}}{{refsrc|src/u_init.c|793|version=NetHack 3.6.6|comment=Marker odds for wizards}}
+* [[Archeologist]]s and [[Priest]]s have a 10% chance ({{frac|10}}) to start with a magic marker.{{refsrc|src/u_init.c|673|version=NetHack 3.6.6|comment=Marker odds for archeologists}}{{refsrc|src/u_init.c|729|version=NetHack 3.6.6|comment=Marker odds for priests}}
+* [[Tourist]]s have the lowest odds of beginning the game with a magic marker at 4% ({{frac|25}} chance).{{refsrc|src/u_init.c|777|version=NetHack 3.6.6|comment=Marker odds for tourists}}
+
+Magic markers have a low probability of being created by [[polypiling]] [[magical items#magical tools|magical tools]]; it is also possible to create them from non-magical tools, but the probability of this occurring is ''vanishingly'' small.
+
+==Effects==
+:''Some details borrowed from [http://nethack.de/spoiler/yanfaq.txt Sascha Wostmann's "Yet Another NetHack FAQ".]''
+
+[[Apply]]ing a magic marker will prompt you what to write on, which lets you choose a single scroll or spellbook of blank paper in your inventory. Then, you must specify what scroll or spellbook you are writing.  
+
+You may enter the full name of a scroll ("scroll of light"), or just a short form ("light"). You may also write the [[randomized appearance|label]] of a scroll ("ZELGO MER"), but only if scrolls with that label exist in your game. This means that if you want to write a scroll of remove curse, and you have informally identified ZELGO MER as remove curse, you should write, in all capitals, "ZELGO MER". If you have only informally identified "remove curse", your attempt will be subject to the normal failure chance from trying to write an unidentified scroll.
+
+Similarly, you may write any spellbook by entering the full name ("spellbook of detect food"), the short form ("detect food"), or the appearance ("indigo spellbook"). Unlike with scrolls, you may not copy a spellbook by appearance unless you have formally identified the spellbook. [[Novel]]s can be written too, but you cannot choose which novel you write. It is impossible to write the [[Book of the Dead]].
+
+{{upcoming|NetHack 3.7.0|Novels can no longer be written with a magic marker, and the [[blank spellbook]] you select to write on may be destroyed in the attempt.}}
+
+You can also [[engrave]] with a magic marker, which creates a fast semipermanent engraving at a cost of 1 charge per two letters.
+
+===Beatitude===
+When you write a scroll or spellbook, the [[beatitude]] of the resulting item is a combination of the beatitudes of the used marker and the blank scroll or spellbook, as seen below. In short: blessed markers produce blessed scrolls, unless the material is cursed, and the reverse is true for cursed markers. Uncursed markers produce scrolls with the same status as the material, and thus are the most versatile.
+
+{|class="wikitable"
+|+Final document [[BUC]]
+|-
+! colspan="2" rowspan="2"|  || colspan="3" | Marker
+|-
+! Blessed||Uncursed||Cursed
+|-
+! scope="row" rowspan="3" | Blank<br />document || Blessed
+|style="background-color:#89ffdd"| Blessed ||style="background-color:#89ffdd"| Blessed || Uncursed
+|-
+! scope="row" | Uncursed 
+|style="background-color:#89ffdd"| Blessed || Uncursed ||style="background-color:#ffdfcf"| Cursed
+|-
+! scope="row" | Cursed 
+| Uncursed ||style="background-color:#ffdfcf"| Cursed ||style="background-color:#ffdfcf"| Cursed
+|}
+
+=== Ink and charges ===
+Writing with a magic marker uses up charges. Initially, a magic marker will be generated with 30–99 charges.{{refsrc|mkobj.c|496}}
+
+A magic marker can be recharged only once with a [[scroll of charging]] or [[The Platinum Yendorian Express Card]].{{refsrc|read.c|312}}{{refsrc|read.c|318}} A blessed charge will add 15–30 charges, then round up to 50 or 75 if able. An uncursed charge will add 10–20 charges, then round up to 50 if able. Charges are capped at 127, but attempting to exceed this will not cause the marker to explode.{{refsrc|read.c|344}}
+
+Any magic markers created by polypiling come "pre-recharged" and cannot be charged again.
+
+Each scroll or spellbook has an associated "base ink cost". For scrolls, this is an arbitrary number specified in [[write.c#cost|write.c]]; for spellbooks it is (''spell level'' &times; 10).{{refsrc|write.c|17}} (Novels are treated as level 1 spellbooks.)
+
+If the ink cost of a scroll or spellbook is <var>x</var>, then writing it will cost a random number of charges between {{sfrac|<var>x</var>|2}} and <var>x</var>&nbsp;&minus;&nbsp;1 inclusive. If the marker has fewer than {{sfrac|<var>x</var>|2}} charges remaining, you will not even attempt to write the specified item ("Your marker is too dry to write that!").{{refsrc|write.c|169}} If it has between {{sfrac|<var>x</var>|2}} and <var>x</var>&nbsp;&minus;&nbsp;1, however, you <em>will</em> attempt to write. If it turns out that this is not enough, the written item will be useless, and the marker will lose all its remaining charges ("Your marker dries out!").{{refsrc|write.c|181}} Useless scrolls disappear, while books clear themselves.
+
+{|class="prettytable sortable" style="float:left"
+|+|'''Spellbooks'''
+!Spellbook !! Ink !! data-sort-type="number"|Charges
+|-
+|[[novel]] || 10 || 5–9
+|-
+|{{+ of|detect monsters}} || 10 || 5–9
+|-
+|{{+ of|force bolt}} || 10 || 5–9
+|-
+|{{+ of|healing}} || 10 || 5–9
+|-
+|{{+ of|jumping}} || 10 || 5–9
+|-
+|{{+ of|knock}} || 10 || 5–9
+|-
+|{{+ of|light}} || 10 || 5–9
+|-
+|{{+ of|protection}} || 10 || 5–9
+|-
+|{{+ of|sleep}} || 10 || 5–9
+|-
+|{{+ of|confuse monster}} || 20 || 10–19
+|-
+|{{+ of|create monster}} || 20 || 10–19
+|-
+|{{+ of|cure blindness}} || 20 || 10–19
+|-
+|{{+ of|detect food}} || 20 || 10–19
+|-
+|{{+ of|drain life}} || 20 || 10–19
+|-
+|{{+ of|magic missile}} || 20 || 10–19
+|-
+|{{+ of|slow monster}} || 20 || 10–19
+|-
+|{{+ of|wizard lock}} || 20 || 10–19
+|-
+|{{+ of|cause fear}} || 30 || 15–29
+|-
+|{{+ of|charm monster}} || 30 || 15–29
+|-
+|{{+ of|clairvoyance}} || 30 || 15–29
+|-
+|{{+ of|cure sickness}} || 30 || 15–29
+|-
+|{{+ of|detect unseen}} || 30 || 15–29
+|-
+|{{+ of|extra healing}} || 30 || 15–29
+|-
+|{{+ of|haste self}} || 30 || 15–29
+|-
+|{{+ of|identify}} || 30 || 15–29
+|-
+|{{+ of|remove curse}} || 30 || 15–29
+|-
+|{{+ of|stone to flesh}} || 30 || 15–29
+|-
+|{{+ of|cone of cold}} || 40 || 20–39
+|-
+|{{+ of|detect treasure}} || 40 || 20–39
+|-
+|{{+ of|fireball}} || 40 || 20–39
+|-
+|{{+ of|invisibility}} || 40 || 20–39
+|-
+|{{+ of|levitation}} || 40 || 20–39
+|-
+|{{+ of|restore ability}} || 40 || 20–39
+|-
+|{{+ of|dig}} || 50 || 25–49
+|-
+|{{+ of|magic mapping}} || 50 || 25–49
+|-
+|{{+ of|create familiar}} || 60 || 30–59
+|-
+|{{+ of|polymorph}} || 60 || 30–59
+|-
+|{{+ of|teleport away}} || 60 || 30–59
+|-
+|{{+ of|turn undead}} || 60 || 30–59
+|-
+|{{+ of|cancellation}} || 70 || 35–69
+|-
+|{{+ of|finger of death}} || 70 || 35–69
+|}
+
+{|class="prettytable sortable" style="float:left"
+|+|'''Scrolls'''
+!Scroll !! Ink !! data-sort-type="number"|Charges
+|-
+|{{? of|mail}} || 2 || 1
+|-
+|{{? of|amnesia}} || 8 || 4–7
+|-
+|{{? of|earth}} || 8 || 4–7
+|-
+|{{? of|fire}} || 8 || 4–7
+|-
+|{{? of|gold detection}} || 8 || 4–7
+|-
+|{{? of|food detection}} || 8 || 4–7
+|-
+|{{? of|light}} || 8 || 4–7
+|-
+|{{? of|magic mapping}} || 8 || 4–7
+|-
+|{{? of|create monster}} || 10 || 5–9
+|-
+|{{? of|destroy armor}} || 10 || 5–9
+|-
+|{{? of|punishment}} || 10 || 5–9
+|-
+|{{? of|confuse monster}} || 12 || 6–11
+|-
+|{{? of|identify}} || 14 || 7–13
+|-
+|{{? of|charging}} || 16 || 8–15
+|-
+|{{? of|enchant armor}} || 16 || 8–15
+|-
+|{{? of|enchant weapon}} || 16 || 8–15
+|-
+|{{? of|remove curse}} || 16 || 8–15
+|-
+|{{? of|scare monster}} || 20 || 10–19
+|-
+|{{? of|stinking cloud}} || 20 || 10–19
+|-
+|{{? of|taming}} || 20 || 10–19
+|-
+|{{? of|teleportation}} || 20 || 10–19
+|-
+|{{? of|genocide}} || 30 || 15–29
+|}
+{{clear}}
+
+=== Writing success chance ===
+
+You will always successfully write a scroll or spellbook if your marker has enough ink and the scroll or spellbook type is formally known to you. You can check whether it is known if the actual type (in addition to the scroll label or spellbook color) is shown in your [[discoveries]] list. Merely having it type-[[name]]d does not count, even if you have called it the correct name. However, you can use the discoveries list to see the label or color, then enter that at the prompt instead, which also guarantees success.
+
+If the scroll or spellbook type is currently unknown to you, your chance of success depends on your Luck and whether you are a wizard.{{refsrc|write.c|201}} Regardless of whether or not you succeed or fail, you will still use an appropriate amount of ink for that scroll or spellbook.{{refsrc|write.c|175}}{{refsrc|write.c|198|comment=Ink cost calculated before logic of whether item is known}}
+
+{|class="prettytable"
+!Luck 
+!Wizard 
+!Non-Wizard
+|-
+|&le; &minus;2
+|<1%
+|<1%
+|-
+|&minus;1 to 1
+|20%
+|6.7%
+|-
+|2 to 4
+|39%
+|13%
+|-
+|5 to 7
+|59%
+|20%
+|-
+|8 to 10
+|78%
+|26%
+|-
+|&ge; 11
+|98%
+|33%
+|}
+
+If you successfully write an unknown scroll or spellbook type, you must read it or identify it to place it in your discoveries list. This will enable you to write it again later with 100% success.
+
+If you try to write something without enough ink, or fail at an unknown scroll or book, a scroll will disappear, but a spellbook will just blank.{{refsrc|write.c|203}}
+
+=== Writing while blind ===
+Spellbooks cannot be written while blind ("Your magic marker can't create braille text"). 
+
+You may attempt to write a scroll while blind, but this is subject to fail [[rnl|depending on your luck]], with the message "You fail to write the scroll correctly and it disappears." You have the same chance of successfully writing the scroll as a non-blind Wizard does to write an unknown scroll, so maximizing your Luck will give you a high chance of success. The game tests this after checking whether you failed to write an unknown scroll, so it is doubly hard to write an unknown scroll while blind.
+
+==Strategy==
+As a suitably rare item, magic markers have several applicable strategies regarding their use.
+
+===Engraving===
+Engraving [[Elbereth]] with a magic marker is generally viewed as a waste of charges, since the same effect can be achieved using an [[athame]] or a [[wand of digging]]. However, if these or other similar methods are unavailable, it is more than worth it to use the marker, since you will prefer being alive with four less charges to dying with an unused marker. This scenario tends to occur most often with a character that is lucky enough to start the game with one.
+
+=== Charging ===
+Because of the total gain of 50 charges, it is best to recharge your magic marker when it is totally empty. Blessed [[charging]] in this case gives no advantage over uncursed. An exception would be if you want to write a level 6 or 7 spellbook, in which case you may want to use a blessed charging scroll to push a marker to 75 charges.
+
+===Writing===
+Provided your [[Luck]] is maximized, it may be worthwhile to attempt to write unknown scrolls or spellbooks even if you are a non-[[Wizard]], depending on the number of charges on your magic marker. For example, if you have a magic marker with a high number of charges, you are very likely to be able to write a scroll of charging and save a [[wish]] on the [[Castle]] [[wand of wishing|wand]]. It is also useful to write a low-level unknown spellbook that can teach a powerful utility or offensive spell, such as the [[spellbook of sleep]] or [[spellbook of jumping]]; the [[spellbook of magic missile]] is also a less easy possibility.
+
+Assuming maximized Luck, the following table gives approximate probabilities of successfully writing at least one of the specified scrolls or spellbooks, attempting repeatedly until the item is written or the marker goes dry, as a non-[[Wizard]], given an initial number of magic marker charges:
+
+{|class="prettytable"
+!# of charges
+!Any 8-ink [[scroll]]
+!Any level 1 [[spellbook]]
+![[Scroll of charging]]
+!Any level 2 [[spellbook]]
+![[Scroll of genocide]] or any level 3 [[spellbook]]
+|-
+|40
+|94%
+|88%
+|70%
+|60%
+|40%
+|-
+|50
+|97%
+|93%
+|79%
+|70%
+|52%
+|-
+|60
+|98%+
+|96%
+|85%
+|77%
+|59%
+|-
+|70
+|99%+
+|98%
+|90%
+|83%
+|66%
+|-
+|80
+|99%+
+|99%+
+|92%
+|87%
+|72%
+|-
+|90
+|99%+
+|99%+
+|95%
+|90%
+|77%
+|}
+
+Obviously, the lower the number of charges on the marker or the greater the ink cost of the item, the less likely you are to write it successfully.
+
+The ink 8 scrolls include [[scroll of gold detection|gold detection]] and [[scroll of magic mapping|magic mapping]], and can almost certainly be written unless your marker is nearly dry.
+
+If you have a source of charging and your marker has not been recharged, you have 50 more charges to attempt to write; therefore (for example) a [[Knight]] gunning for a [[spellbook of magic missile]] starting with a (0:40) magic marker, and willing to spend the entire marker if necessary, has about an 88% chance of obtaining it in total with maxed Luck. (Specifically, it is about a 60% chance of getting it without recharging, plus 70% times 40% probability that they get it after recharging. This is not quite the same probability as a marker with 90 charges, since typically a few leftover charges are "wasted" after the last attempt before recharging.)
+
+==History==
+The magic marker first appears in [[NetHack 1.3d]].
+
+==Origin==
+{{wikipedia|Magic marker}}
+The Magic Marker is a popular brand of marker pen created by Sidney Rosenthal in 1953, and consists of a glass or plastic tube of ink with a wick (or nib) made of felt which is used to transfer the ink to the writing surface. The upper part of the marker also contains a cap to prevent the marker from drying out. The magic marker of ''NetHack'' is based on a [[pun]], as its ink contains actual magic.
+
+==Messages==
+{{message|It reads: "Magic Marker(TM) Red Ink Marker Pen.  Water Soluble."|You [[read]] a magic marker.{{refsrc|src/read.c|287|version=NetHack 3.6.6}}}}
+{{message|You can't feel any Braille writing.|As above, but you were [[blind]].{{refsrc|src/read.c|281|version=NetHack 3.6.6}}}}
+
+{{message|Your marker is too dry to write that!|You attempted to write something with a marker, but the marker lacks the minimum charges of ink required, and the writing attempt is aborted.{{refsrc|src/write.c|237|version=NetHack 3.6.6}}}}
+{{message|Your marker dries out!|Your marker ran out of ink while writing.{{refsrc|src/write.c|250|version=NetHack 3.6.6}}}}
+{{message|The spellbook is left unfinished and your writing fades.|As above while writing a spellbook; the spellbook will remain blank.{{refsrc|src/write.c|253|version=NetHack 3.6.6}}}}
+{{message|The scroll is now useless and disappears!|As above while writing a scroll; this uses up the scroll.{{refsrc|src/write.c|256|version=NetHack 3.6.6}}}}
+
+{{message|Your marker seems permanently dried out.|You attempted to charge a magic marker that was already recharged once.{{refsrc|src/read.c|599|version=NetHack 3.6.6}}}}
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] incorporates a balance patch to ink costs that increases the amount required to write more useful scrolls. Scrolls of enchant armor, enchant weapon, stinking cloud, remove curse, and charging require 24 ink (12–23 charges) to write, while scrolls of scare monster cost less, requiring 14 ink.{{refsrc|write.c|51|version=SLASH'EM 0.0.7E7F2|comment="more useful scrolls cost more"}} 
+
+{|class="prettytable sortable mw-collapsible mw-collapsed" style="float:left"
+|+|'''Spellbooks'''
+!Spellbook !! Ink !! data-sort-type="number"|Charges
+|-
+|{{+ of|blank paper}} || 0 || 0
+|-
+|{{+ of|detect monsters}} || 10 || 5–9
+|-
+|{{+ of|flame sphere}} || 10 || 5–9
+|-
+|{{+ of|force bolt}} || 10 || 5–9
+|-
+|{{+ of|freeze sphere}} || 10 || 5–9
+|-
+|{{+ of|healing}} || 10 || 5–9
+|-
+|{{+ of|jumping}} || 10 || 5–9
+|-
+|{{+ of|knock}} || 10 || 5–9
+|-
+|{{+ of|light}} || 10 || 5–9
+|-
+|{{+ of|protection}} || 10 || 5–9
+|-
+|{{+ of|resist poison}} || 10 || 5–9
+|-
+|{{+ of|resist sleep}} || 10 || 5–9
+|-
+|{{+ of|sleep}} || 10 || 5–9
+|-
+|{{+ of|confuse monster}} || 20 || 10–19
+|-
+|{{+ of|create monster}} || 20 || 10–19
+|-
+|{{+ of|cure blindness}} || 20 || 10–19
+|-
+|{{+ of|detect food}} || 20 || 10–19
+|-
+|{{+ of|endure cold}} || 20 || 10–19
+|-
+|{{+ of|endure heat}} || 20 || 10–19

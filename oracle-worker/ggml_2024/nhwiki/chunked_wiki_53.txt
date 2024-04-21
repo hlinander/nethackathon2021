@@ -1,0 +1,1000 @@
+[[Category:Usenet]]}
+&&%s&& %s Category:Usenet {4890 2006-07-13T17:51:05Z {396 Jayt} recat: [[Category:Community]] The '''[[Usenet]]''' category is for articles about Usenet, especially about the newsgroup [[rgrn]] and its posts.
+
+[[Category:Community]]}
+&&%s&& %s Category:Games {4695 2006-07-09T15:11:01Z {458 Kernigh} Launch "games" category. This category is empty, but I will shortly move articles to here. Games: [[NetHack]] itself, its variants, related games, comparable games, ...
+
+[[Category:Articles]]}
+&&%s&& %s Material {144898 2022-03-13T05:09:05Z {4001279 Umbire the Phantom}  ''[[NetHack]]'' allows each [[item]] to be made of one '''material'''. Some materials, such as [[metal]], are very common, while others, such as [[wax]], are rare. Different materials are subject to different hazards: they may, for example, [[rust]], [[corrode]], [[burn]] or [[rot]].
+<!--When creating wiki articles about materials, consider including things such as:
+* What are examples of items made from that material?
+* What is good and bad about this material?
+* Does it rust, corrode, burn, rot?
+* Does the material behave as one would expect?-->
+
+The materials available in ''NetHack'' are defined in [[objclass.h]]. Some of the material-related properties such as corrodeability are implemented in the same file, others such as flammability are implemented in [[mkobj.c]].
+
+== List of materials ==
+{| class="wikitable"
+!Unde&shy;fined!![[Liquid|Liq&shy;uid]]!![[Wax]]!![[Veggy]]!![[Flesh]]!![[Paper]]!![[Cloth]]!![[Leather]]!![[Wood]]!![[Bone]]!![[Dragon hide]]!![[Iron]]!![[Metal]]!![[Copper|Cop&shy;per]]!![[Silver|Sil&shy;ver]]!![[Gold_(material)|Gold]]!![[Platinum|Plat&shy;inum]]!![[Mithril|Mith&shy;ril]]!![[Plastic|Plas&shy;tic]]!![[Glass]]!![[Gemstone|Gem&shy;stone]]!![[Mineral|Min&shy;eral]]
+|-
+||0||1||2||3||4||5||6||7||8||9||10||11||12||13||14||15||16||17||18||19||20||21
+|-
+| colspan="8" style="background:#a67bff;" | [[Flimsy]] || colspan="14" | 
+|-
+| colspan="11" | || colspan="7" style="background:#a67bff;" | [[Metallic]]|| colspan="4" | 
+|-
+| colspan="9" style="background:#a67bff;" | [[Organic]]|| colspan="13" |
+|-
+| colspan="11" | || style="background:#a67bff;" | [[Rust|Rust&shy;prone]]|| colspan="10" |
+|-
+| colspan="11" | || style="background:#a67bff;" | [[Corrode|Corrod&shy;able]] || || style="background:#a67bff;" | [[Corrode|Corrod&shy;able]] || colspan="8" |
+|-
+| style="background:#a67bff;" | [[fire|Flam&shy;mable]] || || colspan="7" style="background:#a67bff;" | [[fire|Flammable]] || colspan="9" | || style="background:#a67bff;" | [[fire|Flam&shy;mable]] || colspan="3" |
+|}
+
+[[Worm tooth|Worm teeth]] are the only object with an undefined material.
+
+There are exceptions to the above categorizations; certain objects such as the [[spellbook of fireball]] and the [[scroll of fire]] are never flammable. Furthermore, [[candle]]s are not considered flammable for the purposes of the game; they can be burned, but it makes no sense to fireproof them.{{refsrc|src/mkobj.c|1682|version=NetHack 3.6.2}}<ref>https://github.com/NetHack/NetHack/blob/NetHack-3.6/src/mkobj.c#L1704</ref>
+
+{{upcoming|3.7.0|Worm teeth are now made of bone.}}
+
+==Variants==
+{{main|Object materials}}
+Many variants use an object materials system to allow the same item to be generated with different materials - see that article for more information on this system and how it is implemented in each variant.
+
+== References ==
+<references/>
+{{nethack-362}}
+[[Category:Materials]]}
+&&%s&& %s Slashem.crash-override.net {39207 2009-04-21T18:36:30Z {735 Shijun} redirected to [[Public server]] #REDIRECT [[Public server]]}
+&&%s&& %s SLASH'EM@Pallas {40157 2009-05-28T22:51:31Z {443 Kahran042} Redirected page to [[Public server]] #REDIRECT [[Public server]]}
+&&%s&& %s Property {140808 2021-06-10T14:07:32Z {4001463 Actual-nh} /* Intrinsic properties */ Grammar/style A '''property''' is any of several on-or-off traits of the [[hero]] or a [[monster]]. Properties include the [[resistance]]s, the effects of [[ring]]s, the temporary effects of certain [[potion]]s, negative effects (as [[confusion]], [[stoning]]), and others. A property may be '''intrinsic''' or '''extrinsic'''.
+
+Intrinsic and extrinsic properties are binary; you either have it or you don't. Thus numerical traits (as [[alignment record]], [[dexterity]], [[luck]], [[prayer timeout]], etc.) are not properties in this sense. [[Enlightenment]] will reveal many properties of the hero, along with some other traits.
+
+== Intrinsic versus extrinsic ==
+In ''[[NetHack]]'', an '''intrinsic''' is any property that your character has internally, while an '''extrinsic''' is any property that your character derives from using, carrying or wearing an [[item]].
+
+You gain an extrinsic when you [[wield]], [[wear]] or [[put on]] an item that provides it. The item is typically a [[ring]], [[amulet]], [[armor]] or [[artifact]]. For example, the [[amulet of ESP]] or the [[helm of telepathy]] can grant extrinsic [[telepathy]]; the extrinsic goes away when you [[take off]] the item. Some nice [[quest artifact]]s provide an extrinsic when carried; in that case, the extrinsic goes away when you drop or lose the artifact, or place it in a container.
+
+There are more ways to gain an intrinsic.
+* You might gain it as an '''innate''' property of your [[role]] or [[race]]. For some innate properties, you need to first reach a certain experience level. For example, a [[Barbarian]] starts with [[poison resistance]] and gains intrinsic [[speed]] at level 7.
+* You might gain it "from outside". The principal ways to do this are [[crowning]], eating certain [[corpse]]s, [[eating jewelry]] or sitting on [[throne]]s.
+
+The [[gremlin]] has an attack that may steal one of eleven intrinsics. Also, you can lose an innate property if something drains you below the required level. Eating a [[disenchanter]] corpse may also remove one of the same intrinsics that gremlin attacks affect.
+
+==List of properties==
+The following tables provide a brief description of each property that the hero might have, and some notable sources of that property. (The property may have other sources.) The individual articles for each property might provide more details.
+
+The left column also gives the associated constant from [[prop.h]], if any. The right column may refer to a monster flag (like <tt>M1_FLY</tt>); then you may search [[monst.c]] to find a monster with that flag for polymorph.
+
+=== Intrinsic properties ===
+It is possible to receive any of these properties as intrinsics that never time out. Some are also available as extrinsics, or as temporary intrinsics. This list includes each property that may be intrinsic, even if the only way is to [[eating jewelry|eat the correct ring]]. (Eating a ring has a chance of failing to convey the property!)
+
+{|class="prettytable striped"
+!Common name<br />of property
+!Description<br />Notable sources
+|-
+|''[[fire resistance]]''<br /><tt>FIRE_RES</tt>
+|Prevents [[fire]] damage, but does not [[fireproof]] your [[inventory]].
+* Be a [[Monk]] at level 11, or a [[Priest]] at level 20
+* Eat a corpse (see [[fire resistance]] page)
+* Put on or eat a [[ring of fire resistance]]
+* Polymorph into a resistant monster (<tt>MR_FIRE</tt>)
+|-
+|''[[cold resistance]]''<br /><tt>COLD_RES</tt>
+|Prevents [[cold]] damage, but does not protect your [[potion]]s.
+* Be a [[Valkyrie]]
+* Be a [[Monk]] at level 13
+* Eat a corpse (see [[cold resistance]] page)
+* Put on or eat a [[ring of cold resistance]]
+* Polymorph into a resistant monster (<tt>MR_COLD</tt>)
+|-
+|''[[sleep resistance]]''<br /><tt>SLEEP_RES</tt>
+|Prevents [[sleep]]. Alternatively, [[free action]] works for potions only.
+* Be an [[Elf (starting race)|elf]] at level 4
+* Eat a corpse (see [[sleep resistance]] page)
+* Eat a [[ring of free action]] (wearing it would provide free action)
+* Polymorph into a resistant monster (<tt>MR_SLEEP</tt>)
+|-
+|''[[disintegration resistance]]''<br /><tt>DISINT_RES</tt>
+|Prevents [[instadeath]] from [[black dragon]] breath (or use [[reflection]] to block the breath); also the only way to prevent instadeath from [[wide-angle disintegration beam]]s.
+* Eat a black dragon corpse
+* Polymorph into a resistant monster (<tt>MR_DISINT</tt>)
+|-
+|''[[shock resistance]]''<br /><tt>SHOCK_RES</tt>
+|Prevents damage from electric attacks, but does not defend [[ring]]s or [[wand]]s.
+* Be a [[Monk]] at level 15
+* Eat a corpse (see [[shock resistance]] page)
+* Put on or eat a [[ring of shock resistance]]
+* Polymorph into a resistant monster (<tt>MR_ELEC</tt>)
+|-
+|''[[poison resistance]]''<br /><tt>POISON_RES</tt>
+|Prevents poisoning, also prevents the [[instadeath]] from poison.
+* Be an [[orc]], [[Barbarian]], or [[Healer]]
+* Be a [[monk]] at level 3 or a [[Tourist]] at level 20
+* Eat a corpse (see [[poison resistance]] page)
+* Wear an [[amulet versus poison]] or [[ring of poison resistance]]
+* Polymorph into a resistant monster (<tt>MR_POISON</tt>)
+|-
+|''[[regeneration]]''<br /><tt>REGENERATION</tt>
+|Increases the rate of recovery of your [[hit points]], so that they sooner return to maximum.
+* Put on or eat a [[ring of regeneration]]
+* Wield [[the Staff of Aesculapius]]
+* Polymorph into a monster with <tt>M1_REGEN</tt>; examples include [[troll]]s, [[vampire]]s and [[werecreature]]s
+|-
+|''[[searching]]''<br /><tt>SEARCHING</tt>
+|Automatically [[search]] [[square]]s around you, increasing the chance that you notice hidden doors or traps.
+* Be a [[Ranger]]
+* Be a [[Monk]] at level 9, or an [[Archaeologist]], [[Rogue]], or [[Tourist]] at level 10
+* Put on or eat a [[ring of searching]]
+* Wield [[Excalibur]]
+|-
+|''[[see invisible]]''<br /><tt>SEE_INVIS</tt>
+|Allows you to see invisible monsters (and in ''[[SLASH'EM]]'', invisible objects).
+* Be a [[Ranger]] at level 15
+* Quaff [[potion of see invisible]] (only permanent if blessed)
+* Put on or eat a [[ring of see invisible]]
+* Eat a [[stalker]] corpse while invisible
+* Polymorph into a monster with <tt>M1_SEE_INVIS</tt>
+* Drink from a [[fountain]].
+|-
+|''[[invisible]]''<br /><tt>INVIS</tt>
+|Makes you invisible. Monsters may struggle to find you and miss with their attacks.
+* Quaff a [[potion of invisibility]] (only permanent if blessed)
+* Zap oneself with a [[wand of make invisible]]
+* Wear a [[cloak of invisibility|cloak]] or [[ring of invisibility|ring]] of invisibility.
+* Eat a [[stalker]] corpse while temporarily invisible
+* Polymorph into a [[stalker]] (causes [[stunning]]) or a [[black light]]
+* Invoke the [[Orb of Detection]]
+|-
+|''[[teleportation]]/[[teleportitis]]''<br /><tt>TELEPORT</tt>
+|Every few turns, randomly teleports you around the dungeon level.
+* (Sometimes) eat a [[leprechaun]], [[nymph]], [[tengu]], or the [[Wizard of Yendor]]
+* Put on or eat a [[ring of teleportation]]
+* Polymorph into a monster with <tt>M1_TPORT</tt>
+|-
+|''[[teleport control]]''<br /><tt>TELEPORT_CONTROL</tt>
+|When you teleport, allows you to choose your destination tile.
+* Be a [[Monk]] or [[Wizard]] at level 17
+* (Sometimes) eat a [[tengu]] or the [[Wizard of Yendor]]
+* Put on or eat a [[ring of teleport control]]
+* Carry the [[Master Key of Thievery]]
+* Polymorph into a tengu (<tt>M1_TPORT_CNTRL</tt>)
+|-
+|''[[polymorph]]/[[polymorphitis]]''<br /><tt>POLYMORPH</tt>
+|Every few turns, randomly polymorphs you into another monster type.
+* Put on or eat a [[ring of polymorph]]
+|-
+|''[[polymorph control]]''<br /><tt>POLYMORPH_CONTROL</tt>
+|When you polymorph, allows you to choose the type of monster to become.
+* Put on or eat a [[ring of polymorph control]]
+* (In ''[[SLASH'EM]]'') be a [[Doppelganger]] at level 9
+|-
+|''[[levitation]]''<br /><tt>LEVITATION</tt>
+|You float in the air, and cannot reach the floor! However, you can pass over [[moat]]s, [[trap door]]s and [[pit]]s (except the pits in [[Sokoban]], due to air currents).
+* Quaff a [[potion of levitation]] (temporary)
+* Cast the spell from a [[spellbook of levitation]] (temporary)
+* Wear a [[ring of levitation]] or [[boots of levitation]]
+* Eat a ring of levitation (temporary)
+* Invoke the [[Heart of Ahriman]]
+|-
+|''[[stealth]]''<br /><tt>STEALTH</tt>
+|Allows you to move around quietly, so that your steps do not wake sleeping monsters.
+* Some roles have innate stealth (see [[stealth]] page)
+* Wear [[elven boots]], [[elven cloak]], or [[ring of stealth]]
+* Receive a [[prayer#Favors and gifts|favor from your god]] when praying
+|-
+|''[[aggravate monster]]''<br /><tt>AGGRAVATE_MONSTER</tt>
+|Increases probability that nearby sleeping monsters notice you and wake.
+* (For all heroes but cavemen and orcs) eating [[cat]] or [[dog]] meat, or [[Cannibalism|eating your own race]]
+* Sacrificing a dead pet at an [[altar]]
+* Wear or eat a [[ring of aggravate monster]]
+|-
+|''[[conflict]]''<br /><tt>CONFLICT</tt>
+|Monsters will attack other nearby monsters (including you), disregarding their tame/peaceful/hostile status.
+* Put on or eat a [[ring of conflict]]
+* Invoke [[the Sceptre of Might]]
+|-
+|''[[protection]]''<br /><tt>PROTECTION</tt>
+|Indicates that you either have intrinsic [[divine protection]], or wear an item of protection, for the purpose of the [[enlightenment]] message.
+* Buy divine protection by [[donating to priests]]
+* Wear a [[cloak of protection]] or [[ring of protection]]
+* Receive a [[prayer#Favors and gifts|favor from your god]] when praying
+|-
+|''[[protection from shape changers]]''<br /><tt>PROT_FROM_SHAPE_CHANGERS</tt>
+|Forces [[shapeshifter]]s and [[chameleon]]s to stay in normal form.
+* Put on or eat a [[ring of protection from shape changers]]
+|-
+|''[[warning]]''<br /><tt>WARNING</tt>
+|Labels unseen, undetected nearby monsters with a danger indicator from 1 to 5.
+* Be a [[Monk]] at level 7, some roles at level 15
+* Put on or eat a [[ring of warning]]
+* Carry [[the Master Key of Thievery]] or [[the Orb of Fate]]
+|-
+|''[[hunger]]''<br /><tt>HUNGER</tt>
+|Increases the rate that you lose [[nutrition]]. This is bad, unless you are trying to make room for your next meal.
+* Put on or eat a [[ring of hunger]]
+|-
+|''[[telepathy]]''<br /><tt>TELEPAT</tt>
+|Intrinsic telepathy allows you to sense most monsters (except mindless monsters), but only when you are ''[[blind]]''.
+* Eat a [[floating eye]] (100% chance) or (master) [[mind flayer]] corpse (50% chance, 100% if at maximum intelligence)
+* Receive a [[prayer#Favors and gifts|favor from your god]] when praying
+
+Extrinsic telepathy also functions in a limited radius when you are not blind.
+* Wear an [[amulet of ESP]] or [[helm of telepathy]]
+* Carry the [[Longbow of Diana]], the [[Orb of Detection]], the [[Magic Mirror of Merlin]], or the [[Platinum Yendorian Express Card]]
+|-
+|''[[speed]]''<br /><tt>FAST</tt>
+|Intrinsic speed makes you [[fast]], allowing four moves for every three turns.
+* Zap yourself with a [[wand of speed monster]]
+* Eat a [[quantum mechanic]] corpse to toggle the intrinsic
+* Receive a [[prayer#Favors and gifts|favor from your god]] when praying
+
+Extrinsic speed, and temporary intrinsic speed, make you [[very fast]], allowing five moves every three turns.
+* Quaff a [[potion of speed]]
+* Wear [[speed boots]]
+|-
+|''[[food appraisal]]''
+|Before eating something, warns you of any bad effects that might result, and allows you to abort. Lost after activating once.
+* Read a blessed [[scroll of food detection]]
+* Cast [[detect food]] at [[skilled]] or [[expert]]
+|-
+|''[[unbreathing]]''<br /><tt>MAGICAL_BREATHING</tt>
+|Allows you to survive without breathing. You can go underwater. You will not choke on your food.
+* Put on or eat an [[amulet of magical breathing]]
+* Polymorph into a breathless monster (<tt>M1_BREATHLESS</tt>)
+|-
+|''[[amphibiousness]]''
+|Allows you to breathe both in the air and underwater. You can go underwater.
+* Polymorph into an amphibious monster, such as any '''[[;]]''' (<tt>M1_AMPHIBIOUS</tt>)
+* Be ''[[breathless]]''
+|-
+|''[[jumping]]''<br /><tt>JUMPING</tt>
+|Allows you to land on another tile in one move.
+* Be a [[Knight]]
+* Wear [[jumping boots]]
+* Read [[spellbook of jumping]] (provides a spell instead of the property)
+|-
+|''[[infravision]]''<br /><tt>INFRAVISION</tt>
+|Your eyes sense the heat from warm monsters, making them visible to you, even in [[unlit]] places.
+* Play as a [[dwarf]], [[elf (starting race)|elf]], [[Gnome (starting race)|gnome]] or [[orc (starting race)|orc]] (these have <tt>M3_INFRAVISION</tt>)
+* Polymorph into a monster with <tt>M3_INFRAVISION</tt>
+|}
+
+===Extrinsic properties===
+There are no sources that provide any of these properties as an intrinsic (without polymorphing), but they have extrinsic sources:
+
+{| class="prettytable striped"
+! Common name<br />of property
+! Description<br />Notable sources
+|-
+| ''[[acid resistance]]''<br /><tt>ACID_RES</tt>
+| Prevents [[acid]] damage (from [[yellow dragon]] breath, or from eating acidic corpses), but does not rustproof your armor.
+* Wear an [[alchemy smock]] or [[yellow dragon scale mail]]
+* Polymorph into a resistant monster (<tt>MR_ACID</tt>)
+|-
+| ''[[stoning resistance]]''<br /><tt>STONE_RES</tt>
+| Prevents the [[stoning|stoning process]]. This is one way to fight [[cockatrice]]s and [[chickatrice]]s.
+* Polymorph into a resistant monster (<tt>MR_STONE</tt>), such as a [[cockatrice]], [[elemental]], [[gargoyle]] or [[black naga]]
+* (In ''[[SLASH'EM]]'') wear an [[amulet versus stone]]
+|-
+| ''[[sliming resistance]]''
+| Provides immunity to the ''[[sliming]]'' process; this protects against the slime attack of the [[green slime]].<ref>{{sourcecode|mhitu.c|1524}}, {{sourcecode|mondata.h|51}}</ref>
+* Polymorph into a [[green slime]], [[fire vortex]], [[flaming sphere]], [[fire elemental]] or [[salamander]]
+* Be ''[[unchanging]]''
+|-
+| ''[[drain resistance]]''<br /><tt>DRAIN_RES</tt>
+| Protects against loss of [[experience level]]s, for example from the [[drain life (monster attack)|drain life]] attack of monsters. Prevents [[instadeath]] from drain below level 1.
+* Wield [[Stormbringer]] or [[Excalibur]] or [[the Staff of Aesculapius]]
+* Polymorph into any [[undead]] monster, [[demon]] or [[werecreature]]{{refsrc|mondata.c|73}}
+|-
+| ''[[adornment]]''<br /><tt>ADORNED</tt>
+| Indicates that you wear a [[ring of adornment]] (of any enchantment). This intrinsic allows an [[enlightenment]] message to be displayed.
+* Wear a [[ring of adornment]] (note: [[charisma]] is modified by the ring's [[enchantment]])
+|-
+| ''[[reflection]]''<br /><tt>REFLECTING</tt>
+| Bounces [[gaze]] and [[ray]] attacks away from you, so that they do not affect you.
+* Wear [[silver dragon scale mail]]
+* Wear a [[shield of reflection]] or [[amulet of reflection]]
+* Wield [[the Longbow of Diana]]
+* Polymorph into a [[silver dragon]] (not the baby form)
+|-
+| ''[[life saving]]''<br /><tt>LIFESAVED</tt>
+| When you die, the worn [[amulet of life saving]] will resurrect you.
+* Wear an [[amulet of life saving]] (do not eat this amulet!)
+|-
+| ''[[magic resistance]]''<br /><tt>ANTIMAGIC</tt>
+| Prevents damage from certain [[trap]]s, from [[magic missile]] and certain other magic attacks, and rays/fingers of [[death (character)|death]], among other useful benefits.
+* Wear a [[cloak of magic resistance]] or [[gray dragon scale mail]]
+* Wield [[Magicbane]]
+* Carry certain [[quest artifact]]s
+|-
+| ''[[phasing]]''<br /><tt>PASSES_WALLS</tt>
+| You can walk through walls. This is useful for taking shortcuts without [[dig]]ging them, and fleeing from certain places. However, this property has no effect in [[Sokoban]].
+* Polymorph into a [[xorn]] or [[earth elemental]]
+* (In ''[[SLASH'EM]]'') cast the spell [[passwall]].
+|-
+| ''[[hallucination resistance]]''<br /><tt>HALLUC_RES</tt>
+| Prevents the effects of ''[[hallucination]]''.
+* Wield [[Grayswandir]]
+|-
+| ''[[fumbling]]''<br /><tt>FUMBLING</tt>
+| Causes you to sometimes trip while walking, accidentally drop items, fall down stairs, and have other such problems.
+
+
+* Wear [[gauntlets of fumbling]] or [[fumble boots]]
+|-
+| ''[[water walking]]''<br /><tt>WWALKING</tt>
+| You can cross water by walking on its surface (as an alternative to using levitation, magical breathing or swimming). If the boots are [[fireproof]], they may also be used to cross [[lava]].
+* Wear [[water walking boots]]
+|-
+| ''[[displacement]]''<br /><tt>DISPLACED</tt>
+| Produces a displaced image of you on a nearby square, such that monsters sometimes attack the image and miss you.
+
+
+* Wear a [[cloak of displacement]]
+* (In ''[[SLASH'EM]]'') wear [[shimmering dragon scale mail]]
+|-
+| ''[[clairvoyance]]''<br /><tt>CLAIRVOYANT</tt>
+| Every few turns, the map of the area around you appears in your mind. This helps explore new areas and discover hidden paths.
+
+
+* Buy temporary clairvoyance by [[donating to priests]]
+* Be a [[Wizard]] and wear a [[cornuthaum]]
+* Carry the [[Amulet of Yendor]]
+|-
+| ''[[energy regeneration]]''<br />ENERGY_REGENERATION
+| Your [[power]] increases toward maximum at a much faster rate, allowing you to frequently cast [[spell]]s (if you have enough [[nutrition]]).
+* Carry [[the Eye of the Aethiopica]]
+|-
+| ''[[half spell damage]]''<br />HALF_SPDAM
+|
+* Carry [[the Orb of Detection]], [[the Platinum Yendorian Express Card]], [[the Orb of Fate]] or [[the Eye of the Aethiopica]]
+|-
+| ''[[half physical damage]]''<br />HALF_PHDAM
+|
+* Carry [[the Master Key of Thievery]] or [[the Orb of Fate]]
+|-
+| ''[[sickness resistance]]''<br />SICK_RES
+| Provides complete immunity to [[sickness]]--both [[illness]] and [[food poisoning]].
+* Polymorph into a [[ghoul]] or any [[fungus]]
+|-
+| ''[[free action]]''<br /><tt>FREE_ACTION</tt>
+| Prevents paralysis in most cases. Makes the [[potion of sleeping]] harmless, but does not prevent other forms of sleep. Reduces [[stun]]ning from [[monster spell]]s to one turn.
+* Wear a [[ring of free action]] (eating it would grant sleep resistance)
+|-
+| ''[[swimming]]''<br /><tt>SWIMMING</tt>
+| Enables you to swim across [[water]]. This differs from ''[[levitation]]'' (to float across water) and ''[[breathless]]'' (to go underwater).
+* Polymorph into a swimming monster (<tt>M1_SWIM</tt>)
+* Ride a swimming [[steed]]
+* (In ''[[SLASH'EM]]'') wear [[gauntlets of swimming]]
+|-
+| ''[[sustain ability]]''<br /><tt>FIXED_ABIL</tt>
+| Prevents changes to your six [[attribute]]s. Prevents the effects of [[exercise]] and [[abuse]].
+* Put on a [[ring of sustain ability]] (eating never works)
+|-
+| ''[[flying]]''<br /><tt>FLYING</tt>
+| Enables you to fly above the ground. Flight is better than ''[[levitation]]'', because you may reach the ground and fly down stairs.
+* Polymorph into a flying monster, such as a [[dragon]] (<tt>M1_FLY</tt>)
+* Ride a flying [[steed]]
+* (In ''[[SLASH'EM]]'') wear an [[amulet of flying]]
+|-
+| ''[[unchanging]]''<br /><tt>UNCHANGING</tt>
+| Holds you to your current form. Use this to prevent unwanted [[polymorph]], or to remain forever in your polymorphed form.
+* Wear an [[amulet of unchanging]]
+|-
+| ''[[slow digestion]]''<br /><tt>SLOW_DIGESTION</tt>
+| Decreases the rate that you lose [[nutrition]], allowing you to survive longer before [[starvation]]. Also prevents [[purple worm]]s from digesting you.
+* Put on a [[ring of slow digestion]] (ring is inedible)
+|-
+| ''[[warned of monster type]]''<br /><tt>WARN_OF_MON</tt>, <tt>WARN_UNDEAD</tt>
+| Detects all monsters on the dungeon level that match certain monster types.
+
+
+* To be [[warned of orcs]], wield [[Sting]]
+* (In ''[[SLASH'EM]]'') To be [[warned of undead]], be an [[Undead Slayer]] at level 1, or [[Necromancer]] at level 3
+|}
+
+=== Intrinsics that always time out ===
+You may receive any of these properties in this table as a temporary intrinsic, but not as a permanent intrinsic. After a specific number of turns, you lose the temporary intrinsic. That may be well, because most of these properties have bad effects; you would want them to wear off over time.
+
+{| class="prettytable striped"
+! Common name<br />of property
+! Description<br />Notable sources
+|-
+| ''[[stun]]''<br /><tt>STUNNED</tt>
+| Movement commands may cause you to step in a random direction, and you may hit pets by mistake. Direction of [[Zap]]ping, spellcasting and [[firing]] also has a high chance of being randomized. Prevents [[teleport control]].
+
+* Attempt to cast a forgotten spell (sometimes).
+* Eat a [[bat]], [[giant bat]] or [[stalker]] corpse.
+* Get hit by the [[Stun (monster spell)|Stun]] monster spell, or the stunning [[gaze attack]] of [[Baalzebub]] and [[Archon]]s.
+* Polymorphing into a bat, giant bat, [[vampire bat]], [[raven]] or stalker.
+|-
+| ''[[confusion]]''<br /><tt>CONFUSION</tt>
+| Among other effects, you will mispronounce any [[scroll]] that you read (causing the scroll to have an alternate effect), and you will have trouble with [[spell]]s and [[spellbook]]s.
+* Attempt to cast a forgotten spell (sometimes).
+* Get hit by the confusing [[gaze attack]] of an [[umber hulk]]
+|-
+| ''[[blindness]]''<br /><tt>BLINDED</tt>
+| Disables your eyes, blocking your sight (unless you wear [[the Eyes of the Overworld]]). Intrinsic blindness will heal eventually, or you may use a cure such as a [[carrot]].
+* Attack of a [[raven]], explosion of a [[yellow light]].
+
+The only cure for extrinsic blindness is to remove whatever is blocking your eyes. [[Cream pie]] will eventually fall off and can also by removed by the #[[Wipe|wipe]] command.
+* Wear a [[blindfold]] or a [[towel]].
+* Polymorph into a monster without eyes (<tt>M1_NOEYES</tt>).
+|-
+| ''[[restful sleep]]''<br /><tt>SLEEPING</tt>
+| You keep falling asleep.
+
+* Wear an [[amulet of restful sleep]].
+|-
+| ''[[paralysis]]''
+| You become immobile and miss a number of turns.
+
+* Quaff a [[potion of paralysis]], or let a monster throw it at you.
+|-
+| ''[[wounded legs]]''<br /><tt>WOUNDED_LEGS</tt>
+|
+Among other effects, you can carry less [[weight]], and you cannot [[jump]] or [[kick]].
+*[[Jumping|Jump]] out of a [[Trap#^_Bear_Trap|bear trap]].
+*Kick wall, object, or nothing (sometimes).
+*Get hit by a [[xan]]'s attack.
+
+*Step on a [[Traps#^_Land_mine|land mine]].
+|-
+| ''[[hallucination]]''<br /><tt>HALLUC</tt>
+| Gives a random appearance to any monster or object on the map, so that you do not know who or what you see. In ''[[SLASH'EM]]'', hallucination also distorts the view of objects on the same square as you, including your [[inventory]].
+* Eat a [[yellow mold]] or [[violet fungus]].
+* Explosion of a [[black light]].
+|-
+| ''[[slippery fingers]]''<br /><tt>GLIB</tt>
+| Causes wielded objects to drop from your grasp.
+
+* Eat greasy food from a [[tin]].
+* Applying a cursed [[can of grease]] or choosing "-" as a target for a non-cursed one.
+|-
+| ''[[invulnerability]]''<br /><tt>INVULNERABLE</tt>
+| Blocks all damage and prevents most causes of death.
+
+* (In [[vanilla]]) only available as the "shimmering light" during [[prayer]].
+* (In ''[[SLASH'EM]]'') a weaker form of invulnerability can be obtained by quaffing a [[potion of invulnerability]].
+|-
+| ''[[monster detection]]''<br /><tt>DETECT_MONSTERS</tt>
+| Detect all monsters on the dungeon level. This property is only available as a temporary intrinsic.
+
+* Quaff a [[potion of monster detection]].
+* Read a [[spellbook of detect monsters]] and cast the spell.
+|}
+
+=== Intrinsics that cause harm on time out ===
+These temporary intrinsics do not only time out and go away, they also cause do something (typically to cause instadeath) when they time out. When you have one of these properties, you only have some number of turns to remove the property and avoid its time-out effect.
+
+{| class="prettytable striped"
+! Common name<br />of property
+! Description<br />Notable sources
+|-
+| ''[[sickness]]''<br /><tt>SICK</tt>
+| A fatal illness; you must cure this or it becomes an [[instadeath]].
+* Receive [[food poisoning]] by eating a very old [[corpse]]
+* Receive [[illness]] from the attack of [[Demogorgon]], [[Juiblex]], [[Scorpius]] or [[Pestilence]]
+|-
+| ''[[stoning]]''<br /><tt>STONED</tt>
+| Gradual stiffening will turn you into a [[statue]] (causing instadeath).
+* Attack from a monster wielding a [[cockatrice corpse]]
+|-
+| ''[[nausea]]/[[vomiting]]''<br /><tt>VOMITING</tt>
+| Can cause ''[[stun]]'' and ''[[confusion]]''; when nausea times out, you spew part of your food and lose some [[nutrition]].{{refsrc|timeout.c|51}}
+* Eat a [[tripe ration]] or a rotten [[egg]]
+|-
+| ''[[strangulation]]''<br /><tt>STRANGLED</tt>
+| Your amulet will strangle you to instadeath in five turns, unless you can somehow remove it before then.
+
+
+* Wear an [[amulet of strangulation]]
+|-
+| ''[[slime]]''<br /><tt>SLIMED</tt>
+| [[Green slime]] will overtake your body and kill you, unless you can somehow remove the slime or gain ''[[sliming resistance]]'' before that happens.
+* Attack from a [[green slime]]
+* Eat a green slime [[corpse]]
+|}
+
+== Commentary ==
+The adjective [http://www.dict.org/bin/Dict?Form=Dict2&Database=*&Query=intrinsic ''intrinsic''] refers to something that is internal, inherit, within the body. We also use the term as a noun. The antonym of ''intrinsic'' is ''extrinsic''.
+
+Oddly, sometimes [[we]] also use the term "intrinsic" to refer to any [[property]], whether that property is intrinsic or extrinsic. For example, we might refer to an "intrinsic" from a ring, though the ring is ''external'' to the character. This leads to oxymoronic phrases such as "extrinsic intrinsic".
+
+The usage of "intrinsic" to mean "extrinsic" occurs in other pages on this [[wiki]], and even within the [[source code]] of NetHack. For example, the comment at the top of [[wield.c]] refers to wielded weapons ''conveying intrinsics'', though they would actually convey extrinsics. The [[artifact.c#set_artifact_intrinsic|<tt>set_artifact_intrinsic</tt> function in artifact.c]] is another example of this usage. The <tt>mintrinsics</tt> field of <tt>struct monst</tt> stores information about both intrinsic and extrinsic [[resistance]]s of the monsters.<ref>{{sourcecode|monst.h|63}}, {{sourcecode|mondata.h|14}}, {{sourcecode|mondata.c|23}}, {{sourcecode|worn.c|260}}</ref>
+
+The <tt>struct prop</tt> that tracks properties has only separated "intrinsic" and "extrinsic" since [[NetHack 3.3.0]].<ref>{{sourcecode|NetHack 3.2.0/you.h|108}}, {{sourcecode|NetHack 3.3.0/prop.h|78}}</ref>
+
+One can justify the use of "intrinsic" to mean "extrinsic". For example, an [[amulet versus poison]] may be extrinsic to your body, but when you wear it, the effect spreads inside your body and becomes intrinsic. When you eat that [[kobold shaman]] corpse, or land on poison in a [[spiked pit]], then the poison enters your body but has no effect. There must be some intrinsic defense in your body that stops the poison, though the ring remains outside on your finger. This explanation would not work so well for an [[amulet of reflection]].
+
+If you quaff a potion that provides a property, it is an intrinsic or extrinsic property? One argument states that the contents of the potion enters your body, so the property must be intrinsic. (A look at <tt>struct prop</tt> supports that argument.) The other argument states any property from an item, including a potion, is an extrinsic. The [[potion of blindness]] seems to grant intrinsic blindness (not extrinsic blindness, which you could #[[wipe]] away), but the [[potion of speed]] seems to grant extrinsic speed, equivalent with [[speed boots]].
+
+If you acquire a property through polymorph, it is an intrinsic or extrinsic property? One argument notes that the property is intrinsic to your current form; the other argument provides that your current form is extrinsic to your true form.
+
+== Source code ==
+''For details, see [[prop.h]]''
+
+The [[source code]] defines most of the properties at {{sourcecode|prop.h|8}}. Each property has a representative integer constant. Particularly in [[objects.c]] and [[artilist.h]], the integer constants assign the properties granted by using certain [[item]]s. The integer constants also serve as array indexes into the <tt>u.uprops</tt>, an array of <tt>struct prop</tt> that records the source of each of the hero's intrinsics and extrinsics.
+
+While [[food appraisal]] and [[paralysis]] do not have constants in prop.h, they behave like other intrinsics, thus their inclusion in the lists on this page.
+
+===References===
+<references />
+
+{{nethack-366|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Properties| ]]}
+&&%s&& %s No-teleport level {4717 2006-07-10T05:10:11Z {458 Kernigh} #REDIRECT [[Non-teleport level]] #REDIRECT [[Non-teleport level]]}
+&&%s&& %s Teleportation {140175 2021-05-24T03:20:22Z {4000693 Phol ende wodan} /* Messages */ add two other teleportation-related messages '''Teleportation''' provides a quick escape to a different (often random) location. Some [[escape item]]s can teleport [[you]] away from monsters. Some monsters can also teleport themselves to flee from you.
+
+Teleportation comes from:
+
+* [[ring of teleportation]]
+* [[scroll of teleportation]]
+* [[spellbook of teleport away]]
+* [[wand of teleportation]]
+* [[teleportitis]]
+* [[trap|teleport trap]]
+* [[quantum mechanic]] attack
+* [[cursed spellbook]], especially low-level ones
+
+There are three teleport-related properties: [[teleportitis]], which teleports you horizontally at random; [[teleport control]], which lets you choose where teleports land; and teleport at will, which lets you trigger teleportitis to happen whenever you want at a power cost.
+
+Horizontal teleportation almost always moves you away from your current position, but there is a very small chance of landing on the exact same square.<ref>http://groups.google.com/group/rec.games.roguelike.nethack/msg/fd6ff9fff482a512</ref>
+
+==Valid destinations==
+
+You cannot teleport to a square that is already occupied by a monster{{refsrc|src/teleport.c|48-L61|nethack=3.6.6}}, or to one that is considered unsafe for you to occupy.{{refsrc|src/teleport.c|262|nethack=3.6.6}} If you try to do so deliberately with teleport control, you will receive the message "'''Sorry...'''" and be teleported randomly instead.{{refsrc|src/teleport.c|533|nethack=3.6.6}}
+
+In particular:
+
+* You cannot teleport into [[water]] unless you are [[levitating]], [[flying]], [[water walking]], [[magical breathing]], or polymorphed into a [[swimming]] or [[amphibious]] monster.{{refsrc|src/teleport.c|67|nethack=3.6.6|comment=Note: the Amphibious macro covers magical breathing.}}
+* You also cannot teleport onto [[lava]], unless you are levitating, flying, are fire resistant and wearing fireproof [[water walking boots]], or are polymorphed into a monster such as a [[salamander]] or [[fire elemental]] that likes lava. {{refsrc|src/teleport.c|85|nethack=3.6.6}}
+* If you're polymorphed into a [[sea monster]], you only have a 1 in 13 chance of successfully teleporting onto dry land.{{refsrc|src/teleport.c|77|nethack=3.6.6}}
+* You cannot teleport onto a [[trap]], unless there are no other valid locations to teleport to. (The game will try 200 times to pick a safe location for you before considering trapped locations.{{refsrc|src/teleport.c|424|nethack=3.6.6}}) In particular, [[magic portal]]s are considered traps, so you cannot teleport directly onto your [[quest]] portal.
+* Only [[phasing]] monsters can teleport into [[solid rock]], into [[wall]]s, [[tree]]s, [[iron bars]] or a raised [[drawbridge]], or into a [[secret door]] or a [[secret corridor]]. {{refsrc|src/teleport.c|93|nethack=3.6.6}} Teleporting onto a closed [[door]] is only possible for phasing or [[amorphous]] monsters,{{refsrc|src/teleport.c|95|nethack=3.6.6}} and only [[giant]]s and phasing monsters can teleport onto [[boulder]]s.{{refsrc|src/teleport.c||nethack=3.6.6}}
+* You cannot teleport into the [[Wizard's Tower]] from outside it, nor outside it from the inside.{{refsrc|src/teleport.c|227|nethack/3.6.6}}
+
+There is also some code that could prevent the player from teleporting in and out of force fields{{refsrc|src/teleport.c|277|nethack=3.6.6}}, but those [[deferred feature|do not exist]] in vanilla ''NetHack''.
+
+== Messages ==
+{{message|A mysterious force prevents you from teleporting!|You are on a [[non-teleport level]].}}
+{{message|You feel disoriented for a moment.|You would have teleported, but it failed because you are carrying the [[Amulet of Yendor]].}}
+{{message|Sorry...|You chose an unteleportable destination with teleport control.}}
+{{upcoming|NetHack 3.7.0|The following two messages are added.}}
+{{message|You materialize in a different location!|You teleported to a different space on your level.}}
+{{message|You materialize in the same location!|You teleported to your current space.}}
+
+==See also==
+* [[Level teleport]]
+* [[Teleport control]]
+* [[Non-teleport level]]
+
+==References==
+<references/>
+
+[[Category:Actions]]
+{{nethack-343}}}
+&&%s&& %s Teleport {4719 2006-07-10T05:29:43Z {458 Kernigh} #REDIRECT [[Teleportation]] #REDIRECT [[Teleportation]]}
+&&%s&& %s Ring of conflict {142471 2021-09-07T06:58:34Z {4001279 Umbire the Phantom}  {{ring
+ |name=conflict
+ |cost=300
+}}
+
+The '''ring of conflict''' is a [[ring]] that appears in ''[[NetHack]]''. The default [[randomized appearance]] associated with it is "a ruby ring".{{refsrc|src/objects.c|572|version=NetHack 3.6.6}}
+
+==Generation==
+The ring of conflict makes up ~3.57% of all randomly generated rings.
+
+==Effects==
+Wearing the ring will generate [[conflict]], causing all monsters within line of sight and a radius of eight squares to attack the nearest monster, including [[you]]; monsters may resist this effect dependent on level and [[monster magic resistance]]. Every even-numbered turn you wear the ring, your [[nutrition]] is decremented by 1.
+
+{{upcoming|NetHack 3.7.0|Per [https://github.com/NetHack/NetHack/commit/2f255560252b0c18ed468baf94b58654bd5413f7 this commit:]
+
+The chance to resist conflict now depends on the player's charisma, the monster's level, and the player's level. Conflict is resisted if <code>rnd(20) > min(19, (ACURR(A_CHA) - mtmp->m_lev + u.ulevel))</code> - thus, there is always at least a 5% chance to resist it. Conflict also now requires that the monster see the player, not that the monster be in the player's line of sight. These changes are imported from [[SporkHack]].}}
+
+==Strategy==
+{{Main|Conflict}}
+
+===Safe identification===
+:''See also: [[Sink#Identifying rings with a sink|Identifying rings with a sink]]
+
+Informal identification is fairly straightforward in theory: If you put on a ring and your tame [[pet]] suddenly begins attacking you, or peaceful monsters begin fighting you or each other, it is a ring of conflict. Dropping a ring of conflict into a [[sink]] will produce a message about loud noises.
+
+The main difficulty in identifying the ring, besides making sure it is non-cursed, is doing so ''safely'': Testing a suspected ring of conflict in the presence of a dangerous monster, even if they are peaceful or tame is completely inadvisable. A common [[YASD]] is to [[curse-testing|BUC test]] a ring as noncursed in a [[temple]] and immediately wear it, then quickly dying from the attacks of the [[aligned priest]] standing next to you. Finding the ring extremely early in the game can also be similarly dangerous for low-level characters with their starting pets, especially if cursed.
+
+If you have the ring on near a normally-peaceful monster such as a priest, and they attack or wield their weapon with no provocation, it is a sign to take off the ring immediately. Do '''not''' use the ring near peacefuls armed with wands, such as shopkeepers, unless you have reflection or another means of handling the magical assault. A somewhat safe method of testing rings for conflict is to make sure you and your pet are alone in a room, and that your pet cannot deal significant damage; having the pet on a [[leash]] also helps, as leashed pets will break free under conflict. 
+
+===Wearing===
+Rings of conflict are often used for thinning out sizable groups of enemies in areas such as the [[Castle]] and [[Fort Ludios]], and you can remove it once you are confident in handling the remaining survivors. Try to maintain distance from the other monsters if possible, especially in smaller rooms, and be ready to take the ring off if necessary to avoid an untimely death. Remember that monsters will only use their breath weapons against you - [[reflection]] is advised in some scenarios, both to protect yourself from rays and to aid in taking out other monsters within the group. Make sure you have access to surplus food, and keep pets well away from the area if you are concerned about them dying&mdash;or else possibly killing you themselves.
+
+Rings of conflict are also a popular choice for use on the Astral Plane by players confident in their ability to deal with the hostile [[Angel]]s that will generate, especially during [[speed ascension]]. In addition, there is a strategy often employed on the Astral Plane in particular, known as "purple rain" - the player [[reverse genocide]]s [[purple worm]]s, then wears a ring of conflict, and finally [[zap]]s or [[apply|breaks]] a [[wand of teleportation]] to send the worms around the level and clear out many of the powerful monsters present.
+
+Yet another use for the ring of conflict is simply to distract tougher monsters you do not wish to fight directly, e.g. [[shade]]s - even if they are not reliably killed in the ensuing combat, any monster attacking other nearby hostiles is one less monster targeting you.
+
+===Farming===
+Rings of conflict also have uses in [[gremlin farming]], where wearing and removing one while a [[gremlin]] is on a level with [[water]] can be used to multiply their numbers and generate corpses for sacrifice.
+
+===Eating===
+While the ring of conflict can be [[eating jewelry|eaten]] for a chance of obtaining conflict as an [[intrinsic]], this has the same nutrition cost as extrinsic conflict, minus the [[ring hunger]] - in addition, conflict is one of the few intrinsics that cannot be stolen by [[gremlins]] or removed by any other means. Combined with the increased frequency of monster attacks, including peacefuls and pets, and some especially dangerous monsters being immune, this is generally a [[bad idea]].
+
+==History==
+The ring of conflict is one of the many items present in the game since [[Hack 1.0]].
+
+==Messages==
+{{message|You hear loud noises coming from the drain.|You dropped a ring of conflict down a sink}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], a ring of conflict can be found in [[The Spider Caves]].
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Rings|Conflict]]}
+&&%s&& %s Fox {35561 2008-10-16T19:22:17Z {0 } Redirecting to [[Canine#Fox]] #REDIRECT [[Canine#Fox]]}
+&&%s&& %s Escape item {138156 2021-03-01T06:22:52Z {4001279 Umbire the Phantom} /* Frequently useful escape items */ An '''escape item''' refers to any object that can instantly get you out of trouble. These are the ones you will search your inventory for when cornered by a tough [[monster]], being pulled underwater, or something similar.
+As a general note, scrolls and potions can get destroyed, and some intelligent artifacts will blast you, so you might want to carry one of the less vulnerable cures to each trouble in your main inventory at all times. Being prepared is key to winning NetHack.
+
+==Frequently useful escape items==
+
+Some common escape items are:
+
+; [[Scroll of teleportation]]
+: An obvious one — teleports you out.<ref name="c"/> A [[BUC|cursed]] scroll of teleportation is noteworthy as it will not only teleport you away from your current predicament but also place you on a different [[dungeon level]]<ref name="warning"/>.
+; Cursed [[potion of gain level]]
+: Moves you through the ceiling to an upper dungeon level.<ref name="warning">Will not work on [[follower|followers]], who will pursue you if adjacent.</ref>
+; [[The Eye of the Aethiopica]]
+: Opens a portal for you to any visited [[dungeon branch]] when [[invoke|#invoked]].<ref name="warning"/>
+:: This is unreliable if used too often because [[rnz]] might draw huge timeouts (up to 2,000 turns).
+; [[The Orb of Fate]].
+: Can be invoked for level teleportation.<ref name="warning"/>
+:: This is unreliable if used too often because [[rnz]] might draw huge timeouts (up to 2,000 turns).
+; [[Wand of digging]]
+: [[Zap]] this downwards and fall to the next dungeon level<ref name="warning"/>, or engrave [[Elbereth]].
+::You won't fall if a monster is [[holding attack|holding]] you.
+; [[Scroll of genocide]]
+: Can instantly kill the monster that is about to kill you.
+::Note that reading an [[BUC|uncursed]] scroll of genocide while confused is a very [[Bad Idea]], and reading a cursed scroll of genocide will create even more monsters rather than getting rid of them.
+; [[Wand of teleportation]]
+: Same as the scroll, except that the wand gives you the choice of teleporting the monster instead, and a cursed wand won't teleport you to a different level. The wand is much more useful on no-teleport levels, as teleporting monsters will work even on no-teleport levels.<ref name="c">[[Covetous]] monsters will still be able to go to you immediately, regardless of how far you are from them.</ref>
+; [[Wand of cold]]
+: If you are being pulled underwater, you can use this wand to freeze the water that the [[sea monster]] is swimming in, thus preventing it from drowning you. It also deals significant damage, and stands a pretty good chance of destroying most early-game threats in one strike.
+; [[Wand of fire]] or [[wand of lightning]]
+: Can be used to [[engrave]] [[Elbereth]] permanently and quickly. The wand of lightning, however, will blind you, and there are monsters that don't respect [[Elbereth]]. Also, like the [[wand of cold]], these can be used to simply nuke the attacking monster. Fire can also be used to cure [[sliming]]. Lightning will not explode when you get [[shock]]ed.
+; Non-cursed [[scroll of earth]]
+: You can use this one in an open space to create a [[boulder fort]] around you, possibly giving you the time to heal. If it is not blessed, one of the boulders will fall on your head, damaging you. It can also be used to save yourself from a sea monster's [[drowning attack]], but this has a 10% chance of failure and thus shouldn't be relied on.
+; [[Wand of polymorph]]
+: Zap that monster that is about to kill you and change it into another (hopefully easier) monster, unless it [[monster magic resistance|resists]].  You can also zap yourself with it, using it as a makeshift healing device (if your HP reaches 0 when you are polymorphed, you change back to your original form instead of dying).
+::This should be your last resort, as the monster may very well become much tougher than whatever it was before, or you could kill yourself with system shock, not to mention that using this wand for [[polypiling]] is a much better use for it. Minotaurs and air elementals engulfing you are worthy targets, though.
+; Non-cursed [[athame]], including [[Magicbane]]
+: You can engrave [[Elbereth]] in one turn whenever needed.
+; [[Tooled horn]] or [[leather drum]]
+: Scares monsters, 80% chance, even those that don't respect Elbereth.
+: Can be [[Magic resistance (monster)|resisted]].
+; [[Expensive camera]]
+: May blind or scare seeing monsters, causing them to be less effective at attacking you and/or to flee.
+::[[Elbereth]] will not work on [[blinded]] monsters, but does work on eyeless ones.
+; [[Magic whistle]]
+: Summons your pet(s), which can then either attack the monster or block its path to you.
+; [[Wand of Death]]
+: Will kill most enemies in one turn. However, there is a slight chance of missing. Beware of having the beam bounce and hit you (or your pet), unless you have reflection or magic resistance. [[apply|(A)pply]] it if you are surrounded (if you can survive the blast damage).
+; [[Lizard]] corpse or [[potion of acid]]
+: Not strictly for running away, but cures stoning in one turn. Note that [[tin]]s of acidic monsters will also work, but take at least two turns to consume, and the spell of [[stone to flesh]] has other drawbacks. Don't choke on the lizard.
+; [[Amulet of life saving]]
+: Remember to put on another one when it's used up!
+
+==Lesser escape items==
+A few other items have defensive properties that may not be quite so obvious.
+* Several attack [[wands]] can be thrown at wand-using nasties that have troublesome melee attacks when the player is already immune to them either by [[resistances]], [[reflection]] or [[magic resistance]]. 
+* [[Create monster]] can be used to generate lesser nasties to block some already generated worse ones. In a similar vein a cursed [[scroll of genocide]] is even more practical, but it often has other uses, whereas the wands and scrolls of create monster are typically abundant.
+
+==Strategy==
+You might want to [[adjust|assign]] fixed [[adjust|inventory letters]] to the following items and carry them in your main inventory at all times:
+* a blessed [[unicorn horn]]
+* a known-charged [[wand of teleport]]
+* a [[lizard]] corpse
+* a known-charged [[wand of digging]]
+* a known-charged [[wand of lightning]] or [[wand of fire|fire]]
+The above selection covers the most common or pressing problems without burdening you down too much.
+
+NetHack is a game of risk management. That's why escape items are so important.
+
+== References ==
+<references/>
+
+==See also==
+*[[Things To Do If You're Going to Die Next Turn]]
+[[Category:Items]]
+[[Category:Strategy]]
+{{nethack-343}}}
+&&%s&& %s Heart of Ahriman {4739 2006-07-11T02:43:03Z {924 ZeroOne} #REDIRECT [[The Heart of Ahriman]] #REDIRECT [[The Heart of Ahriman]]}
+&&%s&& %s Platinum Yendorian Express Card {4740 2006-07-11T02:43:31Z {924 ZeroOne} #REDIRECT [[The Platinum Yendorian Express Card]] #REDIRECT [[The Platinum Yendorian Express Card]]}
+&&%s&& %s Magic Mirror of Merlin {4741 2006-07-11T02:48:14Z {924 ZeroOne} #REDIRECT [[The Magic Mirror of Merlin]] #REDIRECT [[The Magic Mirror of Merlin]]}
+&&%s&& %s Master Key of Thievery {4742 2006-07-11T02:48:35Z {924 ZeroOne} #REDIRECT [[The Master Key of Thievery]] #REDIRECT [[The Master Key of Thievery]]}
+&&%s&& %s Mitre of Holiness {4743 2006-07-11T02:48:49Z {924 ZeroOne} #REDIRECT [[The Mitre of Holiness]] #REDIRECT [[The Mitre of Holiness]]}
+&&%s&& %s Orb of Detection {4745 2006-07-11T02:49:09Z {924 ZeroOne} #REDIRECT [[The Orb of Detection]] #REDIRECT [[The Orb of Detection]]}
+&&%s&& %s Orb of Fate {4747 2006-07-11T02:51:57Z {924 ZeroOne} #REDIRECT [[The Orb of Fate]] #REDIRECT [[The Orb of Fate]]}
+&&%s&& %s Container {150293 2023-03-21T18:39:16Z {4000114 Derekt75} /* Generation */ fix link A '''container''' is one of the following items: 
+* [[large box]]
+* [[chest]]
+* [[ice box]]
+* [[sack]]
+* [[oilskin sack]]
+* [[bag of holding]]
+
+Each can store an unlimited number of items (objects or money), but may become too heavy to lift as a consequence. For a container that's in your inventory, you can access its contents with the [[apply]] command. If the container is on the ground, you can do the same by using the #[[loot]] command. 
+
+Even though the [[bag of tricks]] is defined with the `CONTAINER` macro in [[objects.c]] (and an unidentified one appears as a "bag", like three other containers), it cannot actually store items in vanilla NetHack.
+
+A [[statue]] can also function as a container; this causes messages like, "The statue of the [[Foo]] is empty."{{refsrc|end.c|948}} The contents correspond to the [[inventory]] of that monster before it was stoned. Some statues are generated with spellbooks inside.
+
+The [[floor]] and [[ice]] are also technically containers, and can store buried items (e.g. under a randomly generated [[headstone]]). These items can be accessed by digging a [[pit]].
+
+== General properties ==
+
+As long as a container is not destroyed or polymorphed, all its contents stay unchanged, protected from any magical or physical influence, with four exceptions:
+* [[Corpse#Aging|Aging]]: Only an [[ice box]] preserves eggs and corpses from (further) aging; in other containers they rot as usual. Furthermore, [[troll]] corpses in containers can still resurrect, unless the container is locked.
+* [[Wet]]ting: If you get into or under the water without wearing an [[oilskin cloak]], only a non-cursed [[oilskin sack]], a [[chest]], an [[ice box]], or a [[large box]] completely protects its contents from the water damage. 
+* [[Fragile|Breaking]]: If a container is kicked, thrown, or dropped from height, fragile objects in it may break. A [[bag of holding]] is a magical container, and will protect its fragile contents from damage.
+* Vanishing: When opening a cursed bag of holding, each item inside has a chance of vanishing.
+
+In particular, containers completely protect their contents from [[fire]], [[cold]], [[shock]], [[cancellation]], being stolen or picked up by monsters, being identified, and changing their [[BUC]]. There is no monster in the game that can access containers' contents (but see below for [[gelatinous cube]]s).
+
+When you carry a container, its contents do not take up slots (letters) in your inventory. Therefore, you can normally carry only 52 object stacks in your main inventory, but with a container, you can carry an unlimited number of objects.
+
+If a container is trapped, opening it manually will trigger the trap.
+
+The [[unique item]]s cannot be placed into containers. A [[cheap plastic imitation of the Amulet of Yendor]] can, however; this is commonly used to distinguish the [[Amulet of Yendor|real Amulet]] from fake ones.
+
+All of the containers except ice boxes can be eaten by [[gelatinous cube]]s; the contents will be engulfed. but unharmed, and can be found on the cube's corpse once killed. If you are polymorphed into a gelatinous cube, you can eat these containers only if they are empty.
+
+When a container is polymorphed (even to another container, or even to the same container), all of its contents are destroyed.
+
+{{upcoming|NetHack 3.7.0|Monsters now pick up containers and can loot containers other than a cursed bag of holding. As of yet, monsters cannot open locked containers.}}
+
+== Containers within containers ==
+
+Generally, containers may contain other containers. However, there are exceptions.
+* Large boxes, ice boxes, and chests are too big to fit into any other container.
+* If you put a [[bag of holding]], charged [[bag of tricks]], or charged [[wand of cancellation]] into a bag of holding, the bag will explode, destroying all its contents including the item that caused the explosion.
+
+Attempting to place a container into itself yields the message "That would be an interesting topological exercise."
+
+==Generation==
+Containers created via normal generation (i.e. outside of [[bones]] files or [[trap]] "bones") are uncursed, with the contents as described below:
+
+Containers will not be generated containing tools, weapons, armor, or rocks. Containers in your starting inventory will be empty.
+
+If the container can be locked, then there is an 80% chance that it will be generated locked and, independently, a 10% chance that it will be [[Container trap|trapped]].
+
+{|class="wikitable"
+!Container
+!Contents
+!Lockable
+!Probability
+|-
+|sack
+|0&ndash;1 items
+|No
+|3.5%
+|-
+|large box
+|0&ndash;3 items
+|Yes
+|4.0%
+|-
+|chest
+|0&ndash;5 items
+|Yes
+|3.5%
+|-
+|ice box
+|0&ndash;20 corpses
+|No
+|0.5%
+|-
+|bag of holding
+|0&ndash;1 items
+|No
+|2.0%
+|-
+|bag of tricks
+|1&ndash;20 charges
+|No
+|2.0%
+|-
+|oilskin sack
+|0&ndash;1 items
+|No
+|0.5%
+|}
+
+Tools can be generated in the [[Dungeons of Doom|main dungeon]] (8% of all [[object]]s) and [[Gehennom]] (12% of all objects). Each tool has the given probability of being a container.
+
+Large boxes and chests with contents may generate within some rooms in an ordinary room-and-corridor level.{{refsrc|src/mklev.c|839|nethack=3.6.1}}  Large boxes are twice as common as chests.  A comment in the source cites a 40% chance of at least one container (with a low probability of extra ones); the actual chance is slightly lower and depends on the number of rooms and presence of a [[special room]]; a good estimate is 34% without a special room and 30% with one.  <!-- Calculated for the number or rooms ranging from 6 to 10 (typical levels); more precise ranges are 33.5% to 34.6% and 29.2% to 31.1%. -->
+
+[[Quantum mechanic]]s may carry a large box containing a [[housecat]] named [[Schroedinger's Cat]].
+
+Items generated in a container (other than an ice box) will each be one of the following types:
+
+{|class="prettytable"
+!Type
+!Probability
+|-
+|gem or stone
+|18%
+|-
+|comestible
+|15%
+|-
+|potion
+|18%
+|-
+|scroll
+|18%
+|-
+|spellbook
+|12%
+|-
+|gold
+|7%
+|-
+|wand
+|6%
+|-
+|ring
+|5%
+|-
+|amulet
+|1%
+|}
+
+Weapons, armor, and tools (including other containers) will never be generated in a container. Gold generated in containers will be 2.5 times the usual amount. Gemstones, glass, luckstones, and loadstones can all be generated, but flint stones, touchstones, and rocks cannot. A [[wand of cancellation]] will never be generated in a bag of holding.
+
+== Unlocking ==
+To unlock a locked container, you can:
+* [[Apply]] an [[unlocking tool]] to it.
+* [[Zap]] a [[wand of opening]] at it.
+* [[Kick]] it. Because this often destroys [[fragile]] items inside, it's not the best method.
+* Cast the {{spell of|knock}} spell at it
+* [[Force]] the lock with your currently-wielded weapon. Using a blunt weapon (such as a war hammer, staff, or mace) [[exercise]]s [[strength]] but risks destroying the container or its contents. Using a sharp weapon (such as a dagger, sword, or axe) exercises [[dexterity]] but risks destroying the weapon. [[Artifact weapon]]s are much less likely to break.  [[Cursed]] weapons will never break, preventing locks from being used to get rid of them.
+
+Usually, you will find enough disposable uncursed [[orcish dagger]]s to force with until you get an [[unlocking tool]]. If no other options are available, you could use a junk artifact such as [[Sting]], but chest contents in the early game aren't usually worth risking a good weapon or creating Sting.
+
+===Messages===
+{{message|You succeed in unlocking the <container>.|You successfully applied an unlocking tool.}}
+{{message|Klick!|You unlocked it magically, with either the spell of knock or a wand of opening.}}
+{{message|THUD!|You kicked it and didn't open it.}}
+{{message|THUD! The lid slams open, then falls shut.|It wasn't locked, and you kicked it open.}}
+{{message|You break open the lock!|It was locked, and you kicked the lid open.}}
+{{message|You hear a muffled shatter.|You kicked it, and at least one breakable item inside was destroyed.}}
+{{message|You hear a muffled cracking.|You kicked it, and at least one [[egg]] inside was destroyed.}}
+
+==Breakable items==
+If a container is [[kick]]ed, [[throw]]n, or dropped from a height, contents which are [[fragile]] (such as potions, mirrors, and eggs) may be destroyed.
+
+When glass objects in a bag, large box, or chest break, you hear a muffled shatter. An egg gives a muffled cracking when it breaks. You will lose that object and will not know what it was.
+
+If a mirror in a box is destroyed through your actions, you will still incur a [[Luck]] penalty. However, mirrors and other tools are never randomly generated inside boxes.
+
+== History ==
+
+Prior to [[NetHack 3.2.0]], a popular technique for identifying worthless glass was called "kickboxing". One would gather a large pile of gems, name all of them "fake red" or whatever color, dump them in a box, and then repeatedly kick the box until no more muffled shatters were heard. One would then retrieve the remaining gems and un-name them. In this way, glass of all colors could be identified. Starting with NetHack 3.2.0, worthless glass no longer breaks, so kickboxing no longer works.
+
+== Variants ==
+===Iron safe===
+
+This is a container added to [[SporkHack]] (and later to [[UnNetHack]] and then [[EvilHack]]). It is possible to open it using a [[wand of opening]], {{spell of|knock}} spell, or [[stethoscope]]. The only way to lock an iron safe after it's been opened is to use either a [[wand of locking]] or the {{spell of|wizard lock}} spell on it.
+
+===Magic chest===
+
+In [[DynaHack]], magic chests are [[dungeon feature]]s (not items) that are generated at fixed places in the dungeon. They share their contents, so putting items in any magic chest makes them available for looting in all other magic chest locations.<ref>https://github.com/tung/DynaHack/commit/b97d99ed27123fa0717ef8368b4f0d49d815c2c8</ref> (See below for [[FIQHack]]'s magic chests.)
+
+In [[NetHack Fourk]], magic chests have some items inside when you first open one, randomized but suited for your role.  Also, you can create a magic chest in any location by reading a [[scroll of consecration]] while confused.
+
+In [[dNetHack]], magic chests are items rather than dungeon features, and they have 10 slots for different compartments for those willing to categorize items. All of the compartments are shared similarly across all chests. As items, they can be [[wish]]ed for as long as you're not in the Planes. They're heavier than the normal theoretical max capacity, but with some of the items in dNetHack that increase it further, this can be worked around. Items in a magic chest do not add to the weight, allowing you to theoretically carry an infinite amount of items in them if you can comfortably carry a magic chest. However, you cannot open them from the inventory, so they can't make a normal bag of holding fully obsolete.
+
+=== FIQHack ===
+
+[[FIQHack]] has magic chests, similar to DynaHack or Nethack Fourk.  They are objects but they behave like dungeon features - they can't be picked up, teleported, polymorphed, etc.  You can create a magic chest by wishing for one.  Minetown, Sokoban, the Castle, Orcus-town, and the quest home all have magic chests.
+
+Also note that monsters in FIQHack can use containers - they can carry items in bags and loot items from containers on the floor.  The Castle chest is special-cased to prevent monsters from stealing the guaranteed wand of wishing.
+
+== References ==
+<references/>
+
+{{featured}}
+[[Category:Tools]]
+{{nethack-360|offset=1}}}
+&&%s&& %s Coin {4753 2006-07-11T18:02:43Z {630 Paxed} redirect to zorkmid #REDIRECT [[Zorkmid]]}
+&&%s&& %s Scroll of remove curse {148487 2022-10-05T00:49:19Z {4001279 Umbire the Phantom} de-SLEX {{scroll|name=remove curse|cost=80|ink=8-15}}
+
+Reading a '''scroll of remove curse''' will end [[punishment]] and can uncurse items.
+
+== Effects ==
+If uncursed, reading this scroll uncurses cursed worn or wielded items, [[loadstone]]s, [[leash]]es in use, and [[stackable]] [[weapon]]s or [[Projectile#Launchers and their ammunitions|ammunition]] in your [[quiver]]. If the scroll is blessed, it will instead uncurse all cursed items in your main inventory. If the scroll is cursed, it will not remove (or add) a curse from any items, but instead disintegrate; regardless of the scroll's [[beatitude]], it will also end any [[punishment]] by destroying the chain and leaving the iron ball behind.
+
+If read while confused, each of your affected uncursed items have a 25% chance of becoming blessed and a 25% chance of becoming cursed; blessed and cursed items retain their [[beatitude]], and it has no effect on punishment. As with a non-confused reading, a confused reading of an uncursed scroll affects only your worn/wielded items, whereas a blessed scroll affects your entire main inventory; the chance is calculated independently for each stack of items (assigned to a single inventory letter). In addition, all affected items will have their beatitude hidden, which can be re-identified through the usual methods (e.g., dropping them on an altar or identifying them formally).{{refsrc|read.c|941}}
+
+{| class="prettytable striped"
+|-
+! 
+! Non-confused
+! Confused
+|-
+| Cursed
+| Unpunishes
+| No effect
+|-
+| Uncursed
+| Unpunishes, and uncurses all cursed equipped items and loadstones
+| Unpunishes, removes BUC identification on all equipped items and loadstones, and randomly curses/blesses uncursed equipped items
+|-
+| Blessed
+| Unpunishes, and uncurses all cursed items in open inventory
+| Unpunishes, removes BUC identification on your entire open inventory, and randomly curses/blesses uncursed items in open inventory
+|}
+
+{{upcoming|NetHack 3.7.0|A non-cursed scroll of remove curse will now also affect a saddle [[you]] are riding on (uncurses it normally, or may bless or curse it if you are confused).}}
+
+== Messages ==
+{{message|You feel like someone is helping you.|You read the scroll normally.}}
+{{message|You feel like you need some help.|You read the scroll while confused.}}
+{{message|You feel in touch with the Universal Oneness.|You read the scroll while [[hallucinating]].}}
+{{message|You feel the power of the Force against you!|You read the scroll while hallucinating and confused.}}
+{{message|The scroll disintegrates.|This message will be appended to any of the above lines if the scroll being read is cursed.}}
+
+== Strategy ==
+
+=== Uncursing ===
+
+An uncursed scroll will uncurse only all worn and wielded items (and quivered projectiles), but if your weapon isn't cursed you can also use it to uncurse a miscellaneous item within your inventory. Simply [[wield]] the cursed item – you have to specify the inventory letter directly or press {{kbd|*}} to get the full list of your inventory, rather than the recommended weapons – and read the scroll. The item wielded will then be uncursed. If your stack of [[dagger]]s, [[dart]]s, [[knife|knives]], [[spear]]s, [[arrow]]s, [[crossbow bolt]]s, or other stackable weapons/ammunition is cursed, you can quiver it to uncurse it at the same time.
+
+=== Holy and unholy water ===
+
+Blessed scrolls can also be used to create holy and unholy water without the use of [[altar]]s or [[pray]]er.  Simply [[adjust]] all of your potions of water until they are no longer stacked. Then drop all other items, or at least any items you don't want to randomly bless/curse, and read the blessed scroll while confused.
+
+This will curse roughly 25% and bless roughly 25% of uncursed items in your inventory. Drop the potions or use the [[adjust]] command to re-stack them.  The blessed clear potions are holy water and cursed clear potions are unholy. If you cannot altar-test, you can also pet-test for unholy water, and then dip a blessed, non-erodable object<ref>e.g. a wizard's starting quarterstaff</ref> into the remaining two stacks – only the uncursed water will wet it. Alternatively, dip the remaining two stacks into each other, or check with a shop, or simply guess that the larger stack is uncursed.
+
+=== Mass blessing ===
+
+Some players mainly use this scroll to mass-bless items of the ascension kit or certain types of polypile fodder. Since it will also curse items, it is recommended to learn the spell {{spell of|remove curse}} at a skilled level or to exploit the light blue aura boon when [[pray]]ing. On average, 12.25 items are blessed per scroll – this is one of the most resource-conserving way in the game to bless large quantities of non-stackable items. Only [[weapon]]s, and [[weapon-tool]]s can be blessed more efficiently: by praying on an altar while wielding them. (The other is using the [[Platinum Yendorian Express Card]] to repeatedly recharge a [[horn of plenty]], dilute and bless the potions produced by applying the horn. This method consumes no depletable resources, but is very slow, especially if the character is not a [[Tourist]]).
+
+== References ==
+<references />
+
+[[Category:Scrolls|Remove curse]]
+{{nethack-361}}}
+&&%s&& %s Loadstone {148344 2022-10-04T22:31:13Z {4001279 Umbire the Phantom} /* SLASH'EM */ pothole {{weapon
+  |color=gray
+  |glyph=*
+  |tile=[[Image:Gray stone.png]]
+  |name=loadstone
+  |appearance=[[gray stone]]
+  |smalldmg=1d3
+  |largedmg=1d3
+  |skill=sling
+  |cost=1
+  |noenchant=true
+  |weight=500
+  |material=mineral
+}}
+
+A '''loadstone''' is a type of [[gem]] that appears in ''[[Nethack]]''. It is one of the four kinds of [[gray stone]]s, and is the least desirable of them by far.
+
+==Generation==
+Normally-generated loadstones on the dungeon's floor are always generated [[cursed]]. {{frac|10|11}} of loadstones inside [[container]]s are generated cursed; the other {{frac|11}} of those are generated non-cursed.
+
+Player monsters generated on the [[Astral Plane]] have a {{frac|30}} chance to be generated carrying a loadstone.{{refsrc|src/mplayer.c|283|version=NetHack 3.6.6}}
+
+==Description==
+A loadstone weighs slightly more than an [[iron ball]], and ultimately serves as a "gotcha" item for the unwary: if you pick a cursed one up, you cannot [[drop]] it or place it into a [[container]]. Any setting of the <code>[[Options#pickup_burden|pickup_burden]]</code> option will be ignored if the character attempts to pick up a loadstone, and other inventory restrictions may be ignored as well&mdash;if a character's [[inventory]] has already reached the 52-item limit, the loadstone will still be picked up and assigned {{white|[[Hash mark|#]]}} as the inventory position. A loadstone will [[autocurse]] once it is dropped or leaves your main inventory in any other way.
+
+Despite its weight, a loadstone does not do any more damage than a [[flint stone]] when thrown.
+

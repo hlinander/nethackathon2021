@@ -1,0 +1,1000 @@
+|-
+|[[quantum mechanic]]||Q||if [[Ken Arromdee|KAA]] defined at compile time (default)
+|-
+|[[quasit]]||Q||if [[Ken Arromdee|KAA]] ''not'' defined at compile time
+|-
+|[[giant spider]]||s||if SPIDERS defined at compile time (default)
+|-
+|[[scorpion]]||s||if SPIDERS ''not'' defined at compile time
+|-
+|[[long worm]]||w||if NOWORM ''not'' defined at compile time (default)
+|-
+|[[wumpus]]||w||if NOWORM defined at compile time
+|-
+|}
+
+== Objects ==
+
+New objects are indicated in boldface.
+
+=== Artifacts ===
+
+NetHack 2.2a has three artifacts.  Multiple copies of each may exist.
+
+Any [[two handed sword]] may be named [[Orcrist]] and will do d10 extra points damage to [[orc]]s{{refsrc|fight.c|321|version=NetHack 2.2a}}.  
+
+[[Excalibur]] is obtained in the modern fashion (save that there's no requirement to be lawful, as [[alignment]] is not yet implemented).  That is, it is no longer necessary to first name the sword Excalibur, and in fact the player cannot name ''any'' object Excalibur.  It no longer becomes +5, but instead gets +5 to hit and does d10 extra damage to all monsters{{refsrc|fight.c|315|version=NetHack 2.2a}}.  Wielding Excalibur makes [[demon]]s angry (previously they might ask for a bribe) and can call the attention of certain monsters.  Excalibur may now be granted by [[crowning]].
+
+[[Snickersnee]] is new to 2.2a.  Any [[katana]] may be named Snickersnee and will do d5 extra points damage to all monsters{{refsrc|fight.c|319|version=NetHack 2.2a}}.
+
+=== Amulets ===
+
+Only the [[Amulet of Yendor]] and the cheap plastic imitation exist in NetHack 2.2a.
+
+=== Food ===
+
+Food items in NetHack 2.2a are:
+
+* [[food ration]]
+* [[tripe ration]]
+* [[pancake]]
+* [[lizard corpse|dead lizard]]
+* [[fortune cookie]]
+* [[carrot]]
+* slice of pizza
+* [[cream pie]]
+* [[tin]]
+* [[orange]]
+* [[apple]]
+* [[pear]]
+* [[melon]]
+* [[banana]]
+* [[candy bar]]
+* [[egg]]
+* [[clove of garlic]]
+* [[lump of royal jelly]]
+* [[corpse]] (called ''dead foo'' rather than ''foo corpse'')
+
+The tin did not contain the remains of monsters, but rather a randomly-chosen food such as peaches or, if the adventurer is lucky, [[spinach]].
+
+The dead lizard is a found object rather than a corpse; live lizards do not exist in NetHack 2.2a.    It otherwise has its modern properties in this version.
+
+=== Weapons ===
+
+Weapons in NetHack 2.2a are:
+
+* [[arrow]]
+* sling bullet
+* [[crossbow bolt]]
+* [[dart]]
+* [[shuriken]]
+* [[rock]]
+* [[boomerang]]
+* [[mace]]
+* [[axe]]
+* [[flail]]
+* [[long sword]]
+* [[two-handed sword|two handed sword]]
+* [[dagger]]
+* [[worm tooth]]
+* [[crysknife]]
+* [[aklys]]
+* [[bardiche]]
+* [[bec de corbin]]
+* [[bill-guisarme]]
+* [[club]]
+* [[fauchard]]
+* [[glaive]]
+* [[guisarme]]
+* [[halberd]]
+* [[lucern hammer]]
+* [[javelin]]
+* [[katana]]
+* [[lance]]
+* [[morning star]]
+* [[partisan]]
+* [[ranseur]]
+* [[scimitar]]
+* [[spetum]]
+* [[broad sword]]
+* [[short sword]]
+* [[trident]]
+* [[voulge]]
+* [[spear]]
+* [[bow]]
+* [[sling]]
+* [[crossbow]]
+
+=== Tools ===
+
+Tools in NetHack 2.2a are:
+
+* [[tin whistle|whistle]]
+* [[leash]]
+* [[magic whistle]]
+* '''[[blindfold]]'''
+* '''[[mirror]]'''
+* [[expensive camera]]
+* [[ice box]]
+* [[pick-axe]]
+* [[magic marker]]
+* [[stethoscope]]
+* [[tin opener|can opener]]
+
+The ice box is the only container.  Then as now, it preserved corpses, and was generally too heavy (and too rare) to be useful for inventory management.
+
+=== Armor ===
+
+Armor items in NetHack 2.2a are:
+
+* [[helmet]]
+* [[plate mail]]
+* [[splint mail]]
+* [[banded mail]]
+* [[chain mail]]
+* [[scale mail]]
+* [[ring mail]]
+* [[studded leather armor]]
+* [[elven mithril-coat|elfin chain mail]]
+* [[bronze plate mail]]
+* [[crystal plate mail]]
+* [[leather armor]]
+* [[elven cloak]]
+* [[shield]]
+* [[leather gloves|pair of gloves]]
+
+=== Potions ===
+
+Potions in NetHack 2.2a are:
+
+* [[Potion of restore ability|potion of restore strength]]
+* [[potion of gain energy]]
+* [[potion of booze]]
+* [[potion of invisibility]]
+* [[potion of fruit juice]]
+* [[potion of healing]]
+* [[potion of paralysis]]
+* [[potion of monster detection]]
+* [[potion of object detection]]
+* [[potion of sickness]]
+* [[potion of confusion]]
+* [[Potion of gain ability|potion of gain strength]]
+* [[potion of speed]]
+* [[potion of blindness]]
+* [[potion of gain level]]
+* [[potion of extra healing]]
+* [[potion of levitation]]
+* [[potion of hallucination]]
+* [[potion of water|potion of holy water]]
+
+=== Scrolls ===
+
+Scrolls in NetHack 2.2a are:
+
+* [[scroll of mail]] (unconditional, even though mail daemon is dependent on MAIL)
+* [[scroll of enchant armor]]
+* [[scroll of destroy armor]]
+* [[scroll of confuse monster]]
+* [[scroll of scare monster]]
+* [[scroll of blank paper]]
+* [[scroll of remove curse]]
+* [[scroll of enchant weapon]]
+* scroll of damage weapon
+* [[scroll of create monster]]
+* [[scroll of taming]]
+* [[scroll of genocide]]
+* [[scroll of light]]
+* [[scroll of teleportation]]
+* [[scroll of gold detection]]
+* [[scroll of food detection]]
+* [[scroll of identify]]
+* [[scroll of magic mapping]]
+* [[scroll of amnesia]]
+* [[scroll of fire]]
+* [[scroll of punishment]]
+
+The scroll of damage weapon acts as the modern scroll of enchant weapon does when [[curse]]d.  The scroll of genocide acts, in all cases, as the modern blessed scroll; but most symbols refer to only one monster anyway.
+
+=== Wands ===
+
+Wands in NetHack 2.2a are:
+
+* [[wand of light]]
+* [[wand of secret door detection]]
+* [[wand of create monster]]
+* [[wand of wishing]]
+* [[wand of striking]]
+* [[wand of nothing]]
+* [[wand of slow monster]]
+* [[wand of speed monster]]
+* [[wand of undead turning]]
+* [[wand of polymorph]]
+* [[wand of cancellation]]
+* [[wand of teleportation]]
+* [[wand of make invisible]]
+* [[wand of probing]] (if PROBING defined at compile time)
+* [[wand of digging]]
+* [[wand of magic missile]]
+* [[wand of fire]]
+* [[wand of sleep]]
+* [[wand of cold]]
+* [[wand of death]]
+
+=== Spellbooks ===
+
+Spellbooks in NetHack 2.2a are:
+
+* [[spellbook of magic missile]]
+* [[spellbook of fireball]]
+* [[spellbook of sleep]]
+* [[spellbook of cone of cold]]
+* [[spellbook of finger of death]]
+* [[spellbook of healing]]
+* [[spellbook of detect monsters]]
+* [[spellbook of force bolt]]
+* [[spellbook of light]]
+* [[spellbook of confuse monster]]
+* [[spellbook of cure blindness]]
+* [[spellbook of slow monster]]
+* [[spellbook of create monster]]
+* [[spellbook of detect food]]
+* [[spellbook of haste self]]
+* [[spellbook of cause fear]]
+* [[spellbook of cure sickness]]
+* [[spellbook of detect unseen]]
+* [[spellbook of extra healing]]
+* [[spellbook of charm monster]]
+* [[spellbook of levitation]]
+* [[spellbook of restore strength]]
+* [[spellbook of invisibility]]
+* [[spellbook of detect treasure]]
+* [[spellbook of dig]]
+* [[spellbook of remove curse]]
+* [[spellbook of magic mapping]]
+* [[spellbook of identify]]
+* [[spellbook of turn undead]]
+* [[spellbook of polymorph]]
+* [[spellbook of create familiar]]
+* [[spellbook of teleport away]]
+* [[spellbook of cancellation]]
+* spellbook of genocide
+
+=== Rings ===
+
+Rings in NetHack 2.2a are:
+
+* [[ring of adornment]]
+* [[ring of teleportation]]
+* [[ring of regeneration]]
+* [[ring of searching]]
+* [[ring of see invisible]]
+* [[ring of stealth]]
+* [[ring of levitation]]
+* [[ring of poison resistance]]
+* [[ring of aggravate monster]]
+* [[ring of hunger]]
+* [[ring of fire resistance]]
+* [[ring of cold resistance]]
+* [[ring of protection from shape changers]]
+* [[ring of conflict]]
+* [[ring of gain strength]]
+* [[ring of increase damage]]
+* [[ring of protection]]
+* [[ring of warning]]
+* [[ring of teleport control]]
+* '''[[ring of polymorph]]'''
+* '''[[ring of polymorph control]]'''
+
+Because [[charisma]] does not exist in NetHack 2.2a, the ring of adornment is a useless item.
+
+=== Gems ===
+
+Gems in NetHack 2.2a are:
+
+* [[dilithium crystal]]
+* [[diamond]]
+* [[ruby]]
+* [[sapphire]]
+* [[emerald]]
+* [[turquoise stone]]
+* [[aquamarine stone]]
+* [[tourmaline stone]]
+* [[topaz stone]]
+* [[opal stone]]
+* [[garnet stone]]
+* [[amethyst stone]]
+* [[agate stone]]
+* [[onyx stone]]
+* [[jasper stone]]
+* [[jade stone]]
+
+and worthless pieces of blue, red, yellow, and green glass.
+
+=== Other items ===
+
+Other items not appearing in the above categories are:
+
+* [[heavy iron ball]]
+* [[iron chain]]
+* [[Boulder|enormous rock]]
+
+It is not possible to pick up an iron chain, nor can they be generated from [[iron golem]]s, because these do not exist in NetHack 2.2a.
+
+==References==
+<references/>
+
+[[Category:History]]}
+&&%s&& %s 6 {4992 2006-07-16T16:37:11Z {924 ZeroOne} #REDIRECT [[Unused symbols]] #REDIRECT [[Unused symbols]]}
+&&%s&& %s 7 {4993 2006-07-16T16:37:30Z {924 ZeroOne} #REDIRECT [[Unused symbols]] #REDIRECT [[Unused symbols]]}
+&&%s&& %s 8 {4994 2006-07-16T16:37:46Z {924 ZeroOne} #REDIRECT [[Unused symbols]] #REDIRECT [[Unused symbols]]}
+&&%s&& %s 9 {4995 2006-07-16T16:38:05Z {924 ZeroOne} #REDIRECT [[Unused symbols]] #REDIRECT [[Unused symbols]]}
+&&%s&& %s 0 {72106 2011-08-08T14:47:12Z {4000138 720}  {{ASCII}}
+
+The symbol {{cyan|0}} is used to represent the [[heavy iron ball]] that is attached to you when [[punished]].
+
+Many players like to change the ''boulder'' [[options|option]] to "0", which is a better graphic representation of boulders, and far easier to see than "`" (backtick).
+
+You can also use the keys '''{{kbd|0}}'''–'''{{kbd|9}}''' to specify a [[numeric prefix]] for a command or in a menu.
+[[Category:ASCII]]}
+&&%s&& %s NetHack 2.3e {144060 2021-12-29T23:35:26Z {4001279 Umbire the Phantom} /* The Three Stooges */ {{NetHack Versions}}
+
+'''NetHack 2.3e''' is the fourth public release of [[NetHack]] and the last before the founding of the [[DevTeam]].  [[Mike Stephenson]] published it to the [[Usenet]] newsgroup comp.sources.games.bugs (an unmoderated group, unlike comp.sources.games) in April 1988.
+
+== Availability ==
+
+NetHack 2.3e first appears as a [[patch]] against [[NetHack 2.2a]].  Google Groups has the patch at:
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/bbe694b501c8ef1f?dmode=source Part 1]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/628e2728ee5c0048?dmode=source Part 2]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/ac974678c0460f8d?dmode=source Part 3]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/0f15e69d29f0228a?dmode=source Part 4]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/3ce58aef644d0309?dmode=source Part 5]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/e688259164e8e018?dmode=source Part 6]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/8439eeb510a150d2?dmode=source Part 7]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/c41b2d0c29a16e9d?dmode=source Part 8]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/dcd8dd3022c92982?dmode=source Part 9] ''(is in fact a duplicate of part 8)''
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/38dde98bf26059cd?dmode=source Part 10]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/3bf569116126da43?dmode=source Part 11]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/2c0714b1b4c59584?dmode=source Part 12]
+* [http://groups.google.com/group/comp.sources.games.bugs/msg/334466636fcf8e4a?dmode=source Part 13]
+There are thirteen parts, but the subject lines incorrectly say that there are twelve.
+
+UUNet did not archive comp.sources.games.bugs, but nonetheless provided a complete distribution of NetHack 2.3e. This is available at the [https://archive.org/details/Usenet_InfoMagic Internet Archive]. You can click on the links, but to get the complete archive, copy and paste to a script for [[wikipedia:wget|wget]].
+
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart01
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart02
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart03
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart04
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart05
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart06
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart07
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart08
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart09
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart10
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart11
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart12
+ https://archive.org/download/Usenet_InfoMagic/Usenet%20%28InfoMagic%29%20%28Disc%202%29%20%28October%201994%29.iso/games%2Fnethack2.3%2Fpart13
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a NetHack 2.3e distribution at [http://www.juiblex.co.uk/nethack/source/nethack-2.3e.tar.gz]; this is also available on NetHackWiki for browsing and annotation: [[NetHack 2.3e source code]].
+
+== Significant changes ==
+
+* The [[electric eel]] replaces the [[giant eel]].
+* [[Gremlin]]s, [[djinn]] and the Three Stooges join the bestiary.  The Stooges appear only in NetHack 2.3e.
+* [[Dragon]]s are differentiated into eight types, each with a different breath weapon.  They correspond to all the modern types except the silver dragon.
+* New objects are:  [[K-ration]], [[C-ration]], [[oil lamp|lamp]], [[magic lamp]], badge, [[Hawaiian shirt]], [[wand of lightning]], and [[amber stone]].
+* The tourmaline, agate, and onyx stones are removed, and the colors of worthless glass are changed.
+* [[Sting]] now appears.
+* [[Sink]]s and [[barracks]] are added to the dungeon.
+* The [[land mine]] first appears as a [[trap]], though not as an object.
+* [[Djinn]] may emerge from glowing potions (not smoky ones, as these still have [[ghost]]s).
+
+== The adventurer ==
+
+The player may choose from these roles:
+* [[Archeologist]]
+* [[Barbarian]]
+* [[Caveman|Cave-(wo)man]]
+* [[Elf]]
+* [[Healer]]
+* [[Knight]]
+* Ninja
+* [[Priest]]
+* [[Samurai]]
+* [[Tourist]]
+* [[Valkyrie]]
+* [[Wizard]]
+
+All classes permit male and female adventurers, except the Valkyrie which must be female.
+
+The adventurer has [[experience]], [[hit points]], [[magical energy]], [[armor class]], and [[strength]].  He may advance to [[experience level]] 14.
+
+The initial [[pet]] is a little [[dog]].
+
+== Dungeon features ==
+
+The dungeon in NetHack 2.3e has no branches; there is one way up and one way down.  The first 25 levels or so consist of rooms, and beyond that, the adventurer encounters mazes.  The deepest dungeon level is 60.
+
+[[Medusa]] appears as '8' on the down-stairs of the last level with rooms.  She does not have a special level, and is thus a snare for the unwary adventurer.
+
+Dungeon level 30 and deeper are designated as "[[Hell]]".  Entering hell without [[fire resistance]], or losing it once there, is an [[instadeath]].  This may happen by taking off one's [[ring of fire resistance]] or losing one's [[polymorph]] and not being otherwise fire resistant, or by being hit by a [[gremlin]].  These levels have only up-stairs, and the only way to enter is by [[level teleportation]].
+
+Special rooms are [[throne room]]s, [[swamp]]s,  [[vault]]s, [[beehive]]s, [[crypt]]s, [[treasure zoo]]s, [[barracks]], and [[shop]]s.  Special features are [[pool]]s, [[fountain]]s, [[throne]]s, and [[sink]]s.
+
+Traps are:
+
+* [[bear trap]]
+* [[arrow trap]]
+* [[dart trap]]
+* [[trapdoor]]
+* [[teleportation trap]]
+* [[pit]]
+* [[sleeping gas trap]]
+* [[magic trap]]
+* [[squeaky board]]
+* [[web]]
+* [[spiked pit]]
+* [[level teleporter]]
+* [[anti-magic field]]
+* [[rust trap]]
+* [[polymorph trap]]
+* [[land mine]]
+
+The [[Amulet of Yendor]] is found in the posession of the [[wizard of Yendor]] in a maze level.  He is in a small room in the center of the maze, surrounded by water and accompanied by a [[hell hound]].
+
+Fake Wizard rooms contain a [[demon]] instead of the Wizard and a fake Amulet.
+
+Other maze levels have [[wand of wishing|wands of wishing]] tucked under a boulder in a dead-end square.  There can be more than one, but it's much less likely than before; but one is guaranteed in the level immediately after [[Medusa]].  Since [[NetHack 3.1.0]], one version of [[Medusa]]'s lair has a random wand in a similar spot, commemorating the former location of the wand of wishing.
+
+== Bestiary ==
+
+New monsters are indicated in boldface.
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[acid blob]]||a||&nbsp;
+|-
+|[[bat]]||B||&nbsp;
+|-
+|[[centaur]]||C||&nbsp;
+|-
+|[[chameleon]]||:||&nbsp;
+|-
+|[[cockatrice]]||c||&nbsp;
+|-
+|[[demon]]||&||&nbsp;
+|-
+|[[demon lord]]||&||if HARD defined at compile time
+|-
+|[[demon prince]]||&||if HARD defined at compile time
+|-
+|'''[[djinni]]'''||'''&'''||&nbsp;
+|-
+|[[dog]]||d||&nbsp;
+|-
+|'''[[electric eel]]'''||''';'''||Formerly [[giant eel]]
+|-
+|'''[[gray dragon|grey dragon]]'''||'''D'''||&nbsp;
+|-
+|[[red dragon]]||D||Not truly new; the [[NetHack 2.2a|2.2a]] dragon breathes fire
+|-
+|'''[[orange dragon]]'''||'''D'''||&nbsp;
+|-
+|'''[[white dragon]]'''||'''D'''||&nbsp;
+|-
+|'''[[black dragon]]'''||'''D'''||Disintegration blast is an [[instadeath]]
+|-
+|'''[[blue dragon]]'''||'''D'''||&nbsp;
+|-
+|'''[[green dragon]]'''||'''D'''||&nbsp;
+|-
+|'''[[yellow dragon]]'''||'''D'''||&nbsp;
+|-
+|[[ettin]]||e||&nbsp;
+|-
+|[[floating eye]]||E||&nbsp;
+|-
+|[[fog cloud]]||f||&nbsp;
+|-
+|[[freezing sphere]]||F||&nbsp;
+|-
+|[[gelatinous cube]]||g||&nbsp;
+|-
+|[[ghost]]||(space)||&nbsp;
+|-
+|[[giant]]||9||&nbsp;
+|-
+|[[giant ant]]||A||&nbsp;
+|-
+|[[giant beetle]]||b||&nbsp;
+|-
+|[[gnome]]||G||&nbsp;
+|-
+|-'''[[gremlin]]'''||'''G'''||&nbsp;
+|-
+|[[guard]]||@||&nbsp;
+|-
+|[[hell hound]]||d||Does not have a breath weapon
+|-
+|[[hobgoblin]]||H||&nbsp;
+|-
+|[[homunculus]]||h||&nbsp;
+|-
+|[[imp]]||i||&nbsp;
+|-
+|[[jackal]]||J||&nbsp;
+|-
+|[[jaguar]]||j||&nbsp;
+|-
+|[[killer bee]]||k||&nbsp;
+|-
+|[[large dog]]||d||&nbsp;
+|-
+|[[leocrotta]]||l||&nbsp;
+|-
+|[[leprechaun]]||L||&nbsp;
+|-
+|[[little dog]]||d||&nbsp;
+|-
+|[[lurker above]]||'||&nbsp;
+|-
+|[[mail daemon]]||2||if MAIL defined at compile time
+|-
+|[[medusa]]||8||if RPH defined at compile time
+|-
+|[[mimic]]||M||&nbsp;
+|-
+|[[minotaur]]||m||&nbsp;
+|-
+|[[nurse]]||n||&nbsp;
+|-
+|[[nymph]]||N||&nbsp;
+|-
+|[[orc]]||O||&nbsp;
+|-
+|[[owlbear]]||o||&nbsp;
+|-
+|[[piercer]]||p||&nbsp;
+|-
+|[[purple worm]]||P||&nbsp;
+|-
+|[[quivering blob]]||q||&nbsp;
+|-
+|[[rust monster]]||R||Reduces enchantment rather than truly rusting
+|-
+|[[shopkeeper]]||@||&nbsp;
+|-
+|[[snake]]||S||&nbsp;
+|-
+|[[soldier]]||3||if SAC defined at compile time
+|-
+|[[stalker]]||I||&nbsp;
+|-
+|[[tengu]]||t||&nbsp;
+|-
+|[[trapper]]||,||&nbsp;
+|-
+|[[troll]]||T||&nbsp;
+|-
+|[[umber hulk]]||U||&nbsp;
+|-
+|[[unicorn]]||u||&nbsp;
+|-
+|[[vampire]]||V||&nbsp;
+|-
+|[[violet fungi]]||v||"violet fungus" if [[Ken Arromdee|KAA]] defined at compile time
+|-
+|[[wizard of Yendor]]||1||&nbsp;
+|-
+|[[wraith]]||W||&nbsp;
+|-
+|[[xan]]||x||&nbsp;
+|-
+|[[xorn]]||X||&nbsp;
+|-
+|[[yellow light]]||y||&nbsp;
+|-
+|[[yeti]]||Y||&nbsp;
+|-
+|[[zombie]]||Z||&nbsp;
+|-
+|[[zruty]]||z||&nbsp;
+|-
+|'''Moe'''||'''@'''||if STOOGES defined at compile time (default)
+|-
+|'''Larry'''||'''@'''||if STOOGES defined at compile time (default)
+|-
+|'''Curly'''||'''@'''||if STOOGES defined at compile time (default)
+|-
+|[[Keystone Kop]]||K||if KOPS defined at compile time (default)
+|-
+|[[kobold]]||K||if KOPS ''not'' defined at compile time, or if KJSMODS ''is'' (KJSMODS is the default)
+|-
+|[[rock mole]]||r||if ROCKMOLE defined at compile time (default)
+|-
+|[[giant rat]]||r||if ROCKMOLE ''not'' defined at compile time, or if KJSMODS ''is'' (KJSMODS is the default)
+|-
+|[[quantum mechanic]]||Q||if [[Ken Arromdee|KAA]] defined at compile time (default)
+|-
+|[[quasit]]||Q||if [[Ken Arromdee|KAA]] ''not'' defined at compile time
+|-
+|[[giant spider]]||s||if SPIDERS defined at compile time (default)
+|-
+|[[scorpion]]||s||if SPIDERS ''not'' defined at compile time
+|-
+|[[long worm]]||w||if NOWORM ''not'' defined at compile time (default)
+|-
+|[[wumpus]]||w||if NOWORM defined at compile time
+|-
+|}
+
+=== The Three Stooges ===
+[[Image:nh23-stooges.png|thumb|Screenshot of NetHack 2.3e showing the Three Stooges.]]
+
+The Three Stooges were three monsters, appearing as @ and named Moe, Larry, and Curly.  They appeared on a particular level in the upper dungeon. They occasionally killed monsters, but mostly they just whacked each other and said things associated with the Stooges on film.
+
+The Stooges were a frequent cause of [[YASD]], as a [[confused]] or [[hallucinating]] adventurer often hit one by mistake and had to fight him; even if they prevailed, they incurred the penalty for [[murder]] since the Stooge was a peaceful human.
+
+The Stooges were removed in [[NetHack 3.0.0]], but their passing is still noted in a false [[rumor]]:
+
+<pre>
+The crowd was so tough, the Stooges won't play the Dungeon anymore, nyuk nyuk.
+</pre>
+
+== Objects ==
+
+New objects are indicated in boldface.
+
+=== Artifacts ===
+NetHack 2.3e has four artifacts.  Multiple copies of each may exist.
+
+Any [[two handed sword]] may be named [[Orcrist]] and will do d10 extra points damage to [[orc]]s.  
+
+[[Excalibur]] is obtained in the modern fashion, though there is no requirement to be lawful, as [[alignment]] is not yet implemented.  It gets +5 to hit and does d10 extra damage to all monsters. Wielding Excalibur makes [[demon]]s angry (previously they might ask for a bribe) and can call the attention of certain monsters. Excalibur may now be granted by [[crowning]]. The player cannot name any object "Excalibur".
+
+Any [[katana]] may be named [[Snickersnee]] and will do d5 extra points damage to all monsters.{{refsrc|fight.c|399|version=NetHack 2.3e}}
+
+'''[[Sting]]''' is new to 2.3e. Any [[short sword]] or [[dagger]] may be named Sting and will do d5 extra damage to all monsters (not just [[orc]]s).
+
+=== Amulets ===
+
+Only the [[Amulet of Yendor]] and the cheap plastic imitation exist in NetHack 2.3e.
+
+=== Food ===
+
+Food items in NetHack 2.3e are:
+
+* [[food ration]]
+* [[tripe ration]]
+* [[pancake]]
+* [[lizard corpse|dead lizard]]
+* [[fortune cookie]]
+* [[carrot]]
+* slice of pizza
+* [[cream pie]]
+* [[tin]]
+* '''[[K-ration]]'''
+* '''[[C-ration]]'''
+* [[orange]]
+* [[apple]]
+* [[pear]]
+* [[melon]]
+* [[banana]]
+* [[candy bar]]
+* [[egg]]
+* [[clove of garlic]]
+* [[lump of royal jelly]]
+* [[corpse]] (called ''dead foo'' rather than ''foo corpse'')
+
+The tin did not contain the remains of monsters, but rather a randomly-chosen food such as peaches or, if the adventurer is lucky, [[spinach]].
+
+The dead lizard is a found object rather than a corpse; live lizards do not exist in NetHack 2.3e.    It otherwise has its modern properties in this version.
+
+=== Weapons ===
+
+Weapons in NetHack 2.3e are:
+
+* [[arrow]]
+* sling bullet
+* [[crossbow bolt]]
+* [[dart]]
+* [[shuriken]]
+* [[rock]]
+* [[boomerang]]
+* [[mace]]
+* [[axe]]
+* [[flail]]
+* [[long sword]]
+* [[two-handed sword|two handed sword]]
+* [[dagger]]
+* [[worm tooth]]
+* [[crysknife]]
+* [[aklys]]
+* [[bardiche]]
+* [[bec de corbin]]
+* [[bill-guisarme]]
+* [[club]]
+* [[fauchard]]
+* [[glaive]]
+* [[guisarme]]
+* [[halberd]]
+* [[lucern hammer]]
+* [[javelin]]
+* [[katana]]
+* [[lance]]
+* [[morning star]]
+* [[partisan]]
+* [[ranseur]]
+* [[scimitar]]
+* [[spetum]]
+* [[broad sword]]
+* [[short sword]]
+* [[trident]]
+* [[voulge]]
+* [[spear]]
+* [[bow]]
+* [[sling]]
+* [[crossbow]]
+
+=== Tools ===
+
+Tools in NetHack 2.3e are:
+
+* [[tin whistle|whistle]]
+* [[leash]]
+* [[magic whistle]]
+* [[blindfold]]
+* [[mirror]]
+* [[expensive camera]]
+* [[ice box]]
+* [[pick-axe]]
+* [[magic marker]]
+* [[stethoscope]]
+* [[tin opener|can opener]]
+* '''[[oil lamp|lamp]]'''
+* '''[[magic lamp]]'''
+* '''badge'''
+
+The ice box is the only container.  Then as now, it preserved corpses, and was generally too heavy (and too rare) to be useful for inventory management. Shopkeepers prevent players with an ice box from entering.
+
+The badge is dropped when a [[Keystone Kop]] is killed.  The hero may wear it, and shopkeepers will call him "Officer" and react to theft with [[YAFM]]{{refsrc|shk.c|938|version=NetHack 2.3e}}, but it is otherwise a [[junk]] item.  The badge appears only in NetHack 2.3e.
+
+=== Armor ===
+
+Armor items in NetHack 2.3e are:
+
+* [[helmet]]
+* [[plate mail]]
+* [[splint mail]]
+* [[banded mail]]
+* [[chain mail]]
+* [[scale mail]]
+* [[ring mail]]
+* [[studded leather armor]]
+* [[elven mithril-coat|elfin chain mail]]
+* [[bronze plate mail]]
+* [[crystal plate mail]]
+* [[leather armor]]
+* [[elven cloak]]
+* [[shield]]
+* '''[[Hawaiian shirt]]''' (if SHIRT defined at compile time)
+* [[leather gloves|pair of gloves]]
+
+=== Potions ===
+
+Potions in NetHack 2.3e are:
+
+* [[Potion of restore ability|potion of restore strength]]
+* [[potion of gain energy]]
+* [[potion of booze]]
+* [[potion of invisibility]]
+* [[potion of fruit juice]]
+* [[potion of healing]]
+* [[potion of paralysis]]
+* [[potion of monster detection]]
+* [[potion of object detection]]
+* [[potion of sickness]]
+* [[potion of confusion]]
+* [[Potion of gain ability|potion of gain strength]]
+* [[potion of speed]]
+* [[potion of blindness]]
+* [[potion of gain level]]
+* [[potion of extra healing]]
+* [[potion of levitation]]
+* [[potion of hallucination]]
+* [[potion of water|potion of holy water]]
+
+=== Scrolls ===
+
+Scrolls in NetHack 2.3e are:
+
+* [[scroll of mail]] (unconditional, even though mail daemon is dependent on MAIL)
+* [[scroll of enchant armor]]
+* [[scroll of destroy armor]]
+* [[scroll of confuse monster]]
+* [[scroll of scare monster]]
+* [[scroll of blank paper]]
+* [[scroll of remove curse]]
+* [[scroll of enchant weapon]]
+* scroll of damage weapon
+* [[scroll of create monster]]
+* [[scroll of taming]]
+* [[scroll of genocide]]
+* [[scroll of light]]
+* [[scroll of teleportation]]
+* [[scroll of gold detection]]
+* [[scroll of food detection]]
+* [[scroll of identify]]
+* [[scroll of magic mapping]]
+* [[scroll of amnesia]]
+* [[scroll of fire]]
+* [[scroll of punishment]]
+
+The scroll of damage weapon acts as the modern scroll of enchant weapon does when [[curse]]d.  The scroll of genocide acts, in all cases, as the modern blessed scroll; but most symbols refer to only one monster anyway.
+
+=== Wands ===
+
+Wands in NetHack 2.3e are:
+
+* [[wand of light]]
+* [[wand of secret door detection]]
+* [[wand of create monster]]
+* [[wand of wishing]]
+* [[wand of striking]]
+* [[wand of nothing]]
+* [[wand of slow monster]]
+* [[wand of speed monster]]
+* [[wand of undead turning]]
+* [[wand of polymorph]]
+* [[wand of cancellation]]
+* [[wand of teleportation]]
+* [[wand of make invisible]]
+* [[wand of probing]] (if PROBING defined at compile time)
+* [[wand of digging]]
+* [[wand of magic missile]]
+* [[wand of fire]]
+* [[wand of sleep]]
+* [[wand of cold]]
+* [[wand of death]]
+* '''[[wand of lightning]]'''
+
+=== Spellbooks ===
+
+Spellbooks in NetHack 2.3e are:
+
+* [[spellbook of magic missile]]
+* [[spellbook of fireball]]
+* [[spellbook of sleep]]
+* [[spellbook of cone of cold]]
+* [[spellbook of finger of death]]
+* [[spellbook of healing]]
+* [[spellbook of detect monsters]]
+* [[spellbook of force bolt]]
+* [[spellbook of light]]
+* [[spellbook of confuse monster]]
+* [[spellbook of cure blindness]]
+* [[spellbook of slow monster]]
+* [[spellbook of create monster]]
+* [[spellbook of detect food]]
+* [[spellbook of haste self]]
+* [[spellbook of cause fear]]
+* [[spellbook of cure sickness]]
+* [[spellbook of detect unseen]]
+* [[spellbook of extra healing]]
+* [[spellbook of charm monster]]
+* [[spellbook of levitation]]
+* [[spellbook of restore strength]]
+* [[spellbook of invisibility]]
+* [[spellbook of detect treasure]]
+* [[spellbook of dig]]
+* [[spellbook of remove curse]]
+* [[spellbook of magic mapping]]
+* [[spellbook of identify]]
+* [[spellbook of turn undead]]
+* [[spellbook of polymorph]]
+* [[spellbook of create familiar]]
+* [[spellbook of teleport away]]
+* [[spellbook of cancellation]]
+* spellbook of genocide
+
+=== Rings ===
+
+Rings in NetHack 2.3e are:
+
+* [[ring of adornment]]
+* [[ring of teleportation]]
+* [[ring of regeneration]]
+* [[ring of searching]]
+* [[ring of see invisible]]
+* [[ring of stealth]]
+* [[ring of levitation]]
+* [[ring of poison resistance]]
+* [[ring of aggravate monster]]
+* [[ring of hunger]]
+* [[ring of fire resistance]]
+* [[ring of cold resistance]]
+* [[ring of protection from shape changers]]
+* [[ring of conflict]]
+* [[ring of gain strength]]
+* [[ring of increase damage]]
+* [[ring of protection]]
+* [[ring of warning]]
+* [[ring of teleport control]]
+* [[ring of polymorph]]
+* [[ring of polymorph control]]
+* '''[[ring of shock resistance]]'''
+
+Because [[charisma]] does not exist in NetHack 2.3e, the ring of adornment is a useless item.
+
+=== Gems ===
+
+Gems in NetHack 2.3e are:
+
+* [[dilithium crystal]]
+* [[diamond]]
+* [[ruby]]
+* [[sapphire]]
+* [[emerald]]
+* [[turquoise stone]]
+* [[aquamarine stone]]
+* '''[[amber stone]]'''
+* [[topaz stone]]
+* [[opal stone]]
+* [[garnet stone]]
+* [[amethyst stone]]
+* [[jasper stone]]
+* '''[[fluorite stone]]'''
+* [[jade stone]]
+
+and worthless pieces of '''white''', blue, red, '''yellowish brown''' (formerly yellow), and green glass.
+
+The tourmaline, agate, and onyx stones are removed.
+
+=== Other items ===
+
+Other items not appearing in the above categories are:
+
+* [[heavy iron ball]]
+* [[iron chain]]
+* [[Boulder|enormous rock]]
+
+It is not possible to pick up an iron chain, nor can they be generated from [[iron golem]]s, because these do not exist in NetHack 2.3e.
+
+==References==
+<references/>
+[[Category:History]]}
+&&%s&& %s NetHack 3.0.0 {145568 2022-04-19T07:35:59Z {4001279 Umbire the Phantom}  {{NetHack Versions}}
+
+'''NetHack 3.0.0''' is the fifth public release of [[NetHack]] and the first by the [[DevTeam]].  [[Izchak Miller]] published it to the [[Usenet]] newsgroup comp.sources.games and the moderator approved it in July 1989.
+
+== Availability ==
+
+The original Usenet posts are available from the Internet Archive, and are linked from [[NetHack 3.0.0/URL list|this list of URLs]].
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a NetHack 3.0.0 distribution at [http://www.juiblex.co.uk/nethack/source/nethack-3.0.0.tar.gz]; this is also available on NetHackWiki for browsing and annotation: [[NetHack 3.0.0 source code]].
+
+== Significant changes ==
+
+NetHack 3.0.0 is a vastly expanded game over [[NetHack 2.3e]].  The bestiary is expanded over threefold. Many new objects and dungeon features are added.
+
+*The [[Oracle]] and [[Castle]] levels and [[Endgame (3.0)|an early form]] of the [[Astral Plane]] appear for the first time.  The Stooges and their attendant level are removed.
+*[[Vlad the Impaler]] and his [[Vlad's Tower|Tower]] appear for the first time, but the [[Candelabrum of Invocation]] does not.
+*The room with the [[Wizard of Yendor]] is redesigned.  The [[Fake Tower]] levels in the modern NetHack are shaped like the 3.0.x room.
+*The modern system of [[alignment]] and [[gods]] is introduced.  Some roles have different alignments than in the modern game.
+*Full support for [[IBMgraphics]] and DECgraphics in essentially their modern forms is provided.
+*Support for the Amiga and Atari ST is provided for the first time in an official distribution.
+
+== The adventurer ==
+
+The player may choose from these roles:
+
+{| class="prettytable"
+|-
+!Role!!Alignment
+|-
+|[[Archeologist]]||Lawful
+|-
+|[[Barbarian]]||Chaotic
+|-

@@ -1,0 +1,1000 @@
+==Strategy==
+Pits can be deadly to a player character in the early game, especially for [[little dog]]s and [[kitten]]s. A player [[wield]]ing a [[cockatrice corpse]] without [[levitation]] should be careful not to step on any square that might be a pit; a simple way to do so is to unwield it before moving anywhere.
+
+Player-dug pits can be useful for hunting [[unicorn]]s, controlling [[aligned priest]] and [[shopkeeper]] movement even when they are angry‚ and making [[Fort Ludios]] soldiers easier to kill right at the choke point. In addition, many other forms of trap can be removed by digging a pit on their square. However, they can also anger peaceful monsters who fall into them - notably including the Minetown [[watchmen]]. Monsters that die from your pits will ''only'' earn you [[experience]] if you create a pit right under them (by applying a wand of digging or charged drum of earthquake) or displace them in; doing so also breaks [[pacifist]] conduct.
+
+You cannot create pits with a [[pickaxe]] or by zapping a wand of digging down at an [[altar]]; applying a wand of digging or a charged drum of earthquake while standing on one will destroy it, however.
+
+== SLASH'EM==
+Items that are dropped or fall into pits represent a real problem for [[Vampire (starting race in SLASH'EM)|SLASH'EM vampires]]: due to their innate flying ability, the cannot simply pick them up. One solution is to wear a [[ring of levitation]] and to [[apply]] a [[bullwhip]] down.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+Amid the thought of the fiery destruction that impended, the
+idea of the coolness of the well came over my soul like balm.
+I rushed to its deadly brink.  I threw my straining vision
+below.  The glare from the enkindled roof illumined its inmost
+recesses.  Yet, for a wild moment, did my spirit refuse to
+comprehend the meaning of what I saw.  At length it forced --
+it wrestled its way into my soul -- it burned itself in upon my
+shuddering reason.  Oh! for a voice to speak! -- oh! horror! --
+oh! any horror but this!
+|[ The Pit and the Pendulum, by Edgar Allan Poe ]
+}}
+
+==References==
+<references/>
+
+{{nethack-343}}
+[[Category:Dungeon features]]
+[[Category:Traps]]}
+&&%s&& %s Peaceful {148816 2022-10-15T11:21:25Z {375 Ion frigate} Added bit about neutral monsters being peaceful ~50% of the time In ''[[NetHack]]'', '''peaceful''' monsters are those that do not attack you, and will simply wander around the immediate area.
+
+Attacking one causes a &minus;1 [[alignment record|alignment]] penalty, and the attacked monster also becomes '''hostile''' ("The dwarf gets angry!"); other peaceful monsters who witness the attack may also become hostile or scared. [[Demon|Demons and minor demons]] who become hostile will "scream", alerting nearby monsters to your presence. To prevent this occurring by accident, moving into a peaceful monster normally will offer a "Really attack the <foo>?" prompt rather than defaulting to a melee attack. 
+
+Attacking monsters with [[spell]]s or [[missile]]s does not result in a yes/no prompt, and the missile will strike whatever is in its path; the artifact sword [[Stormbringer]] will also cause you to attack peaceful monsters without offering a yes/no prompt. ("Your bloodthirsty blade attacks!") Attacking monsters with polearms also does not ask for confirmation, although this appears to be [[Bugs in NetHack 3.4.3#C343-305|bug C343-305]] ("Attacking with an applied polearm ignores the 'confirm' option").
+
+[[Pets]] do not immediately become hostile if accidentally or purposely attacked by the player - see [[tameness#abuse|the section on abuse]] in the tameness article for more information. Pets also can and will attack peaceful monsters with no penalty to the player, other than the chance of the pet being killed.
+
+{{upcoming|NetHack 3.7.0|Peaceful monsters can now be displaced. When attempting to move into a peaceful monster without wielding Stormbringer, there is a 6 in 7 chance that you will swap places with it. Monsters cannot be displaced out of traps, into traps, into water if it cannot swim or levitate or into other hazardous terrain. Sleeping or paralyzed monsters cannot be displaced at all, but immobile monsters can with a 1 in 7 chance.
+
+[[Aligned priest]]s, [[shopkeeper]]s, [[guard]]s, the [[Oracle]] and [[quest leader]]s cannot be displaced.}}
+
+==Monsters that are generated peaceful==
+Many factors can be used to determine when a monster is generated peaceful.
+
+*Some monsters are marked as "always starts as peaceful" or "always starts as hostile". For more information, see the individual monster pages.
+
+*Monsters that are of one of the player [[race]]s (humans, elves, dwarves, gnomes, and orcs), and who are not marked as "always peaceful" or "always hostile", may have a peaceful/hostile status based on the player's base race, as follows:{{refsrc|src/makemon.c|2017|nethack=3.6.6}}
+
+{|class=prettytable
+|-
+! Player's base race !! Monsters always peaceful !! Monsters always hostile
+|-
+| [[Human (starting race)|Human]]{{refsrc|src/role.c|631|nethack=3.6.6}} || none || Gnome, Orc
+|-
+| [[Elf (starting race)|Elf]]{{refsrc|src/role.c|652|nethack=3.6.6}} || Elf || Orc 
+|-
+| [[Dwarf (starting race)|Dwarf]]{{refsrc|src/role.c|672|nethack=3.6.6}} || Dwarf, Gnome || Orc 
+|-
+| [[Gnome (starting race)|Gnome]]{{refsrc|src/role.c|694|nethack=3.6.6}} || Dwarf, Gnome || Human
+|-
+| [[Orc (starting race)|Orc]]{{refsrc|src/role.c|715|nethack=3.6.6}} || none || Human, Elf, Dwarf
+|}
+
+*For monsters that are not marked as always peaceful or always hostile, and do not have a peaceful/hostile status based on the player's base race, the monster's attitude to the player is normally based on the monster's [[alignment]], the player's alignment and the player's [[alignment record]], as follows:
+**Chaotic monsters are generated hostile to a player who has the [[Amulet of Yendor]].{{refsrc|src/makemon.c|2027|nethack=3.6.6}}
+**Monsters represented by {{white|A}} are generated hostile to a chaotic or neutral player, and to a lawful player with negative alignment record. They are always generated peaceful to a lawful player with non-negative alignment record.{{refsrc|src/makemon.c|2031|nethack=3.6.6|comment=the code uses is_minion instead of specifying A-class monsters, but the A-class monsters are all defined with the M2_MINION flag}}
+**Coaligned unicorns are always generated peaceful, cross-aligned ones are always generated hostile.{{refsrc|src/makemon.c|1271|nethack=3.6.6}}
+**Other monsters will always be generated hostile to a non-coaligned player, or to a coaligned player with alignment record lower than &minus;14. For a coaligned player with alignment record at least &minus;14, the probability of the monster being peaceful is <math>\frac{(15+AR)(1+MA)}{(16+AR)(2+MA)}</math>, where <math>AR</math> is the player's alignment record and <math>MA</math> is the absolute value of the monster's alignment.{{refsrc|src/makemon.c|2035|nethack=3.6.6}} Notably, this means that no matter their alignment record, neutral characters will see such monsters being peaceful at most 50% of the time, since all neutral monsters have zero alignment.
+*However, there are many exceptions to the above rules:
+**[[Djinn]] from a [[magic lamp]] or [[smoky potion]] can be tame, peaceful, hostile, can disappear after granting a [[wish]], or can disappear without granting a wish. This is based on the [[BUC]] status of the lamp or potion, on random chance, and, for smoky potions, on whether the potion was quaffed by the player or a monster.
+**Monsters from a [[figurine]] can be tame, peaceful, or hostile, based on the BUC status of the figurine and on random chance.
+**Demons summoned by same-race [[sacrifice]] will be peaceful if the player is chaotic, and hostile otherwise.{{refsrc|src/pray.c|1426|nethack=3.6.6}}
+**The lawful named demons are generated hostile if you are wielding [[Excalibur]], and peaceful otherwise.{{refsrc|src/makemon.c|1332|nethack=3.6.6}}
+**Nasties created by the [[summon nasties]] monster spell are always hostile; random monsters that replace a nasty that has been genocided may not be.{{refsrc|src/wizard.c|604|nethack=3.6.6}}
+**Insects and snakes created by the [[summon insects]] spell are always hostile.{{refsrc|src/mcastu.c|605|nethack=3.6.6}}
+**[[Minion]]s sent by an angry god are hostile.{{refsrc|src/minion.c|221|nethack=3.6.6}}
+**When a [[throne room]] is created, the monsters generated in the room are hostile.{{refsrc|src/mkroom.c|256|nethack=3.6.6}}
+**[[Schroedinger's Cat]] is always generated peaceful (when alive).{{refsrc|src/pickup.c|2414|nethack=3.6.6}}
+**On [[special level]]s, monsters will often be created with a predetermined peaceful/hostile status.
+
+==Making monsters peaceful==
+*When a pet's [[tameness]] reaches 0, it becomes peaceful or hostile, depending on circumstances. See [[Tameness#Decreasing tameness|Tameness §&nbsp;Decreasing tameness]] for details.
+*Untrapping a monster from a [[pit]] has a chance of pacifying it: ''"You pull the <monster> out of a pit. <monster> is grateful."'' The chance of success depends on your [[Luck]]. This method will not work on [[mindless]] monsters.
+*Hostile [[domestic animal]]s can be pacified by throwing them food inappropriate to their diet.
+*Monsters that cannot be tamed by a [[scroll of taming]] will become peaceful instead. This includes all [[human (monster attribute)|humans]], [[covetous]] monsters, and [[demons]] unless you are polymorphed into one. The [[Wizard of Yendor]], [[Medusa]], and your [[quest nemesis]] cannot even be pacified.
+*A [[wooden flute]] or uncharged [[magic flute]] can be used to pacify [[snake]]s. The chance of success depends on your [[dexterity]] and [[experience level]].
+
+===Strategy===
+The penalty for attacking peaceful monsters is manageable for late-game characters, but dangerous for characters with low levels and/or low alignment.
+
+Before casting spells or [[firing]] missiles, it is sometimes advisable to check the status of a monster with the {{kbd|/}} or the {{kbd|;}} key. This is only recommended for some monsters; for example, [[orc]]s will often be peaceful towards orcish player characters, and so should be checked, while others, such as [[rothe]]s, are always generated hostile. If wielding Stormbringer, it is dangerous to blunder into a monster such as an [[aligned priest]] or [[shopkeeper]], so it is advisable to wield a different weapon while moving in an area with peaceful monsters.
+
+==List of monsters that may be generated peaceful==
+Most monsters are always generated hostile (they are defined with the M2_HOSTILE flag), but some types may be generated peaceful under normal circumstances.
+
+===Always peaceful===
+These monsters are defined with the M2_PEACEFUL flag.
+
+* [[shopkeeper]]
+* [[guard]]
+* [[prisoner]]
+* [[Oracle]]
+* [[aligned cleric]]
+* [[watchman]]
+* [[watch captain]]
+* [[mail daemon]]
+* all [[Quest leader]]s
+* all [[Quest guardian]]s
+
+===Sometimes peaceful===
+These monsters are defined with neither the M2_PEACEFUL nor M2_HOSTILE flag, and may be peaceful depending on your alignment and alignment record when generated under normal circumstances. Most of these are peaceful with a probability of <math>\frac{(15+AR)(1+MA)}{(16+AR)(2+MA)}</math> if you are co-aligned and hostile otherwise, but see the [[#Monsters that are generated peaceful|previous section]] for exceptions.
+
+====Lawful====
+* [[hobbit]]
+* [[dwarf (monster)|dwarf]]
+* [[dwarf leader]]
+* [[dwarf ruler]]
+* [[tengu]]
+* [[white unicorn]]
+* [[couatl]]
+* [[Aleax]]
+* [[Angel]]
+* [[ki-rin]]
+* [[Archon]]
+* [[giant]]
+* [[stone giant]]
+* [[fire giant]]
+* [[titan]]
+* [[black naga]]
+* [[golden naga]]
+* [[guardian naga]]
+* [[sasquatch]]
+* [[archeologist (player monster)]]
+* [[cave dweller (player monster)]]
+* [[knight (player monster)]]
+* [[samurai (player monster)]]
+* [[valkyrie (player monster)]]
+
+====Neutral====
+* [[acid blob]]
+* [[little dog]]
+* [[dog]]
+* [[large dog]]
+* [[kitten]]
+* [[housecat]]
+* [[large cat]]
+* [[pony]]
+* [[gray unicorn]]
+* [[horse]]
+* [[warhorse]]
+* [[bat]]
+* [[plains centaur]]
+* [[air elemental]]
+* [[fire elemental]]
+* [[earth elemental]]
+* [[water elemental]]
+* [[gnome (monster)|gnome]]
+* [[gnome leader]]
+* [[gnomish wizard]]
+* [[gnome ruler]]
+* [[red naga hatchling]]
+* [[black naga hatchling]]
+* [[golden naga hatchling]]
+* [[guardian naga hatchling]]
+* [[garter snake]]
+* [[umber hulk]]
+* [[monkey]]
+* [[ape]]
+* [[human (monster)|human]]
+* [[high cleric]]
+* [[djinni]]
+* [[barbarian (player monster)]]
+* [[healer (player monster)]]
+* [[monk (player monster)]]
+* [[cleric (player monster)]]
+* [[tourist (player monster)]]
+* [[wizard (player monster)]]
+
+====Chaotic====
+* [[gremlin]]
+* [[bugbear]]
+* [[homunculus]]
+* [[imp]]
+* [[quasit]]
+* [[goblin]]
+* [[hobgoblin]]
+* [[orc (monster)|orc]]
+* [[hill orc]]
+* [[Mordor orc]]
+* [[Uruk-hai]]
+* [[orc shaman]]
+* [[orc-captain]]
+* [[black unicorn]]
+* [[forest centaur]]
+* [[mountain centaur]]
+* [[hill giant]]
+* [[frost giant]]
+* [[storm giant]]
+* [[red naga]]
+* [[ogre]]
+* [[ogre leader]]
+* [[ogre tyrant]]
+* [[elf (monster)|elf]]
+* [[Woodland-elf]]
+* [[Green-elf]]
+* [[Grey-elf]]
+* [[elf-noble]]
+* [[elven monarch]]
+* [[sandestin]]
+* [[ranger (player monster)]]
+* [[rogue (player monster)]]
+
+==SLASH'EM==
+In [[SLASH'EM]], the [[koala]]'s calming attack pacifies any successfully hit monster. To make use of this ability, tame a koala with [[eucalyptus leaves]], or [[polymorph]] into one.
+
+==See also==
+* [[Spellbook of charm monster]]
+* [[Magic harp]]
+* [[Alignment record#Alignment gains from killing monsters|Alignment record §&nbsp;Alignment gains from killing monsters]]
+
+== References ==
+<references/>
+
+{{nethack-366}}
+[[Category:Monster attributes]]}
+&&%s&& %s Quest leader {62624 2011-01-06T03:35:38Z {831 Tjr} Redirected page to [[Quest#Quest leaders and nemeses]] #REDIRECT [[Quest#Quest_leaders_and_nemeses]]}
+&&%s&& %s Player {145295 2022-04-02T19:29:54Z {4000259 RedFeather} /* Role, race and alignment */ {{for|the Valkyrie class title of Hero(ine)|Valkyrie}}
+
+''[[NetHack]]'' is a single-player game. '''You''' are the '''player''' or '''adventurer'''. The [[bones level]]s can provide a limited interaction with other (former) players.
+
+Your '''character''' or '''hero''' is represented by the {{white|@}} symbol. There are also other characters represented by an @, such as your [[quest leader]] and the [[oracle]].  If the showrace [[option]] is turned on, your symbol will instead be that of your race.
+
+The player has [[hit point]]s, [[power]] (to cast spells), six basic [[attribute]]s, an [[alignment]], and [[experience]]. The player also has a [[purse]] (to hold [[gold]]) and a [[pack]] (to hold the other [[item]]s in the [[inventory]]).
+
+The player usually starts a game with a [[pet]] which is intended to help them, especially in the early stages of the game.
+
+==Role, race and alignment==
+The player character can be any one of the following [[role]]s: [[archeologist]], [[barbarian]], [[caveman|cave[wo]man]], [[healer]], [[knight]], [[monk]], [[priest|priest[ess]]], [[ranger]], [[rogue]], [[samurai]], [[tourist]], [[valkyrie]], or [[wizard]]. They each have varying difficulties, strengths, weaknesses, [[quest]]s and starting items.  
+
+The player can also choose from the five [[race]]s: [[human (starting race)|human]], [[elf (starting race)|elf]], [[dwarf]], [[gnome (starting race)|gnome]], or [[orc (starting race)|orc]], and the three [[alignment]]s: [[Alignment#Lawful|lawful]], [[Alignment#Neutral|neutral]] or [[Alignment#Chaotic|chaotic]]. The available races and alignments are dependent on the role one picks. 
+
+One should bear in mind that the choice of role (and to a lesser extent, race and alignment) has a dramatic effect on the style of play. Although in the late game, the characters can be played almost the same way (with a few exceptions), during the early game it is crucial that one utilizes the varying abilities of each of the roles and/or races. For example, running up and bashing a monster as a wizard would likely result in [[YASD]], and reading unidentified [[spellbook]]s as a valkyrie or samurai could lead to paralysis and death by a [[newt]].
+
+The following table lists all possible combinations:
+
+<div style="font-family:monospace; white-space:nowrap; text-align:center;">
+{|class="prettytable"
+!width="11%" |
+!width="6%"|[[Archeologist|Arc]]
+!width="6%" |[[Barbarian|Bar]]
+!width="6%" |[[Caveman|Cav]]
+!width="6%" |[[Healer|Hea]]
+!width="6%" |[[Knight|Kni]]
+!width="6%" |[[Monk|Mon]]
+!width="6%" |[[Priest|Pri]]
+!width="6%" |[[Ranger|Ran]]
+!width="6%" |[[Rogue|Rog]]
+!width="6%" |[[Samurai|Sam]]
+!width="6%" |[[Tourist|Tou]]
+!width="6%" |[[Valkyrie|Val]]
+!width="6%" |[[Wizard|Wiz]]
+!width="11%" |
+|-
+![[Human (starting race)|Human]]
+|L      N      &nbsp;
+|&nbsp; N      C
+|L      N      &nbsp;
+|&nbsp; N      &nbsp;
+|L      &nbsp; &nbsp;
+|L      N      C
+|L      N      C
+|&nbsp; N      C
+|&nbsp; &nbsp; C
+|L      &nbsp; &nbsp;
+|&nbsp; N      &nbsp;
+|L      N      &nbsp;
+|&nbsp; N      C
+![[Human (starting race)|Human]]
+|-
+![[Elf (starting race)|Elf]]
+|
+|
+|
+|
+|
+|
+|&nbsp; &nbsp; C
+|&nbsp; &nbsp; C
+|
+|
+|
+|
+|&nbsp; &nbsp; C
+![[Elf (starting race)|Elf]]
+|-
+![[Dwarf (starting race)|Dwarf]]
+|L &nbsp; &nbsp;
+|
+|L &nbsp; &nbsp;
+|
+|
+|
+|
+|
+|
+|
+|
+|L &nbsp; &nbsp;
+|
+![[Dwarf (starting race)|Dwarf]]
+|-
+![[Gnome (starting race)|Gnome]]
+|&nbsp; N &nbsp;
+|
+|&nbsp; N &nbsp;
+|&nbsp; N &nbsp;
+|
+|
+|
+|&nbsp; N &nbsp;
+|
+|
+|
+|
+|&nbsp; N &nbsp;
+![[Gnome (starting race)|Gnome]]
+|-
+![[Orc (starting race)|Orc]]
+|
+|&nbsp; &nbsp; C 
+|
+|
+|
+|
+|
+|&nbsp; &nbsp; C
+|&nbsp; &nbsp; C
+|
+|
+|
+|&nbsp; &nbsp; C
+![[Orc (starting race)|Orc]]
+|-
+!
+![[Archeologist|Arc]]
+![[Barbarian|Bar]]
+![[Caveman|Cav]]
+![[Healer|Hea]]
+![[Knight|Kni]]
+![[Monk|Mon]]
+![[Priest|Pri]]
+![[Ranger|Ran]]
+![[Rogue|Rog]]
+![[Samurai|Sam]]
+![[Tourist|Tou]]
+![[Valkyrie|Val]]
+![[Wizard|Wiz]]
+!
+|}
+</div>
+
+There are 38 unique combinations of race/role/alignment, and 28 unique combinations of race/role.  Human is the most versatile race with 23 possible combinations of race/role alignment, while other races are much more limited: only three for Elf and Dwarf, four for Orc, and five for Gnome.  Note that non-humans have fixed alignments: lawful for Dwarves, neutral for Gnome, and chaotic for Elves and Orcs.
+
+While there is no role that is open to all races, Ranger and Wizard are the most accessible, as every race but Dwarf can play them.  Four classes (Knight, Monk, Samurai, and Tourist) are limited to humans only.  There are slightly more neutral combinations (15) than chaotic (13) or lawful (10).
+
+Some players set one one factor, such as race, in their [[Options]] file as a constant and then let the game randomly select a role.  For example, playing as a random Dwarf allows you to focus on a small subset of roles (archaeologist, caveman, and valkyrie), with a common alignment and some environmental factors (such as expected reception in the [[Gnomish Mines|mines]]) constant.  The same can be done for Elf, Gnome, or Orc.
+
+==Special names==
+Your name is up to you, but some special names have a few minor effects on the game:
+
+{|class="prettytable"
+!Name
+!Effect
+|-
+|
+Croesus<br/>
+Kroisos<br/>
+Creosote
+|You can truthfully claim your name is one of these to a vault guard (lying carries a -1 alignment penalty if lawful). On the other hand, if you have already killed Croesus, you must lie to avoid angering a vault guard.
+|-
+|Maud
+|A [[scroll of amnesia]] will give a slightly different message
+|-
+|wizard
+|If the debug mode flag (-D) is set, this name may put the player in [[wizard mode]], depending on the system. Whenever a game is started in wizard mode, the player name will be set to "wizard" regardless of any other factors.
+|}
+
+Shopkeepers in bones files remember the name of the character that angered them. If you have the same name, they'll be angry at you, too.
+
+"[[Elbereth]]" on headstones is ignored precisely to deal with the case of a player naming themselves such.{{reffunc|engrave.c|sengr_at|comment=Function used to check for Elbereths}}
+
+==Character or Hero vs. You or Player==
+In most contexts, the terms ''adventurer'', ''character'', ''hero'', ''player'' and ''you'' may be used interchangeably. There are subtle differences however; when a distinction is required, ''character'' and ''hero'' refer to the in-game alter-ego, while ''player'' and ''you'' refer to the real-world person playing the game. Thus a ''new player'' is a real world person who has not played NetHack much yet, while all active ''players'' start ''new characters'' at regular intervals. The term ''adventurer'' is more neutral in this regard, and should be avoided where a distinction is to be made.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+Be bold,
+be bold,
+but not too bold.
+Or else your life's blood,
+shall run cold.
+{{right-align|[ The White Road, by Neil Gaiman ]}}
+People think I'm crazy to worry all the time;
+If you paid attention, you'd be worried too.
+You better pay attention, or this world we love so much
+Might just kill you.
+{{right-align|[ It's a Jungle Out There, by Randy Newman ]}}
+}}
+
+== References ==
+<references/>
+[[Category:Your character]]
+{{nethack-343}}}
+&&%s&& %s Dungeon feature {135497 2020-08-05T10:29:07Z {4001435 B F M} Changed the nethack-343 tag to noversion as cited below the article '''Dungeon features''' are objects which remain fixed on a single [[square]] and provide some more or less useful function.  Each square has one and exactly one feature. Some features are akin to '''terrain''' while some are like large objects that more or less take up the entire square.
+
+* {{lightgray|>}} {{lightgray|<}} [[Staircases]]
+
+* {{brown|>}} {{brown|<}} [[Ladder]]s
+
+* {{lightgray|_}} [[Altar]]s
+
+* {{lightgray|#}} [[Sink]]s
+
+* {{blue|{}} {{blue|¶}} [[Fountain]]s
+
+* {{green|#}} [[Tree]]s
+
+* {{magenta|^}} [[Trap]]s
+
+* {{brown|+}} {{brown|-}} {{brown|&#124;}} [[Door]]s
+
+* {{brown|.}} [[Doorway]]s
+
+* {{lightgray|-}} {{lightgray|&#124;}} [[Wall]]s
+
+* {{brown|#}} [[Drawbridge]]s
+
+* {{cyan|#}} [[Iron bars]]
+
+* {{lightgray|.}} [[Floor]], usually in a [[room]]
+
+* {{lightgray|#}} {{white|#}} [[Corridor]]s
+
+* {{yellow|\}} [[Throne]]s
+
+* {{lightgray|&#124;}} [[Grave]]s
+
+* {{blue|&#125;}} [[Water]]
+
+* {{cyan|.}} [[Ice]]
+
+* {{red|&#125;}} [[Lava]]
+
+* {{lightgray|#}} [[Cloud]]
+
+* {{black|&nbsp;}} [[Air]]
+
+* {{black|&nbsp;}} [[Solid rock]] or unexplored part of the dungeon.
+
+[[Category:Dungeon features|*]]
+{{noversion}}}
+&&%s&& %s YAFM {1634 2006-02-13T21:32:40Z {458 Kernigh} #REDIRECT [[Yet Another Funny Message]] #REDIRECT [[Yet Another Funny Message]]}
+&&%s&& %s Yet Another Funny Message {140098 2021-05-21T20:26:56Z {4001414 Nabru} The yasd.homestead.com link is RIP, RIP is the link. Even with an older version it doesn't work. '''Yet Another Funny Message''' ('''YAFM'''), also sometimes known as '''Yet Another Silly Message''' ('''YASM'''), is any funny message you might receive during the game. 
+
+Intentional funny messages usually come up in obscure circumstances and are good instances of [[The DevTeam Thinks Of Everything]]. Many of them are [[hallucinatory messages]]. Some examples:
+
+{{message|Oh look, what a pretty fire in your hands.|You read a [[scroll of fire]] while confused and fire resistant.}}
+{{message|It seems even darker in here than before.|You created magical darkness from a cursed [[scroll of light]], while swallowed by a monster.}}
+{{message|Shame on you!|You tried to use a [[saddle]] on a [[foocubus]].}}
+{{message|You hear a faint typing noise.|You used a [[stethoscope]] on the edge of the map.}}
+{{message|You be chillin'.|You gained [[fire resistance]], while hallucinating.}}
+
+== YAFMC ==
+When multiple unrelated things combine into a funny phrase, it is a '''YAFMC (Yet Another Funny Message Combination)''':
+
+{{message|You are standing at the gate to Gehennom. Unspeakable cruelty and harm lurk down there.  Are you sure you want to enter?  So be it.  You fall down the stairs.|}}
+{{message|You drop an uncursed cockatrice corpse.  It explodes!|}}
+{{message|The little dog growls! "Halt! You're under arrest!"|}}
+{{message|You begin praying to Amaterasu Omikami. You are surrounded by a shimmering light. "Come here often?"|}}
+{{message|The Uruk-hai hits! Your leg feels better.|}}
+{{message|The Amulet of Yendor cannot be confined in such trappings. "Burrrrp!"|}}
+
+== YAFP ==
+The term '''YAFP''' ('''Yet Another Funny Prompt''') is also occasionally used, which is when a prompt for inventory letters or something similar forms a word or other odd combination.
+
+{{message|What do you want to eat? [chips or ?*]|}}
+
+==External links==
+The origin of all of these terms is probably [[rec.games.roguelike.nethack]].
+*[http://groups.google.com/group/rec.games.roguelike.nethack/browse_frm/thread/f0d691b711e754cd/# rec.games.roguelike.nethack: Shawn Moore: NetHack prompt words] (YAFP)
+[[Category:Acronyms]]}
+&&%s&& %s Yet another funny message {1637 2006-02-13T21:36:45Z {458 Kernigh} #REDIRECT [[Yet Another Funny Message]] #REDIRECT [[Yet Another Funny Message]]}
+&&%s&& %s Rec.games.roguelike.nethack {93717 2015-04-26T13:30:53Z {4000605 HarJIT} /* External links */ {{DISPLAYTITLE:rec.games.roguelike.nethack}}
+'''rec.games.roguelike.nethack''' is a [[Usenet]] newsgroup. It is the spiritual successor of '''rec.games.hack''', and the focus of much of the modern NetHack community.
+
+It is commonly abbreviated to '''RGRN'''.
+
+Release announcements are usually posted to RGRN by the [[DevTeam]] upon new releases, and several of the DevTeam are known to post, usually in response to allegations of bugs and compilation difficulties.
+
+== [[NetHackWiki]] links ==
+* [[rec.games.roguelike.nethack FAQ]]
+* Types of posts: [[YAFAP]], [[YAAP]], [[YASD]], [[YANI]]
+* From RGRN: [[NetHack Code]], [[NetHack Purity Test]]
+* [[Best of RGRN]]
+
+== External links ==
+* [http://groups.google.com/group/rec.games.roguelike.nethack RGRN via Google Groups] (read and post, search old posts in archive)
+* [http://bilious.alt.org/rgrn/ RGRN via bilious.alt.org/rgrn] (read only)
+* [http://newsgroups.derkeiler.com/Archive/Rec/rec.games.roguelike.nethack/ RGRN Derkeiler Archives] (occasionally updated)
+* [http://groups.google.com/group/rec.games.hack/about The old rec.games.hack via Google Groups]
+
+{{stub}}
+
+[[Category:Usenet]]}
+&&%s&& %s Message {114105 2018-05-20T05:27:57Z {4001152 Meiyou}  {{todo|Include information about how messages are displayed in the [[graphical user interface]]s}}NetHack uses a wide variety of '''messages''' to display additional information about the current state of the game. Most information contained in the messages is not displayed anywhere else, so reading and understanding these messages can be vital to understanding your current situation.
+
+In the standard ASCII interface, messages are displayed one line at a time at the top of the screen. If more than one line of messages needs to be displayed, then it will display a <tt>--More--</tt> prompt and wait for you to press {{kbd|Enter}}, which will display the next line of messages. Pressing {{kbd|ctrl|p}} will redisplay previous messages in a format depending on the [[Options#msg_window|msg_window]] option. 
+
+In the NetHackWiki, there are pages created for some messages, which allows you to go directly to the appropriate page using the exact message you got from NetHack. Other more common messages that are all prefixed by the same words, such as [[You feel]] or [[You hear]] are put into large disambiguation pages rather than having individual pages for each message. When looking up a message in the NetHackWiki, using the exact message in NetHack, including punctuation will increase your chance of going directly to the page for that message.
+
+Some messages in NetHack have variables that are dynamically replaced with the appropriate content when the game displays them. These variables are usually displayed in the NetHackWiki as <tt><variable></tt> or <tt>(variable)</tt>. Some common examples include <tt><monster></tt>, <tt><item></tt>, <tt><pet></tt> or <tt><count></tt>. So far, there is no exact definition of the meaning of variables like these, so you may have to look at the [[source]] code for the exact meaning of the variables if the explanation of the message isn't clear on what the variable means.
+
+When your character is [[hallucinating]], NetHack sometimes displays [[Hallucinatory messages|unexpected]] messages.
+
+Messages are often a good example of [[The DevTeam Thinks Of Everything]], which is one of the reasons why there are so many messages.
+
+== Examples == 
+How messages look like in NetHack:
+ <tt>The [[newt]] [[bite]]s! [[You]] [[die]]...
+ 
+ Hello [[Dudley]], [[welcome]] to [[NetHack]]!
+ 
+ The [[gnome (monster)|gnome]] shoots three [[arrow]]s. 
+ The arrow misses the gnome. The arrow misses the [[dwarf]]. 
+ The arrow hits the gnome! The gnome is killed!</tt>
+
+How messages are sometimes displayed in the NetHackWiki:
+*;The <monster> bites!
+:You got bit by a [[monster]].
+
+*;The <monster> shoots <count> arrows. 
+*;The arrow misses the <monster>. 
+*;The arrow hits the <monster>! The <monster> is killed!
+:Example of messages displayed when a monster [[firing|fires]] [[arrow]]s.
+
+== See Also ==
+*[[YAFM]]
+*[[Options#msghistory]]
+*[[Options#msg_window]]
+*[[MSGTYPE]]
+
+[[Category:Messages]] [[Category:User interface]]
+{{nethack-343}}}
+&&%s&& %s R.games.roguelike.nethack {1642 2006-02-13T21:45:28Z {458 Kernigh} #REDIRECT [[rec.games.roguelike.nethack]] #REDIRECT [[rec.games.roguelike.nethack]]}
+&&%s&& %s R.g.roguelike.nethack {1643 2006-02-13T21:45:35Z {458 Kernigh} #REDIRECT [[rec.games.roguelike.nethack]] #REDIRECT [[rec.games.roguelike.nethack]]}
+&&%s&& %s R.g.r.nethack {1644 2006-02-13T21:45:45Z {458 Kernigh} #REDIRECT [[rec.games.roguelike.nethack]] #REDIRECT [[rec.games.roguelike.nethack]]}
+&&%s&& %s R.g.r.n {1645 2006-02-13T21:45:54Z {458 Kernigh} #REDIRECT [[rec.games.roguelike.nethack]] #REDIRECT [[rec.games.roguelike.nethack]]}
+&&%s&& %s Rgrn {1646 2006-02-13T21:46:02Z {458 Kernigh} #REDIRECT [[rec.games.roguelike.nethack]] #REDIRECT [[rec.games.roguelike.nethack]]}
+&&%s&& %s RGRN {1647 2006-02-13T21:46:07Z {458 Kernigh} #REDIRECT [[rec.games.roguelike.nethack]] #REDIRECT [[rec.games.roguelike.nethack]]}
+&&%s&& %s NetHackWiki:General disclaimer {70742 2011-05-30T00:50:11Z {0 } formating {{community}}
+=== Disclaimer ===
+This [[wiki]] is not affiliated with the [[NetHack]] [[DevTeam]]; their official site is http://www.nethack.org.
+
+[[Category:NetHackWiki]]}
+&&%s&& %s Encumbrance {149829 2023-01-31T20:06:37Z {4001488 Tonttu3} /* External links */ typo :''For monsters, see [[Monster carrying capacity]].''
+
+There are six levels of '''encumbrance''' in NetHack: '''unencumbered''', '''burdened''', '''stressed''', '''strained''', '''overtaxed''' and '''overloaded'''. The exact inventory weight which determines which of these levels you experience is based on [[strength]] and [[constitution]].
+
+If your total [[inventory]] weight is more than your carrying capacity, you become burdened or worse, and slow down. You can carry up to three times your capacity before becoming overloaded, at which point most actions except [[drop]]ping items or [[pray]]ing become impossible.
+
+== Carrying capacity ==
+Your current '''carrying capacity''' is given by the formula (25 &times; (Str + Con)) + 50.{{refsrc|hack.c|2162}}  Next, if you are [[polymorph]]ed, this capacity is rescaled (except for [[nymph]]s): normally by your current monster form's [[corpse]] weight / 1450, but not down if it is [[strong]], or by [[size]] / 2 if weight is 0.{{refsrc|monflag.h|163|comment=tiny=0, small=1, medium=2, large=3, huge=4, gigantic=7}} Note that strong monsters automatically get [[strength]] 18/**.{{refsrc|polyself.c|403}} If you are currently [[levitation|levitating]], on the [[Plane of Air]], [[riding]] a strong [[steed]], or polymorphed into a nymph, your carrying capacity is set to 1000. The capacity is then capped at a ''maximum of 1000''. The maximum useful [[Str]]+[[Con]] is thus 38 (unless polymorphed into a non-[[strong]] monster lighter than a human, such as a [[lich]]). Finally, your carrying capacity is reduced by 100 for each wounded leg unless you are [[flying]], [[levitation|levitating]], or on the [[Plane of Air]].
+
+For the purposes of this calculation, a [[strength]] of 18/01&ndash;18/31 maps to 19, 18/32&ndash;18/81 maps to 20, and 18/82&ndash;** maps to 21.{{reffunc|attrib.c|acurrstr|comment=strength-mapping}} [[Gauntlets of power]] still count as strength 25, but because of the cap, this extra strength may not be of use. (It will always be of use for [[Elf (starting race)|elves]], whose strength + constitution is otherwise capped at 18 + 16 = 34.)
+
+==Encumbrance categories==
+{|class="prettytable"
+! Category
+! Weight
+! Speed
+! To-hit
+! Exercise
+! Message on increasing level
+! Message on decreasing level
+! Warning message
+|-
+| Unencumbered
+| ≤ capacity
+| normal
+| none
+|
+| N/A
+| Your movements are now unencumbered.
+| N/A
+|-
+| Burdened
+| capacity&nbsp;+&nbsp;1 to 1.5&nbsp;&times;&nbsp;capacity&nbsp;&minus;&nbsp;1
+| {{frac|3|4}} normal
+| &minus;1
+|
+| Your movements are slowed slightly because of your load.
+| Your movements are only slowed slightly because of your load.
+| You have a little trouble lifting <item>.
+|-
+| Stressed
+| 1.5&nbsp;&times;&nbsp;capacity to 2&nbsp;&times;&nbsp;capacity&nbsp;&minus;&nbsp;1
+| {{frac|2}} normal
+| &minus;3
+| [[Exercise]] [[strength]]
+| You rebalance your load. Movement is difficult.
+| You rebalance your load. Movement is still difficult.
+| You have a little trouble lifting <item>.
+|-
+| Strained
+| 2&nbsp;&times;&nbsp;capacity to 2.5&nbsp;&times;&nbsp;capacity&nbsp;&minus;&nbsp;1
+| {{frac|4}} normal
+| &minus;5
+| Exercise strength, [[abuse]] [[dexterity]]
+| You stagger under your load. Movement is very hard.
+| You stagger under your load. Movement is still very hard.
+| You have much trouble lifting <item>.
+|-
+| Overtaxed
+| 2.5&nbsp;&times;&nbsp;capacity to 3&nbsp;&times;&nbsp;capacity&nbsp;&minus;&nbsp;1
+| {{frac|8}} normal
+| &minus;7*
+| [[Abuse]] [[dexterity]] and [[constitution]]
+| You can barely move a handspan with this load!
+| (no message)
+| You have extreme difficulty lifting <item>.
+|-
+| Overloaded
+| ≥ 3&nbsp;&times;&nbsp;capacity
+| normal*
+| &minus;9*
+| 
+| You collapse under your load.
+| N/A
+| There is <item> here, but you cannot lift any more.
+|}
+
+:''<nowiki>* but see below.</nowiki>''
+
+Encumbrance will reduce your [[speed]] to the fraction shown above, after applying any adjustment for [[speed]].
+
+Your encumbrance category will interfere with your chances [[to-hit]] in melee.
+
+Some categories of encumbrance may [[exercise]] or [[abuse]] certain stats every 10 turns.{{refsrc|attrib.c|308}}
+
+=== Burdened ===
+
+If you are burdened or greater, you:
+* fall down [[stairs]] and ladders when going down.
+* cannot [[jump]] except by casting [[spellbook of jumping|the spell]].
+* could [[drown]] in [[water]] when [[punished]] if you cannot shed surplus weight.
+
+=== Stressed ===
+
+If you are stressed or greater, you also:
+* cannot climb [[stairs]] or ladders.
+* cannot move if you have less than 10 HP and are not at your maximum HP.
+* cannot [[kick]].
+* cannot mount your [[steed]].
+* cannot drag a [[heavy iron ball]].
+* do not regenerate [[HP]] when moving unless you have [[regeneration]].
+* do not regenerate [[Pw]] unless you have [[energy regeneration]].
+* consume an additional point of [[nutrition]] every odd turn.
+
+=== Strained ===
+
+If you are strained or greater, you also:
+* lose 1 HP every 30 turns if you are moving.
+* lose 1 HP every 3 turns if you are attacking.
+* cannot [[untrap|disarm]] [[trap]]s.
+* have a cursed [[loadstone]] considered your worst cursed item for the [[Trouble#Minor troubles|minor trouble]] ''cursed items'' (otherwise other things are worse).
+
+=== Overtaxed ===
+
+If you are overtaxed or greater, you also:
+* lose 1 HP every 10 turns if you are moving.
+* cannot attack a monster in melee.
+* cannot [[throw]] or [[fire]] a weapon.
+* cannot [[spellcasting|cast spells]].
+* cannot [[zap]] a wand.
+* cannot use the [[read]] command.
+* cannot [[engrave]].
+* cannot [[apply]] a tool.
+* cannot eat.
+* cannot use the [[Loot|#loot]] command.
+* cannot teleport at will with [[teleportitis]].
+* cannot attempt to help a monster out of a pit.
+* have the [[Trouble#Major troubles|major trouble]] ''collapsing'' if you have also lost 4 or more points of strength.
+
+=== Overloaded ===
+
+You can only reach Overloaded status by picking up [[loadstone]]s, changing items' weight with a [[bag of holding]], or losing strength, typically by [[polymorph]]ing into a weak monster. The listed warning message is used whenever an item is too heavy for you to lift; you can see it even at unburdened, e.g. if you try to pick up a dragon corpse while carrying your usual kit.
+
+If you are Overloaded, you also:
+* cannot move.
+
+==Item weights==
+
+{{main|Weight}}
+
+Some of the most common weight culprits are:
+
+{|class="prettytable"
+!Item!!Weight
+|-
+|[[loadstone]] || 500
+|-
+|[[body armor]] || 30 to 450 
+|-
+|[[weapon]] || 1 to 180
+|-
+|[[The Orb of Fate]] || 150
+|-
+|[[shield]] || 30 to 100
+|-
+|[[pick-axe]] || 100
+|-
+|[[spellbook]] ||  50
+|-
+|[[helm]] || 3 to 50
+|-
+|[[potion]] || 20
+|-
+|[[food ration]] || 20
+|-
+|[[lamp]] || 20
+|-
+|1,000 [[gold pieces]] || 10
+|}
+
+==Strategy==
+Think hard what you really need to carry. Pack rats die faster.
+
+Your encumbrance level can be reduced by:
+* Using a non-cursed [[bag of holding]]
+* Gaining [[strength]] or [[constitution]], including polymorphing into a stronger creature
+* [[Levitation|Levitating]]
+* [[Riding]] a [[steed]] (Note that you cannot mount a steed if [[stressed]] or worse, but if you have at least [[basic]] riding skill, you can pick up items while riding.)
+* [[Drop]]ping items
+* [[Stash]]ing items<!--(e.g. [[wizard]]s commonly stash their [[spellbook]]s in [[Sokoban]] with a heavy [[container]] and come back by [[branchport]]ing using [[the Eye of the Aethiopica]] whenever they need to relearn a spell.)-->
+
+Any encumbrance past unencumbered will slow your character down. It is therefore generally a [[Bad Idea]] to wander around carrying too much, and almost always a bad idea to enter combat overencumbered. If you are near your encumbrance limit and about to enter combat with a monster that can lower your strength (e.g. with [[poison]]), consider dropping a few extra items temporarily to avoid becoming overencumbered during the fight.
+
+When you are suddenly polymorphed into a [[small]] creature (e.g. via [[lycanthropy]]), it is common to become instantly overloaded, and unable to move.
+
+Being encumbered is generally considered a [[bad idea]], because [[speed]] is crucial to survival in [[NetHack]]. Having a speed of less than 12 is usually more dangerous than it seems, since the monsters can sometimes get in two hits in one player turn, increasing the chance of [[YASD|surprise deaths]]. Furthermore, climbing [[stairs]] becomes more difficult when burdened (and impossible when stressed or worse) as well as causing players to "fall down the stairs" when they attempt to descend (a fatal move when [[wield]]ing a [[cockatrice corpse]]).
+
+If you have a good reason to move around encumbered, prepare to drop items if you are attacked. You can pick them up after the fight. This goes especially for corpses you are dragging to an altar to [[sacrifice]]; they are likely to become too old if you take up more turns fighting while carrying them. If you are relocating a stash, put it into a [[sack]] or [[bag of holding]], so you can drop the container if you are attacked. If you need something from the container during the fight, just #loot it; this takes the same time as applying a held one. Don't accidentally drop [[Crysknife|crysknives]] or [[scroll of scare monster|scrolls of scare monster]].
+
+You should not try to train strength by being stressed. There are far safer ways, such as pushing [[boulder]]s around. Being stressed also blocks your HP and Power regeneration.
+
+==External links==
+* [https://alt.org/nethack/mirror/www.helsinki.fi/%257Evviitane/spoilers/spoil804 spoil804]
+
+==References==
+<references />
+[[Category:Your character]]
+{{nethack-343}}}
+&&%s&& %s Statue {144017 2021-12-25T20:37:38Z {4001279 Umbire the Phantom}  {{item|
+  |name=statue of a ''[[foo]]''
+  |appearance=statue of a ''[[foo]]''
+  |tile=[[image:statue.png]]
+  |cost=0|weight=varies
+  |color=white
+  |symbol=`}}
+{{items}}
+'''Statues''' are a type of object that appear in ''[[NetHack]]''. They are represented on screen by a bold white monster glyph or a grayscale monster tile. A statue always depicts some specific monster, e.g. "a statue of a kobold" (which would display on-screen as {{white|k}}).
+
+Statues should not be confused with [[figurine]]s, though they can both be animated with the {{spell of|stone to flesh}} spell.
+
+==Generation==
+Statues are usually found randomly in the main branch of the dungeon; some special levels always have statues, and [[statue trap]]s can appear that animate the statue of any monster on it and bring it to life. Random statue generation follows the same rules as [[monster creation]] - they must be of appropriate [[monster difficulty]] given your [[experience level]] and the [[dungeon level]], and must not be genocided or extinct. While most such statues are of tangible monsters, statues of [[unsolid]] monsters can be generated as statue traps.
+
+Statues on special levels can be of a higher difficulty level than would randomly appear, but if the level calls for a statue of a genocided or extinct species, it will instead be replaced with a random statue. The presence of multiple out-of-place statues on a given floor may be an indicator of [[bones]], and are typically signs that the former player had a [[footrice]] [[corpse]].
+
+Most monsters that are not unsolid will turn into a statue when [[stoned]]. [[Stone golem]]s leave empty statues of themselves behind when killed. 
+
+===Statue contents===
+Statues generated as part of a normal dungeon level deeper than level 3 may randomly contain a single [[spellbook]]; this does not apply to [[statue trap]]s or statues of tiny monsters.{{refsrc|mkobj.c|608|name=spellbook_prob}} This may be a reference to ''Larn'', a game which also had spellbooks that could be found after breaking statues.
+
+When a monster is turned to stone, usually by a cockatrice (or its corpse or [[egg]]), its inventory becomes the statue contents. [[Medusa's Island]] contains a number of statues that often have items inside, including the statue of [[Perseus]]; see that article for more details about its specific contents.
+
+Statues on deeper dungeon levels have a greater probability of containing a spellbook:<ref name="spellbook_prob" />
+{|class="prettytable"
+! Level !! Probability
+|-
+| 1&ndash;3 || 0
+|-
+| 4, 5 || {{sfrac|1|12}}
+|-
+| 6, 7 || {{sfrac|2|13}}
+|-
+| 8, 9 || {{sfrac|3|14}}
+|-
+| <var>n</var>, <var>n</var> + 1 || {{sfrac|<var>n</var> &minus; 2|<var>n</var> + 20}}
+|}
+
+By level 24, statues have a 50% chance of containing a spellbook.
+
+===Historic statues===
+Certain statues are historic, causing [[Archeologist]]s to suffer a &minus;1 penalty to [[alignment record]] when breaking or animating them. These include the statues of the [[gnome king]] in [[Minetown#Grotto Town|Grotto Town]], the [[centaur]] statues around the [[Oracle]], the statue of [[Perseus]], and any petrified [[unique monster]]s. Archeologists can tell whether a statue is historic on sight; for other roles, the property is hidden and irrelevant.
+
+===Statue traps===
+[[Statue trap]]s are indistinguishable from regular statues normally - however, if you [[search]] next to one (including the [[automatic searching]] [[intrinsic]]) or move onto its [[square]], it will turn into the appropriate type of monster.
+
+==Description==
+The weight of a given statue is 1.5 times the weight of its corpse in monster form, plus the weight of any contents. Statues will fit into containers only if the portrayed monster is tiny, small or medium size; the weight of the statue does not factor into fitting inside a container.
+
+When a statue is hit by a [[force bolt]], [[wand of striking]] or a [[digging tool]], they are broken into 6 + ''d60'' [[rock]]s, similar to [[boulder]]s; other weapons and wands have no effect, and [[apply]]ing an [[axe]] additionally produces a message, with a {{frac|2|3}} chance of dealing d2 damage to you.{{refsrc|dig.c|931}} Breaking a statue allows its contents to be retrieved.
+
+Using the stone to flesh spell on a statue of a [[fleshy]] monster will turn it into that monster; the statue's contents become part of that monster's inventory, which you can obtain by killing them. Casting stone to flesh on a statue of any [[golem]] will animate it as a [[flesh golem]]; other monsters that are not fleshy (such as [[lichen]]s) or [[corpseless|do not leave a corpse]] (such as [[yellow light]]s) will instead turn into [[meatball]]s, destroying their contents.{{refsrc|zap.c|1622}}{{refsrc|zap.c|1631}}
+
+Statues can be [[polymorph]]ed into other kinds of statues or into boulders, but any contents will be destroyed unconditionally.{{refsrc|zap.c|1309}}{{refsrc|zap.c|1225}}{{refsrc|mkobj.c|606}} 
+
+==Strategy==
+Spellcasters may find it useful to break every statue located deeper than level 3; this especially applies to [[Wizard]]s, who always start knowing the force bolt spell. You can use a [[wand of probing]] to scan for the presence of items beforehand; for [[Healer]]s, the [[stethoscope]] also gives different messages depending on whether the statue is a trap or has items inside.
+
+The [[Oracle]] level always contains 8 centaur statues, and the table below details the odds of finding a certain amount of books within those statues:
+{|class="prettytable"
+|-
+! rowspan=2 | Level
+! colspan=7 | Chance of ''n'' books (%)
+|-
+! 0 !! 1 !! 2 !! 3 !! 4 !! 5 !! 6
+|-
+| align="right" | 5 || 49.9 || 36.3 || 11.5 || 2.1 || 0.2 || ||
+|-
+| align="right" | 6–7 || 26.3 || 38.2 || 24.3 || 8.8 || 2.0 || 0.3 ||
+|-
+| align="right" | 8–9 || 14.5 || 31.7 || 30.3 || 16.6 || 5.6 || 1.2 || 0.2
+|}
+
+==History==
+In [[NetHack 3.4.3]] and earlier versions, statues were represented by the {{white|`}} glyph or an amorphous clay blob. Casting stone to flesh on golem statues followed the same rules as other non-fleshy monsters, usually leaving behind a single meatball rather than always becoming a flesh golem.
+
+==Messages==
+{{message|The <monster> appears to be in fine health for a statue.|You applied a stethoscope to a statue.}}
+{{message|The <monster> appears to be in remarkable health for a statue.|As above, but you are a Healer and the statue contains items.{{refsrc|src/apply.c|285|version=NetHack 3.6.6}}}}
+{{message|The <monster> appears to be in extraordinary health for a statue.|As above, but you are a Healer and the statue is on a [[statue trap]].{{refsrc|src/apply.c|283|version=NetHack 3.6.6}}}}
+{{message|You hear a voice say, "You're both stoned, Jim."|You applied a stethoscope to a statue while hallucinating.{{refsrc|src/apply.c|211|version=NetHack 3.6.6}}}}
+
+{{message|Sparks fly as you whack the statue.|You attempted to apply an axe to a statue.}}
+{{message|The axe-handle vibrates violently!|You took some damage from the above attempt.}}
+
+== Encyclopedia entry ==
+{{encyclopedia|
+Then at last he began to wonder why the lion was standing so
+still - for it hadn't moved one inch since he first set eyes
+on it.  Edmund now ventured a little nearer, still keeping in
+the shadow of the arch as much as he could.  He now saw from
+the way the lion was standing that it couldn't have been
+looking at him at all.  ("But supposing it turns its head?"
+thought Edmund.)  In fact it was staring at something else -
+namely a little dwarf who stood with his back to it about
+four feet away.  "Aha!" thought Edmund.  "When it springs at
+the dwarf then will be my chance to escape."  But still the
+lion never moved, nor did the dwarf.  And now at last Edmund
+remembered what the others had said about the White Witch
+turning people into stone.  Perhaps this was only a stone
+lion.  And as soon as he had thought of that he noticed that
+the lion's back and the top of its head were covered with
+snow.  Of course it must be only a statue!
+|[ The Lion, the Witch and the Wardrobe by C.S. Lewis ]
+}}
+
+== References ==
+<references/>
+{{nethack-366|offset=1}}
+{{featured}}
+[[Category:Items]]}
+&&%s&& %s Insect {138848 2021-04-08T22:02:44Z {4001279 Umbire the Phantom}  An '''insect''' is any monster represented by the character {{white|a}}.
+
+* [[Ant]]s:
+** {{monsymlink|Soldier ant}}
+** {{monsymlink|Giant ant}}
+** {{monsymlink|Fire ant}}
+
+* [[Bee]]s:
+** {{monsymlink|Killer bee}}
+** {{monsymlink|Queen bee}}
+
+* Other insects:
+** {{monsymlink|Giant beetle}}
+
+Insect-like creatures that are generally not considered to be insects include the {{mcsl|s}} monster class, containing arachnids and other arthropods that aren't classified as insects in real life. The {{mcsl|x}} monster class arguably also constitutes insects, because the class description is "xan or other mystical/fantastic insect", but these are not treated as insects in, for example, the [[summon insects]] monster spell.
+
+==Strategy==
+
+Hostile [[aligned priest|priests]] can cast [[summon insects]], particularly in [[Moloch's Sanctum]] and the [[Astral Plane]]. If all insects have been [[genocide]]d, they will instead summon [[snake]]s.
+
+It is not a good idea to [[genocide]] any species of insect, as they provide a valuable barrier between you and the tougher monsters in the Sanctum and Astral Plane. Some players make an exception to genocide soldier ants, as they pose a particular hazard in the early game.
+
+== Variants ==
+* UnNetHack and SporkHack add {{monsymlink|snow ant}}s.
+* SporkHack also adds {{monsymlink|locust}}s.
+
+=== SLASH'EM ===
+In [[SLASH'EM]], there are 14 new insects:
+*{{darkgray|a}} [[assassin bug]]
+*{{yellow|a}} [[black wasp]]
+*{{gray|a}} [[giant flea]]
+*{{gray|a}} [[giant louse]]
+*{{gray|a}} [[giant tick]]
+*{{darkgray|a}} [[giant wasp]]
+*{{orange|a}} [[killer beetle]]
+*{{green|a}} [[migo drone]]
+*{{magenta|a}} [[migo queen]]
+*{{yellow|a}} [[migo warrior]]
+*{{monsymlink|snow ant}}
+*{{brown|a}} [[spitting beetle]]
+*{{green|a}} [[tsetse fly]]
+*{{yellow|a}} [[yellow jacket]]
+
+[[Category:Monster classes]]
+{{nethack-361}}}
+&&%s&& %s Genocide strategy {4319 2006-06-28T22:00:10Z {396 Jayt} redirected to [[genocide]] #REDIRECT [[Genocide]]}
+&&%s&& %s BUC {150298 2023-03-21T20:50:42Z {4000114 Derekt75} /* Generation */ loadstones can be generated uncursed in a container '''BUC''' is an acronym meaning '''blessed'''/'''uncursed'''/'''cursed'''. It is usually used in phrases such as "BUC identified", meaning an [[item]] whose "'''BUC status'''" is known. Another term is '''beatitude''' (which technically means only "the state of being blessed", but in the context of NetHack generally means an object's ''relative blessedness'', i.e. its BUC status). 
+
+'''Non-cursed''' is generally used to mean "either blessed or uncursed". This shorthand is useful because many items behave similarly whether blessed or uncursed, but very differently if cursed.
+
+==Blessed items==
+
+Generally speaking, blessing an item is never a [[Bad Idea]]. All blessed items are one step further from being cursed. Also, many items confer additional bonuses when blessed:
+
+*Blessed [[weapon]]s do 1d4 extra damage to [[undead]] and [[major demon]]s.{{refsrc|src/weapon.c|325|version=NetHack 3.6.1}}
+**Blessed [[missile]]s (e.g., arrows, darts, and throwing stars) have a significantly lower chance of disappearing when used.
+*Most blessed [[scroll]]s and [[potion]]s work better if they are beneficial, or have their harm reduced/nullified if they are harmful.
+*Blessed [[spellbook]]s can always be read successfully, regardless of the spell's level, your level, or your [[intelligence]] score.
+*Blessed [[tin]]s require only one turn to open no matter what opening tool you use (or even if you use no tool at all).
+*Some [[tools]] work better when they're blessed. Notable examples include the [[bag of holding]] and [[unicorn horn]].
+**Blessed item generators generates blessed items:
+***A blessed [[horn of plenty]] will produce blessed foods and potions.
+***A blessed [[tinning kit]] will make blessed tins.
+***A blessed [[magic marker]] will make uncursed blank spellbooks/scrolls into blessed ones, and cursed ones uncursed.
+** Blessed tools with charges will also resist the effect of a cursed [[scroll of charging]].
+*Blessed [[touchstone]] can be applied to identify other stones, while uncursed one can be applied only by Archeologist.
+*Blessed [[luckstone]] prevents the timeout of positive luck, while uncursed one prevents the timeout of both positive and negative luck.
+*[[Wands]] cannot be harmed by cursed [[Scroll of charging|scrolls of charging]] if they are blessed.
+*Blessed items are resistant to [[erosion]], with a chance depending on your [[Luck]].
+
+For some items, being blessed may be undesired:
+* Blessed [[magic marker]] cannot produce cursed scrolls, therefore many players prefer at least one magic marker to be uncursed.
+* Quaffing blessed [[potion of invisibility]] makes the player permanently invisible, which may cause problems.  In particular, quaffing it within a shop may make it hard to leave the shop.
+* Quaffing blessed [[potion of booze]] does not cause [[confusion]], which make it almost useless for quaffing.
+* To genocide one kind of monsters without genociding all monsters denoted by the same letter, you need an uncursed [[scroll of genocide]].
+
+==Cursed items==
+
+A cursed item, on the other hand, is usually bad. Cursed items are more difficult to bless, and almost all of them will at least impede the item's performance, if not incurring an ill-intended effect.
+
+* Anything that can be worn or wielded is reluctant to be taken off or put aside if it's cursed. This includes [[amulet]]s, [[ring]]s, [[weapon]]s, [[weapon-tool]]s, [[armor]], [[tin opener]]s, [[iron chain]]s, [[heavy iron ball]]s, and [[leash]]es. This also applies to monsters: Seeing a monster attempt to wield a cursed weapon or [[weapon-tool]] will produce a message about it sticking to their hand, as does a monster attempting to wield another weapon while already wielding a cursed weapon. In either case, this formally identifies the item as cursed. 
+* [[Potion]]s and [[scroll]]s generally work worse if they are cursed: if they are harmful, the harm is generally amplified, and if they are beneficial, the benefit may be reduced or nullified, or a totally different (usually harmful) effect occurs.
+* [[Wand]]s have a chance of exploding when you zap them while they are cursed.
+* You can never read a cursed [[spellbook]] successfully.
+* [[Tool]]s generally do not work as well when they are cursed.
+* [[Pet]]s will not pick up cursed items.
+* [[Comestible]]s (but not corpses) are always rotten when they are cursed.
+* A [[loadstone]] cannot be dropped or thrown while cursed.
+* The [[invocation ritual]] won't work if any of the three items ([[Bell of Opening]], [[Candelabrum of Invocation]], or [[Book of the Dead]]) is cursed.
+
+However, there are items which have special uses when cursed, if you know they are cursed:
+* A cursed [[potion of gain level]] transports you one dungeon level upwards, which has several uses.
+* A cursed [[potion of invisibility]] will wake all sleeping and meditating monsters on the level. [[Covetous]] monsters such as your [[quest nemesis]], [[demon#Unique_demons|named demons]], and the [[Wizard of Yendor]] will quickly warp to you after being awakened, allowing you to fight them without having to make your way to their location.
+* A cursed [[scroll of genocide]] creates 4&ndash;6 specified monsters.  This has many potential uses; to name a few: experience levels, maximum hit points, intrinsics, intelligence or strength gain, Luck, unihorn, dragon scale mail, or powerful pets. See [[Genocide#Reverse genocide|Genocide §&nbsp;Reverse genocide]] for details.<!-- Please don't expand the details in here: we don't want this brief overview to become too long to read. -->
+* A cursed [[scroll of teleportation]] will [[levelport]] you instead of regular teleportation, which is especially useful if you have [[teleport control]].
+* A cursed [[scroll of gold detection]] shows traps as gold.  However, a non-cursed one shows traps as traps if you are confused.
+* A cursed [[scroll of destroy armor]] can be used to [[erodeproof]] a piece of armor if read while confused.
+* A cursed [[scroll of confuse monster]] confuses you. This is useful if you don't have other sources of [[confusion]]. 
+* Pets are reluctant to enter a square with a cursed item (unless there is food in that square too). Because of that, cursed items can be used to restrict their movements, most notably in Sokoban to prevent them from getting stuck behind a boulder.
+
+==BUC identification==
+{{main|Curse-testing}}
+An [[altar]] can be used to detect the beatitude of an item by means of the coloured flashes when the item is [[drop]]ped on it, an amber flash indicates that the item is blessed, whereas a black flash means the item is cursed, if there is no flash the item is uncursed. Identifying an item this way is impossible when blind, and when hallucinating it is impossible to tell blessed and cursed items apart since the flash will appear different; however, the lack of a flash can still tell you that the item is uncursed.
+
+For some items, such as [[gold piece]]s or [[scroll of mail|scrolls of mail]], the beatitude has no meaning and is always omitted. For some other items, such as weapons or rings with charges, it is not shown if the object is uncursed, if you have [[identification|fully identified]] the item. [[Priest]]s never see the uncursed-status, and can automatically tell the beatitude of any item they see, even if it has yet to be identified. If you want the game to override this behavior and show "uncursed" on every item you have identified as such, set the [[Options#implicit_uncursed|implicit_uncursed]] option to FALSE.
+
+A [[scroll of identify]] will also show you the BUC status of an item.
+
+==Changing the BUC status of an item==
+There are quite a few ways to change the BUC status of items:
+
+===Curse removal or blessing===
+{{main|Curse removal}}
+* [[Dip]]ping an object into a [[potion of holy water]] will change the BUC status from cursed to uncursed, and from uncursed to blessed, using one potion of holy water each time you dip it. Dipping a blessed item into holy water will not consume the potion and not [[wet]] the object.
+* An uncursed [[scroll of remove curse]] will remove the cursed status from the wielded object (whether it is a [[weapon]] or not), all worn items ([[armor]], [[rings]], [[amulet]], [[blindfold]], [[towel]], and [[lenses]]), any [[leash]]es currently in use, and any carried [[loadstone]]s.{{refsrc|src/read.c|1277|version=NetHack 3.6.1}} A blessed scroll of remove curse will remove the cursed status from every object in your inventory. A cursed scroll of remove curse "disintegrates" and removes no curses, though it will still end any [[punishment]].
+* A non-cursed [[scroll of enchant armor]] or [[scroll of enchant weapon]] will uncurse the armor/weapon it targets. A blessed scroll of enchant armor will bless uncursed armor. 
+* Your deity may bless and repair your weapon or uncurse your inventory when you pray on an [[altar]], depending on your [[Luck]] (see [[prayer]] for details).
+* When stepping on a [[magic trap]], there is a 4.8% chance of an uncursing effect, equivalent to an uncursed scroll of remove curse.
+* #[[dip]]ping items in fountains can curse and uncurse items ({{frac|4|30}} chance of uncursing, {{frac|1|30}} chance of cursing). A fountain will never bless an item.
+* When [[dip]]ping a [[unicorn horn]] or [[amethyst]] into a potion which then transforms, the result is uncursed, except for juice made with a cursed horn or an amethyst, which is cursed.{{refsrc|src/potion.c|2187|version=NetHack 3.6.1}}
+
+===Blessing removal or cursing===
+* Dipping an object into a [[potion of unholy water]] will change the item from blessed to uncursed, and then from uncursed to cursed.

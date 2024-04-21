@@ -1,0 +1,1000 @@
+
+*{{red|D}} [[Image:red dragon.png]], [[red dragon]] (weight: 4500)
+
+*{{white|D}} [[Image:white dragon.png]], [[white dragon]] (weight: 4500)
+
+*{{orange|D}} [[Image:orange dragon.png]], [[orange dragon]] (weight: 4500)
+
+*{{darkgray|D}} [[Image:black dragon.png]], [[black dragon]] (weight: 4500)
+
+*{{blue|D}} [[Image:blue dragon.png]], [[blue dragon]] (weight: 4500)
+
+*{{green|D}} [[Image:green dragon.png]], [[green dragon]] (weight: 4500)
+
+*{{yellow|D}} [[Image:yellow dragon.png]], [[yellow dragon]] (weight: 4500)
+
+*{{magenta|D}} [[Image:Chromatic Dragon.png]], [[Chromatic Dragon]] (weight: 4500)
+
+*{{red|D}} [[Image:Ixoth.png]], [[Ixoth]] (weight: 4500)
+
+==References==
+<references/>
+
+[[Category:Monsters| ]]
+[[Category:Monster attributes]]
+{{nethack-343}}}
+&&%s&& %s NetHack brass as a patch {141795 2021-07-24T01:51:23Z {4001279 Umbire the Phantom}  {{patch
+ |name=NetHack brass as a patch
+ |author=Code by Youkan<br />Patch from [[User:Kernigh|Kernigh]]
+ |download=http://kernigh.pbwiki.com/f/brass-040923.diff
+ |bilious=279
+}}
+
+This page presents [[NetHack brass]] as a [[patch]] against vanilla [[NetHack 3.4.3]].
+
+[[User:Kernigh|Kernigh]] used the [[diff]] program to generate this "unified diff" between NetHack 3.4.3 and NetHack brass 040923 after pruning some files from the 040923. In particular, Youkan's zip of the 040923 source code was not clean of generated files created during the build process on [[Microsoft Windows]], including some Windows executables. Youkan's zip also contains old versions of some of the [[dungeon]] files, with DOS batch (*.bat) scripts to enable them.
+
+The patch presented here contains neither the Windows-generated files, nor the old dungeons and DOS batch script. After applying this patch to the vanilla sources, [[you]] do have everything needed to build NetHack brass 040923 from source code. If you are building upon [[Unix]], then you also want the [[brass interface patch]], or at least the Unix fixes from that patch.
+
+Download the patch from:
+: http://kernigh.pbwiki.com/f/brass-040923.diff
+
+{{todo|Merge this into the main NetHack brass page. Additionally someone who still has the diff file should upload it and replace this now-dead link.}}
+
+== Files patched ==
+* <tt>dat/*.des</tt>
+** Most objects are made from normal material <tt>mat_normal</tt> to handle a change in the [[des-file format]].
+** Changes to the maps of the [[Quest]] levels for the [[Monk]], attributed to Bill Foust.
+** Many, many changes at the [[Castle]] and below, including a serious redesign of [[Gehennom]].
+* <tt>dat/rumor.{fal,tru}</tt>
+** This rumor becomes false: "They say that you can't break an amulet of reflection."
+* Numerous changes to source files.
+
+Note that the source files do contain several instances of <tt>//</tt> style comments. This comment syntax, borrowed from C++, may not work in compilers older than C99. Some C compilers (including GCC) supported <tt>//</tt> comments in C before C99.
+
+== Changes to some source files ==
+Here are some excerpts of changes to ''some'' but not all of the source files. These might be useful for those wanting to study the differences between vanilla and NetHack brass.
+
+The line numbers are those of the diff file.
+
+{{NGPL}}
+
+=== artifact.h ===
+ <span id="line2079">2079. diff -pruN nethack-3.4.3/include/[[artifact.h]] nhbrass-040923/include/artifact.h</span>
+ <span id="line2080">2080. --- nethack-3.4.3/include/artifact.h	Sun Dec  7 18:39:13 2003</span>
+ <span id="line2081">2081. +++ nhbrass-040923/include/artifact.h	Thu Oct 16 09:05:02 2003</span>
+ <span id="line2082">2082. @@ -38,12 +38,13 @@</span>
+ <span id="line2083">2083.  </span>
+ <span id="line2084">2084.  struct artifact {</span>
+ <span id="line2085">2085.  	short	    otyp;</span>
+ <span id="line2086">2086. -	const char  *name;</span>
+ <span id="line2087">2087. +	/*const*/ char  *name;</span>
+ <span id="line2088">2088.  	unsigned long spfx;	/* special effect from wielding/wearing */</span>
+ <span id="line2089">2089.  	unsigned long cspfx;	/* special effect just from carrying obj */</span>
+ <span id="line2090">2090.  	unsigned long mtype;	/* monster type, symbol, or flag */</span>
+ <span id="line2091">2091.  	struct attack attk, defn, cary;</span>
+ <span id="line2092">2092.  	uchar	    inv_prop;	/* property obtained by invoking artifact */</span>
+ <span id="line2093">2093. +	uchar	    material;	/* if artifact is made of special material */</span>
+ <span id="line2094">2094.  	aligntyp    alignment;	/* alignment of bequeathing gods */</span>
+ <span id="line2095">2095.  	short	    role;	/* character role associated with */</span>
+ <span id="line2096">2096.  	short	    race;	/* character race associated with */</span>
+ <span id="line2097">2097. @@ -60,5 +61,13 @@ struct artifact {</span>
+ <span id="line2098">2098.  #define CREATE_PORTAL	(LAST_PROP+7)</span>
+ <span id="line2099">2099.  #define ENLIGHTENING	(LAST_PROP+8)</span>
+ <span id="line2100">2100.  #define CREATE_AMMO	(LAST_PROP+9)</span>
+ <span id="line2101">2101. +#define EMIT_LIGHT	(LAST_PROP+10)</span>
+ <span id="line2102">2102. +</span>
+ <span id="line2103">2103. +/* additional alighment */</span>
+ <span id="line2104">2104. +#define	A_CROSSALIGNED	(-127)</span>
+ <span id="line2105">2105. +</span>
+ <span id="line2106">2106. +/* special damage bonus identifiers */</span>
+ <span id="line2107">2107. +#define ADMG_DOUBLE	255</span>
+ <span id="line2108">2108. +#define ADMG_MAX	254</span>
+ <span id="line2109">2109.  </span>
+ <span id="line2110">2110.  #endif /* ARTIFACT_H */</span>
+
+=== artilist.h ===
+ <span id="line2111">2111. diff -pruN nethack-3.4.3/include/artilist.h nhbrass-040923/include/[[artilist.h]]</span>
+ <span id="line2112">2112. --- nethack-3.4.3/include/artilist.h	Sun Dec  7 18:39:13 2003</span>
+ <span id="line2113">2113. +++ nhbrass-040923/include/artilist.h	Sun Jan  4 01:41:00 2004</span>
+ <span id="line2114">2114. @@ -5,14 +5,14 @@</span>
+ <span id="line2115">2115.  #ifdef MAKEDEFS_C</span>
+ <span id="line2116">2116.  /* in makedefs.c, all we care about is the list of names */</span>
+ <span id="line2117">2117.  </span>
+ <span id="line2118">2118. -#define A(nam,typ,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) nam</span>
+ <span id="line2119">2119. +#define A(nam,typ,mat,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) nam</span>
+ <span id="line2120">2120.  </span>
+ <span id="line2121">2121.  static const char *artifact_names[] = {</span>
+ <span id="line2122">2122.  #else</span>
+ <span id="line2123">2123.  /* in artifact.c, set up the actual artifact list structure */</span>
+ <span id="line2124">2124.  </span>
+ <span id="line2125">2125. -#define A(nam,typ,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) \</span>
+ <span id="line2126">2126. - { typ, nam, s1, s2, mt, atk, dfn, cry, inv, al, cl, rac, cost }</span>
+ <span id="line2127">2127. +#define A(nam,typ,mat,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) \</span>
+ <span id="line2128">2128. + { typ, nam, s1, s2, mt, atk, dfn, cry, inv, mat, al, cl, rac, cost }</span>
+ <span id="line2129">2129.  </span>
+ <span id="line2130">2130.  #define     NO_ATTK	{0,0,0,0}		/* no attack */</span>
+ <span id="line2131">2131.  #define     NO_DFNS	{0,0,0,0}		/* no defense */</span>
+ <span id="line2132">2132. @@ -35,42 +35,55 @@ STATIC_OVL NEARDATA struct artifact arti</span>
+ <span id="line2133">2133.   * 3.  Chaotic artifacts are inflated due to scarcity (and balance).</span>
+ <span id="line2134">2134.   */</span>
+ <span id="line2135">2135.  </span>
+ <span id="line2136">2136. +/* Arc	---		*/</span>
+ <span id="line2137">2137. +/* Bar	Cleaver		*/</span>
+ <span id="line2138">2138. +/* Cav	Skullcrusher	*/</span>
+ <span id="line2139">2139. +/* Hea	---		*/</span>
+ <span id="line2140">2140. +/* Kni	Excalibur	*/</span>
+ <span id="line2141">2141. +/* Mon	---		*/</span>
+ <span id="line2142">2142. +/* Pri	Disrupter	*/</span>
+ <span id="line2143">2143. +/* Ran	---		*/</span>
+ <span id="line2144">2144. +/* Rog	---		*/</span>
+ <span id="line2145">2145. +/* Sam	Snickersnee	*/</span>
+ <span id="line2146">2146. +/* Tou	---		*/</span>
+ <span id="line2147">2147. +/* Val	Mjollnir	*/</span>
+ <span id="line2148">2148. +/* Wiz	Magicbane	*/</span>
+ <span id="line2149">2149.  </span>
+ <span id="line2150">2150.  /*  dummy element #0, so that all interesting indices are non-zero */</span>
+ <span id="line2151">2151. -A("",				STRANGE_OBJECT,</span>
+ <span id="line2152">2152. +A("",				STRANGE_OBJECT,	0,</span>
+ <span id="line2153">2153.  	0, 0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_NONE, NON_PM, NON_PM, 0L ),</span>
+ <span id="line2154">2154.  </span>
+ <span id="line2155">2155. -A("Excalibur",			LONG_SWORD,</span>
+ <span id="line2156">2156. +A("Excalibur",			LONG_SWORD,	METAL,</span>
+ <span id="line2157">2157.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_SEEK|SPFX_DEFN|SPFX_INTEL|SPFX_SEARCH),0,0,</span>
+ <span id="line2158">2158.  	PHYS(5,10),	DRLI(0,0),	NO_CARY,	0, A_LAWFUL, PM_KNIGHT, NON_PM, 4000L ),</span>
+ <span id="line2159">2159.  /*</span>
+ <span id="line2160">2160.   *	Stormbringer only has a 2 because it can drain a level,</span>
+ <span id="line2161">2161.   *	providing 8 more.</span>
+ <span id="line2162">2162.   */</span>
+ <span id="line2163">2163. -A("Stormbringer",		RUNESWORD,</span>
+ <span id="line2164">2164. +A("Stormbringer",		RUNESWORD,	0,</span>
+ <span id="line2165">2165.  	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN|SPFX_INTEL|SPFX_DRLI), 0, 0,</span>
+ <span id="line2166">2166.  	DRLI(5,2),	DRLI(0,0),	NO_CARY,	0, A_CHAOTIC, NON_PM, NON_PM, 8000L ),</span>
+ <span id="line2167">2167.  /*</span>
+ <span id="line2168">2168.   *	Mjollnir will return to the hand of the wielder when thrown</span>
+ <span id="line2169">2169.   *	if the wielder is a Valkyrie wearing Gauntlets of Power.</span>
+ <span id="line2170">2170.   */</span>
+ <span id="line2171">2171. -A("Mjollnir",			WAR_HAMMER,		/* Mjo:llnir */</span>
+ <span id="line2172">2172. +A("Mjollnir",			HEAVY_HAMMER,	0,	/* Mjo:llnir */</span>
+ <span id="line2173">2173.  	(SPFX_RESTR|SPFX_ATTK),  0, 0,</span>
+ <span id="line2174">2174. -	ELEC(5,24),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, PM_VALKYRIE, NON_PM, 4000L ),</span>
+ <span id="line2175">2175. +	ELEC(0,20),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, PM_VALKYRIE, NON_PM, 4000L ),</span>
+ <span id="line2176">2176.  </span>
+ <span id="line2177">2177. -A("Cleaver",			BATTLE_AXE,</span>
+ <span id="line2178">2178. +A("Cleaver",			BATTLE_AXE,	0,</span>
+ <span id="line2179">2179.  	SPFX_RESTR, 0, 0,</span>
+ <span id="line2180">2180. -	PHYS(3,6),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, PM_BARBARIAN, NON_PM, 1500L ),</span>
+ <span id="line2181">2181. +	PHYS(3,10),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, PM_BARBARIAN, NON_PM, 1500L ),</span>
+ <span id="line2182">2182.  </span>
+ <span id="line2183">2183. -A("Grimtooth",			ORCISH_DAGGER,</span>
+ <span id="line2184">2184. +A("Grimtooth",			ORCISH_DAGGER,	0,</span>
+ <span id="line2185">2185.  	SPFX_RESTR, 0, 0,</span>
+ <span id="line2186">2186.  	PHYS(2,6),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ORC, 300L ),</span>
+ <span id="line2187">2187.  /*</span>
+ <span id="line2188">2188.   *	Orcrist and Sting have same alignment as elves.</span>
+ <span id="line2189">2189.   */</span>
+ <span id="line2190">2190. -A("Orcrist",			ELVEN_BROADSWORD,</span>
+ <span id="line2191">2191. -	SPFX_DFLAG2, 0, M2_ORC,</span>
+ <span id="line2192">2192. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ELF, 2000L ),</span>
+ <span id="line2193">2193. +A("Orcrist",			ELVEN_BROADSWORD,	0,</span>
+ <span id="line2194">2194. +	(SPFX_WARN|SPFX_DFLAG2), 0, M2_ORC,</span>
+ <span id="line2195">2195. +	PHYS(15,ADMG_DOUBLE),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ELF, 2000L ),</span>
+ <span id="line2196">2196.  </span>
+ <span id="line2197">2197.  /*</span>
+ <span id="line2198">2198.   *	The combination of SPFX_WARN and M2_something on an artifact</span>
+ <span id="line2199">2199. @@ -78,60 +91,72 @@ A("Orcrist",			ELVEN_BROADSWORD,</span>
+ <span id="line2200">2200.   *	M2_something flags.  In Sting's case it will trigger EWarn_of_mon</span>
+ <span id="line2201">2201.   *	for M2_ORC monsters.</span>
+ <span id="line2202">2202.   */</span>
+ <span id="line2203">2203. -A("Sting",			ELVEN_DAGGER,</span>
+ <span id="line2204">2204. +A("Sting",			ELVEN_DAGGER,	0,</span>
+ <span id="line2205">2205.  	(SPFX_WARN|SPFX_DFLAG2), 0, M2_ORC,</span>
+ <span id="line2206">2206. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ELF, 800L ),</span>
+ <span id="line2207">2207. +	PHYS(15,ADMG_DOUBLE),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ELF, 800L ),</span>
+ <span id="line2208">2208.  /*</span>
+ <span id="line2209">2209.   *	Magicbane is a bit different!  Its magic fanfare</span>
+ <span id="line2210">2210.   *	unbalances victims in addition to doing some damage.</span>
+ <span id="line2211">2211.   */</span>
+ <span id="line2212">2212. -A("Magicbane",			ATHAME,</span>
+ <span id="line2213">2213. +A("Magicbane",			ATHAME,	0,</span>
+ <span id="line2214">2214.  	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN), 0, 0,</span>
+ <span id="line2215">2215.  	STUN(3,4),	DFNS(AD_MAGM),	NO_CARY,	0, A_NEUTRAL, PM_WIZARD, NON_PM, 3500L ),</span>
+ <span id="line2216">2216.  </span>
+ <span id="line2217">2217. -A("Frost Brand",		LONG_SWORD,</span>
+ <span id="line2218">2218. +A("Disrupter",			MACE,	SILVER,</span>
+ <span id="line2219">2219. +	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_UNDEAD,</span>
+ <span id="line2220">2220. +	PHYS(10,30),	NO_DFNS,	NO_CARY,	0, A_NONE, PM_PRIEST, NON_PM, 2000L ),</span>
+ <span id="line2221">2221. +</span>
+ <span id="line2222">2222. +A("Skullcrusher",			CLUB,	BONE,</span>
+ <span id="line2223">2223. +	(SPFX_RESTR|SPFX_ATTK), 0, 0,</span>
+ <span id="line2224">2224. +	PHYS(3,15),	NO_DFNS,	NO_CARY,	0, A_NONE, PM_CAVEMAN, NON_PM, 1000L ),</span>
+ <span id="line2225">2225. +</span>
+ <span id="line2226">2226. +A("Frost Brand",		LONG_SWORD,	0,</span>
+ <span id="line2227">2227.  	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN), 0, 0,</span>
+ <span id="line2228">2228. -	COLD(5,0),	COLD(0,0),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 3000L ),</span>
+ <span id="line2229">2229. +	COLD(5,ADMG_DOUBLE),	COLD(0,0),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 3000L ),</span>
+ <span id="line2230">2230.  </span>
+ <span id="line2231">2231. -A("Fire Brand",			LONG_SWORD,</span>
+ <span id="line2232">2232. +A("Fire Brand",			LONG_SWORD,	0,</span>
+ <span id="line2233">2233.  	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN), 0, 0,</span>
+ <span id="line2234">2234. -	FIRE(5,0),	FIRE(0,0),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 3000L ),</span>
+ <span id="line2235">2235. +	FIRE(5,ADMG_DOUBLE),	FIRE(0,0),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 3000L ),</span>
+ <span id="line2236">2236.  </span>
+ <span id="line2237">2237. -A("Dragonbane",			BROADSWORD,</span>
+ <span id="line2238">2238. -	(SPFX_RESTR|SPFX_DCLAS), 0, S_DRAGON,</span>
+ <span id="line2239">2239. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 500L ),</span>
+ <span id="line2240">2240. +A("Dragonslayer",		BROADSWORD,	0,</span>
+ <span id="line2241">2241. +	(SPFX_RESTR|SPFX_DCLAS|SPFX_REFLECT), 0, S_DRAGON,</span>
+ <span id="line2242">2242. +	PHYS(10,ADMG_DOUBLE),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 2500L ),</span>
+ <span id="line2243">2243.  </span>
+ <span id="line2244">2244. -A("Demonbane",			LONG_SWORD,</span>
+ <span id="line2245">2245. +A("Demonbane",			LONG_SWORD,	SILVER,</span>
+ <span id="line2246">2246.  	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_DEMON,</span>
+ <span id="line2247">2247. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 2500L ),</span>
+ <span id="line2248">2248. +	PHYS(10,ADMG_DOUBLE),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 2500L ),</span>
+ <span id="line2249">2249.  </span>
+ <span id="line2250">2250. -A("Werebane",			SILVER_SABER,</span>
+ <span id="line2251">2251. +A("Werebane",			REVOLVER,	0,</span>
+ <span id="line2252">2252.  	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_WERE,</span>
+ <span id="line2253">2253. -	PHYS(5,0),	DFNS(AD_WERE),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 1500L ),</span>
+ <span id="line2254">2254. -</span>
+ <span id="line2255">2255. -A("Grayswandir",		SILVER_SABER,</span>
+ <span id="line2256">2256. +	PHYS(20,ADMG_DOUBLE),	DFNS(AD_WERE),	NO_CARY,</span>
+ <span id="line2257">2257. +	CREATE_AMMO, A_NONE, NON_PM, NON_PM, 5000L ),</span>
+ <span id="line2258">2258. +A("Grayswandir",		SABER,		SILVER,</span>
+ <span id="line2259">2259.  	(SPFX_RESTR|SPFX_HALRES), 0, 0,</span>
+ <span id="line2260">2260. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 8000L ),</span>
+ <span id="line2261">2261. +	PHYS(3,12),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 8000L ),</span>
+ <span id="line2262">2262.  </span>
+ <span id="line2263">2263. -A("Giantslayer",		LONG_SWORD,</span>
+ <span id="line2264">2264. +A("Quick Blade",		ELVEN_SHORT_SWORD,	0,</span>
+ <span id="line2265">2265. +	SPFX_RESTR,		  0, 0,</span>
+ <span id="line2266">2266. +	PHYS(10,0),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 1500L ),</span>
+ <span id="line2267">2267. +</span>
+ <span id="line2268">2268. +A("Giantkiller",		TWO_HANDED_SWORD,	0,</span>
+ <span id="line2269">2269.  	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_GIANT,</span>
+ <span id="line2270">2270. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, NON_PM, NON_PM, 200L ),</span>
+ <span id="line2271">2271. +	PHYS(15,ADMG_DOUBLE),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, NON_PM, NON_PM, 200L ),</span>
+ <span id="line2272">2272.  </span>
+ <span id="line2273">2273. -A("Ogresmasher",		WAR_HAMMER,</span>
+ <span id="line2274">2274. +A("Ogresmasher",		LUCERN_HAMMER,	0,</span>
+ <span id="line2275">2275.  	(SPFX_RESTR|SPFX_DCLAS), 0, S_OGRE,</span>
+ <span id="line2276">2276. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 200L ),</span>
+ <span id="line2277">2277. +	PHYS(15,ADMG_DOUBLE),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 200L ),</span>
+ <span id="line2278">2278.  </span>
+ <span id="line2279">2279. -A("Trollsbane",			MORNING_STAR,</span>
+ <span id="line2280">2280. +A("Trollsbane",			MORNING_STAR,	0,</span>
+ <span id="line2281">2281.  	(SPFX_RESTR|SPFX_DCLAS), 0, S_TROLL,</span>
+ <span id="line2282">2282. -	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 200L ),</span>
+ <span id="line2283">2283. +	PHYS(15,ADMG_DOUBLE),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 800L ),</span>
+ <span id="line2284">2284.  /*</span>
+ <span id="line2285">2285.   *	Two problems:  1) doesn't let trolls regenerate heads,</span>
+ <span id="line2286">2286.   *	2) doesn't give unusual message for 2-headed monsters (but</span>
+ <span id="line2287">2287.   *	allowing those at all causes more problems than worth the effort).</span>
+ <span id="line2288">2288.   */</span>
+ <span id="line2289">2289. -A("Vorpal Blade",		LONG_SWORD,</span>
+ <span id="line2290">2290. +A("Vorpal Blade",		LONG_SWORD,	0,</span>
+ <span id="line2291">2291.  	(SPFX_RESTR|SPFX_BEHEAD), 0, 0,</span>
+ <span id="line2292">2292. -	PHYS(5,1),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, NON_PM, NON_PM, 4000L ),</span>
+ <span id="line2293">2293. +	PHYS(15,0),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, NON_PM, NON_PM, 4000L ),</span>
+ <span id="line2294">2294.  /*</span>
+ <span id="line2295">2295.   *	Ah, never shall I forget the cry,</span>
+ <span id="line2296">2296.   *		or the shriek that shrieked he,</span>
+ <span id="line2297">2297. @@ -140,101 +165,122 @@ A("Vorpal Blade",		LONG_SWORD,</span>
+ <span id="line2298">2298.   *			--Koko, Lord high executioner of Titipu</span>
+ <span id="line2299">2299.   *			  (From Sir W.S. Gilbert's "The Mikado")</span>
+ <span id="line2300">2300.   */</span>
+ <span id="line2301">2301. -A("Snickersnee",		KATANA,</span>
+ <span id="line2302">2302. +A("Snickersnee",		KATANA,	0,</span>
+ <span id="line2303">2303.  	SPFX_RESTR, 0, 0,</span>
+ <span id="line2304">2304. -	PHYS(0,8),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, PM_SAMURAI, NON_PM, 1200L ),</span>
+ <span id="line2305">2305. +	PHYS(10,8),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, PM_SAMURAI, NON_PM, 1200L ),</span>
+ <span id="line2306">2306.  </span>
+ <span id="line2307">2307. -A("Sunsword",			LONG_SWORD,</span>
+ <span id="line2308">2308. +A("Sunsword",			LONG_SWORD,	0,</span>
+ <span id="line2309">2309.  	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_UNDEAD,</span>
+ <span id="line2310">2310. -	PHYS(5,0),	DFNS(AD_BLND),	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 1500L ),</span>
+ <span id="line2311">2311. +	PHYS(10,ADMG_DOUBLE),	DFNS(AD_BLND),	NO_CARY,</span>
+ <span id="line2312">2312. +	EMIT_LIGHT, A_LAWFUL, NON_PM, NON_PM, 1500L ),</span>
+ <span id="line2313">2313. +/*</span>
+ <span id="line2314">2314. + *	Artifact gloves for Monks</span>
+ <span id="line2315">2315. + */</span>
+ <span id="line2316">2316. +A("Gauntlets of Defence",	GAUNTLETS_OF_DEXTERITY,	0,</span>
+ <span id="line2317">2317. +	(SPFX_RESTR|SPFX_HPHDAM|SPFX_INTEL), 0, 0,</span>
+ <span id="line2318">2318. +	NO_ATTK,	NO_DFNS,	NO_CARY,</span>
+ <span id="line2319">2319. +	0,		A_CROSSALIGNED, PM_MONK, NON_PM, 2000L ),</span>
+ <span id="line2320">2320.  </span>
+ <span id="line2321">2321. +A("Fist of Fury",		GAUNTLETS,	SILVER,</span>
+ <span id="line2322">2322. +	(SPFX_RESTR|SPFX_INTEL), 0,	0,</span>
+ <span id="line2323">2323. +	PHYS(5,10),	NO_DFNS,	NO_CARY,</span>
+ <span id="line2324">2324. +	0,		A_CROSSALIGNED, PM_MONK, NON_PM, 2000L ),</span>
+ <span id="line2325">2325. +</span>
+ <span id="line2326">2326.  /*</span>
+ <span id="line2327">2327.   *	The artifacts for the quest dungeon, all self-willed.</span>
+ <span id="line2328">2328.   */</span>
+ <span id="line2329">2329.  </span>
+ <span id="line2330">2330. -A("The Orb of Detection",	CRYSTAL_BALL,</span>
+ <span id="line2331">2331. +A("The Orb of Detection",	CRYSTAL_BALL,	0,</span>
+ <span id="line2332">2332.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL), (SPFX_ESP|SPFX_HSPDAM), 0,</span>
+ <span id="line2333">2333.  	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),</span>
+ <span id="line2334">2334.  	INVIS,		A_LAWFUL, PM_ARCHEOLOGIST, NON_PM, 2500L ),</span>
+ <span id="line2335">2335.  </span>
+ <span id="line2336">2336. -A("The Heart of Ahriman",	LUCKSTONE,</span>
+ <span id="line2337">2337. +A("The Heart of Ahriman",	LUCKSTONE,	0,</span>
+ <span id="line2338">2338.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL), SPFX_STLTH, 0,</span>
+ <span id="line2339">2339.  	/* this stone does double damage if used as a projectile weapon */</span>
+ <span id="line2340">2340.  	PHYS(5,0),	NO_DFNS,	NO_CARY,</span>
+ <span id="line2341">2341.  	LEVITATION,	A_NEUTRAL, PM_BARBARIAN, NON_PM, 2500L ),</span>
+ <span id="line2342">2342.  </span>
+ <span id="line2343">2343. -A("The Sceptre of Might",	MACE,</span>
+ <span id="line2344">2344. +A("The Sceptre of Might",	MACE,	0,</span>
+ <span id="line2345">2345.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DALIGN), 0, 0,</span>
+ <span id="line2346">2346. -	PHYS(5,0),	NO_DFNS,	CARY(AD_MAGM),</span>
+ <span id="line2347">2347. +	PHYS(5,ADMG_DOUBLE),	NO_DFNS,	CARY(AD_MAGM),</span>
+ <span id="line2348">2348.  	CONFLICT,	A_LAWFUL, PM_CAVEMAN, NON_PM, 2500L ),</span>
+ <span id="line2349">2349.  </span>
+ <span id="line2350">2350.  #if 0	/* OBSOLETE */</span>
+ <span id="line2351">2351. -A("The Palantir of Westernesse",	CRYSTAL_BALL,</span>
+ <span id="line2352">2352. +A("The Palantir of Westernesse",	CRYSTAL_BALL,	0,</span>
+ <span id="line2353">2353.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL),</span>
+ <span id="line2354">2354.  		(SPFX_ESP|SPFX_REGEN|SPFX_HSPDAM), 0,</span>
+ <span id="line2355">2355.  	NO_ATTK,	NO_DFNS,	NO_CARY,</span>
+ <span id="line2356">2356.  	TAMING,		A_CHAOTIC, NON_PM , PM_ELF, 8000L ),</span>
+ <span id="line2357">2357.  #endif</span>
+ <span id="line2358">2358.  </span>
+ <span id="line2359">2359. -A("The Staff of Aesculapius",	QUARTERSTAFF,</span>
+ <span id="line2360">2360. +A("The Staff of Aesculapius",	QUARTERSTAFF,	0,</span>
+ <span id="line2361">2361.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_ATTK|SPFX_INTEL|SPFX_DRLI|SPFX_REGEN), 0,0,</span>
+ <span id="line2362">2362. -	DRLI(0,0),	DRLI(0,0),	NO_CARY,</span>
+ <span id="line2363">2363. +	DRLI(0,ADMG_DOUBLE),	DRLI(0,0),	NO_CARY,</span>
+ <span id="line2364">2364.  	HEALING,	A_NEUTRAL, PM_HEALER, NON_PM, 5000L ),</span>
+ <span id="line2365">2365.  </span>
+ <span id="line2366">2366. -A("The Magic Mirror of Merlin", MIRROR,</span>
+ <span id="line2367">2367. +A("The Magic Mirror of Merlin", MIRROR,	0,</span>
+ <span id="line2368">2368.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_SPEAK), SPFX_ESP, 0,</span>
+ <span id="line2369">2369.  	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),</span>
+ <span id="line2370">2370.  	0,		A_LAWFUL, PM_KNIGHT, NON_PM, 1500L ),</span>
+ <span id="line2371">2371.  </span>
+ <span id="line2372">2372. -A("The Eyes of the Overworld",	LENSES,</span>
+ <span id="line2373">2373. +A("The Eyes of the Overworld",	LENSES, 0,</span>
+ <span id="line2374">2374.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_XRAY), 0, 0,</span>
+ <span id="line2375">2375.  	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),</span>
+ <span id="line2376">2376.  	ENLIGHTENING,	A_NEUTRAL,	 PM_MONK, NON_PM, 2500L ),</span>
+ <span id="line2377">2377.  </span>
+ <span id="line2378">2378. -A("The Mitre of Holiness",	HELM_OF_BRILLIANCE,</span>
+ <span id="line2379">2379. +A("The Mitre of Holiness",	HELM_OF_BRILLIANCE,	0,</span>
+ <span id="line2380">2380.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_DFLAG2|SPFX_INTEL), 0, M2_UNDEAD,</span>
+ <span id="line2381">2381.  	NO_ATTK,	NO_DFNS,	CARY(AD_FIRE),</span>
+ <span id="line2382">2382.  	ENERGY_BOOST,	A_LAWFUL, PM_PRIEST, NON_PM, 2000L ),</span>
+ <span id="line2383">2383.  </span>
+ <span id="line2384">2384. -A("The Longbow of Diana", BOW,</span>
+ <span id="line2385">2385. -	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_REFLECT), SPFX_ESP, 0,</span>
+ <span id="line2386">2386. -	PHYS(5,0),	NO_DFNS,	NO_CARY,</span>
+ <span id="line2387">2387. +A("The Longbow of Diana", BOW, 0,</span>
+ <span id="line2388">2388. +	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL/*|SPFX_REFLECT*/), SPFX_ESP, 0,</span>
+ <span id="line2389">2389. +	PHYS(5,3),	NO_DFNS,	NO_CARY,</span>
+ <span id="line2390">2390.  	CREATE_AMMO, A_CHAOTIC, PM_RANGER, NON_PM, 4000L ),</span>
+ <span id="line2391">2391.  </span>
+ <span id="line2392">2392. -A("The Master Key of Thievery", SKELETON_KEY,</span>
+ <span id="line2393">2393. +A("The Master Key of Thievery", SKELETON_KEY, 0,</span>
+ <span id="line2394">2394.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_SPEAK),</span>
+ <span id="line2395">2395.  		(SPFX_WARN|SPFX_TCTRL|SPFX_HPHDAM), 0,</span>
+ <span id="line2396">2396.  	NO_ATTK,	NO_DFNS,	NO_CARY,</span>
+ <span id="line2397">2397.  	UNTRAP,		A_CHAOTIC, PM_ROGUE, NON_PM, 3500L ),</span>
+ <span id="line2398">2398.  </span>
+ <span id="line2399">2399. -A("The Tsurugi of Muramasa",	TSURUGI,</span>
+ <span id="line2400">2400. +A("The Tsurugi of Muramasa",	TSURUGI, 0,</span>
+ <span id="line2401">2401.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_BEHEAD|SPFX_LUCK), 0, 0,</span>
+ <span id="line2402">2402.  	PHYS(0,8),	NO_DFNS,	NO_CARY,</span>
+ <span id="line2403">2403.  	0,		A_LAWFUL, PM_SAMURAI, NON_PM, 4500L ),</span>
+ <span id="line2404">2404.  </span>
+ <span id="line2405">2405.  #ifdef TOURIST</span>
+ <span id="line2406">2406. -A("The Platinum Yendorian Express Card", CREDIT_CARD,</span>
+ <span id="line2407">2407. +A("The Platinum Yendorian Express Card", CREDIT_CARD, 0,</span>
+ <span id="line2408">2408.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DEFN),</span>
+ <span id="line2409">2409.  		(SPFX_ESP|SPFX_HSPDAM), 0,</span>
+ <span id="line2410">2410.  	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),</span>
+ <span id="line2411">2411.  	CHARGE_OBJ,	A_NEUTRAL, PM_TOURIST, NON_PM, 7000L ),</span>
+ <span id="line2412">2412.  #endif</span>
+ <span id="line2413">2413.  </span>
+ <span id="line2414">2414. -A("The Orb of Fate",		CRYSTAL_BALL,</span>
+ <span id="line2415">2415. +A("The Orb of Fate",		CRYSTAL_BALL, 0,</span>
+ <span id="line2416">2416.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_LUCK),</span>
+ <span id="line2417">2417.  		(SPFX_WARN|SPFX_HSPDAM|SPFX_HPHDAM), 0,</span>
+ <span id="line2418">2418.  	NO_ATTK,	NO_DFNS,	NO_CARY,</span>
+ <span id="line2419">2419.  	LEV_TELE,	A_NEUTRAL, PM_VALKYRIE, NON_PM, 3500L ),</span>
+ <span id="line2420">2420.  </span>
+ <span id="line2421">2421. -A("The Eye of the Aethiopica",	AMULET_OF_ESP,</span>
+ <span id="line2422">2422. +A("The Eye of the Aethiopica",	AMULET_OF_ESP, 0,</span>
+ <span id="line2423">2423.  	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL), (SPFX_EREGEN|SPFX_HSPDAM), 0,</span>
+ <span id="line2424">2424.  	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),</span>
+ <span id="line2425">2425.  	CREATE_PORTAL,	A_NEUTRAL, PM_WIZARD, NON_PM, 4000L ),</span>
+ <span id="line2426">2426.  </span>
+ <span id="line2427">2427.  /*</span>
+ <span id="line2428">2428. + *	dummy entry for user-made weapon</span>
+ <span id="line2429">2429. + */</span>
+ <span id="line2430">2430. +A("Custom Made Weapon",	TIN_OPENER, 0,  /* dummy otyp */</span>
+ <span id="line2431">2431. +	(SPFX_NOGEN|SPFX_RESTR), 0, 0,</span>
+ <span id="line2432">2432. +	NO_ATTK,	NO_DFNS,	NO_CARY,</span>
+ <span id="line2433">2433. +	0,	A_NONE, NON_PM, NON_PM, 0L ),</span>
+ <span id="line2434">2434. +</span>
+ <span id="line2435">2435. +/*</span>
+ <span id="line2436">2436.   *  terminator; otyp must be zero</span>
+ <span id="line2437">2437.   */</span>
+ <span id="line2438">2438. -A(0, 0, 0, 0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_NONE, NON_PM, NON_PM, 0L )</span>
+ <span id="line2439">2439. +A(0, 0, 0, 0, 0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_NONE, NON_PM, NON_PM, 0L )</span>
+ <span id="line2440">2440.  </span>
+ <span id="line2441">2441.  };	/* artilist[] (or artifact_names[]) */</span>
+ <span id="line2442">2442.  </span>
+
+=== attrib.h ===
+ <span id="line2443">2443. diff -pruN nethack-3.4.3/include/[[attrib.h]] nhbrass-040923/include/attrib.h</span>
+ <span id="line2444">2444. --- nethack-3.4.3/include/attrib.h	Sun Dec  7 18:39:13 2003</span>
+ <span id="line2445">2445. +++ nhbrass-040923/include/attrib.h	Wed Apr 10 11:29:56 2002</span>
+ <span id="line2446">2446. @@ -38,7 +38,8 @@ struct	attribs {</span>
+ <span id="line2447">2447.  	schar	a[A_MAX];</span>
+ <span id="line2448">2448.  };</span>
+ <span id="line2449">2449.  </span>
+ <span id="line2450">2450. -#define ATTRMAX(x) ((x == A_STR && Upolyd && strongmonst(youmonst.data)) ? STR18(100) : urace.attrmax[x])</span>
+ <span id="line2451">2451. +/* #define ATTRMAX(x) ((x == A_STR && Upolyd && strongmonst(youmonst.data)) ? STR18(100) : urace.attrmax[x])*/</span>
+ <span id="line2452">2452. +#define ATTRMAX(x) ((x == A_STR && Upolyd && strongmonst(youmonst.data)) ? STR18(100) : urole.attrmax[x])</span>
+ <span id="line2453">2453.  #define ATTRMIN(x) (urace.attrmin[x])</span>
+ <span id="line2454">2454.  </span>
+ <span id="line2455">2455.  #endif /* ATTRIB_H */</span>
+
+=== config.h ===
+ <span id="line2456">2456. diff -pruN nethack-3.4.3/include/[[config.h]] nhbrass-040923/include/config.h</span>
+ <span id="line2457">2457. --- nethack-3.4.3/include/config.h	Sun Dec  7 18:39:13 2003</span>
+ <span id="line2458">2458. +++ nhbrass-040923/include/config.h	Sat Dec 27 17:30:16 2003</span>
+ <span id="line2459">2459. @@ -338,6 +338,15 @@ typedef unsigned char	uchar;</span>
+ <span id="line2460">2460.  #endif</span>
+ <span id="line2461">2461.  </span>
+ <span id="line2462">2462.  #define EXP_ON_BOTL	/* Show experience on bottom line */</span>
+ <span id="line2463">2463. +//#define AUTOTHRUST	/* Automatically target a monster in range with polearms */</span>
+ <span id="line2464">2464. +#define FIRSTAID	/* scissors/bandage */</span>
+ <span id="line2465">2465. +#define NOPOLYPILE	/* polymorph affects only one item on the first pile */</span>
+ <span id="line2466">2466. +#define SHOWDMG		/* show damage value */</span>
+ <span id="line2467">2467. +#define RAND_MT		/* use mersenne twister for random number */</span>
+ <span id="line2468">2468. +#define NEWGEHENNOM	/* under construction */</span>
+ <span id="line2469">2469. +#ifdef STEED</span>
+ <span id="line2470">2470. +# define MONSTEED	/* monster is riding steeds */</span>
+ <span id="line2471">2471. +#endif /*STEED*/</span>
+ <span id="line2472">2472.  /* #define SCORE_ON_BOTL */	/* added by Gary Erickson (erickson@ucivax) */</span>
+ <span id="line2473">2473.  </span>
+ <span id="line2474">2474.  /*</span>
+
+The AUTOTHRUST line is commented out because the AUTOTHRUST macro no longer does anything. The [[autothrust]] feature (pressing [v] to hit the nearest [[monster]] with your wielded [[polearm]]) is always on, and it is not possible to disable it by defining or undefining a macro.
+
+=== display.h ===
+ <span id="line2551">2551. diff -pruN nethack-3.4.3/include/[[display.h]] nhbrass-040923/include/display.h</span>
+ <span id="line2552">2552. --- nethack-3.4.3/include/display.h	Sun Dec  7 18:39:13 2003</span>
+ <span id="line2553">2553. +++ nhbrass-040923/include/display.h	Sat Dec 27 14:11:50 2003</span>
+ <span id="line2554">2554. @@ -40,9 +40,11 @@</span>
+ <span id="line2555">2555.   * vicinity, and a glyph representing the warning level is displayed.</span>
+ <span id="line2556">2556.   */</span>
+ <span id="line2557">2557.  </span>
+ <span id="line2558">2558. +//#define mon_warning(mon) (Warning && !(mon)->mpeaceful &&</span>
+ <span id="line2559">2559. +//			 (distu((mon)->mx, (mon)->my) < 100) &&</span>
+ <span id="line2560">2560. +//			 (((int) ((mon)->m_lev / 4)) >= flags.warnlevel))</span>
+ <span id="line2561">2561.  #define mon_warning(mon) (Warning && !(mon)->mpeaceful && 				\</span>
+ <span id="line2562">2562. -			 (distu((mon)->mx, (mon)->my) < 100) &&				\</span>
+ <span id="line2563">2563. -			 (((int) ((mon)->m_lev / 4)) >= flags.warnlevel))</span>
+ <span id="line2564">2564. +			 (distu((mon)->mx, (mon)->my) < 100))</span>
+ <span id="line2565">2565.  </span>
+ <span id="line2566">2566.  /*</span>
+ <span id="line2567">2567.   * mon_visible()</span>
+ <span id="line2568">2568. @@ -92,6 +94,23 @@</span>
+ <span id="line2569">2569.  #define canspotmon(mon) \</span>
+ <span id="line2570">2570.  	(canseemon(mon) || sensemon(mon))</span>
+ <span id="line2571">2571.  </span>
+ <span id="line2572">2572. +</span>
+ <span id="line2573">2573. +/*</span>
+ <span id="line2574">2574. + * canspotmons(mon)</span>
+ <span id="line2575">2575. + *</span>
+ <span id="line2576">2576. + * This function is variation of canspotmon() which returns TRUE if</span>
+ <span id="line2577">2577. + * you can spot any monsters in the same place as mon's.</span>
+ <span id="line2578">2578. + */</span>
+ <span id="line2579">2579. +#ifndef MONSTEED</span>
+ <span id="line2580">2580. +#define canspotmons canspotmon</span>
+ <span id="line2581">2581. +#else</span>
+ <span id="line2582">2582. +#define canspotmons(mon) \</span>
+ <span id="line2583">2583. +	(canspotmon(mon) || \</span>
+ <span id="line2584">2584. +	 ((mon)->mriding && canspotmon((mon)->mchild)) || \</span>
+ <span id="line2585">2585. +	 ((mon)->msteed && canspotmon((mon)->mparent)))</span>
+ <span id="line2586">2586. +#endif /*MONSTEED*/</span>
+ <span id="line2587">2587. +</span>
+ <span id="line2588">2588. +</span>
+ <span id="line2589">2589.  /* knowninvisible(mon)</span>
+ <span id="line2590">2590.   * This one checks to see if you know a monster is both there and invisible.</span>
+ <span id="line2591">2591.   * 1) If you can see the monster and have see invisible, it is assumed the</span>
+ <span id="line2592">2592. @@ -234,7 +253,8 @@</span>
+ <span id="line2593">2593.   *</span>
+ <span id="line2594">2594.   * ridden	Represents all monsters being ridden.  Count: NUMMONS </span>
+ <span id="line2595">2595.   *</span>
+ <span id="line2596">2596. - * object	One for each object.  Count: NUM_OBJECTS</span>
+ <span id="line2597">2597. + * object	32(number of materials) for each object.</span>
+ <span id="line2598">2598. + *		Lower 5 bits indicate materials.  Count: NUM_OBJECTS << 5</span>
+ <span id="line2599">2599.   *</span>
+ <span id="line2600">2600.   * cmap		One for each entry in the character map.  The character map</span>
+ <span id="line2601">2601.   *		is the dungeon features and other miscellaneous things.</span>
+ <span id="line2602">2602. @@ -258,16 +278,18 @@</span>
+ <span id="line2603">2603.   *</span>
+ <span id="line2604">2604.   * The following are offsets used to convert to and from a glyph.</span>
+ <span id="line2605">2605.   */</span>
+ <span id="line2606">2606. -#define NUM_ZAP 8	/* number of zap beam types */</span>
+ <span id="line2607">2607. +#define NUM_ZAP 9	/* number of zap beam types */</span>
+ <span id="line2608">2608.  </span>
+ <span id="line2609">2609.  #define GLYPH_MON_OFF		0</span>
+ <span id="line2610">2610.  #define GLYPH_PET_OFF		(NUMMONS	+ GLYPH_MON_OFF)</span>
+ <span id="line2611">2611.  #define GLYPH_INVIS_OFF		(NUMMONS	+ GLYPH_PET_OFF)</span>
+ <span id="line2612">2612.  #define GLYPH_DETECT_OFF	(1		+ GLYPH_INVIS_OFF)</span>
+ <span id="line2613">2613.  #define GLYPH_BODY_OFF		(NUMMONS	+ GLYPH_DETECT_OFF)</span>
+ <span id="line2614">2614. -#define GLYPH_RIDDEN_OFF	(NUMMONS	+ GLYPH_BODY_OFF)</span>
+ <span id="line2615">2615. +#define GLYPH_RIDING_OFF	(NUMMONS	+ GLYPH_BODY_OFF)</span>
+ <span id="line2616">2616. +#define GLYPH_RIDDEN_OFF	(NUMMONS	+ GLYPH_RIDING_OFF)</span>
+ <span id="line2617">2617.  #define GLYPH_OBJ_OFF		(NUMMONS	+ GLYPH_RIDDEN_OFF)</span>
+ <span id="line2618">2618. -#define GLYPH_CMAP_OFF		(NUM_OBJECTS	+ GLYPH_OBJ_OFF)</span>
+ <span id="line2619">2619. +#define GLYPH_CMAP_OFF		((NUM_OBJECTS << 5) + GLYPH_OBJ_OFF) /* material patch */</span>
+ <span id="line2620">2620. +/*#define GLYPH_CMAP_OFF		(NUM_OBJECTS	+ GLYPH_OBJ_OFF)*/</span>
+ <span id="line2621">2621.  #define GLYPH_EXPLODE_OFF	((MAXPCHARS - MAXEXPCHARS) + GLYPH_CMAP_OFF)</span>
+ <span id="line2622">2622.  #define GLYPH_ZAP_OFF		((MAXEXPCHARS * EXPL_MAX) + GLYPH_EXPLODE_OFF)</span>
+ <span id="line2623">2623.  #define GLYPH_SWALLOW_OFF	((NUM_ZAP << 2) + GLYPH_ZAP_OFF)</span>
+ <span id="line2624">2624. @@ -281,6 +303,7 @@</span>
+ <span id="line2625">2625.  #define warning_to_glyph(mwarnlev) ((mwarnlev)+GLYPH_WARNING_OFF)</span>
+ <span id="line2626">2626.  #define mon_to_glyph(mon) ((int) what_mon(monsndx((mon)->data))+GLYPH_MON_OFF)</span>
+ <span id="line2627">2627.  #define detected_mon_to_glyph(mon) ((int) what_mon(monsndx((mon)->data))+GLYPH_DETECT_OFF)</span>
+ <span id="line2628">2628. +#define riding_mon_to_glyph(mon) ((int) what_mon(monsndx((mon)->data))+GLYPH_RIDING_OFF)</span>
+ <span id="line2629">2629.  #define ridden_mon_to_glyph(mon) ((int) what_mon(monsndx((mon)->data))+GLYPH_RIDDEN_OFF)</span>
+ <span id="line2630">2630.  #define pet_to_glyph(mon) ((int) what_mon(monsndx((mon)->data))+GLYPH_PET_OFF)</span>
+ <span id="line2631">2631.  </span>
+ <span id="line2632">2632. @@ -290,10 +313,11 @@</span>
+ <span id="line2633">2633.      (Hallucination ?							      \</span>
+ <span id="line2634">2634.  	((otg_temp = random_object()) == CORPSE ?			      \</span>
+ <span id="line2635">2635.  	    random_monster() + GLYPH_BODY_OFF :				      \</span>
+ <span id="line2636">2636. -	    otg_temp + GLYPH_OBJ_OFF)	:				      \</span>
+ <span id="line2637">2637. +	    (otg_temp<<5) + rnd(MAX_MATERIAL) + GLYPH_OBJ_OFF)	:	      \</span>
+ <span id="line2638">2638.  	((obj)->otyp == CORPSE ?					      \</span>
+ <span id="line2639">2639.  	    (int) (obj)->corpsenm + GLYPH_BODY_OFF :			      \</span>
+ <span id="line2640">2640. -	    (int) (obj)->otyp + GLYPH_OBJ_OFF))</span>
+ <span id="line2641">2641. +	    ((int) (obj)->otyp << 5) +					      \</span>
+ <span id="line2642">2642. +		(is_material_variable(obj) ? get_material(obj) : 0) + GLYPH_OBJ_OFF))</span>
+ <span id="line2643">2643.  </span>
+ <span id="line2644">2644.  #define cmap_to_glyph(cmap_idx) ((int) (cmap_idx)   + GLYPH_CMAP_OFF)</span>
+ <span id="line2645">2645.  #define explosion_to_glyph(expltype,idx)	\</span>
+ <span id="line2646">2646. @@ -303,7 +327,7 @@</span>
+ <span id="line2647">2647.  			cmap_to_glyph(trap_to_defsym(what_trap((trap)->ttyp)))</span>
+ <span id="line2648">2648.  </span>
+ <span id="line2649">2649.  /* Not affected by hallucination.  Gives a generic body for CORPSE */</span>
+ <span id="line2650">2650. -#define objnum_to_glyph(onum)	((int) (onum) + GLYPH_OBJ_OFF)</span>
+ <span id="line2651">2651. +#define objnum_to_glyph(onum)	(((int) (onum) << 5) + GLYPH_OBJ_OFF)</span>
+ <span id="line2652">2652.  #define monnum_to_glyph(mnum)	((int) (mnum) + GLYPH_MON_OFF)</span>
+ <span id="line2653">2653.  #define detected_monnum_to_glyph(mnum)	((int) (mnum) + GLYPH_DETECT_OFF)</span>
+ <span id="line2654">2654.  #define ridden_monnum_to_glyph(mnum)	((int) (mnum) + GLYPH_RIDDEN_OFF)</span>
+ <span id="line2655">2655. @@ -316,7 +340,6 @@</span>
+ <span id="line2656">2656.  	                (flags.female && urace.femalenum != NON_PM) ? urace.femalenum : \</span>
+ <span id="line2657">2657.  	                urace.malenum)</span>
+ <span id="line2658">2658.  </span>
+ <span id="line2659">2659. -</span>
+ <span id="line2660">2660.  /*</span>
+ <span id="line2661">2661.   * Change the given glyph into it's given type.  Note:</span>
+ <span id="line2662">2662.   *	1) Pets, detected, and ridden monsters are animals and are converted</span>
+ <span id="line2663">2663. @@ -333,11 +356,12 @@</span>
+ <span id="line2664">2664.  	(glyph_is_normal_monster(glyph) ? ((glyph)-GLYPH_MON_OFF) :	\</span>
+ <span id="line2665">2665.  	glyph_is_pet(glyph) ? ((glyph)-GLYPH_PET_OFF) :			\</span>
+ <span id="line2666">2666.  	glyph_is_detected_monster(glyph) ? ((glyph)-GLYPH_DETECT_OFF) :	\</span>
+ <span id="line2667">2667. +	glyph_is_riding_monster(glyph) ? ((glyph)-GLYPH_RIDING_OFF) :	\</span>
+ <span id="line2668">2668.  	glyph_is_ridden_monster(glyph) ? ((glyph)-GLYPH_RIDDEN_OFF) :	\</span>
+ <span id="line2669">2669.  	NO_GLYPH)</span>
+ <span id="line2670">2670.  #define glyph_to_obj(glyph)						\</span>
+ <span id="line2671">2671.  	(glyph_is_body(glyph) ? CORPSE :				\</span>
+ <span id="line2672">2672. -	glyph_is_normal_object(glyph) ? ((glyph)-GLYPH_OBJ_OFF) :	\</span>
+ <span id="line2673">2673. +	glyph_is_normal_object(glyph) ? (((glyph)-GLYPH_OBJ_OFF) >> 5) :	\</span>
+ <span id="line2674">2674.  	NO_GLYPH)</span>
+ <span id="line2675">2675.  #define glyph_to_trap(glyph)						\</span>
+ <span id="line2676">2676.  	(glyph_is_trap(glyph) ?						\</span>
+ <span id="line2677">2677. @@ -360,6 +384,7 @@</span>
+ <span id="line2678">2678.  #define glyph_is_monster(glyph)						\</span>
+ <span id="line2679">2679.  		(glyph_is_normal_monster(glyph)				\</span>
+ <span id="line2680">2680.  		|| glyph_is_pet(glyph)					\</span>
+ <span id="line2681">2681. +		|| glyph_is_riding_monster(glyph)			\</span>
+ <span id="line2682">2682.  		|| glyph_is_ridden_monster(glyph)			\</span>
+ <span id="line2683">2683.  		|| glyph_is_detected_monster(glyph))</span>
+ <span id="line2684">2684.  #define glyph_is_normal_monster(glyph)					\</span>
+ <span id="line2685">2685. @@ -368,13 +393,15 @@</span>
+ <span id="line2686">2686.      ((glyph) >= GLYPH_PET_OFF && (glyph) < (GLYPH_PET_OFF+NUMMONS))</span>
+ <span id="line2687">2687.  #define glyph_is_body(glyph)						\</span>
+ <span id="line2688">2688.      ((glyph) >= GLYPH_BODY_OFF && (glyph) < (GLYPH_BODY_OFF+NUMMONS))</span>
+ <span id="line2689">2689. +#define glyph_is_riding_monster(glyph)					\</span>
+ <span id="line2690">2690. +    ((glyph) >= GLYPH_RIDING_OFF && (glyph) < (GLYPH_RIDING_OFF+NUMMONS))</span>
+ <span id="line2691">2691.  #define glyph_is_ridden_monster(glyph)					\</span>
+ <span id="line2692">2692.      ((glyph) >= GLYPH_RIDDEN_OFF && (glyph) < (GLYPH_RIDDEN_OFF+NUMMONS))</span>
+ <span id="line2693">2693.  #define glyph_is_detected_monster(glyph)				\</span>
+ <span id="line2694">2694.      ((glyph) >= GLYPH_DETECT_OFF && (glyph) < (GLYPH_DETECT_OFF+NUMMONS))</span>
+ <span id="line2695">2695.  #define glyph_is_invisible(glyph) ((glyph) == GLYPH_INVISIBLE)</span>
+ <span id="line2696">2696.  #define glyph_is_normal_object(glyph)					\</span>
+ <span id="line2697">2697. -    ((glyph) >= GLYPH_OBJ_OFF && (glyph) < (GLYPH_OBJ_OFF+NUM_OBJECTS))</span>
+ <span id="line2698">2698. +    ((glyph) >= GLYPH_OBJ_OFF && (glyph) < (GLYPH_OBJ_OFF+(NUM_OBJECTS<<5)))</span>
+ <span id="line2699">2699.  #define glyph_is_object(glyph)						\</span>
+ <span id="line2700">2700.  		(glyph_is_normal_object(glyph)				\</span>
+ <span id="line2701">2701.  		|| glyph_is_body(glyph))</span>
+
+Because [[monsters riding steeds]] is a new feature in NetHack brass, the display code needs to know how to draw them on screen.
+
+=== obj.h ===
+ <span id="line3623">3623. diff -pruN nethack-3.4.3/include/[[obj.h]] nhbrass-040923/include/obj.h</span>
+ <span id="line3624">3624. --- nethack-3.4.3/include/obj.h	Sun Dec  7 18:39:13 2003</span>
+ <span id="line3625">3625. +++ nhbrass-040923/include/obj.h	Wed Dec 10 07:49:36 2003</span>
+ <span id="line3626">3626. @@ -72,12 +72,15 @@ struct obj {</span>
+ <span id="line3627">3627.  #define norevive oeroded2</span>
+ <span id="line3628">3628.  	Bitfield(oerodeproof,1); /* erodeproof weapon/armor */</span>
+ <span id="line3629">3629.  	Bitfield(olocked,1);	/* object is locked */</span>
+ <span id="line3630">3630. +#define sokoprize olocked	/* special flag for sokoban prize */</span>
+ <span id="line3631">3631.  	Bitfield(obroken,1);	/* lock has been broken */</span>
+ <span id="line3632">3632. +#define oshot obroken		/* a bullet is shot from a gun, not thrown */</span>
+ <span id="line3633">3633.  	Bitfield(otrapped,1);	/* container is trapped */</span>
+ <span id="line3634">3634.  				/* or accidental tripped rolling boulder trap */</span>
+ <span id="line3635">3635.  #define opoisoned otrapped	/* object (weapon) is coated with poison */</span>
+ <span id="line3636">3636.  </span>
+ <span id="line3637">3637.  	Bitfield(recharged,3);	/* number of times it's been recharged */</span>
+ <span id="line3638">3638. +#define oacadjust recharged	/* armor-class adjustment (-4 to +3) */</span>
+ <span id="line3639">3639.  	Bitfield(lamplit,1);	/* a light-source -- can be lit */</span>
+ <span id="line3640">3640.  #ifdef INVISIBLE_OBJECTS</span>
+ <span id="line3641">3641.  	Bitfield(oinvis,1);	/* invisible */</span>
+ <span id="line3642">3642. @@ -91,13 +94,15 @@ struct obj {</span>
+ <span id="line3643">3643.  </span>
+ <span id="line3644">3644.  	Bitfield(in_use,1);	/* for magic items before useup items */</span>
+ <span id="line3645">3645.  	Bitfield(bypass,1);	/* mark this as an object to be skipped by bhito() */</span>
+ <span id="line3646">3646. -	/* 6 free bits */</span>
+ <span id="line3647">3647. +	Bitfield(etherial,1);	/* magically created object */</span>
+ <span id="line3648">3648. +	Bitfield(madeof,5);	/* material num if obj is made of unusual material */</span>
+ <span id="line3649">3649.  </span>
+ <span id="line3650">3650.  	int	corpsenm;	/* type of corpse is mons[corpsenm] */</span>
+ <span id="line3651">3651.  #define leashmon  corpsenm	/* gets m_id of attached pet */</span>
+ <span id="line3652">3652.  #define spestudied corpsenm	/* # of times a spellbook has been studied */</span>
+ <span id="line3653">3653.  #define fromsink  corpsenm	/* a potion from a sink */</span>
+ <span id="line3654">3654.  	unsigned oeaten;	/* nutrition left in food, if partly eaten */</span>
+ <span id="line3655">3655. +#define odamaged oeaten		/* how much object's special power worn out */</span>
+ <span id="line3656">3656.  	long age;		/* creation date */</span>
+ <span id="line3657">3657.  </span>
+ <span id="line3658">3658.  	uchar onamelth;		/* length of name (following oxlth) */</span>
+ <span id="line3659">3659. @@ -125,50 +130,69 @@ struct obj {</span>
+ <span id="line3660">3660.   *	#define is_poisonable(otyp) (otyp <= BEC_DE_CORBIN)</span>
+ <span id="line3661">3661.   */</span>
+ <span id="line3662">3662.  #define is_blade(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3663">3663. -			 objects[otmp->otyp].oc_skill >= P_DAGGER && \</span>
+ <span id="line3664">3664. -			 objects[otmp->otyp].oc_skill <= P_SABER)</span>
+ <span id="line3665">3665. +			 objects[otmp->otyp].oc_skill >= P_DAGGER_GROUP && \</span>
+ <span id="line3666">3666. +			 objects[otmp->otyp].oc_skill <= P_SABER_GROUP)</span>
+ <span id="line3667">3667.  #define is_axe(otmp)	((otmp->oclass == WEAPON_CLASS || \</span>
+ <span id="line3668">3668.  			 otmp->oclass == TOOL_CLASS) && \</span>
+ <span id="line3669">3669. -			 objects[otmp->otyp].oc_skill == P_AXE)</span>
+ <span id="line3670">3670. +			 objects[otmp->otyp].oc_skill == P_AXE_GROUP)</span>
+ <span id="line3671">3671.  #define is_pick(otmp)	((otmp->oclass == WEAPON_CLASS || \</span>
+ <span id="line3672">3672.  			 otmp->oclass == TOOL_CLASS) && \</span>
+ <span id="line3673">3673. -			 objects[otmp->otyp].oc_skill == P_PICK_AXE)</span>
+ <span id="line3674">3674. +			 objects[otmp->otyp].oc_skill == P_PICKAXE_GROUP)</span>
+ <span id="line3675">3675.  #define is_sword(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3676">3676. -			 objects[otmp->otyp].oc_skill >= P_SHORT_SWORD && \</span>
+ <span id="line3677">3677. -			 objects[otmp->otyp].oc_skill <= P_SABER)</span>
+ <span id="line3678">3678. +			 objects[otmp->otyp].oc_skill >= P_SHORT_BLADE_GROUP && \</span>
+ <span id="line3679">3679. +			 objects[otmp->otyp].oc_skill <= P_SABER_GROUP)</span>
+ <span id="line3680">3680.  #define is_pole(otmp)	((otmp->oclass == WEAPON_CLASS || \</span>
+ <span id="line3681">3681.  			otmp->oclass == TOOL_CLASS) && \</span>
+ <span id="line3682">3682. -			 (objects[otmp->otyp].oc_skill == P_POLEARMS || \</span>
+ <span id="line3683">3683. -			 objects[otmp->otyp].oc_skill == P_LANCE))</span>
+ <span id="line3684">3684. +			 objects[otmp->otyp].oc_skill == P_POLEARM_GROUP)</span>
+ <span id="line3685">3685.  #define is_spear(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3686">3686. -			 objects[otmp->otyp].oc_skill >= P_SPEAR && \</span>
+ <span id="line3687">3687. -			 objects[otmp->otyp].oc_skill <= P_JAVELIN)</span>
+ <span id="line3688">3688. +			 objects[otmp->otyp].oc_skill == P_SPEAR_GROUP)</span>
+ <span id="line3689">3689. +#define is_gun(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3690">3690. +			 objects[otmp->otyp].oc_skill == P_FIREARM_GROUP)</span>
+ <span id="line3691">3691. +#define maxbullets(otmp) (otmp->otyp == REVOLVER ? 6 : \</span>
+ <span id="line3692">3692. +                          otmp->otyp == MUSKET ? 1 : 0)</span>
+ <span id="line3693">3693.  #define is_launcher(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3694">3694. -			 objects[otmp->otyp].oc_skill >= P_BOW && \</span>
+ <span id="line3695">3695. -			 objects[otmp->otyp].oc_skill <= P_CROSSBOW)</span>
+ <span id="line3696">3696. +			 (objects[otmp->otyp].oc_wprop & WP_WEAPONTYPE) == WP_LAUNCHER)</span>
+ <span id="line3697">3697.  #define is_ammo(otmp)	((otmp->oclass == WEAPON_CLASS || \</span>
+ <span id="line3698">3698.  			 otmp->oclass == GEM_CLASS) && \</span>
+ <span id="line3699">3699. -			 objects[otmp->otyp].oc_skill >= -P_CROSSBOW && \</span>
+ <span id="line3700">3700. -			 objects[otmp->otyp].oc_skill <= -P_BOW)</span>
+ <span id="line3701">3701. +			 (objects[otmp->otyp].oc_wprop & WP_WEAPONTYPE) == WP_AMMUNITION)</span>
+ <span id="line3702">3702. +#define is_bullet(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3703">3703. +			 (objects[otmp->otyp].oc_wprop & (WP_WEAPONTYPE|WP_SUBTYPE)) == \</span>
+ <span id="line3704">3704. +			 (WP_AMMUNITION|WP_BULLET))</span>
+ <span id="line3705">3705.  #define ammo_and_launcher(otmp,ltmp) \</span>
+ <span id="line3706">3706. -			 (is_ammo(otmp) && (ltmp) && \</span>
+ <span id="line3707">3707. -			 objects[(otmp)->otyp].oc_skill == -objects[(ltmp)->otyp].oc_skill)</span>
+ <span id="line3708">3708. -#define is_missile(otmp)	((otmp->oclass == WEAPON_CLASS || \</span>
+ <span id="line3709">3709. -			 otmp->oclass == TOOL_CLASS) && \</span>
+ <span id="line3710">3710. -			 objects[otmp->otyp].oc_skill >= -P_BOOMERANG && \</span>
+ <span id="line3711">3711. -			 objects[otmp->otyp].oc_skill <= -P_DART)</span>
+ <span id="line3712">3712. +			 (is_ammo(otmp) && (ltmp) && is_launcher(ltmp) && \</span>
+ <span id="line3713">3713. +			 ((objects[(otmp)->otyp].oc_wprop & WP_SUBTYPE) == \</span>
+ <span id="line3714">3714. +			  (objects[(ltmp)->otyp].oc_wprop & WP_SUBTYPE) ))</span>
+ <span id="line3715">3715. +#define is_missile(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3716">3716. +			 (objects[otmp->otyp].oc_wprop & WP_THROWING) && \</span>
+ <span id="line3717">3717. +			 (objects[otmp->otyp].oc_wprop & WP_CONSUMABLE) && \</span>
+ <span id="line3718">3718. +			 (objects[otmp->otyp].oc_wprop & WP_WEAPONTYPE) == WP_NORMAL)</span>
+ <span id="line3719">3719.  #define is_weptool(o)	((o)->oclass == TOOL_CLASS && \</span>
+ <span id="line3720">3720.  			 objects[(o)->otyp].oc_skill != P_NONE)</span>
+ <span id="line3721">3721.  #define bimanual(otmp)	((otmp->oclass == WEAPON_CLASS || \</span>
+ <span id="line3722">3722.  			 otmp->oclass == TOOL_CLASS) && \</span>
+ <span id="line3723">3723.  			 objects[otmp->otyp].oc_bimanual)</span>
+ <span id="line3724">3724. -#define is_multigen(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3725">3725. -			 objects[otmp->otyp].oc_skill >= -P_SHURIKEN && \</span>
+ <span id="line3726">3726. -			 objects[otmp->otyp].oc_skill <= -P_BOW)</span>
+ <span id="line3727">3727. +#define is_multigen(otmp)	(is_ammo(otmp) || is_missile(otmp))</span>
+ <span id="line3728">3728.  #define is_poisonable(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3729">3729. -			 objects[otmp->otyp].oc_skill >= -P_SHURIKEN && \</span>
+ <span id="line3730">3730. -			 objects[otmp->otyp].oc_skill <= -P_BOW)</span>
+ <span id="line3731">3731. -#define uslinging()	(uwep && objects[uwep->otyp].oc_skill == P_SLING)</span>
+ <span id="line3732">3732. +			(objects[otmp->otyp].oc_wprop & WP_POISONABLE))</span>
+ <span id="line3733">3733. +#define is_consumable(otmp)	((otmp->oclass == WEAPON_CLASS || otmp->oclass == GEM_CLASS) && \</span>
+ <span id="line3734">3734. +			(objects[otmp->otyp].oc_wprop & WP_CONSUMABLE))</span>
+ <span id="line3735">3735. +#define is_ranged(otmp)	((otmp->oclass == WEAPON_CLASS || is_weptool(otmp)) && \</span>
+ <span id="line3736">3736. +			 (objects[otmp->otyp].oc_wprop & WP_WEAPONTYPE) == WP_RANGED)</span>
+ <span id="line3737">3737. +#define uslinging()	(uwep && uwep->oclass == WEAPON_CLASS && \</span>
+ <span id="line3738">3738. +			(objects[uwep->otyp].oc_wprop & (WP_WEAPONTYPE|WP_SUBTYPE)) == (WP_LAUNCHER|WP_STONE))</span>
+ <span id="line3739">3739. +#define is_hammer(otmp)	(otmp->oclass == WEAPON_CLASS && \</span>
+ <span id="line3740">3740. +			 (objects[otmp->otyp].oc_skill == P_CRUSHING_GROUP || \</span>
+ <span id="line3741">3741. +			  objects[otmp->otyp].oc_skill == P_FLAIL_GROUP || \</span>
+ <span id="line3742">3742. +			  otmp->otyp == LUCERN_HAMMER || otmp->otyp == BEC_DE_CORBIN))</span>
+ <span id="line3743">3743. +/* The amount added to the victim's total hit points to insure that the</span>
+ <span id="line3744">3744. +   victim will be killed even after damage bonus/penalty adjustments.</span>
+ <span id="line3745">3745. +   Most such penalties are small, and 200 is plenty; the exception is</span>
+ <span id="line3746">3746. +   half physical damage.  3.3.1 and previous versions tried to use a very</span>
+ <span id="line3747">3747. +   large number to account for this case; now, we just compute the fatal</span>
+ <span id="line3748">3748. +   damage by adding it to 2 times the total hit points instead of 1 time.</span>
+ <span id="line3749">3749. +   Note: this will still break if they have more than about half the number</span>
+ <span id="line3750">3750. +   of hit points that will fit in a 15 bit integer. */</span>
+ <span id="line3751">3751. +#define FATAL_DAMAGE_MODIFIER 200</span>
+ <span id="line3752">3752.  </span>
+ <span id="line3753">3753.  /* Armor */</span>
+ <span id="line3754">3754.  #define is_shield(otmp) (otmp->oclass == ARMOR_CLASS && \</span>
+ <span id="line3755">3755. @@ -185,6 +209,10 @@ struct obj {</span>
+ <span id="line3756">3756.  			 objects[otmp->otyp].oc_armcat == ARM_SHIRT)</span>
+ <span id="line3757">3757.  #define is_suit(otmp)	(otmp->oclass == ARMOR_CLASS && \</span>
+ <span id="line3758">3758.  			 objects[otmp->otyp].oc_armcat == ARM_SUIT)</span>
+ <span id="line3759">3759. +#define is_robe(otmp)	(otmp->oclass == ARMOR_CLASS && \</span>
+ <span id="line3760">3760. +			 otmp->otyp >= ROBE && otmp->otyp <= ROBE_OF_WEAKNESS)</span>
+ <span id="line3761">3761. +#define is_clothes(otmp) (otmp->oclass == ARMOR_CLASS && \</span>
+ <span id="line3762">3762. +			  (get_material(otmp) == CLOTH || otmp->otyp == LEATHER_JACKET))</span>
+ <span id="line3763">3763.  #define is_elven_armor(otmp)	((otmp)->otyp == ELVEN_LEATHER_HELM\</span>
+ <span id="line3764">3764.  				|| (otmp)->otyp == ELVEN_MITHRIL_COAT\</span>
+ <span id="line3765">3765.  				|| (otmp)->otyp == ELVEN_CLOAK\</span>
+ <span id="line3766">3766. @@ -202,7 +230,9 @@ struct obj {</span>
+ <span id="line3767">3767.  				|| (otmp)->otyp == DWARVISH_ROUNDSHIELD)</span>
+ <span id="line3768">3768.  #define is_gnomish_armor(otmp)	(FALSE)</span>
+ <span id="line3769">3769.  </span>
+ <span id="line3770">3770. -				</span>
+ <span id="line3771">3771. +#define WEP_ENCHANT_MAX  5</span>
+ <span id="line3772">3772. +#define WEP_ENCHANT_WARN 3</span>
+ <span id="line3773">3773. +</span>
+ <span id="line3774">3774.  /* Eggs and other food */</span>
+ <span id="line3775">3775.  #define MAX_EGG_HATCH_TIME 200	/* longest an egg can remain unhatched */</span>
+ <span id="line3776">3776.  #define stale_egg(egg)	((monstermoves - (egg)->age) > (2*MAX_EGG_HATCH_TIME))</span>
+ <span id="line3777">3777. @@ -222,6 +252,8 @@ struct obj {</span>
+ <span id="line3778">3778.  #define Is_mbag(otmp)	(otmp->otyp == BAG_OF_HOLDING || \</span>
+ <span id="line3779">3779.  			 otmp->otyp == BAG_OF_TRICKS)</span>
+ <span id="line3780">3780.  </span>
+ <span id="line3781">3781. +#define Is_sokoprize(otmp)	((otmp)->sokoprize && !Is_box(otmp))</span>
+ <span id="line3782">3782. +</span>
+ <span id="line3783">3783.  /* dragon gear */</span>
+ <span id="line3784">3784.  #define Is_dragon_scales(obj)	((obj)->otyp >= GRAY_DRAGON_SCALES && \</span>
+ <span id="line3785">3785.  				 (obj)->otyp <= YELLOW_DRAGON_SCALES)</span>
+ <span id="line3786">3786. @@ -260,9 +292,14 @@ struct obj {</span>
+ <span id="line3787">3787.  /* Gnomish gear */</span>
+ <span id="line3788">3788.  #define is_gnomish_obj(otmp)	(is_gnomish_armor(otmp))</span>
+ <span id="line3789">3789.  </span>
+ <span id="line3790">3790. +#define is_special_armor(obj)	(is_elven_armor(obj) || \</span>
+ <span id="line3791">3791. +			(Role_if(PM_WIZARD) && (obj)->otyp == CORNUTHAUM))</span>
+ <span id="line3792">3792. +</span>
+ <span id="line3793">3793. +</span>
+ <span id="line3794">3794.  /* Light sources */</span>
+ <span id="line3795">3795.  #define Is_candle(otmp) (otmp->otyp == TALLOW_CANDLE || \</span>
+ <span id="line3796">3796. -			 otmp->otyp == WAX_CANDLE)</span>
+ <span id="line3797">3797. +			 otmp->otyp == WAX_CANDLE || \</span>
+ <span id="line3798">3798. +			 otmp->otyp == MAGIC_CANDLE)</span>
+ <span id="line3799">3799.  #define MAX_OIL_IN_FLASK 400	/* maximum amount of oil in a potion of oil */</span>
+ <span id="line3800">3800.  </span>
+ <span id="line3801">3801.  /* MAGIC_LAMP intentionally excluded below */</span>
+ <span id="line3802">3802. @@ -289,10 +326,10 @@ struct obj {</span>
+ <span id="line3803">3803.  </span>
+ <span id="line3804">3804.  /* misc */</span>
+ <span id="line3805">3805.  #ifdef KOPS</span>
+ <span id="line3806">3806. -#define is_flimsy(otmp)		(objects[(otmp)->otyp].oc_material <= LEATHER || \</span>
+ <span id="line3807">3807. +#define is_flimsy(otmp)		(get_material(otmp) <= LEATHER || \</span>
+ <span id="line3808">3808.  				 (otmp)->otyp == RUBBER_HOSE)</span>
+ <span id="line3809">3809.  #else</span>
+ <span id="line3810">3810. -#define is_flimsy(otmp)		(objects[(otmp)->otyp].oc_material <= LEATHER)</span>
+ <span id="line3811">3811. +#define is_flimsy(otmp)		(get_material(otmp) <= LEATHER) /* material patch */</span>
+ <span id="line3812">3812.  #endif</span>
+ <span id="line3813">3813.  </span>
+ <span id="line3814">3814.  /* helpers, simple enough to be macros */</span>
+
+Among the changes to objects: support for the [[Sokoban prize]]s, the three items from which you may take only one; support for unusual [[material]]s for some objects. Also, some of the macros here have to be adjusted to work with the new [[skills (NetHack brass)|skills]] system.
+
+=== zap.c ===
+ <span id="line30960">30960.diff -pruN nethack-3.4.3/src/zap.c nhbrass-040923/src/zap.c</span>
+ <span id="line30961">30961.--- nethack-3.4.3/src/zap.c	Sun Dec  7 18:39:13 2003</span>
+ <span id="line30962">30962.+++ nhbrass-040923/src/zap.c	Sun Jun 13 13:37:04 2004</span>
+ <span id="line30963">30963.@@ -48,7 +48,8 @@ STATIC_DCL int FDECL(spell_hit_bonus, (i</span>
+ <span id="line30964">30964. #define ZT_LIGHTNING		(AD_ELEC-1)</span>
+ <span id="line30965">30965. #define ZT_POISON_GAS		(AD_DRST-1)</span>
+ <span id="line30966">30966. #define ZT_ACID			(AD_ACID-1)</span>
+ <span id="line30967">30967.-/* 8 and 9 are currently unassigned */</span>
+ <span id="line30968">30968.+#define ZT_PARALYSIS		(AD_PLYS-1)</span>
+ <span id="line30969">30969.+/* 9 is currently unassigned */</span>
+ <span id="line30970">30970. </span>
+ <span id="line30971">30971. #define ZT_WAND(x)		(x)</span>
+ <span id="line30972">30972. #define ZT_SPELL(x)		(10+(x))</span>
+ <span id="line30973">30973.@@ -93,7 +94,7 @@ const char * const flash_types[] = {	/* </span>
+ <span id="line30974">30974. 	"blast of lightning",</span>
+ <span id="line30975">30975. 	"blast of poison gas",</span>
+ <span id="line30976">30976. 	"blast of acid",</span>
+ <span id="line30977">30977.-	"",</span>
+ <span id="line30978">30978.+	"blast of paralysis gas",</span>
+ <span id="line30979">30979. 	""</span>
+ <span id="line30980">30980. };</span>
+ <span id="line30981">30981. </span>
+ <span id="line30982">30982.@@ -259,7 +260,10 @@ struct obj *otmp;</span>
+ <span id="line30983">30983. 		reveal_invis = TRUE;</span>
+ <span id="line30984">30984. 	    if (mtmp->data != &mons[PM_PESTILENCE]) {</span>
+ <span id="line30985">30985. 		wake = FALSE;		/* wakeup() makes the target angry */</span>
+ <span id="line30986">30986.-		mtmp->mhp += d(6, otyp == SPE_EXTRA_HEALING ? 8 : 4);</span>
+ <span id="line30987">30987.+		mtmp->mhp += d( 6+(Role_if(PM_HEALER) ? 1 : 0)+</span>
+ <span id="line30988">30988.+				  ((flags.female && uarmh && uarmh->otyp == NURSE_CAP) ? 1 : 0)+</span>
+ <span id="line30989">30989.+				  ((flags.female && uarm  && uarm->otyp  == NURSE_UNIFORM) ? 1 : 0),</span>
+ <span id="line30990">30990.+				otyp == SPE_EXTRA_HEALING ? 8 : 4);</span>
+ <span id="line30991">30991. 		if (mtmp->mhp > mtmp->mhpmax)</span>
+ <span id="line30992">30992. 		    mtmp->mhp = mtmp->mhpmax;</span>
+ <span id="line30993">30993. 		if (mtmp->mblinded) {</span>
+ <span id="line30994">30994.@@ -354,7 +358,7 @@ struct obj *otmp;</span>
+ <span id="line30995">30995. 	 */</span>
+ <span id="line30996">30996. 	if (reveal_invis) {</span>
+ <span id="line30997">30997. 	    if (mtmp->mhp > 0 && cansee(bhitpos.x, bhitpos.y) &&</span>
+ <span id="line30998">30998.-							!canspotmon(mtmp))</span>
+ <span id="line30999">30999.+							!canspotmons(mtmp))</span>
+ <span id="line31000">31000. 		map_invisible(bhitpos.x, bhitpos.y);</span>
+ <span id="line31001">31001. 	}</span>
+ <span id="line31002">31002. 	return 0;</span>
+ <span id="line31003">31003.@@ -674,7 +678,7 @@ register struct obj *obj;</span>
+ <span id="line31004">31004. 		    }</span>
+ <span id="line31005">31005. 		}</span>
+ <span id="line31006">31006. 		if (mtmp) {</span>
+ <span id="line31007">31007.-			if (obj->oeaten)</span>
+ <span id="line31008">31008.+			if (obj->oclass == FOOD_CLASS && obj->oeaten)</span>
+ <span id="line31009">31009. 				mtmp->mhp = eaten_stat(mtmp->mhp, obj);</span>
+ <span id="line31010">31010. 			/* track that this monster was revived at least once */</span>
+ <span id="line31011">31011. 			mtmp->mrevived = 1;</span>
+ <span id="line31012">31012.@@ -822,6 +826,7 @@ register struct obj *obj;</span>
+ <span id="line31013">31013. 		case RIN_GAIN_CONSTITUTION:</span>
+ <span id="line31014">31014. 			if ((obj->owornmask & W_RING) && u_ring) {</span>
+ <span id="line31015">31015. 				ABON(A_CON) -= obj->spe;</span>
+ <span id="line31016">31016.+				recalchpmax();</span>
+ <span id="line31017">31017. 				flags.botl = 1;</span>
+ <span id="line31018">31018. 			}</span>
+ <span id="line31019">31019. 			break;</span>
+ <span id="line31020">31020.@@ -839,12 +844,16 @@ register struct obj *obj;</span>
+ <span id="line31021">31021. 			if ((obj->owornmask & W_RING) && u_ring)</span>
+ <span id="line31022">31022. 				u.udaminc -= obj->spe;</span>
+ <span id="line31023">31023. 			break;</span>
+ <span id="line31024">31024.-		case GAUNTLETS_OF_DEXTERITY:</span>
+ <span id="line31025">31025.-			if ((obj->owornmask & W_ARMG) && (obj == uarmg)) {</span>
+ <span id="line31026">31026.-				ABON(A_DEX) -= obj->spe;</span>
+ <span id="line31027">31027.-				flags.botl = 1;</span>
+ <span id="line31028">31028.-			}</span>
+ <span id="line31029">31029.+		case RIN_PROTECTION:</span>
+ <span id="line31030">31030.+			if ((obj->owornmask & W_RING) && u_ring)</span>
+ <span id="line31031">31031.+				u.uprotection -= obj->spe;</span>
+ <span id="line31032">31032. 			break;</span>
+ <span id="line31033">31033.+//		case GAUNTLETS_OF_DEXTERITY:</span>
+ <span id="line31034">31034.+//			if ((obj->owornmask & W_ARMG) && (obj == uarmg)) {</span>
+ <span id="line31035">31035.+//				ABON(A_DEX) -= obj->spe;</span>
+ <span id="line31036">31036.+//				flags.botl = 1;</span>
+ <span id="line31037">31037.+//			}</span>
+ <span id="line31038">31038.+//			break;</span>
+ <span id="line31039">31039. 		case HELM_OF_BRILLIANCE:</span>
+ <span id="line31040">31040. 			if ((obj->owornmask & W_ARMH) && (obj == uarmh)) {</span>
+ <span id="line31041">31041. 				ABON(A_INT) -= obj->spe;</span>
+ <span id="line31042">31042.@@ -938,6 +947,7 @@ register struct obj *obj;</span>
+ <span id="line31043">31043. 	case RIN_GAIN_CONSTITUTION:</span>
+ <span id="line31044">31044. 	    if ((obj->owornmask & W_RING) && u_ring) {</span>
+ <span id="line31045">31045. 	    	ABON(A_CON)--;</span>
+ <span id="line31046">31046.+		recalchpmax();</span>
+ <span id="line31047">31047. 	    	flags.botl = 1;</span>
+ <span id="line31048">31048. 	    }</span>
+ <span id="line31049">31049. 	    break;</span>
+ <span id="line31050">31050.@@ -1040,7 +1050,7 @@ polyuse(objhdr, mat, minwt)</span>
+ <span id="line31051">31051. 	if (otmp->otyp == SCR_MAIL) continue;</span>
+ <span id="line31052">31052. #endif</span>
+ <span id="line31053">31053. </span>
+ <span id="line31054">31054.-	if (((int) objects[otmp->otyp].oc_material == mat) ==</span>
+ <span id="line31055">31055.+	if (((int) get_material(otmp) == mat) ==</span>
+ <span id="line31056">31056. 		(rn2(minwt + 1) != 0)) {</span>
+ <span id="line31057">31057. 	    /* appropriately add damage to bill */</span>
+ <span id="line31058">31058. 	    if (costly_spot(otmp->ox, otmp->oy)) {</span>
+ <span id="line31059">31059.@@ -1161,7 +1171,7 @@ struct obj *obj;</span>
+ <span id="line31060">31060. 	    /* some may metamorphosize */</span>
+ <span id="line31061">31061. 	    for (i = obj->quan; i; i--)</span>
+ <span id="line31062">31062. 		if (! rn2(Luck + 45)) {</span>
+ <span id="line31063">31063.-		    poly_zapped = objects[obj->otyp].oc_material;</span>
+ <span id="line31064">31064.+		    poly_zapped = get_material(obj);</span>
+ <span id="line31065">31065. 		    break;</span>
+ <span id="line31066">31066. 		}</span>
+ <span id="line31067">31067. 	}</span>
+ <span id="line31068">31068.@@ -1348,12 +1358,20 @@ poly_obj(obj, id)</span>
+ <span id="line31069">31069. </span>
+ <span id="line31070">31070. 	case GEM_CLASS:</span>
+ <span id="line31071">31071. 	    if (otmp->quan > (long) rnd(4) &&</span>
+ <span id="line31072">31072.-		    objects[obj->otyp].oc_material == MINERAL &&</span>
+ <span id="line31073">31073.-		    objects[otmp->otyp].oc_material != MINERAL) {</span>
+ <span id="line31074">31074.+		    get_material(obj) == MINERAL &&</span>
+ <span id="line31075">31075.+		    get_material(otmp) != MINERAL) {</span>
+ <span id="line31076">31076. 		otmp->otyp = ROCK;	/* transmutation backfired */</span>
+ <span id="line31077">31077. 		otmp->quan /= 2L;	/* some material has been lost */</span>
+ <span id="line31078">31078. 	    }</span>
+ <span id="line31079">31079. 	    break;</span>
+ <span id="line31080">31080.+</span>
+ <span id="line31081">31081.+	case FOOD_CLASS:</span>
+ <span id="line31082">31082.+	    if (otmp->otyp == CORPSE) {</span>
+ <span id="line31083">31083.+		otmp->age = monstermoves; /* if stone-to-freshed, make it fresh */</span>
+ <span id="line31084">31084.+		start_corpse_timeout(otmp);</span>
+ <span id="line31085">31085.+	    }</span>
+ <span id="line31086">31086.+	    break;</span>
+ <span id="line31087">31087.+</span>
+ <span id="line31088">31088. 	}</span>
+ <span id="line31089">31089. </span>
+ <span id="line31090">31090. 	/* update the weight */</span>
+ <span id="line31091">31091.@@ -1603,8 +1621,8 @@ struct obj *obj, *otmp;</span>
+ <span id="line31092">31092. 		break;</span>
+ <span id="line31093">31093. 	case SPE_STONE_TO_FLESH:</span>
+ <span id="line31094">31094. 		refresh_x = obj->ox; refresh_y = obj->oy;</span>
+ <span id="line31095">31095.-		if (objects[obj->otyp].oc_material != MINERAL &&</span>
+ <span id="line31096">31096.-			objects[obj->otyp].oc_material != GEMSTONE) {</span>
+ <span id="line31097">31097.+		if (get_material(obj) != MINERAL &&</span>
+ <span id="line31098">31098.+			get_material(obj) != GEMSTONE) {</span>
+ <span id="line31099">31099. 		    res = 0;</span>
+ <span id="line31100">31100. 		    break;</span>
+ <span id="line31101">31101. 		}</span>
+ <span id="line31102">31102.@@ -1734,6 +1752,9 @@ bhitpile(obj,fhito,tx,ty)</span>
+ <span id="line31103">31103. 	/* Fix for polymorph bug, Tim Wright */</span>
+ <span id="line31104">31104. 	next_obj = otmp->nexthere;</span>
+ <span id="line31105">31105. 	hitanything += (*fhito)(otmp, obj);</span>
+ <span id="line31106">31106.+#ifdef NOPOLYPILE</span>
+ <span id="line31107">31107.+	if (obj->otyp == WAN_POLYMORPH || obj->otyp == SPE_POLYMORPH) break;</span>
+ <span id="line31108">31108.+#endif /*NOPOLYPILE*/</span>
+ <span id="line31109">31109.     }</span>
+ <span id="line31110">31110.     if(poly_zapped >= 0)</span>
+ <span id="line31111">31111. 	create_polymon(level.objects[tx][ty], poly_zapped);</span>
+ <span id="line31112">31112.@@ -1829,7 +1850,7 @@ dozap()</span>
+ <span id="line31113">31113. 	int	damage;</span>
+ <span id="line31114">31114. </span>
+ <span id="line31115">31115. 	if(check_capacity((char *)0)) return(0);</span>
+ <span id="line31116">31116.-	obj = getobj(zap_syms, "zap");</span>
+ <span id="line31117">31117.+	obj = getobj(zap_syms, "zap", 0);</span>
+ <span id="line31118">31118. 	if(!obj) return(0);</span>
+ <span id="line31119">31119. </span>
+ <span id="line31120">31120. 	check_unpaid(obj);</span>
+ <span id="line31121">31121.@@ -1883,29 +1904,31 @@ boolean ordinary;</span>
+ <span id="line31122">31122. 		case WAN_STRIKING:</span>
+ <span id="line31123">31123. 		    makeknown(WAN_STRIKING);</span>
+ <span id="line31124">31124. 		case SPE_FORCE_BOLT:</span>
+ <span id="line31125">31125.-		    if(Antimagic) {</span>
+ <span id="line31126">31126.-			shieldeff(u.ux, u.uy);</span>
+ <span id="line31127">31127.-			pline("Boing!");</span>
+ <span id="line31128">31128.-		    } else {</span>
+ <span id="line31129">31129.+/* Striking/force bolt is now physical attack */</span>
+ <span id="line31130">31130.+//		    if(Antimagic) {</span>
+ <span id="line31131">31131.+//			shieldeff(u.ux, u.uy);</span>
+ <span id="line31132">31132.+//			pline("Boing!");</span>
+ <span id="line31133">31133.+//		    } else {</span>
+ <span id="line31134">31134. 			if (ordinary) {</span>
+ <span id="line31135">31135. 			    You("bash yourself!");</span>
+ <span id="line31136">31136. 			    damage = d(2,12);</span>
+ <span id="line31137">31137. 			} else</span>
+ <span id="line31138">31138. 			    damage = d(1 + obj->spe,6);</span>
+ <span id="line31139">31139. 			exercise(A_STR, FALSE);</span>
+ <span id="line31140">31140.-		    }</span>

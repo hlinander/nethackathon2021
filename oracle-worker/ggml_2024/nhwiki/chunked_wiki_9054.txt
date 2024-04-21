@@ -1,0 +1,1000 @@
+
+::That's a good idea. I moved the article to [[Hack 1.0/hack.c]] now. I think it's a very clear form. Who knows when files with the *.c-1.0 extension are introduced to the actual code? ;) --[[User:ZeroOne|ZeroOne]] 17:15, 29 August 2006 (UTC)
+
+:::OK, all done! See [[Hack 1.0 source code]]. I agree, we don't need every minor version; I will upload 3.0.0, 3.1.0, 3.2.0, 3.3.0 and 3.4.0, and all the early revisions (none are that big... not that space is an issue - Uncyclopedia takes up 18 gigabytes). --[[User:Jayt|Jayt]] 21:24, 29 August 2006 (UTC)
+
+== Lookup source code by symbol ==
+
+How useful would it have some sort of wikified ctags(1) output for the source code pages?
+E.g. [[Functions/rndcurse]] would be a redirect to [[sit.c#line311]], the point where rndcurse is defined.
+Perhaps also have [[Functions]] be a master list, for easy searching?
+Ctags is known to do a good job on the NetHack code, so this would be a simple bot-programming problem.
+--[[User:Stefanor|Stefanor]] 07:58, 1 September 2006 (UTC)
+:I think it's a good idea. [[User:GreyKnight]] had the same idea [[Talk:Source_code#Function/macro reference|here]]; you should probably confer with him. --[[User:Jayt|Jayt]] 11:03, 1 September 2006 (UTC)
+::From what I know, #REDIRECT to sections does not work in MediaWiki; it redirects to the top of the page instead. Beware of that. --[[User:Kernigh|Kernigh]] 22:20, 2 September 2006 (UTC)
+
+== Style guide on sidebar; More admins and bureaucrats? ==
+
+[[User:Kernigh|Kernigh]] writes: I edited [[MediaWiki:Sidebar]] to put the [[NetHackWiki:Style guide]] in the navigation box on the left. (It might not show on some pages until you reload the page.)
+
+Meanwhile, I was wondering if we should designate more wiki administrators. [[Special:Listusers/sysop]] shows who we have now, but  because founder [[User:Sgeo|Sgeo]] has not edited here since October 2005, that leaves Jayt, ZeroOne and myself. It is not as if the wiki needs more administrators; though admins have extra tools (mostly the same tools as on Wikipedia!) to fight spam and vandalism, there has not been much need for them. However, admins do get to tinker with the "MediaWiki:" pages, delete extra copies and images, and move pages over other pages.
+
+I am the only "Bureaucrat", a user who can use [[Special:Makesysop]] to make other administrators (or bureaucrats). We might want to make at least one more, in case I am away when someone needs a "promotion". --[[User:Kernigh|Kernigh]] 22:50, 2 September 2006 (UTC)
+
+:Yes, this wiki has grown ''a lot'', so I don't think three admins is enough anymore. I nominate [[User:Lotte]] and [[User:Ray Chason]] as new admins. Lotte, although apparently currently on vacation, has been in here for almost as long as myself and Ray has proven himself worthy by doing amazing job with documenting the game history. --[[User:ZeroOne|ZeroOne]] 00:03, 3 September 2006 (UTC)
+
+::I second these nominations. We are currently blessed with little or no vandalism, and a userbase comprised almost entirely of thoughtful contributors, so without intending to lessen the contributions of other editors, I also nominate [[User:Eidolos]]. Additionally, I would be happy for ZeroOne to become a second bureaucrat. --[[User:Jayt|Jayt]] 13:08, 3 September 2006 (UTC)
+
+::: Okay, I went and promoted Lotte, Ray Chason, Eidolos to sysop and ZeroOne to bureaucrat. (Lotte was also accidentally bureaucrat for a short while; thank you [[w:User:Splarka|Splarka]] for fixing my mistake!) Now I have to go leave messages on their talk pages... [[User talk:Lotte]], [[User talk:Ray Chason]], [[User talk:Eidolos]], [[User talk:ZeroOne|ZeroOne]]. --[[User:Kernigh|Kernigh]] 01:39, 8 September 2006 (UTC)}
+&&%s&& %s Banded mail {129812 2019-12-18T01:27:49Z {4000978 Aximili} Add more explicit sections {{wikipedia|Banded mail}}
+{{armor
+  |color=metal color
+  |name=banded mail
+  |cost=90
+  |slot=body armor
+  |ac=6
+  |weight=350
+  |material=iron
+  |special=<ul><li>[[magic cancellation|MC1]]</li></ul>
+}}
+'''Banded mail''' is a type of [[body armor]]. It is a slight upgrade from [[splint mail]]: both armors have a base [[AC]] bonus of 6, but banded mail weighs 50 units less and is worth slightly more. The next step up is [[plate mail]].
+
+== History ==
+
+Banded mail had a [[magic cancellation]] of 0 before [[NetHack 3.6.0]]. It may still have an MC of 0 in variants based on [[3.4.3]] or older versions.
+
+==Origin==
+Banded mail is a standard type of armor in ''Dungeons & Dragons'' and games and media inspired by it, but it is unclear if it ever existed as portrayed in D&D. There is no record of the term being used before the 19th century, and descriptions are inconsistent: it may be a type of plate mail made of horizontal bands of metal, or a chain mail reinforced with bands of leather woven into the links.
+
+The first description of banded mail resembles [https://en.wikipedia.org/wiki/Laminar_armour laminar armor], which was historically used in ancient Rome (as ''lorica segmentata'') and Central Asia. The second description is based mainly on speculation and medieval manuscripts and artwork. There are no known examples of mail with interwoven leather strips, but it is possible that some chain mail once contained leather components that were later lost.
+
+{{nethack-361}}
+
+[[Category:Body armor]]}
+&&%s&& %s Phasing {138907 2021-04-11T04:54:11Z {4001427 Phollenback} fiqhack: spellbook of phase '''Phasing''' is the ability to walk through solid tiles, such as [[wall]]s and [[boulder]]s. The property is possessed by [[xorn]]s, [[earth elemental]]s, [[ghost]]s, and [[shade]]s.<ref>It is indicated by <code>M1_WALLWALK</code> in [[monst.c]]</ref> This does not allow one to cross [[pool]]s of water, or walk through those rare areas that are designated as non-phasing: all of [[Sokoban]], a dividing wall in [[Moloch's Sanctum]],<ref>In [[NetHack 3.4.3]], it had a gap at the upper edge of the map.</ref> the inner wall around the [[Wizard's Tower]], and the entire [[Astral Plane]]. In Sokoban, phasing players (but not monsters) are prevented from moving through boulders on a level until the puzzle is solved.
+
+The only ways to gain phasing are to [[polymorph]] into a xorn or earth elemental, or to pray while stuck in a wall. Being stuck in a wall is considered a [[major trouble]], and a successful prayer will normally teleport you to a safe position, but it will grant phasing for 4d4+4 turns instead if the teleportation fails.
+
+==Strategy==
+The use of [[polymorph]]ing into a phasing monster to gain a combat advantage is dubious, as neither the xorn nor the earth elemental is particularly tough. Xorns cannot wear [[body armor]] or [[cloak]]s (these will be destroyed upon transforming), and earth elementals cannot wear anything. 
+
+Phasing may be used as an alternative to [[digging]], especially for accessing items embedded in [[wall]]s, or retreating if you're getting surrounded. It can also be used situationally to approach a [[shop]] from across an unmapped level and steal from it.
+
+Strategically, phasing can be used to quickly bypass some areas of some maps. It is one way a [[Rogue]] can solve their [[Rogue quest#Stronghold of the Master Assassin|final quest puzzle]]. Some players will polymorph into a phasing creature for [[Gehennom mapping]] to make the search pattern simpler; walking on the walls helps avoid traps.
+
+[[Speed run]]ners strive to phase into the correct turret of the [[Castle]], and from there to the gem chamber (for Luck) and the trapdoor to the [[Valley of the Dead]]. The Valley, [[Asmodeus' Lair]], and [[Vlad's Tower]] can be noticeably abbreviated with phasing. However, phasing is not a universal solution to non-teleport mazes, because xorns are slow and the lack of a cloak makes it dangerous to fight [[level drain]]ing monsters, [[shade]]s, or [[Yeenoghu]].
+
+==Messages==
+{{message|You feel much slimmer.|As a result of [[prayer]], you temporarily gained the ability to pass through walls. This happens if you were stuck in a wall, but there was no safe place to teleport you to.{{refsrc|src/pray.c|427|version=NetHack 3.6.1}}}}
+{{message|You start to feel bloated.|You can temporarily pass through walls, and the power will wear off in 4 turns.}}
+{{message|You are feeling rather flabby.|You can temporarily pass through walls, and the power will wear off in 2 turns.}}
+{{message|You're back to your normal self again.|Your temporary phasing power wore off, you are not stuck in a wall, and you are not [[hallucinating]].}}
+{{message|You're back to your unusual self again.|Your temporary phasing power wore off, you are not stuck in a wall, and you are hallucinating.}}
+{{message|You feel hemmed in again.|Your temporary phasing power wore off, and you are still stuck in a wall.}}
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] introduces the [[spellbook of passwall]], which gives the caster phasing for 50&ndash;149 turns.
+
+===Convict patch===
+[[UnNetHack]], [[Slash'EM Extended]], [[SlashTHEM]], [[dNetHack]], [[DynaHack]], [[SpliceHack]], and [[EvilHack]] introduce [[the Iron Ball of Liberation]] as the [[Convict]] [[quest artifact]], which grants temporary phasing when [[invoke]]d.
+
+===FIQHack===
+
+[[FIQHack]] introduces the level 7 [[spellbook of phase]] which gives the caster phasing for 21-60 turns.
+
+==References==
+<references/>
+
+[[Category:Properties]]
+{{nethack-361}}}
+&&%s&& %s Orcish chain mail {102334 2016-04-06T21:07:36Z {4000629 Cherokee Jack} No known changes from 3.4.3 {{armor
+  |color=black
+  |name=orcish chain mail
+  |appearance=crude chain mail
+  |slot=body armor
+  |ac=4
+  |special=<ul><li>[[magic cancellation|MC1]]</li></ul>
+  |cost=75
+  |weight=300
+  |material=iron
+}}
+'''Orcish chain mail''' is a form of [[body armor]] that provides a [[magic cancellation]] of 1 and a base [[AC]] bonus of 4. 
+
+As with most [[orc]]ish items, it is less effective than the regular equivalent ([[chain mail]]), but better than nothing.  It's an upgrade from ([[studded leather armor|studded]]) [[leather armor]] or ([[orcish ring mail|orcish]]) [[ring mail]].  But [[scale mail]] gives the same [[AC]] for less weight.
+
+[[Category:Body armor]]
+[[Category:Orcish items|Chain mail]]
+{{nethack-360}}}
+&&%s&& %s Scale mail {102332 2016-04-06T20:47:38Z {4000629 Cherokee Jack} Some editing and adding historical note {{armor
+  |color=metal color
+  |name=scale mail
+  |cost=45
+  |slot=body armor
+  |ac=4
+  |weight=250
+  |material=iron
+  |special=<ul><li>[[magic cancellation|MC1]]</li></ul>
+}}
+{{for|armor made out of dragon scales|dragon scale mail}}
+
+'''Scale mail''' is a form of [[body armor]]. It has the same weight as a [[ring mail]], but has a base [[AC]] bonus of 4 instead of 3. Nevertheless, both compare poorly with [[mithril-coat|mithril-coats]].
+
+==Variants==
+Scale mail became [[MC]]1 in [[NetHack 3.6.0]].  In variants (such as [[SLASH'EM]]) based on older versions, it may have an MC of 0.
+
+{{clear}}
+==Origin==
+{{wikipedia|Scale armour}}
+Scale mail is so called because it is made up of small scales fastened to a cloth or leather backing.  The scales may be made of metal or other hard materials like boiled leather or animal horn.  A related form of armor is "[https://en.wikipedia.org/wiki/Lamellar_armour lamellar armor]", which has scales stitched together without any need for a backing.  Both types were made and worn by many cultures, especially in Asia.
+
+[[Category:Body armor]]
+{{nethack-360}}}
+&&%s&& %s Crude chain mail {12878 2006-10-01T01:55:59Z {467 Killian} #REDIRECT [[orcish chain mail]] #REDIRECT [[orcish chain mail]]}
+&&%s&& %s Orcish ring mail {102331 2016-04-06T20:41:27Z {4000629 Cherokee Jack} Some editing {{armor
+  |color=black
+  |name=orcish ring mail
+  |appearance=crude ring mail
+  |slot=body armor
+  |ac=2
+  |special=<ul><li>[[magic cancellation|MC1]]</li></ul>
+  |cost=80
+  |weight=250
+  |material=iron
+}}
+'''Orcish ring mail''' is a type of [[body armor]]. When unidentified, it appears as '''crude ring mail'''. It is the starting armor for an orc [[barbarian]].
+
+Orcish ring mail is as heavy as regular [[ring mail]] and provides [[magic cancellation|MC1]], but has a base [[AC]] bonus of only two, one point less. 
+
+This is a low-quality item, providing only two points of protection in spite of its weight, and most players do not bother with it.  Even [[leather armor]] is superior to it: it gives the same protection for less weight, and does not interfere with [[spellcasting]].
+
+[[Category:Body armor]]
+[[Category:Orcish items|Ring mail]]
+{{nethack-360}}}
+&&%s&& %s Leather jacket {134825 2020-07-05T03:15:24Z {4000865 Tomsod} /* Generation */ quest guardians {{armor
+  |color=black
+  |name=leather jacket
+  |cost=10
+  |slot=body armor
+  |ac=1
+  |weight=30
+  |material=leather
+}}
+A '''leather jacket''' is a form of [[body armor]] in NetHack. It has a base [[AC]] of 1 and no [[magic cancellation]].
+
+== Generation ==
+
+The [[Archeologist]] role starts out with one.  Many [[quest guardian]]s ([[student]]s, [[attendant]]s, [[abbot]]s, [[acolyte]]s, [[guide]]s, [[apprentice]]s, [[hunter]]s, and [[thug]]s) have a chance of being generated with a jacket.
+
+== Strategy ==
+The leather jacket is lightweight and does not interfere with [[spellcasting]], but it is the weakest body armor with an actual base AC, and one will do well to replace it with better armor as soon as possible.
+
+[[Category:Body armor]]
+{{nethack-364}}}
+&&%s&& %s Jay Fenlason {93439 2015-04-13T14:41:17Z {4000605 HarJIT}  '''Jay Fenlason''' is the original author of [[Jay Fenlason's Hack|Hack]].  He is also the original author of the GNU implementation of gprof, and was a major contributer to GNU tar.
+
+{{stub}}
+[[Category:Notable people]]}
+&&%s&& %s Andries Brouwer {84593 2013-05-04T06:38:28Z {4000045 Bulwersator} -unnecessary todo, there is stub template {{wikipedia}}
+'''Andries Brouwer''' is a computer scientist and developer.  He authored [[Hack 1.0]] (derived from [[Jay Fenlason's Hack]]), which eventually evolved into [[NetHack]]. He has a Hack web site at [http://homepages.cwi.nl/~aeb/games/hack/hack.html http://homepages.cwi.nl/~aeb/games/hack/hack.html].
+
+{{stub}}
+[[Category:Notable people]]}
+&&%s&& %s Crude ring mail {12893 2006-10-01T02:54:44Z {467 Killian} #REDIRECT [[orcish ring mail]] #REDIRECT [[orcish ring mail]]}
+&&%s&& %s Category:Body armor {12897 2006-10-01T03:19:17Z {467 Killian} created subcategory This category contains articles about [[body armor]], the main kind of [[armor]].
+
+[[Category:Armor]]}
+&&%s&& %s Template:Metal color {25852 2008-02-26T16:46:44Z {630 Paxed} cat sorting {{cyan|{{{1}}}}}<noinclude>
+----
+Use this template for items specified as having <code>HI_METAL</code> color.
+
+[[Category:Logical color templates|Metal color]]
+</noinclude>}
+&&%s&& %s Template:Copper color {25848 2008-02-26T16:45:10Z {630 Paxed} cat sorting {{yellow|{{{1}}}}}<noinclude>
+----
+Use this template for items specified as having <code>HI_COPPER</code> color.
+
+[[Category:Logical color templates|Copper color]]
+</noinclude>}
+&&%s&& %s Template:Leather color {25851 2008-02-26T16:46:21Z {630 Paxed} cat sorting {{brown|{{{1}}}}}<noinclude>
+----
+Use this template for items specified as having <code>HI_LEATHER</code> color.
+
+[[Category:Logical color templates|Leather color]]
+</noinclude>}
+&&%s&& %s Template:Silver dragon color {25856 2008-02-26T16:48:01Z {630 Paxed} cat sorting {{brightcyan|{{{1}}}}}<noinclude>
+----
+Use this template for items and monsters specified as having <code>DRAGON_SILVER</code> color.
+
+[[Category:Logical color templates|Silver dragon color]]
+</noinclude>}
+&&%s&& %s Category:Logical color templates {12919 2006-10-01T03:59:41Z {467 Killian} Created subcategory These templates are designed to make it easier to pick the correct color template, by mirroring the logical colors defined in the second half of [[color.h]].
+
+[[Category:Function templates]]}
+&&%s&& %s Fedora {144897 2022-03-13T05:00:32Z {4001279 Umbire the Phantom} /* Variants and patches */ remove {{upcoming}} {{armor
+  |color=brown
+  |name=fedora
+  |appearance=fedora
+  |cost=1
+  |slot=helm
+  |ac=0
+  |weight=3
+  |material=cloth
+}}
+A '''fedora''' is a type of [[helm]] that appears in ''[[NetHack]]''. It is made of [[cloth]], and provides no AC when worn.
+
+==Generation==
+Though the fedora is not randomly generated in-game, the [[Archeologist]] role always starts out with one.{{refsrc|src/u_init.c|33|version=NetHack 3.6.6}}
+
+==Strategy==
+Due to its lack of special ability, [[AC]] benefits and even sale value, the fedora is often ditched near the beginning of the game for the first (usually [[metallic]]) helm the player finds.
+
+==History==
+The fedora was introduced in [[NetHack 3.0.0]].
+
+==Origin==
+{{wikipedia|Fedora}}
+The fedora is a felt hat with a wide brim (about 2.5 inches or 6.4 cm) and a distinctive lengthwise crease in the crown; the style goes back as far as the 1880s. The name is derived from the 1882 Victorien Sardou play ''Fedora'', in which actress Sarah Bernhardt (whom the play was written for) wore one while playing the titular "Princess Fedora"; the term itself would see regular use as the early 1890s. Fedoras were especially popular from the 1920s to the early 1950s, and fell out of widespread fashion after the mid-1950s - they are still occasionally seen worn as accessories in the modern day.
+
+The ''[[wikipedia:Indiana Jones|Indiana Jones]]'' franchise is first set in 1936, and is significantly inspired by ''[[wikipedia:Secret of the Incas|Secret of the Incas]]'' and its main character, Harry Steele - the fedora's inclusion in ''NetHack'' is part of the Archeologist role's homage to the series.
+
+==Variants and patches==
+Variants tend to play up the ''Indiana Jones'' homage more, and sometimes opt to make the fedora somewhat like a [[luck item]].
+
+===Biodiversity patch===
+In the [[biodiversity patch]], a straw golem may drop an [[eroded]] fedora upon death.
+
+===SLASH'EM===
+In [[SLASH'EM]], the fedora increases [[charisma]] by 1 and prevents good [[Luck]] from timing out when worn, in the same way a blessed [[luckstone]] does.
+
+===UnNetHack===
+In [[UnNetHack]], the fedora increases base Luck by 1 for Archeologists when worn;{{refsrc|src/timeout.c|197|unnethack=1499}} they can also safely enchant one at a maximum of +5. In addition, a fedora may be found along with an [[archeologist (player monster)|archeologist]] [[corpse]] under a [[rolling boulder trap]].
+
+===SlashTHEM===
+In addition to retaining SLASH'EM changes, [[SlashTHEM]] also has straw golems that drop an eroded fedora upon death.
+
+===xNetHack===
+In [[xNetHack]], Archeologists can safely enchant fedoras from a maximum of +5, and there is a chance to find one on an archeologist corpse in the path of a rolling boulder trap - [https://github.com/copperwater/xNetHack/commit/55c7b75e766b565ca84cb367bc09d4b5c5f54ccf both changes] [https://github.com/copperwater/xNetHack/commit/3ede387c6302f7f2ec13bf0a82e0c04e04a38de0 were adapted] from UnNetHack.
+
+==Encyclopedia==
+{{encyclopedia|
+Some hats can only be worn if you're willing to be jaunty, to set 
+them at an angle and to walk beneath them with a spring in your 
+stride as if you're only a step away from dancing. They demand a 
+lot of you.
+ [Anansi Boys, by Neil Gaiman]}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Helms]]
+[[Category:Variant luck items]]}
+&&%s&& %s Gray dragon scale mail {98715 2015-12-19T12:33:34Z {4000080 ChasonBot}  {{armor
+  |color=gray
+  |name=gray dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[magic resistance]]</li></ul>
+  |cost=1200
+  |weight=40
+  |material=dragon hide
+}}
+'''Gray dragon scale mail''', or '''GDSM''', is one of the two most coveted types of [[dragon scale mail]], the other being [[silver dragon scale mail]]. It provides [[magic resistance]], so it is a popular item in [[ascension kit]]s.  Many players consider it a [[GDSM versus SDSM|good first wish]].
+
+Gray dragon scale mail can be produced from [[gray dragon scales]], which might be dropped by a [[gray dragon]].
+
+==See also==
+
+*[[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+*[[GDSM versus SDSM]] for a discussion on the merits of each of the two most popular types of dragon scale mail
+
+== References ==
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Category:Dragon armor {12926 2006-10-01T05:18:29Z {467 Killian} Created subcategory This category contains articles about [[dragon scales]] and [[dragon scale mail]], which are important types of [[body armor]].
+
+[[Category:Body armor]]}
+&&%s&& %s Red dragon scale mail {123349 2018-07-22T16:22:13Z {4001094 Luxidream}  {{armor
+  |color=red
+  |name=red dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[fire resistance]]</li></ul>
+  |cost=900
+  |weight=40
+  |material=dragon hide
+}}
+'''Red dragon scale mail''' is a type of [[dragon scale mail]]. It provides [[fire resistance]].
+
+Red dragon scale mail can be produced from [[red dragon scales]], which might be dropped by a [[red dragon]].
+
+== References ==
+
+* See [[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+
+[[Category:Dragon armor]]
+{{nethack-361}}}
+&&%s&& %s White dragon scale mail {99493 2015-12-22T07:42:45Z {4000080 ChasonBot}  {{armor
+  |color=white
+  |name=white dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[cold resistance]]</li></ul>
+  |cost=900
+  |weight=40
+  |material=dragon hide
+}}
+'''White dragon scale mail''' is a type of [[dragon scale mail]]. It provides [[cold resistance]].
+
+White dragon scale mail can be produced from [[white dragon scales]], which might be dropped by a [[white dragon]].
+
+== References ==
+
+* See [[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Orange dragon scale mail {98968 2015-12-20T11:37:03Z {4000080 ChasonBot}  {{armor
+  |color=orange
+  |name=orange dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[sleep resistance]]</li></ul>
+  |cost=900
+  |weight=40
+  |material=dragon hide
+}}
+'''Orange dragon scale mail''' is a type of [[dragon scale mail]]. It provides [[sleep resistance]].  A non-elven [[foodless]] [[atheist]] might consider using it, as [[sleeping gas trap]]s are a threat to those who lack intrinsic sleep resistance.
+
+Orange dragon scale mail can be produced from [[orange dragon scales]], which might be dropped by a [[orange dragon]].
+
+== References ==
+
+* See [[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Black dragon scale mail {98450 2015-12-18T13:30:46Z {4000080 ChasonBot}  {{armor
+  |color=black
+  |name=black dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[disintegration resistance]]</li></ul>
+  |cost=1200
+  |weight=40
+  |material=dragon hide
+}}
+'''Black dragon scale mail''' is a type of [[dragon scale mail]]. It provides [[disintegration resistance]].
+
+Black dragon scale mail can be produced from [[black dragon scales]], which might be dropped by a [[black dragon]].
+
+While BDSM might be useful to a player without reflection, to protect against [[instadeath]] from disintegration, most players would just eat the dragon to gain the resistance intrinsically.  However, a conduct player might find BDSM useful should they manage to kill a black dragon.  One might also give it to a pet [[vampire lord]] in lieu of an [[amulet of reflection|amulet]] or [[shield of reflection]].
+
+== References ==
+
+* See [[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Blue dragon scale mail {98456 2015-12-18T14:30:50Z {4000080 ChasonBot}  {{armor
+  |color=blue
+  |name=blue dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[shock resistance]]</li></ul>
+  |cost=900
+  |weight=40
+  |material=dragon hide
+}}
+'''Blue dragon scale mail''' is a type of [[dragon scale mail]]. It provides [[shock resistance]].
+
+Blue dragon scale mail can be produced from [[blue dragon scales]], which might be dropped by a [[blue dragon]].
+
+== References ==
+
+* See [[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Green dragon scale mail {129807 2019-12-17T22:33:10Z {4000978 Aximili} Add more explicit sections {{armor
+  |color=green
+  |name=green dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[poison resistance]]</li></ul>
+  |cost=900
+  |weight=40
+  |material=dragon hide
+}}
+'''Green dragon scale mail''' is a type of [[dragon scale mail]]. It provides [[poison resistance]]. See [[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+
+== Generation ==
+
+Green dragon scale mail can be produced from [[green dragon scales]], which might be dropped by a [[green dragon]].
+
+== Strategy ==
+
+For some [[conduct]] players (in particular [[foodless]] [[atheist]]s), it may be a better option than [[gray dragon scale mail]] or [[silver dragon scale mail]]: [[instadeath]] from poison is a threat through the entire game, making extrinsic poison resistance a high priority if it cannot be gotten [[intrinsic]]ally.  [[Magic resistance]] and [[reflection]] can be gotten in other ways, often more easily than poison resistance. This armor is generally not a good choice once you have poison resistance intrinsically, unless it is the only type of dragon scale mail available.
+
+== Variants ==
+
+In [[SporkHack]], green dragon scale mail also gives the player a [[passive attack]] against monsters that damage the player: d6 poison damage, with the usual 5% instadeath chance accompanying it. (As usual with poison attacks, poison resistant monsters are immune to both the damage and the instadeath.)
+
+In [[UnNetHack]], this item is renamed '''poison dragon scale mail''', and has a [[randomized appearance]] out of tatzelworm/amphitere/draken/lindworm/sarkany/sirrush/leviathan/wyvern/glowing dragon/guivre scale mail, matching the [[dragon]] species that has poisonous breath.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Yellow dragon scale mail {99518 2015-12-22T09:43:15Z {4000080 ChasonBot}  {{armor
+  |color=yellow
+  |name=yellow dragon scale mail
+  |slot=body armor
+  |ac=9
+  |special=<ul><li>[[acid resistance]]</li></ul>
+  |cost=900
+  |weight=40
+  |material=dragon hide
+}}
+'''Yellow dragon scale mail''' is a type of [[dragon scale mail]]. It provides [[acid resistance]].  While acid resistance is one of three dragon resistances that cannot be obtained intrinsically (the other two being [[reflection]] and [[magic resistance]]), it is also by far the least useful.  Monsters which do acid damage are somewhat rare, and none do very much damage.
+
+Yellow dragon scale mail can be produced from [[yellow dragon scales]], which might be dropped by a [[yellow dragon]].
+
+==SLASH'EM==
+In SLASH'EM, acid damage is more of a threat in the mid- to late-game thanks to new types of [[jelly|jellies]] as well as the dreaded [[shoggoth]] and [[giant shoggoth]]. For this reason, a player with reflection, magic resistance, and [[drain resistance]] through other means may decide to opt for yellow dragon scale mail as a guard against powerful acid-attacking foes.
+
+== References ==
+
+* See [[Dragon scale mail]] for more detailed information on what makes dragon scale mail special and how to obtain it.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s GDSM {12935 2006-10-01T05:43:02Z {467 Killian} #REDIRECT [[gray dragon scale mail]] #REDIRECT [[gray dragon scale mail]]}
+&&%s&& %s Gray dragon scales {98716 2015-12-19T12:33:34Z {4000080 ChasonBot}  {{armor
+  |color=gray
+  |name=gray dragon scales
+  |slot=body armor
+  |ac=3
+  |special=<ul><li>[[magic resistance]]</li></ul>
+  |cost=700
+  |weight=40
+  |material=dragon hide
+}}
+'''Gray dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[gray dragon]]. They provide [[magic resistance]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Silver dragon scales {99241 2015-12-21T10:40:04Z {4000080 ChasonBot}  {{armor
+  |color=silver dragon color
+  |name=silver dragon scales
+  |slot=body armor
+  |ac=3
+  |special=<ul><li>[[reflection]]</li></ul>
+  |cost=700
+  |weight=40
+  |material=dragon hide
+}}
+'''Silver dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[silver dragon]]. They provide [[reflection]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Red dragon scales {147530 2022-08-15T00:44:15Z {4000693 Phol ende wodan} stub, and nothing here is 3.4.3 specific. Also questioning the second paragraph since that isn't specific to RDSM. {{armor
+  |color=red
+  |name=red dragon scales
+  |slot=body armor
+  |special=<ul><li>[[fire resistance]]</li></ul>
+  |ac=3
+  |cost=500
+  |weight=40
+  |material=dragon hide
+}}
+'''Red dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[red dragon]]. They provide [[fire resistance]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{stub}}
+{{nethack-366}}}
+&&%s&& %s White dragon scales {99494 2015-12-22T07:42:45Z {4000080 ChasonBot}  {{armor
+  |color=white
+  |name=white dragon scales
+  |slot=body armor
+  |special=<ul><li>[[cold resistance]]</li></ul>
+  |ac=3
+  |cost=500
+  |weight=40
+  |material=dragon hide
+}}
+'''White dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[white dragon]]. They provide [[cold resistance]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Orange dragon scales {98969 2015-12-20T11:37:03Z {4000080 ChasonBot}  {{armor
+  |color=orange
+  |name=orange dragon scales
+  |slot=body armor
+  |ac=3
+  |special=<ul><li>[[sleep resistance]]</li></ul>
+  |cost=500
+  |weight=40
+  |material=dragon hide
+}}
+'''Orange dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[orange dragon]]. They provide [[sleep resistance]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Black dragon scales {143545 2021-11-02T16:07:32Z {4001427 Phollenback} FIQHack: black dragon scales also provide drain resistance {{armor
+  |color=black
+  |name=black dragon scales
+  |slot=body armor
+  |ac=3
+  |special=<ul><li>[[disintegration resistance]]</li></ul>
+  |cost=700
+  |weight=40
+  |material=dragon hide
+}}
+'''Black dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[black dragon]]. They provide [[disintegration resistance]].
+
+Dragon scales have a slightly low [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+==FIQHack==
+
+In [[FIQHack]] black dragon scales provide [[drain resistance]] in addition to disintegration resistance.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-361}}}
+&&%s&& %s Blue dragon scales {123377 2018-07-24T20:37:41Z {4001094 Luxidream}  {{armor
+  |color=blue
+  |name=blue dragon scales
+  |slot=body armor
+  |ac=3
+  |special=<ul><li>[[shock resistance]]</li></ul>
+  |cost=500
+  |weight=40
+  |material=dragon hide
+}}
+'''Blue dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[blue dragon]]. They provide [[shock resistance]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-361}}}
+&&%s&& %s Green dragon scales {98719 2015-12-19T13:33:37Z {4000080 ChasonBot}  {{armor
+  |color=green
+  |name=green dragon scales
+  |slot=body armor
+  |ac=3
+  |special=<ul><li>[[poison resistance]]</li></ul>
+  |cost=500
+  |weight=40
+  |material=dragon hide
+}}
+
+'''Green dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[green dragon]]. They provide [[poison resistance]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Yellow dragon scales {99519 2015-12-22T09:43:15Z {4000080 ChasonBot}  {{armor
+  |color=yellow
+  |name=yellow dragon scales
+  |slot=body armor
+  |ac=3
+  |special=<ul><li>[[acid resistance]]</li></ul>
+  |cost=500
+  |weight=40
+  |material=dragon hide
+}}
+
+'''Yellow dragon scales''' are a type of [[dragon scales]] that might be dropped by a [[yellow dragon]]. They provide [[acid resistance]].
+
+Dragon scales have a relatively poor [[AC]], but can be turned into powerful [[dragon scale mail]] by [[scroll of enchant armor|enchanting]] them.
+
+== References ==
+
+* See [[Dragon scales]] for more detailed information on obtaining dragon scales and converting them into dragon scale mail.
+
+[[Category:Dragon armor]]
+{{nethack-343}}}
+&&%s&& %s Dragon scales {35796 2008-10-25T05:14:51Z {523 Marcmagus} Redirect to dragon scale mail (too much duplicate information between the two pages) #REDIRECT [[Dragon scale mail]]}
+&&%s&& %s Elven leather helm {149160 2022-12-03T23:36:16Z {4001279 Umbire the Phantom} /* EvilHack */* {{armor
+  |color=leather color
+  |name=elven leather helm
+  |appearance=leather hat
+  |cost=8
+  |slot=helm
+  |ac=1
+  |weight=3
+  |material=leather
+}}
+An '''elven leather helm''' is a type of [[helm]] that appears in ''[[NetHack]]''. It appears as a '''leather hat''' when [[Identification|unidentified]], and is naturally made of [[leather]].
+
+==Generation==
+Any [[Elf (starting race)|elven]] player character that would start the game with a [[helmet]] will start with an elven leather helm instead - currently, there are no applicable roles where this substitution would occur.{{refsrc|src/u_init.c|199|nethack=3.6.6|comment=Race-based substitutions for initial inventory}}
+
+[[Elf (monster attribute)|Elves]] of various types have a {{frac|2}} chance to receive an elven leather helm in their [[Monster starting inventory|starting inventory]].{{refsrc|src/makemon.c|227|version=NetHack 3.6.6}}
+
+[[Player monster]]s have a {{frac|7|8}} chance of receiving a random helm, and a {{frac|3|25}} chance for that helm to be an elven leather helm - effectively a default 10.5% chance before any role-specific changes are made.{{refsrc|src/mplayer.c|159|version=NetHack 3.6.6|comment=Default equipment; the helm is chosen from within the designated object classes inclusively in objects.c}} [[Healer (player monster)|Healers]], [[Priest (player monster)|priests]] and [[Wizard (player monster)|Wizards]] have a {{frac|3|4}} chance that their helm will be replaced, with the replacement being a [[helm of brilliance]] for wizards and either a helm of brilliance or helm of telepathy for healers and priests - this reduces the effective odds of them remaining with an elven leather helm to ~2.63%.{{refsrc|src/mplayer.c|193|version=NetHack 3.6.6|comment=Helm replacement for healers}}{{refsrc|src/mplayer.c|198|version=NetHack 3.6.6|comment=Helm replacement for priests}}{{refsrc|src/mplayer.c|253|comment=Helm replacement for wizards}}
+
+==Description==
+The elven leather helm grants 1 [[AC]] when worn. Being a non-metal helm, it doesn't interfere with [[spellcasting]]; however, it also provides no protection from [[falling rock trap]]s or [[scroll of earth|scrolls of earth]].
+
+Like all [[elven armor]], the elven leather helm can be enchanted from as high as +5, whereas most other armor may be destroyed if enchanted while above +3.
+
+==Strategy==
+The elven leather helm is the lightest available helm that does not impede spellcasting. Early in the game, a metal helm of some sort is usually preferable for non-spellcasters in order to avoid falling rock traps, and may be temporarily removed as needed in order to cast depending on the spell. [[Monk]]s and [[Priest]]s can get away with metal helms thanks to the spellcasting bonus from their [[robe]]s, but [[Healer]]s and [[Wizard]]s might find the elven leather helm their best option for a long time.
+
+Elven leather helms make excellent polyfodder since they can be enchanted safely from +5; they are also likely to be part of a spellcaster's kit from the mid-game on, and may even make it into their [[ascension kit]]s - the [[helm of brilliance]] and [[cornuthaum]] (for Wizards) are difficult to find, and all other useful helms interfere with spellcasting. There is a high risk that your leather helm may be [[Erosion|burnt]] in [[Gehennom]], though you will only lose 1 point of base AC, making it usually optional to fireproof.
+
+==History==
+The elven leather helm first appears in [[NetHack 3.0.0]].
+
+==Variants==
+In variants with [[object materials]] systems, the elven leather helm may be referred to as simply an '''elven helm''', and may appear as a '''hat''' when unidentified.
+
+===dNetHack===
+In [[dNetHack]], the Ruined Temple of the [[Chaos Temple Quest]] contains an uncursed +0 leather elven helm in one of its chests.
+
+The [[Rebel leader#Half-Elf Ranger|half-elf ranger]] of the [[rebel leader]]'s party that servers as [[quest nemesis]] for the default [[Noble quest]] generates with an elven helm.
+
+===EvilHack===
+In [[EvilHack]], shopkeepers have a {{frac|2}} chance to generate with an elven helm.
+
+Elven helms have a base material of leather, and can also be made of [[cloth]] or rarely [[dragonhide]]; a cloth elven helm with the [[Oilskin (object property)|oilskin]] [[Object properties#EvilHack|object property]] is an incredibly popular [[wish]] for an EvilHack ascension kit, as it provides stellar protection against brain-eating attacks from the revamped [[Zombie (EvilHack)|zombies]] as well as [[mind flayer]]s, some [[shambling horror]]s and the especially threatening [[alhoon]]s.
+
+==References==
+{{nethack-366}}
+[[Category:Elven items|Leather helm]]
+[[Category:Helms]]}
+&&%s&& %s Category:Helms {12950 2006-10-01T07:12:14Z {467 Killian} Created subcategory This category contains articles about [[helm]]s, a form of [[armor]] worn on the [[head]].
+
+[[Category:Armor]]}
+&&%s&& %s Leather hat {12951 2006-10-01T07:12:51Z {467 Killian} #REDIRECT [[elven leather helm]] #REDIRECT [[elven leather helm]]}
+&&%s&& %s Dwarvish iron helm {150102 2023-03-06T15:42:38Z {4001279 Umbire the Phantom} touch up some {{armor
+  |color=metal color
+  |name=dwarvish iron helm
+  |appearance=hard hat
+  |cost=20
+  |slot=helm
+  |ac=2
+  |weight=40
+  |material=iron
+}}
+
+The '''dwarvish iron helm''' is a type of [[helm]] that appears in ''[[NetHack]]''. It is made of [[iron]], and appears as a '''hard hat''' when unidentified.
+
+==Generation==
+Every [[dwarf (monster)|dwarf]] (minus [[dwarf zombie]]s and [[dwarf mummies]]) has a chance of [[Monster starting inventory|being generated]] with a dwarvish iron helm, making them common in the [[Gnomish Mines]].
+
+==Description==
+When worn, a dwarvish iron helm grants a base [[AC]] of 2.
+
+==Strategy==
+The dwarvish iron helm is the only helm with 2 AC, and is usually the best helm available to players in the early- and mid-game, unless it interferes significantly with [[spellcasting]]. It is also the heaviest helm, and is susceptible to [[rust trap]]s and [[rust monster]]s, making [[rustproof]]ing necessary to preserve its AC.
+
+From the mid-game on, the dwarvish iron helm is often discarded in favor of other helms that provide additional benefits beyond the basics, especially for [[ascension kit]]s - the [[helm of telepathy]] and the [[helm of brilliance]] are particular candidates. While the [[elven leather helm]] does not protect your head from falling objects, they are rarely a threat beyond the early game; elven leather helms additionally do not interfere with spellcasting, and can safely be enchanted to +7.
+
+==Variants==
+In variants with [[object materials]] systems, dwarvish iron helms are simply called '''dwarvish helms''', with iron as their base material.
+
+===SLASH'EM===
+In [[SLASH'EM]], a dwarvish iron helm can be [[Upgrading objects|upgraded]] to a helm of telepathy or a helm of brilliance.
+{{nethack-364}}
+[[Category:Helms]]
+[[Category:Dwarvish items|Iron helm]]}
+&&%s&& %s Hard hat {12954 2006-10-01T07:21:30Z {467 Killian} #REDIRECT [[dwarvish iron helm]] #REDIRECT [[dwarvish iron helm]]}
+&&%s&& %s Cornuthaum {141261 2021-06-28T01:54:19Z {4001279 Umbire the Phantom} /* History */ {{armor
+  |color=blue
+  |tile=[[Image:Conical hat.png]]
+  |name=cornuthaum
+  |appearance=[[conical hat]]
+  |slot=helm
+  |ac=0
+  |special=<ul><li>[[magic cancellation|MC1]]</li><li>[[clairvoyance]]<br>''(Wizards only)''</li><li>+1 [[charisma]]<br>''(Wizards only)''</li><li>blocks clairvoyance<br>''(non-Wizards)''</li><li>&minus;1 charisma<br>''(non-Wizards)''</li></ul>
+  |cost=80
+  |weight=4
+  |material=cloth
+}}
+The '''cornuthaum''' is a magical [[helm]] that appears in ''[[NetHack]]''. When unidentified, it appears as a [[conical hat]], an appearance it shares with the [[dunce cap]].
+
+==Effects==
+When worn, a cornuthaum provides [[magic cancellation|MC1]]. [[Wizard]]s wearing a cornuthaum gain 1 point of [[charisma]] and extrinsic [[clairvoyance]]; non-Wizards lose 1 point of charisma and have all instances of clairvoyance blocked (whether by intrinsic or by [[spellbook of clairvoyance|spell]]). Wizards can enchant cornuthaums to +7, but others can only enchant them to +5.
+
+==Identification==
+As the cornuthaum and the [[autocursing]] dunce cap are both conical hats, picking up and wear-testing a conical hat at random is a [[Bad Idea]]. They can easily be [[price identification|distinguished by price]], with the cornuthaum having a base cost of 80 zorkmids.
+
+{{upcoming|NetHack 3.7.0|For a [[Tourist]], {{frac|3}} of conical hats can be read. A cornuthaum will be labeled "WIZZARD".}}
+
+==Strategy==
+Cornuthaums are among the best helms for a Wizard to use, but are often overlooked in favor of the [[helm of brilliance]], since a potential +4 or +5 bonus to [[intelligence]] and [[wisdom]] has far more applications in most situations than the cornuthaum's +1 charisma bonus. Since a cornuthaum is made of cloth and does not protect from [[falling rock trap]]s, Wizards finding one close to the start of the game may even prefer an [[orcish helm]] until they can gain a few levels and raise their HP.
+
+However, from that point on and up to the mid-game, a cornuthaum may be much more preferable over a helm of brilliance, since the clairvoyance property is quite useful for navigating the [[Gnomish Mines]] and difficult to obtain elsewhere; the only other permanent source of clairvoyance is the [[Amulet of Yendor]]. Most early game Wizards also already have enough innate intelligence to cast low-level spells often (especially [[elf (starting race)|elven]] Wizards), and will lack the [[power]] regeneration to make much higher-level spells viable for frequent use before obtaining [[The Eye of the Aethiopica]]; they may also be able to raise their intelligence via [[alchemy|alchemized]] [[potion of gain ability|potions of gain ability]] if necessary.
+
+[[Orc (starting race)|Orcish]] Wizards have [[infravision]] and may prefer the helm of brilliance from the beginning to boost their intelligence past the racial maximum for [[hungerless casting]], but this is not strictly necessary since even 16 Int will suffice for a majority of scenarios.
+
+While the ability for Wizards to safely enchant a cornuthaum to +7 similar to an [[elven leather helm]] makes it more enticing, the [[scroll of enchant armor|scrolls of enchant armor]] required are better spent elsewhere in their mid-to-late game, especially after obtaining the Eye. The cornuthaum's lack of base AC means that a +5 helm of brilliance can provide the benefits of boosted intelligence and wisdom at only 1 less AC than a +7 cornuthaum; patient Wizards can also [[polypile]] their way to a +6 or +7 helm of brilliance using the aforementioned scrolls and readily-available elven armor.
+
+The cornuthaum is the only MC-granting armor that isn't a cloak or suit, and thus the only way an intelligent [[humanoid]] [[pet]] [[physical size|too large]] for body armor (e.g., a [[titan]] or [[centaur]]) can gain MC. [[Archon]]s can wear cornuthaums, but inherently have MC1 and thus gain no further protection.
+
+==Origin==
+"Cornuthaum" seems to be a term coined in ''NetHack'' for folklore's "wizard hat". ''Cornu'' is Latin for "horn", and ''thauma'' (θαῦμα) is Greek for "miracle, wonder".
+
+The stereotypical wizard hat is a conical blue hat with yellow stars and crescent moons; these shapes are possibly derived from old cabalistic symbols. Variations are seen in folklore, but the hat stays at least vaguely conical. The notion of a thinking hat possibly derives from ceremonial conical hats, or even true thinking hats, making it only natural that wizards wear one.
+
+==History==
+The cornuthaum is introduced in [[NetHack 3.2.0]].
+
+In [[NetHack 3.4.3]] and variants derived from that version, cornuthaums had an [[MC]] of 2, making them useful as Archon hats.
+
+==Variants==
+In variants derived from NetHack 3.4.3, including [[SLASH'EM]], cornuthaums generally provide MC2.
+
+==Encyclopedia entry==
+{{encyclopedia|
+He was dressed in a flowing gown with fur tippets which had
+the signs of the zodiac embroidered over it, with various
+cabalistic signs, such as triangles with eyes in them, queer
+crosses, leaves of trees, bones of birds and animals, and a
+planetarium whose stars shone like bits of looking-glass with
+the sun on them.  He had a pointed hat like a dunce's cap, or
+like the headgear worn by ladies of that time, except that
+the ladies were accustomed to have a bit of veil floating
+from the top of it.
+{{right-align|[ The Once and Future King, by T.H. White ]}}
+         "A wizard!" Dooley exclaimed, astounded.
+         "At your service, sirs," said the wizard.  "How
+perceptive of you to notice.  I suppose my hat rather gives me
+away.  Something of a beacon, I don't doubt."  His hat was
+pretty much that, tall and cone-shaped with stars and crescent
+moons all over it.  All in all, it couldn't have been more
+wizardish.
+{{right-align|[ The Elfin Ship, James P. Blaylock ]}}
+}}
+
+[[Category:Helms]]
+{{nethack-366|offset=1}}}
+&&%s&& %s Conical hat {98534 2015-12-18T20:31:41Z {4000080 ChasonBot}  A '''conical hat''' might be one of two different [[helm]]s:
+* [[Cornuthaum]], cost 80 zm
+* [[Dunce cap]], cost 1 zm
+{{disambig}}
+[[Category:Helms]]
+{{nethack-343}}}
+&&%s&& %s Dented pot {133493 2020-04-15T14:13:38Z {4001279 Umbire the Phantom} /* References */ {{armor
+ |color=black
+ |name=dented pot
+ |appearance=dented pot
+ |cost=8
+ |slot=helm
+ |ac=1
+ |weight=10
+ |material=iron
+}}
+A '''dented pot''' is a type of [[helm]] that appears in [[NetHack]]. It provides a base [[AC]] of 1 when worn.
+
+==Generation==
+Dented pots are frequently generated as [[monster starting inventory|one of the possible starting helmets]] for the [[Yendorian army]], as well as [[guard]]s and [[watchmen]].{{refsrc|src/makemon.c|634|version=NetHack 3.6.2}}
+
+==Effects==
+Relative to the [[helmet]], a dented pot provides the same base AC and protection from falling objects, but with {{frac|1|3}} of the weight. Taking off or putting on a dented pot consumes a minimum of one action, but is less likely to use a full [[turn]] than a regular helmet, especially if you are [[fast]];{{refsrc|src/objects.c|354|version=NetHack 3.6.2|All other armor has a wear/remove delay of 1 turn}} it shares this trait with the [[fedora]] and [[leather jacket]].{{refsrc|src/objects.c|346|version=NetHack 3.6.2}}{{refsrc|src/objects.c|436|version=NetHack 3.6.2}}
+
+==History==
+The dented pot was subject to a bug where, after a bugfix to prevent armor enchantment becoming known if the [[hero]] is interrupted while putting it on, armor that had no turn delay to wear did not have their enchantment revealed; this was fixed in [[NetHack 3.6.2]].{{refsrc|doc/fixes36.2|490|version=NetHack 3.6.2}} A somewhat similar bug occurred where taking off a fedora or dented pot would leave it stuck and take off the hero's body armor instead; this was fixed in [[NetHack 3.6.3]].{{refsrc|doc/fixes36.3|323|version=NetHack 3.6.3}}
+
+==References==
+<references/>
+
+{{nethack-364}}
+[[Category:Helms]]}
+&&%s&& %s Template:Random appearance {64242 2011-01-30T11:45:51Z {630 Paxed} cat [[randomised appearance|random]]<noinclude>
+
+----
+Use this template in the ''appearance'' field of a infobox for items with [[randomised appearance]].
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Helmet {149928 2023-02-10T17:08:19Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{armor
+  |top={{helm top}}
+  |name=helmet
+  |appearance={{random appearance}}
+  |slot=helm
+  |ac=1
+  |cost=10
+  |weight=30
+  |material=iron
+}}
+
+{{for|head armor in general|helm}}
+
+A '''helmet''' is the least interesting of the four randomized [[helm]]s. It appears as a '''kabuto''' for [[Samurai]].
+
+Helmets hinder spellcasting when worn and are hard enough to reduce damage from [[falling rock trap]]s and falling items created via a [[scroll of earth]]. In addition, since they are made of iron, they can [[rust]] or [[corrode]].
+
+== Generation ==
+The Minetown watch are generated with helmets, and the equipment of the [[Yendorian army]] may include helmets as well. However, both equipment sets may also include [[dented pot]]s, which are functionally identical but lighter.
+
+==Identification==
+This can easily be [[price-id]]entified in a shop, as it is cheaper than the other randomized helms. Martial [[role]]s such as [[Barbarian]]s, [[Knight]]s, [[Monk]]s, [[Samurai]], and [[Valkyrie]]s begin the game with this item already identified.
+
+Helmets are 20 [[weight unit]]s lighter than the other randomized helms, and thus is easily identifiable in variants where item weight is shown, such as [[SLASH'EM]] or [[NetHack 4]].
+
+==Strategy==
+With no special abilities, there's little to recommend the helmet to a mid- or late-game character. If you're not interested in the powers of the magical helms, or the higher AC potential of the [[dwarvish iron helm]] or [[elven leather helm]], consider instead the [[dented pot]], which provides the same base AC and falling rock protection as the helmet at {{frac|3}} the [[weight]].
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+The kabuto is the helmet worn by the samurai.  It was characterized by a prominent beaked front which jutted out over the brow to protect the wearer's face; a feature that gives rise to their modern Japanese name of 'shokaku tsuki kabuto' (battering-ram helmet).  Their main constructional element was an oval plate, the shokaku bo, slightly domed for the head with a narrow prolongation in front that curved forwards and downwards where it developed a pronounced central fold.  Two horizontal strips encircling the head were riveted to this frontal strip:  the lower one, the koshimaki (hip wrap), formed the lower edge of the helmet bowl; the other, the do maki (body wrap), was set at about the level of the temples.  Filling the gaps between these strips and the shokaku bo were small plates, sometimes triangular but more commonly rectangular in shape.  Because the front projected so far from the head, the triangular gap beneath was filled by a small plate, the shoshaku tei ita, whose rear edge bent downwards into a flange that rested against the forehead.
+|[ Arms & Armor of the Samurai, by Bottomley & Hopson ]
+}}
+
+[[Category:Helms]]
+{{nethack-364}}}
+&&%s&& %s Helm of telepathy {147655 2022-08-18T08:42:28Z {4001279 Umbire the Phantom} ref {{armor
+  |top={{helm top}}
+  |name=helm of telepathy
+  |appearance={{random appearance}}
+  |slot=helm
+  |ac=1
+  |special=<ul><li>[[telepathy]]</li></ul>
+  |cost=50
+  |weight=50
+  |material=iron
+}}
+The '''helm of telepathy''' is a type of [[magical item|magical]] [[helm]] that appears in ''[[NetHack]]''. It has a [[randomized appearance]], 
+
+==Generation==
+[[Player monster]] [[Healer (player monster)|healers]] and [[Priest (player monster)|priests]] have a chance of their initial helm being replaced with a helm of telepathy.{{refsrc|src/mplayer.c|193|version=NetHack 3.6.6}}{{refsrc|src/mplayer.c|219|version=NetHack 3.6.6}}
+
+==Description==
+When worn, the helm grants 1 AC and extrinsic [[telepathy]], but does not [[auto-identify]]. Despite being a mind-enhancing helmet, it has the same adverse effects on [[spellcasting]] as most other metal helms.
+
+==Strategy==
+{{main|telepathy}}
+Extrinsic telepathy is not essential for an [[ascension kit]] and usually not worth spending a [[wish]] on, but it is still a useful property to have. With this in mind, the helm of telepathy is usually superseded for this purpose by [[quest artifact]]s such as [[The Platinum Yendorian Express Card]] or [[The Eye of the Aethiopica]].
+
+A non-[[chaotic]] character may consider wearing this helm in some unusual cases where they intend to [[murder]] peaceful [[Human (monster attribute)|humans]] such as [[shopkeeper]]s or [[priest]]s, depending on how much easier it is for them to recover [[Luck]] and [[alignment record]] than intrinsic telepathy.
+
+===Identification===
+The helm of telepathy has the same base price of 50[[zm]] as the other two randomized magical helms, the [[helm of brilliance]] and the [[helm of opposite alignment]].
+
+While wearing the helm does not auto-ID it, its effect may become obvious after a short while if you are not [[blind]], and you can confirm if a freshly-worn helm is telepathy by [[far look]]ing the next monster that becomes visible to you. If it is not [[mindless]], and you have no other source of extrinsic telepathy such as an [[amulet of ESP]], then your helm is a helm of telepathy. Long durations of intrinsic [[monster detection]] may interfere with this, though far looking monsters will still make clear what methods they are being seen through.
+
+==History==
+The helm of telepathy first appears in [[NetHack 3.0.0]].
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], [[upgrading]] an [[dwarvish iron helm]] will turn it into either a helm of telepathy or a helm of brilliance.
+
+[[The Crown of Saint Edward]] is an [[artifact]] helm of telepathy that serves as the [[Yeoman]] [[quest artifact]], and also provides [[magic resistance]] and [[half spell damage]]. It is possible to informally identify a helm of telepathy by [[Naming artifacts|attempting to name a magical helm]] "The Crown of Saint Edward" and seeing if it succeeds.
+
+[[Grund's Stronghold]] has a {{frac|3}} chance of a blessed helm of telepathy generating in a [[chest]] within a hidden area in the level's southwest corner.
+
+===SporkHack===
+In [[SporkHack]], it is possible for the helm of telepathy to have the randomized appearance of a [[tin foil hat]] - tin foil hats protect you from the psychic blasts employed by [[mind flayer]]s but block telepathy, including the helm's own telepathy should this occur.
+
+===SpliceHack===
+In [[SpliceHack]], using a [[furnace]] to combine a plain [[helmet]] and an amulet of ESP produces a helm of telepathy.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Helms]]}
+&&%s&& %s Template:Wood color {25857 2008-02-26T16:48:31Z {630 Paxed} cat sorting {{brown|{{{1}}}}}<noinclude>
+----
+Use this template for items specified as having <code>HI_WOOD</code> color.
+
+[[Category:Logical color templates|Wood color]]
+</noinclude>}
+&&%s&& %s Category:Shields {12970 2006-10-01T09:30:29Z {467 Killian} Created subcategory This category contains articles about [[shield]]s, a form of [[armor]] carried in the off-hand.
+
+[[Category:Armor]]}
+&&%s&& %s Elven shield {134886 2020-07-06T22:27:45Z {4000978 Aximili} Add sections, references, update template {{armor
+  |color=green
+  |name=elven shield
+  |appearance=blue and green shield
+  |cost=7
+  |slot=shield
+  |ac=2
+  |weight=40
+  |material=wood
+}}
+The '''elven shield''' is a kind of [[shield]]. It is made of [[wood]], so it resists [[rust]]ing. Like all elven items, it can be safely enchanted up to +7 instead of +5.
+
+==Generation==
+Elves have a 5/12 chance of being generated with an elven shield.{{refsrc|src/makemon.c|222|version=NetHack 3.6.6}}
+
+==Strategy==
+{{main|Shield#Strategy}}
+For pure AC purposes it's the best shield in the game. It is significantly lighter than the [[dwarvish roundshield]] and [[large shield]] and cannot rust, so it makes a good replacement for either of those items. 
+
+==References==
+<References />
+
+[[Category:Elven items]]
+[[Category:Shields]]
+{{nethack-366}}}
+&&%s&& %s Blue and green shield {12974 2006-10-01T09:44:12Z {467 Killian} #REDIRECT [[elven shield]] #REDIRECT [[elven shield]]}
+&&%s&& %s Uruk-hai shield {134883 2020-07-06T22:00:57Z {4000978 Aximili} Add strategy section, references 3.6.6 sources, update template {{armor
+  |color=metal color
+  |name=Uruk-hai shield
+  |appearance=white-handed shield
+  |cost=7
+  |slot=shield
+  |ac=1
+  |weight=50
+  |material=iron
+}}
+The '''Uruk-hai shield''' is a kind of [[shield]]. When unidentified, it is a '''white-handed shield'''. (This is not an error for "white-handled"&mdash;the shield does not have a white handle but the image of a white hand, which is reflected in the default [[tileset]] image for the item. Compare the [[red-eyed shield]].)
+
+Since Uruk-hai tend to be more dangerous than [[Mordor orc]]s, because of their use of [[poisoned]] arrows, one might expect the Uruk-hai shield to be superior to the [[orcish shield]] used by Mordor orcs, but in practice the two shields are identical in all but name and appearance.
+
+==Generation==
+As its name suggests, the Uruk-hai shield is usually encountered as part of the [[Monster starting inventory|starting inventory]] of [[Uruk-hai]] (with about a 2/3 chance).{{refsrc|src/makemon.c|424|version=NetHack 3.6.6}} [[Orc-captains]] may start with an Uruk-hai shield or an [[orcish shield]], with a 1/3 chance of each.{{refsrc|src/makemon.c|400|version=NetHack 3.6.6}} 
+
+==Mythology==
+The white hand is the symbol of the wizard Saruman, one of the antagonists of ''The Lord of the Rings'', who raised an army of [[Uruk-hai]] in an attempt to rival the titular "Lord of the Rings", Sauron. The white hand was a deliberate imitation of the red eye used by Sauron.
+
+==Strategy==
+{{main|Shield#Strategy}}
+The high weight and poor armor make this a bad choice for almost all players. Even players who desperately need a shield should replace an Uruk-hai shield with any alternative shield they find. The Uruk-hai shield is mainly useful for role-playing, and for the [[unofficial conduct#Racial|racial armor unofficial conduct]].
+
+==UnNetHack==
+Uruk-hai shields are considered [[racial equipment]] for [[orc (starting race)|orc]]s, for purposes of the racial [[AC]] bonus in [[UnNetHack]]{{refsrc|include/obj.h|215|unnethack=1986}}.
+
+==References==
+
+<References />
+
+[[Category:Shields]]
+[[Category:Orcish items]]
+{{nethack-366}}}
+&&%s&& %s White-handed shield {12976 2006-10-01T10:17:28Z {467 Killian} #REDIRECT [[Uruk-hai shield]] #REDIRECT [[Uruk-hai shield]]}
+&&%s&& %s Orcish shield {134884 2020-07-06T22:11:28Z {4000978 Aximili} Add sections, references 3.6.6 sources, update template {{armor
+  |color=red
+  |name=orcish shield
+  |appearance=red-eyed shield
+  |cost=7
+  |slot=shield
+  |ac=1
+  |weight=50
+  |material=iron

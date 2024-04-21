@@ -1,0 +1,1000 @@
+* [[Levitation|Levitating]] over a sink and falling{{refsrc|hack.c|468}}
+* Bumping into a closed door{{refsrc|hack.c|608}}
+* Trying to move without levitation or flying on the [[Plane of Air]], failing, and getting the "You tumble in place" message{{refsrc|hack.c|908}}
+* Losing intrinsic speed through a monster attack or a [[wand of slow monster]]{{refsrc|mhitu.c|144}}
+* Being hit by a [[paralyzing]] attack, without free action{{refsrc|mhitu.c|1126}} (including a [[gelatinous cube]]'s passive attack, but not a [[floating eye]]'s){{refsrc|uhitm.c|2283}}
+* Having your leg pricked by a [[xan]]{{refsrc|mhitu.c|1176}}
+* Quaffing a [[potion of paralysis]]{{refsrc|potion.c|608}}, or breathing the potion's vapors{{refsrc|potion.c|1260}}, without [[free action]]
+* Breathing the vapors of a [[potion of sleeping]], without free action or [[sleep resistance]]{{refsrc|potion.c|1269}}
+* [[Stoning|Turning to stone]] (once every turn){{refsrc|timeout.c|39}}
+* [[Sliming|Turning to slime]] (once every turn){{refsrc|timeout.c|142}}
+* Being caught in one of the following traps: [[bear trap]]{{refsrc|trap.c|779}}, [[pit]] (spiked or not){{refsrc|trap.c|939}}, paralysis container trap (without free action){{refsrc|trap.c|3745}} or triggering a [[land mine]]{{refsrc|trap.c|1151}}
+* Reading a cursed [[scroll of enchant weapon]], while not wielding a weapon or weapon-tool{{refsrc|wield.c|701}}
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Your character]]}
+&&%s&& %s Constitution {141212 2021-06-26T21:19:27Z {4001463 Actual-nh} /* Effects */ Grammar/style '''Constitution''' is an [[attribute]] in [[NetHack]].
+
+==Effects==
+Having a high constitution increases your healing rate and the number of [[HP]] you gain when leveling up and allows you to carry more [[weight]] in your [[inventory]].
+
+Constitution is most easily [[exercise]]d by keeping from being [[Nutrition#hunger status|hungry]] and is increased when you sleep with a [[foocubus]] and "feel good enough to do it again."
+
+{| class="prettytable striped" 
+!| constitution 
+!| HP/level bonus
+|- 
+|| 3 || &minus;2
+|-
+|| 4&ndash;6 || &minus;1
+|-
+|| 7&ndash;14 || 0
+|-
+|| 15&ndash;16 || +1
+|-
+|| 17 || +2
+|-
+|| 18 || +3
+|-
+|| >18 || +4
+|}
+Reference: {{sourcecode|attrib.c|649}}.
+
+Above level 9, higher constitution can also help you regenerate more HP every 3 turns. Specifically, having 13 or more constitution regenerates a random amount of HP from 1 to your current constitution which is then capped by level &minus; 9, so to gain more than 1 HP on these turns you must be at least level 11.{{refsrc|allmain.c|171}}
+
+In [[NetHack 3.6.1|3.6.1]] wielding the [[Ogresmasher]] sets constitution to 25.
+
+===Messages===
+{{message|You feel tough! You must be leading a healthy life-style.|You gained a point of constitution by exercise.{{refsrc|attrib.c|435}}}}
+{{message|You feel fragile! You haven't been watching your health.|You lost a point of constitution from [[exercise#abuse|abuse]].{{refsrc|attrib.c|436}}}}
+
+===Exercising and abusing constitution===
+Constitution is exercised by the following:
+* Having a hunger status of "Not hungry" on a turn whose number is a multiple of 10{{refsrc|attrib.c|324}}
+* Being healed by a [[nurse]] (one in three chance){{refsrc|mhitu.c|1406}}
+* Consorting with a [[foocubus]] and getting the "You feel raised to your full potential"{{refsrc|mhitu.c|2327}} or "You feel good enough to do it again"{{refsrc|mhitu.c|2332}} message
+* Drinking [[holy water]], as a non-chaotic hero, unless polymorphed into an undead or demon{{refsrc|potion.c|481}}
+* Drinking [[unholy water]], as a chaotic hero, or polymorphed into an undead or demon{{refsrc|potion.c|474}}
+* Drinking or breathing the vapors{{refsrc|potion.c|1224}} of a potion of [[Potion of healing|healing]],{{refsrc|potion.c|791}} [[Potion of extra healing|extra healing]]{{refsrc|potion.c|799}} or [[Potion of full healing|full healing]]{{refsrc|potion.c|814}}
+* Reading a non-cursed [[scroll of enchant armor]] while not wearing armor{{refsrc|read.c|679}}
+* Digesting a monster (other than a [[green slime]]){{refsrc|uhitm.c|1827}}
+* Eating a non-cursed [[flint stone]] (but this is impossible in vanilla ''NetHack''){{refsrc|attrib.c|1640}}
+
+Constitution is abused by the following:
+* Having a nutrition status of "[[Fainting]]" or "Fainted" on a turn whose number is a multiple of 10{{refsrc|attrib.c|330}}
+* Being [[overtaxed]] (once every ten turns){{refsrc|attrib.c|342}}
+* Being [[sickness|sick]], including both fatal illness and food poisoning, and non-fatal [[vomiting]] (once every five turns){{refsrc|attrib.c|356}}
+* Vomiting (every turn, in addition to the abuse from the previous item){{refsrc|timeout.c|72}}
+* Being unable to move while encumbered and with low hit points{{refsrc|hack.c|891}}
+* Passing out from exertion when heavily encumbered{{refsrc|attrib.c|356}}{{refsrc|hack.c|1086}}
+* Having an object "drop from your grasp" when attempting to throw it while encumbered and with low hit points{{refsrc|dothrow.c|896}}
+* [[Choking]] from overnutrition (even if you have [[magical breathing]]){{refsrc|eat.c|238}}
+* Drinking from a [[fountain]] and getting one of the following effects: contaminated water (without poison resistance),{{refsrc|fountain.c|267}} curse items ("this water's no good!"){{refsrc|fountain.c|284}}
+* Falling onto a [[sink]], if there is a weapon or weapon-tool on the sink{{refsrc|hack.c|474}}
+* Being hit by a monster attack that causes [[lycanthropy]],{{refsrc|mhitu.c|1262}} or by [[Famine]]'s hunger-inducing attack{{refsrc|mhitu.c|1520}}
+* Consorting with a [[foocubus]] and getting the "You feel drained of energy"{{refsrc|mhitu.c|2290}} or "You are down in the dumps"{{refsrc|mhitu.c|2295}} message
+* Being hit by a silver object thrown at you by a monster, while polymorphed into a silver hater{{refsrc|mthrowu.c|76}}
+* Suffering a [[system shock]] when attempting to polymorph{{refsrc|polyself.c|239}}
+* Polymorphing{{refsrc|polyself.c|564}}
+* Becoming deathly sick, or making your sickness worse, or only partly curing your sickness{{refsrc|potion.c|136}}
+* Drinking [[holy water]], as a chaotic hero, or polymorphed into an undead or demon{{refsrc|potion.c|461}}
+* Drinking [[unholy water]], as a non-chaotic hero, unless polymorphed into an undead or demon{{refsrc|potion.c|493}}
+* Drinking a non-blessed [[potion of sickness]], as a non-[[Healer]]{{refsrc|potion.c|688}} 
+* Drinking a [[potion of acid]] (unless acid resistant){{refsrc|potion.c|890}}
+* Breathing the vapors of a potion of sickness (as a non-Healer),{{refsrc|potion.c|1234}} or a [[potion of polymorph]]{{refsrc|potion.c|1299}}
+* Being turned back to your natural form, by [[pray]]ing to a non-chaotic god while polymorphed into an undead{{refsrc|potion.c|1611}}
+* Reading a cursed [[scroll of enchant armor]] while not wearing armor{{refsrc|read.c|679}}
+* Reading a [[scroll of destroy armor]] while not wearing armor, if you are [[confusion|confused]]{{refsrc|read.c|790}}, or the scroll is non-cursed{{refsrc|read.c|801}}
+* [[Sit]]ting on a [[throne]] and getting the electric shock effect{{refsrc|sit.c|177}}
+* Being caught in a poison gas{{refsrc|trap.c|3706}} or poison needle{{refsrc|trap.c|3714}} [[container trap]], or by a booby trapped door or tin{{refsrc|trap.c|3856}}
+* Being zapped by a [[wand of lightning]], either by yourself{{refsrc|trap.c|1904}} or by a monster{{refsrc|trap.c|3161}}, while not shock resistant
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Your character]]}
+&&%s&& %s Intelligence {16877 2006-12-29T01:17:20Z {515 MadDawg2552} Redirecting to [[Attribute]] #REDIRECT [[Attribute#Intelligence]]}
+&&%s&& %s Wisdom {145385 2022-04-08T03:28:47Z {4001483 Cathartes} /* Exercising and abusing wisdom */ specify intrinsic clairvoyance '''Wisdom''' is an [[attribute]] in [[NetHack]].
+
+==Effects==
+[[Healer]]s, [[Knight]]s, [[Monk]]s, [[Priest]]s, and [[Valkyrie]]s use Wisdom to [[spellcasting|cast spells]]. Wisdom is not particularly important to other classes, though it affects how fast your [[power]] regenerates (which is fairly important for roles like [[Wizard]] in particular) and how much power you gain when leveling up.
+
+Wisdom is one of the easiest stats to maximize, with many activities that [[exercise]] it, including engraving [[Elbereth]] (with correct capitalization) and successful [[search]]ing. It can also be increased by sleeping with a [[foocubus]]. (''"You will always remember the <foo>cubus..."''')
+
+===Messages===
+
+{{message|You feel wise! You must have been very observant.|Your wisdom has increased through exercise.}}
+{{message|You feel foolish! You haven't been paying attention.|Your wisdom has decreased through [[exercise#abuse|abuse]].}}
+
+===Exercising and abusing wisdom===
+Wisdom is exercised by the following:
+* Completing the study of a [[spellbook]]{{refsrc|spell.c|336}} (and more so{{refsrc|spell.c|355}} if it refreshes memory of an already known spell)
+* Successfully casting a spell{{refsrc|spell.c|808}}
+* [[Chat]]ting to a coaligned [[aligned priest|priest]] with a good [[alignment record]] but no [[zorkmid|money]]{{refsrc|priest.c|472}}
+* [[Donating to priests|Donating]] more than half your gold to a priest, but less than 200 times your level{{refsrc|priest.c|493}}
+* Being [[weak]] with hunger as a [[monk]] on a turn whose number is a multiple of 10{{refsrc|attrib.c|327}}
+* Having intrinsic [[clairvoyance]] (once every five turns){{refsrc|attrib.c|353}}
+* [[Zap]]ping a [[wand]] (except at yourself){{refsrc|zap.c|1862}} or casting one of the following spells that duplicates a wand effect (except at yourself): {{spell of|force bolt}}, {{spell of|sleep}}, {{spell of|magic missile}}, {{spell of|knock}}, {{spell of|slow monster}}, {{spell of|wizard lock}}, {{spell of|dig}}, {{spell of|turn undead}}, {{spell of|polymorph}}, {{spell of|teleport away}}, {{spell of|cancellation}}, {{spell of|finger of death}}, {{spell of|light}}, {{spell of|detect unseen}}, {{spell of|healing}}, {{spell of|extra healing}}, {{spell of|drain life}}, and also {{spell of|stone to flesh}} (which the relevant source claims is a duplicate of a wand effect,{{refsrc|spell.c|859}} even though it isn't).{{refsrc|spell.c|869}}{{refsrc|zap.c|2454}}
+* Zapping or engraving with a [[wand of enlightenment]]{{refsrc|zap.c|1802}} (if it is zapped, this is in addition to the exercise from the previous item)
+* Attempting to [[polymorph]] into a [[genocide]]d species{{refsrc|polyself.c|340}}
+* Succeeding in polymorphing into a monster{{refsrc|polyself.c|565}}
+* In a [[lycanthropy|lycanthropic]] form, calling upon your brethren for help{{refsrc|polyself.c|918}}
+* Touching your [[quest artifact]] for the first time{{refsrc|quest.c|90}}
+* Failing to enter the [[quest]] due to being too low a level{{refsrc|quest.c|249}} or (except if you are locked out of the quest as a result) too low an alignment{{refsrc|quest.c|261}}
+* Unlocking the quest{{refsrc|quest.c|266}}
+* Discovering a [[trap]] on an object{{refsrc|trap.c|3504}} or door{{refsrc|trap.c|3570}}
+* [[Quaffing]] [[holy water]] while not chaotic, nor in an undead or demonic form{{refsrc|potion.c|480}}
+* Quaffing a noncursed [[potion of enlightenment]],{{refsrc|potion.c|529}} or getting the effect from a [[fountain]]{{refsrc|fountain.c|243}}
+* Sensing at least one monster{{refsrc|potion.c|647}} or object{{refsrc|potion.c|653}} with the appropriate detection potions, or the equivalent spells
+* Detecting [[gold detection|gold]],{{refsrc|detect.c|282}} [[food detection|food]],{{refsrc|detect.c|384}} or [[magic mapping|the map layout]]{{refsrc|detect.c|951}} via any means
+* Quaffing a [[potion of gain energy]], even if cursed{{refsrc|potion.c|858}}
+* Quaffing burning [[potion of oil|oil]], when polymorphed into a monster that likes fire{{refsrc|potion.c|878}}
+* Removing [[erosion]] from an object using a potion of oil{{refsrc|potion.c|1824}}
+* Successfully refilling an [[oil lamp]]{{refsrc|potion.c|1855}}
+* Being told a true [[rumor]]{{refsrc|rumors.c|129}} (more so if it came from the [[Oracle]]{{refsrc|rumors.c|170}})
+* Getting a non-cheapskate [[major consultation]]{{refsrc|rumors.c|373}}
+* [[Kick]]ing [[fruit]] out of a [[tree]]{{refsrc|dokick.c|918}}
+* Finding a [[ring]] in a [[sink]], by kicking{{refsrc|dokick.c|988}} or quaffing{{refsrc|fountain.c|561}}
+* Succeeding in [[magic marker|writing]] a scroll or spellbook, or failing merely because the marker dried out in the process{{refsrc|write.c|179}}
+* Giving a name to all objects of a given type, via [[name|#name]] or when you see the object break (only one exercise for each type of item. {{refsrc|o_init.c|319}} 
+* Being told the amount you will have to pay for using an unpaid item in a shop{{refsrc|shk.c|3919}}
+* Reading a non-[[scroll of blank paper|blank]] [[scroll]]{{refsrc|read.c|655}}
+* Getting the "You will always remember the foocubus…" (in addition to the wisdom gain) or "That was a very educational experience!" result from sex{{refsrc|mhitu.c|2342}}
+* [[Sacrificing]] a corpse{{refsrc|pray.c|1116}}
+* As a [[demon]], sacrificing a corpse of your own race{{refsrc|pray.c|1170}}
+* Successfully converting an [[altar]]{{refsrc|pray.c|1383}}
+* Gaining an [[artifact]] [[gift|from your god]]{{refsrc|pray.c|1481}} or from a fountain{{refsrc|fountain.c|384}}
+* Attempting to [[turn undead]] with a receptive god (regardless of whether the attempt succeeds or fails for other reasons){{refsrc|pray.c|1690}}
+* Calling demons as a side-effect of melee attack when polymorphed{{refsrc|uhitm.c|1180}}
+* Eating a brain, when polymorphed into a (regular or master) [[mind flayer]]{{refsrc|uhitm.c|1560}}
+* Finding a gem{{refsrc|fountain.c|145}} or coins{{refsrc|fountain.c|487}} in a [[fountain]]
+* Gaining abilities from a magical fountain{{refsrc|fountain.c|225}}
+* Gaining the [[see invisible]] intrinsic from a fountain{{refsrc|fountain.c|305}}
+* Detecting monsters using a fountain{{refsrc|fountain.c|311}}
+* Casting the [[teleport away]] spell using {{kbd|ctrl|t}}{{refsrc|teleport.c|536}}
+* Engraving [[Elbereth]] with the correct capitalisation{{refsrc|engrave.c|373}}
+* Trying to open the [[Castle]] [[drawbridge]] using music (even if the wrong tune is played){{refsrc|music.c|541}}
+* Finding a trap{{refsrc|detect.c|1136}} (except a [[statue trap]] that fails to activate),{{refsrc|detect.c|1232}} [[secret door]],{{refsrc|detect.c|1193}} [[secret corridor]],{{refsrc|detect.c|1203}} or unseen monster{{refsrc|detect.c|1211}} via [[searching]] but ''not'' when using a [[stethoscope]]
+* Eating a non-cursed [[trident]]{{refsrc|eat.c|1635}}
+* Dying and having your possessions identified{{refsrc|end.c|373}} (a bit late, isn't it?)
+
+Wisdom is abused by the following:
+* Casting a spell at a location (such as skilled [[fireball]] or [[cone of cold]]) while [[engulfing|engulfed]]{{refsrc|spell.c|989}}
+* Forgetting a spell due to [[amnesia]]{{refsrc|spell.c|1017}}
+* Being hit by divine lightning when attacking an [[aligned priest]]{{refsrc|priest.c|661}}
+* Being [[satiated]] as a monk on a turn whose number is a multiple of 10{{refsrc|attrib.c|322}}
+* Being [[confused]] or [[hallucinating]] (once every five turns){{refsrc|attrib.c|357}}
+* Trying to [[saddle]] a [[foocubus]]{{refsrc|steed.c|93}}
+* While trapped, [[sit]]ting in the trap to extend the length of time you are trapped{{refsrc|sit.c|75}}
+* Accidentally triggering a trap while trying to [[untrap]] it{{refsrc|trap.c|3066}}
+* Quaffing a [[potion of booze]]{{refsrc|potion.c|508}}
+* Quaffing a [[cursed]] potion of enlightenment{{refsrc|potion.c|519}}
+* Quaffing a potion of oil, except when it's burning and you are polymorphed into a monster that likes fire{{refsrc|potion.c|878}}
+* Dipping an object into oil, unless it removes erosion from that object{{refsrc|potion.c|1824}}
+* Trying to refill an oil lamp while either it or the oil is burning{{refsrc|potion.c|1838}}
+* Trying to buy a major consultation from the Oracle without enough money{{refsrc|rumors.c|373}}
+* Trying to [[magic marker|write]] on paper which already has something written on it{{refsrc|write.c|105}}
+* Reading a [[scroll of amnesia]]{{refsrc|read.c|1119}}
+* Being hit by a [[mind flayer]]'s [[intelligence]]-draining attack{{refsrc|mhitu.c|1114}}
+* Receiving the "Your senses are dulled" message from an attempt to have sex, in addition to the wisdom drain{{refsrc|mhitu.c|2300}}
+* Being [[artifact blast|blasted by an artifact]]{{refsrc|artifact.c|545}}
+* When not chaotic, sacrificing a corpse of your own race{{refsrc|pray.c|1173}}
+* Failing in an attempt to convert an altar (in addition to the luck penalty){{refsrc|pray.c|1407}}
+* In a demonic or undead form, calling upon a non-chaotic god to [[turn undead]] (or any sufficiently angry god in any form){{refsrc|pray.c|1680}}
+* Throwing an [[egg]] at a monster (except if it's a [[cockatrice egg]] or it turns to stone upon impact){{refsrc|uhitm.c|799}}
+* [[Dipping]] for [[Excalibur]] when not [[lawful]], if you would have got the artifact if you were lawful{{refsrc|fountain.c|373}}
+* Losing money bathing in a fountain{{refsrc|fountain.c|450}}{{refsrc|fountain.c|469}}
+* Robbing a [[grave]]{{refsrc|dig.c|770}}
+* Creating undead by engraving on a gravestone{{refsrc|engrave.c|541}}
+* Attempting to pick up or otherwise acquire a [[Riders|Rider]] corpse{{refsrc|pickup.c|1324}}
+* Using (non-tonally) a [[tooled horn]],{{refsrc|music.c|424}} [[bugle]],{{refsrc|music.c|429}} or [[leather drum]]{{refsrc|music.c|462}}
+* Being told a false [[rumor]]{{refsrc|rumors.c|129}}
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Your character]]}
+&&%s&& %s Charisma {16879 2006-12-29T01:17:51Z {515 MadDawg2552} Redirecting to [[Attribute]] #REDIRECT [[Attribute#Charisma]]}
+&&%s&& %s Dungeon Feature {1717 2006-02-16T02:18:42Z {458 Kernigh} #REDIRECT [[Dungeon feature]] #REDIRECT [[Dungeon feature]]}
+&&%s&& %s Zap {99539 2015-12-22T11:43:27Z {4000080 ChasonBot}  {{Keyboard Commands}}
+To '''zap''' a [[wand]], press {{kbd|z}}. Some wands, like the [[wand of light]] or the [[wand of wishing]], act immediately. Some, like the [[wand of striking]], ask for a [[direction]] to fire.
+
+If you press {{kbd|shift|z}}, then you [[spellcasting|cast a spell]] instead.
+[[Category:Commands]]
+{{nethack-343}}}
+&&%s&& %s Category:Acronyms {25316 2008-02-04T22:47:17Z {458 Kernigh} Add some text to discourage the categorization of redirects. Entries on this list are either acronyms (or initialisms) that refer to a more complex subject (such as "[[BUC]]" for blessed/uncursed/cursed) or the full designation of phrases primarily expressed as acronyms (such as "[[Yet Another Stupid Death]]", usually YASD).
+
+The wiki also contains various acronym redirects (such as "[[NHINRL]]" and "[[TDTTOE]]"), but nearly all of those redirects do not appear in this list, as generally redirects do not have categories. A categorized redirect is probably a bad idea, because it creates no link from the destination article to the category, however the wiki may have a few leftover categorized redirects.
+
+''For a list of acronyms, see article: [[acronyms]]''
+
+[[Category:Community]]}
+&&%s&& %s Category:Monsters {74292 2011-10-19T01:38:25Z {0 } Better define category Learn about the '''[[monster]]s'''! This category contains articles that list the info of specific monsters (like [[Ant]] or [[Acid blob]]).
+
+Articles that list all the members of a single monster class should be put under [[:Category:Monster classes]] instead (like [[Angelic being]]).
+[[Category:Articles]]}
+&&%s&& %s Template:DOD {108761 2018-01-04T17:08:04Z {4000693 Phol ende wodan} spod-central appears to be gone, change link to point to alt.org mirror of the site <div class="license_dod">
+''This page is based on a spoiler by [https://alt.org/nethack/mirror/www.spod-central.org/%257Epsmith/ Dylan O'Donnell]. The original license is:''
+
+Redistribution, copying, and editing of these spoilers, with or without modification, are permitted provided that the following conditions are met:
+
+# The original contributors to any spoiler must continue to be credited.
+# Any modifications to the spoiler must be acknowledged and credited.
+</div><noinclude>
+[[Category:License templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Drawbridge {141106 2021-06-23T01:12:28Z {4000722 YourAdHereCZ} edited the wizard lock spell link to lead to the correct page {{features}}
+The '''drawbridge''' is a dungeon feature that occurs in ''[[NetHack]]''. The [[Castle]]'s entrance is a drawbridge, and two more are guaranteed on the [[Valkyrie quest]]. They are widely considered extremely dangerous; however, their threat can easily be managed by a knowledgeable player. Indeed, with a little caution the drawbridge can be a valuable tool.
+
+A closed drawbridge is represented by {{brown|#}}, and an open one is represented by {{brown|.}}.
+
+==Destruction==
+If a drawbridge is hit by a force bolt (from the [[spell of force bolt|spell]] or a [[wand of striking]]) then it is destroyed. Any non-[[phasing]] monster in either the "open" square or the "closed" square (the portcullis or the moat) is very likely to die. A player's chance of being killed is not affected by [[hit points]] or [[armor class]]. However, flying or levitating increases chance of survival.
+
+As of [[NetHack 3.6.0]], iron chains are scattered from the drawbridge's destruction, and they can still hit you outside of those two squares. However, only those squares are considered potentially lethal.{{refsrc|dbridge.c|896}}{{refsrc|dbridge.c|908}}
+
+Once destroyed, a drawbridge can never be recreated. Casting a spell of {{spell of|wizard lock}} or zapping a wand of locking at the portcullis square creates an ordinary door.
+
+==Castle==
+The castle drawbridge can be opened by playing the [[passtune]] on a [[musical instrument]]. The passtune can be given to you by your god while praying on an [[altar]] or deduced by playing a game of musical mastermind in front of the drawbridge (gears = right note, right position; tumblers = right note, wrong position). Obviously, the [[Options#sound|sound]] option ([[Options#acoustics|acoustics]] in [[NetHack 3.6.0]]) must be enabled.
+
+In [[NetHack 3.4.3]] and variants, manipulating the drawbridge in this way did not advance the turn-counter ([[Bugs in NetHack 3.4.3#C343-318|bug C343-318]]). This has been fixed in [[NetHack 3.6.0]].
+
+The drawbridge can also be opened by a [[wand of opening]], [[spell of knock]], or the [[blessed]] [[Bell of Opening]], and can also be closed by a [[wand of locking]] or [[spellbook of wizard lock|spell of wizard lock]].
+
+When a drawbridge closes, monsters (or the player) standing on it or the square it closes onto (the portcullis) will be crushed and killed and their possessions destroyed. Phasing monsters always survive (unless there are phasing monsters on both squares, leaving one with nowhere to go). Flying or levitating victims have a chance of surviving, significantly lessened if on the portcullis{{reffunc|dbridge.c|e_missed}}—just keep trying. When a drawbridge opens, the same applies to monsters caught under it.
+
+Killing a [[peaceful]] monster with a drawbridge has a 50% chance of decrementing your [[Luck]] because it does not anger the victim first.
+
+{{caption|{{drawbridgeradius}}|Danger (red #) and control zones{{refsrc|music.c|544}} (green C, pipe) at the [[Castle]]}}
+
+===Strategy===
+Once you have the passtune, the drawbridge can be opened and closed instantly (and at will) by playing the instrument again. Anything standing on the moat or portcullis squares will be killed, and you will even gain experience for the kill. If a flying monster survives you can just try again, taking zero game time. This is a fairly safe way of clearing out the hordes of monsters in the castle courtyard. Do note however that this will destroy any possessions carried by the monsters you crush. (Also, this advice applies only to vanilla NetHack 3.4.3; the fact that it takes no time is a [[Bugs in NetHack 3.4.3#C343-318|bug (C343-318)]] that is fixed in most NetHack variants.)
+
+If you stand in a line with the drawbridge and the castle fountain then soldiers inside may try to zap you with wands of striking, destroying the drawbridge. For this reason you should stand a knight's move away from the drawbridge when using it to crush the inhabitants.
+
+Exercise caution when crossing the drawbridge. You never know when a monster with a wand of striking may be lurking. Some players prefer to destroy the bridge when they're done crushing things. Alternatively, [[jumping]] (other than the [[Knight]]'s innate L-jump) can take you through the danger zone in a single move, leaving no time for monsters to destroy the drawbridge under you. Player deaths from the drawbridge are relatively rare, but are particularly feared nonetheless. Likely this is because it is the only non-delayed instadeath for which the immediate cause is outside the player's direct control (a monster zapping a wand of striking), and for which no common resistance provides any protection.
+
+==Valkyrie quest==
+The drawbridges in the [[Valkyrie quest]] cannot be opened or closed with a passtune, though they also may be generated raised as of [[NetHack 3.6.2]]. The usual methods still work: a wand of locking or wizard lock spell will close them, while a wand of opening, knock spell, or the Bell of Opening will open them. They are subject to being destroyed by force bolts, with the same risk of [[instadeath]] as the Castle drawbridge.
+
+==Fort Ludios==
+The door beyond the moat of [[Fort Ludios]] is not a drawbridge, but an ordinary door with a moat in front of it.
+
+==UnNetHack==
+[[UnNetHack]] includes drawbridges in additional levels, such as some [[Fort Ludios]] variants, [[Baalzebub's Lair]], and inside [[Moloch's Sanctum]]. As with the [[valkyrie quest]], the Castle passtune does not work on these drawbridges.
+
+If a huge monster is blocking the drawbridge, it cannot be closed.{{refsrc|src/dbridge.c|772|unnethack=1554}} Additionally, there is a 1/5 chance of the mechanism being "stuck" and not closing per attempt.{{refsrc|src/dbridge.c|776|unnethack=1554}} Both changes are intended to make it harder to use the drawbridge to kill a large number of monsters in quick succession.
+
+==Reference==
+<references/>
+
+[[Category:Dungeon features]]
+{{nethack-364}}}
+&&%s&& %s Stash {140989 2021-06-16T00:02:01Z {4001463 Actual-nh} /* Containers */ Note re future developments A '''stash''' is a repository of [[item]]s that a [[player]] leaves behind in the dungeon. Players can carry only a limited [[weight]], and without a [[container]] only a maximum of 52 [[item]]s plus gold and a loadstone.
+
+== Using containers ==
+
+[[Monster]]s are quite capable of picking up and using any items they come across. To prevent this, stash items in a [[container]].
+
+A simple [[sack]] is sufficient to stop monsters [[loot|looting]] your items.
+
+A heavier container such as a [[large box]] is more likely to stop a [[troll]] picking it up. On the other hand, the extra weight makes it less convenient if you decide to move your stash around.
+
+A [[chest]] is heavier still, and also [[wet|waterproof]].
+
+An [[ice box]] is the only container that [[gelatinous cubes]] will not [[engulf]], destroying the container (but not its contents) immediately. Any item can be stored safely inside an ice box&mdash;[[corpse]]s will not [[rot]], [[potion]]s will not [[Potion#Damage|freeze]], etc. Ice boxes are extremely rare, comprising 0.5% of all tools, and may need to be [[polypile]]d or [[wish]]ed for.
+
+== Security ==
+=== Containers ===
+{{upcoming|NetHack 3.7.0|Monsters can access the contents of unlocked, untrapped containers (other than a cursed [[bag of holding]]). (Intelligent monsters with unlocking tools may be able to unlock containers in the future.) This can make securing a stash harder.}}
+Since monsters cannot access the contents of a container, securing your stash really only involves three things:
+
+* Storing your items in a container instead of on the floor.
+* Using some method of preventing monsters from picking up the container itself.
+* Keeping it safe from [[gelatinous cube]]s.
+
+The most direct way of preventing monsters from picking up your stash container is to simply make sure it is too heavy to carry. Dragons have the greatest [[Monster carrying capacity|carrying capacity of any monster]] and can carry 3103 [[weight]] units. Therefore, placing 311 or more rocks into a stash container will ensure that no monster in the game can pick it up.
+
+=== Locked doors ===
+Placing your stash in a room with [[Door#Locking|locked doors]] will prevent most monsters from ever finding it. Some monsters can [[Door#Monsters getting through|get through doors]] though, or dig through walls; and monsters can always spawn inside the room when you're elsewhere on the level. Putting your stash in an isolated [[closet]] will minimize the chances of this happening.
+
+=== Scrolls of scare monster ===
+{{upcoming|NetHack 3.7.0|Scare monster no longer works on uniques or @ monsters.}}
+Most monsters can be kept away from a square by placing a [[scroll of scare monster]] on it.
+
+[[Pet]]s can additionally be deterred by placing a cursed item on the square.
+
+Prior to [[NetHack 3.6.0]], it was also possible to protect any square with an [[Elbereth]] engraving by placing an item on top.
+
+=== Boulders ===
+The other way to restrict monster movement is with [[boulder]]s. You can surround your stash square with boulders (a [[scroll of earth]] is handy for this purpose) and then either push the boulders aside to gain access or get inside with a [[teleport control|controlled teleport]]. However, the same effect can be achieved much more easily by pushing a single boulder on top of your stash. This does not damage any items, and the number of items on that may be hidden this way is unlimited.
+
+Boulders will protect the stash from most monsters, including [[gelatinous cubes]], but [[giants]] and [[titan]]s can pick up boulders and move them. Boulders can also be shattered by ranged attacks like {{+ of|force bolt}} or a [[wand of striking]].
+
+===Paranoid security===
+
+Basic security protects your items from nearly all threats, but paranoid players can go several steps further.
+
+A heavy chest with a boulder on top of it can only lose items if a giant picks up the boulder, then a gelatinous cube engulfs the chest, and then that the items are lost somehow after the cube is killed. If the stash is also next to the stairs on a level you visit only to use the stash, such as Sokoban level 1, this is practically impossible.
+
+A chest with any [[sessile]] monster on it is incredibly secure, but inaccessible without killing or moving the monster. A [[tame]] [[blue jelly]] might work very well.
+
+An [[oilskin sack]] underwater is also perfectly secure, provided that there are no [[swimmer]]s on the level who could pick it up and that you can get to dry land immediately after looting it.
+
+You can store items in a [[pit]] and push a boulder on top of them. This makes the items totally inaccessible, except for you and monsters which are trying to [[flee]] by [[dig]]ging a hole in the floor. You will need a new boulder each time you want to cover your items after digging them up for retrieval. [[Organic]] items underground will [[rot]], and will need to be placed in a container. All containers apart from [[ice box]]es are themselves organic and will rot when underground.
+
+== Location ==
+[[Image:Sokostash.png|right|250px|thumb|Sokoban is a particularly good location for a Wizard's stash.]]
+
+A stash of useful items or spares is best located in a convenient place that you can return to later to retrieve your items without having to traverse too many difficult dungeon levels. If you have controlled [[level teleport]], almost anywhere that is not deep in a branch is convenient.
+
+In the early game, before you can perform basic stash security, the [[Minetown]] light shop might be a reasonable location. Even if a monster does dig down the walls, they are repaired quickly. Plus, you will be returning past this location on your way back up from [[Mines' End]]. Alternatively, when first exploring the dungeon, consider leaving items next to stairs before descending. Monsters do not act while you are off the level, so the items will still be there when you return.
+
+The [[Castle]] or the [[Valley of the Dead]] are popular stash levels, as they both generate immense amounts of loot and have abundant [[chest]]s. The Valley also has a [[temple]], but it is unaligned. 
+
+Another popular stash is the first level of [[Sokoban]], as it can be [[branchport]]ed to directly with [[the Eye of the Aethiopica]], spawns relatively weak monsters, and is close to both the [[Dungeons of Doom]] and the [[Gnomish Mines]] where there are many [[shop]]s and [[altar]]s. Additionally, once you have completed Sokoban, you have no reason to spend any turns there out of sight of your stash; this makes it extremely unlikely that the monsters that can interfere with your stash have any opportunity to do so.
+
+Some players prefer to keep their stashes on levels which can leave [[bones]] files, so that if they die, their next attempts have a chance of encountering those items.
+
+Some players prefer a greater degree of organization during long games, and so use several stashes, or even separate stashes for each object type (such as potions, rings, and wands).
+
+== Additional uses ==
+
+===Junk===
+If your stash contains only [[junk]], then perhaps it does not need security. That pile of cursed weapons and armor would not help monsters much anyway. Such a stash might be useful next to an [[altar]], to dispose of the items dropped by numerous monsters killed for [[sacrifice]]s.
+
+Some junk, such as discarded weapons, may still need some basic security to prevent monsters using the items against you.
+
+===Polypiling===
+If you have a [[wand of polymorph]], [[polypiling]] is a great way to make use of a stash of otherwise useless magical junk.
+
+{{nethack-360}}
+[[Category:Strategy]]}
+&&%s&& %s Bot {96202 2015-08-17T20:08:11Z {4000005 Nht} spelling, grammar. the whole article needs a rewrite ''For a list of wikibots, see [http://nethackwiki.com/mediawiki/index.php?title=Special:ListUsers&group=bot].''
+
+A '''bot''' is a computer program which plays [[NetHack]] without human intervention. Several bots now exist, and some of these can survive for a significant amount of time. A true bot with an internal model of the game, capable of making reasoned decisions about game events, and ultimately capable of ascending remained elusive until 2015-01-25, when smartbot3, based on [https://github.com/krajj7/BotHack BotHack] first ascended on acehack.de (see [https://nethack.xd.cm/userdata/smartbot3/nethack/dumplog/1422171652 dumplog], [https://nethack.xd.cm/notable/first-nethack-bot-ascension/ ttyrec and other data]).
+
+The concept of a bot is often brought up in [[RGRN]]. Most conversations conclude that a bot is in theory possible, but tremendously difficult.
+
+There exists a simple Perl script which is used by [[Pudding farming|pudding farmers]] to automate the process of offering, praying, and clearing messages.
+
+It is also possible to copy and [[paste]] a list of commands into a NetHack window which will repeat the same process over and over again. This was first used by [[eit_brad]] to achieve a high score which overflowed NetHack's signed 32-bit score variable in the 2003 [[:/dev/null/nethack tournament]].
+
+==Bots==
+*BotHack, the first bot to successfully ascend: https://github.com/krajj7/BotHack
+*[[TAEB]]: http://taeb.github.io
+*Saiph: https://github.com/canidae/saiph
+*[[Demonia]]
+*Others: [http://taeb.github.io/bots.html list of NetHack bots]
+
+[[Category:Bots| ]]}
+&&%s&& %s NHINRL {1749 2006-02-16T14:26:58Z {396 Jayt} redirect #REDIRECT [[NetHack is not real life]]}
+&&%s&& %s NetHack is not real life {138328 2021-03-06T22:56:54Z {4001463 Actual-nh} Link to "Why do I keep dying?" '''NetHack is not real life''' (often abbreviated to '''NHINRL''') is a common response to some [[YANI]]s which suggest NetHack behave in a way supposedly more consistent with the real world. Failure to realize this is also a problem encountered by new players; see [[Why do I keep dying?#Eating|Why do I keep dying?]] for some examples.
+
+{{stub}}
+{{todo|Provide some examples of what makes them impractical}}
+
+[[Category:Acronyms]]}
+&&%s&& %s Yet Another New Idea {138700 2021-03-28T15:32:52Z {4001463 Actual-nh} /* Small matter of programming */ AKA Simple Matter of Programming '''YANI''' is short for '''Yet Another New Idea''', and is commonly used in the [[RGRN]] and [[IRC]] communities to suggest new ideas to be incorporated into the game.
+
+Very, very few, if any, YANIs ever get included in the official game, unless a working [[patch]] had been provided with the YANI, in which case the chance of official incorporation is raised to slim.  In [[variants]], however, incorporation of YANIs is more common; several variants even make it a goal to implement popular YANIs.
+
+"The artifacts need to be rebalanced" is a common one. See [[Artifact YANIs]] for details.
+
+[https://nethack-yanis.github.io The NetHack Ideas Archive] is a repository of YANIs posted on IRC, organized by variant, author and tags. NetHackWiki also partly acts as a repository for editors' YANIs; See [[:Category:YANI]] for a list of these pages.
+
+==Examples of YANIs in vanilla NetHack==
+While a number of YANIs were incorporated into vanilla after first being implemented in a variant, there have been a few recent ones that were incorporated directly:
+
+*Sometime in 2017, it was suggested on IRC that the [[blessed]] [[scroll of fire]] be made targetable within a certain radius, just like the [[scroll of stinking cloud]] is. This was later added into the next vanilla release, [[3.6.1]].
+
+*In 2018, [[User:Ais523|Alex Smith]] asked on IRC for an idea for a small, easily implementable feature. Several suggestions were made; the one that was ultimately added to 3.6.1 was water sliding off of [[oilskin sack]]s and [[auto-identify]]ing them in the process.
+
+*One periodically suggested idea was for the [[amulet of restful sleep]] to confer some useful property while asleep, usually greater healing so as to make the "restful" part of the name meaningful. In 2020, [[User:Paxed|Paxed]] implemented this, in the form of a hungerless regeneration that stacks with ordinary regeneration while asleep with restful sleep.
+
+{{todo|Other YANIs later incorporated in the game? Beginning with NetHack 3.6.1, several of these ideas have been implemented: Demonbane blocks demon gating while wielded; Dragonbane confers reflection while wielded; Trollsbane prevents trolls from reviving while wielded; Ogresmasher grants 25 constitution while wielded; and Cleaver hits up to three adjacent enemies in an arc.}}
+
+==Examples of YANIs in Variants==
+===UnNetHack===
+* [[Disintegrator]]: The idea appeared on RGRN.<ref>https://groups.google.com/forum/?fromgroups=#!msg/rec.games.roguelike.nethack/Q_m-025sR0o/w03iMgeRv1gJ</ref> 5 days later in the same thread, Nicholas Webb published a patch for this monster; it was also used in the [[biodiversity patch]]. 6 years later, bhaak included this monster in UnNetHack.<ref>http://sourceforge.net/apps/trac/unnethack/changeset/80</ref>
+* Autounlock on containers: The YANI appeared and was unimplemented for almost a year,<ref>http://sourceforge.net/apps/trac/unnethack/ticket/124</ref> but once a patch was produced,<ref>https://github.com/Bulwersator/UnNetHackPlus/commit/04886c7bcd96790a36c0d1c02dae43d171a42a10</ref> it was applied to UnNetHack on the same day.<ref>http://sourceforge.net/apps/trac/unnethack/changeset/1353</ref>
+
+==YASI==
+The abbreviation '''YASI''', which stands for '''Yet Another Silly Idea''', is sometimes used when the idea in question is impractical, ridiculous, or pointless. There is some amount of overlap between YASIs and [[Evil Patch Idea]]s, though most YASIs are not intended to be evil.
+
+== Small matter of programming ==
+'''Small matter of programming''' ([http://www.catb.org/jargon/html/S/SMOP.html SMOP]) might be a way of saying that a feature would be trivial to write, but can more often be an ironic way of saying that a YANI might be a good mechanic in theory, but would be a headache to code. Examples of such YANIs include:
+
+*[[Hallucination]] gradually fades back to normal vision as the player recovers (implemented in [[GruntHack]]).
+*[[Woodchuck]]s can pick up and throw [[wood golem]]s.
+*[[Marilith]]s can wield six weapons and wear six rings. [[Ettin]]s can wear two helmets, two amulets, and so forth.{{refsrc|sounds.c|887}}
+*[[Ray]]s and [[projectile]]s can be fired at an arbitrary target square, not just vertically, horizontally and diagonally.
+
+== References ==
+<references/>
+
+== External links ==
+* [http://l.j-factor.com/nethack.html L's Patches that incorporate many YANI's]
+
+{{stub}}
+{{noversion}}
+
+[[Category:Acronyms]]
+[[Category:YANI]]}
+&&%s&& %s Moloch {140772 2021-06-08T13:14:55Z {4000251 Netzhack} Fixed dangling pronoun {{wikipedia}}
+
+'''Moloch''' is the Luciferesque god mentioned in the [[introduction]] text as having stolen the '''[[Amulet of Yendor]]'''. He is, in this sense, the antagonist in the NetHack story.
+
+[[Altar]]s to Moloch can be found in the [[Valley of the Dead]], in [[Minetown#Orcish Town|Orcish Town]], in [[Orcus]]'s lair, in the [[Sanctum]], and in the [[Monk]] and [[Priest]] [[Quest]]s; but they are marked as [[unaligned]], and Moloch has nothing encouraging to say to you.  Unaligned altars in Quests and Minetown can be converted; those in [[Gehennom]] cannot, and Bad Things will happen if you try.
+
+Moloch makes his home in [[Gehennom]], so any [[prayer]]s there go to him instead of to your own god. Praying in Gehennom is a [[Bad idea|Bad Idea™]], since your god doesn't like people who like Moloch, and Moloch just plain doesn't like ''anyone''. [[Lightning]] and [[wide-angle disintegration beam]]s ahoy.
+
+The introduction text:
+
+ It is written in the book of (god X):
+ 
+ After the creation, the cruel god Moloch rebelled against the authority
+ of Marduk the Creator. Moloch stole from Marduk the most powerful of all
+ the artifacts of the gods, the Amulet of Yendor, and he hid it in the
+ dark cavities of Gehennom, the Under World, where he now lurks, and
+ bides his time.
+ 
+ Your god (god X) seeks to possess the Amulet, and with it to gain deserved
+ ascendance over other gods.
+ 
+ You, a newly trained (title X), have been heralded from birth as the instrument
+ of (god X). You are destined to recover the Amulet to your deity, or die in
+ the attempt. Your hour of destiny has come. For the sake of us all:
+ Go bravely with (god X)!
+
+==Origin==
+
+Moloch (also spelled Molech) may have been an ancient Near Eastern deity.  He is known exclusively from references in the Jewish and Christian Bible, but the name is probably related to a Hebrew word for "king" and so may be a title for another god.  Some translators think he may have been the same as Milcom / Malkam, mentioned in the Bible as the national god of the Ammonites (living near present-day Jordan), whose name probably comes from the same root. 
+
+Within the Bible, Moloch's name usually occurs in phrases referring to 'giving one's seed to Moloch' or making one's children 'pass through the fire to Moloch', which has traditionally been interpreted to mean that Moloch was a god who was served with human sacrifices.  These acts are said to have taken place at a site called Tophet, in the Valley of Hinnom, the Greek name for which was [[Gehennom]].  
+
+Moloch's connection to human sacrifice, and even the reading of the word "moloch" as a proper name, [http://en.wikipedia.org/wiki/Moloch#Modern_interpretations has been questioned]; nevertheless, in historical and contemporary media the name has come to be closely associated with human sacrifice, and is sometimes used as a metaphor for anyone or anything demanding extreme sacrifices.
+
+The image of Moloch as a demon-god comes from a tradition within Christianity of reinterpreting the foreign gods of the Bible as demons posing as deities to mislead their worshippers.  Christian authors like John Milton (in ''Paradise Lost'') typically envisioned Moloch as a high-ranking fallen angel, on the basis of the meaning of his name ("king"), and assumptions about the extreme nature of his worship.  This is probably why Moloch was chosen as the arch-fiend of NetHack.  
+
+[https://en.wikipedia.org/wiki/List_of_named_devils_in_Dungeons_%26_Dragons#Moloch Moloch] is also one of the highest-ranking devils in Dungeons & Dragons, although there he is a (deposed) subordinate to [[Asmodeus]].
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+And the Lord spake unto Moses, saying,
+Again, thou shalt say to the children of Israel, Whosoever
+he be of the children of Israel, or of the strangers that
+sojourn in Israel, that giveth any of his seed unto Molech;
+he shall surely be put to death: the people of the land shall
+stone him with stones.
+And I will set my face against that man, and will cut him off
+from among his people; because he hath given of his seed unto
+Molech, to defile my sanctuary, and to profane my holy name.
+And if the people of the land do any ways hide their eyes
+from the man, when he giveth of his seed unto Molech, and kill
+him not:
+Then I will set my face against that man, and against his
+family, and will cut him off, and all that go a whoring after
+him, to commit whoredom with Molech, from among their people.
+|[ Leviticus 20:1-5 ]
+}}
+
+
+{{stub}}
+[[Category:Gods]]
+{{nethack-360}}}
+&&%s&& %s Marduk {103121 2016-06-13T23:40:48Z {4000629 Cherokee Jack} No major changes from 3.4.3 {{wikipedia}}
+
+'''Marduk''', the creator, is mentioned in the [[introduction]] text. He created at least the [[Mazes of Menace]], and probably the entire universe. Aside from that, however, he plays no part in the game.  Players will not find [[altar]]s dedicated to Marduk, or have the option of [[pray]]ing to him.
+
+==UnNetHack==
+
+[[UnNetHack]] randomizes the name of the creator deity. One of the following names is chosen:
+
+* Marduk
+* Apsu
+* Aeon
+* Gaia
+* Khronos
+* Atum
+* Khepri
+* Kamui
+* Mbombo
+* Unkulunkulu
+* Vishvakarman
+* Brahma
+* Coatlique
+* Viracocha
+* Tepeu
+* Pangu
+* Bulaing
+* Ahura Mazda
+* Demiourgos
+
+==Origin==
+
+Marduk is a Babylonian god.  As the encyclopedia entry describes, he was the head of the Babylonian pantheon and played a central role in their creation account.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+First insisting on recognition as supreme commander, Marduk
+defeated the Dragon, cut her body in two, and from it created
+heaven and earth, peopling the world with human beings who not
+unnaturally showed intense gratitude for their lives.  The
+gods were also properly grateful, invested him with many
+titles, and eventually permitted themselves to be embodied in
+him, so that he became supreme god, plotting the whole course
+of known life from the paths of the planets to the daily
+events in the lives of men.
+|[ The Immortals, by Derek and Julia Parker ]
+}}
+
+[[Category:Gods]]
+{{nethack-360}}}
+&&%s&& %s Junk {138442 2021-03-12T04:05:35Z {4001463 Actual-nh} Grammar/style '''Junk''' is any item that a player does not consider useful. Most items serve at least some purpose, or are a small benefit in the early game, but later become obsolete. By the time your character is ready to ascend, nearly all items that do not belong to your [[ascension kit]] are junk.
+
+Aside from [[corpse]]s, items in NetHack are generally persistent, i.e., they don't spontaneously vanish. Over the course of a long game, this results in a lot of junk piling up around the dungeons.
+
+==Uses==
+Although by definition junk has no particular use to ''your'' character, there are tasks to which an item you don't care about is best suited:
+
+* Selling to [[shop]]keepers: This is not usually worthwhile&mdash;gold itself is often considered junk after the early game. However, those who come upon an early [[wand of wishing]] or [[wand of death]] may need to scrounge up some extra cash to buy said item, if they can't or don't wish to use a pet to steal it.
+* [[Nymph]] fodder: Usually it is best to simply have a good AC, so nymphs will miss 95% of the time. However, in the early game, it can be useful to carry a few extra items, so that nymphs are less likely to take something useful. Note that this same concept will ''not'' help protect items from destruction by elemental attacks.
+* [[Curse items]] fodder: It is actually advisable to have a full inventory by the time you encounter monsters that can cast this spell.  Though it can still hit items you care about (like your luckstone) annoyingly often, having a few buffer items will help. Having a lot of otherwise useful [[wand]]s in open inventory also helps, because curses have only marginal effect on wands (a tiny chance of exploding).
+* [[Polypiling|Polyfodder]]: This is the typical use for junk other than [[iron chain]]s. [[Polypiling|Polymorph]] it into something useful.
+* Use it to move while [[Levitation|levitating]], e.g., on the [[Plane of Air]].
+
+===Historical uses===
+These uses are no longer relevant to [[NetHack 3.6.0]], but may still be useful for [[variant]]s based on [[NetHack 3.4.3]]:
+
+* Activating [[Elbereth]] squares: For example, if you wish to create an Elbereth cage, you will probably want to use junk to activate the squares, as there will be many. A single gold piece fulfills this role nicely.  Beginning with NetHack 3.6.0, Elbereth squares no longer repel monsters unless you are standing on them.
+* Use it to mark the [[vibrating square]]. Iron chains, having a unique glyph, work quite well for this. Beginning with NetHack 3.6.0, the vibrating square is marked as a [[trap]] automatically, and this tactic is no longer needed.
+
+==Dealing with junk==
+Most players are content to leave junk items where they are, but careful or tidy players like to ensure items like stray [[weapon]]s are not available for any passing monsters to use, among various other reasons.
+
+Some ways to get rid of junk:
+
+* [[Polymorph]] it.
+* Put it in a [[container]] and forget about it.
+** Put it in a container and polymorph the container into a single item.
+** For a [[cursed]] [[bag of holding]], you can also place the junk in, then [[apply]] it repeatedly until all of the contents disappear; a simpler method is to use a noncursed bag of holding, [[Container#Putting dangerous items into bags of holding|put a dangerous item into it]], and have all the contents destroyed in the resultant explosion. <!--This no longer works as of 3.7.0.-->
+* Engrave [[Elbereth]] under a pile of it and don't camp on the level; this is no longer effective in [[NetHack 3.6.0]]. However, some monsters will not be deterred; still, this is good enough for the dwarvish mattocks in the mines because elves rarely use them.
+* Throw it into [[water]] or [[lava]].
+* Polymorph into a [[metallivore]] and eat it.
+* Simply [[kick]] it out of reach - this can also be especially useful if any of the junk is cursed and obstructing your [[pet]](s) from following you down [[corridor]]s.
+* Drop it into a [[pit]] and fill the pit with a [[boulder]].
+* Empty wands can be [[Wand#Breaking wands|broken]] by applying them.
+* Smash it with a [[drawbridge]].
+
+One particularly untidy method of getting rid of junk is to zap a [[wand of teleportation]] down on a pile of it. This will result in the junk being randomly distributed across every square on the level.
+
+==See also==
+* [[Iron chain]]
+* [[Scroll of mail]]
+{{nethack-360}}
+[[Category:Items]]}
+&&%s&& %s Misc-343.txt {105396 2017-04-29T01:14:52Z {4000180 Bcode} Changed protection level for "[[Misc-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:misc-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+misc-343.txt  Last edited 2004-10-26 for NetHack 3.4.3
+Miscellaneous objects in NetHack 3.4
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+ITEM              COST  WGT   PROB   SYM  DAMAGE  NUTR
+~~~~~~~~~~~~~~~ : ~~~~  ~~~~  ~~~~ : ~~~  ~~~~~~  ~~~~
+gold piece      : $  1  0.01  1000 :  $       0   0.01
+boulder         :    0  6000   100 :  '     d20   2000
+statue          :    0  vary   900 :  '     d20   2500
+heavy iron ball :   10   480*    0 :  0     d25*   480*
+iron chain      :    0   120     0 :  _    d4+1    120
+acid venom      :    0     1     0 :  .     2d6      0
+blinding venom  :    0     1     0 :  .       0      0
+
+Items are listed here by inventory category.  Venom is generated only
+by spitting monsters and cannot be picked up.  The COST field denotes
+the base price of each item.  WGT specifies the weight.  If the item
+can be randomly generated, then PROB is the relative probability of
+the item within that category.  All of these items are generated
+uncursed.  SYM is the object symbol.  Damage to small and large
+monsters is the DAMAGE field.  An additional +d(x*4) of damage is
+added to iron balls for each x times the ball has been made heavier
+(cursed scrolls of punishment count double), up to a total damage of
+25. If an object can be eaten, its nutrition value is NUTR.
+
+Iron balls start out at a weight and nutrition of 480; each time you
+are further punished, any ball you are chained to has these increased
+by 160 (320 in the case of a cursed scroll of punishment).
+
+Finding spellbooks in statues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Adapted in part from the spoiler "statues" by Bryan Butler and
+Boudewijn Waijers.)
+
+Randomly created statues may contain one random spellbook.  The chance
+of a spellbook in a statue depends upon the dungeon level on which the
+statue was created (if you are visiting a level for the first time while
+carrying the Amulet, then the depth of the Sanctum will be used instead):
+    Level 1-3   4-5   6-7   8-9  10-11  12-13  20-21  30-31  n*2-(n*2)+1
+    Prob   0   1/12  2/13  3/14   4/15   5/16   9/20  14/25  (n-1)/(n+10)
+Statues of tiny monsters never contain spellbooks.
+
+Note that the Oracle is located somewhere between levels 5 and 9, so
+the average chance on that level that a statue contains a spellbook is
+about (1/12 + 2*2/13 + 2*3/14) / 5 = (1790/2184) / 5 = 16.4%.
+Since there are always eight centaur statues on that level, the chance
+of finding no spellbook there is about 26%. The chance of finding
+just one is about 35%, of two about 24%, of three about 11%. The
+chances of finding more rapidly approach zero.
+
+Note that the player-monster statues (other than Perseus) on the
+Medusa level will always be empty; the seven or eight monster statues
+may contain the appropriate monster's starting inventory. Perseus'
+statue has a 50% chance of containing a blessed +2 scimitar and a 50%
+chance of containing a sack. If the version of the level is the one
+with the central island, there is also a 25% chance of +0 levitation
+boots and 75% chance of a cursed +0 shield of reflection; on the
+version with a titan, these two chances are reversed.
+
+Statues created by stoning a monster contain only the items in the
+monster's inventory.  You can break a statue with a pick axe, dwarvish
+mattock, wand of striking, or spell of force bolt.  Breaking or animating
+historic statues (the centaur statues of Delphi, the statue of Perseus,
+the gnome king statue in the Grotto Town version of Minetown, or petrified
+unique monsters) carries a -1 alignment penalty for Archeologists.
+
+
+What to do with iron chains
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Iron chains are the least useful items in the game since they perform no
+function as individual objects, have no value to sell to shopkeepers,
+aren't heavy enough to be a decent weapon, and will always polypile into
+another chain.  Here are several somewhat trivial uses for these objects:
+
+* Throw or kick them as missiles.
+* Food for rock moles (a pet or polyself).
+* Leave them in the path of hostile metallivores as a distraction.
+* Polypile enough of them to make another iron golem.  Turn it into
+  your pet or polymorph it into a monster worthy of sacrificing.
+* Polypile enough of them to get another iron golem.  Tame it and watch it
+  get killed by a rust monster. Get an amusing message.
+* Use them to mark the vibrating square.
+* Carry them in your main inventory to lower the chance that something
+  "good" will be cursed/stolen.
+* Leave a bones file that will annoy others (using ASCII):
+  "Darn, that's not an altar."
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Thanks to Bruce Cox for proofreading the original version of this file.
+Further corrections and clarifications provided by Aero, Kevin Costello,
+Philipp Lucas, and Pat Rankin.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Category:Spoiler files {56146 2010-11-11T19:36:17Z {831 Tjr} Text replace - "Wikihack" to "NetHackWiki" '''Spoiler files''' are files, usually written in plain text, which document the behaviour of NetHack and provide detailed tables of [[item]] properties and probabilities.
+
+This category contains the preserved texts of some spoiler foils. NetHackWiki can include such texts only when [[we]] have the appropriate copyright permission.
+
+[[Category:Community]]}
+&&%s&& %s Space {131243 2020-01-21T07:42:48Z {4001279 Umbire the Phantom}  {{ASCII}}
+{{otheruses||a dungeon space or square|Square}}
+{{stub}}
+* {{black|&nbsp;}} represents [[ghost (monster class)|ghosts]].
+** {{monsymlink|ghost}}
+** {{monsymlink|shade}}
+* Because space (" ") is invisible, some players change the character of ghosts and shades to another symbol, such as X or the number eight ("[[Unused symbols|8]]").
+
+* A space also represents a dark part of a [[room]], [[solid rock]], [[air]] or an unexplored part of the dungeon.
+* Press {{kbd|space}} at the <tt>--More--</tt> prompt to get the next messages or screen.
+* The [[rest_on_space]] option causes the command {{kbd|space}} to rest, the same as {{kbd|.}}. This is generally viewed as extremely dangerous, as one too many presses of space as messages pass by can cause [[YASD]].
+
+== SLASH'EM ==
+[[SLASH'EM]] introduces one new creature that uses the blank space glyph:
+
+*{{monsymlink|shadow}}
+
+{{nethack-364}}
+[[Category:ASCII]]}
+&&%s&& %s Unique items {4592 2006-07-06T17:48:18Z {239 Eidolos} Redirect to "unique item" #REDIRECT [[Unique item]]}
+&&%s&& %s Role difficulty {147962 2022-08-25T04:58:16Z {4000978 Aximili} /* Roles' advantages and disadvantages */ alter -> later '''Role difficulty''' is the general difficulty of being able to successfully [[ascension|ascend]] with the various [[role]]s. Opinions vary as to which roles are the easiest and hardest to ascend.
+
+==Starting difficulty versus ascension difficulty==
+Usually when people talk about role difficulty they are mainly referring to the beginning of the game. This is because the early game is by far the hardest part of the game, to the point where you could argue that starting difficulty is the ''only'' factor that matters.
+
+However, some roles have advantages over other roles in the late game, in spite of being at a disadvantage in the early game.
+
+For example, [[barbarian]]s do better in the early game. They start with poison resistance, which allows them to eat poisonous monster corpses and protects against [[instadeath]] from poisoned arrows and spikes, common causes of death for early-game players. However, [[tourist]]s have a number of late-game advantages over barbarians. Their quest artifact is vastly more useful than the barbarian's, and they eventually get a good enough weapon and armor to match a barbarian's.
+
+===Criteria for early-game advantages===
+* High Strength and Constitution
+* Good starting equipment
+* Access to good ranged attacks (especially daggers)
+* Good starting intrinsics (especially poison resistance and speed)
+* Access to strong artifact earlygame
+
+===Criteria for late-game advantages===
+* Good [[quest artifact]]
+* High ''maximum'' statistics (determined by race)
+* Good acquired intrinsics (for example [[wizard]]s gain [[warning]] and [[teleport control]] at high levels)
+* Access to useful weapon and magic skills
+* Good artifacts available by sacrificing
+* Starting with highly enchanted or hard to find equipment
+* Chaotic [[alignment]] (and to a lesser extent, neutral), to reduce [[Amulet_of_Yendor#Effects_of_the_mysterious_force|backsliding]] in [[Gehennom]]
+
+==Roles' advantages and disadvantages==
+{| class="wikitable sortable" 
+|-
+! Role
+! Comments
+|-
+| [[Valkyrie]]
+| Most agree that (dwarven) valkyries are the strongest roles, due to the strong physical combat options presented by the role from the very beginning (arguably minimizing the amount of [[strategy]] necessary). Lawful valkyries have the advantage of some easy access to early artifacts (Excalibur), an easy quest with an excellent quest artifact (the [[Orb of Fate]]) plus intrinsic cold resistance.
+|-
+| [[Barbarian]]
+| Barbarians start strongly due to their initial poison resistance, strength and [[two-handed]] weapon, but have a bad race choice (human/orc), a hostile Gnomish Mines, and a poor quest artifact. Some people recommend beginners try barbarians rather than valkyries since their very early game can be somewhat easier to navigate.
+|-
+| [[Samurai]]
+| Samurai start the game with powerful physical combat capabilities (both melee and missile), but have fewer advantages as the game enters the middle phase. In particular, their quest is riskier than either the Valkyrie's or Barbarian's. The luck of the draw (finding a longsword to dip for Excalibur or an altar for sacrifices) has a big impact on how easy it is to manage this phase of the game.
+|-
+| [[Wizard]]
+| Wizards are usually fairly easy due to their good starting equipment (for this reason, wizards are often [[start scum]]med) and strong late game (thanks to their excellent quest artifact, [[the Eye of the Aethiopica]], which enables them to cast powerful spells without worrying about conserving energy). They also have potential to cast spells with no hunger penalty, and easy access to [[Magicbane]]. However, those that try to play them as physical combat characters will find them difficult.
+|-
+| [[Priest]]
+| The priest's innate ability to detect the [[BUC]] status of an item is a tremendous early advantage, especially in armor selection. This, combined with their starting [[holy water]], makes them essentially "walking altars". But they are also restricted in all edged weapons and cannot achieve [[multishot]] with any ranged weapon thus significantly reducing their options. They may or may not begin with immediately useful spells and are generally considered a moderately difficult role. Somewhat ironically, they are the role best suited for an [[atheist]] conduct.
+|-
+| [[Knight]]
+| The knight's codes of conduct can be cumbersome, though the penalty for breaking them (1 point of alignment) is minor, unless you are roleplaying or playing a [[pacifist]]. It can also take some time to learn how to use their steed effectively. Due to access to [[Excalibur]] in the early game and the fact that they get very strong (>100 damage) magic missiles, they are perhaps the strongest late-game characters.
+|-
+| [[Ranger]]
+| Rangers can either be difficult or easy, depending on how capable one is of making use of their powerful [[ranged attack]]s, especially in the early game. Rangers will tend to rely heavily on the ranged game throughout.
+|-
+| [[Rogue]]
+| Rogues can either be difficult or easy, depending on how capable one is of making use of their powerful [[ranged attack]]s, especially in the early game. In later stages, rogues have the potential to become powerful [[melee]] fighters.
+|-
+| [[Caveman]]
+| Cavemen can be considered a more difficult version of [[samurai]] and/or [[barbarian]]. They have few good weapon options until receiving the [[Sceptre of Might]] from their quest and also lack the ability to #[[twoweapon]].
+|-
+| [[Monk]]
+| Monks are a unique role whose early game is relatively easy compared to its tricky midgame, mostly due to [[Master Kaen]] (prior to 3.6.0) and various armor and weapon penalties. They are perhaps the role best equipped to attempt a [[weaponless]] conduct.
+|-
+| [[Healer]]
+| Healers start with [[poison resistance]], lots of [[zorkmids]] and a deep knowledge and skill in [[healing]] both themselves and any pets. But they also begin with poor armor, a weak weapon and typically single-digit [[strength]], making them difficult early. They are perhaps the role best-equipped to attempt the [[Protection racket]], which can give a good defensive boost early in the game.
+|-
+| [[Archeologist]]
+| Archeologists start with speed and stealth. Starting with a [[pick-axe]] (for digging out [[vaults]] or [[gems]] embedded in rock) and the ability to formally identify precious [[gems]] with their starting [[touchstone]], they are also well-suited for buying [[intrinsic protection|protection]] early. However, their bad starting physical stats and AC make the early game very difficult.
+|-
+| [[Tourist]]
+| The tourist's greatest early-game advantage is their starting stack of +2 [[darts]], which are good ranged weapons for the early game and can be [[poison]]ed; their [[expensive camera]] is also useful for evading non-[[Elbereth]] respecting monsters. Tourists enjoy a lot of advantages in the endgame, which make them arguably one of the stronger roles - they can use nearly any weapon effectively, start with a [[Hawaiian shirt]], which can be enchanted for extra AC later in the game, and their quest artifact, the [[Platinum Yendorian Express Card]], is one of the best artifacts in the game.
+|}
+
+==Role difficulty statistics==
+''NetHack'' players widely disagree about which roles are easiest or hardest. In order to provide an attempt at objective statistics, the following table lists win rates on [[nethack.alt.org]], as of December 11, 2011, for games which would form a streak of 3 or more if won (and thus, it can be assumed that the player was likely trying to win).
+
+{|class="wikitable sortable"
+!Role
+!Wins
+!Losses
+!Total
+!Win rate (%)
+|-
+|[[Valkyrie]]||147||88||235||62.55
+|-
+|[[Barbarian]]||119||76||195||61.02
+|-
+|[[Samurai]]||110||94||204||53.92
+|-
+|[[Archeologist]]||93||91||184||50.54
+|-
+|[[Caveman]]||98||102||200||49.00
+|-
+|[[Monk]]||96||100||196||48.97
+|-
+|[[Ranger]]||100||108||208||48.07
+|-
+|[[Knight]]||81||90||171||47.36
+|-
+|[[Healer]]||96||115||211||45.49
+|-
+|[[Priest]]||88||116||204||43.13
+|-
+|[[Wizard]]||153||206||359||42.61
+|-
+|[[Rogue]]||87||121||208||41.82
+|-
+|[[Tourist]]||85||137||222||38.28
+|}
+
+The selection criteria of this data evaluation is debatable, though, partly because it only examines the games of players skilled enough to win two games in a row; and specifically one entry (the Archeologist) seems extremely misplaced in this ranking. 
+
+Another evaluation based on data from 2014-10-24 and based on a different statistical approach can be found at [http://nh.gridbug.de/roledifficulty.html].
+
+An unbiased analysis (excluding no games except ones where the player quit or escaped, assuming that nearly all of them were startscummed) of games on nethack.alt.org from 2008-03-20 to 2017-05-01 is as follows:
+
+{|class="wikitable sortable"
+!Role!!Wins!!Total games!!Win rate (%)
+|-
+|[[Archeologist]]||1134||64600||1.755
+|-
+|[[Barbarian]]||1225||47413||2.584
+|-
+|[[Caveman]]||866||18832||4.599
+|-
+|[[Healer]]||985||39874||2.470
+|-
+|[[Knight]]||960||34385||2.792
+|-
+|[[Monk]]||1003||60001||1.672
+|-
+|[[Priest]]||1155||66435||1.739
+|-
+|[[Ranger]]||951||39853||2.386
+|-
+|[[Rogue]]||942||48955||1.924
+|-
+|[[Samurai]]||1337||45058||2.967
+|-
+|[[Tourist]]||1351||76527||1.765
+|-
+|[[Valkyrie]]||2413||141934||1.700
+|-
+|[[Wizard]]||3572||330560||1.081
+|}
+
+This has similar conclusions to the gridbug.de unbiased analysis, and it most likely indicates some differences in how different roles are generally selected and played. For example, Cavemen are the least popular role to play and are likely chosen more often by experienced players trying to complete all roles or play in tournaments, and Wizards have enough good and varied starting equipment that startscummers might try to play them instead of quitting, but still die quickly because the player still doesn't really care about the outcome of the game.
+
+==Role categories==
+Many players mentally group roles into categories based on typical style of play. 
+
+Valkyries, Barbarians, and Samurai specialize in '''melee combat''' and rely on strong armor and powerful weapons. This style of play tends to be easier for less experienced players. Knights also fit into this category, but can be much more effective using a very different style based on their ability to #ride their starting pony. Cavemen are essentially weaker versions of Barbarians. An Archeologist who finds a dwarvish mattock and some decent armor can do pretty well as a melee fighter.
+
+Roles that specialize in '''spellcasting''' include Wizards, Priests, Monks, and Healers. Using spells effectively adds a new dimension to game strategy, requiring the player to keep track of available Power, avoid metallic armor, and understand the advantages and limitations of the specific spells available, which raises the difficulty level for new players. However, the tremendous power of many spells (as well as other advantages of these roles, such as the Priest's ability to BUC-identify) can be very useful.
+
+Rogues, Rangers, and Tourists are best suited to focusing on '''ranged weapons''', at least in the early game. Success often depends on patience and cunning, as well as an understanding of the power of [[Elbereth]].
+
+==See also==
+* [[Role difficulty/Variants]] - compares the many roles added in [[variants]]
+
+==External links==
+* [http://groups.google.de/group/rec.games.roguelike.nethack/browse_thread/thread/033a6bedaa3ebf85# Measurements and respective merits of difficulty metrics (rgrn thread)]
+
+[[Category:Articles for beginners]]
+[[Category:Roles]]
+[[Category:Strategy]]
+{{nethack-360}}}
+&&%s&& %s Wiki {136219 2020-11-07T14:52:26Z {4000681 Andrio Celos} Probably shouldn't link to [[You]] as that refers to the player character. [[NetHackWiki]] is a '''wiki'''; it is a web site that allows all readers, including you, to edit almost any page. The process is simple: click "edit" at the top of a page, make some changes in the box that appears, and then save them.
+
+''If this seems strange (or if wiki seems familiar, but NetHackWiki seems strange), you might want to experiment by editing the [[NetHackWiki:Sandbox]]. If you want to learn about this wiki, read [[NetHackWiki:About|About]]. The remainder of this page concerns the origin of wikis, from the perspective of this wiki.''
+
+== Founding of this wiki ==
+Though many other wikis have had pages about NetHack, we are not aware of any attempts to start a NetHack wiki before 2004.
+
+Magnus Nilsson started a different NetHack wiki, (formerly at riters.com), at 3 September 2004, in response to an [[rgrn]] suggestion by xanthian. Though not much content appeared there, its "recent changes" page did feature a random (true!) NetHack [[fortune]]. Within a few months, spammers overran the wiki.
+
+[[User:Sgeo]] started this wiki (then called [[WikiHack]]) at 11 October 2005, on [[wikipedia:Wikia|Wikia]]. Editors immediately began the task of [[Meatball:SeedPosting|SeedPosting]] the wiki to encourage the development of many detailed articles.
+When Wikia changed their terms and their wiki skin, the admins of the WikiHack decided to make a change, and 8 November 2010 the wiki was moved to the server where [[nethack.alt.org]] resides. It continues to live in Amazon AWS next to the NAO instances.
+
+Right now we have [[Special:Statistics|{{NUMBEROFARTICLES}} articles]].
+
+[[Category:NetHackWiki]]}
+&&%s&& %s Killer bee {148335 2022-10-04T12:57:33Z {4001279 Umbire the Phantom} /* Origin */ 🐝 {{monster
+ |difficulty=5
+ |level=1
+ |experience=31
+ |speed=18
+ |AC=-1
+ |MR=0
+ |align=0
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Sting 1d3 [[poison]]
+ |weight=1
+ |nutr=5
+ |size=Tiny
+ |resistances=Poison
+ |resistances conveyed=Poison (30%)
+ |attributes={{attributes|A killer bee|lgroup=1|animal=1|fly=1|nohands=1|pois=1|hostile=1|female=1}}
+ |reference=[[monst.c#line110]]
+}}
+The '''killer bee''', {{monsym|killer bee}}, is an [[insect]]oid [[monster]] that appears in ''[[NetHack]]''.
+
+All killer bees are female, oviparous and inediate. Their corpses are [[poison]]ous to eat, but have a 30% chance of granting [[poison resistance]].
+
+== Generation ==
+Killer bees are most likely to be generated in large [[group]]s, and will often appear once you have progressed past the first few floors of the dungeon.
+
+[[Kicking]] a [[tree]] may summon one or more killer bees, and they are among the monsters that can be generated via the [[summon insects]] [[monster spell]] most often cast by [[aligned priest]]s. [[Beehive]] [[special room]]s contain a horde of killer bees, a [[queen bee]], and [[lumps of royal jelly]]; there is a guaranteed beehive within the [[Wizard's Tower]].
+
+Killer bees can also hatch from [[eggs]], including ones laid by a player polymorphed into a queen bee - {{frac|76|77}} of eggs laid this way will be killer bee eggs.{{refsrc|src/mon.c|3914|version=NetHack 3.6.6}}
+
+{{upcoming|NetHack 3.7.0|Killer bees can now eat [[royal jelly]] to [[grow up]] into queen bees if no queen already exists on the level. Pet killer bees will actively seek out nearby royal jelly to do this. This will kill them if queen bees are genocided.
+
+Rubbing non-cursed royal jelly on a killer bee [[egg]] will turn it into a queen bee egg; cursed royal jelly will kill the egg ('The egg quivers feebly'), while non-cursed jelly will revive it ('The egg quivers briefly'), and blessed jelly will make the newborn creature think [[you]] are its parent, so it is guaranteed to hatch tame.}}
+
+==Strategy==
+===Combat===
+While not especially strong individually, they are quite fast at 18 speed and their sting is [[poison]]ed, which can drain [[strength]] and even [[instadeath|instantly kill you]] if you are not resistant. Despite their offensive threat, killer bees have low HP, and will often die in a couple of hits; however, they have a low natural AC, making them hard to hit in the first place.
+
+Discretion is the better part of valor; if you are low-level, burdened, and/or lack poison resistance, you will want to get away as quickly as possible, using a suitable [[wand]] or escape item. [[Elbereth]] can also offer some breathing room if you find it difficult to avoid them. If you plan to actually fight back, drawing them into narrow corridors is a valuable tactic, either to handle them one at a time or else decimate them with wands or spells; killer bees have no [[monster magic resistance]], and even a [[wand of striking]] or [[wand of magic missile|magic missile]] will suffice if they hit.
+
+An effective alternative to the above, especially for [[pacifist]]s, is to lead the bees to a [[falling rock trap]], which will dispose of them quickly. A source of extrinsic poison resistance, such as an [[alchemy smock]] or [[amulet versus poison]], will prevent the worst of the damage from the stings; high [[magic cancellation]] from armor can offer some protection as a last resort.
+
+===Eating===
+Killer bees appear in groups, making them a popular choice for obtaining intrinsic poison resistance with either an extrinsic source to prevent strength loss and significantly reduce damage from the poison. You can also nullify the strength penalty through the use of a [[ring of sustain ability]], or reverse it with a [[unicorn horn]]; you may also want a [[tinning kit]], which removes the poison and slightly increases the nutrition provided per corpse.
+
+==History==
+Killer bees have been present in the game since hack121, a variant of [[Jay Fenlason's Hack]]. Beehives were added in [[NetHack 3.0.0]].
+
+==Origin==
+{{wikipedia|Africanized bee}}
+The "killer bee" is an Africanized a hybrid of the western honey bee, produced originally by crossbreeding of the East African lowland honey bee with various European honey bee subspecies such as the Italian honey bee and the Iberian honey bee. The East African lowland honey bee was first introduced to Brazil in 1956 in an effort to increase honey production, but 26 swarms escaped quarantine in 1957; since then, the hybrid has spread throughout the Americas. Africanized honey bees are typically (but not always) much more defensive than other varieties of honey bees; as a result, they are easily provoked and react to disturbances faster, chasing targets for up to a quarter of a mile.
+
+Their stings are 10 times more frequent than from European honey bees, and have killed horses and other animals, and even some humans; this has made "killer bees" highly feared by people, a reaction amplified by media reports and movies such as ''[[wikipedia:The Swarm (1978 film)|The Swarm]]''. The "killer bee" is also used as a blanket term for any type of bee demonstrating aggressive behavior, which is often dramatized as actively seeking humans to attack. Despite this, their venom is no more potent than any other variety of honey bee, and their higher reported stings are entirely rooted in their more aggressive reactions compared to European honeybees. While sting cases can still become very serious, they remain relatively rare and only kill one or two people per year on average.
+
+==Variants==
+===SlashTHEM===
+In [[SlashTHEM]], the Gnome King's Apiary is a variant of [[Mines' End]] that contains a beehive with a queen bee and several killer bees.
+
+===EvilHack===
+In [[EvilHack]], one to four [[honey badger]]s may spawn on any level with a beehive and will dig for it as fast as possible - this has the added peril of likely waking the hive before you are prepared to deal with either them or the badgers.
+
+==Encyclopedia entry==
+{{encyclopedia-redirect|bee}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Killer bees {1873 2006-02-21T18:20:22Z {778 Steve and Jock} Killer bees moved to Killer bee: convention uses singulars #redirect [[Killer bee]]}
+&&%s&& %s Iron ball {7204 2006-08-14T17:11:35Z {396 Jayt} Redirecting to [[Punishment]] #REDIRECT [[Punishment]]}
+&&%s&& %s Scrl-343.txt {105342 2017-04-28T01:27:50Z {4000180 Bcode} displaytitle; [[Template:Verbatim spoiler]]; license; noversion {{DISPLAYTITLE:scrl-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+scrl-343.txt  Last edited 2005-06-24 for NetHack 3.4.3
+Scrolls and their effects in NetHack 3.4
+Compiled for 3.2.2 by Kevin Hugo.
+Updated for 3.4.3 by Dylan O'Donnell <psmith@spod-central.org>.
+
+SCROLL            COST  WGT  PROB   MRKR  APPEARANCE
+~~~~~~~~~~~~~~~ : ~~~~  ~~~  ~~~~ : ~~~~  ~~~~~~~~~~
+mail            : $  0   5     0  :   2   stamped
+identify        :   20   5   180  :  14
+light           :   50   5    90  :   8
+blank paper     :   60   5    28  :   0   unlabeled
+enchant weapon  :   60   5    80  :  16
+enchant armor   :   80   5    63  :  16
+remove curse    :   80   5    65  :  16
+confuse monster :  100   5    53  :  12
+destroy armor   :  100   5    45  :  10
+fire            :  100   5    30  :   8
+food detection  :  100   5    25  :   8
+gold detection  :  100   5    33  :   8
+magic mapping   :  100   5    45  :   8
+scare monster   :  100   5    35  :  20
+teleportation   :  100   5    55  :  20
+amnesia         :  200   5    35  :   8
+create monster  :  200   5    45  :  10
+earth           :  200   5    18  :   8
+taming          :  200   5    15  :  20
+charging        :  300   5    15  :  16
+genocide        :  300   5    15  :  30
+punishment      :  300   5    15  :  10
+stinking cloud  :  300   5    15  :  20
+
+Scrolls are listed above by increasing price, then alphabetically.  The
+COST field denotes the base price of each item.  WGT specifies the
+weight (100 zorkmids weighs 1).
+

@@ -1,0 +1,1000 @@
+|
+|-
+| 7
+| [[Numeric prefix]] / (Move northwest)
+| &
+| Identify [[command]]
+|
+|
+|
+|-
+| 8
+| [[Numeric prefix]] / (Move north)
+| *
+| List currently equipped items
+|
+|
+|
+|-
+| 9
+| [[Numeric prefix]] / (Move east)
+| (
+| List currently used tools
+|
+|
+|
+|-
+| 0
+| [[Numeric prefix]] / ([[Inventory]])
+| )
+| List currently wielded weapons
+|
+|
+|
+|-
+| '
+|
+| "
+| List currently worn amulet
+|
+|
+|
+|-
+| -
+|
+| _
+| [[Travel]]
+|
+| US
+|
+|-
+| &#91;
+| List currently worn armor
+| {
+|
+|
+| ESC
+|
+|-
+| ,
+| [[Pick up]]
+| <
+| Go up
+|
+|
+|
+|-
+| .
+| [[Rest]]
+| >
+| Go down
+|
+|
+|
+|-
+| /
+| [[What is]]
+| ?
+| [[Help (in-game)|Help]]
+| [[Extended command|List all extended commands]]
+| DEL
+|
+|-
+| ;
+| [[Far look]]
+| :
+| [[Near look]]
+|
+|
+|
+|-
+| \
+| [[Discoveries|List discoveries]]
+| &#124;
+|
+|
+| FS
+|
+|-
+| =
+| List currently worn rings
+| +
+| List & reorder spells
+|
+|
+|
+|-
+|}
+
+See also [[menu controls]].
+{{nethack-360}}
+[[Category:Commands]]}
+&&%s&& %s Levitation ring {19147 2007-02-23T04:07:35Z {0 } redir #REDIRECT[[Ring of levitation]]}
+&&%s&& %s Detect food {19181 2007-02-25T04:42:45Z {0 } redir #REDIRECT[[Spellbook of detect food]]}
+&&%s&& %s Pounding {144159 2022-01-17T11:21:35Z {4000865 Tomsod} /* Strategy */ kiting [[File:Pounding_Diagram.png|thumb|Players can pound colored squares, depending on their [[skill]] level.]]
+In ''[[NetHack]]'', '''pounding''' is the action of [[apply]]ing a [[polearm]] (including but not limited to [[lance]]s) on a target that is at a distance of exactly two [[square]]s from the wielder.
+
+==Terminology==
+This game function was given the name "pounding" by Shawn M. Moore, who gave a thorough description of it in [https://sartak.org/nh/knight-faq-343.html#poleweapons ''The Knight FAQ''].
+
+==Description==
+At Basic and Unskilled level, the target must be in a straight line from the wielder. At Skilled level, it can be a [[jumping|knight's jump]] from the wielder. At Expert level the target can also be at a diagonal, meaning that any of the sixteen squares at a distance of two can be hit. Only [[Knight]]s may reach Expert skill level in lance, and no roles can reach expert in polearms. Pounding can scuff [[engraving]]s beneath you, just like attacking in melee.{{refsrc|src/apply.c|2879|version=NetHack 3.6.0}}
+
+When [[twoweapon]]ing, the range for pounding is determined by the lesser of your polearm or lance skill and your two-weapon combat skill. This is only possible with a lance, because all other polearms are two-handed. A lance can be used for pounding without any penalty, even when the wielder is not mounted.
+
+Most monsters can only use polearms with a skill level equivalent of unskilled, with the exception of the [[troll]] - all trolls can use them with a skill level equivalent of skilled, meaning they can hit you from a knight's jump away.
+
+==Strategy==
+Pounding is an excellent strategy for hitting both melee and ranged targets; if you have adequate [[speed]] and at least Skilled level, you can attempt to kill a group of opponents at a choke point (such as a door) a knight's move away. If you plan on pounding in corridors, though, you will need either a light source or [[infravision]], as you cannot pound a monster you cannot see (even if you can detect it via other means).
+
+In addition, pounding does not trigger [[passive attacks]], meaning you can use it against dangerous creatures without depleting your projectiles or wand charges. Some players like to pound dangerous [[sea monster]]s on levels such as [[Medusa's Island]], the [[Castle]], and the [[Wizard's Tower]] in order to remain safe from their [[drowning attack]]s.
+
+Pounding can also be used for the [[hit and run]] tactic, and is much safer than melee attacks in that respect, especially after 3.6 monster speed changes.
+
+==History==
+The feature of pounding scuffing engravings on the square beneath the pounder is introduced in [[NetHack 3.6.0]].
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Strategy]]
+[[Category:Weapons]]}
+&&%s&& %s Store {19211 2007-02-26T13:36:18Z {509 Lotte} Redirecting to [[Shop]] #REDIRECT [[Shop]]}
+&&%s&& %s Stone-to-flesh {19213 2007-02-26T13:38:16Z {509 Lotte} Redirecting to [[Spellbook of stone to flesh]] #REDIRECT [[spellbook of stone to flesh]]}
+&&%s&& %s Adjust {127632 2019-08-31T01:21:12Z {4001313 Ardub23} Minor rewording '''#adjust''' is the [[extended command]] to change the letter that an item in your inventory is stored under. It also allows you to merge and split [[stackable|stacks]] of identical items.
+
+== Splitting stacks ==
+As of [[NetHack 3.6.0]], the #adjust command can take a count, specifying how many items to move from one slot to another. (For example, to split off one half of <span class="nowrap"><tt>a - 10 darts</tt></span>, you can #adjust <tt>5a</tt> to <tt>b</tt>.)
+
+As of [[NetHack 3.6.1]], items/stacks that have been split with the #adjust command will not automatically merge with each other unless dropped and picked up, or stashed and removed from a container. This removes the need to #name individual items to prevent them from stacking.
+
+== Merging stacks ==
+If you #adjust an item to its own slot (e.g. adjusting <tt>a</tt> to <tt>a</tt>), any stacks of identical items will be merged into the stack on that slot. (This is useful when [[dip]]ping identical items in {{of|potion|holy water}}&mdash;first merge the stacks, then dip the stack to bless them all at once.)
+
+== Strategy ==
+Many players find it useful to #adjust certain useful items to the same slot across games. As an example, consistently having your key in the <tt>k</tt> slot might save you the annoyance of having to look at your inventory every time you wish to unlock a door. It's also a good idea to readjust your inventory slots so as to prevent typos from killing you: keeping a [[food ration]] on <tt>y</tt> might be lethal if you try to eat it while standing above a [[cockatrice corpse]].
+
+== See also ==
+* The {{kbd|+}} key can be used to reorder spells.
+
+[[Category:Extended commands]]
+{{nethack-361}}}
+&&%s&& %s Petrification {19254 2007-02-27T01:08:47Z {458 Kernigh} #REDIRECT [[Stoning]] #REDIRECT [[Stoning]]}
+&&%s&& %s Dungeons and Dragons {19257 2007-02-27T05:27:04Z {166 Creativename} [[Dungeons and Dragons]] moved to [[Dungeons & Dragons]]: Correct title. #REDIRECT [[Dungeons & Dragons]]}
+&&%s&& %s Neutral quest {19271 2007-02-27T17:26:58Z {443 Kahran042} Redirecting to [[Neutral Quest]] #REDIRECT [[Neutral Quest]]}
+&&%s&& %s Chaotic Quest {149148 2022-12-03T21:56:01Z {4001279 Umbire the Phantom} /* Tactics */* The '''Chaotic Quest''' is one of the new [[alignment quest|alignment-based quests]] in [[SLASH'EM]], and arguably the hardest of the three. Unlike normal quests, the alignment quests do not have quest leaders, nor do you actually have to belong to the alignment in question to attempt the Quest. They are also only one level each. You have to complete at least two of the three alignment quests to get the keys to the indestructible doors in [[Vlad's Tower]].
+
+==Level==
+
+On entering the Chaotic Quest, you will receive the message "You feel deathly cold." Unlike the [[Lawful Quest|Lawful]] and [[Neutral Quest|Neutral]] Quests, the Chaotic Quest does not have a fixed map. Instead, it looks like a standard rooms-and-corridors level with one bigger 14x10 room. The level contains 17 random [[Lich|L]], six random [[Wraith (monster class)|W]], eight random [[V]], and 14 random [[Z]]; eight chests, nine random gems, ten random potions, nine random scrolls, six random spellbooks, and 34 other random items; and seven random traps. 
+
+An example map.
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+B=[[Vecna|{{monsym|Vecna}}]]
+L=[[Lich|{{darkgray|L}}]]
+V=[[Vampire|{{darkgray|V}}]]
+W=[[W|{{darkgray|W}}]]
+^=[[trap|{{darkgray|^}}]]
+(=[[tool|{{brown|(}}]]
+?=[[scroll|{{white|?}}]]
+s=[[spellbook|{{darkgray|+}}]]
+!=[[potion|{{darkgray|!}}]]
+*=[[gem|{{darkgray|*}}]]
+P=[[Magic portal|{{purple|^}}]]
+
+----------------------       ------                             -----------
+|   %   + L) (     V |#      | V  .#####                      ##. !       |
+| !!  ?V L   %%L  W! |#      |    |    #   --------           # |      W  |
+| ^ ?  W  W ^*  W    |#      |    |##  ####. ^  [ |         ### |   L  )  |
+|VB   !   !)!(! ?    |#      | ^  | #    # |  L   |         #   |         |
+| ^       (     +(% L|#      |    | ###  ##.      |       ###   -----------
+|     (L(  +    ! L  |#      |   L|   #    -.-+-.--       #
+|L[ !?L   *?   L (W !|#      -.-.--   ###   # # #       ###
+|* V*      *LV ?(    |#       # #       #   #####       #
+|  ?(        V L V  !|#       # ###     ###   # ###   ###
+| ssL L %(  %?! *  )!|#       #   #       #   ####### #
+----------------------#       #   #       ###  -+-+-|-#
+                      #       #   #         #  |     |#
+                      ###  ---.---+--       ###| P   |#
+                        #  |   L   ^|         #-     |
+                        ###|     %  |          |     |
+                          #+        |          |     |
+                           ----------          -------
+
+</replacecharsblock></div>
+
+Vecna himself is located in the 14x10 room; on defeat, he will drop the [[Key of Chaos]] and the [[Hand of Vecna]], which is a very powerful item, definitely worth the trouble all the [[Lich|L]] will cause you; it gives you slotless hungerless [[regeneration]] and [[half physical damage]] in addition to its normal [[Hand of Vecna|invoke effect]].
+
+Note that the portal back to the Dungeons of Doom can be generated anywhere on the level, including inside the 14x10 room.
+
+[[Category: Alignment quests]]
+{{slashem-7E7}}
+
+==Tactics==
+
+These tactics are very useful: 
+
+* Have [[fire resistance]]: the random {{white|V}} may include [[fire vampire]]s, who will quickly wipe out any character without it. [[Reflection]] is also important, as it will protect you from the disintegration breath of a summoned black dragon.
+* Make sure you have a +4 weapon or extremely powerful spell attacks.  You want to be able to kill Vecna for his hand and key.  Do not disintegrate him or digest him, as this loses you the hand, one of the best items in the game.
+* Engrave Elbereth with a wand of lightning or of fire, or drop a scroll of scare monster for the same effect.  Be aware that high-level liches will often generate on the quest, and these may summon [[minotaur]]s and [[couatl]], which ignore Elbereth.  Even if no purple L are generated or they are genocided, Vecna himself can always summon nasties, and at a higher base level than an arch-lich.  Make sure you have a way to deal at least with minotaurs.  Teleportation, taming, sleep and polymorph are all good options, especially the last three since minotaurs have zero [[MR]].
+*[[Magicbane]] can be very useful here if you have it. It is considered a +4 weapon to hit, even if its real enchantment is only +0. It can engrave Elbereth in one turn. It also absorbs almost all the curse inventory attacks that the Liches can throw at you. And it also provides magic resistance while wielded.
+* Putting on a [[ring of conflict]] can help with the waves of monsters summoned by the Liches.
+* Wear [[deep dragon scale mail]], or wield [[Excalibur]], either of which will prevent level drain,&nbsp;but you still have to be quite powerful to survive the waves of enemies.  At the very least, have [[MC]] 3, which will mostly prevent level drain. [[Regeneration]] will help you weather their attacks.
+* Genocide&nbsp;: Genociding L/Z/V is very useful&nbsp;: Vampire mages, master/arch-liches, and ghoul queens can easily create fatal summoning storms. Genociding them before entering the quest for the first time will replace them with random monsters, but genociding them after entering the quest for the first time will not do so, and will leave their starting inventories on the ground, which is often more useful, but beware of other monsters using them before you get to them.
+* Always have an active means to prevent/survive a fall in the water. Vecna and high-level liches can cast [[create pool|Create Pool]], plunging you into water if you're not flying, levitating, or wearing [[boots of water walking]]. If they've surrounded you with summoned nasties, you won't be able to climb out, resulting in [[instadeath]].
+
+==See also==
+*[[Special level (SLASH'EM)]]
+*[[Lawful Quest]]
+*[[Neutral Quest]]
+
+==Reference==
+from lich.des file
+
+{{slashem-7E7}}
+[[Category:SLASH'EM]]
+[[Category:Special levels]]}
+&&%s&& %s Neutral Quest {123792 2018-08-25T15:04:10Z {4000693 Phol ende wodan} not a variant The '''Neutral Quest''' is one of the new [[alignment quest|alignment-based quests]] in [[SLASH'EM]]. Unlike the normal [[Quest]], the alignment quests do not have quest leaders, nor do you actually have to belong to the alignment in question to attempt the Quest. They are also only one level each. You have to complete at least two of the three alignment quests to get the keys to the indestructible doors in [[Vlad's Tower]].
+
+==Map==
+<div class="ttyscreen"><replacecharsblock rules="ttymap">
+P=[[spiked pit|{{darkgray|^}}]]
+^=[[magic portal|{{purple|^}}]]
+e=[[Beholder (SLASH'EM)|{{gray|e}}]]
+
+                                                 -----                  
+                ----------                  ------..{|                  
+                |........|-------------------........|                  
+                |........+P.P.P......................|                  
+                |e.......|----------..-------........|                  
+                |........|         |..|     --------.|             ---  
+                ----------        --..|            |.|         -----.|  
+                                  |..--     ---- ---.-----------.....---
+                      -----   -----..|     --..---.....................|
+                    ---...-----......--    |.......------------........|
+                    |............---..--- --....----          |........|
+                    |.....-------- --...---.....--            ---...----
+                    -------         --.......^...|              -----   
+                                     -------....--                      
+                                           ------                       
+</replacecharsblock></div>
+
+The portal back to the [[Dungeons of Doom]] is marked. The three marked traps are all [[spiked pit]]s; there are also four other random traps. The [[Beholder (monster)#SLASH'EM|Beholder]] occupies the spot marked 'e', along with a chest and four piles of gold. Killing the Beholder will reveal the [[Eye of the Beholder]] and the [[Key of Neutrality]]. There are also 37 [[gas spore]]s scattered throughout the level, as well as four other random e's and/or F's. There is a guaranteed [[fountain]] at the top of the map.
+
+Because of the number of gas spores in this level, killing one can trigger a "domino effect", in which you hit a gas spore in one direction and cause an explosion on the other side of your hero.
+
+==The Beholder==
+This monster has multiple [[gaze attack]]s, including one which causes an [[instadeath]]. Fortunately, like all gaze attacks, the death gaze can be reflected with a [[mirror]]. [[Reflection]] will also reflect the gaze of death, killing the Beholder, but only if you are not invisible (or the Beholder is otherwise prevented from seeing you, while you can see it), and it will not protect against the other attacks.
+
+==See also==
+*[[Special level (SLASH'EM)]]
+*[[Lawful Quest]]
+*[[Chaotic Quest]]
+
+==Reference==
+From source beholder.des file
+
+{{slashem-7E7}}
+[[Category:SLASH'EM]]
+[[Category:Special levels]]
+[[Category: Alignment quests]]}
+&&%s&& %s Lethe Gorge {142562 2021-09-10T05:45:18Z {4001279 Umbire the Phantom}  The '''Lethe Gorge''' is a dungeon branch exclusive to the [[Lethe patch]], located between the [[Dungeons of Doom]] and [[Gehennom]]. The Gorge is composed of nine floors in total, and replaces the normal floors between [[Medusa's Island]] and the [[Valley of the Dead]].
+
+==River head==
+There are two different versions of the river head. Both have undiggable floors and contain [[amnesia]]-inducing Lethe water. The river head is on a separate branch: it is accessible by a separate upstair, and the level is a dead-end. 
+
+===River head 1===
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+D={{msl|red dragon}}
+g={{msl|winged gargoyle}}
+(=[[Chest|{{brown|(}}]]
+%=[[Egg|{{white|%}}]]
+E=[[Squeaky board|{{brown|^}}]]
+e={{msl|electric eel}}
+?={{white|?}}
+l={{msl|lurker above}}
+t={{msl|trapper}}
+'={{msl|clay golem}}
+[=[[Leather armor|{{brown|[}}]]
+$=[[Gold|{{yellow|$}}]]
+
+
+                                                                           
+    -------                #######H.........l.....#####      ...       ....  
+    |.....|               ##         .......   ...    #####.......    ...>.. 
+    |'.{'.+###           ##              #      H     H     ...t...   .....  
+    |.....|  #############  #########.....      [     ##      ....     ...   
+    ---S---                 #         ......           ###     #        .... 
+       X                ........  }}}}}};}}}}}}    ....  #     ##     ##.... 
+                     ........;}}}}}}}}}}}}}}}}}}}}}}T....#      #     #  ..  
+              #####H.....T.}}}}}}}}}}}}}}}}}}}}}}}}}}}e...    ###     #      
+              #      ...}}}}}}}}}}..`..g.....}}}}}}}}}}}}}}   #       ###    
+           ####       .;}}}}}}}}}.`.g.T.(..g.`.}}}}}};}}}}}}  H         #    
+           #             }}}};}}}}}}.`...gT...}}}}}}}}}}}}}}}...        #    
+         ..E..         }}}}}}};;}}}}}}}}}}}}}}}}}}}  ##  }}}}}.....   .....  
+        *..D...       }}}}}}}}}}}}}}}}}}}}}}}}}}}...#####..}}}}};......T.... 
+      (%%.....}}}      }}}}}}}}}}}}}}}}}}}}}}}e....        .;}}}}}}}}}}}}}}}}
+      %%%$.....}         ..;}}}}}   }}}}}}}T.....           ..}}}}}}}};}}}}}}
+       %$$..D.       ###.....         ........T      $$..     ..}}}}}}}}}}}}}
+          .....########     ####         #          $$....      ...........T 
+                               ###########           ...D.###H#........      
+                                                                             
+</replacecharsblock></div>
+
+This version of the river head contains two sleeping red dragons at the marked positions, guarding a hoard composed of a chest, six eggs, one random wand, a luckstone, four random gems, and eleven piles of gold. The lair also contains a squeaky board. The lake is inhabited by two electric eels and eleven other random ;. There are four winged gargoyles at the marked positions on the island; the island also contains four empty, non-trap statues at the S marks; under the left tree is a chest containing a cursed magic lamp and a potion of oil. The '[' spot contains either a blessed +2 leather armor or a cursed -2 leather armor. The room with the fountain contains two sleeping clay golems; the closet off the room contains a cursed scroll of teleportation and a scroll of amnesia. The small room in the south contains a random D, guarding a hoard composed of a random wand, four random gems, and a scroll of enchant weapon. The 't' spots are a trapper (right) and a lurker above (left). The level also contains a vampire bat, a raven, four other random 'B', three rust traps, two pit traps, and three other random traps, all placed randomly.
+
+===River head 2===
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+e={{msl|electric eel}}
+c={{msl|cockatrice}}
+p={{msl|pyrolisk}}
+(=[[Chest|{{brown|(}}]]
+B=[[Byakhee|{{brown|B}}]]
+L=[[Luckstone|{{gray|*}}]]
+E=[[Squeaky board|{{brown|^}}]]
+j={{msl|ochre jelly}}
+v={{msl|vampire}}
+[=[[Leather armor|{{brown|[}}]]
+V={{msl|vampire lord}}
+?={{white|?}}
+d={{msl|warg}}
+w={{msl|winter wolf}}
+$=[[Gold|{{yellow|$}}]]
+I={{gray|I}}
+
+                                                                              
+     -------                #######H..Z.Z.Z.Z.Z.Z..#####      ...       ....  
+     |.v...|               ##         .......   ...    ###E#....o..    ...>.. 
+     |vVv}.+E##           ##              #      H     H     ..ovo..   .....  
+     |.v...|  ####H########  #########.....      [     ##      .o..     ...   
+     ---S---       #         #         ......           ###     E        .... 
+        ?         ##     ........  }}}}}};}}}}}}    ....  #     ##     ##.... 
+        H         H   ........;}}}}}}}}}}}}}}}}}}}}}}T....#      #     #  ..  
+        (      #####H.....T.}}}}}}}}}}}}}}}}}}}}}}}}}}}e...    ###     #      
+               #      ...}}}}}}}}}}.c`...c....}}}}}}}}}}}}}}   #       ###    
+            ##E#       .;}}}}}}}}}.`c..T.(..pc`.}}}}}};}}}}}}  H         #    
+            #             }}}};}}}}}}.`.c..T...}}}}}}}}}}}}}}}...        #    
+          j..B.         }}}}}}};;}}}}}}}}}}}}}}}}}}}  ##  }}}}}.....   .....  
+         *.I.I..   }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}...#####..}}}}};......T.... 
+       *...B...}B}}}    }}}}}}}}}}}}}}}}}}}}}}}e....        .;}}}}}}}}}}}}}}}}
+       LI.....B.}         ..;}}}}}   }}}}}}}T.....           ..}}}}}}}};}}}}}}
+        ..*B..I       ##H.....         ........T      $w..     ..}}}}}}}}}}}}}
+           .....###E####     ####         #          $wVd..      ...........T 
+                                ###########           d....###H#........      
+                                                                              </replacecharsblock></div>
+
+This version of the riverhead contains 2 electric eels and 11 other random ; placed in and around the lake, a cockatrice, a pyrolisk, and 4 random c on the island, five sleeping byakhee on the western side of the map, a sleeping vampire with a potion of speed, two vampire lords (one accompanied by four normal vampires, and one accompanied by two wargs and two winter wolves and carrying a wand of fire and a wand of slow monster,); their positions are all marked. The *s on the left side are a luckstone and four other random gems. The four Is in the southern byakhee room indicate four random items. There are four statues on the island, as well as a chest containing a cursed magic lamp and a potion of oil. The left vampire lord's room contains a cursed scroll of create monster, a potion of full healing, a cursed scroll of teleportation, and a scroll of amnesia at the position marked '?', and a chest containing a random amount of gold at the point marked '('. The room of the vampire lord on the right contains two piles of gold and two random gems. The level also contains a vampire bat, a raven, four other random 'B', six random 'Z', a rust trap, two magic traps, two pit traps, and three other random traps, all randomly placed.
+
+==Lethe Gorge, level 2==
+There is only one version of level 2 of the Lethe Gorge. It has undiggable floors and Lethe water.
+
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+h=[[Deep one|{{green|h}}]]
+i=[[Deeper one|{{green|h}}]]
+(=[[Chest|{{brown|(}}]]
+;={{msl|electric eel}}
+8={{gray|T}}
+W=[[Potion of water|{{cyan|!}}]]
+p={{msl|iron piercer}}
+!=[[Potion of gain ability|{{gray|!}}]]
+q={{gray|p}}
+
+
+     ...            ###.......  ....            ....                          
+    .....         ###   ...........           .......####                ...  
+    ..<.      #####    ...}}}}}}}}}}}}}}     .......    ##         ....H....  
+    ...   ##H##        .T}}}}}}}}}}}}}}}}    W...p.      ##       .....  .>.  
+     #    #   ###     ..}}}}}}}}}}}}}}}}}}       #        #        ...        
+     #H####     #     .}}}}    ....    }}}}    ###     ....          ####     
+       #        ####..}}}}.     ..      }}}}}..#    ......              #     
+       #             }}}}..      #       }}}}}     ........      .......#     
+       .  ..}}}}}}}}}}}}..   ..###      ...}}}}    ! .q...    ....T....       
+       ....}}}}}}}}}}}}     ...      ##....T}}}}...###       ..}}}}}}}}}}}}}} 
+       ..T}}}}}}}}}}}}      .....#      .....}}}}}           .}.}}}}}}}}}}}}} 
+       ..}}}}  ....          ...          .....}}}}          }}}.}}}}}}}}}}}} 
+      ..}}}}      H           h             ...T}}}}}}}}}}}}}}}}}.            
+  }}}}}}}}}       .....     ###           ##. ...}}}}}}}}}}}}}}};    ...      
+  }}}}}}}}.    ...........  # #  ....     #     . }}}}}}}}}}}}}.    ..(..     
+  }}}}}}}.    .............## ##.....     #     #   ....T......    ..8...     
+     .....    ......i.h.h       .h....#####     ###  ......         #  8      
+              ....h i.h.         ....             ####  ....####H####         
+                 (               h h
+                  
+</replacecharsblock></div>
+
+The level contains seven deep ones, two deeper ones, an electric eel, two random 'T', an iron piercer and another random 'p'; all of which are marked. There are also five deep ones, two deeper ones, three electric eels, six other random ';', two random 'B', and six other random monsters, all placed at random. There are chests at the points marked with '(', a potion of holy water at the point marked with '!' in the north, a potion of gain ability at the point marked with '!' in the center, and eleven random objects. There are also four rust traps and two other random traps, all randomly placed.
+
+==Lethe Gorge, level 3==
+The castle has been moved to the third level of the Lethe Gorge, and so its moat now contains Lethe water. For more info, see [[Castle|the appropriate entry]].
+
+===Castle Dungeon===
+The castle dungeon is a new level, accessed by an extra down staircase from the Castle.
+
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+^=[[Squeaky board|{{brown|^}}]]
+f=[[Fire trap|{{red|^}}]]
+M=[[Magic trap|{{brightblue|^}}]]
+P={{gray|P}}
+F={{gray|F}}
+G={{msl|green slime}}
+A=[[Potion of amnesia|{{cyan|!}}]]
+B=[[Potion of booze|{{brown|!}}]]
+
+                                          # # # # # # # # # # #
+    -----                                -+-+-+-+-+-+-+-+-+-+-+-
+    |<..+###          ########           |.....................|
+    -----  #          #------+------     |..P..................|
+       ----+----      #|.'.'...f...|     |...j............F....|
+       |.......|      #|..'.......^+#####+.......swamp.........|
+       |.barr.^+#######|.'.'...M...|     |...F....F......j.....|
+       |.acks..|       -------------     |..........P..........|
+       ----+----                         |.....................|
+           #         ----------          -+-+-+-+-+-+-+-+-+-+-+-
+           #         |A!B!B!!B|           # G # # # G # # # G #
+           ##########+........|
+                     |!B!B!B!!|
+                     ----------
+
+</replacecharsblock></div>
+
+The level contains a marked [[barracks]] and [[swamp]] and a wine cellar containing a potion of amnesia, six potions of booze, and nine random potions. The swamp contains two random j, three random F, two random P, and three green slimes, and the room between the barracks and the swamp contains two squeaky boards, a fire trap, a magic trap, and five random '.
+
+==Lethe Gorge, level 4==
+There are two versions of level 4 of the Lethe Gorge - the Ogre Stockade and the Undead Stockade. Both have undiggable floors and Lethe water.
+
+===The Ogre Stockade=== 
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+K={{msl|ogre king}}
+M=[[Ogre mage|{{brightblue|O}}]]
+O={{msl|ogre}}
+k={{msl|kobold lord}}
+C=[[Chest|{{brown|(}}]]
+e={{msl|electric eel}}
+@=[[Wererat|{{brown|@}}]]
+&={{gray|&}}
+m={{msl|giant mimic}}
+l=[[Level teleporter|{{magenta|^}}]]
+p=[[Spiked pit|{{darkgray|^}}]]
+?=[[Scroll of earth|{{white|?}}]]
+
+                            }                                                 
+             ..      ........}}|O......                                        
+     ###  ##....   ..p....p...}|...OO.....           ......        O.O..C.     
+     H #### ?...  ..T...p.....}|.........d......#+O...........#+##.kK.\..      
+     .    ##...    ..........}}|O...............#+O.....{.....#+##.MKO\.       
+    <..      ...    ......    }        T.M.....    .........       .....C.     
+    ...     ..     ....      }    }}     .....        ....                     
+    ....          ...      T}}} }}}     ##..##                     ###.....    
+     ...##       ...       e}} }..     ###  ####   #    .....    ###  .......  
+         #   .......      }T   ...   ####    ####  +   .O.O...####    .._....  
+         ............    }}   .... ....##    ##......   ....           .....   
+          ...T}}}}}}}}}}}}}   ...&..&...     .......d..  +    #                
+           }}}}}}}};}}}};}}}   .........    .d.O............. +        %%%(%   
+          }e}}}}}}}}}}}}}}}}}    ..&...   #+.....T.............   #### .%)%.   
+   }}}}}}}}}}}}     T...  }}}}           ..  .......{...O.T.....###  ##.O%(m.  
+   }}}}}}}}}    &.    H    }}}}       T....    ........d.......      # .%%%.   
+   }}}}}}}}   .....   #     }}}}}}}}}}}}}}}}   .............         # (%%[.   
+              .&....###      }}}}}};}}}}}}}}}   + + + + + +    @..####         
+                .&.           }}}}}}}}}}}}}}}}  # # #l# # #  >....             
+                                          }}}}                                
+</replacecharsblock></div>
+
+The _ indicates a random altar. The throne room in the upper left contains two ogre kings, an ogre mage, four ogres, and a kobold lord, as well as two chests. The Os throughout the level are ogres, and there are also four random d, a wererat, two electric eels, three other random ;, a giant mimic imitating a down staircase, and six other random monsters (DHqcTR, indicated by &), all of which are marked (except the two hidden cave spiders). Three of the ogres carry a wand of striking, a wand of fire, and a wand of sleep. There is a storeroom in the lower-right corner, which contains eleven random comestibles, three random tools, a random weapon, and a random piece of armor. There are cave spiders hiding under four of the items. The room with the random monsters in the lower-left contains a random gem, potion, and scroll, which are generated on the same spaces as the monsters. The marked trap furthest to the right is a level teleporter, and the other three are all spiked pits. Randomly-placed monsters include three ogres and four random DHqcTR. There is a blessed scroll of earth at the point marked with a ?.
+
+===The Undead Stockade===
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+L={{msl|master lich}}
+Q={{msl|lich}}
+M={{msl|ettin mummy}}
+G={{msl|ghoul}}
+C=[[Chest|{{brown|(}}]]
+h={{msl|human mummy}}
+e={{msl|elf mummy}}
+Z={{msl|giant zombie}}
+s={{msl|skeleton}}
+d={{msl|hell hound}}
+@=[[Wererat|{{brown|@}}]]
+&={{gray|&}}
+m={{msl|giant mimic}}
+l=[[Level teleporter|{{magenta|^}}]]
+p=[[Spiked pit|{{darkgray|^}}]]
+;={{msl|giant eel}}
+k={{msl|shark}}
+K={{msl|kraken}}
+?=[[Scroll of earth|{{white|?}}]]
+
+                             }                                                 
+             ..      ........}}|Z......                                        
+          ##....   ..p....p...}|...ZZ.....           ......        M.M..C.     
+     H##### ?...  ..T...p.....}|.........d......#+Z...........#+##.GL.\..      
+     .             ..........}}|Z...............#+Z.....{.....#+##.MQM\.       
+    ...             ......    }        T.h.....    .........       .....C.     
+    <..            ....       }          .....        ....                     
+    ....          ...      T}}T         ##..##                     ##,,,,,,    
+     ...##       ...       ;}          ###  ####   #    .....    ###  ,,,,,,.  
+         #   .......      }T         ####    ####  +   .e.s...####    ,,,,,,.  
+         ............    }}        ....##    ##......   ....           ,,,,,   
+          ...T}}}}}}}}}}}}}      &..&...     .......d..  +    #                
+           }}}}}}}}K}}}}k}}}     .......    .d.h............. +        %%%(.   
+          };}}}}}}}}}}}}}}}}}     .&...   #+.....T.............   #### .%)%.   
+   }}}}}}}}}}}}     T...  }}}}           ..  .......{...e.T.....###  ##.e%(m.  
+   }}}}}}}}}    &.    H    }}}}       T....    ........d.......      # .%%%.   
+   }}}}}}}}   ...!.   #     }}}}}}}}}}}}}}}}   .............         # (%%[.   
+              .&....###      }}}}}};}}}}}}}}}   + + + + + +    @..####         
+                .&.           }}}}}}}}}}}}}}}}  # # #l# # #  >....             
+                                           }}}}                                
+</replacecharsblock></div>
+
+The area marked with ,s is a temple, and the area with the two thrones is an unfilled morgue. Said morgue contains a master lich with a wand of death, a lich with a wand of lightning, four ettin mummies, and a ghoul, as well as two chests. Other fixed monsters include two human mummies, three elf mummies, six giant zombies, a skeleton, an electric eel, four hell hounds, a wererat, a giant mimic, two giant eels, a shark, a kraken, and six other random monsters (DZMcTR, indicated by &), all marked. The storeroom contains eleven random comestibles, three random tools, a random weapon, and a random piece of armor, as well as four hidden cave spiders. The marked trap furthest to the right is a level teleporter, and the other three are all spiked pits. The room with the random monsters in the lower-left contains a random gem, potion, and scroll. Randomly-placed monsters include two human mummies, two elf mummies, and six random Z. There is a blessed scroll of earth at the point marked with a ?.
+
+==Lethe Gorge, level 5==
+There are two versions of level 5 of the Lethe Gorge - the Wizard's Manse and the Lich's Manse. Both have undiggable floors and Lethe water.
+
+===The Wizard's Manse===
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+a={{msl|killer bee}}
+p=[[Polymorph trap|{{brightgreen|^}}]]
+b=[[Squeaky board|{{brown|^}}]]
+m=[[Magic trap|{{brightblue|^}}]]
+C={{gray|C}}
+;={{msl|giant eel}}
+s={{msl|shark}}
+e={{msl|electric eel}}
+K={{msl|kraken}}
+(=[[Chest|{{brown|(}}]]
+h={{msl|mind flayer}}
+i={{msl|master mind flayer}}
+throne={{gray|throne}}
+
+    ------------------------------------   }}}}              -----             
+    |.............T...........T........|    }}}}             |<..|             
+    |TTTT..TTTTT..TTT..TTTTT..TTu..TT..|  ..;}}}..           |...|             
+    |...u..T...T...........T..T.....T..| ...}}}}...          --+--         ..  
+    |..TTTTTT..T..TTTTTTT..T.....{`.T..|...}}}}}}...|  -----   #          .... 
+    |..........T..T.....TTTT..T.....T..|..}}}}}}}}..|  |...|   #        ##.>.. 
+    |TTTT..TTTTT..TTTT..T..T..TTT..Tm..+..}}}};}}}..+##S...+####        # .... 
+    |..........T....u...T...u.T........|..}s}}}}}}..|  |...|            #  ..  
+    |.T..}}..T.-----------------------S|`..}}}}}}`..|  -----            ##     
+    |....}}....|.........|(.(.(..|...p.-------------------  ....         ##    
+    |....}}....|.zoo.....|+--+--+|.....|..........|.|....| ..}}}}}}       H    
+    |.T..}}..T.|.........|.......|.....|.......h\...|....S#.}}}}}}}}}}}   ..   
+    |....}}....|.........|.......|.....|..........(.S....| .};}}}}}}e}}} ....  
+    |....}}.C.C-----+--------+------+---..........-----+--  }}}}}}}}}}}}}}}}}}}
+    |.T..}}..T.+.....................b.+.throne.i\(.| |.|    }}}}}}T.}}}}}}}}}}
+    |aa..}}....-----+--------+------+---..........-----+--      .......}}K}}}}}
+    |aa..}}....|.........|.......|.....|..........(.S....|          #          
+    |.T..}}..T.|.........|.......|.....|.......h\...|..m.S###########          
+    |...`......|.........|..`....|.....|..........|.|....|                     
+    ------------------------------------------------------                     
+</replacecharsblock></div>
+
+The Wizard's Manse contains a zoo and a throne room, both marked. The garden maze in the upper-left contains four killer bees, four random u, and two random C, and there are three giant eels, an electric eel, a shark, and a kraken in the river. The throne room contains a sleeping master mind flayer with a wand of cancellation and two sleeping mind flayers, one with a wand of lightning and one with a wand of sleep. It also contains three chests and a magic trap. Other items on the level include three chests and six statues, and other traps include a polymorph trap, a squeaky board, and two magic traps. There are also three other random monsters, nine other random objects, and six other random traps.
+
+===The Lich's Manse===
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+,={{gray|F}}
+F={{msl|shrieker}}
+a={{msl|killer bee}}
+M={{msl|giant mummy}}
+p=[[Polymorph trap|{{brightgreen|^}}]]
+b=[[Squeaky board|{{brown|^}}]]
+m=[[Magic trap|{{brightblue|^}}]]
+;={{msl|giant eel}}
+s={{msl|shark}}
+E={{msl|electric eel}}
+K={{msl|kraken}}
+D={{msl|black dragon}}
+(=[[Chest|{{brown|(}}]]
+l={{msl|lich}}
+L={{msl|master lich}}
+&={{msl|succubus}}
+morgue={{gray|morgue}}
+
+    ------------------------------------   }}}}              -----             
+    |..........,,,,,,,,........,,,,....|    }}}}             |<..|             
+    |,,,,,,,,..,,,,,,,,..,,,,..,,,,....|  ..;}}}..           |...|             
+    |,,,,,,,,..,,,,,,,,..,,,,..........| ...}}}}...          --+--         ..  
+    |,,,,,,,,............,,,,..,,,,....|...}}}}}}...|  -----   #          .... 
+    |,,,,,,,,..,,,,,,,,..,,,,..........|..}}}}}}}}..|  |...|   #        ##.>.. 
+    |,,,,,,,,..,,,,,,,,..,,,,..,,,,.^..+..}}}};}}}..+##S...+####        # .... 
+    |..........,,,,,,,,........,,,,....|..}s}}}}}}..|  |...|            #  ..  
+    |..........-----------------------S|`..}}}}}}`..|  -----            ##     
+    |....}}....|.........|(.(.(..|...p.-------------------  ....         ##    
+    |....}}....|.morgue..|+--+--+|.....|..........|.|....| ..}}}}}}       H    
+    |F...}}.F..|.........|..D....|.....|.......l\...|....S#.}}}}}}}}}}}   ..   
+    |....}}....|.........|.......|.....|..........(.S....| .};}}}}}}E}}} ....  
+    |....}}..M.-----+--------+------+---........&.-----+--  }}}}}}}}}}}}}}}}}}}
+    |F...}}.F..+.....................b.+.morgue.L\(.| |.|    }}}}}}..}}}}}}}}}}
+    |aa..}}..M.-----+--------+------+---........&.-----+--      .......}}K}}}}}
+    |aa..}}....|.........|.......|.....|..........(.S....|          #          
+    |F...}}.F..|.........|.......|.....|.......l\...|..^.S###########          
+    |..........|.........|..`....|.....|..........|.|....|                     
+    ------------------------------------------------------                     
+</replacecharsblock></div>
+
+The Lich's Manse contains two morgues, both marked. The areas marked with {{gray|F}}s are fungus farms. The garden area contains four killer bees, two giant mummies, and six shriekers. There is a black dragon at the point marked 'D', guarding a room containing three treasure chests. The morgue/throne room contains a master lich with a wand of cancellation, two liches (one with a wand of lightning and one with a wand of sleep), two succubi, three treasure chests, and a magic trap (on the middle throne). Other traps include a polymorph trap, a squeaky board, and two magic traps, all marked. The ` marks all indicate statues.   The level also contains three other random monsters, nine other random objects, and three other random traps.
+
+==Lethe Gorge, level 6==
+Level 6 of the Lethe Gorge is also known as the Troll Bridge.
+
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+t={{msl|troll}}
+
+                            TT###TT               }}}}                        
+             ...         -----###-----            }};}   .........            
+            ....         |t.t|###|t.t|            }}}} .............          
+         ##.....###      |....###....|           }}}}} ..............####     
+         #  ....  #      |....###....|          }}}}}}  ............    # .>. 
+    ...  #   ...  #      |t.t|###|t.t|         }}}}}}}    ........      ##... 
+   .....##        #      -----###-----        }}};}}}.        #           ..  
+    .<.         ###         TT###TT      }}}}}}}}}}}...      ##  ...          
+                #           T.###.T     }}}}}}}}}}}.T #     ##   ....###....  
+              ......######....###...   }}}};}}}}}     ##    #    ...  #  ...  
+             .......      ..  ###  .. }}}}}}}T...      #### #         #  ...  
+            .........    ...  ###  ..}}}}}}}...#      ##  ######     ...      
+           .......T}}}}}}}}}}}###}}}}}}}}}}    ###   ##        ###  ......    
+  }}}}}}}}}}}.T...}}}}}}}}};}}###}}}};}}}}       #  ##   .....   ##.........  
+  }}}};}}}}}}}}}}}}}}}}}}}}}}}###}}}}}}}}      ######   .......     ........  
+  }}}}}}}}}}}}}}}};}}}}}....  ###  T...      ###           H        ......    
+         }}}}}}}}}}}}}    ....###....     ####       ........     #H....      
+                         .....###.....#####  ##   ##..........H####           
+                          ....###....         #####  ........                 
+                              ###                                             
+</replacecharsblock></div>
+
+This level contains eight trolls and seven random marked ;. Placed randomly throughout the level are 14 random T, eight other random monsters, two potions of full healing, a potion of extra healing, three diamonds, five random comestibles, six other random objects, and six random traps.
+
+==Lethe Gorge, level 7==
+Level 7 of the Lethe Gorge is also known as the Sylvan Park.
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+t={{msl|troll}}
+M={{msl|mountain centaur}}
+(=[[Chest|{{brown|(}}]]
+@={{msl|Green-elf}}
+W={{msl|Woodland-elf}}
+t={{msl|troll}}
+;={{msl|kraken}}
+h=[[Deep one|{{green|h}}]]
+i=[[Deeper one|{{green|h}}]]
+"={{cyan|"}}
+
+  ---------                                                            ------
+  |.S.._..|    .........    ######                        ....@.T.....`|..>.|
+  |.|.....|..............H###    #######      #####   .......T...@.T...+....|
+  -----+---...C..T.....C.              ###.....   ##.....T.@...........------
+     .`.`..............}}}}}}}}}}}}}}}    ..;..     ..T.W......T..@.T....    
+   .................}}}}}}}}}}}}}}}}}}}    ...       .W.......@..T....}}}}}}}
+  .....T..C..T....}}}}}}}}}}}}}}}}}}}}}}     ###      ...WT.........}}}}}}}}}
+  .C..T.........}}}}}}}}  ...... }}}}}}}}      #       .......T...}}}}}}}}}}}
+   ............}}}}}}}}    ".  #  }}}}}}}}}    ##...    ..WT....}}}}}}}}}}}} 
+    ...C...T..}}}}}}}}         ##  }}}}}}}}}}    .p..    .....}}}}}}}}}}     
+      ..T.....}}}}}}}}}.        ###n}}}`n}p}}.n   ....    T.W}}}}}}}}        
+        .......}}}}}}}}}.           .}}}..}}}}}.. # ...    }}}}}}    ------- 
+        #   ..C.T.}}}}}}..           .}}.T.}}}}}.n.       }}}}}      |(...(| 
+       ##   # ......}}}}}.            ..}}..}}}.}nT..    }}}}}  --------S--- 
+      ##    #        }}}}..       ###  }}n}}}}..}}}}}.} }}}}}   |.h.{....|   
+      #   #H##  ...(  }}}}.#####  H ##  .}.}}}.}.}}}}}.}}}}}    |..{`{.i.|   
+     ....H#  ##..M..  }}}}.    t. .  ###..}.}n}}}n}}}}}n}}..####+.h.{....|   
+   ..M..       ....   }}}}   ..<...      .n}. T}}}.}}}}}..      ----------   
+    (.M..       ...  }}}}    .....                                           
+                    }}}}                                                     
+</replacecharsblock></div>
+
+
+This level contains three mountain centaurs (one of whom is armed with a blessed +2 bow), six random C, five Green-elves, five Woodland-elves, 10 random n, two trolls (one of which is generated on the same tile as the up stairs, and so isn't shown), a kraken, 2 random p, two deep ones, a deeper one (with a scroll of demonology), an electric eel, 11 random ;, four chests, two statues of mountain nymphs outside the temple in the upper left, a statue of Death (containing a wand of death) outside the room with the down stairs, a statue of Poseidon (containing an amulet of magical breathing) in the room in the lower right, a random statue on the central island, and a random amulet, all marked. The level also contains three random monsters, five random traps, three random potions, a random wand, a random gem, four random comestibles, and three other random objects.
+
+==Lethe Gorge, level 8==
+Level 8 of the Lethe Gorge is also known as Honycombe (sic) Canyon.
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+%=[[Fortune cookie|{{yellow|%}}]]
+p=[[Pit|{{darkgray|^}}]]
+b=[[Squeaky board|{{brown|^}}]]
+
+    ---------   ---     ---      ---      ---    ---    ---    ---      ------
+    |.`.`.`.|----`-------`--------`--------`------`------`------`-------|.`..|
+    |.<.....+.......t..p}}}};}}}p.............t.................t.......+%.>`|
+    |.`.`.`.|----`-------`}-------`--------`------`------`------`-------|.`..|
+    ---------   -S-     -}}}     ---      ---    -S-    ---    ---      ------
+                 # ...}}}}}}}}                    H                 }}}       
+                 ...}}}}}}}}}}}}}     ###      .......             }}}}}}...  
+                ..}}}}}}};}}}}}}}}.   H ######..b.......        ..}}};}}}}}B. 
+                }}.}}}}}}}}}}}}}}}}....        ..migo...H##### ..}}}}}}}}}}}} 
+             }};}}}.}...    }}}}}}}}....        ......       ...}}}}}}}}}}}}}}
+         }}}}}}}}}....       ..}};}}.}...         #         ..}}}};}}}}}}}}}}}
+    }}}}}}}}}}}     H         .B.}}.}}}}}         H         }}.}}}}}}}}}}}}}}}
+  }}}}}}}}}}}    ####          ....}}}}}}}}}}}  ..B...  }}}}}}}.}}}}}}}}...[  
+  }}}}};}}}}   ###              #   }}}}}}}}}}}}}}}}}}}}}}};}}}}.}..      #   
+  }}}}}}}}}   ##        ...     ##  .}}}}};}}}}}}}}}}}}}}}}}}}}.b..      ##   
+    }}}}... ###      ........    #   .}}}}}}}}}}}}}}}}}}}}}}    H       ##    
+      ..B.### H     ...migo...H###   .}}}}}}}}}}}}}}}}}}}}}    ........H#     
+       ..     ###  #.b........     ##..}}}}}}}}}}};}}}}}}}}   ...migo..   .!  
+                ####  ...  ...H#####  ....}}}}}}}}}}}}}}}}      .......H#..!  
+                                            }}}}}}}}}}}}                      
+</replacecharsblock></div>
+
+
+Honycombe Canyon contains three migohives, all marked and containing a single squeaky board; the rooms past the one in the lower right also contain two potions of full healing and a pair of cursed levitation boots. The upper-left room contains six statues- two of bone devils, two of ice devils, and two of balrogs. The long hall contains two pits and statues of (left to right, top to bottom): a knight, a barbarian, a fool, "Rodney", a wizard, a priest, a ranger, a rogue, a caveman, a samurai, a monk, a valkyrie, a healer, and Pestilence; the statue of Pestilence contains a cursed +3 unicorn horn. The room at the end of the hall contains two statues of mariliths and a statue of Asmodeus at the far end, containing a cursed ring of aggravate monster. There is also a fortune cookie just past the doorway. Marked monsters include three random t, four random B, and 10 random ;. The level also contains three random monsters, six random objects, and three random traps.
+
+==Lethe Gorge, level 9==
+The final level of the Lethe Gorge, also known as the "gates of Gehennom." Like the Castle in vanilla NetHack and SLASH'EM, it has no stairway down, and so you'll have to use other methods to get into Gehennom.
+
+<div class='ttyscreen'><replacecharsblock rules="ttymap">
+C=[[Cerberus|{{red|d}}]]
+d={{msl|hell hound}}
+&={{msl|horned devil}}
+B={{msl|barbed devil}}
+5={{msl|marilith}}
+2={{msl|hezrou}}
+4={{msl|nalfeshnee}}
+K={{msl|knight}}
+W={{msl|wizard}}
+V={{msl|valkyrie}}
+1=[[I did it for the children|{{gray|1}}]]
+@=[[It'll hurt me more than it will you|{{gray|2}}]]
+3=[[I just wanted it to be right|{{gray|3}}]]
+$=[[It wasn't supposed to happen that way|{{gray|4}}]]
+f=[[I wanted to help|{{gray|5}}]]
+6=[[It was her or me|{{gray|6}}]]
+7=[[I thought she would understand|{{gray|7}}]]
+8=[[Now we can be together|{{gray|8}}]]
+9=[[This is for your own good|{{gray|9}}]]
+%=[[Corpse|{white|%}}]]
+^=[[Squeaky board|{{brown|^}}]]
+%=[[Fortune cookie|{{yellow|%}}]]
+
+ 
+                                                         ---------           
+         .....                                           |.......|    }      
+       .....T...                                   }     |.......|   }}}     
+      .........T......@..oT..              .      .}}    |.morgue|  .}}      
+     .oT........1o............3.           ...   ...}}}  |.......| .d.}      
+     ......T....          .T.....T..      ..T.. .....}...|.......|...d       
+ -----........    -------      .o$......T...... ...&.....--+-+-+--....       
+ |`..|...o..      |..\..|         ..T........-----....&...........%..        
+ |<..+.....   ----|.....---------  .f.....T..|   |...%.......^.%..-----------
+ |...|...T    |.V.+KKKKK+.......|   ......6..-----..B..&..}`......|.....|...|
+ -----....    |.VV------|.......|    T...T...8.^.5..4....}}}`....^+..C..S.}.|
+     .....H###S.V.+.W...|barrack+####....7...9.^.2.....&.}}`......|.....|...|
+     .T.o.    |.V.|\..W.+.......|    ..T.....-----..B......}..%...-----------
+    .......   ----|.W..W|.......|    T.....T.|   |...&...%.....}}}}}}}}      
+ }}}}}}}}}}}}     ---------------   }}}}}}}}}-----}}}}}}}}}}}}}}};}}}}}}}    
+ }}};}}}}};}}}}                   }}}}}}};}}}}}}}}}};}}}}}}}}}}}}}}}}}}}}}   
+ }}}}}}}}}}}}}}}}}}}           }}}}}}}}}}}}}}}}}}}}}}}}}}}}};}}}}}}}};}}}}   
+         }}}}}}};}}}}}}}}}}}}}}}}};}}}}}}}}}}-----}}}}}}}}}}}}}}}}}}}}}}}    
+             }}}}}}}}}}}};}}}}}}}}}}}        |   |             }}}}}}}}      
+                }}}}}}}}}}}}}}}}}}}          -----                           
+
+</replacecharsblock></div>
+
+
+This level contains a marked morgue and barracks. [[Deferred features|Cerberus]] appears on this level, in the first room of the building furthest to the right. The area between the barracks and the morgue contains five horned devils, two barbed devils, a marilith, a hezrou, and a nalfeshnee, all generated asleep. The area in the upper right contains two sleeping hell hounds. The upper throne room contains six sleeping knights; one of them is on the throne  armed with a blessed +2 long sword called The Sword of Albion. The lower throne room contains five sleeping wizards (four marked and carrying random wands, and one on the throne carrying a wand of sleep, a wand of lightning, an amulet of life saving, and a blessed +3 ring of protection). The entrance to the building with the two thrones and the barracks contains five sleeping valkyries. Other marked monsters include six random o (the leftmost of whom is equipped with a wand of fire) and ten random ;. There is a statue of Famine in the entrance area, containing a cursed ring of slow digestion. The area on the far right, between the demons and Cerberus' area, contains three statues depicting, from left to right, an angel (containing a blessed potion of full healing), a knight (containing a blessed +2 long sword), and a demon (containing a blessed scroll of taming.) There are several corpses of player monsters scattered throughout the level- from left to right, they are a knight, a ranger, a wizard, a priest, and a rogue. Other marked items include two potions of amnesia, a wand of lightning, and a scroll of demonology. There are four marked squeaky boards on the right side of the level, surrounding the demons' area. The following engravings can be found at the numbered areas:
+ 1. I did it for the children
+ 2. It'll hurt me more than it will you
+ 3. I just wanted it to be right
+ 4. It wasn't supposed to happen that way
+ 5. I wanted to help
+ 6. It was her or me
+ 7. I thought she would understand
+ 8. Now we can be together
+ 9. This is for your own good
+The level also contains three vampire bats, two ravens, four random B, two spiked pits, two rust traps, and three magic traps. 
+
+[[Category:Lethe patch]]
+{{variant-343}}}
+&&%s&& %s Damage {101107 2016-01-14T22:04:25Z {0 } /* See Also */  Remove underscores in page links '''Damage''' in NetHack reduces the current [[hit points]] of the [[monster]] or player that receives it.  If the player or a creature is reduced to 0 or fewer HP, it [[die]]s.  Exception: if [[you]] are a monster (due to [[polymorph]] or [[lycanthropy]]) and you're reduced to 0 or fewer HP, you revert to your original form (unless you are wearing an [[amulet of unchanging]], in which case you die).
+
+Damage can come from a variety of sources, including physical and magical attacks, as well as falling down stairs or onto a sink, stepping on a trap, being hit by a bounced or reflected spell, and many others.
+
+The physical damage [[you]] do can be increased by wearing a [[ring of increase damage]], and decreased by [[erosion]] of the weapon you are using.
+
+Damage from some spells and effects can be reduced or eliminated by having the appropriate [[resistance]], [[magic cancellation]], or [[magic resistance]], or by having the [[half physical damage]] or [[half spell damage]] intrinsics.
+
+The damage that a weapon, attack, or other occurrence can do is often specified in [[D notation]] (e.g. striking with a weapon that does 3d6 damage will deal damage equal to the sum of 3 rolls of a 6-sided die on every successful attack).
+
+{{merge|Double_damage#Calculation}}
+==See Also==
+* [[To-hit]]
+* [[Double damage]], including some damage calculation internals
+* [[Ring of increase damage]]
+* [[Physical damage]]
+* [[Half spell damage]]
+* [[Half physical damage]]
+
+[[Category:Strategy]]
+{{nethack-343}}}
+&&%s&& %s Cursed water {19290 2007-02-27T20:30:24Z {0 } Creating redirect #REDIRECT [[Potion of unholy water]]}
+&&%s&& %s Wizard's tower {19299 2007-02-27T22:48:17Z {509 Lotte} Redirecting to [[Wizard's Tower]] #REDIRECT [[Wizard's Tower]]}
+&&%s&& %s Wizard tower {19300 2007-02-27T22:48:30Z {509 Lotte} Redirecting to [[Wizard's Tower]] #REDIRECT [[Wizard's Tower]]}
+&&%s&& %s 1 turn ascension {19305 2007-02-27T23:41:24Z {515 MadDawg2552} Don't ask me why... #REDIRECT [[1-turn ascension]]}
+&&%s&& %s Haste self {140681 2021-06-03T16:31:22Z {4001463 Actual-nh} Grammar/style There are three related [[object]]s that you can use to increase your [[speed]]. Speed is a [[property]] essential when encountering the more-difficult [[monster]]s in [[melee]]. The three objects are:
+* [[spellbook of haste self]]
+* [[potion of speed]]
+* [[wand of speed monster]]
+
+The spellbook grants a level 3 [[spell]] of the [[escape spell|escape]] school that increases your speed for 100 to 109 [[turn]]s.
+
+If you had [[wounded legs]], then the potion of speed will heal them. (Normally, you can heal your legs just by waiting some turns, so do not waste a potion of speed to heal them except in an emergency!) Otherwise, an uncursed potion will haste you 100 to 109 turns like the spell. A cursed potion will haste you only 40 to 49 turns, but a blessed potion will last 160 to 169 turns.
+
+Ultimately though, if you can find [[speed boots]], then the spell and the potion become redundant. A [[Wizard]] or other good magic user with [[intrinsic]] speed might be able to use the haste self spell while wearing different boots, such as [[jumping boots|jumping]]. Meanwhile, the potion of speed becomes a candidate for [[alchemy]] or dilution to make [[holy water]].
+
+The wand is more useful and important. You can use the [[wand of speed monster]] to give ''permanent'' intrinsic speed to both [[you]]rself and your [[pet]]s. Hasting your pets allows them to hit more often in melee, unless they already have 12 speed; your pets will be stronger because melee is their primary activity (other than [[stealing from shops]] and curse-testing).
+
+Haste self is also a [[monster spell]]; when a monster casts this, they become fast. It produces the message "'''[[Foo]] is suddenly moving faster.'''"
+
+[[Category:Spells]]
+{{nethack-343}}}
+&&%s&& %s Sleep {129561 2019-12-11T10:41:11Z {4000978 Aximili} Add encylopedia entry from 3.6 branch '''Sleep''' is a condition that [[player]]s and [[monster]]s may be affected by in NetHack. While asleep, you are immobilized for a number of turns. [[Sleep resistance]] prevents external magical sources from causing this, though it does not prevent [[fainting]] from lack of food.
+
+Sleep slows down your natural [[hunger]] rate by 90%, though additional hunger sources such as [[conflict]] or [[ring hunger]] are not affected.
+
+While you are asleep, "[[you hear]]" messages become "You dream that you hear".
+
+==Causes==
+*Drink or be hit by a [[potion of sleeping]]
+*Be zapped by a [[wand of sleep]]
+*Be hit by a [[Spellbook of sleep|sleep spell]]
+*Wear an [[amulet of restful sleep]]
+*Step on a [[sleeping gas trap]]
+*Be attacked by a [[homunculus]] or hit by the sleeping [[breath]] of an [[orange dragon]], a [[Nazgul]], or the [[Chromatic Dragon]]. [[Magic cancellation]] wards against the sleep-inducing [[homunculus]] bite.
+
+[[Free action]] prevents sleep from potions of sleeping only.
+
+==Sleeping monsters==
+Some of the above events can also affect monsters, and some monsters (notably [[nymph]]s and [[leprechaun]]s) are generated sleeping. Monsters affected by sleep attacks will sleep for a number of turns and then wake up. Those generated asleep will only wake up when you approach (if you do not have [[stealth]]) or attack them.
+
+
+==Encyclopedia entry==
+{{encyclopedia|
+Sleep is a death; oh, make me try
+By sleeping, what it is to die,
+And as gently lay my head
+On my grave, as now my bed.
+|[ Religio Medici, by Sir Thomas Browne ]
+}}
+
+{{stub}}
+{{nethack-362}}
+[[Category:Monster damage types]]}
+&&%s&& %s Half spell damage {138146 2021-03-01T04:56:03Z {4001463 Actual-nh} Typo '''Half spell damage''' is an [[extrinsic]] property which halves any [[damage]] taken from spells, as well as halving certain other effects.
+
+This property is conferred by carrying [[the Orb of Detection]], [[the Platinum Yendorian Express Card]], [[the Orb of Fate]] or [[the Eye of the Aethiopica]]. Carrying more than one of these objects does not further affect spell damage.
+
+==Description==
+Half spell damage reduces any damage inflicted from spells by 50%.
+{{todo|Also appears to affect damage from wands zapped by monsters? (see {{function|zap.c|zhitu|x}})}}
+
+===Affected monster spells===
+{{main|Monster spells}}
+
+The following monster spells are affected by half spell damage:
+
+{|class="prettytable striped sortable"
+!Spell
+!Spell type
+!Min. level
+!Effect
+|-
+|[[Psi bolt]]
+|Magical
+|1
+|Halves damage.{{refsrc|mcastu.c|264|comment=Half spell damage initially applies to all spells; this matters for spells which don't do their own damage calculations|name=initial half damage}} Stacks with magic resistance to quarter damage.{{refsrc|mcastu.c|456}}
+|-
+|[[Stun (monster spell)|Stun]]
+|Magical
+|4
+|Halves duration.{{refsrc|mcastu.c|434}} However, this is trivial with a unicorn horn.
+|-
+|[[Drain strength]]
+|Magical
+|7
+|Halves reduction.{{refsrc|mcastu.c|408}} However, magic resistance negates.{{refsrc|mcastu.c|402}}
+|-
+|[[Curse items]]
+|Magical
+|11
+|Halves number of items affected from 1d6 to 1d3.{{refsrc|sit.c|337|name=curse items}} Stacks with magic resistance, to only 1d2.<ref name='curse items'/>
+|-
+|[[Open wounds]]
+|Clerical
+|1
+|Halves damage.<ref name='initial half damage'/> Stacks with magic resistance to quarter damage.{{refsrc|mcastu.c|641}}
+|-
+|[[Confuse (monster spell)|Confuse]]
+|Clerical
+|3
+|Halves duration.{{refsrc|mcastu.c|621}} However, this is trivial with a unicorn horn.
+|-
+|[[Paralyze (monster spell)|Paralyze]]
+|Clerical
+|5
+|Halves duration.{{refsrc|mcastu.c|608}} However, magic resistance or free action reduces to 1 turn instead.{{refsrc|mcastu.c|599}}
+|-
+|[[Blind (monster spell)|Blind]]
+|Clerical
+|6
+|Halves duration.{{refsrc|mcastu.c|592}} However, this is trivial with a unicorn horn or [[the Eyes of the Overworld]].
+|-
+|[[Lightning (monster spell)|Lightning]]
+|Clerical
+|12
+|Halves damage.{{refsrc|mcastu.c|525}} However, shock resistance negates.{{refsrc|mcastu.c|518}}
+|-
+|[[Fire pillar]]
+|Clerical
+|13
+|Halves damage.{{refsrc|mcastu.c|504}} However, fire resistance negates.{{refsrc|mcastu.c|499}}
+|-
+|[[Asmodeus#Magical cold attack|Cold]]
+|[[Asmodeus]] only
+|
+|Halves damage.<ref name='initial half damage'/> However, cold resistance negates.{{refsrc|mcastu.c|281}}
+|-
+|Psychic blast
+|[[Mind flayer]], master mind flayer
+|
+|Halves damage.{{refsrc|monmove.c|427}}
+|}
+
+If the player has all [[resistance]]s (including [[magic resistance]]) and a [[noncursed]] [[unicorn horn]], the only spells usefully affected by half spell damage are [[psi bolt]], [[open wounds]], [[curse items]], and [[mind flayer]]s' psychic blasts.
+
+==== Monsters affected ====
+The following monsters can cast spells, some of which are affected by half spell damage as detailed above:
+{|class="prettytable striped sortable"
+! style="text-align: left"| Monster
+! style="text-align: left"| Base level
+! Spell type
+! Notes
+|-
+|{{monsymlink|kobold shaman}}
+|2
+| Magical
+|
+|-
+|{{monsymlink|orc shaman}}
+| 3
+| Magical
+|
+|-
+|{{monsymlink|gnomish wizard}}
+| 3
+| Magical
+|
+|-
+|{{monsymlink|barrow wight}}
+| 3
+| Magical
+|
+|-
+|{{monsymlink|guide}}
+| 5
+| Magical
+|
+|-
+|{{monsymlink|abbot}}
+|5
+|Clerical
+|
+|-
+|{{monsymlink|acolyte}}
+|5
+|Clerical
+|
+|-
+|{{monsymlink|apprentice}}
+| 5
+| Magical
+|
+|-
+|{{monsymlink|mind flayer}}
+| 9
+| Psychic blast
+|
+|-
+|{{monsymlink|golden naga}}
+| 10
+| Magical
+|
+|-
+|{{monsymlink|nalfeshnee}}
+| 11

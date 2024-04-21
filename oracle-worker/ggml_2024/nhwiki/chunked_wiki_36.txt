@@ -1,0 +1,1000 @@
+* ''"You feel a strange sensation."''
+|-
+|10
+|
+d10 throne room monsters appear around you.
+* ''"Thy audience hath been summoned, &lt;Sire/Dame&gt;!"''
+|-
+|11
+|
+If your Luck is strictly positive, you are blinded for 250&ndash;349 (more) turns; otherwise, your inventory is randomly cursed (as for a "malignant aura").
+* ''"A curse upon thee for sitting upon this most holy throne!"''
+|-
+|12
+|
+If you have negative Luck, you wake all monsters on the level.
+* ''"You feel threatened."''
+Otherwise, you are teleported within the level.
+* ''"You feel a wrenching sensation."''
+|-
+|13
+|
+You are confused for 15+d7 (more) turns.
+* ''"Your mind turns into a pretzel!"''
+|}
+
+{{upcoming|3.7.0|{{message|"Your eyes tingle."|You gained see invisible while blind.}}}}
+
+Whether anything happens or not, if you are still sitting on the throne (haven't teleported away), there is a {{frac|3}} chance that the throne will then disappear.
+* ''"The throne vanishes in a puff of logic."''
+The phrase "vanishes in a puff of logic" is taken from the [[Douglas Adams]] comedy series, ''The Hitchhiker's Guide to the Galaxy''. To be precise, it comes from an aside where Oolon Colluphid uses the Babel Fish argument to convince God that He doesn't exist, and God "promptly vanishes in a puff of logic."
+
+==Kicking a throne==
+It is also possible to #[[kick]] a throne, in the hopes of knocking loose some [[gold]] and valuable [[gem]]s. However, the potential advantages of sitting on a throne far outweigh the benefits of additional treasure.
+
+If you have negative Luck, or treasure has previously been kicked from the throne, there is a {{frac|3}} chance of destroying the throne, which will [[exercise]] [[dexterity]] and leave behind d200 gold pieces.
+*  ''"CRASH! You destroy the throne."''
+*  ''"CRASH! You destroy it."'' (if blind)
+
+If you have positive Luck, and treasure has not already been kicked from the throne, there is a {{frac|3}} chance of dislodging some loot: 201 to 500 gold pieces, and a number of gems equal to your Luck + 1, up to a maximum of 6. Note that these are not necessarily ''valuable'' gems.
+*  ''"You kick loose some ornamental coins and gems!"''
+*  ''"You kick something loose!"'' (if blind)
+
+If neither of the above effects occur, there is a {{frac|4}} chance that you may trigger a (hidden, and untriggerable any other way) [[trap door]].
+*  ''"The floor opens up under you!"'' followed by ''"The hole in the ceiling above you closes up."''
+
+If you didn't get any of the above, you get a hurt foot; your dexterity and [[strength]] are abused, there is a {{frac|3}} chance of your right leg being [[wounded legs|hurt]] for 6 to 10 turns, and you lose d5 HP (d3 HP if your [[constitution]] is greater than 15).
+*  ''"Ouch! That hurts!"''
+
+==Looting a throne==
+A throne can be [[Farming#Throne farming|farmed]]: Attempting to [[loot]] a throne while [[confused]] and carrying gold generates a throne room [[monster]] and deposits a random amount (up to all) of your [[gold]] in its inventory (''"The exchequer accepts your contribution"''). However, if there is a [[chest]] on the level, the gold is put in that without creating a monster (''"Thank you for your contribution to reduce the debt"''). Large boxes do not count. The throne is not destroyed in the process, and looting takes no in-game time to perform.
+
+"Throne room monsters" are a special set of monsters generated when a throne room is created, or when a throne is looted while the player character is confused and there is also not a chest on the current level.
+
+Throne room monsters are chosen randomly from a hobgoblin, a bugbear, or a monster from any of the monster classes D (dragon), H (giant), T (troll), C (centaur), o (orc), G (gnome), or k (kobold) with the percentage probability listed in the table below. Extinct or genocided monsters will be replaced with ordinary random monster generation, except in the case of bugbears and hobgoblins where extinction is not respected.{{reffunc|mkroom.c|courtmon}}
+
+In 3.6.0, #looting a throne while confused has a 10% chance of marking the throne as looted{{refsrc|pickup.c|1827|version=NetHack 3.6.0}}. This will prevent the throne from generating any new throne monsters, preventing endless farming. This is the same looted flag that determines if the throne has been kicked or not to generate gems. Additionally, confused looting now consumes a turn.
+
+==Court monster probability==
+The numbers in this table are the percentage probabilities that the specified monster class or monster type will be selected when generating a throne room monster on a given dungeon level (depth). Deeper levels are skewed toward harder monsters.
+
+Throne room monsters appear with the following percent probability per level:
+{| class="prettytable striped"
+|'''Dungeon level (depth)'''
+|'''k class ([[kobold]])'''
+|'''G class ([[gnome (monster class)|gnome]])'''
+|'''[[hobgoblin]]'''
+|'''[[bugbear]]'''
+|'''o class ([[orc (monster class)|orc]])'''
+|'''C class ([[centaur]])'''
+|'''T class ([[troll]])'''
+|'''H class ([[giants]])'''
+|'''D class ([[dragon]])'''
+|----
+|5
+|15
+|25
+|25
+|24.88
+|10.11
+|0
+|0
+|0
+|0
+|----
+|6
+|12.59
+|24.9
+|25
+|24.9
+|12.5
+|0.09
+|0
+|0
+|0
+|----
+|7
+|10.79
+|24.2
+|25
+|24.92
+|14.28
+|0.79
+|0
+|0
+|0
+|----
+|8
+|9.44
+|23.05
+|25
+|24.93
+|15.62
+|1.94
+|0
+|0
+|0
+|----
+|9
+|8.39
+|21.6
+|25
+|24.93
+|16.66
+|3.39
+|0
+|0
+|0
+|----
+|10
+|7.55
+|19.94
+|25
+|24.94
+|17.5
+|4.72
+|0.33
+|0
+|0
+|----
+|11
+|6.86
+|18.18
+|24.94
+|24.94
+|18.18
+|5.8
+|1.06
+|0
+|0
+|----
+|12
+|6.29
+|16.66
+|24.53
+|24.95
+|18.74
+|6.71
+|2.08
+|0
+|0
+|----
+|13
+|5.81
+|15.38
+|23.8
+|24.95
+|19.23
+|7.47
+|3.2
+|0.12
+|0
+|----
+|14
+|5.39
+|14.28
+|22.81
+|24.96
+|19.64
+|8.13
+|4.16
+|0.59
+|0
+|----
+|15
+|5.03
+|13.33
+|21.62
+|24.96
+|20
+|8.7
+|5
+|1.11
+|0.22
+|----
+|16
+|4.72
+|12.5
+|20.31
+|24.93
+|20.31
+|9.2
+|5.72
+|1.56
+|0.72
+|----
+|17
+|4.44
+|11.76
+|19.11
+|24.64
+|20.58
+|9.64
+|6.37
+|1.96
+|1.47
+|----
+|18
+|4.19
+|11.11
+|18.05
+|24.1
+|20.83
+|10.03
+|6.94
+|2.31
+|2.4
+|----
+|19
+|3.97
+|10.52
+|17.1
+|23.36
+|21.05
+|10.38
+|7.45
+|2.63
+|3.5
+|----
+|20
+|3.77
+|10
+|16.25
+|22.44
+|21.25
+|10.69
+|7.91
+|2.91
+|4.74
+|----
+|21
+|3.59
+|9.52
+|15.47
+|21.4
+|21.4
+|10.97
+|8.33
+|3.17
+|6.11
+|----
+|22
+|3.43
+|9.09
+|14.77
+|20.42
+|21.33
+|11.23
+|8.71
+|3.4
+|7.57
+|----
+|23
+|3.28
+|8.69
+|14.13
+|19.54
+|21.06
+|11.47
+|9.05
+|3.62
+|9.13
+|----
+|24
+|3.14
+|8.33
+|13.54
+|18.72
+|20.6
+|11.68
+|9.37
+|3.81
+|10.76
+|----
+|25
+|3.02
+|8
+|12.99
+|17.97
+|19.97
+|11.88
+|9.66
+|4
+|12.46
+|----
+|26
+|2.9
+|7.69
+|12.49
+|17.28
+|19.23
+|12.05
+|9.93
+|4.16
+|14.23
+|----
+|27
+|2.79
+|7.4
+|12.03
+|16.64
+|18.51
+|12.03
+|10.18
+|4.32
+|16.04
+|----
+|28
+|2.69
+|7.14
+|11.6
+|16.05
+|17.85
+|11.84
+|10.41
+|4.46
+|17.91
+|----
+|29
+|2.6
+|6.89
+|11.2
+|15.49
+|17.24
+|11.49
+|10.63
+|4.59
+|19.82
+|----
+|30
+|2.51
+|6.66
+|10.83
+|14.98
+|16.66
+|11.11
+|10.72
+|4.72
+|21.77
+|----
+|31
+|2.43
+|6.45
+|10.48
+|14.49
+|16.12
+|10.75
+|10.64
+|4.83
+|23.76
+|----
+|32
+|2.36
+|6.24
+|10.15
+|14.04
+|15.62
+|10.41
+|10.41
+|4.94
+|25.78
+|----
+|33
+|2.28
+|6.06
+|9.84
+|13.61
+|15.15
+|10.1
+|10.1
+|4.99
+|27.82
+|----
+|34
+|2.22
+|5.88
+|9.55
+|13.21
+|14.7
+|9.8
+|9.8
+|4.9
+|29.9
+|----
+|35
+|2.15
+|5.71
+|9.28
+|12.84
+|14.28
+|9.52
+|9.52
+|4.76
+|31.9
+|----
+|36
+|2.09
+|5.55
+|9.02
+|12.48
+|13.88
+|9.25
+|9.25
+|4.62
+|33.79
+|----
+|37
+|2.04
+|5.4
+|8.78
+|12.14
+|13.51
+|9
+|9
+|4.5
+|35.58
+|----
+|38
+|1.98
+|5.26
+|8.55
+|11.82
+|13.15
+|8.77
+|8.77
+|4.38
+|37.28
+|----
+|39
+|1.93
+|5.12
+|8.33
+|11.52
+|12.82
+|8.54
+|8.54
+|4.27
+|38.88
+|----
+|40
+|1.88
+|5
+|8.12
+|11.23
+|12.49
+|8.33
+|8.33
+|4.16
+|40.41
+|----
+|}
+
+==Strategy==
+Given these possibilities, it is safest to take the following precautions before sitting on a throne:
+* Drop all your gold, or stash it in a [[container]], so it won't be taken away. This should be easy as a throne room normally contains a [[chest]] that you can temporarily use to stash your coins.
+* Have a [[unicorn horn]] so that you can undo bad effects such as [[blindness]] and [[attribute|attribute loss]].
+* Have positive Luck.
+* Be able to deal with several monsters if they appear.
+
+{{upcoming|NetHack 3.7.0|Unicorn horns can no longer restore reduced attributes. Alternatives include [[Potion of restore ability|potions of restore ability]], the [[Spellbook of restore ability|restore ability spell]], [[prayer]], or finding a way to exercise or increase that attribute again.}}
+
+In addition, it can be helpful to do the following:
+* Heal to within 5 points of maximum.
+* Take out any items you would like identified.
+* Stow any items you would prefer unidentified.
+* Decide what you would like to wish for.
+* Decide which single species you would like to genocide.
+* Put on a [[ring of teleport control]] if you have one available and don't otherwise have [[teleport control]].
+
+If the throne causes you to teleport and you have [[teleport control]], you should choose to teleport to a different square rather than remain on the throne. This eliminates the chance that the throne will disappear from that use.
+
+Confused looting (with gold and without a chest) is fairly safe and cheap. It can be a [[Farming#Throne farming|great source]] of dragons and things that they provide (scales, corpses (resistances), loot, pets).
+
+{{todo|The below contradicts the information above regarding the effects of kicking the throne. Which is correct (in 3.6/3.7)?}}
+
+If you have positive Luck, kicking the throne to obtain the gems and gold is always safe (except from a bones pile), as the throne can always be looted exactly once in this way. Because the number of gems created this way is not random, it can be used to determine your Luck if it is under 5. Additionally, because a non-cursed [[luckstone]] will increase your Luck by 3, it is possible to identify a gray stone as luckstone if your base Luck is 0; if you are able to knock loose 4 gems, then you are carrying a luckstone.
+
+Since 3.6.0, if you are unsure or cannot remember whether you have already gotten valuables from this throne try picking it up. An unlooted throne gives message:
+* ''"It must weigh a ton!"''
+After you knock treasure off it, the message becomes slightly different:{{refsrc|src/hack.c|2346|version=NetHack 3.6.0|comment=Looted throne is a tad lighter}}
+* ''"It must weigh almost a ton!"''
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], [[Noble]]s, [[deepest one]]s, and [[shadow ogre]]s also qualify for the "You feel very comfortable here" message.
+
+Sitting on a throne can only grant a wish if your Luck is at least 7. If your Luck is not high enough, your Luck will be increased by 5 rather than by 1.
+
+===SlashTHEM===
+In [[SlashTHEM]], sitting on a throne can unrestrict one of your [[skill]]s (you get to choose which one), similar to being [[gift]]ed an artifact weapon, but this effect can also uniquely unrestrict non-weapon skills like [[spellcasting]] schools. However, another new random effect can strip you of an [[intrinsic]], similar to a [[gremlin]]'s attack.
+
+{{todo|Add note of XNethack showing "comfort" messages for crowned players, [https://github.com/NetHack/NetHack/blob/cbdda9dc9da8448d4f0a1f2f6c3e0baee906b50d/doc/fixes37.0 which was also merged into the upcoming 3.7.0], and make sure the page reflects any recent mechanical change prior to actually changing the version template}}
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+Methought I saw the footsteps of a throne
+Which mists and vapours from mine eyes did shroud--
+Nor view of who might sit thereon allowed;
+But all the steps and ground about were strown
+With sights the ruefullest that flesh and bone
+Ever put on; a miserable crowd,
+Sick, hale, old, young, who cried before that cloud,
+"Thou art our king,
+O Death! to thee we groan."
+Those steps I clomb; the mists before me gave
+Smooth way; and I beheld the face of one
+Sleeping alone within a mossy cave,
+With her face up to heaven; that seemed to have
+Pleasing remembrance of a thought foregone;
+A lovely Beauty in a summer grave!
+|[ Sonnet, by William Wordsworth ]
+}}
+
+==See also==
+*[[thrn-343.txt]]
+
+==References==
+<references/>
+
+{{DOD}}
+[[Category:Dungeon features]]
+{{nethack-343}}}
+&&%s&& %s Category:Artifact weapons {74522 2011-10-29T15:21:05Z {4000092 Graham87} rm "in order" This category is for the [[artifact weapon]]s, to separate them from the main [[:Category:Artifacts]] and [[:Category:Weapons]].
+
+[[Category:Artifacts]] [[Category:Weapons]]}
+&&%s&& %s Backslash {72210 2011-08-14T10:58:38Z {831 Tjr} moved [[\]] to [[Backslash]]: fix copy-paste move {{ASCII}}
+{{distinguish|slash}}
+* The '''backslash''' {{yellow|\}} character represents a [[throne]].
+* {{white|\}} is also used for drawing [[ray]]s (e.g. [[breath attack]]s and zapped [[wands]]).
+* During the game, press '''{{kbd|\}}''' to view your current knowledge about [[Discoveries|identified items]].
+: Note: With a french-canadian keyboard layout, pressing the backslash command won't work as result because it require a tricky manipulation that do not process right in the common windows terminal <Unknown command 'M-#'.> "(AltGr and the "~ '" key for \), also the [[Nhraykey.dll]] or subkeyvalue won't do it and there no patch about it either. To solve this you might change for a US layout and restart nethack or play on a linux tty(it handle the french-canadian layout correctly) or play on a graphical port.
+* Pressing {{kbd|\}} at a menu [[Menu_controls|deselects]] all items on the current page.  Supported by [[tty]] and [[curses interface]]s, see [[menu controls]].
+
+Do not confuse the backslash \ with the [[Slash|forward slash /]].
+
+{{nethack-343}}
+[[Category:ASCII]]}
+&&%s&& %s Category:Dudley's dungeon {4882 2006-07-13T17:44:05Z {396 Jayt} recat: [[Category:Community]] Play ''[[NetHack]]''? Read ''[[Dudley's dungeon]]''?
+
+Here is a list of articles about topics related to the webcomic.
+
+[[Category:Community]]}
+&&%s&& %s Floating eye {146744 2022-07-20T07:17:17Z {4001279 Umbire the Phantom}  {{monster
+ |difficulty=3
+ |level=2
+ |experience=7
+ |speed=1
+ |AC=9
+ |MR=10
+ |align=0
+ |frequency=5
+ |genocidable=Yes
+ |attacks=Passive [[paralysis]]
+ |weight=10
+ |nutr=10
+ |size=Small
+ |resistances=None
+ |resistances conveyed=[[Telepathy]] (100%)
+ |attributes={{attributes|A floating eye|
+ |fly=1|amphibious=1|nolimbs=1|nohead=1|=
+ |notake=1|hostile=1|neuter=1|infravisible=1}}
+ |reference=[[monst.c#line308]]
+}}
+
+A '''floating eye''', {{monsym|floating eye}}, is a particularly dangerous [[monster]] that appears in ''[[NetHack]]''. It is the only [[intelligent monster]] and non-explosive member of the [[sphere]] [[monster class]].
+
+The floating eye is extremely slow and does not attack, but each time it is attacked in melee there is a {{frac|2|3}} chance of it using a [[Passive attack|passive]] [[Paralysis|paralyzing]] [[gaze attack]] that immobilizes the attacker, unless that attack kills the floating eye.{{refsrc|src/uhitm.c|2874|version=NetHack 3.6.6}} If [[you]] are paralyzed by a floating eye, the length of time you are immobilized depends on your [[Wisdom]] and the floating eye's level - if your wisdom is 12 or lower, there is a {{frac|4}} chance of being paralyzed for exactly 127 turns; otherwise, the duration (<var>lvl</var>&nbsp;+&nbsp;1)d70 turns.{{refsrc|src/uhitm.c|2897|version=NetHack 3.6.6|comment=paralysis duration}} Floating eyes are the indirect cause of many [[YASD]]s this way.
+
+Eating a floating eye [[corpse]] conveys intrinsic [[telepathy]].
+
+==Generation==
+Floating eyes are typically encountered early in the dungeon after you gain a few [[experience level]]s. Three floating eyes are generated on the [[Plane of Air]].
+
+Floating eyes may generate carrying [[defensive item]]s like other monsters, but have no limbs to use them with; they are also excluded from receiving a [[wand of digging]] this way.
+
+Only 50% of floating eyes will leave a [[corpse]] upon death.
+
+==Strategy==
+As indicated above, and in-game via the [[encyclopedia]] entry, the floating eye is dangerous to attack in melee, but its gaze will not trigger if attacked outside of melee range. Additionally, it does not occur if the floating eye has been [[Cancellation|cancelled]] or [[blind]]ed; note that there is a {{frac|500}} chance that you will lose one point of [[Luck]] if you attack a blind floating eye.{{refsrc|src/uhitm.c|2907|comment=luck penalty|version=NetHack 3.6.6}} A source of [[reflection]] or [[free action]] will completely prevent paralysis;{{refsrc|src/uhitm.c|2882|version=NetHack 3.6.6}}{{refsrc|src/uhitm.c|2892|version=NetHack 3.6.6}} [[hallucination]] will cause you to ignore the passive gaze {{frac|3|4}} of the time.{{refsrc|src/uhitm.c|2885|version=NetHack 3.6.6}} While you can apply a [[mirror]] to paralyze a floating eye, this does not prevent its passive gaze from paralyzing you.
+
+Any ranged attacks - [[dagger]]s, [[polearm]]s, [[spell]]s, etc. - can safely dispose of floating eyes, and even throwing junk weapons or rocks will suffice. If fighting one inside a room, you can wait for it to move so that you can retrieve your thrown weapons if desired. Alternately, you can blind yourself by [[apply]]ing an appropriate item, such as a [[blindfold]], [[towel]] or a [[cream pie]] - as long as you cannot see the floating eye, you can attack it without consequence. Another option is to make the floating eye [[invisible]], e.g. with a [[wand of make invisible]] (unless you have the [[see invisible]] intrinsic).
+
+If you are facing a floating eye in a corridor without any means of ranged attack, and wasting turns is not an issue, you can place yourself between the floating eye and an obstacle of some sort (such as a locked door, boulder, or passive creature) so the paralysis will cause no lasting damage other than wasting turns; however, you will then likely have to contend with hunger instead.
+
+Pets will not attack floating eyes in melee most of the time; a [[leather drum]] can unfreeze a pet that is paralyzed as a result of attacking one.
+
+Floating eyes are a commonly sought out source of telepathy - many players make and/or seek out [[tin]]s of floating eye meat as a means of re-gaining telepathy if is lost later on (e.g. through an accidental murder). [[Zen]] players usually have the explicit goal of finding and killing a floating eye in order to eat it and make navigation safer, as most of the dungeon's inhabitants will become visible to them. [[Monk]]s may be tempted to break the [[vegan]]/[[vegetarian]] conducts by eating one, though they can gain the comparable [[warning]] intrinsic by reaching experience level 7, and it is possible to receive telepathy as a boon from your [[god]] via [[prayer]].
+
+==History==
+The floating eye has been present in the game since PDP-11, a variant of [[Jay Fenlason's Hack]]. It was also one of many monsters featured in pre-5.3 versions of ''[[Rogue (game)|Rogue]]'', before it was replaced with the ice monster (seemingly due to copyright issues involving ''[[Dungeons & Dragons]]'').
+
+The floating eye was subject to a [[NetHack 3.4.3]] [[Bugs in NetHack 3.4.3#C343-120|bug report]], citing the lack of warnings present when attacking one; the [[DevTeam]] closed this issue as "not a bug", clarifying that this is intentional.
+
+==Origin==
+The floating eye may have been inspired by a similarly-named monster in the 1st Edition Monster Manual of ''Advanced Dungeons & Dragons''. The floating eyes of ''AD&D'' are portrayed as an unusual type of saltwater fish, possessing transparent bodies and a single large eye with a three-inch diameter. Any creature gazing at it must make a saving throw versus paralysis, and failing results in being hypnotized into remaining stationary, usually leaving them at the mercy of any nearby predators; this is very similar to the gaze employed by the floating eye of ''NetHack'', though ''AD&D'' floating eyes are not restricted to passive behavior.
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], floating eyes use a different glyph, {{monsym|floating eye (UnNetHack)}}. Ravens will attack floating eyes as part of UnNetHack's modified [[grudge]] system.
+
+===NetHack brass===
+In [[NetHack brass]], floating eyes can additionally freeze attackers using polearms against them.
+
+===dNetHack===
+In [[dNetHack]], the duration of the paralysis effect is shortened to 2d6 turns, making them less dangerous to melee. However, it is still safest to attack them at range, as 12 turns is still enough time for other monsters to appear and kill a character.
+
+Floating eyes may appear in the audience of a [[Special room (dNetHack)|throne room]] ruled by a [[vampire lord]].
+
+===FIQHack===
+In [[FIQHack]], floating eyes instead have an area-of-effect slowing attack; hitting one in melee no longer paralyzes you, but instead has a harsher passive slowing effect which will typically last well after you leave the former attack's area of effect and/or killing the floating eye.
+
+[[Raven]]s will attack floating eyes as part of FIQHack's modified grudge system.
+
+===NetHack 4===
+In [[NetHack 4]], it is impossible to attack a floating eye in melee without being protected from its gaze in some way; monsters can still attack floating eyes normally and suffer paralysis. This was implemented to prevent aggravating deaths from early-game movement mistakes, as an accidental button press would often mean instant death.
+
+===xNetHack===
+In [[xNetHack]], floating eyes are given a more visible glyph, {{cyan|e}}.
+
+==Encyclopedia entry==
+{{encyclopedia|<poem>
+Floating eyes, not surprisingly, are large, floating eyeballs which drift about the dungeon.  Though not dangerous in and of themselves, their power to paralyse those who gaze at their large eye in combat is widely feared.  Many are the tales of those who struck a floating eye, were paralysed by its mystic powers, and then nibbled to death by some other creature that lurked around nearby.
+</poem>}}
+
+== References ==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Foocubi {3141 2006-05-31T21:10:44Z {509 Lotte} [[Foocubi]] moved to [[Foocubus]]: plural to singular #REDIRECT [[Foocubus]]}
+&&%s&& %s Towel {150228 2023-03-12T05:43:24Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks. {{tool
+ |name=towel
+ |tile=[[image:towel.png]]
+ |cost=50
+ |weight=2
+ |color=magenta
+ |material=cloth
+}}
+
+{{upcoming|NetHack 3.7.0|Towels have a weight of 5.}}
+
+The '''towel''' is a multipurpose [[tool]] that appears in ''[[NetHack]]''. It is made of [[cloth]].
+
+==Generation==
+[[Tourist]]s have a chance of beginning the game with a towel.
+
+==Effects==
+You can [[put on]] a towel using {{kbd|P}} and [[blind]] yourself, then {{kbd|R}} to [[remove]] it and see again; this makes towels a perfect substitute for a [[blindfold]].{{reffunc|apply.c|use_towel}}
+
+You can also [[apply]] the towel for multiple purposes:
+* If your [[slippery fingers|fingers are slippery]] (such as from eating deep-fried food from a [[tin]]), you can apply a noncursed towel to wipe them off so you can [[wield]] a [[weapon]] again.
+* If you are blind because of a [[cream pie]] or [[blinding venom]], you can apply a noncursed towel to clean your face and unblind yourself. (If you remain blind for another reason, "Your face feels clean now.") Unlike the [[wipe|#wipe]] command, a towel cleans your face in one turn.
+* Applying a cursed towel will instead make your fingers slippery or else blind you by gunking up your face.
+
+You can also [[engrave]] with a towel; you will not actually write anything, but you will erase anything written with dust, blood, or even [[magic marker]].{{refsrc|engrave.c|784}}
+
+{{upcoming|NetHack 3.7.0|You can no longer wear a towel in a form with no head. Also, wearing a wet towel halves damage from [[poison cloud]]s and poison gas [[breath]]. It also stops [[potion]] vapors from affecting you.}}
+
+===Wet towel===
+You can also [[wet]] a towel through various methods. The wetness level is an integer between 0 and 7. The appearance of the towel gives an indication of the wetness level of the towel; the exact wetness is only shown in [[wizard mode]].
+{|class="prettytable"
+!Wetness
+!Appearance
+|-
+|0
+|A towel
+|-
+|1
+|A moist towel
+|-
+|2&ndash;7
+|A wet towel
+|}
+
+A towel can be made wet by any source of water, including an uncursed [[potion of water]] or a [[Trap#.5E_Rust_trap|rust trap]]. This will add 1&ndash;7 levels of wetness,{{refsrc|src/weapon.c|811|version=NetHack 3.6.0}}{{refsrc|src/trap.c|3325|version=NetHack 3.6.0}} to the maximum of 7. 
+
+When wielded as a weapon, a wet towel will deal between 1 and (wetness) damage, capped at 6 damage. There is additionally a (wetness) in (wetness+1) chance of drying out, losing 1 point of wetness.
+
+Applying the towel, wiping out an engraving in the dust with the towel, or throwing the towel removes 1 point of wetness.
+
+==History==
+Towels are introduced in [[NetHack 3.1.0]].
+
+The ability to wet towels was introduced in [[NetHack 3.6.0]].
+
+==Origin==
+The many uses for towels in ''NetHack'' are inspired by the towels carried by the titular hitchhikers of the ''[[Wikipedia:Hitchhiker's Guide to the Galaxy|Hitchhiker's Guide to the Galaxy]]'' series.
+
+==Messages==
+{{message|Your towel gets dusty.|You 'engraved' with a towel while there was no message to wipe off the floor.}}
+{{message|Your towel gets frosty.|As above, but you were standing on [[ice]].}}
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], all characters start with a towel on Towel Day (25th of May).{{refsrc|src/u_init.c|898|unnethack=1554}} [[Tourist]]s will not be given a second towel.{{refsrc|src/u_init.c|786|unnethack=1554}}
+
+== Encyclopedia entry ==
+{{encyclopedia|
+The Hitchhiker's Guide to the Galaxy has a few things to say on the subject of towels. 
+A towel, it says, is about the most massively useful thing an interstellar hitchhiker can have.  Partly it has great practical value.  You can wrap it around you for warmth as you bound across the cold moons of Jaglan Beta; you can lie on it on the brilliant marble-sanded beaches of Santraginus V, inhaling the heady sea vapors; you can sleep under it beneath the stars which shine so redly on the desert world of Kakrafoon; use it to sail a miniraft down down the slow heavy River Moth; wet it for use in hand-to-hand combat; wrap it round your head to ward off noxious fumes or avoid the gaze of the Ravenous Bugblatter Beast of Traal (a mind-bogglingly stupid animal, it assumes that if you can't see it, it can't see you - daft as a brush, but very very ravenous); you can wave your towel in emergencies as a distress signal, and of course dry yourself off with it if it still seems to be clean enough.
+|[ The Hitchhiker's Guide to the Galaxy, by Douglas Adams ]
+}}
+
+== References ==
+<references />
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Angband OpenSource Initiative {129779 2019-12-17T11:08:36Z {4001163 Pinkbeast} add references section The '''Angband OpenSource Initiative''' was an effort to relicense the [[roguelike]] game ''[[Angband]]'' under a free software license, the GNU General Public License.  It finished successfully in 2009.<ref>http://groups.google.com/group/rec.games.roguelike.angband/msg/2db2fc9961d41c50 It finished successfully in 2009</ref>
+
+''[[NetHack]]'' has been free software for a long time (under its [[NetHackWiki:NetHack General Public License|NetHack General Public License]]), but before the OpenSource Initiative ''Angband'' had restrictions against commercial distribution. '''The remainder of this article was written when the Angband OpenSource Initiative was still ongoing.'''
+
+== Comparing Angband and NetHack licensing ==
+Consider freedom: the ability to give copies of Angband and NetHack to other persons and to make changes to Angband and NetHack, for example to make patches or variants.
+
+NetHack is [[free]], open source software.  The [[NetHackWiki:NetHack General Public License|NetHack General Public License]] is on [http://www.opensource.org/ Open Source Initiative]'s list of [http://www.opensource.org/licenses/ approved licenses].  There is also a [http://packages.debian.org/stable/games/nethack NetHack package in Debian].
+
+This means that NetHack meets both of:
+* [http://www.opensource.org/docs/definition.php The Open Source Definition], and
+* [http://www.us.debian.org/social_contract#guidelines The Debian Free Software Guidelines].
+
+In contrast, most of Angband uses a simple, but noncommercial license inherited from ''[[Moria]]'':
+
+ /*
+  * Copyright (c) ''YYYY Owner''
+  *
+  * This software may be copied and distributed for educational, research, and
+  * not for profit purposes provided that this copyright and statement are
+  * included in all such copies.
+  */
+
+What does this mean? Is it okay to profit from copying this software if the purpose is educational or research, or must any copy be all of educational, research, and not for profit simultaneously?
+
+The license also does not explicitly mention modification, though there is a long tradition of modifying the source, back at least to when ''[http://roguebasin.t-o-m-e.net/index.php/Moria Moria]'' was ported to Unix, forming [http://roguebasin.t-o-m-e.net/index.php/UMoria UMoria].
+
+However that "not for profit" clause impedes anyone who tries to sell copies of Angband. This is contrary to the Debian and OSI guidelines, which both state:
+
+* ''"The license must not restrict anyone from making use of the program in a specific field of endeavor. For example, it may not restrict the program from being used in a business, or from being used for genetic research."''
+
+The consequence of this is that the [http://packages.debian.org/stable/games/angband Debian package for Angband] is clearly marked as ''non-free''. Considering that some persons do distribute Angband noncommercially and do make modifiations, Angband is ''almost'' [[free]], and in many contexts one can call it "free", but it cannot be OSI-approved, nor can it be Debian-free, as long as it has that noncommercial license.
+
+== Impediments to distribution of Angband ==
+For many users, Angband's noncommercial license is not a problem; they can continue to obtain and modify copies of Angband. However, one important limitation is that vendors who sell collections of free software cannot include Angband.
+
+For example, in the ports tree of [[OpenBSD]] 3.9, the description of Angband includes this:
+
+ PERMIT_PACKAGE_CDROM=	"unclear license"
+ PERMIT_PACKAGE_FTP=	Yes
+ PERMIT_DISTFILES_CDROM= "unclear license"
+ PERMIT_DISTFILES_FTP=	Yes
+
+In OpenBSD, any value other than "Yes" means No, and gives the reason why no, that program cannot be on the CDROM that OpenBSD sells. The various FTP (and other Internet) sites which carry OpenBSD can and do include Angband source code and compiled packages. However, the CD can never include Angband. Perhaps OpenBSD would not want to include the game on a CD for sale, even if it had permission to do so, but the Angband license is the same for everyone.
+
+Now here is description of NetHack in the same tree:
+ PERMIT_PACKAGE_CDROM=	Yes
+ PERMIT_PACKAGE_FTP=	Yes
+ PERMIT_DISTFILES_CDROM=	Yes
+ PERMIT_DISTFILES_FTP=	Yes
+
+You can sell NetHack on CD, yes.
+
+== But I do not want anyone to sell my free game! ==
+Both Angband and NetHack are readily available on the Internet. Even if they were not, the license allows anyone with a copy to put the games on a server and begin distributing them over the Internet. In practice, anyone who sells Angband or NetHack must compete against this gratis redistribution. In practice, this means that anyone can easily avoid paying for NetHack if they want.
+
+NetHack's license is even a copyleft license, so any modified versions, such as ''[[SLASH'EM]]'', must likewise be free. Clause 2(b) of that [[NetHackWiki:NetHack General Public License|NetHack General Public License]] states that modified versions are allowed:
+* ''"cause the whole of any work that you distribute or publish, that in whole or in part contains or is a derivative of NetHack or any part thereof, to be licensed at no charge to all third parties on terms identical to those contained in this License Agreement (except that you may choose to grant more extensive warranty protection to some or all third parties, at your option)"''.
+
+(Here, "no charge" means that you cannot give someone a copy of NetHack and them somehow make them pay before they obtain their freedoms. The next clause 2(c) makes clear that ''"You may charge a distribution fee for the physical act of transferring a copy"''.)
+
+So, SLASH'EM and other modified versions of NetHack must be under licenses with "terms identical" to NetHack's terms, meaning that again, anyone with a copy of SLASH'EM can begin distributing it gratis.
+
+Or, they could try selling NetHack to raise funds for developing modifications to NetHack &ndash; and to gain a profit. In the current market, this might be difficult, especially as NetHack is a roguelike game and not office-productivity or enterprise software.
+
+== Noncommercial versus copyleft ==
+Angband, though, is not under copyleft. Here is the license again:
+
+ /*
+  * Copyright (c) ''YYYY Owner''
+  *
+  * This software may be copied and distributed for educational, research, and
+  * not for profit purposes provided that this copyright and statement are
+  * included in all such copies.
+  */
+
+There is no clause stating that other parts of a work including Angband must be under the same terms as Angband. Like the licenses popular with BSD software, Angband's license is not a copyleft.
+
+For example, in a new Angband variant, you add code with your own copyright that has more requirements. For example, you could require a changelog, or you could require further modifications to be distributed as patches, or even prohibit further modifications completely. You could add source files licensed only under the [http://www.opensource.org/licenses/mozilla1.1.php Mozilla Public License] or the [http://www.opensource.org/licenses/cddl1.php Common Development and Distribution License], if you so wanted. You could distribute your Angband-variant binaries and never provide any source code, except for those files under the MPL or CDDL.
+
+However, you would not be able to sell and profit from those Angband-variant binaries in a way that contradicted the terms of the Angband license. ''This is possibly where the "not for profit" restriction benefits Angband.'' Without copyleft, an Angband-variant binary could in theory not be entirely under Angband's license. However, you cannot sell and profit from that binary until all parts of the binary, including code under Angband's licenses, had licenses that allow you to do so. Perhaps this caused the authors of modified versions of Moria, including UMoria, vanilla Angband itself, and the Angband variants, to maintain the spirit of Moria's and Angband's licensing, because it was not possible to sell said versions commercially.
+
+However, copyleft as NetHack already uses it is also an effective strategy, and unlike noncommercial licensing, copyleft does not discriminate against those who want to profit from selling copies. The Angband OpenSource Initiative, if successful, would permit commercial uses of Angband while prohibiting commercial uses that add new license restrictions contracting the GNU General Public License, version 2. Remember that Moria started in 1983, and the GNU GPL v2 appeared only in 1991. The Angband OpenSource Initiative would allow for Angband much of what the NetHack General Public License allows for NetHack.
+
+== Links ==
+* [http://rephial.org/wiki/OpenSource Angband OpenSource Initiative]
+== References==
+[[Category:Licenses]]}
+&&%s&& %s Angband {140411 2021-05-28T23:25:47Z {4001279 Umbire the Phantom} /* Origins */ [[Image:Angband.gif|thumb|320px|A screenshot of a town level in Angband]]
+'''''Angband''''' is a [[roguelike]] computer game in a style somewhat different from ''[[NetHack]]''. Angband and its [[variant]]s are popular enough to rival NetHack; some classifications divide roguelike games between "hacklikes" and "bands".
+
+Angband is named for [[lotr:Angband|the fortress Angband]], a location in [[lotr:J.R.R. Tolkien|J.R.R. Tolkien]]'s [[lotr:Middle-earth|Middle-earth]]. Angband and most of its variants have a Middle-earth theme; the usual goal is to go to the bottom of the dungeon and fight [[lotr:Morgoth|Morgoth]].
+
+Among the variants of Angband was a game called '''''ToME''''' which initially stood for "Tales of Middle-earth". Newer versions of ''ToME'' aren't based on AngBand, and have different names with the same acronym.
+
+== Angband references in NetHack ==
+The [[hallucinatory monster]]s of NetHack include some monsters from Angband. When hallucinating, you may find:
+
+* [http://angband.oook.cz/monsters.php?q=The+ancient+multi-hued+dragon&t=2&s=&v= Ancient Multi-Hued Dragon]
+* [http://angband.oook.cz/monsters.php?t=2&q=The+Ent Ent]
+* [http://angband.oook.cz/monsters.php?q=Morgoth%2C+Lord+of+Darkness&t=2&s=&v= Morgoth]
+
+In the [[source code]] (at [[do_name.c#line888]]), NetHack credits Morgoth to ''Angband''. The dragon is credited to Angband's ancestor game ''[[Moria (roguelike)|Moria]]'', while Ents are credited to Tolkien's ''Lord of the Rings''; both also appear in ''Angband'', and Middle-earth is also the original source for Morgoth. Angband and NetHack also share various other elements from Middle-earth - e.g., [[lembas wafer]]s, [[mithril]] objects, and monsters such as the [[hobbit]] and the [[balrog]].
+
+== Origins ==
+# ''[[Rogue (game)|Rogue]]'' was the first roguelike game. Rogue started as a binary for [[BSD]], then a variant of [[Unix]] running on VAX hardware. Because Rogue did not include its source code and originally ran only on one platform, several Rogue clones came into existence.
+# For computers running [[VMS]], the first Rogue clone was ''[http://roguebasin.roguelikedevelopment.org/index.php?title=Moria Moria]'', started in 1983. The port from VMS and Pascal to [[Unix]] and C was ''Umoria'', of which ''Angband'' is a variant.
+# Meanwhile, on [[Unix]] appeared a free Rogue clone, ''[[Hack]]'', of which ''NetHack'' is a variant.
+
+In Rogue, the goal was to obtain an [[Amulet of Yendor]]. Moria deviated from Rogue by featuring a town above the dungeon and by not featuring the Amulet; the goal was to kill a [[balrog]]. Angband lengthened the game and featured the goals of killing Sauron and then Morgoth.
+
+Hack, though retaining the Amulet, added features like [[persistent level]]s, [[pet]]s, and [[shop]]s. NetHack changed the game even more with additions like [[dungeon branch]]es.
+
+Development of Angband and NetHack continues today - both games have spawned many modified versions and [[patch]]es, and their respective communities consider them to have developed concrete enough identities of their own to be called [[vanilla]] versions, in contrast to variants like ''[http://roguebasin.roguelikedevelopment.org/index.php?title=ToME ToME]'' and ''[[SLASH'EM]]''.
+
+== License ==
+Angband has been [[free]] and open source software since January 2009 thanks to the [[Angband OpenSource Initiative]] <ref>http://groups.google.com/group/rec.games.roguelike.angband/msg/2db2fc9961d41c50</ref>, putting it in a similar situation to NetHack under the [[NetHack General Public License]]. The previous license was inherited from ''[[Moria]]'' and prohibited selling copies of the game, making it impossible for operating systems like [[Debian]] to include Angband when selling physical media.
+
+There are many Angband variants; the Moria license did not contain explicit permission to modify the game, but many variants predate the relicensing.
+
+== Gameplay ==
+Angband is a much longer game than NetHack; Angband's dungeon is of effectively unlimited size. It may take weeks to play an Angband character from the beginning to the triumph over Morgoth (or to a late but permanent death).
+
+=== The town ===
+Moria added a town just outside the dungeon entrance. While NetHack players cannot leave the [[dungeon]] until they find the [[Amulet of Yendor]], Moria and Angband players can repeatedly visit the town, using the services and shops. Central to the Angband is the Scroll of Word of Recall, an item that warps you between town and the deepest visited dungeon level. Some Angband variants even let you leave town to find other dungeons and towns.
+
+The NetHack [[Guidebook]] makes clear that the entrance to the dungeon is nowhere near town; thus one can guess that this is why leaving the dungeon without the Amulet ends your game:
+
+: ''"You spend one last night fortifying yourself at the local inn, becoming more and more depressed as you watch the odds of your success being posted on the inn's walls getting lower and lower.''
+
+: ''"In the morning you awake, collect your belongings, and set off for the dungeon. After several days of uneventful travel, you see the ancient ruins that mark the entrance to the [[Mazes of Menace]]."'' &ndash; NetHack [[Guidebook]], Chapter 1 "Introduction"
+
+Angband [[shop]]s are somewhat less fun than the ones in NetHack; they consist simply of menus for buying and selling items, with no possibility of theft. More recent versions offer a "no_selling" option where the average amount of gold in the dungeon increases but items cannot be sold to shops, which eliminates a great deal of repetitive play.
+
+Items in shops are identified, so shopkeepers will not bother selling cursed items or useless stuff (like the [[potion of blindness]]). You can also identify things by selling them; this is great for unknown scrolls, potions, and magical devices from the dungeon; this helps, because the number of different potions, scrolls etc. is several times greater than in NetHack. (In recent versions, use-testing items cannot kill you so it is more conventional to play with "no_selling" and identify items by using them.) There is no "[[price identification]]" because shopkeepers never identify items until after they buy them. Instead, shopkeepers pay a base price for unidentified items.
+
+Shops are reliable sources of food and basic items; beginners can supply themselves well if they have money, however the dungeon is the only source of better and more enchanted items. Food supply is limitless and thus largely a non-factor unless one is playing an ironman game.
+
+=== The dungeon ===
+In Angband, there are two ways to label dungeon levels: by number (1, 2, 3, 4) as in NetHack, or by depth (50 feet, 100 feet, 150', 200') where the depth is fifty times the level number.
+
+Dungeon levels are much larger in Angband than in NetHack. Each NetHack level fits on a screen, unless your screen is smaller than the common 80-by-24 hardware terminals. Most Angband levels are much larger and must be split into panels.
+
+: (There is an option to center the screen on the <tt>@</tt>, as in ''[[Linley's Dungeon Crawl]]'', but the game typically disables this by default. Instead, the map jumps to another panel as you approach the edge. You might also experience surprise attacks from offscreen monsters as you approach the edge. So you may want to enable that <tt>center_player</tt> option. Or alternatively, just hit {{kbd|^L}} to re-center the screen manually when you're getting uncomfortably close to the edge of the screen. Additionally, be sure to have the list of currently visible monsters showing in one of Angband's satellite terminals (this is the default), and pay attention to it.)
+
+Larger levels make room for larger rooms and longer corridors. Each level takes longer to explore; in fact some Angband players will take the first [[staircase]] instead of fully exploring a level.
+
+Dungeons are also drawn differently. For example, a [[NetHack]] [[room]] and [[corridor]] might appear like this:
+
+ ----------         #
+ |........|     ########+     +   [[door]]
+ |..{.....|     #   #         -   [[door|open door]]
+ |..@.....|   ###   #         @   [[hero]]
+ |........-####     #         - | [[wall]]
+ |......d.|         #         d   [[dog]]
+ |.%......|         #         %   [[food ration]]
+ ----------         #
+
+Now here is how it might appear in the dungeon of Angband:
+
+ ##########    #####+####
+ #........#    #...'.'..+     + [[door]]
+ #........#  ###.###'####     ' [[door|open door]]
+ #..@.....####...# #.#        @ [[hero]]
+ #........'....### #.#        # [[wall]]
+ #......C.######   #.#        C [[dog|canine]]
+ #.,......#        #.#        , [[food ration]]
+ ##########        #.#
+
+Angband does not have [[persistent level]]s. If you return to the same depth, Angband generates a new level with new monsters and items. A consequence of this is ''scumming''; the process of repeatedly going up and down a staircase until Angband generates a good level (made known to the player by level feelings). Because you cannot revisit a level, Angband players do not leave [[stash]]es of items like NetHack players would. Instead, the Angband town provides a home where players can stash extra items to free their inventory slots.
+
+=== Monsters ===
+As you fight monsters in Angband, the game will gradually memorise their capabilities. Fight enough of a particular monster, and the game's ''monster memory'' will describe how many times you killed each type, how fast the monster moves, what attacks it has, and what level it normally appears on. Angband also has the odd feature that you retain your monster memory after death, when using the same save file to start a new character.
+
+NetHack only gives a vague description of the monster, usually a quote from literature. When playing NetHack, [[you]] must remember those monsters yourself, or consult some bestiary of spoilers.
+
+When using a ranged attack, Angband lets you target any nearby monster; NetHack restricts you to firing in eight directions. However, Angband does not have symmetric field of view, especially around corners, so players exploit this to target monsters who cannot see to target the player. (For examples of this, see the "line of sight" explanation in [http://wiki.t-o-m-e.net/Spoilers/Lord_Dimwit's_Advanced_Strategy_Guide ''Lord Dimwit's Advanced Strategy Guide''] for ToME, section 3.3 "Fighting Monsters that Summon Stuff".)
+
+=== Objects ===
+NetHack has plenty of ways to make objects surprise the unspoiled player: [[BUC|blessed, cursed, and uncursed]] objects, [[erodeproof]] objects, [[grease]]d objects, and objects with [[enchantment]] bonuses and [[charge]]s.
+
+Angband objects have some of these characteristics, however not in the same way. NetHack applies a B/U/C system to all items, and NetHack curses can have many undesirable effects, such as less healthy potions. However, an Angband curse is only a "tag on" property of the item that prevents you from taking it off, but does not normally degrade the item. (Like NetHack, Angband does generate cursed weapons and armor with negative enchantments.)
+
+In some ways, Angband objects can be even more complex than NetHack objects, especially in Angband variants. For example, ToME has:
+
+* ''Artifacts.'' Unique items with extra powers, taken from a fixed list, similar to NetHack [[artifact]]s. (Recent vanilla Angbands offer an option to have the list randomly generated, which is useful for veteran players who know the fixed list by heart.)
+* ''Randarts.'' Randomly-generated items that have artifact-like properties.
+* ''Ego items.'' Extra properties; that [[Scimitar]] might be a Scimitar of Frost, which does extra cold damage and provides cold resistance.
+* ''Junkarts.'' Does nothing except when you "activate" ([[invoke]]) it.
+
+Sometimes, the Scroll of Identify does not reveal all these advanced properties, and one must use a Scroll of *Identify* instead.
+
+Probabilities control the generation of items in both games. These probabilities remain uniform in NetHack across dungeon levels, though they differ between branches; this is why the [[Gnomish Mines]] has more [[tool]]s. But in Angband, each item has an associated dungeon depth. In general, Angband items become progressively more powerful as the hero descends deeper into the dungeon. Down there, weapons and armor have better enchantments, and there are more and better artifacts. In ToME, even [[wand]]s will feature higher base levels. A winning player often wields and wears several artifacts simultaneously!
+
+Both NetHack and Angband players can wield weapons, wear armor (in several armor slots), and put on [[ring|rings]] and [[amulet|amulets]]. In Angband, wearing something frees an [[inventory]] slot, which is useful because Angband only has 23 slots (a to w). Even when counting equipment slots, Angband still has fewer slots than NetHack, which gives you 52 slots (a to z and A to Z). In addition, NetHack has [[container|containers]] like [[bag|bags]] and [[chest|chests]] to hold many screenfuls of items; Angband does not.
+
+However, Angband has fewer kinds of item, and items that are not immediately required can be stored in one's home on returning to town. Part of the game's long-term strategy is recognising which items should be retained in the home's limited capacity, and building up a stock of powerful consumables for the final battle with Morgoth.
+
+==References==
+<references/>
+==External links==
+{{Wikipedia|Angband (computer game)}}
+{{RogueBasin|Angband}}
+
+*[http://rephial.org rephial.org, official Angband site]
+*[http://angband.oook.cz angband.oook.cz, Angband community site]
+*[http://www.thangorodrim.net/ Thangorodrim, old official Angband site] (no longer updated)
+
+Variants:
+*[http://tome.te4.org/ Official ToME site]
+*[http://www.zangband.org/ Official ZAngband site] (no longer updated)
+*[http://angband.oook.cz/variants.php oook's variant list]
+[[Category:Roguelikes]]}
+&&%s&& %s The Tsurugi of Muramasa {150086 2023-03-06T06:54:59Z {4001279 Umbire the Phantom} major touch-up {{artifact weapon
+  |color=metal color
+  |name=The Tsurugi of Muramasa
+  |base=tsurugi
+  |smalldmg=1d16 '''+1d8'''
+  |largedmg=1d8+2d6 '''+1d8'''
+  |tohit=<nowiki>+2</nowiki>
+  |skill=two-handed sword
+  |size=two-handed
+  |affiliation=<ul><li>[[lawful]]</li><li>[[Samurai]]</li><li>[[intelligent artifacts|intelligent]]</ul>
+  |whencarried=<ul><li>acts as [[luckstone]]</li></ul>
+  |whenwielded=<ul><li>bisection</li><li>[[protection]]</li></ul>
+  |cost=4500
+  |weight=60
+  |material=metal  
+}}
+
+'''The Tsurugi of Muramasa''' is the [[Samurai]] [[quest artifact]]. It is the prize for completing the [[samurai quest]], and is [[lawful]] for [[wish]]ing purposes. Its [[base item]] is a [[tsurugi]], a type of [[two-handed sword]].
+
+==Description==
+The Tsurugi has +2 to-hit and deals +[[d notation|d8]] bonus damage. It has a 5% chance to [[bisect]] and [[Instandeath|instantly kill]] [[Physical size|medium-size]] or smaller [[monster]]s that it hits, as well as any monster [[engulf]]ing you; large-or-bigger monsters instead take [[double damage]]. When carried, it acts as a [[luckstone]], and when wielded, it provides extrinsic [[protection]], augmenting your [[magic cancellation]] as with a [[ring of protection]], but not cumulative with one. Unlike other quest artifacts, it cannot be [[invoke]]d.
+
+==Strategy==
+The chance of bisection makes it dangerous for Samurai to face their [[quest nemesis]] [[Ashikaga Takauji]] in melee. Those facing him may employ ranged attacks, [[Polymorph control|controlled]] [[polymorph]], a [[boulder fort]], or a [[wand of death]] to liberate the artifact from him.
+
+As a two-handed weapon, if the Tsurugi becomes [[cursed]], you will need to #[[tip]] an uncursing item out of your bag to regain use of your hands. However, as an [[intelligent artifact]] it resists the [[curse items]] monster spell 80% of the time, making it much safer than most other two-handed weapons. Beyond that, the Tsurugi's extra Luck and protection renders it barely noteworthy among lawful artifacts for non-Samurai, if not artifacts in general.
+
+Unfortunately for Samurai themselves, that it uses the two-handed sword skill may prove a deterrent for those looking to [[twoweapon]] or use a [[shield]]. While they can attain Expert level in the skill, most samurai may already be comfortable with the easier-obtained [[Excalibur]] or [[Snickersnee]] as their main weapon and their starting [[katana]] or another [[long sword]] as their off-hand weapon. In addition to dealing roughly similar damage outside of the Tsurugi's bisection, there is a much less significant risk of item curses welding both weapons to your hands.
+
+===Average damage calculation===
+The base damage range of the Tsurugi of Muramasa is 2&ndash;24 against small monsters, and 4&ndash;28 against large monsters before doubling damage. The average damage calculations in the following table do not include bonuses from [[Skill|weapon skills]], [[strength]], or from using a [[blessed]] weapon against [[undead]] or [[demon]]s. Also, they do not include the 5% chance of either instantly killing the target (if it is a small monster) or doing double the damage (if it is a large monster). Furthermore, the [[twoweapon]] skill bonuses are not included for the damage calculations when using Excalibur with a [[katana]].
+
+{|class="wikitable"
+!Weapon
+!Small monsters
+!Large monsters
+|-
+| +0 Tsurugi of Muramasa
+|{{sfrac|1+16|2}}&nbsp;+&nbsp;{{sfrac|1+8|2}}&nbsp;=&nbsp;'''13'''
+|{{sfrac|1+8|2}}&nbsp;+&nbsp;{{sfrac|2+12|2}}&nbsp;+&nbsp;{{sfrac|1+8|2}}&nbsp;=&nbsp;'''16''' 
+|-
+| +7 Tsurugi of Muramasa
+|{{sfrac|1+16|2}}&nbsp;+&nbsp;{{sfrac|1+8|2}}&nbsp;+&nbsp;7&nbsp;=&nbsp;'''20'''
+|{{sfrac|1+8|2}}&nbsp;+&nbsp;{{sfrac|2+12|2}}&nbsp;+&nbsp;{{sfrac|1+8|2}}&nbsp;+&nbsp;7&nbsp;=&nbsp;'''23'''
+|-
+| +0 Excalibur and +0 Katana
+| {{sfrac|1+8|2}}&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;=&nbsp;'''15.5'''
+| {{sfrac|1+12|2}}&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;{{sfrac|1+12|2}}&nbsp;=&nbsp;'''18.5'''
+|-
+| +7 Excalibur and +7 Katana
+| {{sfrac|1+8|2}}&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;7&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;7&nbsp;=&nbsp;'''29.5'''
+| {{sfrac|1+12|2}}&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;7&nbsp;+&nbsp;{{sfrac|1+12|2}}&nbsp;+&nbsp;7&nbsp;=&nbsp;'''32.5'''
+|-
+| +9 Excalibur and +7 Katana
+| {{sfrac|1+8|2}}&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;9&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;7&nbsp;=&nbsp;'''31.5'''
+| {{sfrac|1+12|2}}&nbsp;+&nbsp;{{sfrac|1+10|2}}&nbsp;+&nbsp;9&nbsp;+&nbsp;{{sfrac|1+12|2}}&nbsp;+&nbsp;7&nbsp;=&nbsp;'''34.5'''
+|}
+
+==History==
+The Tsurugi of Muramasa was introduced along with most of the other quest artifacts in [[NetHack 3.1.0]].
+

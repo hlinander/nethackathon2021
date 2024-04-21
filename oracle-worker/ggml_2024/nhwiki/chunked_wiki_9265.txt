@@ -1,0 +1,1000 @@
+|-
+|[[wand of fire|화염]]
+|175
+|4&ndash;8
+|4%
+|ray
+|-
+|[[wand of lightning|번개]]
+|175
+|4&ndash;8
+|4%
+|ray
+|-
+|[[wand of sleep|수면]]
+|175
+|4&ndash;8
+|5%
+|ray
+|-
+|colspan="5"|
+|-
+|[[wand of cancellation|차단]]
+|200
+|4&ndash;8
+|4.5%
+|beam
+|-
+|[[wand of create monster|몬스터 생성]]
+|200
+|11&ndash;15
+|4.5%
+|non-directional
+|-
+|[[wand of polymorph|폴리모프]]
+|200
+|4&ndash;8
+|4.5%
+|beam
+|-
+|[[wand of teleportation|순간이동]]
+|200
+|4&ndash;8
+|4.5%
+|beam
+|-
+|colspan="5"|
+|-
+|[[wand of death|죽음]]
+|500
+|4&ndash;8
+|.5%
+|ray
+|-
+|[[wand of wishing|소원]]
+|500
+|1&ndash;3
+|.5%
+|비방향성
+|}
+
+===생성===
+
+지팡이가 모든 무작위로 생성된 아이템들 중에서 나타날 확률은 주 던전에서 4%, 상자류에서 6%, 로그 레벨에서 5%, 게헨놈에서 8%를 차지합니다.
+위 표에서 '확률' 열은 각 종류에 따른 상대적인 확률입니다.
+지팡이들은 {{frac|34}} (~3%)의 확률로 저주 또는 축복받은 채로, {{frac|16|17}} (~94%)의 확률로 저주받지 않은 채로 만들어집니다.
+
+아래 표처럼, 지팡이는 그것들의 종류에 따라 무작위 숫자의 충전수를 가지고 생성됩니다:{{refsrc|mkobj.c|577}}
+{|class="prettytable"
+!지팡이 종류
+!초기 충전횟수
+|-
+|소원의 지팡이
+|1 ~ 3
+|-
+|기타 비방향성 지팡이
+|11 ~ 15
+|-
+|방향성 지팡이
+|4 ~ 8
+|}
+
+지팡이는 [[Charging|재충전 횟수]]가 0으로 설정된 채로 생성됩니다.
+
+또한 지팡이는 몬스터가 사용하기 위해 그들의 인벤토리 안에도 생성될 수 있는데, 이때 확률은 몬스터의 종류와 레벨, 그리고 [[difficulty|난이도]]를 따릅니다:
+* 무작위 [[defensive item|방어 아이템]] (난이도-기반): [[wand of teleportation|순간이동]], [[wand of create monster|몬스터 생성]], [[wand of digging|굴삭]]
+* 무작위 [[offensive item|공격 아이템]] (난이도-기반): [[wand of death|사망]], [[wand of striking|강타]], [[wand of magic missile|매직 미사일]], [[wand of sleep|수면]], [[wand of fire|화염]], [[wand of cold|냉기]], [[wand of lightning|번개]]
+* 무작위 [[miscellaneous item|기타 아이템]] (난이도-기반): [[wand of polymorph|폴리모프]], [[wand of speed monster|몬스터 가속]], [[wand of make invisible|투명화]]
+* [[Shopkeeper|상점주인]]: [[wand of striking|강타]] (항상), [[wand of magic missile|매직 미사일]] ({{frac|4}} 확률)
+* [[Minotaur|미노타우르스]]: [[wand of digging|굴삭]] ({{frac|3}} 확률을 가지나, 대지의 정령계에서는 100%)
+* [[Master lich|마스터 리치]]: [[wand of nothing|nothing]] ({{frac|91}} 확률)
+* [[Asmodeus|아스모데우스]]: [[wand of cold|냉기]]와 [[wand of fire|화염]]
+* [[Dispater|디스패터]]: [[wand of striking|강타]]
+* [[Orcus|오르커스]]: [[wand of death|사망]]
+
+The [[Castle|성채]]의 타워 방들 중 하나에는 반드시 [[wand of wishing|소원의 지팡이]]가 있습니다.
+
+===외형===
+
+지팡이의 외형은 다음 설명들 중에서 무작위로 정해집니다.
+ 유리       발사나무       수정     단풍나무       소나무
+ 오크 나무        흑단나무      대리석      양철         놋쇠        구리      은      백금    이리듐     아연
+ 알루미늄    우라늄     철        강철       육각
+ 짧은       룬이 새겨진       긴          구부러진                  
+ 끝이 갈라진    못 박힌     보석이 박힌
+
+[[stone to flesh|돌에서 떡으로]] 주문에 맞았을 때 대리석 지팡이만이 [[meat stick|고기 막대]]로 변하며, [[force bolt|포스 볼트]] 주문에 맞았을 때 유리와 수정 지팡이만이 산산조각납니다. Wielded silver wands will do [[silver]] damage. The appearance of a wand also affects its susceptibility to erosion, which is largely cosmetic and has no implications on its functioning. (Erode-proof wands are very rare but can be wished for.) Iron, steel, hexagonal, short, runed, long, curved, spiked, and jeweled wands can rust or corrode; copper ones corrode; and wooden wands (oak, balsa, ebony, maple, pine, and forked) might also erode with fire and/or rot, but this has not yet been verified.
+
+===Direction, beams, and rays===
+
+The type of wand denotes the behavior when it is zapped. Non-directional wands do not ask for a direction. [[Beam]] wands ask for a direction, but do not show a visibly animated effect when zapped. [[Ray]] wands produce a ray that is animated on the screen; if you are unblind when you zap the wand, you will also identify that type of wand. Rays may [[ray#Bouncing rays|bounce off walls]] or be [[reflection|reflected]].
+
+If a ray hits a wall orthogonally or at an internal corner it will bounce straight back. If it hits a wall diagonally or an external corner, there is a 5% chance it will bounce straight back, otherwise it will change direction 90 degrees, with equal chances of being deflected left or right. Note that on diagonal wall bounces, the ray actually penetrates the wall one square, possibly hitting any phasing monsters in the wall.{{refsrc|zap.c|3476|comment=ray bouncing}}
+
+Note that a directional wand (or [[Directional spell|spell]]) may affect not only the first object or creature it hits, but several others behind it. An example of this is healing your pet and a few hostile monsters as well&mdash;or zapping not only your pet with a [[wand of speed monster]], but also a [[shopkeeper]], angering him.
+
+===Range===
+
+The range of a beam wand is 6 to 13 squares.{{refsrc|zap.c|2470|comment=beam wand range}} For each monster hit, range decreases 3.{{refsrc|zap.c|2717|comment=beam hit monster}} For each square in which objects are affected, range decreases 1.{{refsrc|zap.c|2744|comment=beam hit object(s)}} Beams don't bounce and can't be reflected.
+
+The range of a ray wand is 7 to 13 squares.{{refsrc|zap.c|3308|comment=ray wand range}} For each monster hit, range decreases 2.{{refsrc|zap.c|3434|comment=ray hit monster}} If fire passes over water or a fountain, or cold passes over water or lava, the ray may stop entirely or have its range decreased 1 or 3. If fire passes over scrolls or spellbooks, some may burn, but range isn't decreased.{{reffunc|zap.c|zap_over_floor}} Each time it bounces off a wall, range decreases by 1.{{refsrc|zap.c|3483|comment=ray bounce}} Reflection off a monster or you reverses the direction of travel, but range doesn't decrease.{{refsrc|zap.c|3346|comment=reflecting ray}}
+
+===명중과 빗나감===
+
+Most beam wands always hit, 몬스터는 저항할 수 있습니다.{{reffunc|zap.c|bhitm}}{{reffunc|zap.c|resist}}
+
+When [[Engulfing|engulfed]] by a monster, non-digging ray wands{{refsrc|zap.c|3292|comment=special case for non-digging ray wands when engulfed, to line 3306}} and wands of striking will always hit. Otherwise, the chance of hitting depends on the target's AC.
+
+A wand of striking never hits targets with an AC of &minus;9 or lower, always hits targets with an AC of 11 or higher, and for intermediate AC values has a (9 + AC) in 20 chance of hitting.{{refsrc|zap.c|128|comment=striking chance of hitting, you zapping monster}}{{refsrc|muse.c|1117|comment=striking chance of hitting, monster zapping you}}{{refsrc|muse.c|1128|comment=striking chance of hitting, monster zapping monster}}
+
+Both against you and against monsters, the odds of hitting with a ray wand is exclusively determined by armor class.{{reffunc|zap.c|zap_hit}}
+
+The table below shows the chance of a monster or player being hit by a ray from a wand (not accounting for possible rebounds).
+{|class="wikitable"
+!rowspan=2|AC 범위
+!rowspan=2|명중률
+!rowspan=2|AC
+!colspan=2|명중률Hit chance
+!rowspan=2|몬스터 예시
+|-
+!Fraction
+!Decimal
+|-
+|11 이상
+|1
+|colspan=3|
+| &mdash;
+|-
+|rowspan=3|10 to 3
+|rowspan=3|0.945 + {{frac|AC|200}}
+|10
+|{{frac|199|200}}
+|0.995
+|[[Scorpius]]
+|-
+|6
+|{{frac|39|40}}
+|0.975
+|[[minotaur]], [[kraken|크라켄]]
+|-
+|5
+|{{frac|97|100}}
+|0.97
+|[[couatl|코아틀]], [[python]], [[mind flayer]]
+|-
+|2 to 1
+|0.795 + {{frac|(11 × AC)|200}}
+|2
+|{{frac|181|200}}
+|0.905
+|[[Lord Surtur]], [[Medusa|메두사]], [[elemental|원소]]들
+|-
+|rowspan=2|0 to &minus;1
+|rowspan=2|0.8 + {{frac|(10 × AC)|200}}
+|0
+|{{frac|4|5}}
+|0.8
+|Other quest nemeses, [[master mind flayer]], [[shopkeeper]]
+|-
+| &minus;1
+|{{frac|3|4}}
+|0.75
+|[[Ixoth]], [[giant eel]]
+|-
+|rowspan=6|&minus;2 to &minus;14
+|rowspan=6|0.775 + {{frac|(5 × AC)|200}}
+| &minus;2
+|{{frac|29|40}}
+|0.725
+|[[Nalzok]], [[Minion of Huhetotl]]
+|-
+| &minus;3
+|{{frac|7|10}}
+|0.7
+|[[titan]], [[electric eel]], [[Vlad the Impaler]]
+|-
+| &minus;5
+|{{frac|13|20}}
+|0.65
+|[[Riders]]
+|-
+| &minus;8
+|{{frac|23|40}}
+|0.575
+|[[Wizard of Yendor|옌도르의 마법사]]
+|-
+| &minus;10
+|{{frac|21|40}}
+|0.525
+|[[disenchanter|디스인챈터]]
+|-
+| &minus;12
+|{{frac|19|40}}
+|0.475
+|[[Master Kaen]] wearing a +0 [[robe]]
+|-
+| &minus;15 and below
+| {{frac|&minus;6|AC}}
+|colspan=3|
+| &mdash;
+|-
+|}
+
+[[Image:Zap_HitProbabilitiesAC32.svg|thumb|Graph of wand and spell hitting probabilities given various target ACs and spell_bonus values]]
+Because the chance of spells hitting is affected by the player's Dexterity and skill level in the appropriate spell school, one may choose to attack a monster using a spell instead of the corresponding wand: for example, against Master Kaen wearing a +0 robe, a monk with 23 Dexterity who has reached Basic in Enchantment spells will hit with the sleep spell 86.25% of the time, whereas a wand of sleep only hits 47.5% of the time.
+
+===공격 지팡이 피해===
+
+공격 지팡이에 의한 피해를 계산하기 위해, 먼저 베이스 피해를 계산합니다:
+
+* 2d12 for [[wand of striking|striking]]{{refsrc|zap.c|129|comment=striking damage}}
+* magic missile 2d6{{refsrc|zap.c|2915}}{{refsrc|zap.c|2490|name=nd|comment=This is passed to the <tt>nd</tt> parameter of {{function|zap.c|buzz|x}} which passes it on to {{function|zap.c|zhitm|x}}, determining the number of dice.}}
+* fire, cold, and lightning 6d6{{refsrc|zap.c|2929}}{{refsrc|zap.c|2949}}{{refsrc|zap.c|3016}}<ref name="nd"/>
+
+If the wand is a [[wand of fire]] and the target is [[cold resistance|cold resistant]], 7 additional points of damage are added.{{refsrc|zap.c|2930}}
+
+If the wand is a [[wand of cold]] and the target is [[fire resistance|fire resistant]], 6d3 additional points of damage are added.{{refsrc|zap.c|2950}}<ref name="nd"/>
+
+화염, 냉기, 그리고 전격 저항 몬스터는 각각 화염, 냉기, 그리고 전격으로 부터 피해를 받지 않을 것입니다.{{refsrc|zap.c|2925}}{{refsrc|zap.c|2945}}{{refsrc|zap.c|3011}} Monsters with player-style [[magic resistance]] will take no damage from striking and magic missile.{{refsrc|zap.c|125}}{{refsrc|zap.c|2911}} All monsters have a chance, based on their level and [[monster magic resistance]], of resisting and taking half damage.{{reffunc|zap.c|resist}}
+
+공격 지팡이는 (other than striking and magic missile) 또한 인벤토리 아이템을 파괴할 수 있습니다:
+
+* 화염은 화염에 탈 수 있는 갑옷을 손상시키고 두루마리, 물약, 마법책을 파괴할 수 있습니다.{{refsrc|zap.c|2938}}
+* 냉기는 물약을 파괴할수 있습니다.{{refsrc|zap.c|2958}}
+* 전격은 반지와 지팡이를 파괴할수 있습니다.{{refsrc|zap.c|3032}}
+
+==지팡이 사용==
+
+You may {{kbd|z}}ap or {{kbd|E}}ngrave with a wand. That consumes one charge each time. [[#Breaking_wands|Covered below,]] {{kbd|a}}pply destroys wands.
+
+Zapping a wand with zero charges left usually yields "Nothing happens". But with a 1 in 121 chance, it instead wrests one last zap and then turns the wand to dust.{{reffunc|zap.c|zappable}} A cancelled wand is shown as "-1" charges and will always turn to dust ineffectively if you use it.
+
+Cursed wands have a 1% chance of exploding if zapped {{refsrc|src/zap.c|1839|version=NetHack 3.4.3}} but they otherwise function as normal. Since [[NetHack 3.6.0]], cursed wands may also explode when used to engrave.{{refsrc|src/engrave.c|630|version=NetHack 3.6.0}}
+
+[[Engraving]] with a wand is a good way to work out its [[identification|identity]]. Also, engraving with a wand of [[wand of fire|fire]] or [[wand of lightning|lightning]] is the only way to make truly permanent writing. E.g. an [[Elbereth]] that cannot degrade. How many characters you engrave determines how many turns it takes, but it always costs one charge.
+
+You can zap or break with a wand without free [[hand]]s, e.g. when wielding a cursed two-handed weapon; engraving requires [[hand]]s.
+
+{{upcoming|NetHack 3.7.0|Though this is still true, you can no longer zap a wand if polymorphed into a form that lacks hands. You cannot apply anything, including wands, in this situation either.}}
+
+===지팡이 재충전===
+{{main|Charging#Wands}}
+Wands may be recharged by [[scroll of charging|scrolls of charging]] or by the [[Platinum Yendorian Express Card]]. Previously-recharged wands have a chance of exploding (up to a maximum of 100% for a 7:x wand or a 1:x wand of wishing).
+
+A cursed scroll will not change the number of charges in a blessed wand or a wand with no charges; otherwise, "Your <wand> vibrates briefly" and its charges is set to zero. An uncursed scroll will bring the number of charges to a random number from 1 to a random number between 5 and the maximum charges shown above (or for a wand of wishing a random number from 1 to 3); a blessed scroll will bring the number of charges in the wand to a random number from 5 to the maximum charges shown above, or for a wand of wishing to three charges. If it already has that number of charges, it gains one more charge. A wand of wishing charged beyond three charges will explode. "Your <wand> <glows/vibrates> briefly" if the new enchantment is below the maximum; "Your <wand> <glows blue/vibrates> for a moment" otherwise.
+
+취소된 지팡이는 빈 지팡이와 같은 방식으로 충전될 수 있습니다. 그것은 사실상 지팡이의 취소를 해제합니다.
+
+===지팡이 부수기===
+
+You can destroy a wand by {{kbd|a}}pplying it. You will be prompted for confirmation, and you must have hands and a strength of at least 10. Wands with no charges and some wands listed below have no effect ("But nothing else happens..."). Breaking a wand with no charges may wrest a charge from it, in which case it will act like a wand with one charge.
+
+많은 지팡이는 부숴졌을때 폭발을 생성할 것입니다. The explosion causes damage to yourself and any monsters that were in the adjacent squares when you broke the wand. This damage can be reduced or eliminated if you (or the monster) has an appropriate resistance. Damage is also reduced to half for Healers and Knights and to {{frac|5}} for Monks, Priests and Wizards. Further effects can occur as if you had zapped yourself with the wand. The explosion can also affect objects in your inventory, on your square, and on adjacent squares, and affect locations as if they were zapped. 마지막으로, 어떤 종류의 지팡이는 당신이 그 지팡이를 식별하도록 만드는 폭발을 가지고 있습니다.
+특별한 효과는 아래에 자세히 설명되어 있습니다. 어떤 상황이든 당신이 지팡이를 부쉈을때, 그것이 지불되지 않았다면 그 대가를 치러야 합니다.
+
+{|class="prettytable"
+!지팡이
+!부서졌을때 효과
+|-
+|차단
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />Monsters and objects in the affected squares are cancelled.
+|-
+|냉기
+|There is an explosion of cold with (8&nbsp;&times;&nbsp;charges) damage.<br />Potions may freeze.<br />You identify the wand.
+|-
+|몬스터 생성
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage. You are surrounded by monsters.
+|-
+|death
+|There is an explosion of death with (16&nbsp;&times;&nbsp;charges) damage.<br />Non-living monsters and demons resist this damage.<br />This will not cause [[instadeath]].<br />You identify the wand.
+|-
+|채굴
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />You are surrounded by pits and holes.
+|-
+|enlightenment
+|효과 없음
+|-
+|화염
+|There is an explosion of fire with (8&nbsp;&times;&nbsp;charges) damage.<br />Armor, scrolls and spellbooks may burn.<br />Potions may boil.<br />Burns away slime.<br />You identify the wand.
+|-
+|light
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />You are blinded for (charges+1)d25 turns; surrounding monsters may also be blinded, and gremlins take damage.<br />The room is lit.
+|-
+|lightning
+|There is an explosion of lightning with (16&nbsp;&times;&nbsp;charges) damage.<br />Rings and other wands may explode.<br />You identify the wand.
+|-
+|잠금
+|효과 없음.
+|-
+|magic missile
+|There is an explosion of magic missiles with (4&nbsp;&times;&nbsp;charges) damage.<br />You identify the wand.
+|-
+|투명화
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />You and surrounding monsters are made invisible; for you, a this has a 10% chance of being permanent and a 90% chance of it lasting for (charges) to (250&nbsp;&times;&nbsp;charges) (more) turns.
+|-
+|nothing
+|효과 없음.
+|-
+|개방
+|효과 없음.
+|-
+|polymorph
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />Monsters and objects in the affected squares are polymorphed.
+|-
+|probing
+|효과 없음.
+|-
+|secret door detection
+|If there is a [[secret door]] nearby, it will be detected and the wand will be identified. Otherwise, no effect.
+|-
+|sleep
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />You and surrounding monsters may be put to sleep.
+|-
+|몬스터 감속
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />You and surrounding monsters are slowed.
+|-
+|몬스터 가속
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />You and surrounding monsters are sped up.
+|-
+|striking
+|"A wall of force smashes down around you!"<br />There is an explosion from 1 to (charges+1)d6 damage.<br />You and surrounding monsters are hit by a force bolt.<br />[[Fragile]] objects in your and adjacent squares may be destroyed.
+|-
+|순간이동
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />Monsters and objects in the affected squares are teleported.
+|-
+|언데드 변환
+|There is an explosion from 1 to (4&nbsp;&times;&nbsp;charges) damage.<br />Monsters and objects in the affected squares are turned.
+|-
+|wishing
+|효과 없음.
+|}
+
+==지팡이 감정==
+
+===새기기-감정===
+
+완드를 감정하는 가장 쉽고 안전한 방법은 완드로 [[engrave|새겨보는]] 것입니다. To do so, first write something in the dust with your fingers ("[[Elbereth]]" is a good safe default choice that exercises Wisdom to boot; [[illiterate]] characters can use "x"), 그리고 지팡이로 다른 것을 새기면 됩니다. 지팡이가 무엇인지 힌트를 주는 메시지나 효과를 얻을 수 있습니다.
+
+당신이 맹인이거나, 공중 부양 중이거나, 쓸 수 있는 바닥 위가 아닐 경우 이 방법은 먹히지 않을 것입니다.
+
+Engraving with a wand uses up one charge (possibly wresting the last), but if the wand is nondirectional, it performs its usual effect.
+
+{|class="prettytable"
+!메시지/효과
+!가능한 완드
+!메모
+|-
+|"<바닥> 위에 새긴 글씨가 사라진다!"
+|[[Wand of cancellation|차단]]<br />
+[[Wand of teleportation|순간이동]] (the engraving is moved elsewhere in the level)<br />
+[[Wand of make invisible|투명화]]<br />
+{{의|완드|냉기}} (if the existing engraving is a burned one)
+|새긴 글씨가 존재하지 않을 경우 메시지 없음
+|-
+|"완드에서 얼음 큐브가 조금 떨어진다."
+|[[Wand of cold|냉기]]
+|
+|-
+|"<바닥>의 벌레가 움직임을 멈춘다!"
+|[[Wand of sleep|sleep]]<br/>[[Wand of death|death]]
+|
+|-
+|
+"이 <완드>는 채굴의 완드다!"
+
+"Gravel flies up from the floor!"
+|[[wand of digging|채굴]]
+|wand self-identifies
+|-
+|"이 <완드>는 화염의 완드다!"
+|[[Wand of fire|화염]]
+|wand self-identifies
+|-
+|"Lightning arcs from the wand. You are blinded by the flash!"
+"This <wand> is a wand of lightning!"
+|[[Wand of lightning|lightning]]
+|wand self-identifies
+|-
+|"The <floor> is riddled by bullet holes!"
+|[[Wand of magic missile|magic missile]]
+|
+|-
+|"이제 새긴 글씨는 이렇게 읽힌다: <무작위 메시지>"
+|[[Wand of polymorph|폴리모프]]
+|새긴 글씨가 존재하지 않을 경우 메시지 없음
+|-
+|"<바닥>의 벌레들이 느려진다!"
+|[[Wand of slow monster|몬스터 감속]]
+|
+|-
+|"<바닥>의 벌레들이 빨라진다!"
+|[[Wand of speed monster|몬스터 가속]]
+|
+|-
+|"완드가 당신의 쓰려는 시도에 저항을 실패한다!"
+|[[Wand of striking|striking]]
+|
+|-
+|"이 완드는 새기기에는 너무 낡았다."
+|완드가 고갈됨 (x:0)
+|
+|-
+|메시지나 효과 없음
+|[[Wand of locking|잠금]]<br />[[Wand of opening|개방]]<br />[[Wand of probing|탐지]]<br />[[Wand of undead turning|언데드 변환]]<br />[[Wand of nothing|없음]]<br />[[Wand of secret door detection|비밀문 탐지]] (self-identifies if secrets are detected) <br />wand is cancelled (x:-1)<br />
+|
+|}
+
+Create monster, enlightenment, light, and wishing perform their usual effect and self-identify when engraved with. Wands of secret door detection self-identify if they find anything; otherwise, no effect or message.
+
+This technique can be dangerous with wands of create monster and lightning, summoning a monster or making you blind, thus overwriting your existing engraving with "Elbereth" can be helpful. Lightning will burn it into the floor making a permanent Elbereth square to wait out your blindness. Alternatively, you can abort at the prompt what text to engrave, and you won't get blinded.
+
+Also, be careful concerning the identical message for wands of make invisible, teleportation, and cancellation; you don't want to end up teleporting yourself or cancelling a pet by accident. The safest way to find out the exact identity is using the wand on a non-blank scroll or non-clear potion you neither need nor care if a monster picks it up (for example, [[scroll of light]]). If nothing happens, it's make invisible; if the item disappears, it's teleport; if the item blanks/clears (or turns into fruit juice if you're using [[potion of sickness]]), it's cancellation.
+
+To identify a wand that gives no message, zap it at a line containing the following easy-to-acquire objects:
+* a doorway without a door (eg. one with the door kicked out)
+* a locked container (chest or large box)
+* a corpse
+If a door is created in the doorway, it's locking. If the container unlocks, it's opening. If the contents of the container are revealed, it's probing,. If the corpse revives, it's undead turning. If it doesn't ask for a direction, it's secret door detection or nothing.
+
+===Identification by zapping===
+
+A good way to determine the identity of a wand that makes engravings vanish&mdash;at the cost of using a second charge&mdash;is to do this: line up an item and a monster and zap them. If they both vanish it was teleportation, if the monster vanishes it was make invisible, and if neither vanishes it was cancellation. You can also place a [[junk]] scroll on the ground and zap it. If it disappears, the wand is teleportation. If the scroll is blanked, the wand is cancellation. If nothing happens, it's make invisible. This technique doesn't result in an invisible monster.
+
+Many wands will self-identify on zapping. A single zap under the right circumstances can identify nearly all of these: stand in a room where you know there is an undetected trap or door (messages such as ''Vlad was here'' or ''ad aerarium'' indicate such a door), and another door that is closed but unlocked. Drop an object that can be recognizably cancelled (such as a junk scroll) on a diagonal to the door (to prevent dangerous beams from hitting you), and lure a visible undead monster onto the same diagonal line. Zap toward the object, monster, and door. If both object and monster vanish, the wand is teleportation; if the monster vanishes and the object doesn't, it is make invisible; if the scroll is blank, it was cancellation; if the door opens, it was opening; if the door is now locked, it was locking; if the monster flees, it was turn undead; if the hidden door appears, it was secret door detection. If nothing happens, it was a wand of digging or of nothing, or it was empty of charges. If it was any other kind of wand, it will self-identify.
+
+===가격-감정===
+
+Almost any class of items can be [[price identification|price-identified]], but there are two groups of wands for which this is exceptionally useful. Wands of wishing and wands of death are covered in the [[price identification]] article; both have base cost 500. In addition, the four wands with base cost 175 are all very useful in the early or middle game. Wands of cold, fire, and lightning provide a powerful ranged attack. Wands of fire and lightning offer an instant method of engraving Elbereth. Freezing water with a wand of cold is one way to cross it or to deal with [[sea monster]]s and their dreaded instakill. And wands of sleep are great all the time.
+==전략==
+{{main|Wand strategy}}
+
+===폴리파일링===
+{{main|Polypiling}}
+
+Non-directional wands come with lots of charges, which are preserved on polymorph. Polypile them if you lack powerful offense, teleportation, or cancellation wands.
+
+Wands are quirky when polymorphed; unlike many other objects, where the greatest risk is sundering and golem generation, their quality will quickly degrade. The most useful wands are wishing (to wish for a wand of death), death (to clear a five-lane highway to the [[Castle]]'s wand of wishing), polymorph, digging, secret door detection, cold, and teleportation. Most others, by the time the player has a means to polymorph objects, have long since become useless. The two most useful&mdash;wishing and polymorph&mdash;will never appear in polymorphs, so don't try.
+
+By the time the player seriously considers polypiling, they'll have all the wands of teleportation they're likely to need. The same goes for digging&mdash;and additionally, a [[pick-axe]] can work in a pinch for a slower means of clearing a pre-amulet fast-track to the [[Plane of Earth]]. For many players, secret door detection has one use and ''one use only''&mdash;getting through [[Gehennom]] and [[Moloch's Sanctum]] fire traps ''that much faster''. And there, they may instead opt to carry the [[Bell of Opening]] just a few steps further to serve this purpose. Wands of cold are useful for freezing moats and lava, but even there a player is likely to greatly prefer a [[ring of levitation]].
+
+==변종==
+===에이스핵===
+In [[AceHack]], engraving will formally identify the wand if that gives an unambiguous message (e.g. [[wand of cold|cold]] or [[speed monster]]).
+
+===슬래시엠===
+In [[SLASH'EM]], cursed wands explode 20% of the time (not just 1%) when zapped, but never explode when engraved with. Curse-test your [[wand of wishing]]! Also, exploding wands in SLASH'EM are much more dangerous to anyone caught in the explosion: many wands have their standard effects (cancellation, death etc.) on whoever is inside the explosion's radius. Most attack wands also cause a high amount of elemental damage upon exploding, capable of instakilling a low-level character.
+
+SLASH'EM wands, other than the [[wand of wishing]], generally have 4 more charges than a vanilla NetHack wand would have: <ref>[[Source:SLASH'EM_0.0.7E7F2/mkobj.c#line679]], compare with vanilla's mkobj.c</ref>
+{|class="prettytable"
+!Wand type
+!Starting charges
+|-
+|Wand of wishing
+|1 to 3
+|-
+|Other non-directional wand
+|15 to 19
+|-
+|Directional wand
+|8 to 12
+|}
+
+====새기기-감정====
+In addition to the vanilla table:
+{|class="prettytable"
+!Message/effect
+!Possible wand
+!Notes
+|-
+|"The engraving on the <floor> vanishes!"
+|draining (if engraving was short)
+|Given when short engraving is erased; no message if no existing engraving
+|-
+|"The engraving looks different now.
+|draining
+|For longer existing engravings; message is shared with polymorph, but wand erodes engraving instead of changing it
+|
+|-
+|"The bugs on the floor run away!"
+|fear
+|Wand does not self-identify, but message is unambiguous
+|-
+|"The bugs on the floor look healthier!"
+|healing/extra healing
+|Zapping yourself with the wand will then cause it to self-identify.
+|-
+|}
+
+A [[wand of create horde]] will have its usual effect when zapped. This can be dangerous to weaker characters, so having an [[escape item]] ready may be a good idea. Wands of create horde are quite rare, however.
+
+===슬래시엠 익스텐디드===
+
+There are additional wands in [[Slash'EM Extended]]. Some of them automatically identify when engraved with, others will give a message:
+{|class="prettytable"
+!Message/effect
+!Possible wand
+!Notes
+|-
+|"The bugs on the <floor> seem to be covered with goo!"
+|acid
+|Wand does not self-identify, but message is unambiguous
+|-
+|"The bugs on the floor are blown away!"
+|wind (also exists in [[SporkHack]])
+|Wand does not self-identify, but message is unambiguous
+|
+|-
+|"The engraving on the <floor> shines brightly for a moment!"
+|solar beam
+|Wand does not self-identify, but message is unambiguous
+|-
+|"The bugs on the <floor> speed up!"
+|haste monster
+|This message is shared by the wand of speed monster. Zap it at yourself to see which one it is: speed monster permanently gives you the "fast" intrinsic, haste monster makes you "very fast" for a period of time.
+|-
+|"The bugs on the <floor> look healthier!"
+|full healing
+|This message is shared by the wands of healing and extra healing. Zap it at yourself or a monster for a less ambiguous message.
+|-
+|"The engraving is blurred, and you think you can see it twice!"
+|clone monster
+|Only appears if there was an existing engraving. There is no other wand that gives this message; the text of the actual engraving doesn't get cloned though.
+|-
+|"The engraving on the <floor> vanishes!"
+|banishment
+|Only appears if there was an existing engraving and you're not standing on a headstone. This message is shared by the wands of cancellation, make invisible and teleportation; the wand of draining may give the same message if it was used on a very short engraving. Zapping it at an item or monster may help to figure out which one it is; zapping yourself can be very dangerous.
+|-
+|"You summon some undead creatures!"
+|summon undead
+|You identify the wand, and some hostile undead creatures are summoned around you to fight.
+|-
+|"You feel entrapped."
+|entrapping
+|You identify the wand, and detect traps on the current level.
+|-
+|"You grasp some bits from the current map!"
+|magic mapping
+|You identify the wand, and parts of the current level map are filled in.
+|-
+|"You are surrounded by darkness!"
+|darkness
+|You identify the wand, and the area surrounding you becomes unlit.
+|-
+|"You feel endangered!!"
+|trap creation
+|You identify the wand, and the squares surrounding you are filled with random traps.
+|-
+|No message
+|detect monsters
+|You identify the wand, and all monsters on the current level become visible to you for a period of time.
+|-
+|"You detect the presence of objects."
+|objection
+|You identify the wand, and detect objects on the current level.
+|-
+|"You feel insightful!"
+|identify
+|You identify the wand, and can identify some items in your inventory.
+|-
+|"You feel like someone is helping you!!"
+|remove curse
+|You identify the wand, and your inventory items have a chance of becoming uncursed.
+|-
+|"You feel someone is punishing you for your misbehavior!"
+|[[punishment]]
+|You identify the wand, and are chained to a [[heavy iron ball]], or if you are already punished, the ball gets heavier.
+|-
+|"The bugs on the floor are clearly visible!"
+|make visible
+|Wand does not self-identify, but message is unambiguous
+|-
+|No message
+|bugging
+|You identify the wand, and some bugs and heisenbugs are summoned around you to fight.
+|-
+|No message
+|wonder
+|This wand does not autoidentify upon engraving with it, and there is no clue as to what it does. However, zapping a wand of wonder will identify it. Beware, zapping this wand may have some negative effects like surrounding you with monsters or chaining you to a heavy iron ball!
+|-
+|}
+
+===언넷핵===
+When some wands are broken, in addition to the vanilla effect, sometimes a [[trap]] is created. The chance of creating a trap is (charges – 3)/(charges – 2), or zero if the wand does not have at least 3 charges.
+
+{|class="prettytable"
+!Wand
+!Effect when broken
+|-
+|cancellation
+|In addition to the explosion, an anti-magic trap is created if allowed by the terrain.
+|-
+|cold
+|In addition to the explosion, an ice trap is created if allowed by the terrain.
+|-
+|death
+|In addition to the explosion, a magic trap is created if allowed by the terrain.
+|-
+|fire
+|In addition to the explosion, a fire trap is created if allowed by the terrain.
+|-
+|lightning
+|In addition to the explosion, a magic trap is created if allowed by the terrain.
+|-
+|magic missile
+|In addition to the explosion, a magic trap is created if allowed by the terrain.
+|-
+|nothing
+|Gives the message, "Suddenly, and without warning, nothing happens."
+|-
+|opening
+|A trap door is also created if allowed by the terrain.
+|-
+|polymorph
+|In addition to the explosion, a polymorph trap is created if allowed by the terrain.
+|-
+|sleep
+|In addition to the explosion, a sleeping gas trap is also created if allowed by the terrain.
+|-
+|teleportation
+|In addition to the explosion, a teleport trap is also created if allowed by the terrain.
+|-
+|wishing
+|Gives the message, "You really wish you hadn't done that."
+|}
+
+===Wand rebalance===
+[[FIQhack]] and [[NetHack Fourk]] rebalances wands to scale on a new skill, ''wands skill'' to make several wands that lose usefulness latergame, more useful. For more information on the details, see [[Wands Balance Patch]].
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+'Saruman!' he cried, and his voice grew in power and authority.
+'Behold, I am not Gandalf the Grey, whom you betrayed.  I am
+Gandalf the White, who has returned from death.  You have no
+colour now, and I cast you from the order and from the Council.'
+He raised his hand, and spoke slowly in a clear cold voice.
+'Saruman, your staff is broken.'  There was a crack, and the
+staff split asunder in Saruman's hand, and the head of it
+fell down at Gandalf's feet.  'Go!' said Gandalf. With a cry
+Saruman fell back and crawled away.
+|[ The Two Towers, by J.R.R. Tolkien ]
+}}
+
+{{DOD}}
+
+{{nethack-343|offset=1}}
+{{featured}}
+
+==References==
+<references/>
+[[Category:Wands| ]]
+[[Category:Identification]]
+[[Category:UnNetHack]]
+[[Category:한국어]]
+{{nethack-360}}}
+&&%s&& %s Template:의 {138550 2021-03-16T09:09:02Z {4001481 Stay Hydrated1}  <includeonly>[[{{#switch:{{{2}}}|ESP|Yendor={{{2}}}|{{lcfirst:{{{2}}}}}}}의 {{{1}}}|{{{2}}}]]{{
+#if:{{{6|}}}
+ |, [[{{{3}}}의 {{{1}}}|{{{3}}}]], [[{{{4}}}의 {{{1}}}|{{{4}}}]], [[{{{5}}}의 {{{1}}}|{{{5}}}]], {{#if:{{{또는|}}}|또는|{{#if:{{{그리고|}}}|그리고}}}} [[{{{6}}}의 {{{1}}}|{{{6}}}]]
+ |{{#if:{{{5|}}}
+   |, [[{{{3}}}의 {{{1}}}|{{{3}}}]], [[{{{4}}}의 {{{1}}}|{{{4}}}]], {{#if:{{{또는|}}}|또는|{{#if:{{{그리고|}}}|그리고}}}} [[{{{5}}}의 {{{1}}}|{{{5}}}]]
+   |{{#if:{{{4|}}}
+     |, [[{{{3}}}의 {{{1}}}|{{{3}}}]], {{#if:{{{또는|}}}|또는|{{#if:{{{그리고|}}}|그리고}}}} [[{{{4}}}의 {{{1}}}|{{{4}}}]]
+     |{{#if:{{{3|}}}
+       |{{#if:{{{또는|}}}|&#32;또는|{{#if:{{{그리고|}}}|&#32;그리고|,}}}} [[{{{3}}}의 {{{1}}}|{{{3}}}]]
+      }}
+    }}
+  }}
+}}</includeonly>
+<noinclude>
+== 사용법 ==
+:<code><nowiki>{{의|완드|비밀문 감지}}</nowiki></code>
+:{{의|완드|비밀문 감지}} (의|물체|특성 = 특성의 물체 = 비밀문 감지의 완드)
+== 응용 ==
+<code><nowiki>{{의|반지|냉기 저항|힘 획득|명중률 상승|또는=1}}</nowiki></code><br />
+= {{의|반지|냉기 저항|힘 획득|명중률 상승|또는=1}}<br />
+여기서 '또는' 대신 '그리고'도 사용이 가능합니다.<br />
+<code><nowiki>{의|반지|냉기 저항|힘 획득|명중률 상승|그리고=1}}</nowiki></code><br />
+= {{의|반지|냉기 저항|힘 획득|명중률 상승|그리고=1}}
+== 사용 이유 ==
+[[냉기 저항의 반지]], [[힘 획득의 반지]], [[명중률 상승의 반지]]를 일일이 다 치면 너무 귀찮습니다.
+이때 '의' 템플릿을 사용해서 하나로 묶어줄 경우 '''{{의|반지|냉기 저항|힘 획득|명중률 상승}}'''으로 편하게 쓸 수 있습니다.
+
+물체 지정은 따로 하지 않았기 때문에 완드, 주문서, 반지는 자유롭게 사용이 가능합니다만
+신발(boots), 갑옷(armor), 망토(cloak)류는 '의'(of)를 사용하지 않으므로 적용이 불가능한 점만 조심해 주시면 됩니다.
+[[Category:Templates|{{PAGENAME}}]] [[Category:한국어]]
+</noinclude>}
+&&%s&& %s Theme room {133677 2020-04-23T02:17:41Z {4000693 Phol ende wodan} redirect to Themed room #REDIRECT [[Themed room]]}
+&&%s&& %s Themed rooms {133678 2020-04-23T02:18:50Z {4000693 Phol ende wodan} redirect to Themed room #REDIRECT [[Themed room]]}
+&&%s&& %s Theme rooms {133679 2020-04-23T02:19:22Z {4000693 Phol ende wodan} redirect to Themed room #REDIRECT [[Themed room]]}
+&&%s&& %s 가격 감정 {134613 2020-06-28T01:29:09Z {4001384 Stay Hydrated}  #REDIRECT [[Price identification/ko]]
+[[Category:한국어]]}
+&&%s&& %s Wand of secret door detection/ko {134244 2020-06-09T18:27:46Z {4001384 Stay Hydrated}  {{wand
+ |name=secret door detection
+ |cost=150
+ |type=non-directional
+ |maxcharges=15
+ |abundance=5%
+ |spell=detect unseen
+}}
+
+'''비밀문 탐지의 지팡이'''는 ''[[NetHack|넷핵]]''에 등장하는 [[wand|지팡이]]입니다.
+
+== Effects ==
+{{float right| {{caption|{{Circleradius9|r=8}}|Area in which traps etc. are revealed}} }}
+When zapped, the wand has the same effect as a [[spell of detect unseen]]: it detects all undiscovered [[secret door]]s, [[mimic]]s, and [[trap]]s in a radius of 8 squares in line-of-sight upon zapping/engraving.<ref>[[Zap.c#zapnodir]], [[Detect.c#findit]], [[Hack.h#line21]], [[Vision.c#do_clear_area]], [[Detect.c#findone]]</ref> It will also show the location of submerged creatures in pools. On the [[Plane of Air]] only, the wand also penetrates [[cloud]]s.
+
+Nearby monsters that you can't see due to [[invisibility]] will be revealed as {{gray|I}}. Marks on spaces without monsters are removed, and monsters that are [[hiding]] will be revealed. Engraving with the wand will only [[auto-identify]] it if any of these things are present; 그렇지 않으면, 메시지가 출력되지 않습니다.
+
+== Strategy ==
+이 지팡이를 [[Identification|감정]]하는것은 아주 쉽습니다, as it is non-directional and the wands of [[wand of light|light]], [[wand of enlightenment|enlightenment]], [[wand of create monster|create monster]], and [[wand of wishing|wishing]] - all of which are also non-directional - have very obvious effects and usually auto-identify when zapped.
+
+비밀문 탐지의 지팡이는 [[Moloch's Sanctum|몰록의 성지]]에 있는 [[temple|사원]]의 숨겨진 입구를 찾는데에 가장 많이 쓰입니다. [[Elemental Planes|정령계]]에서 [[portal|포탈]]을 찾을때도 사용될수 있습니다.
+
+==References==
+<references/>
+
+[[Category:Wands|Secret door detection]]
+{{nethack-364}}
+[[Category:한국어]]}
+&&%s&& %s Resistance/ko {134228 2020-06-09T18:11:28Z {4001384 Stay Hydrated}  '''저항'''은 당신이 던전에서 마주칠 수 있는 여러 해로운 효과들로부터 보호해줍니다. 저항은 자연적 저항을 의미하는 [[intrinsic|본질적]] 저항과, 특정 아이템을 [[wear|착용]]하거나 [[wield|휘두름]]으로써 얻을 수 있는 [[extrinsic|비본질적]] 저항이 있습니다. 많은 본질적 저항은 오직 특정 생명체로 [[polymorphing|폴리모프하는 것]]으로만 얻을 수 있으며, 이는 그닥 편하지는 않습니다. 
+
+==본질적 저항==
+
+본질적 저항을 얻는 가장 일반적인 방법 중 하나는 [[corpse|시체]]를 먹는 것입니다. 특히 용 시체는 황색, 회색, 은색을 제외하고 아래에 명시된 색에 따라 저항을 부여할 수 있는 것이 보장되어 있습니다. 다른 몬스터들도 그들의 시체를 먹는다면 본질적 저항을 제공하는데, 그 자세한 내용은 개별 몬스터 설명에서 찾을 수 있습니다.
+
+==비본질적 저항==
+비본질적 저항은 아이템을 통해 획득이 가능합니다. [[Dragon scale mail|용비늘 갑옷]]과 저급 [[dragon scale|용비늘]]은 많은 저항에 대한 확실한 방법을 제공합니다. [[Artifact|유물]]들 또한 종종 저항을 제공하며, 이들이 제공하는 것들 중 일부는 다른 방법으로는 얻기 힘든 것들도 있습니다.
+
+==요약==
+저항과 이를 얻기 위한 방법에 대한 표는 다음과 같습니다(아직 불완전합니다):
+
+{| class="prettytable striped"
+!저항 !! 용 시체 !! 용 비늘 !! 아이템 !! 폴리모프 형태<br /> ([[Monster resistances|몬스터 저항]] 참조)
+|-
+|[[Acid resistance|산성 저항]] || ''없음'' || 노랑 || [[Alchemy smock|연금술 작업복]] || 아무 산성 시체 몬스터 (e.g. [[acid blob|산성 방울]])
+|-
+|[[냉기 저항]] || 하양 || 하양 || ''많음'' || 많은 "냉기" 몬스터
+|-
+|[[Disintegration resistance/ko|붕괴 저항]] || 검정 || 검정 || 없음 || (아기) 검정 용
+|-
+|[[화염 저항]] || 빨강 || 빨강 || ''많음'' || 많은 "화염" 몬스터
+|-
+|[[Magic resistance|마법 저항]] || ''없음'' || 회색 || [[Cloak of magic resistance|마법 저항의 망토]]<br />많은 [[Quest artifact|퀘스트 유물]] || (아기) 회색 용
+|-
+|[[독 저항]] || 초록 || 초록 || [[Ring of poison resistance|독 저항의 반지]],<br /> [[amulet versus poison|독 저항의 부적]],<br /> [[Alchemy smock|연금술 작업복]] || 언데드, 악마, 많은 "독" 몬스터
+|-
+|[[Shock resistance/ko|전격 저항]] || 파랑 || 파랑 || [[Ring of shock resistance|전격 저항의 반지]] || &nbsp;
+|-
+|[[Sleep resistance|수면 저항]] || 주황 || 주황 || &nbsp; || 언데드, 엘프
+|-
+|[[Hallucination|환각]] 저항 || ''없음'' || ''없음'' || [[Grayswandir|그레이스완디르]] || &nbsp;
+|-
+|[[Drain resistance|드레인 저항]] || ''없음'' || ''없음'' || [[Excalibur|엑스칼리버]]<br />[[The Staff of Aesculapius|아스클레피오스의 지팡이]]<br />[[Stormbringer|스톰브링어]] || 아무 언데드나 악마
+|-
+|[[Stoning|석화]] 저항 || ''없음'' || ''없음'' || &nbsp; || 산성 또는 석재 생명체들 (예: [[gargoyle|가고일]], [[stone golem|돌 골렘]])
+|-
+|[[Sliming|슬라임화]] 저항 || ''없음'' || ''없음'' || &nbsp; || [[Green slime|초록 슬라임]], 불같은(단순히 "뜨거운" 게 아님) 생명체들
+|-
+|[[Sickness|질병]] 저항 || ''없음'' || ''없음'' || &nbsp; || [[Ghoul|구울]], [[Fungus|곰팡이]]
+|}
+
+== 더 보기 ==
+* [[Monster resistances|몬스터 저항]]
+* [[Monster resistances (UnNetHack)|몬스터 저항 (언넷핵)]]
+
+[[Category:Resistances| ]]
+[[Category:한국어]]
+{{nethack-343}}}
+&&%s&& %s Alchemy smock/ko {134249 2020-06-09T18:31:13Z {4001384 Stay Hydrated}  {{armor
+  |color=white
+  |name=alchemy smock
+  |appearance=apron
+  |slot=cloak
+  |ac=1
+  |special=<ul><li>[[magic cancellation|MC1]]</li><li>[[acid resistance]]</li><li>[[poison resistance]]</li></ul>
+  |cost=50
+  |weight=10
+  |material=cloth
+}}
+
+'''연금술 작업복'''은 [[cloak|망토]] 종류에 해당하는 물체입니다. 미감정시 '''apron'''으로 나타납니다. 이름에도 불구하고 연금술 작업복을 입는 것은 [[alchemy|연금술]]의 실천에 실제적인 영향은 없습니다.
+
+== Effects ==
+The alchemy smock provides [[acid resistance]], [[poison resistance]], and [[Magic cancellation|MC1]]. This resistance will even protect you when eating poisonous or acidic corpses. Bizarrely, monsters will not get acid resistance from an alchemy smock, only poison resistance.
+
+Alchemy smocks can be [[read]] to receive one of a number of cooking-related [[YAFM]], similarly to [[T-shirt]]s.{{reffunc|read.c|apron_text}}
+
+== History ==
+
+The ability to read alchemy smocks was added in [[3.6.0]].
+
+== Strategy ==
+
+The alchemy smock is quite useful for non-orcish starting characters, as it is possible to don the smock and eat poisonous corpses (such as [[killer bees]]) to gain the poison resistance intrinsic without risk, which will stay with the character after the smock is removed. This item is particularly useful because there is no way to gain intrinsic acid resistance.
+
+== SLASH'EM ==
+
+In SLASH'EM this is replaced by the [[Lab coat]], which has higher [[Magic cancellation]].
+
+== References ==
+<References />
+
+[[Category:Cloaks]]
+{{nethack-360}}
+[[Category:한국어]]}
+&&%s&& %s Price id/ko {133992 2020-05-07T17:59:49Z {4001384 Stay Hydrated} Changed redirect target from [[가격 감별]] to [[Price identification/ko]] #REDIRECT [[Price identification/ko]]}
+&&%s&& %s 가격 감별 {133991 2020-05-07T17:58:49Z {4001384 Stay Hydrated} Changed redirect target from [[Price Identification/ko]] to [[Price identification/ko]] #REDIRECT [[Price identification/ko]]}
+&&%s&& %s 저항 {134229 2020-06-09T18:13:08Z {4001384 Stay Hydrated} 아무도 한글 문서를 신경쓰고 있지 않기는 한데 이쯤되면 솔직히 죄책감이 듦 #REDIRECT [[Resistance/ko]]
+[[Category:한국어]]}
+&&%s&& %s Immunity to sickness/ko {134251 2020-06-09T18:32:20Z {4001384 Stay Hydrated}  '''질병에 면역'''은 [[NetHack|넷핵]]에서의 [[property]]입니다. ('''질병 저항'''으로도 알려짐)
+
+== 효과 ==
+질병에 면역인 몬스터는 [[food poisoning|식중독]]과 [[disease|병]] 모두 [[Juiblex|쥬블렉스]]와 같은 괴물의 공격에 완전히 면역이 됩니다.
+
+==전략==
+면역을 획득하는것은 당신이 오래된 [[corpses|시체]]를 안전하게 먹을수 있게 해줍니다. (썩거나 오염된것), [[mummies|미라]]나 [[zombie|좀비]] 시체를 포함합니다. 하지만, 바닐라에선, 오직 [[fungi|곰팡이]]와 [[ghoul|구울]]만 질병에 면역입니다. 
+
+== 변종 ==
+해당 property은 ''[[SLASH'EM|슬래시엠]]''에서 더 흔합니다, 두개의 [[role|직업]]인, [[Necromancer|사령술사]]와 [[Undead Slayer|퇴마사]]가, 선천적인 질병에 면역으로 게임을 시작합니다. 이것은 사령술사나 퇴마사가 어떤 것을 안전하게 먹을 수 있다는 것을 의미하지는 않습니다; 다른 문제들 중에서, 시체는 산성이나 독성이 있을 수 있습니다.
+
+[[UnNetHack|언넷핵]]의 [[Convict|죄수]] 직업은 질병에 면역인 본질적 능력을 가지고 있습니다.
+
+== 메시지 ==
+{{message|You feel a slight illness.|몬스터가 당신에게 질병 공격을 했으나, 당신은 질병에 면역인 상태입니다.}}
+{{message|It doesn't seem at all sickening though...|"Ulch! That <food> was tainted!" 메시지가 뜬후 바로 나타납니다. 시체가 식중독을 일으켰지만, 당신은 질병에 면역인 상태입니다.}}
+{{message|You are immune to sickness.|[[Enlightenment|깨달음]] 메시지.}}
+
+[[Category:Resistances]]
+{{nethack-364}}
+[[Category:한국어]]}
+&&%s&& %s Wand of locking/ko {134245 2020-06-09T18:28:07Z {4001384 Stay Hydrated}  {{wand
+  |name=locking
+  |cost=150
+  |type=beam
+  |maxcharges=8
+  |abundance=2.5%
+  |spell=wizard lock
+}}
+
+'''잠금의 완드'''는 [[chest|상자]]나 [[door|문]]을 닫고 잠글 것입니다. 만약 문이나 잠금이 고장났을경우, 그것이 수리될것입니다. 만약 출입구에 문이 전혀 없다면 문이 만들어질 것입니다. (만약 출입구에 무언가가 있다면, 주문이 먹히지 않을 것입니다.) [[Drawbridge|도개교]]는 닫힐 것입니다. 
+
+잠금의 완드 효과는 마법 잠금의 마법책과 동일하다.; see further information at [[wizard lock]].
+
+{{nethack-361}}
+[[Category:Wands|Locking]]
+[[Category:한국어]]}
+&&%s&& %s Scroll of punishment/ko {134258 2020-06-09T18:58:08Z {4001384 Stay Hydrated}  {{scroll|name=punishment|cost=300|ink=5-9}}
+
+The '''scroll of punishment''' is one of the nastiest scrolls in the game. It [[punishment|punishes]] you by chaining a heavy [[iron ball]] to you, which hinders your movements.
+
+==읽었을때의 효과==
+
+{|class="wikitable"
+!colspan="2"|case
+!효과
+|-
+|colspan="2"|축복 또는 혼란
+|효과 없음
+|-
+|rowspan="2"|미저주
+|미징벌 상태||당신이 징벌받음
+|-
+|징벌받은 상태||철구의 무게가 160 만큼 증가
+|-
+|rowspan="2"|cursed
+|미징벌 상태||당신이 징벌받음
+|-
+|징벌받은 상태||철구의 무게가 320 만큼 증가
+|}
+
+==생성==
+
+징벌의 두루마리는 다른 모든 300zm 두루마리와 동일한 확률로 랜덤하게 생성됩니다. 무작위로 생성되는 모든 두루마리 중 1.5%가 징벌의 두루마리입니다.
+
+마법사와 수도승은 감정된 징벌의 두루마리와 함께 시작할수 있습니다.
+
+==감정==
+
+It is expensive, so when unidentified, less careful players might mistake it for the [[scroll of genocide]] or the [[scroll of stinking cloud]]. When blessed, this scroll is harmless; you only get the message "You feel guilty".
+
+두루마리는 읽었을때 자동감정 됩니다.
+
+==메시지==
+
+{|class="wikitable"
+!Message!!Reason
+|-
+|"You feel guilty."||두루마리가 축복받았거나, 당신이 혼란 상태
+|-
+|"You are being punished for your misbehavior!"||두루마리가 미저주 상태거나 저주받은 상태
+|-
+|"A ball and chain appears, then falls away."||징벌을 받았으나 쇠사슬이 붙어 있을수가 없었다.
+|}
+
+==전략==
+
+징벌의 두루마리중 가장 좋은 것은 재판매 가치라고 합니다. 그것 말고도, 당신은 아마도 이것들을 [[wet|비우는]]데 사용하고 싶을 것입니다.
+
+See [[punishment]] for why being punished may be desirable. Short version: it isn't, except as a makeshift weapon before you see anything else, or some corner cases involving jumping.
+
+==변종==
+===언넷핵===
+Reading a non-blessed scroll of punishment while confused will summon a [[punisher]]. This reveals it as a Bad Idea.
+
+===슬래시엠 익스텐디드===
+Monsters can use scrolls of punishment, which will punish '''you''' (not the reading monster) with a heavy iron ball chained to you. Therefore, you probably shouldn't leave them on the floor where monsters can pick them up. This includes selling them in a shop.
+
+[[Category:Scrolls|Punishment]]
+{{nethack-361}}
+[[Category:한국어]]}
+&&%s&& %s Lump of royal jelly/ko {134259 2020-06-09T18:58:29Z {4001384 Stay Hydrated}  {{comestible
+  |color=yellow
+  |name=lump of royal jelly
+  |cost=15
+  |nutrition=200
+  |turns=1
+  |weight=2
+  |conduct=vegetarian
+}}
+
+'''로열 젤리 덩어리'''는 보통 [[beehive|벌집]]에서만 찾을수 있는 특별한 [[comestible]]입니다. ([[horn of plenty|풍요의 뿔]]로도 생성될수 있음). 
+로열 젤리는 [[vegetarian]] but not [[vegan]].
+
+==효과==
+
+축복받았거나 미저주인 로열 젤리 덩어리를 먹는것은 당신의 [[strength|힘]]을 1 올릴 것입니다. (이미 최대치가 아니라면){{refsrc|eat.c|1692}} 만약 저주받았다면, 그것은 당신의 힘을 1 낮출 것입니다.
+
+당신의 다리가 [[wounded legs|다쳤다면]], 그것은 치료될 것입니다.
+
+당신의 [[hit points|체력]]이 0-20 만큼 상승합니다. (젤리가 저주받았다면 감소). 만약 이것이 당신의 최대 HP보다 당신의 HP를 더 높이게 된다면, 당신의 최대 HP를 1만큼 증가시킬 6.25%의 확률(16분의 1)이 있습니다.
+
+{{upcoming|NetHack 3.7.0|Applying royal jelly to objects will smear it on them. Currently the only object affected by this is the [[egg]]. Cursed royal jelly will kill an egg; uncursed will rejuvenate it; and blessed will make the egg recognize you as its parent if it hatches in your inventory. This only works on monster eggs. Additionally, using royal jelly of any beatitude on a killer bee egg will turn it into a queen bee egg.}}
+
+==전략==
+
+Royal jelly is a popular comestible to store for the [[ascension run]], as it has a very good [[Nutrition/Weight|nutrition-to-weight ratio]] and can be eaten in one turn, both of which can be crucial concerns in the late game.
+
+==Encyclopedia entry==
+{{encyclopedia|
+"'Royal Jelly,'" he read aloud, "'must be a substance of
+tremendous nourishing power, for on this diet alone, the
+honey-bee larva increases in weight fifteen hundred times in
+five days!'"
+
+"How much?"
+
+"Fifteen hundred times, Mabel.  And you know what that means
+if you put it in terms of a human being?  It means," he said,
+lowering his voice, leaning forward, fixing her with those
+small pale eyes, "it means that in five days a baby weighing
+seven and a half pounds to start off with would increase in
+weight to five tons!"
+|[ Royal Jelly, by Roald Dahl ]
+}}
+
+
+==References==
+<references/>
+[[Category:Comestibles]]
+{{nethack-343}}
+[[Category:한국어]]}
+&&%s&& %s Eucalyptus leaf/ko {134260 2020-06-09T18:58:49Z {4001384 Stay Hydrated}  {{comestible
+  |color=green
+  |tile=[[image:eucalyptus leaf.png]]
+  |name=eucalyptus leaf
+  |nutrition=30
+  |turns=1
+  |weight=1
+  |cost=6
+  |conduct=vegan
+}}
+
+'''유칼립투스 잎'''은 is a [[vegan]] food item with some non-nutritional uses.
+
+== 효과 ==
+
+저주받지 않은것을 먹는것은 [[sickness|질병]]과 [[nausea|메스꺼움]]을 치료할 것입니다.{{refsrc|eat.c|1725}} 그것은 호루라기로도 적용될수 있습니다, 축복받았다면 [[magic whistle|마법 호루라기]] 그리고 나머지 경우엔 [[tin whistle|주석 호루라기]]처럼 작용합니다. [[blessed|축복받은]] 유칼립투스 잎이 2% 확률로 호루라기처럼 사용한 이후 축복상태가 해제될 것입니다.{{refsrc|apply.c|2874}}
+
+== 생성 ==
+
+{{todo|In 3.6 there may be some trees in Big Room or Medusa's Island, so the 29.4% figure needs to be recalculated.}}

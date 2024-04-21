@@ -1,0 +1,1000 @@
+the talent to fashion these themselves, they are constantly
+hunting for them.  There is nothing a horde of orcs cannot
+use.
+|[ het Boek van de Regels; Het Oog des Meesters ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Orc-captain {131309 2020-01-22T06:50:24Z {4001279 Umbire the Phantom} /* Strategy */ {{Wikipedia|Orc}}
+{{monster
+ |difficulty=7
+ |level=5
+ |experience=66
+ |speed=5
+ |AC=10
+ |MR=0
+ |align=-5
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 2d4, weapon 2d4
+ |weight=1350
+ |nutr=350
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|An orc-captain|humanoid=1|omnivore=1|orc=1|strong=1|greedy=1|jewels=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line712]]
+}}
+The '''orc-captain''', {{monsym|orc-captain}}, is the strongest form of [[orc]] that appears in [[NetHack]].
+
+==Generation==
+Unlike their brethren, the orc-captain is never randomly generated in groups, and will start [[Monster starting inventory|with the equipment of]] either a [[Mordor orc]] or [[Uruk-hai]].{{refsrc|makemon.c|331}} One or more orc-captains will be generated inside the town walls of [[Orctown]]; in games that contain Orctown, a named orc-captain is also guaranteed to be found in [[Mines' End]]. This orc captain has a single name, signifying leadership of their clan, and will always have a [[shiny ring]] in addition to whatever extra Minetown loot they are generated with.
+
+[[Hill orc]]s, Uruk-hai, Mordor orcs and ordinary [[orc (monster class)|orc]]s can all [[grow up]] to be orc-captains.{{refsrc|mondata.c|566}}
+
+==Strategy==
+While the orc-captain is not significantly stronger than a Mordor orc or Uruk-hai in terms of base stats, their ability to attack twice per turn can offset their low speed and deal unexpected damage to a player lacking in AC. It is thus best to face them at a distance, but their starting inventory may contain an [[orcish bow]] and [[poisoned]] [[orcish arrow]]s; be sure to have [[poison resistance]], especially if you are raiding Orctown. Fortunately, they are not poison resistant themselves, and orcs may also hit their comrades with the arrows; a patient player could use this knowledge to outwit and defeat the captain.
+
+==References==
+<references/>
+
+[[Category:Monsters]]
+{{nethack-364}}}
+&&%s&& %s Sokoban Level 1a {146165 2022-06-11T19:09:18Z {4001279 Umbire the Phantom}  '''Sokoban Level 1a''' is one of two possible maps for the first level of [[Sokoban]] in ''[[NetHack]]'', and is among the various possible maps for that level in variants of ''NetHack''. The level has 12 [[boulder]]s and 10 [[pit]]s, leaving 2 spare boulders.
+
+<div class="ttymap">{{lightgray|<replacecharsblock>
+<=[[Stairs|{{white|<}}]]
+>=[[Stairs|{{white|>}}]]
+^=[[pit|{{gray|^}}]]
+ =&nbsp;
+|={{white|&#124;}}
+-={{white|-}}
+0={{white|0}}
+?={{white|?}}
+? ={{gray|? }}
+0 ={{gray|0 }}
+^ ={{gray|^ }}
+< ={{gray|< }}
+> ={{gray|> }}
+newline=<br>
+
+-------- ------ 0 boulder
+|<|>...---....| ^ pit
+|^|-.00....0..| > starting position/downstairs
+|^||..00|.0.0.| < upstairs
+|^||....|.....| ? scroll of earth
+|^|------0----|
+|^|    |......|
+|^------......|
+|..^^^^0000...|
+|??-----......|
+----   --------
+</replacecharsblock>}}</div>
+
+==Strategy==
+The following solution solves the level without putting any boulders in an immobile position. Faster solutions which do not necessarily leave every boulder free might exist.
+
+You can also [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.01:19:42.ttyrec.bz2 watch an instructional TTYREC video] or [https://youtu.be/W85ztF2_rYU a YouTube video].
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a pit (and thus removed the boulder from the game). So "'''N''' ddrr*" means move boulder '''N''' two times down and two times to the right into a pit.
+
+This is the starting position. First, clear the way into the lower right room:
+
+ -------- ------ '''A''' d
+ |<|@...---....| '''B''' rrrr
+ |^|-.AB....C..| '''H''' dd
+ |^||..DE|.F.G.|
+ |^||....|.....|
+ |^|------H----|
+ |^|    |......|
+ |^------......|
+ |..^^^^IJKL...|
+ |??-----......|
+ ----   --------
+
+Clear the lower right room:
+
+ -------- ------ '''J''' u
+ |<|>...---....| '''I''' l*
+ |^|-......BC..| '''L''' u
+ |^||.ADE|.F.G.| '''K''' llll*
+ |^||....|.....| '''L''' dlll lll*
+ |^|------.----| '''H''' dlll lll*
+ |^|    |.@....| '''J''' dlll llll u*
+ |^------.H....|
+ |..^^^^IJKL...|
+ |??-----......|
+ ----   --------
+
+Pick up the two [[scroll of earth|scrolls of earth]] as soon as possible to ensure that no monsters get a hold of them; remember to verify their [[beatitude]] before reading them in Sokoban, and only do so if you have misplaced or broken some other boulders.
+
+Clean the upper right room. There are several ways to do this, with one displayed below:
+
+ -------- ------ '''F''' r
+ |<|>...---....| '''B''' ddld dddl llll lllu u*
+ |^|-......BC..| '''G''' dlll dddd llll llll uuu*
+ |^||.ADE|.F.G.| '''F''' lldd dddl llll lllu uuu*
+ |^||....|.....| '''C''' ddll dddd llll llll uuuu u*
+ |^|------.----|
+ |^|    |......|
+ |.------......|
+ |.............|
+ |.@-----......|
+ ----   --------
+
+Take one of the remaining boulders and finish the level:
+
+ -------- ------  '''E''' urrr ddld dddl llll lllu uuuu u*
+ |<|>...---....|
+ |^|-..........|
+ |.||.ADE|.....|
+ |@||....|.....|
+ |.|------.----|
+ |.|    |......|
+ |.------......|
+ |.............|
+ |..-----......|
+ ----   --------
+
+==Next level==
+After this level, you will face either of the following levels:
+{| class="prettytable"
+|[[Sokoban Level 2a]]
+ <nowiki> ----          -----------</nowiki>
+ <nowiki>--.@--------   |.........|</nowiki>
+ <nowiki>|..........|   |.........|</nowiki>
+ <nowiki>|.0-----0-.|   |.........|</nowiki>
+ <nowiki>|..|...|.0.|   |....<....|</nowiki>
+ <nowiki>|.0.0....0-|   |.........|</nowiki>
+ <nowiki>|.0..0..|..|   |.........|</nowiki>
+ <nowiki>|.----0.--.|   |.........|</nowiki>
+ <nowiki>|..0...0.|.--  |.........|</nowiki>
+ <nowiki>|.---0-...0.------------+|</nowiki>
+ <nowiki>|...|..0-.0.^^^^^^^^^^^^.|</nowiki>
+ <nowiki>|..0......----------------</nowiki>
+ <nowiki>-----..|..|</nowiki>
+ <nowiki>    -------</nowiki>
+|[[Sokoban Level 2b]]
+ <nowiki>-----------       -----------</nowiki>
+ <nowiki>|....|....---     |.........|</nowiki>
+ <nowiki>|..00|00...@|     |.........|</nowiki>
+ <nowiki>|.....0...---     |.........|</nowiki>
+ <nowiki>|....|....|       |....<....|</nowiki>
+ <nowiki>|-.---------      |.........|</nowiki>
+ <nowiki>|..0.|.....|      |.........|</nowiki>
+ <nowiki>|.00.|0.0.0|      |.........|</nowiki>
+ <nowiki>|..0.....0.|      |.........|</nowiki>
+ <nowiki>|.000|0..0.----------------+|</nowiki>
+ <nowiki>|....|..0.0.^^^^^^^^^^^^^^^.|</nowiki>
+ <nowiki>-----------------------------</nowiki>
+|}
+{{nethack-366}}
+[[Category:Sokoban|1a]]}
+&&%s&& %s Sokoban Level 2a {142572 2021-09-10T16:33:18Z {4001527 Konchog} vertical mirrors! This level of [[Sokoban]] is often considered one of the hardest levels of the 8. There are 16 [[boulder|boulders]] and 12 [[hole]]s.
+ 0 boulder
+ ^ hole
+ @ starting position/downstairs
+ < upstairs
+
+(Note that the levels may be vertical mirrors in more recent versions of NetHack)!
+
+<div class="ttymap">
+  ----          -----------
+ --.@--------   |.........|
+ |..........|   |.........|
+ |.0-----0-.|   |.........|
+ |..|...|.0.|   |....<....|
+ |.0.0....0-|   |.........|
+ |.0..0..|..|   |.........|
+ |.----0.--.|   |.........|
+ |..0...0.|.--  |.........|
+ |.---0-...0.------------+|
+ |...|..0-.0.^^^^^^^^^^^^.|
+ |..0......----------------
+ -----..|..|
+     -------
+</div>
+
+
+== Strategy ==
+The following solution solves the level with only placing three boulders in an immovable position. See [[Special:PermanentLink/97945|this revision]] for a solution that solves the level without placing any boulders in an immovable position. Faster solutions exist. Finding and writing them up is left as an exercise to the reader. You can watch ttyrec of one solution  [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.04:44:03.ttyrec.bz2 here], or a faster ttyrec [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.01:02:37.ttyrec.bz2 here] which involves jumping down a hole,  or [https://youtu.be/rhQdWt9Rxl8 a YouTube video].
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So '''N ddrr*''' means move boulder '''N''' two times down and two times to the right into a hole.
+
+The key to this level is being able to walk around the shape in the bottom right. '''F''', '''K''' and '''M''' prevent this in the starting layout, and '''P''' prevents you from getting near to that shape.
+
+<div class="ttymap">
+  ----          -----------
+ --.@--------   |.........|
+ |..........|   |.........|
+ |.A-----B-.|   |.........|
+ |..|...|.C.|   |....&lt;....|
+ |.D.E....F-|   |.........|
+ |.G..H..|..|   |.........|
+ |.----I.--.|   |.........|
+ |..J...K.|.--  |.........|
+ |.---L-...M.------------+|
+ |...|..N-.O.^^^^^^^^^^^^.|
+ |..P......----------------
+ -----..|..|
+     -------
+</div>
+
+Clear a space above '''F'''. I move '''B''' next to the bottom-right shape, but I'll move it away again soon.
+
+ '''B''' dd
+ '''C''' l
+
+Move '''P''' so that I can get past, '''N''' to give me space to put '''K''', and '''O''' and '''M''' so I can get up to '''F'''.
+
+ '''P''' rrru
+ '''O''' rr*
+ '''N''' d
+ '''M''' l
+
+<div class="ttymap">
+  ----          -----------
+ --.&gt;--------   |.........|
+ |..........|   |.........|
+ |.A-----.-.|   |.........|
+ |..|...|C..|   |....&lt;....|
+ |.D.E...BF-|   |.........|
+ |.C..H..|..|   |.........|
+ |.----I.--.|   |.........|
+ |..J...K.|.--  |.........|
+ |.---L-..M@.------------+|
+ |...|.P.-....^^^^^^^^^^^.|
+ |......N..----------------
+ -----..|..|
+     -------
+</div>
+
+Clear enough space around the bottom-right shape so I can walk around it.
+
+ '''F''' u
+ '''B''' ll
+ '''K''' d
+
+<div class="ttymap">
+  ----          -----------
+ --.&gt;--------   |.........|
+ |..........|   |.........|
+ |.A-----.-.|   |.........|
+ |..|...|CF.|   |....&lt;....|
+ |.D.E.B...-|   |.........|
+ |.C..H..|..|   |.........|
+ |.----I.--.|   |.........|
+ |..J...@.|.--  |.........|
+ |.---L-K.M..------------+|
+ |...|.P.-....^^^^^^^^^^^.|
+ |......N..----------------
+ -----..|..|
+     -------
+</div>
+
+Finish the bottom half (M, N, K, L, P, I and J).
+
+ '''M''' rdrr r*
+ '''N''' llll lrrr rrrr uu
+
+<div class="ttymap">
+  ----          -----------
+ --.&gt;--------   |.........|
+ |..........|   |.........|
+ |.A-----.-.|   |.........|
+ |..|...|CF.|   |....&lt;....|
+ |.D.E.B...-|   |.........|
+ |.G..H..|..|   |.........|
+ |.----I.--.|   |.........|
+ |..J.....|.--  |.........|
+ |.---L-K.N..------------+|
+ |...|.P.-@....^^^^^^^^^^.|
+ |.........----------------
+ -----..|..|
+     -------
+</div>
+
+ '''K''' dd
+ '''N''' rdrr rr*
+ '''L''' dd
+ '''P''' r
+
+<div class="ttymap">
+  ----          -----------
+ --.&gt;--------   |.........|
+ |..........|   |.........|
+ |.A-----.-.|   |.........|
+ |..|...|CF.|   |....&lt;....|
+ |.D.E.B...-|   |.........|
+ |.G..H..|..|   |.........|
+ |.----I.--.|   |.........|
+ |..J.....|.--  |.........|
+ |.---.-.....------------+|
+ |...|.@P-......^^^^^^^^^.|
+ |....L.K..----------------
+ -----..|..|
+     -------
+</div>
+
+ '''K''' rruu rdrr rrr*
+ '''P''' drru urdr rrrr rr*
+ '''L''' lllr rrrr rruu rdrr rrrr*
+ '''I''' drdd drru urdr rrrr rrr*
+ '''J''' rrrr dddr ruur drrr rrrr rr*
+
+<div class="ttymap">
+  ----          -----------
+ --.&gt;--------   |.........|
+ |..........|   |.........|
+ |.A-----.-.|   |.........|
+ |..|...|CF.|   |....&lt;....|
+ |.D.E.B...-|   |.........|
+ |.G..H..|..|   |.........|
+ |.----..--.|   |.........|
+ |........|.--  |.........|
+ |.---.-.....------------+|
+ |...|...-.........@.^^^^.|
+ |.........----------------
+ -----..|..|
+     -------
+</div>
+
+Get into the space above B.
+
+ '''A''' u
+ '''G''' r
+ '''D''' u
+ '''E''' r
+
+<div class="ttymap">
+  ----          -----------
+ --.&gt;--------   |.........|
+ |.A........|   |.........|
+ |..-----.-.|   |.........|
+ |.D|...|CF.|   |....&lt;....|
+ |...@EB...-|   |.........|
+ |..G.H..|..|   |.........|
+ |.----..--.|   |.........|
+ |........|.--  |.........|
+ |.---.-.....------------+|
+ |...|...-...........^^^^.|
+ |.........----------------
+ -----..|..|
+     -------
+</div>
+
+Finish B, E, H and G.
+
+ '''B''' dddr dddr ruur drrr rrrr rrr*
+ '''E''' rddd rddd rruu rdrr rrrr rrrr r*
+ '''H''' rrdd dddr ruur drrr rrrr rrrr r*
+ '''G''' rrrr dddd drru urdr rrrr rrrr rrrr*
+
+The level is now finished, but you will still need to move the A or C blocks to walk between your finishing position (as well as the stairs up) and the stairs down. How to fix this depends on which direction you approach the blockage from as follows:
+
+<div class="ttymap">
+  ----          ----------- 
+ --.&gt;--------   |.........| 
+ |.A........|   |.........|
+ |..-----.-.|   |.........| 
+ |.D|...|CF.|   |....&lt;....| 
+ |.........-|   |.........| 
+ |.......|..|   |.........|
+ |.----..--.|   |.........|
+ |........|.--  |.........|
+ |.---.-.....------------+|
+ |...|...-.............@..|
+ |.........----------------
+ -----..|..|
+     -------
+</div>
+
+If you start from '''<''' or '''@''':
+ '''A''' r
+
+If you start from '''>'''
+ '''C''' d
+ '''F''' l
+
+==Next level==
+After this level, you will face either of the following levels: 
+
+{| class="prettytable"
+|[[Sokoban Level 3a]]
+ <nowiki>  --------</nowiki>
+ <nowiki>---.|....|</nowiki>
+ <nowiki>|...0....|----------</nowiki>
+ <nowiki>|.-.00-00|.|.......|</nowiki>
+ <nowiki>|.00-......|.......|</nowiki>
+ <nowiki>|.-..0.|...|.......|</nowiki>
+ <nowiki>|....-0--0-|...<...|</nowiki>
+ <nowiki>|..00..0...|.......|</nowiki>
+ <nowiki>|.--...|...|.......|</nowiki>
+ <nowiki>|....-0|---|.......|</nowiki>
+ <nowiki>---..0.-----------+|</nowiki>
+ <nowiki>  |..0@^^^^^^^^^^^.|</nowiki>
+ <nowiki>  ------------------</nowiki>
+|[[Sokoban Level 3b]]
+ <nowiki>--------------------</nowiki>
+ <nowiki>|........|...|.....|</nowiki>
+ <nowiki>|.00..-00|.-.|.....|</nowiki>
+ <nowiki>|..|.0.0.|00.|.....|</nowiki>
+ <nowiki>|-.|..-..|.-.|..<..|</nowiki>
+ <nowiki>|...--.......|.....|</nowiki>
+ <nowiki>|...|.0.-...-|.....|</nowiki>
+ <nowiki>|.0.|0.|...--|.....|</nowiki>
+ <nowiki>|-0.|..-----------+|</nowiki>
+ <nowiki>|..0....^^^^^^^^^^.|</nowiki>
+ <nowiki>|...|.@-------------</nowiki>
+ <nowiki>--------</nowiki>
+|}
+{{nethack-360}}
+[[Category:Sokoban|2a]]}
+&&%s&& %s Bilious Patch Database {148168 2022-09-17T13:31:57Z {679 Ray Chason} Bilious appears to be down Located at http://bilious.alt.org, this site provides a convenient central repository for NetHack [[patches]]. Users can upload, download, discuss, and vote on patches through the site after passing a [[CAPNTHLA]] test.
+
+As of 17 September 2022, Bilious appears to be out of service, returning only a blank page
+
+== Staff ==
+Bilious is currently run by [[User:Paxed|paxed]].
+
+== External Links ==
+* http://bilious.alt.org
+* [https://web.archive.org/web/20220315132134/https://bilious.alt.org/ Last revision stored in the Wayback Machine]
+* [https://github.com/paxed/nhpatchdb Source code]
+
+[[Category:Patches| ]]
+[[Category:Websites]]
+{{stub}}}
+&&%s&& %s CAPNTHLA {87569 2013-11-08T19:42:12Z {0 } /* Example usages */ {{wikipedia|CAPTCHA}}
+[[Image:NetHackWiki-CAPNTHLA.png|thumb|235px|right|An example of a CAPNTHLA challenge used in this wiki.]]
+'''CAPNTHLA''' is an acronym for "'''C'''ompletely '''A'''utomated '''P'''ublic '''N'''etHack '''T'''est to tell ''''H'''ackers and '''L'''osers '''A'''part". It is a highly specialized form of CAPTCHA.
+
+==Item/feature CAPNTHLA==
+This is the only type currently extant. The user is presented with the name or a description of an [[item class]], [[dungeon feature]] or [[monster]] and is required to input the [[ASCII character]] used to represent it in the default configuration of NetHack. This slightly discriminates against [[tiles]] users, but seems to be fairly effective.
+
+==Example usages==
+* [[Dudley's Dungeon]] requires users to pass an item/feature CAPNTHLA before rating strips or posting comments.
+* The [[Bilious PatchDB]] requires users to pass an item/feature CAPNTHLA before rating patches or posting comments.
+* This wiki, when registering a new user, and when editing not logged in. (using [[mw:Extension:QuestyCaptcha]])
+* The [http://nhqdb.alt.org/ NetHack Quote Database], when submitting a quote.
+{{noversion}}
+[[Category:Community]]}
+&&%s&& %s Bilious PatchDB {8764 2006-08-28T12:18:12Z {325 GreyKnight} Redirecting to [[Bilious Patch Database]] #REDIRECT [[Bilious Patch Database]]}
+&&%s&& %s NHPatchDB {8765 2006-08-28T12:19:23Z {325 GreyKnight} Redirecting to [[Bilious Patch Database]] #REDIRECT [[Bilious Patch Database]]}
+&&%s&& %s NetHack Patch Database {8766 2006-08-28T12:20:28Z {325 GreyKnight} Redirecting to [[Bilious Patch Database]] #REDIRECT [[Bilious Patch Database]]}
+&&%s&& %s Patch Database {8767 2006-08-28T12:20:50Z {325 GreyKnight} Redirecting to [[Bilious Patch Database]] #REDIRECT [[Bilious Patch Database]]}
+&&%s&& %s Dudley's Dungeon {8770 2006-08-28T12:22:11Z {325 GreyKnight} Redirecting to [[Dudley's dungeon]] #REDIRECT [[Dudley's dungeon]]}
+&&%s&& %s You hear a loud ZOT {10333 2006-09-12T17:53:25Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s You hear a loud ZOT! {10334 2006-09-12T17:53:29Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s You hear someone say "No more woodchucks!" {10335 2006-09-12T17:53:35Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s No more woodchucks {10336 2006-09-12T17:53:39Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s Zot {10337 2006-09-12T17:53:44Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s You hear a strange wind {10338 2006-09-12T17:53:50Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s You hear convulsive ravings {10339 2006-09-12T17:53:54Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s You hear snoring snakes {10340 2006-09-12T17:53:58Z {239 Eidolos} Fix double redirect. #REDIRECT [[The Oracle]]}
+&&%s&& %s Delphi {133648 2020-04-21T15:46:24Z {4000693 Phol ende wodan} direct to the level section of the oracle page #REDIRECT [[The Oracle#Level]]}
+&&%s&& %s Mazes of Menace {139597 2021-05-07T17:34:24Z {187 Darth l33t} /* Properties */ Elemental Planes + Astral Plane = End Game The '''Mazes of Menace''' is the collective name for all the levels in the game. They can contain up to 81 levels, but not all will be present in every game.
+
+==Map==
+
+This diagram shows which [[dungeon level]]s the various [[special level]]s and [[branch]]es can appear on. A branch is signified with a <code>--</code>. The Dungeons of Doom and Gehennom are technically branches, but appear contiguously as the main branch of the game.
+
+Also note that, although they are not special levels ''per se'', any levels between [[Medusa]] and The [[Castle]] have a 4/5 probability of being [[Maze]]s.
+
+ |-5   |[[Astral Plane|Astral]]
+ |-4   |[[Plane of Water|Water]]
+ |-3   |[[Plane of Fire|Fire]]
+ |-2   |[[Plane of Air|Air]]
+ |-1   |[[Plane of Earth|Earth]]
+ | 1 --/                               \
+ | 2 \                                 |--[[Dungeons of Doom]]
+ | 3 |------------------|[[Gnomish Mines]] |
+ | 4 /                  |              |
+ | 5 \           |soko4 | \[[Minetown]]    |
+ | 6 |[[Oracle#Level|Oracle]]  \  |soko3 | /            | 
+ | 7 |        |  |soko2 |              |
+ | 8 |        |--|[[Sokoban|soko1]] |              |
+ | 9 /        |         |              |
+ |10          /  \      | \[[Mines' End]]  |
+ |11 \         \ |[[Big Room|BigRm]] | /            |
+ |12 |--[[Fort Ludios|Ludios]] | /                     | 
+ |13 |         |                       |
+ |14 |         |--|[[Quest]] home          | 
+ |15 | \       |  |                    |
+ |16 | |[[Rogue level|Rogue]]  /  |Quest locate        |
+ |17 | |          |                    |
+ |18 | /          | \Quest goal        |
+ |19 |            | /                  |
+ |20 |                                 |
+ |21 | \                               |
+ |22 | |[[Medusa's Island|Medusa]]                         |
+ |23 | |                               |
+ |24 | |                               |
+ |25 | | \                             |
+ |26 | | |[[Castle]] \                     |  \
+ |27 / | |       |[[Valley of the Dead|Valley]]    \          |  |--[[Gehennom]]
+ |28   / |       |          |[[Asmodeus' Lair|Asmodeus]]  |  |
+ |29     /       | \        |          /  | 
+ |30             / |[[Juiblex's swamp|Juiblex]] |             |
+ |31               |        | \           | 
+ |32               |        | |[[Baalzebub's Lair|Baalzebub]]  |
+ |33    |Vlad3     |        | |           |
+ |34 \  |Vlad2     |        | |           | 
+ |35 |--|[[Vlad's Tower|Vlad1]]     | \      | |           |
+ |36 |             / |[[Orcus-town|Orcus]] / | \         |
+ |37 |               |        | |[[Wizard's Tower|WizTower]] |
+ |38 |               |        / |         |
+ |39 |               |          |         |
+ |40 | \             |          |         |
+ |41 | |[[Fake Wizard's Tower|FakeWiz]]      |          |         |
+ |42 / |             |          |         |
+ |43   |             |          |         |
+ |44   | \           /          |         |
+ |45   | |[[Vibrating square|VibSq]] \               |         |
+ |46   | |      |[[Moloch's Sanctum|Sanctum]]        |         |
+ |47   | |      |               /         |
+ |48   | |      |                         |
+ |49   | |      |                         |
+ |50   | |      |                         |
+ |51   / |      |                         |
+ |52     /      |                         |
+ |53            /                         /
+
+==Properties==
+The following table lists the properties of the levels.
+
+{| class="wikitable collapsible" style="font-size: 95%; margin-right:auto"
+|-
+!Branch
+!Level
+![[Dungeon level]]
+![[Bones]] eligible?
+![[magic mapping|Mappable]]?
+![[Teleportation|Teleportable]]?
+![[Level teleport|Levelportable]]?
+![[Digging|Diggable]] floor?
+!Diggable walls?
+|-
+|rowspan=5|[[End Game]] || [[Astral Plane]] || -5 || No || No || No || No || No || No
+|-
+|[[Plane of Water]] || -4 || No || '''Yes''' || No || No || No || '''Yes'''
+|-
+|[[Plane of Fire]] || -3 || No || '''Yes''' || No || No || No || '''Yes'''
+|-
+|[[Plane of Air]] || -2 || No || '''Yes''' || No || No || No || '''Yes'''
+|-
+|[[Plane of Earth]] || -1 || No || '''Yes''' || No || No || No || '''Yes'''
+|-
+|rowspan=6|[[Dungeons of Doom]] || (Ordinary level) || 1-28 || '''Yes''' (except 1-3) || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Oracle#Level|Oracle]] || 5-9 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Big Room]] || 10-12 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || No
+|-
+|[[Rogue level|Rogue]] || 15-18 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Medusa's Island]] || 21-28 || No || '''Yes''' || No || '''Yes''' || '''Yes''' || ''varies''<ref group="note">Diggable only on unimportant wall sections</ref>
+|-
+|[[Castle]] || 25-29 || No || '''Yes''' || No || '''Yes''' || No || Only in maze section
+|-
+|rowspan=3|[[Gnomish Mines]] || (Ordinary level) || 3-12 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Minetown]] || 5-8 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Mines' End]] || 10-13 || No || ''varies''<ref group="note">The Catacombs variant is unmappable; the other variants are mappable.</ref> || '''Yes''' || '''Yes''' || No || ''varies''<ref group="note">The Catacombs variant has diggable walls except for some undiggable areas; the wine cellar variant only has a diggable area in the upper right; the mimic variant is undiggable.</ref>
+|-
+|[[Sokoban]] || (Sokoban levels) || 2-9 || No || '''Yes''' || No || No || '''Yes''' || No
+|-
+|rowspan=4|[[Quest]] || Filler levels || 12-20 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|Home level || 11-16 || No || ''varies''<ref group="note">'''Yes''' for everyone except [[Rogue quest|rogues]]</ref> || No || '''Yes''' || No || No
+|-
+|Locate level || 13-18 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || ''varies''<ref group="note">'''Yes''' for [[Rogue quest|rogues]] and [[Monk quest|monks]]; no for everyone else</ref> ||
+|-
+|Goal level || 15-21 || No || '''Yes''' || ''varies''<ref group="note">'''Yes''' for everyone except [[Rogue quest|rogues]] and [[Samurai quest|Samurai]]</ref> || '''Yes''' || No ||
+|-
+|[[Fort Ludios]] || || 11-27 || No || '''Yes''' || No || No || No || No
+|-
+|rowspan=11|[[Gehennom]] || (Ordinary level) || 27-51 || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Valley of the Dead]] || 26-30 || '''Yes''' || No || No || '''Yes''' || No || No
+|-
+|[[Asmodeus' Lair]] || 27-36 || '''Yes''' || '''Yes''' || No || '''Yes''' || '''Yes''' || Not in Asmodeus' chamber
+|-
+|[[Juiblex's swamp]] || 29-36 || '''Yes''' || '''Yes''' || No || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Baalzebub's Lair]] || 31-38 || '''Yes''' || '''Yes''' || No || '''Yes''' || '''Yes''' || Not in Baalzebub's chamber
+|-
+|[[Orcus-town]] || 35-44 || '''Yes''' || '''Yes''' || No || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Wizard's Tower]] (top and bottom level) || 36-47 || No || '''Yes''' || No || '''Yes''' || No || Outside and small center only
+|-
+|[[Wizard's Tower]] (middle level) || 37-46 || '''Yes''' || '''Yes''' || No || '''Yes''' || No || Only in maze section
+|-
+|[[Fake Wizard's Tower]] || 40-51 || Non-portal level only || '''Yes''' || '''Yes'''<ref group="note">Cannot teleport into the tower.</ref> || '''Yes''' || '''Yes''' || '''Yes'''
+|-
+|[[Vibrating square]] || 44-52 || No || '''Yes''' || '''Yes''' || '''Yes''' || No || '''Yes'''
+|-
+|[[Moloch's Sanctum]] || 45-53 || No || No || No || '''Yes''' <ref group="note"> Only accessible after [[Invocation ritual|invocation]] </ref> || No || No
+|-
+|[[Vlad's Tower]] || (Vlad tower levels) || 31-41 || Middle level only || '''Yes''' || No || '''Yes''' || No || No
+|}
+
+<references group="note"/>
+
+==Interdependence==
+Whenever there are several possibilities for the length of a branch, the depth of a branch entrance, or a special level, they are
+* measured from the top of the parent branch,
+* are equally likely,
+* are independent of all the other choices made in this graph.
+Exceptions are:
+* [[Mines' End]] is the lowest mines level.
+* [[Sokoban]] always branches off just below the [[Oracle]].
+* The [[quest]] portal is always 6-7 levels below the [[Oracle]].
+* The depth of [[Fort Ludios]] is complicated, see its article.
+* [[Medusa's Island]] is 1-4 levels above the [[Castle]].
+* The [[Castle]] is the deepest level in the Dungeons of Doom.
+* The [[Valley of the Dead]] is the topmost level of Gehennom and is always the level directly below the Castle.
+* The [[demon lord]] levels ([[Asmodeus' Lair]], [[Baalzebub's Lair]], [[Juiblex's Swamp]] and [[Orcus-town]]) are always in Gehennom and therefore lower than the Valley.
+* The [[Vibrating Square]] is the deepest accessible level of Gehennom. [[Moloch's Sanctum]] is immediately below, and both fake towers are 1-4 levels above.
+
+Each level can be special in at most one way, and (additionally) host at most one branch entrance. For example, this means the stairs to [[Vlad's Tower]] can be located on any special level except [[Juiblex]]' swamp and both [[Fake Wizard's Tower]]s.
+
+==Variants==
+===UnNetHack=== 
+[[UnNetHack]] adds to the dungeon with new [[dungeon branch]]es as well amid some other minor tweaks. As of the 5.1.0 release these include the Nymph Level, the [[Ruins of Moria]], an improved [[Black market (UnNetHack)|black market]], the [[Town]] branch, the [[Dragon Caves]], and the Icy [[Sheol]]. 
+
+====Map====
+
+ |-5   |[[Astral Plane|Astral]]
+ |-4   |[[Elemental Planes|Elemental Plane 4]]     (The planes of [[Plane of Fire|Fire]],
+ |-3   |[[Elemental Planes|Elemental Plane 3]]        [[Plane of Water|Water]], [[Plane of Air|Air]], and
+ |-2   |[[Elemental Planes|Elemental Plane 2]]        [[Plane of Earth|Earth]] occur in a
+ |-1   |[[Elemental Planes|Elemental Plane 1]]        random order.)
+ | 1 --/                                            \
+ | 2 \                                              |--[[Dungeons of Doom]]
+ | 3 |-------------------------------|[[Gnomish Mines]] |
+ | 4 /                               |              |
+ | 5 \ \                             | \[[Minetown]]    |
+ | 6 | |[[Oracle]]             \  |soko3 | /            | 
+ | 7 | |         \         |  |soko2 |              |
+ | 8 | |         |  |Town2 |--|[[Sokoban|soko1]] |              |
+ | 9 | /         |--|[[Town|Town1]] |         |              |
+ |10 |--[[Nymph level (UnNetHack)|Nymphs]]   |         /  \      | \[[Mines' End]]  |
+ |11 | \         |          \ |[[Big Room|BigRm]] | /            |
+ |12 | |--[[Fort Ludios|Ludios]] / |Moria6  | /                     | 
+ |13 | |           |Moria5  |                       |
+ |14 / |           |Moria4  |--|[[Quest]] home          | 
+ |15   | \         |Moria3  |  |                    |
+ |16   | |[[Rogue level|Rogue]] \  |Moria2  /  |Quest locate        |
+ |17   | |      |--|[[Ruins of Moria|Moria1]]     |                    |
+ |18   | /      |              | \Quest goal        |
+ |19   |        /              | /                  |
+ |20   |         \                                  |
+ |21   | \       | [[Black market (UnNetHack)|Black Market]]                     |
+ |22   | |[[Medusa's Island|Medusa]] |                                  |
+ |23   | |       |                                  |
+ |24   | |       /                                  |
+ |25   | | \                                        |  \
+ |26   | | |[[Castle]] \                                |  |
+ |27   / | |       |[[Valley of the Dead|Valley]]             \            |  |--[[Gehennom]]
+ |28     / |       |                   |[[Asmodeus]]    |  |
+ |29       /       |        \          |            /  | 
+ |30               /        |[[Juiblex]]   |               |
+ |31                        |          | \             | 
+ |32                        |          | |[[Baalzebub]]    |
+ |33    |Vlad3              |          | |             |
+ |34 \  |Vlad2              |          | |             | 
+ |35 |--|[[Vlad's Tower|Vlad1]]  \           |   \      | |             |
+ |36 |          |--|[[Dragon Caves|Dragon1]] /   |[[Orcus-town|Orcus]] / | \           |
+ |37 |          |  |Dragon2     |        | |[[Wizard's Tower|WizTower]]   |
+ |38 |          |  |Dragon3     |        / |           |
+ |39 |          | \|Dragon4     |          |           |
+ |40 | \        | |--|[[Sheol]]     |          |           |
+ |41 | |[[Fake Wizard's Tower|FakeWiz]] | |  |Mid       |          |           |
+ |42 / |        | |  |          |          |           |
+ |43   |        / |  |          |          |           |
+ |44   | \        |  |          /          |           |
+ |45   | |[[Vibrating square|VibSq]] \ |  |                     |           |
+ |46   | |      | /  |Palace1              |           |
+ |47   | |      |    |Palace2              /           |
+ |48   | |      |[[Moloch's Sanctum|Sanctum]]                               |
+ |49   | |      |                                      |
+ |50   | |      |                                      |
+ |51   / |      |                                      |
+ |52     /      |                                      |
+ |53            /                                      /
+
+===SLASH'EM===
+The layout of the Mazes of Menace differs significantly in [[SLASH'EM]] due to an expanded [[Dungeons of Doom]], a shortened [[Gehennom]], and many new [[dungeon branch]]es.
+
+====Map====
+ |-5   |[[Astral Plane|Astral]]
+ |-4   |[[Plane of Water|Water]]
+ |-3   |[[Plane of Fire|Fire]]
+ |-2   |[[Plane of Air|Air]]
+ |-1   |[[Plane of Earth|Earth]]
+ | 1 --/                                   \
+ | 2 \                                     |--[[Dungeons of Doom]]
+ | 3 |------------------|[[Gnomish Mines]]     |
+ | 4 /                  |                  |
+ | 5 \[[Mall]]              | \[[Minetown]]        |
+ | 6 /           |soko4 | /                |  
+ | 7 \           |soko3 |                  |
+ | 8 |[[Oracle]]  \  |soko2 |                  |
+ | 9 /        |--|[[Sokoban (SLASH'EM)|soko1]] |                  |
+ |10   \[[Rat level|Rats]]  /         | \[[Mines' End]]      |
+ |11 \ / \[[Kobold level|Kobolds]]       | / \[[Mine king level|Mine King]]     |
+ |12 |   / \--[[Grund's Stronghold|Grund's]]   |   /              | 
+ |13 |     /                               |
+ |14 |--[[Fort Ludios|Ludios]]                             | 
+ |15 | \      \      \      \              |
+ |16 | |--[[Lawful Quest|Law]] |--[[Neutral Quest|Neu]] |--[[Chaotic Quest|Cha]] |--|[[Quest|Quest]] [[Home level|home]] |
+ |17 | |      |      |      |  |           |
+ |18 | |      |      |      |  |[[Locate level|Locate]]     |
+ |19 | / \[[Storage room|Sto]] /      /      /  |           |
+ |20 |   | \    \--[[The Wyrm Caves|Wyrms]]       |\[[Goal level|Goal]]      |
+ |21 |   | |[[Big Room|Big]] /            \ |/          |
+ |22 |   | | \--[[Black market (SLASH'EM)|One-eyed Sam]] |--[[The Lost Tomb|Lost Tomb]]  |
+ |23 |   | | / \[[Nymph level|Nymphs]]       |             |
+ |24 |   | |   /             /             |
+ |25 |   | |                               |
+ |26 |   / / \            \                |
+ |27 |       |--[[The Spider Caves|Spiders]]   |[[The Guild of Disgruntled Adventurers|Guild]]           |
+ |28 |       | \          |                |
+ |29 |       / |--[[The Sunless Sea|Sunless]] |                |
+ |30 |         |          |                |
+ |31 |         /          /                |
+ |32 |         \          \                |
+ |33 |         |--[[The Giant Caverns|Giants]]  |                |
+ |34 |         |          |--[[The Temple of Moloch|Moloch]]        |
+ |35 |         /          /                |
+ |36 |                                     |
+ |37 |                                     |
+ |38 | \                                   |
+ |39 | |[[Medusa's Island|Medusa]]                             |
+ |40 | |                                   |
+ |41 | |                                   |
+ |42 | | \                                 | 
+ |43 | | |[[Castle]] \                         | \
+ |44 / | |       |[[Valley of the Dead|Valley]] \                 | |--[[Gehennom]]
+ |45 \ / |     \ |       |[[Juiblex's Swamp|Juiblex]]          | |
+ |46 |   |     | |       |[[Yeenoghu's lair (SLASH'EM)|Yeenoghu]]         | |
+ |47 |   /     | |       |[[Orcus-town|Orcus]]            / |
+ |48 |         | /       |[[Demogorgon's lair (SLASH'EM)|Demogorgon]]         |
+ |49 |         |         | \                 |
+ |50 |  |Vlad3 |         | |[[Wizard's Tower|WizTower]]         |
+ |51 |  |Vlad2 |         | |                 |
+ |52 |--|[[Vlad's Tower|Vlad1]] |--[[Frankenstein's Lab|Frank]]  | | \               |
+ |53 |         |         / | |[[Baalzebub's Lair|Baalzebub]]      |
+ |54 |         |           | |[[Geryon's lair (SLASH'EM)|Geryon]]         |
+ |55 |         |           | |[[Dispater's lair (SLASH'EM)|Dispater]]       |
+ |56 |         |           / |[[Asmodeus' Lair|Asmodeus]]       |
+ |57 |         |             |[[Fake Wizard's Tower|FakeWiz1]]       |
+ |58 | \       |             |FakeWiz2       |
+ |59 / |[[Vibrating square|VibSq]]  / \           |               |
+ |60   |         |           |               |
+ |61   |         |           |               |
+ |62   |         |           /               |
+ |63   /         |[[Moloch's Sanctum|Sanctum]]                    |
+ |64             /                           /
+
+
+===dNetHack===
+====Map====
+This map is not to scale.
+
+<pre>
+\
+ \
+ | Astral
+ | Water
+ | Fire
+ | Air
+ | Earth                                       /\
+ /					       || Vlad's Throne Room            
+\					       ||                             /\
+ \Dungeons of Doom                             ||\                            ||Arcadia Donjon
+ |                                             \/ The Windowless Tower        ||
+ |					       /\/                            ||
+ |                                             ||                             ||Arcadia Castle
+ |---------------------------The Gnomish Mines-||                             ||
+ |Delphi                                       ||                             ||Arcadia Forest
+ |-------Sokoban                      /\       ||Minetown                     ||
+ |--------------------------The Quest-||Home   ||                             ||The Dungeon of Ill-Regard
+ |                 /\                 ||       ||Minesend                     ||
+ |-The Chaos Quest-||Ruined Temple    ||Locate \/                             ||The Paths of Law
+ |------------O    ||                 ||             O----------The Law Quest-||
+ |                 ||Nightmare Temple ||Goal                            /\    \/
+ |-------------O   ||                 \/           O---The Neutral Quest||Gate Town
+ |                 ||Earth Temple                                       ||                  /\
+ |-Fort Ludios     ||Fire Temple                                        ||Outlands Rings----|| Shrouded Dispensary
+ |-The Lost Tomb   ||Water Temple                                       ||                  \/
+ |-The Sea         ||Air Temple                                         ||The Spire
+ |-The Evil Temple ||Chaos Temple                                       ||Sum-of-All
+ |                 \/                                                   ||
+ |                                                                      ||Lethe Waterway
+ |                                                                      ||
+ |Medusa's Island                                                       ||Gates of N'kai
+ |                                                                      ||
+ |The Castle                                                            ||Gulf of N'kai
+ /                                                                      ||
+/\_____Gehennom_____                                                    ||Drowned City of R'lyeh
+ |The Valley of the Dead                                                \/
+ |
+ |The Endless Staircase
+ |
+ |The Wizard's Tower
+ |Abyss: Baphomet, Yeenoghu, Juiblex, Zuggutmoy, or Pale Night
+ |Fake Tower
+ |Upper Hell: Avernus, Dis, Minauros, or Phlegethos
+ |Abyss: Malcanthet, Graz'zt, or Orcus
+ |Fake Tower
+ |Lower Hell: Stygia, Malbolge, Maladomini, or Cania
+ |Abyss: Demogorgon or Dagon
+ |Fake Tower
+ |Asmodeus's Palace in Nessus
+ |Vibrating Square
+ |Moloch's Sanctum
+ /
+/
+
+</pre>
+
+{{featured}}
+[[Category:Levels]]
+{{nethack-343|offset=1}}}
+&&%s&& %s Mazes of menace {8798 2006-08-28T14:30:23Z {396 Jayt} Redirecting to [[Mazes of Menace]] #REDIRECT [[Mazes of Menace]]}
+&&%s&& %s Sokoban Level 3a {140401 2021-05-28T20:23:33Z {4001138 LarryFluckiger} Added a YouTube video link. This version of the third level of [[Sokoban]] has 16 [[boulder|boulders]] and 11 [[hole]]s.
+ 0 boulder
+ ^ hole
+ @ starting position/downstairs
+ &lt; upstairs
+
+ -------- 
+ ---.|....| 
+ |...0....|---------- 
+ |.-.00-00|.|.......| 
+ |.00-......|.......| 
+ |.-..0.|...|.......| 
+ |....-0--0-|...&lt;...| 
+ |..00..0...|.......| 
+ |.--...|...|.......| 
+ |....-0|---|.......| 
+ ---..0.-----------+| 
+   |..0@^^^^^^^^^^^.| 
+   ------------------
+
+== Strategy ==
+The following solution solves the level without putting any boulders in an immobile position. Faster solutions which do not necessarily leave every boulder free might exist. You can [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.03:01:14.ttyrec.bz2 watch a TTYREC video of this solution] or [https://youtu.be/wQrwBqQi7GA a YouTube video].
+
+All boulders are replaced by letters so they can be referred to. Moving the boulders is shortened to '''r''' for right, '''l''' for left, '''u''' for up, '''d''' for down. An asterisk is used to denote the last move filled a hole (and thus removed the boulder from the game). So '''Nddrr*''' means move boulder '''N''' two times down and two times to the right into a hole.
+
+First clear up the lower part of the room. The opening move is the only one possible. Make sure you move the '''O''' boulder out of the way when finishing the '''L''' boulder:
+ --------
+ ---.|....|
+ |...A....|---------- '''O''' ll
+ |.-.BC-DE|.|.......| '''P''' rr*
+ |.FG-......|.......| '''N''' ddrr*
+ |.-..H.|...|.......| '''L''' ddd
+ |....-I--J-|...&lt;...| '''O''' u
+ |..KL..M...|.......| '''L''' rrdr rr*
+ |.--...|...|.......| '''O''' rddr rrrr r*
+ |....-N|---|.......| '''K''' rddd drrr rrrr*
+ ---..O.-----------+|
+   |..P@^^^^^^^^^^^.|
+   ------------------
+
+Clear the upper left corner, boulders '''G''' and '''F'''. Now enter the small room in the middle and finish boulder '''M'''. Then enter the room just above '''J''' and finish '''I''' and '''H''':
+ --------
+ ---.|....|
+ |...A....|---------- '''G''' dddr dddd rrrr rrrr*
+ |.-.BC-DE|.|.......| '''F''' rddd rddd drrr rrrr rr*
+ |.FG-......|.......| '''M''' rrll llld dddr rrrr rrrr r*
+ |.-..H.|...|.......| '''J''' uu
+ |....-I--J-|...&lt;...| '''I''' dddd drrr rrrr rr*
+ |......M...|.......| '''H''' rddd dddr rrrr rrrr r*
+ |.--...|...|.......| 
+ |....-.|---|.......| 
+ ---....-----------+|
+   |...@.....^^^^^^.|
+   ------------------
+
+Enter the top room through '''A''' and push '''C''' out:
+
+ -------- 
+ ---.|....| 
+ |...A....|---------- '''A''' rr 
+ |.-.BC-DE|.|.......| '''C''' ddrd dddd drrr rrrr rrrr* 
+ |...-....J.|.......|  
+ |.-....|...|.......|  
+ |....-.--.-|...&lt;...|  
+ |..........|.......|  
+ |.--...|...|.......| 
+ |....-.|---|.......| 
+ ---....-----------+| 
+   |...@..........^.| 
+   ------------------
+The level is now finished. All boulders can still be moved around freely and should be checked for wands or rings.
+ --------
+ ---.|....|
+ |.....A..|----------
+ |.-.B.-DE|.|.......|
+ |...-....J.|.......|
+ |.-....|...|.......|
+ |....-.--.-|...&lt;...|
+ |..........|.......|
+ |.--...|...|.......|
+ |....-.|---|.......|
+ ---....-----------+|
+   |...@............|
+   ------------------
+
+==Next level==
+After this level, you will face either of the following levels. In [[NetHack 3.4.3]] and [[variant]]s based on it, level 4a has a [[bag of holding]] and level 4b has an [[amulet of reflection]]. In [[NetHack 3.6.0]] and [[variant]]s based on it, either level may have either prize with equal probability:
+{|class="prettytable"
+|[[Sokoban Level 4a]]
+ <nowiki>--------------------------</nowiki>
+ <nowiki>|@......^^^^^^^^^^^^^^^^.|</nowiki>
+ <nowiki>|.......----------------.|</nowiki>
+ <nowiki>-------.------         |.|</nowiki>
+ <nowiki> |...........|         |.|</nowiki>
+ <nowiki> |.0.0.0.0.0.|         |.|</nowiki>
+ <nowiki>--------.----|         |.|</nowiki>
+ <nowiki>|...0.0..0.0.|         |.|</nowiki>
+ <nowiki>|...0........|         |.|</nowiki>
+ <nowiki>-----.--------   ------|.|</nowiki>
+ <nowiki> |..0.0.0...|  --|.....|.|</nowiki>
+ <nowiki> |.....0....|  |.+.....|.|</nowiki>
+ <nowiki> |.0.0...0.--  |-|.....|.|</nowiki>
+ <nowiki>-------.----   |.+.....+.|</nowiki>
+ <nowiki>|..0.....|     |-|.....|--</nowiki>
+ <nowiki>|........|     |.+.....|</nowiki>
+ <nowiki>|...------     --|.....|</nowiki>
+ <nowiki>-----            -------</nowiki>
+|[[Sokoban Level 4b]]
+ <nowiki>  ------------------------</nowiki>
+ <nowiki>  |..^^^^^^^^^^^^^^^^^^..|</nowiki>
+ <nowiki>  |..-------------------.|</nowiki>
+ <nowiki>----.|    -----        |.|</nowiki>
+ <nowiki>|..|0--  --...|        |.|</nowiki>
+ <nowiki>|.....|--|.0..|        |.|</nowiki>
+ <nowiki>|.00..|..|..0.|        |.|</nowiki>
+ <nowiki>--..00|...00.--        |.|</nowiki>
+ <nowiki> |0..0...|0..|   ------|.|</nowiki>
+ <nowiki> |.00.|..|..0| --|.....|.|</nowiki>
+ <nowiki> |.0.0---|.0.| |.+.....|.|</nowiki>
+ <nowiki> |.......|..-- |-|.....|.|</nowiki>
+ <nowiki> ----.0..|.--  |.+.....+.|</nowiki>
+ <nowiki>    ---.--.|   |-|.....|--</nowiki>
+ <nowiki>     |.0...|   |.+.....|</nowiki>
+ <nowiki>     |@.|..|   --|.....|</nowiki>
+ <nowiki>     -------     -------</nowiki>
+|}
+{{nethack-360}}
+[[Category:Sokoban|3a]]}
+&&%s&& %s Sokoban Level 2b {140405 2021-05-28T20:27:43Z {4001138 LarryFluckiger} Added a YouTube video link. Although this [[Sokoban]] level has the most boulders, it is not very hard. There are 20 [[boulder]]s and 15 [[hole]]s.
+ 0 boulder
+ ^ hole
+ @ starting position/downstairs
+ < upstairs
+
+ -----------       -----------
+ |....|....---     |.........|
+ |..00|00...@|     |.........|
+ |.....0...---     |.........|
+ |....|....|       |....<....|
+ |-.---------      |.........|
+ |..0.|.....|      |.........|
+ |.00.|0.0.0|      |.........|
+ |..0.....0.|      |.........|
+ |.000|0..0.----------------+|
+ |....|..0.0.^^^^^^^^^^^^^^^.|
+ -----------------------------
+
+== Strategy ==
+The following solution solves the level without putting any boulders in an immobile position. Faster solutions which do not necessarily leave every boulder free might exist. You can [http://alt.org/nethack/trd/?file=http://alt.org/nethack/userdata/t/tjraux02/ttyrec/2011-06-07.02:47:06.ttyrec.bz2 watch a TTYREC video of this solution] or [https://youtu.be/856hCXLbPDA a YouTube video].
+

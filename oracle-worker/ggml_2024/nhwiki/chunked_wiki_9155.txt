@@ -1,0 +1,1000 @@
+@M=[[cavewoman (player monster)|{{white|@}}]]
+@N=[[healer (player monster)|{{white|@}}]]
+@O=[[knight (player monster)|{{white|@}}]]
+@P=[[monk (player monster)|{{white|@}}]]
+@Q=[[priest (player monster)|{{white|@}}]]
+@R=[[priestess (player monster)|{{white|@}}]]
+@S=[[ranger (player monster)|{{white|@}}]]
+@T=[[rogue (player monster)|{{white|@}}]]
+@U=[[samurai (player monster)|{{white|@}}]]
+@V=[[tourist (player monster)|{{white|@}}]]
+@W=[[valkyrie (player monster)|{{white|@}}]]
+@X=[[wizard (player monster)|{{white|@}}]]
+@Y=[[Arch Priest|{{white|@}}]]
+@Z=[[Twoflower|{{white|@}}]]
+a@=[[student|{{white|@}}]]
+b@=[[chieftain|{{white|@}}]]
+c@=[[neanderthal|{{white|@}}]]
+d@=[[High-elf|{{white|@}}]]
+e@=[[attendant|{{white|@}}]]
+f@=[[page|{{white|@}}]]
+g@=[[abbot|{{white|@}}]]
+h@=[[acolyte|{{white|@}}]]
+i@=[[hunter|{{white|@}}]]
+j@=[[thug|{{white|@}}]]
+k@=[[ninja|{{white|@}}]]
+l@=[[roshi|{{white|@}}]]
+m@=[[guide|{{white|@}}]]
+n@=[[warrior|{{white|@}}]]
+o@=[[apprentice|{{white|@}}]]
+~0=[[long worm tail|{{brown|~}}]]
+]0=[[strange object|{{black|]}}]]
+}a=[[lava|{{red|&#125;}}]]
+}b=[[moat|{{blue|&#125;}}]]
+|a=[[grave|{{lightgray|&#124;}}]]
+#a=[[iron bars|{{cyan|#}}]]
+#b=[[tree|{{green|#}}]]
+{a=[[fountain|{{brightblue|{}}]]
+.a=[[ice|{{brightcyan|.}}]]
+<<=[[stairs|{{lightgray|&lt;}}]]
+>>=[[stairs|{{lightgray|&gt;}}]]
+__=[[altar|{{lightgray|_}}]]
+^0=[[hole|{{brown|^}}]]
+^1=[[Quest portal|{{brightmagenta|^}}]]
+#c=[[Drawbridge|{{brown|#}}]]
+#d=[[Drawbridge|{{brown|.}}]]
+
+This is a predefined replacement ruleset for <nowiki><replacecharsblock></nowiki>. This ruleset defines all of the monsters, terrain and object classes needed to create tty screenshots. Each symbol in the map is two characters wide.
+
+For a lighter ruleset meant for simpler maps, see {{tl|ttymap}}.
+
+See [[User:Paxed/ReplaceCharsBlock]].
+[[Category:Templates]]}
+&&%s&& %s Template:Msl {139205 2021-04-22T17:37:57Z {4001463 Actual-nh} /* See also */ Template:mcsl <onlyinclude><includeonly>[[{{monarticle|{{{1}}}}}|{{monsym/{{lc:{{{1}}}}}}}]]</includeonly></onlyinclude>
+
+This template shows the monster symbol and makes it a link to that monster's page. Takes one parameter, the monster name. This is a simplified version of {{tl|monsymlink}}.
+
+For example:
+
+*<nowiki>{{msl|Wizard of Yendor}}</nowiki> produces {{msl|Wizard of Yendor}}
+
+== See also ==
+*{{tl|monsym}}
+*{{tl|monsymlink}}
+*{{tl|monsters}}
+*{{tl|monlink}}
+*{{tl|mcsl}}
+*{{tl|monclass}}
+*{{tl|monclasssym}}
+
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Template:ClickA {68625 2011-02-07T17:04:43Z {679 Ray Chason} Template copied from Wikipedia, to create a bot shutoff button <includeonly>{{#tag:imagemap|
+Image:{{{image|Transparent.gif}}}{{!}}{{{width|}}}{{#if:{{{height|}}}|x{{{height}}}px|{{#if:{{{width|}}}|px}}}}{{!}}{{{title|}}}
+default [{{{link|{{subst:fullurl:Main Page}}}}} {{{title|{{{link|}}}}}}]
+desc {{{desc|none}}}
+}}</includeonly><noinclude>
+{{Documentation}}
+</noinclude>}
+&&%s&& %s Template:Unknownversion {134617 2020-06-28T01:48:14Z {4000693 Phol ende wodan} unknown version pages should be automatically collected in a category to be discoverable {{version icon
+| imagename        = unknownversion.png
+| description      = This article is new and has not yet been tagged with a NetHack version.
+| long description = is new and should be retagged with the relevant version icon
+| icon_nr          = {{{offset|0}}}
+| included         = <includeonly>1</includeonly>
+}}
+[[Category:Pages with an unknown version]]}
+&&%s&& %s Beam {124958 2018-12-28T07:06:15Z {4000865 Tomsod} auto-hit '''Beams''' are directional effects produced by certain [[wand]]s and [[spellbook|spells]].
+
+Beams are similar to [[ray]]s in that they affect a series of tiles in a specified direction over a limited range (or can be aimed at yourself). However, beams do not bounce, are not animated on screen, and in many cases will not auto-identify. Beams are halted by [[door]]s, with the exception of force bolts and wands of striking, which will destroy the door and affect the tiles behind it.
+
+Unlike rays, most beams are not subject to [[to-hit]] rolls.  [[Force bolt]] is the single exception.
+
+The range of a beam wand is 6 to 13 squares.{{refsrc|zap.c|2470|comment=beam wand range}} For each monster hit, range decreases by 3.{{refsrc|zap.c|2717|comment=beam hit monster}} For each square objects are affected, range decreases by 1.{{refsrc|zap.c|2744|comment=beam hit object(s)}} Beams don't bounce and can't be reflected.
+
+An angry god who fails to destroy you with lighting will try again with a [[wide-angle disintegration beam]] directed at you.
+
+The following items allow you to use beams.
+
+==Wands==
+*[[Wand of cancellation]]
+*[[Wand of locking]]
+*[[Wand of make invisible]]
+*[[Wand of nothing]] (no effect)
+*[[Wand of opening]]
+*[[Wand of polymorph]]
+*[[Wand of probing]]
+*[[Wand of slow monster]]
+*[[Wand of speed monster]]
+*[[Wand of striking]]
+*[[Wand of teleportation]]
+*[[Wand of undead turning]]
+
+==Spells==
+* [[Spellbook of cancellation]]
+* [[Spellbook of drain life]]
+* [[Spellbook of extra healing]]
+* [[Spellbook of force bolt]]
+* [[Spellbook of healing]]
+* [[Spellbook of knock]]
+* [[Spellbook of polymorph]]
+* [[Spellbook of slow monster]]
+* [[Spellbook of stone to flesh]]
+* [[Spellbook of teleport away]]
+* [[Spellbook of turn undead]]
+* [[Spellbook of wizard lock]]
+
+{{nethack-343}}
+[[Category:Wands]]
+[[Category:Spellcasting]]}
+&&%s&& %s Storm Whistle {68649 2011-02-08T02:12:30Z {679 Ray Chason} Redirected page to [[The Storm Whistle]] #REDIRECT [[The Storm Whistle]]}
+&&%s&& %s Protection spells {68733 2011-02-08T08:21:01Z {4000066 Usethe4ce} redirect (for now at least) #REDIRECT [[Spellcasting (SLASH'EM)#Protection spells]]
+[[Category:Spell schools]]}
+&&%s&& %s Body spells {68734 2011-02-08T08:21:46Z {4000066 Usethe4ce} redirect (for now at least) #REDIRECT [[Spellcasting (SLASH'EM)#Body spells]]
+[[Category:Spell schools]]}
+&&%s&& %s Category:Articles needing version tags {70695 2011-05-29T21:27:48Z {0 } cat This category collects articles that have not been tagged for [[NetHackWiki:Next version]].  The template<nowiki>{{</nowiki>[[Template:unknownversion|unknownversion]]}} adds an article to this category, and should be removed from the article once another tag has been placed.
+[[Category:NetHackWiki]]}
+&&%s&& %s Ward against lightning {68805 2011-02-09T18:12:49Z {663 Qazmlpok} Created page with "'''Ward against lightning''' is a technique in [[SLASH'EM]] that [[monk]]s get at level 15. This technique is given instead of intrinsic [[shock resistance]], as in vanilla netha..." '''Ward against lightning''' is a technique in [[SLASH'EM]] that [[monk]]s get at level 15. This technique is given instead of intrinsic [[shock resistance]], as in vanilla nethack. The technique gives shock resistance for 50-149 + the level of the technique turns. It can be used again after 500-1499 turns.
+
+There is no effect if you possess intrinsic shock resistance.
+
+== Messages ==
+{{message|You invoke the ward against lightning!|You activated the technique.}}
+
+{{message|You feel a little static cling.|The technique has expired and you do not have another source of shock resistance.}}
+
+[[Category:SLASH'EM]]
+[[Category:Techniques]]}
+&&%s&& %s Ward against ice {68806 2011-02-09T18:12:53Z {663 Qazmlpok} Created page with "'''Ward against ice''' is a technique in [[SLASH'EM]] that [[monk]]s get at level 13. This technique is given instead of intrinsic [[cold resistance]], as in vanilla nethack. The..." '''Ward against ice''' is a technique in [[SLASH'EM]] that [[monk]]s get at level 13. This technique is given instead of intrinsic [[cold resistance]], as in vanilla nethack. The technique gives cold resistance for 50-149 + the level of the technique turns. It can be used again after 500-1499 turns.
+
+There is no effect if you possess intrinsic cold resistance.
+
+== Messages ==
+{{message|You invoke the ward against ice!|You activated the technique.}}
+
+{{message|You feel a little cooler.|The technique has expired and you do not have another source of cold resistance.}}
+
+[[Category:SLASH'EM]]
+[[Category:Techniques]]}
+&&%s&& %s Ward against flame {148071 2022-09-05T04:05:04Z {4001279 Umbire the Phantom} touch-up '''Ward against flame''' is a [[technique]] in [[SLASH'EM]] and [[SlashTHEM]]. [[Monk]]s gain this technique at level 11, as opposed to the intrinsic [[fire resistance]] given in vanilla ''[[NetHack]].
+
+==Description==
+If you use the technique without intrinsic fire resistance, you gain temporary fire resistance for an amount of turns equal to the technique's level plus a random number from 50-149; if you have intrinsic fire resistance, the technique has no effect. It can be used again after 500-1499 turns.
+
+==Messages==
+{{message|You invoke the ward against flame!|You activated the technique.}}
+{{message|You feel a little warmer.|The technique has expired and you do not have another source of fire resistance.}}
+{{slashem-7E7|offset=1}}
+{{variant-343}}
+[[Category:SLASH'EM]]
+[[Category:Techniques]]}
+&&%s&& %s Vapor {68825 2011-02-10T22:25:24Z {663 Qazmlpok} Redirected page to [[Vapors]] #REDIRECT[[Vapors]]}
+&&%s&& %s Template:Random ttymap/ttymap2 {68894 2011-02-12T17:11:02Z {630 Paxed} moved [[Main Page/ttymap2]] to [[Template:Random ttymap/ttymap2]] <div class='ttyscreen'>{{lightgray|Do&nbsp;you&nbsp;want&nbsp;an&nbsp;account&nbsp;of&nbsp;creatures&nbsp;vanquished?&nbsp;[ynq]&nbsp;(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##############}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|┌────┐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌─}}{{white|#}}{{lightgray|┐}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|###}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|┌┘····│┌──┐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌─┘··│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|######}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|│·····└┘··│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│····│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##*###}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|└┐········│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└┐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌─┘·┌──┘}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{white|#}}{{lightgray|─}}{{white|###}}{{lightgray|─┐}}{{darkgray|&nbsp;}}{{lightgray|│···──···└┐}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|··│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌──┐}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···}}{{white|#}}{{lightgray|########}}{{white|##}}{{lightgray|··}}{{white|#}}{{lightgray|··└─┘·│·······│┌──┐}}{{darkgray|&nbsp;}}{{lightgray|─┘····│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌─┘&lt;·└────┘·┌─┘}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{white|#}}{{lightgray|··········├──·····└┘··└┘·····┌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│··}}{{cyan|)}}{{lightgray|········│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│······}}{{white|#####}}{{lightgray|··}}{{brightblue|^}}{{lightgray|···············└&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌─┬─┘}}{{cyan|)}}{{lightgray|··}}{{cyan|)}}{{lightgray|┌──┐··─┴┐}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└──┐··*└┐}}{{white|###}}{{lightgray|···}}{{white|#}}{{lightgray|·┌┐·─··········└&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌┘·│····│·└┐}}{{darkgray|&nbsp;}}{{lightgray|│····│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌─┘*···│}}{{white|#}}{{lightgray|··│}}{{blue|^}}{{lightgray|┌┴─┘│····┌┐}}{{darkgray|&nbsp;}}{{lightgray|┌─┐}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|···┌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│·}}{{cyan|)}}{{lightgray|··┌──┤··└┐│····└──┬─┐}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···┌┐·└┘··├─┘}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|└─┐·─┴┐}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|┌──┬┘····│}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|│···││·······│·└──┐┌─┘·}}{{blue|[}}{{white|#}}{{lightgray|┘│···┌─┼──┐}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|┌─┘···│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|│··│····┌┘┌─┘··┌┘│···········}}[[golem|{{white|&#39;}}]]{{lightgray|└┘···}}{{white|#}}{{lightgray|#*└}}{{white|##}}{{lightgray|·└─┤··└┐}}{{darkgray|&nbsp;}}{{lightgray|│·····│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|│·······│┌┘····│}}{{darkgray|&nbsp;}}{{lightgray|│··········}}[[rodent|{{brown|rrr}}]]{{lightgray|··┌}}{{white|#}}{{lightgray|┘##}}{{white|###}}{{lightgray|···│···│}}{{darkgray|&nbsp;}}{{lightgray|│·}}[[teleport trap|{{magenta|^}}]]{{lightgray|··}}[[stairs|{{lightgray|&gt;}}]]{{lightgray|··┌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|└┐·┌─┐··││····┌┘┌┘}}{{brightblue|^}}{{lightgray|·········}}[[rodent|{{brown|r}}]][[player|{{white|@}}]][[rodent|{{brown|r}}]]{{lightgray|··│}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|##}}{{white|#}}{{lightgray|········┌┘}}{{darkgray|&nbsp;}}{{lightgray|│·┌┐···┌┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|└─┘}}{{darkgray|&nbsp;}}{{lightgray|└┐·└┤···┌┘┌┘·······}}[[Comestible|{{brown|%}}]]{{lightgray|···}}[[rodent|{{brown|rrr}}]][[Comestible|{{brown|%}}]]{{lightgray|┌┘}}{{darkgray|&nbsp;}}{{lightgray|#}}{{white|#}}{{lightgray|─}}{{white|#}}{{lightgray|········└┐}}{{darkgray|&nbsp;}}{{lightgray|└─}}{{darkgray|&nbsp;}}{{lightgray|└┐·┌┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌┴─·├───┘┌┘···············┌}}{{white|#}}{{lightgray|###}}{{white|#}}{{lightgray|···········│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└─┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│·····│········┌─┘}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|#└}}{{white|#}}{{lightgray|·····┌─┐·┌┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│··┌┘}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│·│··┌┴┐·│·│·┌─┘}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#└─┐·┌─┘}}{{darkgray|&nbsp;}}{{lightgray|└─┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└──┘}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└─┴──┘}}{{darkgray|&nbsp;}}{{lightgray|└─┴─┴─┘}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└─┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Dudefella&nbsp;the&nbsp;[[Skirmisher]]&nbsp;&nbsp;&nbsp;&nbsp;[[Strength|St]]:18/06&nbsp;[[Dexterity|Dx]]:13&nbsp;[[Constitution|Co]]:18&nbsp;[[Intelligence|In]]:7&nbsp;[[Wisdom|Wi]]:9&nbsp;[[Charisma|Ch]]:7&nbsp;&nbsp;[[Alignment|Lawful]]&nbsp;[[Score|S]]:1545&nbsp;&nbsp;<br>[[Dungeon level|Dlvl]]:3&nbsp;&nbsp;[[Gold|$]]:185&nbsp;[[Hit points|HP]]:0(52)&nbsp;[[Pw]]:15(15)&nbsp;[[Armor class|AC]]:6&nbsp;&nbsp;[[Experience points|Xp]]:5/315&nbsp;[[Turns|T]]:1750&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main_Page_rotation]]</noinclude>}
+&&%s&& %s Template:Random ttymap/ttymap1 {68892 2011-02-12T17:10:20Z {630 Paxed} moved [[Main Page/ttymap1]] to [[Template:Random ttymap/ttymap1]] <div class="ttyscreen">[[Welcome message|{{lightgray|Velkommen}}]]{{lightgray|&nbsp;}}[[Player|{{lightgray|Player}}]]{{lightgray|,&nbsp;the&nbsp;}}[[dwarf|{{lightgray|dwarven}}]]{{lightgray|&nbsp;}}[[Valkyrie|{{lightgray|Valkyrie}}]]{{lightgray|,&nbsp;welcome&nbsp;back&nbsp;to&nbsp;NetHack!}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-----.-#############################}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.....&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-----#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|----}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;}}{{lightgray|--------}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;..}}[[Altar|{{lightgray|_}}]]{{lightgray|...#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-----}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#...&#124;}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;}}{{lightgray|&#124;...}}[[Stairs|{{lightgray|&gt;}}]]{{lightgray|...##}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#......&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;....########&#124;.}}[[Armor|{{brown|[}}]]{{lightgray|.&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###&#124;}}[[Trap|{{brown|^}}]]{{lightgray|.&#124;}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;}}{{lightgray|&#124;......&#124;}}{{black|&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###&#124;.....&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...&#124;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#....&#124;#########}}[[Door|{{brown|-}}]]{{lightgray|..&#124;}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;}}{{lightgray|&#124;......}}[[Door|{{brown|+}}]]{{lightgray|####################}}[[Door|{{brown|-}}]]{{lightgray|.}}[[Tool|{{brightcyan|(}}]]{{lightgray|...&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}[[Door|{{brown|+}}]]{{lightgray|...&#124;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-----#}}{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;}}{{lightgray|&#124;..&#124;}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;}}{{lightgray|&#124;......&#124;}}{{black|&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;}}{{lightgray|------#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;}}{{lightgray|-------#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###-----#####}}[[Weapon|{{cyan|)}}]]{{lightgray|################...&#124;}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;}}{{lightgray|&#124;......&#124;}}{{black|&nbsp;&nbsp;}}{{lightgray|##.....&#124;#################################}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;..&#124;}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;}}{{lightgray|-----.--}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;....&#124;#}}{{black|&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-.--}}{{black|&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#.....&#124;#}}{{black|&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;.....####}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|####}}{{black|&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>
+{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;..}}[[Gold|{{yellow|$}}]]{{lightgray|.&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#-----#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#------#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}[[Door|{{brown|-}}]]{{lightgray|....#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##########}}{{black|&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##########}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;..}}[[Stairs|{{lightgray|&lt;}}]]{{lightgray|&#124;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#----.-#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...&#124;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;.}}[[You|{{white|@}}]][[Fountain|{{blue|{}}]]{{lightgray|.&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;}}{{lightgray|--.-----}}{{black|&nbsp;}}{{lightgray|###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...&#124;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#.....&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;}}{{lightgray|&#124;......&#124;###}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...&#124;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;....&#124;#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;}}{{lightgray|&#124;..}}[[Comestible|{{green|%}}]]{{lightgray|..}}[[Scroll|{{white|?}}]]{{lightgray|.##}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...&#124;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...}}[[Newt|{{yellow|:}}]]{{lightgray|.#}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;}}{{lightgray|--------}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-----}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|------}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>{{lightgray|Player&nbsp;the&nbsp;}}[[rank|{{lightgray|Skirmisher}}]]{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[Strength|{{lightgray|St}}]]{{lightgray|:18/02&nbsp;}}[[Dexterity|{{lightgray|Dx}}]]{{lightgray|:13&nbsp;}}[[Constitution|{{lightgray|Co}}]]{{lightgray|:19&nbsp;}}[[Intelligence|{{lightgray|In}}]]{{lightgray|:7&nbsp;}}[[Wisdom|{{lightgray|Wi}}]]{{lightgray|:8&nbsp;}}[[Charisma|{{lightgray|Ch}}]]{{lightgray|:9&nbsp;&nbsp;}}[[Alignment|{{lightgray|Lawful}}]]{{lightgray|&nbsp;}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br>[[Dungeon level|{{lightgray|Dlvl}}]]{{lightgray|:2&nbsp;&nbsp;}}[[Gold|{{lightgray|$}}]]{{lightgray|:212&nbsp;}}[[Hit points|{{lightgray|HP}}]]{{lightgray|:45(45)&nbsp;}}[[Power|{{lightgray|Pw}}]]{{lightgray|:5(5)&nbsp;}}[[Armor class|{{lightgray|AC}}]]{{lightgray|:6&nbsp;&nbsp;}}[[Experience level|{{lightgray|Xp}}]]{{lightgray|:4/105&nbsp;}}[[Turn|{{lightgray|T}}]]{{lightgray|:1359}}{{black|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main Page rotation]]</noinclude>}
+&&%s&& %s Template:Random ttymap/ttymap3 {68896 2011-02-12T17:11:16Z {630 Paxed} moved [[Main Page/ttymap3]] to [[Template:Random ttymap/ttymap3]] <div class='ttyscreen'>{{lightgray|You&nbsp;have&nbsp;a&nbsp;little&nbsp;trouble&nbsp;removing&nbsp;f&nbsp;-&nbsp;a&nbsp;blessed&nbsp;smoky&nbsp;[[potion]].&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌──────────┐}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#┌──────────────────────────────┐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···········#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##}}{{brown|▒}}{{lightgray|······························│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|┌─────────┐&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│·········[[stairs|&lt;]]│#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##│···┌───┬──┐·······┌──┬───┬──┐·│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│·········│&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│··········│#}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|####│···│}}{{blue|+]}}{{white|?}}{{lightgray|│··├─────┐·│··│}}{{white|(((}}{{lightgray|│}}{{darkgray|&nbsp;&nbsp;}}{{brown|+}}{{lightgray|·│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#··········│&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└────}}{{darkgray|&nbsp;}}{{lightgray|─────┘#}}{{darkgray|&nbsp;}}{{lightgray|##}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|#│···│}}{{brown|+}}{{orange|+}}{{white|+}}{{lightgray|│··│·}}{{white|@}}{{lightgray|···│·│··│}}{{white|(((}}{{lightgray|│}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|│·│}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###│·········│&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##0#}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|│···│···┌}}{{brown|▒}}{{lightgray|─┤··}}{{white|@}}{{lightgray|··│·└}}{{brown|▒}}{{lightgray|─┤···├──┘·│##}}[[comestible|{{yellow|%}}]]{{lightgray|######········[[stairs|&gt;]]·│&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···└}}{{brown|▒}}{{lightgray|──┘··│·····│····└─}}{{brown|▒}}{{lightgray|─┘····│#}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|│·········│&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│··········│·@···│·············│#}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└─────────┘&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│········}}{{blue|{}}{{lightgray|·└──}}{{brown|▒}}{{lightgray|──┘·}}{{blue|{}}{{lightgray|···········│#}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│··············}}{{brown|%}}{{lightgray|·}}{{cyan|)}}{{lightgray|·············│#}}{{darkgray|&nbsp;}}{{lightgray|#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···┌─}}{{brown|▒}}{{lightgray|─┐···········┌}}{{brown|+}}{{lightgray|─┬}}{{brown|▒}}{{lightgray|──┐···│###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···│}}{{brown|(}}{{cyan|)}}{{lightgray|·├──┬───┐·┌──┤}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|│···│···│#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|····│}}{{cyan|(}}{{white|&#61;}}{{brown|(}}{{lightgray|│··│}}{{white|%(}}{{lightgray|·}}{{brown|▒}}{{lightgray|·}}{{brown|▒}}{{lightgray|··│}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|│}}[[ring|{{green|&#61;}}]]{{blue|!}}{{lightgray|·│···│#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···│}}{{cyan|(}}{{brown|(}}{{white|?}}{{lightgray|│··│}}{{white|%}}{{red|%}}{{lightgray|·│·│··├──┤}}{{brown|(}}{{lightgray|··│···│#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···└───┴}}{{brown|▒}}{{lightgray|─┴───┘·└──┘·[└───┘···│#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|│···················}}{{cyan|)}}{{lightgray|··}}{{cyan|)}}{{lightgray|·······}}{{brown|▒}}{{lightgray|#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|└──────────────────────────────┘#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{lightgray|Jawn&nbsp;the&nbsp;[[Exhumer]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[Strength|St]]:25&nbsp;[[Dexterity|Dx]]:11&nbsp;[[Constitution|Co]]:10&nbsp;[[Intelligence|In]]:17&nbsp;[[Wisdom|Wi]]:14&nbsp;[[Charisma|Ch]]:11&nbsp;&nbsp;[[Neutral]]&nbsp;[[Score|S]]:40815&nbsp;<br>[[Dlvl]]:7&nbsp;&nbsp;[[$]]:2597&nbsp;[[HP]]:55(55)&nbsp;[[Pw]]:69(69)&nbsp;[[AC]]:2&nbsp;&nbsp;[[Xp]]:11/10000&nbsp;[[Turns|T]]:11070&nbsp;[[Burdened]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main Page rotation]]</noinclude>}
+&&%s&& %s Template:Random ttymap/ttymap4 {68898 2011-02-12T17:11:29Z {630 Paxed} moved [[Main Page/ttymap4]] to [[Template:Random ttymap/ttymap4]] <div class='ttyscreen'>{{lightgray|The&nbsp;[[keystone kop|Kop&nbsp;Sergeant]]&nbsp;picks&nbsp;up&nbsp;a&nbsp;rubber&nbsp;hose.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#######}}{{darkgray|&nbsp;}}{{lightgray|-------}}{{darkgray|&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;###*&nbsp;&nbsp;&nbsp;&nbsp;}}{{brown|(}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;....}}[[trap|{{blue|^}}]]{{lightgray|.}}{{darkgray|&nbsp;}}{{lightgray|#}}{{brown|&nbsp;}}{{lightgray|#}}{{brown|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;}}[[unicorn|{{white|u}}]]{{brown|&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{brown|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;###*#...}}{{brown|&#124;}}{{lightgray|-...-}}{{brown|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-------------}}{{brown|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###.......########0......-........}}{{blue|h}}{{lightgray|&nbsp;##*#(........#######..........}}{{blue|^}}{{lightgray|.&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###.......##0######..........#...}}{{white|?}}{{lightgray|.}}{{white|#}}{{lightgray|#0#&nbsp;&#124;........#&nbsp;#*#&nbsp;&nbsp;&#124;...........&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|---}}{{brown|&#124;}}{{lightgray|.-.#&nbsp;#####0}}{{cyan|)}}{{lightgray|.......[[stairs|&gt;]]..}}{{blue|K}}{{white|b}}{{lightgray|...}}{{brown|-}}{{white|#}}{{lightgray|*###}}{{brown|-}}{{lightgray|........#######..0..........&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;#0#####}}{{brown|-}}{{lightgray|.........}}{{blue|K}}{{white|@}}{{lightgray|....}}{{white|#}}{{lightgray|#&nbsp;#&nbsp;&#124;........#0*##&nbsp;&nbsp;.............&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&nbsp;}}{{white|#####}}{{lightgray|#.}}{{brown|&#124;}}{{lightgray|.......}}{{blue|K}}{{lightgray|....-.##}}{{white|u}}{{lightgray|#&nbsp;----}}{{brown|&#124;}}{{lightgray|....#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.............&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{white|####}}{{lightgray|##}}{{white|#}}{{lightgray|####}}{{white|#######}}{{lightgray|###}}{{white|########}}{{cyan|(}}{{lightgray|###################&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;........---..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{white|#####}}{{lightgray|##}}{{white|##}}{{lightgray|#}}{{cyan|)}}{{white|#########}}{{lightgray|#}}{{white|###########}}{{lightgray|&nbsp;#########*####&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;####&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{white|###}}{{lightgray|0}}{{white|############################}}{{lightgray|&nbsp;#0#*&nbsp;###**#################&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{white|################################}}{{lightgray|###########*###&nbsp;#&nbsp;&nbsp;&nbsp;##&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#########&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{brown|)}}{{blue|%}}{{lightgray|##}}{{white|######}}{{lightgray|0}}{{white|##########################}}{{lightgray|########0####&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#*#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{white|###}}{{darkgray|&nbsp;}}{{lightgray|(}}{{white|################################}}{{lightgray|############--......#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;#}}{{white|#}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|.}}{{white|%}}{{lightgray|..}}{{blue|%}}{{white|#####}}{{lightgray|0}}{{white|###############}}{{lightgray|#}}{{white|########}}{{lightgray|(#......##}}{{brown|)}}{{lightgray|###.[[stairs|&lt;]]......#&nbsp;&nbsp;&nbsp;&nbsp;.......-&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{brown|)}}{{lightgray|....}}{{white|######}}{{cyan|(}}{{white|##}}{{lightgray|##}}{{red|h}}{{white|########}}{{lightgray|###}}{{white|#######}}{{lightgray|##.(....######........####}}{{white|#}}{{lightgray|........*&nbsp;}}{{brown|%}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|...[.}}{{white|#}}{{blue|KK}}{{white|#}}{{lightgray|**......}}{{white|###}}{{brown|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|*}}{{brown|&nbsp;&nbsp;}}{{white|#}}{{brown|&nbsp;}}{{white|##}}{{brown|&nbsp;&nbsp;&nbsp;}}{{lightgray|......}}{{brown|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.......##}}{{brown|&nbsp;&nbsp;}}{{lightgray|#........}}{{white|##}}{{lightgray|#}}{{brown|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|..}}{{white|%}}{{blue|%}}{{brown|-}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|...}}{{brown|(}}{{lightgray|..#0}}{{white|#}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;........&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...}}{{brown|)}}{{lightgray|.}}{{brown|)}}{{lightgray|..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|..}}{{blue|%}}{{lightgray|.&#124;#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.....&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-.....&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.......&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|-----}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|---.-.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;..----.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{white|#}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Yhelothar&nbsp;the&nbsp;[[Exhumer]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[Strength|St]]:17&nbsp;[[Dexterity|Dx]]:17&nbsp;[[Constitution|Co]]:17&nbsp;[[Intelligence|In]]:16&nbsp;[[Wisdom|Wi]]:16&nbsp;[[Charisma|Ch]]:12&nbsp;&nbsp;[[Lawful]]&nbsp;[[Score|S]]:103109}}{{white|&nbsp;<br>}}{{lightgray|[[dungeon level|Dlvl]]:2&nbsp;&nbsp;[[gold|$]]:339&nbsp;[[hit points|HP]]:97(97)&nbsp;[[Pw]]:51(51)&nbsp;[[Armor class|AC]]:-4&nbsp;[[experience points|Xp]]:12/25633&nbsp;[[turns|T]]:24695&nbsp;[[Weak]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[Burdened]]&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main Page rotation]]</noinclude>}
+&&%s&& %s Template:Random ttymap/ttymap5 {68900 2011-02-12T17:11:39Z {630 Paxed} moved [[Main Page/ttymap5]] to [[Template:Random ttymap/ttymap5]] <div class='ttyscreen'>{{lightgray|Your&nbsp;[[sacrifice]]&nbsp;is&nbsp;consumed&nbsp;in&nbsp;a&nbsp;flash&nbsp;of&nbsp;light!--More--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|########}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|#*}}{{darkgray|&nbsp;}}{{lightgray|-.--......}}[[comestible|{{brown|%}}]]{{lightgray|..........--}}{{cyan|(}}{{lightgray|-----..-.###}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#.....}}{{cyan|)}}{{lightgray|-&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##**####}}{{darkgray|&nbsp;}}{{lightgray|###*&#124;................................#}}{{blue|(}}{{cyan|(}}{{lightgray|###########....}}{{cyan|)}}{{lightgray|.&#124;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|*#######}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|###}}{{blue|%}}{{lightgray|%-----...----........-----......###}}{{darkgray|&nbsp;}}{{lightgray|#########}}{{blue|)}}{{cyan|)}}{{lightgray|..}}{{blue|%}}{{lightgray|.}}{{cyan|)}}{{lightgray|&#124;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###*#####..&#124;.}}[[lamp|{{yellow|(}}]]{{lightgray|.&#124;...&#124;.}}{{white|+}}{{lightgray|&#124;........&#124;}}[[armor|{{cyan|[}}]]{{lightgray|..&#124;......#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{blue|%}}{{lightgray|#.....[[stairs|&lt;]]&#124;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[comestible|{{brown|%}}]]{{lightgray|######}}{{blue|%}}{{lightgray|#}}[[comestible|{{brown|%}}]]{{lightgray|##..&#124;}}[[gem|{{red|*}}]]{{lightgray|.}}[[gem|{{green|*}}]]{{lightgray|&#124;...&#124;..&#124;........&#124;.}}{{white|(}}{{lightgray|.&#124;......#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###....}}{{cyan|)}}{{lightgray|.-&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#############..&#124;*}}{{orange|*}}{{lightgray|.&#124;...&#124;}}{{cyan|)}}{{lightgray|.}}{{cyan|)}}{{lightgray|........&#124;...&#124;.....&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|####}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|.......*###*#..&#124;}}{{cyan|(}}[[gem|{{yellow|*}}]][[armor|{{cyan|[}}]]{{lightgray|&#124;...&#124;}}{{brown|)}}{{lightgray|--*....}}{{blue|(}}{{lightgray|..--}}{{brown|&#124;}}{{lightgray|--.....&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|.......######..-}}{{brown|+}}{{lightgray|---....}}{{cyan|)}}{{blue|W}}{{lightgray|.....}}{{blue|)}}{{lightgray|.....+.......&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|.......######.......}}{{blue|))}}{{lightgray|....}}{{cyan|)}}{{lightgray|.}}{{brown|))}}{{lightgray|.*.*..}}[[giant|{{cyan|H}}]]{{lightgray|.}}{{brown|%}}{{lightgray|......&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|*#}}{{darkgray|&nbsp;}}{{lightgray|#*}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|.......######........*...}}{{cyan|)}}{{lightgray|.}}[[troll|{{brown|T}}]][[armor|{{cyan|[}}]]{{lightgray|...}}[[armor|{{cyan|[}}]]{{lightgray|..}}[[giant|{{cyan|H}}]]{{lightgray|..}}[[kitten|{{white|f}}]]{{lightgray|.......#}}{{blue|(}}{{lightgray|######}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|######&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|.......####*#...........}}{{brown|)}}{{lightgray|.....000}}{{blue|[)}}{{lightgray|...........#}}{{darkgray|&nbsp;}}{{lightgray|##}}{{darkgray|&nbsp;}}{{lightgray|##########.....-&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|.......######....}}{{cyan|)}}{{lightgray|......}}[[comestible|{{brown|%}}]]{{lightgray|....*[[boulder|0]]}}{{brown|(}}{{lightgray|[[boulder|0]]..}}[[giant|{{cyan|)H}}]]{{lightgray|........&#124;###}}{{darkgray|&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;}}{{lightgray|##}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##....}}{{brown|)}}{{lightgray|&#124;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|.......######..............&#124;.}}{{brown|[}}{{lightgray|0}}{{white|@}}{{lightgray|0}}{{blue|)[)}}{{lightgray|..........###############..}}{{brown|)}}[[trap|{{brightblue|^}}]]{{lightgray|.&#124;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#####*#######.................0}}{{blue|P}}{{lightgray|0.}}{{cyan|)}}{{lightgray|...........###############}}[[spellbook|{{blue|+}}]]{{lightgray|.}}{{cyan|))}}{{brown|)}}{{lightgray|&#124;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#*########}}[[lamp|{{yellow|(}}]]{{lightgray|##...........}}{{white|(}}{{lightgray|......}}[[pudding|{{blue|P}}]][[scroll|{{white|?}}]][[comestible|{{blue|%}}]]{{lightgray|..}}{{blue|[}}{{lightgray|......}}{{blue|)}}{{lightgray|..#####}}{{blue|%}}{{lightgray|##}}{{blue|%)}}{{lightgray|#####.[[stairs|&gt;]].}}{{cyan|)}}{{blue|)}}{{lightgray|.&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###*#*#######.................}}{{blue|PPP}}{{lightgray|............&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|------&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{cyan|(}}{{lightgray|###}}{{brown|)}}{{lightgray|*###..}}[[gem|{{magenta|*}}]]{{lightgray|........-..-..}}{{blue|PPP}}{{lightgray|...----------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{lightgray|LemurUNC&nbsp;the&nbsp;[[Shogun]]&nbsp;&nbsp;&nbsp;&nbsp;[[Strength|St]]:25&nbsp;[[Dexterity|Dx]]:18&nbsp;[[Constitution|Co]]:18&nbsp;[[Intelligence|In]]:18&nbsp;[[Wisdom|Wi]]:18&nbsp;[[Charisma|Ch]]:18&nbsp;&nbsp;[[Lawful]]&nbsp;[[Score|S]]:1528297&nbsp;&nbsp;&nbsp;&nbsp;<br>[[Dlvl]]:8&nbsp;&nbsp;[[gold|$]]:0&nbsp;&nbsp;[[hit points|HP]]:310(310)&nbsp;[[Pw]]:136(136)&nbsp;[[Armor class|AC]]:-33&nbsp;[[experience points|Xp]]:30/116683604&nbsp;[[turns|T]]:50036&nbsp;[[Satiated]]&nbsp;&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main Page rotation]]</noinclude>}
+&&%s&& %s Template:Random ttymap/ttymap6 {68902 2011-02-12T17:11:50Z {630 Paxed} moved [[Main Page/ttymap6]] to [[Template:Random ttymap/ttymap6]] <div class='ttyscreen'>{{lightgray|The&nbsp;[[invisible]]&nbsp;[[Asmodeus]]&nbsp;casts&nbsp;a&nbsp;spell&nbsp;at&nbsp;you!&nbsp;&nbsp;You&#39;re&nbsp;covered&nbsp;in&nbsp;frost.--More--&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|------------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}[[trap|{{brightblue|^}}]]{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}[[giant|{{cyan|H}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^}}[[trap|{{brightblue|^}}]][[armor|{{brown|[}}]][[armor|{{cyan|[}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{red|%}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[giant|{{cyan|H}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|----}}[[door|{{brown|&#124;}}]]{{lightgray|------------}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}[[wood nymph|{{green|n}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;-}}[[door|{{brown|&#124;}}]]{{lightgray|----------------------------------&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}[[trap|{{brightblue|^}}]]{{lightgray|---&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{cyan|)}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}[[gem|{{brown|*}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[trap|{{brightblue|^}}]]{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;-}}{{darkgray|&nbsp;}}[[comestible|{{yellow|%}}]]{{darkgray|&nbsp;}}{{lightgray|----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|*&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}{{white|%}}{{darkgray|&nbsp;}}[[trap|{{orange|^}}]]{{darkgray|&nbsp;}}{{lightgray|[}}{{darkgray|&nbsp;}}[[Asmodeus|{{magenta|&}}]]{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}[[Unknown creature causing you concern|{{red|1}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{cyan|)}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[door|{{brown|-}}]]{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|[[boulder|0]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;--}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|-----&#124;}}{{darkgray|&nbsp;}}[[trap|{{orange|^}}]]{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{cyan|)}}{{darkgray|&nbsp;&nbsp;}}[[Player|{{white|h}}]]{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[trap|{{brightblue|^}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[trap|{{orange|^}}]]{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;-----}}{{darkgray|&nbsp;}}{{lightgray|-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}[[boulder|{{lightgray|0}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{cyan|)}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;-}}[[door|{{brown|&#124;}}]]{{lightgray|----------------------------------}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---------}}{{darkgray|&nbsp;}}{{lightgray|&#124;&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|----------}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;%[[stairs|&lt;]]}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}[[comestible|{{red|%}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;&#124;}}{{darkgray|&nbsp;&nbsp;}}[[door|{{brown|-}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|---------------}}{{darkgray|&nbsp;}}{{lightgray|--------&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|--&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|-}}{{darkgray|&nbsp;}}{{lightgray|---&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{cyan|[}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;}}[[Unknown creature causing you dread|{{brightmagenta|5}}]]{{lightgray|&nbsp;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}[[gem|{{orange|*}}]]{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|-------}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|-------}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|-------}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|-------}}{{darkgray|&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[comestible|{{brown|%}}]]{{darkgray|&nbsp;}}{{lightgray|&#124;}}{{darkgray|&nbsp;}}[[comestible|{{brown|%}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|*}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|-------------------------------------------------------------------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Mandevil&nbsp;the&nbsp;[[Valkyrie|Warrior]]&nbsp;[[Strength|St]]:25&nbsp;[[Dexterity|Dx]]:18&nbsp;[[Constitution|Co]]:20&nbsp;[[Intelligence|In]]:11&nbsp;[[Wisdom|Wi]]:15&nbsp;[[Charisma|Ch]]:10&nbsp;[[Lawful]]&nbsp;[[Score|S]]:471973&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>[[Dlvl]]:30&nbsp;[[Gold|$]]:0&nbsp;&nbsp;[[Hit points|HP]]:}}{{green|164(166)}}{{lightgray|&nbsp;[[Pw]]:37(37)&nbsp;[[Armor class|AC]]:-11&nbsp;[[Experience points|Xp]]:15/186763&nbsp;[[Turns|T]]:29362&nbsp;[[Blind]]&nbsp;[[Burdened]]&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main Page rotation]]</noinclude>}
+&&%s&& %s Template:Random ttymap/ttymap7 {68904 2011-02-12T17:12:02Z {630 Paxed} moved [[Main Page/ttymap7]] to [[Template:Random ttymap/ttymap7]] <div class='ttyscreen'>{{lightgray|You&nbsp;see&nbsp;here&nbsp;a&nbsp;ruby&nbsp;[[ring]].&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}[[door|{{brown|+}}]]{{lightgray|..........&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-------------}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;}}{{lightgray|&#124;..........&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.}}[[spellbook|{{brown|+}}]][[gem|{{white|*}}]][[strange object|{{blue|]}}]][[Player|{{white|@}}]]{{lightgray|[[Potion|!]]&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;............#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|################...........&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}[[door|{{brown|-}}]]{{lightgray|.}}[[comestible|{{white|%}}]][[armor|{{yellow|[}}]][[scroll|{{white|?}}]][[kitten|{{white|f}}]][[potion|{{magenta|!}}]]{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...........&#124;#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#---------}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|------}}[[door|{{brown|&#124;}}]]{{lightgray|-----}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;.}}[[shopkeeper|{{white|@}}]][[armor|{{cyan|[}}]][[comestible|{{brown|%}}]][[weapon|{{cyan|)}}{{blue|)}}]]{{lightgray|&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;[[stairs|&gt;]]..........&#124;#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;.......&#124;###}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|########}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|#--------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-----.-----.-#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;.}}[[armor|{{cyan|[}}]]{{lightgray|.....&#124;#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|####&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;.......&#124;#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##}}[[door|{{brown|-}}]]{{lightgray|.....}}[[weapon|{{blue|)}}]]{{lightgray|.&#124;#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#####&#124;......}}[[weapon|{{cyan|)}}]][[door|{{brown|-}}]]{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|##}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|------###}}{{darkgray|&nbsp;}}{{lightgray|---------}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|-------------.--#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#}}{{darkgray|&nbsp;}}{{lightgray|#&#124;....&#124;#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;..............&#124;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|----------.--}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|###&#124;....}}[[door|{{brown|-}}]]{{lightgray|#}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...............#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;............###########.....&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;..............&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;...........&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|#&#124;....&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|----------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;....[[stairs|&lt;]]......}}[[door|{{brown|+}}]]{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;....&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;...........&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|-------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{lightgray|Snowy&nbsp;the&nbsp;[[Evoker]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[Strength|St]]:13&nbsp;[[Dexterity|Dx]]:12&nbsp;[[Constitution|Co]]:12&nbsp;[[Intelligence|In]]:18&nbsp;[[Wisdom|Wi]]:11&nbsp;[[Charisma|Ch]]:10&nbsp;&nbsp;[[Neutral]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>[[Dlvl]]:2&nbsp;&nbsp;[[gold|$]]:94&nbsp;[[Hit points|HP]]:17(17)&nbsp;[[Pw]]:23(23)&nbsp;[[Armor class|AC]]:9&nbsp;&nbsp;[[Experience points|Xp]]:2/25&nbsp;[[Turns|T]]:707&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main Page rotation]]</noinclude>}
+&&%s&& %s Template:Random ttymap {70631 2011-05-26T14:50:32Z {4000122 SamB} Linkify the reference to [[:Category:Main Page rotation]]; add </noinclude> tag at end. {{:{{#rndpagetitle:{{{1|Main Page rotation}}}}}}}<noinclude>
+
+This template shows a random ttymap "screenshot", chosen from pages belonging to a category. The category can be given as a parameter (<nowiki>{{Random ttymap|some category}})</nowiki>, or if omitted, will default to <tt>[[:Category:Main Page rotation|Main Page rotation]]</tt>.
+
+Note that the #rndpagetitle extension makes the page uncacheable.
+
+[[Category:Templates]]
+</noinclude>}
+&&%s&& %s Template:Random ttymap/ttymap8 {68925 2011-02-13T09:23:07Z {630 Paxed} "screenshot" for main page rotation <div class='ttyscreen'>{{lightgray|The&nbsp;[[water nymph|water&nbsp;nymph]]&nbsp;smiles&nbsp;at&nbsp;Morris&nbsp;engagingly.--More--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|----}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|--..&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;...&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;--..&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.---}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;--..&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;..--&#124;...&#124;&nbsp;&nbsp;&nbsp;---.---&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&#124;...--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;...&#124;&#124;..-&nbsp;----.....----.---&nbsp;&nbsp;--...&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;--...&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;...--.-&#124;--.........&#124;&#124;....----....&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.&#124;}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;---&#124;-..&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---...}}[[trap|{{brightblue|^}}]]{{lightgray|..--..........--.....&#124;.....-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|-----.--...------------.................-...............----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|---.----..............}}[[weapon|{{cyan|)}}]]{{lightgray|.}}[[weapon|{{cyan|))}}]]{{lightgray|...}}[[weapon|{{cyan|)}}]]{{lightgray|................................}}[[weapon|{{cyan|)}}]]{{lightgray|...&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;...............------------..------.--.......}}[[trap|{{brightblue|^}}]]{{lightgray|.---......}}[[armor|{{cyan|[}}]]{{lightgray|...}}[[weapon|{{cyan|)}}]]{{lightgray|---.---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;....----.......&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---..--&nbsp;&nbsp;&nbsp;&nbsp;-------.....--&nbsp;&#124;.......---...&#124;...&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|---..&#124;}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|-.......&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;..---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--...-&#124;&nbsp;&nbsp;---.....-&nbsp;&#124;...&#124;--.---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|--.&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;...---..&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--.--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&#124;....--&nbsp;&nbsp;&nbsp;&#124;......&#124;&#124;-[[stairs|&gt;]].--&#124;.}}[[trap|{{blue|^}}]]{{lightgray|.&#124;----&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;...&#124;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;}}[[trap|{{brown|^}}]]{{lightgray|.&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;.--.....&#124;&nbsp;&nbsp;&nbsp;--.....&#124;-....----.&#124;...--&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.&#124;}}{{darkgray|&nbsp;}}{{lightgray|&#124;...&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---.}}[[armor|{{brown|[}}]]{{lightgray|--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;..[[stairs|&lt;]]....--&nbsp;&nbsp;&nbsp;&nbsp;--.&#124;.-&#124;......---......&#124;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;&nbsp;}}{{lightgray|&#124;.&#124;}}{{darkgray|&nbsp;}}{{lightgray|---.&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;...}}[[comestible|{{brown|%}}]]{{lightgray|.&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-......-&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----&#124;..}}[[hero|{{white|@}}]]{{lightgray|..}}[[water nymph|{{blue|n}}]][[pet|{{white|f}}]]{{lightgray|........-&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|--.-------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;.....--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;...&#124;....&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--...............&#124;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|-.....&#124;}}{{darkgray|&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---.....-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--.---..--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---}}[[kitten|{{white|f}}]]{{lightgray|...........--&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;.......&#124;}}{{darkgray|&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--...--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;...........--&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|&#124;..--.---}}{{darkgray|&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--.&#124;.&#124;.--.---&nbsp;&nbsp;&nbsp;&nbsp;<br>}}{{darkgray|&nbsp;}}{{lightgray|---}}{{darkgray|&nbsp;&nbsp;}}{{lightgray|--}}{{darkgray|&nbsp;&nbsp;&nbsp;}}{{lightgray|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Sakaki&nbsp;the&nbsp;[[Embalmer]]&nbsp;[[Strength|St]]:10&nbsp;[[Dexterity|Dx]]:14&nbsp;[[Constitution|Co]]:16&nbsp;[[Intelligence|In]]:9&nbsp;[[Wisdom|Wi]]:16&nbsp;[[Charisma|Ch]]:16&nbsp;[[Neutral]]&nbsp;[[Score|S]]:11297&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>[[Dlvl]]:8&nbsp;&nbsp;[[Gold|$]]:3089&nbsp;[[Hit points|HP]]:52(52)&nbsp;[[Pw]]:85(91)&nbsp;[[Armor class|AC]]:6&nbsp;&nbsp;[[Experience points|Xp]]:8/2388&nbsp;[[Turns|T]]:5343&nbsp;[[Satiated]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}</div><noinclude>[[Category:Main Page rotation]]</noinclude>}
+&&%s&& %s Limb {68927 2011-02-13T09:43:31Z {4000066 Usethe4ce} redirect to [[body parts]] #REDIRECT [[body parts]]}
+&&%s&& %s Limbs {68928 2011-02-13T09:43:51Z {4000066 Usethe4ce} redirect to [[body parts]] #REDIRECT [[body parts]]}
+&&%s&& %s Template:Sourceref {68934 2011-02-13T10:53:12Z {630 Paxed} minor fix for nowiki <onlyinclude><includeonly>[[Source:Ref/{{{1}}}|{{{2|{{{1}}}}}}]]</includeonly></onlyinclude><noinclude>
+
+This template can be used to reference a named element of the [[source code]], provided that a proper marker is present; use <nowiki>{{</nowiki>[[Template:Sourcecode|sourcecode]]}} to reference a numbered line.  The named element need not be a function; it just has to have a redirect marker under Source:Ref, and a proper tag on the targeted page.
+
+==Syntax==
+*<nowiki>{{</nowiki>sourceref|''functionname''}}
+*<nowiki>{{</nowiki>sourceref|''functionname''|'''linkname'''}}
+
+==Example==
+*<nowiki>{{sourceref|acurrstr}}</nowiki> shows {{sourceref|acurrstr}}
+*<nowiki>{{sourceref|acurrstr|This link}}</nowiki> shows {{sourceref|acurrstr|This link}}
+
+==See Also==
+*{{tl|sourcecode}}
+*{{tl|function}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Debugging {143103 2021-10-06T12:12:02Z {4000903 Testbutt} big old news {{wikipedia|Debugging}}
+'''Debugging''' helps finding [[bug]]s in the code, or allows [[cheat]]ing in the manner of "memory cheats".
+
+On Linux, you most likely want to use the GNU Debugger, or '''gdb'''.
+
+==GDB==
+{{man|gdb}}
+First make sure NetHack has been compiled with the debugging flag '''-g''' (CFLAGS in src/Makefile should include -g)
+
+You can start gdb in two different ways: attach to an already running process, or start gdb and run the executable from it.
+
+===Attach to an already running process===
+*Find the process ID, for example with <tt>ps f -A</tt>
+*Run <tt>gdb --pid=XXX</tt>, where XXX is the process ID.
+*You will now be in the gdb command line; to let the game continue, type <tt>continue</tt> and press enter.
+
+===Run executable from within GDB===
+*Start gdb by typing <tt>gdb</tt>, which will bring you into the gdb command line.
+*Set arguments you want to give to NetHack, for example <tt>set args -D -u yourname</tt>
+*Set the HACKDIR [[environment variable]], for example <tt>set environment HACKDIR ./</tt>
+*Load the executable, for example <tt>file nethack</tt>
+*Start the executable with <tt>run</tt>
+
+While a program is being run, you can type {{kbd|ctrl|c}} at any time to get to the gdb command line, where you can type commands to the gdb. You should then see something like this on the screen:
+ Program received signal SIGINT, Interrupt.                                        
+ 0xb778d424 in __kernel_vsyscall ()
+ (gdb) 
+
+{|class="prettytable striped"
+!colspan="2"|GDB Commands
+|-
+|<tt>continue</tt>
+|Continue the program being debugged. (You might need to do {{kbd|ctrl|l}} to refresh the screen)
+|-
+|<tt>quit</tt>
+|Quit gdb.
+|-
+|<tt>step</tt>
+|Execute one (source-code) line of the program.
+|-
+|<tt>next</tt>
+|Like <tt>step</tt>, but does not go into subroutines.
+|-
+|<tt>finish</tt>
+|Execute to the end of the current subroutine.
+|-
+|<tt>print flags.debug</tt>
+|Shows the current value of a variable (in this example, {{sourcecode|Flag.h|34}}). Can also print complex structures, for example <tt>print *invent</tt> or <tt>print u</tt>.
+|-
+|<tt>set flags.debug = 1</tt>
+|Set the value of a variable (in this example, makes NetHack believe the game is in [[wizard mode]]).
+|-
+|<tt>break dopickup</tt>
+|Set a break point on function {{sourceref|dopickup}}. When NetHack next executes that function, gdb will stop NetHack and return to the gdb command line.
+|-
+|<tt>clear dopickup</tt>
+|Clears any break points set on function dopickup().
+|-
+|<tt>bt</tt>
+|Shows a backtrace (a list of called functions).
+|-
+|<tt>help</tt>
+|Shows help for gdb commands.
+|}
+==Fuzzer==
+The "fuzzer" is a relatively new utility for NetHack development. It automates the sending of many random commands into the game window, which can help test the game in ways that would take a long time to expose via regular gameplay.
+
+One way to "launch" the fuzzer is to start gdb, launch the game, break out with ^c, set iflags.debug_fuzzer = 1, then continue.
+
+[[Category:Annotations]]
+[[Category:Development]]
+[[Category:Utilities]]}
+&&%s&& %s Debug {68939 2011-02-13T11:07:54Z {630 Paxed} #REDIRECT [[Debugging]] #REDIRECT [[Debugging]]}
+&&%s&& %s Gdb {68977 2011-02-15T15:31:10Z {630 Paxed} #REDIRECT [[Debugging]] #REDIRECT [[Debugging]]}
+&&%s&& %s CPM {68987 2011-02-16T09:45:34Z {0 } Redirected page to [[Crystal plate mail]] #REDIRECT [[Crystal plate mail]]}
+&&%s&& %s Double damage {144956 2022-03-17T14:18:02Z {4000227 Kufat} /* Details */ '''Double damage''' is a weapon property that occurs in ''[[NetHack]]'' and its variants. As can be guessed, it doubles the base [[damage]] of that weapon.
+
+==Appearances==
+The [[Banes]] and other similar weapons deal double damage against specific types of [[monster]]s:
+
+* [[Demonbane]]
+* [[Dragonbane]]
+* [[Giantslayer]]
+* [[Ogresmasher]]
+* [[Trollsbane]]
+* [[Werebane]]
+* [[Sting]] against all [[Orc (monster class)|orcs]].
+* [[Orcrist]] against all orcs.
+* [[Sunsword]] against all [[undead]].
+
+Other weapons that have the double damage property are:
+* The [[Heart of Ahriman]] when fired from a [[sling]].
+* [[The Sceptre of Might]] against [[alignment|cross-aligned]] monsters.
+* The [[Staff of Aesculapius]] against monsters without [[drain resistance]].
+* The [[Tsurugi of Muramasa]] has a 5% chance to deal double-damage against [[Physical size|large]] [[monster]]s - this is of a different nature compared to the others, but is calculated at effectively the same time and in the same way.
+* [[Fire Brand]], against those without [[fire resistance]].
+* [[Frost Brand]] against monsters without [[cold resistance]].
+* [[Grayswandir]], against all monsters.
+
+==Details==
+When the double damage property activates, it affects the following components of a weapon's damage:
+
+* The weapon's base damage.
+* The [[Enchantment#Weapons|enchantment]] damage bonus (or penalty.)
+* The [[Rogue]]'s d(XL) [[backstab]] damage.
+* The negative penalty for [[erosion]].
+
+Double damage does not affect the following:
+* The extra d4 for using a [[blessed]] weapon against [[undead]].
+* The extra d20 for using a [[silver]] weapon against silver haters.
+* The bonus d4 for using an [[axe]] against [[wood]]en monsters.
+* Bonus 2d10 or 2d2 (if [[twoweaponing]]) damage from a successful [[joust]] (though there are no artifact [[lance]]s in vanilla NetHack.)
+* Damage bonus due to weapon [[skill]].
+* Damage bonus due to [[Attribute#Strength|strength]].
+* Damage bonus from [[ring of increase damage|rings of increase damage]] or [[intrinsic]] damage bonuses obtained by eating those rings.
+* Extra damage from striking with a [[poison|poisoned]] weapon (though no weapon that can deal double damage can also be [[poison|poisoned]] in vanilla nethack.)
+
+Enchanting double-damage artifact weapons generally yields higher returns compared to their standard counterparts, though negative enchantments also result in much weaker damage.
+
+==Calculation==
+{{merge|damage}}
+The damage calculation in NetHack is quite complex, but when concerned only with melee weapons, it is simple enough to describe.
+
+hmon_hitmon in uhitm.c is called once for each melee hit on a monster, whether the hit is barehanded, with a weapon, with a weapon tool, or with something else (silver wand, cream pie, or cockatrice corpse for instance). If twoweaponing, it is called once for each of the two weapons or weapon-tools in use.{{refsrc|src/uhitm.c|504|nethack=3.6.0|comment=hitum calls known_hitum}}{{refsrc|src/uhitm.c|464|nethack=3.6.0|comment=first call to hmon}}{{refsrc|src/uhitm.c|512|nethack=3.6.0|comment=second call to known_hitum for second weapon}}{{refsrc|src/uhitm.c|531|nethack=3.6.0|comment=hmon calls hmon_hitmon}}
+
+Reading hmon_hitmon and its sub-functions gives us the order in which bonuses are applied, and thus tells us which of these bonuses will be affected by double damage.
+
+Inside hmon_hitmon, the weapon/item in question is stored in the variable obj. The damage is stored in tmp, and this variable is modified as the function progresses, adding layer upon layer of NetHack combat functionality. hmon_hitman calls dmgval in weapon.c to get the base damage, enchantment bonus, and situation bonuses for the weapon.{{refsrc|src/uhitm.c|643|nethack=3.6.0}}. dmgval adds bonuses for using blessed weapons against undead, axes against wooden monsters, and silver against silver hating monsters, but tests to see if the weapon will do double damage and divides these values by two in that case (so the bonuses are not doubled).{{refsrc|src/weapon.c|332|nethack=3.6.0|comment=bonuses calculated and fiddled with}}. dmgval also subtracts damage due to erosion.{{refsrc|src/weapon.c|346|nethack=3.6.0}}
+
+hmon_hitmon then considers backstab damage.{{refsrc|src/uhitm.c|648|nethack=3.6.0|comment=back stab damage section}}. 
+
+Double damage and other special artifact effects (like Magicbane's specials and the Tsurugi's special, which could itself by double damage) are added in by artifact_hit in artifact.c.{{refsrc|src/uhitm.c|685|nethack=3.6.0|comment=hmon_hitmon calls artifact_hit}}.
+
+Finally, hmon_hitmon adds on intrinsic damage bonuses and damage bonuses from rings of increase damage{{refsrc|src/uhitm.c|962|nethack=3.6.0|comment=damage bonus added}}; followed by the bonus for skill in the weapon's class {{refsrc|src/uhitm.c|976|nethack=3.6.0|comment=weapon skill bonus}}; and lastly, poison damage is potentially added {{refsrc|src/uhitm.c|1003|nethack=3.6.0|comment=poison damage}}. Bare-hands or martial arts skill only grant their damage bonus if the d2 or d4 base damage is at least two -- effectively you are at unskilled 50% or 25% of the time.{{refsrc|src/uhitm.c|464|nethack=3.6.0|comment=bare-handed start}}{{refsrc|src/uhitm.c|976|nethack=3.6.0|comment=weapon_dam_bonus call}}{{refsrc|src/weapon.c|1395|nethack=3.6.0|comment=bare-handed calculation}}
+
+(tmp, the damage, is subtracted from the monster's hp, mon->mhp on line 1064{{refsrc|src/uhitm.c|1064|nethack=3.6.0|comment=tmp subtracted from mon->mhp}}.)
+
+==SLASH'EM==
+A number of [[SLASH'EM]] [[technique]]s grant temporary double damage: [[Samurai]]'s [[Kiii]] doubles all weapon damage, while [[Missile flurry]], for [[Drow (starting race)|droven]] [[Ranger]]s only, doubles the damage done with their racial bow and arrows.  Finally, [[Caveman]]'s [[Primal roar]] grants double damage to [[pet]]s.
+Note that these effects may be calculated differently from the vanilla mechanics described above.
+
+==See also==
+See http://www.steelypips.org/nethack/343/weap-343.txt, the weapons spoiler by Kevin Hugo at steelypips for a run down on NetHack's entire damage calculation process.
+
+==References==
+<references/>
+{{nethack-360}}
+[[Category:Weapons]]}
+&&%s&& %s Wand of healing {148869 2022-10-20T11:11:03Z {4000401 Hackemslashem} Undo revision 148868 by [[Special:Contributions/Hackemslashem|Hackemslashem]] ([[User talk:Hackemslashem|talk]]) {{wand
+ |name=healing
+ |cost=150
+ |type=beam
+ |maxcharges=13
+ |muse=def
+}}
+
+The '''wand of healing''' is a wand added in [[SLASH'EM]]. Zapping yourself will heal 5d6 HP, up to the maximum and will exercise strength. Zapping a monster will heal 5d2 HP, +5 if the wand is blessed or cursed<ref>{{sourcecode|zap.c|314|version=SLASH'EM 0.0.7E7F2}}</ref>. This means that a cursed wand of healing is more potent than an uncursed wand.
+
+== Messages ==
+{{message|You begin to feel better|You zapped yourself with a wand of healing}}
+{{message|The bugs on the <floor> look healthier!|You engraved with a wand of healing or a wand of extra healing}}
+{{message|[[Foo]] begins to look better|A monster was affected by a zapped wand of healing}}
+
+{{stub}}
+
+== References ==
+<references />}
+&&%s&& %s Wand of extra healing {148429 2022-10-05T00:04:03Z {4001279 Umbire the Phantom} cat {{wand
+ |name=extra healing
+ |cost=300
+ |type=beam
+ |maxcharges=13
+ |muse=def
+}}
+
+The '''wand of extra healing''' is a wand added in [[SLASH'EM]]. Zapping yourself will heal 6d8 HP, up to the maximum, cure [[hallucination]], and will exercise strength and constitution. Zapping a monster will heal 5d4 HP, +10 if the wand is blessed or cursed<ref>{{sourcecode|zap.c|315|version=SLASH'EM 0.0.7E7F2}}</ref>. This means that a cursed wand of extra healing is more potent than an uncursed wand.
+
+== Messages ==
+{{message|You feel much better|You zapped yourself with a wand of extra healing}}
+{{message|The bugs on the <floor> look healthier!|You engraved with a wand of healing or a wand of extra healing}}
+{{message|[[Foo]] begins to look much better|A monster was affected by a zapped wand of extra healing}}
+
+== References ==
+<references />
+
+[[Category:SLASH'EM items]]}
+&&%s&& %s Polypileless {69104 2011-02-23T13:43:58Z {0 } redirect #REDIRECT [[Conduct#Never polymorph an object]]}
+&&%s&& %s Oviparious {69138 2011-02-24T23:45:40Z {663 Qazmlpok} Misspelling #REDIRECT[[oviparous]]}
+&&%s&& %s Speedrun {69212 2011-02-28T12:30:01Z {27 Ais523} redirect to [[Speed ascension]] #REDIRECT [[Speed ascension]]}
+&&%s&& %s Ring of sleeping {69248 2011-03-03T14:30:56Z {25 AileTheAlien} Created page with "{{ring   |name=sleeping   |cost=100 }}  The '''ring of sleeping''' is a new item added in [[SLASH'EM]]. <ref>http://www.statslab.cam.ac.uk/~eva/slashem/rings.html</ref> When worn..." {{ring
+  |name=sleeping
+  |cost=100
+}}
+
+The '''ring of sleeping''' is a new item added in [[SLASH'EM]].
+<ref>http://www.statslab.cam.ac.uk/~eva/slashem/rings.html</ref>
+When worn, it causes you to randomly fall asleep for 1-20 turns every 1-100 turns.
+This effect is permanent if the ring is [[eating jewelry | eaten]], and negated if you have [[sleep resistance]].
+The message obtained by dropping one down a [[sink]] is '''"You hear loud snores coming from the drain"'''.
+
+== References ==
+<references/>
+
+[[Category:SLASH'EM items | ring of sleeping]]}
+&&%s&& %s Ring of gain dexterity {123926 2018-09-10T02:38:08Z {4001094 Luxidream} mention that this isn't a vanilla item {{ring
+  |name=gain dexterity
+  |cost=150
+}}
+
+A '''ring of gain dexterity''' is a ring in [[UnNetHack]], [[SLASH'EM]], and their derivatives. It increases your [[dexterity]] by its [[enchantment]], which can be altered by [[charging]].
+
+Dropping a ring of gain dexterity down a [[sink]] produces the message '''''"The water flow seems faster now."'''''
+If the ring's enchantment is negative, '''''"The water flow seems slower now."'''''
+<ref>http://www.statslab.cam.ac.uk/~eva/slashem/rings.html</ref>
+
+== References ==
+<references/>
+
+
+{{stub}}
+
+[[Category:Rings | gain dexterity]]
+[[Category:SLASH'EM items | gain dexterity]]
+[[Category:UnNetHack]]}
+&&%s&& %s Ring of gain intelligence {83371 2013-03-21T11:40:04Z {4000045 Bulwersator} [[Category:UnNetHack]] {{ring
+  |name=gain intelligence
+  |cost=150
+}}
+
+A '''ring of gain intelligence''' increases your [[intelligence]] by its [[enchantment]], which can be altered by [[charging]].
+
+Dropping a ring of gain intelligence down a [[sink]] produces the message '''''"The water flow seems quicker now."'''''
+If the ring's enchantment is negative, '''''"The water flow seems duller now."'''''
+''Note that this is the same message as for a [[ring of gain wisdom]]!''
+<ref>http://www.statslab.cam.ac.uk/~eva/slashem/rings.html</ref>
+
+== References ==
+<references/>
+
+
+{{stub}}
+
+[[Category:Rings | gain intelligence]]
+[[Category:SLASH'EM items | gain intelligence]]
+[[Category:UnNetHack]]}
+&&%s&& %s Ring of gain wisdom {83370 2013-03-21T11:39:56Z {4000045 Bulwersator} [[Category:UnNetHack]] {{ring
+  |name=gain wisdom
+  |cost=150
+}}
+
+A '''ring of gain wisdom''' increases your [[wisdom]] by its [[enchantment]], which can be altered by [[charging]].
+
+Dropping a ring of gain wisdom down a [[sink]] produces the message '''''"The water flow seems quicker now."'''''
+If the ring's enchantment is negative, '''''"The water flow seems duller now."'''''
+''Note that this is the same message as for a [[ring of gain intelligence]]!''
+<ref>http://www.statslab.cam.ac.uk/~eva/slashem/rings.html</ref>
+
+== References ==
+<references/>
+
+
+{{stub}}
+
+[[Category:Rings | gain wisdom]]
+[[Category:SLASH'EM items | gain wisdom]]
+[[Category:UnNetHack]]}
+&&%s&& %s Sokaban {69281 2011-03-05T03:52:28Z {0 } Redirect for misspelling #redirect [[Sokoban]]}
+&&%s&& %s You feel materially poor {69285 2011-03-05T04:03:28Z {4000091 Havvy} Message redirect #redirect [[Scroll of gold detection]]
+
+[[Category:Messages]]}
+&&%s&& %s You hear a sound reminiscent of a seal barking {138376 2021-03-07T06:26:16Z {4001463 Actual-nh} Undo revision 138365 by [[Special:Contributions/Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) #redirect [[Zoo]]
+
+[[Category:Messages]]}
+&&%s&& %s You feel lackluster {69292 2011-03-05T10:12:56Z {4000091 Havvy} Yet another message redirect. #redirect [[Potion of gain energy]]
+
+[[Category:Messages]]}
+&&%s&& %s You enter what seems to be an older, more primitive world {138360 2021-03-07T05:44:39Z {4001463 Actual-nh} Category:Level entry redirects #redirect [[Rogue level]]
+
+[[Category:Level entry redirects]]}
+&&%s&& %s You hear the tones of courtly conversation {138378 2021-03-07T06:32:35Z {4001279 Umbire the Phantom} Undo revision 138364 by [[Special:Contributions/Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) #redirect [[Throne room]]
+
+[[Category:Messages]]}
+&&%s&& %s Good luck does not time out for you {69319 2011-03-05T17:47:46Z {4000091 Havvy} Yet another message redirect. #redirect [[Enlightenment]]
+
+[[Category:Messages]]}
+&&%s&& %s Bad luck does not time out for you {69320 2011-03-05T17:48:18Z {4000091 Havvy} Yet another message redirect. #redirect [[Enlightenment]]
+
+[[Category:Messages]]}
+&&%s&& %s You hear a faint typing noise {69340 2011-03-07T06:56:25Z {4000091 Havvy} Yet another message. #redirect [[Stethoscope]]
+
+[[Category:Messages]]}
+&&%s&& %s You hear a jackal howling at the moon {69578 2011-03-19T23:30:25Z {679 Ray Chason} Fix double redirect #redirect [[Werecreature]]
+
+[[Category:Messages]]}
+&&%s&& %s You feel threatened. {99529 2015-12-22T10:43:21Z {4000080 ChasonBot}  The message "'''You feel threatened'''" is given in the following circumstances: -
+
+* A failed attempt to read a [[Spellbook#Failure effects of spellbook reading|spellbook]]
+* Quaffing a non-blessed [[Potion of monster detection]], or casting the spell [[Spellbook of detect monsters|detect monsters]] on a level where there are no monsters
+
+{{disambig}}
+
+[[Category:Messages]]
+{{nethack-343}}}
+&&%s&& %s You are surrounded by a shimmering light {69354 2011-03-07T13:46:49Z {4000091 Havvy} Yet another message. #redirect [[Invulnerability]]
+
+[[Category:Messages]]}
+&&%s&& %s You hear a sceptre pounded in judgment {138362 2021-03-07T05:46:29Z {4001279 Umbire the Phantom} Undo revision 138359 by [[Special:Contributions/Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) Actually, it's one of the "ambient" messages that print at random and let you know a throne room is somewhere on the level #redirect [[Throne room]]
+
+[[Category:Messages]]}
+&&%s&& %s Calm steed {149217 2022-12-08T12:02:06Z {4001279 Umbire the Phantom} touch-up '''Calm steed''' is a [[technique]] in [[SLASH'EM]] for [[Yeomen]].
+
+The technique is intended to make a steed more tame, but due to bug, the technique has no effect.<ref>{{sourcecode|tech.c|750|version=SLASH'EM 0.0.7E7F2}} The technique simply calls tamedog with no object. This has no effect on an already tame monster</ref> This bug is fixed in the version of SLASH'EM hosted on [[Hardfought]], and adds one tameness point to the player's steed, up to a maximum of 20. Using the technique will set the timeout to 500-1499 turns.
+
+==Messages==
+{{message|[[Foo]] gets tamer.|You used the technique while riding a steed.}}
+{{message|Your technique is only effective when riding a monster.|You used the technique while not riding a monster.}}
+
+==References==
+<references />
+{{slashem-7E7}}
+[[category:Techniques]]}
+&&%s&& %s Command undead {69399 2011-03-11T22:37:02Z {663 Qazmlpok} Redirected page to [[Spellbook of command undead]] #REDIRECT[[Spellbook_of_command_undead]]}
+&&%s&& %s Summon undead {69400 2011-03-11T22:37:59Z {663 Qazmlpok} Redirected page to [[Spellbook of summon undead]] #REDIRECT[[Spellbook_of_summon_undead]]}
+&&%s&& %s PI {69405 2011-03-12T04:39:07Z {4000091 Havvy} Personally wanted redirect. #redirect [[Price identification]]}
+&&%s&& %s Your hands glow a brilliant red {69406 2011-03-12T04:45:34Z {4000091 Havvy} Yet another message. #redirect [[Scroll of confuse monster]]
+
+[[Category:Messages]]}
+&&%s&& %s You see some air in the sink {69407 2011-03-12T05:13:55Z {4000091 Havvy} Yet another message. #redirect [[Ring of see invisible]]
+
+[[Category:Messages]]}
+&&%s&& %s You suddenly realize it is unnaturally quiet {138377 2021-03-07T06:30:12Z {4001279 Umbire the Phantom} Undo revision 138367 by [[Special:Contributions/Actual-nh|Actual-nh]] ([[User talk:Actual-nh|talk]]) #redirect [[Graveyard]]
+
+[[Category:Messages]]}
+&&%s&& %s Template:Drawbridgeradius {69447 2011-03-13T14:24:27Z {831 Tjr} template depicting the control radius and danger zone of the castle drawbrigde. Todo: correct symbol for }. <noinclude>
+This template shows the danger zone and the control zone around the [[Castle]] [[drawbridge]].
+
+Somebody with better mediawiki skills might want to make moat and porticullis show as the proper symbols.
+
+</noinclude><div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+D={{red|#}}
+P={{red|#}}
+:={{green|C}}
+W={{green|C}}
+w={{green|{{!}}}}
+
+  |}}}}}}|....
+ |.....}|....
+ |....:Ww:...
+ |....:PD:..{
+ |....:Ww:...
+ ......}|....
+ |}}}}}}|....
+</replacecharsblock>
+</div><noinclude>
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s You make scratch marks on the stone {69468 2011-03-14T10:22:52Z {4000091 Havvy} Yet another message. #redirect [[Touchstone]]
+
+[[Category:Messages]]}
+&&%s&& %s You experience a strange sense of peace {134772 2020-07-04T18:21:18Z {4000978 Aximili} Changed redirect target from [[Special room#Temples]] to [[Temple]] #redirect [[Temple]]
+
+[[Category:Messages]]}
+&&%s&& %s You feel a sudden chill {69473 2011-03-14T12:57:13Z {4000091 Havvy} Yet another message. #redirect [[Fountain#Dipping]]
+
+[[Category:Messages]]}
+&&%s&& %s The rat king {69477 2011-03-14T19:38:06Z {663 Qazmlpok} Redirect #REDIRECT [[Rat King]]}
+&&%s&& %s Kroo {69478 2011-03-14T19:50:34Z {663 Qazmlpok} Redirected page to [[Kroo the Kobold King]] #REDIRECT[[Kroo the Kobold King]]}
+&&%s&& %s Kobold king {69479 2011-03-14T19:51:40Z {663 Qazmlpok} Redirected page to [[Kroo the Kobold King]] #REDIRECT[[Kroo the Kobold King]]}
+&&%s&& %s Enchantment resistance {69494 2011-03-15T13:44:59Z {375 Ion frigate} Redirected page to [[Need +x weapon to hit]] #REDIRECT [[Need +x weapon to hit]]}
+&&%s&& %s Source talk:NetHack 3.4.3/src/hacklib.c {69519 2011-03-17T01:58:12Z {663 Qazmlpok} /* On pmatch */ ==On pmatch==
+:''The function returns either TRUE or FALSE, those constants having been defined in [[hack.h]].''
+
+As far as I can tell, neither TRUE nor FALSE is defined in the copy of [[hack.h]] on this wiki. [[Special:Contributions/91.105.126.112|91.105.126.112]] 01:11, 17 March 2011 (UTC)
+:{{sourcecode|global.h|60}}. -- [[User:Qazmlpok|Qazmlpok]] 01:58, 17 March 2011 (UTC)}
+&&%s&& %s You smell charred flesh {69517 2011-03-17T01:31:04Z {4000091 Havvy} Yet another message. #redirect [[Magic trap]]
+
+[[Category:Messages]]}
+&&%s&& %s Divine gift {69551 2011-03-19T00:11:33Z {721 Schneelocke} Redirected page to [[Prayer]] #REDIRECT [[Prayer]]}
+&&%s&& %s Vulture's {69560 2011-03-19T07:30:38Z {679 Ray Chason} moved [[Vulture's]] to [[Vulture]]: Developer has renamed the project #REDIRECT [[Vulture]]}
+&&%s&& %s You break out in hives {69639 2011-03-23T09:03:52Z {4000091 Havvy} Yet another message redirect. #redirect [[Potion of sickness]]
+
+[[Category:Messages]]}
+&&%s&& %s Wizard of Yendor's Tower {69696 2011-03-28T00:52:55Z {831 Tjr} Redirected page to [[Wizard's Tower]] #redirect [[Wizard's Tower]]}
+&&%s&& %s Efembe {95739 2015-07-16T08:51:18Z {0 }  
+'''Efembe, the Mad Polypiler''' was a character played by Boudewijn Waijers around 1990, and was one of the reasons [[polypiling]] nowadays degrades objects.
+The name Efembe, by the way, comes from the game of Moria, where entering FMB at character creation would generate a male dwarven priest, which was Boudewijn's favorite character to play there.
+{{stub}}
+[[Category:Community]]}
+&&%s&& %s Telecontrol {69899 2011-04-16T13:48:06Z {831 Tjr} Redirected page to [[Teleport control]] #redirect [[teleport control]]}
+&&%s&& %s Curses {147571 2022-08-16T01:45:52Z {4000693 Phol ende wodan} revise list and put disambig at bottom '''Curses''' can refer to:
+
+*the [[curses interface]]
+*[[cursed]] items
+*"[[You hear someone cursing shoplifters]]"
+*a [[Monster spell|spellcasting monster]] fails to cast a spell, and "points at you / all around, then curses"
+
+{{disambig}}}
+&&%s&& %s Invisible item (SLASH'EM) {146998 2022-07-25T15:02:22Z {4001279 Umbire the Phantom}  '''Invisible items''' are a game mechanic that appears in [[SLASH'EM]], and also appears in [[GruntHack]] and [[SlashTHEM]]. Some items may be generated or turned [[invisible]]; these items on the ground cannot be seen without walking over them, unless you have the [[see invisible]] property. Invisible items are mostly the same in function as normal items with additional quirks due to their invisibility - and exceptions depending on the item.
+
+==Generation==
+There is a {{frac|1250}} chance that a randomly generated item will be created invisible, with the exception of [[mummy wrapping]]s, [[zorkmid]]s and [[boulder]]s in [[Sokoban (SLASH'EM)|Sokoban]].<ref>{{sourcecode|mkobj.c|683|version=SLASH'EM 0.0.7E7F2}}</ref><ref>{{sourcecode|obj.h|145|version=SLASH'EM 0.0.7E7F2}}</ref> Potions of see invisible can still be made invisible. The wand of wishing in the [[Castle]] will always be generated as invisible inside its container.
+
+If an invisible monster is killed in a way that leaves a [[corpse]], the corpse will be created invisible. Zapping an object with a [[wand of make invisible]] or dipping it in a [[potion of invisibility]] will turn it invisible.
+
+==Description==
+Invisible items are rarely encountered and generally have no appreciable difference from their visible counterparts, e.g. an invisible blindfold or towel will still blind you as normal.<!--Invisible =/= transparent necessarily.--> There are some exceptions, however:
+
+* An invisible weapon has a +3 [[to-hit]] bonus against monsters that cannot see invisible. The [[Disarm (technique)|disarm technique]] cannot be used against invisible weapons.
+* Invisible items cannot be stolen by a monster that cannot see invisible, with the exception of an invisible set of body armor or cloak worn on top of a visible [[t-shirt]] or body armor; currently, no monster with a theft attack in SLASH'EM can also see invisible.<ref>{{sourcecode|steal.c|277|version=SLASH'EM 0.0.7E7F2}}</ref>
+* Monsters will not pick up invisible objects if they cannot see invisible, but this does not prevent them from pathing to the item. The end result is that they will constantly stand on top of the item as if trying to pick it up, but cannot.<ref>{{sourcecode|mon.c|1025|version=SLASH'EM 0.0.7E7F2}}</ref>
+* Invisible items such as scrolls and books cannot be read unless you can see invisible. Monsters do not have this same restriction, but cannot pick up invisible items without see invisible anyway; as such, this only becomes important if a monster is randomly generated with an invisible item. An invisible mirror will not function if the affected cannot see the item.
+* In GruntHack, slightly different descriptors are used for the gradual rotting of an invisible corpse (e.g. "smelly" instead of "off-color"); this is typically seen with [[stalker]] corpses in particular.
+
+Walking over an invisible item will give the same message as walking over other unseen items (e.g., while [[blind]]). However, invisible corpses that petrify on contact such as a [[cockatrice]] will not stone you if you are not wearing gloves.
+
+==Messages==
+{{message|You feel here <[[foo]]>.|You walked over a square with one or more invisible items.}}
+{{message|Where did the <foo> go?|You dipped a visible item into a potion of invisibility.}}
+{{message|So that's where the <foo> went!|You dipped an invisible item into a potion of see invisible.}}
+
+==References==
+<references />
+
+{{slashem-7E7}}
+[[Category:SLASH'EM]]
+[[Category:SLASH'EM items]]
+[[Category:SlashTHEM]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Randomized appearance (SLASH'EM) {69984 2011-04-20T01:45:36Z {25 AileTheAlien} Redirected page to [[Item (SLASH'EM)#New randomized appearances]] #REDIRECT [[Item_(SLASH'EM)#New_randomized_appearances]]}
+&&%s&& %s Pudding farmer {70021 2011-04-22T15:05:54Z {366 Ilmari Karonen} #REDIRECT [[Pudding farming]] #REDIRECT [[Pudding farming]]}
+&&%s&& %s Featured articles {70057 2011-04-25T16:03:04Z {831 Tjr} Redirected page to [[NetHackWiki:Featured articles]] #redirect [[NetHackWiki:Featured_articles]]}
+&&%s&& %s Featured article {70058 2011-04-25T16:03:21Z {831 Tjr} Redirected page to [[NetHackWiki:Featured articles]] #redirect [[NetHackWiki:Featured_articles]]}
+&&%s&& %s Nameable fruit {70079 2011-04-26T12:20:03Z {366 Ilmari Karonen} #REDIRECT [[Slime mold]] #REDIRECT [[Slime mold]]}
+&&%s&& %s Fruit name {70081 2011-04-26T12:24:44Z {663 Qazmlpok} Wouldn't the option be a better redirect? #REDIRECT [[Options#fruit]]}
+&&%s&& %s Category:NetHack players {70085 2011-04-26T12:30:30Z {366 Ilmari Karonen} : Notable (or even not-so-notable) people who play (or used to play) [[NetHack]].
+
+For players on the [[nethack.alt.org]] public server, the template {{tl|NAOplayer}} automatically adds the page to [[:Category:NAOplayer]].
+
+[[Category:Community]]}
+&&%s&& %s Roles {70115 2011-04-28T20:45:08Z {366 Ilmari Karonen} #REDIRECT [[Role]] #REDIRECT [[Role]]}
+&&%s&& %s Draw blood {104833 2017-01-14T21:09:44Z {4000865 Tomsod} BUC is inherited from phial contained; full healing does work '''Draw blood''' is a [[technique]] in [[SLASH'EM]] available to [[vampire (starting_race)|vampires]]. You must possess a [[medical kit]] with phials, be at least level 2, and be in your vampiric form to use this technique. Using the technique will use up one of the phials to create a [[potion of vampire blood]] and will drain a full level.  The [[BUC]] of the potion is independent of the BUC of the kit, corresponding to that of the phial instead.
+Unlike regular [[drain life]] attacks (which a vampire is immune to anyways) you are dropped to the minimum experience for the new level, rather than the maximum. As a result you will be unable to quickly gain the level back by killing a wimpy monster. 
+
+The technique cannot be used again until 500-1499 turns after a successful use.
+
+== Messages ==
+{{message|You must be in your natural form to draw blood.|You attempted to use the technique while polymorphed.}}
+{{message|You can't seem to find a vein.|You attempted to use the technique at level 1.}}
+{{message|Using your medical kit, you draw off a phial of your blood.|You successfully used the technique.}}
+
+[[Category:Techniques]]}
+&&%s&& %s Griefing {134351 2020-06-13T05:19:11Z {4001313 Ardub23} /* Examples */ Simplified wording and link markup '''Griefing''' is the deliberate irritation and harassment of other players, most often in online, multiplayer computer and video games. Although NetHack is a single player game, online [[public server]]s such as [[NAO|nethack.alt.org]] allow a degree of indirect interaction between players in the form of [[bones file]]s.
+
+== Overview ==
+
+Although the goal of NetHack is to [[ascend]], what constitutes [[fun]] remains a subjective notion. Griefing in NetHack public servers typically involves attempting to get other players killed by intentionally leaving malicious bones files for them to stumble upon. In some cases, the immediate death of another player is superseded by debilitation or mere annoyance. Regardless, NetHack griefers generally experience satisfaction in annoying other players, especially when a [[Rodney (bot)|public announcement]] is made detailing the demise of their prey.
+
+Griefing in public servers is a relatively new trend and has increased awareness of the possibilty of griefing other players in NetHack. The actions of some specific individuals on [[NAO|nethack.alt.org]] has generated debate regarding the possibility of blocking the use of bones files from specific players on the server. At the moment, players may only elect not to use bones files at all.
+
+== Bots ==
+[[Bot]]s can theoretically be designed to grief other players, which is a troublesome possibility due to bots' ability to perform much faster than human players and without exhaustion. Although there have so far been no instances of griefing bots in the wild, the possibility of such has intrigued both bot programmers and public server administrators.
+
+== Examples ==
+
+A list of successful (i.e. managed to kill another player) and otherwise notable examples of griefing in public servers is included here:
+
+* Filling early dungeon levels with monsters extremely dangerous to low-level players.
+* Converting [[altar]]s in [[temple]]s which causes the [[aligned priest]] to attack any players who attempt to [[chat]] with them.
+* Leaving [[cockatrice]] [[corpse]]s around [[magic trap]]s, which have a chance of [[blind]]ing the player (blind player characters must feel objects that are on the floor).
+* Leaving [[invisible]] and frustrating monsters on the level, such as [[rust monster]]s and [[blue jellies]].
+* Filling entire levels with [[hole]]s in the floor, which may be impossible to traverse depending on the items and capabilities the player has.
+* Naming [[slime mold|fruits]] after highly desirable items, or ending the name with "You die... --More--".
+* Digging out every tile of rock and every wall in [[Minetown]], clearing all the stores of loot, and waiting for many monsters to spawn.
+* Summoning [[Juiblex]] or [[Yeenoghu]] on an early level via same-race sacrifice, then aggravating them.
+
+[[Category:Community]]}
+&&%s&& %s Need +x to hit {70202 2011-05-04T23:06:49Z {663 Qazmlpok} Redirected page to [[Need +x weapon to hit]] #REDIRECT[[Need_%2Bx_weapon_to_hit]]}
+&&%s&& %s Pacify {70309 2011-05-11T10:50:23Z {831 Tjr} redirect to spell of charm monster. Scroll and harp, generally don't penetrate magic resistance, so the spell is a better default choice. #redirect [[Spellbook_of_charm_monster]]}
+&&%s&& %s Dungeon branch. {70312 2011-05-11T11:18:07Z {831 Tjr} Redirected page to [[Branch]] #redirect [[branch]]}
+&&%s&& %s Abuse (pet) {70316 2011-05-11T11:47:50Z {831 Tjr} Redirected page to [[Tameness#Abuse]] #redirect [[tameness#Abuse]]}
+&&%s&& %s Huge chunks of meat {70355 2011-05-14T12:44:09Z {831 Tjr} Redirected page to [[Huge chunk of meat]] #redirect [[huge chunk of meat]]}
+&&%s&& %s Hebiwerie {70360 2011-05-14T13:09:39Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Possogroenoe {70361 2011-05-14T13:10:03Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Manlobbi {70362 2011-05-14T13:10:39Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Adjama {70363 2011-05-14T13:11:04Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Pakka Pakka {70364 2011-05-14T13:11:30Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Kabalebo {70365 2011-05-14T13:11:49Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Wonotobo {70366 2011-05-14T13:12:10Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Sipaliwini {70367 2011-05-14T13:12:41Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Annootok {70368 2011-05-14T13:12:58Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Upernavik {70369 2011-05-14T13:13:13Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Angmagssalik {70370 2011-05-14T13:13:26Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Aklavik {70371 2011-05-14T13:13:46Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Inuvik {70372 2011-05-14T13:14:02Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Tuktoyaktuk {70373 2011-05-14T13:14:19Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Chicoutimi {70374 2011-05-14T13:14:33Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Ouiatchouane {70375 2011-05-14T13:14:51Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Chibougamau {70376 2011-05-14T13:15:06Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Matagami {70377 2011-05-14T13:15:26Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Kipawa {70378 2011-05-14T13:15:38Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Kinojevis {70379 2011-05-14T13:15:59Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Abitibi {70380 2011-05-14T13:16:16Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Maganasipi {70381 2011-05-14T13:16:32Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Akureyri {70382 2011-05-14T13:16:52Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Kopasker {70383 2011-05-14T13:17:06Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Budereyri {70384 2011-05-14T13:17:26Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Akranes {70385 2011-05-14T13:17:39Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Bordeyri {70386 2011-05-14T13:17:53Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Holmavik {70387 2011-05-14T13:18:09Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Shopkeeper name {70389 2011-05-14T13:23:27Z {831 Tjr} Redirected page to [[Shopkeeper#Shopkeeper names]] #redirect [[Shopkeeper#Shopkeeper_names]]}
+&&%s&& %s Category {70480 2011-05-18T13:51:04Z {831 Tjr} Redirected page to [[NetHackWiki:Categories]] #redirect [[NetHackWiki:Categories]]}
+&&%s&& %s Scrolls of charging {70520 2011-05-19T20:57:35Z {831 Tjr} Redirected page to [[Scroll of charging]] #redirect [[scroll of charging]]}
+&&%s&& %s Leather bag {70525 2011-05-19T23:56:03Z {4000117 Nightpenguin} create redirect to medical kit #REDIRECT [[Medical kit]]}
+&&%s&& %s Antimagic trap {147812 2022-08-22T01:42:20Z {4000978 Aximili} Switch redirect to standalone article #redirect [[Anti-magic field]]}
+&&%s&& %s Category:Main Page rotation {70684 2011-05-29T20:50:35Z {0 } cat This category contains maps for use by [[Template:Random ttymap]] on the [[Main Page]].
+[[Category:Templates]]}
+&&%s&& %s Macro {70721 2011-05-29T23:10:41Z {0 } cat [[Image:macrosystem.jpg|thumb|right|200px|This is how the macro system looks like]]
+This page contains help on making a simple and powerful '''macro system''' in NetHack.
+
+== Installation ==
+This was tested on: ''WinXP SP3 + nethack-343-win'' <tt>(NetHackW.exe)</tt>
+*Download ''AutoHotkey Basic'' installer http://www.autohotkey.com/download/
+*Install ''AutoHotkey Basic''
+*Create <tt>runmeonce.ahk</tt> ''AutoHotkey'' script containing following code in your NetHack directory:
+ ;This is NethackW macro system script
+ ;DO NOT edit unless you know what you're doing
+ #SingleInstance ignore
+ 
+ if A_IsCompiled <> 1
+ { ;Create launcher file
+ 	#NoTrayIcon
+ 	Loop *.ico { ;Search for icon
+ 		sIcon = %FileList%%A_LoopFileName%
+ 		Break
+ 	}
+ 	if sIcon = 
+ 	{
+ 		MsgBox 16, Error, Icon is missing! Make sure if any file with .ico extension is present in Nethack directory.
+ 		Run http://nethackwiki.com/wiki/Macro#icon
+ 		ExitApp
+ 	}
+ 	RunWait Ahk2exe.exe /in "%A_ScriptFullPath%" /out "NHLauncher.exe" /icon "%sIcon%" /pass "nethack",Hide
+ 	MsgBox 64, Information, Run NHLauncher.exe to start NetHack. Have fun!
+ 	FileDelete %A_ScriptFullPath%
+ 	FileDelete %sIcon%
+ 	ExitApp
+ }
+ 
+ IfNotExist trigger.ahk
+ {
+ 	MsgBox 16, Error, trigger.ahk not exist! You will be redirected to trigger.ahk source code.
+ 	Run http://nethackwiki.com/wiki/Macro#trigger
+ 	ExitApp
+ }
+ Process, Exist, NethackW.exe
+ NewPID = %ErrorLevel% 
+ if NewPID = 0
+ { ;Start Nethack
+ 	GoSub RunTrigger
+ 	RunWait NethackW.exe
+ 	GoSub KillTrigger	
+ 	ExitApp
+ } else {
+ 	MsgBox 16, Error, Nethack is already running. 
+ 	ExitApp
+ }
+ return
+ 
+ KillTrigger:
+ 	SetTitleMatchMode, 2
+ 	DetectHiddenWindows, on
+ 	SendMessage, 0x44, 0x405, 0, , trigger.ahk - AutoHotkey v
+ 	RunWait TaskKill /pid %ErrorLevel% /fi "STATUS ne RUNNING",,Hide
+ return
+ 
+ RunTrigger:
+ 	Run trigger.ahk
+ return
+ 
+ #ifWinActive ahk_class MSNHMainWndClass
+ !^r::
+ { ;Reset triggers manually
+ 	Gosub KillTrigger
+ 	Gosub RunTrigger
+ 	MsgBox 0, Information, Triggers script restarted
+ 	return
+ }
+ 
+ ^w::
+ { ;NetHackWiki Search Engine
+ 	InputBox, sWiki, Search on NetHackWiki, , , , 100
+ 	if sWiki !=
+ 		Run http://nethackwiki.com/index.php?search=%sWiki%&fulltext=0
+ 	return
+ }
+ 
+ ^m::
+ { ;Add new macro
+ 	fTemp = trigger.tmp1
+ 	bFound = 0
+ 	bDelete = 0
+ 	bSuccess = 0
+ 
+ 	InputBox, sHotkey, Input trigger key,,, 200, 100
+ 	if sHotkey =
+ 	{ ;View triggers.ahk	
+ 		Loop
+ 		{
+ 			FileReadLine, sLine, trigger.ahk, %A_Index%
+ 			if ErrorLevel 
+ 				break
+ 			FileAppend, %sLine%`n, %fTemp%
+ 			if ((sLine) = (";In game triggers"))
+ 				fTemp = trigger.tmp2
+ 		}
+ 		FileRead Contents, trigger.tmp2
+ 		if Contents =
+ 			MsgBox 0, Information, Macro list is empty.
+ 		else MsgBox 0, Information, Macro file contains following entries:`n`n%Contents%
+ 		FileDelete trigger.tmp*
+ 		Contents =  ; Free the memory.
+ 		return	
+ 	}
+ 	InputBox, sAction, Input macro action,,, 200, 100
+ 	if sAction =
+ 		bDelete = 1
+ 		
+ 	Loop
+ 	{ ;Read analize and save file
+ 		FileReadLine, sLine, trigger.ahk, %A_Index%
+ 		if ErrorLevel 
+ 			break
+ 		IfInString, sLine, %sHotkey%:: Send
+ 		{ ;Equal entry found!
+ 			bFound = 1
+ 			if (bDelete <> 1)
+ 			{
+ 				MsgBox, 36, Old entry found!, %sLine%`n`nReplace with Send %sAction%?
+ 				IfMsgBox Yes
+ 				{
+ 					FileAppend, %sHotkey%:: Send %sAction%`n, %fTemp%
+ 				} else FileAppend, %sLine%`n, %fTemp%
+ 				bSuccess = 1
+ 			} else { ;Entry deletion
+ 				MsgBox, 292, Entry deletion , Delete entry %sLine%?	
+ 				IfMsgBox No
+ 					FileAppend, %sLine%`n, %fTemp%					
+ 				bSuccess = 1
+ 			}
+ 		} else FileAppend, %sLine%`n, %fTemp%
+ 		if ((sLine) = (";In game triggers"))
+ 			fTemp = trigger.tmp2
+ 	}
+ 	if (bFound = 0)
+ 	{
+ 		if (bDelete <> 1)
+ 		{
+ 			bSuccess = 1
+ 			FileAppend %sHotkey%:: Send %sAction%`n, %fTemp%
+ 		}
+ 	}
+ 	if (bSuccess <> 1)
+ 		MsgBox 0, Error, Macro action cannot be empty
+ 	{ ;Merge files and clear up
+ 		FileRead Contents, trigger.tmp2
+ 		Sort, Contents
+ 		FileAppend %Contents%, trigger.tmp1
+ 		FileCopy trigger.tmp1, trigger.ahk, 1
+ 		FileDelete trigger.tmp*
+ 		Contents =  ; Free the memory.
+ 	}
+ 	GoSub KillTrigger
+ 	GoSub RunTrigger
+ }
+*<span id="trigger">Create <tt>trigger.ahk</tt> ''AutoHotkey'' script containing following code in your NetHack directory:</span>
+ #NoTrayIcon
+ #SingleInstance ignore
+ 
+ MapScrollSteps = 28
+ 
+ #IfWinActive ahk_class MSNHMainWndClass
+ /:: 
+ 	Loop 5 {
+ 		Send s 
+ 	}
+ 	return
+ 
+ ;Diagonal movement remapping
+ ^a:: Send {Home}
+ ^s:: Send {Pgup}
+ ^z:: Send {End}
+ ^x:: Send {Pgdn}
+ 
+ ;Map scrolling left
+ ^Left:: 
+ 	Loop %MapScrollSteps% {
+ 		Send ^{Left}
+ 	}
+ 	return
+ 
+ ;Map scrolling right
+ ^Right:: 
+ 	Loop %MapScrollSteps% {
+ 		Send ^{Right}
+ 	}
+ 	return
+ 
+ ;WARNING! Leave one empty line at the end of file
+ ;In game triggers
+ !Down:: Send o{Down}
+ !Left:: Send o{Left}
+ !Right:: Send o{Right}
+ !Up:: Send o{Up}
+ F12:: Send Oi{Enter}Oi{Enter}
+*<span id="icon">Download custom .ico file and save it in your NetHack directory (for example: http://findicons.com/icon/257701/d12_128x128) Script will automatically use first .ico file in alphabetical order.</span>
+*Run <tt>runmeonce.ahk</tt> to compile a script
+== In-game usage ==
+*Run <tt>NHLauncher.exe</tt> to start NetHack.
+*Press <tt>CTRL+M</tt> during the game and follow the on screen instructions to add a new macro action
+Example: If you want to make a macro for casting your first spell (for instance to cast ''Extra healing'' on yourself)
+ press CTRL+M
+ Input trigger key: F1
+ Input macro action: Za.
+Macro has been created and can be used immediately.
+*To view a full list of created macro triggers and actions press <tt>CTRL+M</tt> then <tt>ENTER</tt>
+*To delete a macro press <tt>CTRL+M</tt> next input it's trigger key and leave macro action empty. You will be asked to remove it.
+*Press <tt>CTRL+W</tt> and input a keyword. You will be redirected to appropriate NetHackWiki article.
+
+== Sample macros ==
+There are already few macros in standard <tt>trigger.ahk</tt> file. Seaching macro can be removed only by editing a file so, if you don't need it you'll have to edit it by yourself.
+Included macros:
+*Diagonal directions key mapping for laptops with uncomfortable position of <tt>[Home, End, Page Up, Page Down]</tt> keys changed to <tt>CTRL+[A, Z, S, X]</tt>.
+*Searching for 5 turns by pressing / key.
+*<tt>F12</tt> sorts inventory letters
+*<tt>ALT+[Direction]</tt> opens a door
+*<tt>CTRL+[Left, Right]</tt>Scrolls map smoothly. Change variable ''MapScrollSteps'' in <tt>trigger.ahk</tt> to adjust scroll range.
+You can make your own macros during the game as well. Examples:
+*<tt>TAB</tt> key to apply an oil lamp.
+*<tt>F1,F2</tt> to cast offensive spells.
+*<tt>F3,F4</tt> to wear different sets of armor.
+*<tt>k</tt> for using a key/lockpick instead of kicking.
+
+==See Also==
+* GNU [[screen]] does similar things on unixoid computers.
+** e. g. [[Talk:Pacifist#No_more_bump-kills:_Remapping_the_vi_movement_commands_with_screen|remapping the movement keys]] to avoid breaking pacifist conduct,
+** [[Paste]]
+== Links ==
+[http://www.autohotkey.com/docs/KeyList.htm List of special key aliases]
+
+[[Category:User interface]]}
+&&%s&& %s Curse testing {70713 2011-05-29T22:25:22Z {831 Tjr} Redirected page to [[Curse-testing]] #redirect [[Curse-testing]]}
+&&%s&& %s Category talk:Candidates for deletion {70741 2011-05-30T00:47:20Z {0 } Three categories for deletion == Three categories for deletion ==
+
+I have added three categories for deletion. They were either unused or rarely used, and the pages using them now use more appropriate categories instead. --[[Special:Contributions/99.239.146.253|99.239.146.253]] 00:47, 30 May 2011 (UTC)}
+&&%s&& %s Carrying capacity {70787 2011-06-01T03:57:49Z {831 Tjr} Redirected page to [[Encumbrance]] #redirect [[Encumbrance]]}
+&&%s&& %s Template:Circleradiussquared6 {70852 2011-06-05T19:57:44Z {831 Tjr} perhaps the template didn't work because it tried to replace a space with the default rule? <includeonly><div class="ttyscreen">
+<replacecharsblock>
+newline=<br>
+.={{{outside|{{lightgray|.}}}}}
+_0_={{{origin|{{white|@}}}}}
+_10_={{#ifexpr:{{{r|31}}}>=10|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_13_={{#ifexpr:{{{r|31}}}>=13|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_16_={{#ifexpr:{{{r|31}}}>=16|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_17_={{#ifexpr:{{{r|31}}}>=17|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_18_={{#ifexpr:{{{r|31}}}>=18|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_1_={{#ifexpr:{{{r|31}}}>=1|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_20_={{#ifexpr:{{{r|31}}}>=20|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_25_={{#ifexpr:{{{r|31}}}>=25|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_26_={{#ifexpr:{{{r|31}}}>=26|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_29_={{#ifexpr:{{{r|31}}}>=29|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_2_={{#ifexpr:{{{r|31}}}>=2|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_32_={{#ifexpr:{{{r|31}}}>=32|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_34_={{#ifexpr:{{{r|31}}}>=34|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_36_={{#ifexpr:{{{r|31}}}>=36|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_37_={{#ifexpr:{{{r|31}}}>=37|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_40_={{#ifexpr:{{{r|31}}}>=40|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_41_={{#ifexpr:{{{r|31}}}>=41|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_45_={{#ifexpr:{{{r|31}}}>=45|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_4_={{#ifexpr:{{{r|31}}}>=4|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_50_={{#ifexpr:{{{r|31}}}>=50|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_52_={{#ifexpr:{{{r|31}}}>=52|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_5_={{#ifexpr:{{{r|31}}}>=5|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_61_={{#ifexpr:{{{r|31}}}>=61|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_72_={{#ifexpr:{{{r|31}}}>=72|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_8_={{#ifexpr:{{{r|31}}}>=8|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+_9_={{#ifexpr:{{{r|31}}}>=9|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+ = 
+default={{#ifexpr:{{{r|31}}}>=$1|{{{inside|{{yellow|x}}}}}|{{{outside|{{lightgray|.}}}}}}}
+
+ _72__61__52__45__40__37__36__37__40__45__52__61__72_

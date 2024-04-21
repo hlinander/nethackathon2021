@@ -1,0 +1,1000 @@
+   Take note that we are just adding a new non-shop room type, because the
+   previous mkshop() call if (roomtype >= SHOPBASE). We could define a 
+   complete 'mkclinic()' function (see for example mktemple) but it is quite
+   simpler to use the mkzoo() code. That function will create a room and 
+   fill it -function fill_zoo- with the appropiate monsters.
+
+   After that, we should edit the mkshop() function. Why? because in wizard
+   mode we could specify a room type to be created using the environment
+   variable SHOPTYPE. For example, if SHOPTYPE='G' starting nethack will
+   create a general shop in first level, 'Z' will create a zoo, etc... It is
+   not necessary, but certainly a good idea to add a new SHOPTYPE for our
+   new room, so we can test it quickly.
+
+   So, after 
+			if(*ep == 't' || *ep == 'T' || *ep == '\\'){
+                                mkzoo(COURT);
+                                return;
+                        }
+
+   put the following:
+
+                        if(*ep == 'c' || *ep == 'C'){
+                                mkzoo(CLINIC);
+                                return;
+                        }
+
+   Now go for the fill_zoo() itself. After
+
+	        case ZOO:
+	            goldlim = 500 * level_difficulty();
+		    break;
+
+   just add
+		case CLINIC
+		    break;
+
+   Now we have to select the monster to be created in our room. After
+
+  	#ifdef ARMY
+                    	(type == BARRACKS) ? squadmon() :
+	#endif 
+
+   Add
+			(type == CLINIC) ? &mons[PM_NURSE]:
+
+   That is, if room type is CLINIC, monster to be created is a nurse. Several
+   things to note here: you can add a more complex function -see for example,
+   the courtmon() function- to select several monsters; also look how the
+   central point of the room is selected in other cases to create a special
+   monster -for example a queen bee in a beehive-.
+
+   If you want to add objects to the room, several lines after, you'll see:
+
+                    case BARRACKS:
+                        if(!rn2(20))    /* the payroll and some loot */
+                            (void) mksobj_at((rn2(3)) ? LARGE_BOX : CHEST,
+                                             sx, sy, TRUE);
+                        break;
+
+   That is, 1 in 20 make a large box or a chest. We could put something like:
+
+		    case CLINIC:
+			if(!rn2(10))
+			    (void) mksobj_at(ICE_BOX,sx,sy,TRUE);
+			break;
+
+   To create random ice boxes. It doesn't have to be a container, can be any
+   object you like.
+
+   Finally add a flag indicating that the level has a clinic:
+
+              case CLINIC:
+                  level.flags.has_clinic = 1;
+                  break;
+
+   You could now recompile and try out your new room using the SHOPTYPE 
+   variable, but it will never generated in a normal dungeon. For that, we
+   have to edit mklev.c
+
+   First, at the beginning of the clear_level_structures() function add the
+   line:
+		level.flags.has_clinic = 0;
+
+   so the flag is reset.
+
+   Later, look for the code:
+
+        if(depth(&u.uz) > 1 &&
+           depth(&u.uz) < depth(&medusa_level) &&
+           rn2(depth(&u.uz)) < 3) mkroom(SHOPBASE);
+        else if(depth(&u.uz) > 4 && !rn2(6)) mkroom(COURT);
+        else if(depth(&u.uz) > 6 && !rn2(7)) mkroom(ZOO);
+        else if(depth(&u.uz) > 8 && !rn2(5)) mkroom(TEMPLE);
+        else if(depth(&u.uz) > 9 && !rn2(5) &&
+           !(mons[PM_KILLER_BEE].geno & (G_GENOD | G_EXTINCT))) mkroom(BEEHIVE);
+        else if(depth(&u.uz) > 11 && !rn2(6)) mkroom(MORGUE);
+        else
+
+   As you can see, here is where is defined when a certain room can be genera-
+   ted: i.e. zoo's after level 6 one in 7 times, etc... So adding a line like
+   
+        if (depth(&u.uz) > 10 && !rn2(4)) mkroom(CLINIC)
+
+   will generate a clinic quite frecuently over dungeon level 10.
+
+
+   Next, edit the sounds.c file. Look for dosounds() and after
+
+	#ifdef ARMY
+	    if (level.flags.has_barracks && !rn2(200)) {
+		static const char *barracks_msg[4] = {
+			"hear blades being honed.",
+			"hear loud snoring.",
+			"hear dice being thrown.",
+			"hear General MacArthur!",
+		};
+		You(barracks_msg[rn2(3)+hallu]);
+		return;
+	    }
+	#endif /* ARMY */
+
+   add
+	#ifdef CLINIC
+	    if (level.flags.has_hospital && !rn2(200)) {
+		static const char *hospital_msg[4] = {
+			"hear something about streptococus.",
+			"smell chloroform nearby.",
+			"hear someone cursing viruses.",
+			"seem to hear Doctor Frankenstein.",
+		};
+		You(hospital_msg[rn2(3)+hallu]);
+		return;
+	    }
+	#endif /* CLINIC */
+
+   so we get a funny message randomly when having a clinic in level.
+
+   Last, edit hack.c and see check_special_room(), to add a salute to the
+   player entering a clinic:
+
+	        case CLINIC:
+                    You("enter a modern hospital.");
+                    break;
+
+   Also after
+	#ifdef ARMY
+                            case BARRACKS:
+                                level.flags.has_barracks = 0;
+                                break;
+	#endif
+
+   add
+	#ifdef CLINIC
+                            case CLINIC:
+                                level.flags.has_clinic = 0;
+                                break;
+	#endif
+
+   Last of all, edit sp_lev.c and after
+	#ifdef ARMY
+		    case BARRACKS:
+			level.flags.has_barracks = TRUE;
+			break;
+	#endif
+   add
+	#ifdef CLINIC
+		    case CLINIC:
+			level.flags.has_clinic = TRUE;
+			break;
+	#endif
+
+   inside the fill_room() function.
+
+   Recompile your code. Congratulations. You just added a new room.
+
+
+10. Creating a new shop type
+----------------------------
+
+   Along this chapter we will work to add a 'pet shop' as an example.
+
+   Adding a new shop is similar to adding a new room: we have to start with
+   the mkroom.h file. After the
+	
+		#define BOOKSHOP 20
+
+   line add 
+		#define PETSHOP 21
+
+   and increase the numbers for UNIQUESHOP, CANDLESHOP & MAXRTYPE. (of course
+   if you already added other rooms in chapter 9 put the correct number
+   accordingly).
+
+   Now edit the file shknam.c, where most of the shop code is located. First
+   thing you'll note is several 'static const char *shksomething[]' arrays;
+   those are the shopkeeper names for each type of shop. So, after the 
+   definition of shkgeneral[], add a new array with the names for our petshops:
+
+   static const char *shkpetshop[] = {
+	   "Valoo","Tisney","Jakuna",
+	   ""
+	   };
+
+   Note the array ends with a "" string. Also you should put more than 3 names,
+   but for our example is enough.
+
+   Later on the 'const struct shclass shtypes[]' array is defined. It sets
+   the shop types, with these fields:
+
+   - Name of the shop (i.e:"general store").
+   
+   - Letter that identifies this type of shop. (i.e: SCROLL_CLASS). It is
+    later used for the SHOPTYPE environment variable in wizard mode.
+
+   - % probability. Note that the total of all types should be 100, so for
+   adding a new one you'll have to low the probability of other(s).
+
+   - Object placement type:
+		D_SCATTER = normal placement.
+		D_SHOP    = shop-like placement.
+		D_TEMPLE  = temple-like placement.
+
+   - Objects sold there, prefixed with the probability of each. i.e:
+	 {{85, RING_CLASS}, {10, GEM_CLASS}, {5, AMULET_CLASS}, {0, 0}}
+
+      means: rings (85% stock), gems(10%), amulets(5%). Note the NULL pair
+      at the end.
+      Also if defining a concrete object (instead of a class) a minus sign
+      is needed, as in:
+	 {{90, WAND_CLASS}, {5, -LEATHER_GLOVES}, {5, -ELVEN_CLOAK}, {0, 0}}
+
+      Note also that the array is defined (in mkroom.h) as 5 elements long,
+      so a shop cannot stock more than 5 classes/concrete objects. (You can
+      always increase that value as an alternative, of course).
+
+   - Names array -the shksomething array-.
+
+   So, in our case put something like:
+
+   {"pet shop", VENOM_CLASS, 5, D_SHOP,
+	{{70, -FIGURINE},{20,-TRIPE_RATION},{10,-LEASH}}, shkpetshop}
+
+   meaning: create FIGURINES 70% of the time, 20% tripe rations & 10% leash.
+   Also this shop will be created if setting SHOPTYPE="." or 5% of the time
+   a shop is created. The probability of the general store should be changed
+   from 44 to 39.
+
+   And that's all. Easy, isn't it?.
+
+   Just recompile the code and check it out setting:
+
+   export SHOPTYPE=.   (or set SHOPTYPE=. depending in your OS, or unix SHELL).
+   nethack -u wizard -D
+
+
+11. Goodbye
+-----------
+
+   Hundreds of other things can be added to the game, but this is the end;
+   from here you're on your own. I hope you found this reading useful. Just 
+   some last recommendations:
+
+      1. Put lots of comments in your code. From experience, in a week or two
+        you'll forget why something was that way or the other.
+
+      2. Interchange information about new ideas in rec.games.roguelike.nethack
+        newsgroup. They can help you to refine your ideas or coming up with
+        new ones.
+
+      3. Send your modifications to the dev team (at the mail address 
+        nethack-bugs@linc.cis.upenn.edu). You can possible win inmortality.
+
+      4. Play nethack a lot.
+
+
+   Good luck and happy hacking!!
+
+
+
+		-------------------------------------
+		Apendix A. REFERENCE FUNCTION LISTING
+		-------------------------------------
+
+   For your convenience here go some interesting functions: 
+
+Monster naming functions
+------------------------
+		They all take a pointer to a monst structure as parameter and 
+		return a string:
+
+char *mon_nam(struct monst *)
+                the rust monster  it  the invisible orc  Fido
+char *l_monnam(struct monst *)
+		rust monster    it  invisible orc      dog called fido
+char *Monnam(struct monst *)
+		The rust monster    It  The invisible orc  Fido
+char *Adjmonnam(struct monst *)
+		The poor rust monster  It  The poor invisible orc The poor Fido
+char *Amonnam(struct monst *)
+		A rust monster      It  An invisible orc   Fido
+char *a_monnam(struct monst *)
+		a rust monster      it  an invisible orc   Fido
+
+
+Object naming functions
+-----------------------
+
+char *xname(struct obj *)
+		"poisoned arrow"
+char *doname(struct obj *)
+		"poisoned +0 arrow"
+char *an(struct obj *)
+		"a poisoned arrow"
+char *An(struct obj *)
+		"A poisoned arrow"
+char *The(struct obj *)
+		"The poisoned arrow"
+char *the(struct obj *)
+		"the poisoned arrow"
+char *makeplural(char *) 
+		Takes a string an pluralizes it. It is quite smart, 
+		so the "homunculus" plural becomes "humunculi", etc...
+char *makesingular(char *) 
+		Just the opposite.
+
+
+Display functions
+-----------------
+		(Please refer to the doc/window.doc file for more information).
+
+pline(char *, ...)
+		Takes the same arguments as the standard printf() function,
+		and displays the result in the screen. It is massively used
+		throughout the code.
+You(char *, ...)
+		A shorter way to display the "You do something" messages.
+		pline("You sit") is equivalent to You("sit").
+Your(char *, ...)
+		A shorter way to display the "Your something" messages.
+		pline("Your hands glow") is equivalent to Your("hands glow").
+verbalize(char *, ...)
+		It also behaves as printf(), but displays the resulting string
+		between "". It is used for sounds made by other monsters.
+impossible(char *, ...)
+		Display an error message with the "impossible:" before it.
+
+
+Several object related functions
+--------------------------------
+
+struct obj *readobjnam(char *)
+		It creates an object from a string. Mainly used in the
+		wishing routines.
+int weight(obj)
+		Returns the weight of an object. (not obvious: it can be
+		a container).
+void docall(struct obj *)
+		Ask the player to call an object.
+makeknown(obj->otyp)
+		It's not a real function, just a macro. Marks an object type
+		as identified.
+void curse(struct obj *)
+		Curses an object.
+void uncurse(struct obj *)
+		Uncurses an object.
+void bless(struct obj *)
+		Blesses an object.
+void unbless(struct obj *)
+		Unblesses an object.
+void move_object(struct obj *,int,int)
+		Move object to x,y position.
+void remove_object(struct obj *)
+		Remove object.
+void place_object(struct obj *,int,int)
+		Put object in x,y position.
+int bhito(struct obj *, struct obj *)
+		Object was hit by the effect of wand indicated in second 
+		parameter.
+void cancel_item(struct obj *)
+		Object has been hit by cancellation ray.
+
+
+Several monster related functions
+---------------------------------
+struct monst *newmonst(struct permonst *)
+		Allocs a new 'monst' struct. It doesn't add it to the chained
+		list of monsters. Tipically the process will be:
+			mtmp = newmonst(ptr->pxlth);
+			*mtmp = zeromonst; /* clear all entries in structure */
+			mtmp->nmon = fmon;
+			fmon = mtmp;
+		Shouldn't be used directly. Better use makemon().
+struct monst *makemon(struct permonst, int, int)
+		Creates a new monster in the position determined by the two
+		other parameters (x,y). It returns the newly created monst
+		struct if success, NULL otherwise.
+		The first parameter can be null; in that case a random monster
+		will be created.
+		The (x,y) position can also be 0 to indicate a random location.
+void relmon(struct monst *mon)
+		Release monster from display and monster list.
+boolean mnearto(struct monst *,xchar, xchar, boolean)
+		Put monster near (or at) location if possible. The boolean
+		parameter is for forcing another one to move. Returns 
+		1 - if a monster was moved from x, y to put mtmp at x, y
+		0 - in most cases.
+struct permonst *grow_up(struct monst *, struct monst *)
+		Monster grows up to a bigger version. The last monst struct
+		parameter is the victim, if any. If there is none it implies
+		a gain level potion.
+void mongone(struct monst *)
+		Monster dissapears. The struct is released.
+void setmangry(struct monst *)
+		Monster gets angry. If already was it, does nothing.
+boolean angry_guards(register boolean)
+		Function used to angry guards in town. The parameter just indi-
+		cate to display messages if true. Returns TRUE if any guard
+		was there.
+void pacify_guards()
+		The name says it all.
+void wake_up(struct monst *)
+		Wake up -and angry- a monster.
+void wake_nearby()
+		Wake up nearby monsters.
+void mon_to_stone(struct monst *)
+		Changes the monster into a stone monster of the same type.
+boolean monnear(struct monst *, x, y)
+		Is the square close enough for the monster to move or 
+		attack into?
+int minwater(struct monst *)
+		Check monster and water for compatibility, 0 (survived), 
+		1 (drowned)
+int rndmonnum()
+		Select a random, common monster type.
+Sounds functions
+----------------
+
+void dosounds()
+		Make a sound, depending of what is in current level (shop,
+		thrones, etc...)
+void growl(struct monst *)
+		Monster is happy.
+void yelp(struct monst *)
+		Monster is not so happy.
+void whimper(struct monst *)
+		Monster is about to die.
+void beg(struct monst *)
+		Monster begs for food.
+int domonnoise(struct monst *)
+		Do whatever sound a monster does.
+int dotalk()
+		The #chat command.
+
+		
+Monsters<->objects functions
+----------------------------
+
+int mongets(struct monst *, int)
+		It creates an object and gives it to a monster. The int is
+		the identifier of the object as defined in onames.h (created
+		by makedefs). i.e. BLUE_DRAGON_SCALE_MAIL
+void m_useup(struct monst *, struct obj *)
+		An object is consumed by a monster. The obj struct is freed.
+void mpickobj(struct monst *, struct obj *)
+		An object is picked by a monster.
+void mpickgems(struct monst *)
+		A monster picks up the gems under him.
+void mpickgold(struct monst *)
+		A monster picks up the gold under him.
+void mpickstuff(struct monst *)
+		A monster picks up things under him. What it takes it depend
+		on the M-FLAGS defined for this type of monster.
+void meatobj(struct monst *)
+		Monster eats whatever in his position. Used for gelatinous
+		cubes.
+void meatgold(struct monst *)
+		A expensive meal :-)
+boolean can_carry(struct monst *, struct obj *)
+		Returns TRUE if the monster can carry that object
+struct obj *make_corpse(struct monst *)
+		Creates a monster corpse, a "special" corpse, or nothing 
+		if it doesn't leave corpses.
+
+Shop related functions
+----------------------
+
+struct monst *shop_keeper(char rmno)
+		Returns the shopkeeper given the room number. Example of usage:
+			struct monst *shkp;
+			shkp=shop_keeper(*in_rooms(u.ux,u.uy,SHOPBASE));
+int inhishop(struct monst *)
+		Returns true if shopkeeper is in his shop.
+void mkshobj_at(const struct shclass *,int,int)
+		Make an object of the appropriate type in a shop square.
+int shkinit(const struct shclass *,struct mkroom *sroom)
+		Create a new shopkeeper in the given room.
+boolean saleable(int,struct obj *)
+		Returns TRUE if the shop -indicated by the index - stocks that
+		type of objects.
+
+Other interesting functions
+---------------------------
+
+int rn2(int x)
+		Returns a random number between 0 & x.
+		( 0 <= rn2(x) < x )
+int rnl(int x)
+		Returns a random number between 0 & x, just as rn2(), but
+		this time the player's luck affects the result: good luck
+		approaches 0, bad luck approaches x-1.
+char *getrumor(int)
+		Returns a "rumor" string. if int = 1 rumor is always true,
+		-1 means false and 0 is random.
+void exercise(int, boolean)
+		Exercise an attribute (A_INT,A_CHA,A_WIS,A_STR,A_DEX). If
+		TRUE increases, FALSE decreases.
+find_misc() 
+use_misc()
+		Both functions are used in muse.c to detect an object/action
+		that a monster can do and execute it.
+void mkroom(int)
+		Make and stock a room of a given type.
+boolean has_dnstairs(struct mkroom *)
+		Returns true if room has downstairs.
+boolean has_upstairs(struct mkroom *)
+		Returns true if room has upstairs.
+schar depth(d_level)
+		Returns the depth of a level, in floors below the surface.
+		(note levels in different dungeons can have the same depth).
+doengrave()
+		User engraves.
+int bhitm(struct monst *, struct obj *)
+		Monster was hit by the effect of wand or spell indicated
+		in second parameter.
+int zapyourself(struct obj *)
+		The name says it all: player zapped himself with wand or spell.
+void zapnodir(struct obj *)
+		Zapping a non-directional wand.
+int breaks(struct obj *, boolean)
+		Object breaks. The boolean flag indicates if object is or not
+		in the fobj chain.
+int peffects(struct obj *)
+		Function for potion quaffing effects.
+void potionhit(struct monst *, struct obj *)
+		Potion hits monster.
+void potionbreathe(struct obj *)
+		Vapors effects.
+void dosinkring(struct obj *)
+		Ring is dropped in a sink.
+void eatring(struct obj *)
+		Polymorphed player eats a ring.
+void Ring_on(struct obj *)
+		Ring effects when on.
+void Ring_off_or_gone(struct obj *,boolean)
+		Ring is removed. The boolean flag indicates if gone (stolen).
+void Amulet_on()
+void Amulet_off()
+		Similar idea, but for amulets.
+void fprefx(struct obj *)
+		Called at first bite on food.
+void fpostfx(struct obj *)
+		Called after last bite on food.
+int study_book(struct obj *)
+		Study a spellbook.
+int spelleffects(struct obj *, boolean)
+		Cast a spell. boolean flag indicates if at player himself.
+</pre>
+
+{{basedon|name=German Martin|url=http://web.archive.org/web/20160802031704/http://members.shaw.ca/rob.ellwood/sources.txt}}
+{{noversion}}}
+&&%s&& %s Beginner's guide to nethack sources {105103 2017-03-15T23:38:36Z {4000573 Elronnd} Elronnd moved page [[Beginner's guide to nethack sources]] to [[Beginner's guide to NetHack sources]]: Fix capitalization #REDIRECT [[Beginner's guide to NetHack sources]]}
+&&%s&& %s Nothing interesting happens. {105158 2017-03-29T14:22:56Z {4000608 EtriganZola} Redirected page to [[Scroll of taming]] #REDIRECT [[Scroll of taming]]}
+&&%s&& %s Nothing interesting seems to happen. {105159 2017-03-29T14:23:31Z {4000608 EtriganZola} Redirected page to [[Scroll of taming]] #REDIRECT [[Scroll of taming]]}
+&&%s&& %s The neighborhood is friendlier. {105160 2017-03-29T14:24:03Z {4000608 EtriganZola} Redirected page to [[Scroll of taming]] #REDIRECT [[Scroll of taming]]}
+&&%s&& %s The neighborhood is unfriendlier. {105161 2017-03-29T14:24:24Z {4000608 EtriganZola} Redirected page to [[Scroll of taming]] #REDIRECT [[Scroll of taming]]}
+&&%s&& %s Scroll of wishing {148466 2022-10-05T00:28:46Z {4001279 Umbire the Phantom} de-SLEX A scroll of wishing is an item that exists in [[NetHack Fourk]]. In Fourk, they can't be wished for and don't generate randomly, but 3 are guaranteed at Orcus, Vlad's Tower's top floor and Wizard's Tower's top floor. In addition, some castle variants, rather than having the guaranteed [[wand of wishing]] has a couple of scrolls of wishing instead.
+
+In Fourk, scrolls of wishing when blessed give slightly higher quality wishes than normal wishes do in that amount and enchantment adds +2 to the random check to see if you get just a single one, or just +0. This means that wishing for +3 is guaranteed, wishing for 3 of something is guaranteed, and you can potentially wish for something up to +7, or 7 of something. Cursed scrolls will not give any wish. You can also wish for a [[magic lamp]] with them if blessed.
+
+{{stub}}
+[[Category:NetHack Fourk items]]}
+&&%s&& %s Category:DynaHack {105265 2017-04-23T16:38:06Z {4000572 FIQ} Created page with "This category contains pages [[DynaHack]]-specific information that may or may not have anything to do with vanilla [[NetHack]]. [[Category:Variants]]" This category contains pages [[DynaHack]]-specific information that may or may not have anything to do with vanilla [[NetHack]].
+[[Category:Variants]]}
+&&%s&& %s Pom {105883 2017-06-03T16:00:06Z {4000180 Bcode} fix double redirect #REDIRECT [[Time#Moon phase]]}
+&&%s&& %s Category:Non-protected verbatim spoilers {105384 2017-04-29T00:36:25Z {4000180 Bcode} caching is annoying, note why that is so __HIDDENCAT__
+This category lists [[NetHackWiki:Spoiler files|archived spoiler files]] that are not currently protected from editing, but probably ought to be. Do not add pages to this category manually; [[Template:Verbatim spoiler]] applies this category automatically where appropriate.
+
+Keep in mind that this listing might be slightly outdated due to performance optimizations in the MediaWiki software; see [[wikipedia:Help:Category#Categories_and_templates]] and [[wikipedia:Wikipedia:FAQ/Categorization#Why_might_a_category_list_not_be_up_to_date.3F]] for technical details. Making a [[metawikimedia:Help:Dummy_edit#Null_edit|null edit]] to the page(s) in question may or may not help.}
+&&%s&& %s Template:Verbatim spoiler {109614 2018-05-10T12:48:15Z {4000180 Bcode} Point out that archived spoilers may be outdated or outright wrong and we can't do much about it <includeonly>This is a classic text [[spoiler]], reproduced on {{SITENAME}} for reference and archival purposes. You should link to this page when you copy or excerpt it, but please do not modify the content.
+
+'''Caution:''' As this is not an ordinary wiki page edited by the community, this spoiler may contain outdated or otherwise inaccurate information.[[Category:Spoiler files]]{{#ifeq:{{PROTECTIONLEVEL:edit}}|sysop||[[Category:Non-protected verbatim spoilers]]}}</includeonly><noinclude>
+This template is used to mark [[spoiler]] files kept on the wiki with a note including instructions not to alter the content. It also adds pages to [[:Category:Spoiler files]], as well as placing them in the maintenance category [[:Category:Non-protected verbatim spoilers]] unless the page is fully edit-protected to avoid mistakes.
+
+A license note or source link is not applied by this template and must be provided separately. See [[NetHackWiki:Spoiler files]] for more general information on how to handle spoiler files on NetHackWiki.
+</noinclude>}
+&&%s&& %s NetHackWiki:Spoiler files {105324 2017-04-28T01:04:12Z {4000180 Bcode} Document current practice re [[spoiler]] files (such as [[scrl-343.txt]]) on the wiki {{for|a definition of "spoiler files"|Spoiler}}
+
+'''Spoiler files''' are often of historical importance to NetHack and it is in the interest of the community to preserve them. In cases where the license permits us to do so (see [[NetHackWiki:Copyrights]] for details), we may mirror them on NetHackWiki for reference and archival purposes; this avoids the content becoming inaccessible should the original location of the spoilers disappear.
+
+[[:Category:Spoiler files]] keeps a list of spoilers thus mirrored.
+
+== Procedure ==
+Before adding a spoiler file to the wiki, you should ensure you are allowed to do so. See [[NetHackWiki:Copyrights]] if you are unsure.
+
+Spoiler files are preserved as-is and should not be edited. [[Template:Verbatim spoiler]] should be used to include a note to this effect on the page. Additionally, the appropriate [[:Category:License templates|licensing template]] should be included at the bottom of the page.
+
+The actual spoiler text itself is normally wrapped in <code><nowiki><pre></nowiki></code> tags as the original format typically relies on monospaced display for alignment of tables and similar figures. Finally, a {{tl|noversion}} tag is applied at the bottom of the page as the text is archived in its original state.
+
+== Protection ==
+Spoiler file archives are typically protected from editing to avoid mistakes as the pages are meant to remain static. [[:Category:Non-protected verbatim spoilers]] keeps track of properly marked spoiler files that have not been protected by an [[NetHackWiki:Administrators|administrator]].}
+&&%s&& %s NetHackWiki:Abuse filter {105634 2017-05-04T04:19:14Z {4000180 Bcode} Write up some documentation on NetHackWiki's AbuseFilter usage for both admins and other users The '''abuse filter''' is a [[mw:Extension:AbuseFilter|MediaWiki extension]] that allows [[NetHackWiki:Administrators|administrators]] to automatically flag potentially abusive activity and (optionally) prevent it.
+
+A list of filters can be found at [[Special:AbuseFilter]]; this is also where administrators can configure filters. [[Special:AbuseLog]] shows actions that have triggered filters.
+
+== Actions ==
+
+All abuse filters will log the matched action to [[Special:AbuseLog]]. This cannot be disabled. In addition, a filter may have more user-visible results:
+
+* The user may be warned about the change they are trying to make. This warning message can be customized. The user will be able to click the submit button again to bypass the warning; this may trigger further actions.
+* The action may simply be prevented entirely. A generic message is displayed to the user.
+* One or more ''change tags'' may be applied to the edit. This will show up in user contributions, article history, and [[Special:RecentChanges]], but by itself is purely informational.
+* The user may be stripped of their auto-confirmed status (which is normally given automatically to users who have been around for a few days) for up to a week. This will cause the software to present them with CAPTCHAs on edits and stop them from editing semi-protected pages. Other filters may also check whether a user is autoconfirmed.
+* The user may be blocked indefinitely from editing. This is typically used for spam and other clearly malicious edits.
+* The user's privileges (as an administrator etc.) may be revoked. This action is not currently used on NetHackWiki.
+
+While the abuse filter interface allows to revert actions taken by any given filter, it is usually desirable to avoid false positives ''before'' they happen. To this end, the management interface provides excellent tools to test filters against recent edits before actually applying them.
+
+== False positives ==
+
+If a filter matches erroneously, you should contact [[NetHackWiki:Administrators|an administrator]]. In case you were mistaken for a spammer, you might have been automatically blocked by the filter; in this case, you can edit your own talk page or poke someone in [[freenode|#nethackwiki on IRC]].}
+&&%s&& %s Fourk {105648 2017-05-05T16:47:00Z {4000253 Jonadab} Redirect. #REDIRECT [[NetHack Fourk]]}
+&&%s&& %s Magic chest {147979 2022-08-26T19:39:10Z {4001605 NetSysFire} fix redirect #REDIRECT [[Container#Magic chest]]}
+&&%s&& %s Legion {131033 2020-01-18T06:07:51Z {4000978 Aximili} Add category {{monster
+ |name=Legion
+ |symbol={{magenta|Z}}
+ |tile=
+ |difficulty=52
+ |level=45
+ |experience=2682
+ |speed=12
+ |AC=-2
+ |MR=85
+ |align=-127
+ |frequency=0
+ |genocidable=No
+ |attacks=Claw 1d6 Quest Artifact Theft, Claw 1d6 Quest Artifact Theft, Claw 1d6 Quest Artifact Theft, Claw 1d6 Quest Artifact Theft, Gaze attack 1d9 [[study]], Passive 0d0 [[hellblood]]
+ |weight=9000
+ |nutr=1500
+ |size=gigantic
+ |resistances=[[fire]], [[cold]], [[poison]], [[petrification]]
+ |resistances conveyed=[[sleep]]
+ |attributes={{attributes
+ |The Legion|=
+ |amphibious=1
+ |breathless=1
+ |nohead=1
+ |mindless=1
+ |regen=1
+ |seeinvis=1
+ |pois=1
+ |nopoly=1
+ |undead=1
+ |neuter=1
+ |hostile=1
+ |wander=1
+ |stalk=1
+ |nasty=1
+ |strong=1
+ |wantsamul=1
+ |wantsarti=1
+ |wantsall=1
+ |waitsforu=1
+ |covetous=1
+ |infravision=1
+ |nocorpse=1
+ |death=1
+ }}
+ |refline=
+}}
+
+{{monster
+ |name=legionnaire
+ |symbol={{gray|Z}}
+ |tile=
+ |difficulty=17
+ |level=14
+ |experience=334
+ |speed=8
+ |AC=10
+ |MR=0
+ |align=-5
+ |frequency=0
+ |genocidable=No
+ |attacks=Claw 1d6 Quest Artifact Theft, Gaze attack 1d6 [[study]]
+ |weight=1450
+ |nutr=200
+ |size=medium
+ |resistances=[[cold]], [[sleep]], [[poison]]
+ |resistances conveyed=[[sleep]]
+ |attributes={{attributes
+ |A legionnaire|=
+ |amphibious=1
+ |breathless=1
+ |mindless=1
+ |humanoid=1
+ |nopoly=1
+ |undead=1
+ |hostile=1
+ |wander=1
+ |stalk=1
+ |strong=1
+ |infravision=1
+ |sgroup=1
+ |nocorpse=1
+ |death=1
+ |notame=1
+ |noregen=1
+ }}
+ |refline=
+}}
+
+
+Legion constantly produces hordes of zombies in the squares surrounding him, including many legionnaire zombies.  Because of his study gaze, these zombies will be more dangerous than usual.  Damaging him also produces more zombies.
+
+After being damaged a few times, Legion will relocate to the upstair.  As it does not otherwise move, this can prevent the character from retreating from the quest.
+
+
+[[Category:DNethack monsters]]}
+&&%s&& %s Bearhug {105892 2017-06-03T16:28:46Z {4000767 Gufier} Created redirect #REDIRECT[[Holding attack#Grabbing attack]]}
+&&%s&& %s XP Level {105897 2017-06-03T21:40:06Z {4000982 Pythondude325} Added redirect from XP Level to Experience level #REDIRECT [[Experience level]]}
+&&%s&& %s Potion quaffing effects {148265 2022-09-29T19:44:08Z {4001605 NetSysFire} /* Potion of monster detection */ - grammar ==General==
+
+You can quaff only one potion at a time. The potion is always used up (you cannot quaff only part of a potion, or quaff the same potion twice).  
+
+Most potions are identified when you quaff them. In some cases, "You have a peculiar feeling for a moment, then it passes." (if hallucinating, you feel "normal feeling" instead), and the potion is not identified. These cases will be marked as "peculiar feeling".  There are also case when the potion is not identified without peculiar feeling.  They are also mentioned in text.
+
+==Milky or smoky potion==
+
+If you quaff milky or smoky potion, whatever is true identity, there are additional effects. These precede the main effects of the potion.[https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line502] 
+
+Milky potion may produce a hostile ghost, while smoky potion may produce a djinni. The chance is 1/(13+2n) in both cases, where n is the number of ghosts or djinn already produced. Djinni may grant you a [[wish]] (chance 80% for blessed smoky potion, 20% for uncursed, 5% for cursed).[https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#djinni_from_bottle]  See [[Smoky and milky potions]] for more information.
+
+== Main effects ==
+
+Source:[https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#peffects]
+
+=== [[Potion of restore ability]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line553]
+
+Not identified.
+
+Cursed: "Ulch!  This makes you feel mediocre!"
+
+Uncursed: 
+* "Wow!  This makes you feel good!"
+* If one of your abilities is less than the maximal previously achieved value, restores it. If two of more abilities are less than the maximal previously achieved value, restores one of them.
+** Weakness from hunger is not cured this way.
+** The algorithm is as follows: starting at a random ability, it checks all abilities until it either finds one which can be restored (and restores it) or it has visited all abilities (in which case there is no effect because no ability needs to be restored.)
+
+Blessed
+* "Wow! This makes you feel great/better!" ("better" if you are stoned, strangled, have wounded legs and not riding, slimed, confused, sick, hallucinating, vomiting, stunned, or deaf)
+* Restores all your abilities to theirs maximal previously achieved values.
+** Weakness from hunger is not cured this way.
+
+=== [[Potion of hallucination]] ===
+
+Makes you hallucinating for 300-499 (more) turns (if blessed), 600-799 (more) turns (if uncursed), or 900-1099 (more) turns (if cursed).[https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line582]
+
+If you are already hallucinating, or resistant to hallucinations, it is "peculiar feeling".
+
+* "Oh wow!  Everything looks so cosmic!" - you started to hallucinate, not being blind
+* "Oh wow!  Everything feels so cosmic!" - you started to hallucinate, while being blind
+* "You have a normal feeling for a moment, then it passes." - you have no eyes
+* "Your vision seems to flatten for a moment but is normal now." - you are wielding Grayswandir, which protects you from hallucinations.
+* "Your eyes itch" - you are already hallucinating, blind, and have two eyes.
+* "Your eye itches" - you are already hallucinating, blind, and have one eye.
+
+=== [[Potion of water]] ===
+
+Source:[https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line589]
+
+Uncursed: "This tastes like water.", provides 1-10 nutrition points.
+
+Blessed (holy water):
+* not identified
+* if you are chaotic, or polymorphed to a demon or undead creature, 
+** "This burns like acid!"
+** abuses constitution
+** cures lycanthropy
+** causes 2d6 points of physical damage ([[half physical damage]] applies if relevant).
+* otherwise, "You feel full of awe.", cures sickness and lycanthropy, exercizes constitution and wisdom.
+
+Cursed (unholy water):
+* not identified
+* if you have lycanthropy, polymorphs you to the creature, unless you are polymorphed already (even to another creature), or have unchanging. Also, if you have [[polymorph control]], you are asked whether you want to be polymorphed.
+* if you are chaotic, or polymorphed to a demon or undead creature, heals 2d6 hit points and exercizes constitution. "You feel quite proud of yourself."
+* otherwise:
+** if lawful, causes 2d6 points of physical damage ([[half physical damage]] applies if relevant). "This burns like acid!"
+** if not lawful, "You feel full of dread."
+** abuses constitution
+
+=== [[Potion of booze]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line640]
+
+Not identified.
+
+"Ooph!  This tastes like liquid fire!"
+* if hallucinating, it tastes like "dandelion wine" instead.
+* if diluted, it tastes like "watered down" liquid fire or dandelion wine.
+
+Unless blessed, make you confused for 3d8 (more) turns.
+
+Unless diluted, heals 1 hit point.
+
+Provides 10, 20, 30 nutrition points if cursed, uncursed, blessed.
+
+Abuse wisdom.
+
+If cursed, you "pass out" for 1-15 turns, then you "awake with a headache".
+
+=== [[Potion of enlightenment]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line659]
+
+Cursed: not identified, "You have an uneasy feeling...", abuses wisdom.
+
+Uncursed: "You feel self-knowledgeable...", displays your intrinsics and features in a new window. After you close the window, "The feeling subsides."
+
+Blessed: adds 1 to your intelligence and wisdom, then proceeds as uncursed.
+
+=== [[Potion of invisibility ]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line683]
+
+If already invisible, or blind, it is "peculiar feeling". Otherwise, "Gee!  All of a sudden, you can see right through yourself" if [[see invisible]], or "Gee!  All of a sudden, you can't see yourself" otherwise.  If hallucinating, the message is instead "Far out, man!  You can see right through yourself" or "Far out, man!  You can't see yourself"
+
+If blessed, become permanently invisible.
+
+If uncursed, become invisible for 31-45 (more) turns.
+
+If cursed, become invisible for 31-45 (more) turns, and cause [[aggravate]]. "For some reason, you feel your presence is known."
+
+=== [[Potion of see invisible]] and [[Potion of fruit juice]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line699]
+
+Not identified.
+
+Message:
+* "Yecch!  This tastes rotten." - cursed.
+* "Yecch!  This tastes overripe." - cursed, and you are hallucinating.
+* "This tastes like (reconstituted) slime mold." - not cursed, not hallucinating.
+* "This tastes like 10% real (reconstituted) slime mold all-natural beverage." - not cursed, hallucinated. 
+* Slime mold can be replaced by your favourite fruit. The word "reconstituted" means it was diluted.
+
+Undiluted fruit juice provides 10, 20, 30 points of nutrition if cursed, uncursed, blessed. Diluted fruite juice provides half of this nutrition.
+
+Cursed potion blinds you for a moment.
+
+Potion of see invisible provides you with [[see invisible]] intrinsic either permanently (if blessed) or for 750-849 turns (otherwise).
+
+If it is a potion of see invisible, you are invisible yourself and not blind, you "can see through yourself, but you are visible!", and the potion is identified.
+
+=== [[Potion of paralysis]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line737]
+
+If you have [[free action]], "You stiffen momentarily!"
+
+Otherwise:
+* "Your feet are frozen to the floor!"
+** If you are polymorphed, "feet" can be replaced by your respective body part.
+** If neccessary, "floor" can be replaced by "[[lava]]", etc.
+** If levitating, on the [[Plane of Air]] or [[Plane of Water]] level, the message instead will be "You are motionlessly suspended." Otherwise, if riding, the message is "You are frozen in place!"
+* You are paralysed for 13-22, 25-34, 37-46 turns for blessed, uncursed, cursed potion.
+* Abuses dexterity.
+
+=== [[Potion of sleeping]] ===
+
+If sleep resistant, or have free action, "You yawn." Otherwise, "You suddenly fall asleep!", fall asleep for 13-22, 25-34, 37-46 turns for blessed, uncursed, cursed potion. [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line754]
+
+=== [[Potion of monster detection]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line762]
+
+Uncursed:
+* If there are no monsters at the level, "You feel threatened.", or "You get the heebie jeebies." if hallucinating. Not identified.
+* Otherwise, "You sense the presence of monsters.", and shows the monsters at your level.
+
+Cursed:
+Works like an uncursed potion, with one additional effect. If there are sleeping or frozen monsters, it wakes and unfreezes them. "Monsters sense the presence of you."
+
+Blessed:
+* If you already have monster detection, "peculiar feeling". 
+* Switches on the monster detection mode (you see all the monsters at your level) for 21-60 (more) turns.  However, if the monster detection timeout is already 300 or more turns, adds only 1 turn instead.
+* If no monsters at your level, not identified. "You feel lonely."
+
+=== [[Potion of object detection]] ===
+
+Detects objects at your level. If nothing to detect, not identified. Exercises wisdom.[https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line762] See [[potion of object detection]] for more information
+
+=== [[Potion of sickness]] ===
+
+See [[potion of sickness]].
+
+=== Potion of confusion ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line848]
+
+If neither confused nor hallucinating, "Huh, What?  Where am I?"
+
+If hallucinating but not confused, "What a trippy feeling!", not identified.
+
+If confused, "peculiar feeling".
+
+Make you confused for 8-14, 16-22, 24-30 (more) turns if the potion is blessed, uncursed, cursed.
+
+=== [[Potion of gain ability]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line861]
+
+Cursed: "Ulch!  That potion tasted foul!", not identified.
+
+Non-cursed and you have sustain ability intrinsic from the [[ring of sustain ability|ring]]: "peculiar feeling".
+
+Uncursed and no sustain ability: Select a random ability, and increase by 1, with proper message. If this is impossible, because its value is already maximal, repeat. If after 6 attempts, all abilities were maximal possible, "Your (ability) is already as high as it can get."
+
+Blessed and no sustain ability: increase all abilities by 1, with proper messages. For abilities which are already maximal, "Your (ability) is already as high as it can get."
+
+=== [[Potion of speed]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line881]
+
+If you have wounded leg(s), the potion is not cursed, and you are not driving, it heals your leg(s). Not identified.
+
+Otherwise:
+* exercise dexterity
+* make you fast for 40-49, 100-109, 160-169 (more) turns for cursed, uncursed, blessed potion
+* not identified, if you are very fast already
+
+Messages:
+* "Your legs feel somehow better." - it healed your legs
+* "Your leg feels somehow better." - as above, if you have only one leg
+* "You are suddenly moving much faster." - you were slow, it made you fast
+* "You are suddenly moving faster." - you were fast (from speed boots), it made you even faster
+* "Your legs get new energy." - you were very fast already
+
+=== [[Potion of blindness]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line899]
+
+Blinds you for 125-324, 250-449, 375-574 (more) turns for blessed, uncursed, cursed potion.
+
+Not identified if you were blind already.
+
+Messages:
+* "A cloud of darkness falls upon you." - could see, not hallucinating.
+* "Oh, bummer!  Everything is dark!  Help!" - could see, hallucinating.
+* "Your eyes itch." or "Your eye itches." (if you are one-eyed monster) - if weared a blindfold.
+* "You have a strange feeling for a moment, then it passes." - you have no eyes, not hallucinating
+* "You have a normal feeling for a moment, then it passes." - you have no eyes, and hallucinating
+
+=== [[Potion of gain level]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line906]
+
+Cursed: not identified. You go upwards one level. "You rise up, through the ceiling!"
+* Does not work at the endgame levels, Sokoban, Fort Ludios, and the top floors of the Wizard's tower, Vlad's tower, and Quest. Also does not work on dungeon level 1, unless you are carrying the [[Amulet of Yendor]]. In these case, "You have an uneasy feeling." will be displayed instead.
+
+Blessed or uncursed: increases your experience level by 1. "Welcome to experience level X." If uncursed, you obtain the minimal experience needed for your new level. If blessed, your new experience will be a random number between minimal and maximal experience for your new level.
+
+=== [[Potion of healing]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line940]
+
+You gain 4d4, 6d4, 8d4 hit points for cursed, uncursed, blessed potion. If your new HP is higher than the maximal HP, you gain 1 to the maximal HP (unless the potion is cursed), and HP is set to the maximal HP. If not cursed, cures blindness. If blessed, also cures vomiting. Exercises constitution.
+
+=== [[Potion of extra healing]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line945]
+
+You gain 4d8, 6d8, 8d8 hit points for cursed, uncursed, blessed potion. If your new HP is higher than the maximal HP, you gain 0,2,5 to the maximal HP for cursed, uncursed, blessed potion, and HP is set to the maximal HP. Cures blindness. Unless cursed, also cures vomiting. Cures hallucination. Exercises strength and constitution.
+
+=== [[Potion of full healing]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line954]
+
+You gain 400 hit points. If your new HP is higher than the maximal HP, you gain 0,4,8 to the maximal HP for cursed, uncursed, blessed potion, and HP is set to the maximal HP. Cures blindness. Unless cursed, also cures vomiting. Cures hallucination. Exercises strength and constitution. For a blessed potion, if the experience level is below maximal achieved, gain one level of experience.
+
+=== [[Potion of levitation]] ===
+
+Source: [https://nethackwiki.com/wiki/Source:NetHack_3.6.0/src/potion.c#line968]
+
+Blessed: levitate for (more) 250-299 turns, levitation can be terminated with ">" command.
+
+Uncursed: levitate for (more) 10-149 turns.
+
+Cursed:

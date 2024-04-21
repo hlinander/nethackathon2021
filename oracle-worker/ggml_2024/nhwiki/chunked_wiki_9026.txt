@@ -1,0 +1,1000 @@
+{{nethack-366}}}
+&&%s&& %s Archaeologist quest {10518 2006-09-15T11:07:10Z {467 Killian} redirect for Commonwealth English #REDIRECT [[Archeologist quest]]}
+&&%s&& %s Category:Quests {10521 2006-09-15T11:13:10Z {467 Killian} oops, wrong markup [[Category:Dungeon branches]]}
+&&%s&& %s Alchemy smock {144883 2022-03-10T20:11:51Z {4000449 SophiaMakoto} /* Strategy */ removed a stray plus sign. {{armor
+  |color=white
+  |name=alchemy smock
+  |appearance=apron
+  |slot=cloak
+  |ac=1
+  |special=<ul><li>[[magic cancellation|MC1]]</li><li>[[acid resistance]]</li><li>[[poison resistance]]</li></ul>
+  |cost=50
+  |weight=10
+  |material=cloth
+}}
+
+The '''alchemy smock''' is a type of [[cloak]] that appears in ''[[NetHack]]''. It is made of [[cloth]] and appears as an '''apron''' when unidentified.
+
+==Effects==
+When worn, an alchemy smock provides 1 point of [[AC]] along with [[acid resistance]], [[poison resistance]] and [[Magic cancellation|MC1]]{{refsrc|src/do_wear.c|323|version=NetHack 3.6.6}} - despite the name, it has no actual effects on [[alchemy]]. [[Read]]ing an alchemy smock will generate one of many [[YAFM]]s similarly to [[T-shirt]]s, most of which are cooking-related.{{reffunc|read.c|apron_text}}{{refsrc|include/obj.h|325|version=NetHack 3.6.6}}
+
+Due to limitations in how object extrinsics are defined, acid resistance from the alchemy smock is handled specially internally.{{reffunc|do_wear.c|Cloak_on}} As a result, it only applies to [[you]]: monsters wearing an alchemy smock will obtain poison resistance, but not acid resistance.
+
+{{upcoming|3.7.0|Per [https://github.com/NetHack/NetHack/commit/0891ef4e22ccb56bacd41ce302d4178c1c6525aa this commit], monsters now gain acid resistance from a worn alchemy smock.}}
+
+==Strategy==
+An early alchemy smock is quite useful, allowing non-[[Orc (starting race)|orcish]] players to safely eat [[corpse]]s of [[poison]]ous monsters such as [[killer bees]] and gain poison resistance as an intrinsic. Once you have poison resistance, the smock can be given to humanoid pets that lack the resistance.
+
+The alchemy smock is also one of the few extrinsic sources of acid resistance, with the others being yellow dragon scales or the corresponding dragon scale mail. However, acid damage is infrequent and avoidable enough for players through other means that the alchemy smock is usually not required for this purpose, and pets cannot obtain acid resistance from it - it still has a few uses, such as a cloak for a [[mind flayer]] polyform to prevent the acid damage for each tentacle attack from piling up.
+
+{{upcoming|3.7.0|Pets can now gain intrinsics from eating corpses, providing other methods for humanoid pets to gain poison resistance. In addition, monsters can now gain acid resistance from worn alchemy smocks, making it a good choice of cloak for mind flayer pets.}}
+
+==History==
+The alchemy smock is introduced in [[NetHack 3.3.0]]. The ability to read alchemy smocks was added in [[3.6.0]].
+
+==Messages==
+The possible messages displayed from reading an alchemy smock are:
+
+* "Kiss the cook"
+* "I'm making SCIENCE!"
+* "Don't mess with the chef"
+* "Don't make me poison you"
+* "Gehennom's Kitchen"
+* "Rat: The other white meat"
+* "If you can't stand the heat, get out of Gehennom!"
+* "If we weren't meant to eat animals, why are they made out of meat?"
+* "If you don't like the food, I'll stab you"
+
+{{upcoming|3.7.0|[https://github.com/NetHack/NetHack/blob/93b66ff8daae6de46438672464e6b35b021452ae/src/read.c#L277 A new quote is added] that is similar to an already-existing T-shirt message: "I am an alchemist; if you see me running, try to catch up..." The messages are both references to The Sum of All Fears, with the one on the alchemy smock tailored to be closer to the original quote.
+
+This is notably also the second possible message on an alchemy smock that is not related to cooking in some manner.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], the alchemy smock is replaced with the [[lab coat]], which provides the same properties but also grants MC3. The presence of more powerful acidic monsters such as [[giant shoggoth]]s also make it far more desirable to seek out.
+
+===NetHack brass===
+In [[NetHack brass]], the [[frilled apron]] also appears as just an apron when unidentified, though wearing a non-cursed apron can easily distinguish which of the two it is.
+
+==References==
+<References/>
+
+[[Category:Cloaks]]
+{{nethack-366}}}
+&&%s&& %s Plumed helmet {57049 2010-11-18T19:05:47Z {831 Tjr} Redirected page to [[Randomized appearance#Helms]] #REDIRECT [[Randomized_appearance#Helms]]}
+&&%s&& %s Etched helmet {57048 2010-11-18T19:05:42Z {831 Tjr} Redirected page to [[Randomized appearance#Helms]] #REDIRECT [[Randomized_appearance#Helms]]}
+&&%s&& %s Crested helmet {37825 2009-02-10T23:11:08Z {179 DYMadness} Redirecting to [[Helm]] #REDIRECT [[Helm]]}
+&&%s&& %s Visored helmet {57047 2010-11-18T19:05:38Z {831 Tjr} Redirected page to [[Randomized appearance#Helms]] #REDIRECT [[Randomized_appearance#Helms]]}
+&&%s&& %s Apron {10532 2006-09-15T13:06:25Z {467 Killian} redirect to [[alchemy smock]] #REDIRECT [[alchemy smock]]}
+&&%s&& %s XL {10539 2006-09-15T15:45:34Z {396 Jayt} Redirecting to [[Experience level]] #REDIRECT [[experience level]]}
+&&%s&& %s Whirly {139250 2021-04-25T15:40:27Z {4001463 Actual-nh} Grammar/style A '''whirly''' monster is one of the following:{{refsrc|mondata.h|49}}
+
+* {{monsymlink|fog cloud}}
+* {{monsymlink|dust vortex}}
+* {{monsymlink|ice vortex}}
+* {{monsymlink|energy vortex}}
+* {{monsymlink|steam vortex}}
+* {{monsymlink|fire vortex}}
+* {{monsymlink|air elemental}}
+
+All whirlies have an [[engulfing]] attack. Applying a [[stethoscope]] inside a whirly monster may fail.{{refsrc|apply.c|212}} Whirly monsters can pass unharmed through [[Trap#Web|spider webs]],{{refsrc|trap.c|2005}}{{refsrc|trap.c|966}} [[Trap#Bear trap|bear traps]],{{refsrc|trap.c|1792}}{{refsrc|trap.c|749}} and [[iron bars]].{{reffunc|mondata.h|passes_bars}} You cannot be [[punish]]ed while whirly.{{refsrc|read.c|1743}}{{refsrc|polyself.c|543}}
+
+Whirly monsters may be generated on the [[Plane of Air]].{{refsrc|makemon.c|74}}
+
+==References==
+<references/>
+
+[[Category:Monster attributes]]
+{{nethack-364}}}
+&&%s&& %s Ring of polymorph control {123330 2018-07-22T06:35:45Z {4001094 Luxidream}  {{ring|name=polymorph control|cost=300}}
+
+As its name suggests, the '''ring of polymorph control''' is a [[ring]] that grants [[polymorph control]] when worn. See that article for strategy advice.
+
+If you find a [[ring]] and test its [[Price identification|price]] and [[BUC]] status, the chance of a ring of polymorph control is given in the following table. You can rule out [[ring of teleport control|teleport control]] by walking on a [[Trap#.5E_Teleportation_trap|teleportation trap]] and [[ring of conflict|conflict]] by wearing it in sight of monsters.
+
+{| class="wikitable"
+!Testing done!!Any BUC!!Non-cursed!!Uncursed!!Cursed!!Blessed
+|-
+|Any price||3.45%||4.47%||4.69%||1.13%||0%
+|-
+|300 zm||25.0%||32.1%||32.1%||8.3%||--
+|-
+|300 zm, not telecontrol nor conflict||50.0%||90.0%||90.0%||10.0%||--
+|}
+
+
+
+{{nethack-361}}
+[[Category:Rings|Polymorph control]]}
+&&%s&& %s Order of the Stick {145050 2022-03-26T14:29:00Z {4001279 Umbire the Phantom} That's... one of the oldest tropes in the book lmao Rich Burlew, who draws the webcomic ''Order of the Stick'' (OOTS), sometimes goes on break and uses guest strips at filter. On or around 17 August 2005 appeared a [http://www.giantitp.com/comics/GuestStrips.html guest strip by Rob Balder], "Order of the ASCII", setting OOTS references in the world of [[NetHack]]. As OOTS normally draws the characters as ''stick'' figures, this guest strip drew them as [[ASCII]].
+
+NetHack players might recognise the following features of the strip:
+* The "C:\Nethack\NetHack.exe" in the top of the window.
+* The [[polymorph trap]] and the [[magic trap]] summoning monsters while causing [[blindness]].
+* Two [[blessed]] [[scroll]]s: the [[scroll of taming]] and [[scroll of genocide]].
+* They are seeking the [[Amulet of Yendor]].
+
+Unusually, Roy had already [[identify|identified]] the [[wooden harp]] when Nale grabbed it.
+
+Roy's dog turning into a presumably human {{white|@}}, and a [[scroll of taming]] working on a different, also human, {{white|@}} seem unlikely from a NetHack point of view.
+
+The strip also contains references to OOTS. To understand them, you would need to read some of the previous OOTS strips, but you can consult [http://www.comixpedia.org/index.php/The_Order_of_the_Stick Comixpedia:Order of the Stick] as a reference.
+* The Order of the Stick is an adventuring party led by Roy Greenhilt, so the guest strip gives the name "Roy" to the NetHack player. However, Roy is a Fighter in OOTS but a [[Ranger]] in NetHack. (NetHack has no Fighter [[role]].)
+* Roy Greenhilt leads five other party members, so Roy the Ranger obtains five similar [[pet]]s.
+* The [[little dog]] named Nale became a [[human or elf|{{white|@}}]], took the harp, and started singing like Elan, the bard of OOTS. In OOTS, Nale is actually the name of Elan's evil twin brother, and Nale does not sing.
+* The four other pets resemble the other four party members: the {{white|@}}{{brightmagenta|@}} match Haley the human [[Rogue]] and Vaarsuvius the [[elf (starting race)|elven]] Mage ([[Wizard]]), the {{green|h}} matches Belkar the halfling ([[hobbit]]), the {{red|h}} matches Durkon the [[dwarf|dwarvish]] Cleric (a D&D class somewhat like a [[Healer]] or [[Priest]]).
+* Xykon is a [[lich]] and antagonist of OOTS, but only in NetHack does Roy find a scroll of genocide and actually finish Xykon.
+
+As ''[[Dudley's dungeon]]'' is a webcomic set in NetHack, so ''Order of the Stick'' is a webcomic set in [[Dungeons and Dragons]] (D&D). Since NetHack and D&D are so similar, setting one OOTS guest strip in NetHack is somewhat effective.
+
+[[Category:Community]]}
+&&%s&& %s T-shirt {13147 2006-10-02T15:26:53Z {396 Jayt} Redirecting to [[Shirt]] #REDIRECT [[Shirt]]}
+&&%s&& %s Saddle {146375 2022-06-28T23:29:12Z {4000251 Netzhack} /* History */ {{tool
+  |color=leather color
+  |tile=[[image:saddle.png]]
+  |name=saddle
+  |cost=150
+  |weight=200
+  |material=leather
+}}
+
+A '''saddle''' is a item that appears in ''[[NetHack]]''. It is a tool that is used to [[ride]] a [[monster]], and is made of [[leather]].
+
+==Generation==
+Like all tools, saddles are generated uncursed with the exception of [[bones]] or [[traps]]. [[Knight]]s will always start the game with a saddled pony.
+
+[[Horse]]s, ponies and warhorses each have a 1% chance to generate wearing a saddle. 
+
+==Effects==
+[[Apply]]ing the saddle to a [[pet]] that is [[Riding#Possible choices of steed|eligible]] as a steed allows you to ride it. Doing so requires at least one free hand, and the saddle will become part of the pet's inventory. It is possible to saddle a non-[[tame]] monster, but this is more difficult than saddling a pet, and you will not be permitted to ride the monster until it is tamed. [[Riding boots]] give a bonus to successfully saddling a monster while worn.
+
+To remove a saddle from a monster while not riding it, use the #[[loot]] command, a {{spell of|knock}} spell, or a [[wand of opening]]; the saddle will also be removed if the saddled monster is [[polymorph]]ed into a form ineligible to be a steed. Cursed saddles cannot be removed via looting, and you cannot mount a monster equipped with a cursed saddle; if the saddle is cursed while you are riding, it will prevent you from dismounting as well.
+
+Attempting to saddle a [[foocubus]] will produce [[YAFM|a unique message]] and [[abuse]] [[wisdom]].
+
+==Strategy==
+{{main|Riding}}
+It is recommended to bless your saddle before applying it to your steed&mdash;especially if pursuing [[atheist]] or polymorphless conduct.
+
+If dealing with a cursed saddle and you do not want to risk polymorphing your steed, you can [[pray]] to have your god uncurse the saddle. You can also force yourself to fall off by riding downstairs while [[burdened]] or moving over [[ice]] with a non-flying steed; being [[engulfed]] by a monster or polymorphing yourself into something that can't ride (including eating a [[mimic]]{{refsrc|src/eat.c|1030|version=NetHack 3.6.6}}) will also remove you from your steed. 
+
+A [[spell of remove curse|spell]] or [[scroll of remove curse]] will not work, nor will [[cancellation]], and you cannot dip a steed's saddle in {{! of|holy water}}, because the saddle is part of the saddled monster's inventory. However, if you throw a potion of holy water down at your steed, there is a [[Luck]]-dependent chance that it will hit the saddle and uncurse it.{{refsrc|src/potion.c|1335|version=NetHack 3.6.6}}
+
+[[Nymph]]s and [[foocubi]] may steal a monster's saddle when attacking them, which is especially dangerous if you are riding a flying steed over [[water]] or [[lava]]; this can lead to [[instadeath]] by drowning or dissolving. However, this can also be used to remove a cursed saddle, which can then be uncursed through normal means once retrieved.
+
+If you or your steed have [[reflection]], the saddle will be protected against [[disintegration]] rays.
+
+{{upcoming|3.7.0|Per [https://github.com/NetHack/NetHack/commit/cf62687630184fa44e2993e26864033e88883784 this commit] and [https://github.com/NetHack/NetHack/blob/a70927b95f7940fd736bcf9a706c265339177ebd/doc/fixes37.0 the general list of fixes] for 3.7:
+
+While riding, the saddle is considered part of your inventory as well; therefore, the spell and scroll of remove curse can now uncurse a cursed saddle that the character is stuck on. Also, removing a saddle via the spell of knock or wand of opening while riding will force the player off.}}
+
+==History==
+The saddle was first introduced in [[NetHack 3.3.0]]. The ability to remove a saddle from a steed was introduced in [[3.3.1]].
+
+In [[NetHack 3.4.0]], a bug was fixed that caused a [[shopkeeper]] to not take possession of the saddle if a saddled steed died while in their shop.{{refsrc|doc/fixes34.0|50|version=NetHack 3.6.6}}
+
+In [[NetHack 3.4.3]] and variants based on it, the saddle is subject to [[Bugs in NetHack 3.4.3|a few bugs, since fixed]]:
+
+* Disintegration breath hitting equipment carried by monsters, including saddles, is not handled properly, and is exacerbated if the monster [[Life saving|has its life saved]]. Saddles in particular were especially troublesome—in one instance, a saddled [[ki-rin]] that had been life-saved after being hit by a [[black dragon]]'s [[disintegration]] breath would (correctly) no longer possess the saddle but nonetheless be described in the game's text output as "saddled". This is bug C343-176, and was fixed in May 2006.
+* If magical removal of a steed's saddle results in a character's death and leaves a [[bones]] file, the saddle may still be on the steed when the bones are loaded. This is bug C343-289, and was fixed in May 2007.
+* Attempting to saddle a cockatrice would immediately [[petrify]] the player, even if they were wearing [[gloves]].
+
+==Messages==
+{{message|Shame on you!|You attempted to apply a saddle to a foocubus.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], minions given as sacrifice gifts cannot be saddled.
+
+===Slash'EM Extended===
+In [[Slash'EM Extended]], several roles start with a saddle in some manner:
+* The [[Chevalier]] role always starts with a blessed saddle.
+* Human, vampire, and incantifier [[Noble]]s start with a pre-saddled pony.
+* The [[Topmodel]] and [[Transvestite]] roles start with a saddle.
+* The [[Warrior (role)|Warrior]] role starts with a pre-saddled [[green nightmare]].
+
+===dNetHack===
+In [[dNetHack]], human, vampire, and incantifier Nobles have the same starting pets as they do in Slash'EM Extended. In addition, Drow Nobles also start with pre-saddled pets—women get saddled [[giant spider]]s, while men get saddled small cave lizards.
+
+===EvilHack===
+In [[EvilHack]], monsters that generate with mounts have a higher chance of the mount being saddled, making them more frequent—e.g., [[Knight (player monster)|Knight player monsters]] can generate riding saddled steeds. If the player reaches the Astral Plane with a good enough [[alignment record]], they are given the saddled [[Red Horse]] as a steed.
+
+===SpliceHack===
+In [[SpliceHack]], [[Dragonmasters]] start with a pre-saddled [[baby dragon]]. Like EvilHack, SpliceHack also has a higher frequency of riding monsters, and thus the chances of obtaining a saddle from one.
+
+===FIQHack===
+
+In [[FIQHack]], random saddles are generated twice as often compared to vanilla.<ref>https://github.com/FredrIQ/fiqhack/blob/33e95f977761f66186a1f9aea1ca5e5d262912a2/libnethack/src/objects.c#L629</ref> In addition, when a character is gifted the [[artifact]] [[lance]] [[Dragonbane]], they are also given a saddle and the riding skill is unrestricted.
+
+==Encyclopedia entry==
+{{encyclopedia|
+The horseman serves the horse,
+The neat-herd serves the neat,
+The merchant serves the purse,
+The eater serves his meat;
+'Tis the day of the chattel,
+Web to weave, and corn to grind,
+Things are in the saddle,
+And ride mankind.
+|[ Ode, by Ralph Waldo Emerson ]
+}}
+
+==References==
+<references/>
+
+{{nethack-366}}
+[[Category:Tools]]}
+&&%s&& %s Tshirt {14517 2006-10-20T12:15:59Z {0 } Redirecting to [[Shirt]] #REDIRECT [[Shirt]]}
+&&%s&& %s T shirt {14518 2006-10-20T12:16:13Z {0 } Redirecting to [[Shirt]] #REDIRECT [[Shirt]]}
+&&%s&& %s Domesticated animal {10596 2006-09-17T03:04:49Z {239 Eidolos} Redirect to [[Domestic animal]]. #REDIRECT [[Domestic animal]]}
+&&%s&& %s Domesticable animal {10597 2006-09-17T03:05:07Z {239 Eidolos} Redirect to [[Domestic animal]]. #REDIRECT [[Domestic animal]]}
+&&%s&& %s Domesticated animals {10598 2006-09-17T03:05:46Z {239 Eidolos} Redirect to [[Domestic animal]]. #REDIRECT [[Domestic animal]]}
+&&%s&& %s Domesticable animals {10599 2006-09-17T03:06:04Z {239 Eidolos} Redirect to [[Domestic animal]]. #REDIRECT [[Domestic animal]]}
+&&%s&& %s Illiteracy {69549 2011-03-19T00:07:11Z {721 Schneelocke} This should redirect to [[Illiterate]], not [[Conduct]] #REDIRECT [[Illiterate]]}
+&&%s&& %s Mace {144620 2022-02-23T14:34:59Z {4001279 Umbire the Phantom} /* Generation */ {{weapon
+  |color=metal color
+  |tile=[[image:mace.png]]
+  |name=mace
+  |smalldmg=1d6+1
+  |largedmg=1d6
+  |cost=5
+  |weight=30
+  |material=iron
+}}
+
+A '''mace''' is a type of one-handed [[weapon]] that appears in ''[[NetHack]]''. It is made of [[iron]]. [[The Sceptre of Might]] is an [[artifact weapon|artifact]] mace.
+
+==Generation==
+Maces make up about 4% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s).
+
+The [[Priest]] [[role]] always starts with a [[blessed]] [[Enchantment|+1]] mace.{{refsrc|src/u.init|101|version=NetHack 3.6.6}}  [[Aligned priest]]s and [[high priest]]s are [[Monster starting inventory|always generated with]] maces,{{refsrc|src/makemon.c|261|version=NetHack 3.6.6}} while [[sergeant]]s in the [[Yendorian army]] have a {{frac|2}} chance to generate with a mace.{{refsrc|src/makemon.c|200|version=NetHack 3.6.0}}
+
+[[Player monster]]s generated on the [[Astral Plane]] have a {{frac|29}} chance of generating with a mace as a random weapon - effectively a ~3.45% chance.{{refsrc|src/mplayer.c|155|version=NetHack 3.6.6}} Player monsters [[Priest (player monster)|priests]] have a {{frac|2}} chance of their starting weapon being overridden with a mace (effectively ~50.86% total chance){{refsrc|src/mplayer.c|213|version=NetHack 3.6.6}} - player monster [[Caveman (player monster)|cavepeople]] have a 75% chance of 'forcing' a mace as well (effectively ~75.43% total chance).{{refsrc|src/mplayer.c|181|version=NetHack 3.6.6}}
+
+The fake [[bones]] pile generated on the [[Rogue level]] has a {{frac|2}} chance of containing a mace, which is the starting weapon for the player character in ''[[Rogue (game)|Rogue]]''.{{refsrc|src/extralev.c|324|version=NetHack 3.6.6}}
+
+==Mace skill==
+{{mace skill table}}
+
+The mace is the only weapon to use the '''mace skill'''.
+
+==Strategy==
+The mace is generally an unimpressive weapon - while the starting mace for Priests is passable, it is typically worth exchanging for a more versatile weapon, such as a [[long sword]] or [[aklys]].
+
+==History==
+The mace has been present in the game since the first variants of [[Jay Fenlason's Hack]].
+
+==Origin==
+{{wikipedia|Mace (bludgeon)}}
+A mace is type of blunt club or rod that uses a heavy head on the end of a strong and heavy shaft to deliver powerful strikes; it also comes in a two-handed variety and is typically made of stone, bone, copper, bronze, iron, steel, or even metal-reinforced wood. Military maces can be shaped with flanges or knobs to allow greater penetration of plate armour, with their length depending on the soldier's rank.
+
+Maces primarily saw use from prehistory to post-classical history, and are rarely used today for actual combat; ceremonial maces are still kept by many universities, government bodies such as the British House of Commons and the U.S. Congress, and other institutions to display as symbols of authority.
+
+The mace's use as a standard weapon for priesthood is derived from ''[[Dungeons & Dragons]]'', where clerical classes are typically forbidden by their god from shedding blood with edged weapons.
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] adds the [[silver mace]] as a weapon, and also introduces another artifact mace in [[Disrupter]].
+
+===SporkHack===
+[[SporkHack]] also adds silver maces, with [[Demonbane]] using a silver mace as its [[base item]].
+
+== Encyclopedia entry ==
+{{encyclopedia|Originally a club armed with iron, and used in war; now a staff
+of office pertaining to certain dignitaries, as the Speaker of
+the House of Commons, Lord Mayors, Mayors etc.  Both sword and
+mace are symbols of dignity, suited to the times when men went
+about in armour, and sovereigns needed champions to vindicate
+their rights.
+|[ Brewer's Concise Dictionary of Phrase and Fable ]}}
+
+== References ==
+<references/>
+{{nethack-366}}}
+&&%s&& %s Dual ring of slow digestion bug {10612 2006-09-18T01:37:02Z {712 SGrunt} #REDIRECT [[Ring of slow digestion]] #REDIRECT [[Ring of slow digestion]]}
+&&%s&& %s Vlad {10621 2006-09-18T12:35:19Z {467 Killian} redirect #REDIRECT [[Vlad the Impaler]]}
+&&%s&& %s Vlad's Tower {148151 2022-09-13T07:29:52Z {4000251 Netzhack} Abusive "as such" out {{level|Vlad's Tower|
+ |branch=Gehennom
+ |from=9|to=13
+ |bones=middle level only
+ |teleport=no
+ |mapping=yes
+ |digfloor=no
+}}
+
+'''Vlad's Tower''' is the home of [[Vlad the Impaler]] in ''[[NetHack]]''. It consists of three levels connected by ladders, all of which are [[no-teleport]] and [[undiggable]]. Because it is not part of Gehennom, [[prayer]] is permitted in the Tower.
+
+==Generation==
+The entrance appears as a a second up stair, located on any floor between the 9th and 13th levels of [[Gehennom]]; counting the [[Valley of the Dead|Valley]] as 1, this places it roughly between dungeon levels 34 and 42 (inclusive).  Only the middle level is eligible to leave [[bones]] files.
+
+Monster generation is biased toward [[chaotic]] [[monster]]s in this branch.
+
+==Description==
+Each level contains many [[secret door]]s, [[trap]]s, and several guaranteed [[item]]s, and Vlad the Impaler is located at the top level. You can directly [[level teleport]] from the [[tower]] to each of its three levels, to the [[Gehennom]] levels above it, and to the [[Dungeons of Doom]], but not to levels below the tower. However, quaffing a cursed [[potion of gain level]] on the uppermost floor will only result in an "uneasy feeling".
+
+===Bottom level===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+<=[[Ladder|{{brown|<}}]]
+
+    --- --- ---    
+    |x| |x| |x|    
+  ---S---S---S---  
+  |xS.........Sx|  
+----|.........|----
+|.>.|.........+...|
+|.--|.........|--.|
+|.|xS<........Sx|.|
+|.---S---S---S---.|
+|...|x|.|x|.|x|...|
+---.---.---.---.---
+  |.............|  
+  ---------------  
+</replacecharsblock></div>
+There is a random [[dragon]] immediately inside the main door of the courtyard, and eight other random monsters are placed on the level. Four of the ten niches marked 'x' will contain the following:
+* [[long sword]]
+* [[lock pick]]
+* [[elven cloak]]
+* [[blindfold]]
+These niches may also contain random traps.
+
+==Middle level==
+<div class="ttymap"><replacecharsblock rules="ttymap">
+<=[[Ladder|{{brown|<}}]]
+>=[[Ladder|{{brown|>}}]]
+
+  --- --- ---  
+  |x| |x| |x|  
+---S---S---S---
+|xS.........Sx|
+--|.------+----
+  |......|.<|  
+--------.|-----
+|xS>.....+..Sx|
+---S---S---S---
+  |x| |x| |x|  
+  --- --- ---  
+</replacecharsblock></div>
+The ten niches marked 'x' each contain the following, with one monster or item per niche:
+* two [[hell hound pup]]s
+* a [[winter wolf]]
+* two random [[demon]]s
+* [[amulet of life saving]] inside a [[chest]]
+* [[amulet of strangulation]] inside a chest
+* [[water walking boots]]
+* [[crystal plate mail]]
+* [[spellbook of invisibility]]
+
+==Top level==
+<div class="ttymap"><replacecharsblock rules="ttymap">
+x=[[Vampire|{{white|V}}]]
+>=[[Ladder|{{brown|>}}]]
+(=[[Chest|{{brown|(}}]]
+
+  --- --- ---  
+  |x| |x| |x|  
+---S---S---S---
+|.......+.+...|
+---+----|.|----
+  |...\(|.+>|  
+---+----|.|----
+|.......+.+...|
+---S---S---S---
+  |x| |x| |x|  
+  --- --- ---  
+</replacecharsblock></div>
+Vlad the Impaler occupies the [[throne]] in the center of the top floor, carrying the [[Candelabrum of Invocation]]; a chest sits behind the throne. Each of the six marked niches contains a random [[vampire]] and a chest; if vampires are [[extinct]] or [[genocide]]d, they will be replaced with random monsters. Two of the six chests in the closets are guaranteed to contain stacks of 4–8 candles; one chest contains [[wax candle]]s and the other contains [[tallow candle]]s.{{refsrc|tower.des|48}}
+
+==History==
+As early as [[NetHack 3.0.0]], a different form of Vlad's Tower appeared embedded in [[Hell]] (which was later replaced by [[Gehennom]]): Each of the three levels appeared embedded in a maze, much as the modern [[Wizard's Tower]] is, except that the lower level was directly accessible from the maze. The [[Candelabrum of Invocation]] did not yet exist, and the [[Wizard of Yendor|Wizard]] still carried the [[Amulet of Yendor]], meaning that Vlad was strictly optional from this version until [[NetHack 3.1.0]], when the Tower became its own branch and took on its modern design.
+
+The guaranteed candles of the top level were added in [[NetHack 3.6.0]] to ensure that the player will have more than enough candles to perform the invocation without resorting to [[wish]]ing or [[polypiling]].
+
+==Variants==
+===SLASH'EM===
+<div class="ttymap"><replacecharsblock rules="ttymap">
+x=[[Vampire|{{white|V}}]]
+>=[[Ladder|{{brown|>}}]]
+i=[[door|{{orange|+}}]]
+D=[[Vlad the Impaler|{{monsym|vlad_the_impaler}}]]
+
+  --- --- ---  
+  |x| |x| |x|  
+---S---S---S---
+|.......i.+...|
+---i-i--|.|----
+  |....D|.+>|  
+---i-i--|.|----
+|.......i.+...|
+---S---S---S---
+  |x| |x| |x|  
+  --- --- ---  
+</replacecharsblock></div>
+
+In [[SLASH'EM]], Vlad's tower became even more complicated, when his room was locked behind six indestructible doors(marked orange, real color is brown), that would have to be opened using [[alignment key|keys]] from [[alignment quest]]s. At least two of the keys would have to be acquired before approaching Vlad would be possible, but you can sometimes [[Alignment quest#Necessity|do without them]].
+
+[[Vlad the Impaler|Vlad]], the [[throne]] and the [[chest]] occupy the same square now. There are no guaranteed candles in the chests here.
+
+===UnNetHack===
+In [[UnNetHack]], there is now a [[magic portal]] that leads directly into the courtyard of the tower; the down stair leading out into Gehennom is still present.  The chests on the top floor are now [[large box]]es that double as coffins; each contains a vampire and vampire lord that normally occupies the niche in vanilla ''NetHack'', and they will awaken when you open the boxes.
+
+===dNetHack===
+{{main|User:Chris/dNetHack/Windowless_Tower|User:Chris/dNetHack/dNethack_Windowless_Tower_Monsters}}
+In [[dNetHack]], Vlad's tower is redesigned: it is now located above the Gnomish Mines, which extend upward for another level, and there is an additional base floor to the tower itself that is set in a desolate field, with a moat and drawbridge surrounding the actual tower entrance. While a low-level character can attempt to get the Candelabrum early and use the candles provided in and around Minetown, actually facing Vlad and his cronies may prove a [[bad idea]] for the unprepared. Even so, players capable of defeating [[Cerberus]], who is somewhat but still quite formidable, can access a hidden section in the middle level (now the third floor of the tower) contains [[holy water]], which is extremely useful for [[atheist]]s or [[anachrononaut]]s; Cerberus can be repelled with the Circle of Acheron [[ward]], and fire resistance provides a defense against its breath attack.
+
+===SpliceHack===
+{{main|Vlad's Castle (SpliceHack)}}
+
+In [[SpliceHack]], the bottom floor of Vlad's Tower has been replaced with a castle surrounded by a large courtyard.
+
+==References==
+<references />
+{{DOD}}
+{{nethack-366}}
+[[Category:Dungeon branches]]}
+&&%s&& %s Crystal plate mail {149945 2023-02-12T20:27:15Z {4000251 Netzhack} /* Generation */ Chance to = opportunity; chance of = probability {{armor
+  |color=white
+  |name=crystal plate mail
+  |slot=body armor
+  |ac=7
+  |special=<ul><li>[[magic cancellation|MC2]]</li></ul>
+  |cost=820
+  |weight=450
+  |material=glass
+}}
+
+'''Crystal plate mail''' is a type of [[armor]] that appears in ''[[NetHack]]''. It is made of [[glass]] and weighs 450 [[aum]] like other plate armor (i.e., [[plate mail]] and [[bronze plate mail]]).
+
+==Generation==
+A set of crystal plate mail is always generated in one of the niches on the middle floor of [[Vlad's Tower]].
+
+High-ranking [[mercenaries]] – [[lieutenant]]s, army [[captain]]s and [[watch]] captains – have [[Monster starting inventory|a chance of generating with]] crystal plate mail. [[Player monster]] [[Barbarian (player monster)|barbarians]], [[Priest (player monster)|priests]] and [[Valkyrie (player monster)|valkyries]] have a {{frac|2}} chance of forcing a random body armor with at least 5 base AC instead of [[dragon scale mail]]{{refsrc|src/mplayer.c|174|version=NetHack 3.6.6}}{{refsrc|src/mplayer.c|215|version=NetHack 3.6.6}}{{refsrc|src/mplayer.c|242|version=NetHack 3.6.6}} - that armor has a {{frac|8}} chance of being crystal plate mail, for an effective chance of 6.25%.{{refsrc|src/mplayer.c|156|version=NetHack 3.6.6}}{{refsrc|src/objects.c|407|version=NetHack 3.6.6|comment=the above cases call the list of armor from plate mail to chain mail in objects.c}}
+
+==Description==
+When worn, it provides 7 [[AC]] and [[magic cancellation|MC2]], similar to plate mail. Being made of glass, crystal plate mail does not inhibit [[spellcasting]] and is immune to [[erosion]].
+
+==Strategy==
+Crystal plate mail is the second-best armor in the game that does not inhibit spellcasting, after [[dragon scale mail]]. However, it has little practical use due to its weight: roles who would most benefit from a high-AC armor that doesn't inhibit spellcasting are precisely those who cannot afford to carry a heavy weight, since most spellcasters start with low [[strength]]. [[Wizard]]s and other casters that could raise their strength to a sufficient level where this armor would be worth considering will typically either have: A) a means of obtaining dragon scale mail, or B) a low enough [[AC]] that the additional protection is not worth the weight penalty.
+
+Even characters with high strength will usually prefer a [[dwarvish mithril-coat]] until they obtain dragon scale mail. An [[elven mithril-coat]] is also a viable candidate, freeing up nearly a third of the strongest characters' [[carrying capacity]] (due to being 300 [[aum]] lighter) while providing only two fewer points of base AC. Characters who can't afford to use metallic armor will usually prefer a [[studded leather armor]].
+
+As crystal plate mail is [[fragile]] and easily broken unless worn, be careful when handling it - in particular, beware of using {{spell of|force bolt}}s or a [[wand of striking]] in a shop selling crystal plate mail, since most early characters will not be able to pay off the [[shopkeeper]] if they break any.
+
+==History==
+Crystal plate mail is introduced in [[NetHack 1.3d]].
+
+==Variants==
+===UnNetHack===
+In [[UnNetHack]], [[Knight]]s get a weight reduction for any body armor heavier than [[studded leather armor]], making crystal plate mail a more feasible option for them in particular.
+
+===dNetHack===
+In [[dNetHack]], there is now crystal armor for each part of the body - crystal armor doubles enchantment bonuses (adding full enchantment to both AC and DR, rather than half to each) and can be enchanted to +7, so a fully enchanted crystal plate mail can provide high defense.
+
+Crystal plate mail still does not inhibit spellcasting, and its weight is also reduced to a more tolerable 250 aum, but it no longer provides any magic cancellation. A set can still be found in the same place within [[Vlad the Impaler]]'s dwelling, which is now [[User:Chris/dNetHack/Windowless Tower|the Windowless Tower]].
+
+For [[Samurai]], crystal plate mail goes by the name "'''jade o-yoroi'''".
+
+===EvilHack===
+In [[EvilHack]], crystal plate mail is changed considerably. Its weight is reduced to 150 aum, and its base material is [[gemstone]] instead of glass, making it shatterproof. It is also immune to disintegration and the revamped [[destroy armor (monster spell)|destroy armor]] monster spell, which can now erode armor even with magic resistance. EvilHack also applies a spellcasting penalty to all roles for any worn body armor, with crystal plate mail as the sole exception.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Body armor]]}
+&&%s&& %s Air elemental {69475 2011-03-14T17:55:24Z {663 Qazmlpok} Anchor #REDIRECT [[Elemental#Air elemental]]}
+&&%s&& %s This tastes like slime mold juice {99369 2015-12-21T21:41:26Z {4000080 ChasonBot}  '''"This tastes like slime mold juice"''' is a message that may appear while drinking one of the following potions.
+
+*[[Potion of fruit juice]]
+*[[Potion of see invisible]]
+
+The potions will display the specified fruit in the message; the default is [[slime mold]], hence the prevalence of this message (a holdover from the original [[Rogue (game)|Rogue]]).
+
+{{disambig}}
+{{nethack-343}}}
+&&%s&& %s You don't feel very well {10628 2006-09-18T13:46:05Z {509 Lotte} redirect #REDIRECT [[Sliming]]}
+&&%s&& %s You are turning a little green {10629 2006-09-18T13:46:36Z {509 Lotte} redirect #REDIRECT [[Sliming]]}
+&&%s&& %s You are turning a little green. {10630 2006-09-18T13:46:49Z {509 Lotte} redirect w/ period #REDIRECT [[Sliming]]}
+&&%s&& %s You don't feel very well. {10631 2006-09-18T13:47:04Z {509 Lotte} redirect with period #REDIRECT [[Sliming]]}
+&&%s&& %s Your limbs are getting oozy. {10632 2006-09-18T13:47:30Z {509 Lotte} redirect #REDIRECT [[Sliming]]}
+&&%s&& %s Your limbs are getting oozy {10633 2006-09-18T13:47:41Z {509 Lotte} redirect #REDIRECT [[Sliming]]}
+&&%s&& %s Your skin begins to peel away. {10634 2006-09-18T13:48:11Z {509 Lotte} redirect #REDIRECT [[Sliming]]}
+&&%s&& %s Your skin begins to peel away {10635 2006-09-18T13:48:20Z {509 Lotte} redirect #REDIRECT [[Sliming]]}
+&&%s&& %s Ring of protection from shape changers {134829 2020-07-05T08:16:22Z {4001419 Uchronia} Corrected spelling of "shapeshifting" (which was missing an 'e') {{ring
+  |name=protection from shape changers
+  |cost=100
+}}
+
+The '''ring of protection from shape changers''' can stop monsters from shapeshifting in certain situations.
+
+== Identification ==
+
+A non-cursed 100 zorkmid ring can be identified as protection from shape changers by wearing it in a [[shop]], on the top level of [[Sokoban]], the rogue quest, or anywhere near known [[mimics]]. A ring of protection from shape changers will uncloak the mimics.
+
+Dropping a ring of protection from shape changers into a [[sink]] produces the message '''''"The sink looks nothing like a fountain."'''''
+
+== Effects ==
+
+*[[Chameleon]]s, [[mimic]]s, [[doppelganger]]s, [[sandestin]]s and [[vampire]]s appear in their normal form.
+**Polymorphing them will be permanent. You need the ring to improve your pet shapeshifter at a [[polymorph trap]].
+*[[Werecreature]]s appear in [[human (monster attribute)|human]] form and thus cannot infect you with [[lycanthropy]]. They are also prevented from summoning help. However, if you have lycanthropy, wearing this ring will not prevent you from transforming.
+*Monsters with a [[digestion]] attack will not [[polymorph]] when swallowing a shapechanger whole. As a result, this ring is very useful to anyone who wants pet purple worms but cannot (or doesn't want to) [[genocide]] [[chameleon]]s or [[doppelganger]]s.  It will not, however, protect pets that eat the corpses of these monsters from polymorphing.
+
+Wooden or metal rings of protection from shape changers can be [[Eating jewelry|eaten]] to acquire protection from shape changers intrinsically.
+
+{{nethack-361}}
+[[Category:Rings|Protection from shape changers]]}
+&&%s&& %s Orcish helm {98980 2015-12-20T12:37:11Z {4000080 ChasonBot}  {{armor
+  |color=black
+  |name=orcish helm
+  |appearance=iron skull cap
+  |cost=10
+  |slot=helm
+  |ac=1
+  |weight=30
+  |material=iron
+}}
+An '''orcish helm''' is a basic type of [[helm]], and often one of the first encountered. Its base cost is 10 and it provides an [[AC]] of 1. Being made of [[iron]], it inhibits spellcasting, can [[rust]], and protects your head from falling rocks.
+
+Orcish helms are commonly carried by monsters such as [[goblin]]s and [[orc]]s, and thus, can provide a little early AC (provided it isn't cursed.) It is entirely possible to find one enchanted up to as high as +5, if you're lucky. They are also a good [[polypiling]] choice.
+
+[[Category:Helms]]
+[[Category:Orcish items|Helm]]
+{{nethack-343}}}
+&&%s&& %s Iron skull cap {10639 2006-09-18T13:54:42Z {509 Lotte} redirect #REDIRECT [[Orcish helm]]}
+&&%s&& %s Crystal armor {10641 2006-09-18T13:56:26Z {509 Lotte} to my knowledge, this is the only crystal armor; redirect #REDIRECT [[Crystal plate mail]]}
+&&%s&& %s Arch lich {61889 2010-12-26T15:27:40Z {663 Qazmlpok} Redirected page to [[Lich#Arch-lich]] #REDIRECT [[Lich#Arch-lich]]}
+&&%s&& %s Boing! {98460 2015-12-18T14:30:52Z {4000080 ChasonBot}  The message '''Boing!''' appears when you cast a spell of [[force bolt]] or zap a [[wand of striking]] at something [[magic resistance|magic resistant]]; for instance, a monster wearing a [[cloak of magic resistance]]. The same message also appears when you resist the wand of striking zapped by a monster.
+
+[[Category:Messages]]
+{{nethack-343}}}
+&&%s&& %s You produce a strange whistling sound. {10650 2006-09-18T15:20:30Z {509 Lotte} redirect #REDIRECT [[Magic whistle]]}
+&&%s&& %s You produce a strange whistling sound {10651 2006-09-18T15:20:41Z {509 Lotte} redirect #REDIRECT [[Magic whistle]]}
+&&%s&& %s Sling {146749 2022-07-20T07:55:38Z {4001279 Umbire the Phantom} /* Origin */ {{weapon
+  |color=leather color
+  |name=sling
+  |tile=[[image:sling.png]]
+  |smalldmg=d2
+  |largedmg=d2
+  |skill=sling
+  |cost=20
+  |weight=3
+  |material=leather
+}}
+
+A '''sling''' is a type of [[weapon]] that appears in ''[[NetHack]]'', and is a [[launcher]] designed for [[rock]]s, [[gem]]s, and [[gray stone]]s; these projectiles can be [[multishot]] when [[fire]]d from a sling.
+
+==Generation==
+[[Cavemen]] start with a +2 sling and a stack of rocks and [[flint stone]]s to use as ammo.{{refsrc|src/u_init.c|53|version=NetHack 3.6.6}}
+
+Slings make up 4% of all randomly-generated weapons. [[Hobbit]]s have a {{frac|3}} chance of [[monster starting inventory|being generated with]] a sling.{{refsrc|src/makemon.c|360|version=NetHack 3.6.6}}
+
+==Sling skill==
+{{sling skill table}}
+
+The sling is the only weapon that uses the '''sling [[skill]]'''. The following types of ammo use this skill as well:
+
+* all gems
+* all gray stones
+* rocks
+
+There are no [[artifact weapon|artifact]] slings; of note is that [[the Heart of Ahriman]] is slightly more effective than a regular [[luckstone]] when slung.
+
+==Strategy==
+While actively training the sling skill is generally a waste of slots, players may wish to use one as a form of ranged attack early on - ammunition for it is thankfully plentiful, though most slung projectiles will [[mulch]] when they hit [[monster]]s, with the exception of non-flint [[gray stone]]s. None of these [[projectile]]s can be enchanted, but blessing them grants a [[Luck]]-based bonus to avoid breaking - even so, their usefulness overall tapers off well before the mid-game.
+
+Flint stones are the best projectiles by far due to their 1d6 damage (averaging 3.5), but are difficult to take advantage of multishot with since they are quite rare outside of [[bones]]; rocks deal lower damage in comparison, but can be readily made and found everywhere. [[Worthless glass]] deals the same damage as rocks when slung, but weigh only 1 [[aum]] to a single rock's 10.
+
+Caveman that avoid using their starting flint stones until they have maximum Luck can bless them and have them last for a significant portion of the game, while [[Rangers]] can use a sling on less threatening monsters in the early game to preserve their [[arrow]]s or [[crossbow bolt]]s until they find a means of enchanting them and boosting their [[Luck]]. However, these are incredibly niche approaches - Cavemen can get incredible mileage out of an aklys, Rangers have better projectile options, and generally the average player will prefer using their better ammo or weapons over an early-game death.
+
+==History==
+The sling has been present in the game since Hack 1.21, a variant of [[Jay Fenlason's Hack]]. In the first versions of Jay Fenalson's Hack and [[Andries Brouwer]]'s [[Hack 1.0]], slings could be used to fire [[sling bullet]]s<ref>[http://homepages.cwi.nl/~aeb/games/hack/1.0.2-part1 Hack 1.0.2 partl] (objects.h, line 620), Andries Brouwer @ cwi.nl</ref> - rocks did not yet exist in the former game, and were first included as objects in the latter. In NetHack 3.0.0, the sling bullet was removed from the list of objects in [[Source:NetHack_3.0.0/objects.c|objects.c]], and rocks effectively took over their role as sling ammo, while [[NetHack 3.2.0]] introduced the flint stone and moved both to the "Gems/Stones" section of the [[inventory]].
+
+==Origin==
+{{wikipedia|Sling (weapon)}}
+[[File:Weapon Sling 1.jpg|thumb|150px|Shepherd's sling]]
+The sling is a widespread weapon dating back to Neolithic cultures (if not still-older ones), and was typically used for hunting and combat - it is incredibly inexpensive and easy to build and use, and was thus incredibly common among shepherds, hunters and other "common" folk. As a result, while man-made sling bullets and rocks used as sling ammunition are frequently salvaged during archeological expeditions, intact slings are much harder to find. Slinging is a tradition among the peoples of the Balearic Islands, who are known since classical times as proficient mercenaries.
+
+Slinging as a sport is still practiced in the Balearic Islands and other areas in modern times, and the sling is also used as an improvised weapon for wildnerness survival, hurling incendiary devices such as [[wikipedia:Molotov cocktail|Molotov cocktails]] and [[wikipedia:Grenade|grenades]] with additional range, and other more hobby-oriented purposes. A skilled slinger can fire projectiles at distances upwards of 450 meters (1500 feet) at speeds over 250 miles per hour.<ref>http://www.slinging.org/</ref>
+
+Slings appear in all editions of ''[[Dungeons & Dragons]]'' as a common ranged weapon for clerics ([[Priest|Priest(esse)s]] in ''NetHack''), who cannot use other non-blunt projectiles, due to being forbidden from shedding blood. Their corresponding [[sling bullets]] deal ''1d4'' base damage.<ref>http://www.dandwiki.com/wiki/SRD:Sling</ref> ''Dungeons & Dragons'' also has a rule that improvised stones do one size category less in damage, i.e. ''1d3'' instead of ''1d4'' - this may be reflected by the lower damage in modern ''NetHack''. Slings also appear in the third version of ''[[Rogue]]'', with its corresponding rock dealing the same damage as in ''D&D''.<ref>http://rogue.rogueforge.net/vade-mecum/</ref> The usefulness of slings in other media tends to vary, but it tends to be considered somewhat more useful than it is perceived as in ''NetHack''.
+
+==Variants==
+Some [[variant]]s aim to make slings more viable as a weapon.
+
+===DynaHack===
+In [[DynaHack]], slings gain a damage bonus based on [[strength]] and the sling's enchantment, making slings much more viable as a ranged weapon.
+
+===dNetHack===
+In [[dNetHack]], slings also gain strength-based bonus damage (with a maximum of +8 from 25 strength), and Cavemen gain a +1 bonus to multishot when using them. Furthermore, the [[silver slingstone]] is introduced as ammo which gives slingers options against [[silver]]-hating monsters; they can be found is small deposits within rock or in large amounts on a certain level in the [[dNetHack Neutral quest]].
+
+Silver slingstones fired at 25 strength from a sling out-damage even +7 [[silver arrow]]s - this has earned dNetHack's slings the nickname of "portable meteor launchers".
+
+===EvilHack===
+[[EvilHack]] reintroduces sling bullets in version 0.7.1; Cavepeople of all types can start with sling bullets. Priests are incapable of using any edged or piercing weapons, leaving slings as one of their few ranged options, and the inclusion of sling bullets can make them quite viable.
+
+[[Caveman (player monster)|Cavefolk]] [[player monster]]s will generate with slings and sling bullets.<ref>[https://github.com/k21971/EvilHack/blob/v0.7.1/src/makemon.c#L267 EvilHack 0.7.1 makemon.c, line 267]</ref>
+
+==Encyclopedia entry==
+{{encyclopedia|
+And it came to pass, when the Philistine arose, and came and
+drew nigh to meet David, that David hasted, and ran toward
+the army to meet the Philistine.
+And David put his hand in his bag, and took thence a stone,
+and slang it, and smote the Philistine in his forehead, that
+the stone sunk into his forehead; and he fell upon his face
+to the earth.
+So David prevailed over the Philistine with a sling and with
+a stone, and smote the Philistine, and slew him; but there
+was no sword in the hand of David.
+|[ 1 Samuel 17:48-50 ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Weapons]]
+[[Category:Launchers]]}
+&&%s&& %s You are slowing down {10654 2006-09-18T16:28:11Z {0 } redirect #REDIRECT [[Stoning]]}
+&&%s&& %s Your limbs are stiffening {10655 2006-09-18T16:28:24Z {0 } redirect #REDIRECT [[Stoning]]}
+&&%s&& %s This tastes like fruit juice {10656 2006-09-18T17:14:53Z {924 ZeroOne} #REDIRECT [[This tastes like slime mold juice]] #REDIRECT [[This tastes like slime mold juice]]}
+&&%s&& %s NetHack brass {141796 2021-07-24T01:52:09Z {4001279 Umbire the Phantom}  {{patch
+ |name=NetHack brass as a patch
+ |author=Code by Youkan<br />Patch from [[User:Kernigh|Kernigh]]
+ |download=http://kernigh.pbwiki.com/f/brass-040923.diff
+ |bilious=279
+}}
+{{gameinfo|NetHack_brass}}
+'''NetHack brass''' is a [[variant]] based on [[NetHack 3.4.3]], first released on September 23, 2004. It has an improved [[Skills (NetHack brass)|skills]] system, the choice of a gift at [[Sokoban]], and a new [[Gehennom]], including rivers and an icy cave. The latest version is NetHack brass 081221, which is entirely in Japanese.
+
+NetHack brass has a [[DOS]]/[[Windows]] binary for immediate download, as well as a standalone patch for use with 3.4.3. For [[Unix]] users, the best option is [[compiling]] the 040923 sources after applying the [[brass interface patch]].
+
+==System changes==
+{{todo|More thorough detail on the system changes.}}
+* [[Maximum attribute#NetHack brass|Additional attribute caps by class.]]
+* [[Altar#Variants|Altar conversion is more dangerous.]]
+* New extended command: '''#[[bereave]]''' allows the player to attempt to steal from a monster's inventory.
+* [[Bones]] files no longer include a gravestone for the late player.
+* [[Charisma]] modifiers added on selling quotes.
+* The amount of any '''damage''' you are dealt, or deal with a weapon, is displayed along with hit messages.
+* Status bar indicates current '''[[encumbrance]]'''.
+* [[Erosion]] can destroy armor.
+* The '''[[farlook]]''' command now reveals a monster's weapons and armor.
+* [[Fooproof]]ing, [[magic resistance]] and [[reflection]] will wear off with repeated use.
+* Effectiveness of [[magic cancellation]] reduced.
+* New wizard mode command: #[[rrllududab]]
+* [[Polymorph]] only affects one object, thus eliminating [[polypile|polypiling]].
+* Only two points of '''[[protection]]''' are guaranteed with donation.
+* Natural HP '''recovery''' is drastically slowed, thus increasing the utility of [[bandage]]s and other healing items.
+* Elemental '''[[resistance]]s''' reduce damage but do not nullify it.
+* [[Shopkeeper]]s may provide services as in [[SLASH'EM]].
+* New '''skills''' system, consolidating redundant weapons groups and allowing as much skill growth as the player has patience to practice for.  New extended command: #[[skills (NetHack brass)|skills]].
+* Upon completion of [[Sokoban]], you may choose from an [[amulet of reflection]], [[bag of holding]], or [[cloak of magic resistance]] as your prize.
+
+==New items==
+* [[object materials]], including some silver, mystic [[weapons]], and iron [[saber]]s
+*some golden, silver, bronze, mithril, and crystal [[armor]]s
+*[[maid dress]], [[frilled apron]], [[katyusha]]
+*[[nurse uniform]], [[nurse cap]]
+*kitchen apron
+*shield of firebreak, shield of isolation
+*spellbook of torch, know enchantment
+*wand of maintenance
+* [[bandage]]s and [[scissors]]
+* some glasses
+* sheaf of straw
+
+These items are transplanted from [[NetHack plus]] or [[SLASH'EM]]:
+* [[revolver]]s and [[musket]]s
+* [[robe]]s
+* magic [[candle]]
+* some [[orb]]s
+* some [[artifact]]s
+
+==Changes to existing items==
+* Many pieces of [[body armor]] have had their AC slightly increased.
+* Dragon scale mail now weighs 250 and provides 8 AC.
+* [[Gauntlets of dexterity]] set your dexterity to that of your race/class maximum, similar to gauntlets of power; this will [[auto-identify]] them when worn, even if you have reached that maximum.
+* [[Leather gloves]] provide 0 AC.
+* [[Magic whistle]]s are charged magical tools.
+* Orange dragon scale mail provides [[free action]].
+* [[Robe]]s are as in [[Robe#Robes in SLASH'EM|SLASH'EM]].
+* [[Speed boots]] no longer set your [[speed]] to very fast by default, instead providing a boost to speed that can stack with other sources.
+* New [[statue]] types: [[bronze]] statues and [[ice]] sculpture.
+*[[Unicorn horn]]s have a chance of disintegrating after use.
+* [[Unlocking tool]]s may break.
+* The [[wand of speed monster]]'s effects are now temporary.
+
+==Changes to existing monsters==
+*A [[doppelganger]] always imitates the player, including all inventory and attributes — though not, apparently, spells.  Unhappily, its items will disappear when it is defeated by any means, so you cannot get two of the same [[artifact]].  You may still steal the doppelganger's items using the #bereave extended command, but artifacts gained in this way will revert to their base item. The stolen items will last until they are lost when put on the ground.
+*[[Floating eye]]s can freeze you if you attack them with a [[polearm]].
+*[[Straw golem]]s drop a number of sheaves of straw when they are killed.
+*[[Water elemental]]s have an [[engulf]]ing attack that kills you by [[drowning]] over several turns.  They can also rust weapons like a [[rust monster]].
+
+==See also==
+*[[Brass interface patch]]
+
+==External links==
+*[http://www.maroon.dti.ne.jp/youkan/nethack/index_e.html NetHack brass] including sources and DOS/Windows binary
+*[http://www.maroon.dti.ne.jp/youkan/nethack/index.html Japanese page] and [http://translate.google.com/translate?prev=hp&hl=en&u=http%3A%2F%2Fwww.maroon.dti.ne.jp%2Fyoukan%2Fnethack%2Findex.html&sl=ja&tl=en Google translation] with latest source
+
+[[Category:NetHack brass]]
+[[Category:Variants]]}
+&&%s&& %s Skills (NetHack brass) {87290 2013-10-02T13:37:25Z {0 } /* Maximum skills */  fixed missing "is", made a sentence a bit less awkward to read <div class="thumb tright">
+{| class="prettytable" style="margin: 0;"
+|+ ''as in include/skills.h''
+!| Level
+!| Percentage
+|-
+|| Restricted   || 0%
+|-
+|| Unskilled    || 0%
+|-
+|| Minimum      || 25%
+|-
+|| Basic        || 50%
+|-
+|| Skilled      || 75%
+|-
+|| Expert       || 100%
+|-
+|| Master       || 110%
+|-
+|| Grand Master || 120%
+|}
+</div>
+In [[NetHack brass]], skills use [[percentage]]s. Those of you familiar with the #[[enhance]] command will not find it here!
+
+[[You]] can use '''#skills''' at any time to consult your skills in all groups where you have more than 0%. Further, you can also use it to look up exactly which weapons and spells belong to each skill group. Frustrated [[vanilla]] and [[SLASH'EM]] players may not have known that [[athame]]s belong to [[dagger]] group or that [[broad pick]]s belong to the [[pick-axe]] group, but brass players can easily check.  (It should also be noted that NetHack brass consolidates many skills, for instance grouping [[scimitar]]s and [[saber]]s under the ''saber'' group.)
+
+To ''enhance'' a skill, gain an [[experience level]] and a menu will prompt you to add 15% to any one skill--10% instead for skills at or over 50%, 5% for skills at or over 75%. Always choose a skill; unlike in vanilla, there is no limit where enhancing one skill might prevent you from enhancing another. In letting you choose a skill upon leveling, NetHack brass almost feels like [[ADOM]], though ADOM is certainly more complex.  (Note that if you lose a level and regain it, you may not claim the free skill points a second time.)
+
+Skill percentages will also increase on their own with practice.  At higher levels, this method becomes a faster way of raising skills than enhancing.
+
+== In source code ==
+The [[source code]] for brass still contains constants like <tt>P_BASIC</tt> and <tt>P_EXPERT</tt>, and you might apply some patch to [[weapon.c]] that still uses the <tt>skill_level_name</tt> function. Consult the table here. The constant <tt>P_BASIC</tt> contains 50, while <tt>skill_level_name</tt> will reckon anything from 50 to 74 to be Basic.
+
+Note that <tt>P_ISRESTRICTED</tt> and <tt>P_UNSKILLED</tt> are both 0. A skill is only restricted if its ''max skill'' is zero. If the skill is 0 but not maxed, then it will still show in the skills menu, but only when leveling up. In brass, a skill unrestricted by a [[god]] is capped at <tt>P_MINIMUM</tt> or 25%.
+
+== Maximum skills ==
+To consult the maximum possible skills for your current [[role]], do the #skills command; then press '''[w]''' for "show weapon capability" or '''[s]''' for "show spellcasting capability", for example:
+
+[[Image:brass skills example.png|A screenshot of "show weapon capability" subscreen of #skills command.]]
+
+For groups marked <tt>(++)</tt>, the maximum is expert (100%); for groups marked <tt>(+)</tt>, the max is skilled (75%); other groups max at basic (50%).
+[[Category:Extended commands of NetHack brass]]}
+&&%s&& %s Silver bell {14046 2006-10-15T05:02:22Z {467 Killian} fix double-redirect #REDIRECT [[Bell of Opening]]}
+&&%s&& %s You hear rumbling in the distance {148342 2022-10-04T22:29:38Z {4001279 Umbire the Phantom} message redirects are fine #REDIRECT [[Rolling boulder trap]]}
+&&%s&& %s Stiffening {10684 2006-09-19T16:55:15Z {919 Zefciu} Redirecting to [[Stoning]] #REDIRECT [[stoning]]}
+&&%s&& %s Minion {147479 2022-08-12T18:19:45Z {4001279 Umbire the Phantom} Thank you A '''minion''' is a [[monster]] in ''[[NetHack]]'' that serves one of the [[god]]s, and appears only under specific circumstances.
+
+{{todo|A [[grep]] -n minion src/*.c shows that there is much more to know about minions. There's also variants to add.}}
+
+==Generation==
+The [[source code]] in [[minion.c]] controls the generation of minions. A minion is generated in these three situations:
+* If you try to convert an [[altar]] and your experience level is at least 7 and also your [[alignment record]] close to its maximum, then there is a chance that the altar's god sends a hostile minion, regardless of if you succeed.{{refsrc|pray.c|1396}}{{refsrc|pray.c|1408}}
+* If a god is [[angry]] with you, either from repeated [[pray]]er or praying to the wrong god, one of the possible responses is to send a hostile minion after you; this requires a level of anger just short of the worst possible smiting, which zaps you with [[lightning]] (and [[wide-angle disintegration beam]] if the lightning fails).{{refsrc|pray.c|599}}
+* If you are at the [[Sanctum]] or on the [[Astral Plane]], and you have angered a god into zapping you with lightning, then hitting you with the [[wide-angle disintegration beam]] and successfully survived both, then the god will summon three minions against you.{{reffunc|pray.c|god_zaps_you}} One way to trigger this is to attempt to convert a [[high altar]].{{refsrc|pray.c|1324}}
+
+The tame guardian [[angel]] you can get on the [[Astral Plane]] is considered a minion.
+
+==Description==
+Minions are the same as any other monster of their type in terms of stats, but are named accordingly based on who they serve (e.g. "the [[Angel]] of [[Mitra]]"). The type of monster depends on the god that they serve:
+
+* an [[A]] for [[lawful]] gods
+* an [[elemental]] for [[neutral]] gods
+* an [[&]] for [[chaotic]] gods and the unaligned [[Moloch]]
+
+==Messages==
+{{message|The voice of <god> booms: "Thou shalt pay for thy indiscretion!"|You attempted to convert an altar while your alignment record was near maximum and you are at least experience level 7, and that altar's god sent a hostile minion after you.}}
+{{message|Thou durst <scorn/call upon> me? Then, die <mortal/creature>!|You have angered a god, and they sent a hostile minion after you.}}
+{{message|Thou cannot escape my wrath, mortal! Destroy <him/her>, my servants!|You have angered a god into smiting you with lightning and disintegration in Moloch's Sanctum or on the Astral Plane and survived both, and that god sent minions after you.}}
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], your god may give you minions as servants, from [[prayer]], if you are lawful,{{refsrc|pray.c|1203|version=SLASH'EM 0.0.7E7F2}} or [[sacrifice]], for any alignment. Lawfuls may receive [[angelic being]]s or [[tengu]], neutrals may get [[elemental]]s or [[djinni|djinn]], chaotics may get [[demon|major or minor demons]], and any player may receive a [[unicorn]] of his or her alignment. These behave much like [[pet]]s, except that they do not [[eat]] [[corpse]]s, cannot pick up items (although they will use any in their initial inventory), cannot be [[leash]]ed or [[saddle]]d, and do not turn traitorous.  Also, they cannot be re-[[tame]]d should they go feral.
+
+Receiving minions does not increase prayer timeout or reduce the odds of getting artifact gifts. High level lawfuls may receive a minion with [[Sunsword]] or [[Demonbane]], which will count only as a generated [[artifact]], not a gifted one, for future [[sacrifice]] purposes. The minion you receive is a function of your level and the RNG. The following are the probabilities of obtaining each type of minion at each experience level:
+
+====Lawful====
+{|class="prettytable"
+! Experience level
+! Minions and probability
+|-
+|1 || [[Tengu]] (80%) or [[couatl]] (20%)
+|-
+|2 || [[Tengu]] (60%) or [[couatl]] (40%)
+|-
+|3 || [[Tengu]] (40%) or [[couatl]] (60%)
+|-
+|4 || [[Tengu]] (20%), [[couatl]] (60%), or [[white unicorn]] (20%)
+|-
+|5 || [[Couatl]] (60%) or [[white unicorn]] (40%)
+|-
+|6 || [[Couatl]] (40%) or [[white unicorn]] (60%)
+|-
+|7 || [[Couatl]] (20%), [[white unicorn]] (60%), or [[movanic deva]] (20%)
+|-
+|8 || [[White unicorn]] (60%) or [[movanic deva]] (40%) 
+|-
+|9 || [[White unicorn]] (40%) or [[movanic deva]] (60%) 
+|-
+|10 || [[White unicorn]] (20%) or [[movanic deva]] (60%), [[monadic deva]] (20%) 
+|-
+|11 || [[Movanic deva]] (60%) or [[monadic deva]] (40%) 
+|-
+|12 || [[Movanic deva]] (40%) or [[monadic deva]] (60%) 
+|-
+|13 || [[Movanic deva]] (20%), [[monadic deva]] (60%), or [[ki-rin]] (20%) 
+|-
+|14 || [[Monadic deva]] (60%) or [[ki-rin]] (40%)
+|-
+|15 || [[Monadic deva]] (40%) or [[ki-rin]] (60%)
+|-
+|16 || [[Monadic deva]] (20%), [[ki-rin]] (60%), or [[astral deva]] (20%)
+|-
+|17 || [[Ki-rin]] (60%) or [[astral deva]] (40%)
+|-
+|18 || [[Ki-rin]] (40%) or [[astral deva]] (60%)
+|-
+|19 || [[Ki-rin]] (20%), [[astral deva]] (60%), or [[archon]] (20%)
+|-
+|20 || [[Astral deva]] (60%) or [[archon]] (40%)
+|-
+|21 || [[Astral deva]] (40%) or [[archon]] (60%)
+|-
+|22 || [[Astral deva]] (20%), [[archon]] (60%), or [[planetar]] (20%)
+|-
+|23 || [[Archon]] (60%) or [[planetar]] (40%)
+|-
+|24 || [[Archon]] (40%) or [[planetar]] (60%)
+|-
+|25 || [[Archon]] (20%), [[planetar]] (60%), or [[solar]] (20%)
+|-
+|26 || [[Planetar]] (60%) or [[solar]] (40%)
+|-
+|27 || [[Planetar]] (40%) or [[solar]] (60%)
+|-
+|28 || [[Planetar]] (20%) or [[solar]] (80%)
+|-
+|29-30 || [[Solar]]
+|-
+|}
+
+Lawfuls have an overwhelming advantage in terms of minions, as they have much easier access to minions (through prayer) and gain significantly stronger minions. A level 1 lawful character can deliberately wound himself by throwing a weapon up, praying after turn 300, and have a 13% chance of getting a tame couatl - a monster with a poisonous bite and +1 enchantment resistance. At level 11 there is a 100% chance of getting a Deva, with a 1 in 4 chance of carrying a [[shield of reflection]] (the Deva can be easily killed by bringing it near the [[Oracle]]). Playing as a lawful thus makes a pacifist game much easier, as you have easy access to tame tengu (which are about as damaging as dogs) and possibly a couatl, and by the endgame can have a retinue of [[Archon]]s, [[Planetar]]s, and [[Solar]]s which will make the [[Astral plane]] a breeze.
+
+====Neutral====
+The following are the probabilities of each type of minion by experience level:
+{|class="prettytable"
+! Experience level
+! [[Gray unicorn]]
+! Random [[elemental]]
+! [[Djinni]]
+|-
+|1-2     || 100% || nil || nil
+|-
+|3     || 89% || 11% || nil
+|-
+|4     || 78% || 22% || nil
+|-
+|5     || 67% || 33% || nil
+|-
+|6     || 56% || 44% || nil
+|-
+|7     || 44% || 56% || nil
+|-
+|8     || 33% || 67% || nil
+|-
+|9     || 22% || 78% || nil
+|-
+|10     || 11% || 89% || nil
+|-
+|11     || nil || 89% || 11%
+|-
+|12     || nil || 78% || 22%
+|-
+|13     || nil || 67% || 33%
+|-
+|14     || nil || 56% || 44%
+|-
+|15     || nil || 44% || 56%
+|-
+|16     || nil || 33% || 67%
+|-
+|17     || nil || 22% || 78%
+|-
+|18     || nil || 11% || 89%
+|-
+|19-30     || nil || nil || 100%
+|}
+
+At early levels, an elemental minion can be a significant boon, but by the mid-game, neutral minions tend to be too weak to bother keeping around. Unfortunately, getting a djinni as a minion will not give you a chance at a wish, but will increase the djinni count, lowering the chance of a djinni appearing from a [[smoky potion]]. Since minions cannot pickup weapons, and djinni are not created with weapons, your djinni will be limited in combat compared to one obtained through other means.
+
+====Chaotic====
+A chaotic minion will be chosen according to the probabilities given below:
+
+{|class="prettytable"
+! Experience level
+! Minions and probability
+|-
+|1     || [[Gremlin]] (60%) or random [[i]]* (40%)
+|-
+|2     || [[Gremlin]] (40%) or random [[i]]* (60%)
+|-
+|3     || [[Gremlin]] (20%), random [[i]]* (60%), or [[black unicorn]] (20%)
+|-
+|4     || random [[i]]* (60%), [[black unicorn]] (20%) or [[blood imp]] (20%)
+|-
+|5     || random [[i]]* (40%), [[black unicorn]] (20%), or [[blood imp]] (40%)
+|-
+|6     || random [[i]]* (20%), [[black unicorn]] (20%), [[blood imp]] (40%), or [[spined devil]] (20%)
+|-
+|7     || [[black unicorn]] (20%), [[blood imp]] (40%), [[spined devil]] (20%), or [[shadow wolf]] (20%)
+|-
+|8     || [[blood imp]] (40%), [[spined devil]] (20%), or [[shadow wolf]] (40%)
+|-
+|9     || [[blood imp]] (20%), [[spined devil]] (20%), or [[shadow wolf]] (40%), [[hell hound]] (20%)
+|-
+|10     || [[spined devil]] (20%), [[shadow wolf]] (40%), [[hell hound]] (20%), or [[horned devil]] (20%)
+|-
+|11     || [[shadow wolf]] (40%), [[hell hound]] (20%), or [[horned devil]] (40%)
+|-
+|12     || [[shadow wolf]] (20%), [[hell hound]] (20%), [[horned devil]] (40%), or [[bearded devil]] (20%)
+|-
+|13     || [[hell hound]] (20%), [[horned devil]] (40%), [[bearded devil]] (20%), or [[bar-lgura]] (20%)
+|-
+|14     || [[horned devil]] (40%), [[bearded devil]] (20%), or [[bar-lgura]] (40%)
+|-
+|15     || [[horned devil]] (20%), [[bearded devil]] (20%), [[bar-lgura]] (40%), or [[chasme]] (20%)
+|-
+|16     || [[bearded devil]] (20%), [[bar-lgura]] (40%), [[chasme]] (20%), or [[barbed devil]] (20%)
+|-
+|17     || [[bar-lgura]] (40%), [[chasme]] (20%), or [[barbed devil]] (40%)
+|-
+|18     || [[bar-lgura]] (20%), [[chasme]] (20%), [[barbed devil]] (40%), or [[vrock]] (20%)
+|-
+|19     || [[chasme]] (20%), [[barbed devil]] (40%), [[vrock]] (20%), or [[babau]] (20%)
+|-
+|20     || [[barbed devil]] (40%), [[vrock]] (20%), or [[babau]] (40%)
+|-
+|21     || [[barbed devil]] (20%), [[vrock]] (20%), [[babau]] (40%), or [[nalfeshnee]] (20%)
+|-
+|22     || [[vrock]] (20%), [[babau]] (40%), [[nalfeshnee]] (20%), or [[marilith]] (20%)
+|-
+|23     || [[babau]] (40%), [[nalfeshnee]] (20%), or [[marilith]] (40%)
+|-
+|24     || [[babau]] (20%), [[nalfeshnee]] (20%), [[marilith]] (40%), or [[nabassu]] (20%)
+|-
+|25     || [[nalfeshnee]] (20%), [[marilith]] (40%), [[nabassu]] (20%), or [[bone devil]] (20%)
+|-
+|26     || [[marilith]] (40%), [[nabassu]] (20%), or [[bone devil]] (40%)
+|-
+|27     || [[marilith]] (20%), [[nabassu]] (20%), [[bone devil]] (40%), or [[ice devil]] (20%)
+|-
+|28     || [[nabassu]] (20%), [[bone devil]] (40%), [[ice devil]] (20%), or [[pit fiend]] (20%)
+|-
+|29     || [[bone devil]] (40%), [[ice devil]] (20%), or [[pit fiend]] (40%)
+|-
+|30     || [[bone devil]] (20%), [[ice devil]] (20%), or [[pit fiend]] (60%)
+|}
+Note: random [[i]] gives an equal probability of: [[Dretch]], [[Imp]], [[Lemure]], [[Quasit]], [[rutterkin]]
+
+Chaotic minions don't tend to be useful past the early game, where a [[black unicorn]], [[quasit]], or [[shadow wolf]] is an advantage in melee for weaker fighting roles. Most of the demons can be obtained through demon gating instead. They're available sooner this way; a pet marilith can be obtained by a doppelganger by level 7 using demon gating and #youpoly. It'll also be able to pick up and wield weapons. Most of the chaotic minions are not useful by the time you are high enough level to obtain them as a gift. The only advantage to having a minion is that it will not turn traitor, as almost all of the chaotic minions could potentially do (especially as most are inediate).
+
+==References==
+<references/>
+{{nethack-343}}
+{{slashem-7E7|offset=1}}
+[[Category:Monsters]]}
+&&%s&& %s Passive attacks {10694 2006-09-20T08:46:28Z {396 Jayt} Redirecting to [[Passive attack]] #REDIRECT [[Passive attack]]}
+&&%s&& %s Boing {10700 2006-09-20T09:09:49Z {396 Jayt} Redirecting to [[Boing!]] #REDIRECT [[Boing!]]}
+&&%s&& %s Skills {10709 2006-09-20T09:22:25Z {396 Jayt} Redirecting to [[Skill]] #REDIRECT [[Skill]]}
+&&%s&& %s Skill {150208 2023-03-10T17:25:24Z {4000114 Derekt75} /* Technical details */ making it clearer how many skill slots are required :''The term "master" redirects here. For the [[rank]] title of a Monk at experience level 30, see [[Monk#Rank titles]].
+
+NetHack's '''skill''' system allows different [[role]]s to attain different proficiencies in the use of different [[weapon]]s and [[spell]]s. Skills can be advanced using the [[enhance|#enhance]] command.  When you become able to advance a skill, you will see the message "'''''You feel more confident in your (weapon/fighting/spell casting) skills.'''''" If you have just advanced a skill and still have more that can be advanced, you will get the message "'''''You feel you could be more dangerous!'''''"  Skills are not advanced automatically because each skill takes up skill slots, which are finite and gained by leveling up..
+
+== Training ==
+Most skills in NetHack have four possible levels: '''Unskilled''', '''Basic''', '''Skilled''' and '''Expert'''. [[Martial arts]] and [[Bare hands]] have two levels beyond expert: '''Master''' and '''Grand Master'''.  Generally speaking, characters start at basic skill in the weapons and spells they begin their adventure with, and unskilled in all others.
+
+Use the #enhance command at any time to get a list of skills which you can train. If a skill does not appear on this list, your role is '''restricted''' in this skill, meaning that no amount of training will enable it to advance beyond unskilled. However, if you receive an [[artifact weapon]] from your [[god]], you will be "'''unrestricted'''" in the appropriate skill if necessary, which can then be advanced to Basic. #enhance will also indicate which of the listed skills have been trained up to their maximum levels.  Tables of maximum skill levels can be found in Dylan O'Donnell's spoilers [[weap-343.txt]] and [[spl1-343.txt]].
+
+Combat skills are generally trained through dealing more than 1 damage using a given weapon while [[wield]]ed in melee, and [[projectile]]s are [[thrown]] or else [[firing|fired]] from the [[launcher]] they are designed for - some melee weapons ([[spear]], [[javelin]], [[knife]], [[dagger]], and [[aklys]]) can double as projectiles, and either use trains the appropriate skill. Spellcasting skills are trained by successfully casting a spell; a common training strategy is to use low-level spells such as {{spell of|light}} or {{spell of|knock}} to raise the skill for another desired spell in that spellcasting school.
+

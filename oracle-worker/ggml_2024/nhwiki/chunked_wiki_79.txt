@@ -1,0 +1,1000 @@
+&&%s&& %s Lens {6747 2006-08-06T21:11:38Z {396 Jayt} #REDIRECT [[pair of lenses]] #REDIRECT [[pair of lenses]]}
+&&%s&& %s Hunger {134546 2020-06-26T15:15:36Z {4000693 Phol ende wodan} remove pointless redirect '''Hunger''' can refer to:
+
+* A [[ring of hunger]] or the [[hunger (property)|intrinsic hunger]] it grants
+* The state of being [[Nutrition|hungry]]
+
+{{disambig}}
+{{nethack-366}}}
+&&%s&& %s Hunger (property) {136661 2020-12-28T05:43:27Z {4001279 Umbire the Phantom}  '''Hunger''' is a [[property]] which increases the rate at which you burn [[nutrition]] by 50%.{{refsrc|src/eat.c|2814|nethack=3.6.6}} It is conferred exclusively by the [[ring of hunger]] - extrinsically from wearing it, and intrinsically from [[eating jewelry|eating it]].
+
+Other properties, such as conflict, also cause an increased [[hunger rate]], but this increase is handled separately from the hunger property, causing their effects to stack.
+
+[[Slow digestion]] is independent from hunger, and they do not cancel each other out; if you have both properties at once, you will burn nutrition at 50% of the normal rate plus jewelry adjustments.
+
+==Strategy==
+Extrinsic hunger is occasionally useful when you want to stop being [[satiated]], in order to avoid [[dexterity]] penalties or eat more corpses. However, it is usually considered bad to have as an intrinsic, and a [[tinning kit]] is preferable for managing corpse consumption and nutrition.
+
+==References==
+<references/>
+
+[[Category:Properties]]
+{{nethack-366}}}
+&&%s&& %s Polymorphitis {148545 2022-10-05T02:28:17Z {4001279 Umbire the Phantom} de-SLEX The intrinsic [[property]] '''polymorphitis''' gives a 1% chance per turn of [[polymorph|polymorphing]] into a random [[monster]].  You stay in the new form for 500 to 999 turns, unless your polymorphitis causes you to polymorph again earlier, or unless your new form is higher [[experience level|level]] than your original, in which case this time is reduced.
+
+Only the [[ring of polymorph]] confers this property. Polymorphitis can be acquired permanently only by [[Eating jewelry|eating]] the ring. Like [[teleportitis]], polymorphitis is not that desirable unless it can be [[Ring of polymorph control|controlled]], or you are at a very low level and like to gamble.
+
+{{nethack-343}}
+[[Category:Properties]]}
+&&%s&& %s Astral vision {138833 2021-04-07T19:15:20Z {4001427 Phollenback} fiqhack astral vision range is further '''Astral vision''', granted by wearing [[The Eyes of the Overworld]], lets you see anything within radius 3, even if that space is dark or there are walls or boulders blocking your line of sight. This means you can see while [[blind]] (although it does not strictly prevent blinding - your blindness continues in the background until it wears off, or you [[remove]] the Eyes, similar to [[Grayswandir]]'s behavior with [[hallucination]]). Therefore, if you are blind and have astral vision, you won't be able to make use of intrinsic [[telepathy]].
+
+Objects seen through astral vision using the [[farlook]] command are described as though you had personally handled the item (a behavior similar to a blessed [[potion of object detection]]; for example, viewing a scroll on the floor will tell you its label, not merely "a scroll," and gems discovered embedded in rock will appear with whatever [[name|type-name]] you might have given them. Unlike blessed potions of object detection, this also includes items in monster inventories detected with said potions (regardless of BUC) or the [[spellbook of detect treasure|detect treasure]] spell. This may or may not be a bug.
+
+In [[NetHack 3.4.3]], astral vision is subject to [[bug#C343-93|bug C343-93]], a very minor bug which causes monsters seen with astral vision to be listed as seen with normal vision when using the [[farlook]] ({{kbd|;}}) command. Another bug regarding monsters is that monster seen with astral vision always stops occupations when they move, unlike usual vision.
+
+===The Rogue level===
+Astral vision does not grant its "vision" properties while on the [[Rogue_level|Rogue level]]; monsters, tiles, and items are not revealed through darkness or obstructions. The only parts of it that still function are those that prevent and override blindness.
+
+==Messages==
+
+;Your vision seems to dim for a moment but is normal now.
+:You were blinded while having astral vision
+;Your vision seems to dim for a moment but is happier now.
+:You were blinded while having astral vision and [[hallucination|hallucinating]]
+;Your vision seems to brighten for a moment but is normal now.
+:Your blindness was cured while having astral vision
+;Your vision seems to brighten for a moment but is sadder now.
+:Your blindness was cured while having astral vision and hallucinating
+
+== Variants ==
+
+=== FIQHack ===
+
+In [[FIQHack]] the astral vision range is 8, not 3.
+
+[[Category:Properties]]
+{{nethack-343}}}
+&&%s&& %s Your vision seems to dim for a moment but is normal now {6755 2006-08-06T21:49:15Z {396 Jayt} #REDIRECT [[Astral vision]] #REDIRECT [[Astral vision]]}
+&&%s&& %s Your vision seems to brighten for a moment but is normal now {6756 2006-08-06T21:51:32Z {396 Jayt} #REDIRECT [[Astral vision]] #REDIRECT [[Astral vision]]}
+&&%s&& %s Silver damage {89330 2014-05-28T03:00:36Z {4000299 Willful} better redirect #REDIRECT [[Silver#Silver damage]]}
+&&%s&& %s Jumping {143930 2021-12-18T23:11:56Z {187 Darth l33t} /* Path */ clarify '''Jumping''' is a [[property]] that allows a player to traverse multiple empty [[tile]]s in one movement. The ability to jump comes from three sources: being a [[Knight]], wearing [[jumping boots]], or casting a [[spell of jumping]]. To perform a jump, use the extended command '''#jump'''. If [[number_pad]] is set, you can also press {{kbd|j}}. Knight jumping and jumping from the boots are practically identical; the only difference is to which squares you can jump. The spell lets you jump farther, depending on your [[skill]] in [[escape spells]].
+
+Using any of the three sources to jump, you must be able to see your destination. The jump will consume d25 [[nutrition]] (plus the usual spellcasting hunger penalty, if you cast the spell), and you become [[immobile]] for the rest of the current turn (not simply one action) after landing.{{refsrc|apply.c|1361}} (This penalty thus has no effect if you use it on the last action of a turn.) Players with [[speed]] can move farther in one turn by stepping as far as possible without advancing the turn counter, then jumping, ''see [[Speed#Strategy]]''.
+
+Note that you cannot jump ''over'' [[monster]]s. If you attempt to do so, you will bump into them, which will wake them up and anger them if they are [[peaceful]].
+
+You can jump to try to escape from a [[pit]] or [[lava]]. You can also jump out of a [[web]], which will tear it apart. You can jump out of a [[bear trap]], but it will cause 1d10 damage and can inflict a long-lasting [[wounded legs|leg wound]]. If you are stuck in the floor (because you were caught in cooling lava) and attempt to jump, you will remain stuck and wound your legs. Jumping out of shops counts as [[Stealing from shops#Direct theft|direct theft]].
+
+
+==Range==
+
+<div class="thumb tright">{{Escape spells skill table}}</div>
+
+In the following diagrams, tiles to which you can jump are marked by an 'x'.
+
+{|
+|-
+| 
+| {{caption|Knight's jump|{{jumpradius|skill=0}}}}
+| {{caption|Jumping boots|{{jumpradius|skill=1}}}}
+| 
+|-
+!colspan="4"|Jumping spell
+|-
+| {{caption|Unskilled|{{jumpradius|skill=1}}}}
+| {{caption|Basic|{{jumpradius|skill=2}}}}
+| {{caption|Skilled|{{jumpradius|skill=3}}}}
+| {{caption|Expert|{{jumpradius|skill=4}}}}
+|}
+
+== Path ==
+Once you select a destination, you will be moved towards it along a path determined by a version of [[wikipedia:Bresenham's line algorithm|Bresenham's line algorithm]].<ref>{{sourcecode|apply.c|1354}} calls {{function|dothrow.c|walk_path}}, which calculates the path</ref> The path will be as close to a straight line as possible, but will tend to move you along the longer axis of your jump. It will never move you a greater proportion of the distance along the shorter axis than it has moved you along the longer axis.
+
+The following diagrams illustrate the non-trivial paths:
+
+<div class='ttyscreen'>
+<replacecharsblock>
+*={{red|*}}
+@={{white|@}}
+X={{orange|X}}
+ ={{lightgray|&nbsp;}}
+default={{lightgray|$1}}
+newline=<br>
+
+......... ......... ......... ...X.X...
+......... ...X.X... ..X...X.. ...*.*...
+...X.X... ...*.*... .X.*.*.X. ....*....
+..X.*.X.. .X*.*.*X. ..**.**.. X*..*..*X
+...*@*... ...*@*... ....@.... ..**@**..
+..X.*.X.. .X*.*.*X. ..**.**.. X*..*..*X
+...X.X... ...*.*... .X.*.*.X. ....*....
+......... ...X.X... ..X...X.. ...*.*...
+......... ......... ......... ...X.X...
+</replacecharsblock>
+</div>
+
+Note that some jumping paths are asymmetrical; for example, in the first diagram, if you jump north-northwest, and there's an obstacle one square south of your destination, you'll pass to its east, but you'll bump into it if you try to jump back to your origin.
+
+Knowing the path of your jump is important for maximizing jump distance, and to avoid angering peaceful monsters.
+
+== Restrictions ==
+
+You cannot jump if:
+* You lack the means to jump: you are not wearing [[jumping boots]], not casting the [[spellbook of jumping|jumping spell]], and are not a [[Knight]].
+* You are [[engulfing|engulfed]] by a monster.
+* You are in water.
+* You are stuck to a monster, unless it is tame and not suffering from [[confusion]] or [[conflict]].
+* You are [[levitation|levitating]] or on the [[Plane of Air]] or [[Plane of Water|Water]].
+* You or your [[steed]] have [[wounded legs]].
+* Your steed is stuck in a [[trap]].
+
+In addition, if you are not casting the [[spellbook of jumping|jumping spell]], you cannot jump if:
+* You are polymorphed into something with no legs (e.g., a [[slithy]] monster).
+* You are [[burdened]] to any degree.
+* You are [[nutrition|hungrier]] than the halfway point between not hungry and weak.
+* You have less than six [[strength]].
+
+But you can surprisingly jump if:
+* You are [[stunned]] or [[confused]] (and you even land in the right place).
+* You are riding a [[paralysed]] steed.
+* You are riding a flying steed.
+
+==Messages==
+
+{{message|You can't jump very far.|You attempted to #jump, but you have no source of jumping.}}
+{{message|You pass right over a &lt;trap&gt;.|You jumped over a previously known trap, without activating it.}}
+{{message|You bump into a &lt;monster&gt;.|You attempted to jump onto or past a monster, and crashed into them instead.}}
+{{message|You find a &lt;monster&gt; by bumping into it.|As above, but the monster was previously [[hiding]].}}
+{{message|You find something by bumping into it.|As above, but the monster was previously [[invisible]] to you.}}
+{{message|Too far!|You selected a jump destination that was too far away.}}
+{{message|Illegal move!|You are a knight (with no other sources of jump), and your destination is not a chess knight's-move away.}}
+{{message|There is an obstacle preventing that jump.|Your jump path is blocked by something, e.g. a wall.}}
+{{message|You cannot see where to land!|Your jump destination is not visible.}}
+{{message|You cannot jump there!|Your jump destination is invalid.}}
+{{message|You can't jump diagonally out of a doorway.|You are standing in a doorway and your jump path would take you diagonally out of it.}}
+{{message|You can't jump; you have no legs!|You are [[polymorph]]ed into a form with no legs.}}
+{{message|You lack the strength to jump!|You have less than 100 [[Nutrition|nutrition points]], or have less than 6 Strength.}}
+{{message|Your <nowiki>[left |right |]</nowiki>leg is in no shape for jumping.|You have [[wounded legs|wounded leg(s)]].}}
+{{message|You are carrying too much to jump!|You are not [[Encumbrance|unencumbered]].}}
+{{message|You don't have enough traction to jump.|You are levitating, or on the [[Plane of Air]] or [[Plane of Water|Water]].}}
+{{message|You flail around a little.|As above, but when jumping magically.}}
+{{message|You cannot escape from the &lt;monster&gt;!|You are stuck to a hostile monster, or a pet suffering from [[confusion]] or [[conflict]].}}
+{{message|You writhe a little in the grasp of the &lt;monster&gt;!|As above, but when jumping magically.}}
+{{message|This calls for swimming, not jumping!|You are attempting to jump whilst in water.}}
+{{message|You swish around a little.|As above, but when jumping magically.}}
+{{message|You've got to be kidding!|You are attempting to jump whilst engulfed by a monster.}}
+{{message|You bounce around a little.|As above, but when jumping magically.}}
+
+
+==History==
+Before [[NetHack 3.6.1]], the #jump command would not cast the jumping spell. To cast it in previous versions and variants based on them, you must press {{kbd|Z}} and select ''jumping''. 
+
+==Strategy==
+Jumping is an excellent [[escape item|escape method]]. For this reason, a minority of seasoned players value [[jumping boots]] over [[speed boots]].
+
+If you want to eat a [[corpse]] for an [[intrinsic]], but you are [[satiated]] and don't have an [[amulet of magical breathing]], jumping can un-satiate you. This goes especially if you have [[hungerless casting]].
+
+Clearing a lane with a [[wand of teleportation]], then jumping through it, is one of the better strategies for the [[Astral Plane]]. Since you need to be able to see your destination, many players carry the [[Candelabrum of Invocation]] to the [[Endgame]].
+
+See [[Speed#Strategy]] to learn the fastest way to move around the dungeon. But watch your [[nutrition]] intake, especially in the early game.
+
+You can avoid [[traps]] by jumping over them, except fire traps, magic portals and [[Sokoban]] traps. Jumping over the [[vibrating square]] will still reveal it. Before [[NetHack 3.6.1]], you could jump diagonally through open doors; this is no longer possible. {{refsrc|src/apply.c|1576|version=NetHack 3.6.1}} However, if you got inside a closed door by [[phasing]], you can jump diagonally out of it without needing the power.
+
+You can cross [[Medusa's Lair]] by jumping from island to island. However, you really want a [[levitation]] source for the Endgame anyway, so you might want to turn back and get one instead.
+
+==Origin==
+The Knight's odd set of jump targets &ndash; one square orthogonally, then one square diagonally away from the square of origin &ndash; is a reference to chess, in which the piece called the knight moves in the same way, jumping over any pieces between the starting and landing squares.
+
+==References==
+<references />
+
+{{nethack-361}}
+[[Category:Properties]]
+[[Category:Extended commands]]
+[[Category:Commands]]}
+&&%s&& %s Jump {6762 2006-08-06T23:54:02Z {239 Eidolos} Redirect to "jumping" #REDIRECT [[Jumping]]}
+&&%s&& %s Unlocking tools {6767 2006-08-07T00:39:34Z {239 Eidolos} [[Unlocking tools]] moved to [[Unlocking tool]]: Most other item classes use the singular. #REDIRECT [[Unlocking tool]]}
+&&%s&& %s Template:RogueBasin {6774 2006-08-07T05:42:22Z {458 Kernigh} This template does not work well yet; I would need an interwiki prefix for [[RogueBasin]]. {{generic project link|project=RogueBasin|image=RogueBasin logo.png|text=[[RogueBasin]] has a wiki page about:|link=[http://roguebasin.roguelikedevelopment.org/index.php?title={{{ 1|Special:Search/{{PAGENAME}} }}} {{{ 1|{{PAGENAME}} }}}]}}<noinclude>[[Category:Link templates|RogueBasin]]</noinclude>}
+&&%s&& %s Noegnud {148795 2022-10-11T23:52:28Z {679 Ray Chason} /* External links */ Tucows Download is kaput {{DISPLAYTITLE:noegnud}}
+[[Image:noegnud1.jpg|thumbnail|right|250px|One of noegnud's possible looks]]
+'''noegnud''' is a highly flexible [[user interface]] for ''[[NetHack]]'' and ''[[SLASH'EM]]''. It supports [[ASCII]] mode, multiple 2D [[tileset]]s and hardware accelerated partially-3D graphics. As of now, the current version (0.8.4) allows playing not only under Linux, but under Windows as well. Since ''NetHack'' is a fundamentally two dimensional game, the 3D graphics are actually just the 2D tiles rendered as textures in a 3D world made by extruding the walls upwards.
+
+As of 12 October 2014, noegnud is not available  at its original web site; Clive Crous appears to have abandoned it in favor of [[Vulture]].
+
+==External links==
+*[http://old.darkarts.co.za/noegnud noegnud home page (dead)]
+*[https://web.archive.org/web/20160409210453/http://www.tucows.com/preview/303468 Mirror #1] [https://github.com/chasonr/noegnud-0.8.5 Mirror #2]
+*[http://sourceforge.net/projects/noegnud/files/noegnud/noegnud-0.8.2/ (Older) sources and binaries from SourceForge]
+*[http://bitbucket.org/clivecrous/noegnud Bitbucket page]
+*[http://ubuntuforums.org/archive/index.php/t-111272.html Install guide for Ubuntu Linux]
+
+{{stub}}
+{{variant-343}}
+[[Category:User interface]]}
+&&%s&& %s Fruit {104492 2016-12-19T19:15:24Z {4000693 Phol ende wodan} Update to 3.6.0, no changes '''Fruit''' can refer to:
+
+* [[Comestible]]s such as [[melon]]s, [[orange]]s, [[banana]]s, [[apple]]s and [[pear]]s
+* A [[slime mold]], the customisable fruit
+* A [[potion of fruit juice]]
+* NetHack's ''[[options#fruit|fruit]]'' option.
+
+{{disambig}}
+{{nethack-360}}}
+&&%s&& %s Slime mold {147032 2022-07-29T03:03:40Z {4001597 Hordes} /* Generation */ custom names can spawn in orc town, as stated {{comestible
+| color=organic color
+| tile=[[image:slime mold.png]]
+| name=slime mold
+| cost=17
+| nutrition=250
+| turns=1
+| weight=5
+| conduct=vegan
+}}
+'''Slime mold''' is the default name for the customizable fruit in ''[[NetHack]]''.
+
+This fruit is a [[comestible]] worth 250 nutrition points and is consumed in a single turn. NetHack treats the fruit as [[vegan]] for [[conduct]] purposes, regardless of its name.
+
+==Generation==
+<!--Add details for normal random generation of slime molds-->
+In addition to random generation, a game where [[Orctown]] is generated may give the named [[orc-captain]] that leads the invading horde some fruit in their inventory, named either "'''paddle cactus'''" or "'''dwarven root'''".{{refsrc|src/mkmaze.c|638|version=NetHack 3.6.2}} Fruit with names other than what the player has chosen will only otherwise occur in [[bones]] levels.
+
+==Naming==
+You can change the name with the [[fruit (option)|fruit option]] to almost anything you like. You could choose "slice of pizza", "bowl of gruel", or "leg of ham", and the game will identify pizza, gruel, and ham as the food part, so that quaffing certain potions results in messages such as "This tastes like ham juice". However, NetHack will prevent you from naming your fruit after a corpse or tin, or with a word indicating [[BUC]] status. If you try, you will have a candied corpse, tin, or blessed/cursed/uncursed fruit instead.{{refsrc|options.c|3416}} The name you choose has no impact on gameplay, except that differently-named fruit don't stack. 
+If you want to [[wish]] for a fruit, you must wish for a "fruit", regardless of its current name.
+
+If you leave a [[bones]] file with any custom fruit in it, the name will be preserved for the player who finds it. Most bones file fruit on [[public server]]s are "slime mold".
+
+If you change the fruit option, existing fruit will keep their name, while newly generated fruit will use the new name.
+
+You may find silly suggestions for [http://alt.org/nethack/petnames.html fruit names] on [[nethack.alt.org]].
+
+==Origin==
+{{wikipedia|Slime mold}}
+[http://www.ucmp.berkeley.edu/protista/slimemolds.html Slime molds] are living organism that creep around until they find a rotten food source, such as old wood; they then grow into a plant-like form and make spores.
+
+''[[Angband]]'' also features edible slime molds, but has no option to rename the item. Because slime molds are defenseless living creatures in the game, some players do not eat them&nbsp;&ndash; this has lead to the tradition of [http://angband.oook.cz/comic/strip.php?view=36 naming individual slime molds] and keeping them as pets.
+
+==History==
+The possibility for an Orc Town orc-captain to generate with pre-named slime molds was introduced in [[NetHack 3.6.2]].
+
+==Encyclopedia entry==
+
+===Slime mold===
+{{encyclopedia|
+Slime mold or slime fungus, organism usually classified with the fungi, but showing equal affinity to the protozoa.  Slime molds have complex life cycles with an animal-like motile phase, in which feeding and growth occur, and a plant-like immotile reproductive phase.  The motile phase, commonly found under rotting logs and damp leaves, consists of either solitary amoebalike cells or a brightly colored multinucleate mass of protoplasm called a plasmodium, which creeps about and feeds by amoeboid movement.
+|[ The Concise Columbia Encyclopedia ]
+}}
+
+===Paddle cactus===
+{{encyclopedia|
+Opuntia, commonly called prickly pear, is a genus in the cactus family, Cactaceae. Prickly pears are also known as tuna (fruit), sabra, nopal (paddle, plural nopales) from the Nahuatl word nopalli for the pads, or nostle, from the Nahuatl word nochtli for the fruit; or paddle cactus.
+|[ Wikipedia, the free encyclopedia ]
+}}
+
+===Dwarven root===
+{{encyclopedia|
+But when they were cooked these roots proved good to eat, somewhat like bread; and the outlaws were glad of them, for they had long lacked bread save when they could steal it. "Wild Elves know them not; Grey-elves have not found them; the proud ones from over the Sea are too proud to delve," said Mim.
+
+"What is their name?" said Turin.
+
+Mim looked at him sidelong. "They have no name, save in the Dwarf-tongue, which we do not teach," he said. "And we do not teach Men to find them, for Men are greedy and thriftless, and would not spare till all the plants had perished; whereas now they pass them by as they go blundering in the wild. No more will you learn of me; but you may have enough of my bounty, as long as you speak fair and do not spy or steal." Then again he laughed in his throat.
+
+"They are of great worth." he said. "More than gold in the hungry winter, for they may be hoarded like the nuts of a squirrel, and already we were building our store from the first that are ripe."
+|[ Unfinished Tales, Part 1, by J.R.R. Tolkien ]
+}}
+
+==See also==
+* [[Notable ascensions]] includes a few cases of slime mold ASCII art.
+
+==References==
+<references/>
+{{nethack-364}}
+[[Category:Comestibles]]}
+&&%s&& %s Ac {6785 2006-08-07T16:10:22Z {396 Jayt} #REDIRECT [[Armor class]] #REDIRECT [[Armor class]]}
+&&%s&& %s Pw {6791 2006-08-07T16:24:04Z {396 Jayt} #REDIRECT [[Energy]] #REDIRECT [[Energy]]}
+&&%s&& %s Energy {149966 2023-02-15T03:20:53Z {4000227 Kufat} /* Energy regeneration */ HoB mandatory for 1d4 energy regen Your '''power''', or "'''Pw'''", is the amount of magical '''energy''' you have.  For example:
+
+ Dlvl:3  $:43  HP:68(68) '''Pw:13(18)''' AC:-3  Xp:8/1295 T:2358
+
+The above [[status line]] shows a character whose current power is 13 and maximum power is 18.
+
+== Uses of energy ==
+The main use of energy is to [[spellcasting|cast spells]].  You need 5 times the spell's level of energy to cast a spell.  When carrying the [[Amulet of Yendor]], there is an additional random cost. This cost applies ''only'' to spellcasting, not to any other expenditure of energy. See [[spellcasting#Spellcasting cost|spellcasting cost]] for more details.
+
+[[Teleport at will|Teleportation at will]] from [[teleportitis]] requires 20 energy, but only consumes 19.{{refsrc|teleport.c|517}}  The usual random teleportation from teleportitis does not use energy.
+
+Certain <tt>[[monster (command)|#monster]]</tt> commands require energy. The [[breath weapon]]s of [[dragon]]s, [[iron golem]]s, [[winter wolf|winter wolves]] and [[hell hound]]s all cost 15 energy.{{refsrc|polyself.c|748}} Summoning help as a [[werecreature]]{{refsrc|polyself.c|910}} and emitting psychic blasts as a [[mind flayer]]{{refsrc|polyself.c|1075}} both cost 10 energy.
+
+== Gaining energy ==
+You normally regain energy slowly over time, unless your [[encumbrance]] is <tt>Stressed</tt> or worse, which blocks normal energy regeneration.  Having [[the Eye of the Aethiopica]] allows you to regain energy rapidly, even when stressed.
+
+=== Specific methods ===
+<!-- todo: move citations to respective linked articles? -->
+Quaffing a non-cursed [[potion of gain energy]] increases your current and maximum energy; a cursed potion decreases them.
+
+<tt>[[invoke|#invoke]]</tt> [[the Mitre of Holiness]] to regain half the energy you need to reach the maximum, but no more than 120 points.
+
+Reading any [[scroll of charging]] while [[confused]] recharges your energy to its maximum.  If it was already maximum, you gain 5d4 total energy instead.{{refsrc|read.c|1056}} In 3.6.0 or later cursed scroll will reduce energy to 0 without altering the maximum “''You feel discharged.''”
+
+Eating a [[newt]] corpse sometimes increases energy by 1 to 3 points.  If this would put you over the maximum, your maximum energy might also increase by 1.
+
+If you trigger a [[magic trap]] and it explodes, “''Your body absorbs some of the magical energy!''” and your maximum energy is increased by 2; your energy is then completely refilled.{{refsrc|trap.c|1058}}
+
+Attacking a [[Monster spell#Spells|spellcasting monster]] with [[Magicbane]] has a chance of [[cancellation|cancelling]] it and increasing your current and maximum energy by 1 (“''You absorb magical energy!''”){{refsrc|artifact.c|844}}. Only the cancellation from Magicbane can absorb energy. This effect happens every time the cancellation attack hits, not just the first time, when the monster is actually cancelled.
+
+Lying with a [[foocubus]] may increase or decrease your energy.
+
+The [[polyself bug]] can be exploited to increase your maximum energy exponentially.
+
+=== Energy regeneration ===
+The rate at which energy regenerates over time increases with your [[experience level]], [[wisdom]], and [[intelligence]].  If your [[encumbrance]] level is <tt>[[Stressed]]</tt> or higher it will not regenerate.
+
+Your energy normally regenerates every <math>\lfloor (38 - \mathit{level}) \times 3 / 6 \rfloor</math> turns if you are a [[Wizard]], and every <math>\lfloor (38 - \mathit{level}) \times 4 / 6 \rfloor</math> turns for other roles.{{refsrc|allmain.c|211}}  If you carry [[the Eye of the Aethiopica]], you regenerate energy every turn regardless of role.
+
+The amount of energy regenerated each time is between 1 and <math>\lfloor (\mathit{Wis} + \mathit{Int}) / 15 \rfloor + 1</math>, which for most characters means ''1d2'' or ''1d3''. Increasing that to ''1d4'' requires a well-enchanted [[helm of brilliance]] since no playable race has Wisdom and Intelligence caps high enough to reach a total of 45.
+
+Number of turns between regenerating energy:
+{| class="prettytable"
+! Level
+! Non-wizard
+! Wizard
+|-
+|-
+| 1 || 24 || 18
+|-
+| 2 || 24 || 18
+|-
+| 3 || 23 || 17
+|-
+| 4 || 22 || 17
+|-
+| 5 || 22 || 16
+|-
+| 6 || 21 || 16
+|-
+| 7 || 20 || 15
+|-
+| 8 || 20 || 15
+|-
+| 9 || 19 || 14
+|-
+| 10 || 18 || 14
+|-
+| 11 || 18 || 13
+|-
+| 12 || 17 || 13
+|-
+| 13 || 16 || 12
+|-
+| 14 || 16 || 12
+|-
+| 15 || 15 || 11
+|-
+| 16 || 14 || 11
+|-
+| 17 || 14 || 10
+|-
+| 18 || 13 || 10
+|-
+| 19 || 12 || 9
+|-
+| 20 || 12 || 9
+|-
+| 21 || 11 || 8
+|-
+| 22 || 10 || 8
+|-
+| 23 || 10 || 7
+|-
+| 24 || 9 || 7
+|-
+| 25 || 8 || 6
+|-
+| 26 || 8 || 6
+|-
+| 27 || 7 || 5
+|-
+| 28 || 6 || 5
+|-
+| 29 || 6 || 4
+|-
+| 30 || 5 || 4
+|}
+
+=== Level gain and starting energy ===
+
+When you gain a level, both your current and maximum energy are increased based on various factors:{{refsrc|exper.c|195}}
+
+* your [[role]]
+* your [[race]]
+* your [[Wisdom]]
+* your [[experience level]]
+
+First, a random number <math>0 \leq n < \left( \frac{\text{Wisdom}}{2} + \text{role modifier}\right)</math> is chosen;{{refsrc|exper.c|196|comment=The function also considers a race modifier, but this is 0 for all races.}} your race minimum is then added to the result.{{refsrc|exper.c|197|comment=This also considers a role minimum, but this is 0 for all roles.}}
+
+Your role modifier depends on whether your experience level (before the level gain) is lower than a certain cutoff which varies between roles. If it is, apply the "low-[[XL]]" modifier; else use the "high-XL" modifier.
+
+The result of this is then multiplied with your energy modifier, which depends on your role, and rounded down.{{refsrc|exper.c|201}}
+
+The final result will be added to both your current and maximum energy.
+
+For a newly created character neither energy modifier nor Wisdom matters{{reffunc|exper.c|newpw}}: certain magically inclined roles start with a few energy points at random, while others only get one point; all races except Dwarves also get a bonus point or two.  See the table below for precise numbers.
+
+{| class="prettytable striped"
+! Role
+! Cutoff
+! low-[[XL]]<br/>modifier
+! high-XL<br/>modifier
+! energy modifier{{reffunc|exper.c|enermod}}
+! starting
+|-
+| [[Archeologist|Arc]] || 14 || 1 || 1 || 1 || 1
+|-
+|    [[Barbarian|Bar]] || 10 || 1 || 1 || 3/4 || 1
+|-
+|      [[Caveman|Cav]] || 10 || 1 || 1 || 1 || 1
+|-
+|       [[Healer|Hea]] || 20 || 1 || 2 || 3/2 || 2-5
+|-
+|       [[Knight|Kni]] || 10 || 1 || 2 || 3/2 || 2-5
+|-
+|         [[Monk|Mon]] || 10 || 2 || 2 || 1 || 3-4
+|-
+|       [[Priest|Pri]] || 10 || 2 || 2 || 2 || 5-7
+|-
+|        [[Rogue|Rog]] || 11 || 1 || 1 || 1 || 1
+|-
+|       [[Ranger|Ran]] || 12 || 1 || 1 || 1 || 1
+|-
+|      [[Samurai|Sam]] || 11 || 1 || 1 || 1 || 1
+|-
+|      [[Tourist|Tou]] || 14 || 1 || 1 || 1 || 1
+|-
+|     [[Valkyrie|Val]] || 10 || 1 || 1 || 3/4 || 1
+|-
+|       [[Wizard|Wiz]] || 12 || 2 || 3 || 2 || 5-7
+|}
+{| class="prettytable"
+! Race
+! minimum gain
+! starting
+|-
+| [[Human (starting race)|Human]] || 2 || +1
+|-
+| [[Elf (starting race)|Elf]] || 3 || +2
+|-
+| [[Dwarf (starting race)|Dwarf]] || 0 || no bonus
+|-
+| [[Gnome (starting race)|Gnome]] || 2 || +2
+|-
+| [[Orc (starting race)|Orc]] || 1 || +1
+|}
+
+== Variants ==
+
+===SLASH'EM===
+Self-teleport costs 30 points of power.<ref>{{sourcecode|SLASH'EM_0.0.7E7F2/teleport.c|790}}</ref>
+
+The energy regeration frequency formula is changed to <math>\lfloor (45 - \mathit{level}) \times 3 / 6 \rfloor</math> turns if you are a [[Wizard]], and every <math>\lfloor (45 - \mathit{level}) \times 4 / 6 \rfloor</math> for all other roles.
+
+=== FIQHack ===
+There are numerous changes to energy and energy regeneration in [[FIQHack]].
+
+* Monsters and players use the same spellcasting system, which means that monsters use energy to cast spells instead of using a cooldown system.  This means they can potentially cast multiple spells in succession if they have enough energy, so high-level spellcasting monsters can do much more damage.
+
+* Wisdom is slightly less important for energy regeneration and experience level is slightly more important.  Intelligence is not considered.
+
+* Wizards get a boost of +0.33pw/turn for energy regeneration
+
+* [[The Eye of the Aethiopica]] confers +1pw/turn for energy regeneration
+
+* Players can be [[cancelled]], which results in 0 available energy until cured.
+
+
+== References ==
+
+<references/>
+
+== External links ==
+* [http://www.steelypips.org/nethack/343/hppw-343.txt HP and power starting values, level increases, and regeneration in NetHack 3.4.3]
+
+[[Category:Spellcasting]]
+[[Category:Your character]]
+{{nethack-343}}}
+&&%s&& %s Power {6790 2006-08-07T16:23:26Z {396 Jayt} [[Power]] moved to [[Energy]]: Energy is a better article title. #REDIRECT [[Energy]]}
+&&%s&& %s Mana {6793 2006-08-07T16:25:39Z {396 Jayt} #REDIRECT [[Energy]]; a lot of people call it mana for some reason... #REDIRECT [[Energy]]}
+&&%s&& %s Magical energy {6794 2006-08-07T16:26:37Z {396 Jayt} #REDIRECT [[Energy]] #REDIRECT [[Energy]]}
+&&%s&& %s St {30442 2008-03-09T07:15:13Z {630 Paxed} redirect to proper section #REDIRECT [[Attribute#Strength]]}
+&&%s&& %s Dx {30443 2008-03-09T07:15:46Z {630 Paxed} redirect to proper section #REDIRECT [[Attribute#Dexterity]]}
+&&%s&& %s Co {30444 2008-03-09T07:16:13Z {630 Paxed} redirect to proper section #REDIRECT [[Attribute#Constitution]]}
+&&%s&& %s In {30441 2008-03-09T07:13:18Z {630 Paxed} redirect to proper section #REDIRECT [[Attribute#Intelligence]]}
+&&%s&& %s Wi {30445 2008-03-09T07:16:28Z {630 Paxed} redirect to proper section #REDIRECT [[Attribute#Wisdom]]}
+&&%s&& %s Ch {30446 2008-03-09T07:17:05Z {630 Paxed} redirect to proper section #REDIRECT [[Attribute#Charisma]]}
+&&%s&& %s Human {51410 2010-07-22T05:35:51Z {180 Dakonic} Reordered list to make it similar to other race disambiguation pages. '''Human''' can refer to:
+
+* The [[Human (starting race)|'''human starting race''']].
+* The {{monsym
+|human
+}}'''[[Human (monster)| human monster]]''' (usually only seen as [[corpse]]s).
+* The {{white|@}} '''[[Human (monster attribute)|human or elf]]''' monster class.
+* The [[Human (monster attribute)|'''human monster attribute''']] of all human monsters - including '''[[Keystone Kop]]s'''.
+{{nethack-343}}
+{{disambig}}}
+&&%s&& %s Human (monster) {149912 2023-02-10T16:43:05Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{monster
+ |name=human
+ |tile=[[Image:Human.png]]
+ |difficulty=2
+ |level=0
+ |experience=6
+ |speed=12
+ |AC=10
+ |MR=0
+ |align=0
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 1d6
+ |weight=1450
+ |nutr=400
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|A human|=
+ |humanoid=1|omnivore=1|nopoly=1|human=1|strong=1|collect=1|infravisible=1}}
+ |reference=[[monst.c#line2277]]
+}}
+
+A '''human''' is a very rare monster &mdash; it is never randomly generated or placed in a normal game.{{refsrc|monst.c|2278}} They can be created by zapping a [[wand of undead turning]] at a human corpse, found in [[graveyard]]s and by casting stone to flesh on human statues. Human corpses left by human [[zombie]]s will not create human monsters when zapped by the wand, returning rather to their zombie form. A human monster can also be created by [[reverse genocide]], if the player is human.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|<poem>
+These strange creatures live mostly on the surface of the earth, gathering together in societies of various forms, but occasionally a stray will descend into the depths and commit mayhem among the dungeon residents who, naturally, often resent the intrusion of such beasts.  They are capable of using weapons and magic, and it is even rumored that the Wizard of Yendor is a member of this species.
+</poem>}}
+
+== References ==
+<references/>
+
+{{nethack-343}}
+[[Category:Monsters]]}
+&&%s&& %s Race {148832 2022-10-18T07:28:18Z {375 Ion frigate} De-SLEX: I'm sure there are more, but this is at least true {{Languages}}
+Your starting '''race''' can be one of: [[human (starting race)|human]], [[dwarf (starting race)|dwarf]], [[elf (starting race)|elf]], [[gnome (starting race)|gnome]] or [[orc (starting race)|orc]]. All [[role]]s can choose to be human, whereas the other races are restricted to only some of the roles. Your race affects your starting and [[#Maximum_attributes|maximum attributes]], the [[Peaceful#Which monsters are generated peaceful?|belligerency of monsters]], and the safety of [[Religion|sacrificing]] particular races. Your starting race will also affect what constitutes [[cannibalism]], as well as what creatures can be safely [[genocide]]d.
+
+Polymorphing into an elven, dwarvish, etc. monster will not affect the above. However, your god will never gift you an [[artifact]] that attacks your current form.
+
+Humans can be any [[alignment]] (subject to your chosen role allowing that alignment), but for the others, your race indirectly determines your alignment: dwarves are always lawful, gnomes are always neutral, and elves and orcs are always chaotic.
+
+In general, [[Dwarf|dwarves]] are strong, [[Elf (starting race)|elves]] and [[Gnome (starting race)|gnomes]] are smart, [[Orc (starting race)|orcs]] are poison resistant, and [[Human (starting race)|humans]] are good all-rounders.
+
+==Racial intrinsics==
+{|class="prettytable"
+! Race !! intrinsics !! Notes
+|-
+|Dwarves|| none || Double [[Digging#Digging_speed|digging speed]]
+|-
+|Elves|| [[sleep resistance]] at level 4 || [[Multishot]] bonus for elven arrows from [[elven bow]]s
+|-
+|Gnomes ||none || Can use uncursed [[touchstone]]s as blessed.  [[Multishot]] bonus for [[crossbow bolt]]s
+|-
+|Humans || none || No infravision
+|-
+|Orcs || [[poison resistance]] at level 1 || [[Cannibalism]] is ok.  [[Multishot]] bonus for orcish arrows from [[orcish bow]]s
+|}
+
+==Maximum attributes==
+Your race limits your inherent [[Attribute#Maximum_attributes|attributes]]. Equipped magic items (such as [[gauntlets of dexterity]]) ignore these limits.
+{| class="prettytable sortable striped"
+!| Race
+!| Strength
+!| Dexterity
+!| Constitution
+!| Intelligence
+!| Wisdom
+!| Charisma
+|-         <!-- St       Dx    Co    In    Wi    Ch -->
+|| [[Human (starting race)|Human]] || 18/** || 18 || 18 || 18 || 18 || 18
+|-
+|| [[Elf (starting race)|Elf]]   || 18    || 18 || 16 || 20 || 20 || 18
+|-
+|| [[Dwarf]] || 18/** || 20 || 20 || 16 || 16 || 16
+|-
+|| [[Gnome (starting race)|Gnome]] || 18/50 || 18 || 18 || 19 || 18 || 18
+|-
+|| [[Orc (starting race)|Orc]]   || 18/50 || 18 || 18 || 16 || 16 || 16
+|}
+
+Reference: {{sourcecode|role.c|405}}.
+
+==Strategy comparisons==
+===Human===
+'''Pros'''
+*Have the highest average attribute maximums.
+
+'''Cons'''
+*The only race that doesn't have infravision, making the mines much more dangerous.
+*The Mines may present a challenge. The gnomes will hate you because you're human, and the dwarves will hate you if you're not lawful.
+*Many later monsters are human, which cannot be sacrificed (unless you are chaotic) or eaten (unless you are a caveperson). The latter matters mostly for the [[nurse]] healing effect.
+
+===Elf===
+'''Pros'''
+*[[Elf (starting race)|Elves]] will always be generated peaceful. They tend to spawn in groups, can use dangerous offensive items, and ignore [[invisibility]] and [[Elbereth]]. Having them be peaceful removes this threat.
+*You gain sleep resistance at level 4.
+*The highest Intelligence and Wisdom of all races. Spellcasters can forgo a [[helm of brilliance]] for the higher maximum AC of an [[elven leather helm]].
+*Infravision.
+*Starts with an [[instrument]]. Tooled horns and drums are useful to scare monsters, and tonal instruments can be used to [[dig for victory]].
+
+'''Cons'''
+*Can only be chaotic, making the Mines difficult.
+*Very low strength and constitution, to the point where levitation or gauntlets of power are required to reach the maximum possible carrying capacity.
+
+===Dwarf===
+'''Pros'''
+*Excellent physical stats. Dwarves can clear the encumbrance cap with no problem, and are well suited to sturdy fighter roles.
+*Infravision.
+*Gnomes and dwarves in the Mines are always generated peaceful, relieving some of the problems of that branch.
+
+'''Cons'''
+*Low Intelligence and Wisdom. This makes spellcasting all but impossible; thankfully it is not important for any of the dwarvish roles.
+*Cannot blessed-genocide {{white|h}} to kill off [[mind flayers]] and [[master mind flayers]]. Instead, two uncursed scrolls are required.
+*Gaining experience in the Mines can be difficult because so many monsters will be peaceful.
+
+===Gnome===
+'''Pros'''
+*Gnomes and dwarves in the Mines are always generated peaceful, the same as for dwarves.
+*Higher Intelligence than humans, although only average wisdom.
+*Good strength and average constitution. They can hit the encumbrance cap without aid.
+*You can use uncursed touchstones as if they are blessed. If you find an early touchstone and a shop that will buy gems, this can get you a lot of gold early on.
+*Infravision.
+
+'''Cons'''
+*Can only be neutral, so you cannot [[murder]] or sacrifice gnome corpses without heavy consequences.
+*As it is with dwarves, gaining experience in the Mines can be a challenge.
+
+===Orc===
+'''Pros'''
+*Orcs start with [[poison resistance]], preventing certain YASDs and allowing you to eat more types of monsters, such as [[kobold]]s.
+*No cannibalism penalty, so you can eat anyone with impunity! You can even eat cats and dogs!
+*Good strength and average constitution. They can hit the encumbrance cap without aid.
+*Infravision.
+*Since they are always chaotic, and orcs are plentiful in the early and mid games, it is easy to convert any altar via sacrificing your own race.
+
+'''Cons'''
+*Orcish weapons and armor provide lower damage and AC than other racial variants.
+*Low Intelligence and Wisdom makes spellcasting very difficult. A [[helm of brilliance]] will be essential if you wish to cast spells reliably.
+*Can only be chaotic, making the mines difficult.
+
+==Description==
+The [[guidebook]] offers the following advice about the starting races:
+{{guidebook|Dwarves are smaller than humans or elves, but are stocky and solid individuals.  Dwarves' most notable trait  is  their  great expertise  in mining and metalwork.  Dwarvish armor is said to be second in quality not even to the mithril armor of the Elves.}}
+
+{{guidebook|Elves are agile, quick, and perceptive; very little of what goes  on  will escape an Elf.  The quality of Elven craftsmanship often gives them an advantage in arms and armor.}}
+
+{{guidebook|Gnomes are smaller than but generally similar to dwarves.  Gnomes  are known to be expert miners, and it is known that a secret underground mine complex built by this  race  exists  within the Mazes of Menace, filled with both riches and danger.}}
+
+{{guidebook|Humans are by far the most common race of the surface world, and are thus the norm by which other races  are  often  compared.  Although  they have no special abilities, they can succeed in any role.}}
+
+{{guidebook|Orcs are a cruel and barbaric race that  hate  every  living thing  (including other orcs).  Above all others, Orcs hate Elves with a passion unequalled, and will go out of their way  to  kill one  at  any opportunity.  The armor and weapons fashioned by the Orcs are typically of inferior quality.}}
+
+== Variants ==
+
+=== SLASH'EM ===
+[[SLASH'EM]] has new races, as well as changes to allowed alignments and statistics of original races. New races are:
+
+* [[Drow_(starting_race)|Drow]] &ndash; Can put monsters to sleep with bare handed attack
+* [[Doppelganger (starting race)|Doppelganger]] &ndash; Has natural [[protection]], very high stats, and the #youpoly ability
+* [[Hobbit (starting race)|Hobbit]] &ndash; [[fast]]
+* [[Lycanthrope (starting race)|Lycanthrope]] &ndash; [[regeneration]] and [[lycanthropy]]
+* [[Vampire_(starting_race_in_SLASH'EM)|Vampire]] &ndash; [[regeneration]], very high stats, level-drain resistance, moves by flying, but can only eat fresh blood
+
+=== SlashTHEM ===
+In addition to including all of the races in SLASH'EM, SlashTHEM adds several new races, including [[Ogre (player race)|playable ogres]] and [[Giant (starting race)|giants]].
+
+=== dnethack ===
+[[dnethack]] adds the following new races:
+
+*[[Clockwork Automaton (starting race)|Clockwork automaton]] &ndash; unliving constructs that may upgrades themselves. 
+*[[Drow (starting race)#dNethack|Drow]] &ndash; Dark Elves, with special racial equipment and powers.
+*[[Half-Dragon (starting race)|Half-dragon]] &ndash; powerful, but slow human hybrids with a randomized breath weapon.
+*[[Incantifier (starting race)|Incantifier]] &ndash; expert spellcasters that eat only magic.
+*[[Vampire (starting race in dNetHack)|Vampire]] &ndash; powerful undead that start with flying and regeneration, but must feed on blood to sate their increased hunger.
+
+
+{{stub}}
+
+{{nethack-360|offset=1}}
+{{slashem-7E7|}}
+[[Category:Races| ]]}
+&&%s&& %s Price identification {149938 2023-02-11T15:11:11Z {4001479 Hexcoder} /* Scrolls */ add a missing 'a' '''Price identification''' is the tactic of using the price of an [[item]] to informally [[identify]] it. One can use the "'''buy price'''", the price of an item in [[shop]]s, or the "'''sell price'''", the price that a [[shopkeeper]] offers when you try to sell an item. The sell price is easier to use because the buy price includes an unpredictable random factor that may disguise certain prices as other ones. Even if you have enough scrolls of identify and no conducts in mind, pricing lets you use those scrolls to prioritize the most important items.
+
+[[NetHack 3.6.0]] and [[3.6.1]] introduced changes to the price mechanics that make older price guides slightly inaccurate. The tables in {{sa|Price tables|sectionsign=1}} are duplicated for the 3.4.3 and 3.6.0 mechanics. If you're playing an older version and not using the tables, see the {{sa|History|sectionsign=1}} section before drawing conclusions based on prices.
+
+==Price derivation==
+===Base price===
+Each item in ''NetHack'' has a base price, which is modified in various ways to produce the final selling price. Positively-enchanted weapons and armor have an additional 10 zm added to their base price for every point of enchantment.
+
+Some items are considered "worthless"; you cannot sell them, but their buying price is calculated as though they had a base price of 5 zm:
+
+* items with zero base price
+* [[cancelled]] [[wand]]s (with -1 charges)
+* uncursed [[potions of water]]
+
+Unidentified valuable [[gem]]s and worthless glass are always bought as though they were valuable, and sold for only a few zorkmids, regardless of their "true" value, so price identification can't be used to distinguish them. [[Gray stone]]s are priced like other items, so you ''can'' price-identify them.
+
+===Buying===
+When you buy an item, you are charged the base price, modified as follows. All multipliers are applied in sequence:
+
+* Your [[charisma]] grants a modifier to the buying price.{{refsrc|src/shk.c|2134|version=NetHack 3.6.6}}
+{| class="wikitable"
+|- align=center
+! style="text-align:right" | Charisma:
+| &le; 5 || 6–7 || 8–10 || 11–15 || 16–17 || 18 || &ge; 19
+|- align=center
+! style="text-align:right" | Buy price multiplier:
+| 2 || {{frac|1|1|2}} || {{frac|1|1|3}} || 1 || {{frac|3|4}} || {{frac|2|3}} || {{frac|1|2}}
+|}
+* Some characters are considered "suckers", and will be charged {{frac|3}} more. You are a sucker if:{{refsrc|src/shk.c|2128|version=NetHack 3.6.6}}
+** you're wearing a [[dunce cap]]
+** you're wearing a [[shirt]] not covered by a [[cloak]] or [[body armor]]
+** you're a [[Tourist]] below [[experience level]] 15
+* When buying unidentified objects, in {{frac|4}} of cases the shopkeeper will charge {{frac|3}} more. This surcharge is tied to the individual item or stack; merged stacks will inherit the higher of the two prices, while split stacks will inherit the price of the original stack.
+
+===Selling===
+When you sell an item, you are normally offered {{frac|2}} the base price; if you're a sucker, as above, you are offered {{frac|3}} the base price instead. {{frac|4}} of shopkeepers will pay {{frac|4}} less for unidentified objects. This modifier is consistent for a given shopkeeper, so you can determine whether a given shopkeeper is affected by selling an informally-identified item.
+
+== Further strategies ==
+[[General store]]s are very useful for price identification because they will offer to buy all types of items. However, you can still price-identify any object (unbreakable or in a [[bag of holding]]) in any store by [[throw]]ing the item into the shop from outside. If the item is fragile, you can have your [[pet]] carry it in, in a container if the item is cursed. Beware that this will relinquish ownership of the item (and the container, if any) to the shopkeeper, who will then try to sell it to you. You will need to pay the asking price or steal the item to get it back, but in a pinch, this can provide a price for an object that the shopkeeper would not normally be interested in.
+
+Some items in an item class are 4/3 the price of other items in the class, which can give ambiguous results when buying if the random surcharge applies. A 60zm scroll of enchant weapon could appear to be one of the 80zm scrolls, a  level 3 spellbook can appear to be level 4, and there are many 150zm items that can seem to be 200zm. Selling items is more reliable in this case because the random selling modifier applies to the shopkeeper; if selling an item results in what appears to be an impossible price, you know that this shopkeeper is "greedy", and all other selling prices from them can be adjusted accordingly.
+
+=== Common uses ===
+
+The item which is most commonly price-IDed is the [[scroll of identify]], which is far cheaper than the other scrolls. In addition, [[magic lamp]]s cost more than [[oil lamp]]s, and [[Enchantment#Armor|enchanted armor]] costs more than their unenchanted versions.
+
+Price-IDing can also be useful to identify bad items. The [[scroll of amnesia]] has a base price of 200zm, ten times as much as a scroll of identify. A potion of sickness has a base price of 50zm, a potion of hallucination 100zm, and a potion of blindness 150zm.
+
+Non-[[Wizard]]s will find it helpful to price-identify the difficulty level of [[spellbook]]s to determine whether they are safe to [[read]]. The base price of a spellbook is 100 zorkmids times its difficulty level. The derived sell price is half that.
+
+=== Stealing powerful wands ===
+
+An expensive [[wand]] (base price 500zm) is either {{wand of|wishing|or=1|death}}. In general, you should have a pet steal such an item; if you don't have a pet, both wands are well worth buying.  If you have neither a pet nor the gold, either should be pretty easy to obtain: throw a [[tripe ration|tripe]] or [[food ration]] at a wild dog or cat, or sell [[junk]] to the shopkeeper.
+
+One might be tempted to zap the wand (wishing for a wand of death if it's a wand of wishing) at the shopkeeper, but for early characters, this is a [[bad idea]]: the death ray might miss, which can easily lead to a quick [[YASD]], given shopkeepers' speed and damage output. Furthermore, wishing for a wand of death from a wand of wishing is generally a waste anyways, given that by the time you really need one, you can get the one [[Orcus]] carries. If you're truly concerned about your character's ability to survive long enough to buy or steal the wand, wishing for 5000 gold pieces is a safe way to be able to do so, though it is also a waste of a wish. If you really want to kill the shopkeeper, wish for a blessed [[figurine]] of an Archon, though be aware that this has a 10% chance of backfiring.
+
+==Price tables==
+
+In the tables below, two numbers are shown in parentheses with the buying price. The first number in parentheses is the price if you are charged either the unidentified surcharge or the sucker markup. The second number is the price with both of those surcharges. For the selling price, the number in parentheses is the amount of a randomly discounted offer. Numbers in '''bold''' are prices that leave the base price ambiguous.
+
+===Magical armor===
+
+====Boots====
+<div class="toccolours">
+{|class="prettytable mw-collapsible mw-collapsed"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.4.3 and earlier'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Boot types
+|-
+| 8 ||16 (20/26)||12 (15/19)||10 (13/17)||8 (10/13)||6 (8/10)||6 (7/9)||4 (5/6)||4 (3)||[[elven boots]], [[kicking boots]]
+|-
+| 30 ||60 (80/106)||45 (60/79)||40 (53/70)||30 (40/53)||23 (30/40)||20 (27/36)||15 (20/26)||15 (12)||[[fumble boots]], [[levitation boots]]
+|-
+| 50 ||100 (132/176)||75 (99/132)||66 (88/117)||50 (66/88)||38 (50/66)||34 (44/59)||25 (33/44)||25 (19)||[[jumping boots]], [[speed boots]], [[water walking boots]]
+|}
+</div>
+
+<div class="toccolours">
+{|class="prettytable mw-collapsible"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.6.0 and later'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Boot types
+|-
+| 8 ||16 (21/28)||12 (16/21)||11 (14/19)||8 (11/14)||6 (8/11)||5 (7/9)||4 (5/7)||4 (3)||[[elven boots]], [[kicking boots]]
+|-
+| 30 ||60 (80/107)||45 (60/80)||40 (53/71)||30 (40/53)||23 (30/40)||20 (27/36)||15 (20/27)||15 (11)||[[fumble boots]], [[levitation boots]]
+|-
+| 50 ||100 (133/178)||75 (100/133)||67 (89/119)||50 (67/89)||38 (50/67)||33 (44/59)||25 (33/44)||25 (19)||[[jumping boots]], [[speed boots]], [[water walking boots]]
+|}
+</div>
+
+[[Fumble boots]] and [[levitation boots]] are both 30zm, but are of different [[weight]]s. They are often [[cursed]].
+
+[[Speed boots]], [[jumping boots]], and [[water walking boots]] are all priced at 50zm. They are easily identified once worn: speed boots auto-identify if you are not already very fast ([[potion of speed]] or {{spell of|haste self}} spell), jumping boots allow you to [[jump]], and boots of water walking are otherwise mundane.
+
+[[Elven boots]] cause you to "walk very quietly" and self-identify if you are not already [[stealth]]y. [[Kicking boots]] are made of metal, and consequently add to [[spell]] failure percentage.
+
+====Cloaks====
+<div class="toccolours">
+{|class="prettytable mw-collapsible mw-collapsed"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.4.3 and earlier'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Cloak types
+|-
+| 2 ||10 (12/16)||7 (9/12)||6 (8/10)||5 (6/8)||4 (5/6)||4 (4/6)||2 (3/4)||1||[[mummy wrapping]]
+|-
+| 40 ||80 (106/140)||60 (79/105)||53 (70/93)||40 (53/70)||30 (40/53)||27 (36/47)||20 (26/35)||20 (15)||[[leather cloak|leather]], [[orcish cloak|orcish]] ("coarse mantelet")
+|-
+| 50 ||100 (132/176)||75 (99/132)||66 (88/117)||50 (66/88)||38 (50/66)||34 (44/59)||25 (33/44)||25 (19)||[[alchemy smock]] ("apron"), {{of|cloak|displacement}}, [[dwarvish cloak|dwarvish]] ("hooded cloak"), [[oilskin cloak|oilskin]] ("slippery cloak"), {{of|cloak|protection}}, [[robe]] ("robe")
+|-
+| 60 ||120 (160/212)||90 (120/159)||80 (106/141)||60 (80/106)||45 (60/80)||40 (54/71)||30 (40/53)||30 (23)||[[elven cloak|elven]] ("faded pall"), {{of|cloak|invisibility|magic resistance}}
+|}
+</div>
+
+<div class="toccolours">
+{|class="prettytable mw-collapsible"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.6.0 and later'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Cloak types
+|-
+| 2 ||10 (13/18)||8 (10/13)||7 (9/12)||5 (7/9)||4 (5/7)||3 (4/6)||3 (3/4)||1 (1)||[[mummy wrapping]]
+|-
+| 40 ||80 (107/142)||60 (80/107)||53 (71/95)||40 (53/71)||30 (40/53)||27 (36/47)||20 (27/36)||20 (15)||[[leather cloak|leather]], [[orcish cloak|orcish]] ("coarse mantelet")
+|-
+| 50 ||100 (133/178)||75 (100/133)||67 (89/119)||50 (67/89)||38 (50/67)||33 (44/59)||25 (33/44)||25 (19)||[[alchemy smock]] ("apron"), {{of|cloak|displacement}}, [[dwarvish cloak|dwarvish]] ("hooded cloak"), [[oilskin cloak|oilskin]] ("slippery cloak"), {{of|cloak|protection}}, [[robe]] ("robe")
+|-
+| 60 ||120 (160/213)||90 (120/160)||80 (107/142)||60 (80/107)||45 (60/80)||40 (53/71)||30 (40/53)||30 (23)||[[elven cloak|elven]] ("faded pall"), {{of|cloak|invisibility|magic resistance}}
+|}
+</div>
+
+The cloaks of displacement and protection both cost 50zm, and are the only ones at that price with a randomized appearance. If a cloak costs 60zm and has a randomized appearance, then it is either invisibility, magic resistance, or a +1 cloak of the first two types.
+
+====Other armor====
+All magical [[randomized appearance|randomized]] [[helm]]s ({{of|helm|brilliance|opposite alignment|and=1|telepathy}}) cost 50zm; the [[helmet]] costs 10zm.
+
+All magical [[gloves]] ({{of|gauntlets|dexterity|fumbling|and=1|power}}) cost 50zm; [[leather gloves]] cost 8zm.
+
+Positive [[enchantment]] on a piece of armor increases the base price by 10zm per point of enchantment. In theory, a +2 or better pair of fumble boots might be confused for one of the much more useful 50zm boots, but the probability for positive enchantments on harmful items is too low to be worth worrying about.
+
+===Scrolls===
+<div class="toccolours">
+{|class="prettytable mw-collapsible mw-collapsed"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.4.3 and earlier'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Scroll types
+|-
+| 20 ||40 (52/68)||30 (39/51)||26 (34/45)||20 (26/34)||15 (20/26)||14 (18/23)||10 (13/17)||10 (8)||{{scroll of|identify}}
+|-
+| 50 ||100 (132/176)||75 (99/132)||66 (88/117)||50 (66/88)||38 (50/66)||34 (44/59)||25 (33/44)||25 (19)||{{scroll of|light}}
+|-
+| 60 ||120 (160/212)||90 (120/159)||80 (106/141)||60 (80/106)||45 (60/80)||40 (54/71)||30 (40/53)||30 (23)||{{scroll of|blank paper}} ("unlabeled scroll"), {{scroll of|enchant weapon}}
+|-
+| 80 ||160 (212/282)||120 (159/211)||106 (141/188)||80 (106/141)||60 (80/106)||54 (71/94)||40 (53/70)||40 (30)||{{scroll of|enchant armor|remove curse}}
+|-
+| 100 ||200 (266/354)||150 (199/265)||133 (177/236)||100 (133/177)||75 (100/133)||67 (89/118)||50 (66/88)||50 (38)||{{scroll of|confuse monster|destroy armor|fire|food detection|gold detection}}, {{scroll of|magic mapping|scare monster|teleportation}}
+|-
+| 200 ||400 (532/708)||300 (399/531)||266 (354/472)||200 (266/354)||150 (200/266)||134 (178/236)||100 (133/177)||100 (75)||{{scroll of|amnesia|create monster|earth|taming}}
+|-
+| 300  ||600 (800/1066)||450 (600/799)||400 (533/710)||300 (400/533)||225 (300/400)||200 (267/356)||150 (200/266)||150 (113)||{{scroll of|charging|genocide|punishment|stinking cloud}}
+|}
+</div>
+
+<div class="toccolours">
+{|class="prettytable mw-collapsible"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.6.0 and later'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Scroll types
+|-
+| 20 ||40 (53/71)||30 (40/53)||27 (36/47)||20 (27/36)||15 (20/27)||13 (18/24)||10 (13/18)||10 (8)||{{scroll of|identify}}
+|-
+| 50 ||100 (133/178)||75 (100/133)||67 (89/119)||50 (67/89)||38 (50/67)||33 (44/59)||25 (33/44)||25 (19)||{{scroll of|light}}
+|-
+| 60 ||120 ('''160'''/'''213''')||90 ('''120'''/'''160''')||80 ('''107'''/'''142''')||60 ('''80'''/'''107''')||45 ('''60'''/'''80''')||40 ('''53'''/'''71''')||30 ('''40'''/'''53''')||'''30''' (23)||{{scroll of|blank paper}} ("unlabeled scroll"), {{scroll of|enchant weapon}}
+|-
+| 80 ||'''160''' ('''213'''/284)||'''120''' ('''160'''/213)||'''107''' ('''142'''/190)||'''80''' ('''107'''/142)||'''60''' ('''80'''/107)||'''53''' ('''71'''/95)||'''40''' ('''53'''/71)||40 ('''30''')||{{scroll of|enchant armor|remove curse}}
+|-
+| 100 ||200 (267/356)||150 (200/267)||133 (178/237)||100 (133/178)||75 (100/133)||67 (89/119)||50 (67/89)||50 (38)||{{scroll of|confuse monster|destroy armor|fire|food detection|gold detection}}, {{scroll of|magic mapping|scare monster|teleportation}}
+|-
+| 200 ||400 (533/711)||300 (400/533)||267 (356/474)||200 (267/356)||150 (200/267)||133 (178/237)||100 (133/178)||100 (75)||{{scroll of|amnesia|create monster|earth|taming}}
+|-
+| 300 ||600 (800/1067)||450 (600/800)||400 (533/711)||300 (400/533)||225 (300/400)||200 (267/356)||150 (200/267)||150 (113)||{{scroll of|charging|genocide|punishment|stinking cloud}}
+|}
+</div>
+
+If the scroll costs '''20zm''', '''50zm''', or '''60zm''', it is uniquely identified. Identification of more expensive scrolls usually involves using the spell or scroll of [[Identification#Magical_identification|identify]]. If you choose to read an unknown scroll, you should always make sure the unknown scroll is not cursed, and never read it while confused.
+
+If the scroll costs '''80zm''', it is either {{scroll of|enchant armor|or=1|remove curse}}. Both are harmless, unless the scroll is cursed or you are confused. Before reading, you may want to bless the scroll, wear only armor you want to enchant, and hold all the cursed items you want to uncurse.
+
+Among scrolls that cost '''100zm''', there are two dangerous scrolls, {{scroll of|fire|and=1|destroy armor}}. Before reading, to protect from ill effects of the former, put all your scrolls, potions, and spellbooks into a container, or into a closet, or leave them on a different level, or just leave them at least 2 squares from you (but then you should beware of the danger of them being picked up by a monster if you encountered a [[scroll of teleportation]]. To protect from ill effects of both scrolls, make sure all your armor, except a shirt covered by a body armor or cloak, and body armor covered by a cloak, is something you can afford to lose.
+
+If the scroll costs '''200zm''', the only dangerous scroll is {{scroll of|amnesia}}, but it is really bad, and you cannot protect from it. Unless you have identified the scroll of amnesia, don't read an unkown 200-zorkmid scroll. Identify it by other means.
+
+If the scroll costs '''300zm''', the only dangerous scroll is {{scroll of|punishment}}. In Nethack 3.4.3, there is a simple way to get rid of the heavy iron ball, involving a pit and a boulder, but since 3.6.0, it doesn't work.  Don't read the scroll unless you have a non-cursed scroll of remove curse or a wand of opening, or unless you know and can cast a knock spell, or can polymorph into a nymph or metallivore. Alternatively, you can bless the scroll and then read it. Blessed scrolls of punishment are harmless, and blessed scrolls of genocide and charging are more powerful than uncursed scrolls. Finally, if you are absolutely sure it is not a scroll of genocide, you can read it while confused. Beware! Reading a scroll of genocide while confused would genocide your own race, thus killing you, even if you are wearing an [[amulet of life saving]].
+
+===Potions===
+<div class="toccolours">
+{|class="prettytable mw-collapsible mw-collapsed"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.4.3 and earlier'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Potion types
+|-
+| 0 ||10 (12/16)||7 (9/12)||6 (8/10)||5 (6/8)||4 (5/6)||4 (4/6)||2 (3/4)||0||{{potion of|water}} (uncursed)
+|-
+| 50 ||100 (132/176)||75 (99/132)||66 (88/117)||50 (66/88)||38 (50/66)||34 (44/59)||25 (33/44)||25 (19)||{{potion of|booze|fruit juice|see invisible|sickness}}
+|-
+| 100 ||200 (266/354)||150 (199/265)||133 (177/236)||100 (133/177)||75 (100/133)||67 (89/118)||50 (66/88)||50 (38)||{{potion of|confusion|extra healing|hallucination|healing|holy water}} ("blessed clear potion"), {{potion of|unholy water}} ("cursed clear potion"), {{potion of|restore ability|sleeping}}
+|-
+| 150 ||300 (400/532)||225 (300/399)||200 (266/354)||150 (200/266)||113 (150/200)||100 (134/178)||75 (100/133)||75 (57)||{{potion of|blindness|gain energy|invisibility|monster detection|object detection}}
+|-
+| 200 ||400 (532/708)||300 (399/531)||266 (354/472)||200 (266/354)||150 (200/266)||134 (178/236)||100 (133/177)||100 (75)||{{potion of|enlightenment|full healing|levitation|polymorph|speed}}
+|-
+| 250 ||500 (666/888)||375 (499/666)||333 (444/592)||250 (333/444)||188 (250/333)||167 (222/296)||125 (166/222)||125 (94)||{{potion of|acid|oil}}
+|-
+| 300 ||600 (800/1066)||450 (600/799)||400 (533/710)||300 (400/533)||225 (300/400)||200 (267/356)||150 (200/266)||150 (113)||{{potion of|gain ability|gain level|paralysis}}
+|}
+</div>
+
+<div class="toccolours">
+{|class="prettytable mw-collapsible"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.6.0 and later'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Potion types
+|-
+| 0 ||10 (13/18)||8 (10/13)||7 (9/12)||5 (7/9)||4 (5/7)||3 (4/6)||3 (3/4)||0 (0)||{{potion of|water}} (uncursed)
+|-
+| 50 ||100 (133/178)||75 (100/133)||67 (89/119)||50 (67/89)||38 (50/67)||33 (44/59)||25 (33/44)||25 (19)||{{potion of|booze|fruit juice|see invisible|sickness}}
+|-
+| 100 ||200 (267/356)||150 (200/267)||133 (178/237)||100 (133/178)||75 (100/133)||67 (89/119)||50 (67/89)||50 (38)||{{potion of|confusion|extra healing|hallucination|healing|holy water}} ("blessed clear potion"), {{potion of|unholy water}} ("cursed clear potion"), {{potion of|restore ability|sleeping}}
+|-
+| 150 ||300 ('''400'''/'''533''')||225 ('''300'''/'''400''')||200 ('''267'''/'''356''')||150 ('''200'''/'''267''')||113 ('''150'''/'''200''')||100 ('''133'''/'''178''')||75 ('''100'''/'''133''')||'''75''' (56)||{{potion of|blindness|gain energy|invisibility|monster detection|object detection}}
+|-
+| 200 ||'''400''' ('''533'''/711)||'''300''' ('''400'''/533)||'''267''' ('''356'''/474)||'''200''' ('''267'''/356)||'''150''' ('''200'''/267)||'''133''' ('''178'''/237)||'''100''' ('''133'''/178)||100 ('''75''')||{{potion of|enlightenment|full healing|levitation|polymorph|speed}}
+|-
+| 250 ||500 (667/889)||375 (500/667)||333 (444/593)||250 (333/444)||188 (250/333)||167 (222/296)||125 (167/222)||125 (94)||{{potion of|acid|oil}}
+|-
+| 300 ||600 (800/1067)||450 (600/800)||400 (533/711)||300 (400/533)||225 (300/400)||200 (267/356)||150 (200/267)||150 (113)||{{potion of|gain ability|gain level|paralysis}}
+|}
+</div>
+
+If the potion is water (clear potion), price gives some information about its [[beatitude]]. If the price is 0, the water is uncursed; otherwise it is either [[Potion of holy water|holy]] or {{potion of|unholy water}}.
+
+If the price is 250zm, you can ensure it is not cursed, then try to [[apply]] it. If it is a potion of oil, it will be lit. Do not do this when the potion is owned by a shop, or you will be forced to pay for the potion and will be charged [[Yendorian Fuel Tax]].
+
+Otherwise, price identification of a potion usually includes quaffing it. See [[Potion#Price identification then quaffing|Potion § Price identification then quaffing]] for more information.
+
+===Rings===
+<div class="toccolours">
+{|class="prettytable mw-collapsible mw-collapsed"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.4.3 and earlier'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Ring types
+|-
+| 100 ||200 (266/354)||150 (199/265)||133 (177/236)||100 (133/177)||75 (100/133)||67 (89/118)||50 (66/88)||50 (38)||{{ring of|adornment|hunger}}*, {{ring of|protection|protection from shape changers|stealth|sustain ability|warning}}
+|-
+| 150 ||300 (400/532)||225 (300/399)||200 (266/354)||150 (200/266)||113 (150/200)||100 (134/178)||75 (100/133)||75 (57)||{{ring of|aggravate monster}}*, {{ring of|cold resistance|gain constitution|gain strength|increase accuracy|increase damage}}, {{ring of|invisibility|poison resistance|see invisible|shock resistance}}
+|-
+| 200 ||400 (532/708)||300 (399/531)||266 (354/472)||200 (266/354)||150 (200/266)||134 (178/236)||100 (133/177)||100 (75)||{{ring of|fire resistance|free action|levitation|regeneration|searching}}, {{ring of|slow digestion|teleportation}}*
+|-
+| 300  ||600 (800/1066)||450 (600/799)||400 (533/710)||300 (400/533)||225 (300/400)||200 (267/356)||150 (200/266)||150 (113)||{{ring of|conflict|polymorph}}*, {{ring of|polymorph control|teleport control}}
+|}
+</div>
+
+<div class="toccolours">
+{|class="prettytable mw-collapsible"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.6.0 and later'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Ring types
+|-
+| 100 ||200 (267/356)||150 (200/267)||133 (178/237)||100 (133/178)||75 (100/133)||67 (89/119)||50 (67/89)||50 (38)||{{ring of|adornment|hunger}}*, {{ring of|protection|protection from shape changers|stealth|sustain ability|warning}}
+|-
+| 150 ||300 ('''400'''/'''533''')||225 ('''300'''/'''400''')||200 ('''267'''/'''356''')||150 ('''200'''/'''267''')||113 ('''150'''/'''200''')||100 ('''133'''/'''178''')||75 ('''100'''/'''133''')||'''75''' (56)||{{ring of|aggravate monster}}*, {{ring of|cold resistance|gain constitution|gain strength|increase accuracy|increase damage}}, {{ring of|invisibility|poison resistance|see invisible|shock resistance}}
+|-
+| 200 ||'''400''' ('''533'''/711)||'''300''' ('''400'''/533)||'''267''' ('''356'''/474)||'''200''' ('''267'''/356)||'''150''' ('''200'''/267)||'''133''' ('''178'''/237)||'''100''' ('''133'''/178)||100 ('''75''')||{{ring of|fire resistance|free action|levitation|regeneration|searching}}, {{ring of|slow digestion|teleportation}}*
+|-
+| 300 ||600 (800/1067)||450 (600/800)||400 (533/711)||300 (400/533)||225 (300/400)||200 (267/356)||150 (200/267)||150 (113)||{{ring of|conflict|polymorph}}*, {{ring of|polymorph control|teleport control}}
+|}
+</div>
+
+An asterisk (*) indicates that this ring is generated cursed 90% of the time.
+
+The most useful [[ring]]s to price-identify are the most expensive and most powerful rings: the 200zm and 300zm rings.
+
+All 200zm rings, provided they are non-cursed, are useful and safe to wear. These include the rings of {{ring of|free action|slow digestion|searching|levitation|regeneration}}, {{ring of|fire resistance|and=1|teleportation}}. It is important to only wear rings from this group known to be non-cursed, since uncontrolled [[teleportitis]] or a cursed ring of levitation may be hazardous. The ring of levitation auto-identifies when worn; the effects of the other 200zm rings, with the probable exceptions of fire resistance or teleportation if you already have the [[intrinsics]], will eventually become clear if you wear the rings. The ring of regeneration can also be quickly tested for: wear it, throw a (preferably non-breakable) object up <!-- don't kick a wall, it wakes up and attracts nearby monsters. You don't want a nymph right outside the door.-->to lose a few hit points, and watch if you re-gain them every turn.
+
+The 300zm rings include the rings of {{ring of|conflict|teleport control|polymorph|and=1|polymorph control}}. The first two are among the most coveted items in the game and are frequent [[wish]] targets, however the ring of polymorph means that 300zm rings are not generally safe to wear. Conflict can still be easily identified by wearing it for a turn or two around a peaceful monster (remember that a [[shopkeeper]], [[aligned priest]], or your Quest leader are probably not wise choices). Teleport control can also be identified by putting on the ring and triggering a teleport (via trap, scroll, wand, etc.) If your 300zm ring is neither of these, do not wear it; use a scroll, spell, a handy [[sink]] or a source of [[enlightenment]] to reliably identify the other 300zm rings. Alternately, a riskier method of determining whether a 300zm ring is safe to wear is simply to wear it for a few hundred turns without wearing a [[shirt]], [[cloak]], or [[body armor]] (or wearing [[junk]] armor); that way, if you [[polymorph]] you will not break your useful armor.
+
+===Wands===
+<div class="toccolours">
+{|class="prettytable mw-collapsible mw-collapsed"
+|+ class="nowrap" style="text-align:left" |'''Prices in NetHack 3.4.3 and earlier'''
+!Base cost!![[Charisma|Cha]] <span class="nowrap">&le; 5</span>!!Cha <span class="nowrap">6–7</span>!!Cha <span class="nowrap">8–10</span>!!Cha <span class="nowrap">11–15</span>!!Cha <span class="nowrap">16–17</span>!!Cha 18!!Cha <span class="nowrap">&ge; 19</span>!!Selling price!!Wand types
+|-
+| 100 ||200 (266/354)||150 (199/265)||133 (177/236)||100 (133/177)||75 (100/133)||67 (89/118)||50 (66/88)||50 (38)||{{wand of|light|nothing}}
+|-
+| 150 ||300 (400/532)||225 (300/399)||200 (266/354)||150 (200/266)||113 (150/200)||100 (134/178)||75 (100/133)||75 (57)||{{wand of|digging|enlightenment|locking|magic missile|make invisible}}, {{wand of|opening|probing|secret door detection|slow monster|speed monster}}, {{wand of|striking|undead turning}}
+|-
+| 175 ||350 (466/620)||262 (349/465)||233 (310/413)||175 (233/310)||132 (175/233)||117 (156/207)||87 (116/155)||87 (66)||{{wand of|cold|fire|lightning|sleep}}
+|-
+| 200 ||400 (532/708)||300 (399/531)||266 (356/472)||200 (266/354)||150 (200/266)||134 (178/236)||100 (133/177)||100 (75)||{{wand of|cancellation|create monster|polymorph|teleportation}}
+|-
+| 500  ||1000 (1332/1776)||750 (999/1332)||666 (888/1184)||500 (666/888)||375 (500/666)||334 (444/592)||250 (333/444)||250 (188)||{{wand of|death|wishing}}
+|}
+</div>
+
+<div class="toccolours">

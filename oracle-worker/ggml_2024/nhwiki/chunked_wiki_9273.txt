@@ -1,0 +1,1000 @@
+'''extra healing의 물약'''은 당신을 [[healing|치료할]] 것입니다.
+
+== Generation ==
+
+extra healing의 물약은 [[defensive item|방어적 아이템]]으로 생성될수 있습니다.  그러므로 그것은 그것을 사용할줄 아는 많은 몬스터의 [[Monster starting inventory|시작 인벤토리]] 안에서 볼수 있습니다.
+ 
+==Effects==
+축복받은 물약은 마셨을때 8d8 체력을, 저주받지 않았다면 6d8 체력을, 그리고 저주받은 것은 4d8 체력을 회복시킬 것입니다. 만약 이것이 당신의 체력을 최대치 위로 올린다면, 당신의 최대치가 저주받지 않았다면 2, 축복 받았다면 5 상승시킬 것입니다. 해당 물약은 또한 [[hallucination|환각]]과 [[blindness|실명]]을 치료하고, [[constitution]]와 [[strength|힘]]을 [[exercise|훈련]]시킬 것입니다,{{refsrc|potion.c|958|version=NetHack 3.6.1}} 그리고 만약 저주받지 않았다면, [[sickness|질병]]을 치료합니다.
+
+Inhaling [[vapors]] (of potion of any [[beatitude]]) will heal you 2 HP, up to your maxHP, and exercise constitution.{{refsrc|potion.c|1607|version=NetHack 3.6.1}} If you're polymorphed, health of your base form is adjusted as well.
+
+You can [[Alchemy|alchemize]] potions of extra healing with [[potion of gain level|gain level]] or [[potion of gain energy|gain energy]] to get a [[potion of full healing|full healing]].  Conversely, one can make potions of extra healing by dipping a [[potion of healing]] in a potion of gain energy, gain level, or [[potion of speed|speed]].
+
+==Strategy==
+
+===Boosting maximum HP===
+일부 플레이어, especially pacifists or protection runners, might quaff this potion right away for the maximum HP boost.  즉시 체력 부스트가 필요하지 않은 플레이어들은, 그것들을 완전 회복의 물약으로 연금술 할수 있을 때까지 기다리는 것이 더 낫습니다.  Even those who don't have the time or ability to alchemize the potion should try to bless it first, since it gives over twice as much maximum HP that way.
+
+===Alchemy===
+With the [[Alchemy#Stacking|new alchemy stacking rules]] introduced in [[3.6.0]], turning this potion into [[full healing]] may not always be desirable.  Dipping a (sufficiently large) stack of extra healing potions will alchemize only 5.5 of them on average; there's further 10% chance of them exploding, losing any potential HP boost, and 90% chance of obtaining full healing, which gives you 3 more max HP per potion.  That means, on average, you only get extra 12.1 max HP per dip, compared to just drinking extra healing directly.  As each dip uses up either a [[gain energy]] or a [[gain level]] potion, these 12.1 HP need to be weighted against 10.5 average max energy boost from blessed gain energy or various useful effects from gain level (which gives less than 12 max HP on average, but increases max energy as well, and also has other uses).  For spellcasting roles, or those characters who already have decent HP but are lacking in energy, the trade-off may be undesirable now.
+
+===Emergencies===
+extra healing의 물약은 비상용품으로 점잖지만, 다시 한 번 완전 회복의 물약이 이 일에 더 유리합니다. 그것은 더 많은 체력을 치료할 뿐만 아니라, 심지어 체력이 낮을 때 사용되기도 합니다. 그것은 여분의 치료 효과와는 다르게 여분의 최대 체력을 제공할 가능성이 높습니다.
+
+만약 다쳤을때 물약을 사용한다면, whenever possible be sure that you will heal past full, so the maximum HP boost is not wasted.  
+
+{|class="prettytable"
+!BUC
+!Range
+!Mean
+!Std. Dev. (zσ)
+!90% Confidence (>-1.28155σ)
+!99% Confidence (>-2.32635σ)
+!99.9% Confidence (>-3.09023σ)
+|-
+|Blessed
+|8-64 HP
+|36 HP
+|6.481 HP
+|27.69427445 HP
+|20.92292565 HP
+|15.97221937 HP
+|-
+|Uncursed
+|6-48 HP
+|27 HP
+|5.612 HP
+|19.8079414 HP
+|13.9445238 HP
+|9.65762924 HP
+|}
+
+In practice, this means that for a blessed potion of extra healing, you are likely to heal at least 27 HP (19 HP for uncursed), and virtually guaranteed to heal at least 15 HP (9 HP for uncursed).
+
+===무기 독 제거===
+만약 당신이 독이 있는 무기로부터 독을 제거하고 싶으면, 해당 물약에 담그는 것은 다른 물약처럼 독을 중화시킬 것이고 물약은 사용될 것입니다.
+
+==References==
+<references />
+
+[[Category:Potions|Extra healing]]
+{{nethack-361}}}
+&&%s&& %s Potion of healing/ko {135054 2020-07-14T20:22:17Z {4001384 Stay Hydrated}  {{potion|name=healing|cost=100|muse=def}}
+
+이름이 말하듯이, '''회복의 물약은''' 당신을 치료할수 있습니다.
+
+== 생성 ==
+
+지성이 있는 몬스터들은 이것을 사용하는 방법을 압니다, 그리고 이것을 [[defensive item|방어적 아이템]]으로 하나 얻을수 있습니다. [[Shopkeeper|상점 주인]]들은 생성되었을 때 하나 얻을 수 있는 기회가 따로 있습니다.
+
+== 효과 ==
+
+[[quaff|마셨을 때]], 축복받은 회복의 물약은 8d4 [[HP|체력]]을, 저주받지 않았다면 6d4 체력을, 그리고 저주받은 것은 4d4 체력을 회복시킬 것입니다. 축복 또는 저주받지 않은 물약을 마셨을 때, 만약 당신이 당신의 최대치보다 더 많은 체력을 얻을 수가 있다면, 당신의 최대 체력이 1 상승할 것입니다. 해당 물약을 마시는 것은 [[constitution]]를 [[exercise|훈련]]시킵니다. 만약 축복 받았다면, 그것은 또한 [[sickness|질병]]을 치료합니다. 축복과 저주받지 않은 물약 모두 [[blindness|실명]]을 치료할 것입니다.
+
+Inhaling [[vapors]] (of potion of any [[beatitude]]) will heal you 1 HP, up to your maximum, constitution를 훈련시킵니다. If you're [[polymorph]]ed, the health of your base form is adjusted as well. <ref>Source:NetHack_3.4.3/src/potion.c#line1221</ref>
+
+In [[alchemy]] a potion of healing can be combined with [[potion of gain level|gain level]], [[potion of gain energy|gain energy]] or [[potion of speed]] to get [[potion of extra healing|extra healing]].
+
+독이 있는 무기를 회복의 물약에 담그는 것은 독 코팅을 제거할 것입니다. 
+
+당신은 이 물약을 [[Pestilence|역병]]에게 던지거나 그것으로 때려서 그에게 피해를 줄수도 있습니다.
+
+== 전략 ==
+
+회복의 물약을 위험할때 자신에게 사용하는 것은 초반에 유용합니다. 하지만, spellcasters are better off using the [[spellbook of healing|healing spell]] in such situations.
+
+게임 후반에 회복의 물약은 유용할 만큼의 충분한 체력을 제공하지 못합니다. They should be [[alchemy|alchemically]] converted into [[potion of extra healing|potions of extra healing]] (and then to [[potion of full healing|potions of full healing]]) whenever possible.
+
+== References ==
+<references />
+
+[[Category:Potions|Healing]]
+[[Category:한국어]]
+{{nethack-343}}}
+&&%s&& %s Bell of Opening/ko {150232 2023-03-12T06:08:16Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks {{tool
+  |color=silver color
+  |tile=[[image:Bell of Opening.png]]
+  |name=Bell of Opening
+  |appearance=silver bell
+  |cost=5000
+  |weight=10
+  |material=silver
+}}
+
+'''개방의 종'''은 [[invocation|의식]]에 필요한 아이템중 하나입니다. 그것은 미감정 상태일때 '''silver bell'''입니다.
+
+== 생성 ==
+
+그것은 [[Quest|퀘스트]] 도중에 만나는 [[unique item]]입니다 (당신의 직업 [[quest artifact|퀘스트 아티팩트]]와 함께 옵니다)
+
+== 효과 ==
+
+충전량이 있을때 적용하면, [[wand of secret door detection/ko|비밀문 탐지의 지팡이]]처럼, 그것은 숨겨진 문과 [[trap|함정]]을 8제곱 반지름의 시각적 범위에서 탐지할 것입니다. ([[magic portal|마법 포탈]] 포함) 그리고 삼켜졌을때, 당신을 뱉어내게 만들기도 합니다. ([[wand of opening|개방의 완드]]처럼). 만약 축복받았다면, 그것은 추가적으로 사물들을 열 것입니다. (문, 상자, 도개교 등) 만약 저주받았고 충전된 상태라면, 그것은 이러한 효과중 아무것도 없을 것이고; 그것은 대신 [[Book of the dead#Raising the dead|사자를 깨울 것이며]] (하지만 시체를 부활시키지는 않을 것입니다) 그리고 근처의 몬스터를 깨웁니다.{{refsrc|apply.c|812}} 충전되지 않았다면, 그것은 평범하지만 부서지지 않는 [[bell|종]]처럼 작용할 것입니다. 삼켜지지 않았거나 충전되지 않은 개방의 종을 의식에 사용하려고 시도할 때 저주가 없는 개방 벨을 성공적으로 사용하면 벨을 완전히 식별할 수 있습니다.
+
+종은 3의 충전량을 가지고 시작하며,{{refsrc|makemon.c|1029}}{{refsrc|mkobj.c|515}} 최대 5까지 충전할수 있습니다. 만약 그것들을 다 써버리면, [[invocation|의식]]을 하기 전에 그것을 충전해야 할 것입니다.
+
+개방의 종은 [[container]] 안에 넣을수 없으며, 다른 의식용 아티팩트처럼 파괴할수도 없습니다.
+
+== 전략 ==
+
+의식 이외에도 추가로, [[Moloch's Sanctum]]의 사원 벽에 있는 숨겨진 문을 찾는데에 유용합니다.
+
+종을 장착한 상태로 적을 때리는 것은 [[Silver#Silver_damage|은 피해]]를 줄수 있지만, [[weaponless]] 컨덕트를 깨트리지 않습니다.
+
+==신화==
+벨, 책, 촛불은 가톨릭의 탈교 의식입니다.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+"A bell, book and candle job."
+The Bursar sighed.  "We tried that, Archchancellor."
+The Archchancellor leaned towards him.
+"Eh?" he said.
+"I _said_, we tried that Archchancellor," said the Bursar loudly, directing his voice at the old man's ear.  "After dinner, you remember?  We used Humptemper's _Names of the Ants_ and rang Old Tom."*
+"Did we, indeed.  Worked, did it?"
+"_No_, Archchancellor."
+ 
+<nowiki>*</nowiki> Old Tom was the single cracked bronze bell in the University bell tower.
+|[ Eric, by Terry Pratchett ]
+}}
+[[Category:Unique items|B]]
+[[Category:Musical instruments]]
+
+==References==
+<references/>
+{{nethack-343}}
+[[Category:한국어]]}
+&&%s&& %s Candelabrum of Invocation/ko {135084 2020-07-14T20:40:19Z {4001384 Stay Hydrated}  {{tool
+  |color=gold color
+  |tile=[[image:Candelabrum of Invocation.png]]
+  |name=Candelabrum of Invocation
+  |appearance=candelabrum
+  |cost=5000
+  |weight=10
+  |material=gold
+}}
+'''의식의 촛대'''는 is a [[unique item]] required to perform the [[invocation ritual]], which in turn is required to [[ascension|ascend]] in NetHack. Before being formally [[identification|identified]], 그것은 단순히 "촛대"로 나타나지만, 하지만 이것은 넷핵에 존재하는 유일한 촛대이기 때문에 중요하지 않습니다.
+
+==생성==
+
+[[Vlad the Impaler]]가 [[Gehennom|게헨놈]] 중앙에 위치한 [[Vlad's Tower|그의 탑]] 최상층에서 촛대를 가지고 있습니다.
+
+==효과==
+
+촛대를 밝히기 위해서는, 당신은 먼저 7개의 [[candle|초]]를 그것에 끼워야 합니다. 촛대를 들고 다니는 상태에서 초를 적용하면 됩니다. You can light or snuff the attached candles by applying the Candelabrum itself. 그것은 당신이 붙인 최단 수명 촛불만큼 타버릴 것입니다,{{refsrc|apply.c|1163|version=NetHack 3.6.0}} but will lose half of the (remaining) time span each time you light it anywhere other than on the [[vibrating square]]. {{refsrc|apply.c|1103|version=NetHack 3.6.0}} The Candelabrum provides a [[light source#The Candelabrum|light radius]] slightly larger than an ordinary lamp, 따라서 촛대에 불필요하게 불이 들어오는 시간을 최소화하는 것이 좋습니다.
+
+==전략==
+
+당신은 이 추가 조명 반지름을 [[Astral Plane]]에서 좋은 효과를 위한 [[expert]] [[jumping|점핑]]을 위해 사용할 수 있습니다.
+
+== History ==
+
+3.6.1 버전 이전에는, attaching candles to the Candelabrum removes their weight from your inventory and makes them impossible to lose, so there is a small advantage to applying candles right away. On the other hand, you might light the candelabrum by accident. Given how rare the candles are, and that you lose half its remaining life span when you re-light it, it would be better to bag them separately until the last minute.
+
+==[[SLASH'EM|슬래시엠]]==
+If you are using a [[magic candle]], you may want to drop the Candelabrum immediately after the ritual. Otherwise, you risk attaching your only magic candle on the candelabrum, where it will be consumed like an ordinary candle.
+
+==신화==
+벨, 책, 촛불은 가톨릭의 탈교 의식입니다, although in the NetHack [[source code]] the candelabrum is sometimes referred to as a menorah, the seven branched candelabrum of Jewish ritual.
+
+==Encyclopaedia entry==
+{{encyclopedia|
+Faustus: Come on Mephistopheles.  What shall we do?
+Mephistopheles: Nay, I know not.  We shall be cursed with bell,
+book, and candle.
+Faustus: How?  Bell, book, and candle, candle, book, and bell,
+Forward and backward, to curse Faustus to hell.
+Anon you shall hear a hog grunt, a calf bleat, and an ass bray,
+Because it is Saint Peter's holy day.
+(Enter all the Friars to sing the dirge)
+|[ Doctor Faustus and Other Plays, by Christopher Marlowe ]
+}}
+
+==References==
+<references/>
+[[Category:Unique items]]
+[[Category:Tools]]
+{{nethack-360}}
+[[Category:한국어]]}
+&&%s&& %s Category:EvilHack {134530 2020-06-25T19:24:09Z {4000693 Phol ende wodan} create evilhack category This category contains articles about the [[EvilHack]] variant.
+
+[[Category:Variants]]}
+&&%s&& %s Hunger rate {134544 2020-06-26T13:13:46Z {4000693 Phol ende wodan} redirect to the section of [[Nutrition]] regarding the hunger rate #REDIRECT [[Nutrition#Losing nutrition]]}
+&&%s&& %s Training {134583 2020-06-27T13:30:51Z {4000693 Phol ende wodan} redirect to [[Skill#Training]] #REDIRECT [[Skill#Training]]}
+&&%s&& %s Template:Nethack-366 {134610 2020-06-28T01:04:24Z {4000693 Phol ende wodan} add template for pages known to be consistent with 3.6.6 {{version icon
+| imagename        = nh366-icon.png
+| description      = This article has been updated to reflect NetHack 3.6.6.
+| long description = contains information about [[NetHack 3.6.6]], and may require revision for future versions of NetHack
+| icon_nr          = {{{offset|0}}}
+| included         = <includeonly>1</includeonly>
+}}
+[[Category:Nethack-366 articles]]}
+&&%s&& %s 싱크대 {134614 2020-06-28T01:29:50Z {4001384 Stay Hydrated} Sink/ko #REDIRECT [[Sink/ko]]
+[[Category:한국어]]}
+&&%s&& %s Category:Pages with an unknown version {134806 2020-07-04T23:11:05Z {4000978 Aximili} Add category This category is for pages that an editor has marked with [[Template:Unknownversion]]. Any such pages need to be reviewed and tagged with the correct version template.
+
+[[Category:Articles by version]]}
+&&%s&& %s Category:Nethack-366 articles {134805 2020-07-04T23:09:56Z {4000978 Aximili} Add category This category is for articles that pertain to [[NetHack 3.6.6]] which may need updating when the next version is released. See [[NetHackWiki:Next version]] for more details.
+
+[[Category:Articles by version]]}
+&&%s&& %s Current version {150288 2023-03-21T04:31:35Z {4001483 Cathartes} 3.6.7 #REDIRECT [[NetHack 3.6.7]]
+
+{{upcoming|NetHack 3.7.0|When the next version is released, change this redirect. Leave this upcoming template here, pointed at whatever the new version number is (probably 3.7.1)}}.}
+&&%s&& %s Spellcasting focus {134665 2020-06-29T10:05:26Z {4001392 Mackeyth}  {{DISPLAYTITLE:Spellcasting focus}}
+A '''spellcasting focus''' is an [[User:Chris/dNethack/dNethack Items|item]] in ''[[dNetHack]]'' that can increase the [[player]]'s chance of [[spellcasting]] successfully when wielded. Several different items are focuses. Some focuses increase the success rate of all spells, while others are limited to associated spell schools.
+
+=== Non-artifact Focuses ===
+
+*'''Khakkharas''' improve the success rate of cleric and healing spells. In the hands of a [[Priest]] or a [[Monk]] they improve the success rate of all spells.
+*'''Bells''' improve the success rate of cleric and healing spells. In the hands of a [[Priest]] they improve the success rate of all spells.
+*'''Scalpels''' improve the success rate of healing spells.
+*'''Crystal balls''' improve the success rate of divination spells.
+*'''Quarterstaffs''' improve the success rate of attack spells.
+*'''Shepherd's crooks''' improve the success rate of enchantment spells.
+*'''Athames''' improve the success rate of attack and enchantment spells.
+*In the hands of a [[Wizard]] '''Wands''' improve the success rate of all spells.
+
+=== Artifact Focuses ===
+
+*'''The Tentacle Rod''', '''Aryfaern Kerym''', '''Profaned Greatscythe''', and '''Garnet Rod''' improve the success rate of all spells.
+*'''[[DNetHack artifacts#The Death-Spear of Vhaerun|The Death Spear of Vhaerun]]''' improves the success rate of attack spells, but only for [[Drow (starting race)|drow]] characters that began the game as males.
+*'''Callandor''' improves the success rate of all spells, but only for characters that began the game as males.
+
+
+[[Category:DNethack]]}
+&&%s&& %s DNetHack items {134660 2020-06-29T03:34:05Z {4001392 Mackeyth} Redirected page to [[User:Chris/dNethack/dNethack Items]] #REDIRECT [[User:Chris/dNethack/dNethack Items]]}
+&&%s&& %s Magic lamp/ko {135080 2020-07-14T20:37:14Z {4001384 Stay Hydrated}  {{tool
+  |color=yellow
+  |tile=[[image:lamp.png]]
+  |name=magic lamp
+  |appearance=[[lamp]]
+  |cost=50
+  |weight=20
+  |material=copper
+}}
+
+'''마법 램프'''는 [[light|빛]]을 제공하고 절대로 동력이 떨어지지 않아서, [[Gehennom|게헨놈]]과 다른 어두운 장소에 가지고 갈 유용한 도구가 되어 줍니다.
+
+일반 램프보다 가격이 비싸 상점에서 쉽게 확인할 수 있습니다.
+
+==램프의 지니==
+
+매번 당신이 마법 램프를 [[rub/ko|문지를때]], 1/3 확률로 "You see a puff of smoke" 그리고 다른 1/3 확률로 "Nothing happens"; 어느 경우든 그냥 다시 시도하면 됩니다.
+
+남은 1/3 확률로 [[djinni|지니]]가 나타나며, 램프가 감정되고 마법 램프와 똑같은 [[BUC]]의 기름 램프로 변합니다. and 1000-1500<ref>{{function|apply.c|dorub}}</ref> charges, and one of the following five outcomes occurs. 이러한 결과의 상대적 확률은 램프가 축복받았는지, 저주받지 않았는지 또는 저주받았는지에 따라 달라집니다:<ref>{{function|potion.c|djinni_from_bottle}}</ref>
+
+{|class="prettytable"
+!축복받음!!저주받지 않음!!저주받음!!결과
+|-
+|80%||20%||5%||[[wish/ko|소원]] 하나를 들어주며, 그리고 사라집니다.<br />"나는 너에게 신세을 졌어. 한가지 소원을 들어줄게!"
+|-
+|5%||20%||5%||[[pet/ko|애완동물]]로써 남습니다.<br />"나를 해방해줘서 고마워!"
+|-
+|5%||20%||5%||[[peaceful|평화적인]] 몬스터로 남습니다.<br />"너가 나를 해방시켜줬어!"
+|-
+|5%||20%||5%||말하고 난후, 사라집니다.<br />"때가 되었어!"
+|-
+|5%||20%||80%||Remains in its regular state (hostile, or sometimes peaceful, if you are neutral).<br />"너는 나를 방해했어, 어리석은 놈!"
+|}
+
+참고: 위의 첫 번째 결과 이외에는 지니로부터 소원을 얻을 방법이 없습니다.
+
+만약 마법 램프를 소원으로 빈다면, 당신은 대신 평범한 [[oil lamp/ko|기름 램프]]를 얻게 될것입니다.
+
+==전략==
+
+만약 당신이 초반의 마법 램프를 그것의 [[BUC]] 상태를 모르고 문지른다면 낭비가 될 가능성이 높습니다. 항상 그것을 문지르기 전에 축복시켜야 합니다.
+
+어떤 플레이어들은 여분의 소원보다 무진장한 광원을 더 선호합니다. 이것은 당신 캐릭터의 성격에 따라 달라집니다.  램프가 광원으로 얼마나 오랫동안 사용되었는지에 관계없이 램프는 나중에 소원을 위해 여전히 문질러질 수 있다는 점에 유의하십시오. 만약 마법 램프와 함께 [[Astral Plane|천상계]]에 도달한다면, 당신이 천상계를 통과하는데 도움이 되는 좋은 아이템을 소원으로 비는 것은 그것을 축복할 가치가 있을 것입니다; 당신은 그 시점에서 1500턴보다 더 많은 빛이 필요하지 않을 것입니다.
+
+미지불된 마법 램프를 문지르는 것은 조심해야 합니다; 만약 당신이 지니를 추출했다면 상점 주인은 당신에게 사용료를 부과할 것입니다.
+
+==References==
+<references/>
+[[Category:Tools]]
+{{nethack-343}}
+[[Category:한국어]]}
+&&%s&& %s Oil lamp/ko {135041 2020-07-14T19:35:23Z {4001384 Stay Hydrated}  {{도구
+  |color=yellow
+  |tile=[[image:lamp.png]]
+  |이름=기름 램프
+  |외형=[[램프]]
+  |기본 가격=10
+  |중량=20
+  |재질=구리
+}}
+
+'''기름 램프'''는 [[light|광원]]입니다.
+
+== 생성 ==
+
+당신이 [[magic lamp/ko|마법 램프]]로부터 [[djinni|지니]]를 풀어주면, 그 램프는 기름 램프가 됩니다.
+
+==효과==
+램프는 [[Apply|사용]]될 경우, 어두운 구역에 1000~1499턴 동안 빛을 제공할 것입니다. 이것은 [[scroll of charging|충전의 두루마리]]를 사용하거나 [[potion of oil|기름병]]에 #[[dip]]함으로써 재충전될 수 있습니다. 만일 당신이 불이 켜진 기름 램프를 기름병에 담궜을 경우, 당신은 높은 확률로 [[fireball|화염구]]를 일으킬 것입니다.
+
+만약 기름 램프가 저주받았다면, 사용할 때마다 불이 켜질 확률이 50%에 불과합니다.{{refsrc|apply.c|1088}}
+
+===광원 사거리===
+기름 램프는 캐릭터를 중심으로 가로세로 세 칸의 빛 사거리를 가지고 있습니다.
+{{lightradius|r=3}}
+
+==메시지==
+램프에 턴이 소요되며, 당신은 다음의 메시지들을 차례로 받게 될 것입니다.
+
+{{message|당신의 램프가 일렁인다.|램프가 수백 턴 남았습니다.}}
+{{message|당신의 램프가 매우 일렁인다.|램프가 50턴 내외로 남았습니다.}}
+{{message|당신의 램프가 꺼지려 한다.|램프가 10~20턴밖에 남지 않았습니다.}}
+{{message|당신의 램프가 꺼졌다.|램프가 다시 채워지거나 재충전되기 전까지 빛을 제공하지 않을 것입니다.}}
+
+==전략==
+기름 램프는 [[가격 감별]]을 이용해 마법 램프와 구분할 수 있습니다; 기름 램프의 기본 가격은 10 조크미드고, 마법 램프는 50입니다. 그리고, 마법 램프는 '''무한정''' 연소하므로, 불이 어른거리다 결국에 꺼지는 램프는 모두 기름 램프입니다. 또한 당신은 램프를 수 차례 [[rub|문질러]] 봄으로써 연기가 훅 나오거나 지니가 나오는지 시도해볼 수도 있습니다. 다만 축복받지 않은 마법 램프로 시도할 경우, 높은 확률로 [[wish|소원]]을 들어주지 않고 지니를 해방시키게 될 것입니다. 일단 램프가 간접적으로 기름 램프라고 식별되고 나면, 당신은 [[Name##naming a class of item|종류-작명]]으로 미식별 마법 램프와 기름 램프를 구분할 수 있습니다.
+
+기름 램프는 기름을 보존하기 위해 불이 켜진 방이나 지역에 도달했을때 램프를 끄면 보존할 수 있습니다. 저주받은 기름 램프는 불을 밝히기 위해 여러 번 시도해야 하지만 다른 물건처럼 축복을 내리거나 저주를 푸는것이 급박하지는 않습니다.
+
+==더 보기==
+
+*[[Light sources#Lanterns and lamps|Light sources § Lanterns and lamps]]
+
+==References==
+<references />
+
+[[Category:Tools]]
+[[Category:한국어]]
+{{nethack-364}}}
+&&%s&& %s Autoexplore {144597 2022-02-23T11:39:23Z {4001279 Umbire the Phantom}  Some variants of [[NetHack]] have an '''autoexplore''' command, bound to {{kbd|v}} by default, that automatically explores until it finds something interesting or is interrupted (by a monster, trap, or similar effect). Known variants that include this feature are [[AceHack]], [[DynaHack]], [[FIQhack]], [[Fourk]], [[NetHack4]], and [[UnNetHack]].
+
+==Implementation differences==
+In Fourk and FIQhack, travel (and thus automatic exploration) is not halted by floor engravings or items that the player has already seen.
+
+In UnNetHack, [[sessile]] monsters don't interrupt autoexplore.
+
+Variants that haven't been updated recently (Dynahack, Nethack4, Acehack) tend to exhibit buggy behavior when a level has been significantly affected by digging. Common reasons include a rock mole that ran amok, or a player who hunted for a vault with a pickaxe and didn't know where to look. In such areas, Autoexplore and [[Travel]] may veer off-course and send you in an unexpected direction.  (This can also happen with travel in general, especially in [[3.4.3]], so the problem may lie outside the scope of autoexplore.)
+{{variant-343}}
+[[Category:Commands]]
+[[Category:DynaHack]]
+[[Category:FIQHack]]
+[[Category:UnNetHack]]}
+&&%s&& %s 죽음의 지팡이를 든 노움 {134929 2020-07-10T06:46:23Z {4001384 Stay Hydrated} . [[Image:Gwtwod.png|thumb|400px|난수신의 진노]]
+
+지적인 [[monster|몬스터]]들은 공격 [[wand|지팡이]]를 사용할 수 있습니다; 여기에는 매우 약한 몬스터가 매우 강력한 지팡이를 들고 있는 것이 포함됩니다. 극단적인 경우, [[Random Number God|난수신]]은 당신에게 [[wand of death|죽음의 지팡이]]를 든 [[gnome (monster)|노움]] 을 보낼 수도 있습니다 &ndash; 불합리하게 죽은 유명한 사례죠. 웹툰 ''[[Dudley's dungeon|더들리의 미궁]]에서는'', 이 노움은 통칭 '''죽음의 지팡이를 든 노움''' 혹은 '''GWTWOD'''라고 불립니다.
+
+이렇듯 매우 잘 무장된 생명체들은 게임의 극초반에 [[player|플레이어]]가 전혀 방어할 수단이 없을 때, 특히 [[Gnomish Mines|노움 광산]]에서 종종 등장합니다.
+
+위험요소를 최소화하기 위해서는, 당신이 바닥에서 보게 되는 아무 미확인 지팡이를 집어드십시오. 아무 [[kobold|코볼트]]가 추후에 집어들어 당신에게 [[Wand of lightning|번개의 지팡이]]를 쏘게 만드는 실수를 하지 마십시오. 당신이 여유가 있을 때, 모아둔 지팡이들을 [[Wand#Engrave-identification|새김 감별]]하여 어느 것을 바닥에 두어도 안전할 지 확인하십시오.
+
+그럼에도 피격형 공격이 없는 적대 몬스터들([[foocubi|푸큐버스]], [[nymphs|님프]], [[nurses|간호사]] 등)의 경우 여전히 당신을 지팡이로 공격할 것입니다. 님프는 특히나 위험한데, 당신에게서 지팡이를 빼앗아 당신에게 쏠 것이기 때문입니다. [[non-teleport level|순간이동 불가 층]]에서는 더욱 더.
+
+==유래==
+
+죽음의 지팡이를 든 노움의 개념은 생기기까지 꽤나 오랜 시간이 걸렸습니다; 
+1996년, [[Torsten Edelmann|톨스텐 에델만]]이 [[rgrn]]에서 [http://groups.google.co.uk/group/rec.games.roguelike.nethack/msg/df380142b739519c 처음으로 필수요소로 사용]했고, 2002년에는 [http://groups.google.co.uk/group/rec.games.roguelike.nethack/msg/519c9b8dc397ab4a ''유명한 표현'']이라 묘사된 바 있습니다.
+[[Category:Dudley's dungeon]]
+[[Category:Acronyms]]
+[[Category:한국어]]}
+&&%s&& %s 즉사 {134932 2020-07-10T06:49:09Z {4001384 Stay Hydrated} Redirected page to [[Instadeath/ko]] #REDIRECT [[Instadeath/ko]]
+[[Category:한국어]]}
+&&%s&& %s Sylph (starting race) {134979 2020-07-11T19:32:52Z {4000903 Testbutt} /* Racial benefits and restrictions */ In [[Fourk]], Sylphs are a playable race.  They are elemental fairies.  As such, they have fairy senses which tend to see through illusions.  All sylphs are female and are displayed as an {{brightgreen|E}}.
+== Racial benefits and restrictions ==
+
+Sylphs may be [[Healer]]s, [[Priest]]s, [[Ranger]]s, [[Rogue]]s or [[Wizard]]s. They can be [[Chaotic]] or [[Neutral]].  They lose alignment for eating meat, in the same way that [[monk#Vegetarianism|monk]]s do.
+
+
+Intrinsically, Sylphs can [[see invisible]] and have [[protection from shape changers]]. At experience level 5, they receive [[infravision]], at 7 they receive [[displacement]], and at level 16 they passively [[detect monsters]] at all times. The following table outlines their maximum (unaided) attribute levels.<ref>https://jonadab.jumpingcrab.com/nethack-stuff/spoilers-fourk/4.3.0.4-postrelease-compat/players.html#race</ref>
+
+{|class="wikitable"
+![[Strength|Str]]
+![[Dexterity|Dex]]
+![[Constitution|Con]]
+![[Intelligence|Int]]
+![[Wisdom|Wis]]
+![[Charisma|Cha]]
+|-
+|16
+|19
+|17
+|18
+|19
+|20
+|}
+
+(note, in Fourk, these attribute maximums can be [http://jonadab.jumpingcrab.com/nethack-stuff/spoilers-fourk/4.3.0.4-postrelease-compat/players.html#role adjusted per role] by +1 or -1.)
+
+== Items and Skills ==
+Sylphs start with 1 [[potion of gain energy]] and 1 [[potion of healing]], unless they are a healer, in which case the potion of healing is replaced with a [[magic harp]]. [[Stealth#Fourk|Stealth skill]] is increased by 1, and regardless of role a sylph can get to Skilled in [[healing spells]]. 
+
+Any armor that would interfere with your healing begins unequipped.
+
+===Armor Restrictions and Healing===
+
+To be precise, being restricted to "cloth or wood" armor means small or elven shield, cloak, shirt, and a cornuthaum or fedora.  Wearing anything else will prevent the sylvan rapid recovery from status effects and HP/PW regen, which is detailed in this [https://github.com/tsadok/nhfourk/blob/31b9baedbc3d316ebe89e51f42501b3455e0c015/libnethack/src/allmain.c#L739 commit].  
+
+Healing a status effect or recovering HP this way costs extra nutrition. Combined with the race's vegan conduct, it is a good idea when you're not in danger to use healing spells and unicorn horns, when possible, rather than spend nutrition via your innate recovery method.
+
+Where relevant, your role's quest artifact doesn't inhibit this regeneration.  Being in [[gehennom]] greatly reduces your racial regen, and being polymorphed prevents it.
+
+===Encyclopaedia entry===
+{{encyclopedia|
+	As a creature of faerie (reportedly, the daughter of a water sprite
+	and a wood nymph), the sylph is not easily fooled by appearances.
+	She is not strong in battle, though her touch can slow her attackers.
+|}}
+
+====Further Reading====
+The full changelog: https://github.com/tsadok/nhfourk/blob/master/doc/changelog-fourk.txt
+''(note, the changelog tends toward imprecise language, so it can be helpful to look at [https://github.com/tsadok/nhfourk/search?q=sylph&type=Commits sylph-related commits] instead.''
+[[Category:Variants]]}
+&&%s&& %s Sylph {134939 2020-07-10T10:11:36Z {4000903 Testbutt} Redirected page to [[Sylph (starting race)]] #REDIRECT [[Sylph (starting race)‎]]}
+&&%s&& %s Comestible/ko {140613 2021-06-02T18:01:00Z {4001463 Actual-nh} /* References */ How is this a command? {{items}}
+{{otheruses|long-lasting comestibles|other corpses|corpse}}
+'''식료품'''{{white|%}}은 무엇이든 간에 먹을 수 있는 것을 의미합니다: 즉, '''음식'''입니다. [[You|당신]]은 {{kbd|e}} 명령어로 음식을 '''먹을''' 수 있습니다.
+
+''식료품''이라는 건 당신이 먹을 수 있는 것을 말합니다. 그러나 그걸 안전히 먹을수있다는걸 의미하진 않습니다. 몇몇 음식들은 몸에 안 좋습니다. 예를들어, 몇몇 [[corpse]]는 독이 있습니다. 만일 당신이 [[poison resistance|poison resistant]]이 없다면, 그것들을 먹는것은 좋은생각이 아닐겁니다.
+
+한 가지 중요한 유형의 해로운 식료품은 [[rot|rotten]]썩은 식료품입니다. [[Egg]]과 대부분의 시체는 그것들을 보존하기 위해 특별한 조치를 취하지 않는 한 최종적으로 썩고, (시체의 경우엔) 완전히 썩어 없어집니다. 다른 모든 식료품들은 "permafood"입니다; 당신이 원할때까지 저장할 수 있습니다..
+
+보통은, 당신이 뭔가를 먹지 않는다면, 당신은 최종적으로 [[nutrition|hunger]]배고픔 으로 죽는다. 이러한 죽음을 연기하거나 방지하는데는 여러방법이 있으므로, 먹지 않고도 [[ascend]]승천 이 가능하다. (see [[foodless]] for more information)
+
+먹는것의 또다른 중요한 이유는 어떤 식료품은 당신에게 유용한 내성을 주거나 당신의 능력치를 향상시키기 때문이다. 예를 들어, [[tin of spinach]]시금치 통조림 과 [[royal jelly]]로얄젤리 는 둘 다 힘을 증가시킨다. 유익하거나 해로운 시체의 섭취 효과에 대한 더 많은 정보는 [[Corpse#Corpse benefits and dangers]]를 참조하시오.
+
+몇몇 몬스터들도 식료품을 섭취할수 있다. 또한 식료품 외의 것을 먹는 몬스터도 있다. e. g. [[metallivore]]는 금속성 아이템을 먹을수 있습니다. 만일 당신이 그런 몬스터로 폴리모프한다면, 당신 또한 그러한 아이템을 먹을수 있을겁니다.
+
+
+
+== List of comestibles ==
+
+{|class="prettytable striped sortable"
+!Item
+!Cost
+!<span class="explain" title="Weight">Wgt</span>
+!<span class="explain" title="Relative probability">Prob</span>
+!<span class="explain" title="Nutrition">Nutr</span>
+!<span class="explain" title="Nutrition per unit weight">Nutr/Wgt</span>
+!<span class="explain" title="Number of turns required to eat">Time</span>
+!<span class="explain" title="Nutrition per turn spent eating">Nutr/Time</span>
+!Conduct
+|-
+|[[food ration]] ||45 ||20 ||380 ||800 ||40 ||5 ||160 ||vegan
+|-
+|[[cram ration]]
+|35
+|15
+|20
+|<span class="explain" title="700 for dwarves">600</span>
+|<span class="explain" title="46.67 for dwarves">40</span>
+|3
+|<span class="explain" title="233.33 for dwarves">200</span>
+|vegan
+|-
+|[[C-ration]] ||20 ||10 ||0 ||300 ||30 ||1 ||300 ||vegan
+|-
+|[[K-ration]] ||25 ||10 ||0 ||400 ||40 ||1 ||400 ||vegan
+|-
+|[[tripe ration]] ||15 ||10 ||140 ||200 ||20 ||2 ||100 ||''none''
+|-
+|[[lembas wafer]]
+|45
+|5
+|20
+|<span class="explain" title="1000 for elves; 600 for orcs">800</span>
+|<span class="explain" title="200 for elves; 120 for orcs">160</span>
+|2
+|<span class="explain" title="500 for elves; 300 for orcs">400</span>
+|vegan
+|-
+|[[cream pie]] ||10 ||10 ||25 ||100 ||10 ||1 ||100 ||vegetarian
+|-
+|[[pancake]] ||15 ||2 ||25 ||200 ||100 ||2 ||100 ||vegetarian
+|-
+|[[candy bar]] ||10 ||2 ||13 ||100 ||50 ||1 ||100 ||vegetarian
+|-
+|[[fortune cookie]] ||7 ||1 ||55 ||40 ||40 ||1 ||40 ||<span class="explain" title="Breaks illiterate conduct if eaten while not blind">vegetarian</span>
+|-
+|[[tin]] (homemade) ||5 ||10 ||&mdash;* ||50 ||5 ||''varies'' ||''varies'' ||''varies''
+|-
+|tin of [[spinach]] (blessed) ||5 ||10 ||0.625* ||600 ||60 ||1–2 ||<span class="explain" title="average">450</span> ||vegan
+|-
+|tin of [[spinach]] (uncursed) ||5 ||10 ||11.25* ||401–600 ||<span class="explain" title="average">50.05</span> ||''varies'' ||''varies'' ||vegan
+|-
+|tin of [[spinach]] (cursed) ||5 ||10 ||0.625* ||201–600 ||<span class="explain" title="average">40.05</span> ||''varies'' ||''varies'' ||vegan
+|-
+|[[tin]] (other) ||5 ||10 ||62.5* ||''varies'' ||''varies'' ||''varies'' ||''varies'' ||''varies''
+|-
+|[[apple]] ||7 ||2 ||15 ||50 ||25 ||1 ||50 ||vegan
+|-
+|[[orange]] ||9 ||2 ||10 ||80 ||40 ||1 ||80 ||vegan
+|-
+|[[banana]] ||9 ||2 ||10 ||80 ||40 ||1 ||80 ||vegan
+|-
+|[[sprig of wolfsbane]] ||7 ||1 ||7 ||40 ||40 ||1 ||40 ||vegan
+|-
+|[[pear]] ||7 ||2 ||10 ||50 ||25 ||1 ||50 ||vegan
+|-
+|[[slime mold]] ||17 ||5 ||75 ||250 ||50 ||1 ||250 ||vegan
+|-
+|[[clove of garlic]] ||7 ||1 ||7 ||40 ||40 ||1 ||40 ||vegan
+|-
+|[[melon]] ||10 ||5 ||10 ||100 ||20 ||1 ||100 ||vegan
+|-
+|[[carrot]] ||7 ||2 ||15 ||50 ||25 ||1 ||50 ||vegan
+|-
+|[[eucalyptus leaf]] ||6 ||1 ||3 ||30 ||30 ||1 ||30 ||vegan
+|-
+|[[kelp frond]] ||6 ||1 ||0 ||30 ||30 ||1 ||30 ||vegan
+|-
+|[[meatball]] ||5 ||1 ||0 ||5 ||5 ||1 ||5 ||''none''
+|-
+|[[meat ring]] ||5 ||1 ||0 ||5 ||5 ||1 ||5 ||''none''
+|-
+|[[meat stick]] ||5 ||1 ||0 ||5 ||5 ||1 ||5 ||''none''
+|-
+|[[huge chunk of meat]] ||105 ||400 ||0 ||2000 ||5 ||20 ||100 ||''none''
+|-
+|[[egg]] ||9 ||1 ||85 ||80 ||80 ||1 ||80 ||vegetarian
+|-
+|[[lump of royal jelly]] ||15 ||2 ||0 ||200 ||100 ||1 ||200 ||vegetarian
+|-
+|[[corpse]] ([[lichen]]) ||5 ||20 ||0 ||200 ||10 ||3 ||66 ||vegan
+|-
+|[[corpse]] ([[lizard]]) ||5 ||10 ||0 ||40 ||4 ||3 ||13 ||''none''
+|-
+|[[corpse]] (other) ||5 ||''varies'' ||0 ||''varies'' ||''varies'' ||''varies'' ||''varies'' ||''varies''
+|}
+
+:<nowiki>*</nowiki> ''For details on the probability of randomly generated tins, see the [[tin]] article.''
+
+== 식품의 발생 ==
+
+식료품은 메인 던전 전체에서 20% 확률로 랜덤하게 생성되며, 상자류에서 15%, 로그 레벨에서 22%, 게헨놈에서 16% 확률을 가진다.  모든 식료품들은 [[tin]]을 제외하면 일반적으로 [[uncursed]]상태로 생성된다.  시체를 제외한 식료품은 2개 들이로 생성될 기회가 있다 : 이 기회는 {{frac|2}} (50%) for [[kelp frond]]{{refsrc|src/mkobj.c|871|nethack=3.6.2}} and {{frac|6}} (16.7%) for other food.{{refsrc|src/mkobj.c|881|nethack=3.6.2}}
+
+
+== 식품의 출처 ==
+* 몇몇 [[monster]]몬스터는 시체를 떨어뜨릴 가능성이 있다.
+* [[Sokoban]]은 항상 많은 양의 식료품을 보관하고있지만, 그게 모두 일반적으로 섭취할수 있는것인지는 [[you]]당신이 가봐야 대답할수 있는 질문이다.
+* [[Special room#Anthole|Antholes]]개미굴 과 [[Special room#Beehive|beehives]]벌집 은 이따금 식료품을 보관하고있다.
+* [[Ice box]]아이스 박스는 20개 까지의 신선한 시체를 보관할수 있다..
+* [[horn of plenty]]풍요의 뿔은 '사용하기'할때마다 랜덤한 먹거리나 포션을 생성한다.
+* [[Soldier]]병사들은 흔히 C- or K-Rations을 갖고 다니기 때문에, 병사가 밀집되어있는 곳(such as [[Fort Ludios]])루디오스 요새 는 이 종류의 식량을 찾기 좋은곳이다.
+
+==Eating comestibles==
+
+<!-- this whole section is 3.6.0 compliant -->
+
+When you eat any comestible other than a [[Corpse#Aging|tainted corpse]] or a rotten [[tin]], you receive its nutrition value.  The nutrition is provided uniformly during eating, e. g. if an item takes 5 turns to eat, then after 2 turns of eating eat you receive 40% of its nutrition value.  See [[nutrition]] for more information.
+
+When you eat a corpse, many good or bad things may happen. See [[corpse]] for more information.
+
+Most comestibles have a chance of being rotten. Cursed non-corpse comestibles are almost always rotten, most others have 1/7 chance of being rotten. If a comestible is rotten, eating it may cause ill effects, and will only grant half its usual nutrition value. See the [[#Rotten food]] section below for more information. You will not know that a comestible is rotten until you eat it.
+
+Tin are either from a monster (called tin of ''foo'' meat, or just tin of ''foo'', if it is vegetable), or are tins of spinach.  
+
+Before you eat a tin, you are notified what monster (or spinach) it is made of. ("It smells like (monsters). Eat it?", or "It constans spinach. Eat it?" or "It contains some decaying (green) substance. Eat it?", if it is a cursed tin of spinach.)  If you chose not to eat it, you "discard the open tin" and it is gone.
+
+Tins of a monster (meat), when eaten, mostly cause the same effects as the monster corpse. For example, eating a tin of a domestic dog, unless you are an [[orc]] or a [[caveman]], will give you the [[aggravate monster]] intrinsic, as if you ate the corpse of a domestic dog.  There are, however, important differences:
+* Depending on what are you wielding, and whether the tin is blessed, it may take a while to open the tin.  However, if you wield a blessed tin opener, the tin will open immediately.
+* Eating a tin takes only 1 turn.
+* Most of these tins are not very nutritious. For most tins, the nutrition value is 20-100.  Only pureed tins have a nutrition value of 500.  This can be advantageous: e.g., if you have 4 corpses of [[stone giant]]s, you will hardly be able to eat more than one; but if you tin them, you will likely be able to eat all four without choking.
+** The nutrition value of a tin does not depend on the monster. It depends on the preparation method, which is determined randomly when you open the tin.
+** Some tins are rotten. Their nutrition value is effectively 0, and they case vomiting, which, in turn, makes you more hungry.
+** For tins made with a [[tinning kit]], the preparation method is either homemade (6/7 cases, nutrition value 50) or rotten (1/7 cases). However, blessed tinning kits produce blessed tins, which are never rotten.
+* Even if a corpse is old, tins of its meat made with a tinning kit will be fresh (although they have the normal chance of being rotten).
+* Tinning poisonous or acidic monsters neutralizes the poison/acid and makes them safe to eat.
+* Some tins (fried, french fried) make your fingers [[Slippery fingers|slippery]] for a while. Your weapon, if you are wielding one, falls to the ground.
+See [[tin]] for more information.
+
+1/6 of randomly generated tins contain [[spinach]].  A non-cursed tin of spinach increases intrinsic strength (unless it is already at maximum). Its nutritional value is as high as 600.
+
+There are also empty tins. One way to get an empty tin is to [[wish]] for a tin of a genocided monster.  They provide no nutrition.
+
+Eggs become stale after 400 turns. A stale egg makes you nauseated for 10d4 (more) turns{{refsrc|eat.c|1775|version=NetHack 3.6.0}} ("Ugh.  Rotten egg."), thus being a good source of confusion. Wand of undead turning rejuvinates eggs. While 2/3 of newly generated eggs are just eggs, 1/3 are eggs of a random non-aquatic, egg laying monster (which therefore may eventually hatch if fresh).  If the monster happens to be [[cockatrice]] or [[chickatrice]], you get [[Stoning#Stiffening vs. instadeath|delayed petrification]] unless [[petrification resistance|resistant]].{{refsrc|eat.c|2112|version=NetHack 3.6.0}}{{refsrc|eat.c|1714|version=NetHack 3.6.0}} Unless you identified the egg, you will not know it is a footrice egg until you eat it.  There are no other effects from eating eggs (e.g. eggs never confer intrinsics).
+
+Eating some other foods also produce special effects{{refsrc|eat.c|2065|version=NetHack 3.6.0}}:
+* [[Tripe ration]]s sometimes give you 1 point of experience. More importantly, unless you are an orc, caveman, or polymorphed into a non-human [[carnivorous]], they make you [[vomiting|nauseous]].{{refsrc|eat.c|1713|version=NetHack 3.6.0}}
+* [[Garlic]] makes you [[vomiting|nauseous]] if you are undead.{{refsrc|eat.c|1734|version=NetHack 3.6.0}}
+* A [[sprig of wolfsbane]], even a cursed one, cures [[lycanthropy]].
+* [[Carrot]]s, even a cursed one, cure [[blindness]], except blindness caused by throwing a [[cream pie]] into your face.
+* A [[fortune cookie]] "has a scrap of paper inside." Unless blind, eating it will cause you to read a rumor, which is true/random/false for blessed/uncursed/cursed fortune cookies. (If blind, you instead get the message "What a pity that you cannot read it!")
+* Non-cursed [[Lump of royal jelly]]:
+** increases your [[strength]] by one
+** delivers 1-20 [[hit points]]. If your hp is now higher than your current maximum, it has a 1/17 chance of increasing your maximum hit points by one, and then sets your hit points to to the new maximum
+** cures wounded legs
+* Cursed [[Lump of royal jelly]] increases your [[strength]] by one but decreases your hit points by 1-20, and does not cure wounded legs.
+* Non-cursed [[eucalyptus leaf]] cures [[sickness]] and [[nausea]].
+* Cursed [[apple]]s send you to sleep for 20-30 moves, unless you are [[sleep resistance|sleep resistant]]. ("You hear sinister laughter as you fall asleep...", or "You fall asleep" if deaf, or "Heigh-ho, ho-hum, I think I'll skip work today." for hallucinating dwarves.) This is a reference to ''Snow White''.
+
+===Rotten food===
+Most foodstuffs have a chance of being rotten. (Not to be confused with [[Sickness#Food_poisoning|tainted]] food, which is much more serious but only affects corpses.) For most comestibles, this chance is applied when the food is first eaten and cannot be determined in advance.
+
+* The following comestibles are never rotten: lembas wafers, cram rations,{{refsrc|eat.c|53|version=NetHack 3.6.0}} fortune cookies,{{refsrc|eat.c|2531|version=NetHack 3.6.0}} [[lizard]] corpses, and [[lichen]] corpses.{{refsrc|eat.c|48|version=NetHack 3.6.0}}
+* Cursed non-corpse comestibles other than specified above are always rotten.{{refsrc|eat.c|2531|version=NetHack 3.6.0}}
+* Non-cursed non-corpse comestibles are never rotten if their age is not more than 30 (if uncursed) or 50 (if blessed).{{refsrc|eat.c|2531|version=NetHack 3.6.0}}
+* Tainted, "old", poisonous [[corpse]]s are never rotten in this sense. Acidic corpses are never rotten unless you have acid resistance.{{refsrc|eat.c|1552|version=NetHack 3.6.0}}
+* All other comestibles have a {{frac|7}} chance of being rotten.{{refsrc|eat.c|1599|version=NetHack 3.6.0}}{{refsrc|eat.c|2531|version=NetHack 3.6.0}}
+
+Upon beginning to eat rotten food, you get the "Blecch! Rotten <food>!" message, and one of the following occurs:{{reffunc|eat.c|rottenfood|version=NetHack 3.6.1|name=rotten}}
+* You are confused for 2d4 (more) turns. "You feel rather light-headed" (or "You feel rather trippy" if hallucinating).
+* You are blinded for 2d10 turns. "Everything suddenly goes dark." Never happens if you are already blind.
+* You [[sleep|pass out]] for 1&ndash;10 turns. During that time, you are deaf. Sleep resistance doesn't help. "The world spins and goes dark" or "The world spins and you slap against the (ground/saddle/...)" or "The world spins and you lose control of yourself". Which of the messages you receive depends on your blindness, levitation, and what kind of level you are on.
+* Nothing happens.
+
+The chances of each outcome depend on whether you are blind or not.<ref name=rotten />
+{| class="prettytable"
+! Outcome
+! Not blind
+! Blind
+|-
+| Confusion
+| {{frac|4}}
+| {{frac|4}}
+|-
+| Blindness
+| {{frac|3|16}}
+| 0
+|-
+| Pass out
+| {{frac|3|16}}
+| {{frac|4}}
+|-
+| Nothing
+| {{frac|3|8}}
+| {{frac|2}}
+|}
+
+If a comestible is rotten, you only receive half its nutrition value (e.g. 400 instead of 800 for a rotten [[food ration]]). Rotten [[wraith]] corpses will "rot away completely" without giving you an experience level.
+
+== Food strategy ==
+Some [[adventurer]]s don't carry enough food to the [[dungeon]] entrance. Recall from the [[Guidebook]]:
+
+: ''"In the morning you awake, collect your belongings, and set off for the dungeon. After several days of uneventful travel, you see the ancient ruins that mark the entrance to the Mazes of Menace. It is late at night, so you make camp at the entrance and spend the night sleeping under the open skies. In the morning, you gather your gear, eat what may be your last meal outside, and enter the dungeon..."''
+
+While you packed enough food for "several days" of journey, by the time you actually get inside, you don't have much food with you. Some [[role]]s start the game with a small pile of 2 [[food ration]]s, but some roles didn't think ahead, and start with no food at all. In any case, one of the early goals of the game is to secure an adequate food supply.
+
+To stay alive, many players at the start of their dungeon exploration will eat the corpses of their slain enemies. It is common to find adventurers eating the remains of anything that their [[pet]] does not reach first. Care must be taken, of course, as some corpses are poisonous or may cause other problems (e.g., [[hallucination]]). Even harmless corpses "taste terrible." Those concerned with keeping the [[vegan]] or [[vegetarian]] [[conduct]] will also be more discerning in eating the corpses of their vanquished foes.
+
+Early on, easy to find sources for food include the corpses of [[gnome (monster)|gnomes]] and [[dwarf (monster)|dwarves]] in the [[Gnomish Mines]], and the guaranteed food in [[Sokoban]]. If you are a [[gnome (starting race)|gnome]] or [[dwarf]], then feasting in the Mines may be problematic, unless you are a [[cave(wo)man]]. Also, gnome corpses only give 100 nutrition - not very much. The stores in [[Minetown]] may also have food. Sokoban, with its food and wands, is a sensible early target, even if one doesn't finish the whole area.
+
+Lower in the main dungeon, one can sometimes find [[Special room#Beehive | beehives]] and [[Special room#Anthole|antholes]]. Beehives contain royal jelly, and Antholes will contain one food item per square, which should yield a reasonable stack of food rations. [[Fort Ludios]], if it exists, is filled with many well-provisioned soldiers, and the [[Castle]] will also provide a large supply of C- and K-Rations. Be aware that using the [[drawbridge]] to clear the Castle will destroy the food supply.
+
+Even then, the supply is finite, so some players continue to eat monster corpses. [[Random Number God]] helpfully continues to provide them. Monster corpses may be stored for later use in tins using the [[tinning kit]], or in [[container|ice boxes]]. Tainted, poisonous, or acidic corpses are neutralized by tinning; hallucination, stoning, and sliming are not.
+
+===Should I eat dessert first?===
+When an adventurer is able to obtain several different types of comestibles in their inventory, the next question is:
+
+"''What should I eat first?''"
+
+Since different foods pack differing amounts of nutrition into a given size, it makes the most sense to eat non-efficient foods first. This way, you minimize the amount of your carrying capacity used for food. Using the NUTR/WGT column in the table above, we see that [[lembas wafer]]s are the most weight-efficient forms of nutrition in NetHack (excepting [[prayer]], of course!), with [[royal jelly]], [[pancake]]s and [[candy bar]]s closely following the Elven treats. Therefore, the adventurer is generally advised to eat other foodstuffs first.
+
+[[Cream pie]]s and [[meatball]]s are particularly inefficient for travel, but they have other uses that may out-weigh their low NUTR/WGT factor.
+
+[[Tin]]s weigh 10 and vary in nutrition, but only puréed monsters and [[spinach]] equal or exceed the NUTR/WGT of rations. So any unidentified tin should probably be eaten before any other food. (Plus you'd hope to get the benefits of [[spinach]] or [[floating eye]] corpses sooner than later.)
+
+In order of increasing nutrition per unit weight:
+# [[Lizard corpse]]s
+# Homemade [[Tin]]s, [[meatball|stone]] [[meat ring|to]] [[meat stick|flesh]] [[huge chunk of meat|products]]
+# [[Cream pie]]s, [[Lichen]] corpses
+# [[Tripe]] (may make you sick!)
+# [[Fruit]]s and Vegetables
+# [[C-ration]]s
+# [[Food ration]]s, [[cram ration]]s (slightly better for dwarves), [[K-ration]]s, [[fortune cookie]]s
+# [[Slime mold]]s (or however the "fruit" option is set), [[Candy bar]]
+# [[Pancake]]s and [[royal jelly]]
+# [[Lembas wafer]]s
+
+Of course, other factors in deciding the menu for today's meal can include the benefits conferred by eating each food (e.g. [[intrinsics]], [[healing]]), the dietary needs of [[pets]], and whether your inventory slots are constrained because you don't have a [[container]]. You may wish to leave lembas until the ascension run, so you can carry more loot for score.
+
+When forced to eat in combat situations (especially when confronting [[Famine]] in the [[astral plane]]), eating the food that offers the most time-efficient nutrition (has the best NUTR/TIME factor) first could prove a better option. K-Rations are the usual choice here, as they contain a fair bit of nutrition, but are consumed in only 1 turn.
+
+==Alternatives to eating==
+{{main|foodless}}
+It is possible to ascend without eating food. There are several techniques available for this, and most require the use of a ring of slow digestion, because in real games these techniques do not tend to yield much nutrition per time. These include:
+
+* [[Pray]]ing - Your [[god]] may make your stomach content, setting your nutrition to 900. Being weak or fainting increases your chances of success because that is considered a major [[trouble]]. This is not possible in [[Gehennom]], where your prayers are never answered positively.
+* [[Polymorph]]ing - your hunger is reset when you polymorph into a new you. If you polymorph into a [[xorn]] or other metallivore, you can eat metallic items to sate your hunger -- this violates the [[foodless]] conduct, but preserves the [[vegan]] conduct, except perhaps if you eat a [[tin]].
+* [[Amulet of life saving|Life Saving]] - an amulet of life saving will revive you with at least 900 nutrition, regardless if starvation was what actually killed you. Thus, while you may die from starvation, you'll get better and may still ascend.
+* Liquid diet - [[Potion of fruit juice|Potions of fruit juice]], [[Potion of water|potions of water]], [[Potion of booze|potions of booze]] (preferably blessed) and sipping from [[fountains]] each give a small amount of nutrition. It is possible to live off of this, but the math works out so that only tourists can generate enough potions (with the blessed [[Platinum Yendorian Express Card]], a [[horn of plenty]], and a [[ring of slow digestion]]).
+* Initial nutrition - it is possible to ascend without ever gaining nutrition if you are fast (and lucky) enough.
+
+==SLASH'EM==
+
+Some new food stuff in [[SLASH'EM]].
+
+The [[pill]] and the [[mushroom]] have random effects.
+
+
+{|class="prettytable sortable"
+!
+!Symbol
+![[Zorkmid|COST]]
+![[Weight|WGT]]
+![[Probability|PROB]]
+![[Nutrition|NUTR]]
+![[Nutrition/Weight|NUTR/WGT]]
+![[Time (food)|TIME]]
+![[Nutrition/Time|NUTR/TIME]]
+!Notes
+|-
+|[[tortilla]]
+|{{white|%}}
+|9
+|2
+|?
+|80
+|40
+|1?
+|80
+|Vegetarian.
+|-
+|[[holy wafer]]
+|{{white|%}}
+|12
+|1
+|?
+|150
+|150
+|1
+|150
+|Vegetarian. Cures [[sickness]] or [[lycanthropy]] (unless your starting race is lycanthrope, in which case it damages you and reduces your [[strength]] and [[constitution]]). Restores [[HP]] if you're lawful, and does non-fatal damage if you're chaotic
+|-
+|[[Asian pear]]
+|{{brightgreen|%}}
+|8
+|2
+|?
+|75
+|37.5
+|1
+|75
+|Vegan.
+|-
+|[[Sandwich]]
+|{{white|%}}
+|10
+|10
+|?
+|100
+|10
+|1
+|100
+|
+|-
+|[[mushroom]]
+|{{black|%}}
+|9
+|5
+|?
+|90
+|18
+|1
+|90
+|Vegan. Can cause [[poison]]ing, [[stun]]ning, [[hallucination]], or increase [[strength]] by 1.
+|-
+|[[cheese]]
+|{{yellow|%}}
+|17
+|2
+|?
+|250
+|125
+|2
+|125
+|Vegetarian.
+|-
+|[[pill]]
+|{{brightmagenta|%}}
+|
+|
+|?
+|
+|
+|
+|
+|Vegetarian. Can grant a [[wish]], make you [[very fast]], increase your [[nutrition]], put you to [[sleep]], [[poison]] you, [[stun]] you, or cause [[hallucination]].
+|-
+|'''food ration'''
+|
+|45
+|20
+|380
+|800
+|40
+|5
+|160
+|'''Normal food rations, For reference'''
+|}
+
+== References ==
+<references/>
+
+{{nethack-343}}
+[[Category:Comestibles]]
+[[Category:한국어]]}
+&&%s&& %s Rakuyo {140927 2021-06-14T19:04:31Z {4001463 Actual-nh} Category capitalization {{variant-343}} 
+A rakuyo is the base item type for Blade Singer's Saber. A rakuyo is a saber in the default form, and you can (a)pply it to pop off a dagger that immediately goes into the [[two-weapon]] slot and starts being wielded.
+
+At 15 or 20 [[insight]], they become "blood-drenched", which causes damage to enemies behind the one you hit.
+
+At roughly 40 insight, they become "Burning", and cause 3x3 fire explosions behind the target you hit.
+
+{{stub}}
+[[Category:dNethack Items]]}
+&&%s&& %s Template:도구 {138553 2021-03-16T09:15:24Z {4001481 Stay Hydrated1}  <div class="thumb tright">
+{| class="prettytable" style="margin: 0;"
+!colspan="2"| {{{{{color|cyan}}}|(}} {{{tile|}}}
+|-
+!이름
+|{{{이름|{{PAGENAME}}}}}
+|-
+!외형
+|{{{외형|{{{이름|{{PAGENAME}}}}}}}}
+|-
+!기본 가격
+|{{{기본 가격}}} [[Zorkmid|조크미드]]
+|-
+!중량
+|[[weight|{{{중량}}}]]
+|-
+!재질
+|[[{{{재질}}}]]
+|-
+!몬스터 사용여부
+|{{#if: {{{muse|}}} | {{#ifeq: {{{muse}}} | def | <small>''[[defensive item|방어적으로만]] 사용됨''</small> [[Category:Defensive items]] | {{#ifeq: {{{muse}}} | off | <small>''[[offensive item|공격적으로]] 사용됨''</small> [[Category:Offensive items]] | <small>''미사용''</small>}}}} | <small>''미사용''</small>}}
+|}
+</div><noinclude>
+[[tool|도구]] 문서 최상단에 이 템플릿을 삽입해주세요.
+호출방법은 다음과 같습니다:
+ <nowiki>{{</nowiki>도구
+  |이름=''이름''
+  |tile=''문자 및 이미지''
+  |외형=''외형''
+  |기본 가격=''기본 가격''
+  |중량=''중량''
+  |color=''색상''
+  |재질=''재질''
+ <nowiki>}}</nowiki>
+
+'''이름'''과 '''외형''', 그리고 '''색상'''은 기본적으로 ''문서명'', 아이템의 ''이름''과 ''청록색''으로 설정되어 있습니다. 응용 사례는 [[template talk:tool|토론 페이지]]를 참고하세요.
+
+[[Category:Infobox templates]] [[Category:한국어]]
+</noinclude>}
+&&%s&& %s 기름 램프 {135037 2020-07-14T19:26:10Z {4001384 Stay Hydrated} Changed redirect target from [[Oil Lamp/ko]] to [[Oil lamp/ko]] #REDIRECT [[Oil lamp/ko]]
+[[Category:한국어]]}
+&&%s&& %s Copper/ko {135043 2020-07-14T19:55:19Z {4001384 Stay Hydrated} 없으면 만들어야지 으딜 귀찮게 틀을 수정하게 만들어 {{wikipedia|구리}}
+
+'''구리'''는 몇몇 [[item|아이템]]을 구성하는 [[material|재질]]입니다. 현실에서 구리는 구리 합금계의 족을 의미하며, [[rust|녹]] 계열을 제외한 [[corrosion|부식]]에 취약합니다. 게임 내에서 구리는 "구리", "청동", 또는 "놋쇠"라고 일컫어집니다.
+
+대표적인 예로는 [[bronze plate mail|청동 판금 갑옷]]이 있으며, 다른 주된 구리제 아이템으로는 [[light source|광원]]인 [[기름 램프]]와 [[magic lamp|마법 램프]], 그리고 [[brass lantern|청동 랜턴]]이 있습니다. 또한, [[musical instrument|악기]] 중 [[bell|종]]과 [[bugle|각적]]도 구리제입니다. 구리제 무기는 없습니다.
+
+Three of the 28 randomized [[ring]]s are always copper, as are two of the 27 [[wand]]s.
+
+Copper can be eaten by [[rock mole]]s and [[xorn]]s, so the player might benefit from [[Eating jewelry|eating a copper ring]].
+
+[[Polypiling]] copper objects may result in either a stone golem or a clay golem{{refsrc|zap.c|1197|nethack=3.6.0}}.
+
+==References==
+<references />
+
+[[Category:Materials]]
+[[Category:한국어]]
+{{nethack-360}}}
+&&%s&& %s 구리 {135044 2020-07-14T19:56:10Z {4001384 Stay Hydrated} Redirected page to [[Copper/ko]] #REDIRECT [[Copper/ko]]
+[[Category:한국어]]}
+&&%s&& %s 지팡이 {135053 2020-07-14T20:20:13Z {4001384 Stay Hydrated} Redirected page to [[Wand/ko]] #REDIRECT [[Wand/ko]]
+[[Category:한국어]]}
+&&%s&& %s 회복의 물약 {135056 2020-07-14T20:25:02Z {4001384 Stay Hydrated} Changed redirect target from [[Potion of healing]] to [[Potion of healing/ko]] #REDIRECT [[Potion of healing/ko]]
+[[Category:한국어]]}
+&&%s&& %s Spirits (dNetHack) {148246 2022-09-26T20:54:33Z {4000763 EasterlyIrk} L + ratio + your legs are still broken :( '''Spirits''' are a mechanic specific to [[dNetHack]], and a core component of the [[Binder_(dNetHack_role)|Binder]] role, though other roles can often partially interact with them, allowing for additional flexibility and utility outside of the ordinary for that role.
+
+{{todo|Strategy section on usefulness of particular spirits to other roles?}}
+
+A spirit typically consists of the following:
+*An engraved seal, used to bind the spirit, and an associated binding ritual, which requires the player fulfill certain criteria to bind to a given spirit.
+*A taboo, a condition that must be true in order for the spirit to stay bound. Violating a taboo causes the associated spirit to unbind and drain a level from the player, ignoring drain resistance.
+*Zero or more skills (typically at least one), which are permanently [[unrestricted]] and which may be advanced further while the spirit is bound.
+*Zero or more active powers (typically at least one), which may be used up to once every 25 turns by means of the command ^F or #power.
+*Zero or more passive powers (typically at least one), which are used automatically.
+*A mark which, if not concealed, will cause [[aligned priest|priests]] and [[shopkeeper]]s to ban you from their establishments at minimum. A higher number of visible binding marks will cause them to call the [[Keter Sephiroth]] (specifically, the [[Keter Sephiroth#Daat_Sephirah|Daat Sephiroth]]). Priests may additionally summon a number of servants from their deity to strike you down.
+
+Almost all bindings expire after 5000 turns, requiring them to be bound again.
+
+Most roles only have a single slot to bind a spirit too, while Binders gain many more as they level up, and also possess several special slots to hold unique spirits in.
+
+Many active powers use a spirit die to determine the potency of their effects. The spirit die increases along with your level, according to the following table. Binders and non-Binders alike use the same die sizes.
+
+{| class="prettytable"
+! Level range !! Rank Title !! Die size 
+|-
+| 1-2 || Exile || 1
+|-
+| 3-5 || Heretic || d2
+|-
+| 6–9 || Cultist || d3
+|-
+| 10–13 || Binder || d4
+|-
+| 14–17 || Akousmatikoi || d5
+|-
+| 18–21 || Mathematikoi || d6
+|-
+| 22–25 || Doctor || d7
+|-
+| 26–29 || Unbinder || d8
+|-
+| 30 || Gnostikos || d9
+|}
+
+
+= The Spirits of the Near Void =
+The 31 Spirits of the Near Void are the most basic and common of the spirits in dNethack. Binders passively learn all 31 seals as they level up. By level 13, they'll know all 31. Other roles can learn them from finding the seal on the ground or by using artifacts such as [[DNetHack_artifacts#The_Book_of_Lost_Names|The Book of Lost Names]] or the [[DNetHack_artifacts#The_Necronomicon|Necronomicon]].
+
+Binders have a certain number of spirit slots for them per level, but non-Binders can bind a maximum of one Spirit of the Near Void at a time.
+
+{| class="prettytable"
+! Level range !! Binder rank title !! Max spirits bound !! Total seals known
+|-
+| 1 || rowspan=2 | Exile || rowspan=2 | 1 || 3
+|-
+| 2 || 5
+|-
+| 3 || rowspan=3 | Heretic || rowspan=7 | 2 || 7
+|-
+| 4 || 10
+|-
+| 5 || 12
+|-
+| 6 || rowspan=4 | Cultist || 14
+|-
+| 7 || 17
+|-
+| 8 || 19
+|-
+| 9 || 21
+|-
+| 10 || rowspan=4 | Binder || rowspan=5 | 3 || 24
+|-
+| 11 || 26
+|-
+| 12 || 28
+|-
+| 13 || rowspan=6 | 31
+|-
+| 14–17 || Akousmatikoi
+|-
+| 18–21 || Mathematikoi || rowspan=2 | 4
+|-
+| 22–25 || Doctor
+|-
+| 26–29 || Unbinder || rowspan=2 | 5
+|-
+| 30 || Gnostikos
+|}
+
+== Ahazu, the Seizer ==
+
+{{encyclopedia|
+All shall feed the Shattered Night.
+}}
+
+'''Binding Ritual'''
+
+Ahazu's seal must be drawn in a square containing a pit trap.
+
+'''Taboo'''
+
+You must not become weak with hunger while bound to Ahazu.
+
+'''Mark'''
+
+There is a starry void in the back of your throat.
+
+This mark won't be detected from a distance, and can be hidden by wearing a mask or R'lyehian faceplate.
+
+'''Immunity'''
+
+You are immune to engulfing attacks.
+
+'''Skill'''
+
+Flails, including iron balls. Hitting with an iron ball will train flail skill as it does for [[Convict]]s.
+

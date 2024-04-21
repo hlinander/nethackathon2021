@@ -1,0 +1,1000 @@
+|{{{appearance|{{{name|{{PAGENAME}}}}}}}}
+|-
+!Damage vs. small
+|{{{smalldmg}}}
+|-
+!Damage vs. large
+|{{{largedmg}}}
+|-
+!To-hit bonus
+|{{{tohit|<nowiki>+0</nowiki>}}}
+|-
+!Weapon skill
+|{{{skillraw|[[{{{skill|{{{name|{{PAGENAME}}}}}}}}]]}}}
+|-
+!Size
+|[[{{{size|one-handed}}}]]
+|-
+!Base price
+|{{{cost}}} [[Zorkmid|zm]]{{#if:{{{noenchant|}}}||<br />(+10/positive <br />enchant)}}
+|-
+!Weight
+|[[weight|{{{weight}}}]]
+|-
+!Material
+|[[{{{material}}}]]
+|}
+</div><noinclude>
+Put this template at the top of every [[weapon]] page. Call it like this:
+ <nowiki>{{</nowiki>weapon
+  |color=''COLOR''
+  |glyph=''GLYPH''
+  |name=''NAME''
+  |appearance=''APPEARANCE''
+  |smalldmg=''SMALLDMG''
+  |largedmg=''LARGEDMG''
+  |tohit=&lt;nowiki&gt;''TOHIT''&lt;/nowiki&gt;
+  |skill=''SKILL''
+  |size=''SIZE''
+  |cost=''COST''
+  |weight=''WEIGHT''
+  |material=''MATERIAL''
+ <nowiki>}}</nowiki>
+
+'''Appearance''', '''skill''', and '''color''' are optional parameters. The first two default to the ''name'' of the item, and color defaults to ''cyan''. '''Glyph''' is optional, and defaults to {{white|)}}; specify {{white|(}} or {{white|*}} for tool-weapons and gems respectively. '''Tohit''' is also optional, it defaults to +0; remember to use a &lt;nowiki&gt; tag. '''Size''' is optional and defaults to "one-handed"; specify "two-handed" for two-handed weapons.  To remove the "(+10/positive enchant)" note (e.g. for [[stone]]s), add a '''noenchant=yes''' parameter.  See this [[template talk:weapon|talk page]] for further usage notes.
+
+[[Category:Infobox templates|W]]
+</noinclude>}
+&&%s&& %s NetHackWiki:NetHack Tiles {5359 2006-07-28T22:00:42Z {924 ZeroOne} [[Wikihack:NetHack Tiles]] moved to [[List of vanilla NetHack tiles]]: This page is not about Wikihack. Also, I think [[Tiles]] article could be created to discuss the use of tiles in general, listing alternatives etc. #REDIRECT [[List of vanilla NetHack tiles]]}
+&&%s&& %s Deferred features {148959 2022-10-30T06:00:17Z {375 Ion frigate} oops The NetHack [[Source code|source]] contains code for several currently unimplemented features. Some of them are marked '''deferred''', so they may or may not make it into the [[next version]]. Many of the following features are included in [[SLASH'EM]].
+
+==Monsters==
+
+The '''beholder''' ({{monsym|beholder}}):{{refsrc|monst.c|351}} a type of floating eye (in fact many eyes on stalks coming out of an even bigger eye; derived from [http://www.headinjurytheater.com/images/d&d%20beasts%20beholder%202.jpg Dungeons & Dragons]) with 5 gaze attacks: slowing, sleep, disintegration, stoning, and cancellation.
+
+Depending on how the gaze attacks work (none of them are coded yet), the beholder could be an exceptionally nasty enemy.
+
+The '''shimmering dragon''' ({{monsym|shimmering dragon}}):{{refsrc|monst.c|1276}} This would leave '''shimmering dragon scales''' and let you create '''shimmering dragon scale mail''', which would confer displacement. Monster displacement is not yet implemented (though Nethack 3.7 will likely contain [[displacer beast]]s), which may be why this dragon is not yet present. There would be corresponding '''baby shimmering dragons'''.
+
+The '''vorpal jabberwock''' ({{monsym|vorpal jabberwock}}):{{refsrc|monst.c|1585}} A tougher type of [[jabberwock]] (level 20 vs level 15), enabled in [[UnNetHack]].
+
+The '''vampire mage''' ({{monsym|vampire mage}}):{{refsrc|src/monst.c|1859|version=NetHack 3.6.0}} The next step up from a [[vampire lord]], with spellcasting abilities.
+
+===Charon===
+
+'''Charon''' ({{monsym|charon}}) and '''Cerberus''' are present in the source code{{refsrc|monst.c|2501}}{{refsrc|monst.c|302}} if <code>CHARON</code> is [[Definition|defined]], but even if it is, they are both unique monsters which are not placed by any current map. Charon is a very high level peaceful human who, if true to his name's [[Wikipedia:Charon|mythology]], will ferry the player across the also-yet-to-be-implemented river Acheron/Styx for a fee.
+
+Cerberus is a very high level dog who is tangentially related to Charon [[Wikipedia:Cerberus|in Greek mythology]], as the guardian of the gates to Hades. In the [[SLethe]] patch, he appears on the final level of the [[Lethe Gorge]].
+
+==Objects==
+
+The '''[[spellbook of flame sphere]]'''{{refsrc|objects.c|836}} and '''[[spellbook of freeze sphere]]'''{{refsrc|objects.c|837}}: creates a tame [[flaming sphere|flaming]]/[[freezing sphere]] which will eventually explode at hostile monsters. These spells are fully implemented in ''[[SLASH'EM]]''. [[flame mage|Flame mages]] start with the spellbook of flame sphere; [[ice mage|Ice mages]] start with the spellbook of freeze sphere.
+
+Reading a [[cursed spellbook]] could curse random inventory items {{refsrc|spell.c|170}} if it were of level 8 or higher. No such spellbooks currently exist.
+
+There are comments in the source hinting at '''copper coins''' and '''silver coins'''.{{refsrc|makemon.c|474}}{{refsrc|shk.c|81}}{{refsrc|objnam.c|2083}}
+
+A special artifact attack of magic missiles (analogous to [[Fire Brand]]'s fire, [[Frost Brand]]'s cold, and [[Mjollnir]]'s lightning), has been implemented.{{refsrc|artifact.c|1000}} The weapon's description, most likely a placeholder, is "imaginary widget".
+
+==Burying==
+
+There is code for "burying" both you and monsters ("The floor opens up and swallows <monster>!"). You can be buried, and stay alive for a while (eventually suffocating), and you have the opportunity to tunnel out.{{refsrc|dig.c|1456}}
+
+==Other features==
+There is code that gives a 1 in 25 chance of applied bullwhips yanking a monster's weapon away from it, and it hitting you.{{refsrc|apply.c|2288}}
+
+There is code that lets monsters use scrolls of fire as a last-resort offense.{{refsrc|muse.c|1083}}
+
+There is code for creating force fields over an area of the map.{{refsrc|region.c|803}}
+
+There is a hint that randomising the order of the elemental planes is a possibility.{{refsrc|topten.c|113}} Some variants implement this, including [[UnNetHack]] and [[GruntHack]].
+
+There is code to give elves a luck penalty for wielding cold iron.{{refsrc|wield.c|183}}
+
+There is a [[hero]] attribute <code>nv_range</code> which suggest intrinsic night vision may be implemented one day.{{refsrc|you.h|178}}
+
+The code for snagging shop inventory from outside the shop (currently requires a [[grappling hook]]) has a comment mentioning the possibility of telekinesis.{{refsrc|shk.c|441}}
+This is partially coded in several functions to do with picking up items.{{refsrc|pickup.c|978}} {{refsrc|pickup.c|1142}}{{refsrc|pickup.c|1238}}
+
+There is a comment when using a stethoscope to make sure you have ears and are not deaf.{{refsrc|apply.c|215}} The ears check is not implemented.
+
+There is code regarding invisible objects.{{refsrc|obj.h|83}} 
+
+According to definition in monst.c eating [[footrice]] and some other monsters should convey stoning resistance, but this is not implemented.<ref>{{sourcecode|monst.c|147}}, {{sourcecode|monst.c|184}}, {{sourcecode|monst.c|176}}, {{sourcecode|monst.c|426}}, {{sourcecode|monst.c|433}}, {{sourcecode|monst.c|1349}}, {{sourcecode|monst.c|1423}}, {{sourcecode|monst.c|1744}}, {{sourcecode|monst.c|1774}}, {{sourcecode|monst.c|2063}}, {{sourcecode|monst.c|2477}}, {{sourcecode|monst.c|2879}}, {{sourcecode|monst.c|3220}}</ref>
+
+There is code for [[enlightenment]] to report that you are "warned of undead", but there is no other reference to that property anywhere else in the game.{{refsrc|cmd.c|938}}
+
+The bonus for a [[role]]'s [[special spell]] is defined in the role definition, rather than hard-coded in the spellcasting code, so its value could be higher or lower for different roles. All roles currently have the same -4 bonus.
+
+There is code to prevent wished-for magic lamps from being lit, to prevent players from wishing for an unlimited light source and (probably) keeping the wish. This code goes unused because magic lamps can't successfully be wished for in vanilla NetHack.{{refsrc|apply.c|1080}}
+
+There is code for a [[Monster_spell#Ray-type_spells|ray-type]] fire-branded magic attack{{reffunc|mcastu.c|castmu|version=NetHack 3.6.1}}, but no monster has this attack, specifically with AT_MAGC and AD_FIRE.  [[Fire vampire]]s in SLASH'EM have such an attack.
+
+==See also==
+*[[Defunct features]]: Features that have been present in some previous version of NetHack but have since been removed.
+
+==References==
+
+<references/>
+
+[[Category:Deferred features| ]]
+{{nethack-343}}}
+&&%s&& %s Beholder {93883 2015-05-06T20:14:09Z {4000354 Chris}  '''Beholder''' may refer to:
+
+* the '''[[Beholder (monster)|Beholder]]''' monster in [[SLASH'EM]] and [[dNethack]]
+* a '''[[Deferred features|deferred monster]]''' in vanilla [[NetHack]]
+
+{{disambig}}}
+&&%s&& %s Shimmering dragon {145777 2022-04-30T16:55:34Z {4000978 Aximili} splicehack '''Shimmering dragon''' or '''baby shimmering dragon''' may refer to:
+
+* the '''[[deferred feature]]''' in vanilla [[NetHack]], a dragon with intrinsic displacement.
+* the '''[[shimmering dragon (SLASH'EM)|shimmering dragon]]''' or '''[[baby shimmering dragon (SLASH'EM)|baby shimmering dragon]]''' [[monster (SLASH'EM)|monster]] in [[SLASH'EM]]
+* the '''[[Dragon (GruntHack)|shimmering dragon]]''' or '''[[Dragon (GruntHack)|baby shimmering dragon]]''' monsters in [[GruntHack]]
+* the '''[[Dragon (SpliceHack)#Shimmering dragon|shimmering dragon]]''' or '''[[Dragon (SpliceHack)#Shimmering dragon|baby shimmering dragon]]''' monsters in [[SpliceHack]]
+{{disambig}}}
+&&%s&& %s Vorpal jabberwock {145672 2022-04-27T17:13:48Z {4000978 Aximili} category change The '''vorpal jabberwock''' is an [[unused monster]] in vanilla [[NetHack]] which has been implemented in [[SLASH'EM]], [[GruntHack]], [[UnNetHack]], [[SpliceHack]], and [[EvilHack]].
+
+In every incarnation, the vorpal jabberwock is a more powerful version of the regular [[jabberwock]], appearing as {{magenta|J}}. Like the regular jabberwock, it is especially vulnerable to being beheaded by [[Vorpal Blade]] (and other methods of decapitation, depending on the variant).
+
+== GruntHack ==
+{{monster
+ |name=vorpal jabberwock
+ |difficulty=27
+ |level=20
+ |experience=809
+ |speed=12
+ |AC=-2
+ |MR=50
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 3d10, Bite 3d10, Claw beheading 3d10, Claw beheading 3d10
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A vorpal jabberwock|animal=1|fly=1|carnivore=1|hostile=1|strong=1|nasty=1|collect=1|infravisible=1}}
+ |size=Large
+ |nutr=600
+ |weight=1300
+}} 
+
+The vorpal jabberwock possesses multiple [[instadeath|beheading]] attacks, each with a 5% chance of instantly beheading you on every successful hit (100% chance if you are polymorphed into a jabberwock or vorpal jabberwock yourself; 0% if you are currently headless or [[amorphous]]). Additionally, jabberwocks can [[grow up]] into vorpal jabberwocks.
+
+== UnNetHack ==
+In [[UnNetHack]], the vorpal jabberwock behaves very similarly to GruntHack's version, except that the chance of beheading is only 2.5% per hit, and [[cancel]]ing the vorpal jabberwock prevents it from beheading anything.
+{{stub|Please verify: beheading chance seems more like 20% and cancelling seems to not be possible}}
+
+== EvilHack ==
+In [[EvilHack]], the vorpal jabberwock behaves very similarly to GruntHack's version. Additionally, it is one of the alternate forms the [[Wizard of Yendor]] may take on, monsters may use a wish for a figurine of a vorpal jabberwock, and they cannot be genocided.
+
+{{clear}}
+
+== SLASH'EM ==
+{{monster
+ |name=vorpal jabberwock
+ |difficulty=27
+ |level=20
+ |experience=809
+ |speed=12
+ |AC=-2
+ |MR=50
+ |align=0
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Bite 3d10, Bite 3d10, Claw 3d10, Claw 3d10
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A vorpal jabberwock|nohell=1|animal=1|fly=1|carnivore=1|hostile=1|strong=1|nasty=1|collect=1|infravisible=1|hitasthree=1}}
+ |size=Large
+ |nutr=600
+ |weight=1300
+ |reference=[[SLASH'EM_0.0.7E7F2/monst.c#line2683]]
+}}
+
+The [[SLASH'EM]] version of the vorpal jabberwock possesses no beheading attack, will not grow up from a regular jabberwock, does not generate in [[Gehennom]], and is not especially vulnerable to being decapitated by Vorpal Blade.
+
+== SpliceHack ==
+[[SpliceHack]]'s vorpal jabberwock acts mostly like SLASH'EM's version, except that Vorpal Blade will still always decapitate it.
+
+{{clear}}
+==Encyclopedia entry==
+
+{{encyclopedia|	"Beware the Jabberwock, my son!
+  The jaws that bite, the claws that catch!
+Beware the Jubjub bird, and shun
+  The frumious Bandersnatch!"
+
+He took his vorpal sword in hand;
+  Long time the manxome foe he sought --
+So rested he by the Tumtum tree,
+  And stood awhile in thought.
+
+And, as in uffish thought he stood,
+  The Jabberwock, with eyes of flame,
+Came whiffling through the tulgey wood,
+  And burbled as it came!
+
+One, two! One, two! And through and through
+  The vorpal blade went snicker-snack!
+He left it dead, and with its head
+  He went galumphing back.|[ Jabberwocky, by Lewis Carroll ]
+}}
+
+[[Category:GruntHack monsters]]
+[[Category:SLASH'EM monsters]]
+[[Category:SpliceHack Monsters]]
+[[Category:UnNetHack monsters]]
+[[Category:EvilHack monsters]]}
+&&%s&& %s Vampire mage {33985 2008-07-17T01:06:45Z {701 Rogerb-on-NAO} is implemented in SLASH'EM - disambig. '''Vampire mage''' may refer to:
+
+* the '''[[deferred feature]]''' in vanilla [[NetHack]]
+* the '''[[vampire mage (SLASH'EM)|vampire mage]]''' [[monster (SLASH'EM)|monster]] in [[SLASH'EM]]
+{{disambig}}}
+&&%s&& %s Earendil {95487 2015-07-02T22:20:09Z {443 Kahran042}  {{Wikipedia|Eärendil}}
+
+{{monster
+ |name=Earendil
+ |difficulty=20
+ |level=20
+ |experience=
+ |speed=12
+ |AC=0
+ |MR=30
+ |align=-20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 1d8
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep
+ |attributes={{attributes|Earendil|humanoid=1|omnivore=1|seeinvis=1|nopoly=1|elf=1|pname=1|peaceful=1|strong=1|male=1|collect=1|magic=1|close=1|infravision=1|infravisible=1}}
+}}
+
+Earendil was the [[quest leader]] for male [[Elf (role)|elves]] prior to 3.3.0, and the [[Drow]] [[quest nemesis]] in versions of [[SLASH'EM]] before race and role were separated. It should be noted that in SLASH'EM, his MR is changed to 50, and his alignment is changed to 20. The reason for the alignment change is likely because in SLASH'EM, Elves are [[lawful]] by default.
+{{clear}}
+==Elwing==
+
+{{Wikipedia|Elwing}}
+
+
+{{monster
+ |name=Elwing
+ |symbol={{magenta|@}}
+ |difficulty=20
+ |level=20
+ |experience=
+ |speed=12
+ |AC=0
+ |MR=30
+ |align=-20
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 1d8
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep
+ |attributes={{attributes|Elwing|humanoid=1|omnivore=1|seeinvis=1|nopoly=1|elf=1|pname=1|peaceful=1|strong=1|female=1|collect=1|magic=1|close=1|infravision=1|infravisible=1}}
+}}
+
+Elwing was the [[quest leader]] for female [[Elf (role)|elves]] prior to 3.3.0. Other than her name and gender, she has the same stats as Earendil.
+{{clear}}
+
+==Encyclopedia entry (SLASH'EM)==
+{{encyclopedia|In after days, when because of the triumph of Morgoth Elves and
+Men became estranged, as he most wished, those of the Elven-race
+that lived still in Middle-earth waned and faded, and Men usurped
+the sunlight.  Then the Quendi wandered in the lonely places of the
+great lands and the isles, and took to the moonlight and the
+starlight, and to the woods and the caves, becoming as shadows
+and memories, save those who ever and anon set sail into the West
+and vanished from Middle-earth.  But in the dawn of years Elves
+and Men were allies and held themselves akin, and there were some
+among Men that learned the wisdom of the Eldar, and became great
+and valiant among the captains of the Noldor.  And in the glory
+and beauty of the Elves, and in their fate, full share had the
+offspring of elf and mortal, Earendil, and Elwing, and Elrond
+their child.|[ The Silmarillion, by J.R.R. Tolkien ]}}
+
+
+[[Category:Defunct features]]
+[[Category:Quest leaders]]
+{{stub}}}
+&&%s&& %s Goblin King {148324 2022-10-04T11:26:56Z {4000867 K2} /* Monster stats by variant */ goblin king size The '''Goblin King''', {{monsym|Goblin_King}}, was a monster that previously appeared in ''[[NetHack]]'' and served as the [[Elf (role)|Elf]] [[quest nemesis]]. He guarded the the Bell of Opening and the Elf's [[quest artifact]], [[The Palantir of Westernesse]]. He possessed two weapon attacks and a claw attack that could steal the quest artifact back if you were able to obtain it without killing him.
+
+==History==
+The Goblin King was introduced in [[NetHack 3.1.0]], and last appeared in [[NetHack 3.2.3]] - he was rendered [[defunct]] along with the Elf role in [[NetHack 3.3.0]], which introduced the ability to choose a starting race, including [[Elf (starting race)|elves]]. The role itself was given a spiritual successor in the [[Ranger]], whose [[Ranger quest|quest branch]] has [[Scorpius]] as the role's nemesis [[The Longbow of Diana|guarding a different quest artifact]].
+
+The data for the Goblin King can still be found within monst.c in the code of 3.3.0 and later versions.{{refsrc|src/monst.c|3009|version=NetHack 3.6.6}}
+
+==EvilHack==
+The Goblin King, {{brightmagenta|o}}, reappears in [[EvilHack]], where he is introduced in version 0.8.0 and serves an entirely different role closer to that of the work he originated from - he rules over the branch known as [[Goblin Town]], and controls access to [[Mine Town]] and [[Mines' End]], requiring [[you]] to defeat him in order to gain physical access to those locations.
+
+===Generation===
+The Goblin King is always generated hostile, and is equipped with a [[bone]] [[quarterstaff]].
+
+===Strategy===
+Despite being a very early encounter, the Goblin King can quickly bring death to those who are unwary or else take him too lightly. A decently-armored and well-equipped player should be able to handle him with care, and [[bow]]-proficient roles can make use of the spare arrows from the various [[arrow trap]]s around the level. Taking on the orcish hordes scattered around the level can also provide a decent source of armor and even the odd wand or two to tip odds in your favor.
+
+==Monster stats by variant==
+<simpletabs>
+NetHack 3.1.0-3.2.3|{{monster
+ |name=Goblin King
+ |difficulty=15
+ |level=15
+ |experience=
+ |speed=10
+ |AC=0
+ |MR=0
+ |align=-15
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 1d8, weapon 1d8, claw [[Covetous|quest-artifact-stealing]] 1d6
+ |weight=750
+ |nutr=350
+ |size=Medium
+ |resistances=None
+ |resistances conveyed=None
+ |attributes={{attributes|The Goblin King|humanoid=1|omnivore=1|nopoly=1|orc=1|hostile=1|strong=1|stalk=1|nasty=1|male=1|greedy=1|jewels=1|collect=1|magic=1|wantsarti=1|infravision=1|infravisible=1|waitsforu=1}}
+}}
+
+|-|
+EvilHack|{{ monster
+ |name=Goblin King
+ |symbol={{brightmagenta|o}}
+ |difficulty=10
+ |level=8
+ |experience=22
+ |speed=12
+ |AC=7
+ |MR=10
+ |align=-15
+ |frequency=Unique
+ |genocidable=No
+ |attacks=Weapon 2d6, Weapon 2d6
+ |resistances conveyed=None
+ |resistances=poison
+ |attributes={{attributes|The Goblin King|humanoid=1|omnivore=1|nopoly=1|orc=1|hostile=1|strong=1|stalk=1|nasty=1|male=1|greedy=1|jewels=1|collect=1|magic=1|infravision=1|infravisible=1|waitsforu=1|mh_orc=1}}
+ |size=Large
+ |nutr=500
+ |weight=1500
+ |reference=[https://github.com/k21971/EvilHack/blob/v0.8.0/src/monst.c#L924 EvilHack 0.8.0 - monst.c, line 924]
+}}
+</simpletabs>
+
+==Origin==
+{{wikipedia|Great Goblin}}
+In [[J.R.R. Tolkien]]'s ''The Hobbit'', the Great Goblin was the ruler of a kingdom that lay under the Misty Mountains, which Goblin Town is modeled after. During their journey to Lonely Mountain, Thorin and company rested in a cave and were captured by the orcs, who brought them before the Great Goblin. He accused Thorin's group of spying, and was enraged to find that Thorin was carrying [[Orcrist]] - a sword the goblins knew well as the "Biter" that had felled many of their number during the orcs' attack on Gondolin. As the Great Goblin neared Thorin, a great fire that lit the large cavern went out: the Great Goblin was quickly slain through the intervention of Gandalf, allowing Bilbo and the dwarves to escape while pursued by the orcs.
+
+==Messages==
+In EvilHack, the Goblin King often speaks in rhyme, and will randomly use one of the following lines:
+{{message|Bones will be shattered, necks will be wrung!  You'll be beaten and battered, from racks you'll be hung!}}
+{{message|You will die down here and never be found, down in the deep of Goblin Town!}}
+{{message|With a swish and a smack, and a whip and a crack!  Everybody talks when they're on my rack!}}
+{{message|Mine Town is under my control!  No one is allowed to visit!}}
+{{message|So you want to explore Mines' End, eh?  Over my dead body!}}
+
+==Encyclopedia Entry==
+{{encyclopedia|
+	Now goblins are cruel, wicked, and bad-hearted.  They make
+	no beautiful things, but they make many clever ones.  They
+	can tunnel and mine as well as any but the most skilled
+	dwarves, when they take the trouble, though they are usually
+	untidy and dirty.  Hammers, axes, swords, daggers, pickaxes,
+	tongs, and also instruments of torture, they make very well,
+	or get other people to make to their design, prisoners and
+	slaves that have to work till they die for want of air and
+	light.
+	     [ The Hobbit, by J.R.R. Tolkien ]
+}}
+
+==References==
+<references/>
+{{noversion}}
+<!--{{variant-36x}}-->
+[[Category:EvilHack monsters]]
+[[Category:Defunct features]]}
+&&%s&& %s High-elf {142390 2021-09-06T10:55:55Z {4001279 Umbire the Phantom}  {{ monster
+ |name=High-elf
+ |difficulty=
+ |level=5
+ |experience=
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=-7
+ |frequency=0
+ |genocidable=No
+ |attacks=Weapon 2d4, [[Monster spell#Clerical Spells|spellcasting]] (clerical)
+ |resistances conveyed=sleep (47%)
+ |resistances=sleep
+ |attributes={{attributes|A High-elf|humanoid=1|omnivore=1|seeinvis=1|nopoly=1|elf=1|strong=1|collect=1|infravision=1|infravisible=1|}}
+ |size=Medium
+ |nutr=350
+ |weight=800
+ |reference=[[monst.c#line3128]]
+}}
+
+The '''High-elf''' is a [[Defunct features|defunct monster]] that appeared in ''[[NetHack]]'', and can still be found in the source code. High-elves were the [[quest guardian]]s for the [[Elf quest]].
+
+==SLASH'EM==
+High-elves are also present in the source code of [[SLASH'EM]], where they are grouped with other [[elf (monster attribute)|elves]] rather than the quest guardians, but are still never randomly generated. It is possible to polymorph into one, however.
+
+High-elves in SLASH'EM have a base level of 7, and they are lawful rather than chaotic like their ''NetHack'' counterparts.
+
+{{stub}}
+{{nethack-360}}
+{{slashem-7E7}}
+[[Category:Defunct monsters]]}
+&&%s&& %s Silver dagger {56662 2010-11-14T20:28:34Z {630 Paxed} redirect to correct section. #REDIRECT [[Dagger#Silver_dagger]]}
+&&%s&& %s Bug (disambiguation) {129363 2019-11-29T05:35:24Z {4001279 Umbire the Phantom}  '''Bug''' can refer to any of the following:
+
+* A software bug, such as [[bugs in NetHack 3.4.3]] and [[Bugs in NetHack 3.6.0|3.6.0]].
+* [[Grid bug]]s
+* The bugs on the floor, whose existence is revealed when [[Wand#Engrave-identification|engraving with wands]] and may give clues to that wand's identity
+* [[Electric bug]]s in [[SLASH'EM]]
+
+{{disambig}}}
+&&%s&& %s Experience {5377 2006-07-28T23:09:17Z {396 Jayt} redirecting to [[Experience level]] #REDIRECT [[Experience level]]}
+&&%s&& %s Sickness {137905 2021-02-16T02:58:05Z {4000681 Andrio Celos} Link to [[NetHack 3.7.0]] specifically. '''Sickness''' is a terminal [[property|status affliction]] that, if untreated, will cause [[instadeath]] after a few turns. The main causes are eating too old corpses, special attacks, and cursed unicorn horns. The main remedies are applying a non-cursed [[unicorn horn]], casting {{spell of|cure sickness}}, and quaffing certain potions.
+
+The game uses "deathly sick" to specifically herald this condition, whereas there are many [[#Other uses of "sick"|other cases]] where you simply "feel sick".
+
+[[Sickness resistance]] in vanilla NetHack is possessed only by [[ghoul]]s, which happily feast on old [[corpse]]s, and [[fungus|fungi]].{{refsrc|polyself.c|77|version=NetHack 3.6.0}}
+
+Contrary to its name, [[potion of sickness]] does not cause sickness.
+
+==Types of sickness==
+
+There are two distinct types of sickness, indicated separately on the [[status line]]. You can also suffer both conditions simultaneously. The effects and remedies are identical, except that only food poisoning can be cured by [[vomiting]].{{refsrc|you.h|268|comment=lists the two independent types of SICK: SICK_VOMITABLE an SICK_NONVOMITABLE.}}
+
+===Food poisoning===
+
+'''Food poisoning''' is only acquired by [[eat]]ing an old ("tainted") [[corpse]] or [[glob]]. It is marked by the text <code>FoodPois</code> on the status line. The initial time until death is set to 10&ndash;19 turns.{{refsrc|eat.c|1270}}
+
+Food poisoning is completely preventable in vanilla [[NetHack]] if you don't eat old corpses. A corpse is too old to eat after 6&nbsp;&times; (9&nbsp;+&nbsp;1d20) turns, where 6 is replaced with 8 if blessed and 4 if cursed.{{refsrc|eat.c|1253}} Corpses left by [[undead]] except [[wraith]] are always pre-aged by 100 turns; eaten immediately, they have 40% chance of causing food poisoning. Old corpses can be rendered safe to eat by [[tinning kit|tinning]] them. [[Lichen]] and [[lizard]] corpses never rot and may be safely eaten regardless of age.
+
+Despite the name, food poisoning is unrelated to [[poison]] and is unaffected by [[poison resistance]].
+
+{{upcoming|NetHack 3.7.0|You have a constitution in 100 chance of surviving food poisoning. If you do, you lose 1 point of constitution and abuse constitution.}}
+
+===Illness===
+
+'''Illness''' is conferred by the '''disease''' attacks of certain monsters, listed below, or by applying a [[cursed]] [[unicorn horn]]. It is marked by the text <code>Ill</code> on the status line.
+*{{monsym|Demogorgon}} [[Demogorgon]]
+*{{monsym|Juiblex}} [[Juiblex]]
+*{{monsym|Scorpius}} [[Scorpius]]
+*{{monsym|Pestilence}} [[Pestilence]]
+
+The first time you contract the illness, a turns-to-live timer is started, set to between 20 and (19+[[Con]]). Each additional illness attack while you are <code>Ill</code> divides the remaining turns-to-live by roughly 3.<ref>{{sourcecode|mhitu.c|773}}, {{sourcecode|apply.c|1458}}</ref>
+
+==Remedies==
+Sickness can be easily cured with any of the following:
+*[[apply]]ing a non-cursed [[unicorn horn]]{{refsrc|apply.c|1541}}
+*[[pray]]ing to your god
+*quaffing a non-cursed potion of {{of|potion|extra healing|or=1|full healing}}, a blessed [[potion of healing]], or (unless chaotic) a [[potion of holy water]]
+*casting a [[spellbook of cure sickness|spell of cure sickness]]
+*eating a non-cursed [[eucalyptus leaf]]{{refsrc|eat.c|1725}}
+*invoking [[the Staff of Aesculapius]]{{refsrc|artifact.c|1219}}
+
+The full list of less common remedies also includes:
+* vomiting from eating [[Tripe ration|tripe]] or a rotten [[egg|egg]]. This cures food poisoning only, not illness. Quite unreliable, but it's there.
+*[[polymorph]]ing into a new version of yourself{{refsrc|polyself.c|190}} or a [[Sickness resistance|sickness-resistant]] monster{{refsrc|polyself.c|1411}} ([[ghoul]] or some [[fungi]]). (A new version includes if you "fail" to change form, but get your attributes adjusted.)
+*getting healed by a [[nurse]]'s attack.{{refsrc|mhitu.c|1407}}
+*sitting on a [[throne]] ({{frac|13}} chance).{{refsrc|sit.c|188}}
+
+The only sure-fire cures are the potions, prayer if safe, the spell at 0% failure rate, and polyself. A [[unicorn horn]] is good enough if you weren't made sick multiple times.
+
+Importantly, ''[[poison resistance]] is not a remedy''; if you become food poisoned and rely on this you will die.
+
+==Messages==
+{{message|[[Ulch]] - that <food type> was tainted!|The corpse you are eating is old enough to cause food poisoning.}}
+
+{{message|You feel deathly sick.|You have contracted sickness and will soon die if untreated.}}
+
+{{message|It doesn't seem at all sickening, though...|You would have contracted sickness but are resistant.}}
+
+{{message|You feel even worse.}}
+{{message|You feel much worse.|Your sickness has worsened your sickness, further shortening your time to live ("much" if reduced by at least half).}}
+
+{{message|You feel somewhat better.|Vomiting cured your food poisoning, but not illness. This doubles your time to live.{{refsrc|potion.c|126}}}}
+
+{{message|You are no longer ill.|The {{spell of|cure sickness}} spell is curing your sickness (even if it was food poisoning).}}
+
+{{message|What a relief!|You have fully cured your sickness.}}
+
+[[Enlightenment]] may reveal any of the following, which are self-explanatory:
+
+{{message|You are sick from food poisoning.}}
+{{message|You are sick from illness.}}
+{{message|You are immune to sickness.}}
+
+==Other uses of "sick"==
+<!--As long as [[sick]] redirects here, we need to clarify other uses.-->A [[potion of sickness]] does not cause sickness, despite its name. [[Poison resistance]] does not prevent food poisoning.
+
+{{message|You feel sick.|You ate an old-ish corpse or engulfed an undead monster, and lost 1d8 hit points.{{refsrc|eat.c|1300}}{{refsrc|uhitm.c|2078}}}}
+
+{{message|You feel a little sick.|You lost [[intrinsic]] [[poison resistance]] to a [[gremlin]] attack.{{refsrc|sit.c|401}}}}
+
+{{message|You feel very sick.|You quaffed a [[potion of sickness]] that reduced your [[constitution]].{{refsrc|potion.c|675}} Replaces "You feel sick" if you are suffering sickness.}}
+
+{{message|You feel incredibly sick|You will [[vomiting|vomit]] in 5 turns, e.g. from eating [[tripe ration|tripe]].{{refsrc|timeout.c|47}}}}
+
+==Variants==
+===SLASH'EM===
+
+In [[SLASH'EM]] [[rot worm]]s have an illness-inducing attack. You may also get food poisoning from swallowing a [[pill]], and you can cure food poisoning by sitting on a [[toilet]]. The [[Necromancer]] and the [[Undead Slayer]] roles start the game with innate [[sickness resistance]].
+
+Keep in mind that here [[unicorn horn]]s need to be enchanted in order to be reliable.
+
+===SporkHack===
+[[SporkHack]] introduces [[locust]]s and [[gray fungus|gray fungi]], which have illness-inducing attacks. Drinking a [[potion of salt water]] can induce vomiting to cure food poisoning.
+
+==References==
+
+<references/>
+
+[[Category:Instadeath]]
+[[Category:Monster damage types]]
+{{nethack-343}}}
+&&%s&& %s Hell {137621 2021-02-08T04:14:04Z {4001279 Umbire the Phantom} /* Prerequisites for entering and surviving in Hell */ Moving citation to be less potentially confusing :''This page is about the netherworld in versions of NetHack prior to [[NetHack 3.1.0]].  For its counterpart in the modern game, see [[Gehennom]].''
+
+'''Hell''' is the name of the netherworld in versions of Hack and NetHack from [[Hack 1.0.2]] through [[NetHack 3.0.10]].  To win the game, the adventurer must enter Hell, take the [[Amulet of Yendor]] from the [[Wizard of Yendor|Wizard]], and then return to the surface; starting with [[NetHack 3.0.0]], they must then face the [[Astral Plane]].
+
+== Location of Hell ==
+
+In [[Hack 1.0.2]] through [[NetHack 2.3e]], Hell begins at dungeon level 30.  There may be several mazes before that level, but they have no special properties (except that the first one has a guaranteed [[wand of wishing]]).
+
+In [[NetHack 3.0.0]] through [[NetHack 3.0.10|3.0.10]], Hell begins in the level after the Castle. 
+
+== Prerequisites for entering and surviving in Hell ==
+
+Entering Hell without [[fire resistance]] leads to [[instadeath]]:
+
+<pre>
+You arrive at the center of the earth...--More--
+Unfortunately, it is here that hell is located.--More--
+You burn to a crisp.
+</pre>
+
+But if [[you]] are fire resistant:
+
+<pre>
+But the fire doesn't seem to harm you.
+</pre>
+
+All levels in Hell have only up-stairs (contrary to the Christian version of Hell, which may be entered but not escaped).  Through [[NetHack 2.3e]], the mazes between [[Medusa]] and Hell also have only up-stairs; thus Hell can only be entered by controlled [[level teleportation]].  Starting in [[NetHack 3.0.0]], the topmost level of Hell may be entered directly from the [[Castle]], as the [[Valley of the Dead]] is in modern versions; thus the trap-doors can be deathtraps.  Level teleportation is still necessary to proceed further than the topmost level.
+
+If fire resistance is lost for any reason, the adventurer immediately dies, burnt to a crisp.{{refsrc|worn.c|63|version=NetHack 3.0.0}} [[Hack 1.0.2]] does not check for loss of the property via removal of a [[ring of fire resistance]]; this is a bug, and was fixed in [[Hack 1.0.3]].
+
+All the modern methods of acquiring and losing fire resistance are possible, subject to the existence of relevant features:
+
+* Fire resistance may be acquired intrinsically by eating certain corpses.
+
+* The [[ring of fire resistance]] has been around since [[Hack 1.0]].  Removing it exposes [[you]] to the flames.
+
+* Self-[[polymorph]] first appears in [[NetHack 1.3d]].  One can enter Hell while polymorphed into, say, a [[dragon]] (equivalent to [[red dragon]] in this version); but when the polymorph ends, or is superseded by another polymorph to a non-fire-resistant form, [[you]] are exposed to the flames.
+
+* [[Gremlin]]s first appear in [[NetHack 2.3e]] and can kill instantly by removing intrinsic fire resistance, unless also conferred by other means.
+
+* Red [[dragon scale mail]] first appears in [[NetHack 3.0.0]].  [[Nurse dancing]] is not advisable if this is your only source of fire resistance.
+
+The [[amulet of life saving]] first appears in [[NetHack 3.0.0]].  It can prevent many deaths in Hell:  it can block the level teleport, or cause you to find yourself still wearing your ring.  It does not save you if your fire resistance was conferred by an item that was stolen or destroyed; you immediately die again{{refsrc|worn.c|112|version=NetHack 3.0.0}}.  However, the game did not check for lack of fire resistance after being life-saved if your fire resistance was conferred only by your polymorphed form, or you lost it to a [[gremlin]] attack.
+
+== Features of Hell ==
+
+All levels in Hell are [[maze]]s.  Some have a room in the center, surrounded by a moat; this may be where the [[Wizard of Yendor]] lives, or it may contain a [[demon]] and a [[Cheap plastic imitation of the Amulet of Yendor|fake Amulet]].  Starting with [[NetHack 3.0.0]], this demon will be a demon prince if possible, or a demon lord if no demon princes are available.  Named demons will not teleport out of the room to attack the adventurer.
+
+Other residents of the room will be a [[hell hound]] and, starting with [[NetHack 3.0.0]], a [[vampire lord]].
+
+An early version of [[Vlad's Tower]] first appears in [[NetHack 3.0.0]].  This has the floor plan of the modern Tower, but is not in a separate branch; rather each of its levels is embedded in a maze level.  The lowermost one connects to the maze through a corridor extending to the right from the door.  Its contents are the same as in the modern game, save that [[Vlad the Impaler]] does not have a [[Candelabrum of Invocation]].  Fighting Vlad is strictly optional in these versions, and an adventurer on the run from the [[Wizard of Yendor]] might be wise to pass him up.
+
+== Escaping from Hell ==
+
+Since it is difficult to descend in Hell, most players will want to level-teleport to the deepest level:  40 through [[NetHack 1.4f]], 60 in [[NetHack 2.2a]] and [[NetHack 2.3e]], and 50 thereafter.  (Attempted teleport to a deeper level is safe; you just end up on the deepest permitted level.)
+
+Through [[NetHack 2.3e]], one ascends an up-stairs and finds himself on the up-stairs of the next level.  Thus ascent is rapid, and with [[telepathy]] one can see whether the [[Wizard of Yendor]] is on this level -- his symbol is '''1''', distinct from all other monsters -- and decide whether to stay and fight or to proceed to the next level.
+
+Starting in [[NetHack 3.0.0]], ascent by up-stairs in Hell no longer places you on the next up-stairs, but rather on a random spot in the next level.  This can make escape difficult when the [[Wizard of Yendor|Wizard]] is after you, as you'll have to teleport against the inhibition caused by the [[Amulet of Yendor|Amulet]], or dig through probably unknown parts of the maze -- possibly not even knowing (save by [[magic mapping]]) where the stairs are.  It might be wise, if available equipment permits, to find the stairs on all levels and then zap back down to fight the Wizard.
+
+The [[mysterious force]] makes its debut in [[NetHack 3.0.0]].  It is harder on [[lawful]] adventurers and easier on [[chaotic]] ones than the modern version.  If you are chaotic, it does not transport you below the level you were trying to climb from; it just dumps you back on that level in a random location.
+
+== References ==
+
+<references/>
+
+[[Category:Defunct features]]
+{{noversion}}}
+&&%s&& %s IBMgraphics {137387 2021-01-22T21:44:30Z {4001381 Qt} cp437 emulation utility {{todo|How is IBMgraphics related to DECgraphics? Strategy: Which one is better? Also, interaction with the [[curses interface]]}}'''IBMgraphics''' is an [[option]] that displays walls as continuous lines rather than as broken dashes, which is the best that plain [[ASCII]] can do.  It also displays certain [[dungeon feature]]s with distinct symbols, and on some systems makes the [[Rogue level]] look more like the [[wikipedia:Epyx|Epyx]] version of [[Rogue (game)|Rogue]].  It is similar to [[DECgraphics]], but has a larger character set.
+
+IBMgraphics requires a display device that displays [[wikipedia:code page 437|code page 437]], or a [[IBMgraphics#Code page compatibility|compatible code page]].  Many users of Microsoft Windows outside the United States have their terminals set to another code page, often [[wikipedia:code page 850|code page 850]], and this can affect the appearance of some symbols.
+
+To use IBMgraphics, the option must be set to TRUE, either in-game or in the configuration file.
+
+== Symbol list ==
+
+=== Normal dungeon ===
+
+The complete symbol list for the normal dungeon is found in the array ibm_graphics in drawing.c.{{refsrc|drawing.c|317}}  The corresponding ASCII symbols are in defsyms.{{refsrc|drawing.c|206}}  Those symbols affected by IBMgraphics are listed here.
+
+{| class="prettytable striped"
+|-
+!Code point!!Usage!!Appearance!!ASCII
+|-
+|0xB3||Vertical wall, beam, explosion||&#x2502;||<nowiki>|</nowiki>
+|-
+|0xC4||Horizontal wall or beam||&#x2500;||-
+|-
+|0xDA||Top left corner||&#x250C;||-
+|-
+|0xBF||Top right corner||&#x2510;||-
+|-
+|0xC0||Bottom left corner||&#x2514;||-
+|-
+|0xD9||Bottom right corner||&#x2518;||-
+|-
+|0xC5||Cross wall||&#x253C;||-
+|-
+|0xC1||T-up wall||&#x2534;||-
+|-
+|0xC2||T-down wall||&#x252C;||-
+|-
+|0xB4||T-left wall||&#x2524;||<nowiki>|</nowiki>
+|-
+|0xC3||T-right wall||&#x251C;||<nowiki>|</nowiki>
+|-
+|0xB0||Dark corridor||&#x2591;||#
+|-
+|0xB1||Lit corridor||&#x2592;||#
+|-
+|0xF0||Iron bars||&#x2261;||#
+|-
+|0xF1||Tree||&#x00B1;||#
+|-
+|0xF4||Fountain||&#x2320;||{
+|-
+|0xF7||Lava, pool, water||&#x2248;||}
+|-
+|0xFA||Room, doorway, ice, open drawbridge||&#x00B7;||.
+|-
+|0xFE||Open door||&#x25A0;||<nowiki>|</nowiki> or -
+|-
+|}
+
+=== Rogue level ===
+
+Certain objects have their appearance changed in the [[Rogue level]]; the array IBM_r_oc_syms governs this.{{refsrc|drawing.c|741}}  The exact changes are different on Linux than on MS-DOS and its descendants.  The list here shows the more complete list used on MS-DOS.
+
+A number of map symbols are also changed{{refsrc|drawing.c|808}} and all creatures otherwise appearing as '''@''' instead appear as &#x263A;.{{refsrc|drawing.c|797}}
+{| class="prettytable striped"
+|-
+!Code point!!Usage!!Appearance!!ASCII
+|-
+|0xBA||Vertical wall||&#x2551;||<nowiki>|</nowiki>
+|-
+|0xCD||Horizontal wall||&#x2550;||-
+|-
+|0xC9||Top left corner||&#x2554;||-
+|-
+|0xBB||Top right corner||&#x2557;||-
+|-
+|0xC8||Bottom left corner||&#x255A;||-
+|-
+|0xBC||Bottom right corner||&#x255D;||-
+|-
+|0xCE||Cross wall, doors||&#x256C;||- or +
+|-
+|0xCA||T-up wall||&#x2569;||-
+|-
+|0xCB||T-down wall||&#x2566;||-
+|-
+|0xB9||T-left wall||&#x2563;||<nowiki>|</nowiki>
+|-
+|0xCC||T-right wall||&#x2560;||<nowiki>|</nowiki>
+|-
+|0x01||Human, elf||&#x263A;||@
+|-
+|0x04||Trap, web||&#x2666;||^ or "
+|-
+|0x05||Food||&#x2663;||:
+|-
+|0x0C||Amulet||&#x2640;||,
+|-
+|0x0E||Scroll||&#x266B;||?
+|-
+|0x0F||Gold, gems||&#x263C;||*
+|-
+|0x18||Weapon||&#x2191;||)
+|-
+|0x5B||Armor||<nowiki>[</nowiki>||]
+|-
+|0xAD||Potion||&#x00A1;||!
+|-
+|0xB1||Dark corridor||&#x2592;||#
+|-
+|0xB2||Lit corridor||&#x2593;||#
+|-
+|0xE7||Wand||&#x03C4;||/
+|-
+|0xF0||Stairs||&#x2261;||%
+|-
+|0xFA||Room||&#x00B7;||.
+|-
+|}
+
+== Code page compatibility ==
+
+There are code pages other than [[wikipedia:code page 437|437]] that will also display IBMgraphics correctly, because they differ only at code points that are not currently used by NetHack.  These include [[wikipedia:code page 860|860]] (Portuguese), [[wikipedia:code page 861|861]] (Icelandic), [[wikipedia:code page 862|862]] (Hebrew), and [[wikipedia:code page 865|865]] (Nordic), and can be useful when code page 437 is unavailable.
+
+Some other code pages will not quite display IBMgraphics perfectly, but are close enough to be usable when none of the above code pages are available.  Some of these are shown in the table below.
+
+For [[wikipedia:code page 858|code page 858]], use the column for  [[wikipedia:code page 850|code page 850]].
+
+Other known code pages have few of the necessary symbols and are completely unsuitable for IBMgraphics.
+
+{| class="wikitable"
+|-
+!Code point!![[wikipedia:code page 437|CP437]]!![[wikipedia:code page 737|CP737]]!![[wikipedia:code page 775|CP775]]!![[wikipedia:code page 850|CP850]]!![[wikipedia:code page 852|CP852]]!![[wikipedia:code page 855|CP855]]!![[wikipedia:code page 857|CP857]]!![[wikipedia:code page 863|CP863]]!![[wikipedia:code page 866|CP866]]||[[wikipedia:code page 869|CP869]]
+|-
+|0xAD||&#x00A1;||&#x03C6;||&#x0141;||&#x00A1;||&#x015F;||&#x0413;||&#x00A1;||&#x00BE;||&#x043D;||&#x0399;
+|-
+|0xE7||&#x03C4;||&#x03CD;||&#x0144;||&#x00FE;||&#x0161;||&#x0443;||''none''||&#x03C4;||&#x0447;||&#x03BD;
+|-
+|0xF0||&#x2261;||&#x038F;||-||-||-||-||-||&#x2261;||&#x0401;||-
+|-
+|0xF1||&#x00B1;||&#x00B1;||&#x00B1;||&#x00B1;||&#x02DD;||&#x044B;||&#x00B1;||&#x00B1;||&#x0451;||&#x00B1;
+|-
+|0xF4||&#x2320;||&#x03AA;||&#x00B6;||&#x00B6;||&#x02D8;||&#x0417;||&#x00B6;||&#x2320;||&#x0407;||&#x03C7;
+|-
+|0xF7||&#x2248;||&#x2248;||&#x201E;||&#x00B8;||&#x00B8;||&#x044D;||&#x00B8;||&#x2248;||&#x045E;||&#x0385;
+|-
+|0xFA||&#x00B7;||&#x00B7;||&#x00B7;||&#x00B7;||&#x02D9;||&#x0429;||&#x00B7;||&#x00B7;||&#x00B7;||&#x03C9;
+|}
+
+== Configuring code page 437 ==
+
+On many platforms, it is possible to set the display device to display code page 437 instead of the default code page.  This will enable NetHack to display the IBMgraphics as the DevTeam intended.
+
+=== MS-DOS and Windows 95, 98, and Me ===
+
+Make sure CONFIG.SYS contains a line similar to this:
+ C:\WINDOWS\COMMAND\display.sys con=(ega,,1)
+
+and AUTOEXEC.BAT contains lines similar to these:
+ mode con codepage prepare=((437) C:\WINDOWS\COMMAND\ega.cpi)
+ mode con codepage select=437
+
+For MS-DOS substitute <tt>C:\DOS</tt> for <tt>C:\WINDOWS\COMMAND</tt> in both places.
+
+=== Windows NT, 2000, XP, and Vista ===
+
+''This section may also apply to Windows 2003 Server, but is untested on this version.''
+
+If code page 437 is not the default, it will be necessary either to configure the console window to use the Lucida Console font, or to run full screen (press Alt-Enter).  With bitmap fonts in a window, only the characters for the default code page are loaded, and others do not display correctly.  Bug [[W343-3]] is also a problem for this configuration.
+
+Once either Lucida Console is set, or the console window is in full screen mode, it is sufficient to type
+
+ chcp 437
+
+and possibly for full-screen mode
+
+ mode con lines=25
+
+and then start NetHack.
+
+=== PuTTY ===
+
+On the PuTTY Configuration window (this appears when you first start PuTTY), select "Translation" under the "Window" configuration in the pane on the left. Then, in the pulldown menu marked "Received data assumed to be in which character set", select "CP437". You can then log in to the server as usual.  You may also change this setting and then 'save' the session.  The character set (as well as other display settings, e.g., the color blue) will be used in your session from then on.
+
+=== Linux console ===
+
+If your system uses a Unicode console, disable it (for the current session) with:
+
+ unicode_stop
+
+Then re-load the default text font with one of the two following commands:
+
+Debian-based systems:
+
+ consolechars -m cp437 -f default8x16
+
+Redhat-based systems, others:
+
+ setfont default8x16
+
+Finally, you may need to load the CP437 translation mode:
+
+ setfont -m cp437
+
+If any of these commands fails, try running it as root by preceding each command with "sudo " (e.g., "sudo unicode_stop").
+
+=== FreeBSD console ===
+
+Load the CP437 console font with:
+
+ vidcontrol -f 8x16 cp437-8x16
+
+Or add this to /etc/rc.conf to make it permanent:
+
+ font8x16="cp437-8x16"
+
+=== X11 ===
+While most terminal programs for [[X11]] readily support [[DECgraphics]], they need additional setup for IBMgraphics. The usual way is to set the encoding to code page 437. The exact procedure to do this depends on the terminal program.
+
+You also need a font that provides the necessary characters. X11 already provides at least one such font: the "fixed" font. It is already the default font for xterm. To preview it or to check that you have it, use one of these xfd commands:
+
+<pre>
+# to preview it as a core font
+xfd -fn -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+
+# to preview it as an Xft font
+xfd -fa Fixed-10
+</pre>
+
+If you choose a font like Bitstream Vera Sans Mono, then X11 may substitute another font for some characters, causing graphical glitches if the two fonts have different monospace metrics.
+
+==== Using <code>konwert</code>, <code>filterm</code>, or <code>cp437</code> (any terminal) ====
+
+If your terminal supports UTF-8, but not code page 437, or you just don't want to have to manually change your terminal's encoding settings whenever you're playing NetHack, you can use <code>konwert</code>, <code>filterm</code>, or <code>[https://github.com/keaston/cp437 cp437]</code> to transcode NetHack's output into something your terminal understands. Invoke one of them as follows:
+
+<pre>
+# local play
+nethack | konwert cp437-utf8
+
+filterm ascii-ascii cp437-utf8 nethack
+
+cp437 nethack
+
+# remote play
+telnet nethack.alt.org | konwert cp437-utf8
+
+filterm ascii-ascii cp437-utf8 telnet nethack.alt.org
+
+cp437 telnet nethack.alt.org
+</pre>
+
+You will probably need to install these programs before they can be used.
+
+==== xterm ====
+The current xterm does not provide an ''encoding'' for code page 437, but it does provide a ''charset'' "CP 437" which represents the upper half of (0x80 - 0xff) of CP 437. We can invoke <tt>luit</tt> manually to set up a [[Wikipedia:Extended Unix Code|Extended Unix Code]] that maps 0x00 - 0x7f to ASCII and 0x80 - 0xff to CP 437.
+
+[[Image:Xterm-ibm-oracle.png|thumb|right|An xterm using CP 437, showing IBMgraphics on the Oracle level.]]
+To open an xterm using CP 437:
+
+* Use <tt>uxterm -fg gray -bg black</tt> to open an xterm using UTF-8, with a gray-on-black color scheme that works well with IBMgraphics.
+** The default font (fixed) looks nice, but you can set it explicitly with either <tt>-fn fixed</tt> or <tt>-fa Fixed-10</tt>.
+* Inside that xterm, invoke <tt>luit -g2 'CP 437'</tt>
+** You might need <tt>luit -gr g2 -g2 'CP 437'</tt> if your current locale defaults to <tt>-gr g1</tt>
+
+When you invoke luit, it starts a new shell (from where you may start NetHack). When you exit your CP 437 shell, luit exits and you return to your UTF-8 shell.
+
+[[Image:Xterm-ibm-rogue.png|thumb|right|Oops, xterm with CP 437 has serious glitches on the [[Rogue level]]. Click image for details.]]
+Unfortunately, your xterm will have serious graphical glitches at the Rogue level, because unlike a real IBM PC, luit does not map ASCII control characters to graphical characters (such as 0x01 to a smiley face adventurer). You may need to disable IBMgraphics while playing the Rogue level.
+
+You can also install a CP437 or "VGA" font.  There are several of these floating around the net; a nice one is included with bochs-2.0.
+
+==== Konsole (KDE) ====
+KDE does not have an encoding for code page 437, or any similar encoding.
+
+In menu Settings -> Encoding, if you select "Cyrillic (ibm866)" or "Western European (ibm850)", then the encoding will the walls, floors, doors and corridors for IBMgraphics, but fountains and moats will look strange. A better option is to select "Unicode (utf8)", then invoke luit as you would in an xterm.
+
+[[Image:Konsole-ibm.png|thumb|right|Konsole can do IBMgraphics, with some help from luit.]]
+To configure Konsole for IBMgraphics:
+* Use Settings -> Font -> Select... to pick a good font, such as "Fixed [Misc]" size "10" (or any size).
+** Optionally, use Settings -> Size to resize your terminal for the new font.
+* Select Settings -> Schema -> Linux Colors for a good gray-on-black look.
+* Select Settings -> Encoding -> Unicode (utf8). Alternatively, start Konsole in a UTF-8 locale, so that the Default encoding is also UTF-8.
+** Optionally, now use Settings -> Save Sessions Profile... and call the profile something like "ibm".
+* At the command line, invoke <tt>luit -g2 'CP 437'</tt>
+
+When you invoke luit, it starts a new shell (from where you may start NetHack). When you exit your CP 437 shell, luit exits and you return to your UTF-8 shell.
+
+If you saved an "ibm" profile, then <tt>konsole -profile ibm</tt> will start a Konsole with the same settings. You still need to invoke <tt>luit -g2 'CP 437'</tt> before you start NetHack with IBMgraphics. If you add a "Terminal Sessions" applet to your KDE panel, you can also access your profile with Terminal Sessions -> New Session Using Profile -> ibm.
+
+Unfortunately, your Konsole will have serious graphical glitches at the Rogue level. This happens if you set Konsole to utf-8 and use luit, or if you set Konsole to ibm850 or ibm866 and do not use luit. Either way, the software will not map ASCII control characters to graphical characters. You may need to disable IBMgraphics while playing the Rogue level.
+
+==== gnome-terminal ====
+The current gnome-terminal does not have a setting for code page 437, but it does support other code pages that are equivalent for NetHack's purposes, such as 862 (Hebrew).
+
+To set code page 862 on gnome-terminal:
+
+* Select Terminal, Set Character Encoding, and then Add or Remove.
+* In the pane on the left, select the line with description Hebrew and encoding IBM862.
+* Click the right-pointing arrow between the two panes.
+* Click Close.
+
+The above steps only need to be done once for the lifetime of the Gnome installation.  Once done, it is sufficient to:
+
+* Select Terminal, Set Character Encoding, and then Hebrew (IBM862).
+
+It should be noted that the current default gnome-terminal font in Ubuntu Jaunty fully supports [[DECgraphics]] as long as eight_bit_tty is set to false.
+
+=== MAC OS X ===
+The Terminal application that comes with OS X seems to work well on an external SSH server, if one just sets the right encoding. "US Latin (DOS)" seems to work well (if I've understod correctly this means CP437). Also, you need a good monospace font, "Andale Mono" seems to work well; however, I haven't done any extensive testing, and the following questions remain (please remove / edit if you have tested these):
+
+* Which font has all the symbols needed (don't know if Andale Mono has)
+* Is the rogue level corrupted?
+* I didn't make any other adjustements (e.g. I believe the default shell locale is still configured for UTF-8 if you change the encoding on-the-fly, but is adjusted if you start a new one?)
+
+You probably could also use luit (or konwert and filterm if you can find / install them for OS X) as in Linux X11 terminal applications, but for me luit didn't work well in Linux nor OS X on a public SSH nethack server.
+
+There is a packaging bug with the official Mac 3.6.0 package which omits the "symbols" file required for any symset to work. See the bug M360-1 in the [http://nethack.org/v360/bugs.html official Bugs page].  This file can be obtained from another port / source archive and copied into place as follows (in Terminal, you will need to type your superuser password):
+<code>sudo cp symbols /Library/NetHack/nethackdir/</code>
+
+== Custom map symbols ==
+
+Some users may prefer to set their own symbols, either because they don't like the existing ones, or because it's easier than setting code page 437 just to play NetHack.  See [[Custom map symbols]] for further details.
+
+== UTF-8 support ==
+
+A user has posted an [http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/d2482bb4e114d8a9 experimental patch] to [[RGRN]] ([http://groups.google.com/group/rec.games.roguelike.nethack/browse_frm/thread/f94adf32bd098847/5d88a63ae67d706f here's what it changes]) allowing display of the IBMgraphics characters using UTF-8, rather than a special code page.  Compatible terminals include the Linux console for kernels since 1.2.1, any [[Unix]]-like platform running a recent version of X11, and PuTTY for Windows users accessing public servers.  [http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/a20fed2561a6abb7 The original] is a patch against [[NetHack 3.4.0]]; Stephen Anthony Uy has adapted it for [[NetHack 3.4.3|3.4.3]].
+
+== References ==
+<references/>
+[[Category:Options]]
+{{nethack-343}}}
+&&%s&& %s Unix {131585 2020-01-27T07:03:36Z {4000978 Aximili} Add wikipedia and roguebasin links {{wikipedia}}
+{{RogueBasin}}
+
+'''Unix''' is the operating system of legend which has enjoyed a symbiotic relationship with NetHack. Its equally legendary text editor, [[vi]], is the source of the '''[yuhjklbn]''' control system. When playing on a Unix-compatible system, eating an [[apple]] gives the message "Core dumped.", an in-joke for Unix debuggers. Although NetHack's "hack" refers to "hack 'n' slash", it nevertheless uses hacker lore as a spiritual source, growing from the same sensibilities that link Unix-culture, programming-culture, and general geek-culture.
+
+NetHack is considered by some sysops to be part of the standard suite of tools for any Unix site worth its salt.
+
+Although many platforms are now officially supported, there are those who feel that a well-administered multiuser Unix system is NetHack's platform of choice.
+
+==Useful commands, programs and tricks==
+Certain Unix programs and commands are especially useful to NetHack players:
+*[[chroot jail]]
+*[[diff]]
+*[[Emacs]]
+*[[fg]]
+*[[grep]]
+*[[setgid]]
+*[[vi]]
+
+==External links==
+* [http://www.ugu.com The Unix Guru Universe ] - For Beginners and Senior Unix Administrators!
+* [http://en.wikipedia.org/wiki/Unix Unix on wikipedia]
+
+[[Category:Operating systems]]}
+&&%s&& %s UNIX {5412 2006-07-29T22:03:09Z {396 Jayt} redirecting to [[Unix]] #REDIRECT [[Unix]]}
+&&%s&& %s Kroisos {5414 2006-07-29T22:08:52Z {396 Jayt} redirecting to [[Croesus]] #REDIRECT [[Croesus]]}
+&&%s&& %s Fort ludios {5415 2006-07-29T22:09:40Z {396 Jayt} redirecting to [[Fort Ludios]] #REDIRECT [[Fort Ludios]]}
+&&%s&& %s Fort Ludios {144894 2022-03-12T22:10:24Z {187 Darth l33t} /* Map */ randomized locations {{level|Fort Ludios|
+ |branch=Fort Ludios
+ |from=1|to=1
+ |teleport=no
+ |bones=no
+ |digfloor=no
+ |digwalls=no
+ |mapping=yes
+}}
+
+'''Fort Ludios''' is a [[branch]] of the [[Mazes of Menace]] in ''[[NetHack]]'', consisting of a single [[special level]]. The code internally refers to the level as '''Fort Knox'''.<ref>The file knox.des <!--knox.lua in 3.7.0--> contains the map for Fort Ludios, as shown in some of the references below.</ref> Fort Ludios is ineligible to leave bones files and is [[no-teleport]].
+
+The branch is accessed through a [[magic portal]] found in a [[vault]] between dungeon level 10 and [[Medusa's Island]]. Any vault generated in this range has a {{frac|3}} chance of containing the portal to Ludios, if it has not already been generated - the [[Rogue level]] and the [[Big Room]] cannot contain vaults, and a vault on the [[quest portal]] level will never contain a portal to Ludios. As such, it is accessible in 74.9% of all games.<ref>[http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/b7395a379bb32b0f Ludios exists in 74.9% of dungeons]</ref><ref>[http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/3e598759c183d3e9/1b812237cc31612b?q=ludios#1b812237cc31612b Ludios?]</ref>
+
+==Map==
+<div class="ttymap"><replacecharsblock rules="ttymap">
+1=[[lieutenant|{{monsym|lieutenant}}]]
+2=[[soldier|{{monsym|soldier}}]]
+@=[[Yendorian army|{{white|@}}]]
+C=[[Croesus|{{monsym|Croesus}}]]
+H=[[Stone giant|{{gray|H}}]]
+z={{cyan|z}}
+t={{cyan|t}}
+$=[[gold|{{yellow|$}}]]
+D=[[dragon|{{white|D}}]]
+;=[[giant eel|{{monsym|giant eel}}]]
+~={{black|.}}
+a=[[amethyst|{{magenta|*}}]]
+d=[[diamond|{{white|*}}]]
+e=[[emerald|{{green|*}}]]
+r=[[ruby|{{red|*}}]]
+
+--------------------------------------------------------------------------
+|H~~~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+|~~~~~~~~|~2~~~~~~2~~~~~~~~~2~~~~~~~~~2~~~~~~~~~~~~~~~~~~~~------------~~|
+--S----S--~~2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|@@@@@@@@@@|~~|

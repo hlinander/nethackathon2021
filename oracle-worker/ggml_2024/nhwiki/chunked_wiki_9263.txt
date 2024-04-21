@@ -1,0 +1,1000 @@
+* You get a &minus;1 alignment penalty for directly [[stealing from shops]].
+* You get a &minus;1 alignment penalty from using [[poison]]ed weapons. ("You feel like an evil coward for using a poisoned weapon.")
+* You cannot ascend on the neutral high altar.
+* Your [[crowning]] gift can neither [[drain life]] nor [[instakill]] enemies, and is thus weak against [[covetous]] monsters.
+|}
+
+===Neutral===
+{| border="0" cellpadding="0" cellspacing="10" style="width: 100%;"
+|width="50%" valign="top"|
+====Neutral advantages====
+* You have the best selection of artifacts available by [[wish]]ing.
+* You have all alignments available with [[helm of opposite alignment|helms of opposite alignment]]. In particular, this allows you to ascend on any high altar.
+* [[Air elemental]]s, a very dangerous monster, may be generated peaceful.
+* [[Domestic animals]] may be generated peaceful, so you can keep them alive and return to tame them when you need them.
+|valign="top"|
+
+====Neutral disadvantages====
+* You lose [[intrinsic]] [[telepathy]] and two points of Luck if you commit [[murder]].
+* Using a helm of opposite alignment to ascend on a different altar is not reliable.
+* Your [[crowning]] artifact does less damage than the other alignments' and does not provide [[drain resistance]].
+* A large number of low-level always-hostile monsters are neutral, giving neutral characters no alignment record gains for killing them, which may be a problem for [[protection racket]] runs.
+|}
+
+===Chaotic===
+{| border="0" cellpadding="0" cellspacing="10" style="width: 100%;"
+|width="50%" valign="top"|
+====Chaotic advantages====
+* Chaotic is the only way to play an [[elf (starting race)|elf]]. Elven weapons and armor are some of the better common items in the game, and elves start the game with knowledge about them. Furthermore, they can gain a [[multishot]] bonus when skilled or expert with elven arrows if using an elven bow.
+* There is no Luck or telepathy penalty for [[murder]]ing peaceful humans. You still lose alignment record, however.
+* [[stealing from shops#Direct theft|Direct theft]] from a shop gives a +1 alignment bonus (''unless'' you are a [[Rogue]]).
+* You decrease your [[prayer timeout]] more quickly by sacrificing.
+* You can [[sacrifice]] your own race at [[altar]]s. When you do, your [[god]] dispatches a peaceful unique [[demon lord]] to the altar, making one less demon to fight in Gehennom. This may also summon a peaceful [[foocubus]].
+* Sacrificing your own race on a cross-aligned altar will automatically convert that altar to chaotic.
+* The mysterious force is more merciful.
+* You can reliably use a [[helm of opposite alignment]] on the lawful high altar.
+* The blessed [[Book of the Dead]] can tame [[undead]].
+* If you are not a Rogue, you can wish for [[the Master Key of Thievery]].
+|valign="top"|
+
+====Chaotic disadvantages====
+* Angry chaotic gods are more difficult to mollify, demanding better sacrifices to reduce anger points. (Due to the advantages of being chaotic, however, chaotic gods are harder to anger in the first place.)
+* Chaotic artifacts are the most pathetic. [[Sting]] and [[Orcrist]] are among them and might be sacrifice gifts. There are a few good chaotic artifacts, but none grant [[magic resistance]]. Most [[quest artifact]]s are lawful or neutral, so artifact wishing is less beneficial for chaotic characters.
+* {{of|potion|Holy water}} will not cure your [[sickness]]. It does cure [[lycanthropy]], but you take damage when quaffing holy water.
+* Most of the more dangerous chaotic monsters are always hostile, regardless of your alignment.
+* You cannot ascend on the neutral high altar.
+|}
+
+==Monster alignment==
+
+A monster's alignment is entirely different from the player character's alignment or alignment record, and is used primarily to determine whether it is peaceful or not toward you.{{reffunc|makemon.c|peace_minded}} Monsters can be lawful, neutral, or chaotic; the [[Wizard of Yendor]] and [[Aligned priest|priests of Moloch]] are unaligned.
+
+Alignment is determined by the integer <tt>maligntyp</tt> of <tt>struct permonst</tt> declared in [[permonst.h]]; a positive integer is lawful, 0 is neutral, and a negative integer is chaotic. Thus, while monsters of the same type actually have the same alignment, some lawful monsters are more strongly lawful than others, for instance, while some chaotic monsters are more strongly so than other chaotic monsters. A neutral monster in this context is simply any monster that is neither lawful or chaotic.
+
+White [[unicorn]]s are lawful, gray ones are neutral, and black ones are chaotic. Unicorns are especially important, as your [[god]] expects you to respect co-aligned unicorns, and sacrificing cross-aligned ones is highly valued.
+
+==Altar alignment==
+
+Co-aligned altars can be used to [[pray]] and offer sacrifices to your god. Cross-aligned altars can be converted, but this is not always wise if there is an attendant priest.
+
+==Artifact alignment==
+
+Most artifacts have an alignment. If the artifact is not intelligent, then you have only a {{frac|4}} chance of being [[Artifact blast|blasted]] if you have a different alignment from the artifact or have a negative alignment record, or are in the form of something the artifact specially attacks; damage is 4d4 (2d4 if you have magic resistance). If you have enough [[HP]] to survive the blast, you will be able to use the artifact.
+
+[[Intelligent artifact]]s can emit much stronger blasts; they might also "evade your grasp", meaning that you are unable to use them.
+
+==Dungeon alignment==
+
+[[Branch]]es of the dungeon can be aligned in the sense that monster generation in that branch is biased toward monsters of that alignment.{{refsrc|dungeon.def|17|version=NetHack 3.6.1}}
+
+*[[Gnomish Mines]]: lawful
+*[[Oracle]]: neutral
+*[[Sokoban]]: neutral
+*[[Medusa's Island]]: chaotic
+*[[Vlad's Tower]]: chaotic
+*All other levels: unaligned (no particular alignment bias)
+
+==Origin==
+
+The three alignments of ''[[NetHack]]'' probably originate from the first edition of ''[[Dungeons & Dragons]]''. ''D&D'' gods have a specific alignment, and their worshipers are also of that alignment. Later ''D&D'' editions include a second axis of alignment: good, neutral, or evil. This results in nine combinations, such as "chaotic good" or "true neutral".
+
+Before ''D&D'' introduced the good&ndash;evil axis, some players had equated "lawful" with "good" and "chaotic" with "evil"; games like ''[[ADOM]]'' follow this idea. Perhaps this is why ''D&D'' added the second axis. Many computer games, like ''NetHack'', did not include this complication.
+
+Unlike ''D&D'', which has numerous plots, ''NetHack'' always follows the same story of taking that [[Amulet of Yendor]] from Moloch. Thus, in ''NetHack'', alignments can be compared by how they relate to that story.
+
+For a lawful character, think ''law and order''. Perhaps the surface world has evil Knights and Samurai supporting tyrannical empires, but it is hard to believe that our [[Knight]] or [[Samurai]] seeking the Amulet is anything but good. They avoid murder and shoplifting, the Knight keeps a code of conduct, and the Samurai maintains honor. Perhaps other lawful roles need not act so good.
+
+A neutral character does not much care about alignment. Most of the special effects of alignment are for lawful or chaotic characters. The neutral character just wants to obtain the best artifacts and win [[immortality]]. He or she might be planning from the start to take a [[helm of opposite alignment]] to the [[Astral Plane]] and just [[offer]] the Amulet to the closest high altar.
+
+A chaotic character aims for convenience and cares not for order. In contrast to the lawful characters' like of social settings and orderly group activity, chaotic characters prefer individual action and are perhaps most suited to a one-player game like ''NetHack''. Chaotic characters can keep [[pet]]s as well as lawful and neutral characters can, before they take out [[Stormbringer]].
+
+Every [[elf (starting race)|elf]] is chaotic. ''NetHack''&#39;s elves may be the size of humans, but they are not of Tolkien. Of elves, the [http://www.spod-central.org/~psmith/nh/rgrn-FAQ.txt rec.games.roguelike.nethack FAQ] says that "there's hundreds of years of tradition of the land of Faerie being one where human concepts of law simply do not apply."
+
+[[Demon]]s would seem to be a special case. They are evil almost by definition, and yet both lawful and chaotic (but not neutral) variants exist. If you polymorph into a demon, no matter what its alignment, you will be damaged by holy water and healed by unholy water, and be unable to pray to any but a chaotic god.  It appears that for demons, "lawful" is equivalent to the ''D&D'' alignment "lawful evil", and "chaotic" to "chaotic evil", instead of the good&ndash;evil axis that describes players and other monsters. ''D&D'' divides its fiends into lawful evil "devils" and chaotic evil "demons", but ''NetHack'' makes no such distinction.
+
+==SLASH'EM==
+
+In [[SLASH'EM]], lawful characters get much more powerful minions than others, and they can get minions by praying with low HP as well as sacrifice. However, lawful characters will anger their god if they drink a [[potion of vampire blood]].
+
+Elves are always lawful or neutral. There are also five new races in SLASH'EM; their alignments are as follows:
+*Drow: chaotic
+*Doppelganger: neutral or chaotic
+*Hobbit: lawful or neutral
+*Lycanthrope: chaotic
+*Vampire: chaotic
+
+There are also many more special levels and dungeon branches in SLASH'EM. Their alignments are as follows:
+
+*Gnomish Mines: lawful
+*Mall: lawful
+*Oracle: neutral
+*Sokoban: neutral
+*Grund's Stronghold: chaotic
+*Lawful Quest: lawful
+*Neutral Quest: neutral
+*Chaotic Quest: chaotic
+*Wyrm Caves: chaotic
+*Black Market: chaotic
+*Lost Tomb: chaotic
+*Spider Caves: chaotic
+*Sunless Sea: chaotic
+*Temple of Moloch: chaotic
+*Giant Caverns: chaotic
+*Medusa: chaotic
+*Vlad's Tower: chaotic
+*Frankenstein's Lab: chaotic
+*All others: unaligned
+
+==References==
+<references/>
+
+{{DOD}}
+{{nethack-343|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Religion]]
+[[Category:Your character]]
+[[Category:한국어]]}
+&&%s&& %s Wish/ko {144319 2022-02-02T11:51:55Z {4001279 Umbire the Phantom}  A '''wish''' is an opportunity to be granted an [[item]] of the player's choice.
+
+== Methods ==
+There are several ways to obtain a wish in ''NetHack'', including:
+
+*[[Engraving]] with a [[wand of wishing]] or zapping it. A wand is the only guaranteed way, provided your [[Luck]] is 0 or greater. With negative Luck, the probability of wish is {{sfrac|5 + Luck|5}}, down to zero if Luck&nbsp;≤&nbsp;&minus;5. Cursed wands can explode when zapped (1% chance), but not when engraved with. A newly generated [[wand of wishing]] has 1&ndash;3 charges before recharge, 3 more charges after recharge with a [[blessed]] [[scroll of charging]], and then you can [[wrest]] one last wish. Therefore, it grants a total of 5&ndash;7 wishes.
+*Rubbing a [[magic lamp]], preferably [[blessed]], until a [[djinni]] appears. For a blessed magic lamp, you have an 80% chance of obtaining a wish (20% for an uncursed lamp, 5% for a cursed lamp). The worst side effect is a djinni which attacks you instead of granting a wish (5% chance for a blessed magic lamp). After a djinni appears, the magic lamp becomes an oil lamp. Therefore, a blessed magic lamp grants 0.8 wishes on average. In theory you can have more than 120 djinn from lamps,{{refsrc|apply.c|1186}} but not from smoky potions.
+*Quaffing a [[smoky potion]], preferably blessed. There is a chance of {{sfrac|13 + 2''d''}} that a djinni appears (where ''d'' is the number of djinn created this game) and, for a blessed smoky potion, a {{frac|4|5}} further chance that he grants you a wish. The worst side effect is a djinni which attacks you (chance {{frac|20}} for each djinni from a blessed smoky potion). When a djinni appears from a smoky potion, you never get the effect of the potion itself. Therefore, a blessed smoky potion grants, on average, {{sfrac|4|65 + 10''d''}} wishes. After 120 djinn appear in the game, they become extinct and never appear anymore.
+*Quaffing from (or dipping in) a [[fountain]] above the dungeon level 20, unless you have the Amulet. There is a chance of {{frac|30}} that a [[water demon]] appears and further {{sfrac|20 &minus; ''DL''|100}} chance that he grants a wish (where ''DL'' is the dungeon level); otherwise he attacks you. The fountain has a {{frac|3}} chance of drying up. Therefore, each fountain grants on average about {{sfrac|20 &minus; ''DL''|1000}} wishes. Possible side effects are dangerous, including [[water moccasin|moccasins]] appearing around you ({{frac|30}} chance), creating a [[water nymph]] ({{frac|30}} chance), or hostile water demon ({{sfrac|80 + ''DL''|3000}} chance).
+*Sitting on a [[throne]], chance {{frac|39}}. The throne has {{frac|3}} chance of vanishing "in a puff of logic", unless you are teleported away. Therefore, each throne grants about {{frac|13}} wishes.<ref>The exact number is {{frac|3|38}}. Chance of wish in one #sit: p1&nbsp;= {{sfrac|3}}&nbsp;&times;&nbsp;{{sfrac|13}}; chance not destroyed in one #sit: p2&nbsp;= 1&nbsp;&minus; chance destroyed = 1&nbsp;&minus; {{sfrac|3}}&nbsp;&times; (1&nbsp;&minus; {{sfrac|3}}&nbsp;&times;&nbsp;{{sfrac|13}}) = {{sfrac|79|117}}; wishes granted by each throne: p&nbsp;= p1&nbsp;+ p2&nbsp;&times;&nbsp;p, p&nbsp;=&nbsp;{{sfrac|3|38}}</ref> This may cause unpleasant side effects.
+*Pressing ^W in [[wizard mode]]. This is intended to be used for debugging.
+
+The [[castle]] always has a wand of wishing in a chest in one of the four corner rooms. Unless you are trying for wishless [[conduct]], you should be able to do some wishing before you enter [[Gehennom]].
+
+A successful wish will increase your prayer timeout by 50 to 149 turns.{{refsrc|zap.c|4140}}
+
+== Restrictions ==
+You cannot usefully wish for a wand of wishing or a magic lamp.<ref>Technically, you may wish for a wand of wishing, but there is only a 10% chance you can wrest the final charge out of what you get. Wishing for a magic lamp gives you an oil lamp.</ref> This is to guard against infinite wishes. You also cannot wish for your own [[quest artifact]], although you may wish for those of other [[role]]s. Wished-for quest artifacts will "evade your grasp" unless your alignment matches the artifact. (Check [http://www.steelypips.org/nethack/343/art1-343.html Hugo/O'Donnell NetHack Artifacts Spoiler] for artifact alignments.) You cannot wish for the [[Amulet of Yendor]] or for any of the unique items required to obtain it (the [[Bell of Opening]], the [[Candelabrum of Invocation]], and the [[Book of the Dead]]).
+
+You cannot wish for [[venom]] unless you are in [[wizard mode]].{{refsrc|objects.c|960|comment=Here, the nwsh bit is set to 1}}
+
+When wishing, you may specify an amount of an item or a specific enchantment&mdash;for instance, 2 of an item instead of 1, or +1 rather than +0. However, the more or higher you wish for, the more chance you have of getting only one or +0. Most players wish for 2 items or +2 enchantment, or 3 items or +3 enchantment. (See {{sa|Enchantment|sectionsign=1}} for a table of probabilities.)
+
+=== 금지된 아이템 ===
+
+{|class="prettytable"
+!금지된 아이템
+!대체품
+|-
+|[[Amulet of Yendor|옌도르의 부적]]
+|[[cheap plastic imitation of the Amulet of Yendor|가짜 옌도르의 부적]]
+|-
+|[[Candelabrum of Invocation|의식의 촛대]]
+|
+* [[tallow candle|쇠기름 초]] ''(80% 확률)''
+* [[wax candle|밀랍 초]] ''(20% 확률)''
+|-
+|[[Bell of Opening|개방의 종]]
+|[[bell|종]]
+|-
+|[[Book of the Dead|죽음의 책]]
+|[[blank spellbook|공백 마법책]]
+|-
+|자신의 [[quest artifact|퀘스트 아티팩트]]
+|없음
+|-
+|[[magic lamp|마법 램프]]
+|[[oil lamp|기름 램프]]
+|-
+|[[wand of wishing|소원의 완드]]
+|
+* 소원의 완드 (1:-1) ''(90% 확률)''
+* 소원의 완드 (1:0) ''(10% 확률)''
+|}
+
+=== 유물 빌기 ===
+
+만약 당신이 유물을 빈다면, 이미 생성된 유물의 수에 따라 확률이 달라집니다:{{refsrc|objnam.c|2695}}
+
+{|class="prettytable"
+!생성된 유물 !! 0 !! 1 !! 2 !! 3 !! 4 !! 5 !! 6 !! ''n''
+|-
+!1개 소원 확률
+| (항상) || (항상) || 0.666 || 0.5 || 0.4 || 0.333 || 0.285 || {{sfrac|2|''n'' + 1}}
+|-
+!2개 소원 확률
+| (항상) || (항상) || 0.888 || 0.75 || 0.64 || 0.555 || 0.488 || 1 &minus; (1 &minus; {{sfrac|2|''n'' + 1}})<sup>2</sup>
+|-
+!m개 소원 확률
+|(항상) || (항상) || || || || || || 1 &minus; (1 &minus; {{sfrac|2|''n'' + 1}})<sup>''m''</sup>
+|}
+
+실패 시, 당신은 아무것도 받지 못하고 소원은 소비됩니다. ("잠시동안 당신은 손에 무언가를 느꼈지만, 그것은 이내 사라졌다!") 비슷하게, 당신 자신의 [[quest artifact|퀘스트 유물]]을 비는 것은 절대 성공하지 않을 것입니다. (동일한 메시지) 만약 이미 게임 내에서 생성된 유물을 빈다면, 당신은 대신 그것의 기본 아이템을 받습니다.{{refsrc|objnam.c|2694}}
+
+만약 당신이 [[quest artifact|퀘스트 유물]]을 빈다면, 받을수는 있지만, 사용할 수는 없을 것임을 알아챌 것입니다. (더 자세한 것은 [[intelligent artifact|지적 유물]]를 참조하세요.)
+
+유물을 비는 것은 받았는지의 여부에 관계없이 유물 소원 금지 컨덕트를 깨트릴 것입니다.{{refsrc|objnam.c|2688}}
+
+유물을 부순다고 해도 ''생성된 수''는 결코 줄어들지 않기 때문에, 다른 것을 비는 확률이 증가하지 않을 것입니다.
+
+== Customization ==
+
+=== Quantity ===
+
+You may wish for only one unstackable item. If you wish for more, you still get only one.
+
+When wishing for a [[stackable]] item, you may wish for more than one. If the amount you wish for is less than the roll of a ''d6'', you get the desired amount; otherwise you get only one.{{refsrc|objnam.c|2472}}
+
+{| class="prettytable"
+! Quantity
+! 1 !! 2 !! 3 !! 4 !! 5 !! 6+
+|-
+! Success rate
+| 1 || {{frac|2|3}}  || {{frac|2}} || {{frac|3}} || {{frac|6}} || 0
+|-
+! Average
+| 1.00 || 1.67 || 2.00 || 2.00 || 1.67 || 1.00
+|}
+
+Exceptions to this rule are:{{refsrc|objnam.c|2091}}{{refsrc|objnam.c|2477}}
+* [[Candle]]s – you may wish for up to 7
+* [[Arrow]]s (all kinds), [[dart]]s, [[crossbow bolt]]s, [[shuriken]], [[boomerang]]s, and [[rock]]s – you may wish for up to 20
+* [[Gold piece]]s – you may wish for up to 5000
+
+For gold pieces, any quantity above 5000 is treated as 5000. For the other exceptions, any quantity above the one listed will not be honored at all, and you will receive only 1.
+
+Ranged weapons aside from the ones listed, including [[javelin]]s, [[dagger]]s, [[spear]]s, [[knife|knives]], [[gray stone]]s, and [[gem]]s, follow the same rules as any ordinary [[stackable]] item.
+
+If you wish for a plural of a stackable item, but don't specify a quantity (e.g. "blessed scrolls of charging"), the game treats it as if you wished for two, subject to the probability above. If you specify a quantity of a singular item ("2 blessed scroll of charging"), the parser ignores the singular and uses the quantity specified. Quantities of zero or less are ignored, and the singular or plural status will be used.
+
+Most players wish for 2 or 3 items. Wishing for 3 gives more items when averaged over many wishes, but wishing for 2 is more likely to increase the effectiveness of the current wish.
+
+=== Enchantment ===
+
+When wishing for an item that can be [[enchantment|enchanted]], you may specify the enchantment. If the enchantment you wish for is less than or equal to the roll of a ''d5'', you get the desired enchantment; otherwise you get +0.{{refsrc|objnam.c|2491}}
+
+You ''can'' wish for negatively-enchanted equipment, with the same chance of success as the equivalent positive enchantment. It's not clear why anyone would want to do this, however.
+
+If your [[Luck]] is negative, any enchantment higher than +2 will automatically become negative.{{refsrc|objnam.c|2495}} This check takes place ''after'' the game decides whether it will grant you your specified enchantment, and it only applies for armor, weapons, and weapon tools. If you want to wish for a +6 wand of striking (a bad idea most likely) while your Luck is negative&mdash;assuming you get the wand at all&mdash;you will get a wand of striking with between 4 and 6 charges, just as if your Luck were positive.
+
+{| class="prettytable"
+! Enchantment
+! +0 !! ±1 !! ±2 !! ±3 !! ±4 !! ±5 !! ±(6+)
+|-
+! Success rate
+| 1 || 1 || {{frac|4|5}} || {{frac|3|5}} || {{frac|2|5}} || {{frac|5}} || 0
+|-
+! Average
+| 0.0 || 1.0 || 1.6 || 1.8 || 1.6 || 1.0 || 0.0
+|}
+
+As with quantities, most players wish for +2 or +3 equipment. +3 gives the best average enchantment, but +2's slightly lower average is less chancy. (If you're intending to immediately enchant the item further, however, +2 is strictly better because a blessed scroll is more efficient on a +2 item than on a +3; after using a single blessed scroll on the newly created item, the average enchantment is 3.6 for the +2 case versus only 3.5 for +3.)<ref>Strictly speaking, this is a somewhat self-defeating argument: we say that +2 is better despite a lower average enchantment, and then we "prove" it with another average enchantment figure. A more accurate metric would be the average number of scrolls it takes to raise the item to +5 (for most armor) or +7 (for elven armor and weapons). Wishing for +2 as opposed to +3 does save ~0.030 and ~0.019 scrolls in the +5 and +7 cases, respectively, but this data may be a bit too in-depth for the article.</ref> +4 and +5 have lower averages than +3 ''and'' are more risky as well, so those are usually not used. +1 is certain to work, but its average enchantment is much lower than that of +2 or +3, so it's usually not a good choice unless you are [[illiterate]] and unable to enchant items yourself. The other possible enchantments are obviously not ever very useful, unless you actually want nonpositive enchantment for some bizarre reason.
+
+When wishing for wands or chargeable tools, an enchantment written as "+x" will be interpreted as a wish for x charges. Conversely, a wish for a "dagger (y:x)" is a wish for a +x dagger (the first number has no effect). This occurs because charge and enchantment are the same variable in the structure for objects in ''NetHack'', hence there are no simultaneously enchantable and chargeable objects.
+
+=== Beatitude ===
+
+You can specify whether the item should be blessed, uncursed, or cursed. If your [[Luck]] is zero or greater, your preference will be respected.
+
+If your Luck is negative, explicitly wishing for a "blessed" or "uncursed" item will yield a cursed one instead.{{refsrc|objnam.c|2605}} (Wishing for a "cursed" item still works.)
+
+If you do not specify a beatitude, the item will have a random beatitude as if the item had been randomly generated (regardless of Luck).{{refsrc|objnam.c|2458}} Specifying a negative enchantment as part of the wish (even "-0") will implicitly specify "cursed" unless you specify a beatitude explicitly.{{refsrc|objnam.c|2625}}
+
+You should almost always wish for blessed items, unless you have negative Luck, or specifically want a cursed [[potion]] or [[scroll]]. [[Magic marker]]s should be uncursed, so that cursed paper will produce cursed scrolls. If you desire both cursed and blessed copies of an item (such as [[scroll of genocide|scrolls of genocide]] or [[potion of gain level|potions of gain level]]), consider wishing for cursed ones, since it is easier to bless items than it is to curse them.
+
+=== Erosion-proofing ===
+
+You can ask for an item to be "rustproof", "erodeproof", "corrodeproof", "[[fixed]]", "fireproof", or "rotproof". If your Luck is non-negative, and the item is subject to [[erosion]] (or is a [[crysknife]]), your preference will be respected.
+
+''NetHack'' does not discriminate between the different types of erosion-proofing, so you may wish for "corrodeproof [[speed boots]]" or a "fireproof crysknife", and the game will substitute the appropriate type of protection.{{refsrc|objnam.c|1845}} Thus, some players recommend making it a habit to add "fixed" to ''every'' wish, to reduce the chance of forgetting to erosion-proof something.
+
+You can also explicitly request an eroded item. If you wish for an item to be both eroded and erosion-proof, the item will ''not'' be erosion-proof.{{refsrc|objnam.c|2641}}
+
+=== Monster type ===
+
+When wishing for a [[tin]], [[corpse]], [[figurine]], [[egg]], or [[statue]], you can specify what type of monster it should be.
+
+If you wish for a tin containing a monster that has been [[genocide]]d, you get an empty tin.{{refsrc|objnam.c|2547}} Wishing for a tin containing a unique monster, a monster that cannot leave a corpse, or a monster giving zero [[nutrition]] (such as a [[wraith]]) will instead produce a random tin.{{refsrc|objnam.c|2548}} You can also wish for tins of [[spinach]].{{refsrc|objnam.c|2238}}
+
+You may not wish for the corpse of a unique monster, or a monster that cannot leave a corpse; doing so will produce a random corpse. Wishing for the corpse of a [[quest guardian]] will instead produce a corpse of the corresponding [[role monster]].{{refsrc|objnam.c|2554}} A partly eaten corpse is lighter than a non-eaten one, so many players prefer those when wishing.
+
+If you wish for a figurine of a unique monster, any kind of human, or a [[mail daemon]], you will instead receive a random figurine.{{refsrc|objnam.c|2567}}
+
+If you wish for an egg from a monster that cannot lay eggs, you will get a random kind of egg. Wishing for a "[[Scorpius]] egg" will give you a [[scorpion]] egg. You ''can'' wish for an egg from a genocided species, but the egg will never hatch.{{refsrc|objnam.c|2576}}
+
+You can wish for a statue of any monster, including unique and genocided ones. Bear in mind, however, that casting {{spell of|stone to flesh}} on a statue will not always produce that monster&mdash;for example, animating a statue of a unique monster or quest guardian will instead produce a [[doppelganger]] disguised as that monster.{{refsrc|trap.c|439}}
+
+=== Charges ===
+Although you can wish for a specific number of charges (e.g. "wand of death (0:7)"), in a normal game you will always receive the lesser of the number of charges you wish for or the number of charges you would otherwise receive, making this an undesirable option. The capability was designed for [[wizard mode]], where you always receive the number of charges you wish for.
+
+You can also wish for charges by specifying an enchantment (so a wish for a "+7 wand of death" is equivalent to the above). Wishing for a "+10 magic marker" is a bad idea, because it will have at most 10 charges.
+
+You cannot normally wish for negative charges.{{refsrc|objnam.c|1912|comment=This is supposed to skip the charge count and go to the <tt>)</tt> for further processing. As <tt>-</tt> is not a digit, the charge count is not actually skipped.}}{{refsrc|objnam.c|1914|comment=This does not find the expected <tt>)</tt> and thus sets <tt>spe = 0</tt>.}} However, it is possible to wish for a negative enchantment instead, which means the same internally. Outside [[wizard mode]], wishing for negative charges on a wand will give you a canceled wand (with -1 charges);{{refsrc|objnam.c|2498}} wishing for negative charges on a tool will give you 0 charges.{{refsrc|objnam.c|2500}}
+
+=== Other item properties ===
+
+You can also specify the following properties:{{refsrc|objnam.c|1833}}
+
+* "holy", "unholy" (sets BUC, even if not [[potion of water]])
+* "lit", "burning", "unlit", "extinguished" (for [[lamp]]s, [[candle]]s, and [[potion of oil|potions of oil]])
+* "unlabeled", "unlabelled", "blank" (for [[blank scroll|scrolls]] and [[blank spellbook|spellbooks]])
+* "[[poison]]ed" (for poisonable weapons and comestibles, and for containers which can be trapped)
+* "[[grease]]d" (any item)
+* "partly eaten" (for [[comestible]]s)
+* "historic" (for [[statue]]s)
+* "diluted" (for potions other than water)
+* "empty" (for [[tin]]s)
+* A general item category, e.g. "scroll" or "spellbook"; this will produce a random item in the chosen category. Pressing enter on a blank line, or escaping out of the wish, will produce a random item. This is still subject to the restrictions on wishing, so wishing for a "lamp" will always produce an oil lamp.
+
+Most of these are useless or worse, but "greased" can be a life-saver for [[armor]], [[weapon]]s, [[spellbook]]s, [[scroll]]s, [[potion]]s, and [[container]]s, "poisoned" can increase the effectiveness of weapons, and "partly eaten" can make wielded [[chickatrice]] corpses lighter. Some players recommend applying "greased fixed" to every wish, as "fixed" is harmless, and "greased" is only harmful for [[projectile]]s you intend to [[throw]].
+
+You should especially grease all [[armor]], even pieces that can't be [[erosion|eroded]], as [[greased]] [[helm]]s, [[shirt]]s, [[cloak]]s, and [[body armor]] can protect you from [[grabbing]], [[drowning]], and [[mind flayer]]s.
+
+=== Nothing ===
+
+Sometimes, a player gets a wish prompt (for example from a throne or a smoky potion), but wants to keep the wishless conduct. In this case, the player can wish for "nothing", "none", or "nil" to avoid breaking the conduct.{{refsrc|objnam.c|1808}}
+
+== Strategy ==
+=== Common wishes ===
+
+The best use of a wish depends heavily on your situation in the game. Here we give some general advice for early and late game situations. This advice is only a guideline and does not apply to all situations. In some cases, if you already have everything you need, the best thing to do with a wand of wishing or magic lamp is to save it for later. Experienced players are able to weigh the value of an unused available wish and compare it to the benefit that would be provided by the most valuable item in the game in that situation. For inexperienced players, there is no substitute for experience&mdash;play and learn!
+
+The following general principles apply in almost all situations:
+
+* If you encounter a wand of wishing, and you can't [[identify]] how many charges it has, then your first wish should be either 2 (or 3) "blessed [[scroll of charging|scrolls of charging]]", or an "uncursed [[magic marker]]", so you can write your own blessed(!) scrolls to recharge the wand.
+** Writing your own scrolls will only work reliably if you have already identified scrolls of charging, you have found and named (or identified) all four kinds of 300zm scrolls, or you are a [[wizard]]; however, if you are willing to save some of your wishes for later, i.e. until after you have identified scrolls of charging, a magic marker is an overall more useful item (it can yield three scrolls of charging and still have enough ink to write several scrolls).
+** Wands of wishing from bones levels might already have been recharged once.
+
+The rest of this discussion assumes that you have a way to recharge your wand, if the wish is from a wand of wishing.
+
+==== Early single wishes ====
+
+The most common source of early wishes is a [[magic lamp]] (if you disregard slightly suicidal early level fountain quaffers). As a rule, the best item to wish for early in the game is either gray or silver [[dragon scale mail]], unless you are playing a [[Monk]]:
+
+* "blessed greased +2 [[gray dragon scale mail]]" (or +3) provides [[magic resistance]], and
+* "blessed greased +2 [[silver dragon scale mail]]" (or +3) provides [[reflection]].
+
+Which one you should wish for is somewhat situational; if you already have one extrinsic, you should wish for the DSM which provides the other. For example, a [[Wizard]] starts with a [[cloak of magic resistance]], and would prefer SDSM. A character who gets the [[amulet of reflection]] from [[Sokoban]], on the other hand, would be better served by GDSM. If you have neither magic resistance nor reflection, the choice is somewhat more difficult; see [[GDSM versus SDSM]] for a more detailed discussion of the merits of each.
+
+For a [[Monk]], the choice is drastically different, due to the large penalty for wearing body armor, which is especially problematic early in the game. Another class's quest artifact is a good choice for a [[lawful]] or [[neutral]] Monk (see {{sa|Quest artifacts|sectionsign=1}} below). However, due to the absence of [[chaotic]] quest artifacts that provide magic resistance, a chaotic Monk needing magic resistance should wish for a "blessed greased fireproof +2 [[cloak of magic resistance]]" (or +3). Alternatively, when magic resistance is not the highest priority, common and useful single wishes include [[speed boots]] or [[gauntlets of power]]. [[The Master Key of Thievery]] is another option for a chaotic Monk due to the extremely useful [[half physical damage]] property, but be wary of its [[artifact blast]].
+
+==== Early wands of wishing ====
+
+A somewhat rarer source of wishes early in the game is a [[wand of wishing]]. With a wand of wishing, you will usually want to wish for some or all of the following items, depending on what you already have: [[dragon scale mail]] (gray or silver), [[amulet of life saving]], some [[artifact weapon]] (unless you're planning to sacrifice for one), a [[bag of holding]] (if [[Sokoban]] doesn't provide one), and [[speed boots]]. All of the above should be blessed, and weapon and speed boots should be also fireproof. Some players wish for 2 blessed scrolls of charging, or a blessed magic marker, in order to access all the wishes immediately. You may also consider wishing for a quest artifact (see {{sa|Quest artifacts|sectionsign=1}}), but its [[artifact blast]] might kill you.
+
+If you encounter a [[wand of wishing]] in a shop, it is easy to [[price identification|price identify]] because its base cost is 500, shared only with the [[wand of death]]. If you have a pet with you, [[Stealing from shops|stealing]] the wand is easy enough. Those who were already planning to use a powerful pet (e.g. [[pacifist]]s) might wish for a blessed [[figurine]] of an [[Archon]]; this carries a 10% chance of backfiring, and a 10% chance of being wasted. Do not wish for a pet unless you are prepared to [[Pet#Protect_your_pet|take care of it]]. Failing this, it is best to simply find 500zm worth of junk to sell to the shopkeeper and then buy the wand. If you're really not sure of your character's ability to survive long enough to do that, it's also possible to simply wish for 5000 [[zorkmid]]s, use some of them to pay the shopkeeper for the wand, and leave with a healthy monetary profit (and more to the point, a wand of wishing with only one charge spent). This is probably the lowest-risk strategy, but the potential rewards are lower too as gold is typically a waste of a wish. A more ostensibly "profitable" method is to wish for a [[wand of death]] and use it to kill the shopkeeper, though that entails the penalty for [[murder]].
+
+==== Late game wishes ====
+
+In the later stages of the game, wishes typically serve the role of completing an [[ascension kit]].
+
+If you need lots of items to complete your ascension kit, consider wishing for a [[wand of polymorph]]. This wand is a very powerful item for players who are not averse to [[polypiling]]. In most cases, it is far more efficient to polypile for ascension kit items and then wish for the few remaining missing pieces, rather than wishing directly for all the items from the start.
+
+An uncursed [[magic marker]] can be used to write cursed [[scroll of genocide|scrolls of genocide]], which when read will summon a monster of your choice. This technique is often more efficient than wishing directly for monster-derived items, since a single uncursed magic marker (which takes one wish) can usually write at least four scrolls of genocide with recharging. For example, if your character is reasonably strong, you can obtain dragon scale mail by [[reverse genocide|reverse genociding]] dragons instead of wishing directly for dragon scale mail. As another example, if you need a [[cockatrice]] corpse, it may be more efficient to reverse genocide cockatrices than to wish for a corpse directly. For maximum effect, use a burned [[Elbereth]] to protect yourself from the monsters while you kill them.
+
+==== Quest artifacts ====
+
+:''See {{sa|Artifact wishing|sectionsign=1}} for general information about artifact wishing.''
+
+Generally speaking you should ''not'' wish for cross-aligned quest artifacts. They will “evade your grasp” and fall to the floor, and you will be unable to pick them up. Early-game characters should also avoid wishing even for coaligned quest artifacts, unless they have enough current [[HP]] to survive the inevitable [[artifact blast]]. It is technically possible to carry multiple artifacts of different alignments through careful use of alignment conversion or a [[helm of opposite alignment]], but this tactic is rarely employed. A helm of opposite alignment also cannot cause chaotic or lawful characters to become neutral, so the only way for such characters to use wished-for neutral artifacts is to permanently convert themselves at an [[altar]].
+
+As detailed above, you cannot get your own [[quest artifact]] from wishes.
+
+===== Lawful =====
+
+For lawful characters, the main contenders are [[the Sceptre of Might]], [[the Orb of Detection]] and [[the Magic Mirror of Merlin]], which all offer magic resistance. The Sceptre offers ring-less [[conflict]] and deals double damage against cross-aligned (non-lawful) monsters. The Mirror and the Orb both offer extrinsic telepathy; the Orb also offers [[half spell damage]] and functions as a [[crystal ball]], but is much heavier than the Sceptre or Mirror. If you already have magic resistance, [[the Mitre of Holiness]] is worth considering for a spellcaster due to the energy boost it provides when invoked.
+
+===== Neutral =====
+If you are a [[neutral]] character and want a quest artifact, there are at least four good choices:
+* "blessed rustproof [[Eye of the Aethiopica]]" (if you are ''not'' a [[Wizard]]) to obtain [[magic resistance]], fast [[power]] regeneration, [[telepathy]], and to #invoke for [[branchport]]ing
+* "blessed fireproof [[Platinum Yendorian Express Card]]" (if you are ''not'' a [[Tourist]]) to obtain [[magic resistance]], [[telepathy]], and to #invoke for non-blessed [[charging]]
+* "blessed [[Eyes of the Overworld]]" (if you are ''not'' a [[Monk]]) to obtain [[astral vision]] and [[magic resistance]], and to #invoke for [[enlightenment]]
+* "blessed [[Orb of Fate]]" (if you are ''not'' a [[Valkyrie]]) to obtain [[half physical damage]] and [[half spell damage]], and to #invoke to [[level teleport]] (but you will need to obtain [[teleport control]] separately)
+
+[[The Eye of the Aethiopica]] is an especially valuable item for neutral [[Monk]]s; due to armor [[to-hit]] penalty and weaponless [[martial arts]], they will most likely spend a wish on [[magic resistance]]. Comparing the [[cloak of magic resistance|cloak]] and the MR-granting quest artifacts, energy regeneration stands out as extremely useful, since Monks are decent [[spellcaster]]s and their starting spell (whatever it is) becomes vastly more powerful with energy regeneration. [[Branchport]] and [[telepathy]] are also big bonuses that are difficult or impossible for vegetarian Monks to get in any other way.
+
+[[The Eyes of the Overworld]] might be considered a lower priority than some of the others listed, but the [[astral vision]] they provide is useful for making the exploration of [[Gehennom]] less tedious without having to stockpile scrolls of magic mapping. However, if you can cast the divination spells of {{spell of|magic mapping}}, {{spell of|detect treasure}}, and {{spell of|detect monsters}} at a Skilled level, then these combined also provide the key benefits of the Eyes, even revealing information about the entire map at once&mdash;though this of course requires obtaining the appropriate spellbooks and being able to cast them somewhat reliably.
+
+===== Chaotic =====
+
+For chaotic characters, [[the Master Key of Thievery]] is usually considered better than [[the Longbow of Diana]]. No chaotic artifact grants magic resistance, making them somewhat less desirable than artifacts of other alignments. However, the Key still grants the very useful [[half physical damage]] and [[teleport control]] properties, in addition to warning and its [[invoke]] effect.
+
+==== Asking on IRC ====
+
+If you want, you can just join #nethack on [[Libera]] and ask them to suggest what to wish for. It helps if you know what items and perhaps spells, discoveries you already have.
+
+=== What not to wish for ===
+The [http://nh.gmuf.com/wish.html NetHack Wishing Spoiler] has a list of good items to obtain without wishing. Here are a few more:
+
+* [[unicorn horn]] &ndash; This is a very common item after you start finding unicorns, and you won't need one very often before then. Early in the game, if you have no unicorn horn but find a wish, you probably want dragon scale mail.
+* [[food ration]] &ndash; You are fainting, cannot #[[pray]], and there is no food around? Prefer wishing for a [[horn of plenty]]. If you're not fainting yet but out of food regardless, wishing for a [[ring of slow digestion]] may be better&mdash;NetHack is usually plentiful enough on food that you can find a monster or food item soon enough with the decreased hunger.
+* [[potion of holy water]] &ndash; If playing an [[atheist]], wish for two blessed [[scroll of remove curse|scrolls of remove curse]]. Obtain lots of uncursed water, name each one differently so they don't stack, and have nothing but the water and one of the scrolls in your inventory. Read the scroll while confused, un-name all the water, and #[[adjust]] them so they merge into three stacks. Figure out which is which by dipping a known-uncursed useless object (such as a rock) into them, checking for the cursed one with a pet, or [[price identification]] to find the uncursed one. If you only have two stacks, figure out those two and repeat with the other scroll.
+** For illiterate atheist players, this is a reasonable wish. See also the [[Potion of holy water#Conduct considerations|complete list of conduct-proof methods]].
+* [[dragon scale mail]] (in the ''mid to late game only'') &ndash; Once you have known-cursed paper and you know the [[scroll of genocide]] (or are a [[Wizard]] with high Luck), an uncursed [[magic marker]] is likely a better wish. If you cannot confidently write cursed scrolls of genocide, you may wish for them instead. [[Reverse genocide]] dragons, kill them, and write {{of|scroll|enchant armor}} to make mail from their scales. See the note on [[Dragon scale mail#Acquiring dragon scales|acquiring dragon scales]] for how to do this safely.
+
+== Misspelled wish, non-existent item, and canceling at the prompt ==
+
+If what you enter at the "For what do you wish?" prompt cannot be parsed as a ''NetHack'' item, you will be notified ("Nothing fitting that description exists in the game.") and asked again.{{refsrc|zap.c|4112}} "Cannot be parsed" is a quite loose definition, though; for example, "figuring" will successfully be (mis-)parsed as "ring". However, you have at most five tries; after failing five times you will be given a random object ("That's enough tries!").{{refsrc|zap.c|4115}}
+
+Pressing {{kbd|Esc}} at the prompt will result in a random object being given to you. This breaks the [[wishless]] conduct.{{refsrc|zap.c|4103}} Pressing any of the arrow keys will have the same result as their representation contains an escape character.
+
+[[NAO]]'s patched ''NetHack'' version only clears the input if you press escape; if the input line is already empty, pressing escape will have the same effect as in vanilla ''NetHack'', however.
+
+== Messages ==
+
+{{message|You may wish for an object.|You have been granted a wish.}}
+{{message|Unfortunately, nothing happens.|You zapped or engraved with a wand of wishing which had no effect due to negative luck, wasting a charge.}}
+{{message|Nothing happens.|Among other causes, this message appears when you zap a wand that has no charges, and may appear when rubbing any type of lamp.}}
+{{message|Nothing fitting that description exists in the game.|You made a wish that couldn't be parsed or for an invalid object.}}
+{{message|For a moment, you feel something in your hands, but it disappears!|You wished for an artifact that was not granted, wasting the wish.}}
+{{message|Oops! The [object] drops to the floor!|[[You]] could not carry the object you wished for, probably because you have no free inventory slots or it is too heavy.}}
+{{message|"I'm sorry but I'm not able to provide you with magical items."|In [[UnNetHack]], you wished for a magical item or an artifact from a source that cannot provide them. You may try again.}}
+
+== Variants ==
+=== SLASH'EM ===
+In [[SLASH'EM]], there are not only several new ways to obtain wishes, there are many new targets for wishes and many other chances and ways to get ascension kit items that would be good wish targets in vanilla. The following are some key points to bear in mind.
+
+==== SLASH'EM wish sources ====
+SLASH'EM has two additional wish sources: [[pill]]s and [[gypsy|gypsies]], of which the latter is the more important. A common mid- to late-game technique for a character who has a significant number of identified gemstones is to [[reverse genocide]] gypsies, which guarantees several wishes if the player has enough gems. Because this can be done repeatedly, it makes wishes less of a rarity than vanilla. By the time a SLASH'EM player reaches the castle, they rarely need the wand.
+
+==== Common SLASH'EM wishes ====
+SLASH'EM has many new artifacts and items which are well worth a wish. The following are some common wish targets:
+
+'''Artifacts'''
+*'''Lawful'''
+**[[The Crown of Saint Edward]], the [[Yeoman]] quest artifact, is a [[helm of telepathy]] which also provides [[magic resistance]] and [[half spell damage]].
+**[[Firewall]] is a lawful [[athame]] that provides fire resistance and does extra fire damage, both of which can be extremely helpful in the early game.
+**[[Grayswandir]], the best artifact weapon in vanilla, is still arguably the best lawful artifact weapon in SLASH'EM; it's also harder to get via sacrifice, since there are so many other artifacts to compete with.
+**[[Holy Spear of Light]] is a [[silver spear]] which can be invoked for to fry all undead around the player for significant damage.
+**[[Reaper]] is a [[halberd]] which does +20 to damage, a great choice for [[riding]] characters such as [[Knight]]s; as it is the second guaranteed sacrifice gift for [[Yeoman|Yeomen]], it is probably not worth a wish for them.
+**[[The Stake of Van Helsing]], the [[Undead Slayer]] quest artifact, is a [[wooden stake]] (dagger skill) that does a flat +12 to damage and provides magic resistance.
+*'''Neutral'''
+**[[Disrupter]] is a mace which deals +30 to damage to [[undead]].
+**[[Mjollnir]] is not new in SLASH'EM, but does vastly more damage (flat +24 to non-shock resistant monsters) and is the preferred neutral weapon for most fighting roles.
+*'''Chaotic'''
+**[[Bat from Hell]] is the most coveted weapon in SLASH'EM, a [[baseball bat]] (club skill) doing a flat +20 damage to all foes.
+**[[Deep Freeze]] is an [[athame]] that provides cold resistance and does extra cold damage.
+**[[Doomblade]] is a [[short sword]] which does +10 to damage with occasional bonus damage of 5d4; it is the second most powerful chaotic weapon after the [[Bat from Hell]], and may be a good choice for roles that can get Skilled in short swords but are restricted in clubs.
+**[[The Great Dagger of Glaurgnaa]] is the [[Necromancer]] quest artifact; while less powerful as a weapon that many other chaotic artifacts, it provides magic resistance and can be #invoked to recharge energy (although non-Necromancers will be [[artifact blast|blasted]] for significant damage).
+**[[Serpent's Tongue]] is not as powerful as the [[Bat from Hell]] or [[Doomblade]] at +0, but many roles that can't use either effectively can advance dagger to Expert.
+*'''Unaligned'''
+**[[Wallet of Perseus]] is a [[bag of holding]] which reduces the weight of its contents to {{frac|3}} when uncursed or {{frac|6}} when blessed.
+
+'''Non-artifacts'''
+*[[amulet of drain resistance]] &ndash; Provides [[drain resistance]], which is important against [[wand of draining|wands of draining]] and [[deep dragon]]s. It is most useful for players with no access to [[Excalibur]] or [[Stormbringer]].
+*[[amulet of flying]] &ndash; Allows a character to fly, meaning they can avoid water, trapdoors, lava, etc. and still pick up items, go down stairs, etc.
+*[[amulet versus stone]] &ndash; Like an [[amulet of life saving]] against [[stoning]] attacks, only is re-usable if re-blessed, similar to a [[scroll of scare monster]].
+*[[boots of water walking]] &ndash; Only moderately useful in vanilla, some consider these more important than [[speed boots]] or [[jumping boots]] in SLASH'EM due to the new [[create pool]] spell that monsters will use against you.
+*[[deep dragon scale mail]] &ndash; Provides [[drain resistance]], which is important against [[wand of draining|wands of draining]] and [[deep dragon]]s. It is most useful for players with no access to [[Excalibur]] or [[Stormbringer]].
+*[[figurine]] of a [[solar]] &ndash; A powerful pet, much stronger than an [[Archon]].
+*[[potion of gain level]] &ndash; Wishing for 2 or 3 potions of gain level (in the early game) will allow you to [[upgrading objects|upgrade]] mundane objects and obtain multiple [[ascension kit]] items with a single wish (such as a [[helm of brilliance]], [[helm of telepathy]], [[cloak of magic resistance]], [[magic whistle]], or [[bag of holding]], among others)
+*[[ring of polymorph control]] &ndash; Already a wish target in vanilla, this becomes even more important in SLASH'EM and can be used to transform into a very powerful [[crystal golem]] or the nigh-invincible [[giant shoggoth]] in conjunction with a [[wand of polymorph]], [[ring of polymorph]], [[polymorph trap]], [[sink]], [[chameleon]] corpse, or [[genetic engineer]].
+*[[robe of power]] &ndash; Provides the spellcasting bonus of a [[robe]] in vanilla. It is most useful for [[Monk]]s.
+*[[scroll of genocide]] &ndash; If you haven't found a scroll of genocide yet and have some identified gems, it's well worth a wish for a cursed scroll of genocide to reverse-genocide [[gypsy|gypsies]] for multiple wishes (though to do this safely, [[magic resistance]] is required). After you've identified the scroll, you're better off going for a [[magic marker]] to write it yourself.
+
+In general, SLASH'EM has an abundance of items compared to vanilla, given all the extra dungeon branches, not to mention the [[Black market (SLASH'EM)|black market]]. If you happen to find an early [[wand of wishing]] or a mid-game [[magic lamp]], you may want to hold off on using the last wish or two until you have cleared out some of these areas. Additionally, some items which would be wish targets in vanilla can be created by the process of [[Upgrading objects|upgrading]] common items in SLASH'EM, including:
+
+*[[bag of holding]] (from [[oilskin sack]], 100% chance, or [[sack]], 20% chance)
+*[[cloak of magic resistance]] (from an [[elven cloak]] or [[oilskin cloak]], 25% chance)
+*[[gauntlets of dexterity]] (from [[leather gloves]], 50% chance)
+*[[helm of brilliance]] (from a [[dwarvish iron helm]], 50% chance)
+*[[helm of telepathy]] (from a [[dwarvish iron helm]], 50% chance)
+*[[magic whistle]] (from a [[tin whistle]], 100% chance)
+*[[saddle]] (from [[leash]], 100% chance)
+*[[tinning kit]] (from [[tin opener]], 100% chance)
+
+Other upgradable objects whose base items are rare enough that they may still be worth wishing for include:
+*[[fire horn]] (from a [[tooled horn]], 33% chance)
+*[[frost horn]] (from a [[tooled horn]], 33% chance)
+*[[magic flute]] (from a [[wooden flute]], 100% chance)
+*[[magic marker]] (from a [[crystal ball]], 100% chance)
+*[[magic harp]] (from a [[wooden harp]], 100% chance)
+*[[horn of plenty]] (from a [[tooled horn]], 33% chance)
+
+Some artifacts which are common wish targets in vanilla may be less useful in SLASH'EM:
+*[[The Master Key of Thievery]]'s [[half physical damage]] is superseded by [[the Hand of Vecna]], which is available to all players; a better chaotic artifact wish may be [[the Great Dagger of Glaurgnaa]]. Even better yet is the [[bat from hell]].
+*[[The Orb of Fate]]'s [[half physical damage]] is also superseded by the Hand of Vecna; it is still useful for [[half spell damage]] and, to a lesser extent, [[warning]].
+*[[The Sceptre of Might]] does +5 damage instead of double damage, though [[magic resistance]] and toggle-able [[conflict]] are still valuable.
+
+Additionally, wishing for any of the six artifacts of the [[alignment quest]]s is forbidden ([[the Hand of Vecna]], [[the Eye of the Beholder]], [[Nighthorn]], and the three [[alignment key]]s).
+
+Finally, [[polypiling]] is tougher in SLASH'EM because you need to dip an item in a [[potion of restore ability]] to make the change permanent; while this may not matter for items that can be used immediately such as potions, scrolls, and spellbooks, it has implications when polypiling for equipment like [[ring]]s or [[amulet]]s.
+
+=== UnNetHack ===
+In [[UnNetHack]], wands of wishing are [[Wand of wishing#UnNetHack|generated recharged once]] and therefore cannot be recharged. Thus, you may not want to use your first wish on [[Scroll of charging|scrolls of charging]] like in ''NetHack''.
+
+Only wishes from a wand can grant wishes for [[magical item]]s or [[artifact]]s. All other sources can only wish for non-magical items (though shields of reflection are now non-magical), and thrones do not give wishes at all. Any wish is allowed to specify modifiers like "blessed" and "+2".
+
+[[Magic lamp]]s can now be wished for, since wishes from them can only grant non-magical items. Projectiles can be wished for in quantities up to 100. (Daggers are ''not'' considered projectiles.)
+
+In the development version, wishing no longer increments prayer timeout.
+
+[[Dragon scale mail#UnNetHack|Chromatic dragon scales and scale mail]] and [[Thiefbane]] cannot be wished for; unidentified [[dragon scale mail]] is replaced by a random one. After development version r1580, wishing for chromatic dragon eggs is disabled. Wishing for statues or figurines of chromatic dragons, however, is allowed. See [[Chromatic dragon (UnNetHack)]] for details.
+
+Wishing for "reflecting/magic dragon scales (not mail)" is allowed only if you have identified it; alternatively, wishing for "guivre scales" or "leviathan scales" is fine, but you will need to observe these dragons in combat to know which property is held by which race. If you find a wand of wishing before meeting a dragon, and would like dragon scale mail, wish for glowing dragon scale mail, as at the very least you end up with a permanent light source and could end up with (one in five chance of) reflection or magic cancellation. See [[Dragon#UnNetHack|Dragon § UnNetHack]] for changes to dragons in particular.
+
+Good non-magical items include:
+* [[shield of reflection]]
+* [[stethoscope]]
+* [[athame]]
+* [[can of grease]]
+* [[tinning kit]]
+* [[oilskin sack]]
+* 5000 [[gold piece]]s
+* [[chickatrice]] corpse
+* [[leather drum]]
+* [[tin of spinach|tins of spinach]]
+* [[silver saber]]
+* [[silver spear]]
+* 100 [[silver arrow]]s
+* [[t-shirt]]
+* [[oilskin cloak]]
+* 3 [[dragon]] eggs
+* [[crystal pick]]
+
+=== GruntHack ===
+GruntHack allows monsters to wish for items. This can be performed either by a smoky potion or a wand of wishing (monsters never use magic lamps). Monsters wish for a [[scroll of charging]] if performed with a non-recharged wands of wishing. Otherwise, they wish for one of the following items, chosen randomly:
+
+* blessed greased fixed +3 silver dragon scale mail
+* blessed greased fixed +3 gray dragon scale mail
+* blessed greased fixed +3 cloak of magic resistance
+* blessed greased fixed amulet of reflection
+* blessed greased fixed shield of reflection
+* blessed greased fixed +3 speed boots
+* blessed greased fixed +3 gauntlets of power
+* blessed greased fixed amulet of life saving
+* blessed greased fixed wand of death
+* blessed greased fixed partly eaten chickatrice corpse
+
+Monsters will not wish for items granting properties they already have (for example, a strong monster will never wish for gauntlets of power and an Angel will never wish for a cloak of magic resistance). Additionally, they will never wish for things they cannot use (for example an Archon will never wish for a cloak of magic resistance, and monsters who lack gloves and aren't stone resistant will never wish for a chickatrice corpse). If chickatrices are genocided, monsters will wish for a cockatrice corpse. If cockatrices are also genocided, they will try to wish for the corpse anyway and receive a random corpse.
+
+=== xNetHack ===
+In [[xNetHack]], wands of wishing always explode when recharged and will turn to dust when they reach 0 charges. xNetHack also allows you to wish for magic lamps, but unlike [[UnNetHack]], wishes from djinn are not restricted to non-magical items. Since you cannot get more than one wish from a magic lamp, the main use of this is for a permanent light source.
+
+The probability of successfully wishing for an artifact is changed to {{sfrac|''n'' + 1}}, where ''n'' is the number of artifacts you have received by wishing. Artifacts generated in any other way are ''not'' taken into account. This means the first artifact wish is guaranteed, and subsequent ones have probabilities of {{frac|2}}, {{frac|3}}, {{frac|4}}, etc.
+
+Although xNetHack implements [[object materials]], the material of a wished-for item cannot be specified outside of [[wizard mode]]. An item received by wishing always has its base material.
+
+==References==
+<references/>
+
+== External links ==
+* The [http://nh.gmuf.com/wish.html NetHack Wishing Spoiler] by Peter Snelling, Stanislav Traykov, and others provides a detailed analysis of how to wish effectively, including a list of specific wishes ordered by priority.
+* In the [[Dudley's dungeon]] of [http://www.nicolaas.net/dudley/index.php?f=20050819 19 August 2005], Dudley wishes for a "blessed greased fixed erodeproof disenchanterproof demonpossessionproof vacuumofdeepspaceproof proofremovalproof fully insured 100% all-natural materials completely and utterly intact, undamaged and structurally sound freshly washed and free of the stench of congealed human blood totally bereft of ancient unbreakable curses and absolutely NOT stolen from any nearby easily-angered shopkeepers +3 armor enhancement GRAY DRAGON SCALE MAIL". The djinni granting the wish then gives Dudley the armor with all the specified requirements&mdash;but the armor is size XXXS (extra extra extra small).
+
+{{featured}}
+{{nethack-343|offset=2}}
+{{slashem-7E7|offset=1}}
+[[Category:Strategy]]
+[[Category:한국어]]}
+&&%s&& %s Instadeath/ko {134241 2020-06-09T18:25:33Z {4001384 Stay Hydrated}  '''즉사'''는 캐릭터가 즉시 [[death (character)|죽음]]을 의미합니다. 즉사는 0턴에 바로 죽음을 초래하며 만회할 시간을 주지 않습니다.
+
+즉사의 종류는 여러개가 있습니다:
+* [[Stoning|석화당하기]] ([[stoning resistance|석화 저항]]이 있을경우 제외), 이것은 다음과 같이 발생할수 있습니다:
+** 코카트리스 또는 치카트리스 [[corpse|시체]]를 장갑을 착용하지 않는 상태로 만지기
+*** 코카트리스 또는 치카트리스 [[corpse|시체]]를 실명 상태에서 부유 상태가 아닌 상태로 타일을 지나가는것은 시체를 만지는걸로 판정됩니다
+** 코카트리스 또는 치카트리스, 또는 [[Medusa|메두사]]의 시체 먹기
+** 신발을 착용하지 않는 상태로 코카트리스 또는 치카트리스의 시체를 차기
+** 코카트리스 또는 치카트리스의 시체를 장갑을 착용하지 않은 상태로 [[sacrifice/ko|번제]]하거나 [[Tinning kit|티닝]]하기, [[altar|제단]] 위에 있어도 똑같음
+** 코카트리스나 치카트리스 시체를 휘두르고 있는 상태로 구덩이, 구멍 또는 함정문에 빠지기
+*** Includes deliberately flying down a hole, although flying over a pit is safe
+** Falling down stairs due to being burdened while wielding a cockatrice or chickatrice corpse
+** 코카트리스 또는 치카트리스를 while polymorphed into a creature with a [[Cockatrice#Petrification by a living cockatrice|contact attack]], or when not wielding a weapon and not wearing gloves
+** [[blind|실명]] 또는 [[reflection|반사]] 없이 [[Medusa|메두사]]의 시선을 보기. ([[Invisibility|투명화]]는 그녀를 보호합니다, 당신은 아닙니다.)
+** 던져진 코카트리스 [[egg|알]]에 맞기
+* [[demon|악마]]나 [[undead|언데드]]로 폴리모프한 상태가 아니면서 [[magic resistance|마법 저항]] 없이 죽음의 광선에 맞기, 이것은 다음과 같이 발생할수 있습니다:
+** [[wand of death|죽음의 완드]]나 {spell of|finger of death}}&mdash를 자신에게 쏘기;이것은 당신이 마법 저항이 있어도 죽일것 입니다. ("당신은 순수한 에너지로 자신을 쬐었다!")
+** [[wand of death|죽음의 완드]]나 [[finger of death|죽음의 손가락]]을 벽이나 적의 [[reflection|반사]]에 의해 반사된 광선에 맞기. [[Reflection|반사]]는 이것을 보호할 것입니다.
+** 적이 당신에게 죽음의 완드를 발사하기 [[Reflection|반사]]는 이것을 보호해 줍니다.
+* [[demon|악마]]나 [[undead|언데드]]로 폴리모프한 상태가 아니고, 또는 [[Hallucination|환각]] 상태가 아니면서 [[magic resistance|마법 저항이 없을때]] [[touch of death|죽음의 손가락]] 마법에 당하기
+* [[poison resistance|독 저항]]이 없을때 적 공격, 독 무기, 또는 가시 구덩이에 의해 [[poison|독]]에 치명적으로 중독되기 ([[potion of sickness|질병의 포션]]을 [[Quaff|마시거나]] 독이 있는 시체를 먹는건 절대로 즉사를 일으키지 않습니다, 하지만 체력이나 힘 드레인으로 죽을수는 있습니다.)
+* 음식 [[Nutrition|목막히기]]
+* [[Starvation|아사]]
+* 물에서 [[Drowning|익사당하기]]
+** 근처에 땅이 없을 경우, [[breathless|무호흡]]이거나 [[amphibiousness|양서류]]가 아니면 당신은 익사합니다.
+** [[encumbrance|무게]]가 초과된 상태로 물에 빠지면 근처에 땅이 있어도 익사할 수 있음. 약간의 소지품을 잃고 생존할 가능성이 있음
+* 떨어지는 [[drawbridge|도개교]]에 깔리기
+* [[scroll of genocide|학살의 두루마리]] 또는 [[throne|왕좌]]를 통하여 자신의 종족 학살하기. 학살의 두루마리를 [[confusion|confused|혼란 상태에서]] 읽으면 항상 자신의 종족을 학살하게 됩니다
+* 화염 저항 없이 [[lava|용암]]에 빠지기
+* 의도적으로 레벨 0 이하로 [[level teleport|레벨 텔레포트]]하기&mdash; 레벨 0은 아무 장소도 아니며, &minus;1 부터 &minus;9까지는 "구름 위", 그리고 &minus;10 위로는 천국입니다. 당신이 [[levitation|부유]]나 [[flying|비행]]을 가지고 있을 때 레벨 0 "위로" 텔레포트할 경우 즉사하지는 않지만, 어쨌든 게임은 [[escaping the dungeon|던전을 탈출한 것]]으로 간주하여 끝나게 됩니다.
+* 반사나 분해 저항 없이 ([[black dragon|흑룡]]이나 [[Chromatic Dragon|크로마틱 드래곤]]으로부터) 분해 광선 맞기&mdash; 만약 [[shield|방패]]를 착용중이라면, 그것이 대신 분해되고 당신은 살게 됩니다. 아닐 경우, 만약 [[body armor|갑옷]]을 착용중이라면, 망토가 대신 분해되서 다시 당신은 살게 됩니다 (but likely leaving you with a very poor [[armor class]] and vulnerable to the rebound).
+* 반사나 전격 저항 없이 [[Anger|분노한]] 신으로 부터 벼락을 맞기
+* 격노한 신으로부터 분해 저항 없이 [[wide-angle disintegration beam|광각 분해 광선]]을 맞기. 반사와 방어구는 이 상황에서 보호해주지 않음
+* [[Vorpal Blade|보팔 블레이드]]나 [[the Tsurugi of Muramasa|무라마사의 츠루기]]로 참수당하기 (타격당 5% 확률)
+* 레벨 1 아래로 드레인 당하기
+* 아무 [[Rider|라이더]]의 시체를 먹기 ([[food appraisal|음식 탐지]] 능력은 경고를 하지 않을것입니다)
+* 아무 [[Rider|라이더]]의 시체를 [[Digest|삼키기]]
+* [[mind flayer|마인드 플레이어]]에게 뇌를 먹히기
+* [[Amulet of Yendor|옌도르의 부적을]][[Moloch's Sanctum|몰록의 성지]] 고위 제단에 있는 몰록에게 바치기
+
+게임 시작후 1턴에 바로 죽으면 "[[Do not pass go. Do not collect 200 zorkmids.|출발을 지나가지 마시오. 200 조크미드를 받지 마시오.]]"이라는 메시지가 나옵니다. 이것은 보드게임 ''[[Wikipedia:Monopoly (game)|모노폴리]]''의 패러디입니다.
+
+== 적을 즉사시키기 ==
+
+많은 상황에서, 플레이어는 많은 방법으로 적을 즉사시키는 것이 도움이 됩니다. 몬스터 즉사를 위한 몇가지 방법입니다, listed roughly in order from most common to most obscure. Not all methods work on all monsters; for example, [[undead]] monsters resist death rays.
+
+* 적에게 [[wand of death|죽음의 완드]] 또는 {{spell of|finger of death|죽음의 손가락 마법}}을 쏘기
+* [[poison|독]]이 있는 무기로 때리기 (10% 확률)
+* 적에게 [[wand of polymorph|wand]], [[potion of polymorph|potion]], or [[spellbook of polymorph|spell]] of polymorph (small chance of fatal [[system shock]])
+* 적을 [[cockatrice corpse|코카트리스 시체]]로 때리거나 [[cockatrice egg|코카트리스 알]]을 적에게 던지기
+* 적을 [[black dragon|검은 용]]의 분해 광선으로 분해시키기
+* [[purple worm|보라 벌레]]나 [[trapper|트래퍼]]같은 [[engulfing|삼키는 몬스터]]로 적을 삼키기
+* 적 위에서 [[drawbridge|도개교]]를 열거나, 닫거나, 부수기
+* 적을 [[Vorpal Blade|보팔 블레이드]]나 [[the Tsurugi of Muramasa|무라마사의 츠루기]]로 공격하기 (타격당 5% 확률)
+* 펫을 [[water|물]]이나 [[lava|용암으로]] 자리를 바꾸기
+* [[Anger|화난]] 신으로부터 발사된 벼락을 당신을 삼킨 적이 대신 맞게 하기
+* 화난 신으로부터 발사된 광각 분해 광선을 당신을 삼킨 적이 대신 맞게 하기 (먼저 벼락으로부터 살아남아야 합니다, 보통 전격 저항으로 살아남음)
+* 바닷괴물로 폴리모프해서, 물에 있는 상태로 연속으로 공격하기 (무호흡 몬스터들은 이 유형의 공격에 살아남을것입니다). 목표 몬스터를 감쌀 확률은 10% 지만, 성공하면 다음 근접 공격이 적을 즉사시킬 것입니다.
+
+==SLASH'EM==
+[[SLASH'EM|슬래시엠]]은 새로운 여러가지 즉사 방법이 있습니다. 그 방법은:
+
+* Being hit by a gaze of death from a [[Catoblepas]] or the [[Neutral Quest#The Beholder|Beholder]]
+* Asking a [[gypsy]] to read your fortune and drawing Death while not having magic resistance
+* Being hit by [[Thiefbane]] (10% chance)
+* Being hit by [[Serpent's Tongue]] without poison resistance (10% chance)
+* Being hit by a [[wooden stake]] as a [[vampire]]
+* Invoking [[the Eye of the Beholder]] with your luck less than &minus;9.
+* [[Houchou|부엌칼]]에게 맞기
+
+== 더 보기 ==
+* [[Delayed instadeath|지연된 즉사]], 이것도 즉사를 유발하지만 긴급 개입을 허용합니다.
+* [[Trickery]], which ends a game instantly as an anti-cheating measure and is not considered death
+
+{{nethack-343|offset=1}}
+{{slashem-7E7}}
+[[Category:Instadeath|*]]
+[[Category:한국어]]}
+&&%s&& %s Touch of death/ko {134223 2020-06-09T18:05:15Z {4001384 Stay Hydrated}  '''죽음의 손길'''은 [[arch-lich|아크 리치]]나 [[Wizard of Yendor|옌도르의 마법사]] 같은 강력한 주문 시전 몬스터들이 시전하는 [[monster spell|몬스터 주문]]입니다. (레벨 21 이상) 당신이 [[magic resistance|마법 저항]]이거나 [[hallucinating|환각]] 상태, 또는 [[demon|데몬]]이나 [[undead|언데드]]로 [[polymorph|폴리모프]]했다면 효과가 없습니다; 또는 몬스터의 레벨이 13일 때 확률적으로 실패할 수도 있습니다. 만약 주문이 성공한다면, 이름에서 알 수 있듯이 당신은 [[instadeath/ko|즉사합니다]].
+
+== 데스의 "치명적인 손길" ==
+
+데스라 알려진 [[Rider|기사]]는 유일한 공격으로써 "치명적인 손길"을 보유하고 있습니다. 이 손길은 기사가 아닌 몬스터들이 소유하고 있는 "죽음의 손길"과는 여러 면에서 다릅니다. 불행히도, [[source code|소스 코드]]는 두 공격을 혼동하여, 종종 데스의 공격을 "죽음의 손길"이라고 부르고는 합니다.
+
+당신이 [[undead|언데드]]이고, 데스가 당신을 공격할 경우, 당신은 "방금 그게 죽음의 손길이었어?"라는 메시지를 보게 되며, 해당 공격은 평범한 물리 피해만을 가할 것입니다. 그렇지 않다면, 다음 효과들이 나타날 것입니다:
+
+{| class="wikitable"
+!확률!!메시지!!효과
+|-
+|15%||마법 저항이라면 아래와 같습니다; 그렇지 않다면 특별한 메시지가 나타나지 않습니다.||만약 [[magic resistance|마법 저항]]이 있다면, 효과는 아래와 같습니다. 그렇지 않으면, 당신은 [[instadeath/ko|즉사합니다]].
+|-
+|60%||"생명이 빨리는 느낌이 든다..."||물리적 피해와 ''최대'' [[hit points|체력]]을 줄입니다.
+|-
+|25%||"다행히도, 먹히지 않았다!"||효과 없음.
+|}
+
+치명적인 손길은 [[hallucination|환각]]이나, [[undead|언데드]]를 제외한 [[polymorph|폴리모프]]로는 막을 수 없습니다.
+
+== 더 보기 ==
+
+*[[mcastu.c#line332]] &ndash; 평범힌 죽음 주문의 손길.
+*[[mhitu.c#line1485]] &ndash; 데스의 치명적인 손길.
+*[[Yeenoghu|이노그]] &ndash; [[Nethack 3.1.0|넷핵 3.1.0]]부터 [[Nethack 3.3.1|넷핵 3.3.1]]까지는 버그로 인해 데스의 공격을 공유했습니다.
+
+[[Category:Monster spells]]
+[[Category:Instadeath]]
+[[Category:한국어]]
+{{nethack-343}}}
+&&%s&& %s Genocide/ko {135079 2020-07-14T20:36:54Z {4001384 Stay Hydrated} 죽여줘... 너무 많아... '''학살'''이란 마법적 수단으로 특정 종족 전원을 말살하는 행위입니다. 당신이 모든 생명체를 직접 죽여야 하는 [[extinctionism|멸종주의]]와 혼동하진 마십시오. 
+
+Genocide can take place in the form of a [[scroll of genocide]] or you may get to genocide one monster when [[throne|왕좌]]에 #[[sit|앉았을때]]. 왕좌로부터 얻는 학살은 항상 안전하며, scrolls may not be if they are cursed or if you are [[confused]].
+
+만약 당신이 학살 금지 [[conduct]]를 유지하고 싶다면, you can always answer "none" when asked what to genocide. Specifying an invalid race five times in a row will also result in nothing being genocided and your conduct will be preserved.
+
+학살은 [[pacifist|평화주의자]] [[conduct]]를 깨트리지 않습니다. 현재 [[pet/ko|애완동물]]이나 [[peaceful|평화적인]] 몬스터를 포함한 종을 학살하는 것은 패널티가 없습니다. but there is a small [[alignment record|alignment]] penalty for a lawful that genocides a single human species; a chaotic gains a small boost to alignment for doing the same.
+
+한 종이 학살을 당하면, 그 종의 모든 살아있는 몬스터들이 죽을것이고, 새로운 몬스터들이 생겨나지 않을 것입니다. 학살은 또한 몬스터들(그리고 [[hero]])이 선택된 몬스터들로 폴리모프 하는 것을 막을 것입니다. 이런 식으로 죽은 몬스터들은 비록 다른 층에 있다고 해도 그들의 인벤토리를 떨어뜨릴 것입니다.
+
+==학살 제한==
+다음 생명체들은 학살될 수 없습니다:
+* 모든 {{white|A}} [[angelic being|천상의 존재]]들
+* 모든 {{white|&}} major [[demon|데몬]]들, [[Riders|기사들]], [[mail daemon|메일 데몬]], [[djinn|진]], 그리고  [[sandestin|산데스틴]]
+* 모든 {{white|'}} [[golem|골렘]]들
+* 모든 {{white|E}} [[elemental|원소]]들, 하지만 [[stalker|스토커]]는 아님
+* {{monsymlink|titan}}s
+* {{monsymlink|salamander}}s
+* all [[werecreature]]s
+* {{monsymlink|skeleton}}s
+* {{monsymlink|ghost}}s and [[shade]]s
+* [[nurse|간호사]]를 제외한 모든 {{white|@}}, [[doppelganger|도플갱어]], 무작위로 생성된 엘프들, 당신 자신의 [[role|직업]], [[Watchman|경비]], 그리고 [[Yendorian Army|옌도르의 군대]]
+* 모든 [[unique monster]]s
+
+Don't blessed genocide {{white|@}}; additionally, don't blessed genocide {{white|h}} if you are a dwarf, {{white|G}} if you are a gnome, or {{white|o}} if you are an orc. And keep in mind that blessed genociding always wipes out the entire class even if you specify a particular monster. If you genocide your base race or role, you will [[instadeath|die]]. Variants of your base race are safe to genocide; for example, as a [[gnome (starting race)|gnome]], you could genocide [[gnome lord]]s or [[gnome king]]s, but choosing "gnome" to genocide is fatal. An [[amulet of life saving]] will not save you from death by genocide. This is usually only an issue with [[dwarves]]; see [[Genocide#Common genocides|below]].
+
+Genociding {{white|@}} while [[polymorph]]ed  will result in a [[YAFM]]: "You feel dead inside." You will die if you revert back to your normal form, and the only way to survive is by wearing an [[amulet of unchanging]], or either ascend or escape the dungeon before you unpolymorph.
+
+==역학살==
+저주받은 학살의 두루마리를 읽는 것은 지정된 몬스터를 4&ndash;6 만큼 생성할 것입니다. This is what makes reading a non [[BUC]]-identified scroll of genocide dangerous. However, it can work to your advantage if the resulting monsters are useful and can be killed easily.
+
+여기 역학살을 하기에 유용한 몬스터들이 있습니다:
+* {{monsym|wraith}} [[wraith|레이스]]: to eat their corpses for a level gain (average of about 1.6 corpses per scroll read). Don't do this on a level with a [[graveyard|공동묘지]], or you'll get significantly fewer corpses.
+* {{monsym|white_dragon}} [[dragon|용]]: [[dragon scale mail|용비늘 메일]]을 만드는 위험한 방법
+* {{monsym|nurse}} [[nurse|간호사]]: [[nurse dance|간호사 춤]]을 하기 위함
+* {{monsym|tengu}} [[tengu|텐구]]: [[teleport control|순간이동 통제]]의 가능성 때문에 먹음
+* {{monsym|kraken}} [[kraken|크라켄]]: 그들은 물 밖에서는 매우 느리기 때문에 쉬운 경험치 공급원이죠. 물론 도망치려고 하겠지만, 그럼에도 종종 공격한다는 것을 주의하십시오. For obvious reasons, cannot drown you out of water. (Average of about 7870 XP per scroll or enough to go from level 10 to 11. If you are level 11 or higher, wraiths are a better bet to level up.)
+* {{monsym|mind_flayer}} [[mind flayer|마인드 플레이어]]s: to eat for [[intelligence]] gain; be sure to be standing on a [[scroll of scare monster]]
+* {{monsym|stone_giant}} [[giant]]s: to eat for [[strength]] gain
+* {{monsym|white_unicorn}} [[unicorn]]s: to eat for [[poison resistance]], to sacrifice if cross-aligned, to throw them [[gem]]s for [[Luck]] if coaligned, and for [[unicorn horn]]s to use as is or to [[polypile]] into other magical tools such as [[magic marker]]s
+* {{monsym|purple_worm}} [[purple worm]]s: combine with [[tame|taming]] or [[ring of conflict]] and a [[wand of teleportation]] to easily clear out large open levels full of powerful monsters
+* {{monsym|cockatrice}} [[cockatrice]]: to use their corpses to quickly deal with powerful monsters (chickatrice are lighter but more likely to fail to actually leave a corpse)
+
+[[Vegetarian]]s can reverse genocide [[gelatinous cube]]s for the intrinsics once they can defeat them and take the acidic corpse damage. Monks going for speed runs or the [[pacifist]] and [[atheist]] [[conducts]] will find that useful, because they do not want to lose alignment for eating meaty corpses. Alignment loss is relevant, because of the early game alignment cap for speed runners, and because raising alignment is so hard for pacifist atheists.
+
+먹고 싶은 몬스터, 특히 다량의 영양을 공급하는 몬스터의 경우 역학살을 할때 [[tinning kit]]를 얻는 것이 가치 있습니다.
+
+당신은 학살할 수 없거나, 이미 학살되었거나, 또는 [[extinct|멸종한]] 몬스터를 역학살할 수는 없습니다.
+
+역학살된 몬스터들은 어떠한 아이템도 가지고 스폰되지 않기 때문에, 이 방법으로는 [[lich|리치]]들에게서 [[athame|의식용 칼]]을 파밍할 수 없습니다.역학살된 몬스터는 어떠한 아이템을 가지고 생성되지 않으며, 이러한 방식으로 [[lich/ko|리치]]들에게 [[athame|의식용 칼]]을 파밍할수 없습니다. They do leave [[death drop|death drops]] such as [[unicorn horn]]s and [[dragon scales]].
+
+역학살은 무학살 [[conduct]]를 깨뜨리지 않습니다.
+
+==긴급 학살==
+The scroll of genocide is a useful [[escape item]] as it can instantly kill a monster which poses an immediate threat and cannot be dealt with in any other way. 예를 들어, 바다 괴물이 당신을 붙잡았고, a single monster about to take your last [[hit point]], or a [[nymph]] who is robbing you blind. (님프는 그녀가 들고 있는 것은 무엇이든 떨어뜨릴 것이니, 당신은 훔친 물건을 되찾을 수 있을 것입니다.) 하지만 일부 몬스터는 학살이 불가능 하다는것을 알아 두십시오.
+
+==흔한 학살==
+일부 종족은 매우 성가시거나 짜증나므로, 가능한 학살을 해두는것이 좋습니다:
+* {{monsym|lich}}, [[lich|리치]]
+* {{monsym|mind_flayer}}, [[mind flayer|마인드 플레이어]]
+* {{monsym|shark}}, [[sea monster|바다 괴물]]
+* {{monsym|rust_monster}}, [[rust monster|녹 괴물]]과 [[disenchanter|디스인챈터]]
+
+두루마리를 축복할때까지 학살을 뒤로 미루는것이 좋습니다, 최악의 몬스터는 후반부 이전까진 나타나지 않기 때문입니다. 이것은 [[holy water|성수]]를 한통 만들수 있을때까지의 충분한 시간을 줍니다. 주목해야 할 것은 만약 당신이 드워프라면, 축복받은 [[scroll of genocide|학살의 두루마리]]로 {{white|h}}를 학살하는 것은 [[instadeath/ko|아주 치명적인 결과를 유래합니다]]!
+
+===기호 학살 (축복받은 두루마리)===
+{|class="wikitable"
+|-style="text-align:left"
+! 문자 !! [[Monster|몬스터]] !! 이유
+|-
+|{{monsym|lich}} || [[lich|리치]] (4 종류) || 아이템 저주, 죽음의 손가락, and summon nasties.
+|-
+|rowspan="3"|{{monsym|kraken}} || [[kraken|크라켄]] || 당신을 익사시킵니다.
+|-
+|[[electric eel|전기뱀장어]] || 당신을 익사시킵니다, 그리고 전기 충격이 아이템을 파괴시킵니다.
+|-
+|[[giant eel|큰 장어]] || 당신을 익사시킵니다.
+|-
+|rowspan="2"| {{monsym|mind_flayer}} || [[mind flayer]]s (2) || 안내: 두 마인드 플레이어를 학살하려면 h를 지정해야 합니다, '''아래를 보시오'''.
+|-
+|[[humanoid]]s (5) || 드워프를 포함하기 때문에, 드워프라면 '''절대''' 학살하지 마시오.
+|-
+|{{monsym|cockatrice}} || [[cockatrice|코카트리스]] (3) || 시체를 포함해, 여러 [[instadeath/ko|즉사]] through [[stoning]], but corpses are powerful instakill weapons.
+|-
+|{{monsym|small_mimic}} || [[mimic|미믹]] (3) || 상점 내의 유용한 아이템 수를 증가시켜줍니다, 특히 [[Orcus Town|오르커스 타운]]에서.
+|-
+|rowspan="2"| {{monsym|disenchanter}} || [[disenchanter|디스인챈터]] || 아이템 강화수치를 줄이지만, but trivial with MC3 and 쓰레기 무기나 맨손 근접으로.
+|-
+|[[rust monster]] || 무기와 갑옷을 부식시키지만, but trivial with rustproof weapons and outer armor (such as any cloak, [[dragon scale mail]], or non-metal armor as is often worn by spellcasters).
+|-
+|{{monsym|golden_naga}} || [[naga|나가]] (8) || 황금이 저주를 걸수 있고, 다른 것들도 성가십니다. 황금 이외에는 가치가 없습니다.
+|-
+|{{monsym|trapper}} || [[trapper|트래퍼]] (2) || [[Engulfing|삼키기]] 공격이 펫들을 즉사시킬수 있지만, 플레이어에게 큰 위협은 아닙니다.
+|-
+|{{monsym|purple_worm}} || [[purple worm|보라색 벌레]] (2) || [[Engulfing]] attack can instakill pets, summoned as nasty, but not much risk for prepared players.
+|-
+|{{monsym|ice_troll}} || [[troll|트롤]] (5) || 종종 성가시지만 학살을 할만한 가치가 없습니다. 트롤을 죽이고 시체를 다른 곳에 두거나 먹는것이 더 쉽습니다.
+|-
+|{{monsym|white_dragon}} || [[dragon|드래곤]] (18) || 숨결 공격이 위협적이지만, but trivial if [[reflection|반사]]가 있다면. They also can give [[dragon scale mail]], useful [[intrinsic]]s when eaten, and often useful [[Potion|potions]]. 학살을 하지 않는 편이 낫습니다.
+|-
+|{{monsym|rothe}} || [[quadruped]]s (6) || 저렙에서 힘듭니다. 고렙에선 가치가 없습니다.
+|-
+|{{monsym|vampire}} || [[vampire|뱀파이어]] (2) || 묘지의 [[wraith|망령]] 수를 올려줄수 있습니다.
+|-
+|{{monsym|ghoul}} || [[zombie|좀비]] (7) || 묘지의 [[wraith|망령]] 수를 올려줄수 있습니다.
+|-
+|rowspan="4"|{{monsym|green_slime}} || [[green slime|초록색 슬라임]] || [[sliming|당신을 슬라임으로 변신시킬수 있지만]], [[magic cancellation]]과 (비상시에) [[wand of fire|불의 완드]] 또는 유사한 아이템을 통해 쉽게 대처할수 있습니다. 그들의 [[glob]]을 먹는 것은 슬라임화를 유발하고 본질적 능력을 전혀 제공하지 않습니다.
+|-
+|[[black pudding|검은색 푸딩]] || 무기와 갑옷을 부식시키고 적당한 강력한 공격이 있지만, [[glob]]이 본질적 능력을 제공합니다.
+|-
+|[[brown pudding|갈색 푸딩]] || 무기와 갑옷을 썩게 하지만, [[glob]]이 본질적 능력을 제공합니다.
+|-
+|[[gray ooze|회색 점액괴물]] || 갑옷을 썩게 하지만, [[glob]]이 본질적 능력을 제공합니다.
+|-
+|{{monsym|mountain_nymph}} || [[nymph|님프]] (3) || 멀리서 또는 한턴에 그들을 죽일수 없다면 (그들이 중요한 무언가를 훔칩니다).
+|}
+
+===하나의 적 학살 (저주받지 않은 두루마리 또는 왕좌)===
+{| class="wikitable"
+|- style="text-align:left"
+! 기호 !! [[monster|몬스터]] !! 이유
+|-
+| {{monsym|mind_flayer}} || [[mind flayer|마인드 플레이어]] || 망각 공격. 플레이어가 [[dwarf|드워프]]가 '''아닌 이상''' 축복받았을때 지우는 것이 낫다.
+|-
+| {{monsym|master_mind_flayer}} || [[master mind flayer|마스터 마인드 플레이어]] || 망각 공격. 플레이어가 [[dwarf|드워프]]가 '''아닌 이상''' 축복받았을 때 지우는 것이 낫다.
+|-
+| {{monsym|disenchanter}} || [[disenchanter|디스인챈터]] || 아이템 강화수 하락, 하지만 MC3과 맨손 공격으로 대처가 가능하다.
+|-
+| {{monsym|rust_monster}} || [[rust monster|녹 괴물]] || 무기와 갑옷 부식, 하지만 녹방지로 대처가 가능하다.
+|-
+| {{monsym|chameleon}} || [[chameleon|카멜레온]] || 펫이 그들을 먹고 나쁜 펫으로 폴리모프 할수 있다.
+|-
+| {{monsym|doppelganger}} || [[doppelganger|도플갱어]] || 펫이 그들을 먹고 나쁜 펫으로 폴리모프 할수 있다.
+|-
+| {{monsym|gelatinous_cube}} || [[gelatinous cube|젤라티너스 큐브]] || 유기농 아이템을 먹는다. (예시. 가방이나 상자).
+|-
+| {{monsym|energy_vortex}} || [[energy vortex|에너지 볼텍스]] || 전기 충격이 반지나 완드를 부숨, 하지만 [[Plane of Air|공기의 정령계]]에서 유용한 휴식 공간이 될수 있음.
+|-
+| {{monsym|gremlin}} || [[gremlin|그렘린]] || 가끔씩 밤에 내재 능력을 훔친다.
+|-
+| {{monsym|jabberwock}} || [[jabberwock|재버워크]] || 힘든 상대. 가치는 별로 없음.
+|-
+| {{monsym|minotaur}} || [[minotaur|미노타우르스]] || 힘든 상대지만 굴파기의 지팡이를 가지고 나옴. 가치는 별로 없음.
+|-
+| {{monsym|purple_worm}} || [[purple worm|보라 벌레]] || 저레벨에 힘든 상대. [[Engulfing|삼키기]]가 적을 즉사시킬수 있으나, but makes a good pet.
+|-
+| {{monsym|umber_hulk}} || [[umber hulk|움버 헐크]] || 짜증 유발; [[confusion|혼란]] 시선과 터널링.
+|-
+| {{monsym|floating_eye}} || [[floating eye|떠다니는 눈]] || [[reflection|반사]]나 or [[free action|프리 액션]]이 없으면 실수로 공격 시 당신을 '''아주''' 긴 시간 동안 마비시킴. 고렙 캐릭터에게도 자주 [[YASD|안일사]]를 불러올 수 있음. '''하지만''', they are also by far the most reliable source of intrinsic [[telepathy]] (the only other being (master) [[mind flayers]]), so this should generally be avoided unless you already have it, are chaotic, ''and'' plan to also genocide [[gremlins]], in which case it may be a very good choice for an early genocide.
+|-
+|}
+
+===퀘스트 몬스터의 전략적 학살===
+
+퀘스트 관련 몬스터 종족이 학살되면 퀘스트 관련 class의 몬스터가 더 많이 생성될 것입니다. If this class has monsters which are useful (common reverse genocide targets), 종족을 학살하는 것은 유용한 효과를 볼수 있습니다.
+
+{| class="wikitable"
+|- style="text-align:left"
+! 이 직업은 ... !! ... 를 학살할 수 있습니다 ... !! ... 를 더 많이 만들어내기 위해서 ... !! 그리고 ...을 노리고 먹습니다 ... !! ...의 위험을 감수하면서
+|-
+| [[Wizard|마법사]]||{{monsym|xorn}} [[xorn|쏘른]] || {{monsym|wraith}} [[wraith|레이스]] || 경험치 || 쏘른으로 폴리모프하지 못함
+|-
+| [[Caveman|원시인]]||{{monsym|bugbear}} [[bugbear|버그베어]] || {{monsym|mind flayer}} [[mind flayer|마인드 플레이어]] || 지능 || 마인드 플레이어는 위험함
+|-
+| [[Knight|기사]]||{{monsym|quasit}} [[quasit|콰짓]] || {{monsym|tengu}} [[tengu|텐구]] || [[teleport control|순간이동 통제]] || ''(없음)''
+|-
+|}
+
+== 무학살 ==
+It can be argued that many species are a source of useful items and properties, and hence genociding actually makes NetHack harder. 리치는 가끔씩 [[athame|의식용 칼]]을 제공하고, 마인드 플레이어의 시체는 지능을 증가시키고, sea monsters are trivial for a well equipped player to deal with, etc. It is also impossible to polymorph into a genocided creature, which may limit your options in certain situations (such as using the mind flayer's mind blast to alert monsters to your presence). This viewpoint usually advocates genociding only [[mimic]]s, as this will slightly increase the number of items present in shops, especially in [[Orcus Town]].
+
+Another possible exception is sea monsters, which although trivial can be annoying or cause [[YASD]] by inattention. These are not randomly generated, so genociding them does not affect random generation.  Since they typically live—and therefore die—in water, they are not normally a significant source of corpses or items (although electric eels are a potential source of shock resistance if you can recover the corpse). [[Electric eel|전기뱀장어]]나 [[giant eels|거대 장어]] might make a good use of any single-species genocides that happen to be granted, saving mimics for a class genocide.
+
+학살의 또 다른 문제는 그것이 더 어려워질 가능성을 증가시킬 수 있다는 것이다, ungenocidable monsters. This is especially true for the [[summon nasties]] monster spell - summon nasties is normally restricted to a set of monsters, however if a genocided monster would be created a random monster is generated instead, based upon normal monster generation odds. 만약 플레이어가 [[Amulet of Yendor|옌도르의 부적]]을 들고 있고 [[Gehennom|게헨놈]] 밖이라면 there is a decent chance that an [[Archon]]이나 [[Ki-rin]] will be generated, which are significantly more of a threat than the normal list of nasties '''and''' are capable of summoning nasties themselves.
+
+마지막으로, 일부 넷핵 플레이어들은 저주받은 학살을 훨씬 더 중시하기 때문에 학살을 삼갑니다. In the mid-game, you can obtain bonuses from reverse-genocided monsters such as [[dragon scale mail]], [[Luck|운]] increases, experience levels, attribute boosts, [[unicorn horn]]s, intrinsics, and maximum hit point increases. 게임 후반부에, 일반적인 학살은 그다지 유용하지 않습니다. 왜냐하면 플레이어들은 어쨌든 학살 후보자들을 다룰 수 있을 만큼 강력하거나 숙련되어 있기 때문입니다.
+
+학살 없음 [[conduct]]를 유지하고 싶은 플레이어들은 어떤 종을 학살할지 묻는 메시지가 나타나면 "none"이나 "nothing"으로 답할수 있습니다.
+
+==위자드 모드 학살==
+[[Wizard mode|위자드 모드]]는 추가적인 학살 수단을 제공합니다: entering <tt>*</tt> for your genocide choice on a blessed scroll wipes out all enemies on the level, even those you can't see. 그것은 보통 학살이 불가능한 몬스터들, 길들여진 몬스터들, 평화적인 몬스터들, 당신이 아닌 다른 모든 것들을 포함합니다. 하지만 그것은 진정으로 어떤 것도 학살하지 않으며, 지워진 어떤 것도 나중에 나타날 수 있습니다. 이런 식으로 죽은 일반적인 학살 몬스터들과는 대조적으로 그들의 인벤토리를 떨어뜨리지 않습니다.
+
+==변종==
+
+=== 슬래시엠 ===
+In [[SLASH'EM]], [[titan]]s can be genocided, as can [[werespider]]s (unlike other lycanthropes).
+
+Good targets for SLASH'EM genocide, beyond the ones included above for vanilla, include:
+* High-level spellcasters: the endgame can be quite tough with them constantly summoning nasties.
+** {{monsym|vampire mage}}, [[vampire mage]]s: higher level than a master lich but not covetous, meaning they will gladly sit outside their ring of nasties and continue summoning. Also can be created by [[summon nasties]] itself.
+** {{monsym|ghoul queen}}, [[ghoul queen]]s: a rare monster. It has the same base level as a demilich, but it has two spellcasting attacks. Can only be found in [[graveyard]]s or through the new summon undead monster spell.
+** {{monsym|gnoll shaman}}, [[gnoll shaman]]s: they hide until attacked, so you can leave them alone. If awakened, they will cast both clerical and arcane spells and are absurdly high-level for both.
+** {{monsym|titan}}, [[titan]]s: they can be genocided in SLASH'EM
+* Mid-level spellcasters: they can [[curse items]] and tend to be fast
+** {{monsym|ghoul mage}}, [[ghoul mage]]s: very annoying and very commonly summoned by liches with the summon undead spell
+** {{monsym|leprechaun wizard}}, [[leprechaun wizard]]s: like a leprechaun, they will teleport away after successfully stealing gold. Also like a leprechaun, they can be left sleeping.
+** {{monsym|brownie}}, [[brownie]]s: also worth genociding, because their stealing attacks are more likely to hit than those of other nymphs, since they have a higher base level. Like nymphs though, they can be left sleeping.
+* Some other monsters with annoying or dangerous attacks
+** {{white|x}}, [[electric bug]]s: shock bite can explode rings and wands
+** {{monsym|migo queen}}, [[migo queen]]s: they eat brains but are rarer and less threatening than mind flayers
+** {{monsym|basilisk}}, {{monsym|asphynx}}, [[basilisk]]s and [[asphynx]]es: both are strong and fast [[petrify|petrifying monsters]]
+** {{monsym|troll mummy}}, [[troll mummy|troll mummies]]: for those who don't like to deal with [[troll]]s' regeneration. Eating their corpses isn't a terrible idea if you have a well-enchanted unicorn horn, but pets won't eat them.
+** {{monsym|rot worm}}, [[rot worm]]s: they cause [[sickness]] with their bite and are often generated by [[summon nasties]]
+** {{monsym|koala}}, [[koala]]s: they can untame any pet, making it peaceful, even if the koala itself is peaceful. This can be avoided by taming it with [[eucalyptus leaves]].
+** {{monsym|water hulk}}, [[water hulk]]s: almost identical to [[umber hulk]]s including the [[confusion|confusing]] gaze
+
+Reverse genociding [[gypsy|gypsies]] is a source of up to 120 wishes: use one of the summoned gypsies to wish for a magic marker, write another cursed scroll of genocide, then repeat! You do need a source of gems or gold to do this, however such items are easily found in SLASH'EM, especially from greater golems.
+
+A careful reverse genocide of [[giant shoggoth]]s is a good way to gain the [[teleport control]] intrinsic.
+
+=== 언넷핵 ===
+[[UnNetHack|언넷핵]]에서는, 축복받은 학살의 두루마리가 넷핵에서의 미저주 상태와 동일하게 작용합니다, i.e. it allows a single monster to be genocided, rather than a [[monster class]], and an uncursed scroll instead kills all of a single monster on the current level.
+
+=== 슬래시엠 익스텐디드 ===
+In [[Slash'EM Extended]], a blessed scroll of genocide will run a check for every affected monster to see if it actually gets genocided. Monsters with a high [[MR]] as well as high-level ones are much less likely to be genocided, so it may be easier to remove liches and other high-level, high-MR monsters with uncursed scrolls instead. This behavior is actually part of the [[Lethe patch]], too.
+
+Additionally, Slash'EM Extended has the [[scroll of mass murder]] from [[NhTNG]] that kills all monsters of the specified type on the current level.
+
+{{featured}}
+{{nethack-343|offset=1}}
+[[Category:Strategy]]
+[[Category:한국어]]}
+&&%s&& %s Endgame (3.0) {145244 2022-03-28T22:31:07Z {443 Kahran042} /* Map */ {{level|Endgame|
+ |branch=Endgame
+ |from=1|to=1
+ |bones=no
+ |mapping=no
+ |teleport=no
+ |digfloor=no
+ |digwalls=Only in maze parts
+ }}
+
+The '''Endgame''' is a [[Defunct features|defunct]] level that existed from [[NetHack 3.0.0]] to [[NetHack 3.0.10]]. It is the precursor to the [[Astral Plane]] found in the current [[End Game]].
+
+==Map==
+
+<div class="ttymap"><replacecharsblock rules="ttymap">
+R={{msl|rust monster}}
+H={{mcsl|H}}
+;={{msl|kraken}}
+1={{gray|L}}
+2={{gray|T}}
+
+}}}}}}
+}}..}}
+}}_....-----------------------------.
+}}..}}.|.H...H..S.........|.R....R.S.
+}}}}}}.|........|.D.....D.|........|.
+      .|...H....|..D......|...R....|.
+      .|.H...H..|......D..|.R....R.|.
+      .-S--------.........-S--------.
+}}}}}}.|.O...O..|..D...D..|.1....1.|.
+}}..}}.|........|.D.....D.|........|.
+}}_....|.O...O..|};};.;};}|.1....1.|.
+}}..}}.|........|.........|........|.
+}}}}}}.|.O...O..|.........|.1....1.|.
+      .--------S-.........--------S-.
+      .|.2...2..|.........|.N....N.|.
+      .|........|.........|........|.
+}}}}}}.|...2....|.........|...N....|.
+}}..}}.S.2...2..|.........S.N....N.|.
+}}_....-----------------------------.
+}}..}}
+}}}}}}
+</replacecharsblock></div>
+
+The above core of the level is surrounded by a maze. Because the walls are undiggable, the only entrance is via the marked [[secret door]]s. Upon entry, the player must pass through seven chambers containing, in order, five random R (which, in practice, will always be [[rust monster]]s), six random L, five random N, eight random D and four [[kraken]]s, five random H, six random O, and five random T. The final chamber contains a secret door which leads to a corridor connecting three islands, each with an [[altar]] of a different alignment. As in the current version, the amulet must be offered on the correct altar in order to win the game.
+{{noversion}}
+[[Category:Defunct features]]
+[[Category:Special levels]]}
+&&%s&& %s Destroy armor (monster spell)/ko {134233 2020-06-09T18:17:14Z {4001384 Stay Hydrated}  '''방어구 파괴'''는 [[lich|리치]]와 [[golden naga|황금 나가]]들이 주로 시전하는 [[mage|마법사]] [[monster spell|몬스터 스펠]]입니다. 이 주문은 무작위 [[armor|방어구]] 한 조각을 선택해서 파괴시키며, 저주받지 않은 [[scroll of destroy armor|방어구 파괴의 두루마리]]와 같습니다. [[Magic resistance|마법 저항]]은 이 주문의 효과로부터 완벽히 무효화 시켜줍니다.
+
+==Messages==
+{{message|Your cloak crumbles and turns to dust!<br>Your armor turns to dust and falls to the <floor>!<br>Your shirt crumbles into tiny threads and falls apart!<br>Your helmet turns to dust and is blown away!<br>Your gloves vanish!<br>Your boots disintegrate!<br>Your shield crumbles away!|해당하는 방어구 조각이 주문에 의해 파괴됨.}}
+{{message|A field of force surrounds you!|마법 저항에 의해 해당 주문이 무효화됨.}}
+{{message|Your skin itches.|주문에 맞았으나, 아무런 방어구도 입고 있지 않은 상태.}}
+{{message|Your bones itch.|위와 동일하나, 당신이 [[confused|혼란]] 상태.}}
+
+[[Category:Monster spells]]
+[[Category:한국어]]
+{{nethack-364}}}
+&&%s&& %s Lamp/ko {134706 2020-07-03T12:30:57Z {4001402 Iksan station}  넷핵에는 두 종류의 ''램프''가 있습니다:
+
+* [[oil lamp/ko|기름 램프]] -- [[game history|초기]]에는 ''램프''라고만 불렸습니다 -- 가격 감정가 10 zm.
+* [[magic lamp/ko|마법 램프]] -- [[rub/ko|문질렀을 때]] [[wish/ko|소원]]을 하나 줄 수 있습니다 -- 가격 감정가 50 zm.
+
+램프는 [[copper|구리]]로 만들어져 있습니다.
+
+==백과사전 수록==
+
+{{encyclopedia|
+When he came to himself he told his mother what had passed,
+and showed her the lamp and the fruits he had gathered in the
+garden, which were in reality precious stones.  He then asked
+for some food.
+
+"Alas! child," she said, "I have nothing in the house, but I
+have spun a little cotton and will go and sell it."
+
+Aladdin bade her keep her cotton, for he would sell the lamp
+instead.  As it was very dirty she began to rub it, that it
+might fetch a higher price.  Instantly a hideous genie
+appeared, and asked what she would have.  She fainted away,
+but Aladdin, snatching the lamp, said boldly:
+"Fetch me something to eat!"
+        [ 알라딘, 아라비안 나이트에서, 앤드류 랭 지음 ]
+}}
+
+
+{{disambig}}
+{{nethack-343}}
+[[Category:한국어]]}
+&&%s&& %s Rub/ko {137943 2021-02-16T03:10:51Z {4000681 Andrio Celos} Link to [[NetHack 3.7.0]] specifically. '''#rub'''는 물체 하나를 문지르게 해줄수 있는 [[extended command|확장 커맨드]]입니다. 주로 두가지 쓰임새가 있습니다:
+
+*[[lamp/ko|램프]]를 문지르는것은 [[oil lamp|기름 램프]]인지 [[magic lamp|마법 램프]]인지에 따라 특별한 효과가 있을수 있습니다. 기름 램프는 언제나 "아무일도 일어나지 않았다" 라는 메시지를 출력할 것이고; 마법 램프는 가끔씩 "당신은 연기의 내뿜음을 보았다," 라는 메시지를 출력할 것이고 가끔씩 [[djinni|지니]]를 생성합니다.
+
+*[[brass lantern|놋쇠 랜턴]]을 문지르는것은 "Rubbing the electric lamp is not particularly rewarding. Anyway, nothing exciting happens." 라는 메시지를 출력할 것이다. This is a reference to the result of trying to RUB LAMP in [[Wikipedia:Colossal Cave Adventure|Colossal Cave Adventure]], one of the earliest [[text adventure]] games.  
+
+*[[gray stone|회색 돌멩이]]를 문지르는 것은 감정에 유용하다. 축복받은 감정된 [[touchstone|시금석]]이 있으면 (there are exceptions, see the main article for details), 미감정된 [[gem|보석]]을 그것에 문질러 감정을 할수 있습니다. 또한, 회색 돌멩이에 [[iron|철]] 아이템을 문지르면 "스크리치, 스크리치" 라는 메시지가 출력되어 시금석임을 알수 있습니다.
+
+{{upcoming|NetHack 3.7.0|Rubbing [[royal jelly]] on an [[egg]] now affects the egg. A [[killer bee]] egg will become a [[queen bee]] egg, giving the appropriate 'quivers' message below. Cursed royal jelly will kill the egg ('The egg quivers feebly'), non-cursed jelly will revive it ('The egg quivers briefly'), and blessed jelly will make the newborn creature think [[you]] are its parent, so it is guaranteed to hatch tame.}}
+
+[[Category:Extended commands]]
+[[Category:한국어]]
+{{nethack-364}}}

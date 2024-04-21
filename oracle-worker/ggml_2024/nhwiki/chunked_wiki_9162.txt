@@ -1,0 +1,1000 @@
+! {{aa|C343-215}}
+| Unclear
+| {{/trackerstatus}}
+| Elbereth is sometimes ignored by monsters.
+| Could refer to the need to "mark" the square with an item (an artifact of the effect originally belonging to the scroll of scare monster), or that Kops only respect Elbereth when you're on it.
+|-
+! {{aa|C343-216}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Fireproof containers catch fire in lava.
+| Failed to reproduce, but did find {{sa|C343-376}}.  Aardvark Joe says this is fixed in NH4.
+|-
+! {{aa|C343-217}}
+| Untested
+| {{/trackerstatus}}
+| Missile which kills engulfer is temporarily lost when hero is expelled.
+| May refer to the missile being placed on the ground after the player is, rather than before, which can be noticed via autopickup.
+|-
+! {{aa|C343-218}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Applying a wielded cream pie can crash the game. This generalizes to wielded objects being destroyed.
+| Patric Muller
+|-
+! {{aa|C343-219}}
+| Info available
+| {{/trackerstatus}}
+| Hero can die due to "burned by burning" or "drowned by drowning."
+| A lot of similar combinations are possible by messing around with delayed_killer by stacking many delayed instadeaths on top of each other.
+|-
+! {{aa|C343-220}}
+| Info available
+| {{/trackerstatus}}
+| Eating a Rider corpse doesn't work quite right.
+| If you start eating it, die as a result, and lifesave, you can finish it safely. (The same thing happens to some other sort of corpses, like rotten ones, but not nearly as obviously.)
+|-
+! {{aa|C343-221}}
+| Unknown
+| {{/trackerstatus}}
+| Jabberwocks do not always wake up when they should.
+| 
+|-
+! {{aa|C343-222}}
+| Fixed
+| {{/trackerstatus|moot}}
+| It's possible to end up wielding a cockatrice corpse when no longer polymorphed.
+| Quuxplusone
+|-
+! {{aa|C343-223}}
+| Confirmed
+| {{/trackerstatus}}
+| Hidden pet can follow hero down stairs, remain hiding and show up as hidden monster. Also can happen with a magic whistle.
+| Tested with a tame scorpion hiding under an item.  After traversing the stairs it was still hiding for a turn or two, even though there was nothing there to hide under.
+|-
+! {{aa|C343-224}}
+| Unclear
+| {{/trackerstatus}}
+| Carrying too many items creates uselessly long prompts.
+| 
+|-
+! {{aa|C343-225}}
+| Partly Fixed
+| {{/trackerstatus}}
+| Hero can sometimes carry too many boulders.
+| In vanilla, even the number of available inventory slots is no obstacle when polymorphed into a titan.  In savebreak (as of 2014 April), you can keep picking up boulders until you run out of inventory slots, then it stops you.
+|-
+! {{aa|C343-226}}
+| Confirmed
+| {{/trackerstatus}}
+| Inventory display doesn't mention unpaid items in a container the hero owns.
+| The container is listed, but its contents are not even if unpaid.  Not sure exactly what the expected behavior would be here.
+|-
+! {{aa|C343-227}}
+| Unknown
+| {{/trackerstatus}}
+| Container dropped in a shop then moved to an untended shop behaves oddly.
+| 
+|-
+! {{aa|C343-228}}
+| Unknown
+| {{/trackerstatus}}
+| Cloak of magic resistance is active when it shouldn't be.
+| 
+|-
+! {{aa|C343-229}}
+| Partially Confirmed
+| {{/trackerstatus}}
+| Hero can dip or apply grease to a worn item that is covered by another worn item.
+| You can #dip a shirt that's covered by DSM into holy water, but you cannot apply grease to DSM that's covered by a cloak.
+|-
+! {{aa|C343-230}}
+| Unknown
+| {{/trackerstatus}}
+| Drawbridges act differently depending on which direction they are pointing.
+| I need to have another look in the Valkyrie quest, with a wand of locking maybe.
+|-
+! {{aa|C343-231}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Time is distorted while sinking into lava.
+| 
+|-
+! {{aa|C343-232}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Hero can be slimed while in lava.
+| 
+|-
+! {{aa|C343-233}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Hero polymorphed into Quantum Mechanic may get erroneous messages about disappearing monsters.
+| Refers to hitting a monster that has you engulfed.  Aardvark Joe says this is fixed in NH4 now.
+|-
+! {{aa|C343-234}}
+| Info available
+| {{/trackerstatus}}
+| Sacrifice on an altar can have unintended consequences.
+| Perhaps this refers to the fact the corpse of a former pet does not vanish.
+|-
+! {{aa|C343-235}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Casting spell of protection gives incorrect message if hero is swallowed or in rock.
+| Patric Muller
+|-
+! {{aa|C343-236}}
+| Unclear
+| {{/trackerstatus}}
+| Engraving works in places it shouldn't.
+| 
+|-
+! {{aa|C343-237}}
+| Unknown
+| {{/trackerstatus}}
+| The relationship between crossbow use and strength is wrong.
+| This has been altered in SporkHack and debated on rgrn. In [[Next version]], Pat Rankin said, "As far as crossbows go, they were changed some time back to shoot for maximum distance regardless of strength or dexterity, and to require high strength to retain full multi-shot volleys."
+|-
+! {{aa|C343-238}}
+| Confirmed
+| {{/trackerstatus|455}}
+| (Unix and VMS only) The "Who are you?" prompt does not accept digits in the response.
+| You can include digits in your answer, but if your answer ''starts'' with a digit the guard will just reprompt you.
+|-
+! {{aa|C343-239}}
+| Confirmed
+| {{/trackerstatus|456}}
+| Engravings can transfer between a moat and a drawbridge.
+| Engrave on the bridge, then step away and play the passtune.
+|-
+! {{aa|C343-240}}
+| Confirmed
+| {{/trackerstatus|489}}
+| Hero can create a pit in air.
+| Can be accomplished by setting a land mine and waiting for a monster to trigger it (or I suppose you could trip it yourself).
+|-
+! {{aa|C343-241}}
+| Fixed
+| {{/trackerstatus}}
+| Hero is not charged for breaking the lock on a container owned by a shop.
+| Verified by using a dagger to force a chest in a Minetown shop.  Can no longer reproduce in 805b28e030e0ec8e88f71fa845ed0f631731bf6b
+|-
+! {{aa|C343-242}}
+| Partially confirmed
+| {{/trackerstatus}}
+| Shopkeepers and priests avoid graves when they should not.
+| For example, if there's a grave on the tile directly inside the door of a shop, the keeper will not step there, making it easier than it should be for you to get in and out of the shop.  You can walk in with a pick-axe in open inventory, for example, or walk out with shop merchandise (although in the latter case you face Kops and striking, and THEN the shopkeeper will finally step on the grave and come after you).  I'm not sure exactly how this applies to priests, though.
+|-
+! {{aa|C343-243}}
+| Confirmed
+| {{/trackerstatus|582}}
+| Hero can throw without hands.
+| If you are, for instance, polyselfed into pretty much anything that doesn't have hands (dog, dragon, whatever), you can still throw things, including darts and daggers.  It's so consistent I always assumed it was intended behavior.
+|-
+! {{aa|C343-244}}
+| Unknown
+| {{/trackerstatus}}
+| Sometimes you can eat artifacts you can't touch with your hands.
+| 
+|-
+! {{aa|C343-245}}
+| Confirmed
+| {{/trackerstatus|584}}
+| Hero trying to kick beyond map edge is handled improperly.
+| According to Aardvark Joe, "I suspect this bug refers to the fact that the code does not validate the location that you're trying to kick, and can end up accessing memory outside of the map structure, which can cause memory corruption.  I'm able to recreate this in NH4 by kicking a location off of the edge of the map, and eventually end up with a segmentation fault."
+|-
+! {{aa|C343-246}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Engraving with an empty wand handles time wrong.
+| If you cancel the engraving text prompt or are levitating, no time is spent.
+|-
+! {{aa|C343-247}}
+| Info available
+| {{/trackerstatus}}
+| A magic portal may be deactivated if the game is saved due to hangup while changing levels.
+| The official buglist mentions "Leave the level some other way then return to it." as a workaround.
+|-
+! {{aa|C343-248}}
+| Fixed
+| {{/trackerstatus|moot}}
+| You can't put candles in a candelabrum while underwater.
+| Sgeo
+|-
+! {{aa|C343-249}}
+| Unclear
+| {{/trackerstatus}}
+| There are a number of errors handling vomit; and real rats can't vomit.
+| Unclear.  I found one source that claims rats cannot vomit (IRL), but the same source also indicates that they do regurgitate.  The distinction between these two verbs seems '''much''' too technical to be worth implementing in NetHack.
+|-
+! {{aa|C343-250}}
+| Unknown
+| {{/trackerstatus}}
+| Rust-causing targets can reveal other information about a weapon.
+| Listed as Open on the 3.4.3 list.
+|-
+! {{aa|C343-251}}
+| Unknown
+| {{/trackerstatus}}
+| Monsters sleeping due to being hit may wake up at the wrong time.
+| 
+|-
+! {{aa|C343-252}}
+| Fixed
+| {{/trackerstatus|moot}}
+| There is a typo in the quote from ''The Count of Monte Cristo.''
+| Patric Muller
+|-
+! {{aa|C343-253}}
+| Unknown
+| {{/trackerstatus}}
+| Choking on certain food items doesn't work properly.
+| 
+|-
+! {{aa|C343-254}}
+| Unknown
+| {{/trackerstatus}}
+| Shapechanger's don't take advantage of being mimics or hiders.
+| 
+|-
+! {{aa|C343-255}}
+| Unknown
+| {{/trackerstatus}}
+| Tinning on a full level fails improperly.
+| 
+|-
+! {{aa|C343-256}}
+| Unknown
+| {{/trackerstatus}}
+| Very very very long messages can cause a crash.
+| Calling a monster a really really really long name appears to cause a crash, but I am not sure whether that is the same bug.
+|-
+! {{aa|C343-257}}
+| Unknown
+| {{/trackerstatus}}
+| Cursed corpses wielded by monsters are not handled properly.
+| Perhaps this refers to the fact wielded items are always dropped when a monster polymorphs.
+|-
+! {{aa|C343-258}}
+| Fixed
+| {{/trackerstatus}}
+| Grammar error in samurai quest: "wakarimasu?" instead of "wakarimasu ka?"
+| Patric Muller
+|-
+! {{aa|C343-259}}
+| Fixed
+| {{/trackerstatus}}
+| "Dr. Dolittle" is spelled incorrectly.
+| Patric Muller
+|-
+! {{aa|C343-260}}
+| Confirmed
+| {{/trackerstatus|585}}
+| Ridden steeds are sometimes immune to gas traps.
+| Specifically, if the player has intrinsic sleep resistance, it protects the ridden steed as well.
+|-
+! {{aa|C343-261}}
+| Unknown
+| {{/trackerstatus|586}}
+| Sleeping steeds can jump.
+| I get "you can't see where to land", no  matter how well lit things are.  Once the horse wakes back up, I can see to land just fine.
+
+Can you or monsters kick your steed, causing it to jump and evade the kick?
+|-
+! {{aa|C343-262}}
+| Confirmed
+| {{/trackerstatus|588}}
+| Polyporph mis-handles a used and wielded leash.
+| Polyself into something that cannot wield (e.g. a hell hound).  "You find you must drop your weapon!"  This leaves an in-use leash on the ground.  Your pet can even pick it up, carry it around, drop it, and it's still listed as "(in use)".
+|-
+! {{aa|C343-263}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Probing may miss Schroedinger's cat.
+| The cat is created only when the container is opened, but should be when it is observed.
+|-
+! {{aa|C343-264}}
+| Unknown
+| {{/trackerstatus}}
+| "You must drop your weapon" may appear when it should not.
+| 
+|-
+! {{aa|C343-265}}
+| Confirmed
+| {{/trackerstatus|589}}
+| Force may work when hero can't reach lock being forced.
+| For example, while wearing a ring of levitation, you can #force the lock on a chest, but you cannot #loot it.
+|-
+! {{aa|C343-266}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Hero on drawbridge when it's destroyed is not handled properly.
+| Destroy a drawbridge by zapping a wand of striking or of digging downward while standing on the bridge.  "The drawbridge collapses into the moat" without harming you, leaving you standing on the moat even if you are not properly equipped to stand there.  Information has been posted to rgrn about the dev team's fix for this; to find the thread, search for phlebocratic postreticular apodiosis.  This was Confirmed in NH4 at one point, but I can no longer reproduce it now.
+|-
+! {{aa|C343-267}}
+| Fix available
+| {{/trackerstatus|590}}
+| Game says monster speed changes even if monster can't move at all. 
+| Fixed in AceHack.  Reproduced in NH4 by zapping wands of speed and slow monster at a red mold (which is sessile, according to the wiki).
+|-
+! {{aa|C343-268}}
+| Confirmed
+| {{/trackerstatus}}
+| Used up potion of acid may end up in bones file.
+| Confirmed by dipping a cursed potion of acid into a fountain at Delphi, resulting in death.
+|-
+! {{aa|C343-269}}
+| Unknown
+| {{/trackerstatus}}
+| Bones file created after hero dies outside shop may mis-handle items.
+| 
+|-
+! {{aa|C343-270}}
+| Fixed
+| {{/trackerstatus}}
+| Dying in a shop while wielding two weapons may cause a warning message.
+| Patric Muller
+|-
+! {{aa|C343-271}}
+| Unknown
+| {{/trackerstatus}}
+| Pet messages at the very end of the game may appear in the wrong place.
+| 
+|-
+! {{aa|C343-272}}
+| Unknown
+| {{/trackerstatus}}
+| Corrupted score file can crash the game.
+| 
+|-
+! {{aa|C343-273}}
+| Info available
+| {{/trackerstatus}}
+| Changing alignment and held artifacts interact incorrectly.
+| E. g. you still enjoy the when-carried benefits of artifacts you could not pick up due to your current alignment.
+|-
+! {{aa|C343-274}}
+| Confirmed
+| {{/trackerstatus|591}}
+| Odd message when attempting to apply a wielded towel.
+| "You cannot use it while you're wearing it!"
+|-
+! {{aa|C343-275}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If a lit, wielded, candle or potion of oil burns out, the game may crash.
+| Patric Muller
+|-
+! {{aa|C343-276}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If a figurine auto-transforms while wielded or worn, the game may crash.
+| Patric Muller
+|-
+! {{aa|C343-277}}
+| Confirmed
+| {{/trackerstatus|592}}
+| Wooden weapons don't always burn when they should.
+| For example, fire traps and red dragon breath burn worn items but not wielded items.  Attacking a red mold also doesn't seem to burn your weapon.
+|-
+! {{aa|C343-278}}
+| Confirmed
+| {{/trackerstatus|593}}
+| Quest leaders are too likely to be affected by traps.
+| For example, the Norn will step on fire traps.
+|-
+! {{aa|C343-279}}
+| Unknown
+| {{/trackerstatus}}
+| Kicked arrows may get wrong bonuses. 
+| 
+|-
+! {{aa|C343-280}}
+| Unknown
+| {{/trackerstatus}}
+| Ranged polearm attack doesn't always work properly. 
+| 
+|-
+! {{aa|C343-281}}
+| Confirmed
+| {{/trackerstatus|598}}
+| Kicking shop-owned food is not always accounted for correctly. 
+| Multiple eggs are charged at the price for one egg.
+|-
+! {{aa|C343-282}}
+| Unknown
+| {{/trackerstatus}}
+| Damage calculation may be wrong when hero is polymorphed into a pudding. 
+| 
+|-
+! {{aa|C343-283}}
+| Unknown
+| {{/trackerstatus}}
+| Long walks take a non-optimal path.
+| Didn't the travel code get rewritten in NH4?  This one might be moot.
+|-
+! {{aa|C343-284}}
+| Unknown
+| {{/trackerstatus}}
+| Activating a shop-owned figurine sometimes don't entail shop charges.
+| Note on the 3.4.3 bug says, if you pick up and drop a cursed figurine, the timer will stay live. Will this eventually incur charges?  However, I don't know how to set a timer on a figurine in order to test this.
+|-
+! {{aa|C343-285}}
+| Unknown
+| {{/trackerstatus|600}}
+| Water elementals can be trapped in a bear trap. 
+| Failed to reproduce with hostile, peaceful, or tame water elementals.  As a polyselfed player, "A bear trap closes harmlessly through you", and the trap remains set.
+|-
+! {{aa|C343-286}}
+| Unsure
+| {{/trackerstatus}}
+| Polymorph and lycanthropy do not interact properly. 
+| orionskullar reports that (on NAO) lycanthropy does not trigger while polyselfed but does persist through it and resumes as usual once you return to your original form.  This sounds like Expected Behavior to me.  You cannot polyself into a werefoo, because they're not valid polyforms.  I tested the case where you are in wolf form then polyself: when the polymorph times out, you return to human form, implying that the lycanthropy timed out meanwhile.  Not sure if this is a bug or not.
+|-
+! {{aa|C343-287}}
+| Confirmed
+| {{/trackerstatus|603}}
+| Hero polymorphed into monster with kick attack doesn't get bonus from ring of increase damage when kicking. 
+| Wizwished for and wore a +20 ring of increase damage and a ring of polycontrol, zapped poly, selected white unicorn, generated a J, attacked it; messages said I kicked it twice; it then hit me, returning me to human form, and a stethscope listed it at HP 60/68.  Similar result as a warhorse, and also when explicitly using Ctrl-D to kick.
+|-
+! {{aa|C343-288}}
+| Unknown
+| {{/trackerstatus}}
+| The message "a monster appears" can show up when multiple monsters appear. 
+| 
+|-
+! {{aa|C343-289}}
+| Unknown
+| {{/trackerstatus}}
+| If magical removal of a steed's saddle is fatal to the hero, the saddle may still be on the steed in a bones file.
+| 
+|-
+! {{aa|C343-290}}
+| Confirmed
+| {{/trackerstatus|604}}
+| Rings do not show up in the "what do you want to charge?" prompt when they should. 
+| Type-identification, or lack thereof, is relevant to reproducing this bug.  May apply to oil lamps as well.
+|-
+! {{aa|C343-291}}
+| Confirmed
+| {{/trackerstatus|659}}
+| Backstab bonus interacts incorrectly with thrown weapons and two-weapon mode. 
+| Two-weapon does not get backstab at all while each fired weapon does individually.  In conjunction with Class Overhaul, this is now deemed '''correct''' and will not be changed, because it significantly enhances the unique identity of the role, encouraging Rogues to play as intended.  However, the fact that the bonus scales with experience level might be reconsidered.
+|-
+! {{aa|C343-292}}
+| Confirmed
+| {{/trackerstatus|610}}
+| Touching a pile of objects while blind does not always work correctly. 
+| If there are too many to list individually, you can determine this fact by feel without touching any of them.
+|-
+! {{aa|C343-293}}
+| Unknown
+| {{/trackerstatus}}
+| There are a number of errors changing words between singular and plural forms. 
+| This one's too vague to try to track down.  We'll fix 'em as we find 'em.
+|-
+! {{aa|C343-294}}
+| Unknown
+| {{/trackerstatus}}
+| Orcs and gnomes do not respond to #chat when they should. 
+| Ordinarily, they grunt.  Further testing is needed to find the specific circumstances where they do not respond.
+|-
+! {{aa|C343-295}}
+| Unknown
+| {{/trackerstatus|613}}
+| Casting stone-to-flesh on self while wielding a figurine can cause the game to panic. 
+| Straightforward to reproduce.  NH4 gives a "save file is corrupted" error.
+|}
+
+
+''to be continued ...''
+
+==Possibly-new bugs==
+Known bugs in NH4 that may have been inherited from vanilla, but were not reported as vanilla bugs.
+
+{|class="prettytable sorted striped"
+! Number
+! Status
+! Migrated
+! Description
+! Additional notes
+|-
+! {{aa|C4X-001}}
+| Open
+| {{/trackerstatus}}
+| The message when a monster drinks a potion of invisibility but you can still see it is confusing.
+| May only apply to telepathy, not seeing invisible.
+|-
+! {{aa|C4X-002}}
+| Open
+| {{/trackerstatus}}
+| The warning for eating when Satiated comes at the worst time.
+| It comes after picking what to eat but before edibility checks. Suggest putting it before selection to avoid double-confirmation on dangerous food.
+|-
+! {{aa|C4X-003}}
+| Fixed in 04b8ef2
+| {{/trackerstatus}}
+| Wands of teleportation do not auto-identify when you zap yourself. 
+|
+|-
+! {{aa|C4X-004}}
+| Open
+| {{/trackerstatus}}
+| Stacking corpses confuses sac timeouts
+| Possibly a consequence of buc-merging? To reproduce, kill something (lizard or lichen works well) and get a corpse. Then wait a long time. Kill the same thing again. If its corpse stacks, you will be unable to sacrifice either.
+|-
+! {{aa|C4X-005}}
+| Fixed in 312fa455
+| {{/trackerstatus}}
+| Pre-generated chests have wrong weight
+| Chests that contain pre-determined items (the /oW chest in the Castle and the amulet chests in Vlad's Tower) have the weight of an empty chest until they are looked into.
+|}
+
+==Endemic bugs==
+Known bugs in NetHack4 that are '''not''' inherited from 3.4.3:
+
+{| class="prettytable sortable striped"
+! Number
+! Status
+! Migrated
+! Description (3.4.3)
+! Additional notes
+|-
+! {{aa|C401-001}}
+| Fixed
+| {{/trackerstatus|moot}}
+| The protocol specification is woefully inadequate.  
+| It covers registration and login and that's it.  This first appeared in NitroHack, when the protocol was implemented.  The only real sources of information about the rest of the protocol, as far as I can tell, are nethack_server/src/clientcmd.c and libnethack_client/src/clientapi.c
+This is now partially documented [[NetHack 4 Network Protocol|here]].
+|-
+! {{aa|C401-002}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Luckstone is described strangely.
+| Hit /, say n, type luckstone.  "This stone is enchanted to provide luck to its wearer, making several random events happen give slightly better results on average. In addition, it prevents luck wearing off over time."  What does it mean to "happen give" results?
+|-
+! {{aa|C401-003}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Message buffer defaults to top rather than bottom.
+|
+|-
+! {{aa|C401-004}}
+| Fixed
+| {{/trackerstatus|moot}}
+| Sometimes when interrupted when travelling or exploring, cursor is on wrong square.
+|
+|-
+! {{aa|C401-005}}
+| Fixed
+| {{/trackerstatus|moot}}
+| If you have gauntlets of power on and throw a corpse at a pet, under some circumstances a buffer overrun will occur when drawing the map.
+| Issue was with throwing corpses. Fixed by Sean Hunt
+|}
+
+==Feature requests==
+{| class="prettytable sortable striped"
+! Number
+! Status
+! Migrated
+! Description
+! Additional notes
+|-
+! {{aa|R401-001}}
+| Open
+| {{/trackerstatus}}
+| Allow naming of items on the ground.
+|
+|-
+! {{aa|R401-002}}
+| Open
+| {{/trackerstatus}}
+| Allow looking at dungeon overview during level teleport prompt
+|
+|-
+! {{aa|R401-003}}
+| Open
+| {{/trackerstatus}}
+| Allow controlling artifact generation with birth options, to allow for experimental artifacts to be included without upsetting vanilla gameplay
+|
+|-
+! {{aa|R401-004}}
+| Open
+| {{/trackerstatus}}
+| Allow server operators to force birth options (to normalize gameplay with R401-003)
+|
+|}
+{{variant-343}}
+[[Category:Bugs]]
+[[Category:Variants]]}
+&&%s&& %s Problem {77284 2012-04-16T02:26:32Z {4000256 Javarra} Redirected page to [[Trouble]] #REDIRECT [[Trouble]]}
+&&%s&& %s C343-23 {130560 2020-01-12T03:39:46Z {4000471 Thrawcheld} link to bugfix commit on github '''C343-23''' was a [[core bug]]. It was [http://nethack.org/v360/bugs.html#C listed] as:
+
+  Dungeon collapses after vault guard fails to lead you out.
+
+In 2012, [[User:SGrunt|Grunt]] was able to [https://bilious.alt.org/rgrn/?125385 reproduce it]:
+
+ The straightforward way to reproduce this is as follows: 
+ 
+ 1) Teleport into a vault.
+ 2) Wait for the guard to start leading you out, so that you can observe
+    the path he takes. (The bug isn't necessarily reproduced if the guard
+    doesn't take a straight path for the first two steps, as this yields
+    more than one accessible tile from his stopping point.)
+ 3) After the guard disappears (once he starts leading you out, you can
+    just teleport elsewhere and he'll disappear), teleport back into the
+    vault.
+ 4) Dig out the first two steps of the guard's path after the vault wall
+    (such that there are two corridor tiles).
+ 5) Return to the vault and wait for the guard to lead you out again. 
+ 
+ Result: the guard gets stuck on the last tile dug out. The code that
+ extends the corridor believes he's still moving, however, and eventually
+ results in an overflow once the length of the internal fake corridor
+ buffer is reached, causing a panic().
+
+Nethack 3.6.2 [https://github.com/NetHack/NetHack/commit/b32c93cacdc68997882f295bbf5ea2c5a9a7faec closed this bug].
+
+ apply fix from grunthack to prevent panic "fakecorr overflow" when vault guard
+ couldn't figure out how to lead the hero from vault to civilization;
+ fixes longstanding bug C343-23
+
+[[Category:Bugs]]}
+&&%s&& %s Panic {146136 2022-06-10T17:34:47Z {4000449 SophiaMakoto} /* Mechanics */ Segaulting ''NetHack'' '''panics''' when it reaches a state where it is completely impossible to continue the current session. Panicking terminates the game immediately with the messages "'''Oops... Suddenly, the dungeon collapses.'''"{{refsrc|end.c|260}} If the game can be recovered to a point where it was continuable, a backup [[Saving|saved game]] may be generated.
+
+Panicking is referenced in a [[rumor]]: "They say that collapsing a dungeon often creates a panic."
+
+==Mechanics==
+It is very rare for a normal game to result in a panic; however, several [[bugs in NetHack 3.4.3]] revolve around panics, usually involving monsters or objects being destroyed under unusual circumstances; exceptions include [[C343-23]], "Dungeon collapses after vault guard fails to lead you out.", and [[bug#C343-383|C343-383]], "Applying a bullwhip while hero is at edge of map may cause a panic or crash."
+
+It is handled through the [[Source:end.c#line251|panic()]] function in [[Source:end.c]].
+
+Less serious errors can result in an [[impossible]] message.
+
+In exceedingly rare circumstances, NetHack may [[Segfault]] instead, without any chance to continue.
+
+==Variants==
+
+In [[NetHack 4]], [[NetHack Fourk]] and [[FIQHack]], a panic gives the player a choice of how to proceed. One option is to reload the game from a backup save (potentially allowing the game to continue, as long as the sequence of events leading up to the panic are not repeated). The other is to leave the save file in its current state, containing a record of all events up to the panic; this leaves the game unplayable in the short term, but may permit gameplay to resume from that point via playing on some future updated game executable in which the bug is fixed.
+
+[[Category:Bugs]]
+{{nethack-343}}}
+&&%s&& %s Suddenly, the dungeon collapses {77374 2012-04-19T23:35:20Z {712 SGrunt} Redirected page to [[Panic]] #REDIRECT [[Panic]]}
+&&%s&& %s Impossible {143035 2021-10-02T05:17:39Z {4001313 Ardub23} Added disambig hatnote linking to [[Unwinnable]] {{for|situations where the game cannot be won|Unwinnable}}
+
+''NetHack'' generates an '''impossible''' message when something such as a [[monster]] or [[object]] reaches a state that it should not be possible to reach; it displays a short description of the problem, followed by "Program in disorder!  (Saving and reloading may fix this problem.)"{{refsrc|src/pline.c|458|nethack=3.6.1}} These messages are generated by the function {{function|pline.c|impossible}}.
+
+Some [[bugs]] generate impossible messages.  For example, in NetHack 3.4.3, bug C343-33, "Sometimes a monster may remain hidden under a corpse that has rotted away.", can result in a player polymorphed into a hiding monster hiding under a non-existent object, generating the message "[[Source:NetHack 3.4.3/src/mhitu.c#line423|hiding under nothing?]]" when a monster tries to attack the polymorphed player.
+
+If an error results in the session being unable to continue, the game will normally [[panic]] instead of issuing an impossible message.
+
+==References==
+
+<References />
+
+[[Category:Bugs]]
+{{nethack-361}}}
+&&%s&& %s Robe of power {77451 2012-04-23T05:32:35Z {375 Ion frigate} Redirected page to [[Robe (SLASH'EM)#Robe of power]] #REDIRECT [[Robe (SLASH'EM)#Robe of power]]}
+&&%s&& %s Robe of protection {77454 2012-04-23T05:33:23Z {375 Ion frigate} Redirected page to [[Robe (SLASH'EM)#Robe of protection]] #REDIRECT [[Robe (SLASH'EM)#Robe of protection]]}
+&&%s&& %s Robe of weakness {77455 2012-04-23T05:33:47Z {375 Ion frigate} Redirected page to [[Robe (SLASH'EM)#Robe of weakness]] #REDIRECT [[Robe (SLASH'EM)#Robe of weakness]]}
+&&%s&& %s Robe (SLASH'EM) {93918 2015-05-07T17:01:17Z {0 } /* Robe of power */ In [[SLASH'EM]], robes in general are fairly different from their [[robe|vanilla cousins]].  Firstly, they are no longer cloaks, but instead fill the body armor slot.  Lighter even than leather armor, they do not interfere with spellcasting (as all other armors do in SLASH'EM, even [[dragon scale mail]]) or a [[monk]]'s melee abilities or AC bonus (but will remove a doppelganger's AC bonus).  Secondly, there are now magic robes, and all robes have a randomized appearance.  Lastly, no robe provides any [[magic cancellation]].
+
+The randomized appearances for robes are red, orange, green and blue robes.
+
+==Robe==
+The most basic '''robe''' is simply a piece of armor.  It is the only robe that can be distinguished by price, costing 25 [[zm]] instead of 50.  It is also frequently found being worn by [[wraith]]s.
+{{armor
+  |top={{robe top}}
+  |color=red
+  |name=robe
+  |appearance=''randomized''
+  |cost=25
+  |slot=body armor
+  |ac=1
+  |weight=40
+  |material=leather
+}}
+{{clear}}
+
+==Robe of protection==
+{{armor  
+  |top={{robe top}}
+  |color=red
+  |name=robe of protection
+  |appearance=''randomized''
+  |cost=50
+  |slot=body armor
+  |ac=5
+  |weight=40
+  |material=leather
+}}
+A '''robe of protection''' has a considerably higher base AC than other robes, but confers no special abilities.  Its chief use is that it provides a decent amount of AC and does not interfere with spellcasting or a [[monk]]'s martial arts abilities.  Most characters will prefer a good [[mithril]] suit or [[dragon scale mail]], but a monk or an early wizard might find one of these robes desirable.
+{{clear}}
+
+==Robe of weakness==
+{{armor
+  |top={{robe top}}
+  |color=red
+  |name=robe of weakness
+  |appearance=''randomized''
+  |cost=50
+  |slot=body armor
+  |ac=1
+  |special=<ul><li>sets [[strength]] to 3</li></ul>
+  |weight=40
+  |material=leather
+}}
+
+A '''robe of weakness''' is not a desirable item to wear: it sets your strength to 3.  Its effect will cancel if combined with [[gauntlets of power]].
+
+===Strategy===
+Unfortunately, it is not possible to distinguish these robes from robes of power or protection through [[price identification]].  Moreover, these robes are usually generated cursed, so trying on random base-cost 50 robes is not a good idea.  In general, one should use an altar to identify cursed robes to avoid these; 3 strength is a major handicap.
+
+If you can get one that is not cursed, you can use it to make [[exercise]] of strength more effective.
+{{clear}}
+
+==Robe of power==
+{{armor
+  |top={{robe top}}
+  |color=red
+  |name=robe of power
+  |appearance=''randomized''
+  |cost=50
+  |slot=body armor
+  |ac=1
+  |special=<ul><li>enhanced<br>[[spellcasting]]</li></ul>
+  |weight=40
+  |material=leather
+}}
+
+Like its [[robe|vanilla counterpart]], a '''robe of power''' robe enhances your [[spellcasting (SLASH'EM)|spellcasting]] ability, but not as much. Its enchantment makes no difference.  
+{{clear}}
+[[Category:SLASH'EM items]]}
+&&%s&& %s Template:Robe top {77467 2012-04-23T19:35:13Z {375 Ion frigate} The green robe tile is magenta - is this a mistake? {{red|[}}&nbsp;[[image:red robe.png]] &ensp; {{orange|[}}&nbsp;[[image:orange robe.png]] &ensp; {{blue|[}}&nbsp;[[image:blue robe.png]] &ensp; {{green|[}}&nbsp;[[image:green robe.png]]<noinclude>
+
+Put this in the ''top'' field of [[Template:Armor]] for the randomised robes in SLASH'EM.
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>}
+&&%s&& %s Yellow Dragon {77523 2012-04-26T22:59:36Z {663 Qazmlpok} Redirect to dragon, not dragon scale mail. #REDIRECT [[Dragon]]}
+&&%s&& %s Dark elven mithril-coat {77540 2012-04-27T01:54:20Z {375 Ion frigate}  
+A '''dark elven mithril-coat'''  is a new type of armor in SLASH'EM.  Frequently found on [[drow]], it is functionally identical to [[Mithril-coat|dwarven mithril-coat]].  Note that unlike elven mithril coats, dark elven mithril coats cannot be safely enchanted to +7.
+
+{{clear}}
+{{armor
+  |color=black
+  |name=dark elven mithril-coat
+  |slot=body armor
+  |ac=6
+  |special=<ul><li>[[magic cancellation|MC3]]</li></ul>
+  |cost=240
+  |weight=150
+  |material=mithril
+}}
+
+[[Category:SLASH'EM items]]}
+&&%s&& %s Dark elven bow {149760 2023-01-14T04:17:00Z {375 Ion frigate} not randomly generated {{weapon
+| color=black
+| name=dark elven bow
+| appearance=black runed bow
+| smalldmg=1d2
+| largedmg=1d2
+| skill=bow
+| cost=60
+| weight=30
+| material=wood
+}}
+
+A '''dark elven bow''' is a type of launcher [[weapon]] that appears in [[SLASH'EM]] and [[SlashTHEM]]. [[Plague]] is an artifact dark elven bow.  It is not randomly generated, but may be [[monster starting inventory|found on]] monster [[drow]].  Droven [[ranger]]s will start with one.
+
+==Description==
+[[Drow]] players firing arrows from a dark elven bow get a +1 [[to-hit]] bonus; firing [[dark elven arrow]]s from it will also grant +2 [[damage]], or full [[double damage]] while the [[missile flurry]] technique is active.
+
+{{stub}}
+{{slashem-7E7|offset=1}}
+{{variant-343}}
+[[Category:SLASH'EM items]]
+[[Category:SlashTHEM items]]}
+&&%s&& %s Fly swatter {81580 2012-11-21T23:32:57Z {0 }  {{weapon
+| color=green
+| name=fly swatter
+| smalldmg=1d10
+| largedmg=1d2
+| tohit=<nowiki>+2</nowiki>
+| skill=paddle
+| cost=3
+| weight=12
+| material=plastic
+}}
+
+The fly swatter is new weapon in [[SLASH'EM]]. It has good to-hit and small damage but low large damage.
+
+{{slashem-7E7}}
+
+[[Category:SLASH'EM items]]}
+&&%s&& %s Dark elven short sword {81581 2012-11-21T23:37:58Z {0 }  {{weapon
+| color=wood color
+| name=dark elven short sword
+| appearance=black runed short sword
+| smalldmg=1d8
+| largedmg=1d8
+| skill=short sword
+| cost=10
+| weight=30
+| material=wood
+}}
+
+In [[SLASH'EM]] the '''dark elven short sword''' is a kind of [[melee]] [[weapon]]. When [[identification|unidentified]], it appears as a '''black runed short sword'''. It is slightly more effective in combat than a normal short sword. It is made of wood, so it cannot corrode or rust.
+
+{{slashem-7E7}}
+
+[[Category:SLASH'EM items]]}
+&&%s&& %s Silver long sword {134270 2020-06-09T22:01:22Z {4001313 Ardub23} Added section for object-material silver long swords, differences from SLASH'EM implementation {{weapon
+| color=silver color
+| name=silver long sword
+| smalldmg=1d8 +(1d20)
+| largedmg=1d12 +(1d20)
+| skill=long sword
+| cost=75
+| weight=48
+| material=silver
+}}
+
+A '''silver long sword''' is a type of [[weapon]] found in [[SLASH'EM]]. It shares all properties with the ordinary [[long sword]], save that it is made of [[silver]]. It is therefore also inherently [[fooproof]], and its weight also increases by 8. However, it is also ineligible to dip for [[Excalibur]]; doing so will not [[rust]] it, but does risk [[cursed|cursing]] it.
+
+SLASH'EM does not have any [[artifact]] silver long swords.
+
+==Other variants==
+
+In variants that implement [[object materials]], such as [[SpliceHack]] and [[xNetHack]], some items may be generated made from different [[material]]s. In these variants, a "silver long sword" is simply an ordinary long sword with a different material, not a distinct item type. This means it can be used to dip for Excalibur, though doing so will change its material to iron.<!--Verify: Do any variants allow non-base-material artifacts? If so, which ones?--> Because iron and silver have the same relative weight, silver long swords weigh the same as iron ones.
+
+==See also==
+
+*[[Silver mace]]
+*[[Silver short sword]]
+*[[Firearm|Silver bullet]]
+
+{{slashem-7E7}}
+
+[[Category:SLASH'EM items]]}
+&&%s&& %s Dark elven arrow {96717 2015-09-29T14:07:41Z {4000629 Cherokee Jack} Info box was incorrect; added more body text {{weapon
+  |color=black
+  |tile=[[File:Dark elven arrow.png]]
+  |name=dark elven arrow
+  |appearance=black runed arrow
+  |smalldmg=1d7
+  |largedmg=1d6
+  |skill=bow
+  |cost=2
+  |weight=1
+  |material=wood
+}}
+In [[SLASH'EM]], the '''dark elven arrow''' is the [[drow]] equivalent of the [[elven arrow]].  Dark elven arrows are carried by non-player [[drow (monster)#SLASH'EM|drow]] and will be the starting arrows for a [[drow (starting race)|drow]] [[ranger]].
+
+Like regular elven arrows, dark elven arrows are made of [[wood]], and do the same amount of damage.  However, the arrows made by surface [[Elf|elves]] have one practical advantage over their subterranean counterparts: SLASH'EM gives a 33% chance of adding an extra [[multishot]] when firing non-[[cursed]] elven arrows, a bonus which does not apply to dark elven arrows {{refsrc|dothrow.c|171|version=SLASH'EM 0.0.7E7F2}}.  
+
+It is unclear whether this was an intentional bias or just an oversight in the code.  In any case, drow rangers may wish to trade off (or, given unwanted [[potion of gain level|potions of gain level]], [[upgrade]]) their starting arrows for regular elven arrows, or (for a [[to-hit]] bonus and better damage against [[Size|large]] monsters) [[ya]].
+
+==References==
+<references/>
+[[Category:SLASH'EM items]]}
+&&%s&& %s Conversion {129052 2019-11-08T16:33:22Z {4001343 Towardsdawn2} Fix link #REDIRECT [[Sacrifice#Cross-aligned_altars]]}
+&&%s&& %s Scroll of detect magic {77591 2012-04-30T23:50:25Z {712 SGrunt} For those wondering. {{scroll|name=detect magic|cost=100|ink=7-13}}
+
+The '''scroll of detect magic''', from [[GruntHack]], acts as a [[potion of object detection]] - though it is restricted to detecting [[magical item]]s and [[Object properties|items with abnormal magic properties]] - and also detects [[Monster spell|spellcasting]] monsters.
+
+An [[uncursed]] scroll of detect magic will show you the location of all magical items and items with [[object properties]] on the level, and flag any unidentified items revealed in this fashion with a "magical" prefix as though the player was a [[wizard]].  A [[blessed]] scroll will additionally identify the type of magical item and any [[object properties]]. [[Cursed]] scrolls also detect [[mimic]]s mimicing objects, and will wake up any monsters detected (both [[Monster spell|spellcaster]]s and [[mimic]]s).
+
+[[Category:Scrolls|Detect magic]]
+[[Category:GruntHack items]]}
+&&%s&& %s Grunthack {77686 2012-05-05T05:18:10Z {831 Tjr} Redirected page to [[GruntHack]] #redirect [[GruntHack]]}
+&&%s&& %s Template:Centered {140691 2021-06-03T19:48:37Z {630 Paxed} better example <includeonly><div class="centered">{{{1}}}</div></includeonly><noinclude>
+
+ <nowiki>{{centered|This is centered.}}</nowiki>
+
+{{centered|This is centered.}}
+
+See also [[Template:Float left]], [[Template:Float right]]
+[[Category:Templates|{{PAGENAME}}]]}
+&&%s&& %s Forum {77720 2012-05-06T10:04:47Z {630 Paxed} #REDIRECT [[Forum:Watercooler]] #REDIRECT [[Forum:Watercooler]]}
+&&%s&& %s Junethack {140574 2021-06-01T20:07:54Z {4001414 Nabru} freenode is rip and rip is freenode. '''Junethack''' is a [[NetHack]] tournament. Started in 2011, it runs annually during June. It's also known as the '''NetHack Cross-Variant Summer Tournament'''.
+
+It features virtual trophies for achievements and user and clan competitions.
+
+Junethack differs from other tournaments like the [[:/dev/null/nethack tournament|/dev/null/nethack tournament]] insofar as that the users play on participating [[public server]]s instead of dedicated tournament servers. This allows persistent accounts and facilitates the inclusion of variants.
+
+Many of the actively developed NetHack forks are eligible for the tournament.
+
+The Junethack website is used to manage users' accounts and clans and also displaying scoreboards and statistics.
+
+==IRC channel==
+The #junethack [[IRC]] channel on irc.libera.chat is where all the developers and players hang out.  Clans often have clan-specific channels for their members as well.
+
+==2012==
+The second tournament ran from 1 June to 30 June 2012.
+
+Games:
+* [[UnNetHack]]
+* [[SporkHack]]
+* [[GruntHack]]
+* [[AceHack]]
+* [[NetHack4]]
+* NetHack
+
+[http://groups.google.com/group/rec.games.roguelike.nethack/browse_thread/thread/70108291685553cf# Tournament announcement for 2012 in Google Groups]
+
+[http://unnethack.wordpress.com/2012/10/29/junethack-2012-post-mortem/ Junethack post mortem 2012]
+
+Archived copy of the [https://junethack.net/archive/2012/index.html Junethack 2012 website].
+
+[http://junethack.net Junethack website in 2015]
+
+==2011==
+The first tournament ran from 17 July to 14 August 2011.
+
+Games:
+* UnNetHack
+* SporkHack
+* AceHack
+* [[NetHack 1.3d]] (as a "bonus" game having unique achievements)
+* NetHack
+
+[http://groups.google.com/group/rec.games.roguelike.nethack/msg/2811340435e3945b Tournament announcement for 2011 in Google Groups]
+
+[http://unnethack.wordpress.com/2011/08/15/junethack-2011-post-mortem/ Junethack post mortem 2011]
+
+Archived copy of the [https://junethack.net/archive/2011/index.html Junethack 2011 website].
+
+==Technicalities==
+Users can register their accounts by adding the line ''#junethack username'' to the rcfiles of the server. More information is available on the tournament website, after signing up.
+
+The tournament server records all played games by reading the [[xlogfile]]s of the participating public servers.
+
+The Junethack server software is written in Ruby, with the Sinatra web framework and datamapper as the database interface. The source code is released under GPL 3 and is available from GitHub.
+
+==See also==
+
+* [[Junethack/FAQ|The official Junethack FAQ]]
+* [[Libera#.23junethack|#junethack]] on the IRC chat network Libera.
+* [[:/dev/null/nethack tournament|/dev/null/nethack tournament]]
+
+==External links==
+
+* [http://junethack.net/ official tournament website]
+* [http://github.com/junethack/Junethack Source code] of Junethack
+* [http://www.roguelikeradio.com/2013/03/episode-64-player-competitions.html  Roguelike Radio Episode 64: Player competitions] which includes discussion about Junethack 
+
+{{featured}}[[Category:Tournaments]][[Category:Variants]]}
+&&%s&& %s JuNetHack {77743 2012-05-08T21:00:01Z {831 Tjr} Redirected page to [[Junethack]] #redirect [[junethack]]}
+&&%s&& %s JunetHack {77744 2012-05-08T21:00:20Z {831 Tjr} Redirected page to [[Junethack]] #redirect [[junethack]]}
+&&%s&& %s JuNethack {77745 2012-05-08T21:00:41Z {831 Tjr} Redirected page to [[Junethack]] #redirect [[junethack]]}
+&&%s&& %s NetHack4 {77746 2012-05-08T21:02:08Z {831 Tjr} Redirected page to [[NetHack 4]] #redirect [[NetHack_4]]}
+&&%s&& %s Nethack 4 {77747 2012-05-08T21:02:15Z {831 Tjr} Redirected page to [[NetHack 4]] #redirect [[NetHack_4]]}
+&&%s&& %s Nethack4 {77748 2012-05-08T21:02:23Z {831 Tjr} Redirected page to [[NetHack 4]] #redirect [[NetHack_4]]}
+&&%s&& %s Nethack four {77749 2012-05-08T21:02:41Z {831 Tjr} Redirected page to [[NetHack 4]] #redirect [[NetHack_4]]}
+&&%s&& %s NetHack Four {77750 2012-05-08T21:02:55Z {831 Tjr} Redirected page to [[NetHack 4]] #redirect [[NetHack_4]]}
+&&%s&& %s Devnull {77784 2012-05-10T13:50:06Z {630 Paxed} #REDIRECT [[/dev/null/nethack tournament]] #REDIRECT [[/dev/null/nethack tournament]]}
+&&%s&& %s Tournament {141360 2021-06-30T14:37:55Z {4001502 Ehambro}  There have been several NetHack tournaments:
+*[[:/dev/null/nethack tournament]] - annually running since 1999
+*[[Junethack]] - also featuring NetHack [[variant]]s
+*[[2006 nethack.alt.org tournament]], [[2007 June nethack.alt.org tournament]] - conducted on [[NAO]]
+*[[The November NetHack Tournament]] - annually running on Hardfought every November since 2018, and focused on the vanilla game
+*[[The NetHack Challenge]] - a NetHack bot competition based on the [https://github.com/facebookresearch/nle/ NetHack Learning Environment]
+
+{{disambig}}
+
+[[Category:Tournaments]]}
+&&%s&& %s Template:Top icon {77936 2012-05-17T19:20:47Z {0 } it works now; tweak height offset slightly {{#switch: {{NAMESPACE}}
+| {{ns:0}}
+| {{ns:2}}
+| {{ns:3}} 
+| {{ns:10}} = <div style="display:none; right:{{#expr: {{{number|{{{icon_nr|0}}}}}}*(2+{{{width|15}}})+10+{{{offset|{{{extra_offset|0}}}}}} }}px; {{{style|}}}" class="metadata topicon nopopups {{{class|}}}" {{#if:{{{id|}}}|id="{{{id}}}"}}><div style="margin-top: {{#expr: -((({{{height|{{{width|15}}}}}} - 22) + abs({{{height|{{{width|15}}}}}} - 22)) / 2) round0}}px">[[File:{{{image|{{{imagename}}}}}}|{{{width|15}}}px|{{#if:{{{link|}}}{{{wikilink|}}}|link={{{link|{{{wikilink|}}}}}}}}|{{{text|{{{description}}}}}}]]</div></div>
+}}<noinclude>This is a metatemplate used to help build top icons, little icons placed in the top-right area of pages.
+
+==Usage==
+<pre>
+{{top icon
+| imagename    = Crystal Clear action run.svg
+| wikilink     = a page to link the icon to (optional)
+| description  = a tooltip for the icon (optional)
+| id           = a page-unique id (optional; used for CSS styling)

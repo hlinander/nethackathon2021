@@ -1,0 +1,1000 @@
+@           apprentice   8    X          0  medium  1450   400  No      33
+
+
+This file was originally automatically generated.
+
+DIF is the monster's difficulty value. Monsters will start being eligible
+for random generation when the average of your experience level and your
+dungeon level is equal to DIF; they will be considered too weak for
+generation when your dungeon level is 7*DIF or greater. (For this purpose,
+once you have the Amulet of Yendor your dungeon level is considered to be
+that of the Sanctum, and in the endgame to be the depth of the Sanctum
+plus half your experience level.) The level of your god's appreciation of
+a sacrificed corpse is also dependent on the corpse's DIF.
+
+FREQ is the relative frequency of monster generation. An X in this field
+means the monster will not be randomly generated, and only appears in
+certain circumstances or on predefined levels. A monster with 0 frequency
+will only be randomly generated in a dungeon branch or on a dungeon level
+biased towards a specific alignment (not necessarily its own). '*' denotes
+monsters that will not be randomly generated in Gehennom; '#' monsters that
+will not be randomly generated outside it.
+
+The GRP field indicates if monsters are generated in large groups (2 to 11
+monsters at a time) or small groups (2 to 4 monsters at a time). These
+groups will be smaller if you are at a low (less than 5) experience level.
+Large-group monsters have a 1/3 chance of being generated in a small group
+instead; small-group monsters a 1/2 chance of being generated as
+singletons.
+
+ALN is the strength of alignment of the monster: positive numbers denote
+lawful monsters, negative chaotic, zero neutral. The Wizard of Yendor is
+non-aligned. Certain special levels and certain dungeon branches are biased
+towards creation of monsters of a specific alignment (see the NetHack
+Gazetteer for details); furthermore, lawful monsters will not be randomly
+generated in Gehennom.
+
+The SIZE field shows the physical size of the monster. Though establishing
+a realistic scale for NetHack isn't something that can be easily done, the
+following guidelines are given (metric conversion approximate):
+  SIZE  :   tiny      small     medium   large     huge       gigantic
+  Scale :   < 2'      2'-4'     4'-7'    7'-12'   12'-25'   "off the scale"
+        : (< 0.5m)  (0.5m-1m)  (1m-2m)  (2m-4m)   (4m-8m)
+
+WGT specifies the weight of the monster or its corpse (100 zorkmids weigh
+1). Statues of that monster weigh (1.5 * WGT). NUTR specifies the
+nutrition value of a corpse when eaten (a monster swallowed whole gives
+half its nutrition). GEN indicates if a monster is able to be genocided.
+
+CORPSE% gives the percentage chance of a monster leaving a corpse when
+killed (assuming the circumstances are such that it can leave a corpse at
+all; not disintegrated, digested, drowned, stoned...). No corpses will be
+left by monsters dying on the Rogue level. '#' indicates that the corpse
+left will be of a different monster (the human form of lycanthropes, the
+basic race for undead). Monsters marked with a '*' are less likely to
+leave corpses on levels with graveyards (for this purpose, the Castle and
+all levels of the Priest Quest are considered graveyard levels, as is any
+level on which undead have been summoned by the cursed Book of the Dead or
+Bell of Opening): 1/9 the chance if killed by you, 1/3 otherwise (eg, by a
+trap or another monster).
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Corrections and clarifications provided by Roger Carbol, nyra, Shaman,
+Dan Shiovitz, Jonas Wolz, and Zwanth.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Scor-343.txt {105404 2017-04-29T01:20:05Z {4000180 Bcode} Protected "[[Scor-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:scor-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+scor-343.txt  Last edited 2003-12-17 for NetHack 3.4.3
+Calculation of player's score in NetHack 3.4
+Compiled by Dylan O'Donnell <psmith@spod-central.org>
+
+
+4*XP points for each monster killed.
+10 points for each wand identified by engraving or zapping.
+10 points for each potion identified by quaffing.
+10 points for each scroll identified by reading.
+9 points for each squeaky board oiled/greased.
+4 points for each tripe ration eaten when not a carnivorous non-humanoid.
+4 points for "Yuk, this water tastes awful" from quaffing from a sink.
+
+The first oracle of each type:
+
+Minor (if not yet major): 21 points.
+Minor (if already major): 9 points.
+Major (if not yet minor): 210 + (21 * XL) points.
+Major (if already minor): 90 + (9 * XL) points.
+
+Then at the end of the game:
+
+1 point for each zorkmid more than starting gold ( * 90% if game 
+         ended in death).
+50 * (DL-1) points where DL is the deepest level reached.
+1000 points for each dungeon level reached beyond 20, to a maximum of
+         10000 points.
+
+The score so far is doubled if you ascended. Then, if you escaped the
+dungeon or ascended, you receive points for items in inventory:
+
+Value of amulets and valuable gems (see amul-343.txt and gems-343.txt)
+Value of artifacts (2.5 * cost of artifact - see art1-343.txt),
+including invocation items.
+
+and finally points for adjacent pets equivalent to their total current
+hit points.
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Corrections and clarifications provided by Andreas Dorn.
+
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Sink-343.txt {105405 2017-04-29T01:20:06Z {4000180 Bcode} Protected "[[Sink-343.txt]]": Verbatim spoiler file ([Edit=Allow only administrators] (indefinite) [Move=Allow only administrators] (indefinite)) {{DISPLAYTITLE:sink-343.txt}}
+{{verbatim spoiler}}
+
+<pre>
+sink-343.txt  Last edited 2004-07-15 for NetHack 3.4.3
+Effects of kicking and quaffing from sinks in NetHack 3.4
+Compiled by Dylan O'Donnell <psmith@spod-central.org>.
+
+Quaffing from sinks
+~~~~~~~~~~~~~~~~~~~
+11/20: No effect. One of the following messages:
+        "You take a sip of (very) <hot|warm|cold> water."
+        "You hear clanking from the pipes..."
+        "You hear snatches of song from among the sewers..."
+        "From the murky drain, a hand reaches up... --oops--" (only if
+          hallucinating)
+
+1/20: If you are fire resistant, no effect; otherwise, you lose d6 hit
+      points.
+        "You take a sip of scalding hot water."
+        "It seems quite tasty." (fire resistant)
+
+1/20: A sewer rat is generated (unless genocided or extinct).
+        "Eek!  There's a sewer rat in the sink!" (unblind)
+        "Eek!  There's something squirmy in the sink!" (blind)
+        "The sink seems quite dirty." (genocided or extinct)
+
+1/20: You suffer the effect of quaffing a random uncursed potion (other
+      than water).
+        "Some <potion appearance> liquid flows from the faucet." (unblind)
+        "Some odd liquid flows from the faucet." (blind)
+
+1/20: If you have already acquired a ring from this sink (by quaffing or
+      kicking), no effect; otherwise, a random ring is created and your
+      wisdom exercised.
+        "You find a ring in the sink!"
+        "Some dirty water backs up in the drain." (already got one)
+
+1/20: The sink becomes a fountain.
+        "The pipes break!  Water spurts out!"
+
+1/20: A water elemental is created (unless extinct).
+        "The water moves as though of its own will!"
+        "But it quiets down." (extinct)
+
+1/20: You gain one experience point.
+        "Yuk, this water tastes awful."
+
+1/20: You vomit and your hunger is increased.
+        "Gagg... this tastes like sewage!  You vomit."
+
+1/20: If you have unchanging, no effect; otherwise, you polymorph.
+        "This water contains toxic wastes!"
+        "You undergo a freakish metamorphosis!" (polymorph)
+
+
+Kicking sinks
+~~~~~~~~~~~~~
+4/5: Your dexterity is exercised.
+       "Klunk!  The pipes vibrate noisily."
+
+1/5: Something else, as follows:
+
+  If you haven't yet got a black pudding from the sink, 1/3 chance of
+  one being generated and your dexterity being exercised.
+    "A <black> ooze gushes up from the drain!" (unblind)
+    "You hear a gushing sound." (blind)
+
+  If you didn't get a pudding and haven't yet had a dish washer, 1/3
+  chance of one being summoned (an incubus if a female humanoid,
+  a succubus if a male humanoid, otherwise an equal chance of either),
+  and your dexterity being exercised.
+    "The dish washer returns!" (unblind)
+    "Something returns!" (blind), and
+
+  If you didn't get either of the above, 1/3 chance of a random ring
+  being created provided the sink hasn't yet given one through kicking or
+  quaffing, and your wisdom and dexterity being exercised.
+    "Flupp!  Muddy waste pops up from the drain." (unblind)
+    "Flupp!  You hear a sloshing sound." (blind)
+    "You see a ring shining in its midst." (unblind, ring created)
+
+  If you didn't get any of the above, you get a hurt foot. Your dexterity
+  and strength are abused, there is a 1/3 chance of your right leg being
+  hurt for 5 to 10 turns, and you lose d5 HP (d3 HP if your constitution
+  is greater than 15).
+    "Ouch! That hurts!"
+
+
+Other sink effects
+~~~~~~~~~~~~~~~~~~
+Sinks, as the name suggests, will cause anything in the air above them
+to fall to the floor: thrown weapons, or you when levitating (inflicting
+d8 + 24 - CON damage, plus d3 for each weapon or stack of weapons on the
+square). Dropping rings onto a sink will usually cause them to be lost
+down it, with a message that may enable you to identify the ring; see
+ring-343.txt for a list of these effects. Digging down on a sink square
+will convert it into a fountain as in the quaffing result above ("The
+pipes break!  Water spurts out!").
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+Corrections and clarifications provided by Topi Linkala and Seraph.
+</pre>
+
+{{DOD}}
+{{noversion}}}
+&&%s&& %s Spider cave {94185 2015-05-20T18:03:05Z {4000548 Quantum Immortal} Redirected page to [[The Spider Caves]] #REDIRECT[[The Spider Caves]]}
+&&%s&& %s Spiders cave {94186 2015-05-20T18:05:04Z {4000548 Quantum Immortal} Redirected page to [[The Spider Caves]] #REDIRECT[[The Spider Caves]]}
+&&%s&& %s DNetHack artifacts {150149 2023-03-07T18:04:17Z {4001279 Umbire the Phantom} /* The Lifehunt Scythe */* {{DISPLAYTITLE:dNetHack artifacts}}
+{{tocright}}
+'''Artifacts''' in [[dNetHack]] can be divided into two broad categories: wishable and non-wishable.  Wishable artifacts include those artifacts that can be given as divine gifts, including the vanilla crowning gifts but excluding new crowning gifts. Non-wishable artifacts include any [[Category:DNethack_Quests|quest artifacts]], as well as any first gifts for race-specific role/race combinations (dwarf noble, drow shared, etc.). Artifacts belonging to late-game enemies like demon or devil lords are unwishable, as are any found on alignment quests. 
+
+Randomly found artifacts do not affect the odds of gifted or wished artifacts later. For the rules for wishing for artifacts, see [[dNetHack artifact wishing]]. (Spoilers!)
+
+This page is currently being revised due to many updates changing artifact effects. Everything including and above the listed artifact has been revised and is accurate to the current version: Xiuhcoatl
+
+== Wishable artifacts ==
+=== Vanilla Crowning Gifts ===
+==== Excalibur ====
+*lawful intelligent knight-favoring long sword
+**Can be wished for as any material or size valid for a normal long sword, since an Excalibur with those properties could be obtained from dipping regardless
+*+1d20 to hit, +1d10 damage
+*Grants drain resistance and searching while wielded
+**Boosts the success rate of all searches performed, depending on its enchantment
+*If blessed, grants +7 to-hit and +3d7 damage vs holy-haters
+*Angers demon lords if approached while wielded
+
+==== Vorpal Blade ====
+*neutral long sword
+*+1d5 to hit, +1 damage
+*Rolls 2d8+2 or 2d12+2 for each hit, dice are [https://1d4chan.org/wiki/Exploding_die exploding dice] adding 1d8+1 for each explosion
+*Randomly beheads targets (5%)
+**100% chance against jabberwocks
+
+==== Stormbringer ====
+*chaotic intelligent runesword
+*Bloodthirsty (attacks peaceful monsters without prompting for confirmation)
+*+1d5 to hit, +1d2 drain damage
+*Drains target's levels on hit
+**Gains +1d8 damage vs non-life-drain-resistant targets, reducing the target's maximum HP by the extra damage dealt, and healing you for half the extra damage dealt
+**Occasionally (10%) converts its entire base damage to level drain damage, rolling one d8 per per 4 points of damage
+*Grants drain resistance when wielded
+*Always counts as cursed for unholy damage damage, and does an extra 4d9 unholy damage vs unholy haters
+*Grants 25 Str and 25 Con when wielded in main hand.
+*Ignores equipped armor for calculating hits and DR and deals full damage to insubstantial targets (shades, sharab kamerel)
+
+=== Nameable artifacts ===
+==== Orcrist ====
+*chaotic elf-favoring elven broadsword
+*Against orcs and demons grants 1d5 to hit, 2x damage, and [[Warned of monster type|warning]] while carried
+*Does not resist being held second to other artifacts
+**However, it is too heavy to use in the offhand without suffering a &minus;20 penalty to hit, unless you are Large.
+
+==== Sting ====
+*chaotic elf-favoring elven dagger
+*Against orcs and spiders grants +1d5 to hit, 2x damage, and warning while carried
+*Cuts through spiderwebs in a single turn
+*Does not resist being held second to other artifacts
+
+==== Grimtooth ====
+*chaotic orc-favoring orcish dagger
+*Against elves and humans, grants +1d5 to hit, 2x damage, and warning while carried
+*Does not resist being held second to other artifacts
+
+==== Carnwennan ====
+*lawful knight-favoring dagger
+*Can be named by any character than began the game as lawful
+*Against fey and monsters that pick up magic items, grants +1d5 to hit, +1d10 damage, and warning while carried
+*Grants stealth when wielded
+*Invoke to toggle [[invisibility]]
+
+==== Slave to Armok ====
+*lawful dwarf-favoring dwarvish mattock
+*Bloodthirsty (attacks peaceful monsters without prompting for confirmation)
+*Against elves, orcs, always-peaceful monsters, and monster lords, grants +1d5 to hit and 2x damage
+
+==== Claideamh ====
+*unaligned long sword
+*Against elves, [[Fey (dnethack)|fey]], giants, elementals, and [[Primordials (dnethack)|primordials]], grants +1d5 to hit, 2x damage, and warning while wielded
+
+=== Banes ===
+==== Dragonlance ====
+*Unaligned lance
+*Against dragons and reptilians, grants +1d10 to hit, +1d20 damage, and warning while carried
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+*Grants dragonbreath reflection when wielded
+*Can't break when used to joust
+
+==== Nodensfork ====
+*unaligned silvered shell trident
+*Against [[Primordials (dnethack)|primordials]] (elementals and similar), aliens (mind flayers, U (unknown abominations), and some others), telepathic monsters, and natives of R'lyeh, grants slotless warning, +1d10 to hit, +1d20 damage and warning while carried
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+*Grants shock resistance while carried
+*Reduces sanity loss to 1/10 of normal when wielded in the main hand and always make sanity saves successfully
+
+==== Gaia's Fate ====
+*unaligned sickle
+*Does not resist being held second to other artifacts
+**However, the character must be skilled enough in Two-weapon fighting to use it in the off-hand without suffering &minus;20 to-hit.
+*Against plants, insects, arachnids, avians, reptilians, animals, [[Fey (dnethack)|fey]], elves, and elementals, grants +1d10 to hit, +1d20 damage, and warning while carried
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+
+==== Demonbane ====
+*lawful silver saber
+*Does not resist being held second to other artifacts
+**However, the character must be Expert in two-weapon fighting to use it in the off-hand without suffering &minus;20 to-hit.
+*Against demons, grants +1d10 to hit, +1d20 damage, and warning while carried
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+*Blocks demons' passive summoning abilities
+
+==== Werebane ====
+*unaligned silver saber
+*Does not resist being held second to other artifacts
+**However, the character must be Expert in two-weapon fighting to use it in the off-hand without suffering &minus;20 to-hit.
+*Against lycanthropes and demihumans, grants slotless warning, +1d10 to hit, +1d20 damage, and warning while carried
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+**Demihumans include minotaurs, gnolls, nagas, mind flayers, deep ones, centaurs, and Medusa
+*Protects against lycanthropy while wielded
+
+==== Giantslayer ====
+*unaligned axe
+*Does not resist being held second to other artifacts
+**However, the character must be a Grand Master in two-weapon fighting to use it in the off-hand without suffering &minus;20 to-hit. In practice, only Monks can do this.
+*Does +1d4 vs small, +2d4 to large
+*Against large creatures, grants +1d10 to-hit, +1d20 damage.
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+*Against giants and boulder-throwing enemies, deducts 6 movement points on hit and grants warning while carried
+
+==== Vampire Killer ====
+*lawful bullwhip
+*Does not resist being held second to other artifacts
+*Deals +12 damage vs. smallc reatures and +1d12 damage vs large creatures
+*Against undead, demons, and werecreatures, grants +1d10 to hit and +1d20 damage
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+*Deals +7 holy damage to holy-haters
+*Grants [[drain resistance]] and protects against lycanthropy when wielded
+*Invoke to [[bless]], repair [[erosion]], set erodeproof, and raise enchantment to +3 if 2 or lower.
+
+==== Kingslayer ====
+*chaotic stiletto
+*Does not resist being held second to other artifacts
+*Against monster lords and princes (including demon and devil lords and princes), grants +1d10 to hit, +1d20 damage, and warning while carried.
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+*Permanently poisoned
+
+==== Peace Keeper ====
+*lawful silvered athame
+*Does not resist being held second to other artifacts
+*Against always hostile creatures, grants +1d5 to hit, +1d10 damage, and warning while carried
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+
+==== Ogresmasher ====
+*unaligned war hammer
+*Does not resist being held second to other artifacts
+**However, the character must be a Master in two-weapon fighting to use it in the off-hand without suffering &minus;20 to-hit.  In practice, only Monks can do this.
+*Against ogres, grants +1d10 to-hit and smashes them on hit, instantly killing them
+**10% chance to attempt to cancel its hated targets when struck, not that it matters. This would roll against MR
+**Smashing ogres exercises strength and wisdom
+*Sets strength and constitution to 25 when wielded or in offhand weapon slot (even if not currently two-weaponing)
+
+==== Trollsbane ====
+*unaligned silvered morning star
+*Does not resist being held second to other artifacts
+**However, it is too heavy to use it in the off-hand without suffering &minus;20 to-hit.
+*Against trolls and any other monsters that naturally regenerate health, grants +1d10 to hit and +1d20 damage
+**10% chance to attempt to cancel its hated targets when struck. This rolls against MR
+*Grants +1d10 to hit, +2d20 damage plus doubled enchantment again vs covetous monsters (those "nasty trolls that pop in to ruin your day")
+*Counts as a sunlight-emitting artifact, instantly killing some trolls and gremlins on hit
+
+=== First gifts ===
+==== Xiuhcoatl ====
+*lawful archeologist-favoring atlatl / bullwhip
+*Whip form has 1d2+1d4 base dice
+**As an atlatl, can fire javelins just like throwing works, but adds double strength bonus and has no maximum range
+*Has 1d3 to hit and deals 1d12 extra fire damage (in melee as a bullwhip, in ranged combat when firing javelins as an atlatl) and grants fire resistance when wielded
+*Can be #invoked to change between atlatl and bullwhip at no cost
+*In atlatl form, can be #invoked to generate javelins, which has a cooldown
+
+==== Cleaver ====
+*neutral Barbarian-favoring battle axe
+*First gift given to Barbarians starting with a battle axe
+*+1d3 to hit, 2x damage
+*will automatically shatter the weapons of weapon wielding targets
+
+==== Atlantean Royal Sword ====
+*neutral Barbarian-favoring two-handed sword
+*First gift given to Barbarians starting with a two-handed sword
+*+1d3 to hit, 2x damage
+*will automatically shatter the weapons of weapon wielding targets
+
+==== The Pen of the Void ====
+*neutral Binder-favoring athame
+*First gift given to Binders
+*Does not resist being held second to other artifacts
+*+1d5 to-hit
+**After the Binder quest has been completed, also does 2x damage
+*Can hold a summoned spirit, granting various special effects. An explanation of this mechanic can be found [[The Pen of the Void|here]].
+*Resists being placed in containers and can't be destroyed ala other [[unique item]]s
+
+==== Luck Blade ====
+*chaotic Convict-favoring short sword
+*First gift given to Convicts
+*+1d7 to hit, +1d7 damage, and uses luck-biased damage dice
+*Acts as a luckstone when carried
+
+==== Rhongomyniad ====
+*lawful knight-favoring lance
+*First gift given to Knights
+*Grants +1d3 to hit, 2x damage
+*Does not break when used to [[joust]]
+*If gifted, also unrestricts riding and martial arts skill (along with lance skill). A saddle is also gifted.
+
+==== The Rod of Lordly Might ====
+*lawful Noble-favoring mace/axe/lance/rapier/spear (variable)
+*First gift given to Nobles
+*Grants +1d3 to-hit, 2x damage
+*Fast engraving: the Rod engraves as an [[athame]] while in rapier form.
+*Invoke for a variety of effects
+**'''At will''': The Rod can be ordered to assume a different form as often as desired.
+***Become Mace
+***Become Axe
+***Become Rapier
+***Become Spear
+***Become Lance
+**'''Limited''': these powers are limited by the artifact's invoke cooldown. Once you invoke one of them, you can't invoke any of these powers for <code>[[rnz]](100)</code> turns.
+***Become Ladder (Rod must be a mace):
+****''Prior to gaining the Amulet'': Similar to quaffing a cursed potion of [[gain level]], allows you to escape through the ceiling to the level above.
+****''After gaining the Amulet'': Similar to zapping a [[wand of digging]] downward, allows you to escape through the floor to the level below.
+****''While swallowed'': Similar to zapping a [[wand of digging]], the extending ladder seriously injures physical monsters engulfing you.
+***Show Me My Surroundings: Maps local area using [[clairvoyance]].
+***Inspire Fear: Scares nearby monsters that can see you.
+***Give Me Your Life (Rod must be a spear): Drains two levels from one adjacent monster, healing you for 4d8 HP.
+***Kneel: Paralyzes one adjacent monster.
+
+==== The Marauder's Map ====
+*chaotic Pirate-favoring scroll of magic mapping
+*Invoke for object and artifact detection
+*Read to map local area of the dungeon (as clairvoyance)
+**Is not consumed by being read.
+
+==== Kiku-ichimonji ====
+*lawful Samurai-favoring katana
+*First gift given to male Samurai
+*Does not resist being held second to other artifacts by Samurai
+**However, the character must be Expert in two-weapon fighting to use it in the off-hand without suffering &minus;20 to-hit.
+*+1d4 to hit, +1d12 damage
+
+==== Jinja Naginata ====
+*lawful Samurai-favoring naginata
+*First gift given to female Samurai
+*+1d4 to hit, +1d12 damage
+*When blessed, an extra +5 to-hit and +1d12 damage vs holy-haters
+*When wielded, grants a bonus to AC equal to 2+enchantment, doubled from the normal naginata AC bonus
+
+==== The Singing Sword ====
+*unaligned Bard-favoring long sword
+*First gift given to Troubadours
+*+1 to hit, +1 damage
+*Uses the [[musicalize spell]] skill instead of the [[long sword]] skill.
+*Passively learns songs while wielded, and can be instructed to sing a known song via #invoke. An explanation of this mechanic can be found [[The Singing Sword|here]].
+
+==== Mjollnir ====
+*neutral Valkyrie-favoring war hammer
+*First gift given to Valkyries
+*Does not resist being held second to other artifacts by Valkyries
+**However, it is too heavy to use it in the off-hand without suffering &minus;20 to-hit.
+*+1d5 to hit and +2d4+2 to small and +2d4 to large, in addition to +1d24 eectriacl damage
+*Randomly fires 6d6 lightning bolts on hit, including thrown hits.
+*Can be thrown by a Valkyrie wearing Gauntlets of Power. It will return to the hand of the wielder when thrown. As long as the Valkyrie is not confused, stunned, etc. and Mjollnir is not cursed, it will always be successfully caught.
+
+==== Magicbane ====
+*neutral Wizard-favoring athame
+*First gift given to Wizards
+*Does not resist being held second to other artifacts by Wizards
+*+1d3 to hit, +1d4 damage
+*Grants magic resistance and curse protection when wielded
+*[[Magicbane|Additional magic effects based on enchantment]]
+**Magicbane's magic fanfare effects are more frequent against magic-resistant creatures (unlike in vanilla, where they are less frequent)
+**Magicbane's magic fanfare effects deal increased damage to magic-resistant creatures (+6d6 vs +1d4)
+***+0 to +2 enchantment maximizes damage against magic-resistant foes (average damage is the same for +0, +1, and +2)
+***+7 enchantment is best vs magic sensitive foes.
+
+=== Double-damage artifacts ===
+==== Grayswandir ====
+*lawful silver saber
+*+1 to hit, 2x damage
+*Grants hallucination resistance while wielded
+*Grants warning while carried
+
+==== Frost Brand ====
+*unaligned glass bladed weapon
+**Type varies per game, but will always be consistent for both Fire and Frost Brand. 
+***Can be wished for or found as nonmagical gauntlets, or any weapon that's a bladed weapon, not a charged weapon (vibro- or force-) and whose base size isn't two-handed. Any valid object has the normal artifact spawn chance. Once either Brand has spawned, the other Brand will only spawn from the matching object type.
+***When given as a gift, has a 1/3 chance of being a long sword. Otherwise it is equally likely to be: saber, scimitar, gauntlets, broadsword, axe, short sword, athame
+*+1 to hit, 2x cold damage
+*Base dice damage are dealt as explosion damage, so it is rarely resisted
+*Grants cold resistance while wielded
+
+==== Fire Brand ====
+*unaligned obsidian bladed weapon
+**Type varies per game, but will always be consistent for both Fire and Frost Brand. Once either Brand has spawned, the other Brand will only spawn from the matching object type.
+***Can be wished for or found as nonmagical gauntlets, or any weapon that's a bladed weapon, not a charged weapon (vibro- or force-) and whose base size isn't two-handed. Any valid object has the normal artifact spawn chance. 
+***When given as a gift, has a 1/3 chance of being a long sword. Otherwise it is equally likely to be: saber, scimitar, gauntlets, broadsword, axe, short sword, athame
+*+1 to hit, 2x fire damage
+*Base dice damage are dealt as explosion damage, so it is rarely resisted
+*Grants fire resistance while wielded
+
+==== Golden Sword of Y'ha-Talla ====
+*unaligned scimitar or bullwhip
+*+1d5 to hit, 2x poison damage
+*Whip form deals 1d2+1d4 base dice
+**Permanently poisoned
+*Grants poison resistance while wielded
+*Invoke for a variety of effects
+**'''At will''': The Sword can be ordered to assume a different form as often as desired.
+***Become Sword
+***Become Scorpion Whip
+**'''Limited''': this power is limited by the artifact's invoke cooldown. Once you invoke it, you can't use it again for <code>[[rnz]](100)</code> turns.
+***Strike: Deal 5d6 poison damage to single chosen adjacent monster's HP and max HP.
+
+==== Mirror Brand ====
+*neutral silver long sword
+*Against non-neutral targets, grants +1 to hit, 2x damage, and triggers extra magical effects like [[Magicbane]]
+**Deals an extra 2d10 damage when a magic effect is triggered
+*Grants reflection while wielded
+
+==== Sunsword ====
+*lawful silvered gold long sword
+**If you are more skilled in short swords than in long swords, uses the short sword skill
+*Against undead and demons, +1 to hit and 2x damage
+*Grants searching and resistance to blindness when wielded
+*Acts as a light source when wielded, radius 1/2/3 when cursed/uncursed/blessed
+*As a light-emitting artifact, instantly kills some trolls and gremlins on hit
+*May blind struck targets
+*Ignores equipped armor for calculating hits and DR, deals full damage to insubstantial targets (shades, sharab kamerel)
+
+==== Axe of the Dwarvish Lords ====
+*lawful battle axe
+*+1 to hit, 2x damage
+*Grants teleport control when wielded
+*Grants X-ray vision to dwarves when wielded
+*Can be thrown by dwarves, and returns to their hands
+*Can be used to dig with
+
+==== Windrider ====
+*unaligned boomerang
+*+1 to hit, 2x damage
+*Returns to the quiver when thrown and can be multishot
+*Does not shatter if wielded in melee
+
+==== Rod of the Ram ====
+*neutral mace
+*+1 to hit, 2x damage
+*Knocks back struck creatures, subtracting 10 movement points and stunning in the process
+
+==== Atma Weapon ====
+*unaligned beamsword (uses broadsword skill)
+**Base damage is 3d10+(3x enchantment) to both large and small creatures.
+**Apply the Atma Weapon to turn it on and off.
+**If used to attack with while off, damage drops to 1d2.
+*Against [[M2_NASTY|nasty]] monsters, grants +1d6 to hit and +3d6 damage
+*If you are '''not''' life drain resistant, Atma Weapon
+**Adds d(current level) extra damage
+**Severely reduces your natural healing rate
+**Scales its damage by your current hp percentage
+*When Atma Weapon is wielded while cursed and activated, or attempted to be activated while either cursed or uncharged, it will drain a level and uncurse / charge itself (only applies if you don't have drain resistance)
+*If you '''are''' drain resistant, its base damage is decreased to 2d10+(2x enchantment)
+* Otherwise follows [[Anachrononaut#Lightsaber|lightsaber]] rules.
+
+==== Limited Moon ====
+*chaotic silver two-handed moon axe
+*+1 to hit, 3x damage
+**Bonus damage is adjusted by your current energy percentage, so being at 50% of max Pw would be 2x damage, ranging from 1x to 3x at empty to full
+**Drains 3 Pw per hit
+
+==== The Black Arrow ====
+*unaligned ancient arrow
+*+1000 to hit, 4x base damage followed by additional +108 damage
+*Instantly kills [[Smaug]]
+
+==== Tensa Zangetsu ====
+*neutral tsurugi
+*+1 to hit and 2x damage
+*Halves spell damage when wielded
+*Grants basic armor if torso armor or a cloak is not worn
+**If wearing both cloak and torso armor, adds half enchantment to AC
+**If wearing either cloak or body armor, but not both, adds 1.5x enchantment to AC
+**If wearing neither cloak nor body armor, adds 2x enchantment to AC
+**Adds half enchantment to DR slots covered by cloak if no cloak is worn, and half enchantment to DR slots covered by body armor if no body armor is worn
+*Can be invoked for a Speed Bankai, a force bolt dealing (level+enchantment)d12 damage
+*When wielded, reduces movement cost for movement actions (walking, running, and auto-travel) to 1 movement point, and adds +12 movement points to your total movement points available per turn
+*Drains an extra 9 nutrition per turn, for a total of 10, but the extra drain is blocked by slow digestion
+*Can only be used safely for 1 turn per level. One safe turn is regained for every 10 turns Tensa Zangetsu is not wielded.
+**If overused, will check for a worn mask. If you are wearing a mask of an undead monster, it will erode the mask (this cannot be fixed) and will give you a number of safe turns equal to the level of the monster the mask belongs to.
+***If a mask is eroded 3 times, the 4th erosion will shatter the mask, but still give the safe turns
+**If overused, drains 5 hp each turn, 1 max hp every other turn, and abuses strength and constitution every turn.
+
+=== Utility artifacts ===
+==== Sode no Shirayuki ====
+*lawful silver katana
+*+1 to hit
+*Grants cold resistance when wielded
+*Can be invoked to activate 3 separate abilities, each on its own timer:
+**First dance: Creates a (level+enchantment) damage cold element blast.
+**Second dance: Fires a cold element ray doing (level+enchantment) damage, range of 7+enchantment.
+**Third dance: Repairs damage to the sword, and allows 2x cold damage for enchantment+level turns.
+*Adds enchantment to charisma when wielded
+*When wielded, reduces movement cost for movement actions (walking, running, and auto-travel) to 3 movement points
+
+==== Tobiume ====
+*chaotic metallic long sword
+*+1 to hit, +1 fire damage, but suffers from -2 damage to small and -3 damage to large targets
+*Grants fire resistance when wielded
+*Automatically disarms weapon wielding targets.
+*Invoke to cast the fireball spell, using the higher of your attack magic skill and your longsword skill
+**If your skill permits, casts firestorm instead. This triggers (2*skill)+d(2*skill) fire explosions, where skill is 1 for basic, 2 for skilled, and 3 for expert, using higher of long sword and attack spell skill. Damage is (level/2)+10+enchantment per explosion
+*If a target is killed by Tobiume, their body is launched backwards and explodes as a fireball.
+*If enchantment is above 0, adds enchantment to AC
+*When wielded, reduces movement cost for movement actions (walking, running, and auto-travel) to 4 movement points
+
+==== Lance of Longinus ====
+*lawful silver spear
+*When wielded, conveys half physical and spell damage, magic resistance, and reflection. 
+*Deals an extra 3d7 holy damage or 3d9 unholy damage when blessed/cursed against those who hate holy/unholy
+*Grants drain resistance when carried
+*Toggles water walking when invoked.
+*The Lance of Longinus angers demon lords when wielded, following the same rules that [[Excalibur#Demon princes|Excalibur does]].
+
+==== The Arkenstone ====
+*chaotic diamond
+*Acts as a light source and grants [[aggravate monster]] when carried
+*Invoke to toggle conflict
+
+==== Release from Care ====
+*unaligned scythe
+*+1 to hit, +1d10 damage
+*Can behead target
+*Grants life drain resistance while wielded
+*Grants cold resistance while carried
+*Invoke for healing, healing you by half of the health needed to get to your maximum and curing illness, slime, and blindness
+
+==== The Lifehunt Scythe ====
+*large chaotic scythe
+*First gift for female half-dragons
+*Bloodthirsty (attacks peaceful monsters without prompting for confirmation)
+*Against living or undead creatures (ie, not golems and other non-living creatures):
+**+1d6 to hit and 1d6 damage
+**Target gains ''[[studied]]'' debuff equal to damage dealt (cumulative).
+**You recover HP equal to {{frac|2}} damage dealt.
+**You gain ''studied'' debuff equal to {{frac|4}} damage dealt (cumulative).
+**Triggers [[sneak attack]] against targets that don't know where you are, but only if you ''have'' sneak attack (i.e., are an unpolymorphed Rogue or have Andromalius bound)
+***Capable of [[beheading]] target if and only if sneak attacking, with normal beheading chance per hit
+*Grants double dexterity bonus in addition to double strength bonus to damage, for +16 when you have 25 in both stats
+*Grants life drain resistance and stealth while wielded
+*Grants cold resistance while carried
+*Invoke to toggle invisibility
+*Can be enchanted to +10
+
+==== The Holy Moonlight Sword ====
+*unaligned metallic long sword
+*When unlit, is silvered, and grants +1d20 to hit, +1d10+enchantment holy damage vs holy-haters
+*Apply to light up and become a huge long sword that deals 2x damage to magic-sensitive targets. While lit:
+**Effective size increases from medium to huge (2 steps)
+***Size increase makes the sword two-handed for most characters
+***Size increase improves damage by 4 die faces (1d8/1d12 → 1d12/1d16)
+**Grants clairvoyance while wielded
+**Using the #fire command will launch an explosive magic projectile and attack in the indicated direction (costs 25 energy). The explosion does 2d12+2xEnchantment.
+*** Note that the explosion from the projectile can damage the player character and any pets adjacent to the target. Player-style MR prevents this damage
+**Ignores equipped armor for calculating hits and DR, deals full damage to insubstantial targets (shades, sharab kamerel)
+**Converts base dice to explosion damage, bypassing most resistances
+*Invoke for enlightenment.
+*Heals you for a portion of base damage dealt. Heals 30% rounded up when lit, 10% rounded up when unlit. 
+**The heal amount is calculated before the double damage to magic-sensitive targets, or any silver/holy bonus damage. It DOES include the increased die size from a lit sword.
+*Counts as an insight weapon, gaining extra bonus damage when used by a Madman
+*Can be enchanted to +10.
+
+====Bloodletter====
+*unaligned iron morning star
+*+1d8 to hit and +1d12 blood damage
+**Blood damage triggers versus targets with blood, and has a flat bonus equal to the target's level. Bloodletter only grants the extra damage when activated.
+*At under 1/4 of your maximum health, deals an extra 2d12 blood damage, or an extra 1d12 at under 1/2 of your maximum health but above 1/4. This does not multiply the base damage or flat blood bonus, only the d12 extra, but does not require Bloodletter to be activated.
+*Can be #invoked to activate it, dealing damage to you equal to 1/5 of your max health and coating it in blood for 20 + 2d10 turns.
+**While active, grants the bonus damage based on the target's level, but successfully triggering the extra blood damage will reduce the turns remaining by anywhere from <target's level>/10 to <target's level>/10 - 4. This will never add time.
+**While wielded and active, invoking it again or applying it will slam Bloodletter down. This shakes off the blood on it, ending the active effect but causing a 6d6 rotten blood damage explosion of radius 1 centered on the player, hitting you and all adjacent squares. Nothing (including you) is entirely immune to this explosion, but creatures without blood will not take the level-based bonus damage.
+*Counts as an insight weapon, gaining extra bonus damage when used by a Madman
+*Can be enchanted to +10.
+
+==== The Silence Glaive ====
+*unaligned glaive
+*+1 to hit, +1 life drain damage
+*Drains one level from the target on hit
+*Grants drain resistanc when wielded
+*Offers a variety of special effects when invoked
+**Invoke and specify direction: magic missile attack, using attack skill
+**Invoke and press up: protection, using clerical skill
+**Invoke and press down: kills all genocide-susceptible creatures on the current level. Yourself included. Polymorphing into a non-genocide susceptible monster (i.e. titan) will not help you survive. An amulet of life saving will save you however, but leaves the other creatures dead. Also triggers three [[Drum_of_earthquake|earthquakes]].
+
+==== The Garnet Rod ====
+*unaligned silver key
+*When wielded, grants energy regeneration and health regeneration, and adds +6 movement points per turn, but drains 9 extra nutrition per turn.
+**The extra nutrition is blocked by slow digestion and does not apply to undead
+*Acts as a universal [[spellcasting focus]] when wielded
+*Offers a variety of special effects when invoked
+**Invoke and specify direction: magic missile attack
+**Invoke and press up: time stop (120 free movement points, equivalent to 12 free moves). Also initiates a 5-turn petrification timer on you (ie, you will turn to stone and die 5 clock-ticks after the time stop ends).
+***A stoning resistance does not prevent this, though the stoning can be cured via a lizard corpse or acid as normal.
+
+==== Helping Hand ====
+*lawful grappling hook
+*Invoke to untrap specified square
+*Grants searching, stealth, and warning when wielded
+**Boosts the success rate of all searches performed, depending on its enchantment
+*Grants curse protection when carried
+*Can be used to rapidly engrave (as athame)
+
+==== Blade Singer's Saber ====
+*unaligned silver [[rakuyo]] (or rakuyo-saber)
+*Grants +1d8 to hit and +1d8 damage
+*If gifted, unrestricts saber, dagger, and two-weaponing skills
+*When unlatched, Blade Dancer's Dagger replaces the normal rakuyo-dagger
+*Has all the normal benefits/penalties of a rakuyo/rakuyo-saber, including insight bonuses
+*Grants +4 movement points on a hit, up to once per turn
+**When Blade Dancer's Dagger is offhanded (regardless of two-weaponing), grants another +2 points per hit for +6 total
+*When invoked:
+**Heals up to 1/4 lost hp from max (1/2 if invoking singer with dancer offhanded), scaled with enchantment (so full 1/4 at +10, 1/8 at +5, etc.)
+**Makes you very fast for d(level)+50 (+50 again if singer with dancer offhanded)
+**Casts protection with a duration of ((Level)*2(if invoking singer with dancer offhanded) * (30|15|5|)(for B|U|C))/30. After this duration, protection begins falling off at a rate of one ever 10|5|1 turns (determined by B|U|C)
+*As a rakuyo, counts as an insight weapon, gaining extra bonus damage when used by a Madman
+
+==== Blade Dancer's Dagger ====
+*unaligned silver rakuyo-dagger
+*Grants +1d4 to hit and +1d4 damage
+*Can't be wished for, gifted, or otherwise obtained except from bones and unlatching Blade Singer's Saber
+*Does not count toward artifacts generated
+*Has all the normal benefits/penalties of a rakuyo-dagger, including insight bonuses
+*Grants +4 movement points on a hit, up to once per turn
+**When Blade Singer's Saber is offhanded (regardless of two-weaponing), grants another +2 points per hit for +6 total
+*Shares an invoke with Blade Singer's Saber
+*As a rakuyo, counts as an insight weapon, gaining extra bonus damage when used by a Madman
+
+==== Limb of the Black Tree ====
+*chaotic club
+*Grants +1d4 to hit and +1 fire damage
+*Grants Fire Resistance when carried
+*Causes a 6d6 fiery explosion whenever it strikes a target
+
+====The Lash of the Cold Waste====
+*chaotic onyx (mineral) bullwhip
+**As an onyx bullwhip, deals 1d4 to small and 1d3 to large
+*+1d4 to hit, +1 cold damage
+*Grants sleep resistance while wielded
+*Grants cold resistance while carried
+*Causes a 6d6 cold explosion whenever it strikes a target
+*Deals extra damage depending on your insight and level, up to 1d(insight) or 1d(level), whichever stat is lower
+*Counts as an insight weapon, gaining extra bonus damage when used by a Madman
+
+==== Ramiel ====
+*lawful partisan
+*Grants +1d4 to hit and +1 electrical damage
+*When used at range, causes a 6d6 shocking explosion whenever it strikes a target
+*When used in melee on horseback, fires a 6d6 lightning bolt whenever it strikes a target
+
+==== Spineseeker ====
+*chaotic short sword
+*Grants +1 to hit and +1d6 damage
+*Grants stealth while wielded
+*Allows wielder to make sneak attacks like a [[Rogue]] and does extra sneak attack damage when used to attack a foe from behind
+
+==== Quicksilver ====
+*unaligned silver flail
+*Grants +1d4 to hit and +1d8 damage
+*Gains an extra attack at xp level 16, however the extra attack is made with a -15 to-hit penalty
+*Invoke to toggle extrinsic ([[very fast]]) speed
+
+==== Sky Render ====
+*lawful silvered katana
+*Grants +1d10 to hit and +1d10 damage
+*Grants displacement while carried
+
+==== Fuma-itto no Ken ====
+*chaotic broadsword (Ninja-to)
+*Against cross-aligned targets, grants +1 to-hit and +1d8 damage
+*Invoke to create shuriken
+*Permanently poisoned
+
+====Callandor====
+*lawful crystal sword
+*For anybody who did not start the game as a male, it is merely a normal crystal sword
+*Otherwise, grants 1/2 spell damage, 2x damage to beam and ray spells, and energy regeneration
+*When casting spells with it wielded, grants a bonus to failure rate, but each cast has a 5% chance of costing 1d * (spell level) sanity.
+*Will only ever be given to male characters
+
+====Staff of Necromancy====
+*chaotic bone quarterstaff
+*+1d5 to hit and 2x life draining damage
+*Grants cold resistance while wielded
+*Invoke to raise a corpse as a skeletal minion
+**The corpse must have had bones in life, not be unique, and be tameable
+**Being a skeleton makes the monster undead, as well as granting -2 AC (harder to hit), cold/sleep/poison resistance, and suffering a 3/4 speed penalty (min 6). The monster also loses blunt resistance (if it had it), but gains piercing and slashing resistance.
+
+====Green Dragon Crescent Blade====
+*lawful naginata
+*+1 to hit and +1d25+1d12 damage
+*Deals blunt damage in addition to slashing
+*Weighs 150 aum (same as a two-handed sword, twice a normal naginata)
+*Staggers enemies when struck with a (skill)/20 chance, where skill is 1/2/3 for skilled/basic/expert
+*Shatters the weapons of enemies with a (skill+2)/20 chance
+
+==== Hellfire ====
+*chaotic crossbow
+*Grants bolts fired from it +1d4 to hit and +1 fire damage
+*Causes a 6d6 fiery explosion whenever a bolt fired from it strikes a target, consuming the bolt in the process
+*Grants fire resistance while wielded
+
+==== The Unstoppable ====
+*neutral crossbow
+*+1d8 to hit, +1d12 damage
+*Fired bolts pierce enemies on hit or miss
+
+====[[Plague]]====
+*chaotic bone bow
+*+1d5 to hit, +1d7 poison damage to arrows fired
+*All arrows fired are treated as poisoned (with normal poison)
+*When invoked, arrows are treated as filth-crusted instead for the next 13 turns, with the filth having a double chance of instantly killing non-resistant monsters (20% instead of 10%)
+**Filth-based instant kills during the invoke duration will cause a virulent explosion, dealing 6d6 damage to surrounding monster. The radius is loosely dependent on size - tiny monsters have a radius 0 explosion, gigantic monsters have a radius 2, and other sizes have radius 1.
+*Confers poison resistance and sickness resistance while wielded
+
+====Epoch's Curve====
+*unaligned wooden bow
+**appears as "white ash longbow" when un-identified
+*+5 to hit, +1d6 to damage
+*Grants teleport control when wielded
+*Invoke for hungerless teleport
+**If not worn, it will teleport away without you.
+**If on a no-teleport level, will first try to lift you up one level, and if that fails drop you one
+*If an arrow fired by it is not destroyed, it will jump back to your inventory after 5 turns
+
+==== Fluorite Octet ====
+*8 unaligned blue fluorite gems
+**The full set is called the Fluorite Octet
+**A single gem is called a Fluorite Octahedron
+**Multiple gems are called Fluorite Octahedra
+*The Fluorite Octet is a throwing weapon.
+**Each gem deals 1d8 damage.  Throwing the full set therefore deals 8d8 damage.
+***The gems' damage dice are luck-biased and exploding.
+***At 13 luck, each lucky exploding 1d8 deals an average of 19 damage.
+**Fewer gems may be thrown using the same system as for throwing a specified amount of gold (for example, n4t or 4t, depending on control scheme)
+**The gems may also be used as sling ammo.
+*As a gem, may be slotted into non-artifact lightsabers, beamswords, and double lightsabers.
+**Doing so, even unlit, turns their damage dice into luck-biased exploding d8s
+
+The formula for the expected value of exploding lucky dice is given by:
+
+<math>X</math> is die size (8 for the Fluorite Octet)
+
+<math>L</math> is luck, if X>15, or luck/3, if X<=15
+
+<math>J = \frac{49-luck}{50-luck}</math>
+
+<math>EV(X,L) = \left[\frac{X+1}{2} + J \cdot L \cdot (1 - \frac{L+1}{2 \cdot X})\right] \left[ \frac{1}{1 - \frac{1 + J \cdot L}{X}} \right] </math>
+
+====[[Wallet of Perseus]]====
+*unaligned bag of holding
+*Contents are lighter than normal, with 1/3 and 1/6 when uncursed/blessed, up from 1/2 and 1/4. When cursed, multiplies the weight by 4 (up from 2).
+
+====Hellrider's Saddle====
+*unaligned saddle
+*grants reflection and MR to both steed and rider
+*Invoke to toggle invisibility
+
+=== Artifact armors ===
+==== Tie-Dye Shirt of Shambhala ====
+*unaligned t-shirt
+*Read to cure afflictions (as unicorn horn). Blocked by non-crystal body armor.
+*Invoke for enlightenment
+*Greatly increases carrying capacity, 1.5x when blessed, 1.25x when uncursed, .75x when cursed.
+*Can be enchanted to +7
+*Enhances charisma if worn without torso armor
+*Enhances wisdom if worn with torso armor
+
+==== Soulmirror ====
+*neutral mithril plate mail (functionally standard plate mail but lighter)
+*grants reflection, MC3, and life drain resistance while worn
+*Can be enchanted to +7
+
+==== The Scorpion Carapace ====
+*unaligned chitin scale mail
+*Grants poison resistance when worn
+*Adds a 1d4 poison sting attack wearer's attack chain
+*Can enchant to +7
+*Rare drop from scorpion enemies
+
+==== Beastmaster's Duster ====
+*lawful leather jacket
+**Will sometimes blast cross-aligned characters when they are hit in combat ({{frac|10}} chance per hit)
+*Invoke to pull something out of your pockets (chosen via menu)
+**magic whistle
+**leash
+**saddle
+**tripe ration
+**apple
+**banana
+*Can be enchanted to +7
+*If gifted, unrestricts beast mastery skill
+
+==== Aegis ====
+*lawful leather cloak / leather roundshield
+*Lawful crowning gift for Healers, but still wishable
+*Can be applied to change forms
+*Grants reflection and half physical damage when worn
+*After Medusa or her equivalent that game has been killed, #invoke to channel her power
+**Invoking downwards will burn up to three Gorgoneia onto the floor (based on BUC)
+**Invoking at a monster will attempt to stone that monster with a ({{frac|MR|2}})% chance. If that fails or the monster is petrification resistant, the monster will be stunned, confused, and crazed.
+*Can be enchanted to +7
+
+==== Grandmaster's Robe ====
+*neutral robe
+*Martial arts attacks use exploding dice and get extra damage (50% chance per hit of an extra 1d4)
+*Can be enchanted to +7
+*Grants double the normal robe effect
+*Can be #named by level 30 characters with Grand Master martial arts
+*If gifted, unrestricts martial arts skill
+
+==== Cloak of the Unheld One ====
+*neutral intelligent oilskin cloak
+*Grants sleep resistance while carried
+*Grants free action while worn
+*Grants magic resistance while worn
+*Grants MC3 while worn
+*Invoke to teleport
+**If not worn, it will teleport away without you.
+**If on a no-teleport level, will first try to lift you up one level, and if that fails drop you one
+*Can enchant to +7
+
+==== Mirrorbright ====
+*chaotic silver roundshield
+*Resist hallucinations while worn
+*Grants reflection while worn
+*Invoke to toggle conflict
+*Can enchant to +7
+
+==== Shield of the All-Seeing ====
+*unaligned orc-favoring orcish shield
+*Automatic searching
+*Adds enhancement bonus to search attempts
+*Grants warning vs elves when worn
+*Grants fire resistance when worn
+*Toggles protection from shape changers when invoked
+*Can enchant to +7
+
+==== Shield of Yggdrasil ====
+*unaligned elf-favoring elven shield
+*Invoke for healing
+*Grants regeneration when worn
+*Grants poison resistance when worn
+*Can enchant to +7
+
+==== Whisperfeet ====
+*chaotic boots of speed
+*Invoke to toggle invisibility
+*Grants stealth when worn
+*Can enchant to +7
+
+==== Water Flowers ====
+*chaotic silvered water walking boots
+**Adds silver damage to kick attacks
+*Invoke for hungerless teleport
+**If not worn, they will teleport away without you.
+**If on a no-teleport level, will first try to lift you up one level, and if that fails drop you one
+*Grants displacement when worn
+*Can enchant to +7
+
+==== Hammerfeet ====
+*chaotic kicking boots
+*If a target is damaged by a kick, knock back target 10 squares, subtract 10 movement points, and stun. 
+*Doubles kicking damage
+*Kicking damage still applies to thick-skinned monsters, but not the knockback.
+*Can enchant to +7

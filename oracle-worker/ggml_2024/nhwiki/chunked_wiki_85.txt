@@ -1,0 +1,1000 @@
+{{message|You smell food nearby.|You cast the spell, and the only comestibles on the level are on your square.}}
+{{message|You sense a lack of food nearby.|You cast the spell after previously detecting comestibles on the level, but they are gone now. The additional message for gaining the food appraisal intrinsic at skilled level or higher is not included.}}
+{{message|You have a strange feeling for a moment, then it passes.|You cast the spell as a [[beginner]], and there are no comestibles on the level.}}
+{{message|You have a normal feeling for a moment, then it passes.|As above while [[hallucinating]].}}
+
+
+
+{{DOD}}
+[[Category:Scrolls|Food detection]]
+{{nethack-343}}}
+&&%s&& %s Scroll of gold detection {129793 2019-12-17T12:20:07Z {4000978 Aximili} Add explicit effects section, change message formatting, link to body parts instead of listing extremities here. {{scroll
+ |name=gold detection
+ |cost=100
+ |ink=4-7
+}}
+
+The '''scroll of gold detection''' finds all gold on the current level. It can also be used to find traps.
+
+==Effects==
+
+Reading an uncursed scroll will reveal [[gold piece]]s, [[gold golem]]s and any gold hidden in containers (including containers in your inventory), buried, or embedded in rock. A blessed scroll will also detect objects made of gold; currently the only objects that can be made of gold are the gold [[ring]] and the [[Candelabrum of Invocation]]. 
+
+Reading scrolls of gold detection while [[confused]] will instead detect traps. If the scroll was [[non-cursed]], all [[trap]]s on the level will be revealed to the player with the [[Trap|{{gray|^}}]] or [[Web|{{gray|"}}]] symbols (of the appropriate color). If the scroll was [[cursed]], regardless if you are confused or not, all traps on the level will be marked with a [[Zorkmid|{{yellow|$}}]] as if the scroll was detecting gold.
+
+==Messages==
+{{message|You feel very greedy, and sense gold!|You read an uncursed or blessed scroll and found gold (or a gold object, if blessed) on the level.}}
+{{message|You notice some gold between your feet.|You read an uncursed or blessed scroll and there is gold on the level (or a gold object if blessed), but only on your square.}}
+{{message|You feel worried about your future financial situation.|You read an uncursed or blessed scroll and there was no gold anywhere on the level except in your inventory.}}
+{{message|You feel materially poor.|You read an uncursed or blessed scroll, and there is no gold in the level or in your inventory.}}
+{{message|You feel like a million zorkmids!|You read an uncursed or blessed scroll, you are currently polymorphed into a gold golem, and there is no gold (or gold objects if blessed) on the level.}}
+{{message|You feel very greedy.|You read a cursed scroll, confused or not, and there are traps on the level.}}
+{{message|You feel entrapped.|You read a blessed or uncursed scroll while confused, and there are traps on the level.}}
+{{message|Your ''<toes>'' itch.|The scroll is cursed, or you read any beatitude while confused, and detected a trap on the level but only on your square. Replace "toes" with the appropriate [[body part]] extremity if polymorphed.}}
+{{message|Your ''<toes>'' stop itching.|The scroll is cursed, or you read any beatitude while confused, but detected no traps on the level. Replace "toes" with the appropriate [[body part]] if polymorphed.}}
+{{message|You have a strange feeling for a moment, then it passes.|You are a [[beginner]], and have not detected any gold or gold objects (if blessed), or traps on the level (if cursed and/or confused). Replace "strange" with "normal" if [[hallucinating]].}}
+
+==Strategy==
+You can use this scroll to ascertain the location of [[vaults]] quickly. In addition, the presence of large rectangular or square concentrations of gold usually means there is a [[leprechaun hall]] or a [[treasure zoo]] on the level. However, usually there is more than enough gold in the game, large collections of gold are heavier than collections of [[gems]], and finding vaults is not particularly difficult anyway, so [[trap]] detection is this scroll's key benefit.
+
+This special ability of the scroll of gold detection — trap detection — comes in especially handy on the [[Elemental Planes]], as a quick way to find the portal to the next plane. ([[Crystal ball]]s are another method of doing this, albeit a heavy one). A non-[[illiterate]] character can bring four of these scrolls and a source of confusion to make the elemental planes as painless as possible.
+
+In the early game or as a low-level [[pacifist]], you might want to use this scroll to quickly detect [[polymorph trap]]s to preempt high level monsters by securing the trap, or to improve your pets. This goes especially for the lower mines levels, any place you hear typical sounds, and some [[quest]]s. For example, the six random traps on the [[Wizard quest]] home add up to a slightly less than 60% chance of a [[polymorph trap]]. (There is also a guaranteed one in the locate level.)
+
+==Variants==
+
+In [[UnNetHack]] and [[DynaHack]], reading a non-cursed scroll of gold detection while confused detects a random object class (glyph). This makes it useless for portal detection, which in turn makes the Elemental Planes more difficult to navigate.
+
+[[Category:Scrolls|Gold detection]]
+{{nethack-343}}}
+&&%s&& %s Apple {146836 2022-07-21T10:31:25Z {4000251 Netzhack} /* Encyclopaedia entry */ {{comestible
+  |name=apple
+  |tile=[[image:apple.png]]
+  |cost=7
+  |nutrition=50
+  |turns=1
+  |weight=2
+  |conduct=vegan
+  |color=red
+}}
+
+An '''apple''' is a fruit that is suitable for [[vegan]]s and [[vegetarian]]s.
+
+==Generation==
+[[Healer]]s and [[Monk]]s start with at least 5 apples, and [[Knight]]s start with at least 10 apples.
+
+==Effects==
+When eaten, apples provide 50 [[nutrition]]. Pets that are [[herbivorous]] will consider it a [[treat]], and it can be used to tame [[horse]]s; domestic [[cat]]s and [[dog]]s are rendered peaceful.
+
+In [[NetHack 3.6.0]] and later versions, eating a cursed apple will cause you to fall asleep for 20-30 turns if you lack [[sleep resistance]].{{refsrc|src/eat.c|2133|version=NetHack 3.6.0}}
+
+== Strategy ==
+Apples are best saved for taming or feeding pets; knights in particular will want to prioritize taming their steed. However, if food proves especially scarce, then roles that start with apples may need to tide themselves over using them until permafood can be found.
+
+Healers, Knights, and Monks might need to eat their apples before they can find other food.
+
+== Messages ==
+{{message|You hear sinister laughter as you fall asleep...|You ate a cursed apple and fell asleep.}}
+{{message|You fall asleep.|As above, while deaf.}}
+{{message|Heigh-ho, ho-hum, I think I'll skip work today.|As above, while a dwarf and hallucinating.}}
+
+Some [[YAFM]]s appear if you eat an apple or [[pear]] in NetHack while playing on a [[Unix]] or [[Mac OS]] system:{{refsrc|src/eat.c|1423}}
+
+{| class="prettytable"
+! style="width: 50%;" | Message
+! style="width: 50%;" | Effect
+|-
+| "Core dumped." ([[Unix]], not hallucinating)
+| No effect
+----
+When a Unix program performs an illegal operation, the kernel shuts down the program, and the program often dumps a core file for loading into debuggers; the [[pun]] is that apples are usually dumped once the core is the only thing left.
+|-
+| "Segmentation fault -- core dumped." (75/100 chance)<br/>
+"Bus error -- core dumped." (24/100 chance)<br/>
+"Yo' mama -- core dumped." (1/100 chance)<br/>
+(Unix, [[hallucination|hallucinating]])
+| No effect
+----
+As above, but these error messages are more 'realistic' - an actual "core dumped" error on Unix comes with the cause of the crash.
+|-
+| "Delicious!  Must be a Macintosh!" ([[Mac OS]] before Mac OS X which is Unix-like)
+| No effect
+----
+Apple Computer named their Macintosh computers after a real type of apple.
+|}
+
+==Origin==
+The cursed apple's effect in post is a reference to [[wikipedia:Snow White|Snow White]] and the poisoned apple. The Unix-specific messages appear to be derived from [http://web.archive.org/web/20070210025718/http://www.rddavis.org/files/comp-humor/aoutman.humor joke Unix documentation] that originates in a [[Usenet]] post not archived by Google Groups. The presence of apples in a Healer's starting inventory may be a reference to the aphorism "an apple a day keeps the doctor away."
+
+==Encyclopaedia entry==
+{{encyclopedia|
+NEWTONIAN, adj.  Pertaining to a philosophy of the universe invented by Newton, who discovered that an apple will fall to the ground, but was unable to say why.  His successors and disciples have advanced so far as to be able to say when.|[ The Devil's Dictionary, by Ambrose Bierce ]
+}}
+
+== References ==
+<references />
+
+{{nethack-364}}
+[[Category:Comestibles]]}
+&&%s&& %s Veggy {143203 2021-10-15T20:34:32Z {4001279 Umbire the Phantom}  '''Veggy''' is a type of [[material]] that appears in ''[[NetHack]]'', used by some [[comestible]]s.
+
+Eating any veggy item does not violate the [[vegetarian]] [[conduct]], though some veggy foods may violate the [[vegan]] conduct. There is an explicit check for [[pancake]]s, [[fortune cookie]]s, [[cream pie]]s, [[candy bar]]s, and [[lump of royal jelly|lumps of royal jelly]]{{refsrc|eat.c|2039}}{{refsrc|objects.c|709}} - all of these are veggy objects, but contain animal byproducts.
+
+==References==
+<references/>
+{{nethack-343}}
+[[Category:Materials]]}
+&&%s&& %s NetHack 3.0.7 {142577 2021-09-10T19:24:13Z {443 Kahran042} /* Dungeon features */ {{NetHack Versions}}
+
+'''NetHack 3.0.7''' is the twelfth public release of [[NetHack]] and the eighth by the [[DevTeam]].  [[Izchak Miller]] published it to the [[Usenet]] newsgroup comp.sources.games and the moderator approved it in February 1990.
+
+== Availability ==
+
+The original Usenet posts are available from the Internet Archive, and are linked from [[NetHack 3.0.7/URL list|this list of URLs]].
+
+[[Ali Harlow]][http://www.juiblex.co.uk/nethack/front.html] has a NetHack 3.0.7 distribution at [http://www.juiblex.co.uk/nethack/source/nethack-3.0.7.tar.gz].
+
+== Significant changes ==
+
+With NetHack 3.0.7, the release schedule began to slow a bit; it had been a full three months since [[NetHack 3.0.6]] had been released.  NetHack 3.0.7 was, however, a larger change than 3.0.6 had been.
+
+Notable new features include:
+
+* For the [[MS-DOS]] port, the source modules can be split into smaller pieces, giving a finer-grained overlay system and faster performance.
+
+* Updates are provided for the [[Amiga]] and [[Mac]] ports.
+
+* Recent versions of HP-UX are now supported.
+
+* The '/' command distinguishes monsters of the same class.
+
+* There is one new monster, a [[baby crocodile]]. The [[osquip]] and the [[mad scientist]], both introduced in [[NetHack 3.0.0]], are removed.
+
+* [[Polymorph]]ed heroes can eat non-food objects.
+
+* The colors of some symbols have been adjusted.
+
+* Still more bug fixes.
+
+== The adventurer ==
+
+The player may choose from these roles:
+
+{| class="prettytable"
+|-
+!Role!!Alignment
+|-
+|[[Archeologist]]||Lawful
+|-
+|[[Barbarian]]||Chaotic
+|-
+|[[Caveman|Cave-(wo)man]]||Lawful
+|-
+|[[Elf (role)|Elf]]||Lawful
+|-
+|[[Healer]]||Lawful
+|-
+|[[Knight]]||Lawful
+|-
+|[[Priest|Priest(ess)]]||Neutral
+|-
+|[[Rogue]]||Chaotic
+|-
+|[[Samurai]]||Lawful
+|-
+|[[Tourist]]||Neutral
+|-
+|[[Valkyrie]]||Chaotic
+|-
+|[[Wizard]]||Neutral
+|}
+
+All classes permit male and female adventurers, except the Valkyrie which must be female.
+
+The adventurer has [[experience]], [[hit points]], [[magical energy]],
+[[armor class]], [[alignment]], and the six major [[attribute]]s.  He may
+advance to [[experience level]] 30.
+
+The initial [[pet]] is a little [[dog]] for Cavemen, a [[kitten]] for Wizards,
+and a random choice of the two for all others.
+
+== Dungeon features ==
+
+The dungeon in NetHack 3.0.7 has no branches; there is one way up and one way down.  The first 25 levels or so consist of rooms, and beyond that, the adventurer encounters the [[Castle]] and then mazes.  The deepest dungeon level is 50.
+
+[[Medusa]] appears as {{brightgreen|@}} on the down-stairs of the level before the Castle.  She does not have a special level, and is thus a snare for the unwary adventurer.
+
+Dungeon levels below the Castle are designated as "[[Hell]]".  Entering hell without [[fire resistance]], or losing it once there, is an [[instadeath]].  This may happen by taking off an item that confers fire resistance ([[ring of fire resistance]] or red [[dragon scale mail]]), losing one's [[polymorph]], or by being hit by a [[gremlin]].  One may still be saved if he has some other source of fire resistance.  These levels have only up-stairs, and the only way to proceed beyond the first level after the Castle is by [[level teleportation]].
+
+[[Special room]]s are:
+
+* [[throne room]]
+* [[swamp]]
+* [[vault]]
+* [[beehive]]
+* [[crypt]]
+* [[barracks]]
+* [[treasure zoo]]
+* [[temple]]
+* [[shop]]
+
+Special [[dungeon feature]]s are:
+* [[pool]]
+* [[moat]]
+* [[drawbridge]]
+* [[door]]
+* [[ladder]]
+* [[fountain]]
+* [[throne]]
+* [[sink]]
+* [[altar]]
+
+Traps are:
+
+* monsters disguised as [[statue]]s
+* [[bear trap]]
+* [[arrow trap]]
+* [[dart trap]]
+* [[trapdoor]]
+* [[teleportation trap]]
+* [[pit]]
+* [[sleeping gas trap]]
+* [[magic trap]]
+* [[squeaky board]]
+* [[web]]
+* [[spiked pit]]
+* [[level teleporter]]
+* [[anti-magic field]]
+* [[rust trap]]
+* [[polymorph trap]]
+* [[land mine]]
+
+The [[Amulet of Yendor]] is found in the posession of the [[Wizard of Yendor]] in a maze level.  He is in a small room in the center of the maze, surrounded by water and accompanied by a [[hell hound]] and a [[vampire lord]].
+
+Fake Wizard rooms contain a random [[demon]] prince instead of the Wizard and a fake Amulet.  If all demon princes have appeared, a demon lord appears instead; if all demon lords have appeared, the room contains a random ordinary demon.  All eight modern named demons exist, but their modern lairs do not.
+
+A [[wand of wishing]] is guaranteed in the [[Castle]], in its modern position; but it lies exposed on the floor instead of being protected by a [[chest]] and [[Elbereth]].
+
+When ascending from level 1 with the [[Amulet of Yendor]], one is transported immediately to the [[Endgame (3.0)|Astral Plane]]; the [[Elemental Planes]] do not yet exist.  The Astral Plane is different from the modern game, having mazes and powerful monsters instead of the denizens of the modern version.
+
+== Bestiary ==
+
+New monsters are shown in boldface.
+
+The following monsters may be encountered:
+
+{| class="wikitable"
+!Name!!Symbol!!Notes
+|-
+|[[giant ant]]||{{brown|a}}||Formerly {{darkgray|a}}
+|-
+|[[soldier ant]]||{{blue|a}}||
+|-
+|[[fire ant]]||{{red|a}}||
+|-
+|[[giant beetle]]||{{darkgray|a}}||
+|-
+|[[killer bee]]||{{yellow|a}}||
+|-
+|[[queen bee]]||{{magenta|a}}||
+|-
+|[[acid blob]]||{{green|b}}||
+|-
+|[[quivering blob]]||{{white|b}}||Formerly {{lightgray|b}}
+|-
+|[[gelatinous cube]]||{{cyan|b}}||
+|-
+|[[cockatrice]]||{{yellow|c}}||
+|-
+|[[little dog]]||{{white|d}}||Formerly {{blue|d}}
+|-
+|[[dog]]||{{white|d}}||Formerly {{blue|d}}
+|-
+|[[large dog]]||{{white|d}}||Formerly {{blue|d}}
+|-
+|[[jackal]]||{{brown|d}}||
+|-
+|[[werejackal]]||{{red|@}}/{{brown|d}}||called "jackalwere" in animal form; formerly {{brightred|@}}/{{brown|d}}
+|-
+|[[wolf]]||{{brown|d}}||
+|-
+|[[werewolf]]||{{brightred|@}}/{{brown|d}}||called "wolfwere" in animal form
+|-
+|[[winter wolf]]||{{cyan|d}}||Fomerly {{lightgray|d}}
+|-
+|[[warg]]||{{brown|d}}||
+|-
+|[[hell hound pup]]||{{red|d}}||
+|-
+|[[hell hound]]||{{red|d}}||
+|-
+|[[floating eye]]||{{blue|e}}||
+|-
+|[[freezing sphere]]||{{white|e}}||Formerly {{lightgray|e}}
+|-
+|[[kitten]]||{{white|f}}||Formerly {{blue|f}}
+|-
+|[[housecat]]||{{white|f}}||Formerly {{blue|f}}
+|-
+|[[large cat]]||{{white|f}}||Formerly {{blue|f}}
+|-
+|[[jaguar]]||{{brown|f}}||Formerly {{yellow|f}}
+|-
+|[[tiger]]||{{yellow|f}}||
+|-
+|[[gremlin]]||{{green|g}}||
+|-
+|[[hobbit]]||{{green|h}}||If TOLKIEN defined at compile time; formerly {{brightred|h}}
+|-
+|[[bugbear]]||{{brown|h}}||
+|-
+|[[dwarf]]||{{red|h}}||Formerly {{brightred|h}}
+|-
+|[[dwarf lord]]||{{blue|h}}||Formerly {{brightred|h}}
+|-
+|[[dwarf king]]||{{magenta|h}}||
+|-
+|[[manes]]||{{red|i}}||
+|-
+|[[homunculus]]||{{green|i}}||
+|-
+|[[lemure]]||{{brown|i}}||Formerly {{red|i}}
+|-
+|[[imp]]||{{red|i}}||
+|-
+|[[quasit]]||{{blue|i}}||Formerly {{red|i}}
+|-
+|[[tengu]]||{{cyan|i}}||
+|-
+|[[blue jelly]]||{{blue|j}}||
+|-
+|[[spotted jelly]]||{{green|j}}||
+|-
+|[[ochre jelly]]||{{brown|j}}||Formerly {{yellow|j}}
+|-
+|[[kobold]]||{{brown|k}}||
+|-
+|[[large kobold]]||{{red|k}}||Formerly {{brown|k}}
+|-
+|[[kobold lord]]||{{magenta|k}}||
+|-
+|[[kobold shaman]]||{{brightblue|k}}||Formerly {{brown|k}}
+|-
+|[[leprechaun]]||{{green|l}}||
+|-
+|[[small mimic]]||{{brown|m}}||
+|-
+|[[large mimic]]||{{red|m}}||Formerly {{brown|m}}
+|-
+|[[giant mimic]]||{{magenta|m}}||Formerly {{brown|m}}
+|-
+|[[wood nymph]]||{{green|n}}||
+|-
+|[[water nymph]]||{{blue|n}}||
+|-
+|[[mountain nymph]]||{{brown|n}}||
+|-
+|[[goblin]]||{{lightgray|o}}||Formerly {{yellow|o}}
+|-
+|[[hobgoblin]]||{{brown|o}}||Formerly {{red|o}}
+|-
+|[[orc]]||{{red|o}}||Formerly {{brown|o}}
+|-
+|[[hill orc]]||{{yellow|o}}||Formerly {{brown|o}}
+|-
+|[[Mordor orc]]||{{blue|o}}||If TOLKIEN defined at compile time; formerly {{brown|o}}
+|-
+|[[Uruk-hai]]||{{darkgray|o}}||If TOLKIEN defined at compile time; formerly {{brown|o}}
+|-
+|[[orc shaman]]||{{brightblue|o}}||Formerly {{brown|o}}
+|-
+|[[orc-captain]]||{{magenta|o}}||Formerly {{brown|o}}
+|-
+|[[rock piercer]]||{{lightgray|p}}||
+|-
+|[[iron piercer]]||{{cyan|p}}||Formerly {{lightgray|p}}
+|-
+|[[rothe]]||{{lightgray|q}}||
+|-
+|[[mumak|mumakil]]||{{lightgray|q}}||If TOLKIEN defined at compile time
+|-
+|[[leocrotta]]||{{red|q}}||
+|-
+|[[wumpus]]||{{cyan|q}}||Formerly {{brightred|q}}
+|-
+|[[titanothere]]||{{lightgray|q}}||
+|-
+|[[baluchitherium]]||{{lightgray|q}}||
+|-
+|[[sewer rat]]||{{brown|r}}||
+|-
+|[[giant rat]]||{{brown|r}}||
+|-
+|[[rabid rat]]||{{brown|r}}||
+|-
+|[[wererat]]||{{brown|@}}/{{brown|r}}||Called "ratwere" in animal form; formerly {{brightred|@}}/{{brown|r}}
+|-
+|[[rock mole]]||{{lightgray|r}}||Formerly {{brown|r}}
+|-
+|[[cave spider]]||{{lightgray|s}}||
+|-
+|[[scorpion]]||{{red|s}}||
+|-
+|[[giant spider]]||{{magenta|s}}||
+|-
+|[[lurker above]]||{{lightgray|t}}||
+|-
+|[[trapper]]||{{green|t}}||Formerly {{lightgray|t}}
+|-
+|[[white unicorn]]||{{white|u}}||Formerly {{lightgray|u}}
+|-
+|[[gray unicorn]]||{{lightgray|u}}||
+|-
+|[[black unicorn]]||{{darkgray|u}}||
+|-
+|[[fog cloud]]||{{lightgray|v}}||
+|-
+|[[dust vortex]]||{{brown|v}}||
+|-
+|[[energy vortex]]||{{brightblue|v}}||
+|-
+|[[ice vortex]]||{{cyan|v}}||
+|-
+|[[steam vortex]]||{{blue|v}}||
+|-
+|[[fire vortex]]||{{yellow|v}}||
+|-
+|[[baby long worm]]||{{brown|w}}||If WORM defined at compile time
+|-
+|[[baby purple worm]]||{{magenta|w}}||
+|-
+|[[long worm]]||{{brown|w}}||If WORM defined at compile time
+|-
+|[[purple worm]]||{{magenta|w}}||
+|-
+|[[grid bug]]||{{magenta|x}}||
+|-
+|[[xan]]||{{red|x}}||
+|-
+|[[yellow light]]||{{yellow|y}}||
+|-
+|[[zruty]]||{{brown|z}}||
+|-
+|[[ape]]||{{brown|A}}||
+|-
+|[[carnivorous ape]]||{{brown|A}}||
+|-
+|[[bat]]||{{brown|B}}||Formerly {{darkgray|B}}
+|-
+|[[giant bat]]||{{red|B}}||Formerly {{darkgray|B}}
+|-
+|[[vampire bat]]||{{darkgray|B}}||
+|-
+|[[plains centaur]]||{{brown|C}}||
+|-
+|[[forest centaur]]||{{green|C}}||
+|-
+|[[mountain centaur]]||{{cyan|C}}||Formerly {{brown|C}}
+|-
+|[[baby gray dragon]]||{{lightgray|D}}||
+|-
+|[[baby red dragon]]||{{red|D}}||
+|-
+|[[baby white dragon]]||{{white|D}}||Formerly {{lightgray|D}}
+|-
+|[[baby blue dragon]]||{{blue|D}}||
+|-
+|[[baby green dragon]]||{{green|D}}||
+|-
+|[[baby orange dragon]]||{{brightred|D}}||
+|-
+|[[baby black dragon]]||{{darkgray|D}}||
+|-
+|[[baby yellow dragon]]||{{yellow|D}}||
+|-
+|[[gray dragon]]||{{lightgray|D}}||
+|-
+|[[red dragon]]||{{red|D}}||
+|-
+|[[orange dragon]]||{{brightred|D}}||
+|-
+|[[white dragon]]||{{white|D}}||Formerly {{lightgray|D}}
+|-
+|[[black dragon]]||{{darkgray|D}}||
+|-
+|[[blue dragon]]||{{blue|D}}||
+|-
+|[[green dragon]]||{{green|D}}||
+|-
+|[[yellow dragon]]||{{yellow|D}}||
+|-
+|[[air elemental]]||{{cyan|E}}||
+|-
+|[[fire elemental]]||{{yellow|E}}||
+|-
+|[[earth elemental]]||{{brown|E}}||
+|-
+|[[water elemental]]||{{blue|E}}||
+|-
+|[[violet fungus]]||{{magenta|F}}||
+|-
+|[[brown mold]]||{{brown|F}}||
+|-
+|[[yellow mold]]||{{yellow|F}}||
+|-
+|[[green mold]]||{{green|F}}||
+|-
+|[[red mold]]||{{red|F}}||
+|-
+|[[gnome]]||{{brown|G}}||Formerly {{brightred|G}}
+|-
+|[[gnome lord]]||{{blue|G}}||Formerly {{brightred|G}}
+|-
+|[[gnome king]]||{{magenta|G}}||
+|-
+|[[gnomish wizard]]||{{brightblue|G}}||Formerly {{brightred|G}}
+|-
+|[[ettin]]||{{brown|H}}||
+|-
+|[[giant]]||{{red|H}}||Formerly {{brightred|H}}
+|-
+|[[stone giant]]||{{lightgray|H}}||
+|-
+|[[hill giant]]||{{cyan|H}}||Formerly {{brown|H}}
+|-
+|[[fire giant]]||{{yellow|H}}||
+|-
+|[[frost giant]]||{{white|H}}||Formerly {{lightgray|H}}
+|-
+|[[titan]]||{{magenta|H}}||
+|-
+|[[minotaur]]||{{brown|H}}||
+|-
+|[[owlbear]]||{{brown|H}}||
+|-
+|[[stalker]]||{{white|I}}||Formerly {{lightgray|I}}
+|-
+|[[jabberwock]]||{{brightred|J}}||
+|-
+|[[Keystone Kop]]||{{blue|K}}||If KOPS defined at compile time
+|-
+|[[Kop Sergeant]]||{{blue|K}}||If KOPS defined at compile time
+|-
+|[[Kop Lieutenant]]||{{cyan|K}}||If KOPS defined at compile time; formerly {{blue|K}}
+|-
+|[[Kop Kaptain]]||{{magenta|K}}||If KOPS defined at compile time; formerly {{blue|K}}
+|-
+|[[lich]]||{{brown|L}}||
+|-
+|[[demilich]]||{{red|L}}||Formerly {{brown|L}}
+|-
+|[[master lich]]||{{magenta|L}}||Formerly {{brown|L}}
+|-
+|[[kobold mummy]]||{{brown|M}}||
+|-
+|[[gnome mummy]]||{{red|M}}||Formerly {{brown|M}}
+|-
+|[[orc mummy]]||{{lightgray|M}}||Formerly {{brown|M}}
+|-
+|[[elf mummy]]||{{green|M}}||Formerly {{brown|M}}
+|-
+|[[human mummy]]||{{lightgray|M}}||Formerly {{brown|M}}
+|-
+|[[ettin mummy]]||{{blue|M}}||Formerly {{brown|M}}
+|-
+|[[giant mummy]]||{{cyan|M}}||Formerly {{brown|M}}
+|-
+|[[red naga hatchling]]||{{red|N}}||
+|-
+|[[black naga hatchling]]||{{darkgray|N}}||
+|-
+|[[golden naga hatchling]]||{{yellow|N}}||
+|-
+|[[guardian naga hatchling]]||{{green|N}}||
+|-
+|[[red naga]]||{{red|N}}||
+|-
+|[[black naga]]||{{darkgray|N}}||
+|-
+|[[golden naga]]||{{yellow|N}}||
+|-
+|[[guardian naga]]||{{green|N}}||
+|-
+|[[ogre]]||{{brown|O}}||
+|-
+|[[ogre lord]]||{{red|O}}||Formerly {{brown|O}}
+|-
+|[[ogre king]]||{{magenta|O}}||
+|-
+|[[gray ooze]]||{{lightgray|P}}||
+|-
+|[[brown pudding]]||{{brown|P}}||
+|-
+|[[black pudding]]||{{darkgray|P}}||
+|-
+|[[quantum mechanic]]||{{cyan|Q}}||
+|-
+|[[rust monster]]||{{brown|R}}||
+|-
+|[[garter snake]]||{{green|S}}||
+|-
+|[[snake]]||{{brown|S}}||Formerly {{green|S}}
+|-
+|[[water moccasin]]||{{red|S}}||Formerly {{green|S}}
+|-
+|[[pit viper]]||{{blue|S}}||Formerly {{green|S}}
+|-
+|[[cobra]]||{{blue|S}}||Formerly {{green|S}}
+|-
+|[[python]]||{{magenta|S}}||Formerly {{green|S}}
+|-
+|[[troll]]||{{brown|T}}||
+|-
+|[[ice troll]]||{{white|T}}||Formerly {{lightgray|T}}
+|-
+|[[rock troll]]||{{cyan|T}}||Formerly {{brown|T}}
+|-
+|[[water troll]]||{{blue|T}}||
+|-
+|[[Olog-hai]]||{{magenta|T}}||If TOLKIEN defined at compile time; formerly {{brown|T}}
+|-
+|[[umber hulk]]||{{brown|U}}||
+|-
+|[[vampire]]||{{red|V}}||Formerly {{brightred|V}}
+|-
+|[[vampire lord]]||{{blue|V}}||Formerly {{brightred|V}}
+|-
+|[[Vlad the Impaler]]||{{magenta|V}}||
+|-
+|[[barrow wight]]||{{lightgray|W}}||
+|-
+|[[wraith]]||{{darkgray|W}}||
+|-
+|[[Nazgul]]||{{magenta|W}}||If TOLKIEN defined at compile time; formerly {{darkgray|W}}
+|-
+|[[xorn]]||{{brown|X}}||
+|-
+|[[yeti]]||{{white|Y}}||Formerly {{lightgray|Y}}
+|-
+|[[kobold zombie]]||{{brown|Z}}||
+|-
+|[[gnome zombie]]||{{brown|Z}}||Formerly {{brightred|Z}}
+|-
+|[[orc zombie]]||{{lightgray|Z}}||Formerly {{brown|Z}}
+|-
+|[[elf zombie]]||{{green|Z}}||Formerly {{brightred|Z}}
+|-
+|[[human zombie]]||{{white|Z}}||Formerly {{brightred|Z}}
+|-
+|[[ettin zombie]]||{{blue|Z}}||Formerly {{brown|Z}}
+|-
+|[[giant zombie]]||{{cyan|Z}}||Formerly {{brightred|Z}}
+|-
+|[[straw golem]]||{{yellow|'}}||If GOLEMS defined at compile time
+|-
+|[[rope golem]]||{{brown|'}}||If GOLEMS defined at compile time
+|-
+|[[leather golem]]||{{brown|'}}||If GOLEMS defined at compile time
+|-
+|[[wood golem]]||{{brown|'}}||If GOLEMS defined at compile time
+|-
+|[[flesh golem]]||{{red|'}}||If GOLEMS defined at compile time; formerly {{brightred|'}}
+|-
+|[[clay golem]]||{{brown|'}}||If GOLEMS defined at compile time
+|-
+|[[stone golem]]||{{lightgray|'}}||If GOLEMS defined at compile time
+|-
+|[[iron golem]]||{{cyan|'}}||If GOLEMS defined at compile time
+|-
+|[[human]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[Woodland-elf]]||{{green|@}}||If TOLKIEN defined at compile time; formerly {{brightred|@}}
+|-
+|[[Green-elf]]||{{brightgreen|@}}||If TOLKIEN defined at compile time; formerly {{brightred|@}}
+|-
+|[[Grey-elf]]||{{lightgray|@}}||If TOLKIEN defined at compile time; formerly {{brightred|@}}
+|-
+|[[elf-lord]]||{{brightblue|@}}||Formerly {{brightred|@}}
+|-
+|[[Elvenking]]||{{magenta|@}}||Formerly {{brightred|@}}
+|-
+|[[nurse]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[shopkeeper]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[guard]]||{{blue|@}}||Formerly {{brightred|@}}
+|-
+|[[oracle]]||{{brightblue|@}}||If ORACLE defined at compile time; formerly {{brightred|@}}
+|-
+|[[aligned priest|temple priest]]||{{white|@}}||If ALTARS and THEOLOGY defined at compile time
+|-
+|[[aligned priest|temple priestess]]||{{white|@}}||If ALTARS and THEOLOGY defined at compile time
+|-
+|unarmored soldier||{{brown|@}}||If ARMY defined at compile time; formerly {{green|@}}
+|-
+|[[soldier]]||{{lightgray|@}}||If ARMY defined at compile time; formerly {{green|@}}
+|-
+|[[sergeant]]||{{red|@}}||If ARMY defined at compile time; formerly {{green|@}}
+|-
+|[[lieutenant]]||{{green|@}}||If ARMY defined at compile time
+|-
+|[[captain]]||{{blue|@}}||If ARMY defined at compile time; formerly {{green|@}}
+|-
+|[[Medusa]]||{{brightgreen|@}}||If MEDUSA defined at compile time
+|-
+|[[Wizard of Yendor]]||{{magenta|@}}||
+|-
+|[[ghost]]||{{lightgray|&nbsp;}}||
+|-
+|[[water demon]]||{{blue|&}}||
+|-
+|[[demon]]||{{red|&}}||If INFERNO ''not'' defined at compile time (not in default build)
+|-
+|[[horned devil]]||{{brown|&}}||If INFERNO defined at compile time; formerly {{red|&}}
+|-
+|[[succubus]]||{{lightgray|&}}||If INFERNO defined at compile time; formerly {{red|&}}
+|-
+|[[incubus]]||{{lightgray|&}}||If INFERNO defined at compile time; formerly {{red|&}}
+|-
+|[[erinys|erinyes]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[marilith]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[barbed devil]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[vrock]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[hezrou]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[bone devil]]||{{lightgray|&}}||If INFERNO defined at compile time
+|-
+|[[nalfeshnee]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[ice devil]]||{{white|&}}||If INFERNO defined at compile time; formerly {{lightgray|&}}
+|-
+|[[pit fiend]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[balrog]]||{{red|&}}||If INFERNO defined at compile time
+|-
+|[[Juiblex]]||{{brightgreen|&}}||If INFERNO defined at compile time
+|-
+|[[Yeenoghu]]||{{magenta|&}}||If INFERNO defined at compile time
+|-
+|[[Orcus]]||{{magenta|&}}||If INFERNO defined at compile time
+|-
+|[[Geryon]]||{{magenta|&}}||If INFERNO defined at compile time
+|-
+|[[Dispater]]||{{magenta|&}}||If INFERNO defined at compile time
+|-
+|[[Baalzebub]]||{{magenta|&}}||If INFERNO defined at compile time
+|-
+|[[Asmodeus]]||{{magenta|&}}||If INFERNO defined at compile time
+|-
+|[[Demogorgon]]||{{magenta|&}}||If INFERNO defined at compile time
+|-
+|[[mail daemon]]||{{brightblue|&}}||If MAIL defined at compile time
+|-
+|[[djinni]]||{{yellow|&}}||
+|-
+|[[giant eel]]||{{cyan|;}}||
+|-
+|[[electric eel]]||{{blue|;}}||
+|-
+|[[kraken]]||{{red|;}}||
+|-
+|[[newt]]||{{yellow|<nowiki>:</nowiki>}}||
+|-
+|[[gecko]]||{{green|<nowiki>:</nowiki>}}||
+|-
+|[[iguana]]||{{brown|<nowiki>:</nowiki>}}||
+|-
+|'''[[baby crocodile]]'''||{{brown|<nowiki>:</nowiki>}}||
+|-
+|[[lizard]]||{{green|<nowiki>:</nowiki>}}||
+|-
+|[[chameleon]]||{{brown|<nowiki>:</nowiki>}}||
+|-
+|[[crocodile]]||{{brown|<nowiki>:</nowiki>}}||
+|-
+|[[archeologist]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[barbarian]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[caveman]]||{{red|@}}||Formerly {{brightred|@}}
+|-
+|[[cavewoman]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[elf]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[healer]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[knight]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[priest]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[priestess]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[rogue]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[samurai]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[tourist]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[valkyrie]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|[[wizard]]||{{white|@}}||Formerly {{brightred|@}}
+|-
+|}
+
+The osquip and the mad scientist are removed.
+
+== Objects ==
+
+NetHack 3.0.7 introduces no new objects.
+
+=== Artifacts ===
+
+Artifacts in NetHack 3.0.7 are:
+
+{| class="wikitable"
+!Name!!Object!!Alignment!!Role!!Notes
+|-
+|[[Excalibur]]||[[long sword]]||Lawful||Knight||
+|-
+|[[Snickersnee]]||[[katana]]||Lawful||Samurai||
+|-
+|[[Cleaver]]||[[axe]]||Chaotic||&nbsp;||
+|-
+|[[Grimtooth]]||[[orcish dagger]]||Chaotic||&nbsp;||[[dagger]] if no TOLKIEN
+|-
+|[[Orcrist]]||[[two-handed sword]]||Lawful||Elf||User-nameable
+|-
+|[[Sting]]||[[elven dagger]]||Lawful||&nbsp;||User-nameable; [[dagger]] if no TOLKIEN
+|-
+|[[Frost Brand]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Fire Brand]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Stormbringer]]||[[broadsword]]||Chaotic||&nbsp;||
+|-
+|[[Sunsword]]||[[long sword]]||Lawful||&nbsp;||
+|-
+|[[Dragonbane]]||[[broadsword]]||Neutral||&nbsp;||
+|-
+|[[Demonbane]]||[[long sword]]||Lawful||&nbsp;||
+|-
+|[[Werebane]]||[[long sword]]||Lawful||&nbsp;||
+|-
+|[[Giantslayer]]||[[long sword]]||Neutral||&nbsp;||
+|-
+|[[Ogresmasher]]||[[war hammer]]||Lawful||&nbsp;||
+|-
+|[[Mjollnir]]||[[war hammer]]||Lawful||Valkyrie||
+|-
+|[[Trollsbane]]||[[morning star]]||Lawful||&nbsp;||
+|}
+
+Mjollnir is lawful, but Valkyries are chaotic; how this apparent conflict is resolved is unclear at this time.
+
+=== Amulets ===
+
+All amulets appear as {{cyan|"}}.
+
+Amulets in NetHack 3.0.7 are:
+
+* [[amulet of ESP|amulet of esp]]
+* [[amulet of life saving]]
+* [[amulet of strangulation]]
+* [[amulet of restful sleep]]
+* [[amulet versus poison]]
+* [[amulet of change]]
+* [[amulet of reflection]]
+* [[Amulet of Yendor]] (and [[cheap plastic imitation of the Amulet of Yendor|cheap plastic imitation]])
+
+=== Food ===
+
+Food items in NetHack 3.0.7 are:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-
+|[[tripe ration]]||{{brown|%}}||
+|-
+|[[corpse]]||{{brown|%}}||
+|-
+|[[egg]]||{{white|%}}||Formerly {{lightgray|%}}
+|-
+|[[apple]]||{{red|%}}||
+|-
+|[[orange]]||{{brightred|%}}||
+|-
+|[[pear]]||{{brightgreen|%}}||
+|-
+|[[melon]]||{{brightgreen|%}}||
+|-
+|[[banana]]||{{yellow|%}}||
+|-
+|[[carrot]]||{{brightred|%}}||
+|-
+|[[clove of garlic]]||{{white|%}}||Formerly {{lightgray|%}}
+|-
+|nameable [[fruit]]||{{brown|%}}||if TUTTI_FRUTTI defined at compile time
+|-
+|slice of pizza||{{red|%}}||if TUTTI_FRUTTI ''not'' defined at compile time (not in default build)
+|-
+|[[lump of royal jelly]]||{{yellow|%}}||
+|-
+|[[cream pie]]||{{white|%}}||Formerly {{lightgray|%}}
+|-
+|[[candy bar]]||{{brown|%}}||
+|-
+|[[fortune cookie]]||{{brown|%}}||
+|-
+|[[pancake]]||{{brown|%}}||
+|-
+|[[lembas wafer]]||{{white|%}}||if TOLKIEN defined at compile time
+|-
+|[[cram ration]]||{{green|%}}||if TOLKIEN defined at compile time
+|-
+|[[food ration]]||{{green|%}}||
+|-
+|[[K-ration]]||{{green|%}}||if ARMY defined at compile time
+|-
+|[[C-ration]]||{{green|%}}||if ARMY defined at compile time
+|-
+|[[tin]]||{{cyan|%}}||
+|}
+
+=== Weapons ===
+
+Weapons in NetHack 3.0.7 are:
+
+{| class="wikitable"
+|-
+!Name!!Symbol!!Notes
+|-
+|[[arrow]]||{{cyan|)}}||
+|-
+|[[elven arrow]]||{{cyan|)}}||if TOLKIEN defined at compile time
+|-
+|[[orcish arrow]]||{{darkgray|)}}||if TOLKIEN defined at compile time
+|-
+|[[silver arrow]]||{{lightgray|)}}||
+|-
+|[[crossbow bolt]]||{{cyan|)}}||
+|-
+|[[dart]]||{{cyan|)}}||
+|-
+|[[shuriken]]||{{cyan|)}}||
+|-
+|[[boomerang]]||{{brown|)}}||
+|-
+|[[spear]]||{{cyan|)}}||
+|-
+|[[elven spear]]||{{cyan|)}}||if TOLKIEN defined at compile time
+|-
+|[[orcish spear]]||{{darkgray|)}}||if TOLKIEN defined at compile time
+|-
+|[[dwarvish spear]]||{{cyan|)}}||if TOLKIEN defined at compile time
+|-
+|[[javelin]]||{{cyan|)}}||
+|-
+|[[trident]]||{{cyan|)}}||
+|-
+|[[lance]]||{{cyan|)}}||
+|-
+|[[dagger]]||{{cyan|)}}||
+|-
+|[[elven dagger]]||{{cyan|)}}||if TOLKIEN defined at compile time
+|-
+|[[orcish dagger]]||{{darkgray|)}}||if TOLKIEN defined at compile time
+|-
+|[[athame]]||{{cyan|)}}||
+|-
+|[[scalpel]]||{{cyan|)}}||
+|-
+|[[knife]]||{{cyan|)}}||
+|-
+|[[axe]]||{{cyan|)}}||
+|-

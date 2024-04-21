@@ -1,0 +1,1000 @@
+  image-rendering:optimize-contrast;         /* CSS3 Proposed  */
+  -ms-interpolation-mode:nearest-neighbor;   /* IE8+           */
+  image-rendering:pixelated;                 /* Chrome         */
+}
+
+.ui-draggable-handle { cursor:move; }
+
+
+div.thumb { border-color:transparent; }
+
+#mw-anon-edit-warning,
+#mw-read-only-warning {
+  color: black;
+  background-color: yellow;
+  border: 0.5em solid red;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.previewnote-inner-msg {
+  background-color:#ffe0e0;
+  border: 0.2em solid red;
+  padding: 0.5em;
+}
+
+/* PRE OVERFLOW
+ * If "pre" text overflows, provide a scrollbar. */
+pre {
+  overflow: auto;
+}
+
+
+
+/* PRETTY TABLES
+ * The wikitable or prettytable class skins normal tables. */
+table.wikitable,
+table.prettytable {
+  margin: 1em 1em 1em 0;
+  background: #f9f9f9;
+  border: 1px #aaaaaa solid;
+  border-collapse: collapse;
+}
+
+table.wikitable th, table.wikitable td,
+table.prettytable th, table.prettytable td {
+  border: 1px #aaaaaa solid;
+  padding: 0.2em;
+}
+
+table.wikitable th,
+table.prettytable th {
+  background: #f2f2f2;
+  text-align: center;
+}
+
+table.wikitable caption,
+table.prettytable caption {
+  margin-left: inherit;
+  margin-right: inherit;
+}
+
+.mw-interwikitable-row:hover {
+  background-color:#e0e0e0;
+}
+
+
+/* [[Template:Encyclopedia]] */
+.nhencyclopedia {
+  font-family: Palatino Linotype;
+  font-style: italic;
+  background-color: rgb(191, 191, 142);
+  border: 2px dashed rgb(181, 181, 132);
+  margin: 0.5em;
+  padding: 1em;
+  width: 60%;
+}
+/* [[Template:Guidebook]] */
+.nhguidebook {
+  font-family: monospace, serif;
+  background-color: #f8f0f0;
+  border: 2px dashed #dfd0d0;
+  margin: 0.25em;
+  padding: 0.5em;
+  width: 60%;
+}
+
+
+/* Basic style for NetHack screen symbol templates
+ * http://nethackwiki.com/wiki/Category:Function_templates
+ */
+
+span.nhsym {
+  font-family: "Courier New","Menlo","DejaVu Sans Mono","Courier",monospace;
+  font-weight: bold;
+  font-size: large;
+  background-color: black;
+  padding: 1px;
+}
+
+.ttyscreen, .ttymap {
+  padding: 2px;
+  line-height: 100%;
+  margin-bottom: 0.25em;
+  white-space: nowrap;
+  background: black;
+  display: inline-block;
+  font-size: 110%;
+}
+
+.ttyscreen p, .ttymap p { line-height: 100%; }
+
+.ttyscreen .nhsym,
+.ttymap .nhsym {
+  font-size: 100%;
+  background: inherit;
+  padding: 0;
+}
+
+.ttymap a:hover .nhsym,
+.monsters a:hover .nhsym,
+.ttyscreen a:hover .nhsym {
+  background-color:#aaaaaa;
+  color:#000000;
+}
+
+/* combine ttyscreen with preformatted text (a space at the beginning of line) */
+.ttyscreen > pre {
+  background-color:black;
+  border: none;   /* pre have dashed border */
+  color:#AAAAAA;  /* same as clr-lightgray */
+}
+.ttyscreen a {
+  color:#AAAAAA;  /* same as clr-lightgray */
+  text-decoration: none;
+}
+.ttyscreen a:hover {
+  background-color:#AAAAAA;
+  color:black;
+  text-decoration: none;
+}
+
+
+/* Colors for NetHack screen symbol templates
+ * Users with personal stylesheets may override these colors.
+ *   For example      span class="nhsym clr-blue"
+ *   Alternatively    span class="nhsym" style="color:#0000AA;"
+ */
+.clr-blue          { color:#0000AA; }
+.clr-green         { color:#00AA00; }
+.clr-cyan          { color:#00AAAA; }
+.clr-red           { color:#AA0000; }
+.clr-magenta       { color:#AA00AA; }
+.clr-brown         { color:#AA5500; }
+.clr-lightgray     { color:#AAAAAA; }
+.clr-darkgray      { color:#555555; }
+.clr-brightblue    { color:#5555FF; }
+.clr-brightgreen   { color:#55FF55; }
+.clr-brightcyan    { color:#55FFFF; }
+.clr-orange        { color:#FF5555; }
+.clr-brightmagenta { color:#FF55FF; }
+.clr-yellow        { color:#FFFF55; }
+.clr-white         { color:#FFFFFF; }
+
+/* invert colors in symbol picker on hover (see MediaWiki:Common.js/nhsympopup.js) */
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay):hover { color: black }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-blue:hover          { background-color:#0000AA; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-green:hover         { background-color:#00AA00; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-cyan:hover          { background-color:#00AAAA; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-red:hover           { background-color:#AA0000; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-magenta:hover       { background-color:#AA00AA; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-brown:hover         { background-color:#AA5500; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-lightgray:hover     { background-color:#AAAAAA; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-darkgray:hover      { background-color:#555555; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-brightblue:hover    { background-color:#5555FF; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-brightgreen:hover   { background-color:#55FF55; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-brightcyan:hover    { background-color:#55FFFF; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-orange:hover        { background-color:#FF5555; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-brightmagenta:hover { background-color:#FF55FF; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-yellow:hover        { background-color:#FFFF55; }
+.nhw-color-symbol-picker .nhsym:not(.sampleDisplay).clr-white:hover         { background-color:#FFFFFF; }
+
+/*
+ * Keyboard key symbol.
+ * See http://nethackwiki.com/wiki/Template:Kbd
+ */
+.kbdsym {
+ font-family:monospace;
+ white-space:nowrap;
+ color:#000;
+ background:#eee;
+ border:2px outset #aaa;
+ text-align:center;
+ vertical-align:middle;
+ line-height:1.6em;
+ padding:.1em .2em .1em .2em;
+}
+
+/* Hide forum_talk link for forum pages */
+body.ns-110 li#ca-talk { display:none; }
+
+/* Forum formatting -Algorithm & -Splaka */
+/*.forumheader { border: 1px solid #aaa; background-color: #f9f9f9; margin-top: 1em; padding: 12px; }*/
+.forumlist td span { display: block; padding-left: 10px; font-size: smaller }
+.forumlist td span a { text-decoration: none; }
+.forumlist td span.forum_author { padding-left: 30px; }
+.forumlist td.forum_edited a { text-decoration: none }
+.forumlist td.forum_title a { padding-left: 20px; }
+.forumlist td.forum_title span a { padding-left: 0px }
+.forumlist td.forum_title a.forum_new { font-weight: bold; background: url(/images/4/4e/Forum_new.gif) 
+center left no-repeat; padding-left: 20px; }
+.forumlist td.forum_title a.forum_new:visited { font-weight: normal; background: none; padding-left: 20px; }
+.forumlist th.forum_title { padding-left: 20px; }
+/* More forum formatting -paxed */
+.forumlist tr:hover th { }
+.forumlist tr:nth-child(even) td { background-color: #f0f0f0; }
+.forumlist tr:nth-child(even):hover td,
+.forumlist tr:hover td { background-color: #e0e0e0; }
+.forumlist td.forum_title a { display:block; width:100%; }
+.forumlist td.forum_edited a { color:black; text-decoration: none; }
+.forumheader { display:none; }
+#forum-new-topic { float:right; width:100%; padding:0 0.5em 0.5em 0.5em; margin-left:0.5em; text-align:center; font-size:90%; background-color:#EEE; color:#444; }
+
+/* Skill tables, [[NetHackWiki:Skill_table_generator]] */
+.Spell-skilltable .restricted,
+.Combat-skilltable .restricted,
+.Weapon-skilltable .restricted    { /* default */ }
+.Spell-skilltable .basic,
+.Combat-skilltable .basic,
+.Weapon-skilltable .basic         { background-color: #FFA74F; color: #000000; }
+.Spell-skilltable .skilled,
+.Combat-skilltable .skilled,
+.Weapon-skilltable .skilled       { background-color: #FAFA00; color: #000000; }
+.Spell-skilltable .expert,
+.Combat-skilltable .expert,
+.Weapon-skilltable .expert        { background-color: #7BFF7B; color: #000000; }
+.Spell-skilltable .master,
+.Combat-skilltable .master,
+.Weapon-skilltable .master        { background-color: #006800; color: #FFFFFF; }
+.Spell-skilltable .grandmaster,
+.Combat-skilltable .grandmaster,
+.Weapon-skilltable .grandmaster   { background-color: #006800; color: #FFFFFF; }
+.Spell-skilltable .unknown_skill,
+.Combat-skilltable .unknown_skill,
+.Weapon-skilltable .unknown_skill { background-color: #00FAFA; color: #000000; }
+
+
+/* [[Template:Features]] [[Template:ASCII]] [[Template:items]] */
+.itemclasses td a:hover,
+.dungeonfeatures td a:hover,
+.ASCIItable td a:hover { background-color:#e0e0e0; }
+.itemclasses td a,
+.dungeonfeatures td a,
+.ASCIItable td a { display: block; padding:0.2em; }
+.itemclasses td .selflink,
+.dungeonfeatures td .selflink,
+.ASCIItable td .selflink {
+      display: block;
+      background-color:#e0ffd0;
+      padding:0.2em;
+}
+.ASCIItable td a,
+.ASCIItable td .selflink { text-align:center; }
+.dungeonfeatures td,
+.itemclasses td,
+.ASCIItable td { padding:0 !important; }
+
+
+/* [[Template:Todo]] */
+.todo {
+  width: 90%;
+  border: solid 3px #FFCCFF;
+  background-color: #FFEEFF;
+  text-align: left;
+  padding: 1em;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* [[Template:Delete]] */
+.delete {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 3px black;
+  background-color: yellow;
+  text-align: left;
+  padding: 1em;
+}
+
+/* [[Template:Merge]] */
+.merge {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 3px black;
+  background-color: lightgreen;
+  text-align: left;
+  padding: 1em;
+}
+
+/* [[Template:Upcoming]] */
+.upcoming {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 3px #E65C00;
+  background-color: #FF944D;
+  text-align: left;
+  padding: 1em;
+}
+
+/* [[Template:Fairuse]], [[Template:NGPL]], [[Template:CWI]], [[Template:Rodney]], [[Template:Basedon]], [[Template:JAH]], [[Template:DOD]] */
+.license_fairuse,
+.license_ngpl,
+.license_cwi,
+.license_rodney,
+.license_basedon,
+.license_jah,
+.license_dod {
+  width: 80%;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: #F1F1DE;
+  border:2px solid #999966;
+  padding: 1em;
+}
+
+
+.centered {
+  display:table;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+
+/* Syntax coloring via GeSHi */
+.mw-geshi {
+  background-color:#f9f9f9;
+  border: 1px dashed #2F6FAB;
+  padding: 1em;
+}
+.mw-geshi li:nth-child(odd) { background-color:#f9f9f9; }
+.mw-geshi li:nth-child(even) { background-color:#f4f4f4; }
+.mw-geshi li:hover {
+  background-color: #ffffdd;
+}
+.mw-geshi pre {
+  overflow:visible;
+}
+.mw-geshi .geshiline {
+  overflow:auto;
+  padding-bottom:0.5em;
+}
+/* Hilight a line of source code. This relies on javascript, in [[MediaWiki:Common.js]] */
+.mw-geshi ol li:target,
+.source-line-hilite { background-color:yellow !important; }
+
+/* fix rendering bug where insufficient line height causes characters to be clipped, */
+/* making e.g. underscores look like spaces */
+.mw-geshi #line .de1, .mw-geshi #line .de2,
+.mw-geshi .geshiline .de1, .mw-geshi .geshiline .de2 {
+  font: 1em/1.6em monospace; margin: -0.4em 0;
+}
+
+/* normal ol margin (3.2em) may not be enough when the line count hits the thousands */
+.mw-geshi ol { margin-left: 4.2em; }
+
+/* [[Template:Caption]], like thumbnail images */
+.caption {
+	margin-bottom: .5em;
+	border-style: solid;
+	border-color: transparent;
+	width: auto;
+	background-color: transparent;
+}
+.captioninner {
+        display:inline-block;
+	border: 1px solid #ccc;
+	padding: 3px !important;
+	background-color: #f9f9f9;
+	font-size: 94%;
+	text-align: center;
+	overflow: hidden;
+}
+.captiontext {
+	border: none;
+	text-align: left;
+	line-height: 1.4em;
+	padding: 3px !important;
+	font-size: 94%;
+}
+
+
+/* [[Template:Bugstatus]] */
+.bugstatus.open { background:red; }
+.bugstatus.fixed { background:lightgreen; }
+.bugstatus.nextversion { background:darkcyan; }
+.bugstatus.help { background:yellow; }
+.bugstatus.not_a_bug { background:lightblue; }
+.bugstatus.superseded {}
+
+.table-yes { background: lightgreen; }
+.table-no { background: pink; }
+.table-partial { background: #FFF68F; } /* yellowish */
+
+/* [[Template:Resolved top]] */
+.resolved_issue {
+   border:1px solid #aaa;
+   padding:0.5em 0.25em 0 0.25em;
+   margin:1em 0;
+   background:#eef;
+}
+
+/* Main page boxes */
+#mainpage-news {
+  width:100%;
+  margin-top:0px;
+  background:#E7FFDF;
+  border:1px solid #8FFF6F;
+  vertical-align: top;
+  padding:0.2em;
+}
+#mainpage-forum {
+  width:100%;
+  margin-top:5px;
+  background:#F5EEFD;
+  border:1px solid #CEA8F4;
+  vertical-align: top;
+  padding:0.2em;
+}
+#mainpage-greeting {
+  width:100%;
+  text-align: center;
+  font-family: monospace;
+  font-size: 150%;
+  color: white;
+  background-color: black;
+  padding:0.5em 0;
+}
+#mainpage-greeting a {
+  color: white;
+}
+#mainpage-greeting-rumor {
+  font-size: 75%;
+}
+#mainpage-featured {
+  width:100%;
+  margin-top:5px;
+  background:#FFECEC;
+  border:1px solid #FFBBBB;
+  vertical-align: top;
+  padding:0.2em;
+  box-sizing:border-box;
+}
+#mainpage-featured img {
+  max-width: 100%;
+  height: auto;
+}
+#mainpage-featured h3, #mainpage-news h3, #mainpage-forum h3 {
+  padding-top: 0;
+  margin-top: 0;
+}
+#mainpage-role-list {
+  background: #EEEEFF;
+  border: 2px solid #BBBBFF;
+}
+#mainpage-objclass-list {
+  background: #ECF4FF;
+  border: 2px solid #ABCFFF;
+}
+#mainpage-indepth-list {
+  background: #F5EEFD;
+  border: 2px solid #CEA8F4;
+}
+#mainpage-monster-list {
+  background: #E7FFDF;
+  border: 2px solid #8FFF6F;
+}
+/* Hide main page category box */
+.page-Main_Page #catlinks {
+  display:none;
+}
+
+/* [[Special:Search]] has some javascript, see [[Mediawiki:common.js]] */
+.mw-search-results li:hover {
+  background-color:#f0f0f0;
+  cursor:pointer;
+}
+
+/* [[mw:Extension:Cite]]: Hilight the reference user is looking at */
+.reference:target,
+ol.references li:target {
+  background-color: #f0f0f0;
+}
+
+/* nowrap & wrap copied from https://en.wikipedia.org/wiki/MediaWiki:Common.css */
+/* Prevent line breaks in silly places:
+   1) Where desired
+   2) Links when we don't want them to
+   3) Bold "links" to the page itself */
+.nowrap,
+.nowraplinks a,
+.nowraplinks .selflink {
+	white-space: nowrap;
+}
+.nowrap pre {
+	white-space: pre;
+}
+/* But allow wrapping where desired: */
+.wrap,
+.wraplinks a {
+	white-space: normal;
+}
+
+/* Sideboxes, e.g. [[Template:Wikipedia]] */
+.sidebox {
+        clear: right;
+        border: solid #aaa 1px;
+        margin: 0 0 1em 1em;
+        font-size: 90%;
+        background: #f9f9f9;
+        width: 250px;
+        padding: 4px;
+        spacing: 0px;
+        text-align: left;
+        float: right;
+}
+
+/* [[Template:Languages]] */
+.languages {
+        border:1px solid black;
+        padding:0.5em;
+        margin:0.5em;
+        background-color:#e0e0e0;
+        float:right;
+}
+
+
+/* SimpleTabs extension */
+.simpletabs {
+   overflow-x: hidden; /* so we could easily hide the radio inputs */
+   border: 1px solid #ccc;
+   border-left: 1px solid #ccc;
+}
+.simpletabs [type="radio"] {
+   display: none;
+}
+.simpletabs .tabs {
+   display: flex;
+   align-items: stretch;
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   background-color: #aaa;
+}
+.simpletabs .tab > label {
+   display: block;
+   margin-bottom: -1px;
+   margin-right: 1px;
+   padding: 1em 1em;
+   background: #eee;
+}
+.simpletabs .tab:hover label {
+   cursor: pointer;
+}
+.simpletabs .tab-content {
+   display: none;
+}
+/* As we cannot replace the numbers with variables or calls to element properties, the number of this selector parts is our tab count limit */
+.simpletabs [type="radio"]:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
+.simpletabs [type="radio"]:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
+.simpletabs [type="radio"]:nth-of-type(3):checked ~ .tabs .tab:nth-of-type(3) label,
+.simpletabs [type="radio"]:nth-of-type(4):checked ~ .tabs .tab:nth-of-type(4) label,
+.simpletabs [type="radio"]:nth-of-type(5):checked ~ .tabs .tab:nth-of-type(5) label {
+   border-bottom: none;
+   background: transparent;
+   background-color: white;
+   cursor: default;
+}
+.simpletabs [type="radio"]:nth-of-type(1):checked ~ .tabs-content .tab-content:nth-of-type(1),
+.simpletabs [type="radio"]:nth-of-type(2):checked ~ .tabs-content .tab-content:nth-of-type(2),
+.simpletabs [type="radio"]:nth-of-type(3):checked ~ .tabs-content .tab-content:nth-of-type(3),
+.simpletabs [type="radio"]:nth-of-type(4):checked ~ .tabs-content .tab-content:nth-of-type(4) {
+   display: block;
+   padding: 0.5em;
+}
+/* SimpleTabs extension */
+
+
+
+/*</pre>*/}
+&&%s&& %s SLASH'EM {142666 2021-09-15T14:22:08Z {4000354 Chris} Fix typo {{DISPLAYTITLE:<i>SLASH'EM</i>}}{{gameinfo|SLASH'EM}}
+'''''SLASH'EM''''' ('''Super Lotsa Added Stuff Hack - Extended Magic''') is a [[variant]] of ''[[NetHack]]'' based on version [[3.4.3]]. The object of the game is the same: to fetch the [[Amulet of Yendor]] from the bottom of the [[Gehennom]] and offer it to your [[god]].
+
+''SLASH'EM'' contains five [[:Category:SLASH'EM roles|new role]]s and five [[:Category:SLASH'EM races|new race]]s for the player to choose from, as well as several [[Special level (SLASH'EM)|new special levels]], [[Monster (SLASH'EM)|monsters]], [[Item (SLASH'EM)|items]], and [[:Category:SLASH'EM Artifacts|artifacts]]. The main [[dungeon]] is made longer in ''SLASH'EM'' than in ''NetHack'', with Gehennom being shorter as a result.
+
+''SLASH'EM'' is considered much more difficult than vanilla ''NetHack'', primarily due to the perception of the new content as unbalancing the game. Many of the more popular additions to SLASH'EM have been incorporated into actively developed variants, such as the [[Vampire (starting race in UnNetHack)|Vampire]] starting race and the [[Black market (UnNetHack)|Black Market]] level in [[UnNetHack]]. There is also a successor named [[Slash'EM Extended]], which also has a variant/second 'successor' named [[SlashTHEM]].
+
+==Ancestors and successors==
+{{SLASH'EMtimeline}}
+
+==Public servers==
+''SLASH'EM'' is hosted online at [[Hardfought]], which adds an enhanced xlogfile and dumplogs. It is also hosted at [[em.slashem.me]], which is not available as of April 2021.
+
+==Builds==
+''SLASH'EM'' is available for Windows, MS-DOS, Linux, OS/2, (obsolete) Mac classic and Mac OS X (tty only); the latest stable version of ''SLASH'EM'' is 0.0.7E7F3 and the latest development version is 0.0.8E0F1. As of September 16th, 2018, there are active forks of ''SLASH'EM'' being maintained; changes consist mainly of bug fixes and quality-of-life improvements. K2's version (with fixes contributed by amateurhour) can be found [https://github.com/k21971/SlashEM/commits/master here]; Elronnd's is [https://github.com/moon-chilled/slashem9 here].
+
+In addition, SLASH'EM is available as an [[SLASH'EM Android app|Android app]].
+
+==See also==
+* [[Monster (SLASH'EM)]]
+* [[Item (SLASH'EM)]]
+* [[SLASH'EM artifacts]]
+* [[Standard strategy (SLASH'EM)]]
+* [[SLASH'EM 0.0.7E7F2 source code]]
+
+==External links==
+* [http://www.slashem.org/ The SLASH'EM Homepage]
+* [http://www.statslab.cam.ac.uk/~eva/slashem/index.html Differences Between Slash'EM And NetHack], a collection of SLASH'EM spoilers
+* [http://slashem.crash-override.net/bestiary/ Ye Olde SlashEm Bestiary]
+* [http://bamgames.free.fr/Slashem/ Jym's Slash'em 0.0.7E7F1 patch(es)], a huge collection of patches, including ports of NetHack and older SLASH'EM patches
+* [http://blog.dirkz.com/2010/06/slashem-10-released-for-iphone.html SLASH'EM for iPhone]
+* [http://market.android.com/details?id=com.slashemff SLASH'EM for Android]
+* [http://code.google.com/p/slashem-macosx/ SLASH'EM for MacOSX]
+* [https://groups.google.com/d/msg/rec.games.roguelike.nethack/y4VIfZmzi2I/3If3z3u0F4UJ RGRN announcement of SLASH'EM 0.0.1] (not yet named SLASH'EM)
+* [https://groups.google.com/forum/?fromgroups=#!msg/rec.games.roguelike.nethack/G-ZRDEWuYGs/Bzk3lciH_CEJ RGRN announcement of SLASH'EM 0.0.2E8] (first mentioning of the name SLASH'EM)
+
+{{slashem-7E7}}
+[[Category:SLASH'EM]]
+[[Category:Variants]]}
+&&%s&& %s Slash'EM {2754 2006-05-10T23:19:45Z {924 ZeroOne} #REDIRECT [[SLASH'EM]] #REDIRECT [[SLASH'EM]]}
+&&%s&& %s Valkyrie {150252 2023-03-17T23:04:41Z {4001483 Cathartes} /* Intrinsics */ upcoming {{Wikipedia|Valkyrie}}
+:''"Lord" redirects here. For other uses of the term, see [[Lord (disambiguation)]].''
+
+The '''Valkyrie''' is one of the [[role]]s in NetHack. They are based on the valkyries of Norse legend who would carry the spirits of fallen warriors to the afterlife.
+
+Unlike other [[role]]s, all Valkyries are required to be [[female]] when starting the game, though they can become male through [[polymorph]] or with an [[amulet of change]]. Valkyries are often considered to be the [[Role difficulty|easiest role]] for a new player. The [[guidebook]] describes them like this:
+
+ Valkyries are hardy warrior women.  Their upbringing in  the
+          harsh  Northlands  makes  them strong, inures them to extremes of
+          cold, and instills in them stealth and cunning.
+
+Valkyries can be neutral or lawful [[human]]s or lawful [[Dwarf|dwarves]]. Their first [[Sacrifice#Gifts|sacrifice gift]] is [[Mjollnir]].
+== Starting inventory ==
+Each Valkyrie starts with the following:{{refsrc|src/u_init.c|154|version=NetHack 3.6.1}}
+* a +1 [[long sword]]
+* a +0 [[dagger]]
+* a +3 [[small shield]]
+* 1&ndash;2 [[food ration]]s
+* an [[oil lamp]] (16.7% chance){{refsrc|src/u_init.c|781|version=NetHack 3.6.1}}
+
+{{upcoming|NetHack 3.7.0|Valkyries start with a [[spear]] (regular spear for humans, [[dwarvish spear]] for dwarves) instead of a long sword. Valkyries can get Expert skill in spear. ({{commit|c09ae332c8b8f17daf072e95b0e03d75512577f7|commit c09ae332}})}}
+
+== Intrinsics ==
+Valkyries gain intrinsics at these [[experience level]]s:{{refsrc|src/attrib.c|80|version=NetHack 3.6.1}}
+* Level 1: [[cold resistance]]
+* Level 1: [[stealth]]
+* Level 7: [[speed]]
+{{upcoming|NetHack 3.7.0|Stealth is gained at level 3, since {{commit|075c2832a1145ff3dc0049f2cfa6f3b86352179e}}}}
+
+== Skills ==
+{{Valkyrie skill table}}
+Valkyries start with ''Basic'' skill in ''Long sword'' and ''Dagger''.
+
+Valkyries use wisdom as their spellcasting stat.
+
+==Special rules==
+Valkyries never stumble when walking on [[ice]].
+
+[[Mjollnir]], when thrown by a Valkyrie, will return to their hand most of the time. Other roles with 25 [[strength]] may throw Mjollnir, but it won't return.
+
+== Quest ==
+{{main|Valkyrie quest}}
+
+The Valkyrie quest sees you fighting [[Lord Surtur]] for [[the Orb of Fate]].
+
+==Gods==
+
+{{main|Religion}}
+
+*Lawful: [[Tyr]]
+*Neutral: [[Odin]]
+*Chaotic: [[Loki]]
+
+==Rank titles==
+
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1&ndash;2: Stripling
+*XL 3&ndash;5: Skirmisher
+*XL 6&ndash;9: Fighter
+*XL 10&ndash;13: (Wo)man-at-arms
+*XL 14&ndash;17: Warrior
+*XL 18&ndash;21: Swashbuckler
+*XL 22&ndash;25: Hero(ine)
+*XL 26&ndash;29: Champion
+*XL 30: Lady/Lord
+
+== Strategy ==
+=== Character creation ===
+Since Valkyries are unlikely to engage in [[spellcasting]] to any significant degree, there's little drawback to being a dwarf, and their generous [[HP]] growth is a boon, as is [[infravision]] for finding distant targets to storm with [[dagger]]s or a thrown [[Mjollnir]].
+
+A human Valkyrie will almost certainly want to be lawful to convert their starting long sword into [[Excalibur]]; although Mjollnir does more damage against non-resistant targets, Excalibur makes an excellent backup weapon against shock-resistant or level-draining monsters, and is more than sufficient on its own to ascend with. A neutral human Valkyrie cannot dip for Excalibur and faces a hostile [[Mines]], though they are not as pet-reliant when pilfering armor from dwarves, and more importantly have a less punitive [[mysterious force]] in the late game.
+
+=== Early game ===
+==== Weapons ====
+Valkyries start with a fairly good +1 [[long sword]], which lawfuls may upgrade to [[Excalibur]] by [[dip|#dipping]] it in a [[fountain]] as soon as they reach experience level 5. However, it is advisable to wait until at least level 7, as the intrinsic speed can be used to outrun any [[water demon]]s that may appear. Ranged weapons are not strictly necessary, but they can come in handy for wearing down particularly strong monsters, eliminating ones with annoying [[passive attacks]], or shooting past boulders in [[Sokoban]]. The best option is usually a stack of [[dagger]]s, as Valkyries can train the skill to Expert and the dungeon is a plentiful source.
+
+Mjollnir is an incredibly powerful artifact for a guaranteed first sacrifice gift, and remains useful as a long-term option well into the late game; neutral Valkyries will almost certainly want to go for it, while lawful Valkyries will have other options such as Excalibur and Grayswandir to weigh the choice against. Valkyries are the only class who can use the [[gauntlets of power]] to throw Mjollnir that can also have it return; the hammer has a 99% chance of returning,{{refsrc|dothrow.c|1021}} as well as a 99% chance of the player catching it unless they are impaired in some way (e.g., [[confused]], [[stunned]], etc.), in which case it will hit them instead.{{refsrc|dothrow.c|1062}}
+
+====Armor====
+The starting +3 shield is an extremely good option and incredibly light for its [[AC]]. Valkyries can wear all [[armor]] without any penalty beyond weight, as the class already comes with a substantial spellcasting handicap; players should put on any armor they find that isn't cursed and upgrade to better and lighter armor as they find it. An AC of roughly &minus;5 by the end of the Gnomish Mines is a reasonable goal to shoot for.
+
+====General====
+Valkyries are strong early game characters that can hold their own in one-on-one combat, but will still need to exercise caution against [[YASD]] and mind their HP, even after finding some decent armor and weapons. Poison resistance should be obtained as soon as possible, and retreating and [[Elbereth]] usage can save a Valkyrie's life many times over, especially against groups of monsters such as [[soldier ant]]s and [[Mordor orc]]s.
+
+The Gnomish Mines are a plentiful source of armor and weapons, and is a relatively safe first destination for lawful human and dwarven Valkyries - many of the typical dwarven inhabitants will be peaceful, and dwarven players will encounter peaceful gnomes as well, in both cases making it more likely that the Mines' random items may be left untouched. Lawful Valkyries can let their pet fight the inhabitants to get at their armor and weapons, though they should take care not to let the pet die in the process. Conversely, neutral Valkyries will find some of the dwarves and gnomes less peaceful and more willing to pick up and use items against them; the risk also provides an opportunity to gain valuable experience and skill training, while allowing them to gather weapons and armor more easily.
+
+As the [[Orb of Fate]], the Valkyrie [[quest artifact]], is a [[luck item]], [[Mines' End]] is not strictly necessary, but can be a viable choice for players who have picked up poison resistance and want an earlier guaranteed source of [[Luck]]. However, the guaranteed [[luckstone]] must be weighed against the dangers of [[polymorph trap]]s and other severe pitfalls en route; apart from gems, the usefulness of loot from the possible Mines' End levels will vary.
+
+===Midgame===
+By this point, players should ideally have the [[scroll of enchant weapon]] and/or [[scroll of enchant armor]] identified, and bless a few in order to enhance the weapons and armor that will make up their future [[ascension kit]], especially their primary artifact weapon. In addition to Excalibur and/or Mjollnir, a particularly patient Valkyrie player may want to shoot for [[Grayswandir]] or [[Frost Brand]]. [[Twoweapon]]ing is a viable option to consider at around XL 10; since Valkyries can only train #twoweapon to Skilled, players looking to long-term twoweaponing should give some thought to leaving long swords at Skilled, as well as training up the skill of the desired secondary weapon if applicable. Common choices include [[long sword]]s, [[katana]]s, and [[silver saber]]s; additionally, remember that you cannot wear a shield of any kind while twoweaponing.
+
+[[Fire resistance]] is an invaluable intrinsic when preparing for the [[Valkyrie quest]], due to the abundance of [[fire trap]]s and enemies such as [[fire giant]]s and [[fire ants]], whose corpses can provide the intrinsic. Fire giants can also provide valuable strength boosts, and are plentiful on the home level as well - but they can also receive a [[wand of death]] as an [[offensive item]]s, so those not willing to take chances may want either [[magic resistance]] or [[reflection]]. An AC of about &minus;10 is considered safe, and dragon scale mail should be pursued if no [[wish]] has been obtained. A source of [[levitation]] or fireproof [[water walking boots]] will keep you safe if the ice you are standing on is melted by a [[wand of fire]] or fire trap, and may be necessary if the staircase on the last level is surrounded by [[lava]]. In a worst-case scenario, you can [[teleport]] your way past the lava, then used a cursed [[scroll of teleport]] or a freshly-secured Orb of Fate to teleport your way back out.
+
+[[Lord Surtur]] is not particularly difficult by [[quest nemesis]] standards, to the point an accidental spill into the [[lava]] or a mishap involving the [[drawbridge]]s may prove a bigger threat. Even so, he still hits quite hard and has the standard suite of quest nemesis tactics; clear out the fire giants first before engaging him. Lord Surtur himself respects Elbereth, is affected by the [[scroll of scare monster]], and has a weakness to cold-based attacks such as a [[wand of cold]]. Once Surtur is defeated and the quest artifact is retrieved, players can continue on to [[Medusa's Island]] and beyond.
+
+{{upcoming|NetHack 3.7.0|Lord Surtur, like all uniques, no longer respects either Elbereth or scrolls of scare monster.}}
+
+=== Late game ===
+==== General ====
+Valkyries who make it to the Castle can typically clear it out and get the [[wand of wishing]] without too much difficulty. For those that manage to make it without a source of reflection, [[Perseus]]'s statue on Medusa's level may contain a [[shield of reflection]]. Upon reaching the [[Valley of the Dead]], investing some of your [[gold]] in obtaining [[clairvoyance]] from the [[aligned priest]] there before entering [[Gehennom]] can make it much easier to [[Gehennom mapping|map the area]]. If you lack magic resistance, be wary of spellcasters such as [[lich]]es or [[golden naga]]s.
+
+For the endgame, while The Orb of Fate can work to [[portal detection methods|detect portals]] on the [[Elemental Planes]] in a pinch, confused [[scroll of gold detection|scrolls of gold detection]] are vastly preferable, as they are guaranteed to work and won't immobilize you.
+
+{{upcoming|3.7.0|Crystal balls are less likely to fail if they are blessed or your own quest artifact, making them a far more viable option and allowing you to save resources.}}
+
+==== Weapons ====
+Excalibur remains a great weapon through the remainder of the game, especially when twoweaponed with a silver saber or silver spear in the offhand; keep in mind that you cannot [[bribe]] [[Asmodeus]] and [[Baalzebub]] if you are wielding Excalibur. While [[Grayswandir]] and/or [[Frost Brand]] are also especially good for Gehennom, any artifact long sword that isn't a hassle to use should suffice.
+
+Mjollnir can make a good backup weapon, particularly if you have [[gauntlets of power]], as it excels in frying some particularly nasty monsters such as [[mind flayers]]; however, many of the most dangerous endgame monsters (e.g. hostile priests) are shock resistant. If you want to throw Mjollnir occasionally, you should keep most of your wands in your [[bag of holding]] to further minimize the chance of blowing them up.
+
+==== Armor ====
+With half physical damage from the [[Orb of Fate]], an [[armor class]] of &minus;25 or so should be more than enough. Your [[magic marker]] charges are probably better spent on enchanting weapons or writing [[scroll of magic mapping|scrolls of magic mapping]]. [[Speed boots|Speed]] or [[jumping boots]] are very nice, but are generally not worth a wish unless you have the rest of your armor and ascension kit covered; you have the Castle armory, [[Orcus-town]], and the rest of Gehennom to find at least one of them. If you lack [[GDSM]] and/or a magic resistance-providing artifact, you should wish for a [[cloak of magic resistance]], since Gehennom without MR is an extremely [[bad idea]].
+
+==== Spellcasting ====
+Although Valkyries are far from natural spellcasters and have little [[energy]] growth, they get a bonus to [[emergency spell]]s, and [[wisdom]] is easy to raise to its racial maximum through natural [[exercise]] and consorting with [[incubi]]. It's not impossible that a late-game Valkyrie who forgoes [[gauntlets of power]] and a metal helm could make occasional use of healing or remove curse spells. Not all characters can manage this, however. Dwarves in particular might not even have enough energy to recast remove curse if the first cast fails.
+
+== Variants ==
+=== Fourk ===
+In [[Fourk]], Valkyries begin the game with intrinsic [[flying]] and a wand of cold, wielding a spear or war hammer instead of a longsword. Valkyries who start with a war hammer also start with [[speed boots]], a popular ascension-kit item.  In addition, [[Mjollnir]] will never harm the player nor their inventory items, and will never land at an enemy's feet.  It can land at your own feet, so don't throw it while flying over lava.
+
+=== SLASH'EM ===
+{{main|Valkyrie/SLASH'EM}}
+In [[SLASH'EM]], Valkyries start with a spear or dwarvish spear instead of a long sword.
+
+=== SporkHack ===
+Valkyries in [[SporkHack]] are substantially similar to Valkyries in vanilla NetHack, but there are a few wrinkles players should be aware of.
+* SporkHack Valkyries can be of any race. Elven and orcish Valkyries are always [[alignment|neutral]].
+* It is no longer possible to obtain [[Excalibur]] by [[dip]]ping; this option is only available to Lawful [[Knight]]s. Therefore, unless you find lawful Knight [[bones]] (unlikely) or get crowned (more likely), you won't be getting Excalibur.
+* Sacrificing is no longer guaranteed to yield artifacts; it may yield mundane weapons and armor instead. These will be highly enchanted, so it is a very valuable source of early game equipment. However, it's no longer nearly as easy to obtain [[Mjollnir]]. Combined with the lack of Excalibur, this can mean that sacrificing in hopes of getting [[Fire and Frost Brand|Fire or Frost Brand]], [[Vorpal Blade]], [[Snickersnee]], or [[Grayswandir]] (depending on your alignment) is worthwhile.
+* With the two-weapon fighting changes in SporkHack, offhand long swords and sabers are no longer viable. Instead, consider a [[silver spear]] or [[silver short sword]] as an offhand weapon. [[Silver dagger]]s, though weak, are useful as well, since Valkyries can reach expert in daggers, but are limited to Skilled in spears and short swords.
+* Racial armor bonuses make dwarven Valkyries even stronger than they might otherwise be&mdash;but be aware that dwarves aren't the only ones who get racial armor bonuses. In particular, if you're an orc, a simple [[orcish helm]] improves AC by 3, even before enchantment.
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+The Valkyries were the thirteen choosers of the slain, the
+beautiful warrior-maids of Odin who rode through the air and
+over the sea.  They watched the progress of the battle and
+selected the heroes who were to fall fighting.  After they
+were dead, the maidens rewarded the heroes by kissing them
+and then led their souls to Valhalla, where the warriors
+lived happily in an ideal existence, drinking and eating
+without restraint and fighting over again the battles in
+which they died and in which they had won their deathless
+fame.
+|[ The Encyclopaedia of Myths and Legends of All Nations, by Herbert Robinson and Knox Wilson ]
+}}
+
+== References ==
+<references/>
+
+{{nethack-366|offset=1}}
+{{slashem-7E7}}
+[[Category:Roles]]}
+&&%s&& %s Rogue {148813 2022-10-14T17:15:59Z {4001279 Umbire the Phantom} figured someone who knew better than me would supplement :B {{Wikipedia|Thief (character class)}}
+{{otheruses|the player role|the game|Rogue (game)}}
+
+The '''Rogue''' is a player [[role]].  Rogues are skilled thieves. From the [[guidebook]]:
+{{guidebook|Rogues are agile and stealthy  thieves,  with  knowledge  of locks,  traps,  and  poisons.   Their advantage lies in surprise, which they employ to great advantage.}}
+
+Rogues can be [[Human (starting race)|humans]] or [[Orc (starting race)|orcs]], and are always [[chaotic]].
+
+==Starting equipment==
+* an uncursed +0 [[short sword]]  (orcish short sword if an orc)
+* 6&ndash;16 uncursed +0 [[dagger]]s (orcish daggers if an orc)
+* an uncursed +1 [[leather armor]] (5% chance of being blessed)
+* an uncursed [[potion of sickness]]
+* an uncursed [[lock pick]]
+* an uncursed [[sack]]
+* 20% chance of a [[blindfold]]
+* for orcs, 2 random food items (each of which has the usual chance of being a stack of 2)
+
+==Intrinsics==
+* XL 1: [[Stealth]]
+* XL 10: [[Automatic searching]]
+
+==Skills==
+{{Rogue skill table}}
+Rogues start with ''Basic'' skill in ''Short sword'' and ''Dagger''.
+
+==Special rules==
+Rogues get a +1 bonus to [[multishot]] when throwing daggers.
+
+Rogues gain an additional 1d([[experience level|XL]]) "backstab" damage when striking a [[flee]]ing monster in melee and not two-weaponing.  [[Elbereth]], [[scroll of scare monster|scrolls of scare monster]], [[leather drum]]s and [[tooled horn]]s are particularly useful for rogues.
+
+Rogues are eligible for up to two bonuses when disarming floor [[trap]]s: one bonus applies with a (Xlvl/60) chance, while the other applies if the Rogue is carrying the Master Key of Thievery.
+
+Rogues have double the normal chance of disarming [[container trap]]s.
+
+Rogues also have additional proficiency with [[lock pick]]s and credit cards - a Rogue with high [[dexterity]] is actually faster with picks than with a skeleton key.
+
+(While the [[guidebook]] describes Rogues as "thieves," they do ''not'' have any inherent ability to steal gold or items from monsters or shops.)
+
+==Strategy==
+===Character creation===
+Orcs have an easier early game because of their starting food, [[poison resistance]], [[infravision]], and ability to commit [[cannibalism]] or [[Sacrifice#Sacrificing creatures of same race|same-race sacrifice]] with impunity. Orcish daggers are slightly inferior, but it won't take you long to collect a set of generic daggers with which to replace them. On the other hand, humans have better [[HP]] growth, as well as several advantages that become important later in the game: they have better [[energy]] growth than orcs, and their higher [[intelligence]] and [[charisma]] caps make spellcasting and consorting with foocubi more reliable.<!-- Max attributes still matter even with the modern foocubus effective caps, because not all characters are at max in every attribute, e.g. a 14 IN 18 CH human who maxed CH through magic traps will do better than a 14 IN 16 CH orc.--> Humans have other means of compensating for the lack of infravision, including [[warning]] (e.g. from your [[quest artifact]]) if all else fails.
+
+Orcish monsters are more likely to be generated peaceful for orcish heroes, while elven monsters are likely to be generated peaceful for chaotic humans - elves are always hostile to player orcs, and can be a fairly early nuisance to orcish Rogues due to ignoring Elbereth. Human monsters are not available as early for same-race sacrifices, and some of their corpses are harder to procure reliably compared to the groups of hostile orcs that may be generated.
+
+===Early game===
+====Objectives====
+The two top priorities in the early game are finding [[food]] and [[#Weapons|developing your primary attacks]], which are weighted differently for humans and orcs. Orcish rogues' starting food items buy them some time to train before they need to start looking for food; once they do need to scavenge for food, they have more options thanks to their poison resistance&mdash;which allows them to eat the corpses of poisonous monsters like [[kobolds]] safely&mdash;and their ability to [[Cannibalism|eat their own kind]] without an alignment penalty. Human rogues, however, will need to look for nonpoisonous corpses and (better yet) permafood on the first few levels of the dungeons.
+
+Since rogues can start with a relatively low [[strength]], it is a good idea to make an early run for [[Sokoban]] and push boulders to exercise that attribute. Raising strength not only increases your carrying capacity, but also the damage potential from your thrown daggers due to the bonus it provides; the random food items generated in that branch are also very welcome to a hungry rogue, and both of the two possible prizes can be of great use to them. A [[bag of holding]] helps shore up carrying capacity, while an [[amulet of reflection]] can protect your inventory and save you from many potentially game-ending wand attacks.
+
+====Weapons====
+A rogue's best attack in the early game is a volley of [[throw]]n daggers. Rogues should rely on throwing daggers as much as circumstances and their stock of daggers permit in order to raise the dagger [[skill]] to Expert before anything else. Having Expert level in the skill, combined with the role's bonus to multishot, allows you to throw up to four daggers at once, and gives each dagger a +2 damage bonus. However, be aware that if one of your daggers kills your target, any remaining daggers you threw may fly past the corpse and anger peaceful monsters behind it. Use the [[numeric prefix]] to fire only one dagger at a time when necessary, especially in [[Minetown]].
+
+You may choose to wield one of your daggers in melee as well, instead of your starting short sword, because every bit of dagger training helps. There is little reason to train your short sword skill if you plan to get an [[artifact]] melee weapon; however, an [[elven short sword]] is perfectly serviceable for later [[twoweaponing]]. One dagger can be separated from your starting stack for wielding by using the #[[adjust]] command with a number prefix to change the letter under which it is stored in your inventory; it is possible to [[quiver]] all but one of a wielded stack of weapons, changing the letter of the second set automatically. You can then #[[name]] the two sets differently to prevent them stacking.
+
+To increase your supply of ammunition, collect any daggers you find, but curse-test them before wielding any. [[Elven dagger]]s are especially desirable&mdash;being made of [[wood]], they cannot [[Erosion|rust or corrode]], so they are good for fighting [[rust monster]]s and [[acid]]ic monsters that would damage iron weapons.
+
+=====Projectiles=====
+Various non-dagger [[missile]] weapons&mdash;such as [[dart]]s, [[crossbow bolt]]s, and [[shuriken]]&mdash;can be poisoned by #[[dipping]] them into your starting [[potion of sickness]]. One strategy is to #[[untrap]] [[dart trap]]s, which are fairly common in the upper levels of the Dungeons of Doom, and then poison the resulting large stack of darts using the potion. Poisoned weapons do an additional d6 damage to non-resistant monsters, and also have a 10% chance of killing the monster outright, making it ideal for tougher monsters - [[intelligent]] monsters can pick up poisoned weapons and toss them back at you, however. As [[magic cancellation]] does not protect against poisoning from thrown weapons, human Rogues should obtain the property as soon as they can and use poisoned missiles cautiously until then; orcs start with poison resistance, making this a much less risky option for them.
+
+Rogues can also reach Expert in [[crossbow]]s, so another possibility is to collect [[crossbow bolt|bolt]]s in the [[Mines]] and poison them. Unlike darts, bolts require a launcher, but their damage potential is greater (1d4+1/1d6+1 vs 1d3/1d2). Both kinds of missiles have a chance of [[Projectile#Breakage|breaking]], which can be reduced by enchanting them; if you plan to use crossbows, it is usually worthwhile to avoid advancing their skill beyond Basic until you have mastered daggers. Depending on your early weapon choices, you may find it easier to commit to [[#Weapon choices|a specific type of projectile]] down the line.
+
+====Contemplating twoweaponing====
+Rogues are one of the few roles who can reach Expert in twoweapon combat. They also reach Expert in the [[knife]] skill, so they are the role that gets the most effect out of using a [[crysknife]] as a secondary weapon.
+
+In [[NetHack 3.4.3]] and previous versions, twoweaponing was relatively unpopular since rogues cannot reach Expert skill in the better [[artifact weapon]]s (besides [[Magicbane]], which is [[Artifact blast|cross-aligned]]) and cannot [[backstab]] if they are wielding two weapons at once, sacrificing the bonus damage that was one of the most popular features of the role. Because of this, many players did not train the twoweapon skill at all, reserving the skill points for other skills, and using the free hand to augment their [[AC]] with a [[shield]]. [[Backstab]] damage has been significantly weakened starting with [[NetHack 3.6.0]]: it now only occurs in single-weapon [[melee]] and no longer applies to thrown projectiles. Backstabbing is still useful as an early game tactic, but its intermittent damage bonus now pales in comparison to consistent, high-level twoweaponing in the later game.
+
+Twoweaponing can be considered an alternative way to produce major artifact damage with weaker weapons. Ignoring all strength, enchantment and skill bonuses, a single [[Grayswandir]] will average 9 and 19.5 damage against non-haters and silver-haters respectively. A [[crysknife]]/[[silver dagger]] twoweapon will yield approximately 7.75 and 18.25. But with full strength, skill and enchantment available to a rogue, a single-handed Grayswandir will average 30 and 40.5 while the the crysknife/silver dagger twoweapon averages 35.75 and 46.25; the chaotic [[Grimtooth]] averages the same damage as a single crysknife for a Rogue without requiring training in a new [[skill]].
+
+====Armor====
+A Rogue's starting leather armor is not very good past the early game, and can be traded out for almost any noncursed body armor. Given their restrictions on attack and healing spells, rogues are not likely to rely heavily on magic in the heat of battle for most of the game, so they should not be as concerned about spellcasting failure. They typically start with low strength, however, and encumberment is a serious inconvenience in the early game, so avoid wearing anything you cannot lift without becoming Burdened. [[Mithril coat]]s are most ideal for the early game, as they are not only high [[AC]] (and [[MC]]2) but weigh no more than your starting leather armor. Once you are confident in your fighting skills, fight dwarves and hobbits to relieve them of their mail.
+
+Rogues who seek to backstab over twoweaponing in 3.4.3, previous versions and variants based on them lose the least from wearing a shield, since all of their best weapons are one-handed; the [[shield of reflection]] is their best option, eliminating the need for an [[amulet of reflection]] or [[SDSM]] and freeing up the neck and torso slots for other items, but they are unfortunately rare. This is much less true as of 3.6.0 and later versions, where twoweaponing is more preferable.
+
+Rogues are at a disadvantage when it comes to attempting the [[protection racket]], because while their starting sack is handy for [[shoplifting]] and [[credit cloning]], the [[Mines]] will inevitably be dangerous because dwarves and gnomes alike are hostile to chaotics.  Since armor is less disadvantageous for Rogues than for other roles, racking up early protection points is less urgent for them.
+
+====Spells====
+Rogues do not start with knowledge of any spells or skill in any spell school, and their starting intelligence (their spellcasting [[attribute]]) and spellcasting power are both low, so spellcasting is not likely to be reliable in the early game.  
+
+However, once you have a reliable source of food, and a safe place to read, it may be worthwhile to pick up spellbooks and read them so you can recognize useful spellbooks later. Spells in the [[divination]], [[escape]], and [[matter]] classes can be trained, while most spells outside of your strong schools can be forgotten and cast to confuse yourself later.
+
+Once you have learned low-level spells in your schools (such as [[detect monsters]] and [[jumping]]) and have at least 5 power points, you can take advantages of lulls in the action to remove interfering armor and practice casting those spells to train the respective skills after you have reached expert in daggers.
+
+===Midgame===
+====Objectives====
+The [[Rogue quest]] is infamous as one of the trickiest in NetHack, and advance preparation is required to complete it; see the [[Rogue quest#Strategy|strategy]] section for details. The Rogue quest artifact is [[the Master Key of Thievery]], a very nice artifact which confers the [[half physical damage]], [[warning]], and [[teleport control]] extrinsics and makes [[untrap]]ping more reliable. It can also be [[invoke]]d to untrap boxes and doors with 100% success -- this useful properly is easy to forget, so keep it in mind.
+
+Warning is somewhat superseded by [[telepathy]], though the properties can complement each other, and there are other sources of teleport control (including [[tengu]] meat); half physical damage is useful and rare enough to make the Master Key a [[wish]] target for other chaotics on its own. If you have obtained the quest artifact without a source of magic resistance, seeking it out should be your next immediate goal.
+
+====Weapon choices====
+Once you have access to [[holy water]] and [[scroll of enchant weapon|scrolls of enchant weapon]], you have a few choices of projectile weapons: daggers, darts, or crossbow bolts, any of which you can advance to Expert. If you have not committed to a projectile at this point, consider the advantages and disadvantages of each as listed below:
+
+* Daggers have [[multishot]] and [[to-hit]] bonuses and are likely to be at least Skilled if not Expert by this point of the game, though the to-hit bonus may not make as much difference at this stage. Unfortunately, they are the only projectile that cannot be poisoned, and are also fairly heavy at 10 [[aum]] per dagger: the weight from a sizeable stack can add up, as many characters can struggle to carry more than 16-20 daggers without help from a bag of holding, and they exhaust quicker when thrown, making retrieval somewhat tricky in some cases. That said, daggers do not require a [[launcher]] like crossbow bolts, and also do not "mulch" like darts or bolts can, making them a low-maintenance option for a melee-focused rogue.
+
+* Darts deal slightly less base damage than daggers (at most one point on average, assuming elven daggers against a small target), and also lack a multishot bonus; switching to them from daggers requires six skill slots. Darts also weigh {{frac|10}}th as much as daggers and do not require a launcher, making [[encumbrance]] much easier to manage in comparison. They can easily be obtained in bulk from [[dart trap]]s and poisoned with your starting [[potion of sickness]] for extra damage and the chance of an instakill, although many late-game enemies are poison-resistant. Darts are often the most ideal choice for a ranged-focused game plan - you can often carry more than enough to freely engage certain monsters such as [[disenchanter]]s or flying monsters like [[mind flayer]]s that are over a [[moat]], or else flee from potentially-lethal threats, all without losing much ranged capability from eroded, mulched or otherwise-lost darts.
+
+* Crossbow bolts deal slightly more base damage against small targets and substantially more against large ones. However, bolts also require a crossbow, which takes in-game time to switch to - this can prove unwieldly if the crossbow ends up cursed, and is generally incompatible with two-weaponing. Additionally, bolts do not benefit from +3 or higher [[strength]] damage bonuses like other projectiles, and have a multishot ''penalty'' unless you have at least 18 strength; switching to them from daggers also requires six skill slots. This and the carrying capacity required due to the launcher, as well as their relative rarity compared to darts, generally make bolts the hardest of the projectiles to utilize. With this in mind, bolts weigh {{frac|10}}th as much as daggers and can be poisoned much like darts, and still generate often in the inventories of {{monclass|G}}s and {{monclass|C}}s - losing individual bolts is also not as pressing as leaving daggers behind. The crossbow's enchantment only affects to-hit bonuses, so enchanting the bolts should prove sufficient for Rogues willing to take this route.
+
+* An [[aklys]] is the lowest-maintenance weapon, weighing only 15 aum and being almost infinitely reusable. Since it can't be multishot, there's little benefit to advancing club skill beyond Basic, saving five skill slots relative to the projectile weapons. Its damage potential is far less than any of the above options, but a well-enchanted aklys is still sufficient to safely deal with the occasional [[cockatrice]], [[mimic]], or sea monster.
+
+Whichever missiles you choose, bless and [[rustproof]] them and raise their enchantment to increase their damage potential and accuracy: the bonus damage from enchantment somewhat flattens out the difference between their base damage. A [[ring of increase damage]] with a positive enchantment is a very useful supplement when throwing weapons, with the damage bonus applied to each hit - a [[scroll of charging]] or two should raise the ring's enchantment to a suitable level, though beware of exploding the ring!
+
+=====Artifact weapons=====
+Rogues can look for a powerful [[artifact]] weapon to back up their ranged [[daggerstorm]] with a strong melee attack that uses their backstab bonus to full effect. [[Sacrificing]] for an artifact weapon is not terribly useful for Rogues, since they do not have a guaranteed sacrifice gift and the available chaotic artifact gifts are either very weak or of very narrow utility, with the exception of [[Stormbringer]] - at least one sacrifice gift is required before they have any hope of getting one of the more useful weapons such as the unaligned [[Fire and Frost Brand|Brand]]s.
+
+Two of the better options, [[Magicbane]] and [[Grayswandir]], are cross-aligned and must be [[wish]]ed for or found in [[bones]] - watch out for the (admittedly small) [[Artifact blast|blasting damage]]. Magicbane's [[scare]] attack frequently causes monsters to flee, and as an [[athame]] it uses the dagger skill that Rogues are naturally proficient in and can reliably engrave Elbereth. Grayswandir's [[double damage]] applies to backstab damage, and rogues can reach Skilled in [[saber]].
+
+====Spells====
+Rogues can reach Skilled in [[divination spells]] and [[escape spells]], as well as the somewhat less useful [[matter spells]], and [[human]] rogues can reach a respectable 87% success rate without a [[robe]]. You most likely started the game with a mediocre intelligence, so consider collecting any potions you find and performing [[alchemy]] to brew up some [[potion of gain ability|potions of gain ability]]. In the absence of useful spells, however, rogues can easily make do without.
+
+Divination spells are worth raising to Skilled once you have at least two skill slots free, since several spells in this class ([[detect monsters]], [[detect treasure]], and [[identify]]) have improved effects at this level. [[Identify]] can save you a lot of curse-testing, and [[magic mapping]] is a boon in Gehennom. Advancing escape spells to Skilled is less important, but can be useful if you want to rely on the [[Spellbook of jumping|jumping]] spell to reach tiles not accessible with [[jumping boots]], or be able to terminate the [[spellbook of levitation|levitation]] spell at will. There is little reason to advance matter spells far, as Rogues are unlikely to have the spellcasting abilities or power to cast [[spellbook of polymorph|polymorph]].
+
+====Armor====
+If you chose to use a shield instead of twoweaponing, and you haven't found a shield of reflection before reaching [[Medusa's Island]], checking [[Perseus]]'s statue for one can be especially rewarding, provided you are careful not to get stoned by [[Medusa]].
+
+=== Late game ===
+====Weapons====
+Entering the late game, rogues should continue to refine their primary attacks, enchanting their melee artifact weapon to +5 or +6 and enchanting their missiles as well. [[Silver dagger]]s are often desirable missile weapons, but are exceedingly rare, and not worth a wish. 
+
+If you choose to try twoweaponing despite forfeiting the backstab bonus, good secondary weapon choices for Rogues are crysknives, silver sabers, katanas, and elven broadswords.  Crysknives pair well with Magicbane, since you can train both weapon classes to Expert for the lowest to-hit and damage penalty.  If you have Grayswandir, Stormbringer, or one of the Brands, you may prefer using secondary weapons from the same classes so you do not have to train a second weapon skill.
+
+====Armor====
+Rogues can use shields of reflection comfortably if they so choose, allowing them to forego [[silver dragon scale mail]] [[GDSM versus SDSM|in favor of]] [[gray dragon scale mail]] - this supplies the [[magic resistance]] that your quest artifact lacks, and frees the neck and cloak slots for other items. Alternately, you may choose SDSM if you have another source of magic resistance and you prefer not to wear a shield.
+
+==Rank titles==
+The [[status line]] shows you to be one of the following ranks when you reach the specified experience level:
+
+*XL 1-2: Footpad
+*XL 3-5: Cutpurse
+*XL 6-9: Rogue
+*XL 10-13: Pilferer
+*XL 14-17: Robber
+*XL 18-21: Burglar
+*XL 22-25: Filcher
+*XL 26-29: Magsman/Magswoman
+*XL 30: Thief
+
+==Quest==
+{{main|Rogue quest}}
+The Rogue quest sees you fighting the [[Master Assassin]] for [[The Master Key of Thievery]]. Inspired by the profession you have chosen, there are lots of stealing monsters, traps, shapeshifters and challenges even to access the quest nemesis!
+
+==Variants==
+In versions of NetHack prior to 3.6.0 and some variants (including SLASH'EM) based on these versions, rogues could also get backstab damage with thrown weapons for each hit. This was considered unbalancing and removed in 3.6.0. {{refsrc|uhitm.c|648|version=NetHack 3.6.0}}
+
+===SLASH'EM===
+
+See [[Rogue/SLASH'EM|Rogue(SLASH'EM)]].
+
+== Encyclopedia entry ==
+
+{{encyclopedia|
+I understand the business, I hear it: to have an open ear, a
+quick eye, and a nimble hand, is necessary for a cut-purse; a
+good nose is requisite also, to smell out work for the other
+senses.  I see this is the time that the unjust man doth
+thrive. <...> The prince himself is about a piece of iniquity,
+stealing away from his father with his clog at his heels:  if
+I thought it were a piece of honesty to acquaint the king
+withal, I would not do't:  I hold it the more knavery to
+conceal it; and therein am I constant to my profession.
+|[ Autolycus the Rogue, from The Winter's Tale by
+                William Shakespeare ]
+}}
+
+==See also==
+* [[Rogue (player monster)]]
+
+==References==
+<references />
+
+{{nethack-366}}
+[[Category:Roles]]}
+&&%s&& %s Japanese {96917 2015-10-07T16:48:10Z {4000629 Cherokee Jack} Updating redirect #REDIRECT [[Samurai#Japanese names for items]]}
+&&%s&& %s Archaeologist {2765 2006-05-11T21:20:29Z {924 ZeroOne} [[Archaeologist]] moved to [[Archeologist]]: The game spells it without the middle 'a'. #REDIRECT [[Archeologist]]}
+&&%s&& %s Healer {149872 2023-02-07T01:03:23Z {4001618 Tmkrth} /* Spellcasting */ bracket {{wikipedia|Healer (video games)}}
+The '''Healer''' is one of the [[Role|roles]] in [[NetHack]]. Healers can be [[Human (starting race)|humans]] or [[Gnome (starting race)|gnomes]], and are always [[neutral]]. While the concept of a healer is ubiquitous, parts of the healer’s storyline, such as the [[quest]], are based on Greek legends. The [[guidebook]] says of them:
+
+<pre>     Healers are wise in medicine and apothecary.  They know the herbs and simples that can restore vitality, ease pain, anesthetize, and neutralize poisons; and with their instruments, they can divine a being's state of health or sickness.  Their medical practice earns them quite reasonable amounts of money, with which they enter the dungeon.
+</pre>
+
+==Starting equipment==
+* 1001 to 2000 [[gold piece]]s
+* a +0 [[scalpel]]
+* an uncursed +1 pair of [[leather gloves]]
+* 5 to 10 uncursed [[apple]]s
+* a blessed [[spellbook of healing]]
+* a blessed [[spellbook of extra healing]]
+* a blessed [[spellbook of stone to flesh]]
+* 4 &times; [[potion of healing]]
+* 4 &times; [[potion of extra healing]]
+* [[wand of sleep]] (4 to 8 charges)
+* an uncursed [[stethoscope]]
+* 4% chance of uncursed [[oil lamp]]
+
+==Intrinsics==
+Healers gain the following [[intrinsic]]s at these [[experience level]]s:
+* Level 1: [[Poison resistance]]
+* Level 15: [[Warning]]
+
+==Skills==
+{{Healer skill table}}
+Healers start with ''Basic'' skill in ''knife'' and ''healing spells''.
+
+==Special rules==
+Healers get a +1 [[alignment record]] bonus for healing their [[pet]]s.
+
+Healers take no damage and lose no [[attribute]] points when quaffing a [[potion of sickness]], although this will still cure [[hallucination]].
+
+[[Nurse]]s won't damage Healers with their attacks.
+
+Healers have proficiency with [[stethoscope]]s. A Healer can more reliably apply a stethoscope to themselves while [[engulf]]ed by a [[whirly]] monster. A Healer can apply a stethoscope to a [[statue]] to determine whether it contains items or is on a [[statue trap]].
+
+Healers only gain a [[multishot]] bonus for being at Skilled level with knives; they still get the normal multishot bonus for being Expert. Gnomish Healers do not get a multishot bonus with [[crossbow]]s.

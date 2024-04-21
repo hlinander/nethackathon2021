@@ -1,0 +1,1000 @@
+&&%s&& %s Nethack Haikus {10331 2006-09-12T17:52:56Z {239 Eidolos} Fix double redirect. #REDIRECT [[NetHack haiku]]}
+&&%s&& %s Stupid Ascension Tricks {102986 2016-06-01T05:22:49Z {4000573 Elronnd} Link to internet archive, because original site is dead The '''Stupid Ascension Tricks''' list is a large collection of voluntary [[conduct]]s to attempt once you find regular ascensions easy. Some examples:
+
+* 3.1.2 Never wore any armor after first 10 turns (using first turns to remove all starting armor). (Naked conduct) Patience: Slight; Luck: Moderate; Planning: Slight
+* 4.3.2 Ate every single edible thing in dungeon before leaving. (Glutton conduct) Patience: Significant; Luck: Trivial; Planning: Trivial
+* 22.3.1 Destroyed Yendorian Economy - All shopkeepers are left alive, but with no gold and no inventory.  Patience: Slight; Luck: Trivial; Planning: Trivial
+* 24.2.6 Ascended with at least 30 unused wishes.  Patience: Heroic; Luck: Slight; Planning: Trivial
+* 27.2.1 Learned every spell.  Patience: Trivial; Luck: Trivial; Planning: Trivial
+* 29.2.1 Ascended with original pet.  Patience: Slight; Luck: Slight; Planning: Trivial
+
+Completing a Stupid Ascension Trick and posting about it in [[rec.games.roguelike.nethack|RGRN]] yields a '''SATAP''' - a Stupid Ascension Trick Ascension Post.
+
+==See also==
+*[[Unofficial conduct]]
+*[[Speed ascension]]
+
+==External links==
+
+* [https://web.archive.org/web/20160409165906/http://www.thinksystem.net/nethack/ Official page, containing the full list]
+
+[[Category:Untracked conducts]]}
+&&%s&& %s SATAP {18393 2007-01-21T08:38:54Z {166 Creativename} Redirecting to [[Stupid Ascension Tricks]] #REDIRECT [[Stupid Ascension Tricks]]}
+&&%s&& %s Fortune {9396 2006-09-01T19:41:47Z {458 Kernigh} #REDIRECT [[Rumors]] #REDIRECT [[Rumors]]}
+&&%s&& %s Scroll of punishment {148495 2022-10-05T00:57:04Z {4001279 Umbire the Phantom} de-SLEX {{scroll|name=punishment|cost=300|ink=5-9}}
+
+The '''scroll of punishment''' is one of the nastiest scrolls in the game. It [[punishment|punishes]] you by chaining a heavy [[iron ball]] to you, which hinders your movements.
+
+==Reading effects==
+
+{|class="wikitable"
+!colspan="2"|Case
+!Effect
+|-
+|colspan="2"|blessed or confused
+|No effect
+|-
+|rowspan="2"|uncursed
+|unpunished||You are punished
+|-
+|punished||The iron ball's weight increases by 160
+|-
+|rowspan="2"|cursed
+|unpunished||You are punished
+|-
+|punished||The iron ball's weight increases by 320
+|}
+
+==Generation==
+
+Scrolls of punishment are randomly generated with the same probability as all other 300zm scrolls. 1.5% of all randomly generated scrolls are scrolls of punishment.
+
+Wizards and monks may start with an identified scroll of punishment.
+
+==Identification==
+
+It is expensive, so when unidentified, less careful players might mistake it for the [[scroll of genocide]] or the [[scroll of stinking cloud]]. When blessed, this scroll is harmless; you only get the message "You feel guilty".
+
+The scroll self-identifies when you read it.
+
+==Messages==
+
+{|class="wikitable"
+!Message!!Reason
+|-
+|"You feel guilty."||The scroll was blessed, or you were confused
+|-
+|"You are being punished for your misbehavior!"||The scroll was uncursed or cursed
+|-
+|"A ball and chain appears, then falls away."||You were punished, but the chain couldn't be attached to you
+|}
+
+==Strategy==
+
+It has been said that the best thing about the scroll of punishment is its resale value. Aside from that, you probably want to use these for [[wet|blanking]].
+
+See [[punishment]] for why being punished may be desirable. Short version: it isn't, except as a makeshift weapon before you see anything else, or some corner cases involving jumping.
+
+==Variants==
+===UnNetHack===
+Reading a non-blessed scroll of punishment while confused will summon a [[punisher]]. This reveals it as a Bad Idea.
+
+[[Category:Scrolls|Punishment]]
+{{nethack-361}}}
+&&%s&& %s Tin {150142 2023-03-07T16:00:55Z {4001279 Umbire the Phantom} /* Generation */ tourists, note for later {{comestible
+  |color=metal color
+  |name=tin
+  |cost=5
+  |nutrition=''(varies)''
+  |turns=''(varies)''
+  |weight=10
+  |conduct=''(varies)''
+}}
+
+A '''tin''' is a kind of [[comestible]] that appears in ''[[NetHack]]''. It is a type of permafood that does not [[Comestible#Rotten food|rot]] as time passes, although it may take some time to eat unless you have a way to quickly open it.
+
+== Generation ==
+Tins comprise 7.5% of randomly generated [[comestible]]s - randomly generated tins have a 1 in 6 (16.7%) chance of containing [[spinach]], and the rest will contain the meat of a monster that can randomly appear on the current level, with standard probabilities and the exception of [[corpseless]] monsters and [[wraith]]s.{{refsrc|src/mkobj.c|817|nethack=3.6.1}}{{refsrc|src/mkobj.c|820|nethack=3.6.1}} Random tins are normally generated 90% uncursed, 5% cursed and 5% blessed.{{refsrc|src/mkobj.c|864|nethack=3.6.2}}
+
+[[Tourist]]s will sometimes start with tins among their initial stacks of food, following the same rules as above.{{refsrc|src/u_init.c|144|version=NetHack 3.6.7|Initial inventory for Tourists}}<!--update other refsrc to 3.6.7 when you can-->
+
+Tins can be made by [[apply]]ing a [[tinning kit]] to a [[corpse]]; tins of spinach cannot be created this way. Tins containing the meat of [[genocide]]d monsters are not randomly generated, and any tins of that monster's meat made before that genocide or [[wish]]ed for after it will be empty instead. Tins of unique monsters cannot be wished for at all.
+
+Tins generated as part of a [[shop|health food store]] will always contain either spinach or a vegetarian monster; if the initial random tin contents are not vegetarian, it will be converted to spinach, making the odds of finding spinach in these stores much higher than normal.{{refsrc|src/eat.c|1255|nethack=3.6.6}}
+
+== Eating tins ==
+=== Opening ===
+When you attempt to eat a tin, you first try to open it.{{refsrc|src/eat.c|1419|nethack=3.6.0}}
+* If you are polymorphed into a [[metallivore]], you open it immediately. "You bite right into the metal tin".
+* Otherwise, if you are a monster with no limbs, or a very small monster, eating a tin is impossible. "You cannot handle the tin properly to open it."
+* Otherwise, if the tin is blessed, it takes 0-1 turns to open it (always 0 turns if you also wield a blessed [[tin opener]]). ("The tin is opened like magic!", if 0 turns, or "The tin seems easy to open." if 1 turn.)
+* Otherwise, the time depends on what you wield:
+** A [[tin opener]] opens it quickly depending on its BUC status: 0 turns if blessed, 0-1 turns if uncursed, 0-2 turns if cursed. ("You easily open the tin.", if 0 turns)
+** A wielded [[knife]], [[crysknife]], [[stiletto]], [[athame]], or any kind of [[dagger]] will open it in 3 turns. ("Using (your weapon) you try to open the tin.")
+** A [[pick-axe]] or an [[axe]] (but ''not'' a [[battle-axe]] or [[dwarvish mattock]]) will open it in 6 turns. ("Using (your weapon) you try to open the tin.")
+** If you are wielding none of the above and have [[slippery fingers]], the tin slips from your fingers.
+** Otherwise, you will take between 10 and ''10 + 500/(Str+Dex)'' turns to open it.{{refsrc|src/eat.c|1461|nethack=3.6.0}} ("It is not so easy to open this tin.") If it takes 50 or more turns, you "give up your attempt to open the tin."{{refsrc|src/eat.c|1388|nethack=3.6.0}} Because this can take so long, and because many tins end up containing less than 100 nutrition, you may not actually gain any net nutrition from eating tins if you cannot open them quickly. Don't attempt to eat tins if you are Weak and unable to use one of the above options for opening them quickly, since this can put you into Fainting status.
+
+=== Explosion ===
+Randomly generated tins may explode 1/8 of the time if they are [[cursed]] when they are being opened. ("KABOOM!! The tin was booby-trapped!") The explosion has the same effects as an [[door#Door traps|exploding door]], and it destroys the tin.
+
+=== Determining the preparation method ===
+Once you have opened the tin, its preparation method is determined (unless it is spinach, which doesn't have a preparation method). The possible preparation methods are "deep fried", "pickled", "soup made from", "pureed", "rotten", "homemade", "stir fried", "candied", "boiled", "dried", "szechuan", "french fried", "sauteed", "broiled", and "smoked". This determines the amount of nutrition the tin provides.
+
+If you made the tin with a [[tinning kit]], tins of lizard and lichen are always homemade, while blessed/uncursed/cursed tins of other monsters have a chance of 0, 1/7 and 1 of being rotten, otherwise they are homemade.<ref name=tin_variety> [[Source:NetHack_3.6.0/src/eat.c#tin_variety]]</ref>
+
+For randomly generated tins<ref name=tin_variety />:
+* cursed tins of lizard and lichen are always homemade
+* other cursed tins are always rotten
+* noncursed tins of lizard and lichen are never rotten; they have a 2/15 chance of being homemade and a 1/15 chance of each other method
+* other uncursed tins have 1/15 chance of being each method except rotten or homemade, 6/105 chance of being homemade, and 8/105 chance of being rotten
+
+Since the type of preparation is determined only after you open the tin, there is no way to know it in advance, and tins that stack may end up being of different styles.
+
+=== Deciding whether to eat it ===
+Once you have opened a tin, you will receive a message telling you what it smells like and be given the choice of eating it or discarding the contents. This identifies the contents of any tins that were in the same stack. (If you are hallucinating, the monster name will be random, except for [[footrice]] meat which "smells like chicken".{{refsrc|src/eat.c|1619|nethack=3.6.0}} It is safest not to consume any unknown tins whilst hallucinating.)
+
+=== Eating ===
+If the tin is empty (because its monster type is genocided or extinct), it is discarded. ("It turns out to be empty.") Non-cursed tins of spinach will increase your [[strength]], while cursed ones decrease your strength.
+
+Most non-spinach tins have low nutritional value (see below), but tins of pureed monster have nutritional value 500, which is more than half that of a food ration.
+
+Eating a deep fried, french fried, or stir fried tin will give you [[slippery fingers]] and cause you to drop your weapon. It is therefore unwise to eat tins in a shop without first unwielding your weapon.
+
+Rotten tins provide no nutrition points (eating them makes you neither more nor less hungry),{{refsrc|src/eat.c|1323|nethack=3.6.0}} and make you [[vomiting|nauseated]]. Unless you cure the nausea, you vomit, losing 20 nutritional points (see [[vomiting]] for more information).
+
+Eating the tin, after it is opened, takes one turn.
+
+Corpses that convey [[intrinsics]] will have the same probability of conferring that intrinsic when they have been tinned. Tinning makes [[poison|poisonous]] and [[rotten]] corpses safe, however, as your character picks out the good bits for the tin that they can fit inside. It is popular to tin [[dragon]]s and [[giant]]s, as you will still get the intrinsic / strength increase, but without the [[choke|enormous meal]].
+
+== Appearance ==
+An unidentified tin will appear as a "tin". Once the contents are known, one of the following descriptions is adopted instead:
+{| class="prettytable"
+! Appearance !! Notes
+|-
+| tin of ''foo'' meat || ''[[foo]]'' is a fleshy monster
+|-
+| tin of ''foo'' || ''foo'' is a monster suitable for vegetarians
+|-
+| tin of spinach || spinach is suitable for [[vegan | vegans]]
+|-
+| empty tin || suitable for those going without food
+|}
+
+== Nutrition ==
+The nutrition of a tin varies depending on the way it was cooked. Below is a list of the possible variations of the contents of a tin.{{refsrc|src/eat.c|112|nethack=3.6.0}}
+
+While the nutrition of rotten tin is technically -50, it doesn't mean that you lose 50 nutrition points when you eat it. Negative nutrition value of a tin means that it provides 0 points of nutrition and makes you nauseated, otherwise the value is ignored.{{refsrc|src/eat.c|1323|nethack=3.6.0}}
+
+{| class="sortable prettytable" style="margin: 0;"
+! Tin !! Nutrition !! Notes
+|-
+| ''[[Spinach]]'', blessed || 600{{refsrc|src/eat.c|1364|nethack=3.6.0}} || Increases [[strength]]<ref name=gainstr>[[Source:NetHack_3.6.0/src/attrib.c#gainstr]]</ref>
+|-
+| ''[[Spinach]]'', uncursed || 401-600{{refsrc|src/eat.c|1364|nethack=3.6.0}} || Increases [[strength]]<ref name=gainstr />
+|-
+| ''[[Spinach]]'', cursed || 201-600{{refsrc|src/eat.c|1364|nethack=3.6.0}} || Decreases [[strength]]<ref name=gainstr />
+|-
+| Pureed || 500 ||
+|-
+| Candied || 100 ||
+|-
+| Sauteed || 95 ||
+|-
+| Stir fried || 80 || Causes [[slippery fingers]]
+|-
+| Broiled || 80 ||
+|-
+| Szechuan || 70 || In [[UnNetHack]]: 50% chance of a [[fortune cookie]]
+|-
+| Deep fried || 60 || Causes [[slippery fingers]]
+|-
+| Dried || 55 ||
+|-
+| Homemade || 50 ||
+|-
+| Boiled || 50 ||
+|-
+| Smoked || 50 ||
+|-
+| Pickled || 40 ||
+|-
+| French fried || 40 || Causes [[slippery fingers]]
+|-
+| Soup || 20 ||
+|-
+| Empty || 0 ||
+|-
+| ''Rotten'' || -50 || Causes nausea
+|}
+
+{{upcoming|NetHack 3.7.0|A homemade tin of a monster whose corpse provides less than 50 nutrition will only provide as much as the corpse would.}}
+
+== Tins of nurse meat ==
+Tins of [[nurse]] meat are a potent but complicated resource, and deserve special consideration. Like the corpse of a nurse, a tin of nurse meat will restore you to full hit points. This makes nurses an attractive target for [[tinning kit|tinning]] when you encounter them. Tins of nurse meat have some advantages and some disadvantages relative to [[potion of full healing|potions of full healing]]:
+* '''First and foremost, consumption of nurse meat is [[cannibalism]] for human characters!''' Fortunately, tinning the corpse does not count as cannibalism--only eating the tin does. So it is possible to tin nurses against a future need, when you might prefer the penalties of cannibalism to death.
+* Unlike [[potions]], tins never explode or dilute, so they are always safe to carry in main inventory, even in such hostile environments as the [[Plane of Fire]].
+* On the other hand, even a blessed tin will take two turns to heal you (one to open and one to consume), which is slower than quaffing a potion in main inventory and no faster than retrieving a potion from a bag before quaffing. A (non-cursed) homemade tin will always provide 50 nutrition, and can cause you to choke to death if you are satiated; this is never the case with a potion.
+* A full healing potion can only restore a maximum of 400 hit points; nurse meat always restores you to your maximum, however high that is. However, a non-cursed full healing potion can also raise your maximum HP if your current HP is maxed out by it, which the tin won't do.
+* You may want to keep the nurse alive for [[nurse dancing]] to raise your maximum HP instead, which you presumably are going to do until the nurse disappears.
+
+==History==
+
+Tins from [[Hack 1.0]] through [[NetHack 2.3e]] behave quite differently from the modern form. There is no [[tinning kit]] in these versions, and consequently there are no tinned monsters. Randomly generated tins can produce the following results:{{refsrc|eat.c|40|version=NetHack 2.3e}}{{refsrc|eat.c|70|version=NetHack 2.3e}}
+
+{|class="sortable wikitable"
+! Message !!Nutrition
+|-
+| It contains spinach - this makes you feel like Popeye!
+| 600, increases strength
+|-
+| It contains salmon - not bad!
+| 60, causes [[slippery fingers]]
+|-
+| It contains first quality peaches - what a surprise!
+| 40
+|-
+| It contains apple juice - perhaps not what you hoped for.
+| 20
+|-
+| It contains some nondescript substance, tasting awfully.
+| 500
+|-
+| It contains rotten meat. You vomit.
+|  -50
+|-
+| It turns out to be empty.
+| 0
+|}
+
+Tins in their modern form first appear in [[NetHack 3.0.0]]. That version has only spinach, deep fried, pickled, soup, pureed, and rotten tins;{{refsrc|eat.c|36|version=NetHack 3.0.0}} a [[tinning kit]] will produce one of these (except spinach of course), rather than the homemade tin.
+
+<!--I'm working off the sources here at NetHackWiki, as I don't have my complete archives within reach.  Some of these versions may be incorrect.-->
+[[NetHack 3.1.0]] adds the homemade tin,{{refsrc|eat.c|118|version=NetHack 3.1.0}} and modifies the tinning kit to produce this type only.{{refsrc|apply.c|1771|version=NetHack 3.1.0}}
+
+[[NetHack 3.3.0]] adds the complete list of tins given above.{{refsrc|eat.c|128|version=NetHack 3.3.0}}
+
+[[NetHack 3.6.1]] allows opening tins with a knife or stiletto.
+
+== Variants ==
+
+=== UnNetHack ===
+
+[[UnNetHack]] includes the Free Fortune Cookie Patch; there is a 50% chance for a szechuan tin to contain a free [[fortune cookie]].
+
+=== SLASH'EM ===
+
+[[SLASH'EM]] once again modernizes the tins: They no longer tell exactly what the tin contains, unless the player has already eaten the particular meat. Instead, they will only give some general information ("It smells kind of like a dog or other canine."), or not even that ("The smell is unfamiliar."). This makes eating tins much more risky, as the players could accidentally commit cannibalism or '''eat cockatrice meat''', and one may easily lose vegetarian conduct without knowing. Furthermore, tins can be generated with the same traps as other traditional containers.
+
+====Minor bug====
+
+You can find tins of monsters that do not leave corpses, such as clay golems, elementals, mummies and zombies. However, you cannot wish for such tins, even in wizard mode. It is bug number 667.
+
+If you try to eat them, the game will probably not crash, and you can get the effects of the corresponding corpses. For example you can gain a level from a wraith tin. Air elemental and yellow light tins will be empty. It seems that the tinning process was applied, so you will probably not get food poisoning from a mummy/zombie tin.
+
+==Encyclopedia entry==
+
+{{encyclopedia|
+"You know salmon, Sarge," said Nobby.
+"It is a fish of which I am aware, yes."
+"You know they sell kind of slices of it in tins..."
+"So I am given to understand, yes."
+"Weell...how come all the tins are the same size?  Salmon
+gets thinner at both ends."
+"Interesting point, Nobby.  I think-"
+|[ Soul Music, by Terry Pratchett ]
+}}
+
+==References==
+<references/>
+[[Category:Comestibles]]
+{{nethack-361}}}
+&&%s&& %s Template:Armor {60491 2010-11-29T21:55:09Z {831 Tjr} Text replace - "Cost" to "Base price" <div class="thumb tright">
+{| class="prettytable" style="margin: 0;"
+!colspan="2" style="font-size:larger;"|{{#if:{{{top|}}}| {{{top}}}<hr>{{{name}}} |
+{{ {{{color}}} |[}} &ensp; {{{name}}} &ensp; {{autotile|{{{tile|}}}|{{{name}}}}}
+}}
+|-
+!Appearance
+|{{{appearance|{{{name}}}}}}
+|-
+|colspan="2"|
+|-
+!Slot
+|[[{{{slot}}}]]
+|-
+!AC
+|[[Armor class|{{{ac}}}]]
+|-
+!Special
+|{{{special|''(none)''}}}
+|-
+|colspan="2"|
+|-
+!Base price
+|{{{cost}}} [[Zorkmid|zm]]
+|-
+!Weight
+|[[weight|{{{weight}}}]]
+|-
+!Material
+|[[{{{material}}}]]
+|}
+</div><noinclude>
+Put this template at the top of every [[armor]] page. Call it like this:
+
+ <nowiki>{{armor
+  |color=white
+  |tile=[[Image:Alchemy smock.png]]
+  |name=alchemy smock
+  |appearance=apron
+  |slot=cloak
+  |ac=1
+  |special=<ul><li>[[magic cancellation|MC1]]</li><li>[[acid resistance]]</li><li>[[poison resistance]]</li></ul>
+  |cost=50
+  |weight=10
+  |material=cloth
+}}</nowiki>
+
+'''Tile''' is optional, and will by default to trying to find a tile based on '''name'''. '''Appearance''' is optional, and will default to '''name'''. There is also a '''top''' field that can be used for displaying multiple glyphs/tiles; this will cause the template to ignore '''color''' and '''tile'''.
+
+[[Category:Infobox templates|A]]
+</noinclude>}
+&&%s&& %s Template:Comestible {62424 2011-01-03T13:59:00Z {366 Ilmari Karonen} default cost of all comestibles is nutrition/20 + 5 <div class="thumb tright">
+{| class="prettytable" style="margin: 0;"
+!colspan="2"| {{{{{color|brown}}}|%}} {{{tile|[[image:{{{name|{{PAGENAME}}}}}.png]]}}}
+|-
+!Name
+|{{{name|{{PAGENAME}}}}}
+|-
+!Base price
+|{{{cost|{{#iferror: {{#expr:trunc({{{nutrition}}}/20)+5}} | {{{cost}}} }} }}} [[Zorkmid|zm]]
+|-
+!Nutrition
+|[[Nutrition|{{{nutrition}}}]]
+|-
+!Turns to eat
+|{{{turns}}}
+|-
+!Weight
+|[[weight|{{{weight}}}]]
+|-
+!Conduct
+|[[Conduct#Vegan|{{{conduct}}}]]
+|}
+</div><noinclude>
+Put this template at the top of every [[comestible]] page. Call it like this:
+ <nowiki>{{</nowiki>comestible
+  |name=''NAME''
+  |tile=''TILE''
+  |cost=''COST''
+  |nutrition=''NUTRITION''
+  |turns=''TURNS''
+  |weight=''WEIGHT''
+  |conduct=''CONDUCT''
+  |color=''COLOR''
+ <nowiki>}}</nowiki>
+
+'''Color''' is an optional parameters that defaults to ''brown''. '''Tile''' defaults to ''<nowiki>[[</nowiki>image:''NAME''.png<nowiki>]]</nowiki>. See this [[template talk:tool|talk page]] for further usage notes.
+'''Conduct''' should be ''vegan'', ''vegetarian'', or ''meat''.  If cost is not given, it is calculated as ''nutrition''/20 + 5 zm, as per {{sourcecode|objects.c|672}}.
+
+[[Category:Infobox templates|C]]
+</noinclude>}
+&&%s&& %s Dragons {6978 2006-08-13T04:43:39Z {325 GreyKnight} Redirecting to [[Dragon]] #REDIRECT [[dragon]]}
+&&%s&& %s Petrification resistance {6990 2006-08-13T17:08:42Z {924 ZeroOne} fixed a double-redirect #REDIRECT [[Stoning]]}
+&&%s&& %s Source talk:NetHack 3.4.3/src/objects.c {64757 2011-01-31T19:22:46Z {4000027 Paxedbot} moved [[Source talk:Objects.c]] to [[Source talk:NetHack 3.4.3/src/objects.c]]: Moving src to subdirs This file needs line numbers! --[[User:ZeroOne|ZeroOne]] 17:49, 13 August 2006 (UTC)
+:<tt>perl -i.bak -ple '$_ = sprintf "%-4s%s", ++$i . ".", $_ if /^\s/' file.wiki</tt>
+:It's not perfect, but probably quite good enough. You'll need to tweak the 4 for however many digits the largest line number has. [[User:Eidolos|Eidolos]] 18:09, 13 August 2006 (UTC)
+
+::Ah, but Jayt has a [[User:Jayt#Source_wikification_script|source wikification script]] made in Python. It includes some html-code to make the lines linkable. But as it happens, I haven't got a Python environment in my use. --[[User:ZeroOne|ZeroOne]] 18:45, 13 August 2006 (UTC)
+
+:::Good point, I forgot about line linking. I'll run objects.c through [[Jayt]]'s wikification script. [[User:Eidolos|Eidolos]] 18:49, 13 August 2006 (UTC)
+
+::::<tt>perl -i.bak -ple '$_ = sprintf " &lt;span id=\"line%d\"&gt;%-6s%s&lt;/span&gt;", ++$i, "$i.", $_ if /^\s/' file.wiki</tt>
+::::Now it's much closer to Jayt's script (even in how it justifies), but it's more for adding line numbers to existing wiki pages rather than wikifying NetHack source (a task for which there already exists a fine script). [[User:Eidolos|Eidolos]] 19:02, 13 August 2006 (UTC)}
+&&%s&& %s Source talk:NetHack 3.4.3/src/u init.c {64833 2011-01-31T19:24:06Z {4000027 Paxedbot} moved [[Source talk:U init.c]] to [[Source talk:NetHack 3.4.3/src/u init.c]]: Moving src to subdirs ==Starting equipment initialization==
+How come [[u_init.c#line69]] says that healers start with five apples, yet it is entirely possible for them to start with, say, seven apples? --[[User:ZeroOne|ZeroOne]] 18:41, 13 August 2006 (UTC)
+
+:I could be wrong, but I think it's [[u_init.c#line1050]]. This allows you to create [X, 2X] items in a stack (where X=5 for a healer's apples). [[User:Eidolos|Eidolos]] 18:48, 13 August 2006 (UTC)}
+&&%s&& %s Template:Gray {7103 2006-08-14T00:16:37Z {924 ZeroOne} why was gray redirected to white anyway? made it redirect to [[template:lightgray]] #REDIRECT [[Template:Lightgray]]}
+&&%s&& %s Helm of brilliance {142411 2021-09-06T22:04:49Z {4001279 Umbire the Phantom}  {{armor
+  |top={{helm top}}
+  |name=helm of brilliance
+  |appearance={{random appearance}}
+  |slot=helm
+  |ac=1
+  |special=<ul><li>[[intelligence]] bonus</li><li>[[wisdom]] bonus</li><li>doesn't hinder<br>[[spellcasting]]</li></ul>
+  |cost=50
+  |weight=50
+  |material=iron
+}}
+
+The '''helm of brilliance''' is a magical [[helm]] that appears in ''[[NetHack]]''. It is made of [[iron]], and provides 1 [[AC]] when worn.
+
+==Effects==
+The helm of brilliance modifies the wearer's [[Intelligence]] and [[Wisdom]] by its amount of [[enchantment]], in addition to its normal AC bonus. Wearing an enchanted helm of brilliance will [[auto-identify]] it, as will enchanting the helm at +0. Even though the helm of brilliance is iron, it does not hinder [[spellcasting]].{{refsrc|src/spell.c|1737|nethack=3.6.6}}
+
+[[The Mitre of Holiness]], the [[Priest]] [[quest artifact]], is an [[artifact]] helm of brilliance.
+
+==Strategy==
+The helm of brilliance is generally useful for spell-casting, as higher intelligence and wisdom stats reduce the failure rate of high-level spells and mitigates the penalties from wearing metallic armor. It is especially beneficial to characters who want to cast high-level spells in spell schools that they are limited in, such as a high level Priest attempting to cast {{spell of|polymorph}} using the Mitre of Holiness. In addition, wearing an enchanted helm of brilliance will slightly improve [[energy regeneration]] and may give you a larger amount of maximum [[power]] when leveling up, since both are influenced by wisdom and energy regeneration is also influenced by intelligence.
+
+However, for a character with already-low spell failure rates, such as a [[Wizard]], a helm of brilliance will likely not have a noticeable effect. Conversely, a role with incredibly high spell-casting penalties such as a [[Valkyrie]] or [[Barbarian]] will not notice any significant gains in that regard, and will get far less use out of the helm outside of the possibility of [[foocubi]] encounters (and even then, the helm may end up removed mid-interaction).
+
+Keep in mind that you can ''still'' die of brainlessness if brainsucked by a [[mind flayer]] with a helm of brilliance on - brainlessness checks for a '''base''' intelligence of 3.
+
+==Bugs==
+In [[NetHack 3.4.3]], using a cursed [[scroll of destroy armor]] on a cursed helm of brilliance or a cursed pair of [[gauntlets of dexterity]] reduced the enchantment of the piece of armor without altering the stats - after removing the piece of armor, stats would be permanently increased, and you could even temporarily surpass your racial maximum that way. This became known as the "hobug" because the helm of brilliance is often abbreviated to HoB.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Helms]]}
+&&%s&& %s Blank scroll {7206 2006-08-14T17:23:43Z {396 Jayt} Redirecting to [[Scroll of blank paper]] #REDIRECT [[scroll of blank paper]]}
+&&%s&& %s Wand of enlightenment {123310 2018-07-22T05:19:38Z {4001094 Luxidream} Updated for 3.6.1, removed todo tag. The wand is straightforward to use, further commentary isn't necessary. {{wand
+  |name=enlightenment
+  |cost=150
+  |type=non-directional
+  |maxcharges=15
+  |abundance=1.5%
+}}
+
+A '''wand of enlightenment''' gives you [[enlightenment]]: you see your [[property|properties]] and exercise [[wisdom]].
+
+It is effectively the rarest wand in the entire game, as only two wands are generated with less frequency, but both of them are guaranteed to appear in certain places in the game. It's probably rarer to find a game where a wand of enlightenment is generated than to find a game where it is not.
+
+==Strategy==
+A wand of enlightenment is immensely useful for identifying noncursed [[ring]]s and [[amulet]]s.  First make sure you know what your intrinsics are without any equipment (by zapping the wand if necessary) then put on the ring or amulet, zap the wand, and see if any new intrinsics have appeared in the list. Try to test two differently-priced [[ring]]s that do "nothing" when worn at the same time. You can also tell whether an unidentified [[gray stone]] is a [[luckstone]] by looking for messages about extra/reduced [[luck]].  Another bonus is that enlightenment will let you know whether it is safe to [[pray]].
+
+{{nethack-361}}
+[[Category:Wands|Enlightenment]]}
+&&%s&& %s Large box {145009 2022-03-21T07:18:00Z {4000978 Aximili} add link {{tool|name=large box|tile=[[image:large box.png]]|appearance=large box|cost=8|weight=350|color=brown|material=wood}}
+
+Large boxes are a type of waterproof [[container]].
+
+==Generation==
+Like chests, large boxes have a 10% chance of being generated [[container trap|trapped]].
+
+==Strategy==
+
+They are excellent for a [[stash]] - they are slightly more common than [[chest]]s and lighter for transporting to a convenient [[altar]]. You might want to <nowiki>#</nowiki>[[name]] your stash box, in case your [[pet]] [[dragon]] picks it up.
+
+{{nethack-360}}
+
+[[Category:Tools]]}
+&&%s&& %s Name {149175 2022-12-04T07:27:04Z {4001279 Umbire the Phantom} /* #naming a class of items */* {{for|naming monsters|call}}
+'''#name''' is an [[extended command]], mapped to {{kbd|N}} (capital N) by default if you are using the [[number pad]] option. (On [[nethack.alt.org]] and in [[AceHack]], it is mapped to {{kbd|C}} by default.) You can do two things with #name:
+* Name an individual item
+* Call a ''class'' of items (that is, all the items of that type, such as all steel wands)
+Naming items in NetHack can be very helpful for keeping track of items. You can name a class of objects after informally identifying something, or keep reminders so as to not put on that [[BUC|cursed]] [[amulet of strangulation]].
+
+In some cases, you cannot name the class of things such as artifacts, bags, or gems while blind (''You would never recognize another one'').
+
+== #naming individual items ==
+These are a few reasons to rename an individual item with #name, with an example for each:
+* Roleplay (naming your primary weapon "Stinging Blow" because of the amount of damage you can do with it)
+* Reminders (naming an item you suspect is cursed)
+* Certain [[artifact]]s can be generated by naming a weapon of their base class ([[Sting]], [[Orcrist]])
+* To keep items from stacking in your inventory, you can name stacks of them differently. This is useful when using confused blessed [[scroll of remove curse|scrolls of remove curse]] to generate {{of|potion|holy water|and=1|unholy water}}.
+* Names of important items are often used to keep notes on games, especially in games played by multiple people (see [[Robin]])
+* Naming the [[Amulet of Yendor]] will allow you to identify it from all the fakes if you drop it or it gets stolen
+* Abusing the [[naming artifacts|artifact naming bug]] will allow you to identify some specific items
+* Individual names will not be [[amnesia|forgotten]]
+* [[Autopickup exception]]s can match on individual item name
+* [[Intrinsics]]: naming an object that you're likely to keep for a while with the names of intrinsics you have.  Example: "N &ndash; A [[lizard]] corpse named [[Sleep resistance|awake]], [[fire resistance|cold]], [[speed|fast]], [[cold resistance|hot]]"
+
+== #naming a class of items ==
+Naming a class of items is also often referred to as "calling" the items, based on the different prompt the game gives when naming a class, or "type-naming" something.
+
+Identified items will not display their class's name, but it can still be viewed using the [[discoveries]] command.
+
+As with naming individual items, there are multiple reasons to name an entire object class:
+* Keep track of the possibilities for items you find after applying various object identification tests, such as [[Wand#Engrave-identification|engrave testing]].
+* Prior to [[NetHack 3.6.0]], naming a scroll or spellbook will let you [[Magic marker#Unknown scrolls and spellbooks|write items of that type with a magic marker as though it were identified]]. Obviously you also have to actually know what that type is, or have named all scrolls or books in that price group so it can be written successfully no matter which of those it happens to be.
+* [[Unicorn#Unicorns and gems|Throwing class-named gems to a unicorn]] gives a larger Luck bonus than unnamed gems.
+* Some classes of items can not be named in this way, notably [[weapon]]s and [[comestible]]s.
+* Seeing the difference between items which look the same, for example to know what [[gray stone]] you just found. If you already called [[touchstone]]s, [[luckstone]]s and [[flint stone]]s, you can avoid [[loadstone]]s more easily.
+* [[Autopickup exception]]s can match on what an object class is called.
+
+== Removing a name ==
+To remove the name given to an object or class of objects, enter a name that consists only of spaces. If you press enter at the name prompt without typing anything at all, it is treated as canceling the naming attempt, and the object will keep its previous name.
+
+== SLASH'EM ==
+In [[SLASH'EM]], in addition to #naming [[Sting]] and [[Orcrist]], you can also give the name "[[Elfrist]]" to an [[orcish spear]].
+
+[[Category:Extended commands]]
+{{nethack-343}}}
+&&%s&& %s Naming artifacts {149433 2022-12-17T01:55:05Z {4001279 Umbire the Phantom} grunt {{For2|the method for creating artifacts|[[Sting]] or [[Orcrist]] (and in [[SLASH'EM]] also [[Elfrist]])}}
+The '''naming artifacts''' trick refers to an [[bug|exploit]] in certain versions of ''[[NetHack]]'' that let you [[identify]] certain item types.
+
+==Description==
+Early versions of NetHack, such as [[NetHack 3.0.0]], kept track of which items are [[artifact]]s through their names, allowing a flexible artifact set (i.e., multiple artifacts can be of the same item type) without needing separate fields in the object structure to track artifact status.  As a consequence of this mechanic, the game needed to prevent non-artifacts being turned into artifacts via naming them (e.g. naming a long sword "Excalibur" to turn it into [[Excalibur]]).  So if you tried to name a non-artifact with the name of an artifact of the same base type, the game would prevent you and you will mis-engrave. ("Your hand slips...")
+
+In later versions of NetHack, items used a separate "artifact flag" to identify whether they were artifacts (and which artifact they were), meaning that this mechanic was no longer necessary to prevent inadvertent creation of artifacts, but it remained in the codebase. This made it possible to identify items; for example, naming a helmet "The Mitre of Holiness" would fail ''if and only if'' the helmet is a helm of brilliance.
+
+By this exploit, you could identify (or rule out) the following items:
+
+{| class="wikitable"
+!Appearance !! Item type !! Artifact name
+|-
+|[[amulet]] || [[amulet of ESP]] || [[The Eye of the Aethiopica]]
+|-
+|[[gray stone]] || [[luckstone]] || [[The Heart of Ahriman]]
+|-
+|magic [[helmet]]* || [[helm of brilliance]] || [[The Mitre of Holiness]]
+|}
+
+<nowiki>*:</nowiki> The appearances of magic helmets are [[randomized appearance|randomized]] - [[plumed helmet]], [[etched helmet]], [[crested helmet]], and [[visored helmet]].
+
+Although this exploit never appeared on the official bug list, it was fixed in [[NetHack 3.6.0]]; naming any item in the the appropriate category, if you haven't identified its type, with the appropriate name, will mis-engrave whether or not the item's type is the artifact's base. Thus, attempting to name an unidentified gray stone "The Heart of Ahriman" will fail, regardless of whether it's a luckstone or touchstone, but if you've formally identified it as a touchstone you can name it successfully (and ineffectively).
+
+===Post-3.4.3===
+The original fix in 3.6.0 still allowed a slightly different exploit with the same results, relying on the fact that formatting (capitalization and article placement) is corrected only for the actual type -- if naming the item in all lowercase, the exploit still works. Similarly, if using the correct capitalization but dropping the article (e.g. naming a [[gray stone]] "Heart of Ahriman" instead of "[[The Heart of Ahriman]]"), the missing article will be inserted only if the type matches the artifact. [https://github.com/NetHack/NetHack/commit/d886b43107d57235ca0d7d464ab2a9f8660b855b This will be fixed in NetHack 3.7.0].
+
+==History==
+NetHack 3.0.0 lacked an artifact marker on items, but instead checked the name and object base type of an item to determine whether it is an artifact; this allowed naming Sting or Orcrist to work, but the game had to forbid naming attempts that would create other artifacts. In the code:
+
+* [[NetHack_3.0.0/do_name.c#line157]] which causes your hand to slip if you try – although with a different message.
+* See [[NetHack_3.0.0/weapon.c#line58]] for a call from the weapons code to the spec_abon function that determines the to-hit bonus of an artifact, or [[NetHack_3.0.0/weapon.c#line143|line143]] or [[NetHack_3.0.0/mhitu.c#line674]] for other similar calls.
+* [[NetHack_3.0.0/artifact.c#line237]] contains the definition of spec_abon, which calls the function get_artifact to determine whether an item is an artifact.
+* get_artifact in [[NetHack_3.0.0/artifact.c#line109|line109]] compares the base type and name of the item to those in the artifact tables [[NetHack_3.0.0/artifact.c#line12|above]].
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], the artifact naming trick remains unpatched, and is even more effective due to the many new artifacts.
+
+{| class="wikitable"
+!Appearance !! Item type !! Artifact name
+|-
+|[[bag]] || [[bag of holding]] || [[Wallet of Perseus]]<ref>Trivially identifiable in SLASH'EM with the showweight option enabled.</ref>
+|-
+|[[candle]] || [[magic candle]] || [[The Candle of Eternal Flame]]<ref>Trivially identifiable by having a light radius of 3, vs. 2 for normal candles.</ref>
+|-
+|[[amulet]] || [[amulet of ESP]] || [[The Eye of the Aethiopica]]
+|-
+|[[gray stone]] || [[luckstone]] || [[The Heart of Ahriman]]
+|-
+|magic [[boots]] || [[speed boots]] || [[Whisperfeet]]
+|-
+|magic [[cloak]] || [[cloak of displacement]] || [[Deluder]]
+|-
+|magic [[gloves]] || [[gauntlets of dexterity]] || [[Gauntlets of Defense]]
+|-
+|magic [[helmet]] || [[helm of brilliance]] || [[The Mitre of Holiness]]
+|-
+|magic [[helmet]] || [[helm of telepathy]] || [[The Crown of Saint Edward]]
+|-
+|[[whistle]] || [[magic whistle]] || [[The Storm Whistle]]<ref>Easily identified by applying it.</ref>
+|-
+|[[amulet]] || [[amulet of ESP]] || [[The Medallion of Shifters]] (defunct Doppelganger quest artifact)
+|-
+|white [[gem]] || [[diamond]] || [[The Arkenstone]] (defunct Dwarf quest artifact)
+|-
+|[[ring]] || [[ring of invisibility]] || [[The One Ring]] (defunct Hobbit quest artifact)
+|}
+
+===GruntHack===
+In [[GruntHack]], items can now bear the same name as an artifact, removing the ability to determine object identities this way.
+
+==References==
+<references/>
+{{nethack-366}}
+{{slashem-7E7|offset=1}}
+[[Category:Bugs]]
+[[Category:Identification]]
+[[Category:Cheating]]}
+&&%s&& %s Naming artifacts trick {7046 2006-08-13T22:38:47Z {239 Eidolos} Redirect to [[Naming artifacts]]. #REDIRECT [[Naming artifacts]]}
+&&%s&& %s Artifact naming {7047 2006-08-13T22:39:19Z {239 Eidolos} Redirect to [[Naming artifacts]]. #REDIRECT [[Naming artifacts]]}
+&&%s&& %s Artifact naming trick {7048 2006-08-13T22:39:40Z {239 Eidolos} Redirect to [[Naming artifacts]]. #REDIRECT [[Naming artifacts]]}
+&&%s&& %s Luckstone {147685 2022-08-19T23:21:39Z {4001279 Umbire the Phantom} /* Maximizing Luck */* {{weapon
+  |color=gray
+  |glyph=*
+  |tile=[[Image:Gray stone.png]]
+  |name=luckstone
+  |appearance=[[gray stone]]
+  |smalldmg=1d3
+  |largedmg=1d3
+  |skill=sling
+  |cost=60
+  |noenchant=true
+  |weight=10
+  |material=mineral
+}}
+
+A '''luckstone''' is a type of [[gem]] that appears in ''[[NetHack]]''. It is a [[magical item]] that modifies a player's base [[Luck]] and Luck timeout while carried, and appears as a '''[[gray stone]]''' when unidentified.
+
+The luckstone is the [[base item]] for [[The Heart of Ahriman]], the [[Barbarian]] [[quest artifact]].
+
+Luckstones are the subject of a few [[rumor]]s.
+
+==Generation==
+Luckstones can be rarely found randomly within the walls of the dungeon and its branches, and are always generated [[uncursed]] with the exception of [[bones]] files. There is a guaranteed luckstone in each of the three variants of [[Mines' End]].
+
+[[Player monster]]s generated on the [[Astral Plane]] have a {{frac|15}} chance to be generated carrying a luckstone.{{refsrc|src/mplayer.c|283|version=NetHack 3.6.6}}
+
+==Description==
+A [[noncursed]] luckstone adds 3 Luck, and can exceed the ordinary maximum of 10 in this way; and a cursed luckstone subtracts 3 Luck. Luckstones carried in containers (e.g. bags) have no effect on Luck. A cursed luckstone prevents the timeout of negative Luck, blessed ones prevent the timeout of positive Luck and uncursed ones prevent both. For example, if you have a blessed luckstone and [[jump]] a lot in [[Sokoban]], your total Luck will eventually time out to three. While carrying the Amulet of Yendor, Luck times out more rapidly unless it is prevented from timing out by a luckstone.
+
+A handful of other objects in the game, typically artifacts, can also [[:Category:Luck items|function as luckstones]] (e.g. [[The Tsurugi of Muramasa]] and the [[The Orb of Fate]]). Multiple luckstones and/or luck items have no ''cumulative'' effect: you will get the blessed luckstone effect if you have strictly more blessed than cursed luck items in your open inventory, you get the cursed effect if you have more cursed luck items, and you get the uncursed effect if you have an equal amount of blessed and cursed luck items or all of them are uncursed.
+
+==Strategy==
+You should formally identify the [[beatitude]] of your luckstone, i.e. via [[altar]] or [[identify]]ing it, as soon as possible so you can see when it gets cursed. An uncursed luckstone tends to be sufficient as long as your Luck is not below its baseline value;<ref name="base">This is 1 on full moons, -1 on Friday the 13th, 0 with both of the above, and 0 otherwise.</ref> however, blessing it additionally allows any bad Luck you accumulate to reliably time out, and acts as a buffer against [[curse items|item-cursing]] effects.
+
+A backup luckstone carried in a [[container]] or left in a [[stash]] may be useful in case your primary luckstone becomes cursed, especially assuming means of uncursing are limited; keeping spare named blessed luckstones in your inventory can help you retain positive luck after facing a curse-slinging monster, especially in [[Gehennom]]. Cursed luckstones are considered a minor [[trouble]] like most cursed items - though cursed items are usually higher priority than other minor troubles, the bad Luck makes prayer much less reliable compared to other forms of curse removal.
+
+===Identification===
+{{main|Gray stone#Identification|l1=Identifying gray stones}}
+If you find a gray stone, '''''do not''''' pick it up right away. First, make sure it is not a [[loadstone]] by kicking it; see the article linked above for more details). If it is, #name or #call it on the floor (if you can) and leave it alone. If not, and you are an [[Archaeologist]], you can safely use your own starting touchstone to identify it.
+
+For non-Archaeologists, the second test is to rub it on an iron item: a [[touchstone]] will produce a "scritch, scritch" noise. Non-Archaeologists will want to keep a touchstone, as a blessed one is useful for identifying gems.
+
+If both tests are negative, the gray stone is either a luckstone or [[flint stone]]. You should pick it up and type-#name it until you get two different kinds or have a chance to [[price-id]] it: luckstones cost 60 zm, while flint doesn't interest shopkeepers. If a monster with the attribute "likes magic" picked it up, it's not flint.
+
+As long as you don't know whether it is a luckstone or flint stone, treat it as a luckstone. Luckstones are generated uncursed, so unless you have bad Luck or found it in a bones file, they are safe to carry around.
+
+===Maximizing Luck===
+{{Main|Luck#Ways to change your Luck}}
+Luckstones are typically vital to any [[ascension kit]]. Once you have a known luckstone or other similar item to prevent Luck timeout, you want to max out your Luck, ideally best done before you go to Gehennom. Good ways to increase your Luck are:
+
+* Throwing precious gems to co-aligned [[unicorn]]s; formally identified gems give 5 Luck each, while type-named ones give 2.
+* Sacrificing powerful monsters on a coaligned [[altar]]; you gain 5/24 of the value in Luck, and the value is usually equal to that monster's difficulty, with a few exceptions.
+
+Most players will want to keep their luckstone in their main inventory at all times once they have maxed out their [[Luck]], though there are notable exceptions to this max-and-keep Luck strategy - a cursed luckstone is generally best kept in a container, as does any luckstone found on a bones level until you can verify its beatitude. There are some notable exceptions, however:
+
+* Altar work requires Luck of at most 9 to avoid getting [[crowned]] when [[pray]]ing, so that it can remain readily available; this is typically the most significant Luck-based scenario for many players. Crowning significantly lengthens prayer timeout, though it does provide several benefits in return (e.g. most of the core [[resistance]]s and an [[artifact weapon]]).
+* An ''uncursed'' luckstone in Sokoban may be worth putting away temporarily in order to allow Luck penalties from any "illegal" moves you make to time out.
+
+For those seeking to avoid premature crowning or manage their Luck for other reasons, the easiest method is to keep your luckstone out and max out your Luck, then lower it by:
+
+** Beaking [[mirror]]s
+** Squeezing through boulders or jumping in Sokoban
+** Breaking [[egg]]s [[Sit|laid by you]]
+** Kicking a cross-aligned altar.
+* If you don't mind the tedium and are very conscientious, it is somewhat safer to bag it and take it out only when it prevents Luck timeout: this is on turns divisible by 600, or by 300 if your god is angry OR if you are carrying the [[Amulet of Yendor]] (although you could just drop the Amulet).
+** Alternately, if your Luck is below its baseline value,<ref name="base"/> drop or bag all non-blessed luckstones until you can either fix it or wait it out; the conservative-yet-tedious option is to do so specifically on each 300th or 600th turn, as above.
+* Blanking [[scroll]]s and [[potion]]s by stepping into water becomes inefficient with high Luck.
+
+==History==
+The luckstone is introduced in [[NetHack 3.0.0]].
+
+From [[NetHack 3.1.0]] to [[NetHack 3.4.3]], including some variants based on these versions, it is possible to determine if any given gray stone was a luckstone by trying to name it "The Heart of Ahriman" - if the stone was a luckstone, your hand would slip and give it another name, and if the stone is any other type, the attempt would succeed. This is called the "[[naming artifacts]]" exploit. 
+
+This was fixed in [[NetHack 3.6.0]]: attempting to name ''any'' unidentified gray stone "The Heart of Ahriman" will fail, regardless of the stone's actual identity.
+
+==Origin==
+A luckstone, or "stone of good luck", is one of the many items derived from ''[[Dungeons & Dragons]]'', where it is among the treasures listed in the 1st Edition ''Dungeon Masters Guide''. A stone of good luck is a rough piece of polished agate or similar mineral that grants its holder +1 (+5% where applicable) on all dice rolls involving potential bad outcomes; the luck it bestows does not affect rolls for to-hit, damage or spell failure. Additionally, it gives the holder a +1-10% bonus on rolls for determination of magic items or division of treasure (at the owner's discretion).
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], [[upgrading]] a flint stone has a 50% chance of turning it into a luckstone.
+
+===ZAPM===
+In [[ZAPM]], the [[rabbit's foot]] is roughly analogous to a blessed luckstone.
+
+===UnNetHack===
+In [[UnNetHack]], [[evil eye]]s have a Luck-stealing gaze that can be resisted {{frac|3|4}} of the time with a blessed luckstone, or else resisted completely if you are wielding a non-cursed weapon that acts as a luckstone (i.e., [[Luck Blade]] or [[The Tsurugi of Muramasa]]). Evil eyes are also instantly killed if hit with a blessed luckstone, but healed if hit with a cursed one.
+
+===dNetHack===
+In [[dNetHack]], a luckstone can be found at the head of the Lethe river in the [[Neutral Quest (dNethack)|Neutral Quest]]. The Heart of Ahriman's base item type is now a [[ruby]] instead of a luckstone.
+
+Either a luckstone or the bonus Luck from a full moon is required for crowning. [[Convict]]s have a cap on Luck benifits from luckstones, and carrying more luckstones raises that cap - they also only get +1 Luck per luckstone, up to a maximum of +3.
+
+===SpliceHack===
+In [[SpliceHack]], you can combine a luckstone with a [[scroll of identify]] at a [[furnace]] to create a [[crystal ball]].
+
+===EvilHack===
+In [[EvilHack]], a luckstone no longer prevents Luck from timing out, but instead heavily slows Luck timeout dependent on its beatitude; which beatitude affects the timeout of good and/or bad Luck is unchanged from vanilla ''NetHack''.
+
+Items with the "excellence" [[object property]] act as luckstones when worn or wielded.
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Gems]]
+[[Category:Luck items]]}
+&&%s&& %s Silver saber {147328 2022-08-08T04:19:19Z {4001483 Cathartes} /* Saber skill */ scimitars in 3.7.0 {{weapon
+ |color=silver color
+ |tile=[[image:silver saber.png]]
+ |name=silver saber
+ |smalldmg=1d8+(1d20)
+ |largedmg=1d8+(1d20)
+ |skillraw=[[silver saber|saber]]
+ |cost=75
+ |weight=40
+ |material=silver
+}}
+
+The '''silver saber''' is a type of sword that appears in ''[[NetHack]]''. It is made of [[silver]].
+
+==Saber skill==
+{{saber skill table}}
+
+The silver saber is the only weapon in vanilla to use the saber skill. [[Grayswandir]] and [[Werebane]] are [[Artifact weapon|artifact]] silver sabers.
+
+{{upcoming|NetHack 3.7.0|[[Scimitar]]s now use saber skill.  There is no longer a scimitar skill.  Barbarians can now get Skilled in saber. ({{commit|296a3ac246ae12218eccff46d3ef79f46eb9068f|commit 296a3ac2}})}}
+
+==Generation==
+Silver sabers make up about 0.6% of randomly generated weapons (on the floor, as [[death drop]]s, or in [[shop]]s). [[Watch captain]]s and [[Yendorian army]] captains have a 50% chance to be [[Monster starting inventory|generated with one]].{{refsrc|src/makemon.c|205|version=NetHack 3.6.6}}
+
+==Strategy==
+The silver saber is a respectable weapon in its own right, and is a common secondary weapon when #[[twoweaponing]] for the bonus damage it deals against silver-hating monsters such as [[shade]]s, [[demon]]s, [[lycanthrope]]s, and [[vampire]]s. However, as they are rarely generated, players will often consider killing the watch captain in [[Minetown]] for one.
+
+Players who cannot find a saber and have bad luck with the watch captain's weapon generation (or else do not wish to risk themselves or their pets) can search [[Fort Ludios]] if it appears during that game, and may encounter at least a captain or two by the time they reach [[Gehennom]].
+
+===Average damage calculation===
+The average damage calculations in the following table do not include bonuses from [[Skill|weapon skills]], [[strength]], or from using a [[blessed]] weapon against [[undead]] or [[demon]]s.
+{|class="wikitable"
+!Weapon
+!Not silver-hating
+!Silver-hating
+|-
+| +0 silver saber
+| <math>\frac{1+8}{2}=\bold{4.5}</math> 
+| <math>\frac{1+8}{2}+\frac{1+20}{2}=\bold{15}</math>
+|-
+| +7 silver saber
+| <math>\frac{1+8}{2}+7=\bold{11.5}</math> 
+| <math>\frac{1+8}{2}+\frac{1+20}{2}+7=\bold{22}</math>
+|}
+
+==History==
+The silver saber first appears in [[NetHack 3.1.0]], where Grayswandir was introduced - Werebane, formerly a [[long sword]], had its [[base item]] changed to a silver saber in this version.
+
+==Origin==
+{{Wikipedia|Saber}}
+The saber is a curved, single-edged sword with a cross-guard connecting to the pommel (tip of the hilt). It descends from the similar West Asia [[scimitar]], which has a simple cross-guard.
+
+The blade of a saber is backward-curved as opposed to the forward curving associated with many similar sword, and was designed for use by mounted cavalry, such as the Central European hussars and the light cavalry of the 16th-to-19th centuries. The saber's cross-guard was improved as the development of firearms made many forms of armor ineffective.
+
+==Variants==
+In variants with [[object materials]] systems, the silver saber is instead simply a '''saber''' with a default material of [[iron]], and can also generate made of silver among other compatible materials. Some variants also add additional weapons that use the saber skill.
+
+===Convict patch===
+In the [[Convict patch]] and variants that implement it, [[prison guard]]s have a {{frac|2}} chance to be generated with a silver saber.
+
+===SLASH'EM===
+[[SLASH'EM]] adds a new saber weapon in the [[rapier]].
+
+===dNetHack===
+In [[dNetHack]], the default [[Noble quest]] [[nemesis]], the [[Rebel Ringleader]], will always generate with a silver saber. [[Golem (dNetHack)|Argentum golems]] also have a {{frac|6}} of their starting silver dagger being replaced with a silver saber.
+
+===NetHack brass===
+In [[NetHack brass]], silver sabers have been removed and replaced with standard iron sabers. Grayswandir retains its silver damage as a unique property of the artifact rather than an intrinsic property of the base item.
+
+The [[scimitar]] skill has been phased out, and scimitars use the saber skill instead.
+
+===SlashTHEM===
+In [[SlashTHEM]], the Rebel Ringleader retains her silver saber and serves as the nemesis for all Nobles.
+
+==Encyclopedia entry==
+{{encyclopedia|Flashed all their sabres bare,
+Flashed as they turned in air,
+Sab'ring the gunners there,
+Charging an army, while
+All the world wondered:
+Plunged in the battery smoke,
+Right through the line they broke;
+Cossack and Russian
+Reeled from the sabre-stroke
+Shattered and sundered.
+Then they rode back, but not--
+Not the six hundred.
+|[ The Charge of the Light Brigade,
+by Alfred, Lord Tennyson ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Weapons]]}
+&&%s&& %s Hallucinating {7158 2006-08-14T03:54:05Z {239 Eidolos} Redirect to [[Hallucination]]. #REDIRECT [[Hallucination]]}
+&&%s&& %s Two-weapon {7159 2006-08-14T03:56:03Z {239 Eidolos} Redirect to [[twoweapon]]. #REDIRECT [[twoweapon]]}
+&&%s&& %s Twoweapon {144421 2022-02-05T22:08:12Z {4000498 NDos} /* Fighting with two weapons */ '''Twoweaponing''' is the act of wielding two weapons simultaneously to perform additional damage at the cost of overall accuracy, [[skill|skill points]], and time spent in training the ability. Twoweaponing is not available to all [[role]]s.
+
+== Beginning two-weapon combat ==
+To begin two-weapon combat, you must have your main-hand weapon wielded and your off-hand weapon in your secondary weapon slot. The easiest way to achieve this is usually to [[wield]] {{kbd|w}} your off-hand weapon, use {{kbd|x}} to swap your weapons, and then wield {{kbd|w}} your main-hand weapon. Finally, use {{kbd|shift|x}} to bring your intended off-hand weapon into your off-hand and start dual-wielding.  If successful, you have a DEX/20 chance of ''not'' using a turn.{{refsrc|wield.c|542}}
+
+=== Restrictions and prerequisites ===
+<div class="thumb tright">{{Two weapon combat skill table}}</div>
+
+If you are not polymorphed, your role must be one that can reach at least ''Basic'' in the [[#Two weapon combat skill|two weapon combat skill]]. If you are polymorphed, it must be into a [[#Two-weapon combat while polymorphed|form that can fight with two weapons]].
+
+The two items you try to wield must both be weapons or weapon-tools, and they must both be [[one-handed]]. You cannot wield two weapons while wearing a [[shield]].
+
+If your secondary weapon is cursed or you have greasy hands, it will slip to the floor when you try to dual-wield. If your secondary weapon becomes cursed while you are dual-wielding it, it will slip from your hand instead of being welded to it.
+
+If you wield an [[artifact weapon]] as a secondary weapon and attempt to twoweapon, you will not be able to engage in two-weapon combat in vanilla NetHack. A [[message]] will appear saying ''“Your <artifact weapon> resists being held second to another weapon!”''
+
+{{upcoming|NetHack 3.7.0|You can no longer dual-wield launchers (bows, crossbows, slings), ammo (arrows, crossbow bolts) or missiles (darts, shuriken, boomerangs).}}
+
+=== Two-weapon combat while polymorphed ===
+You can twoweapon while [[polymorph]]ed only if your polymorphed form has two weapon attacks, regardless of role restrictions.{{refsrc|mondata.h|107}} Most monsters with this property are not valid polymorphable forms. The complete list of polymorphable monsters that can twoweapon is:
+* {{monsymlink|dwarf lord}}
+* {{monsymlink|dwarf king}}
+* {{monsymlink|orc-captain}}
+* {{monsymlink|Aleax}}
+* {{monsymlink|ettin}}
+* {{monsymlink|elf-lord}}
+* {{monsymlink|Elvenking}}
+* {{monsymlink|marilith}}
+* {{monsymlink|pit fiend}}
+* {{monsymlink|balrog}}
+
+== Fighting with two weapons ==
+{|class="prettytable" style="text-align: center;"
+!colspan="3" style="font-size:larger;"|To-hit bonus
+|-
+!Skill level
+!One weapon
+!Two weapons
+|-
+|style="text-align: left;"|Unskilled
+| &minus;4
+| &minus;9
+|-
+|style="text-align: left;"|Basic
+| 0
+| &minus;7
+|-
+|style="text-align: left;"|Skilled
+| +2
+| &minus;5
+|-
+|style="text-align: left;"|Expert
+| +3
+| &minus;3
+|}
+
+{|class="prettytable" style="text-align: center;"
+!colspan="3" style="font-size: larger;"|Damage bonus
+|-
+!Skill level
+!One weapon
+!Two weapons
+|-
+|style="text-align: left;"|Unskilled
+| &minus;2
+| &minus;3
+|-
+|style="text-align: left;"|Basic
+| 0
+| &minus;1
+|-
+|style="text-align: left;"|Skilled
+| +1
+| 0
+|-
+|style="text-align: left;"|Expert
+| +2
+| +1
+|}
+
+You will always attempt to hit with the primary weapon first, and then the secondary.
+
+As of version 3.6.0, each weapon acts independently. Even if the first weapon misses, you will still attempt to hit with the second.
+
+However, there are some exceptions: you won't attempt to hit with the second weapon if the target was killed or knocked to another location, or if the first weapon was [[Stormbringer]] overriding the confirmation to attack peaceful or tame monsters. {{refsrc|uhitm.c|508}}
+
+The skill used by twoweapon is the lesser of your twoweapon skill and your skill in the weapon used. While twoweaponing, only your twoweapon skill is trained, not the skills of your primary or secondary weapons.{{refsrc|weapon.c|1282}}
+
+Note that twoweaponing skill bonuses for both to-hit and damage differ from single-weaponing skill bonuses (See [[Skill#Effects of skills|Skills]] for details).
+{{clear}}
+
+== Two weapon combat skill ==
+<div class="thumb tright">{{Two weapon combat skill table}}</div>
+
+When fighting with two weapons, your effective two-weapon skill level for each hand is the ''lesser'' of your two-weapon combat skill level and the relevant weapon skill level.
+
+The two-weapon combat skill is considered a weapon skill, in that it costs two skill slots to advance it from Basic to Skilled, and three more skill slots to advance to Expert.{{reffunc|weapon.c|slots_required}}
+
+Only roles able to reach at least Basic can engage in two weapon combat.
+
+=== Skill strategy ===
+Because the two-weapon to-hit bonus and damage bonus calculations always use the lesser of the two-weapon combat skill level and the appropriate weapon skill level, there is no point raising your two-weapon skill higher than those of the weapons you actually intend to use. In particular, Rogues should not advance to Expert if they intend to use [[long sword]]s or [[saber]]s, and Tourists should consider not advancing to Skilled if they intend to use long swords.
+
+Similarly, there is little benefit in raising your weapon skills higher than your two-weapon skill if you intend to dual-wield. Knights and Valkyries can reach Expert in long swords, for example, but only Samurai can actually wield two of them at that skill level.
+
+When wielding two weapons, to-hit calculations are only performed for the main-hand weapon. This means that off-hand weapon skill level is only used to determine the two-weapon bonus damage inflicted by your off-hand weapon. Raising your secondary weapon's skill level to Basic gives you +2 damage for one skill slot, but spending another two slots to reach Skilled's further +1 damage is often not worthwhile.
+
+== Strategy ==
+As a general rule, most roles capable of two-weapon combat should switch to it eventually. Only [[rogue]]s benefit from wielding a single one-handed weapon, and even they often prefer dual-wielding over [[backstab]] damage. Unlike two-handed weapons, a cursed off-hand weapon will slip from your hand instead of being welded to it.
+
+=== Choosing a secondary weapon ===
+When fighting with two weapons, an obvious choice for the first weapon is your favorite [[artifact weapon]]. For the second weapon, popular choices include:
+{|class="wikitable"
+!Weapon
+!Class
+!Damage (Small/Large)
+!Comment
+|-
+![[Silver saber]]<br />([[Saber]])
+|
+*'''Expert:''' Archeologist
+*'''Skilled:''' Knight, Rogue, Tourist
+*'''Basic:''' Barbarian, Samurai, Valkyrie
+|
+*<tt>1d8+(1d20)</tt>
+*<tt>1d8+(1d20)</tt>
+|Very useful for fighting demons in [[Gehennom]]
+|-
+![[Silver spear]]<br />([[Spear]])
+|
+*'''Expert:''' None
+*'''Skilled:''' Barbarian, Knight, Samurai, Valkyrie
+*'''Basic:''' Rogue, Tourist
+|
+*<tt>1d6+(1d20)</tt>
+*<tt>1d8+(1d20)</tt>
+|Very useful for fighting demons in [[Gehennom]]
+|-
+![[Trident]]<br />([[Trident]])
+|
+*'''Expert:''' None
+*'''Skilled:''' Barbarian
+*'''Basic:''' Knight, Tourist, Valkyrie
+|
+*<tt>1d6+1</tt>
+*<tt>3d4</tt>
+|High damage versus large monsters
+|-
+![[Crysknife]]<br />([[Knife]])
+|
+*'''Expert:''' Rogue
+*'''Skilled:''' Samurai, Tourist
+*'''Basic:''' Archeologist, Knight
+|
+*<tt>1d10</tt>
+*<tt>1d10</tt>
+|Good damage versus small monsters, but hard to make and keep
+|-
+![[Katana]]<br />([[Long sword]])
+|
+*'''Expert:''' Knight, Samurai, Valkyrie
+*'''Skilled:''' Barbarian, Rogue
+*'''Basic:''' Tourist
+|
+*<tt>1d10</tt>
+*<tt>1d12</tt>
+|High damage, and uses the long sword skill
+|-
+![[Elven broadsword]]<br />([[Broadsword]])
+|
+*'''Expert:''' ''None''
+*'''Skilled:''' Barbarian, Rogue, Samurai, Knight, Valkyrie
+*'''Basic:''' Tourist
+|
+*<tt>1d6+1d4</tt>
+*<tt>1d6+1</tt>
+|Easy to find and hits small monsters hard
+|}
+
+== Variants ==
+=== SLASH'EM ===
+For [[SLASH'EM]] players, the commands to activate the '''two-handed combat''' skill are '''#twoweapon''' or '''#2weapon'''. In SLASH'EM, artifacts do not refuse to be two weaponed in a secondary position, and two artifacts can be wielded at once (although, this forfeits the off-hand artifact's on-wield abilities). This introduces some interesting weapon combinations.
+
+Only certain roles and certain races can fight two-handed. Of the game's many races, only [[human (starting race)|humans]], [[Elf (starting race)|elves]] and [[dwarf|dwarves]] can twoweapon. Annoyingly, other races might still see "two-handed combat" in their #[[enhance]] screen even though they cannot use it. Attempting to activate two-handed combat produces the message, "<Your race> <Your role> aren't able to use two weapons at once."{{refsrc|wield.c|506|version=SLASH'EM 0.0.7E7F2}}{{refsrc|mondata.h|123|version=SLASH'EM 0.0.7E7F2}}
+
+SLASH'EM roles that can twoweapon, in addition to those in vanilla NetHack, are [[Flame Mage]], [[Ice Mage]], and [[Yeoman]]. All can reach Skilled proficiency. [[Duergar]]s and [[bearded devil]]s can also twoweapon.
+
+=== SporkHack ===
+In [[SporkHack]], there are a number of significant changes to two-weapon fighting. First, [[Ranger]]s and [[Cavemen]] can fight two-handed, albeit only at basic skill. Second, and more significantly, there are restrictions on what weapons can be wielded in the off hand, based on the player's twoweapon skill. At basic or unskilled, you can use [[daggers]], [[knives]], and other weapons that weigh 10 or less. At skilled, you can use [[mace]]s, [[short sword]]s, [[spear]]s, and others weighing 20 or less, and at expert, [[long sword]]s, [[broadsword]]s, and [[saber]]s become available. Several weapons have had their weights adjusted to fit into this scheme.
+
+Wielding a too-heavy weapon in your off hand leads to heavy to-hit penalties, on the order of &minus;20. This is much more significant than it would be in vanilla NetHack since SporkHack has altered the to-hit mechanics and given late-game monsters better [[armor class]].
+
+This seriously alters weapon selection, especially for classes like [[Archaeologist]]s and [[Barbarian]]s. Particularly, [[Rogue]]s and [[Samurai]] will now be the only roles likely to wield an off-hand [[silver saber]], which was formerly among the strongest off-hand choices. To compensate somewhat, a few new weapons including the [[silver short sword]] have been added.
+
+=== dNethack ===
+[[dNethack]] ported off-hand weight restrictions from '''SporkHack'''.
+
+== References ==
+<references/>
+{{nethack-361|offset=2}}
+{{slashem-7E7|offset=1}}
+{{featured}}
+[[Category:Extended commands]]}
+&&%s&& %s Iron {146926 2022-07-22T13:31:01Z {4001279 Umbire the Phantom} /* dNetHack */ '''Iron''' is the material composing a large portion of the [[item]]s in the [[Dungeons of Doom]]. Iron can [[erosion|corrode or rust]]. Rubbing iron on a [[touchstone]] produces its signature "scritch, scritch." Common iron items include [[long sword]]s, [[skeleton key]]s, and most [[amulet]]s. Most common metal armors, such as [[orcish helm]]s or [[ring mail]], are made out of iron.
+
+Hitting a [[brown pudding|brown]] or [[black pudding]] with iron splits it into two.{{refsrc|uhitm.c|1001}} [[Polypiling]] iron objects may generate an [[iron golem]].{{refsrc|zap.c|1081}}
+
+==Variants==
+===UnNetHack===

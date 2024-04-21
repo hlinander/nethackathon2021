@@ -1,0 +1,1000 @@
+
+===EvilHack===
+In addition to including the Convict role and giving iron balls the flail skill, [[EvilHack]] also adds the [[triple-headed flail]], a two-handed weapon which serves as the base item for the artifact flail [[Butcher]]. Butcher is Yeenoghu's trademark flail, and he will always generate with it; [[gnoll]]s also have a {{frac|2}} chance of generating with a flail.
+
+At a [[Forge (dungeon feature)|forge]], you can combine a mace and a [[morning star]] to create a flail; you can also combine a flail with a mace to create a [[war hammer]], or combine one with a [[spear]] to create an [[aklys]].
+
+==See also==
+* [[Morning star]]
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Weapons]]}
+&&%s&& %s Nunchaku {24775 2008-01-22T02:51:32Z {575 MysterX} Redirecting to [[Flail]] #REDIRECT [[flail]]
+[[Category:Weapons]]}
+&&%s&& %s Bullwhip {147829 2022-08-22T02:54:06Z {4001279 Umbire the Phantom} /* Variants */ remove slex, rewrite other slash stuff {{weapon
+  |color=brown
+  |name=bullwhip
+  |tile=[[image:bullwhip.png]]
+  |smalldmg=1d2
+  |largedmg=1
+  |skillraw=[[bullwhip|whip]]
+  |cost=4
+  |weight=20
+  |material=leather
+}}
+
+A '''bullwhip''' is a type of [[weapon]] that appears in ''[[NetHack]]''. It is made of [[leather]].
+
+==Generation==
+All [[Archeologist]]s start with a +2 bullwhip.{{refsrc|src/u_init.c|29|version=NetHack 3.6.6}}
+
+[[Balrog]]s are [[Monster starting inventory|always generated with]] a bullwhip, and [[horned devil]]s also have a 25% chance of being spawned with a bullwhip. In the balrog's case, the order of monster weapon preference means they will never wield it unless they somehow lose their guaranteed [[broadsword]].{{refsrc|src/weapon.c|639|version=NetHack 3.6.6}}
+
+[[Player monster]]s have a chance to receive a bullwhip as a random melee weapon; [[Archeologist (player monster)|archeologists]] have a 50% chance of their melee weapon being replaced with a bullwhip.{{refsrc|src/mplayer.c|165|version=NetHack 3.6.6}}
+
+==Whip skill==
+{{whip skill table}}
+
+Both bullwhips and [[rubber hose]]s use the whip skill. There are no [[artifact weapon|artifact]] whips.
+
+==Effects==
+Bullwhips are low-damage weapons that are ineffective against [[thick-skinned]] monsters. In addition to its use as a weapon, however, it can be [[applied]] to snap it in a direction and perform a number of special tricks:<ref name="Use Whip">{{function|apply.c|use_whip}}</ref>
+* Attack a monster normally.
+* [[#Disarming|Disarm an enemy]].
+* [[#Picking up items|Retrieving items]].
+* Wrap around [[furniture]], a [[boulder]], or a [[large]] monster to pull yourself out of a [[pit]].
+
+The success of these tricks does not depend on your actual [[skill]] with the whip. Instead, proficiency is based on your [[dexterity]], whether you are an [[Archaeologist]], and whether you are [[fumbling]]; whip tricks will always fail unless you are proficient. A character who is not an archaeologist must have a dexterity higher than 14 to be considered proficient.
+
+''NetHack'' makes the following assumptions to determine what to do when a whip is applied:<ref name="Use Whip"/>
+
+* If you are in a pit, it is assumed that you are attempting to get out of the pit, unless you are applying the whip towards a small monster, in which case it is assumed that you are trying to attack it.
+* If you are not in a pit, and the monster is wielding a weapon, then you are attempting to disarm a monster.
+* If you are not in a pit and you apply the whip towards a monster without a wielded weapon, then you are attempting to hit the monster.
+* You cannot perform any tricks (besides attacking monsters) if you are [[confused]] or [[engulfed]].
+
+===Disarming===
+If applying a bullwhip at an enemy disarms them, the disarmed weapon may end up on the floor at the enemy's feet, on the floor at your feet, or in your inventory, depending on a 'proficiency' check. Disarming a pet does not reduce its [[tameness]], but disarming a peaceful monster will anger it.
+
+If the target is wielding a non-cursed weapon and you succeed, disarming does not break [[weaponless]] conduct. Trying to disarm non-pets can break the conduct because you always have a 10% chance of attacking instead, and you can [[options#safe_pet|decline]] only for pets.
+
+Disarming is the only trick that whip-wielding monsters can use. It functions similarly to the same trick used by the player, with the following exceptions:{{refsrc|src/muse.c|1872|version=NetHack 3.6.0|comment=whip use by monsters}}
+* An [[iron ball]] is too heavy to be disarmed.
+* A horned devil or other [[silver]]-hating monster will never use a whip to pull a silver item from the player's hands into its inventory; if one would, the item is dropped at the player's feet instead.
+
+===Picking up items===
+Applying a bullwhip down towards an item while you are riding a [[steed]] or [[levitating]] will pick it up off the floor or out of a [[pool]] if applicable. A [[cockatrice]] corpse will not [[petrify]] you when picked up in this manner.{{refsrc|src/pickup.c|252|version=NetHack 3.6.0}} When applying a whip downwards while riding your steed, there is always some chance (20-33%) that you will hit your steed instead.{{refsrc|src/apply.c|2499|version=NetHack 3.6.0}}
+
+{{upcoming|NetHack 3.7.0|Previously, you could snag an item from the bottom of water or lava using a bullwhip. This is no longer possible, and applying a bullwhip toward lava can now burn or even destroy it.}}
+
+===Riding===
+Applying the whip to snap it at your steed will cause it to [[gallop]], temporarily increasing its speed but reducing its tameness; this includes hitting your steed while trying to pick up an item off the floor. 
+
+==Strategy==
+Bullwhips are viable utility items, primarily sought after for their ability to pry desirable weapons out of the hands of a [[humanoid]] pet and/or forcing it to pick up and wield a different (usually better) weapon. While disarming thankfully does not constitute pet abuse, you will anger any peaceful monsters you disarm - using a bullwhip to grab the [[Minetown]] [[watch captain]]'s [[silver saber]] is probably a [[Bad Idea]] if you expect to make off with it scot-free. Most monsters can wield bullwhips, but will prefer most other weapons over them, as indicated in the case of the balrog - though they will wield a whip over some weapons, such as [[quarterstaves]] and [[dagger]]s.
+
+Players looking to levitate frequently (e.g., [[Barbarian]]s using [[The Heart of Ahriman]]) will also want to carry a bullwhip with them in order to reach items on the floor, as well as those retrieving loot or thrown weapons from [[moat]]s - since this is reliant on dexterity rather than weapon skill, all roles can make use of this through varying amounts of stat exercise. '''''Beware:''''' snagging a wielded [[footrice]] [[corpse]] with one pulls it into your hands and [[stoning|turns you to stone]] unless you are wearing [[gloves]], in a stoning-resistant form, or are a [[golem]] (in which case you become a stone golem). However, picking up one off the floor this way is safe and will not endanger you.{{refsrc|src/pickup.c|256|version=NetHack 3.6.6|comment=apply.c does not call the usual check when using the whip to pick up the corpse off the ground, but does call it when a weaponized corpse is snatched.}}{{refsrc|src/apply.c|2714|version=NetHack 3.6.6}}{{refsrc|src/apply.c|2849|version=NetHack 3.6.6}} [[Flight]] will not allow you to pick up items from moats this way unless you are also levitating.
+
+Bullwhips can be used as an aid for [[riding]] players - in addition to increasing a steed's movement speed, all roles capable of advancing the whip skill can also advance the riding skill to basic. While the former can also be achieved by [[kick]]ing your steed, rendering the bullwhip somewhat redundant, it is still useful for picking up items off the floor while unskilled if you encounter one early enough.
+
+==Origin==
+The Archaeologist's starting bullwhip, along with the leather jacket and fedora, is one of the many trademark accessories of [[wikipedia:Indiana Jones|Indiana Jones]], the star titular character of a franchise of movies made by George Lucas and Steven Spielberg. Jones in turn is based on the heroes of 1930s pulp serials and inspired the Archaeologist role.
+
+==History==
+The bullwhip is introduced in [[NetHack 3.0.0]].
+
+In [[NetHack 3.4.3]], the bullwhip is often used to reliably disarm a [[figurine]] [[Archon]] and obtain [[Demonbane]] - monsters generated by figurines still spawn with their normal starting inventory in this version and some variants based on it. The bullwhip was also involved in a few [[Bugs in NetHack 3.4.3|now-fixed bugs]]:
+
+* A player [[polymorph]]ed into a xorn cannot pick up items in pits, and could not fall into them; the primary workaround was to obtain levitation and apply a bullwhip downward towards the pit in question. This was bug C343-16, and was fixed on January 27, 2004.
+* [[Sunsword]] would continue to remain lit if snatched out of a monster's hands with a bullwhip. This was bug C343-106, and was fixed on July 15, 2005.
+* Applying a bullwhip while stunned or confused and at an edge of the map may cause a panic or crash. This was bug C343-383, and fixed prior to [[NetHack 3.6.0|the next version's]] release; the commits containing the fixes was pushed on February 23, 2009.<ref>[https://sourceforge.net/p/nethack/NetHack/ci/e11c136bc9d5e254ab97fa533d32cc8f25c4e53e Commit e11c13, NetHack 3.4.3 @ SourceForge]</ref><ref>[https://sourceforge.net/p/nethack/NetHack/ci/b71b3e920af4b143bdfcb0b443de68343f099235 Commit b71b3e, NetHack 3.4.3 @ SourceForge]</ref>
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], an Archeologist [[wield]]ing a bullwhip will not fall through [[trap door]]s; this does not require a dexterity check. Objects on the trap door might still be shoved through.{{refsrc|trap.c|359|version=SLASH'EM_0.0.7E7F2}} The [[Undead Slayer]] has a 25% chance of starting with a +2 bullwhip; this is derived from the ''Castlevania'' franchise, where the whip is frequently used by the Belmont clan.
+
+Bullwhips tend to see more use in SLASH'EM - players with powerful humanoid pets will want to enchant that pet's weapon so that it can take on late-game foes that [[Need +x weapon to hit|need enchanted weapons of a certain level to hit]]. Additionally, [[Vampire (starting race in SLASH'EM)|vampire]] characters will want a bullwhip and a source of levitation to retrieve items in moats or pits.
+
+====Messages====
+{{message|But thanks to your trusty whip ... You don't fall in.|A trap door opened under you, but you were an Archeologist wielding a bullwhip, preventing you from falling through.}}
+
+===SlashTHEM===
+In addition to SLASH'EM examples, [[SlashTHEM]] adds [[Liontamer]], an artifact bullwhip acts as the first [[sacrifice gift]] for [[Zookeeper]]s. Liontamer has +5 to-hit and +8 damage versus [[feline]]s.
+
+===UnNetHack===
+In [[UnNetHack]], an archeologist [[corpse]] can sometimes be found under a boulder trap, and may be accompanied by the former adventurer's bullwhip. The [[Ruins of Moria]] branch always has an uncursed fireproof bullwhip, wielded by the unique [[balrog]] [[Durin's Bane]].
+
+===dNetHack===
+[[dNetHack]] also features Durin's Bane, this time as the [[quest nemesis]] of the [[Dwarf (starting race)|dwarven]] [[Noble]]; it generates with a cursed +9 bullwhip.
+
+==Encyclopedia entry==
+{{encyclopedia|
+"Good," he said and, unbelievably, smiled at me, a smirk like
+a round of rotted cheese.  "What did your keeper use on you?
+A bullwhip?"
+|[ Melusine, by Sarah Monette ]}}
+
+== References ==
+<references/>
+
+[[Category:Weapons]]
+{{nethack-366}}}
+&&%s&& %s Bow {146462 2022-07-01T14:21:13Z {4001279 Umbire the Phantom}  {{weapon
+  |color=wood color
+  |tile=[[image:bow.png]]
+  |name=bow
+  |smalldmg=1d2
+  |largedmg=1d2
+  |skill=bow
+  |cost=60
+  |weight=30
+  |material=wood
+}}
+
+The '''bow''' is a type of [[weapon]] that appears in ''[[NetHack]]''. It is a one-handed [[launcher]] made of [[wood]] and designed for [[arrows]], and is used by [[wield]]ing it in your hand, then using {{kbd|t}} or {{kbd|f}} to shoot your arrows. 
+
+In addition to the regular bow, there are [[elven bow|elven]], [[orcish bow|orcish]], and [[yumi|Japanese]] bows. The [[Longbow of Diana]] is an [[artifact weapon|artifact]] bow.
+
+==Bow skill==
+{{bow skill table}}
+The following launchers use the bow skill:
+
+* bow
+* elven bow
+* orcish bow
+* yumi
+
+The following types of ammo use the bow skill:
+
+* arrow
+* [[elven arrow]]
+* [[orcish arrow]]
+* [[silver arrow]]
+* [[ya]]
+
+The bow skill is only exercised when you fire arrows from a wielded bow.
+
+==Generation==
+[[Human (starting race)|Human]] [[Ranger]]s start the game with a +1 bow and two separate stacks of +0 and +2 arrows.{{refsrc|src/u_init.c|115|version=NetHack 3.6.6}}
+
+[[Forest centaur]]s have a {{frac|2}} chance of [[Monster starting inventory|being generated]] with a bow and arrows.{{refsrc|src/makemon.c|464|version=NetHack 3.6.6}} [[Hunter]]s are always generated with a bow and arrows, and [[warrior]]s have a {{frac|3}} chance of generating with a bow and arrows.{{refsrc|src/makemon.c|298|version=NetHack 3.6.6}}{{refsrc|src/makemon.c|308|version=NetHack 3.6.6}} Finally, monsters capable of using weapons that have not been generated with one may receive a bow and some arrows.{{refsrc|src/makemon.c|535|version=NetHack 3.6.6|common=Default set of cases for generating weapons on "normal" monsters}}
+
+The fake [[bones]] pile in the [[Rogue level]] has a chance of containing a +1 bow and a stack of arrows.
+
+{{upcoming|3.7.0|The [[themed room]] containing the [[ghost]] of an adventurer and their "bones" pile has an independent 45% chance of including a bow and arrows in the pile.}}
+
+==Description==
+{{main|Arrow}}
+The enchantment of a bow contributes to its to-hit (accuracy), but not to damage; the arrows' enchantment contributes to both accuracy and damage. Wearing [[gauntlets of power]] and firing a bow gives a -2 to-hit penalty.
+
+==Strategy==
+As bows are one-handed, you can switch to one without removing your [[shield]], and wielding a [[cursed]] bow will still leave one hand free. Their enchantment is generally not important compared to that of the arrows fired from it.
+
+==History==
+Bows have been a part of the game since ''hack121'', a variant of [[Jay Fenlason's Hack]].
+
+From [[Hack 1.0]] to [[NetHack 3.2.3]], [[Cavemen]] started with a +1 bow and a stack of +0 arrows as a secondary weapon;<ref>[[Source:NetHack 1.3d/u_init.c#line53|NetHack 1.3d u_init.c, line 53]]</ref> [[NetHack 3.3.0]] replaced this with the modern [[sling]] and a stack each of [[flint stone]]s and [[rock]]s.<ref>[[Source:NetHack 3.0.0/u_init.c#line38|NetHack 3.0.0 u_init.c, line 38]]</ref> The [[defunct]] Elf role would start with a +1 bow and a stack of +0 arrows as their secondary weapon from [[NetHack 1.3d]] to [[3.0.10]];<ref>[[Source:NetHack 1.3d/u_init.c#line78|NetHack 1.3d u_init.c, line 78]]; [[Source:NetHack_2.3e/u_init.c#line83|NetHack 2.3e u_init.c, line 83]]</ref> from [[NetHack 3.0.0]] to 3.0.10, the game changes this to an elven bow and elven arrows if TOLKIEN is defined at compile-time.<ref>[[NetHack 3.0.0/u_init.c#line65|NetHack 3.0.0 u_init.c, line 65]]</ref>
+
+==Variants==
+===SLASH'EM===
+[[SLASH'EM]] makes bows two-handed weapons and adds a new type in the [[dark elven bow]]. The [[missile flurry]] technique only works with bow weapons, and grants a bonus shot with them for several turns depending on its level.
+
+In the [[Yeoman quest]], several bows can be found in a 2x2 room at the north of the inner ward, each with one silver arrow.
+
+===dNetHack===
+[[dNetHack]] adds several artifact bows:
+
+* [[Plague]] is a chaotic-aligned [[bone]] bow that confers [[poison resistance]] and [[sickness resistance]] while wielded; it grants +1d5 to-hit and +1d7 [[poison]] damage to arrows fired from it, and such arrows are treated as poisoned (similar to dipping in a [[potion of sickness]]). When [[invoked]], arrows fired from Plague are treated as filth-crusted instead for the next 13 turns, with the filth having a {{frac|5}} chance of instantly killing non-resistant monsters - instantly killing a monster causesa virulent explosion that deals 6d6 damage to surrounding monsters, with its size loosely dependent on the killed monster's size.
+* [[Epoch's Curve]] is an unaligned wooden bow that appears as a "white ash longbow" when unidentified; it grants +5 to-hit and +1d6 to damage, and conveys [[teleport control]] when wielded. Invoking Epoch's Curve causes it to teleport: if not worn, it teleports away on its own; if on a no-teleport level, it first tries to warp you one level above, and warps you to the level below if that fails. Arrows fired from it that do not break return to you after five turns.
+* [[The Bow of Skadi]] is a lawful bow that [[Valkyrie]]s receive as their crowning gift; it grants +1 to-hit and +1d24 cold damage to arrows fired from it, and arrows that hit a target cause a 6d6 freezing explosion centered on that target, using up the arrow. The bow can also be read to learn the [[cone of cold]] spell.
+
+===EvilHack===
+In [[EvilHack]], the playable [[Centaur (starting race)|centaur]] race always starts with knowledge of all bow and crossbow-related weaponry, and gains a [[multishot]] bonus with either.
+
+===SlashTHEM===
+In addition to SLASH'EM changes, [[SlashTHEM]] adds [[Straightshot]], an [[artifact]] bow with +10 to-hit and +3 damage that serves as the first [[sacrifice gift]] for Rangers.
+
+==Encyclopaedia entry==
+{{encyclopedia|
+"Stand to it, my hearts of gold," said the old bowman as he passed from knot to knot.  "By my hilt! we are in luck this journey.  Bear in mind the old saying of the Company."
+"What is that, Aylward?" cried several, leaning on their bows and laughing at him.
+"'Tis the master-bowyer's rede: 'Every bow well bent.  Every shaft well sent.  Every stave well nocked.  Every string well locked.'  There, with that jingle in his head, a bracer on his left hand, a shooting glove on his right, and a farthing's-worth of wax in his girdle, what more doth a bowman need?"
+"It would not be amiss," said Hordle John, "if under his girdle he had four farthings'-worth of wine."
+|[ The White Company, by Sir Arthur Conan Doyle ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Launchers]]
+[[Category:Weapons]]}
+&&%s&& %s Elven bow {103910 2016-09-28T20:18:18Z {4000608 EtriganZola} /* SLASH'EM */ {{weapon
+  |color=wood color
+  |tile=[[image:elven bow.png]]
+  |name=elven bow
+  |appearance=runed bow
+  |smalldmg=1d2
+  |largedmg=1d2
+  |skill=bow
+  |cost=60
+  |weight=30
+  |material=wood
+}}
+
+An '''elven bow''' is a [[launcher]] for arrows. When [[identification|unidentified]], it is a '''runed bow'''. You should not bash monsters with it, or throw it—instead, [[wield]] it in your hands, then [[throw]] arrows (or [[firing|fire]] them from your quiver).
+
+For non-elven characters, an elven bow is basically the same as a regular [[bow]]. [[Elf (starting race)|Elves]], however, get the following bonuses:
+* <nowiki>+1</nowiki> [[to-hit]] bonus when using an elven bow (in addition to their normal bow bonus){{refsrc|dothrow.c|1294}}
+* <nowiki>+1</nowiki> [[multishot]] bonus when firing [[elven arrow]]s from an elven bow{{refsrc|dothrow.c|135}}
+* <nowiki>+1</nowiki> [[damage]] bonus when firing elven arrows from an elven bow{{refsrc|uhitm.c|668}}
+
+==SLASH'EM==
+In [[SLASH'EM]], an non-cursed elven bow has a 1 in 3 chance of adding an additional shot to the [[multishot]] roll, meaning a player that would normally only shoot 1 arrow will shoot d2 arrows 33% of the time, a player that would normally shoot d2 arrows will shoot d3 arrows 33% of the time, etc.{{refsrc|dothrow.c|175|version=SLASH'EM 0.0.7E7F2}} This bonus does not apply to [[dark elven bow]]s.
+
+== References ==
+
+<references />
+
+[[Category:Launchers]]
+[[Category:Weapons]]
+[[Category:Elven items|Bow]]
+{{nethack-343}}}
+&&%s&& %s Runed bow {13672 2006-10-08T08:00:35Z {467 Killian} #REDIRECT [[elven bow]] #REDIRECT [[elven bow]]}
+&&%s&& %s Orcish bow {98978 2015-12-20T12:37:10Z {4000080 ChasonBot}  {{weapon
+  |color=black
+  |tile=[[image:orcish bow.png]]
+  |name=orcish bow
+  |appearance=crude bow
+  |smalldmg=1d2
+  |largedmg=1d2
+  |skill=bow
+  |cost=60
+  |weight=30
+  |material=wood
+}}
+
+An '''orcish bow''' is a [[launcher]] for arrows. When [[identification|unidentified]], it is a '''crude bow'''. You should not bash monsters with it, or throw it—instead, [[wield]] it in your hands, then [[throw]] arrows (or [[firing|fire]] them from your quiver).
+
+For non-orcish characters, an orcish bow is basically the same as a regular [[bow]]. However, characters who started as an [[orc (starting race)|orc]] get a +1 [[multishot]] bonus when firing [[orcish arrow]]s from an orcish bow, even if they are polymorphed into a non-orcish form.{{refsrc|dothrow.c|139}}
+
+== References ==
+
+<references />
+
+
+{{stub}}
+
+[[Category:Launchers]]
+[[Category:Weapons]]
+[[Category:Orcish items|Bow]]
+{{nethack-343}}}
+&&%s&& %s Crude bow {13674 2006-10-08T08:05:45Z {467 Killian} #REDIRECT [[orcish bow]] #REDIRECT [[orcish bow]]}
+&&%s&& %s Yumi {148926 2022-10-27T09:23:56Z {4001279 Umbire the Phantom} touch-up {{weapon
+  |color=wood color
+  |tile=[[image:yumi.png]]
+  |name=yumi
+  |appearance=long bow
+  |smalldmg=1d2
+  |largedmg=1d2
+  |skill=bow
+  |cost=60
+  |weight=30
+  |material=wood
+}}
+
+A '''yumi''' is a type of [[launcher]] [[weapon]] that appears in ''[[NetHack]]''. It is a [[bow]] designed for use with [[ya]], and appears as a '''long bow''' when [[identification|unidentified]].
+
+==Generation==
+[[Samurai]] start each game with a +0 yumi and a stack of ya to use as ammo.{{refsrc|src/u_init.c|136|version=NetHack 3.6.6}}
+
+==Description==
+Samurai get +1 [[to-hit]], [[multishot]] and [[damage]] bonuses when firing ya from a yumi.{{refsrc|dothrow.c|158|version=NetHack 3.6.6}}{{refsrc|dothrow.c|1665|version=NetHack 3.6.6}}{{refsrc|uhitm.c|846|version=NetHack 3.6.6}} For other roles, it is essentially the same as a normal bow.
+
+==Strategy==
+The yumi provides a more-than-decent ranged option for Samurai in the early game.
+
+==History==
+The yumi is introduced in [[NetHack 3.1.0]]; in previous versions, Samurai instead started with a stack of [[shuriken]].<ref>[[NetHack 3.0.0/u_init.c#line200|NetHack 3.0.0 u_init.c, line 200]]; NetHack 3.0.10 u_init.c, line 206</ref>
+
+==Origin==
+{{wikipedia|Yumi}}
+As used in English, ''yumi'' refers more specifically to traditional Japanese asymmetrical bows, which includes the longer ''daikyū'' and the shorter ''hankyū'' used in the practice of kyūdō and kyūjutsu, or Japanese archery.
+
+The yumi was an important weapon of the samurai warrior during the feudal period of Japan, with ''ya'' as ammo, and their designed evolved from ''maruki yumi'' that date back to pre-3rd century CE: these were constructed with small saplings or tree limbs, and came in various sizes, with the majority of them being short with a centre grip. The first written record of the asymmetrical yumi appears in [[wikipedia:Book of Wei|the Book of Wei]], a Chinese historical manuscript dating  bacl to the 3rd century CE&mdash;the oldest one found to date was discovered in Nara Prefecture and estimated to be from the 5th century. The yumi underwent a change in length and construction method during the the Heian period (794–1185), then again to a two-piece bamboo-and-wood laminated yumi by the end of the 10th century&mdash;its construction evolved over the next several hundred years, and settled into its modern design by the 16th century.
+
+==Variants==
+===dNetHack===
+In [[dNetHack]], Samurai receive the [[Yoichi no Yumi]], a [[lawful]] [[artifact weapon|artifact yumi]], as their [[crowning]] gift. It grants +1d20 to-hit and double damage to ya fired from it, and can be [[invoked]] to create more ya similar to [[the Longbow of Diana]].
+
+===SlashTHEM===
+[[SlashTHEM]] adds the Yoichi no Yumi from dNetHack as one of the many new artifacts - it has the same traits as in dNetHack, but lacks any particular connection to Samurai. Yoichi no Yumi can be created by [[Duri]] at [[The Forge]].
+
+==Encyclopedia entry==
+{{encyclopedia|
+The samurai is highly trained with a special type of bow,
+the yumi.  Like the ya, the yumi is made of bamboo.  With
+the yumi-ya, the bow and arrow, the samurai is an extremely
+accurate and deadly warrior.
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Launchers]]
+[[Category:Weapons]]}
+&&%s&& %s Long bow {13676 2006-10-08T08:12:39Z {467 Killian} #REDIRECT [[yumi]] #REDIRECT [[yumi]]}
+&&%s&& %s Crossbow {145482 2022-04-13T13:01:41Z {187 Darth l33t} racial bonus and history {{weapon
+  |color=wood color
+  |tile=[[image:crossbow.png]]
+  |name=crossbow
+  |smalldmg=1d2
+  |largedmg=1d2
+  |skill=crossbow
+  |cost=40
+  |weight=50
+  |material=wood
+}}
+
+A '''crossbow''' is a type of [[launcher]] that appears in ''[[NetHack]]''. It is designed for [[crossbow bolt]]s, and should be [[wield]]ed prior to [[throw]]ing or [[firing]] them from your quiver, similar to a [[bow]] and [[arrow]]s. Enchanting a crossbow only increases its to-hit rate, not its damage. Crossbows are made of [[wood]].
+
+==Generation==
+All [[Gnome (starting race)|Gnomish]] [[Ranger]]s start the game with a +1 crossbow rather than a +1 bow;{{refsrc|src/u_init.c|115|version=NetHack 3.6.6}} crossbows and crossbow bolts are considered [[racial equipment]] for gnomes, though gnomish Rangers are the only case where this substitution applies.{{refsrc|src/u_init.c|230|version=NetHack 3.6.6}}
+
+Plains and mountain [[centaur]]s have a {{frac|2}} chance of generating with a crossbow and {{rn1|12|3}} bolts.{{refsrc|src/makemon.c|462|version=NetHack 3.6.6}} Crossbows can also be generated on any monster lacking the [[strong]] [[monster attribute]] that can use a weapon, but has not received one.{{refsrc|src/makemon.c|529|version=NetHack 3.6.6}}
+
+==Crossbow skill==
+{{crossbow skill table}}
+
+The crossbow is the only launcher to use crossbow skill, and [[crossbow bolt]]s are the only ammo to use this launcher. There are no [[artifact weapon|artifact]] crossbows.
+
+==Description==
+Crossbows always fire at their maximum range of 8 squares, rather than basing their range on [[strength]] as other [[missile]] weapons do. Instead, crossbows apply a [[multishot]] penalty if their user is below a certain strength threshold: gnomes must have at least 16 strength to obtain full multishot bonuses, while other races require 18 strength. Gnomes other than [[Healer]]s and [[Wizard]]s also gain a +1 multishot racial bonus when firing bolts from a crossbow.
+
+==Strategy==
+High-strength characters lacking a ranged weapon may choose to retrieve a crossbow from the [[Gnomish Mines]]; ammo for the crossbow is somewhat scarce compared to arrows, which are much more commonplace due to the various arrow types and [[arrow trap]]s. As with most launchers, you should [[Scroll of enchant weapon|enchant]] the bolts themselves (rather than the crossbow) in order to increase their damage; crossbow enchantment only affects their to-hit rate.
+
+[[Monk]]s looking to maintain [[weaponless]] conduct may elect to carry a crossbow and bolts on hand; Rogues can also get Expert in crossbow, making them an option for their long-term ranged weapon.
+
+Gnomish Rangers may get additional crossbow bolts in the early game from [[Gnome (monster class)|gnomes]], but may want to let a [[pet]] do the killing to avoid [[alignment record]] penalties. The centaurs in the [[Ranger quest]] provide a plentiful source during the midgame, but attack [[wand]]s may be a problem without [[reflection]] or the relevant resistances. Their [[quest artifact]], [[The Longbow of Diana]], uses a different skill and ammunition that is incompatible with crossbows; a gnomish Ranger may prefer to keep their crossbow and a large stack of enchanted crossbow bolts as their primary ranged attack, and carry the Longbow only for the extrinsic [[telepathy]].
+
+==History==
+Crossbows and their ammo have been present in the game since Hack 1.21, a variant of [[Jay Fenlason's Hack]]. Their special behavior with regards to range and multishot were introduced in [[NetHack 3.6.0]].
+
+==Variants==
+===SLASH'EM===
+In [[SLASH'EM]], crossbows are [[two-handed]] weapons. SLASH'EM also introduces an artifact crossbow, [[Hellfire]], that is [[chaotic]]-aligned and provides [[fire resistance]] when wielded; bolts fired from it that hit monsters create a fiery explosion in a 3x3 square centered on that monster. 
+
+[[Undead Slayer]]s have a chance of starting the game with a crossbow and bolts.
+
+===dNetHack===
+In [[dNetHack]], gnomish players are always given crossbows in place of regular bows. Gnomes get an extra die of weapon damage when firing crossbows, and player gnomes can attain Expert skill crossbow, regardless of role; [[The Rogue Gear-Spirits]] replaces The Longbow of Diana as the [[quest artifact]] for gnomish Rangers, and is obtained from the [[Gnomish Ranger Quest]].
+
+Crossbows no longer grant multiple shots at higher skill levels, instead increasing the damage dealt by a single crossbow bolt:
+
+* Basic or lower: 1x (bolt+enchantment) damage
+* Skilled: 2x (bolt+enchantment) damage
+* Expert: 3x (bolt+enchantment) damage
+
+In addition, each shot adds 3x the damage bonus from the current skill level (-5 Restricted, -2 Unskilled, +0 at Basic, +2 at Skilled and +5 at Expert). The extra damage is precision-based and does not apply against amorphous, stationary, or incorporeal monsters, which are assumed to lack discernible weak-points.
+
+There are two other artifact crossbows: 
+
+* Hellfire, which is similar to its SLASH'EM incarnation and grants fire resistance alongside explosive bolts.
+* [[The Unstoppable]], which causes any bolts fired from it to continue flying until they hit a wall, piercing or else flying past enemies.
+
+dNetHack also adds the [[droven crossbow]], a type of crossbow commonly used by [[Drow (monster)|drow]]; lawful droven [[Noble]]s receive the artifact droven crossbow [[Liecleaver]] as their [[crowning]] gift, and [[Wrathful Spider]] is a quest artifact droven crossbow given to female droven Priests, Rangers, Rogues, and Wizards.
+
+===GruntHack===
+In [[GruntHack]], crossbows now fire a set range regardless of strength, and require high strength to fire mulitple shots.
+
+===EvilHack===
+In [[EvilHack]], Monks no longer have the crossbow skill available; [[Centaur (starting race)|centaurs]] gain a +1 multishot bonus when using crossbows. This means that centaur Monks can still fire 2 crossbow bolts per shot despite the skill being restricted.
+
+Gnomish Rangers have their quest artifact changed to [[The Crossbow of Carl]], which is an artifact crossbow that mirrors The Longbow of Diana given to other Rangers. This allows them to preserve their multishot bonuses while also giving access to an unlimited source of crossbow bolts.
+
+===SlashTHEM===
+For [[SlashTHEM]], on top of SLASH'EM additions, [[Warrior]]s start each game with a +1 crossbow and a stack of +0 crossbow bolts; Undead Slayers now have a {{frac|2}} chance to start with a crossbow and some bolts. All player gnomes are capable of reaching skilled in crossbows.
+
+[[Player monster]] undead slayers and gnomish non-[[Cavemen]] are likely to generate with a crossbow and some bolts.
+
+===NetHack Fourk===
+In [[NetHack Fourk]], gnomes have increased skill caps for crossbows.
+
+===SpliceHack===
+In [[SpliceHack]], [[merfolk (starting race)|merfolk]] in roles that would start the game with a bow receive crossbows instead.
+
+==Encyclopaedia entry==
+{{encyclopedia|
+"God save thee, ancient Mariner!
+From the fiends, that plague thee thus! -
+Why look'st thou so?" - With my cross-bow
+I shot the Albatross.
+|[ The Rime of the Ancient Mariner, by Samuel Taylor
+           Coleridge ]
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Launchers]]
+[[Category:Weapons]]}
+&&%s&& %s Ring of gain strength {131967 2020-02-09T04:59:59Z {4000978 Aximili} Move sink into to Identification section {{ring
+  |name=gain strength
+  |cost=150
+}}
+
+A '''ring of gain strength''' increases your [[strength]] by its [[enchantment]], which can be altered by [[charging]]. 
+
+== Identification ==
+
+Dropping a ring of gain strength down a [[sink]] produces the message '''''"The water flow seems stronger now."''''' If the ring's enchantment is negative, '''''"The water flow seems weaker now."'''''{{refsrc|do.c|304}}
+
+==Strategy==
+This ring is generally not considered useful, but it can be used to slightly increase carrying capacity or give a small boost to melee damage and accuracy. Characters with low strength such as an early [[healer]] or [[wizard]] should consider using one.
+
+At 18 strength, the ring will instead increase ''percentile'' dice by its enchantment, which makes it nearly useless when your strength is maxed out, since even a +9 ring will not add more than +1 to damage.
+
+== References ==
+
+<references />
+
+{{stub}}
+[[Category:Rings|Gain strength]]
+{{nethack-343}}}
+&&%s&& %s Ring of gain constitution {142461 2021-09-07T05:36:05Z {4001279 Umbire the Phantom}  {{ring
+  |name=gain constitution
+  |cost=150
+}}
+
+The '''ring of gain constitution''' is a [[ring]] that appears in ''[[NetHack]]''. The default [[randomized appearance]] associated with it is "an opal ring".{{refsrc|src/objects.c|546|version=NetHack 3.6.6}}
+
+==Generation==
+The ring of gain constitution makes up ~3.57% of all randomly generated rings.
+
+==Effects==
+When worn, it increases your [[constitution]] by its [[enchantment]]. The enchantment can be altered by [[charging]], and the boost to constitution exceeds racial limitations up to a maximum of 25. Wearing an enchanted ring of gain constitution will [[auto-identify]] it.
+
+==Strategy==
+:''See also: [[Sink#Identifying rings with a sink|Identifying rings with a sink]]
+
+The ring of gain constitution can easily be identified by wearing a non-cursed one - dropping one down a [[sink]] produces a message about its water flow being affected.
+
+Worn rings of gain constitution can increase the player's [[carrying capacity]] (calculated from [[strength]] and constitution), and can be worn before leveling up to improve HP gains (determined by constitution). As any value above 19 is functionally identical in most cases, high-constitution characters have little need to boost the stat beyond that point.
+
+==History==
+The ring of gain constitution is introduced in [[NetHack 3.3.0]].
+
+In [[NetHack 3.4.3]] and earlier versions, a ring of gain constitution of any enchantment could be used to drain levels and regain them for a virtually limitless amount of hit points. See [[drain for gain]] for more details.
+
+==Messages==
+{{message|The water flow seems greater now.|You dropped a ring of gain constitution down a sink.}}
+{{message|The water flow seems lesser now.|As above, but the ring's enchantment was negative.}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Rings|Gain constitution]]}
+&&%s&& %s Ring of increase accuracy {129940 2019-12-23T02:52:45Z {4000978 Aximili} Reorganize, add some more info {{ring
+  |name=increase accuracy
+  |cost=150
+}}
+
+A '''ring of increase accuracy''' adds its [[enchantment]] to your [[to-hit]] rolls. The enchantment can be altered by [[charging]]. Like the [[ring of increase damage]], [[Ring eating|it can be eaten]] for a chance at obtaining an intrinsic accuracy bonus provided it is of an edible material.
+
+== Identification ==
+
+The ring is tricky to identify unless the player starts with it, however, as there is no message upon donning it. Using a source of [[enlightenment]] can allow you to deduce that an unidentified ring is increase accuracy; there will be a line stating your bonus or penalty to hit.
+
+Dropping this ring down a [[sink]] produces the message "The water flow hits the drain." If the enchantment is negative, the following message appears: "The water flow misses the drain."
+
+== Strategy ==
+
+In the early game, weaker roles may benefit from the accuracy bonus while training weapons from [[skill|unskilled]] to basic. [[Monk]]s who decide to wear body armor may benefit from accuracy bonuses well into the middle game. For most other middle and late game characters, this ring is best used as [[polyfodder]].
+
+Eating the ring is rarely helpful, as eating jewelry generally requires [[polymorph control]], which is hard to obtain in the early game.
+
+== Variants ==
+Although no NetHack variants change the function of this ring, it's worth noting that several variants have enemies with exceptionally high AC, such as [[One-Eyed Sam]] in [[UnNethack]], [[SLASH'EM]], and [[DynaHack]] who often has AC -20 and below. Also of note, UnNetHack nerfs the bonus that luck gives to accuracy to Luck/3, while DynaHack removes it entirely. Ingesting or wearing rings of increase accuracy may prove useful in these cases.
+
+[[Category:Rings|Increase accuracy]]
+{{nethack-361}}}
+&&%s&& %s Ring of increase damage {128404 2019-09-25T21:59:02Z {4000278 Jimeikner} /* Strategy */ {{ring
+  |name=increase damage
+  |cost=150
+}}
+
+A '''ring of increase damage''' adds its [[enchantment]] to your [[damage]] rolls. The enchantment can be altered by [[charging]]. This does not affect damage you deal with spells. The effect stacks if you wear two of them.
+
+==Identification==
+It is difficult to identify this ring by [[price identification]] alone because there are nine other rings which share the [[Zorkmid|150 zm]] cost, many of which may not self-identify. 
+
+If you have a [[stethoscope]], you can use it to observe the [[damage]] you inflict to a creature, and you can use this to determine the exact [[enchantment]] of the [[ring]] (and of your [[weapon]], for that matter).
+
+Another option is [[enlightenment]].  While enlightenment will not identify a +0 ring of increased damage, you'll otherwise receive one of the following messages:
+{|class="prettytable"
+!Enchantment!!Enlightenment Message {{refsrc|cmd.c|1220|nethack=3.6.0}}
+|-
+| -13 or less || You have a huge damage penalty.
+|-
+| -12 to -7 || You have a large damage penalty.
+|-
+| -6 to -4 || You have a moderate damage penalty.
+|-
+| -3 to -1 || You have a small damage penalty.
+|-
+| 0 || [no message]
+|-
+| 1 to 3 || You have a small damage bonus.
+|-
+| 4 to 6 || You have a moderate damage bonus.
+|-
+| 7 to 12 || You have a large damage bonus.
+|-
+| 13 or more || You have a huge damage bonus.
+|}
+
+==Strategy==
+The ring provides a flat boost to damage. While this is always beneficial, enchanting your weapon to +7 will give better results in most situations and does not require a ring slot. This ring is most useful when [[Twoweapon|dual wielding]] or [[multishot|throwing multiple projectiles]], as it will add the damage bonus to each attack. Monks relying on [[martial_arts|martial arts]] may also find it to be useful, as they otherwise have few ways to improve their damage.
+
+If the ring is of an edible material, it may be possible to [[eating jewelry|eat]] it to permanently gain a damage bonus.
+
+==References==
+<references/>
+[[Category:Rings|Increase damage]]
+{{nethack-360}}}
+&&%s&& %s Ring of searching {144139 2022-01-13T19:16:19Z {4001000 Xyzyxx}  {{ring
+  |name=searching
+  |cost=200
+}}
+
+Wearing a '''ring of searching''' gives you the [[automatic searching]] [[extrinsic]], which automatically searches the squares around you at the end of each turn.
+
+Eating a ring of searching can give the [[automatic searching]] intrinsic.
+
+== Strategy ==
+
+As automatic searching is difficult to gain intrinsically, this ring can be useful. With help from this ring, you save time finding secret doors, and reduce the chances of blundering into traps.
+
+{{stub}}
+
+[[Category:Rings|Searching]]
+{{nethack-343}}}
+&&%s&& %s Category:Dwarvish items {13695 2006-10-08T18:00:54Z {458 Kernigh} This category already has two articles, and I could add a third. This list contains articles marked as [[dwarf|dwarvish]] items. Compare [[Special:Prefixindex/Dwarvish]]
+
+[[Category:Items]]}
+&&%s&& %s Category:Elven items {149378 2022-12-15T17:07:41Z {4001279 Umbire the Phantom} cat, description This category contains articles about objects that are considered [[elven item]]s.
+{{nethack-366}}
+[[Category:Items]]}
+&&%s&& %s Infravision {137929 2021-02-16T03:05:25Z {4000681 Andrio Celos} Link to [[NetHack 3.7.0]] specifically. '''Infravision''' is an [[intrinsic]] property possessed by [[dwarf|dwarves]], [[elf (starting race)|elves]], [[gnome (starting race)|gnome]]s, and [[orc (starting race)|orc]]s. Many monsters also have this ability. [[Human (starting race)|Human]]s do not have infravision: to make use of it, they must [[polymorph]] into some other monster that has infravision.
+
+Infravision allows a character to detect warm-blooded or fire-based monsters in their line of sight, even if that location is [[unlit]]. Such monsters are known as ''infravisible''. Infravision does not detect [[invisible]] creatures.
+
+{{upcoming|NetHack 3.7.0|All [[feline]]s now have infravision.}}
+
+[[Category:Properties]]
+{{nethack-366}}}
+&&%s&& %s Dark {137035 2021-01-13T06:55:50Z {4001279 Umbire the Phantom}  {{otheruses|a type of elemental damage|dungeon illumination (or lack thereof), see|Light}}
+
+'''Dark''' is a type of damage used by some monsters in [[dNetHack]]. Constructs and primordial beings are innately immune to dark damage, while angels, demons, animals and mindless creatures have partial resistance.
+{{stub}}
+
+[[Category: Monster damage types]]
+[[Category: DNethack]]
+{{variant-343}}}
+&&%s&& %s Hack-and-back {13916 2006-10-12T18:39:31Z {396 Jayt} fix double redirect #REDIRECT [[Hit and run]]}
+&&%s&& %s Bugbear {150225 2023-03-12T05:38:43Z {4000251 Netzhack} /* Encyclopedia entry */ Soft line breaks. {{monster
+ |name=bugbear
+ |difficulty=5
+ |level=3
+ |experience=33
+ |speed=9
+ |AC=5
+ |MR=0
+ |align=-6
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 2d4
+ |resistances conveyed=None
+ |resistances=None
+ |attributes={{attributes|A bugbear|humanoid=1|omnivore=1|strong=1|collect=1|infravisible=1|infravision=1}}
+ |size=Large
+ |nutr=250
+ |weight=1250
+ |reference=[[monst.c#line454]]
+}}
+A '''bugbear''', {{monsym|bugbear}}, is a type of [[humanoid (monster class)|humanoid]] [[monster]] that appears in ''[[NetHack]]''.
+
+Bugbears are the source of a couple of [[#Messages|unique messages]].
+
+==Generation==
+Bugbears tend to appear fairly early in the dungeon, and are often first seen past the entrance to the [[Gnomish Mines]]; within the Mines themselves, a bugbear may be the random humanoid monster generated on floors outside of [[Minetown]] and [[Mines' End]]. They may generate as [[peaceful]] towards [[chaotic]] characters, and can be generated with a random [[offensive item]], [[miscellaneous item]] and/or [[defensive item]]. 
+
+Bugbears are among the more common monsters encountered in [[throne room]]s - sitting on a [[throne]] or else looting it while [[confused]] may also generate one or more bugbears; this does not respect [[extinction]].{{refsrc|src/mkroom.c|738|version=NetHack 3.6.6}}
+
+Bugbears are the first [[quest monster]] for [[Cavemen]], and 55% of the randomly generated monsters in the [[Caveman quest]] branch will be bugbears; the humanoid [[monster class]] is also the first quest class and makes up 14% of randomly generated monsters, some of which may be bugbears. Twelve bugbears are distributed among the four eastern chambers of the home floor at level creation, and seventeen bugbears are generated on the locate floor at level creation; five bugbears are generated in the upper filler levels upon their creation, and four bugbears are generated in the lower filler levels upon their creation.
+
+==Strategy==
+Bugbears usually do not pose a significant threat, though early characters should keep an eye out in case they pick up any armor, weapons or items - a bugbear with an offensive wand can possibly spell [[YASD|a quick end]] to your game.
+
+Bugbears may occasionally be a target of strategic [[genocide]] for Cavemen that want to boost [[intelligence]] via eating [[mind flayer]] corpses - this is a double-edged sword in practice, as it also means more chances that you may end up forgetting several item identities or even be left [[brainlessness|without a brain]].
+
+==Origin==
+{{wikipedia|Bugbear}}
+The bugbear is a classic ''[[Dungeons & Dragons]]'' monster that debuts in ''Greyhawk'', the game's first supplement. The monster takes its name from a folkloric creature that is similar to the boogeyman (or bogeyman), particularly featuring in tales told by some cultures to frighten disobedient children; the name is derived from similar roots to the word "boogeyman" as well, and in a modern context is used to describe a pet peeve. In medieval England, the bugbear was depicted as a creepy bear that lurked in the woods to scare children.
+
+''Dungeons & Dragons'' popularized the depiction of bugbears as large, hairy beings that are either goblinoids or distantly related to them; they are usually chaotic evil and may additionally have other bear-like traits such as clawed hands. Bugbears were as likely to make their homes above-ground as they were below it compared to the more subterranean  goblins, and some live in loose bands of at least a dozen members; bugbears generally arm themselves with second-hand gear, and despite seeming clumsy, they are capable of moving stealthily and quickly if the situation calls for it.
+
+==Messages==
+{{message|You hear the roaring of a confused bear!|An unseen bugbear got stuck in a [[web]].}}
+{{message|You hear the roaring of an angry bear!|An unseen bugbear got stuck in a [[bear trap]].}}
+{{message|You howl in anger!|You walked into a web or bear trap while [[polymorph]]ed into a bugbear.}}
+
+==Variants==
+Some variants make bugbears members of the [[Orc (monster class)|orc monster class]].
+
+===UnNetHack===
+In [[UnNetHack]], [[tiger]]s replace bugbears as the first quest monster for the Caveman quest.
+
+===dNetHack===
+In [[dNetHack]], bugbears are much less common in [[Throne room#dNetHack|throne rooms]] due to the addition of specific court monsters for a throne room's given ruler.
+
+In the [[Mordor Ruins Quest|Mordor Ruins variant]] of the [[Chaos Quest (dNethack)|Chaos Quest]], eight bugbears are generated in the first cave of the Mordor Cracks upon level creation.
+
+===SlashTHEM===
+SlashTHEM adds the [[huge bugbear]] and [[bugbear chieftain]], which first appeared in [[NetHack-- 3.0.10]] and [[NetHack-- 3.1.3]] but were not carried forward to [[SLASH 6]].
+
+===xNetHack===
+In [[xNetHack]], bugbears are part of the orc monster class, {{orange|o}}. Like other [[Orc (monster attribute)|orcish]] monsters, they have [[poison resistance]] and immune to the shrieks of [[Nazgul]], and share a mutual [[grudge]] with [[Elf (monster attribute)|elves]].
+
+===EvilHack===
+In [[EvilHack]], bugbears are part of the orc monster class, {{orange|o}}. Like other orcish monsters, they have poison resistance and an aversion to [[mithril]], and share a mutual grudge with [[Elf (monster attribute)|elves]]; bugbears also gain a slight AC bonus from wearing orcish armor.
+
+==Encyclopedia entry==
+{{encyclopedia|
+Bugbears are relatives of goblins, although they tend to be larger and more hairy.  They are aggressive carnivores and sometimes kill just for the treasure their victims may be carrying.
+}}
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s Dwarf lord {137445 2021-01-28T02:59:06Z {4001094 Luxidream} Changed redirect target from [[Dwarf (monster class)]] to [[Dwarf (monster)]] #REDIRECT [[Dwarf (monster)]]}
+&&%s&& %s Dwarf king {137444 2021-01-28T02:58:51Z {4001094 Luxidream} Changed redirect target from [[Dwarf (monster class)]] to [[Dwarf (monster)]] #REDIRECT [[Dwarf (monster)]]}
+&&%s&& %s Gnome lord {144495 2022-02-16T00:34:06Z {4001483 Cathartes} Changed redirect target from [[Gnome (monster class)#Gnome Lord]] to [[Gnome (monster class)#Gnome leader]] #REDIRECT [[Gnome_(monster_class)#Gnome_leader]]}
+&&%s&& %s Gnome king {134643 2020-06-28T06:35:48Z {4000978 Aximili} redirect properly #REDIRECT [[Gnome_(monster_class)#Gnome king]]}
+&&%s&& %s Woodland-elf {99511 2015-12-22T08:43:09Z {4000080 ChasonBot}  {{monster
+ |name=Woodland-elf
+ |difficulty=6
+ |level=4
+ |experience=46
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=-5
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Weapon 2d4
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep (27%)
+ |attributes={{attributes|A Woodland-elf|sgroup=1|humanoid=1|omnivore=1|seeinvis=1|elf=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line2317]]
+}}
+
+The '''Woodland-elf''', {{monsym|woodland-elf}}, is a [[monster]] in [[NetHack]].  As the weakest of the randomly generated [[elf (monster attribute)|elves]], they are welcomed by [[race|non-elven]] players as a 27% chance source of [[sleep resistance]].  They [[Monster_starting_inventory|can be generated with]] any type of [[Elven item|elven equipment]] of which they will make use.
+
+{{stub}}
+[[Category:Monsters]]
+{{nethack-343}}}
+&&%s&& %s Green-elf {104657 2016-12-28T13:31:34Z {4000251 Netzhack} "chance to" = opportunity; "chance of" = probability {{monster
+ |name=Green-elf
+ |difficulty=7
+ |level=5
+ |experience=61
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=-6
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Weapon 2d4
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep (33%)
+ |attributes={{attributes|A Green-elf|sgroup=1|humanoid=1|omnivore=1|seeinvis=1|elf=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line2324]]
+}}
+
+The '''Green-elf''', {{monsym|green-elf}}, is a [[monster]] in [[NetHack]], only slightly stronger than a [[Woodland-elf]].  As with all [[elf (monster attribute)|elves]], their corpses have a chance of granting intrinsic [[sleep resistance]] and they [[Monster_starting_inventory|can be generated with]] any type of [[Elven item|elven equipment]] of which they will make use.
+
+After eating, the message "You feel wide awake" indicates you developed sleep resistance.
+
+{{stub}}
+[[Category:Monsters]]
+{{nethack-343}}}
+&&%s&& %s Grey-elf {104679 2016-12-28T14:26:02Z {4000251 Netzhack} "chance to" = opportunity; "chance of" = probability {{monster
+ |name=Grey-elf
+ |difficulty=8
+ |level=6
+ |experience=78
+ |speed=12
+ |AC=10
+ |MR=10
+ |align=-7
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Weapon 2d4
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep (40%)
+ |attributes={{attributes|A Grey-elf|sgroup=1|humanoid=1|omnivore=1|seeinvis=1|elf=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line2331]]
+}}
+
+The '''Grey-elf''', {{monsym|grey-elf}}, is a [[monster]] in [[NetHack]], only slightly stronger than a [[Green-elf]].  As with all [[elf (monster attribute)|elves]], their corpses have a chance of granting intrinsic [[sleep resistance]] and they [[Monster_starting_inventory|can be generated with]] any type of [[Elven item|elven equipment]], which they will use.
+
+{{stub}}
+[[Category:Monsters]]
+{{nethack-343}}}
+&&%s&& %s Elf-lord {104678 2016-12-28T14:25:29Z {4000251 Netzhack} "chance to" = opportunity; "chance of" = probability {{monster
+ |difficulty=11
+ |level=8
+ |experience=123
+ |speed=12
+ |AC=10
+ |MR=20
+ |align=-9
+ |frequency=2
+ |genocidable=Yes
+ |attacks=Weapon 2d4, weapon 2d4
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep (53%)
+ |attributes={{attributes|An elf-lord|sgroup=1|humanoid=1|omnivore=1|seeinvis=1|elf=1|strong=1|lord=1|male=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line2338]]
+}}
+
+The '''elf-lord''', {{monsym|elf-lord}}, is a [[monster]] in [[NetHack]], slightly stronger than a [[Grey-elf]].  As with all [[elf (monster attribute)|elves]], their [[corpse]]s have a chance of granting intrinsic [[sleep resistance]] when eaten and they [[Monster starting inventory|can be generated with]] any type of [[Elven item|elven equipment]], which they will use.
+
+Elf-lords can be created by the [[summon nasties]] monster spell.
+
+{{stub}}
+[[Category:Monsters]]
+{{nethack-343}}}
+&&%s&& %s Elvenking {149501 2022-12-21T07:45:06Z {4001279 Umbire the Phantom} /* As a polyform */ punc {{monster
+ |difficulty=11
+ |level=9
+ |experience=196
+ |speed=12
+ |AC=10
+ |MR=25
+ |align=-10
+ |frequency=1
+ |genocidable=Yes
+ |attacks=Weapon 2d4, weapon 2d4
+ |weight=800
+ |nutr=350
+ |size=Medium
+ |resistances=Sleep
+ |resistances conveyed=Sleep (60%)
+ |attributes={{attributes|An Elvenking|humanoid=1|omnivore=1|seeinvis=1|elf=1|strong=1|prince=1|male=1|collect=1|infravisible=1|infravision=1}}
+ |reference=[[monst.c#line2346]]
+}}
+
+An '''Elvenking''', {{monsym|elvenking}}, is a type of [[monster]] that appears in ''[[NetHack]]''. It is the strongest of the [[elf (monster attribute)|elves]], and like all elves have intrinsic [[sleep resistance]]. The Elvenking shares a colored glyph with the [[Wizard of Yendor]].
+
+Eating an Elvenking's corpse or tin have a 60% chance to grant sleep resistance, which is the second-most among elves. 
+
+{{upcoming|3.7.0|The Elvenking has been renamed to the '''elven monarch'''; female elven monarchs are called '''Elvenqueens'''.}}
+
+==Generation==
+Randomly-generated Elvenkings will be peaceful towards chaotic [[Elf (starting race)|elven]] players, and occasionally are also peaceful towards chaotic [[Human (starting race)|humans]]. 
+
+Elvenkings [[Monster starting inventory|can be generated with]] any type of [[Elven item|elven equipment]], and are eligible for [[offensive item|offensive]], [[defensive item|defensive]] and [[miscellaneous item]]s. They have a {{frac|2|3}} chance to be generated with a [[pick-axe]], and have a {{frac|50}} chance of generating with a [[crystal ball]].{{refsrc|src/makemon.c|253|version=NetHack 3.6.6}} [[Elf-lord]]s can [[grow up]] into Elvenkings.
+
+Outside of normal generation, Elvenkings can be found in [[throne room]]s occupying the [[throne]] itself, and are more likely to be found in much deeper throne rooms within the dungeon; an Elvenking with a pick-axe is guaranteed to appear on the [[Plane of Earth]]. Elvenkings can also be created via the [[summon nasties]] [[monster spell]].
+
+==Strategy==
+Elvenkings represent a nasty threat for an early game player that stumbles upon a throne room with one presiding over it - such a room can rarely appear as early as the fifth dungeon level, and throne room Elvenkings can deal surprising amounts of damage with the [[mace]] they are given. Furthermore, they will ignore [[Elbereth]] like most elves, requiring players to maintain a distance and pick them off with projectiles, spells or wands. In the latter half of the dungeon where Elvenkings are more typically encountered, you are more likely to be more prepared for one - the threat of later Elvenkings lies in the fact that monster spellcasters can summon them, and it is common to employ Elbereth to avoid being surrounded.
+
+When dealing with the Wizard of Yendor, if he summons nasties, [[far look]] any {{purple|@}} that appear to ensure you are targeting Rodney himself and not an Elvenking; as it is common practice to zap the Wizard with a [[death ray]] at the first opportunity, it especially helps to make sure you don't squander a valuable charge on the wrong target.
+
+The pick-axe from the Elvenking on the Plane of Earth can be used to navigate through the plane, but only consider this if there are little to no other options available - most players should have several [[wand of digging|wands of digging]] handy alongside a pick-axe or [[mattock]] of their own by the time they reach the [[Elemental Planes]], and the [[minotaur]] that also appears will provide still another wand.
+
+===As a polyform===
+Elvenkings are solidly powerful polyforms for non-elven players - they are [[strong]] (which boosts player [[strength]] to 18/**), can wear all armor and have two weapon attacks that add +2d4 damage, enabling [[twoweaponing]] in that form.{{refsrc|src/uhitm.c|2396|version=NetHack 3.6.6}}{{refsrc|include/mondata.h|131|version=NetHack 3.6.6}}
+
+{{upcoming|3.7.0|As part of resolving [https://github.com/NetHack/NetHack/issues/679 issue #679] regarding congruence between non-player monsters and their player counterparts, {{commit|b6a3d4b984eb118ddb02f1605d76b1010df76055|commit b6a3d4b}} makes it so that elven monarchs and other elven polyforms are capped at 18 strength as player elves are.}}
+
+==History==
+The Elvenking first appears in [[NetHack 3.0.0]].
+
+==Origin==
+The rare possibility of Elvenkings generating with a crystal ball is an allusion to the ''[[Palantir|palantír]]'', a magical artifact from [[J. R. R. Tolkien]]'s Middle-earth novels. ''Palantíri'' are indestructible crystal balls used for communicating and viewing past and future events in other parts of the realm, and were made by the Elves of Valinor in the First Age. Elves are the only player-usable race in the game that can ''naturally'' reach an [[Intelligence]] of 20, which allows them to [[apply]] crystal balls with no chance of failure.
+
+==Messages==
+{{message|You feel very comfortable here.|You sat on a throne while [[polymorph]]ed into an Elvenking or other "royal" monster.}}
+
+==Variants==
+===GruntHack===
+In [[GruntHack]], Elvenkings are replaced by the [[King (GruntHack)|racial king and queen]] monsters, which can be elven.
+
+===EvilHack===
+In [[EvilHack]], the monster is renamed to an elven monarch, with male monarchs called "elven kings" and female monarchs called "elven queens".
+
+==References==
+<references/>
+{{nethack-366}}
+[[Category:Monsters]]}
+&&%s&& %s M2 NASTY {98866 2015-12-20T02:35:20Z {4000080 ChasonBot}  {{DISPLAYTITLE:M2_NASTY}}
+{{for2|the "nasties" summoned by high-level monster spellcasters|[[summon nasties#Nasties|summon nasties]]}}
+The '''M2_NASTY''' monster flag influences{{refsrc|mondata.h|103|comment=extra_nasty() macro detects M2_NASTY}} the [[experience]] killing a monster gains you{{refsrc|exper.c|84|comment=extra_nasty() grants extra experience}} and what [[weapon]]s they might be generated with.{{refsrc|makemon.c|431|comment=extra_nasty() biases towards better weapons}}
+
+This flag is completely unrelated to the "nasties" summoned by the [[summon nasties]] monster spell.
+
+The following monsters are M2_NASTY:
+* {{monsymlink|mind flayer}}
+* {{monsymlink|master mind flayer}}
+* {{monsymlink|long worm}}
+* {{monsymlink|purple worm}}
+* {{monsymlink|jabberwock}}
+* {{monsymlink|owlbear}}
+* {{monsymlink|skeleton}}
+* {{monsymlink|high priest}}
+* {{monsymlink|Wizard of Yendor}}
+* {{monsymlink|Croesus}}
+* {{monsymlink|shade}}
+* all [[angelic being]]s
+* all adult [[dragon]]s{{refsrc|trap.c|2039|comment=extra_nasty() discerns adult dragons from baby dragons to let them tear through webs}}
+* all [[giant humanoid]]s
+* all [[vampire]]s
+* all major [[demon]]s (including lords and princes)
+* the [[Rider]]s
+* the [[Grand Master]]
+* all [[quest nemesis|quest nemeses]] (the {{monsymlink|Master of Thieves|after}} only if actually acting as your quest nemesis, ''not'' as [[rogue quest]] leader)
+
+==SLASH'EM==
+
+In [[SLASH'EM]], the following monsters also have the M2_NASTY flag set:
+* {{monsymlink|tsetse fly}}
+* {{monsymlink|quickling}}
+* {{monsymlink|catoblepas}}
+* {{monsymlink|carrion crawler}}
+* {{monsymlink|rot worm}}
+* {{monsymlink|kangaroo}}
+* {{monsymlink|vorpal jabberwock}}
+* {{monsymlink|shoggoth}}
+* {{monsymlink|giant shoggoth}}
+* {{monsymlink|shadow}}
+* {{monsymlink|rhaumbusun}}
+* all new angelic beings
+* all new adult dragons, including {{monsymlink|wyvern}}s and {{monsymlink|hydra}}s
+* all new vampires
+* all new major demons, except spined devils
+* all new quest nemeses
+* {{monsymlink|Nightmare}}, {{monsymlink|Beholder}} and {{monsymlink|Vecna}}
+* all other new unique monsters (except [[Black market (SLASH'EM)#One-eyed Sam|One-Eyed Sam]])
+
+{{todo|What was changed in UnNetHack?}}
+
+[[Category:Monster attributes]]
+
+== References ==
+<references />
+{{nethack-343}}}
+&&%s&& %s Summon nasties {148687 2022-10-07T07:41:17Z {4001279 Umbire the Phantom} reorg + copyedit '''Summon nasties''' is a [[monster spell]] that appears in ''[[NetHack]]''. It is a mage spell that can be used by monsters of level 16 or higher.
+
+==Description==
+When cast, a number of hostile [[#Nasties|nasties]] will be generated around the target; this can be affected by [[displacement]] or [[invisibility]], depending on the caster.{{refsrc|wizard.c|456}} Monsters are created until either [[D notation|d]]({{sfrac|XLvl|3}}) nasties which are neutral or co-aligned with the summoner have been created, or the maximum of 10 nasties have been created. Because of this, monsters of alignments with fewer co-aligned nasties will summon more nasties on average.{{refsrc|src/wizard.c|24|version=NetHack 3.6.1}} Summoned monsters will be unable to use special attacks such as breath weapons for d4 turns.{{refsrc|src/wizard.c|609|version=NetHack 3.6.1}}
+
+If this spell is cast in [[Gehennom]], it is treated as if the [[Wizard of Yendor]] were summoning regardless of the caster, and there is a {{frac|10}} chance that a [[Demon#Demon summoning|demon is summoned]] - thus, anyone capable of casting the spell encountered in Gehennom can summon a [[Demon lord|demon lord or prince]] this way.{{refsrc|src/wizard.c|558|nethack=3.6.6}} Both this and remote summoning by the Wizard of Yendor are considered neutral for this purpose.
+
+Summoned spellcasters will have a lower [[Monster difficulty|difficulty]] than the caster.{{refsrc|wizard.c|448}} {{white|&}} will not summon {{white|A}}, and vice versa. On the [[Rogue level]], nasties not represented by an uppercase letter are less likely to be summoned.{{refsrc|src/wizard.c|523|version=NetHack 3.6.1}}
+
+Monsters summoned in this fashion respect [[genocide]], but not [[extinction]]: If a genocided monster would be summoned, it is replaced by an ordinary random monster (which is not guaranteed to be hostile). Spellcasting monsters generated this way need not be lower in difficulty than the caster.
+
+{{upcoming|NetHack 3.7.0|Spellcasters casting summon nasties can no longer summon monsters of equal or higher difficulty than themselves. Thus, Archons cannot summon more Archons, arch-liches cannot summon more arch-liches, and so on.
+
+If a genocided monster with a pre-grown form (that is not explicitly a baby form) is chosen, and this form is not also genocided, it will appear in place of the genocided monster. For example, mind flayers can appear in place of genocided master mind flayers. This also happens if the chosen nasty is inappropriate for the location, such as an arch-lich outside Gehennom.
+
+Also, when the difficulty is high enough to summon arch-liches or Archons (e.g., the Wizard casting it or via random harassment), at most one arch-lich OR one Archon will be created by a single summon nasties. See commit 3eed500 for more details.}}
+
+==Nasties==
+{{for|the monster flag, which is unrelated to this spell|M2_NASTY}}
+
+The following monsters are "nasties" for the purposes of this spell, listed generally by alignment:{{refsrc|src/wizard.c|44|version=NetHack 3.6.6}}
+
+====Lawful nasties====
+<div class="div-col columns column-width" style="-moz-column-width: 11em; -webkit-column-width: 11em; column-width: 11em;">
+* {{monsymlink|Aleax}}
+* {{monsymlink|barbed devil}}
+* {{monsymlink|couatl}}
+* {{monsymlink|fire giant}}
+* {{monsymlink|green dragon}}
+* {{monsymlink|guardian naga}}
+* {{monsymlink|horned devil}}
+* {{monsymlink|orange dragon}}
+* {{monsymlink|silver dragon}}
+* {{monsymlink|yellow dragon}}
+</div>
+
+====Neutral nasties====
+<div class="div-col columns column-width" style="-moz-column-width: 11em; -webkit-column-width: 11em; column-width: 11em;">
+* {{monsymlink|baluchitherium}}
+* {{monsymlink|carnivorous ape}}
+* {{monsymlink|cockatrice}}
+* {{monsymlink|ettin}}
+* {{monsymlink|fire elemental}}
+* {{monsymlink|green slime}}
+* {{monsymlink|iron golem}}
+* {{monsymlink|jabberwock}}
+* {{monsymlink|leocrotta}}
+* {{monsymlink|minotaur}}
+* {{monsymlink|ochre jelly}}
+* {{monsymlink|owlbear}}
+* {{monsymlink|purple worm}}
+* {{monsymlink|stalker}}
+* {{monsymlink|umber hulk}}
+* {{monsymlink|xan}}
+* {{monsymlink|xorn}}
+* {{monsymlink|zruty}}
+</div>
+
+====Chaotic nasties====
+<div class="div-col columns column-width" style="-moz-column-width: 11em; -webkit-column-width: 11em; column-width: 11em;">
+* {{monsymlink|arch-lich}}
+* {{monsymlink|black dragon}}
+* {{monsymlink|captain}}
+* {{monsymlink|disenchanter}}
+* {{monsymlink|elf-lord}}
+* {{monsymlink|Elvenking}}
+* {{monsymlink|gremlin}}
+* {{monsymlink|master mind flayer}}
+* {{monsymlink|ogre king}}
+* {{monsymlink|Olog-hai}}
+* {{monsymlink|red dragon}}
+* {{monsymlink|storm giant}}
+* {{monsymlink|vampire lord}}
+* {{monsymlink|winged gargoyle}}
+</div>
+
+====Demons (in Gehennom only)====
+<div class="div-col columns column-width" style="-moz-column-width: 11em; -webkit-column-width: 11em; column-width: 11em;">
+* {{monsymlink|Yeenoghu}}
+* {{monsymlink|Dispater}}
+* {{monsymlink|Geryon}}
+* {{monsymlink|Demogorgon}}
+</div>
+
+==Strategy==
+Dealing with this spell can often require action both before and after it is cast:
+
+===Preventative genocide===
+One option is to [[genocide]] the worst nasties: [[arch-liches]] and [[master mind flayer]]s are good candidates for this. However, if the spell attempts to generate a genocided monster, it will instead generate a random one. Once the player has the [[Amulet of Yendor]] and is out of [[Gehennom]], [[Archon]]s and [[ki-rin]] are not unlikely random monster choices and may be summoned in place of genocided monsters.
+
+Another good option for a player with a [[scroll of genocide]] would be to blessed-genocide {{monclasssym|L}}. Liches are by far the most frequently encountered casters of summon nasties, and also the only ones that can be genocided anyway. Doing so will genocide only one nasty, arch-liches, and so will not greatly increase the probability of worse nasties such as Archons being generated by the spell.
+
+===When meeting a summoner===
+The worst place to meet monsters with this spell is on large open levels, such as [[Juiblex's swamp]]. On such levels, a summoner will often sit outside of the ring of monsters it has created around you and continue summoning, even as you attempt to fight off its minions. In this situation, the covetous behavior can be helpful; an arch-lich that warps to the upstairs may no longer be in sight, whereas a fleeing demilich will remain in sight and continue to fill the level with nasties.
+
+If you are unable to kill the caster, possess reflection and can engrave a long-lasting [[Elbereth]], it is possible to wait on the Elbereth square for the caster to create a black dragon and wait for the disintegration breath to destroy the summoner, or possibly for a cockatrice to be generated and leave a corpse. This can be a life-saver if any of the demon princes appear as well.
+
+Another way to counter the summon nasties spell is with a [[ring of conflict]] - the monsters will fight one another instead of focusing on you. A [[scroll of taming]] or spell of [[charm monster]] are also effective, although many nasties have a substantial chance of resisting either one.
+
+==History==
+In versions prior to [[NetHack 3.6.1]] and variants based on them, the monsters listed below qualified as nasties and were not restricted depending on alignment. Nasty selection on the Rogue level was not biased toward uppercase letters, and the number of nasties was simply d({{sfrac|XLvl|3}}).
+
+<div class="div-col columns column-width" style="-moz-column-width: 11em; -webkit-column-width: 11em; column-width: 11em;">
+* {{monsymlink|arch-lich}}
+* {{monsymlink|baluchitherium}}
+* {{monsymlink|black dragon}}
