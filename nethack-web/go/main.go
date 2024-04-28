@@ -383,8 +383,6 @@ type Session struct {
 var sessionMutex sync.Mutex
 var sessions []string = []string{}
 
-
-
 func serveWs(w http.ResponseWriter, r *http.Request) {
 	log.Printf("connected: %s", r.RemoteAddr)
 	ctx, cancel := context.WithCancel(context.Background())
@@ -449,13 +447,13 @@ func serveEvents(w http.ResponseWriter, r *http.Request) {
 WITH vinst AS (
     (
         SELECT
-            timestamp,
+			timestamp,
             player_id,
-            json_build_object('type', 'event', 'name', "name", 'string_value', string_value, 'value', value, 'turn', session_turn, 'extra', extra)::jsonb AS vinst
+            json_build_object('type', 'event', 'name', "name", 'string_value', string_value, 'value', value, 'turn', session_turn, 'extra', extra, 'seconds_since', EXTRACT(EPOCH FROM (NOW() - timestamp)))::jsonb AS vinst
         FROM
             event
         WHERE
-            ("name" IN ('death', 'reach_depth', 'buy_stonk', 'payout_stonk', 'wealth_tax'))
+            ("name" IN ('death', 'reach_depth', 'buy_stonk', 'payout_stonk', 'wealth_tax', 'coconut_song'))
 			OR (session_turn=1 and string_value='hp')
     )
     UNION
@@ -532,49 +530,49 @@ func main() {
 		servePlayerLeaderboard(w, r)
 	})
 	http.HandleFunc("/spectate", func(w http.ResponseWriter, r *http.Request) {
-	    // Parse the input JSON data from the request body
-	    var input map[string]int
-	    if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
-	        http.Error(w, "Invalid request body", http.StatusBadRequest)
-	        return
-	    }
+		// Parse the input JSON data from the request body
+		var input map[string]int
+		if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
+			http.Error(w, "Invalid request body", http.StatusBadRequest)
+			return
+		}
 
-	    // Use the tty_mux to protect concurrent access to the tty map
-	    tty_mux.Lock()
-	    defer tty_mux.Unlock()
+		// Use the tty_mux to protect concurrent access to the tty map
+		tty_mux.Lock()
+		defer tty_mux.Unlock()
 
-	    // Prepare the data to send back
-	    result := make(map[string][]byte)
+		// Prepare the data to send back
+		result := make(map[string][]byte)
 
-	    // Check each requested name and prepare the response data
-	    for name, size := range input {
-	        if data, ok := tty[name]; ok && len(data) > size {
-	            // Send only the bytes beyond the specified size, capped to 8128 bytes
-	            upperBound := size + 8128
-	            if upperBound > len(data) {
-	                upperBound = len(data)
-	            }
-	            result[name] = data[size:upperBound]
-	        }
-	    }
+		// Check each requested name and prepare the response data
+		for name, size := range input {
+			if data, ok := tty[name]; ok && len(data) > size {
+				// Send only the bytes beyond the specified size, capped to 8128 bytes
+				upperBound := size + 8128
+				if upperBound > len(data) {
+					upperBound = len(data)
+				}
+				result[name] = data[size:upperBound]
+			}
+		}
 
-	    // Include names in tty that were not requested in the input
-	    for name, data := range tty {
-	        if _, requested := input[name]; !requested {
-	            // Send data up to 8128 bytes
-	            size := 8128
-	            if len(data) < size {
-	                size = len(data)
-	            }
-	            result[name] = data[:size]
-	        }
-	    }
+		// Include names in tty that were not requested in the input
+		for name, data := range tty {
+			if _, requested := input[name]; !requested {
+				// Send data up to 8128 bytes
+				size := 8128
+				if len(data) < size {
+					size = len(data)
+				}
+				result[name] = data[:size]
+			}
+		}
 
-	    // Send the final JSON response
-	    w.Header().Set("Content-Type", "application/json")
-	    if err := json.NewEncoder(w).Encode(result); err != nil {
-	        http.Error(w, "Failed to encode response", http.StatusInternalServerError)
-	    }
+		// Send the final JSON response
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(result); err != nil {
+			http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+		}
 	})
 	ctx := context.Background()
 	http.HandleFunc("/poll", func(w http.ResponseWriter, r *http.Request) {

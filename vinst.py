@@ -1,5 +1,6 @@
 import traceback
 import select
+import threading
 import socket
 import struct
 import nh_pb2
@@ -275,32 +276,8 @@ def parse_retrieve_saved_equipment(connection, req):
     return [status, response]
 
 def coconut_song(connection, coconut):
-    global next_song_time
-    print("COCONUT: ", coconut)
-    if time.time() > next_song_time:
-        print("GEnerating song!")
-        try:
-            song_url = telefon.create_song(".".join(coconut.plines))
-            print(song_url)
-        except Exception as e:
-            print("song exception: ", e)
-            print(traceback.format_exc())
-        player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
-        item = db.Event(
-            player_id=connection["player_id"],
-            clan_id=player.clan,
-            session_start_time=connection["session_start_time"],
-            session_turn=0,
-            name="song",
-            value=0,
-            string_value=song_url,
-            previous_value=0,
-            # caused_by=event.caused_by,
-            # action_name=event.action_name
-            )
-        db.session.add(item)
-        db.session.commit()
-        next_song_time = time.time() + 10
+    global coconut_queue
+    coconut_queue.append(coconut)
     status = nh_pb2.Status()
     status.code = 0
     return [status]
@@ -380,6 +357,50 @@ def parse_packet(connection, data):
 args = parse_args()
 if args.reset_db:
     db.init_db()
+
+coconut_queue = []
+
+
+def generate_song(coconut):
+    global next_song_time
+    print("COCONUT: ", coconut)
+    if time.time() > next_song_time:
+        print("GEnerating song!")
+        try:
+            song_url = telefon.create_song(".".join(coconut.plines))
+            print(song_url)
+        except Exception as e:
+            print("song exception: ", e)
+            print(traceback.format_exc())
+        player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
+        item = db.Event(
+            player_id=connection["player_id"],
+            clan_id=player.clan,
+            session_start_time=connection["session_start_time"],
+            session_turn=0,
+            name="coconut_song",
+            value=0,
+            string_value=song_url,
+            previous_value=0,
+            # caused_by=event.caused_by,
+            # action_name=event.action_name
+            )
+        db.session.add(item)
+        db.session.commit()
+        next_song_time = time.time() + 10
+    
+
+def handle_coconut_songs():
+    global coconut_queue
+    while True:
+        time.sleep(2)
+        if len(coconut_queue) > 0:
+            coconut = coconut_queue.pop()
+            print("Next coconut: ", coconut)
+            generate_song(coconut)
+
+coconut_socket = threading.Thread(target=handle_coconut_songs)
+coconut_socket.start()
 
 while True:
     events = ep.poll(1)
