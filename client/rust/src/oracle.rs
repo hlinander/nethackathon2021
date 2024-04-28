@@ -120,7 +120,7 @@ struct PromptRequest {
 }
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
-    let ip = "10.10.10.5"; // hampoos
+    let ip = "127.0.0.1"; // hampoos
                            // let ip = "172.26.2.104"; // jannix
     let client = Client::builder()
         .connect_timeout(Duration::from_millis(2000))
@@ -484,7 +484,8 @@ pub unsafe fn get_monster_list() -> Vec<MapObject> {
 
 fn generate_object_prompt(obj: &MapObject) -> String {
     format!(
-        "When encountering a {} ({}), a common strategy is to",
+        // "When encountering a {} ({}), a common strategy is to",
+        "What can I do with a {} ({})?",
         obj.name, obj.symbol,
     )
 }

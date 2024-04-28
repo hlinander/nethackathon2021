@@ -2,6 +2,7 @@
 SESSION="nethackathon"
 
 # Start a new tmux session
+docker start nh2024
 tmux new-session -d -s $SESSION
 tmux new-window -t $SESSION:1 -n 'Window 1' -d './server_nix.sh; bash'
 tmux new-window -t $SESSION:2 -n 'Window 2' -d './event_handler_nix.sh; bash'

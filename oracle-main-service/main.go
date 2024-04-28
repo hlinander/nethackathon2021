@@ -208,9 +208,11 @@ func handleWorker(conn net.Conn) {
 			fmt.Println("Received ping from", conn.RemoteAddr())
 		case "token":
 			log.Println(msg)
-			select {
-			case worker.TokenChannel <- msg:
-				log.Println("Sent token!")
+			if worker.Available == false {
+				select {
+				case worker.TokenChannel <- msg:
+					log.Println("Sent token!")
+				}
 			}
 		default:
 			fmt.Println("Unknown message type:", msg.Type)

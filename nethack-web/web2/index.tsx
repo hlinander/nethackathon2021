@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import React from "react";
+import React, {useRef} from "react";
 import "normalize.css/normalize.css";
 import { Terminal } from "xterm";
 import "xterm/css/xterm.css";
@@ -101,7 +101,7 @@ const GameView = observer(({ state }) => {
       if (el != null) {
         state.term.open(el)
         state.term.focus()
-        let socket = new WebSocket("ws://10.10.10.5:8484/ws");
+        let socket = new WebSocket(`ws://${window.location.hostname}:8484/ws`);
         socket.onopen = function(e) {
           console.log("[open] Connection established");
 
@@ -302,6 +302,33 @@ function PlayerLeaderBoard() {
   );
 }
 
+interface AudioPlayerProps {
+    src: string;  // URL of the audio file
+    playnow: boolean;
+}
+
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, playnow }) => {
+    // Reference to the audio element
+    const audioRef = useRef<HTMLAudioElement>(null);
+
+    // Function to play the audio
+    const playAudio = () => {
+        if (audioRef.current) {
+            audioRef.current.play();
+        }
+    };
+
+    return (
+        <div>
+            <audio ref={audioRef} src={src} controls={false} autoPlay={playnow}>
+                Your browser does not support the audio element.
+            </audio>
+            <button onClick={playAudio}>Play Sound</button>
+        </div>
+    );
+};
+
+
 function RenderEvent({event, count}) {
   let elapsed = formatDistanceToNow(new Date(event.Timestamp), { addSuffix: true });
   let elapsedEl = <span style={{fontSize: "8px", opacity: 0.5}}>{elapsed}</span>
@@ -312,6 +339,8 @@ function RenderEvent({event, count}) {
   switch (event_data.type) {
     case "event":
       switch (event_data.name) {
+        case "coconut_song":
+          return <div style={{ color: "green" }}>*Allan Ingerman singing*<AudioPlayer src={event_data.string_value} playnow={event_data.seconds_since < 5}/></div>
         case "wealth_tax":
           return <div style={{ color: "green" }}>{event_data.string_value}</div>
         case "payout_stonk":

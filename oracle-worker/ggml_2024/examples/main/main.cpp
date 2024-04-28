@@ -140,6 +140,7 @@ int main(int argc, char ** argv) {
     // (note for later: this is a slightly awkward choice)
     console::init(params.simple_io, params.use_color);
     atexit([]() { console::cleanup(); });
+    setvbuf(stdout, NULL, _IONBF, 0);
 
     if (params.logits_all) {
         printf("\n************\n");
@@ -735,6 +736,7 @@ int main(int argc, char ** argv) {
             for (auto id : embd) {
                 const std::string token_str = llama_token_to_piece(ctx, id);
                 printf("%s", token_str.c_str());
+                fflush(stdout);
 
                 if (embd.size() > 1) {
                     input_tokens.push_back(id);
