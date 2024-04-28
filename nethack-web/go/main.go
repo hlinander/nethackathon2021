@@ -523,6 +523,7 @@ func main() {
 	}()
 	flag.Parse()
 	http.Handle("/", http.FileServer(http.Dir("../web2/built-web")))
+	http.Handle("/wow/", http.StripPrefix("/wow/", http.FileServer(http.Dir("../web3/built-web"))))
 	http.HandleFunc("/ws", serveWs)
 	http.HandleFunc("/events", func(w http.ResponseWriter, r *http.Request) {
 		serveEvents(w, r)

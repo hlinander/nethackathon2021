@@ -4077,6 +4077,8 @@ assure_syscf_file(void)
         close(fd);
         return;
     }
+    char snopp[256];
+    raw_printf("%s from %s\n", getcwd(snopp, sizeof(snopp)), SYSCF_FILE);
     raw_printf("Unable to open SYSCF_FILE.\n");
     exit(EXIT_FAILURE);
 }

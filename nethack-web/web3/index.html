@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nethackathon</title>
+    <style>
+    body {
+      overflow: hidden;
+      color: white;
+      background-color: black;
+    }
+    canvas {
+      display: block;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+    }
+    .xterm-viewport {
+      overflow: hidden !important;
+    }
+    .xterm .xterm-viewport {
+      touch-action: none;
+    }
+    @keyframes fadeAnimation {
+      from {
+        color: green; /* Initial color */
+      }
+      to {
+        color: white; /* Transition to black */
+      }
+    }
+
+    .fade-in {
+      animation: fadeAnimation 3s ease-in-out; /* Animation duration and easing */
+    }
+
+    @keyframes pulsate {
+      0% {
+        transform: translateX(0px)
+      }
+      50% {
+        transform: translateX(100px)
+      }
+      100% {
+        transform: translateX(0px)
+      }
+    }
+
+    .pulse {
+      animation: pulsate 2s infinite ease-in-out;
+    }
+    </style>
+  </head>
+  <body>
+  <canvas id="c"></canvas>
+    <div id="app"></div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
+
