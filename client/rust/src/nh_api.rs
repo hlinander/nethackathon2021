@@ -75,14 +75,21 @@ fn debug_print(f: String) {
     let c_str = std::ffi::CString::new(f.as_str()).unwrap();
     unsafe { nethack_rs::pline(c_str.as_ptr()) };
 }
+fn debug_print_file(s: String) {
+    use std::io::Write;
+    let mut f = std::fs::OpenOptions::new().create(true).append(true).open("/tmp/nethackdebuglog").unwrap();
+    write!(f, "{}", s).unwrap();
+}
 
-fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>(mut f: F) -> Result<R> {
+
+fn until_io_success<R, F: FnMut(&mut Ipc) -> Result<R>>( debug_msg: &str, mut f: F) -> Result<R> {
     loop {
         let ipc_ref = ipc();
         let mut ipc = ipc_ref.borrow_mut();
         match f(&mut *ipc) {
             Ok(r) => return Ok(r),
-            Err(Error::IO(_)) | Err(Error::DecodeError(_)) => {
+            Err(err @ Error::IO(_)) | Err(err @ Error::DecodeError(_)) => {
+                debug_print_file(format!("IPC error for {}: {:?}\n", debug_msg, err));
                 // clear IPC
                 IPC.with(|ipc| {
                     ipc.borrow_mut().take();
@@ -119,7 +126,7 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
         match result {
             Ok(evt) => match evt {
                 NHEvent::Session(evt) => {
-                    let _ = until_io_success(|ipc| ipc.send_session_event(evt.clone()));
+                    let _ = until_io_success("send session event", |ipc| ipc.send_session_event(evt.clone()));
                 }
                 NHEvent::Timed(evt, min_delay) => {
                     let entry = deadline_by_name_and_str
@@ -137,7 +144,7 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
                         });
                 }
                 NHEvent::Coconut(evt) => {
-                    let _ = until_io_success(|ipc| ipc.coconut_song(evt.clone()));
+                    let _ = until_io_success("send coconut", |ipc| ipc.coconut_song(evt.clone()));
                 }
             },
             Err(RecvTimeoutError::Timeout) => {
@@ -149,7 +156,7 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
                 }
                 for id in to_remove {
                     let state = deadline_by_name_and_str.remove(&id).unwrap();
-                    let _ = until_io_success(|ipc| ipc.send_session_event(state.evt.clone()));
+                    let _ = until_io_success("send session event with timeout", |ipc| ipc.send_session_event(state.evt.clone()));
                 }
             }
             Err(RecvTimeoutError::Disconnected) => return,
@@ -159,7 +166,7 @@ fn event_sender_thread(evt_channel: Receiver<NHEvent>) {
 
 #[no_mangle]
 pub unsafe extern "C" fn rust_clear_gems() {
-    let _ = until_io_success(|ipc| ipc.wealth_tax());
+    let _ = until_io_success("clear gems", |ipc| ipc.wealth_tax());
 }
 
 #[no_mangle]
@@ -171,7 +178,7 @@ pub unsafe extern "C" fn bag_of_sharing_add(o: *mut obj) {
 
     let obj_data = obj_to_obj_data(o);
 
-    let _ = until_io_success(|ipc| ipc.bag_add(&obj_data));
+    let _ = until_io_success("bag add", |ipc| ipc.bag_add(&obj_data));
 }
 
 pub(crate) unsafe fn obj_to_obj_data(o: &obj) -> ObjData {
@@ -232,7 +239,7 @@ unsafe fn obj_data_to_obj(obj_data: &ObjData) -> *mut obj {
 
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
-    let items = until_io_success(|ipc| ipc.get_bag()).expect("sync error");
+    let items = until_io_success("get_bag", |ipc| ipc.get_bag()).expect("sync error");
 
     let mut bag = &mut *bag_ptr;
     let mut otmp = null_mut();
@@ -256,7 +263,7 @@ pub unsafe extern "C" fn bag_of_sharing_sync(bag_ptr: *mut obj) {
 #[no_mangle]
 pub unsafe extern "C" fn bag_of_sharing_remove(o: *mut obj) -> i32 {
     let o = &*o;
-    let success = until_io_success(|ipc| ipc.bag_remove(o.dbid as i32)).expect("remove error");
+    let success = until_io_success("bag_remove", |ipc| ipc.bag_remove(o.dbid as i32)).expect("remove error");
     if success {
         0
     } else {
@@ -273,7 +280,7 @@ pub unsafe extern "C" fn task_complete(category: *const c_char, name: *const c_c
         let name = CStr::from_ptr(name);
         format!("{}_{}", category.to_string_lossy(), name.to_string_lossy())
     };
-    let reward = until_io_success(|ipc| ipc.task_complete(task_name.to_string()));
+    let reward = until_io_success("task_complete", |ipc| ipc.task_complete(task_name.to_string()));
     if let Err(e) = reward {
         let result_line = format!("{:?}", e);
         let c_str = CString::new(result_line).unwrap();
@@ -283,7 +290,7 @@ pub unsafe extern "C" fn task_complete(category: *const c_char, name: *const c_c
 
 #[no_mangle]
 pub unsafe extern "C" fn open_lootbox(rarity: i32) -> i32 /* number of gems gained */ {
-    let reward = until_io_success(|ipc| ipc.open_lootbox(rarity));
+    let reward = until_io_success("open_lootbox", |ipc| ipc.open_lootbox(rarity));
     match reward {
         Err(e) => {
             let result_line = format!("{:?}", e);
@@ -324,7 +331,7 @@ pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
             return;
         }
     }
-    let powers = until_io_success(|ipc| ipc.get_clan_powers());
+    let powers = until_io_success("get_clan_powers", |ipc| ipc.get_clan_powers());
     match powers {
         Err(e) => {
             let result_line = format!("{:?}", e);
@@ -364,7 +371,7 @@ pub unsafe extern "C" fn get_clan_powers(bonus: *mut nethack_rs::team_bonus) {
 #[no_mangle]
 pub unsafe extern "C" fn save_equipment(item: *mut obj, slot: i32) {
     let obj_data = obj_to_obj_data(&*item);
-    let status = until_io_success(|ipc| ipc.save_equipment(slot, &obj_data));
+    let status = until_io_success("save_equipment", |ipc| ipc.save_equipment(slot, &obj_data));
     match status {
         Err(e) => {
             let result_line = format!("{:?}", e);
@@ -377,7 +384,7 @@ pub unsafe extern "C" fn save_equipment(item: *mut obj, slot: i32) {
 
 #[no_mangle]
 pub unsafe extern "C" fn load_saved_equipments(callback: extern "C" fn(i32, *mut obj)) {
-    let equipments = until_io_success(|ipc| ipc.get_saved_equipment());
+    let equipments = until_io_success("saved_equipment", |ipc| ipc.get_saved_equipment());
     if let Ok(equipments) = equipments {
         for (slot, eq) in equipments.iter() {
             let obj_ptr = obj_data_to_obj(eq);
@@ -540,6 +547,11 @@ pub unsafe extern "C" fn maybe_send_coconut_plines() {
 
     COCONUT_LINES_LAST_SEND_TIME = Some(Instant::now());
 
+    send_coconut_song_request(false);
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn send_coconut_song_request(is_death_event: bool) {
     if let Some(plines) = PLINES.as_ref() {
         if plines.len() > 10 {
             let monsters_around = oracle::get_monster_list().into_iter().map(|m| m.name).collect::<Vec<_>>();
@@ -562,11 +574,13 @@ pub unsafe extern "C" fn maybe_send_coconut_plines() {
                 iter = (&*iter).nobj;
 
             }
+            debug_print(format!("{} sending coconuts!", is_death_event));
             enqueue_event(NHEvent::Coconut(CoconutSong {
                 plines: plines.clone(),
                 equipped_items,
                 monsters_around,
                 items_around,
+                is_death_event,
             }));
         }
     }

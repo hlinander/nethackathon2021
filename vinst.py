@@ -10,6 +10,7 @@ import argparse
 import random
 import time
 import telefon.telefon as telefon
+from dataclasses import dataclass
 #from db import Player DBPlayer, Clan as DBClan, open_db
 
 ep = select.epoll()
@@ -23,7 +24,8 @@ ep.register(server_socket.fileno(), select.EPOLLIN | select.EPOLLET)
 
 connections = {}
 
-next_song_time = time.time()
+next_death_song_time = time.time()
+next_boring_song_time = time.time()
 
 db.open_db()
 
@@ -277,7 +279,14 @@ def parse_retrieve_saved_equipment(connection, req):
 
 def coconut_song(connection, coconut):
     global coconut_queue
-    coconut_queue.append(coconut)
+    print("coconuuuuuuuuuts")
+    coconut_queue.append(
+        CoconutQueueItem(
+            coconut_proto=coconut, 
+            player_id=connection["player_id"], 
+            session_start_time=connection["session_start_time"],
+            timestamp=time.time()
+        ))
     status = nh_pb2.Status()
     status.code = 0
     return [status]
@@ -358,46 +367,74 @@ args = parse_args()
 if args.reset_db:
     db.init_db()
 
+@dataclass
+class CoconutQueueItem:
+    coconut_proto: object
+    player_id: object
+    session_start_time: object
+    timestamp: object
+
 coconut_queue = []
 
 
-def generate_song(coconut):
-    global next_song_time
-    print("COCONUT: ", coconut)
-    if time.time() > next_song_time:
-        print("GEnerating song!")
-        try:
-            song_url = telefon.create_song(".".join(coconut.plines))
-            print(song_url)
-        except Exception as e:
-            print("song exception: ", e)
-            print(traceback.format_exc())
-        player = db.session.query(db.Player).filter_by(id=connection["player_id"]).first()
-        item = db.Event(
-            player_id=connection["player_id"],
-            clan_id=player.clan,
-            session_start_time=connection["session_start_time"],
-            session_turn=0,
-            name="coconut_song",
-            value=0,
-            string_value=song_url,
-            previous_value=0,
-            # caused_by=event.caused_by,
-            # action_name=event.action_name
-            )
-        db.session.add(item)
-        db.session.commit()
-        next_song_time = time.time() + 10
+def generate_song(coconut_queue_item: CoconutQueueItem):
+    # print("COCONUT: ", coconut)
+    coconut = coconut_queue_item.coconut_proto
+    print("GEnerating song!")
+    try:
+        song_res = telefon.create_song(".".join(coconut.plines))
+        print(song_res.song_url)
+    except Exception as e:
+        print("song exception: ", e)
+        print(traceback.format_exc())
+    player = db.session.query(db.Player).filter_by(id=coconut_queue_item.player_id).first()
+    clan = db.session.query(db.Clan).filter_by(id=player.clan).first()
+
+    item = db.Event(
+        player_id=coconut_queue_item.player_id,
+        clan_id=player.clan,
+        session_start_time=coconut_queue_item.session_start_time,
+        session_turn=0,
+        name="coconut_song",
+        value=0,
+        string_value=song_res.song_url,
+        previous_value=0,
+        extra=dict(
+            player_name=player.username,
+            clan_name=clan.name,
+            **song_res.__dict__
+        )
+        # caused_by=event.caused_by,
+        # action_name=event.action_name
+        )
+    db.session.add(item)
+    db.session.commit()
     
 
 def handle_coconut_songs():
     global coconut_queue
+    global next_death_song_time
+    global next_boring_song_time
     while True:
         time.sleep(2)
-        if len(coconut_queue) > 0:
+        has_fun_event = len(list(filter(lambda x: x.coconut_proto.is_death_event, coconut_queue)))
+        if len(coconut_queue) > 0 and (time.time() > next_boring_song_time or (time.time() > next_death_song_time and has_fun_event)):
+            prioritize_coconuts()
             coconut = coconut_queue.pop()
-            print("Next coconut: ", coconut)
             generate_song(coconut)
+            coconut_queue = []
+            next_boring_song_time = time.time() + 5 * 60
+            next_death_song_time = time.time() + 30
+
+
+def prioritize_coconuts():
+    global coconut_queue
+
+    sorted_tuples = sorted(map(lambda coconut_item: (coconut_item.coconut_proto.is_death_event, coconut_item.timestamp, coconut_item), coconut_queue))
+    coconut_queue = list(map(lambda tuple_boy: tuple_boy[-1], sorted_tuples))
+    # def sort_func(x: CoconutQueueItem):
+        
+    # coconut_queue = sorted(coconut_queue, key=lambda x: )
 
 coconut_socket = threading.Thread(target=handle_coconut_songs)
 coconut_socket.start()
@@ -407,16 +444,22 @@ while True:
 
     for fileno, event in events:
         if fileno == server_socket.fileno():
-            # print("connection?")
+            print("connection?")
             connection, address = server_socket.accept()
             connection.setblocking(0)
-            #print(address)
+            print(address)
             ep.register(connection.fileno(), select.EPOLLIN | select.EPOLLET)
             connections[connection.fileno()] = dict(conn=connection, buffer=b"", player_id=None)
         elif event & select.EPOLLIN:
             try:
-                connections[fileno]["buffer"] += (
-                    connections[fileno]["conn"].recv(512))
+                while True:
+                    chunk = connections[fileno]["conn"].recv(512)
+                    # print(chunk)
+                    # breakpoint()
+                    connections[fileno]["buffer"] += chunk
+                    if len(chunk) < 512:
+                        break
+                # print("CONCAT: {}", connections[fileno]["buffer"])
             except Exception as e:
                 print(f"recv: {e}")
                 if fileno in connections:
@@ -425,6 +468,8 @@ while True:
 
             if fileno in connections and len(connections[fileno]["buffer"]) > 4:
                 size = struct.unpack("<I", connections[fileno]["buffer"][:4])[0]
+                buffer_size = len(connections[fileno]["buffer"][4:])
+                print(f"size of packet: {size} size of buffer: {buffer_size}")
                 if len(connections[fileno]["buffer"][4:]) >= size:
                     try:
                         responses = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])

@@ -53,5 +53,6 @@ void oracle_stfu(boolean stfu);
 void coconut_handle_pline(const char* text);
 
 void maybe_send_coconut_plines();
+void send_coconut_song_request(bool is_death_event);
 
 #undef obj
