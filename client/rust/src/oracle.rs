@@ -121,7 +121,7 @@ struct PromptRequest {
 
 async fn new_prompt_request(prompt: String, tx: Sender<ReceiveMsg>) {
     let ip = "127.0.0.1"; // hampoos
-                           // let ip = "172.26.2.104"; // jannix
+                          // let ip = "172.26.2.104"; // jannix
     let client = Client::builder()
         .connect_timeout(Duration::from_millis(2000))
         .http2_keep_alive_timeout(Duration::from_millis(2000))
@@ -871,6 +871,9 @@ pub unsafe extern "C" fn nethackathon_getch() -> i32 {
         );
         if retval == -1 {
             eprintln!("select() failed: {}", std::io::Error::last_os_error());
+            nethack_rs::dosave0();
+            nethack_rs::nh_terminate(1);
+            libc::abort();
         } else if retval > 0 {
             let c = libc::getchar();
             return c;

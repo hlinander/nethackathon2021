@@ -98,6 +98,19 @@ class Stonk(Base):
     name = Column(String)
     value = Column(Integer)
 
+
+class CoconutSong(Base):
+    __tablename__ = "coconutsong"
+    id = Column(Integer, primary_key=True)
+    player_id = Column(Integer, ForeignKey("players.id"))
+    timestamp = Column(DateTime, default=datetime.datetime.utcnow, index=True)
+    url = Column(String)
+    title = Column(String)
+    lyrics = Column(String)
+    state = Column(String)
+    # value = Column(Integer)
+
+
 class StonkHolding(Base):
     __tablename__ = "stonk_holding"
     id = Column(Integer, primary_key=True)

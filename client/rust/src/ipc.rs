@@ -42,6 +42,7 @@ impl Ipc {
     }
     pub fn new_tcp() -> Result<Self> {
         let stream = std::net::TcpStream::connect("127.0.0.1:8001")?;
+        stream.set_nonblocking(false)?;
         stream.set_read_timeout(Some(std::time::Duration::from_secs(3)));
         stream.set_write_timeout(Some(std::time::Duration::from_secs(3)));
         Ok(Self::Tcp(TcpIpc { stream }))
@@ -174,8 +175,42 @@ impl TcpIpc {
 
     fn read_msg_size(&mut self) -> Result<u32> {
         let mut msg_size = [0u8; 4];
-        self.stream.read(&mut msg_size)?;
+        self.read_exact_with_retries(&mut msg_size)?;
         Ok(u32::from_le_bytes(msg_size))
+    }
+
+    fn debug_print_file(s: String) {
+        let mut f = std::fs::OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open("/tmp/nethackdebuglog")
+            .unwrap();
+        write!(f, "{}", s).unwrap();
+    }
+    fn read_exact_with_retries(&mut self, buf: &mut [u8]) -> Result<()> {
+        let mut retries = 0;
+        Ok(loop {
+            let result = self.stream.read_exact(buf);
+            if let Err(e) = &result {
+                if e.kind() == std::io::ErrorKind::WouldBlock {
+                    retries += 1;
+                    // Self::debug_print_file(format!(
+                    //     "would block when reading exact {} bytes, retry {}\n",
+                    //     buf.len(),
+                    //     retries
+                    // ));
+                    std::thread::sleep_ms(1);
+                    if retries > 1000 {
+                        break;
+                    }
+                    continue;
+                } else {
+                    result?
+                }
+            } else {
+                break;
+            }
+        })
     }
 
     fn send_event(&mut self, evt: Msg) -> Result<()> {
@@ -192,7 +227,7 @@ impl TcpIpc {
         let msg_size = self.read_msg_size()?;
         let mut buf = Vec::with_capacity(msg_size as usize);
         buf.resize(msg_size as usize, 0);
-        self.stream.read_exact(&mut buf[0..msg_size as usize])?;
+        self.read_exact_with_retries(&mut buf[0..msg_size as usize])?;
         Ok(T::decode(&*buf).expect("deserialize protobuf failed"))
     }
     pub fn get_clan(&mut self) -> Result<nh_proto::Clan> {
