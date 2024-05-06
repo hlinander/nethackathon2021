@@ -62,6 +62,7 @@ def suno_create_song(s, jwt, session, title, tags, prompt):
 			timeout_bug += 1
 			if timeout_bug >= 5:
 				return None
+			continue
 		for it in data:
 			print(it) 
 			print(it["status"])
