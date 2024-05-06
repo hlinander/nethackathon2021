@@ -23,6 +23,8 @@ def suno_init_session(s):
 	return jwt, session
 
 def suno_refresh(s, session):
+	j = s.post('https://clerk.suno.com/v1/client/sessions/%s/touch?_clerk_js_version=4.72.2' % (session),
+		cookies=suno_make_cookies()).json()
 	j = s.post('https://clerk.suno.com/v1/client/sessions/%s/tokens?_clerk_js_version=4.72.2' % (session),
 		cookies=suno_make_cookies()).json()
 	if j['object'] != 'token':
@@ -87,9 +89,10 @@ def create_song(desc):
 	jwt, session = suno_init_session(s)
 	lyrics = get_lyrics_from_desc(desc)
 	clip_id = suno_create_song(s, jwt, session, "a song", "sutra", lyrics)
+	if clip_id is None:
+		# TODO: Somehting sane
+		return None
 	clip_url = f"https://cdn1.suno.ai/{clip_id}.mp3"
 	return SongResult(song_url=clip_url, song_lyrics=lyrics)
-	# return clip_url
-	# print(clip_url)
 
 # create_song('Detta e sång om en ballong. Jag e katt, du e hest.')

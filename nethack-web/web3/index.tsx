@@ -152,12 +152,14 @@ const SpectateComponent = observer(() => {
         if((maxTs == null) || (ts > maxTs)) {
           maxTs = ts
         }
-        console.log(event)
-        const e = event.Vinst
-        const pn = event.Playername
-        if ("event" == e.type && "coconut_song" == e.name) {
-          const { extra } = e
-          songState.updateState(pn, extra.song_title, extra.song_lyrics, extra.song_url, null)
+        if(lastTimestamp != null) { // ignore first batch
+          console.log(event)
+          const e = event.Vinst
+          const pn = event.Playername
+          if ("event" == e.type && "coconut_song" == e.name) {
+            const { extra } = e
+            songState.updateState(pn, extra.song_title, extra.song_lyrics, extra.song_url, null)
+          }
         }
       }
       if(maxTs != null) {
