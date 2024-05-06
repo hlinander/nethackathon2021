@@ -3,42 +3,33 @@ import time
 from telefon.song import get_lyrics_from_desc
 import json
 
-# def suno_refresh():
-# 	s = requests.Session()
-# 	__client = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsaWVudF8yZTNQZG1yY1V0Tk9Qdk1mSzJLNXZPWk83RlIiLCJyb3RhdGluZ190b2tlbiI6IjU5MjRrNmI1d2dja2Rkb2c4MjNuaWIwY3JvcWNuanNkMmxxbmtoc3YifQ.f4uJY92LRwijV95bMg4C2mQtbcbFQ6Km-PiOX5r-f2PgSV8emECIdxy1ecmHSafzVIQkMpohaW--1F8pm8Ej11qEPgKVXgwsIi9hEN5-L2Odhz2-BuQokY2jtuhGhpY0ApBZkh45Xbe1PmQ3MDwjmuOVJw5sZGCYBwIicjov8_BRJxBFwJCfxE-pKz9dEpDltkOPveAoh_Q4n_DuzF-XR4I3nqO1kwYFjeGAWj5ftRb9RrgRv79iJqE0UBF1XtgDjPnUWdikeyMW2F5lcWjxaotJNYv9FpqgrAhH-RXW9DinIpqHozs4f9mu5-J37Fyl5Sk8LBvx3wet4hbQJFs3HQ'
-# 	__client_uat = '1711130398'
-# 	j = s.get('https://clerk.suno.ai/v1/client?_clerk_js_version=4.70.5', cookies={
-# 			"__client": __client,
-# 			"__client_uat": __client_uat
-# 		}).json()
-# https://clerk.suno.ai/v1/client/sessions/sess_2e3PgMx3gxJDQL3NcSz3bOnkUaG/tokens?_clerk_js_version=4.70.5
-# __client = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsaWVudF8yZkt0bUJHZmlXOG1jdXlYWHlLcHc5N3IzRzAiLCJyb3RhdGluZ190b2tlbiI6InQzYWU2M3JmcDdnb2lkZWlzMWg0ejcyMjIwM2xoOGN5bjA4eTM0azAifQ.ha8Ss5q7zePpEvctHEmLOjPMZx-RRc_pAriOokwmkzBGkd2MwyxainMBhsevJJCZfUKzUxc9OflpGMX-ieigM8S4wH53v6q288EGgQACDMU4izFj46Crg4kVG4PAFTdgtz8YfvE4g7qXcbBCLWzp3nXzsenQzWVpe6M1KVMfBcHDnhdvkD0U5oXrwHUx8AfMeCYHcqGk24FlJz8yqKmIEZ0y25zhZP3xgt_RUKgUKnKxQSXXfh1pJx9idlM2zAlzZkoreRDsFbVaOtwECD3b1Z8k5XZmP-l1u-q6bs-PTtAIqa8jZB_QnBoXp0Dk16NFlKAVXC0UysWGHKhGdGc9uQ'
-__client = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsaWVudF8yZktzdW5mOHZoYkxLdGdkaGFGT0RGS1h1V2EiLCJyb3RhdGluZ190b2tlbiI6ImtwbW1vbTZzdDZ0enRhOW8wMWEwNWVkd3I4ZTljNWI1MjdrYWM0OWMifQ.XExOIt3uHBIUH_VoE1Q764WozpMBvn0jzMbeR1FK-qIVx62T0lQG0-B88Jn4r1-3iHkO1TpmZWGQg_-_IPayd4mehy_C7cqeHDNE8tja65C_Pl6im7UXyQDq0aWHzBB0Ak41fvoPQZWYHsr42Bsr6G-ktZOfFQrqPYd4SU3WSwPZXTdOkFmzsYgNzwqFxUdxwO3p7ZlHMsowfGH2mv-rXr7jVzgYu_L4XP5qeTLvPttdqpqIMgOlg5fSn6slMDhh8piEXdiwlBb2Mfcivemy6LZf5ftxherKv36qspQcZ15dO0Oxaon6Bb3sMFtbu5T5Glc6wPkVtmg-u0rQfOzG5Q'
-# __client_uat = '1713561815'
-__client_uat = '1714293187'
+__client = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsaWVudF8yZzVGYkl3UXNVc3E4dWlCc3RlMW80Mmc5aW8iLCJyb3RhdGluZ190b2tlbiI6InlydTR0am5vNDhtNXM1bGFlNnY2d3M2dHYwcHptdGM5NG1leHNtbHQifQ.n0yUir-ytcjlvnw3q-YvdRRfqopQKDmdcSmMQIBS7LzRlgysM11Vsi7e--wlBxoDH5aD6rS7Pk7rV1xIe73RBz_u_dmEZc9lrh2QI5EqapVeZKhF5RdeRhOJtgHrzd4a1eXX5c8y3-M0MvifO4npDdINfTWJxoeCHEu09xOQo7L5O3JJGvPLvPiIBz1LZuyKJpy8QYUBXrcxobzeOFyvdU9-bh75TMXwHLHfgyFa086P7p3XfTg-ydBWuqMBBfTbGeD7lXYoXuDl0tskf2defL62AD_E3kL7UFcaEIVB3d0t5jCaioGlQ7iXZe89t83b8fvKwBVKc2wnl397Ea7hVw'
+__client_uat = str(int(time.time()))
 
-def suno_init_session():
-	s = requests.Session()
-	# __client = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsaWVudF8yZTNQZG1yY1V0Tk9Qdk1mSzJLNXZPWk83RlIiLCJyb3RhdGluZ190b2tlbiI6IjU5MjRrNmI1d2dja2Rkb2c4MjNuaWIwY3JvcWNuanNkMmxxbmtoc3YifQ.f4uJY92LRwijV95bMg4C2mQtbcbFQ6Km-PiOX5r-f2PgSV8emECIdxy1ecmHSafzVIQkMpohaW--1F8pm8Ej11qEPgKVXgwsIi9hEN5-L2Odhz2-BuQokY2jtuhGhpY0ApBZkh45Xbe1PmQ3MDwjmuOVJw5sZGCYBwIicjov8_BRJxBFwJCfxE-pKz9dEpDltkOPveAoh_Q4n_DuzF-XR4I3nqO1kwYFjeGAWj5ftRb9RrgRv79iJqE0UBF1XtgDjPnUWdikeyMW2F5lcWjxaotJNYv9FpqgrAhH-RXW9DinIpqHozs4f9mu5-J37Fyl5Sk8LBvx3wet4hbQJFs3HQ'
-	# __client_uat = '1713561333'
-	j = s.get('https://clerk.suno.com/v1/client?_clerk_js_version=4.72.0-snapshot.vc141245', cookies={
-			"__client": __client,
-			"__client_uat": __client_uat
-		})
+def suno_make_cookies():
+	return {
+		"__client": __client,
+		"__client_uat": __client_uat
+	}
+
+def suno_init_session(s):
+	j = s.get('https://clerk.suno.com/v1/client?_clerk_js_version=4.72.0-snapshot.vc141245', cookies=suno_make_cookies())
 	print(j)
 	j = j.json()
-	# import json
-	# print(json.dumps(j, indent=2))
 	print(json.dumps(j, indent=2))
-	# last_sess = j['response']['last_active_session_id']
-	# j = s.post('https://clerk.suno.ai/v1/client/sessions/%s/tokens/api?_clerk_js_version=4.72.0-snapshot.vc141245' % (last_sess),
-		# cookies={
-			# "__client": __client
-		# }).json()
 	time.sleep(2)
-	return s, j['response']['sessions'][0]['last_active_token']['jwt']
+	jwt = j['response']['sessions'][0]['last_active_token']['jwt']
+	session = j['response']['last_active_session_id']
+	return jwt, session
 
-def suno_create_song(s, jwt, title, tags, prompt):
+def suno_refresh(s, session):
+	j = s.post('https://clerk.suno.com/v1/client/sessions/%s/tokens?_clerk_js_version=4.72.2' % (session),
+		cookies=suno_make_cookies()).json()
+	if j['object'] != 'token':
+		raise Exception('Wtf happened now?')
+	return j['jwt']
+
+def suno_create_song(s, jwt, session, title, tags, prompt):
 	header = {
 		"authorization": 'Bearer ' + jwt
 	}
@@ -71,13 +62,12 @@ def suno_create_song(s, jwt, title, tags, prompt):
 			print(it["status"])
 			if it["status"] == "complete":
 				return it["id"]
-			
 		time.sleep(1)
-		# if n_poll % 5 == 0:
-			# s, jwt = suno_init_session()
-			# header = {
-				# "authorization": 'Bearer ' + jwt
-			# }
+		if n_poll % 5 == 0:
+			print('Refresing (%s)' % (jwt))
+			jwt = suno_refresh(s, session)
+			print('After refreshing (%s)' % (jwt))
+		n_poll += 1
 
 
 from dataclasses import dataclass
@@ -87,11 +77,13 @@ class SongResult:
 	song_lyrics: object
 
 def create_song(desc):
-	s, jwt = suno_init_session()
+	s = requests.Session()
+	jwt, session = suno_init_session(s)
 	lyrics = get_lyrics_from_desc(desc)
-	clip_id = suno_create_song(s, jwt, "a song", "sutra", lyrics)
+	clip_id = suno_create_song(s, jwt, session, "a song", "sutra", lyrics)
 	clip_url = f"https://cdn1.suno.ai/{clip_id}.mp3"
 	return SongResult(song_url=clip_url, song_lyrics=lyrics)
 	# return clip_url
 	# print(clip_url)
-# suno_create_song(s, jwt, 'Detta e datormusik', 'space trance', 'Detta e sång om en ballong. Jag e katt, du e hest.')
+
+# create_song('Detta e sång om en ballong. Jag e katt, du e hest.')
