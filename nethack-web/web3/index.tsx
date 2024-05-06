@@ -65,17 +65,26 @@ class SongState {
   }
 
   updateState(_playername, _title, _text, _song, _image) {
-    playername = _playername
-    title = _title
-    text = _text
-    mp3 = _song
-    image = _image    
+    this.playername = _playername
+    this.title = _title
+    this.text = _text
+    this.mp3 = _song
+    this.image = _image    
   }
 }
 
 const terminalManager = new TerminalManager();
 const displayState = new DisplayState();
 const songState = new SongState();
+let lastTimestamp = null;
+
+function isNewerEvent(eventTimestamp) {
+  const eventDate = eventTimestamp;
+  if(null === lastTimestamp) {
+    return true;
+  }
+  return eventDate > lastTimestamp;
+}
 
 const SpectateComponent = observer(() => {
   const audioRef = useRef(null);
@@ -83,7 +92,15 @@ const SpectateComponent = observer(() => {
   useEffect(() => {
     if (songState.mp3 && !audioRef.current) {
       audioRef.current = new Audio(songState.mp3);
-      audioRef.current.play();
+      const tryPlayAudio = setInterval(async () => {
+        try {
+          console.log('TRYINNG')
+          await audioRef.current.play();
+          clearInterval(tryPlayAudio);
+        } catch (error) {
+          console.log('Waiting for user interaction...');
+        }
+      }, 100);
 
       // Event listener for when the audio ends
       audioRef.current.onended = () => {
@@ -126,12 +143,25 @@ const SpectateComponent = observer(() => {
 
     const songId = setInterval(async () => {
       const events = await (await fetch('/events')).json();
+      let maxTs = null
       for(let event of events) {
-        e = event.Vinst
+        const ts = new Date(event.Timestamp)
+        if(!isNewerEvent(ts)) {
+          continue
+        }
+        if((maxTs == null) || (ts > maxTs)) {
+          maxTs = ts
+        }
+        console.log(event)
+        const e = event.Vinst
+        const pn = event.Playername
         if ("event" == e.type && "coconut_song" == e.name) {
           const { extra } = e
-          songState.updateState(extra.player_name, extra.song_title, extra.song_lyrics, extra.song_url, null)
+          songState.updateState(pn, extra.song_title, extra.song_lyrics, extra.song_url, null)
         }
+      }
+      if(maxTs != null) {
+        lastTimestamp = maxTs;
       }
     }, 500)
 

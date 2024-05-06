@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 docker exec nh2024 psql -U postgres -c "DROP DATABASE nh WITH (FORCE)"
 docker exec nh2024 psql -U postgres -c "CREATE DATABASE nh"
-env/bin/python3 reset_db.py
-./event_handler_nix.sh --reset
+python3 reset_db.py
+#./event_handler_nix.sh --reset

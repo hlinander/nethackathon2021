@@ -469,7 +469,7 @@ while True:
             if fileno in connections and len(connections[fileno]["buffer"]) > 4:
                 size = struct.unpack("<I", connections[fileno]["buffer"][:4])[0]
                 buffer_size = len(connections[fileno]["buffer"][4:])
-                print(f"size of packet: {size} size of buffer: {buffer_size}")
+                # print(f"size of packet: {size} size of buffer: {buffer_size}")
                 if len(connections[fileno]["buffer"][4:]) >= size:
                     try:
                         responses = parse_packet(connections[fileno], connections[fileno]["buffer"][4:(4 + size)])

@@ -49,21 +49,26 @@ def suno_create_song(s, jwt, session, title, tags, prompt):
 	# print(js)
 
 	ids = [clip["id"] for clip in js["clips"]]
-
+	timeout_bug = 0
 	n_poll = 0
 	while True:
 		feed_url = f"https://studio-api.suno.ai/api/feed/?ids={','.join(ids)}"
 		data = s.get(feed_url, headers=header).json()
-		print("[DATA]")
-		print(data)
-		print("[/DATA]")
+
+		if 'detail' in data and data['detail'] == 'Unauthorized':
+			print('OMG I AM UNAUTH :( Count: %d' % (timeout_bug))
+			time.sleep(10)
+			suno_init_session(s)
+			timeout_bug += 1
+			if timeout_bug >= 5:
+				return None
 		for it in data:
 			print(it) 
 			print(it["status"])
 			if it["status"] == "complete":
 				return it["id"]
 		time.sleep(1)
-		if n_poll % 5 == 0:
+		if n_poll % 10 == 0:
 			print('Refresing (%s)' % (jwt))
 			jwt = suno_refresh(s, session)
 			print('After refreshing (%s)' % (jwt))
