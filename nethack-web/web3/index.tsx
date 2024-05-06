@@ -155,6 +155,9 @@ const SpectateComponent = observer(() => {
         if(lastTimestamp != null) { // ignore first batch
           console.log(event)
           const e = event.Vinst
+          if(!e) {
+            continue
+          }
           const pn = event.Playername
           if ("event" == e.type && "coconut_song" == e.name) {
             const { extra } = e
