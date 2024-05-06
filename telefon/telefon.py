@@ -59,8 +59,8 @@ def suno_create_song(s, jwt, session, title, tags, prompt):
 
 		if 'detail' in data and data['detail'] == 'Unauthorized':
 			print('OMG I AM UNAUTH :( Count: %d' % (timeout_bug))
-			time.sleep(10)
-			suno_init_session(s)
+			time.sleep(5)
+			jwt, session = suno_init_session(s)
 			timeout_bug += 1
 			if timeout_bug >= 5:
 				return None
