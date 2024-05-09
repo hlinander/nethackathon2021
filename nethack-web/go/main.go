@@ -519,6 +519,44 @@ func main() {
 		log.Printf("Exited all processes")
 		os.Exit(0)
 	}()
+
+	go func() {
+		var PtyPipe *os.File
+		var err error
+
+		cmdx := exec.Command("which", "python3")
+		output, err := cmdx.CombinedOutput()
+		if err != nil {
+		    log.Fatalf("Failed to execute command: %s", err)
+		}
+		fmt.Printf("Python3 path: %s", output)
+
+	    cmd := exec.Command("python3", "../../observer.py", "ttryecs")
+
+		PtyPipe, err = pty.StartWithSize(
+			cmd,
+			&pty.Winsize{
+				Rows: 512,
+				Cols: 512,
+			})
+		if err != nil {
+			log.Printf("failed to start pty: %s", err)
+			return
+		}
+
+	    for {
+			buf := make([]byte, maxMessageSize)
+			n, err := PtyPipe.Read(buf)
+			if err != nil {
+				log.Printf("failed to read message from pty: %s", err)
+				return
+			}
+			tty_mux.Lock()
+			tty["observer"] = append(tty["observer"], buf[:n]...)
+			tty_mux.Unlock()
+		}
+	}()
+
 	flag.Parse()
 	http.Handle("/", http.FileServer(http.Dir("../web2/built-web")))
 	http.Handle("/wow/", http.StripPrefix("/wow/", http.FileServer(http.Dir("../web3/built-web"))))

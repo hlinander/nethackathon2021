@@ -7,83 +7,57 @@ import { makeAutoObservable } from "mobx";
 import { observer } from "mobx-react-lite";
 
 class TerminalManager {
-  terminals = {};
-  receivedBytes = {};
+  terminal = null;
+  receivedBytes = 0;
 
   constructor() {
     makeAutoObservable(this);
+    this.initializeTerminal();
   }
 
-  initializeTerminal(playerName) {
-    const terminal = new Terminal({
-      fontSize: 12,
+  initializeTerminal() {
+    this.terminal = new Terminal({
+      fontSize: 18,
       cursorBlink: true,
       macOptionIsMeta: true,
       allowTransparency: true,
-      scrollOnUserInput: false,
-      cols: 80,
-      rows: 40,
+      cols: 512,
+      rows: 512,
     });
-    this.terminals[playerName] = terminal;
-    this.receivedBytes[playerName] = 0;
   }
 
-  updateTerminalData(playerName, data) {
-    if (!this.terminals[playerName]) {
-      console.log('New player', playerName)
-      this.initializeTerminal(playerName);
-    }
-    this.terminals[playerName].write(data);
-    this.receivedBytes[playerName] += data.length;
-  }
-}
-
-class DisplayState {
-  displayOffset = 0;
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-
-  updateDisplayOffset(totalTerminals) {
-    this.displayOffset = (this.displayOffset + 4);
-    if (this.displayOffset >= totalTerminals) {
-      this.displayOffset = 0
+  updateTerminalData(data) {
+    if (this.terminal) {
+      this.terminal.write(data);
+      this.receivedBytes += data.length;
     }
   }
 }
 
 class SongState {
-  playername = null
-  title = null
-  text = null
-  mp3 = null
-  image = null
+  playername = null;
+  title = null;
+  text = null;
+  mp3 = null;
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this);
   }
 
-  updateState(_playername, _title, _text, _song, _image) {
-    this.playername = _playername
-    this.title = _title
-    this.text = _text
-    this.mp3 = _song
-    this.image = _image    
+  updateState(_playername, _title, _text, _mp3) {
+    this.playername = _playername;
+    this.title = _title;
+    this.text = _text;
+    this.mp3 = _mp3;
   }
 }
 
 const terminalManager = new TerminalManager();
-const displayState = new DisplayState();
 const songState = new SongState();
 let lastTimestamp = null;
 
 function isNewerEvent(eventTimestamp) {
-  const eventDate = eventTimestamp;
-  if(null === lastTimestamp) {
-    return true;
-  }
-  return eventDate > lastTimestamp;
+  return lastTimestamp == null || eventTimestamp > lastTimestamp;
 }
 
 const SpectateComponent = observer(() => {
@@ -94,7 +68,6 @@ const SpectateComponent = observer(() => {
       audioRef.current = new Audio(songState.mp3);
       const tryPlayAudio = setInterval(async () => {
         try {
-          console.log('TRYINNG')
           await audioRef.current.play();
           clearInterval(tryPlayAudio);
         } catch (error) {
@@ -102,18 +75,14 @@ const SpectateComponent = observer(() => {
         }
       }, 100);
 
-      // Event listener for when the audio ends
       audioRef.current.onended = () => {
         setTimeout(() => {
-          // Update the song state to revert back to the default view
-          // Assuming there's a method in songState to reset or change the state
-          songState.updateState(null, null, null, null, null, null);
-          audioRef.current = null
-        }, 2000); // wait for 1 second before switching
+          songState.updateState(null, null, null, null);
+          audioRef.current = null;
+        }, 2000);
       };
     }
 
-    // Cleanup function to remove the event listener
     return () => {
       if (audioRef.current) {
         audioRef.current.onended = null;
@@ -124,91 +93,44 @@ const SpectateComponent = observer(() => {
   useEffect(() => {
     const fetchData = async () => {
       const updateInterval = 250;
-      const updateId = setInterval(async () => {
+      setInterval(async () => {
         const response = await fetch("/spectate", {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(terminalManager.receivedBytes)
+          body: JSON.stringify({ receivedBytes: terminalManager.receivedBytes })
         });
         const data = await response.json();
-        Object.entries(data).forEach(([playerName, ttyDelta]) => {
-          terminalManager.updateTerminalData(playerName, new Uint8Array(Array.from(atob(ttyDelta), c => c.charCodeAt(0))));
-        });
+        terminalManager.updateTerminalData(new Uint8Array(Array.from(atob(data.ttyDelta), c => c.charCodeAt(0))));
       }, updateInterval);
     };
 
-    const displayId = setInterval(async () => {
-      displayState.updateDisplayOffset(Object.keys(terminalManager.terminals).length)
-    }, 120000);
-
     const songId = setInterval(async () => {
       const events = await (await fetch('/events')).json();
-      let maxTs = null
-      for(let event of events) {
-        const ts = new Date(event.Timestamp)
-        if(!isNewerEvent(ts)) {
-          continue
-        }
-        if((maxTs == null) || (ts > maxTs)) {
-          maxTs = ts
-        }
-        if(lastTimestamp != null) { // ignore first batch
-          console.log(event)
-          const e = event.Vinst
-          if(!e) {
-            continue
-          }
-          const pn = event.Playername
-          if ("event" == e.type && "coconut_song" == e.name) {
-            const { extra } = e
-            songState.updateState(pn, extra.song_title, extra.song_lyrics, extra.song_url, null)
-          }
+      for (let event of events) {
+        const ts = new Date(event.Timestamp);
+        if (!isNewerEvent(ts)) continue;
+        lastTimestamp = ts;
+        const e = event.Vinst;
+        if (e && e.type === "event" && e.name === "coconut_song") {
+          const { playername, song_title, song_lyrics, song_url } = e.extra;
+          songState.updateState(playername, song_title, song_lyrics, song_url);
         }
       }
-      if(maxTs != null) {
-        lastTimestamp = maxTs;
-      }
-    }, 500)
+    }, 500);
 
     fetchData();
 
     return () => {
-      clearInterval(updateId)
-      clearInterval(displayId) 
-      clearInterval(songId)
-    }
+      clearInterval(songId);
+    };
   }, []);
 
-
   return (
-    <div>
-      {!songState.mp3 ? (
-        <div>
-          <h3>Nethack Spectate</h3>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", height: "100vh" }}>
-            {Object.entries(terminalManager.terminals).slice(displayState.displayOffset, displayState.displayOffset+4).map(([key, terminal]) => (
-              <div key={key} style={{ padding: "10px" }}>
-                <h4>${key}</h4>
-                <div ref={el => el && !el.firstChild && terminal.open(el)}></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", height: "100vh" }}>
-          <div style={{ gridRow: "1 / span 2" }}>
-            <h4>{songState.playername}</h4>
-            <div ref={el => el && songState.playername && terminalManager.terminals[songState.playername] && !el.firstChild && terminalManager.terminals[songState.playername].open(el)}></div>
-          </div>
-          <div>
-            <h1>{songState.title}</h1>
-            <p>{songState.text}</p>
-          </div>
-        </div>
-      )}
+    <div style={{ width: "512px", height: "512px" }}>
+      <div ref={el => el && !el.firstChild && terminalManager.terminal.open(el)}></div>
     </div>
   )
-})
+});
 
 const container = document.getElementById("app");
 const root = createRoot(container);
